@@ -1,246 +1,173 @@
----
-name: career-bootcamp
-description: "给一个岗位名，自动生成完整转行课程：JD调研→技能提取→竞品分析→课程设计→资源整合→输出大纲。Use when creating a new bootcamp for a specific job role."
-argument-hint: "[目标岗位名称]"
----
+# /career-bootcamp — 给一个岗位，自动生成完整 Bootcamp 课程
 
-# /career-bootcamp — 给一个岗位，自动生成完整转行课程
-
-输入一个目标岗位，自动完成：JD 调研 → 技能提取 → 竞品分析 → 课程设计 → 资源整合 → 输出完整大纲。
+输入一个目标岗位，以 AI Engineer Bootcamp 第五期为模板，自动生成完整课程。
 
 ## 使用方法
 ```
 /career-bootcamp [目标岗位]
 ```
 例如：
-- `/career-bootcamp "AI Adoption Specialist"`
 - `/career-bootcamp "AI Product Manager"`
 - `/career-bootcamp "Data Analyst"`
 - `/career-bootcamp "DevOps Engineer"`
+- `/career-bootcamp "Cybersecurity Analyst"`
+
+## 参考模板
+
+**AI Engineer Bootcamp 第五期**是标准模板，位于：
+- 课程页面：`curriculum/ai-engineer-bootcamp/public/`
+- 第四期 JSON 数据：`skills-data/training-outlines/ai-engineer-bootcamp.json`
+- Lab 配置：`jr-academy-web-zh/src/config/` 下 prompt-labs/ llm-labs/ python-labs/ aws-labs/ azure-labs/ git-labs/
+- Learn 方向：`jr-academy-web-zh/src/config/learn/directions/`
 
 ## 完整执行流程
 
----
-
-### Step 1: JD 调研（最重要 — 驱动后续所有设计）
+### Step 1: JD 调研（驱动所有后续设计）
 
 **1.1 抓取真实 JD：**
-- 用 WebSearch 搜索该岗位在 LinkedIn / Seek / Indeed / Glassdoor 上的 JD
-- 搜索关键词：`[岗位名] job description`、`[岗位名] requirements`、`[岗位名] skills`
-- 同时搜变体 title（比如 "AI Adoption" 还要搜 "Digital Transformation Lead"、"AI Enablement"）
-- 至少找到 **10 份 JD**，优先澳洲市场 + 全球远程
+- WebSearch 搜索 LinkedIn / Seek / Indeed / Glassdoor 上的 JD
+- 搜索关键词：`[岗位名] job description`、`[岗位名] requirements`、变体 title
+- 至少找到 **10 份 JD**，优先澳洲 + 全球远程
 
 **1.2 提取技能矩阵（按频率排序）：**
 ```
 | 排名 | 技能 | 出现频率 | 类别 | JD 原文摘录 |
-|------|------|---------|------|------------|
-| 1 | xxx | 8/10 | 硬技能 | "..." |
-| 2 | xxx | 7/10 | 工具 | "..." |
 ```
-- 区分：硬技能 / 软技能 / 工具 / 认证 / 行业知识
 - 8/10+ = 核心必教（2-3 节课）
 - 5-7/10 = 重要（1-2 节课）
-- 2-4/10 = 了解即可（放 Wiki 或图文）
+- 2-4/10 = 放 Lab/Learn 自学
 - 1/10 = 不教
 
 **1.3 提取岗位画像：**
-- 常见 Job Title 变体（至少 5 个）
-- 薪资：Entry / Mid / Senior（AUD）
-- 汇报线：report to 谁
-- 日常工作内容（从 JD 的 responsibilities 提取）
-- 隐性要求（JD 没说但行业默认的）
+- Job Title 变体（5+）
+- 薪资：Entry / Mid / Senior
+- 日常工作内容 + 隐性要求
 
----
+### Step 2: 竞品分析
 
-### Step 2: 竞品课程分析
+- 搜索 5+ 同类课程（Coursera / Udemy / edX / General Assembly / Maven）
+- 竞品对比表：价格 / 时长 / 实操 / 场景教学 / 职业支持
+- 找差异化缺口 → 一句话定位
 
-**2.1 搜索同类课程：**
-- 用 WebSearch 搜索：`[岗位名] bootcamp`、`[岗位名] course`、`[岗位名] certification`
-- 平台：Coursera / Udemy / edX / General Assembly / LinkedIn Learning / 大学项目
-- 至少找 5 个竞品
+### Step 3: 平台资源盘点
 
-**2.2 竞品对比表：**
-```
-| 竞品 | 价格 | 时长 | 实操? | 场景教学? | 职业支持? | 缺什么? |
-```
+**必须搜索的资源（精确数量）：**
 
-**2.3 找差异化缺口：**
-- 竞品没教但 JD 8/10 要求的 = **核心卖点**
-- 竞品有但做得烂的（只讲理论没实操）= **做好就是卖点**
-- 输出一句话定位（像 AI Adoption 的"Harvard 深度 × Udemy 价格 × Bootcamp 互动"）
+| 资源 | 数量 | 配置位置 |
+|------|------|---------|
+| Prompt Lab | 35 个 | `jr-academy-web-zh/src/config/prompt-labs/` |
+| LLM Lab | 18 个 | `jr-academy-web-zh/src/config/llm-labs/` |
+| Python Lab | 37 个 | `jr-academy-web-zh/src/config/python-labs/` |
+| AWS Lab | 44 个 | `jr-academy-web-zh/src/config/aws-labs/` |
+| Azure Lab | 31 个 | `jr-academy-web-zh/src/config/azure-labs/` |
+| Git Lab | 12 个 | `jr-academy-web-zh/src/config/git-labs/` |
+| Frontend Lab | 70 个 | `jr-academy-web-zh/src/config/labs/` |
+| Vibe Coding Learn | 38 章 | `jr-academy-web-zh/src/config/learn/directions/vibe-coding.config.ts` |
+| AI Engineer Learn | 42 章 | `jr-academy-web-zh/src/config/learn/directions/ai-engineer.config.ts` |
+| Prompt Master Learn | 111 章 | `jr-academy-web-zh/src/config/learn/directions/prompt-master.config.ts` |
+| AI Builder Learn | 18 章 | `jr-academy-web-zh/src/config/learn/directions/ai-builder.config.ts` |
+| AI PM Learn | 章节 | `jr-academy-web-zh/src/config/learn/directions/ai-pm.config.ts` |
+| AI Office Learn | 章节 | `jr-academy-web-zh/src/config/learn/directions/ai-office.config.ts` |
+| Wiki | 大量 | `/wiki` 路由 |
+| Videos | 大量 | `/videos` 路由 |
+| Roadmaps | 多个 | `/roadmaps` 路由 |
+| Cheat Sheets | 200+ | `/cheat-sheets` 路由 |
 
----
-
-### Step 3: 目标用户 Persona
-
-根据 JD 调研结果，定义 **3-5 个 Persona**：
-```
-| Persona | 背景 | 痛点 | 目标 | 学习路径特点 |
-|---------|------|------|------|-------------|
-| 职场人 | 已在某岗位工作 | 想转型/升级 | 拿到新 title | 需要实战案例 |
-| 转行者 | 非相关背景 | 零基础 | 进入新行业 | 需要从头教 |
-```
-
----
+**读取实际 Lab/Learn 配置文件**，用 slug 匹配与课程相关的内容，不要猜。
 
 ### Step 4: 课程结构设计
 
 **4.1 技能 → Phase 映射：**
-把 Step 1 的技能矩阵按学习顺序组织：
 ```
-Phase 1 (Week 1-2): 基础工具 + 角色认知（让学员先"能用"）
-Phase 2 (Week 3-X): 核心场景实战（JD 高频技能，按频率排优先级）
-Phase 3 (Week X-Y): 高级/差异化技能（竞品缺口 = 我们的卖点）
-Phase 4 (最后 1 周): 毕业项目 + Demo Day
+Phase 1: 基础 + 工具入门（让学员先"能用"）
+Phase 2: 核心技能实战（JD 高频技能）
+Phase 3: 高级/差异化技能（竞品缺口）
+Phase 4: 综合评估 + 毕业
 ```
 
-**4.2 逐周大纲：**
-每周设计：
-- 主题 + 学习目标
-- 1-3 节直播课（Lesson type）
-- 配套录播（Video type）— 独立 lesson，有完整 step 序列
-- 配套图文（Info type）— 独立 lesson，不是附属品
-- 配套 Lab 和练习
-- 作业 + 评审方式
+**4.2 每节 Lesson 的 Step 序列：**
 
-**4.3 每节课的掌握路径：**
-每节课生成 4-9 项的掌握路径，包含以下学习通道（按推荐顺序）：
+所有 Lesson（不管是直播、录播还是自学）都必须有完整 Step 序列。Step 类型：
 
-| 通道 | 标签 | 说明 |
-|------|------|------|
-| 直播课 | `lp-live` | 老师讲解 + 现场演示 |
-| 录播视频 | `lp-video` | 独立 Video lesson，不是附属品 |
-| 图文教程 | `lp-text` | 独立 Info lesson |
-| Prompt Lab | `lp-lab` | 平台互动练习（标"已有"或"新建"）|
-| AI Tutor | `lp-ai` | AI 一对一：要有具体场景（如"AI扮演CFO挑战你"）|
-| Vibe Coding Lab | `lp-vibe` | AI 编程练习 |
-| OpenClaw | `lp-oc` | AI 部署章节 |
-| Wiki | `lp-text` | 扩展阅读（找不到老师教的内容放这里）|
-| 作业 | `lp-hw` | 综合运用，有明确交付物 |
+| Step Type | 用途 |
+|-----------|------|
+| CONCEPT | 文字/markdown 概念讲解 |
+| LAB | 互动 Lab（标明来源：Prompt Lab / LLM Lab / Python Lab / AWS Lab 等 + slug） |
+| MCQ | 选择题理解检查 |
+| SCENARIO | 真实场景实操练习 |
+| VIDEO | 录播视频内容 |
+| LIVE | 直播教学内容 |
+| PROJECT | 项目交付/作业 |
+| LEARN | Learn 方向章节（标明来源方向 + 章节 slug） |
+| AI TUTOR | AI 引导本地实操（预设场景 Prompt，引导学生在自己电脑上完成 Lab 做不了的任务） |
 
-学员自主节奏完成，不绑定具体哪天。
+**4.3 Kanban Task 设计（有 PROJECT 步骤的 lesson 必须有）：**
 
----
+每个有 PROJECT 步骤的 lesson 要设计 Kanban Task 拆解（3-7 个 task），学生在看板上拖拽完成。
 
-### Step 5: 平台资源整合
-
-**5.1 搜索 JR 已有 Prompt Lab（22+ 个）：**
-
-已知完整列表：
-- Warmup: `hello-ai`
-- Foundation: `clear-task`, `output-format`, `context-management`, `multimodal-prompting`
-- Core: `zero-shot`, `few-shot`, `role-playing`, `chain-of-thought`, `constraints`
-- Structured: `json-schema`, `classification`, `information-extraction`
-- Applied: `business-writing`, `text-summarization`, `code-generation`, `prompt-chaining`
-- Production: `system-prompt-design`, `qa-system-design`, `hallucination-defense`, `prompt-injection-defense`
-- Advanced: `cost-optimization`
-
-逐个检查哪些和课程主题相关，标注可复用的。
-
-**5.2 搜索其他已有资源：**
-
-| 资源 | 路由 | 检查什么 |
+Task 检查方式（按优先级选择）：
+| 类型 | 说明 | 适用场景 |
 |------|------|---------|
-| Vibe Coding Lab | `/learn/vibe-coding/hub` | 哪些 Lab 跟课程场景相关 |
-| OpenClaw 章节 | `/learn/ai-builder/hub` | Ch.1-5 基础, Ch.10 Multi-Agent, Ch.11 Cron |
-| AI 学习方向 | `/learn/` | ai-adoption / ai-engineer / ai-builder / ai-pm / prompt-master / vibe-coding |
-| Roadmaps | `/roadmaps` | 是否有相关的可视化学习路径 |
-| Videos | `/videos` | 已有的教学视频 |
-| Wiki | `/wiki` | 已有的知识库文章 |
-| Free Resources | `/free-resources` | 免费工具/认证/课程推荐 |
-| Cheat Sheets | `/cheat-sheets` | 200+ 速查表 |
+| `ai-review` | AI 自动检查+评分+反馈 | 代码/文本/Prompt 类，AI 能判断质量 |
+| `auto-check` | 系统自动验证 | 环境配置、API 连通、Lab 完成 |
+| `manual-review` | 老师人工检查 | GitHub 项目整体、部署验证、架构评审 |
+| `self-check` | 学生自行确认 | 阅读/观看类 |
 
-**5.3 资源复用率计算：**
-```
-已有可复用: X 个
-需要新建: Y 个
-复用率: Z%
-```
+原则：能用 AI Review 就不用人工。Manual Review 只用于 GitHub 整体项目质量和部署验证。
 
-**5.4 新建内容工作量：**
-```
-| 类型 | 数量 | 单个工时 | 总工时 |
-|------|------|---------|--------|
-| 直播 PPT | X | 2-4h | Xh |
-| 新 Lab | X | 2-4h | Xh |
-| 录播视频 | X | 4-8h | Xh |
-| 图文教程 | X | 1-2h | Xh |
-| 模板文件 | X | 1-2h | Xh |
-| 总计 | | | XXh |
-```
+每个 task 需要：title（动词开头）、description（Markdown）、reviewType、storyPoints (1-5)、submissionType (text/file/link/screenshot)、estimatedTime。
 
----
+**4.4 章节测试（每个 Phase 结尾）：**
+- 30-50 题 MCQ + SCENARIO（项目提交验证）
+- 通过线 70%，不通过可重考（间隔 24h）
+- 通过后解锁下一 Phase
+- Phase 4 毕业测试通过获得证书 + 解锁 P3
 
-### Step 6: P3 职业孵化器
+**4.4 翻转课堂模型：**
+- 课前：学生自学 Lab + Learn 章节（异步）
+- 直播：老师只做项目实战 + 答疑（1.5-2h）
+- 课后：作业 + 项目（异步）
 
-**6.1 分析求职路径：**
-- 这个岗位的面试流程（几轮？考什么？）
-- 需要什么 Portfolio？
-- 是跳槽 / 内部转型 / 咨询 / 创业？
+### Step 5: P3 职业孵化器
 
-**6.2 设计 P3 路径：**
-- Path A: 内部转型（如果学员已在相关公司）
-- Path B: 外部求职（简历+面试+内推）
-- Path C: 咨询/自由职业（如果适用）
+- 12 周 P3（课程结束后或重叠进行）
+- 结构：Kickoff → Sprint ×4 → 中期审查 → Code Freeze → Demo Day
+- 团队角色根据岗位方向定制
+- 求职落地：简历 + LinkedIn → 模拟面试 → 企业内推 → Offer
 
-**6.3 整合职业工具：**
-- JobPin AI（`/study-center?tab=jobpin-ai`）— 针对目标岗位优化简历
-- Mock Interview（`/job-interview`）— 模拟该岗位面试
-- Career Planning（`/study/career-planning`）— AI 职业规划
-- Job Referral（`/job-referral`）— 合作企业内推
+### Step 6: 输出完整交付物
 
----
+生成以下页面到 `curriculum/[new-bootcamp]/public/`：
 
-### Step 7: 输出完整交付物
+| 文件 | 内容 |
+|------|------|
+| `curriculum.html` | 课程总览：Timeline Gantt 图（课程+P3+求职三轨道）、课程目标、Phase 卡片、项目列表、技术栈、FAQ、第 N 期对比表 |
+| `outline.html` | 完整大纲：每个 Lesson 有 Step 序列（CONCEPT/LAB/MCQ/SCENARIO/...）、章节测试、所有 lesson type 平等 |
+| `phase1-N.html` | 每 Phase 详细内容 |
+| `jd-mapping.html` | JD 需求 vs 课程内容左右对照，每个技能一个 skill-row（左=JD要求，右=课程覆盖+覆盖度进度条） |
+| `learning-plan.html` | 翻转课堂方案：每课三列（课前Lab → 直播内容 → 课后作业） |
+| `internal.html` | 内部资料：Lab 映射表、老师分工、JD Gap 分析、Marketing 素材、竞品对比、社媒文案 |
+| `styles.css` | 从 ai-engineer-bootcamp 复制 |
 
-生成以下内容：
+**页面设计系统（必须遵守）：**
+- Neo-Brutalism：3px 黑色边框、6px offset box-shadow、hover 移除阴影
+- CSS 变量：--indigo:#6366f1, --teal:#10b981, --red:#ff5757, --orange:#FF914D, --dark:#10162f
+- 字体：Noto Sans SC + DM Sans + Space Mono
+- 纯 HTML + CSS（不用 React/框架），inline styles 或 `<style>` 块
+- 中文内容，英文技术术语保留原文
+- 禁止 AI 味模板内容
 
-**7.1 课程定位文档：**
-- 一句话定位
-- 目标用户 Persona (3-5 个)
-- 竞品差异化定位
-- 关键数据（薪资/市场缺口/JD 覆盖率）
-
-**7.2 JD Gap Analysis 表：**
-- 10 份 JD 的技能提取
-- 技能频率排序
-- 每个技能 → 对应课程哪节课
-- 覆盖度百分比
-
-**7.3 完整课程大纲 HTML：**
-- 按 Phase / Week / Lesson 组织
-- 每节课有 lesson-body（教学内容 / Lab / 作业）
-- 每节课有 learn-path（掌握路径，4-9 项）
-- 使用现有 CSS 类：`.lesson` `.learn-path` `.lp-item` 等
-- 可直接放入 `public/curriculum.html`
-
-**7.4 资源清单：**
-- 已有可复用 vs 需要新建
-- 工作量估算
-- 制作优先级（P0/P1/P2）
-
-**7.5 P3 职业路径设计**
-
-**7.6 可选 — 生成 bootcamp 目录结构：**
-```
-new-bootcamp/
-├── public/
-│   ├── curriculum.html    # 完整大纲（Step 7.3 的输出）
-│   ├── internal.html      # 内部资料（Lab映射/JD对比/老师分工）
-│   ├── learning-plan.html # 学习方案 + P3 + 待建清单
-│   └── styles.css         # 复用现有样式
-├── src/components/slides/ # 营销 Slide Deck
-├── package.json
-└── vite.config.ts
-```
-
----
+**也需要生成：**
+- `vite.config.ts` — `base: '/curriculum/[new-bootcamp]/'`
+- `package.json` — 复制 ai-engineer-bootcamp 的
+- 更新 `curriculum/.github/workflows/deploy.yml` — 加入新 bootcamp 的构建和部署步骤
 
 ## 注意事项
 
 - **JD 调研驱动一切** — 不是"我觉得应该教什么"，是"市场要什么就教什么"
-- **技能频率 = 课程权重** — 8/10 JD 要求 → 2-3 节课；2/10 → Wiki 扩展阅读
-- **所有 lesson type 平等** — Video/Info 不是附属品，要有完整 step 序列
-- **复用优先** — 先查 JR 有什么能直接用，再考虑新建
-- **不要 AI 味** — 每段内容要有具体工具+步骤+数字，不要空洞描述
-- **只加不删** — 永远不精简已有内容
+- **技能频率 = 课程权重** — 8/10 JD 要求 → 2-3 节课；2/10 → Lab/Learn 自学
+- **所有 lesson type 平等** — Video/Info 不是附属品，都有完整 step 序列
+- **Lab 复用优先** — 先查 247 个现有 Lab + 277 个 Learn 章节，再考虑新建
+- **不要 AI 味** — 每段内容要有具体工具+步骤+数字
+- **章节测试必须有** — 每个 Phase 结尾有测试，通过解锁下一 Phase
+- **P3 + 求职闭环** — 不只教技术，要有完整的"学→做→找工作"路径

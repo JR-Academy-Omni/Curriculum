@@ -1,48 +1,80 @@
----
-name: curriculum-review
-description: "审查课程大纲完整性：检查每节课是否有掌握路径、Lab、AI Tutor等。Use when reviewing an existing curriculum for gaps."
-argument-hint: "[bootcamp目录]"
----
-
 # /curriculum-review — 审查课程大纲完整性
 
-检查指定 bootcamp 的课程大纲，找出缺失的内容和可以改进的地方。
+检查 bootcamp 课程大纲的完整性和质量，对照 AI Engineer 第五期标准。
 
 ## 使用方法
 ```
 /curriculum-review [bootcamp目录]
 ```
-例如：`/curriculum-review ai-adoption-bootcamp`
+例如：`/curriculum-review ai-engineer-bootcamp`
 
-## 执行步骤
+## 检查清单
 
-1. **读取课程大纲**：读取 `public/curriculum.html` 和所有 `phase*.html`
+### 1. Lesson Step 完整性
+每节 Lesson（不管是直播/录播/自学）必须有：
+- [ ] 完整 Step 序列（CONCEPT → LAB → MCQ → SCENARIO → PROJECT）
+- [ ] LAB 引用有具体 slug（不是泛泛的"做个练习"）
+- [ ] LEARN 引用有具体方向 + 章节 slug
+- [ ] MCQ 理解检查
+- [ ] 不存在没有 Step 的空 Lesson
 
-2. **逐课检查**，每节课必须有：
-   - [ ] 教学内容（📖 具体知识点，不是泛泛而谈）
-   - [ ] Lab 实操（🔬 具体的 Prompt Lab 名称 + 练习描述）
-   - [ ] 作业（📋 有明确交付物 + 评审方式）
-   - [ ] 掌握路径（🎯 learn-path，含 4-9 个学习资源项）
-   - [ ] 工具列表（用了哪些 AI 工具）
+### 2. 平台资源整合
+- [ ] 有多少现有 Lab 被复用？（247 个 Lab 里）
+- [ ] 有多少 Learn 章节被引用？（277 个章节里）
+- [ ] 复用率是多少？（目标 >40%）
+- [ ] 需新建的 Lab 数量合理吗？
 
-3. **检查掌握路径的多通道覆盖**：
-   - [ ] 是否有 AI Tutor 环节（不是泛泛的"AI帮你"，要有具体场景）
-   - [ ] 是否引用了已有的 Prompt Lab（标了"已有"）
-   - [ ] 是否有录播/图文补充（且是独立 lesson 而非附属品）
-   - [ ] 是否有作业/交付物
+### 3. Kanban Task 设计
+- [ ] 有 PROJECT 步骤的 lesson 是否都有 Kanban Task 拆解？
+- [ ] 每个 task 是否标注了 reviewType（ai-review / manual-review / auto-check / self-check）？
+- [ ] AI Review 优先原则：能 AI 检查的不要用人工？
+- [ ] Manual Review 是否只用于 GitHub 整体项目和部署验证？
+- [ ] 每个 task 是否有 storyPoints（工作量指标）？
+- [ ] Task 是否渐进式（前面的是后面的基础）？
+- [ ] 每个 task 是否有明确交付物（不是"理解 XXX"而是"提交 XXX"）？
 
-4. **检查资源整合**：
-   - [ ] 是否复用了平台已有 Prompt Lab（22+个）
-   - [ ] 是否整合了 Vibe Coding Lab / OpenClaw 章节
-   - [ ] 扩展内容是否放到了 Wiki（如 Power Automate）
-   - [ ] 是否利用了 Roadmap、AI 学习方向等资源
+### 4. 章节测试
+- [ ] 每个 Phase 结尾有章节测试？
+- [ ] 测试有 MCQ + SCENARIO（项目验证）？
+- [ ] 通过线设置（70%）？
+- [ ] 解锁机制说明？
+- [ ] 毕业测试通过获得证书 + 解锁 P3？
 
-5. **检查内容质量**：
-   - [ ] 有没有 AI 味的空洞描述（"在当今快速发展的..."）
-   - [ ] 每段内容删掉后读者是否会损失信息
-   - [ ] 是否有具体的工具名、命令、数据、案例
+### 5. 完整页面体系
+- [ ] `curriculum.html` — 有 Timeline Gantt（课程+P3+求职）？有第 N 期对比？
+- [ ] `outline.html` — 每个 Lesson 有 Step？所有类型平等？
+- [ ] `phase1-N.html` — 每 Phase 有详细内容？
+- [ ] `jd-mapping.html` — JD 左右对照？覆盖度进度条？
+- [ ] `learning-plan.html` — 翻转课堂三列？成本对比？
+- [ ] `internal.html` — Lab 映射、老师分工、JD 分析、Marketing？
 
-6. **输出报告**：
-   - 总体覆盖率（X/Y 节课有完整掌握路径）
-   - 缺失清单（哪些课缺什么）
-   - 改进建议（具体到课号和改动内容）
+### 6. P3 + 求职闭环
+- [ ] curriculum.html 有 P3 区块（Timeline + Sprint + Demo Day）？
+- [ ] 有求职路径（简历 → 面试 → 内推 → Offer）？
+- [ ] Timeline 展示三轨道（课程 + P3 + 求职）？
+
+### 7. 内容质量
+- [ ] 有没有 AI 味空洞描述？
+- [ ] 英文技术术语保留原文？
+- [ ] 每段内容删掉后读者是否损失信息？
+
+### 8. 部署
+- [ ] `vite.config.ts` base path 正确？
+- [ ] `deploy.yml` 包含这个 bootcamp？
+- [ ] styles.css 存在？
+
+## 输出格式
+```
+## 课程审查报告: [bootcamp名]
+
+### 总分: X/100
+
+### 通过项 ✅
+- ...
+
+### 问题项 ❌
+- [课号] [问题描述] [建议修复]
+
+### 改进建议
+1. ...
+```
