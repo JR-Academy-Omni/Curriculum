@@ -28,6 +28,9 @@ jobs:
           bun install
           bun run build
 
+      # ai-essentials-bootcamp: static HTML only, no React build needed
+      # When slides are added later, change this to: bun install && bun run build
+
       # Assemble all courses into one output
       - name: Assemble output
         run: |
@@ -42,6 +45,9 @@ jobs:
           cp ai-adoption-bootcamp/public/styles.css _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/internal.html _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/learning-plan.html _site/ai-adoption-bootcamp/
+
+          mkdir -p _site/ai-essentials-bootcamp
+          cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/
 
           mkdir -p _site/ai-engineer-bootcamp
           cp -r ai-engineer-bootcamp/dist/* _site/ai-engineer-bootcamp/
@@ -84,6 +90,27 @@ jobs:
             <div class="container">
               <h1>JR Academy Curriculum</h1>
               <p>课程大纲与详情</p>
+
+              <div class="section">
+                <div class="section-title">AI 必修课 · 4 周 · 零基础入门</div>
+                <div class="cards">
+                  <a href="./ai-essentials-bootcamp/curriculum.html">
+                    <span class="tag" style="background:#2e7d32">CURRICULUM</span>
+                    <div class="title">AI 必修课</div>
+                    <div class="desc">课程总览 — 4 Phase、16 课、面向 40-60 岁非技术人员</div>
+                  </a>
+                  <a href="./ai-essentials-bootcamp/outline.html">
+                    <span class="tag" style="background:#FF914D">OUTLINE</span>
+                    <div class="title">AI 必修课 完整大纲</div>
+                    <div class="desc">16 课 × 98 Step 完整序列 — Lesson 即 Lab 模式</div>
+                  </a>
+                  <a href="./ai-essentials-bootcamp/internal.html">
+                    <span class="tag" style="background:#dc2626">INTERNAL</span>
+                    <div class="title">AI 必修课 内部资料</div>
+                    <div class="desc">Lab 映射、竞品分析、Marketing 素材、定价建议</div>
+                  </a>
+                </div>
+              </div>
 
               <div class="section">
                 <div class="section-title">AI Adoption Specialist Bootcamp · 8 周</div>
