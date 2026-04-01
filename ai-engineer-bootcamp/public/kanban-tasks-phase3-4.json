@@ -1,0 +1,522 @@
+{
+  "version": "5.0",
+  "bootcamp": "AI Engineer训练营05",
+  "phases": "3-4",
+  "lessons": [
+    {
+      "lessonId": "phase3-lesson-49",
+      "lessonTitle": "ISA Agent SDK 选型文档",
+      "phase": 3,
+      "tasks": [
+        {
+          "title": "调研 3 个 Agent SDK 的核心能力",
+          "description": "分别调研 OpenAI Agents SDK、Claude Agent SDK、Google ADK 的官方文档，列出各自的核心能力（工具集成、多 Agent 支持、可观测性、生态）。每个 SDK 至少列 5 个关键特性。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "用 3 个 SDK 实现同一任务",
+          "description": "选一个具体任务（如：带搜索工具的 QA Agent），分别用 OpenAI、Claude、Google ADK 实现。记录每个实现的代码量、API 调用次数、延迟。",
+          "reviewType": "manual-review",
+          "storyPoints": 4,
+          "submissionType": "link",
+          "estimatedTime": "3h"
+        },
+        {
+          "title": "撰写选型对比表",
+          "description": "制作表格对比 3 个 SDK 在 API 设计、工具集成、多 Agent、可观测性、社区生态、定价 6 个维度的表现。用 1-5 分打分并给出依据。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "为 ISA 项目做最终选型决策",
+          "description": "结合 ISA 项目需求（RAG + Agent + Memory），写出选型结论。说清楚选哪个 SDK、为什么、trade-off 是什么、什么场景下会换另一个。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "45min"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase3-lesson-51",
+      "lessonTitle": "综合 Agent 应用",
+      "phase": 3,
+      "tasks": [
+        {
+          "title": "设计 Agent 架构图",
+          "description": "画出 Agent 的整体架构：LLM 选择、工具列表、输入/输出格式、错误处理策略。用 Mermaid 或截图提交。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "45min"
+        },
+        {
+          "title": "实现 3 个工具的 Agent",
+          "description": "用选定的 Agent SDK 构建一个 Agent，集成至少 3 个工具（如 Search、RAG、Calculator）。Agent 能根据用户问题自动选择合适的工具。",
+          "reviewType": "manual-review",
+          "storyPoints": 4,
+          "submissionType": "link",
+          "estimatedTime": "3h"
+        },
+        {
+          "title": "编写 5 个测试用例并验证",
+          "description": "设计 5 个不同类型的用户问题，覆盖每个工具至少被调用一次。记录 Agent 的推理过程、工具选择、最终回答，截图提交。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "1h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase3-lesson-52",
+      "lessonTitle": "ISA Agent 升级 + LangSmith Trace",
+      "phase": 3,
+      "tasks": [
+        {
+          "title": "将 ISA 从 Naive RAG 升级为 Agentic RAG",
+          "description": "在 ISA 项目中加入 Agent 层，实现路由决策：Agent 判断用户问题该走 RAG 检索、直接回答、还是调用工具。保留原 RAG 作为工具之一。",
+          "reviewType": "manual-review",
+          "storyPoints": 4,
+          "submissionType": "link",
+          "estimatedTime": "3h"
+        },
+        {
+          "title": "实现错误恢复机制",
+          "description": "Agent 在工具调用失败时能自动 fallback：RAG 无结果时重新改写 query 重试，API 超时时切换备选工具。至少覆盖 2 种错误场景。",
+          "reviewType": "ai-review",
+          "storyPoints": 3,
+          "submissionType": "text",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "接入 LangSmith 并提交 3 个 Trace",
+          "description": "配置 LangSmith tracing，运行 3 个不同类型的查询。截图展示每个 Trace 的完整链路：输入 → Agent 推理 → 工具调用 → 输出，标注每步延迟。",
+          "reviewType": "manual-review",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "Agentic RAG vs Naive RAG 对比",
+          "description": "用 5 个相同问题分别测试 Naive RAG 和 Agentic RAG，对比回答质量、延迟、Token 消耗。用表格总结差异和改进点。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "1h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase3-lesson-55",
+      "lessonTitle": "ISA 记忆升级",
+      "phase": 3,
+      "tasks": [
+        {
+          "title": "集成 Mem0 到 ISA 项目",
+          "description": "在 ISA Agent 中集成 Mem0，配置 Episodic Memory（对话历史）和 Semantic Memory（用户偏好）。确保 Agent 在新对话中能读取历史记忆。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "link",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "设计 10 轮对话测试脚本",
+          "description": "编写一个 10 轮连续对话脚本，前 5 轮逐步建立用户偏好（如技术栈、学习方向），后 5 轮验证 Agent 是否记住并应用这些偏好。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "有/无记忆对比实验",
+          "description": "同一组问题分别在启用记忆和禁用记忆下测试。对比回答的个性化程度、准确性、用户体验。截图展示关键差异。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "记忆存储和检索调试报告",
+          "description": "检查 Mem0 的存储内容，验证记忆的写入和检索是否正确。记录遇到的问题和解决方案（如记忆冲突、过期策略、检索不准确）。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "1h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase3-lesson-58",
+      "lessonTitle": "部署 + LangGraph 状态图 + LangSmith Trace + Demo URL",
+      "phase": 3,
+      "tasks": [
+        {
+          "title": "用 LangGraph 构建 Multi-Agent 状态图",
+          "description": "用 LangGraph StateGraph 定义至少 3 个 Agent 节点（如 Router、RAG Agent、Summary Agent），配置条件路由和 Checkpointing。",
+          "reviewType": "manual-review",
+          "storyPoints": 4,
+          "submissionType": "link",
+          "estimatedTime": "3h"
+        },
+        {
+          "title": "导出 LangGraph 状态图可视化",
+          "description": "生成 LangGraph 状态图的可视化图片，标注每个节点的职责、边的条件、状态流转。确保图中能看到所有关键路径。",
+          "reviewType": "ai-review",
+          "storyPoints": 1,
+          "submissionType": "screenshot",
+          "estimatedTime": "30min"
+        },
+        {
+          "title": "LangSmith 完整 Multi-Agent Trace",
+          "description": "在 LangSmith 中运行 3 个覆盖不同路由路径的查询，截图展示完整的 Multi-Agent Trace，包括节点间的状态传递和每步耗时。",
+          "reviewType": "manual-review",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "部署并提交 Demo URL",
+          "description": "将 Multi-Agent RAG 系统部署到云端（如 Railway、Render、AWS），确保 Demo URL 可公开访问。提交 URL 并附上简短的使用说明。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "link",
+          "estimatedTime": "2h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase3-lesson-62",
+      "lessonTitle": "ISA MCP Server (3 Tools)",
+      "phase": 3,
+      "tasks": [
+        {
+          "title": "搭建 TypeScript MCP Server 骨架",
+          "description": "用 @modelcontextprotocol/sdk 初始化一个 TypeScript MCP Server 项目，配置好 transport（stdio/SSE）、基本的 server info 和 capabilities 声明。",
+          "reviewType": "auto-check",
+          "storyPoints": 2,
+          "submissionType": "link",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "实现 3 个 MCP Tools",
+          "description": "为 ISA 项目实现 3 个 MCP Tools（如：search_knowledge_base、get_user_profile、generate_summary）。每个 Tool 需要完整的 JSON Schema 定义和实现。",
+          "reviewType": "manual-review",
+          "storyPoints": 4,
+          "submissionType": "link",
+          "estimatedTime": "3h"
+        },
+        {
+          "title": "集成 Claude Code 测试",
+          "description": "在 Claude Code 的 MCP 配置中添加你的 Server，测试 3 个 Tools 是否能正常被调用。截图展示 Claude Code 成功调用每个 Tool 的结果。",
+          "reviewType": "manual-review",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "撰写 MCP Server README",
+          "description": "写一个标准的 MCP Server README：包含安装步骤、配置方法、支持的 Tools 列表和参数说明、使用示例。格式参考 MCP 官方模板。",
+          "reviewType": "ai-review",
+          "storyPoints": 1,
+          "submissionType": "text",
+          "estimatedTime": "30min"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase3-lesson-63",
+      "lessonTitle": "Production Agent 部署方案",
+      "phase": 3,
+      "tasks": [
+        {
+          "title": "Production Checklist 评估",
+          "description": "用 Production Agent Checklist 逐项评估你的 ISA Agent：监控（LangSmith）、Rate Limiting、Guardrails、HITL、Cost Tracking。标注每项的完成状态和改进计划。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "配置 Guardrails（Input + Output）",
+          "description": "为 ISA Agent 添加 Input Guardrails（Prompt Injection 检测、PII 过滤）和 Output Guardrails（幻觉检测、格式验证）。用代码或配置文件实现。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "link",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "设计监控告警方案",
+          "description": "定义 Agent 的关键指标（延迟 P99、错误率、Token 使用量、工具调用成功率）和告警阈值。画出监控 dashboard 的 mockup 或配置 CloudWatch/LangSmith 告警。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "撰写 Production 部署方案文档",
+          "description": "写一份完整的部署方案：架构图、技术选型（部署平台、CI/CD、日志）、扩容策略、回滚方案、成本预估。1-2 页 A4。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "file",
+          "estimatedTime": "2h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase4-lesson-69",
+      "lessonTitle": "ISA Model Routing + 成本报告",
+      "phase": 4,
+      "tasks": [
+        {
+          "title": "部署 Open-Weight 模型",
+          "description": "用 vLLM 或 Ollama 在本地/云端部署一个 Open-Weight 模型（如 Qwen 3.5 7B 或 DeepSeek）。记录部署步骤、GPU 显存占用、首次推理延迟。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "screenshot",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "实现 Model Router",
+          "description": "构建一个 Model Router：简单问题路由到小模型（如 Qwen 7B），复杂问题路由到大模型（如 GPT-4o）。Router 基于问题复杂度评分决策。",
+          "reviewType": "manual-review",
+          "storyPoints": 4,
+          "submissionType": "link",
+          "estimatedTime": "3h"
+        },
+        {
+          "title": "运行 50 个测试查询收集数据",
+          "description": "准备 50 个测试查询（简单/中等/复杂各占比），通过 Model Router 运行，记录每次的模型选择、延迟、Token 数、成本。",
+          "reviewType": "auto-check",
+          "storyPoints": 2,
+          "submissionType": "file",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "撰写成本分析报告",
+          "description": "基于测试数据，计算纯 GPT-4o 方案 vs Model Routing 方案的月成本对比（假设日均 1000 查询）。分析质量损失和成本节省的 trade-off。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "1h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase4-lesson-76",
+      "lessonTitle": "ISA Embedding 微调 + MTEB 评测",
+      "phase": 4,
+      "tasks": [
+        {
+          "title": "准备 Embedding 微调数据集",
+          "description": "从 ISA 知识库中生成训练数据：至少 200 对 (query, positive_passage) 和 200 对 (query, negative_passage)。确保覆盖 ISA 的核心领域。",
+          "reviewType": "ai-review",
+          "storyPoints": 3,
+          "submissionType": "file",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "用 Sentence Transformers 微调 Embedding",
+          "description": "选择一个基础 Embedding 模型（如 bge-base-en），用 Contrastive Loss 或 Triplet Loss 微调。记录训练参数（epochs、batch size、learning rate）和 loss 曲线。",
+          "reviewType": "manual-review",
+          "storyPoints": 4,
+          "submissionType": "link",
+          "estimatedTime": "3h"
+        },
+        {
+          "title": "MTEB 评测对比",
+          "description": "用 MTEB benchmark 评测微调前后的 Embedding 模型。对比 Retrieval、STS、Classification 等任务的分数变化。用表格展示结果。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "ISA RAG 检索质量对比",
+          "description": "将微调后的 Embedding 替换到 ISA 的 RAG 系统中，用 10 个测试查询对比检索结果的相关性。记录 Recall@5 和 MRR 的变化。",
+          "reviewType": "manual-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "1h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase4-lesson-80",
+      "lessonTitle": "Fine-Tuning 报告 + HuggingFace 发布",
+      "phase": 4,
+      "tasks": [
+        {
+          "title": "用 QLoRA + Unsloth 微调 LLM",
+          "description": "在 Google Colab 上用 Unsloth + QLoRA 微调一个 7B 模型（如 Llama 4 Scout 或 Qwen 3.5）。训练 3 epochs，记录 loss 曲线和训练时间。",
+          "reviewType": "manual-review",
+          "storyPoints": 4,
+          "submissionType": "link",
+          "estimatedTime": "3h"
+        },
+        {
+          "title": "评估微调效果",
+          "description": "用 10 个测试 prompt 对比微调前后模型的输出质量。从准确性、格式遵循、领域知识 3 个维度打分（1-5 分），计算平均提升。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "text",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "合并 LoRA 权重并导出",
+          "description": "将 LoRA adapter 合并到基础模型，导出为 safetensors 格式。验证合并后的模型能正常推理。记录导出文件大小。",
+          "reviewType": "auto-check",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "发布到 HuggingFace Hub",
+          "description": "将微调模型上传到 HuggingFace Hub。填写完整的 Model Card：训练数据描述、超参数、评估结果、使用示例、License。提交 HuggingFace 模型页面链接。",
+          "reviewType": "manual-review",
+          "storyPoints": 2,
+          "submissionType": "link",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "撰写 Fine-Tuning 完整报告",
+          "description": "总结整个微调过程：数据准备、训练配置、评估结果、成本（GPU 时间和费用）、结论和改进方向。1-2 页 A4。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "file",
+          "estimatedTime": "1h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase4-lesson-81",
+      "lessonTitle": "ISA Eval Pipeline + 基线/优化分数",
+      "phase": 4,
+      "tasks": [
+        {
+          "title": "设计 Eval 数据集（30+ 条）",
+          "description": "为 ISA 系统创建至少 30 条评测数据，每条包含 query、expected_answer、ground_truth_context。覆盖简单/中等/困难三个难度级别。",
+          "reviewType": "ai-review",
+          "storyPoints": 3,
+          "submissionType": "file",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "构建自动化 Eval Pipeline",
+          "description": "用 RAGAS 或 DeepEval 构建自动化评估 Pipeline，包含 4 个核心指标：Faithfulness、Answer Relevancy、Context Precision、Context Recall。一键运行出分数。",
+          "reviewType": "manual-review",
+          "storyPoints": 4,
+          "submissionType": "link",
+          "estimatedTime": "3h"
+        },
+        {
+          "title": "运行基线评估并记录分数",
+          "description": "用当前 ISA 版本运行一次完整评估，记录 4 个指标的基线分数。分析哪个指标最弱、可能的原因是什么。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "screenshot",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "优化并对比分数提升",
+          "description": "针对最弱指标做至少一次优化（如改 Chunking 策略、调 Prompt、换 Reranker），重新运行 Eval Pipeline。用对比表展示基线分数 vs 优化后分数。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "text",
+          "estimatedTime": "2h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase4-lesson-82",
+      "lessonTitle": "Safety 报告 + Guardrails 配置",
+      "phase": 4,
+      "tasks": [
+        {
+          "title": "执行 10 种攻击测试",
+          "description": "对 ISA 系统执行 10 种 Red-team 攻击（Prompt Injection、Jailbreak、PII 泄露、角色扮演绕过等），记录每种攻击的输入、系统响应、是否成功。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "text",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "配置 Input Guardrails",
+          "description": "用 Guardrails AI 或 NeMo Guardrails 配置输入防护：Prompt Injection 检测、PII 过滤、话题边界控制。确保攻击测试中的 Input 类攻击被拦截。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "link",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "配置 Output Guardrails",
+          "description": "配置输出防护：幻觉检测（事实性验证）、PII 脱敏、有害内容过滤、格式合规检查。用 5 个测试用例验证 Output Guardrails 生效。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "link",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "撰写 Safety 评估报告",
+          "description": "总结 Red-team 测试结果和 Guardrails 配置：攻击成功率（配置前 vs 配置后）、Guardrails 的误拦截率、EU AI Act 合规性自查。1-2 页 A4。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "file",
+          "estimatedTime": "1h"
+        }
+      ]
+    },
+    {
+      "lessonId": "phase4-lesson-86",
+      "lessonTitle": "P3 项目交付物：GitHub 仓库 + Demo URL + 技术文档 + Case Study",
+      "phase": 4,
+      "tasks": [
+        {
+          "title": "GitHub 仓库整理",
+          "description": "整理 P3 项目 GitHub 仓库：清理 commit 历史、完善 .gitignore、添加 LICENSE、确保 README 包含项目简介/架构图/安装步骤/使用方法。",
+          "reviewType": "manual-review",
+          "storyPoints": 2,
+          "submissionType": "link",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "部署 Demo 并提交 URL",
+          "description": "将 P3 项目部署到可公开访问的环境。确保 Demo URL 稳定可用，加载时间 < 5 秒，主要功能都能正常演示。附上简短使用指南。",
+          "reviewType": "manual-review",
+          "storyPoints": 3,
+          "submissionType": "link",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "撰写技术架构文档",
+          "description": "写一份技术文档：系统架构图、技术选型及理由、核心模块说明、数据流、API 设计、部署架构、性能指标。2-3 页 A4。",
+          "reviewType": "ai-review",
+          "storyPoints": 3,
+          "submissionType": "file",
+          "estimatedTime": "2h"
+        },
+        {
+          "title": "撰写 Case Study",
+          "description": "写一份面向面试官的 Case Study：项目背景和问题、技术方案选择、实现过程中的挑战和解决、量化成果（性能指标、用户反馈）、个人贡献。1 页 A4。",
+          "reviewType": "ai-review",
+          "storyPoints": 2,
+          "submissionType": "file",
+          "estimatedTime": "1h"
+        },
+        {
+          "title": "准备 10 分钟 Demo Day 演示",
+          "description": "准备 Demo Day 演示：10 分钟 Live Demo 脚本（问题引入 → 架构讲解 → 功能演示 → 技术亮点 → 未来规划）。确保演示流畅、覆盖核心功能。",
+          "reviewType": "self-check",
+          "storyPoints": 3,
+          "submissionType": "text",
+          "estimatedTime": "2h"
+        }
+      ]
+    }
+  ]
+}
