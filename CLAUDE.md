@@ -4,6 +4,57 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
+## 核心定位：AI 驱动课程管理的内容创作区
+
+**curriculum/ 是所有 Bootcamp 课程内容的 source of truth。** Claude AI 是课程的主要创建者和管理者。
+
+### 为什么用 AI 管理课程
+
+1. **Production 数据质量差** — 之前人工创建的课程描述粗糙、内容不完整
+2. **人工调整大纲难度大** — 重新排列 lesson 顺序、拆分合并课时，人工操作复杂易错
+3. **AI 能整合平台资源** — Claude 自动匹配并绑定已有的 Lab、Wiki、Learn 章节、Roadmap 等，课程质量大幅提升
+4. **自动化全链路** — 从创建到同步全部由 AI 完成，人只做最终确认
+
+### 完整工作流
+
+```
+Step 1: Claude 在 curriculum/{bootcamp}/ 创建/修改课程内容
+        - outline.json = 唯一数据源
+        - 静态 HTML 页面 = 对外展示 + 内部参考
+        ↓
+Step 2: 本地预览确认（python3 -m http.server）
+        ↓
+Step 3: 转为 JSON → skills-data/training-outlines/{bootcamp}.json
+        ↓
+Step 4: Skills Data Manager (localhost:5188/bootcamp) Check Diff 对比
+        ↓
+Step 5: 确认无误 → Sync 同步到 production
+```
+
+### 相关 Skills（批量管理课程）
+
+| Skill | 用途 |
+|-------|------|
+| `/bootcamp-curriculum-creator` | 从零创建完整 Bootcamp（市场调研→大纲→内容→页面） |
+| `/bootcamp-sync` | 从 curriculum/ 同步到 production |
+| `/curriculum-review` | 审查课程大纲完整性 |
+| `/lesson-design` | 设计单节 Lesson |
+| `/expand-outline` | 简单大纲扩展为完整课程 |
+
+### 相关工具和文档
+
+| 文件 | 说明 |
+|------|------|
+| `curriculum/OUTLINE_JSON_FORMAT.md` | **outline.json 格式规范（核心数据格式）** |
+| `curriculum/WORKFLOW.md` | **通用工作流（所有 Bootcamp 适用，含后端数据模型）** |
+| `curriculum/BOOTCAMP_AUTOMATION_STATUS.md` | **全局状态 & 缺口分析（必读）** |
+| `curriculum/{bootcamp}/WORKFLOW.md` | 该课程特有的 production ID 和状态 |
+| `tools/skills-data-manager/` | 同步操作台（localhost:5188） |
+| `tools/skills-data-manager/BOOTCAMP_GUIDE.md` | Bootcamp 开发踩坑指南 |
+| `curriculum/{bootcamp}/BOOTCAMP_MANAGER_PRD.md` | Bootcamp Manager PRD（⚠️ 部分实现） |
+
+---
+
 ## 给运营 / Marketing 同事的快速指南
 
 你不需要懂代码！直接用中文告诉 Claude 你想做什么就行。以下是你最常用的命令：
@@ -36,6 +87,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 发布后等 2-3 分钟线上才会更新
 - 如果不确定改对没有，先用 `/preview` 本地看看
 - **不要删除已有内容**，只加不减
+
+---
+
+## 🚨 Lesson 两个内容字段的区别
+
+后端 Lesson Schema (`jr-academy/src/models/lesson.schema.ts`) 有两个容易混淆的内容字段：
+
+| | `description` | `learningMaterial.content` |
+|---|---|---|
+| **用途** | 对外销售/列表展示的短文案 | 学生端看到的正式教学内容 |
+| **展示位置** | 课程列表页、大纲页、SEO | 学生端课程详情页 |
+| **内容格式** | 纯文本，1-2 句话 | Tiptap JSON/HTML 富文本（Notion 模式编辑） |
+| **编辑方式** | Admin 表单 | Admin Tiptap 编辑器 |
+| **举例** | "学会打开浏览器、用搜索引擎" | 完整操作步骤、截图、代码、知识点 |
+
+**outline.json 中的映射：**
+- `lesson.description` → 对应后端 `description`（销售短文案）
+- `lesson.steps[]` → 对应后端 `learningMaterial.content`（需要转成 Tiptap 格式上传）
+
+**绝对不要把这两个搞混。** description 写得再详细也不会出现在学生端教学页面。
 
 ---
 

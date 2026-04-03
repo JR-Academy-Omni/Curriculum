@@ -1,5 +1,15 @@
 # PRD: AI Essentials Bootcamp 课程管理（Skills Data Manager 扩展）
 
+> ⚠️ **状态：部分实现** (截至 2026-04-01)
+>
+> - ✅ 已实现：基础的 Bootcamp 列表、Check Diff、Sync 功能（`tools/skills-data-manager/server/bootcamp.ts` + `server/courses.ts`）
+> - ✅ 已实现：安全检查（`bootcamp-safety.ts`）
+> - ❌ 未实现：Lesson 详情页 + 绑定管理 UI（Feature 3）
+> - ❌ 未实现：从 outline.json 一键创建完整课程（Feature 1 的自动化部分）
+> - ❌ 未实现：内容缩减检测 UI（Feature 4 的前端部分）
+>
+> 当前课程同步主要通过 Claude AI + `/bootcamp-sync` skill 手动执行，不是本 PRD 描述的全自动 UI。
+
 ## 背景
 
 AI 必修课（ai-essentials-bootcamp）的课程大纲已在 `curriculum/ai-essentials-bootcamp/public/outline.html` 中设计完成（16 Lessons, 98 Steps, 4 Phases）。现在需要将这个课程从本地静态页面 **同步到生产环境**（创建 Training、Program、Syllabus、Lessons），并通过 Skills Data Manager 持续管理。
