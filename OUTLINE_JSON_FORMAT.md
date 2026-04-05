@@ -238,3 +238,26 @@
 4. `level` 必须是中文（零基础/初级/中级/中级进阶/高级）
 5. `labs[].source` 必须对应前端已有的 Lab 配置目录
 6. `learns[].direction` 必须对应已有的 Learn 方向
+
+---
+
+## 课程页面 iframe 嵌入
+
+课程详情页 (`/program-course/{slug}`) 的 Curriculum section 会通过 iframe 嵌入 `curriculum/{slug}/public/` 下的静态 HTML 页面。
+
+**配置位置：** `jr-academy-web-zh/src/components/Pages/BootcampDetailPage/components/BootcampDetailPageIntroduce/IntroduceSyllabus.tsx` 的 `CURRICULUM_SLUGS`
+
+```typescript
+const CURRICULUM_SLUGS = {
+    'ai-essentials-bootcamp': {
+        pages: ['outline.html', 'curriculum.html', 'phase0.html', ...],
+        defaultPage: 'outline.html',
+    },
+};
+```
+
+**添加新课程：** 在 `CURRICULUM_SLUGS` 里加一行，确保对应的 HTML 文件已部署到 `jiangren.com.au/curriculum/{slug}/`。
+
+**页面分类：**
+- **学生端页面**（加到 `pages` 数组）：outline.html, curriculum.html, phase*.html, learning-plan.html
+- **内部页面**（不加到 `pages`）：internal.html

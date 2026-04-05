@@ -1,6 +1,6 @@
 # Bootcamp 课程自动化管理 — 全局状态 & 缺口分析
 
-> 最后更新：2026-04-01
+> 最后更新：2026-04-05
 
 ---
 
@@ -14,29 +14,33 @@
 │                                                     │
 │  /bootcamp-curriculum-creator  从零创建完整课程        │
 │  /career-bootcamp              给岗位自动生成课程      │
-│  /bootcamp-plan                规划新课程流程          │
-│  /bootcamp-research            市场调研竞品分析        │
+│  /bootcamp-description-enhancer 升级课程描述           │
+│  /bootcamp-learning-material-generator 生成学习资料   │
 │  /lesson-design                设计单节 Lesson        │
-│  /expand-outline               大纲扩展为完整课程      │
 │  /curriculum-review            审查大纲完整性          │
 │                                                     │
 │         ↓ 输出到                                     │
 │                                                     │
-│  curriculum/{bootcamp}/                              │
-│  ├── outline.json    ← 唯一数据源                    │
-│  ├── *.html          ← 静态展示页面                   │
-│  └── WORKFLOW.md     ← 状态追踪                      │
+│  curriculum/{bootcamp}/public/                       │
+│  ├── outline.json     ← 唯一数据源（含 Training 配置）│
+│  │                                                   │
+│  │   学生端页面（嵌入 program-course iframe）          │
+│  ├── outline.html     ← 完整大纲（默认展示）           │
+│  ├── curriculum.html  ← 课程总览                      │
+│  ├── phase0~N.html    ← Phase 详情                   │
+│  ├── learning-plan.html ← 学习计划                    │
+│  │                                                   │
+│  │   内部页面（不对学生展示）                          │
+│  └── internal.html    ← 课程大纲管理（配置/缺失/TODO）  │
 │                                                     │
-│         ↓ 转换                                       │
-│                                                     │
-│  skills-data/training-outlines/{bootcamp}.json       │
-│                                                     │
-│         ↓ 对比 + 同步                                │
+│         ↓ Diff + Sync                                │
 │                                                     │
 │  Skills Data Manager (localhost:5188/bootcamp)       │
-│  ├── Check Diff     对比 local vs production         │
-│  ├── Sync           一键同步到 production             │
-│  └── Version        版本管理                         │
+│  ├── 详情页    查看 Training 配置 + Lesson 内容        │
+│  ├── Check Diff  对比 local vs production             │
+│  ├── Sync        推送 Training + Lesson 变更          │
+│  ├── Download    备份 production 数据                  │
+│  └── Versions    版本管理                             │
 │                                                     │
 │         ↓ 调用 API                                   │
 │                                                     │
@@ -45,116 +49,152 @@
 │                                                     │
 │         ↓ 用户看到                                    │
 │                                                     │
-│  jr-academy-web-zh 前端课程页面                       │
+│  /program-course/{slug}                              │
+│  ├── 课程详情页（从 production 读取）                   │
+│  └── Curriculum section iframe（嵌入学生端 HTML 页面）  │
 └─────────────────────────────────────────────────────┘
 ```
 
 ---
 
+## 标准文件结构
+
+每个 Bootcamp 在 `curriculum/{slug}/public/` 下应该有以下文件：
+
+### 数据源
+
+| 文件 | 必须 | 说明 |
+|------|:---:|------|
+| `outline.json` | ✅ | 唯一数据源，包含 Training 配置 + Phase/Lesson 结构 + Program 配置 |
+
+### 学生端页面（嵌入 program-course iframe）
+
+| 文件 | 必须 | 说明 |
+|------|:---:|------|
+| `outline.html` | ✅ | 完整大纲 — 每节课的教学步骤、Lab、Learn（iframe 默认展示） |
+| `curriculum.html` | ✅ | 课程总览 — Phase 卡片、亮点、统计数据 |
+| `phase0.html ~ phaseN.html` | ✅ | 各 Phase 详情 — 每节课的学习路径 |
+| `learning-plan.html` | 建议 | 学习计划 — 每周学什么、怎么安排节奏 |
+| `styles.css` | ✅ | 共享样式 |
+
+### 内部页面（运营/老师/开发用，不嵌入 iframe）
+
+| 文件 | 必须 | 说明 |
+|------|:---:|------|
+| `internal.html` | ✅ | 课程大纲管理 — 每节课的配置状态、缺失内容、TODO、Production IDs |
+
+### iframe 配置
+
+学生端页面通过 iframe 嵌入 `/program-course/{slug}` 课程详情页的 Curriculum section。
+
+**配置位置：** `jr-academy-web-zh/.../IntroduceSyllabus.tsx` 的 `CURRICULUM_SLUGS` 对象。
+
+```typescript
+const CURRICULUM_SLUGS = {
+    'ai-essentials-bootcamp': {
+        pages: ['outline.html', 'curriculum.html', 'phase0.html', ...],
+        defaultPage: 'outline.html',
+    },
+};
+```
+
+添加新课程：在此对象加一行 + 确保 HTML 已部署到 `jiangren.com.au/curriculum/{slug}/`。
+
+---
+
 ## 各 Bootcamp 当前状态
 
-| Bootcamp | 目录 | outline.json | 静态页面 | Production 同步 | 阻塞项 |
-|----------|------|:---:|:---:|:---:|------|
-| AI 必修课 | `ai-essentials-bootcamp/` | ✅ 33 lessons | ✅ 全部 | ✅ 已同步 | learningMaterial 未填充 |
-| AI Adoption Specialist | `ai-adoption-bootcamp/` | ❌ **缺失** | ✅ 有 | ❌ 未同步 | **必须先创建 outline.json** |
-| AI Engineer | `ai-engineer-bootcamp/` | ❌ **缺失** | ✅ 有 | ⚠️ 部分 | **必须先创建 outline.json** |
+| Bootcamp | 目录 | outline.json | 学生端页面 | internal.html | Production | iframe |
+|----------|------|:---:|:---:|:---:|:---:|:---:|
+| AI 必修课 | `ai-essentials-bootcamp/` | ✅ 33 lessons | ✅ 8 页 | ✅ 已更新 | ✅ 全量同步 | ✅ 已配置 |
+| AI Adoption | `ai-adoption-bootcamp/` | ❌ **缺失** | ✅ 8 页 | ✅ 有（旧） | ❌ 未同步 | ✅ 已配置（但无 outline.json 无法 sync） |
+| AI Engineer | `ai-engineer-bootcamp/` | ❌ **缺失** | ✅ 9 页 | ✅ 有（旧） | ⚠️ 部分 | ✅ 已配置（同上） |
+
+### AI 必修课详情
+
+| 层级 | 字段 | 状态 |
+|------|------|:---:|
+| Training | description (3099字 HTML) | ✅ |
+| Training | description_en (1016字 HTML) | ✅ |
+| Training | highlights/features (6+6) | ✅ |
+| Training | faqs (8条) | ✅ |
+| Training | bootcampSections (11个) | ✅ |
+| Training | syllabusesToDisplay + showPrograms | ✅ |
+| Training | thumbnail / heroVideo | ❌ 缺 |
+| Training | teachers / tutors | ❌ 缺 |
+| Training | pricingOptions | ❌ 缺 |
+| Program | 日期/状态/定价 | ✅ |
+| Lesson ×33 | description (HTML 800+字) | ✅ 33/33 |
+| Lesson ×33 | learningMaterial (2000+字) | ✅ 33/33 |
+| Lesson ×33 | title_en | ✅ 33/33 |
+| Lesson ×33 | knowledge | ✅ 33/33 |
+| Lesson ×33 | learnChapterSlugs | ✅ 31/33 |
+| Lesson ×33 | Lab 绑定 | ✅ 33/33 (含 4 个新建 Lab) |
+| Lesson ×33 | Module 绑定 | ✅ 33/33 |
 
 ---
 
 ## Skills 实现状态
 
-| Skill | SKILL.md 设计 | 实际可用 | 说明 |
-|-------|:---:|:---:|------|
-| `/bootcamp-curriculum-creator` | ✅ 390 行详细设计 | ⚠️ 仅文档 | Claude 可以按文档执行，但没有自动化脚本 |
-| `/career-bootcamp` | ✅ 279 行详细设计 | ⚠️ 仅文档 | 同上 |
-| `/bootcamp-plan` | ✅ 41 行设计 | ⚠️ 仅文档 | 编排器，调用其他 skill |
-| `/bootcamp-research` | ✅ 42 行设计 | ⚠️ 仅文档 | 需要 WebSearch |
-| `/bootcamp-sync` | ✅ 324 行设计 | ⚠️ 部分 | server/bootcamp.ts 有部分实现 |
-| `/curriculum-review` | ✅ 81 行设计 | ⚠️ 仅 checklist | 不是可执行代码 |
-| `/lesson-design` | ✅ 157 行设计 | ⚠️ 仅文档 | 有完整示例 |
-| `/expand-outline` | ❓ 未检查 | ❓ | 需要确认 |
-
-**说明：** 所有 skill 的 SKILL.md 设计质量都很高，Claude 可以直接按照 SKILL.md 的指令执行。"仅文档"不代表不能用 — Claude 读了 SKILL.md 就能执行对应操作。但缺少自动化脚本意味着每次都依赖 Claude 手动理解和执行。
+| Skill | 用途 | 状态 |
+|-------|------|:---:|
+| `/bootcamp-curriculum-creator` | 从零创建完整课程 | ✅ SKILL.md 完整，Claude 可执行 |
+| `/career-bootcamp` | 给岗位自动生成课程 | ✅ 同上 |
+| `/bootcamp-sync` | 同步到 production | ✅ **SDM 端点已实现**（diff + sync Training + Lesson） |
+| `/bootcamp-description-enhancer` | 升级课程描述为 HTML | ✅ SKILL.md + 已在 AI 必修课验证 |
+| `/bootcamp-learning-material-generator` | 生成学习资料 | ✅ SKILL.md + 已在 AI 必修课验证 |
+| `/curriculum-review` | 审查大纲完整性 | ⚠️ checklist 模式 |
+| `/lesson-design` | 设计单节 Lesson | ✅ SKILL.md 完整 |
+| `/bootcamp-plan` | 规划新课程 | ⚠️ 轻量 |
+| `/bootcamp-research` | 市场调研 | ⚠️ 轻量 |
+| `/expand-outline` | 大纲扩展 | ⚠️ 轻量 |
 
 ---
 
-## 关键缺口（按优先级排序）
+## 关键缺口
 
-### P0 — 阻塞性问题（必须立即解决）
+### P0 — 阻塞性
 
-| # | 缺口 | 影响 | 解决方案 |
-|---|------|------|---------|
-| 1 | ai-adoption-bootcamp 缺少 outline.json | 无法同步到 production | Claude 从现有 HTML 页面反推生成 outline.json |
-| 2 | ai-engineer-bootcamp 缺少 outline.json | 无法同步到 production | 同上，且有 kanban-tasks JSON 可参考 |
-| 3 | Skills Data Manager diff 功能不完整 | 无法对比 lesson 内容级别差异 | ✅ 已修复（本次对话） |
-
-### P1 — 重要缺口（影响课程质量）
-
-| # | 缺口 | 影响 | 解决方案 |
-|---|------|------|---------|
-| 4 | ai-essentials-bootcamp learningMaterial 为空 | 学生看不到教学内容 | 从 phase 页面 HTML 提取，通过 API 填充 |
-| 5 | Skills Data Manager 不能从 curriculum/ 直接读取 | 需要手动转换 JSON | 加 /api/bootcamps/{slug}/import-from-curriculum 端点 |
-| 6 | 没有自动化的 curriculum → training-outlines 转换 | 每次同步需手动转 | 在 bootcamp-sync 或 SDM 中实现自动转换 |
-
-### P2 — 功能增强（提升效率）
-
-| # | 缺口 | 影响 | 解决方案 |
-|---|------|------|---------|
-| 7 | curriculum-review 只是 checklist 不是可执行代码 | 每次审查靠 Claude 手动看 | 转为自动化检测脚本 |
-| 8 | 没有平台资源自动发现 | Claude 每次需要手动查 Lab/Learn 列表 | 加 /api/platform-resources 端点汇总所有可用资源 |
-| 9 | 没有批量课程管理视图 | 管理多个 bootcamp 效率低 | SDM Bootcamp 页面加汇总统计 |
-
-### P3 — 未来规划
-
-| # | 缺口 | 说明 |
+| # | 缺口 | 影响 |
 |---|------|------|
-| 10 | Phase 解锁测试系统 | BOOTCAMP_GUIDE.md 有方案但未实现 |
-| 11 | Kanban 任务自动化 | ai-engineer 有手动 JSON，未集成到平台 |
-| 12 | P3 职业孵化器 | career-bootcamp skill 设计了但后端无支持 |
+| 1 | ai-adoption-bootcamp 缺 outline.json | 无法 sync 到 production、无法用 SDM 管理 |
+| 2 | ai-engineer-bootcamp 缺 outline.json | 同上 |
+
+### P1 — 重要
+
+| # | 缺口 | 影响 |
+|---|------|------|
+| 3 | AI 必修课缺 thumbnail / heroVideo | 课程页面顶部空白 |
+| 4 | AI 必修课缺 teachers / pricingOptions | 无法显示老师和价格卡片 |
+| 5 | ai-adoption / ai-engineer 的 internal.html 过时 | 内部管理数据不准确 |
+
+### P2 — 增强
+
+| # | 缺口 | 影响 |
+|---|------|------|
+| 6 | Phase 解锁测试系统未实现 | 无法按 Phase 考试解锁 |
+| 7 | Kanban 任务系统未集成 | ai-engineer 有手动 JSON |
 
 ---
 
-## 平台可整合资源清单
+## 推荐执行顺序
 
-Claude 在创建/优化课程时可以自动整合的已有资源：
+1. **给 ai-adoption-bootcamp 和 ai-engineer-bootcamp 生成 outline.json** → 用 `/bootcamp-curriculum-creator` 从现有 HTML 反推
+2. **更新这两个课程的 internal.html** → 同 ai-essentials 格式
+3. **AI 必修课补充 thumbnail + heroVideo** → 设计素材
+4. **AI 必修课绑定 teachers + pricingOptions** → 需要 ObjectId
+
+---
+
+## 平台可整合资源
 
 | 资源类型 | 数量 | 配置位置 |
 |----------|------|---------|
-| Prompt Lab | 35+ | `jr-academy-web-zh/src/config/prompt-labs/` |
-| LLM Lab | 18+ | `jr-academy-web-zh/src/config/llm-labs/` |
+| Prompt Lab | 38+ | `jr-academy-web-zh/src/config/prompt-labs/` |
+| LLM Lab | 23+ | `jr-academy-web-zh/src/config/llm-labs/` |
 | Python Lab | 37+ | `jr-academy-web-zh/src/config/python-labs/` |
 | AWS Lab | 44+ | `jr-academy-web-zh/src/config/aws-labs/` |
 | Azure Lab | 31+ | `jr-academy-web-zh/src/config/azure-labs/` |
 | Git Lab | 12+ | `jr-academy-web-zh/src/config/git-labs/` |
 | Frontend Lab | 70+ | `jr-academy-web-zh/src/config/labs/` |
 | Learn 章节 | 277+ | `jr-academy-web-zh/src/config/learn/directions/` |
-| Videos | 大量 | `/videos` 路由 |
-| Wiki 文章 | 大量 | `/wiki` 路由 |
-| Roadmaps | 多个 | `/roadmaps` 路由 |
-| Free Resources | 大量 | `/free-resources` 路由 |
-
----
-
-## 推荐执行顺序
-
-### 本周
-
-1. **给 ai-adoption-bootcamp 和 ai-engineer-bootcamp 生成 outline.json**
-   - 用 `/bootcamp-curriculum-creator` 或手动从 HTML 反推
-   - 验证和现有页面内容一致
-
-2. **填充 ai-essentials-bootcamp 的 learningMaterial**
-   - 从 phase 页面提取教学内容
-   - 通过 admin-cms API 批量更新
-
-### 本月
-
-3. **实现 curriculum → training-outlines 自动转换**
-4. **升级 Skills Data Manager diff 显示**（已开始）
-5. **把 curriculum-review 从 checklist 转为自动检测**
-
-### 下月
-
-6. **实现 Phase 解锁测试**
-7. **批量课程管理视图**
-8. **平台资源自动发现 API**

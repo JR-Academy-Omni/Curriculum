@@ -140,25 +140,54 @@ Step 6: 从 production 下载最新数据验证
 curriculum/{bootcamp}/
 ├── public/
 │   ├── outline.json          ← 结构化数据源（唯一 source of truth）
-│   ├── outline.html          ← 完整大纲页（每个 lesson 的 step 序列）
-│   ├── curriculum.html       ← 课程总览页（对外展示）
-│   ├── phase0.html ~ phaseN.html  ← 各 Phase 详情
-│   ├── learning-plan.html    ← 学习计划
-│   ├── internal.html         ← 内部资料（Lab 映射、统计等）
+│   │
+│   │   === 学生端页面（嵌入 program-course 详情页 iframe）===
+│   ├── outline.html          ← 完整大纲（33 节课的 step 序列，学生看的主页面）
+│   ├── curriculum.html       ← 课程总览（Phase 概览、亮点、适合谁）
+│   ├── phase0.html ~ phaseN.html  ← 各 Phase 详情（每节课的学习路径）
+│   ├── learning-plan.html    ← 学习计划（每周学什么、怎么安排节奏）
+│   │
+│   │   === 内部页面（不对学生展示，运营/老师/开发用）===
+│   ├── internal.html         ← 内部资料（Lab 映射表、资源统计、缺失内容清单、定价建议）
+│   │
 │   └── styles.css
 ├── WORKFLOW.md               ← 该课程特有的状态和 production ID（可选）
 ├── BOOTCAMP_MANAGER_PRD.md   ← 该课程的 PRD（可选）
 └── ...（Vite/React slide deck 等）
 ```
 
+### 页面分类
+
+| 页面 | 受众 | 嵌入 iframe | 说明 |
+|------|------|:---:|------|
+| outline.html | **学生** | ✅ | 完整大纲，每节课的教学步骤、Lab、Learn 绑定 |
+| curriculum.html | **学生** | ✅ | 课程总览，Phase 卡片、亮点、数据统计 |
+| phase0-N.html | **学生** | ✅ | 各 Phase 的学习路径详情 |
+| learning-plan.html | **学生** | ✅ | 学习计划，每周安排建议 |
+| internal.html | **内部** | ❌ | Lab/Learn 映射表、资源缺失清单、定价、竞品分析、TODO 列表 |
+
+**iframe 配置位置：** `jr-academy-web-zh/src/components/Pages/BootcampDetailPage/components/BootcampDetailPageIntroduce/IntroduceSyllabus.tsx` 的 `CURRICULUM_SLUGS` 对象。
+
+### internal.html 应该包含什么
+
+internal.html 是给运营、老师、开发看的内部资料页，应该包含：
+
+1. **Lab / Learn 资源映射表** — 每节课绑了什么 Lab、什么 Learn 章节、状态（已绑定/TODO/缺失）
+2. **内容完成度看板** — description 完成率、learningMaterial 完成率、英文翻译完成率
+3. **Production 数据统计** — Training ID、Program ID、学员数、报名数
+4. **缺失内容 TODO 清单** — 哪些 Lab 需要创建、哪些 Learn 章节需要写、哪些字段为空
+5. **定价与竞品** — 当前定价、竞品对比、价格策略
+6. **老师/助教安排** — 直播课老师、辅导老师、答疑安排
+7. **Marketing 素材清单** — 封面图、视频、社交媒体文案状态
+
 ### 修改顺序
 
 1. **outline.json** — 改这里。这是唯一的数据源。
-2. **outline.html** — 从 outline.json 生成
+2. **outline.html** — 从 outline.json 生成（学生看的完整大纲）
 3. **curriculum.html** — 课程总览，数字要和 outline.json 一致
 4. **phase*.html** — 每个 Phase 的详细页面
 5. **learning-plan.html** — 学习节奏
-6. **internal.html** — Lab 映射表、统计
+6. **internal.html** — 内部资料（Lab 映射、TODO、定价、统计）
 
 ---
 
