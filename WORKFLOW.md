@@ -151,6 +151,7 @@ curriculum/{bootcamp}/
 │   ├── internal.html         ← 内部资料（Lab 映射表、资源统计、缺失内容清单、定价建议）
 │   │
 │   └── styles.css
+├── CHANGELOG.md              ← 该课程的变更记录（每次 AI 改了什么）
 ├── WORKFLOW.md               ← 该课程特有的状态和 production ID（可选）
 ├── BOOTCAMP_MANAGER_PRD.md   ← 该课程的 PRD（可选）
 └── ...（Vite/React slide deck 等）
