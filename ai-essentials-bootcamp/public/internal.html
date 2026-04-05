@@ -2,580 +2,594 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>内部资料 | AI 必修课 | JR Academy</title>
+<title>内部管理 | AI 必修课 | JR Academy</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-.dashboard { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px; margin-bottom:24px }
-.stat-card { border:2px solid #000; border-radius:8px; padding:16px; background:#fff; box-shadow:3px 3px 0 #000 }
-.stat-card .num { font-size:28px; font-weight:900; font-family:'Space Mono',monospace }
-.stat-card .label { font-size:12px; color:#666; margin-top:4px }
-.status-ok { color:#16a34a }
-.status-warn { color:#f59e0b }
-.status-bad { color:#ef4444 }
-.todo-item { padding:8px 12px; border-left:4px solid #ef4444; background:#fef2f2; margin-bottom:4px; font-size:12px }
-.done-item { padding:8px 12px; border-left:4px solid #16a34a; background:#f0fdf4; margin-bottom:4px; font-size:12px }
-table { width:100%; border-collapse:collapse; font-size:11px }
-th { padding:8px; text-align:left; border-bottom:2px solid #000; background:#f8f9fa; font-family:'Space Mono',monospace; white-space:nowrap }
-td { padding:6px 8px; border-bottom:1px solid #eee; vertical-align:top }
-tr:hover { background:#f8f9fa }
+.lesson-card { border:2px solid #000; border-radius:8px; margin-bottom:12px; background:#fff }
+.lesson-header { display:flex; align-items:center; gap:8px; padding:10px 14px; border-bottom:1px solid #eee; cursor:pointer }
+.lesson-header:hover { background:#f8f9fa }
+.lesson-code { font-family:'Space Mono',monospace; font-weight:900; font-size:12px; color:#666; min-width:32px }
+.lesson-type { font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px }
+.type-info { background:#dbeafe; color:#1e40af }
+.type-lab { background:#d1fae5; color:#065f46 }
+.type-live { background:#fee2e2; color:#991b1b }
+.lesson-title { font-weight:700; font-size:13px; flex:1 }
+.lesson-duration { font-size:11px; color:#666 }
+.lesson-body { padding:12px 14px; display:none; border-top:1px solid #eee }
+.lesson-card.open .lesson-body { display:block }
+.field-row { display:flex; gap:8px; margin-bottom:6px; font-size:11px; align-items:flex-start }
+.field-label { font-weight:700; min-width:100px; color:#666 }
+.field-value { flex:1 }
 .tag { display:inline-block; padding:1px 6px; font-size:9px; font-weight:700; border-radius:3px; margin:1px }
-.tag-lab { background:#d1fae5; color:#065f46 }
-.tag-learn { background:#e0e7ff; color:#3730a3 }
+.tag-ok { background:#d1fae5; color:#065f46 }
+.tag-missing { background:#fee2e2; color:#991b1b }
 .tag-todo { background:#fef3c7; color:#92400e }
-.tag-empty { background:#fee2e2; color:#991b1b }
-.progress-bar { height:8px; background:#e5e7eb; border-radius:4px; overflow:hidden }
-.progress-fill { height:100%; border-radius:4px }
-.section-nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px }
-.section-nav a { padding:4px 10px; font-size:11px; font-weight:700; border:2px solid #000; border-radius:6px; text-decoration:none; color:#000; background:#fff }
-.section-nav a:hover { background:#facc15 }
+.phase-header { background:#000; color:#fff; padding:12px 16px; font-weight:900; font-size:14px; border-radius:8px; margin:20px 0 12px; display:flex; justify-content:space-between }
+.todo-section { border:2px solid #ef4444; border-radius:8px; padding:16px; margin-bottom:20px; background:#fef2f2 }
+.todo-section h3 { margin:0 0 8px; font-size:14px; color:#991b1b }
+.todo-item { padding:4px 0; font-size:12px; border-bottom:1px solid #fecaca }
+.todo-item:last-child { border:none }
+.config-table { width:100%; border-collapse:collapse; font-size:12px }
+.config-table td { padding:6px 10px; border-bottom:1px solid #eee }
+.config-table td:first-child { font-weight:700; width:140px; color:#666 }
 </style>
+<script>
+function toggle(el) {
+  el.closest('.lesson-card').classList.toggle('open');
+}
+function expandAll() {
+  document.querySelectorAll('.lesson-card').forEach(c => c.classList.add('open'));
+}
+function collapseAll() {
+  document.querySelectorAll('.lesson-card').forEach(c => c.classList.remove('open'));
+}
+</script>
 </head>
 <body>
 
 <div class="header" style="padding:28px 0">
-  <h1 style="font-size:28px">🔒 内部资料 — AI 必修课</h1>
-  <div class="sub">最后更新: 2026-04-05 19:00 | 仅供内部使用，不对学生展示</div>
-  <div class="nav">
-    <a href="outline.html">← 完整大纲</a>
-    <a href="curriculum.html">课程概览</a>
+  <h1 style="font-size:24px">🔒 课程大纲管理 — AI 必修课</h1>
+  <div class="sub">内部使用 · 更新于 2026-04-05 · <a href="outline.html">学生版大纲</a> · <a href="curriculum.html">课程概览</a></div>
+  <div style="margin-top:8px">
+    <button onclick="expandAll()" style="padding:4px 10px;font-size:11px;font-weight:700;border:2px solid #000;border-radius:6px;cursor:pointer;background:#fff;margin-right:4px">展开全部</button>
+    <button onclick="collapseAll()" style="padding:4px 10px;font-size:11px;font-weight:700;border:2px solid #000;border-radius:6px;cursor:pointer;background:#fff">收起全部</button>
   </div>
 </div>
 
 <div class="c">
 
-<!-- Section Navigation -->
-<div class="section-nav">
-  <a href="#dashboard">数据看板</a>
-  <a href="#completion">完成度</a>
-  <a href="#todo">TODO 清单</a>
-  <a href="#mapping">资源映射表</a>
-  <a href="#program">Program 配置</a>
-  <a href="#pricing">定价</a>
-  <a href="#marketing">Marketing</a>
+<!-- Program 基本信息 -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+<div class="box" style="margin:0">
+  <div class="box-h"><strong>班次信息</strong></div>
+  <table class="config-table">
+    <tr><td>班次</td><td>AI 必修课 第一期</td></tr>
+    <tr><td>开课</td><td>2026-04-14</td></tr>
+    <tr><td>结课</td><td>2026-06-09</td></tr>
+    <tr><td>状态</td><td><strong>RECRUITING</strong></td></tr>
+    <tr><td>定价</td><td>¥999 / 促销 ¥499</td></tr>
+  </table>
+</div>
+<div class="box" style="margin:0">
+  <div class="box-h"><strong>待办事项</strong></div>
+  <div style="padding:10px;font-size:12px">
+<div class="todo-item">❌ 封面图 (thumbnail)</div>
+<div class="todo-item">❌ 宣传视频 (heroVideo)</div>
+<div class="todo-item">❌ 老师绑定 (teachers)</div>
+<div class="todo-item">❌ 定价方案 (pricingOptions)</div>
+<div class="todo-item">⚠️ L07 — 缺 Learn 章节绑定</div>
+<div class="todo-item">⚠️ L24 — 缺 Learn 章节绑定</div>
+</div></div></div><div class="phase-header"><span>Phase 0 — 从零开始</span><span>7 节课</span></div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L01</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">电脑基础 — 浏览器、搜索、复制粘贴</span>
+    <span class="lesson-duration">20min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  想学 AI，但连浏览器怎么用都不太确定？打开电脑不知道从哪里开始？别担心，这节课从最基础的操作教起 — 打开浏览器、在搜索框里打字找东西、把文字复制粘贴到别的地方。这三个操作是后面所有 AI 课的基础，跟着做 10 分钟就能学会。  📖 你将学到    打开和使用浏览器  ...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:browser-basics</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/choose-ai-tool</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">打开浏览器 → 搜索 → 复制和粘贴 → 多标签页 → 注册账号 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L02</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">注册 AI 账号 + 第一次和 AI 说话</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  听说 AI 很厉害，但不知道怎么开始用？ChatGPT、Claude、豆包、Kimi 这些名字听过但没注册过？这节课帮你选一个最适合你的 AI 工具，手把手注册好账号，然后立刻跟 AI 说上话 — 问它一个你生活中的真实问题，体验「原来 AI 可以这样帮我」的惊喜。  📖 ...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:ai-basics</span> <span class="tag tag-ok">prompt-lab:hello-ai</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/choose-ai-tool</span> <span class="tag tag-ok">prompt-master/introduction</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (8)</span><span class="field-value" style="font-size:10px;color:#888">AI 是什么？ → Prompt Lab: ai-basics → 选工具 + 注册 → 界面介绍 → Prompt Lab: hello-ai → 试着问 3 个问题 ... (+2)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L03</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">AI 基础概念 — 5 分钟搞懂大模型</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  用了几次 AI 之后你可能会好奇：它到底是怎么工作的？为什么同一个问题问两次答案不一样？为什么 ChatGPT 和 Claude 给的回答不同？搞懂这些基础概念，你就能理解为什么有些问法效果好、有些不好 — 因为你知道 AI 是怎么「想」的了。  📖 你将学到    大语言...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:ai-basics</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/basics</span> <span class="tag tag-ok">prompt-master/settings</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>ai-basics</code> → /learn/prompt-lab/ai-basics</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L04</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">Hello AI — 你的第一个 Prompt</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  跟 AI 聊过几次后你会发现，随便问一句和认真组织语言问，AI 给的答案质量差很多。为什么？因为 AI 不会读心术，你说得模糊它就只能猜，你说得清楚它就给得准。这节课教你一个万能公式：角色 + 任务 + 格式 + 约束。Prompt 就是你给 AI 的指令，写好指令是用好 ...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:hello-ai</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/introduction</span> <span class="tag tag-ok">prompt-master/elements</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>hello-ai</code> → /learn/prompt-lab/hello-ai</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L05</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI 能帮你做什么？— 10 个日常场景</span>
+    <span class="lesson-duration">20min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  很多人以为 AI 只能聊天闲扯，注册了账号也不知道拿它干什么。其实 AI 能帮你翻译英文合同、写一封得体的感谢信、把 3 页会议记录变成 5 条行动项、帮你想 10 个生日礼物点子、比较两款手机的优缺点。这节课用 10 个你马上就能用的真实场景，彻底打开你对 AI 的想象力...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:model-parameters</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/choose-ai-tool</span> <span class="tag tag-ok">ai-office/dev-toolbox</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">AI 工具对比 → 10 个一句话模板 → 动手试 3 个 → Prompt Lab: model-parameters → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L06</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">模型与参数 — Temperature、Top-P 和模型选择</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  同一个问题问 AI 两次，回答居然不一样？这不是 AI 出了故障 — 背后有一个叫 Temperature（温度）的「创意开关」在控制。调高了 AI 天马行空什么都敢说，调低了 AI 严谨保守只说有把握的。搞懂这个开关，你就能像调收音机频道一样，调出最适合当前任务的回答。 ...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:model-parameters</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/settings</span> <span class="tag tag-ok">prompt-master/model-collection</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>model-parameters</code> → /learn/prompt-lab/model-parameters</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L07</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">直播：手把手带你用 AI</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  前面 6 节课都是自己学的，可能有些地方卡住了、有些操作不确定做得对不对、有些概念还模模糊糊。这节直播课老师在线手把手带你从头走一遍，有任何不懂的实时提问，确保你不掉队。错过直播也没关系，课后有录播可以反复看。  📖 你将学到    注册问题现场排查  — 还没注册成功的同...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:live-demo-recap</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-todo">无绑定</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">注册答疑（10min） → 语音输入演示（5min） → 5 个生活场景演示（25min） → 学员跟做（15min） → Q&A（5min）</span></div>
+  </div>
+</div>
+<div class="phase-header"><span>Phase 1 — Prompt 基础</span><span>16 节课</span></div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L08</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">说清楚你要什么 — 任务描述 + 输出格式 + 约束</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">3 Lab</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  你跟 AI 说「帮我写个东西」，它给你一堆不知道能不能用的内容。但如果你说「帮我写一封催款邮件，语气礼貌但坚定，提到 3 月 15 号的付款截止日，200 字以内」— AI 一次到位。同样是问 AI，为什么效果天差地别？差别就在你怎么写 Prompt（指令）。这节课拆解好 ...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:clear-task</span> <span class="tag tag-ok">prompt-lab:output-format</span> <span class="tag tag-ok">prompt-lab:constraints</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/elements</span> <span class="tag tag-ok">prompt-master/tips</span> <span class="tag tag-ok">ai-office/prompt-building</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (7)</span><span class="field-value" style="font-size:10px;color:#888">好问题 vs 坏问题 → Prompt Lab: clear-task → 让 AI 按你要的格式回答 → Prompt Lab: output-format → 告诉 AI 不要做什么 → Prompt Lab: constraints ... (+1)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L09</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">明确任务 — 让 AI 准确理解你的需求</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  上节课讲了任务描述的原理，这节课直接上手练。5 个职场真实场景 — 写 PPT 大纲、准备会议议程、起草内部通知、整理客户反馈、写工作总结。每个场景先看「模糊版」写出来 AI 给了什么垃圾回答，再看「精准版」一次到位的效果，最后自己动手写。  📖 你将学到    从模糊到精...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:clear-task</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/elements</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>clear-task</code> → /learn/prompt-lab/clear-task</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L10</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">输出格式 — 让 AI 按你要的格式回答</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  AI 给你一大段密密麻麻的文字，但你想要的是一个表格好直接贴到 Excel 里，或者一个列表好发给同事看。问题出在你没告诉 AI 用什么格式回答。格式不对，内容再好也要花时间重新整理。这节课练完，你指定什么格式 AI 就给什么格式，拿到手直接能用不需要重新整理。  📖 你将...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:output-format</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/tips</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>output-format</code> → /learn/prompt-lab/output-format</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L11</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">约束与负面 Prompt — 告诉 AI </span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  告诉 AI 该做什么很重要，但告诉 AI「不该做什么」同样重要 — 甚至更重要。没有约束的 Prompt 就像没有围栏的牧场，AI 想到哪说到哪，结果又长又跑题还夹杂一堆你看不懂的术语。加上「不要用专业术语」「控制在 100 字以内」「不要编造数据」这样的红线，输出质量立刻...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:constraints</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/tips</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>constraints</code> → /learn/prompt-lab/constraints</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L12</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">给 AI 看例子 + 让 AI 扮演专家</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">3 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  你问 AI「这封邮件写得怎么样」，它说「挺好的」— 等于没说。但如果你先给它 3 封范文当例子再问，它能指出「第二段语气太随意，第三段用词重复了两次」。再告诉它「你是有 20 年经验的财务总监」，回答直接从实习生水平变成专家水平。这节课教你 Prompt 技巧中最强的两招：...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:zero-shot</span> <span class="tag tag-ok">prompt-lab:few-shot</span> <span class="tag tag-ok">prompt-lab:role-playing</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/zero-shot</span> <span class="tag tag-ok">prompt-master/few-shot</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (7)</span><span class="field-value" style="font-size:10px;color:#888">直接问 vs 给例子 → Prompt Lab: zero-shot → Prompt Lab: few-shot → 让 AI 扮演专家 → Prompt Lab: role-playing → 动手试 ... (+1)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L13</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">Zero-shot — 零示例直接提问</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  有些事情你直接跟 AI 说就行，比如「帮我翻译这段话」「这条评论是好评还是差评」，AI 一次就做对。但有些任务直接问就答不好，比如按你公司内部的标准给客户反馈分 5 个等级。什么时候能直接问、什么时候不行？搞清楚这个边界，你就不会在不该偷懒的地方偷懒、也不会在该省事的地方浪...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:zero-shot</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/zero-shot</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>zero-shot</code> → /learn/prompt-lab/zero-shot</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L14</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">Few-shot Learning — 用示例教会 AI</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  上节课你发现有些任务 Zero-shot（直接问）搞不定。这节课教你 Few-shot — 给 AI 看几个你已经做好的例子，它就能照着你的标准干活。实测数据：同一个分类任务，不给例子准确率 70%，给 3 个例子准确率跳到 95%。3 个好例子比写 300 字的说明管用得...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:few-shot</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/few-shot</span> <span class="tag tag-ok">prompt-master/prompt-sentiment-fewshot</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>few-shot</code> → /learn/prompt-lab/few-shot</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L15</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">角色扮演 — 让 AI 成为领域专家</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  你让 AI 帮你看一份合同，它给你一堆泛泛而谈的建议：「注意条款细节」「建议咨询律师」。但如果先说「你是一个有 20 年经验的澳洲商业律师，专注合同审查」，AI 的回答立刻变成专业法律意见，指出第 3 条里你可能忽略的竞业限制风险。就这一句话，输出从百度知道水平变成专业咨询...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:role-playing</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/examples</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>role-playing</code> → /learn/prompt-lab/role-playing</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L16</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI 会犯错 — 怎么检查 AI 的回答</span>
+    <span class="lesson-duration">20min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  AI 说的话你都信？小心了 — ChatGPT 会一本正经地捏造数据、虚构人名、编造根本不存在的学术论文，而且说得头头是道让你完全看不出来。这叫「幻觉」（Hallucination），不是 AI 故意骗你，是它在根据概率「猜」答案。这节课教你 3 种方法识破 AI 的编造，...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:hallucination-defense</span> <span class="tag tag-ok">prompt-lab:chain-of-thought</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/factuality</span> <span class="tag tag-ok">prompt-master/prompt-truthfulness</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">AI 的「幻觉」 → Prompt Lab: hallucination-defense → 3 种验证方法 → 让 AI 一步一步想 → Prompt Lab: chain-of-thought → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L17</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">幻觉检测与防护 — 别让 AI 一本正经地胡说八道</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  你让 AI 帮忙查资料，它信誓旦旦地引用了一篇「Nature 2024 年论文」— 结果这篇论文根本不存在。AI 不是故意骗你，但它确实会一本正经地编造统计数据、虚构学术引用、捏造不存在的法律条款。你如果不加验证就把这些写进工作报告或者发给客户，后果不堪设想。这种现象叫做 ...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:hallucination-defense</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/factuality</span> <span class="tag tag-ok">prompt-master/prompt-truthfulness-identify-hallucination</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>hallucination-defense</code> → /learn/prompt-lab/hallucination-defense</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L18</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">Chain of Thought — 让 AI 展示思考过程</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  问 AI 一道需要推理的问题，它经常直接甩一个错误答案。比如「小明有 3 箱苹果，每箱 24 个，送给小红 15 个，还剩多少？」— AI 可能直接报一个错误数字。原因是它「跳步」了，没有一步步想就直接猜答案。就像让小学生做应用题不列算式，错误率自然高。Chain of T...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:chain-of-thought</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/cot</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>chain-of-thought</code> → /learn/prompt-lab/chain-of-thought</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L19</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Prompt 实战 — 摘要、提取、分类</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">4 Lab</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  工作中你 80% 的时间在做 3 件事：读长文找重点、从一堆信息里挖关键数据、给东西分个类。手动做的话，10 页报告要读半天，100 条客户反馈要标一下午，200 封邮件里找行动项要翻到眼花。AI 能在 30 秒内帮你搞定这些，但前提是你得会写对应的 Prompt — 不同...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:text-summarization</span> <span class="tag tag-ok">prompt-lab:information-extraction</span> <span class="tag tag-ok">prompt-lab:classification</span> <span class="tag tag-ok">prompt-lab:business-writing</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/prompt-text-summarization</span> <span class="tag tag-ok">prompt-master/prompt-information-extraction</span> <span class="tag tag-ok">prompt-master/prompt-classification</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (7)</span><span class="field-value" style="font-size:10px;color:#888">三大最常用场景 → Prompt Lab: text-summarization → Prompt Lab: information-extraction → Prompt Lab: classification → 综合练习 → Prompt Lab: business-writing ... (+1)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L20</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">文本摘要 — AI 帮你读完一本书</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  老板发来一份 10 页的行业报告让你「看看重点」，你花了 2 小时才读完还不确定自己有没有抓住关键。同事用 AI 30 秒就出了摘要，而且侧重点比你准。差别不在于谁读得快，在于摘要 Prompt 怎么写 — 给老板的侧重对公司的影响、给客户的侧重价值主张、给技术团队的侧重实...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:text-summarization</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/prompt-text-summarization</span> <span class="tag tag-ok">prompt-master/prompt-text-summarization-explain-concept</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>text-summarization</code> → /learn/prompt-lab/text-summarization</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L21</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">信息提取 — 让 AI 当你的数据挖掘助手</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  一份 20 页的合同，手动找付款条件、违约金条款、关键日期 — 至少翻 1 小时还可能漏看关键条款。100 封客户邮件里找出每个人的姓名、公司名、具体需求、紧急程度 — 复制粘贴到手抽筋还容易出错。这些「从大量文字里挖特定信息」的苦活，AI 做只要 30 秒，而且不会漏、不...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:information-extraction</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/prompt-information-extraction</span> <span class="tag tag-ok">prompt-master/prompt-information-extraction-extract-models</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>information-extraction</code> → /learn/prompt-lab/information-extraction</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L22</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">分类与情感分析 — AI 帮你读懂用户情绪</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  你收到 100 条产品评论，要手动标注每条是夸你还是骂你，还要分清骂的是价格贵、质量差还是售后服务不好。人工做这事要一整天，而且标到后面越标越糊涂 — 「还行吧」到底算正面还是中性？「比预期好一点」算好评还是一般？标准不一致结果就没参考价值。AI 2 分钟搞定 100 条，...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:classification</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/prompt-classification</span> <span class="tag tag-ok">prompt-master/prompt-sentiment</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>classification</code> → /learn/prompt-lab/classification</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L23</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">邮件与商务写作 — AI 秒变你的写作助手</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  催款怕撕破脸、拒绝怕太直白、感谢怕太敷衍、英文邮件怕语法错 — 写邮件最难的从来不是打字，是拿捏语气和分寸。每封邮件纠结半小时措辞，一天光写邮件就过去了。更别说英文邮件了，明明中文想得清清楚楚，换成英文就写不出那个味道，来回查词典改语法又花半天。  📖 你将学到    四要...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:business-writing</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/email-communication</span> <span class="tag tag-ok">prompt-master/prompt-creativity</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>business-writing</code> → /learn/prompt-lab/business-writing</span></div>
+  </div>
+</div>
+<div class="phase-header"><span>Phase 2 — 职场 AI 实战</span><span>5 节课</span></div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L24</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">直播：职场 AI 全场景演示</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  前面学的 Prompt 技巧都是自己在电脑上练的，但真正用到工作里总觉得差一步 — 碰到具体情况不知道怎么变通，操作卡住了不知道问谁，看教程觉得简单自己做就出问题。这节 90 分钟的直播课，老师在线现场演示 3 个最常见的职场 AI 场景，你打开电脑跟着一起做，有任何问题当...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:workplace-scenarios</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-todo">无绑定</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">场景 1：AI 写邮件（20min） → 场景 2：AI 做报告（20min） → 场景 3：AI 看数据（20min） → 学员跟做（20min） → Q&A + 布置自学（10min）</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L25</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI 写邮件、做会议记录</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  每天花 40 分钟写各种邮件 — 英文邮件查词典、催款邮件纠结措辞、请假邮件怕写不得体、感谢信不知道怎么说才真诚。开完 1 小时的会议，花 30 分钟整理会议纪要，还经常漏掉关键的待办事项和截止日期，过两天同事问「上次说谁负责？」你翻笔记也找不到。这些重复又耗精力的活，完全...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:business-writing</span> <span class="tag tag-ok">prompt-lab:text-summarization</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/email-communication</span> <span class="tag tag-ok">ai-office/meeting-notes</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">邮件 Prompt 公式 → Prompt Lab: business-writing → 会议纪要 → Prompt Lab: text-summarization → 真实任务 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L26</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI 做文档和报告</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  写季度报告从搜集数据到组织结构到填充内容到排版成稿，前前后后要 3 天。做 PPT 更痛苦 — 内容早想好了，但调字体、对齐文本框、选配色方案又花半天。不是你能力不够，是这些重复性的「组装和排版」工作太耗时间。AI 能帮你从拟大纲到填内容到排版一条龙搞定，你只需要检查关键判...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:information-extraction</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/docs-and-ppt</span> <span class="tag tag-ok">ai-office/research-and-summary</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">让 AI 帮你写报告的套路 → Prompt Lab: information-extraction → AI 总结长文 → AI 做 PPT → 真实任务 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L27</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI 处理数据和表格</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  Excel 公式记不住、数据规律看不出来、图表不会做 — 这是很多非技术岗位的人碰到数据就头大的原因。VLOOKUP、SUMIF、数据透视表、条件格式，光听名字就劝退了。但现在你不需要记任何公式了 — 把表格截图发给 AI，用中文说一句「帮我看看这个表在说什么」或者「算一下...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:multimodal-prompting</span> <span class="tag tag-ok">prompt-lab:classification</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/spreadsheet-automation</span> <span class="tag tag-ok">ai-office/data-insights</span> <span class="tag tag-ok">ai-data-analysis/eda-viz</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">截图发给 AI → Prompt Lab: multimodal-prompting → 让 AI 写 Excel 公式 → Prompt Lab: classification → 真实任务 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L28</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">多模态 Prompt — 让 AI 看图、听声、读文</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  很多人只知道跟 AI 打字聊天，不知道现在的 AI 还能「看」图片。产品照片、手写笔记、Excel 截图、发票扫描件、名片、菜单、白板照片 — 发给 AI 它都能看懂并处理。不用这个功能，你就浪费了 AI 至少一半的能力。现在的 ChatGPT、Claude 等主流工具都支...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:multimodal-prompting</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/multimodal-work</span> <span class="tag tag-ok">prompt-master/multimodal-cot</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>multimodal-prompting</code> → /learn/prompt-lab/multimodal-prompting</span></div>
+  </div>
+</div>
+<div class="phase-header"><span>Phase 3 — 进阶 + 行业深入</span><span>5 节课</span></div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L29</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI 内容创作 — 文案和图片</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">4 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  想发个小红书但想不出好文案、想配张好看的图但不会 Photoshop、想做个短视频但不会剪辑 — 内容创作的门槛把很多人挡在了外面。你有好的想法和素材，但从「想」到「做出来」之间隔着一道技术门槛。AI 现在把这些门槛全部拉平了：你只需要有想法，文案、配图、甚至视频的执行全部...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:role-playing</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-content/content-overview</span> <span class="tag tag-ok">ai-content/copywriting-script</span> <span class="tag tag-ok">ai-content/image-generation</span> <span class="tag tag-ok">ai-office/social-and-marketing</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">AI 写文案 → Prompt Lab: role-playing → AI 生成图片 → 动手试 → AI 视频入门 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L30</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI 多步任务 — 一步一步帮你做复杂的事</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  跟 AI 说「帮我策划公司团建」，它给你一堆不着边际的笼统建议。问题不在 AI 笨，在于你把一个复杂任务当成一句话问了 — 就像你跟同事说「帮我搞定年会」没给任何细节，他也不知道从哪下手。复杂的事情需要拆成 3-4 步，一步步跟 AI 对话推进，每一步都给明确指令，效果才会...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:chain-of-thought</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/prompt-chaining</span> <span class="tag tag-ok">ai-office/ai-workflows</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">复杂任务拆成小步 → Prompt Lab: chain-of-thought → 完整实战 → Prompt 模板库 → 建你自己的模板 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L31</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">行业 AI 场景 + 安全红线</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">4 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  你学了这么多 Prompt 技巧，但在你自己的行业里 AI 到底能帮什么具体的忙？Marketing 的用法和 Finance 完全不同，HR 的需求和 Sales 也是两回事。而且有些事情绝对不能让 AI 做 — 比如把客户身份证号发给 ChatGPT、把公司未公开的财务...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:cost-optimization</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/security-and-ethics</span> <span class="tag tag-ok">ai-office/customer-support-and-sales</span> <span class="tag tag-ok">ai-office/recruiting-and-interview</span> <span class="tag tag-ok">prompt-master/adversarial</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (7)</span><span class="field-value" style="font-size:10px;color:#888">Marketing → Finance → HR → Sales → 安全红线（必看） → Prompt Lab: cost-optimization ... (+1)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L32</span>
+    <span class="lesson-type type-lab">🧪 Lab</span>
+    <span class="lesson-title">成本优化 — 省钱又高效的 AI 调用策略</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  ChatGPT Plus 每月 $20，Claude Pro 每月 $20，Midjourney 每月 $10 — 全都订上一年就是 $600。但其实很多日常任务用免费版或便宜的小模型就够了。GPT-4o 处理一次请求约 $0.03，GPT-4o-mini 只要 $0.00...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:cost-optimization</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/settings</span> <span class="tag tag-ok">ai-office/governance-and-metrics</span></span></div>
+<div class="field-row"><span class="field-label">Lab Slug</span><span class="field-value"><code>cost-optimization</code> → /learn/prompt-lab/cost-optimization</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L33</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">你的 AI 学习路线图 — 毕业后往哪走</span>
+    <span class="lesson-duration">20min</span>
+    <span class="tag tag-ok">✅</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value">🎯 这节课解决什么问题  恭喜你走到了最后一课！33 节课学下来，你已经掌握了 Prompt 写作、邮件/报告/数据处理、内容创作、幻觉防护、成本优化 — 这些技能让你比身边 90% 的人更会用 AI。但 AI 技术迭代速度很快，3 个月前的最佳实践可能已经过时了。ChatGPT 每隔几周就出新功能...</span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab:learning-roadmap</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-office/team-adoption</span> <span class="tag tag-ok">ai-office/knowledge-management</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">你已经掌握了什么 → 接下来学什么？ → 已有短期课程推荐 → 保持学习的习惯 → 写下你的 AI 计划</span></div>
+  </div>
 </div>
 
-<!-- 1. 数据看板 -->
-<div class="box" id="dashboard">
-<div class="box-h" style="background:#000;color:#fff"><strong>📊 数据看板</strong></div>
-<div style="padding:16px">
-<div class="dashboard">
-  <div class="stat-card">
-    <div class="num">33</div>
-    <div class="label">总课时</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">4</div>
-    <div class="label">Phase 数</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">14</div>
-    <div class="label">自学课 (Information)</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">17</div>
-    <div class="label">互动 Lab (InteractiveLab)</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">2</div>
-    <div class="label">直播课 (Lesson)</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">21</div>
-    <div class="label">独立 Prompt Lab</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">46</div>
-    <div class="label">Learn 章节绑定</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">8</div>
-    <div class="label">FAQ 条数</div>
-  </div>
-</div>
-</div>
+<div class="box" style="margin-top:24px">
+  <div class="box-h" style="background:#374151;color:#fff"><strong>Production IDs</strong></div>
+  <table class="config-table">
+    <tr><td>Training</td><td style="font-family:'Space Mono',monospace">69cbc931d3a18e68bc6b9b09</td></tr>
+    <tr><td>Program</td><td style="font-family:'Space Mono',monospace">69cbcca0d3a18e68bc6bff1d</td></tr>
+    <tr><td>Syllabus</td><td style="font-family:'Space Mono',monospace">69cbce9cd3a18e68bc6c11f8</td></tr>
+    <tr><td>SDM 管理</td><td><a href="http://localhost:5188/bootcamp/ai-essentials-bootcamp">localhost:5188/bootcamp/ai-essentials-bootcamp</a></td></tr>
+  </table>
 </div>
 
-<!-- 2. 内容完成度 -->
-<div class="box" id="completion">
-<div class="box-h" style="background:#1e40af;color:#fff"><strong>✅ 内容完成度</strong></div>
-<div style="padding:16px">
-
-  <div style="margin-bottom:12px">
-    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:4px">
-      <span>outline.json 数据源</span>
-      <span style="color:#16a34a">33/33 (100%)</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#16a34a"></div></div>
-  </div>
-  <div style="margin-bottom:12px">
-    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:4px">
-      <span>课程描述 (description HTML)</span>
-      <span style="color:#16a34a">33/33 (100%)</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#16a34a"></div></div>
-  </div>
-  <div style="margin-bottom:12px">
-    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:4px">
-      <span>Lab 绑定</span>
-      <span style="color:#16a34a">33/33 (100%)</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#16a34a"></div></div>
-  </div>
-  <div style="margin-bottom:12px">
-    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:4px">
-      <span>Learn 章节绑定</span>
-      <span style="color:#f59e0b">31/33 (93%)</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" style="width:93%;background:#f59e0b"></div></div>
-  </div>
-  <div style="margin-bottom:12px">
-    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:4px">
-      <span>FAQ</span>
-      <span style="color:#16a34a">8/8 (100%)</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#16a34a"></div></div>
-  </div>
-  <div style="margin-bottom:12px">
-    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:4px">
-      <span>Highlights</span>
-      <span style="color:#16a34a">6/6 (100%)</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#16a34a"></div></div>
-  </div>
-  <div style="margin-bottom:12px">
-    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:4px">
-      <span>Features</span>
-      <span style="color:#16a34a">6/6 (100%)</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#16a34a"></div></div>
-  </div>
-  <div style="margin-top:16px;padding:12px;border:2px solid #000;border-radius:8px;background:#f0fdf4">
-    <strong>Production 同步状态</strong>
-    <div style="font-size:12px;margin-top:4px">
-      通过 Skills Data Manager (<code>localhost:5188/bootcamp/ai-essentials-bootcamp</code>) 管理。<br>
-      点击 <strong>Check Diff</strong> 查看本地 vs Production 差异，<strong>Sync</strong> 推送变更。
-    </div>
-  </div>
-</div></div>
-<div class="box" id="todo">
-<div class="box-h" style="background:#dc2626;color:#fff"><strong>📋 TODO 清单 — 还需要做什么</strong></div>
-<div style="padding:16px">
-<div class="todo-item"><strong>thumbnail</strong> — 课程封面图<br><span style="color:#666">需要设计 — 用于课程卡片和详情页顶部</span></div>
-<div class="todo-item"><strong>heroVideo</strong> — 课程宣传视频<br><span style="color:#666">需要录制 — 用于详情页顶部 Hero 区域</span></div>
-<div class="todo-item"><strong>teachers</strong> — 老师绑定<br><span style="color:#666">需要绑定 — 关联已有 Teacher ObjectId</span></div>
-<div class="todo-item"><strong>tutors</strong> — 助教绑定<br><span style="color:#666">需要绑定 — 关联已有 Tutor ObjectId</span></div>
-<div class="todo-item"><strong>pricingOptions</strong> — 定价方案<br><span style="color:#666">需要创建 PricingOption — 绑定到 Training</span></div>
-<div class="todo-item"><strong>studentInterviews</strong> — 学员访谈<br><span style="color:#666">需要收集 — 真实学员反馈视频/文字</span></div>
-<div class="todo-item"><strong>testimonials</strong> — 学员评价<br><span style="color:#666">需要收集 — 课程评价</span></div>
-<div class="todo-item"><strong>careerPaths</strong> — 职业路径<br><span style="color:#666">可选 — 关联 CareerPath</span></div>
-<div class="todo-item"><strong>learnChapterSlugs</strong> — Learn 绑定缺失 (L07, L24)<br><span style="color:#666">2 节课没有 Learn 章节绑定</span></div>
-<div style="margin-top:16px"><strong>✅ 已完成</strong></div>
-<div class="done-item">description (HTML 富文本 33/33)</div>
-<div class="done-item">learningMaterial (33/33 有内容)</div>
-<div class="done-item">knowledge (33/33)</div>
-<div class="done-item">learnChapterSlugs (31/33)</div>
-<div class="done-item">InteractiveLab type + URL (17/17)</div>
-<div class="done-item">Module 绑定 (33/33)</div>
-<div class="done-item">title_en (33/33)</div>
-<div class="done-item">Training description (3099字 HTML)</div>
-<div class="done-item">FAQ (8条)</div>
-<div class="done-item">bootcampSections (11个)</div>
-<div class="done-item">highlights / features (6+6)</div>
-<div class="done-item">iframe 嵌入 (outline.html 等)</div>
-</div></div>
-<div class="box" id="mapping">
-<div class="box-h" style="background:#000;color:#fff"><strong>🗺️ Lab / Learn 资源映射表</strong></div>
-<div style="padding:0;overflow-x:auto">
-<table style="min-width:900px">
-<thead>
-<tr>
-  <th>课号</th>
-  <th>标题</th>
-  <th>类型</th>
-  <th>时长</th>
-  <th>Prompt Lab</th>
-  <th>Learn 章节</th>
-  <th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background:#e8f5e9"><td colspan="7" style="padding:8px;font-weight:900">Phase 0 — 从零开始</td></tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L01</td>
-  <td>电脑基础 — 浏览器、搜索、复制粘贴</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>20min</td>
-  <td><span class="tag tag-lab">browser-basics</span></td>
-  <td><span class="tag tag-learn">choose-ai-tool</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L02</td>
-  <td>注册 AI 账号 + 第一次和 AI 说话</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>25min</td>
-  <td><span class="tag tag-lab">ai-basics</span><span class="tag tag-lab">hello-ai</span></td>
-  <td><span class="tag tag-learn">choose-ai-tool</span><span class="tag tag-learn">introduction</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L03</td>
-  <td>AI 基础概念 — 5 分钟搞懂大模型</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">ai-basics</span></td>
-  <td><span class="tag tag-learn">basics</span><span class="tag tag-learn">settings</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L04</td>
-  <td>Hello AI — 你的第一个 Prompt</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">hello-ai</span></td>
-  <td><span class="tag tag-learn">introduction</span><span class="tag tag-learn">elements</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L05</td>
-  <td>AI 能帮你做什么？— 10 个日常场景</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>20min</td>
-  <td><span class="tag tag-lab">model-parameters</span></td>
-  <td><span class="tag tag-learn">choose-ai-tool</span><span class="tag tag-learn">dev-toolbox</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L06</td>
-  <td>模型与参数 — Temperature、Top-P 和模型选择</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">model-parameters</span></td>
-  <td><span class="tag tag-learn">settings</span><span class="tag tag-learn">model-collection</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L07</td>
-  <td>直播：手把手带你用 AI</td>
-  <td><span style="color:#ef4444;font-weight:700">直播</span></td>
-  <td>60min</td>
-  <td><span class="tag tag-lab">live-demo-recap</span></td>
-  <td><span class="tag tag-empty">无</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr style="background:#e8f5e9"><td colspan="7" style="padding:8px;font-weight:900">Phase 1 — Prompt 基础</td></tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L08</td>
-  <td>说清楚你要什么 — 任务描述 + 输出格式 + 约束</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>25min</td>
-  <td><span class="tag tag-lab">clear-task</span><span class="tag tag-lab">output-format</span><span class="tag tag-lab">constraints</span></td>
-  <td><span class="tag tag-learn">elements</span><span class="tag tag-learn">tips</span><span class="tag tag-learn">prompt-building</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L09</td>
-  <td>明确任务 — 让 AI 准确理解你的需求</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">clear-task</span></td>
-  <td><span class="tag tag-learn">elements</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L10</td>
-  <td>输出格式 — 让 AI 按你要的格式回答</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">output-format</span></td>
-  <td><span class="tag tag-learn">tips</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L11</td>
-  <td>约束与负面 Prompt — 告诉 AI </td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">constraints</span></td>
-  <td><span class="tag tag-learn">tips</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L12</td>
-  <td>给 AI 看例子 + 让 AI 扮演专家</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>25min</td>
-  <td><span class="tag tag-lab">zero-shot</span><span class="tag tag-lab">few-shot</span><span class="tag tag-lab">role-playing</span></td>
-  <td><span class="tag tag-learn">zero-shot</span><span class="tag tag-learn">few-shot</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L13</td>
-  <td>Zero-shot — 零示例直接提问</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">zero-shot</span></td>
-  <td><span class="tag tag-learn">zero-shot</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L14</td>
-  <td>Few-shot Learning — 用示例教会 AI</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">few-shot</span></td>
-  <td><span class="tag tag-learn">few-shot</span><span class="tag tag-learn">prompt-sentiment-fewshot</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L15</td>
-  <td>角色扮演 — 让 AI 成为领域专家</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">role-playing</span></td>
-  <td><span class="tag tag-learn">examples</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L16</td>
-  <td>AI 会犯错 — 怎么检查 AI 的回答</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>20min</td>
-  <td><span class="tag tag-lab">hallucination-defense</span><span class="tag tag-lab">chain-of-thought</span></td>
-  <td><span class="tag tag-learn">factuality</span><span class="tag tag-learn">prompt-truthfulness</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L17</td>
-  <td>幻觉检测与防护 — 别让 AI 一本正经地胡说八道</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">hallucination-defense</span></td>
-  <td><span class="tag tag-learn">factuality</span><span class="tag tag-learn">prompt-truthfulness-identify-hallucination</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L18</td>
-  <td>Chain of Thought — 让 AI 展示思考过程</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">chain-of-thought</span></td>
-  <td><span class="tag tag-learn">cot</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L19</td>
-  <td>Prompt 实战 — 摘要、提取、分类</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>25min</td>
-  <td><span class="tag tag-lab">text-summarization</span><span class="tag tag-lab">information-extraction</span><span class="tag tag-lab">classification</span><span class="tag tag-lab">business-writing</span></td>
-  <td><span class="tag tag-learn">prompt-text-summarization</span><span class="tag tag-learn">prompt-information-extraction</span><span class="tag tag-learn">prompt-classification</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L20</td>
-  <td>文本摘要 — AI 帮你读完一本书</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">text-summarization</span></td>
-  <td><span class="tag tag-learn">prompt-text-summarization</span><span class="tag tag-learn">prompt-text-summarization-explain-concept</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L21</td>
-  <td>信息提取 — 让 AI 当你的数据挖掘助手</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">information-extraction</span></td>
-  <td><span class="tag tag-learn">prompt-information-extraction</span><span class="tag tag-learn">prompt-information-extraction-extract-models</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L22</td>
-  <td>分类与情感分析 — AI 帮你读懂用户情绪</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">classification</span></td>
-  <td><span class="tag tag-learn">prompt-classification</span><span class="tag tag-learn">prompt-sentiment</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L23</td>
-  <td>邮件与商务写作 — AI 秒变你的写作助手</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">business-writing</span></td>
-  <td><span class="tag tag-learn">email-communication</span><span class="tag tag-learn">prompt-creativity</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr style="background:#e8f5e9"><td colspan="7" style="padding:8px;font-weight:900">Phase 2 — 职场 AI 实战</td></tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L24</td>
-  <td>直播：职场 AI 全场景演示</td>
-  <td><span style="color:#ef4444;font-weight:700">直播</span></td>
-  <td>90min</td>
-  <td><span class="tag tag-lab">workplace-scenarios</span></td>
-  <td><span class="tag tag-empty">无</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L25</td>
-  <td>AI 写邮件、做会议记录</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>25min</td>
-  <td><span class="tag tag-lab">business-writing</span><span class="tag tag-lab">text-summarization</span></td>
-  <td><span class="tag tag-learn">email-communication</span><span class="tag tag-learn">meeting-notes</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L26</td>
-  <td>AI 做文档和报告</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>25min</td>
-  <td><span class="tag tag-lab">information-extraction</span></td>
-  <td><span class="tag tag-learn">docs-and-ppt</span><span class="tag tag-learn">research-and-summary</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L27</td>
-  <td>AI 处理数据和表格</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>25min</td>
-  <td><span class="tag tag-lab">multimodal-prompting</span><span class="tag tag-lab">classification</span></td>
-  <td><span class="tag tag-learn">spreadsheet-automation</span><span class="tag tag-learn">data-insights</span><span class="tag tag-learn">eda-viz</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L28</td>
-  <td>多模态 Prompt — 让 AI 看图、听声、读文</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">multimodal-prompting</span></td>
-  <td><span class="tag tag-learn">multimodal-work</span><span class="tag tag-learn">multimodal-cot</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr style="background:#e8f5e9"><td colspan="7" style="padding:8px;font-weight:900">Phase 3 — 进阶 + 行业深入</td></tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L29</td>
-  <td>AI 内容创作 — 文案和图片</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>25min</td>
-  <td><span class="tag tag-lab">role-playing</span></td>
-  <td><span class="tag tag-learn">content-overview</span><span class="tag tag-learn">copywriting-script</span><span class="tag tag-learn">image-generation</span><span class="tag tag-learn">social-and-marketing</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L30</td>
-  <td>AI 多步任务 — 一步一步帮你做复杂的事</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>25min</td>
-  <td><span class="tag tag-lab">chain-of-thought</span></td>
-  <td><span class="tag tag-learn">prompt-chaining</span><span class="tag tag-learn">ai-workflows</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L31</td>
-  <td>行业 AI 场景 + 安全红线</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">cost-optimization</span></td>
-  <td><span class="tag tag-learn">security-and-ethics</span><span class="tag tag-learn">customer-support-and-sales</span><span class="tag tag-learn">recruiting-and-interview</span><span class="tag tag-learn">adversarial</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L32</td>
-  <td>成本优化 — 省钱又高效的 AI 调用策略</td>
-  <td><span style="color:#10b981;font-weight:700">Lab</span></td>
-  <td>30min</td>
-  <td><span class="tag tag-lab">cost-optimization</span></td>
-  <td><span class="tag tag-learn">settings</span><span class="tag tag-learn">governance-and-metrics</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-<tr>
-  <td style="font-family:'Space Mono',monospace;font-weight:700">L33</td>
-  <td>你的 AI 学习路线图 — 毕业后往哪走</td>
-  <td><span style="color:#3b82f6;font-weight:700">自学</span></td>
-  <td>20min</td>
-  <td><span class="tag tag-lab">learning-roadmap</span></td>
-  <td><span class="tag tag-learn">team-adoption</span><span class="tag tag-learn">knowledge-management</span></td>
-  <td style="text-align:center">✅</td>
-</tr>
-</tbody></table></div></div>
-<div class="box" id="program">
-<div class="box-h" style="background:#7c3aed;color:#fff"><strong>🎓 Program 配置（班次）</strong></div>
-<div style="padding:16px">
-<table>
-<tr><td style="font-weight:700;width:200px">班次名称</td><td>AI 必修课 第一期</td></tr>
-<tr><td style="font-weight:700">期次</td><td>第 1 期</td></tr>
-<tr><td style="font-weight:700">开课日期</td><td>2026-04-14</td></tr>
-<tr><td style="font-weight:700">结课日期</td><td>2026-06-09</td></tr>
-<tr><td style="font-weight:700">招生状态</td><td><strong style="color:#16a34a">RECRUITING</strong></td></tr>
-<tr><td style="font-weight:700">原价</td><td>¥999</td></tr>
-<tr><td style="font-weight:700">促销价</td><td><strong style="color:#ef4444;font-size:18px">¥499</strong></td></tr>
-</table>
 </div>
-</div>
-
-<div class="box" id="pricing">
-<div class="box-h" style="background:#ea580c;color:#fff"><strong>💰 定价参考 & 竞品对比</strong></div>
-<div style="padding:16px">
-<table>
-<thead>
-<tr>
-  <th>平台/课程</th>
-  <th>价格</th>
-  <th>课时</th>
-  <th>特点</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background:#fef3c7"><td><strong>AI 必修课（我们）</strong></td><td><strong>¥499 促销</strong></td><td>33 节 + 17 Lab + 2 直播</td><td>中文、零基础、互动练习、职场实战</td></tr>
-<tr><td>Coursera AI for Everyone</td><td>免费（证书 $49/月）</td><td>~10 小时视频</td><td>英文、偏理论、无互动练习</td></tr>
-<tr><td>Udemy ChatGPT 课程</td><td>$15-30</td><td>5-15 小时视频</td><td>英文为主、无中文互动、质量参差</td></tr>
-<tr><td>国内知识星球/小报童</td><td>¥99-299</td><td>图文为主</td><td>中文、无互动、无直播、更新不稳定</td></tr>
-<tr><td>线下培训机构</td><td>¥3000-8000</td><td>2-5 天集中</td><td>面授、时间固定、无法自主节奏</td></tr>
-</tbody>
-</table>
-<p style="font-size:12px;color:#666;margin-top:8px">我们的优势：中文 + 互动练习 + 直播辅导 + 自主节奏 + 永久有效，定价在 ¥499 是竞品中性价比最高的选择。</p>
-</div>
-</div>
-
-<div class="box" id="marketing">
-<div class="box-h" style="background:#0ea5e9;color:#fff"><strong>📣 Marketing 素材清单</strong></div>
-<div style="padding:16px">
-<table>
-<thead><tr><th>素材</th><th>状态</th><th>说明</th></tr></thead>
-<tbody>
-<tr><td>课程封面图 (thumbnail)</td><td><span class="tag tag-todo">TODO</span></td><td>需要设计，用于课程卡片 + 详情页 + 社交分享</td></tr>
-<tr><td>课程宣传视频 (heroVideo)</td><td><span class="tag tag-todo">TODO</span></td><td>1-2 分钟，展示课程亮点和学员成果</td></tr>
-<tr><td>小红书推广文案</td><td><span class="tag tag-todo">TODO</span></td><td>3-5 篇，不同角度（痛点/效果/对比）</td></tr>
-<tr><td>朋友圈海报</td><td><span class="tag tag-todo">TODO</span></td><td>3 张，配合促销活动使用</td></tr>
-<tr><td>学员 before/after 案例</td><td><span class="tag tag-todo">TODO</span></td><td>需要收集 2-3 个真实学员的使用前后对比</td></tr>
-<tr><td>课程 FAQ 页面</td><td><span class="tag tag-lab">✅ 已有</span></td><td>8 条 FAQ 已配置到 production</td></tr>
-<tr><td>课程大纲页面 (outline.html)</td><td><span class="tag tag-lab">✅ 已有</span></td><td>已嵌入 program-course 详情页 iframe</td></tr>
-<tr><td>课程介绍长文案</td><td><span class="tag tag-lab">✅ 已有</span></td><td>3099 字 HTML，已在 production</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<!-- Production IDs -->
-<div class="box">
-<div class="box-h" style="background:#374151;color:#fff"><strong>🔗 Production IDs</strong></div>
-<div style="padding:16px;font-size:11px;font-family:'Space Mono',monospace">
-<table>
-<tr><td style="font-weight:700">Training</td><td>69cbc931d3a18e68bc6b9b09</td></tr>
-<tr><td style="font-weight:700">Program</td><td>69cbcca0d3a18e68bc6bff1d</td></tr>
-<tr><td style="font-weight:700">Syllabus</td><td>69cbce9cd3a18e68bc6c11f8</td></tr>
-<tr><td style="font-weight:700">Module Phase 0</td><td>69cbd53ad3a18e68bc6c4bd2</td></tr>
-<tr><td style="font-weight:700">Module Phase 1</td><td>69cbd53ad3a18e68bc6c4bda</td></tr>
-<tr><td style="font-weight:700">Module Phase 2</td><td>69cbd53bd3a18e68bc6c4be4</td></tr>
-<tr><td style="font-weight:700">Module Phase 3</td><td>69cbd53cd3a18e68bc6c4bf1</td></tr>
-</table>
-</div>
-</div>
-
-</div><!-- .c -->
 </body>
 </html>
