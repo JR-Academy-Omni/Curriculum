@@ -1,866 +1,1429 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Engineer Bootcamp — 内部团队资料</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>内部管理 | AI Engineer Bootcamp | JR Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-:root{--indigo:#6366f1;--teal:#10b981;--red:#ff5757;--orange:#FF914D;--yellow:#FFDE59;--green:#7ED957;--blue:#38B6FF;--purple:#CB6CE6;--dark:#10162f;--bg:#fafafa;--border:#000}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:var(--bg);color:#1a1a1a;line-height:1.6}
-.header{background:var(--dark);color:#fff;padding:32px 0;text-align:center;border-bottom:4px solid var(--border)}
-.header h1{font-size:32px;font-weight:900}
-.header .sub{font-size:14px;opacity:0.7;margin-top:8px}
-.header a{color:#fff;text-decoration:underline;opacity:0.8}
-.c{max-width:1300px;margin:0 auto;padding:40px 24px}
-.footer{margin-top:48px;padding:32px;text-align:center;border-top:3px solid var(--border);color:#888;font-size:13px}
+.lesson-card { border:2px solid #000; border-radius:8px; margin-bottom:12px; background:#fff }
+.lesson-header { display:flex; align-items:center; gap:8px; padding:10px 14px; border-bottom:1px solid #eee; cursor:pointer }
+.lesson-header:hover { background:#f8f9fa }
+.lesson-code { font-family:'Space Mono',monospace; font-weight:900; font-size:12px; color:#666; min-width:32px }
+.lesson-type { font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px }
+.type-info { background:#dbeafe; color:#1e40af }
+.type-lab { background:#d1fae5; color:#065f46 }
+.type-live { background:#fee2e2; color:#991b1b }
+.lesson-title { font-weight:700; font-size:13px; flex:1 }
+.lesson-duration { font-size:11px; color:#666 }
+.lesson-body { padding:12px 14px; display:none; border-top:1px solid #eee }
+.lesson-card.open .lesson-body { display:block }
+.field-row { display:flex; gap:8px; margin-bottom:6px; font-size:11px; align-items:flex-start }
+.field-label { font-weight:700; min-width:100px; color:#666 }
+.field-value { flex:1 }
+.tag { display:inline-block; padding:1px 6px; font-size:9px; font-weight:700; border-radius:3px; margin:1px }
+.tag-ok { background:#d1fae5; color:#065f46 }
+.tag-missing { background:#fee2e2; color:#991b1b }
+.tag-todo { background:#fef3c7; color:#92400e }
+.phase-header { background:#000; color:#fff; padding:12px 16px; font-weight:900; font-size:14px; border-radius:8px; margin:20px 0 12px; display:flex; justify-content:space-between }
+.todo-section { border:2px solid #ef4444; border-radius:8px; padding:16px; margin-bottom:20px; background:#fef2f2 }
+.todo-section h3 { margin:0 0 8px; font-size:14px; color:#991b1b }
+.todo-item { padding:4px 0; font-size:12px; border-bottom:1px solid #fecaca }
+.todo-item:last-child { border:none }
+.config-table { width:100%; border-collapse:collapse; font-size:12px }
+.config-table td { padding:6px 10px; border-bottom:1px solid #eee }
+.config-table td:first-child { font-weight:700; width:140px; color:#666 }
 </style>
+<script>
+function toggle(el) {
+  el.closest('.lesson-card').classList.toggle('open');
+}
+function expandAll() {
+  document.querySelectorAll('.lesson-card').forEach(c => c.classList.add('open'));
+}
+function collapseAll() {
+  document.querySelectorAll('.lesson-card').forEach(c => c.classList.remove('open'));
+}
+</script>
 </head>
 <body>
 
-<div class="header">
-  <h1>AI Engineer Bootcamp — 内部团队资料 (第五期 2026)</h1>
-  <div class="sub"><a href="curriculum.html">← 返回课程大纲</a> · Lab 映射、老师分工、JD 对比、Marketing 素材</div>
+<div class="header" style="padding:28px 0">
+  <h1 style="font-size:24px">🔒 课程大纲管理 — AI Engineer Bootcamp</h1>
+  <div class="sub">内部使用 · 更新于 2026-04-05 · <a href="curriculum.html">课程概览</a> · <a href="outline.html">学生版大纲</a></div>
+  <div style="margin-top:8px">
+    <button onclick="expandAll()" style="padding:4px 10px;font-size:11px;font-weight:700;border:2px solid #000;border-radius:6px;cursor:pointer;background:#fff;margin-right:4px">展开全部</button>
+    <button onclick="collapseAll()" style="padding:4px 10px;font-size:11px;font-weight:700;border:2px solid #000;border-radius:6px;cursor:pointer;background:#fff">收起全部</button>
+  </div>
 </div>
 
 <div class="c">
 
-<!-- ============ LAB MAPPING ============ -->
-<div style="margin-top:48px;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden">
-  <div style="padding:20px 28px;background:var(--teal);color:#fff;border-bottom:3px solid #000">
-    <h2 style="font-size:24px;font-weight:900">现有互动实验室复用方案</h2>
-    <p style="font-size:14px;opacity:0.8;margin-top:4px">JR Academy 已有 156+ 个 Lab，AI Engineer 课程复用 Prompt Lab + LLM Lab + Python Lab + AWS Lab + Git Lab 共 48 个现有 Lab</p>
-  </div>
-
-  <!-- Stats -->
-  <div style="display:flex;border-bottom:3px solid #000">
-    <div style="flex:1;padding:16px 20px;text-align:center;border-right:2px solid #eee">
-      <div style="font-size:36px;font-weight:900;color:var(--teal)">156+</div>
-      <div style="font-size:12px;color:#888;font-family:'Space Mono',monospace">现有 Lab 总数</div>
-    </div>
-    <div style="flex:1;padding:16px 20px;text-align:center;border-right:2px solid #eee">
-      <div style="font-size:36px;font-weight:900;color:var(--indigo)">48</div>
-      <div style="font-size:12px;color:#888;font-family:'Space Mono',monospace">可直接复用</div>
-    </div>
-    <div style="flex:1;padding:16px 20px;text-align:center;border-right:2px solid #eee">
-      <div style="font-size:36px;font-weight:900;color:var(--orange)">0</div>
-      <div style="font-size:12px;color:#888;font-family:'Space Mono',monospace">需新建</div>
-    </div>
-    <div style="flex:1;padding:16px 20px;text-align:center">
-      <div style="font-size:36px;font-weight:900;color:var(--green)">100%</div>
-      <div style="font-size:12px;color:#888;font-family:'Space Mono',monospace">复用率</div>
-    </div>
-  </div>
-
-  <div style="padding:16px 28px;background:#fffbeb;border-bottom:2px solid #eee;font-size:14px;line-height:1.8">
-    <strong>说明：</strong>第五期大纲已完成 Lab 映射，全部 48 个 Lab 均复用现有平台资源，无需新建。按类型：Prompt Lab 22 个、LLM Lab 16 个、Python Lab 6 个、AWS Lab 2 个、Git Lab 2 个。大纲中共 52 次 Lab 引用（部分 Lab 跨课复用）。
-  </div>
-
-  <!-- Mapping table -->
-  <table style="width:100%;border-collapse:collapse;font-size:12px">
-    <thead>
-      <tr style="background:#f5f5f5">
-        <th style="padding:10px 12px;text-align:left;border-bottom:2px solid #ddd;width:8%">课号</th>
-        <th style="padding:10px 12px;text-align:left;border-bottom:2px solid #ddd;width:18%">Lesson</th>
-        <th style="padding:10px 12px;text-align:left;border-bottom:2px solid #ddd;width:20%">需要的 Lab</th>
-        <th style="padding:10px 12px;text-align:center;border-bottom:2px solid #ddd;width:10%">来源</th>
-        <th style="padding:10px 12px;text-align:left;border-bottom:2px solid #ddd;width:22%">复用的现有 Lab</th>
-        <th style="padding:10px 12px;text-align:left;border-bottom:2px solid #ddd;width:22%">备注</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Phase 1 -->
-      <tr style="background:#f0f4ff;border-bottom:2px solid var(--indigo)"><td colspan="6" style="padding:8px 12px;font-weight:900;color:var(--indigo)">Phase 1: GenAI 基础 + Context Engineering + Vibe Coding (Week 1-3)</td></tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">PRE</td>
-        <td style="padding:8px 12px">Python + Git 先修</td>
-        <td style="padding:8px 12px">Python 基础 + Git 入门</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Python Lab</strong> x6 + <strong>Git Lab</strong> x2</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">python-hello, python-variables, python-functions, python-api-basics, python-openai-api, python-json, git-first-commit, git-branch-basics</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">1.1</td>
-        <td style="padding:8px 12px">GenAI Overview + Ops</td>
-        <td style="padding:8px 12px">LLM 全景 + API 体验</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x3 + <strong>Prompt Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">first-llm-experience, llm-concepts, llm-api-hands-on, ai-basics</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">2.1</td>
-        <td style="padding:8px 12px">Transformer Architecture + API</td>
-        <td style="padding:8px 12px">Attention 可视化 + API 参数调优</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x2 + <strong>Prompt Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">ai-ml-basics, transformer-attention, model-parameters</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">2.2</td>
-        <td style="padding:8px 12px">Four Prototyping Patterns</td>
-        <td style="padding:8px 12px">Prompt 基础 + 四种模式</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x2</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">zero-shot, few-shot</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">3.1</td>
-        <td style="padding:8px 12px">Context Engineering</td>
-        <td style="padding:8px 12px">Context 优化 + System Prompt + 输出格式</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x6</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">context-engineering, context-management, chain-of-thought, system-prompt-design, output-format, json-schema</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">3.2</td>
-        <td style="padding:8px 12px">Vibe Coding 实战</td>
-        <td style="padding:8px 12px">Code Generation + Eval</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x3</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">code-generation, prompt-evaluation, self-consistency</td>
-      </tr>
-
-      <!-- Phase 2 -->
-      <tr style="background:#ecfdf5;border-bottom:2px solid var(--teal)"><td colspan="6" style="padding:8px 12px;font-weight:900;color:var(--teal)">Phase 2: RAG + GraphRAG 全栈开发 (Week 4-6)</td></tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">4.1</td>
-        <td style="padding:8px 12px">Introduction to Embeddings</td>
-        <td style="padding:8px 12px">RAG 基础 + Feature Pipeline</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x1 + <strong>LLM Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">rag-basics, rag-feature-pipeline</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">4.2</td>
-        <td style="padding:8px 12px">Introduction to RAG</td>
-        <td style="padding:8px 12px">RAG Inference Pipeline</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">rag-inference-pipeline</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">5.1</td>
-        <td style="padding:8px 12px">Building Production-Ready RAG</td>
-        <td style="padding:8px 12px">Cost 优化 + AWS Bedrock</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x1 + <strong>AWS Lab</strong> x2</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">cost-optimization, bedrock-foundation-models, bedrock-rag-knowledge-bases</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">5.2</td>
-        <td style="padding:8px 12px">LangChain Core Constructs</td>
-        <td style="padding:8px 12px">LLM Tooling + Prompt Chaining</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x1 + <strong>Prompt Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">llm-tooling, prompt-chaining</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">5.3</td>
-        <td style="padding:8px 12px">LangSmith Monitoring</td>
-        <td style="padding:8px 12px">QA 系统 + MLOps</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x1 + <strong>LLM Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">qa-system-design, mlops-llmops</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">6.1</td>
-        <td style="padding:8px 12px">GraphRAG + Eval</td>
-        <td style="padding:8px 12px">LLM 评测 + Prompt 评估</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x1 + <strong>Prompt Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">llm-evaluation, prompt-evaluation</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">6.2</td>
-        <td style="padding:8px 12px">LangChain RAG QA Application</td>
-        <td style="padding:8px 12px">完整 RAG QA 项目</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">项目</span></td>
-        <td style="padding:8px 12px;color:#888">—</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">项目交付，不需要 Lab 环境。学员在本地 / Colab 完成</td>
-      </tr>
-
-      <!-- Phase 3 -->
-      <tr style="background:#fff7ed;border-bottom:2px solid var(--orange)"><td colspan="6" style="padding:8px 12px;font-weight:900;color:var(--orange)">Phase 3: Agents + Agent SDK + A2A (Week 7-9)</td></tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">7.1</td>
-        <td style="padding:8px 12px">Agents 基础</td>
-        <td style="padding:8px 12px">ReAct + Tool Use</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x2</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">react-agent, tool-use</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">7.2</td>
-        <td style="padding:8px 12px">Agent SDK 对比</td>
-        <td style="padding:8px 12px">Agent 模式</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">ai-agent-patterns</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">8.1</td>
-        <td style="padding:8px 12px">Multi-Agent Architectures</td>
-        <td style="padding:8px 12px">Multi-Agent 编排</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">multi-agent</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">8.2</td>
-        <td style="padding:8px 12px">Agent Memory + Mem0</td>
-        <td style="padding:8px 12px">—</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">无 Lab</span></td>
-        <td style="padding:8px 12px;color:#888">—</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">Mem0 内容通过直播项目覆盖，无独立 Lab 引用</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">8.3</td>
-        <td style="padding:8px 12px">A2A Protocol</td>
-        <td style="padding:8px 12px">—</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">无 Lab</span></td>
-        <td style="padding:8px 12px;color:#888">—</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">A2A 内容通过直播项目覆盖，无独立 Lab 引用</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">9.1</td>
-        <td style="padding:8px 12px">MCP 精要 (1 课)</td>
-        <td style="padding:8px 12px">Hallucination Defense</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">hallucination-defense</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">9.2</td>
-        <td style="padding:8px 12px">Computer Use + Agent Ops</td>
-        <td style="padding:8px 12px">—</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">无 Lab</span></td>
-        <td style="padding:8px 12px;color:#888">—</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">Computer Use 通过直播演示覆盖，无独立 Lab 引用</td>
-      </tr>
-
-      <!-- Phase 4 -->
-      <tr style="background:#fef2f2;border-bottom:2px solid var(--red)"><td colspan="6" style="padding:8px 12px;font-weight:900;color:var(--red)">Phase 4: Fine-Tuning + AI Eval + 毕业项目 (Week 10-12)</td></tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">10.1</td>
-        <td style="padding:8px 12px">Open-Weight Models + Model Routing</td>
-        <td style="padding:8px 12px">模型部署 + 推理优化</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x2</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">model-deployment, inference-optimization</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">10.2</td>
-        <td style="padding:8px 12px">SDG + Embedding Fine-Tuning</td>
-        <td style="padding:8px 12px">数据工程</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">data-engineering</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">11.1</td>
-        <td style="padding:8px 12px">AI Eval Engineering</td>
-        <td style="padding:8px 12px">LLM Eval + Prompt Eval</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x1 + <strong>Prompt Lab</strong> x1</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">llm-evaluation, prompt-evaluation</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">11.2</td>
-        <td style="padding:8px 12px">Safety + Red-teaming</td>
-        <td style="padding:8px 12px">Injection 防御 + 幻觉防御</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>Prompt Lab</strong> x2</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">prompt-injection-defense, hallucination-defense</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">11.3</td>
-        <td style="padding:8px 12px">PEFT + QLoRA Fine-Tuning</td>
-        <td style="padding:8px 12px">SFT + RLHF 全流程</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">复用</span></td>
-        <td style="padding:8px 12px"><strong>LLM Lab</strong> x2</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">supervised-fine-tuning, preference-alignment</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:8px 12px">12.1</td>
-        <td style="padding:8px 12px">P3 职业孵化器 Demo Day</td>
-        <td style="padding:8px 12px">—</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">无需 Lab</span></td>
-        <td style="padding:8px 12px;color:#888">独立项目展示</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">学员综合运用所有技能</td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:8px 12px">12.2</td>
-        <td style="padding:8px 12px">AWS Agentcore + 职业路径</td>
-        <td style="padding:8px 12px">—</td>
-        <td style="padding:8px 12px;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">无需 Lab</span></td>
-        <td style="padding:8px 12px;color:#888">—</td>
-        <td style="padding:8px 12px;font-size:11px;color:#666">职业路径课，无独立 Lab 引用</td>
-      </tr>
-    </tbody>
+<!-- Program 基本信息 -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+<div class="box" style="margin:0">
+  <div class="box-h"><strong>课程信息</strong></div>
+  <table class="config-table">
+    <tr><td>课程</td><td>AI Engineer Bootcamp</td></tr>
+    <tr><td>时长</td><td>12 周（96 节课，直播 + 录播 + 自学）</td></tr>
+    <tr><td>难度</td><td>中级进阶</td></tr>
+    <tr><td>总课时</td><td>96 节课（直播 52 节）</td></tr>
+    <tr><td>预计学时</td><td>82 小时</td></tr>
+    <tr><td>描述完成度</td><td>0/96 已填写</td></tr>
   </table>
-
-  <!-- Key reusable labs summary -->
-  <div style="padding:20px 28px;border-top:3px solid #000;background:#f0fdf4">
-    <h3 style="font-size:18px;font-weight:900;margin-bottom:12px">复用的现有 Lab (按类型，共 48 个)</h3>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;font-size:12px">
-      <div style="padding:10px 14px;background:#fff;border:2px solid var(--teal);box-shadow:3px 3px 0 #000">
-        <div style="font-weight:900">Prompt Lab</div>
-        <div style="color:#888;font-size:11px">Prompt 工程全栈</div>
-        <div style="margin-top:4px;color:var(--teal);font-weight:700">复用 22 个</div>
-        <div style="font-size:10px;color:#666">ai-basics, zero-shot, few-shot, chain-of-thought, system-prompt-design, output-format, json-schema, context-engineering, context-management, code-generation, prompt-evaluation, self-consistency, rag-basics, cost-optimization, prompt-chaining, qa-system-design, react-agent, tool-use, multi-agent, hallucination-defense, prompt-injection-defense, model-parameters</div>
-      </div>
-      <div style="padding:10px 14px;background:#fff;border:2px solid var(--teal);box-shadow:3px 3px 0 #000">
-        <div style="font-weight:900">LLM Lab</div>
-        <div style="color:#888;font-size:11px">LLM 工程全流程</div>
-        <div style="margin-top:4px;color:var(--teal);font-weight:700">复用 16 个</div>
-        <div style="font-size:10px;color:#666">first-llm-experience, llm-concepts, llm-api-hands-on, ai-ml-basics, transformer-attention, rag-feature-pipeline, rag-inference-pipeline, llm-tooling, mlops-llmops, llm-evaluation, ai-agent-patterns, model-deployment, inference-optimization, data-engineering, supervised-fine-tuning, preference-alignment</div>
-      </div>
-      <div style="padding:10px 14px;background:#fff;border:2px solid var(--teal);box-shadow:3px 3px 0 #000">
-        <div style="font-weight:900">Python Lab</div>
-        <div style="color:#888;font-size:11px">Python 基础 + API</div>
-        <div style="margin-top:4px;color:var(--teal);font-weight:700">复用 6 个</div>
-        <div style="font-size:10px;color:#666">python-hello, python-variables, python-functions, python-api-basics, python-openai-api, python-json</div>
-      </div>
-      <div style="padding:10px 14px;background:#fff;border:2px solid var(--teal);box-shadow:3px 3px 0 #000">
-        <div style="font-weight:900">AWS Lab</div>
-        <div style="color:#888;font-size:11px">Bedrock 部署</div>
-        <div style="margin-top:4px;color:var(--teal);font-weight:700">复用 2 个</div>
-        <div style="font-size:10px;color:#666">bedrock-foundation-models, bedrock-rag-knowledge-bases</div>
-      </div>
-      <div style="padding:10px 14px;background:#fff;border:2px solid var(--teal);box-shadow:3px 3px 0 #000">
-        <div style="font-weight:900">Git Lab</div>
-        <div style="color:#888;font-size:11px">Git 入门</div>
-        <div style="margin-top:4px;color:var(--teal);font-weight:700">复用 2 个</div>
-        <div style="font-size:10px;color:#666">git-first-commit, git-branch-basics</div>
-      </div>
-    </div>
+</div>
+<div class="box" style="margin:0">
+  <div class="box-h"><strong>待办事项</strong></div>
+  <div style="padding:10px;font-size:12px">
+<div class="todo-item">⚠️ L01 — 缺 description</div>
+<div class="todo-item">⚠️ L02 — 缺 description</div>
+<div class="todo-item">⚠️ L03 — 缺 description</div>
+<div class="todo-item">⚠️ L04 — 缺 description</div>
+<div class="todo-item">⚠️ L05 — 缺 description</div>
+<div class="todo-item">⚠️ L06 — 缺 description</div>
+<div class="todo-item">⚠️ L07 — 缺 description</div>
+<div class="todo-item">⚠️ L08 — 缺 description</div>
+<div class="todo-item">⚠️ L09 — 缺 description</div>
+<div class="todo-item">⚠️ L10 — 缺 description</div>
+<div class="todo-item">⚠️ L11 — 缺 description</div>
+<div class="todo-item">⚠️ L12 — 缺 description</div>
+<div class="todo-item">⚠️ L13 — 缺 description</div>
+<div class="todo-item">⚠️ L14 — 缺 description</div>
+<div class="todo-item">⚠️ L15 — 缺 description</div>
+<div class="todo-item">⚠️ L16 — 缺 description</div>
+<div class="todo-item">⚠️ L17 — 缺 description</div>
+<div class="todo-item">⚠️ L18 — 缺 description</div>
+<div class="todo-item">⚠️ L19 — 缺 description</div>
+<div class="todo-item">⚠️ L20 — 缺 description</div>
+<div class="todo-item">... 还有 76 项</div>
+</div></div></div>
+<div class="phase-header"><span>PHASE 1: GenAI 基础 + Context Engineering (Week 1-3)</span><span>20 节课</span></div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L01</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Pre-work：必要知识储备</span>
+    <span class="lesson-duration">50min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">9 Lab</span> <span class="tag tag-todo">无 Learn</span>
   </div>
-
-  <!-- New labs needed -->
-  <div style="padding:20px 28px;border-top:2px solid #eee;background:#f0fdf4">
-    <h3 style="font-size:18px;font-weight:900;margin-bottom:12px">需新建 0 个 Lab</h3>
-    <div style="font-size:14px;line-height:1.8;color:#333">
-      全部 48 个 Lab 已映射到现有平台资源（Prompt Lab、LLM Lab、Python Lab、AWS Lab、Git Lab），<strong>无需新建任何 Lab</strong>。翻转课堂模式下，学员课前完成 Lab 自学，直播课聚焦项目实操和答疑。
-    </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">python-lab: python-hello</span> <span class="tag tag-ok">python-lab: python-variables</span> <span class="tag tag-ok">python-lab: python-functions</span> <span class="tag tag-ok">python-lab: python-api-basics</span> <span class="tag tag-ok">git-lab: git-first-commit</span> <span class="tag tag-ok">git-lab: git-branch-basics</span> <span class="tag tag-ok">aws-lab: ec2-basics</span> <span class="tag tag-ok">aws-lab: iam-basics</span> <span class="tag tag-ok">aws-lab: secrets-manager</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (11)</span><span class="field-value" style="font-size:10px;color:#888">先修要求 → Python Lab: python-hello → Python Lab: python-variables → Python Lab: python-functions → Python Lab: python-api-basics → Git Lab: git-first-commit ... (+5)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L02</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Preparation：开发环境配置</span>
+    <span class="lesson-duration">25min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">3 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">python-lab: python-openai-api</span> <span class="tag tag-ok">python-lab: python-json</span> <span class="tag tag-ok">aws-lab: s3-storage</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">IDE + venv + API Key 配置 → Python Lab: python-openai-api → Python Lab: python-json → AWS Lab: s3-storage → OpenAI API 连通性验证 → 环境检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L03</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">LLM API 入门</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">各家 LLM API 快速入门 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L04</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">GenAI Overview + Ops</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">4 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: first-llm-experience</span> <span class="tag tag-ok">llm-lab: llm-concepts</span> <span class="tag tag-ok">llm-lab: llm-api-hands-on</span> <span class="tag tag-ok">prompt-lab: ai-basics</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/llm-api-basics</span> <span class="tag tag-ok">ai-engineer/ai-model-comparison</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (10)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: llm-api-basics → AI Engineer: ai-model-comparison → LLM Lab: first-llm-experience → LLM Lab: llm-concepts → GenAI 全景图 + AI Engineer 角色定位 + LLM Ops → LLM Lab: llm-api-hands-on ... (+4)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L05</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">开课讲解会</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">课程结构 4 Phase + 7 Project + 评估方式 → 学员介绍 + 分组 + ISA 方向确认 → 12 周学习计划</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L06</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Structured Data vs Unstructured Data</span>
+    <span class="lesson-duration">15min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">结构化 vs 非结构化数据 → LLM 处理非结构化数据的优势 → 数据类型检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L07</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Introduction to Machine Learning</span>
+    <span class="lesson-duration">15min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">ML 核心概念 → 特征工程、训练/验证/测试集、过拟合 → ML 基础检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L08</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Supervised, Unsupervised &amp; Reinforcement Learning</span>
+    <span class="lesson-duration">15min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">三大学习范式 → RLHF 在 LLM 中的应用 → 学习范式检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L09</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Introduction to Deep Learning</span>
+    <span class="lesson-duration">20min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: ai-ml-basics</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (4)</span><span class="field-value" style="font-size:10px;color:#888">神经网络基础 → CNN/RNN 到 Transformer 的演进 → LLM Lab: ai-ml-basics → DL 基础检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L10</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI 模型对比参考</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">GPT-4o vs Claude vs Gemini vs Llama 4 vs DeepSeek vs Qwen 对比 → 模型对比检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L11</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Transformer Architecture + API</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: transformer-attention</span> <span class="tag tag-ok">prompt-lab: model-parameters</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/basics</span> <span class="tag tag-ok">prompt-master/elements</span> <span class="tag tag-ok">prompt-master/settings</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (11)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Master: basics → Prompt Master: elements → Prompt Master: settings → The Transformer Architecture → Input Embeddings → LLM Lab: transformer-attention ... (+5)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L12</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">GenAI Capstone Project: ISA</span>
+    <span class="lesson-duration">16min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">ISA 项目说明 + 评分标准 → 每 Phase 的 ISA 升级路径 → ISA Proposal 提交</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L13</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">The Four Prototyping Patterns</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: zero-shot</span> <span class="tag tag-ok">prompt-lab: few-shot</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/zero-shot</span> <span class="tag tag-ok">prompt-master/few-shot</span> <span class="tag tag-ok">prompt-master/prompt-chaining</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (10)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Master: zero-shot → Prompt Master: few-shot → Prompt Master: prompt-chaining → Prompt Lab: zero-shot → Prompt Lab: few-shot → 四大模式决策矩阵 ... (+4)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L14</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Context Engineering: From Prompts to Systems</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">6 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: context-engineering</span> <span class="tag tag-ok">prompt-lab: context-management</span> <span class="tag tag-ok">prompt-lab: chain-of-thought</span> <span class="tag tag-ok">prompt-lab: system-prompt-design</span> <span class="tag tag-ok">prompt-lab: output-format</span> <span class="tag tag-ok">prompt-lab: json-schema</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/context-fundamentals</span> <span class="tag tag-ok">ai-engineer/context-engineering-memory</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (15)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: context-fundamentals → AI Engineer: context-engineering-memory → Context Engineering 定义 + Gartner 2026 (57% Agent 失败是上下文失败) → Prompt Lab: context-engineering → Prompt Lab: context-management → 四层上下文：System / Retrieved / Memory / Task ... (+9)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L15</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Vibe Coding: AI-Assisted Development</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">7 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: code-generation</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">vibe-coding/what-is-vibe-coding</span> <span class="tag tag-ok">vibe-coding/install-cursor</span> <span class="tag tag-ok">vibe-coding/first-prompt</span> <span class="tag tag-ok">vibe-coding/vibe-mindset</span> <span class="tag tag-ok">vibe-coding/debug-with-ai</span> <span class="tag tag-ok">vibe-coding/pair-programming</span> <span class="tag tag-ok">vibe-coding/cursor-rules</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (12)</span><span class="field-value" style="font-size:10px;color:#888">Vibe Coding: what-is-vibe-coding → Vibe Coding: install-cursor → Vibe Coding: first-prompt → Vibe Coding: vibe-mindset → Prompt Lab: code-generation → Cursor vs Claude Code 现场对比 + .cursorrules / CLAUDE.md ... (+6)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L16</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Building Your First GPT in GPT Store</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">从创建到发布 Custom GPT 完整流程 → 构建一个有明确场景的 Custom GPT → GPT Store 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L17</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Context Engineering Playbook</span>
+    <span class="lesson-duration">33min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: prompt-evaluation</span> <span class="tag tag-ok">prompt-lab: self-consistency</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/context-compression-optimization</span> <span class="tag tag-ok">ai-engineer/context-degradation-patterns</span> <span class="tag tag-ok">prompt-master/cot</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (8)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: context-compression-optimization → AI Engineer: context-degradation-patterns → Prompt Master: cot → 上下文设计模式全集 → Context Window 管理策略 → Prompt Lab: prompt-evaluation ... (+2)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L18</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Vibe Coding 工具对比</span>
+    <span class="lesson-duration">20min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">vibe-coding/security-privacy</span> <span class="tag tag-ok">vibe-coding/prompt-patterns</span> <span class="tag tag-ok">vibe-coding/understand-ai</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">Vibe Coding: security-privacy → Cursor vs Claude Code vs Copilot 详细对比 → Vibe Coding: prompt-patterns → Vibe Coding: understand-ai → Vibe Coding 工具选择</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L19</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">GenAI Toolbox</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">AI 工具全景图：写作、代码、设计、数据分析 → 工具选择检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L20</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">RAG 系统入门</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">RAG 设计和实现参考 → 检查</span></div>
+  </div>
+</div>
+<div class="phase-header"><span>PHASE 2: RAG 系统全栈开发 (Week 4-6)</span><span>29 节课</span></div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L21</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Introduction to Embeddings</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: rag-basics</span> <span class="tag tag-ok">llm-lab: rag-feature-pipeline</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/rag-basics</span> <span class="tag tag-ok">prompt-master/rag</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (8)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: rag-basics → Prompt Master: rag → Prompt Lab: rag-basics → LLM Lab: rag-feature-pipeline → Embedding Models vs LLM Chat Models + 相似度计算 → Embedding API + Cosine Similarity + t-SNE 可视化 ... (+2)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L22</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Embedding Models vs LLM Chat Models</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/rag-basics</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: rag-basics → 用途、API、成本、维度差异 → 主流模型对比：OpenAI text-embedding-3, Cohere, BGE → 对比不同 Embedding Model 效果 → Embedding 模型检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L23</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Introduction to RAG</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: rag-inference-pipeline</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/langchain-framework</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (4)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: langchain-framework → LLM Lab: rag-inference-pipeline → RAG 架构 + Naive vs Advanced RAG + Vector Store 选型 → RAG 概念检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L24</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">RAG from Scratch in Python</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">纯 Python + FAISS 全流程 coding → Query Rewriting + Re-ranking + Citation 优化 → RAG 实现检查 → RAG from Scratch 代码 + 优化对比 → AI 扮演用户不断提问，测试你的 RAG 系统回答质量并指出检索失败的 case</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L25</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">RAG Builder Toolbox</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">RAG 构建工具全景：Vector DB、Chunking 库、Embedding 服务 → 工具选型检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L26</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI Resource Hub</span>
+    <span class="lesson-duration">3min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (1)</span><span class="field-value" style="font-size:10px;color:#888">AI 学习资源合集：论文、博客、开源项目</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L27</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Building Simple User Interfaces in Python</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (4)</span><span class="field-value" style="font-size:10px;color:#888">Streamlit / Gradio 快速搭建前端 → Streamlit vs Gradio 选型：适用场景 + API 对比 → 用 Streamlit 搭建简单聊天界面 → UI 框架检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L28</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">PDF Parsing 101</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: cost-optimization</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">vibe-coding/data-rag</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">Vibe Coding: data-rag → PyPDF2, pdfplumber, Unstructured — 表格和图片处理 → 非结构化数据处理：表格提取、图片 OCR、多格式兼容 → Prompt Lab: cost-optimization → 解析一个多格式 PDF 并提取结构化数据 → PDF 解析检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L29</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">LLM Rate Limits</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">Token 限制、RPM/TPM 限流、指数退避重试 → API 成本管理：预算、tracking、fallback → Rate Limiting 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L30</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">P3 职业孵化器 Proposal</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">P3 职业孵化器介绍：12 周 Sprint 节奏 + Demo Day + 求职闭环 → P3 项目方向讨论 + 组队 + 角色分工（AI Dev / DevOps / PM / QA / Data） → P3 Proposal（问题定义 + 技术选型 + 团队分工 + Sprint 计划）</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L31</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Budgeting and API Costs</span>
+    <span class="lesson-duration">12min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">LLM API 成本估算、预算控制、fallback 策略 → 成本管理检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L32</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Production RAG Application</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">3 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: llm-tooling</span> <span class="tag tag-ok">aws-lab: lambda-serverless</span> <span class="tag tag-ok">aws-lab: serverless-api</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">vibe-coding/ship-a-feature</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (7)</span><span class="field-value" style="font-size:10px;color:#888">Vibe Coding: ship-a-feature → LLM Lab: llm-tooling → Streamlit + PDF + Rate Limiting 完整应用搭建 → AWS Lab: lambda-serverless → AWS Lab: serverless-api → Production RAG 检查 ... (+1)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L33</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">End-to-End RAG Toolbox</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">完整 RAG 技术栈：Parser → Chunker → Embedder → Store → Retriever → 技术栈选型</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L34</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Introduction to LangChain</span>
+    <span class="lesson-duration">20min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/prompt-chaining</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (4)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Master: prompt-chaining → LangChain 设计哲学和模块总览 → LCEL pipe 语法概述 → LangChain 基础检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L35</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">LangChain Core Constructs</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: prompt-chaining</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">vibe-coding/api-fullstack</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">Vibe Coding: api-fullstack → Prompt Lab: prompt-chaining → LLMs, Prompts, Chains, Memory, Retrievers → LCEL 3-step Chain + Memory 多轮对话 → LangChain 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L36</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">LangChain Expression Language</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: qa-system-design</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (4)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Lab: qa-system-design → Chains and Runnables 声明式组合 → 自定义 Runnable + 日志和错误处理 → 用 LangChain 重写 RAG + 对比报告</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L37</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Monitoring and Visibility with LangSmith</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: mlops-llmops</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">LLM Lab: mlops-llmops → LangSmith Trace + Debugging + Dataset Testing → LangSmith 接入 + bottleneck 定位 + 10 条测试评测 → LangSmith 检查 → ISA 接入 LangSmith + 3 个 Trace 分析</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L38</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">GraphRAG 入门</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">GraphRAG 原理和应用场景 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L39</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">LLMs Overview</span>
+    <span class="lesson-duration">12min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">主流 LLM 对比：GPT-4o, Claude, Gemini, Llama 4, DeepSeek, Qwen → 模型对比检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L40</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">GraphRAG + 混合检索</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">aws-lab: opensearch-vector-search</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/graph-prompts</span> <span class="tag tag-ok">vibe-coding/data-rag</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (10)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Master: graph-prompts → Vibe Coding: data-rag → 纯向量检索局限 + Knowledge Graph 构建 → 混合检索：Vector + BM25 + Graph 三路 + RRF → AWS Lab: opensearch-vector-search → Neo4j + LangChain GraphRAG 现场构建 ... (+4)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L41</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">RAG Evaluation</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: llm-evaluation</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">LLM Lab: llm-evaluation → 四指标：Context Recall, Precision, Relevancy, Faithfulness → RAG Eval 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L42</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">RAG Metrics 详解</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: prompt-evaluation</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Lab: prompt-evaluation → 每个指标的计算方式和优化策略 → 根据评估结果优化 RAG（调 Chunking / Retrieval / Prompt） → Metrics 检查 → AI 扮演 ML Engineer 挑战你的评估方法论 — 为什么选这个指标？阈值怎么定的？</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L43</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Vibe Coding for RAG Optimization</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">vibe-coding/ship-a-feature</span> <span class="tag tag-ok">vibe-coding/multi-file</span> <span class="tag tag-ok">vibe-coding/ai-testing-quality</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">Vibe Coding: ship-a-feature → Vibe Coding: multi-file → Vibe Coding: ai-testing-quality → 用 AI 辅助快速迭代优化 RAG 代码 → 用 Cursor/Claude Code 做 RAG 优化 → Vibe Coding 实操检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L44</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">RAGAS Framework</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">RAGAS 自动化评估框架 → 用 RAGAS 评估 W4-W6 所有 RAG 应用 → RAGAS 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L45</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Langfuse</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">Langfuse 开源 LLM 可观测平台 → 接入 Langfuse + 对比 LangSmith vs Langfuse → Langfuse 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L46</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">RAG Evaluation Toolbox</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">RAG 评估工具全景：RAGAS, Langfuse, TruLens, DeepEval → 工具对比</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L47</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">GraphRAG 技术全景</span>
+    <span class="lesson-duration">8min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">GraphRAG vs RAPTOR vs HippoRAG 对比 → Knowledge Graph 构建工具链 → GraphRAG 工具选型</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L48</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">RAG QA Application with LangChain</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">综合架构：LangChain + ChromaDB/Neo4j + LangSmith + Streamlit → 综合项目 coding → 部署 + README + RAGAS 报告</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L49</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">用 AWS 构建 RAG 应用</span>
+    <span class="lesson-duration">22min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">aws-lab: bedrock-foundation-models</span> <span class="tag tag-ok">aws-lab: bedrock-rag-knowledge-bases</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (4)</span><span class="field-value" style="font-size:10px;color:#888">AWS Bedrock + Lambda + S3 构建 Serverless RAG → AWS Lab: bedrock-foundation-models → AWS Lab: bedrock-rag-knowledge-bases → AWS RAG 检查</span></div>
+  </div>
+</div>
+<div class="phase-header"><span>PHASE 3: AI Agents 工程化 (Week 7-9)</span><span>25 节课</span></div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L50</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Agents 基础</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: react-agent</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/ai-agent</span> <span class="tag tag-ok">prompt-master/react</span> <span class="tag tag-ok">prompt-master/reflexion</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: ai-agent → Prompt Master: react → Prompt Master: reflexion → Prompt Lab: react-agent → Agent = LLM + 推理 + 工具 + 记忆 → Agent 基础检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L51</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">The ReAct Framework</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: tool-use</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/react</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Master: react → Prompt Lab: tool-use → Thought → Action → Observation 循环 → 手写 ReAct 循环（纯 Python） → ReAct 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L52</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Function Calling + Tool Use</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: ai-agent-patterns</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/function-calling-tool-use</span> <span class="tag tag-ok">ai-engineer/tool-design-principles</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: function-calling-tool-use → AI Engineer: tool-design-principles → LLM Lab: ai-agent-patterns → OpenAI Function Calling API + Tool Schema 定义 → 给 Agent 加 3 工具：Search + RAG + Calculator → Function Calling 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L53</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Agent SDK 对比: OpenAI / Claude / Google ADK</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: multi-agent</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/agent-frameworks</span> <span class="tag tag-ok">ai-engineer/agent-frameworks-compare</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (9)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: agent-frameworks → AI Engineer: agent-frameworks-compare → Prompt Lab: multi-agent → 三大 SDK 对比维度：API / 工具集成 / 多 Agent / 可观测 / 生态 → 同一任务用 3 个 SDK 实现 + DevX 对比 → 代码量/延迟/可控性对比报告 ... (+3)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L54</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Agent SDK 对比参考</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">OpenAI vs Claude vs Google ADK vs LangGraph 详细对比 → SDK 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L55</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Deploying and Operating RAG in Production</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">RAG 生产部署：缓存、并发、监控、failover → Production 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L56</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Agent 详解：构建第一个 Agent</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">Agent 架构详解 → 用 Agent SDK + 3 工具构建综合 Agent → 综合 Agent 应用</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L57</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Production-grade Agentic RAG</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">Agentic RAG vs Naive RAG + 路由决策 + 错误恢复 → Agent 层 + 多工具路由 + LangSmith 监控 → ISA Agent 升级 + LangSmith Trace</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L58</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Multi-Agent Architectures</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/multi-agent-patterns</span> <span class="tag tag-ok">prompt-master/tot</span> <span class="tag tag-ok">prompt-master/graph-prompts</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: multi-agent-patterns → Prompt Master: tot → Prompt Master: graph-prompts → 三种架构：Hierarchical / Collaborative / Supervised → Multi-Agent 架构检查 → AI 模拟多个 Agent 的对话，你判断路由决策是否正确</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L59</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Multi-Agent + LangGraph</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/workflow-automation</span> <span class="tag tag-ok">vibe-coding/ai-agents-tools</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: workflow-automation → Vibe Coding: ai-agents-tools → LangGraph StateGraph + Nodes + Edges + Checkpointing → LangGraph 4-Agent 系统构建 + 状态图可视化 → AI 模拟 4 个 Agent 的对话日志，你判断路由决策是否正确并修复错误路由 → LangGraph 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L60</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Agent Memory + Mem0</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/context-engineering-memory</span> <span class="tag tag-ok">ai-engineer/agent-advanced</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (8)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: context-engineering-memory → AI Engineer: agent-advanced → 三层记忆：Episodic / Semantic / State + Graph Memory → Mem0 集成 + 有/无记忆对比 → 10 轮对话测试 → AI 引导你在本地集成 Mem0，逐步 Debug 记忆存储和检索问题 ... (+2)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L61</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">A2A Protocol + Agent 互操作</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/art</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Master: art → MCP (工具) vs A2A (Agent 通信) vs ACP → A2A 双 Agent 通信 + Agent Card + MCP 组合 → MCP + A2A 架构设计 → 协议检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L62</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">A2A Protocol 入门</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">A2A 协议详解 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L63</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Agent Ops with LangSmith</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">Observability + Evaluation + Guardrails 三支柱 → LangSmith Multi-Agent Trace → Agent Ops 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L64</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Multi-Agent RAG with LangGraph</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">Multi-Agent RAG 综合项目 → 部署 + LangGraph 状态图 + LangSmith Trace + Demo URL</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L65</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Multi-Agent + Protocol Ecosystem Map</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">MCP / A2A / ACP / UCP 协议全景 → 协议生态检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L66</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Agent Memory 技术全景</span>
+    <span class="lesson-duration">8min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">Mem0 vs Zep vs LangMem 对比 → Graph Memory 实现方式 → Memory 框架选型</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L67</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Introducing MCP</span>
+    <span class="lesson-duration">180min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">MCP 协议概览 → 为什么需要标准化 AI 工具连接 → MCP 概念检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L68</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">MCP Server 构建 + Production 集成</span>
+    <span class="lesson-duration">180min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">4 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/mcp-best-practices</span> <span class="tag tag-ok">ai-engineer/mcp-releasing</span> <span class="tag tag-ok">vibe-coding/mcp-setup</span> <span class="tag tag-ok">vibe-coding/mcp-sync</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (10)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: mcp-best-practices → AI Engineer: mcp-releasing → Vibe Coding: mcp-setup → Vibe Coding: mcp-sync → 解读 MCP 源码 → MCP 架构 + TypeScript SDK ... (+4)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L69</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Production Agents: Computer Use + Agent Ops</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">5 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: hallucination-defense</span> <span class="tag tag-ok">aws-lab: cloudwatch-monitoring</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/debugging-incident-playbook</span> <span class="tag tag-ok">vibe-coding/claude-code-skills</span> <span class="tag tag-ok">vibe-coding/claude-code-agents</span> <span class="tag tag-ok">vibe-coding/observability-guardrails</span> <span class="tag tag-ok">vibe-coding/security-privacy</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (11)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: debugging-incident-playbook → Vibe Coding: claude-code-skills → Vibe Coding: claude-code-agents → Vibe Coding: observability-guardrails → Vibe Coding: security-privacy → Prompt Lab: hallucination-defense ... (+5)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L70</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Computer Use 技术全景</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">Claude Computer Use vs ChatGPT Operator vs agent-browser → Computer Use 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L71</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Agent Ops 最佳实践</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">Tracing + Eval + Guardrails 最佳实践 → Agent Ops 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L72</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">MCP 发布指南</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">如何发布 MCP Server 到 npm/PyPI → MCP 发布检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L73</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Claude Code 技术原理</span>
+    <span class="lesson-duration">20min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">3 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/claude-code-context-management</span> <span class="tag tag-ok">ai-engineer/claude-code-examples</span> <span class="tag tag-ok">vibe-coding/claude-code-full-guide</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: claude-code-context-management → AI Engineer: claude-code-examples → 上下文管理与记忆机制 → Vibe Coding: claude-code-full-guide → Claude Code 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L74</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Skills 范式</span>
+    <span class="lesson-duration">15min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/agent-skills-paradigm</span> <span class="tag tag-ok">vibe-coding/claude-skill-codebook</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (4)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: agent-skills-paradigm → 从 Agent 到技能库的组织模式 → Vibe Coding: claude-skill-codebook → Skills 检查</span></div>
+  </div>
+</div>
+<div class="phase-header"><span>PHASE 4: 模型优化 + AI Evals + 毕业 (Week 10-12)</span><span>22 节课</span></div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L75</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Open-Weight Models + Model Routing</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">3 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: model-deployment</span> <span class="tag tag-ok">llm-lab: inference-optimization</span> <span class="tag tag-ok">aws-lab: sagemaker-ml-platform</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/deployment-cost-optimization</span> <span class="tag tag-ok">vibe-coding/performance-cost</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (10)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: deployment-cost-optimization → Vibe Coding: performance-cost → LLM Lab: model-deployment → LLM Lab: inference-optimization → AWS Lab: sagemaker-ml-platform → DeepSeek / Qwen 3.5 / Llama 4 格局 + Routing 策略 ... (+4)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L76</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">SDG for Fine-Tuning</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-ok">2 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: data-engineering</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/pal</span> <span class="tag tag-ok">prompt-master/generated-knowledge</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Master: pal → Prompt Master: generated-knowledge → Prompt-Based Data Generation + Self-Instruct / Evol-Instruct → LLM Lab: data-engineering → 用 GPT-4o 生成 500 条训练数据 + 质量过滤 → SDG 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L77</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Test Data Generation for RAG</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">In-Depth Evolution + Custom Synthetic Test Data → 为 RAG 系统生成不同难度评估数据 → 数据生成检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L78</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">SDG Toolkit</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">SDG 工具全景 + Open-Weight Model Landscape 2026 → 工具选型</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L79</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Fine-Tuning &amp; MTEB</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">为什么微调 Embedding + MTEB 评估基准 → MTEB 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L80</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Downloading Open-Source Model Weights</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">HuggingFace Hub 模型下载 + Model Card + License → 下载并加载一个 Open-Weight 模型 → 模型管理检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L81</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Loading LMs on GPU</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">GPU 显存计算 + FP32/FP16/BF16/INT8/INT4 → 在 Colab T4 上加载 INT4 量化模型 → GPU 加载检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L82</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Sentence Transformers &amp; Fine-Tuning Embeddings</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: supervised-fine-tuning</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (5)</span><span class="field-value" style="font-size:10px;color:#888">LLM Lab: supervised-fine-tuning → Sentence Transformers + Contrastive/Triplet Loss → 微调 Embedding + RAG 检索质量对比 → Embedding Fine-Tuning 检查 → ISA Embedding 微调 + MTEB 评测</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L83</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Fine-Tuning Toolkit</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">Unsloth vs LLaMA-Factory vs Axolotl 对比 → 工具选型</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L84</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">The Primary Roles of Fine-Tuning</span>
+    <span class="lesson-duration">30min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">prompt-master/prompt-coding</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (4)</span><span class="field-value" style="font-size:10px;color:#888">Prompt Master: prompt-coding → Style/Format + Knowledge + Capability 三角色 → 何时 Fine-Tuning vs RAG vs Prompt 决策矩阵 → Fine-Tuning 决策检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L85</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">PEFT + QLoRA + Unsloth</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">1 Lab</span> <span class="tag tag-todo">无 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: preference-alignment</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (6)</span><span class="field-value" style="font-size:10px;color:#888">LLM Lab: preference-alignment → LoRA 原理 + QLoRA = Quantization + LoRA → Unsloth: 2x 速度, 60% 省显存 → Unsloth + QLoRA 在 Colab 微调全流程 → AI 扮演 Data Scientist，Review 你的训练配置 — batch size、learning rate、数据质量 → PEFT 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L86</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Fine-Tuning Llama with PEFT-QLoRA</span>
+    <span class="lesson-duration">60min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">训练 3 epochs + 评估 + 合并导出 → Fine-Tuning 报告 + HuggingFace 发布 → AI 扮演 Data Scientist，Review 你的训练配置 — batch size、learning rate、数据质量</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L87</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">AI Evaluation Engineering</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">4 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">llm-lab: llm-evaluation</span> <span class="tag tag-ok">prompt-lab: prompt-evaluation</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/eval-quality-monitoring</span> <span class="tag tag-ok">ai-engineer/llm-judge-evaluation</span> <span class="tag tag-ok">ai-engineer/synthetic-data-augmentation</span> <span class="tag tag-ok">prompt-master/self-consistency</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (10)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: eval-quality-monitoring → AI Engineer: llm-judge-evaluation → AI Engineer: synthetic-data-augmentation → Prompt Master: self-consistency → LLM Lab: llm-evaluation → Prompt Lab: prompt-evaluation ... (+4)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L88</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Safety, Guardrails + Red-teaming</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">2 Lab</span> <span class="tag tag-ok">5 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Lab</span><span class="field-value"><span class="tag tag-ok">prompt-lab: prompt-injection-defense</span> <span class="tag tag-ok">prompt-lab: hallucination-defense</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/security-threat-modeling</span> <span class="tag tag-ok">ai-engineer/data-governance-privacy</span> <span class="tag tag-ok">prompt-master/jailbreaking</span> <span class="tag tag-ok">prompt-master/prompt-adversarial</span> <span class="tag tag-ok">prompt-master/prompt-leaking</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (12)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: security-threat-modeling → AI Engineer: data-governance-privacy → Prompt Master: jailbreaking → Prompt Master: prompt-adversarial → Prompt Master: prompt-leaking → Prompt Lab: prompt-injection-defense ... (+6)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L89</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Evaluation &amp; Quality Monitoring</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">LLM 应用评估和质量监控体系 → 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L90</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">AI Eval Tools 全景</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">LangSmith vs Braintrust vs RAGAS vs DeepEval 对比 → Eval 工具选型</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L91</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">Red-teaming Playbook</span>
+    <span class="lesson-duration">5min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (2)</span><span class="field-value" style="font-size:10px;color:#888">常见 LLM 攻击手法和防御策略 → Red-teaming 检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L92</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">LinkedIn &amp; CV Workshop</span>
+    <span class="lesson-duration">17min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">LinkedIn profile 优化 + AI Engineer 简历写法 → 用 12 周技术重写简历 → 简历检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L93</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">P3 职业孵化器 Demo Day</span>
+    <span class="lesson-duration">120min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (4)</span><span class="field-value" style="font-size:10px;color:#888">P3 Demo Day 说明：面向企业展示 P3 项目成果，10 分钟 Live Demo + 5 分钟 Q&amp;A → 评审标准：技术架构 40% · 产品完成度 30% · 展示表达 20% · 创新性 10% → 每组 10+5 分钟：P3 项目 Live Demo + 招聘合作企业 Q&amp;A → P3 项目交付物：GitHub 仓库 + Demo URL + 技术文档 + Case Study</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L94</span>
+    <span class="lesson-type type-info">📖 自学</span>
+    <span class="lesson-title">往期 P3 项目案例</span>
+    <span class="lesson-duration">15min</span>
+    <span class="tag tag-missing">❌</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (3)</span><span class="field-value" style="font-size:10px;color:#888">往期优秀 P3 职业孵化项目案例分享 → P3 项目选题方向：RAG 系统 / Agent 应用 / AI SaaS / 内部工具 → P3 项目规划检查</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L95</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">AI Engineer 职业路径</span>
+    <span class="lesson-duration">90min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">4 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/ai-product-ux</span> <span class="tag tag-ok">ai-engineer/production-deployment</span> <span class="tag tag-ok">vibe-coding/continuous-improvement</span> <span class="tag tag-ok">vibe-coding/team-workflow</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (8)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: ai-product-ux → AI Engineer: production-deployment → Vibe Coding: continuous-improvement → Vibe Coding: team-workflow → AI Engineer / Agent Developer / Eval Engineer / Platform Engineer → Junior $100-150K → Mid $150-220K → Senior $220-350K+ ... (+2)</span></div>
+  </div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-header" onclick="toggle(this)">
+    <span class="lesson-code">L96</span>
+    <span class="lesson-type type-live">🔴 直播</span>
+    <span class="lesson-title">Claude Code Skills 最佳实践</span>
+    <span class="lesson-duration">180min</span>
+    <span class="tag tag-missing">❌</span> <span class="tag tag-ok">8 Learn</span>
+  </div>
+  <div class="lesson-body">
+<div class="field-row"><span class="field-label">描述</span><span class="field-value"><span class="tag tag-missing">未填写</span></span></div>
+<div class="field-row"><span class="field-label">Learn</span><span class="field-value"><span class="tag tag-ok">ai-engineer/ai-coding-workflow</span> <span class="tag tag-ok">ai-engineer/ai-rules-config</span> <span class="tag tag-ok">ai-engineer/agent-skills-paradigm</span> <span class="tag tag-ok">vibe-coding/claude-code-commands</span> <span class="tag tag-ok">vibe-coding/claude-code-agents</span> <span class="tag tag-ok">vibe-coding/vibe-coding-sop</span> <span class="tag tag-ok">vibe-coding/api-fullstack</span> <span class="tag tag-ok">vibe-coding/automation-cli</span></span></div>
+<div class="field-row"><span class="field-label">教学步骤 (11)</span><span class="field-value" style="font-size:10px;color:#888">AI Engineer: ai-coding-workflow → AI Engineer: ai-rules-config → AI Engineer: agent-skills-paradigm → Vibe Coding: claude-code-commands → Vibe Coding: claude-code-agents → Vibe Coding: vibe-coding-sop ... (+5)</span></div>
   </div>
 </div>
 
-<!-- ============ TEACHER ASSIGNMENT ============ -->
-<div style="margin-top:48px;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden">
-  <div style="padding:20px 28px;background:var(--indigo);color:#fff;border-bottom:3px solid #000">
-    <h2 style="font-size:24px;font-weight:900">老师分工建议</h2>
-    <p style="font-size:14px;opacity:0.8;margin-top:4px">按 Phase 分配，每个 Phase 需要不同技术背景的老师</p>
-  </div>
-
-  <table style="width:100%;border-collapse:collapse;font-size:13px">
-    <thead>
-      <tr style="background:#f5f5f5">
-        <th style="padding:12px 14px;text-align:left;border-bottom:2px solid #ddd;width:15%">Phase</th>
-        <th style="padding:12px 14px;text-align:left;border-bottom:2px solid #ddd;width:20%">核心技能要求</th>
-        <th style="padding:12px 14px;text-align:left;border-bottom:2px solid #ddd;width:25%">教学内容</th>
-        <th style="padding:12px 14px;text-align:left;border-bottom:2px solid #ddd;width:20%">老师画像</th>
-        <th style="padding:12px 14px;text-align:center;border-bottom:2px solid #ddd;width:20%">工作量</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:12px 14px;font-weight:900;color:var(--indigo)">Phase 1<br><span style="font-size:11px;font-weight:400">Week 1-3</span></td>
-        <td style="padding:12px 14px">GenAI 全景<br>Transformer 原理<br>Context Engineering<br>Vibe Coding</td>
-        <td style="padding:12px 14px;font-size:12px">6 节直播 + 录播/自学<br>ISA 项目启动 + Context Engineering + Vibe Coding 实操</td>
-        <td style="padding:12px 14px;font-size:12px">熟悉 AI/ML 理论<br>有 LLM API 实操经验<br>Context Engineering + Vibe Coding 经验<br>能讲清 Transformer</td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#f0f4ff;font-weight:700;color:var(--indigo);border:2px solid var(--indigo)">~4h 直播</span></td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:12px 14px;font-weight:900;color:var(--teal)">Phase 2<br><span style="font-size:11px;font-weight:400">Week 4-6</span></td>
-        <td style="padding:12px 14px">RAG 架构<br>GraphRAG<br>LangChain / LangSmith<br>向量数据库</td>
-        <td style="padding:12px 14px;font-size:12px">19 节直播 + 录播/自学<br>3 个 RAG 项目 + GraphRAG</td>
-        <td style="padding:12px 14px;font-size:12px">有 RAG 生产经验<br>熟悉 LangChain 生态<br>Neo4j/GraphRAG 经验<br>能讲评估方法论</td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#ecfdf5;font-weight:700;color:var(--teal);border:2px solid var(--teal)">~13h 直播</span></td>
-      </tr>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:12px 14px;font-weight:900;color:var(--orange)">Phase 3<br><span style="font-size:11px;font-weight:400">Week 7-9</span></td>
-        <td style="padding:12px 14px">Agent 架构<br>3 大 Agent SDK<br>A2A + Mem0<br>LangGraph + MCP</td>
-        <td style="padding:12px 14px;font-size:12px">14 节直播 + 录播/自学<br>Agent SDK 对比 + Multi-Agent + A2A + Computer Use</td>
-        <td style="padding:12px 14px;font-size:12px">Agent SDK 对比经验<br>A2A 协议 + Mem0 经验<br>懂 Claude Code 生态<br>有 Multi-Agent 生产经验</td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#fff7ed;font-weight:700;color:var(--orange);border:2px solid var(--orange)">~9h 直播</span></td>
-      </tr>
-      <tr>
-        <td style="padding:12px 14px;font-weight:900;color:var(--red)">Phase 4<br><span style="font-size:11px;font-weight:400">Week 10-12</span></td>
-        <td style="padding:12px 14px">Fine-Tuning<br>PEFT / QLoRA<br>AI Eval + Safety<br>模型部署</td>
-        <td style="padding:12px 14px;font-size:12px">15 节直播 + 录播/自学<br>Open-Weight 模型 + Eval Pipeline + Safety + Demo Day</td>
-        <td style="padding:12px 14px;font-size:12px">模型微调 + AI Eval + Safety 经验<br>熟悉 HuggingFace 生态<br>vLLM 部署经验<br>Red-teaming 实操</td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#fef2f2;font-weight:700;color:var(--red);border:2px solid var(--red)">~10h 直播</span></td>
-      </tr>
-    </tbody>
+<div class="box" style="margin-top:24px">
+  <div class="box-h" style="background:#374151;color:#fff"><strong>Production IDs</strong></div>
+  <table class="config-table">
+    <tr><td>Training</td><td style="font-family:'Space Mono',monospace">待确认 — 已有 production 数据</td></tr>
+    <tr><td>Program</td><td style="font-family:'Space Mono',monospace">待确认</td></tr>
+    <tr><td>Syllabus</td><td style="font-family:'Space Mono',monospace">待确认</td></tr>
+    <tr><td>SDM 管理</td><td><a href="http://localhost:5188/bootcamp/ai-engineer-bootcamp">http://localhost:5188/bootcamp/ai-engineer-bootcamp</a></td></tr>
   </table>
-
-  <div style="padding:16px 28px;border-top:2px solid #eee;background:#f0fdf4;font-size:14px;line-height:1.8">
-    <strong>总计：</strong>~36h 直播教学（翻转课堂模式，54 节直播课 x ~40min/节）+ 录播录制 + 作业批改。比第四期 (~60h) 减少 40%。建议至少 <strong>2 位老师</strong>分工 (Phase 1-2 一位 + Phase 3-4 一位)，或 <strong>4 位老师</strong>每人负责一个 Phase。
-  </div>
-</div>
-
-<!-- ============ JD GAP ANALYSIS ============ -->
-<div style="margin-top:48px;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden">
-  <div style="padding:20px 28px;background:#dc2626;color:#fff;border-bottom:3px solid #000">
-    <h2 style="font-size:24px;font-weight:900">JD 对比分析：市场要什么 vs 我们教什么</h2>
-    <p style="font-size:14px;opacity:0.8;margin-top:4px">基于 15 份真实 AI Engineer / LLM Engineer JD (OpenAI / Anthropic / Google / Meta / Amazon / Databricks / Scale AI / Startup)</p>
-  </div>
-
-  <div style="padding:16px 28px;background:#fef2f2;border-bottom:2px solid #eee;font-size:15px;line-height:1.8">
-    <strong>核心发现：</strong>2026 年 AI Engineer JD 的关键词从 "RAG + MCP" 进一步演进到 <strong>Agent SDK + Context Engineering + AI Eval + Safety</strong>。雇主要的不只是能调 API，而是能评估模型输出质量、防御攻击、跨 SDK 构建 Agent 系统的全栈工程师。
-  </div>
-
-  <!-- 7 skills mapping -->
-  <table style="width:100%;border-collapse:collapse;font-size:13px">
-    <thead>
-      <tr style="background:#f5f5f5">
-        <th style="padding:12px 14px;text-align:left;border-bottom:2px solid #ddd;font-family:'Space Mono',monospace;width:6%">排名</th>
-        <th style="padding:12px 14px;text-align:left;border-bottom:2px solid #ddd;width:20%">JD 要求的能力</th>
-        <th style="padding:12px 14px;text-align:left;border-bottom:2px solid #ddd;width:8%">出现频率</th>
-        <th style="padding:12px 14px;text-align:left;border-bottom:2px solid #ddd;width:30%">JD 具体要求</th>
-        <th style="padding:12px 14px;text-align:left;border-bottom:2px solid #ddd;width:26%">我们课程覆盖</th>
-        <th style="padding:12px 14px;text-align:center;border-bottom:2px solid #ddd;width:10%">覆盖度</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:12px 14px;font-weight:900;font-size:18px;color:var(--red)">1</td>
-        <td style="padding:12px 14px;font-weight:800">AI Agent 开发<br>Agent Orchestration</td>
-        <td style="padding:12px 14px"><span style="background:var(--red);color:#fff;padding:2px 8px;font-weight:700;font-family:'Space Mono',monospace">9/10</span></td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          → Agent SDK (OpenAI / Claude / Google ADK)<br>
-          → Multi-Agent 系统 (LangGraph)<br>
-          → Agent Memory (Mem0 / 长期记忆)<br>
-          → A2A 协议 + Agent 互操作<br>
-          → Computer Use / Browser Automation
-        </td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          <strong>Phase 3 完整覆盖 (3 周)</strong><br>
-          <strong>W7</strong> ReAct + Function Calling + 3 大 SDK 对比<br>
-          <strong>W8</strong> Multi-Agent + Mem0 + A2A<br>
-          <strong>W9</strong> MCP + Computer Use + Agent Ops<br>
-          <strong>3 个 Agent 项目</strong>递进式实操
-        </td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#dcfce7;font-weight:900;font-size:14px;border:2px solid #16a34a;color:#16a34a">95%</span></td>
-      </tr>
-
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:12px 14px;font-weight:900;font-size:18px;color:var(--red)">2</td>
-        <td style="padding:12px 14px;font-weight:800">Context Engineering<br>上下文工程</td>
-        <td style="padding:12px 14px"><span style="background:var(--red);color:#fff;padding:2px 8px;font-weight:700;font-family:'Space Mono',monospace">8/10</span></td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          → Context Window 优化策略<br>
-          → System Prompt / CLAUDE.md / Cursor Rules 设计<br>
-          → Token 预算管理 + 上下文压缩<br>
-          → 结构化输出 (JSON Schema)<br>
-          → 多轮对话上下文管理
-        </td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          <strong>Phase 1 Week 3 专课</strong><br>
-          <strong>W3.1</strong> Context Engineering 全流程<br>
-          Context stuffing / 压缩 / Token 管理<br>
-          CLAUDE.md + Cursor Rules 实操<br>
-          贯穿全课程的上下文设计思维
-        </td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#dcfce7;font-weight:900;font-size:14px;border:2px solid #16a34a;color:#16a34a">90%</span></td>
-      </tr>
-
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:12px 14px;font-weight:900;font-size:18px;color:var(--red)">3</td>
-        <td style="padding:12px 14px;font-weight:800">RAG 架构 (含 GraphRAG)<br>RAG Architecture</td>
-        <td style="padding:12px 14px"><span style="background:var(--red);color:#fff;padding:2px 8px;font-weight:700;font-family:'Space Mono',monospace">9/10</span></td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          → 端到端 RAG pipeline<br>
-          → GraphRAG + Knowledge Graph<br>
-          → Hybrid Search (向量 + 图 + 关键词)<br>
-          → Chunking 策略、Re-ranking<br>
-          → RAG 评估指标
-        </td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          <strong>Phase 2 完整覆盖 (3 周)</strong><br>
-          <strong>W4</strong> RAG from Scratch (纯 Python + FAISS)<br>
-          <strong>W5</strong> Production RAG + LangChain<br>
-          <strong>W6</strong> GraphRAG + Neo4j + 混合检索<br>
-          <strong>3 个递进项目</strong>从零到 GraphRAG
-        </td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#dcfce7;font-weight:900;font-size:14px;border:2px solid #16a34a;color:#16a34a">95%</span></td>
-      </tr>
-
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:12px 14px;font-weight:900;font-size:18px;color:var(--red)">4</td>
-        <td style="padding:12px 14px;font-weight:800">LLM Ops 可观测<br>Monitoring & Eval</td>
-        <td style="padding:12px 14px"><span style="background:var(--orange);color:#fff;padding:2px 8px;font-weight:700;font-family:'Space Mono',monospace">7/10</span></td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          → LLM tracing + observability<br>
-          → Evaluation frameworks (offline + online)<br>
-          → A/B testing for prompts/models<br>
-          → Cost monitoring + budget alerts<br>
-          → Hallucination detection + quality metrics
-        </td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          <strong>W5.3</strong> LangSmith Tracing + Debugging<br>
-          <strong>W11.1</strong> Eval Pipeline (LangSmith + Braintrust)<br>
-          <strong>W9.2</strong> Agent Ops 监控<br>
-          贯穿每个项目的监控接入
-        </td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#dcfce7;font-weight:900;font-size:14px;border:2px solid #16a34a;color:#16a34a">90%</span></td>
-      </tr>
-
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:12px 14px;font-weight:900;font-size:18px;color:var(--red)">5</td>
-        <td style="padding:12px 14px;font-weight:800">Python 工程能力<br>Python + Backend</td>
-        <td style="padding:12px 14px"><span style="background:var(--orange);color:#fff;padding:2px 8px;font-weight:700;font-family:'Space Mono',monospace">7/10</span></td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          → Python 3.10+ 异步编程<br>
-          → FastAPI / Flask REST API<br>
-          → Docker 容器化<br>
-          → Git + CI/CD<br>
-          → 代码质量 (typing, testing, linting)
-        </td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          <strong>先修要求</strong> Python + API + Git 基础<br>
-          课程代码全部 Python<br>
-          7 个项目都有 GitHub 仓库要求<br>
-          <span style="color:var(--red);font-weight:700">Docker/CI 覆盖较浅</span>
-        </td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#fef3c7;font-weight:900;font-size:14px;border:2px solid #d97706;color:#d97706">75%</span></td>
-      </tr>
-
-      <tr style="border-bottom:1px solid #eee;background:#fafafa">
-        <td style="padding:12px 14px;font-weight:900;font-size:18px;color:var(--red)">6</td>
-        <td style="padding:12px 14px;font-weight:800">AI Eval & Safety<br>评估 + 安全</td>
-        <td style="padding:12px 14px"><span style="background:var(--red);color:#fff;padding:2px 8px;font-weight:700;font-family:'Space Mono',monospace">8/10</span></td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          → Eval Pipeline 构建 (自定义 Evaluator)<br>
-          → Red-teaming + Prompt Injection 防御<br>
-          → Guardrails (NeMo / Llama Guard)<br>
-          → Content Safety + PII 过滤<br>
-          → Eval 指标设计 + CI 集成
-        </td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          <strong>Phase 4 Week 11 专课 (第五期新增)</strong><br>
-          <strong>W11.1</strong> Eval Engineering — 完整 Pipeline<br>
-          <strong>W11.2</strong> Safety + Red-teaming 实操<br>
-          LangSmith + Braintrust 评测对比<br>
-          NeMo Guardrails + 攻击测试
-        </td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#dcfce7;font-weight:900;font-size:14px;border:2px solid #16a34a;color:#16a34a">90%</span></td>
-      </tr>
-
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:12px 14px;font-weight:900;font-size:18px;color:var(--red)">7</td>
-        <td style="padding:12px 14px;font-weight:800">云平台部署<br>Cloud Deployment</td>
-        <td style="padding:12px 14px"><span style="background:var(--blue);color:#fff;padding:2px 8px;font-weight:700;font-family:'Space Mono',monospace">6/10</span></td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          → AWS (Bedrock, Lambda, SageMaker)<br>
-          → GCP (Vertex AI)<br>
-          → Azure (Azure AI)<br>
-          → Kubernetes / Docker 部署<br>
-          → Serverless 架构
-        </td>
-        <td style="padding:12px 14px;font-size:12px;line-height:1.8">
-          <strong>W1.1</strong> AWS Bedrock API 调用<br>
-          <strong>W12.2</strong> AWS Agentcore<br>
-          <strong>录播</strong> 用 AWS 构建 RAG 应用<br>
-          <span style="color:var(--red);font-weight:700">GCP/Azure/K8s 不覆盖</span>
-        </td>
-        <td style="padding:12px 14px;text-align:center"><span style="padding:4px 12px;background:#fef3c7;font-weight:900;font-size:14px;border:2px solid #d97706;color:#d97706">60%</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- Gap analysis -->
-  <div style="padding:20px 28px;border-top:3px solid #000;background:#fffbeb">
-    <h3 style="font-size:18px;font-weight:900;margin-bottom:12px">JD 中的 Nice-to-Have（我们未覆盖/轻度覆盖）</h3>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px">
-      <div>
-        <div style="font-weight:700;margin-bottom:8px;color:#92400e">技术类 Nice-to-Have</div>
-        <table style="width:100%;border-collapse:collapse">
-          <tr><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0">Kubernetes / Docker Compose 编排</td><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0;color:#dc2626;font-weight:700">不覆盖</td></tr>
-          <tr><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0">GCP Vertex AI / Azure OpenAI</td><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0;color:#dc2626;font-weight:700">不覆盖 (只教 AWS)</td></tr>
-          <tr><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0">Multimodal (Vision + Audio)</td><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0;color:#dc2626;font-weight:700">不覆盖</td></tr>
-          <tr><td style="padding:4px 8px">Data Engineering (Spark / Kafka)</td><td style="padding:4px 8px;color:#dc2626;font-weight:700">不覆盖 (DE 岗)</td></tr>
-        </table>
-      </div>
-      <div>
-        <div style="font-weight:700;margin-bottom:8px;color:#92400e">软技能 / 认证</div>
-        <table style="width:100%;border-collapse:collapse">
-          <tr><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0">系统设计 (System Design)</td><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0;color:#d97706;font-weight:700">轻度 (项目中涉及)</td></tr>
-          <tr><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0">ML 研究论文阅读</td><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0;color:#d97706;font-weight:700">轻度 (Transformer 论文)</td></tr>
-          <tr><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0">AWS AI Practitioner 认证</td><td style="padding:4px 8px;border-bottom:1px solid #f0e4c0;color:#16a34a;font-weight:700">可配合 JR 认证课</td></tr>
-          <tr><td style="padding:4px 8px">传统 ML (XGBoost/Scikit-learn)</td><td style="padding:4px 8px;color:#dc2626;font-weight:700">不覆盖 (DS 岗)</td></tr>
-        </table>
-      </div>
-    </div>
-    <div style="margin-top:16px;padding:12px 16px;background:#fff;border:2px solid #fbbf24;font-size:14px;line-height:1.8">
-      <strong>结论：</strong>第五期新增 GraphRAG、AI Eval、Safety 后，之前的 nice-to-have 缺口已补上两个。未覆盖的主要是多云平台 (GCP/Azure)、容器编排 (K8s)、Multimodal 和 Data Engineering — 属于不同岗位方向。课程覆盖了 <strong>AI Engineer 核心 5 大能力 (Agent SDK + Context Engineering + RAG/GraphRAG + Eval/Safety + LLM Ops) 的 90-95%</strong>，和 2026 JD 需求高度对齐。
-    </div>
-  </div>
-
-  <!-- Salary reference -->
-  <div style="padding:16px 28px;border-top:2px solid #eee;background:#f0fdf4">
-    <h3 style="font-size:16px;font-weight:900;margin-bottom:8px">毕业生薪资参考 (AI Engineer)</h3>
-    <div style="display:flex;gap:24px;font-size:14px;flex-wrap:wrap">
-      <div><strong>Junior (0-2年):</strong> $100K-$150K USD</div>
-      <div><strong>Mid (2-5年):</strong> $150K-$220K USD</div>
-      <div><strong>Senior (5+年):</strong> $220K-$350K+ USD</div>
-      <div style="color:#888">来源: levels.fyi, Glassdoor, LinkedIn 2026</div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ MARKETING HIGHLIGHTS ============ -->
-<div style="margin-top:48px;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden">
-  <div style="padding:20px 28px;background:linear-gradient(135deg, #6366f1, #ec4899);color:#fff;border-bottom:3px solid #000">
-    <h2 style="font-size:24px;font-weight:900">销售亮点 & Marketing 素材</h2>
-    <p style="font-size:14px;opacity:0.8;margin-top:4px">给 Marketing 和销售团队直接用</p>
-  </div>
-
-  <!-- 第四期 vs 第五期 comparison -->
-  <div style="padding:24px 28px;border-bottom:3px solid #000;background:#f0f4ff">
-    <h3 style="font-size:20px;font-weight:900;margin-bottom:16px">第四期 → 第五期 升级对比</h3>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;background:#fff">
-      <thead>
-        <tr>
-          <th style="padding:10px 12px;border:2px solid #000;background:#f5f5f5;text-align:left;width:18%">模块</th>
-          <th style="padding:10px 12px;border:2px solid #000;background:#f5f5f5;text-align:left;width:30%">第四期</th>
-          <th style="padding:10px 12px;border:2px solid #000;background:#f5f5f5;text-align:left;width:30%">第五期 (2026)</th>
-          <th style="padding:10px 12px;border:2px solid #000;background:#FFDE59;text-align:center;width:12%">变化</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Phase 1 核心</td><td style="padding:8px 12px;border:1px solid #ddd">Prompt Engineering</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Context Engineering</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">升级</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Vibe Coding</td><td style="padding:8px 12px;border:1px solid #ddd">无专课</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Cursor + Claude Code 专课</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">新增</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">RAG</td><td style="padding:8px 12px;border:1px solid #ddd">向量检索</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">+ GraphRAG + 混合检索</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">升级</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Agent 框架</td><td style="padding:8px 12px;border:1px solid #ddd">LangChain Agent 为主</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">3 大 SDK 对比 (OpenAI/Claude/ADK)</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">升级</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Agent Memory</td><td style="padding:8px 12px;border:1px solid #ddd">ConversationBufferMemory</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Mem0 三层记忆 + Graph Memory</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">新增</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">MCP</td><td style="padding:8px 12px;border:1px solid #ddd">1 整周 (2 节课)</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">压缩为 1 课精华</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#fef3c7;font-weight:700;color:#92400e">精简</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">A2A 协议</td><td style="padding:8px 12px;border:1px solid #ddd">无</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Agent-to-Agent 互操作</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">新增</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Computer Use</td><td style="padding:8px 12px;border:1px solid #ddd">无</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Claude Computer Use + Operator</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#dcfce7;font-weight:700;color:#16a34a">新增</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">AI Eval</td><td style="padding:8px 12px;border:1px solid #ddd">RAGAS 1 课</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Eval Engineering 整周 + Red-teaming</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">升级</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Fine-Tuning 工具</td><td style="padding:8px 12px;border:1px solid #ddd">PEFT + QLoRA</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">+ Unsloth + LLaMA-Factory</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">升级</span></td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Open-Weight 模型</td><td style="padding:8px 12px;border:1px solid #ddd">Llama 3.1</td><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">DeepSeek + Qwen 3.5 + Llama 4 + 模型路由</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center"><span style="padding:2px 8px;background:#e0e7ff;font-weight:700;color:#4f46e5">升级</span></td></tr>
-      </tbody>
-    </table>
-    <div style="margin-top:12px;padding:10px 16px;background:#fff;border:2px solid var(--indigo);font-size:14px;font-weight:700;text-align:center">
-      11 项升级 · 4 项全新 · MCP 从 2 节精简到 1 节，腾出课时给 Agent SDK 对比、A2A、Mem0、Computer Use、AI Eval
-    </div>
-  </div>
-
-  <!-- One-liner -->
-  <div style="padding:24px 28px;background:#1a1a2e;color:#fff;border-bottom:3px solid #000;text-align:center">
-    <div style="font-size:12px;font-family:'Space Mono',monospace;color:rgba(255,255,255,0.5);margin-bottom:8px">ONE-LINER</div>
-    <div style="font-size:22px;font-weight:700;line-height:1.6;max-width:900px;margin:0 auto">
-      <span style="background:#6366f1;padding:2px 10px">12 周</span>从 Context Engineering 到 AI Eval Engineering，<span style="background:#ec4899;padding:2px 10px">7 个可部署项目</span>，<span style="background:#10b981;padding:2px 10px">3 大 Agent SDK 实操</span>，毕业即可应聘 AI Engineer。
-    </div>
-  </div>
-
-  <!-- 5 selling points -->
-  <div style="padding:24px 28px">
-    <h3 style="font-size:20px;font-weight:900;margin-bottom:16px">5 大核心卖点</h3>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px">
-
-      <div style="border:3px solid #000;box-shadow:5px 5px 0 #000;overflow:hidden">
-        <div style="padding:12px 14px;background:#ff5757;color:#fff;font-weight:800;font-size:14px;text-align:center">卖点 1</div>
-        <div style="padding:14px">
-          <div style="font-size:15px;font-weight:900;text-align:center;margin-bottom:8px">7 个生产级项目</div>
-          <div style="font-size:12px;color:#666;line-height:1.7">
-            不是 Notebook 跑 Demo。<br>
-            RAG from Scratch → Production RAG → GraphRAG → Agentic RAG → Multi-Agent → Fine-Tuning → ISA 全栈。<br><br>
-            <em>"每个项目都能部署到线上，放进简历"</em>
-          </div>
-        </div>
-      </div>
-
-      <div style="border:3px solid #000;box-shadow:5px 5px 0 #000;overflow:hidden">
-        <div style="padding:12px 14px;background:#10b981;color:#fff;font-weight:800;font-size:14px;text-align:center">卖点 2</div>
-        <div style="padding:14px">
-          <div style="font-size:15px;font-weight:900;text-align:center;margin-bottom:8px">全栈 AI 工程能力</div>
-          <div style="font-size:12px;color:#666;line-height:1.7">
-            Context Engineering → RAG → GraphRAG → Agent SDK → Eval。<br>
-            市面上的课只教其中 1-2 个。<br><br>
-            <em>"其他课教你调 API，我们教你从零到 Eval Pipeline"</em>
-          </div>
-        </div>
-      </div>
-
-      <div style="border:3px solid #000;box-shadow:5px 5px 0 #000;overflow:hidden">
-        <div style="padding:12px 14px;background:#6366f1;color:#fff;font-weight:800;font-size:14px;text-align:center">卖点 3</div>
-        <div style="padding:14px">
-          <div style="font-size:15px;font-weight:900;text-align:center;margin-bottom:8px">3 大 Agent SDK 对比</div>
-          <div style="font-size:12px;color:#666;line-height:1.7">
-            OpenAI Agents SDK / Claude Agent SDK / Google ADK。<br>
-            同一任务三种实现，毕业后不被任何一家 vendor 绑定。<br><br>
-            <em>"别人学一个 SDK，你三个都会"</em>
-          </div>
-        </div>
-      </div>
-
-      <div style="border:3px solid #000;box-shadow:5px 5px 0 #000;overflow:hidden">
-        <div style="padding:12px 14px;background:#f59e0b;color:#000;font-weight:800;font-size:14px;text-align:center">卖点 4</div>
-        <div style="padding:14px">
-          <div style="font-size:15px;font-weight:900;text-align:center;margin-bottom:8px">高薪岗位 $150K+</div>
-          <div style="font-size:12px;color:#666;line-height:1.7">
-            AI Engineer 是 2026 增长最快的技术岗。<br>
-            Junior $100K-$150K<br>
-            Mid $150K-$220K<br>
-            Senior $220K-$350K+<br><br>
-            <em>"用 12 周换一个高薪新赛道"</em>
-          </div>
-        </div>
-      </div>
-
-      <div style="border:3px solid #000;box-shadow:5px 5px 0 #000;overflow:hidden">
-        <div style="padding:12px 14px;background:#E84142;color:#fff;font-weight:800;font-size:14px;text-align:center">卖点 5</div>
-        <div style="padding:14px">
-          <div style="font-size:15px;font-weight:900;text-align:center;margin-bottom:8px">AI Eval Engineering</div>
-          <div style="font-size:12px;color:#666;line-height:1.7">
-            2026 年独立岗位要求：AI Evaluation Engineer。<br>
-            课上构建完整 Eval Pipeline + Red-teaming。<br>
-            LangSmith + Braintrust + Guardrails 全覆盖。<br><br>
-            <em>"能评估的工程师比能开发的更值钱"</em>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Target personas -->
-  <div style="padding:24px 28px;border-top:2px solid #eee">
-    <h3 style="font-size:20px;font-weight:900;margin-bottom:16px">5 类目标用户 & 钩子话术</h3>
-    <table style="width:100%;border-collapse:collapse;font-size:13px">
-      <thead>
-        <tr style="background:#f5f5f5">
-          <th style="padding:10px 12px;text-align:left;border-bottom:2px solid #ddd;width:12%">用户</th>
-          <th style="padding:10px 12px;text-align:left;border-bottom:2px solid #ddd;width:25%">痛点</th>
-          <th style="padding:10px 12px;text-align:left;border-bottom:2px solid #ddd;width:30%">钩子话术</th>
-          <th style="padding:10px 12px;text-align:left;border-bottom:2px solid #ddd;width:33%">对应课程</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid #eee">
-          <td style="padding:10px 12px"><strong>Backend Dev</strong></td>
-          <td style="padding:10px 12px">会写 CRUD API，不知道怎么转型 AI 方向</td>
-          <td style="padding:10px 12px;color:var(--indigo);font-weight:600">"你会写 API 就能学 AI — 12 周从 CRUD 到 Agent SDK + GraphRAG"</td>
-          <td style="padding:10px 12px;font-size:12px">全课程：先修只要 Python + API + Git</td>
-        </tr>
-        <tr style="border-bottom:1px solid #eee;background:#fafafa">
-          <td style="padding:10px 12px"><strong>Data Scientist</strong></td>
-          <td style="padding:10px 12px">会训练模型，但不会构建 Agent 系统、写 Eval Pipeline</td>
-          <td style="padding:10px 12px;color:var(--indigo);font-weight:600">"从 Jupyter Notebook 到生产级 Agent + Eval — DS 转 AI Engineer 的捷径"</td>
-          <td style="padding:10px 12px;font-size:12px">Phase 2-3 RAG + Agent + Phase 4 Eval</td>
-        </tr>
-        <tr style="border-bottom:1px solid #eee">
-          <td style="padding:10px 12px"><strong>DevOps/SRE</strong></td>
-          <td style="padding:10px 12px">负责 AI 应用部署但不懂 LLM 原理和 Agent 架构</td>
-          <td style="padding:10px 12px;color:var(--indigo);font-weight:600">"理解 Agent SDK 才能做好 AI Infra — 从 Context Engineering 到 LLM Ops"</td>
-          <td style="padding:10px 12px;font-size:12px">Phase 1 理论 + Phase 2-3 监控评估</td>
-        </tr>
-        <tr style="border-bottom:1px solid #eee;background:#fafafa">
-          <td style="padding:10px 12px"><strong>CS 毕业生</strong></td>
-          <td style="padding:10px 12px">学校教的 ML 和市场要的 AI Engineer 差距大</td>
-          <td style="padding:10px 12px;color:var(--indigo);font-weight:600">"学校教 PyTorch，企业要 Agent SDK + Eval Pipeline — 7 个项目补上工程化短板"</td>
-          <td style="padding:10px 12px;font-size:12px">全课程 + 7 个简历项目</td>
-        </tr>
-        <tr>
-          <td style="padding:10px 12px"><strong>创业者/CTO</strong></td>
-          <td style="padding:10px 12px">想给产品加 AI 功能但团队没有 Agent 和 RAG 能力</td>
-          <td style="padding:10px 12px;color:var(--indigo);font-weight:600">"12 周搭出你的 AI MVP — Context Engineering → GraphRAG → Agent 全栈落地"</td>
-          <td style="padding:10px 12px;font-size:12px">Phase 1-3 Context + RAG + Agent</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Competitor comparison -->
-  <div style="padding:24px 28px;border-top:2px solid #eee;background:#f9f9f9">
-    <h3 style="font-size:20px;font-weight:900;margin-bottom:16px">竞品对比</h3>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;background:#fff">
-      <thead>
-        <tr>
-          <th style="padding:10px 12px;border:2px solid #000;background:#f5f5f5;text-align:left">维度</th>
-          <th style="padding:10px 12px;border:2px solid #000;background:#f5f5f5;text-align:center">Andrew Ng<br>ML Specialization</th>
-          <th style="padding:10px 12px;border:2px solid #000;background:#f5f5f5;text-align:center">AI Makerspace<br>(Maven Bootcamp)</th>
-          <th style="padding:10px 12px;border:2px solid #000;background:#f5f5f5;text-align:center">Full Stack LLM<br>(Udemy/各类)</th>
-          <th style="padding:10px 12px;border:2px solid #000;background:#FFDE59;text-align:center;font-weight:900">JR Academy</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">价格</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">~$50/月</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">$1,500+</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">$20-$200</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">$1,499</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">时长</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">3-6 月</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">8 周</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">20-40h</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">12 周 ~60h 直播</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">RAG 深度</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">基础 RAG</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">1-2 节</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">3 周 + GraphRAG</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Agent SDK</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">1 个 SDK</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">极少</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">3 大 SDK 对比</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">GraphRAG</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">Neo4j + 混合检索</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">AI Evals</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">基础评估</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">Eval 整周 + Red-team</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Agent Memory</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">不覆盖</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">Mem0 三层记忆</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">Fine-Tuning</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">理论</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">基础</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">1 节 Demo</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">Unsloth + LLaMA-Factory</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">生产项目</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">练习题</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">3-4 个</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">1-2 个</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">7 个可部署</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">中文教学</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">英文</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">英文</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">部分中文</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">中文直播</td></tr>
-        <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:700">老师互动</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">论坛</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center">Slack 答疑</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;color:#dc2626">无</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:center;font-weight:900;background:#fffde7">每周直播 + Review</td></tr>
-      </tbody>
-    </table>
-    <div style="margin-top:12px;padding:10px 16px;background:#fff;border:2px solid #6366f1;font-size:14px;font-weight:700;text-align:center">
-      "Coursera 的理论深度 x Bootcamp 的项目密度 x 3 大 Agent SDK 对比 x 中文母语的理解效率"
-    </div>
-  </div>
-
-  <!-- Social media copy -->
-  <div style="padding:24px 28px;border-top:2px solid #eee">
-    <h3 style="font-size:20px;font-weight:900;margin-bottom:16px">社交媒体文案 (直接复制用)</h3>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div>
-        <div style="font-weight:700;margin-bottom:10px;color:var(--red)">小红书 / 朋友圈标题</div>
-        <ol style="font-size:13px;line-height:2.2;padding-left:20px">
-          <li>"AI Engineer 年薪 $150K+，只需要 12 周"</li>
-          <li>"会写 CRUD 就能转型 AI Engineer？是的"</li>
-          <li>"别人还在学一个 SDK，我已经三个都会了 — OpenAI / Claude / Google ADK"</li>
-          <li>"从零构建 GraphRAG 系统，面试直接聊项目"</li>
-          <li>"Context Engineering — 2026 年 AI 工程师必备技能，你学了吗"</li>
-          <li>"7 个可部署项目 vs Udemy 的 Notebook Demo，差距在哪"</li>
-          <li>"Agent SDK + Eval Pipeline + GraphRAG — 2026 AI Engineer 新三件套"</li>
-          <li>"Data Scientist 转 AI Engineer 最快的路"</li>
-          <li>"后端开发的 AI 转型之路：12 周实操指南"</li>
-          <li>"简历写 Agent SDK + GraphRAG + Eval 经验，HR 直接约面"</li>
-        </ol>
-      </div>
-      <div>
-        <div style="font-weight:700;margin-bottom:10px;color:var(--indigo)">短视频脚本 (30s TikTok/Reels)</div>
-        <div style="background:#f5f5f5;padding:14px;font-size:13px;line-height:1.8;border:2px solid #ddd">
-          <strong>Hook (0-3s):</strong><br>
-          "AI Engineer 年薪 $150K，只要 12 周？"<br><br>
-          <strong>Problem (3-10s):</strong><br>
-          "Coursera 教你 PyTorch 写论文，企业要你用 3 种 Agent SDK 搭生产系统。中间差了一个 Bootcamp。"<br><br>
-          <strong>Solution (10-20s):</strong><br>
-          "12 周 7 个项目：Context Engineering → GraphRAG → Agent SDK → Eval Pipeline。全部可部署到生产环境。"<br><br>
-          <strong>CTA (20-30s):</strong><br>
-          "评论扣 'AI' 看课程大纲"
-        </div>
-
-        <div style="font-weight:700;margin-top:16px;margin-bottom:10px;color:#0077b5">LinkedIn 帖子</div>
-        <div style="background:#f5f5f5;padding:14px;font-size:12px;line-height:1.8;border:2px solid #ddd">
-          The AI Engineer role didn't exist 3 years ago.<br>
-          Now it's the fastest-growing tech job on LinkedIn.<br><br>
-          What companies want in 2026:<br>
-          → Context Engineering, not just Prompt Engineering<br>
-          → GraphRAG with Neo4j, not just vector search<br>
-          → 3 Agent SDKs (OpenAI / Claude / Google ADK)<br>
-          → Mem0 for long-term agent memory<br>
-          → AI Eval Pipelines + Red-teaming<br>
-          → Ship with Cursor + Claude Code<br><br>
-          Not "prompt engineering". Not "Jupyter notebooks".<br>
-          Production-grade AI systems with evaluation.<br><br>
-          12 weeks. 7 deployable projects. One career shift.<br><br>
-          #AIEngineer #AgentSDK #GraphRAG #ContextEngineering #AIEval
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="footer">
-  JR Academy · AI Engineer Bootcamp 第五期 · 内部资料 · 请勿外传
 </div>
 
 </div>
