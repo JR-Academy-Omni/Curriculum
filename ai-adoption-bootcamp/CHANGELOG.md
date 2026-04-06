@@ -12,3 +12,5 @@
 - 每节直播课/自学课后面紧跟对应的 Lab 练习课
 - 39 个 InteractiveLab lesson 新增（30min 互动练习）
 - 重新编号 L01-L68
+- 绑定 29 节自学/直播课的 Learn 章节（ai-office, prompt-master, ai-builder, ai-content, ai-pm, ai-data-analysis）
+- 首次创建到 Production（68 lessons, 4 modules, 1 program, 1 syllabus）
