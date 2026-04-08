@@ -14,3 +14,5 @@
 - 重新编号 L01-L68
 - 绑定 29 节自学/直播课的 Learn 章节（ai-office, prompt-master, ai-builder, ai-content, ai-pm, ai-data-analysis）
 - 首次创建到 Production（68 lessons, 4 modules, 1 program, 1 syllabus）
+- 新增 39 个 InteractiveLab 课时的 description（每个含「练什么」「怎么练」，同一 Lab slug 在不同 Phase 有不同业务上下文描述）
+- 新增 Training 级字段：description_html 销售页、faqs (8 条)、bootcampSections、program 第一期招生信息
