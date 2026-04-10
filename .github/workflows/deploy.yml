@@ -29,7 +29,10 @@ jobs:
           bun run build
 
       # ai-essentials-bootcamp: static HTML only, no React build needed
-      # When slides are added later, change this to: bun install && bun run build
+
+      # ai-coding-bootcamp: static HTML only, no React build needed
+
+      # vibe-coding-bootcamp: static HTML only, no React build needed
 
       # Assemble all courses into one output
       - name: Assemble output
@@ -48,6 +51,12 @@ jobs:
 
           mkdir -p _site/ai-essentials-bootcamp
           cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/
+
+          mkdir -p _site/ai-coding-bootcamp
+          cp -r ai-coding-bootcamp/public/* _site/ai-coding-bootcamp/
+
+          mkdir -p _site/vibe-coding-bootcamp
+          cp -r vibe-coding-bootcamp/public/* _site/vibe-coding-bootcamp/
 
           mkdir -p _site/ai-engineer-bootcamp
           cp -r ai-engineer-bootcamp/dist/* _site/ai-engineer-bootcamp/
@@ -113,6 +122,38 @@ jobs:
               </div>
 
               <div class="section">
+                <div class="section-title">AI Coding 实战课 · 5-8 周 · 零基础 Non-tech</div>
+                <div class="cards">
+                  <a href="./ai-coding-bootcamp/curriculum.html">
+                    <span class="tag" style="background:#10b981">CURRICULUM</span>
+                    <div class="title">Cursor AI 编程实战课</div>
+                    <div class="desc">课程总览 — 46 课、4 Phase、零基础用 Cursor 做产品</div>
+                  </a>
+                  <a href="./ai-coding-bootcamp/outline.html">
+                    <span class="tag" style="background:#FF914D">OUTLINE</span>
+                    <div class="title">AI Coding 完整大纲</div>
+                    <div class="desc">46 课 × 138 Steps 完整序列</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">Vibe Coding 实战课 · 8 周 · For Developer</div>
+                <div class="cards">
+                  <a href="./vibe-coding-bootcamp/curriculum.html">
+                    <span class="tag" style="background:#6366f1">CURRICULUM</span>
+                    <div class="title">Claude Code + Cursor 实战课</div>
+                    <div class="desc">课程总览 — 42 课、Skills/MCP/Agent/全栈</div>
+                  </a>
+                  <a href="./vibe-coding-bootcamp/outline.html">
+                    <span class="tag" style="background:#FF914D">OUTLINE</span>
+                    <div class="title">Vibe Coding 完整大纲</div>
+                    <div class="desc">42 课 × 124 Steps 完整序列</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
                 <div class="section-title">AI Adoption Specialist Bootcamp · 8 周</div>
                 <div class="cards">
                   <a href="./ai-adoption-bootcamp/">
@@ -167,6 +208,24 @@ jobs:
           </body>
           </html>
           HTMLEOF
+
+      # Generate pages.json from outline.json for each bootcamp
+      - name: Generate pages.json
+        run: |
+          for dir in _site/*/; do
+            slug=$(basename "$dir")
+            outline="${slug}/public/outline.json"
+            if [ -f "$outline" ]; then
+              python3 -c "
+          import json, sys
+          d = json.load(open(sys.argv[1]))
+          cp = d.get('curriculumPages')
+          if cp:
+              json.dump(cp, open(sys.argv[2], 'w'), indent=2)
+              print(f'Generated pages.json for {sys.argv[3]}')
+          " "$outline" "${dir}pages.json" "$slug"
+            fi
+          done
 
       # Deploy to server via SCP
       - name: Deploy to server
