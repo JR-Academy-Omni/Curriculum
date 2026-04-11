@@ -1,0 +1,271 @@
+<h2>学习目标</h2>
+<ul>
+	<li>理解 AI 对 IT 岗位的真实影响 — 哪些技能在贬值，哪些在增值</li>
+	<li>掌握 2026 年每个 IT 从业者必须具备的 3 项 AI 技能</li>
+	<li>学会构建一个"AI 作品集"来展示你的 AI 能力</li>
+	<li>找到适合自己当前阶段的 AI 学习路径</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>AI 不会取代你，但会用 AI 的人会</h3>
+<p>这句话已经被说烂了，但大部分人理解错了。重点不是"AI 会不会取代程序员"，而是：<strong>同样的岗位，会用 AI 的人产出是不会用的人的 3-5 倍。</strong>公司不会因为有了 AI 就少招人，但会优先招能用 AI 放大产出的人。</p>
+
+<p>具体来说：</p>
+<ul>
+	<li>2024 年：会用 Copilot 是加分项</li>
+	<li>2025 年：会用 AI 写代码是基本要求</li>
+	<li>2026 年：不会用 AI 的人简历直接被筛掉</li>
+</ul>
+
+<p>不是危言耸听。看一下现在 Seek 和 LinkedIn 上的 JD，越来越多出现这样的要求：</p>
+<ul>
+	<li>"Experience with AI-assisted development tools (Copilot, Cursor)"</li>
+	<li>"Ability to leverage LLMs for productivity"</li>
+	<li>"Familiarity with prompt engineering"</li>
+</ul>
+
+<h3>2026 年必须掌握的 3 项 AI 技能</h3>
+
+<h4>技能 1：Prompt Engineering</h4>
+<p>Prompt Engineering 不是"跟 ChatGPT 聊天"。它是一种系统化地从 AI 获取高质量输出的能力。</p>
+
+<p>核心技术：</p>
+<ul>
+	<li><strong>Zero-shot vs Few-shot</strong> — 给不给例子，输出质量差别巨大</li>
+	<li><strong>Chain of Thought (CoT)</strong> — 让 AI 分步思考而不是直接给答案</li>
+	<li><strong>Role + Context + Task + Format</strong> — 四要素框架，写好 prompt 的公式</li>
+	<li><strong>Retrieval Augmented Generation (RAG)</strong> — 让 AI 基于你提供的文档回答，而不是凭训练数据编</li>
+</ul>
+
+<p>举个实际例子。你要让 AI 帮你写一个 API endpoint：</p>
+
+<p>差的 prompt：</p>
+<blockquote>
+<p>帮我写一个用户注册 API</p>
+</blockquote>
+
+<p>好的 prompt：</p>
+<blockquote>
+<p>你是一个 NestJS 后端工程师。项目使用 NestJS + TypeScript + MongoDB (Mongoose)。</p>
+<p>请帮我写一个用户注册的 POST /auth/register endpoint，要求：<br>
+- DTO 校验：email (必填, 格式校验), password (必填, 最少 8 位), name (必填)<br>
+- 密码用 bcrypt hash，salt rounds = 10<br>
+- 如果 email 已存在返回 409<br>
+- 成功返回 201 + user object（不包含 password）<br>
+- 包含完整的 controller, service, dto 文件</p>
+<p>代码风格：使用 class-validator 做 DTO 校验，service 里做业务逻辑，controller 只做路由。</p>
+</blockquote>
+
+<p>第二个 prompt 给的输出直接能用，第一个给的可能是 Express 代码、可能缺校验、可能返回密码。</p>
+
+<h4>技能 2：AI 辅助编程（Cursor / Copilot）</h4>
+<p>AI 编程工具不是玩具，是生产力工具。2026 年的主流工具：</p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+	<thead>
+		<tr style="background-color: #f0f0f0;">
+			<th>工具</th>
+			<th>适用场景</th>
+			<th>月费</th>
+			<th>特点</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>GitHub Copilot</td>
+			<td>日常编码补全</td>
+			<td>$10-19/月</td>
+			<td>最成熟，VS Code 深度集成</td>
+		</tr>
+		<tr>
+			<td>Cursor</td>
+			<td>整个项目级别的 AI 编程</td>
+			<td>$20/月</td>
+			<td>可以读整个 codebase，重构、新增 feature 特别强</td>
+		</tr>
+		<tr>
+			<td>Claude Code</td>
+			<td>终端里的 AI 编程 agent</td>
+			<td>按 token 计费</td>
+			<td>可以自主执行命令、读写文件、跑测试，自动化程度最高</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>实际工作中的用法：</p>
+<ul>
+	<li><strong>写新功能</strong> — 在 Cursor 里描述需求，AI 生成代码框架，你 review 和调整</li>
+	<li><strong>写测试</strong> — 给 AI 你的 service 代码，让它生成 unit test，覆盖率一下从 0 到 80%</li>
+	<li><strong>Debug</strong> — 把报错信息 + 相关代码丢给 AI，它能定位大部分问题</li>
+	<li><strong>重构</strong> — "把这个 500 行的 service 拆成 3 个小 service" — Cursor 可以一次性搞定</li>
+	<li><strong>学习新技术</strong> — 边用 AI 写代码边学，比看文档快 5 倍</li>
+</ul>
+
+<h4>技能 3：AI 辅助决策</h4>
+<p>这个技能不只是给技术人员的。AI 辅助决策 = 用 AI 处理信息、分析数据、辅助判断。</p>
+
+<p>实际应用场景：</p>
+<ul>
+	<li><strong>技术选型</strong> — 把几个方案的 pros/cons 喂给 AI，让它做结构化对比</li>
+	<li><strong>Incident 分析</strong> — 把 error log 扔给 AI，让它分析 root cause</li>
+	<li><strong>Architecture Review</strong> — 描述你的系统架构，让 AI 找出潜在问题</li>
+	<li><strong>估时</strong> — 描述一个 feature，让 AI 帮你拆 task 和估工时</li>
+</ul>
+
+<blockquote>
+<p><strong>Prompt 示例 — 技术选型辅助：</strong></p>
+<p>我们团队在选消息队列。候选方案：RabbitMQ、Kafka、AWS SQS。</p>
+<p>使用场景：<br>
+- 每天约 50 万条消息<br>
+- 需要保证消息不丢失<br>
+- 团队 5 个人，DevOps 能力一般<br>
+- 已经在用 AWS，不想引入太多新基础设施</p>
+<p>请对比三个方案的：运维复杂度、成本、吞吐量、消息可靠性、团队学习曲线。给出你的推荐。</p>
+</blockquote>
+
+<h3>如何构建 AI 作品集</h3>
+<p>光说"我会用 AI"没用，要有证据。以下是你可以在简历和 LinkedIn 上展示的东西：</p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+	<thead>
+		<tr style="background-color: #f0f0f0;">
+			<th>作品类型</th>
+			<th>展示什么</th>
+			<th>怎么做</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>AI 辅助项目</td>
+			<td>你用 AI 工具完成的完整项目</td>
+			<td>在 GitHub README 里写清用了什么 AI 工具、怎么用的</td>
+		</tr>
+		<tr>
+			<td>Prompt 模板库</td>
+			<td>你积累的高质量 prompt 集</td>
+			<td>GitHub repo 或 Notion page，按场景分类</td>
+		</tr>
+		<tr>
+			<td>效率对比</td>
+			<td>AI 前后的效率差异</td>
+			<td>写一篇博客，展示用 AI 把某个任务从 4 小时缩短到 30 分钟</td>
+		</tr>
+		<tr>
+			<td>AI 集成经验</td>
+			<td>在真实项目中集成 AI 功能</td>
+			<td>比如给一个 app 加了 AI chat、自动摘要、智能搜索</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>LinkedIn 上怎么体现：</p>
+<ul>
+	<li>Skills 里加上：Prompt Engineering, AI-Assisted Development, LLM Integration</li>
+	<li>Experience 里加具体描述："Leveraged Cursor AI to increase development velocity by 40% on [project]"</li>
+	<li>发 1-2 篇 post 分享你用 AI 的经验（不用长，3-5 段就行）</li>
+</ul>
+
+<h3>学习路径建议</h3>
+
+<p>根据你当前的阶段选择起点：</p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+	<thead>
+		<tr style="background-color: #f0f0f0;">
+			<th>阶段</th>
+			<th>行动</th>
+			<th>平台资源</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>完全没用过 AI</td>
+			<td>先花 2 小时用 ChatGPT 完成一个日常任务（写邮件、整理笔记、代码调试）</td>
+			<td>Prompt 实验室（hello-ai 模块）</td>
+		</tr>
+		<tr>
+			<td>用过 ChatGPT 但不系统</td>
+			<td>学习 Prompt Engineering 四要素框架，练习 10 个不同场景</td>
+			<td>Learn: Prompt 大师</td>
+		</tr>
+		<tr>
+			<td>会用 ChatGPT 但没用过编程工具</td>
+			<td>装 Cursor，用一个下午把一个 side project 的功能用 Cursor 完成</td>
+			<td>Learn: Vibe Coding Hub, Wiki: cursor</td>
+		</tr>
+		<tr>
+			<td>已经在用 Copilot/Cursor</td>
+			<td>开始学 Claude Code（终端 agent），尝试用 AI 做更复杂的任务（重构、架构设计）</td>
+			<td>Wiki: claude-code-guide</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>操作步骤</h2>
+
+<h3>Step 1：评估你的 AI 技能现状</h3>
+<p>用这个自评表打分（1-5）：</p>
+<ul>
+	<li>我能写出结构化的 prompt 获取高质量输出：___/5</li>
+	<li>我每天使用 AI 编程工具（Copilot/Cursor）：___/5</li>
+	<li>我能用 AI 辅助做技术决策和分析：___/5</li>
+	<li>我在简历/LinkedIn 上有 AI 相关经验展示：___/5</li>
+	<li>我能向非技术人员解释 AI 的能力和局限：___/5</li>
+</ul>
+<p>总分低于 15 分 → 需要立刻开始系统学习。</p>
+
+<h3>Step 2：选一个工具深入使用</h3>
+<p>不要同时学所有工具。先选一个：</p>
+<ul>
+	<li>非技术背景 → 先把 ChatGPT/Claude 用到极致</li>
+	<li>开发者 → 直接上 Cursor，日常开发全部切过去</li>
+	<li>想走 AI 方向 → 学 Claude Code + LangChain，做一个 AI 项目</li>
+</ul>
+
+<h3>Step 3：建立你的第一个 AI 作品</h3>
+<blockquote>
+<p><strong>Prompt — 快速启动 AI Side Project：</strong></p>
+<p>我是一个 [你的技术栈] 开发者，想做一个 side project 展示我的 AI 能力。要求：<br>
+- 用到 LLM API（OpenAI 或 Claude）<br>
+- 有实际用途（不是 toy project）<br>
+- 一个周末能完成 MVP<br>
+- 能部署到 Vercel/Netlify 让人访问</p>
+<p>请给我 5 个项目创意，每个包含：项目名、一句话描述、技术栈、核心功能、周末能完成的 MVP scope。</p>
+</blockquote>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：Prompt Engineering 实战</h3>
+<p>去 JR 平台的 Prompt 实验室，完成至少 3 个练习场景。记录你的 prompt 和 AI 的输出，思考如何改进。</p>
+
+<h3>练习 2：用 AI 完成一个真实工作任务</h3>
+<p>选一个你这周要做的工作任务（写代码、写文档、分析数据），全程用 AI 辅助完成。记录：</p>
+<ul>
+	<li>没有 AI 你预估要多久？</li>
+	<li>用 AI 实际花了多久？</li>
+	<li>AI 在哪些环节最有帮助？</li>
+	<li>AI 在哪些环节不靠谱，需要你人工修正？</li>
+</ul>
+
+<h3>练习 3：更新你的 LinkedIn</h3>
+<p>在 LinkedIn 的 Skills 和 Experience 里加入 AI 相关内容。至少：</p>
+<ul>
+	<li>加 3 个 AI 相关 skill</li>
+	<li>在最近一份工作经历里加一条 AI 相关描述</li>
+	<li>发一篇关于你用 AI 的经验分享 post</li>
+</ul>
+
+<h2>常见问题</h2>
+
+<h3>Q: 我不是开发者，AI 编程工具跟我没关系吧？</h3>
+<p>Prompt Engineering 和 AI 辅助决策跟岗位无关。BA 用 AI 写 user story，QA 用 AI 生成 test case，PM 用 AI 做竞品分析，DevOps 用 AI 写 IaC。每个 IT 岗位都有 AI 能帮忙的地方。Cursor 确实主要给开发者用，但 ChatGPT/Claude 是所有人都应该掌握的。</p>
+
+<h3>Q: AI 工具这么多，学不过来怎么办？</h3>
+<p>不要追工具，追能力。Prompt Engineering 是底层能力，ChatGPT 换成 Claude 换成 Gemini 都用得上。AI 编程工具今天是 Copilot 明天可能是别的，但"指导 AI 写代码"这个能力不变。选一个工具用深，比浅尝辄止 10 个工具有用得多。</p>
+
+<h3>Q: 面试的时候怎么展示 AI 能力？</h3>
+<p>不用等面试官问。在 behavioral interview 的回答里自然带入："In this project, I used Cursor to prototype the feature in 2 hours instead of the usual 2 days, which gave us time to do more thorough testing." 展示的是结果和思维方式，不是工具本身。</p>
+
+<h2>小结</h2>
+<p>2026 年 AI 能力已经不是"nice to have"，是 IT 从业者的基础技能。三个方向：Prompt Engineering（所有人必学）、AI 辅助编程（开发者必学）、AI 辅助决策（所有人必学）。不需要同时学所有工具，选一个深入使用，积累作品集，在简历和 LinkedIn 上展示。记住，面试官不关心你用什么工具，他们关心的是你能不能用 AI 把活干得更快更好。</p>

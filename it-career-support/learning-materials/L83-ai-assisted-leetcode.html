@@ -1,0 +1,231 @@
+<h2>学习目标</h2>
+<ul>
+  <li>理解用 AI 辅助刷题的正确姿势：不是要答案，而是要理解和训练</li>
+  <li>掌握 3 个核心 Prompt 模板：解题讲解、变体生成、模拟追问</li>
+  <li>建立"生成 → 审查 → 迭代"的 AI 辅助学习工作流</li>
+  <li>学会判断 AI 给的解法是否正确（AI 也会写出有 bug 的代码）</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>用 AI 刷题的正确方式 vs 错误方式</h3>
+
+<p><strong>错误方式（99% 的人在做的）：</strong></p>
+<ul>
+  <li>题目看不懂 → 直接让 AI 写答案 → 复制粘贴 → 下一题</li>
+  <li>这样刷 500 题等于零。面试时你面前没有 ChatGPT，你什么都写不出来。</li>
+</ul>
+
+<p><strong>正确方式：</strong></p>
+<ul>
+  <li><strong>先自己做 15-20 分钟</strong>，写出任何你能想到的解法（哪怕是 brute force）</li>
+  <li><strong>卡住后让 AI 给提示而不是答案</strong> — "给我一个 hint，不要给完整解法"</li>
+  <li><strong>做完后让 AI 讲解</strong> — 理解为什么这个解法有效，时间复杂度怎么推导</li>
+  <li><strong>让 AI 生成变体</strong> — 同一个套路换个壳，检验你是否真正理解</li>
+  <li><strong>让 AI 模拟面试官追问</strong> — 练习应对 follow-up questions</li>
+</ul>
+
+<p>核心原则是<strong>"生成 → 审查 → 迭代"</strong>：AI 生成解法/解释 → 你审查是否正确、是否理解 → 基于反馈迭代改进。不是把 AI 当答案机器，而是当一个有耐心的私教。</p>
+
+<h3>AI 也会写错代码</h3>
+<p>这一点很多人忽略了。AI 模型在算法题上的准确率大约在 70-85%（取决于题目难度）。常见问题：</p>
+<ul>
+  <li><strong>边界条件处理不当：</strong>空数组、单元素数组、整数溢出</li>
+  <li><strong>Off-by-one 错误：</strong>循环条件是 < 还是 <=</li>
+  <li><strong>复杂度分析错误：</strong>AI 说是 O(n log n) 但实际是 O(n²)</li>
+  <li><strong>代码能跑但思路有误：</strong>碰巧 pass 了所有 test case 但逻辑不对</li>
+</ul>
+<p>所以你必须有能力<strong>审查 AI 给的代码</strong>。这个审查过程本身就是最好的学习——比自己做题更深入，因为你需要理解每一行为什么这样写。</p>
+
+<h3>3 个核心 Prompt 模板</h3>
+
+<h4>模板 1：Step-by-Step 解题讲解</h4>
+<p>适用场景：你做完一道题（或做不出来），想要深入理解解法。</p>
+
+<blockquote>
+<strong>Prompt：</strong><br><br>
+我刚完成了 LeetCode #[题号] [题目名称]。以下是我的解法：<br><br>
+```[你的语言]<br>
+[粘贴你的代码]<br>
+```<br><br>
+请按以下步骤分析：<br>
+1. 我的解法是否正确？如果有 bug，指出具体哪一行有什么问题<br>
+2. 时间复杂度和空间复杂度分别是什么？请逐步推导，不要只给结果<br>
+3. 有没有更优的解法？如果有，先描述思路（不要直接给代码），让我自己尝试实现<br>
+4. 这道题的核心考点是什么？属于什么题型？<br>
+5. 面试中讲解这道题时，应该先说什么、后说什么？
+</blockquote>
+
+<p><strong>为什么这个 Prompt 有效：</strong></p>
+<ul>
+  <li>让 AI 先评审你的代码，而不是直接给"标准答案"</li>
+  <li>要求推导复杂度而不是直接给 Big-O，逼 AI 给出推理过程</li>
+  <li>更优解法只给思路不给代码，你还需要自己实现</li>
+  <li>第 5 点训练你面试时的表述能力</li>
+</ul>
+
+<h4>模板 2：变体生成</h4>
+<p>适用场景：你做完一道题想巩固，或者觉得自己只是记住了答案而不是理解了套路。</p>
+
+<blockquote>
+<strong>Prompt：</strong><br><br>
+我刚做完 LeetCode #[题号] [题目名称]，用的是 [说明你的解法，比如"滑动窗口"或"二分查找"]。<br><br>
+请生成 3 个变体题目：<br>
+1. 一个简单变体（改变输入条件，但解法套路相同）<br>
+2. 一个中等变体（需要在原解法基础上做一个关键修改）<br>
+3. 一个困难变体（需要组合两种算法才能解决）<br><br>
+每个变体请给出：<br>
+- 题目描述（包括示例输入输出）<br>
+- 与原题的区别是什么<br>
+- 需要修改原解法的哪个部分（提示，不要给完整代码）
+</blockquote>
+
+<p><strong>为什么这个 Prompt 有效：</strong></p>
+<ul>
+  <li>变体题是检验"理解 vs 记忆"的最好方式。如果你只是记住了 Two Sum 的代码，变体题会立刻暴露出来</li>
+  <li>3 个难度梯度的变体覆盖了从巩固到拓展的需求</li>
+  <li>只给提示不给代码，你仍然需要自己动手</li>
+</ul>
+
+<h4>模板 3：模拟面试官追问</h4>
+<p>适用场景：你写完代码后，模拟面试中面试官可能的 follow-up questions。</p>
+
+<blockquote>
+<strong>Prompt：</strong><br><br>
+你是一个 FAANG 公司的技术面试官。我刚在面试中写出了以下代码来解决 [题目描述]：<br><br>
+```[你的语言]<br>
+[粘贴你的代码]<br>
+```<br><br>
+请模拟面试场景，按以下顺序追问我：<br>
+1. 问我这个解法的时间和空间复杂度（等我回答后再继续）<br>
+2. 给出一个 edge case 让我说代码能不能处理<br>
+3. 问我"如果输入数据量是 10 亿条，这个解法还能用吗？怎么改？"<br>
+4. 问我"如果这道题不能用额外空间（space O(1)），怎么解？"<br>
+5. 最后给我这次"面试"的综合评价<br><br>
+一次只问一个问题，等我回答后再问下一个。
+</blockquote>
+
+<p><strong>为什么这个 Prompt 有效：</strong></p>
+<ul>
+  <li>真实面试中，写完代码只是开始。面试官的追问才是拉开差距的地方</li>
+  <li>"10 亿条数据"这种问题考的是你对 scalability 的理解</li>
+  <li>"space O(1)"考的是你能不能跳出固定思维</li>
+  <li>一次一个问题的格式模拟了真实面试的节奏</li>
+</ul>
+
+<h3>生成 → 审查 → 迭代 工作流</h3>
+
+<p>每做一道题，按这个流程走：</p>
+
+<ol>
+  <li><strong>自己做（15-20 分钟）：</strong>写出你能想到的解法，不管多暴力</li>
+  <li><strong>AI 审查你的代码（模板 1）：</strong>找 bug，分析复杂度，理解优化方向</li>
+  <li><strong>自己实现优化解法（10-15 分钟）：</strong>根据 AI 给的提示（不是代码）写优化版本</li>
+  <li><strong>AI 生成变体（模板 2）：</strong>做 1-2 个变体巩固</li>
+  <li><strong>AI 模拟追问（模板 3）：</strong>练习应对 follow-up</li>
+  <li><strong>记录总结（2 分钟）：</strong>这道题的核心套路是什么？下次遇到同类型的题怎么识别？</li>
+</ol>
+
+<p>一道题走完整个流程大约需要 45-60 分钟。对，比"做一道看答案做下一道"慢很多。但做 20 道走完整个流程，比做 100 道只看答案有效 10 倍。</p>
+
+<h2>操作步骤</h2>
+
+<h3>实操演示：用 AI 辅助做 Two Sum</h3>
+
+<p><strong>Step 1：自己先做</strong></p>
+<p>题目：Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.</p>
+<p>你可能写出这样的 brute force：</p>
+<pre>
+function twoSum(nums, target) {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+                return [i, j];
+            }
+        }
+    }
+}
+</pre>
+
+<p><strong>Step 2：用模板 1 让 AI 审查</strong></p>
+<p>AI 会告诉你：代码正确，但 O(n²)。可以用 HashMap 优化到 O(n)。提示：遍历时把每个数和它的 index 存进 map，检查 target - nums[i] 是否已经在 map 里。</p>
+
+<p><strong>Step 3：自己写优化版本</strong></p>
+<pre>
+function twoSum(nums, target) {
+    const map = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if (map.has(complement)) {
+            return [map.get(complement), i];
+        }
+        map.set(nums[i], i);
+    }
+}
+</pre>
+
+<p><strong>Step 4：用模板 2 生成变体</strong></p>
+<p>AI 可能给出：</p>
+<ul>
+  <li>简单变体：输入是排序数组，要求 O(1) 空间（答案：双指针）</li>
+  <li>中等变体：找三个数的和等于 target（3Sum，排序 + 双指针）</li>
+  <li>困难变体：数组中有重复元素，返回所有不重复的 pair（需要去重逻辑）</li>
+</ul>
+
+<p><strong>Step 5：用模板 3 练追问</strong></p>
+<p>面试官追问："如果 nums 有 10 亿个数，内存放不下怎么办？" — 这时候需要讨论 external sorting + two pointers，或者分布式方案。</p>
+
+<h3>高级技巧：让 AI 扮演不同风格的面试官</h3>
+
+<blockquote>
+<strong>Prompt — 严格面试官：</strong><br><br>
+你是一个非常严格的 Google 面试官。对我的代码要求是：变量名必须有意义、边界条件必须处理、复杂度分析必须准确。每个小错误都要指出来。<br><br>
+[粘贴你的代码]
+</blockquote>
+
+<blockquote>
+<strong>Prompt — 引导式面试官：</strong><br><br>
+你是一个友好的面试官。我是算法面试新手。我在做 [题目]，目前卡在 [具体哪里卡住了]。<br><br>
+请不要直接给答案。给我 3 个由浅到深的提示：<br>
+- 提示 1：一个方向性的建议<br>
+- 提示 2：提到应该用什么数据结构<br>
+- 提示 3：给出伪代码的关键两行<br><br>
+等我每次回复后再给下一个提示。
+</blockquote>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：完整工作流实践</h3>
+<p>选一道你没做过的 LeetCode Medium 题（推荐 #3 Longest Substring Without Repeating Characters），严格按照"生成 → 审查 → 迭代"流程做一遍：</p>
+<ol>
+  <li>自己做 20 分钟</li>
+  <li>用模板 1 让 AI 审查你的代码</li>
+  <li>根据提示优化</li>
+  <li>用模板 2 生成 3 个变体，做其中 1 个</li>
+  <li>用模板 3 练习追问</li>
+</ol>
+<p>记录整个过程花了多长时间，以及你从每个步骤学到了什么。</p>
+
+<h3>练习 2：AI 代码审查</h3>
+<p>让 AI 生成以下题目的解法，然后你来审查：</p>
+<blockquote>
+请给我 LeetCode #146 LRU Cache 的 JavaScript 实现。故意在代码中留 2 个 bug，但不要告诉我 bug 在哪里。
+</blockquote>
+<p>你的任务：找出这 2 个 bug 并修复。这个练习训练的是你的 code review 能力。</p>
+
+<h3>练习 3：变体挑战</h3>
+<p>做完 LeetCode #1 Two Sum 后，用模板 2 生成 3 个变体。在不看任何参考的情况下，尝试做出中等变体。如果 15 分钟内做不出来，再向 AI 要一个提示。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q：用 AI 辅助刷题算不算"作弊"？</h3>
+<p>看你怎么用。如果你让 AI 直接写答案然后你复制粘贴，那是作弊——而且只是在骗自己。如果你用 AI 做审查、生成变体、模拟追问，这和请一个私教没有区别。关键区分标准：做完一道题后，隔一天不看任何参考，你能不能独立从零写出来？能 = 你学到了；不能 = 你只是看了答案。</p>
+
+<h3>Q：AI 给的解法和 LeetCode Discussion 里的不一样，该信谁？</h3>
+<p>都不要盲信。把两个解法都在 LeetCode 上跑一遍，看哪个能 pass 所有 test cases。如果都能 pass，比较时间复杂度和代码可读性。AI 和 Discussion 都可能有错，<strong>你自己验证过的才是对的</strong>。</p>
+
+<h3>Q：面试时能不能用 AI？</h3>
+<p>绝大多数公司不允许。即使是 remote 面试，面试官能通过你的反应速度、思考过程判断你有没有在用 AI。面试时的算法能力必须是你"内化"了的。用 AI 刷题的目的是把知识和思维模式内化到自己脑子里，而不是依赖 AI 实时辅助。</p>
+
+<h2>小结</h2>
+<p>AI 是刷题的加速器，不是替代品。正确用法是"生成 → 审查 → 迭代"：AI 审查你的代码、生成变体帮你巩固、模拟面试官帮你练追问。3 个 Prompt 模板（step-by-step 讲解、变体生成、模拟追问）覆盖了 AI 辅助刷题的核心场景。做 20 道题走完整流程，比做 100 道题只看答案有效得多。但最终检验标准始终是：关掉 AI，你能不能独立做出来。</p>

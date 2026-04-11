@@ -1,0 +1,182 @@
+<h2>学习目标</h2>
+<ul>
+  <li>理解 Few-shot 技术的原理：给 AI 一个好的范例 + 目标 JD，让它生成高质量定制输出</li>
+  <li>掌握 Cover Letter 的 3 段结构模板，知道每段该写什么</li>
+  <li>能用完整的 Prompt 从一份 JD 生成一封针对性的 Cover Letter</li>
+  <li>学会审查和修改 AI 生成的 Cover Letter，避免"AI 味"太重</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>为什么用 Few-shot 而不是直接让 AI 写</h3>
+
+<p>你大概试过这样的 Prompt："帮我写一封 Cover Letter，应聘 Google 的前端工程师。" 结果 AI 给你一封充满"I am passionate about technology"和"I am a highly motivated individual"的废话信。</p>
+
+<p>问题出在哪里？AI 没有你的"风格参考"。它只能用最通用、最安全的写法。</p>
+
+<p><strong>Few-shot 的核心思路：给 AI 一个你认为好的范例（shot），让它按这个风格和结构来生成新内容。</strong></p>
+
+<p>具体到 Cover Letter：</p>
+<ol>
+  <li>你提供一封你写过的、或者你认为写得好的 Cover Letter 作为范例</li>
+  <li>你提供目标公司的 JD</li>
+  <li>你提供你的核心经历（简历要点）</li>
+  <li>AI 参照范例的风格和结构，结合 JD 要求和你的经历，生成新的 Cover Letter</li>
+</ol>
+
+<p>这和直接让 AI 写的区别：AI 有了"质量锚点"，它知道你期望什么水平的输出。</p>
+
+<h3>Cover Letter 的 3 段结构</h3>
+
+<p>澳洲 IT 行业的 Cover Letter 一般控制在 250-400 字（英文），结构清晰的 3 段最有效：</p>
+
+<p><strong>第 1 段：Hook + 匹配度（3-4 句）</strong></p>
+<ul>
+  <li>你申请什么职位</li>
+  <li>你最相关的 1 个核心优势（直接对应 JD 的第一条要求）</li>
+  <li>可选：一个具体数字或成就来证明</li>
+</ul>
+
+<p>例子：</p>
+<pre>I'm applying for the Senior Frontend Engineer role at Canva. Over the past 4 years,
+I've built and maintained React applications serving 2M+ monthly users at [Company],
+with a focus on performance optimization and design system development — both core
+requirements in your job description.</pre>
+
+<p><strong>第 2 段：证据（4-6 句）</strong></p>
+<ul>
+  <li>2-3 个具体经历，每个直接对应 JD 中的一条要求</li>
+  <li>用 "情境 → 行动 → 结果" 的迷你 STAR 格式</li>
+  <li>包含技术关键词（和 JD 一致）</li>
+</ul>
+
+<p>例子：</p>
+<pre>At [Company], I led the migration from a legacy jQuery codebase to React 18 with
+TypeScript, reducing page load time by 40% and improving developer productivity by
+establishing a shared component library used by 3 teams. I also implemented
+comprehensive unit and integration tests using Jest and React Testing Library,
+achieving 85% code coverage across the frontend codebase.</pre>
+
+<p><strong>第 3 段：为什么是这家公司 + Call to Action（2-3 句）</strong></p>
+<ul>
+  <li>1 句说为什么你对这家公司感兴趣（要具体，不要"I admire your mission"）</li>
+  <li>1 句 call to action</li>
+</ul>
+
+<p>例子：</p>
+<pre>Canva's approach to democratizing design aligns with my experience building tools
+that simplify complex workflows for non-technical users. I'd welcome the opportunity
+to discuss how my frontend expertise can contribute to your design platform's growth.</pre>
+
+<h3>什么是好的范例 Cover Letter</h3>
+
+<p>作为 Few-shot 的输入，你的范例 Cover Letter 应该具备：</p>
+<ul>
+  <li>遵循 3 段结构</li>
+  <li>有具体数字和成就（不是空洞的形容词）</li>
+  <li>技术关键词自然地融入句子中</li>
+  <li>语气专业但不死板</li>
+  <li>长度在 250-400 字</li>
+</ul>
+
+<p>如果你没有现成的范例，可以先让 AI 帮你生成一封"标准范例"，你手动修改到满意，然后用这个修改后的版本作为后续所有 Cover Letter 的 Few-shot 输入。</p>
+
+<h2>操作步骤</h2>
+
+<h3>Step 1：准备你的范例 Cover Letter</h3>
+
+<p>如果你有之前写过的、质量不错的 Cover Letter，直接用。如果没有，用以下 Prompt 先生成一个基础版本：</p>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+你是一位澳洲 IT 行业的求职顾问。请帮我写一封 Cover Letter 的范例，要求：<br><br>
+- 针对 Junior Frontend Developer 岗位<br>
+- 使用 3 段结构：Hook + 匹配度 / 证据 / 为什么是这家公司<br>
+- 每段包含具体数字或成就<br>
+- 英文，250-350 字<br>
+- 语气专业但自然，不要用 "passionate"、"highly motivated"、"team player" 这类空洞词汇<br><br>
+申请人背景：<br>
+- 1 年 React 开发经验（bootcamp + 实习）<br>
+- 做过一个电商网站项目（Next.js + TypeScript）<br>
+- 会 Jest 单元测试<br>
+- 有 AWS Cloud Practitioner 证书
+</blockquote>
+
+<p>拿到输出后，<strong>你一定要手动修改</strong>。把不像你说话风格的地方改掉，把不准确的信息修正。这个修改后的版本就是你的"范例 shot"。</p>
+
+<h3>Step 2：用 Few-shot Prompt 生成定制 Cover Letter</h3>
+
+<p>这是完整的生成 Prompt，直接复制使用：</p>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+你是一位专业的求职文案顾问。我会给你 3 个输入：<br>
+1. 一封我之前写的 Cover Letter 范例（请参照它的风格、结构和语气）<br>
+2. 目标职位的 JD<br>
+3. 我的关键经历<br><br>
+请根据这些输入，生成一封新的 Cover Letter，要求：<br>
+- 严格遵循范例的 3 段结构<br>
+- 第 1 段：Hook + 和 JD 最匹配的 1 个核心优势<br>
+- 第 2 段：2-3 个具体经历，每个对应 JD 中的一条要求，用"情境→行动→结果"格式<br>
+- 第 3 段：为什么对这家公司感兴趣（从 JD 或公司官网找具体原因）+ call to action<br>
+- 英文，250-400 字<br>
+- 从 JD 中提取关键技术词汇，自然融入内容<br>
+- 不要用这些词：passionate, motivated, team player, exciting opportunity, dynamic<br><br>
+
+=== 范例 Cover Letter ===<br>
+[在这里粘贴你的范例 Cover Letter]<br><br>
+
+=== 目标 JD ===<br>
+[在这里粘贴完整的 JD]<br><br>
+
+=== 我的关键经历 ===<br>
+- [经历 1：做了什么，用了什么技术，结果如何]<br>
+- [经历 2]<br>
+- [经历 3]<br>
+- [相关证书或教育背景]
+</blockquote>
+
+<h3>Step 3：审查和修改 AI 输出</h3>
+
+<p>AI 生成的 Cover Letter 不能直接投。你需要检查以下几点：</p>
+
+<ol>
+  <li><strong>事实准确性</strong> — AI 有时会"编造"你没有的经历或夸大数字。逐句核实。</li>
+  <li><strong>JD 关键词覆盖</strong> — 把 JD 中的 required skills 列出来，检查 Cover Letter 是否覆盖了前 3-5 条。</li>
+  <li><strong>语气自然度</strong> — 大声读一遍。如果某句话你平时不会这么说，改成你的表达方式。</li>
+  <li><strong>公司特定信息</strong> — 第 3 段提到的公司信息是否准确？AI 可能用了过时的或错误的信息。去公司官网确认。</li>
+  <li><strong>长度</strong> — 控制在一页以内。Hiring manager 花在每封 CL 上的时间平均不到 30 秒。</li>
+</ol>
+
+<h3>Step 4：建立你的 Cover Letter 模板库</h3>
+
+<p>当你用这个流程生成了 3-5 封 Cover Letter 后，你会发现第 2 段的"证据"基本是你的核心经历排列组合。建议：</p>
+
+<ul>
+  <li>维护一个"经历子弹点库" — 你的每个项目/成就写 2-3 个版本的描述</li>
+  <li>根据不同 JD 的要求，选择最匹配的子弹点组合</li>
+  <li>第 1 段和第 3 段每次都要针对具体公司重写</li>
+</ul>
+
+<h2>动手练习</h2>
+
+<ol>
+  <li><strong>创建你的范例 Cover Letter（30 分钟）</strong> — 用 Step 1 的 Prompt 生成初稿，然后手动修改到你满意。保存为你的"标准范例"。</li>
+  <li><strong>实战生成（20 分钟）</strong> — 去 Seek 或 LinkedIn 找一个你感兴趣的 IT 职位的 JD，用 Step 2 的完整 Prompt 生成一封 Cover Letter。对照 Step 3 的检查清单审查。</li>
+  <li><strong>对比测试（15 分钟）</strong> — 用同一个 JD，分别用"直接让 AI 写"和"Few-shot 方法"生成两封 Cover Letter。对比两者的质量差异，你会明显感受到 Few-shot 的效果。</li>
+</ol>
+
+<h2>常见问题</h2>
+
+<h3>Q: Cover Letter 还有必要写吗？很多人说 Hiring Manager 不看。</h3>
+<p>取决于公司和岗位。大公司的在线申请系统通常有 Cover Letter 上传选项，如果有就写。中小公司和 recruiter 直接联系的情况，Cover Letter 的作用更大。关键是：用 AI 辅助后，写一封 Cover Letter 只需要 10 分钟，成本很低。即使只有 30% 的 Hiring Manager 会看，这 10 分钟的投入也值得。</p>
+
+<h3>Q: AI 生成的 Cover Letter 会不会被 HR 一眼看出来？</h3>
+<p>如果你直接用 ChatGPT 默认输出，大概率会。HR 每天看几十封信，"I am writing to express my keen interest in..."这种开头一看就是 AI 写的。所以 Step 3 的审查修改是必须的。关键是：把 AI 当作草稿生成器，不是成品输出器。你的个人经历、具体数字、说话风格是 AI 无法完美模仿的，这些才是让 Cover Letter 显得真实的部分。</p>
+
+<h3>Q: 我的经历很少，Cover Letter 第 2 段写什么？</h3>
+<p>项目经历（包括 bootcamp 项目）、开源贡献、个人项目、课程作业、志愿者技术工作都可以写。关键不是经历多"大"，而是描述得够具体。"Built a task management app using React and Firebase, implementing real-time updates and user authentication for 50+ beta users" — 这就是一个 bootcamp 项目，但写法很专业。</p>
+
+<h2>小结</h2>
+
+<p>Few-shot 是让 AI 生成高质量 Cover Letter 的关键技术 — 给它一个好范例，它就知道你要什么水平的输出。3 段结构（Hook / 证据 / 公司 + CTA）是澳洲 IT 行业最有效的 Cover Letter 格式。AI 生成的内容必须经过人工审查和个性化修改，否则 HR 一眼就能看出是 AI 写的。建立一个"经历子弹点库"之后，每次针对新 JD 生成 Cover Letter 只需要 10 分钟。</p>

@@ -1,0 +1,232 @@
+<h2>学习目标</h2>
+<ul>
+  <li>掌握算法面试的 8 大题型分类及每类的核心套路</li>
+  <li>建立 3 个月刷题计划：从 Easy 到 Hard 的渐进路线</li>
+  <li>学会面试中的解题流程：clarify → brute force → optimize → code → test</li>
+  <li>了解每种题型 5-10 道经典题目，总量控制在 80 题以内</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>你不需要刷 500 道 LeetCode</h3>
+<p>很多人觉得算法面试 = 无限刷题。这是最低效的准备方式。LeetCode 上有 3000+ 道题，就算每天做 3 道，刷完需要 3 年。</p>
+
+<p>真相是：面试中 80% 的算法题可以归为 8 种类型。每种类型有固定的思维模式和代码模板。掌握每种类型的模板 + 做 5-10 道练习题 = 60-80 道题就够了。剩下的时间用来练习"面试时怎么讲思路"比多刷 100 道题有用得多。</p>
+
+<h3>8 大题型及核心套路</h3>
+
+<p><strong>类型 1：Array（数组）</strong></p>
+<p>最基础的题型，其他类型的基础。核心技巧：排序预处理、双指针、前缀和。</p>
+<p>经典题目：</p>
+<ul>
+  <li>Two Sum（LeetCode #1）— Hash Map 查找，O(n)</li>
+  <li>Best Time to Buy and Sell Stock（#121）— 一次遍历，记录最小值</li>
+  <li>Product of Array Except Self（#238）— 前缀积 + 后缀积</li>
+  <li>Maximum Subarray（#53）— Kadane's Algorithm</li>
+  <li>3Sum（#15）— 排序 + 双指针</li>
+</ul>
+<p>套路总结：看到 "找两个元素满足某条件" → Hash Map；看到 "连续子数组" → 滑动窗口或前缀和；看到 "排序后处理" → 双指针。</p>
+
+<p><strong>类型 2：String（字符串）</strong></p>
+<p>本质是特殊的数组，但多了字符编码、子串匹配等考点。</p>
+<p>经典题目：</p>
+<ul>
+  <li>Valid Anagram（#242）— 字符频次计数</li>
+  <li>Longest Substring Without Repeating Characters（#3）— 滑动窗口</li>
+  <li>Longest Palindromic Substring（#5）— 中心扩展或 DP</li>
+  <li>Group Anagrams（#49）— 排序后作为 key</li>
+  <li>Minimum Window Substring（#76）— 滑动窗口 + 计数器</li>
+</ul>
+<p>套路总结：看到 "子串/子序列" → 滑动窗口；看到 "字符统计" → HashMap 计频；看到 "回文" → 中心扩展。</p>
+
+<p><strong>类型 3：Hash Table（哈希表）</strong></p>
+<p>面试中出现频率最高的数据结构，用于 O(1) 查找。</p>
+<p>经典题目：</p>
+<ul>
+  <li>Two Sum（#1）— 经典 Hash Map 应用</li>
+  <li>Contains Duplicate（#217）— HashSet</li>
+  <li>LRU Cache（#146）— HashMap + 双向链表</li>
+  <li>Top K Frequent Elements（#347）— HashMap + Heap 或 Bucket Sort</li>
+  <li>Subarray Sum Equals K（#560）— 前缀和 + HashMap</li>
+</ul>
+
+<p><strong>类型 4：Two Pointers（双指针）</strong></p>
+<p>面试中非常好用的技巧，能把 O(n²) 降到 O(n)。</p>
+<p>核心模式：</p>
+<ul>
+  <li><strong>对向双指针：</strong>两端往中间走。适合有序数组中找 pair（如 Two Sum II）</li>
+  <li><strong>同向双指针（滑动窗口）：</strong>都从左边走。适合连续子数组/子串问题</li>
+  <li><strong>快慢指针：</strong>一快一慢。适合链表环检测（Floyd's Algorithm）</li>
+</ul>
+<p>经典题目：</p>
+<ul>
+  <li>Container With Most Water（#11）— 对向双指针</li>
+  <li>Trapping Rain Water（#42）— 对向双指针或单调栈</li>
+  <li>Linked List Cycle（#141）— 快慢指针</li>
+  <li>Remove Duplicates from Sorted Array（#26）— 同向双指针</li>
+</ul>
+
+<p><strong>类型 5：Binary Search（二分查找）</strong></p>
+<p>不只是在有序数组中查找元素。任何"单调性"问题都可以用二分。</p>
+<p>核心模板（记住这一个就够了）：</p>
+<pre>
+let left = 0, right = arr.length - 1;
+while (left <= right) {
+    const mid = left + Math.floor((right - left) / 2);
+    if (arr[mid] === target) return mid;
+    else if (arr[mid] < target) left = mid + 1;
+    else right = mid - 1;
+}
+return -1; // or left, depending on the problem
+</pre>
+<p>经典题目：</p>
+<ul>
+  <li>Binary Search（#704）— 基础模板</li>
+  <li>Search in Rotated Sorted Array（#33）— 变体，判断哪半边有序</li>
+  <li>Find Minimum in Rotated Sorted Array（#153）</li>
+  <li>Koko Eating Bananas（#875）— 二分答案（对结果二分而不是对输入二分）</li>
+  <li>Median of Two Sorted Arrays（#4）— Hard，但面试频率高</li>
+</ul>
+<p>套路总结：看到 "有序" → 二分；看到 "最小化最大值" 或 "最大化最小值" → 二分答案。</p>
+
+<p><strong>类型 6：Tree（树）</strong></p>
+<p>面试第二高频的数据结构（仅次于 Array）。核心是递归思维。</p>
+<p>经典题目：</p>
+<ul>
+  <li>Maximum Depth of Binary Tree（#104）— 递归基础</li>
+  <li>Invert Binary Tree（#226）— 递归交换左右子树</li>
+  <li>Validate Binary Search Tree（#98）— 中序遍历或递归传范围</li>
+  <li>Lowest Common Ancestor（#236）— 后序遍历递归</li>
+  <li>Binary Tree Level Order Traversal（#102）— BFS 模板</li>
+  <li>Serialize and Deserialize Binary Tree（#297）— 前序遍历</li>
+</ul>
+<p>套路总结：树的题 90% 用递归。思考框架：每个节点需要做什么 → 左右子树的返回值是什么 → 怎么合并。</p>
+
+<p><strong>类型 7：Graph（图）</strong></p>
+<p>比树难一个级别，但考的模式也是固定的。</p>
+<p>核心算法：</p>
+<ul>
+  <li><strong>BFS：</strong>层级遍历、最短路径（无权图）</li>
+  <li><strong>DFS：</strong>连通分量、路径搜索、拓扑排序</li>
+  <li><strong>Union-Find：</strong>判断连通性，合并集合</li>
+</ul>
+<p>经典题目：</p>
+<ul>
+  <li>Number of Islands（#200）— DFS/BFS 标准题</li>
+  <li>Clone Graph（#133）— BFS + HashMap</li>
+  <li>Course Schedule（#207）— 拓扑排序（检测有向图环）</li>
+  <li>Word Ladder（#127）— BFS 最短路径</li>
+  <li>Pacific Atlantic Water Flow（#417）— 反向 DFS</li>
+</ul>
+
+<p><strong>类型 8：Dynamic Programming（动态规划）</strong></p>
+<p>很多人最怕的题型，但面试中的 DP 题有规律可循。</p>
+<p>核心思路：定义 dp[i] 的含义 → 找状态转移方程 → 确定初始值 → 确定遍历顺序。</p>
+<p>经典题目（按难度排序）：</p>
+<ul>
+  <li>Climbing Stairs（#70）— dp[i] = dp[i-1] + dp[i-2]，就是斐波那契</li>
+  <li>House Robber（#198）— dp[i] = max(dp[i-1], dp[i-2] + nums[i])</li>
+  <li>Coin Change（#322）— 完全背包变体</li>
+  <li>Longest Increasing Subsequence（#300）— O(n²) DP 或 O(n log n) 二分优化</li>
+  <li>Longest Common Subsequence（#1143）— 二维 DP</li>
+  <li>Edit Distance（#72）— 经典二维 DP</li>
+</ul>
+<p>套路总结：DP 的关键不是写代码，而是定义状态。如果你能清楚地定义 "dp[i] 表示什么"，剩下的就是填转移方程。面试时先从 brute force 递归开始，然后加 memoization，最后转成 bottom-up DP。</p>
+
+<h3>面试中的解题流程</h3>
+<p>写代码之前的思考过程比代码本身更重要。面试官评分的很大一部分在于你的"解题过程"。</p>
+
+<ol>
+  <li><strong>Clarify（1-2 分钟）：</strong>确认输入范围、边界情况、返回值格式。"Can the array be empty?", "Are there duplicates?", "Is the input sorted?"</li>
+  <li><strong>Brute Force（1 分钟）：</strong>先说最直观的暴力解法和复杂度。"The brute force approach would be O(n²) using two nested loops."</li>
+  <li><strong>Optimize（3-5 分钟）：</strong>识别暴力解法的瓶颈，用合适的数据结构/算法优化。"We can use a hash map to reduce lookup from O(n) to O(1), bringing total to O(n)."</li>
+  <li><strong>Code（10-15 分钟）：</strong>写干净的代码。变量名有意义，逻辑分块。</li>
+  <li><strong>Test（2-3 分钟）：</strong>用 1-2 个例子手动走一遍代码。特别注意边界：空输入、单元素、全相同元素。</li>
+</ol>
+
+<h2>操作步骤</h2>
+
+<h3>3 个月刷题计划</h3>
+
+<p><strong>Month 1：Easy 打基础（每天 1-2 题，共 30-40 题）</strong></p>
+<ul>
+  <li>Week 1-2：Array + String（15 题 Easy）</li>
+  <li>Week 3：Hash Table + Two Pointers（10 题 Easy）</li>
+  <li>Week 4：Binary Search + Tree 基础（10 题 Easy）</li>
+</ul>
+<p>目标：每种类型的基础模板都写过至少一遍，能独立写出来。</p>
+
+<p><strong>Month 2：Medium 冲刺（每天 1 题，共 25-30 题）</strong></p>
+<ul>
+  <li>Week 1：Array/String Medium（#3, #15, #238, #53）</li>
+  <li>Week 2：Tree/Graph Medium（#98, #200, #207, #236）</li>
+  <li>Week 3：DP Easy/Medium（#70, #198, #322, #300）</li>
+  <li>Week 4：混合练习，模拟面试环境（45 分钟内完成 1 题 Medium）</li>
+</ul>
+<p>目标：Medium 题能在 25-30 分钟内做出来，包含思路讲解。</p>
+
+<p><strong>Month 3：Hard 选练 + Mock Interview（每周 2-3 题 + 1 次 mock）</strong></p>
+<ul>
+  <li>Hard 题只选高频的做：#42 Trapping Rain Water, #76 Minimum Window Substring, #297 Serialize/Deserialize Tree, #4 Median of Two Sorted Arrays</li>
+  <li>每周做 1-2 次 mock interview（和朋友对练或用 Pramp/interviewing.io）</li>
+  <li>每次 mock 后复盘：超时了吗？思路卡在哪里？代码有 bug 吗？</li>
+</ul>
+
+<blockquote>
+<strong>Prompt 示例 — 题目分类确认：</strong><br><br>
+我做了以下 LeetCode 题目，请帮我检查是否覆盖了 8 大类型（Array, String, Hash Table, Two Pointers, Binary Search, Tree, Graph, DP），并指出我还缺哪些类型的练习：<br><br>
+[列出你做过的题目编号和名称]
+</blockquote>
+
+<blockquote>
+<strong>Prompt 示例 — 解题思路训练：</strong><br><br>
+我在面试中遇到这道题：[题目描述]<br><br>
+请不要直接给答案。按以下步骤引导我：<br>
+1. 问我几个 clarification questions<br>
+2. 让我先说 brute force 思路<br>
+3. 给一个提示让我想到更优解法<br>
+4. 等我写完代码后给 feedback
+</blockquote>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：类型识别</h3>
+<p>看到以下题目描述，判断属于哪种类型，以及应该用什么核心技巧：</p>
+<ol>
+  <li>"Given a sorted array, find if there exist two elements that sum to target." — 类型？技巧？</li>
+  <li>"Given a binary tree, return the zigzag level order traversal." — 类型？技巧？</li>
+  <li>"Given a string, find the length of the longest palindromic subsequence." — 类型？技巧？</li>
+  <li>"Given a grid of 0s and 1s, count the number of connected components." — 类型？技巧？</li>
+  <li>"Given an array, find the minimum number of jumps to reach the end." — 类型？技巧？</li>
+</ol>
+
+<h3>练习 2：模板默写</h3>
+<p>不看任何参考资料，写出以下 3 个代码模板（用你最熟悉的语言）：</p>
+<ol>
+  <li>Binary Search 标准模板</li>
+  <li>BFS 模板（用 queue 做层级遍历）</li>
+  <li>DFS 模板（递归版 + 迭代版任选一个）</li>
+</ol>
+
+<h3>练习 3：限时实战</h3>
+<p>设置 25 分钟计时器，完成 LeetCode #3 Longest Substring Without Repeating Characters。要求：</p>
+<ul>
+  <li>前 2 分钟 clarify + brute force</li>
+  <li>中间 18 分钟写代码</li>
+  <li>最后 5 分钟 test + 分析复杂度</li>
+  <li>完成后自我评估：是否在时间内完成？代码是否有 bug？思路是否清晰？</li>
+</ul>
+
+<h2>常见问题</h2>
+
+<h3>Q：应该用什么语言刷题？</h3>
+<p>用你面试要用的语言。Python 写起来最快（面试时少写很多代码），JavaScript/TypeScript 适合前端岗位，Java 适合大厂后端。不要为了刷题学新语言，面试时语言不熟练比算法不会更致命。</p>
+
+<h3>Q：一道题做了 30 分钟还没思路，要不要看答案？</h3>
+<p>要。刷题的目的不是证明你多聪明，而是学习解题模式。卡 30 分钟以上，看答案，理解思路，然后第二天不看答案重做一遍。能独立做出来才算真正掌握。</p>
+
+<h3>Q：面试时完全没思路怎么办？</h3>
+<p>三步走：(1) 先说 brute force，至少展示你理解了题意。(2) 问面试官 "Can I have a hint?" — 这不丢分，面试官经常准备了 hint。(3) 尝试换个数据结构想想，"What if I use a hash map here?" 很多时候 hash map 就是正确答案。最差情况下，写出 brute force 的完整代码也比一行都没写强。</p>
+
+<h2>小结</h2>
+<p>算法面试的本质是模式识别，不是智力测试。8 种题型、每种 5-10 道经典题、总共 60-80 道题就能覆盖 80% 的面试场景。3 个月的计划是：第一个月打基础做 Easy，第二个月做 Medium 建立解题速度，第三个月做 Mock Interview 练习"边想边说"。记住面试中的解题流程：clarify → brute force → optimize → code → test，这个流程本身就占评分的 30%。</p>

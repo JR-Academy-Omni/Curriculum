@@ -1,0 +1,265 @@
+<h2>学习目标</h2>
+<ul>
+	<li>学会把多个 Offer 的关键信息结构化，方便 AI 做对比分析</li>
+	<li>掌握一套完整的 Offer 对比 Prompt 模板，包含薪资、福利、成长性等维度</li>
+	<li>理解加权评分法的原理，根据个人优先级调整权重</li>
+	<li>能用 AI 生成可视化的对比表格辅助最终决策</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>为什么不能只看 Base Salary</h3>
+<p>很多人拿到两个 offer，就比谁的 base 高然后选谁。这是最常见的错误。一个 offer 的真实价值至少包括这些维度：</p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+	<thead>
+		<tr style="background-color: #f0f0f0;">
+			<th>维度</th>
+			<th>说明</th>
+			<th>容易忽略的点</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Base Salary</td>
+			<td>固定年薪</td>
+			<td>是否含 super？有些公司写 "package" 是包含 super 的</td>
+		</tr>
+		<tr>
+			<td>Superannuation</td>
+			<td>养老金</td>
+			<td>法定 11.5%，有些公司给到 15%+（比如 Big 4 银行）</td>
+		</tr>
+		<tr>
+			<td>Bonus</td>
+			<td>年终奖</td>
+			<td>Guaranteed bonus vs Performance bonus 差别很大</td>
+		</tr>
+		<tr>
+			<td>RSU / Equity</td>
+			<td>股票</td>
+			<td>Vesting schedule 很关键 — 4 年 vest 的第一年可能只有 25% 甚至 0%</td>
+		</tr>
+		<tr>
+			<td>WLB (Work-Life Balance)</td>
+			<td>加班文化</td>
+			<td>每周多 10 小时等于时薪降了 25%</td>
+		</tr>
+		<tr>
+			<td>Commute</td>
+			<td>通勤</td>
+			<td>每天通勤 2 小时 = 一年损失 500 小时</td>
+		</tr>
+		<tr>
+			<td>Tech Stack</td>
+			<td>技术成长</td>
+			<td>用过时技术 2 年后跳槽会发现简历没竞争力</td>
+		</tr>
+		<tr>
+			<td>Team Size</td>
+			<td>团队规模</td>
+			<td>5 人团队你什么都要做，50 人团队可能只做螺丝钉</td>
+		</tr>
+		<tr>
+			<td>Visa Sponsorship</td>
+			<td>签证支持</td>
+			<td>对需要 PR 的人来说，这个维度权重可以高于薪资</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>结构化信息收集</h3>
+<p>在让 AI 分析之前，你需要先把每个 offer 的信息整理成统一格式。不完整的信息会导致 AI 的分析也不完整。</p>
+
+<p>每个 offer 至少收集这些字段：</p>
+<pre><code>公司名：___
+岗位名：___
+Base Salary：$___ AUD/年
+Super：___% (法定 11.5% 还是更高?)
+Bonus：___% (guaranteed 还是 performance-based?)
+RSU/Equity：$___ /年 (vesting schedule: ___)
+签约奖金 (Sign-on bonus)：$___
+年假：___ 天
+Remote 政策：全远程 / Hybrid ___天 / On-site
+通勤时间：单程 ___ 分钟
+Tech Stack：___
+团队规模：___ 人
+直属 Manager 背景：___
+Visa Sponsorship：Yes / No / Already have PR
+试用期：___ 个月
+竞业禁止 (Non-compete)：Yes / No，期限 ___
+</code></pre>
+
+<h3>加权评分法</h3>
+<p>不同人的优先级不同。刚毕业的人可能最看重成长性，有家庭的人可能最看重 WLB，需要 PR 的人最看重签证。所以权重要自己定。</p>
+
+<p>常见的权重分配示例：</p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+	<thead>
+		<tr style="background-color: #f0f0f0;">
+			<th>维度</th>
+			<th>新毕业生</th>
+			<th>有家庭</th>
+			<th>需要 PR</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Total Comp</td>
+			<td>25%</td>
+			<td>30%</td>
+			<td>15%</td>
+		</tr>
+		<tr>
+			<td>Tech Stack 成长性</td>
+			<td>25%</td>
+			<td>10%</td>
+			<td>15%</td>
+		</tr>
+		<tr>
+			<td>WLB</td>
+			<td>10%</td>
+			<td>25%</td>
+			<td>10%</td>
+		</tr>
+		<tr>
+			<td>通勤 / Remote</td>
+			<td>10%</td>
+			<td>15%</td>
+			<td>5%</td>
+		</tr>
+		<tr>
+			<td>Visa Support</td>
+			<td>10%</td>
+			<td>5%</td>
+			<td>35%</td>
+		</tr>
+		<tr>
+			<td>团队 / Manager</td>
+			<td>15%</td>
+			<td>10%</td>
+			<td>15%</td>
+		</tr>
+		<tr>
+			<td>公司品牌</td>
+			<td>5%</td>
+			<td>5%</td>
+			<td>5%</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>操作步骤</h2>
+
+<h3>Step 1：收集 Offer 信息</h3>
+<p>拿到 offer letter 后，把上面的字段一个一个填好。有些信息 offer letter 上不写（比如加班文化），你需要：</p>
+<ul>
+	<li>面试时直接问 "What does a typical day look like?"</li>
+	<li>Glassdoor 上看员工评价</li>
+	<li>LinkedIn 上找在职员工私信聊聊</li>
+</ul>
+
+<h3>Step 2：喂给 AI 做结构化分析</h3>
+<p>这是一个完整的、可以直接复制粘贴的 Prompt：</p>
+
+<blockquote>
+<p><strong>Prompt — Offer 对比分析：</strong></p>
+<p>你是一个澳洲 IT 行业的职业顾问。我有以下几个 offer，请帮我做全面对比分析。</p>
+<p><strong>我的个人情况：</strong><br>
+- 经验：[X] 年 [岗位方向]<br>
+- 签证状态：[TR/PR/Citizen]<br>
+- 最看重的因素（按优先级）：[例如：技术成长 > 薪资 > WLB > 通勤]<br>
+- 目前住在：[城市/区]</p>
+<p><strong>Offer A — [公司名]：</strong><br>
+- 岗位：[title]<br>
+- Base Salary：$[X] AUD<br>
+- Super：[X]%<br>
+- Bonus：[X]% [guaranteed/performance-based]<br>
+- RSU：$[X]/年，[X] 年 vesting，cliff [X] 年<br>
+- Sign-on Bonus：$[X]<br>
+- 年假：[X] 天<br>
+- Remote 政策：[全远程/Hybrid X 天/On-site]<br>
+- 通勤：单程 [X] 分钟<br>
+- Tech Stack：[列出主要技术]<br>
+- 团队规模：[X] 人<br>
+- Visa Sponsorship：[Yes/No]<br>
+- 试用期：[X] 个月</p>
+<p><strong>Offer B — [公司名]：</strong><br>
+[同上格式]</p>
+<p><strong>Offer C — [公司名]（如果有）：</strong><br>
+[同上格式]</p>
+<p><strong>请输出：</strong><br>
+1. 各 offer 的 Total Compensation 年度总包对比（含 super、bonus、RSU 第一年实际到手）<br>
+2. 按我的优先级做加权评分（1-10 分），生成对比表格<br>
+3. 每个 offer 的最大优势和最大风险各 2 点<br>
+4. 你的推荐和理由<br>
+5. 如果选了次优 offer，我应该跟他们谈什么条件来弥补差距</p>
+</blockquote>
+
+<h3>Step 3：让 AI 深入分析 RSU Vesting</h3>
+<p>如果 offer 里有 RSU（常见于 Atlassian、Canva、Google 等），vesting schedule 的差异巨大。用这个追问 Prompt：</p>
+
+<blockquote>
+<p><strong>Prompt — RSU Vesting 分析：</strong></p>
+<p>Offer A 的 RSU 条件：总价值 $[X]，4 年 vesting，1 年 cliff，之后按季度 vest。<br>
+Offer B 的 RSU 条件：总价值 $[X]，4 年 vesting，均匀分配（每年 25%）。</p>
+<p>请帮我计算：<br>
+1. 第 1 年、第 2 年、第 3 年、第 4 年分别实际到手多少 RSU 价值？<br>
+2. 如果我只待 2 年就跳槽，哪个 offer 的 RSU 总收益更高？<br>
+3. 考虑到股价波动风险，RSU 应该按面值的多少折来估算实际价值？</p>
+</blockquote>
+
+<h3>Step 4：让 AI 模拟长期收入轨迹</h3>
+<blockquote>
+<p><strong>Prompt — 5 年收入预测：</strong></p>
+<p>基于以上两个 offer，假设：<br>
+- 每年薪资涨幅 3-5%（内部晋升额外 +10%）<br>
+- Offer A 的公司晋升周期约 2 年<br>
+- Offer B 的公司晋升周期约 3 年<br>
+- RSU 股价年增长假设 10%</p>
+<p>请生成一个 5 年累计收入对比表，包括每年的 base + super + bonus + RSU 到手。</p>
+</blockquote>
+
+<h3>Step 5：决策并准备谈判</h3>
+<p>AI 分析完之后，你应该有一个明确的排序。如果你最想去的公司不是出价最高的，可以拿竞争 offer 去谈：</p>
+
+<blockquote>
+<p><strong>Prompt — 生成谈判话术：</strong></p>
+<p>我最想去 [公司 A]，但 [公司 B] 的 offer 在 [具体维度] 更好。请帮我写一封 email 给公司 A 的 HR，礼貌地表达我有竞争 offer，希望他们能在 [具体维度] 上匹配或改善。语气要专业但不咄咄逼人。</p>
+</blockquote>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：模拟 Offer 对比</h3>
+<p>用以下两个虚拟 offer 做完整的 AI 对比分析（直接复制上面的 Prompt 模板）：</p>
+<ul>
+	<li><strong>Offer A — Westpac (Sydney CBD)</strong>：Software Engineer, $115K base, 11.5% super, 10% performance bonus, 20 天年假, Hybrid 3 天, 通勤 45 分钟, Tech: Java/Spring/AWS, 团队 12 人, 有 visa sponsorship</li>
+	<li><strong>Offer B — Canva (Sydney)</strong>：Software Engineer, $105K base, 11.5% super, RSU $40K/4年均匀 vest, 25 天年假, Hybrid 2 天, 通勤 30 分钟, Tech: React/TypeScript/Go, 团队 8 人, 有 visa sponsorship</li>
+</ul>
+
+<h3>练习 2：调整权重</h3>
+<p>用同样的两个 offer，分别以三种人设做分析：</p>
+<ol>
+	<li>刚毕业、最看重技术成长</li>
+	<li>工作 5 年、有小孩、最看重 WLB</li>
+	<li>TR 签证、最看重 visa sponsorship 稳定性</li>
+</ol>
+<p>看看三种权重下，AI 推荐的结果是否不同。</p>
+
+<h3>练习 3：真实 Offer 分析</h3>
+<p>如果你手上有真实的 offer（或者用之前面试拿到的），用完整 Prompt 做一次真正的分析。注意保护隐私 — 可以用代号替代公司名。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q: AI 分析的薪资数据准确吗？</h3>
+<p>AI 对具体薪资数字不一定准（它的训练数据有时效性），但它的分析框架和对比逻辑是可靠的。你给的 offer 数据越详细，AI 的分析越有价值。把 AI 当成一个帮你理清思路的分析师，而不是一个薪资数据库。</p>
+
+<h3>Q: 有些信息 offer letter 上没写怎么办？</h3>
+<p>直接问 HR。比如 bonus 是 guaranteed 还是 performance-based、RSU 的 vesting schedule、remote 政策是永久还是临时的。这些问题完全合理，不会让对方觉得你事多。HR 不愿意回答的信息，恰恰是你最应该警惕的。</p>
+
+<h3>Q: AI 推荐了 A 但我直觉想选 B，怎么办？</h3>
+<p>AI 只能分析你告诉它的维度。直觉可能反映了一些你没量化的因素 — 比如面试时团队氛围的感觉、对 Manager 的第一印象、公司文化是否合拍。这些"软指标"很重要。最终决定是你的，AI 只是帮你看清数字部分。</p>
+
+<h2>小结</h2>
+<p>Offer 对比不是比谁 base 高。把每个 offer 的 9-10 个关键维度结构化填写，喂给 AI 做加权评分，你会得到一个远比"感觉"靠谱的分析结果。记住根据自己的情况调整权重 — 新毕业看成长、有家庭看 WLB、要 PR 看签证。AI 帮你理清数字，最终决定还是你自己做。拿到分析结果后别忘了用竞争 offer 去谈，大部分公司都愿意在合理范围内 match。</p>

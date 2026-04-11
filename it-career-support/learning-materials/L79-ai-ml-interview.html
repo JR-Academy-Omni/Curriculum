@@ -1,0 +1,213 @@
+<h2>学习目标</h2>
+<ul>
+  <li>掌握 AI/ML 面试的三大支柱：ML 基础、Deep Learning、ML Engineering</li>
+  <li>理解 10 个最高频 AI/ML 面试问题的回答框架</li>
+  <li>区分 ML Engineer、Data Scientist、AI Engineer 三种岗位的面试侧重点</li>
+  <li>建立 AI/ML 面试的知识体系和复习路线图</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>AI/ML 面试的三大支柱</h3>
+<p>不管是 Google Brain 还是澳洲本地 AI 创业公司，AI/ML 面试考的核心能力可以归为三类：</p>
+
+<ol>
+  <li><strong>ML Fundamentals（机器学习基础）</strong> — 50% 的面试都会考</li>
+  <li><strong>Deep Learning（深度学习）</strong> — Senior 级别必考，Junior 可能只问概念</li>
+  <li><strong>ML Engineering（工程实践）</strong> — 越来越重要，特别是 MLE 岗位</li>
+</ol>
+
+<h3>支柱一：ML Fundamentals</h3>
+
+<p><strong>Supervised vs Unsupervised Learning</strong></p>
+<p>面试不是考你背定义，而是考你能不能判断什么场景用哪个。</p>
+<ul>
+  <li><strong>Supervised：</strong>有标签数据。你知道正确答案是什么，让模型去拟合。典型：邮件分类（spam/not spam），房价预测。</li>
+  <li><strong>Unsupervised：</strong>没有标签。让模型自己找 pattern。典型：客户分群（K-means clustering），异常检测。</li>
+  <li><strong>面试追问点：</strong>"如果你有少量标签数据怎么办？" — 答 semi-supervised learning 或 self-supervised learning。</li>
+</ul>
+
+<p><strong>Overfitting vs Underfitting</strong></p>
+<p>这个问题 90% 的 ML 面试会考，但大多数人只能背出定义。面试官想听的是你怎么<strong>诊断</strong>和<strong>解决</strong>。</p>
+<ul>
+  <li><strong>诊断方法：</strong>看 training loss vs validation loss 的曲线。training loss 低但 validation loss 高 = overfitting；两个都高 = underfitting。</li>
+  <li><strong>Overfitting 解决方案（按优先级）：</strong>
+    <ol>
+      <li>加数据（最有效但最贵）</li>
+      <li>Data augmentation（图片翻转旋转、文本同义词替换）</li>
+      <li>Regularization（L1/L2、Dropout）</li>
+      <li>减小模型复杂度（减少层数/参数）</li>
+      <li>Early stopping</li>
+    </ol>
+  </li>
+  <li><strong>Underfitting 解决方案：</strong>增加模型复杂度、增加训练时间、减少 regularization。</li>
+</ul>
+
+<p><strong>Cross-Validation</strong></p>
+<p>面试常问："为什么不直接用 train/test split？" 答案：单次 split 的结果取决于你怎么分数据，可能碰巧分到一个"简单"的 test set。K-fold cross-validation 把数据分成 K 份，每份轮流做 test set，最后取平均。这样的评估更稳定。</p>
+<p>实际面试中，面试官可能追问："K 一般取多少？" — 通常 5 或 10。数据量很小时可以用 Leave-One-Out（K = N）。</p>
+
+<p><strong>Bias-Variance Trade-off</strong></p>
+<p>不要背公式，用一个例子说清楚：</p>
+<ul>
+  <li><strong>High bias（高偏差）：</strong>模型太简单，假设太强。比如用线性模型拟合明显非线性的数据。</li>
+  <li><strong>High variance（高方差）：</strong>模型太复杂，对训练数据的噪声过于敏感。换一批训练数据，预测结果变化很大。</li>
+  <li><strong>Trade-off：</strong>增加模型复杂度 → bias 降低但 variance 升高。关键是找到 sweet spot。</li>
+</ul>
+
+<h3>支柱二：Deep Learning</h3>
+
+<p><strong>Transformer 和 Attention 机制</strong></p>
+<p>2024-2026 年 AI 面试绕不开 Transformer。你不需要能手写 multi-head attention，但要能解释清楚核心思想：</p>
+<ul>
+  <li><strong>为什么需要 Attention：</strong>传统 RNN/LSTM 处理长序列时会丢失早期信息（vanishing gradient）。Attention 让模型直接"看到"序列中任意位置的信息。</li>
+  <li><strong>Self-Attention 怎么工作：</strong>每个 token 生成 Q（Query）、K（Key）、V（Value）三个向量。Q 和所有 K 做点积 → softmax → 加权求和 V。结果是每个 token 都包含了对其他所有 token 的"注意力"信息。</li>
+  <li><strong>Multi-Head：</strong>做多组独立的 attention，让模型从不同角度理解关系（比如一组关注语法结构，一组关注语义）。</li>
+  <li><strong>面试常见追问：</strong>"Transformer 的时间复杂度是什么？" — O(n²d)，n 是序列长度，d 是维度。这也是为什么 context window 有限制。</li>
+</ul>
+
+<p><strong>CNN vs RNN vs Transformer 的使用场景</strong></p>
+<table>
+  <tr><th>架构</th><th>最适合</th><th>2025 年还用吗？</th></tr>
+  <tr><td>CNN</td><td>图像处理、固定大小输入</td><td>是，Computer Vision 仍然是主力（ResNet, EfficientNet）</td></tr>
+  <tr><td>RNN/LSTM</td><td>序列数据、时间序列</td><td>大部分被 Transformer 替代，少数场景（实时流数据）还在用</td></tr>
+  <tr><td>Transformer</td><td>NLP、多模态、几乎所有需要理解上下文的任务</td><td>绝对主力，GPT/BERT/LLaMA 都是 Transformer</td></tr>
+</table>
+
+<p><strong>Fine-tuning vs RAG</strong></p>
+<p>这是 2025 年 AI Engineer 面试必问题：</p>
+<ul>
+  <li><strong>Fine-tuning：</strong>修改模型参数，让模型学会新知识。适合需要改变模型行为的场景（比如让模型学会特定的写作风格）。成本高，需要 GPU + 标注数据。</li>
+  <li><strong>RAG（Retrieval-Augmented Generation）：</strong>不改模型参数，而是把相关文档检索出来塞进 prompt。适合知识库问答、企业文档搜索。成本低，更新快（改文档就行）。</li>
+  <li><strong>面试答题框架：</strong>"如果知识更新频繁且格式固定，选 RAG；如果需要模型真正理解某个领域的推理模式，选 Fine-tuning；大多数场景先试 RAG，效果不够再考虑 Fine-tuning。"</li>
+</ul>
+
+<h3>支柱三：ML Engineering</h3>
+
+<p><strong>Model Deployment</strong></p>
+<p>面试官不只关心你能不能训练模型，更关心你能不能把模型部署到生产环境。常见问题："How would you deploy a model to serve 10,000 requests per second?"</p>
+
+<p>答题框架：</p>
+<ol>
+  <li><strong>Model Serving：</strong>把模型包装成 API（FastAPI/Flask + Docker），或用 TorchServe/TF Serving</li>
+  <li><strong>Scaling：</strong>水平扩展（多个 pod），负载均衡，auto-scaling based on GPU utilization</li>
+  <li><strong>Latency 优化：</strong>模型量化（FP32 → FP16/INT8）、模型剪枝、batch inference、缓存热门查询</li>
+  <li><strong>Monitoring：</strong>data drift detection（输入数据分布变了吗？）、model performance decay（准确率在下降吗？）</li>
+</ol>
+
+<p><strong>MLOps</strong></p>
+<p>MLOps = ML + DevOps。面试中提到以下关键词能展示你的工程成熟度：</p>
+<ul>
+  <li><strong>Feature Store：</strong>统一管理特征，避免 training 和 serving 用不同的特征计算逻辑（training-serving skew）</li>
+  <li><strong>Model Registry：</strong>管理模型版本，A/B test 不同版本。比如 MLflow Model Registry</li>
+  <li><strong>Pipeline Orchestration：</strong>Airflow/Kubeflow，自动化 data → training → evaluation → deployment</li>
+  <li><strong>Experiment Tracking：</strong>MLflow/W&B，记录每次实验的超参数、metrics、artifacts</li>
+</ul>
+
+<p><strong>RAG Architecture（2025 热门）</strong></p>
+<p>很多公司正在构建 RAG 系统，面试高频考点：</p>
+<ol>
+  <li><strong>Indexing：</strong>文档分块（chunking strategy）→ embedding → 存入向量数据库（Pinecone/Weaviate/pgvector）</li>
+  <li><strong>Retrieval：</strong>用户 query → embedding → 向量相似度搜索 → top-K 文档</li>
+  <li><strong>Generation：</strong>retrieved documents + user query → LLM → 回答</li>
+  <li><strong>常见优化：</strong>hybrid search（向量 + keyword）、reranking（Cohere Rerank）、chunk overlap、metadata filtering</li>
+</ol>
+
+<h3>10 个高频面试问题及回答框架</h3>
+
+<ol>
+  <li><strong>"Explain the difference between L1 and L2 regularization."</strong><br>
+  L1（Lasso）→ 权重稀疏（部分变为 0）→ 自动特征选择。L2（Ridge）→ 权重变小但不为 0 → 防止任何单个特征权重过大。用哪个？特征很多且怀疑有不相关特征 → L1；所有特征都可能相关 → L2。</li>
+
+  <li><strong>"How do you handle imbalanced datasets?"</strong><br>
+  SMOTE（oversampling 少数类）、undersampling 多数类、class weight adjustment、focal loss。面试追问："哪个最好？" — 没有最好的，先试 class weight（最简单），效果不够再用 SMOTE。</li>
+
+  <li><strong>"What's the vanishing gradient problem?"</strong><br>
+  深层网络反向传播时，梯度经过多层连乘越来越小，底层参数几乎不更新。解法：ReLU 替代 sigmoid、Batch Normalization、Residual Connection（ResNet 的核心思想）。</li>
+
+  <li><strong>"Explain batch normalization."</strong><br>
+  每一层的输入做标准化（mean=0, std=1），然后用可学习参数 γ 和 β 做 scale 和 shift。效果：训练更稳定、可以用更大 learning rate、有轻微 regularization 效果。</li>
+
+  <li><strong>"What metrics would you use for a classification problem?"</strong><br>
+  Accuracy（数据平衡时）、Precision/Recall/F1（数据不平衡时）、AUC-ROC（需要评估不同 threshold 下的表现）。关键追问："什么时候 precision 比 recall 重要？" — 误报成本高时（比如 spam 检测，宁漏不错）。</li>
+
+  <li><strong>"How does a random forest work?"</strong><br>
+  多棵决策树投票。每棵树用 bootstrap sample（有放回采样）训练，每次分裂只看随机子集的特征。这叫 bagging + feature randomness。效果：降低 variance，不容易 overfitting。</li>
+
+  <li><strong>"Explain the attention mechanism in transformers."</strong><br>
+  （见上面 Deep Learning 部分的详细解释）</li>
+
+  <li><strong>"When would you use RAG vs fine-tuning?"</strong><br>
+  （见上面 Fine-tuning vs RAG 部分）</li>
+
+  <li><strong>"How do you detect and handle data drift?"</strong><br>
+  统计检验（KS test, PSI）监测输入数据分布变化。处理：轻微 drift → 重新训练；严重 drift → 检查数据源是否出了问题。生产中用 Evidently AI 或 Whylabs 做自动化监控。</li>
+
+  <li><strong>"Design a recommendation system."</strong><br>
+  分两阶段：Candidate Generation（粗筛，协同过滤或 embedding-based retrieval 快速缩小范围到几百个）→ Ranking（精排，用 deep model 对候选项打分排序）。工程角度：冷启动问题用 content-based 兜底，热门物品用 popularity bias correction。</li>
+</ol>
+
+<h2>操作步骤</h2>
+
+<h3>根据目标岗位定制复习计划</h3>
+
+<p><strong>ML Engineer：</strong>三个支柱都要，但 ML Engineering 权重最高。重点准备 model deployment、MLOps、系统设计。</p>
+
+<p><strong>Data Scientist：</strong>ML Fundamentals 权重最高。重点准备统计学、特征工程、A/B testing、business metrics。</p>
+
+<p><strong>AI Engineer（2025 新兴岗位）：</strong>重点准备 LLM 相关（prompt engineering、RAG、fine-tuning、agent architecture）。传统 ML 基础也要有。</p>
+
+<blockquote>
+<strong>Prompt 示例 — AI/ML 面试模拟：</strong><br><br>
+你是 [Google/Amazon/澳洲 AI 创业公司] 的 ML 面试官。<br><br>
+我面试的岗位是 [ML Engineer / Data Scientist / AI Engineer]，级别是 [Junior / Mid / Senior]。<br><br>
+请对我进行一轮 30 分钟的 ML 技术面试：<br>
+1. 从 ML fundamentals 开始，问 2 个概念题<br>
+2. 然后问 1 个 deep learning 相关问题<br>
+3. 最后问 1 个 ML system design 问题<br><br>
+每个问题等我回答后再给 feedback 和追问。不要一次性给出所有问题。
+</blockquote>
+
+<blockquote>
+<strong>Prompt 示例 — 弱项诊断：</strong><br><br>
+以下是我对 10 个 ML 面试常见问题的回答，请逐一评分（1-4 分），并指出我最需要补强的 2-3 个知识点：<br><br>
+[逐一粘贴你对 10 个问题的回答]
+</blockquote>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：概念自测</h3>
+<p>不查资料，用自己的话回答以下 5 个问题（每个控制在 3 句话以内）：</p>
+<ol>
+  <li>Precision 和 Recall 的区别是什么？各自什么时候更重要？</li>
+  <li>为什么 Transformer 比 LSTM 在长文本任务上效果好？</li>
+  <li>解释 training-serving skew 是什么，怎么避免。</li>
+  <li>什么情况下你会选择 Random Forest 而不是 Neural Network？</li>
+  <li>RAG 系统中，chunking strategy 为什么重要？</li>
+</ol>
+
+<h3>练习 2：System Design</h3>
+<p>设计一个简单的 RAG 系统，要求：</p>
+<ul>
+  <li>输入：一个包含 1000 篇技术博客的 knowledge base</li>
+  <li>输出：用户提问后返回 AI 生成的回答 + 引用来源</li>
+  <li>画出架构图（可以用文字描述各组件），标注你选择的向量数据库、embedding 模型、LLM</li>
+  <li>说明你的 chunking strategy 和为什么这样选</li>
+</ul>
+
+<h3>练习 3：Paper Reading（选做）</h3>
+<p>读 "Attention Is All You Need" 这篇论文的 Section 3（Model Architecture），然后用 3 句话向一个不懂 ML 的朋友解释 Self-Attention 是什么。能用比喻最好。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q：我是前端/后端开发者，想转 AI 方向，面试准备需要多久？</h3>
+<p>如果你有编程基础但 ML 知识接近零，系统准备需要 3-6 个月。路线：先花 1 个月学 ML 基础（Andrew Ng 的 Machine Learning Specialization），再花 1 个月学 Deep Learning（特别是 Transformer），最后 1-2 个月学 LLM 应用开发（RAG、prompt engineering）。如果你目标是 AI Engineer 而不是 ML Researcher，工程能力的权重比数学推导高。</p>
+
+<h3>Q：面试时被问到不会的 ML 概念怎么办？</h3>
+<p>说实话："I haven't worked with X directly, but based on my understanding of Y (相关概念), I think X works like this..." 然后给出你的推理。面试官考察的不只是你知不知道答案，还有你的推理能力。瞎编一个答案比承认不知道更扣分。</p>
+
+<h3>Q：澳洲本地 AI 岗位多吗？面试难度和 FAANG 比怎么样？</h3>
+<p>澳洲 AI 岗位集中在几个领域：银行（CBA, ANZ 的 fraud detection、risk modeling）、医疗（medical imaging）、mining tech、和 AI 创业公司。面试难度比 FAANG 低 1-2 个 level — 通常不会让你手推反向传播公式，但 ML 基础概念和工程实践是必考的。Canva、Atlassian 的 ML 岗位难度接近 FAANG。</p>
+
+<h2>小结</h2>
+<p>AI/ML 面试覆盖面广，但核心就是三件事：ML 基础概念能不能讲清楚（不是背定义，是能举例子说 trade-off）、Deep Learning 特别是 Transformer 理不理解、模型能不能部署到生产环境。10 个高频问题先过一遍，发现哪个答不上来就集中补。2025 年的 AI 面试越来越偏工程（RAG、MLOps），纯理论的考察在减少。</p>

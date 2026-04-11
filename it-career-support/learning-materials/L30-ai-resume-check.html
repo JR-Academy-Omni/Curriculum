@@ -1,0 +1,214 @@
+<h2>学习目标</h2>
+<ul>
+  <li>掌握用 AI 从 5 个维度自检简历：ATS 关键词匹配、量化成就、语法、格式一致性、JD 匹配度</li>
+  <li>理解 Information Extraction 的原理 — AI 如何从非结构化文本中提取结构化数据</li>
+  <li>学会写 Prompt 让 AI 输出结构化的简历诊断报告</li>
+  <li>能独立完成一次完整的 AI 简历自检流程</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>为什么你需要 AI 自检简历</h3>
+
+<p>你花了两天写好简历，自己看了 10 遍觉得没问题，投了 50 家公司，0 个面试邀请。问题在哪？</p>
+
+<p>大部分情况是这几个原因：</p>
+<ul>
+  <li>ATS（Applicant Tracking System）没通过 — 70% 以上的澳洲中大型公司用 ATS 筛简历，关键词不匹配直接被过滤</li>
+  <li>成就没量化 — "Improved system performance" vs "Reduced API response time from 800ms to 200ms" — 后者的通过率高很多</li>
+  <li>和 JD 的匹配度不够 — 你写的是你做过什么，而不是"JD 要求什么我刚好做过"</li>
+</ul>
+
+<p>人工审查这些问题很慢且容易遗漏。AI 擅长的正是从非结构化文本（你的简历）中提取结构化信息（技术关键词、数字、时间等），然后和另一份文本（JD）做比对。这就是 <strong>Information Extraction</strong> 的实际应用。</p>
+
+<h3>简历自检的 5 个维度</h3>
+
+<p><strong>维度 1：ATS 关键词匹配</strong></p>
+
+<p>ATS 的工作原理很简单：它从 JD 中提取关键词（技术栈、技能、证书），然后在你的简历里搜索这些词。匹配率低于某个阈值（通常 60-70%），你的简历就不会被人看到。</p>
+
+<p>常见问题：</p>
+<ul>
+  <li>JD 写 "React.js"，你简历写 "React" — 有些 ATS 认为这是两个不同的词</li>
+  <li>JD 写 "CI/CD"，你简历写 "continuous integration" — 同义词不一定被识别</li>
+  <li>JD 写 "AWS"，你只写了 "cloud computing" — 太抽象</li>
+</ul>
+
+<p><strong>维度 2：量化成就</strong></p>
+
+<p>Hiring Manager 扫描简历时，眼睛会自动定位到数字。对比：</p>
+<ul>
+  <li>❌ "Responsible for improving website performance"</li>
+  <li>✅ "Reduced page load time by 45% (from 3.2s to 1.8s) by implementing lazy loading and image compression"</li>
+</ul>
+
+<p>量化不一定要用百分比，这些都是有效的量化：</p>
+<ul>
+  <li>用户数："serving 10K+ daily active users"</li>
+  <li>团队规模："collaborated with a team of 8 engineers"</li>
+  <li>时间节省："automated deployment process, saving 5 hours per week"</li>
+  <li>代码规模："maintained a codebase of 200K+ lines of TypeScript"</li>
+</ul>
+
+<p><strong>维度 3：语法和表达</strong></p>
+
+<p>简历里的语法错误是直接扣分项。常见问题：</p>
+<ul>
+  <li>时态不一致 — 当前工作用现在时，过去工作用过去时</li>
+  <li>主语不统一 — 有的 bullet point 用 "I"，有的直接用动词开头</li>
+  <li>弱动词 — "Helped with", "Worked on", "Was responsible for" → 改成 "Built", "Implemented", "Led", "Reduced"</li>
+</ul>
+
+<p><strong>维度 4：格式一致性</strong></p>
+
+<p>不一致的格式让简历看起来不专业：</p>
+<ul>
+  <li>日期格式混乱 — "Jan 2024" vs "2024-01" vs "January 2024"</li>
+  <li>bullet point 符号不统一 — 有的用 •，有的用 -，有的用 ▪</li>
+  <li>字号/字体不一致 — 这个 AI 检查不到，但提醒你注意</li>
+</ul>
+
+<p><strong>维度 5：JD 匹配度</strong></p>
+
+<p>这是最重要的维度。你的简历应该像一面镜子，反射 JD 的核心要求。做法是：</p>
+<ol>
+  <li>从 JD 中提取 top 5 要求（required skills/responsibilities）</li>
+  <li>检查你的简历是否每一条都有对应的证据</li>
+  <li>对应的证据是否放在显眼位置（简历前半部分、每段经历的前 2 个 bullet point）</li>
+</ol>
+
+<h3>Information Extraction 在简历检查中的应用</h3>
+
+<p>Information Extraction（信息提取）是 AI 的一项核心能力：从非结构化文本中提取出结构化数据。</p>
+
+<p>在简历自检场景中，AI 需要：</p>
+<ul>
+  <li>从 JD 中提取：required skills、nice-to-have skills、年限要求、学历要求</li>
+  <li>从简历中提取：技术关键词、工作年限、学历、量化成就</li>
+  <li>做交叉比对：哪些 JD 要求你覆盖了、哪些没覆盖、哪些你有但 JD 没提到</li>
+</ul>
+
+<p>关键技巧：让 AI 输出结构化格式（表格或 JSON），这样你一眼就能看到匹配情况。</p>
+
+<h2>操作步骤</h2>
+
+<h3>Step 1：一键式全面诊断 Prompt</h3>
+
+<p>这个 Prompt 会让 AI 从 5 个维度同时检查你的简历：</p>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+你是一位澳洲 IT 行业的资深 Recruiter，有 10 年审简历经验。请从以下 5 个维度检查我的简历，并给出具体修改建议。<br><br>
+
+<strong>检查维度：</strong><br>
+1. <strong>ATS 关键词匹配</strong>：对比 JD 和简历，列出 JD 中出现但简历中缺少的关键词。给出匹配率（百分比）。<br>
+2. <strong>量化成就</strong>：找出所有没有量化的 bullet point，给出具体的量化改写建议。<br>
+3. <strong>语法和表达</strong>：检查时态一致性、弱动词、主语统一性。列出所有需要修改的地方。<br>
+4. <strong>格式一致性</strong>：检查日期格式、bullet point 风格、大小写是否统一。<br>
+5. <strong>JD 匹配度</strong>：从 JD 提取 Top 5 要求，逐条检查简历中是否有对应证据，给出匹配表格。<br><br>
+
+<strong>输出格式：</strong><br>
+每个维度给出：评分（1-10）、发现的问题列表、具体修改建议。最后给一个总分和优先修改的 Top 3 项。<br><br>
+
+=== 我的简历 ===<br>
+[粘贴你的完整简历文本]<br><br>
+
+=== 目标 JD ===<br>
+[粘贴 JD 全文]
+</blockquote>
+
+<h3>Step 2：深度 ATS 关键词分析</h3>
+
+<p>如果 Step 1 的 ATS 匹配率低于 70%，用这个 Prompt 做深度分析：</p>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+请从以下 JD 中提取所有技术关键词和技能要求，按重要性分为 3 类：<br><br>
+1. <strong>Must-have</strong>（JD 中 "required" 部分提到的）<br>
+2. <strong>Nice-to-have</strong>（JD 中 "preferred" 或 "bonus" 部分提到的）<br>
+3. <strong>Hidden keywords</strong>（在职责描述中隐含的技能，虽然没在 requirements 里列，但工作内容需要）<br><br>
+
+然后检查我的简历，用表格列出：<br>
+| 关键词 | 类别 | 简历中是否出现 | 出现位置 | 建议 |<br><br>
+
+=== JD ===<br>
+[粘贴 JD]<br><br>
+
+=== 简历 ===<br>
+[粘贴简历]
+</blockquote>
+
+<h3>Step 3：量化改写</h3>
+
+<p>找出没有量化的 bullet point，让 AI 帮你改写：</p>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+以下是我简历中几个没有量化的 bullet point。请帮我改写，要求：<br>
+- 每个 bullet point 至少包含 1 个数字（用户数、百分比、时间、金额等）<br>
+- 如果我没有精确数字，请用合理的估算范围（如 "50+"、"~30%"）<br>
+- 保持真实，不要夸大<br>
+- 用强动词开头（Built, Implemented, Reduced, Led, Automated）<br><br>
+
+原始 bullet points：<br>
+1. Worked on the company website redesign<br>
+2. Helped improve the API performance<br>
+3. Responsible for writing unit tests<br>
+4. Participated in code reviews<br><br>
+
+每个请给出 2 个改写版本供我选择。
+</blockquote>
+
+<p>AI 可能会输出类似：</p>
+<pre>
+1a. Led the company website redesign from Figma to React, delivering 15 responsive pages in 6 weeks
+1b. Redesigned company website UI serving 5K+ monthly visitors, improving bounce rate by ~20%
+
+2a. Optimized 12 REST API endpoints, reducing average response time from 500ms to 150ms
+2b. Implemented Redis caching for frequently accessed APIs, cutting database queries by 60%
+</pre>
+
+<p>注意：AI 给的数字是估算的。你需要根据实际情况调整。如果你真的不知道数字，问问前同事或查项目的 analytics 数据。</p>
+
+<h3>Step 4：最终检查清单</h3>
+
+<p>修改完简历后，做最后一遍检查：</p>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+请做最终检查。对比我修改后的简历和 JD，回答以下问题：<br><br>
+1. ATS 关键词匹配率现在是多少？（和之前对比）<br>
+2. 还有没有没量化的 bullet point？<br>
+3. 如果 Hiring Manager 只花 10 秒扫描这份简历，他最先看到的 3 条信息是什么？这 3 条信息和 JD 的匹配度如何？<br>
+4. 有没有拼写错误或语法问题？<br>
+5. 整体评分（1-10）和还能改进的地方。<br><br>
+
+=== 修改后的简历 ===<br>
+[粘贴修改后的简历]<br><br>
+
+=== JD ===<br>
+[粘贴 JD]
+</blockquote>
+
+<h2>动手练习</h2>
+
+<ol>
+  <li><strong>全面诊断（20 分钟）</strong> — 用 Step 1 的 Prompt，对你当前的简历做一次 5 维度全面诊断。记录总分和 Top 3 问题。</li>
+  <li><strong>量化改写（20 分钟）</strong> — 找出简历中 5 个最弱的 bullet point，用 Step 3 的 Prompt 让 AI 给出改写建议。选择或修改后更新你的简历。</li>
+  <li><strong>A/B 对比（15 分钟）</strong> — 找一个 JD，分别用"修改前"和"修改后"的简历做 ATS 关键词匹配分析。对比匹配率的变化。</li>
+</ol>
+
+<h2>常见问题</h2>
+
+<h3>Q: AI 给的 ATS 匹配率准确吗？</h3>
+<p>AI 给的是估算值，不同 ATS 系统的算法不一样。但作为参考够用了 — 如果 AI 说你的匹配率只有 40%，那实际 ATS 过不了的概率很高。重点不是精确数字，而是找出缺失的关键词并补上。</p>
+
+<h3>Q: 简历里的数字可以"估算"吗？会不会被查出来造假？</h3>
+<p>合理估算是可以的，行业内普遍接受。"Reduced load time by ~30%" 和 "Reduced load time by 30%" 表达的信心不同，如果不确定精确数字，用 "~"（约）或范围。但不要编造 — 面试时会被追问细节。如果真的没数字可用，用其他方式量化：团队人数、项目时长、代码行数、覆盖的功能模块数。</p>
+
+<h3>Q: 每次投简历都要针对 JD 修改吗？</h3>
+<p>理想情况下是的，至少修改 summary 和前 2-3 个 bullet point 的顺序。实操建议：维护 2-3 个版本的简历（比如前端方向、全栈方向、偏管理方向），每次投递选最接近的版本，再微调关键词。有了 AI 辅助，每次微调只需要 5-10 分钟。</p>
+
+<h2>小结</h2>
+
+<p>AI 简历自检的核心是 Information Extraction — 让 AI 从 JD 和简历中分别提取关键信息，然后做结构化比对。5 个维度（ATS 关键词、量化成就、语法、格式、JD 匹配度）覆盖了简历被拒的主要原因。AI 的输出是建议不是答案，数字需要你根据实际情况调整，但它能帮你快速发现自己看不到的盲点。养成每次投递前花 10 分钟做 AI 自检的习惯，面试邀请率会有明显提升。</p>

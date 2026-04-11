@@ -1,0 +1,355 @@
+<h2>学习目标</h2>
+<ul>
+	<li>掌握 AI 在入职后日常工作中的 4 大应用场景：编码、文档、Code Review、会议</li>
+	<li>每个场景都有可以直接复制粘贴的 Prompt 模板</li>
+	<li>理解 AI 辅助前后的时间对比，量化效率提升</li>
+	<li>建立自己的 AI 工作流，把 AI 融入每天的工作节奏</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>AI 不是单独的"工具时间"，是融入每个任务的习惯</h3>
+<p>很多人把 AI 当成一个单独的步骤："先自己想，想不出来再问 AI"。这是 2024 年的用法。2026 年的正确姿势是：<strong>每个任务开始时就打开 AI，让它参与整个过程。</strong></p>
+
+<p>就像你打开 IDE 不是一个额外步骤，AI 也不应该是。它是你的工作环境的一部分。</p>
+
+<h3>场景一：AI 辅助编码</h3>
+
+<p><strong>日常工作流（以 Cursor 为例）：</strong></p>
+<ol>
+	<li>收到一个 Jira ticket / 需求描述</li>
+	<li>在 Cursor 里 Cmd+K 打开 AI chat</li>
+	<li>把需求粘贴进去，让 AI 先给一个实现方案</li>
+	<li>Review AI 的方案，调整后让它生成代码</li>
+	<li>Review 生成的代码，手动修正细节</li>
+	<li>让 AI 生成 unit test</li>
+	<li>跑测试，修 bug</li>
+</ol>
+
+<p><strong>时间对比：</strong></p>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+	<thead>
+		<tr style="background-color: #f0f0f0;">
+			<th>任务</th>
+			<th>不用 AI</th>
+			<th>用 AI</th>
+			<th>节省</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>写一个 CRUD API endpoint</td>
+			<td>2-3 小时</td>
+			<td>30-45 分钟</td>
+			<td>~70%</td>
+		</tr>
+		<tr>
+			<td>写 unit test（80% 覆盖）</td>
+			<td>1-2 小时</td>
+			<td>15-20 分钟</td>
+			<td>~80%</td>
+		</tr>
+		<tr>
+			<td>调试一个不熟悉的报错</td>
+			<td>30 分钟 - 2 小时</td>
+			<td>5-15 分钟</td>
+			<td>~75%</td>
+		</tr>
+		<tr>
+			<td>学一个新的库/框架的用法</td>
+			<td>半天看文档</td>
+			<td>1 小时边问边做</td>
+			<td>~60%</td>
+		</tr>
+		<tr>
+			<td>重构一个 500 行的文件</td>
+			<td>半天 - 一天</td>
+			<td>1-2 小时</td>
+			<td>~70%</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Prompt 示例 — 日常编码：</strong></p>
+
+<blockquote>
+<p><strong>Prompt 1 — 从需求到实现方案：</strong></p>
+<p>我需要实现这个功能：[粘贴 Jira ticket 描述]</p>
+<p>项目技术栈：React + TypeScript + NestJS + MongoDB</p>
+<p>请给我：<br>
+1. 实现方案概述（前端 + 后端各需要改哪些文件）<br>
+2. 数据模型设计（如果需要新的 collection）<br>
+3. API 接口设计（method, path, request body, response）<br>
+4. 预估工时</p>
+<p>先不要写代码，先给方案让我确认。</p>
+</blockquote>
+
+<blockquote>
+<p><strong>Prompt 2 — 生成 Unit Test：</strong></p>
+<p>以下是我的 service 代码：</p>
+<p>[粘贴代码]</p>
+<p>请用 Jest 为每个 public method 生成 unit test。要求：<br>
+- 每个方法至少 3 个 test case（正常、边界、异常）<br>
+- Mock 所有外部依赖（数据库、第三方 API）<br>
+- 使用 describe + it 结构<br>
+- 测试名要描述行为而不是方法名（"should return 404 when user not found" 而不是 "test findById"）</p>
+</blockquote>
+
+<blockquote>
+<p><strong>Prompt 3 — Debug 报错：</strong></p>
+<p>我遇到这个报错：</p>
+<p>[粘贴完整的 error stack trace]</p>
+<p>相关代码：</p>
+<p>[粘贴出错的文件]</p>
+<p>环境：Node.js 20, NestJS 10, MongoDB 7</p>
+<p>请分析可能的原因并给出修复方案。如果有多个可能原因，按概率从高到低排列。</p>
+</blockquote>
+
+<h3>场景二：AI 辅助文档和邮件</h3>
+
+<p>写文档和邮件是最容易被 AI 加速的任务，因为格式相对固定，AI 只需要你的核心信息。</p>
+
+<p><strong>时间对比：</strong></p>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+	<thead>
+		<tr style="background-color: #f0f0f0;">
+			<th>任务</th>
+			<th>不用 AI</th>
+			<th>用 AI</th>
+			<th>节省</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>写 Technical Design Doc</td>
+			<td>3-4 小时</td>
+			<td>1 小时</td>
+			<td>~70%</td>
+		</tr>
+		<tr>
+			<td>写 Sprint Retro 总结</td>
+			<td>30 分钟</td>
+			<td>5 分钟</td>
+			<td>~85%</td>
+		</tr>
+		<tr>
+			<td>回复英文邮件</td>
+			<td>15-20 分钟（非母语）</td>
+			<td>3 分钟</td>
+			<td>~80%</td>
+		</tr>
+		<tr>
+			<td>写 PR Description</td>
+			<td>10-15 分钟</td>
+			<td>2 分钟</td>
+			<td>~85%</td>
+		</tr>
+	</tbody>
+</table>
+
+<blockquote>
+<p><strong>Prompt — 写 Technical Design Doc：</strong></p>
+<p>我要为以下功能写一份 Technical Design Document：</p>
+<p>[功能描述，2-3 段]</p>
+<p>请按这个模板生成：<br>
+1. Overview（一段话总结）<br>
+2. Background & Motivation<br>
+3. Proposed Solution（架构图用文字描述）<br>
+4. API Design（table format）<br>
+5. Data Model Changes<br>
+6. Migration Plan<br>
+7. Risks & Mitigations<br>
+8. Timeline</p>
+<p>语气：技术文档风格，简洁直接，避免废话。</p>
+</blockquote>
+
+<blockquote>
+<p><strong>Prompt — 专业英文邮件：</strong></p>
+<p>帮我用英文写一封邮件给团队。核心内容：<br>
+- 这周的 deployment 推迟到下周二<br>
+- 原因是发现了一个 payment 模块的 edge case bug<br>
+- 需要 QA 团队周五前完成回归测试<br>
+- 如果有问题找我</p>
+<p>语气：专业但友好，不要太 formal。收件人是同事不是客户。</p>
+</blockquote>
+
+<h3>场景三：AI 辅助 Code Review</h3>
+
+<p>你可以在 review 别人代码时让 AI 先跑一遍，帮你找出明显问题。这不是偷懒 — 是让你把时间花在 AI 找不到的架构问题上，而不是格式和命名问题上。</p>
+
+<p><strong>时间对比：</strong></p>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+	<thead>
+		<tr style="background-color: #f0f0f0;">
+			<th>任务</th>
+			<th>不用 AI</th>
+			<th>用 AI</th>
+			<th>节省</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Review 一个 200 行 PR</td>
+			<td>20-30 分钟</td>
+			<td>10 分钟（AI 先扫 + 你看重点）</td>
+			<td>~60%</td>
+		</tr>
+		<tr>
+			<td>Review 一个 1000+ 行 PR</td>
+			<td>1-2 小时</td>
+			<td>30-40 分钟</td>
+			<td>~60%</td>
+		</tr>
+	</tbody>
+</table>
+
+<blockquote>
+<p><strong>Prompt — Code Review 辅助：</strong></p>
+<p>请 review 以下代码变更。关注以下几点：<br>
+1. 有没有潜在的 bug 或 edge case？<br>
+2. 有没有性能问题（N+1 查询、不必要的循环、大数据量处理）？<br>
+3. 错误处理是否完善？<br>
+4. 命名是否清晰、代码是否可读？<br>
+5. 有没有安全隐患（SQL injection、XSS、敏感信息泄露）？</p>
+<p>对于每个问题，给出具体的行号和修改建议。如果代码没问题就说没问题，不要为了凑数量硬挑毛病。</p>
+<p>[粘贴代码 diff]</p>
+</blockquote>
+
+<p><strong>进阶用法 — Review 自己的代码：</strong></p>
+<p>提交 PR 之前先让 AI review 一遍自己的代码，提前修掉问题，减少 review round-trip。</p>
+
+<blockquote>
+<p><strong>Prompt — Self Review：</strong></p>
+<p>我准备提交这个 PR。请以一个严格的 Senior Engineer 的角度 review，假设你不了解背景上下文。</p>
+<p>PR 描述：[简述改了什么]</p>
+<p>变更文件：<br>
+[粘贴 git diff 或者各文件的代码]</p>
+<p>请指出所有你会在 PR review 里提 comment 的问题。</p>
+</blockquote>
+
+<h3>场景四：AI 辅助会议准备</h3>
+
+<p>开会前 5 分钟用 AI 准备，比开会时毫无准备强 10 倍。</p>
+
+<p><strong>时间对比：</strong></p>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+	<thead>
+		<tr style="background-color: #f0f0f0;">
+			<th>任务</th>
+			<th>不用 AI</th>
+			<th>用 AI</th>
+			<th>节省</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>准备 Sprint Planning 的估时</td>
+			<td>30 分钟自己想</td>
+			<td>10 分钟 AI 拆解 + 你调整</td>
+			<td>~65%</td>
+		</tr>
+		<tr>
+			<td>准备 1:1 谈话要点</td>
+			<td>15 分钟</td>
+			<td>3 分钟</td>
+			<td>~80%</td>
+		</tr>
+		<tr>
+			<td>写 Stand-up update</td>
+			<td>5 分钟想措辞</td>
+			<td>1 分钟生成</td>
+			<td>~80%</td>
+		</tr>
+	</tbody>
+</table>
+
+<blockquote>
+<p><strong>Prompt — Sprint Planning 估时：</strong></p>
+<p>以下是下个 Sprint 的 tickets：</p>
+<p>[粘贴 ticket 列表，每个包含标题和简要描述]</p>
+<p>请帮我：<br>
+1. 把每个 ticket 拆成具体的子任务<br>
+2. 每个子任务估时（小时）<br>
+3. 标出哪些任务有依赖关系、需要按顺序做<br>
+4. 标出哪些任务风险高（可能超时）<br>
+5. 假设 Sprint 10 天、每天有效编码 5 小时，这些 ticket 能不能都做完？</p>
+</blockquote>
+
+<blockquote>
+<p><strong>Prompt — 1:1 准备：</strong></p>
+<p>我明天跟 Manager 有 1:1。过去两周我做了：<br>
+- [列举 3-4 件事]</p>
+<p>我想讨论的问题：<br>
+- [列举 1-2 个]</p>
+<p>请帮我组织一个 1:1 谈话提纲，包括：<br>
+1. 开场（30 秒，总结过去两周进展）<br>
+2. 我想讨论的问题的表达方式（怎么说不会让 manager 觉得我在抱怨）<br>
+3. 我应该主动问 manager 什么问题</p>
+</blockquote>
+
+<h2>操作步骤</h2>
+
+<h3>Step 1：盘点你一天的工作任务</h3>
+<p>列出你今天（或这周）要做的所有工作任务。对每个任务标记：</p>
+<ul>
+	<li>✅ AI 能显著加速（编码、文档、邮件）</li>
+	<li>⚠️ AI 能辅助但需要大量人工判断（架构设计、需求讨论）</li>
+	<li>❌ AI 帮不上忙（人际沟通、团队管理、创意决策）</li>
+</ul>
+
+<h3>Step 2：选 3 个 ✅ 任务，今天全程用 AI 完成</h3>
+<p>用上面的 Prompt 模板。记录每个任务的实际耗时，跟你平时不用 AI 的耗时对比。</p>
+
+<h3>Step 3：建立你的个人 Prompt 库</h3>
+<p>把你常用的 Prompt 保存下来。推荐用 Notion 或者 GitHub 私有 repo，按场景分类：</p>
+<ul>
+	<li>编码 / Coding</li>
+	<li>测试 / Testing</li>
+	<li>文档 / Documentation</li>
+	<li>邮件 / Communication</li>
+	<li>会议 / Meetings</li>
+	<li>Debug / Troubleshooting</li>
+</ul>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：AI 编码实战</h3>
+<p>选一个你熟悉的技术栈，用 AI 从零完成一个小功能：</p>
+<ul>
+	<li>一个 Todo API（CRUD）+ 简单前端</li>
+	<li>全程使用 Cursor 或 Copilot</li>
+	<li>记录总耗时，目标：1 小时内完成</li>
+	<li>Review AI 生成的每一行代码 — 至少找出 3 个你会手动修改的地方</li>
+</ul>
+
+<h3>练习 2：AI 文档实战</h3>
+<p>用 AI 生成以下文档之一：</p>
+<ul>
+	<li>一个你做过的项目的 Technical Design Doc</li>
+	<li>一封向 Manager 申请 remote 工作的邮件</li>
+	<li>一份 Sprint Retro 总结（自己编一个场景也行）</li>
+</ul>
+<p>生成后 review：哪些部分直接能用？哪些需要修改？AI 有没有编造事实？</p>
+
+<h3>练习 3：AI Code Review 实战</h3>
+<p>去你的 GitHub（或者随便找一个开源 PR），把 diff 粘贴给 AI 让它 review。对比 AI 的 review 和实际的 reviewer comments — 重合度有多少？AI 有没有找到人类没注意到的问题？</p>
+
+<h2>常见问题</h2>
+
+<h3>Q: 用 AI 写的代码出了 bug，谁负责？</h3>
+<p>你负责。AI 是工具，你是使用工具的人。你用 Stack Overflow 复制的代码出了 bug 也是你负责，AI 一样。所以永远要 review AI 生成的代码，理解它在做什么，再提交。"AI 写的"不是甩锅的理由。</p>
+
+<h3>Q: 公司不允许把代码粘贴到 ChatGPT，怎么办？</h3>
+<p>很多公司确实有这个安全策略。几个替代方案：</p>
+<ul>
+	<li><strong>GitHub Copilot Business</strong> — 代码不会被用于训练，大部分公司的安全团队能接受</li>
+	<li><strong>Cursor Pro</strong> — 有 Privacy Mode，代码不离开本地</li>
+	<li><strong>Self-hosted LLM</strong> — 公司可以部署 Ollama + Code Llama，完全本地运行</li>
+	<li><strong>脱敏后使用</strong> — 把公司特定的变量名、API key、业务逻辑替换成通用名称后再问 AI</li>
+</ul>
+
+<h3>Q: AI 辅助会不会让我技术退步？</h3>
+<p>不会，前提是你认真 review AI 的输出。开车用导航不会让你丧失方向感，前提是你偶尔看看路。同理，用 AI 写代码不会让你退步，前提是你理解每一行代码在做什么。真正危险的是不 review 就直接 commit — 那你确实什么都学不到。</p>
+
+<h2>小结</h2>
+<p>AI 辅助日常工作的核心不是"用不用"的问题，是"怎么用得好"的问题。四个高频场景 — 编码、文档、Code Review、会议准备 — 每个都能节省 60-80% 的时间。关键是把 AI 融入日常工作流，而不是当成一个偶尔用一下的工具。建立自己的 Prompt 库，记录效率数据，这些就是你在简历上写"AI-enhanced productivity"的真实证据。</p>

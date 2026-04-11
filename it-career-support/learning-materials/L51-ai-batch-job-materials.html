@@ -1,0 +1,196 @@
+<h2>学习目标</h2>
+<ul>
+  <li>掌握"JD 分析 → 关键词提取 → 定制生成"的批量求职材料工作流</li>
+  <li>学会用 Prompt Engineering + Few-shot 批量生成针对不同 JD 的简历 bullet points 和 Cover Letter</li>
+  <li>建立自己的"经历素材库"，让每次定制只需要 5-10 分钟</li>
+  <li>理解批量生成和逐个定制之间的质量平衡</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>为什么需要批量定制</h3>
+
+<p>求职的数学很简单：</p>
+<ul>
+  <li>澳洲 IT 市场，Junior 岗位平均投递-面试转化率约 5-8%</li>
+  <li>要拿到 5 个面试，你大约需要投 60-100 份申请</li>
+  <li>如果每份都手动定制简历和 Cover Letter，每份 30 分钟 = 30-50 小时纯写材料</li>
+</ul>
+
+<p>另一个极端：一份简历投所有公司。结果是 ATS 匹配率低，面试转化率可能只有 1-2%，你需要投 250-500 份。</p>
+
+<p>最优解：<strong>用 AI 批量定制</strong>。保持核心内容一致，但关键词和重点根据每个 JD 自动调整。每份 5-10 分钟，面试转化率 8-12%。</p>
+
+<h3>批量定制工作流</h3>
+
+<p>整个流程分 4 步：</p>
+
+<pre>
+Step 1: 建立经历素材库（一次性，2 小时）
+         ↓
+Step 2: 收集目标 JD（批量，每次 10-20 个）
+         ↓
+Step 3: AI 批量提取关键词 + 生成定制内容（每个 5 分钟）
+         ↓
+Step 4: 人工审查 + 微调（每个 3 分钟）
+</pre>
+
+<h3>经历素材库：你的定制基础</h3>
+
+<p>素材库是一个你维护的文档，包含你所有可以写进简历的经历，每条经历准备 2-3 个不同角度的描述。</p>
+
+<p>格式如下：</p>
+
+<pre>
+【经历 1：电商网站项目】
+技术栈：React, Next.js, TypeScript, Tailwind CSS, Stripe API
+角度 A（强调前端）：Built a responsive e-commerce platform using Next.js 14 and TypeScript, implementing server-side rendering that improved initial page load by 40%
+角度 B（强调全栈）：Developed full-stack e-commerce application with Next.js frontend and Node.js/Express backend, integrating Stripe payment processing handling $50K+ in transactions
+角度 C（强调性能）：Optimized e-commerce platform performance through code splitting, image lazy loading, and Redis caching, achieving 95+ Lighthouse score across all pages
+
+【经历 2：API 重构项目】
+技术栈：Node.js, Express, MongoDB, Redis, Docker
+角度 A（强调后端）：Refactored legacy REST API from Express.js monolith to modular service architecture, reducing average response time from 800ms to 200ms
+角度 B（强调 DevOps）：Containerized Node.js API services with Docker, implementing CI/CD pipeline with GitHub Actions that reduced deployment time from 2 hours to 15 minutes
+角度 C（强调数据库）：Redesigned MongoDB schema and implemented compound indexes, reducing complex query execution time by 70% for a dataset of 500K+ documents
+</pre>
+
+<p>你看到规律了吗？同一个项目，根据目标岗位的不同，强调点完全不同。</p>
+
+<h2>操作步骤</h2>
+
+<h3>Step 1：用 AI 建立经历素材库</h3>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+我需要建立一个求职用的"经历素材库"。以下是我的工作和项目经历，请帮我为每个经历生成 3 个不同角度的 bullet point 描述：<br><br>
+- 角度 A：强调前端/UI 能力<br>
+- 角度 B：强调全栈/后端能力<br>
+- 角度 C：强调团队协作/项目管理能力<br><br>
+要求：<br>
+- 每个 bullet point 用强动词开头<br>
+- 包含至少 1 个量化数据<br>
+- 包含具体技术栈名称<br>
+- 英文，每条 1-2 行<br><br>
+我的经历：<br>
+1. [项目名称] — [用了什么技术] — [做了什么] — [结果是什么]<br>
+2. [项目名称] — [用了什么技术] — [做了什么] — [结果是什么]<br>
+3. [项目名称] — [用了什么技术] — [做了什么] — [结果是什么]<br>
+</blockquote>
+
+<p>把 AI 的输出保存到一个文档中，然后逐条修改：确认数字准确、确认技术栈没写错、确认你能在面试中解释每一条。</p>
+
+<h3>Step 2：批量 JD 关键词提取</h3>
+
+<p>收集 10-20 个感兴趣的 JD 后，用这个 Prompt 批量提取关键词：</p>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+以下是 5 个 IT 职位的 JD。请为每个 JD 提取关键信息，输出格式如下：<br><br>
+| JD# | 公司 | 岗位 | Top 5 Required Skills | Nice-to-have | 关键动词（JD 描述职责用的动词）| 特殊要求 |<br><br>
+然后在表格下方，列出这 5 个 JD 的<strong>共同关键词</strong>（出现在 3 个以上 JD 中的技能），和<strong>差异关键词</strong>（只出现在个别 JD 中的技能）。<br><br>
+=== JD 1 ===<br>
+[粘贴 JD 1]<br><br>
+=== JD 2 ===<br>
+[粘贴 JD 2]<br><br>
+=== JD 3 ===<br>
+[粘贴 JD 3]<br><br>
+=== JD 4 ===<br>
+[粘贴 JD 4]<br><br>
+=== JD 5 ===<br>
+[粘贴 JD 5]
+</blockquote>
+
+<p>这个分析的价值：</p>
+<ul>
+  <li><strong>共同关键词</strong> → 这些技能应该出现在你简历的"固定部分"（Summary 和 Skills 区域）</li>
+  <li><strong>差异关键词</strong> → 这些需要在每份定制简历中针对性添加</li>
+  <li><strong>关键动词</strong> → 你的 bullet point 应该用类似的动词（如果 JD 用 "design and implement"，你的简历也用 "Designed and implemented"，而不是 "Worked on"）</li>
+</ul>
+
+<h3>Step 3：批量生成定制简历 Bullet Points</h3>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+我有一个经历素材库和 3 个目标 JD。请为每个 JD 从素材库中选择最匹配的 bullet points，并根据该 JD 的关键词做微调。<br><br>
+规则：<br>
+1. 每个 JD 选 5-6 个最相关的 bullet points<br>
+2. 调整措辞以包含该 JD 的特定关键词（但不要生硬塞入）<br>
+3. 排列顺序：最匹配 JD 核心要求的放前面<br>
+4. 如果素材库中没有匹配某个 JD 要求的经历，标注"⚠️ 缺少匹配经历"<br><br>
+=== 经历素材库 ===<br>
+[粘贴你的素材库]<br><br>
+=== JD 1: [公司名 - 岗位] ===<br>
+Top skills: [从 Step 2 提取的]<br><br>
+=== JD 2: [公司名 - 岗位] ===<br>
+Top skills: [从 Step 2 提取的]<br><br>
+=== JD 3: [公司名 - 岗位] ===<br>
+Top skills: [从 Step 2 提取的]
+</blockquote>
+
+<h3>Step 4：批量生成 Cover Letter</h3>
+
+<p>有了 Step 2 的关键词分析和 Step 3 的定制 bullet points，Cover Letter 的生成变得很快：</p>
+
+<blockquote>
+<strong>Prompt:</strong><br><br>
+基于以下信息，为 3 个 JD 分别生成一封 Cover Letter。<br><br>
+Cover Letter 结构（3 段）：<br>
+1. Hook：申请岗位 + 最匹配的 1 个核心优势<br>
+2. 证据：2-3 个具体经历（从已选 bullet points 中选取最强的）<br>
+3. 公司 + CTA：为什么对这家公司感兴趣 + 面试邀请<br><br>
+要求：<br>
+- 英文，每封 250-350 字<br>
+- 不要用 passionate, motivated, team player<br>
+- 每封信的第 3 段必须针对该具体公司，不能通用<br><br>
+
+=== 范例 Cover Letter（参照风格）===<br>
+[粘贴你的范例 CL]<br><br>
+
+=== JD 1 的定制 bullet points ===<br>
+[从 Step 3 复制]<br>
+公司信息：[公司名，1-2 句公司特点]<br><br>
+
+=== JD 2 的定制 bullet points ===<br>
+[从 Step 3 复制]<br>
+公司信息：[公司名，1-2 句公司特点]<br><br>
+
+=== JD 3 的定制 bullet points ===<br>
+[从 Step 3 复制]<br>
+公司信息：[公司名，1-2 句公司特点]
+</blockquote>
+
+<h3>Step 5：快速审查清单</h3>
+
+<p>批量生成后，每封信花 3 分钟做以下检查：</p>
+
+<ol>
+  <li>✅ 公司名和岗位名是否正确（AI 有时会搞混）</li>
+  <li>✅ 第 1 段的核心优势是否真的匹配这个 JD</li>
+  <li>✅ 数字和事实是否准确</li>
+  <li>✅ 第 3 段的公司信息是否正确（去官网确认一下）</li>
+  <li>✅ 有没有在不同公司的 CL 里写了相同的"为什么选这家公司"</li>
+</ol>
+
+<h2>动手练习</h2>
+
+<ol>
+  <li><strong>建立素材库（60 分钟）</strong> — 整理你的 3-5 个主要项目经历，用 Step 1 的 Prompt 为每个生成 3 个角度的描述。手动审查修改后保存。</li>
+  <li><strong>批量关键词提取（20 分钟）</strong> — 去 Seek/LinkedIn 找 5 个你感兴趣的 JD，用 Step 2 的 Prompt 做批量关键词提取。看看共同关键词是什么。</li>
+  <li><strong>完整实战（30 分钟）</strong> — 选其中 2 个 JD，走完 Step 3 + Step 4 + Step 5 的完整流程。计时看看从开始到完成两份定制材料需要多久。目标：每份 10 分钟以内。</li>
+</ol>
+
+<h2>常见问题</h2>
+
+<h3>Q: 一次性给 AI 太多 JD 会不会质量下降？</h3>
+<p>会。实测下来，一次处理 3-5 个 JD 质量最好。超过 5 个，AI 容易搞混不同 JD 的要求，或者给出越来越模板化的输出。建议每次 batch 3-5 个，做完一批再做下一批。</p>
+
+<h3>Q: 素材库需要多久更新一次？</h3>
+<p>每完成一个新项目或学会一个新技能就更新。在职的话，建议每月花 15 分钟检查一下，把最近的成就加进去。转行的同学在 bootcamp 期间，每完成一个 project 就立即加一条。素材库越新鲜，AI 生成的内容越有竞争力。</p>
+
+<h3>Q: 不同 JD 的定制简历差异应该有多大？</h3>
+<p>通常 60-70% 内容不变（基本信息、教育背景、技术栈列表），30-40% 定制（bullet point 选择和顺序、Summary 的侧重点、关键词调整）。如果两个 JD 的方向差别很大（比如一个偏前端一个偏 DevOps），可能需要 50% 以上的内容不同，这时候维护两份"基础简历"更高效。</p>
+
+<h2>小结</h2>
+
+<p>批量定制求职材料的核心是"一次建库，多次复用"。先花时间建好经历素材库（每个经历 3 个角度的描述），之后每次只需要让 AI 根据 JD 关键词做选择和微调。批量提取 JD 关键词可以帮你发现行业趋势（哪些技能是共同要求）。每份定制材料控制在 5-10 分钟完成，但人工审查不能省 — 特别是公司名、数字和第 3 段的公司特定信息。</p>
