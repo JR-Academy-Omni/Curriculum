@@ -215,20 +215,24 @@ jobs:
           HTMLEOF
 
       # Generate pages.json from outline.json for each bootcamp
+      # Reads the curriculumPages field from each outline.json and writes it to
+      # _site/<slug>/pages.json so the frontend iframe embed can list HTML pages.
       - name: Generate pages.json
         run: |
-          for dir in _site/*/; do
-            slug=$(basename "$dir")
-            outline="${slug}/public/outline.json"
-            if [ -f "$outline" ]; then
-              python3 -c "
-          import json, sys
-          d = json.load(open(sys.argv[1]))
-          cp = d.get('curriculumPages')
-          if cp:
-              json.dump(cp, open(sys.argv[2], 'w'), indent=2)
-              print(f'Generated pages.json for {sys.argv[3]}')
-          " "$outline" "${dir}pages.json" "$slug"
+          set -x
+          for outline in */public/outline.json; do
+            [ -f "$outline" ] || continue
+            slug=$(basename "$(dirname "$(dirname "$outline")")")
+            if [ ! -d "_site/${slug}" ]; then
+              echo "Skip $slug — not in _site"
+              continue
+            fi
+            if jq -e '.curriculumPages' "$outline" > /dev/null 2>&1; then
+              jq '.curriculumPages' "$outline" > "_site/${slug}/pages.json"
+              echo "Generated _site/${slug}/pages.json"
+              cat "_site/${slug}/pages.json"
+            else
+              echo "Skip $slug — no curriculumPages in outline.json"
             fi
           done
 
