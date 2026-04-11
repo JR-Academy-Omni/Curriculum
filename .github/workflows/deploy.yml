@@ -52,11 +52,16 @@ jobs:
           mkdir -p _site/ai-essentials-bootcamp
           cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/
 
-          mkdir -p _site/ai-coding-bootcamp
-          cp -r ai-coding-bootcamp/public/* _site/ai-coding-bootcamp/
+          # ai-coding-bootcamp / vibe-coding-bootcamp: only copy if directory exists (not yet committed)
+          if [ -d ai-coding-bootcamp/public ]; then
+            mkdir -p _site/ai-coding-bootcamp
+            cp -r ai-coding-bootcamp/public/* _site/ai-coding-bootcamp/
+          fi
 
-          mkdir -p _site/vibe-coding-bootcamp
-          cp -r vibe-coding-bootcamp/public/* _site/vibe-coding-bootcamp/
+          if [ -d vibe-coding-bootcamp/public ]; then
+            mkdir -p _site/vibe-coding-bootcamp
+            cp -r vibe-coding-bootcamp/public/* _site/vibe-coding-bootcamp/
+          fi
 
           mkdir -p _site/ai-engineer-bootcamp
           cp -r ai-engineer-bootcamp/dist/* _site/ai-engineer-bootcamp/
