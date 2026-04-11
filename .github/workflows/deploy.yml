@@ -48,6 +48,7 @@ jobs:
           cp ai-adoption-bootcamp/public/styles.css _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/internal.html _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/learning-plan.html _site/ai-adoption-bootcamp/
+          [ -f ai-adoption-bootcamp/public/pages.json ] && cp ai-adoption-bootcamp/public/pages.json _site/ai-adoption-bootcamp/ || true
 
           mkdir -p _site/ai-essentials-bootcamp
           cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/
@@ -75,6 +76,7 @@ jobs:
           cp ai-engineer-bootcamp/public/internal.html _site/ai-engineer-bootcamp/
           cp ai-engineer-bootcamp/public/jd-mapping.html _site/ai-engineer-bootcamp/
           cp ai-engineer-bootcamp/public/learning-plan.html _site/ai-engineer-bootcamp/
+          [ -f ai-engineer-bootcamp/public/pages.json ] && cp ai-engineer-bootcamp/public/pages.json _site/ai-engineer-bootcamp/ || true
 
           # Index page
           cat > _site/index.html << 'HTMLEOF'
