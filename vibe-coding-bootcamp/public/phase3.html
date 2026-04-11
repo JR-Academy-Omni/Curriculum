@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code + Cursor 实战课 — Phase 3 多模型 & Prompt 精调</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>Phase 3 — 多模型 & Prompt 精调</h1>
+  <div class="sub">Week 5-7 · 9 节课 · 4 节直播</div>
+  <div class="nav" style="margin-top:16px;font-size:14px">
+    <a href="curriculum.html" style="color:#fff;opacity:0.7;margin:0 8px">课程总览</a>
+    <a href="outline.html" style="color:#fff;opacity:0.7;margin:0 8px">完整大纲</a>
+    <a href="phase1.html" style="color:#fff;opacity:0.7;margin:0 8px">Phase 1</a>
+    <a href="phase2.html" style="color:#fff;opacity:0.7;margin:0 8px">Phase 2</a>
+    <a href="phase3.html" style="color:#fff;opacity:1;margin:0 8px;font-weight:700">Phase 3</a>
+    <a href="phase4.html" style="color:#fff;opacity:0.7;margin:0 8px">Phase 4</a>
+    <a href="learning-plan.html" style="color:#fff;opacity:0.7;margin:0 8px">学习计划</a>
+  </div>
+</div>
+
+<div class="c">
+
+<div class="box">
+  <div class="box-h" style="background:#10b981">
+    <span style="font-size:18px;font-weight:900">Phase 3 概览</span>
+  </div>
+  <div style="padding:16px 24px;font-size:14px;line-height:1.8">
+    <p>掌握多模型协作：Gemini 2.5 实操、Claude/Gemini/Codex 系统对比、模型特化 Prompt 模板。深入 Prompt 精调四大技巧和 Codex CLI 高效使用。Phase 3 结束时你有自己的多模型决策框架和 Prompt 模板库。</p>
+  </div>
+</div>
+
+<!-- Multi-Model Block: L25-L28 -->
+<div class="box">
+  <div class="box-h" style="background:#10b981"><span style="font-size:16px;font-weight:900">多模型模块 · L25-L28</span></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#ecfdf5"><span class="pill" style="background:#10b981;color:#fff">L25</span><h4>Gemini 2.5 编码与调试最佳实践</h4><span class="pill" style="background:#10b981;color:#fff">直播 · 120min</span></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.8">
+    <p>Gemini Code Assist 在 VS Code 中的使用、Gemini API 直接调用、用截图描述 UI 让 Gemini 生成代码。</p>
+    <div class="learn-path" style="margin:8px 0 0"><div class="learn-path-body">
+      <div class="lp-item"><span class="lp-num">1</span><span class="lp-tag lp-live">LIVE</span><span class="lp-desc"><strong>Gemini 2.5 编码实操</strong> — Code Assist + API 调用 + 截图生成代码</span><span class="lp-time">40min</span></div>
+      <div class="lp-item"><span class="lp-num">2</span><span class="lp-tag lp-lab">LAB</span><span class="lp-desc"><strong>Prompt Lab: 模型参数</strong> — Gemini 参数调优 <span class="lp-exist">prompt-lab</span></span><span class="lp-time">15min</span></div>
+      <div class="lp-item"><span class="lp-num">3</span><span class="lp-tag lp-hw">SCENARIO</span><span class="lp-desc"><strong>Claude vs Gemini 对比</strong> — 同一个 UI 组件两个模型写</span><span class="lp-time">35min</span></div>
+    </div></div>
+    <div class="tools" style="margin-top:8px"><span class="tool">Prompt Lab: model-parameters</span><span class="tool">Learn: vibe-coding/tooling-updates</span></div>
+  </div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#ecfdf5"><span class="pill" style="background:#10b981;color:#fff">L26</span><h4>多模型对比实验：Claude / Gemini / Codex 输出差异</h4><span class="pill" style="background:#10b981;color:#fff">直播 · 120min</span></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.8">
+    <p>代码质量、推理能力、长上下文处理、速度、成本五维对比。每个模型的强项和弱项用数据说话。</p>
+    <div class="learn-path" style="margin:8px 0 0"><div class="learn-path-body">
+      <div class="lp-item"><span class="lp-num">1</span><span class="lp-tag lp-live">LIVE</span><span class="lp-desc"><strong>三模型系统对比</strong> — 质量、推理、长上下文、速度、成本</span><span class="lp-time">40min</span></div>
+      <div class="lp-item"><span class="lp-num">2</span><span class="lp-tag lp-hw">SCENARIO</span><span class="lp-desc"><strong>决策框架建立</strong> — 什么任务用什么模型</span><span class="lp-time">20min</span></div>
+      <div class="lp-item"><span class="lp-num">3</span><span class="lp-tag lp-lab">LAB</span><span class="lp-desc"><strong>Prompt Lab: 模型参数</strong> — 对比不同参数设置 <span class="lp-exist">prompt-lab</span></span><span class="lp-time">15min</span></div>
+      <div class="lp-item"><span class="lp-num">4</span><span class="lp-tag lp-hw">PROJECT</span><span class="lp-desc"><strong>工具选型文档</strong> — 你的项目用哪个模型做什么</span><span class="lp-time">15min</span></div>
+    </div></div>
+    <div class="tools" style="margin-top:8px"><span class="tool">Learn: ai-engineer/ai-model-comparison</span></div>
+  </div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5;color:#065f46">L27</span><h4>多模型 Prompt Engineering 模板参考</h4><span class="pill" style="background:#d1fae5;color:#065f46">图文 · 120min</span></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.8">
+    <p>Claude 喜欢 XML 标签结构，Gemini 喜欢简洁直接，Codex 需要更多上下文。同需求三种 Prompt 写法对比。</p>
+    <div class="tools" style="margin-top:8px"><span class="tool">Prompt Lab: few-shot</span><span class="tool">Prompt Lab: zero-shot</span><span class="tool">Learn: vibe-coding/prompt-patterns</span></div>
+  </div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#d1fae5"><span class="pill" style="background:#10b981;color:#fff">L28</span><h4>多模型理解测验</h4><span class="pill" style="background:#10b981;color:#fff">Lab · 60min</span></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.8">
+    <p>Vibe Coding Lab: 工具选型。给场景选模型、写模型特化 Prompt、分析代码质量差异。</p>
+    <div class="tools" style="margin-top:8px"><span class="tool">Vibe Lab: vibe-tool-selection</span></div>
+  </div></div>
+</div>
+
+<!-- Prompt & Codex Block: L29-L33 -->
+<div class="box">
+  <div class="box-h" style="background:#10b981"><span style="font-size:16px;font-weight:900">Prompt 精调 & Codex · L29-L33</span></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5;color:#065f46">L29</span><h4>Prompt 精调结构与四种模板技巧</h4><span class="pill" style="background:#d1fae5;color:#065f46">图文 · 30min</span></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.8">
+    <p>Step-by-step（分步指令）、Few-shot（示例驱动）、Chain of Thought（思维链）、Constrained Generation（约束生成）。</p>
+    <div class="tools" style="margin-top:8px"><span class="tool">Prompt Lab: chain-of-thought</span><span class="tool">Prompt Lab: self-consistency</span><span class="tool">Learn: prompt-master/cot</span></div>
+  </div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#ecfdf5"><span class="pill" style="background:#10b981;color:#fff">L30</span><h4>Codex CLI 与高效调试技巧全解析</h4><span class="pill" style="background:#10b981;color:#fff">直播 · 90min</span></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.8">
+    <p>Codex CLI 常用命令、配置文件优化、和 Claude Code 配合使用的工作流。小任务给 Codex，大任务给 Claude Code。</p>
+    <div class="learn-path" style="margin:8px 0 0"><div class="learn-path-body">
+      <div class="lp-item"><span class="lp-num">1</span><span class="lp-tag lp-live">LIVE</span><span class="lp-desc"><strong>Codex CLI 高效使用</strong> — 常用命令、配置优化</span><span class="lp-time">40min</span></div>
+      <div class="lp-item"><span class="lp-num">2</span><span class="lp-tag lp-lab">LAB</span><span class="lp-desc"><strong>Prompt Lab: 代码生成</strong> — Codex 代码生成实操 <span class="lp-exist">prompt-lab</span></span><span class="lp-time">15min</span></div>
+      <div class="lp-item"><span class="lp-num">3</span><span class="lp-tag lp-hw">SCENARIO</span><span class="lp-desc"><strong>Codex + Claude 协作</strong> — 小任务用 Codex，大任务用 Claude</span><span class="lp-time">35min</span></div>
+    </div></div>
+    <div class="tools" style="margin-top:8px"><span class="tool">Prompt Lab: code-generation</span><span class="tool">Learn: vibe-coding/debug-with-ai</span></div>
+  </div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#ecfdf5"><span class="pill" style="background:#10b981;color:#fff">L31</span><h4>Codex 提升准确率秘籍：精调与 Skills 加载</h4><span class="pill" style="background:#10b981;color:#fff">直播 · 120min</span></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.8">
+    <p>精调 Prompt 结构 + 加载 Skills/配置文件 + 多次生成取最优（Self-Consistency）。</p>
+    <div class="learn-path" style="margin:8px 0 0"><div class="learn-path-body">
+      <div class="lp-item"><span class="lp-num">1</span><span class="lp-tag lp-live">LIVE</span><span class="lp-desc"><strong>Codex 准确率提升</strong> — 精调 Prompt + 加载 Skills + Self-Consistency</span><span class="lp-time">40min</span></div>
+      <div class="lp-item"><span class="lp-num">2</span><span class="lp-tag lp-lab">LAB</span><span class="lp-desc"><strong>Prompt Lab: Prompt 评估</strong> — 量化 Prompt 质量 <span class="lp-exist">prompt-lab</span></span><span class="lp-time">15min</span></div>
+      <div class="lp-item"><span class="lp-num">3</span><span class="lp-tag lp-hw">SCENARIO</span><span class="lp-desc"><strong>准确率对比实验</strong> — 优化前后的准确率对比</span><span class="lp-time">35min</span></div>
+    </div></div>
+    <div class="tools" style="margin-top:8px"><span class="tool">Prompt Lab: prompt-evaluation</span><span class="tool">Learn: vibe-coding/performance-cost</span></div>
+  </div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5;color:#065f46">L32</span><h4>Codex CLI 安装指南与 config.toml 配置样例</h4><span class="pill" style="background:#d1fae5;color:#065f46">图文 · 120min</span></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.8">
+    <p>Codex CLI 安装、config.toml 详解（API Key、模型选择、Token 限制、代理配置、自定义命令）。参考资料课。</p>
+  </div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#d1fae5"><span class="pill" style="background:#10b981;color:#fff">L33</span><h4>Codex Prompt 结构测验</h4><span class="pill" style="background:#10b981;color:#fff">Lab · 60min</span></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.8">
+    <p>Vibe Coding Lab: Prompt 迭代。优化低质量 Prompt、对比不同 Prompt 结构的代码生成结果。</p>
+    <div class="tools" style="margin-top:8px"><span class="tool">Vibe Lab: vibe-prompt-iteration</span></div>
+  </div></div>
+</div>
+
+</div>
+
+<div class="footer">
+  <a href="phase2.html" style="padding:14px 32px;background:#fff;color:var(--dark);font-weight:700;border:3px solid #000;box-shadow:4px 4px 0 #000;display:inline-block;text-decoration:none;margin-right:16px">← Phase 2</a>
+  <a href="phase4.html" style="padding:14px 32px;background:var(--dark);color:#fff;font-weight:700;border:3px solid #000;box-shadow:4px 4px 0 #000;display:inline-block;text-decoration:none">Phase 4: 全栈项目 & 交付 →</a>
+  <div style="margin-top:16px">Claude Code + Cursor 实战课 · Phase 3 · JR Academy</div>
+</div>
+
+</body>
+</html>

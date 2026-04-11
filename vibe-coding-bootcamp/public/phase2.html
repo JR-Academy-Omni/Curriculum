@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code + Cursor 实战课 — Phase 2 Skills, MCP & Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>Phase 2 — Skills, MCP & Agent 架构</h1>
+  <div class="sub">Week 3-5 · 15 节课 · 6 节直播</div>
+  <div class="nav" style="margin-top:16px;font-size:14px">
+    <a href="curriculum.html" style="color:#fff;opacity:0.7;margin:0 8px">课程总览</a>
+    <a href="outline.html" style="color:#fff;opacity:0.7;margin:0 8px">完整大纲</a>
+    <a href="phase1.html" style="color:#fff;opacity:0.7;margin:0 8px">Phase 1</a>
+    <a href="phase2.html" style="color:#fff;opacity:1;margin:0 8px;font-weight:700">Phase 2</a>
+    <a href="phase3.html" style="color:#fff;opacity:0.7;margin:0 8px">Phase 3</a>
+    <a href="phase4.html" style="color:#fff;opacity:0.7;margin:0 8px">Phase 4</a>
+    <a href="learning-plan.html" style="color:#fff;opacity:0.7;margin:0 8px">学习计划</a>
+  </div>
+</div>
+
+<div class="c">
+
+<div class="box">
+  <div class="box-h" style="background:#f59e0b">
+    <span style="font-size:18px;font-weight:900">Phase 2 概览</span>
+  </div>
+  <div style="padding:16px 24px;font-size:14px;line-height:1.8">
+    <p>核心能力链：Skills（定义能力）→ MCP（工具协议）→ Agent（自主执行）。从 Claude Code Skills 插件到 MCP Server 搭建到 AI Agent 架构，掌握 AI 开发工具链的完整技术栈。</p>
+  </div>
+</div>
+
+<!-- Skills Block: L10-L14 -->
+<div class="box">
+  <div class="box-h" style="background:#f59e0b"><span style="font-size:16px;font-weight:900">Skills 模块 · L10-L14</span></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#fef3c7;color:#92400e">L10</span><h4>Skills 架构简介：Claude/Codex 插件机制</h4><span class="pill" style="background:#fef3c7;color:#92400e">图文 · 30min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>Skills 的概念、定义方式、注册方式、和 MCP 的关系。</p><div class="tools"><span class="tool">Prompt Lab: tool-use</span><span class="tool">Prompt Lab: vibe-claude-code-intro</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#fffbeb"><span class="pill" style="background:#f59e0b;color:#fff">L11</span><h4>Skill 与 agent.md 模板标准化实战</h4><span class="pill" style="background:#f59e0b;color:#fff">直播 · 90min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>agent.md 模板 → 实现代码 → 注册 → 测试。课后你有一个能用的自定义 Skill。</p><div class="tools"><span class="tool">Prompt Lab: vibe-claude-code-skills-agents</span><span class="tool">Prompt Lab: system-prompt-design</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#fffbeb"><span class="pill" style="background:#f59e0b;color:#fff">L12</span><h4>Claude Code 的 Skills 实践</h4><span class="pill" style="background:#f59e0b;color:#fff">直播 · 120min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>/commit Skill、自定义 Slash Command、Sub-agents、Hooks。实操配置 3-5 个 Skills。</p><div class="tools"><span class="tool">Prompt Lab: vibe-claude-code-skills-agents</span><span class="tool">Prompt Lab: tool-use</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#fef3c7;color:#92400e">L13</span><h4>Claude Skills 目录结构与参考资料</h4><span class="pill" style="background:#fef3c7;color:#92400e">图文 · 120min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>.claude/ 目录结构、settings.json 关键字段、Anthropic 官方参考。配置时随时查的工具书。</p><div class="tools"><span class="tool">Learn: vibe-coding/claude-code-full-guide</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#d1fae5"><span class="pill" style="background:#10b981;color:#fff">L14</span><h4>Claude Skills 实践测验</h4><span class="pill" style="background:#10b981;color:#fff">Lab · 60min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>Vibe Coding Lab: Skills & Agents。给场景设计 Skill，选 Hook 还是 Command。</p><div class="tools"><span class="tool">Vibe Lab: vibe-claude-code-skills-agents</span></div></div></div>
+</div>
+
+<!-- MCP Block: L15-L19 -->
+<div class="box">
+  <div class="box-h" style="background:#f59e0b"><span style="font-size:16px;font-weight:900">MCP 模块 · L15-L19</span></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#fef3c7;color:#92400e">L15</span><h4>用 AI 搭建 MCP Server（Model Context Protocol）</h4><span class="pill" style="background:#fef3c7;color:#92400e">图文 · 30min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>Client-Server 架构、Tool vs Resource、Transport 层（stdio / SSE）。</p><div class="tools"><span class="tool">Prompt Lab: vibe-claude-code-mcp</span><span class="tool">Prompt Lab: tool-use</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#fffbeb"><span class="pill" style="background:#f59e0b;color:#fff">L16</span><h4>Claude Skills 与 ToolUse 工具调用机制详解</h4><span class="pill" style="background:#f59e0b;color:#fff">直播 · 120min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>三层怎么串起来：Skills（能做什么）→ ToolUse（怎么调用）→ MCP（协议）。完整调用链追踪。</p><div class="tools"><span class="tool">Prompt Lab: vibe-claude-code-mcp</span><span class="tool">Prompt Lab: react-agent</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#fffbeb"><span class="pill" style="background:#f59e0b;color:#fff">L17</span><h4>用 AI 搭建 MCP Server 实操</h4><span class="pill" style="background:#f59e0b;color:#fff">直播 · 120min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>Tool Schema → Handler → Transport → 注册到 Claude Code → 测试调用。搭一个能查数据库或发邮件的 Tool。</p><div class="tools"><span class="tool">Prompt Lab: vibe-claude-code-mcp</span><span class="tool">Prompt Lab: code-generation</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#fef3c7;color:#92400e">L18</span><h4>MCP 协议与 Claude 工具调用机制参考</h4><span class="pill" style="background:#fef3c7;color:#92400e">图文 · 120min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>JSON-RPC 2.0 消息格式、Tool Definition Schema、Error Code、Auth 机制。参考资料课。</p><div class="tools"><span class="tool">Learn: ai-engineer/mcp-tool-integration</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#d1fae5"><span class="pill" style="background:#10b981;color:#fff">L19</span><h4>MCP 架构理解测验</h4><span class="pill" style="background:#10b981;color:#fff">Lab · 60min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>Vibe Coding Lab: MCP。设计 Tool Schema、写 Handler、验证规范性。</p><div class="tools"><span class="tool">Vibe Lab: vibe-claude-code-mcp</span></div></div></div>
+</div>
+
+<!-- Agent Block: L20-L24 -->
+<div class="box">
+  <div class="box-h" style="background:#f59e0b"><span style="font-size:16px;font-weight:900">Agent 模块 · L20-L24</span></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#fef3c7;color:#92400e">L20</span><h4>什么是 Agentic Workflow</h4><span class="pill" style="background:#fef3c7;color:#92400e">图文 · 30min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>ReAct 模式（Reasoning + Acting）、Tool Use 循环、什么任务适合 Agentic。</p><div class="tools"><span class="tool">Prompt Lab: react-agent</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#fffbeb"><span class="pill" style="background:#f59e0b;color:#fff">L21</span><h4>Claude 多步骤 Agent 架构与工具编排实战</h4><span class="pill" style="background:#f59e0b;color:#fff">直播 · 90min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>多 Tool 串联、条件分支（测试通过就部署，否则修 bug）、Sub-agent 并行。</p><div class="tools"><span class="tool">Prompt Lab: multi-agent</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#fffbeb"><span class="pill" style="background:#f59e0b;color:#fff">L22</span><h4>搭建 AI Agent：Claude Agent 架构实战</h4><span class="pill" style="background:#f59e0b;color:#fff">直播 · 120min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>System Prompt → Tools → 执行策略 → 退出条件。用 Claude Code 原生能力构建 Agent。</p><div class="tools"><span class="tool">Prompt Lab: react-agent</span><span class="tool">Prompt Lab: prompt-chaining</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#fef3c7;color:#92400e">L23</span><h4>Claude Agent 多工具执行结构解析</h4><span class="pill" style="background:#fef3c7;color:#92400e">图文 · 120min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>顺序依赖分析、依赖图、错误恢复策略、Token 消耗控制。</p><div class="tools"><span class="tool">Prompt Lab: multi-agent</span></div></div></div>
+
+  <div class="lesson"><div class="lesson-head" style="background:#d1fae5"><span class="pill" style="background:#10b981;color:#fff">L24</span><h4>Agent 架构理解测验</h4><span class="pill" style="background:#10b981;color:#fff">Lab · 60min</span></div><div class="lesson-body" style="grid-template-columns:1fr"><p>Vibe Coding Lab: Context Engineering。设计 Agent 方案、分析执行日志、优化 Prompt。</p><div class="tools"><span class="tool">Vibe Lab: vibe-context-engineering-intro</span></div></div></div>
+</div>
+
+</div>
+
+<div class="footer">
+  <a href="phase1.html" style="padding:14px 32px;background:#fff;color:var(--dark);font-weight:700;border:3px solid #000;box-shadow:4px 4px 0 #000;display:inline-block;text-decoration:none;margin-right:16px">← Phase 1</a>
+  <a href="phase3.html" style="padding:14px 32px;background:var(--dark);color:#fff;font-weight:700;border:3px solid #000;box-shadow:4px 4px 0 #000;display:inline-block;text-decoration:none">Phase 3: 多模型 & Prompt 精调 →</a>
+  <div style="margin-top:16px">Claude Code + Cursor 实战课 · Phase 2 · JR Academy</div>
+</div>
+
+</body>
+</html>
