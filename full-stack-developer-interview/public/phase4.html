@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 4 后端高频突击（自学 + Lab） — 手撕全栈面试题班 Full-stack Developer Interview</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>手撕全栈面试题班 Full-stack Developer Interview</h1>
+  <div class="sub">第7期 · 自学型课程 · 买完立刻学</div>
+  <div class="tags">
+    <span class="tag a">9 Phases</span>
+    <span class="tag b">40 节课</span>
+    <span class="tag c">89 个 Lab</span>
+    <span class="tag">21 学习章节</span>
+    <span class="tag">4 周自学</span>
+  </div>
+  <div class="nav"><a href="curriculum.html">总览</a> <a href="phase0.html">P0</a> <a href="phase1.html">P1</a> <a href="phase2.html">P2</a> <a href="phase3.html">P3</a> <a href="phase4.html">P4</a> <a href="phase5.html">P5</a> <a href="phase6.html">P6</a> <a href="phase7.html">P7</a> <a href="phase8.html">P8</a></div>
+</div>
+
+<div class="bar">
+  <div class="s"><div class="n">3</div><div class="l">节课</div></div>
+  <div class="s"><div class="n">1</div><div class="l">互动 LAB</div></div>
+  <div class="s"><div class="n">1</div><div class="l">学习章节</div></div>
+  <div class="s"><div class="n">Week 2-3</div><div class="l">时长</div></div>
+</div>
+
+<div class="c">
+
+<div class="box">
+  <div class="box-h" style="background:var(--dark)">
+    <div class="mono" style="font-size:12px;opacity:0.5">PHASE 4 · Backend Deep Dive with Labs</div>
+    <div style="font-size:24px;font-weight:900;margin-top:4px">后端高频突击（自学 + Lab）</div>
+    <div style="margin-top:8px;font-size:14px;opacity:0.7">API 设计、数据库、并发缓存 — 后端面试核心考点</div>
+    <div style="margin-top:10px;font-size:12px;opacity:0.5;font-family:'Space Mono',monospace">3 Lesson</div>
+  </div>
+  <div class="lesson">
+  <div class="lesson-head">
+    <span class="code ">L15</span>
+    <h4>API 设计 + Node.js 后端高频题</h4>
+    <span class="duration">Lesson · 90min</span>
+  </div>
+  <div class="lesson-body">
+    <div class="desc">RESTful、鉴权、幂等性、错误处理</div>
+    <div class="steps"><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">RESTful API 设计原则</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">20min</span>
+      <div class="step-desc">URL 命名、HTTP 方法语义、状态码、分页/版本</div>
+    </div><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">鉴权 + 安全</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">20min</span>
+      <div class="step-desc">Session vs JWT、OAuth 2.0、CORS、CSRF/XSS</div>
+    </div><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">Node.js 核心面试题</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">20min</span>
+      <div class="step-desc">单线程 + Event Loop、Cluster/Worker Threads、Stream</div>
+    </div><div class="step">
+      <span class="step-type LAB">LAB</span>
+      <span class="step-title">Prompt Lab: API 设计面试模拟</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">15min</span>
+      <div class="step-desc">AI 模拟面试官考 API 设计</div>
+    </div><div class="step">
+      <span class="step-type SCENARIO">SCENARIO</span>
+      <span class="step-title">真题练习</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">15min</span>
+      <div class="step-desc">拆解 Canva/Amazon 后端面试真题</div>
+    </div></div>
+    <div class="resources"><span class="resource lab">🧪 prompt-lab: role-playing</span><span class="resource learn">📚 ai-engineer/llm-api-basics</span><span class="resource cheat">📄 express</span><span class="resource cheat">📄 npm</span></div>
+  </div>
+  <div class="material"><h2>API 设计 + Node.js 后端高频题</h2>
+
+<h3>RESTful API 设计</h3>
+<pre><code>✅ GET    /api/users          # 获取列表
+✅ GET    /api/users/:id      # 获取单个
+✅ POST   /api/users          # 创建
+✅ PUT    /api/users/:id      # 全量更新
+✅ PATCH  /api/users/:id      # 部分更新
+✅ DELETE /api/users/:id      # 删除
+
+❌ GET    /api/getUsers       # 动词不应出现在 URL
+❌ POST   /api/user/delete/1  # 用 HTTP 方法表达操作</code></pre>
+
+<h3>HTTP 状态码（面试必知）</h3>
+<table><tr><th>状态码</th><th>含义</th><th>常用场景</th></tr>
+<tr><td>200</td><td>成功</td><td>GET/PUT/PATCH 成功</td></tr>
+<tr><td>201</td><td>已创建</td><td>POST 创建成功</td></tr>
+<tr><td>204</td><td>无内容</td><td>DELETE 成功</td></tr>
+<tr><td>400</td><td>请求错误</td><td>参数验证失败</td></tr>
+<tr><td>401</td><td>未认证</td><td>没有 token 或 token 过期</td></tr>
+<tr><td>403</td><td>未授权</td><td>有 token 但没权限</td></tr>
+<tr><td>404</td><td>未找到</td><td>资源不存在</td></tr>
+<tr><td>429</td><td>请求过多</td><td>触发限流</td></tr>
+<tr><td>500</td><td>服务器错误</td><td>未预期的异常</td></tr></table>
+
+<h3>幂等性</h3>
+<p>同一个请求执行多次和执行一次效果一样。</p>
+<ul>
+<li>GET — 幂等（读取不改变状态）</li>
+<li>PUT — 幂等（全量替换）</li>
+<li>DELETE — 幂等（删除后再删结果一样）</li>
+<li>POST — 不幂等（每次创建新资源）</li>
+<li>PATCH — 看实现（age = 25 幂等，age += 1 不幂等）</li>
+</ul>
+
+<h3>JWT vs Session</h3>
+<table><tr><th></th><th>JWT</th><th>Session</th></tr>
+<tr><td>状态</td><td>无状态（token 自包含）</td><td>有状态（服务端存储）</td></tr>
+<tr><td>扩展</td><td>天然分布式</td><td>需共享存储（Redis）</td></tr>
+<tr><td>安全</td><td>无法主动失效</td><td>可主动销毁</td></tr>
+<tr><td>大小</td><td>较大（包含 payload）</td><td>小（只有 session ID）</td></tr></table>
+
+<h3>Node.js 核心</h3>
+<h4>单线程 + Event Loop</h4>
+<p>Node.js 主线程是单线程，但通过 Event Loop + libuv 实现异步 I/O。CPU 密集型用 Worker Threads。生产环境用 Cluster 模块或 PM2 fork 多进程利用多核。</p>
+
+<h4>中间件模式</h4>
+<pre><code>// Express 中间件链
+app.use(cors());           // 跨域
+app.use(helmet());         // 安全头
+app.use(express.json());   // 解析 JSON
+app.use(authMiddleware);   // 认证
+app.use('/api', router);   // 路由</code></pre>
+
+<h3>CORS（面试常问）</h3>
+<p>浏览器同源策略限制跨域请求。CORS 通过服务端设置 Access-Control-Allow-Origin 头允许跨域。预检请求（OPTIONS）用于复杂请求（如 PUT/DELETE 或自定义头）。</p></div>
+</div>
+<div class="lesson">
+  <div class="lesson-head">
+    <span class="code ">L16</span>
+    <h4>数据库面试题 — SQL / NoSQL / 索引 / 事务</h4>
+    <span class="duration">Lesson · 75min</span>
+  </div>
+  <div class="lesson-body">
+    <div class="desc">关系型 vs 文档型、索引优化、事务 ACID</div>
+    <div class="steps"><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">SQL vs NoSQL 选型</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">20min</span>
+      <div class="step-desc">关系型 vs 文档型、CAP 定理、数据建模</div>
+    </div><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">索引 + 查询优化</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">20min</span>
+      <div class="step-desc">B-Tree、复合索引、EXPLAIN、N+1 问题</div>
+    </div><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">事务 + 一致性</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">20min</span>
+      <div class="step-desc">ACID、隔离级别、乐观锁 vs 悲观锁</div>
+    </div><div class="step">
+      <span class="step-type SCENARIO">SCENARIO</span>
+      <span class="step-title">数据库面试追问链</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">15min</span>
+      <div class="step-desc">索引 → B-Tree → 最左匹配 → 覆盖索引 → EXPLAIN</div>
+    </div></div>
+    <div class="resources"><span class="resource cheat">📄 mongodb</span><span class="resource cheat">📄 postgres</span></div>
+  </div>
+  <div class="material"><h2>数据库面试题</h2>
+
+<h3>SQL vs NoSQL 选型</h3>
+<table><tr><th></th><th>SQL (PostgreSQL/MySQL)</th><th>NoSQL (MongoDB)</th></tr>
+<tr><td>数据模型</td><td>严格 Schema，表+行+列</td><td>灵活 Schema，文档</td></tr>
+<tr><td>关联</td><td>JOIN 很强</td><td>嵌入文档或手动关联</td></tr>
+<tr><td>事务</td><td>原生 ACID</td><td>4.0+ 支持多文档事务</td></tr>
+<tr><td>扩展</td><td>垂直扩展为主</td><td>天然水平扩展</td></tr>
+<tr><td>适用</td><td>强一致、复杂查询、金融</td><td>快速迭代、灵活 Schema、大量读写</td></tr></table>
+
+<h3>索引</h3>
+<h4>B-Tree 索引原理</h4>
+<p>B-Tree 是平衡多叉搜索树，每个节点存多个键值。查找、插入、删除都是 O(log n)。数据库索引本质是 B-Tree 结构。</p>
+
+<h4>复合索引</h4>
+<pre><code>-- 创建复合索引
+CREATE INDEX idx_user_age_city ON users(age, city);
+
+-- ✅ 走索引（最左前缀匹配）
+SELECT * FROM users WHERE age = 25;
+SELECT * FROM users WHERE age = 25 AND city = 'Sydney';
+
+-- ❌ 不走索引（跳过了 age）
+SELECT * FROM users WHERE city = 'Sydney';</code></pre>
+
+<h4>为什么加了索引还是慢？</h4>
+<ol>
+<li>字段类型不匹配（字符串字段用数字查询）</li>
+<li>复合索引没遵守最左前缀</li>
+<li>查询用了函数（WHERE YEAR(created_at) = 2026）</li>
+<li>数据量小，优化器选择全表扫描</li>
+<li>返回字段太多，回表开销大</li>
+</ol>
+
+<h3>事务 ACID</h3>
+<ul>
+<li><strong>Atomicity</strong> — 全成功或全回滚</li>
+<li><strong>Consistency</strong> — 从一个一致状态到另一个一致状态</li>
+<li><strong>Isolation</strong> — 并发事务互不影响</li>
+<li><strong>Durability</strong> — 提交后持久化，宕机不丢</li>
+</ul>
+
+<h4>隔离级别</h4>
+<table><tr><th>级别</th><th>脏读</th><th>不可重复读</th><th>幻读</th></tr>
+<tr><td>Read Uncommitted</td><td>可能</td><td>可能</td><td>可能</td></tr>
+<tr><td>Read Committed</td><td>防止</td><td>可能</td><td>可能</td></tr>
+<tr><td>Repeatable Read</td><td>防止</td><td>防止</td><td>可能</td></tr>
+<tr><td>Serializable</td><td>防止</td><td>防止</td><td>防止</td></tr></table>
+
+<h4>乐观锁 vs 悲观锁</h4>
+<ul>
+<li><strong>悲观锁</strong> — SELECT FOR UPDATE，锁行直到事务结束。适合高竞争</li>
+<li><strong>乐观锁</strong> — UPDATE WHERE version = old_version，不加锁。适合低竞争</li>
+</ul>
+
+<h3>N+1 问题</h3>
+<pre><code>// ❌ N+1：1 条查用户 + N 条查订单
+const users = await User.find();
+for (const u of users) {
+  u.orders = await Order.find({ userId: u._id });
+}
+
+// ✅ 解决：populate / JOIN / DataLoader
+const users = await User.find().populate('orders');</code></pre></div>
+</div>
+<div class="lesson">
+  <div class="lesson-head">
+    <span class="code ">L17</span>
+    <h4>并发 / 缓存 / 微服务</h4>
+    <span class="duration">Lesson · 75min</span>
+  </div>
+  <div class="lesson-body">
+    <div class="desc">高并发、缓存策略、微服务架构</div>
+    <div class="steps"><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">并发 + 限流 + 熔断</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">20min</span>
+      <div class="step-desc">Race condition、分布式锁、令牌桶/漏桶</div>
+    </div><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">缓存策略</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">20min</span>
+      <div class="step-desc">Cache-Aside、缓存穿透/击穿/雪崩</div>
+    </div><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">微服务 vs 单体</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">20min</span>
+      <div class="step-desc">拆分策略、服务间通信、数据一致性</div>
+    </div><div class="step">
+      <span class="step-type SCENARIO">SCENARIO</span>
+      <span class="step-title">面试追问链</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">15min</span>
+      <div class="step-desc">Redis → 数据结构 → 过期策略 → 分布式锁</div>
+    </div></div>
+    <div class="resources"><span class="resource cheat">📄 docker</span><span class="resource cheat">📕 system-design</span></div>
+  </div>
+  <div class="material"><h2>并发 / 缓存 / 微服务</h2>
+
+<h3>缓存策略</h3>
+<h4>Cache-Aside（最常用）</h4>
+<pre><code>async function getUser(id) {
+  // 1. 先查缓存
+  let user = await redis.get('user:' + id);
+  if (user) return JSON.parse(user);
+
+  // 2. 缓存没有，查数据库
+  user = await db.findById(id);
+
+  // 3. 写入缓存
+  await redis.set('user:' + id, JSON.stringify(user), 'EX', 3600);
+  return user;
+}</code></pre>
+
+<h4>缓存穿透 / 击穿 / 雪崩</h4>
+<table><tr><th>问题</th><th>原因</th><th>解决方案</th></tr>
+<tr><td>穿透</td><td>查不存在的数据，每次打到 DB</td><td>布隆过滤器 / 缓存空值（TTL 短）</td></tr>
+<tr><td>击穿</td><td>热点 key 过期瞬间大量请求</td><td>互斥锁 / 永不过期+异步更新</td></tr>
+<tr><td>雪崩</td><td>大量 key 同时过期</td><td>过期时间加随机偏移 / 多级缓存</td></tr></table>
+
+<h3>并发处理</h3>
+<h4>Race Condition</h4>
+<p>两个请求同时读取库存=10，各扣 1，最终库存=9（应该是8）。解决方案：</p>
+<ul>
+<li>数据库乐观锁：UPDATE stock SET count = count - 1 WHERE count &gt; 0</li>
+<li>Redis 原子操作：DECR key</li>
+<li>分布式锁：Redis + Lua 脚本</li>
+</ul>
+
+<h4>限流算法</h4>
+<table><tr><th>算法</th><th>原理</th><th>特点</th></tr>
+<tr><td>令牌桶</td><td>固定速率生成令牌，请求消耗令牌</td><td>允许突发流量</td></tr>
+<tr><td>漏桶</td><td>请求排队，固定速率处理</td><td>流量绝对平滑</td></tr>
+<tr><td>滑动窗口</td><td>统计过去 N 秒请求数</td><td>比固定窗口更精确</td></tr></table>
+
+<h3>微服务 vs 单体</h3>
+<h4>什么时候拆微服务？</h4>
+<ul>
+<li>团队超过 10 人，需要独立部署</li>
+<li>不同模块有不同的扩展需求</li>
+<li>需要使用不同的技术栈</li>
+</ul>
+
+<h4>什么时候不该拆？</h4>
+<ul>
+<li>团队小（&lt;5人），单体更高效</li>
+<li>项目早期，业务边界不清晰</li>
+<li>没有 DevOps 基础设施</li>
+</ul>
+
+<h4>服务间通信</h4>
+<table><tr><th>方式</th><th>同步/异步</th><th>适用</th></tr>
+<tr><td>REST</td><td>同步</td><td>简单的 CRUD 调用</td></tr>
+<tr><td>gRPC</td><td>同步</td><td>高性能、强类型</td></tr>
+<tr><td>消息队列</td><td>异步</td><td>事件驱动、解耦</td></tr></table>
+
+<h4>数据一致性</h4>
+<p>微服务间不共享数据库。用 Saga 模式保证分布式事务的最终一致性。</p></div>
+</div>
+</div>
+
+<div style="display:flex;justify-content:space-between;margin:24px 0">
+  <a href="curriculum.html" style="padding:10px 20px;border:2px solid #000;background:#fff;font-weight:700">← 返回总览</a>
+  <a href="phase5.html" style="padding:10px 20px;border:2px solid #000;background:var(--indigo);color:#fff;font-weight:700">下一个 Phase →</a>
+</div>
+
+</div>
+
+<div class="footer">
+  <div>JR Academy · 手撕全栈面试题班 第7期 · Phase 4</div>
+  <div class="sub"><a href="curriculum.html">返回总览</a> · <a href="https://jiangren.com.au/courses/full-stack-developer-interview">立即购买</a></div>
+</div>
+
+</body>
+</html>

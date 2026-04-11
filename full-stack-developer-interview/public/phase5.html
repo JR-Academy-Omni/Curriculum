@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 5 系统设计 — 手撕全栈面试题班 Full-stack Developer Interview</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>手撕全栈面试题班 Full-stack Developer Interview</h1>
+  <div class="sub">第7期 · 自学型课程 · 买完立刻学</div>
+  <div class="tags">
+    <span class="tag a">9 Phases</span>
+    <span class="tag b">40 节课</span>
+    <span class="tag c">89 个 Lab</span>
+    <span class="tag">21 学习章节</span>
+    <span class="tag">4 周自学</span>
+  </div>
+  <div class="nav"><a href="curriculum.html">总览</a> <a href="phase0.html">P0</a> <a href="phase1.html">P1</a> <a href="phase2.html">P2</a> <a href="phase3.html">P3</a> <a href="phase4.html">P4</a> <a href="phase5.html">P5</a> <a href="phase6.html">P6</a> <a href="phase7.html">P7</a> <a href="phase8.html">P8</a></div>
+</div>
+
+<div class="bar">
+  <div class="s"><div class="n">3</div><div class="l">节课</div></div>
+  <div class="s"><div class="n">0</div><div class="l">互动 LAB</div></div>
+  <div class="s"><div class="n">0</div><div class="l">学习章节</div></div>
+  <div class="s"><div class="n">Week 3</div><div class="l">时长</div></div>
+</div>
+
+<div class="c">
+
+<div class="box">
+  <div class="box-h" style="background:var(--dark)">
+    <div class="mono" style="font-size:12px;opacity:0.5">PHASE 5 · System Design</div>
+    <div style="font-size:24px;font-weight:900;margin-top:4px">系统设计</div>
+    <div style="margin-top:8px;font-size:14px;opacity:0.7">从需求澄清到架构设计到扩展性分析 — 方法论 + 经典案例</div>
+    <div style="margin-top:10px;font-size:12px;opacity:0.5;font-family:'Space Mono',monospace">3 Lesson</div>
+  </div>
+  <div class="lesson">
+  <div class="lesson-head">
+    <span class="code ">L18</span>
+    <h4>系统设计方法论</h4>
+    <span class="duration">Lesson · 90min</span>
+  </div>
+  <div class="lesson-body">
+    <div class="desc">4 步框架：需求澄清→高层架构→详细设计→扩展权衡</div>
+    <div class="steps"><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">系统设计面试框架</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">25min</span>
+      <div class="step-desc">4 步走：需求(5min) → 架构(10min) → 详细(20min) → 扩展(10min)</div>
+    </div><div class="step">
+      <span class="step-type CONCEPT">CONCEPT</span>
+      <span class="step-title">核心组件速查</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">25min</span>
+      <div class="step-desc">负载均衡、CDN、消息队列、数据库选型、缓存、API Gateway</div>
+    </div><div class="step">
+      <span class="step-type SCENARIO">SCENARIO</span>
+      <span class="step-title">白板练习：URL 短链服务</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">30min</span>
+      <div class="step-desc">从 0 到 1 完整设计流程</div>
+    </div><div class="step">
+      <span class="step-type PROJECT">PROJECT</span>
+      <span class="step-title">输出：系统设计答题模板</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">10min</span>
+      <div class="step-desc">整理自己的答题模板和时间分配</div>
+    </div></div>
+    <div class="resources"><span class="resource cheat">📕 system-design</span></div>
+  </div>
+  <div class="material"><h2>系统设计方法论</h2>
+
+<h3>4 步框架（严格控制时间）</h3>
+
+<h4>Step 1: 需求澄清 (5 min)</h4>
+<p>面试官给你一个模糊的题目，你要缩小范围到一个可讨论的子问题。</p>
+<ul>
+<li>核心功能有哪些？优先级？</li>
+<li>用户量级？DAU? QPS?</li>
+<li>读写比？读多写少？</li>
+<li>可用性 SLA？99.9%?</li>
+<li>数据量？增长预期？</li>
+</ul>
+
+<h4>Step 2: 高层架构 (10 min)</h4>
+<pre><code>Client → CDN → Load Balancer → API Gateway
+                                    ↓
+                            Application Servers
+                              ↓           ↓
+                          Database    Cache (Redis)
+                              ↓
+                        Message Queue → Workers</code></pre>
+
+<h4>Step 3: 详细设计 (20 min)</h4>
+<ul>
+<li>数据模型（表结构、索引）</li>
+<li>API 设计（endpoint、参数、返回值）</li>
+<li>关键算法或逻辑</li>
+</ul>
+
+<h4>Step 4: 扩展与权衡 (10 min)</h4>
+<ul>
+<li>10x 流量怎么办？→ 水平扩展、数据库分片、CDN</li>
+<li>单点故障？→ 多副本、自动故障转移</li>
+<li>一致性 vs 可用性？→ CAP 取舍</li>
+</ul>
+
+<h3>核心组件速查表</h3>
+<table><tr><th>组件</th><th>解决什么问题</th><th>常用产品</th></tr>
+<tr><td>Load Balancer</td><td>分配流量，避免单点</td><td>Nginx, AWS ALB</td></tr>
+<tr><td>CDN</td><td>静态资源就近访问</td><td>CloudFront, Cloudflare</td></tr>
+<tr><td>Cache</td><td>减少 DB 压力</td><td>Redis, Memcached</td></tr>
+<tr><td>Message Queue</td><td>异步解耦</td><td>RabbitMQ, SQS, Kafka</td></tr>
+<tr><td>Search Engine</td><td>全文搜索</td><td>Elasticsearch</td></tr>
+<tr><td>Object Storage</td><td>文件/图片存储</td><td>S3</td></tr></table>
+
+<h3>容量估算速算</h3>
+<ul>
+<li>1M DAU ≈ 60-120 QPS（平均），峰值 x3-5</li>
+<li>1 条消息 ≈ 200 bytes</li>
+<li>1 张图片 ≈ 200KB-2MB</li>
+<li>1TB = 1,000,000 MB ≈ 5亿条消息</li>
+</ul>
+
+<h3>CAP 定理</h3>
+<p>分布式系统最多同时满足两个：</p>
+<ul>
+<li><strong>CP</strong>（一致性优先）— 银行转账、库存扣减</li>
+<li><strong>AP</strong>（可用性优先）— 社交媒体、时间线</li>
+</ul></div>
+</div>
+<div class="lesson">
+  <div class="lesson-head">
+    <span class="code ">L19</span>
+    <h4>经典案例 1 — Chat App + Notification</h4>
+    <span class="duration">Lesson · 90min</span>
+  </div>
+  <div class="lesson-body">
+    <div class="desc">实时通信 + 通知系统设计</div>
+    <div class="steps"><div class="step">
+      <span class="step-type SCENARIO">SCENARIO</span>
+      <span class="step-title">设计 Chat Application</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">40min</span>
+      <div class="step-desc">WebSocket vs Long Polling、消息存储、已读状态、群聊扇出</div>
+    </div><div class="step">
+      <span class="step-type SCENARIO">SCENARIO</span>
+      <span class="step-title">设计 Notification System</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">35min</span>
+      <div class="step-desc">推送渠道、优先级队列、去重、降级</div>
+    </div><div class="step">
+      <span class="step-type PROJECT">PROJECT</span>
+      <span class="step-title">画出你的系统架构图</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">15min</span>
+      <div class="step-desc">独立完成完整设计</div>
+    </div></div>
+    
+  </div>
+  <div class="material"><h2>经典案例 1 — Chat App + Notification System</h2>
+
+<h3>设计 Chat Application</h3>
+
+<h4>需求澄清</h4>
+<p>支持 1v1 和群聊？消息类型（文字/图片/视频）？已读状态？离线消息？历史消息搜索？</p>
+
+<h4>实时通信方案</h4>
+<table><tr><th>方案</th><th>原理</th><th>优点</th><th>缺点</th></tr>
+<tr><td>WebSocket</td><td>全双工持久连接</td><td>低延迟、双向</td><td>连接管理复杂</td></tr>
+<tr><td>SSE</td><td>服务端单向推送</td><td>简单</td><td>只能服务端→客户端</td></tr>
+<tr><td>Long Polling</td><td>客户端挂起等待</td><td>兼容性好</td><td>延迟高、浪费资源</td></tr></table>
+<p>推荐：WebSocket 为主，Long Polling 为降级方案。</p>
+
+<h4>消息存储设计</h4>
+<pre><code>messages: {
+  messageId: UUID,
+  channelId: string,
+  senderId: string,
+  content: string,
+  type: 'text' | 'image',
+  createdAt: timestamp,
+  status: 'sent' | 'delivered' | 'read'
+}
+
+// 索引
+{ channelId: 1, createdAt: -1 }  // 按频道查最新消息</code></pre>
+
+<h4>群聊扇出策略</h4>
+<ul>
+<li><strong>写扩散</strong> — 发消息时写入每个成员的收件箱。适合小群（&lt;100人）</li>
+<li><strong>读扩散</strong> — 读取时实时查询。适合大群（1000+人）</li>
+</ul>
+
+<h3>设计 Notification System</h3>
+<h4>架构</h4>
+<pre><code>Event Source → Notification Service → Priority Queue
+                                         ↓
+                                    Channel Router
+                                    ↙    ↓    ↘
+                                Push  Email   SMS</code></pre>
+
+<h4>关键设计决策</h4>
+<ul>
+<li><strong>去重</strong> — 同一事件不重复通知（用 event_id + user_id 去重）</li>
+<li><strong>优先级</strong> — 安全警告 &gt; 交易通知 &gt; 社交通知 &gt; 营销</li>
+<li><strong>降级</strong> — Push 失败降级到 Email，Email 失败降级到 SMS</li>
+<li><strong>用户偏好</strong> — 用户可以关闭特定类型的通知</li>
+</ul></div>
+</div>
+<div class="lesson">
+  <div class="lesson-head">
+    <span class="code ">L20</span>
+    <h4>经典案例 2 — E-commerce + Rate Limiter</h4>
+    <span class="duration">Lesson · 90min</span>
+  </div>
+  <div class="lesson-body">
+    <div class="desc">电商核心模块 + 限流器设计</div>
+    <div class="steps"><div class="step">
+      <span class="step-type SCENARIO">SCENARIO</span>
+      <span class="step-title">设计 E-commerce 核心模块</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">40min</span>
+      <div class="step-desc">商品搜索、购物车、订单支付、库存扣减</div>
+    </div><div class="step">
+      <span class="step-type SCENARIO">SCENARIO</span>
+      <span class="step-title">设计 Rate Limiter</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">35min</span>
+      <div class="step-desc">令牌桶 vs 漏桶 vs 滑动窗口</div>
+    </div><div class="step">
+      <span class="step-type PROJECT">PROJECT</span>
+      <span class="step-title">系统设计笔记整理</span> <span style="color:#aaa;font-family:'Space Mono',monospace;font-size:10px">15min</span>
+      <div class="step-desc">3 个案例的设计模板</div>
+    </div></div>
+    
+  </div>
+  <div class="material"><h2>经典案例 2 — E-commerce + Rate Limiter</h2>
+
+<h3>设计 E-commerce 核心模块</h3>
+
+<h4>库存扣减（面试最常考）</h4>
+<table><tr><th>方案</th><th>实现</th><th>优点</th><th>缺点</th></tr>
+<tr><td>悲观锁</td><td>SELECT FOR UPDATE</td><td>简单强一致</td><td>并发低，死锁风险</td></tr>
+<tr><td>乐观锁</td><td>UPDATE WHERE stock = old</td><td>无锁等待</td><td>高竞争时大量重试</td></tr>
+<tr><td>Redis 预扣减</td><td>DECR + 异步写 DB</td><td>性能极高</td><td>需保持一致性</td></tr></table>
+
+<p>推荐：Redis 预扣减 + 消息队列异步写 DB。秒杀场景用 Redis DECR 扣库存（毫秒级），成功后异步写入数据库。</p>
+
+<h4>订单支付流程</h4>
+<pre><code>下单 → 创建订单（状态: pending）→ 扣减库存（Redis）
+     → 跳转支付 → 支付回调 → 更新订单（状态: paid）
+     → 异步：发通知、更新统计、生成发票
+
+超时未支付 → 取消订单 → 恢复库存</code></pre>
+
+<h3>设计 Rate Limiter</h3>
+
+<h4>令牌桶 (Token Bucket)</h4>
+<p>桶以固定速率 r 生成令牌，最多存 b 个。每个请求消耗 1 个令牌。桶空则拒绝。</p>
+<p>特点：允许突发流量（桶中有存量时）。API Gateway 最常用。</p>
+
+<h4>漏桶 (Leaky Bucket)</h4>
+<p>请求进入桶排队，以固定速率流出处理。桶满则丢弃。</p>
+<p>特点：流量绝对平滑。适合需要严格控制处理速率的场景。</p>
+
+<h4>滑动窗口 (Sliding Window)</h4>
+<p>统计过去 N 秒内的请求数，超过阈值拒绝。</p>
+<p>比固定窗口精确，避免窗口边界突发问题。</p>
+
+<h4>分布式限流（Redis 实现）</h4>
+<pre><code>-- Lua 脚本（原子操作）
+local key = KEYS[1]
+local limit = tonumber(ARGV[1])
+local window = tonumber(ARGV[2])
+local current = redis.call('INCR', key)
+if current == 1 then
+  redis.call('EXPIRE', key, window)
+end
+if current > limit then
+  return 0  -- 拒绝
+end
+return 1  -- 允许</code></pre></div>
+</div>
+</div>
+
+<div style="display:flex;justify-content:space-between;margin:24px 0">
+  <a href="curriculum.html" style="padding:10px 20px;border:2px solid #000;background:#fff;font-weight:700">← 返回总览</a>
+  <a href="phase6.html" style="padding:10px 20px;border:2px solid #000;background:var(--indigo);color:#fff;font-weight:700">下一个 Phase →</a>
+</div>
+
+</div>
+
+<div class="footer">
+  <div>JR Academy · 手撕全栈面试题班 第7期 · Phase 5</div>
+  <div class="sub"><a href="curriculum.html">返回总览</a> · <a href="https://jiangren.com.au/courses/full-stack-developer-interview">立即购买</a></div>
+</div>
+
+</body>
+</html>
