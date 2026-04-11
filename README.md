@@ -2,6 +2,8 @@
 
 课程大纲、Slide Deck 与 Marketing 素材的静态站点。
 
+> 🆕 **设计 Product Manager / BA / AI 产品经理相关课程？** 看 [RESOURCES_PM_BA.md](./RESOURCES_PM_BA.md) — 13 个视频、7 个 wiki、15 张速查卡、17 个面试题库、6 个 roadmap、20 个 prompt-lab 的 slug 目录，首次落地于 `business-analyst` 课程。新课程可直接从这张单子里挑 slug 复用。
+
 ## 在线访问
 
 | 页面 | URL |

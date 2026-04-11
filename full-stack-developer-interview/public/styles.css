@@ -218,6 +218,43 @@ a{color:var(--indigo);text-decoration:none}a:hover{text-decoration:underline}
 .price-tag{display:inline-block;margin-top:6px;padding:3px 10px;background:#dc2626;color:#fff;font-size:11px;font-weight:700;font-family:'Space Mono',monospace}
 .cta-trust{font-size:13px;opacity:0.7;font-family:'Space Mono',monospace}
 
+/* Phase detail with lesson list (sales version) */
+.phase-list{display:flex;flex-direction:column;gap:18px}
+
+.phase-detail{background:#fff;border:3px solid #000;border-top-width:8px;box-shadow:6px 6px 0 #000;overflow:hidden;transition:transform 0.15s}
+.phase-detail:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #000}
+
+.phase-detail-head{padding:18px 22px 14px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;border-bottom:2px dashed #e5e7eb}
+.pdh-num{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px}
+.pdh-title{font-size:20px;font-weight:900;margin-top:4px;color:#10162f}
+.pdh-meta{font-family:'Space Mono',monospace;font-size:11px;color:#666;background:#f3f4f6;padding:4px 10px;border:1px solid #e5e7eb;white-space:nowrap}
+
+.lesson-list-mk{list-style:none;padding:0;margin:0}
+.lesson-item{padding:14px 22px;border-bottom:1px solid #f1f5f9;transition:background 0.15s}
+.lesson-item:last-child{border-bottom:none}
+.lesson-item:hover{background:#fafafa}
+
+.li-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.li-code{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:2px 8px;background:#10162f;color:#fff;border-radius:3px;letter-spacing:0.5px}
+.li-type{font-size:10px;font-weight:700;font-family:'Space Mono',monospace;padding:2px 8px;border-radius:3px;letter-spacing:0.5px}
+.li-type.video{background:#fce7f3;color:#9d174d}
+.li-type.info{background:#d1fae5;color:#065f46}
+.li-type.lesson{background:#e0e7ff;color:#3730a3}
+.li-type.live{background:#fef3c7;color:#92400e}
+.li-title{font-size:15px;font-weight:800;color:#10162f;flex:1;min-width:200px}
+
+.li-desc{font-size:13px;color:#555;line-height:1.6;margin:4px 0 6px;padding-left:0}
+
+.li-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.lc-chip{font-size:10px;font-weight:700;font-family:'Space Mono',monospace;padding:2px 8px;border-radius:3px}
+.lc-chip.lab{background:#d1fae5;color:#065f46}
+.lc-chip.learn{background:#e0e7ff;color:#3730a3}
+
+@media (max-width:700px){
+  .phase-detail-head{flex-direction:column}
+  .pdh-meta{align-self:flex-start}
+}
+
 /* Footer */
 .footer{background:var(--dark);color:#fff;padding:32px 0;text-align:center;border-top:4px solid var(--border)}
 .footer .sub{font-size:13px;opacity:0.6;margin-top:6px}

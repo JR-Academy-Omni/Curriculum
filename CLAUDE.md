@@ -333,15 +333,72 @@ See `DESIGN.md` for the complete presentation design system including color pale
 
 ### 所有学习内容都是平等的 Lesson
 
-平台上 Video、Info（图文）、Lesson（直播/互动）都是 lesson，只是 type 不同。课程大纲 = lesson 数组。
+平台上 Video、Info（图文）、Lesson（直播/互动）、**InteractiveLab（互动实验）** 都是 lesson，只是 type 不同。课程大纲 = lesson 数组。
 
-**录播和自学不是二等公民。** 它们和直播课一样，都应该有完整的 step 序列（教学内容→练习→验证）。不要把录播/图文当成"附属品"或"自学堆砌"。
+**录播、自学、互动 Lab 都不是二等公民。** 每一个都是独立的 lesson，不是"附属品"。
 
 | Lesson Type | 含义 | 例子 |
 |-------------|------|------|
 | **Lesson** | 互动课（直播/Lab） | 直播课、Workshop、Clinic |
 | **Video** | 录播视频 | 工具演示、案例拆解、操作步骤 |
 | **Info** | 图文内容 | 操作指南、模板说明、Wiki 知识 |
+| **InteractiveLab** | 互动 Lab | Prompt Lab / LLM Lab / Python Lab / Frontend Lab / AWS Lab / Azure Lab / Git Lab |
+
+### 🔥🔥🔥 绝对铁律：每个 Lab 必须是独立 Lesson
+
+**这是 JR Academy 课程结构的核心规则，违反会被打回重做。**
+
+❌ **错误做法**（AI 最容易犯的错）：
+- 把 Lab 塞进其他 lesson 的 `steps[]` 里作为一个 `type="LAB"` 的 step
+- 把 Lab 作为 `lesson.labs[]` 数组里的引用附加在 concept lesson 上
+- 认为"这个 lab 是讲完知识点后顺便练一下" — 错！它是一节独立的课
+
+✅ **正确做法**：
+- 每一个被引用的 Lab 都必须在 `phases[].lessons[]` 数组里**占一个位置**，是一个完整的 Lesson object
+- `type: "InteractiveLab"` + `isInteractiveLab: true` + `interactiveLabSlug: "xxx"`（必填）
+- `interactiveLabType` 对应前端配置目录（`prompt` / `llm` / `python` / `frontend` / `aws` / `azure` / `git`）
+- 描述用格式："{类别} 实验：{title}。在浏览器内完成实操练习，即时验证结果。"
+- `duration` 一般 20-45 分钟
+- 插入位置：紧跟在对应的 concept lesson 之后
+- lesson `code` 顺序编号（L01, L02, L03... 不跳号）
+
+**正确示例**：
+```json
+{
+  "code": "L05",
+  "title": "Prompt Engineering — 四要素",
+  "type": "Video",
+  "duration": 120,
+  "description": "Prompt = 新的编程语言..."
+},
+{
+  "code": "L06",
+  "title": "Lab: Clear Task",
+  "type": "InteractiveLab",
+  "isLive": false,
+  "isInteractiveLab": true,
+  "interactiveLabType": "prompt",
+  "interactiveLabSlug": "clear-task",
+  "duration": 30,
+  "description": "Prompt 实验：把一个模糊需求改造成四要素 Prompt。在浏览器内完成实操练习，即时验证结果。",
+  "labs": [{"source": "prompt-lab", "slug": "clear-task"}]
+},
+{
+  "code": "L07",
+  "title": "Lab: Constraints",
+  "type": "InteractiveLab",
+  ...
+}
+```
+
+**为什么这条规则必须严守**：
+1. **学员视角** — 学员看到的是 lesson 列表，Lab 塞在别的 lesson 里学员根本找不到
+2. **产品结构** — production 后端 Lesson schema 有 `InteractiveLab` type，和 Video/Info 平级
+3. **进度追踪** — 每个 lesson 有独立的完成状态，Lab 是 step 的话没法单独追踪
+4. **灵活重排** — Lab 独立了才能单独删/加/移动
+5. **已引用 = 已承诺** — 写进大纲的 Lab 是告诉学员"这节课你会做这个练习"，必须作为 lesson 存在
+
+参考实现：`curriculum/ai-engineer-bootcamp/public/outline.json` 里每个 python-lab / aws-lab 都是独立 InteractiveLab lesson。
 
 ### 多通道学习：围绕学习目标，不围绕直播课
 
