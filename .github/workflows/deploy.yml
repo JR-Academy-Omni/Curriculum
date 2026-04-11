@@ -64,6 +64,19 @@ jobs:
             cp -r vibe-coding-bootcamp/public/* _site/vibe-coding-bootcamp/
           fi
 
+          # full-stack-developer-interview: data-only (outline.json used by skills-data sync),
+          # HTML pages will land later. Deployed so outline.json + any future pages are live.
+          if [ -d full-stack-developer-interview/public ]; then
+            mkdir -p _site/full-stack-developer-interview
+            cp -r full-stack-developer-interview/public/* _site/full-stack-developer-interview/
+          fi
+
+          # it-career-support: static HTML only
+          if [ -d it-career-support/public ]; then
+            mkdir -p _site/it-career-support
+            cp -r it-career-support/public/* _site/it-career-support/
+          fi
+
           mkdir -p _site/ai-engineer-bootcamp
           cp -r ai-engineer-bootcamp/dist/* _site/ai-engineer-bootcamp/
           cp ai-engineer-bootcamp/public/curriculum.html _site/ai-engineer-bootcamp/

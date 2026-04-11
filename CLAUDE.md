@@ -212,10 +212,28 @@ To control which pages appear: edit `curriculumPages` in `outline.json`, not `pa
 
 ## Adding a New Bootcamp
 
-1. Copy an existing bootcamp directory
-2. Update `vite.config.ts` — set `base` to `/curriculum/<new-name>/`
-3. Add build + copy steps in `deploy.yml`
-4. Add a card to the index page HTML in `deploy.yml`'s "Assemble output" step
+### 🚨 强制规则：新课目录 → 必须接入 deploy.yml
+
+**只要在 `curriculum/` 下新增一个课程目录（哪怕只有 `public/outline.json` 一个文件），就必须同步更新 `.github/workflows/deploy.yml` 的 Assemble 步骤**，否则：
+
+- 部署跳过这个目录 → 线上 `/curriculum/<slug>/` 永远是 404
+- Frontend 前端组件（`IntroduceSyllabus` 等）拿不到 `pages.json` → "📋 详细课程大纲" iframe 显示空白
+- `outline.json` 改了也不会生效，因为根本没部署到服务器
+- 后面的人需要靠翻历史工单才能发现这个坑
+
+**验收标准**: 新增课程的 PR 必须同时修改 `deploy.yml`，且部署成功后 `curl https://jiangren.com.au/curriculum/<slug>/` 能拿到正确响应。
+
+### 步骤
+
+1. 在 `curriculum/` 下创建课程目录（至少要有 `public/outline.json`）
+2. 如果是 React SlideDeck 课程，还需要：
+   - 复制一个已有 bootcamp 作为模板
+   - 更新 `vite.config.ts` — 设置 `base: '/curriculum/<new-name>/'`
+   - 在 `deploy.yml` 里加一个 `Build <new-name>` 步骤
+3. **🔴 必做**：在 `deploy.yml` 的 "Assemble output" 步骤里加 cp 块 —— 纯静态 HTML 课程用 `cp -r <slug>/public/* _site/<slug>/` 最简单；混合 React + 静态 HTML 的课程参考 `ai-adoption-bootcamp` / `ai-engineer-bootcamp` 的逐文件 cp 模式
+4. **🔴 必做**：在 `outline.json` 里填好 `curriculumPages` 字段（pages + defaultPage），Generate pages.json 步骤会自动据此生成 `pages.json` 供前端 iframe 使用
+5. 在 `deploy.yml` 里的 index page HTML 加一张卡片链接到这个课程（方便 `/curriculum/` 首页导航）
+6. push 后用 `gh run watch` 确认 Assemble / Generate pages.json 两个步骤都有处理到这个 slug
 
 ---
 
