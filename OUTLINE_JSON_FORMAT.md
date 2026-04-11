@@ -13,7 +13,7 @@
   "name_en": "AI Essentials Bootcamp",
   "description": "各行各业的 AI 入门实战",
   "level": "零基础",
-  "type": "bootcamp",
+  "type": "training",
   "targetAudience": "40-60 岁非技术人员",
   "totalLessons": 33,
   "totalSteps": 209,
@@ -106,7 +106,7 @@
 | `name_en` | string | | 英文课程名 |
 | `description` | string | ✅ | 课程简介 |
 | `level` | string | ✅ | `零基础` / `初级` / `中级` / `中级进阶` / `高级` |
-| `type` | string | ✅ | `bootcamp` / `training` / `workshop` |
+| `type` | string | ✅ | **必须是 `training`**。后端 API 只接受: `training`, `video`, `internship`, `mock`, `career`。⚠️ 不要写 `bootcamp`，会导致同步失败 |
 | `targetAudience` | string | | 目标受众 |
 | `totalLessons` | number | ✅ | Lesson 总数（和 phases 里的 lessons 数要一致） |
 | `totalSteps` | number | | Step 总数 |
@@ -127,6 +127,7 @@
 | `highlights_en` | string[] | | 课程亮点列表（英文） |
 | `features` | string[] | | 课程特色列表 |
 | `program` | Program | | 班次/期次配置 |
+| `curriculumPages` | CurriculumPages | | 官网课程详情页 iframe 展示的 HTML 页面配置。部署时自动生成 `pages.json`，前端动态读取，无需硬编码 |
 | `phases` | Phase[] | ✅ | 课程阶段数组 |
 
 ### Program 字段（班次配置）
@@ -140,6 +141,27 @@
 | `cohortStatus` | string | | `RECRUITING` / `ACTIVE` / `COMPLETED` |
 | `tuition` | number | | 原价（元） |
 | `promoTuition` | number | | 促销价（元） |
+
+### CurriculumPages 字段（官网 iframe 展示配置）
+
+控制课程详情页 iframe 展示哪些 HTML 页面。部署时 GitHub Actions 自动从此字段生成 `pages.json`，前端动态 fetch，**无需修改前端代码**。
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|:---:|------|
+| `pages` | string[] | ✅ | 可展示的 HTML 文件名列表，如 `["curriculum.html", "phase1.html"]` |
+| `defaultPage` | string | ✅ | 默认展示的页面（必须是 `pages` 中的值） |
+
+```json
+"curriculumPages": {
+  "pages": ["curriculum.html", "outline.html", "phase1.html", "phase2.html", "learning-plan.html"],
+  "defaultPage": "curriculum.html"
+}
+```
+
+**添加新 Bootcamp 到官网的步骤：**
+1. 在 `outline.json` 中添加 `curriculumPages` 字段
+2. 确保对应的 HTML 文件在 `public/` 目录下
+3. 部署 curriculum repo → GitHub Actions 自动生成 `pages.json` → 前端自动识别
 
 ### Phase 字段
 
