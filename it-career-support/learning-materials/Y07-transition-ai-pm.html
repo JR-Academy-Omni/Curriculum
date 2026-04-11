@@ -1,0 +1,250 @@
+<h2>学习目标</h2>
+<ul>
+	<li>理解 AI Product Manager 为什么是 2026 年最火的 hybrid role</li>
+	<li>看清技术背景转 AI PM 的天然优势 — 你比传统 PM 领先一个身位</li>
+	<li>补齐技术背景普遍缺失的 4 项技能：产品思维、用户研究、数据分析、商业模式</li>
+	<li>了解 AI PM 真实的一天长什么样（剧透：和传统 PM 完全不一样）</li>
+	<li>掌握澳洲 AI PM 薪资行情和面试怎么定位自己</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>什么是 AI PM，和传统 PM 有什么区别</h3>
+<p>传统 PM 的核心工作是："用户需求 → 产品方案 → 工程实现 → 上线迭代"。AI PM 多了一个维度：<strong>模型能力</strong>。你不仅要关心用户要什么，还要关心"当前 LLM 能做到什么程度"。这个维度让 AI PM 变成了一个非常特殊的岗位。</p>
+
+<pre><code>传统 PM                   AI PM
+--------                  -----
+确定性产品                非确定性产品（LLM 每次输出不一样）
+用户研究为核心            用户研究 + 模型评估
+A/B test 看点击率         A/B test 还要看 hallucination rate
+和工程师讨论 API          和工程师讨论 prompt + model 选型
+成本是服务器              成本是 API calls + training + inference
+质量是 bug 数             质量是 accuracy + safety + tone</code></pre>
+
+<h3>技术背景转 AI PM 的三大天然优势</h3>
+
+<h4>优势 1：你能听懂工程师在说什么</h4>
+<p>传统 PM 和工程师的典型冲突："这个需求 3 天能做完吧？" "做不完，这是分布式事务问题。" "啊？那就先做一半上线。" "你不懂，上线就是事故。"</p>
+
+<p>AI PM 尤其需要技术背景。当工程师说"这个需求我们现在的模型做不到"，你要能判断：</p>
+<ul>
+	<li>是真的做不到（超出模型能力边界）？</li>
+	<li>还是 prompt 写得不够好？</li>
+	<li>还是应该换个模型（GPT-4 → Claude）？</li>
+	<li>还是应该用 RAG 而不是直接 prompt？</li>
+</ul>
+
+<p>没有技术背景的 PM 只能被工程师"PUA"，你有技术背景可以直接 push back：<strong>"你先试试 few-shot prompting 再说做不到。"</strong></p>
+
+<h4>优势 2：你能做 prompt 级别的产品决策</h4>
+<p>AI 产品的核心不是功能，是 prompt 的质量。传统 PM 写 PRD 最多到"用户点击按钮，系统返回推荐"。AI PM 写 PRD 要细到：</p>
+<ul>
+	<li>system prompt 长什么样</li>
+	<li>few-shot examples 用哪几个</li>
+	<li>什么情况下走 RAG、什么时候纯 LLM</li>
+	<li>temperature 设多少、max tokens 是多少</li>
+	<li>边界情况怎么 fallback（比如用户问敏感问题）</li>
+</ul>
+
+<p>这些决策<strong>不写代码的 PM 根本做不了</strong>。你的技术背景让你可以亲手调 prompt、跑 eval、给工程师一个"这个 prompt 已经能达到 85% accuracy"的起点。</p>
+
+<h4>优势 3：你理解模型能力的边界</h4>
+<p>这是最关键的优势。传统 PM 转 AI PM 最容易踩的坑是<strong>把 LLM 当魔法</strong>，提需求时说"让 AI 自动生成完美的简历"。工程师头大，因为"完美"是个没法量化的词。</p>
+
+<p>有技术背景的你知道：</p>
+<ul>
+	<li>LLM 在长文本（10K+ tokens）里容易忘记中间内容 — lost in the middle 问题</li>
+	<li>LLM 对数字计算不擅长，需要 function calling / code interpreter</li>
+	<li>LLM 的"创造力"和"事实准确性"是 trade-off（temperature 越高越有创意越会编）</li>
+	<li>RAG 不是银弹，检索不到就是不到，再好的 prompt 也没用</li>
+</ul>
+
+<p>你在写 PRD 的时候就能避开这些陷阱，给出"工程师看了觉得这 PM 靠谱"的方案。</p>
+
+<h3>需要补齐的 4 项技能（技术背景普遍没有的）</h3>
+
+<h4>技能 1：产品思维</h4>
+<p>产品思维的核心是"从用户问题出发"，不是"从技术方案出发"。工程师习惯先想"我能做什么"，PM 必须先想"用户为什么痛"。</p>
+<ul>
+	<li>学 Marty Cagan 的 <em>Inspired</em>（产品经理圣经）</li>
+	<li>理解 JTBD（Jobs To Be Done）框架</li>
+	<li>练习写 one-pager PRD（一页纸描述一个产品需求）</li>
+	<li>练习画 user journey map</li>
+</ul>
+
+<h4>技能 2：用户研究</h4>
+<p>你可能从来没做过用户访谈。学一下：</p>
+<ul>
+	<li>怎么设计开放问题（不是"你喜欢这个产品吗"，是"上次你用这类产品遇到什么问题"）</li>
+	<li>5 Whys 追问法</li>
+	<li>怎么做 usability testing（观察用户操作，不要引导）</li>
+	<li>AI PM 特有的：收集用户的 LLM 对话 log 做分析，找 pattern</li>
+</ul>
+
+<h4>技能 3：数据分析</h4>
+<p>这对技术背景来说不难，但要换思路。你不是在分析系统性能指标（QPS、latency），是在分析用户行为指标：</p>
+<ul>
+	<li>DAU / WAU / MAU 和 retention curve</li>
+	<li>Funnel 分析（用户从注册到付费每一步掉多少）</li>
+	<li>Cohort 分析</li>
+	<li>AI PM 特有的：prompt hit rate、hallucination rate、user satisfaction rating 的归因分析</li>
+</ul>
+
+<p>工具：SQL（基础）+ Mixpanel/Amplitude（事件跟踪）+ Metabase（看板）。</p>
+
+<h4>技能 4：商业模式</h4>
+<p>工程师最弱的一环。你要理解：</p>
+<ul>
+	<li>CAC（获客成本）、LTV（用户终身价值）、payback period</li>
+	<li>AI 产品特有的成本结构：API calls 贵，每个用户调用越多越亏</li>
+	<li>定价模型：freemium、seat-based、usage-based、credit system</li>
+	<li>AI 产品的护城河：data flywheel、微调模型、工作流深度、网络效应</li>
+</ul>
+
+<p>推荐读物：<em>The Lean Startup</em>、<em>Crossing the Chasm</em>、a16z 和 Sequoia 的 AI 产品 blog。</p>
+
+<h3>AI PM 真实的一天（某澳洲 AI startup，Senior AI PM）</h3>
+
+<pre><code>9:00  - 检查昨晚的 user feedback（Intercom）和 error logs（Sentry）
+9:15  - 看 LangSmith 的 prompt trace，确认昨天 deploy 的新 prompt 没退化
+9:45  - 和 ML engineer 站会，讨论为什么 accuracy 从 87% 掉到 82%
+10:30 - 用户访谈（Google Meet），一个 beta 用户 30 分钟
+11:15 - 写访谈 notes，提炼 3 个 insight
+11:45 - 调 prompt，跑 eval set（10 个 test case）
+12:30 - 午餐 + Slack
+13:30 - 和 design 对齐下个版本的 UI，争论一个 feedback button 的位置
+14:00 - 写 PRD 第二版，明天给 tech lead review
+15:00 - Sales team 带来一个企业客户需求，讨论要不要做
+15:30 - 看 Amplitude dashboard，这周 retention 又降了 2pp
+16:00 - 和 CEO 1-on-1，讨论下季度 roadmap
+16:30 - 写 weekly update，发给团队
+17:00 - 跑 10 个新 prompt variation，看 eval 结果
+17:30 - 下班，晚上继续读一篇关于 RAG re-ranking 的论文
+
+时间分配:
+- 1/3 和模型：跑 eval、调 prompt、看 trace、读论文
+- 1/3 和用户：访谈、看 feedback、分析行为数据
+- 1/3 和团队：站会、写 PRD、和 design/eng 对齐、向上汇报</code></pre>
+
+<p>和传统 PM 差别最大的就是"1/3 和模型"这部分 — 传统 PM 一整天都在开会和写文档，不会亲手跑 eval。</p>
+
+<h3>澳洲 AI PM 薪资行情（2026）</h3>
+
+<pre><code>Junior AI PM          AU$100K - $140K
+AI PM                 AU$140K - $180K
+Senior AI PM          AU$180K - $230K
+Principal / GPM       AU$230K - $310K
+
+Startup 会给股票，大厂（Atlassian / Canva / Envato）会给 RSU。
+AI-native 初创（Harvey、Glean 类型）在澳洲稀少，但 remote offer 的美国公司起薪可以到 USD$180K。</code></pre>
+
+<h2>操作步骤</h2>
+
+<h3>第一步：补齐知识空白（1–2 个月）</h3>
+<p>从下面 4 本书里至少读 2 本：</p>
+<ul>
+	<li><em>Inspired</em> by Marty Cagan — 产品思维入门</li>
+	<li><em>The Lean Startup</em> by Eric Ries — MVP 和迭代</li>
+	<li><em>Hooked</em> by Nir Eyal — 用户习惯养成</li>
+	<li><em>Continuous Discovery Habits</em> by Teresa Torres — 用户研究实操</li>
+</ul>
+
+<h3>第二步：建立 AI 产品作品集</h3>
+<p>光有技术 side project 不够，你需要有"产品思维"的证据：</p>
+<ul>
+	<li>挑一个你已有的 AI side project（比如 RAG 问答机器人）</li>
+	<li>写一份完整的 PRD：问题定义、用户画像、竞品分析、MVP scope、成功指标</li>
+	<li>做 5 个真实用户访谈（朋友、同事都行），整理 insight 报告</li>
+	<li>定义 3 个核心指标 + dashboard 草图</li>
+	<li>写一篇博客："我是怎么从 0 到 1 做这个 AI 产品的"</li>
+</ul>
+
+<p>面试时拿出这一套材料，HR 会觉得你"已经像个 PM 在思考了"。</p>
+
+<h3>第三步：在现岗位找 AI PM 的"味道"</h3>
+<p>不用马上跳槽。在现岗位做这些事：</p>
+<ul>
+	<li>如果公司有 AI 项目，主动要求参与 prompt 设计和效果评估</li>
+	<li>写一份"我们的 AI feature 现状 + 优化建议" 提交给管理层</li>
+	<li>参加产品会议（即使你是工程师），主动提用户视角的问题</li>
+</ul>
+
+<p>很多公司的 AI PM 是内部转岗出来的 — 工程师主动承担了产品职责，被看到之后顺势转过去。</p>
+
+<h3>第四步：面试定位和话术</h3>
+<p>面 AI PM 岗位时，你的卖点不是"我会写代码"，而是 <strong>"我是懂 AI 技术的产品人"</strong>。差别很大。</p>
+
+<p>好的自我介绍模板：</p>
+<blockquote>
+<p>"我是 X 年经验的软件工程师，过去 2 年一直在做 AI 相关的项目，从 RAG 到 Agent 都做过。我发现自己越来越多地在思考'这个功能用户真的会用吗'、'我们定义的成功指标对吗'，所以我开始系统学习产品管理。我的技术背景让我在 prompt 工程、模型选型、成本控制上可以直接和工程师深入讨论，同时我也在有意识地补齐用户研究和商业模式的短板。我想找的岗位是那种需要'既懂 AI 又懂产品'的位置。"</p>
+</blockquote>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：写一份 AI 产品的 one-pager PRD</h3>
+<p>挑一个你日常会用的 AI 产品（ChatGPT、Cursor、Perplexity、Notion AI），假装你是它的 PM，写一份 one-pager：</p>
+<ul>
+	<li><strong>Problem</strong>（1 句话）：用户的核心问题是什么</li>
+	<li><strong>User</strong>（2 句话）：主要用户是谁</li>
+	<li><strong>Solution</strong>（3 句话）：我们的方案是什么</li>
+	<li><strong>Success Metrics</strong>（3 个）：怎么衡量成功</li>
+	<li><strong>Open Questions</strong>（3 个）：你还不确定的事</li>
+</ul>
+
+<p>限制：一页 A4，不准超。这是 PM 面试常见的 assignment。</p>
+
+<h3>练习 2：做一次真实的用户访谈</h3>
+<p>找一个用 ChatGPT 的朋友，做一次 30 分钟访谈。规则：</p>
+<ul>
+	<li>只问开放问题（"告诉我你上次用 ChatGPT 是做什么" 不是 "你觉得 ChatGPT 好用吗"）</li>
+	<li>让对方讲故事，不要打断</li>
+	<li>遇到有意思的点，追问 "为什么" 至少 3 次</li>
+	<li>访谈结束后写 3 个 insight + 1 个产品机会假设</li>
+</ul>
+
+<p>做完一次你会意识到：用户访谈是一项真正的技能，不是"和朋友聊聊天"。</p>
+
+<h3>练习 3：分析一个 AI 产品的成本结构</h3>
+<p>假设你是 ChatGPT 的 PM，估算以下数据（用公开数据）：</p>
+<ul>
+	<li>每个免费用户每月消耗多少 token？</li>
+	<li>对应的 API 成本大概是多少？</li>
+	<li>付费用户的 ARPU 是多少？</li>
+	<li>免费转付费比例需要多少才能不亏？</li>
+</ul>
+
+<p>用 Google 搜数据，用 Excel 算。做完这个练习你会对"AI 产品商业模式"有本能的直觉。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q1：我现在是高级工程师，转 AI PM 会降薪吗？</h3>
+<p>短期可能会降 5–15%（因为你是 Junior/Mid PM 级别入行）。但 AI PM 的薪资曲线比 PM 更陡，2–3 年能追回来。如果你转到 AI-native startup 拿股票，中期 upside 比纯工程岗更大。</p>
+
+<h3>Q2：没有 PM 经验，HR 会不会直接筛掉？</h3>
+<p>取决于公司。大厂（Atlassian、Canva）通常要求至少 2 年 PM 经验，很难直接从工程转过去。AI-native startup 反而欢迎技术背景的人转 PM，因为他们缺的就是"懂 AI 技术的产品思维"。策略：先去 startup，做 2 年之后再跳大厂。</p>
+
+<h3>Q3：我英语不是母语，做 PM 会不会吃亏？</h3>
+<p>PM 对英语要求比工程师高，尤其是写作和开会沟通。澳洲公司的标准是能主持跨部门会议、能写清楚的 PRD。如果你的英语是"能看懂技术文档但说起来磕巴"的水平，需要先补 1–2 年的业务英语再转。</p>
+
+<h3>Q4：Product Owner 和 Product Manager 有区别吗？</h3>
+<p>有。Product Owner（PO）更偏 Scrum 角色，主要是写 user story、管 backlog，不太参与战略决策。PM 是更广义的，从战略到执行都管。很多澳洲公司会把 junior PM 叫 PO，其实做的是 PM 的事。AI PM 岗位通常直接叫 PM 或 "AI Product Manager"。</p>
+
+<h3>Q5：转 AI PM 还是转 AI Engineer？</h3>
+<p>看你更享受什么：</p>
+<ul>
+	<li><strong>喜欢独立思考、做决策、和不同人打交道</strong> → AI PM</li>
+	<li><strong>喜欢写代码、解决技术问题、看到自己的产出立刻跑起来</strong> → AI Engineer</li>
+	<li><strong>喜欢"边写边决定"、愿意两者都做一点</strong> → 去早期 startup 做 founding engineer / 产品技术双栖</li>
+</ul>
+
+<h2>小结</h2>
+<p>AI PM 是 2026 年最有上升空间的 hybrid role 之一。技术背景给你一个天然的起点，但你要接受一个事实：<strong>PM 的核心不是技术，是判断</strong>。你要学会从"这个方案能不能做"切换到"这个方案该不该做"。</p>
+
+<p>三条建议：</p>
+<ul>
+	<li><strong>别小看产品思维</strong> — 它比你想的难，读书 + 写 PRD + 真实用户访谈，至少练 6 个月</li>
+	<li><strong>别丢掉技术</strong> — AI PM 的差异化优势就是"能和工程师深度讨论"，保持每周写点代码</li>
+	<li><strong>先在现岗位做 PM 的活</strong> — 写提案、做用户调研、分析数据，主动承担才会被看到</li>
+</ul>
+
+<p>JR 平台相关资源：<code>/learn/ai-pm</code>（AI PM 完整学习路径）、<code>/learn/ai-builder/hub</code>（非技术背景的 AI 入门）、<code>/study/career-planning</code>（AI 职业规划）。把这一页加进你的学习书签，下次写 PRD 的时候回来看看。</p>

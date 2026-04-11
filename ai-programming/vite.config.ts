@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/curriculum/ai-coding-bootcamp/',
+  base: '/curriculum/ai-programming/',
   build: {
     outDir: 'dist',
   },

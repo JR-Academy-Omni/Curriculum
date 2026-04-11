@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 2 — ML 基础与 Transformer 原理 | AI Engineer 入门</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header" style="background:#10b981">
+  <h1>Part 2 — ML 基础与 Transformer 原理</h1>
+  <div class="sub">搞懂 LLM 的"里子" · L09-L17 · 9 节课 · ~9 小时</div>
+  <div class="nav">
+    <a href="curriculum.html">课程概览</a>
+    <a href="outline.html">完整大纲</a>
+    <a href="phase1.html">Part 1</a>
+    <a href="phase2.html">Part 2</a>
+    <a href="phase3.html">Part 3</a>
+    <a href="phase4.html">Part 4</a>
+  </div>
+</div>
+
+<div class="c">
+
+<div class="box">
+  <div class="box-h" style="background:#10b981"><strong>为什么要学这些"理论"？</strong></div>
+  <div style="padding:20px 24px;font-size:14px;line-height:2">
+    <p>很多人学 LLM 直接从 Prompt / RAG 开始，遇到问题就调包。这门课不这样——<strong>Part 2 是 8 小时的底层原理速通</strong>，让你知道 Transformer 为什么替代了 RNN、Embedding 到底是什么、为什么上下文窗口不能无限扩大。</p>
+    <p style="margin-top:10px">学完 Part 2 你应该能：</p>
+    <ul style="margin-left:20px;margin-top:6px">
+      <li>看懂机器学习 / 深度学习 / NLP 的基本术语，不再是黑盒</li>
+      <li>解释 Self-Attention 为什么能并行计算、为什么能抓长距离依赖</li>
+      <li>理解 Token / Embedding / Positional Encoding 的关系，知道 context window 的本质</li>
+      <li>说清楚 Encoder-only（BERT）/ Decoder-only（GPT）/ Encoder-Decoder（T5）的差异</li>
+    </ul>
+    <p style="margin-top:12px;padding:10px;background:#f0fdf4;border:2px solid #10b981"><strong>⚠️ 给没学过 ML 的朋友：</strong>这部分是普及向，只讲"直观理解 + 核心术语"，不推公式、不写反向传播。有 Python 基础就能听懂。</p>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-h" style="background:#10b981"><strong>9 节课概览</strong></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5">L09</span><h4>Structured vs Unstructured Data</h4><span class="mono" style="font-size:11px;color:#888">60min</span></div><div class="lesson-body"><div><h5>重点</h5><p>结构化（SQL / CSV / JSON）vs 非结构化（文本 / 图像 / 音频）；为什么企业 80% 数据是非结构化。</p></div><div><h5>产出</h5><p>能说清楚 LLM 擅长的数据类型</p></div><div><h5>关联</h5><p>llm-lab/data-engineering</p></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5">L10</span><h4>Introduction to Machine Learning</h4><span class="mono" style="font-size:11px;color:#888">60min</span></div><div class="lesson-body"><div><h5>重点</h5><p>ML 本质 = 从数据中学 f(x)=y；Loss Function / Gradient Descent / Overfitting。</p></div><div><h5>产出</h5><p>不再害怕看到 ML 术语</p></div><div><h5>关联</h5><p>llm-lab/ai-ml-basics</p></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5">L11</span><h4>Supervised / Unsupervised / RL</h4><span class="mono" style="font-size:11px;color:#888">60min</span></div><div class="lesson-body"><div><h5>重点</h5><p>三大学习范式对比；LLM 的 Pre-training + SFT + RLHF 三阶段分别对应哪种。</p></div><div><h5>产出</h5><p>理解 LLM 训练流程</p></div><div><h5>关联</h5><p>—</p></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5">L12</span><h4>Introduction to Deep Learning</h4><span class="mono" style="font-size:11px;color:#888">60min</span></div><div class="lesson-body"><div><h5>重点</h5><p>神经元、激活函数、反向传播的直观理解；为什么 DL 在 2012 年 AlexNet 后突然起飞。</p></div><div><h5>产出</h5><p>看懂神经网络基本结构图</p></div><div><h5>关联</h5><p>—</p></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5">L13</span><h4>Natural Language Processing (NLP)</h4><span class="mono" style="font-size:11px;color:#888">60min</span></div><div class="lesson-body"><div><h5>重点</h5><p>传统 NLP 任务全景（分词 / POS / NER / 翻译 / 问答）；LLM 如何"一招通吃"。</p></div><div><h5>产出</h5><p>理解 LLM 的通用性从何而来</p></div><div><h5>关联</h5><p>—</p></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5">L14</span><h4>Transformer and Attention</h4><span class="mono" style="font-size:11px;color:#888">60min</span></div><div class="lesson-body"><div><h5>重点</h5><p>RNN / LSTM 为什么不够用；Self-Attention 的 Q·K·V 机制与直观类比。</p></div><div><h5>产出</h5><p>看懂 "Attention is All You Need" 的核心贡献</p></div><div><h5>关联</h5><p>llm-lab/llm-concepts</p></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5">L15</span><h4>Language Models (LM)</h4><span class="mono" style="font-size:11px;color:#888">60min</span></div><div class="lesson-body"><div><h5>重点</h5><p>从 n-gram 到 GPT 的演化；Perplexity 指标；OpenAI Scaling Law。</p></div><div><h5>产出</h5><p>理解"为什么模型越大效果越好"</p></div><div><h5>关联</h5><p>—</p></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5">L16</span><h4>The Transformer Architecture</h4><span class="mono" style="font-size:11px;color:#888">60min</span></div><div class="lesson-body"><div><h5>重点</h5><p>完整拆解 Transformer 的内部结构；Encoder-only (BERT) vs Decoder-only (GPT) vs Encoder-Decoder (T5)。</p></div><div><h5>产出</h5><p>看懂 Transformer 架构图</p></div><div><h5>关联</h5><p>—</p></div></div></div>
+
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#d1fae5">L17</span><h4>Input Embeddings</h4><span class="mono" style="font-size:11px;color:#888">60min</span></div><div class="lesson-body"><div><h5>重点</h5><p>BPE 分词器、Embedding 矩阵、Positional Encoding；一个中文字 ≈ 2-3 token 的由来；context window 的本质。</p></div><div><h5>产出</h5><p>知道为什么 Token 计费重要</p></div><div><h5>关联</h5><p>—</p></div></div></div>
+</div>
+
+<div class="box" style="border-color:var(--orange)">
+  <div class="box-h" style="background:var(--orange)"><strong>➡️ 进入 Part 3</strong></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.9">
+    <p>有了底层认知，Part 3 回到实战：Prompt 的高级技巧（CoT / Self-Consistency / ReAct），以及你的第一个作品——在 OpenAI GPT Store 里发布一个真正能用的 GPT。</p>
+    <p style="margin-top:10px"><a href="phase3.html" style="padding:10px 20px;background:#FF914D;color:#fff;font-weight:700;border:2px solid #000;box-shadow:4px 4px 0 #000;display:inline-block">Part 3 — Prompt 进阶 + 第一个 GPT →</a></p>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">Part 2 · AI Engineer 入门 · JR Academy</div>
+</body>
+</html>

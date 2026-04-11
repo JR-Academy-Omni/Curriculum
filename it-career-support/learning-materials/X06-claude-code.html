@@ -1,0 +1,164 @@
+<h2>学习目标</h2>
+<ul>
+  <li>理解 Claude Code 作为 terminal-based AI pair programming 跟 Cursor 的本质区别</li>
+  <li>掌握 Claude Code 最擅长的 4 个场景：项目初始化、复杂 debug、code review、大规模重构</li>
+  <li>了解 MCP（Model Context Protocol）如何让 Claude Code 访问数据库、文件系统、API</li>
+  <li>走通一个真实的 Claude Code 工作流：从 "Build me a Next.js app" 到可运行</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>Claude Code 是什么</h3>
+<p>Claude Code 是 Anthropic 推出的 terminal-based AI 编程助手。你在命令行里跟它对话，它能读文件、写文件、跑命令、提交代码。跟 Cursor 的根本区别是交互范式：</p>
+<ul>
+  <li><strong>Cursor</strong> 在 IDE 里，你主导，AI 响应。你打开文件，选中代码，告诉它怎么改。</li>
+  <li><strong>Claude Code</strong> 在 terminal 里，你说目标，AI 主导。你说"给我搭个 Next.js + Auth 的项目"，它自己规划、建文件、跑命令、遇到错误自己修。</li>
+</ul>
+<p>类比：Cursor 像一个坐在你旁边的初级工程师，听你指令干活；Claude Code 像一个资深同事，你丢一个需求过去，他自己拆任务执行。</p>
+
+<h3>为什么要 terminal-based</h3>
+<p>第一次听的人会觉得奇怪：为什么不在 IDE 里？原因是 terminal 的权限和上下文更大：</p>
+<ul>
+  <li>直接跑 git 命令、npm install、docker build、pytest，不用切窗口</li>
+  <li>能读任意文件（不限于当前 workspace）</li>
+  <li>能访问系统工具链（aws cli、kubectl、psql）</li>
+  <li>能连接 MCP servers，扩展到数据库、API、文件系统</li>
+</ul>
+<p>对需要在多个工具之间协调的任务（"查一下 DB 里这个用户的订单，然后修复 billing bug 并跑测试"），terminal 比 IDE 高效得多。</p>
+
+<h3>最擅长的 4 个场景</h3>
+
+<h4>场景 1：项目初始化</h4>
+<p>从零开始搭一个项目最痛苦。Claude Code 一句话搞定：</p>
+<blockquote>
+<p>"Create a Next.js 14 app with TypeScript, Tailwind, next-auth using email magic link, Prisma with SQLite, and one example protected page. Set up the project in ./my-app directory."</p>
+</blockquote>
+<p>Claude Code 会：规划文件结构 → 跑 <code>create-next-app</code> → 装依赖 → 写配置 → 写第一个 page → 跑 <code>npm run build</code> 验证 → 告诉你下一步怎么做。全程 10 分钟，零样板代码手写。</p>
+
+<h4>场景 2：复杂 debug</h4>
+<p>生产 bug 最麻烦的是"不知道从哪查起"。Claude Code 的优势是能同时看代码、看日志、跑命令。</p>
+<blockquote>
+<p>"Our invoice PDF generation is failing for 10% of users. The error is 'Cannot read property toLocaleDateString of undefined'. Look at the invoice service, check recent commits, find the bug and fix it."</p>
+</blockquote>
+<p>它会读 invoice.service.ts → 读 git log → 找到可疑 commit → 定位到一个没处理 null 日期的字段 → 修改代码 → 补充 unit test → 给你 diff review。</p>
+
+<h4>场景 3：code review</h4>
+<p>你想在 push PR 前先自己 review 一遍。</p>
+<blockquote>
+<p>"Review my current changes (git diff main). Check for: (1) potential bugs (2) missing error handling (3) test coverage gaps (4) code style issues. Give me a priority-ordered list."</p>
+</blockquote>
+<p>Claude Code 会跑 <code>git diff</code>，逐文件分析，给你一个 issues 列表。通常比你自己 review 多抓到 2-3 个问题。</p>
+
+<h4>场景 4：大规模重构</h4>
+<p>"把这个 2000 行的 service 拆成 8 个专门的 service"——这种任务人做要一整天，Claude Code 半小时。</p>
+<blockquote>
+<p>"Refactor customer-lead.service.ts into specialized services following CLAUDE.md architecture rules. Create crud, query, analytics, statistics, conversion, assignment, admin, helper services. Update the main service to only do delegation. Update the module providers. Make sure all existing tests still pass."</p>
+</blockquote>
+<p>它会规划 → 创建 8 个新文件 → 把方法按职责迁移 → 更新 main service → 更新 module → 跑测试 → 修测试 → 直到全部绿。你全程只需要 review diff。</p>
+
+<h3>MCP 协议 — Claude Code 的外接大脑</h3>
+<p>MCP（Model Context Protocol）是 Anthropic 开源的标准，让 Claude Code 能连接外部工具和数据源。常用的 MCP servers：</p>
+<ul>
+  <li><strong>filesystem</strong>：读写任意目录文件</li>
+  <li><strong>postgres / mongodb</strong>：直接 query 生产/staging 数据库（查问题超有用）</li>
+  <li><strong>github</strong>：读 PR、读 issue、建 branch</li>
+  <li><strong>puppeteer</strong>：自动化浏览器操作</li>
+  <li><strong>jira</strong>：读 ticket、更新状态</li>
+  <li><strong>context7</strong>：拉取最新的第三方库文档（避免 Claude 用过时的 API 写代码）</li>
+</ul>
+<p>配置 MCP server 在 <code>~/.config/claude-code/settings.json</code>（或项目级 <code>.claude/settings.json</code>）。加一个 postgres MCP server 后，你可以直接说"查一下昨天失败的订单有多少"，Claude Code 会跑 SQL 返回结果。</p>
+
+<h3>Claude Code 什么时候不合适</h3>
+<ul>
+  <li><strong>改一行小 typo</strong>：直接在 IDE 里改更快，不值得启动对话</li>
+  <li><strong>纯 UI 微调</strong>：看 preview 边调边改，Cursor 更合适</li>
+  <li><strong>探索性学习</strong>：你想自己搞懂某个概念，AI 代做不利于你学习</li>
+</ul>
+<p>规则：<strong>任务越大、涉及文件越多、需要执行命令的越多 → Claude Code 越值；任务越小、越局限在单文件 → Cursor 或直接手写越值</strong>。</p>
+
+<h2>操作步骤</h2>
+
+<h3>安装和初始化</h3>
+<blockquote>
+<pre>
+# 安装（macOS / Linux）
+curl -fsSL https://claude.ai/install.sh | sh
+
+# 登录
+claude login
+
+# 启动
+claude
+
+# 在项目目录里启动（推荐）
+cd /path/to/project
+claude
+</pre>
+</blockquote>
+
+<h3>给项目加 CLAUDE.md</h3>
+<p>类似 Cursor 的 <code>.cursorrules</code>，Claude Code 会自动读项目根目录的 <code>CLAUDE.md</code>。把项目的技术栈、架构规则、禁止事项写进去，Claude Code 每次都会遵守。</p>
+<blockquote>
+<pre>
+# Project: my-saas-app
+
+## Stack
+- Next.js 14 (App Router)
+- Prisma + PostgreSQL
+- NextAuth v5
+- Tailwind + shadcn/ui
+
+## Rules
+- All database schema changes go through Prisma migrations
+- Use Server Components by default, Client Components only when needed
+- Never commit .env file
+- Use bun, not npm
+
+## Commands
+- Dev: bun run dev
+- Test: bun run test
+- Build: bun run build
+- Migrate: bunx prisma migrate dev
+</pre>
+</blockquote>
+
+<h3>走通一个真实工作流</h3>
+<blockquote>
+<p>用户："Build me a todo list app with Next.js, Prisma, SQLite. Must have auth via email magic link. One user can only see their own todos."<br><br>
+Claude Code:<br>
+1. "I'll break this into 5 steps: init project, set up prisma, add auth, build todo CRUD, add ownership check. Shall I proceed?"<br>
+2. [跑 create-next-app，你确认]<br>
+3. [装 prisma + next-auth，你确认]<br>
+4. [写 schema.prisma，给你看]<br>
+5. [跑 migrate，你确认]<br>
+6. [写 auth 配置，给你看]<br>
+7. [写 todo API routes + UI]<br>
+8. [跑 build 验证]<br>
+9. "Done. Run 'bun run dev' to test. Next steps I recommend: (1) add email provider credentials to .env (2) write e2e test for the login flow."</p>
+</blockquote>
+<p>每一步它都会暂停等你确认，不会偷偷跑危险命令。</p>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：从零搭一个小项目</h3>
+<p>用 Claude Code 搭一个你一直想做的小 side project。不要写一行代码，只通过对话和 review 完成。观察它在哪些地方做错、哪些地方做得超出预期。</p>
+
+<h3>练习 2：一次大型 refactor</h3>
+<p>找你项目里一个"太大想重构但一直拖"的 service 文件，让 Claude Code 按 CLAUDE.md 的架构规则拆分。全程 review diff，记录它漏掉的点。</p>
+
+<h3>练习 3：配置 MCP postgres</h3>
+<p>给 Claude Code 配置 postgres MCP server，连接你的 staging 数据库。让它帮你查一个真实业务问题（"昨天失败订单数"、"活跃用户数 trend"），体验"AI 当 DB 工具"的感觉。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q：Claude Code 跟 Cursor 只能选一个吗？</h3>
+<p>A：可以同时用，互补。日常小改动用 Cursor，大任务和命令行密集的任务用 Claude Code。规则：单文件 → Cursor；多文件 + 命令 + 长任务 → Claude Code。</p>
+
+<h3>Q：Claude Code 会不会跑危险命令（rm -rf）？</h3>
+<p>A：默认所有执行命令都会暂停让你确认。你也可以在 CLAUDE.md 里加"forbidden commands"列表（比如本项目就禁止 rm）。但最终责任在你——看到 sketchy 命令说 no。</p>
+
+<h3>Q：公司不让外部 AI 访问代码怎么办？</h3>
+<p>A：Anthropic 提供企业版 Claude Code，数据不用于训练，有审计日志，部分版本支持自托管。跟你的 security team 谈这个方案。个人学习阶段可以先用你自己的 side project 练手。</p>
+
+<h2>小结</h2>
+<p>Claude Code 是 AI pair programming 的新范式：你说目标，它拆任务执行。最擅长项目初始化、复杂 debug、code review、大规模重构这 4 个场景。MCP 协议让它能连接数据库、API、浏览器，把 AI 从"写代码"扩展到"做事"。跟 Cursor 不是替代关系而是互补——小任务用 Cursor，大任务用 Claude Code。用好的 junior 产出能摸到 senior 的边。</p>

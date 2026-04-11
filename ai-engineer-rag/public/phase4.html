@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 4 — RAG 工程实战与生产部署 | AI Engineer 入门</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header" style="background:#CB6CE6">
+  <h1>Part 4 — RAG 工程实战与生产部署</h1>
+  <div class="sub">从架构图到生产级部署 · L30-L49 · 20 节课 · ~15 小时</div>
+  <div class="nav">
+    <a href="curriculum.html">课程概览</a>
+    <a href="outline.html">完整大纲</a>
+    <a href="phase1.html">Part 1</a>
+    <a href="phase2.html">Part 2</a>
+    <a href="phase3.html">Part 3</a>
+    <a href="phase4.html">Part 4</a>
+  </div>
+</div>
+
+<div class="c">
+
+<div class="box">
+  <div class="box-h" style="background:#CB6CE6"><strong>Part 4 学完目标</strong></div>
+  <div style="padding:20px 24px;font-size:14px;line-height:2">
+    <p>Part 4 是整个课程的压轴戏，也是最长的一部分（20 节课）。之前所有的铺垫——LLM 原理、Embedding、Prompt 技巧——都是为了让你能真正<strong>动手构建一个可以上线的 RAG 应用</strong>。</p>
+    <p style="margin-top:10px">这部分会讲透 RAG 工程的方方面面：架构图 → 嵌入模型选型 → 向量数据库 → 朴素 RAG 的坑 → Advanced / Agentic / Contextual RAG → PDF 解析 → Rate Limit → 成本 → Azure 和 AWS 的云端部署。</p>
+    <p style="margin-top:10px">学完 Part 4 你应该能：</p>
+    <ul style="margin-left:20px;margin-top:6px">
+      <li>画出一个企业级 RAG 系统的架构图并解释每个组件</li>
+      <li>不用 LangChain / LlamaIndex，纯 Python 从零实现 RAG</li>
+      <li>部署一个能处理 PDF 上传的 Streamlit + Azure OpenAI RAG 应用</li>
+      <li>知道怎么算 Token 成本、怎么处理 Rate Limit、怎么选向量库</li>
+      <li>看懂 AWS Bedrock Knowledge Base 的全托管 RAG 方案</li>
+    </ul>
+  </div>
+</div>
+
+<div class="box" style="border-color:var(--purple);border-width:3px">
+  <div class="box-h" style="background:var(--purple)"><strong>🎯 两个重磅 Project</strong></div>
+  <div style="padding:20px 24px">
+    <div class="grid2">
+      <div style="padding:16px;border:2px solid #000;background:#ecfdf5">
+        <div class="mono" style="font-size:11px;color:#888">L37 · PROJECT 2</div>
+        <h4 style="font-size:16px;margin:6px 0 10px">RAG from Scratch（纯 Python）</h4>
+        <p style="font-size:13px;color:#555;line-height:1.7">不用任何 RAG 框架，直接用 OpenAI embedding API + cosine similarity + prompt 拼接。把每一行代码都搞清楚为什么要这么写。</p>
+        <p style="font-size:12px;color:#999;margin-top:12px">🎁 交付：GitHub 仓库 + 3 组真实问答截图</p>
+      </div>
+      <div style="padding:16px;border:2px solid #000;background:#f5f3ff">
+        <div class="mono" style="font-size:11px;color:#888">L45 · PROJECT 3</div>
+        <h4 style="font-size:16px;margin:6px 0 10px">PDF RAG 生产级应用</h4>
+        <p style="font-size:13px;color:#555;line-height:1.7">Streamlit + Azure OpenAI + ChromaDB 搭建支持 PDF 上传的 RAG 应用，内置 Rate Limit 退避、Token 成本监控和完整 UI。</p>
+        <p style="font-size:12px;color:#999;margin-top:12px">🎁 交付：GitHub repo + 3 分钟演示视频</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-h" style="background:#CB6CE6"><strong>20 节课分组概览</strong></div>
+
+  <div class="wk" style="background:#fdf4ff">🧭 A. RAG 基础架构（L30-L36）</div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L30</span><h4>Understanding LLMs — Capabilities, Limits & Solutions</h4></div><div class="lesson-body"><div><h5>重点</h5><p>LLM 的 4 大硬伤：上下文溢出 / 数学推理 / 知识截断 / 输出不确定——及各自的工程化对策。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L31</span><h4>RAG 基本架构</h4></div><div class="lesson-body"><div><h5>重点</h5><p>双管道架构：Ingestion（离线，跑批）+ Query（在线，实时）。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L32</span><h4>Embedding 嵌入模型</h4></div><div class="lesson-body"><div><h5>重点</h5><p>OpenAI text-embedding-3 / BGE-M3 / Cohere Embed v3 选型矩阵；MTEB 榜单是选型依据。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L33</span><h4>向量数据库</h4></div><div class="lesson-body"><div><h5>重点</h5><p>Pinecone / Qdrant / Weaviate / ChromaDB / pgvector / Milvus 的适用场景；HNSW 索引原理。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L34</span><h4>Native RAG 存在的问题</h4></div><div class="lesson-body"><div><h5>重点</h5><p>朴素 RAG 的 8 大翻车现场：召回低 / Chunk 切断语义 / 多跳失效 / 幻觉 / 答非所问 等。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L35</span><h4>Advanced RAG & Agentic RAG</h4></div><div class="lesson-body"><div><h5>重点</h5><p>Query Rewriting + Router + Self-RAG + Agentic RAG 的可控推理流程。</p></div><div><h5>Lab</h5><p>llm-lab/agentic-rag</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L36</span><h4>Contextual RAG</h4></div><div class="lesson-body"><div><h5>重点</h5><p>Anthropic 2024 方法：为每个 chunk 生成上下文描述一起 embed，检索失败率 -49%。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+
+  <div class="wk" style="background:#ecfdf5">🔨 B. Project 2：从零写 RAG（L37-L39）</div>
+  <div class="lesson" style="border-color:var(--purple);border-width:3px"><div class="lesson-head" style="background:#f5f3ff"><span class="pill" style="background:#c4b5fd">L37 PROJECT 2</span><h4>Build RAG from Scratch in Python</h4></div><div class="lesson-body"><div><h5>交付物</h5><p>GitHub 仓库 + 3 组真实问答</p></div><div><h5>Lab</h5><p>llm-lab/rag-from-scratch</p></div><div><h5>时间</h5><p>120 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L38</span><h4>RAG Builder Toolbox</h4></div><div class="lesson-body"><div><h5>重点</h5><p>LangChain / LlamaIndex / Haystack / Cohere Chat 对比与选型。</p></div><div><h5>Lab</h5><p>llm-lab/llm-tooling</p></div><div><h5>时间</h5><p>60 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L39</span><h4>AI Resource Hub</h4></div><div class="lesson-body"><div><h5>重点</h5><p>HuggingFace / Papers with Code / LMSYS Arena / The Batch 等必备信息源。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>60 min</p></div></div></div>
+
+  <div class="wk" style="background:#fef2f2">🚦 C. Rate Limit + 成本 + PDF 实战（L40-L44）</div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L40</span><h4>OpenAI API Rate Limits</h4></div><div class="lesson-body"><div><h5>重点</h5><p>RPM / TPM / RPD / Batch；Tier 1-5 升级规则；退避算法。</p></div><div><h5>Lab</h5><p>prompt-lab/cost-optimization</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L41</span><h4>Azure OpenAI — Quotas & PTUs</h4></div><div class="lesson-body"><div><h5>重点</h5><p>Standard vs PTU；Region 可用性差异；企业部署的坑。</p></div><div><h5>Learn</h5><p>ai-engineer/deployment-cost-optimization</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L42</span><h4>PDF Parsing</h4></div><div class="lesson-body"><div><h5>重点</h5><p>PyPDF / PDFPlumber / Unstructured / LlamaParse 对比；扫描件 OCR + GPT-4V 方案。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L43</span><h4>Invoice Processing</h4></div><div class="lesson-body"><div><h5>重点</h5><p>LLM + Vision 抽取发票结构化数据；覆盖澳洲 GST / 新加坡 GST / 日本消費税 / 美国 Sales Tax / 马来西亚 SST / 中国增值税等多国税制。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>30 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L44</span><h4>Budgeting and API Costs</h4></div><div class="lesson-body"><div><h5>重点</h5><p>Input / Output / Cached 三档价；GPT-4o 比 GPT-4 便宜 10 倍；4 大降本法（小模型分流 / Prompt Caching / Batch API / 结果缓存）。</p></div><div><h5>Lab</h5><p>llm-lab/inference-optimization</p></div><div><h5>时间</h5><p>60 min</p></div></div></div>
+
+  <div class="wk" style="background:#f5f3ff">🚀 D. Project 3 + 生产部署（L45-L49）</div>
+  <div class="lesson" style="border-color:var(--purple);border-width:3px"><div class="lesson-head" style="background:#f5f3ff"><span class="pill" style="background:#c4b5fd">L45 PROJECT 3</span><h4>Shipping a Rate-Unlimited PDF RAG App</h4></div><div class="lesson-body"><div><h5>交付物</h5><p>GitHub repo + 演示视频</p></div><div><h5>Lab</h5><p>llm-lab/rag-qa-application</p></div><div><h5>时间</h5><p>90 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L46</span><h4>End-to-End RAG Toolbox</h4></div><div class="lesson-body"><div><h5>重点</h5><p>Ingest → Embed → Store → Retrieve → Rerank → Observe 完整链路工具清单；MVP 组合推荐。</p></div><div><h5>—</h5><p>—</p></div><div><h5>时间</h5><p>60 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L47</span><h4>Introduction to LangChain</h4></div><div class="lesson-body"><div><h5>重点</h5><p>LCEL 语法 + Runnable 接口；什么时候该上 LangChain，什么时候别上。</p></div><div><h5>Learn</h5><p>ai-engineer/langchain-framework</p></div><div><h5>时间</h5><p>60 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L48</span><h4>Production RAG Toolbox</h4></div><div class="lesson-body"><div><h5>重点</h5><p>Ragas（评估）+ LangSmith / Langfuse（trace）+ GPTCache（缓存）+ Guardrails（护栏）。</p></div><div><h5>Lab</h5><p>llm-lab/llm-evaluation</p></div><div><h5>时间</h5><p>60 min</p></div></div></div>
+  <div class="lesson"><div class="lesson-head"><span class="pill" style="background:#e9d5ff">L49</span><h4>用 AWS 构建 RAG 应用</h4></div><div class="lesson-body"><div><h5>重点</h5><p>AWS Bedrock + Knowledge Base + OpenSearch Serverless + Lambda 的全托管 RAG 方案。</p></div><div><h5>Lab</h5><p>llm-lab/model-deployment</p></div><div><h5>时间</h5><p>60 min</p></div></div></div>
+</div>
+
+<div class="box" style="border-color:var(--indigo)">
+  <div class="box-h" style="background:var(--indigo)"><strong>🎓 学完之后 — 进阶方向</strong></div>
+  <div style="padding:16px 24px;font-size:13px;line-height:1.9">
+    <p>恭喜你完成 49 节课和 3 个 Project！这门课是 AI Engineer 的<strong>第一块敲门砖</strong>，接下来可以选择以下路径继续深入：</p>
+    <div class="grid2" style="margin-top:12px">
+      <div style="padding:12px;border:2px solid #000;background:#fff">
+        <strong>🚀 JR Academy AI Engineer Bootcamp（12 周）</strong>
+        <p style="font-size:12px;color:#666;margin-top:6px">含直播答疑、P3 真实项目、求职服务。从入门过渡到能上手企业 AI Engineer 岗位。</p>
+      </div>
+      <div style="padding:12px;border:2px solid #000;background:#fff">
+        <strong>🤖 Agent / MCP 深度课程</strong>
+        <p style="font-size:12px;color:#666;margin-top:6px">LangGraph / CrewAI 多智能体协作，Claude Skills + MCP Server 开发。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">Part 4 · AI Engineer 入门 · JR Academy · 课程完结 🎉</div>
+</body>
+</html>

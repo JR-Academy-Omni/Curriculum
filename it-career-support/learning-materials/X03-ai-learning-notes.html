@@ -1,0 +1,130 @@
+<h2>学习目标</h2>
+<ul>
+  <li>掌握用 Claude / ChatGPT 生成结构化学习笔记的三层 Prompt 模板</li>
+  <li>知道如何让 AI 帮你保留关键代码和数据，而不是摘要成废话</li>
+  <li>用 Obsidian + AI 搭建一个未来可搜索、可引用的个人知识库</li>
+  <li>学会给笔记打 tag 和建 link，让 3 个月后的自己还能找到这条笔记</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>为什么手写笔记会失败</h3>
+<p>看完一篇长文或视频，你会做三种事：(1) 完全不记录，一周就忘；(2) 复制粘贴一大段原文，以后也不会回看；(3) 用自己的话总结，但写着写着发现比读一遍还慢，最后放弃。</p>
+<p>AI 时代的正确做法：让 AI 当你的第一稿写手，你做编辑。AI 生成结构化草稿后，你在上面高亮、补充、修正。整个过程从 30 分钟缩到 5 分钟，而且笔记质量更高。</p>
+
+<h3>三层笔记结构</h3>
+<p>一篇好的学习笔记应该有三层，缺一不可：</p>
+<ul>
+  <li><strong>Layer 1 — 核心概念 10 条 bullet</strong>：整篇内容的骨架。3 个月后你只读这 10 条就能想起全文。</li>
+  <li><strong>Layer 2 — 关键代码/数据/命令（verbatim）</strong>：原文里不能用自己话转述的部分，比如具体 API 调用、配置文件、SQL 查询、具体数字。AI 必须 1:1 保留，不能"意译"。</li>
+  <li><strong>Layer 3 — 3 个应用场景</strong>：这个知识点在你实际工作中什么时候会用到？不想出来就说明你没真正理解。</li>
+</ul>
+<p>没有 Layer 1 你搜不到，没有 Layer 2 你用不了，没有 Layer 3 你记不住。</p>
+
+<h3>为什么必须保留原文代码</h3>
+<p>AI 最大的坑是"帮你优化"。你让它总结一篇讲 Kubernetes 的文章，它会把 <code>kubectl get pods -n default</code> 写成"使用 kubectl 命令查看 pods"。这种总结读起来很爽，但等你真用的时候发现少了一个 flag，命令跑不通。</p>
+<p>所以 Prompt 里必须明确告诉 AI："代码、命令、配置、具体数字 verbatim 保留，不要改写"。这条规则的价值比前两层加起来都高。</p>
+
+<h3>Obsidian 里的组织方式</h3>
+<p>光有笔记不够，你需要一个未来能搜到的结构。推荐这个 folder 布局：</p>
+<pre>
+vault/
+├── daily/              # 每日流水账
+├── topics/             # 深度学习笔记（按主题分）
+│   ├── backend/
+│   ├── frontend/
+│   ├── ai/
+│   └── devops/
+├── snippets/           # 可复用的代码片段
+├── people/             # 认识的人 + 1-on-1 笔记
+└── projects/           # 在做的项目
+</pre>
+<p>每篇笔记顶部必须有 YAML frontmatter：</p>
+<pre>
+---
+title: Redis TTL 机制详解
+date: 2026-04-09
+tags: [redis, cache, performance]
+source: https://redis.io/docs/...
+related: [[postgres-timezone]], [[memcached-vs-redis]]
+---
+</pre>
+<p>tags 和 related 是你 3 个月后能找到这条笔记的关键。没有 tag 的笔记等于没写。</p>
+
+<h2>操作步骤</h2>
+
+<h3>Prompt 模板：三层学习笔记生成器</h3>
+<p>把下面这段存在 Obsidian 里，命名 <code>prompts/learning-note.md</code>，每次学新东西就复制一份用。</p>
+<blockquote>
+<pre>
+你是我的学习笔记助手。我会给你一段内容（文章/视频字幕/文档），请按以下三层结构生成笔记：
+
+## Layer 1 — 核心概念（10 条 bullet）
+- 用你自己的话提炼 10 个最核心的概念或观点
+- 每条不超过 25 字
+- 按重要度排序
+
+## Layer 2 — 关键代码 / 命令 / 数据
+- 原文里的所有代码、命令、配置、具体数字、API 签名，必须 1:1 verbatim 保留
+- 不要改写、不要"优化"、不要翻译变量名
+- 每段代码下面用一行注释说明它做什么
+
+## Layer 3 — 3 个应用场景
+- 针对刚入职的 junior 工程师，列出 3 个他可能用到这个知识点的真实工作场景
+- 每个场景要具体到"什么任务 + 会怎么用"，不要写"可以用在各种地方"
+
+最后给出：
+- 3 个 tag（小写、英文、kebab-case）
+- 3 个关联主题（我可能想一起学的）
+
+下面是内容：
+---
+[把文章/字幕/文档粘贴在这里]
+</pre>
+</blockquote>
+
+<h3>实战流程：从读文章到存笔记</h3>
+<blockquote>
+<p>Step 1：在 Readwise Reader 里读完一篇文章，一键 "Copy as Markdown"<br>
+Step 2：打开 Claude.ai 或 ChatGPT，粘贴上面的 Prompt 模板 + 文章内容<br>
+Step 3：AI 生成三层结构的笔记<br>
+Step 4：肉眼检查 Layer 2 的代码有没有被"优化"——有就让 AI 重新生成，强调 verbatim<br>
+Step 5：在 Obsidian 新建 note，贴进去，手动加 frontmatter（tags, related）<br>
+Step 6：关上文章，闭眼回想 Layer 3 的 3 个场景——想不出来说明没懂，回去再读一遍</p>
+</blockquote>
+
+<h3>让笔记可搜索的 3 个技巧</h3>
+<ol>
+  <li><strong>用 tag 不用 folder</strong>：folder 只用来做大分类（backend/frontend），精细分类靠 tag。一篇笔记可以有多个 tag，但只能在一个 folder。</li>
+  <li><strong>用 [[wiki-link]] 建关联</strong>：Obsidian 最强大的地方。任何时候提到另一个主题，用 <code>[[topic-name]]</code> 建链接。一年后你会有一张自己的知识图谱。</li>
+  <li><strong>每月一次 review</strong>：月底打开 Obsidian Graph View，找"孤岛笔记"（没有任何 link 的笔记），要么补 link，要么删掉。孤岛笔记永远不会被再次读到。</li>
+</ol>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：生成第一篇 AI 笔记</h3>
+<p>挑一篇你最近读过的技术文章（或 YouTube 视频字幕），用上面的 Prompt 模板生成一篇三层结构的笔记。存到 Obsidian。检查 Layer 2 是否完整保留了代码。</p>
+
+<h3>练习 2：Prompt 调优实验</h3>
+<p>用同一篇文章，试 3 个不同的 Prompt：
+(1) "帮我总结这篇文章"
+(2) "用 bullet points 总结"
+(3) 上面的三层结构模板
+对比三个结果的可用性。你会发现第一个完全没法用，第二个能读但记不住，第三个 3 个月后还能找到。</p>
+
+<h3>练习 3：搭建你的 Obsidian vault</h3>
+<p>建一个叫 "second-brain" 的 vault，建好 5 个 folder（daily / topics / snippets / people / projects）。写第一篇 daily note 和一篇 topic note，都加上 frontmatter。用 Graph View 看一眼你的知识图谱。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q：Claude 和 ChatGPT 哪个更适合做学习笔记？</h3>
+<p>A：Claude 在长文本和结构化输出上略强，Context window 也大（200k+ tokens），适合处理长文章和视频字幕。ChatGPT 响应更快，适合短内容快速生成。两个都订也才 $40/月，当学习投资不亏。</p>
+
+<h3>Q：AI 生成的笔记经常有错误怎么办？</h3>
+<p>A：这就是为什么 Layer 2 必须 verbatim。Layer 1 和 Layer 3 是 AI 的"理解"，允许有偏差，你自己编辑修正；Layer 2 是原文事实，不允许改。如果你发现 Layer 2 有错，说明你的 Prompt 没强调好"verbatim"这个词，重新生成。</p>
+
+<h3>Q：笔记越来越多，还是找不到当初记的那条，怎么办？</h3>
+<p>A：90% 的情况是你没打 tag 或没写 related。补救：每月花 30 分钟回顾最近的笔记，给每条补 3 个 tag + 2 个 related。另外用 Obsidian 的 full-text search（Ctrl+Shift+F）直接搜关键词，比靠记忆快。</p>
+
+<h2>小结</h2>
+<p>AI 是你的学习笔记第一稿写手，不是代替你思考的工具。三层结构缺一不可：核心概念让未来的你能搜到，verbatim 代码让你真的能用，应用场景让你记得住。Obsidian + frontmatter + wiki-link 是让笔记活起来的骨架。写完笔记最后问自己一个问题："3 个月后的我会因为这条笔记受益吗？"</p>

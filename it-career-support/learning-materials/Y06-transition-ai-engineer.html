@@ -1,0 +1,216 @@
+<h2>学习目标</h2>
+<ul>
+	<li>用 6 个月的时间从普通开发者转型为 AI Engineer（真实可执行的时间表）</li>
+	<li>搞清楚"AI Engineer"到底做什么 — 不是做模型训练，是做 AI 应用</li>
+	<li>掌握转型必备的 4 项核心技术栈：ML 基础、LLM + RAG、Agent、MLOps</li>
+	<li>建立一个能放进简历的 GitHub 作品集，至少 2 个真实可跑的 AI 项目</li>
+	<li>看到真实案例：Java 后端如何在 8 个月内拿到 AI Engineer offer</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>先搞清楚：AI Engineer 不是 ML Researcher</h3>
+<p>这是最常见的误解。你不需要先读一个 PhD 才能做 AI Engineer。两者的区别：</p>
+
+<pre><code>ML Researcher           AI Engineer（2024+）
+----------------        --------------------
+训练模型                用已有模型（GPT、Claude、Llama）
+写论文                  写产品
+Python + PyTorch        Python + LangChain + TypeScript
+研究新算法              集成、优化、部署
+PhD 背景居多            全栈/后端背景居多
+薪资：类似 Staff Eng    薪资：$130K-$220K（AU）</code></pre>
+
+<p>2024 年之后出现的 "AI Engineer" 这个岗位，本质是<strong>把 LLM 当成一个 API 来用，构建实际产品</strong>。你的工作不是改 Transformer 的 attention head，是决定用 GPT-4 还是 Claude、怎么做 prompt、怎么做 RAG、怎么处理幻觉、怎么上线。</p>
+
+<p>这里头有 80% 是"软件工程师的活"，20% 是"AI 特有的活"。如果你已经是一个 3+ 年经验的开发者，转型门槛比你想象的低。</p>
+
+<h3>6 个月转型路径（基于 10+ 真实案例整理）</h3>
+
+<h4>Month 1–2：ML 基础（只学必须的，不要陷进去）</h4>
+<p>很多人转型失败，是因为花 6 个月啃 Andrew Ng 的 Machine Learning Specialization，然后把数学公式全忘了，转身发现还没开始写 LLM 应用。</p>
+
+<p>你需要学的是"够用的 ML"：</p>
+<ul>
+	<li>Andrew Ng 的 <em>Machine Learning Specialization</em>（Coursera）— 只看前 2 门课，第 3 门可跳</li>
+	<li>理解 supervised/unsupervised、train/test split、overfitting、evaluation metrics（accuracy, precision, recall, F1）</li>
+	<li>理解 embedding 是什么 — 这是后面 RAG 的基础</li>
+	<li>用 scikit-learn 做一个简单的分类项目（比如 Titanic 预测），跑通即可</li>
+</ul>
+
+<p>时间预算：每天 1.5 小时，周末 4 小时 = 8 周完成。<strong>不要啃完整本花书</strong>（Deep Learning by Goodfellow），那是给研究员读的。</p>
+
+<h4>Month 3：LLM + RAG（这是核心）</h4>
+<p>这是你真正要花时间的月份。目标是能独立搭一个 RAG 应用。</p>
+
+<p>学什么：</p>
+<ul>
+	<li><strong>LangChain</strong>（或者 LlamaIndex） — 学怎么用 Python 调 LLM、做 prompt template、做 chain</li>
+	<li><strong>向量数据库</strong>：Pinecone（商业）、Chroma（本地）、Weaviate、pgvector — 挑一个学就行，我推荐 Chroma 因为最简单</li>
+	<li><strong>Embedding models</strong>：OpenAI 的 text-embedding-3-small、或者开源的 BGE</li>
+	<li><strong>RAG 架构</strong>：document loader → chunk → embedding → store → retrieve → re-rank → LLM</li>
+</ul>
+
+<p>动手项目（Month 3 结束前必须完成）：</p>
+<ul>
+	<li><strong>Project 1：Personal Doc Chat</strong> — 把你所有的 Notion/Markdown 笔记 index 进向量库，做一个可以问答的 CLI 或 web 应用。200 行代码左右。</li>
+</ul>
+
+<p>参考资源：LangChain 官方文档的 "RAG" 教程、JR Academy 的 rag-roadmap、<code>/learn/ai-engineer/hub</code> 章节。</p>
+
+<h4>Month 4：Agent 开发</h4>
+<p>Agent = 能调用工具的 LLM。你要让 LLM 不只是回答问题，而是能"做事"（查数据库、调 API、发邮件）。</p>
+
+<p>学什么：</p>
+<ul>
+	<li><strong>LangGraph</strong>（强烈推荐，LangChain 官方的 agent 框架） 或 <strong>CrewAI</strong>（多 agent）</li>
+	<li><strong>Function calling / Tool use</strong> — GPT-4 和 Claude 都支持</li>
+	<li><strong>ReAct 模式</strong>：Reasoning + Acting 循环</li>
+	<li><strong>MCP（Model Context Protocol）</strong> — 2024 年底 Anthropic 推的标准，未来会火</li>
+</ul>
+
+<p>动手项目：</p>
+<ul>
+	<li><strong>Project 2：Job Hunting Agent</strong> — 一个能自动搜 LinkedIn / Seek、筛选符合你要求的职位、帮你生成 tailored cover letter 的 agent。这个项目放简历上会非常吸引人，因为它同时展示了：web scraping、LLM prompt、agent、实际业务价值。</li>
+</ul>
+
+<h4>Month 5：部署和 MLOps</h4>
+<p>很多人能本地跑通 LangChain demo，但从来没上过生产。面试官一问"你这个 app 怎么部署"就露馅。</p>
+
+<p>学什么：</p>
+<ul>
+	<li><strong>FastAPI</strong>（把你的 RAG/Agent 包装成 REST API）</li>
+	<li><strong>Docker</strong> — 把应用和依赖打包</li>
+	<li><strong>部署到云</strong>：AWS Lambda、Google Cloud Run、或 Modal（Modal 最适合 AI workload）</li>
+	<li><strong>Observability</strong>：LangSmith（看 prompt 调用链）、Helicone（看 API 费用）</li>
+	<li><strong>Evaluation</strong>：用 Ragas 评估你的 RAG quality、用 PromptFoo 做 regression testing</li>
+	<li><strong>成本控制</strong>：怎么缓存、怎么用小模型兜底、怎么 streaming 降低感知延迟</li>
+</ul>
+
+<h4>Month 6：整合 + 开源作品</h4>
+<p>这一个月不是学新东西，是<strong>把之前的东西整合成一个能看的作品</strong>。</p>
+<ul>
+	<li>选 Project 2（Job Hunting Agent）继续迭代，加上 Month 5 学的部署和监控</li>
+	<li>写一个漂亮的 README（带架构图、demo 视频、tech stack 列表）</li>
+	<li>部署到公网，给一个 live demo 链接</li>
+	<li>写一篇技术博客，讲你踩的坑（medium.com、dev.to、或者自己的 blog）</li>
+	<li>在 LinkedIn 发文章，tag #AIEngineer #RAG #LangChain</li>
+</ul>
+
+<p>作品集标准：面试官点开 GitHub，30 秒内看懂这个项目做什么、解决什么问题、用了什么技术。</p>
+
+<h3>真实案例：Marcus，Java 后端 → AI Engineer（8 个月）</h3>
+<p>背景：5 年 Spring Boot 经验，在墨尔本一家中型 fintech 做后端，年薪 AU$135K。2024 年初决定转型。</p>
+
+<p>他走的路径：</p>
+<ul>
+	<li><strong>Month 1–2</strong>：Andrew Ng 的 course + Kaggle Titanic。周末各 6 小时，平日 1 小时</li>
+	<li><strong>Month 3</strong>：LangChain + ChromaDB 搭了一个内部 Wiki 问答机器人（在公司推动，拿当 side project）— 这是关键一步，<strong>在现岗位找机会落地 AI</strong></li>
+	<li><strong>Month 4–5</strong>：在公司 Wiki 机器人基础上加了 agent 能力（查 JIRA、查 Confluence），部署到 AWS ECS</li>
+	<li><strong>Month 6–7</strong>：把项目脱敏后开源到 GitHub，拿了 200+ stars</li>
+	<li><strong>Month 8</strong>：面了 5 家，拿到 2 个 offer，最终签了一家 AI-native 初创，$160K + equity</li>
+</ul>
+
+<p>关键点：他没有辞职去脱产学习，全程在职。核心策略是<strong>把公司的项目变成学习 + 简历素材</strong>。</p>
+
+<h2>操作步骤</h2>
+
+<h3>第一步：选好工具链</h3>
+<pre><code>语言：       Python（主力） + TypeScript（Web 前端）
+框架：       LangChain 或 LlamaIndex（选一个）
+LLM Provider：OpenAI + Anthropic（都要有 API key）
+向量库：     Chroma（本地）→ Pinecone（生产）
+Agent：      LangGraph
+部署：       Modal 或 Railway（简单）/ AWS（正式）
+监控：       LangSmith
+评估：       Ragas + PromptFoo</code></pre>
+
+<h3>第二步：配置开发环境</h3>
+<pre><code># Python 环境
+python -m venv venv
+source venv/bin/activate
+pip install langchain langchain-openai langchain-anthropic chromadb
+pip install fastapi uvicorn
+
+# API keys（写进 .env，不要 commit）
+OPENAI_API_KEY=sk-xxx
+ANTHROPIC_API_KEY=sk-ant-xxx
+LANGCHAIN_API_KEY=ls__xxx  # 可选，LangSmith</code></pre>
+
+<h3>第三步：写一个 100 行的 RAG demo 作为起点</h3>
+<p>不要追求完美。先让 pipeline 跑通：加载文档 → 切块 → embedding → 存 Chroma → 检索 → 丢给 GPT。跑通之后再逐步优化 chunk size、retrieval 数量、re-ranker 等。</p>
+
+<h3>第四步：每周写一篇"学习日志"</h3>
+<p>放在 GitHub 上或者 blog 上。记录这周学了什么、踩了什么坑、怎么解决的。到面试时这个日志本身就是你学习能力的证明。</p>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：评估你的起点</h3>
+<p>给自己打分，每项 0–5 分：</p>
+<ul>
+	<li>Python 熟练度（能独立写 Flask/FastAPI 是 4 分）</li>
+	<li>机器学习基础（听说过 gradient descent 是 1 分，能自己写 logistic regression 是 4 分）</li>
+	<li>REST API 设计</li>
+	<li>Docker / 部署</li>
+	<li>Git / 开源协作</li>
+</ul>
+
+<p>如果总分 &lt; 10，你要先补软件工程基础（别急着学 AI）。10–15 分是转型的甜蜜区，15+ 是可以 3 个月速成。</p>
+
+<h3>练习 2：Week 1 任务 — 跑通你的第一个 LLM 调用</h3>
+<p>不用任何框架，纯用 OpenAI Python SDK：</p>
+<pre><code>from openai import OpenAI
+client = OpenAI()
+
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[
+        {"role": "system", "content": "你是一个简历优化助手。"},
+        {"role": "user", "content": "帮我把这条经历改得更 impact-driven：我在公司写代码。"}
+    ]
+)
+print(response.choices[0].message.content)</code></pre>
+<p>跑通这段代码 = 你已经是 AI Engineer 的 Day 1 了。</p>
+
+<h3>练习 3：选一个 side project</h3>
+<p>从下面 5 个里选 1 个，就当你接下来 6 个月的主线任务：</p>
+<ul>
+	<li><strong>个人财务助手</strong> — 上传银行流水 CSV，AI 分析消费习惯、给预算建议</li>
+	<li><strong>Code Review Bot</strong> — 给 GitHub PR 自动写 review comment（用 GitHub Action）</li>
+	<li><strong>学习笔记 RAG</strong> — 你所有的 Markdown 笔记变成可问答的 AI tutor</li>
+	<li><strong>求职 Agent</strong> — 自动爬职位、筛选、生成 cover letter</li>
+	<li><strong>新闻摘要 Agent</strong> — 每天早晨发一封你关心领域的新闻摘要邮件</li>
+</ul>
+
+<p>挑一个你自己会真正用的（这很重要，自己不用的产品做不出细节）。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q1：我数学不好，能做 AI Engineer 吗？</h3>
+<p>能。AI Engineer 需要的数学是"理解 embedding 是向量、cosine similarity 是两个向量的夹角"这种程度，高中水平就够了。真正需要深数学的是 ML Researcher 和 ML Engineer（模型训练方向）。如果你的目标是做 LLM 应用，数学不是 blocker。</p>
+
+<h3>Q2：必须从 Python 开始吗？我是 JavaScript / TypeScript 出身</h3>
+<p>不必须。LangChain 有 TypeScript 版本（LangChain.js），生态略小但够用。很多 AI startups 的前后端都是 TypeScript 的。不过如果你要做 ML 相关的东西（哪怕只是调 HuggingFace），Python 还是绕不开。建议主力 TypeScript + 会用 Python 脚本。</p>
+
+<h3>Q3：6 个月够吗？我没有那么多时间</h3>
+<p>6 个月是<strong>在职 + 业余时间</strong>的预算（每天 1.5 小时 + 周末）。如果你每天只有 30 分钟，可能需要 12 个月。脱产学 2–3 个月足够拿到面试，但不建议辞职 — 在职学习有个巨大优势就是你可以把公司项目变成学习素材。</p>
+
+<h3>Q4：大厂 AI Engineer 和 startup 有什么区别？</h3>
+<p>大厂（Google、Meta、Microsoft）的 AI Engineer 更像"集成工程师"，你的工作是把 AI 能力集成到已有产品，接触的基础设施很成熟。Startup 的 AI Engineer 更像"全栈 + AI"，从 prompt 到部署一个人搞定。前者稳定、工资略低、技术深度有限；后者高强度、成长快、股票有想象空间。</p>
+
+<h3>Q5：不会训练模型影响面试吗？</h3>
+<p>除非你面的是"ML Engineer - Training"这种岗，否则不影响。面试 AI Engineer 考的是：Prompt 能力、RAG 架构、Agent 设计、系统可靠性（幻觉怎么办、token 成本怎么控、延迟怎么优化）、实际产品思维。能够从头训练一个 Transformer 在 AI Engineer 面试里几乎不考。</p>
+
+<h2>小结</h2>
+<p>转型 AI Engineer 没有你想的那么难，但也不是"学个 LangChain 就能转"。核心公式是：</p>
+
+<p><strong>扎实的软件工程基础 + 够用的 ML 知识 + 真实可跑的 AI 项目 + 能讲清楚的技术博客 = AI Engineer offer</strong></p>
+
+<p>6 个月时间表只是参考，每个人起点不一样。记住三件事：</p>
+<ul>
+	<li><strong>不要陷进 ML 理论</strong> — 你是做产品的，不是写论文的</li>
+	<li><strong>必须有 side project</strong> — 没有 GitHub 链接的简历在 AI Engineer 面试里根本过不了 recruiter 这关</li>
+	<li><strong>边学边落地</strong> — 能在现岗位推动 AI 项目是最高 ROI 的学习方式，还顺便给公司创造了价值</li>
+</ul>
+
+<p>JR 平台相关资源：<code>/learn/ai-engineer/hub</code>（完整学习路径）、<code>/roadmaps</code> 里的 ai-engineer / ml-roadmap / rag-roadmap、<code>/study-center?tab=learn</code> 下的 Prompt 实验室。从今天开始，每天写一行 LangChain 代码，6 个月后回头看你会感谢自己。</p>

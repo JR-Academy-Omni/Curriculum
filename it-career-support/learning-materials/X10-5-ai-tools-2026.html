@@ -1,0 +1,199 @@
+<h2>学习目标</h2>
+<p>这一节的标准很高：不是让你"听说过"这 5 个工具，而是要你"能给团队 onboarding 这些工具"。两者的区别是：</p>
+<ul>
+  <li>"听说过"：知道工具名字，用过 demo</li>
+  <li>"能 onboarding"：知道它的最佳实践、常见坑、和其他工具的配合方式、怎么向管理层解释价值</li>
+</ul>
+<p>2026 年一个合格的 IT 从业者，这 5 个工具应该像 Git 一样熟练——不是炫技，是基本功。</p>
+
+<h2>核心概念</h2>
+<h3>为什么是这 5 个而不是别的</h3>
+<p>市面上 AI 工具有几百个，为什么单独挑这 5 个？筛选标准有三条：</p>
+<ol>
+  <li><strong>覆盖高频工作场景</strong>：写代码、搜信息、读文档、做原型——这是技术人 80% 的时间花费</li>
+  <li><strong>工具间有协同效应</strong>：单独用每个都有用，组合起来产生 1+1&gt;2 的效果</li>
+  <li><strong>已经进入企业主流</strong>：不是实验室产品，是 Atlassian、Canva、Stripe 这种级别公司正在大规模部署的</li>
+</ol>
+<p>五个工具的分工：Cursor 管写代码，Claude Code 管重构大项目，Perplexity 管搜索和调研，NotebookLM 管私有知识库，v0/bolt 管从 0 到 1 出 UI。</p>
+
+<h2>操作步骤</h2>
+<h3>工具 1：Cursor — 日常编码主力</h3>
+<p><strong>定位</strong>：VS Code 的 AI 原生分叉，替代你的 IDE。不是"装一个插件"，是"换一个编辑器"。</p>
+<p><strong>学习路径（2 周掌握）</strong>：</p>
+<ul>
+  <li>Day 1-2：装上、配置 .cursorrules、熟悉 Cmd+K（inline edit）和 Cmd+L（chat）</li>
+  <li>Day 3-5：用 Agent 模式让它自己跑多文件改动</li>
+  <li>Day 6-10：学会用 @file @folder @docs 精确控制 context</li>
+  <li>Day 11-14：写一份你自己的 .cursorrules 模板</li>
+</ul>
+<p><strong>最重要的技巧</strong>：<code>.cursorrules</code> 文件。这是很多人没用对的地方。放在项目根目录，内容示例：</p>
+<pre><code># .cursorrules
+
+## Project Context
+This is a NestJS backend for an education platform.
+Always follow existing patterns from src/modules/user/.
+
+## Code Style
+- Use TypeScript strict mode
+- Interface names start with I (IUserProps)
+- Enum names start with E (EUserRole)
+- Max file length: 600 lines, split services if larger
+
+## Forbidden
+- Never use `any` type
+- Never commit .env files
+- Never use MUI/antd in frontend
+
+## Testing
+- Every new service method needs a unit test
+- Use jest, not vitest
+- Mock external APIs with jest.fn()</code></pre>
+<p><strong>常见坑</strong>：</p>
+<ul>
+  <li>把 Cursor 当成 VS Code 用，只用补全——浪费 80% 能力</li>
+  <li>Context 不加 <code>@file</code>，让 AI 猜，质量参差不齐</li>
+  <li>Agent 模式让它跑太久不 review，一次改 30 个文件全是错</li>
+</ul>
+<p><strong>和其他工具的配合</strong>：Cursor 写初稿 → Claude Code 做大规模重构 → Perplexity 查第三方库的最新文档</p>
+
+<h3>工具 2：Claude Code — AI Pair Programmer</h3>
+<p><strong>定位</strong>：Terminal 里跑的 AI agent，擅长"跨越多个文件的大改动"。Cursor 适合你知道要改哪里，Claude Code 适合你说"这个 feature 需要改动整个 auth 模块"这种全局任务。</p>
+<p><strong>学习路径</strong>：</p>
+<ul>
+  <li>Day 1：<code>npm i -g @anthropic-ai/claude-code</code>，在一个小项目里跑一遍</li>
+  <li>Day 2-3：学会写 CLAUDE.md 项目上下文文件（类似 .cursorrules）</li>
+  <li>Day 4-7：用它做一次真实重构，比如"把 callbacks 全部改成 async/await"</li>
+  <li>Day 8-14：学会 Skills 系统和 slash commands</li>
+</ul>
+<p><strong>最重要的技巧</strong>：写一份好的 CLAUDE.md。它是项目的"使用说明书"，Claude Code 每次启动都会读。这份文件应该包括：</p>
+<pre><code># CLAUDE.md
+
+## 快速上手
+- bun install
+- bun run dev (port 3010)
+
+## 项目结构
+- src/modules/ 每个业务模块一个目录
+- src/common/ 公共工具和装饰器
+- src/models/ Mongoose schema
+
+## 禁止事项
+- 不要用 rm 命令
+- 不要直接改 production DB
+- 不要引入新的 UI 库
+
+## 命令
+- bun run test: 运行测试
+- bun run lint: ESLint 检查
+- bun run build: 生产构建</code></pre>
+<p><strong>常见坑</strong>：</p>
+<ul>
+  <li>让它自己跑 30 分钟不 review——发现写了 500 行烂代码</li>
+  <li>没有 CLAUDE.md，每次都要重新解释项目——浪费 context window</li>
+  <li>忘了它是命令行工具，不是 chat——不要输入 "你好" 这种闲聊</li>
+</ul>
+
+<h3>工具 3：Perplexity — AI 搜索替代 Google</h3>
+<p><strong>定位</strong>：Google + ChatGPT 的合体。你问一个技术问题，它从几十个网页里提取答案 + 给你可点击的来源链接。</p>
+<p><strong>学习路径（3 天）</strong>：</p>
+<ul>
+  <li>Day 1：注册 Pro，把浏览器默认搜索引擎改成 Perplexity</li>
+  <li>Day 2：学会用 Focus 模式（Academic / Reddit / YouTube / Writing）</li>
+  <li>Day 3：学会 Collections 功能——给一个项目建一个 collection 收集相关搜索</li>
+</ul>
+<p><strong>最有效的场景</strong>：</p>
+<ul>
+  <li>"X 库 Y 版本和 Z 版本的 breaking changes 是什么" — 直接给你答案 + 官方 changelog 链接</li>
+  <li>"这个错误日志在 Stack Overflow 和 GitHub issues 里的主流解法" — 抓取过滤后给你一个总结</li>
+  <li>"XX 公司 2026 年的技术栈" — 从公开招聘信息、技术博客里整合</li>
+</ul>
+<p><strong>不适合的场景</strong>：具体代码怎么写（用 Cursor），最新的发布（用 X/Twitter 或 Hacker News）</p>
+<p><strong>常见坑</strong>：</p>
+<ul>
+  <li>相信所有答案——Perplexity 也会幻觉，但因为有来源所以你能快速验证</li>
+  <li>不看来源就抄——有时候来源是一个不权威的个人博客</li>
+</ul>
+
+<h3>工具 4：NotebookLM — 私有知识库的 AI 对话</h3>
+<p><strong>定位</strong>：Google 出品的"上传 PDF / 文档 / YouTube 链接 → 让 AI 只基于这些资料回答你的问题"。和通用 ChatGPT 不同的是，它 grounded 在你的资料里，不会幻觉到外部知识。</p>
+<p><strong>学习路径（1 周）</strong>：</p>
+<ul>
+  <li>Day 1-2：上传你们公司的技术文档、架构图、runbook，试着问问题</li>
+  <li>Day 3-4：上传一本技术书（比如 Designing Data-Intensive Applications）做主题学习</li>
+  <li>Day 5-7：学会用 Audio Overview 生成"两个主持人讨论"风格的播客</li>
+</ul>
+<p><strong>最杀手锏的用法</strong>：</p>
+<ol>
+  <li>新人 onboarding：把公司所有 design doc 塞进去，让新人直接问"我们的 auth 系统是怎么做的"</li>
+  <li>技术书籍学习：一本 500 页的书 → 跟它对话 → 2 小时吸收核心概念</li>
+  <li>会议纪要归档：上传所有 sprint retrospective，然后问"过去 3 个月我们最常抱怨的是什么问题"</li>
+</ol>
+<p><strong>常见坑</strong>：</p>
+<ul>
+  <li>上传敏感文档到 Google 服务器——注意合规，PII 数据不要放</li>
+  <li>上传太多无关资料，信号被稀释</li>
+</ul>
+
+<h3>工具 5：v0 / bolt.new — AI 生成 UI</h3>
+<p><strong>定位</strong>：输入一段文字描述 → 输出一个能运行的 React/Next.js 组件（v0）或整个项目（bolt.new）。从 0 到原型的速度从天变成分钟。</p>
+<p><strong>学习路径（5 天）</strong>：</p>
+<ul>
+  <li>Day 1：v0.dev，让它生成一个 dashboard 卡片</li>
+  <li>Day 2：让它根据 Figma 截图生成 HTML + Tailwind</li>
+  <li>Day 3：bolt.new，生成一个完整的 todo app</li>
+  <li>Day 4-5：学会把 v0 输出集成到你的真实项目里</li>
+</ul>
+<p><strong>核心用法</strong>：</p>
+<ul>
+  <li>写 Prompt 时贴一张手绘草图或 Figma 截图，比文字描述准 10 倍</li>
+  <li>给具体约束："use shadcn/ui, dark mode, mobile-first"</li>
+  <li>迭代式改进：第一次生成大概齐的，再用自然语言调细节</li>
+</ul>
+<p><strong>常见坑</strong>：</p>
+<ul>
+  <li>生成的代码没考虑你项目的组件库——v0 默认用 shadcn/ui，你如果用 MUI 要手动翻译</li>
+  <li>状态管理是乱的——用它做原型可以，上生产前必须重构</li>
+  <li>不适合已经存在的大型项目做增量 UI——那是 Cursor 的活</li>
+</ul>
+
+<h3>5 个工具组合起来的 Workflow</h3>
+<p>真实的一天：你接到一个 ticket——"做一个 admin 页面，能管理 user 权限"。</p>
+<ol>
+  <li><strong>Perplexity</strong>（5 分钟）：搜 "RBAC UI best practices 2026"，快速吸收主流设计</li>
+  <li><strong>NotebookLM</strong>（5 分钟）：查一下公司内部 design doc 里已有的 user model，避免重复造轮子</li>
+  <li><strong>v0</strong>（10 分钟）：生成 admin 页面的 UI 原型</li>
+  <li><strong>Cursor</strong>（1 小时）：把 v0 输出的代码集成到你的项目，改 API 调用，处理 state</li>
+  <li><strong>Claude Code</strong>（30 分钟）：让它跑一遍 test，修 edge case，生成 changelog</li>
+</ol>
+<p>以前一个人做这个 ticket 需要 1-2 天，现在 2 小时。而且质量更高——因为每个工具都在它最擅长的事情上发挥。</p>
+
+<h2>动手练习</h2>
+<ol>
+  <li><strong>Week 1</strong>：Cursor。用它重写你最近一周写的一个真实 feature，对比前后的时间和代码质量。</li>
+  <li><strong>Week 2</strong>：Claude Code。选一个你项目里的 legacy 模块，让它做一次重构（比如 callback → async/await）。</li>
+  <li><strong>Week 3</strong>：Perplexity + NotebookLM。把一本技术书上传到 NotebookLM，同时用 Perplexity 搜相关背景，一周内吸收核心概念。</li>
+  <li><strong>Week 4</strong>：v0/bolt。做一个完全独立的小项目（比如你的个人作品集站），端到端用 AI 工具链。</li>
+</ol>
+<p><strong>进阶</strong>：把上面的"5 工具组合 workflow"用在你一个真实 ticket 上，记录每一步的时间投入。做成一篇 blog post 发到 Dev.to——这是 X9 节"建立影响力"的延伸作业。</p>
+
+<h2>常见问题</h2>
+<p><strong>Q: 我们公司只批了 Copilot，其他工具都用不了？</strong><br>
+先把 Copilot 用到极致——学会 @workspace、slash commands、chat 模式、edit 模式。然后用个人账号在业余项目里学其他工具。等你能拿出"我用 Cursor 做了 X 节省 Y 时间"的 demo，再去找 manager 申请预算。</p>
+
+<p><strong>Q: Cursor 和 Claude Code 到底有什么区别，两个都要用吗？</strong><br>
+要。分工不同：Cursor 是 IDE，适合你盯着屏幕和它 pair programming；Claude Code 是 autonomous agent，适合你扔给它一个任务去开会，回来 review 结果。两者互补。</p>
+
+<p><strong>Q: 这些工具学习成本太高，我只想用一个？</strong><br>
+那就 Cursor。覆盖 80% 的日常编码需求，其他工具可以等你工作稳定了再加。但记住一年后别人会 5 个你只会 1 个，差距是复利的。</p>
+
+<p><strong>Q: NotebookLM 和 Perplexity 不是重复了吗？</strong><br>
+不是。Perplexity 搜公开互联网，NotebookLM 搜你上传的私有资料。前者像 Google，后者像你的第二大脑。</p>
+
+<p><strong>Q: v0 生成的代码能直接上生产吗？</strong><br>
+不行。v0 是原型工具，代码里有大量 hardcode、缺乏 error handling、组件耦合。上生产前你要做三件事：(1) 用你项目的 UI 组件库重写；(2) 接真实 API；(3) 加 error boundary 和 loading state。</p>
+
+<h2>小结</h2>
+<p>2026 年的基本功清单：Git 之外，再加 Cursor + Claude Code + Perplexity + NotebookLM + v0。前两个是"怎么写代码"，中间两个是"怎么获取信息"，最后一个是"怎么从 0 到 1"。</p>
+<p>精通这 5 个工具的人和只用 Copilot 的人，生产力差距大概是 2 倍。精通 + 组合使用的人，差距更大。</p>
+<p>不要收藏这篇文章就算学会了。今天就打开 Cursor 装上，写一段真实代码，感受它和 VS Code 的区别。学 AI 工具和学任何技术一样——hands-on，没有捷径。</p>
+<p>延伸阅读：JR Academy Wiki 有关于 Cursor、Claude Code、GitHub Copilot 的详细教程，可以作为本章的补充材料。</p>

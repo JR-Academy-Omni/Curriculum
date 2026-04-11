@@ -30,9 +30,9 @@ jobs:
 
       # ai-essentials-bootcamp: static HTML only, no React build needed
 
-      # ai-coding-bootcamp: static HTML only, no React build needed
+      # ai-programming (Cursor AI 编程实战课): static HTML only, no React build needed
 
-      # vibe-coding-bootcamp: static HTML only, no React build needed
+      # ai-builder (Vibe Coding 提升班): static HTML only, no React build needed
 
       # Assemble all courses into one output
       - name: Assemble output
@@ -53,15 +53,22 @@ jobs:
           mkdir -p _site/ai-essentials-bootcamp
           cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/
 
-          # ai-coding-bootcamp / vibe-coding-bootcamp: only copy if directory exists (not yet committed)
-          if [ -d ai-coding-bootcamp/public ]; then
-            mkdir -p _site/ai-coding-bootcamp
-            cp -r ai-coding-bootcamp/public/* _site/ai-coding-bootcamp/
+          # ai-engineer-rag (AI Engineer 入门): static HTML only, no React build needed
+          if [ -d ai-engineer-rag/public ]; then
+            mkdir -p _site/ai-engineer-rag
+            cp -r ai-engineer-rag/public/* _site/ai-engineer-rag/
           fi
 
-          if [ -d vibe-coding-bootcamp/public ]; then
-            mkdir -p _site/vibe-coding-bootcamp
-            cp -r vibe-coding-bootcamp/public/* _site/vibe-coding-bootcamp/
+          # ai-programming (Cursor AI 编程实战课) / ai-builder (Vibe Coding 提升班):
+          # only copy if directory exists (not yet committed)
+          if [ -d ai-programming/public ]; then
+            mkdir -p _site/ai-programming
+            cp -r ai-programming/public/* _site/ai-programming/
+          fi
+
+          if [ -d ai-builder/public ]; then
+            mkdir -p _site/ai-builder
+            cp -r ai-builder/public/* _site/ai-builder/
           fi
 
           # full-stack-developer-interview: data-only (outline.json used by skills-data sync),
@@ -144,12 +151,12 @@ jobs:
               <div class="section">
                 <div class="section-title">AI Coding 实战课 · 5-8 周 · 零基础 Non-tech</div>
                 <div class="cards">
-                  <a href="./ai-coding-bootcamp/curriculum.html">
+                  <a href="./ai-programming/curriculum.html">
                     <span class="tag" style="background:#10b981">CURRICULUM</span>
                     <div class="title">Cursor AI 编程实战课</div>
                     <div class="desc">课程总览 — 46 课、4 Phase、零基础用 Cursor 做产品</div>
                   </a>
-                  <a href="./ai-coding-bootcamp/outline.html">
+                  <a href="./ai-programming/outline.html">
                     <span class="tag" style="background:#FF914D">OUTLINE</span>
                     <div class="title">AI Coding 完整大纲</div>
                     <div class="desc">46 课 × 138 Steps 完整序列</div>
@@ -160,12 +167,12 @@ jobs:
               <div class="section">
                 <div class="section-title">Vibe Coding 实战课 · 8 周 · For Developer</div>
                 <div class="cards">
-                  <a href="./vibe-coding-bootcamp/curriculum.html">
+                  <a href="./ai-builder/curriculum.html">
                     <span class="tag" style="background:#6366f1">CURRICULUM</span>
                     <div class="title">Claude Code + Cursor 实战课</div>
                     <div class="desc">课程总览 — 42 课、Skills/MCP/Agent/全栈</div>
                   </a>
-                  <a href="./vibe-coding-bootcamp/outline.html">
+                  <a href="./ai-builder/outline.html">
                     <span class="tag" style="background:#FF914D">OUTLINE</span>
                     <div class="title">Vibe Coding 完整大纲</div>
                     <div class="desc">42 课 × 124 Steps 完整序列</div>
@@ -221,6 +228,27 @@ jobs:
                     <span class="tag" style="background:#dc2626">INTERNAL</span>
                     <div class="title">AI Engineer 内部资料</div>
                     <div class="desc">Lab 映射、老师分工、JD 对比、Marketing 素材</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">AI Engineer 入门 · 4 周 · 视频课</div>
+                <div class="cards">
+                  <a href="./ai-engineer-rag/curriculum.html">
+                    <span class="tag" style="background:#6366f1">CURRICULUM</span>
+                    <div class="title">AI Engineer 入门</div>
+                    <div class="desc">LLM · Prompt · Embeddings · RAG — 49 节视频入门课</div>
+                  </a>
+                  <a href="./ai-engineer-rag/outline.html">
+                    <span class="tag" style="background:#FF914D">OUTLINE</span>
+                    <div class="title">AI Engineer 入门 完整大纲</div>
+                    <div class="desc">49 节课详细列表 + 3 个 Project</div>
+                  </a>
+                  <a href="./ai-engineer-rag/phase4.html">
+                    <span class="tag" style="background:#CB6CE6">PART 4</span>
+                    <div class="title">RAG 工程实战</div>
+                    <div class="desc">Part 4 — RAG 架构到生产部署全流程</div>
                   </a>
                 </div>
               </div>

@@ -1,0 +1,175 @@
+<h2>学习目标</h2>
+<p>这节不是教你怎么"用 AI"，而是教你怎么"让全团队用上 AI 并且让老板知道是你推动的"。读完之后你应该：</p>
+<ul>
+  <li>理解为什么在 2026 年，不管你是 Junior 还是 Senior，推动团队 AI 采纳都是升职最快的路径。</li>
+  <li>掌握 4 个具体战术：周分享、团队手册、workshop、ROI 计算，每一个都能下周就执行。</li>
+  <li>知道怎么在老板面前把"团队每周省 20 小时"这件事量化到具体的美元数字。</li>
+</ul>
+
+<h2>核心概念</h2>
+<h3>为什么"推动 AI 采纳"是 2026 年最稀缺的能力</h3>
+<p>看个真实数据：2025 年 Q4 Australia 的招聘市场，Senior Developer 职位是 Junior 的 4 倍，但真正会"推动团队变革"的人几乎是零。老板们手里握着一堆 GitHub Copilot、Cursor、Claude Code 的 license，但团队用得零零散散，没人带头。</p>
+<p>这就是你的机会。公司买了工具 ≠ 团队用得好。从"买了"到"用起来"之间有一个巨大的 gap，谁来填谁就获得不成比例的可见度。这个角色在硅谷有个专门的词叫 <strong>AI Champion</strong>——意思是"AI 的内部布道者 + 实践推动者"。</p>
+
+<h3>AI Champion 不是"AI 专家"</h3>
+<p>这是 Junior 最容易误解的地方。AI Champion 不需要你懂 Transformer 原理，不需要你 fine-tune 过模型。真正的 AI Champion 做的事情是：</p>
+<ul>
+  <li>发现团队里重复的、机械的工作</li>
+  <li>试验哪个 AI 工具能省时间</li>
+  <li>把经验标准化、文档化，让其他人抄作业</li>
+  <li>定期向管理层汇报 ROI</li>
+</ul>
+<p>这些工作 Junior 也能做，甚至比 Senior 做得更好——因为 Senior 太忙，Junior 有时间做实验。</p>
+
+<h3>真实案例：6 个月 P2 → P4</h3>
+<p>2025 年我认识一个在 Sydney 一家 fintech 的后端 Junior（化名 Kevin），入职半年做了三件事：(1) 每周五下午给全组演示他当周用 Cursor 做的实验；(2) 写了一份 15 页的《Team Copilot Playbook》放在 Confluence；(3) 算了一笔账：团队 8 个人，用 Copilot 之后每人每天节省 1.5 小时，按 $80/h 算，一年给公司省 $240,000。他把这个数字做成一张图发给 CTO。3 个月后他被提到 P3，再 3 个月提到 P4，跳过了"按资排辈"的常规节奏。</p>
+<p>这不是运气。他做的每一件事都是可复制的。</p>
+
+<h2>操作步骤</h2>
+<h3>战术 1：每周 AI Tip 分享（时间投入：每周 30 分钟）</h3>
+<p>在 Slack/Teams 建一个 <code>#ai-tips</code> 频道，或者在每周的 standup 末尾留 5 分钟做"AI Tip of the Week"。内容不需要高深，越接地气越好：</p>
+<pre><code>AI Tip #12 — 让 Claude 帮你写测试
+
+这周我发现一个超好用的模式：
+1. 选中一个函数
+2. 在 Cursor 里 Cmd+L 打开 Claude chat
+3. 输入："Write jest tests for this function. Cover happy path,
+   edge cases (empty input, null, max boundary), and error cases."
+4. 10 秒后你得到一份 80 分的测试
+
+我试了我们 order-service 里的 12 个 util 函数，
+平均每个函数测试从 20 分钟降到 3 分钟。
+
+踩坑：AI 会假装 mock 存在的东西，记得检查 import。</code></pre>
+<p>关键是：<strong>要有具体数字 + 具体场景 + 具体踩坑</strong>。不要写"Claude 很好用"这种废话。坚持 3 个月，你就成了团队里"那个懂 AI 的人"。</p>
+
+<h3>战术 2：写团队 AI 工具手册（时间投入：一个周末）</h3>
+<p>很多团队的问题是：每个人都在摸索，没人总结。你做的事情是把这些零散经验收集整理，写成一份《Team AI Handbook》。结构参考：</p>
+<pre><code># Our Team's AI Handbook
+
+## 1. 我们用哪些工具（以及为什么）
+- Cursor: 日常编码
+- Claude Code: 重构大型代码库
+- Perplexity: 技术调研
+- v0: 快速原型 UI
+
+## 2. 每个工具的最佳实践
+### Cursor
+- 项目根目录必须有 .cursorrules 文件（见模板）
+- 写 Prompt 的三段式：Context + Task + Constraint
+- 什么时候用 Cmd+K，什么时候用 Cmd+L
+
+## 3. 我们的 .cursorrules 模板
+[贴全文]
+
+## 4. Prompt 库（Copy-Paste Ready）
+- 生成 unit test: [Prompt]
+- Code review: [Prompt]
+- 重构 legacy 代码: [Prompt]
+- 写 design doc 初稿: [Prompt]
+
+## 5. 安全红线
+- 禁止把客户 PII 粘贴到任何 AI 工具
+- 禁止把 .env 文件内容发给 AI
+- AWS credentials 永远不要出现在 chat 里
+
+## 6. 常见问题
+[FAQ]</code></pre>
+<p>这份文档的价值不是"信息量"，是"它存在"。新人入职第一天就能找到一份本团队的 AI 最佳实践——这是 HR 和 Engineering Manager 都会注意到的事情。</p>
+
+<h3>战术 3：组织 AI Workshop（一次 90 分钟）</h3>
+<p>每个季度组织一次 90 分钟的内部 workshop。下面是一份现成的 agenda，你可以直接用：</p>
+<pre><code># AI Workshop — Q1 2026
+# Topic: 用 Cursor + Claude 提速日常工作流
+
+00:00-00:10  Opening: 为什么要做这个 workshop（给数据）
+00:10-00:25  Demo 1: 用 AI 写单元测试（现场演示）
+00:25-00:40  Demo 2: 用 AI 重构一段真实 legacy 代码
+00:40-00:55  Hands-on: 每人选一个自己项目里的函数，用 AI 写测试
+00:55-01:10  Hands-on: 每人写一个 PR 描述，让 AI 帮你润色
+01:10-01:25  Share: 每人分享一个自己的 AI 小技巧
+01:25-01:30  Next steps + 问题收集</code></pre>
+<p>Workshop 的关键是 <strong>hands-on</strong>。不要从头讲到尾，让每个人自己动手 15 分钟。人是通过"自己做出来了"才相信一件事，不是通过"别人说好"。</p>
+<p>Workshop 结束后，发一份 summary 邮件给老板，列出：(1) 出席人数；(2) 每人实际产出；(3) 收到的反馈；(4) 下一步计划。这封邮件是你升职材料里最值钱的证据之一。</p>
+
+<h3>战术 4：给老板算 AI ROI（时间投入：2 小时）</h3>
+<p>这是最重要的一步，也是 90% 的 AI Champion 忽略的一步。老板不关心你用 AI 做了什么酷炫的东西，老板关心的是数字。</p>
+<p>下面是一份 ROI 计算模板，填空式：</p>
+<pre><code># AI 工具 ROI 分析 — 2026 Q1
+
+## 基础假设
+- 团队规模：8 人
+- 平均时薪（含 overhead）：$120/h
+- 每人每周工作时间：40h
+- 每月工作日：22 天
+
+## 成本（月度）
+- Cursor Pro: $20/人 × 8 = $160
+- Claude Pro: $20/人 × 3 (只有 Senior 需要) = $60
+- Copilot Business: 不用了，用 Cursor 替代
+- 总成本: $220/月
+
+## 收益（月度）
+### 场景 1: 代码编写
+- 以前：写一个新 API endpoint 平均 4 小时
+- 现在：用 Cursor 平均 1.5 小时
+- 节省：2.5 小时 × 每人每月 20 个 endpoint × 8 人 = 400 小时
+- 价值：400 × $120 = $48,000
+
+### 场景 2: 单元测试
+- 以前：为一个函数写测试 20 分钟
+- 现在：5 分钟
+- 节省：15 分钟 × 每人每月 50 个函数 × 8 人 = 100 小时
+- 价值：$12,000
+
+### 场景 3: Code Review
+- 以前：每个 PR review 30 分钟
+- 现在：AI 先跑一遍，人 review 15 分钟
+- 节省：15 分钟 × 每人每月 30 个 PR × 8 人 = 60 小时
+- 价值：$7,200
+
+### 场景 4: 文档和 PR 描述
+- 节省估计：20 小时/月
+- 价值：$2,400
+
+## 净收益
+- 总节省：$69,600 / 月
+- 总成本：$220 / 月
+- ROI：31,536% （不是笔误）
+- 年化价值：$835,200
+
+## 风险与缓解
+- 风险 1: 代码质量下降 → 所有 AI 生成代码必须 review
+- 风险 2: 数据泄漏 → Team Handbook 第 5 节安全红线
+- 风险 3: 依赖单一工具 → 我们同时用 Cursor 和 Claude，互为备份</code></pre>
+<p>把这份文档发给你的 manager 和 skip-level manager。不要等他们问你"AI 用得怎么样"，主动给答案。</p>
+
+<h2>动手练习</h2>
+<ol>
+  <li><strong>本周</strong>：在你们的 Slack 发一条 AI Tip，用上面的格式。注意要有具体数字。</li>
+  <li><strong>两周内</strong>：在 Confluence / Notion 创建一个《Team AI Handbook》的空壳，填上 1-2 节内容，把链接发到团队频道征求贡献。</li>
+  <li><strong>一个月内</strong>：组织一次 30 分钟的"迷你 workshop"——不用搞 90 分钟的大活动，先从小的开始。主题可以是"用 Cursor 的 3 个技巧"。</li>
+  <li><strong>两个月内</strong>：产出一份 ROI 分析发给 manager。就算数字是估计的也没关系，有估计比没有好。</li>
+</ol>
+<p><strong>进阶挑战</strong>：找到团队里最抗拒 AI 的那个老工程师，一对一请他喝咖啡，问他为什么抗拒。不要说服他，只是听。理解他的顾虑之后，你的 handbook 和 workshop 会变得更有说服力——因为你能直接回应"会被取代"、"代码质量"、"学习成本"这些真实担忧。</p>
+
+<h2>常见问题</h2>
+<p><strong>Q: 我是 Junior，担心在老 Senior 面前讲 AI 显得狂妄？</strong><br>
+反过来想——Senior 最怕的就是被时代淘汰。你把 AI 用起来的经验分享给他们，是在帮他们。态度上放低，说"我试了一下发现挺好用的，想听听你们的意见"。记住不是"教他们"，是"一起学"。</p>
+
+<p><strong>Q: 我们公司禁止用 AI 工具怎么办？</strong><br>
+先搞清楚是"完全禁止"还是"禁止把 PII 发出去"。大多数公司是后者。如果是后者，你可以用 self-hosted 的方案（Ollama + CodeLlama）做 POC。如果是前者，这是你最好的机会——去找合规部门，帮他们搞清楚 Anthropic 的 zero data retention 政策，推动合规审批。完成这一步你就是公司历史上的 AI 第一人。</p>
+
+<p><strong>Q: 老板对 AI 不感冒，怎么办？</strong><br>
+不要空谈，给他看数字。上面那份 ROI 文档打印出来放他桌上。如果老板关心的是 delivery，你就用"同样的人力多交付 30% feature"的角度。如果老板关心的是成本，你就用"可以少招一个人"的角度。投其所好。</p>
+
+<p><strong>Q: 我不是最懂 AI 的那个，别人凭什么听我的？</strong><br>
+"最懂 AI"不是重点，"最愿意分享"才是重点。90% 的人即使懂也不会主动分享。你在分享的这一刻，就已经赢了 90% 的人。</p>
+
+<p><strong>Q: 做 AI Champion 会不会被当成"不务正业"？</strong><br>
+这是真实的风险。缓解方法是：确保你本职工作的 metric 不掉线。AI Champion 是"额外"的价值，不是"替代"你的正职。把 AI 时间控制在工作时间的 20% 以内，剩下 80% 该写 bug fix 写 bug fix，该上线 feature 上线 feature。</p>
+
+<h2>小结</h2>
+<p>2026 年的职场有一个新的不平等：会用 AI 的人和不会用的人生产力差 2-3 倍，会推动团队用 AI 的人和只自己用的人升职速度差 2-3 倍。这不是猜测，是澳洲几家大厂 2025 年的实际数据。</p>
+<p>你不需要成为 AI 专家。你需要做的就是：(1) 每周分享一个小 tip；(2) 把经验沉淀成文档；(3) 组织一次 workshop；(4) 给老板算清楚 ROI。四件事，每一件都不难，但 99% 的人不会做。你做了，你就是团队里不可替代的那一个。</p>
+<p>延伸阅读：JR Academy 的 AI Adoption learn direction 里有更多关于企业 AI 推广的 case study，尤其是 Atlassian 和 Canva 的内部 AI 推广经验。</p>

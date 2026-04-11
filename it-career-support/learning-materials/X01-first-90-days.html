@@ -1,0 +1,132 @@
+<h2>学习目标</h2>
+<ul>
+  <li>知道入职前 90 天每一周的关键动作，不再凭感觉摸索</li>
+  <li>明白哪些行为会被 senior 记一辈子（好的和坏的），提前避雷</li>
+  <li>能在第 90 天的 probation review 里讲清楚自己做了什么、学了什么、下一步要做什么</li>
+  <li>掌握从"新人"过渡到"能独立交付的工程师"的可复制路径</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>90 天是 probation window，不是试用期</h3>
+<p>澳洲大部分公司写的 probation 是 3 个月或 6 个月，但真正决定团队对你印象的窗口就是前 90 天。前 30 天大家对你零期待，允许你问"dumb question"；30-60 天开始期待你能独立拿 ticket；60-90 天期待你能 own 一个小 feature 并且在 standup 说清楚自己 blocker 是什么。过了 90 天，你的画像基本就定型了。</p>
+
+<h3>Week 1：不是写代码，是搭建你的"工作操作系统"</h3>
+<p>第一周几乎没人指望你写代码。真正的任务是：</p>
+<ul>
+  <li><strong>认识人</strong>：跟 manager、tech lead、buddy、每个同组的同事分别做 1-on-1 coffee chat，每人 15 分钟。带 3 个固定问题：你负责什么？你觉得团队最近最大的挑战是什么？你建议我前三个月做什么？</li>
+  <li><strong>搭建 dev env</strong>：拿到笔记本的第一件事不是装 VS Code，是找到团队的 onboarding doc（通常在 Confluence/Notion 里叫 "Dev Setup" 或 "Getting Started"）。按文档一步步走，遇到坑立刻记下来，第一周结束前提 PR 更新文档——这是你第一个可见的贡献。</li>
+  <li><strong>读 README + 画架构图</strong>：不要直接跳进 codebase。先找 architecture diagram，没有就问"有没有 system overview 我可以看一下"。然后自己画一张图：哪些服务，用什么数据库，部署到哪里，用户请求怎么走到数据库再回来。</li>
+</ul>
+
+<h3>Week 2-4：First PR + 小票 ticket</h3>
+<p>第一个 PR 不要试图惊艳任何人。目标是"通过 CI、通过 review、merge 进 main"，走完整个流程。理想的 first PR 是这种：</p>
+<ul>
+  <li>修一个 typo 或 broken link</li>
+  <li>补一个缺失的 unit test</li>
+  <li>更新一段过期的 README</li>
+  <li>修一个 linter warning</li>
+</ul>
+<p>从 backlog 里挑 "good first issue"、"starter"、"documentation" tag 的 ticket。每个 PR 都当作学习流程的机会：分支怎么命名、commit message 格式、PR template 怎么填、CI 跑哪些检查、谁是 required reviewer。</p>
+
+<h3>Month 2：Own 一个小 feature end-to-end</h3>
+<p>第二个月你应该能自己吃下一个小 feature，范围差不多是 1-2 周 effort。End-to-end 的意思是：</p>
+<ul>
+  <li>跟 PM 或 tech lead 确认需求</li>
+  <li>写一页 design doc（就算团队不要求，自己写）</li>
+  <li>拆成 3-5 个 PR 逐步提交</li>
+  <li>写 unit test + integration test</li>
+  <li>跟 QA 一起验证</li>
+  <li>部署到 staging，监控指标</li>
+  <li>上 production，写一段 release note</li>
+</ul>
+<p>Own 一个 feature 的意义不是"我写了代码"，而是"出问题了大家第一个找你"。这是从 junior 到 mid 的关键信号。</p>
+
+<h3>Month 3：第一次正式 review + 下一季度的 growth plan</h3>
+<p>第 90 天左右会有 probation review 或 end-of-probation 1-on-1。提前一周准备一页 Google Doc：</p>
+<ul>
+  <li>我做了什么（列具体 PR 数、feature 名、bug 数）</li>
+  <li>我学了什么（具体 tech stack、工作流、codebase 哪些模块我熟了）</li>
+  <li>我哪里还不够（诚实列 2-3 个，显得你有 self-awareness）</li>
+  <li>下一季度我想做什么（主动 pitch 而不是等分配）</li>
+</ul>
+
+<h3>新人最容易踩的 5 个坑</h3>
+<ol>
+  <li><strong>想 refactor 整个 codebase</strong>：看到一段老代码就想重写。这是新人最快被讨厌的方式。规则：入职前 3 个月，不做任何"纯重构" PR，除非有人明确要求。</li>
+  <li><strong>Standup 太安静</strong>：怕问蠢问题，所以每天都说"yesterday did X, today will continue"。Senior 看不到你的进度，也看不到你的 blocker，就默认你 underperform。</li>
+  <li><strong>不问问题</strong>：卡住 3 小时不开口。规则：卡 30 分钟自己查，再卡 30 分钟发消息到组频道，别私聊 senior（组频道的好处是别人也可能有答案，而且留下记录）。</li>
+  <li><strong>过度承诺</strong>：被问 "can you finish this by Friday?" 第一反应说 yes。正确做法是说 "let me look at it first, I'll get back to you in 30 min"。</li>
+  <li><strong>不记笔记</strong>：每周学到的东西一周后全忘了。规则：每天结束前花 5 分钟写 3 行 "今天学到了什么 / 今天卡在什么 / 明天第一件事做什么"。</li>
+</ol>
+
+<h2>操作步骤</h2>
+
+<h3>Week 1 Checklist</h3>
+<blockquote>
+<p>Day 1：领设备 + 账号开通（Jira, Slack, GitHub, AWS, VPN, 1Password）<br>
+Day 2：读 onboarding doc + 装 dev env + 跑通 hello world<br>
+Day 3：代码 clone + 按 README 跑起本地服务 + 画架构图<br>
+Day 4：约 3 个 1-on-1 coffee chat（manager, tech lead, buddy）<br>
+Day 5：提第一个 PR（updating onboarding doc）+ week 1 summary 发给 manager</p>
+</blockquote>
+
+<h3>每天 standup 的正确说法模板</h3>
+<blockquote>
+<p>Yesterday: Finished PR #1234 (updating auth middleware tests), got 2 comments from Alice, addressed them, merged.<br>
+Today: Picking up JIRA-567 (fix date format in invoice export). Plan to finish by EOD.<br>
+Blocker: Not sure why the integration test suite takes 20 min locally, will ask in #eng-help after standup.</p>
+</blockquote>
+<p>具体到 PR 编号、ticket 号、具体问题。不要用 "continue working on xxx"。</p>
+
+<h3>卡住的时候发消息模板</h3>
+<blockquote>
+<p>Hey team, I'm stuck on JIRA-567. I'm trying to get the docker-compose to start but getting this error: [贴完整错误日志]. I've already tried: (1) docker system prune (2) rebuilding the image (3) checking port conflicts. Anyone seen this before?</p>
+</blockquote>
+<p>要点：具体 ticket 号、完整错误信息、你试过什么、明确提问。这样别人 30 秒就能帮你，而不是来回问 10 句。</p>
+
+<h3>第 90 天 review 准备模板</h3>
+<blockquote>
+<p>## What I shipped (Jan - Apr)<br>
+- 12 PRs merged<br>
+- 1 feature owned: [feature name], [user impact]<br>
+- 3 bugs fixed in production<br>
+<br>
+## What I learned<br>
+- Codebase: 熟悉了 auth module 和 billing module<br>
+- Stack: React + Next.js + NestJS + MongoDB<br>
+- Workflow: Jenkins CI, deployment via GitHub Actions<br>
+<br>
+## Where I need to grow<br>
+- Still slow at debugging production issues<br>
+- Want to understand infrastructure better (AWS)<br>
+<br>
+## What I want to do next quarter<br>
+- Pick up a feature in [area]<br>
+- Pair with [senior name] on on-call rotation</p>
+</blockquote>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：画出你的"入职第一天"计划</h3>
+<p>假设你明天就入职，写一份一整天的时间表，精确到 30 分钟。上午做什么、下午做什么、中午跟谁吃饭、下班前最后做的事情是什么。提交给你的 mentor 看，让他挑问题。</p>
+
+<h3>练习 2：模拟 First PR</h3>
+<p>找一个你熟悉的开源项目（哪怕是 VS Code、React、Next.js），读他们的 CONTRIBUTING.md，找一个 "good first issue"，按完整流程走一遍：fork → branch → 改代码 → 提 PR → 根据 review 改 → merge（不 merge 也可以，体验流程）。这是最真实的 onboarding 演练。</p>
+
+<h3>练习 3：1-on-1 的三个问题</h3>
+<p>设计你自己版本的 "3 个固定问题"，这 3 个问题要能从对方嘴里挖出团队文化、技术债、你可以切入的机会。不要问 "你们这边 tech stack 是啥"（查 LinkedIn 就能知道）。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q：我是新人，不敢在 standup 说 blocker，怕被觉得我菜。</h3>
+<p>A：恰恰相反。不说 blocker 的人才被觉得"不知道自己在干什么"。Senior 最怕的是"沉默的 junior"，因为他们管不到问题，只能事后救火。大方说 blocker = 你有 self-awareness = 靠谱。</p>
+
+<h3>Q：我觉得 codebase 一团糟，很想重写，怎么办？</h3>
+<p>A：把冲动压下去，打开一个 private 的 Obsidian 笔记，叫 "tech debt observations"，每次看到烂代码就记下来。3 个月后如果你还觉得值得重写，跟 tech lead 讨论。大概率 3 个月后你会发现当初想重写的那些地方其实有历史原因。</p>
+
+<h3>Q：我的 mentor 很忙，约不到时间，怎么学？</h3>
+<p>A：别指望 mentor 手把手教。把你的问题攒成 batch，一次问 5 个，15 分钟搞定。其余时间通过读 PR、读 design doc、读 slack 历史消息来学。高效的 junior 都是从读 senior 的 PR 里学的，不是从聊天里学的。</p>
+
+<h2>小结</h2>
+<p>前 90 天的本质是建立可信度，而不是证明你多聪明。Week 1 搭好工作系统，Week 2-4 走通 PR 流程，Month 2 own 一个小 feature，Month 3 正式 review。最大的坑是想 refactor 整个 codebase、standup 太安静、卡住不问问题。记住一条：team 不会因为你写了多少代码记住你，只会因为你"靠不靠谱"记住你。</p>

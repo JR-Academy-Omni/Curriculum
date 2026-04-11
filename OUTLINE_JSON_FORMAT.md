@@ -174,6 +174,7 @@
 | `test.questions` | number | | 测试题数 |
 | `test.passRate` | number | | 通过率（0-1） |
 | `test.unlocks` | string | | 通过后解锁的 Phase |
+| `isExtension` | boolean | | 标记为"扩展阅读 / 非主路径"phase。当前仅 local 使用，**Skills Data Manager 同步时会忽略此字段**，extension phase 会作为普通 module 同步到 production。首次使用见 `curriculum/web-code-bootcamp-or-learn-to-code` Phase 10 |
 | `lessons` | Lesson[] | ✅ | 该 Phase 的课时数组 |
 
 ### Lesson 字段
@@ -189,6 +190,11 @@
 | `steps` | Step[] | ✅ | 教学步骤序列 |
 | `labs` | LabRef[] | | 关联的 Lab 资源 |
 | `learns` | LearnRef[] | | 关联的 Learn 章节 |
+| `cheatSheets` | CheatSheetRef[] | | 关联的速查卡（`/cheat-sheets/{slug}`）|
+| `wikis` | WikiRef[] | | 关联的 Wiki 文章（`/wiki/{slug}`）|
+| `videos` | VideoRef[] | | 关联的教学视频（`/videos/{slug}`）|
+| `roadmaps` | RoadmapRef[] | | 关联的学习路径（`/roadmaps/{slug}`）|
+| `interviewQuestions` | InterviewQuestionRef[] | | 关联的面试题库 |
 | `isInteractiveLab` | boolean | | 是否为独立的互动实验 lesson |
 | `interactiveLabSlug` | string | | InteractiveLab 的 slug（配合 isInteractiveLab 使用） |
 
@@ -231,6 +237,75 @@
 | `direction` | string | 学习方向 slug，如 `ai-office`、`prompt-master`、`vibe-coding` |
 | `slug` | string | 章节 slug |
 
+### CheatSheetRef 字段
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `slug` | string | 速查卡 slug，对应 `jr-academy-web-zh/src/constants/cheatSheets.ts` 里的 `ICheatSheet.slug`（如 `chatgpt` / `claude` / `notion-ai`）|
+
+```json
+"cheatSheets": [
+  { "slug": "chatgpt" },
+  { "slug": "claude" },
+  { "slug": "notion-ai" }
+]
+```
+
+### WikiRef 字段
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|:---:|------|
+| `slug` | string | ✅ | **Static Wiki 路径**，对应 `jr-academy-web-zh/src/config/staticWikis/*.ts` 里的层级 slug 拼接路径，如 `cursor/getting-started/installation`、`claude/usage/prompting`。同步到 production 时映射为 `lesson.staticWikiSlugs[]` 字段（后端 schema 已支持）|
+| `chapter` | string | | 可选：深链到 wiki 内某个章节（通常不填）|
+
+> 🔧 **Sync 支持**：`wikis[]` 字段从 2026-04 起由 Skills Data Manager 同步到 production（见 `tools/skills-data-manager/server/bootcamp/sync.ts` 和 `diff.ts` 的 `staticWikiSlugs` 处理）。首次使用见 `curriculum/web-code-bootcamp-or-learn-to-code`。
+
+```json
+"wikis": [
+  { "slug": "prompt-engineering" },
+  { "slug": "business-analyst", "chapter": "intro" }
+]
+```
+
+### VideoRef 字段
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `slug` | string | Video slug，对应 `skills-data/videos/{slug}.json`（Video model 的内容视频，非文件级存储）|
+
+```json
+"videos": [
+  { "slug": "ba-business-analyst-user-story-ba" }
+]
+```
+
+### RoadmapRef 字段
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|:---:|------|
+| `slug` | string | ✅ | Roadmap slug，对应 `skills-data/roadmaps/{slug}.json` |
+| `nodeId` | string | | 可选：深链到 roadmap 内某个节点（用于"从这节 lesson 直接跳到 roadmap 对应节点"）|
+
+```json
+"roadmaps": [
+  { "slug": "ai-product-manager-roadmap", "nodeId": "ai-pm-entry" }
+]
+```
+
+### InterviewQuestionRef 字段
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|:---:|------|
+| `bank` | string | ✅ | 题库 slug，对应 `skills-data/interview-questions/{bank}.json` |
+| `questionIds` | string[] | | 可选：只引用题库里的特定几题（v1 **不渲染**，预留字段）|
+
+```json
+"interviewQuestions": [
+  { "bank": "product-manager" },
+  { "bank": "requirements-analysis", "questionIds": ["q1", "q7"] }
+]
+```
+
 ---
 
 ## outline.json → Production 映射
@@ -249,6 +324,8 @@
 | lesson.learns → | Lesson.learnChapterSlugs[] | 格式：`direction/slug` |
 | lesson 在 phase 中 → | Lesson.moduleId | 绑定到对应 Module |
 | lesson 在所有 phases 中的顺序 → | Syllabus.lessonIds[] | 按全局顺序排列 |
+| lesson.wikis[].slug → | Lesson.staticWikiSlugs[] | Static Wiki 路径数组 |
+| phase.isExtension → | (忽略) | 当前 Skills Data Manager 不处理；extension phase 作为普通 Module 同步 |
 
 ---
 
@@ -260,6 +337,11 @@
 4. `level` 必须是中文（零基础/初级/中级/中级进阶/高级）
 5. `labs[].source` 必须对应前端已有的 Lab 配置目录
 6. `learns[].direction` 必须对应已有的 Learn 方向
+7. `cheatSheets[].slug` 必须存在于 `jr-academy-web-zh/src/constants/cheatSheets.ts` 的 index（Skills Data Manager 的 sync pre-flight 会校验）
+8. `wikis[].slug` 必须存在于 `skills-data/wikis/{slug}.json`
+9. `videos[].slug` 必须存在于 `skills-data/videos/`
+10. `roadmaps[].slug` 必须存在于 `skills-data/roadmaps/`
+11. `interviewQuestions[].bank` 必须存在于 `skills-data/interview-questions/`
 
 ---
 

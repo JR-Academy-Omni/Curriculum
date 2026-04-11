@@ -1,0 +1,157 @@
+<h2>学习目标</h2>
+<ul>
+  <li>熟练使用 Cursor 的三大核心功能：Cmd+K inline edit、Cmd+L chat、Composer 多文件重构</li>
+  <li>会写 <code>.cursorrules</code> 文件，让 Cursor 按你的项目规范生成代码</li>
+  <li>掌握 5 个高频工作场景的具体用法：写测试、生成类型、重构 legacy、理解陌生代码、复杂 debug</li>
+  <li>避开"过度依赖 AI"的常见坑，确保生成的代码你自己看得懂</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>Cursor 是什么，跟 VS Code 什么关系</h3>
+<p>Cursor 是基于 VS Code fork 的 IDE，把 AI 深度内嵌到编辑器里。你可以直接导入所有 VS Code 插件和配置，零迁移成本。核心差别：VS Code + Copilot 是"AI 补全代码"，Cursor 是"AI 重写代码块、多文件改动、理解整个项目"。</p>
+<p>官网：cursor.com。个人版 $20/月，学生免费。如果你的公司给你报销开发工具，这是你第一个应该申请报销的东西。</p>
+
+<h3>三大核心快捷键</h3>
+<ul>
+  <li><strong>Cmd+K（Inline Edit）</strong>：选中一段代码，Cmd+K 弹出输入框，输入你想怎么改。AI 直接在原位置 diff 出修改结果。适合改一小段代码。</li>
+  <li><strong>Cmd+L（Chat）</strong>：右侧打开聊天面板。可以把当前文件、选中代码、甚至整个 codebase 作为 context 提问。适合"我不懂这段代码在干嘛"、"给我解释一下这个 bug"。</li>
+  <li><strong>Cmd+I（Composer）</strong>：真正强大的功能。可以在一次对话里改多个文件。适合"加一个新 API，包括 controller / service / test / type 定义"。</li>
+</ul>
+
+<h3>.cursorrules — 项目级规范文件</h3>
+<p>在项目根目录建一个 <code>.cursorrules</code> 文件，Cursor 每次生成代码前都会读这个文件，按你定义的规则生成。这是让 AI 从"通用助手"变成"熟悉你项目的同事"的关键。</p>
+<p>一个实战版 <code>.cursorrules</code> 例子：</p>
+<blockquote>
+<pre>
+# Project Rules
+
+## Tech Stack
+- Backend: NestJS + TypeScript + MongoDB (Mongoose)
+- Frontend: Next.js 14 (App Router) + React + styled-components
+- Testing: Jest + Testing Library
+
+## Code Conventions
+- Interfaces prefix with I (IUser, ICourseData)
+- Enums prefix with E (EUserRole, ECourseStatus)
+- File names: kebab-case (user-service.ts)
+- Components: PascalCase (UserProfile.tsx)
+- Use tabs for indentation, max line 120
+
+## Architecture Rules
+- NEVER put CRUD and analytics in same service file
+- Service files MUST be under 600 lines
+- All entity references use ObjectId, never slug or key
+- Frontend uses `id`, backend uses `_id`, transform once in API layer
+
+## Forbidden
+- No Material-UI imports (use styled-components)
+- No antd imports
+- No hardcoded colors (use color.primaryColor from @/styles/variables)
+- No `rm` commands in scripts
+
+## Preferred
+- Prefer bun over npm
+- Prefer editing existing files over creating new ones
+- Add TypeScript types for all props
+</pre>
+</blockquote>
+<p>这个文件写得好，Cursor 生成的代码基本不用改格式，直接能 merge。</p>
+
+<h3>场景 1：写 unit test</h3>
+<p>这是 Cursor 最出彩的场景。流程：打开 service 文件 → Cmd+L → "generate Jest unit tests for this file, mock all external dependencies, cover happy path + 2 edge cases + 1 error case"。</p>
+<p>Cursor 会读文件里的所有方法、依赖，生成完整的测试文件。你只需要：</p>
+<ol>
+  <li>肉眼过一遍测试逻辑，看有没有漏掉的 case</li>
+  <li>跑 <code>npm test</code> 看是否通过</li>
+  <li>看 coverage 报告，补缺的分支</li>
+</ol>
+<p>30 分钟能写的测试，AI 帮你 3 分钟搞完。关键是别跳过第一步——如果你看不懂 AI 写的测试，那说明你自己也没真正理解被测代码。</p>
+
+<h3>场景 2：生成 TypeScript 类型</h3>
+<p>前端拿到一个 API 返回的 JSON，要把它变成 TypeScript interface。以前要手写 15 分钟，现在：</p>
+<blockquote>
+<p>Cmd+L → 粘贴 JSON → "generate a TypeScript interface for this JSON. Use I prefix. Mark optional fields with ?. Create sub-interfaces for nested objects."</p>
+</blockquote>
+<p>30 秒出结果。手动检查一下必选/可选字段是否符合你的业务理解。</p>
+
+<h3>场景 3：重构 legacy 代码</h3>
+<p>接手一段 300 行的 jQuery 写的老函数，要重构成 React Hook。流程：</p>
+<ol>
+  <li>选中整段代码</li>
+  <li>Cmd+K → "refactor this into a custom React hook called useXxx, preserve all business logic"</li>
+  <li>AI 给出 diff，你对照原代码 review</li>
+  <li>不满意就追加 instruction："also handle loading and error states"</li>
+</ol>
+<p>关键：重构不能一次性交给 AI 做完。分步骤，每步都 review，才能保证业务逻辑没丢。</p>
+
+<h3>场景 4：理解陌生 codebase</h3>
+<p>入职第一周最大的挑战。Cursor 的绝招是 <strong>@codebase</strong> 这个 context。</p>
+<blockquote>
+<p>Cmd+L → "@codebase where is the authentication middleware defined? How does the login flow work from frontend to backend?"</p>
+</blockquote>
+<p>Cursor 会索引整个项目，告诉你 auth 相关的所有文件，还能画出调用链。这是入职前 30 天最该用的功能。</p>
+
+<h3>场景 5：debug 复杂 bug</h3>
+<p>遇到生产 bug，把错误 stack trace 贴进 Cmd+L：</p>
+<blockquote>
+<p>"@codebase here's the error: [stack trace]. Based on the code, what are the 3 most likely causes? Show me the exact lines to check."</p>
+</blockquote>
+<p>AI 会给你 3 个假设，每个假设指向具体文件。你按图索骥快速缩小范围。比自己一步步 print 省 10 倍时间。</p>
+
+<h2>操作步骤</h2>
+
+<h3>第一周：Cursor 入门流程</h3>
+<blockquote>
+<p>Day 1：下载 Cursor，导入 VS Code 配置（Cmd+Shift+P → "Import VS Code Settings"）<br>
+Day 2：学 Cmd+K，用它修改 5 段小代码，每次观察 diff<br>
+Day 3：学 Cmd+L，用 @codebase 问 3 个关于项目的问题<br>
+Day 4：写项目的 .cursorrules 文件，测试生成效果<br>
+Day 5：用 Composer 完成一个小 feature（新增一个 API endpoint 全链路）<br>
+Day 6：让 Cursor 帮你写一个文件的 unit test，review 结果<br>
+Day 7：用 Cursor 做一次 refactor，记录省下的时间</p>
+</blockquote>
+
+<h3>Composer 使用示例</h3>
+<blockquote>
+<pre>
+Cmd+I → 在输入框里写：
+
+"Add a new REST API endpoint GET /users/:id/courses that returns a list of courses enrolled by the user.
+Requirements:
+1. Create controller method in user.controller.ts
+2. Create service method in user.service.ts
+3. Create DTO in user.dto.ts
+4. Add unit test in user.service.spec.ts
+5. Use existing CourseModel from @/models/course.schema.ts
+6. Follow existing code style and .cursorrules"
+
+AI 会依次修改 4 个文件，每个文件都给你 diff review。
+你点 Accept 或 Reject 每个文件。
+</pre>
+</blockquote>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：写你项目的 .cursorrules</h3>
+<p>针对你当前的项目，写一份 40-60 行的 <code>.cursorrules</code>。包括 tech stack、命名规范、架构规则、禁止事项、首选方式。放进项目根目录，试着让 Cursor 生成一段代码，看结果是否符合规范。</p>
+
+<h3>练习 2：Composer 全链路开发</h3>
+<p>用 Composer 完成一个真实 feature：从后端 API 到前端 UI 到 unit test。观察 AI 是否按你的 rules 生成。记录需要手动修改的地方，下次更新 <code>.cursorrules</code> 把这些规则加进去。</p>
+
+<h3>练习 3：refactor 一段 legacy</h3>
+<p>从你项目里找一段 100+ 行的老代码（或一段网上找的 jQuery 代码），用 Cursor 重构。目标是代码逻辑一致，风格现代化。对比前后代码，确保业务逻辑 1:1 还原。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q：Cursor 贵吗？值不值？</h3>
+<p>A：$20/月，一杯咖啡的钱。如果它每天帮你省 1 小时，一个月就是 20 小时 = 赚回 10 倍。问题不是值不值，是你用不用得起来——很多人订了 Cursor 但还是只按 Tab 补全，那就白花钱了。</p>
+
+<h3>Q：Cursor 生成的代码能直接 commit 吗？</h3>
+<p>A：永远不要不 review 就 commit。规则：你得能一行行解释 AI 写的每一行代码，否则不 merge。一旦 bug 出问题，"AI 写的"不是理由，你依然负责。</p>
+
+<h3>Q：跟 GitHub Copilot 比哪个好？</h3>
+<p>A：补全粒度 Copilot 略强，多文件改动和 project-wide 理解 Cursor 胜。现实：两个都订也才 $30/月，junior 先用 Cursor 主力，Copilot 辅助。如果只能选一个，选 Cursor。</p>
+
+<h2>小结</h2>
+<p>Cursor 的核心价值不是"补全代码更快"，而是"让 AI 理解整个项目然后协助你改多文件"。三大快捷键 Cmd+K / Cmd+L / Cmd+I 是基本功，<code>.cursorrules</code> 是把它变成"熟悉你项目的同事"的关键。最大的坑是不 review 直接用——AI 生成的代码你必须看得懂每一行。用好 Cursor，junior 的产出能接近 mid 的水平。</p>

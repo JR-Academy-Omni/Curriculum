@@ -1,0 +1,168 @@
+<h2>学习目标</h2>
+<p>Junior 到 Senior 不是"工作年限到了就自动升级"。很多人工作 5 年、7 年还是 Senior 不了，原因是他们一直在做 Junior 的工作，只是越做越熟练而已。</p>
+<p>这一节帮你识别 5 个关键跨越——每一个都是质变，不是量变。读完你应该能：</p>
+<ul>
+  <li>看清自己现在卡在哪一个跨越上</li>
+  <li>知道下一个跨越具体要做什么动作</li>
+  <li>识别"我没在进步"的红灯信号，及时调整</li>
+</ul>
+
+<h2>核心概念</h2>
+<h3>为什么 5 个跨越而不是 1 个</h3>
+<p>很多人以为 Junior 到 Senior 就是"技术变强"。这是最大的误解。技术变强只是其中一个维度。实际上你需要同时完成 5 个身份转变：</p>
+<ol>
+  <li>从"完成任务"到"发现需求"</li>
+  <li>从"写代码"到"设计系统"</li>
+  <li>从"老板推着走"到"向上管理"</li>
+  <li>从"只管自己"到"带人"</li>
+  <li>从"技术视角"到"业务视角"</li>
+</ol>
+<p>每个跨越通常需要 6-12 个月，5 个加起来 2.5-5 年——这就是为什么 Junior 到 Senior 的合理时间是 3-5 年。提前是天才，超过 5 年是卡住了。</p>
+
+<h3>跨越的本质：心智模型的升级</h3>
+<p>这不是技能清单问题，是思维方式问题。跨越前和跨越后的你，面对同一个问题会做出不同的决策。下面一个一个拆。</p>
+
+<h2>操作步骤</h2>
+<h3>跨越 1：从"完成任务"到"发现需求"</h3>
+<p><strong>Junior 的心智</strong>：老板 / PM 给我一个 ticket，我把它做完、合并、部署。Done。</p>
+<p><strong>Senior 的心智</strong>：老板 / PM 给我一个 ticket，我先问"这个需求真正要解决的问题是什么"，然后可能提出"其实我们应该做 X 而不是 Y"的反建议。</p>
+<p><strong>具体动作</strong>：</p>
+<ul>
+  <li>下次拿到 ticket，不要立刻动手写代码。先花 30 分钟思考：这个 feature 用户用完会发生什么？有没有更简单的方案？</li>
+  <li>在 Slack 上问 PM 一个问题："这个 ticket 是为了解决 X 问题对吗？如果是，我觉得 Y 方案可能更合适，因为 Z。"</li>
+  <li>参加 product discovery 会议——就算没人邀请你，主动请求加入。</li>
+</ul>
+<p><strong>时间线</strong>：练习 6-9 个月，每周至少做一次"反建议"。</p>
+<p><strong>红灯信号</strong>：</p>
+<ul>
+  <li>过去 3 个月你没有质疑过任何一个 ticket 的合理性</li>
+  <li>你的 PR 描述永远是"Implements the ticket"，没有任何"思考 / 权衡 / 建议"</li>
+  <li>PM 和你的互动永远是单向的（PM → 你），从来没有你 → PM 的建议</li>
+</ul>
+
+<h3>跨越 2：从"写代码"到"设计系统"</h3>
+<p><strong>Junior 的心智</strong>：我这个 PR 跑得通、测试过、code review 通过，就结束了。</p>
+<p><strong>Senior 的心智</strong>：在写代码之前，我花 1-2 小时想清楚数据流、模块边界、未来扩展点、可能的 failure 模式，画一张图，写一个 mini design doc。</p>
+<p><strong>具体动作</strong>：</p>
+<ul>
+  <li>任何 &gt; 2 天的工作，强制自己先写一个 design doc（就算只有半页）</li>
+  <li>画图。任何涉及 3 个以上组件的改动，画一张 sequence diagram 或 architecture diagram（用 Excalidraw / Mermaid）</li>
+  <li>问自己三个问题：(1) 如果 QPS 翻 10 倍，这个设计会怎样？(2) 如果我明天离职，接手的人能理解吗？(3) 6 个月后这个代码被改的可能方向是什么？</li>
+</ul>
+<p><strong>Design doc 模板（1 页版本）</strong>：</p>
+<pre><code># [Feature Name] Design Doc
+
+## Problem
+一句话：我们要解决什么？
+
+## Goals / Non-Goals
+- Goals: 明确要达成的
+- Non-Goals: 明确不做的（防止 scope creep）
+
+## Proposed Solution
+方案描述 + 一张图
+
+## Alternatives Considered
+- Option B: 为什么没选
+- Option C: 为什么没选
+
+## Risks
+3-5 个最大的风险 + 缓解
+
+## Rollout Plan
+- Phase 1: ...
+- Phase 2: ...</code></pre>
+<p><strong>时间线</strong>：9-12 个月。前 3 个月写的 design doc 会很烂，不要紧，继续写。</p>
+<p><strong>红灯信号</strong>：你最近 3 个月没有写过任何设计文档，所有 PR 都是"边写边想"。</p>
+
+<h3>跨越 3：从"老板推着走"到"向上管理"</h3>
+<p><strong>Junior 的心智</strong>：老板给我安排什么我做什么，没安排就等着。</p>
+<p><strong>Senior 的心智</strong>：我主动给老板提供信息（进度、风险、需要的支持），主动建议优先级调整，帮老板做决策。</p>
+<p><strong>具体动作</strong>：</p>
+<ul>
+  <li><strong>每周五发 status update</strong>：3 句话——这周做了什么、下周计划什么、有什么 blocker 需要老板帮忙。不要等老板问。</li>
+  <li><strong>1:1 会议你来主导</strong>：不要让老板问问题你回答，你应该带一个 agenda 来，主动谈：我最近的挑战、我需要的资源、我的职业规划。</li>
+  <li><strong>提前预警 bad news</strong>：如果 project 要延期，提前 2 周告诉老板，给他时间调整预期。最糟的是 deadline 前一天说"我做不完"。</li>
+</ul>
+<p><strong>模板——每周 status update</strong>：</p>
+<pre><code>Hi [manager], 本周更新:
+
+**Done this week:**
+- 完成 X feature 的 backend 部分，PR #123 已 merge
+- Review 了 Y 的 PR，发现一个潜在的 race condition
+
+**Plan next week:**
+- 开始 Z feature 的前端集成
+- 参加 API design review 会议
+
+**Blockers / Asks:**
+- 需要 access 到 production DB 的 read replica 来调试 bug #456
+- Z feature 的需求有个歧义，想和 PM 15 分钟对齐一下</code></pre>
+<p><strong>时间线</strong>：6 个月。这个跨越最容易做到，也最容易被忽略。</p>
+<p><strong>红灯信号</strong>：老板总是问你"那个 project 进度怎么样了"。说明他不知道，说明你没做向上管理。</p>
+
+<h3>跨越 4：从"只管自己"到"带人 / mentoring"</h3>
+<p><strong>Junior 的心智</strong>：我把自己的工作做好就行了。</p>
+<p><strong>Senior 的心智</strong>：我帮助 1-2 个 Junior 成长，他们的产出也算我的影响力。</p>
+<p><strong>具体动作</strong>：</p>
+<ul>
+  <li>主动 review 比你 Junior 的同事的 PR，不只是给"LGTM"，而是解释"为什么应该这样改"——让他学到东西</li>
+  <li>认领 onboarding buddy 角色。新人入职时主动当他的第一联系人</li>
+  <li>在 1:1 里和你的 mentee 讨论他的 blocker，而不是只讨论你自己的进度</li>
+  <li>定期做"教学型"分享——把你踩过的坑总结成文档给别人看</li>
+</ul>
+<p><strong>时间线</strong>：9-12 个月——带人的效果需要时间才能显现。</p>
+<p><strong>红灯信号</strong>：</p>
+<ul>
+  <li>团队里没有人因为你而成长</li>
+  <li>你的 PR review 永远是"LGTM" 或只看 syntax</li>
+  <li>Junior 有问题从来不找你，只找别人</li>
+</ul>
+
+<h3>跨越 5：从"技术视角"到"业务视角"</h3>
+<p><strong>Junior 的心智</strong>：这段代码应该用 X 设计模式，因为更优雅。</p>
+<p><strong>Senior 的心智</strong>：这段代码应该用能让团队最快上线、用户最早受益的方案，哪怕不优雅。</p>
+<p><strong>具体动作</strong>：</p>
+<ul>
+  <li>参加 product sprint planning 会议，不只是听需求，而是问"这个 feature 上线后怎么衡量成功"</li>
+  <li>看公司的业务指标（DAU、retention、revenue），了解你的代码对哪个指标有影响</li>
+  <li>做任何技术决策时，用业务语言描述它的价值："这个重构 2 周后能让 API 延迟从 800ms 降到 200ms，能减少 checkout 流程的 2% 流失"</li>
+  <li>读一本产品书。推荐 Marty Cagan 的 "Inspired"</li>
+</ul>
+<p><strong>时间线</strong>：12 个月以上——这是最慢的一个跨越，因为它要求你跳出工程师视角。</p>
+<p><strong>红灯信号</strong>：</p>
+<ul>
+  <li>你完全不知道公司上个季度的收入是多少</li>
+  <li>你说不出你维护的那个模块每个月服务了多少用户</li>
+  <li>你跟 PM 吵架时只会用技术理由（"这样不优雅"）</li>
+</ul>
+
+<h2>动手练习</h2>
+<ol>
+  <li>给自己在 5 个跨越上打分（1-10）。1 分是完全没开始，10 分是完全达成。</li>
+  <li>找到最弱的那一项（最低分）。这是你未来 6 个月的核心成长方向。</li>
+  <li>从那一项的"具体动作"清单里选 3 个，这周就开始做。</li>
+  <li>三个月后重新打分，看看有没有进步。</li>
+</ol>
+<p><strong>进阶</strong>：把你的 5 个分数发给一个你信任的 Senior 同事，问他的判断。你自己打的分数往往比别人看到的高 1-2 分——这是正常的盲区。</p>
+
+<h2>常见问题</h2>
+<p><strong>Q: 我做了 4 年 Senior 还是 P3，是不是公司不给机会？</strong><br>
+先诚实自评。5 个跨越里你真的都到了 8 分以上吗？如果没到，不是公司的问题，是你还没准备好。如果都到了 8 分以上还没升，那才是公司问题——该考虑换环境。</p>
+
+<p><strong>Q: 我技术很强但不想带人，能升 Senior 吗？</strong><br>
+Senior 岗位有带人和纯 IC 两条路。纯 IC 的 Senior 对"设计系统"和"业务影响力"要求更高，你得在这两项上做到 9 分。不带人不意味着不 mentor——你仍然要通过 design review、tech talk、文档来传递你的经验。</p>
+
+<p><strong>Q: 我向上管理做得好，但技术一般，能升吗？</strong><br>
+不能。向上管理是"杠杆"，前提是你有东西可以向上报告。如果你技术一般，向上管理做得越好越显得你没干货。技术是地基。</p>
+
+<p><strong>Q: 这 5 个跨越哪个最难？</strong><br>
+跨越 5（技术到业务视角）。它要求你从"我写代码"的身份切换到"我解决商业问题、代码只是工具"的身份。很多工程师一辈子都没完成这个跨越——他们一直是好的工程师，但止步于 Senior，升不到 Staff。</p>
+
+<p><strong>Q: 我在一家小公司，没人指导怎么办？</strong><br>
+小公司的优势是"机会多"。没有人指导你，反而意味着你可以自己 own 更大的东西。你主动推进一个 cross-team 的项目、主动带一个 intern、主动写 design doc——没人拦你。小公司的 Senior 成长更快，只要你主动。</p>
+
+<h2>小结</h2>
+<p>Junior 到 Senior 不是年限问题，是 5 个身份转变。每一个都需要你刻意练习，大多数人不会告诉你这些（因为他们自己也没想清楚）。</p>
+<p>记住一个判断标准：<strong>Junior 是"被工作管理"，Senior 是"管理工作"</strong>。后者意味着你在做选择、做权衡、做决策，而不是执行别人的选择。</p>
+<p>下一步：打完那 5 个分数，找到你最弱的一项，今天就开始做那 3 个具体动作。6 个月后你会是一个不一样的工程师。延伸阅读：JR Academy Handbook 的 Career Growth 和 Engineering Levels 章节有每一级的能力矩阵详细定义。</p>

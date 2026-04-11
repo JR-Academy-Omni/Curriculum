@@ -1,0 +1,150 @@
+<h2>学习目标</h2>
+<ul>
+  <li>理解为什么 code review 是 junior 阶段 ROI 最高的学习活动</li>
+  <li>掌握一套五维度 code review Prompt 模板：可读性 / 性能 / 安全 / 错误处理 / 测试覆盖</li>
+  <li>学会用 AI review 你自己过去 3 个月的 PR，发现个人代码模式和盲点</li>
+  <li>培养"代码不是写给机器看的，是写给 6 个月后的自己和同事看的"这种意识</li>
+</ul>
+
+<h2>核心概念</h2>
+
+<h3>为什么 code review 是 junior 最高 ROI 的学习方式</h3>
+<p>多数 junior 以为学习就是"刷题、看教程、做 side project"。实际上最高效的成长路径是 <strong>读 senior 的 PR + 被 senior review 你的 PR</strong>。原因：</p>
+<ul>
+  <li>PR 里的代码是真实生产代码，有真实约束（性能、兼容、legacy）</li>
+  <li>review comment 是"senior 的脑子活动暴露出来"——他为什么这样改、为什么觉得这写法不好，全在 comment 里</li>
+  <li>每个 comment 是一个微型 1-on-1 teaching moment</li>
+  <li>你看 100 个 PR review 就等于跟 100 个 senior 做过 1-on-1</li>
+</ul>
+<p>但问题是：你的团队可能只有 2-3 个 senior，你每周只能拿到 5-10 个 review comment。AI 补齐了这个缺口——你可以让 AI 当一个永远在线的 senior，review 你的每一行代码。</p>
+
+<h3>五维度 review 框架</h3>
+<p>一个合格的 code reviewer 看代码不是"挑毛病"，而是从 5 个固定维度扫一遍：</p>
+<ol>
+  <li><strong>可读性（Readability）</strong>：6 个月后的你能看懂吗？变量名、函数名、注释、结构是否清晰？</li>
+  <li><strong>性能（Performance）</strong>：有没有明显的 N+1 查询？循环里有没有数据库调用？是不是有 O(n²) 可以降到 O(n)？</li>
+  <li><strong>安全（Security）</strong>：SQL 注入、XSS、敏感信息泄漏（把 API key 硬编码进代码）、权限检查是否完整？</li>
+  <li><strong>错误处理（Error Handling）</strong>：异常是否被 catch？是否 swallow exception？用户能看到有意义的错误信息吗？</li>
+  <li><strong>测试覆盖（Test Coverage）</strong>：新增逻辑是否有 unit test？edge case 是否覆盖？测试本身是否有意义（不是只测 happy path）？</li>
+</ol>
+<p>这 5 个维度覆盖了 80% 的 review comment 类型。把这个框架内化，你 review 自己的代码会更系统。</p>
+
+<h3>"代码不是写给机器看的"</h3>
+<p>Junior 最大的误区是觉得"代码能跑就行"。真相是：<strong>代码跑起来只是及格线，代码可读性是优秀的标准</strong>。一个 PR 的寿命是 2-5 年，这段时间里会被 10-20 个人读过。如果每个人读你的代码都要花 10 分钟才能搞懂，那成本是巨大的。</p>
+<p>Senior 和 junior 的差别不是 senior 写得快，而是 senior 写出来的代码<strong>后面所有人看都快</strong>。</p>
+
+<h3>用 AI review 你自己的代码</h3>
+<p>AI review 的三种使用姿势，按难度从低到高：</p>
+<ul>
+  <li><strong>Level 1 — PR review</strong>：PR 推上 GitHub 前，先把 diff 丢给 Claude，按五维度扫一遍，修掉 AI 挑出的问题再推。提前 15 分钟，避免在 PR 上被同事挑出低级错误。</li>
+  <li><strong>Level 2 — 历史 PR 批量 review</strong>：拉出你过去 3 个月的所有 PR diff，批量丢给 AI。你会发现自己有一些"个人坏习惯"一直没人指出——比如总是忘记 null check、总是写冗长的 if-else、总是不处理 Promise rejection。</li>
+  <li><strong>Level 3 — 学习 senior 的 PR</strong>：每周挑 1 个你觉得"写得漂亮"的 senior PR，丢给 AI：让它解释"这段代码为什么这样写，跟 junior 写法的差别是什么"。</li>
+</ul>
+
+<h2>操作步骤</h2>
+
+<h3>Prompt 模板：五维度 PR review</h3>
+<blockquote>
+<pre>
+你是一个资深工程师，正在 review 一个 PR。请按以下 5 个维度分析代码，每个维度打分 1-5，并给出具体的改进建议。
+
+PR context:
+- 项目技术栈: [NestJS + TypeScript + MongoDB]
+- 改动文件数: [自动检测]
+- 改动类型: [feature / bugfix / refactor]
+
+五维度分析:
+
+## 1. 可读性 (Readability)
+- 变量/函数命名是否清晰？
+- 复杂逻辑是否有注释？
+- 函数长度是否合理（>50 行就 flag）？
+- 是否有 magic number / magic string？
+
+## 2. 性能 (Performance)
+- 是否有 N+1 query？
+- 循环里是否有 IO 调用（数据库、API、文件）？
+- 大数据量场景是否用了合适的数据结构？
+- 有没有可以 cache 的重复计算？
+
+## 3. 安全 (Security)
+- 用户输入是否 validate / sanitize？
+- 是否有 SQL/NoSQL 注入风险？
+- 敏感数据是否日志打印了？
+- 权限检查是否完整？
+
+## 4. 错误处理 (Error Handling)
+- try/catch 是否合理？有没有 swallow exception？
+- 错误消息对用户是否有意义？
+- 是否处理了 network/timeout/null 情况？
+- 失败后是否有回滚或补偿机制？
+
+## 5. 测试覆盖 (Test Coverage)
+- 核心逻辑是否有 unit test？
+- 是否覆盖了 edge case？
+- 测试是否真的在测业务逻辑，还是在测实现细节？
+- 有没有 flaky test 的风险？
+
+输出格式:
+- 每个维度：分数 + 2-3 条具体 finding（引用具体行号）
+- 最后给一个 priority-ordered 的 action list（必须修 vs 建议修）
+
+下面是 PR diff:
+---
+[粘贴 git diff 或 PR diff]
+</pre>
+</blockquote>
+
+<h3>批量 review 过去 PR</h3>
+<blockquote>
+<pre>
+# 导出你过去 3 个月的 PR diff
+git log --author="你的名字" --since="3 months ago" --pretty=format:"%H %s" > my-prs.txt
+
+# 对每个 commit，生成 diff
+for hash in $(cat my-prs.txt | awk '{print $1}'); do
+  echo "=== $hash ===" >> all-diffs.txt
+  git show $hash >> all-diffs.txt
+done
+
+# 把 all-diffs.txt 分段丢给 Claude
+# Prompt: "Review these PRs. Identify the top 5 recurring patterns in this developer's code (both good and bad).
+# Give specific examples from the diffs."
+</pre>
+</blockquote>
+<p>这个练习做完，你会拿到一份"你个人的技术体检报告"。通常会震惊于自己有一些顽固的坏习惯——比如我第一次做这个练习，发现我过去 3 个月 80% 的 PR 都没处理 Promise rejection，以前从来没意识到。</p>
+
+<h3>日常 workflow</h3>
+<blockquote>
+<p>Step 1：写完代码，跑 <code>git diff main</code> 看整个 PR<br>
+Step 2：打开 Cursor 或 Claude Code，粘贴 diff + 五维度 Prompt<br>
+Step 3：按 AI 给的 priority list 修 must-fix 的问题<br>
+Step 4：suggest-fix 的问题挑 2-3 个修，其他留 comment 解释为什么不修<br>
+Step 5：push PR，等同事 review<br>
+Step 6：同事的 comment 如果 AI 没发现，记到一个 learning log，更新你的 Prompt 模板</p>
+</blockquote>
+
+<h2>动手练习</h2>
+
+<h3>练习 1：五维度 review 你当前的 PR</h3>
+<p>用上面的 Prompt 模板 review 你正在做的一个 PR。记录 AI 找出的问题数量和类型。对比同事 review 后的 comment，看 AI 遗漏了什么、多找出了什么。</p>
+
+<h3>练习 2：过去 3 个月批量体检</h3>
+<p>按上面的步骤拉出你过去 3 个月的 PR diff，批量丢给 AI。让它找出 5 个你的 recurring pattern（好的 2 个 + 坏的 3 个）。把这 3 个坏习惯写在便利贴上，贴在显示器边。</p>
+
+<h3>练习 3：学 senior 的代码</h3>
+<p>挑一个你团队里公认写得好的 senior，找他最近一个 PR。丢给 AI："分析这段代码为什么写得好，跟 junior 写法的典型差别在哪？给我 5 个具体对比。" 把答案写成一篇 Obsidian note。</p>
+
+<h2>常见问题</h2>
+
+<h3>Q：AI review 能替代同事 review 吗？</h3>
+<p>A：不能，但能大幅提升你 PR 的起点质量。同事 review 的时间是有限的，如果你的 PR 里全是低级错误，senior 的精力就花在挑低级错误上，没时间给你讲深度问题。AI 先帮你扫一遍，同事就能聚焦在架构、设计、业务理解这些 AI 做不了的事情上。</p>
+
+<h3>Q：AI 会不会给出错误的建议？</h3>
+<p>A：会，特别是关于业务逻辑和项目特定规范的问题。规则：AI 的建议当作"提醒"，不当作"真理"。每条建议你都要自己判断是否合理。判断不了的问题拿去问 senior——这反而是一个好的 1-on-1 话题。</p>
+
+<h3>Q：我工作太忙没时间做这个 review 流程。</h3>
+<p>A：设置一个底线版本：每次 push PR 前花 3 分钟，丢 diff 给 Claude，只看"must fix"那一栏，修完再 push。3 分钟你总有。这个习惯做满 3 个月，你的 PR 质量会肉眼可见提升，被 revert / 被 comment 的次数大幅下降。</p>
+
+<h2>小结</h2>
+<p>Code review 是 junior 阶段 ROI 最高的学习方式，AI 补齐了"你没有足够多 senior 帮你 review"这个缺口。五维度框架（可读性 / 性能 / 安全 / 错误处理 / 测试覆盖）是系统 review 的基本功。最值得做的练习是把过去 3 个月的 PR 批量丢给 AI，找自己的 recurring pattern——那是你最诚实的技术体检报告。记住一条：代码跑起来只是及格，代码让后面所有人读得快才是优秀。</p>
