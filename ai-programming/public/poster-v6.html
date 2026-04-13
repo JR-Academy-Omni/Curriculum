@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding 海报生成器 V6 - Magazine Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,900;1,900&family=Noto+Serif+SC:wght@900&family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF5757;
+            --white: #FFFFFF;
+            --black: #000000;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: #000;
+            color: var(--white);
+            font-family: 'Noto Sans SC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* --- Workspace --- */
+        .workspace {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            width: 100%;
+            max-width: 1300px;
+        }
+
+        .sidebar { display: flex; flex-direction: column; gap: 30px; }
+        .control-card { background: #111; padding: 24px; border-radius: 20px; border: 1px solid #222; }
+        .section-title { font-size: 11px; font-weight: 700; color: #555; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 2px; }
+        
+        .opt-list { display: flex; flex-direction: column; gap: 8px; }
+        .opt-btn { background: #1A1A1A; border: 1px solid #333; text-align: left; padding: 12px 16px; font-size: 13px; font-weight: 600; border-radius: 12px; cursor: pointer; transition: 0.2s; color: #888; }
+        .opt-btn.active { background: #FFF; color: #000; border-color: #FFF; }
+
+        .size-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .size-btn { padding: 8px 16px; font-size: 12px; border: 1px solid #333; border-radius: 20px; background: #111; color: #888; cursor: pointer; transition: 0.2s; }
+        .size-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* --- MAGAZINE POSTER --- */
+        #poster {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            transition: all 0.8s var(--ease);
+        }
+
+        .p-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            filter: contrast(1.1) brightness(0.8) grayscale(1);
+            transition: 1s;
+        }
+
+        /* Color Wash Overlays */
+        .p-wash {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            mix-blend-mode: multiply;
+            opacity: 0.8;
+        }
+        #poster.red-wash .p-wash { background: var(--primary); }
+        #poster.blue-wash .p-wash { background: #0047FF; }
+        #poster.gold-wash .p-wash { background: #FFB800; }
+        #poster.no-wash .p-wash { display: none; }
+        #poster.no-wash .p-image { filter: contrast(1.1) brightness(0.7); }
+
+        .p-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .p-header {
+            position: absolute;
+            top: 40px; left: 40px; right: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 15px;
+        }
+        .issue { font-size: 10px; font-weight: 900; letter-spacing: 2px; }
+
+        .p-title-wrap {
+            margin-bottom: 40px;
+        }
+
+        .p-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 100px;
+            line-height: 0.85;
+            font-weight: 900;
+            letter-spacing: -5px;
+            color: #FFF;
+            text-transform: uppercase;
+        }
+
+        .p-subtitle {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 20px;
+            background: #FFF;
+            color: #000;
+            display: inline-block;
+            padding: 5px 15px;
+            transform: rotate(-1deg);
+        }
+
+        .p-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+        }
+
+        .p-info { max-width: 60%; }
+        .p-info h3 { font-size: 24px; font-weight: 900; margin-bottom: 10px; }
+        .p-info p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+        .qr-area { display: flex; align-items: flex-end; gap: 15px; }
+        .qr-box { width: 60px; height: 60px; background: #FFF; padding: 4px; }
+        .qr-box img { width: 100%; }
+        .qr-text { font-size: 8px; font-weight: 700; letter-spacing: 1px; line-height: 1.2; text-align: right; }
+
+        /* Sizes Control */
+        #poster.moment { width: 600px; height: 600px; }
+        #poster.xhs { width: 600px; height: 800px; }
+        #poster.banner { width: 900px; height: 383px; }
+        #poster.banner .p-title { font-size: 60px; }
+        #poster.long { width: 600px; height: 1100px; }
+
+        /* Actions */
+        .btn-main { background: #FFF; color: #000; border: none; padding: 14px; border-radius: 12px; font-weight: 700; width: 100%; cursor: pointer; transition: 0.2s; margin-top: 20px; }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+
+    </style>
+</head>
+<body>
+
+    <div class="workspace">
+        <div class="sidebar">
+            <div class="control-card">
+                <div class="section-title">01. Choose Narrative</div>
+                <div class="opt-list" id="dir-selector">
+                    <button class="opt-btn active" data-dir="0">THE CREATOR / 创造者</button>
+                    <button class="opt-btn" data-dir="1">THE VISIONARY / 远见者</button>
+                    <button class="opt-btn" data-dir="2">THE DISRUPTOR / 颠覆者</button>
+                </div>
+            </div>
+
+            <div class="control-card">
+                <div class="section-title">02. Visual Tone</div>
+                <div class="size-group" id="tone-selector">
+                    <button class="size-btn active" data-tone="red-wash">Red Wash</button>
+                    <button class="size-btn" data-tone="blue-wash">Blue Wash</button>
+                    <button class="size-btn" data-tone="no-wash">B&W Pro</button>
+                </div>
+            </div>
+
+            <div class="control-card">
+                <div class="section-title">03. Format</div>
+                <div class="size-group" id="size-selector">
+                    <button class="size-btn active" data-size="moment">1:1 Square</button>
+                    <button class="size-btn" data-size="xhs">3:4 Portrait</button>
+                    <button class="size-btn" data-size="banner">Banner</button>
+                </div>
+            </div>
+
+            <div class="control-card" style="background: #000; border-color: #333;">
+                <div class="section-title">Release Copy</div>
+                <div id="copy-text" style="font-size: 12px; color: #666; line-height: 1.6; margin-bottom: 15px;">...</div>
+                <button class="btn-main" onclick="copyText()">Copy Text</button>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div id="poster" class="moment red-wash">
+                <div class="p-image" id="p-img"></div>
+                <div class="p-wash"></div>
+                
+                <div class="p-header">
+                    <div class="issue">ISSUE NO. 04 / 2026</div>
+                    <div class="issue">JIANGREN ACADEMY</div>
+                </div>
+
+                <div class="p-content">
+                    <div class="p-title-wrap">
+                        <div class="p-title" id="p-title">AI<br>CODING</div>
+                        <div class="p-subtitle" id="p-sub">对话即是编程</div>
+                    </div>
+
+                    <div class="p-footer">
+                        <div class="p-info">
+                            <h3 id="p-head">人人都能学的实战课</h3>
+                            <p id="p-desc">跨越技术门槛，释放人类创意。从零开始，亲手构建属于你的数字化资产。</p>
+                        </div>
+                        <div class="qr-area">
+                            <div class="qr-text">SCAN TO<br>ENROLL NOW</div>
+                            <div class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-programming" alt="QR">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="color: #444; font-size: 11px; margin-top: 15px; font-weight: 700;">EDITORIAL DESIGN v1.0 • HIGH IMPACT EDITION</p>
+        </div>
+    </div>
+
+    <script>
+        const content = [
+            {
+                title: "AI<br>CODING",
+                sub: "思维即是架构",
+                head: "人人都能学的实战课",
+                desc: "不再受制于语法，只受制于想象力。匠人学院 5 周实战营，带你见证奇迹。",
+                img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200",
+                copy: "【AI 时代，人人都是开发者】\n匠人学院《AI Coding 实战课》，5周上线个人App。🚀"
+            },
+            {
+                title: "MVP<br>FIRST",
+                sub: "省下 $10,000",
+                head: "创业者的效率革命",
+                desc: "与其寻求昂贵的外包，不如亲自掌控核心。用 AI 快速构建产品原型，瞬间跑通闭环。",
+                img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=1200",
+                copy: "【创业者省钱指南】\n外包 $10k+ vs AI 编程 $0。抢占市场的先机。💰"
+            },
+            {
+                title: "NEXT<br>GEN",
+                sub: "年薪 $120K",
+                head: "职场新物种 AI Builder",
+                desc: "这是未来十年最抢手的身份。掌握 AI 开发全链路，重塑你的职业天花板。",
+                img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200",
+                copy: "【职场新风口】\nAI Product Builder 是2026年最抢手人才。占领高薪高地。👔"
+            }
+        ];
+
+        let curDir = 0, curSize = 'moment', curTone = 'red-wash';
+
+        function update() {
+            const p = document.getElementById('poster');
+            const d = content[curDir];
+            p.className = `${curSize} ${curTone}`;
+            document.getElementById('p-title').innerHTML = d.title;
+            document.getElementById('p-sub').innerText = d.sub;
+            document.getElementById('p-head').innerText = d.head;
+            document.getElementById('p-desc').innerText = d.desc;
+            document.getElementById('p-img').style.backgroundImage = `url(${d.img})`;
+            document.getElementById('copy-text').innerText = d.copy;
+        }
+
+        document.getElementById('dir-selector').onclick = (e) => {
+            if (e.target.dataset.dir) {
+                document.querySelectorAll('#dir-selector .opt-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curDir = parseInt(e.target.dataset.dir); update();
+            }
+        };
+
+        document.getElementById('tone-selector').onclick = (e) => {
+            if (e.target.dataset.tone) {
+                document.querySelectorAll('#tone-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curTone = e.target.dataset.tone; update();
+            }
+        };
+
+        document.getElementById('size-selector').onclick = (e) => {
+            if (e.target.dataset.size) {
+                document.querySelectorAll('#size-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curSize = e.target.dataset.size; update();
+            }
+        };
+
+        function copyText() {
+            navigator.clipboard.writeText(document.getElementById('copy-text').innerText).then(() => alert('Copy Success!'));
+        }
+
+        update();
+    </script>
+</body>
+</html>

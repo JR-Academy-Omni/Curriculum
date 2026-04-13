@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer 海报生成器 V3.1 - The Curator's Masterpiece</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --gray-light: #FBFBFB;
+            --gray-medium: #86868B;
+            --accent: #7000FF;
+            --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: #EEE;
+            color: var(--black);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* --- Header --- */
+        .nav {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        .nav h1 { font-size: 14px; font-weight: 600; letter-spacing: 1px; color: #666; }
+
+        /* --- Main Layout --- */
+        .workspace {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 60px;
+            width: 100%;
+            max-width: 1240px;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar { display: flex; flex-direction: column; gap: 40px; }
+        .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #999; margin-bottom: 12px; letter-spacing: 1.5px; }
+        .opt-btn { background: #FFF; border: 1px solid #DDD; text-align: left; padding: 12px 16px; font-size: 13px; font-weight: 500; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 4px; }
+        .opt-btn.active { background: var(--black); color: var(--white); border-color: var(--black); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .size-btn { padding: 6px 14px; font-size: 12px; border: 1px solid #DDD; border-radius: 20px; background: white; cursor: pointer; transition: 0.2s; }
+        .size-btn.active { border-color: var(--black); background: var(--black); color: white; }
+
+        /* --- POSTER CANVAS --- */
+        .canvas-area { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        
+        #poster {
+            background: var(--gray-light);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 60px 120px rgba(0,0,0,0.15);
+            transition: all 0.6s var(--ease);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        /* Art Texture & Patterns */
+        .p-texture {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 2;
+            opacity: 0.4;
+            pointer-events: none;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        .p-grid {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            opacity: 0.05;
+            background-image: radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .p-blobs {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            filter: blur(100px);
+            opacity: 0.4;
+        }
+
+        .blob {
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent), transparent);
+            transition: 1s;
+        }
+
+        /* Poster Content */
+        .poster-content {
+            position: relative;
+            z-index: 10;
+            padding: 12% 10%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Typography */
+        .p-metadata {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gray-medium);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        .p-metadata::before { content: ""; width: 20px; height: 1px; background: #DDD; }
+
+        .p-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: var(--black);
+            margin-bottom: 24px;
+        }
+
+        .p-description {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #444;
+            max-width: 85%;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            padding-left: 24px;
+        }
+
+        .p-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 40px;
+        }
+
+        .p-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .p-brand .name { font-size: 22px; font-weight: 800; letter-spacing: 3px; color: var(--black); }
+        .p-brand .sub { font-size: 11px; font-weight: 500; color: var(--gray-medium); letter-spacing: 1px; }
+
+        .qr-area { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+        .qr-box { width: 70px; height: 70px; padding: 4px; background: #FFF; border: 1px solid #EEE; }
+        .qr-box img { width: 100%; filter: grayscale(1); }
+        .qr-label { font-size: 9px; font-weight: 700; color: #999; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Themes & Sizes */
+        #poster.moment { width: 600px; height: 600px; }
+        #poster.xhs { width: 600px; height: 800px; }
+        #poster.banner { width: 900px; height: 383px; padding: 40px; }
+        #poster.banner .p-title { font-size: 42px; }
+        #poster.banner .p-description { font-size: 15px; }
+        #poster.long { width: 600px; height: 1100px; }
+
+        /* --- MODE DEFINITIONS --- */
+        #poster.dark-mode { background: #0A0A0A; color: #FFF; border-color: rgba(255,255,255,0.05); }
+        #poster.dark-mode .p-title { color: #FFF; }
+        #poster.dark-mode .p-description { color: #AAA; border-color: rgba(255,255,255,0.1); }
+        #poster.dark-mode .p-brand .name { color: #FFF; }
+        #poster.dark-mode .p-grid { background-image: radial-gradient(circle, #FFF 1px, transparent 1px); opacity: 0.03; }
+        #poster.dark-mode .qr-box { background: #111; border-color: #222; }
+        #poster.dark-mode .qr-box img { filter: invert(1); }
+
+        #poster.champagne-mode { background: #F7F3F0; color: #2D2926; }
+        #poster.navy-mode { background: #0F172A; color: #E2E8F0; }
+        #poster.sage-mode { background: #E2E8E4; color: #2C3E3A; }
+        #poster.aura-mode { background: #FFF; color: #000; }
+
+        /* Blob Logic */
+        .blob { position: absolute; width: 500px; height: 500px; border-radius: 50%; z-index: 0; transition: 1s var(--ease); }
+        .b1 { top: -10%; right: -10%; }
+        .b2 { bottom: -10%; left: -10%; }
+
+        #poster.light-mode .b1 { background: radial-gradient(circle, #7000FF10, transparent); }
+        #poster.light-mode .b2 { background: radial-gradient(circle, #FF575708, transparent); }
+        #poster.dark-mode .b1 { background: radial-gradient(circle, #7000FF20, transparent); }
+        #poster.dark-mode .b2 { background: radial-gradient(circle, #00F0FF10, transparent); }
+        #poster.navy-mode .b1 { background: radial-gradient(circle, #38BDF815, transparent); }
+        #poster.aura-mode .b1 { background: radial-gradient(circle, #C299FF, transparent); width: 600px; }
+        #poster.aura-mode .b2 { background: radial-gradient(circle, #B9FBC0, transparent); width: 600px; }
+
+        /* Copy Card */
+        .copy-card { width: 100%; max-width: 600px; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .copy-content { font-size: 14px; line-height: 1.6; color: #444; white-space: pre-wrap; margin-bottom: 20px; font-family: monospace; }
+        .btn-main { background: var(--black); color: var(--white); border: none; padding: 14px 28px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; width: 100%; }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <h1>POSTER GENERATOR PRO / V3.1</h1>
+        <div style="font-weight: 700; font-size: 12px;">AI ENGINEER BOOTCAMP</div>
+    </div>
+
+    <div class="workspace">
+        <div class="sidebar">
+            <div>
+                <div class="section-title">Visual Direction</div>
+                <div id="dir-selector">
+                    <button class="opt-btn active" data-dir="0">01. Technical Pinnacle</button>
+                    <button class="opt-btn" data-dir="1">02. Career Shift</button>
+                    <button class="opt-btn" data-dir="2">03. RAG Architecture</button>
+                    <button class="opt-btn" data-dir="3">04. Agent Ecosystem</button>
+                    <button class="opt-btn" data-dir="4">05. The P3 Path</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">Canvas Format</div>
+                <div id="size-selector" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="size-btn active" data-size="moment">1:1 Square</button>
+                    <button class="size-btn" data-size="xhs">3:4 Portrait</button>
+                    <button class="size-btn" data-size="banner">2.3:1 Banner</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">Atmosphere</div>
+                <div id="tone-selector" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="size-btn active" data-tone="light">Paper White</button>
+                    <button class="size-btn" data-tone="dark">Deep Obsidian</button>
+                    <button class="size-btn" data-tone="navy">Midnight Indigo</button>
+                    <button class="size-btn" data-tone="aura">Aura Glow</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div id="poster" class="moment">
+                <div class="p-grid"></div>
+                <div class="p-texture"></div>
+                <div class="p-blobs" id="blobs">
+                    <div class="blob b1"></div>
+                    <div class="blob b2"></div>
+                </div>
+                
+                <div class="poster-content">
+                    <div>
+                        <div class="p-metadata" id="p-meta">MODEL: AI-ENGINEER-V5 / TS: 2026.04</div>
+                        <div class="p-title" id="p-title">AI Engineer<br>精英实战营</div>
+                        <div class="p-description" id="p-desc">从 Context Engineering 到 Multi-Agent 部署。172 节实战课，定义 AI 时代的技术高度。</div>
+                    </div>
+
+                    <div class="p-footer">
+                        <div class="p-brand">
+                            <div class="name" style="letter-spacing: 2px;">匠人学院</div>
+                            <div class="sub">GLOBAL AI ENGINEERING HUB</div>
+                        </div>
+                        <div class="qr-area">
+                            <div class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-engineer-bootcamp">
+                            </div>
+                            <div class="qr-label">Scan for Access</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copy-card">
+                <div class="section-title">Social Content Preview</div>
+                <div class="copy-content" id="copy-text">...</div>
+                <button class="btn-main" onclick="copyText()">Copy Content</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const content = [
+            { title: "技术巅峰<br>定义 AI 工程师", desc: "掌握 RAG、Agent SDK、Fine-Tuning 等核心技术栈。这不是简单的应用调用，而是生产级的系统设计能力。", copy: "【AI 工程师：2026 薪资之王】\n从只会写 Prompt 到设计高可用 AI 系统。匠人学院《AI Engineer Bootcamp》带你完成从开发者到 AI 专家的华丽转身。🚀" },
+            { title: "职业跨越<br>年薪 20 万刀之路", desc: "AI Engineer 正在重塑职场天花板。12 周高强度技术进阶 + 12 周 P3 真实项目孵化，让你的简历无可挑剔。", copy: "【职场新物种】\n懂得如何调优模型，如何构建 Agent 矩阵。掌握 AI 全栈工程能力，抢占年薪 $120k-$200k 的高薪高地。👔" },
+            { title: "架构为王<br>全链路 RAG 实战", desc: "从基础检索到 GraphRAG 混合检索。深入 Context Engineering 系统设计，解决 AI 落地最后 1 公里的难题。", copy: "【硬核 RAG 实战】\n不只是简单的向量检索。掌握 GraphRAG、混合检索与 AI Eval 评测。172 节课，带你攻克 AI 落地的核心痛点。📊" },
+            { title: "Agent 矩阵<br>构建自动化未来", desc: "深入 OpenAI / Claude / Google 三大 Agent SDK。掌握 Multi-Agent 协作协议，亲手打造能独立工作的 AI 智能体。", copy: "【智能体革命】\nAgent 是 AI 发展的下一站。掌握 Multi-Agent 系统设计与 A2A 协议。加入我们，亲手构建你的 AI 帝国。🔥" },
+            { title: "从学会到就业<br>P3 项目实战", desc: "拒绝纸上谈兵。12 周真实企业项目孵化，导师来自 Meta、Microsoft 等顶尖大厂，带你跨越“学会”到“就业”的鸿沟。", copy: "【真实就业闭环】\n12周技术课程 + 12周P3职业孵化。看大厂导师如何带你完成生产级作品。你的第一款 AI 产品，就在这里诞生。🏆" }
+        ];
+
+        let curDir = 0, curSize = 'moment', curTone = 'light';
+
+        function update() {
+            const p = document.getElementById('poster');
+            const d = content[curDir];
+            p.className = `${curSize} ${curTone === 'light' ? 'light-mode' : curTone + '-mode'}`;
+            document.getElementById('p-title').innerHTML = d.title;
+            document.getElementById('p-desc').innerText = d.desc;
+            document.getElementById('copy-text').innerText = d.copy;
+            document.getElementById('p-meta').innerText = `DIR: 0${parseInt(curDir)+1} / MODE: AI-ENGINEER-ELITE / TS: 2026.04`;
+        }
+
+        document.getElementById('dir-selector').onclick = (e) => {
+            if(e.target.dataset.dir) {
+                document.querySelectorAll('#dir-selector .opt-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curDir = e.target.dataset.dir; update();
+            }
+        };
+
+        document.getElementById('size-selector').onclick = (e) => {
+            if(e.target.dataset.size) {
+                document.querySelectorAll('#size-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curSize = e.target.dataset.size; update();
+            }
+        };
+
+        document.getElementById('tone-selector').onclick = (e) => {
+            if(e.target.dataset.tone) {
+                document.querySelectorAll('#tone-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curTone = e.target.dataset.tone; update();
+            }
+        };
+
+        function copyText() {
+            navigator.clipboard.writeText(document.getElementById('copy-text').innerText).then(() => alert('已复制！'));
+        }
+
+        update();
+    </script>
+</body>
+</html>

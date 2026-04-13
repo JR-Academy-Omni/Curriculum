@@ -184,7 +184,7 @@
 | `code` | string | ✅ | 课时编号，如 `L01`、`L02` |
 | `title` | string | ✅ | 课时标题 |
 | `description` | string | ✅ | 简短描述（2-3 句话，这是销售文案） |
-| `type` | string | ✅ | `Lesson`（直播）/ `Information`（自学）/ `InteractiveLab`（互动实验） |
+| `type` | string | ✅ | `Lesson`（直播）/ `Information`（自学）/ `InteractiveLab`（互动实验）/ `Quest`（AI 主动教学实战）/ `Video`（录播）/ `Workshop` / `Assignment` / `Quiz` / `Lab` / `Roadmap` |
 | `isLive` | boolean | ✅ | 是否直播课 |
 | `duration` | number | ✅ | 时长（分钟），production 会 snap 到 30/60/90/120/150/180/240 |
 | `steps` | Step[] | ✅ | 教学步骤序列 |
@@ -197,6 +197,53 @@
 | `interviewQuestions` | InterviewQuestionRef[] | | 关联的面试题库 |
 | `isInteractiveLab` | boolean | | 是否为独立的互动实验 lesson |
 | `interactiveLabSlug` | string | | InteractiveLab 的 slug（配合 isInteractiveLab 使用） |
+| `quest` | QuestConfig | | **仅 type=Quest 时使用**。AI 主动教学的完整配置，见下方 Quest 字段说明 |
+
+### Quest 字段（type=Quest 时必填）
+
+当 `lesson.type === 'Quest'` 时，必须提供 `quest` 字段。bootcamp-sync 会用它创建 QuestGoal 并绑定到 lesson。
+
+```json
+{
+  "code": "L18a",
+  "type": "Quest",
+  "title": "实战：在你电脑上装 Claude Code",
+  "duration": 30,
+  "quest": {
+    "title": "实战：在你电脑上装 Claude Code 并完成第一个 AI 辅助项目",
+    "description": "简短描述",
+    "learningGoal": "学员学完能做什么（具体、可验证）",
+    "successCriteria": "怎么算学会了",
+    "difficulty": "beginner | intermediate | advanced",
+    "estimatedMinutes": 30,
+    "uiMode": "chat | chat-sidebar | flow-split",
+    "context": "给 AI 的教学背景（最关键字段）—— 告诉 AI 学员是谁、环境是什么、怎么教、注意什么",
+    "systemStylePrompt": "可选：覆盖 AI 默认语气",
+    "customGuardrails": "可选：追加约束",
+    "linkedResources": [
+      { "type": "wiki", "ref": "claude-code-install", "description": "安装指南" }
+    ],
+    "stepSkeleton": [
+      {
+        "title": "检查 Node.js 版本",
+        "description": "运行 node --version，需要 v20+",
+        "verificationType": "text-evidence | self-confirm | screenshot",
+        "verificationHint": "给 AI verifier 的提示",
+        "expectedEvidence": "期望看到的证据（如 v20.x.x）"
+      }
+    ],
+    "prerequisites": ["电脑上装了 Node.js 20+"],
+    "targetPlatform": "browser | local-terminal | aws-console | any",
+    "tags": ["claude-code", "vibe-coding"]
+  }
+}
+```
+
+**关键字段说明**：
+- `context`：这是 AI 教学质量的决定性字段。写得越详细，AI 教得越好。要包含：学员画像、教学环境、可能遇到的坑、教学节奏
+- `stepSkeleton`：AI 的教学大纲，AI 按这个顺序教但不会死板跟踪步骤编号
+- `uiMode`：决定前端渲染方式。Phase 1 只实现了 `chat`，其他 fallback 到 chat
+- `verificationType`：`text-evidence`（要贴命令输出）/ `self-confirm`（AI 会追问验证）/ `screenshot`（Phase 2 接 Vision API）
 
 ### Step 字段
 

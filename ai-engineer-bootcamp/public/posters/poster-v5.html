@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer 海报生成器 V5 - Bento Grid Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Serif+SC:wght@900&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7000FF;
+            --bg: #050505;
+            --card: #111112;
+            --white: #FFFFFF;
+            --border: #222;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg);
+            color: var(--white);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* --- Workspace --- */
+        .workspace {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1300px;
+        }
+
+        .sidebar { display: flex; flex-direction: column; gap: 30px; }
+        .control-card { background: #111; padding: 24px; border-radius: 20px; border: 1px solid var(--border); }
+        .section-title { font-size: 11px; font-weight: 700; color: #555; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+        
+        .opt-list { display: flex; flex-direction: column; gap: 8px; }
+        .opt-btn { background: #1A1A1A; border: 1px solid #333; text-align: left; padding: 12px 16px; font-size: 13px; font-weight: 600; border-radius: 12px; cursor: pointer; transition: 0.2s; color: #888; }
+        .opt-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .size-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .size-btn { padding: 8px 16px; font-size: 12px; border: 1px solid #333; border-radius: 20px; background: #111; color: #888; cursor: pointer; transition: 0.2s; }
+        .size-btn.active { background: white; color: black; border-color: white; }
+
+        /* --- BENTO POSTER --- */
+        #poster {
+            background: #000;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            gap: 15px;
+            transition: all 0.5s var(--ease);
+        }
+
+        .p-grid-lines {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            opacity: 0.05;
+            background-image: linear-gradient(#FFF 1px, transparent 1px), linear-gradient(90deg, #FFF 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .bento-tile {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 24px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid #222;
+            overflow: hidden;
+        }
+
+        /* Tile Configurations */
+        .tile-head { grid-column: 1 / 5; grid-row: 1 / 4; background: var(--primary); color: #FFF; justify-content: flex-end; }
+        .tile-head .eye { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 2px; margin-bottom: 15px; }
+        .tile-head h2 { font-family: 'Noto Serif SC', serif; font-size: 42px; line-height: 1.1; font-weight: 900; }
+
+        .tile-stat { grid-column: 5 / 7; grid-row: 1 / 3; text-align: center; }
+        .tile-stat .val { font-size: 42px; font-weight: 900; color: var(--primary); line-height: 1; }
+        .tile-stat .label { font-size: 10px; font-weight: 700; color: #666; margin-top: 5px; }
+
+        .tile-img { grid-column: 5 / 7; grid-row: 3 / 5; padding: 0; }
+        .tile-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .tile-desc { grid-column: 1 / 4; grid-row: 4 / 7; }
+        .tile-desc p { font-size: 15px; font-weight: 500; line-height: 1.6; color: #AAA; }
+
+        .tile-lab { grid-column: 4 / 7; grid-row: 5 / 7; background: #1A1A1A; border-color: var(--primary); }
+        .tile-lab b { font-size: 28px; color: var(--primary); }
+        .tile-lab span { font-size: 12px; font-weight: 700; color: #FFF; }
+
+        .tile-qr { grid-column: 4 / 5; grid-row: 4 / 5; padding: 10px; align-items: center; background: #FFF; }
+        .tile-qr img { width: 100%; }
+
+        /* Sizes Control */
+        #poster.moment { width: 600px; height: 600px; }
+        #poster.xhs { width: 600px; height: 800px; }
+        #poster.banner { width: 900px; height: 383px; padding: 20px; }
+        #poster.banner .tile-head h2 { font-size: 32px; }
+
+        /* Copy Panel */
+        .copy-panel { background: #111; padding: 24px; border-radius: 20px; border: 1px solid #222; margin-top: 30px; }
+        .copy-text { font-size: 13px; line-height: 1.6; color: #888; white-space: pre-wrap; margin-bottom: 20px; background: #000; padding: 15px; border-radius: 12px; }
+        .btn-main { background: white; color: black; border: none; padding: 14px; border-radius: 12px; font-weight: 700; width: 100%; cursor: pointer; transition: 0.2s; }
+        .btn-main:hover { background: var(--primary); color: white; }
+
+    </style>
+</head>
+<body>
+
+    <div class="workspace">
+        <div class="sidebar">
+            <div class="control-card">
+                <div class="section-title">Narrative Theme</div>
+                <div class="opt-list" id="dir-selector">
+                    <button class="opt-btn active" data-dir="0">THE CURRICULUM / 课程</button>
+                    <button class="opt-btn" data-dir="1">THE EFFICIENCY / 效率</button>
+                    <button class="opt-btn" data-dir="2">THE CAREER / 职业</button>
+                </div>
+            </div>
+
+            <div class="control-card">
+                <div class="section-title">Grid Format</div>
+                <div class="size-group" id="size-selector">
+                    <button class="size-btn active" data-size="moment">Moment</button>
+                    <button class="size-btn" data-size="xhs">Social</button>
+                    <button class="size-btn" data-size="banner">Banner</button>
+                </div>
+            </div>
+
+            <div class="copy-panel">
+                <div id="copy-text" class="copy-text">...</div>
+                <button class="btn-main" onclick="copyText()">Copy To Clipboard</button>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div id="poster" class="moment">
+                <div class="p-grid-lines"></div>
+                
+                <div class="bento-tile tile-head">
+                    <div class="eye" id="p-eye">AI ENGINEER ELITE</div>
+                    <h2 id="p-head">AI Engineer<br>精英实战营</h2>
+                </div>
+
+                <div class="bento-tile tile-stat">
+                    <div class="val">172+</div>
+                    <div class="label">HARDCORE LESSONS</div>
+                </div>
+
+                <div class="bento-tile tile-stat" style="grid-row: 3/5;">
+                    <div class="val">12</div>
+                    <div class="label">WEEKS TO MASTER</div>
+                </div>
+
+                <div class="bento-tile tile-img">
+                    <img id="p-img" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600" alt="Tech">
+                </div>
+
+                <div class="bento-tile tile-desc">
+                    <p id="p-desc">从 Context Engineering 到 Agent 矩阵。掌握 2026 最前沿的 AI 工程全栈能力。</p>
+                </div>
+
+                <div class="bento-tile tile-qr">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-engineer-bootcamp" alt="QR">
+                </div>
+
+                <div class="bento-tile tile-lab">
+                    <b>62+</b>
+                    <span>INTERACTIVE LABS</span>
+                </div>
+            </div>
+            <p style="color: #555; font-size: 11px; margin-top: 10px;">ENGINEERING GRID v1.0 • DESIGNED FOR ELITE DEVELOPERS</p>
+        </div>
+    </div>
+
+    <script>
+        const content = [
+            { eye: "HARDCORE CURRICULUM", head: "172 节实战课<br>定义技术高度", desc: "掌握生产级 RAG、Agent SDK、Fine-Tuning。这不是简单的应用调用，而是 AI 时代的系统架构设计。", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600", copy: "【AI 工程师：2026 薪资之王】匠人学院带你掌握 RAG、Agent 全栈。🚀" },
+            { eye: "EFFICIENCY REVOLUTION", head: "10X 提效革命<br>掌握核心架构", desc: "深入 Context Engineering 系统设计。利用 AI 辅助，将传统 6 个月的工作量缩短至 12 周交付。", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600", copy: "【效率革命】从开发者到 AI 架构师。掌握生产级系统设计能力。⏳" },
+            { eye: "CAREER EVOLUTION", head: "年薪 20 万刀<br>职场新物种", desc: "AI Engineer 正在重塑职场。12 周技术进阶 + 12 周 P3 真实项目孵化，助你抢占高薪高地。", img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600", copy: "【职州新风口】AI Product Builder 正在成为企业最稀缺的人才。👔" }
+        ];
+
+        let curDir = 0, curSize = 'moment';
+
+        function update() {
+            const p = document.getElementById('poster');
+            const d = content[curDir];
+            p.className = curSize;
+            document.getElementById('p-head').innerHTML = d.head;
+            document.getElementById('p-desc').innerText = d.desc;
+            document.getElementById('p-eye').innerText = d.eye;
+            document.getElementById('p-img').src = d.img;
+            document.getElementById('copy-text').innerText = d.copy;
+        }
+
+        document.getElementById('dir-selector').onclick = (e) => {
+            if (e.target.dataset.dir) {
+                document.querySelectorAll('#dir-selector .opt-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curDir = parseInt(e.target.dataset.dir); update();
+            }
+        };
+
+        document.getElementById('size-selector').onclick = (e) => {
+            if (e.target.dataset.size) {
+                document.querySelectorAll('#size-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curSize = e.target.dataset.size; update();
+            }
+        };
+
+        function copyText() {
+            navigator.clipboard.writeText(document.getElementById('copy-text').innerText).then(() => alert('Copy Success!'));
+        }
+
+        update();
+    </script>
+</body>
+</html>

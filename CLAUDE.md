@@ -343,6 +343,29 @@ See `DESIGN.md` for the complete presentation design system including color pale
 | **Video** | 录播视频 | 工具演示、案例拆解、操作步骤 |
 | **Info** | 图文内容 | 操作指南、模板说明、Wiki 知识 |
 | **InteractiveLab** | 互动 Lab | Prompt Lab / LLM Lab / Python Lab / Frontend Lab / AWS Lab / Azure Lab / Git Lab |
+| **Quest** | AI Tutor 主动教学实战 | AI 小花老师带你装工具 / 做真实操作 / 在你自己电脑上完成任务 |
+
+> **Quest 跟 Lab 的区别**：Lab 是在平台 iframe 内做（有自动校验），Quest 是在**真实环境**做（AI 通过对话引导 + 验证）。Quest 的 AI 是**主动**的——它先说话带节奏，不是等学员问。
+
+**Quest 在 outline.json 里怎么定义**：
+
+```json
+{
+  "code": "L18a",
+  "type": "Quest",
+  "title": "实战：在你电脑上装 Claude Code",
+  "duration": 30,
+  "quest": {
+    "title": "...",
+    "learningGoal": "学完能做什么",
+    "context": "给 AI 的教学背景 (最关键字段)",
+    "stepSkeleton": [{ "title": "步骤标题", "verificationType": "text-evidence" }],
+    "uiMode": "chat"
+  }
+}
+```
+
+详见 `curriculum/OUTLINE_JSON_FORMAT.md` 的 Quest 字段说明。`bootcamp-sync` 会自动创建 QuestGoal + 设置 lesson.questGoal。
 
 ### 🔥🔥🔥 绝对铁律：每个 Lab 必须是独立 Lesson
 

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding 海报生成器 V4 - Cinematic Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF5757;
+            --white: #FFFFFF;
+            --black: #000000;
+            --accent: #00F0FF;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: #111;
+            color: var(--white);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* --- UI Controls --- */
+        .workspace {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            width: 100%;
+            max-width: 1300px;
+        }
+
+        .sidebar { display: flex; flex-direction: column; gap: 30px; }
+        .control-card { background: #1A1A1A; padding: 20px; border-radius: 16px; border: 1px solid #333; }
+        .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #666; margin-bottom: 12px; letter-spacing: 2px; }
+        
+        .opt-list { display: flex; flex-direction: column; gap: 6px; }
+        .opt-btn { background: #222; border: 1px solid #333; text-align: left; padding: 12px 16px; font-size: 13px; font-weight: 500; border-radius: 10px; cursor: pointer; transition: 0.2s; color: #888; }
+        .opt-btn:hover { background: #333; color: #FFF; }
+        .opt-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+
+        .size-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .size-btn { padding: 6px 14px; font-size: 12px; border: 1px solid #333; border-radius: 20px; background: #222; color: #888; cursor: pointer; transition: 0.2s; }
+        .size-btn.active { background: #FFF; color: #000; border-color: #FFF; }
+
+        /* --- POSTER ENGINE --- */
+        .canvas-area { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        
+        #poster {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 80px 160px rgba(0,0,0,0.5);
+            transition: all 0.8s var(--ease);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Cinematic Background Layer */
+        .p-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            transition: 1.5s var(--ease);
+            transform: scale(1.05);
+        }
+        #poster:hover .p-image { transform: scale(1); }
+
+        /* Dark/Light Overlays */
+        .p-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            transition: 0.5s;
+        }
+        .overlay-vignette { background: radial-gradient(circle at 30% 50%, transparent 20%, rgba(0,0,0,0.8) 100%); }
+        .overlay-gradient-bottom { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%); }
+        .overlay-gradient-left { background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 50%); }
+
+        /* Poster Content Layers */
+        .poster-content {
+            position: relative;
+            z-index: 10;
+            padding: 10% 8%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .p-top { max-width: 80%; }
+        
+        .p-eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .p-eyebrow::after { content: ""; width: 30px; height: 1px; background: var(--primary); }
+
+        .p-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 54px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #FFF;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .p-description {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.8);
+            margin-top: 30px;
+            max-width: 400px;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary);
+        }
+
+        .p-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .p-brand { display: flex; flex-direction: column; gap: 4px; }
+        .p-brand .name { font-size: 24px; font-weight: 800; letter-spacing: 2px; }
+        .p-brand .tag { font-size: 10px; font-weight: 600; color: #999; letter-spacing: 1px; }
+
+        .qr-section { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .qr-code { width: 80px; height: 80px; padding: 6px; background: #FFF; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .qr-code img { width: 100%; }
+        .qr-label { font-size: 9px; font-weight: 700; color: #FFF; opacity: 0.6; letter-spacing: 1px; }
+
+        /* Sizes Control */
+        #poster.moment { width: 600px; height: 600px; }
+        #poster.xhs { width: 600px; height: 800px; }
+        #poster.banner { width: 900px; height: 383px; padding: 40px; }
+        #poster.banner .p-title { font-size: 38px; }
+        #poster.banner .p-description { display: none; }
+        #poster.long { width: 600px; height: 1100px; }
+
+        /* Theme Accents */
+        #poster.theme-gold { --primary: #FACC15; }
+        #poster.theme-blue { --primary: #00F0FF; }
+        #poster.theme-white { --primary: #FFFFFF; }
+
+        /* Copy Preview */
+        .copy-panel { width: 100%; max-width: 600px; background: #1A1A1A; padding: 25px; border-radius: 20px; border: 1px solid #333; }
+        .copy-text { font-size: 14px; line-height: 1.6; color: #AAA; white-space: pre-wrap; margin-bottom: 20px; font-family: monospace; background: #000; padding: 15px; border-radius: 10px; }
+        .btn-copy { background: #FFF; color: #000; border: none; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; width: 100%; }
+        .btn-copy:hover { background: var(--primary); color: #FFF; transform: translateY(-3px); }
+
+    </style>
+</head>
+<body>
+
+    <div class="workspace">
+        <div class="sidebar">
+            <div class="control-card">
+                <div class="section-title">01. Narrative Theme</div>
+                <div class="opt-list" id="dir-selector">
+                    <button class="opt-btn active" data-dir="0">THE CREATOR / 零基础</button>
+                    <button class="opt-btn" data-dir="1">THE FOUNDER / 创业者</button>
+                    <button class="opt-btn" data-dir="2">THE ACCELERATOR / 效率党</button>
+                    <button class="opt-btn" data-dir="3">THE FEARLESS / 焦虑终结</button>
+                    <button class="opt-btn" data-dir="4">THE EVIDENCE / 实战数据</button>
+                    <button class="opt-btn" data-dir="5">THE NEXT GEN / 职场转型</button>
+                    <button class="opt-btn" data-dir="6">THE FREELANCER / 自由职业</button>
+                    <button class="opt-btn" data-dir="7">THE ARCHITECT / 拒绝外包</button>
+                    <button class="opt-btn" data-dir="8">THE MASTERY / 学员作品</button>
+                </div>
+            </div>
+
+            <div class="control-card">
+                <div class="section-title">02. Format</div>
+                <div class="size-group" id="size-selector">
+                    <button class="size-btn active" data-size="moment">朋友圈 1:1</button>
+                    <button class="size-btn" data-size="xhs">小红书 3:4</button>
+                    <button class="size-btn" data-size="banner">公众号头图</button>
+                    <button class="size-btn" data-size="long">详情长图</button>
+                </div>
+            </div>
+
+            <div class="copy-panel">
+                <div class="section-title">Copywriting</div>
+                <div class="copy-text" id="copy-text">...</div>
+                <button class="btn-copy" onclick="copyText()">Copy To Clipboard</button>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div id="poster" class="moment">
+                <div class="p-image" id="p-bg"></div>
+                <div class="p-overlay overlay-vignette" id="p-overlay"></div>
+                
+                <div class="poster-content">
+                    <div class="p-top">
+                        <div class="p-eyebrow" id="p-eye">AI CODING SYMPOSIUM</div>
+                        <div class="p-title" id="p-title">人人都能学的<br>AI Coding 实战课</div>
+                        <div class="p-description" id="p-desc">在 AI 时代，你的想法就是唯一的门槛。从零到一，亲手构建属于你的数字化未来。</div>
+                    </div>
+
+                    <div class="p-bottom">
+                        <div class="p-brand">
+                            <div class="name">匠人学院</div>
+                            <div class="tag">GLOBAL AI LEARNING NETWORK</div>
+                        </div>
+                        <div class="qr-section">
+                            <div class="qr-code">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-programming">
+                            </div>
+                            <div class="qr-label">START YOUR JOURNEY</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="color: #666; font-size: 11px; font-weight: 600;">[ MOUSE OVER POSTER TO ZOOM / RIGHT CLICK TO SAVE ]</p>
+        </div>
+    </div>
+
+    <script>
+        const themes = [
+            {
+                eye: "THE AWAKENING",
+                title: "不会写代码？<br>开口即是编程。",
+                desc: "抛弃复杂的语法逻辑，用最直觉的对话去构建。5周时间，让小白也拥有全栈开发的能力。",
+                img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200",
+                theme: "theme-white",
+                copy: "【零基础觉醒】\n代码不再是门槛，思维才是。匠人学院《AI Coding 实战课》，带你用嘴写代码，5周上线个人App。🚀"
+            },
+            {
+                eye: "THE LIBERATION",
+                title: "省下 $10,000<br>外包费用。",
+                desc: "不再受制于缓慢的进度和昂贵的费用。学会 AI 编程，一个人就是一个全栈工作室。",
+                img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=1200",
+                theme: "theme-gold",
+                copy: "【创业者自由】\n省下1万刀外包费，自己用AI做MVP。速度快10倍，成本近乎0。💰"
+            },
+            {
+                eye: "THE EXPONENTIAL",
+                title: "传统学 6个月<br>AI 只需 5周。",
+                desc: "这是一场关于生产力的降维打击。当别人还在学 Hello World，你已经部署了全栈应用。",
+                img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200",
+                theme: "theme-blue",
+                copy: "【效率革命】\n传统编程 6 个月 vs AI 编程 5 周。\n在这个快节奏的时代，慢就是退步。⏳"
+            },
+            {
+                eye: "THE FEARLESS",
+                title: "如果你还在焦虑<br>那就开始行动。",
+                desc: "AI 不会淘汰你，只有会用 AI 的人才会。掌控工具，从现在开始改变未来。",
+                img: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=1200",
+                theme: "theme-white",
+                copy: "【击碎焦虑】\n与其担心被AI取代，不如学会如何控制AI。掌握 AI Coding，让你从焦虑变领航。🔥"
+            },
+            {
+                eye: "THE EVIDENCE",
+                title: "103 节实战课<br>29 个互动 Lab。",
+                desc: "从底层原理到 Agent 进阶部署。这不仅是一门课，而是一套完整的 AI 时代生存方案。",
+                img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200",
+                theme: "theme-blue",
+                copy: "【实战派 Choice】\n103节课、29个Lab、4个阶段。我们不讲道理，只带你做真正能运行的产品。📊"
+            },
+            {
+                eye: "THE EVOLUTION",
+                title: "抢占职场新风口<br>AI Builder。",
+                desc: "成为全球首批 AI Builder，掌握从创意到产品的全链路开发能力。开启你的高薪职业第二曲线。",
+                img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200",
+                theme: "theme-gold",
+                copy: "【职业新物种】\nAI Product Builder 是2026年最抢手人才。跨越背景，用 AI 重塑职业天花板。👔"
+            },
+            {
+                eye: "THE AUTONOMY",
+                title: "碎片时间里<br>藏着第二职业。",
+                desc: "每天 1 小时，用 AI 构建你的数字化资产。无需辞职，在家即可撬动全球市场。",
+                img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
+                theme: "theme-white",
+                copy: "【自由生活】\n用碎片时间，在家里就能开发出全球使用的产品。AI Coding 让副业如此简单。🏡"
+            },
+            {
+                eye: "THE MASTERMIND",
+                title: "彻底告别<br>外包烂尾坑。",
+                desc: "学会 AI 编程，即便不写每一行代码，你也能看透技术逻辑，精准把控项目的每一次心跳。",
+                img: "https://images.unsplash.com/photo-1521791136064-7986c29596ad?auto=format&fit=crop&q=80&w=1200",
+                theme: "theme-white",
+                copy: "【避坑指南】\n为什么外包总是失败？因为你无法审视技术。学会AI编程，自己就是CTO。💸"
+            },
+            {
+                eye: "THE SHOWCASE",
+                title: "见证 500+ 位<br>学友的上线作品。",
+                desc: "从 AI 营销页到全自动 Agent。看平凡人如何用 AI 释放不凡的创造力。你，就是下一个。",
+                img: "https://images.unsplash.com/photo-1522071823991-b5ae72647c48?auto=format&fit=crop&q=80&w=1200",
+                theme: "theme-blue",
+                copy: "【案例见证】\n看到这些非技术同学做出的 App，你还有什么理由等待？5周时间，你也行。🏆"
+            }
+        ];
+
+        let curDir = 0, curSize = 'moment';
+
+        function update() {
+            const p = document.getElementById('poster');
+            const d = themes[curDir];
+            p.className = `${curSize} ${d.theme}`;
+            document.getElementById('p-bg').style.backgroundImage = `url(${d.img})`;
+            document.getElementById('p-eye').innerText = d.eye;
+            document.getElementById('p-title').innerHTML = d.title;
+            document.getElementById('p-desc').innerText = d.desc;
+            document.getElementById('copy-text').innerText = d.copy;
+
+            // Adjust Overlay based on size
+            const overlay = document.getElementById('p-overlay');
+            if (curSize === 'banner') {
+                overlay.className = 'p-overlay overlay-gradient-left';
+            } else {
+                overlay.className = 'p-overlay overlay-vignette';
+            }
+        }
+
+        document.getElementById('dir-selector').onclick = (e) => {
+            if (e.target.dataset.dir) {
+                document.querySelectorAll('#dir-selector .opt-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curDir = parseInt(e.target.dataset.dir); update();
+            }
+        };
+
+        document.getElementById('size-selector').onclick = (e) => {
+            if (e.target.dataset.size) {
+                document.querySelectorAll('#size-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curSize = e.target.dataset.size; update();
+            }
+        };
+
+        function copyText() {
+            navigator.clipboard.writeText(document.getElementById('copy-text').innerText).then(() => alert('Copy Success!'));
+        }
+
+        update();
+    </script>
+</body>
+</html>

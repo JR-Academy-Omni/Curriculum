@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding 宣传海报生成器 V1 - CyberTech Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700;900&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF5757;
+            --accent: #00F0FF;
+            --bg-dark: #0A0F1E;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #05070A;
+            color: #fff;
+            font-family: 'Noto Sans SC', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        /* --- Header & Tabs --- */
+        header {
+            width: 100%;
+            background: rgba(10, 15, 30, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .tab-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: #888;
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(255, 87, 87, 0.3);
+        }
+
+        /* --- Main Layout --- */
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 40px;
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        /* --- Control Panel (Left) --- */
+        .controls {
+            flex: 0 0 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .control-section {
+            background: #111827;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .control-section h3 {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .direction-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .dir-btn {
+            text-align: left;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            color: #bbb;
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dir-btn:hover { background: rgba(255,255,255,0.08); color: #fff; }
+        .dir-btn.active {
+            background: linear-gradient(90deg, #1E293B 0%, #334155 100%);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .dir-btn span { font-size: 18px; }
+
+        /* --- Poster Display Area (Right) --- */
+        .poster-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* --- THE POSTER ITSELF --- */
+        #poster {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* Dimensions set via JS */
+        }
+
+        /* --- Poster Style Elements --- */
+        .p-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6);
+        }
+
+        .p-noise {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            opacity: 0.15;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        .p-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            padding: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Theme Variants */
+        #poster.theme-blue { --theme-color: #00F0FF; background: radial-gradient(circle at top right, #1E293B, #0F172A); }
+        #poster.theme-purple { --theme-color: #A855F7; background: radial-gradient(circle at bottom left, #2E1065, #000); }
+        #poster.theme-gold { --theme-color: #FACC15; background: linear-gradient(135deg, #111, #1C1917); }
+        #poster.theme-red { --theme-color: #EF4444; background: radial-gradient(circle at center, #450A0A, #000); }
+
+        .headline {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            background: linear-gradient(to bottom, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subheadline {
+            font-size: 18px;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .p-middle {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 24px;
+            margin: 20px 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .p-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 20px;
+        }
+
+        .p-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .qr-code {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        .copy-area {
+            width: 100%;
+            max-width: 600px;
+            background: #111827;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .copy-text {
+            background: #000;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #bbb;
+            white-space: pre-wrap;
+            margin-bottom: 15px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .btn-action {
+            width: 100%;
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-action:hover { background: var(--accent); color: #000; transform: translateY(-2px); }
+
+        @media (max-width: 900px) {
+            .container { flex-direction: column; }
+            .controls { flex: none; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Coding 海报生成器 <span style="color:var(--primary)">V1</span></h1>
+        <div class="tab-group" id="channel-tabs">
+            <button class="tab-btn active" data-channel="moment">朋友圈 (1:1)</button>
+            <button class="tab-btn" data-channel="xhs">小红书 (3:4)</button>
+            <button class="tab-btn" data-channel="banner">公众号头图 (2.35:1)</button>
+            <button class="tab-btn" data-channel="long">详情长图 (540xAuto)</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Controls -->
+        <div class="controls">
+            <div class="control-section">
+                <h3>选择海报方向</h3>
+                <div class="direction-grid" id="direction-tabs">
+                    <button class="dir-btn active" data-dir="0"><span>🚀</span> AI Coding 新范式</button>
+                    <button class="dir-btn" data-dir="1"><span>💰</span> CTO 级省钱</button>
+                    <button class="dir-btn" data-dir="2"><span>⏳</span> 时间线之战</button>
+                    <button class="dir-btn" data-dir="3"><span>🔥</span> 淘汰焦虑</button>
+                    <button class="dir-btn" data-dir="4"><span>📊</span> 数据说话</button>
+                    <button class="dir-btn" data-dir="5"><span>👔</span> 职业天花板</button>
+                    <button class="dir-btn" data-dir="6"><span>🏡</span> 副业生活</button>
+                    <button class="dir-btn" data-dir="7"><span>💸</span> 拒绝外包坑</button>
+                    <button class="dir-btn" data-dir="8"><span>🏆</span> 学员作品</button>
+                </div>
+            </div>
+
+            <div class="copy-area">
+                <h3>宣传文案预览</h3>
+                <div class="copy-text" id="copywriting-text">加载中...</div>
+                <button class="btn-action" onclick="copyText()">复制文案</button>
+            </div>
+
+            <a href="curriculum.html" style="color: #666; text-decoration: none; font-size: 14px; text-align: center; margin-top: 10px;">← 返回课程大纲</a>
+        </div>
+
+        <!-- Poster Display -->
+        <div class="poster-wrapper">
+            <div id="poster">
+                <div class="p-bg" id="poster-bg"></div>
+                <div class="p-noise"></div>
+                <div class="p-content">
+                    <div class="p-top">
+                        <div class="subheadline" id="p-sub">AI-POWERED CREATIVITY</div>
+                        <div class="headline" id="p-head">人人都能学的<br>AI Coding</div>
+                    </div>
+
+                    <div class="p-middle" id="p-mid-content">
+                        <!-- Dynamic Content Inject -->
+                    </div>
+
+                    <div class="p-footer">
+                        <div class="p-brand">
+                            <div class="logo-circle">匠</div>
+                            <div>
+                                <div style="font-weight:700; font-size:16px;">匠人学院</div>
+                                <div style="font-size:10px; color:#888;">jiangren.com.au</div>
+                            </div>
+                        </div>
+                        <div class="qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-programming" style="width:100%;" alt="QR">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="color:#666; font-size:12px;">提示：右键图片点击“存储图像”即可发布</p>
+        </div>
+    </div>
+
+    <script>
+        const config = {
+            channels: {
+                moment: { w: 540, h: 540, ratio: "1:1" },
+                xhs: { w: 540, h: 720, ratio: "3:4" },
+                banner: { w: 900, h: 383, ratio: "2.35:1" },
+                long: { w: 540, h: 1000, ratio: "Long" }
+            },
+            directions: [
+                {
+                    head: "不会写代码？<br>说话就是编程。",
+                    sub: "ZERO CODE EXPERIENCE",
+                    mid: "把想法告诉 AI，代码实时生成。<br><br><span style='color:var(--accent)'>✓ 0 语法基础要求<br>✓ 5周出个人作品<br>✓ 全中文对话交互</span>",
+                    theme: "theme-blue",
+                    bg: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
+                    copy: "想做个 App 却被代码劝退？\nAI 时代，说话就是编程！\n零基础小白也能 5 周上线全栈应用。\n🚀 全球华人学习 AI 第一站：匠人学院"
+                },
+                {
+                    head: "省下 $10,000<br>外包费用。",
+                    sub: "FOR STARTUP FOUNDERS",
+                    mid: "<div style='background:rgba(0,0,0,0.3); padding:15px; border-radius:12px; border:1px solid var(--theme-color)'><b>传统外包:</b> $10k+ / 3月 / 难沟通<br><b>AI 编程:</b> $0 / 1周 / 自己掌控</div>",
+                    theme: "theme-gold",
+                    bg: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=1000",
+                    copy: "外包 $10,000 vs 自己做 $0。\n创业者必修课：用 AI 编程快速跑通 MVP。\n别让高昂的开发费阻碍你的创意！"
+                },
+                {
+                    head: "传统 6个月放弃<br>AI 5周上线。",
+                    sub: "EFFICIENCY REVOLUTION",
+                    mid: "<b>⌛ 时间线对比:</b><br><div style='height:8px; width:100%; background:#333; margin:10px 0; position:relative; border-radius:4px;'><div style='position:absolute; left:0; width:15%; height:100%; background:var(--theme-color); border-radius:4px;'></div></div><small>AI 编程 (5周)</small><br><div style='height:8px; width:100%; background:#333; margin:10px 0; position:relative; border-radius:4px;'><div style='position:absolute; left:0; width:100%; height:100%; background:#666; border-radius:4px;'></div></div><small>传统学习 (24周+)</small>",
+                    theme: "theme-purple",
+                    bg: "https://images.unsplash.com/photo-1508921334172-b68ed301282a?auto=format&fit=crop&q=80&w=1000",
+                    copy: "为什么大多数人学编程会半途而废？\n因为反馈太慢！\nAI Coding 让你第一节课就做出东西，5周直接部署上线。"
+                },
+                {
+                    head: "如果你还在焦虑<br>那就开始行动。",
+                    sub: "EMOTION & ACTION",
+                    mid: "<span style='font-size:32px; font-weight:900;'>不要成为被 AI 淘汰的人<br><span style='color:var(--theme-color)'>要成为用 AI 淘汰别人的人</span></span>",
+                    theme: "theme-red",
+                    bg: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=1000",
+                    copy: "AI 会取代程序员吗？\n不，会用 AI 的程序员会取代不会用的。\n掌握 AI Coding，让你从焦虑者变身领跑者。"
+                },
+                {
+                    head: "103 节实战课<br>29 个互动 Lab。",
+                    sub: "HARDCORE DATA",
+                    mid: "<div style='display:grid; grid-template-columns:1fr 1fr; gap:10px;'><div style='background:#222; padding:15px; border-radius:12px;'><b>4 阶段</b><br>从基础到Agent</div><div style='background:#222; padding:15px; border-radius:12px;'><b>24/7</b><br>AI 助教答疑</div></div>",
+                    theme: "theme-blue",
+                    bg: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000",
+                    copy: "103节课、29个互动Lab、4个进阶阶段。\n这不是那种泛泛而谈的 AI 课，这是带你真正写出产品的实战营。"
+                },
+                {
+                    head: "职场新身份：<br>AI Builder。",
+                    sub: "CAREER UPGRADE",
+                    mid: "<div style='font-size:20px; border-left:4px solid var(--theme-color); padding-left:15px;'>平均年薪 $80k - $120k<br>正在成为企业最抢手人才</div>",
+                    theme: "theme-gold",
+                    bg: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000",
+                    copy: "职场转型风口已到！\nAI Product Builder 年薪高达 $120K。\n不管你之前是什么背景，掌握 AI 编程就是掌握了未来职场。 "
+                },
+                {
+                    head: "碎片时间学习<br>开启第二职业。",
+                    sub: "SIDE HUSTLE FREEDOM",
+                    mid: "<b>📅 学习时间表:</b><br>午休 30min → 一个功能组件<br>晚休 1hr → 一个逻辑模块<br>周六 4hr → 整个应用部署",
+                    theme: "theme-purple",
+                    bg: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000",
+                    copy: "宝妈/职场人如何低成本开启副业？\nAI Coding 极大降低了技术门槛。\n每天 1 小时，用 5 周时间给自己做个被动收入工具。"
+                },
+                {
+                    head: "别再花钱买<br>外包的“垃圾”。",
+                    sub: "AVOID OUTSOURCING TRAPS",
+                    mid: "<div style='font-size:14px;'>❌ 沟通反复 20 次<br>❌ 无法二次开发<br>❌ 维护费无底洞<br><b style='color:var(--accent)'>✅ 自己用 AI 做，省钱更省心</b></div>",
+                    theme: "theme-red",
+                    bg: "https://images.unsplash.com/photo-1521791136064-7986c29596ad?auto=format&fit=crop&q=80&w=1000",
+                    copy: "请外包公司做的产品改不动、不能维护？\n这门课教你从零开始，用 AI 自己维护项目。\n最好的开发者就是你自己！"
+                },
+                {
+                    head: "看看他们<br>5周内做了什么。",
+                    sub: "STUDENT SHOWCASE",
+                    mid: "<div style='background:rgba(255,255,255,0.1); height:120px; border-radius:12px; display:flex; align-items:center; justify-content:center;'>[ 真实学员作品 ]</div><br><small>已有 500+ 学员成功上线个人 App</small>",
+                    theme: "theme-blue",
+                    bg: "https://images.unsplash.com/photo-1522071823991-b5ae72647c48?auto=format&fit=crop&q=80&w=1000",
+                    copy: "真实学员案例：5周从零到上线。\n不要只是看，来加入他们，亲自做出你人生中第一个 AI 应用。"
+                }
+            ]
+        };
+
+        let currentChannel = 'moment';
+        let currentDir = 0;
+
+        function updatePoster() {
+            const chan = config.channels[currentChannel];
+            const dir = config.directions[currentDir];
+            const poster = document.getElementById('poster');
+
+            poster.style.width = chan.w + 'px';
+            poster.style.height = chan.h === 1000 ? 'auto' : chan.h + 'px';
+            if (chan.h === 1000) poster.style.minHeight = '800px';
+
+            document.getElementById('p-head').innerHTML = dir.head;
+            document.getElementById('p-sub').innerText = dir.sub;
+            document.getElementById('p-mid-content').innerHTML = dir.mid;
+            document.getElementById('poster-bg').style.backgroundImage = `url(${dir.bg})`;
+            document.getElementById('copywriting-text').innerText = dir.copy;
+
+            poster.className = '';
+            poster.classList.add(dir.theme);
+
+            if (currentChannel === 'banner') {
+                document.querySelector('.p-content').style.flexDirection = 'row';
+                document.querySelector('.p-top').style.width = '60%';
+                document.getElementById('p-mid-content').style.width = '35%';
+                document.getElementById('p-mid-content').style.marginTop = '0';
+            } else {
+                document.querySelector('.p-content').style.flexDirection = 'column';
+                document.querySelector('.p-top').style.width = '100%';
+                document.getElementById('p-mid-content').style.width = '100%';
+            }
+        }
+
+        document.getElementById('channel-tabs').onclick = (e) => {
+            if (e.target.dataset.channel) {
+                document.querySelectorAll('#channel-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentChannel = e.target.dataset.channel;
+                updatePoster();
+            }
+        };
+
+        document.getElementById('direction-tabs').onclick = (e) => {
+            const btn = e.target.closest('.dir-btn');
+            if (btn && btn.dataset.dir) {
+                document.querySelectorAll('#direction-tabs .dir-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentDir = parseInt(btn.dataset.dir);
+                updatePoster();
+            }
+        };
+
+        function copyText() {
+            const text = document.getElementById('copywriting-text').innerText;
+            navigator.clipboard.writeText(text).then(() => alert('文案已复制！'));
+        }
+
+        updatePoster();
+    </script>
+</body>
+</html>

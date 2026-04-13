@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer 海报生成器 V2 - Brutalist Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --jr-red: #FF5757;
+            --jr-purple: #7000FF;
+            --black: #000000;
+            --white: #ffffff;
+            --shadow: 8px 8px 0px var(--black);
+            --border: 3px solid var(--black);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #111; color: var(--black); font-family: 'Noto Sans SC', sans-serif; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+
+        .title-main { font-size: 32px; font-weight: 900; background: var(--jr-purple); color: #FFF; padding: 10px 30px; border: var(--border); box-shadow: var(--shadow); margin-bottom: 40px; transform: rotate(-1deg); }
+
+        .container { display: grid; grid-template-columns: 350px 1fr; gap: 40px; max-width: 1200px; width: 100%; }
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .card { background: var(--white); border: var(--border); box-shadow: 4px 4px 0px var(--black); padding: 20px; }
+        .card h3 { font-size: 12px; text-transform: uppercase; background: var(--black); color: #FFF; padding: 2px 8px; display: inline-block; margin-bottom: 15px; }
+
+        .btn { background: #FFF; border: 2px solid #000; padding: 10px; font-weight: 700; cursor: pointer; width: 100%; text-align: left; margin-bottom: 8px; }
+        .btn.active { background: var(--jr-purple); color: #FFF; }
+
+        #poster { background-color: #FFF; border: 4px solid var(--black); box-shadow: 15px 15px 0px var(--jr-purple); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+        .p-header { background: var(--black); color: #FFF; padding: 15px; display: flex; justify-content: space-between; font-family: 'Space Grotesk'; font-weight: 700; }
+        
+        .p-body { flex: 1; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+        .p-headline { font-size: 60px; line-height: 0.9; font-weight: 900; letter-spacing: -2px; }
+        .p-headline span.outline { -webkit-text-stroke: 2px var(--black); color: transparent; }
+        
+        .p-badge { background: var(--jr-purple); color: #FFF; padding: 5px 15px; font-weight: 900; border: 2px solid var(--black); width: fit-content; transform: rotate(2deg); }
+        .p-content-box { background: #F5F5F5; border: 3px solid var(--black); padding: 20px; box-shadow: 6px 6px 0px var(--black); }
+
+        .p-footer { padding: 20px 40px; border-top: 4px solid var(--black); display: flex; justify-content: space-between; align-items: flex-end; }
+        .p-logo { font-size: 24px; font-weight: 900; letter-spacing: 2px; }
+        .qr-box { width: 70px; height: 70px; border: 2px solid #000; }
+
+        #poster.moment { width: 600px; height: 600px; }
+        #poster.xhs { width: 600px; height: 800px; }
+        #poster.banner { width: 900px; height: 383px; }
+
+        .copy-box { background: #000; color: #0F0; padding: 20px; font-family: monospace; font-size: 12px; margin-top: 20px; }
+
+    </style>
+</head>
+<body>
+
+    <h1 class="title-main">AI ENGINEER POSTER V2</h1>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="card">
+                <h3>01. Select Theme</h3>
+                <div id="dir-tabs">
+                    <button class="btn active" data-dir="0">THE ARCHITECT / 架构</button>
+                    <button class="btn" data-dir="1">THE ELITE / 精英</button>
+                    <button class="btn" data-dir="2">THE DEPLOYER / 部署</button>
+                </div>
+            </div>
+            <div class="card">
+                <h3>02. Format</h3>
+                <div id="size-tabs">
+                    <button class="btn active" data-size="moment">Moment</button>
+                    <button class="btn" data-size="xhs">Social</button>
+                    <button class="btn" data-size="banner">Banner</button>
+                </div>
+            </div>
+            <div class="copy-box" id="copy-text">...</div>
+        </div>
+
+        <div class="canvas-area">
+            <div id="poster" class="moment">
+                <div class="p-header">
+                    <div>AI_ENGINEER_BOOTCAMP</div>
+                    <div>V2.0_ELITE</div>
+                </div>
+                <div class="p-body">
+                    <div class="p-badge" id="p-badge">12 WEEKS TO MASTER</div>
+                    <div class="p-headline" id="p-head">BEYOND<br><span class="outline">PROMPT</span></div>
+                    <div class="p-content-box" id="p-content">掌握生产级 RAG、Agent SDK、Fine-Tuning。定义 AI 时代的系统架构设计。</div>
+                </div>
+                <div class="p-footer">
+                    <div class="p-logo">匠人学院</div>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-engineer-bootcamp" class="qr-box">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const data = [
+            { head: "BEYOND<br><span class='outline'>PROMPT</span>", badge: "12 WEEKS TO MASTER", content: "掌握生产级 RAG、Agent SDK、Fine-Tuning。这不是简单的应用调用，而是 AI 时代的系统架构设计。", copy: "【AI 工程师：专家之路】匠人学院带你掌握 RAG、Agent 全栈。🚀" },
+            { head: "SYSTEM<br><span class='outline'>EVOLVE</span>", badge: "CAREER SHIFT", content: "12 周技术进阶 + 12 周 P3 真实项目孵化。导师来自顶尖大厂，助你抢占高薪高地。", copy: "【职场新物种】掌握 AI 工程能力，抢占年薪 $120k-$200k 岗位。👔" },
+            { head: "AGENT<br><span class='outline'>EMPIRE</span>", badge: "THE FUTURE", content: "掌握 Multi-Agent 系统设计与 A2A 协议。深入三大 SDK，亲手打造能独立工作的 AI 智能体帝国。", copy: "【智能体革命】构建你的自动化 AI 未来。🔥" }
+        ];
+
+        let curDir = 0, curSize = 'moment';
+
+        function render() {
+            const item = data[curDir];
+            document.getElementById('p-head').innerHTML = item.head;
+            document.getElementById('p-badge').innerText = item.badge;
+            document.getElementById('p-content').innerText = item.content;
+            document.getElementById('copy-text').innerText = item.copy;
+            document.getElementById('poster').className = curSize;
+        }
+
+        document.getElementById('dir-tabs').onclick = (e) => {
+            if(e.target.dataset.dir) {
+                document.querySelectorAll('#dir-tabs .btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curDir = e.target.dataset.dir; render();
+            }
+        };
+
+        document.getElementById('size-tabs').onclick = (e) => {
+            if(e.target.dataset.size) {
+                document.querySelectorAll('#size-tabs .btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curSize = e.target.dataset.size; render();
+            }
+        };
+
+        render();
+    </script>
+</body>
+</html>

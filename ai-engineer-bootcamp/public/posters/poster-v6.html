@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer 海报生成器 V6 - Magazine Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7000FF;
+            --white: #FFFFFF;
+            --black: #000000;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: #000;
+            color: var(--white);
+            font-family: 'Noto Sans SC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* --- Workspace --- */
+        .workspace {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            width: 100%;
+            max-width: 1300px;
+        }
+
+        .sidebar { display: flex; flex-direction: column; gap: 30px; }
+        .control-card { background: #111; padding: 24px; border-radius: 20px; border: 1px solid #222; }
+        .section-title { font-size: 11px; font-weight: 700; color: #555; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 2px; }
+        
+        .opt-list { display: flex; flex-direction: column; gap: 8px; }
+        .opt-btn { background: #1A1A1A; border: 1px solid #333; text-align: left; padding: 12px 16px; font-size: 13px; font-weight: 600; border-radius: 12px; cursor: pointer; transition: 0.2s; color: #888; }
+        .opt-btn.active { background: #FFF; color: #000; border-color: #FFF; }
+
+        .size-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .size-btn { padding: 8px 16px; font-size: 12px; border: 1px solid #333; border-radius: 20px; background: #111; color: #888; cursor: pointer; transition: 0.2s; }
+        .size-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* --- MAGAZINE POSTER --- */
+        #poster {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            transition: all 0.8s var(--ease);
+        }
+
+        .p-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            filter: contrast(1.1) brightness(0.8) grayscale(1);
+            transition: 1s;
+        }
+
+        .p-wash {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            mix-blend-mode: multiply;
+            opacity: 0.8;
+        }
+        #poster.purple-wash .p-wash { background: var(--primary); }
+        #poster.blue-wash .p-wash { background: #0047FF; }
+        #poster.no-wash .p-wash { display: none; }
+
+        .p-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .p-header {
+            position: absolute;
+            top: 40px; left: 40px; right: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 15px;
+        }
+        .issue { font-size: 10px; font-weight: 900; letter-spacing: 2px; }
+
+        .p-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 90px;
+            line-height: 0.85;
+            font-weight: 900;
+            letter-spacing: -5px;
+            color: #FFF;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .p-subtitle {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 20px;
+            background: #FFF;
+            color: #000;
+            display: inline-block;
+            padding: 5px 15px;
+            transform: rotate(-1deg);
+        }
+
+        .p-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+        }
+
+        .p-info h3 { font-size: 24px; font-weight: 900; margin-bottom: 10px; }
+        .p-info p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; max-width: 300px; }
+
+        .qr-box { width: 60px; height: 60px; background: #FFF; padding: 4px; }
+        .qr-box img { width: 100%; }
+
+        /* Sizes Control */
+        #poster.moment { width: 600px; height: 600px; }
+        #poster.xhs { width: 600px; height: 800px; }
+        #poster.banner { width: 900px; height: 383px; }
+
+        /* Actions */
+        .btn-main { background: #FFF; color: #000; border: none; padding: 14px; border-radius: 12px; font-weight: 700; width: 100%; cursor: pointer; transition: 0.2s; margin-top: 20px; }
+        .btn-main:hover { transform: translateY(-2px); }
+
+    </style>
+</head>
+<body>
+
+    <div class="workspace">
+        <div class="sidebar">
+            <div class="control-card">
+                <div class="section-title">Narrative</div>
+                <div class="opt-list" id="dir-selector">
+                    <button class="opt-btn active" data-dir="0">THE ENGINEER</button>
+                    <button class="opt-btn" data-dir="1">THE ARCHITECT</button>
+                    <button class="opt-btn" data-dir="2">THE DISRUPTOR</button>
+                </div>
+            </div>
+
+            <div class="control-card">
+                <div class="section-title">Visual Tone</div>
+                <div class="size-group" id="tone-selector">
+                    <button class="size-btn active" data-tone="purple-wash">Purple</button>
+                    <button class="size-btn" data-tone="blue-wash">Blue</button>
+                    <button class="size-btn" data-tone="no-wash">B&W</button>
+                </div>
+            </div>
+
+            <div class="control-card">
+                <div class="section-title">Format</div>
+                <div class="size-group" id="size-selector">
+                    <button class="size-btn active" data-size="moment">Moment</button>
+                    <button class="size-btn" data-size="xhs">Social</button>
+                    <button class="size-btn" data-size="banner">Banner</button>
+                </div>
+            </div>
+
+            <div class="control-card" style="background: #000; border-color: #333;">
+                <div id="copy-text" style="font-size: 12px; color: #666; line-height: 1.6; margin-bottom: 15px;">...</div>
+                <button class="btn-main" onclick="copyText()">Copy Text</button>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div id="poster" class="moment purple-wash">
+                <div class="p-image" id="p-img"></div>
+                <div class="p-wash"></div>
+                
+                <div class="p-header">
+                    <div class="issue">ISSUE NO. 05 / 2026</div>
+                    <div class="issue">JIANGREN ACADEMY</div>
+                </div>
+
+                <div class="p-content">
+                    <div class="p-title" id="p-title">AI<br>ENGINEER</div>
+                    <div class="p-subtitle" id="p-sub">掌握核心系统架构</div>
+
+                    <div class="p-footer">
+                        <div class="p-info">
+                            <h3 id="p-head">精英实战实战营</h3>
+                            <p id="p-desc">172 节实战课掌握 RAG 与 Agent 矩阵。定义 AI 时代的技术高度。</p>
+                        </div>
+                        <div class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-engineer-bootcamp" alt="QR">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const content = [
+            { title: "AI<br>ENGINEER", sub: "掌握核心系统架构", head: "精英实战营", desc: "掌握生产级 RAG、Agent SDK、Fine-Tuning。这不是简单的应用调用，而是 AI 时代的系统架构设计。", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200", copy: "【AI 工程师：2026 薪资之王】匠人学院带你掌握 RAG、Agent 全栈。🚀" },
+            { title: "SYSTEM<br>ARCHITECT", sub: "年薪 20 万刀之路", head: "职业进化之旅", desc: "12 周高强度技术进阶 + 12 周 P3 真实项目孵化。导师来自 Meta、Microsoft，助你抢占高薪高地。", img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200", copy: "【职场新物种】掌握 AI 全栈工程能力，重塑职业天花板。👔" },
+            { title: "AGENT<br>MASTER", sub: "构建自动化未来", head: "智能体革命", desc: "掌握 Multi-Agent 系统设计与 A2A 协议。加入我们，亲手构建你的 AI 帝国。", img: "https://images.unsplash.com/photo-1531746790731-6c087fdec0ed?auto=format&fit=crop&q=80&w=1200", copy: "【智能体革命】掌握 Multi-Agent 系统设计。构建你的自动化 AI 未来。🔥" }
+        ];
+
+        let curDir = 0, curSize = 'moment', curTone = 'purple-wash';
+
+        function update() {
+            const p = document.getElementById('poster');
+            const d = content[curDir];
+            p.className = `${curSize} ${curTone}`;
+            document.getElementById('p-title').innerHTML = d.title;
+            document.getElementById('p-sub').innerText = d.sub;
+            document.getElementById('p-head').innerText = d.head;
+            document.getElementById('p-desc').innerText = d.desc;
+            document.getElementById('p-img').style.backgroundImage = `url(${d.img})`;
+            document.getElementById('copy-text').innerText = d.copy;
+        }
+
+        document.getElementById('dir-selector').onclick = (e) => {
+            if (e.target.dataset.dir) {
+                document.querySelectorAll('#dir-selector .opt-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curDir = parseInt(e.target.dataset.dir); update();
+            }
+        };
+
+        document.getElementById('tone-selector').onclick = (e) => {
+            if (e.target.dataset.tone) {
+                document.querySelectorAll('#tone-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curTone = e.target.dataset.tone; update();
+            }
+        };
+
+        document.getElementById('size-selector').onclick = (e) => {
+            if (e.target.dataset.size) {
+                document.querySelectorAll('#size-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curSize = e.target.dataset.size; update();
+            }
+        };
+
+        function copyText() {
+            navigator.clipboard.writeText(document.getElementById('copy-text').innerText).then(() => alert('Copy Success!'));
+        }
+
+        update();
+    </script>
+</body>
+</html>

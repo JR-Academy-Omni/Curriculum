@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tutor Quest — 小花老师主动教学</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    color: #fff;
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .poster {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* Badge */
+  .badge {
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-radius: 20px;
+    color: #fff;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    padding: 6px 18px;
+    text-transform: uppercase;
+  }
+
+  /* Hero */
+  h1 {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  h1 span { color: #a78bfa; }
+
+  .subtitle {
+    color: rgba(255,255,255,0.7);
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+    max-width: 600px;
+  }
+
+  /* Chat preview */
+  .chat-preview {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+  .chat-header {
+    background: rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+  }
+  .chat-avatar {
+    align-items: center;
+    background: linear-gradient(135deg, #6366f1, #a78bfa);
+    border-radius: 50%;
+    display: flex;
+    font-size: 24px;
+    height: 44px;
+    justify-content: center;
+    width: 44px;
+  }
+  .chat-name { font-weight: 700; font-size: 15px; }
+  .chat-status { color: #22c55e; font-size: 12px; }
+  .chat-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .bubble {
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 80%;
+    padding: 14px 18px;
+  }
+  .bubble.ai {
+    align-self: flex-start;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .bubble.user {
+    align-self: flex-end;
+    background: #6366f1;
+  }
+  .bubble code {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    font-family: 'SF Mono', monospace;
+    font-size: 13px;
+    padding: 2px 6px;
+  }
+
+  /* Features grid */
+  .features {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 48px;
+  }
+  @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
+
+  .feature-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 24px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .feature-card:hover {
+    border-color: rgba(167,139,250,0.4);
+    transform: translateY(-2px);
+  }
+  .feature-icon { font-size: 28px; margin-bottom: 12px; }
+  .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .feature-desc { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.5; }
+
+  /* Comparison */
+  .comparison {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+  .comp-header {
+    background: rgba(99,102,241,0.15);
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 24px;
+    text-align: center;
+  }
+  .comp-row {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .comp-row:last-child { border-bottom: none; }
+  .comp-cell {
+    font-size: 14px;
+    padding: 14px 16px;
+  }
+  .comp-cell:first-child {
+    color: rgba(255,255,255,0.5);
+    font-weight: 600;
+  }
+  .comp-cell:nth-child(2) { color: rgba(255,255,255,0.4); }
+  .comp-cell:nth-child(3) { color: #a78bfa; font-weight: 600; }
+  .comp-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  /* Quest list */
+  .quest-list { margin-bottom: 48px; }
+  .quest-list h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .quest-item {
+    align-items: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 4px solid #6366f1;
+    border-radius: 8px;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    padding: 16px 20px;
+  }
+  .quest-code {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 8px;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 12px;
+  }
+  .quest-title { font-size: 15px; font-weight: 600; }
+  .quest-meta { color: rgba(255,255,255,0.4); font-size: 12px; margin-top: 4px; }
+
+  /* Footer */
+  .footer {
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+    padding: 40px 0;
+    text-align: center;
+  }
+  .footer a { color: #a78bfa; text-decoration: none; }
+
+  /* Glow decoration */
+  .glow {
+    background: radial-gradient(circle at 30% 20%, rgba(99,102,241,0.15) 0%, transparent 50%);
+    height: 100%;
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<div class="poster">
+
+  <div class="badge">✨ New Feature</div>
+
+  <h1>AI Tutor <span>Quest</span><br>小花老师主动教学</h1>
+
+  <p class="subtitle">
+    不再被动等你提问。小花老师像真人教练一样主动引导你一步步完成实操——在你自己的电脑上，在真实的工作场景里。
+  </p>
+
+  <!-- Chat preview -->
+  <div class="chat-preview">
+    <div class="chat-header">
+      <div class="chat-avatar">🎓</div>
+      <div>
+        <div class="chat-name">小花老师 · AI Tutor</div>
+        <div class="chat-status">● 在线</div>
+      </div>
+    </div>
+    <div class="chat-body">
+      <div class="bubble ai">
+        嗨！我是小花老师，今天这节课由我带你 🙌<br><br>
+        做完之后你电脑上就有一个能用的 Claude Code。<br>
+        先打开终端，跑一下 <code>node --version</code>，告诉我输出是什么？
+      </div>
+      <div class="bubble user">
+        v20.19.5
+      </div>
+      <div class="bubble ai">
+        v20.19.5 版本够新 👍 接下来装 Claude Code，跑这个：<br>
+        <code>npm install -g @anthropic-ai/claude-code</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🗣️</div>
+      <div class="feature-title">AI 主动带节奏</div>
+      <div class="feature-desc">不是你问 AI 答——是 AI 先说话、给指令、等你做完、验证结果，像一对一私教</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💻</div>
+      <div class="feature-title">在真实环境里做</div>
+      <div class="feature-desc">不在网站 iframe 里——你在自己的电脑、终端、ChatGPT、公司系统里完成真实操作</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <div class="feature-title">AI 验证你做了没</div>
+      <div class="feature-desc">说"做完了"没用——小花老师会追问"跑了什么命令？输出是什么？"骗不过去</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">逐字实时响应</div>
+      <div class="feature-desc">SSE Streaming 逐 token 输出，跟 ChatGPT 一样的实时对话体验</div>
+    </div>
+  </div>
+
+  <!-- Comparison -->
+  <div class="comparison">
+    <div class="comp-header">Quest vs 传统课程</div>
+    <div class="comp-row">
+      <div class="comp-cell"></div>
+      <div class="comp-cell comp-label">传统课程</div>
+      <div class="comp-cell comp-label">Quest</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell">AI 角色</div>
+      <div class="comp-cell">被动（你问才答）</div>
+      <div class="comp-cell">✅ 主动（AI 先开口带你做）</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell">操作环境</div>
+      <div class="comp-cell">平台 iframe 内</div>
+      <div class="comp-cell">✅ 你自己的电脑</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell">完成验证</div>
+      <div class="comp-cell">自己打勾</div>
+      <div class="comp-cell">✅ AI 追问验证</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell">学完产出</div>
+      <div class="comp-cell">看了个视频</div>
+      <div class="comp-cell">✅ 电脑上装好了工具 / 写好了方案</div>
+    </div>
+  </div>
+
+  <!-- Quest list -->
+  <div class="quest-list">
+    <h2>AI Adoption Bootcamp · 6 节 Quest 课</h2>
+
+    <div class="quest-item">
+      <div class="quest-code">Q01</div>
+      <div>
+        <div class="quest-title">在你电脑上装 Claude Code 完成第一个 AI 辅助项目</div>
+        <div class="quest-meta">Phase 1 · 30min · 5 步骤</div>
+      </div>
+    </div>
+
+    <div class="quest-item">
+      <div class="quest-code">Q02</div>
+      <div>
+        <div class="quest-title">跟小花老师一起用 AI 完成 3 个真实工作任务</div>
+        <div class="quest-meta">Phase 1 · 40min · 5 步骤</div>
+      </div>
+    </div>
+
+    <div class="quest-item">
+      <div class="quest-code">Q03</div>
+      <div>
+        <div class="quest-title">用 AI 写一套真实的 Facebook 广告文案</div>
+        <div class="quest-meta">Phase 2 · 35min · 5 步骤</div>
+      </div>
+    </div>
+
+    <div class="quest-item">
+      <div class="quest-code">Q04</div>
+      <div>
+        <div class="quest-title">搭建你自己的 AI 客服 Bot</div>
+        <div class="quest-meta">Phase 2 · 45min · 5 步骤</div>
+      </div>
+    </div>
+
+    <div class="quest-item">
+      <div class="quest-code">Q05</div>
+      <div>
+        <div class="quest-title">设计你公司的 AI Pilot 方案</div>
+        <div class="quest-meta">Phase 2 · 40min · 5 步骤</div>
+      </div>
+    </div>
+
+    <div class="quest-item">
+      <div class="quest-code">Q06</div>
+      <div>
+        <div class="quest-title">给你的公司做一次 AI 就绪度评估</div>
+        <div class="quest-meta">Phase 3 · 35min · 5 步骤</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>JR Academy · AI Adoption Specialist Bootcamp</p>
+    <p style="margin-top: 8px">
+      <a href="https://jiangren.com.au">jiangren.com.au</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

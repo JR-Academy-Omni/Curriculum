@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding 海报生成器 V2 - Neo-Brutalism Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --jr-red: #FF5757;
+            --jr-beige: #FFF1E7;
+            --jr-blue: #10162f;
+            --black: #000000;
+            --white: #ffffff;
+            --shadow: 8px 8px 0px var(--black);
+            --shadow-sm: 4px 4px 0px var(--black);
+            --border: 3px solid var(--black);
+            --transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #f0f0f0;
+            color: var(--black);
+            font-family: 'Noto Sans SC', sans-serif;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- UI Components --- */
+        .title-main {
+            font-size: 48px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            background: var(--jr-red);
+            padding: 10px 30px;
+            border: var(--border);
+            box-shadow: var(--shadow);
+            transform: rotate(-1deg);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 40px;
+            max-width: 1300px;
+            width: 100%;
+        }
+
+        /* --- Sidebar Controls --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border: var(--border);
+            box-shadow: var(--shadow-sm);
+            padding: 20px;
+        }
+
+        .card h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            background: var(--black);
+            color: var(--white);
+            display: inline-block;
+            padding: 2px 8px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: 10px 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0px var(--black);
+        }
+
+        .btn.active {
+            background: var(--jr-red);
+            color: var(--white);
+            box-shadow: 4px 4px 0px var(--black);
+        }
+
+        .direction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dir-item {
+            padding: 12px;
+            border: 2px solid var(--black);
+            background: var(--white);
+            cursor: pointer;
+            font-weight: 700;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .dir-item:hover { background: var(--jr-beige); }
+        .dir-item.active {
+            background: var(--jr-blue);
+            color: var(--white);
+            transform: translateX(10px);
+        }
+
+        /* --- Poster Engine --- */
+        .poster-view {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        #poster {
+            background-color: var(--jr-beige);
+            border: 4px solid var(--black);
+            box-shadow: 15px 15px 0px var(--black);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .p-header {
+            background: var(--jr-blue);
+            color: var(--white);
+            padding: 20px;
+            border-bottom: 4px solid var(--black);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .p-body {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .p-headline {
+            font-size: 64px;
+            line-height: 0.9;
+            font-weight: 900;
+            letter-spacing: -2px;
+            word-break: break-all;
+        }
+
+        .p-headline span.outline {
+            -webkit-text-stroke: 2px var(--black);
+            color: transparent;
+        }
+
+        .p-badge {
+            display: inline-block;
+            background: var(--jr-red);
+            color: var(--white);
+            padding: 5px 15px;
+            font-weight: 900;
+            transform: rotate(2deg);
+            border: 2px solid var(--black);
+            width: fit-content;
+        }
+
+        .p-content-box {
+            background: var(--white);
+            border: 3px solid var(--black);
+            padding: 20px;
+            box-shadow: 6px 6px 0px var(--black);
+            margin-top: 20px;
+        }
+
+        .p-footer {
+            padding: 20px 40px;
+            border-top: 4px solid var(--black);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            background: var(--white);
+        }
+
+        .p-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-box {
+            border-left: 4px solid var(--jr-red);
+            padding-left: 10px;
+        }
+
+        .stat-val { font-size: 24px; font-weight: 900; }
+        .stat-label { font-size: 10px; text-transform: uppercase; color: #666; }
+
+        .qr-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .qr-code {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--black);
+        }
+
+        /* --- Text Copy Area --- */
+        .copy-box {
+            margin-top: 20px;
+            background: var(--black);
+            color: #0f0;
+            padding: 20px;
+            font-family: monospace;
+            font-size: 12px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        /* --- Channel Sizes --- */
+        #poster.moment { width: 600px; height: 600px; }
+        #poster.xhs { width: 600px; height: 800px; }
+        #poster.banner { width: 900px; height: 383px; }
+        #poster.banner .p-headline { font-size: 48px; }
+        #poster.long { width: 600px; height: 1200px; }
+
+    </style>
+</head>
+<body>
+
+    <h1 class="title-main">AI CODING POSTER V2</h1>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="card">
+                <h3>1. 选择渠道 (尺寸)</h3>
+                <div class="btn-group" id="channel-tabs">
+                    <button class="btn active" data-size="moment">朋友圈</button>
+                    <button class="btn" data-size="xhs">小红书</button>
+                    <button class="btn" data-size="banner">公众号头图</button>
+                    <button class="btn" data-size="long">详情长图</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>2. 选择叙事视角</h3>
+                <div class="direction-list" id="dir-tabs">
+                    <button class="dir-item active" data-dir="0">01. 零基础觉醒 <span>→</span></button>
+                    <button class="dir-item" data-dir="1">02. 创业者自由 <span>→</span></button>
+                    <button class="dir-item" data-dir="2">03. 降维打击 <span>→</span></button>
+                    <button class="dir-item" data-dir="3">04. 焦虑粉碎机 <span>→</span></button>
+                    <button class="dir-item" data-dir="4">05. 核心硬数据 <span>→</span></button>
+                    <button class="dir-item" data-dir="5">06. 职业新物种 <span>→</span></button>
+                    <button class="dir-item" data-dir="6">07. 自由职业者 <span>→</span></button>
+                    <button class="dir-item" data-dir="7">08. 避坑指南 <span>→</span></button>
+                    <button class="dir-item" data-dir="8">09. 作品集 <span>→</span></button>
+                </div>
+            </div>
+
+            <div class="copy-box">
+                <button class="copy-btn" onclick="copyCopy()">COPY</button>
+                <div id="copy-text">// 发布文案将在此生成</div>
+            </div>
+        </div>
+
+        <div class="poster-view">
+            <div id="poster" class="moment">
+                <div class="p-header">
+                    <div style="font-family: 'Space Grotesk'; font-size: 20px;">JIANGREN / AI</div>
+                    <div id="p-tag">v2.0_STABLE</div>
+                </div>
+
+                <div class="p-body">
+                    <div class="p-badge" id="p-badge">5 WEEKS TO BUILD</div>
+                    <div class="p-headline" id="p-head">
+                        CODE WITH <br>
+                        <span class="outline">YOUR VOICE</span>
+                    </div>
+
+                    <div class="p-content-box" id="p-content">
+                        <!-- Content -->
+                    </div>
+                </div>
+
+                <div class="p-footer">
+                    <div class="p-stats">
+                        <div class="stat-box">
+                            <div class="stat-val">103+</div>
+                            <div class="stat-label">LESSONS</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-val">29</div>
+                            <div class="stat-label">LABS</div>
+                        </div>
+                    </div>
+
+                    <div class="qr-area">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-programming" class="qr-code">
+                        <div style="font-size: 8px; font-weight: 900;">SCAN TO ENROLL</div>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: 12px; font-weight: 700;">[ PRO TIP: RIGHT CLICK TO SAVE AS IMAGE ]</p>
+        </div>
+    </div>
+
+    <script>
+        const data = [
+            {
+                head: "不会写代码<br><span class='outline'>AI帮你写</span>",
+                badge: "零基础友好",
+                content: "别再纠结分号和括号。在 AI 时代，你的思维就是最强的编程语言。5周时间，从小白进化为全栈开发者。",
+                tag: "NEW_PARADIGM",
+                copy: "【零基础觉醒】\n代码不再是门槛，思维才是。匠人学院《AI Coding 实战课》，带你用嘴写代码，5周上线个人App。🚀"
+            },
+            {
+                head: "省下 $10,000<br><span class='outline'>自建MVP</span>",
+                badge: "创业者必修",
+                content: "外包太贵？进度太慢？用 AI 编程，一个人就是一个开发团队。快速跑通业务闭环，把钱花在刀刃上。",
+                tag: "STARTUP_MODE",
+                copy: "【创业者自由】\n省下1万刀外包费，自己用AI做MVP。速度快10倍，成本近乎0。你的下一款产品，不需要求人。💰"
+            },
+            {
+                head: "降维打击<br><span class='outline'>效率革命</span>",
+                badge: "5周 VS 6月",
+                content: "传统编程学习需要 6 个月才能入门，AI 编程让你在 5 周内交付产品。这是一场关于效率的绝对压制。",
+                tag: "SPEED_TEST",
+                copy: "【降维打击】\n别人还在学打印 Hello World，你已经用 AI 部署了全栈应用。这就是 AI Coding 的魔力。⏳"
+            },
+            {
+                head: "拒绝被<br><span class='outline'>AI取代</span>",
+                badge: "情绪焦虑粉碎机",
+                content: "不要害怕 AI，要成为那个控制 AI 的人。掌握 AI 编程，是你在这场时代变革中获得的最强护身符。",
+                tag: "ANTI_REPLACEMENT",
+                copy: "【焦虑粉碎机】\n与其担心被AI取代，不如先学会如何用AI淘汰对手。加入我们，掌握未来的生存技能。🔥"
+            },
+            {
+                head: "103节课<br><span class='outline'>29个实验</span>",
+                badge: "硬核课程数据",
+                content: "不玩虚的。从 Prompt 技巧到全栈 Agent 部署，4个阶段阶梯式成长。每一个实验都是真实的生产力环节。",
+                tag: "DATA_DRIVEN",
+                copy: "【实战派】\n103节实战课 + 29个互动实验。不讲废话，只带你做真正能运行的产品。匠人学院出品。📊"
+            },
+            {
+                head: "抢占职场<br><span class='outline'>新风口</span>",
+                badge: "AI BUILDER",
+                content: "年薪 $100K 的新岗位正在诞生。AI Builder 不仅懂业务，更懂如何利用 AI 快速交付。你是下一位吗？",
+                tag: "CAREER_UP",
+                copy: "【职业新物种】\nAI Builder 是2026年最抢手的人才。懂AI、懂开发、懂业务。现在上车，占领高薪高地。👔"
+            },
+            {
+                head: "碎片时间<br><span class='outline'>变身极客</span>",
+                badge: "自由职业/副业",
+                content: "每天 1 小时，用 AI 撬动第二职业。无论你在哪里，只要有网络和想法，你就能创造属于自己的数字化资产。",
+                tag: "FREELANCER",
+                copy: "【自由生活】\n用碎片时间，在家里就能开发出全球使用的 SaaS。AI Coding 让副业变得如此简单。🏡"
+            },
+            {
+                head: "别踩<br><span class='outline'>外包坑</span>",
+                badge: "成本对比表",
+                content: "沟通成本无穷大？代码质量没保障？学会 AI 编程，你就是最懂技术的架构师。掌控权永远在自己手里。",
+                tag: "NO_TRAPS",
+                copy: "【避坑指南】\n为什么你请的外包总是失败？因为你不懂技术底层。学会AI编程，自己就是CTO，彻底告别烂尾工程。💸"
+            },
+            {
+                head: "见证<br><span class='outline'>产品诞生</span>",
+                badge: "真实学员作品",
+                content: "从 AI 生成的 Landing Page 到全自动化的 AI 代理。这些都是非技术背景学员在 5 周内完成的作品。",
+                tag: "SHOWCASE",
+                copy: "【见证奇迹】\n看看非技术背景的学员们都用 AI 做了什么？你的创意，只差这一门课的距离。🏆"
+            }
+        ];
+
+        let currentSize = 'moment';
+        let currentDir = 0;
+
+        function render() {
+            const poster = document.getElementById('poster');
+            const item = data[currentDir];
+
+            poster.className = currentSize;
+            document.getElementById('p-head').innerHTML = item.head;
+            document.getElementById('p-badge').innerText = item.badge;
+            document.getElementById('p-content').innerText = item.content;
+            document.getElementById('p-tag').innerText = item.tag;
+            document.getElementById('copy-text').innerText = item.copy;
+        }
+
+        document.getElementById('channel-tabs').addEventListener('click', (e) => {
+            if (e.target.dataset.size) {
+                document.querySelectorAll('#channel-tabs .btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentSize = e.target.dataset.size;
+                render();
+            }
+        });
+
+        document.getElementById('dir-tabs').addEventListener('click', (e) => {
+            const btn = e.target.closest('.dir-item');
+            if (btn) {
+                document.querySelectorAll('#dir-tabs .dir-item').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentDir = parseInt(btn.dataset.dir);
+                render();
+            }
+        });
+
+        function copyCopy() {
+            const text = document.getElementById('copy-text').innerText;
+            navigator.clipboard.writeText(text).then(() => alert('文案已复制！'));
+        }
+
+        render();
+    </script>
+</body>
+</html>

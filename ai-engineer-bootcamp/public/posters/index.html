@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer 海报实验室 - 匠人学院</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --card-bg: #111112;
+            --primary: #FF5757;
+            --accent: #7000FF;
+            --text-main: #FFFFFF;
+            --text-dim: #86868B;
+            --ease: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* --- Background Effect --- */
+        .aura {
+            position: fixed;
+            width: 1000px; height: 1000px;
+            background: radial-gradient(circle, rgba(112, 0, 255, 0.1), transparent 70%);
+            top: -300px; left: -300px;
+            z-index: -1;
+            filter: blur(120px);
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 800px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        header h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 56px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        header p {
+            font-size: 18px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* --- Grid Layout --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* --- Style Card --- */
+        .style-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s var(--ease);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .style-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(112, 0, 255, 0.3);
+            background: #161618;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        }
+
+        .preview-box {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Card Previews Styles */
+        .v1-p { background: radial-gradient(circle at center, #0F172A, #000); }
+        .v1-p::after { content: "ENGINEER"; color: #00F0FF; font-weight: 900; letter-spacing: 5px; font-size: 24px; opacity: 0.3; }
+        
+        .v2-p { background: #111; border: 4px solid #7000FF; }
+        .v2-p::after { content: "PRO"; color: #7000FF; font-weight: 900; letter-spacing: 5px; font-size: 24px; opacity: 0.3; }
+
+        .v3-p { background: #FBFBFB; }
+        .v3-p::after { content: "MASTERPIECE"; color: #DDD; font-family: serif; font-size: 20px; letter-spacing: 5px; }
+
+        .v4-p { background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600'); background-size: cover; }
+        .v4-p::after { content: "CINEMATIC"; background: rgba(0,0,0,0.6); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 800; letter-spacing: 3px; }
+
+        .v5-p { background: #1A1A1A; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; padding: 10px; }
+        .v5-p div { background: #333; border-radius: 4px; }
+
+        .v6-p { background: #7000FF; }
+        .v6-p::after { content: "EDITORIAL"; color: #FFF; font-weight: 900; font-size: 24px; transform: rotate(5deg); }
+
+        .card-info h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+        .card-info p { font-size: 14px; color: var(--text-dim); line-height: 1.5; margin-bottom: 20px; }
+        
+        .card-tag {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: var(--accent);
+            color: #FFF;
+            width: fit-content;
+            text-transform: uppercase;
+        }
+
+        /* --- Footer --- */
+        footer { margin-top: 100px; text-align: center; color: var(--text-dim); font-size: 12px; letter-spacing: 1px; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 40px; }
+            .gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="aura"></div>
+
+    <header>
+        <div class="badge">Engineer Tier Assets</div>
+        <h1>AI Engineer<br>海报生成实验室</h1>
+        <p>为匠人学院《AI Engineer Bootcamp》打造的技术专家级宣传方案。12周技术进阶 + 12周职业孵化，重塑你的职业天花板。</p>
+    </header>
+
+    <div class="gallery">
+        <!-- V3 - The Best One -->
+        <a href="poster-v3.html" class="style-card">
+            <div class="preview-box v3-p"></div>
+            <div class="card-info">
+                <div class="card-tag" style="background:#000">Exquisite</div>
+                <h3 style="margin-top:10px;">策展人大师版 V3.1</h3>
+                <p>极致的排版与艺术纸张质感。采用衬线体 (Noto Serif SC) 传递专家的深度与底蕴。</p>
+            </div>
+        </a>
+
+        <!-- V4 - Cinematic -->
+        <a href="poster-v4.html" class="style-card">
+            <div class="preview-box v4-p"></div>
+            <div class="card-info">
+                <div class="card-tag" style="background:#7000FF">Impact</div>
+                <h3 style="margin-top:10px;">电影感大片 V4</h3>
+                <p>沉浸式极客背景。利用冷调色映射和景深虚化营造“未来工程师”的视觉叙事。</p>
+            </div>
+        </a>
+
+        <!-- V6 - Editorial -->
+        <a href="poster-v6.html" class="style-card">
+            <div class="preview-box v6-p"></div>
+            <div class="card-info">
+                <div class="card-tag" style="background:#FF5757">Legendary</div>
+                <h3 style="margin-top:10px;">技术杂志封面 V6</h3>
+                <p>Duotone 深紫/黑滤镜。致敬《Wired》风格，将 AI 工程师塑造成时代的颠覆者。</p>
+            </div>
+        </a>
+
+        <!-- V5 - Bento -->
+        <a href="poster-v5.html" class="style-card">
+            <div class="preview-box v5-p">
+                <div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+            <div class="card-info">
+                <div class="card-tag" style="background:#333">Technical Grid</div>
+                <h3 style="margin-top:10px;">工程便当盒 V5</h3>
+                <p>硬核数据展示：172 节课、62 个 Lab、RAG 实战。充满秩序感的模块化设计。</p>
+            </div>
+        </a>
+
+        <!-- V2 - Brutalist -->
+        <a href="poster-v2.html" class="style-card">
+            <div class="preview-box v2-p"></div>
+            <div class="card-info">
+                <div class="card-tag" style="background:#7000FF; color:#FFF">Brutal</div>
+                <h3 style="margin-top:10px;">硬核粗犷风 V2</h3>
+                <p>深黑背景配合高亮紫边框。非对称布局，传递“不破不立”的技术进化信号。</p>
+            </div>
+        </a>
+
+        <!-- V1 - Cyber -->
+        <a href="poster-v1.html" class="style-card">
+            <div class="preview-box v1-p"></div>
+            <div class="card-info">
+                <div class="card-tag" style="background:#00F0FF; color:#000">Matrix</div>
+                <h3 style="margin-top:10px;">赛博架构版 V1</h3>
+                <p>深色渐变与代码矩阵感。适合发布在技术社区，营造 AI Engineer 的核心气场。</p>
+            </div>
+        </a>
+    </div>
+
+    <footer>
+        © 2026 JIANGREN ACADEMY • AI ENGINEER ELITE PROGRAM
+    </footer>
+
+</body>
+</html>

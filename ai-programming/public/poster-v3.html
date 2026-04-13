@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding 海报生成器 V3.1 - The Curator's Masterpiece</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --gray-light: #FBFBFB;
+            --gray-medium: #86868B;
+            --accent: #0071E3;
+            --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: #EEE;
+            color: var(--black);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* --- Header --- */
+        .nav {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        .nav h1 { font-size: 14px; font-weight: 600; letter-spacing: 1px; color: #666; }
+
+        /* --- Main Layout --- */
+        .workspace {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 60px;
+            width: 100%;
+            max-width: 1240px;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar { display: flex; flex-direction: column; gap: 40px; }
+        .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #999; margin-bottom: 12px; letter-spacing: 1.5px; }
+        .opt-btn { background: #FFF; border: 1px solid #DDD; text-align: left; padding: 12px 16px; font-size: 13px; font-weight: 500; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 4px; }
+        .opt-btn.active { background: var(--black); color: var(--white); border-color: var(--black); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .size-btn { padding: 6px 14px; font-size: 12px; border: 1px solid #DDD; border-radius: 20px; background: white; cursor: pointer; transition: 0.2s; }
+        .size-btn.active { border-color: var(--black); background: var(--black); color: white; }
+
+        /* --- POSTER CANVAS --- */
+        .canvas-area { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        
+        #poster {
+            background: var(--gray-light);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 60px 120px rgba(0,0,0,0.15);
+            transition: all 0.6s var(--ease);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        /* NEW: Art Texture & Patterns */
+        .p-texture {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 2;
+            opacity: 0.4;
+            pointer-events: none;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        .p-grid {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            opacity: 0.05;
+            background-image: radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .p-blobs {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            filter: blur(100px);
+            opacity: 0.4;
+        }
+
+        .blob {
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent), transparent);
+            transition: 1s;
+        }
+
+        /* Poster Content */
+        .poster-content {
+            position: relative;
+            z-index: 10;
+            padding: 12% 10%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Typography */
+        .p-metadata {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gray-medium);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        .p-metadata::before { content: ""; width: 20px; height: 1px; background: #DDD; }
+
+        .p-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: var(--black);
+            margin-bottom: 24px;
+        }
+
+        .p-description {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #444;
+            max-width: 85%;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            padding-left: 24px;
+        }
+
+        .p-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 40px;
+        }
+
+        .p-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .p-brand .name { font-size: 22px; font-weight: 800; letter-spacing: 3px; color: var(--black); }
+        .p-brand .sub { font-size: 11px; font-weight: 500; color: var(--gray-medium); letter-spacing: 1px; }
+
+        .qr-area { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+        .qr-box { width: 70px; height: 70px; padding: 4px; background: #FFF; border: 1px solid #EEE; }
+        .qr-box img { width: 100%; filter: grayscale(1); }
+        .qr-label { font-size: 9px; font-weight: 700; color: #999; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Themes & Sizes */
+        #poster.moment { width: 600px; height: 600px; }
+        #poster.xhs { width: 600px; height: 800px; }
+        #poster.banner { width: 900px; height: 383px; padding: 40px; }
+        #poster.banner .p-title { font-size: 42px; }
+        #poster.banner .p-description { font-size: 15px; }
+        #poster.long { width: 600px; height: 1100px; }
+
+        /* --- MODE DEFINITIONS --- */
+        
+        /* Obsidian Mode */
+        #poster.dark-mode { background: #0A0A0A; color: #FFF; border-color: rgba(255,255,255,0.05); }
+        #poster.dark-mode .p-title { color: #FFF; }
+        #poster.dark-mode .p-description { color: #AAA; border-color: rgba(255,255,255,0.1); }
+        #poster.dark-mode .p-brand .name { color: #FFF; }
+        #poster.dark-mode .p-grid { background-image: radial-gradient(circle, #FFF 1px, transparent 1px); opacity: 0.03; }
+        #poster.dark-mode .qr-box { background: #111; border-color: #222; }
+        #poster.dark-mode .qr-box img { filter: invert(1); }
+
+        /* Champagne Mode */
+        #poster.champagne-mode { background: #F7F3F0; color: #2D2926; }
+        #poster.champagne-mode .p-title { color: #1A1715; }
+        #poster.champagne-mode .p-brand .name { color: #1A1715; }
+        #poster.champagne-mode .p-metadata::before { background: #C8B6A6; }
+
+        /* Navy Mode */
+        #poster.navy-mode { background: #0F172A; color: #E2E8F0; }
+        #poster.navy-mode .p-title { color: #F8FAFC; }
+        #poster.navy-mode .p-description { border-color: #334155; color: #94A3B8; }
+        #poster.navy-mode .p-brand .name { color: #FFF; }
+        #poster.navy-mode .p-grid { background-image: radial-gradient(circle, #FFF 1px, transparent 1px); opacity: 0.02; }
+
+        /* Sage Mode */
+        #poster.sage-mode { background: #E2E8E4; color: #2C3E3A; }
+        #poster.sage-mode .p-title { color: #1A2421; }
+        #poster.sage-mode .p-metadata::before { background: #A3B18A; }
+
+        /* Aura Mode */
+        #poster.aura-mode { background: #FFF; color: #000; }
+        #poster.aura-mode .p-texture { opacity: 0.1; }
+        #poster.aura-mode .p-blobs { opacity: 0.8; filter: blur(80px); }
+
+        /* Blob Logic */
+        .blob { position: absolute; width: 500px; height: 500px; border-radius: 50%; z-index: 0; transition: 1s var(--ease); }
+        .b1 { top: -10%; right: -10%; }
+        .b2 { bottom: -10%; left: -10%; }
+
+        /* Default Blob Colors */
+        #poster.light-mode .b1 { background: radial-gradient(circle, #FF575715, transparent); }
+        #poster.light-mode .b2 { background: radial-gradient(circle, #00F0FF10, transparent); }
+        #poster.dark-mode .b1 { background: radial-gradient(circle, #FF575720, transparent); }
+        #poster.dark-mode .b2 { background: radial-gradient(circle, #A855F715, transparent); }
+        #poster.champagne-mode .b1 { background: radial-gradient(circle, #D4AF3715, transparent); }
+        #poster.champagne-mode .b2 { background: radial-gradient(circle, #8B451308, transparent); }
+        #poster.navy-mode .b1 { background: radial-gradient(circle, #38BDF815, transparent); }
+        #poster.navy-mode .b2 { background: radial-gradient(circle, #1E40AF10, transparent); }
+        #poster.sage-mode .b1 { background: radial-gradient(circle, #A3B18A20, transparent); }
+        #poster.sage-mode .b2 { background: radial-gradient(circle, #344E4110, transparent); }
+        #poster.aura-mode .b1 { background: radial-gradient(circle, #FFCFD2, transparent); width: 600px; }
+        #poster.aura-mode .b2 { background: radial-gradient(circle, #B9FBC0, transparent); width: 600px; }
+
+        /* Copy Card */
+        .copy-card { width: 100%; max-width: 600px; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .copy-content { font-size: 14px; line-height: 1.6; color: #444; white-space: pre-wrap; margin-bottom: 20px; font-family: monospace; }
+        .btn-main { background: var(--black); color: var(--white); border: none; padding: 14px 28px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; width: 100%; }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <h1>POSTER GENERATOR PRO / V3.1</h1>
+        <div style="font-weight: 700; font-size: 12px;">JIANGREN ACADEMY</div>
+    </div>
+
+    <div class="workspace">
+        <div class="sidebar">
+            <div>
+                <div class="section-title">Visual Direction</div>
+                <div id="dir-selector">
+                    <button class="opt-btn active" data-dir="0">01. Creative Horizon</button>
+                    <button class="opt-btn" data-dir="1">02. Economic Shift</button>
+                    <button class="opt-btn" data-dir="2">03. Performance Edge</button>
+                    <button class="opt-btn" data-dir="3">04. Anti-Anxiety</button>
+                    <button class="opt-btn" data-dir="4">05. Core Evidence</button>
+                    <button class="opt-btn" data-dir="5">06. Future Professional</button>
+                    <button class="opt-btn" data-dir="6">07. Lifestyle Lab</button>
+                    <button class="opt-btn" data-dir="7">08. CTO Mindset</button>
+                    <button class="opt-btn" data-dir="8">09. Proven Mastery</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">Canvas Format</div>
+                <div id="size-selector" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="size-btn active" data-size="moment">1:1 Square</button>
+                    <button class="size-btn" data-size="xhs">3:4 Portrait</button>
+                    <button class="size-btn" data-size="banner">2.3:1 Banner</button>
+                    <button class="size-btn" data-size="long">Story</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">Atmosphere</div>
+                <div id="tone-selector" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="size-btn active" data-tone="light">Paper White</button>
+                    <button class="size-btn" data-tone="dark">Deep Obsidian</button>
+                    <button class="size-btn" data-tone="champagne">Champagne Luxe</button>
+                    <button class="size-btn" data-tone="navy">Midnight Indigo</button>
+                    <button class="size-btn" data-tone="sage">Organic Sage</button>
+                    <button class="size-btn" data-tone="aura">Aura Glow</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div id="poster" class="moment">
+                <div class="p-grid" id="p-grid"></div>
+                <div class="p-texture"></div>
+                <div class="p-blobs" id="blobs">
+                    <div class="blob b1" id="blob1"></div>
+                    <div class="blob b2" id="blob2"></div>
+                </div>
+                
+                <div class="poster-content">
+                    <div>
+                        <div class="p-metadata" id="p-meta">MODEL: GEMINI-2.5-PRO / TIMESTAMP: 2026.04</div>
+                        <div class="p-title" id="p-title">人人都能学的<br>AI Coding 实战课</div>
+                        <div class="p-description" id="p-desc">在 AI 时代，你的想法就是唯一的门槛。从零到一，亲手构建属于你的数字化未来。</div>
+                    </div>
+
+                    <div class="p-footer">
+                        <div class="p-brand">
+                            <div class="name">匠人学院</div>
+                            <div class="sub">GLOBAL AI LEARNING HUB</div>
+                        </div>
+                        <div class="qr-area">
+                            <div class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-programming">
+                            </div>
+                            <div class="qr-label">Scan for Access</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copy-card">
+                <div class="section-title">Social Content Preview</div>
+                <div class="copy-content" id="copy-text">...</div>
+                <button class="btn-main" onclick="copyText()">Copy Content</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const content = [
+            { title: "思维跨越<br>对话即编程", desc: "跳过枯燥的语法学习，直接进入创造者的行列。利用 AI 辅助，让原本繁琐的代码开发变成高效的逻辑表达。", copy: "【AI 时代，人人都是开发者】\n如果你有想法，但被代码挡在门外，现在就是最好的入场时机。\n对话即编程，思维即架构。匠人学院《AI Coding 实战课》带你见证奇迹。🚀" },
+            { title: "节省 10,000 刀<br>自建 MVP", desc: "与其高价寻求不稳定的外包，不如亲自掌控产品灵魂。学会 AI 编程，一个人就是一个全栈团队，把创意瞬间落地。", copy: "【创业者省钱指南】\n外包 $10k+ vs AI 编程 $0。\n自己掌握核心代码，快速迭代，省下的不仅是钱，更是抢占市场的先机。💰" },
+            { title: "降维打击<br>交付速度提效 10X", desc: "传统开发 3 个月的工作量，在 AI 辅助下仅需 1 周。这不仅是工具的更新，更是生产力维度的绝对压制。", copy: "【效率革命】\n传统编程 6 个月 vs AI 编程 5 周。\n在这个快节奏的时代，慢就是退步。用 AI 赋能，实现真正的降维打击。⏳" },
+            { title: "终结焦虑<br>掌控 AI 的力量", desc: "AI 不会让你失业，会用 AI 的人才会。掌握 AI Coding，让你从时代的追随者变为规则的制定者。", copy: "【击碎焦虑】\nAI 的出现不是威胁，而是机会。学会控制 AI，让它成为你最强的副驾驶。加入匠人学院，重塑你的核心竞争力。🔥" },
+            { title: "103 节实战课<br>硬核定义成长", desc: "从 Prompt 调优到全栈 Agent 部署。29 个高强度互动 Lab，确保你在实战中掌握 AI 开发的每一个关键环节。", copy: "【实战派的选择】\n103节课、29个Lab、4个阶段。\n我们不讲大道理，我们只带你写出能真正运行的产品。📊" },
+            { title: "职业进化<br>成为 AI Builder", desc: "这是未来十年最抢手的身份。掌握 AI 开发全链路，无论是职场跳槽还是自主创业，你都将立于不败之地。", copy: "【职场新风口】\nAI Product Builder 正在成为企业最稀缺的人才。\n跨越背景限制，用 AI 重塑你的职业天花板。👔" },
+            { title: "碎片时间<br>构建数字化资产", desc: "每天 1 小时，用 AI 撬动副业自由。无需辞职，在家即可开发全球使用的 SaaS 产品，创造源源不断的被动收入。", copy: "【生活美学】\n用碎片时间，在家里就能开发出全球使用的产品。\nAI Coding 让副业变得如此优雅。🏡" },
+            { title: "打破黑盒<br>做最懂技术的架构师", desc: "不再被技术术语忽悠，不再掉进外包深坑。即使不写每一行代码，你也能看透技术逻辑，精准把控项目的每一次心跳。", copy: "【避坑指南】\n为什么外包总是失败？因为你无法审视技术。学会AI编程，自己就是CTO，彻底掌控项目话语权。💸" },
+            { title: "见证奇迹<br>500+ 学员作品已上线", desc: "他们曾是设计师、销售、甚至是零基础的爱好者。现在，他们正用自己开发的 AI 工具改变世界。", copy: "【案例见证】\n看到这些非技术背景同学做出的 App，你还有什么理由等待？\n5周时间，你的作品也可以出现在这里。🏆" }
+        ];
+
+        let curDir = 0, curSize = 'moment', curTone = 'light';
+
+        function update() {
+            const p = document.getElementById('poster');
+            const d = content[curDir];
+            
+            // Clear previous tone classes
+            p.className = curSize;
+            
+            // Apply current tone class
+            const toneClass = curTone === 'light' ? 'light-mode' : `${curTone}-mode`;
+            p.classList.add(toneClass);
+
+            document.getElementById('p-title').innerHTML = d.title;
+            document.getElementById('p-desc').innerText = d.desc;
+            document.getElementById('copy-text').innerText = d.copy;
+            document.getElementById('p-meta').innerText = `DIR: 0${parseInt(curDir)+1} / MODE: GEMINI-2.5-PRO / TS: 2026.04`;
+        }
+
+        document.getElementById('dir-selector').onclick = (e) => {
+            if(e.target.dataset.dir) {
+                document.querySelectorAll('#dir-selector .opt-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curDir = e.target.dataset.dir; update();
+            }
+        };
+
+        document.getElementById('size-selector').onclick = (e) => {
+            if(e.target.dataset.size) {
+                document.querySelectorAll('#size-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curSize = e.target.dataset.size; update();
+            }
+        };
+
+        document.getElementById('tone-selector').onclick = (e) => {
+            if(e.target.dataset.tone) {
+                document.querySelectorAll('#tone-selector .size-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curTone = e.target.dataset.tone; update();
+            }
+        };
+
+        function copyText() {
+            navigator.clipboard.writeText(document.getElementById('copy-text').innerText).then(() => alert('已复制！'));
+        }
+
+        update();
+    </script>
+</body>
+</html>

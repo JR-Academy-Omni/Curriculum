@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer 海报生成器 V1 - Cyber Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700;900&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7000FF;
+            --accent: #00F0FF;
+            --bg-dark: #050505;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Noto Sans SC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        header {
+            width: 100%;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            position: sticky; top: 0; z-index: 100;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-group { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+        .tab-btn { background: #111; border: 1px solid #333; color: #888; padding: 8px 16px; border-radius: 30px; cursor: pointer; }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .container { display: flex; width: 100%; max-width: 1200px; margin-top: 40px; gap: 40px; padding: 0 20px; }
+        .controls { flex: 0 0 350px; display: flex; flex-direction: column; gap: 20px; }
+        .control-section { background: #111; border-radius: 20px; padding: 24px; border: 1px solid #222; }
+        .dir-btn { width: 100%; text-align: left; background: #1A1A1A; border: 1px solid #333; color: #888; padding: 12px; border-radius: 12px; cursor: pointer; margin-bottom: 8px; }
+        .dir-btn.active { border-color: var(--accent); color: #FFF; background: #222; }
+
+        #poster { background: #000; position: relative; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.8); }
+        .p-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: radial-gradient(circle at top right, #1E1B4B, #000); }
+        .p-grid { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.1; background-image: linear-gradient(#FFF 1px, transparent 1px), linear-gradient(90deg, #FFF 1px, transparent 1px); background-size: 30px 30px; }
+        
+        .p-content { position: relative; z-index: 10; width: 100%; height: 100%; padding: 10%; display: flex; flex-direction: column; justify-content: space-between; }
+        .p-sub { color: var(--accent); font-weight: 800; letter-spacing: 4px; font-size: 14px; margin-bottom: 10px; }
+        .p-title { font-size: 48px; font-weight: 900; line-height: 1.1; background: linear-gradient(to bottom, #FFF, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .p-mid { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .p-footer { display: flex; justify-content: space-between; align-items: flex-end; }
+        .p-logo { font-weight: 900; font-size: 24px; letter-spacing: 2px; }
+        .qr-box { width: 60px; height: 60px; background: #FFF; padding: 4px; }
+
+        #poster.moment { width: 540px; height: 540px; }
+        #poster.xhs { width: 540px; height: 720px; }
+        #poster.banner { width: 900px; height: 383px; }
+
+        .copy-area { background: #111; padding: 20px; border-radius: 20px; border: 1px solid #222; }
+        .copy-text { font-size: 12px; color: #666; background: #000; padding: 15px; border-radius: 10px; margin-bottom: 15px; white-space: pre-wrap; }
+        .btn-copy { background: #FFF; color: #000; border: none; padding: 12px; border-radius: 10px; cursor: pointer; width: 100%; font-weight: 700; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Engineer 海报生成器 <span style="color:var(--primary)">V1</span></h1>
+        <div class="tab-group" id="channel-tabs">
+            <button class="tab-btn active" data-channel="moment">朋友圈</button>
+            <button class="tab-btn" data-channel="xhs">小红书</button>
+            <button class="tab-btn" data-channel="banner">公众号头图</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <div class="control-section">
+                <div id="dir-tabs">
+                    <button class="dir-btn active" data-dir="0">THE CORE / 核心架构</button>
+                    <button class="dir-btn" data-dir="1">THE ELITE / 精英之路</button>
+                    <button class="dir-btn" data-dir="2">THE FUTURE / 未来已来</button>
+                </div>
+            </div>
+            <div class="copy-area">
+                <div id="copy-text" class="copy-text">...</div>
+                <button class="btn-copy" onclick="copyText()">复制文案</button>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div id="poster" class="moment">
+                <div class="p-bg"></div>
+                <div class="p-grid"></div>
+                <div class="p-content">
+                    <div>
+                        <div class="p-sub" id="p-sub">AI ENGINEERING V1.0</div>
+                        <div class="p-title" id="p-title">AI Engineer<br>精英实战营</div>
+                    </div>
+                    <div class="p-mid" id="p-mid">掌握 RAG、Agent 矩阵、Fine-Tuning 等全栈能力。</div>
+                    <div class="p-footer">
+                        <div class="p-logo">匠人学院</div>
+                        <div class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jiangren.com.au/program-course/ai-engineer-bootcamp" style="width:100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const content = [
+            { sub: "SYSTEM ARCHITECTURE", head: "技术巅峰<br>定义 AI 工程师", mid: "从只会写 Prompt 到设计生产级高可用 AI 系统。掌握全链路 RAG 与 Agent 架构。", copy: "【AI 工程师：技术专家之路】匠人学院带你掌握 RAG、Agent 全栈。🚀" },
+            { sub: "CAREER EVOLUTION", head: "职业跨越<br>年薪 20 万刀", mid: "12 周技术进阶 + 12 周 P3 真实项目孵化。导师来自顶尖大厂，助你抢占高薪高地。", copy: "【职场新物种】掌握 AI 工程能力，抢占年薪 $120k-$200k 岗位。👔" },
+            { sub: "THE NEXT FRONTIER", head: "Agent 矩阵<br>构建自动化未来", mid: "深入三大 SDK。掌握 Multi-Agent 协作协议，亲手打造能独立工作的 AI 智能体。", copy: "【智能体革命】掌握 Multi-Agent 系统设计。构建你的自动化 AI 未来。🔥" }
+        ];
+
+        let curDir = 0, curChannel = 'moment';
+
+        function update() {
+            const d = content[curDir];
+            document.getElementById('p-title').innerHTML = d.head;
+            document.getElementById('p-mid').innerHTML = d.mid;
+            document.getElementById('p-sub').innerHTML = d.sub;
+            document.getElementById('copy-text').innerText = d.copy;
+            document.getElementById('poster').className = curChannel;
+        }
+
+        document.getElementById('dir-tabs').onclick = (e) => {
+            if(e.target.dataset.dir) {
+                document.querySelectorAll('.dir-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curDir = e.target.dataset.dir; update();
+            }
+        };
+
+        document.getElementById('channel-tabs').onclick = (e) => {
+            if(e.target.dataset.channel) {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                curChannel = e.target.dataset.channel; update();
+            }
+        };
+
+        function copyText() {
+            navigator.clipboard.writeText(document.getElementById('copy-text').innerText).then(() => alert('已复制！'));
+        }
+
+        update();
+    </script>
+</body>
+</html>
