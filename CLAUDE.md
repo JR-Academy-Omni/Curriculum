@@ -400,6 +400,49 @@ See `DESIGN.md` for the complete presentation design system including color pale
 
 参考实现：`curriculum/ai-engineer-bootcamp/public/outline.json` 里每个 python-lab / aws-lab 都是独立 InteractiveLab lesson。
 
+### 🔥🔥🔥 同理：Learn 章节、Wiki 也是独立 Lesson
+
+和 Lab 一样，被引用的 Learn 章节和 Wiki 也必须是独立的 lesson：
+
+| 引用类型 | Lesson Type | 格式 |
+|----------|-------------|------|
+| **Prompt Lab / Vibe Coding Lab** | `InteractiveLab` | `isInteractiveLab: true`, `interactiveLabSlug`, `interactiveLabType` |
+| **Learn 章节** | `Information` | 标题: "自学：{章节标题}", `learns: [{direction, slug}]` |
+| **Wiki** | `Information` | 标题: "参考：{wiki标题}", `staticWikiSlugs: [slug]` |
+
+❌ **错误**：把 `learns[]` 数组挂在 Lesson 上作为附加链接
+✅ **正确**：每个 Learn 章节是一个独立的 `Information` type lesson
+
+```json
+{
+  "code": "L16",
+  "title": "AI Coding Prompt公式",
+  "type": "Lesson",
+  "isLive": true,
+  "description": "..."
+},
+{
+  "code": "L17",
+  "title": "Lab: 明确任务 — 让 AI 准确理解你的需求",
+  "type": "InteractiveLab",
+  "isInteractiveLab": true,
+  "interactiveLabType": "prompt",
+  "interactiveLabSlug": "clear-task",
+  "description": "Prompt 实验：..."
+},
+{
+  "code": "L18",
+  "title": "自学：写出第一个 Prompt",
+  "type": "Information",
+  "isLive": false,
+  "duration": 30,
+  "description": "阅读 Vibe Coding 方向的 Prompt 入门章节...",
+  "learns": [{"direction": "vibe-coding", "slug": "first-prompt"}]
+}
+```
+
+**绝对不允许把 Lab/Learn/Wiki 塞进别的 lesson 的 labs[]/learns[] 数组里！每一个都是独立 lesson。**
+
 ### 多通道学习：围绕学习目标，不围绕直播课
 
 直播课只是学习方式之一。**最终目的是学员掌握技能**，不管通过哪种通道。每节课的"掌握路径"要列出所有可用的学习资源：
