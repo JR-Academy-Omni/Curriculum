@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineer Bootcamp — 课程架构图</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark: #10162f;
+  --foundation: #6366f1;
+  --context: #8b5cf6;
+  --rag: #3b82f6;
+  --capability: #06b6d4;
+  --agent: #10b981;
+  --multi: #f59e0b;
+  --memory: #ec4899;
+  --harness: #ef4444;
+  --model: #f97316;
+  --observability: #64748b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.title h1 {
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--dark);
+}
+.title .subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+  font-family: 'Space Mono', monospace;
+}
+
+/* Architecture layer */
+.layer {
+  position: relative;
+  margin-bottom: 12px;
+  border: 2px solid #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.layer:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.12);
+}
+
+.layer-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  color: #fff;
+  border-bottom: 2px solid #000;
+}
+.layer-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+.layer-name {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+.layer-desc {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-left: auto;
+  text-align: right;
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+}
+
+.layer-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 20px;
+  background: #fff;
+}
+
+/* Component cards inside each layer */
+.comp {
+  flex: 1 1 140px;
+  min-width: 120px;
+  max-width: 200px;
+  padding: 10px 12px;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fafafa;
+  transition: border-color 0.15s, background 0.15s;
+}
+.comp:hover {
+  border-color: #000;
+  background: #fff;
+}
+.comp-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.comp-name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.comp-detail {
+  font-size: 11px;
+  color: #888;
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* Connector arrow between layers */
+.connector {
+  display: flex;
+  justify-content: center;
+  padding: 2px 0;
+}
+.connector::after {
+  content: '';
+  width: 2px;
+  height: 12px;
+  background: #ddd;
+}
+
+/* Side panels */
+.arch-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr 160px;
+  gap: 0;
+  align-items: stretch;
+}
+
+.side-panel {
+  position: sticky;
+  top: 20px;
+  border: 2px solid #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+}
+.side-panel.left { margin-right: 12px; }
+.side-panel.right { margin-left: 12px; }
+.side-header {
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  border-bottom: 2px solid #000;
+  line-height: 1.3;
+}
+.side-item {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 11px;
+  font-weight: 600;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.side-item:last-child { border-bottom: none; }
+.side-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Center column */
+.center-col {
+  min-width: 0;
+}
+
+/* Stats bar */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+  padding: 10px 16px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 3px 3px 0 #000;
+}
+.stat-n {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--dark);
+  font-family: 'Space Mono', monospace;
+}
+.stat-l {
+  font-size: 10px;
+  color: #888;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+}
+
+/* Footer */
+.arch-footer {
+  text-align: center;
+  margin-top: 32px;
+  padding: 16px;
+  border: 2px solid #000;
+  border-radius: 12px;
+  background: var(--dark);
+  color: #fff;
+  font-size: 13px;
+  font-family: 'Space Mono', monospace;
+}
+.arch-footer a {
+  color: #FFDE59;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .arch-grid {
+    grid-template-columns: 1fr;
+  }
+  .side-panel {
+    position: static;
+    margin: 0 0 16px 0 !important;
+  }
+  .side-panel.left, .side-panel.right {
+    margin: 0 0 16px 0 !important;
+  }
+  .center-col { order: -1; }
+  .p3-spacer { display: none !important; }
+  .title h1 { font-size: 24px; }
+  .layer-header { flex-wrap: wrap; gap: 6px; padding: 12px 14px; }
+  .layer-name { font-size: 15px; }
+  .layer-desc { margin-left: 0; text-align: left; }
+  .layer-body { padding: 12px 14px; }
+  .comp { min-width: 100px; max-width: none; }
+  .stats { gap: 10px; }
+  .stat { padding: 8px 12px; }
+  .stat-n { font-size: 18px; }
+}
+@media (max-width: 480px) {
+  .page { padding: 20px 12px 40px; }
+  .title h1 { font-size: 20px; }
+  .layer-name { font-size: 14px; }
+  .comp { flex: 1 1 100%; max-width: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<div class="title">
+  <h1>AI Engineer Bootcamp</h1>
+  <div class="subtitle">Full-Stack AI Engineering — Layered Curriculum Architecture</div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n">10</div><div class="stat-l">Phases</div></div>
+  <div class="stat"><div class="stat-n">172</div><div class="stat-l">Lessons</div></div>
+  <div class="stat"><div class="stat-n">59</div><div class="stat-l">Live Classes</div></div>
+  <div class="stat"><div class="stat-n">62</div><div class="stat-l">Interactive Labs</div></div>
+  <div class="stat"><div class="stat-n">12</div><div class="stat-l">Weeks</div></div>
+</div>
+
+<div class="arch-grid">
+
+<!-- ===== Left Side Panels: Projects + Tech Stack ===== -->
+<div style="display:flex;flex-direction:column;gap:16px">
+
+<div class="side-panel left">
+  <div class="side-header" style="background:linear-gradient(135deg, #7c3aed, #6366f1)">
+    Capstone Projects<br>
+    <span style="font-size:10px;font-weight:400;opacity:0.8">贯穿全课程实战项目</span>
+  </div>
+  <div class="side-item"><div class="side-dot" style="background:var(--foundation)"></div>ISA Chatbot v1</div>
+  <div class="side-item"><div class="side-dot" style="background:var(--context)"></div>Context-Driven App</div>
+  <div class="side-item"><div class="side-dot" style="background:var(--rag)"></div>RAG from Scratch</div>
+  <div class="side-item"><div class="side-dot" style="background:var(--rag)"></div>Production RAG</div>
+  <div class="side-item"><div class="side-dot" style="background:var(--agent)"></div>Multi-Agent RAG</div>
+  <div class="side-item"><div class="side-dot" style="background:var(--harness)"></div>Personal Harness</div>
+  <div class="side-item"><div class="side-dot" style="background:var(--model)"></div>Fine-Tuned + Eval</div>
+</div>
+
+<div class="side-panel left">
+  <div class="side-header" style="background:linear-gradient(135deg, #10162f, #334155)">
+    Tech Stack<br>
+    <span style="font-size:10px;font-weight:400;opacity:0.8">核心技术栈</span>
+  </div>
+  <div class="side-item"><div class="side-dot" style="background:#10b981"></div>Python</div>
+  <div class="side-item"><div class="side-dot" style="background:#3b82f6"></div>LangChain</div>
+  <div class="side-item"><div class="side-dot" style="background:#f59e0b"></div>LangGraph</div>
+  <div class="side-item"><div class="side-dot" style="background:#6366f1"></div>OpenAI SDK</div>
+  <div class="side-item"><div class="side-dot" style="background:#8b5cf6"></div>Claude SDK</div>
+  <div class="side-item"><div class="side-dot" style="background:#06b6d4"></div>Google ADK</div>
+  <div class="side-item"><div class="side-dot" style="background:#ec4899"></div>Mem0</div>
+  <div class="side-item"><div class="side-dot" style="background:#ef4444"></div>MCP</div>
+  <div class="side-item"><div class="side-dot" style="background:#f97316"></div>QLoRA / Unsloth</div>
+  <div class="side-item"><div class="side-dot" style="background:#64748b"></div>RAGAS / Langfuse</div>
+  <div class="side-item"><div class="side-dot" style="background:#334155"></div>AWS Bedrock</div>
+  <div class="side-item"><div class="side-dot" style="background:#334155"></div>Docker / vLLM</div>
+</div>
+
+</div>
+
+<!-- ===== Center: Architecture Layers ===== -->
+<div class="center-col">
+
+<!-- Phase 1: Foundation Layer -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--foundation)">
+    <div><div class="layer-num">PHASE 01</div><div class="layer-name">Foundation Layer</div></div>
+    <div class="layer-desc">33 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">🧠</div><div class="comp-name">GenAI Overview</div><div class="comp-detail">AI 全景 · 行业地图</div></div>
+    <div class="comp"><div class="comp-icon">⚡</div><div class="comp-name">LLM API</div><div class="comp-detail">OpenAI · Claude · Gemini</div></div>
+    <div class="comp"><div class="comp-icon">🔬</div><div class="comp-name">Transformer</div><div class="comp-detail">Attention · Embeddings</div></div>
+    <div class="comp"><div class="comp-icon">📊</div><div class="comp-name">ML/DL 基础</div><div class="comp-detail">Supervised · Unsupervised</div></div>
+    <div class="comp"><div class="comp-icon">🐍</div><div class="comp-name">Pre-work Labs</div><div class="comp-detail">Python · Git · AWS</div></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- Phase 2: Context Engineering -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--context)">
+    <div><div class="layer-num">PHASE 02</div><div class="layer-name">Context Engineering</div></div>
+    <div class="layer-desc">18 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">🎯</div><div class="comp-name">Prompt Engineering</div><div class="comp-detail">Zero/Few-shot · CoT</div></div>
+    <div class="comp"><div class="comp-icon">🏗️</div><div class="comp-name">Context 系统设计</div><div class="comp-detail">Window 管理 · 信息脚手架</div></div>
+    <div class="comp"><div class="comp-icon">📐</div><div class="comp-name">结构化输出</div><div class="comp-detail">JSON Schema · System Prompt</div></div>
+    <div class="comp"><div class="comp-icon">🎸</div><div class="comp-name">Vibe Coding</div><div class="comp-detail">AI 辅助开发 · 工具对比</div></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- Phase 3: RAG -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--rag)">
+    <div><div class="layer-num">PHASE 03</div><div class="layer-name">RAG</div></div>
+    <div class="layer-desc">45 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">🔢</div><div class="comp-name">Embeddings</div><div class="comp-detail">模型对比 · 向量化</div></div>
+    <div class="comp"><div class="comp-icon">🗄️</div><div class="comp-name">Vector DB</div><div class="comp-detail">OpenSearch · Pinecone</div></div>
+    <div class="comp"><div class="comp-icon">🔄</div><div class="comp-name">RAG Pipeline</div><div class="comp-detail">Feature → Inference</div></div>
+    <div class="comp"><div class="comp-icon">🕸️</div><div class="comp-name">GraphRAG</div><div class="comp-detail">知识图谱增强检索</div></div>
+    <div class="comp"><div class="comp-icon">🦜</div><div class="comp-name">LangChain</div><div class="comp-detail">LCEL · LangSmith</div></div>
+    <div class="comp"><div class="comp-icon">📏</div><div class="comp-name">RAG Evaluation</div><div class="comp-detail">RAGAS · Langfuse</div></div>
+    <div class="comp"><div class="comp-icon">☁️</div><div class="comp-name">AWS Bedrock</div><div class="comp-detail">Foundation Models · KB</div></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- Phase 4: Capability Layer -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--capability)">
+    <div><div class="layer-num">PHASE 04</div><div class="layer-name">Capability Layer</div></div>
+    <div class="layer-desc">11 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">🔧</div><div class="comp-name">Function Calling</div><div class="comp-detail">Tool Use · 参数绑定</div></div>
+    <div class="comp"><div class="comp-icon">🔌</div><div class="comp-name">MCP Server</div><div class="comp-detail">构建 · 集成 · 发布</div></div>
+    <div class="comp"><div class="comp-icon">🌐</div><div class="comp-name">Browser Use</div><div class="comp-detail">Computer Use · 自动化</div></div>
+    <div class="comp"><div class="comp-icon">💻</div><div class="comp-name">Code Interpreter</div><div class="comp-detail">代码执行 · 沙盒</div></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- Phase 5: Agent Core -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--agent)">
+    <div><div class="layer-num">PHASE 05</div><div class="layer-name">Agent Core</div></div>
+    <div class="layer-desc">9 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">🤖</div><div class="comp-name">Agent 基础</div><div class="comp-detail">ReAct · 设计模式</div></div>
+    <div class="comp"><div class="comp-icon">🔀</div><div class="comp-name">Agent SDK 对比</div><div class="comp-detail">OpenAI · Claude · Google</div></div>
+    <div class="comp"><div class="comp-icon">🏭</div><div class="comp-name">构建 Agent</div><div class="comp-detail">第一个 Agent → Production</div></div>
+    <div class="comp"><div class="comp-icon">🔗</div><div class="comp-name">Agentic RAG</div><div class="comp-detail">Agent + 知识检索</div></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- Phase 6: Multi-Agent & Orchestration -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--multi)">
+    <div><div class="layer-num">PHASE 06</div><div class="layer-name">Multi-Agent & Orchestration</div></div>
+    <div class="layer-desc">11 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">👥</div><div class="comp-name">Multi-Agent</div><div class="comp-detail">架构 · 协作模式</div></div>
+    <div class="comp"><div class="comp-icon">📊</div><div class="comp-name">LangGraph</div><div class="comp-detail">状态图 · 编排</div></div>
+    <div class="comp"><div class="comp-icon">🤝</div><div class="comp-name">A2A Protocol</div><div class="comp-detail">Agent 互操作</div></div>
+    <div class="comp"><div class="comp-icon">📡</div><div class="comp-name">Agent Ops</div><div class="comp-detail">LangSmith · 监控</div></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- Phase 7: Memory System -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--memory)">
+    <div><div class="layer-num">PHASE 07</div><div class="layer-name">Memory System</div></div>
+    <div class="layer-desc">2 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">💾</div><div class="comp-name">STM — 短期记忆</div><div class="comp-detail">对话上下文 · 滑动窗口</div></div>
+    <div class="comp"><div class="comp-icon">🧬</div><div class="comp-name">LTM — 长期记忆</div><div class="comp-detail">Mem0 · 持久化存储</div></div>
+    <div class="comp"><div class="comp-icon">🏷️</div><div class="comp-name">Session 管理</div><div class="comp-detail">命名空间 · 隔离</div></div>
+    <div class="comp"><div class="comp-icon">⚖️</div><div class="comp-name">Score Pruning</div><div class="comp-detail">相关性排序 · 裁剪</div></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- Phase 8: Harness Engineering -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--harness)">
+    <div><div class="layer-num">PHASE 08</div><div class="layer-name">Harness Engineering</div></div>
+    <div class="layer-desc">8 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">🎛️</div><div class="comp-name">Harness 架构</div><div class="comp-detail">Tool Loop · 请求处理</div></div>
+    <div class="comp"><div class="comp-icon">🪝</div><div class="comp-name">Hook System</div><div class="comp-detail">PreTool · PostTool · Audit</div></div>
+    <div class="comp"><div class="comp-icon">⚙️</div><div class="comp-name">Skills 范式</div><div class="comp-detail">可复用能力单元</div></div>
+    <div class="comp"><div class="comp-icon">🔄</div><div class="comp-name">ADLC</div><div class="comp-detail">Agent Dev Lifecycle</div></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- Phase 9: Model Layer -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--model)">
+    <div><div class="layer-num">PHASE 09</div><div class="layer-name">Model Layer</div></div>
+    <div class="layer-desc">18 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">🏋️</div><div class="comp-name">Open-Weight Models</div><div class="comp-detail">DeepSeek · Qwen · Llama</div></div>
+    <div class="comp"><div class="comp-icon">🎯</div><div class="comp-name">Fine-Tuning</div><div class="comp-detail">QLoRA · Unsloth · PEFT</div></div>
+    <div class="comp"><div class="comp-icon">📦</div><div class="comp-name">SDG</div><div class="comp-detail">合成数据生成</div></div>
+    <div class="comp"><div class="comp-icon">🚀</div><div class="comp-name">Model Serving</div><div class="comp-detail">SageMaker · vLLM · GPU</div></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- Phase 10: Observability & Evals -->
+<div class="layer">
+  <div class="layer-header" style="background:var(--observability)">
+    <div><div class="layer-num">PHASE 10</div><div class="layer-name">Observability & Evals</div></div>
+    <div class="layer-desc">17 lessons</div>
+  </div>
+  <div class="layer-body">
+    <div class="comp"><div class="comp-icon">📏</div><div class="comp-name">AI Evaluation</div><div class="comp-detail">评估框架 · 指标设计</div></div>
+    <div class="comp"><div class="comp-icon">🛡️</div><div class="comp-name">Safety & Guardrails</div><div class="comp-detail">注入防御 · 幻觉检测</div></div>
+    <div class="comp"><div class="comp-icon">🔴</div><div class="comp-name">Red-teaming</div><div class="comp-detail">对抗测试 · 安全审计</div></div>
+    <div class="comp"><div class="comp-icon">📈</div><div class="comp-name">Monitoring</div><div class="comp-detail">CloudWatch · Dashboard</div></div>
+    <div class="comp"><div class="comp-icon">🎓</div><div class="comp-name">Graduation</div><div class="comp-detail">Demo Day · 职业路径</div></div>
+  </div>
+</div>
+
+</div><!-- center-col -->
+
+<!-- ===== Right Side Panel: P3 Career Incubator (starts after Phase 3) ===== -->
+<div style="display:flex;flex-direction:column">
+  <!-- Spacer to align P3 start with Phase 4 (roughly after Foundation + Context Eng + RAG) -->
+  <div class="p3-spacer" style="min-height:520px"></div>
+  <div class="side-panel right" style="flex:1;display:flex;flex-direction:column">
+  <div class="side-header" style="background:linear-gradient(135deg, #dc2626, #991b1b)">
+    P3 Career Incubator<br>
+    <span style="font-size:10px;font-weight:400;opacity:0.8">12 周真实项目 · 贯穿全程</span>
+  </div>
+  <div class="side-item" style="background:#fef2f2;font-weight:700;color:#dc2626;font-size:10px;justify-content:center;padding:6px 12px">不是看视频 · 是做项目</div>
+  <div style="flex:1;display:flex;flex-direction:column;position:relative;background:#fff">
+    <!-- Vertical timeline line -->
+    <div style="position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(180deg, #fca5a5 0%, #dc2626 20%, #991b1b 60%, #7f1d1d 85%, #FFDE59 100%)"></div>
+    <!-- Timeline items -->
+    <div class="side-item" style="position:relative;padding-left:32px;flex:1;min-height:auto">
+      <div style="position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#fca5a5;border:2px solid #dc2626"></div>
+      <div><div style="font-size:11px;font-weight:700">Kickoff</div><div style="font-size:9px;color:#888">组队 · 选题 · 分工</div></div>
+    </div>
+    <div class="side-item" style="position:relative;padding-left:32px;flex:1;min-height:auto">
+      <div style="position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#dc2626;border:2px solid #991b1b"></div>
+      <div><div style="font-size:11px;font-weight:700">Sprint 1</div><div style="font-size:9px;color:#888">MVP 构建</div></div>
+    </div>
+    <div class="side-item" style="position:relative;padding-left:32px;flex:1;min-height:auto">
+      <div style="position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#dc2626;border:2px solid #991b1b"></div>
+      <div><div style="font-size:11px;font-weight:700">Sprint 2</div><div style="font-size:9px;color:#888">集成 · Code Review</div></div>
+    </div>
+    <div class="side-item" style="position:relative;padding-left:32px;flex:1;min-height:auto">
+      <div style="position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#b91c1c;border:2px solid #7f1d1d"></div>
+      <div><div style="font-size:11px;font-weight:700">中期审查</div><div style="font-size:9px;color:#888">导师检查 · 方向调整</div></div>
+    </div>
+    <div class="side-item" style="position:relative;padding-left:32px;flex:1;min-height:auto">
+      <div style="position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#991b1b;border:2px solid #7f1d1d"></div>
+      <div><div style="font-size:11px;font-weight:700">Sprint 3</div><div style="font-size:9px;color:#888">功能完善 · 测试</div></div>
+    </div>
+    <div class="side-item" style="position:relative;padding-left:32px;flex:1;min-height:auto">
+      <div style="position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#991b1b;border:2px solid #7f1d1d"></div>
+      <div><div style="font-size:11px;font-weight:700">Sprint 4</div><div style="font-size:9px;color:#888">优化 · 部署准备</div></div>
+    </div>
+    <div class="side-item" style="position:relative;padding-left:32px;flex:1;min-height:auto">
+      <div style="position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#7f1d1d;border:2px solid #000"></div>
+      <div><div style="font-size:11px;font-weight:700">Code Freeze</div><div style="font-size:9px;color:#888">代码冻结 · 稳定化</div></div>
+    </div>
+    <div class="side-item" style="position:relative;padding-left:32px;flex:1;min-height:auto;background:linear-gradient(135deg,#FFDE59,#FF914D);border-bottom:none">
+      <div style="position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#FFDE59;border:2px solid #000"></div>
+      <div><div style="font-size:11px;font-weight:900;color:#000">Demo Day</div><div style="font-size:9px;color:#333">面向企业展示</div></div>
+    </div>
+  </div>
+  <!-- Bottom stats -->
+  <div style="padding:10px 12px;font-size:10px;color:#666;line-height:1.5;border-top:2px solid #000;background:#fef2f2">
+    <div style="font-weight:700;color:#dc2626;margin-bottom:3px">vs 普通视频课</div>
+    <div>3-5 人团队 · 生产级 AI 应用</div>
+    <div>导师: Meta · Microsoft · Amazon</div>
+    <div>每周 Code Review + Sprint</div>
+    <div style="margin-top:4px;font-weight:700;color:#059669">5,000+ 学员成功转行</div>
+  </div>
+</div>
+</div><!-- close p3 outer wrapper -->
+
+</div><!-- arch-grid -->
+
+<div class="arch-footer">
+  AI Engineer Bootcamp — 12 Weeks · 10 Phases · Full-Stack AI Engineering &nbsp;|&nbsp;
+  <a href="curriculum.html">查看完整课程大纲 →</a>
+</div>
+
+</div><!-- page -->
+
+</body>
+</html>
