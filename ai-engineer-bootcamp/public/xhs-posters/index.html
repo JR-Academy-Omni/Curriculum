@@ -1245,9 +1245,17 @@
   .p18 .p-inner { background: #fff; }
   .p18 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
   .p18 h2 em { font-style: normal; color: var(--brand-red); }
-  .p18 .flip { margin-top: 40px; display: grid; grid-template-columns: 1fr 80px 1fr; align-items: center; flex: 1; }
+  .p18 .lead {
+    margin-top: 14px;
+    font-size: 27px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p18 .flip { margin-top: 28px; display: grid; grid-template-columns: 1fr 80px 1fr; align-items: center; flex: 1; }
   .p18 .flip-side { border: 2px solid var(--brand-dark); border-radius: 20px; padding: 32px 28px; }
-  .p18 .flip-side.old { background: #f5f5f5; opacity: 0.75; }
+  .p18 .flip-side.old { background: #f5f5f5; opacity: 0.78; }
   .p18 .flip-side.new { background: #ecfdf5; box-shadow: 8px 8px 0 var(--brand-green); }
   .p18 .flip-side h3 { font-size: 34px; font-weight: 900; margin-bottom: 18px; }
   .p18 .flip-side.old h3 { color: var(--text-gray); }
@@ -1588,9 +1596,21 @@
   }
 
   /* ========== P24 JD 覆盖率 ========== */
-  .p24 .p-inner { background: #fff; }
-  .p24 h2 { font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p24 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(255,87,87,0.1), transparent 24%),
+      linear-gradient(180deg, #ffffff 0%, #fff8f7 100%);
+  }
+  .p24 h2 { font-size: 80px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 16px; }
   .p24 h2 em { font-style: normal; color: var(--brand-red); }
+  .p24 .lead {
+    margin-top: 14px;
+    font-size: 27px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
   .p24 .top-stats { margin-top: 28px; display: flex; gap: 16px; }
   .p24 .top-stats .s { flex: 1; text-align: center; background: var(--brand-dark); color: #fff; border-radius: 16px; padding: 18px 12px; border: 2px solid var(--brand-dark); }
   .p24 .top-stats .s .n { font-size: 48px; font-weight: 900; font-family: 'JetBrains Mono', monospace; line-height: 1; }
@@ -2521,6 +2541,7 @@
           <div class="p-dots"></div>
           <div class="p-tag"><span class="dot"></span>翻转课堂</div>
           <h2>别人在听课<br>你在<em>动手做</em></h2>
+          <p class="lead">这门课最不一样的地方，不是多讲了几个概念，而是把学习方式换了。该自己练的放到课前，直播时间拿来做项目和拆问题。</p>
 
           <div class="flip">
             <div class="flip-side old">
@@ -2786,35 +2807,32 @@
             <div class="mod memory">
               <div class="phase-tag">PHASE 7 · MEMORY SYSTEM</div>
               <h3>Memory System</h3>
-              <div class="desc">Agent 聊完就忘？生产环境不行。Memory 是 Agent 从"玩具"变"产品"的关键一步——让 AI 记住用户偏好、跨会话积累上下文、在长期交互中越来越懂你。</div>
+              <div class="desc">Agent 聊完就忘，生产环境就跑不起来。Memory 解决的是用户偏好、上下文积累和跨会话连续性。</div>
               <div class="topics">
                 <span class="topic">短期记忆 STM</span>
                 <span class="topic">长期记忆 LTM</span>
                 <span class="topic">Mem0 三层架构</span>
                 <span class="topic">Graph Memory</span>
                 <span class="topic">Session 管理</span>
-                <span class="topic">跨会话记忆</span>
               </div>
             </div>
 
             <div class="mod harness">
               <div class="phase-tag">PHASE 8 · HARNESS ENGINEERING</div>
               <h3>Harness Engineering</h3>
-              <div class="desc">Claude Code 怎么做到一个 CLI 调度几十个工具不出错？答案是 Harness。这是 2026 年 Agent 工程化的核心架构——控制 Agent 的行为边界、工具调度、技能复用。</div>
+              <div class="desc">Claude Code 为什么能调度一堆工具还不乱？核心就是 Harness，用来管行为边界、工具调度和技能复用。</div>
               <div class="topics">
                 <span class="topic">Harness 架构剖析</span>
                 <span class="topic">Hook System</span>
                 <span class="topic">Tool Loop</span>
                 <span class="topic">Skills 范式</span>
                 <span class="topic">ADLC 生命周期</span>
-                <span class="topic">SubAgent 模式</span>
               </div>
             </div>
           </div>
 
           <div class="bottom-note">
-            这两个 Phase 的知识在 2026 技术面里被反复问到<br>
-            但市面上没有课系统教——因为太新了
+            这两块在 2026 技术面里被反复问到，但市面上几乎没有课系统展开讲。
           </div>
         </div>
       </div>
@@ -2833,6 +2851,7 @@
           <div class="p-dots"></div>
           <div class="p-tag"><span class="dot"></span>JD 对照 · 2026</div>
           <h2>扒了 15 份<em>真实 JD</em><br>我们覆盖了多少？</h2>
+          <p class="lead">不是拍脑袋说“市场需要这些”，而是把真实岗位要求拆开看。下面这 6 组能力，就是 2026 AI Engineer JD 里最常出现的交集。</p>
 
           <div class="top-stats">
             <div class="s"><div class="n">15</div><div class="l">JD 样本</div></div>

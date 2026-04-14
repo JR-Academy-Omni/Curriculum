@@ -1,6 +1,6 @@
 # Bootcamp 课程自动化管理 — 全局状态 & 缺口分析
 
-> 最后更新：2026-04-05
+> 最后更新：2026-04-14
 
 ---
 
@@ -109,6 +109,8 @@ const CURRICULUM_SLUGS = {
 | AI 必修课 | `ai-essentials-bootcamp/` | ✅ 33 lessons | ✅ 8 页 | ✅ 已更新 | ✅ 全量同步 | ✅ 已配置 |
 | AI Adoption | `ai-adoption-bootcamp/` | ❌ **缺失** | ✅ 8 页 | ✅ 有（旧） | ❌ 未同步 | ✅ 已配置（但无 outline.json 无法 sync） |
 | AI Engineer | `ai-engineer-bootcamp/` | ❌ **缺失** | ✅ 9 页 | ✅ 有（旧） | ⚠️ 部分 | ✅ 已配置（同上） |
+| 编程入门班 22 期 | `web-code-bootcamp-or-learn-to-code/` | ✅ 78 lessons | ✅ curriculum.html | ❌ 缺 | ⏳ 待 sync | ❌ 未配置 |
+| **AI Engineer 全栈 30 期** | `web-code-bootcamp-or-learn-to-code-1/` | ⏳ **PRD 已写，待创建** | ❌ 缺 | ❌ 缺 | ❌ 未同步 | ❌ 未配置 |
 
 ### AI 必修课详情
 
@@ -153,12 +155,37 @@ const CURRICULUM_SLUGS = {
 
 ## 关键缺口
 
+### AI Engineer 全栈班 30 期详情
+
+| 维度 | 值 |
+|------|-----|
+| PRD | `docs/prd/AI_ENGINEER_FULLSTACK_30_PRD.md` |
+| Training slug | `web-code-bootcamp-or-learn-to-code-1` |
+| Training ID | `5b4c09298018453ddf51937f` |
+| Program 30 期 ID | `6982e2367711f8c9cc8cfbff` |
+| Syllabus 30 期 ID | `699e541b66bd6c9af808e51c` |
+| 基线 | 28 期 156 节全部保留 |
+| 目标 | 10 个模块 ~276 节，AI 占比 24%+ |
+| 新增 | 77 Lab + 31 Learn + 12 Quest |
+| 关键调整 | Git Lab 集中到 M3c（不放 M1/M2 开营阶段） |
+| 状态 | Phase 1 — PRD 完成，待创建 outline.json |
+
+**实施步骤**:
+1. ✅ PRD 完成 (2026-04-13)
+2. ⏳ 创建 30 期 outline.json（继承 28 期 + 重编排到 10 模块）
+3. ⏳ 设计 12 个 Quest 的 stepSkeleton
+4. ⏳ 创建 10 篇 Wiki
+5. ⏳ SDM diff + sync 上线
+
+---
+
 ### P0 — 阻塞性
 
 | # | 缺口 | 影响 |
 |---|------|------|
 | 1 | ai-adoption-bootcamp 缺 outline.json | 无法 sync 到 production、无法用 SDM 管理 |
 | 2 | ai-engineer-bootcamp 缺 outline.json | 同上 |
+| 3 | **AI Engineer 全栈 30 期缺 outline.json** | PRD 已完成但还没转成可执行的 outline.json |
 
 ### P1 — 重要
 
