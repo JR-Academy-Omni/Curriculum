@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quest 宣传海报 V4 (Official Brand Style)</title>
+<title>匠人 AI 教学矩阵 · 宣传海报全集</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
 
@@ -11,6 +11,7 @@
     --brand-red: #ff5757;
     --brand-dark: #10162f;
     --brand-yellow: #ffce44;
+    --brand-blue: #3b82f6;
     --bg-light: #f8f9fb;
     --text-main: #10162f;
     --text-gray: #64748b;
@@ -30,33 +31,35 @@
 
   .page-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
   }
-  .page-header h1 { font-size: 24px; font-weight: 900; color: var(--brand-dark); }
-  .page-header p { font-size: 14px; color: var(--text-gray); margin-top: 8px; }
+  .page-header h1 { font-size: 32px; font-weight: 900; color: var(--brand-dark); }
+  .page-header p { font-size: 16px; color: var(--text-gray); margin-top: 12px; max-width: 600px; margin-left: auto; margin-right: auto; }
 
   .posters-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 80px;
+    gap: 100px;
     max-width: 1200px;
     margin: 0 auto;
   }
 
   .poster-wrapper { width: 100%; max-width: 1000px; }
-  .poster-label { font-size: 12px; font-weight: 700; color: var(--text-gray); margin-bottom: 12px; letter-spacing: 1px; }
+  .poster-label { font-size: 14px; font-weight: 900; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .poster-label::before { content: ''; width: 24px; height: 4px; background: var(--brand-red); border-radius: 2px; }
 
   .poster {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    /* aspect-ratio: 16 / 9; <-- 移除固定比例 */
+    min-height: 560px; /* 设定最小高度，保留海报感 */
     background: #fff;
     border-radius: var(--card-radius);
     border: 1.5px solid var(--brand-dark);
-    box-shadow: 12px 12px 0px rgba(16, 22, 47, 0.05);
+    box-shadow: 16px 16px 0px rgba(16, 22, 47, 0.04);
     position: relative;
     overflow: hidden;
-    padding: 60px;
+    padding: 50px 60px; /* 稍微减小内边距 */
     display: flex;
     flex-direction: column;
   }
@@ -66,30 +69,30 @@
     content: '';
     position: absolute;
     top: 0; right: 0;
-    width: 200px; height: 200px;
+    width: 300px; height: 300px;
     background-image: radial-gradient(var(--text-gray) 1px, transparent 1px);
-    background-size: 16px 16px;
-    opacity: 0.1;
+    background-size: 20px 20px;
+    opacity: 0.08;
     z-index: 0;
   }
 
   .poster-content { position: relative; z-index: 10; flex: 1; display: flex; flex-direction: column; }
 
   /* Header Styles */
-  h2 { font-size: 44px; font-weight: 900; color: var(--brand-dark); line-height: 1.2; margin-bottom: 20px; }
+  h2 { font-size: 48px; font-weight: 900; color: var(--brand-dark); line-height: 1.2; margin-bottom: 24px; letter-spacing: -1px; }
   h2 em { font-style: normal; color: var(--brand-red); position: relative; }
   h2 em::after {
     content: '';
     position: absolute;
-    bottom: 5px; left: 0; width: 100%; height: 8px;
+    bottom: 8px; left: 0; width: 100%; height: 10px;
     background: var(--brand-yellow);
     z-index: -1;
     opacity: 0.6;
   }
 
-  .desc { font-size: 18px; color: var(--text-gray); max-width: 520px; margin-bottom: 40px; }
+  .desc { font-size: 20px; color: var(--text-gray); max-width: 600px; margin-bottom: 40px; font-weight: 500; }
 
-  /* Shared Brand Bar */
+  /* Brand Bar */
   .brand-bar {
     margin-top: auto;
     padding-top: 24px;
@@ -99,132 +102,257 @@
     align-items: center;
     z-index: 10;
   }
-  .brand-logo { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 900; }
+  .brand-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 900; }
   .brand-logo span { color: var(--brand-red); }
-  .brand-url { font-size: 14px; font-weight: 500; color: var(--text-gray); }
+  .brand-url { font-size: 16px; font-weight: 600; color: var(--text-gray); }
 
-  /* ========== POSTER 1: FEATURES ========== */
-  .poster-1 .feat-row { display: flex; gap: 16px; }
-  .feat-card {
-    flex: 1;
-    background: #fff;
-    border: 1px solid var(--brand-dark);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 4px 4px 0px var(--brand-dark);
-    transition: transform 0.2s;
-  }
-  .feat-icon { font-size: 24px; margin-bottom: 12px; }
-  .feat-title { font-size: 14px; font-weight: 900; }
-
-  /* ========== POSTER 2: CHAT ========== */
-  .poster-2 .poster-content { flex-direction: row; gap: 60px; align-items: center; }
-  .poster-2 .text-area { flex: 1.2; }
-  .poster-2 .chat-area {
-    flex: 1;
+  /* Shared Card Styles */
+  .item-card {
     background: #fff;
     border: 1.5px solid var(--brand-dark);
     border-radius: 20px;
-    box-shadow: 10px 10px 0px var(--brand-yellow);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .chat-header { padding: 12px 16px; background: var(--brand-dark); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 1px; }
-  .chat-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-  .bubble { padding: 10px 14px; border-radius: 12px; font-size: 13px; font-weight: 500; max-width: 85%; line-height: 1.5; border: 1px solid #eee; }
-  .bubble-ai { background: #f8fafc; align-self: flex-start; border-bottom-left-radius: 2px; }
-  .bubble-user { background: var(--brand-dark); color: #fff; align-self: flex-end; border-bottom-right-radius: 2px; }
-
-  /* ========== POSTER 3: COMPARE ========== */
-  .poster-3 h2 { text-align: center; }
-  .poster-3 .sub { text-align: center; font-size: 16px; color: var(--text-gray); margin-bottom: 30px; }
-  .compare-row { display: flex; gap: 20px; margin-bottom: 20px; }
-  .compare-col {
-    flex: 1;
-    background: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
     padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    box-shadow: 6px 6px 0px var(--brand-dark);
   }
-  .compare-col.highlight {
-    border-color: var(--brand-red);
-    box-shadow: 0 10px 25px rgba(255, 87, 87, 0.1);
-    background: rgba(255, 87, 87, 0.02);
-  }
-  .col-title { font-size: 14px; font-weight: 900; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px; }
-  .highlight .col-title { color: var(--brand-red); }
-  .col-item { font-size: 13px; font-weight: 500; padding: 8px 12px; border-radius: 8px; background: #f1f5f9; }
-  .highlight .col-item { background: #fff; border: 1px solid var(--brand-red); font-weight: 700; }
 
-  /* ========== POSTER 4: BENTO ========== */
-  .poster-4 .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 16px;
-    flex: 1;
-    margin-bottom: 20px;
-  }
-  .bento-card {
+  /* ========== POSTER 1-4 (Quest Specific - Refined) ========== */
+  .poster-1 .feat-row { display: flex; gap: 16px; }
+  .feat-card { flex: 1; text-align: center; }
+  .feat-icon { font-size: 28px; margin-bottom: 12px; }
+  .feat-title { font-size: 15px; font-weight: 900; }
+
+  .chat-area {
     background: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: all 0.2s;
+    border: 1.5px solid var(--brand-dark);
+    border-radius: 24px;
+    box-shadow: 12px 12px 0px var(--brand-yellow);
+    overflow: hidden;
+    max-width: 500px;
   }
-  .bento-card:hover { border-color: var(--brand-dark); transform: translateY(-3px); }
-  .bento-card.accent { background: var(--brand-dark); color: #fff; }
-  .bento-card.accent .bento-desc { color: rgba(255,255,255,0.6); }
-  .bento-icon { font-size: 24px; margin-bottom: 10px; }
-  .bento-title { font-size: 15px; font-weight: 900; margin-bottom: 4px; }
-  .bento-desc { font-size: 12px; color: var(--text-gray); line-height: 1.4; }
+  .chat-header { padding: 12px 20px; background: var(--brand-dark); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; }
+  .chat-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .bubble { padding: 12px 18px; border-radius: 16px; font-size: 14px; font-weight: 500; max-width: 90%; line-height: 1.6; border: 1px solid #eee; }
+  .bubble-ai { background: #f8fafc; align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: 2px 2px 0 rgba(0,0,0,0.03); }
+  .bubble-user { background: var(--brand-dark); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+
+  /* ========== POSTER 5: TEACHING MATRIX ========== */
+  .matrix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; }
+  .matrix-item { display: flex; align-items: flex-start; gap: 20px; }
+  .matrix-icon { width: 60px; height: 60px; background: var(--bg-light); border: 2px solid var(--brand-dark); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; box-shadow: 4px 4px 0 var(--brand-dark); }
+  .matrix-info h4 { font-size: 20px; font-weight: 900; margin-bottom: 6px; }
+  .matrix-info p { font-size: 14px; color: var(--text-gray); line-height: 1.5; }
+
+  /* ========== POSTER 6: LEARNING LOOP ========== */
+  .loop-container { display: flex; align-items: center; gap: 20px; flex: 1; margin-top: 20px; }
+  .loop-step { flex: 1; position: relative; text-align: center; }
+  .step-box { padding: 30px 20px; position: relative; z-index: 10; height: 200px; display: flex; flex-direction: column; justify-content: center; }
+  .step-box h4 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+  .step-box p { font-size: 14px; color: var(--text-gray); }
+  .loop-arrow { font-size: 32px; color: var(--brand-dark); opacity: 0.3; }
+
+  /* ========== POSTER 7: PERSONALIZED ENGINE ========== */
+  .engine-logic { display: flex; flex-direction: column; gap: 12px; flex: 1; max-width: 750px; }
+  .logic-row { display: flex; align-items: center; gap: 20px; padding: 14px 20px; border: 1.5px solid var(--border-color); border-radius: 16px; transition: all 0.3s; }
+  .logic-row:hover { border-color: var(--brand-dark); box-shadow: 8px 8px 0 rgba(0,0,0,0.05); }
+  .logic-condition { font-weight: 900; font-size: 16px; padding: 6px 16px; background: var(--bg-light); border-radius: 100px; border: 1px solid var(--brand-dark); white-space: nowrap; }
+  .logic-action { font-size: 15px; color: var(--text-gray); display: flex; align-items: center; gap: 10px; }
+  .logic-action::before { content: '➜'; color: var(--brand-red); font-weight: 900; }
+
+  /* ========== POSTER 8: PRODUCTIVITY NATIVE ========== */
+  .prod-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; flex: 1; }
+  .code-window { background: #1e293b; border-radius: 20px; padding: 24px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 14px; position: relative; box-shadow: 20px 20px 0 var(--brand-dark); }
+  .code-window::before { content: '● ● ●'; color: #475569; position: absolute; top: 12px; left: 16px; font-size: 10px; }
+  .code-line { margin-bottom: 8px; }
+  .code-comment { color: #64748b; }
+  .code-keyword { color: #8b5cf6; }
+  .code-string { color: #10b981; }
+  .feature-list { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+  .feature-pill { padding: 16px 20px; background: #fff; border: 1.5px solid var(--brand-dark); border-radius: 16px; font-weight: 900; display: flex; align-items: center; gap: 12px; box-shadow: 4px 4px 0 var(--brand-dark); }
 
   @media (max-width: 900px) {
-    .poster { aspect-ratio: auto; min-height: 600px; padding: 40px; }
+    .poster { aspect-ratio: auto; min-height: 700px; padding: 40px; }
     h2 { font-size: 32px; }
-    .poster-2 .poster-content { flex-direction: column; }
-    .compare-row { flex-direction: column; }
-    .bento-grid { grid-template-columns: 1fr 1fr; }
+    .matrix-grid, .loop-container, .prod-grid { grid-template-columns: 1fr; flex-direction: column; }
+    .loop-arrow { transform: rotate(90deg); margin: 10px 0; }
   }
 </style>
 </head>
 <body>
 
 <header class="page-header">
-  <h1>QUEST MODE · POSTERS V4</h1>
-  <p>官方品牌视觉同步 · 大圆角 / 精致描边 / 品牌色系</p>
+  <h1>为了让你学好，我们开发了多种教学模式</h1>
+  <p>不仅仅是 AI 工具，更是一套完整的、针对不同阶段的学习生态。从输入到实战，AI 全程为你保驾护航。</p>
 </header>
 
 <div class="posters-container">
 
-  <!-- ===== POSTER 1 ===== -->
+  <!-- ===== POSTER 5: 教学矩阵 ===== -->
   <div class="poster-wrapper">
-    <div class="poster-label">视角 1 · 核心价值</div>
+    <div class="poster-label">核心模式 · 四维一体教学矩阵</div>
+    <div class="poster poster-5">
+      <div class="poster-content">
+        <h2>四维一体 <em>AI 进化矩阵</em></h2>
+        <p class="desc">针对不同学习阶段，我们构建了 4 种硬核教学模式。不论你是小白还是极客，都能找到最适合自己的节奏。</p>
+        <div class="matrix-grid">
+          <div class="matrix-item">
+            <div class="matrix-icon">🌸</div>
+            <div class="matrix-info">
+              <h4>QUEST 模式</h4>
+              <p>AI 老师主动教你，在真实环境里一步步带你实操，解决“不敢动手”的难题。</p>
+            </div>
+          </div>
+          <div class="matrix-item">
+            <div class="matrix-icon">🔬</div>
+            <div class="matrix-info">
+              <h4>FRONTEND LAB</h4>
+              <p>沉浸式沙盒实验室，高频练习 HTML/CSS 核心知识，夯实编码基本功。</p>
+            </div>
+          </div>
+          <div class="matrix-item">
+            <div class="matrix-icon">⚡</div>
+            <div class="matrix-info">
+              <h4>VIBE CODING</h4>
+              <p>用自然语言驱动开发。在 AI 辅助下体验 10 倍速的真实生产力提升。</p>
+            </div>
+          </div>
+          <div class="matrix-item">
+            <div class="matrix-icon">👨‍🏫</div>
+            <div class="matrix-info">
+              <h4>1V1 导师复盘</h4>
+              <p>来自 Google、Amazon 的资深导师深度接入，破解 AI 无法解决的认知天花板。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-bar">
+        <div class="brand-logo">匠人学院 <span>·</span> Ecosystem</div>
+        <div class="brand-url">jiangren.com.au</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== POSTER 6: 学习闭环 ===== -->
+  <div class="poster-wrapper">
+    <div class="poster-label">科学链路 · 从懂到会的学习闭环</div>
+    <div class="poster poster-6">
+      <div class="poster-content">
+        <h2>拒绝无效学习 <em>闭环即能力</em></h2>
+        <p class="desc">知识不等于能力。我们通过严密的教学闭环，确保你带走的不只是笔记，而是电脑里真实的作品。</p>
+        <div class="loop-container">
+          <div class="loop-step">
+            <div class="item-card step-box">
+              <div style="font-size: 32px; margin-bottom: 10px;">📚</div>
+              <h4>系统课输入</h4>
+              <p>全景式构建 AI 时代知识体系</p>
+            </div>
+          </div>
+          <div class="loop-arrow">→</div>
+          <div class="loop-step">
+            <div class="item-card step-box" style="background: var(--brand-yellow);">
+              <div style="font-size: 32px; margin-bottom: 10px;">🔥</div>
+              <h4>QUEST 强化</h4>
+              <p>AI 主动带练，在实战中内化能力</p>
+            </div>
+          </div>
+          <div class="loop-arrow">→</div>
+          <div class="loop-step">
+            <div class="item-card step-box" style="background: var(--brand-dark); color: #fff;">
+              <div style="font-size: 32px; margin-bottom: 10px;">🚀</div>
+              <h4>真实项目交付</h4>
+              <p>在生产级环境完成作品集交付</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-bar">
+        <div class="brand-logo">匠人学院 <span>·</span> Methodology</div>
+        <div class="brand-url">jiangren.com.au</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== POSTER 7: 个性化引擎 ===== -->
+  <div class="poster-wrapper">
+    <div class="poster-label">智能驱动 · 千人千面的进度反馈</div>
+    <div class="poster poster-7">
+      <div class="poster-content">
+        <h2>每位学员都有 <em>专属进度</em></h2>
+        <p class="desc">没有学不会的学生，只有不合适的模式。我们的 AI 引擎实时动态调整，确保每一分钟学习都有效。</p>
+        <div class="engine-logic">
+          <div class="logic-row">
+            <div class="logic-condition">IF 进度极快</div>
+            <div class="logic-action">自动开启“挑战模式”，解锁更高阶技术栈和复杂场景。</div>
+          </div>
+          <div class="logic-row">
+            <div class="logic-condition">IF 遇到卡点</div>
+            <div class="logic-action">AI 变换引导方式，提供阶梯式提示，拒绝直接给答案。</div>
+          </div>
+          <div class="logic-row">
+            <div class="logic-condition">IF 逻辑偏差</div>
+            <div class="logic-action">AI 溯源思维漏洞，推荐相关知识点重修，精准查漏补缺。</div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-bar">
+        <div class="brand-logo">匠人学院 <span>·</span> Adaptive Engine</div>
+        <div class="brand-url">jiangren.com.au</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== POSTER 8: 生产力原生 ===== -->
+  <div class="poster-wrapper">
+    <div class="poster-label">高效范式 · 用 AI 的方式学 AI</div>
+    <div class="poster poster-8">
+      <div class="poster-content">
+        <h2>学 AI 就用 <em>AI 的方式学</em></h2>
+        <p class="desc">告别“看视频 + 记笔记”的低效时代。在匠人，你的学习过程本身，就是一次极致的 AI 生产力实践。</p>
+        <div class="prod-grid">
+          <div class="code-window">
+            <div class="code-line"><span class="code-comment">// 匠人 AI 教学引擎核心逻辑</span></div>
+            <div class="code-line"><span class="code-keyword">async function</span> <span style="color: #60a5fa;">startLearning</span>() {</div>
+            <div class="code-line">&nbsp;&nbsp;<span class="code-keyword">await</span> monitor_progress();</div>
+            <div class="code-line">&nbsp;&nbsp;<span class="code-keyword">if</span> (stuck) <span class="code-keyword">await</span> ai_active_guidance();</div>
+            <div class="code-line">&nbsp;&nbsp;<span class="code-keyword">await</span> verify_evidence(); <span class="code-comment">// 深度取证</span></div>
+            <div class="code-line">&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"REAL_PRODUCT"</span>;</div>
+            <div class="code-line">}</div>
+          </div>
+          <div class="feature-list">
+            <div class="feature-pill">🤖 AI 实时共创代码</div>
+            <div class="feature-pill">🔍 自动化成果深度审核</div>
+            <div class="feature-pill">🛠️ AI 辅助环境故障自愈</div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-bar">
+        <div class="brand-logo">匠人学院 <span>·</span> Productivity First</div>
+        <div class="brand-url">jiangren.com.au</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 原有的 4 张海报保留在此处下方 ===== -->
+  
+  <div class="poster-wrapper">
+    <div class="poster-label">产品细节 · QUEST 模式 · "这是什么？"</div>
     <div class="poster poster-1">
       <div class="poster-content">
         <h2>AI 老师 <em>主动开口</em><br>不再等你提问</h2>
         <p class="desc">QUEST 模式：AI 小花老师像真人私教一样主动带节奏，给你指令、验证证据，在你自己的电脑上完成真实任务。</p>
         <div class="feat-row">
-          <div class="feat-card">
+          <div class="feat-card item-card">
             <div class="feat-icon">🗣️</div>
             <div class="feat-title">AI 主动引导</div>
           </div>
-          <div class="feat-card">
+          <div class="feat-card item-card">
             <div class="feat-icon">💻</div>
             <div class="feat-title">真实环境实操</div>
           </div>
-          <div class="feat-card">
+          <div class="feat-card item-card">
             <div class="feat-icon">🔍</div>
             <div class="feat-title">深度逻辑验证</div>
           </div>
-          <div class="feat-card">
+          <div class="feat-card item-card">
             <div class="feat-icon">⚡</div>
             <div class="feat-title">毫秒级响应</div>
           </div>
@@ -237,12 +365,11 @@
     </div>
   </div>
 
-  <!-- ===== POSTER 2 ===== -->
   <div class="poster-wrapper">
-    <div class="poster-label">视角 2 · 沉浸体验</div>
+    <div class="poster-label">产品细节 · 沉浸体验 · "上课是什么感觉？"</div>
     <div class="poster poster-2">
-      <div class="poster-content">
-        <div class="text-area">
+      <div class="poster-content" style="flex-direction: row; gap: 60px; align-items: center;">
+        <div class="text-area" style="flex: 1.2;">
           <h2>像跟 <em>真人教练</em><br>一对一私教</h2>
           <p class="desc">小花老师带你一步步做，做完一步才推进下一步。说"做完了"没用——得拿出证据。</p>
         </div>
@@ -264,94 +391,9 @@
     </div>
   </div>
 
-  <!-- ===== POSTER 3 ===== -->
-  <div class="poster-wrapper">
-    <div class="poster-label">视角 3 · 进化对比</div>
-    <div class="poster poster-3">
-      <div class="poster-content">
-        <h2>学习方式的 <em>终极进化</em></h2>
-        <p class="sub">从被动接收到主动实战，拉近“学”与“用”的距离</p>
-        <div class="compare-row">
-          <div class="compare-col">
-            <div class="col-title">1.0 传统学习</div>
-            <div class="col-item">看视频 / 读长文档</div>
-            <div class="col-item">纸上谈兵的练习</div>
-            <div class="col-item">自己打勾"已学完"</div>
-          </div>
-          <div class="compare-col">
-            <div class="col-title">2.0 普通 AI 课</div>
-            <div class="col-item">你提问，AI 才回答</div>
-            <div class="col-item">在网页模拟环境练习</div>
-            <div class="col-item">系统自动判定对错</div>
-          </div>
-          <div class="compare-col highlight">
-            <div class="col-title">Next Gen: QUEST</div>
-            <div class="col-item">AI 主动开口，带教带练</div>
-            <div class="compare-col-inner" style="font-size: 11px; margin-top: 5px; color: var(--brand-red); font-weight: 700;">
-              ✓ 在你真实电脑上操作<br>✓ AI 追问验证产出
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="brand-bar">
-        <div class="brand-logo">匠人学院 <span>·</span> Quest</div>
-        <div class="brand-url">jiangren.com.au</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== POSTER 4 ===== -->
-  <div class="poster-wrapper">
-    <div class="poster-label">视角 4 · 真实产出</div>
-    <div class="poster poster-4">
-      <div class="poster-content">
-        <h2>每节课结束 <em>真实产出</em></h2>
-        <div class="bento-grid">
-          <div class="bento-card" style="grid-row: span 2; background: #fffbeb;">
-            <div class="bento-icon">🛠️</div>
-            <div class="bento-title">环境跑通</div>
-            <div class="bento-desc">AI 陪你亲自把开发环境配好，项目跑起来。</div>
-          </div>
-          <div class="bento-card">
-            <div class="bento-icon">📄</div>
-            <div class="bento-title">可用文档</div>
-            <div class="bento-desc">方案书、文案、报告。</div>
-          </div>
-          <div class="bento-card">
-            <div class="bento-icon">🧠</div>
-            <div class="bento-title">肌肉记忆</div>
-            <div class="bento-desc">深度追问，确保真懂。</div>
-          </div>
-          <div class="bento-card accent" style="grid-row: span 2;">
-            <div class="bento-icon">🎯</div>
-            <div class="bento-title">作品集</div>
-            <div class="bento-desc">每节课产出合起来就是个人作品集。</div>
-          </div>
-          <div class="bento-card">
-            <div class="bento-icon">📊</div>
-            <div class="bento-title">个性反馈</div>
-            <div class="bento-desc">专属建议，实时改进。</div>
-          </div>
-          <div class="bento-card">
-            <div class="bento-icon">🤖</div>
-            <div class="bento-title">真实系统</div>
-            <div class="bento-desc">配置 Bot、接通 API。</div>
-          </div>
-        </div>
-      </div>
-      <div class="brand-bar">
-        <div class="brand-logo">匠人学院 <span>·</span> Quest</div>
-        <div style="display: flex; gap: 10px; align-items: center;">
-          <div style="width: 32px; height: 32px; background: #eee; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 900;">QR</div>
-          <div class="brand-url">jiangren.com.au</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
-<footer class="page-header" style="margin-top: 80px;">
+<footer class="page-header" style="margin-top: 80px; padding-bottom: 40px;">
   <p>💡 提示：右键海报 -> 检查 -> 选中 .poster 元素 -> Capture node screenshot</p>
 </footer>
 

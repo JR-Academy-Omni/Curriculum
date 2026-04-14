@@ -1,7 +1,10 @@
 # AI Engineer Bootcamp — 第四期 vs 第五期 审计报告
 
 > 生成日期: 2026-04-13
+> 最后更新: 2026-04-14
 > 数据来源: Production syllabus `68f87a8b71ceada12fdce8b2` (第四期) vs `curriculum/ai-engineer-bootcamp/public/outline.json` (第五期)
+>
+> **状态**: ✅ 第五期大纲调整完成（172 节课，5 个 Phase），待 `/bootcamp-sync` 同步到 production。
 
 ---
 
@@ -186,11 +189,40 @@ L_new - Agent 框架对比参考 (Information, ~5min)
 
 ---
 
-## 七、下一步操作
+## 七、操作进度
 
-1. ✅ 审计完成，报告已生成
-2. ⬜ 在 outline.json 中新增第 5.1~5.3 列出的课程
-3. ⬜ 新增 Harness Engineering Phase（独立 Phase 4）
-4. ⬜ 重新编号所有 lesson (L01-L1xx)
-5. ⬜ 通过 `/bootcamp-sync` 同步到第五期独立 Syllabus，不动第四期
-6. ⬜ 在 Skills Data Manager 确认 diff 无误后一键同步
+1. ✅ 审计完成，报告已生成 (2026-04-13)
+2. ✅ 新增第四期独有的 7 节课到第五期 outline.json (2026-04-13)
+   - Phase 1: L29 The Transformer Architecture, L30 Input Embeddings
+   - Phase 3: L120 MCP 源码解读, L121 MCP 工程集成实战, L122 MCP 实战项目 01, L123 MCP 实战项目 02
+   - Phase 5: L169 学员小组项目展示
+3. ✅ 新增 Harness Engineering 作为独立 Phase 4（8 节课）(2026-04-14)
+   - L132 Harness Engineering 基础 (Lesson 90min)
+   - L133 Harness 架构剖析：以 Claude Code 为例 (Information 30min)
+   - L134 从零构建 AI Coding Agent Harness (Lesson 120min)
+   - L135 Lab: Tool Loop 实现 (InteractiveLab 30min)
+   - L136 Harness 工程化 (Lesson 90min)
+   - L137 Harness Patterns 参考 (Information 20min)
+   - L138 Skills 范式：可复用 Agent 能力单元 (Lesson 60min)
+   - L139 Quest: 在你电脑上构建个人 Harness (Quest 30min)
+4. ✅ 所有 lesson 重新编号 L01-L172，5 个 Phase 结构就绪 (2026-04-14)
+5. ⬜ 更新 HTML 预览页面（curriculum.html / phase1-5.html / outline.html）
+6. ⬜ 通过 `/bootcamp-sync` 同步到第五期独立 Syllabus（`69b8e9888639a1eb66afe5d9`），不动第四期
+7. ⬜ 在 Skills Data Manager 确认 diff 无误后一键同步
+8. ⬜ 同步后在 admin 里人工绑定第四期已有的 37 节视频到第五期对应 lesson（video binding 不在 outline.json 同步范围内）
+
+## 八、当前大纲结构总览
+
+| Phase | 名称 | 课程数 | Week |
+|-------|------|--------|------|
+| 1 | GenAI 基础 + Context Engineering | 52 | 1-3 |
+| 2 | RAG 系统全栈开发 | 44 | 4-6 |
+| 3 | AI Agents 工程化 | 35 | 7-9 |
+| **4** | **Harness Engineering** 🆕 | **8** | **10** |
+| 5 | 模型优化 + AI Evals + 毕业 | 33 | 11-12 |
+| **总计** | — | **172** | **12** |
+
+- 直播课: 59 节
+- InteractiveLab: 62 节
+- Quest: 1 节
+- 总 steps: 688

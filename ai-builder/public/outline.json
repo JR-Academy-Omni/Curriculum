@@ -6,7 +6,7 @@
   "level": "中级",
   "type": "training",
   "targetAudience": "有编程基础的开发者、全栈工程师、DevOps、想用 AI 提升开发效率的技术人员",
-  "totalLessons": 108,
+  "totalLessons": 113,
   "totalSteps": 124,
   "liveClasses": 22,
   "estimatedHours": 63,
@@ -218,6 +218,89 @@
             }
           ],
           "_id": "69dc419a76e3e0c1b3c53e2f"
+        },
+        {
+          "code": "Q01",
+          "title": "Quest 实战：装好 Claude Code + Cursor + Codex 完整工具链",
+          "type": "Quest",
+          "duration": 35,
+          "isLive": false,
+          "description": "<h3>🎯 这节课解决什么问题</h3><p>L04-L06 讲了 Claude Code、Cursor、Codex CLI 是什么。但很多有经验的开发者「装过 Cursor」≠「装过完整工具链」，更没体验过三个工具协作的开发流。这节 Quest 由小花老师主动引导你在自己电脑上把 Claude Code、Cursor、Codex CLI 三个全部装好、配好 API Key、跑通第一个 Hello World 项目，让你真切感受到「Vibe Coding 工具链」是什么。</p><h3>📖 你将学到</h3><ul><li><strong>装好三大工具</strong> — Claude Code 终端版 + Cursor IDE + Codex CLI 配齐</li><li><strong>配置 API Key 和环境变量</strong> — 不是看截图，是自己跑通认证</li><li><strong>跑通三个工具的第一个项目</strong> — 让 Claude Code init、Cursor 打开、Codex CLI 跑命令</li></ul><h3>💡 适合谁</h3><p>有 Python/JS 基础但还没用过 Claude Code 或者只用过 Cursor 的开发者。这一节让你在 30 分钟内补齐工具栈。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：装 Node + Claude Code → 装 Cursor → 装 Codex CLI → 配 API Key → 跑通第一个项目）</li><li>约 35 分钟</li><li>完成后你电脑上有完整 Vibe Coding 工具链，能切换使用</li></ul><h3>✅ 学完能做什么</h3><p>后面 Phase 2-4 的所有 Skills、MCP、Agent、全栈项目实战都建立在这套工具链上。这一节没装好后面只能干看演示。</p>",
+          "quest": {
+            "title": "装好 Claude Code + Cursor + Codex CLI 三件套",
+            "description": "从零安装到三个工具都跑通第一个 Hello World 项目",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 35,
+            "learningGoal": "学员能在自己电脑上独立装好 Claude Code、Cursor、Codex CLI 三个工具，配好 API Key，并用三个工具分别完成一个最小验证",
+            "successCriteria": "学员能 1) claude --version 显示版本号；2) cursor 命令能打开 IDE；3) codex --version 显示版本号；4) 用 claude code 在某个目录跑通一次 init",
+            "uiMode": "chat",
+            "visualMode": "flow",
+            "context": "用户是有经验的开发者（Python/JS 基础），熟悉终端操作。引导时不用解释什么是 npm，但要提醒 Mac 用户 brew 装 node、Windows 用户用 WSL2。Claude Code 装在 npm 全局，Cursor 装 GUI 应用，Codex CLI 用 npm 全局。重点是引导用户配 API Key——Claude Code 用 Anthropic Key，Codex CLI 用 OpenAI Key，让用户去对应的官网申请。最后让用户在同一个项目目录用三个工具分别跑一次，体验差异：Claude Code 在终端、Cursor 在 IDE、Codex 在终端但偏 OpenAI 风格。",
+            "systemStylePrompt": "说话像一个有经验的 staff engineer 师兄。直接给命令不啰嗦，遇到报错先问环境再给解决方案。",
+            "customGuardrails": "如果用户问「这三个我都需要装吗？」回答「至少装 Claude Code 和 Cursor，Codex 可选但后面 Phase 3 多模型对比要用」。如果用户没有 Anthropic API Key，引导去 console.anthropic.com 申请，提示有免费额度。",
+            "linkedResources": [
+              {
+                "type": "learn",
+                "ref": "vibe-coding/install-cursor",
+                "description": "Cursor 详细安装文档"
+              },
+              {
+                "type": "wiki",
+                "ref": "claude-code-install",
+                "description": "Claude Code 官方安装步骤"
+              }
+            ],
+            "stepSkeleton": [
+              {
+                "title": "确认 Node.js 20+ 已装",
+                "description": "终端跑 node --version，需要 v20+",
+                "verificationType": "text-evidence",
+                "verificationHint": "贴 node --version 输出",
+                "expectedEvidence": "v20.x 或更高"
+              },
+              {
+                "title": "装 Claude Code 并配 API Key",
+                "description": "npm install -g @anthropic-ai/claude-code，然后 export ANTHROPIC_API_KEY 或运行 claude 时按提示登录",
+                "verificationType": "text-evidence",
+                "verificationHint": "贴 claude --version 输出",
+                "expectedEvidence": "语义化版本号"
+              },
+              {
+                "title": "装 Cursor IDE",
+                "description": "去 cursor.com 下载安装，第一次打开登录账号",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：Cursor 启动后看到欢迎界面了吗？登录账号了吗？",
+                "expectedEvidence": ""
+              },
+              {
+                "title": "装 Codex CLI 并配 API Key",
+                "description": "npm install -g @openai/codex，配置 OPENAI_API_KEY 环境变量",
+                "verificationType": "text-evidence",
+                "verificationHint": "贴 codex --version 输出",
+                "expectedEvidence": "版本号"
+              },
+              {
+                "title": "跑通第一个 Vibe Coding 项目",
+                "description": "新建一个空文件夹，cd 进去，跑 claude /init，让 Claude Code 帮你生成 CLAUDE.md，然后用 Cursor 打开同一个目录看效果",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：CLAUDE.md 生成了吗？里面写了什么？三个工具都能打开同一个项目了吗？",
+                "expectedEvidence": ""
+              }
+            ],
+            "prerequisites": [
+              "Node.js 20+ 已装",
+              "有 Anthropic API Key（没有去 console.anthropic.com 申请）",
+              "有 OpenAI API Key（Codex CLI 用，可选）"
+            ],
+            "targetPlatform": "browser+local-terminal",
+            "tags": [
+              "claude-code",
+              "cursor",
+              "codex",
+              "tooling",
+              "phase1-real"
+            ]
+          }
         },
         {
           "code": "L07",
@@ -728,6 +811,87 @@
             }
           ],
           "_id": "69dc419d76e3e0c1b3c53e7f"
+        },
+        {
+          "code": "Q02",
+          "title": "Quest 实战：给你的真实项目写一套 .cursorrules + CLAUDE.md",
+          "type": "Quest",
+          "duration": 40,
+          "isLive": false,
+          "description": "<h3>🎯 这节课解决什么问题</h3><p>L20-L24 讲了 Context Engineering 是 AI 协作的核心、.cursorrules 怎么写、CLAUDE.md 干什么用。但「读完文档」≠「能给自己项目写出来」。这节 Quest 由小花老师带你拿你自己的真实项目（不管是工作 repo 还是 side project），写出一套实际有效的 .cursorrules 和 CLAUDE.md 配置——告诉 AI 你的代码风格、技术栈、禁止做的事。做完后 Cursor 和 Claude Code 在你这个项目里就能按你的规矩干活。</p><h3>📖 你将学到</h3><ul><li><strong>识别项目里值得告诉 AI 的关键约定</strong> — 不是写「请写好代码」，是写「禁止用 any、必须 strict TypeScript」</li><li><strong>把 .cursorrules 和 CLAUDE.md 分工写</strong> — 一个给 Cursor 看，一个给 Claude Code 看</li><li><strong>验证 AI 真的按规矩干活</strong> — 故意让 AI 写一段，看它有没有遵守</li></ul><h3>💡 适合谁</h3><p>已经在用 Cursor 但每次都觉得 AI 不懂你项目的工程师。这一节让你的 AI 真正变成「了解你项目」的协作者。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：选项目 → 列约定 → 写 .cursorrules → 写 CLAUDE.md → 验证 AI 遵守）</li><li>约 40 分钟</li><li>完成后你的项目里有真实可用的 Context Engineering 配置</li></ul><h3>✅ 学完能做什么</h3><p>你的所有后续 AI 协作都基于这套配置——AI 不会再写 any 类型、不会再用错的库、不会再忽略你的命名规范。这是 Vibe Coding 提升 10x 效率的关键。</p>",
+          "quest": {
+            "title": "为你的真实项目写一套 .cursorrules + CLAUDE.md",
+            "description": "选项目 → 列约定 → 写配置 → 验证 AI 真的按规矩干活",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 40,
+            "learningGoal": "学员能给自己的真实项目写出有效的 .cursorrules 和 CLAUDE.md，让 AI 在该项目内按团队约定干活",
+            "successCriteria": "学员的项目根目录下有 .cursorrules 文件（包含技术栈、代码规范、禁止项至少各 2 条）和 CLAUDE.md 文件（包含项目目标、模块结构、关键命令），并且能演示 AI 按规则生成代码",
+            "uiMode": "chat",
+            "visualMode": "flow",
+            "context": "用户是有项目的工程师。引导用户先选一个真实项目（工作的或自己的 side project），然后引导他列出 5-10 条「以前 AI 总是搞错的事」——比如「老用 axios 而我们用 ky」、「老写 any 而我们 strict」、「文件名用 PascalCase 而我们 kebab-case」等等。把这些约定写到 .cursorrules（给 Cursor）和 CLAUDE.md（给 Claude Code）里。最后引导用户故意让 AI 写一段代码，看它有没有遵守这些规则——遵守了就成功，没遵守就调规则。",
+            "systemStylePrompt": "说话像一个有架构经验的 tech lead。多用「这条规则是不是够明确？」「AI 看到这句会怎么理解？」这种引导思考的语气。",
+            "customGuardrails": "如果用户没有真实项目，引导用一个空 Next.js 或 Hono 项目模板。如果用户写的规则太宽泛（「请写好代码」），引导他写具体的（「禁止用 console.log，必须用 logger.info」）。",
+            "linkedResources": [
+              {
+                "type": "learn",
+                "ref": "vibe-coding/cursor-rules",
+                "description": "Cursor Rules 编写指南"
+              },
+              {
+                "type": "learn",
+                "ref": "ai-engineer/context-fundamentals",
+                "description": "Context Engineering 基础"
+              }
+            ],
+            "stepSkeleton": [
+              {
+                "title": "选一个真实项目",
+                "description": "选你工作或个人的一个真实项目（不要练习项目）",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：项目名是什么？技术栈是什么？大概多大规模？",
+                "expectedEvidence": ""
+              },
+              {
+                "title": "列出 AI 总搞错的 5-10 条约定",
+                "description": "回想你以前用 Cursor 时它老写错的事，列出来",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴 5-10 条约定列表",
+                "expectedEvidence": "至少 5 条具体约定（不是空话）"
+              },
+              {
+                "title": "写 .cursorrules 文件",
+                "description": "在项目根目录创建 .cursorrules，把约定按 Cursor 格式写进去（角色 + 技术栈 + 规则 + 禁止项）",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴 .cursorrules 内容",
+                "expectedEvidence": "包含技术栈描述 + 至少 5 条具体规则"
+              },
+              {
+                "title": "写 CLAUDE.md 文件",
+                "description": "创建 CLAUDE.md，按 Claude Code 格式写（项目目标 + 模块结构 + 命令 + 编码规范）",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴 CLAUDE.md 大纲",
+                "expectedEvidence": "包含项目目标 + 模块结构 + 命令"
+              },
+              {
+                "title": "故意让 AI 违反规则验证",
+                "description": "让 Cursor 或 Claude Code 写一段代码（比如「写一个 fetch 用户的函数」），看它有没有遵守你的规则",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：AI 生成的代码有遵守规则吗？哪些遵守了哪些没？没遵守的部分你打算怎么调规则？",
+                "expectedEvidence": ""
+              }
+            ],
+            "prerequisites": [
+              "已完成 Q01（装好 Claude Code + Cursor）",
+              "有一个真实的项目代码库（工作或个人都行）"
+            ],
+            "targetPlatform": "browser+local-terminal",
+            "tags": [
+              "context-engineering",
+              "cursor-rules",
+              "claude-md",
+              "phase1-real"
+            ]
+          }
         },
         {
           "code": "L25",
@@ -1613,6 +1777,87 @@
           "_id": "69db3dc676e3e0c1b3b66da5"
         },
         {
+          "code": "Q03",
+          "title": "Quest 实战：从零搭建你自己的 MCP Server",
+          "type": "Quest",
+          "duration": 50,
+          "isLive": false,
+          "description": "<h3>🎯 这节课解决什么问题</h3><p>L44-L53 讲了 MCP 是什么、怎么调外部工具、Anthropic 的官方协议长什么样。但所有人都看完文档还不敢自己写一个 MCP Server——怕协议复杂、怕调不通、怕不知道从哪开始。这节 Quest 由小花老师带你用 TypeScript 从零搭一个最小可用的 MCP Server（一个能查天气或者搜本地文件的工具），然后接到 Claude Code 里实际调用一次。做完你就真正理解 MCP 不是黑盒。</p><h3>📖 你将学到</h3><ul><li><strong>从零写一个 MCP Server</strong> — TypeScript + @modelcontextprotocol/sdk，不到 100 行代码</li><li><strong>定义一个 Tool 让 AI 能调用</strong> — 输入参数、输出结构、错误处理</li><li><strong>把 Server 接到 Claude Code 实际跑</strong> — 在 Claude 对话里看到你的 tool 被调用</li></ul><h3>💡 适合谁</h3><p>已经看完 MCP 模块所有 Lab 但还没自己写过 Server 的工程师。这一节让你从「会用 MCP」毕业到「能造 MCP」。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：初始化项目 → 装 SDK → 写 Tool → 配 Claude → 实际调用）</li><li>约 50 分钟</li><li>完成后你 GitHub 上有一个能跑的 MCP Server</li></ul><h3>✅ 学完能做什么</h3><p>你能给任何业务系统包装一个 MCP Server，让 Claude / Cursor 直接调用。这是把 AI 接入企业工作流的关键能力——不是聊天，是动手干活。</p>",
+          "quest": {
+            "title": "用 TypeScript 写一个能跑的 MCP Server 并接到 Claude",
+            "description": "初始化项目 → 写 Tool → 配 Claude Code → 真实调用验证",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 50,
+            "learningGoal": "学员能从零搭建一个 TypeScript MCP Server（含至少 1 个 Tool），并配置到 Claude Code 里实际调用成功",
+            "successCriteria": "学员能 1) 项目能 npm run build 通过；2) Claude Code 启动后能看到这个 MCP Server；3) 在 Claude 对话里能让它实际调用这个 Tool 并返回正确结果",
+            "uiMode": "chat",
+            "visualMode": "flow",
+            "context": "用户是 TS/JS 工程师。引导用户：1) 新建一个 npm 项目，装 @modelcontextprotocol/sdk；2) 写一个简单 Server，定义一个工具（推荐选「读本地文件返回前 N 行」或「查天气调免费 API」）；3) 编译；4) 在 Claude Code 的 settings.json（~/.config/claude-code/settings.json 或 .claude/settings.json）里加一个 mcp_servers 配置；5) 重启 Claude Code，对话里问「帮我看一下 xx 文件前 5 行」让它实际调用。整个过程 AI 要给出可复制的代码片段，但要让用户自己执行，验证每一步输出。",
+            "systemStylePrompt": "说话像一个会教 SDK 用法的 staff engineer。给代码不啰嗦，每段代码后立刻问「跑通了吗？输出是什么？」",
+            "customGuardrails": "如果用户对 stdio transport 概念不清，简单解释「Claude 通过子进程启 Server，用 JSON-RPC 通信」就行，不深入。如果用户配 settings.json 后 Claude 看不到 Server，引导他看 Claude Code 的 logs 找报错。",
+            "linkedResources": [
+              {
+                "type": "learn",
+                "ref": "vibe-coding/mcp-setup",
+                "description": "MCP Server 配置指南"
+              },
+              {
+                "type": "learn",
+                "ref": "ai-engineer/mcp-tool-integration",
+                "description": "MCP Tool Integration 深度教程"
+              }
+            ],
+            "stepSkeleton": [
+              {
+                "title": "初始化 npm 项目",
+                "description": "新建文件夹 my-mcp-server，npm init -y，装 typescript 和 @modelcontextprotocol/sdk",
+                "verificationType": "text-evidence",
+                "verificationHint": "贴 package.json 的 dependencies 部分",
+                "expectedEvidence": "包含 @modelcontextprotocol/sdk"
+              },
+              {
+                "title": "写一个 MCP Server 入口文件",
+                "description": "新建 src/index.ts，按 SDK 文档写一个 Server 实例 + StdioServerTransport",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：Server 实例化代码写好了吗？有没有报错？",
+                "expectedEvidence": ""
+              },
+              {
+                "title": "定义一个 Tool",
+                "description": "在 Server 里注册一个 tool（推荐 read_file_head 或 get_weather），定义 inputSchema 和 handler",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴 tool 定义代码片段",
+                "expectedEvidence": "包含 tool name + inputSchema + handler"
+              },
+              {
+                "title": "build 并配置到 Claude Code",
+                "description": "tsc 编译，然后在 Claude Code 的 settings.json 里加 mcp_servers 配置指向 dist/index.js",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：build 成功了吗？settings.json 改好了吗？重启 Claude Code 看到 Server 加载了吗？",
+                "expectedEvidence": ""
+              },
+              {
+                "title": "在 Claude 对话里实际调用 Tool",
+                "description": "在 Claude Code 里说一句话触发你的 tool（比如「帮我读 README.md 前 5 行」），看 Claude 真的调用 tool 并返回结果",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴 Claude 对话里 tool 调用的输出",
+                "expectedEvidence": "包含 tool 实际返回的内容"
+              }
+            ],
+            "prerequisites": [
+              "已完成 Q01（装好 Claude Code）",
+              "TypeScript / Node.js 基础"
+            ],
+            "targetPlatform": "browser+local-terminal",
+            "tags": [
+              "mcp",
+              "typescript",
+              "tool-integration",
+              "phase2-real"
+            ]
+          }
+        },
+        {
           "code": "L54",
           "title": "什么是 Agentic Workflow",
           "description": "Agentic Workflow 就是让 AI 自主规划和执行多步任务，而不是你一步步指挥。传统方式：你写 Prompt → AI 回答 → 你再写 Prompt → AI 再回答。Agentic 方式：你给一个目标 → AI 自己规划步骤 → 调工具执行 → 检查结果 → 决定下一步 → 直到完成。这节课讲 ReAct 模式、Tool Use 循环、以及什么任务适合 Agentic 什么不适合。",
@@ -1968,6 +2213,87 @@
           ],
           "learns": [],
           "_id": "69dc41a576e3e0c1b3c53f5f"
+        },
+        {
+          "code": "Q04",
+          "title": "Quest 实战：搭建一个能跑的 Claude Code Sub-agents 工作流",
+          "type": "Quest",
+          "duration": 45,
+          "isLive": false,
+          "description": "<h3>🎯 这节课解决什么问题</h3><p>L54-L65 讲了 Agentic Workflow、Multi-agent、Sub-agent 这些概念。但「概念懂了」≠「能搭一个真在干活的 Agent 团队」。这节 Quest 由小花老师带你用 Claude Code 的 Sub-agents 机制，搭一个 3 个 agent 协作的真实工作流——比如：Researcher 负责查资料、Writer 负责起草、Reviewer 负责质检。做完你就有一个能反复调用、专门干这件事的 Agent 团队。</p><h3>📖 你将学到</h3><ul><li><strong>Claude Code Sub-agents 怎么定义</strong> — .claude/agents/*.md 文件结构、frontmatter、prompt</li><li><strong>三个 Agent 怎么分工</strong> — 各自的 description、tools、prompt 不一样</li><li><strong>主对话怎么调用 Sub-agent</strong> — Task tool 触发 + 看输出</li></ul><h3>💡 适合谁</h3><p>已经做完 Q03 会写 MCP 的工程师，想再进一步搭 Multi-agent 系统。这一节让你的 AI 协作从「单聊」升级到「团队」。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：定义任务 → 设计 3 个 Agent → 写 .md 文件 → 主对话里触发 → 验证产出）</li><li>约 45 分钟</li><li>完成后你的项目里有 3 个可复用的 Sub-agent 配置</li></ul><h3>✅ 学完能做什么</h3><p>你能给任何复杂任务设计 Agent 团队——研究 + 起草 + 审查、需求 + 实现 + 测试、UI + 后端 + 部署。这是 Agentic Workflow 真正落地的方式。</p>",
+          "quest": {
+            "title": "搭一个 3 Agent 协作的 Claude Code Sub-agent 团队",
+            "description": "定义任务 → 设计角色 → 写配置 → 主对话触发 → 验证团队产出",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 45,
+            "learningGoal": "学员能在 Claude Code 项目里定义至少 3 个 Sub-agent，让主对话能通过 Task tool 触发并组合使用",
+            "successCriteria": "学员的项目 .claude/agents/ 目录下有 3 个 Sub-agent 配置文件，主对话里能用一个高层任务触发这 3 个 agent 协作完成",
+            "uiMode": "chat",
+            "visualMode": "flow",
+            "context": "用户已会用 Claude Code，做过 Q01 Q02 Q03。引导用户：1) 选一个真实任务（推荐：「写一篇技术博客」用 researcher + writer + reviewer，或者「搭一个新功能」用 architect + implementer + tester）；2) 在项目根目录建 .claude/agents/ 文件夹；3) 在里面建 3 个 .md 文件，每个文件按 Claude Code Sub-agent 格式写（YAML frontmatter 有 name、description、tools，下面是 system prompt）；4) 在 Claude Code 主对话里说「研究一下 Vibe Coding 最新趋势，写成一篇博客，再审查一遍」让 Claude 自动用 Task tool 触发你的 sub-agents；5) 看输出验证。",
+            "systemStylePrompt": "说话像一个搞过 multi-agent 系统的架构师。多用「这个 agent 的边界够清楚吗？」「会不会跟另一个职责重叠？」这种引导拆分的语气。",
+            "customGuardrails": "如果用户写的 sub-agent prompt 太啰嗦，引导他控制在 200 字以内。如果三个 agent 职责重叠，引导他重新拆分（一个 agent 一个明确目标）。",
+            "linkedResources": [
+              {
+                "type": "learn",
+                "ref": "vibe-coding/claude-code-agents",
+                "description": "Claude Code Sub-agents 详细文档"
+              },
+              {
+                "type": "learn",
+                "ref": "ai-engineer/multi-agent-orchestration",
+                "description": "Multi-agent Orchestration 模式"
+              }
+            ],
+            "stepSkeleton": [
+              {
+                "title": "选一个真实复杂任务",
+                "description": "选一个你工作里需要反复做的复杂任务（写博客、做 PR、设计新功能...）",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：是什么任务？为什么适合用 multi-agent 而不是单 agent？",
+                "expectedEvidence": ""
+              },
+              {
+                "title": "设计 3 个 Sub-agent 的职责",
+                "description": "拆任务 → 给每个 agent 一个明确职责（推荐 researcher / writer / reviewer 三段式）",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴三个 agent 的 name + 一句话职责",
+                "expectedEvidence": "包含 3 个 agent 名字和职责"
+              },
+              {
+                "title": "在 .claude/agents/ 写 3 个配置文件",
+                "description": "建 .claude/agents/researcher.md 等 3 个文件，YAML frontmatter 写 name/description/tools",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：3 个 .md 写好了吗？frontmatter 有没有 name + description + tools？",
+                "expectedEvidence": ""
+              },
+              {
+                "title": "在主对话触发协作",
+                "description": "在 Claude Code 主对话说一句高层任务，看 Claude 主动用 Task tool 触发你的 sub-agents",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴 Claude 调用 sub-agent 的对话片段",
+                "expectedEvidence": "包含至少一次 Task tool 调用"
+              },
+              {
+                "title": "看产出并迭代",
+                "description": "看协作产出的最终结果，告诉 AI 哪些 agent 做得好哪些不好，怎么调",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：哪个 agent 表现最好？哪个最差？你打算怎么调它的 prompt？",
+                "expectedEvidence": ""
+              }
+            ],
+            "prerequisites": [
+              "已完成 Q01 Q02（Claude Code + Context Engineering）",
+              "对 Agentic Workflow 有概念理解"
+            ],
+            "targetPlatform": "browser+local-terminal",
+            "tags": [
+              "agent",
+              "sub-agents",
+              "claude-code",
+              "phase2-real"
+            ]
+          }
         }
       ]
     },
@@ -3268,6 +3594,95 @@
             }
           ],
           "_id": "69dc41ad76e3e0c1b3c54087"
+        },
+        {
+          "code": "Q05",
+          "title": "Quest 实战：用 Claude Code 完成你的全栈毕业项目并部署上线",
+          "type": "Quest",
+          "duration": 60,
+          "isLive": false,
+          "description": "<h3>🎯 这节课解决什么问题</h3><p>L84-L108 讲了 Claude 写前端、写后端、连数据库、部署到 Cloudflare/Vercel 的全流程。但听完 25 节课不等于能自己跑通一遍。这节 Quest 是整门课的毕业项目——由小花老师带你用 Claude Code 从 PRD 出发，一步步完成前端 UI、后端 API、数据库、部署上线，最后拿到一个真实可访问的 URL。这是 Vibe Coding 提升班的「真实战」时刻。</p><h3>📖 你将学到</h3><ul><li><strong>从 PRD 到部署的完整 Vibe Coding 流程</strong> — 不是片段练习，是端到端实战</li><li><strong>用 Sub-agents / MCP / Cursor Rules 协作</strong> — 把前面学的工具组合用</li><li><strong>真实部署到 Cloudflare Workers 或 Vercel</strong> — 拿到 URL，能发给别人</li></ul><h3>💡 适合谁</h3><p>所有完成 Q01-Q04 + Phase 4 学习的学员。这是检验你「学会了 Vibe Coding 提升班」的唯一标准——能不能自己端到端做一个产品。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（6 步：写 PRD → 前端 → 后端 → 数据库 → 部署 → 拿到 URL）</li><li>约 60 分钟（取决于项目复杂度）</li><li>完成后你的 GitHub 上有一个可上线的全栈项目，并有真实访问 URL</li></ul><h3>✅ 学完能做什么</h3><p>你能独立用 Claude Code 完成一个生产级别的全栈小项目。这是 Vibe Coding 提升班的毕业证——能上线的产品 = 你真的学会了。</p>",
+          "quest": {
+            "title": "用 Claude Code 完成全栈毕业项目从 PRD 到上线",
+            "description": "一节课走完 PRD → 前端 → 后端 → 数据库 → 部署 → 真实 URL 的全流程",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 60,
+            "learningGoal": "学员能用 Claude Code 独立完成一个全栈小项目（含前端 + 后端 API + 数据库 + 部署），并拿到真实可访问的 URL",
+            "successCriteria": "学员能给出一个真实的项目 URL（.vercel.app 或 .workers.dev），从浏览器打开能看到前端，前端能调用后端 API，后端能读写数据库",
+            "uiMode": "chat",
+            "visualMode": "flow",
+            "context": "用户已完成 Q01-Q04 和 Phase 4 全部内容。引导用户选一个最小可上线的项目（推荐：URL 短链生成器、个人书签收藏夹、简单的 todo 列表带账号），不要做太大。然后按顺序：1) 用 Claude Code 写 PRD（30 行以内）；2) 用 Cursor 让 AI 生成 Next.js / Hono 前端框架；3) 用 Claude Code 加后端 API（建议 Hono on Cloudflare Workers）；4) 接 D1 / Supabase 数据库；5) 部署到 Cloudflare 或 Vercel；6) 测试 URL。整个过程让用户用前面 Quest 学的工具组合（Sub-agents 拆任务、MCP 加增强、Cursor Rules 控质量）。重点不是教技术细节，是让用户感受「我真的能端到端做产品」。",
+            "systemStylePrompt": "说话像一个手把手带 junior 上线项目的 tech lead。鼓励但不放水，每一步都要让用户给出真实证据（URL、截图描述、命令输出）。",
+            "customGuardrails": "如果用户想做的项目太大（「我想做一个 Twitter」），引导他缩成 MVP（「先做能发推 + 看推 + 删推就行，不要登录、不要点赞」）。如果某一步遇到部署失败，引导用户把报错给 AI 自己修，不要跳过。",
+            "linkedResources": [
+              {
+                "type": "learn",
+                "ref": "vibe-coding/api-fullstack",
+                "description": "全栈协作 API 设计"
+              },
+              {
+                "type": "learn",
+                "ref": "vibe-coding/automation-cli",
+                "description": "自动化部署"
+              }
+            ],
+            "stepSkeleton": [
+              {
+                "title": "用 Claude Code 写一份 30 行 PRD",
+                "description": "选一个最小可上线项目，用 Claude Code 帮你写 PRD（目标、用户、功能、范围）",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴 PRD 大纲",
+                "expectedEvidence": "包含目标 + 用户 + 至少 3 个功能"
+              },
+              {
+                "title": "生成前端框架并跑起来",
+                "description": "让 Claude Code 生成 Next.js 或 Vite + React 项目骨架，npm run dev 能在本地打开",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：本地 localhost 打开能看到首页吗？",
+                "expectedEvidence": ""
+              },
+              {
+                "title": "加后端 API（Hono / Express / Cloudflare Workers）",
+                "description": "让 Claude Code 加一组后端 API（至少 GET 和 POST 各一个），本地能调通",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴 curl 调 API 的输出，或前端调 API 的截图描述",
+                "expectedEvidence": "包含 API 实际返回的 JSON"
+              },
+              {
+                "title": "接数据库（D1 / Supabase / Postgres）",
+                "description": "让 Claude Code 加数据库连接，前端能保存数据并读取",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：数据库连上了吗？保存的数据刷新页面还在吗？",
+                "expectedEvidence": ""
+              },
+              {
+                "title": "部署到 Cloudflare Workers 或 Vercel",
+                "description": "用 wrangler deploy 或 vercel deploy 把项目推上去",
+                "verificationType": "self-confirm",
+                "verificationHint": "AI 追问：部署进度走完了吗？有报错吗？",
+                "expectedEvidence": ""
+              },
+              {
+                "title": "拿到真实 URL 并测试",
+                "description": "把生产 URL 贴到对话里，AI 帮你 review 一遍是否真的可用",
+                "verificationType": "text-evidence",
+                "verificationHint": "让用户贴最终生产 URL",
+                "expectedEvidence": "包含 .vercel.app 或 .workers.dev 真实 URL"
+              }
+            ],
+            "prerequisites": [
+              "已完成 Q01-Q04",
+              "完整学完 Phase 1-4 内容",
+              "有 Cloudflare 或 Vercel 账号"
+            ],
+            "targetPlatform": "browser+local-terminal",
+            "tags": [
+              "fullstack",
+              "deployment",
+              "graduation-project",
+              "phase4-real"
+            ]
+          }
         }
       ]
     }
