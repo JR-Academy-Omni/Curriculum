@@ -394,8 +394,47 @@
 </div>
 
 <footer class="page-header" style="margin-top: 80px; padding-bottom: 40px;">
-  <p>💡 提示：右键海报 -> 检查 -> 选中 .poster 元素 -> Capture node screenshot</p>
+  <p>💡 每张海报右上角的「⬇ 下载 PNG」按钮一键导出；或右键海报 -> 检查 -> 选中 .poster 元素 -> Capture node screenshot</p>
 </footer>
+
+<!-- 自动注入每张海报的下载按钮 -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.poster-wrapper').forEach(function(wrapper, idx){
+    var label = wrapper.querySelector('.poster-label');
+    var poster = wrapper.querySelector('.poster');
+    if (!label || !poster) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = '⬇ 下载 PNG';
+    btn.style.cssText = 'margin-left:auto;background:#ff5757;color:#fff;border:2px solid #10162f;box-shadow:4px 4px 0 #10162f;padding:8px 14px;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;';
+    btn.addEventListener('mouseenter', function(){ btn.style.transform='translate(2px,2px)'; btn.style.boxShadow='2px 2px 0 #10162f'; });
+    btn.addEventListener('mouseleave', function(){ btn.style.transform=''; btn.style.boxShadow='4px 4px 0 #10162f'; });
+    btn.addEventListener('click', async function(){
+      var original = btn.textContent;
+      btn.textContent = '渲染中…';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      try {
+        var canvas = await html2canvas(poster, { backgroundColor: '#ffffff', scale: 2, useCORS: true, allowTaint: true, logging: false });
+        var link = document.createElement('a');
+        link.download = 'quest-poster-' + (idx + 1) + '-' + Date.now() + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (err) {
+        console.error(err);
+        alert('导出失败：' + (err && err.message ? err.message : err));
+      } finally {
+        btn.textContent = original;
+        btn.disabled = false;
+        btn.style.opacity = '';
+      }
+    });
+    label.appendChild(btn);
+  });
+})();
+</script>
 
 </body>
 </html>

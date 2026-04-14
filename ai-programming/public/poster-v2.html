@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Coding 海报生成器 V2 - Neo-Brutalism Pro</title>
+    <title>AI Coding 海报生成器 V2 - Neo-Brutalism Pro Elite</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Space+Grotesk:wght@700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@900&family=Noto+Serif+SC:wght@900&family=Space+Grotesk:wght@900&family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         :root {
             --jr-red: #FF5757;
@@ -16,14 +16,14 @@
             --jr-cyan: #00F5FF;
             --black: #000000;
             --white: #ffffff;
-            --shadow: 8px 8px 0px var(--black);
-            --border: 3px solid var(--black);
+            --shadow-brutal: 10px 10px 0px var(--black);
+            --border-heavy: 5px solid var(--black);
             --transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: #f0f0f0;
+            background-color: #f5f5f5;
             color: var(--black);
             font-family: 'Noto Sans SC', sans-serif;
             padding: 40px;
@@ -33,162 +33,197 @@
         }
 
         .title-main {
-            font-size: 48px;
+            font-size: 52px;
             font-weight: 900;
             margin-bottom: 40px;
-            background: var(--black);
-            color: var(--white);
-            padding: 10px 30px;
-            box-shadow: 10px 10px 0 var(--jr-red);
+            background: var(--jr-yellow);
+            color: var(--black);
+            padding: 15px 40px;
+            border: var(--border-heavy);
+            box-shadow: 12px 12px 0 var(--black);
+            transform: rotate(-1deg);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .container {
             display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 40px;
-            max-width: 1400px;
+            grid-template-columns: 400px 1fr;
+            gap: 50px;
+            max-width: 1500px;
             width: 100%;
         }
 
         /* --- Sidebar --- */
-        .sidebar { display: flex; flex-direction: column; gap: 20px; }
-        .card { background: var(--white); border: var(--border); padding: 25px; box-shadow: var(--shadow); }
-        .card h3 { font-size: 14px; text-transform: uppercase; margin-bottom: 15px; background: var(--black); color: var(--white); padding: 2px 8px; display: inline-block; }
-        .btn-group { display: flex; flex-wrap: wrap; gap: 8px; }
-        .btn { background: var(--white); border: 2px solid var(--black); padding: 10px 15px; font-weight: 900; cursor: pointer; }
-        .btn.active { background: var(--jr-red); color: var(--white); box-shadow: 4px 4px 0 var(--black); transform: translate(-2px, -2px); }
-        .dir-item { padding: 12px; border: 2px solid var(--black); background: var(--white); margin-bottom: 8px; cursor: pointer; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-        .dir-item.active { background: var(--jr-blue); color: var(--white); transform: translateX(10px); }
+        .sidebar { display: flex; flex-direction: column; gap: 25px; }
+        .card { background: var(--white); border: var(--border-heavy); padding: 30px; box-shadow: 10px 10px 0 var(--black); position: relative; }
+        .card h3 { font-size: 16px; text-transform: uppercase; margin-bottom: 20px; background: var(--black); color: var(--white); padding: 4px 12px; display: inline-block; font-weight: 900; }
+        
+        .btn-group { display: flex; flex-wrap: wrap; gap: 10px; }
+        .btn { background: var(--white); border: 3px solid var(--black); padding: 12px 18px; font-weight: 900; cursor: pointer; transition: var(--transition); font-size: 14px; }
+        .btn:hover { background: var(--jr-beige); transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--black); }
+        .btn.active { background: var(--jr-red); color: var(--white); box-shadow: 6px 6px 0 var(--black); transform: translate(-3px, -3px); }
+
+        .direction-list { display: flex; flex-direction: column; gap: 12px; }
+        .dir-item { padding: 18px; border: 3px solid var(--black); background: var(--white); cursor: pointer; font-weight: 900; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+        .dir-item:hover { background: var(--jr-cyan); transform: translateX(5px); }
+        .dir-item.active { background: var(--jr-blue); color: var(--white); transform: translateX(15px); border-left: 15px solid var(--jr-red); }
 
         /* --- Poster --- */
-        .poster-view { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .poster-view { display: flex; flex-direction: column; align-items: center; gap: 40px; }
         
         #poster {
             background-color: var(--jr-beige);
-            border: 5px solid var(--black);
-            box-shadow: 20px 20px 0px var(--black);
+            border: 6px solid var(--black);
+            box-shadow: 30px 30px 0px var(--black);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            background-image: radial-gradient(var(--black) 1px, transparent 1px);
-            background-size: 25px 25px;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        /* Background Giant Text (Watermark) */
+        /* Background Watermark (The outlined font goes here) */
         .p-bg-text {
             position: absolute;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 320px;
-            line-height: 1;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 280px;
+            font-weight: 900;
             color: transparent;
-            -webkit-text-stroke: 2px rgba(0,0,0,0.08);
+            -webkit-text-stroke: 1.5px rgba(0,0,0,0.1);
             z-index: 1;
             white-space: nowrap;
-            top: 50%;
+            top: 55%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
+            transform: translate(-50%, -50%) rotate(-12deg);
             pointer-events: none;
             user-select: none;
+            letter-spacing: -10px;
         }
 
         .p-header {
             background: var(--black);
             color: var(--white);
-            padding: 15px 30px;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 5px solid var(--black);
+            border-bottom: 6px solid var(--black);
             z-index: 10;
         }
 
         .p-body {
             flex: 1;
-            padding: 40px;
+            padding: 50px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
             z-index: 2;
             position: relative;
         }
 
-        .p-badge-row { display: flex; gap: 10px; align-items: center; }
-        .p-badge { background: var(--jr-red); color: var(--white); padding: 5px 15px; font-weight: 900; border: 3px solid var(--black); transform: rotate(-2deg); font-size: 18px; }
-        .p-tag-sm { background: var(--jr-cyan); color: var(--black); padding: 2px 8px; font-weight: 900; border: 2px solid var(--black); font-size: 12px; height: fit-content; }
+        .p-badge-stack { display: flex; flex-direction: column; gap: 8px; width: fit-content; }
+        .p-badge { background: var(--jr-red); color: var(--white); padding: 8px 20px; font-weight: 900; border: 4px solid var(--black); transform: rotate(-1deg); font-size: 22px; width: fit-content; box-shadow: 6px 6px 0 var(--black); }
+        .p-tag-line { background: var(--jr-cyan); color: var(--black); padding: 4px 12px; font-weight: 900; border: 3px solid var(--black); font-size: 14px; width: fit-content; font-family: 'Space Grotesk', sans-serif; }
 
+        /* Important Title: Solid & Heavy */
         .p-headline {
-            font-size: 72px;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 92px;
             font-weight: 900;
-            line-height: 0.95;
-            letter-spacing: -2px;
-            margin: 10px 0;
+            line-height: 0.9;
+            letter-spacing: -4px;
+            margin: 15px 0;
             text-transform: uppercase;
+            color: var(--black);
+            /* Designer Stacked Shadow */
+            text-shadow: 
+                3px 3px 0 var(--white),
+                6px 6px 0 var(--black);
         }
 
         .p-headline span.highlight {
             background: var(--jr-yellow);
-            padding: 0 10px;
+            padding: 5px 15px;
             display: inline-block;
-            transform: skewX(-10deg);
+            border: 4px solid var(--black);
+            box-shadow: 8px 8px 0 var(--black);
+            transform: skewX(-5deg);
+            margin-top: 10px;
         }
 
         .p-content-box {
             background: var(--white);
-            border: 4px solid var(--black);
-            padding: 25px;
-            box-shadow: 10px 10px 0px var(--black);
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 1.4;
-            max-width: 85%;
+            border: 5px solid var(--black);
+            padding: 30px;
+            box-shadow: 12px 12px 0px var(--black);
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1.5;
+            max-width: 90%;
+            position: relative;
+        }
+        
+        .p-content-box::before {
+            content: "DATA_DRIVEN_LOGIC";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--black);
+            color: var(--white);
+            font-size: 10px;
+            padding: 2px 8px;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .p-footer {
-            padding: 30px 40px;
+            padding: 40px 50px;
             background: var(--white);
-            border-top: 5px solid var(--black);
+            border-top: 6px solid var(--black);
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             z-index: 10;
         }
 
-        .stat-group { display: flex; gap: 20px; }
-        .stat-item { border-left: 6px solid var(--jr-red); padding-left: 15px; }
-        .stat-val { font-size: 36px; font-weight: 900; line-height: 1; }
-        .stat-lbl { font-size: 12px; font-weight: 900; text-transform: uppercase; color: #666; margin-top: 5px; }
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .stat-item { border-left: 8px solid var(--jr-red); padding-left: 20px; }
+        .stat-val { font-size: 48px; font-weight: 900; line-height: 1; font-family: 'Bebas Neue', sans-serif; }
+        .stat-lbl { font-size: 14px; font-weight: 900; text-transform: uppercase; color: #333; margin-top: 8px; }
 
-        .qr-section { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .qr-box { width: 110px; height: 110px; border: 3px solid var(--black); padding: 5px; background: white; }
+        .qr-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        .qr-container { width: 140px; height: 140px; border: 4px solid var(--black); padding: 8px; background: white; box-shadow: 8px 8px 0 var(--jr-cyan); transform: rotate(1deg); }
         .qr-img { width: 100%; height: 100%; }
-        .qr-text { font-size: 9px; font-weight: 900; text-transform: uppercase; background: var(--black); color: white; padding: 2px 6px; }
+        .qr-caption { font-size: 11px; font-weight: 900; background: var(--black); color: white; padding: 4px 10px; text-transform: uppercase; }
 
         /* Sizes */
-        #poster.moment { width: 700px; height: 700px; }
-        #poster.xhs { width: 700px; height: 933px; }
-        #poster.banner { width: 1000px; height: 425px; }
+        #poster.moment { width: 800px; height: 800px; }
+        #poster.xhs { width: 800px; height: 1066px; }
+        #poster.banner { width: 1200px; height: 510px; }
         #poster.banner .p-bg-text { font-size: 200px; }
-        #poster.banner .p-body { flex-direction: row; align-items: center; justify-content: space-between; }
-        #poster.banner .p-headline { font-size: 52px; width: 45%; }
-        #poster.banner .p-content-box { width: 45%; }
-        #poster.long { width: 700px; height: 1400px; }
+        #poster.banner .p-body { flex-direction: row; align-items: center; justify-content: space-between; padding: 0 60px; }
+        #poster.banner .p-headline { font-size: 64px; width: 50%; }
+        #poster.banner .p-content-box { width: 40%; margin: 0; }
+        #poster.long { width: 800px; height: 1600px; }
 
         /* Copy Area */
-        .copy-box { margin-top: 20px; background: #222; color: #0f0; padding: 25px; border: 3px solid var(--black); box-shadow: 8px 8px 0 #444; position: relative; font-family: monospace; }
-        .copy-btn { position: absolute; top: -15px; right: 20px; background: var(--jr-cyan); color: black; border: 3px solid var(--black); padding: 6px 15px; font-weight: 900; cursor: pointer; }
+        .copy-section { margin-top: 30px; background: #111; color: #00ff41; padding: 30px; border: 4px solid var(--black); box-shadow: 12px 12px 0 #222; position: relative; font-family: 'Courier New', monospace; font-size: 16px; }
+        .copy-trigger { position: absolute; top: -20px; right: 30px; background: var(--jr-cyan); color: black; border: 4px solid var(--black); padding: 10px 25px; font-weight: 900; cursor: pointer; box-shadow: 5px 5px 0 var(--black); }
+        .copy-trigger:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--black); }
 
     </style>
 </head>
 <body>
 
-    <h1 class="title-main">AI CODING POSTER V2</h1>
+    <h1 class="title-main">AI CODING POSTER V2.1</h1>
 
     <div class="container">
         <div class="sidebar">
             <div class="card">
-                <h3>1. 尺寸规格</h3>
-                <div class="btn-group" id="size-tabs">
+                <h3>1. 输出尺寸 (CHANNELS)</h3>
+                <div class="btn-group" id="size-selector">
                     <button class="btn active" data-size="moment">朋友圈</button>
                     <button class="btn" data-size="xhs">小红书</button>
                     <button class="btn" data-size="banner">公众号头图</button>
@@ -197,8 +232,8 @@
             </div>
 
             <div class="card">
-                <h3>2. 叙事视角</h3>
-                <div class="direction-list" id="dir-tabs">
+                <h3>2. 叙事策略 (STRATEGY)</h3>
+                <div class="direction-list" id="dir-selector">
                     <button class="dir-item active" data-dir="0">01. 零基础觉醒 <span>→</span></button>
                     <button class="dir-item" data-dir="1">02. 创业者自由 <span>→</span></button>
                     <button class="dir-item" data-dir="2">03. 降维打击 <span>→</span></button>
@@ -211,9 +246,9 @@
                 </div>
             </div>
 
-            <div class="copy-box">
-                <button class="copy-btn" onclick="copyText()">COPY</button>
-                <div id="copy-text">// 文案加载中...</div>
+            <div class="copy-section">
+                <button class="copy-trigger" onclick="copyContent()">COPY TEXT</button>
+                <div id="copy-result">// 文案生成中...</div>
             </div>
         </div>
 
@@ -222,14 +257,14 @@
                 <div class="p-bg-text" id="p-bg-text">AI CODING</div>
                 
                 <div class="p-header">
-                    <div style="font-family: 'Space Grotesk'; font-weight: 900; font-size: 24px;">JIANGREN / AI</div>
-                    <div style="font-weight: 900; letter-spacing: 2px;">V2.0_2026</div>
+                    <div style="font-family: 'Space Grotesk'; font-weight: 900; font-size: 32px; letter-spacing: -1px;">JIANGREN / AI</div>
+                    <div style="font-weight: 900; letter-spacing: 3px; font-size: 14px; color: var(--jr-cyan);">SYSTEM_VERSION_2026</div>
                 </div>
 
                 <div class="p-body">
-                    <div class="p-badge-row">
-                        <div class="p-badge" id="p-badge">零基础友好</div>
-                        <div class="p-tag-sm" id="p-tag">NEW_PARADIGM</div>
+                    <div class="p-badge-stack">
+                        <div class="p-tag-line" id="p-tag">MODULE_ID: NEW_PARADIGM</div>
+                        <div class="p-badge" id="p-badge">零基础觉醒</div>
                     </div>
 
                     <div class="p-headline" id="p-head">
@@ -238,155 +273,193 @@
                     </div>
 
                     <div class="p-content-box" id="p-content">
-                        <!-- Content -->
+                        <!-- Content goes here -->
                     </div>
                 </div>
 
                 <div class="p-footer">
-                    <div class="stat-group">
+                    <div class="stat-grid">
                         <div class="stat-item">
                             <div class="stat-val">103+</div>
-                            <div class="stat-lbl">LESSONS</div>
+                            <div class="stat-lbl">LECTURES</div>
                         </div>
-                        <div class="stat-item" style="border-color: var(--jr-blue);">
+                        <div class="stat-item" style="border-color: var(--black);">
                             <div class="stat-val">29</div>
-                            <div class="stat-lbl">LABS</div>
+                            <div class="stat-lbl">LAB_TESTS</div>
                         </div>
                     </div>
 
-                    <div class="qr-section">
-                        <div class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://jiangren.com.au/program-course/ai-programming" class="qr-img">
+                    <div class="qr-wrap">
+                        <div class="qr-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://jiangren.com.au/program-course/ai-programming" class="qr-img">
                         </div>
-                        <div class="qr-text">SCAN TO ENROLL</div>
+                        <div class="qr-caption">BUILD_YOUR_FUTURE</div>
                     </div>
                 </div>
             </div>
-            <p style="font-size: 14px; font-weight: 900; background: var(--black); color: white; padding: 5px 20px;">[ RIGHT CLICK TO SAVE ]</p>
+            <p style="font-size: 14px; font-weight: 900; background: var(--black); color: white; padding: 10px 40px; margin-top: 20px; box-shadow: 8px 8px 0 var(--jr-red);">[ RIGHT CLICK TO DOWNLOAD POSTER ]</p>
         </div>
     </div>
 
     <script>
-        const data = [
+        const posters = [
             {
                 head: "不会写代码<br><span class='highlight'>AI帮你写</span>",
                 badge: "零基础觉醒",
-                bg: "ZERO BASE",
-                content: "代码不再是门槛，思维才是。在 AI 时代，你的大脑就是最强的编译器。5周时间，从 0 到 1 部署你的全栈 App。",
-                tag: "NEW_PARADIGM",
+                bg: "AI WRITING",
+                content: "别再纠结语法。在 AI 时代，逻辑就是唯一的门槛。5周时间，带你用人类语言指令，构建属于自己的全栈产品。",
+                tag: "ZERO_TO_HERO",
                 copy: "【零基础觉醒】\n代码不再是门槛，思维才是。匠人学院《AI Coding 实战课》，带你用嘴写代码，5周上线个人App。🚀"
             },
             {
                 head: "省下 $10,000<br><span class='highlight'>自建MVP</span>",
                 badge: "创业者自由",
-                bg: "STARTUP",
-                content: "外包太贵？进度太慢？用 AI 编程，一个人就是一个开发团队。快速验证想法，把每一分钱都花在核心业务上。",
+                bg: "MVP BUILD",
+                content: "拒绝昂贵外包。掌握 AI 编程，一人即是开发部。快速验证商业想法，把每一分预算都精准投向增长核心。",
                 tag: "SOLO_FOUNDER",
                 copy: "【创业者自由】\n省下1万刀外包费，自己用AI做MVP。速度快10倍，成本近乎0。你的下一款产品，不需要求人。💰"
             },
             {
                 head: "降维打击<br><span class='highlight'>效率革命</span>",
                 badge: "降维打击",
-                bg: "HYPER SPEED",
-                content: "传统学习需要 6 个月，AI 编程只需 5 周。这是一场关于效率的绝对压制，让你的对手还在看文档时，你已发布产品。",
-                tag: "SPEED_TEST",
+                bg: "HYPER DRIVE",
+                content: "这是生产力的代差。传统开发者还在查文档，你已经通过 AI 完成了全栈部署。在速度上，实现对同行的绝对压制。",
+                tag: "SPEED_AS_WEAPON",
                 copy: "【降维打击】\n别人还在学打印 Hello World，你已经用 AI 部署了全栈应用。这就是 AI Coding 的效率压制。⏳"
             },
             {
                 head: "拒绝被<br><span class='highlight'>AI取代</span>",
                 badge: "焦虑粉碎机",
-                bg: "PROTECT",
-                content: "与其担心被 AI 取代，不如先学会如何驾驭 AI。掌握 AI 编程，是你在这场智能化浪潮中获得的最强护身符。",
-                tag: "STAY_AHEAD",
+                bg: "EVOLUTION",
+                content: "与其担心淘汰，不如率先进化。掌握 AI 编程，从被动的“工具使用者”蜕变为主动的“AI 架构师”。",
+                tag: "ANTI_REPLACE",
                 copy: "【焦虑粉碎机】\n与其担心被AI取代，不如先学会如何用AI淘汰对手。加入我们，掌握未来的生存技能。🔥"
             },
             {
                 head: "103节课<br><span class='highlight'>29个实验</span>",
                 badge: "核心硬数据",
-                bg: "DATA DRIVEN",
-                content: "不谈虚的概念。从 Prompt 工程到 Agent 自动化流，全链路实战。每一个实验都是为了解决真实的生产力问题。",
-                tag: "HARD_CORE",
+                bg: "HARD DATA",
+                content: "数据证明生产力。从 Prompt 精调到 Agent 自动化流，全链路工业级实战。每一分钟投入，都转化为可交付的代码。",
+                tag: "STABLE_BUILD",
                 copy: "【实战派】\n103节实战课 + 29个互动实验。不讲废话，只带你做真正能运行的产品。匠人学院出品。📊"
             },
             {
                 head: "抢占职场<br><span class='highlight'>新风口</span>",
                 badge: "职业新物种",
-                bg: "CAREER UP",
-                content: "年薪 $100K+ 的 AI Builder 正在崛起。他们懂业务，更懂如何利用 AI 快速交付。不要等风口过了再后悔。",
-                tag: "AI_BUILDER",
+                bg: "AI BUILDER",
+                content: "年薪 $100K+ 的 AI Builder 职位虚位以待。掌握“AI+开发+业务”的复合技能，在 2026 年的职场竞争中降维生存。",
+                tag: "NEW_OPPORTUNITY",
                 copy: "【职业新物种】\nAI Builder 是2026年最抢手的人才。懂AI、懂开发、懂业务。现在上车，占领高薪高地。👔"
             },
             {
                 head: "碎片时间<br><span class='highlight'>创造资产</span>",
                 badge: "自由职业者",
-                bg: "FREEDOM",
-                content: "每天 1 小时，用 AI 撬动你的数字化副业。只要有想法，你就能在家里开发出服务全球用户的 SaaS 产品。",
-                tag: "PASSIVE_INCOME",
+                bg: "PASSIVE ASSET",
+                content: "每天 1 小时，撬动数字杠杆。无论身在何处，利用 AI 编程快速构建 SaaS 副业，打造属于你的 24 小时自动收益系统。",
+                tag: "FREELANCE_LIFE",
                 copy: "【自由生活】\n用碎片时间，在家里就能开发出全球使用的 SaaS。AI Coding 让副业变得如此简单。🏡"
             },
             {
                 head: "告别烂尾<br><span class='highlight'>不再被坑</span>",
                 badge: "避坑指南",
-                bg: "NO TRAPS",
-                content: "外包沟通难？代码像坨屎？学会 AI 编程，你就是自己的 CTO。掌握技术底层，让每一行代码都为你所控。",
-                tag: "CTO_MINDSET",
+                bg: "CTO MINDSET",
+                content: "外包难懂你？代码交付差？学会 AI 编程，掌握技术底层逻辑。自己当 CTO，彻底终结技术信息差，告别烂尾工程。",
+                tag: "NO_MORE_TRAPS",
                 copy: "【避坑指南】\n为什么你请的外包总是失败？因为你不懂技术底层。学会AI编程，自己就是CTO，彻底告别烂尾工程。💸"
             },
             {
                 head: "这就是你<br><span class='highlight'>的作品集</span>",
                 badge: "真实成果",
-                bg: "SHOWCASE",
-                content: "从 AI 驱动的营销页到智能数据助手。这些都是非技术背景学员在 5 周内交出的答卷。你的创意，只差这一步。",
-                tag: "PROUD_BUILDER",
+                bg: "PROUD WORK",
+                content: "从 AI 营销助手到全自动工作流。这些都是非技术背景学员在 5 周内的真实产出。你的创意，离上线只差一次点击。",
+                tag: "SUCCESS_STORIES",
                 copy: "【见证奇迹】\n看看非技术背景的学员们都用 AI 做了什么？你的创意，只差这一门课的距离。🏆"
             }
         ];
 
-        let currentSize = 'moment';
-        let currentDir = 0;
+        let size = 'moment';
+        let dir = 0;
 
-        function render() {
-            const poster = document.getElementById('poster');
-            const item = data[currentDir];
+        function update() {
+            const p = document.getElementById('poster');
+            const item = posters[dir];
 
-            poster.className = currentSize;
+            p.className = size;
             document.getElementById('p-head').innerHTML = item.head;
             document.getElementById('p-badge').innerText = item.badge;
             document.getElementById('p-bg-text').innerText = item.bg;
             document.getElementById('p-content').innerText = item.content;
-            document.getElementById('p-tag').innerText = item.tag;
-            document.getElementById('copy-text').innerText = item.copy;
+            document.getElementById('p-tag').innerText = "STRATEGY_ID: " + item.tag;
+            document.getElementById('copy-result').innerText = item.copy;
         }
 
-        document.getElementById('size-tabs').addEventListener('click', (e) => {
+        document.getElementById('size-selector').addEventListener('click', (e) => {
             if (e.target.dataset.size) {
-                document.querySelectorAll('#size-tabs .btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('#size-selector .btn').forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
-                currentSize = e.target.dataset.size;
-                render();
+                size = e.target.dataset.size;
+                update();
             }
         });
 
-        document.getElementById('dir-tabs').addEventListener('click', (e) => {
+        document.getElementById('dir-selector').addEventListener('click', (e) => {
             const btn = e.target.closest('.dir-item');
             if (btn) {
-                document.querySelectorAll('#dir-tabs .dir-item').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('#dir-selector .dir-item').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                currentDir = parseInt(btn.dataset.dir);
-                render();
+                dir = parseInt(btn.dataset.dir);
+                update();
             }
         });
 
-        function copyText() {
-            const text = document.getElementById('copy-text').innerText;
+        function copyContent() {
+            const text = document.getElementById('copy-result').innerText;
             navigator.clipboard.writeText(text).then(() => {
-                const btn = document.querySelector('.copy-btn');
-                btn.innerText = 'COPIED!';
-                setTimeout(() => btn.innerText = 'COPY', 2000);
+                const trigger = document.querySelector('.copy-trigger');
+                trigger.innerText = 'COPIED!';
+                trigger.style.background = '#00ff41';
+                setTimeout(() => {
+                    trigger.innerText = 'COPY TEXT';
+                    trigger.style.background = 'var(--jr-cyan)';
+                }, 2000);
             });
         }
 
-        render();
+        update();
+    </script>
+
+    <!-- 下载 PNG 按钮 -->
+    <button id="jr-download-btn" type="button" style="position:fixed;right:24px;bottom:24px;z-index:99999;background:#ff5757;color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:14px 22px;font-family:'Space Mono','DM Sans',monospace;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;">⬇ 下载 PNG</button>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+    (function(){
+      var btn = document.getElementById('jr-download-btn');
+      btn.addEventListener('mouseenter', function(){ btn.style.transform='translate(3px,3px)'; btn.style.boxShadow='3px 3px 0 #000'; });
+      btn.addEventListener('mouseleave', function(){ btn.style.transform=''; btn.style.boxShadow='6px 6px 0 #000'; });
+      btn.addEventListener('click', async function(){
+        var target = document.getElementById('poster');
+        if (!target) { alert('未找到海报元素 #poster'); return; }
+        var original = btn.textContent;
+        btn.textContent = '渲染中…';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+        try {
+          var canvas = await html2canvas(target, { backgroundColor: null, scale: 2, useCORS: true, allowTaint: true, logging: false });
+          var slug = (location.pathname.split('/').pop() || 'poster').replace(/\.html?$/,'');
+          var link = document.createElement('a');
+          link.download = slug + '-' + Date.now() + '.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        } catch (err) {
+          console.error(err);
+          alert('导出失败：' + (err && err.message ? err.message : err));
+        } finally {
+          btn.textContent = original;
+          btn.disabled = false;
+          btn.style.opacity = '';
+        }
+      });
+    })();
     </script>
 </body>
 </html>
