@@ -3,222 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Engineer Poster V7 - Design Engine Pro</title>
+    <title>AI Engineer Poster V7 - Quest Edition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --m-pink: #ff2d85;
-            --m-red: #ff4d4d;
+            --q-red: #ff5757;
+            --q-dark: #10162f;
+            --q-yellow: #ffce44;
+            --q-blue: #3b82f6;
             --ease: cubic-bezier(0.2, 0, 0, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body {
-            background-color: #f0f0f2;
-            color: #1d1d1f;
-            font-family: 'Inter', 'Noto Sans SC', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 40px 20px;
+            background-color: #f0f2f5;
+            color: var(--q-dark);
+            font-family: 'Noto Sans SC', sans-serif;
+            display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 40px 20px;
         }
 
         .studio-nav {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding: 16px 24px;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 30px; padding: 16px 24px; background: #fff; border: 2px solid var(--q-dark);
+            border-radius: 12px; box-shadow: 4px 4px 0px var(--q-dark);
         }
-        .studio-nav h1 { font-size: 13px; font-weight: 900; letter-spacing: 2px; color: #000; text-transform: uppercase; }
+        .studio-nav h1 { font-size: 14px; font-weight: 900; letter-spacing: 1px; color: var(--q-dark); text-transform: uppercase; }
         
-        .main-container {
-            display: flex;
-            gap: 40px;
-            width: 100%;
-            max-width: 1300px;
-            justify-content: center;
-        }
+        .main-container { display: flex; gap: 40px; width: 100%; max-width: 1300px; justify-content: center; }
 
+        /* --- CONTROLS --- */
         .sidebar { width: 300px; display: flex; flex-direction: column; gap: 20px; }
-        .control-card { background: #fff; padding: 20px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .sidebar h3 { font-size: 10px; font-weight: 900; color: #bbb; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .control-card { background: #fff; padding: 20px; border: 2.5px solid var(--q-dark); border-radius: 20px; box-shadow: 6px 6px 0px var(--q-dark); }
+        .sidebar h3 { font-size: 11px; font-weight: 900; color: #999; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
         
         .theme-opt {
-            padding: 10px 14px; border-radius: 10px; border: 1px solid #eee; margin-bottom: 6px; cursor: pointer; transition: 0.2s;
-            display: flex; justify-content: space-between; align-items: center; font-size: 13px;
+            padding: 12px 14px; border-radius: 10px; border: 2px solid #eee; margin-bottom: 8px; cursor: pointer; transition: 0.2s;
+            display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700;
         }
-        .theme-opt:hover { border-color: #000; }
-        .theme-opt.active { background: #000; color: #fff; border-color: #000; font-weight: 700; }
-        .theme-opt .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .theme-opt:hover { border-color: var(--q-dark); }
+        .theme-opt.active { background: var(--q-dark); color: #fff; border-color: var(--q-dark); }
+        .theme-opt .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #fff; }
 
-        .btn-row { display: flex; gap: 6px; flex-wrap: wrap; }
+        .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
         .p-btn { 
-            padding: 6px 12px; font-size: 10px; font-weight: 700; border: 1px solid #eee; border-radius: 100px; 
-            background: #fff; color: #666; cursor: pointer; transition: 0.2s;
+            padding: 8px 14px; font-size: 11px; font-weight: 800; border: 2px solid var(--q-dark); border-radius: 8px; 
+            background: #fff; color: var(--q-dark); cursor: pointer; transition: 0.15s; box-shadow: 3px 3px 0px var(--q-dark);
         }
-        .p-btn.active { background: #000; color: #fff; border-color: #000; }
+        .p-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--q-dark); }
+        .p-btn.active { background: var(--q-yellow); color: var(--q-dark); }
 
         /* --- POSTER AREA --- */
         #poster {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s var(--ease);
-            display: flex;
-            flex-direction: column;
-            background: #fff;
-            box-shadow: 0 40px 120px rgba(0,0,0,0.2);
+            position: relative; overflow: hidden; transition: all 0.4s var(--ease);
+            display: flex; flex-direction: column; border: 2.5px solid var(--q-dark);
+            box-shadow: 20px 20px 0px rgba(16, 22, 47, 0.05);
         }
 
-        .p-inner { height: 100%; width: 100%; padding: 12%; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 10; }
-
-        /* THEME: OBSIDIAN STUDIO (UPDATED - Deep Neural Style) */
-        #poster.theme-obsidian { 
-            background: radial-gradient(circle at top right, #1a0b2e, #000 60%);
-            color: #fff; 
+        /* Dot Pattern */
+        .p-grid {
+            position: absolute; top:0; left:0; width:100%; height:100%; opacity: 0.08;
+            background-image: radial-gradient(var(--q-dark) 1.5px, transparent 1.5px);
+            background-size: 24px 24px; z-index: 1;
         }
-        #poster.theme-obsidian .p-grid { 
-            position: absolute; top:0; left:0; width:100%; height:100%; opacity: 0.15; 
-            background-image: radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 40px 40px; 
-        }
-        #poster.theme-obsidian .p-glow-1 { position: absolute; top: -10%; right: -10%; width: 60%; height: 60%; background: radial-gradient(circle, rgba(255, 45, 133, 0.15), transparent 70%); z-index: 1; filter: blur(60px); }
-        #poster.theme-obsidian .p-glow-2 { position: absolute; bottom: -10%; left: -10%; width: 60%; height: 60%; background: radial-gradient(circle, rgba(255, 77, 77, 0.1), transparent 70%); z-index: 1; filter: blur(60px); }
-        
-        #poster.theme-obsidian .p-title { 
-            font-size: 52px; font-weight: 900; letter-spacing: -3px; line-height: 1.0;
-            background: linear-gradient(180deg, #fff 0%, #aaa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        #poster.theme-obsidian .bento-item { 
-            background: rgba(255,255,255,0.04); 
-            border: 1px solid rgba(255,255,255,0.08); 
-            border-radius: 16px; padding: 18px; 
-            backdrop-filter: blur(10px);
-        }
-        #poster.theme-obsidian .bi-m { border-left: 3px solid var(--m-pink); }
-        #poster.theme-obsidian .bi-h { border-left: 3px solid var(--m-red); }
 
-        /* THEME: PAPER LIGHT */
-        #poster.theme-paper { background: #fdfdfd; color: #000; }
-        #poster.theme-paper .p-inner { border: 12px solid #fff; padding: 10%; }
-        #poster.theme-paper .p-title { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; letter-spacing: -2px; line-height: 1.0; }
-        #poster.theme-paper .bento-item { background: #fff; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.02); padding: 18px; border-radius: 12px; }
+        .p-inner { height: 100%; width: 100%; padding: 10%; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 10; }
 
-        /* THEME: NEO-BRUTALIST */
-        #poster.theme-brutal { background: #fff1e7; color: #000; }
-        #poster.theme-brutal .p-inner { padding: 10%; }
-        #poster.theme-brutal .p-title { font-size: 48px; font-weight: 900; text-transform: uppercase; -webkit-text-stroke: 1.5px #000; color: transparent; line-height: 1.0; }
-        #poster.theme-brutal .p-title .filled { color: #000; -webkit-text-stroke: 0; }
-        #poster.theme-brutal .bento-item { background: #fff; border: 3.5px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; transform: rotate(-0.5deg); }
-        #poster.theme-brutal .p-btn-tag { background: #ff5757; color: #fff; border: 3px solid #000; padding: 4px 12px; font-weight: 900; display: inline-block; margin-bottom: 12px; box-shadow: 4px 4px 0px #000; font-size: 11px; }
+        /* THEME: QUEST EVOLUTION (Updated Brutalist) */
+        #poster.theme-brutal { background: #fdfdfd; color: var(--q-dark); }
+        #poster.theme-brutal .p-title { font-size: 54px; font-weight: 900; line-height: 1.05; letter-spacing: -2px; }
+        #poster.theme-brutal .p-title em { font-style: normal; color: var(--q-red); position: relative; z-index: 1; }
+        #poster.theme-brutal .p-title em::after { content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 12px; background: var(--q-yellow); z-index: -1; opacity: 0.8; }
+        #poster.theme-brutal .bento-item { background: #fff; border: 2.5px solid var(--q-dark); border-radius: 20px; box-shadow: 8px 8px 0px var(--q-dark); padding: 24px; }
+        #poster.theme-brutal .p-tag-pill { background: var(--q-dark); color: #fff; padding: 4px 12px; border-radius: 4px; font-weight: 900; font-size: 11px; display: inline-block; margin-bottom: 15px; }
 
-        /* THEME: CYBER MATRIX */
-        #poster.theme-cyber { background: #050a10; color: #00ffff; }
-        #poster.theme-cyber .p-grid { position: absolute; top:0; left:0; width:100%; height:100%; opacity: 0.15; background-image: linear-gradient(#00ffff22 1px, transparent 1px), linear-gradient(90deg, #00ffff22 1px, transparent 1px); background-size: 20px 20px; }
-        #poster.theme-cyber .p-title { font-size: 52px; font-weight: 900; color: #fff; text-shadow: 0 0 10px #00ffff; line-height: 1.0; }
-        #poster.theme-cyber .bento-item { background: rgba(0,255,255,0.05); border: 1px solid #00ffff33; border-radius: 4px; padding: 16px; }
+        /* THEME: OBSIDIAN STUDIO */
+        #poster.theme-obsidian { background: radial-gradient(circle at top right, #1a0b2e, #000 70%); color: #fff; }
+        #poster.theme-obsidian .p-title { font-size: 54px; font-weight: 900; letter-spacing: -3px; line-height: 1.0; }
+        #poster.theme-obsidian .bento-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 24px; backdrop-filter: blur(10px); }
+        #poster.theme-obsidian .bi-m { border-left: 5px solid #ff2d85; }
+        #poster.theme-obsidian .bi-h { border-left: 5px solid #ff4d4d; }
 
-        /* THEME: BLUEPRINT */
-        #poster.theme-blueprint { background: #0044cc; color: #fff; }
-        #poster.theme-blueprint .p-grid { position: absolute; top:0; left:0; width:100%; height:100%; opacity: 0.15; background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 30px 30px; }
-        #poster.theme-blueprint .p-title { font-family: 'Space Mono'; font-size: 38px; font-weight: 700; border-bottom: 1px solid #fff; padding-bottom: 6px; margin-bottom: 12px; letter-spacing: -2px; line-height: 1.1; }
-        #poster.theme-blueprint .bento-item { border: 1.5px dashed rgba(255,255,255,0.3); padding: 16px; background: rgba(255,255,255,0.03); }
-        #poster.theme-blueprint .p-sub { opacity: 1; font-weight: 800; background: #fff; color: #0044cc; padding: 1px 6px; display: inline-block; margin-top: 4px; font-size: 15px; }
+        /* THEME: PAPER MINIMALIST */
+        #poster.theme-paper { background: #fbfbfb; color: #000; }
+        #poster.theme-paper .p-title { font-family: 'Syne', sans-serif; font-size: 54px; font-weight: 800; letter-spacing: -2px; }
+        #poster.theme-paper .bento-item { background: #fff; border: 1.5px solid #eee; box-shadow: 0 15px 40px rgba(0,0,0,0.03); padding: 24px; border-radius: 16px; }
 
-        /* COMMON ELEMENTS */
-        .p-tag { font-family: 'Space Mono'; font-size: 10px; font-weight: 700; letter-spacing: 2px; opacity: 0.6; margin-bottom: 8px; }
-        .p-sub { font-size: 18px; font-weight: 300; opacity: 0.6; display: block; margin-top: 4px; line-height: 1.2; }
-        .p-title { word-break: break-word; overflow-wrap: break-word; }
-        .p-desc { font-size: 14px; line-height: 1.5; opacity: 0.8; margin: 18px 0; max-width: 100%; }
-        
-        .bento-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .b-label { font-family: 'Space Mono'; font-size: 8px; font-weight: 700; opacity: 0.5; margin-bottom: 4px; display: block; }
-        .b-title { font-size: 16px; font-weight: 800; margin-bottom: 3px; }
-        .b-desc { font-size: 10px; opacity: 0.6; line-height: 1.4; }
+        /* GIANT CORE MODULES */
+        .bento-grid { display: flex; flex-direction: column; gap: 20px; margin: 20px 0; }
+        .bento-item { flex: 1; transition: 0.3s; }
+        .b-label { font-family: 'Space Mono'; font-size: 10px; font-weight: 800; text-transform: uppercase; opacity: 0.5; margin-bottom: 8px; display: block; }
+        .b-title { font-size: 32px; font-weight: 900; margin-bottom: 6px; letter-spacing: -1px; display: flex; align-items: center; gap: 12px; }
+        .b-desc { font-size: 13px; opacity: 0.6; line-height: 1.5; font-weight: 500; }
+        .b-icon { font-size: 36px; }
 
-        .p-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(128,128,128,0.1); }
-        .p-stats { display: flex; gap: 24px; }
-        .s-val { font-family: 'Space Mono'; font-size: 20px; font-weight: 700; }
-        .s-lbl { font-size: 8px; font-weight: 800; opacity: 0.4; text-transform: uppercase; }
+        /* FOOTER & STATS */
+        .p-footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 24px; border-top: 1.5px solid rgba(128,128,128,0.1); }
+        .p-stats { display: flex; gap: 32px; }
+        .s-item { display: flex; flex-direction: column; gap: 4px; }
+        .s-val { font-family: 'Space Mono'; font-size: 26px; font-weight: 900; }
+        .s-lbl { font-size: 10px; font-weight: 800; opacity: 0.4; text-transform: uppercase; letter-spacing: 1px; }
         
         .brand { text-align: right; }
-        .brand .name { font-size: 18px; font-weight: 900; letter-spacing: 2px; color: inherit; }
-        .brand .sub { font-size: 8px; font-weight: 700; opacity: 0.3; }
+        .brand .name { font-size: 22px; font-weight: 900; letter-spacing: 2px; color: inherit; }
+        .brand .sub { font-size: 9px; font-weight: 700; opacity: 0.4; text-transform: uppercase; margin-top: 4px; }
 
         /* SIZES */
         #poster.square { width: 640px; height: 640px; }
         #poster.social { width: 640px; height: 853px; }
         #poster.hd { width: 1080px; height: 1440px; }
-        #poster.hd .p-title { font-size: 90px; }
-        #poster.hd .p-sub { font-size: 36px; }
-        #poster.hd .b-title { font-size: 28px; }
-        #poster.hd .p-desc { font-size: 24px; }
-        #poster.hd .s-val { font-size: 40px; }
-        #poster.hd .brand .name { font-size: 32px; }
-        #poster.hd .p-tag { font-size: 14px; }
+        #poster.hd .p-title { font-size: 100px; }
+        #poster.hd .b-title { font-size: 54px; }
+        #poster.hd .b-desc { font-size: 24px; }
+        #poster.hd .s-val { font-size: 48px; }
+        #poster.hd .brand .name { font-size: 36px; }
 
-        /* COPY SECTION */
-        .copy-area { width: 100%; max-width: 640px; margin-top: 30px; background: #fff; padding: 24px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.05); }
-        .copy-box { background: #f9f9f9; padding: 16px; border-radius: 12px; border: 1px solid #eee; font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 16px; white-space: pre-wrap; font-family: 'Inter'; }
-        .copy-btn { background: #000; color: #fff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; cursor: pointer; width: 100%; transition: 0.2s; }
+        /* COPY AREA */
+        .copy-area { width: 100%; max-width: 640px; margin-top: 30px; background: #fff; padding: 24px; border: 2.5px solid var(--q-dark); border-radius: 24px; box-shadow: 8px 8px 0px var(--q-dark); }
+        .copy-box { background: #f9f9f9; padding: 16px; border-radius: 12px; border: 1.5px solid #eee; font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 16px; white-space: pre-wrap; }
+        .copy-btn { background: var(--q-red); color: #fff; border: 2px solid var(--q-dark); padding: 14px; border-radius: 12px; font-weight: 900; cursor: pointer; width: 100%; box-shadow: 4px 4px 0px var(--q-dark); transition: 0.2s; }
+        .copy-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--q-dark); }
 
     </style>
 </head>
 <body>
 
     <div class="studio-nav">
-        <h1>DESIGN SYSTEM ENGINE / V7.4.4</h1>
-        <div style="font-size: 10px; font-weight: 800; color: #999;">匠人学院 AI ENGINEER 第五期</div>
+        <h1>POSTER STUDIO / V7.5 QUEST EDITION</h1>
+        <div style="font-size: 10px; font-weight: 900; color: #999;">匠人学院 · MISSION DEPLOY</div>
     </div>
 
     <div class="main-container">
         <div class="sidebar">
             <div class="control-card">
-                <h3>Visual Identity</h3>
+                <h3>Visual Style</h3>
                 <div id="theme-selector">
-                    <div class="theme-opt active" data-theme="obsidian">
+                    <div class="theme-opt active" data-theme="brutal">
+                        <div class="t-name">Quest 实战风</div>
+                        <div class="dot" style="background: var(--q-yellow);"></div>
+                    </div>
+                    <div class="theme-opt" data-theme="obsidian">
                         <div class="t-name">Obsidian Studio</div>
-                        <div class="dot" style="background: linear-gradient(135deg, #ff2d85, #ff4d4d);"></div>
+                        <div class="dot" style="background: #000;"></div>
                     </div>
                     <div class="theme-opt" data-theme="paper">
                         <div class="t-name">Paper Minimalist</div>
-                        <div class="dot" style="background: #fdfdfd; border: 1px solid #eee;"></div>
-                    </div>
-                    <div class="theme-opt" data-theme="brutal">
-                        <div class="t-name">Neo-Brutalist</div>
-                        <div class="dot" style="background: #ff5757;"></div>
-                    </div>
-                    <div class="theme-opt" data-theme="cyber">
-                        <div class="t-name">Cyber Matrix</div>
-                        <div class="dot" style="background: #00ffff;"></div>
-                    </div>
-                    <div class="theme-opt" data-theme="blueprint">
-                        <div class="t-name">Technical Blueprint</div>
-                        <div class="dot" style="background: #0044cc;"></div>
+                        <div class="dot" style="background: #eee;"></div>
                     </div>
                 </div>
             </div>
 
             <div class="control-card">
-                <h3>Narrative Mode</h3>
+                <h3>Focus Core</h3>
                 <div id="dir-selector" class="btn-row">
-                    <button class="p-btn active" data-dir="0">Total Evolution</button>
-                    <button class="p-btn" data-dir="1">Memory Core</button>
-                    <button class="p-btn" data-dir="2">Harness Master</button>
+                    <button class="p-btn active" data-dir="0">双核进化</button>
+                    <button class="p-btn" data-dir="1">Memory 核心</button>
+                    <button class="p-btn" data-dir="2">Harness 驾驭</button>
                 </div>
             </div>
 
             <div class="control-card">
-                <h3>Output Format</h3>
+                <h3>Output Size</h3>
                 <div id="size-selector" class="btn-row">
                     <button class="p-btn active" data-size="square">1:1 Moments</button>
                     <button class="p-btn" data-size="social">3:4 Social</button>
@@ -228,43 +174,38 @@
         </div>
 
         <div style="display: flex; flex-direction: column; align-items: center;">
-            <div id="poster" class="square theme-obsidian">
+            <div id="poster" class="square theme-brutal">
                 <div class="p-grid"></div>
-                <div class="p-noise"></div>
-                <div class="p-glow-1"></div>
-                <div class="p-glow-2"></div>
-                
                 <div class="p-inner">
                     <div class="p-header-content">
-                        <div class="p-btn-tag" id="p-btn-tag" style="display:none">NEW UPGRADE</div>
-                        <div class="p-tag" id="p-tag">AI ENGINEER 第五期 / 系统升级</div>
+                        <div class="p-tag-pill">AI ENGINEER 第五期</div>
                         <div class="p-title" id="p-title">
-                            AI ENGINEER
-                            <span class="p-sub" id="p-sub">第五期重磅升级</span>
+                            AI ENGINEER<br>
+                            <em>第五期</em> 重磅升级
                         </div>
-                        <div class="p-desc" id="p-desc">从简单的 API 调用，到掌握生产级 Agent 的工程命脉。第五期重磅升级，定义 AI 工程师的新高度。</div>
+                        <div class="p-desc" id="p-desc" style="display:none">从 API 调用到掌握生产级 Agent 的工程命脉。</div>
                     </div>
 
                     <div class="bento-grid">
                         <div class="bento-item bi-m">
-                            <span class="b-label">MODULE / 07</span>
-                            <h4 class="b-title" id="m1-t">Memory System</h4>
+                            <span class="b-label">MISSION / 07</span>
+                            <h4 class="b-title" id="m1-t"><span class="b-icon">🧠</span>Memory System</h4>
                             <p class="b-desc" id="m1-d">赋予 Agent 记忆。掌握 STM/LTM 与 Mem0 架构集成。</p>
                         </div>
                         <div class="bento-item bi-h">
-                            <span class="b-label">MODULE / 08</span>
-                            <h4 class="b-title" id="m2-t">Harness Eng.</h4>
+                            <span class="b-label">MISSION / 08</span>
+                            <h4 class="b-title" id="m2-t"><span class="b-icon">🛠️</span>Harness Eng.</h4>
                             <p class="b-desc" id="m2-d">驾驭 Agent 的范式。解构 Claude Code，自建 Coding Agent。</p>
                         </div>
                     </div>
 
                     <div class="p-footer">
                         <div class="p-stats">
-                            <div>
+                            <div class="s-item">
                                 <span class="s-val">172+</span>
                                 <span class="s-lbl">Lessons</span>
                             </div>
-                            <div>
+                            <div class="s-item">
                                 <span class="s-val">62+</span>
                                 <span class="s-lbl">Labs</span>
                             </div>
@@ -279,7 +220,7 @@
             </div>
 
             <div class="copy-area">
-                <h3>Social Copy</h3>
+                <h3>Social Content</h3>
                 <div class="copy-box" id="copy-text">...</div>
                 <button class="copy-btn" onclick="copyText()">COPY CONTENT</button>
             </div>
@@ -289,60 +230,44 @@
     <script>
         const content = [
             {
-                tag: "AI ENGINEER 第五期 / 系统升级",
-                title: "AI ENGINEER<span class='p-sub'>第五期重磅升级</span>",
-                desc: "从简单的 API 调用，到掌握生产级 Agent 的工程命脉。第五期重磅升级，定义 AI 工程师的新高度。",
-                m1t: "Memory System", m1d: "赋予 Agent 记忆。掌握 STM/LTM 与 Mem0 架构集成。",
-                m2t: "Harness Eng.", m2d: "驾驭 Agent 的范式。解构 Claude Code，自建 Coding Agent。",
+                title: "AI ENGINEER<br><em>第五期</em> 重磅升级",
+                m1t: "<span class='b-icon'>🧠</span>Memory System", 
+                m1d: "赋予 Agent 记忆。掌握 STM/LTM 与 Mem0 框架。",
+                m2t: "<span class='b-icon'>🛠️</span>Harness Eng.", 
+                m2d: "驾驭 Agent 的范式。解构 Claude Code，自建 Coding Agent。",
                 copy: "【AI Engineer 第五期：工程进阶】\n\n不再满足于调用 API。我们需要 Agent 拥有记忆（Memory），需要它被精准驾驭（Harness）。\n\n🚀 172+ 节实战课\n🧪 62+ 互动 Lab\n🛠️ 从 Context 到 Multi-Agent 全链路部署\n\n加入第五期，定义你的技术天花板。匠人学院出品。"
             },
             {
-                tag: "MEMORY CORE / 第五期新增模块",
-                title: "MEMORY CORE<span class='p-sub'>让 Agent 拥有长久记忆</span>",
-                desc: "没有记忆的 Agent 是无魂的。深入剖析三层记忆架构，让你的 AI 能够像人类一样进行长期学习与召回。",
-                m1t: "STM/LTM Integration", m1d: "基于向量数据库的持久化记忆与知识库动态融合。",
-                m2t: "Session Aware", m2d: "复杂的会话状态管理与多轮对话逻辑的一致性保证。",
+                title: "MEMORY CORE<br><em>第五期</em> 核心突破",
+                m1t: "<span class='b-icon'>🧠</span>Memory System", 
+                m1d: "基于向量数据库的持久化记忆与知识库动态融合。",
+                m2t: "<span class='b-icon'>⚡</span>STM / LTM", 
+                m2d: "复杂的会话状态管理与多轮对话逻辑的一致性保证。",
                 copy: "【让 Agent 拥有灵魂：记忆系统】\n\n没有 Memory 的 Agent 每次对话都是从零开始。在 AI Engineer 第五期，我们将深度攻克 Memory System。\n\n从 STM 到 LTM，从 Session 管理到 Mem0 框架。构建一个真正“懂”用户的智能体。🧠 —— 匠人学院"
             },
             {
-                tag: "HARNESS ENG. / 第五期实战进阶",
-                title: "HARNESS ENG.<span class='p-sub'>驾驭 Agent 的工程范式</span>",
-                desc: "真正的工程师写 Harness 而不是套框架。解构 Tool Loop 的底层逻辑，亲手打造属于你的自动化 Coding Agent。",
-                m1t: "Claude Code Architecture", m1d: "深度拆解顶级 AI 开发工具的 Harness 架构实现。",
-                m2t: "Skill Ecosystem", m2d: "构建可组合、可扩展的 Agent 技能池与自动化循环。",
+                title: "HARNESS ENG.<br><em>第五期</em> 重塑范式",
+                m1t: "<span class='b-icon'>🛠️</span>Custom Harness", 
+                m1d: "深度拆解顶级 AI 开发工具的 Harness 架构实现。",
+                m2t: "<span class='b-icon'>🚀</span>Coding Agent", 
+                m2d: "掌握大型代码库的自主开发逻辑，构建可组合技能池。",
                 copy: "【不再套框，手写 Harness】\n\n真正的工程师，应该掌握驾驭 Agent 的每一行代码。AI Engineer 第五期，带你深入 Harness Engineering。\n\n解析 Claude Code 底层架构，实战构建自动化 Coding Agent。把 Agent 的控制权，牢牢握在手中。🛠️ —— 匠人学院"
             }
         ];
 
-        let curDir = 0, curSize = 'square', curTheme = 'obsidian';
+        let curDir = 0, curSize = 'square', curTheme = 'brutal';
 
         function update() {
             const d = content[curDir];
             const p = document.getElementById('poster');
             p.className = `${curSize} theme-${curTheme}`;
 
-            document.getElementById('p-tag').innerText = d.tag;
-            
-            if(curTheme === 'brutal') {
-                document.getElementById('p-title').innerHTML = `AI ENGINEER<span class='p-sub filled'>第五期重磅升级</span>`;
-            } else if (curTheme === 'blueprint') {
-                document.getElementById('p-title').innerHTML = `AI ENGINEER<br><span class='p-sub'>第五期重磅升级</span>`;
-            } else {
-                document.getElementById('p-title').innerHTML = d.title;
-            }
-            
-            document.getElementById('p-desc').innerText = d.desc;
-            document.getElementById('m1-t').innerText = d.m1t;
+            document.getElementById('p-title').innerHTML = d.title;
+            document.getElementById('m1-t').innerHTML = d.m1t;
             document.getElementById('m1-d').innerText = d.m1d;
-            document.getElementById('m2-t').innerText = d.m2t;
+            document.getElementById('m2-t').innerHTML = d.m2t;
             document.getElementById('m2-d').innerText = d.m2d;
             document.getElementById('copy-text').innerText = d.copy;
-
-            document.getElementById('p-btn-tag').style.display = curTheme === 'brutal' ? 'inline-block' : 'none';
-            
-            // Toggle obsidian special glows
-            const glows = [document.querySelector('.p-glow-1'), document.querySelector('.p-glow-2')];
-            glows.forEach(g => g.style.display = curTheme === 'obsidian' ? 'block' : 'none');
         }
 
         document.getElementById('theme-selector').onclick = (e) => {
@@ -373,7 +298,7 @@
         function copyText() {
             navigator.clipboard.writeText(document.getElementById('copy-text').innerText).then(() => {
                 const btn = document.querySelector('.copy-btn');
-                btn.innerText = 'COPIED TO CLIPBOARD!';
+                btn.innerText = 'COPIED!';
                 setTimeout(() => btn.innerText = 'COPY CONTENT', 2000);
             });
         }

@@ -212,7 +212,7 @@ To control which pages appear: edit `curriculumPages` in `outline.json`, not `pa
 
 ## Adding a New Bootcamp
 
-### 🚨 强制规则：新课目录 → 必须接入 deploy.yml
+### 🚨 强制规则 1：新课目录 → 必须接入 deploy.yml
 
 **只要在 `curriculum/` 下新增一个课程目录（哪怕只有 `public/outline.json` 一个文件），就必须同步更新 `.github/workflows/deploy.yml` 的 Assemble 步骤**，否则：
 
@@ -222,6 +222,16 @@ To control which pages appear: edit `curriculumPages` in `outline.json`, not `pa
 - 后面的人需要靠翻历史工单才能发现这个坑
 
 **验收标准**: 新增课程的 PR 必须同时修改 `deploy.yml`，且部署成功后 `curl https://jiangren.com.au/curriculum/<slug>/` 能拿到正确响应。
+
+### 🔴 强制规则 2: 新课必须注册到 `curriculum/posters.html`
+
+**`curriculum/posters.html` 是统一的"课程海报中心"**，运营/Marketing 从这里找所有 Bootcamp 的海报。任何新课程：
+
+- 至少要有 1 张宣传海报（放在 `{slug}/public/` 或 `{slug}/public/posters/`）
+- **必须** 在 `curriculum/posters.html` 的 "Bootcamp 课程海报" section 加入新卡片，链接到该课程的海报页/集
+- 海报本身必须包含 `<div id="poster">` + 「⬇ 下载 PNG」浮动按钮（html2canvas）—— 参考 `ai-programming/public/poster-v3.html` 或 `ai-engineer-bootcamp/public/posters/poster-v1.html`
+
+**没在 posters.html 注册 = 课程未完成**。线上 https://jiangren.com.au/curriculum/posters.html 看不到 = Marketing 找不到 = 不存在。
 
 ### 步骤
 
