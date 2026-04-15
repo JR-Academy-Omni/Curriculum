@@ -4,7 +4,7 @@
     p1: {
       title: 'AI 都这么卷了 还在只会调 API 拼 Prompt？',
       body: `不知道姐妹们有没有感觉，今年 AI 工程师的岗位要求已经完全不是去年那一套了。\n还停留在写 Prompt 和调 ChatGPT 的话，很多 JD 已经直接接不上。\n\n花了挺久时间扒了 15 份一线公司 2026 的 JD，发现现在真正在招的是：能搭生产级 RAG、会用 Agent SDK、看得懂 MCP 的人。\n\n🌿 这 12 周课刚好把我从"只会调模型"带到能做 Multi-Agent。`,
-      tags: '#AI工程师 #AI学习 #AI转行 #程序员 #Agent开发 #RAG #小白学AI #技术成长',
+      tags: '#AI工程师 #AI学习 #程序员 #Agent开发 #RAG #小白学AI #技术成长',
       wechat: [
         '2026 的 AI Engineer 岗位已经不卷 Prompt 了 — 卷 Agent / MCP / Eval。新课上线，12 周把基础补回来。',
         '扒了 15 份一线公司 JD，写 Prompt 已经不够看了。新一期 AI Engineer Bootcamp 来了，主页见 👀',
@@ -12,7 +12,43 @@
       ],
       community: [
         '【第五期 AI Engineer Bootcamp 开放咨询】\n12 周从"只会调 API"到"能做 Multi-Agent"\n183 节课 + 68 个 Lab + 7 个简历项目\n主页查看课程大纲 🌿',
-        '姐妹们，2026 的 AI Engineer 岗位要求大换代了：Agent SDK、MCP、GraphRAG、Eval 全是入门线。想系统补的看看新一期课 👀'
+        '姐妹们，2026 的 AI Engineer 岗位要求大换代了：Agent SDK、MCP、GraphRAG、Eval 全全是入门线。想系统补的看看新一期课 👀'
+      ]
+    },
+    p1b: {
+      title: '会用 ChatGPT 不等于你会做 AI Engineer',
+      body: `别再被"会用 AI"给骗了！\n\n2026 年的 AI 岗位，要的不是会写几句 Prompt 的人，而是能把 AI 真正做成生产系统的人。\n\n❌ 很多人停在：会写 Prompt、会用聊天框、听过热词\n✅ 岗位真正要：RAG 优化、Agent 编排、MCP 协议、Eval 评估\n\n这 12 周课带你跨过这个鸿沟，从"会用"到"会做"。`,
+      tags: '#AI工程师 #程序员 #AI转行 #技术成长 #AI学习 #RAG #Agent',
+      wechat: [
+        '会用 ChatGPT 不等于会做 AI Engineer。2026 岗位要的是系统构建能力。12 周带你跨过鸿沟 🌱',
+        '别再卷 Prompt 了，今年卷的是 Agent 和 Eval。新一期 AI Engineer Bootcamp 来了 👀'
+      ],
+      community: [
+        '会用 ChatGPT 不等于会做 AI Engineer。\n岗位真正要的是能把 AI 做成系统的人。新一期 12 周课帮你补齐 RAG/Agent/MCP/Eval。主页咨询 🌿'
+      ]
+    },
+    p1c: {
+      title: '从写 CRUD 到能交付 AI System',
+      body: `2026 年，软件工程师的护城河不再是写增删改查。\n而是能否交付一个具备推理、记忆、和工具执行能力的 AI System。\n\n从只会调 API 拼 Prompt，到能独立搭起生产级 Multi-Agent 架构。\n这 12 周，帮你完成这个关键的职业跳跃 🚀`,
+      tags: '#程序员 #AI工程师 #技术升级 #CRUD #AISystem #Agent #RAG #职业成长',
+      wechat: [
+        '从写 CRUD 到交付 AI System。2026 程序员的护城河在这里 🚀',
+        '调 API 拼 Prompt 只是开始，Multi-Agent 才是未来。12 周帮你完成职业跳跃。'
+      ],
+      community: [
+        '【职业升级】从写 CRUD 到能交付 AI System。\n12 周带你从调 API 升级到做生产级 Multi-Agent 架构。大纲主页见 🚀'
+      ]
+    },
+    p1d: {
+      title: '不会 RAG / Agent 很多 AI 岗位你连面试都接不上',
+      body: `现在的 AI 面试已经不考你 Prompt 怎么写了。\n\n面试官上来就是：\n"GraphRAG 的实体抽取怎么做优化？"\n"Multi-Agent 协作的循环依赖怎么解？"\n"MCP 和 A2A 协议在你的场景里怎么选？"\n\n12 周，把这些热词变成你真的做过的项目能力。别等面试挂了才来补 🥲`,
+      tags: '#AI面试 #AI工程师 #求职 #GraphRAG #Agent #技术面试 #程序员日常',
+      wechat: [
+        '不会 RAG / Agent 很多岗位连面试都接不上。12 周把热词变能力 🎯',
+        '现在的 AI 面试都在考什么？GraphRAG / Multi-Agent / Eval 全是重点。'
+      ],
+      community: [
+        '【面试避坑】别等面试挂了才发现 RAG/Agent 没跑通。\n12 周带你把 GraphRAG、Multi-Agent、MCP 变成简历里的真实项目。主页咨询 🎯'
       ]
     },
     p2: {

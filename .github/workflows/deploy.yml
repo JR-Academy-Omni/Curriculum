@@ -49,6 +49,10 @@ jobs:
           cp ai-adoption-bootcamp/public/internal.html _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/learning-plan.html _site/ai-adoption-bootcamp/
           [ -f ai-adoption-bootcamp/public/pages.json ] && cp ai-adoption-bootcamp/public/pages.json _site/ai-adoption-bootcamp/ || true
+          # ai-adoption-bootcamp 小红书素材集
+          if [ -d ai-adoption-bootcamp/public/xhs-posters ]; then
+            cp -r ai-adoption-bootcamp/public/xhs-posters _site/ai-adoption-bootcamp/
+          fi
 
           mkdir -p _site/ai-essentials-bootcamp
           cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/

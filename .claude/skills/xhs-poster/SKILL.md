@@ -17,9 +17,12 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 - 容器必须 `width: 1242px; height: 1660px; overflow: hidden;`
 
 ### 数量
-- **不限于 9 张**：尽可能从 curriculum.html + outline.json 挖掘所有可营销的内容
-- AI Engineer Bootcamp 参考实现有 22 张：`curriculum/ai-engineer-bootcamp/public/xhs-posters/index.html`
-- 小红书内容需要频繁更换，**越多越好**，用户可以自选组合
+- **目标 25 张**（1 封面 + 24 配图）— 这是当前标准产出量
+- 参考实现：
+  - AI Engineer Bootcamp（25+ 张）：`curriculum/ai-engineer-bootcamp/public/xhs-posters/index.html`
+  - AI Adoption Bootcamp（25 张）：`curriculum/ai-adoption-bootcamp/public/xhs-posters/index.html`
+- 小红书需频繁换图，25 张可以让运营组合出 1-2 个月的发布素材
+- 不要少于 20 张 — 太少不够换
 
 ## 🎨 设计语言（对齐 quest-posters.html）
 
@@ -55,16 +58,79 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 
 ### 字号（竖版 1242×1660 下的视觉基准）
 
-**⚠️ 关键：所有文字必须在手机屏幕（~375px 宽）上清晰可读。1242px 在手机上缩放约 0.6x，所以最小正文不能低于 22px。**
+**🔴🔴🔴 铁律 v2：标题宁可大不能小 / 正文宁可少不能小 🔴🔴🔴**
 
-| 元素 | 字号 | weight |
-|------|------|--------|
-| 主标题 hook | 120-150px | 900 |
-| h2 标题 | 72-84px | 900 |
-| 卡片标题 h4 | 28-38px | 900 |
-| 正文/列表 | 24-30px | 500-600 |
-| 标签/品牌 | 22-26px | 700 |
-| 最小文字 | 20px（绝对下限） | 600+ |
+数学验算：
+- 海报内容区宽 = 1242 - 80×2（外 padding）- 72×2（内 padding）= **938px**
+- 一行最多 20 个汉字 → 938/20 = **47px/字**
+- 所以正文最小 **48px**（手机上 ≈ 14px，清晰）
+
+**核心原则：宁愿删掉一些正文内容，也要让标题足够大、正文足够大。**
+
+| 元素 | 画布字号 | 手机端实际 | weight |
+|------|---------|-----------|--------|
+| 封面 hook | **150px** | 45px | 900 |
+| **h2 主标题（统一）** | **100px** | 30px | 900 |
+| **大数字 / KPI** | **100px+** | 30px+ | 900 |
+| 二级标题 h3/h4/h5 / 工具名 / 卡片标题 | **60px** | 18px | 900 |
+| 引言 / 气泡 / 引文 | **56px** | 17px | 600 |
+| **正文 / 列表 / 描述 / 标签（绝对下限）** | **48px** | 14px | 600 |
+| 标签 p-tag | 36px | 11px | 700 |
+| **绝对禁止字号** | < 48px | < 14px | — |
+
+**禁止出现 18/20/22/24/26/28/30/32/40px 等小字号 — 全部改大。**
+
+### 强制 CSS 兜底（写在 `</style>` 前最后）
+
+```css
+/* 🔴 小红书手机端字号铁律 v2 */
+.poster .p-tag { font-size: 36px !important; padding: 14px 30px !important; }
+.poster .corner-mark { font-size: 34px !important; padding: 14px 22px !important; }
+/* 正文级 48px */
+.poster p, .poster li, .poster .lbl, .poster .cat, .poster .meta,
+.poster .who, .poster .sub, .poster .desc, .poster .phase, .poster .phase-tag,
+.poster .week, .poster .stg, .poster .role, .poster .sal,
+.poster .old, .poster .new, .poster .dim, .poster .v1, .poster .v2,
+.poster .topic, .poster .bottom-note, .poster .note, .poster .freq,
+.poster .companies span, .poster .lead,
+.poster .tier .level, .poster .stat .lbl, .poster .chat-header, .poster .kpi .lbl,
+.poster .tool .cat, .poster .delta .lbl {
+  font-size: 48px !important;
+  line-height: 1.4 !important;
+  font-weight: 600 !important;
+}
+/* 二级标题 60px */
+.poster h3, .poster h4, .poster h5,
+.poster .tool .name, .poster .name, .poster .cnt {
+  font-size: 60px !important;
+  line-height: 1.2 !important;
+  font-weight: 900 !important;
+}
+/* 引言 / 气泡 56px */
+.poster .bubble, .poster .q .txt, .poster .cert .big {
+  font-size: 56px !important;
+  line-height: 1.35 !important;
+}
+/* h2 主标题 100px（统一）*/
+.poster h2 {
+  font-size: 100px !important;
+  line-height: 1.1 !important;
+  letter-spacing: -2px !important;
+  font-weight: 900 !important;
+}
+/* 封面 hook 150px / CTA giant 160px */
+.p1 .hook { font-size: 150px !important; }
+.p9 .giant { font-size: 160px !important; }
+/* 大数字 100px */
+.poster .num, .poster .big, .poster .range, .poster .n {
+  font-size: 100px !important;
+  line-height: 1 !important;
+}
+/* 黄色高亮加粗 */
+.hl::after { height: 30px !important; bottom: 14px !important; }
+```
+
+**重要：写完海报后必须自查，每张图肉眼一眼看不清的字 = 字号还不够大。**
 
 ## 📐 必须的 HTML 结构
 
@@ -171,6 +237,66 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 | ISA 成长 | 贯穿项目 | 5 次升级时间线 |
 | 软性 CTA | 收尾引导 | 无二维码 |
 
+## 📋 标准 25 张海报蓝图（参考 AI Engineer / AI Adoption 实现）
+
+```
+P1  封面 hook（情绪化痛点 + 课程 chip）
+P2  痛点对比（X 还在 vs ✅ 他们在做，6+6 条）
+P3  同事群对话（Slack 风格气泡，2-4 轮）
+P4  4 大能力（4 张色块卡）
+P5  Phase 地图（10 / 4 个 Phase 色块）
+P6  工具栈（深色底，15+ 工具 pill）
+P7  学员反馈（3 条错落软性引言）
+P8  课程配置（4 大数字 + 6 项配套列表）
+P9  软性 CTA（无二维码，主页搜某关键词）
+─── 以上 9 张是基础，下面 16 张深度展开 ───
+P10 升级对比（V1→V2 数据，新增模块）
+P11 能力矩阵（V1 vs V2 6 维度对比表）
+P12 最大模块深潜（如 RAG 45 节 / 48 场景）
+P13 多层架构（如 Agent 5 层 / 7 独家模块）
+P14 适合谁学（4 类目标人群）
+P15 Lab 分布（按类型拆解柱状）
+P16 完整时间线（Week 1→24 时间线）
+P17 毕业项目 / 交付清单（编号列表）
+P18 学习方式 / 翻转课堂（4 卡或对比）
+P19 求职 / Demo Day（流程图 + 证书）
+P20 升级 / 标准切换（旧→新对比行）
+P21 FAQ 5 问（Q/A 卡）
+P22 方法论 / 项目成长（5 阶时间线）
+P23 独家模块（深色底，业内独有 2-3 块）
+P24 JD 覆盖率（条形进度 + 公司 logo）
+P25 薪资地图（3 档 + 公司薪资网格）
+```
+
+每一张都要从 outline.json + curriculum.html 找真实数据填充，禁止编造。
+
+## 📝 三通道文案面板（必做）
+
+每张海报右侧必须配一个 **460px 宽的文案面板**，包含 3 个 Tab 切换：
+
+| Tab | 内容 | 字数限制 |
+|-----|------|---------|
+| 📕 小红书 | 标题 + 正文 + 话题标签 + 复制全部 | 标题 ≤ 20 字，正文 100-200 字 |
+| 💬 朋友圈 | 3 条短文案 | 每条 ≤ 90 字（6 行内不折叠）|
+| 👥 社群 | 2 条稍长版 | 100-150 字，带换行排版 |
+
+实现：用单独的 `xhs-copy.js` 文件存数据 + 注入逻辑（避免 inline script 被 linter 修改）。
+参考：`curriculum/ai-engineer-bootcamp/public/xhs-posters/xhs-copy.js`
+
+## 🔌 本地预览端口（多课程并行）
+
+每个 bootcamp 用独立端口，避免冲突：
+
+| Bootcamp | 端口 |
+|----------|------|
+| ai-engineer-bootcamp | **8080** |
+| ai-adoption-bootcamp | **8081** |
+| 其他课程 | 8082+ 顺延 |
+
+```bash
+cd curriculum/{bootcamp} && python3 -m http.server 80XX
+```
+
 ## 执行步骤
 
 ### 1. 读取课程信息
@@ -179,9 +305,10 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 - 扫一眼 `curriculum/quest-posters.html` → 复用 CSS 变量
 
 ### 2. 参考已有实现
-- **AI Engineer Bootcamp 参考**: `curriculum/ai-engineer-bootcamp/public/xhs-posters/index.html`（22 张完整实现）
-- 复用其 CSS 架构（分层、缩放、导航、下载按钮逻辑）
-- 根据新课程内容调整文案和数据
+- **AI Engineer Bootcamp**: `curriculum/ai-engineer-bootcamp/public/xhs-posters/`（25 张 + xhs-copy.js）
+- **AI Adoption Bootcamp**: `curriculum/ai-adoption-bootcamp/public/xhs-posters/`（25 张 + xhs-copy.js）
+- 复用 CSS 架构（分层、缩放、左侧导航、下载按钮）+ xhs-copy.js 三通道文案面板
+- 根据新课程内容调整文案、配色（Engineer=红 / Adoption=紫）、数据
 
 ### 3. 生成输出文件
 - 路径：`curriculum/{bootcamp}/public/xhs-posters/index.html`
@@ -211,6 +338,8 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 4. **写 AI 味文案** — 看到"在当今/深入探讨/全面掌握/comprehensive"立刻重写
 5. **放二维码或微信号** — 一次都不行，聚光直接拒审
 6. **编造学员数据** — 没真实数字就用软性表达，不要为了好看编"1000+ 学员"
-7. **字号太小** — 手机上看不清的文字 = 废图，最小 20px
+7. **字号低于 48px（正文）/ 100px（h2）** — 手机看不清 = 废图。海报内任何 < 48px 的正文都必须改大。最后必须写 `!important` CSS 兜底。**宁可删内容，不能缩字号。**
 8. **下载按钮放在海报内** — 必须放外面，不遮挡内容
-9. **只做 9 张** — 从 curriculum.html 尽可能多挖素材，小红书需要频繁换图
+9. **少于 20 张** — 标准产出 25 张，少于 20 张运营换不动
+10. **没有右侧文案面板** — 必须有 xhs-copy.js 注入的三通道（小红书 / 朋友圈 / 社群）面板，每张配 6+ 条文案
+11. **多课程同端口** — 每个 bootcamp 用独立端口（8080 / 8081 / 8082...），并行预览不冲突
