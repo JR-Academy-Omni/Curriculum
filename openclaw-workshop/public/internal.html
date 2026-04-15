@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OpenClaw Workshop · 内部资料</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#dc2626 100%)}
+    .internal-warn{margin:20px 0;padding:14px 18px;background:#fef2f2;border:3px solid #dc2626;border-left-width:10px;color:#991b1b;font-weight:600}
+    table{width:100%;border-collapse:collapse;background:#fff;border:2px solid #000;margin:12px 0}
+    th{background:#10162f;color:#fff;padding:10px 12px;text-align:left;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+    td{padding:10px 12px;border-top:1px solid #e5e5e5;font-size:13px;vertical-align:top;line-height:1.6}
+    td.mono{font-family:'Space Mono',monospace;font-size:12px;color:#555}
+    .status-ok{color:#065f46;background:#d1fae5;padding:2px 8px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+    .status-todo{color:#9a3412;background:#fff7ed;padding:2px 8px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+    .status-manual{color:#991b1b;background:#fee2e2;padding:2px 8px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+    .section-title{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:2px;color:#888;text-transform:uppercase;margin:36px 0 12px}
+    code{background:#f3f4f6;padding:2px 6px;font-family:'Space Mono',monospace;font-size:12px}
+    .checklist li{margin-bottom:8px;line-height:1.7}
+    .checklist input{margin-right:8px}
+    .toc{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0}
+    .toc a{display:block;padding:10px;background:#fff;border:2px solid #000;text-decoration:none;color:#000;font-size:13px;font-weight:700}
+    .toc a:hover{background:#10162f;color:#fff}
+    @media(max-width:768px){.toc{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>OpenClaw Workshop · 内部资料</h1>
+  <div class="sub">给运营 · 销售 · 老师 · Tutor · 开发团队使用。学员看不到这页。</div>
+  <div class="tags">
+    <span class="tag a">INTERNAL ONLY</span>
+    <span class="tag a">NOINDEX</span>
+    <span class="tag a">Last Updated: 2026-04-15</span>
+  </div>
+</div>
+
+<div class="c">
+
+  <div class="internal-warn">
+    ⚠️ <strong>这是团队内部页。</strong> 不要把链接发给学员。生产环境 robots 已设 noindex。需要在 Admin CMS 手工填充的字段见下方清单。
+  </div>
+
+  <!-- 快速导航 -->
+  <div class="toc">
+    <a href="#resources">📚 资源映射表</a>
+    <a href="#program">🏙️ Program 定制指南</a>
+    <a href="#admin">📋 Admin 待填清单</a>
+    <a href="#teacher">👨‍🏫 老师分工</a>
+    <a href="#tutor">🛟 Tutor 陪跑 Playbook</a>
+    <a href="#quest">🌸 L02 Quest 配置</a>
+    <a href="#marketing">📣 Marketing 素材</a>
+    <a href="#tech">🔧 技术参考</a>
+  </div>
+
+  <!-- 资源映射表 -->
+  <div id="resources"></div>
+  <div class="section-title">📚 学员解锁的资源全清单（37 项）</div>
+  <div class="box">
+    <div class="box-h" style="background:#10162f"><span style="font-weight:900">Learn 章节（16 · 全部已存在）</span></div>
+    <div style="padding:0 0 16px">
+      <table>
+        <thead><tr><th>Lesson</th><th>Learn Slug</th><th>状态</th></tr></thead>
+        <tbody>
+          <tr><td>L01 AI 基础认知</td><td class="mono">openclaw/what-is-openclaw</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td rowspan="3">L02 OpenClaw 入门 Quest</td><td class="mono">openclaw/install-and-setup</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/configure-llm-providers</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/connect-messaging-platforms</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td rowspan="6">L03 常用资源</td><td class="mono">openclaw/builtin-skills-tour</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/skill-development-basics</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/build-first-skill</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/mcp-integration</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/scheduled-tasks-automation</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/multi-agent-routing</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td rowspan="2">L04 Live Demo</td><td class="mono">openclaw/project-personal-assistant</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/project-team-workflow</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td rowspan="4">L07 Workshop 进阶</td><td class="mono">openclaw/skill-testing-debugging</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/skill-registry-publishing</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/security-best-practices</td><td><span class="status-ok">READY</span></td></tr>
+          <tr><td class="mono">openclaw/production-deployment</td><td><span class="status-ok">READY</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-h" style="background:#10162f"><span style="font-weight:900">Prompt Lab 绑定（18 · 全部已存在）</span></div>
+    <div style="padding:0 0 16px">
+      <table>
+        <thead><tr><th>Lesson</th><th>Prompt Lab Slug</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2">L00 预习</td><td class="mono">hello-ai</td></tr>
+          <tr><td class="mono">(hello-ai 已在此)</td></tr>
+          <tr><td rowspan="2">L01 AI 基础</td><td class="mono">hello-ai</td></tr>
+          <tr><td class="mono">ai-basics</td></tr>
+          <tr><td rowspan="4">L03 常用资源</td><td class="mono">system-prompt-design</td></tr>
+          <tr><td class="mono">role-playing</td></tr>
+          <tr><td class="mono">tool-use</td></tr>
+          <tr><td class="mono">few-shot</td></tr>
+          <tr><td rowspan="3">L04 Live Demo</td><td class="mono">business-writing</td></tr>
+          <tr><td class="mono">text-summarization</td></tr>
+          <tr><td class="mono">qa-system-design</td></tr>
+          <tr><td rowspan="4">L05 Workshop 基础</td><td class="mono">clear-task</td></tr>
+          <tr><td class="mono">output-format</td></tr>
+          <tr><td class="mono">constraints</td></tr>
+          <tr><td class="mono">workplace-scenarios</td></tr>
+          <tr><td rowspan="5">L07 Workshop 进阶</td><td class="mono">prompt-chaining</td></tr>
+          <tr><td class="mono">context-engineering</td></tr>
+          <tr><td class="mono">chain-of-thought</td></tr>
+          <tr><td class="mono">multi-agent</td></tr>
+          <tr><td class="mono">react-agent</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-h" style="background:#10162f"><span style="font-weight:900">Wiki 绑定（3 · 全部已存在）</span></div>
+    <div style="padding:0 0 16px">
+      <table>
+        <thead><tr><th>Lesson</th><th>Wiki Slug</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>L01 AI 基础</td><td class="mono">prompt-engineering</td><td>Prompt Engineering 实战指南（Static Wiki）</td></tr>
+          <tr><td>L02 装机 Quest</td><td class="mono">claude-code-guide</td><td>Claude Code 入门到实战（Static Wiki）</td></tr>
+          <tr><td>L03 常用资源</td><td class="mono">n8n-workflow-automation</td><td>AI Agent 工作流自动化实战（Dynamic Wiki）</td></tr>
+        </tbody>
+      </table>
+      <p style="padding:12px 0 0;color:#888;font-size:12px">⚠️ Static Wiki 的 slug 在 sync 时可能需要改成嵌套路径（如 <code>prompt-engineering/chapters/01-what-is-prompt</code>）。Sync 报错就查 <code>jr-academy-web-zh/src/config/staticWikis/jrWiki.ts</code>。</p>
+    </div>
+  </div>
+
+  <!-- Program 定制指南 -->
+  <div id="program"></div>
+  <div class="section-title">🏙️ Program 定制指南（新开一期 / 一个城市时用）</div>
+  <div class="box">
+    <div class="box-h" style="background:#E84142"><span style="font-weight:900">每期 Program 需要自定义的东西</span></div>
+    <div style="padding:16px 24px">
+      <p style="margin-bottom:14px">Training 大纲（本 outline.json）是全球统一模板。每次新开一期 Program，按下面 3 个维度定制：</p>
+
+      <table>
+        <thead><tr><th>维度</th><th>定制方式</th><th>示例</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>L04 Live Demo 场景</strong></td>
+            <td>老师按本期学员行业准备 Demo 素材</td>
+            <td>房地产专场 → 生成项目 Brochure<br>保险专场 → 客户沟通自动化<br>销售专场 → CRM 跟进总结</td>
+          </tr>
+          <tr>
+            <td><strong>L05 / L07 Workshop 练习素材</strong></td>
+            <td>跟 L04 Demo 行业匹配</td>
+            <td>房产专场 L07 让学员用自己的客户邮件；律师专场用合同条款</td>
+          </tr>
+          <tr>
+            <td><strong>Tutor 配比</strong></td>
+            <td>按学员数配 Tutor（建议 1:5 到 1:8）</td>
+            <td>20 人班配 3 个 Tutor 就够</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:20px 0 10px;font-family:'Bricolage Grotesque',sans-serif">本期行业 → 钩子文案对照表</h4>
+      <table>
+        <thead><tr><th>行业</th><th>钩子文案（抄到报名页用）</th></tr></thead>
+        <tbody>
+          <tr><td>🏠 房地产</td><td>房产项目材料不用再熬夜做 — 4 小时让 OpenClaw 接管你每天 3 小时的资料工作</td></tr>
+          <tr><td>📧 邮件自动化</td><td>每天 20 封客户邮件，OpenClaw 1 小时搞定，你省下 2 小时见客户</td></tr>
+          <tr><td>📊 销售</td><td>销售不是用来写文档的 — 让 AI 做会议纪要、跟进邮件、CRM 更新</td></tr>
+          <tr><td>💼 律师 / 会计</td><td>合规敏感？OpenClaw 本地跑，数据不离开你的电脑 — 4 小时落地合规 AI 工作流</td></tr>
+          <tr><td>📱 内容生产</td><td>一个主题 → 小红书 + 公众号 + LinkedIn 三平台文案，OpenClaw 一次跑完</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Admin 待填清单 -->
+  <div id="admin"></div>
+  <div class="section-title">📋 Admin CMS 待填字段清单（首期 Program 开课前必做）</div>
+  <div class="box">
+    <div class="box-h" style="background:#dc2626"><span style="font-weight:900">⚠️ Sync 到 production 之后 必须去 Admin CMS 补完的字段</span></div>
+    <div style="padding:16px 24px">
+      <p style="margin-bottom:12px">以下字段 outline.json 同步不过去，必须在 <code>jr-academy-admin</code> 后台的 Training / Program 管理页手填：</p>
+      <table>
+        <thead><tr><th>字段</th><th>位置</th><th>状态</th></tr></thead>
+        <tbody>
+          <tr><td><strong>teachers[]</strong>（讲师）</td><td>Program &gt; 师资</td><td><span class="status-manual">必填</span></td></tr>
+          <tr><td><strong>city</strong>（开课城市）</td><td>Program &gt; 师资</td><td><span class="status-manual">必填 · 线下课选具体城市不是 Online</span></td></tr>
+          <tr><td><strong>firstLessonDate</strong> + <strong>firstLessonDuration</strong></td><td>Program &gt; 日期</td><td><span class="status-manual">必填 · 4h 固定</span></td></tr>
+          <tr><td><strong>maxCapacity</strong>（容量）</td><td>Program &gt; 学员容量</td><td><span class="status-todo">建议 20-30 人</span></td></tr>
+          <tr><td><strong>enrollURL</strong>（外部报名链接）</td><td>Program &gt; 第三方集成</td><td><span class="status-todo">建议用活动行 / Eventbrite</span></td></tr>
+          <tr><td><strong>thumbnail</strong>（封面图）</td><td>Program &gt; 课程材料</td><td><span class="status-todo">用 poster.html 导出 PNG</span></td></tr>
+          <tr><td><strong>classGroupQRCode</strong>（班级群二维码）</td><td>Program &gt; 学员容量</td><td><span class="status-todo">OpenClaw 使用者群</span></td></tr>
+          <tr><td><strong>owner</strong>（班主任）</td><td>Program &gt; 师资</td><td><span class="status-todo">配一个对接人</span></td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:20px 0 10px;font-family:'Bricolage Grotesque',sans-serif">可 Sync 但当前 outline.json 还没填的 Program 字段</h4>
+      <ul class="checklist" style="font-size:13px">
+        <li>☐ <code>program.tuition</code> — 原价（待定）</li>
+        <li>☐ <code>program.promoTuition</code> — 早鸟价（待定）</li>
+        <li>☐ <code>program.commenceCourseDate</code> — 开课日期</li>
+        <li>☐ <code>program.completeDate</code> — 结课日期（单次课，和开课同日）</li>
+        <li>☐ <code>program.earlyBirdDueDate</code> — 早鸟截止</li>
+      </ul>
+      <p style="margin-top:12px;color:#9a3412;font-size:12px">填完这些再跑 <code>/bootcamp-sync</code>，否则 Program 会同步成空壳。</p>
+    </div>
+  </div>
+
+  <!-- 老师分工 -->
+  <div id="teacher"></div>
+  <div class="section-title">👨‍🏫 老师 + Tutor 分工</div>
+  <div class="box">
+    <div class="box-h" style="background:#6366f1"><span style="font-weight:900">Role &amp; Responsibility</span></div>
+    <div style="padding:0 0 16px">
+      <table>
+        <thead><tr><th>时段</th><th>模块</th><th>主讲 / 主控</th><th>Tutor 动作</th></tr></thead>
+        <tbody>
+          <tr><td>00:00-00:30</td><td>L01 AI 基础认知</td><td>主讲老师</td><td>后台观察 · 准备 L02 装机</td></tr>
+          <tr><td>00:30-00:40</td><td>L02 老师讲 10 min</td><td>主讲老师</td><td>分发共享 LLM Key · 准备打开 Quest 页面</td></tr>
+          <tr><td>00:40-01:00</td><td>L02 Quest 装机</td><td>AI 小花（Quest）</td><td><strong>散开到教室各角落 · 监控学员进度 · AI 搞不定立刻接手</strong></td></tr>
+          <tr><td>01:00-01:30</td><td>L03 常用资源</td><td>主讲老师</td><td>补装机没装好的少数学员</td></tr>
+          <tr><td>01:30-02:00</td><td>L04 Live Demo</td><td>主讲老师</td><td>帮忙切换大屏 / 准备 Demo 素材</td></tr>
+          <tr><td>02:00-02:30</td><td>L05 Workshop 基础</td><td>主讲老师答疑</td><td><strong>1:5-1:8 陪练 · 每个学员跟到产出</strong></td></tr>
+          <tr><td>02:30-03:00</td><td>L06 Networking</td><td>主讲老师串场</td><td>引导话题 · 记录学员行业 insight</td></tr>
+          <tr><td>03:00-04:00</td><td>L07 Workshop 进阶</td><td>主讲老师巡场</td><td><strong>1:5-1:8 陪练 · 帮学员调风格 / 调 Prompt</strong></td></tr>
+          <tr><td>04:00+</td><td>收尾 / 加微信群</td><td>主讲老师</td><td>收集反馈 · 加入 OpenClaw 使用者群</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tutor Playbook -->
+  <div id="tutor"></div>
+  <div class="section-title">🛟 Tutor 陪跑 Playbook（Tutor 必读）</div>
+  <div class="box">
+    <div class="box-h" style="background:#10b981"><span style="font-weight:900">装机环节（L02）最常见 5 个坑</span></div>
+    <div style="padding:16px 24px;font-size:13px;line-height:1.7">
+      <ol style="padding-left:22px">
+        <li><strong>Windows 学员没装 WSL2</strong> — 最常见，课前预习没做完。现场重装需要 15+ 分钟，建议让这类学员现在开始装，同时让 AI 小花 Quest 跳过 L02 前半段，他追上为止。</li>
+        <li><strong>Node.js 版本 &lt; 22</strong> — 报错是 <code>ERR_MODULE_NOT_FOUND</code>，看不出是版本问题。直接跑 <code>nvm install 22 &amp;&amp; nvm use 22</code>。没装 nvm 的先 <code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash</code>。</li>
+        <li><strong>PATH 没刷新</strong> — 装完 <code>openclaw --version</code> 提示 command not found。让学员重开终端或 <code>source ~/.zshrc</code>。</li>
+        <li><strong>API Key 填错</strong> — 最常见是复制时带了换行 / 空格。让学员重新复制 + 确认没换行。</li>
+        <li><strong>Rate limit</strong> — 如果多个学员同时用 JR 共享 Key 会触发。改用个人 Key 或轮流测试。</li>
+      </ol>
+
+      <h4 style="margin:20px 0 10px;font-family:'Bricolage Grotesque',sans-serif">🚨 什么时候必须从 AI 小花那里接手</h4>
+      <ul style="padding-left:22px">
+        <li>学员同一步卡了超过 5 分钟没进展</li>
+        <li>学员在 Windows 原生 PowerShell 装（不是 WSL2）</li>
+        <li>学员尝试用 Bun（WhatsApp/Telegram 会出 bug）</li>
+        <li>学员情绪挫败 / 焦虑 — 这不是 AI 擅长的，人类共情接管</li>
+      </ul>
+
+      <h4 style="margin:20px 0 10px;font-family:'Bricolage Grotesque',sans-serif">📣 每个 Tutor 课前必做</h4>
+      <ul class="checklist" style="font-size:13px">
+        <li>☐ 课前 1 天在自己电脑上装一遍 OpenClaw（Mac + WSL2 各走一遍）</li>
+        <li>☐ 提前准备好 nvm / pnpm 安装命令可以复制</li>
+        <li>☐ 准备 2-3 个 JR 共享测试 Key（OpenAI + Claude + Gemini 各一）</li>
+        <li>☐ 熟悉 Quest 6 步的每一步（见下面 L02 Quest 配置区）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- L02 Quest 配置 -->
+  <div id="quest"></div>
+  <div class="section-title">🌸 L02 Quest 完整配置（给 AI 小花）</div>
+  <div class="box">
+    <div class="box-h" style="background:#FF914D"><span style="font-weight:900">Quest 6 步 stepSkeleton</span></div>
+    <div style="padding:16px 24px;font-size:13px;line-height:1.7">
+      <ol style="padding-left:22px">
+        <li><strong>确认操作系统和终端</strong> — verify <code>uname -a</code> 输出。Win 必须在 WSL2 bash 里。</li>
+        <li><strong>检查 Node.js ≥ 22</strong> — verify <code>node --version</code>。&lt; 22 引导 nvm 升级。</li>
+        <li><strong>全局安装 OpenClaw</strong> — <code>pnpm add -g openclaw@latest</code>（禁用 Bun）。</li>
+        <li><strong>验证安装</strong> — verify <code>openclaw --version</code>。</li>
+        <li><strong>配置 LLM Provider</strong> — self-confirm （学员确认 key 填好）。</li>
+        <li><strong>发第一条指令验收</strong> — verify AI 自然语言回复。</li>
+      </ol>
+      <p style="margin-top:14px;padding:12px;background:#fef2f2;border-left:4px solid #dc2626">完整 <code>context</code> / <code>systemStylePrompt</code> / <code>customGuardrails</code> 在 <code>public/outline.json</code> → L02 → <code>quest</code> 字段里。</p>
+    </div>
+  </div>
+
+  <!-- Marketing -->
+  <div id="marketing"></div>
+  <div class="section-title">📣 Marketing 素材快速入口</div>
+  <div class="box">
+    <div class="box-h" style="background:#dc2626"><span style="font-weight:900">完整 Marketing 文档</span></div>
+    <div style="padding:16px 24px;font-size:13px;line-height:1.7">
+      <ul style="padding-left:22px">
+        <li><strong>完整 Marketing 文档</strong>：<code>docs/prd/OPENCLAW_WORKSHOP_MARKETING.md</code>（5 类用户画像 · 小红书/LinkedIn/微信/TikTok 文案 · 行业对照 · 10 条 Sales FAQ）</li>
+        <li><strong>主海报</strong>：<a href="./poster.html">poster.html</a>（800×1066 · 下载 PNG 按钮）</li>
+        <li><strong>小红书素材集（28 张）</strong>：<a href="./xhs-posters/">xhs-posters/</a> · 已在聚光投流合规尺寸 1242×1660</li>
+        <li><strong>海报中心注册</strong>：<code>curriculum/posters.html</code>（主海报 + XHS 素材集 均已注册）</li>
+        <li><strong>课程详情页</strong>（学员看）：<a href="./curriculum.html">curriculum.html</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 技术参考 -->
+  <div id="tech"></div>
+  <div class="section-title">🔧 技术参考</div>
+  <div class="box">
+    <div class="box-h" style="background:#10162f"><span style="font-weight:900">关键路径</span></div>
+    <div style="padding:16px 24px;font-size:13px;line-height:1.7">
+      <table>
+        <thead><tr><th>文件 / 路径</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">curriculum/openclaw-workshop/public/outline.json</td><td>课程唯一数据源（Sync 读这个）</td></tr>
+          <tr><td class="mono">curriculum/openclaw-workshop/public/curriculum.html</td><td>学员端课程大纲</td></tr>
+          <tr><td class="mono">curriculum/openclaw-workshop/public/internal.html</td><td>本页 · 团队内部资料</td></tr>
+          <tr><td class="mono">curriculum/openclaw-workshop/public/poster.html</td><td>主海报</td></tr>
+          <tr><td class="mono">curriculum/openclaw-workshop/public/styles.css</td><td>共享样式</td></tr>
+          <tr><td class="mono">docs/prd/OPENCLAW_WORKSHOP_MARKETING.md</td><td>完整营销素材</td></tr>
+          <tr><td class="mono">jr-academy-web-zh/src/content/learn/openclaw/</td><td>16 章 OpenClaw 学习方向（md 源文件）</td></tr>
+          <tr><td class="mono">jr-academy-web-zh/src/config/learn/directions/openclaw.config.ts</td><td>OpenClaw 学习方向配置</td></tr>
+          <tr><td class="mono">jr-academy/src/modules/quest/</td><td>Quest 后端模块（AI 小花）</td></tr>
+          <tr><td class="mono">tools/skills-data-manager/</td><td>Sync 操作台（localhost:5188）</td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:20px 0 10px;font-family:'Bricolage Grotesque',sans-serif">常用命令</h4>
+      <ul style="padding-left:22px">
+        <li><strong>本地预览</strong>：<code>cd curriculum/openclaw-workshop/public &amp;&amp; python3 -m http.server 8877</code></li>
+        <li><strong>同步到 production</strong>：<code>/bootcamp-sync</code>（Claude Code 里运行）</li>
+        <li><strong>做小红书配图</strong>：<code>/xhs-poster</code></li>
+        <li><strong>审查完整性</strong>：<code>/curriculum-review openclaw-workshop</code></li>
+      </ul>
+
+      <h4 style="margin:20px 0 10px;font-family:'Bricolage Grotesque',sans-serif">OpenClaw 外部资源（学员也能看）</h4>
+      <ul style="padding-left:22px">
+        <li><a href="https://openclaw.ai/" target="_blank">openclaw.ai</a> — 官方</li>
+        <li><a href="https://github.com/openclaw/openclaw" target="_blank">github.com/openclaw/openclaw</a> — 源码</li>
+        <li><a href="https://docs.openclaw.ai" target="_blank">docs.openclaw.ai</a> — 官方文档</li>
+        <li><a href="https://github.com/SamurAIGPT/awesome-openclaw" target="_blank">awesome-openclaw</a> — 社区资源</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  © JIANGREN ACADEMY · OpenClaw Workshop · INTERNAL USE ONLY · 不对学员公开
+</div>
+
+</body>
+</html>
