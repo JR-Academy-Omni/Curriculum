@@ -1,390 +1,398 @@
-/* 右侧文案面板 — 小红书 / 朋友圈 / 社群 三 Tab 切换 */
+/* 右侧文案面板 — 小红书 / 朋友圈 / 社群 三 Tab 切换
+ * OpenClaw 4 小时沉浸式工作坊（核心场景：PPT + 官网 + A4 Brochure 批量出稿）
+ */
 (function () {
   const XHS_COPY = {
     p1: {
-      title: 'AI 都这么卷了 还在只会调 API 拼 Prompt？',
-      body: `不知道姐妹们有没有感觉，今年 AI 工程师的岗位要求已经完全不是去年那一套了。\n还停留在写 Prompt 和调 ChatGPT 的话，很多 JD 已经直接接不上。\n\n花了挺久时间扒了 15 份一线公司 2026 的 JD，发现现在真正在招的是：能搭生产级 RAG、会用 Agent SDK、看得懂 MCP 的人。\n\n🌿 这 12 周课刚好把我从"只会调模型"带到能做 Multi-Agent。`,
-      tags: '#AI工程师 #AI学习 #程序员 #Agent开发 #RAG #小白学AI #技术成长',
+      title: '🦞 装不上"龙虾"？线下 1 老师 + 2 Tutor 保你装上',
+      body: `OpenClaw（大家叫它"龙虾"🦞）是现在最火的本地 AI Agent — 问题是 90% 的人卡在装机就放弃了。\n\n自学时最容易踩的坑：Windows 没装 WSL2 / Node 版本不对 / 用错 Bun · 报错看不懂。\n\n这次线下工作坊的配置直接拉满：\n👨‍🏫 1 位主讲老师\n👩‍💻 2 位 Tutor 一对一陪装\n🌸 AI 小花工具辅助\n\n4 小时走出教室 · 龙虾在你电脑上跑 · 还能替你出 PPT / Brochure / 官网 🏷️`,
+      tags: '#OpenClaw #龙虾 #AI装机 #AIAgent #AI工作坊 #线下课 #AI小白',
       wechat: [
-        '2026 的 AI Engineer 岗位已经不卷 Prompt 了 — 卷 Agent / MCP / Eval。新课上线，12 周把基础补回来。',
-        '扒了 15 份一线公司 JD，写 Prompt 已经不够看了。新一期 AI Engineer Bootcamp 来了，主页见 👀',
-        '还在只会调 API？看看 2026 的 JD 都在要什么。课程大纲主页 🌿'
+        '"龙虾"（OpenClaw）装不上？线下 1 老师 + 2 Tutor 陪你装 🦞',
+        '90% 的人卡在装机放弃 — 4 小时线下帮你跨过这一关 💪',
+        '装上龙虾之后能出 PPT / Brochure / 官网 — 但前提是得装得上啊 😅'
       ],
       community: [
-        '【第五期 AI Engineer Bootcamp 开放咨询】\n12 周从"只会调 API"到"能做 Multi-Agent"\n183 节课 + 68 个 Lab + 7 个简历项目\n主页查看课程大纲 🌿',
-        '姐妹们，2026 的 AI Engineer 岗位要求大换代了：Agent SDK、MCP、GraphRAG、Eval 全全是入门线。想系统补的看看新一期课 👀'
+        '【OpenClaw（龙虾）4 小时线下工作坊】\n🦞 核心卖点：1 老师 + 2 Tutor 保证你装上\n📑 装好之后：龙虾帮你出 PPT / Brochure / 官网 Landing\n\n自学装机放弃率 90% · 线下来 4h 一次搞定',
+        '同事朋友想装 OpenClaw（龙虾）自学一周没装上的 · 直接推荐这个工作坊。\n现场 1 位主讲老师 + 2 位 Tutor 一对一陪装 · 装完用它出 Brochure / Deck / 官网 🏷️'
       ]
     },
     p1b: {
-      title: '会用 ChatGPT 不等于你会做 AI Engineer',
-      body: `别再被"会用 AI"给骗了！\n\n2026 年的 AI 岗位，要的不是会写几句 Prompt 的人，而是能把 AI 真正做成生产系统的人。\n\n❌ 很多人停在：会写 Prompt、会用聊天框、听过热词\n✅ 岗位真正要：RAG 优化、Agent 编排、MCP 协议、Eval 评估\n\n这 12 周课带你跨过这个鸿沟，从"会用"到"会做"。`,
-      tags: '#AI工程师 #程序员 #AI转行 #技术成长 #AI学习 #RAG #Agent',
+      title: '自学装龙虾卡一周｜线下课 30 分钟装上',
+      body: `朋友圈看到 OpenClaw（龙虾）能出 PPT / Brochure / 官网 很心动 — 自学一周还没装上的举手 🙋\n\n自学最常卡住的 3 个坑：\n❌ Windows 没装 WSL2 · 原生 PowerShell 跑不了\n❌ Node.js 版本低于 22 · 报错信息里根本看不出是版本问题\n❌ 手滑用了 Bun · WhatsApp/Telegram 连不上\n\n线下工作坊：1 位老师 + 2 位 Tutor · 进场前你装不上 / 出门前龙虾在跑 🦞\n\n装好之后 L7 用你自己素材出一套 Brochure / PPT / Landing · 4h 不虚此行。`,
+      tags: '#OpenClaw #龙虾 #AI装机 #WSL2 #AI工作坊 #线下课',
       wechat: [
-        '会用 ChatGPT 不等于会做 AI Engineer。2026 岗位要的是系统构建能力。12 周带你跨过鸿沟 🌱',
-        '别再卷 Prompt 了，今年卷的是 Agent 和 Eval。新一期 AI Engineer Bootcamp 来了 👀'
+        '自学装龙虾一周没成功的朋友 — 线下 30 分钟 Tutor 帮你装上 🦞',
+        'Windows WSL2 / Node 22 / 别用 Bun — 这 3 个坑现场 Tutor 带你避 ✅',
+        '装上龙虾才是起点 · 装不上就啥都做不了 🥲'
       ],
       community: [
-        '会用 ChatGPT 不等于会做 AI Engineer。\n岗位真正要的是能把 AI 做成系统的人。新一期 12 周课帮你补齐 RAG/Agent/MCP/Eval。主页咨询 🌿'
+        '【装龙虾最常卡的 3 点】\n❌ Win 没装 WSL2\n❌ Node < 22 报错看不懂\n❌ 手滑用 Bun · WhatsApp 连不上\n\n线下 1 老师 + 2 Tutor · 装机全程陪 🛟',
+        '做销售 / 房产的想装龙虾出 Brochure 的朋友：\n自学这周搞不定？报这期工作坊吧 — 进门装不上 · 出门龙虾跑 · 还带你用它出一套物料。'
       ]
     },
     p1c: {
-      title: '从写 CRUD 到能交付 AI System',
-      body: `2026 年，软件工程师的护城河不再是写增删改查。\n而是能否交付一个具备推理、记忆、和工具执行能力的 AI System。\n\n从只会调 API 拼 Prompt，到能独立搭起生产级 Multi-Agent 架构。\n这 12 周，帮你完成这个关键的职业跳跃 🚀`,
-      tags: '#程序员 #AI工程师 #技术升级 #CRUD #AISystem #Agent #RAG #职业成长',
+      title: '从"手动 3 天一套 Deck" 到"AI 30 分钟出稿"',
+      body: `4 小时前：打开 Keynote · 找模板 · 抠素材 · 改配色 · 改字号 · 3 天做完客户不满意再改\n\n4 小时后：OpenClaw 装在电脑上 · 把卖点丢给它 · "出一份 12 页产品 Deck 配品牌色" · 30 分钟成品\n\n中间只差这一个下午的线下工作坊。\n\n不是 PPT 技术问题 · 是该不该让 AI 出的问题 🚀`,
+      tags: '#AI出稿 #PPT模板 #销售Deck #OpenClaw #AI效率',
       wechat: [
-        '从写 CRUD 到交付 AI System。2026 程序员的护城河在这里 🚀',
-        '调 API 拼 Prompt 只是开始，Multi-Agent 才是未来。12 周帮你完成职业跳跃。'
+        '3 天做 Deck → 30 分钟出稿 · 差的只是一个下午的线下工作坊 ⚡',
+        'Keynote 抠半天不如把素材丢给 Agent 让它出稿 🏷️',
+        '做 Deck 不是 PPT 水平问题 — 是该不该给 AI 做的问题 🚀'
       ],
       community: [
-        '【职业升级】从写 CRUD 到能交付 AI System。\n12 周带你从调 API 升级到做生产级 Multi-Agent 架构。大纲主页见 🚀'
+        '【Before / After】\n3 天抠模板 → 30 分钟 AI 出稿\n改 3 轮 → 让 Agent 按品牌色再跑一遍\n找设计师 300 刀 → 本地跑 API $几刀\n\n4 小时线下学一次 · 无缝衔接 🚀',
+        '群里做市场 / 销售的朋友 — 做 Deck 是不是最吃时间的活？\nOpenClaw 工作坊的核心就是解决这个。4 小时回去 Deck / Brochure / 官网全能 AI 出。'
       ]
     },
     p1d: {
-      title: '不会 RAG / Agent 很多 AI 岗位你连面试都接不上',
-      body: `现在的 AI 面试已经不考你 Prompt 怎么写了。\n\n面试官上来就是：\n"GraphRAG 的实体抽取怎么做优化？"\n"Multi-Agent 协作的循环依赖怎么解？"\n"MCP 和 A2A 协议在你的场景里怎么选？"\n\n12 周，把这些热词变成你真的做过的项目能力。别等面试挂了才来补 🥲`,
-      tags: '#AI面试 #AI工程师 #求职 #GraphRAG #Agent #技术面试 #程序员日常',
+      title: '房产 · 销售 · 市场 · 教培 · 个人品牌都在用',
+      body: `这个工作坊最特别的一点：完全不用写代码。\n\n来的都是"天天出物料的人"：\n🏠 房产经纪：户型 + 卖点 → 项目 Brochure · A4 双面\n💼 B2B 销售：产品参数 → 12 页 Pitch Deck\n📣 市场 / 新媒体：活动文案 → 头图 + Landing Page\n🎓 教培 / 讲师：课程大纲 → 招生页 + 介绍 PPT\n✍️ 个人品牌：个人故事 → 个人介绍页 + 自媒体素材\n🛠️ 小 B 创业者：产品说明 → 官网首屏 · 可直接上线\n\n用过 ChatGPT 就能来 · 素材扔进去出稿 🏷️`,
+      tags: '#房产 #销售 #市场 #教培 #个人品牌 #OpenClaw #AI做物料',
       wechat: [
-        '不会 RAG / Agent 很多岗位连面试都接不上。12 周把热词变能力 🎯',
-        '现在的 AI 面试都在考什么？GraphRAG / Multi-Agent / Eval 全是重点。'
+        '房产 · 销售 · 市场 · 教培 · 个人品牌 — 出物料的人都该来一次 🏷️',
+        '不用写代码 · 用过 ChatGPT 就够 · 素材进去出稿出来 ⚡',
+        '6 类人群 · 每类都有对应现场 Live Demo 🎯'
       ],
       community: [
-        '【面试避坑】别等面试挂了才发现 RAG/Agent 没跑通。\n12 周带你把 GraphRAG、Multi-Agent、MCP 变成简历里的真实项目。主页咨询 🎯'
+        '【谁最适合这期工作坊】\n🏠 房产经纪（Brochure / 户型 PPT）\n💼 B2B 销售（Pitch Deck）\n📣 市场新媒体（KV / Landing）\n🎓 教培讲师（招生页 / 课程 PPT）\n✍️ 个人品牌（个人页 / 素材）\n🛠️ 小 B 创业者（官网首屏）',
+        '这期学员画像：非技术向 · 天天出宣传物料。\n不写代码 · 用过 ChatGPT 就能跟上。Live Demo 按学员行业定制 · 报名问一下本期是什么方向 📍'
       ]
     },
     p2: {
-      title: '身边的 AI 工程师都在做这些事｜差距真的拉开了',
-      body: `年初还在跟同事拼 Prompt 的时候，没想到半年不到差距会拉这么大。\n\n❌ 我还在：字符串拼 Prompt、复制 ChatGPT 答案、RAG 等于"搜索"\n✅ 他们已经：GraphRAG、Claude Agent SDK、MCP Server、QLoRA 微调\n\n这不是"会不会"的问题，是方向完全不一样。\n后来补了一下才发现，2026 的岗位基线已经整体右移了 🥲`,
-      tags: '#AI工程师 #技术选型 #AI学习路线 #Agent #RAG #程序员日常 #转行AI',
+      title: '同行已经在用 AI 出 PPT 和 Brochure｜你还在找模板',
+      body: `说个刺耳但真实的 — 上周帮同事看新房项目 Brochure · 他说"OpenClaw 出的初稿 · 我就调了配色"。\n\n❌ 我还在：打开 Canva 翻模板 · 抠素材 · 对着品牌色一点点调\n❌ 我还在：找设计师 · 等三天 · 回来改 · 再等一天\n\n✅ 他已经：素材丢给 Agent · 30 分钟 A4 双面 Brochure 出稿\n✅ 他已经：同一份内容 Agent 自动生成 PPT + Landing Page 三件套\n\n差距不在设计能力 — 在有没有把 AI 当工人用起来。`,
+      tags: '#AI做宣传 #AI做PPT #AIBrochure #效率差距 #OpenClaw',
       wechat: [
-        '2026 的 AI Engineer 岗位基线右移了：GraphRAG / Agent SDK / MCP / QLoRA 成了入门要求 🥲',
-        '同行已经在搭 GraphRAG + Agent SDK 了，你还在拼 Prompt？差距不是能力，是方向。',
-        '一张图看懂 AI 工程师这半年的代际差距 👇'
+        '同事用 OpenClaw 出项目 Brochure 30 分钟搞定 · 我还在 Canva 翻模板 🥲',
+        '一份素材 Agent 自动出 PPT + Brochure + Landing 三件套 — 同行已经在用 🏷️',
+        '差距不是设计能力 · 是有没有把 AI 当工人用起来 ⚡'
       ],
       community: [
-        '【差距对比】\n❌ 还在：拼 Prompt、复制答案、RAG=搜索\n✅ 他们：GraphRAG、Agent SDK、MCP Server、QLoRA\n\n方向不对，努力白费。新一期课程大纲看主页。',
-        '同事群讨论一下：今年你们组做到哪一步了？\n我们这边 GraphRAG + Multi-Agent 已经上生产了 💬'
+        '【真实差距】\n❌ 你：Canva 翻模板 · 抠素材 · 找设计师排期\n✅ 他：素材扔给 OpenClaw · 一份内容出 PPT + Brochure + 官网\n\n不是设计问题 · 是该不该让 AI 做的问题 🏷️',
+        '群里做房产 / 销售的可以问问自己：上个月出宣传物料花了多少时间？\n同行正在用 OpenClaw 把这事压到 30 分钟 · 工作坊就是学这个。'
       ]
     },
     p3: {
-      title: '同事群里都在聊 GraphRAG 和 Eval 这是什么…',
-      body: `真的是一个普通的周二下午，平台组突然在群里聊 GraphRAG 怎么调、Eval 怎么做回归。\n\n作为后端 small potato 的我：... 什么是 Eval？\n隔壁阿哲："兄弟你得补了，现在 AI Engineer JD 基本都考这个。"\n\n那一刻突然意识到，技术栈不是变了，是彻底换代了。\n发小红书记录一下补课过程 🌱`,
-      tags: '#AI学习日记 #程序员成长 #技术焦虑 #GraphRAG #Eval #AI工程师',
+      title: '同事群晒 OpenClaw 出的 Brochure｜我没跟上',
+      body: `周三下午 · 销售群突然变成炫图大会：\n\n同事 A："OpenClaw 帮我出的户型 Brochure · 客户说专业"\n同事 B："新产品 Pitch Deck 让 Agent 从一篇文章直接扩成 15 页"\n同事 C："我们公司官网首屏 AI 出的 · 老板以为找了设计师"\n\n作为群里唯一还在 Canva 拖图的我 · 突然觉得自己落后了一个时代 😅\n\n老 A："下周去 OpenClaw 线下工作坊 · 和我一起？"`,
+      tags: '#AI做宣传 #OpenClaw #AI同行 #销售素材 #AI工具',
       wechat: [
-        '同事群突然开始聊 GraphRAG 和 Eval — 你跟得上吗？🌱',
-        '"你得补一下了兄弟" — 这句话最近听到好几次了 😅',
-        '下午茶时间的 AI 焦虑时刻：Eval 是什么 😂'
+        '销售群炫图大会 — 大家都在晒 OpenClaw 出的 Brochure / Deck / 官网 📣',
+        '"OpenClaw 30 分钟出的初稿老板以为找了设计师" — 这种话最近听烦了 😅',
+        '同事都会用 Agent 出宣传物料了 · 我还在 Canva 拖图 🥲'
       ],
       community: [
-        '【自测一下】\n同事群聊到下面这些你能接上话吗？\n→ GraphRAG 怎么调\n→ Eval 怎么做回归\n→ Agent SDK 三家对比\n接不上的话，新一期课刚好补 🌱',
-        '说个真事：今天后端组群里聊 GraphRAG，全组只有 1 个人能接话。\n2026 的 AI 技术栈真的换代了 💬'
+        '【对号入座】\n群里这些你能接上吗？\n→ "Agent 出的 Brochure 客户说专业"\n→ "一篇文章扩成 15 页 Deck"\n→ "官网首屏 AI 出老板以为找了设计"\n\n接不上 · 4 小时工作坊补一次 🌿',
+        '真实现象：做销售 / 房产的同行现在用 OpenClaw 出物料越来越多。\n工作坊的价值就是让你在这波里不掉队。'
       ]
     },
     p4: {
-      title: '毕业那天 你会"真的会"这四件事',
-      body: `报课之前最怕的就是：学完一堆 buzzword，真让做还是不会。\n\n这次 12 周下来真的落地的四件事：\n1️⃣ 搭生产级 RAG — 向量库、GraphRAG、混合检索、Eval 全链路\n2️⃣ 吃透 3 大 Agent SDK — OpenAI / Claude / Google 亲手做对比\n3️⃣ Multi-Agent + MCP 编排 — LangGraph、A2A、自建 Harness\n4️⃣ Fine-Tune + AI Eval — QLoRA 跑通、Eval 可量化迭代\n\n每一项都有配套项目可以直接写进简历 📌`,
-      tags: '#AI工程师 #AI学习 #Agent #RAG #FineTuning #技能提升 #程序员',
+      title: '4 小时走出来｜你会"真的会"这四件事',
+      body: `报课前最怕的：学完一堆概念 · 回家还是不会出稿。\n\n这 4 小时真正落地的四件事：\n1️⃣ 会用 OpenClaw 出 PPT — 卖点丢进去出 12-20 页 Deck 初稿\n2️⃣ 会用 OpenClaw 出 A4 Brochure — 支持打印尺寸 · 双面排版\n3️⃣ 会用 OpenClaw 出 Landing Page — HTML 直接能上线\n4️⃣ 会让 Agent 用"你的风格" — 品牌色 · 文案语气 · 可复用\n\n走时电脑里留下一份可复用的 Agent 配置 · 下次出稿只要 30 分钟 🏷️`,
+      tags: '#AI出稿 #OpenClaw #PPT #Brochure #Landing #AI技能',
       wechat: [
-        '12 周 AI Engineer Bootcamp 的毕业交付：生产级 RAG + 3 大 Agent SDK + Multi-Agent + Fine-Tune。每项都有项目。',
-        '学完能真的做四件事：生产级 RAG / 三大 Agent SDK / Multi-Agent+MCP / QLoRA 微调 📌',
-        '别再学 buzzword 了，12 周把这 4 件事跑通一遍 👇'
+        '4 小时交付：PPT + A4 Brochure + Landing + 可复用风格配置 🏷️',
+        '不是学概念 — 是学完回去每次出稿都能省 2 天 ⚡',
+        '4 件事每一件单独都值一个下午 💪'
       ],
       community: [
-        '【课程毕业交付】\n✅ 搭生产级 RAG（含 GraphRAG + Eval）\n✅ 吃透 3 大 Agent SDK 对比\n✅ Multi-Agent + MCP + Harness\n✅ QLoRA 微调 + Eval Pipeline\n每项都有项目写进简历 📌',
-        '报名前最担心"学完 buzzword 还是不会做"。\n新一期 4 大核心能力全部落地到项目，7 个项目都能写简历 💪'
+        '【工作坊 4 大交付】\n✅ OpenClaw 出 PPT Deck\n✅ OpenClaw 出 A4 Brochure\n✅ OpenClaw 出 Landing Page HTML\n✅ Agent 调成你的品牌风格\n\n每次出稿从 3 天压到 30 分钟 🏷️',
+        '最喜欢的是"风格可复用"这一条：\nAgent 调好一次 · 下次同样风格的 Brochure / Deck 直接出稿 · 不用从零排版。'
       ]
     },
     p5: {
-      title: '12 周 10 个 Phase｜每周都有新武器',
-      body: `之前看过不少 AI 课大纲都是 4-6 个 phase 草草带过，这次第一次看到把 Agent 单独拆成 5 个 phase 的。\n\n📍 P1 Foundation → P2 Context Engineering → P3 RAG\n📍 P4 Capability → P5 Agent Core → P6 Multi-Agent\n📍 P7 Memory → P8 Harness → P9 Model Layer → P10 Eval\n\n每个 Phase 都是一个独立能力，不再是"讲一下就过"。\nMemory 和 Harness 这两个 phase 市面真的很少有课系统教。`,
-      tags: '#AI工程师 #课程大纲 #Agent架构 #RAG #学习路径 #Memory #Harness',
+      title: '4 小时｜7 模块｜每 30 分钟做一件事',
+      body: `之前去过那种"一整天讲概念"的 AI 课吗 — 这次完全不是。\n\n📍 L1（30 min）AI 认知 · 老师讲\n📍 L2（30 min）装机 · AI 小花带你装 OpenClaw\n📍 L3（30 min）Skill 地图 · 出 PPT / Brochure / 官网的现成 Skill 在哪找\n📍 L4（30 min）Live Demo · 老师现场出一套物料（按学员行业）\n📍 L5（30 min）Workshop 基础 · Tutor 陪你跟老师思路跑一遍\n📍 L6（30 min）Networking · 跨行业交换玩法\n📍 L7（60 min）Workshop 进阶 · 用你自己要出的素材练一次 🚀\n\nL5 + L7 共 90 分钟实操 · 回去无缝衔接。`,
+      tags: '#OpenClaw #4小时 #工作坊 #课程设计 #AI出稿',
       wechat: [
-        '12 周 10 个 Phase，Agent 拆成 5 个独立模块，Memory + Harness 单独讲 🔥',
-        'Foundation → Context → RAG → Capability → Agent → Multi-Agent → Memory → Harness → Model → Eval。新一期完整版。',
-        'AI Engineer 课程大纲升级，10 个 Phase 全景图看这里 📍'
+        '4 小时 7 模块 — 90 分钟实操 + 60 分钟 Demo + 30 分钟 Networking 🔥',
+        '每 30 分钟切一次节奏 — 不会"听到睡着" 💪',
+        'L7 用你自己要出的素材练 60 分钟 · 全课高光 🚀'
       ],
       community: [
-        '【10 个 Phase 全景】\nP1 Foundation · P2 Context · P3 RAG\nP4 Capability · P5 Agent · P6 Multi-Agent\nP7 Memory · P8 Harness · P9 Model · P10 Eval\n每周都有新武器 🔥',
-        '比较少见把 Agent 拆成 5 个 Phase 讲的课，Memory 和 Harness 独立成块。新一期大纲可以直接主页看 📍'
+        '【7 模块 · 4 小时】\nL1 认知 · L2 装机 · L3 Skill 地图\nL4 Demo · L5 陪练 · L6 Networking\nL7 用你自己素材 60min 🚀\n\n实操占一半时间 · 非听课型',
+        '这次课程设计特别用心：\n听课只占 90 分钟 · 实操占 90 分钟 · Networking + Demo 各 30 分钟。\n动手型工作坊 · 不是听讲座。'
       ]
     },
     p6: {
-      title: '12 周你会真实用到的主流工具｜2026 版',
-      body: `有时候比起"学什么"，更焦虑的是"工具又更新了"。\n\n这次盘了一下 12 周课里真实会动手的工具栈：\n🔧 Claude Agent SDK / OpenAI / Gemini\n🔧 LangChain / LangGraph / Pinecone\n🔧 Neo4j GraphRAG / MCP Server / A2A\n🔧 QLoRA / Unsloth / Mem0 / Guardrails AI\n\n不是点名式介绍，每一个都有对应 Lab 或项目在用 🛠️`,
-      tags: '#AI工具 #AI工程师 #LangChain #MCP #Agent #技术栈 #程序员装备',
+      title: 'OpenClaw 能接的工具｜做物料的人会爱上',
+      body: `工作坊会带你过一遍 OpenClaw 的 "接入点" — 做物料的人看了会很爽：\n\n📑 输出：pptx / pdf / html / md / docx — 直接可用的文件格式\n🎨 模板：ClawHub 上几百个 PPT / Brochure / Landing Skill 装了就用\n🧠 LLM：Claude / OpenAI / Gemini 任选 · 课上推荐 Gemini 免费\n💾 本地：素材在你电脑上跑 · 不上传客户隐私\n💬 WhatsApp / Telegram：手机发一句 "帮我出个 Brochure" Agent 就做\n⚙️ MCP：连 Notion / 素材库 / 模板文件夹\n\n这些课上都会动手过一遍 🔧`,
+      tags: '#OpenClaw #AI工具 #PPT生成 #ClawHub #MCP #AI出稿',
       wechat: [
-        '2026 AI Engineer 真实技术栈：Claude/OpenAI SDK + LangGraph + Pinecone + MCP + QLoRA。12 周课全部上手 🛠️',
-        '15+ 主流工具盘点，每一个都有对应 Lab，不是 PPT 介绍。',
-        '工具学得再多不动手还是零 — 这次每个工具都配 Lab 🔧'
+        'OpenClaw 直接输出 pptx / pdf / html · 不用再复制粘贴到 Canva 🏷️',
+        'ClawHub 上几百个 PPT / Brochure / Landing Skill · 装了就用 🧩',
+        '素材本地跑 · 客户资料不上传云端 — 房产销售特别在意这点 🔒'
       ],
       community: [
-        '【12 周真实用到的工具】\nAgent：Claude SDK / OpenAI / Gemini\nRAG：LangChain / Pinecone / Neo4j\n协议：MCP / A2A\n微调：QLoRA / Unsloth / Mem0\n每个都有 Lab 🛠️',
-        '老问题：AI 工具太多学哪个？\n这次课按"会 5 个精通 3 个"的原则整理，减少选择困难 👌'
+        '【OpenClaw 生态】\n📑 输出 pptx / pdf / html / docx\n🎨 ClawHub PPT/Brochure Skill\n🧠 Claude / OpenAI / Gemini\n💾 本地跑 · 素材不上传\n💬 WhatsApp · Telegram\n⚙️ MCP · Notion · 模板 📎',
+        '做宣传物料的朋友最关心的 2 条 OpenClaw 都有：\n① 直接输出 pptx/pdf/html（不用再从对话框里复制粘贴）\n② 本地跑 · 客户素材不上传云端 🔒'
       ]
     },
     p7: {
-      title: '才学到 Phase 5 就有人开始接项目了',
-      body: `学员群里蛮多真实反馈让我比较意外：\n\n💬"Phase 3 做完第一个 RAG，公司内部文档搜索就直接用上了"\n💬"亲手跑通 Agent SDK 那一刻突然觉得：就这？我也能做"\n💬"P3 孵化做的 Multi-Agent 项目直接写进简历，面试聊得挺开心"\n\n不是硬凹的数据，就是蛮普通的工程师日常。`,
-      tags: '#AI工程师 #学员反馈 #AI转行 #项目实战 #面试经验 #程序员成长',
+      title: '学员回去第二周都在怎么用',
+      body: `课后群里刷到的真实分享 · 截一些 · 不打广告 · 不美化：\n\n💬"上周帮老板出的新盘 Brochure 30 分钟初稿 · 客户当场拍板"\n💬"讲师朋友用 OpenClaw 把一篇公众号扩成 20 页招生 Deck"\n💬"自己的个人品牌官网首屏 AI 出的 · 朋友以为我请了设计师"\n💬"每周要出的活动 KV · 现在变成 1 个 Skill · 复用 3 个月了"\n\n不是硬凹 — 是学员第 2 周开始产生真实价值的日常 🏷️`,
+      tags: '#OpenClaw #学员反馈 #AI做宣传 #真实案例 #工作坊',
       wechat: [
-        '学员群的真实反馈：Phase 3 做完就有人把 RAG 用到公司内部文档搜索了 💪',
-        '"就这？我也能做"— 这大概是上课最想听到的一句反馈 😂',
-        '毕业 3 个月，学员写进简历的 Multi-Agent 项目真的让面试官聊到忘了时间。'
+        '学员真实反馈：30 分钟出 Brochure · 客户当场拍板 🏷️',
+        '"朋友以为我请了设计师" — 最喜欢这种反馈 😂',
+        '做物料的工具里 OpenClaw 真的挺能打 💪'
       ],
       community: [
-        '【学员反馈】\n"Phase 3 RAG 做完，公司内部搜索直接用上了"\n"跑通 Agent SDK 那刻：就这？我也能做"\n"毕业 3 个月，Multi-Agent 项目让面试官聊很久"\n💬 平常人的日常',
-        '课程最有意思的一点：学到一半就开始产生真实项目价值了。\n不用等毕业才能"用得上" 💪'
+        '【课后群摘选】\n"30min Brochure 初稿客户拍板"\n"公众号扩成 20 页招生 Deck"\n"个人品牌官网 AI 出首屏"\n"活动 KV 固化成 Skill 复用 3 月" 🏷️',
+        '课后群最有意思的是学员会互相抄作业：\n做房产的用的 Skill 被做教培的拿去改改就能用。\n跨行业 Skill 复用比课上学的还多 🌿'
       ]
     },
     p8: {
-      title: '不是只给 12 周课 是一整套求职武器库',
-      body: `看了一圈同类课，很多只给录播。\n\n这次买到手的其实是：\n📘 183 节课（直播 + 录播 + Lab + 自学）\n🧪 68 个浏览器互动 Lab\n🧩 10 个 Phase 拆到每个具体能力\n📂 7 个能放简历的实战项目\n\n+ 12 周 P3 真实企业项目\n+ AI Tutor 中英双语 24h\n+ Meta / MS / Amazon 导师 Review\n+ 校友内推群 + Demo Day`,
-      tags: '#AI工程师 #Bootcamp #转行 #AI学习 #简历项目 #求职 #程序员',
+      title: '4h · 7 模块 · 1 老师 + 2 Tutor · 3 类物料',
+      body: `这次工作坊的真实配置 — 不灌水：\n\n📘 时长 / 结构：4 小时 · 7 模块 · 2 轮实操 · 1 场 Live Demo\n👥 师资：1 位主讲老师 + 2 位现场 Tutor + AI 小花辅助\n🦞 装机成果：龙虾在你电脑上跑起来\n🏷️ 出稿成果：PPT / A4 Brochure / Landing Page 三类都摸一遍\n🎨 风格配置：Agent 记住你品牌色 + 文案语气 · 下次复用\n📚 平台资源：16 章 Learn + 18 个 Lab + 3 篇 Wiki = 37 个免费解锁\n🤝 课后支持：使用者群 3 个月持续答疑\n\n一句话 — 4h 买的是一整套 🦞`,
+      tags: '#OpenClaw #工作坊 #AI配置 #AI资源 #可复用',
       wechat: [
-        '183 节课 + 68 个互动 Lab + 7 个简历项目 + 12 周 P3 孵化，一次搞定 AI Engineer 转行 💼',
-        '这不是 12 周课，是一整套求职包：课程 + 项目 + 内推 + Demo Day。',
-        '别再只看录播了 — 68 个 Lab + Meta/MS/Amazon 导师 Review 才是关键。'
+        '4 小时走出教室：装好的 OpenClaw + 你的风格配置 + 37 个资源 + 课后群 📌',
+        '带走的不是讲义 PDF — 是一个调成你风格的 Agent 🏷️',
+        '下次出 Brochure 30 分钟 · 就是因为这套配置 💪'
       ],
       community: [
-        '【你买到的是什么】\n📘 183 节课\n🧪 68 个互动 Lab\n📂 7 个简历项目\n👥 12 周 P3 真实企业项目\n🤝 校友内推 + Demo Day\n💬 AI Tutor 24h + 一线导师 Review',
-        '同类课对比了一圈，这期最值的不是课时 — 是 P3 真实企业项目 + 内推群这一整套后端支持 💼'
+        '【带走的 6 件】\n📘 4h 现场 · 2 轮实操\n🧩 装好的 OpenClaw + 可复用 Skill\n🎨 调成你品牌风格的 Agent\n📚 37 个平台资源 · 全免费\n🤝 课后群答疑 3 月\n🌏 跨行业人脉',
+        '这期工作坊最值的不是课时 · 是"可复用的 Agent 风格配置"。\n你第一次跑完 · Agent 记住你公司的品牌色 / 文案语气 · 下次同风格素材直接出稿。'
       ]
     },
     p9: {
-      title: '如果今年只做一件认真的 AI 投资',
-      body: `不知道大家有没有感觉，AI 的学习窗口期在缩。\n去年随便学点就能跟上，今年已经开始卷 Agent、Memory、Harness 了。\n\n🌱 如果今年只打算认真做一件 AI 投资，推荐看看这个课。\n可以主页搜"匠人 AI · AI Engineer"，课程大纲和项目案例都公开。\n\n不着急报，先看看自己方向对不对 ☕`,
-      tags: '#AI学习 #AI工程师 #转行 #程序员成长 #2026 #AI课程',
+      title: '花一个下午｜回家省掉 N 个周末',
+      body: `不卷长课 · 不画饼。\n\n就 4 小时 · 一个下午 ·\n把 OpenClaw 装在你自己电脑上 ·\n让 Tutor 陪你把 PPT / Brochure / Landing 3 类物料跑一遍 ·\n带走一个像你本人风格的 AI 物料助手。\n\n别再每次做物料都重来一遍了 — 线下工作坊的意义就是让 "以后出稿 30 分钟" 这件事今天就成立 🌱\n\n📍 每期 Live Demo 按学员行业定制\n📍 自带笔记本 + 用过 ChatGPT 就可来\n📍 报名自动解锁平台 37 个配套资源`,
+      tags: '#OpenClaw #AI工作坊 #线下课 #AI做宣传 #4小时',
       wechat: [
-        '2026 的 AI 学习窗口期在缩 — 今年卷的是 Agent / Memory / Harness，不是 Prompt 🌱',
-        '想认真学 AI 的话，课程大纲和项目案例都公开，可以先看看方向对不对。',
-        '新一期 AI Engineer Bootcamp 开放咨询，主页搜"匠人 AI · AI Engineer" ☕'
+        '4 小时 · 一个下午 · 以后每次出稿 30 分钟 🌱',
+        '不囤课不画饼 — 就坐一次线下把 Agent 装起来 💪',
+        '想让 AI 帮你做物料？4 小时工作坊上手 🏷️'
       ],
       community: [
-        '【咨询窗口开放】\n新一期 AI Engineer Bootcamp 大纲、项目案例、导师背景全部公开。\n主页"匠人 AI · AI Engineer"可以直接查看 ☕\n不着急报，先看看方向对不对。',
-        '不卖焦虑 — 但 AI 的学习窗口期确实在缩。\n去年随便学点能跟上，今年已经开始要 Agent + Memory + Harness 了 🌱'
+        '【OpenClaw 4 小时沉浸式工作坊】\n📍 一次线下课 · 不拖\n📍 Tutor 陪跑 · 装机不卡\n📍 你自己物料练一次 · 回去能用\n📍 37 个平台资源 · 课后继续\n\n用过 ChatGPT 就能来 🌱',
+        '别再每次做 Brochure / PPT / Landing 都重来一遍了。\n4 小时学一次 · 以后出稿 30 分钟。\n每期城市不同 · Live Demo 按行业定 · 报名前问清这期方向 📍'
       ]
     },
     p10: {
-      title: '第五期大重构｜96 → 183 节 新增 68 个 Lab',
-      body: `之前第四期的课体量就很够了，没想到第五期直接翻 1.8 倍。\n\n📊 课时：96 → 183（+87）\n📊 Phase：4 → 10（重构）\n📊 Lab：0 → 68（全新互动）\n📊 Agent：从 1 个 phase 拆到 5 个 phase\n\nMemory 和 Harness 两个独立模块真的是业内头一个这么拆的 🔥`,
-      tags: '#AI工程师 #课程升级 #Bootcamp #Agent #AI学习 #2026',
+      title: '先说清楚｜OpenClaw 到底是什么',
+      body: `很多人以为 OpenClaw 是 JR 的产品 — 不是。\n\n🔍 发起人：Peter Steinberger（奥地利开发者 · 前 PSPDFKit 创始人）\n🔍 时间：2025 年 11 月正式发布（原名 Clawdbot）\n🔍 协议：MIT 开源 · 免费可商用\n🔍 GitHub：68,000+ 星\n🔍 Wikipedia：已有词条\n\n它本质上 = 装在你自己电脑上的 AI Agent · 能读写本地文件 · 可以直接出 pptx / pdf / html。\n\n这些特性让它特别适合做物料 — 输入素材 · 输出成品 · 全程本地 · 客户资料不上云 🔒`,
+      tags: '#OpenClaw #AIAgent #开源 #GitHub #MIT #AI工具',
       wechat: [
-        '第五期 AI Engineer Bootcamp 大重构：课时 96→183，新增 68 个 Lab，Agent 拆成 5 个 phase 🔥',
-        'Memory + Harness 两个独立模块，业内还没见过第二家这么讲的。',
-        '课程体量翻 1.8 倍，新一期大纲看这里 👇'
+        'OpenClaw 不是 JR 的产品 — Peter Steinberger 的开源项目 · 68K 星 🔥',
+        '直接输出 pptx / pdf / html · 本地跑 · 客户素材不上云 🔒',
+        '做物料的 Agent 选它的原因就是这两条 🏷️'
       ],
       community: [
-        '【第五期大重构】\n📊 课时：96 → 183\n📊 Phase：4 → 10\n📊 Lab：0 → 68\n📊 Agent：1 phase → 5 phase\n体量 1.8× + 全新 Memory / Harness 模块 🔥',
-        '之前第四期已经够大了，没想到第五期还能翻 1.8 倍。\n新版大纲主页直接能看。'
+        '【OpenClaw 是什么】\nPeter Steinberger（奥地利）发起\n2025-11 发布 · MIT 开源\nGitHub 68K+ 星 · 有 Wiki\n本地运行 · 能读写文件\n直接出 pptx / pdf / html ✅',
+        '澄清：OpenClaw 不是 JR 自己的东西 — 开源项目 · 我们做的是课程整合。\n官网 openclaw.ai · GitHub openclaw/openclaw 可公开查 🔗'
       ]
     },
     p11: {
-      title: '第四期 vs 第五期｜学完之后具体多会什么',
-      body: `报课最关心的不是课表，是"学完我到底会什么"。\n\n对比了新旧两期：\n🔸 Lab：0 → 68 个\n🔸 Agent：25 节揉一起 → 5 个 phase 41 节系统拆\n🔸 Harness：无 → Claude Code 架构深拆\n🔸 Memory：无 → Mem0 + Graph Memory\n🔸 Eval：1 课 → P10 独立 17 节\n🔸 毕业水平：能搭 RAG → 独立交付生产级 Agent System`,
-      tags: '#AI工程师 #课程对比 #学习效果 #Agent #Harness #Memory',
+      title: '装龙虾这事｜线上课真的教不会你',
+      body: `为啥 OpenClaw 工作坊只开线下？一句话：**装机是教不会的 · 只能手把手陪你装**。\n\n📺 视频课（6-8h）：跟着装 · 报错看不懂 · 90% 卡在这一步放弃\n📖 自学文档：Google 到一半迷路 · Stackoverflow 无人回复\n✅ 线下工作坊（4h）：1 老师讲坑 + 2 Tutor 一对一陪装 + AI 小花验证\n\n装上龙虾之后才是价值 — L4-L7 用它出 PPT / Brochure / Landing。\n但前提是你得装得上 🦞`,
+      tags: '#AI学习方法 #OpenClaw #线下课 #PPT #Brochure',
       wechat: [
-        '新旧两期对比：毕业水平从"能搭 RAG"升级到"独立交付生产级 Agent System" 💪',
-        'Lab 0→68 · Agent 1 phase→5 phase · Harness & Memory 新增独立模块。',
-        '报课前先看这张对比：新版具体多教什么，新版多会做什么。'
+        '做物料这事线上课教不会你 — 因为需要有人看你的素材调风格 🥲',
+        '视频课 50% 卡装机 · 自学迷路 · 线下 ROI 最高 🚀',
+        '4 小时线下 = 2 周自学踩坑的节省 💰'
       ],
       community: [
-        '【新旧对比】\nLab：0 → 68 个\nAgent：1 phase 揉一起 → 5 phase 系统拆\nHarness / Memory：无 → 独立模块\nEval：1 课 → 17 节\n毕业：会搭 RAG → 交付 Agent System 💪',
-        '老学员想问升级吗？新期对旧期学员有无折扣政策 — 主页咨询。'
+        '【3 种学法】\n📺 视频课：装机卡住放弃\n📖 自学：Google 到迷路\n✅ 线下：Tutor 看你素材陪调\n\n做物料 = 要用自己素材跑 · 线上做不到 🚀',
+        '为啥 OpenClaw 工作坊只线下：\n因为做 PPT / Brochure / Landing 这种物料 · 必须用你自己的素材练一次 · 需要有人看着你的素材帮你调风格。\n线上课天花板就在这里。'
       ]
     },
     p12: {
-      title: 'RAG 独立一个 Phase 45 节｜不只是 demo',
-      body: `市面上讲 RAG 的课很多，但大部分停在"跑通一个 demo"。\n\n这次 P3 RAG 整整 45 节，做了这些：\n🔍 向量检索 — Embedding 原理、Pinecone/Chroma 选型\n🕸️ GraphRAG — Neo4j 知识图谱 + 实体关系\n⛓️ LangChain — Core + LCEL + LangSmith 可观测\n📊 RAG Eval — RAGAS + Langfuse + 自定义 Metrics\n\n3 个递进项目：Scratch → Production → GraphRAG`,
-      tags: '#RAG #GraphRAG #LangChain #AI工程师 #RAG优化 #AI学习',
+      title: '4 个人带你装龙虾｜6 步闭环 不卡壳',
+      body: `装龙虾这一节课是整个工作坊最核心的 30 分钟 — 配置拉满：\n\n👨‍🏫 1 位主讲老师：讲清楚 OpenClaw 是什么、坑在哪\n👩‍💻 2 位现场 Tutor：一对一挨个到你电脑前帮装\n🌸 AI 小花：辅助工具 · 每步验证输出\n\n装机 6 步：\n1️⃣ 确认操作系统（Mac / Win-WSL2 / Linux）\n2️⃣ 检查 Node ≥ 22（这一步最常卡）\n3️⃣ pnpm 全局装 OpenClaw（⚠️ 千万别用 Bun）\n4️⃣ openclaw --version 验证\n5️⃣ 配 LLM API Key\n6️⃣ 发第一条指令 · 龙虾回复就算跑通 ✅`,
+      tags: '#OpenClaw #龙虾 #装机 #工作坊 #Tutor #线下课',
       wechat: [
-        'P3 RAG 整整 45 节，从 Scratch 一路做到 GraphRAG 生产部署 🔍',
-        '讲 RAG 的课很多，做到 GraphRAG + RAGAS + Langfuse 全链路的不多见。',
-        '3 个递进 RAG 项目：纯 Python → Production → GraphRAG，都能写进简历 📄'
+        '装龙虾配 1 老师 + 2 Tutor + AI 小花 — 4 个人伺候你一个 🦞',
+        '6 步闭环 · Tutor 一对一挨个到你电脑前帮 · 装不上不让走 💪',
+        '这 30 分钟是整个工作坊最核心 · 装不上后面啥都做不了 🔥'
       ],
       community: [
-        '【P3 · RAG 45 节】\n🔍 向量检索 + Pinecone/Chroma 选型\n🕸️ GraphRAG + Neo4j 图谱\n⛓️ LangChain LCEL + LangSmith\n📊 RAGAS + Langfuse 评估\n3 个递进项目 📄',
-        '做过 RAG Demo 的人多 — 做过 Production + GraphRAG + Eval 全链路的少。\n这次 P3 整整 45 节帮你补齐。'
+        '【装龙虾 · 4 人配置】\n👨‍🏫 1 主讲老师\n👩‍💻 2 位 Tutor 一对一\n🌸 AI 小花工具辅助\n\n6 步骨架 · 老师讲 + Tutor 挨个装 · AI 小花每步验证 · 出门前 100% 跑通 ✅',
+        '为啥装机要 4 个人配？\n因为这是整个工作坊的生死线 — 装不上后面 L3-L7 都白搭。\n1 老师统筹讲坑 · 2 Tutor 分组陪装 · AI 小花做步骤检查 · 多层保险一次装成。'
       ]
     },
     p13: {
-      title: '别的课讲 Agent 一节 我们拆成 5 个 Phase',
-      body: `2026 的 Agent 岗位要求已经不是"能跑 Tool Use"了。\n\n这次整整拆了 5 个 Phase：\n🧱 P4 Capability — Function Calling、MCP、Computer Use\n🧠 P5 Agent Core — ReAct、3 大 SDK 对比、Agentic RAG\n🌐 P6 Multi-Agent — LangGraph、A2A、Agent Ops\n💾 P7 Memory — STM/LTM、Mem0、跨会话记忆\n🛠️ P8 Harness — Claude Code 架构、Hook、Skills\n\n每一层都有独立项目 🎯`,
-      tags: '#Agent #AIAgent #MultiAgent #AI工程师 #LangGraph #MCP #架构',
+      title: '三层配置｜老师讲坑 · Tutor 陪装 · AI 小花验证',
+      body: `装龙虾这一关的配置真的蛮狠的 — 为了保证你装上整出了三层：\n\n👨‍🏫 第一层：主讲老师（统筹）\n讲清楚 OpenClaw 是什么 · 装机 3 大坑在哪（WSL2 / Node 22 / 别用 Bun）· 整体节奏把控。\n\n👩‍💻 第二层：2 位现场 Tutor（主力）\n一对一挨个到学员电脑前陪装 · 卡哪步当场接手 · 装到能跑第一条指令为止。Windows WSL2 / Node 升级 / API Key 配错都包。\n\n🌸 第三层：AI 小花（辅助）\n每步帮学员验证终端输出 · 装错自动提示 · 给 Tutor 节省"检查"时间。\n\n老师讲 · Tutor 陪 · AI 验 — 这种配置国内外很少见 🔥`,
+      tags: '#OpenClaw #龙虾 #Tutor #老师 #AI小花 #工作坊',
       wechat: [
-        '别的课讲 Agent 一节带过，我们拆成 5 个 Phase 讲 🎯',
-        'Capability / Agent Core / Multi-Agent / Memory / Harness — 这才是 2026 Agent 工程师的完整地图。',
-        'Agent 系统工程化，每一层都有独立项目，简历上直接成五段经验。'
+        '装龙虾 3 层配置：1 老师讲坑 + 2 Tutor 一对一陪装 + AI 小花每步验 🔥',
+        '为啥这么多人伺候装机？因为装不上后面都白搭 💪',
+        '这种人+AI 混合配置国内外少见 · 装机放弃率 ≈ 0 🛟'
       ],
       community: [
-        '【Agent 五层拆解】\n🧱 P4 Capability — Tool Use / MCP\n🧠 P5 Agent Core — ReAct / 3 SDK\n🌐 P6 Multi-Agent — LangGraph / A2A\n💾 P7 Memory — Mem0 / 跨会话\n🛠️ P8 Harness — Claude Code 架构',
-        '别人：Agent 1 节课讲完。\n我们：拆成 5 个 Phase 讲。\n\n工程化程度决定简历厚度 🎯'
+        '【装机三层配置】\n👨‍🏫 1 老师：统筹 · 讲 3 大坑\n👩‍💻 2 Tutor：一对一陪装\n🌸 AI 小花：每步验证输出\n\n老师讲 · Tutor 陪 · AI 验 🔥',
+        '为啥要 3 层配置：\n① 自学装龙虾放弃率超高（90%+）\n② 线下配置越重 · 装成率越高\n③ 装不上后面 L3-L7 全部白搭\n所以这里配置硬拉满 — 出门前龙虾必须在你电脑上跑 💪'
       ]
     },
     p14: {
-      title: '这 4 类人学完回报最高',
-      body: `经常被问"我这个背景适不适合学 AI"。\n\n客观说，这 4 类人回报最明显：\n👨‍💻 软件工程师 — 用 Agent SDK 从写 CRUD 转型 AI Engineer\n📊 数据 / ML 工程师 — 补 Agent 工程化和 Context Engineering\n☁️ DevOps / 云工程师 — 转型 AI Infra，掌握 Eval 流水线\n🚀 AI 创业者 / SaaS 团队 — 快速搭 Multi-Agent 原型\n\n非技术背景需要先补 Python + API`,
-      tags: '#AI工程师 #转行 #程序员转AI #AIInfra #AI创业 #职业规划',
+      title: '谁最适合来｜6 类天天出物料的人',
+      body: `工作坊是按这 6 类人群设计的 — 对号入座：\n\n🏠 房产经纪：户型 + 卖点 → 项目 Brochure · A4 双面可印\n💼 B2B 销售：产品参数 → 12 页 Pitch Deck · 客户拿就能看\n📣 市场 / 新媒体：活动卖点 → 头图 + Landing 首屏\n🎓 教培讲师：课程大纲 → 招生页 + 介绍 PPT\n✍️ 个人品牌：个人故事 → 个人介绍页 + 自媒体素材\n🛠️ 小 B 创业者：产品说明 → 官网首屏 · 直接上线\n\n完全不用写代码 · 用过 ChatGPT / 豆包 / Claude 任一个就够 · 剩下 Tutor 教 👌`,
+      tags: '#房产 #销售 #市场 #教培 #个人品牌 #创业 #OpenClaw',
       wechat: [
-        '这 4 类人学 AI Engineer 回报最高：软件/数据/DevOps/创业者 💼',
-        '"我这个背景适合学 AI 吗？"— 软件工程师和 DevOps 回报最明显。',
-        '写 CRUD 的软件工程师转 AI Engineer，这门课就是为你准备的。'
+        '6 类最适合来：房产 · 销售 · 市场 · 教培 · 个人品牌 · 小 B 创业 🏷️',
+        '共同点：天天要出 PPT / Brochure / 官网 / 素材的人 📑',
+        '不写代码 · 用过 ChatGPT 就能来 💼'
       ],
       community: [
-        '【目标人群】\n👨‍💻 软件工程师（写 CRUD → AI Engineer）\n📊 数据 / ML 工程师（补 Agent 工程化）\n☁️ DevOps（转 AI Infra）\n🚀 AI 创业者（Multi-Agent 原型）',
-        '【先修】\n需要：Python + API 开发 + Git + 云基础\n不需要：ML 背景、ML 论文阅读\n课程从 Transformer 原理开始补 ✅'
+        '【6 类场景】\n🏠 房产 · Brochure / 户型 PPT\n💼 B2B 销售 · Pitch Deck\n📣 市场 · KV / Landing\n🎓 教培 · 招生页 / 课程 PPT\n✍️ 个人品牌 · 介绍页\n🛠️ 小 B · 官网首屏',
+        '这期工作坊面向"天天出宣传物料的人" — 6 类对号入座。\n每期 Live Demo 按当期学员行业定 · 报名前问清方向。'
       ]
     },
     p15: {
-      title: '不只是看 每个知识点都有互动 Lab',
-      body: `买课最怕的是买回来只能被动听。\n\n这次 68 个浏览器内互动 Lab 分布：\n🟣 Prompt Lab × 15（CoT、System Prompt、JSON）\n🟢 Python Lab × 11（基础 + OpenAI SDK）\n🔵 LLM Lab × 15（API、调优、RAG Eval、Agent）\n🟠 AWS Lab × 10（EC2、IAM、Bedrock）\n⚫ Git Lab × 5（协作全流程）\n🔴 前端 Lab × 12（HTML → React）\n\n每个 Lab 都是独立 Lesson 不是附属品 🧪`,
-      tags: '#AI学习 #互动Lab #Prompt #Python #AI工程师 #编程学习',
+      title: '4 小时完整时间线｜00:00 → 04:00',
+      body: `贴一下 4 小时怎么过 · 看完就知道值不值。\n\n⏱️ 00:00-00:30｜L1 AI 认知\n⏱️ 00:30-01:00｜L2 装机（AI 小花 Quest）🌸\n⏱️ 01:00-01:30｜L3 Skill 地图（PPT / Brochure / Landing 在哪找）\n⏱️ 01:30-02:00｜L4 Live Demo 现场出一套物料 ⚡\n⏱️ 02:00-02:30｜L5 跟练 Workshop 🛟\n⏱️ 02:30-03:00｜L6 Networking ☕\n⏱️ 03:00-04:00｜L7 用你自己要出的物料练 60min 🚀\n\n听课 90min · 实操 90min · 交流 30min · Demo 30min — 结构非常动 🔥`,
+      tags: '#OpenClaw #4小时 #课程设计 #工作坊 #时间表',
       wechat: [
-        '68 个浏览器内互动 Lab：Prompt 15 · Python 11 · LLM 15 · AWS 10 · Git 5 · 前端 12 🧪',
-        '不是听课型课程，每个 Lab 都是独立 Lesson，动手做到会。',
-        'AI Engineer 最完整的互动练习体系，全部浏览器跑不用本地环境。'
+        '4 小时怎么过：听 90 + 实操 90 + Demo 30 + Networking 30 🔥',
+        'L7 用你自己要出的物料 60 分钟 · 全课高光 🚀',
+        '每 30 分钟切一次模块 · 动手型工作坊 💪'
       ],
       community: [
-        '【68 个互动 Lab 分布】\n🟣 Prompt × 15\n🟢 Python × 11\n🔵 LLM × 15\n🟠 AWS × 10\n⚫ Git × 5\n🔴 前端 × 12\n全部浏览器跑 🧪',
-        '买课最怕被动听课。新一期每个知识点都配 Lab，独立 Lesson 可追踪进度 ✅'
+        '【4 小时时间表】\n00:00 L1 认知\n00:30 L2 装机\n01:00 L3 Skill 地图\n01:30 L4 Demo\n02:00 L5 陪练\n02:30 L6 Networking\n03:00 L7 你的物料 60min 🚀',
+        '课程结构非常用心：\n实操占 1.5 小时（L5 + L7）· 其中 L7 60 分钟是你自己真实物料。\n回去无缝衔接。'
       ]
     },
     p16: {
-      title: '从零到拿 Offer｜完整 24 周时间线',
-      body: `看的时候觉得"12 周太短"，看完时间线才发现后面还有 12 周 P3。\n\n📅 W1-3 Foundation + Context 打底\n📅 W4-7 RAG 全链路 + 3 个项目\n📅 W8-10 Agent + Multi-Agent + Memory + Harness\n📅 W11-12 Model Layer + Eval + 毕业\n📅 W13-24 P3 真实企业项目 + 简历 + 面试 + 内推\n\n求职闭环到 Offer，不是"学完就结束" 🎯`,
-      tags: '#AI工程师 #Bootcamp #求职路径 #AI转行 #简历优化 #面试',
+      title: '走时带走 6 件｜都不是讲义 PDF',
+      body: `报课前最关心："4 小时到底带走啥"。\n\n✅ 装好的 OpenClaw 实例（不用回家"有空再装"）\n✅ 2 次真实出稿经验（1 跟练 + 1 自己物料）\n✅ Skill 地图（PPT / Brochure / Landing 现成哪个装哪个）\n✅ 可复用 Agent 配置（调成你品牌色 · 文案语气）\n✅ OpenClaw 使用者群（课后持续答疑 3 月）\n✅ 跨行业同学人脉（Networking 认识的）\n\n没有"送你一本 PDF" — 那玩意回家不会翻 📌`,
+      tags: '#OpenClaw #工作坊 #交付 #AI配置 #带走',
       wechat: [
-        '完整 24 周闭环：12 周课 + 12 周 P3 真实项目 → 简历 → 面试 → 内推 → Offer 🎯',
-        '不是"学完就结束"，课后还有 12 周陪你到拿 Offer。',
-        '从零到 AI Engineer Offer 的完整时间线，一张图看懂 📅'
+        '4 小时带走 6 件：装好的 OpenClaw + 2 次出稿 + Skill 地图 + 品牌配置 + 课后群 + 人脉 📌',
+        '不送讲义 PDF — 送一个调成你风格的 Agent 🏷️',
+        '最值的是 "Agent 的风格配置" — 以后同风格素材直接出稿 💪'
       ],
       community: [
-        '【24 周完整路径】\nW1-3 Foundation + Context\nW4-7 RAG 全链路 + 3 个项目\nW8-10 Agent + Memory + Harness\nW11-12 模型层 + 毕业\nW13-24 P3 项目 + 求职 → Offer 🎯',
-        '看课别只看 12 周 — 后面还有 12 周 P3 孵化，陪你到拿 Offer。\n完整闭环在主页。'
+        '【工作坊带走 6 件】\n✅ 装好的 OpenClaw\n✅ 2 次真实出稿\n✅ Skill 地图（PPT/Brochure/Landing）\n✅ 品牌风格 Agent 配置\n✅ 使用者群 3 月答疑\n✅ 跨行业人脉 📌',
+        '对比过几个同类课 — 最实在的就是"Agent 风格配置"可复用。\n下次同品牌风格的 Brochure / Deck 直接 call Skill · 30 分钟出稿。'
       ]
     },
     p17: {
-      title: '不是跑 demo｜7 个能放简历的项目',
-      body: `简历最吃亏的就是"项目一栏全是教程复制"。\n\n这次 7 个项目每个都能独立拿出来讲：\n01 ISA 贯穿项目（从 Prompt 升级到生产）\n02 Context-Driven App\n03 RAG from Scratch（纯 Python）\n04 Production RAG + GraphRAG\n05 Multi-Agent RAG（3 SDK 对比）\n06 Production Agent System（MCP + Memory + A2A）\n07 Fine-Tune + Eval Pipeline（QLoRA）\n\n每个都能写成 STAR 故事 📄`,
-      tags: '#简历项目 #AI工程师 #AI项目 #RAG #Agent #求职 #面试',
+      title: 'Live Demo 每期不一样｜按学员行业跑',
+      body: `工作坊一个很特别的设定 — 每期 L4 Live Demo 不一样。\n\n🏠 悉尼房产期：现场出一套新盘 A4 Brochure + 户型 PPT\n🛡️ 墨尔本保险期：现场出一份产品介绍 Deck + 客户版 Landing\n📣 内容期：一篇公众号 → 8 图小红书 + 对应 Landing\n🎓 教培期：课程大纲 → 招生页 + 10 页介绍 PPT\n\n老师会提前问当期学员行业分布 · 现场跑一个最贴近你们的场景。\n\n这是线上课做不到的 — 报名前可以问清楚这期是什么方向 📍`,
+      tags: '#Live Demo #OpenClaw #行业定制 #工作坊',
       wechat: [
-        '简历项目栏最怕写不出东西 — 这次 7 个项目每个都能拿出来讲 📄',
-        '从 RAG from Scratch 到 Multi-Agent + MCP + Memory，7 个项目覆盖 AI Engineer 全链路。',
-        '不是 Notebook demo，是能部署能写 STAR 故事的真项目。'
+        '工作坊 Live Demo 每期不一样 — 按当期学员行业定制 🎯',
+        '悉尼房产 / 墨尔本保险 / 内容 / 教培每期不同 📍',
+        '线上课不可能做的事 — 定制 Demo 只有线下 🔥'
       ],
       community: [
-        '【7 个简历项目】\n01 ISA 贯穿项目\n02 Context-Driven App\n03 RAG from Scratch\n04 Production RAG + GraphRAG\n05 Multi-Agent RAG\n06 Production Agent System\n07 Fine-Tune + Eval 📄',
-        '简历项目栏写满 3 个以上就能打动面试官。\n这次 7 个项目全部能写成 STAR 故事 💬'
+        '【L4 Live Demo · 按期定】\n🏠 房产 · 新盘 Brochure + PPT\n🛡️ 保险 · 产品 Deck + Landing\n📣 内容 · 公众号→小红书+Landing\n🎓 教培 · 招生页 + 课程 PPT\n\n报名前问清这期方向 📍',
+        '老师在开课前会调研当期学员画像 · 现场跑最贴近你们的 Demo。\n这是线下工作坊和视频课最大的差别之一 — 可以"定制"。'
       ]
     },
     p18: {
-      title: '别人在听课 你在动手做｜翻转课堂',
-      body: `传统模式：老师讲 2 小时概念 → 课上 demo → 课后卡住没人问。\n\n这次改成：\n① 课前 Lab 自学基础\n② 直播课专门做项目\n③ AI Tutor 24h 答疑\n④ 导师 Code Review\n\n结果：\n📉 直播时长 -40%\n📈 实操时间 +300%\n🧪 68 个互动 Lab`,
-      tags: '#学习方法 #翻转课堂 #AI学习 #程序员成长 #Bootcamp',
+      title: '1 老师 + 2 Tutor｜4 小时你不会独自对屏幕',
+      body: `很多课说 "Tutor 陪跑" 结果就是群里发表情 🥲 — 这次是真配置：\n\n👨‍🏫 1 位主讲老师：全程在场 · 讲 + 答疑 + 统筹\n👩‍💻 2 位现场 Tutor：一对一挨个到你电脑前\n\n4 小时他们做什么：\n🛟 L2 装龙虾：2 Tutor 挨个到位陪装 · 装不上不走\n🛟 L5 跟练：卡住举手 · Tutor 过来带你跑一遍\n🛟 L7 你自己素材：1v1 看着你的真实 PPT / Brochure 素材帮你调 Agent 风格\n🛟 课后群：3 个月持续答疑不收费\n\n4 小时你独自对屏幕的时间基本为 0 💪`,
+      tags: '#OpenClaw #龙虾 #Tutor #老师 #线下课 #工作坊',
       wechat: [
-        '翻转课堂：课前 Lab → 直播做项目 → AI Tutor 答疑。实操时间 +300%，直播时长 -40% 📈',
-        '买课最大的浪费就是听完不会做 — 这次把听课和练习倒过来。',
-        '别再被动听课了 — AI Tutor 24h 答疑 + 导师 Code Review 才是真练习。'
+        '1 位老师 + 2 位 Tutor 真坐教室 — 不是群里发表情那种 😂',
+        '4h 独自对屏幕时间 ≈ 0 · 随时举手有人来 🛟',
+        '课后 3 月群答疑不收费 · 这才叫陪跑 💪'
       ],
       community: [
-        '【翻转课堂模式】\n① 课前 Lab 自学\n② 直播课做项目\n③ AI Tutor 24h 答疑\n④ 导师 Code Review\n\n直播时长 -40%，实操时间 +300% 📈',
-        '买了课最怕被动听课 — 这次改翻转：听课变自学，直播变实战。'
+        '【1 老师 + 2 Tutor 现场】\n🛟 L2 装龙虾：2 Tutor 挨个陪\n🛟 L5 跟练：举手 Tutor 过来\n🛟 L7 素材：1v1 调 Agent 风格\n🛟 课后群：3 月答疑 ✅',
+        '线下工作坊最值的就是"人手多"这一条 —\n1 位主讲老师 + 2 位 Tutor · 装机到出稿全程有人看着你做。\n自学 AI 最大的痛点就是"卡了没人告诉你" · 现场配置直接化解。'
       ]
     },
     p19: {
-      title: '课程结束 ≠ 学完了｜还有 12 周真实项目',
-      body: `大部分 Bootcamp 到毕业就结束，这里后面还有 12 周 P3 职业孵化。\n\n👥 3-5 人团队用课上技术栈\n🏃 4 个 Sprint（Planning/Standup/Review/Retro）\n👨‍💻 Meta / MS / Amazon 导师 Code Review\n🎤 Demo Day 面向招聘企业展示\n📝 Case Study + STAR + 简历 bullet\n🤝 校友内推群 + 面试直到 Offer`,
-      tags: '#AI工程师 #职业孵化 #求职 #AI转行 #简历项目 #内推',
+      title: '报名解锁｜平台 37 个免费资源陪你过 2 周',
+      body: `4 小时工作坊只是起点 — 大多数人回家 2 周才把 OpenClaw 真正玩溜。\n\n报名自动解锁配套资源：\n\n📚 16 章 OpenClaw 学习方向（入门 → 生产部署）\n🧪 18 个 Prompt 互动 Lab（浏览器内练习）\n📖 3 篇 Wiki（Prompt Eng / Claude Code / n8n）\n\n课上遇到问题 — Skill 怎么改、Brochure Skill 怎么装、连 WhatsApp — 这 37 个资源里都有答案。\n\n都是平台免费资源 · 不用另外付费 🌿`,
+      tags: '#OpenClaw #学习资源 #免费 #平台资源',
       wechat: [
-        '大部分 Bootcamp 毕业就结束 — 这里后面还有 12 周 P3 真实企业项目 + 求职全流程 💼',
-        '3-5 人团队 + 4 个 Sprint + Demo Day + 内推，一条龙到 Offer。',
-        '简历最怕写不出真项目 — P3 12 周帮你把项目做完并讲好 🎤'
+        '工作坊解锁 37 个平台免费资源 · 陪你过开课后 2 周 🌿',
+        '16 章 Learn + 18 个 Lab + 3 篇 Wiki 📚',
+        '不额外付费 · 工作坊学员自动解锁 ✅'
       ],
       community: [
-        '【P3 职业孵化】\n👥 3-5 人团队\n🏃 4 个 Sprint（真 Agile 流程）\n👨‍💻 Meta/MS/Amazon 导师 Review\n🎤 Demo Day\n🤝 内推群 + 面试到 Offer 💼',
-        '这一套不是模拟项目 — 是真实企业项目。\n简历上最有说服力的一行就是 P3 🎤'
+        '【报名解锁】\n📚 16 章 OpenClaw Learn\n🧪 18 个 Prompt Lab\n📖 3 篇 Wiki\n合计 37 个 · 全免费 · 2 周陪跑 🌿',
+        '4 小时只是 kickoff — 真正玩溜 OpenClaw 要 2 周。\n平台 37 个资源覆盖课上所有坑（Skill / 模板 / 连工具）· 这段过渡期不孤单 📚'
       ]
     },
     p20: {
-      title: '2026 AI Engineer 要会的新技术栈',
-      body: `扒了 15 份 2026 JD，发现岗位基线已经整体右移：\n\n📍 Prompt Eng → Context Engineering\n📍 向量检索 → + GraphRAG 混合检索\n📍 LangChain Agent → 3 大 Agent SDK 对比\n📍 Buffer Memory → Mem0 三层 + Graph\n📍 无 → MCP + A2A 双协议\n📍 无 → Harness（Claude Code 架构）\n📍 RAGAS 1 课 → Eval Eng 整周 + Red-team\n📍 PEFT + QLoRA → + Unsloth + LLaMA-Factory`,
-      tags: '#AI工程师 #技术栈 #2026 #ContextEngineering #Agent #Harness',
+      title: '报名前高频 5 问｜直接给短答案',
+      body: `咨询最多的 5 个问题 — 一次性答完：\n\nQ1 我担心装不上龙虾怎么办？\nA 线下 1 位老师 + 2 位 Tutor 一对一陪装 · 装不上不让走 🦞\n\nQ2 没用过 AI 能来吗？\nA 用过 ChatGPT / 豆包 / Claude 任一个就行 · 不写代码\n\nQ3 需要带什么？\nA 笔记本（Mac / Win-WSL2）· 充电器 · 一份你要出稿的真实素材\n\nQ4 装龙虾要另外花钱吗？\nA OpenClaw 本身 MIT 免费 · LLM API Key 自付（一月几刀到十几刀）\n\nQ5 能线上吗？\nA 不能 — 装机 + 看素材调风格都需要现场`,
+      tags: '#OpenClaw #FAQ #报名咨询 #工作坊',
       wechat: [
-        '2026 AI Engineer 岗位基线右移了：Context Eng + GraphRAG + MCP + Harness + Eval 全成入门要求 🔄',
-        '不是名词更新，是标准切了。看看你还差多少 👇',
-        'Prompt Eng → Context Eng · 向量检索 → GraphRAG · 1 个 SDK → 3 个 SDK。新标准。'
+        'FAQ 快答：没 AI 基础可来 · 带笔记本 · OpenClaw 免费 · 只线下 👌',
+        '"能不能线上？" — 不能 · L7 要看你素材 · 线上做不到 📍',
+        '"要花钱吗？" — OpenClaw 免费 · LLM API 一月几刀 💰'
       ],
       community: [
-        '【2026 AI Engineer 新标准】\nPrompt Eng → Context Engineering\n向量检索 → + GraphRAG\n1 SDK → 3 SDK 对比\nBuffer Memory → Mem0 三层\n无 → MCP + A2A\n无 → Harness',
-        '技术栈不是迭代，是换代。\n2026 岗位要求基线已经整体右移 🔄'
+        '【FAQ】\nQ 没 AI 基础？A 用过 ChatGPT 就行\nQ 带什么？A 笔记本 + 要出的素材\nQ 花钱？A 免费 · LLM 几刀/月\nQ 线上？A 不行\nQ 课后？A 群 3 月 ✅',
+        '特别强调：只线下 · 每期城市不同 · 报名前看清期次和 Live Demo 方向。'
       ]
     },
     p21: {
-      title: '报名前最常被问的 5 个问题',
-      body: `整理了咨询最多的 5 个问题，直接给短答案：\n\nQ1 需要什么基础？Python + API 开发就够\nQ2 为什么学 3 个 Agent SDK？面试会问对比\nQ3 和其他 AI 课区别？生产部署全链路\nQ4 需要 GPU 吗？P1-8 用 API 就行\nQ5 能做什么岗位？AI / Agent / LLM / Eval Engineer`,
-      tags: '#AI工程师 #Bootcamp #报名咨询 #AI学习 #转行',
+      title: '到场前 30 分钟｜5 件事做完再来',
+      body: `报名后到场前的准备 — 做完你会更从容：\n\n① 确认笔记本能上课（Mac OS / Win 10+）\n② Mac：会开「终端」（Cmd+Space 搜 Terminal）\n   Win：装好 WSL2（PowerShell 管理员跑 wsl --install）\n③ 熟悉终端里打字 + 复制粘贴\n④ 注册 LLM API Key（推荐 Gemini 免费）\n⑤ 带一份你要出的真实物料素材 — 产品卖点 / 户型图 / 课程大纲 / 活动文案都行（L7 要用）\n\n⚠️ Windows 必须 WSL2 · 原生 PowerShell 跑不了\n⚠️ 不做也能来 · 做完更顺`,
+      tags: '#OpenClaw #课前预习 #装机 #WSL2',
       wechat: [
-        '报名前最常问的 5 个问题：基础、SDK 选择、和别的课区别、GPU、岗位 — 直接给答案。',
-        '不需要 ML 背景，Python + API 开发基础就能上。GPU 只有 Fine-Tune 部分用 Colab 免费版。',
-        '想报 AI Engineer Bootcamp 又犹豫？这 5 个问题看完应该能决定 👌'
+        '课前 30min 预习 5 件事 · 让 L2 装机更顺 ✅',
+        'Windows 同学必装 WSL2 · 原生 PS 跑不了 ⚠️',
+        'LLM Key 第一次推荐 Gemini · 免费额度最大 💰'
       ],
       community: [
-        '【FAQ 快答】\nQ 基础要求？A Python + API\nQ 需要 GPU？A 只有 P9 用 Colab 免费版\nQ 和别的课区别？A 生产全链路\nQ 学完做什么？A AI / Agent / LLM / Eval Eng',
-        '群里高频被问的 5 个问题整理好了 — 图里直接能看，省点咨询时间 👌'
+        '【到场前 5 件事】\n① 笔记本能上课\n② Mac 会开终端 / Win 装 WSL2\n③ 终端复制粘贴熟悉\n④ LLM Key（Gemini 免费）\n⑤ 带一份要出的真实素材 📎',
+        '特别强调第 5 点 — 带一份你要出的物料素材来。\nL7 Workshop 60 分钟就用你自己的素材练一次 · 回去无缝衔接。\n来空手了只能用样例素材 · 效果打折 💡'
       ]
     },
     p22: {
-      title: '一个项目跟你升级 5 次｜ISA 贯穿全程',
-      body: `最喜欢这次课程设计的一点：有个项目从 Day 1 跟到毕业。\n\n🌱 ISA（智能学习助手）的 5 次升级：\nv1 Prompt 版（P1-2）→ Context Engineering\nv2 RAG 版（P3）→ 接文档检索\nv3 Agent 版（P4-5）→ Function Calling\nv4 Multi-Agent 版（P6-7）→ 协作 + Memory\nv5 生产版（P8-10）→ Harness + Fine-Tune + Eval`,
-      tags: '#Capstone项目 #AI工程师 #项目成长 #Agent #RAG #学习项目',
+      title: '传统 AI 课 vs OpenClaw 工作坊｜12 维度对比',
+      body: `对比过好几家课 — 挑 AI 工作坊我按这个 checklist 来：\n\n维度 · 传统 AI 课 vs OpenClaw 工作坊\n\n形式：视频录播 vs 4h 线下\n装机：回家自己 vs Tutor 当场\n实操：做题 vs 用你自己要出的物料\n Tutor：群客服 vs 坐你旁边\nDemo：PPT 案例 vs 现场出一套\nNetworking：无 vs 30min 跨行业\n交付：讲义 PDF vs 能出稿的 Agent\n答疑：慢 vs 5min 接手\n定制：通用 vs 按行业改 Demo\n风格：通用模板 vs 调成你品牌\n验证：无 vs AI 每步验\n产出：学完没了 vs 可复用 Skill\n\n12 项里 11 项线下胜 🏆`,
+      tags: '#AI学习方法 #OpenClaw #对比 #线下课',
       wechat: [
-        'ISA Capstone：一个项目从 Day 1 跟到毕业，升级 5 次 🧬',
-        'Prompt → RAG → Agent → Multi-Agent → 生产版 — 这就是成长轨迹本迹。',
-        '简历上最会讲的项目大概就是 ISA，从 v1 到 v5 每一版都有成长故事。'
+        '视频课 vs 线下工作坊 12 维度 — 11 项线下胜 🏆',
+        '最大差 3 条：用自己物料 · 调成你风格 · 带走能出稿的 Agent 🔥',
+        '挑 AI 工作坊的 checklist 给你参考 ✅'
       ],
       community: [
-        '【ISA Capstone】\nv1 Prompt 版 → v2 RAG 版 → v3 Agent 版 → v4 Multi-Agent → v5 生产版\n\n一个项目跟 5 次升级，简历讲成长故事 🧬',
-        '最有意思的课程设计：Day 1 建的项目，毕业时已经升级到生产版。\n简历写起来有层次。'
+        '【12 维度】\n形式｜装机｜实操｜Tutor\nDemo｜Networking｜交付｜答疑\n定制｜风格｜验证｜产出\n\n线下 11:1 胜 🏆',
+        '挑课 checklist 送大家 · 核心差别 3 条：\n① 用你自己真实素材练 · ② Agent 调成你品牌风格 · ③ 带走能出稿的配置。\n这三条线上课都做不到。'
       ]
     },
     p23: {
-      title: '别的课不教 我们单独开了 2 个 Phase',
-      body: `Memory System 和 Harness Engineering 这两块，找遍国内外课程资源几乎没有人系统讲。\n\n🧠 Memory System\n— Agent 从"玩具"变"产品"的关键\n— STM / LTM / Mem0 / Graph Memory / 跨会话\n\n🛠️ Harness Engineering\n— Claude Code 怎么调度几十个工具不出错？\n— Hook / Tool Loop / Skills / ADLC / SubAgent\n\n2026 技术面反复问到 但市面没课教 — 因为太新了 🔥`,
-      tags: '#Agent #Memory #Harness #ClaudeCode #AI工程师 #2026',
+      title: '独家 2 块｜AI 小花装机 + 按行业定制 Demo',
+      body: `这 2 块市面几乎找不到第二家：\n\n🌸 AI 小花 Quest 装机\n— AI 主动开口 · 每步等你贴 output\n— 装错当场纠正 · 超时 Tutor 接手\n— 6 Step 闭环 · 平均 20 分钟跑通\n\n⚡ Live Demo 按期定制\n— 老师提前调研学员行业\n— 现场跑最贴近你们的场景（房产 Brochure · 保险 Deck · 教培招生页 等）\n— 每期都不一样\n\n这 2 块是工作坊最不可替代的内容 · 线上永远做不到 🔥`,
+      tags: '#OpenClaw #AI小花 #Live Demo #独家',
       wechat: [
-        'Memory System + Harness Engineering — 2026 最被问到但最少有课教的两块 🔥',
-        'Claude Code 怎么调度几十个工具不出错？答案在 Harness 这个 Phase。',
-        'Agent 从"玩具"变"产品"的关键就是 Memory + Harness — 我们独立讲。'
+        'AI 小花装机 + 定制 Live Demo — 2 块市面找不到第二家 🔥',
+        '线上永远做不到的 2 件事：AI 陪装 + 行业现场 Demo ⚡',
+        '这 2 块是 4 小时工作坊最值的部分 · 线下独占 💎'
       ],
       community: [
-        '【独家模块】\n🧠 Memory System（Phase 7）\nSTM / LTM / Mem0 / Graph Memory\n\n🛠️ Harness Engineering（Phase 8）\nClaude Code 架构 / Hook / Skills / ADLC\n\n市面几乎找不到第二家系统讲 🔥',
-        '2026 技术面频繁被问的两块 — Memory 和 Harness。\n市面课程资源少，因为太新了。\n我们独立成 Phase 讲。'
+        '【独家 2 块】\n🌸 AI 小花 Quest\nAI 主动 · 每步验 output · 20min\n\n⚡ Live Demo 按期定\n提前调研 · 跑学员行业场景\n\n线上做不到 · 线下独占 🔥',
+        '对比过同类课 · 这 2 块最不可替代：\nAI 陪装模式国内外没见过第二家 · 行业定制 Demo 只有线下能做。'
       ]
     },
     p24: {
-      title: '扒了 15 份真实 JD｜我们覆盖了多少',
-      body: `报课之前我做的第一件事：把 15 份头部公司的 AI Engineer JD 扒了一遍。\n\n📊 覆盖数据：\n• Agent 系统构建（9/10 JD）— 95%\n• Context Engineering（8/10 JD）— 90%\n• RAG + GraphRAG（9/10 JD）— 95%\n• LLM Ops 可观测（7/10 JD）— 90%\n• AI Eval & Safety（8/10 JD）— 90%\n• Fine-Tune + Open-Weight（6/10 JD）— 90%\n\nJD 来源：OpenAI / Anthropic / Google / Meta / Cursor 等`,
-      tags: '#AI工程师 #JD分析 #求职 #AI技能 #面试准备',
+      title: '装好之后｜OpenClaw 能帮你出这 6 类物料',
+      body: `不空泛 — 这是学员装完 OpenClaw 真在用的 6 类输出：\n\n📑 销售 / Pitch Deck（12-20 页 · pptx 直接可改）\n📄 A4 Brochure（双面 · 打印尺寸 · 房产 / 产品最常用）\n🌐 Landing Page（HTML 一页纸 · 放 Vercel 或挂官网二级域）\n🎯 招生 / 活动落地页（banner + CTA + 表单）\n📣 社交卡图（小红书 9 张图 / 朋友圈长图 / 头图）\n✍️ 内容系列（一篇文章扩展成 Deck + 小红书 + Newsletter）\n\nL7 Workshop 就用你自己要出的素材 · 选一类出一套 🛠️`,
+      tags: '#OpenClaw #AI物料 #PPT #Brochure #Landing #社交卡图',
       wechat: [
-        '扒了 OpenAI / Anthropic / Google / Meta / Cursor 等 15 份真实 JD — 课程平均覆盖率 92% 📊',
-        '报课之前做的第一件事：逐条对照 JD — 6 大核心能力都在 90%+。',
-        '看 JD 挑课程 — 这是我这半年最推荐的方法 ✅'
+        '装好 OpenClaw 能出 6 类物料：Deck / Brochure / Landing / 招生页 / 社交卡图 / 内容矩阵 🛠️',
+        'L7 用你自己要出的素材练一次 · 选一类出一套 🚀',
+        '这 6 类是学员第 2 周最高频在用的场景 💪'
       ],
       community: [
-        '【JD 对照】\nAgent 构建 — 95%\nContext Eng — 90%\nRAG + GraphRAG — 95%\nLLM Ops — 90%\nEval & Safety — 90%\nFine-Tune — 90%\n\n15 份 JD 平均覆盖 92% 📊',
-        '报课之前先扒 JD — 这半年最推荐的方法。\n我们课程大纲直接按 JD 反推设计 ✅'
+        '【OpenClaw 能出的 6 类】\n📑 Pitch Deck（pptx）\n📄 A4 Brochure（打印）\n🌐 Landing Page（HTML）\n🎯 招生 / 活动落地页\n📣 社交卡图系列\n✍️ 一篇文章多平台扩展',
+        '这 6 类是现任学员最高频在用的。\n每类都有对应 Skill · L3 会过一遍哪些可以直接套模板 · L7 选一类用你素材出一套。'
       ]
     },
     p25: {
-      title: 'AI Engineer 现在到底能赚多少钱',
-      body: `整理了 levels.fyi + Glassdoor + LinkedIn 2026 的数据：\n\n💰 Junior（0-2 年）：$100K - $150K\n💰 Mid（2-5 年）：$150K - $220K\n💰 Senior（5+ 年）：$220K - $350K+\n\n部分公司薪资区间：\n• OpenAI / Anthropic：$180K - $350K\n• Google / Meta：$170K - $330K\n• Cursor / Stripe：$160K - $320K\n\n数据是给自己定位用，不是保证拿到 🙏`,
-      tags: '#AI工程师 #薪资 #levelsfyi #求职 #职业规划',
+      title: '4h 线下 vs 1 月视频课｜差别就在"装机"',
+      body: `最常被问："为啥不做个在线课？"\n\n真相：视频课装不上龙虾 · 一切都免谈。\n\n📺 1 个月视频课：90% 卡装机放弃（Win WSL2 / Node 22 / Bun 坑）\n✅ 4 小时线下：1 老师 + 2 Tutor 一对一陪装 · 装成率接近 100%\n➕ 30min Networking：跨行业 Skill 互抄作业 · 视频课没有\n\n不是 4 小时塞 1 个月的料 —\n是把"装机 + 2 轮出稿 + 调风格 + 答疑"一次做完 ·\n省掉自学时 80% 会卡住的地方。\n\n线上课天花板就在"装机"这一步 🦞`,
+      tags: '#OpenClaw #学习效率 #线下课 #ROI #对比',
       wechat: [
-        'AI Engineer 2026 薪资图：Junior $100-150K · Mid $150-220K · Senior $220-350K+ 💰',
-        'OpenAI / Anthropic $180-350K，Google / Meta $170-330K — 数据给自己定位用。',
-        '转 AI Engineer 到底值不值 — 薪资数据直接告诉你 📊'
+        '4h 线下 vs 1 月视频课 — 视频课 50% 卡装机放弃 🥲',
+        '不是塞了 1 月的料 · 是把"装机 + 出稿 + 调风格"一次做完 🚀',
+        '时间 ROI 最高的 AI 学法就是去一次线下工作坊 ✅'
       ],
       community: [
-        '【2026 AI Engineer 薪资】\nJunior $100-150K\nMid $150-220K\nSenior $220-350K+\n\nOpenAI / Anthropic $180-350K\nGoogle / Meta $170-330K\n数据自定位用 🙏',
-        '转 AI Engineer 值不值？\n看数据 — levels.fyi + Glassdoor + LinkedIn 2026 都能佐证 📊'
+        '【为啥 4h > 1 月视频】\n📺 视频：50% 卡装机\n✅ 工作坊：Tutor 当场 · 看你素材\n➕ Networking：Skill 互抄\n\n一次做完 · 省 80% 自学踩坑 🚀',
+        '做物料这种事 · 线上教学天花板就在那 — 因为需要有人看你的素材帮你调。\n4h 现场 ROI 远 > 1 月视频课 · 尤其对非技术同学。'
       ]
     }
   };
@@ -395,13 +403,11 @@
       const data = XHS_COPY[frame.id];
       if (!data) return;
 
-      // Wrap existing kids in .poster-main
       const main = document.createElement('div');
       main.className = 'poster-main';
       while (frame.firstChild) main.appendChild(frame.firstChild);
       frame.appendChild(main);
 
-      // Build panel shell
       const panel = document.createElement('div');
       panel.className = 'copy-panel';
 
@@ -410,7 +416,6 @@
       titleHead.textContent = frame.id.toUpperCase() + ' · 文案素材';
       panel.appendChild(titleHead);
 
-      // Tabs
       const tabs = document.createElement('div');
       tabs.className = 'cp-tabs';
       const tabDefs = [
@@ -434,7 +439,6 @@
       });
       panel.appendChild(tabs);
 
-      // Helper: section block
       const mkSection = (label, text, cls) => {
         const sec = document.createElement('div');
         sec.className = 'cp-section';
@@ -460,7 +464,6 @@
         return sec;
       };
 
-      // Pane: 小红书
       const xhsPane = document.createElement('div');
       xhsPane.className = 'cp-pane';
       xhsPane.appendChild(mkSection('📌 标题', data.title, ''));
@@ -487,7 +490,6 @@
       panes.xhs = xhsPane;
       panel.appendChild(xhsPane);
 
-      // Pane: 朋友圈（短文案，不折叠）
       const wxPane = document.createElement('div');
       wxPane.className = 'cp-pane hidden';
       const wxTip = document.createElement('div');
@@ -500,7 +502,6 @@
       panes.wx = wxPane;
       panel.appendChild(wxPane);
 
-      // Pane: 社群（稍长，可排版）
       const qunPane = document.createElement('div');
       qunPane.className = 'cp-pane hidden';
       const qunTip = document.createElement('div');

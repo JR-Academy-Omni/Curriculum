@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>AI Engineer 入门 · V2 · 小红书素材集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-red: #ff5757;
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-blue: #2563eb;
+    --brand-blue-deep: #1d4ed8;
+    --brand-blue-soft: #eff6ff;
+    --brand-green: #10b981;
+    --brand-orange: #f97316;
+    --brand-pink: #ec4899;
+    --bg-light: #f8f9fb;
+    --bg-cream: #fff1e7;
+    --text-main: #10162f;
+    --text-gray: #64748b;
+    --border-color: #e2e8f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #eef0f4; color: var(--text-main); font-family: 'Noto Sans SC', system-ui, sans-serif; padding: 40px 20px 120px 120px; line-height: 1.5; }
+
+  .page-wrap { max-width: 1600px; margin: 0 auto; }
+  .page-head { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 28px 32px; margin-bottom: 30px; box-shadow: 8px 8px 0 var(--brand-dark); }
+  .page-head h1 { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; }
+  .page-head h1 span { color: var(--brand-blue); }
+  .page-head p { color: var(--text-gray); margin-top: 8px; font-size: 14px; }
+  .spec-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .spec-pill { background: var(--brand-blue-soft); border: 1.5px solid var(--brand-dark); border-radius: 100px; padding: 6px 14px; font-size: 12px; font-weight: 700; }
+  .spec-pill.blue { background: var(--brand-blue); color: #fff; border-color: var(--brand-blue); }
+  .guide { margin-top: 12px; padding: 12px 14px; background: #fffbeb; border: 1.5px dashed #f59e0b; border-radius: 10px; font-size: 12.5px; color: #92400e; line-height: 1.7; }
+  .guide b { color: var(--brand-blue); }
+
+  .thumb-nav { display: flex; flex-direction: column; gap: 8px; background: #fff; border: 1.5px solid var(--brand-dark); border-radius: 14px; padding: 12px; position: fixed; top: 20px; left: 16px; width: 96px; max-height: calc(100vh - 40px); overflow-y: auto; z-index: 100; box-shadow: 4px 4px 0 rgba(16,22,47,0.1); }
+  .thumb-nav::before { content: 'NAV'; display: block; font-size: 10px; font-weight: 900; letter-spacing: 2px; color: var(--brand-blue); text-align: center; padding: 2px 0 6px; border-bottom: 1.5px dashed var(--border-color); font-family: 'JetBrains Mono', monospace; margin-bottom: 2px; }
+  .thumb { aspect-ratio: 3/4; background: var(--bg-light); border: 1.5px solid var(--brand-dark); border-radius: 8px; font-weight: 900; color: var(--brand-dark); text-align: center; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px; transition: all 0.12s; }
+  .thumb .num { font-size: 18px; line-height: 1; }
+  .thumb .lbl { font-size: 9px; color: var(--text-gray); font-weight: 700; }
+  .thumb:hover { background: var(--brand-yellow); transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  .poster-frame { display: grid; grid-template-columns: auto 460px; gap: 28px; align-items: start; justify-content: center; margin-bottom: 60px; position: relative; }
+  .poster-main { display: flex; flex-direction: column; align-items: center; }
+  .poster-frame .label { font-size: 13px; font-weight: 900; color: var(--brand-dark); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .poster-frame .label::before { content: ''; width: 28px; height: 4px; background: var(--brand-blue); border-radius: 2px; }
+  .poster-frame .label em { font-style: normal; color: var(--text-gray); font-weight: 600; font-size: 12px; margin-left: 12px; }
+
+  .poster-scaler { width: 435px; height: 581px; position: relative; border: 2px solid var(--brand-dark); border-radius: 12px; box-shadow: 8px 8px 0 var(--brand-dark); overflow: hidden; }
+  .poster { width: 1242px; height: 1660px; transform: scale(0.35); transform-origin: top left; position: absolute; top: 0; left: 0; background: var(--bg-light); overflow: hidden; font-family: 'Noto Sans SC', sans-serif; box-sizing: border-box; padding: 32px; }
+
+  .dl-btn { display: block; margin: 20px auto 0; background: var(--brand-blue); color: #fff; border: 3px solid var(--brand-dark); box-shadow: 6px 6px 0 var(--brand-dark); padding: 14px 32px; font-family: 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 900; letter-spacing: 1.5px; cursor: pointer; border-radius: 10px; transition: all 0.15s; }
+  .dl-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--brand-dark); }
+  .dl-btn:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  .copy-panel { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 18px 20px; box-shadow: 6px 6px 0 rgba(16,22,47,0.08); display: flex; flex-direction: column; gap: 14px; }
+  .copy-panel .cp-title { font-size: 13px; font-weight: 900; color: var(--brand-blue); letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; padding-bottom: 10px; border-bottom: 1.5px dashed var(--border-color); }
+  .cp-section { display: flex; flex-direction: column; gap: 6px; }
+  .cp-section .cp-label { font-size: 11px; font-weight: 900; color: var(--text-gray); letter-spacing: 1.5px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+  .cp-section .cp-box { background: #fafbfc; border: 1.5px solid var(--border-color); border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.55; color: var(--text-main); white-space: pre-wrap; word-break: break-word; }
+  .cp-section .cp-btn { align-self: flex-end; background: var(--brand-dark); color: #fff; border: none; padding: 5px 14px; font-size: 11px; font-weight: 700; letter-spacing: 1px; border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', sans-serif; transition: all 0.15s; }
+  .cp-section .cp-btn:hover { background: var(--brand-blue); }
+  .cp-section .cp-btn.copied { background: var(--brand-green); }
+  .cp-section .cp-box.hashtags { color: var(--brand-blue); font-weight: 600; font-size: 12.5px; }
+  .cp-section .cp-box.wechat { background: #f0fdf4; border-color: #86efac; font-size: 13px; }
+  .cp-section .cp-box.community { background: #eff6ff; border-color: #93c5fd; font-size: 13px; }
+  .cp-tabs { display: flex; gap: 4px; background: #f3f4f6; padding: 4px; border-radius: 10px; }
+  .cp-tab { flex: 1; background: transparent; border: none; padding: 8px 6px; font-size: 12px; font-weight: 700; color: var(--text-gray); cursor: pointer; border-radius: 8px; font-family: 'Noto Sans SC', sans-serif; transition: all 0.15s; }
+  .cp-tab:hover { color: var(--text-main); }
+  .cp-tab.active { background: #fff; color: var(--tab-color, var(--brand-dark)); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 900; }
+  .cp-pane { display: flex; flex-direction: column; gap: 14px; }
+  .cp-pane.hidden { display: none; }
+  .cp-tip { background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; font-size: 11.5px; color: #92400e; line-height: 1.5; }
+
+  /* 海报内部通用元素 */
+  .p-inner { position: relative; width: 100%; height: 100%; padding: 80px 72px; display: flex; flex-direction: column; background: #fff; border: 5px solid var(--brand-dark); border-radius: 36px; box-sizing: border-box; overflow: hidden; }
+  .p-dots { position: absolute; top: 0; right: 0; width: 400px; height: 400px; background-image: radial-gradient(#64748b 1.5px, transparent 1.5px); background-size: 28px 28px; opacity: 0.1; pointer-events: none; }
+  .p-dots.bl { top: auto; right: auto; bottom: 0; left: 0; }
+  .p-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 700; letter-spacing: 1px; color: var(--brand-blue); text-transform: uppercase; background: var(--brand-blue-soft); border: 1.5px solid var(--brand-blue); padding: 10px 22px; border-radius: 100px; width: fit-content; font-family: 'JetBrains Mono', monospace; }
+  .p-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-blue); }
+  .hl { position: relative; display: inline-block; z-index: 1; }
+  .hl::after { content: ''; position: absolute; bottom: 10px; left: -4px; right: -4px; height: 24px; background: var(--brand-yellow); z-index: -1; opacity: 0.75; }
+
+  /* ========== P1 封面 ========== */
+  .p1 .p-inner { background: #fff; justify-content: center; }
+  .p1 .hook { font-size: 132px; font-weight: 900; line-height: 1.05; letter-spacing: -4px; color: var(--brand-dark); margin-top: 40px; }
+  .p1 .sub { font-size: 48px; font-weight: 500; color: var(--text-gray); margin-top: 40px; line-height: 1.5; }
+  .p1 .course-chip { margin-top: 60px; background: var(--brand-dark); color: #fff; padding: 24px 32px; border-radius: 18px; display: inline-flex; align-items: center; gap: 20px; width: fit-content; box-shadow: 10px 10px 0 var(--brand-blue); }
+  .p1 .course-chip .name { font-size: 42px; font-weight: 900; letter-spacing: -0.5px; }
+  .p1 .course-chip .meta { font-size: 26px; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+  .p1 .corner-mark { position: absolute; top: 70px; right: 70px; background: var(--brand-yellow); border: 2px solid var(--brand-dark); padding: 12px 18px; border-radius: 12px; font-size: 24px; font-weight: 900; transform: rotate(4deg); box-shadow: 6px 6px 0 var(--brand-dark); }
+
+  /* ========== P1B 共鸣版 ========== */
+  .p1b .p-inner { justify-content: flex-start; background: #fff; color: var(--brand-dark); padding: 60px 50px; }
+  .p1b .p-dots { opacity: 0.05; }
+  .p1b .corner-mark { background: var(--brand-blue); color: #fff; top: 40px; right: 40px; transform: rotate(8deg); font-size: 44px !important; padding: 15px 30px !important; border-radius: 20px !important; }
+  .p1b .p-tag { background: var(--brand-dark); color: var(--brand-yellow); border: none; font-size: 36px !important; padding: 12px 35px !important; }
+  .p1b .hook { font-size: 140px; line-height: 1.1; letter-spacing: -4px; margin-top: 40px; font-weight: 900; }
+  .p1b .hook .soft { color: var(--text-gray); font-size: 0.7em; display: block; margin-bottom: 10px; }
+  .p1b .hook .hl { color: #fff; background: var(--brand-blue); padding: 5px 25px; border-radius: 15px; box-shadow: 12px 12px 0 var(--brand-yellow); display: inline-block; margin-top: 15px; }
+  .p1b .contrast-wrapper { margin-top: 60px; display: flex; flex-direction: column; gap: 40px; flex: 1; }
+  .p1b .xhs-card { border: 5px solid var(--brand-dark); border-radius: 35px; padding: 40px 50px; position: relative; box-shadow: 15px 15px 0 var(--brand-dark); }
+  .p1b .xhs-card.bad { background: #f8fafc; box-shadow: 15px 15px 0 #cbd5e1; }
+  .p1b .xhs-card.good { background: var(--brand-blue-soft); box-shadow: 15px 15px 0 var(--brand-blue); }
+  .p1b .xhs-card .label-tag { position: absolute; top: -30px; left: 40px; background: var(--brand-dark); color: #fff; padding: 10px 30px; border-radius: 12px; font-size: 32px !important; font-weight: 900; font-family: 'JetBrains Mono', monospace; border: 3px solid var(--brand-dark); }
+  .p1b .xhs-card.good .label-tag { background: var(--brand-blue); border-color: var(--brand-blue); }
+  .p1b .xhs-card .content { display: flex; align-items: center; gap: 40px; }
+  .p1b .xhs-card .techs { font-size: 72px !important; font-weight: 900; line-height: 1.1; color: var(--brand-dark); flex: 1; }
+  .p1b .xhs-card .desc { font-size: 38px !important; color: var(--text-gray); font-weight: 600; flex: 1.2; line-height: 1.4 !important; }
+  .p1b .xhs-card.good .techs { color: var(--brand-blue-deep); }
+  .p1b .xhs-card.good .desc { color: var(--brand-blue-deep); }
+  .p1b .course-chip { margin-top: 40px; background: var(--brand-dark); color: #fff; padding: 35px 50px; border-radius: 28px; display: flex; justify-content: space-between; align-items: center; width: 100%; box-shadow: none; }
+  .p1b .course-chip .name { font-size: 52px !important; font-weight: 900; }
+
+  /* ========== P1C 转岗版 ========== */
+  .p1c .p-inner { justify-content: flex-start; background: var(--brand-blue-soft); color: var(--brand-dark); padding: 80px 60px; }
+  .p1c .hook { font-size: 150px; line-height: 1; letter-spacing: -5px; font-weight: 900; color: var(--brand-dark); margin-top: 20px; }
+  .p1c .hook span { color: var(--brand-blue); background: #fff; padding: 0 10px; border-radius: 10px; }
+  .p1c .transition-box { margin-top: 60px; display: flex; flex-direction: column; align-items: center; gap: 30px; flex: 1; }
+  .p1c .stage-card { width: 100%; border: 6px solid var(--brand-dark); border-radius: 45px; padding: 60px; position: relative; background: #fff; box-shadow: 18px 18px 0 var(--brand-dark); }
+  .p1c .stage-card.from { background: #fcfdfe; }
+  .p1c .stage-card.to { background: var(--brand-yellow); box-shadow: 18px 18px 0 var(--brand-blue); }
+  .p1c .stage-card .badge { position: absolute; top: -45px; left: 60px; padding: 12px 40px; border-radius: 18px; border: 5px solid var(--brand-dark); font-size: 38px !important; font-weight: 900; transform: rotate(-3deg); z-index: 5; }
+  .p1c .stage-card.from .badge { background: #64748b; color: #fff; }
+  .p1c .stage-card.to .badge { background: var(--brand-blue); color: #fff; }
+  .p1c .stage-card .text { font-size: 110px !important; font-weight: 900; line-height: 1.1; letter-spacing: -3px; }
+  .p1c .big-arrow { font-size: 140px; font-weight: 900; color: var(--brand-blue); text-shadow: 10px 10px 0 var(--brand-dark); margin: -10px 0; z-index: 2; line-height: 1; }
+  .p1c .course-chip { background: var(--brand-dark); color: #fff; border-radius: 30px; padding: 40px 50px; margin-top: 30px; width: 100%; text-align: center; box-shadow: 12px 12px 0 var(--brand-blue); }
+  .p1c .course-chip .name { font-size: 52px !important; font-weight: 900; color: #fff; }
+
+  /* ========== P1D 角色版 ========== */
+  .p1d .p-inner { justify-content: flex-start; background: var(--brand-dark); color: #fff; padding: 80px 60px; }
+  .p1d .p-dots { background-image: radial-gradient(rgba(255,255,255,0.2) 1.5px, transparent 1.5px); }
+  .p1d .hook { font-size: 120px; line-height: 1.1; letter-spacing: -3px; font-weight: 900; color: #fff; margin-top: 40px; }
+  .p1d .hook em { font-style: normal; color: var(--brand-yellow); background: rgba(255,255,255,0.1); padding: 0 15px; border-radius: 15px; }
+  .p1d .sticker-grid { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; transform: rotate(-2deg); flex: 1; }
+  .p1d .sticker { background: #fff; color: var(--brand-dark); border: 5px solid var(--brand-dark); border-radius: 25px; padding: 40px 25px; font-size: 58px !important; font-weight: 900; text-align: center; box-shadow: 12px 12px 0 var(--brand-yellow); display: flex; align-items: center; justify-content: center; }
+  .p1d .sticker:nth-child(even) { transform: rotate(4deg); background: var(--brand-yellow); box-shadow: 12px 12px 0 var(--brand-blue); }
+  .p1d .sticker:nth-child(3n) { transform: rotate(-3deg); background: var(--brand-blue); color: #fff; box-shadow: 12px 12px 0 #fff; }
+  .p1d .bottom-text { margin-top: 60px; font-size: 48px !important; font-weight: 800; color: #fff; line-height: 1.5 !important; text-align: center; border-top: 3px dashed rgba(255,206,68,0.5); padding-top: 50px; }
+  .p1d .course-chip { margin-top: 40px; background: #fff; color: var(--brand-dark); box-shadow: 12px 12px 0 var(--brand-blue); padding: 35px 50px; border-radius: 30px; }
+  .p1d .course-chip .name { font-size: 52px; font-weight: 900; }
+
+  /* ========== P2 痛点对比 ========== */
+  .p2 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(37,99,235,0.20), transparent 28%),
+      linear-gradient(180deg, #f8faff 0%, var(--brand-blue-soft) 100%);
+  }
+  .p2 .eyebrow { margin-top: 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .p2 .eyebrow .line { flex: 1; height: 3px; background: repeating-linear-gradient(90deg, var(--brand-dark) 0 18px, transparent 18px 30px); opacity: 0.25; }
+  .p2 .eyebrow .txt { font-size: 24px; font-weight: 900; letter-spacing: 3px; color: var(--brand-blue); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+  .p2 h2 { font-size: 92px; font-weight: 900; line-height: 1.08; letter-spacing: -3px; margin-top: 24px; }
+  .p2 .lead { margin-top: 18px; font-size: 30px; line-height: 1.45; color: var(--text-gray); font-weight: 600; max-width: 930px; }
+
+  .p2 .split { margin-top: 46px; display: grid; grid-template-columns: 1fr 74px 1fr; gap: 20px; flex: 1; align-items: stretch; }
+  .p2 .divider { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+  .p2 .divider .bar { width: 6px; flex: 1; border-radius: 999px; background: linear-gradient(180deg, rgba(16,22,47,0.12) 0%, rgba(37,99,235,0.5) 100%); }
+  .p2 .divider .vs { width: 64px; height: 64px; border-radius: 18px; border: 2px solid var(--brand-dark); background: var(--brand-yellow); display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900; font-family: 'JetBrains Mono', monospace; box-shadow: 5px 5px 0 var(--brand-dark); transform: rotate(-8deg); }
+
+  .p2 .col { border: 2px solid var(--brand-dark); border-radius: 28px; padding: 34px 32px 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .p2 .col::after { content: ''; position: absolute; inset: auto -60px -60px auto; width: 180px; height: 180px; border-radius: 50%; opacity: 0.08; }
+  .p2 .col.bad { box-shadow: 10px 10px 0 #94a3b8; background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%); }
+  .p2 .col.bad::after { background: var(--text-gray); }
+  .p2 .col.good { box-shadow: 12px 12px 0 var(--brand-blue); background: linear-gradient(180deg, #fff 0%, var(--brand-blue-soft) 100%); }
+  .p2 .col.good::after { background: var(--brand-blue); }
+
+  .p2 .col-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+  .p2 .badge { min-width: 72px; height: 72px; border-radius: 20px; border: 2px solid var(--brand-dark); display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+  .p2 .col.bad .badge { background: #dbe4ee; color: #475569; }
+  .p2 .col.good .badge { background: var(--brand-blue); color: #fff; }
+  .p2 .kicker { font-size: 18px; font-weight: 900; letter-spacing: 2px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; margin-bottom: 8px; }
+  .p2 .col.bad .kicker { color: #64748b; }
+  .p2 .col.good .kicker { color: var(--brand-blue); }
+  .p2 .col h3 { font-size: 42px; font-weight: 900; line-height: 1.15; letter-spacing: -1px; }
+  .p2 .col-sub { margin-top: 10px; font-size: 23px; line-height: 1.4; font-weight: 600; }
+  .p2 .col.bad .col-sub { color: #64748b; }
+  .p2 .col.good .col-sub { color: var(--brand-blue-deep); }
+
+  .p2 .col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .p2 .col li { min-height: 92px; padding: 18px 18px 18px 78px; border-radius: 18px; border: 1.5px solid var(--brand-dark); position: relative; font-size: 26px; line-height: 1.35; font-weight: 700; display: flex; align-items: center; }
+  .p2 .col li::before { position: absolute; left: 18px; top: 18px; width: 42px; height: 42px; border-radius: 12px; border: 2px solid var(--brand-dark); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+  .p2 .col.bad li { background: rgba(255,255,255,0.78); color: #475569; }
+  .p2 .col.bad li::before { content: 'X'; background: #e2e8f0; color: var(--brand-red); }
+  .p2 .col.good li { background: #fff; color: var(--text-main); }
+  .p2 .col.good li::before { content: 'GO'; background: var(--brand-blue-soft); color: var(--brand-blue); font-size: 16px; letter-spacing: -0.5px; }
+
+  .p2 .bottom-note { margin-top: 28px; padding: 18px 22px; border-radius: 18px; border: 2px solid var(--brand-dark); background: #fff; font-size: 24px; line-height: 1.45; font-weight: 700; box-shadow: 7px 7px 0 var(--brand-yellow); }
+
+  /* P3 对话 */
+  .p3 .p-inner { background: #fff; }
+  .p3 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p3 .chat { margin-top: 50px; background: var(--bg-light); border: 2px solid var(--brand-dark); border-radius: 24px; overflow: hidden; box-shadow: 14px 14px 0 var(--brand-yellow); flex: 1; }
+  .p3 .chat-header { background: var(--brand-dark); color: #fff; padding: 18px 26px; display: flex; align-items: center; gap: 14px; font-size: 24px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+  .p3 .chat-header .dots { display: flex; gap: 6px; }
+  .p3 .chat-header .dots span { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+  .p3 .chat-header .dots span:nth-child(2) { background: #febc2e; }
+  .p3 .chat-header .dots span:nth-child(3) { background: #28c940; }
+  .p3 .chat-body { padding: 32px 36px; display: flex; flex-direction: column; gap: 20px; }
+  .p3 .bubble { padding: 20px 26px; border-radius: 20px; font-size: 34px; line-height: 1.45; font-weight: 500; max-width: 85%; }
+  .p3 .bubble.left { background: #fff; border: 1.5px solid var(--border-color); align-self: flex-start; border-bottom-left-radius: 6px; }
+  .p3 .bubble.right { background: var(--brand-blue); color: #fff; align-self: flex-end; border-bottom-right-radius: 6px; }
+  .p3 .bubble .name { font-size: 20px; color: var(--brand-blue); font-weight: 900; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+  .p3 .bubble.right .name { color: var(--brand-yellow); }
+
+  /* P4 能力 4 卡 */
+  .p4 .p-inner { background: #fff; }
+  .p4 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p4 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p4 .grid4 { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; flex: 1; }
+  .p4 .cell { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 32px 28px; box-shadow: 8px 8px 0 var(--brand-dark); display: flex; flex-direction: column; gap: 14px; }
+  .p4 .cell:nth-child(1) { background: var(--brand-blue-soft); box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p4 .cell:nth-child(2) { background: #f5f3ff; box-shadow: 8px 8px 0 #7c3aed; }
+  .p4 .cell:nth-child(3) { background: #fff9e0; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p4 .cell:nth-child(4) { background: #e8faf0; box-shadow: 8px 8px 0 var(--brand-green); }
+  .p4 .cell .num { font-size: 52px; font-weight: 900; color: var(--brand-dark); font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .p4 .cell h4 { font-size: 38px; font-weight: 900; line-height: 1.2; }
+  .p4 .cell p { font-size: 26px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P5 Phase */
+  .p5 .p-inner { background: var(--bg-light); padding-bottom: 60px; }
+  .p5 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -1.5px; margin-top: 20px; }
+  .p5 .phases { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .p5 .ph { display: flex; align-items: flex-start; gap: 20px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 26px 28px; box-shadow: 5px 5px 0 rgba(37,99,235,0.25); }
+  .p5 .ph .badge { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 24px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); box-shadow: 3px 3px 0 var(--brand-dark); }
+  .p5 .ph h5 { font-size: 34px; font-weight: 900; margin-bottom: 6px; }
+  .p5 .ph p { font-size: 24px; color: var(--text-gray); line-height: 1.3; font-weight: 600; }
+
+  /* P6 工具栈 深色 */
+  .p6 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p6 .p-dots { opacity: 0.15; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p6 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p6 h2 { color: #fff; font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p6 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p6 .tool-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; flex: 1; }
+  .p6 .tool { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 22px 18px; text-align: center; }
+  .p6 .tool .name { font-size: 26px; font-weight: 900; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; letter-spacing: -0.5px; }
+  .p6 .tool .cat { font-size: 18px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+  .p6 .tool.hot { background: var(--brand-blue); border-color: var(--brand-blue); box-shadow: 4px 4px 0 var(--brand-yellow); }
+  .p6 .tool.hot .cat { color: var(--brand-yellow); }
+
+  /* P7 学员反馈 */
+  .p7 .p-inner { background: #fff; }
+  .p7 h2 { font-size: 76px; font-weight: 900; line-height: 1.2; letter-spacing: -2px; margin-top: 30px; }
+  .p7 .quotes { margin-top: 50px; display: flex; flex-direction: column; gap: 22px; flex: 1; }
+  .p7 .q { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 30px 34px; position: relative; box-shadow: 8px 8px 0 var(--brand-dark); }
+  .p7 .q:nth-child(2) { margin-left: 60px; box-shadow: 8px 8px 0 var(--brand-blue); background: var(--brand-blue-soft); }
+  .p7 .q:nth-child(3) { margin-left: 120px; box-shadow: 8px 8px 0 var(--brand-yellow); background: #fff9e0; }
+  .p7 .q::before { content: '"'; position: absolute; top: -12px; left: 20px; font-size: 100px; font-weight: 900; color: var(--brand-blue); line-height: 1; font-family: Georgia, serif; }
+  .p7 .q .txt { font-size: 36px; line-height: 1.45; font-weight: 500; margin-left: 40px; }
+  .p7 .q .who { font-size: 22px; color: var(--text-gray); margin-top: 14px; margin-left: 40px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+  /* P8 课程配置 */
+  .p8 .p-inner { background: var(--bg-cream); }
+  .p8 h2 { font-size: 84px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p8 .stats { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .p8 .stat { background: #fff; border: 2px solid var(--brand-dark); border-radius: 18px; padding: 28px 30px; box-shadow: 6px 6px 0 var(--brand-dark); }
+  .p8 .stat .num { font-size: 88px; font-weight: 900; line-height: 1; letter-spacing: -3px; font-family: 'JetBrains Mono', monospace; color: var(--brand-dark); }
+  .p8 .stat .num em { font-style: normal; color: var(--brand-blue); font-size: 48px; margin-left: 6px; }
+  .p8 .stat .lbl { font-size: 26px; font-weight: 700; color: var(--text-gray); margin-top: 10px; }
+  .p8 .format-list { margin-top: 30px; background: var(--brand-dark); color: #fff; border-radius: 18px; padding: 30px 34px; box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p8 .format-list h4 { font-size: 32px; font-weight: 900; color: var(--brand-yellow); margin-bottom: 16px; }
+  .p8 .format-list ul { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; list-style: none; }
+  .p8 .format-list li { font-size: 26px; font-weight: 500; padding-left: 26px; position: relative; line-height: 1.4; }
+  .p8 .format-list li::before { content: '✓'; position: absolute; left: 0; color: var(--brand-yellow); font-weight: 900; }
+
+  /* P9 CTA */
+  .p9 .p-inner { background: #fff; align-items: center; justify-content: center; text-align: center; }
+  .p9 .big-q { font-size: 56px; font-weight: 500; color: var(--text-gray); margin-top: 20px; line-height: 1.5; }
+  .p9 .giant { font-size: 150px; font-weight: 900; line-height: 1; letter-spacing: -5px; color: var(--brand-dark); margin-top: 40px; }
+  .p9 .giant em { font-style: normal; color: var(--brand-blue); }
+  .p9 .sub-hook { margin-top: 50px; font-size: 40px; font-weight: 700; line-height: 1.5; max-width: 860px; }
+  .p9 .arrow { margin-top: 60px; display: inline-flex; align-items: center; gap: 20px; padding: 20px 32px; background: var(--brand-yellow); border: 2px solid var(--brand-dark); border-radius: 100px; box-shadow: 8px 8px 0 var(--brand-dark); font-size: 38px; font-weight: 900; }
+  .p9 .arrow .arr { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--brand-dark); color: var(--brand-yellow); border-radius: 50%; font-size: 26px; }
+  .p9 .note { margin-top: 40px; font-size: 24px; color: var(--text-gray); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+
+  /* P10 岗位 explainer */
+  .p10 .p-inner { background: linear-gradient(180deg, #f8faff 0%, var(--brand-blue-soft) 100%); }
+  .p10 h2 { font-size: 84px; font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-top: 20px; }
+  .p10 h2 em { font-style: normal; color: var(--brand-blue); background: var(--brand-yellow); padding: 0 12px; border-radius: 12px; }
+  .p10 .one-liner { margin-top: 24px; padding: 28px 30px; background: var(--brand-dark); color: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; box-shadow: 8px 8px 0 var(--brand-blue); font-size: 36px; font-weight: 700; line-height: 1.5; }
+  .p10 .one-liner .yellow { color: var(--brand-yellow); font-weight: 900; }
+  .p10 .day-title { margin-top: 26px; font-size: 30px; font-weight: 900; color: var(--brand-blue); font-family: 'JetBrains Mono', monospace; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; }
+  .p10 .day-title::before { content: ''; width: 32px; height: 4px; background: var(--brand-blue); border-radius: 2px; }
+  .p10 .tasks { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .p10 .task { background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; gap: 18px; box-shadow: 4px 4px 0 rgba(37,99,235,0.25); }
+  .p10 .task .num { width: 48px; height: 48px; border-radius: 12px; background: var(--brand-blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p10 .task .text { font-size: 28px; font-weight: 700; line-height: 1.3; }
+  .p10 .task .text em { font-style: normal; color: var(--brand-blue); font-weight: 900; }
+  .p10 .meta-row { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .p10 .meta-row .m { background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 16px; text-align: center; }
+  .p10 .meta-row .m .lbl { font-size: 18px; color: var(--text-gray); font-weight: 900; font-family: 'JetBrains Mono', monospace; letter-spacing: 1.5px; text-transform: uppercase; }
+  .p10 .meta-row .m .val { font-size: 28px; color: var(--brand-blue); font-weight: 900; margin-top: 6px; line-height: 1.2; }
+
+  /* P11 升级对比 */
+  .p11 .p-inner { background: var(--bg-cream); }
+  .p11 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p11 .matrix { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p11 .row { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 0; border: 2px solid var(--brand-dark); border-radius: 14px; overflow: hidden; }
+  .p11 .row .dim { background: var(--brand-dark); color: #fff; padding: 16px 18px; font-size: 22px; font-weight: 900; display: flex; align-items: center; }
+  .p11 .row .v1 { padding: 16px 18px; font-size: 20px; color: var(--text-gray); background: #f5f5f5; border-right: 1.5px solid var(--border-color); line-height: 1.4; }
+  .p11 .row .v2 { padding: 16px 18px; font-size: 20px; color: var(--brand-dark); background: var(--brand-blue-soft); font-weight: 600; line-height: 1.4; }
+
+  /* P12 5 Quest 深潜 */
+  .p12 .p-inner { background: var(--brand-blue-soft); }
+  .p12 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p12 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p12 .dom-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p12 .dom { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 26px 24px; box-shadow: 5px 5px 0 rgba(37,99,235,0.3); }
+  .p12 .dom.full { grid-column: 1 / -1; }
+  .p12 .dom .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .p12 .dom h4 { font-size: 30px; font-weight: 900; }
+  .p12 .dom .cnt { font-size: 32px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-blue); }
+  .p12 .dom p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+  .p12 .bot-stat { margin-top: 24px; background: var(--brand-blue); color: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 28px; display: flex; justify-content: space-around; text-align: center; }
+  .p12 .bot-stat .s .n { font-size: 52px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+  .p12 .bot-stat .s .l { font-size: 20px; font-weight: 600; opacity: 0.9; margin-top: 4px; }
+
+  /* P13 V1 vs V2（深色） */
+  .p13 .p-inner { background: linear-gradient(160deg, #1e3a8a 0%, #10162f 100%); color: #fff; }
+  .p13 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p13 .p-tag { background: rgba(37,99,235,0.25); border-color: var(--brand-blue); color: #93c5fd; }
+  .p13 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p13 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p13 .exclusive-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; background: var(--brand-blue); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 22px; font-weight: 900; letter-spacing: 1px; border: 2px solid rgba(255,255,255,0.3); }
+  .p13 .mod-list { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; }
+  .p13 .mod { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 20px 22px; }
+  .p13 .mod .n { font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-yellow); margin-bottom: 4px; }
+  .p13 .mod h4 { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .p13 .mod p { font-size: 20px; color: rgba(255,255,255,0.6); line-height: 1.35; font-weight: 500; }
+
+  /* P14 受众 */
+  .p14 .p-inner { background: #fff; }
+  .p14 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p14 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p14 .audience { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .p14 .aud { border: 2px solid var(--brand-dark); border-radius: 18px; padding: 28px 30px; display: flex; gap: 20px; align-items: flex-start; }
+  .p14 .aud:nth-child(1) { background: var(--brand-blue-soft); box-shadow: 6px 6px 0 var(--brand-blue); }
+  .p14 .aud:nth-child(2) { background: #f5f3ff; box-shadow: 6px 6px 0 #7c3aed; }
+  .p14 .aud:nth-child(3) { background: #ecfdf5; box-shadow: 6px 6px 0 var(--brand-green); }
+  .p14 .aud:nth-child(4) { background: #fff9e0; box-shadow: 6px 6px 0 var(--brand-yellow); }
+  .p14 .aud .emoji { font-size: 48px; flex-shrink: 0; }
+  .p14 .aud h4 { font-size: 32px; font-weight: 900; margin-bottom: 6px; }
+  .p14 .aud p { font-size: 24px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P15 Lab 分布 */
+  .p15 .p-inner { background: var(--bg-light); }
+  .p15 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p15 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p15 .lab-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; }
+  .p15 .lab-cat { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 22px; box-shadow: 5px 5px 0 var(--brand-dark); }
+  .p15 .lab-cat .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .p15 .lab-cat h4 { font-size: 28px; font-weight: 900; }
+  .p15 .lab-cat .cnt { font-size: 36px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-blue); }
+  .p15 .lab-cat p { font-size: 20px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P16 时间线 */
+  .p16 .p-inner { background: #fff; }
+  .p16 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p16 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p16 .timeline { margin-top: 36px; display: flex; flex-direction: column; gap: 0; flex: 1; position: relative; padding-left: 50px; }
+  .p16 .timeline::before { content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 4px; background: var(--brand-blue); border-radius: 2px; }
+  .p16 .tl-item { position: relative; padding: 20px 28px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; margin-bottom: 14px; }
+  .p16 .tl-item::before { content: ''; position: absolute; left: -38px; top: 24px; width: 20px; height: 20px; border-radius: 50%; border: 3px solid var(--brand-dark); background: var(--brand-blue); }
+  .p16 .tl-item .week { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-blue); }
+  .p16 .tl-item h4 { font-size: 30px; font-weight: 900; margin: 4px 0; }
+  .p16 .tl-item p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P17 毕业作品 */
+  .p17 .p-inner { background: var(--brand-blue-soft); }
+  .p17 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p17 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p17 .proj-list { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p17 .proj { display: flex; gap: 20px; align-items: flex-start; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 22px 24px; background: #fff; box-shadow: 5px 5px 0 rgba(37,99,235,0.25); }
+  .p17 .proj .num { width: 52px; height: 52px; border-radius: 50%; background: var(--brand-blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p17 .proj h4 { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .p17 .proj p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P18 学习方式 */
+  .p18 .p-inner { background: #fff; }
+  .p18 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p18 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p18 .ways { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; }
+  .p18 .way { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 30px 32px; display: flex; flex-direction: column; gap: 10px; }
+  .p18 .way:nth-child(1) { background: var(--brand-blue-soft); box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p18 .way:nth-child(2) { background: #ecfdf5; box-shadow: 8px 8px 0 var(--brand-green); }
+  .p18 .way:nth-child(3) { background: #f5f3ff; box-shadow: 8px 8px 0 #7c3aed; }
+  .p18 .way:nth-child(4) { background: #fff9e0; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p18 .way .ic { font-size: 44px; }
+  .p18 .way h4 { font-size: 32px; font-weight: 900; }
+  .p18 .way p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P19 项目路径 */
+  .p19 .p-inner { background: #eff6ff; }
+  .p19 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p19 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p19 .flow { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .p19 .step { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 26px; box-shadow: 5px 5px 0 rgba(37,99,235,0.25); display: flex; gap: 20px; align-items: flex-start; }
+  .p19 .step .n { width: 60px; height: 60px; border-radius: 14px; background: var(--brand-blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p19 .step h4 { font-size: 30px; font-weight: 900; margin-bottom: 6px; }
+  .p19 .step p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+  .p19 .cert { margin-top: 20px; background: var(--brand-dark); color: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 22px 28px; text-align: center; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p19 .cert .big { font-size: 34px; font-weight: 900; color: var(--brand-yellow); }
+  .p19 .cert .sub { font-size: 22px; margin-top: 6px; opacity: 0.85; }
+
+  /* P20 RAG 核心架构 */
+  .p20 .p-inner { background: var(--bg-light); }
+  .p20 h2 { font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p20 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p20 .rag-layers { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .p20 .layer { display: grid; grid-template-columns: 90px 1fr; border: 2px solid var(--brand-dark); border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 4px 4px 0 var(--brand-dark); }
+  .p20 .layer .step-num { background: var(--brand-blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 900; font-family: 'JetBrains Mono', monospace; border-right: 2px solid var(--brand-dark); }
+  .p20 .layer .content { padding: 16px 22px; display: flex; flex-direction: column; gap: 4px; }
+  .p20 .layer .nm { font-size: 28px; font-weight: 900; color: var(--brand-dark); }
+  .p20 .layer .nm em { font-style: normal; color: var(--brand-blue); font-family: 'JetBrains Mono', monospace; font-size: 22px; margin-left: 10px; }
+  .p20 .layer .dsc { font-size: 20px; color: var(--text-gray); font-weight: 500; line-height: 1.35; }
+
+  /* P21 FAQ */
+  .p21 .p-inner { background: #fff; }
+  .p21 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p21 .faq-list { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .p21 .faq { border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 26px; background: #fff; box-shadow: 4px 4px 0 rgba(16,22,47,0.08); }
+  .p21 .faq .q { font-size: 28px; font-weight: 900; color: var(--brand-dark); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; }
+  .p21 .faq .q::before { content: 'Q'; background: var(--brand-blue); color: #fff; padding: 4px 12px; border-radius: 8px; font-size: 20px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+  .p21 .faq .a { font-size: 22px; color: var(--text-gray); line-height: 1.5; font-weight: 500; padding-left: 42px; }
+
+  /* P22 4 步方法论 */
+  .p22 .p-inner { background: linear-gradient(180deg, var(--brand-blue-soft) 0%, #fff9e0 100%); }
+  .p22 h2 { font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p22 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p22 .flow { margin-top: 32px; display: flex; flex-direction: column; gap: 0; flex: 1; position: relative; padding-left: 60px; }
+  .p22 .flow::before { content: ''; position: absolute; left: 26px; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, #2563eb, #7c3aed, #10b981, #f59e0b); border-radius: 3px; }
+  .p22 .stage { position: relative; padding: 20px 24px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; margin-bottom: 14px; box-shadow: 4px 4px 0 rgba(16,22,47,0.08); }
+  .p22 .stage::before { content: ''; position: absolute; left: -44px; top: 22px; width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--brand-dark); }
+  .p22 .stage:nth-child(1)::before { background: #2563eb; }
+  .p22 .stage:nth-child(2)::before { background: #7c3aed; }
+  .p22 .stage:nth-child(3)::before { background: #10b981; }
+  .p22 .stage:nth-child(4)::before { background: #f59e0b; }
+  .p22 .stage .stg { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; margin-bottom: 4px; }
+  .p22 .stage h4 { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .p22 .stage p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P23 AI Tutor 取代老师（深色） */
+  .p23 .p-inner { background: linear-gradient(160deg, #1e3a8a 0%, #10162f 100%); color: #fff; }
+  .p23 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p23 .p-tag { background: rgba(37,99,235,0.25); border-color: var(--brand-blue); color: #93c5fd; }
+  .p23 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p23 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p23 .exclusive-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; background: var(--brand-blue); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 22px; font-weight: 900; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; border: 2px solid rgba(255,255,255,0.3); }
+  .p23 .tutor-grid { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p23 .tg-card { background: rgba(255,255,255,0.07); border: 2px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 10px; }
+  .p23 .tg-card .icn { font-size: 38px; }
+  .p23 .tg-card h4 { font-size: 28px; font-weight: 900; color: var(--brand-yellow); }
+  .p23 .tg-card .v1 { font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.5); text-decoration: line-through; }
+  .p23 .tg-card .v2 { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.35; }
+  .p23 .price-bar { margin-top: 22px; background: var(--brand-yellow); color: var(--brand-dark); border: 2px solid var(--brand-dark); border-radius: 16px; padding: 20px 26px; text-align: center; font-size: 26px; font-weight: 900; box-shadow: 6px 6px 0 var(--brand-blue); }
+
+  /* P24 就业方向 */
+  .p24 .p-inner { background: #fff; }
+  .p24 h2 { font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p24 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p24 .top-stats { margin-top: 28px; display: flex; gap: 16px; }
+  .p24 .top-stats .s { flex: 1; text-align: center; background: var(--brand-dark); color: #fff; border-radius: 16px; padding: 18px 12px; border: 2px solid var(--brand-dark); }
+  .p24 .top-stats .s .n { font-size: 44px; font-weight: 900; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .p24 .top-stats .s .n em { font-style: normal; font-size: 26px; }
+  .p24 .top-stats .s .l { font-size: 18px; font-weight: 600; opacity: 0.7; margin-top: 6px; }
+  .p24 .skill-bars { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .p24 .sk { border: 2px solid var(--brand-dark); border-radius: 14px; padding: 16px 22px; background: #fff; }
+  .p24 .sk .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .p24 .sk h4 { font-size: 24px; font-weight: 900; }
+  .p24 .sk .freq { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-blue); }
+  .p24 .sk .bar { height: 14px; background: #e5e7eb; border-radius: 7px; overflow: hidden; border: 1.5px solid var(--brand-dark); }
+  .p24 .sk .bar .fill { height: 100%; border-radius: 6px; }
+  .p24 .companies { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .p24 .companies span { background: var(--bg-light); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 6px 14px; font-size: 16px; font-weight: 700; color: var(--text-gray); }
+
+  /* P25 薪资（深色） */
+  .p25 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p25 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p25 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p25 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p25 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p25 .salary-tiers { margin-top: 28px; display: flex; gap: 16px; }
+  .p25 .tier { flex: 1; background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 18px; padding: 22px 20px; text-align: center; }
+  .p25 .tier .range { font-size: 34px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-yellow); line-height: 1.1; }
+  .p25 .tier .range em { font-style: normal; font-size: 20px; }
+  .p25 .tier .level { font-size: 20px; font-weight: 700; margin-top: 8px; opacity: 0.7; }
+  .p25 .co-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; }
+  .p25 .co { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 14px 18px; }
+  .p25 .co .name { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+  .p25 .co .role { font-size: 16px; opacity: 0.6; margin-bottom: 6px; }
+  .p25 .co .sal { font-size: 18px; font-weight: 700; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; }
+  .p25 .disclaimer { margin-top: 18px; text-align: center; font-size: 16px; color: rgba(255,255,255,0.5); font-weight: 500; line-height: 1.5; }
+
+  /* ======================================================================
+     🔴 小红书字号 v3 — 卡片不爆 / 阅读舒服
+     ====================================================================== */
+  .poster .p-tag { font-size: 30px !important; padding: 12px 24px !important; }
+  .poster .corner-mark { font-size: 28px !important; padding: 12px 18px !important; }
+  /* 正文级 36px */
+  .poster p, .poster li, .poster .lbl, .poster .cat, .poster .meta,
+  .poster .who, .poster .sub, .poster .desc, .poster .info p, .poster .phase, .poster .phase-tag,
+  .poster .week, .poster .stg, .poster .ver, .poster .role, .poster .sal,
+  .poster .old, .poster .new, .poster .dim, .poster .v1, .poster .v2,
+  .poster .topic, .poster .items, .poster .src,
+  .poster .bottom-note, .poster .note, .poster .freq,
+  .poster .companies span, .poster .sub-info, .poster .lead,
+  .poster .mod p, .poster .tl-item p, .poster .faq .a, .poster .proj p,
+  .poster .aud p, .poster .lab-cat p, .poster .dom p, .poster .ph p,
+  .poster .tier .level, .poster .cell p, .poster .col li,
+  .poster .stat .lbl, .poster .chat-header, .poster .kpi .lbl,
+  .poster .stage p, .poster .step p, .poster .way p,
+  .poster .def-card .def, .poster .tool .cat, .poster .layer .dsc,
+  .poster .tg-card .v2, .poster .delta .lbl, .poster .cert .sub, .poster .disclaimer {
+    font-size: 36px !important;
+    line-height: 1.45 !important;
+    font-weight: 500 !important;
+  }
+  /* 二级标题 44px */
+  .poster h3, .poster h4, .poster h5,
+  .poster .mod h4, .poster .aud h4, .poster .proj h4, .poster .faq .q,
+  .poster .ph h5, .poster .dom h4, .poster .lab-cat h4, .poster .step h4,
+  .poster .way h4, .poster .tl-item h4, .poster .stage h4,
+  .poster .cell h4, .poster .col h3, .poster .mod h3,
+  .poster .tool .name, .poster .tg-card h4, .poster .layer .nm {
+    font-size: 44px !important;
+    line-height: 1.2 !important;
+    font-weight: 900 !important;
+  }
+  .poster .bubble, .poster .q .txt, .poster .cert .big {
+    font-size: 44px !important;
+    line-height: 1.4 !important;
+  }
+  .poster h2 {
+    font-size: 88px !important;
+    line-height: 1.15 !important;
+    letter-spacing: -2px !important;
+    font-weight: 900 !important;
+  }
+  .p1 .hook { font-size: 140px !important; line-height: 1.05 !important; }
+  .p9 .giant { font-size: 150px !important; }
+  .poster .sub-hook { font-size: 44px !important; line-height: 1.5 !important; }
+  .poster .stat .num em, .poster .tier .range em { font-size: 32px !important; }
+  .hl::after { height: 22px !important; bottom: 12px !important; }
+
+  /* ========== 课程标识 bar ========== */
+  .p-course-bar {
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    transform: translateX(-50%);
+    background: var(--brand-blue);
+    color: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 100px;
+    padding: 10px 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    box-shadow: 4px 4px 0 var(--brand-dark);
+    white-space: nowrap;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .p-course-bar::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--brand-yellow);
+  }
+  /* 深底海报换黄底深字 */
+  .p6 .p-course-bar, .p13 .p-course-bar, .p23 .p-course-bar, .p25 .p-course-bar {
+    background: var(--brand-yellow);
+    color: var(--brand-dark);
+  }
+  .p6 .p-course-bar::before, .p13 .p-course-bar::before, .p23 .p-course-bar::before, .p25 .p-course-bar::before {
+    background: var(--brand-blue);
+  }
+  /* 封面 / CTA 隐藏 bar */
+  .p1 .p-course-bar, .p1b .p-course-bar, .p1c .p-course-bar, .p1d .p-course-bar, .p9 .p-course-bar { display: none; }
+
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <header class="page-head">
+    <h1>AI Engineer 入门 · V2 · AI Tutor 带练 · <span>小红书素材集</span></h1>
+    <p>28 张投流素材（4 封面变体 + 24 配图），面向全球华人软件工程师 / 云 / 数据岗转 AI Engineer。每张右侧自带三通道文案（小红书 / 朋友圈 / 社群），一键复制。</p>
+    <div class="spec-row">
+      <span class="spec-pill blue">1242 × 1660 竖版</span>
+      <span class="spec-pill">聚光合规</span>
+      <span class="spec-pill">28 张全套</span>
+      <span class="spec-pill">$299 AUD 自学</span>
+      <span class="spec-pill">html2canvas @2x</span>
+    </div>
+    <div class="guide">
+      <b>导出前自检：</b>① 无二维码 / 微信号 / 手机号 &nbsp; ② 无"最 / 第一 / 唯一 / 100% / 保证 / 包就业"等绝对化用语 &nbsp; ③ 薪资数据标来源（levels.fyi / Seek / LinkedIn）
+    </div>
+  </header>
+
+  <nav class="thumb-nav">
+    <a href="#p1" class="thumb"><span class="num">1</span><span class="lbl">封面</span></a>
+    <a href="#p1b" class="thumb"><span class="num">1B</span><span class="lbl">共鸣</span></a>
+    <a href="#p1c" class="thumb"><span class="num">1C</span><span class="lbl">转岗</span></a>
+    <a href="#p1d" class="thumb"><span class="num">1D</span><span class="lbl">角色</span></a>
+    <a href="#p2" class="thumb"><span class="num">2</span><span class="lbl">痛点</span></a>
+    <a href="#p3" class="thumb"><span class="num">3</span><span class="lbl">对话</span></a>
+    <a href="#p4" class="thumb"><span class="num">4</span><span class="lbl">能力</span></a>
+    <a href="#p5" class="thumb"><span class="num">5</span><span class="lbl">Phase</span></a>
+    <a href="#p6" class="thumb"><span class="num">6</span><span class="lbl">工具</span></a>
+    <a href="#p7" class="thumb"><span class="num">7</span><span class="lbl">反馈</span></a>
+    <a href="#p8" class="thumb"><span class="num">8</span><span class="lbl">配置</span></a>
+    <a href="#p9" class="thumb"><span class="num">9</span><span class="lbl">引导</span></a>
+    <a href="#p10" class="thumb"><span class="num">10</span><span class="lbl">岗位</span></a>
+    <a href="#p11" class="thumb"><span class="num">11</span><span class="lbl">升级</span></a>
+    <a href="#p12" class="thumb"><span class="num">12</span><span class="lbl">5 Quest</span></a>
+    <a href="#p13" class="thumb"><span class="num">13</span><span class="lbl">V1vs2</span></a>
+    <a href="#p14" class="thumb"><span class="num">14</span><span class="lbl">受众</span></a>
+    <a href="#p15" class="thumb"><span class="num">15</span><span class="lbl">Lab</span></a>
+    <a href="#p16" class="thumb"><span class="num">16</span><span class="lbl">时间线</span></a>
+    <a href="#p17" class="thumb"><span class="num">17</span><span class="lbl">产出</span></a>
+    <a href="#p18" class="thumb"><span class="num">18</span><span class="lbl">学法</span></a>
+    <a href="#p19" class="thumb"><span class="num">19</span><span class="lbl">Project</span></a>
+    <a href="#p20" class="thumb"><span class="num">20</span><span class="lbl">RAG</span></a>
+    <a href="#p21" class="thumb"><span class="num">21</span><span class="lbl">FAQ</span></a>
+    <a href="#p22" class="thumb"><span class="num">22</span><span class="lbl">方法论</span></a>
+    <a href="#p23" class="thumb"><span class="num">23</span><span class="lbl">Tutor</span></a>
+    <a href="#p24" class="thumb"><span class="num">24</span><span class="lbl">就业</span></a>
+    <a href="#p25" class="thumb"><span class="num">25</span><span class="lbl">薪资</span></a>
+  </nav>
+
+  <!-- P1 封面 -->
+  <div class="poster-frame" id="p1"><div class="label">P1 封面 <em>· hook / 身份切换</em></div><div class="poster-scaler"><div class="poster p1" id="poster-1"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="corner-mark">V2 · $299 💙</div>
+    <div class="p-tag"><span class="dot"></span>AI ENGINEER · RAG 入门</div>
+    <div class="hook">写了 5 年后端<br>今年开始<span class="hl">上 LLM</span></div>
+    <div class="sub">4 周 · 79 节课 · 5 节 AI Tutor Quest<br>从会调 API 到能把 RAG 做成系统</div>
+    <div class="course-chip"><div><div class="name">AI Engineer 入门 · V2</div><div class="meta">4 WEEK · 79 LESSONS · 5 QUEST · $299 AUD</div></div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1" data-slug="p1-cover">⬇ 下载 PNG</button></div>
+
+  <!-- P1B 共鸣版 -->
+  <div class="poster-frame" id="p1b"><div class="label">P1B 封面 <em>· 共鸣版</em></div><div class="poster-scaler"><div class="poster p1b" id="poster-1b"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="corner-mark">RAG 上线 💡</div>
+    <div class="p-tag"><span class="dot"></span>AI ENGINEER · V2</div>
+    <div class="hook">
+      <span class="soft">会调 OpenAI API</span>
+      不等于你能<br>
+      <span class="hl">上线 RAG</span>
+    </div>
+    <div class="contrast-wrapper">
+      <div class="xhs-card bad">
+        <div class="label-tag">most devs stop here</div>
+        <div class="content">
+          <div class="techs">写个<br>Demo</div>
+          <div class="desc">能跑通 chat 接口，Chunk 策略 / 召回率 / Eval 完全不会。</div>
+        </div>
+      </div>
+      <div class="xhs-card good">
+        <div class="label-tag">ai engineer 2026</div>
+        <div class="content">
+          <div class="techs">RAG<br>上线</div>
+          <div class="desc">拆 chunk 调 top-k 做 eval 部署云端，有作品能 demo 给面试官。</div>
+        </div>
+      </div>
+    </div>
+    <div class="course-chip"><div class="name">AI Engineer 入门 · V2 · $299</div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1b" data-slug="p1b-cover-resonance">⬇ 下载 PNG</button></div>
+
+  <!-- P1C 转岗版 -->
+  <div class="poster-frame" id="p1c"><div class="label">P1C 封面 <em>· 转岗版</em></div><div class="poster-scaler"><div class="poster p1c" id="poster-1c"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="hook">
+      从写 CRUD<br>
+      到能上<br>
+      <span>RAG 系统</span>
+    </div>
+    <div class="transition-box">
+      <div class="stage-card from">
+        <div class="badge">BEFORE</div>
+        <div class="text">调 API 写 Demo<br>不懂 Embedding</div>
+      </div>
+      <div class="big-arrow">↓</div>
+      <div class="stage-card to">
+        <div class="badge">AFTER</div>
+        <div class="text">拆 chunk 做 eval<br>部署 PDF RAG</div>
+      </div>
+    </div>
+    <div class="course-chip"><div class="name">AI Engineer 入门 · V2 · $299</div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1c" data-slug="p1c-cover-transition">⬇ 下载 PNG</button></div>
+
+  <!-- P1D 角色版 -->
+  <div class="poster-frame" id="p1d"><div class="label">P1D 封面 <em>· 角色版</em></div><div class="poster-scaler"><div class="poster p1d" id="poster-1d"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="hook">
+      不懂 RAG<br>
+      再写 5 年后端<br>
+      <em>也接不到 AI 活</em>
+    </div>
+    <div class="sticker-grid">
+      <div class="sticker">写 Prompt</div>
+      <div class="sticker">跑 Embedding</div>
+      <div class="sticker">搭向量库</div>
+      <div class="sticker">拆 Chunk</div>
+      <div class="sticker">做 Eval</div>
+      <div class="sticker">部署云端</div>
+    </div>
+    <div class="bottom-text">
+      4 周把 6 件事<br>从"听过"变成"做过"。
+    </div>
+    <div class="course-chip"><div class="name">AI Engineer 入门 · V2 · $299</div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1d" data-slug="p1d-cover-role">⬇ 下载 PNG</button></div>
+
+  <!-- P2 痛点对比 -->
+  <div class="poster-frame" id="p2"><div class="label">P2 痛点 <em>· 调 API 写 Demo vs 设计系统</em></div><div class="poster-scaler"><div class="poster p2" id="poster-2"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>真实差距</div>
+    <div class="eyebrow">
+      <span class="line"></span>
+      <span class="txt">engineer gap</span>
+      <span class="line"></span>
+    </div>
+    <h2>同样都用 OpenAI<br>差距在<span class="hl">系统能力</span></h2>
+    <p class="lead">会调 chat completion 的人很多，能把 RAG 做成扛流量、可 eval、能排错的系统的人很少。这一步不迈过去，永远是"做 Demo 的"不是"做系统的"。</p>
+
+    <div class="split">
+      <div class="col bad">
+        <div class="col-head">
+          <div>
+            <div class="kicker">api caller</div>
+            <h3>API<br>调用者</h3>
+            <div class="col-sub">跑得起来就算完 — 上线就炸。</div>
+          </div>
+          <div class="badge">01</div>
+        </div>
+        <ul>
+          <li>只会调 chat completions</li>
+          <li>Chunk / top-k 不知道怎么选</li>
+          <li>效果烂不知道怎么 debug</li>
+          <li>成本爆了才发现没监控</li>
+        </ul>
+      </div>
+
+      <div class="divider"><div class="bar"></div><div class="vs">VS</div><div class="bar"></div></div>
+
+      <div class="col good">
+        <div class="col-head">
+          <div>
+            <div class="kicker">ai engineer 2026</div>
+            <h3>AI 系统<br>工程师</h3>
+            <div class="col-sub">设计 / Eval / 上线 / 排错全跑通。</div>
+          </div>
+          <div class="badge">02</div>
+        </div>
+        <ul>
+          <li>画 RAG 架构拆 6 层组件</li>
+          <li>对比 chunk 策略做 A/B</li>
+          <li>写 eval 看召回率和 faithfulness</li>
+          <li>部署到 Azure / AWS 能扛流量</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-note">2026 的 AI Engineer 分水岭 — 不是会不会用 LLM，是能不能把 LLM 做成系统。</div>
+  </div></div></div><button class="dl-btn" data-target="poster-2" data-slug="p2-pain">⬇ 下载 PNG</button></div>
+
+  <!-- P3 对话 -->
+  <div class="poster-frame" id="p3"><div class="label">P3 对话 <em>· 后端群实录</em></div><div class="poster-scaler"><div class="poster p3" id="poster-3"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>后端群实录</div>
+    <h2>写后端的哥们儿<br><span class="hl">都在聊 RAG</span></h2>
+    <div class="chat">
+      <div class="chat-header"><div class="dots"><span></span><span></span><span></span></div><span>#backend-to-ai</span></div>
+      <div class="chat-body">
+        <div class="bubble left"><div class="name">@老王 · 后端 5Y</div>老板让做个公司文档 RAG<br>一脸懵 😶 Embedding 是啥</div>
+        <div class="bubble right"><div class="name">@阿哲 · 刚转 AI</div>先别急 $299 有个入门课<br>从 Embedding 讲到部署</div>
+        <div class="bubble left"><div class="name">@老王 · 后端 5Y</div>不会 ML 能学吗<br>我反向传播都忘了</div>
+        <div class="bubble right"><div class="name">@阿哲 · 刚转 AI</div>普及向讲原理<br>会写 Python 就够了</div>
+      </div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-3" data-slug="p3-chat">⬇ 下载 PNG</button></div>
+
+  <!-- P4 能力 -->
+  <div class="poster-frame" id="p4"><div class="label">P4 能力 <em>· 毕业 4 件事</em></div><div class="poster-scaler"><div class="poster p4" id="poster-4"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>学完你会</div>
+    <h2>毕业那天 你会<em>真的会</em><br>这四件事</h2>
+    <div class="grid4">
+      <div class="cell"><div class="num">01</div><h4>理解 LLM 底层原理</h4><p>Tokenization / Embedding / Attention — 不只是会调，知道为啥</p></div>
+      <div class="cell"><div class="num">02</div><h4>做出你的第一个 GPT</h4><p>Prompt 四要素 + 发到 GPT Store 能分享给别人</p></div>
+      <div class="cell"><div class="num">03</div><h4>从零搭 Python RAG</h4><p>不靠 LangChain · Embedding + ChromaDB + 检索生成全链路</p></div>
+      <div class="cell"><div class="num">04</div><h4>部署生产级 PDF RAG</h4><p>Streamlit UI + Azure OpenAI · 拿到能公开访问的 URL</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-4" data-slug="p4-outcomes">⬇ 下载 PNG</button></div>
+
+  <!-- P5 Phase -->
+  <div class="poster-frame" id="p5"><div class="label">P5 Phase <em>· 4 板块自主节奏</em></div><div class="poster-scaler"><div class="poster p5" id="poster-5"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>完整学习路径</div>
+    <h2>4 大板块<br>从 GenAI 到<span class="hl">RAG 部署</span></h2>
+    <div class="phases">
+      <div class="ph"><div class="badge" style="background:#6366f1">P1</div><div><h5>GenAI 基础与生产力</h5><p>13 节 · GenAI 分类 / Prompt 工程 / Agent / LLMOps 地图</p></div></div>
+      <div class="ph"><div class="badge" style="background:#10b981">P2</div><div><h5>ML 基础 + Transformer 原理</h5><p>12 节 · ML 三范式 / Deep Learning / Attention / Embedding</p></div></div>
+      <div class="ph"><div class="badge" style="background:#f59e0b">P3</div><div><h5>Prompt + 第一个 GPT</h5><p>高级 prompt / Fine-Tuning 决策 / Project 1：发到 GPT Store</p></div></div>
+      <div class="ph"><div class="badge" style="background:#2563eb">P4</div><div><h5>RAG 工程实战</h5><p>Embedding / 向量 DB / Python 从零搭 RAG / PDF RAG 部署</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-5" data-slug="p5-phases">⬇ 下载 PNG</button></div>
+
+  <!-- P6 工具栈 -->
+  <div class="poster-frame" id="p6"><div class="label">P6 工具 <em>· 深色 / 真实工具链</em></div><div class="poster-scaler"><div class="poster p6" id="poster-6"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>TOOL STACK · 2026</div>
+    <h2>4 周真的用到的<br><em>RAG 工具链</em></h2>
+    <div class="tool-grid">
+      <div class="tool hot"><div class="name">OpenAI</div><div class="cat">LLM / Embedding</div></div>
+      <div class="tool hot"><div class="name">Claude</div><div class="cat">LLM 对比</div></div>
+      <div class="tool"><div class="name">Azure OpenAI</div><div class="cat">企业部署</div></div>
+      <div class="tool hot"><div class="name">ChromaDB</div><div class="cat">向量 DB</div></div>
+      <div class="tool"><div class="name">Pinecone</div><div class="cat">托管向量库</div></div>
+      <div class="tool"><div class="name">Qdrant</div><div class="cat">向量 DB 对比</div></div>
+      <div class="tool hot"><div class="name">LangChain</div><div class="cat">RAG 框架</div></div>
+      <div class="tool"><div class="name">Python</div><div class="cat">从零实现</div></div>
+      <div class="tool hot"><div class="name">Streamlit</div><div class="cat">前端部署</div></div>
+      <div class="tool"><div class="name">HuggingFace</div><div class="cat">模型 / 微调</div></div>
+      <div class="tool"><div class="name">Colab</div><div class="cat">Fine-Tuning</div></div>
+      <div class="tool"><div class="name">Langfuse</div><div class="cat">LLMOps 观测</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-6" data-slug="p6-tools">⬇ 下载 PNG</button></div>
+
+  <!-- P7 反馈 -->
+  <div class="poster-frame" id="p7"><div class="label">P7 反馈 <em>· 软性学员声音</em></div><div class="poster-scaler"><div class="poster p7" id="poster-7"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>学员反馈</div>
+    <h2>4 周后同学都在群里<br><span class="hl">晒自己的 RAG Demo</span></h2>
+    <div class="quotes">
+      <div class="q"><p class="txt">W3 跟 AI Tutor Quest 在自己电脑把 ChromaDB 跑起来，终于知道召回率是啥</p><div class="who">— 后端工程师 · 3Y 经验</div></div>
+      <div class="q"><p class="txt">以前 Embedding 和 Fine-tune 分不清，这次被逼着做 eval 对比 chunk 策略，感觉是真上手了</p><div class="who">— 数据工程师 · 刚转 AI</div></div>
+      <div class="q"><p class="txt">$299 拿到的 RAG 内容，比之前公司花几千订的某平台还扎实，AI Tutor 答疑真的秒级</p><div class="who">— 云工程师 · 5Y DevOps</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-7" data-slug="p7-feedback">⬇ 下载 PNG</button></div>
+
+  <!-- P8 课程配置 -->
+  <div class="poster-frame" id="p8"><div class="label">P8 配置 <em>· 课程基本盘</em></div><div class="poster-scaler"><div class="poster p8" id="poster-8"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>$299 你买到的是什么</div>
+    <h2>不是视频合集<br>是<span class="hl">完整 AI Engineer 入门包</span></h2>
+    <div class="stats">
+      <div class="stat"><div class="num">79<em>节</em></div><div class="lbl">Video + Lab + Quest + Info</div></div>
+      <div class="stat"><div class="num">25<em>个</em></div><div class="lbl">浏览器互动 Lab</div></div>
+      <div class="stat"><div class="num">5<em>节</em></div><div class="lbl">AI Tutor 带练 Quest</div></div>
+      <div class="stat"><div class="num">3<em>个</em></div><div class="lbl">渐进式 Project</div></div>
+    </div>
+    <div class="format-list"><h4>课程之外还包含</h4><ul>
+      <li>AI Tutor 24/7 中英双语</li><li>每个 Lab 独立成课</li>
+      <li>Learn 章节独立成课</li><li>视频永久回看 + 倍速</li>
+      <li>GPT Store / RAG 代码模板</li><li>Bootcamp 衔接通道</li></ul></div>
+  </div></div></div><button class="dl-btn" data-target="poster-8" data-slug="p8-config">⬇ 下载 PNG</button></div>
+
+  <!-- P9 CTA -->
+  <div class="poster-frame" id="p9"><div class="label">P9 引导 <em>· 软性收尾</em></div><div class="poster-scaler"><div class="poster p9" id="poster-9"><div class="p-inner">
+    <div class="p-dots"></div><div class="p-dots bl"></div>
+    <div class="p-tag" style="margin:0 auto"><span class="dot"></span>READY?</div>
+    <div class="big-q">技术背景想转 AI Engineer<br>但不想先花几千块试水？</div>
+    <div class="giant">$299<br>先<em>打底</em></div>
+    <div class="sub-hook">先看课程大纲、Quest 列表、LLM Lab 清单<br>觉得合适再报 — 不用赌一把</div>
+    <div class="arrow"><span class="arr">→</span><span>搜「匠人 AI · AI Engineer 入门」</span></div>
+    <div class="note">JIANGREN.COM.AU &nbsp;·&nbsp; 2026</div>
+  </div></div></div><button class="dl-btn" data-target="poster-9" data-slug="p9-cta">⬇ 下载 PNG</button></div>
+
+  <!-- P10 岗位 explainer -->
+  <div class="poster-frame" id="p10"><div class="label">P10 岗位 <em>· AI Engineer 一天</em></div><div class="poster-scaler"><div class="poster p10" id="poster-10"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>2026 AI ENGINEER · 一句话讲清</div>
+    <h2>不是训模型的 ML 科学家<br>是把 LLM <em>做成系统</em>的人</h2>
+
+    <div class="one-liner">
+      <span class="yellow">AI Engineer</span> = 把 LLM / RAG / Agent<br>
+      <span class="yellow">做成能扛流量的生产系统</span>的那群人。
+    </div>
+
+    <div class="day-title">A DAY IN THE ROLE</div>
+    <div class="tasks">
+      <div class="task"><div class="num">01</div><div class="text">早上：读一篇 <em>Embedding benchmark</em>，对比 text-embedding-3 vs 开源</div></div>
+      <div class="task"><div class="num">02</div><div class="text">下午：改 <em>Chunk 策略</em>，跑 eval 看召回率提升多少</div></div>
+      <div class="task"><div class="num">03</div><div class="text">傍晚：调 <em>top-k + re-rank</em>，让客服机器人少犯错</div></div>
+      <div class="task"><div class="num">04</div><div class="text">下周：搭 <em>eval framework</em>，让上线质量可量化</div></div>
+    </div>
+
+    <div class="meta-row">
+      <div class="m"><div class="lbl">岗位</div><div class="val">AI Engineer</div></div>
+      <div class="m"><div class="lbl">门槛</div><div class="val">会写 Python</div></div>
+      <div class="m"><div class="lbl">产出</div><div class="val">能上线的 RAG</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-10" data-slug="p10-role-explainer">⬇ 下载 PNG</button></div>
+
+  <!-- P11 报课前 vs 毕业后 -->
+  <div class="poster-frame" id="p11"><div class="label">P11 升级 <em>· 报课前 vs 毕业后</em></div><div class="poster-scaler"><div class="poster p11" id="poster-11"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>能力升级</div>
+    <h2>报课前 vs 毕业后<br>你<span class="hl">具体多会什么</span></h2>
+    <div class="matrix">
+      <div class="row"><div class="dim">对 LLM</div><div class="v1">只会调 chat API</div><div class="v2">理解 token / embedding / attention</div></div>
+      <div class="row"><div class="dim">做 RAG</div><div class="v1">不知道怎么开始</div><div class="v2">能解释 + 设计 + 排错一个 RAG</div></div>
+      <div class="row"><div class="dim">Embedding</div><div class="v1">不知道是啥</div><div class="v2">懂 cosine / dot / 向量空间</div></div>
+      <div class="row"><div class="dim">效果烂</div><div class="v1">只能换模型</div><div class="v2">会 debug chunk / top-k / re-rank</div></div>
+      <div class="row"><div class="dim">Fine-tune</div><div class="v1">以为啥都要微调</div><div class="v2">知道什么时候该用 RAG 什么时候 Fine-tune</div></div>
+      <div class="row"><div class="dim">部署</div><div class="v1">没部署过 AI 应用</div><div class="v2">Streamlit + Azure OpenAI 上线</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-11" data-slug="p11-matrix">⬇ 下载 PNG</button></div>
+
+  <!-- P12 5 Quest 深潜 -->
+  <div class="poster-frame" id="p12"><div class="label">P12 Quest <em>· 5 节 AI Tutor 带练</em></div><div class="poster-scaler"><div class="poster p12" id="poster-12"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>V2 独家 · AI 主动带练</div>
+    <h2>5 节 <em>AI Tutor Quest</em><br>在你真实环境上做</h2>
+    <div class="dom-grid">
+      <div class="dom"><div class="top"><h4>Q01 第一个 Prompt 工程任务</h4><div class="cnt">30 min</div></div><p>技术摘要 + 结构化 JSON 输出 — 学会 R-T-C-E 框架</p></div>
+      <div class="dom"><div class="top"><h4>Q02 Colab 跑通 Fine-Tuning</h4><div class="cnt">40 min</div></div><p>打开 Colab → 装依赖 → LoRA → 跑 loop → 对比 base vs FT</p></div>
+      <div class="dom"><div class="top"><h4>Q03 本地搭 RAG Pipeline</h4><div class="cnt">45 min</div></div><p>在你电脑装 ChromaDB，Load → Chunk → Embed → 问答全跑通</p></div>
+      <div class="dom"><div class="top"><h4>Q04 Chunk 策略对比实验</h4><div class="cnt">40 min</div></div><p>同一份文档换 3 种 chunk 策略，看召回率和答案质量变化</p></div>
+      <div class="dom full"><div class="top"><h4>Q05 部署 RAG 应用到云端</h4><div class="cnt">50 min</div></div><p>Streamlit UI + Azure OpenAI，拿到能公开访问的 URL（真上线）</p></div>
+    </div>
+    <div class="bot-stat">
+      <div class="s"><div class="n">5</div><div class="l">Quest</div></div>
+      <div class="s"><div class="n">205</div><div class="l">总分钟</div></div>
+      <div class="s"><div class="n">5</div><div class="l">真产出</div></div>
+      <div class="s"><div class="n">1v1</div><div class="l">AI 带练</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-12" data-slug="p12-quest">⬇ 下载 PNG</button></div>
+
+  <!-- P13 V1 vs V2 -->
+  <div class="poster-frame" id="p13"><div class="label">P13 对比 <em>· V1 人类老师 vs V2 AI Tutor</em></div><div class="poster-scaler"><div class="poster p13" id="poster-13"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>V1 → V2 · 整段升级</div>
+    <h2>同样的内容<br>从 <em>$2-3K</em> 压到 $299</h2>
+    <div class="exclusive-badge">🔥 V2 · AI Tutor 取代人类老师</div>
+    <div class="mod-list">
+      <div class="mod"><div class="n">01 · 答疑</div><h4>V1 群里排队 → V2 秒级</h4><p>以前问完老师等半天，现在 AI Tutor 24/7 中英双语秒回</p></div>
+      <div class="mod"><div class="n">02 · 节奏</div><h4>V1 按周直播 → V2 自主</h4><p>按自己节奏学，不用迁就开课时间，回看无限次</p></div>
+      <div class="mod"><div class="n">03 · 带练</div><h4>V1 被动问 → V2 主动带</h4><p>AI 先开口带节奏，追问验证，不是等你卡壳才答</p></div>
+      <div class="mod"><div class="n">04 · 记忆</div><h4>V1 换老师忘 → V2 跨 session</h4><p>AI 记得你之前哪节卡住，下次衔接不用重讲</p></div>
+      <div class="mod"><div class="n">05 · 价格</div><h4>$2-3K 压到 $299</h4><p>训练营级内容搬进自学课，省的是老师工资</p></div>
+      <div class="mod"><div class="n">06 · 容量</div><h4>V1 限额 → V2 无上限</h4><p>不限招生 · 全球华人随时开学</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-13" data-slug="p13-v1-v2">⬇ 下载 PNG</button></div>
+
+  <!-- P14 受众 -->
+  <div class="poster-frame" id="p14"><div class="label">P14 受众 <em>· 适合谁学</em></div><div class="poster-scaler"><div class="poster p14" id="poster-14"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>适合谁</div>
+    <h2>这 4 类技术人<em>回报最高</em></h2>
+    <div class="audience">
+      <div class="aud"><div class="emoji">⚙️</div><div><h4>后端 / 全栈工程师想转 AI</h4><p>写过 CRUD 接 API 熟，缺 LLM / RAG 的系统认知</p></div></div>
+      <div class="aud"><div class="emoji">☁️</div><div><h4>Infra / DevOps / Cloud 工程师</h4><p>想接 AI Platform 方向 — 先看懂上层系统长啥样</p></div></div>
+      <div class="aud"><div class="emoji">📊</div><div><h4>数据工程师 / 数据分析师</h4><p>已经会 Python + SQL，想把数据技能延伸到 RAG / Embedding</p></div></div>
+      <div class="aud"><div class="emoji">🎯</div><div><h4>准备进 AI Engineer Bootcamp</h4><p>$299 先打底 — 再 $9,999 进深度实战营不掉队</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-14" data-slug="p14-audience">⬇ 下载 PNG</button></div>
+
+  <!-- P15 Lab 分布 -->
+  <div class="poster-frame" id="p15"><div class="label">P15 Lab <em>· 25 Lab + 5 Quest 分布</em></div><div class="poster-scaler"><div class="poster p15" id="poster-15"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>LAB · 25 + QUEST · 5</div>
+    <h2>每个板块都配<em>动手实操</em></h2>
+    <div class="lab-grid">
+      <div class="lab-cat"><div class="top"><h4>GenAI 基础 Lab</h4><div class="cnt">6</div></div><p>First LLM · Hello AI · MLOps vs LLMOps · Data Eng</p></div>
+      <div class="lab-cat"><div class="top"><h4>Prompt Lab</h4><div class="cnt">5</div></div><p>Clear Task · Constraints · CoT · Chain-of-Thought 组合</p></div>
+      <div class="lab-cat"><div class="top"><h4>ML / Transformer Lab</h4><div class="cnt">4</div></div><p>AI / ML Basics · Attention & Tokens · Fine-Tuning</p></div>
+      <div class="lab-cat"><div class="top"><h4>Embedding + 向量 DB Lab</h4><div class="cnt">5</div></div><p>Embedding 可视化 · Cosine · ChromaDB · Top-K 调优</p></div>
+      <div class="lab-cat"><div class="top"><h4>RAG 工程 Lab</h4><div class="cnt">5</div></div><p>Chunk 策略 · 召回率 · re-rank · Eval · 成本优化</p></div>
+      <div class="lab-cat"><div class="top"><h4>Quest · AI 带练</h4><div class="cnt">5</div></div><p>Prompt · Fine-Tune · 本地 RAG · Chunk 对比 · 云部署</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-15" data-slug="p15-labs">⬇ 下载 PNG</button></div>
+
+  <!-- P16 时间线 -->
+  <div class="poster-frame" id="p16"><div class="label">P16 时间线 <em>· 4 周自主节奏</em></div><div class="poster-scaler"><div class="poster p16" id="poster-16"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>4 WEEK · 自主节奏</div>
+    <h2>4 周节奏<br>但<em>你自己说了算</em></h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="week">WEEK 1</div><h4>GenAI + ML 基础（13 + 12 节）</h4><p>GenAI 分类 / Prompt 工程 / LLMOps 地图 + ML / DL / Transformer 原理</p></div>
+      <div class="tl-item"><div class="week">WEEK 2</div><h4>Prompt + 第一个 GPT</h4><p>高级 prompt 技巧 + Fine-Tuning 决策 + Project 1：GPT Store 发布</p></div>
+      <div class="tl-item"><div class="week">WEEK 3</div><h4>Embedding + 向量数据库</h4><p>Tokenizer / Embedding 矩阵 / ChromaDB 操作 / cosine / top-k</p></div>
+      <div class="tl-item"><div class="week">WEEK 4</div><h4>RAG 工程 + 部署上云</h4><p>Project 2：Python 从零 RAG + Project 3：PDF RAG 部署到 Azure</p></div>
+      <div class="tl-item"><div class="week">BONUS</div><h4>衔接 Bootcamp / Agent 方向</h4><p>学完再看 AI Engineer Bootcamp 或 Agent / MCP / Fine-tune 进阶不掉队</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-16" data-slug="p16-timeline">⬇ 下载 PNG</button></div>
+
+  <!-- P17 毕业作品 -->
+  <div class="poster-frame" id="p17"><div class="label">P17 产出 <em>· 学完能做的真事</em></div><div class="poster-scaler"><div class="poster p17" id="poster-17"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>学完能做</div>
+    <h2>4 周后你能做的<br>这些<em>真事</em></h2>
+    <div class="proj-list">
+      <div class="proj"><div class="num">01</div><div><h4>发布一个你自己的 GPT</h4><p>在 GPT Store 发出去 · 能分享链接让别人用</p></div></div>
+      <div class="proj"><div class="num">02</div><div><h4>本地跑通一个 RAG</h4><p>ChromaDB + Python 在自己电脑上做问答 — 理解底层</p></div></div>
+      <div class="proj"><div class="num">03</div><div><h4>部署 PDF RAG 到云</h4><p>Streamlit + Azure OpenAI · 拿到能公开访问的 URL</p></div></div>
+      <div class="proj"><div class="num">04</div><div><h4>写 RAG eval 评估</h4><p>看召回率 · faithfulness · 成本 · 真知道好坏</p></div></div>
+      <div class="proj"><div class="num">05</div><div><h4>Debug 召回率问题</h4><p>拆 chunk · 调 top-k · 加 re-rank — 有排错能力</p></div></div>
+      <div class="proj"><div class="num">06</div><div><h4>跟 AI 面试官聊 RAG</h4><p>解释架构 / 边界 / 选型 — 进 AI Engineer 面试有底</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-17" data-slug="p17-outcomes">⬇ 下载 PNG</button></div>
+
+  <!-- P18 学习方式 -->
+  <div class="poster-frame" id="p18"><div class="label">P18 学法 <em>· 4 种方式组合</em></div><div class="poster-scaler"><div class="poster p18" id="poster-18"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>怎么学</div>
+    <h2>不是视频合集<br><em>4 种学法</em>组合起来</h2>
+    <div class="ways">
+      <div class="way"><div class="ic">🎥</div><h4>37 节视频</h4><p>每个知识点 8-15 min · 倍速可看 · 永久回放</p></div>
+      <div class="way"><div class="ic">🧪</div><h4>25 个互动 Lab</h4><p>浏览器里写代码 + 即时验证 · 每个 Lab 独立成课</p></div>
+      <div class="way"><div class="ic">🌟</div><h4>5 Quest AI 带练</h4><p>AI 主动出招，在你真实环境上做真事</p></div>
+      <div class="way"><div class="ic">🤖</div><h4>AI Tutor 24h</h4><p>中英双语秒级答疑 · 记得你之前问过啥</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-18" data-slug="p18-learning">⬇ 下载 PNG</button></div>
+
+  <!-- P19 3 Project -->
+  <div class="poster-frame" id="p19"><div class="label">P19 Project <em>· 3 个渐进式项目</em></div><div class="poster-scaler"><div class="poster p19" id="poster-19"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>3 个渐进式 PROJECT</div>
+    <h2>从 GPT Store<br>到<em>生产级 RAG 部署</em></h2>
+    <div class="flow">
+      <div class="step"><div class="n">P1</div><div><h4>GPT Store 发布</h4><p>零代码做出可分享的 GPT — 懂 prompt 工程 + 知识库上传 + 发布流程</p></div></div>
+      <div class="step"><div class="n">P2</div><div><h4>Python 从零搭 RAG</h4><p>不依赖 LangChain · Load → Split → Embed → Store → Retrieve → Generate 自己实现</p></div></div>
+      <div class="step"><div class="n">P3</div><div><h4>生产级 PDF RAG 部署</h4><p>Streamlit UI + Azure OpenAI + 真实 PDF 解析坑 · 部署到云端拿到 URL</p></div></div>
+    </div>
+    <div class="cert">
+      <div class="big">🎓 每个 Project 都有明确交付物</div>
+      <div class="sub">能点开访问的 Demo + 代码 repo — 面试直接放上去</div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-19" data-slug="p19-projects">⬇ 下载 PNG</button></div>
+
+  <!-- P20 RAG 核心架构 -->
+  <div class="poster-frame" id="p20"><div class="label">P20 RAG <em>· 6 层架构拆解</em></div><div class="poster-scaler"><div class="poster p20" id="poster-20"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>RAG ARCHITECTURE · 核心 6 层</div>
+    <h2>RAG 不是黑盒<br>就是<em>这 6 层组件</em></h2>
+    <div class="rag-layers">
+      <div class="layer"><div class="step-num">1</div><div class="content"><div class="nm">Load <em>加载</em></div><div class="dsc">从 PDF / Notion / DB 读原始文档</div></div></div>
+      <div class="layer"><div class="step-num">2</div><div class="content"><div class="nm">Split <em>切分</em></div><div class="dsc">按 chunk 策略切片 — 最影响效果的一步</div></div></div>
+      <div class="layer"><div class="step-num">3</div><div class="content"><div class="nm">Embed <em>向量化</em></div><div class="dsc">text-embedding-3 / bge · 把文本变数字向量</div></div></div>
+      <div class="layer"><div class="step-num">4</div><div class="content"><div class="nm">Store <em>存储</em></div><div class="dsc">ChromaDB / Pinecone · 向量库存起来可搜</div></div></div>
+      <div class="layer"><div class="step-num">5</div><div class="content"><div class="nm">Retrieve <em>检索</em></div><div class="dsc">top-k 相似 + re-rank — 找到相关文档</div></div></div>
+      <div class="layer"><div class="step-num">6</div><div class="content"><div class="nm">Generate <em>生成</em></div><div class="dsc">把检索结果 + 问题喂给 LLM 生成答案</div></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-20" data-slug="p20-rag-arch">⬇ 下载 PNG</button></div>
+
+  <!-- P21 FAQ -->
+  <div class="poster-frame" id="p21"><div class="label">P21 FAQ <em>· 5 个常被问</em></div><div class="poster-scaler"><div class="poster p21" id="poster-21"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>你可能想问</div>
+    <h2>报名前<br><span class="hl">最常被问的 5 个问题</span></h2>
+    <div class="faq-list">
+      <div class="faq"><div class="q">要不要自己买 GPU？</div><div class="a">不用。三个 Project 都跑在 GPT Store / 本地 CPU / Azure OpenAI 云 API，无需本地 GPU。</div></div>
+      <div class="faq"><div class="q">没 ML 背景能学吗？</div><div class="a">可以。ML / DL / NLP 章节是普及向，帮你看懂 LLM 原理，不需要训模型。会写 Python 函数 + 调 API 就够。</div></div>
+      <div class="faq"><div class="q">V2 AI Tutor 真的靠谱吗？</div><div class="a">一对一答疑 + 记得你之前问过啥 + 秒级响应。学完顺便"反向理解"一个生产级 AI 应用是怎么运作的。</div></div>
+      <div class="faq"><div class="q">学完能直接找 AI Engineer 工作吗？</div><div class="a">这门是入门课 — 打知识基础 + 做 Demo。要找工作建议衔接 AI Engineer Bootcamp（$9,999，含人类教练 + P3 团队项目 + 简历 / 内推）。</div></div>
+      <div class="faq"><div class="q">跟 Bootcamp 啥关系？</div><div class="a">这是 Bootcamp 官方前置入门课。学完再进 Bootcamp 不掉队 · 进阶直接学 Agent / MCP / Multi-modal。</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-21" data-slug="p21-faq">⬇ 下载 PNG</button></div>
+
+  <!-- P22 方法论 4 步 -->
+  <div class="poster-frame" id="p22"><div class="label">P22 方法论 <em>· 从 API → 系统的 4 步</em></div><div class="poster-scaler"><div class="poster p22" id="poster-22"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>API → SYSTEM · 4 步框架</div>
+    <h2>从会调 API<br>到<em>能设计系统</em></h2>
+    <div class="flow">
+      <div class="stage"><div class="stg" style="color:#2563eb">STAGE 1 · 看原理</div><h4>先搞懂 LLM 在做什么</h4><p>Token / Embedding / Attention — 不知道原理就只能靠猜</p></div>
+      <div class="stage"><div class="stg" style="color:#7c3aed">STAGE 2 · 调 API</div><h4>用起来 + 跑 Demo</h4><p>OpenAI / Claude / Azure · prompt 工程 + Fine-tune 决策</p></div>
+      <div class="stage"><div class="stg" style="color:#10b981">STAGE 3 · 拆系统</div><h4>把 RAG 拆成 6 层</h4><p>Load / Split / Embed / Store / Retrieve / Generate — 看清每层能调啥</p></div>
+      <div class="stage"><div class="stg" style="color:#f59e0b">STAGE 4 · 修效果</div><h4>Debug + Eval + 上线</h4><p>chunk / top-k / re-rank / eval / 成本 — 真做成能扛流量的系统</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-22" data-slug="p22-framework">⬇ 下载 PNG</button></div>
+
+  <!-- P23 AI Tutor 取代老师 -->
+  <div class="poster-frame" id="p23"><div class="label">P23 AI Tutor <em>· 怎么取代人类老师</em></div><div class="poster-scaler"><div class="poster p23" id="poster-23"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>V2 核心卖点 · 深度拆解</div>
+    <h2>AI Tutor 到底<br><em>怎么取代老师</em></h2>
+    <div class="exclusive-badge">🔥 V2 · 24/7 1v1 带练</div>
+    <div class="tutor-grid">
+      <div class="tg-card">
+        <div class="icn">⚡</div>
+        <h4>答疑速度</h4>
+        <div class="v1">V1 · 群里排队等老师</div>
+        <div class="v2">V2 · 中英双语 24/7 秒级</div>
+      </div>
+      <div class="tg-card">
+        <div class="icn">🎯</div>
+        <h4>主动带练</h4>
+        <div class="v1">V1 · 你问才答</div>
+        <div class="v2">V2 · AI 先开口带节奏追问验证</div>
+      </div>
+      <div class="tg-card">
+        <div class="icn">🧠</div>
+        <h4>进度记忆</h4>
+        <div class="v1">V1 · 换老师就忘</div>
+        <div class="v2">V2 · 跨 session 记得你卡过的点</div>
+      </div>
+      <div class="tg-card">
+        <div class="icn">🎨</div>
+        <h4>个性化</h4>
+        <div class="v1">V1 · 一套节奏给所有人</div>
+        <div class="v2">V2 · 按你的背景 + 进度调节</div>
+      </div>
+    </div>
+    <div class="price-bar">💙 $299 拿到 Bootcamp 级 RAG 内容 · 省的就是老师工资</div>
+  </div></div></div><button class="dl-btn" data-target="poster-23" data-slug="p23-ai-tutor">⬇ 下载 PNG</button></div>
+
+  <!-- P24 就业方向 -->
+  <div class="poster-frame" id="p24"><div class="label">P24 就业 <em>· AI Engineer 5 个方向 + 公司</em></div><div class="poster-scaler"><div class="poster p24" id="poster-24"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>AI ENGINEER 就业地图</div>
+    <h2>学完 AI Engineer<br><em>5 个方向</em>可以挑</h2>
+    <div class="top-stats">
+      <div class="s"><div class="n">5</div><div class="l">职业方向</div></div>
+      <div class="s"><div class="n">$130K<em>+</em></div><div class="l">澳洲起薪</div></div>
+      <div class="s"><div class="n">$150K<em>+</em></div><div class="l">美国起薪 USD</div></div>
+    </div>
+    <div class="skill-bars">
+      <div class="sk"><div class="top-row"><h4>AI 应用工程师</h4><div class="freq">需求最大</div></div><div class="bar"><div class="fill" style="width:95%;background:var(--brand-blue)"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>LLM Platform 工程师</h4><div class="freq">高薪岗</div></div><div class="bar"><div class="fill" style="width:85%;background:#7c3aed"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>RAG 工程师（本课主线）</h4><div class="freq">快速增长</div></div><div class="bar"><div class="fill" style="width:90%;background:#10b981"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>AI Infra 工程师</h4><div class="freq">Cloud 背景友好</div></div><div class="bar"><div class="fill" style="width:75%;background:#f59e0b"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>数据 + AI 工程师</h4><div class="freq">数据岗转型</div></div><div class="bar"><div class="fill" style="width:78%;background:var(--brand-red)"></div></div></div>
+    </div>
+    <div class="companies">
+      <span>OpenAI</span><span>Anthropic</span><span>Scale AI</span><span>字节</span><span>阿里</span><span>腾讯</span><span>Atlassian</span><span>Canva</span><span>Cohere</span>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-24" data-slug="p24-careers">⬇ 下载 PNG</button></div>
+
+  <!-- P25 薪资 -->
+  <div class="poster-frame" id="p25"><div class="label">P25 薪资 <em>· AU + US 参考</em></div><div class="poster-scaler"><div class="poster p25" id="poster-25"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>SALARY · AU + US 参考</div>
+    <h2>全球 AI Engineer<br><em>薪资参考区间</em></h2>
+    <div class="salary-tiers">
+      <div class="tier"><div class="range">AUD<br>130-200K</div><div class="level">澳洲 · AI Engineer</div></div>
+      <div class="tier" style="border-color:var(--brand-yellow);box-shadow:0 0 20px rgba(255,206,68,0.2)"><div class="range">USD<br>150-280K</div><div class="level">美国 · AI Engineer</div></div>
+      <div class="tier"><div class="range">RMB<br>60-120万</div><div class="level">中国一线 · 大厂</div></div>
+    </div>
+    <div class="co-grid">
+      <div class="co"><div class="name">OpenAI · Anthropic</div><div class="role">前沿模型公司 · Applied AI</div><div class="sal">USD 250-400K</div></div>
+      <div class="co"><div class="name">字节 · 阿里 · 腾讯</div><div class="role">国内大厂 · AI Engineer</div><div class="sal">RMB 60-150万</div></div>
+      <div class="co"><div class="name">Atlassian · Canva</div><div class="role">澳洲科技 · AI Engineer</div><div class="sal">AUD 140-210K</div></div>
+      <div class="co"><div class="name">Scale AI · Cohere</div><div class="role">AI Infra / LLM Platform</div><div class="sal">USD 180-320K</div></div>
+      <div class="co"><div class="name">欧美银行 / Consulting</div><div class="role">企业 RAG · 金融 AI</div><div class="sal">USD 150-240K</div></div>
+      <div class="co"><div class="name">初创 · Series A-C</div><div class="role">早期 AI Engineer + Equity</div><div class="sal">AUD 120-180K + 股</div></div>
+    </div>
+    <div class="disclaimer">数据来源：levels.fyi / Seek / LinkedIn / 脉脉（2025-2026）。区间为公开整理参考，非承诺薪资 · 实际 offer 取决经验、公司、地区、面试表现。</div>
+  </div></div></div><button class="dl-btn" data-target="poster-25" data-slug="p25-salary">⬇ 下载 PNG</button></div>
+
+</div>
+
+<script src="./xhs-copy.js"></script>
+
+<!-- 每张海报自动插入课程标识 bar -->
+<script>
+  document.querySelectorAll('.p-inner').forEach(inner => {
+    if (inner.querySelector('.p-course-bar')) return;
+    const bar = document.createElement('div');
+    bar.className = 'p-course-bar';
+    bar.textContent = 'AI ENGINEER RAG · 能构建 AI 系统的入门课 · 匠人 AI V2 · $299';
+    inner.appendChild(bar);
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+  document.querySelectorAll('.dl-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const poster = document.getElementById(btn.dataset.target);
+      if (!poster) return;
+      const exportNode = poster.closest('.poster-scaler') || poster;
+      const exportPadding = 24;
+      const nodeWidth = exportNode.offsetWidth || 435;
+      const nodeHeight = exportNode.offsetHeight || 581;
+      const exportScale = nodeWidth ? 1242 / nodeWidth : 2;
+
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = `position:fixed;left:-99999px;top:0;padding:${exportPadding}px;background:#eef0f4;display:inline-block;z-index:-1;`;
+      const clone = exportNode.cloneNode(true);
+      clone.style.margin = '0';
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
+
+      const oldLabel = btn.textContent;
+      btn.textContent = '生成中...';
+      btn.disabled = true;
+
+      try {
+        const canvas = await html2canvas(wrapper, {
+          backgroundColor: '#eef0f4', scale: exportScale, useCORS: true, allowTaint: true, logging: false,
+          width: nodeWidth + exportPadding * 2, height: nodeHeight + exportPadding * 2,
+          windowWidth: nodeWidth + exportPadding * 2, windowHeight: nodeHeight + exportPadding * 2
+        });
+        const link = document.createElement('a');
+        link.download = `xhs-ai-engineer-rag-${btn.dataset.slug}-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (e) { console.error(e); alert('导出失败：' + e.message); }
+      finally { wrapper.remove(); btn.textContent = oldLabel; btn.disabled = false; }
+    });
+  });
+</script>
+</body>
+</html>
