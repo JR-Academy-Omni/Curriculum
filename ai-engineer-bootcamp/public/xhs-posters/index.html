@@ -28,7 +28,7 @@
     background: #eef0f4;
     color: var(--text-main);
     font-family: 'Noto Sans SC', system-ui, sans-serif;
-    padding: 40px 20px 120px 160px;
+    padding: 40px 20px 120px 120px;
     line-height: 1.5;
   }
 
@@ -115,12 +115,81 @@
 
   /* ========== 海报容器（每张严格 1242 × 1660） ========== */
   .poster-frame {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto 460px;
+    gap: 28px;
+    align-items: start;
+    justify-content: center;
     margin-bottom: 60px;
     position: relative;
   }
+  .poster-main { display: flex; flex-direction: column; align-items: center; }
+
+  /* ========== 右侧小红书文案面板 ========== */
+  .copy-panel {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 16px;
+    padding: 18px 20px;
+    box-shadow: 6px 6px 0 rgba(16,22,47,0.08);
+    font-family: 'Noto Sans SC', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .copy-panel .cp-title {
+    font-size: 13px; font-weight: 900;
+    color: var(--brand-red);
+    letter-spacing: 1px;
+    font-family: 'JetBrains Mono', monospace;
+    padding-bottom: 10px;
+    border-bottom: 1.5px dashed var(--border-color);
+  }
+  .cp-section { display: flex; flex-direction: column; gap: 6px; }
+  .cp-section .cp-label {
+    font-size: 11px; font-weight: 900;
+    color: var(--text-gray);
+    letter-spacing: 1.5px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .cp-section .cp-box {
+    background: #fafbfc;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    word-break: break-word;
+    position: relative;
+  }
+  .cp-section .cp-btn {
+    align-self: flex-end;
+    background: var(--brand-dark); color: #fff;
+    border: none;
+    padding: 5px 14px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Noto Sans SC', sans-serif;
+    transition: all 0.15s;
+  }
+  .cp-section .cp-btn:hover { background: var(--brand-red); }
+  .cp-section .cp-btn.copied { background: var(--brand-green); }
+  .cp-section .cp-box.hashtags { color: var(--brand-blue); font-weight: 600; font-size: 12.5px; }
+  .cp-section .cp-box.wechat { background: #f0fdf4; border-color: #86efac; font-size: 13px; }
+  .cp-section .cp-box.community { background: #eff6ff; border-color: #93c5fd; font-size: 13px; }
+  /* Tab 切换 */
+  .cp-tabs { display: flex; gap: 4px; background: #f3f4f6; padding: 4px; border-radius: 10px; }
+  .cp-tab { flex: 1; background: transparent; border: none; padding: 8px 6px; font-size: 12px; font-weight: 700; color: var(--text-gray); cursor: pointer; border-radius: 8px; font-family: 'Noto Sans SC', sans-serif; transition: all 0.15s; letter-spacing: 0.3px; }
+  .cp-tab:hover { color: var(--text-main); }
+  .cp-tab.active { background: #fff; color: var(--tab-color, var(--brand-dark)); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 900; }
+  .cp-pane { display: flex; flex-direction: column; gap: 14px; }
+  .cp-pane.hidden { display: none; }
+  .cp-tip { background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; font-size: 11.5px; color: #92400e; line-height: 1.5; }
   .poster-frame .label {
     font-size: 13px; font-weight: 900;
     color: var(--brand-dark);
@@ -552,32 +621,135 @@
   .p4 .cell p { font-size: 26px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
 
   /* ========== P5 课程结构（10 phases） ========== */
-  .p5 .p-inner { background: var(--bg-light); padding-bottom: 60px; }
+  .p5 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(255,206,68,0.18), transparent 24%),
+      linear-gradient(180deg, #fffaf1 0%, #f8f9fb 100%);
+    padding-bottom: 60px;
+  }
   .p5 .p-brand { display: none; }
-  .p5 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -1.5px; margin-top: 20px; }
-  .p5 .phases { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p5 h2 { font-size: 66px; font-weight: 900; line-height: 1; letter-spacing: -1.8px; margin-top: 12px; }
+  .p5 h2 .hl { color: var(--brand-red); }
+  .p5 .hero-strip {
+    margin-top: 14px;
+    display: block;
+  }
+  .p5 .hero-card,
+  .p5 .focus-card {
+    border: 2px solid var(--brand-dark);
+    border-radius: 16px;
+    background: #fff;
+    padding: 14px 16px;
+  }
+  .p5 .hero-card { box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p5 .focus-card { display: none; }
+  .p5 .hero-kicker,
+  .p5 .focus-kicker {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p5 .hero-kicker { color: var(--brand-red); }
+  .p5 .focus-kicker { color: var(--brand-yellow); }
+  .p5 .hero-big {
+    margin-top: 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .p5 .hero-big .n {
+    font-size: 62px;
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand-red);
+  }
+  .p5 .hero-big .l {
+    font-size: 20px;
+    font-weight: 900;
+  }
+  .p5 .hero-desc,
+  .p5 .focus-desc {
+    margin-top: 6px;
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+  .p5 .hero-desc { color: var(--text-gray); }
+  .p5 .focus-desc { color: rgba(255,255,255,0.76); }
+  .p5 .focus-pills {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .p5 .focus-pills span {
+    padding: 5px 9px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    font-size: 12px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .p5 .phases {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-content: start;
+    flex: 0 0 auto;
+  }
   .p5 .ph {
     background: #fff;
     border: 2px solid var(--brand-dark);
     border-radius: 16px;
     padding: 22px 22px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 18px;
-    box-shadow: 4px 4px 0 rgba(16,22,47,0.08);
+    box-shadow: 5px 5px 0 rgba(16,22,47,0.08);
+    position: relative;
+    overflow: hidden;
+    min-height: 132px;
+  }
+  .p5 .ph::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    bottom: -28px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(16,22,47,0.04);
   }
   .p5 .ph .badge {
-    width: 56px; height: 56px;
+    width: 64px; height: 64px;
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    color: #fff; font-weight: 900; font-size: 26px;
+    color: #fff; font-weight: 900; font-size: 28px;
     font-family: 'JetBrains Mono', monospace;
     flex-shrink: 0;
     border: 2px solid var(--brand-dark);
-    box-shadow: 3px 3px 0 var(--brand-dark);
+    box-shadow: 2px 2px 0 var(--brand-dark);
   }
-  .p5 .ph .info h5 { font-size: 38px; font-weight: 900; margin-bottom: 6px; line-height: 1.15; }
-  .p5 .ph .info p { font-size: 28px; color: var(--text-gray); line-height: 1.3; font-weight: 600; }
+  .p5 .ph .info { position: relative; z-index: 1; }
+  .p5 .ph .info .meta {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 4px;
+  }
+  .p5 .ph .info h5 { font-size: 38px; font-weight: 900; margin-bottom: 4px; line-height: 1.03; }
+  .p5 .ph .info p { font-size: 24px; color: var(--text-gray); line-height: 1.2; font-weight: 600; }
+  .p5 .ph.key { box-shadow: 7px 7px 0 var(--brand-red); }
 
   /* ========== P6 工具栈 ========== */
   .p6 .p-inner { background: var(--brand-dark); color: #fff; }
@@ -899,31 +1071,157 @@
   .p11 h2 { font-size: 82px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 20px; }
   .p11 .lead {
     margin-top: 14px;
-    font-size: 27px;
-    line-height: 1.45;
+    font-size: 22px;
+    line-height: 1.28;
     color: var(--text-gray);
     font-weight: 600;
     max-width: 970px;
   }
-  .p11 .matrix { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
-  .p11 .row { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 0; border: 2px solid var(--brand-dark); border-radius: 16px; overflow: hidden; }
-  .p11 .row .dim { background: var(--brand-dark); color: #fff; padding: 18px 18px; font-size: 22px; font-weight: 900; display: flex; align-items: center; }
-  .p11 .row .v1 { padding: 18px 18px; font-size: 20px; color: #64748b; background: #f3f4f6; border-right: 1.5px solid var(--border-color); line-height: 1.42; }
-  .p11 .row .v2 { padding: 18px 18px; font-size: 20px; color: var(--brand-dark); background: #ecfdf5; font-weight: 700; line-height: 1.42; }
+  .p11 .matrix { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .p11 .row { display: grid; grid-template-columns: 180px 1fr 1fr; gap: 0; border: 2px solid var(--brand-dark); border-radius: 16px; overflow: hidden; }
+  .p11 .row .dim { background: var(--brand-dark); color: #fff; padding: 14px; font-size: 26px; font-weight: 900; display: flex; align-items: center; line-height: 1.05; }
+  .p11 .row .v1 { padding: 14px; font-size: 24px; color: #64748b; background: #f3f4f6; border-right: 1.5px solid var(--border-color); line-height: 1.18; font-weight: 800; }
+  .p11 .row .v2 { padding: 14px; font-size: 24px; color: var(--brand-dark); background: #ecfdf5; font-weight: 900; line-height: 1.18; }
   .p11 .row b { color: var(--brand-red); }
 
   /* ========== P12 RAG 深潜 ========== */
-  .p12 .p-inner { background: #eff6ff; }
-  .p12 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
-  .p12 h2 em { font-style: normal; color: #3b82f6; }
-  .p12 .rag-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
-  .p12 .rag-card { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 26px 24px; box-shadow: 5px 5px 0 rgba(59,130,246,0.3); }
-  .p12 .rag-card .icon { font-size: 40px; margin-bottom: 10px; }
-  .p12 .rag-card h4 { font-size: 30px; font-weight: 900; margin-bottom: 8px; }
-  .p12 .rag-card p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
-  .p12 .rag-stat { margin-top: 24px; background: #3b82f6; color: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 28px; display: flex; justify-content: space-around; text-align: center; }
-  .p12 .rag-stat .s .n { font-size: 52px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
-  .p12 .rag-stat .s .l { font-size: 20px; font-weight: 600; opacity: 0.85; margin-top: 4px; }
+  .p12 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(59,130,246,0.16), transparent 24%),
+      linear-gradient(180deg, #f5f9ff 0%, #eef5ff 100%);
+  }
+  .p12 h2 { font-size: 108px; font-weight: 900; line-height: 0.98; letter-spacing: -4px; margin-top: 18px; }
+  .p12 h2 em { font-style: normal; color: #2563eb; }
+  .p12 .lead {
+    margin-top: 14px;
+    font-size: 30px;
+    line-height: 1.36;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p12 .hero-strip {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 18px;
+  }
+  .p12 .hero-card,
+  .p12 .stat-card {
+    border: 2px solid var(--brand-dark);
+    border-radius: 22px;
+    padding: 24px 26px;
+    background: #fff;
+  }
+  .p12 .hero-card { box-shadow: 8px 8px 0 rgba(59,130,246,0.26); }
+  .p12 .stat-card { background: #10162f; color: #fff; box-shadow: 8px 8px 0 rgba(16,22,47,0.18); }
+  .p12 .hero-kicker,
+  .p12 .stat-kicker {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p12 .hero-kicker { color: #2563eb; }
+  .p12 .stat-kicker { color: var(--brand-yellow); }
+  .p12 .hero-big {
+    margin-top: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .p12 .hero-big .n {
+    font-size: 96px;
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: #2563eb;
+  }
+  .p12 .hero-big .l {
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--brand-dark);
+  }
+  .p12 .hero-desc,
+  .p12 .stat-desc {
+    margin-top: 10px;
+    font-size: 24px;
+    line-height: 1.36;
+    font-weight: 600;
+  }
+  .p12 .hero-desc { color: var(--text-gray); }
+  .p12 .stat-desc { color: rgba(255,255,255,0.76); }
+  .p12 .hero-points {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .p12 .hero-points span {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1.5px solid #bfdbfe;
+    background: #eff6ff;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1d4ed8;
+  }
+  .p12 .stat-grid {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .p12 .stat {
+    border-radius: 18px;
+    border: 1.5px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.06);
+    padding: 20px 20px;
+  }
+  .p12 .stat .n {
+    font-size: 66px;
+    line-height: 1;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand-yellow);
+    letter-spacing: -2px;
+  }
+  .p12 .stat .l {
+    margin-top: 6px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .p12 .rag-grid { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p12 .rag-card {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    padding: 26px 26px;
+    box-shadow: 6px 6px 0 rgba(59,130,246,0.22);
+  }
+  .p12 .rag-card .top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .p12 .rag-card .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: #dbeafe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  .p12 .rag-card h4 { font-size: 36px; font-weight: 900; line-height: 1.06; }
+  .p12 .rag-card p { font-size: 24px; color: var(--text-gray); line-height: 1.36; font-weight: 600; }
 
   /* ========== P13 Agent 五层 ========== */
   .p13 .p-inner { background: var(--brand-dark); color: #fff; }
@@ -1412,21 +1710,123 @@
       radial-gradient(circle at top right, rgba(255,87,87,0.12), transparent 24%),
       linear-gradient(180deg, #f8fafc 0%, #f2f7f5 100%);
   }
-  .p20 h2 { font-size: 80px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 20px; }
+  .p20 h2 { font-size: 84px; font-weight: 900; line-height: 1.06; letter-spacing: -2.5px; margin-top: 20px; }
   .p20 h2 em { font-style: normal; color: var(--brand-red); }
   .p20 .lead {
-    margin-top: 14px;
-    font-size: 27px;
-    line-height: 1.45;
+    margin-top: 12px;
+    font-size: 24px;
+    line-height: 1.4;
     color: var(--text-gray);
     font-weight: 600;
-    max-width: 980px;
+    max-width: 1040px;
   }
-  .p20 .upgrade-list { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-  .p20 .up-row { display: grid; grid-template-columns: 190px 1fr 1.18fr; border: 2px solid var(--brand-dark); border-radius: 14px; overflow: hidden; }
-  .p20 .up-row .dim { background: var(--brand-dark); color: #fff; padding: 14px 16px; font-size: 22px; font-weight: 800; display: flex; align-items: center; }
-  .p20 .up-row .old { padding: 14px 16px; font-size: 20px; background: #f5f5f5; color: var(--text-gray); border-right: 1px solid var(--border-color); text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: var(--brand-red); font-weight: 600; }
-  .p20 .up-row .new { padding: 14px 16px; font-size: 20px; background: #ecfdf5; font-weight: 800; color: var(--brand-dark); }
+  .p20 .stack-switch {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    border: 2px solid var(--brand-dark);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 6px 6px 0 rgba(16,22,47,0.1);
+  }
+  .p20 .stack-switch .old-h,
+  .p20 .stack-switch .new-h {
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .p20 .stack-switch .old-h {
+    background: #eef2f7;
+    color: #64748b;
+    border: 2px solid rgba(16,22,47,0.14);
+  }
+  .p20 .stack-switch .arrow {
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--brand-red);
+    line-height: 1;
+  }
+  .p20 .stack-switch .new-h {
+    background: #dcfce7;
+    color: #166534;
+    border: 2px solid rgba(22,101,52,0.18);
+  }
+  .p20 .upgrade-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .p20 .up-card {
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 8px 8px 0 rgba(16,22,47,0.08);
+  }
+  .p20 .up-card .dim {
+    padding: 14px 18px;
+    background: var(--brand-dark);
+    color: #fff;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+  .p20 .up-card .body {
+    padding: 14px 16px 16px;
+    display: grid;
+    gap: 10px;
+  }
+  .p20 .up-card .lane {
+    border-radius: 14px;
+    padding: 12px 14px;
+    border: 2px solid rgba(16,22,47,0.1);
+  }
+  .p20 .up-card .lane .k {
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p20 .up-card .lane .v {
+    margin-top: 8px;
+    font-size: 24px;
+    line-height: 1.16;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .p20 .up-card .lane.old {
+    background: #f8fafc;
+    color: #64748b;
+  }
+  .p20 .up-card .lane.old .v {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--brand-red);
+  }
+  .p20 .up-card .lane.new {
+    background: #ecfdf5;
+    color: var(--brand-dark);
+  }
+  .p20 .bottom-note {
+    margin-top: 16px;
+    padding: 16px 20px;
+    border-radius: 18px;
+    border: 2px solid var(--brand-dark);
+    background: #fff;
+    font-size: 22px;
+    line-height: 1.34;
+    font-weight: 700;
+    box-shadow: 6px 6px 0 var(--brand-yellow);
+  }
+  .p20 .bottom-note b { color: var(--brand-red); }
 
   /* ========== P21 FAQ 精华 ========== */
   .p21 .p-inner {
@@ -1473,32 +1873,32 @@
   .p23 h2 { color: #fff; font-size: 80px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 16px; }
   .p23 h2 em { font-style: normal; color: var(--brand-yellow); }
   .p23 .lead {
-    margin-top: 14px;
-    font-size: 27px;
-    line-height: 1.45;
+    margin-top: 12px;
+    font-size: 24px;
+    line-height: 1.35;
     color: rgba(255,255,255,0.76);
     font-weight: 600;
     max-width: 980px;
   }
-  .p23 .exclusive-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; background: var(--brand-red); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 22px; font-weight: 900; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; border: 2px solid rgba(255,255,255,0.3); box-shadow: 6px 6px 0 rgba(0,0,0,0.26); }
+  .p23 .exclusive-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; background: var(--brand-red); color: #fff; padding: 10px 18px; border-radius: 100px; font-size: 18px; font-weight: 900; letter-spacing: 0.5px; font-family: 'JetBrains Mono', monospace; border: 2px solid rgba(255,255,255,0.3); box-shadow: 6px 6px 0 rgba(0,0,0,0.26); }
   .p23 .hero-row {
-    margin-top: 22px;
+    margin-top: 18px;
     display: grid;
     grid-template-columns: 0.9fr 1.1fr;
-    gap: 18px;
+    gap: 14px;
   }
   .p23 .hero-card,
   .p23 .why-card {
     border: 2px solid rgba(255,255,255,0.16);
     border-radius: 22px;
-    padding: 22px 24px;
+    padding: 18px 20px;
     background: rgba(255,255,255,0.06);
   }
   .p23 .hero-card { box-shadow: 8px 8px 0 rgba(255,206,68,0.2); }
   .p23 .why-card { background: rgba(255,255,255,0.08); }
   .p23 .hero-kicker,
   .p23 .why-kicker {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 900;
     letter-spacing: 2px;
     font-family: 'JetBrains Mono', monospace;
@@ -1513,7 +1913,7 @@
     gap: 10px;
   }
   .p23 .hero-big .n {
-    font-size: 88px;
+    font-size: 76px;
     line-height: 1;
     letter-spacing: -4px;
     font-weight: 900;
@@ -1521,75 +1921,75 @@
     color: #fff;
   }
   .p23 .hero-big .l {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 900;
     color: #fff;
   }
   .p23 .hero-desc,
   .p23 .why-desc {
-    margin-top: 10px;
-    font-size: 22px;
-    line-height: 1.45;
+    margin-top: 8px;
+    font-size: 20px;
+    line-height: 1.35;
     font-weight: 600;
     color: rgba(255,255,255,0.8);
   }
   .p23 .why-points {
-    margin-top: 14px;
+    margin-top: 10px;
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
   .p23 .why-points li {
-    padding: 10px 12px 10px 40px;
+    padding: 8px 10px 8px 34px;
     border-radius: 12px;
     background: rgba(255,255,255,0.08);
     position: relative;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #fff;
   }
   .p23 .why-points li::before {
     content: 'AI';
     position: absolute;
-    left: 12px;
-    top: 9px;
-    width: 22px;
-    height: 22px;
+    left: 10px;
+    top: 7px;
+    width: 18px;
+    height: 18px;
     border-radius: 8px;
     background: var(--brand-yellow);
     color: var(--brand-dark);
-    font-size: 11px;
+    font-size: 9px;
     font-weight: 900;
     font-family: 'JetBrains Mono', monospace;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .p23 .modules { margin-top: 22px; display: flex; flex-direction: column; gap: 22px; flex: 1; }
-  .p23 .mod { background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 28px 28px; position: relative; overflow: hidden; }
+  .p23 .modules { margin-top: 18px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .p23 .mod { background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 24px 24px; position: relative; overflow: hidden; }
   .p23 .mod::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; border-radius: 50%; opacity: 0.06; }
   .p23 .mod.memory { box-shadow: 10px 10px 0 rgba(236,72,153,0.36); }
   .p23 .mod.memory::before { background: #ec4899; }
   .p23 .mod.harness { box-shadow: 10px 10px 0 rgba(239,68,68,0.34); }
   .p23 .mod.harness::before { background: #ef4444; }
-  .p23 .mod .phase-tag { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 2px; margin-bottom: 10px; }
+  .p23 .mod .phase-tag { font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 2px; margin-bottom: 8px; }
   .p23 .mod.memory .phase-tag { color: #ec4899; }
   .p23 .mod.harness .phase-tag { color: #ef4444; }
-  .p23 .mod h3 { font-size: 44px; font-weight: 900; margin-bottom: 12px; line-height: 1.12; }
-  .p23 .mod .desc { font-size: 24px; color: rgba(255,255,255,0.76); line-height: 1.48; font-weight: 600; margin-bottom: 16px; }
+  .p23 .mod h3 { font-size: 52px; font-weight: 900; margin-bottom: 10px; line-height: 1.06; }
+  .p23 .mod .desc { font-size: 20px; color: rgba(255,255,255,0.8); line-height: 1.35; font-weight: 700; margin-bottom: 14px; max-width: 920px; }
   .p23 .mod .topics { display: flex; flex-wrap: wrap; gap: 10px; }
-  .p23 .mod .topic { background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 8px 16px; font-size: 20px; font-weight: 700; }
+  .p23 .mod .topic { background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 8px 14px; font-size: 22px; font-weight: 800; }
   .p23 .mod.memory .topic { color: #f9a8d4; }
   .p23 .mod.harness .topic { color: #fca5a5; }
   .p23 .bottom-note {
-    margin-top: 22px;
+    margin-top: 16px;
     text-align: center;
-    font-size: 22px;
+    font-size: 20px;
     color: rgba(255,255,255,0.86);
     font-weight: 700;
-    line-height: 1.55;
-    padding: 18px 22px;
+    line-height: 1.35;
+    padding: 14px 18px;
     border-radius: 18px;
     border: 2px solid rgba(255,255,255,0.16);
     background: rgba(255,255,255,0.05);
@@ -1630,18 +2030,71 @@
   .p25 .p-inner { background: var(--brand-dark); color: #fff; }
   .p25 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
   .p25 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
-  .p25 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p25 h2 { color: #fff; font-size: 92px; font-weight: 900; line-height: 1.02; letter-spacing: -3px; margin-top: 18px; }
   .p25 h2 em { font-style: normal; color: var(--brand-yellow); }
-  .p25 .salary-tiers { margin-top: 28px; display: flex; gap: 16px; }
-  .p25 .tier { flex: 1; background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 18px; padding: 22px 20px; text-align: center; }
-  .p25 .tier .range { font-size: 36px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-yellow); line-height: 1.1; }
-  .p25 .tier .range em { font-style: normal; font-size: 22px; }
-  .p25 .tier .level { font-size: 20px; font-weight: 700; margin-top: 8px; opacity: 0.7; }
-  .p25 .company-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; flex: 1; }
-  .p25 .co { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 16px 18px; }
-  .p25 .co .name { font-size: 24px; font-weight: 900; margin-bottom: 4px; }
-  .p25 .co .role { font-size: 16px; opacity: 0.5; margin-bottom: 6px; }
-  .p25 .co .sal { font-size: 20px; font-weight: 700; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; }
+  .p25 .lead {
+    margin-top: 14px;
+    font-size: 28px;
+    line-height: 1.25;
+    color: rgba(255,255,255,0.82);
+    font-weight: 700;
+    max-width: 900px;
+  }
+  .p25 .salary-tiers { margin-top: 28px; display: grid; grid-template-columns: 1fr; gap: 18px; }
+  .p25 .tier {
+    background: rgba(255,255,255,0.06);
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 22px;
+    padding: 26px 28px;
+    min-height: 190px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .p25 .tier .range { font-size: 64px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-yellow); line-height: 0.98; letter-spacing: -2px; }
+  .p25 .tier .range em { font-style: normal; font-size: 44px; }
+  .p25 .tier .level { font-size: 34px; font-weight: 900; opacity: 1; line-height: 1.05; text-align: right; }
+  .p25 .tier .exp { display: block; font-size: 22px; font-weight: 700; opacity: 0.7; margin-top: 8px; }
+  .p25 .bottom-note {
+    margin-top: 24px;
+    padding: 22px 24px;
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.06);
+    font-size: 30px;
+    line-height: 1.28;
+    color: rgba(255,255,255,0.9);
+    font-weight: 800;
+  }
+  .p25 .bottom-note b { color: var(--brand-yellow); }
+
+  /* ========== P26 公司薪资样本 ========== */
+  .p26 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p26 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p26 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p26 h2 { color: #fff; font-size: 78px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 16px; }
+  .p26 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p26 .lead {
+    margin-top: 12px;
+    font-size: 24px;
+    line-height: 1.32;
+    color: rgba(255,255,255,0.8);
+    font-weight: 700;
+    max-width: 980px;
+  }
+  .p26 .company-grid { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p26 .co {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 24px 24px;
+    min-height: 168px;
+  }
+  .p26 .co .name { font-size: 40px; font-weight: 900; margin-bottom: 8px; line-height: 1.02; }
+  .p26 .co .role { font-size: 24px; opacity: 0.72; margin-bottom: 14px; line-height: 1.15; }
+  .p26 .co .sal { font-size: 38px; font-weight: 800; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; line-height: 1.08; }
 
 </style>
 </head>
@@ -1651,11 +2104,11 @@
 
   <header class="page-head">
     <h1>AI Engineer Bootcamp · <span>小红书素材集</span></h1>
-    <p>25 张投流素材（1 封面 + 24 配图），专为小红书聚光平台定制。每张下方点「⬇ 下载 PNG」一键导出 2484×3320 高清图。</p>
+    <p>26 张投流素材（1 封面 + 25 配图），专为小红书聚光平台定制。每张下方点「⬇ 下载 PNG」一键导出 2484×3320 高清图。</p>
     <div class="spec-row">
       <span class="spec-pill red">1242 × 1660 竖版</span>
       <span class="spec-pill">聚光合规</span>
-      <span class="spec-pill">25 张全套</span>
+      <span class="spec-pill">26 张全套</span>
       <span class="spec-pill">html2canvas 一键导出</span>
       <span class="spec-pill">@2x 高清 PNG</span>
     </div>
@@ -1691,6 +2144,7 @@
     <a href="#p23" class="thumb"><span class="num">23</span><span class="lbl">独家</span></a>
     <a href="#p24" class="thumb"><span class="num">24</span><span class="lbl">JD</span></a>
     <a href="#p25" class="thumb"><span class="num">25</span><span class="lbl">薪资</span></a>
+    <a href="#p26" class="thumb"><span class="num">26</span><span class="lbl">公司</span></a>
   </nav>
 
   <!-- =========================================
@@ -1864,7 +2318,7 @@
       <div class="poster p4" id="poster-4">
         <div class="p-inner">
           <div class="p-dots"></div>
-          <div class="p-tag"><span class="dot"></span>学完你会</div>
+          <div class="p-tag"><span class="dot"></span>AI Engineer Bootcamp · 学完你会</div>
           <h2>毕业那天，<br>你会<em>真的</em>会这四件事</h2>
           <p class="lead">这四件事不是“听过概念”，而是你能自己搭、自己调、自己讲明白，拿去做项目、写简历、过面试的问题。</p>
 
@@ -1911,19 +2365,39 @@
         <div class="p-inner">
           <div class="p-dots"></div>
           <div class="p-tag"><span class="dot"></span>课程地图</div>
-          <h2>12 周 · 10 个 Phase<br><span class="hl">每周都有新武器</span></h2>
+          <h2>12 周不是学一堆概念<br>而是一路搭到<span class="hl">生产级 AI System</span></h2>
+
+          <div class="hero-strip">
+            <div class="hero-card">
+              <div class="hero-kicker">12-week roadmap</div>
+              <div class="hero-big"><span class="n">10</span><span class="l">个连续 Phase</span></div>
+              <div class="hero-desc">不是东一节西一节，而是每周学完一个层次，最后把能力拼成一套完整系统。</div>
+            </div>
+            <div class="focus-card">
+              <div class="focus-kicker">what changes most</div>
+              <div class="focus-desc">前半段打基础与 RAG，后半段一路拆到 Agent、Memory、Harness、Model Layer、Eval & Ops。</div>
+              <div class="focus-pills">
+                <span>RAG</span>
+                <span>Agent</span>
+                <span>Memory</span>
+                <span>Harness</span>
+                <span>Fine-Tune</span>
+                <span>Eval & Ops</span>
+              </div>
+            </div>
+          </div>
 
           <div class="phases">
-            <div class="ph"><div class="badge" style="background:#6366f1">01</div><div class="info"><h5>Foundation</h5><p>GenAI 全景 · LLM API · Transformer</p></div></div>
-            <div class="ph"><div class="badge" style="background:#8b5cf6">02</div><div class="info"><h5>Context Engineering</h5><p>Prompt · 结构化输出 · Vibe Coding</p></div></div>
-            <div class="ph"><div class="badge" style="background:#3b82f6">03</div><div class="info"><h5>RAG</h5><p>Embedding · 向量库 · GraphRAG · Eval</p></div></div>
-            <div class="ph"><div class="badge" style="background:#06b6d4">04</div><div class="info"><h5>Capability</h5><p>Function Call · MCP · Browser Use</p></div></div>
-            <div class="ph"><div class="badge" style="background:#10b981">05</div><div class="info"><h5>Agent Core</h5><p>ReAct · Agent SDK · Agentic RAG</p></div></div>
-            <div class="ph"><div class="badge" style="background:#f59e0b">06</div><div class="info"><h5>Multi-Agent</h5><p>LangGraph · A2A 协议 · Agent Ops</p></div></div>
-            <div class="ph"><div class="badge" style="background:#ec4899">07</div><div class="info"><h5>Memory</h5><p>STM/LTM · Mem0 · Session 管理</p></div></div>
-            <div class="ph"><div class="badge" style="background:#ef4444">08</div><div class="info"><h5>Harness</h5><p>Hook · Tool Loop · Skills · ADLC</p></div></div>
-            <div class="ph"><div class="badge" style="background:#f97316">09</div><div class="info"><h5>Model Layer</h5><p>QLoRA · Unsloth · SDG · Sentence-T</p></div></div>
-            <div class="ph"><div class="badge" style="background:#64748b">10</div><div class="info"><h5>Eval & Ops</h5><p>Safety · Guardrails · Red-team · 监控</p></div></div>
+            <div class="ph"><div class="badge" style="background:#6366f1">01</div><div class="info"><div class="meta">week 1</div><h5>Foundation</h5><p>GenAI 全景 · LLM API · Transformer</p></div></div>
+            <div class="ph"><div class="badge" style="background:#8b5cf6">02</div><div class="info"><div class="meta">week 2</div><h5>Context Engineering</h5><p>Prompt · 结构化输出 · Vibe Coding</p></div></div>
+            <div class="ph key"><div class="badge" style="background:#3b82f6">03</div><div class="info"><div class="meta">week 3-4</div><h5>RAG</h5><p>Embedding · 向量库 · GraphRAG · Eval</p></div></div>
+            <div class="ph"><div class="badge" style="background:#06b6d4">04</div><div class="info"><div class="meta">week 5</div><h5>Capability</h5><p>Function Call · MCP · Browser Use</p></div></div>
+            <div class="ph key"><div class="badge" style="background:#10b981">05</div><div class="info"><div class="meta">week 6</div><h5>Agent Core</h5><p>ReAct · Agent SDK · Agentic RAG</p></div></div>
+            <div class="ph"><div class="badge" style="background:#f59e0b">06</div><div class="info"><div class="meta">week 7</div><h5>Multi-Agent</h5><p>LangGraph · A2A 协议 · Agent Ops</p></div></div>
+            <div class="ph"><div class="badge" style="background:#ec4899">07</div><div class="info"><div class="meta">week 8</div><h5>Memory</h5><p>STM/LTM · Mem0 · Session 管理</p></div></div>
+            <div class="ph key"><div class="badge" style="background:#ef4444">08</div><div class="info"><div class="meta">week 9</div><h5>Harness</h5><p>Hook · Tool Loop · Skills · ADLC</p></div></div>
+            <div class="ph"><div class="badge" style="background:#f97316">09</div><div class="info"><div class="meta">week 10-11</div><h5>Model Layer</h5><p>QLoRA · Unsloth · SDG · Sentence-T</p></div></div>
+            <div class="ph key"><div class="badge" style="background:#64748b">10</div><div class="info"><div class="meta">week 12</div><h5>Eval & Ops</h5><p>Safety · Guardrails · Red-team · 监控</p></div></div>
           </div>
 
           <div class="p-brand">
@@ -2129,7 +2603,7 @@
       <div class="poster p10" id="poster-10">
         <div class="p-inner">
           <div class="p-dots"></div>
-          <div class="p-tag"><span class="dot"></span>第五期 · 大重构</div>
+          <div class="p-tag"><span class="dot"></span>AI Engineer Bootcamp · 第五期 · 大重构</div>
           <h2>4 → 10 Phases<br><em>不只是加课，是重做结构</em></h2>
           <p class="lead">第五期的升级不是简单多了几十节，而是把第四期压在一起的内容彻底拆开重构。尤其 Agent 体系，从 1 个 phase 变成 5 个独立阶段。</p>
 
@@ -2186,43 +2660,43 @@
           <div class="p-dots"></div>
           <div class="p-tag"><span class="dot"></span>第五期升级</div>
           <h2>这一期不是多加几节课<br>而是<span class="hl">整套结构重做</span></h2>
-          <p class="lead">对照 `curriculum.html` 真正拉开差距的，不只是课时更多，而是课程结构、学习方式、Agent 体系、RAG 深度和 Eval 工程都换了一套标准。</p>
+          <p class="lead">差距不只是课时更多，而是整套学习标准都换了。</p>
 
           <div class="matrix">
             <div class="row">
               <div class="dim">课程结构</div>
-              <div class="v1">96 个独立条目罗列<br>信息散，很多课只有标题</div>
-              <div class="v2">35 个结构化 Lesson + <b>265 个 Step</b><br>每课按 CONCEPT → LAB → MCQ → SCENARIO → PROJECT 组织</div>
+              <div class="v1">96 个独立条目<br>很多课只有标题</div>
+              <div class="v2">35 个结构化 Lesson + <b>265 个 Step</b><br>CONCEPT → LAB → MCQ → SCENARIO → PROJECT</div>
             </div>
             <div class="row">
               <div class="dim">学习模式</div>
-              <div class="v1">老师讲概念 → 带着看 demo<br>实操时间少</div>
-              <div class="v2">翻转课堂：<b>Lab 自学 → 直播做项目</b><br>学生实操时间提升到每周 3-4 小时</div>
+              <div class="v1">老师讲概念 → 看 demo<br>实操时间少</div>
+              <div class="v2"><b>Lab 自学 → 直播做项目</b><br>每周实操 3-4 小时</div>
             </div>
             <div class="row">
               <div class="dim">Agent 体系</div>
-              <div class="v1">1 个 phase 把 Agent / Memory / Harness 全揉一起</div>
+              <div class="v1">1 个 phase 全揉一起</div>
               <div class="v2"><b>5 个独立 phase · 41 节</b><br>Capability · Agent Core · Multi-Agent · Memory · Harness</div>
             </div>
             <div class="row">
               <div class="dim">RAG 深度</div>
               <div class="v1">向量检索 RAG 为主<br>停在标准流程</div>
-              <div class="v2">RAG 升级到 <b>GraphRAG + 混合检索</b><br>再加 LangChain 全链和可观测</div>
+              <div class="v2"><b>GraphRAG + 混合检索</b><br>LangChain 全链 + 可观测</div>
             </div>
             <div class="row">
               <div class="dim">2026 新能力</div>
-              <div class="v1">没有独立覆盖<br>Claude Code / A2A / Computer Use 基本没有</div>
-              <div class="v2">新增 Claude Code、SubAgent、MCP、A2A、Computer Use、Mem0、Graph Memory 等 2026 能力</div>
+              <div class="v1">没有独立覆盖<br>Claude Code / A2A 基本没有</div>
+              <div class="v2">Claude Code · SubAgent · MCP · A2A · Computer Use · Mem0 · Graph Memory</div>
             </div>
             <div class="row">
               <div class="dim">Eval 工程</div>
-              <div class="v1">RAGAS 1 课<br>放在毕业前带过</div>
-              <div class="v2">P10 独立 17 节深拆<br><b>LangSmith · Phoenix · 自建 Eval Pipeline · Safety</b></div>
+              <div class="v1">RAGAS 1 课<br>毕业前带过</div>
+              <div class="v2"><b>P10 独立 17 节深拆</b><br>LangSmith · Phoenix · Eval Pipeline · Safety</div>
             </div>
             <div class="row">
               <div class="dim">毕业产出</div>
-              <div class="v1">能搭 RAG，知道 Agent 是什么</div>
-              <div class="v2"><b>7 个可放简历项目</b><br>独立交付 Production RAG、Multi-Agent、Memory、Fine-Tune、Eval System</div>
+              <div class="v1">能搭 RAG<br>知道 Agent 是什么</div>
+              <div class="v2"><b>7 个可放简历项目</b><br>Production RAG · Multi-Agent · Memory · Fine-Tune · Eval System</div>
             </div>
           </div>
         </div>
@@ -2242,35 +2716,49 @@
           <div class="p-dots"></div>
           <div class="p-tag"><span class="dot"></span>PHASE 3 · RAG</div>
           <h2>不是 demo 级 RAG<br>是<em>能上线</em>的 RAG</h2>
+          <p class="lead">这一整个 Phase 讲的不是“调个检索接口”，而是把向量检索、GraphRAG、LangChain 全链和 Eval 体系拼成一套能落地的 RAG System。</p>
 
-          <div class="rag-grid">
-            <div class="rag-card">
-              <div class="icon">🔍</div>
-              <h4>向量检索</h4>
-              <p>Embedding 原理 · Pinecone / Chroma 选型 · 混合检索策略</p>
+          <div class="hero-strip">
+            <div class="hero-card">
+              <div class="hero-kicker">production rag</div>
+              <div class="hero-big"><span class="n">45</span><span class="l">节深潜的最大模块</span></div>
+              <div class="hero-desc">从检索策略、知识图谱、编排链路到评估迭代，按真正上线要补的能力一层层拆开。</div>
+              <div class="hero-points">
+                <span>混合检索</span>
+                <span>GraphRAG</span>
+                <span>LangChain / LCEL</span>
+                <span>RAG Eval</span>
+              </div>
             </div>
-            <div class="rag-card">
-              <div class="icon">🕸️</div>
-              <h4>GraphRAG</h4>
-              <p>Neo4j 知识图谱 · 实体关系抽取 · 图检索 + 向量检索融合</p>
-            </div>
-            <div class="rag-card">
-              <div class="icon">⛓️</div>
-              <h4>LangChain 全链</h4>
-              <p>Core Constructs · LCEL · LangSmith 可观测 · 生产部署</p>
-            </div>
-            <div class="rag-card">
-              <div class="icon">📊</div>
-              <h4>RAG Eval</h4>
-              <p>RAGAS 框架 · Langfuse · 自定义 Metrics · 持续迭代</p>
+            <div class="stat-card">
+              <div class="stat-kicker">phase breakdown</div>
+              <div class="stat-desc">不是听一遍概念，而是课、直播、Lab、项目一起推进。</div>
+              <div class="stat-grid">
+                <div class="stat"><div class="n">45</div><div class="l">节课</div></div>
+                <div class="stat"><div class="n">17</div><div class="l">直播课</div></div>
+                <div class="stat"><div class="n">15</div><div class="l">互动 Lab</div></div>
+                <div class="stat"><div class="n">3</div><div class="l">项目</div></div>
+              </div>
             </div>
           </div>
 
-          <div class="rag-stat">
-            <div class="s"><div class="n">45</div><div class="l">节课</div></div>
-            <div class="s"><div class="n">17</div><div class="l">直播课</div></div>
-            <div class="s"><div class="n">15</div><div class="l">互动 Lab</div></div>
-            <div class="s"><div class="n">3</div><div class="l">项目</div></div>
+          <div class="rag-grid">
+            <div class="rag-card">
+              <div class="top"><div class="icon">🔍</div><h4>向量检索</h4></div>
+              <p>Embedding 原理 · Pinecone / Chroma 选型 · 混合检索策略</p>
+            </div>
+            <div class="rag-card">
+              <div class="top"><div class="icon">🕸️</div><h4>GraphRAG</h4></div>
+              <p>Neo4j 知识图谱 · 实体关系抽取 · 图检索 + 向量检索融合</p>
+            </div>
+            <div class="rag-card">
+              <div class="top"><div class="icon">⛓️</div><h4>LangChain 全链</h4></div>
+              <p>Core Constructs · LCEL · LangSmith 可观测 · 生产部署</p>
+            </div>
+            <div class="rag-card">
+              <div class="top"><div class="icon">📊</div><h4>RAG Eval</h4></div>
+              <p>RAGAS 框架 · Langfuse · 自定义 Metrics · 持续迭代</p>
+            </div>
           </div>
         </div>
       </div>
@@ -2581,7 +3069,7 @@
       <div class="poster p19" id="poster-19">
         <div class="p-inner">
           <div class="p-dots"></div>
-          <div class="p-tag"><span class="dot"></span>P3 职业孵化</div>
+          <div class="p-tag"><span class="dot"></span>AI Engineer Bootcamp · P3 职业孵化</div>
           <h2>课程结束<em>≠ 学完了</em><br>还有 12 周真实项目</h2>
           <p class="lead">真正把“学过”变成“做过”的，不是课程最后一节，而是后面这 12 周。P3 把项目交付、求职资产和面试转化连成一个闭环。</p>
 
@@ -2667,17 +3155,58 @@
           <h2>2026 年的 AI Engineer<br>要会<em>这些新东西</em></h2>
           <p class="lead">这张不是在列 buzzword，而是在说 2026 岗位要求已经从旧技术栈切到什么新标准。不会这些，很多 JD 和面试题你会直接接不上。</p>
 
-          <div class="upgrade-list">
-            <div class="up-row"><div class="dim">Prompt</div><div class="old">Prompt Eng</div><div class="new">Context Eng ✨</div></div>
-            <div class="up-row"><div class="dim">RAG</div><div class="old">向量检索</div><div class="new">+ GraphRAG 混合检索</div></div>
-            <div class="up-row"><div class="dim">Agent SDK</div><div class="old">LangChain Agent</div><div class="new">OpenAI / Claude / ADK 三家对比</div></div>
-            <div class="up-row"><div class="dim">Memory</div><div class="old">Buffer Memory</div><div class="new">Mem0 三层 + Graph Memory</div></div>
-            <div class="up-row"><div class="dim">协议</div><div class="old">无</div><div class="new">MCP + A2A 双协议</div></div>
-            <div class="up-row"><div class="dim">Harness</div><div class="old">无</div><div class="new">Claude Code 架构 + ADLC</div></div>
-            <div class="up-row"><div class="dim">Eval</div><div class="old">RAGAS 1 课</div><div class="new">Eval Eng 整周 + Red-team</div></div>
-            <div class="up-row"><div class="dim">微调</div><div class="old">PEFT + QLoRA</div><div class="new">+ Unsloth 2x + LLaMA-Factory</div></div>
-            <div class="up-row"><div class="dim">模型</div><div class="old">Llama 3.1</div><div class="new">DeepSeek + Qwen 3.5 + Llama 4</div></div>
+          <div class="stack-switch">
+            <div class="old-h">old stack</div>
+            <div class="arrow">→</div>
+            <div class="new-h">2026 stack</div>
           </div>
+
+          <div class="upgrade-grid">
+            <div class="up-card">
+              <div class="dim">Prompt</div>
+              <div class="body">
+                <div class="lane old"><div class="k">old</div><div class="v">Prompt Eng</div></div>
+                <div class="lane new"><div class="k">2026</div><div class="v">Context Eng ✨</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">RAG</div>
+              <div class="body">
+                <div class="lane old"><div class="k">old</div><div class="v">向量检索</div></div>
+                <div class="lane new"><div class="k">2026</div><div class="v">GraphRAG 混合检索</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">Agent SDK</div>
+              <div class="body">
+                <div class="lane old"><div class="k">old</div><div class="v">LangChain Agent</div></div>
+                <div class="lane new"><div class="k">2026</div><div class="v">OpenAI / Claude / ADK</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">Memory</div>
+              <div class="body">
+                <div class="lane old"><div class="k">old</div><div class="v">Buffer Memory</div></div>
+                <div class="lane new"><div class="k">2026</div><div class="v">Mem0 三层 + Graph Memory</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">协议</div>
+              <div class="body">
+                <div class="lane old"><div class="k">old</div><div class="v">无</div></div>
+                <div class="lane new"><div class="k">2026</div><div class="v">MCP + A2A 双协议</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">Harness</div>
+              <div class="body">
+                <div class="lane old"><div class="k">old</div><div class="v">无</div></div>
+                <div class="lane new"><div class="k">2026</div><div class="v">Claude Code + ADLC</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-note">不是技术名词变多了，而是 <b>岗位基线已经整体右移</b>。旧标准只够入门，新标准才是 2026 面试会直接问的东西。</div>
         </div>
       </div>
     </div>
@@ -2781,24 +3310,22 @@
           <div class="p-dots"></div>
           <div class="p-tag"><span class="dot"></span>独家内容 · 2026</div>
           <h2>别的课不教<br>我们<em>单独开了 2 个 Phase</em></h2>
-          <p class="lead">这两块不是“进阶附加题”，而是 2026 年 Agent 从 demo 走到产品化最关键的系统层能力。也是很多课程根本没展开讲的地方。</p>
+          <p class="lead">这两块不是附加题，而是 2026 年 Agent 从 demo 走到产品化最关键的系统层能力。</p>
 
-          <div class="exclusive-badge">🔥 目前市面上找不到第二家系统讲这两块的课</div>
+          <div class="exclusive-badge">🔥 这两块我们单独拆成独立 Phase 讲</div>
 
           <div class="hero-row">
             <div class="hero-card">
               <div class="hero-kicker">exclusive modules</div>
               <div class="hero-big"><span class="n">2</span><span class="l">个独立 Phase</span></div>
-              <div class="hero-desc">我们没有把 Memory 和 Harness 顺手塞进某一节 Agent 课里，而是把它们单独拉出来，按系统能力完整讲。</div>
+              <div class="hero-desc">不是顺手带过，而是单独拆出来按系统能力完整讲。</div>
             </div>
             <div class="why-card">
               <div class="why-kicker">why they matter</div>
-              <div class="why-desc">这两个 Phase 的价值，不是“知道有这些概念”，而是让你真正理解 Agent 怎么从玩具变成能上线的产品。</div>
+              <div class="why-desc">不是知道概念，而是理解 Agent 怎么从玩具变成能上线的产品。</div>
               <ul class="why-points">
-                <li>Memory 解决长期交互和用户记忆</li>
-                <li>Harness 解决工具调度与行为边界</li>
+                <li>Memory 管长期记忆，Harness 管工具治理</li>
                 <li>两块都是 2026 技术面高频问点</li>
-                <li>市面上大多数课都没有系统讲</li>
               </ul>
             </div>
           </div>
@@ -2807,7 +3334,7 @@
             <div class="mod memory">
               <div class="phase-tag">PHASE 7 · MEMORY SYSTEM</div>
               <h3>Memory System</h3>
-              <div class="desc">Agent 聊完就忘，生产环境就跑不起来。Memory 解决的是用户偏好、上下文积累和跨会话连续性。</div>
+              <div class="desc">让 Agent 记住用户偏好、上下文积累和跨会话连续性。</div>
               <div class="topics">
                 <span class="topic">短期记忆 STM</span>
                 <span class="topic">长期记忆 LTM</span>
@@ -2820,7 +3347,7 @@
             <div class="mod harness">
               <div class="phase-tag">PHASE 8 · HARNESS ENGINEERING</div>
               <h3>Harness Engineering</h3>
-              <div class="desc">Claude Code 为什么能调度一堆工具还不乱？核心就是 Harness，用来管行为边界、工具调度和技能复用。</div>
+              <div class="desc">让 Agent 在真实工具链里有边界、有调度、不失控。</div>
               <div class="topics">
                 <span class="topic">Harness 架构剖析</span>
                 <span class="topic">Hook System</span>
@@ -2831,9 +3358,7 @@
             </div>
           </div>
 
-          <div class="bottom-note">
-            这两块在 2026 技术面里被反复问到，但市面上几乎没有课系统展开讲。
-          </div>
+          <div class="bottom-note">Memory + Harness 不是点缀模块，而是 2026 Agent 产品化最缺的系统课。</div>
         </div>
       </div>
     </div>
@@ -2849,7 +3374,7 @@
       <div class="poster p24" id="poster-24">
         <div class="p-inner">
           <div class="p-dots"></div>
-          <div class="p-tag"><span class="dot"></span>JD 对照 · 2026</div>
+          <div class="p-tag"><span class="dot"></span>AI Engineer Bootcamp · JD 对照 · 2026</div>
           <h2>扒了 15 份<em>真实 JD</em><br>我们覆盖了多少？</h2>
           <p class="lead">不是拍脑袋说“市场需要这些”，而是把真实岗位要求拆开看。下面这 6 组能力，就是 2026 AI Engineer JD 里最常出现的交集。</p>
 
@@ -2907,25 +3432,44 @@
           <div class="p-dots"></div>
           <div class="p-tag"><span class="dot"></span>SALARY · 2026</div>
           <h2>AI Engineer<br>现在能赚<em>多少钱</em>？</h2>
+          <p class="lead">先看主流带宽。下一张再看 12 家公司的具体样本。</p>
 
           <div class="salary-tiers">
             <div class="tier">
               <div class="range">$100K<em>-150K</em></div>
-              <div class="level">Junior · 0-2 年</div>
+              <div class="level">Junior<span class="exp">0-2 年</span></div>
             </div>
             <div class="tier" style="border-color:var(--brand-yellow);box-shadow:0 0 20px rgba(255,206,68,0.2)">
               <div class="range">$150K<em>-220K</em></div>
-              <div class="level">Mid · 2-5 年</div>
+              <div class="level">Mid<span class="exp">2-5 年</span></div>
             </div>
             <div class="tier">
               <div class="range">$220K<em>-350K+</em></div>
-              <div class="level">Senior · 5+ 年</div>
+              <div class="level">Senior<span class="exp">5+ 年</span></div>
             </div>
           </div>
 
+          <div class="bottom-note">会做 <b>生产级 AI 系统</b>，带宽通常才会往上走。</div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-25" data-slug="p25-salary">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P26 公司薪资样本
+       ========================================= -->
+  <div class="poster-frame" id="p26">
+    <div class="label">P26 公司 <em>· 12 家公司薪资样本</em></div>
+    <div class="poster-scaler">
+      <div class="poster p26" id="poster-26">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>company snapshots</div>
+          <h2>这些公开样本里<br>AI 岗开到<em>什么区间</em>？</h2>
+          <p class="lead">这页只保留更适合展示的公开样本。没有稳定公开区间、或者容易误导的公司，我先删掉了。</p>
+
           <div class="company-grid">
-            <div class="co"><div class="name">OpenAI</div><div class="role">AI Engineer</div><div class="sal">$200-350K</div></div>
-            <div class="co"><div class="name">Anthropic</div><div class="role">AI Engineer</div><div class="sal">$180-320K</div></div>
             <div class="co"><div class="name">Google</div><div class="role">AI Platform Eng</div><div class="sal">$170-300K</div></div>
             <div class="co"><div class="name">Meta</div><div class="role">AI Infra Eng</div><div class="sal">$180-330K</div></div>
             <div class="co"><div class="name">Cursor</div><div class="role">AI Engineer</div><div class="sal">$180-320K</div></div>
@@ -2933,50 +3477,62 @@
             <div class="co"><div class="name">Databricks</div><div class="role">LLM Engineer</div><div class="sal">$160-290K</div></div>
             <div class="co"><div class="name">Scale AI</div><div class="role">AI Engineer</div><div class="sal">$150-250K</div></div>
             <div class="co"><div class="name">Stripe</div><div class="role">AI Product Eng</div><div class="sal">$160-280K</div></div>
-            <div class="co"><div class="name">Notion</div><div class="role">AI Engineer</div><div class="sal">$140-250K</div></div>
             <div class="co"><div class="name">Vercel</div><div class="role">AI SDK Eng</div><div class="sal">$150-260K</div></div>
-            <div class="co"><div class="name">YC Startup</div><div class="role">Founding AI Eng</div><div class="sal">$130-200K+</div></div>
           </div>
         </div>
       </div>
     </div>
-    <button class="dl-btn" data-target="poster-25" data-slug="p25-salary">⬇ 下载 PNG</button>
+    <button class="dl-btn" data-target="poster-26" data-slug="p26-company-salary">⬇ 下载 PNG</button>
   </div>
 
 </div>
+
+<!-- 右侧小红书文案面板 -->
+<script src="./xhs-copy.js"></script>
 
 <!-- html2canvas 下载 -->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
   document.querySelectorAll('.dl-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
-      const target = document.getElementById(btn.dataset.target);
-      if (!target) return;
+      const poster = document.getElementById(btn.dataset.target);
+      if (!poster) return;
 
-      // 临时还原 transform 以便精确截图
-      const originalTransform = target.style.transform;
-      const originalPosition = target.style.position;
-      target.style.transform = 'scale(1)';
-      target.style.position = 'fixed';
-      target.style.top = '0';
-      target.style.left = '0';
-      target.style.zIndex = '-1';
+      const exportNode = poster.closest('.poster-scaler') || poster;
+      const exportPadding = 24;
+      const nodeWidth = exportNode.offsetWidth || 435;
+      const nodeHeight = exportNode.offsetHeight || 581;
+      const exportScale = nodeWidth ? 1242 / nodeWidth : 2;
+
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'fixed';
+      wrapper.style.left = '-99999px';
+      wrapper.style.top = '0';
+      wrapper.style.padding = `${exportPadding}px`;
+      wrapper.style.background = '#eef0f4';
+      wrapper.style.display = 'inline-block';
+      wrapper.style.zIndex = '-1';
+
+      const clone = exportNode.cloneNode(true);
+      clone.style.margin = '0';
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
 
       const oldLabel = btn.textContent;
       btn.textContent = '生成中...';
       btn.disabled = true;
 
       try {
-        const canvas = await html2canvas(target, {
-          backgroundColor: '#ffffff',
-          scale: 2,
+        const canvas = await html2canvas(wrapper, {
+          backgroundColor: '#eef0f4',
+          scale: exportScale,
           useCORS: true,
           allowTaint: true,
           logging: false,
-          width: 1242,
-          height: 1660,
-          windowWidth: 1242,
-          windowHeight: 1660
+          width: nodeWidth + exportPadding * 2,
+          height: nodeHeight + exportPadding * 2,
+          windowWidth: nodeWidth + exportPadding * 2,
+          windowHeight: nodeHeight + exportPadding * 2
         });
         const link = document.createElement('a');
         link.download = `xhs-ai-engineer-${btn.dataset.slug}-${Date.now()}.png`;
@@ -2986,11 +3542,7 @@
         console.error(e);
         alert('导出失败：' + e.message);
       } finally {
-        target.style.transform = originalTransform;
-        target.style.position = originalPosition;
-        target.style.top = '';
-        target.style.left = '';
-        target.style.zIndex = '';
+        wrapper.remove();
         btn.textContent = oldLabel;
         btn.disabled = false;
       }
