@@ -7,14 +7,14 @@
   "level": "零基础",
   "type": "training",
   "targetAudience": "想快速理解 AI Agent 能替自己干什么的职场人 — 销售、市场、行政、房产、保险、法务等非技术岗位均可。",
-  "totalLessons": 7,
+  "totalLessons": 8,
   "totalSteps": 0,
   "liveClasses": 7,
   "estimatedHours": 4,
   "totalInteractiveLabs": 0,
 
   "title_en": "OpenClaw 4-Hour Immersive Workshop",
-  "timeLength": "4 小时线下（7 个模块，一气呵成）",
+  "timeLength": "4 小时现场线下 + 30 分钟课前预习（自学）",
   "courseObjective": "用 4 小时让学员从『听说过 AI』到『能用 OpenClaw 替自己干一件真实工作』— 主打上手感而非理论学习。",
   "courseObjective_en": "Get students from 'heard of AI' to 'using OpenClaw to do real work' in 4 hours — hands-on first, theory later.",
   "suitable": "想亲身体验 AI Agent 而不是看视频的职场人；已经用过 ChatGPT 但不知道怎么真正『用起来』的人；计划在自己行业里引入 AI 工作流的团队 leader。",
@@ -57,7 +57,30 @@
 
   "phases": [
     {
-      "name": "4-Hour Immersive — 一次搞定",
+      "name": "Phase 0 — 课前预习（30 分钟 · 自学）",
+      "color": "#10b981",
+      "summary": "1 课 · 自学 · 到场前做完",
+      "isExtension": true,
+      "lessons": [
+        {
+          "code": "L00",
+          "title": "课前预习 — Mac 电脑基础 + 终端入门 + LLM Key 注册",
+          "description": "这是 4 小时工作坊的课前预习，<strong>到场前自己花 30 分钟做完</strong>。不做也能来，但 L02 装 OpenClaw 的时候你会更吃力 — 因为那一节是 AI 小花带你在终端里跑命令，终端对完全没碰过的人不友好。<br><br><strong>👉 到场前你要做完的 5 件事</strong><br>① 确认电脑能上课（Mac OS / Win 10+）；② Mac 学会打开「终端」App、Win 装好 WSL2；③ 熟悉终端里怎么打字和复制粘贴；④ 注册一个 LLM API Key（Claude / OpenAI / Gemini 任一）；⑤ 准备一份你想让 AI 帮你处理的真实工作素材（L07 Workshop 进阶会用到）。<br><br><strong>🍎 Mac 用户（主推）：</strong>打开「终端」— Spotlight（Cmd+Space）搜 <code>Terminal</code> 或「终端」，回车就开。终端里复制用 Cmd+C、粘贴 Cmd+V（跟普通 App 一样）。Spotlight 打不开的话，Launchpad → 其他 → 终端。<br><br><strong>🪟 Win 用户（必做 WSL2）：</strong>原生 Windows 跑不了 OpenClaw，必须装 WSL2。PowerShell 管理员模式跑 <code>wsl --install</code>，按提示重启，进 Ubuntu 完成账号设置 — 整个过程 15 分钟。装不起来的同学课前发客服，周末有远程 Tutor 帮装。<br><br><strong>🔑 LLM API Key（三选一，到现场如果没准备 JR 会发共享测试 Key）：</strong>① Claude（<a href='https://console.anthropic.com' target='_blank'>console.anthropic.com</a>，账号 + Credit Card，送 $5 免费额度）；② OpenAI（<a href='https://platform.openai.com' target='_blank'>platform.openai.com</a>，最多人用、额度扣得最快）；③ Gemini（<a href='https://aistudio.google.com' target='_blank'>aistudio.google.com</a>，Google 账号、免费额度最大方）— 第一次上课推荐 Gemini，零门槛。<br><br><strong>⚠️ 踩坑提前说：</strong>① 终端提示 <code>command not found</code> 通常是 PATH 没刷新 → 重开终端；② Node 版本必须 ≥ 22（课上会带你装，现在不用管）；③ Win 用户别用原生 PowerShell 装，一定用 WSL2；④ 千万别用 Bun 装 OpenClaw，WhatsApp/Telegram 连接有已知 bug。<br><br>看不懂的地方先记下来，现场 Tutor 会挨个解答。如果想提前了解 OpenClaw 是什么，可以点下面绑定的『OpenClaw 学习方向』第 1 章「什么是 OpenClaw」作为课前读物。",
+          "type": "Information",
+          "isLive": false,
+          "duration": 30,
+          "steps": [],
+          "learns": [
+            { "direction": "ai-office", "slug": "choose-ai-tool" }
+          ],
+          "labs": [
+            { "source": "prompt-lab", "slug": "hello-ai" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Phase 1 — 4-Hour Immersive · 一次搞定",
       "color": "#E84142",
       "summary": "7 模块 · 240 分钟 · 全程线下",
       "lessons": [
@@ -90,7 +113,8 @@
           "steps": [],
           "learns": [
             { "direction": "openclaw", "slug": "install-and-setup" },
-            { "direction": "openclaw", "slug": "configure-llm-providers" }
+            { "direction": "openclaw", "slug": "configure-llm-providers" },
+            { "direction": "openclaw", "slug": "connect-messaging-platforms" }
           ],
           "wikis": [
             { "slug": "claude-code-guide" }
@@ -172,12 +196,20 @@
           "steps": [],
           "learns": [
             { "direction": "openclaw", "slug": "builtin-skills-tour" },
-            { "direction": "openclaw", "slug": "skill-development-basics" }
+            { "direction": "openclaw", "slug": "skill-development-basics" },
+            { "direction": "openclaw", "slug": "build-first-skill" },
+            { "direction": "openclaw", "slug": "mcp-integration" },
+            { "direction": "openclaw", "slug": "scheduled-tasks-automation" },
+            { "direction": "openclaw", "slug": "multi-agent-routing" }
           ],
           "labs": [
             { "source": "prompt-lab", "slug": "system-prompt-design" },
             { "source": "prompt-lab", "slug": "role-playing" },
-            { "source": "prompt-lab", "slug": "tool-use" }
+            { "source": "prompt-lab", "slug": "tool-use" },
+            { "source": "prompt-lab", "slug": "few-shot" }
+          ],
+          "wikis": [
+            { "slug": "n8n-workflow-automation" }
           ]
         },
         {
@@ -188,9 +220,14 @@
           "isLive": true,
           "duration": 30,
           "steps": [],
+          "learns": [
+            { "direction": "openclaw", "slug": "project-personal-assistant" },
+            { "direction": "openclaw", "slug": "project-team-workflow" }
+          ],
           "labs": [
             { "source": "prompt-lab", "slug": "business-writing" },
-            { "source": "prompt-lab", "slug": "text-summarization" }
+            { "source": "prompt-lab", "slug": "text-summarization" },
+            { "source": "prompt-lab", "slug": "qa-system-design" }
           ]
         },
         {
@@ -203,7 +240,9 @@
           "steps": [],
           "labs": [
             { "source": "prompt-lab", "slug": "clear-task" },
-            { "source": "prompt-lab", "slug": "output-format" }
+            { "source": "prompt-lab", "slug": "output-format" },
+            { "source": "prompt-lab", "slug": "constraints" },
+            { "source": "prompt-lab", "slug": "workplace-scenarios" }
           ]
         },
         {
@@ -223,9 +262,18 @@
           "isLive": true,
           "duration": 60,
           "steps": [],
+          "learns": [
+            { "direction": "openclaw", "slug": "skill-testing-debugging" },
+            { "direction": "openclaw", "slug": "skill-registry-publishing" },
+            { "direction": "openclaw", "slug": "security-best-practices" },
+            { "direction": "openclaw", "slug": "production-deployment" }
+          ],
           "labs": [
             { "source": "prompt-lab", "slug": "prompt-chaining" },
-            { "source": "prompt-lab", "slug": "context-engineering" }
+            { "source": "prompt-lab", "slug": "context-engineering" },
+            { "source": "prompt-lab", "slug": "chain-of-thought" },
+            { "source": "prompt-lab", "slug": "multi-agent" },
+            { "source": "prompt-lab", "slug": "react-agent" }
           ]
         }
       ]

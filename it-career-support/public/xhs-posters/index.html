@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>IT Career Coaching · 小红书素材集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-red: #ff5757;
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-blue: #3b82f6;
+    --brand-green: #10b981;
+    --brand-teal: #0d9488;
+    --brand-orange: #f97316;
+    --brand-pink: #ec4899;
+    --brand-purple: #8b5cf6;
+    --bg-light: #f8f9fb;
+    --bg-cream: #fff1e7;
+    --bg-mint: #f0fdfa;
+    --text-main: #10162f;
+    --text-gray: #64748b;
+    --border-color: #e2e8f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #eef0f4; color: var(--text-main); font-family: 'Noto Sans SC', system-ui, sans-serif; padding: 40px 20px 120px 120px; line-height: 1.5; }
+
+  .page-wrap { max-width: 1600px; margin: 0 auto; }
+  .page-head { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 28px 32px; margin-bottom: 30px; box-shadow: 8px 8px 0 var(--brand-dark); }
+  .page-head h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.5px; }
+  .page-head h1 span { color: var(--brand-teal); }
+  .page-head p { color: var(--text-gray); margin-top: 8px; font-size: 14px; }
+  .spec-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .spec-pill { background: var(--bg-mint); border: 1.5px solid var(--brand-dark); border-radius: 100px; padding: 6px 14px; font-size: 12px; font-weight: 700; }
+  .spec-pill.teal { background: var(--brand-teal); color: #fff; border-color: var(--brand-teal); }
+  .guide { margin-top: 12px; padding: 12px 14px; background: #fffbeb; border: 1.5px dashed #f59e0b; border-radius: 10px; font-size: 12.5px; color: #92400e; line-height: 1.7; }
+  .guide b { color: var(--brand-teal); }
+
+  .thumb-nav { display: flex; flex-direction: column; gap: 8px; background: #fff; border: 1.5px solid var(--brand-dark); border-radius: 14px; padding: 12px; position: fixed; top: 20px; left: 16px; width: 96px; max-height: calc(100vh - 40px); overflow-y: auto; z-index: 100; box-shadow: 4px 4px 0 rgba(16,22,47,0.1); }
+  .thumb-nav::before { content: 'NAV'; display: block; font-size: 10px; font-weight: 900; letter-spacing: 2px; color: var(--brand-teal); text-align: center; padding: 2px 0 6px; border-bottom: 1.5px dashed var(--border-color); font-family: 'JetBrains Mono', monospace; margin-bottom: 2px; }
+  .thumb { aspect-ratio: 3/4; background: var(--bg-light); border: 1.5px solid var(--brand-dark); border-radius: 8px; font-weight: 900; color: var(--brand-dark); text-align: center; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px; transition: all 0.12s; }
+  .thumb .num { font-size: 18px; line-height: 1; }
+  .thumb .lbl { font-size: 9px; color: var(--text-gray); font-weight: 700; }
+  .thumb:hover { background: var(--brand-yellow); transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  .poster-frame { display: grid; grid-template-columns: auto 460px; gap: 28px; align-items: start; justify-content: center; margin-bottom: 60px; position: relative; }
+  .poster-main { display: flex; flex-direction: column; align-items: center; }
+  .poster-frame .label { font-size: 13px; font-weight: 900; color: var(--brand-dark); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .poster-frame .label::before { content: ''; width: 28px; height: 4px; background: var(--brand-teal); border-radius: 2px; }
+  .poster-frame .label em { font-style: normal; color: var(--text-gray); font-weight: 600; font-size: 12px; margin-left: 12px; }
+
+  .poster-scaler { width: 435px; height: 581px; position: relative; border: 2px solid var(--brand-dark); border-radius: 12px; box-shadow: 8px 8px 0 var(--brand-dark); overflow: hidden; }
+  .poster { width: 1242px; height: 1660px; transform: scale(0.35); transform-origin: top left; position: absolute; top: 0; left: 0; background: var(--bg-light); overflow: hidden; font-family: 'Noto Sans SC', sans-serif; box-sizing: border-box; padding: 32px; }
+
+  .dl-btn { display: block; margin: 20px auto 0; background: var(--brand-red); color: #fff; border: 3px solid var(--brand-dark); box-shadow: 6px 6px 0 var(--brand-dark); padding: 14px 32px; font-family: 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 900; letter-spacing: 1.5px; cursor: pointer; border-radius: 10px; transition: all 0.15s; }
+  .dl-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--brand-dark); }
+
+  .copy-panel { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 18px 20px; box-shadow: 6px 6px 0 rgba(16,22,47,0.08); display: flex; flex-direction: column; gap: 14px; }
+  .copy-panel .cp-title { font-size: 13px; font-weight: 900; color: var(--brand-teal); letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; padding-bottom: 10px; border-bottom: 1.5px dashed var(--border-color); }
+  .cp-section { display: flex; flex-direction: column; gap: 6px; }
+  .cp-section .cp-label { font-size: 11px; font-weight: 900; color: var(--text-gray); letter-spacing: 1.5px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+  .cp-section .cp-box { background: #fafbfc; border: 1.5px solid var(--border-color); border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.55; color: var(--text-main); white-space: pre-wrap; word-break: break-word; }
+  .cp-section .cp-btn { align-self: flex-end; background: var(--brand-dark); color: #fff; border: none; padding: 5px 14px; font-size: 11px; font-weight: 700; letter-spacing: 1px; border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', sans-serif; transition: all 0.15s; }
+  .cp-section .cp-btn:hover { background: var(--brand-teal); }
+  .cp-section .cp-btn.copied { background: var(--brand-green); }
+  .cp-section .cp-box.hashtags { color: var(--brand-blue); font-weight: 600; font-size: 12.5px; }
+  .cp-section .cp-box.wechat { background: #f0fdf4; border-color: #86efac; font-size: 13px; }
+  .cp-section .cp-box.community { background: #eff6ff; border-color: #93c5fd; font-size: 13px; }
+  .cp-tabs { display: flex; gap: 4px; background: #f3f4f6; padding: 4px; border-radius: 10px; }
+  .cp-tab { flex: 1; background: transparent; border: none; padding: 8px 6px; font-size: 12px; font-weight: 700; color: var(--text-gray); cursor: pointer; border-radius: 8px; font-family: 'Noto Sans SC', sans-serif; transition: all 0.15s; }
+  .cp-tab.active { background: #fff; color: var(--tab-color, var(--brand-dark)); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 900; }
+  .cp-pane { display: flex; flex-direction: column; gap: 14px; }
+  .cp-pane.hidden { display: none; }
+  .cp-tip { background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; font-size: 11.5px; color: #92400e; line-height: 1.5; }
+
+  /* 海报内部通用 */
+  .p-inner { position: relative; width: 100%; height: 100%; padding: 80px 72px; display: flex; flex-direction: column; background: #fff; border: 5px solid var(--brand-dark); border-radius: 36px; box-sizing: border-box; overflow: hidden; }
+  .p-dots { position: absolute; top: 0; right: 0; width: 400px; height: 400px; background-image: radial-gradient(#64748b 1.5px, transparent 1.5px); background-size: 28px 28px; opacity: 0.1; pointer-events: none; }
+  .p-dots.bl { top: auto; right: auto; bottom: 0; left: 0; }
+  .p-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 700; letter-spacing: 1px; color: var(--brand-teal); text-transform: uppercase; background: var(--bg-mint); border: 1.5px solid var(--brand-teal); padding: 10px 22px; border-radius: 100px; width: fit-content; font-family: 'JetBrains Mono', monospace; }
+  .p-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-teal); }
+  .hl { position: relative; display: inline-block; z-index: 1; }
+  .hl::after { content: ''; position: absolute; bottom: 10px; left: -4px; right: -4px; height: 24px; background: var(--brand-yellow); z-index: -1; opacity: 0.75; }
+
+  /* P1 默认封面 */
+  .p1 .p-inner { background: #fff; justify-content: center; }
+  .p1 .hook { font-size: 132px; font-weight: 900; line-height: 1.05; letter-spacing: -4px; color: var(--brand-dark); margin-top: 40px; }
+  .p1 .sub { font-size: 48px; font-weight: 500; color: var(--text-gray); margin-top: 40px; line-height: 1.5; }
+  .p1 .course-chip { margin-top: 60px; background: var(--brand-dark); color: #fff; padding: 24px 32px; border-radius: 18px; display: inline-flex; gap: 20px; width: fit-content; box-shadow: 10px 10px 0 var(--brand-teal); }
+  .p1 .course-chip .name { font-size: 42px; font-weight: 900; letter-spacing: -0.5px; }
+  .p1 .course-chip .meta { font-size: 26px; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+  .p1 .corner-mark { position: absolute; top: 70px; right: 70px; background: var(--brand-yellow); border: 2px solid var(--brand-dark); padding: 12px 18px; border-radius: 12px; font-size: 24px; font-weight: 900; transform: rotate(4deg); box-shadow: 6px 6px 0 var(--brand-dark); }
+
+  /* P1B 共鸣版 */
+  .p1b .p-inner { justify-content: flex-start; background: #fff; padding: 60px 50px; }
+  .p1b .p-dots { opacity: 0.05; }
+  .p1b .corner-mark { background: var(--brand-teal); color: #fff; top: 40px; right: 40px; transform: rotate(8deg); font-size: 44px !important; padding: 15px 30px !important; border-radius: 20px !important; }
+  .p1b .p-tag { background: var(--brand-dark); color: var(--brand-yellow); border: none; font-size: 36px !important; padding: 12px 35px !important; }
+  .p1b .hook { font-size: 140px; line-height: 1.1; letter-spacing: -4px; margin-top: 40px; font-weight: 900; }
+  .p1b .hook .soft { color: var(--text-gray); font-size: 0.7em; display: block; margin-bottom: 10px; }
+  .p1b .hook .hl { color: #fff; background: var(--brand-teal); padding: 5px 25px; border-radius: 15px; box-shadow: 12px 12px 0 var(--brand-yellow); display: inline-block; margin-top: 15px; }
+  .p1b .contrast-wrapper { margin-top: 60px; display: flex; flex-direction: column; gap: 40px; flex: 1; }
+  .p1b .xhs-card { border: 5px solid var(--brand-dark); border-radius: 35px; padding: 40px 50px; position: relative; box-shadow: 15px 15px 0 var(--brand-dark); }
+  .p1b .xhs-card.bad { background: #f8fafc; box-shadow: 15px 15px 0 #cbd5e1; }
+  .p1b .xhs-card.good { background: #fffdf5; box-shadow: 15px 15px 0 var(--brand-teal); }
+  .p1b .xhs-card .label-tag { position: absolute; top: -30px; left: 40px; background: var(--brand-dark); color: #fff; padding: 10px 30px; border-radius: 12px; font-size: 32px !important; font-weight: 900; font-family: 'JetBrains Mono', monospace; border: 3px solid var(--brand-dark); }
+  .p1b .xhs-card.good .label-tag { background: var(--brand-teal); border-color: var(--brand-teal); }
+  .p1b .xhs-card .content { display: flex; align-items: center; gap: 40px; }
+  .p1b .xhs-card .techs { font-size: 72px !important; font-weight: 900; line-height: 1.1; color: var(--brand-dark); flex: 1; }
+  .p1b .xhs-card .desc { font-size: 38px !important; color: var(--text-gray); font-weight: 600; flex: 1.2; line-height: 1.4 !important; }
+  .p1b .xhs-card.good .techs { color: var(--brand-teal); }
+  .p1b .xhs-card.good .desc { color: #134e4a; }
+  .p1b .course-chip { margin-top: 40px; background: var(--brand-dark); color: #fff; padding: 35px 50px; border-radius: 28px; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .p1b .course-chip .name { font-size: 52px !important; font-weight: 900; }
+
+  /* P1C 转岗版 */
+  .p1c .p-inner { justify-content: flex-start; background: var(--bg-mint); padding: 80px 60px; }
+  .p1c .hook { font-size: 150px; line-height: 1; letter-spacing: -5px; font-weight: 900; color: var(--brand-dark); margin-top: 20px; }
+  .p1c .hook span { color: var(--brand-teal); background: #fff; padding: 0 10px; border-radius: 10px; }
+  .p1c .transition-box { margin-top: 60px; display: flex; flex-direction: column; align-items: center; gap: 30px; flex: 1; }
+  .p1c .stage-card { width: 100%; border: 6px solid var(--brand-dark); border-radius: 45px; padding: 60px; position: relative; background: #fff; box-shadow: 18px 18px 0 var(--brand-dark); }
+  .p1c .stage-card.from { background: #fcfdfe; }
+  .p1c .stage-card.to { background: var(--brand-yellow); box-shadow: 18px 18px 0 var(--brand-teal); }
+  .p1c .stage-card .badge { position: absolute; top: -45px; left: 60px; padding: 12px 40px; border-radius: 18px; border: 5px solid var(--brand-dark); font-size: 38px !important; font-weight: 900; transform: rotate(-3deg); z-index: 5; }
+  .p1c .stage-card.from .badge { background: #64748b; color: #fff; }
+  .p1c .stage-card.to .badge { background: var(--brand-teal); color: #fff; }
+  .p1c .stage-card .text { font-size: 110px !important; font-weight: 900; line-height: 1.1; letter-spacing: -3px; }
+  .p1c .big-arrow { font-size: 140px; font-weight: 900; color: var(--brand-teal); text-shadow: 10px 10px 0 var(--brand-dark); margin: -10px 0; line-height: 1; }
+  .p1c .course-chip { background: var(--brand-dark); color: #fff; border-radius: 30px; padding: 40px 50px; margin-top: 30px; width: 100%; text-align: center; box-shadow: 12px 12px 0 var(--brand-teal); }
+  .p1c .course-chip .name { font-size: 52px !important; font-weight: 900; color: #fff; }
+
+  /* P1D 求职版 */
+  .p1d .p-inner { justify-content: flex-start; background: var(--brand-dark); color: #fff; padding: 80px 60px; }
+  .p1d .p-dots { background-image: radial-gradient(rgba(255,255,255,0.2) 1.5px, transparent 1.5px); }
+  .p1d .hook { font-size: 120px; line-height: 1.1; letter-spacing: -3px; font-weight: 900; color: #fff; margin-top: 40px; }
+  .p1d .hook em { font-style: normal; color: var(--brand-yellow); background: rgba(255,255,255,0.1); padding: 0 15px; border-radius: 15px; }
+  .p1d .sticker-grid { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; transform: rotate(-2deg); flex: 1; }
+  .p1d .sticker { background: #fff; color: var(--brand-dark); border: 5px solid var(--brand-dark); border-radius: 25px; padding: 40px 25px; font-size: 56px !important; font-weight: 900; text-align: center; box-shadow: 12px 12px 0 var(--brand-yellow); display: flex; align-items: center; justify-content: center; }
+  .p1d .sticker:nth-child(even) { transform: rotate(4deg); background: var(--brand-yellow); box-shadow: 12px 12px 0 var(--brand-teal); }
+  .p1d .sticker:nth-child(3n) { transform: rotate(-3deg); background: var(--brand-teal); color: #fff; box-shadow: 12px 12px 0 #fff; }
+  .p1d .bottom-text { margin-top: 60px; font-size: 48px !important; font-weight: 800; color: #fff; line-height: 1.5 !important; text-align: center; border-top: 3px dashed rgba(255,206,68,0.5); padding-top: 50px; }
+  .p1d .course-chip { margin-top: 40px; background: #fff; color: var(--brand-dark); box-shadow: 12px 12px 0 var(--brand-teal); padding: 35px 50px; border-radius: 30px; }
+  .p1d .course-chip .name { font-size: 52px; font-weight: 900; }
+
+  /* P2 痛点（codex 高级 patterns）*/
+  .p2 .p-inner { background: radial-gradient(circle at top right, rgba(13,148,136,0.22), transparent 28%), linear-gradient(180deg, #f4fefb 0%, #e6fffa 100%); }
+  .p2 .eyebrow { margin-top: 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .p2 .eyebrow .line { flex: 1; height: 3px; background: repeating-linear-gradient(90deg, var(--brand-dark) 0 18px, transparent 18px 30px); opacity: 0.25; }
+  .p2 .eyebrow .txt { font-size: 24px; font-weight: 900; letter-spacing: 3px; color: var(--brand-teal); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+  .p2 h2 { font-size: 92px; font-weight: 900; line-height: 1.08; letter-spacing: -3px; margin-top: 24px; }
+  .p2 .lead { margin-top: 18px; font-size: 30px; line-height: 1.45; color: var(--text-gray); font-weight: 600; max-width: 930px; }
+  .p2 .split { margin-top: 46px; display: grid; grid-template-columns: 1fr 74px 1fr; gap: 20px; flex: 1; align-items: stretch; }
+  .p2 .divider { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+  .p2 .divider .bar { width: 6px; flex: 1; border-radius: 999px; background: linear-gradient(180deg, rgba(16,22,47,0.12) 0%, rgba(13,148,136,0.4) 100%); }
+  .p2 .divider .vs { width: 64px; height: 64px; border-radius: 18px; border: 2px solid var(--brand-dark); background: var(--brand-yellow); display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900; font-family: 'JetBrains Mono', monospace; box-shadow: 5px 5px 0 var(--brand-dark); transform: rotate(-8deg); }
+  .p2 .col { border: 2px solid var(--brand-dark); border-radius: 28px; padding: 34px 32px 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .p2 .col.bad { box-shadow: 10px 10px 0 #94a3b8; background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%); }
+  .p2 .col.good { box-shadow: 12px 12px 0 var(--brand-teal); background: linear-gradient(180deg, #fff 0%, #f0fdfa 100%); }
+  .p2 .col-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+  .p2 .badge { min-width: 72px; height: 72px; border-radius: 20px; border: 2px solid var(--brand-dark); display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+  .p2 .col.bad .badge { background: #dbe4ee; color: #475569; }
+  .p2 .col.good .badge { background: var(--brand-teal); color: #fff; }
+  .p2 .kicker { font-size: 18px; font-weight: 900; letter-spacing: 2px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; margin-bottom: 8px; }
+  .p2 .col.bad .kicker { color: #64748b; }
+  .p2 .col.good .kicker { color: var(--brand-teal); }
+  .p2 .col h3 { font-size: 42px; font-weight: 900; line-height: 1.15; letter-spacing: -1px; }
+  .p2 .col-sub { margin-top: 10px; font-size: 23px; line-height: 1.4; font-weight: 600; }
+  .p2 .col.bad .col-sub { color: #64748b; }
+  .p2 .col.good .col-sub { color: #134e4a; }
+  .p2 .col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .p2 .col li { min-height: 92px; padding: 18px 18px 18px 78px; border-radius: 18px; border: 1.5px solid var(--brand-dark); position: relative; font-size: 26px; line-height: 1.35; font-weight: 700; display: flex; align-items: center; }
+  .p2 .col li::before { position: absolute; left: 18px; top: 18px; width: 42px; height: 42px; border-radius: 12px; border: 2px solid var(--brand-dark); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+  .p2 .col.bad li { background: rgba(255,255,255,0.78); color: #475569; }
+  .p2 .col.bad li::before { content: 'X'; background: #e2e8f0; color: var(--brand-red); }
+  .p2 .col.good li { background: #fff; color: var(--text-main); }
+  .p2 .col.good li::before { content: 'GO'; background: #ccfbf1; color: var(--brand-teal); font-size: 16px; }
+  .p2 .bottom-note { margin-top: 28px; padding: 18px 22px; border-radius: 18px; border: 2px solid var(--brand-dark); background: #fff; font-size: 24px; line-height: 1.45; font-weight: 700; box-shadow: 7px 7px 0 var(--brand-yellow); }
+
+  /* P3 群对话 */
+  .p3 .p-inner { background: #fff; }
+  .p3 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p3 .chat { margin-top: 50px; background: var(--bg-light); border: 2px solid var(--brand-dark); border-radius: 24px; overflow: hidden; box-shadow: 14px 14px 0 var(--brand-yellow); flex: 1; }
+  .p3 .chat-header { background: var(--brand-dark); color: #fff; padding: 18px 26px; display: flex; align-items: center; gap: 14px; font-size: 24px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .p3 .chat-header .dots { display: flex; gap: 6px; }
+  .p3 .chat-header .dots span { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+  .p3 .chat-header .dots span:nth-child(2) { background: #febc2e; }
+  .p3 .chat-header .dots span:nth-child(3) { background: #28c940; }
+  .p3 .chat-body { padding: 32px 36px; display: flex; flex-direction: column; gap: 20px; }
+  .p3 .bubble { padding: 20px 26px; border-radius: 20px; font-size: 34px; line-height: 1.45; font-weight: 500; max-width: 85%; }
+  .p3 .bubble.left { background: #fff; border: 1.5px solid var(--border-color); align-self: flex-start; border-bottom-left-radius: 6px; }
+  .p3 .bubble.right { background: var(--brand-teal); color: #fff; align-self: flex-end; border-bottom-right-radius: 6px; }
+  .p3 .bubble .name { font-size: 20px; color: var(--brand-teal); font-weight: 900; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+  .p3 .bubble.right .name { color: var(--brand-yellow); }
+
+  /* P4 4 大能力 */
+  .p4 .p-inner { background: #fff; }
+  .p4 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p4 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p4 .grid4 { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; flex: 1; }
+  .p4 .cell { border: 2px solid var(--brand-dark); border-radius: 20px; padding: 32px 28px; box-shadow: 8px 8px 0 var(--brand-dark); display: flex; flex-direction: column; gap: 14px; }
+  .p4 .cell:nth-child(1) { background: var(--bg-mint); box-shadow: 8px 8px 0 var(--brand-teal); }
+  .p4 .cell:nth-child(2) { background: #eef4ff; box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p4 .cell:nth-child(3) { background: #fff9e0; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p4 .cell:nth-child(4) { background: #fff7ed; box-shadow: 8px 8px 0 var(--brand-orange); }
+  .p4 .cell .num { font-size: 52px; font-weight: 900; color: var(--brand-dark); font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .p4 .cell h4 { font-size: 38px; font-weight: 900; line-height: 1.2; }
+  .p4 .cell p { font-size: 26px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P5 14 Part 地图 */
+  .p5 .p-inner { background: var(--bg-light); }
+  .p5 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -1.5px; margin-top: 20px; }
+  .p5 .phases { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; }
+  .p5 .ph { display: flex; gap: 16px; align-items: flex-start; background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 20px; box-shadow: 4px 4px 0 rgba(13,148,136,0.25); }
+  .p5 .ph .badge { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 20px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p5 .ph h5 { font-size: 26px; font-weight: 900; line-height: 1.15; }
+  .p5 .ph p { font-size: 20px; color: var(--text-gray); line-height: 1.3; font-weight: 600; margin-top: 4px; }
+
+  /* P6 工具栈 深色 */
+  .p6 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p6 .p-dots { opacity: 0.15; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p6 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p6 h2 { color: #fff; font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p6 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p6 .tool-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; flex: 1; }
+  .p6 .tool { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 22px 18px; text-align: center; }
+  .p6 .tool .name { font-size: 26px; font-weight: 900; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
+  .p6 .tool .cat { font-size: 18px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+  .p6 .tool.hot { background: var(--brand-teal); border-color: var(--brand-teal); box-shadow: 4px 4px 0 var(--brand-yellow); }
+  .p6 .tool.hot .cat { color: var(--brand-yellow); }
+
+  /* P7 学员反馈 */
+  .p7 .p-inner { background: #fff; }
+  .p7 h2 { font-size: 76px; font-weight: 900; line-height: 1.2; letter-spacing: -2px; margin-top: 30px; }
+  .p7 .quotes { margin-top: 50px; display: flex; flex-direction: column; gap: 22px; flex: 1; }
+  .p7 .q { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 30px 34px; position: relative; box-shadow: 8px 8px 0 var(--brand-dark); }
+  .p7 .q:nth-child(2) { margin-left: 60px; box-shadow: 8px 8px 0 var(--brand-teal); background: var(--bg-mint); }
+  .p7 .q:nth-child(3) { margin-left: 120px; box-shadow: 8px 8px 0 var(--brand-blue); background: #eef4ff; }
+  .p7 .q::before { content: '"'; position: absolute; top: -12px; left: 20px; font-size: 100px; font-weight: 900; color: var(--brand-yellow); line-height: 1; font-family: Georgia, serif; }
+  .p7 .q .txt { font-size: 36px; line-height: 1.45; font-weight: 500; margin-left: 40px; }
+  .p7 .q .who { font-size: 22px; color: var(--text-gray); margin-top: 14px; margin-left: 40px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+  /* P8 课程配置 */
+  .p8 .p-inner { background: var(--bg-cream); }
+  .p8 h2 { font-size: 84px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p8 .stats { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .p8 .stat { background: #fff; border: 2px solid var(--brand-dark); border-radius: 18px; padding: 26px 28px; box-shadow: 6px 6px 0 var(--brand-dark); }
+  .p8 .stat .num { font-size: 84px; font-weight: 900; line-height: 1; letter-spacing: -3px; font-family: 'JetBrains Mono', monospace; color: var(--brand-dark); }
+  .p8 .stat .num em { font-style: normal; color: var(--brand-teal); font-size: 44px; margin-left: 6px; }
+  .p8 .stat .lbl { font-size: 24px; font-weight: 700; color: var(--text-gray); margin-top: 10px; }
+  .p8 .format-list { margin-top: 24px; background: var(--brand-dark); color: #fff; border-radius: 18px; padding: 28px 32px; box-shadow: 8px 8px 0 var(--brand-teal); }
+  .p8 .format-list h4 { font-size: 30px; font-weight: 900; color: var(--brand-yellow); margin-bottom: 14px; }
+  .p8 .format-list ul { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; list-style: none; }
+  .p8 .format-list li { font-size: 24px; font-weight: 500; padding-left: 26px; position: relative; line-height: 1.4; }
+  .p8 .format-list li::before { content: '✓'; position: absolute; left: 0; color: var(--brand-yellow); font-weight: 900; }
+
+  /* P9 CTA */
+  .p9 .p-inner { background: #fff; align-items: center; justify-content: center; text-align: center; }
+  .p9 .big-q { font-size: 56px; font-weight: 500; color: var(--text-gray); margin-top: 20px; line-height: 1.5; }
+  .p9 .giant { font-size: 150px; font-weight: 900; line-height: 1; letter-spacing: -5px; color: var(--brand-dark); margin-top: 40px; }
+  .p9 .giant em { font-style: normal; color: var(--brand-teal); }
+  .p9 .sub-hook { margin-top: 50px; font-size: 40px; font-weight: 700; line-height: 1.5; max-width: 860px; }
+  .p9 .arrow { margin-top: 60px; display: inline-flex; align-items: center; gap: 20px; padding: 20px 32px; background: var(--brand-yellow); border: 2px solid var(--brand-dark); border-radius: 100px; box-shadow: 8px 8px 0 var(--brand-dark); font-size: 38px; font-weight: 900; }
+  .p9 .arrow .arr { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--brand-dark); color: var(--brand-yellow); border-radius: 50%; font-size: 26px; }
+  .p9 .note { margin-top: 40px; font-size: 24px; color: var(--text-gray); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+
+  /* P10 课程 explainer · 一句话讲清这是什么课 */
+  .p10 .p-inner { background: linear-gradient(180deg, #f4fefb 0%, #ccfbf1 100%); }
+  .p10 h2 { font-size: 84px; font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-top: 20px; }
+  .p10 h2 em { font-style: normal; color: var(--brand-teal); background: var(--brand-yellow); padding: 0 12px; border-radius: 12px; }
+  .p10 .one-liner { margin-top: 24px; padding: 28px 30px; background: var(--brand-dark); color: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; box-shadow: 8px 8px 0 var(--brand-teal); font-size: 36px; font-weight: 700; line-height: 1.5; }
+  .p10 .one-liner .yellow { color: var(--brand-yellow); font-weight: 900; }
+  .p10 .day-title { margin-top: 26px; font-size: 30px; font-weight: 900; color: var(--brand-teal); font-family: 'JetBrains Mono', monospace; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; }
+  .p10 .day-title::before { content: ''; width: 32px; height: 4px; background: var(--brand-teal); border-radius: 2px; }
+  .p10 .tasks { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .p10 .task { background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; gap: 18px; box-shadow: 4px 4px 0 rgba(13,148,136,0.25); }
+  .p10 .task .num { width: 48px; height: 48px; border-radius: 12px; background: var(--brand-teal); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p10 .task .text { font-size: 28px; font-weight: 700; line-height: 1.3; }
+  .p10 .task .text em { font-style: normal; color: var(--brand-teal); font-weight: 900; }
+  .p10 .meta-row { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .p10 .meta-row .m { background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 16px; text-align: center; }
+  .p10 .meta-row .m .lbl { font-size: 18px; color: var(--text-gray); font-weight: 900; font-family: 'JetBrains Mono', monospace; letter-spacing: 1.5px; text-transform: uppercase; }
+  .p10 .meta-row .m .val { font-size: 26px; color: var(--brand-teal); font-weight: 900; margin-top: 6px; line-height: 1.2; }
+
+  /* P11 矩阵 */
+  .p11 .p-inner { background: var(--bg-cream); }
+  .p11 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p11 .matrix { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p11 .row { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 0; border: 2px solid var(--brand-dark); border-radius: 14px; overflow: hidden; }
+  .p11 .row .dim { background: var(--brand-dark); color: #fff; padding: 16px 18px; font-size: 22px; font-weight: 900; display: flex; align-items: center; }
+  .p11 .row .v1 { padding: 16px 18px; font-size: 20px; color: var(--text-gray); background: #f5f5f5; border-right: 1.5px solid var(--border-color); line-height: 1.4; }
+  .p11 .row .v2 { padding: 16px 18px; font-size: 20px; color: var(--brand-dark); background: var(--bg-mint); font-weight: 600; line-height: 1.4; }
+
+  /* P12 大厂求职深潜 */
+  .p12 .p-inner { background: var(--bg-mint); }
+  .p12 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p12 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p12 .grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p12 .card { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 26px 24px; box-shadow: 5px 5px 0 rgba(13,148,136,0.3); }
+  .p12 .card .icon { font-size: 40px; margin-bottom: 10px; }
+  .p12 .card h4 { font-size: 30px; font-weight: 900; margin-bottom: 8px; }
+  .p12 .card p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+  .p12 .stat-row { margin-top: 22px; background: var(--brand-teal); color: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 22px 28px; display: flex; justify-content: space-around; text-align: center; }
+  .p12 .stat-row .s .n { font-size: 50px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+  .p12 .stat-row .s .l { font-size: 20px; font-weight: 600; opacity: 0.85; margin-top: 4px; }
+
+  /* P13 面试拆解 */
+  .p13 .p-inner { background: linear-gradient(160deg, #134e4a 0%, #0f172a 100%); color: #fff; }
+  .p13 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p13 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p13 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p13 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p13 .layers { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p13 .layer { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 22px 24px; }
+  .p13 .layer .badge { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; color: #fff; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.3); }
+  .p13 .layer h4 { font-size: 30px; font-weight: 900; margin-bottom: 4px; }
+  .p13 .layer p { font-size: 22px; color: rgba(255,255,255,0.6); font-weight: 500; line-height: 1.35; }
+
+  /* P14 适合谁学 */
+  .p14 .p-inner { background: #fff; }
+  .p14 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p14 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p14 .audience { margin-top: 36px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .p14 .aud { border: 2px solid var(--brand-dark); border-radius: 18px; padding: 26px 30px; display: flex; gap: 20px; align-items: flex-start; }
+  .p14 .aud:nth-child(1) { background: var(--bg-mint); box-shadow: 6px 6px 0 var(--brand-teal); }
+  .p14 .aud:nth-child(2) { background: #eef4ff; box-shadow: 6px 6px 0 var(--brand-blue); }
+  .p14 .aud:nth-child(3) { background: #fff7ed; box-shadow: 6px 6px 0 var(--brand-orange); }
+  .p14 .aud:nth-child(4) { background: #fff9e0; box-shadow: 6px 6px 0 var(--brand-yellow); }
+  .p14 .aud .emoji { font-size: 48px; flex-shrink: 0; }
+  .p14 .aud h4 { font-size: 32px; font-weight: 900; margin-bottom: 6px; }
+  .p14 .aud p { font-size: 24px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P15 31 Lab 分布 */
+  .p15 .p-inner { background: var(--bg-light); }
+  .p15 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p15 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p15 .lab-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; }
+  .p15 .lab-cat { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 22px; box-shadow: 5px 5px 0 var(--brand-dark); }
+  .p15 .lab-cat .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .p15 .lab-cat h4 { font-size: 28px; font-weight: 900; }
+  .p15 .lab-cat .cnt { font-size: 36px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-teal); }
+  .p15 .lab-cat p { font-size: 20px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P16 时间线 */
+  .p16 .p-inner { background: #fff; }
+  .p16 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p16 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p16 .timeline { margin-top: 36px; flex: 1; position: relative; padding-left: 50px; }
+  .p16 .timeline::before { content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 4px; background: var(--brand-teal); border-radius: 2px; }
+  .p16 .tl-item { position: relative; padding: 20px 28px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; margin-bottom: 14px; }
+  .p16 .tl-item::before { content: ''; position: absolute; left: -38px; top: 24px; width: 20px; height: 20px; border-radius: 50%; border: 3px solid var(--brand-dark); background: var(--brand-teal); }
+  .p16 .tl-item .week { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-teal); }
+  .p16 .tl-item h4 { font-size: 28px; font-weight: 900; margin: 4px 0; }
+  .p16 .tl-item p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P17 7 大产出 */
+  .p17 .p-inner { background: var(--bg-mint); }
+  .p17 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p17 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p17 .proj-list { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .p17 .proj { display: flex; gap: 20px; align-items: flex-start; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 20px 24px; background: #fff; box-shadow: 5px 5px 0 rgba(13,148,136,0.25); }
+  .p17 .proj .num { width: 52px; height: 52px; border-radius: 50%; background: var(--brand-teal); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p17 .proj h4 { font-size: 26px; font-weight: 900; margin-bottom: 4px; }
+  .p17 .proj p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P18 学习方式 */
+  .p18 .p-inner { background: #fff; }
+  .p18 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p18 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p18 .ways { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; }
+  .p18 .way { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+  .p18 .way:nth-child(1) { background: var(--bg-mint); box-shadow: 8px 8px 0 var(--brand-teal); }
+  .p18 .way:nth-child(2) { background: #eef4ff; box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p18 .way:nth-child(3) { background: #fff7ed; box-shadow: 8px 8px 0 var(--brand-orange); }
+  .p18 .way:nth-child(4) { background: #fff9e0; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p18 .way .ic { font-size: 44px; }
+  .p18 .way h4 { font-size: 30px; font-weight: 900; }
+  .p18 .way p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P19 入营 + 结营测试 */
+  .p19 .p-inner { background: #fef2f2; }
+  .p19 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p19 h2 em { font-style: normal; color: var(--brand-red); }
+  .p19 .flow { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; }
+  .p19 .step { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 22px; box-shadow: 5px 5px 0 rgba(13,148,136,0.25); }
+  .p19 .step .ic { font-size: 36px; margin-bottom: 8px; }
+  .p19 .step h4 { font-size: 28px; font-weight: 900; margin-bottom: 6px; }
+  .p19 .step p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+  .p19 .cert { margin-top: 20px; background: var(--brand-dark); color: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 22px 28px; text-align: center; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p19 .cert .big { font-size: 32px; font-weight: 900; color: var(--brand-yellow); }
+  .p19 .cert .sub { font-size: 22px; margin-top: 6px; opacity: 0.85; }
+
+  /* P20 DIY vs 系统化 */
+  .p20 .p-inner { background: var(--bg-light); }
+  .p20 h2 { font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p20 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p20 .upgrade-list { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .p20 .up-row { display: grid; grid-template-columns: 200px 1fr 1fr; border: 2px solid var(--brand-dark); border-radius: 12px; overflow: hidden; }
+  .p20 .up-row .dim { background: var(--brand-dark); color: #fff; padding: 14px 16px; font-size: 22px; font-weight: 800; display: flex; align-items: center; }
+  .p20 .up-row .old { padding: 14px 16px; font-size: 20px; background: #f5f5f5; color: var(--text-gray); border-right: 1px solid var(--border-color); line-height: 1.35; }
+  .p20 .up-row .new { padding: 14px 16px; font-size: 20px; background: var(--bg-mint); font-weight: 700; color: var(--brand-dark); line-height: 1.35; }
+
+  /* P21 FAQ */
+  .p21 .p-inner { background: #fff; }
+  .p21 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p21 .faq-list { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .p21 .faq { border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 26px; background: #fff; box-shadow: 4px 4px 0 rgba(16,22,47,0.08); }
+  .p21 .faq .q { font-size: 28px; font-weight: 900; color: var(--brand-dark); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; }
+  .p21 .faq .q::before { content: 'Q'; background: var(--brand-teal); color: #fff; padding: 4px 12px; border-radius: 8px; font-size: 20px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+  .p21 .faq .a { font-size: 22px; color: var(--text-gray); line-height: 1.5; font-weight: 500; padding-left: 42px; }
+
+  /* P22 STAR 框架 */
+  .p22 .p-inner { background: linear-gradient(180deg, #f4fefb 0%, #eef6ff 100%); }
+  .p22 h2 { font-size: 80px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p22 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p22 .star-grid { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p22 .star { display: flex; gap: 22px; align-items: flex-start; padding: 22px 26px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; box-shadow: 4px 4px 0 rgba(16,22,47,0.08); }
+  .p22 .star .letter { width: 80px; height: 80px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 900; color: #fff; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); box-shadow: 4px 4px 0 var(--brand-dark); }
+  .p22 .star:nth-child(1) .letter { background: var(--brand-teal); }
+  .p22 .star:nth-child(2) .letter { background: var(--brand-blue); }
+  .p22 .star:nth-child(3) .letter { background: var(--brand-orange); }
+  .p22 .star:nth-child(4) .letter { background: var(--brand-red); }
+  .p22 .star h4 { font-size: 30px; font-weight: 900; margin-bottom: 6px; }
+  .p22 .star p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P23 独家 — Module X + Module Y */
+  .p23 .p-inner { background: linear-gradient(160deg, #134e4a 0%, #0f172a 100%); color: #fff; }
+  .p23 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p23 .p-tag { background: rgba(255,87,87,0.15); border-color: var(--brand-red); color: var(--brand-red); }
+  .p23 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p23 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p23 .exclusive-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; background: var(--brand-red); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 22px; font-weight: 900; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; border: 2px solid rgba(255,255,255,0.3); }
+  .p23 .modules { margin-top: 30px; display: flex; flex-direction: column; gap: 22px; flex: 1; }
+  .p23 .mod { background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 28px 30px; }
+  .p23 .mod.mx { box-shadow: 8px 8px 0 rgba(13,148,136,0.4); }
+  .p23 .mod.my { box-shadow: 8px 8px 0 rgba(249,115,22,0.4); }
+  .p23 .mod .phase-tag { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 2px; margin-bottom: 8px; }
+  .p23 .mod.mx .phase-tag { color: #5eead4; }
+  .p23 .mod.my .phase-tag { color: #fdba74; }
+  .p23 .mod h3 { font-size: 38px; font-weight: 900; margin-bottom: 12px; line-height: 1.15; }
+  .p23 .mod .desc { font-size: 22px; color: rgba(255,255,255,0.7); line-height: 1.5; font-weight: 500; margin-bottom: 14px; }
+  .p23 .mod .topics { display: flex; flex-wrap: wrap; gap: 10px; }
+  .p23 .mod .topic { background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 16px; font-size: 20px; font-weight: 700; }
+  .p23 .mod.mx .topic { color: #99f6e4; }
+  .p23 .mod.my .topic { color: #fed7aa; }
+
+  /* P24 澳洲 IT 公司分布 */
+  .p24 .p-inner { background: #fff; }
+  .p24 h2 { font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p24 h2 em { font-style: normal; color: var(--brand-teal); }
+  .p24 .top-stats { margin-top: 26px; display: flex; gap: 16px; }
+  .p24 .top-stats .s { flex: 1; text-align: center; background: var(--brand-dark); color: #fff; border-radius: 16px; padding: 18px 12px; border: 2px solid var(--brand-dark); }
+  .p24 .top-stats .s .n { font-size: 46px; font-weight: 900; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .p24 .top-stats .s .l { font-size: 18px; font-weight: 600; opacity: 0.7; margin-top: 6px; }
+  .p24 .skill-bars { margin-top: 26px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p24 .sk { border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 22px; background: #fff; }
+  .p24 .sk .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .p24 .sk h4 { font-size: 26px; font-weight: 900; }
+  .p24 .sk .freq { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-teal); }
+  .p24 .sk .bar { height: 16px; background: #e5e7eb; border-radius: 8px; overflow: hidden; border: 1.5px solid var(--brand-dark); }
+  .p24 .sk .bar .fill { height: 100%; border-radius: 6px; }
+  .p24 .companies { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .p24 .companies span { background: var(--bg-light); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 8px 16px; font-size: 18px; font-weight: 700; color: var(--text-gray); }
+
+  /* P25 澳洲 IT 薪资 */
+  .p25 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p25 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p25 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p25 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p25 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p25 .salary-tiers { margin-top: 28px; display: flex; gap: 16px; }
+  .p25 .tier { flex: 1; background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 18px; padding: 22px 18px; text-align: center; }
+  .p25 .tier .range { font-size: 32px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-yellow); line-height: 1.1; }
+  .p25 .tier .level { font-size: 20px; font-weight: 700; margin-top: 8px; opacity: 0.7; }
+  .p25 .co-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; flex: 1; }
+  .p25 .co { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 16px 18px; }
+  .p25 .co .name { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+  .p25 .co .role { font-size: 15px; opacity: 0.5; margin-bottom: 6px; }
+  .p25 .co .sal { font-size: 19px; font-weight: 700; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; }
+
+  /* 字号铁律 v3 */
+  .poster .p-tag { font-size: 30px !important; padding: 12px 24px !important; }
+  .poster .corner-mark { font-size: 28px !important; padding: 12px 18px !important; }
+  .poster p, .poster li, .poster .lbl, .poster .cat, .poster .meta,
+  .poster .who, .poster .sub, .poster .desc, .poster .phase, .poster .phase-tag,
+  .poster .week, .poster .role, .poster .sal,
+  .poster .old, .poster .new, .poster .dim, .poster .v1, .poster .v2,
+  .poster .topic, .poster .bottom-note, .poster .note, .poster .freq,
+  .poster .companies span, .poster .lead,
+  .poster .tier .level, .poster .stat .lbl, .poster .chat-header, .poster .ph p,
+  .poster .tool .cat, .poster .cert .sub, .poster .col-sub {
+    font-size: 36px !important;
+    line-height: 1.45 !important;
+    font-weight: 500 !important;
+  }
+  .poster h3, .poster h4, .poster h5,
+  .poster .mod h4, .poster .aud h4, .poster .proj h4, .poster .faq .q,
+  .poster .ph h5, .poster .lab-cat h4, .poster .step h4,
+  .poster .way h4, .poster .tl-item h4, .poster .star h4,
+  .poster .cell h4, .poster .col h3, .poster .mod h3, .poster .card h4,
+  .poster .tool .name {
+    font-size: 44px !important;
+    line-height: 1.2 !important;
+    font-weight: 900 !important;
+  }
+  .poster .bubble, .poster .q .txt, .poster .cert .big {
+    font-size: 44px !important;
+    line-height: 1.4 !important;
+  }
+  .poster h2 {
+    font-size: 88px !important;
+    line-height: 1.15 !important;
+    letter-spacing: -2px !important;
+    font-weight: 900 !important;
+  }
+  .p1 .hook { font-size: 140px !important; line-height: 1.05 !important; }
+  .p9 .giant { font-size: 150px !important; }
+  .poster .sub-hook { font-size: 44px !important; line-height: 1.5 !important; }
+  .poster .stat .num em, .poster .tier .range em { font-size: 36px !important; }
+  .hl::after { height: 22px !important; bottom: 12px !important; }
+
+  /* 课程标识 bar */
+  .p-course-bar { position: absolute; left: 50%; top: 28px; transform: translateX(-50%); background: var(--brand-teal); color: #fff; border: 2px solid var(--brand-dark); border-radius: 100px; padding: 10px 26px; font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; letter-spacing: 1.5px; box-shadow: 4px 4px 0 var(--brand-dark); white-space: nowrap; z-index: 10; display: flex; align-items: center; gap: 12px; }
+  .p-course-bar::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--brand-yellow); }
+  .p6 .p-course-bar, .p13 .p-course-bar, .p23 .p-course-bar, .p25 .p-course-bar { background: var(--brand-yellow); color: var(--brand-dark); }
+  .p6 .p-course-bar::before, .p13 .p-course-bar::before, .p23 .p-course-bar::before, .p25 .p-course-bar::before { background: var(--brand-teal); }
+  .p1 .p-course-bar, .p1b .p-course-bar, .p1c .p-course-bar, .p1d .p-course-bar, .p9 .p-course-bar { display: none; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <header class="page-head">
+    <h1>IT Career Coaching · <span>小红书素材集</span></h1>
+    <p>25 张投流素材（4 封面变体 + 21 配图），专为小红书聚光平台定制。每张右侧自带三通道文案（小红书 / 朋友圈 / 社群），一键复制。</p>
+    <div class="spec-row">
+      <span class="spec-pill teal">1242 × 1660 竖版</span>
+      <span class="spec-pill">聚光合规</span>
+      <span class="spec-pill">25 张全套</span>
+      <span class="spec-pill">html2canvas 一键导出</span>
+      <span class="spec-pill">@2x 高清 PNG</span>
+    </div>
+    <div class="guide">
+      <b>导出前自检：</b>① 无二维码 / 微信号 / 手机号 &nbsp; ② 无"最 / 第一 / 唯一 / 100% / 保证 / 包就业"等绝对化用语 &nbsp; ③ 学员数据软性表达
+    </div>
+  </header>
+
+  <nav class="thumb-nav">
+    <a href="#p1" class="thumb"><span class="num">1</span><span class="lbl">封面</span></a>
+    <a href="#p1b" class="thumb"><span class="num">1B</span><span class="lbl">共鸣</span></a>
+    <a href="#p1c" class="thumb"><span class="num">1C</span><span class="lbl">转岗</span></a>
+    <a href="#p1d" class="thumb"><span class="num">1D</span><span class="lbl">求职</span></a>
+    <a href="#p2" class="thumb"><span class="num">2</span><span class="lbl">痛点</span></a>
+    <a href="#p3" class="thumb"><span class="num">3</span><span class="lbl">对话</span></a>
+    <a href="#p4" class="thumb"><span class="num">4</span><span class="lbl">能力</span></a>
+    <a href="#p5" class="thumb"><span class="num">5</span><span class="lbl">14Part</span></a>
+    <a href="#p6" class="thumb"><span class="num">6</span><span class="lbl">工具</span></a>
+    <a href="#p7" class="thumb"><span class="num">7</span><span class="lbl">反馈</span></a>
+    <a href="#p8" class="thumb"><span class="num">8</span><span class="lbl">配置</span></a>
+    <a href="#p9" class="thumb"><span class="num">9</span><span class="lbl">引导</span></a>
+    <a href="#p10" class="thumb"><span class="num">10</span><span class="lbl">课程</span></a>
+    <a href="#p11" class="thumb"><span class="num">11</span><span class="lbl">矩阵</span></a>
+    <a href="#p12" class="thumb"><span class="num">12</span><span class="lbl">大厂</span></a>
+    <a href="#p13" class="thumb"><span class="num">13</span><span class="lbl">面试</span></a>
+    <a href="#p14" class="thumb"><span class="num">14</span><span class="lbl">受众</span></a>
+    <a href="#p15" class="thumb"><span class="num">15</span><span class="lbl">Lab</span></a>
+    <a href="#p16" class="thumb"><span class="num">16</span><span class="lbl">时间线</span></a>
+    <a href="#p17" class="thumb"><span class="num">17</span><span class="lbl">交付</span></a>
+    <a href="#p18" class="thumb"><span class="num">18</span><span class="lbl">学法</span></a>
+    <a href="#p19" class="thumb"><span class="num">19</span><span class="lbl">测试</span></a>
+    <a href="#p20" class="thumb"><span class="num">20</span><span class="lbl">DIY</span></a>
+    <a href="#p21" class="thumb"><span class="num">21</span><span class="lbl">FAQ</span></a>
+    <a href="#p22" class="thumb"><span class="num">22</span><span class="lbl">STAR</span></a>
+    <a href="#p23" class="thumb"><span class="num">23</span><span class="lbl">独家</span></a>
+    <a href="#p24" class="thumb"><span class="num">24</span><span class="lbl">JD</span></a>
+    <a href="#p25" class="thumb"><span class="num">25</span><span class="lbl">薪资</span></a>
+  </nav>
+
+  <!-- P1 -->
+  <div class="poster-frame" id="p1"><div class="label">P1 封面 <em>· hook / 主图</em></div><div class="poster-scaler"><div class="poster p1" id="poster-1"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="corner-mark">2026 澳洲 IT 求职 🇦🇺</div>
+    <div class="p-tag"><span class="dot"></span>IT CAREER COACHING</div>
+    <div class="hook">投了 200 简历<br>都没<span class="hl">回音？</span></div>
+    <div class="sub">12 周 系统化解决<br>从找工作到升职加薪</div>
+    <div class="course-chip"><div><div class="name">IT Career Coaching Bootcamp</div><div class="meta">12 WEEKS · 479 LESSONS · 31 LABS</div></div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1" data-slug="p1-cover">⬇ 下载 PNG</button></div>
+
+  <!-- P1B 共鸣版 -->
+  <div class="poster-frame" id="p1b"><div class="label">P1B 封面 <em>· 共鸣版</em></div><div class="poster-scaler"><div class="poster p1b" id="poster-1b"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="corner-mark">必看干货 💡</div>
+    <div class="p-tag"><span class="dot"></span>IT JOB · 2026</div>
+    <div class="hook">
+      <span class="soft">能写代码</span>
+      不等于你会<br>
+      <span class="hl">找到好工作</span>
+    </div>
+    <div class="contrast-wrapper">
+      <div class="xhs-card bad">
+        <div class="label-tag">most people stop here</div>
+        <div class="content">
+          <div class="techs">海投简历<br>面试碰运气</div>
+          <div class="desc">投 200 份简历得不到 2 个面试 — 不是你不行，是方法不对。</div>
+        </div>
+      </div>
+      <div class="xhs-card good">
+        <div class="label-tag">真正拿 Offer 的人</div>
+        <div class="content">
+          <div class="techs">系统简历<br>STAR 故事库</div>
+          <div class="desc">从 LinkedIn 优化到 Offer 谈判，每一步都有方法论。</div>
+        </div>
+      </div>
+    </div>
+    <div class="course-chip"><div class="name">IT Career Coaching</div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1b" data-slug="p1b-cover-resonance">⬇ 下载 PNG</button></div>
+
+  <!-- P1C 转岗版 -->
+  <div class="poster-frame" id="p1c"><div class="label">P1C 封面 <em>· 升级版</em></div><div class="poster-scaler"><div class="poster p1c" id="poster-1c"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="hook">
+      从 Junior<br>
+      到能拿<br>
+      <span>Staff Offer</span>
+    </div>
+    <div class="transition-box">
+      <div class="stage-card from">
+        <div class="badge">JUNIOR</div>
+        <div class="text">海投简历<br>面试紧张</div>
+      </div>
+      <div class="big-arrow">↓</div>
+      <div class="stage-card to">
+        <div class="badge">STAFF</div>
+        <div class="text">主动选 Offer<br>谈薪 +30%</div>
+      </div>
+    </div>
+    <div class="course-chip"><div class="name">IT Career Coaching</div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1c" data-slug="p1c-cover-promotion">⬇ 下载 PNG</button></div>
+
+  <!-- P1D 求职武器版 -->
+  <div class="poster-frame" id="p1d"><div class="label">P1D 封面 <em>· 求职武器版</em></div><div class="poster-scaler"><div class="poster p1d" id="poster-1d"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="hook">
+      在澳洲找 IT 工作<br>
+      只靠投简历<br>
+      <em>真的没有用</em>
+    </div>
+    <div class="sticker-grid">
+      <div class="sticker">简历优化</div>
+      <div class="sticker">LinkedIn</div>
+      <div class="sticker">行为面试</div>
+      <div class="sticker">技术面试</div>
+      <div class="sticker">薪资谈判</div>
+      <div class="sticker">大厂攻略</div>
+    </div>
+    <div class="bottom-text">
+      12 周把这 6 块武器<br>一次性给你磨好。
+    </div>
+    <div class="course-chip"><div class="name">IT Career Coaching</div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1d" data-slug="p1d-cover-weapons">⬇ 下载 PNG</button></div>
+
+  <!-- P2 痛点对比 -->
+  <div class="poster-frame" id="p2"><div class="label">P2 痛点 <em>· DIY 求职 vs 系统化</em></div><div class="poster-scaler"><div class="poster p2" id="poster-2"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>真实差距</div>
+    <div class="eyebrow">
+      <span class="line"></span>
+      <span class="txt">job hunt gap</span>
+      <span class="line"></span>
+    </div>
+    <h2>同样投简历<br>差距已经在<span class="hl">系统层</span></h2>
+    <p class="lead">不是你不努力 — 是你在用 2018 的求职方法应对 2026 的市场。澳洲 IT 求职现在拼的是系统化，不是勤奋。</p>
+
+    <div class="split">
+      <div class="col bad">
+        <div class="col-head">
+          <div>
+            <div class="kicker">stuck here</div>
+            <h3>DIY<br>求职</h3>
+            <div class="col-sub">海投 200 份简历，等 2 个面试，紧张到 freeze。</div>
+          </div>
+          <div class="badge">01</div>
+        </div>
+        <ul>
+          <li>简历自己改了 N 版还是不知道差啥</li>
+          <li>面试紧张，技术问题答不出</li>
+          <li>拿了 Offer 不知道怎么谈薪</li>
+          <li>入职 1 年看不到晋升路径</li>
+        </ul>
+      </div>
+
+      <div class="divider"><div class="bar"></div><div class="vs">VS</div><div class="bar"></div></div>
+
+      <div class="col good">
+        <div class="col-head">
+          <div>
+            <div class="kicker">job-ready</div>
+            <h3>系统<br>求职</h3>
+            <div class="col-sub">简历有公式、面试有 STAR、谈薪有数据、晋升有路径。</div>
+          </div>
+          <div class="badge">02</div>
+        </div>
+        <ul>
+          <li>简历按 ATS 标准 + JD 反推优化</li>
+          <li>STAR 库 + 模拟面试到肌肉记忆</li>
+          <li>用 levels.fyi 数据谈到 +30%</li>
+          <li>从 Junior 到 Staff 完整路径</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-note">12 周把这套系统装到你身上 — 不再靠运气找工作。</div>
+  </div></div></div><button class="dl-btn" data-target="poster-2" data-slug="p2-pain">⬇ 下载 PNG</button></div>
+
+  <!-- P3 群对话 -->
+  <div class="poster-frame" id="p3"><div class="label">P3 对话 <em>· 求职群实录</em></div><div class="poster-scaler"><div class="poster p3" id="poster-3"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>悉尼 IT 群实录</div>
+    <h2>悉尼 IT 群里<br><span class="hl">都在聊这事</span></h2>
+    <div class="chat">
+      <div class="chat-header"><div class="dots"><span></span><span></span><span></span></div><span>#syd-it-job-2026</span></div>
+      <div class="chat-body">
+        <div class="bubble left"><div class="name">@小李 · 后端</div>投了 3 个月 200 多份简历<br>就 2 个面试 我是不是不行？</div>
+        <div class="bubble right"><div class="name">@阿哲 · Tech Lead</div>不是你不行 是简历没过 ATS<br>+ LinkedIn 没人主动找你</div>
+        <div class="bubble left"><div class="name">@小李 · 后端</div>那要怎么改… 自己改了 10 版了 😭</div>
+        <div class="bubble right"><div class="name">@阿哲 · Tech Lead</div>简历有公式，自己 N 改不如<br>系统学一下流程，蛮划算的</div>
+      </div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-3" data-slug="p3-chat">⬇ 下载 PNG</button></div>
+
+  <!-- P4 能力 -->
+  <div class="poster-frame" id="p4"><div class="label">P4 能力 <em>· 毕业 4 件事</em></div><div class="poster-scaler"><div class="poster p4" id="poster-4"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>学完你会</div>
+    <h2>毕业那天 你会<em>真的会</em><br>这四件事</h2>
+    <div class="grid4">
+      <div class="cell"><div class="num">01</div><h4>简历 + LinkedIn 双修</h4><p>过 ATS 的简历模板 + 让 HR 主动找你的 LinkedIn 优化</p></div>
+      <div class="cell"><div class="num">02</div><h4>行为 + 技术面试通关</h4><p>STAR 故事库 + 算法 + 系统设计，模拟面试到肌肉记忆</p></div>
+      <div class="cell"><div class="num">03</div><h4>谈薪 +30% 不是运气</h4><p>levels.fyi 数据 + 谈判话术，不留钱在桌上</p></div>
+      <div class="cell"><div class="num">04</div><h4>Junior → Staff 路径</h4><p>晋升不再靠等 — 主动定 promo case + 跳槽节奏</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-4" data-slug="p4-outcomes">⬇ 下载 PNG</button></div>
+
+  <!-- P5 14 Part 地图 -->
+  <div class="poster-frame" id="p5"><div class="label">P5 14 Part <em>· 全周期路径</em></div><div class="poster-scaler"><div class="poster p5" id="poster-5"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>课程地图 · 14 PARTS</div>
+    <h2>从认知<br>到 Staff Engineer</h2>
+    <div class="phases">
+      <div class="ph"><div class="badge" style="background:#0d9488">P1</div><div><h5>行业认知</h5><p>29 节 · 入营测试</p></div></div>
+      <div class="ph"><div class="badge" style="background:#06b6d4">P2</div><div><h5>职业规划</h5><p>27 节 · 方向定位</p></div></div>
+      <div class="ph"><div class="badge" style="background:#3b82f6">P3</div><div><h5>简历 + 品牌</h5><p>52 节 · ATS 模板</p></div></div>
+      <div class="ph"><div class="badge" style="background:#6366f1">P4</div><div><h5>LinkedIn</h5><p>23 节 · 被动 Lead</p></div></div>
+      <div class="ph"><div class="badge" style="background:#8b5cf6">P5</div><div><h5>求职策略</h5><p>25 节 · 投递节奏</p></div></div>
+      <div class="ph"><div class="badge" style="background:#ec4899">P6</div><div><h5>面试基础</h5><p>18 节 · 心态 + 准备</p></div></div>
+      <div class="ph"><div class="badge" style="background:#f43f5e">P7</div><div><h5>行为面试</h5><p>30 节 · STAR 库</p></div></div>
+      <div class="ph"><div class="badge" style="background:#ef4444">P8</div><div><h5>技术面试</h5><p>88 节 · 算法 + 系统</p></div></div>
+      <div class="ph"><div class="badge" style="background:#f97316">P9</div><div><h5>薪资谈判</h5><p>23 节 · Offer 决策</p></div></div>
+      <div class="ph"><div class="badge" style="background:#f59e0b">P10</div><div><h5>职业晋升</h5><p>40 节 · Promo 路径</p></div></div>
+      <div class="ph"><div class="badge" style="background:#10b981">P11</div><div><h5>AI 终身学习 🆕</h5><p>42 节 · 持续成长</p></div></div>
+      <div class="ph"><div class="badge" style="background:#14b8a6">P12</div><div><h5>方向深度 🆕</h5><p>39 节 · 转专家</p></div></div>
+      <div class="ph"><div class="badge" style="background:#0891b2">P13</div><div><h5>大厂求职</h5><p>40 节 · FAANG 攻略</p></div></div>
+      <div class="ph"><div class="badge" style="background:#64748b">P14</div><div><h5>结营 + 测试</h5><p>3 节 · 量化成果</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-5" data-slug="p5-parts">⬇ 下载 PNG</button></div>
+
+  <!-- P6 工具栈 -->
+  <div class="poster-frame" id="p6"><div class="label">P6 工具 <em>· 求职工具箱</em></div><div class="poster-scaler"><div class="poster p6" id="poster-6"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>JOB HUNT STACK · 2026</div>
+    <h2>12 周真实用到的<br><em>15+ 求职工具</em></h2>
+    <div class="tool-grid">
+      <div class="tool hot"><div class="name">LinkedIn</div><div class="cat">网络</div></div>
+      <div class="tool"><div class="name">Seek / Indeed</div><div class="cat">JD</div></div>
+      <div class="tool"><div class="name">Greenhouse</div><div class="cat">ATS</div></div>
+      <div class="tool"><div class="name">Workday</div><div class="cat">ATS</div></div>
+      <div class="tool hot"><div class="name">LeetCode</div><div class="cat">算法</div></div>
+      <div class="tool"><div class="name">NeetCode</div><div class="cat">算法</div></div>
+      <div class="tool"><div class="name">System Design</div><div class="cat">系统</div></div>
+      <div class="tool hot"><div class="name">Cursor</div><div class="cat">AI 编程</div></div>
+      <div class="tool"><div class="name">Claude Code</div><div class="cat">AI 编程</div></div>
+      <div class="tool"><div class="name">levels.fyi</div><div class="cat">薪资</div></div>
+      <div class="tool"><div class="name">Glassdoor</div><div class="cat">面经</div></div>
+      <div class="tool"><div class="name">Pramp</div><div class="cat">模拟</div></div>
+      <div class="tool"><div class="name">Jobscan</div><div class="cat">ATS 检</div></div>
+      <div class="tool"><div class="name">Notion 简历</div><div class="cat">模板</div></div>
+      <div class="tool"><div class="name">ChatGPT</div><div class="cat">AI 助手</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-6" data-slug="p6-tools">⬇ 下载 PNG</button></div>
+
+  <!-- P7 学员反馈 -->
+  <div class="poster-frame" id="p7"><div class="label">P7 反馈 <em>· 软性案例</em></div><div class="poster-scaler"><div class="poster p7" id="poster-7"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>学员反馈</div>
+    <h2>简历改完一周<br>就有人<span class="hl">约面试</span></h2>
+    <div class="quotes">
+      <div class="q"><p class="txt">P3 简历章节做完，重投了一周，3 个 phone screen 直接来了。之前自己改 10 版都没用 🥲</p><div class="who">— 后端 · 墨尔本 · 入营第 4 周</div></div>
+      <div class="q"><p class="txt">行为面试章节练完 STAR 故事，最后那个面试聊到忘了时间，HR 当晚就给了 Offer</p><div class="who">— 全栈 · 悉尼 · 毕业 1 个月</div></div>
+      <div class="q"><p class="txt">谈薪那一节真的有用，按方法谈完比 base offer 高了 22% — 一节课赚回来学费了</p><div class="who">— 数据工程师 · 转大厂 · 毕业 2 个月</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-7" data-slug="p7-feedback">⬇ 下载 PNG</button></div>
+
+  <!-- P8 课程配置 -->
+  <div class="poster-frame" id="p8"><div class="label">P8 配置 <em>· 课程基本盘</em></div><div class="poster-scaler"><div class="poster p8" id="poster-8"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>你买到的是什么</div>
+    <h2>不只是 12 周课<br>是<span class="hl">完整求职操作系统</span></h2>
+    <div class="stats">
+      <div class="stat"><div class="num">479<em>节</em></div><div class="lbl">视频 + Lab + 直播 + 自学</div></div>
+      <div class="stat"><div class="num">31<em>个</em></div><div class="lbl">浏览器互动 Lab</div></div>
+      <div class="stat"><div class="num">277<em>节</em></div><div class="lbl">视频课 · 行业到大厂全覆盖</div></div>
+      <div class="stat"><div class="num">11<em>次</em></div><div class="lbl">Group Tutorial 直播</div></div>
+    </div>
+    <div class="format-list"><h4>课程之外还包含</h4><ul>
+      <li>21 节 AI 求职专题</li><li>7 次模拟面试 + 2 次薪资谈判</li>
+      <li>入营测试 + 结营测试</li><li>STAR 故事库模板</li>
+      <li>简历 + LinkedIn 模板包</li><li>毕业绑定 Cursor / Claude Code</li></ul></div>
+  </div></div></div><button class="dl-btn" data-target="poster-8" data-slug="p8-config">⬇ 下载 PNG</button></div>
+
+  <!-- P9 CTA -->
+  <div class="poster-frame" id="p9"><div class="label">P9 引导 <em>· 软性收尾</em></div><div class="poster-scaler"><div class="poster p9" id="poster-9"><div class="p-inner">
+    <div class="p-dots"></div><div class="p-dots bl"></div>
+    <div class="p-tag" style="margin:0 auto"><span class="dot"></span>READY?</div>
+    <div class="big-q">如果你正在找 IT 工作<br>或想升职加薪——</div>
+    <div class="giant">不妨<br>来试试 <em>?</em></div>
+    <div class="sub-hook">想了解课程大纲、Group Tutorial、薪资谈判方法，<br>可以在主页找我</div>
+    <div class="arrow"><span class="arr">→</span><span>搜「匠人 AI · IT Career」</span></div>
+    <div class="note">JIANGREN.COM.AU &nbsp;·&nbsp; 2026</div>
+  </div></div></div><button class="dl-btn" data-target="poster-9" data-slug="p9-cta">⬇ 下载 PNG</button></div>
+
+  <!-- P10 课程 explainer -->
+  <div class="poster-frame" id="p10"><div class="label">P10 课程 <em>· 这是什么课</em></div><div class="poster-scaler"><div class="poster p10" id="poster-10"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>2026 旗舰课 · v3.1</div>
+    <h2>不只是求职课<br>是<em>从 Junior 到 Staff</em>完整路径</h2>
+    <div class="one-liner">
+      <span class="yellow">IT Career Coaching</span> 不是教你"投简历"，<br>
+      是教你<span class="yellow">12 年职业生涯</span>怎么走。
+    </div>
+    <div class="day-title">A WEEK IN THE COURSE</div>
+    <div class="tasks">
+      <div class="task"><div class="num">01</div><div class="text">周一：自学视频 + <em>互动 Lab 改简历</em></div></div>
+      <div class="task"><div class="num">02</div><div class="text">周三：直播 <em>Group Tutorial 模拟面试</em></div></div>
+      <div class="task"><div class="num">03</div><div class="text">周末：用 <em>STAR 模板写自己的故事库</em></div></div>
+      <div class="task"><div class="num">04</div><div class="text">下周：把简历投出去 <em>看真实反馈调整</em></div></div>
+    </div>
+    <div class="meta-row">
+      <div class="m"><div class="lbl">周期</div><div class="val">12 周</div></div>
+      <div class="m"><div class="lbl">课时</div><div class="val">479 节 · 199h</div></div>
+      <div class="m"><div class="lbl">门槛</div><div class="val">在找工作 / 想晋升</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-10" data-slug="p10-course-explainer">⬇ 下载 PNG</button></div>
+
+  <!-- P11 矩阵 -->
+  <div class="poster-frame" id="p11"><div class="label">P11 矩阵 <em>· 报课前 vs 毕业后</em></div><div class="poster-scaler"><div class="poster p11" id="poster-11"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>能力升级</div>
+    <h2>报课前 vs 毕业后<br>具体<span class="hl">多会什么</span></h2>
+    <div class="matrix">
+      <div class="row"><div class="dim">简历</div><div class="v1">自己改 10 版还过不了 ATS</div><div class="v2">按 JD 反推 + 公式优化</div></div>
+      <div class="row"><div class="dim">LinkedIn</div><div class="v1">没人来找你</div><div class="v2">每周 2-3 个 recruiter inMail</div></div>
+      <div class="row"><div class="dim">行为面试</div><div class="v1">紧张 freeze 答不出</div><div class="v2">STAR 库 + 30+ 故事</div></div>
+      <div class="row"><div class="dim">技术面试</div><div class="v1">算法做了忘 系统设计听不懂</div><div class="v2">88 节系统拆 + 模拟通关</div></div>
+      <div class="row"><div class="dim">谈薪</div><div class="v1">不敢谈 接 first offer</div><div class="v2">数据 + 话术 谈 +20-30%</div></div>
+      <div class="row"><div class="dim">晋升</div><div class="v1">等领导发糖</div><div class="v2">主动写 promo case</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-11" data-slug="p11-matrix">⬇ 下载 PNG</button></div>
+
+  <!-- P12 大厂深潜 -->
+  <div class="poster-frame" id="p12"><div class="label">P12 大厂 <em>· Part 11 深潜</em></div><div class="poster-scaler"><div class="poster p12" id="poster-12"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>PART 11 · 大厂求职</div>
+    <h2>大厂求职<br>不是<em>玄学</em>是套路</h2>
+    <div class="grid">
+      <div class="card"><div class="icon">🎯</div><h4>FAANG / Atlassian</h4><p>各家招聘流程 / 题型 / 节奏 / 隐藏门槛全拆</p></div>
+      <div class="card"><div class="icon">📚</div><h4>系统设计深拆</h4><p>30+ 经典系统设计题 + 大厂判分标准</p></div>
+      <div class="card"><div class="icon">🎤</div><h4>Phone + Onsite</h4><p>每轮 45 分钟时间分配 + 面试官心理</p></div>
+      <div class="card"><div class="icon">🗣️</div><h4>大厂行为面</h4><p>Amazon LP / Google googleyness / Atlassian Values 全套</p></div>
+    </div>
+    <div class="stat-row">
+      <div class="s"><div class="n">40</div><div class="l">节深拆</div></div>
+      <div class="s"><div class="n">30+</div><div class="l">系统设计题</div></div>
+      <div class="s"><div class="n">8</div><div class="l">大厂攻略</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-12" data-slug="p12-bigtech">⬇ 下载 PNG</button></div>
+
+  <!-- P13 面试拆解 -->
+  <div class="poster-frame" id="p13"><div class="label">P13 面试 <em>· 4 层拆解</em></div><div class="poster-scaler"><div class="poster p13" id="poster-13"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>INTERVIEW · 4 LAYERS</div>
+    <h2>面试别只刷算法<br>真正考<em>4 层能力</em></h2>
+    <div class="layers">
+      <div class="layer"><div class="badge" style="background:#0d9488">L1</div><div><h4>P6 面试基础</h4><p>18 节 · 准备 / 心态 / 节奏 / 跟进 全流程</p></div></div>
+      <div class="layer"><div class="badge" style="background:#3b82f6">L2</div><div><h4>P7 行为面试</h4><p>30 节 · STAR 框架 + 30+ 高频问题 + 故事库</p></div></div>
+      <div class="layer"><div class="badge" style="background:#f97316">L3</div><div><h4>P8 技术面试</h4><p>88 节 · 算法 + 系统设计 + Coding + 大厂题型</p></div></div>
+      <div class="layer"><div class="badge" style="background:#ef4444">L4</div><div><h4>P9 谈薪 + Offer</h4><p>23 节 · 谈判话术 + Offer 对比 + 决策框架</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-13" data-slug="p13-interview">⬇ 下载 PNG</button></div>
+
+  <!-- P14 适合谁 -->
+  <div class="poster-frame" id="p14"><div class="label">P14 受众 <em>· 适合谁学</em></div><div class="poster-scaler"><div class="poster p14" id="poster-14"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>适合谁</div>
+    <h2>这 4 类人学完<em>回报最高</em></h2>
+    <div class="audience">
+      <div class="aud"><div class="emoji">🎓</div><div><h4>澳洲 IT 应届 / 留学生</h4><p>没工作经验 / 不会写澳洲简历 / 面试紧张</p></div></div>
+      <div class="aud"><div class="emoji">🌏</div><div><h4>海外 IT 移民 / Skilled</h4><p>技术过硬但找不到 local job / 文化差异不熟</p></div></div>
+      <div class="aud"><div class="emoji">💼</div><div><h4>2-5 年 Junior 想跳大厂</h4><p>卡在 mid 上不去 / 面试 FAANG 屡战屡败</p></div></div>
+      <div class="aud"><div class="emoji">🚀</div><div><h4>5+ 年想冲 Staff / Principal</h4><p>晋升停滞 / 想转专家路径 / 谈薪不会</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-14" data-slug="p14-audience">⬇ 下载 PNG</button></div>
+
+  <!-- P15 31 Lab 分布 -->
+  <div class="poster-frame" id="p15"><div class="label">P15 Lab <em>· 31 个互动 Lab</em></div><div class="poster-scaler"><div class="poster p15" id="poster-15"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>LAB · 31 个</div>
+    <h2>不只是听<br>每个环节都有<em>动手 Lab</em></h2>
+    <div class="lab-grid">
+      <div class="lab-cat"><div class="top"><h4>简历 Lab</h4><div class="cnt">8</div></div><p>ATS 检测 / JD 反推 / Bullet 公式 / 改 N 版 Lab</p></div>
+      <div class="lab-cat"><div class="top"><h4>LinkedIn Lab</h4><div class="cnt">5</div></div><p>关键词优化 / Headline / About / Recommendation</p></div>
+      <div class="lab-cat"><div class="top"><h4>STAR 故事 Lab</h4><div class="cnt">6</div></div><p>挖掘项目 / 写故事 / 量化结果 / 讲故事节奏</p></div>
+      <div class="lab-cat"><div class="top"><h4>算法 Lab</h4><div class="cnt">4</div></div><p>白板 coding / 时间管理 / 边讲边写</p></div>
+      <div class="lab-cat"><div class="top"><h4>系统设计 Lab</h4><div class="cnt">4</div></div><p>需求分析 / 架构画图 / 取舍说明</p></div>
+      <div class="lab-cat"><div class="top"><h4>谈薪 Lab</h4><div class="cnt">4</div></div><p>话术演练 / Offer 对比 / counter offer</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-15" data-slug="p15-labs">⬇ 下载 PNG</button></div>
+
+  <!-- P16 时间线 -->
+  <div class="poster-frame" id="p16"><div class="label">P16 时间线 <em>· 12 周完整路径</em></div><div class="poster-scaler"><div class="poster p16" id="poster-16"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>12 周路径</div>
+    <h2>从认知到 Offer<br><em>12 周</em>完整路径</h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="week">WEEK 1-2</div><h4>P1-P2 行业认知 + 职业规划</h4><p>看清 IT 行业格局 + 定位适合自己的方向</p></div>
+      <div class="tl-item"><div class="week">WEEK 3-4</div><h4>P3-P5 简历 + LinkedIn + 投递</h4><p>简历过 ATS + LinkedIn 引流 + 投递节奏</p></div>
+      <div class="tl-item"><div class="week">WEEK 5-7</div><h4>P6-P8 面试通关</h4><p>基础 + 行为 + 技术 88 节 + 模拟面试</p></div>
+      <div class="tl-item"><div class="week">WEEK 8-9</div><h4>P9 谈薪 + Offer 决策</h4><p>不留钱在桌上 + 多 Offer 对比框架</p></div>
+      <div class="tl-item"><div class="week">WEEK 10-11</div><h4>P10-P12 晋升 + 持续成长</h4><p>Junior → Staff 路径 + AI 时代终身学习</p></div>
+      <div class="tl-item"><div class="week">WEEK 12</div><h4>P13-P14 大厂攻略 + 结营</h4><p>FAANG 攻略 + 结营测试 + 证书</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-16" data-slug="p16-timeline">⬇ 下载 PNG</button></div>
+
+  <!-- P17 7 大产出 -->
+  <div class="poster-frame" id="p17"><div class="label">P17 交付 <em>· 带走 7 件东西</em></div><div class="poster-scaler"><div class="poster p17" id="poster-17"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>毕业交付</div>
+    <h2>不是听完就完了<br>带走 <em>7 件真东西</em></h2>
+    <div class="proj-list">
+      <div class="proj"><div class="num">01</div><div><h4>过 ATS 的简历</h4><p>按 JD 反推优化的多版本简历</p></div></div>
+      <div class="proj"><div class="num">02</div><div><h4>引流 LinkedIn</h4><p>关键词 + Headline + About 全套优化</p></div></div>
+      <div class="proj"><div class="num">03</div><div><h4>STAR 故事库</h4><p>30+ 经典问题 + 自己的故事版本</p></div></div>
+      <div class="proj"><div class="num">04</div><div><h4>算法 + 系统设计笔记</h4><p>88 节技术面试浓缩 + 模板</p></div></div>
+      <div class="proj"><div class="num">05</div><div><h4>谈薪 playbook</h4><p>话术 + 数据 + counter offer 模板</p></div></div>
+      <div class="proj"><div class="num">06</div><div><h4>晋升 promo case</h4><p>主动定 case + 跳槽节奏框架</p></div></div>
+      <div class="proj"><div class="num">07</div><div><h4>结业证书 + 测试报告</h4><p>入营 → 结营量化进步 + LinkedIn 可贴</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-17" data-slug="p17-delivery">⬇ 下载 PNG</button></div>
+
+  <!-- P18 学习方式 -->
+  <div class="poster-frame" id="p18"><div class="label">P18 学法 <em>· 4 种学习方式</em></div><div class="poster-scaler"><div class="poster p18" id="poster-18"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>怎么学</div>
+    <h2>不是听课 4 种<br><em>组合学习方式</em></h2>
+    <div class="ways">
+      <div class="way"><div class="ic">📺</div><h4>277 节视频</h4><p>从行业到大厂全覆盖，自己控节奏</p></div>
+      <div class="way"><div class="ic">🧪</div><h4>31 个互动 Lab</h4><p>浏览器即时反馈 / 简历 / STAR / 谈薪</p></div>
+      <div class="way"><div class="ic">🎙️</div><h4>11 次 Group Tutorial</h4><p>直播模拟面试 + 薪资谈判演练</p></div>
+      <div class="way"><div class="ic">🤖</div><h4>AI Tutor + 校友群</h4><p>24h 中英双语答疑 + 内推社群</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-18" data-slug="p18-learning">⬇ 下载 PNG</button></div>
+
+  <!-- P19 入营 + 结营 -->
+  <div class="poster-frame" id="p19"><div class="label">P19 测试 <em>· 入营 + 结营 + 证书</em></div><div class="poster-scaler"><div class="poster p19" id="poster-19"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>可量化成果</div>
+    <h2>学完<em>到底进步多少</em><br>有数据可看</h2>
+    <div class="flow">
+      <div class="step"><div class="ic">📝</div><h4>入营测试</h4><p>开课前完成 — 评估基础水平 / 找薄弱点</p></div>
+      <div class="step"><div class="ic">🎯</div><h4>每 Phase 小测</h4><p>跟进每个 Part 完成度，不掉队</p></div>
+      <div class="step"><div class="ic">🎤</div><h4>模拟面试评分</h4><p>导师评分 + 录像复盘 + 改进建议</p></div>
+      <div class="step"><div class="ic">📊</div><h4>结营测试</h4><p>对比入营 — 量化提升报告</p></div>
+    </div>
+    <div class="cert">
+      <div class="big">🎓 结业证书 + 测试报告</div>
+      <div class="sub">可贴 LinkedIn / 简历 / 升职 case</div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-19" data-slug="p19-test">⬇ 下载 PNG</button></div>
+
+  <!-- P20 DIY vs 系统化 -->
+  <div class="poster-frame" id="p20"><div class="label">P20 升级 <em>· DIY vs 系统化</em></div><div class="poster-scaler"><div class="poster p20" id="poster-20"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>方法论升级</div>
+    <h2>DIY 求职<br>vs <em>系统化求职</em></h2>
+    <div class="upgrade-list">
+      <div class="up-row"><div class="dim">简历</div><div class="old">参考网上模板</div><div class="new">JD 反推 + ATS 检测 + 多版本</div></div>
+      <div class="up-row"><div class="dim">LinkedIn</div><div class="old">放上学历 + 工作</div><div class="new">关键词 + Headline + 推荐</div></div>
+      <div class="up-row"><div class="dim">投递</div><div class="old">海投 200 份</div><div class="new">精投 + 内推 + Cold Email</div></div>
+      <div class="up-row"><div class="dim">行为面</div><div class="old">现场即兴答</div><div class="new">STAR 库 + 故事到肌肉记忆</div></div>
+      <div class="up-row"><div class="dim">技术面</div><div class="old">闷头刷 LeetCode</div><div class="new">题型 + 节奏 + 边讲边写</div></div>
+      <div class="up-row"><div class="dim">谈薪</div><div class="old">接 first offer</div><div class="new">数据 + 话术 +20-30%</div></div>
+      <div class="up-row"><div class="dim">晋升</div><div class="old">等领导发糖</div><div class="new">主动 promo case + 跳槽节奏</div></div>
+      <div class="up-row"><div class="dim">长期</div><div class="old">每年焦虑找工作</div><div class="new">12 年路径 + AI 终身学习</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-20" data-slug="p20-diy-vs-system">⬇ 下载 PNG</button></div>
+
+  <!-- P21 FAQ -->
+  <div class="poster-frame" id="p21"><div class="label">P21 FAQ <em>· 5 个常见问题</em></div><div class="poster-scaler"><div class="poster p21" id="poster-21"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>报名前问</div>
+    <h2>报名前<br><span class="hl">最常被问的 5 个问题</span></h2>
+    <div class="faq-list">
+      <div class="faq"><div class="q">已经在职还需要学吗？</div><div class="a">尤其需要 — 在职跳槽 = 议价权，P9-P12 谈薪 + 晋升才是回报最高的部分。</div></div>
+      <div class="faq"><div class="q">没找到工作能学吗？</div><div class="a">完美适配 — P1-P9 就是从行业认知到拿 Offer 的完整流程。</div></div>
+      <div class="faq"><div class="q">12 周学得完吗？</div><div class="a">学得完 — 视频自学 + Lab + Group Tutorial 灵活组合，平均每周 10-15 小时。</div></div>
+      <div class="faq"><div class="q">和 LeetCode 课区别？</div><div class="a">LeetCode 只解决技术面 1/4，我们覆盖：行业 / 简历 / 面试 / 谈薪 / 晋升全周期。</div></div>
+      <div class="faq"><div class="q">毕业后还能继续学吗？</div><div class="a">能 — 绑定 JR 平台 75+ 资源 + Cursor / Claude Code，AI 时代终身学习。</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-21" data-slug="p21-faq">⬇ 下载 PNG</button></div>
+
+  <!-- P22 STAR 框架 -->
+  <div class="poster-frame" id="p22"><div class="label">P22 STAR <em>· 行为面试核心方法</em></div><div class="poster-scaler"><div class="poster p22" id="poster-22"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>BEHAVIORAL FRAMEWORK</div>
+    <h2>行为面试 90% 都用<em>STAR</em><br>但很少有人讲透</h2>
+    <div class="star-grid">
+      <div class="star"><div class="letter">S</div><div><h4>Situation 情景</h4><p>1 句话讲清楚背景 — 不要长篇 setup</p></div></div>
+      <div class="star"><div class="letter">T</div><div><h4>Task 任务</h4><p>你的角色 + 明确的 deliverable</p></div></div>
+      <div class="star"><div class="letter">A</div><div><h4>Action 行动</h4><p>具体做了什么 — 用"我"不用"我们"</p></div></div>
+      <div class="star"><div class="letter">R</div><div><h4>Result 结果</h4><p>量化数字 — %、$、时间 三选一</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-22" data-slug="p22-star">⬇ 下载 PNG</button></div>
+
+  <!-- P23 独家 Module X + Module Y -->
+  <div class="poster-frame" id="p23"><div class="label">P23 独家 <em>· Module X + Module Y</em></div><div class="poster-scaler"><div class="poster p23" id="poster-23"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>独家模块 · v3.1 新增</div>
+    <h2>找到工作 ≠ 终点<br><em>2 个独家模块</em>带你走得更远</h2>
+    <div class="exclusive-badge">🔥 Module X + Module Y · 别的求职课没有</div>
+    <div class="modules">
+      <div class="mod mx">
+        <div class="phase-tag">MODULE X · 42 节</div>
+        <h3>AI 时代终身学习</h3>
+        <div class="desc">入职第一天就开始过时？这 42 节教你怎么用 AI 工具持续学习、跟上技术变化、不被替代。</div>
+        <div class="topics">
+          <span class="topic">Cursor 编程</span>
+          <span class="topic">Claude Code</span>
+          <span class="topic">Vibe Coding</span>
+          <span class="topic">学习节奏</span>
+          <span class="topic">技术雷达</span>
+          <span class="topic">个人 KM</span>
+        </div>
+      </div>
+      <div class="mod my">
+        <div class="phase-tag">MODULE Y · 39 节</div>
+        <h3>职业方向深度发展</h3>
+        <div class="desc">5 年后你想成为什么？这 39 节带你深挖：技术专家 / 管理 / 架构师 / 创业，每条路径具体怎么走。</div>
+        <div class="topics">
+          <span class="topic">Staff 路径</span>
+          <span class="topic">Principal 进阶</span>
+          <span class="topic">EM 转管理</span>
+          <span class="topic">架构师方向</span>
+          <span class="topic">Solo 创业</span>
+          <span class="topic">Tech Founder</span>
+        </div>
+      </div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-23" data-slug="p23-exclusive">⬇ 下载 PNG</button></div>
+
+  <!-- P24 澳洲 IT 招聘公司 -->
+  <div class="poster-frame" id="p24"><div class="label">P24 公司 <em>· 课程对照真实 JD</em></div><div class="poster-scaler"><div class="poster p24" id="poster-24"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>JD 对照 · 2026</div>
+    <h2>对照 15 份<em>澳洲 IT JD</em><br>课程覆盖了多少？</h2>
+    <div class="top-stats">
+      <div class="s"><div class="n">15</div><div class="l">JD 样本</div></div>
+      <div class="s"><div class="n">6</div><div class="l">核心环节</div></div>
+      <div class="s"><div class="n">95%</div><div class="l">平均覆盖</div></div>
+    </div>
+    <div class="skill-bars">
+      <div class="sk"><div class="top-row"><h4>简历 + ATS</h4><div class="freq">15/15 JD</div></div><div class="bar"><div class="fill" style="width:98%;background:var(--brand-teal)"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>LinkedIn + 网络</h4><div class="freq">14/15 JD</div></div><div class="bar"><div class="fill" style="width:95%;background:#3b82f6"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>行为面试 STAR</h4><div class="freq">15/15 JD</div></div><div class="bar"><div class="fill" style="width:97%;background:#8b5cf6"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>技术面 / 算法</h4><div class="freq">13/15 JD</div></div><div class="bar"><div class="fill" style="width:93%;background:#f97316"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>系统设计</h4><div class="freq">10/15 JD</div></div><div class="bar"><div class="fill" style="width:90%;background:#ef4444"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>谈薪 / Offer</h4><div class="freq">15/15 JD</div></div><div class="bar"><div class="fill" style="width:95%;background:#10b981"></div></div></div>
+    </div>
+    <div class="companies">
+      <span>Atlassian</span><span>Canva</span><span>CommBank</span><span>Westpac</span><span>NAB</span>
+      <span>Google AU</span><span>Microsoft</span><span>Amazon AWS</span><span>Telstra</span><span>Optus</span>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-24" data-slug="p24-jd">⬇ 下载 PNG</button></div>
+
+  <!-- P25 澳洲 IT 薪资 -->
+  <div class="poster-frame" id="p25"><div class="label">P25 薪资 <em>· 澳洲 IT 年薪</em></div><div class="poster-scaler"><div class="poster p25" id="poster-25"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>SALARY · 2026 AU</div>
+    <h2>澳洲 IT 工程师<br>到底能拿<em>多少钱</em></h2>
+    <div class="salary-tiers">
+      <div class="tier"><div class="range">$80K-$120K</div><div class="level">Junior · 0-2 年</div></div>
+      <div class="tier" style="border-color:var(--brand-yellow);box-shadow:0 0 20px rgba(255,206,68,0.2)"><div class="range">$130K-$200K</div><div class="level">Mid-Senior · 3-7 年</div></div>
+      <div class="tier"><div class="range">$200K-$350K+</div><div class="level">Staff+ · 7+ 年</div></div>
+    </div>
+    <div class="co-grid">
+      <div class="co"><div class="name">Atlassian</div><div class="role">Software Eng</div><div class="sal">$120-220K</div></div>
+      <div class="co"><div class="name">Canva</div><div class="role">Software Eng</div><div class="sal">$130-230K</div></div>
+      <div class="co"><div class="name">Google AU</div><div class="role">SWE L3-L5</div><div class="sal">$160-320K</div></div>
+      <div class="co"><div class="name">Amazon AWS</div><div class="role">SDE</div><div class="sal">$140-280K</div></div>
+      <div class="co"><div class="name">Microsoft</div><div class="role">Software Eng</div><div class="sal">$150-280K</div></div>
+      <div class="co"><div class="name">CommBank</div><div class="role">Senior Eng</div><div class="sal">$130-220K</div></div>
+      <div class="co"><div class="name">Westpac</div><div class="role">Tech Lead</div><div class="sal">$140-230K</div></div>
+      <div class="co"><div class="name">Telstra</div><div class="role">Software Eng</div><div class="sal">$110-200K</div></div>
+      <div class="co"><div class="name">Optus</div><div class="role">Software Eng</div><div class="sal">$100-180K</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-25" data-slug="p25-salary">⬇ 下载 PNG</button></div>
+
+</div>
+
+<script src="./xhs-copy.js"></script>
+
+<!-- 课程标识 bar 注入 -->
+<script>
+  document.querySelectorAll('.p-inner').forEach(inner => {
+    if (inner.querySelector('.p-course-bar')) return;
+    const bar = document.createElement('div');
+    bar.className = 'p-course-bar';
+    bar.textContent = 'IT CAREER COACHING · 12 周澳洲 IT 全周期 · 匠人 AI';
+    inner.appendChild(bar);
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+  document.querySelectorAll('.dl-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const poster = document.getElementById(btn.dataset.target);
+      if (!poster) return;
+      const exportNode = poster.closest('.poster-scaler') || poster;
+      const exportPadding = 24;
+      const nodeWidth = exportNode.offsetWidth || 435;
+      const nodeHeight = exportNode.offsetHeight || 581;
+      const exportScale = nodeWidth ? 1242 / nodeWidth : 2;
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = `position:fixed;left:-99999px;top:0;padding:${exportPadding}px;background:#eef0f4;display:inline-block;z-index:-1;`;
+      const clone = exportNode.cloneNode(true);
+      clone.style.margin = '0';
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
+      const oldLabel = btn.textContent;
+      btn.textContent = '生成中...';
+      btn.disabled = true;
+      try {
+        const canvas = await html2canvas(wrapper, {
+          backgroundColor: '#eef0f4', scale: exportScale, useCORS: true, allowTaint: true, logging: false,
+          width: nodeWidth + exportPadding * 2, height: nodeHeight + exportPadding * 2,
+          windowWidth: nodeWidth + exportPadding * 2, windowHeight: nodeHeight + exportPadding * 2
+        });
+        const link = document.createElement('a');
+        link.download = `xhs-it-career-${btn.dataset.slug}-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (e) { console.error(e); alert('导出失败：' + e.message); }
+      finally { wrapper.remove(); btn.textContent = oldLabel; btn.disabled = false; }
+    });
+  });
+</script>
+</body>
+</html>

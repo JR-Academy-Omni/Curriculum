@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>AI Engineer 全栈项目班 · 第 30 期 · 小红书素材集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-red: #ff5757;
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-blue: #3b82f6;
+    --brand-green: #10b981;
+    --brand-teal: #0d9488;
+    --brand-orange: #f97316;
+    --brand-pink: #ec4899;
+    --brand-purple: #8b5cf6;
+    --brand-indigo: #6366f1;
+    --bg-light: #f8f9fb;
+    --bg-cream: #fff1e7;
+    --bg-sky: #eff6ff;
+    --text-main: #10162f;
+    --text-gray: #64748b;
+    --border-color: #e2e8f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #eef0f4; color: var(--text-main); font-family: 'Noto Sans SC', system-ui, sans-serif; padding: 40px 20px 120px 120px; line-height: 1.5; }
+
+  .page-wrap { max-width: 1600px; margin: 0 auto; }
+  .page-head { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 28px 32px; margin-bottom: 30px; box-shadow: 8px 8px 0 var(--brand-dark); }
+  .page-head h1 { font-size: 30px; font-weight: 900; letter-spacing: -0.5px; }
+  .page-head h1 span { color: var(--brand-blue); }
+  .page-head p { color: var(--text-gray); margin-top: 8px; font-size: 14px; }
+  .spec-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .spec-pill { background: var(--bg-sky); border: 1.5px solid var(--brand-dark); border-radius: 100px; padding: 6px 14px; font-size: 12px; font-weight: 700; }
+  .spec-pill.blue { background: var(--brand-blue); color: #fff; border-color: var(--brand-blue); }
+  .spec-pill.draft { background: #fef3c7; color: #92400e; border-color: #f59e0b; }
+  .guide { margin-top: 12px; padding: 12px 14px; background: #fffbeb; border: 1.5px dashed #f59e0b; border-radius: 10px; font-size: 12.5px; color: #92400e; line-height: 1.7; }
+  .guide b { color: var(--brand-blue); }
+  .draft-notice { margin-top: 12px; padding: 12px 14px; background: #fee2e2; border: 1.5px dashed #dc2626; border-radius: 10px; font-size: 12.5px; color: #991b1b; line-height: 1.6; }
+  .draft-notice b { color: #dc2626; }
+
+  .thumb-nav { display: flex; flex-direction: column; gap: 8px; background: #fff; border: 1.5px solid var(--brand-dark); border-radius: 14px; padding: 12px; position: fixed; top: 20px; left: 16px; width: 96px; max-height: calc(100vh - 40px); overflow-y: auto; z-index: 100; box-shadow: 4px 4px 0 rgba(16,22,47,0.1); }
+  .thumb-nav::before { content: 'NAV'; display: block; font-size: 10px; font-weight: 900; letter-spacing: 2px; color: var(--brand-blue); text-align: center; padding: 2px 0 6px; border-bottom: 1.5px dashed var(--border-color); font-family: 'JetBrains Mono', monospace; margin-bottom: 2px; }
+  .thumb { aspect-ratio: 3/4; background: var(--bg-light); border: 1.5px solid var(--brand-dark); border-radius: 8px; font-weight: 900; color: var(--brand-dark); text-align: center; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px; }
+  .thumb .num { font-size: 18px; line-height: 1; }
+  .thumb .lbl { font-size: 9px; color: var(--text-gray); font-weight: 700; }
+  .thumb:hover { background: var(--brand-yellow); transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  .poster-frame { display: grid; grid-template-columns: auto 460px; gap: 28px; align-items: start; justify-content: center; margin-bottom: 60px; position: relative; }
+  .poster-main { display: flex; flex-direction: column; align-items: center; }
+  .poster-frame .label { font-size: 13px; font-weight: 900; color: var(--brand-dark); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .poster-frame .label::before { content: ''; width: 28px; height: 4px; background: var(--brand-blue); border-radius: 2px; }
+  .poster-frame .label em { font-style: normal; color: var(--text-gray); font-weight: 600; font-size: 12px; margin-left: 12px; }
+
+  .poster-scaler { width: 435px; height: 581px; position: relative; border: 2px solid var(--brand-dark); border-radius: 12px; box-shadow: 8px 8px 0 var(--brand-dark); overflow: hidden; }
+  .poster { width: 1242px; height: 1660px; transform: scale(0.35); transform-origin: top left; position: absolute; top: 0; left: 0; background: var(--bg-light); overflow: hidden; font-family: 'Noto Sans SC', sans-serif; box-sizing: border-box; padding: 32px; }
+
+  .dl-btn { display: block; margin: 20px auto 0; background: var(--brand-red); color: #fff; border: 3px solid var(--brand-dark); box-shadow: 6px 6px 0 var(--brand-dark); padding: 14px 32px; font-family: 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 900; letter-spacing: 1.5px; cursor: pointer; border-radius: 10px; transition: all 0.15s; }
+  .dl-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--brand-dark); }
+
+  /* Copy panel */
+  .copy-panel { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 18px 20px; box-shadow: 6px 6px 0 rgba(16,22,47,0.08); display: flex; flex-direction: column; gap: 14px; }
+  .copy-panel .cp-title { font-size: 13px; font-weight: 900; color: var(--brand-blue); letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; padding-bottom: 10px; border-bottom: 1.5px dashed var(--border-color); }
+  .cp-section { display: flex; flex-direction: column; gap: 6px; }
+  .cp-section .cp-label { font-size: 11px; font-weight: 900; color: var(--text-gray); letter-spacing: 1.5px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+  .cp-section .cp-box { background: #fafbfc; border: 1.5px solid var(--border-color); border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.55; color: var(--text-main); white-space: pre-wrap; word-break: break-word; }
+  .cp-section .cp-btn { align-self: flex-end; background: var(--brand-dark); color: #fff; border: none; padding: 5px 14px; font-size: 11px; font-weight: 700; letter-spacing: 1px; border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', sans-serif; }
+  .cp-section .cp-btn:hover { background: var(--brand-blue); }
+  .cp-section .cp-btn.copied { background: var(--brand-green); }
+  .cp-section .cp-box.hashtags { color: var(--brand-blue); font-weight: 600; font-size: 12.5px; }
+  .cp-section .cp-box.wechat { background: #f0fdf4; border-color: #86efac; font-size: 13px; }
+  .cp-section .cp-box.community { background: var(--bg-sky); border-color: #93c5fd; font-size: 13px; }
+  .cp-tabs { display: flex; gap: 4px; background: #f3f4f6; padding: 4px; border-radius: 10px; }
+  .cp-tab { flex: 1; background: transparent; border: none; padding: 8px 6px; font-size: 12px; font-weight: 700; color: var(--text-gray); cursor: pointer; border-radius: 8px; font-family: 'Noto Sans SC', sans-serif; }
+  .cp-tab.active { background: #fff; color: var(--tab-color, var(--brand-dark)); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 900; }
+  .cp-pane { display: flex; flex-direction: column; gap: 14px; }
+  .cp-pane.hidden { display: none; }
+  .cp-tip { background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; font-size: 11.5px; color: #92400e; line-height: 1.5; }
+
+  /* 海报内部通用 */
+  .p-inner { position: relative; width: 100%; height: 100%; padding: 80px 72px; display: flex; flex-direction: column; background: #fff; border: 5px solid var(--brand-dark); border-radius: 36px; box-sizing: border-box; overflow: hidden; }
+  .p-dots { position: absolute; top: 0; right: 0; width: 400px; height: 400px; background-image: radial-gradient(#64748b 1.5px, transparent 1.5px); background-size: 28px 28px; opacity: 0.1; pointer-events: none; }
+  .p-dots.bl { top: auto; right: auto; bottom: 0; left: 0; }
+  .p-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 700; letter-spacing: 1px; color: var(--brand-blue); text-transform: uppercase; background: var(--bg-sky); border: 1.5px solid var(--brand-blue); padding: 10px 22px; border-radius: 100px; width: fit-content; font-family: 'JetBrains Mono', monospace; }
+  .p-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-blue); }
+  .hl { position: relative; display: inline-block; z-index: 1; }
+  .hl::after { content: ''; position: absolute; bottom: 10px; left: -4px; right: -4px; height: 24px; background: var(--brand-yellow); z-index: -1; opacity: 0.75; }
+
+  /* P1 封面 */
+  .p1 .p-inner { background: #fff; justify-content: center; }
+  .p1 .hook { font-size: 132px; font-weight: 900; line-height: 1.05; letter-spacing: -4px; color: var(--brand-dark); margin-top: 40px; }
+  .p1 .sub { font-size: 48px; font-weight: 500; color: var(--text-gray); margin-top: 40px; line-height: 1.5; }
+  .p1 .course-chip { margin-top: 60px; background: var(--brand-dark); color: #fff; padding: 24px 32px; border-radius: 18px; display: inline-flex; gap: 20px; width: fit-content; box-shadow: 10px 10px 0 var(--brand-blue); }
+  .p1 .course-chip .name { font-size: 42px; font-weight: 900; letter-spacing: -0.5px; }
+  .p1 .course-chip .meta { font-size: 26px; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+  .p1 .corner-mark { position: absolute; top: 70px; right: 70px; background: var(--brand-yellow); border: 2px solid var(--brand-dark); padding: 12px 18px; border-radius: 12px; font-size: 24px; font-weight: 900; transform: rotate(4deg); box-shadow: 6px 6px 0 var(--brand-dark); }
+
+  /* P1B 共鸣版 */
+  .p1b .p-inner { justify-content: flex-start; background: #fff; padding: 60px 50px; }
+  .p1b .p-dots { opacity: 0.05; }
+  .p1b .corner-mark { background: var(--brand-blue); color: #fff; top: 40px; right: 40px; transform: rotate(8deg); font-size: 44px !important; padding: 15px 30px !important; border-radius: 20px !important; }
+  .p1b .p-tag { background: var(--brand-dark); color: var(--brand-yellow); border: none; font-size: 36px !important; padding: 12px 35px !important; }
+  .p1b .hook { font-size: 140px; line-height: 1.1; letter-spacing: -4px; margin-top: 40px; font-weight: 900; }
+  .p1b .hook .soft { color: var(--text-gray); font-size: 0.7em; display: block; margin-bottom: 10px; }
+  .p1b .hook .hl { color: #fff; background: var(--brand-blue); padding: 5px 25px; border-radius: 15px; box-shadow: 12px 12px 0 var(--brand-yellow); display: inline-block; margin-top: 15px; }
+  .p1b .contrast-wrapper { margin-top: 60px; display: flex; flex-direction: column; gap: 40px; flex: 1; }
+  .p1b .xhs-card { border: 5px solid var(--brand-dark); border-radius: 35px; padding: 40px 50px; position: relative; box-shadow: 15px 15px 0 var(--brand-dark); }
+  .p1b .xhs-card.bad { background: #f8fafc; box-shadow: 15px 15px 0 #cbd5e1; }
+  .p1b .xhs-card.good { background: #fffdf5; box-shadow: 15px 15px 0 var(--brand-blue); }
+  .p1b .xhs-card .label-tag { position: absolute; top: -30px; left: 40px; background: var(--brand-dark); color: #fff; padding: 10px 30px; border-radius: 12px; font-size: 32px !important; font-weight: 900; font-family: 'JetBrains Mono', monospace; border: 3px solid var(--brand-dark); }
+  .p1b .xhs-card.good .label-tag { background: var(--brand-blue); border-color: var(--brand-blue); }
+  .p1b .xhs-card .content { display: flex; align-items: center; gap: 40px; }
+  .p1b .xhs-card .techs { font-size: 72px !important; font-weight: 900; line-height: 1.1; color: var(--brand-dark); flex: 1; }
+  .p1b .xhs-card .desc { font-size: 38px !important; color: var(--text-gray); font-weight: 600; flex: 1.2; line-height: 1.4 !important; }
+  .p1b .xhs-card.good .techs { color: var(--brand-blue); }
+  .p1b .xhs-card.good .desc { color: #1e40af; }
+  .p1b .course-chip { margin-top: 40px; background: var(--brand-dark); color: #fff; padding: 35px 50px; border-radius: 28px; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .p1b .course-chip .name { font-size: 52px !important; font-weight: 900; }
+
+  /* P1C 转岗版 */
+  .p1c .p-inner { justify-content: flex-start; background: var(--bg-sky); padding: 80px 60px; }
+  .p1c .hook { font-size: 150px; line-height: 1; letter-spacing: -5px; font-weight: 900; color: var(--brand-dark); margin-top: 20px; }
+  .p1c .hook span { color: var(--brand-blue); background: #fff; padding: 0 10px; border-radius: 10px; }
+  .p1c .transition-box { margin-top: 60px; display: flex; flex-direction: column; align-items: center; gap: 30px; flex: 1; }
+  .p1c .stage-card { width: 100%; border: 6px solid var(--brand-dark); border-radius: 45px; padding: 60px; position: relative; background: #fff; box-shadow: 18px 18px 0 var(--brand-dark); }
+  .p1c .stage-card.from { background: #fcfdfe; }
+  .p1c .stage-card.to { background: var(--brand-yellow); box-shadow: 18px 18px 0 var(--brand-blue); }
+  .p1c .stage-card .badge { position: absolute; top: -45px; left: 60px; padding: 12px 40px; border-radius: 18px; border: 5px solid var(--brand-dark); font-size: 38px !important; font-weight: 900; transform: rotate(-3deg); z-index: 5; }
+  .p1c .stage-card.from .badge { background: #64748b; color: #fff; }
+  .p1c .stage-card.to .badge { background: var(--brand-blue); color: #fff; }
+  .p1c .stage-card .text { font-size: 110px !important; font-weight: 900; line-height: 1.1; letter-spacing: -3px; }
+  .p1c .big-arrow { font-size: 140px; font-weight: 900; color: var(--brand-blue); text-shadow: 10px 10px 0 var(--brand-dark); margin: -10px 0; line-height: 1; }
+  .p1c .course-chip { background: var(--brand-dark); color: #fff; border-radius: 30px; padding: 40px 50px; margin-top: 30px; width: 100%; text-align: center; box-shadow: 12px 12px 0 var(--brand-blue); }
+  .p1c .course-chip .name { font-size: 52px !important; font-weight: 900; color: #fff; }
+
+  /* P1D 技能栈版 */
+  .p1d .p-inner { justify-content: flex-start; background: var(--brand-dark); color: #fff; padding: 80px 60px; }
+  .p1d .p-dots { background-image: radial-gradient(rgba(255,255,255,0.2) 1.5px, transparent 1.5px); }
+  .p1d .hook { font-size: 120px; line-height: 1.1; letter-spacing: -3px; font-weight: 900; color: #fff; margin-top: 40px; }
+  .p1d .hook em { font-style: normal; color: var(--brand-yellow); background: rgba(255,255,255,0.1); padding: 0 15px; border-radius: 15px; }
+  .p1d .sticker-grid { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; transform: rotate(-2deg); flex: 1; }
+  .p1d .sticker { background: #fff; color: var(--brand-dark); border: 5px solid var(--brand-dark); border-radius: 25px; padding: 40px 25px; font-size: 56px !important; font-weight: 900; text-align: center; box-shadow: 12px 12px 0 var(--brand-yellow); display: flex; align-items: center; justify-content: center; }
+  .p1d .sticker:nth-child(even) { transform: rotate(4deg); background: var(--brand-yellow); box-shadow: 12px 12px 0 var(--brand-blue); }
+  .p1d .sticker:nth-child(3n) { transform: rotate(-3deg); background: var(--brand-blue); color: #fff; box-shadow: 12px 12px 0 #fff; }
+  .p1d .bottom-text { margin-top: 60px; font-size: 48px !important; font-weight: 800; color: #fff; line-height: 1.5 !important; text-align: center; border-top: 3px dashed rgba(255,206,68,0.5); padding-top: 50px; }
+  .p1d .course-chip { margin-top: 40px; background: #fff; color: var(--brand-dark); box-shadow: 12px 12px 0 var(--brand-blue); padding: 35px 50px; border-radius: 30px; }
+  .p1d .course-chip .name { font-size: 52px; font-weight: 900; }
+
+  /* P2 痛点 (codex 高级) */
+  .p2 .p-inner { background: radial-gradient(circle at top right, rgba(59,130,246,0.22), transparent 28%), linear-gradient(180deg, #f8fbff 0%, #dbeafe 100%); }
+  .p2 .eyebrow { margin-top: 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .p2 .eyebrow .line { flex: 1; height: 3px; background: repeating-linear-gradient(90deg, var(--brand-dark) 0 18px, transparent 18px 30px); opacity: 0.25; }
+  .p2 .eyebrow .txt { font-size: 24px; font-weight: 900; letter-spacing: 3px; color: var(--brand-blue); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+  .p2 h2 { font-size: 92px; font-weight: 900; line-height: 1.08; letter-spacing: -3px; margin-top: 24px; }
+  .p2 .lead { margin-top: 18px; font-size: 30px; line-height: 1.45; color: var(--text-gray); font-weight: 600; max-width: 930px; }
+  .p2 .split { margin-top: 46px; display: grid; grid-template-columns: 1fr 74px 1fr; gap: 20px; flex: 1; align-items: stretch; }
+  .p2 .divider { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+  .p2 .divider .bar { width: 6px; flex: 1; border-radius: 999px; background: linear-gradient(180deg, rgba(16,22,47,0.12) 0%, rgba(59,130,246,0.4) 100%); }
+  .p2 .divider .vs { width: 64px; height: 64px; border-radius: 18px; border: 2px solid var(--brand-dark); background: var(--brand-yellow); display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900; font-family: 'JetBrains Mono', monospace; box-shadow: 5px 5px 0 var(--brand-dark); transform: rotate(-8deg); }
+  .p2 .col { border: 2px solid var(--brand-dark); border-radius: 28px; padding: 34px 32px 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .p2 .col.bad { box-shadow: 10px 10px 0 #94a3b8; background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%); }
+  .p2 .col.good { box-shadow: 12px 12px 0 var(--brand-blue); background: linear-gradient(180deg, #fff 0%, #eff6ff 100%); }
+  .p2 .col-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+  .p2 .badge { min-width: 72px; height: 72px; border-radius: 20px; border: 2px solid var(--brand-dark); display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+  .p2 .col.bad .badge { background: #dbe4ee; color: #475569; }
+  .p2 .col.good .badge { background: var(--brand-blue); color: #fff; }
+  .p2 .kicker { font-size: 18px; font-weight: 900; letter-spacing: 2px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; margin-bottom: 8px; }
+  .p2 .col.bad .kicker { color: #64748b; }
+  .p2 .col.good .kicker { color: var(--brand-blue); }
+  .p2 .col h3 { font-size: 42px; font-weight: 900; line-height: 1.15; letter-spacing: -1px; }
+  .p2 .col-sub { margin-top: 10px; font-size: 23px; line-height: 1.4; font-weight: 600; }
+  .p2 .col.bad .col-sub { color: #64748b; }
+  .p2 .col.good .col-sub { color: #1e40af; }
+  .p2 .col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .p2 .col li { min-height: 92px; padding: 18px 18px 18px 78px; border-radius: 18px; border: 1.5px solid var(--brand-dark); position: relative; font-size: 26px; line-height: 1.35; font-weight: 700; display: flex; align-items: center; }
+  .p2 .col li::before { position: absolute; left: 18px; top: 18px; width: 42px; height: 42px; border-radius: 12px; border: 2px solid var(--brand-dark); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+  .p2 .col.bad li { background: rgba(255,255,255,0.78); color: #475569; }
+  .p2 .col.bad li::before { content: 'X'; background: #e2e8f0; color: var(--brand-red); }
+  .p2 .col.good li { background: #fff; color: var(--text-main); }
+  .p2 .col.good li::before { content: 'GO'; background: #dbeafe; color: var(--brand-blue); font-size: 16px; }
+  .p2 .bottom-note { margin-top: 28px; padding: 18px 22px; border-radius: 18px; border: 2px solid var(--brand-dark); background: #fff; font-size: 24px; line-height: 1.45; font-weight: 700; box-shadow: 7px 7px 0 var(--brand-yellow); }
+
+  /* P3 对话 */
+  .p3 .p-inner { background: #fff; }
+  .p3 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p3 .chat { margin-top: 50px; background: var(--bg-light); border: 2px solid var(--brand-dark); border-radius: 24px; overflow: hidden; box-shadow: 14px 14px 0 var(--brand-yellow); flex: 1; }
+  .p3 .chat-header { background: var(--brand-dark); color: #fff; padding: 18px 26px; display: flex; align-items: center; gap: 14px; font-size: 24px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .p3 .chat-header .dots { display: flex; gap: 6px; }
+  .p3 .chat-header .dots span { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+  .p3 .chat-header .dots span:nth-child(2) { background: #febc2e; }
+  .p3 .chat-header .dots span:nth-child(3) { background: #28c940; }
+  .p3 .chat-body { padding: 32px 36px; display: flex; flex-direction: column; gap: 20px; }
+  .p3 .bubble { padding: 20px 26px; border-radius: 20px; font-size: 34px; line-height: 1.45; font-weight: 500; max-width: 85%; }
+  .p3 .bubble.left { background: #fff; border: 1.5px solid var(--border-color); align-self: flex-start; border-bottom-left-radius: 6px; }
+  .p3 .bubble.right { background: var(--brand-blue); color: #fff; align-self: flex-end; border-bottom-right-radius: 6px; }
+  .p3 .bubble .name { font-size: 20px; color: var(--brand-blue); font-weight: 900; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+  .p3 .bubble.right .name { color: var(--brand-yellow); }
+
+  /* P4 4 大能力 */
+  .p4 .p-inner { background: #fff; }
+  .p4 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p4 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p4 .grid4 { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; flex: 1; }
+  .p4 .cell { border: 2px solid var(--brand-dark); border-radius: 20px; padding: 32px 28px; box-shadow: 8px 8px 0 var(--brand-dark); display: flex; flex-direction: column; gap: 14px; }
+  .p4 .cell:nth-child(1) { background: var(--bg-sky); box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p4 .cell:nth-child(2) { background: #f5f3ff; box-shadow: 8px 8px 0 var(--brand-purple); }
+  .p4 .cell:nth-child(3) { background: #fff9e0; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p4 .cell:nth-child(4) { background: #fff7ed; box-shadow: 8px 8px 0 var(--brand-orange); }
+  .p4 .cell .num { font-size: 52px; font-weight: 900; color: var(--brand-dark); font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .p4 .cell h4 { font-size: 38px; font-weight: 900; line-height: 1.2; }
+  .p4 .cell p { font-size: 26px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P5 5 阶段流程 */
+  .p5 .p-inner { background: var(--bg-light); }
+  .p5 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -1.5px; margin-top: 20px; }
+  .p5 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p5 .phases { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p5 .ph { display: flex; gap: 20px; align-items: flex-start; background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 22px 26px; box-shadow: 5px 5px 0 rgba(59,130,246,0.25); }
+  .p5 .ph .badge { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 24px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p5 .ph h5 { font-size: 32px; font-weight: 900; margin-bottom: 4px; }
+  .p5 .ph p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 600; }
+
+  /* P6 技术栈 深色 */
+  .p6 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p6 .p-dots { opacity: 0.15; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p6 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p6 h2 { color: #fff; font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p6 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p6 .tool-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; flex: 1; }
+  .p6 .tool { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 22px 16px; text-align: center; }
+  .p6 .tool .name { font-size: 24px; font-weight: 900; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
+  .p6 .tool .cat { font-size: 18px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+  .p6 .tool.hot { background: var(--brand-blue); border-color: var(--brand-blue); box-shadow: 4px 4px 0 var(--brand-yellow); }
+  .p6 .tool.hot .cat { color: var(--brand-yellow); }
+
+  /* P7 反馈 */
+  .p7 .p-inner { background: #fff; }
+  .p7 h2 { font-size: 76px; font-weight: 900; line-height: 1.2; letter-spacing: -2px; margin-top: 30px; }
+  .p7 .quotes { margin-top: 50px; display: flex; flex-direction: column; gap: 22px; flex: 1; }
+  .p7 .q { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 30px 34px; position: relative; box-shadow: 8px 8px 0 var(--brand-dark); }
+  .p7 .q:nth-child(2) { margin-left: 60px; box-shadow: 8px 8px 0 var(--brand-blue); background: var(--bg-sky); }
+  .p7 .q:nth-child(3) { margin-left: 120px; box-shadow: 8px 8px 0 var(--brand-purple); background: #f5f3ff; }
+  .p7 .q::before { content: '"'; position: absolute; top: -12px; left: 20px; font-size: 100px; font-weight: 900; color: var(--brand-yellow); line-height: 1; font-family: Georgia, serif; }
+  .p7 .q .txt { font-size: 36px; line-height: 1.45; font-weight: 500; margin-left: 40px; }
+  .p7 .q .who { font-size: 22px; color: var(--text-gray); margin-top: 14px; margin-left: 40px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+  /* P8 配置 */
+  .p8 .p-inner { background: var(--bg-cream); }
+  .p8 h2 { font-size: 84px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p8 .stats { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .p8 .stat { background: #fff; border: 2px solid var(--brand-dark); border-radius: 18px; padding: 26px 28px; box-shadow: 6px 6px 0 var(--brand-dark); }
+  .p8 .stat .num { font-size: 84px; font-weight: 900; line-height: 1; letter-spacing: -3px; font-family: 'JetBrains Mono', monospace; color: var(--brand-dark); }
+  .p8 .stat .num em { font-style: normal; color: var(--brand-blue); font-size: 44px; margin-left: 6px; }
+  .p8 .stat .lbl { font-size: 24px; font-weight: 700; color: var(--text-gray); margin-top: 10px; }
+  .p8 .format-list { margin-top: 24px; background: var(--brand-dark); color: #fff; border-radius: 18px; padding: 28px 32px; box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p8 .format-list h4 { font-size: 30px; font-weight: 900; color: var(--brand-yellow); margin-bottom: 14px; }
+  .p8 .format-list ul { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; list-style: none; }
+  .p8 .format-list li { font-size: 22px; font-weight: 500; padding-left: 26px; position: relative; line-height: 1.4; }
+  .p8 .format-list li::before { content: '✓'; position: absolute; left: 0; color: var(--brand-yellow); font-weight: 900; }
+
+  /* P9 CTA */
+  .p9 .p-inner { background: #fff; align-items: center; justify-content: center; text-align: center; }
+  .p9 .big-q { font-size: 56px; font-weight: 500; color: var(--text-gray); margin-top: 20px; line-height: 1.5; }
+  .p9 .giant { font-size: 150px; font-weight: 900; line-height: 1; letter-spacing: -5px; color: var(--brand-dark); margin-top: 40px; }
+  .p9 .giant em { font-style: normal; color: var(--brand-blue); }
+  .p9 .sub-hook { margin-top: 50px; font-size: 40px; font-weight: 700; line-height: 1.5; max-width: 860px; }
+  .p9 .arrow { margin-top: 60px; display: inline-flex; align-items: center; gap: 20px; padding: 20px 32px; background: var(--brand-yellow); border: 2px solid var(--brand-dark); border-radius: 100px; box-shadow: 8px 8px 0 var(--brand-dark); font-size: 38px; font-weight: 900; }
+  .p9 .arrow .arr { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--brand-dark); color: var(--brand-yellow); border-radius: 50%; font-size: 26px; }
+  .p9 .note { margin-top: 40px; font-size: 24px; color: var(--text-gray); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+
+  /* P10 课程 explainer */
+  .p10 .p-inner { background: linear-gradient(180deg, #f8fbff 0%, #dbeafe 100%); }
+  .p10 h2 { font-size: 84px; font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-top: 20px; }
+  .p10 h2 em { font-style: normal; color: var(--brand-blue); background: var(--brand-yellow); padding: 0 12px; border-radius: 12px; }
+  .p10 .one-liner { margin-top: 24px; padding: 28px 30px; background: var(--brand-dark); color: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; box-shadow: 8px 8px 0 var(--brand-blue); font-size: 36px; font-weight: 700; line-height: 1.5; }
+  .p10 .one-liner .yellow { color: var(--brand-yellow); font-weight: 900; }
+  .p10 .day-title { margin-top: 26px; font-size: 28px; font-weight: 900; color: var(--brand-blue); font-family: 'JetBrains Mono', monospace; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; }
+  .p10 .day-title::before { content: ''; width: 32px; height: 4px; background: var(--brand-blue); border-radius: 2px; }
+  .p10 .tasks { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .p10 .task { background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; gap: 18px; box-shadow: 4px 4px 0 rgba(59,130,246,0.25); }
+  .p10 .task .num { width: 48px; height: 48px; border-radius: 12px; background: var(--brand-blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p10 .task .text { font-size: 28px; font-weight: 700; line-height: 1.3; }
+  .p10 .task .text em { font-style: normal; color: var(--brand-blue); font-weight: 900; }
+  .p10 .meta-row { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .p10 .meta-row .m { background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 16px; text-align: center; }
+  .p10 .meta-row .m .lbl { font-size: 18px; color: var(--text-gray); font-weight: 900; font-family: 'JetBrains Mono', monospace; letter-spacing: 1.5px; text-transform: uppercase; }
+  .p10 .meta-row .m .val { font-size: 26px; color: var(--brand-blue); font-weight: 900; margin-top: 6px; line-height: 1.2; }
+
+  /* P11 能力矩阵 */
+  .p11 .p-inner { background: var(--bg-cream); }
+  .p11 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p11 .matrix { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p11 .row { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 0; border: 2px solid var(--brand-dark); border-radius: 14px; overflow: hidden; }
+  .p11 .row .dim { background: var(--brand-dark); color: #fff; padding: 16px 18px; font-size: 22px; font-weight: 900; display: flex; align-items: center; }
+  .p11 .row .v1 { padding: 16px 18px; font-size: 20px; color: var(--text-gray); background: #f5f5f5; border-right: 1.5px solid var(--border-color); line-height: 1.4; }
+  .p11 .row .v2 { padding: 16px 18px; font-size: 20px; color: var(--brand-dark); background: var(--bg-sky); font-weight: 600; line-height: 1.4; }
+
+  /* P12 3 大项目深潜 */
+  .p12 .p-inner { background: var(--bg-sky); }
+  .p12 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p12 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p12 .proj-list { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p12 .proj { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 26px 28px; box-shadow: 5px 5px 0 rgba(59,130,246,0.25); display: flex; gap: 22px; align-items: flex-start; }
+  .p12 .proj .ic { font-size: 48px; flex-shrink: 0; }
+  .p12 .proj h4 { font-size: 30px; font-weight: 900; margin-bottom: 6px; }
+  .p12 .proj p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+  .p12 .proj .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .p12 .proj .tag { background: var(--bg-sky); color: var(--brand-blue); border: 1.5px solid var(--brand-blue); padding: 4px 12px; border-radius: 8px; font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+  /* P13 DevOps 5 阶 */
+  .p13 .p-inner { background: linear-gradient(160deg, #1e3a8a 0%, #0f172a 100%); color: #fff; }
+  .p13 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p13 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p13 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p13 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p13 .layers { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p13 .layer { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 22px 24px; }
+  .p13 .layer .badge { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; color: #fff; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.3); }
+  .p13 .layer h4 { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .p13 .layer p { font-size: 22px; color: rgba(255,255,255,0.6); font-weight: 500; line-height: 1.35; }
+
+  /* P14 受众 */
+  .p14 .p-inner { background: #fff; }
+  .p14 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p14 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p14 .audience { margin-top: 36px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .p14 .aud { border: 2px solid var(--brand-dark); border-radius: 18px; padding: 26px 30px; display: flex; gap: 20px; align-items: flex-start; }
+  .p14 .aud:nth-child(1) { background: var(--bg-sky); box-shadow: 6px 6px 0 var(--brand-blue); }
+  .p14 .aud:nth-child(2) { background: #f5f3ff; box-shadow: 6px 6px 0 var(--brand-purple); }
+  .p14 .aud:nth-child(3) { background: #fff7ed; box-shadow: 6px 6px 0 var(--brand-orange); }
+  .p14 .aud:nth-child(4) { background: #ecfdf5; box-shadow: 6px 6px 0 var(--brand-green); }
+  .p14 .aud .emoji { font-size: 48px; flex-shrink: 0; }
+  .p14 .aud h4 { font-size: 32px; font-weight: 900; margin-bottom: 6px; }
+  .p14 .aud p { font-size: 24px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P15 多方向选择 */
+  .p15 .p-inner { background: var(--bg-light); }
+  .p15 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p15 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p15 .dir-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p15 .dir { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 26px 24px; box-shadow: 5px 5px 0 var(--brand-dark); }
+  .p15 .dir .ic { font-size: 42px; margin-bottom: 8px; }
+  .p15 .dir h4 { font-size: 30px; font-weight: 900; margin-bottom: 8px; }
+  .p15 .dir p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+  .p15 .dir .tag { display: inline-block; background: var(--brand-blue); color: #fff; padding: 3px 12px; border-radius: 8px; font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-top: 8px; }
+
+  /* P16 时间线 */
+  .p16 .p-inner { background: #fff; }
+  .p16 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p16 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p16 .timeline { margin-top: 36px; flex: 1; position: relative; padding-left: 50px; }
+  .p16 .timeline::before { content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 4px; background: var(--brand-blue); border-radius: 2px; }
+  .p16 .tl-item { position: relative; padding: 20px 28px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; margin-bottom: 14px; }
+  .p16 .tl-item::before { content: ''; position: absolute; left: -38px; top: 24px; width: 20px; height: 20px; border-radius: 50%; border: 3px solid var(--brand-dark); background: var(--brand-blue); }
+  .p16 .tl-item .week { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-blue); }
+  .p16 .tl-item h4 { font-size: 28px; font-weight: 900; margin: 4px 0; }
+  .p16 .tl-item p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P17 毕业交付 */
+  .p17 .p-inner { background: var(--bg-sky); }
+  .p17 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p17 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p17 .proj-list { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .p17 .proj { display: flex; gap: 20px; align-items: flex-start; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 20px 24px; background: #fff; box-shadow: 5px 5px 0 rgba(59,130,246,0.25); }
+  .p17 .proj .num { width: 52px; height: 52px; border-radius: 50%; background: var(--brand-blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p17 .proj h4 { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .p17 .proj p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P18 团队协作 */
+  .p18 .p-inner { background: #fff; }
+  .p18 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p18 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p18 .team-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p18 .role { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 26px 28px; display: flex; flex-direction: column; gap: 10px; }
+  .p18 .role:nth-child(1) { background: var(--bg-sky); box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p18 .role:nth-child(2) { background: #ecfdf5; box-shadow: 8px 8px 0 var(--brand-green); }
+  .p18 .role:nth-child(3) { background: #f5f3ff; box-shadow: 8px 8px 0 var(--brand-purple); }
+  .p18 .role:nth-child(4) { background: #fff7ed; box-shadow: 8px 8px 0 var(--brand-orange); }
+  .p18 .role .ic { font-size: 42px; }
+  .p18 .role h4 { font-size: 30px; font-weight: 900; }
+  .p18 .role p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P19 AI 实习 + 求职 */
+  .p19 .p-inner { background: #fef2f2; }
+  .p19 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p19 h2 em { font-style: normal; color: var(--brand-red); }
+  .p19 .flow { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; }
+  .p19 .step { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 22px; box-shadow: 5px 5px 0 rgba(59,130,246,0.25); }
+  .p19 .step .ic { font-size: 36px; margin-bottom: 8px; }
+  .p19 .step h4 { font-size: 28px; font-weight: 900; margin-bottom: 6px; }
+  .p19 .step p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+  .p19 .cert { margin-top: 20px; background: var(--brand-dark); color: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 22px 28px; text-align: center; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p19 .cert .big { font-size: 32px; font-weight: 900; color: var(--brand-yellow); }
+  .p19 .cert .sub { font-size: 22px; margin-top: 6px; opacity: 0.85; }
+
+  /* P20 26/27/28 → 30 升级 */
+  .p20 .p-inner { background: var(--bg-light); }
+  .p20 h2 { font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p20 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p20 .upgrade-list { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .p20 .up-row { display: grid; grid-template-columns: 220px 1fr 1fr; border: 2px solid var(--brand-dark); border-radius: 12px; overflow: hidden; }
+  .p20 .up-row .dim { background: var(--brand-dark); color: #fff; padding: 14px 16px; font-size: 22px; font-weight: 800; display: flex; align-items: center; }
+  .p20 .up-row .old { padding: 14px 16px; font-size: 20px; background: #f5f5f5; color: var(--text-gray); border-right: 1px solid var(--border-color); line-height: 1.35; }
+  .p20 .up-row .new { padding: 14px 16px; font-size: 20px; background: var(--bg-sky); font-weight: 700; color: var(--brand-dark); line-height: 1.35; }
+
+  /* P21 FAQ */
+  .p21 .p-inner { background: #fff; }
+  .p21 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p21 .faq-list { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .p21 .faq { border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 26px; background: #fff; box-shadow: 4px 4px 0 rgba(16,22,47,0.08); }
+  .p21 .faq .q { font-size: 28px; font-weight: 900; color: var(--brand-dark); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; }
+  .p21 .faq .q::before { content: 'Q'; background: var(--brand-blue); color: #fff; padding: 4px 12px; border-radius: 8px; font-size: 20px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+  .p21 .faq .a { font-size: 22px; color: var(--text-gray); line-height: 1.5; font-weight: 500; padding-left: 42px; }
+
+  /* P22 Agile 方法论 */
+  .p22 .p-inner { background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%); }
+  .p22 h2 { font-size: 76px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p22 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p22 .flow { margin-top: 32px; display: flex; flex-direction: column; gap: 0; flex: 1; position: relative; padding-left: 60px; }
+  .p22 .flow::before { content: ''; position: absolute; left: 26px; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, #3b82f6, #6366f1, #8b5cf6, #ec4899, #f97316); border-radius: 3px; }
+  .p22 .stage { position: relative; padding: 20px 24px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; margin-bottom: 14px; box-shadow: 4px 4px 0 rgba(16,22,47,0.08); }
+  .p22 .stage::before { content: ''; position: absolute; left: -44px; top: 22px; width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--brand-dark); }
+  .p22 .stage:nth-child(1)::before { background: #3b82f6; }
+  .p22 .stage:nth-child(2)::before { background: #6366f1; }
+  .p22 .stage:nth-child(3)::before { background: #8b5cf6; }
+  .p22 .stage:nth-child(4)::before { background: #ec4899; }
+  .p22 .stage:nth-child(5)::before { background: #f97316; }
+  .p22 .stage .stg { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; margin-bottom: 4px; }
+  .p22 .stage h4 { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .p22 .stage p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P23 独家 FLAG 导师 + AI 实习 + 12 个月辅导 */
+  .p23 .p-inner { background: linear-gradient(160deg, #1e3a8a 0%, #0f172a 100%); color: #fff; }
+  .p23 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p23 .p-tag { background: rgba(255,87,87,0.15); border-color: var(--brand-red); color: var(--brand-red); }
+  .p23 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p23 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p23 .exclusive-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; background: var(--brand-red); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 22px; font-weight: 900; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; border: 2px solid rgba(255,255,255,0.3); }
+  .p23 .mod-list { margin-top: 26px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .p23 .mod { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 18px; padding: 22px 26px; }
+  .p23 .mod .tag { font-size: 20px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-yellow); margin-bottom: 6px; letter-spacing: 1.5px; }
+  .p23 .mod h4 { font-size: 32px; font-weight: 900; margin-bottom: 6px; }
+  .p23 .mod p { font-size: 22px; color: rgba(255,255,255,0.7); line-height: 1.4; font-weight: 500; }
+
+  /* P24 JD 覆盖 */
+  .p24 .p-inner { background: #fff; }
+  .p24 h2 { font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p24 h2 em { font-style: normal; color: var(--brand-blue); }
+  .p24 .top-stats { margin-top: 26px; display: flex; gap: 16px; }
+  .p24 .top-stats .s { flex: 1; text-align: center; background: var(--brand-dark); color: #fff; border-radius: 16px; padding: 18px 12px; border: 2px solid var(--brand-dark); }
+  .p24 .top-stats .s .n { font-size: 46px; font-weight: 900; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .p24 .top-stats .s .l { font-size: 18px; font-weight: 600; opacity: 0.7; margin-top: 6px; }
+  .p24 .skill-bars { margin-top: 26px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p24 .sk { border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 22px; background: #fff; }
+  .p24 .sk .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .p24 .sk h4 { font-size: 26px; font-weight: 900; }
+  .p24 .sk .freq { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-blue); }
+  .p24 .sk .bar { height: 16px; background: #e5e7eb; border-radius: 8px; overflow: hidden; border: 1.5px solid var(--brand-dark); }
+  .p24 .sk .bar .fill { height: 100%; border-radius: 6px; }
+  .p24 .companies { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .p24 .companies span { background: var(--bg-light); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 8px 16px; font-size: 18px; font-weight: 700; color: var(--text-gray); }
+
+  /* P25 澳洲 Junior AI 薪资 */
+  .p25 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p25 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p25 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p25 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p25 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p25 .salary-tiers { margin-top: 28px; display: flex; gap: 16px; }
+  .p25 .tier { flex: 1; background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 18px; padding: 22px 18px; text-align: center; }
+  .p25 .tier .range { font-size: 32px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-yellow); line-height: 1.1; }
+  .p25 .tier .level { font-size: 20px; font-weight: 700; margin-top: 8px; opacity: 0.7; }
+  .p25 .co-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; flex: 1; }
+  .p25 .co { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 16px 18px; }
+  .p25 .co .name { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+  .p25 .co .role { font-size: 15px; opacity: 0.5; margin-bottom: 6px; }
+  .p25 .co .sal { font-size: 19px; font-weight: 700; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; }
+
+  /* 字号兜底 v3 */
+  .poster .p-tag { font-size: 30px !important; padding: 12px 24px !important; }
+  .poster .corner-mark { font-size: 28px !important; padding: 12px 18px !important; }
+  .poster p, .poster li, .poster .lbl, .poster .cat, .poster .meta,
+  .poster .who, .poster .sub, .poster .desc, .poster .phase,
+  .poster .week, .poster .role, .poster .sal,
+  .poster .old, .poster .new, .poster .dim, .poster .v1, .poster .v2,
+  .poster .bottom-note, .poster .note, .poster .freq,
+  .poster .companies span, .poster .lead,
+  .poster .tier .level, .poster .stat .lbl, .poster .chat-header, .poster .ph p,
+  .poster .tool .cat, .poster .col-sub {
+    font-size: 36px !important;
+    line-height: 1.45 !important;
+    font-weight: 500 !important;
+  }
+  .poster h3, .poster h4, .poster h5,
+  .poster .mod h4, .poster .aud h4, .poster .proj h4, .poster .faq .q,
+  .poster .ph h5, .poster .dir h4, .poster .step h4,
+  .poster .role h4, .poster .tl-item h4, .poster .stage h4,
+  .poster .cell h4, .poster .col h3, .poster .tool .name {
+    font-size: 44px !important;
+    line-height: 1.2 !important;
+    font-weight: 900 !important;
+  }
+  .poster .bubble, .poster .q .txt, .poster .cert .big {
+    font-size: 44px !important;
+    line-height: 1.4 !important;
+  }
+  .poster h2 { font-size: 88px !important; line-height: 1.15 !important; letter-spacing: -2px !important; font-weight: 900 !important; }
+  .p1 .hook { font-size: 140px !important; line-height: 1.05 !important; }
+  .p9 .giant { font-size: 150px !important; }
+  .poster .sub-hook { font-size: 44px !important; line-height: 1.5 !important; }
+  .poster .stat .num em, .poster .tier .range em { font-size: 36px !important; }
+  .hl::after { height: 22px !important; bottom: 12px !important; }
+
+  /* 课程 bar */
+  .p-course-bar { position: absolute; left: 50%; top: 28px; transform: translateX(-50%); background: var(--brand-blue); color: #fff; border: 2px solid var(--brand-dark); border-radius: 100px; padding: 10px 26px; font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; letter-spacing: 1.5px; box-shadow: 4px 4px 0 var(--brand-dark); white-space: nowrap; z-index: 10; display: flex; align-items: center; gap: 12px; }
+  .p-course-bar::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--brand-yellow); }
+  .p6 .p-course-bar, .p13 .p-course-bar, .p23 .p-course-bar, .p25 .p-course-bar { background: var(--brand-yellow); color: var(--brand-dark); }
+  .p6 .p-course-bar::before, .p13 .p-course-bar::before, .p23 .p-course-bar::before, .p25 .p-course-bar::before { background: var(--brand-blue); }
+  .p1 .p-course-bar, .p1b .p-course-bar, .p1c .p-course-bar, .p1d .p-course-bar, .p9 .p-course-bar { display: none; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <header class="page-head">
+    <h1>AI Engineer 全栈项目班 · 第 30 期 · <span>小红书素材集</span></h1>
+    <p>25 张投流素材（4 封面变体 + 21 配图），专为小红书聚光平台定制。每张右侧三通道文案一键复制。</p>
+    <div class="spec-row">
+      <span class="spec-pill blue">1242 × 1660 竖版</span>
+      <span class="spec-pill draft">🚧 第 30 期 Draft</span>
+      <span class="spec-pill">16 周 · 485 节</span>
+      <span class="spec-pill">html2canvas 一键导出</span>
+    </div>
+    <div class="draft-notice">
+      <b>⚠️ Draft 提示：</b>第 30 期正式大纲筹备中。以下素材基于过往 26/27/28 期共 485 节真实课程数据 + 第 30 期筹备方向。正式大纲定稿前暂不大规模推广，仅做内容预览。
+    </div>
+    <div class="guide">
+      <b>导出前自检：</b>① 无二维码 / 微信号 / 手机号 &nbsp; ② 无"最 / 第一 / 唯一 / 100% / 保证 / 包就业"绝对化用语 &nbsp; ③ 学员数据软性表达
+    </div>
+  </header>
+
+  <nav class="thumb-nav">
+    <a href="#p1" class="thumb"><span class="num">1</span><span class="lbl">封面</span></a>
+    <a href="#p1b" class="thumb"><span class="num">1B</span><span class="lbl">共鸣</span></a>
+    <a href="#p1c" class="thumb"><span class="num">1C</span><span class="lbl">转岗</span></a>
+    <a href="#p1d" class="thumb"><span class="num">1D</span><span class="lbl">技能</span></a>
+    <a href="#p2" class="thumb"><span class="num">2</span><span class="lbl">痛点</span></a>
+    <a href="#p3" class="thumb"><span class="num">3</span><span class="lbl">对话</span></a>
+    <a href="#p4" class="thumb"><span class="num">4</span><span class="lbl">能力</span></a>
+    <a href="#p5" class="thumb"><span class="num">5</span><span class="lbl">5阶段</span></a>
+    <a href="#p6" class="thumb"><span class="num">6</span><span class="lbl">技术</span></a>
+    <a href="#p7" class="thumb"><span class="num">7</span><span class="lbl">反馈</span></a>
+    <a href="#p8" class="thumb"><span class="num">8</span><span class="lbl">配置</span></a>
+    <a href="#p9" class="thumb"><span class="num">9</span><span class="lbl">引导</span></a>
+    <a href="#p10" class="thumb"><span class="num">10</span><span class="lbl">课程</span></a>
+    <a href="#p11" class="thumb"><span class="num">11</span><span class="lbl">矩阵</span></a>
+    <a href="#p12" class="thumb"><span class="num">12</span><span class="lbl">项目</span></a>
+    <a href="#p13" class="thumb"><span class="num">13</span><span class="lbl">DevOps</span></a>
+    <a href="#p14" class="thumb"><span class="num">14</span><span class="lbl">受众</span></a>
+    <a href="#p15" class="thumb"><span class="num">15</span><span class="lbl">方向</span></a>
+    <a href="#p16" class="thumb"><span class="num">16</span><span class="lbl">时间线</span></a>
+    <a href="#p17" class="thumb"><span class="num">17</span><span class="lbl">交付</span></a>
+    <a href="#p18" class="thumb"><span class="num">18</span><span class="lbl">协作</span></a>
+    <a href="#p19" class="thumb"><span class="num">19</span><span class="lbl">实习</span></a>
+    <a href="#p20" class="thumb"><span class="num">20</span><span class="lbl">升级</span></a>
+    <a href="#p21" class="thumb"><span class="num">21</span><span class="lbl">FAQ</span></a>
+    <a href="#p22" class="thumb"><span class="num">22</span><span class="lbl">Agile</span></a>
+    <a href="#p23" class="thumb"><span class="num">23</span><span class="lbl">独家</span></a>
+    <a href="#p24" class="thumb"><span class="num">24</span><span class="lbl">JD</span></a>
+    <a href="#p25" class="thumb"><span class="num">25</span><span class="lbl">薪资</span></a>
+  </nav>
+
+  <!-- P1 -->
+  <div class="poster-frame" id="p1"><div class="label">P1 封面 <em>· hook / 主图</em></div><div class="poster-scaler"><div class="poster p1" id="poster-1"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="corner-mark">第 30 期 · 2026 Q2+</div>
+    <div class="p-tag"><span class="dot"></span>FULLSTACK + AI</div>
+    <div class="hook">Junior AI Engineer<br><span class="hl">入门首选</span></div>
+    <div class="sub">16 周全栈 + AI 项目班<br>从 React 到 RAG 一次学透</div>
+    <div class="course-chip"><div><div class="name">AI Engineer 全栈项目班 · 第 30 期</div><div class="meta">16 WEEKS · 485 LESSONS · 20 LIVE</div></div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1" data-slug="p1-cover">⬇ 下载 PNG</button></div>
+
+  <!-- P1B 共鸣 -->
+  <div class="poster-frame" id="p1b"><div class="label">P1B 封面 <em>· 共鸣版</em></div><div class="poster-scaler"><div class="poster p1b" id="poster-1b"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="corner-mark">必看干货 💡</div>
+    <div class="p-tag"><span class="dot"></span>FULLSTACK · 2026</div>
+    <div class="hook">
+      <span class="soft">会写 React</span>
+      不等于你能<br>
+      <span class="hl">交付 AI 产品</span>
+    </div>
+    <div class="contrast-wrapper">
+      <div class="xhs-card bad">
+        <div class="label-tag">most juniors stop here</div>
+        <div class="content">
+          <div class="techs">只做前端<br>只会 CRUD</div>
+          <div class="desc">会 React 会 Node — 但 AI 产品要的不是分开的两段。</div>
+        </div>
+      </div>
+      <div class="xhs-card good">
+        <div class="label-tag">2026 Junior AI Engineer</div>
+        <div class="content">
+          <div class="techs">全栈 + RAG<br>+ OpenAI API</div>
+          <div class="desc">独立交付能上线的 AI 产品 — 才是 Junior AI Engineer。</div>
+        </div>
+      </div>
+    </div>
+    <div class="course-chip"><div class="name">AI Engineer 全栈项目班</div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1b" data-slug="p1b-cover-resonance">⬇ 下载 PNG</button></div>
+
+  <!-- P1C 转岗 -->
+  <div class="poster-frame" id="p1c"><div class="label">P1C 封面 <em>· 转岗版</em></div><div class="poster-scaler"><div class="poster p1c" id="poster-1c"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="hook">
+      从零到能交付<br>
+      <span>AI 产品</span>
+    </div>
+    <div class="transition-box">
+      <div class="stage-card from">
+        <div class="badge">ZERO</div>
+        <div class="text">没背景<br>没作品</div>
+      </div>
+      <div class="big-arrow">↓</div>
+      <div class="stage-card to">
+        <div class="badge">HIRED</div>
+        <div class="text">3 个项目<br>AI 实习经验</div>
+      </div>
+    </div>
+    <div class="course-chip"><div class="name">全栈项目班 · 第 30 期</div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1c" data-slug="p1c-cover-transition">⬇ 下载 PNG</button></div>
+
+  <!-- P1D 技能栈 -->
+  <div class="poster-frame" id="p1d"><div class="label">P1D 封面 <em>· 技能栈版</em></div><div class="poster-scaler"><div class="poster p1d" id="poster-1d"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="hook">
+      2026 Junior AI Engineer<br>
+      要会<br>
+      <em>这 6 块技能</em>
+    </div>
+    <div class="sticker-grid">
+      <div class="sticker">React</div>
+      <div class="sticker">Node.js</div>
+      <div class="sticker">RAG</div>
+      <div class="sticker">OpenAI API</div>
+      <div class="sticker">Agile</div>
+      <div class="sticker">AI 产品</div>
+    </div>
+    <div class="bottom-text">
+      16 周把这 6 块技能<br>一起装到你身上。
+    </div>
+    <div class="course-chip"><div class="name">全栈项目班 · 第 30 期</div></div>
+  </div></div></div><button class="dl-btn" data-target="poster-1d" data-slug="p1d-cover-skills">⬇ 下载 PNG</button></div>
+
+  <!-- P2 痛点 -->
+  <div class="poster-frame" id="p2"><div class="label">P2 痛点 <em>· 做 Demo vs 能上线</em></div><div class="poster-scaler"><div class="poster p2" id="poster-2"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>JUNIOR AI GAP</div>
+    <div class="eyebrow">
+      <span class="line"></span>
+      <span class="txt">demo vs production</span>
+      <span class="line"></span>
+    </div>
+    <h2>同样写 Code<br>差距在<span class="hl">能否交付</span></h2>
+    <p class="lead">简历上写"做过 AI 项目"的人很多 — 面试让你现场跑起来能通过的人很少。Junior AI Engineer 拼的是能不能交付，不是堆工具名。</p>
+
+    <div class="split">
+      <div class="col bad">
+        <div class="col-head">
+          <div>
+            <div class="kicker">demo level</div>
+            <h3>只能跑<br>Demo</h3>
+            <div class="col-sub">Notebook 里能跑 — 上真实业务就崩。</div>
+          </div>
+          <div class="badge">01</div>
+        </div>
+        <ul>
+          <li>只做前端 或 只写后端</li>
+          <li>RAG 照 tutorial 抄不会改</li>
+          <li>没跑过团队协作流程</li>
+          <li>简历项目一问就露馅</li>
+        </ul>
+      </div>
+
+      <div class="divider"><div class="bar"></div><div class="vs">VS</div><div class="bar"></div></div>
+
+      <div class="col good">
+        <div class="col-head">
+          <div>
+            <div class="kicker">production ready</div>
+            <h3>能独立<br>交付</h3>
+            <div class="col-sub">从前端到 AI 集成 + Agile 流程 全打通。</div>
+          </div>
+          <div class="badge">02</div>
+        </div>
+        <ul>
+          <li>全栈独立搭 AI 产品</li>
+          <li>RAG + OpenAI 融入业务</li>
+          <li>跟 BA / DevOps / UI 协作过</li>
+          <li>3 个真项目能讲能跑</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-note">16 周把"能交付"这件事装到你身上 — 不再靠简历吹</div>
+  </div></div></div><button class="dl-btn" data-target="poster-2" data-slug="p2-pain">⬇ 下载 PNG</button></div>
+
+  <!-- P3 对话 -->
+  <div class="poster-frame" id="p3"><div class="label">P3 对话 <em>· 求职群实录</em></div><div class="poster-scaler"><div class="poster p3" id="poster-3"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>JUNIOR GROUP CHAT</div>
+    <h2>求职群<br><span class="hl">都在聊这事</span></h2>
+    <div class="chat">
+      <div class="chat-header"><div class="dots"><span></span><span></span><span></span></div><span>#junior-ai-eng</span></div>
+      <div class="chat-body">
+        <div class="bubble left"><div class="name">@小雨 · 留学生</div>我会 React 会 Python<br>怎么面试还是没 Offer？</div>
+        <div class="bubble right"><div class="name">@阿哲 · 前辈</div>会分开的技能 ≠ 会做 AI 产品<br>面试考的是端到端交付</div>
+        <div class="bubble left"><div class="name">@小雨 · 留学生</div>那怎么练这个… 自己做项目吗？</div>
+        <div class="bubble right"><div class="name">@阿哲 · 前辈</div>跟团队做才有说服力<br>不然简历都长一样</div>
+      </div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-3" data-slug="p3-chat">⬇ 下载 PNG</button></div>
+
+  <!-- P4 4 大能力 -->
+  <div class="poster-frame" id="p4"><div class="label">P4 能力 <em>· 毕业 4 件事</em></div><div class="poster-scaler"><div class="poster p4" id="poster-4"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>学完你会</div>
+    <h2>毕业那天 你会<em>真的会</em><br>这四件事</h2>
+    <div class="grid4">
+      <div class="cell"><div class="num">01</div><h4>全栈工程基础</h4><p>React / Node.js / 多方向后端 打底，不是只会一端</p></div>
+      <div class="cell"><div class="num">02</div><h4>AI 产品集成</h4><p>RAG + OpenAI API 融入业务场景，不只是跑 demo</p></div>
+      <div class="cell"><div class="num">03</div><h4>Agile 团队协作</h4><p>跟 BA / DevOps / UI 协同，真实开发节奏</p></div>
+      <div class="cell"><div class="num">04</div><h4>3 个实战项目</h4><p>1 个 AI 商业项目 + 2 个全栈项目 能写进简历</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-4" data-slug="p4-outcomes">⬇ 下载 PNG</button></div>
+
+  <!-- P5 5 阶段 -->
+  <div class="poster-frame" id="p5"><div class="label">P5 流程 <em>· 5 阶段开发生命周期</em></div><div class="poster-scaler"><div class="poster p5" id="poster-5"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>FULLSTACK + DEVOPS FLOW</div>
+    <h2>全栈 + DevOps<br><em>5 阶段</em>全流程</h2>
+    <div class="phases">
+      <div class="ph"><div class="badge" style="background:#3b82f6">1</div><div><h5>Plan · 计划</h5><p>需求分析 / 任务拆解 / Sprint 规划</p></div></div>
+      <div class="ph"><div class="badge" style="background:#6366f1">2</div><div><h5>Develop · 开发</h5><p>前端 React + 后端 Node.js + AI 集成</p></div></div>
+      <div class="ph"><div class="badge" style="background:#8b5cf6">3</div><div><h5>Build · 构建</h5><p>Docker / CI / 构建流水线</p></div></div>
+      <div class="ph"><div class="badge" style="background:#ec4899">4</div><div><h5>Test · 测试</h5><p>单元测试 / 集成测试 / E2E</p></div></div>
+      <div class="ph"><div class="badge" style="background:#f97316">5</div><div><h5>Release · 发布</h5><p>部署 / 监控 / 回滚 / 迭代</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-5" data-slug="p5-phases">⬇ 下载 PNG</button></div>
+
+  <!-- P6 技术栈 深色 -->
+  <div class="poster-frame" id="p6"><div class="label">P6 技术 <em>· 15+ 全栈 + AI 技术</em></div><div class="poster-scaler"><div class="poster p6" id="poster-6"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>FULLSTACK + AI STACK</div>
+    <h2>16 周你会真实用到<br>这些<em>技术</em></h2>
+    <div class="tool-grid">
+      <div class="tool hot"><div class="name">React</div><div class="cat">前端</div></div>
+      <div class="tool"><div class="name">TypeScript</div><div class="cat">前端</div></div>
+      <div class="tool"><div class="name">Next.js</div><div class="cat">前端</div></div>
+      <div class="tool hot"><div class="name">Node.js</div><div class="cat">后端</div></div>
+      <div class="tool"><div class="name">.NET</div><div class="cat">后端</div></div>
+      <div class="tool"><div class="name">Express</div><div class="cat">后端</div></div>
+      <div class="tool"><div class="name">PostgreSQL</div><div class="cat">数据库</div></div>
+      <div class="tool"><div class="name">MongoDB</div><div class="cat">数据库</div></div>
+      <div class="tool"><div class="name">Redis</div><div class="cat">缓存</div></div>
+      <div class="tool hot"><div class="name">OpenAI API</div><div class="cat">AI</div></div>
+      <div class="tool hot"><div class="name">RAG</div><div class="cat">AI</div></div>
+      <div class="tool"><div class="name">Claude API</div><div class="cat">AI</div></div>
+      <div class="tool"><div class="name">Docker</div><div class="cat">DevOps</div></div>
+      <div class="tool"><div class="name">Git / GitHub</div><div class="cat">协作</div></div>
+      <div class="tool"><div class="name">Jira / Agile</div><div class="cat">流程</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-6" data-slug="p6-stack">⬇ 下载 PNG</button></div>
+
+  <!-- P7 反馈 -->
+  <div class="poster-frame" id="p7"><div class="label">P7 反馈 <em>· 过往学员案例</em></div><div class="poster-scaler"><div class="poster p7" id="poster-7"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>过往学员反馈</div>
+    <h2>入学时零作品<br>毕业已经<span class="hl">拿 Offer</span></h2>
+    <div class="quotes">
+      <div class="q"><p class="txt">入学时刚毕业 3 个月只做过大学项目 — 毕业时手上有 3 个能跑的全栈项目</p><div class="who">— 28 期学员 · 留学生 · 悉尼</div></div>
+      <div class="q"><p class="txt">团队协作那段经历直接写进简历，面试时 BA / DevOps 的角色都能聊一圈</p><div class="who">— 27 期学员 · 转码 · 毕业 2 个月</div></div>
+      <div class="q"><p class="txt">实习时接入 RAG 给公司知识库做搜索 — 这一块简历没人能伪造，面试官直接加分</p><div class="who">— 26 期学员 · 墨尔本 · 实习转正</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-7" data-slug="p7-feedback">⬇ 下载 PNG</button></div>
+
+  <!-- P8 配置 -->
+  <div class="poster-frame" id="p8"><div class="label">P8 配置 <em>· 课程基本盘</em></div><div class="poster-scaler"><div class="poster p8" id="poster-8"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>你买到的是什么</div>
+    <h2>不只是 16 周课<br>是<span class="hl">Junior AI Engineer 全套</span></h2>
+    <div class="stats">
+      <div class="stat"><div class="num">485<em>节</em></div><div class="lbl">课程 · 含 26/27/28 期精华</div></div>
+      <div class="stat"><div class="num">20<em>次</em></div><div class="lbl">直播课 · 行业大咖授课</div></div>
+      <div class="stat"><div class="num">3<em>个</em></div><div class="lbl">实战项目 · 含 AI 商业项目</div></div>
+      <div class="stat"><div class="num">853<em>h</em></div><div class="lbl">累计学习时长</div></div>
+    </div>
+    <div class="format-list"><h4>课程之外还包含</h4><ul>
+      <li>FLAG / 澳洲大厂导师</li><li>Agile 真实团队协作</li>
+      <li>AI 实习机会</li><li>12 个月全程辅导</li>
+      <li>校友内推网络</li><li>多后端方向可选</li></ul></div>
+  </div></div></div><button class="dl-btn" data-target="poster-8" data-slug="p8-config">⬇ 下载 PNG</button></div>
+
+  <!-- P9 CTA -->
+  <div class="poster-frame" id="p9"><div class="label">P9 引导 <em>· 软性收尾</em></div><div class="poster-scaler"><div class="poster p9" id="poster-9"><div class="p-inner">
+    <div class="p-dots"></div><div class="p-dots bl"></div>
+    <div class="p-tag" style="margin:0 auto"><span class="dot"></span>READY?</div>
+    <div class="big-q">想做 AI 产品 但还没入门<br>或是转码零基础——</div>
+    <div class="giant">不妨<br>来看看 <em>?</em></div>
+    <div class="sub-hook">第 30 期筹备中，可以先看 26/27/28 期<br>485 节老内容做预习</div>
+    <div class="arrow"><span class="arr">→</span><span>搜「匠人 AI · 全栈项目班」</span></div>
+    <div class="note">JIANGREN.COM.AU &nbsp;·&nbsp; 2026 Q2+</div>
+  </div></div></div><button class="dl-btn" data-target="poster-9" data-slug="p9-cta">⬇ 下载 PNG</button></div>
+
+  <!-- P10 课程 explainer -->
+  <div class="poster-frame" id="p10"><div class="label">P10 课程 <em>· 这是什么课</em></div><div class="poster-scaler"><div class="poster p10" id="poster-10"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>Junior AI Engineer 入门首选</div>
+    <h2>不是一般 Bootcamp<br>是<em>能直接用的全栈 + AI</em></h2>
+    <div class="one-liner">
+      <span class="yellow">AI Engineer 全栈项目班</span> = 不是只教工具，<br>
+      是把你带到<span class="yellow">能独立交付 AI 产品</span>的能力线。
+    </div>
+    <div class="day-title">A WEEK IN THE COURSE</div>
+    <div class="tasks">
+      <div class="task"><div class="num">01</div><div class="text">周一：视频自学 + <em>React 组件 Lab</em></div></div>
+      <div class="task"><div class="num">02</div><div class="text">周三：直播 <em>BA / UI / DevOps 协作 Sprint 会议</em></div></div>
+      <div class="task"><div class="num">03</div><div class="text">周末：动手写 <em>AI 产品项目代码</em></div></div>
+      <div class="task"><div class="num">04</div><div class="text">下周：Code Review + <em>导师一对一反馈</em></div></div>
+    </div>
+    <div class="meta-row">
+      <div class="m"><div class="lbl">周期</div><div class="val">16 周</div></div>
+      <div class="m"><div class="lbl">课时</div><div class="val">485 节 · 853h</div></div>
+      <div class="m"><div class="lbl">目标</div><div class="val">Junior AI Engineer</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-10" data-slug="p10-course-explainer">⬇ 下载 PNG</button></div>
+
+  <!-- P11 矩阵 -->
+  <div class="poster-frame" id="p11"><div class="label">P11 矩阵 <em>· 报课前 vs 毕业后</em></div><div class="poster-scaler"><div class="poster p11" id="poster-11"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>能力升级</div>
+    <h2>报课前 vs 毕业后<br>具体<span class="hl">多会什么</span></h2>
+    <div class="matrix">
+      <div class="row"><div class="dim">前端</div><div class="v1">会 HTML/CSS/JS 基础</div><div class="v2">React + TS + Next.js 生产级</div></div>
+      <div class="row"><div class="dim">后端</div><div class="v1">跟过 tutorial 做 CRUD</div><div class="v2">Node.js / .NET 独立搭服务</div></div>
+      <div class="row"><div class="dim">AI</div><div class="v1">调过 ChatGPT API</div><div class="v2">RAG + OpenAI 融入业务</div></div>
+      <div class="row"><div class="dim">协作</div><div class="v1">独自写代码</div><div class="v2">Agile + Sprint + Code Review</div></div>
+      <div class="row"><div class="dim">项目</div><div class="v1">简历空白 / 课程作业</div><div class="v2">3 个能跑能讲的项目</div></div>
+      <div class="row"><div class="dim">履历</div><div class="v1">零工作经验</div><div class="v2">AI 实习 + 团队协作履历</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-11" data-slug="p11-matrix">⬇ 下载 PNG</button></div>
+
+  <!-- P12 3 大项目 -->
+  <div class="poster-frame" id="p12"><div class="label">P12 项目 <em>· 3 个能上线的项目</em></div><div class="poster-scaler"><div class="poster p12" id="poster-12"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>3 CAPSTONE PROJECTS</div>
+    <h2>不是教程抄写<br>是 <em>3 个能上线</em>的项目</h2>
+    <div class="proj-list">
+      <div class="proj">
+        <div class="ic">🌐</div>
+        <div>
+          <h4>项目 1 · 全栈 Web 应用</h4>
+          <p>React 前端 + Node.js 后端 + 数据库 — 全栈基础落地</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span></div>
+        </div>
+      </div>
+      <div class="proj">
+        <div class="ic">🤖</div>
+        <div>
+          <h4>项目 2 · AI 商业项目</h4>
+          <p>集成 RAG + OpenAI API 的真实业务应用 — 简历最有说服力的一项</p>
+          <div class="tags"><span class="tag">RAG</span><span class="tag">OpenAI API</span><span class="tag">向量检索</span></div>
+        </div>
+      </div>
+      <div class="proj">
+        <div class="ic">🏢</div>
+        <div>
+          <h4>项目 3 · 团队协作项目</h4>
+          <p>融入 BA / DevOps / UI 团队开发真实商业项目 — 不是个人作品</p>
+          <div class="tags"><span class="tag">Agile</span><span class="tag">Sprint</span><span class="tag">Code Review</span></div>
+        </div>
+      </div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-12" data-slug="p12-projects">⬇ 下载 PNG</button></div>
+
+  <!-- P13 DevOps 5 阶 -->
+  <div class="poster-frame" id="p13"><div class="label">P13 DevOps <em>· 全流程 5 阶</em></div><div class="poster-scaler"><div class="poster p13" id="poster-13"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>PLAN → DEV → BUILD → TEST → RELEASE</div>
+    <h2>不只是写代码<br>是<em>全流程</em>交付</h2>
+    <div class="layers">
+      <div class="layer"><div class="badge" style="background:#3b82f6">1</div><div><h4>Plan · 计划阶段</h4><p>需求分析 · Sprint 拆解 · Story Point</p></div></div>
+      <div class="layer"><div class="badge" style="background:#6366f1">2</div><div><h4>Develop · 开发阶段</h4><p>前端 React + 后端多方向 + AI 集成</p></div></div>
+      <div class="layer"><div class="badge" style="background:#8b5cf6">3</div><div><h4>Build · 构建阶段</h4><p>Docker · CI · 构建流水线</p></div></div>
+      <div class="layer"><div class="badge" style="background:#ec4899">4</div><div><h4>Test · 测试阶段</h4><p>单元测试 · 集成测试 · E2E · AI Eval</p></div></div>
+      <div class="layer"><div class="badge" style="background:#f97316">5</div><div><h4>Release · 发布阶段</h4><p>部署 · 监控 · 回滚 · 迭代优化</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-13" data-slug="p13-devops">⬇ 下载 PNG</button></div>
+
+  <!-- P14 受众 -->
+  <div class="poster-frame" id="p14"><div class="label">P14 受众 <em>· 适合谁学</em></div><div class="poster-scaler"><div class="poster p14" id="poster-14"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>适合谁</div>
+    <h2>这 4 类人学完<em>回报最高</em></h2>
+    <div class="audience">
+      <div class="aud"><div class="emoji">🎓</div><div><h4>CS 留学生 / 应届</h4><p>有基础但没澳洲工作经验 / 简历空白 / 想冲 Junior AI Eng</p></div></div>
+      <div class="aud"><div class="emoji">🔄</div><div><h4>转码零基础</h4><p>其他行业想进 IT / 想抓 AI 风口 / 需要系统打底</p></div></div>
+      <div class="aud"><div class="emoji">💻</div><div><h4>只会一端的开发</h4><p>只会前端 / 只会后端 — 补另一端 + AI 集成变 Junior AI</p></div></div>
+      <div class="aud"><div class="emoji">🌏</div><div><h4>海外 IT 移民</h4><p>技术底子有但不熟 AI / 缺澳洲本地项目 / 需要协作履历</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-14" data-slug="p14-audience">⬇ 下载 PNG</button></div>
+
+  <!-- P15 多方向 -->
+  <div class="poster-frame" id="p15"><div class="label">P15 方向 <em>· 4 个后端方向可选</em></div><div class="poster-scaler"><div class="poster p15" id="poster-15"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>MULTI-TRACK</div>
+    <h2>前端固定<br>后端<em>4 个方向</em>可选</h2>
+    <div class="dir-grid">
+      <div class="dir"><div class="ic">🔷</div><h4>Node.js 方向</h4><p>前后端同栈 JS · 最适合零基础 · AI 生态最好</p><span class="tag">最热</span></div>
+      <div class="dir"><div class="ic">🟪</div><h4>.NET 方向</h4><p>企业级后端 · 澳洲大企业主流 · C# + ASP.NET</p><span class="tag">企业</span></div>
+      <div class="dir"><div class="ic">🐍</div><h4>Python 方向</h4><p>AI 原生栈 · FastAPI + LangChain · ML 友好</p><span class="tag">AI 原生</span></div>
+      <div class="dir"><div class="ic">☕</div><h4>Java 方向</h4><p>Spring Boot · 金融 / 银行 / 大型系统</p><span class="tag">金融</span></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-15" data-slug="p15-tracks">⬇ 下载 PNG</button></div>
+
+  <!-- P16 时间线 -->
+  <div class="poster-frame" id="p16"><div class="label">P16 时间线 <em>· 16 周路径</em></div><div class="poster-scaler"><div class="poster p16" id="poster-16"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>16 周完整路径</div>
+    <h2>从零到<em>Junior AI Eng</em><br>16 周完整路径</h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="week">WEEK 1-3</div><h4>前端基础 + React</h4><p>HTML / CSS / JS / TypeScript / React + Next.js</p></div>
+      <div class="tl-item"><div class="week">WEEK 4-7</div><h4>后端方向 + 数据库</h4><p>Node.js / .NET / Python 任选 + PostgreSQL + Redis</p></div>
+      <div class="tl-item"><div class="week">WEEK 8-10</div><h4>AI 集成 + RAG</h4><p>OpenAI API + RAG + 向量库 + AI 产品集成</p></div>
+      <div class="tl-item"><div class="week">WEEK 11-13</div><h4>团队协作项目</h4><p>Agile + BA / DevOps / UI 协作 + Code Review</p></div>
+      <div class="tl-item"><div class="week">WEEK 14-15</div><h4>AI 商业项目 + 实习</h4><p>完整 AI 产品 + 进企业真实业务实习</p></div>
+      <div class="tl-item"><div class="week">WEEK 16</div><h4>毕业 + 求职辅导</h4><p>简历 + 面试 + 内推 + 12 个月持续辅导启动</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-16" data-slug="p16-timeline">⬇ 下载 PNG</button></div>
+
+  <!-- P17 毕业交付 -->
+  <div class="poster-frame" id="p17"><div class="label">P17 交付 <em>· 带走 7 件东西</em></div><div class="poster-scaler"><div class="poster p17" id="poster-17"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>毕业交付</div>
+    <h2>不是听完就完了<br>带走 <em>7 件真东西</em></h2>
+    <div class="proj-list">
+      <div class="proj"><div class="num">01</div><div><h4>全栈项目 1 · 部署上线</h4><p>React + Node.js + DB 真实可访问</p></div></div>
+      <div class="proj"><div class="num">02</div><div><h4>AI 商业项目 · 含 RAG</h4><p>OpenAI + 向量库 + 业务集成</p></div></div>
+      <div class="proj"><div class="num">03</div><div><h4>团队项目 · Code Review 记录</h4><p>Agile Sprint + PR + 协作证据</p></div></div>
+      <div class="proj"><div class="num">04</div><div><h4>AI 实习履历</h4><p>企业真实项目经验 + 导师推荐</p></div></div>
+      <div class="proj"><div class="num">05</div><div><h4>简历 + LinkedIn 包</h4><p>按 Junior AI Eng 岗位反推优化</p></div></div>
+      <div class="proj"><div class="num">06</div><div><h4>GitHub 作品集</h4><p>3 个项目完整代码 + README</p></div></div>
+      <div class="proj"><div class="num">07</div><div><h4>结业证书 + 12 个月辅导</h4><p>持续求职 / 内推 / 职业答疑</p></div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-17" data-slug="p17-delivery">⬇ 下载 PNG</button></div>
+
+  <!-- P18 团队协作 -->
+  <div class="poster-frame" id="p18"><div class="label">P18 协作 <em>· 跟 4 种角色协同</em></div><div class="poster-scaler"><div class="poster p18" id="poster-18"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>REAL TEAM COLLAB</div>
+    <h2>不是独自写代码<br>是<em>真团队</em>协作</h2>
+    <div class="team-grid">
+      <div class="role"><div class="ic">📋</div><h4>BA · 业务分析师</h4><p>跟 BA 一起做需求分析 + User Story</p></div>
+      <div class="role"><div class="ic">🎨</div><h4>UI Designer</h4><p>基于设计稿实现 + 还原度协作</p></div>
+      <div class="role"><div class="ic">🛠️</div><h4>DevOps</h4><p>部署流水线 + 运维协同</p></div>
+      <div class="role"><div class="ic">🧪</div><h4>QA Tester</h4><p>真实 Bug / PR / Review 流程</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-18" data-slug="p18-team">⬇ 下载 PNG</button></div>
+
+  <!-- P19 AI 实习 -->
+  <div class="poster-frame" id="p19"><div class="label">P19 实习 <em>· AI 实习 + 求职辅导</em></div><div class="poster-scaler"><div class="poster p19" id="poster-19"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>AI 实习 + 12 个月辅导</div>
+    <h2>简历最有说服力的<br>是<em>企业真实经验</em></h2>
+    <div class="flow">
+      <div class="step"><div class="ic">🏢</div><h4>AI 实习机会</h4><p>用 RAG / LLM 解决企业真实业务问题</p></div>
+      <div class="step"><div class="ic">📝</div><h4>简历 + LinkedIn 优化</h4><p>按 Junior AI Eng 岗位反推打磨</p></div>
+      <div class="step"><div class="ic">🎤</div><h4>模拟面试 + Code Interview</h4><p>导师一对一反馈 + 澳洲市场题库</p></div>
+      <div class="step"><div class="ic">🤝</div><h4>校友内推网络</h4><p>毕业生社群 + FLAG / 澳洲大厂内推</p></div>
+    </div>
+    <div class="cert">
+      <div class="big">🎓 12 个月全程辅导 + 结业证书</div>
+      <div class="sub">不是毕业就结束 — 陪你到拿 Offer</div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-19" data-slug="p19-internship">⬇ 下载 PNG</button></div>
+
+  <!-- P20 26/27/28 → 30 升级 -->
+  <div class="poster-frame" id="p20"><div class="label">P20 升级 <em>· 第 30 期新增</em></div><div class="poster-scaler"><div class="poster p20" id="poster-20"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>26/27/28 → 30 升级</div>
+    <h2>第 30 期<br><em>把 AI 放到 C 位</em></h2>
+    <div class="upgrade-list">
+      <div class="up-row"><div class="dim">核心定位</div><div class="old">26-28 期：全栈 Web 开发</div><div class="new">第 30 期：Junior AI Engineer</div></div>
+      <div class="up-row"><div class="dim">AI 模块</div><div class="old">AI 是选修附加</div><div class="new">RAG + OpenAI 成核心技术栈</div></div>
+      <div class="up-row"><div class="dim">项目数</div><div class="old">2-3 个全栈项目</div><div class="new">+ 1 个 AI 商业项目</div></div>
+      <div class="up-row"><div class="dim">后端方向</div><div class="old">单方向</div><div class="new">Node.js / .NET / Python / Java 可选</div></div>
+      <div class="up-row"><div class="dim">实习方向</div><div class="old">通用开发实习</div><div class="new">AI 方向实习（RAG / LLM 业务应用）</div></div>
+      <div class="up-row"><div class="dim">求职辅导</div><div class="old">6 个月</div><div class="new">12 个月全程 AI 岗位辅导</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-20" data-slug="p20-upgrade">⬇ 下载 PNG</button></div>
+
+  <!-- P21 FAQ -->
+  <div class="poster-frame" id="p21"><div class="label">P21 FAQ <em>· 常见问题</em></div><div class="poster-scaler"><div class="poster p21" id="poster-21"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>报名前问</div>
+    <h2>报名前<br><span class="hl">最常被问的 5 个问题</span></h2>
+    <div class="faq-list">
+      <div class="faq"><div class="q">零基础能学吗？</div><div class="a">能 — 第 1-3 周就是从 HTML / CSS 开始打底。但建议先熟悉基本编程概念。</div></div>
+      <div class="faq"><div class="q">没有澳洲身份可以学吗？</div><div class="a">可以 — 课程本身没身份要求。但 AI 实习部分需要有合法工作权限（PR / 学签工签都行）。</div></div>
+      <div class="faq"><div class="q">选哪个后端方向？</div><div class="a">零基础选 Node.js（同栈 JS）/ 想进大公司选 .NET / 主攻 AI 选 Python。课上有详细选型咨询。</div></div>
+      <div class="faq"><div class="q">和网上课程区别？</div><div class="a">网上课 = 教程跟做；这里 = 真团队协作（BA/DevOps/UI）+ AI 实习 + 12 个月辅导，不是录播合集。</div></div>
+      <div class="faq"><div class="q">第 30 期什么时候开？</div><div class="a">2026 Q2+，正式大纲筹备中。可以先预习 26/27/28 期 485 节老内容。</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-21" data-slug="p21-faq">⬇ 下载 PNG</button></div>
+
+  <!-- P22 Agile 方法论 -->
+  <div class="poster-frame" id="p22"><div class="label">P22 Agile <em>· 5 阶敏捷流程</em></div><div class="poster-scaler"><div class="poster p22" id="poster-22"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>AGILE SPRINT</div>
+    <h2>Agile 敏捷<br>不只是<em>听过</em>要<em>跑过</em></h2>
+    <div class="flow">
+      <div class="stage"><div class="stg" style="color:#3b82f6">STAGE 1</div><h4>Sprint Planning</h4><p>跟 BA 一起定 Sprint 目标 + User Story 拆解</p></div>
+      <div class="stage"><div class="stg" style="color:#6366f1">STAGE 2</div><h4>Daily Standup</h4><p>每天 15 分钟进度同步 / 阻塞暴露</p></div>
+      <div class="stage"><div class="stg" style="color:#8b5cf6">STAGE 3</div><h4>Development</h4><p>写代码 + PR + Code Review 真实流程</p></div>
+      <div class="stage"><div class="stg" style="color:#ec4899">STAGE 4</div><h4>Sprint Review</h4><p>向团队 demo 成果 + 收反馈</p></div>
+      <div class="stage"><div class="stg" style="color:#f97316">STAGE 5</div><h4>Retrospective</h4><p>复盘本 Sprint · 下 Sprint 改进</p></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-22" data-slug="p22-agile">⬇ 下载 PNG</button></div>
+
+  <!-- P23 独家 -->
+  <div class="poster-frame" id="p23"><div class="label">P23 独家 <em>· FLAG 导师 + AI 实习 + 12 个月</em></div><div class="poster-scaler"><div class="poster p23" id="poster-23"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>独家 · 同类课没有</div>
+    <h2>这 3 块<br><em>别的 Bootcamp 没有</em></h2>
+    <div class="exclusive-badge">🔥 FLAG 导师 · AI 实习 · 12 个月辅导</div>
+    <div class="mod-list">
+      <div class="mod">
+        <div class="tag">EXCLUSIVE 01</div>
+        <h4>FLAG / 澳洲大厂导师</h4>
+        <p>不是讲师 — 是在 Facebook / Google / Atlassian 在职工程师。讲真实工程经验 + 大厂面试要求。</p>
+      </div>
+      <div class="mod">
+        <div class="tag">EXCLUSIVE 02</div>
+        <h4>真实 AI 实习</h4>
+        <p>不是模拟项目 — 进合作企业做真实业务。用 RAG / LLM 给企业知识库 / 客服 / 数据分析做 AI 升级。</p>
+      </div>
+      <div class="mod">
+        <div class="tag">EXCLUSIVE 03</div>
+        <h4>12 个月全程辅导</h4>
+        <p>毕业不是结束 — 12 个月持续求职答疑 / 内推 / 简历重审 / 面试复盘。直到拿 Offer。</p>
+      </div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-23" data-slug="p23-exclusive">⬇ 下载 PNG</button></div>
+
+  <!-- P24 JD 覆盖 -->
+  <div class="poster-frame" id="p24"><div class="label">P24 JD <em>· 澳洲 Junior AI JD 对照</em></div><div class="poster-scaler"><div class="poster p24" id="poster-24"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>JD 对照 · 澳洲市场</div>
+    <h2>对照澳洲 <em>Junior AI JD</em><br>课程覆盖率 94%</h2>
+    <div class="top-stats">
+      <div class="s"><div class="n">15</div><div class="l">JD 样本</div></div>
+      <div class="s"><div class="n">6</div><div class="l">核心技能</div></div>
+      <div class="s"><div class="n">94%</div><div class="l">平均覆盖</div></div>
+    </div>
+    <div class="skill-bars">
+      <div class="sk"><div class="top-row"><h4>React + TypeScript</h4><div class="freq">15/15 JD</div></div><div class="bar"><div class="fill" style="width:98%;background:var(--brand-blue)"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>Node.js / 后端任一</h4><div class="freq">14/15 JD</div></div><div class="bar"><div class="fill" style="width:95%;background:var(--brand-purple)"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>RAG + OpenAI API</h4><div class="freq">12/15 JD</div></div><div class="bar"><div class="fill" style="width:92%;background:var(--brand-teal)"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>数据库 + API 设计</h4><div class="freq">15/15 JD</div></div><div class="bar"><div class="fill" style="width:96%;background:var(--brand-orange)"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>Git + Agile 协作</h4><div class="freq">15/15 JD</div></div><div class="bar"><div class="fill" style="width:95%;background:var(--brand-green)"></div></div></div>
+      <div class="sk"><div class="top-row"><h4>项目经验</h4><div class="freq">13/15 JD</div></div><div class="bar"><div class="fill" style="width:90%;background:var(--brand-red)"></div></div></div>
+    </div>
+    <div class="companies">
+      <span>Atlassian</span><span>Canva</span><span>CBA</span><span>Westpac</span><span>REA Group</span>
+      <span>MYOB</span><span>SEEK</span><span>Xero</span><span>Domain</span><span>Carsales</span>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-24" data-slug="p24-jd">⬇ 下载 PNG</button></div>
+
+  <!-- P25 澳洲 Junior AI 薪资 -->
+  <div class="poster-frame" id="p25"><div class="label">P25 薪资 <em>· 澳洲 Junior AI Eng 起薪</em></div><div class="poster-scaler"><div class="poster p25" id="poster-25"><div class="p-inner">
+    <div class="p-dots"></div>
+    <div class="p-tag"><span class="dot"></span>SALARY · AU 2026</div>
+    <h2>澳洲 Junior AI Engineer<br><em>起薪多少</em></h2>
+    <div class="salary-tiers">
+      <div class="tier"><div class="range">$75K-$95K</div><div class="level">Grad · 0-1 年</div></div>
+      <div class="tier" style="border-color:var(--brand-yellow);box-shadow:0 0 20px rgba(255,206,68,0.2)"><div class="range">$95K-$130K</div><div class="level">Junior · 1-3 年</div></div>
+      <div class="tier"><div class="range">$130K-$180K</div><div class="level">Mid · 3-5 年</div></div>
+    </div>
+    <div class="co-grid">
+      <div class="co"><div class="name">Atlassian</div><div class="role">Junior SWE</div><div class="sal">$95-130K</div></div>
+      <div class="co"><div class="name">Canva</div><div class="role">Junior Eng</div><div class="sal">$90-125K</div></div>
+      <div class="co"><div class="name">CBA / Westpac</div><div class="role">Grad Eng</div><div class="sal">$80-110K</div></div>
+      <div class="co"><div class="name">REA Group</div><div class="role">Junior Dev</div><div class="sal">$85-120K</div></div>
+      <div class="co"><div class="name">MYOB</div><div class="role">Junior SWE</div><div class="sal">$80-115K</div></div>
+      <div class="co"><div class="name">SEEK</div><div class="role">Junior Eng</div><div class="sal">$85-125K</div></div>
+      <div class="co"><div class="name">Xero</div><div class="role">Junior SWE</div><div class="sal">$90-125K</div></div>
+      <div class="co"><div class="name">Small AI 创业</div><div class="role">AI Eng</div><div class="sal">$80-110K+期权</div></div>
+      <div class="co"><div class="name">大厂 Grad 项目</div><div class="role">Grad</div><div class="sal">$75-95K</div></div>
+    </div>
+  </div></div></div><button class="dl-btn" data-target="poster-25" data-slug="p25-salary">⬇ 下载 PNG</button></div>
+
+</div>
+
+<script src="./xhs-copy.js"></script>
+<script>
+  document.querySelectorAll('.p-inner').forEach(inner => {
+    if (inner.querySelector('.p-course-bar')) return;
+    const bar = document.createElement('div');
+    bar.className = 'p-course-bar';
+    bar.textContent = 'AI ENGINEER 全栈项目班 · Junior AI Eng 入门首选 · 匠人 AI 第 30 期';
+    inner.appendChild(bar);
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+  document.querySelectorAll('.dl-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const poster = document.getElementById(btn.dataset.target);
+      if (!poster) return;
+      const exportNode = poster.closest('.poster-scaler') || poster;
+      const exportPadding = 24;
+      const nodeWidth = exportNode.offsetWidth || 435;
+      const nodeHeight = exportNode.offsetHeight || 581;
+      const exportScale = nodeWidth ? 1242 / nodeWidth : 2;
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = `position:fixed;left:-99999px;top:0;padding:${exportPadding}px;background:#eef0f4;display:inline-block;z-index:-1;`;
+      const clone = exportNode.cloneNode(true);
+      clone.style.margin = '0';
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
+      const oldLabel = btn.textContent;
+      btn.textContent = '生成中...';
+      btn.disabled = true;
+      try {
+        const canvas = await html2canvas(wrapper, {
+          backgroundColor: '#eef0f4', scale: exportScale, useCORS: true, allowTaint: true, logging: false,
+          width: nodeWidth + exportPadding * 2, height: nodeHeight + exportPadding * 2,
+          windowWidth: nodeWidth + exportPadding * 2, windowHeight: nodeHeight + exportPadding * 2
+        });
+        const link = document.createElement('a');
+        link.download = `xhs-fullstack-${btn.dataset.slug}-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (e) { console.error(e); alert('导出失败：' + e.message); }
+      finally { wrapper.remove(); btn.textContent = oldLabel; btn.disabled = false; }
+    });
+  });
+</script>
+</body>
+</html>

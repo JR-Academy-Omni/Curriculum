@@ -57,6 +57,12 @@ jobs:
           mkdir -p _site/ai-essentials-bootcamp
           cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/
 
+          # web-code-bootcamp-or-learn-to-code-1 (第 30 期 · Draft): static only
+          if [ -d web-code-bootcamp-or-learn-to-code-1/public ]; then
+            mkdir -p _site/web-code-bootcamp-or-learn-to-code-1
+            cp -r web-code-bootcamp-or-learn-to-code-1/public/* _site/web-code-bootcamp-or-learn-to-code-1/
+          fi
+
           # ai-engineer-rag (AI Engineer 入门): static HTML only, no React build needed
           if [ -d ai-engineer-rag/public ]; then
             mkdir -p _site/ai-engineer-rag

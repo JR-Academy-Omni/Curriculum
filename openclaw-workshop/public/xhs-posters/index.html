@@ -1,0 +1,3935 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw 4 小时工作坊 · 小红书素材集（聚光投流）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-red: #FF914D;           /* OpenClaw 主色（橙） */
+    --brand-orange: #FF914D;
+    --brand-claw: #E84142;          /* OpenClaw 辅色（claw red） */
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-blue: #6366f1;
+    --brand-violet: #8b5cf6;
+    --brand-green: #10b981;
+    --bg-light: #f8f9fb;
+    --bg-cream: #fff8ee;
+    --text-main: #10162f;
+    --text-gray: #64748b;
+    --border-color: #e2e8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #eef0f4;
+    color: var(--text-main);
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    padding: 40px 20px 120px 120px;
+    line-height: 1.5;
+  }
+
+  /* ========== 页面外壳 ========== */
+  .page-wrap { max-width: 1400px; margin: 0 auto; }
+
+  .page-head {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    padding: 32px 40px;
+    margin-bottom: 32px;
+    box-shadow: 8px 8px 0 var(--brand-dark);
+  }
+  .page-head h1 { font-size: 30px; font-weight: 900; letter-spacing: -0.5px; }
+  .page-head h1 span { color: var(--brand-red); }
+  .page-head p { font-size: 15px; color: var(--text-gray); margin-top: 10px; max-width: 900px; }
+  .spec-row { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .spec-pill { font-size: 12px; font-weight: 700; padding: 6px 14px; background: var(--bg-light); border: 1.5px solid var(--brand-dark); border-radius: 100px; }
+  .spec-pill.red { background: var(--brand-red); color: #fff; border-color: var(--brand-dark); }
+
+  .guide {
+    background: #fffbe7;
+    border: 1.5px dashed var(--brand-dark);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .guide b { color: var(--brand-red); }
+
+  /* ========== 左侧固定缩略导航 ========== */
+  .thumb-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #fff;
+    border: 1.5px solid var(--brand-dark);
+    border-radius: 14px;
+    padding: 12px;
+    position: fixed;
+    top: 20px;
+    left: 16px;
+    width: 112px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 4px 4px 0 rgba(16,22,47,0.1);
+  }
+  .thumb-nav::before {
+    content: 'NAV';
+    display: block;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--brand-red);
+    text-align: center;
+    padding: 2px 0 6px;
+    border-bottom: 1.5px dashed var(--border-color);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 2px;
+  }
+  .thumb {
+    aspect-ratio: 3/4;
+    background: var(--bg-light);
+    border: 1.5px solid var(--brand-dark);
+    border-radius: 8px;
+    font-weight: 900;
+    color: var(--brand-dark);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.15s;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px;
+  }
+  .thumb .num { font-size: 20px; line-height: 1; }
+  .thumb .lbl { font-size: 10px; color: var(--text-gray); font-weight: 700; }
+  .thumb:hover { background: var(--brand-yellow); transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  /* ========== 海报容器（每张严格 1242 × 1660） ========== */
+  .poster-frame {
+    display: grid;
+    grid-template-columns: auto 460px;
+    gap: 28px;
+    align-items: start;
+    justify-content: center;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .poster-main { display: flex; flex-direction: column; align-items: center; }
+
+  /* ========== 右侧小红书文案面板 ========== */
+  .copy-panel {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 16px;
+    padding: 18px 20px;
+    box-shadow: 6px 6px 0 rgba(16,22,47,0.08);
+    font-family: 'Noto Sans SC', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .copy-panel .cp-title {
+    font-size: 13px; font-weight: 900;
+    color: var(--brand-red);
+    letter-spacing: 1px;
+    font-family: 'JetBrains Mono', monospace;
+    padding-bottom: 10px;
+    border-bottom: 1.5px dashed var(--border-color);
+  }
+  .cp-section { display: flex; flex-direction: column; gap: 6px; }
+  .cp-section .cp-label {
+    font-size: 11px; font-weight: 900;
+    color: var(--text-gray);
+    letter-spacing: 1.5px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .cp-section .cp-box {
+    background: #fafbfc;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    word-break: break-word;
+    position: relative;
+  }
+  .cp-section .cp-btn {
+    align-self: flex-end;
+    background: var(--brand-dark); color: #fff;
+    border: none;
+    padding: 5px 14px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Noto Sans SC', sans-serif;
+    transition: all 0.15s;
+  }
+  .cp-section .cp-btn:hover { background: var(--brand-red); }
+  .cp-section .cp-btn.copied { background: var(--brand-green); }
+  .cp-section .cp-box.hashtags { color: var(--brand-blue); font-weight: 600; font-size: 12.5px; }
+  .cp-section .cp-box.wechat { background: #f0fdf4; border-color: #86efac; font-size: 13px; }
+  .cp-section .cp-box.community { background: #eff6ff; border-color: #93c5fd; font-size: 13px; }
+  /* Tab 切换 */
+  .cp-tabs { display: flex; gap: 4px; background: #f3f4f6; padding: 4px; border-radius: 10px; }
+  .cp-tab { flex: 1; background: transparent; border: none; padding: 8px 6px; font-size: 12px; font-weight: 700; color: var(--text-gray); cursor: pointer; border-radius: 8px; font-family: 'Noto Sans SC', sans-serif; transition: all 0.15s; letter-spacing: 0.3px; }
+  .cp-tab:hover { color: var(--text-main); }
+  .cp-tab.active { background: #fff; color: var(--tab-color, var(--brand-dark)); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 900; }
+  .cp-pane { display: flex; flex-direction: column; gap: 14px; }
+  .cp-pane.hidden { display: none; }
+  .cp-tip { background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; font-size: 11.5px; color: #92400e; line-height: 1.5; }
+  .poster-frame .label {
+    font-size: 13px; font-weight: 900;
+    color: var(--brand-dark);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .poster-frame .label::before {
+    content: ''; width: 28px; height: 4px;
+    background: var(--brand-red); border-radius: 2px;
+  }
+  .poster-frame .label em { font-style: normal; color: var(--text-gray); font-weight: 600; font-size: 12px; margin-left: 12px; }
+
+  /* 缩放显示但保持真实 1242×1660 以便 html2canvas 精确截图 */
+  .poster-scaler {
+    width: 435px;      /* 1242 * 0.35 */
+    height: 581px;     /* 1660 * 0.35 */
+    position: relative;
+    border: 2px solid var(--brand-dark);
+    border-radius: 12px;
+    box-shadow: 8px 8px 0 var(--brand-dark);
+    overflow: hidden;
+  }
+  .poster {
+    width: 1242px;
+    height: 1660px;
+    transform: scale(0.35);
+    transform-origin: top left;
+    position: absolute;
+    top: 0; left: 0;
+    background: var(--bg-light);
+    overflow: hidden;
+    font-family: 'Noto Sans SC', sans-serif;
+    box-sizing: border-box;
+    padding: 32px;
+  }
+
+  /* 下载按钮（海报外部，居中） */
+  .dl-btn {
+    display: block;
+    margin: 20px auto 0;
+    background: var(--brand-red); color: #fff;
+    border: 3px solid var(--brand-dark);
+    box-shadow: 6px 6px 0 var(--brand-dark);
+    padding: 14px 32px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px; font-weight: 900;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.15s;
+  }
+  .dl-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--brand-dark); }
+  .dl-btn:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  /* ========== 海报内部通用元素 ========== */
+  .p-inner {
+    position: relative; width: 100%; height: 100%;
+    padding: 80px 72px;
+    display: flex; flex-direction: column;
+    background: #fff;
+    border: 5px solid var(--brand-dark);
+    border-radius: 36px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .p-dots {
+    position: absolute; top: 0; right: 0;
+    width: 400px; height: 400px;
+    background-image: radial-gradient(#64748b 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  .p-dots.bl { top: auto; right: auto; bottom: 0; left: 0; }
+
+  .p-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 28px; font-weight: 800; letter-spacing: 1px;
+    color: var(--brand-red); text-transform: uppercase;
+    background: #fff1e7;
+    border: 1.5px solid var(--brand-red);
+    padding: 12px 24px; border-radius: 100px;
+    width: fit-content;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-red); }
+
+  .p-brand {
+    display: none; /* 小红书场景不需要品牌底栏 */
+  }
+
+  /* Yellow underline highlight */
+  .hl { position: relative; display: inline-block; z-index: 1; }
+  .hl::after {
+    content: ''; position: absolute;
+    bottom: 10px; left: -4px; right: -4px; height: 24px;
+    background: var(--brand-yellow);
+    z-index: -1;
+    opacity: 0.75;
+  }
+
+  /* ========== P1 封面 ========== */
+  .p1 .p-inner { justify-content: center; background: #fff; }
+  .p1 .hook {
+    font-size: 132px; font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -4px;
+    color: var(--brand-dark);
+    margin-top: 40px;
+  }
+  .p1 .sub {
+    font-size: 48px; font-weight: 500;
+    color: var(--text-gray);
+    margin-top: 40px;
+    line-height: 1.5;
+  }
+  .p1 .course-chip {
+    margin-top: 60px;
+    background: var(--brand-dark);
+    color: #fff;
+    padding: 24px 32px;
+    border-radius: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    width: fit-content;
+    box-shadow: 10px 10px 0 var(--brand-red);
+  }
+  .p1 .course-chip .name { font-size: 42px; font-weight: 900; letter-spacing: -0.5px; }
+  .p1 .course-chip .meta { font-size: 26px; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+
+  .p1 .corner-mark {
+    position: absolute; top: 70px; right: 70px;
+    background: var(--brand-yellow);
+    border: 2px solid var(--brand-dark);
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 24px; font-weight: 900;
+    transform: rotate(4deg);
+    box-shadow: 6px 6px 0 var(--brand-dark);
+  }
+
+  /* ========== P1B 封面变体：共鸣版 (Clean & Bold Redesign) ========== */
+  .p1b .p-inner {
+    justify-content: flex-start;
+    background: #fff;
+    color: var(--brand-dark);
+    padding: 70px 50px;
+  }
+  .p1b .p-tag {
+    background: #f1f5f9; color: #64748b;
+    border: none; font-size: 30px !important;
+    padding: 10px 25px !important;
+    font-weight: 800; border-radius: 12px;
+  }
+  .p1b .hook {
+    font-size: 135px; line-height: 1.05; letter-spacing: -5px;
+    margin-top: 40px; font-weight: 900;
+  }
+  .p1b .hook span.soft { color: #94a3b8; font-size: 0.65em; display: block; margin-bottom: 5px; }
+  .p1b .hook span.hl {
+    color: var(--brand-red);
+    display: inline-block;
+  }
+  .p1b .contrast-wrapper {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+  }
+  /* 基础款卡片：弱化处理 */
+  .p1b .xhs-card.bad {
+    background: #f8fafc;
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    opacity: 0.8;
+  }
+  /* 进阶款卡片：强化处理 */
+  .p1b .xhs-card.good {
+    background: var(--brand-dark);
+    color: #fff;
+    border-radius: 35px;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 30px 60px rgba(16,22,47,0.2);
+    position: relative;
+    z-index: 2;
+    margin-top: -10px; /* 产生叠加感 */
+  }
+  .p1b .label-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 26px !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .p1b .bad .label-tag { color: #94a3b8; }
+  .p1b .good .label-tag { color: var(--brand-yellow); }
+
+  .p1b .card-content { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+  .p1b .techs { font-size: 68px !important; font-weight: 900; line-height: 1.1; }
+  .p1b .desc { font-size: 32px !important; line-height: 1.4; font-weight: 600; flex: 1; text-align: right; }
+  
+  .p1b .bad .techs { color: #64748b; }
+  .p1b .bad .desc { color: #94a3b8; }
+  .p1b .good .techs { color: #fff; }
+  .p1b .good .desc { color: rgba(255,255,255,0.8); }
+
+  .p1b .course-chip {
+    margin-top: auto;
+    background: var(--brand-red);
+    color: #fff;
+    padding: 30px 50px;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 48px !important;
+    font-weight: 900;
+    box-shadow: 0 15px 30px rgba(255,87,87,0.3);
+  }
+
+  /* ========== P1C 封面变体：转岗版 (XHS Redesign) ========== */
+  .p1c .p-inner {
+    justify-content: flex-start;
+    background: #fffafb;
+    color: var(--brand-dark);
+    padding: 60px 50px;
+  }
+  .p1c .hook {
+    font-size: 140px; line-height: 1; letter-spacing: -5px;
+    font-weight: 900; color: var(--brand-dark);
+    margin-top: 15px;
+  }
+  .p1c .hook span { color: var(--brand-red); background: #fff; padding: 0 10px; border-radius: 10px; }
+  .p1c .transition-box {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+  }
+  .p1c .stage-card {
+    width: 100%;
+    border: 5px solid var(--brand-dark);
+    border-radius: 40px;
+    padding: 45px 55px;
+    position: relative;
+    background: #fff;
+    box-shadow: 15px 15px 0 var(--brand-dark);
+  }
+  .p1c .stage-card.from { background: #fcfdfe; }
+  .p1c .stage-card.to {
+    background: var(--brand-yellow);
+    box-shadow: 15px 15px 0 var(--brand-red);
+  }
+  .p1c .stage-card .badge {
+    position: absolute;
+    top: -35px; left: 50px;
+    padding: 10px 35px;
+    border-radius: 15px;
+    border: 4px solid var(--brand-dark);
+    font-size: 34px !important;
+    font-weight: 900;
+    transform: rotate(-3deg);
+    z-index: 5;
+  }
+  .p1c .stage-card.from .badge { background: #64748b; color: #fff; }
+  .p1c .stage-card.to .badge { background: var(--brand-red); color: #fff; }
+  .p1c .stage-card .text { font-size: 100px !important; font-weight: 900; line-height: 1.1; letter-spacing: -3px; }
+  .p1c .big-arrow {
+    font-size: 120px;
+    font-weight: 900;
+    color: var(--brand-red);
+    text-shadow: 8px 8px 0 var(--brand-dark);
+    margin: -15px 0;
+    z-index: 2;
+  }
+  .p1c .course-chip {
+    background: var(--brand-dark);
+    border-radius: 28px;
+    padding: 35px 45px;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 10px 10px 0 var(--brand-red);
+  }
+
+  /* ========== P1D 封面变体：面试版 (XHS Redesign) ========== */
+  .p1d .p-inner {
+    justify-content: flex-start;
+    background: var(--brand-dark);
+    color: #fff;
+    padding: 60px 50px;
+  }
+  .p1d .p-dots { background-image: radial-gradient(rgba(255,255,255,0.2) 1.5px, transparent 1.5px); }
+  .p1d .hook {
+    font-size: 110px; line-height: 1.1; letter-spacing: -3px;
+    font-weight: 900; color: #fff;
+    margin-top: 30px;
+  }
+  .p1d .hook em { font-style: normal; color: var(--brand-yellow); background: rgba(255,255,255,0.1); padding: 0 12px; border-radius: 12px; }
+  .p1d .sticker-grid {
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    transform: rotate(-2deg);
+    flex: 1;
+  }
+  .p1d .sticker {
+    background: #fff;
+    color: var(--brand-dark);
+    border: 4px solid var(--brand-dark);
+    border-radius: 22px;
+    padding: 30px 20px;
+    font-size: 52px !important;
+    font-weight: 900;
+    text-align: center;
+    box-shadow: 10px 10px 0 var(--brand-yellow);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .p1d .sticker:nth-child(even) { transform: rotate(4deg); background: var(--brand-yellow); box-shadow: 10px 10px 0 var(--brand-red); }
+  .p1d .sticker:nth-child(3n) { transform: rotate(-3deg); background: var(--brand-red); color: #fff; box-shadow: 10px 10px 0 #fff; }
+  .p1d .bottom-text {
+    margin-top: 35px;
+    font-size: 44px !important;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.4 !important;
+    text-align: center;
+    border-top: 2px dashed rgba(255,206,68,0.4);
+    padding-top: 35px;
+  }
+  .p1d .course-chip {
+    margin-top: 25px;
+    background: #fff;
+    color: var(--brand-dark);
+    box-shadow: 10px 10px 0 var(--brand-red);
+    padding: 30px 45px;
+    border-radius: 24px;
+  }
+
+  /* ========== P2 痛点 ========== */
+  .p2 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(255, 206, 68, 0.35), transparent 28%),
+      linear-gradient(180deg, #fffaf2 0%, #fff4e5 100%);
+  }
+  .p2 .eyebrow {
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .p2 .eyebrow .line {
+    flex: 1;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--brand-dark) 0 18px, transparent 18px 30px);
+    opacity: 0.25;
+  }
+  .p2 .eyebrow .txt {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--brand-red);
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p2 h2 {
+    font-size: 92px; font-weight: 900;
+    line-height: 1.08; letter-spacing: -3px;
+    margin-top: 24px;
+  }
+  .p2 .lead {
+    margin-top: 18px;
+    font-size: 30px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 930px;
+  }
+  .p2 .split {
+    margin-top: 46px;
+    display: grid;
+    grid-template-columns: 1fr 74px 1fr;
+    gap: 20px;
+    flex: 1;
+    align-items: stretch;
+  }
+  .p2 .divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+  }
+  .p2 .divider .bar {
+    width: 6px;
+    flex: 1;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(16,22,47,0.12) 0%, rgba(255,87,87,0.3) 100%);
+  }
+  .p2 .divider .vs {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    border: 2px solid var(--brand-dark);
+    background: var(--brand-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 5px 5px 0 var(--brand-dark);
+    transform: rotate(-8deg);
+  }
+  .p2 .col {
+    border: 2px solid var(--brand-dark);
+    border-radius: 28px;
+    padding: 34px 32px 30px;
+    background: rgba(255,255,255,0.92);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .p2 .col::after {
+    content: '';
+    position: absolute;
+    inset: auto -60px -60px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+  .p2 .col.bad {
+    box-shadow: 10px 10px 0 #94a3b8;
+    background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  }
+  .p2 .col.bad::after { background: var(--text-gray); }
+  .p2 .col.good {
+    box-shadow: 12px 12px 0 var(--brand-red);
+    background: linear-gradient(180deg, #fff 0%, #fff3ed 100%);
+  }
+  .p2 .col.good::after { background: var(--brand-red); }
+  .p2 .col-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 26px;
+  }
+  .p2 .badge {
+    min-width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    border: 2px solid var(--brand-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    flex-shrink: 0;
+  }
+  .p2 .col.bad .badge { background: #dbe4ee; color: #475569; }
+  .p2 .col.good .badge { background: var(--brand-red); color: #fff; }
+  .p2 .kicker {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .p2 .col.bad .kicker { color: #64748b; }
+  .p2 .col.good .kicker { color: var(--brand-red); }
+  .p2 .col h3 {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+  .p2 .col-sub {
+    margin-top: 10px;
+    font-size: 23px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .p2 .col.bad .col-sub { color: #64748b; }
+  .p2 .col.good .col-sub { color: #7c2d12; }
+  .p2 .col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .p2 .col li {
+    min-height: 108px;
+    padding: 18px 18px 18px 78px;
+    border-radius: 18px;
+    border: 1.5px solid var(--brand-dark);
+    position: relative;
+    font-size: 26px;
+    line-height: 1.35;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+  }
+  .p2 .col li::before {
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 2px solid var(--brand-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p2 .col.bad li {
+    background: rgba(255,255,255,0.78);
+    color: #475569;
+  }
+  .p2 .col.bad li::before {
+    content: 'X';
+    background: #e2e8f0;
+    color: var(--brand-red);
+  }
+  .p2 .col.good li {
+    background: #fff;
+    color: var(--text-main);
+  }
+  .p2 .col.good li::before {
+    content: 'GO';
+    background: #ffe4d7;
+    color: var(--brand-red);
+    font-size: 16px;
+    letter-spacing: -0.5px;
+  }
+  .p2 .bottom-note {
+    margin-top: 28px;
+    padding: 18px 22px;
+    border-radius: 18px;
+    border: 2px solid var(--brand-dark);
+    background: #fff;
+    font-size: 24px;
+    line-height: 1.45;
+    font-weight: 700;
+    box-shadow: 7px 7px 0 var(--brand-yellow);
+  }
+  .p2 .bottom-note b { color: var(--brand-red); }
+
+  /* ========== P3 对话转折 ========== */
+  .p3 .p-inner { background: #fff; }
+  .p3 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p3 .chat {
+    margin-top: 60px;
+    background: var(--bg-light);
+    border: 2px solid var(--brand-dark);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 14px 14px 0 var(--brand-yellow);
+    flex: 1;
+  }
+  .p3 .chat-header {
+    background: var(--brand-dark); color: #fff;
+    padding: 18px 26px;
+    display: flex; align-items: center; gap: 14px;
+    font-size: 24px; font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+  }
+  .p3 .chat-header .dots { display: flex; gap: 6px; }
+  .p3 .chat-header .dots span { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+  .p3 .chat-header .dots span:nth-child(2) { background: #febc2e; }
+  .p3 .chat-header .dots span:nth-child(3) { background: #28c940; }
+  .p3 .chat-body { padding: 32px 36px; display: flex; flex-direction: column; gap: 20px; }
+  .p3 .bubble {
+    padding: 20px 26px; border-radius: 20px;
+    font-size: 34px; line-height: 1.45; font-weight: 500;
+    max-width: 85%;
+  }
+  .p3 .bubble.left { background: #fff; border: 1.5px solid var(--border-color); align-self: flex-start; border-bottom-left-radius: 6px; }
+  .p3 .bubble.right { background: var(--brand-dark); color: #fff; align-self: flex-end; border-bottom-right-radius: 6px; }
+  .p3 .bubble .name { font-size: 20px; color: var(--brand-red); font-weight: 900; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+  .p3 .bubble.right .name { color: var(--brand-yellow); }
+
+  /* ========== P4 能解决什么 ========== */
+  .p4 .p-inner { background: #fff; }
+  .p4 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p4 h2 em { font-style: normal; color: var(--brand-red); }
+  .p4 .lead {
+    margin-top: 16px;
+    font-size: 28px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p4 .grid4 { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; flex: 1; }
+  .p4 .cell {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 8px 8px 0 var(--brand-dark);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .p4 .cell:nth-child(1) { background: #fff1e7; box-shadow: 8px 8px 0 var(--brand-red); }
+  .p4 .cell:nth-child(2) { background: #eef4ff; box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p4 .cell:nth-child(3) { background: #fff9e0; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p4 .cell:nth-child(4) { background: #e8faf0; box-shadow: 8px 8px 0 var(--brand-green); }
+  .p4 .cell .num {
+    font-size: 52px; font-weight: 900;
+    color: var(--brand-dark);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1;
+  }
+  .p4 .cell h4 { font-size: 38px; font-weight: 900; line-height: 1.2; }
+  .p4 .cell p { font-size: 26px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* ========== P5 课程结构（10 phases） ========== */
+  .p5 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(255,206,68,0.18), transparent 24%),
+      linear-gradient(180deg, #fffaf1 0%, #f8f9fb 100%);
+    padding-bottom: 60px;
+  }
+  .p5 .p-brand { display: none; }
+  .p5 h2 { font-size: 66px; font-weight: 900; line-height: 1; letter-spacing: -1.8px; margin-top: 12px; }
+  .p5 h2 .hl { color: var(--brand-red); }
+  .p5 .hero-strip {
+    margin-top: 14px;
+    display: block;
+  }
+  .p5 .hero-card,
+  .p5 .focus-card {
+    border: 2px solid var(--brand-dark);
+    border-radius: 16px;
+    background: #fff;
+    padding: 14px 16px;
+  }
+  .p5 .hero-card { box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p5 .focus-card { display: none; }
+  .p5 .hero-kicker,
+  .p5 .focus-kicker {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p5 .hero-kicker { color: var(--brand-red); }
+  .p5 .focus-kicker { color: var(--brand-yellow); }
+  .p5 .hero-big {
+    margin-top: 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .p5 .hero-big .n {
+    font-size: 62px;
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand-red);
+  }
+  .p5 .hero-big .l {
+    font-size: 20px;
+    font-weight: 900;
+  }
+  .p5 .hero-desc,
+  .p5 .focus-desc {
+    margin-top: 6px;
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+  .p5 .hero-desc { color: var(--text-gray); }
+  .p5 .focus-desc { color: rgba(255,255,255,0.76); }
+  .p5 .focus-pills {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .p5 .focus-pills span {
+    padding: 5px 9px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    font-size: 12px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .p5 .phases {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-content: start;
+    flex: 0 0 auto;
+  }
+  .p5 .ph {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 16px;
+    padding: 22px 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 5px 5px 0 rgba(16,22,47,0.08);
+    position: relative;
+    overflow: hidden;
+    min-height: 132px;
+  }
+  .p5 .ph::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    bottom: -28px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(16,22,47,0.04);
+  }
+  .p5 .ph .badge {
+    width: 64px; height: 64px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 900; font-size: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    flex-shrink: 0;
+    border: 2px solid var(--brand-dark);
+    box-shadow: 2px 2px 0 var(--brand-dark);
+  }
+  .p5 .ph .info { position: relative; z-index: 1; }
+  .p5 .ph .info .meta {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 4px;
+  }
+  .p5 .ph .info h5 { font-size: 38px; font-weight: 900; margin-bottom: 4px; line-height: 1.03; }
+  .p5 .ph .info p { font-size: 24px; color: var(--text-gray); line-height: 1.2; font-weight: 600; }
+  .p5 .ph.key { box-shadow: 7px 7px 0 var(--brand-red); }
+
+  /* ========== P6 工具栈 ========== */
+  .p6 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p6 .p-dots { opacity: 0.15; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p6 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p6 .eyebrow {
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .p6 .eyebrow .line {
+    flex: 1;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.5) 0 14px, transparent 14px 26px);
+  }
+  .p6 .eyebrow .txt {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--brand-yellow);
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p6 h2 { color: #fff; font-size: 98px; font-weight: 900; line-height: 1.02; letter-spacing: -3.5px; margin-top: 24px; }
+  .p6 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p6 .lead {
+    margin-top: 16px;
+    font-size: 28px;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.76);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p6 .stack-tags {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .p6 .stack-tags span {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.06);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  .p6 .tool-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; }
+  .p6 .tool {
+    background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 18px;
+    padding: 20px 20px 18px;
+    font-weight: 700;
+    transition: all 0.2s;
+    min-height: 144px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .p6 .tool::after {
+    content: '';
+    position: absolute;
+    right: -32px;
+    bottom: -36px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .p6 .tool .top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .p6 .tool .idx {
+    font-size: 20px;
+    color: rgba(255,255,255,0.42);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .p6 .tool .name {
+    font-size: 26px;
+    font-weight: 900;
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.8px;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+    font-size: 30px;
+  }
+  .p6 .tool .cat {
+    width: fit-content;
+    margin-top: 16px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    font-size: 18px;
+    color: rgba(255,255,255,0.78);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+  }
+  .p6 .tool.hot {
+    background: linear-gradient(180deg, rgba(255,87,87,0.92) 0%, rgba(255,87,87,0.82) 100%);
+    border-color: var(--brand-red);
+    box-shadow: 4px 4px 0 var(--brand-yellow);
+  }
+  .p6 .tool.hot .idx { color: rgba(255,255,255,0.7); }
+  .p6 .tool.hot .cat {
+    color: var(--brand-yellow);
+    border-color: rgba(255,206,68,0.25);
+    background: rgba(16,22,47,0.18);
+  }
+  .p6 .bottom-note {
+    margin-top: 24px;
+    padding: 18px 22px;
+    border-radius: 18px;
+    border: 2px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.06);
+    font-size: 22px;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.86);
+    font-weight: 700;
+  }
+  .p6 .bottom-note b { color: var(--brand-yellow); }
+  .p6 .p-brand { border-top-color: rgba(255,255,255,0.2); }
+  .p6 .p-brand .logo { color: #fff; }
+  .p6 .p-brand .right { color: rgba(255,255,255,0.5); }
+
+  /* ========== P7 学员反馈（软性） ========== */
+  .p7 .p-inner { background: #fff; }
+  .p7 h2 { font-size: 76px; font-weight: 900; line-height: 1.2; letter-spacing: -2px; margin-top: 30px; }
+  .p7 .quotes { margin-top: 50px; display: flex; flex-direction: column; gap: 22px; flex: 1; }
+  .p7 .q {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    padding: 30px 34px;
+    position: relative;
+    box-shadow: 8px 8px 0 var(--brand-dark);
+  }
+  .p7 .q:nth-child(2) { margin-left: 60px; box-shadow: 8px 8px 0 var(--brand-blue); background: #eef4ff; }
+  .p7 .q:nth-child(3) { margin-left: 120px; box-shadow: 8px 8px 0 var(--brand-red); background: #fff1e7; }
+  .p7 .q::before {
+    content: '"';
+    position: absolute; top: -12px; left: 20px;
+    font-size: 100px; font-weight: 900;
+    color: var(--brand-yellow);
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+  .p7 .q .txt { font-size: 36px; line-height: 1.45; font-weight: 500; margin-left: 40px; }
+  .p7 .q .who { font-size: 22px; color: var(--text-gray); margin-top: 14px; margin-left: 40px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+  /* ========== P8 时间形式 ========== */
+  .p8 .p-inner { background: var(--bg-cream); }
+  .p8 h2 { font-size: 84px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p8 .stats { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .p8 .stat {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 18px;
+    padding: 28px 30px;
+    box-shadow: 6px 6px 0 var(--brand-dark);
+  }
+  .p8 .stat .num {
+    font-size: 88px; font-weight: 900;
+    line-height: 1; letter-spacing: -3px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand-dark);
+  }
+  .p8 .stat .num em { font-style: normal; color: var(--brand-red); font-size: 48px; margin-left: 6px; }
+  .p8 .stat .lbl { font-size: 26px; font-weight: 700; color: var(--text-gray); margin-top: 10px; }
+  .p8 .format-list {
+    margin-top: 40px;
+    background: var(--brand-dark); color: #fff;
+    border-radius: 18px; padding: 30px 34px;
+    box-shadow: 8px 8px 0 var(--brand-yellow);
+  }
+  .p8 .format-list h4 { font-size: 32px; font-weight: 900; color: var(--brand-yellow); margin-bottom: 16px; }
+  .p8 .format-list ul { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; list-style: none; }
+  .p8 .format-list li { font-size: 26px; font-weight: 500; padding-left: 26px; position: relative; line-height: 1.4; }
+  .p8 .format-list li::before { content: '✓'; position: absolute; left: 0; color: var(--brand-yellow); font-weight: 900; }
+
+  /* ========== P9 软性收尾 ========== */
+  .p9 .p-inner { background: #fff; align-items: center; justify-content: center; text-align: center; }
+  .p9 .big-q { font-size: 56px; font-weight: 500; color: var(--text-gray); margin-top: 20px; line-height: 1.5; }
+  .p9 .giant {
+    font-size: 150px; font-weight: 900;
+    line-height: 1; letter-spacing: -5px;
+    color: var(--brand-dark);
+    margin-top: 40px;
+  }
+  .p9 .giant em { font-style: normal; color: var(--brand-red); }
+  .p9 .sub-hook {
+    margin-top: 50px; font-size: 40px; font-weight: 700;
+    color: var(--text-main); line-height: 1.5;
+    max-width: 860px;
+  }
+  .p9 .arrow {
+    margin-top: 60px;
+    display: inline-flex; align-items: center; gap: 20px;
+    padding: 20px 32px;
+    background: var(--brand-yellow);
+    border: 2px solid var(--brand-dark);
+    border-radius: 100px;
+    box-shadow: 8px 8px 0 var(--brand-dark);
+    font-size: 38px; font-weight: 900;
+  }
+  .p9 .arrow .arr {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px;
+    background: var(--brand-dark); color: var(--brand-yellow);
+    border-radius: 50%;
+    font-size: 26px;
+  }
+  .p9 .note { margin-top: 40px; font-size: 24px; color: var(--text-gray); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+
+  /* ========== P10 升级对比 ========== */
+  .p10 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(16,185,129,0.12), transparent 24%),
+      linear-gradient(180deg, #ffffff 0%, #f8fffb 100%);
+  }
+  .p10 h2 { font-size: 82px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 20px; }
+  .p10 h2 em { font-style: normal; color: var(--brand-red); }
+  .p10 .lead {
+    margin-top: 14px;
+    font-size: 28px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p10 .headline-bar {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .p10 .mega {
+    flex: 1;
+    border: 2px solid var(--brand-dark);
+    border-radius: 22px;
+    padding: 20px 24px;
+    background: var(--brand-yellow);
+    box-shadow: 8px 8px 0 var(--brand-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .p10 .mega .big {
+    font-size: 88px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -4px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand-dark);
+  }
+  .p10 .mega .txt {
+    font-size: 30px;
+    line-height: 1.25;
+    font-weight: 900;
+    color: var(--brand-dark);
+    text-align: right;
+  }
+  .p10 .vs { margin-top: 24px; display: grid; grid-template-columns: 1fr 72px 1fr; gap: 0; flex: 1; align-items: stretch; }
+  .p10 .side { border: 2px solid var(--brand-dark); border-radius: 22px; padding: 28px 26px; }
+  .p10 .side.old { background: #f5f5f5; opacity: 0.84; }
+  .p10 .side.new { background: #ecfdf5; box-shadow: 10px 10px 0 var(--brand-green); }
+  .p10 .side .ver { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+  .p10 .side.old .ver { color: var(--text-gray); }
+  .p10 .side.new .ver { color: var(--brand-green); }
+  .p10 .side .big { font-size: 74px; font-weight: 900; line-height: 1; margin: 10px 0 6px; font-family: 'JetBrains Mono', monospace; }
+  .p10 .side .big em { font-style: normal; font-size: 28px; margin-left: 4px; }
+  .p10 .side .items { font-size: 22px; line-height: 1.7; color: var(--text-main); margin-top: 14px; font-weight: 700; }
+  .p10 .side.old .items { color: var(--text-gray); }
+  .p10 .arrow-col { display: flex; align-items: center; justify-content: center; }
+  .p10 .arrow-col span {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--brand-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--brand-red);
+    box-shadow: 4px 4px 0 var(--brand-dark);
+  }
+  .p10 .delta-row { margin-top: 24px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .p10 .delta { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 14px 22px; text-align: center; box-shadow: 4px 4px 0 var(--brand-dark); min-width: 170px; }
+  .p10 .delta .num { font-size: 36px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+  .p10 .delta .lbl { font-size: 18px; font-weight: 700; color: var(--text-main); }
+
+  /* ========== P11 能力矩阵 ========== */
+  .p11 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(255, 206, 68, 0.24), transparent 24%),
+      linear-gradient(180deg, #fffaf1 0%, #fff6e8 100%);
+  }
+  .p11 h2 { font-size: 82px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 20px; }
+  .p11 .lead {
+    margin-top: 14px;
+    font-size: 22px;
+    line-height: 1.28;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 970px;
+  }
+  .p11 .matrix { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; flex: 1; justify-content: space-between; }
+  .p11 .row { display: grid; grid-template-columns: 180px 1fr 1fr; gap: 0; border: 2px solid var(--brand-dark); border-radius: 16px; overflow: hidden; min-height: 102px; }
+  .p11 .row .dim { background: var(--brand-dark); color: #fff; padding: 16px; font-size: 28px; font-weight: 900; display: flex; align-items: center; line-height: 1.02; }
+  .p11 .row .v1 { padding: 16px; font-size: 26px; color: #64748b; background: #f3f4f6; border-right: 1.5px solid var(--border-color); line-height: 1.16; font-weight: 800; display: flex; flex-direction: column; justify-content: center; }
+  .p11 .row .v2 { padding: 16px; font-size: 26px; color: var(--brand-dark); background: #ecfdf5; font-weight: 900; line-height: 1.16; display: flex; flex-direction: column; justify-content: center; }
+  .p11 .row b { color: var(--brand-red); }
+
+  /* ========== P12 RAG 深潜 ========== */
+  .p12 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(59,130,246,0.16), transparent 24%),
+      linear-gradient(180deg, #f5f9ff 0%, #eef5ff 100%);
+  }
+  .p12 h2 { font-size: 108px; font-weight: 900; line-height: 0.98; letter-spacing: -4px; margin-top: 18px; }
+  .p12 h2 em { font-style: normal; color: #2563eb; }
+  .p12 .lead {
+    margin-top: 14px;
+    font-size: 30px;
+    line-height: 1.36;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p12 .hero-strip {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 18px;
+  }
+  .p12 .hero-card,
+  .p12 .stat-card {
+    border: 2px solid var(--brand-dark);
+    border-radius: 22px;
+    padding: 24px 26px;
+    background: #fff;
+  }
+  .p12 .hero-card { box-shadow: 8px 8px 0 rgba(59,130,246,0.26); }
+  .p12 .stat-card { background: #10162f; color: #fff; box-shadow: 8px 8px 0 rgba(16,22,47,0.18); }
+  .p12 .hero-kicker,
+  .p12 .stat-kicker {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p12 .hero-kicker { color: #2563eb; }
+  .p12 .stat-kicker { color: var(--brand-yellow); }
+  .p12 .hero-big {
+    margin-top: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .p12 .hero-big .n {
+    font-size: 96px;
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: #2563eb;
+  }
+  .p12 .hero-big .l {
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--brand-dark);
+  }
+  .p12 .hero-desc,
+  .p12 .stat-desc {
+    margin-top: 10px;
+    font-size: 24px;
+    line-height: 1.36;
+    font-weight: 600;
+  }
+  .p12 .hero-desc { color: var(--text-gray); }
+  .p12 .stat-desc { color: rgba(255,255,255,0.76); }
+  .p12 .hero-points {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .p12 .hero-points span {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1.5px solid #bfdbfe;
+    background: #eff6ff;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1d4ed8;
+  }
+  .p12 .stat-grid {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .p12 .stat {
+    border-radius: 18px;
+    border: 1.5px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.06);
+    padding: 20px 20px;
+  }
+  .p12 .stat .n {
+    font-size: 66px;
+    line-height: 1;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand-yellow);
+    letter-spacing: -2px;
+  }
+  .p12 .stat .l {
+    margin-top: 6px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .p12 .rag-grid { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p12 .rag-card {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    padding: 26px 26px;
+    box-shadow: 6px 6px 0 rgba(59,130,246,0.22);
+  }
+  .p12 .rag-card .top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .p12 .rag-card .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: #dbeafe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  .p12 .rag-card h4 { font-size: 36px; font-weight: 900; line-height: 1.06; }
+  .p12 .rag-card p { font-size: 24px; color: var(--text-gray); line-height: 1.36; font-weight: 600; }
+
+  /* ========== P13 Agent 五层 ========== */
+  .p13 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p13 .p-dots { opacity: 0.12; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p13 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p13 h2 { color: #fff; font-size: 82px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 20px; }
+  .p13 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p13 .lead {
+    margin-top: 14px;
+    font-size: 27px;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.72);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p13 .hero-strip {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 18px;
+  }
+  .p13 .hero-card,
+  .p13 .reason-card {
+    border: 1.5px solid rgba(255,255,255,0.22);
+    border-radius: 20px;
+    padding: 22px 24px;
+    background: rgba(255,255,255,0.06);
+  }
+  .p13 .hero-card { box-shadow: 8px 8px 0 rgba(255,206,68,0.2); }
+  .p13 .reason-card { background: rgba(255,255,255,0.08); }
+  .p13 .hero-kicker,
+  .p13 .reason-kicker {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p13 .hero-kicker { color: var(--brand-yellow); }
+  .p13 .reason-kicker { color: #93c5fd; }
+  .p13 .hero-big {
+    margin-top: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .p13 .hero-big .n {
+    font-size: 88px;
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: #fff;
+  }
+  .p13 .hero-big .l {
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .p13 .hero-desc,
+  .p13 .reason-desc {
+    margin-top: 10px;
+    font-size: 22px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: rgba(255,255,255,0.78);
+  }
+  .p13 .reason-points {
+    margin-top: 14px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .p13 .reason-points li {
+    padding: 10px 12px 10px 38px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    position: relative;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .p13 .reason-points li::before {
+    content: '>';
+    position: absolute;
+    left: 14px;
+    top: 8px;
+    color: var(--brand-yellow);
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p13 .layers { margin-top: 22px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p13 .layer {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    gap: 18px;
+    align-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 18px;
+    padding: 18px 22px;
+  }
+  .p13 .layer .badge {
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.34);
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+  }
+  .p13 .layer .meta {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 4px;
+  }
+  .p13 .layer h4 { font-size: 30px; font-weight: 900; margin-bottom: 4px; }
+  .p13 .layer p { font-size: 22px; color: rgba(255,255,255,0.68); font-weight: 600; line-height: 1.35; }
+
+  /* ========== P14 适合谁学 ========== */
+  .p14 .p-inner { background: #fff; }
+  .p14 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p14 h2 em { font-style: normal; color: var(--brand-red); }
+  .p14 .audience { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .p14 .aud { border: 2px solid var(--brand-dark); border-radius: 18px; padding: 28px 30px; display: flex; gap: 20px; align-items: flex-start; }
+  .p14 .aud:nth-child(1) { background: #f0f4ff; box-shadow: 6px 6px 0 var(--brand-blue); }
+  .p14 .aud:nth-child(2) { background: #ecfdf5; box-shadow: 6px 6px 0 var(--brand-green); }
+  .p14 .aud:nth-child(3) { background: #fff7ed; box-shadow: 6px 6px 0 #f97316; }
+  .p14 .aud:nth-child(4) { background: #fdf2f8; box-shadow: 6px 6px 0 #ec4899; }
+  .p14 .aud .emoji { font-size: 48px; flex-shrink: 0; }
+  .p14 .aud h4 { font-size: 32px; font-weight: 900; margin-bottom: 6px; }
+  .p14 .aud p { font-size: 24px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* ========== P15 68 个 Lab ========== */
+  .p15 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(16,185,129,0.12), transparent 24%),
+      linear-gradient(180deg, #f8fffb 0%, #f1f7f5 100%);
+  }
+  .p15 h2 { font-size: 82px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 20px; }
+  .p15 h2 em { font-style: normal; color: var(--brand-green); }
+  .p15 .lead {
+    margin-top: 16px;
+    font-size: 28px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p15 .hero-strip {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 18px;
+  }
+  .p15 .hero-card,
+  .p15 .tutor-card {
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    background: #fff;
+    padding: 24px 26px;
+  }
+  .p15 .hero-card { box-shadow: 8px 8px 0 var(--brand-green); }
+  .p15 .tutor-card { background: #10162f; color: #fff; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p15 .hero-kicker,
+  .p15 .tutor-kicker {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p15 .hero-kicker { color: var(--brand-green); }
+  .p15 .tutor-kicker { color: var(--brand-yellow); }
+  .p15 .hero-big {
+    margin-top: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .p15 .hero-big .n {
+    font-size: 92px;
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p15 .hero-big .l {
+    font-size: 28px;
+    font-weight: 900;
+  }
+  .p15 .hero-desc,
+  .p15 .tutor-desc {
+    margin-top: 10px;
+    font-size: 22px;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+  .p15 .hero-pills {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .p15 .hero-pills span {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1.5px solid var(--brand-dark);
+    background: #eefcf5;
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .p15 .tutor-desc { color: rgba(255,255,255,0.82); }
+  .p15 .tutor-points {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    list-style: none;
+  }
+  .p15 .tutor-points li {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    padding: 10px 12px 10px 38px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    position: relative;
+  }
+  .p15 .tutor-points li::before {
+    content: 'AI';
+    position: absolute;
+    left: 10px;
+    top: 9px;
+    width: 22px;
+    height: 22px;
+    border-radius: 8px;
+    background: var(--brand-yellow);
+    color: var(--brand-dark);
+    font-size: 11px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .p15 .lab-grid { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; }
+  .p15 .lab-cat {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 18px;
+    padding: 22px 22px;
+    box-shadow: 5px 5px 0 rgba(16,22,47,0.14);
+  }
+  .p15 .lab-cat .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 12px;
+  }
+  .p15 .lab-cat .top h4 { font-size: 28px; font-weight: 900; line-height: 1.1; }
+  .p15 .lab-cat .top .cnt {
+    font-size: 34px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand-red);
+    min-width: 48px;
+    text-align: right;
+  }
+  .p15 .lab-cat p { font-size: 20px; color: var(--text-gray); line-height: 1.42; font-weight: 600; }
+
+  /* ========== P16 时间线 ========== */
+  .p16 .p-inner { background: #fff; }
+  .p16 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p16 h2 em { font-style: normal; color: var(--brand-red); }
+  .p16 .lead {
+    margin-top: 14px;
+    font-size: 27px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p16 .timeline { margin-top: 28px; display: flex; flex-direction: column; gap: 0; flex: 1; position: relative; padding-left: 50px; }
+  .p16 .timeline::before { content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 4px; background: var(--brand-dark); border-radius: 2px; }
+  .p16 .tl-item { position: relative; padding: 20px 28px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; margin-bottom: 14px; }
+  .p16 .tl-item::before { content: ''; position: absolute; left: -38px; top: 24px; width: 20px; height: 20px; border-radius: 50%; border: 3px solid var(--brand-dark); background: #fff; }
+  .p16 .tl-item.active::before { background: var(--brand-red); }
+  .p16 .tl-item.final { background: #fff7ed; box-shadow: 8px 8px 0 #f97316; }
+  .p16 .tl-item.final::before { background: #f97316; }
+  .p16 .tl-item .week { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-red); }
+  .p16 .tl-item h4 { font-size: 30px; font-weight: 900; margin: 4px 0; }
+  .p16 .tl-item p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* ========== P17 7 大项目 ========== */
+  .p17 .p-inner { background: #f5f3ff; }
+  .p17 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p17 h2 em { font-style: normal; color: #7c3aed; }
+  .p17 .proj-list { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p17 .proj { display: flex; gap: 20px; align-items: flex-start; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 22px 24px; background: #fff; box-shadow: 5px 5px 0 rgba(124,58,237,0.2); }
+  .p17 .proj .num { width: 52px; height: 52px; border-radius: 50%; background: #7c3aed; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); }
+  .p17 .proj h4 { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .p17 .proj p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* ========== P18 翻转课堂 ========== */
+  .p18 .p-inner { background: #fff; }
+  .p18 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p18 h2 em { font-style: normal; color: var(--brand-red); }
+  .p18 .lead {
+    margin-top: 14px;
+    font-size: 27px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p18 .flip { margin-top: 28px; display: grid; grid-template-columns: 1fr 80px 1fr; align-items: center; flex: 1; }
+  .p18 .flip-side { border: 2px solid var(--brand-dark); border-radius: 20px; padding: 32px 28px; }
+  .p18 .flip-side.old { background: #f5f5f5; opacity: 0.78; }
+  .p18 .flip-side.new { background: #ecfdf5; box-shadow: 8px 8px 0 var(--brand-green); }
+  .p18 .flip-side h3 { font-size: 34px; font-weight: 900; margin-bottom: 18px; }
+  .p18 .flip-side.old h3 { color: var(--text-gray); }
+  .p18 .flip-side.new h3 { color: var(--brand-green); }
+  .p18 .flip-side .step { font-size: 26px; line-height: 1.6; padding-left: 28px; position: relative; margin-bottom: 10px; }
+  .p18 .flip-side .step::before { content: attr(data-n); position: absolute; left: 0; font-weight: 900; color: var(--brand-dark); font-family: 'JetBrains Mono', monospace; }
+  .p18 .flip-arrow { display: flex; align-items: center; justify-content: center; font-size: 52px; font-weight: 900; color: var(--brand-red); }
+  .p18 .stat-bar { margin-top: 30px; display: flex; gap: 20px; justify-content: center; }
+  .p18 .stat-bar .s { text-align: center; background: var(--brand-yellow); border: 2px solid var(--brand-dark); border-radius: 14px; padding: 14px 24px; box-shadow: 4px 4px 0 var(--brand-dark); }
+  .p18 .stat-bar .s .n { font-size: 40px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+  .p18 .stat-bar .s .l { font-size: 18px; font-weight: 700; }
+
+  /* ========== P19 P3 职业孵化 ========== */
+  .p19 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(220,38,38,0.12), transparent 24%),
+      linear-gradient(180deg, #fff7f7 0%, #fef2f2 100%);
+  }
+  .p19 h2 { font-size: 82px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 20px; }
+  .p19 h2 em { font-style: normal; color: #dc2626; }
+  .p19 .lead {
+    margin-top: 14px;
+    font-size: 28px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p19 .hero-row {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 18px;
+  }
+  .p19 .hero-card,
+  .p19 .proof-card {
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    padding: 24px 26px;
+    background: #fff;
+  }
+  .p19 .hero-card { box-shadow: 8px 8px 0 #dc2626; }
+  .p19 .proof-card { background: #10162f; color: #fff; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p19 .hero-kicker,
+  .p19 .proof-kicker {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p19 .hero-kicker { color: #dc2626; }
+  .p19 .proof-kicker { color: var(--brand-yellow); }
+  .p19 .hero-big {
+    margin-top: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .p19 .hero-big .n {
+    font-size: 88px;
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p19 .hero-big .l {
+    font-size: 28px;
+    font-weight: 900;
+  }
+  .p19 .hero-desc,
+  .p19 .proof-desc {
+    margin-top: 10px;
+    font-size: 22px;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+  .p19 .hero-pills {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .p19 .hero-pills span {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1.5px solid var(--brand-dark);
+    background: #fff1f2;
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .p19 .proof-desc { color: rgba(255,255,255,0.82); }
+  .p19 .proof-points {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+  }
+  .p19 .proof-points li {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    padding: 10px 12px 10px 40px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    position: relative;
+  }
+  .p19 .proof-points li::before {
+    content: '→';
+    position: absolute;
+    left: 14px;
+    top: 8px;
+    color: var(--brand-yellow);
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p19 .p3-flow {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    flex: 1;
+    position: relative;
+  }
+  .p19 .p3-card {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 18px;
+    padding: 22px 22px;
+    box-shadow: 5px 5px 0 rgba(220,38,38,0.18);
+    min-height: 164px;
+  }
+  .p19 .p3-card .icon { font-size: 34px; margin-bottom: 8px; }
+  .p19 .p3-card h4 { font-size: 28px; font-weight: 900; margin-bottom: 6px; line-height: 1.15; }
+  .p19 .p3-card p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 600; }
+  .p19 .p3-bottom {
+    margin-top: 20px;
+    background: #dc2626;
+    color: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 18px;
+    padding: 22px 28px;
+    text-align: center;
+    box-shadow: 8px 8px 0 var(--brand-dark);
+  }
+  .p19 .p3-bottom .big { font-size: 38px; font-weight: 900; }
+  .p19 .p3-bottom .sub { font-size: 22px; margin-top: 6px; opacity: 0.9; font-weight: 600; }
+
+  /* ========== P20 技术升级对比 ========== */
+  .p20 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(255,87,87,0.12), transparent 24%),
+      linear-gradient(180deg, #f8fafc 0%, #f2f7f5 100%);
+  }
+  .p20 h2 { font-size: 84px; font-weight: 900; line-height: 1.06; letter-spacing: -2.5px; margin-top: 20px; }
+  .p20 h2 em { font-style: normal; color: var(--brand-red); }
+  .p20 .lead {
+    margin-top: 12px;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 1040px;
+  }
+  .p20 .stack-switch {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    border: 2px solid var(--brand-dark);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 6px 6px 0 rgba(16,22,47,0.1);
+  }
+  .p20 .stack-switch .old-h,
+  .p20 .stack-switch .new-h {
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .p20 .stack-switch .old-h {
+    background: #eef2f7;
+    color: #64748b;
+    border: 2px solid rgba(16,22,47,0.14);
+  }
+  .p20 .stack-switch .arrow {
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--brand-red);
+    line-height: 1;
+  }
+  .p20 .stack-switch .new-h {
+    background: #dcfce7;
+    color: #166534;
+    border: 2px solid rgba(22,101,52,0.18);
+  }
+  .p20 .upgrade-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .p20 .up-card {
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 8px 8px 0 rgba(16,22,47,0.08);
+  }
+  .p20 .up-card .dim {
+    padding: 14px 18px;
+    background: var(--brand-dark);
+    color: #fff;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+  .p20 .up-card .body {
+    padding: 14px 16px 16px;
+    display: grid;
+    gap: 10px;
+  }
+  .p20 .up-card .lane {
+    border-radius: 14px;
+    padding: 12px 14px;
+    border: 2px solid rgba(16,22,47,0.1);
+  }
+  .p20 .up-card .lane .k {
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p20 .up-card .lane .v {
+    margin-top: 8px;
+    font-size: 24px;
+    line-height: 1.16;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .p20 .up-card .lane.old {
+    background: #f8fafc;
+    color: #64748b;
+  }
+  .p20 .up-card .lane.old .v {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--brand-red);
+  }
+  .p20 .up-card .lane.new {
+    background: #ecfdf5;
+    color: var(--brand-dark);
+  }
+  .p20 .bottom-note {
+    margin-top: 16px;
+    padding: 16px 20px;
+    border-radius: 18px;
+    border: 2px solid var(--brand-dark);
+    background: #fff;
+    font-size: 22px;
+    line-height: 1.34;
+    font-weight: 700;
+    box-shadow: 6px 6px 0 var(--brand-yellow);
+  }
+  .p20 .bottom-note b { color: var(--brand-red); }
+
+  /* ========== P21 FAQ 精华 ========== */
+  .p21 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(255,87,87,0.1), transparent 24%),
+      linear-gradient(180deg, #ffffff 0%, #fff8f7 100%);
+  }
+  .p21 h2 { font-size: 82px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 20px; }
+  .p21 .lead {
+    margin-top: 14px;
+    font-size: 27px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p21 .faq-list { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .p21 .faq { border: 2px solid var(--brand-dark); border-radius: 18px; padding: 22px 24px; background: #fff; box-shadow: 5px 5px 0 rgba(16,22,47,0.08); }
+  .p21 .faq .q { font-size: 28px; font-weight: 900; color: var(--brand-dark); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; }
+  .p21 .faq .q::before { content: 'Q'; background: var(--brand-red); color: #fff; padding: 4px 12px; border-radius: 8px; font-size: 20px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+  .p21 .faq .a { font-size: 22px; color: var(--text-gray); line-height: 1.45; font-weight: 600; padding-left: 42px; }
+
+  /* ========== P22 ISA 贯穿项目 ========== */
+  .p22 .p-inner { background: linear-gradient(180deg, #f5f3ff 0%, #eff6ff 100%); }
+  .p22 h2 { font-size: 72px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p22 h2 em { font-style: normal; color: #7c3aed; }
+  .p22 .isa-flow { margin-top: 32px; display: flex; flex-direction: column; gap: 0; flex: 1; position: relative; padding-left: 60px; }
+  .p22 .isa-flow::before { content: ''; position: absolute; left: 26px; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, #6366f1, #3b82f6, #10b981, #f59e0b, #ef4444); border-radius: 3px; }
+  .p22 .isa-step { position: relative; padding: 20px 24px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 14px; margin-bottom: 14px; box-shadow: 4px 4px 0 rgba(16,22,47,0.08); }
+  .p22 .isa-step::before { content: ''; position: absolute; left: -44px; top: 22px; width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--brand-dark); }
+  .p22 .isa-step:nth-child(1)::before { background: #6366f1; }
+  .p22 .isa-step:nth-child(2)::before { background: #3b82f6; }
+  .p22 .isa-step:nth-child(3)::before { background: #10b981; }
+  .p22 .isa-step:nth-child(4)::before { background: #f59e0b; }
+  .p22 .isa-step:nth-child(5)::before { background: #ef4444; }
+  .p22 .isa-step .phase { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; margin-bottom: 4px; }
+  .p22 .isa-step h4 { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .p22 .isa-step p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* ========== P23 Memory + Harness 独家模块 ========== */
+  .p23 .p-inner { background: linear-gradient(160deg, #1e1b4b 0%, #10162f 100%); color: #fff; }
+  .p23 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p23 .p-tag { background: rgba(255,87,87,0.15); border-color: var(--brand-red); color: var(--brand-red); }
+  .p23 h2 { color: #fff; font-size: 80px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 16px; }
+  .p23 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p23 .lead {
+    margin-top: 12px;
+    font-size: 24px;
+    line-height: 1.35;
+    color: rgba(255,255,255,0.76);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p23 .exclusive-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; background: var(--brand-red); color: #fff; padding: 10px 18px; border-radius: 100px; font-size: 18px; font-weight: 900; letter-spacing: 0.5px; font-family: 'JetBrains Mono', monospace; border: 2px solid rgba(255,255,255,0.3); box-shadow: 6px 6px 0 rgba(0,0,0,0.26); }
+  .p23 .hero-row {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 14px;
+  }
+  .p23 .hero-card,
+  .p23 .why-card {
+    border: 2px solid rgba(255,255,255,0.16);
+    border-radius: 22px;
+    padding: 18px 20px;
+    background: rgba(255,255,255,0.06);
+  }
+  .p23 .hero-card { box-shadow: 8px 8px 0 rgba(255,206,68,0.2); }
+  .p23 .why-card { background: rgba(255,255,255,0.08); }
+  .p23 .hero-kicker,
+  .p23 .why-kicker {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
+  .p23 .hero-kicker { color: var(--brand-yellow); }
+  .p23 .why-kicker { color: #93c5fd; }
+  .p23 .hero-big {
+    margin-top: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .p23 .hero-big .n {
+    font-size: 76px;
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: #fff;
+  }
+  .p23 .hero-big .l {
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .p23 .hero-desc,
+  .p23 .why-desc {
+    margin-top: 8px;
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+  }
+  .p23 .why-points {
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .p23 .why-points li {
+    padding: 8px 10px 8px 34px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .p23 .why-points li::before {
+    content: 'AI';
+    position: absolute;
+    left: 10px;
+    top: 7px;
+    width: 18px;
+    height: 18px;
+    border-radius: 8px;
+    background: var(--brand-yellow);
+    color: var(--brand-dark);
+    font-size: 9px;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .p23 .modules { margin-top: 18px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .p23 .mod { background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 24px 24px; position: relative; overflow: hidden; }
+  .p23 .mod::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; border-radius: 50%; opacity: 0.06; }
+  .p23 .mod.memory { box-shadow: 10px 10px 0 rgba(236,72,153,0.36); }
+  .p23 .mod.memory::before { background: #ec4899; }
+  .p23 .mod.harness { box-shadow: 10px 10px 0 rgba(239,68,68,0.34); }
+  .p23 .mod.harness::before { background: #ef4444; }
+  .p23 .mod .phase-tag { font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 2px; margin-bottom: 8px; }
+  .p23 .mod.memory .phase-tag { color: #ec4899; }
+  .p23 .mod.harness .phase-tag { color: #ef4444; }
+  .p23 .mod h3 { font-size: 52px; font-weight: 900; margin-bottom: 10px; line-height: 1.06; }
+  .p23 .mod .desc { font-size: 20px; color: rgba(255,255,255,0.8); line-height: 1.35; font-weight: 700; margin-bottom: 14px; max-width: 920px; }
+  .p23 .mod .topics { display: flex; flex-wrap: wrap; gap: 10px; }
+  .p23 .mod .topic { background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 8px 14px; font-size: 22px; font-weight: 800; }
+  .p23 .mod.memory .topic { color: #f9a8d4; }
+  .p23 .mod.harness .topic { color: #fca5a5; }
+  .p23 .bottom-note {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 20px;
+    color: rgba(255,255,255,0.86);
+    font-weight: 700;
+    line-height: 1.35;
+    padding: 14px 18px;
+    border-radius: 18px;
+    border: 2px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* ========== P24 JD 覆盖率 ========== */
+  .p24 .p-inner {
+    background:
+      radial-gradient(circle at top right, rgba(255,87,87,0.1), transparent 24%),
+      linear-gradient(180deg, #ffffff 0%, #fff8f7 100%);
+  }
+  .p24 h2 { font-size: 80px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 16px; }
+  .p24 h2 em { font-style: normal; color: var(--brand-red); }
+  .p24 .lead {
+    margin-top: 14px;
+    font-size: 27px;
+    line-height: 1.45;
+    color: var(--text-gray);
+    font-weight: 600;
+    max-width: 980px;
+  }
+  .p24 .top-stats { margin-top: 28px; display: flex; gap: 16px; }
+  .p24 .top-stats .s { flex: 1; text-align: center; background: var(--brand-dark); color: #fff; border-radius: 16px; padding: 18px 12px; border: 2px solid var(--brand-dark); }
+  .p24 .top-stats .s .n { font-size: 48px; font-weight: 900; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .p24 .top-stats .s .n em { font-style: normal; font-size: 28px; }
+  .p24 .top-stats .s .l { font-size: 18px; font-weight: 600; opacity: 0.7; margin-top: 6px; }
+  .p24 .skill-bars { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .p24 .sk { border: 2px solid var(--brand-dark); border-radius: 14px; padding: 18px 22px; background: #fff; }
+  .p24 .sk .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .p24 .sk h4 { font-size: 26px; font-weight: 900; }
+  .p24 .sk .freq { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-red); }
+  .p24 .sk .bar { height: 16px; background: #e5e7eb; border-radius: 8px; overflow: hidden; border: 1.5px solid var(--brand-dark); }
+  .p24 .sk .bar .fill { height: 100%; border-radius: 6px; }
+  .p24 .companies { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .p24 .companies span { background: var(--bg-light); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 8px 16px; font-size: 18px; font-weight: 700; color: var(--text-gray); }
+
+  /* ========== P25 薪资地图 ========== */
+  .p25 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p25 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p25 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p25 h2 { color: #fff; font-size: 92px; font-weight: 900; line-height: 1.02; letter-spacing: -3px; margin-top: 18px; }
+  .p25 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p25 .lead {
+    margin-top: 14px;
+    font-size: 28px;
+    line-height: 1.25;
+    color: rgba(255,255,255,0.82);
+    font-weight: 700;
+    max-width: 900px;
+  }
+  .p25 .salary-tiers { margin-top: 28px; display: grid; grid-template-columns: 1fr; gap: 18px; }
+  .p25 .tier {
+    background: rgba(255,255,255,0.06);
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 22px;
+    padding: 26px 28px;
+    min-height: 190px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .p25 .tier .range { font-size: 64px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-yellow); line-height: 0.98; letter-spacing: -2px; }
+  .p25 .tier .range em { font-style: normal; font-size: 44px; }
+  .p25 .tier .level { font-size: 34px; font-weight: 900; opacity: 1; line-height: 1.05; text-align: right; }
+  .p25 .tier .exp { display: block; font-size: 22px; font-weight: 700; opacity: 0.7; margin-top: 8px; }
+  .p25 .bottom-note {
+    margin-top: 24px;
+    padding: 22px 24px;
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.06);
+    font-size: 30px;
+    line-height: 1.28;
+    color: rgba(255,255,255,0.9);
+    font-weight: 800;
+  }
+  .p25 .bottom-note b { color: var(--brand-yellow); }
+
+  /* ========== P26 公司薪资样本 ========== */
+  .p26 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p26 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p26 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p26 h2 { color: #fff; font-size: 78px; font-weight: 900; line-height: 1.08; letter-spacing: -2.5px; margin-top: 16px; }
+  .p26 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p26 .lead {
+    margin-top: 12px;
+    font-size: 24px;
+    line-height: 1.32;
+    color: rgba(255,255,255,0.8);
+    font-weight: 700;
+    max-width: 980px;
+  }
+  .p26 .company-grid { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p26 .co {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 24px 24px;
+    min-height: 168px;
+  }
+  .p26 .co .name { font-size: 40px; font-weight: 900; margin-bottom: 8px; line-height: 1.02; }
+  .p26 .co .role { font-size: 24px; opacity: 0.72; margin-bottom: 14px; line-height: 1.15; }
+  .p26 .co .sal { font-size: 38px; font-weight: 800; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; line-height: 1.08; }
+
+  /* ========== 每张海报顶部品牌 / 课程标识 bar ========== */
+  .p-course-bar {
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    transform: translateX(-50%);
+    background: var(--brand-orange);
+    color: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 100px;
+    padding: 10px 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    box-shadow: 4px 4px 0 var(--brand-dark);
+    white-space: nowrap;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .p-course-bar::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--brand-yellow);
+  }
+  /* 深色底海报（p6 / p13 / p18 / p23 / p25）上 bar 改黄底深字 */
+  .p6 .p-course-bar, .p13 .p-course-bar, .p18 .p-course-bar, .p23 .p-course-bar, .p25 .p-course-bar {
+    background: var(--brand-yellow);
+    color: var(--brand-dark);
+  }
+  .p6 .p-course-bar::before, .p13 .p-course-bar::before, .p18 .p-course-bar::before, .p23 .p-course-bar::before, .p25 .p-course-bar::before {
+    background: var(--brand-claw);
+  }
+  /* 封面 / CTA 不显示 bar */
+  .p1 .p-course-bar, .p1b .p-course-bar, .p1c .p-course-bar, .p1d .p-course-bar, .p9 .p-course-bar { display: none; }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <header class="page-head">
+    <h1>OpenClaw 4 小时工作坊 · <span>小红书素材集</span></h1>
+    <p>29 张投流素材（4 封面 + 25 配图），专为小红书聚光平台定制。每张下方点「⬇ 下载 PNG」一键导出 2484×3320 高清图。主题色 #FF914D。</p>
+    <div class="spec-row">
+      <span class="spec-pill red">1242 × 1660 竖版</span>
+      <span class="spec-pill">聚光合规</span>
+      <span class="spec-pill">29 张全套</span>
+      <span class="spec-pill">html2canvas 一键导出</span>
+      <span class="spec-pill">@2x 高清 PNG</span>
+    </div>
+    <div class="guide">
+      <b>导出前自检：</b>① 无二维码 / 微信号 / 手机号 &nbsp; ② 无"最/第一/唯一/100%/保证"等绝对化用语 &nbsp; ③ 所有学员反馈用软性表达（"蛮多同学"而不是"1000+学员"）
+    </div>
+  </header>
+
+  <!-- 9 张缩略导航 -->
+  <nav class="thumb-nav">
+    <a href="#p1" class="thumb"><span class="num">1</span><span class="lbl">封面A</span></a>
+    <a href="#p1b" class="thumb"><span class="num">1B</span><span class="lbl">共鸣</span></a>
+    <a href="#p1c" class="thumb"><span class="num">1C</span><span class="lbl">转变</span></a>
+    <a href="#p1d" class="thumb"><span class="num">1D</span><span class="lbl">角色</span></a>
+    <a href="#p2" class="thumb"><span class="num">2</span><span class="lbl">痛点</span></a>
+    <a href="#p3" class="thumb"><span class="num">3</span><span class="lbl">同事群</span></a>
+    <a href="#p4" class="thumb"><span class="num">4</span><span class="lbl">能力</span></a>
+    <a href="#p5" class="thumb"><span class="num">5</span><span class="lbl">模块</span></a>
+    <a href="#p6" class="thumb"><span class="num">6</span><span class="lbl">生态</span></a>
+    <a href="#p7" class="thumb"><span class="num">7</span><span class="lbl">反馈</span></a>
+    <a href="#p8" class="thumb"><span class="num">8</span><span class="lbl">配置</span></a>
+    <a href="#p9" class="thumb"><span class="num">9</span><span class="lbl">CTA</span></a>
+    <a href="#p10" class="thumb"><span class="num">10</span><span class="lbl">是什么</span></a>
+    <a href="#p11" class="thumb"><span class="num">11</span><span class="lbl">对比</span></a>
+    <a href="#p12" class="thumb"><span class="num">12</span><span class="lbl">Quest</span></a>
+    <a href="#p13" class="thumb"><span class="num">13</span><span class="lbl">双层</span></a>
+    <a href="#p14" class="thumb"><span class="num">14</span><span class="lbl">适合谁</span></a>
+    <a href="#p15" class="thumb"><span class="num">15</span><span class="lbl">时间线</span></a>
+    <a href="#p16" class="thumb"><span class="num">16</span><span class="lbl">带走</span></a>
+    <a href="#p17" class="thumb"><span class="num">17</span><span class="lbl">Demo</span></a>
+    <a href="#p18" class="thumb"><span class="num">18</span><span class="lbl">Tutor</span></a>
+    <a href="#p19" class="thumb"><span class="num">19</span><span class="lbl">平台</span></a>
+    <a href="#p20" class="thumb"><span class="num">20</span><span class="lbl">FAQ</span></a>
+    <a href="#p21" class="thumb"><span class="num">21</span><span class="lbl">课前</span></a>
+    <a href="#p22" class="thumb"><span class="num">22</span><span class="lbl">翻转</span></a>
+    <a href="#p23" class="thumb"><span class="num">23</span><span class="lbl">独家</span></a>
+    <a href="#p24" class="thumb"><span class="num">24</span><span class="lbl">任务</span></a>
+    <a href="#p25" class="thumb"><span class="num">25</span><span class="lbl">为啥4h</span></a>
+  </nav>
+
+  <!-- =========================================
+       P1 封面：Hook + 课程名
+       ========================================= -->
+  <div class="poster-frame" id="p1">
+    <div class="label">P1 封面 <em>·  最强钩子 / 小红书主图</em></div>
+    <div class="poster-scaler">
+      <div class="poster p1" id="poster-1">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="corner-mark">4 小时线下 🔥</div>
+
+          <div class="p-tag"><span class="dot"></span>OPENCLAW · WORKSHOP</div>
+
+          <div class="hook">
+            AI 不是<br>
+            拿来看的<br>
+            <span class="hl">是拿来装的</span>
+          </div>
+
+          <div class="sub">
+            4 小时线下工作坊<br>
+            走的时候电脑里多一个能用的 Agent
+          </div>
+
+          <div class="course-chip">
+            <div>
+              <div class="name">OpenClaw 工作坊</div>
+              <div class="meta">4H · 7 模块 · 线下</div>
+            </div>
+          </div>
+
+          <div class="p-brand">
+            <div class="logo">匠人 <em>AI</em></div>
+            <div class="right">jiangren.com.au</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-1" data-slug="p1-cover">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P1B 封面变体：共鸣版 (Clean & Bold Redesign)
+       ========================================= -->
+  <div class="poster-frame" id="p1b">
+    <div class="label">P1B 封面 <em>· 共鸣版 / Clean & Bold</em></div>
+    <div class="poster-scaler">
+      <div class="poster p1b" id="poster-1b">
+        <div class="p-inner">
+          <div class="p-tag">OPENCLAW · 4 小时</div>
+
+          <div class="hook">
+            <span class="soft">看了一堆 AI 视频</span>
+            打开 ChatGPT<br>
+            <span class="hl">还是只会抄 Prompt</span>
+          </div>
+
+          <div class="contrast-wrapper">
+            <!-- 现状 -->
+            <div class="xhs-card bad">
+              <div class="label-tag">most people stop here</div>
+              <div class="card-content">
+                <div class="techs">刷 AI 视频<br>抄别人 Prompt</div>
+                <div class="desc">收藏夹塞满了，打开 ChatGPT 还是那几句。</div>
+              </div>
+            </div>
+
+            <!-- 4h 后 -->
+            <div class="xhs-card good">
+              <div class="label-tag">after 4h workshop</div>
+              <div class="card-content">
+                <div class="techs">OpenClaw<br>装在我电脑里</div>
+                <div class="desc">打开终端喊一声，它真的在帮我干活 — 不是 demo 不是截图。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-chip">
+            OpenClaw 沉浸式工作坊
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-1b" data-slug="p1b-cover-resonance">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P1C 封面变体：转岗版 (XHS Redesign)
+       ========================================= -->
+  <div class="poster-frame" id="p1c">
+    <div class="label">P1C 封面 <em>· 转岗版 / XHS Redesign</em></div>
+    <div class="poster-scaler">
+      <div class="poster p1c" id="poster-1c">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+
+          <div class="hook">
+            4 小时后<br>
+            你的电脑里<br>
+            <span class="hl" style="color:var(--brand-claw); background:none; text-shadow: none; padding: 0;">多一个 Agent</span>
+          </div>
+
+          <div class="transition-box">
+            <div class="stage-card from">
+              <div class="badge">BEFORE</div>
+              <div class="text">还只会<br>用 ChatGPT</div>
+            </div>
+
+            <div class="big-arrow">↓</div>
+
+            <div class="stage-card to">
+              <div class="badge">AFTER</div>
+              <div class="text">OpenClaw 替我<br>处理客户邮件</div>
+            </div>
+          </div>
+
+          <div class="course-chip">
+            <div class="name" style="color:#fff; font-size: 52px; font-weight: 900;">OpenClaw 4h 工作坊</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-1c" data-slug="p1c-cover-transition">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P1D 封面变体：面试版 (XHS Redesign)
+       ========================================= -->
+  <div class="poster-frame" id="p1d">
+    <div class="label">P1D 封面 <em>· 面试版 / XHS Redesign</em></div>
+    <div class="poster-scaler">
+      <div class="poster p1d" id="poster-1d">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+
+          <div class="hook">
+            不管你是做<br>
+            这 6 类工作<br>
+            <em>AI 都能帮你接活</em>
+          </div>
+
+          <div class="sticker-grid">
+            <div class="sticker">销售 BD</div>
+            <div class="sticker">市场营销</div>
+            <div class="sticker">行政助理</div>
+            <div class="sticker">房产中介</div>
+            <div class="sticker">保险顾问</div>
+            <div class="sticker">法务合规</div>
+          </div>
+
+          <div class="bottom-text">
+            4 小时线下带你装好 OpenClaw，<br>你用自己的工作素材练一遍。
+          </div>
+
+          <div class="course-chip">
+            <div class="name" style="font-size: 52px; font-weight: 900;">OpenClaw 工作坊 · 4H</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-1d" data-slug="p1d-cover-interview">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P2 痛点对比
+       ========================================= -->
+  <div class="poster-frame" id="p2">
+    <div class="label">P2 痛点 <em>· 共鸣 / 对比结构</em></div>
+    <div class="poster-scaler">
+      <div class="poster p2" id="poster-2">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>真实差距</div>
+          <div class="eyebrow">
+            <span class="line"></span>
+            <span class="txt">ai gap</span>
+            <span class="line"></span>
+          </div>
+          <h2>同样看了一堆 AI<br>有人在用<span class="hl">有人在看</span></h2>
+          <p class="lead">差距不是谁更懂 AI，而是 AI 到底有没有装在你电脑里、有没有真正接手你日常工作里那几件重复的事。</p>
+
+          <div class="split">
+            <div class="col bad">
+              <div class="col-head">
+                <div>
+                  <div class="kicker">still watching</div>
+                  <h3>还在<br>看视频</h3>
+                  <div class="col-sub">收藏夹很满，打开 ChatGPT 还是抄 Prompt。</div>
+                </div>
+                <div class="badge">01</div>
+              </div>
+              <ul>
+                <li>还在刷一堆 AI 视频</li>
+                <li>还在抄别人的 Prompt</li>
+                <li>客户邮件还手动一封封写</li>
+                <li>只会用 ChatGPT 网页版</li>
+                <li>从来没装过本地 AI</li>
+                <li>觉得 AI 就是聊天框</li>
+              </ul>
+            </div>
+            <div class="divider">
+              <span class="bar"></span>
+              <span class="vs">VS</span>
+              <span class="bar"></span>
+            </div>
+            <div class="col good">
+              <div class="col-head">
+                <div>
+                  <div class="kicker">already using</div>
+                  <h3>他们已经<br>在用 Agent</h3>
+                  <div class="col-sub">不是概念 — 是打开终端喊一声就帮你干活。</div>
+                </div>
+                <div class="badge">02</div>
+              </div>
+              <ul>
+                <li>OpenClaw 装在自己电脑</li>
+                <li>AI 替我处理客户邮件</li>
+                <li>Agent 接管材料整理</li>
+                <li>每天省 2 小时重复工作</li>
+                <li>Tutor 带着装好的 setup</li>
+                <li>AI 就在我工作流里</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bottom-note">你差的不是"懂不懂 AI"，是 <b>AI 有没有真的装在你电脑上</b>。</div>
+
+          <div class="p-brand">
+            <div class="logo">匠人 <em>AI</em></div>
+            <div class="right">AI ENGINEER · P2 / 9</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-2" data-slug="p2-painpoint">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P3 对话转折
+       ========================================= -->
+  <div class="poster-frame" id="p3">
+    <div class="label">P3 对话 <em>· 场景化共鸣</em></div>
+    <div class="poster-scaler">
+      <div class="poster p3" id="poster-3">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>同事群实录</div>
+          <h2>同事群里开始<br><span class="hl">都在用 Agent 了</span></h2>
+
+          <div class="chat">
+            <div class="chat-header">
+              <div class="dots"><span></span><span></span><span></span></div>
+              <span>#工作提效小组</span>
+            </div>
+            <div class="chat-body">
+              <div class="bubble left">
+                <div class="name">@Lily · 销售</div>
+                今早 OpenClaw 帮我写了 20 封客户跟进邮件 💪<br>调一下 Prompt 就能发
+              </div>
+              <div class="bubble right">
+                <div class="name">@阿哲 · 市场</div>
+                我让 Agent 一键总结了 30 份月报，<br>直接出了一个 onepager
+              </div>
+              <div class="bubble left">
+                <div class="name">@小李 · 行政</div>
+                你们怎么都装好了…我还在手动复制粘贴 😭
+              </div>
+              <div class="bubble right">
+                <div class="name">@阿哲 · 市场</div>
+                报那个 4h 线下工作坊啊 —<br>Tutor 当场带你装好
+              </div>
+            </div>
+          </div>
+
+          <div class="p-brand">
+            <div class="logo">匠人 <em>AI</em></div>
+            <div class="right">AI ENGINEER · P3 / 9</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-3" data-slug="p3-conversation">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P4 4 条核心能力
+       ========================================= -->
+  <div class="poster-frame" id="p4">
+    <div class="label">P4 能力 <em>· 课程能解决什么</em></div>
+    <div class="poster-scaler">
+      <div class="poster p4" id="poster-4">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>OpenClaw 工作坊 · 4 小时后你会</div>
+          <h2>4 小时<br>你会<em>真的</em>会这四件事</h2>
+          <p class="lead">不是听过概念 — 是走出工作坊那一刻电脑里已经装好、跑通、还把你真实工作素材喂过一遍的四件事。</p>
+
+          <div class="grid4">
+            <div class="cell">
+              <div class="num">01</div>
+              <h4>AI 基础<br>认知清晰</h4>
+              <p>搞清楚什么是 LLM / Agent / MCP / Skills — 跟同事聊的时候不再接不上话。</p>
+            </div>
+            <div class="cell">
+              <div class="num">02</div>
+              <h4>OpenClaw<br>装好跑通</h4>
+              <p>Node、API Key、CLI 安装、第一条指令 — 全流程 Tutor + AI 小花带过，当场跑出结果。</p>
+            </div>
+            <div class="cell">
+              <div class="num">03</div>
+              <h4>会用 Skill<br>+ 自定义风格</h4>
+              <p>常用 Skill 地图 + 怎么让 Agent 按你的语气、格式、流程工作。</p>
+            </div>
+            <div class="cell">
+              <div class="num">04</div>
+              <h4>第一次真实<br>业务实操</h4>
+              <p>不是练习题 — 是把你自己的客户邮件、报告、材料喂给它，当场跑出第一版。</p>
+            </div>
+          </div>
+
+          <div class="p-brand">
+            <div class="logo">匠人 <em>AI</em></div>
+            <div class="right">AI ENGINEER · P4 / 9</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-4" data-slug="p4-outcomes">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P5 10 Phase 课程地图
+       ========================================= -->
+  <div class="poster-frame" id="p5">
+    <div class="label">P5 结构 <em>· 10 个 Phase 全景图</em></div>
+    <div class="poster-scaler">
+      <div class="poster p5" id="poster-5">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>7 模块全景</div>
+          <h2>4 小时不是碎片化学习<br>是一路从零装到<span class="hl">真实实操</span></h2>
+
+          <div class="hero-strip">
+            <div class="hero-card">
+              <div class="hero-kicker">4h · offline</div>
+              <div class="hero-big"><span class="n">7</span><span class="l">个连续模块 + L00 预习</span></div>
+              <div class="hero-desc">每 30 分钟一个模块接着上 — 从 AI 认知到两轮真实实操，中间还塞了 30 分钟 Networking。</div>
+            </div>
+            <div class="focus-card">
+              <div class="focus-kicker">what you actually do</div>
+              <div class="focus-desc">前半段装机 + 看老师跑 Demo，后半段两轮 Workshop — 第二轮用你自己的真实工作素材。</div>
+              <div class="focus-pills">
+                <span>AI 认知</span>
+                <span>装机 Quest</span>
+                <span>Skill 地图</span>
+                <span>Live Demo</span>
+                <span>2 轮 Workshop</span>
+                <span>Networking</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="phases">
+            <div class="ph"><div class="badge" style="background:#FF914D">L1</div><div class="info"><div class="meta">00:00 - 00:30</div><h5>AI 基础认知</h5><p>LLM · Agent · MCP · Skills 一次搞清</p></div></div>
+            <div class="ph key"><div class="badge" style="background:#E84142">L2</div><div class="info"><div class="meta">00:30 - 01:00</div><h5>OpenClaw 装机</h5><p>AI 小花 Quest + Tutor backup · 6 步</p></div></div>
+            <div class="ph"><div class="badge" style="background:#6366f1">L3</div><div class="info"><div class="meta">01:00 - 01:30</div><h5>常用资源 & Skill</h5><p>Skill 地图 · 怎么让 Agent 按你风格干活</p></div></div>
+            <div class="ph key"><div class="badge" style="background:#8b5cf6">L4</div><div class="info"><div class="meta">01:30 - 02:00</div><h5>Live Demo</h5><p>按城市 / 行业定制 · 老师现场跑一遍</p></div></div>
+            <div class="ph"><div class="badge" style="background:#10b981">L5</div><div class="info"><div class="meta">02:00 - 02:30</div><h5>Workshop 基础</h5><p>跟练一遍 · Tutor 全程陪跑</p></div></div>
+            <div class="ph"><div class="badge" style="background:#f59e0b">L6</div><div class="info"><div class="meta">02:30 - 03:00</div><h5>Networking</h5><p>30 分钟跨行业交流 · 茶歇</p></div></div>
+            <div class="ph key"><div class="badge" style="background:#FF914D">L7</div><div class="info"><div class="meta">03:00 - 04:00</div><h5>Workshop 进阶</h5><p>60 分钟 · 用你自己的真实工作素材</p></div></div>
+            <div class="ph"><div class="badge" style="background:#64748b">L0</div><div class="info"><div class="meta">课前 · 30min</div><h5>预习自学</h5><p>Mac / WSL2 / Terminal / API Key 5 件事</p></div></div>
+          </div>
+
+          <div class="p-brand">
+            <div class="logo">匠人 <em>AI</em></div>
+            <div class="right">AI ENGINEER · P5 / 9</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-5" data-slug="p5-roadmap">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P6 工具栈（深色款）
+       ========================================= -->
+  <div class="poster-frame" id="p6">
+    <div class="label">P6 工具 <em>· 深色款 / 真实工具名</em></div>
+    <div class="poster-scaler">
+      <div class="poster p6" id="poster-6">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>ECOSYSTEM · 2025</div>
+          <div class="eyebrow">
+            <span class="line"></span>
+            <span class="txt">openclaw stack</span>
+            <span class="line"></span>
+          </div>
+          <h2>OpenClaw 能接的<br>这些<em>主流工具</em></h2>
+          <p class="lead">开源 AI Agent 装好之后不是孤岛 — 它能连你现在已经用的 LLM、社群工具、自动化平台，让它们在一个 Agent 里一起干活。</p>
+
+          <div class="stack-tags">
+            <span>开源 Agent</span>
+            <span>LLM</span>
+            <span>协议</span>
+            <span>即时通讯</span>
+            <span>自动化</span>
+          </div>
+
+          <div class="tool-grid">
+            <div class="tool hot"><div class="top"><div class="idx">01</div></div><div class="name">OpenClaw</div><div class="cat">Agent Core</div></div>
+            <div class="tool hot"><div class="top"><div class="idx">02</div></div><div class="name">Claude</div><div class="cat">LLM</div></div>
+            <div class="tool"><div class="top"><div class="idx">03</div></div><div class="name">OpenAI</div><div class="cat">LLM</div></div>
+            <div class="tool"><div class="top"><div class="idx">04</div></div><div class="name">Gemini</div><div class="cat">LLM</div></div>
+            <div class="tool"><div class="top"><div class="idx">05</div></div><div class="name">Anthropic API</div><div class="cat">API</div></div>
+            <div class="tool"><div class="top"><div class="idx">06</div></div><div class="name">WhatsApp</div><div class="cat">Messaging</div></div>
+            <div class="tool"><div class="top"><div class="idx">07</div></div><div class="name">Telegram</div><div class="cat">Messaging</div></div>
+            <div class="tool hot"><div class="top"><div class="idx">08</div></div><div class="name">MCP Server</div><div class="cat">协议</div></div>
+            <div class="tool"><div class="top"><div class="idx">09</div></div><div class="name">ClawHub</div><div class="cat">Plugin</div></div>
+            <div class="tool"><div class="top"><div class="idx">10</div></div><div class="name">Node 22+</div><div class="cat">Runtime</div></div>
+            <div class="tool"><div class="top"><div class="idx">11</div></div><div class="name">pnpm</div><div class="cat">PackageMgr</div></div>
+            <div class="tool"><div class="top"><div class="idx">12</div></div><div class="name">WSL2</div><div class="cat">Windows</div></div>
+            <div class="tool"><div class="top"><div class="idx">13</div></div><div class="name">Terminal</div><div class="cat">Interface</div></div>
+            <div class="tool"><div class="top"><div class="idx">14</div></div><div class="name">Skills</div><div class="cat">扩展</div></div>
+            <div class="tool"><div class="top"><div class="idx">15</div></div><div class="name">n8n</div><div class="cat">自动化</div></div>
+          </div>
+
+          <div class="bottom-note">开源 + MIT 协议 + 奥地利开发者 Peter Steinberger 发起 — GitHub 已经 <b>68K+ 星</b>。重点是装在你自己电脑上。</div>
+
+          <div class="p-brand">
+            <div class="logo">匠人 <em>AI</em></div>
+            <div class="right">AI ENGINEER · P6 / 9</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-6" data-slug="p6-stack">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P7 学员反馈（软性）
+       ========================================= -->
+  <div class="poster-frame" id="p7">
+    <div class="label">P7 反馈 <em>· 软性案例 / 不编造数字</em></div>
+    <div class="poster-scaler">
+      <div class="poster p7" id="poster-7">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>课后反馈</div>
+          <h2>蛮多同学说走出会场<br>电脑里就<span class="hl">多了个 Agent</span></h2>
+
+          <div class="quotes">
+            <div class="q">
+              <p class="txt">以前装开发工具我都放弃了 3 次，这次 Tutor 和 AI 小花一起在旁边，4 小时就跑通了第一条指令</p>
+              <div class="who">— 销售 · 悉尼 · 课后当天</div>
+            </div>
+            <div class="q">
+              <p class="txt">我把上周客户邮件丢给它，它真的写出来我能直接发的版本 — 只是之前我从来没想过自己能装这种工具</p>
+              <div class="who">— 保险顾问 · 墨尔本 · 课后一周</div>
+            </div>
+            <div class="q">
+              <p class="txt">Networking 那 30 分钟意外有用，交换了几个 Prompt 和 Skill 思路，回去就用上了</p>
+              <div class="who">— 行政 · 布里斯班 · 课后三天</div>
+            </div>
+          </div>
+
+          <div class="p-brand">
+            <div class="logo">匠人 <em>AI</em></div>
+            <div class="right">AI ENGINEER · P7 / 9</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-7" data-slug="p7-feedback">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P8 时间 + 形式
+       ========================================= -->
+  <div class="poster-frame" id="p8">
+    <div class="label">P8 形式 <em>· 课程配置</em></div>
+    <div class="poster-scaler">
+      <div class="poster p8" id="poster-8">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>这 4 小时是什么</div>
+          <h2>不只是 4 小时听课<br>是<span class="hl">带走一个能用的 Agent</span></h2>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="num">4<em>小时</em></div>
+              <div class="lbl">线下沉浸式 · 一次到位</div>
+            </div>
+            <div class="stat">
+              <div class="num">7<em>模块</em></div>
+              <div class="lbl">认知 · 装机 · Demo · 实操</div>
+            </div>
+            <div class="stat">
+              <div class="num">2<em>轮</em></div>
+              <div class="lbl">Workshop · 第二轮用你自己素材</div>
+            </div>
+            <div class="stat">
+              <div class="num">1<em>场</em></div>
+              <div class="lbl">Live Demo · 按行业定制</div>
+            </div>
+          </div>
+
+          <div class="format-list">
+            <h4>走的时候你带走</h4>
+            <ul>
+              <li>装好的 OpenClaw + 所有配置</li>
+              <li>2 次真实素材实操经验</li>
+              <li>常用 Skill 地图 + 模板</li>
+              <li>可复用 Prompt 配置包</li>
+              <li>工作坊专属用户社群</li>
+              <li>跨行业学员人脉 + Networking</li>
+            </ul>
+          </div>
+
+          <div class="p-brand">
+            <div class="logo">匠人 <em>AI</em></div>
+            <div class="right">AI ENGINEER · P8 / 9</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-8" data-slug="p8-format">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P9 软性引导
+       ========================================= -->
+  <div class="poster-frame" id="p9">
+    <div class="label">P9 引导 <em>· 软性收尾 / 无二维码无微信</em></div>
+    <div class="poster-scaler">
+      <div class="poster p9" id="poster-9">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-dots bl"></div>
+
+          <div class="p-tag" style="margin:0 auto"><span class="dot"></span>READY ?</div>
+
+          <div class="big-q">如果今年只打算花一次时间<br>真的把 AI 装进你的工作——</div>
+
+          <div class="giant"><em>4</em> 小时</div>
+
+          <div class="sub-hook">
+            来装上你自己的<br>第一个 AI Agent
+          </div>
+
+          <div class="arrow">
+            <span class="arr">→</span>
+            <span>搜「匠人 AI · OpenClaw 工作坊」</span>
+          </div>
+
+          <div class="note">JIANGREN.COM.AU &nbsp;·&nbsp; OFFLINE WORKSHOP</div>
+
+          <div class="p-brand">
+            <div class="logo">匠人 <em>AI</em></div>
+            <div class="right">AI ENGINEER · P9 / 9</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-9" data-slug="p9-cta">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P10 第五期升级对比
+       ========================================= -->
+  <div class="poster-frame" id="p10">
+    <div class="label">P10 升级 <em>· V1→V2 数据对比</em></div>
+    <div class="poster-scaler">
+      <div class="poster p10" id="poster-10">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>OpenClaw · 是什么</div>
+          <h2>OpenClaw<br><em>= 装在你电脑上的开源 Agent</em></h2>
+          <p class="lead">不是一个 ChatGPT 复刻品 — 是 2025 年 11 月奥地利开发者 Peter Steinberger 发起的开源 AI Agent 项目。装好之后在本地跑，能接你所有常用 LLM，能帮你干真实工作里的事。</p>
+
+          <div class="headline-bar">
+            <div class="mega">
+              <div class="big">68K⭐</div>
+              <div class="txt">GitHub Star<br>MIT 协议 · 完全开源</div>
+            </div>
+          </div>
+
+          <div class="vs">
+            <div class="side old">
+              <div class="ver">Cloud AI</div>
+              <div class="big">聊天框</div>
+              <div class="items">
+                所有对话上传<br>
+                不能装 Skill<br>
+                不能接你的文件<br>
+                一停更你就失业
+              </div>
+            </div>
+            <div class="arrow-col"><span>→</span></div>
+            <div class="side new">
+              <div class="ver">OpenClaw ✨</div>
+              <div class="big">本地跑</div>
+              <div class="items">
+                <strong>装在你电脑</strong><br>
+                <strong>能接本地文件</strong><br>
+                自定义 Skill 扩展<br>
+                开源 · 不依赖某一家
+              </div>
+            </div>
+          </div>
+
+          <div class="delta-row">
+            <div class="delta"><div class="num">邮件</div><div class="lbl">批量回复</div></div>
+            <div class="delta"><div class="num">文档</div><div class="lbl">一键总结</div></div>
+            <div class="delta"><div class="num">材料</div><div class="lbl">自动整理</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-10" data-slug="p10-upgrade">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P11 能力升级矩阵
+       ========================================= -->
+  <div class="poster-frame" id="p11">
+    <div class="label">P11 矩阵 <em>· 学完多会做什么</em></div>
+    <div class="poster-scaler">
+      <div class="poster p11" id="poster-11">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>学 AI 的三种方式</div>
+          <h2>线上 vs 自学 vs 线下<br>为什么选<span class="hl">线下工作坊</span></h2>
+          <p class="lead">看视频容易忘，自学容易卡，线下 4 小时一次到位。</p>
+
+          <div class="matrix">
+            <div class="row">
+              <div class="dim">装机搞定</div>
+              <div class="v1">看视频：听过没装过<br>自学：卡在 Node 版本</div>
+              <div class="v2"><b>Tutor 当场装好</b><br>卡住 5 分钟内有人接手</div>
+            </div>
+            <div class="row">
+              <div class="dim">AI 小花 Quest</div>
+              <div class="v1">线上课：没有<br>自学：没有</div>
+              <div class="v2"><b>AI 主动带你装机</b><br>贴 output 做验证 · 6 步到位</div>
+            </div>
+            <div class="row">
+              <div class="dim">行业定制 Demo</div>
+              <div class="v1">通用教程<br>跟你的工作不搭</div>
+              <div class="v2"><b>按行业定制</b><br>销售 / 保险 / 房产 / 法务各不同</div>
+            </div>
+            <div class="row">
+              <div class="dim">你的真实素材</div>
+              <div class="v1">跟着老师抄一遍<br>回家还是不会用</div>
+              <div class="v2"><b>第二轮 Workshop 60 分钟</b><br>用你自己客户邮件 / 材料练</div>
+            </div>
+            <div class="row">
+              <div class="dim">Networking</div>
+              <div class="v1">线上：弹幕聊天<br>自学：一个人</div>
+              <div class="v2">现场 30 分钟<br>跨行业交换 Prompt 和思路</div>
+            </div>
+            <div class="row">
+              <div class="dim">持续陪跑</div>
+              <div class="v1">视频看完就结束<br>没人管你有没有装好</div>
+              <div class="v2"><b>用户社群 + 37 个平台资源</b><br>课后 2 周陪你把 Agent 玩熟</div>
+            </div>
+            <div class="row">
+              <div class="dim">走时带走的</div>
+              <div class="v1">笔记本上几页字</div>
+              <div class="v2"><b>装好的 Agent + 可复用配置</b><br>回去马上能用</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-11" data-slug="p11-matrix">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P12 RAG 深潜（最大模块 45 节）
+       ========================================= -->
+  <div class="poster-frame" id="p12">
+    <div class="label">P12 RAG <em>· 最大模块 45 节深潜</em></div>
+    <div class="poster-scaler">
+      <div class="poster p12" id="poster-12">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>L02 · AI 小花 Quest</div>
+          <h2>装机这 30 分钟<br><em>AI 小花 带你跑完</em></h2>
+          <p class="lead">这是整场工作坊独家的一块 — 不是老师站在台上讲一遍，是 AI 小花一对一跟你对话、每一步让你贴 output、不跑通不往下走。Tutor 在旁边做 5 分钟超时 backup。</p>
+
+          <div class="hero-strip">
+            <div class="hero-card">
+              <div class="hero-kicker">ai + human backup</div>
+              <div class="hero-big"><span class="n">6</span><span class="l">步装机 Quest</span></div>
+              <div class="hero-desc">AI 小花先说话、你做一步 → 贴 output → 它给你反馈 → 下一步。当场装不好不走。</div>
+              <div class="hero-points">
+                <span>AI 主动带节奏</span>
+                <span>贴 output 验证</span>
+                <span>Tutor backup</span>
+                <span>当场跑通</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-kicker">quest breakdown</div>
+              <div class="stat-desc">Mac / Windows-WSL2 两条路径，OS 不挡你。</div>
+              <div class="stat-grid">
+                <div class="stat"><div class="n">30</div><div class="l">分钟时长</div></div>
+                <div class="stat"><div class="n">6</div><div class="l">步骤</div></div>
+                <div class="stat"><div class="n">1:1</div><div class="l">AI 陪跑</div></div>
+                <div class="stat"><div class="n">5min</div><div class="l">Tutor backup</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rag-grid">
+            <div class="rag-card">
+              <div class="top"><div class="icon">1️⃣</div><h4>确认 OS</h4></div>
+              <p>Mac 直接走 / Windows 走 WSL2 · 15 秒搞定分流</p>
+            </div>
+            <div class="rag-card">
+              <div class="top"><div class="icon">2️⃣</div><h4>Node ≥ 22</h4></div>
+              <p>nvm 装 / 已装就升级 · 贴 `node -v` 验证</p>
+            </div>
+            <div class="rag-card">
+              <div class="top"><div class="icon">3️⃣</div><h4>装 OpenClaw</h4></div>
+              <p>npm install / pnpm · AI 小花帮你辨识报错</p>
+            </div>
+            <div class="rag-card">
+              <div class="top"><div class="icon">4️⃣</div><h4>验证 + API Key + 第一条</h4></div>
+              <p>--version 验证 · 配 LLM Key · 发第一条指令</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-12" data-slug="p12-rag">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P13 Agent 五层拆解
+       ========================================= -->
+  <div class="poster-frame" id="p13">
+    <div class="label">P13 Agent <em>· 五层深度拆解</em></div>
+    <div class="poster-scaler">
+      <div class="poster p13" id="poster-13">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>双层教学法 · 独家</div>
+          <h2>AI + 人类<br>教你装 AI — <em>双保险</em></h2>
+          <p class="lead">这是整场工作坊的底层设计逻辑：AI 小花主要教，人类 Tutor 做兜底。AI 能一对一陪 15 个人不累、人类 Tutor 处理 AI 搞不定的边缘情况 — 合起来一个都不落。</p>
+
+          <div class="hero-strip">
+            <div class="hero-card">
+              <div class="hero-kicker">dual-layer</div>
+              <div class="hero-big"><span class="n">2</span><span class="l">层教学结构</span></div>
+              <div class="hero-desc">AI 小花在上层做"标准化 1:1 带练"，人类 Tutor 在下层做"异常 case + 情绪支持"。</div>
+            </div>
+            <div class="reason-card">
+              <div class="reason-kicker">why it works</div>
+              <div class="reason-desc">装工具这件事，传统上靠一个人类讲师讲 20 个人听 — 结果就是 15 个装不上。</div>
+              <ul class="reason-points">
+                <li>AI 小花能同时陪所有人跑 Quest</li>
+                <li>Tutor 5 分钟内接手解决卡点</li>
+                <li>课后群持续答疑 + 两周陪跑</li>
+                <li>你一个都不会被落下</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="layers">
+            <div class="layer">
+              <div class="badge" style="background:#FF914D">AI</div>
+              <div><div class="meta">upper layer</div><h4>AI 小花 · Quest 主讲</h4><p>主动带节奏 · 贴 output 验证 · 1:1 陪跑所有学员</p></div>
+            </div>
+            <div class="layer">
+              <div class="badge" style="background:#E84142">HUM</div>
+              <div><div class="meta">backup layer</div><h4>人类 Tutor · 兜底</h4><p>5 分钟超时接手 · 处理边缘 case · 情绪支持</p></div>
+            </div>
+            <div class="layer">
+              <div class="badge" style="background:#10b981">GRP</div>
+              <div><div class="meta">after-class</div><h4>工作坊用户社群</h4><p>持续答疑 · Prompt 交换 · 2 周陪你把 Agent 玩熟</p></div>
+            </div>
+            <div class="layer">
+              <div class="badge" style="background:#6366f1">PLT</div>
+              <div><div class="meta">platform support</div><h4>平台 37 个配套资源</h4><p>16 章 Learn · 18 个 Prompt Lab · 3 篇 Wiki 随时复习</p></div>
+            </div>
+            <div class="layer">
+              <div class="badge" style="background:#f59e0b">LIVE</div>
+              <div><div class="meta">live demo</div><h4>老师现场 Demo</h4><p>按城市 / 行业定制 · 真实业务场景演示一遍</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-13" data-slug="p13-agent">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P14 适合谁学
+       ========================================= -->
+  <div class="poster-frame" id="p14">
+    <div class="label">P14 受众 <em>· 目标人群</em></div>
+    <div class="poster-scaler">
+      <div class="poster p14" id="poster-14">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>适合谁来</div>
+          <h2>这六类职场人<br>学完<em>马上能用</em></h2>
+
+          <div class="audience">
+            <div class="aud">
+              <div class="emoji">💼</div>
+              <div>
+                <h4>销售 BD</h4>
+                <p>客户跟进邮件批量回复 · 开场白 / Proposal 自动生成 · CRM 记录整理</p>
+              </div>
+            </div>
+            <div class="aud">
+              <div class="emoji">📣</div>
+              <div>
+                <h4>市场 / 行政</h4>
+                <p>月报 / 周报一键总结 · 活动文案批量产出 · 会议纪要自动整理</p>
+              </div>
+            </div>
+            <div class="aud">
+              <div class="emoji">🏠</div>
+              <div>
+                <h4>房产中介</h4>
+                <p>项目材料 PPT 自动整理 · 客户询价邮件回复 · 合同条款提取对比</p>
+              </div>
+            </div>
+            <div class="aud">
+              <div class="emoji">🛡️</div>
+              <div>
+                <h4>保险 / 法务</h4>
+                <p>客户沟通自动化 · 保单条款抽取 · 合规文档审阅 · 风险点标注</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-14" data-slug="p14-audience">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P15 68 个 Lab 分布
+       ========================================= -->
+  <div class="poster-frame" id="p15">
+    <div class="label">P15 Lab <em>· 68 个互动练习</em></div>
+    <div class="poster-scaler">
+      <div class="poster p15" id="poster-15">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>4 小时完整时间线</div>
+          <h2>这 4 小时<br><em>每一格都在干实事</em></h2>
+          <p class="lead">单次线下课不是压缩版的水课 — 是 7 个模块按节奏一路推进。开场 30 分钟讲清 AI 认知，后面全是动手。</p>
+
+          <div class="hero-strip">
+            <div class="hero-card">
+              <div class="hero-kicker">240 min · offline</div>
+              <div class="hero-big"><span class="n">4</span><span class="l">小时 · 一次到位</span></div>
+              <div class="hero-desc">从 00:00 到 04:00 — 认知、装机、Skill、Demo、两轮实操、Networking 一次跑完。</div>
+              <div class="hero-pills">
+                <span>认知</span>
+                <span>Quest</span>
+                <span>Skill</span>
+                <span>Demo</span>
+                <span>Workshop</span>
+                <span>Network</span>
+              </div>
+            </div>
+            <div class="tutor-card">
+              <div class="tutor-kicker">support</div>
+              <div class="hero-big"><span class="n">1:1</span><span class="l">AI + Tutor 双陪跑</span></div>
+              <div class="tutor-desc">AI 小花主讲 Quest，人类 Tutor 做 5min backup — 你装不好的那条坑 Tutor 都见过。</div>
+              <ul class="tutor-points">
+                <li>AI 主动</li>
+                <li>Tutor 接</li>
+                <li>群里问</li>
+                <li>2 周陪</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lab-grid">
+            <div class="lab-cat">
+              <div class="top"><h4>L01 · AI 认知</h4><div class="cnt">00:00</div></div>
+              <p>LLM / Agent / MCP / Skills 搞清 — 跟同事聊 AI 不再接不上话</p>
+            </div>
+            <div class="lab-cat">
+              <div class="top"><h4>L02 · 装机 Quest</h4><div class="cnt">00:30</div></div>
+              <p>AI 小花带你 6 步装完 · 当场跑通第一条指令</p>
+            </div>
+            <div class="lab-cat">
+              <div class="top"><h4>L03 · Skill 地图</h4><div class="cnt">01:00</div></div>
+              <p>常用 Skill · 怎么让 Agent 按你风格 / 格式 / 流程工作</p>
+            </div>
+            <div class="lab-cat">
+              <div class="top"><h4>L04 · Live Demo</h4><div class="cnt">01:30</div></div>
+              <p>老师按行业现场跑一遍真实业务场景</p>
+            </div>
+            <div class="lab-cat">
+              <div class="top"><h4>L05+L06 · Workshop 基础 + Networking</h4><div class="cnt">02:00</div></div>
+              <p>跟练 30min · Networking 30min 跨行业交流</p>
+            </div>
+            <div class="lab-cat">
+              <div class="top"><h4>L07 · Workshop 进阶</h4><div class="cnt">03:00</div></div>
+              <p>60 分钟 · 用你自己的真实工作素材练</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-15" data-slug="p15-labs">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P16 完整时间线
+       ========================================= -->
+  <div class="poster-frame" id="p16">
+    <div class="label">P16 时间线 <em>· 从学会到就业</em></div>
+    <div class="poster-scaler">
+      <div class="poster p16" id="poster-16">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>走时带走什么</div>
+          <h2>4 小时结束<em>不是两手空空</em><br>是带走 6 件真东西</h2>
+          <p class="lead">这不是听完课签个到的工作坊 — 每一项都是实打实能带回家继续用的。</p>
+
+          <div class="timeline">
+            <div class="tl-item active">
+              <div class="week">01</div>
+              <h4>装好的 OpenClaw</h4>
+              <p>你电脑里已经跑通的完整环境 · Node + API Key + 配置全齐</p>
+            </div>
+            <div class="tl-item active">
+              <div class="week">02</div>
+              <h4>2 次真实素材实操经验</h4>
+              <p>第一轮跟练 · 第二轮用你自己的客户邮件 / 材料 / 报告</p>
+            </div>
+            <div class="tl-item active">
+              <div class="week">03</div>
+              <h4>常用 Skill 地图</h4>
+              <p>列清楚哪些 Skill 该装 · 怎么让 Agent 按你风格工作</p>
+            </div>
+            <div class="tl-item active">
+              <div class="week">04</div>
+              <h4>可复用 Prompt 配置包</h4>
+              <p>老师整理的业务场景 Prompt · 换关键词直接套用</p>
+            </div>
+            <div class="tl-item final">
+              <div class="week">05+06</div>
+              <h4>工作坊社群 + 跨行业人脉</h4>
+              <p>用户群持续答疑 · Networking 现场认识的人 · 2 周陪跑</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-16" data-slug="p16-timeline">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P17 7 大实战项目
+       ========================================= -->
+  <div class="poster-frame" id="p17">
+    <div class="label">P17 项目 <em>· 7 个能放简历的项目</em></div>
+    <div class="poster-scaler">
+      <div class="poster p17" id="poster-17">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>Live Demo · 行业定制</div>
+          <h2>每期 Demo<br><em>按你的城市行业挑</em></h2>
+
+          <div class="proj-list">
+            <div class="proj"><div class="num">01</div><div><h4>悉尼房产期</h4><p>客户询价邮件批量回复 · 项目材料 PPT 自动整理 · 合同关键条款抽取</p></div></div>
+            <div class="proj"><div class="num">02</div><div><h4>墨尔本保险期</h4><p>客户沟通记录自动总结 · 保单条款对比 · 风险点标注 · 回访邮件批量生成</p></div></div>
+            <div class="proj"><div class="num">03</div><div><h4>销售通用期</h4><p>客户 lead 自动筛选 · 跟进邮件个性化生成 · CRM 记录整理 · Weekly Report</p></div></div>
+            <div class="proj"><div class="num">04</div><div><h4>内容创作期</h4><p>小红书 / 公众号批量出文 · 素材库整理 · 一键多平台改版 · SEO 关键词植入</p></div></div>
+            <div class="proj"><div class="num">05</div><div><h4>行政办公期</h4><p>会议纪要自动整理 · 邮件分类 · 日程规划 · 月报周报一键出</p></div></div>
+            <div class="proj"><div class="num">06</div><div><h4>法务合规期</h4><p>合同文档审阅 · 条款抽取对比 · 合规清单生成 · 客户信息脱敏</p></div></div>
+            <div class="proj"><div class="num">07</div><div><h4>报名前问清楚本期是哪个 👀</h4><p>报名页有当期 Demo 行业 · 不确定的话直接问工作人员</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-17" data-slug="p17-projects">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P18 翻转课堂
+       ========================================= -->
+  <div class="poster-frame" id="p18">
+    <div class="label">P18 翻转 <em>· 学习方式差异化</em></div>
+    <div class="poster-scaler">
+      <div class="poster p18" id="poster-18">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>Tutor 三层保险</div>
+          <h2>AI + Tutor + 社群<br><em>三层陪跑机制</em></h2>
+          <p class="lead">装工具这件事最容易"差一行命令卡一个小时" — 所以这门课设计了 3 层接力，保证你不会一个人在家对着报错发呆。</p>
+
+          <div class="flip">
+            <div class="flip-side old">
+              <h3>普通线上课</h3>
+              <div class="step" data-n="①">看完视频自己装</div>
+              <div class="step" data-n="②">卡住了打开搜索</div>
+              <div class="step" data-n="③">Stack Overflow 看 30 分钟</div>
+              <div class="step" data-n="④">还没装上就放弃了</div>
+            </div>
+            <div class="flip-arrow">→</div>
+            <div class="flip-side new">
+              <h3>OpenClaw 工作坊</h3>
+              <div class="step" data-n="①">AI 小花一对一带跑</div>
+              <div class="step" data-n="②">5min 超时 Tutor 接手</div>
+              <div class="step" data-n="③">现场装不好不让走</div>
+              <div class="step" data-n="④">课后群 2 周持续陪</div>
+            </div>
+          </div>
+
+          <div class="stat-bar">
+            <div class="s"><div class="n">1:1</div><div class="l">AI 带练</div></div>
+            <div class="s"><div class="n">5min</div><div class="l">Tutor 接手</div></div>
+            <div class="s"><div class="n">2周</div><div class="l">课后陪跑</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-18" data-slug="p18-flipped">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P19 P3 职业孵化
+       ========================================= -->
+  <div class="poster-frame" id="p19">
+    <div class="label">P19 P3 <em>· 12 周真实项目</em></div>
+    <div class="poster-scaler">
+      <div class="poster p19" id="poster-19">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>报名解锁平台资源</div>
+          <h2>4 小时后还没完<em>—</em><br>37 个平台资源继续陪你</h2>
+          <p class="lead">大多数人 2 周内才真的把 OpenClaw 玩溜。工作坊之外，报名同学解锁这批平台资源陪你过这段时间。</p>
+
+          <div class="hero-row">
+            <div class="hero-card">
+              <div class="hero-kicker">platform package</div>
+              <div class="hero-big"><span class="n">37</span><span class="l">个免费资源</span></div>
+              <div class="hero-desc">不是硬凑数 — 每一项都是平台已上架能直接打开练的真资源。</div>
+              <div class="hero-pills">
+                <span>Learn 章节</span>
+                <span>Prompt Lab</span>
+                <span>Wiki</span>
+                <span>社群</span>
+                <span>Tutor</span>
+              </div>
+            </div>
+            <div class="proof-card">
+              <div class="proof-kicker">why they matter</div>
+              <div class="hero-big"><span class="n">2</span><span class="l">周后才玩熟</span></div>
+              <div class="proof-desc">工作坊是"装好 + 跑通"的第一步，真正玩熟一般还要两周。这批资源陪你过这段路。</div>
+              <ul class="proof-points">
+                <li>16 章 OpenClaw Learn · 理论 + 实操</li>
+                <li>18 个 Prompt Lab · 浏览器内即时练</li>
+                <li>3 篇深度 Wiki · 踩坑经验 + FAQ</li>
+                <li>工作坊用户社群 · Prompt 持续交换</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p3-flow">
+            <div class="p3-card">
+              <div class="icon">📚</div>
+              <h4>16 章 OpenClaw Learn</h4>
+              <p>从认知到进阶 · 每章带案例 · 随时回看</p>
+            </div>
+            <div class="p3-card">
+              <div class="icon">🧪</div>
+              <h4>18 个 Prompt Lab</h4>
+              <p>浏览器里直接练 · 清晰任务 / 约束 / 风格拆解</p>
+            </div>
+            <div class="p3-card">
+              <div class="icon">📖</div>
+              <h4>3 篇 Wiki</h4>
+              <p>OpenClaw 常见坑 / Skill 最佳实践 / API Key 管理</p>
+            </div>
+            <div class="p3-card">
+              <div class="icon">🤝</div>
+              <h4>工作坊用户社群</h4>
+              <p>同期学员 + 之前几期的老学员 · 交换配置</p>
+            </div>
+            <div class="p3-card">
+              <div class="icon">🧑‍🏫</div>
+              <h4>Tutor 课后答疑</h4>
+              <p>群里随时 @ · 卡点 24h 内有人回</p>
+            </div>
+            <div class="p3-card">
+              <div class="icon">🚀</div>
+              <h4>Bootcamp 优惠券</h4>
+              <p>想深入的同学 · 后续课程专属价</p>
+            </div>
+          </div>
+
+          <div class="p3-bottom">
+            <div class="big">工作坊 + 平台资源 = 从装好到玩熟</div>
+            <div class="sub">4 小时给你"能用的 Agent"，2 周让你"真的天天在用"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-19" data-slug="p19-p3">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P20 技术升级对比
+       ========================================= -->
+  <div class="poster-frame" id="p20">
+    <div class="label">P20 技术 <em>· 12 维度技术升级</em></div>
+    <div class="poster-scaler">
+      <div class="poster p20" id="poster-20">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>报名前最常被问</div>
+          <h2>FAQ · 6 个高频问题<br><em>直接给答案</em></h2>
+          <p class="lead">报名前顾虑基本都在这 6 条里 · 如果还有别的问主页联系工作人员就行。</p>
+
+          <div class="stack-switch">
+            <div class="old-h">常见问题</div>
+            <div class="arrow">→</div>
+            <div class="new-h">短答案</div>
+          </div>
+
+          <div class="upgrade-grid">
+            <div class="up-card">
+              <div class="dim">没用过 AI</div>
+              <div class="body">
+                <div class="lane old"><div class="k">担心</div><div class="v">零基础能来吗</div></div>
+                <div class="lane new"><div class="k">可以</div><div class="v">用过 ChatGPT / 豆包 / Claude 任一就行</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">带什么</div>
+              <div class="body">
+                <div class="lane old"><div class="k">担心</div><div class="v">要准备什么</div></div>
+                <div class="lane new"><div class="k">带</div><div class="v">笔记本 + LLM Key + 你真实工作素材</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">Windows 行吗</div>
+              <div class="body">
+                <div class="lane old"><div class="k">担心</div><div class="v">只能 Mac 吗</div></div>
+                <div class="lane new"><div class="k">Win</div><div class="v">WSL2 + Ubuntu · 课前预习会带你装好</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">API Key</div>
+              <div class="body">
+                <div class="lane old"><div class="k">担心</div><div class="v">没 Key 怎么办</div></div>
+                <div class="lane new"><div class="k">备用</div><div class="v">现场发共享测试 Key · 一人一份</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">装机花钱吗</div>
+              <div class="body">
+                <div class="lane old"><div class="k">担心</div><div class="v">要额外订阅吗</div></div>
+                <div class="lane new"><div class="k">不要</div><div class="v">OpenClaw 开源 MIT · 只有 LLM 按量付费</div></div>
+              </div>
+            </div>
+            <div class="up-card">
+              <div class="dim">能线上参加吗</div>
+              <div class="body">
+                <div class="lane old"><div class="k">担心</div><div class="v">外地能来吗</div></div>
+                <div class="lane new"><div class="k">不能</div><div class="v">这是线下工作坊 · Tutor 面对面陪跑</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-note">不是故意装神秘 — 这门课的核心价值就是 <b>Tutor 当场陪你装好</b>，线上没法做到。</div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-20" data-slug="p20-techupgrade">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P21 FAQ 精华
+       ========================================= -->
+  <div class="poster-frame" id="p21">
+    <div class="label">P21 FAQ <em>· 消除顾虑</em></div>
+    <div class="poster-scaler">
+      <div class="poster p21" id="poster-21">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>课前 30 分钟预习</div>
+          <h2>来上课前<br><span class="hl">请先搞定这 5 件事</span></h2>
+          <p class="lead">工作坊 4 小时就这么多时间 · 把这 5 件事课前做好，到场直接进 Quest 节省装环境的 time。</p>
+
+          <div class="faq-list">
+            <div class="faq">
+              <div class="q">① 笔记本 + 系统确认</div>
+              <div class="a">Mac 最省事直接来 · Windows 需要装 WSL2 + Ubuntu（报名页有视频指南 · 15 分钟搞定）</div>
+            </div>
+            <div class="faq">
+              <div class="q">② 装好 Terminal / 命令行</div>
+              <div class="a">Mac 内置 · Windows 就是 WSL2 的 Ubuntu 终端 · 能跑 `node -v` 就行</div>
+            </div>
+            <div class="faq">
+              <div class="q">③ 准备一个 LLM API Key</div>
+              <div class="a">Claude / OpenAI / Gemini 任一都行 · 如果不熟悉现场发共享测试 Key · 但自己备一个更顺</div>
+            </div>
+            <div class="faq">
+              <div class="q">④ 带 2-3 份真实工作素材</div>
+              <div class="a">客户邮件 / 月报 / 合同 / 项目材料任一 · 第二轮 Workshop 就用这个练 · 越真实越有感</div>
+            </div>
+            <div class="faq">
+              <div class="q">⑤ 课前群里先打个招呼</div>
+              <div class="a">报名后会拉进预习群 · Tutor 提前把大家 OS 和需求摸一遍 · 到场不用再问</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-21" data-slug="p21-faq">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P22 ISA 贯穿项目
+       ========================================= -->
+  <div class="poster-frame" id="p22">
+    <div class="label">P22 ISA <em>· 贯穿全程的成长项目</em></div>
+    <div class="poster-scaler">
+      <div class="poster p22" id="poster-22">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>翻转对比</div>
+          <h2>传统 AI 课 vs<br>OpenClaw <em>翻转工作坊</em></h2>
+
+          <div class="isa-flow">
+            <div class="isa-step">
+              <div class="phase" style="color:#94a3b8">传统 AI 课</div>
+              <h4>讲概念 → 看 PPT</h4>
+              <p>老师讲 2 小时 LLM / Agent / MCP 是什么 · 你点头</p>
+            </div>
+            <div class="isa-step">
+              <div class="phase" style="color:#FF914D">OpenClaw 工作坊</div>
+              <h4>直接装上 → 跑起来</h4>
+              <p>30 分钟 AI 认知铺底 · 剩下全在动手 · Quest 装机 · Live Demo</p>
+            </div>
+            <div class="isa-step">
+              <div class="phase" style="color:#94a3b8">传统 AI 课</div>
+              <h4>跟着视频抄一遍</h4>
+              <p>对着屏幕复制命令 · 卡住了没人问 · 收藏夹又多一个视频</p>
+            </div>
+            <div class="isa-step">
+              <div class="phase" style="color:#FF914D">OpenClaw 工作坊</div>
+              <h4>Tutor 在你旁边</h4>
+              <p>AI 小花 1:1 陪跑 · Tutor 5 分钟接手 · 装不好不让走</p>
+            </div>
+            <div class="isa-step">
+              <div class="phase" style="color:#E84142">最大的不同</div>
+              <h4>用你自己的真实素材</h4>
+              <p>第二轮 Workshop 60 分钟 · 把你客户邮件 / 报告喂给 Agent</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-22" data-slug="p22-isa">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P23 Memory + Harness 独家模块
+       ========================================= -->
+  <div class="poster-frame" id="p23">
+    <div class="label">P23 独家 <em>· Memory System + Harness Engineering</em></div>
+    <div class="poster-scaler">
+      <div class="poster p23" id="poster-23">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>独家内容 · 2025</div>
+          <h2>两块独家模块<br>业内<em>找不到第二家</em></h2>
+          <p class="lead">市面上讲 AI 工具的课不少，但这两块独家 — 真的做过的学员都说"这是最值的部分"。</p>
+
+          <div class="exclusive-badge">🔥 AI 小花 Quest 装机 + 行业定制 Live Demo</div>
+
+          <div class="hero-row">
+            <div class="hero-card">
+              <div class="hero-kicker">exclusive modules</div>
+              <div class="hero-big"><span class="n">2</span><span class="l">大独家模块</span></div>
+              <div class="hero-desc">不是自夸 — 真的是工作坊行业里第一次把 AI Tutor 跟线下课结合。</div>
+            </div>
+            <div class="why-card">
+              <div class="why-kicker">why they matter</div>
+              <div class="why-desc">装工具 + 看行业案例 — 这两件事只有线下 + AI 双保险才做得出来。</div>
+              <ul class="why-points">
+                <li>Quest 让装机不再是瓶颈</li>
+                <li>Demo 让 AI 不再是抽象概念</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="modules">
+            <div class="mod memory">
+              <div class="phase-tag">L02 · AI 小花 QUEST 装机</div>
+              <h3>AI Tutor 主动带装机</h3>
+              <div class="desc">AI 小花先开口、每步验证 output · Tutor 做超时 backup — 双保险装机。</div>
+              <div class="topics">
+                <span class="topic">AI 主动对话</span>
+                <span class="topic">贴 output 验证</span>
+                <span class="topic">Mac / WSL2 分流</span>
+                <span class="topic">6 步到位</span>
+                <span class="topic">5min backup</span>
+              </div>
+            </div>
+
+            <div class="mod harness">
+              <div class="phase-tag">L04 · 行业定制 LIVE DEMO</div>
+              <h3>按城市 / 行业定制</h3>
+              <div class="desc">老师提前调研当期学员 · 现场跑一遍真实业务场景 · 每期都不一样。</div>
+              <div class="topics">
+                <span class="topic">悉尼房产</span>
+                <span class="topic">墨尔本保险</span>
+                <span class="topic">销售通用</span>
+                <span class="topic">法务合规</span>
+                <span class="topic">行政办公</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-note">Quest + Demo 不是加分项 — 是这 4 小时最有价值的两块，是<b>线上课永远做不到的事</b>。</div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-23" data-slug="p23-exclusive">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P24 JD 覆盖率
+       ========================================= -->
+  <div class="poster-frame" id="p24">
+    <div class="label">P24 JD <em>· 15 份真实 JD 对照</em></div>
+    <div class="poster-scaler">
+      <div class="poster p24" id="poster-24">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>OpenClaw 能接什么活</div>
+          <h2>装好之后<br>它能接<em>这 6 类任务</em></h2>
+          <p class="lead">不是纸上谈兵 — 这是现任学员每天在用的场景。第二轮 Workshop 就用你自己真实的任务练一遍。</p>
+
+          <div class="top-stats">
+            <div class="s"><div class="n">6</div><div class="l">真实场景</div></div>
+            <div class="s"><div class="n">0</div><div class="l">代码门槛</div></div>
+            <div class="s"><div class="n">4h</div><div class="l">全部练到</div></div>
+          </div>
+
+          <div class="skill-bars">
+            <div class="sk">
+              <div class="top-row"><h4>客户邮件批量回复</h4><div class="freq">销售 / 保险</div></div>
+              <div class="bar"><div class="fill" style="width:95%;background:var(--brand-orange)"></div></div>
+            </div>
+            <div class="sk">
+              <div class="top-row"><h4>销售报告 / 月报总结</h4><div class="freq">市场 / 管理</div></div>
+              <div class="bar"><div class="fill" style="width:90%;background:#6366f1"></div></div>
+            </div>
+            <div class="sk">
+              <div class="top-row"><h4>材料整理 / PPT 出初稿</h4><div class="freq">房产 / 行政</div></div>
+              <div class="bar"><div class="fill" style="width:90%;background:var(--brand-green)"></div></div>
+            </div>
+            <div class="sk">
+              <div class="top-row"><h4>内容生产 / 多平台改版</h4><div class="freq">市场 / 新媒体</div></div>
+              <div class="bar"><div class="fill" style="width:90%;background:#8b5cf6"></div></div>
+            </div>
+            <div class="sk">
+              <div class="top-row"><h4>客户沟通记录总结</h4><div class="freq">销售 / 客服</div></div>
+              <div class="bar"><div class="fill" style="width:88%;background:var(--brand-claw)"></div></div>
+            </div>
+            <div class="sk">
+              <div class="top-row"><h4>合同 / 文档审阅</h4><div class="freq">法务 / 合规</div></div>
+              <div class="bar"><div class="fill" style="width:85%;background:#f97316"></div></div>
+            </div>
+          </div>
+
+          <div class="companies">
+            <span>销售</span><span>市场</span><span>行政</span><span>房产</span><span>保险</span>
+            <span>法务</span><span>客服</span><span>内容</span><span>HR</span><span>管理</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-24" data-slug="p24-jd">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P25 薪资地图
+       ========================================= -->
+  <div class="poster-frame" id="p25">
+    <div class="label">P25 薪资 <em>· AI Engineer 年薪分布</em></div>
+    <div class="poster-scaler">
+      <div class="poster p25" id="poster-25">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>为什么是 4 小时</div>
+          <h2>4 小时线下<br>比 <em>1 个月视频</em>更划算</h2>
+          <p class="lead">很多人问"为啥不做个在线课"— 真相是：装机这件事，视频课解决不了卡点问题。</p>
+
+          <div class="salary-tiers">
+            <div class="tier">
+              <div class="range">1<em>个月</em></div>
+              <div class="level">视频课<span class="exp">自学 · 50% 装不上</span></div>
+            </div>
+            <div class="tier" style="border-color:var(--brand-yellow);box-shadow:0 0 20px rgba(255,206,68,0.2)">
+              <div class="range">4<em>小时</em></div>
+              <div class="level">工作坊<span class="exp">线下 · Tutor 当场装</span></div>
+            </div>
+            <div class="tier">
+              <div class="range">30<em>min</em></div>
+              <div class="level">Networking<span class="exp">加值 · 跨行业交换</span></div>
+            </div>
+          </div>
+
+          <div class="bottom-note">不是 4 小时塞了 1 个月的料 — 是 <b>把"装机 + 实操 + 答疑"一次做完</b>，省掉你自学时 80% 会卡住的地方。</div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-25" data-slug="p25-salary">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- =========================================
+       P26 公司薪资样本
+       ========================================= -->
+  <div class="poster-frame" id="p26">
+    <div class="label">P26 公司 <em>· 12 家公司薪资样本</em></div>
+    <div class="poster-scaler">
+      <div class="poster p26" id="poster-26">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>company snapshots</div>
+          <h2>这些公开样本里<br>AI 岗开到<em>什么区间</em>？</h2>
+          <p class="lead">这页只保留更适合展示的公开样本。没有稳定公开区间、或者容易误导的公司，我先删掉了。</p>
+
+          <div class="company-grid">
+            <div class="co"><div class="name">Google</div><div class="role">AI Platform Eng</div><div class="sal">$170-300K</div></div>
+            <div class="co"><div class="name">Meta</div><div class="role">AI Infra Eng</div><div class="sal">$180-330K</div></div>
+            <div class="co"><div class="name">Cursor</div><div class="role">AI Engineer</div><div class="sal">$180-320K</div></div>
+            <div class="co"><div class="name">Amazon</div><div class="role">AI/ML Eng</div><div class="sal">$150-280K</div></div>
+            <div class="co"><div class="name">Databricks</div><div class="role">LLM Engineer</div><div class="sal">$160-290K</div></div>
+            <div class="co"><div class="name">Scale AI</div><div class="role">AI Engineer</div><div class="sal">$150-250K</div></div>
+            <div class="co"><div class="name">Stripe</div><div class="role">AI Product Eng</div><div class="sal">$160-280K</div></div>
+            <div class="co"><div class="name">Vercel</div><div class="role">AI SDK Eng</div><div class="sal">$150-260K</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-26" data-slug="p26-company-salary">⬇ 下载 PNG</button>
+  </div>
+
+</div>
+
+<!-- 右侧小红书文案面板 -->
+<script src="./xhs-copy.js"></script>
+
+<!-- 每张海报自动注入课程标识 bar -->
+<script>
+  document.querySelectorAll('.p-inner').forEach(inner => {
+    if (inner.querySelector('.p-course-bar')) return;
+    const bar = document.createElement('div');
+    bar.className = 'p-course-bar';
+    bar.textContent = 'OPENCLAW · 4 小时装上自己的 AI Agent · 匠人 AI 线下工作坊';
+    inner.appendChild(bar);
+  });
+</script>
+
+<!-- html2canvas 下载 -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+  document.querySelectorAll('.dl-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const poster = document.getElementById(btn.dataset.target);
+      if (!poster) return;
+
+      const exportNode = poster.closest('.poster-scaler') || poster;
+      const exportPadding = 24;
+      const nodeWidth = exportNode.offsetWidth || 435;
+      const nodeHeight = exportNode.offsetHeight || 581;
+      const exportScale = nodeWidth ? 1242 / nodeWidth : 2;
+
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'fixed';
+      wrapper.style.left = '-99999px';
+      wrapper.style.top = '0';
+      wrapper.style.padding = `${exportPadding}px`;
+      wrapper.style.background = '#eef0f4';
+      wrapper.style.display = 'inline-block';
+      wrapper.style.zIndex = '-1';
+
+      const clone = exportNode.cloneNode(true);
+      clone.style.margin = '0';
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
+
+      const oldLabel = btn.textContent;
+      btn.textContent = '生成中...';
+      btn.disabled = true;
+
+      try {
+        const canvas = await html2canvas(wrapper, {
+          backgroundColor: '#eef0f4',
+          scale: exportScale,
+          useCORS: true,
+          allowTaint: true,
+          logging: false,
+          width: nodeWidth + exportPadding * 2,
+          height: nodeHeight + exportPadding * 2,
+          windowWidth: nodeWidth + exportPadding * 2,
+          windowHeight: nodeHeight + exportPadding * 2
+        });
+        const link = document.createElement('a');
+        link.download = `xhs-openclaw-${btn.dataset.slug}-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (e) {
+        console.error(e);
+        alert('导出失败：' + e.message);
+      } finally {
+        wrapper.remove();
+        btn.textContent = oldLabel;
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

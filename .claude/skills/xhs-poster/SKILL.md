@@ -17,11 +17,11 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 - 容器必须 `width: 1242px; height: 1660px; overflow: hidden;`
 
 ### 数量
-- **目标 25 张**（1 封面 + 24 配图）— 这是当前标准产出量
+- **目标 25 张 + 多版本封面变体**（标准 25 张 + P1B/P1C/P1D 等额外封面 = 28+ 张）
 - 参考实现：
-  - AI Engineer Bootcamp（25+ 张）：`curriculum/ai-engineer-bootcamp/public/xhs-posters/index.html`
-  - AI Adoption Bootcamp（25 张）：`curriculum/ai-adoption-bootcamp/public/xhs-posters/index.html`
-- 小红书需频繁换图，25 张可以让运营组合出 1-2 个月的发布素材
+  - AI Engineer Bootcamp（28 张）：`curriculum/ai-engineer-bootcamp/public/xhs-posters/index.html`
+  - AI Adoption Bootcamp（28 张）：`curriculum/ai-adoption-bootcamp/public/xhs-posters/index.html`
+- 小红书需频繁换图 + A/B 测试不同封面 → 多封面变体很重要
 - 不要少于 20 张 — 太少不够换
 
 ## 🎨 设计语言（对齐 quest-posters.html）
@@ -237,38 +237,57 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 | ISA 成长 | 贯穿项目 | 5 次升级时间线 |
 | 软性 CTA | 收尾引导 | 无二维码 |
 
-## 📋 标准 25 张海报蓝图（参考 AI Engineer / AI Adoption 实现）
+## 📋 标准 25 张海报蓝图（9 张通用骨架 + 16 张按课程定制）
+
+**⚠️ 重要：下面的 25 个槽位是结构骨架，不是内容清单。每门课的 P10-P25 必须根据课程自身特色重新设计主题，不要硬套。**
+
+### 通用骨架（P1-P9）— 每门课都有
 
 ```
 P1  封面 hook（情绪化痛点 + 课程 chip）
-P2  痛点对比（X 还在 vs ✅ 他们在做，6+6 条）
-P3  同事群对话（Slack 风格气泡，2-4 轮）
+P1B 共鸣版封面（可选 A/B 测试）
+P1C 升级版封面（可选 A/B 测试）
+P1D 角色版封面（可选 A/B 测试）
+P2  痛点对比（X 还在 vs ✅ 他们在做）
+P3  同事群对话（Slack 风格气泡）
 P4  4 大能力（4 张色块卡）
-P5  Phase 地图（10 / 4 个 Phase 色块）
-P6  工具栈（深色底，15+ 工具 pill）
+P5  Phase 地图（课程结构）
+P6  工具栈（深色底，技术/工具 pill）
 P7  学员反馈（3 条错落软性引言）
-P8  课程配置（4 大数字 + 6 项配套列表）
-P9  软性 CTA（无二维码，主页搜某关键词）
-─── 以上 9 张是基础，下面 16 张深度展开 ───
-P10 升级对比（V1→V2 数据，新增模块）
-P11 能力矩阵（V1 vs V2 6 维度对比表）
-P12 最大模块深潜（如 RAG 45 节 / 48 场景）
-P13 多层架构（如 Agent 5 层 / 7 独家模块）
-P14 适合谁学（4 类目标人群）
-P15 Lab 分布（按类型拆解柱状）
-P16 完整时间线（Week 1→24 时间线）
-P17 毕业项目 / 交付清单（编号列表）
-P18 学习方式 / 翻转课堂（4 卡或对比）
-P19 求职 / Demo Day（流程图 + 证书）
-P20 升级 / 标准切换（旧→新对比行）
-P21 FAQ 5 问（Q/A 卡）
-P22 方法论 / 项目成长（5 阶时间线）
-P23 独家模块（深色底，业内独有 2-3 块）
-P24 JD 覆盖率（条形进度 + 公司 logo）
-P25 薪资地图（3 档 + 公司薪资网格）
+P8  课程配置（4 大数字 + 配套列表）
+P9  软性 CTA（无二维码）
 ```
 
-每一张都要从 outline.json + curriculum.html 找真实数据填充，禁止编造。
+### 定制槽位（P10-P25）— 每门课不同主题
+
+**P10-P25 每张都要根据课程的"最独特卖点"去设计，不要所有课都用同一个主题。**
+
+#### 定制决策流程
+
+开工前必须先做这件事：
+1. 读 `outline.json` 找**最大的 Phase**（如 RAG 45 节 / 技术面试 88 节 / 运营场景 48 条）
+2. 读 `curriculum.html` 找**业内独有的模块**（如 Memory+Harness / Change Management / STAR 框架）
+3. 列出这门课对比竞品的 **3-5 个差异化卖点**
+4. 把这些卖点映射到 P10-P25 的 16 个槽位
+
+### 槽位定制原则（通用）
+
+- **P12 · 最大模块深潜** — 找 outline.json 里 lesson 数最多的 Phase，专门做一张
+- **P13 · 核心架构 / 方法论拆解** — 本课最有深度的那套体系
+- **P14 · 适合谁学** — 按本课目标人群写 4 类，不同课受众完全不同
+- **P15 · Lab 分布** — 按本课真实 Lab 数量和分类
+- **P16 · 完整时间线** — 课程实际周数 + 关键节点
+- **P22 · 本课的专属方法论** — 比如贯穿项目 / 核心框架 / 流程范式
+- **P23 · 独家模块** — 业内找不到第二家的 2 块内容，用深色底突出
+- **P24 · JD 覆盖** — 按**本课目标市场**的真实招聘公司挑，不要套用其他课的 company list
+- **P25 · 薪资** — 按**本课目标市场**的币种 + 薪资区间（US 美元 / 澳洲 AUD / 中国 RMB 等）
+
+### 每一张都要从真实数据填充
+
+不要编造。数据必须来自：
+- `outline.json` 的 phases / lessons 真实数字
+- `curriculum.html` 已整理好的对比表、时间线、FAQ
+- 外部真实来源（levels.fyi / McKinsey / Gartner 等），要标注出处
 
 ## 📝 三通道文案面板（必做）
 
@@ -282,6 +301,98 @@ P25 薪资地图（3 档 + 公司薪资网格）
 
 实现：用单独的 `xhs-copy.js` 文件存数据 + 注入逻辑（避免 inline script 被 linter 修改）。
 参考：`curriculum/ai-engineer-bootcamp/public/xhs-posters/xhs-copy.js`
+
+## 🏷️ 每张海报必须有课程标识 bar
+
+观众单张刷小红书时，看不到上下文 — 一张图必须自己说明白是什么课。
+
+**实现：**
+```css
+.p-course-bar {
+  position: absolute; left: 50%; top: 28px;
+  transform: translateX(-50%);
+  background: var(--brand-purple); color: #fff;
+  border: 2px solid var(--brand-dark);
+  border-radius: 100px; padding: 10px 26px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px; font-weight: 700; letter-spacing: 1.5px;
+  box-shadow: 4px 4px 0 var(--brand-dark);
+  white-space: nowrap; z-index: 10;
+}
+/* 暗色底海报上换黄底深字 */
+.p6 .p-course-bar, .p13 .p-course-bar, .p23 .p-course-bar, .p25 .p-course-bar {
+  background: var(--brand-yellow); color: var(--brand-dark);
+}
+/* 已有大 chip 的封面/CTA 隐藏 */
+.p1 .p-course-bar, .p1b .p-course-bar, .p1c .p-course-bar, .p1d .p-course-bar, .p9 .p-course-bar { display: none; }
+```
+
+**JS 自动注入：**
+```js
+document.querySelectorAll('.p-inner').forEach(inner => {
+  if (inner.querySelector('.p-course-bar')) return;
+  const bar = document.createElement('div');
+  bar.className = 'p-course-bar';
+  bar.textContent = 'AI ADOPTION · 让公司用好 AI · 匠人 AI 8 周课';
+  inner.appendChild(bar);
+});
+```
+
+文案格式：`课程英文 · 一句话角色 · 匠人 AI X 周课`。**必须包含一句话讲清这门课在教什么角色。**
+
+## 🆕 新职业 / 陌生岗位必备：P10 岗位 explainer
+
+像 "AI Adoption Specialist" 这种 2026 才火起来的岗位，大众完全不知道在做什么。
+**必须有一张 P10 海报专门解释这个岗位。** 结构：
+
+1. **一句话定义**（深色 bar，黄字 highlight）
+   - 例："AI Adoption Specialist = 公司里把 AI 工具变成业务结果的人"
+2. **A DAY IN THE ROLE**（4 件具体工作示例）
+   - 早上做什么 / 下午做什么 / 傍晚做什么 / 下周做什么
+   - 不要抽象描述，要具体场景："跟运营聊周报场景，发现一个能自动化的环节"
+3. **3 个 meta 卡片**：岗位名 / 年薪 / 门槛
+
+避免：抽象定义、官话、堆 buzzword。要让一个完全没听过这岗位的人看完就 get 到。
+
+## 🎨 高级设计 patterns（codex 在 Engineer 验证过）
+
+痛点对比 / 升级对比类海报必须用这套结构，不要平铺列表：
+
+| 元素 | 作用 | CSS 类名 |
+|------|------|---------|
+| **eyebrow** | h2 之上的小标题（虚线 + 大写关键词）| `.eyebrow .line + .eyebrow .txt` |
+| **lead** | h2 之下的引子段落（一句话补充语境）| `.lead` |
+| **col-head** | 列头复合结构（kicker + 多行 h3 + 子标题 + 编号 badge）| `.col-head + .kicker + h3 + .col-sub + .badge` |
+| **divider** | 中间 VS 旋转徽章 + 渐变虚线柱 | `.divider .bar + .divider .vs` |
+| **list 卡片化** | 列表项变成独立卡片，左侧 X / GO 角标 | `.col li::before` |
+| **bottom-note** | 海报底部黄阴影总结卡 | `.bottom-note` |
+
+参考完整实现：
+- AI Engineer P2: `curriculum/ai-engineer-bootcamp/public/xhs-posters/index.html` （搜 `.p2 .eyebrow`）
+- AI Adoption P2: `curriculum/ai-adoption-bootcamp/public/xhs-posters/index.html` （搜 `.p2 .eyebrow`）
+
+## 🎨 每门课要用自己的主题色 + 课程 bar 文案
+
+**不要让不同课程长得一样。** 新做一门课时：
+
+1. **选一个未被其他课用过的主色** — 查一下 `curriculum/` 下已存在的 xhs-posters 用的什么色，避开
+2. **CSS 变量直接替换** — 保留 `--brand-red/yellow/blue/dark`，新增 `--brand-XXX` 作为本课主色
+3. **课程标识 bar 文案公式**：
+   ```
+   课程英文 · 一句话讲清这是做什么的 · 匠人 AI X 周课
+   ```
+   中间那句必须说清角色/目标，不能只写课程名 + 周数 — 观众单看一张图才知道是啥。
+
+## 🎭 多版本封面（A/B 测试用）
+
+标准做 4 张封面（P1/P1B/P1C/P1D），每张主打不同角度：
+
+| 海报 | 角度 | 视觉特征 |
+|------|------|---------|
+| **P1** 默认 | 直接痛点 hook | 黄底标签 + 黑框 + 黄/红高亮 |
+| **P1B 共鸣版** | "你以为会用 X 就够了？" | 上下两张 xhs-card 对比（bad/good） |
+| **P1C 转岗版** | "从 A 到 B" | Before/After 两个 stage-card + 大箭头 |
+| **P1D 角色版** | "不会 X 你就 Y" | sticker-grid 旋转 + 深色底 |
 
 ## 🔌 本地预览端口（多课程并行）
 
@@ -338,7 +449,14 @@ cd curriculum/{bootcamp} && python3 -m http.server 80XX
 4. **写 AI 味文案** — 看到"在当今/深入探讨/全面掌握/comprehensive"立刻重写
 5. **放二维码或微信号** — 一次都不行，聚光直接拒审
 6. **编造学员数据** — 没真实数字就用软性表达，不要为了好看编"1000+ 学员"
-7. **字号低于 48px（正文）/ 100px（h2）** — 手机看不清 = 废图。海报内任何 < 48px 的正文都必须改大。最后必须写 `!important` CSS 兜底。**宁可删内容，不能缩字号。**
+7. **字号低于 36px（正文）/ 88px（h2）** — 手机看不清 = 废图。海报内 < 36px 的正文必须改大。最后必须写 `!important` CSS 兜底。**宁可删内容，不能缩字号。**
+12. **没有课程标识 bar** — 每张海报顶部必须自动插入 `.p-course-bar`（紫色徽章 + 课程名 + 一句话角色描述），让观众单看一张图就知道是什么课。封面/CTA 类已有大 chip 的可以隐藏 bar。
+13. **新职业不解释** — 像 "AI Adoption Specialist" 这种新岗位，必须有一张 P10 类型的"岗位 explainer"，包含：一句话定义 + 一天工作 4 件事 + 岗位名/年薪/门槛 meta。不能假定观众知道这是干嘛的。
+14. **没用 codex 的高级设计 token** — 痛点对比类海报必须用 eyebrow + lead + col-head（kicker + 多行 h3 + 子标题 + badge）+ VS divider + bottom-note 完整结构，不要平铺列表。参考 Engineer P2 / Adoption P2 实现。
+15. **封面只做 1 张** — 标准要做 P1（默认）+ P1B 共鸣版 + P1C 转岗版 + P1D 角色版 共 4 张，让运营 A/B 测试。
+16. **所有课都用同一个 P10-P25 模板** — 是最容易翻车的错误。P12/P13/P22/P23 必须是**这门课独有的特色模块**，不是通用槽位。开工前先列 3-5 个差异化卖点，再把它们映射到槽位。
+17. **所有课用同样的主题色** — 每门课必须选一个独立颜色，避开已存在的其他课，让观众扫一眼就能区分是哪门课。
+18. **P24/P25 统一用同一批公司 / 薪资** — 不同课面向不同市场，公司列表和薪资币种要按本课目标市场定（US / AU / EU / 亚洲，技术岗 / 咨询 / 本地 / 大厂），不能套模板。
 8. **下载按钮放在海报内** — 必须放外面，不遮挡内容
 9. **少于 20 张** — 标准产出 25 张，少于 20 张运营换不动
 10. **没有右侧文案面板** — 必须有 xhs-copy.js 注入的三通道（小红书 / 朋友圈 / 社群）面板，每张配 6+ 条文案
