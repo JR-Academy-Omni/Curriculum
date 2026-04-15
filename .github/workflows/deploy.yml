@@ -84,6 +84,12 @@ jobs:
             cp -r it-career-support/public/* _site/it-career-support/
           fi
 
+          # openclaw-workshop: static HTML only (4-hour offline workshop, no React build)
+          if [ -d openclaw-workshop/public ]; then
+            mkdir -p _site/openclaw-workshop
+            cp -r openclaw-workshop/public/* _site/openclaw-workshop/
+          fi
+
           mkdir -p _site/ai-engineer-bootcamp
           cp -r ai-engineer-bootcamp/dist/* _site/ai-engineer-bootcamp/
           cp ai-engineer-bootcamp/public/curriculum.html _site/ai-engineer-bootcamp/

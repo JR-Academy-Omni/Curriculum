@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>AI Adoption Specialist · 小红书素材集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-red: #ff5757;
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-blue: #3b82f6;
+    --brand-green: #10b981;
+    --brand-purple: #8b5cf6;
+    --bg-light: #f8f9fb;
+    --bg-cream: #fff1e7;
+    --text-main: #10162f;
+    --text-gray: #64748b;
+    --border-color: #e2e8f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #eef0f4; color: var(--text-main); font-family: 'Noto Sans SC', system-ui, sans-serif; padding: 40px 20px 120px 120px; line-height: 1.5; }
+
+  .page-wrap { max-width: 1600px; margin: 0 auto; }
+  .page-head { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 28px 32px; margin-bottom: 30px; box-shadow: 8px 8px 0 var(--brand-dark); }
+  .page-head h1 { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; }
+  .page-head h1 span { color: var(--brand-purple); }
+  .page-head p { color: var(--text-gray); margin-top: 8px; font-size: 14px; }
+  .spec-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .spec-pill { background: var(--bg-cream); border: 1.5px solid var(--brand-dark); border-radius: 100px; padding: 6px 14px; font-size: 12px; font-weight: 700; }
+  .spec-pill.red { background: var(--brand-red); color: #fff; border-color: var(--brand-red); }
+  .guide { margin-top: 12px; padding: 12px 14px; background: #fffbeb; border: 1.5px dashed #f59e0b; border-radius: 10px; font-size: 12.5px; color: #92400e; line-height: 1.7; }
+  .guide b { color: var(--brand-red); }
+
+  /* 左侧固定缩略导航 */
+  .thumb-nav {
+    display: flex; flex-direction: column; gap: 8px;
+    background: #fff; border: 1.5px solid var(--brand-dark);
+    border-radius: 14px; padding: 12px;
+    position: fixed; top: 20px; left: 16px;
+    width: 96px; max-height: calc(100vh - 40px); overflow-y: auto;
+    z-index: 100; box-shadow: 4px 4px 0 rgba(16,22,47,0.1);
+  }
+  .thumb-nav::before { content: 'NAV'; display: block; font-size: 10px; font-weight: 900; letter-spacing: 2px; color: var(--brand-purple); text-align: center; padding: 2px 0 6px; border-bottom: 1.5px dashed var(--border-color); font-family: 'JetBrains Mono', monospace; margin-bottom: 2px; }
+  .thumb { aspect-ratio: 3/4; background: var(--bg-light); border: 1.5px solid var(--brand-dark); border-radius: 8px; font-weight: 900; color: var(--brand-dark); text-align: center; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px; transition: all 0.12s; }
+  .thumb .num { font-size: 18px; line-height: 1; }
+  .thumb .lbl { font-size: 9px; color: var(--text-gray); font-weight: 700; }
+  .thumb:hover { background: var(--brand-yellow); transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  /* 海报容器 */
+  .poster-frame {
+    display: grid; grid-template-columns: auto 460px; gap: 28px;
+    align-items: start; justify-content: center;
+    margin-bottom: 60px; position: relative;
+  }
+  .poster-main { display: flex; flex-direction: column; align-items: center; }
+  .poster-frame .label { font-size: 13px; font-weight: 900; color: var(--brand-dark); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .poster-frame .label::before { content: ''; width: 28px; height: 4px; background: var(--brand-purple); border-radius: 2px; }
+  .poster-frame .label em { font-style: normal; color: var(--text-gray); font-weight: 600; font-size: 12px; margin-left: 12px; }
+
+  .poster-scaler { width: 435px; height: 581px; position: relative; border: 2px solid var(--brand-dark); border-radius: 12px; box-shadow: 8px 8px 0 var(--brand-dark); overflow: hidden; }
+  .poster { width: 1242px; height: 1660px; transform: scale(0.35); transform-origin: top left; position: absolute; top: 0; left: 0; background: var(--bg-light); overflow: hidden; font-family: 'Noto Sans SC', sans-serif; box-sizing: border-box; padding: 32px; }
+
+  .dl-btn { display: block; margin: 20px auto 0; background: var(--brand-red); color: #fff; border: 3px solid var(--brand-dark); box-shadow: 6px 6px 0 var(--brand-dark); padding: 14px 32px; font-family: 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 900; letter-spacing: 1.5px; cursor: pointer; border-radius: 10px; transition: all 0.15s; }
+  .dl-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--brand-dark); }
+  .dl-btn:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  /* Copy panel */
+  .copy-panel { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 18px 20px; box-shadow: 6px 6px 0 rgba(16,22,47,0.08); display: flex; flex-direction: column; gap: 14px; }
+  .copy-panel .cp-title { font-size: 13px; font-weight: 900; color: var(--brand-purple); letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; padding-bottom: 10px; border-bottom: 1.5px dashed var(--border-color); }
+  .cp-section { display: flex; flex-direction: column; gap: 6px; }
+  .cp-section .cp-label { font-size: 11px; font-weight: 900; color: var(--text-gray); letter-spacing: 1.5px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+  .cp-section .cp-box { background: #fafbfc; border: 1.5px solid var(--border-color); border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.55; color: var(--text-main); white-space: pre-wrap; word-break: break-word; }
+  .cp-section .cp-btn { align-self: flex-end; background: var(--brand-dark); color: #fff; border: none; padding: 5px 14px; font-size: 11px; font-weight: 700; letter-spacing: 1px; border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', sans-serif; transition: all 0.15s; }
+  .cp-section .cp-btn:hover { background: var(--brand-red); }
+  .cp-section .cp-btn.copied { background: var(--brand-green); }
+  .cp-section .cp-box.hashtags { color: var(--brand-blue); font-weight: 600; font-size: 12.5px; }
+  .cp-section .cp-box.wechat { background: #f0fdf4; border-color: #86efac; font-size: 13px; }
+  .cp-section .cp-box.community { background: #eff6ff; border-color: #93c5fd; font-size: 13px; }
+  .cp-tabs { display: flex; gap: 4px; background: #f3f4f6; padding: 4px; border-radius: 10px; }
+  .cp-tab { flex: 1; background: transparent; border: none; padding: 8px 6px; font-size: 12px; font-weight: 700; color: var(--text-gray); cursor: pointer; border-radius: 8px; font-family: 'Noto Sans SC', sans-serif; transition: all 0.15s; }
+  .cp-tab:hover { color: var(--text-main); }
+  .cp-tab.active { background: #fff; color: var(--tab-color, var(--brand-dark)); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 900; }
+  .cp-pane { display: flex; flex-direction: column; gap: 14px; }
+  .cp-pane.hidden { display: none; }
+  .cp-tip { background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; font-size: 11.5px; color: #92400e; line-height: 1.5; }
+
+  /* 海报内部通用元素 */
+  .p-inner { position: relative; width: 100%; height: 100%; padding: 80px 72px; display: flex; flex-direction: column; background: #fff; border: 5px solid var(--brand-dark); border-radius: 36px; box-sizing: border-box; overflow: hidden; }
+  .p-dots { position: absolute; top: 0; right: 0; width: 400px; height: 400px; background-image: radial-gradient(#64748b 1.5px, transparent 1.5px); background-size: 28px 28px; opacity: 0.1; pointer-events: none; }
+  .p-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 700; letter-spacing: 1px; color: var(--brand-purple); text-transform: uppercase; background: #f5f3ff; border: 1.5px solid var(--brand-purple); padding: 10px 22px; border-radius: 100px; width: fit-content; font-family: 'JetBrains Mono', monospace; }
+  .p-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-purple); }
+  .hl { position: relative; display: inline-block; z-index: 1; }
+  .hl::after { content: ''; position: absolute; bottom: 10px; left: -4px; right: -4px; height: 24px; background: var(--brand-yellow); z-index: -1; opacity: 0.75; }
+
+  /* P1 封面 */
+  .p1 .p-inner { background: #fff; justify-content: center; }
+  .p1 .hook { font-size: 132px; font-weight: 900; line-height: 1.05; letter-spacing: -4px; color: var(--brand-dark); margin-top: 40px; }
+  .p1 .sub { font-size: 48px; font-weight: 500; color: var(--text-gray); margin-top: 40px; line-height: 1.5; }
+  .p1 .course-chip { margin-top: 60px; background: var(--brand-dark); color: #fff; padding: 24px 32px; border-radius: 18px; display: inline-flex; align-items: center; gap: 20px; width: fit-content; box-shadow: 10px 10px 0 var(--brand-purple); }
+  .p1 .course-chip .name { font-size: 42px; font-weight: 900; letter-spacing: -0.5px; }
+  .p1 .course-chip .meta { font-size: 26px; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+  .p1 .corner-mark { position: absolute; top: 70px; right: 70px; background: var(--brand-yellow); border: 2px solid var(--brand-dark); padding: 12px 18px; border-radius: 12px; font-size: 24px; font-weight: 900; transform: rotate(4deg); box-shadow: 6px 6px 0 var(--brand-dark); }
+
+  /* P2 痛点 */
+  .p2 .p-inner { background: var(--bg-cream); }
+  .p2 h2 { font-size: 84px; font-weight: 900; line-height: 1.2; letter-spacing: -2px; margin-top: 40px; }
+  .p2 .split { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; flex: 1; }
+  .p2 .col { border: 2px solid var(--brand-dark); border-radius: 20px; padding: 36px 32px; background: #fff; }
+  .p2 .col.bad { box-shadow: 8px 8px 0 var(--text-gray); opacity: 0.85; }
+  .p2 .col.good { box-shadow: 10px 10px 0 var(--brand-purple); background: #fff; }
+  .p2 .col h3 { font-size: 36px; font-weight: 900; margin-bottom: 20px; }
+  .p2 .col.bad h3 { color: var(--text-gray); }
+  .p2 .col.good h3 { color: var(--brand-purple); }
+  .p2 .col ul { list-style: none; }
+  .p2 .col li { font-size: 26px; line-height: 1.45; margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-main); }
+  .p2 .col.bad li { color: var(--text-gray); text-decoration: line-through; text-decoration-color: var(--brand-red); text-decoration-thickness: 2px; }
+  .p2 .col li::before { content: '→'; position: absolute; left: 0; font-weight: 900; color: var(--brand-dark); }
+  .p2 .col.bad li::before { content: '×'; color: var(--brand-red); }
+
+  /* P3 能力 4 卡 */
+  .p3 .p-inner { background: #fff; }
+  .p3 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p3 h2 em { font-style: normal; color: var(--brand-purple); }
+  .p3 .grid4 { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; flex: 1; }
+  .p3 .cell { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 32px 28px; box-shadow: 8px 8px 0 var(--brand-dark); display: flex; flex-direction: column; gap: 14px; }
+  .p3 .cell:nth-child(1) { background: #f5f3ff; box-shadow: 8px 8px 0 var(--brand-purple); }
+  .p3 .cell:nth-child(2) { background: #eef4ff; box-shadow: 8px 8px 0 var(--brand-blue); }
+  .p3 .cell:nth-child(3) { background: #fff9e0; box-shadow: 8px 8px 0 var(--brand-yellow); }
+  .p3 .cell:nth-child(4) { background: #e8faf0; box-shadow: 8px 8px 0 var(--brand-green); }
+  .p3 .cell .num { font-size: 52px; font-weight: 900; color: var(--brand-dark); font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .p3 .cell h4 { font-size: 38px; font-weight: 900; line-height: 1.2; }
+  .p3 .cell p { font-size: 26px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P4 Phase 4 块 */
+  .p4 .p-inner { background: var(--bg-light); }
+  .p4 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -1.5px; margin-top: 20px; }
+  .p4 h2 em { font-style: normal; color: var(--brand-purple); }
+  .p4 .phases { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .p4 .ph { display: flex; gap: 20px; align-items: flex-start; background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 26px 28px; box-shadow: 5px 5px 0 rgba(139,92,246,0.25); }
+  .p4 .ph .badge { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 24px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; border: 2px solid var(--brand-dark); box-shadow: 3px 3px 0 var(--brand-dark); }
+  .p4 .ph h5 { font-size: 34px; font-weight: 900; margin-bottom: 6px; }
+  .p4 .ph p { font-size: 24px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P5 工具栈 */
+  .p5 .p-inner { background: var(--brand-dark); color: #fff; }
+  .p5 .p-dots { opacity: 0.15; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p5 .p-tag { background: rgba(255,206,68,0.15); border-color: var(--brand-yellow); color: var(--brand-yellow); }
+  .p5 h2 { color: #fff; font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p5 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p5 .tool-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; flex: 1; }
+  .p5 .tool { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 22px 18px; text-align: center; }
+  .p5 .tool .name { font-size: 28px; font-weight: 900; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; letter-spacing: -0.5px; }
+  .p5 .tool .cat { font-size: 18px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+  .p5 .tool.hot { background: var(--brand-purple); border-color: var(--brand-purple); box-shadow: 4px 4px 0 var(--brand-yellow); }
+  .p5 .tool.hot .cat { color: var(--brand-yellow); }
+
+  /* P6 48 场景 */
+  .p6 .p-inner { background: #fff; }
+  .p6 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p6 h2 em { font-style: normal; color: var(--brand-purple); }
+  .p6 .dom-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+  .p6 .dom { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 26px 24px; box-shadow: 5px 5px 0 rgba(139,92,246,0.25); }
+  .p6 .dom .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .p6 .dom h4 { font-size: 30px; font-weight: 900; }
+  .p6 .dom .cnt { font-size: 36px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--brand-purple); }
+  .p6 .dom p { font-size: 22px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P7 独家 7 模块 */
+  .p7 .p-inner { background: linear-gradient(160deg, #2e1065 0%, #1e1b4b 100%); color: #fff; }
+  .p7 .p-dots { opacity: 0.1; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); }
+  .p7 .p-tag { background: rgba(255,87,87,0.15); border-color: var(--brand-red); color: var(--brand-red); }
+  .p7 h2 { color: #fff; font-size: 72px; font-weight: 900; line-height: 1.12; letter-spacing: -2px; margin-top: 16px; }
+  .p7 h2 em { font-style: normal; color: var(--brand-yellow); }
+  .p7 .exclusive-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; background: var(--brand-red); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 22px; font-weight: 900; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; border: 2px solid rgba(255,255,255,0.3); }
+  .p7 .mod-list { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; }
+  .p7 .mod { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 20px 22px; }
+  .p7 .mod .n { font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-yellow); margin-bottom: 4px; }
+  .p7 .mod h4 { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .p7 .mod p { font-size: 20px; color: rgba(255,255,255,0.6); line-height: 1.35; font-weight: 500; }
+
+  /* P8 课程配置 */
+  .p8 .p-inner { background: var(--bg-cream); }
+  .p8 h2 { font-size: 84px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 30px; }
+  .p8 .stats { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .p8 .stat { background: #fff; border: 2px solid var(--brand-dark); border-radius: 18px; padding: 28px 30px; box-shadow: 6px 6px 0 var(--brand-dark); }
+  .p8 .stat .num { font-size: 88px; font-weight: 900; line-height: 1; letter-spacing: -3px; font-family: 'JetBrains Mono', monospace; color: var(--brand-dark); }
+  .p8 .stat .num em { font-style: normal; color: var(--brand-purple); font-size: 48px; margin-left: 6px; }
+  .p8 .stat .lbl { font-size: 26px; font-weight: 700; color: var(--text-gray); margin-top: 10px; }
+  .p8 .format-list { margin-top: 30px; background: var(--brand-dark); color: #fff; border-radius: 18px; padding: 30px 34px; box-shadow: 8px 8px 0 var(--brand-purple); }
+  .p8 .format-list h4 { font-size: 32px; font-weight: 900; color: var(--brand-yellow); margin-bottom: 16px; }
+  .p8 .format-list ul { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; list-style: none; }
+  .p8 .format-list li { font-size: 26px; font-weight: 500; padding-left: 26px; position: relative; line-height: 1.4; }
+  .p8 .format-list li::before { content: '✓'; position: absolute; left: 0; color: var(--brand-yellow); font-weight: 900; }
+
+  /* P9 受众 */
+  .p9 .p-inner { background: #fff; }
+  .p9 h2 { font-size: 80px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p9 h2 em { font-style: normal; color: var(--brand-purple); }
+  .p9 .aud-list { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .p9 .aud { border: 2px solid var(--brand-dark); border-radius: 18px; padding: 28px 30px; display: flex; gap: 20px; align-items: flex-start; }
+  .p9 .aud:nth-child(1) { background: #f0f4ff; box-shadow: 6px 6px 0 var(--brand-blue); }
+  .p9 .aud:nth-child(2) { background: #f5f3ff; box-shadow: 6px 6px 0 var(--brand-purple); }
+  .p9 .aud:nth-child(3) { background: #ecfdf5; box-shadow: 6px 6px 0 var(--brand-green); }
+  .p9 .aud:nth-child(4) { background: #fff7ed; box-shadow: 6px 6px 0 #f97316; }
+  .p9 .aud .emoji { font-size: 48px; flex-shrink: 0; }
+  .p9 .aud h4 { font-size: 32px; font-weight: 900; margin-bottom: 6px; }
+  .p9 .aud p { font-size: 24px; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+
+  /* P10 时间线 */
+  .p10 .p-inner { background: #fff; }
+  .p10 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p10 h2 em { font-style: normal; color: var(--brand-purple); }
+  .p10 .tl { margin-top: 36px; position: relative; padding-left: 50px; flex: 1; }
+  .p10 .tl::before { content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 4px; background: var(--brand-purple); border-radius: 2px; }
+  .p10 .tli { position: relative; padding: 20px 28px; background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; margin-bottom: 14px; }
+  .p10 .tli::before { content: ''; position: absolute; left: -38px; top: 24px; width: 20px; height: 20px; border-radius: 50%; border: 3px solid var(--brand-dark); background: var(--brand-purple); }
+  .p10 .tli .wk { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--brand-purple); }
+  .p10 .tli h4 { font-size: 30px; font-weight: 900; margin: 4px 0; }
+  .p10 .tli p { font-size: 22px; color: var(--text-gray); line-height: 1.35; font-weight: 500; }
+
+  /* P11 学员反馈 */
+  .p11 .p-inner { background: #fff; }
+  .p11 h2 { font-size: 76px; font-weight: 900; line-height: 1.2; letter-spacing: -2px; margin-top: 30px; }
+  .p11 .quotes { margin-top: 40px; display: flex; flex-direction: column; gap: 22px; flex: 1; }
+  .p11 .q { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 30px 34px; position: relative; box-shadow: 8px 8px 0 var(--brand-dark); }
+  .p11 .q:nth-child(2) { margin-left: 60px; box-shadow: 8px 8px 0 var(--brand-purple); background: #f5f3ff; }
+  .p11 .q:nth-child(3) { margin-left: 120px; box-shadow: 8px 8px 0 var(--brand-blue); background: #eef4ff; }
+  .p11 .q::before { content: '"'; position: absolute; top: -12px; left: 20px; font-size: 100px; font-weight: 900; color: var(--brand-yellow); line-height: 1; font-family: Georgia, serif; }
+  .p11 .q .txt { font-size: 32px; line-height: 1.45; font-weight: 500; margin-left: 40px; }
+  .p11 .q .who { font-size: 20px; color: var(--text-gray); margin-top: 14px; margin-left: 40px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+  /* P12 ROI 数据 */
+  .p12 .p-inner { background: var(--bg-cream); }
+  .p12 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p12 h2 em { font-style: normal; color: var(--brand-red); }
+  .p12 .kpi-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; }
+  .p12 .kpi { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 34px 32px; box-shadow: 8px 8px 0 var(--brand-dark); }
+  .p12 .kpi .num { font-size: 88px; font-weight: 900; line-height: 1; font-family: 'JetBrains Mono', monospace; color: var(--brand-purple); }
+  .p12 .kpi .lbl { font-size: 26px; font-weight: 700; color: var(--text-gray); margin-top: 12px; line-height: 1.35; }
+  .p12 .kpi .src { font-size: 18px; color: var(--text-gray); margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 600; opacity: 0.7; }
+
+  /* P13 FAQ */
+  .p13 .p-inner { background: #fff; }
+  .p13 h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p13 .faq-list { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .p13 .faq { border: 2px solid var(--brand-dark); border-radius: 16px; padding: 24px 26px; background: #fff; box-shadow: 4px 4px 0 rgba(16,22,47,0.08); }
+  .p13 .faq .q { font-size: 28px; font-weight: 900; color: var(--brand-dark); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; }
+  .p13 .faq .q::before { content: 'Q'; background: var(--brand-purple); color: #fff; padding: 4px 12px; border-radius: 8px; font-size: 20px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+  .p13 .faq .a { font-size: 22px; color: var(--text-gray); line-height: 1.5; font-weight: 500; padding-left: 42px; }
+
+  /* P14 与 AI Engineer 对比 */
+  .p14 .p-inner { background: var(--bg-light); }
+  .p14 h2 { font-size: 72px; font-weight: 900; line-height: 1.15; letter-spacing: -2px; margin-top: 20px; }
+  .p14 h2 em { font-style: normal; color: var(--brand-purple); }
+  .p14 .vs { margin-top: 32px; display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; align-items: stretch; flex: 1; }
+  .p14 .side { border: 2px solid var(--brand-dark); border-radius: 20px; padding: 30px 28px; background: #fff; }
+  .p14 .side.eng { box-shadow: 6px 6px 0 var(--brand-red); }
+  .p14 .side.ada { box-shadow: 8px 8px 0 var(--brand-purple); background: #f5f3ff; }
+  .p14 .side .label { font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+  .p14 .side.eng .label { color: var(--brand-red); }
+  .p14 .side.ada .label { color: var(--brand-purple); }
+  .p14 .side h3 { font-size: 38px; font-weight: 900; margin: 10px 0 16px; line-height: 1.15; }
+  .p14 .side .items { font-size: 22px; line-height: 1.7; color: var(--text-main); }
+  .p14 .arrow-col { display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; color: var(--text-gray); }
+  .p14 .bottom-note { margin-top: 20px; text-align: center; font-size: 24px; font-weight: 600; color: var(--text-gray); line-height: 1.6; }
+
+  /* P15 CTA */
+  .p15 .p-inner { background: #fff; align-items: center; justify-content: center; text-align: center; }
+  .p15 .big-q { font-size: 52px; font-weight: 500; color: var(--text-gray); margin-top: 20px; line-height: 1.5; }
+  .p15 .giant { font-size: 150px; font-weight: 900; line-height: 1; letter-spacing: -5px; color: var(--brand-dark); margin-top: 40px; }
+  .p15 .giant em { font-style: normal; color: var(--brand-purple); }
+  .p15 .sub-hook { margin-top: 50px; font-size: 38px; font-weight: 700; color: var(--text-main); line-height: 1.5; max-width: 860px; }
+  .p15 .arrow { margin-top: 60px; display: inline-flex; align-items: center; gap: 20px; padding: 20px 32px; background: var(--brand-yellow); border: 2px solid var(--brand-dark); border-radius: 100px; box-shadow: 8px 8px 0 var(--brand-dark); font-size: 36px; font-weight: 900; }
+  .p15 .arrow .arr { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--brand-dark); color: var(--brand-yellow); border-radius: 50%; font-size: 26px; }
+  .p15 .note { margin-top: 40px; font-size: 24px; color: var(--text-gray); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <header class="page-head">
+    <h1>AI Adoption Specialist · <span>小红书素材集</span></h1>
+    <p>15 张投流素材（1 封面 + 14 配图），专为小红书聚光平台定制。每张右侧自带三通道文案（小红书 / 朋友圈 / 社群），一键复制。</p>
+    <div class="spec-row">
+      <span class="spec-pill red">1242 × 1660 竖版</span>
+      <span class="spec-pill">聚光合规</span>
+      <span class="spec-pill">15 张全套</span>
+      <span class="spec-pill">html2canvas 一键导出</span>
+      <span class="spec-pill">@2x 高清 PNG</span>
+    </div>
+    <div class="guide">
+      <b>导出前自检：</b>① 无二维码 / 微信号 / 手机号 &nbsp; ② 无"最 / 第一 / 唯一 / 100% / 保证"等绝对化用语 &nbsp; ③ 学员数据软性表达，不编造具体数字
+    </div>
+  </header>
+
+  <nav class="thumb-nav">
+    <a href="#p1" class="thumb"><span class="num">1</span><span class="lbl">封面</span></a>
+    <a href="#p2" class="thumb"><span class="num">2</span><span class="lbl">痛点</span></a>
+    <a href="#p3" class="thumb"><span class="num">3</span><span class="lbl">能力</span></a>
+    <a href="#p4" class="thumb"><span class="num">4</span><span class="lbl">Phase</span></a>
+    <a href="#p5" class="thumb"><span class="num">5</span><span class="lbl">工具</span></a>
+    <a href="#p6" class="thumb"><span class="num">6</span><span class="lbl">场景</span></a>
+    <a href="#p7" class="thumb"><span class="num">7</span><span class="lbl">独家</span></a>
+    <a href="#p8" class="thumb"><span class="num">8</span><span class="lbl">配置</span></a>
+    <a href="#p9" class="thumb"><span class="num">9</span><span class="lbl">受众</span></a>
+    <a href="#p10" class="thumb"><span class="num">10</span><span class="lbl">时间</span></a>
+    <a href="#p11" class="thumb"><span class="num">11</span><span class="lbl">反馈</span></a>
+    <a href="#p12" class="thumb"><span class="num">12</span><span class="lbl">ROI</span></a>
+    <a href="#p13" class="thumb"><span class="num">13</span><span class="lbl">FAQ</span></a>
+    <a href="#p14" class="thumb"><span class="num">14</span><span class="lbl">vs</span></a>
+    <a href="#p15" class="thumb"><span class="num">15</span><span class="lbl">CTA</span></a>
+  </nav>
+
+  <!-- P1 封面 -->
+  <div class="poster-frame" id="p1">
+    <div class="label">P1 封面 <em>· hook / 主图</em></div>
+    <div class="poster-scaler">
+      <div class="poster p1" id="poster-1">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="corner-mark">2026 非技术必学 🌿</div>
+          <div class="p-tag"><span class="dot"></span>AI ADOPTION · 2026</div>
+          <div class="hook">别人都在用 AI<br>你还在<span class="hl">手动抄表？</span></div>
+          <div class="sub">8 周把你从 AI 工具使用者<br>升级成企业 AI 采纳专家</div>
+          <div class="course-chip">
+            <div>
+              <div class="name">AI Adoption Bootcamp</div>
+              <div class="meta">8 WEEKS · 74 LESSONS · 39 LABS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-1" data-slug="p1-cover">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P2 痛点 -->
+  <div class="poster-frame" id="p2">
+    <div class="label">P2 痛点 <em>· 工具使用者 vs 采纳专家</em></div>
+    <div class="poster-scaler">
+      <div class="poster p2" id="poster-2">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>真实差距</div>
+          <h2>同样用 ChatGPT<br>差距在<span class="hl">组织层</span></h2>
+          <div class="split">
+            <div class="col bad">
+              <h3>工具使用者</h3>
+              <ul>
+                <li>自己用得溜但推不动团队</li>
+                <li>写一条 Prompt 帮领导省 5 分钟</li>
+                <li>老板问 ROI 说不出来</li>
+                <li>试点跑完就没下文</li>
+                <li>合规 / 安全一问三不知</li>
+              </ul>
+            </div>
+            <div class="col good">
+              <h3>采纳专家</h3>
+              <ul>
+                <li>能识别部门级 AI 机会</li>
+                <li>设计试点 + 跑通 + 复盘</li>
+                <li>写 ROI 报告给 C 层</li>
+                <li>培训团队 + 管理变革</li>
+                <li>合规治理框架落地</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-2" data-slug="p2-pain">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P3 能力 4 卡 -->
+  <div class="poster-frame" id="p3">
+    <div class="label">P3 能力 <em>· 毕业你会做什么</em></div>
+    <div class="poster-scaler">
+      <div class="poster p3" id="poster-3">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>学完你会</div>
+          <h2>毕业那天 你会<em>真的会</em><br>这四件事</h2>
+          <div class="grid4">
+            <div class="cell">
+              <div class="num">01</div>
+              <h4>用好 20+ AI 工具</h4>
+              <p>ChatGPT / Claude / Copilot / Notion AI / Midjourney 场景化精通</p>
+            </div>
+            <div class="cell">
+              <div class="num">02</div>
+              <h4>解 48 个业务场景</h4>
+              <p>市场 / 销售 / 运营 / HR / 财务 / 法务 / 项目管理 全覆盖</p>
+            </div>
+            <div class="cell">
+              <div class="num">03</div>
+              <h4>跑通 AI 采纳方法论</h4>
+              <p>机会识别 → 试点 → 培训 → 变革 → ROI → 治理 全链路</p>
+            </div>
+            <div class="cell">
+              <div class="num">04</div>
+              <h4>输出完整落地方案</h4>
+              <p>给老板的 AI 采纳报告 + Demo Day 展示 + 结业证书</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-3" data-slug="p3-outcomes">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P4 Phase 4 块 -->
+  <div class="poster-frame" id="p4">
+    <div class="label">P4 Phase <em>· 8 周 4 个阶段</em></div>
+    <div class="poster-scaler">
+      <div class="poster p4" id="poster-4">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>8 周学习路径</div>
+          <h2>从工具使用<br>到<em>组织采纳</em></h2>
+          <div class="phases">
+            <div class="ph">
+              <div class="badge" style="background:#8b5cf6">P1</div>
+              <div><h5>AI 工具精通 + 角色定位</h5><p>Week 1-2 · 20+ 主流工具 + Prompt 框架 + 角色清单</p></div>
+            </div>
+            <div class="ph">
+              <div class="badge" style="background:#3b82f6">P2</div>
+              <div><h5>业务场景实战</h5><p>Week 3-5 · 48 个真实场景跨 7 大业务线全覆盖</p></div>
+            </div>
+            <div class="ph">
+              <div class="badge" style="background:#10b981">P3</div>
+              <div><h5>组织 AI 采纳方法论</h5><p>Week 6-7 · 机会识别 / 试点 / 培训 / 变革 / ROI / 治理</p></div>
+            </div>
+            <div class="ph">
+              <div class="badge" style="background:#f59e0b">P4</div>
+              <div><h5>毕业项目 + Demo Day</h5><p>Week 8 · 选题 → 撰写 → 互审 → Demo → 结业证书</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-4" data-slug="p4-phases">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P5 工具栈 -->
+  <div class="poster-frame" id="p5">
+    <div class="label">P5 工具 <em>· 深色 / 20+ 工具</em></div>
+    <div class="poster-scaler">
+      <div class="poster p5" id="poster-5">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>TOOL STACK · 2026</div>
+          <h2>8 周你会真实用到的<br><em>20+ AI 工具</em></h2>
+          <div class="tool-grid">
+            <div class="tool hot"><div class="name">ChatGPT</div><div class="cat">LLM</div></div>
+            <div class="tool"><div class="name">Claude</div><div class="cat">LLM</div></div>
+            <div class="tool"><div class="name">Gemini</div><div class="cat">LLM</div></div>
+            <div class="tool hot"><div class="name">Copilot 365</div><div class="cat">Office</div></div>
+            <div class="tool"><div class="name">Notion AI</div><div class="cat">协作</div></div>
+            <div class="tool"><div class="name">Gamma</div><div class="cat">PPT</div></div>
+            <div class="tool"><div class="name">Perplexity</div><div class="cat">研究</div></div>
+            <div class="tool"><div class="name">Midjourney</div><div class="cat">视觉</div></div>
+            <div class="tool"><div class="name">Canva AI</div><div class="cat">设计</div></div>
+            <div class="tool"><div class="name">HeyGen</div><div class="cat">视频</div></div>
+            <div class="tool hot"><div class="name">n8n / Zapier</div><div class="cat">自动化</div></div>
+            <div class="tool"><div class="name">NotebookLM</div><div class="cat">知识</div></div>
+            <div class="tool"><div class="name">Zoom AI</div><div class="cat">会议</div></div>
+            <div class="tool"><div class="name">Fireflies</div><div class="cat">会议</div></div>
+            <div class="tool"><div class="name">Otter</div><div class="cat">会议</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-5" data-slug="p5-tools">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P6 48 场景 -->
+  <div class="poster-frame" id="p6">
+    <div class="label">P6 场景 <em>· 48 个业务场景</em></div>
+    <div class="poster-scaler">
+      <div class="poster p6" id="poster-6">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>48 个实战场景</div>
+          <h2>7 大业务线<br><em>48 个真实场景</em>全覆盖</h2>
+          <div class="dom-grid">
+            <div class="dom"><div class="top"><h4>市场 / 增长</h4><div class="cnt">8</div></div><p>内容生成 / SEO / 投放素材 / 邮件营销 / 社媒运营</p></div>
+            <div class="dom"><div class="top"><h4>销售</h4><div class="cnt">7</div></div><p>Lead 筛选 / 话术生成 / CRM 摘要 / 提案撰写</p></div>
+            <div class="dom"><div class="top"><h4>运营</h4><div class="cnt">8</div></div><p>流程自动化 / 数据报表 / SOP 生成 / 客服 FAQ</p></div>
+            <div class="dom"><div class="top"><h4>HR / 招聘</h4><div class="cnt">6</div></div><p>JD 生成 / 简历筛选 / 面试题 / 员工手册</p></div>
+            <div class="dom"><div class="top"><h4>财务</h4><div class="cnt">6</div></div><p>发票处理 / 预算分析 / 报告撰写 / 合规审查</p></div>
+            <div class="dom"><div class="top"><h4>法务 / 合规</h4><div class="cnt">5</div></div><p>合同审查 / 条款对比 / 政策摘要 / 风险识别</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-6" data-slug="p6-scenarios">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P7 独家 7 模块 -->
+  <div class="poster-frame" id="p7">
+    <div class="label">P7 独家 <em>· 7 个 Adoption 专属模块</em></div>
+    <div class="poster-scaler">
+      <div class="poster p7" id="poster-7">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>独家内容</div>
+          <h2>市场上<em>没人教</em><br>这 7 个模块</h2>
+          <div class="exclusive-badge">🔥 Adoption 专属 · 工具课不讲</div>
+          <div class="mod-list">
+            <div class="mod"><div class="n">01</div><h4>AI 机会识别</h4><p>用 Value-Effort 矩阵扫描部门</p></div>
+            <div class="mod"><div class="n">02</div><h4>试点设计</h4><p>从 KPI 到成功指标全流程</p></div>
+            <div class="mod"><div class="n">03</div><h4>员工培训体系</h4><p>不同角色的 Prompt 模板库</p></div>
+            <div class="mod"><div class="n">04</div><h4>变革管理</h4><p>处理抵制 / 恐惧 / 阴阳怪气</p></div>
+            <div class="mod"><div class="n">05</div><h4>ROI 度量</h4><p>写给 C 层能看懂的报告</p></div>
+            <div class="mod"><div class="n">06</div><h4>合规治理</h4><p>EU AI Act / 数据隐私 / 版权</p></div>
+            <div class="mod"><div class="n">07</div><h4>AI 政策制定</h4><p>公司级 AI 使用规范模板</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-7" data-slug="p7-exclusive">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P8 课程配置 -->
+  <div class="poster-frame" id="p8">
+    <div class="label">P8 配置 <em>· 课程基本盘</em></div>
+    <div class="poster-scaler">
+      <div class="poster p8" id="poster-8">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>你买到的是什么</div>
+          <h2>不只是 8 周课<br>是<span class="hl">完整采纳工具箱</span></h2>
+          <div class="stats">
+            <div class="stat"><div class="num">74<em>节</em></div><div class="lbl">直播 + 自学 + Lab</div></div>
+            <div class="stat"><div class="num">39<em>个</em></div><div class="lbl">浏览器互动 Lab</div></div>
+            <div class="stat"><div class="num">48<em>个</em></div><div class="lbl">真实业务场景</div></div>
+            <div class="stat"><div class="num">22<em>节</em></div><div class="lbl">直播课 · 约 44h</div></div>
+          </div>
+          <div class="format-list">
+            <h4>还包含这些</h4>
+            <ul>
+              <li>7 大 Adoption 专属模块</li>
+              <li>20+ AI 工具实操指南</li>
+              <li>AI Tutor 中英双语答疑</li>
+              <li>Demo Day + 结业证书</li>
+              <li>AI 采纳方案模板库</li>
+              <li>校友社群持续更新</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-8" data-slug="p8-config">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P9 受众 -->
+  <div class="poster-frame" id="p9">
+    <div class="label">P9 受众 <em>· 适合谁学</em></div>
+    <div class="poster-scaler">
+      <div class="poster p9" id="poster-9">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>适合谁</div>
+          <h2>这 4 类人学完<em>回报最高</em></h2>
+          <div class="aud-list">
+            <div class="aud"><div class="emoji">👩‍💼</div><div><h4>部门经理 / 团队 Lead</h4><p>想推 AI 落地但不知道从哪开始的管理者</p></div></div>
+            <div class="aud"><div class="emoji">📊</div><div><h4>运营 / 项目管理</h4><p>每天做报表 / 周报 / 流程的人，提效空间最大</p></div></div>
+            <div class="aud"><div class="emoji">💼</div><div><h4>咨询顾问 / 培训师</h4><p>把 AI Adoption 加进服务组合，客单价直接翻</p></div></div>
+            <div class="aud"><div class="emoji">🚀</div><div><h4>HR / 市场 / 销售</h4><p>想从执行转型到"AI 赋能者"的职能岗</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-9" data-slug="p9-audience">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P10 时间线 -->
+  <div class="poster-frame" id="p10">
+    <div class="label">P10 时间线 <em>· 8 周完整路径</em></div>
+    <div class="poster-scaler">
+      <div class="poster p10" id="poster-10">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>完整路径</div>
+          <h2>8 周 从工具到<em>落地方案</em></h2>
+          <div class="tl">
+            <div class="tli"><div class="wk">WEEK 1-2</div><h4>P1 AI 工具精通</h4><p>20+ 工具实操 + Prompt 框架 + 角色清单</p></div>
+            <div class="tli"><div class="wk">WEEK 3-5</div><h4>P2 业务场景实战</h4><p>48 场景跨 7 大业务线，每周直播 + Lab + Clinic</p></div>
+            <div class="tli"><div class="wk">WEEK 6-7</div><h4>P3 组织采纳方法论</h4><p>机会识别 / 试点 / 培训 / 变革 / ROI / 治理</p></div>
+            <div class="tli"><div class="wk">WEEK 8</div><h4>P4 毕业项目 + Demo Day</h4><p>选题 → 撰写 → 互审 → Demo → 结业证书</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-10" data-slug="p10-timeline">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P11 学员反馈 -->
+  <div class="poster-frame" id="p11">
+    <div class="label">P11 反馈 <em>· 软性反馈</em></div>
+    <div class="poster-scaler">
+      <div class="poster p11" id="poster-11">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>学员反馈</div>
+          <h2>学到第 3 周<br>已经有人在<span class="hl">跑试点了</span></h2>
+          <div class="quotes">
+            <div class="q"><p class="txt">Week 3 做完运营场景，回去我直接把部门周报流程改了一遍，团队少开一次会</p><div class="who">— 运营主管 · 入营第 4 周</div></div>
+            <div class="q"><p class="txt">老板一直问"AI 能不能帮我们降本"— 这次写的 ROI 报告他真的看懂了</p><div class="who">— 部门经理 · 毕业 1 个月</div></div>
+            <div class="q"><p class="txt">内部分享完 Adoption 框架，老板让我接着做全公司的 AI 培训</p><div class="who">— 咨询顾问 · 毕业 2 个月</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-11" data-slug="p11-feedback">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P12 ROI 数据 -->
+  <div class="poster-frame" id="p12">
+    <div class="label">P12 ROI <em>· 行业数据</em></div>
+    <div class="poster-scaler">
+      <div class="poster p12" id="poster-12">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>行业数据</div>
+          <h2>为什么公司都在<em>抢 Adoption 人才</em></h2>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="num">76%</div><div class="lbl">企业高管认为 AI 采纳是 2026 首要任务</div><div class="src">McKinsey 2025</div></div>
+            <div class="kpi"><div class="num">42%</div><div class="lbl">员工报告有 AI 工具却不知怎么用好</div><div class="src">Deloitte 2025</div></div>
+            <div class="kpi"><div class="num">3.5×</div><div class="lbl">有 Adoption 策略的公司 ROI 倍数</div><div class="src">Gartner 2025</div></div>
+            <div class="kpi"><div class="num">$120K+</div><div class="lbl">AI Adoption Lead 平均年薪（中位）</div><div class="src">LinkedIn 2026</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-12" data-slug="p12-roi">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P13 FAQ -->
+  <div class="poster-frame" id="p13">
+    <div class="label">P13 FAQ <em>· 5 个常见问题</em></div>
+    <div class="poster-scaler">
+      <div class="poster p13" id="poster-13">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>你可能想问</div>
+          <h2>报名前<br>最常被问的 5 个问题</h2>
+          <div class="faq-list">
+            <div class="faq"><div class="q">要会编程吗？</div><div class="a">不用，完全零代码。课程聚焦业务场景 + 组织落地，不教写代码。</div></div>
+            <div class="faq"><div class="q">和 ChatGPT 工具课区别？</div><div class="a">工具课教"怎么用"，我们教"怎么让整个公司用好"— 机会识别 / 试点 / ROI 全套方法论。</div></div>
+            <div class="faq"><div class="q">适合初学者吗？</div><div class="a">适合。课程从工具精通开始，不预设任何 AI 背景，每一步都有模板和 Lab。</div></div>
+            <div class="faq"><div class="q">毕业能做什么岗位？</div><div class="a">AI Adoption Specialist / AI Enablement Lead / AI 顾问 / 内部培训师。</div></div>
+            <div class="faq"><div class="q">公司已用 AI 还适合吗？</div><div class="a">太适合了。P3 教你怎么把零散使用升级成组织级采纳 + ROI。</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-13" data-slug="p13-faq">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P14 与 AI Engineer 对比 -->
+  <div class="poster-frame" id="p14">
+    <div class="label">P14 对比 <em>· Adoption vs Engineer</em></div>
+    <div class="poster-scaler">
+      <div class="poster p14" id="poster-14">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag"><span class="dot"></span>哪个适合我</div>
+          <h2>AI Adoption<br>vs <em>AI Engineer</em></h2>
+          <div class="vs">
+            <div class="side eng">
+              <div class="label">AI ENGINEER</div>
+              <h3>给技术人<br>做 AI 系统</h3>
+              <div class="items">
+                👨‍💻 要写代码<br>
+                🏗️ 12 周 · 183 节<br>
+                🎯 岗位：AI / Agent Engineer<br>
+                💰 目标：$150K+
+              </div>
+            </div>
+            <div class="arrow-col">/</div>
+            <div class="side ada">
+              <div class="label">AI ADOPTION ✨</div>
+              <h3>给业务人<br>推 AI 落地</h3>
+              <div class="items">
+                👩‍💼 零代码<br>
+                🌿 8 周 · 74 节<br>
+                🎯 岗位：AI Adoption / Enablement<br>
+                💰 目标：$120K+
+              </div>
+            </div>
+          </div>
+          <div class="bottom-note">技术岗选 Engineer · 业务岗选 Adoption — 路径完全不同</div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-14" data-slug="p14-vs">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P15 CTA -->
+  <div class="poster-frame" id="p15">
+    <div class="label">P15 CTA <em>· 软性收尾</em></div>
+    <div class="poster-scaler">
+      <div class="poster p15" id="poster-15">
+        <div class="p-inner">
+          <div class="p-dots"></div>
+          <div class="p-tag" style="margin:0 auto"><span class="dot"></span>READY?</div>
+          <div class="big-q">如果你是非技术背景<br>又想抓住 AI 这波——</div>
+          <div class="giant">不妨<br>来试试 <em>?</em></div>
+          <div class="sub-hook">想了解课程大纲、场景列表、导师背景，<br>可以在主页找我</div>
+          <div class="arrow"><span class="arr">→</span><span>搜「匠人 AI · AI Adoption」</span></div>
+          <div class="note">JIANGREN.COM.AU &nbsp;·&nbsp; 2026</div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="poster-15" data-slug="p15-cta">⬇ 下载 PNG</button>
+  </div>
+</div>
+
+<!-- 右侧文案面板（小红书 / 朋友圈 / 社群 Tab 切换） -->
+<script src="./xhs-copy.js"></script>
+
+<!-- html2canvas 下载 -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+  document.querySelectorAll('.dl-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const poster = document.getElementById(btn.dataset.target);
+      if (!poster) return;
+      const exportNode = poster.closest('.poster-scaler') || poster;
+      const exportPadding = 24;
+      const nodeWidth = exportNode.offsetWidth || 435;
+      const nodeHeight = exportNode.offsetHeight || 581;
+      const exportScale = nodeWidth ? 1242 / nodeWidth : 2;
+
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = `position:fixed;left:-99999px;top:0;padding:${exportPadding}px;background:#eef0f4;display:inline-block;z-index:-1;`;
+      const clone = exportNode.cloneNode(true);
+      clone.style.margin = '0';
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
+
+      const oldLabel = btn.textContent;
+      btn.textContent = '生成中...';
+      btn.disabled = true;
+
+      try {
+        const canvas = await html2canvas(wrapper, {
+          backgroundColor: '#eef0f4', scale: exportScale, useCORS: true, allowTaint: true, logging: false,
+          width: nodeWidth + exportPadding * 2, height: nodeHeight + exportPadding * 2,
+          windowWidth: nodeWidth + exportPadding * 2, windowHeight: nodeHeight + exportPadding * 2
+        });
+        const link = document.createElement('a');
+        link.download = `xhs-ai-adoption-${btn.dataset.slug}-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (e) {
+        console.error(e);
+        alert('导出失败：' + e.message);
+      } finally {
+        wrapper.remove();
+        btn.textContent = oldLabel;
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
+</body>
+</html>
