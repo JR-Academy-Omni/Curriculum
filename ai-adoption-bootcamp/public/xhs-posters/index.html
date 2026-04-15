@@ -548,11 +548,11 @@
   /* ⚠️ 不全局覆盖 .num / .cnt / .name — 各组件已有合适大小 */
   .hl::after { height: 22px !important; bottom: 12px !important; }
 
-  /* ========== 每张海报底部品牌 / 课程标识 ========== */
+  /* ========== 每张海报顶部品牌 / 课程标识 ========== */
   .p-course-bar {
     position: absolute;
     left: 50%;
-    bottom: 28px;
+    top: 28px;
     transform: translateX(-50%);
     background: var(--brand-purple);
     color: #fff;
@@ -576,15 +576,15 @@
     border-radius: 50%;
     background: var(--brand-yellow);
   }
-  /* 暗底海报上把 bar 改成黄底深字 */
-  .p1d .p-course-bar, .p13 .p-course-bar, .p23 .p-course-bar, .p25 .p-course-bar {
+  /* 暗底海报（p6 工具栈深色 / p13 独家 / p23 独家 / p25 薪资 / p1d 业务岗）上 bar 改黄底 */
+  .p6 .p-course-bar, .p13 .p-course-bar, .p23 .p-course-bar, .p25 .p-course-bar {
     background: var(--brand-yellow);
     color: var(--brand-dark);
   }
-  .p1d .p-course-bar::before, .p13 .p-course-bar::before, .p23 .p-course-bar::before, .p25 .p-course-bar::before {
+  .p6 .p-course-bar::before, .p13 .p-course-bar::before, .p23 .p-course-bar::before, .p25 .p-course-bar::before {
     background: var(--brand-purple);
   }
-  /* 已经有大 course-chip 的不显示 bar */
+  /* 已经有大 course-chip / CTA 的封面不显示 bar */
   .p1 .p-course-bar, .p1b .p-course-bar, .p1c .p-course-bar, .p1d .p-course-bar, .p9 .p-course-bar { display: none; }
 
 </style>
@@ -1085,37 +1085,32 @@
   <div class="poster-frame" id="p23"><div class="label">P23 独家 <em>· Change + Governance</em></div><div class="poster-scaler"><div class="poster p23" id="poster-23"><div class="p-inner">
     <div class="p-dots"></div>
     <div class="p-tag"><span class="dot"></span>独家模块 · 2026</div>
-    <h2>别的课不教<br><em>2 块最难但最值钱</em>的能力</h2>
+    <h2>推 AI 最大的坎<br><em>不是技术 是这两块</em></h2>
     <div class="exclusive-badge">🔥 Change Management + AI Governance</div>
     <div class="modules">
       <div class="mod change">
-        <div class="phase-tag">MODULE · CHANGE MANAGEMENT</div>
-        <h3>变革管理</h3>
-        <div class="desc">推 AI 最大的阻力不是技术 — 是人。员工抵制 / 恐惧被替代 / 中层阴阳怪气，怎么处理？这是工具课永远教不到的软实力。</div>
+        <div class="phase-tag">MODULE 1 · 变革管理</div>
+        <h3>员工抵制 怎么办？</h3>
+        <div class="desc">公司发了 Copilot 一年使用率 18% — 不是工具不好，是没人会处理"人的阻力"。这门课教你应对员工恐惧、中层阴阳、领导犹豫。</div>
         <div class="topics">
           <span class="topic">阻力图谱</span>
           <span class="topic">Stakeholder 地图</span>
-          <span class="topic">中层沟通</span>
-          <span class="topic">员工心理</span>
-          <span class="topic">内部沟通话术</span>
-          <span class="topic">变革节奏</span>
+          <span class="topic">中层沟通话术</span>
+          <span class="topic">变革节奏控制</span>
         </div>
       </div>
       <div class="mod govern">
-        <div class="phase-tag">MODULE · AI GOVERNANCE</div>
-        <h3>AI 治理</h3>
-        <div class="desc">用了 AI 没政策 = 裸奔。2026 EU AI Act 已经落地，企业 AI 合规要求越来越严，Adoption Specialist 要会做政策草案。</div>
+        <div class="phase-tag">MODULE 2 · AI 治理</div>
+        <h3>合规出事 谁背锅？</h3>
+        <div class="desc">EU AI Act 已经落地，员工把客户数据喂 ChatGPT 出事 — 公司没有 AI 政策就是裸奔。Adoption Specialist 必须会写政策草案 + 合规清单。</div>
         <div class="topics">
           <span class="topic">EU AI Act</span>
           <span class="topic">数据隐私</span>
-          <span class="topic">版权风险</span>
           <span class="topic">AI 使用政策</span>
           <span class="topic">合规 checklist</span>
-          <span class="topic">事故响应</span>
         </div>
       </div>
     </div>
-    <div class="bottom-note">2026 企业真正缺的是这两块能力 — 不是会用工具的员工</div>
   </div></div></div><button class="dl-btn" data-target="poster-23" data-slug="p23-exclusive">⬇ 下载 PNG</button></div>
 
   <!-- P24 JD 覆盖 -->
@@ -1168,6 +1163,18 @@
 </div>
 
 <script src="./xhs-copy.js"></script>
+
+<!-- 每张海报底部自动插入课程标识 bar -->
+<script>
+  document.querySelectorAll('.p-inner').forEach(inner => {
+    if (inner.querySelector('.p-course-bar')) return;
+    const bar = document.createElement('div');
+    bar.className = 'p-course-bar';
+    bar.textContent = 'AI ADOPTION BOOTCAMP · 8 WEEKS · 主页搜匠人 AI';
+    inner.appendChild(bar);
+  });
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
   document.querySelectorAll('.dl-btn').forEach(btn => {

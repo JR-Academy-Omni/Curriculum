@@ -332,93 +332,89 @@
     box-shadow: 6px 6px 0 var(--brand-dark);
   }
 
-  /* ========== P1B 封面变体：共鸣版 (XHS Redesign) ========== */
+  /* ========== P1B 封面变体：共鸣版 (Clean & Bold Redesign) ========== */
   .p1b .p-inner {
     justify-content: flex-start;
     background: #fff;
     color: var(--brand-dark);
-    padding: 50px 45px;
-  }
-  .p1b .p-dots { opacity: 0.05; }
-  .p1b .corner-mark {
-    background: var(--brand-red); color: #fff;
-    top: 35px; right: 35px; transform: rotate(8deg);
-    font-size: 40px !important;
-    padding: 12px 25px !important;
-    border-radius: 18px !important;
+    padding: 70px 50px;
   }
   .p1b .p-tag {
-    background: var(--brand-dark); color: var(--brand-yellow);
-    border: none; font-size: 32px !important;
-    padding: 10px 30px !important;
+    background: #f1f5f9; color: #64748b;
+    border: none; font-size: 30px !important;
+    padding: 10px 25px !important;
+    font-weight: 800; border-radius: 12px;
   }
   .p1b .hook {
-    font-size: 130px; line-height: 1.1; letter-spacing: -4px;
-    margin-top: 35px; font-weight: 900;
+    font-size: 135px; line-height: 1.05; letter-spacing: -5px;
+    margin-top: 40px; font-weight: 900;
   }
-  .p1b .hook .soft { color: var(--text-gray); font-size: 0.7em; display: block; margin-bottom: 8px; }
-  .p1b .hook .hl {
-    color: #fff; background: var(--brand-red);
-    padding: 5px 20px; border-radius: 12px;
-    box-shadow: 10px 10px 0 var(--brand-yellow);
-    display: inline-block; margin-top: 12px;
+  .p1b .hook span.soft { color: #94a3b8; font-size: 0.65em; display: block; margin-bottom: 5px; }
+  .p1b .hook span.hl {
+    color: var(--brand-red);
+    display: inline-block;
   }
   .p1b .contrast-wrapper {
-    margin-top: 45px;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
     flex: 1;
   }
-  .p1b .xhs-card {
-    border: 4px solid var(--brand-dark);
-    border-radius: 30px;
-    padding: 30px 40px;
-    position: relative;
-    box-shadow: 12px 12px 0 var(--brand-dark);
-  }
+  /* 基础款卡片：弱化处理 */
   .p1b .xhs-card.bad {
     background: #f8fafc;
-    box-shadow: 12px 12px 0 #cbd5e1;
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    opacity: 0.8;
   }
+  /* 进阶款卡片：强化处理 */
   .p1b .xhs-card.good {
-    background: #fffdf5;
-    border-color: var(--brand-dark);
-    box-shadow: 12px 12px 0 var(--brand-red);
-  }
-  .p1b .xhs-card .label-tag {
-    position: absolute;
-    top: -25px; left: 35px;
     background: var(--brand-dark);
     color: #fff;
-    padding: 8px 25px;
-    border-radius: 10px;
-    font-size: 28px !important;
-    font-weight: 900;
-    font-family: 'JetBrains Mono', monospace;
-    border: 3px solid var(--brand-dark);
+    border-radius: 35px;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 30px 60px rgba(16,22,47,0.2);
+    position: relative;
+    z-index: 2;
+    margin-top: -10px; /* 产生叠加感 */
   }
-  .p1b .xhs-card.good .label-tag { background: var(--brand-red); border-color: var(--brand-red); }
-  .p1b .xhs-card .content { display: flex; align-items: center; gap: 30px; }
-  .p1b .xhs-card .techs { font-size: 64px !important; font-weight: 900; line-height: 1.1; color: var(--brand-dark); flex: 1; }
-  .p1b .xhs-card .desc { font-size: 34px !important; color: var(--text-gray); font-weight: 600; flex: 1.2; line-height: 1.35 !important; }
-  .p1b .xhs-card.good .techs { color: var(--brand-red); }
-  .p1b .xhs-card.good .desc { color: #7c2d12; }
+  .p1b .label-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 26px !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .p1b .bad .label-tag { color: #94a3b8; }
+  .p1b .good .label-tag { color: var(--brand-yellow); }
+
+  .p1b .card-content { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+  .p1b .techs { font-size: 68px !important; font-weight: 900; line-height: 1.1; }
+  .p1b .desc { font-size: 32px !important; line-height: 1.4; font-weight: 600; flex: 1; text-align: right; }
+  
+  .p1b .bad .techs { color: #64748b; }
+  .p1b .bad .desc { color: #94a3b8; }
+  .p1b .good .techs { color: #fff; }
+  .p1b .good .desc { color: rgba(255,255,255,0.8); }
 
   .p1b .course-chip {
-    margin-top: 30px;
-    background: var(--brand-dark);
+    margin-top: auto;
+    background: var(--brand-red);
     color: #fff;
-    padding: 30px 45px;
-    border-radius: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    z-index: 10;
+    padding: 30px 50px;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 48px !important;
+    font-weight: 900;
+    box-shadow: 0 15px 30px rgba(255,87,87,0.3);
   }
-  .p1b .course-chip .name { font-size: 48px !important; font-weight: 900; }
-  .p1b .course-chip .meta { font-size: 30px !important; color: var(--brand-yellow); font-family: 'JetBrains Mono', monospace; }
 
   /* ========== P1C 封面变体：转岗版 (XHS Redesign) ========== */
   .p1c .p-inner {
@@ -2402,17 +2398,14 @@
   </div>
 
   <!-- =========================================
-       P1B 封面变体：共鸣版 (XHS Redesign)
+       P1B 封面变体：共鸣版 (Clean & Bold Redesign)
        ========================================= -->
   <div class="poster-frame" id="p1b">
-    <div class="label">P1B 封面 <em>· 共鸣版 / XHS Redesign</em></div>
+    <div class="label">P1B 封面 <em>· 共鸣版 / Clean & Bold</em></div>
     <div class="poster-scaler">
       <div class="poster p1b" id="poster-1b">
         <div class="p-inner">
-          <div class="p-dots"></div>
-          <div class="corner-mark">必看干货 💡</div>
-
-          <div class="p-tag"><span class="dot"></span>AI ENGINEER · 2026</div>
+          <div class="p-tag">AI ENGINEER · 2026</div>
 
           <div class="hook">
             <span class="soft">会用 ChatGPT</span>
@@ -2421,17 +2414,19 @@
           </div>
 
           <div class="contrast-wrapper">
+            <!-- 基础玩家 -->
             <div class="xhs-card bad">
               <div class="label-tag">most people stop here</div>
-              <div class="content">
+              <div class="card-content">
                 <div class="techs">会写 Prompt<br>会用 ChatGPT</div>
                 <div class="desc">听过热词，但一到真实业务系统就接不住。</div>
               </div>
             </div>
 
+            <!-- 2026 岗位要求 -->
             <div class="xhs-card good">
               <div class="label-tag">2026 ai roles ask this</div>
-              <div class="content">
+              <div class="card-content">
                 <div class="techs">RAG / Agent<br>MCP / Eval</div>
                 <div class="desc">岗位真正要的是能把 AI 做成系统，而不是停在聊天框。</div>
               </div>
@@ -2439,7 +2434,7 @@
           </div>
 
           <div class="course-chip">
-            <div class="name">AI Engineer Bootcamp</div>
+            AI Engineer Bootcamp
           </div>
         </div>
       </div>

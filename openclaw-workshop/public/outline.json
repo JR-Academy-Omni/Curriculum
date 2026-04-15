@@ -82,9 +82,9 @@
         },
         {
           "code": "L02",
-          "title": "OpenClaw 入门 — 工具理解 + 环境安装",
-          "description": "老师 15 分钟讲清楚 OpenClaw 是个什么工具、它怎么工作、为什么要装在你自己电脑上。剩下 15 分钟 Tutor 挨个走到你身边，帮你把 OpenClaw 装到你的电脑、配好 LLM Key、跑通第一条指令。你走出这一节课，OpenClaw 就已经在你电脑上了。",
-          "type": "Workshop",
+          "title": "OpenClaw 入门 — AI 小花带你装机（Quest）",
+          "description": "老师先用 10 分钟讲清楚 OpenClaw 是什么、为什么要装在你自己电脑上。剩下 20 分钟进入 Quest 模式 — AI 小花一对一带每个学员装 OpenClaw，每一步跑完贴输出验证，装不对当场揪出来。人类 Tutor 坐在教室里做 backup：AI 搞不定的边缘情况（比如 Windows 没装 WSL2）立刻有人接手。走出这节课，OpenClaw 在你电脑上跑起来了，还能收 AI 的第一条真实回复。",
+          "type": "Quest",
           "isLive": true,
           "duration": 30,
           "steps": [],
@@ -94,7 +94,73 @@
           ],
           "wikis": [
             { "slug": "claude-code-guide" }
-          ]
+          ],
+          "quest": {
+            "title": "实战：在你电脑上装 OpenClaw 并跑通第一条指令",
+            "description": "AI 小花带你从零把 OpenClaw 装到自己电脑上。每一步 AI 会等你贴终端输出再往下走，装错当场纠正，人类 Tutor 在旁边做 backup。装完你能对 OpenClaw 发消息拿到正常的 LLM 回复。",
+            "learningGoal": "学员能在自己电脑（macOS / Linux / Win WSL2）上装好 OpenClaw v2026.3+，配好 LLM Provider（OpenAI / Claude / Gemini 任一），并通过发送一条指令拿到正确的 AI 响应。",
+            "successCriteria": "终端跑 `openclaw --version` 显示版本号 + 对 OpenClaw 发一条测试消息能拿到 LLM 正常回复。",
+            "difficulty": "beginner",
+            "estimatedMinutes": 20,
+            "uiMode": "chat",
+            "context": "教学对象：非技术向职场人（销售 / 市场 / 行政 / 地产 / 保险 / 法务等）。多数从没用过终端命令行，但跟过 ChatGPT / Claude / 豆包至少一个。教学环境：线下工作坊，每个学员自带笔记本（Mac / Win 都有），旁边有人类 Tutor 做 backup。教学节奏：每一步完成后一定要让学员贴终端输出验证，不能假设成功。最大的三个坑：① Windows 学员必须先走 WSL2 而不是原生 PowerShell；② Node.js 版本必须 >= 22（< 22 会报 ERR_MODULE_NOT_FOUND，报错信息看不出是版本问题）；③ 不要用 Bun（WhatsApp / Telegram 连接有已知 bug）。如果学员卡在某一步超过 5 分钟搞不定，立刻建议叫人类 Tutor 接手，不要硬扛。语气：放松、耐心、不训斥。学员贴错输出或命令跑错时要先共情（『对，这个坑我也踩过』）再带着查。",
+            "systemStylePrompt": "你是 AI 小花老师，带非技术学员装 OpenClaw。命令行对他们是新东西，不要用术语，不懂的名词当场解释。语气温和、有耐心。",
+            "customGuardrails": "① 不要猜测错误原因 — 学员贴完报错后先复读再分析；② 看到学员用 Bun 或原生 Windows（非 WSL2）装必须立刻劝退换方案；③ 任何一步超过 5 分钟没进展立刻建议叫人类 Tutor；④ 不允许跳过任何一步验证直接到下一步。",
+            "linkedResources": [
+              { "type": "learn", "ref": "openclaw/install-and-setup", "description": "OpenClaw 完整安装指南（5 种安装方式 + 常见坑）" },
+              { "type": "learn", "ref": "openclaw/configure-llm-providers", "description": "LLM Provider（OpenAI / Claude / Gemini）配置说明" }
+            ],
+            "stepSkeleton": [
+              {
+                "title": "确认操作系统和终端",
+                "description": "学员打开终端（macOS: Terminal.app / Linux: 自己的 shell / Win: WSL2 Ubuntu，不是 PowerShell！），贴 `uname -a` 的输出。Windows 学员还没装 WSL2 的情况下，这一步立刻叫 Tutor 帮装。",
+                "verificationType": "text-evidence",
+                "verificationHint": "Mac 看到 Darwin / Linux 看到 Linux / Win 必须确认已进 WSL2 bash 环境（提示符是 user@hostname:~$ 而不是 PS C:\\>）",
+                "expectedEvidence": "Darwin kernel / Linux kernel / WSL2 bash shell 提示符"
+              },
+              {
+                "title": "检查 Node.js 版本（必须 >= 22）",
+                "description": "跑 `node --version`，把输出完整贴出来。低于 v22 必须升级（推荐 `nvm install 22 && nvm use 22`）。这是最容易出问题的地方 — Node 18 / 20 会报 ERR_MODULE_NOT_FOUND 但报错里不提版本号。",
+                "verificationType": "text-evidence",
+                "verificationHint": "输出应该是 v22.x.x 或更高。v18 / v20 必须升级才能继续。没装 node 的学员需要先装 nvm + node 22",
+                "expectedEvidence": "v22.x.x 或更高"
+              },
+              {
+                "title": "全局安装 OpenClaw",
+                "description": "推荐用 pnpm（没装 pnpm 就先 `npm install -g pnpm`），然后 `pnpm add -g openclaw@latest`。npm 全局安装也可以。**绝对不要用 Bun** — WhatsApp / Telegram 连接已知 bug 修不好。",
+                "verificationType": "text-evidence",
+                "verificationHint": "安装过程应该在 1-2 分钟内结束。warning 可以忽略，error 必须处理。如果学员用了 bun 立刻劝退换 pnpm",
+                "expectedEvidence": "日志末尾看到 added xxx packages 或类似成功信息"
+              },
+              {
+                "title": "验证 OpenClaw 已装好",
+                "description": "跑 `openclaw --version`，贴输出。如果 `command not found`，通常是 PATH 没刷新，让学员 `source ~/.zshrc` 或重开终端再试。",
+                "verificationType": "text-evidence",
+                "verificationHint": "应该看到类似 openclaw v2026.x.x 的版本号",
+                "expectedEvidence": "openclaw v2026.x.x"
+              },
+              {
+                "title": "配置 LLM Provider（API Key）",
+                "description": "学员需要有至少一个 LLM API Key（OpenAI / Anthropic / Gemini 任一）。跑 `openclaw config` 按向导填 Key。没自备 Key 的学员叫 Tutor — 现场会发 JR 共享测试 Key。",
+                "verificationType": "self-confirm",
+                "verificationHint": "学员确认『API Key 已填入且 openclaw config show 能看到 provider 配置』即可",
+                "expectedEvidence": "provider 配置完成 · key 已保存"
+              },
+              {
+                "title": "发第一条指令验收",
+                "description": "跑 `openclaw chat` 或同等命令，发送一条测试消息（比如『用一句话介绍下你自己』），确认 AI 正常回复。有回复 = 环境跑通。",
+                "verificationType": "text-evidence",
+                "verificationHint": "期待看到 AI 的正常中文 / 英文自然语言回复。遇到 rate limit / 401 / 超时都要查 API Key 配置",
+                "expectedEvidence": "AI 返回了一段正常的文字回复"
+              }
+            ],
+            "prerequisites": [
+              "自带笔记本电脑（Mac 或 Win 都可，Win 用户必须用 WSL2）",
+              "已注册至少一个 LLM 服务并有 API Key（OpenAI / Claude / Gemini 任一）— 没备好的学员现场可用 JR 共享测试 Key"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": ["openclaw", "install", "workshop", "offline", "quest"]
+          }
         },
         {
           "code": "L03",
