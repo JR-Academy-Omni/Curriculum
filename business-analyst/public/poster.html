@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 产品经理（BA）训练营 · 海报</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800;900&family=DM+Sans:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#0a0a0f;min-height:100vh;padding:40px 20px;display:flex;flex-direction:column;align-items:center;font-family:'Noto Sans SC','DM Sans',sans-serif;color:#fff}
+    .header{text-align:center;margin-bottom:24px}
+    .header h1{font-size:22px;font-weight:900;letter-spacing:1px}
+    .header p{opacity:0.6;margin-top:6px;font-size:13px}
+    .stage{background:#111;padding:30px;border:3px solid #000;box-shadow:8px 8px 0 rgba(255,255,255,0.1);border-radius:0}
+
+    /* 1242 × 1660 at scale 2 (so 621 × 830 displayed) */
+    #poster{
+      width:621px;height:830px;position:relative;overflow:hidden;
+      background:#fffbea;color:#10162f;
+      font-family:'Noto Sans SC','DM Sans',sans-serif;
+    }
+    .p-grid{position:absolute;inset:0;z-index:1;opacity:0.06;
+      background-image:linear-gradient(#10162f 1px,transparent 1px),linear-gradient(90deg,#10162f 1px,transparent 1px);
+      background-size:28px 28px;}
+    .p-blob{position:absolute;z-index:0;border-radius:50%;filter:blur(60px);opacity:0.35}
+    .p-blob.red{width:360px;height:360px;background:#ef4444;top:-80px;right:-80px}
+    .p-blob.teal{width:300px;height:300px;background:#10b981;bottom:-60px;left:-50px}
+
+    .p-content{position:relative;z-index:10;padding:46px 42px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+
+    /* Top brand */
+    .p-brand{display:flex;align-items:center;justify-content:space-between}
+    .p-brand-l{display:flex;align-items:center;gap:10px}
+    .p-brand-mark{width:36px;height:36px;background:#10162f;color:#fffbea;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;border:2px solid #10162f;box-shadow:3px 3px 0 #ef4444}
+    .p-brand-name{font-weight:900;font-size:15px;letter-spacing:1px}
+    .p-brand-sub{font-size:10px;opacity:0.6;letter-spacing:2px;font-family:'Space Mono',monospace;margin-top:2px}
+    .p-cohort{padding:5px 10px;background:#10162f;color:#10b981;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;border:2px solid #10162f;box-shadow:3px 3px 0 #ef4444}
+
+    /* Hero */
+    .p-hero{margin-top:30px}
+    .p-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:#ef4444;font-weight:700;margin-bottom:14px;text-transform:uppercase}
+    .p-title{font-size:56px;font-weight:900;line-height:1.02;letter-spacing:-2px}
+    .p-title .accent{display:inline-block;background:#ef4444;color:#fffbea;padding:2px 14px;transform:rotate(-1deg);margin:0 -4px}
+    .p-sub{font-size:16px;margin-top:18px;line-height:1.55;max-width:520px;color:#334155}
+    .p-sub strong{color:#10162f;font-weight:800}
+
+    /* Value props */
+    .p-values{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
+    .p-value{background:#fff;border:3px solid #10162f;padding:14px 12px;box-shadow:4px 4px 0 #10162f}
+    .p-value-num{font-family:'Space Mono',monospace;font-size:26px;font-weight:900;color:#ef4444;line-height:1}
+    .p-value-lbl{font-size:11px;font-weight:700;margin-top:6px;color:#10162f;line-height:1.3}
+
+    /* Pillars strip */
+    .p-pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+    .p-pillar{background:#10162f;color:#fffbea;padding:11px 13px;display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.45}
+    .p-pillar-ico{font-size:16px;flex-shrink:0}
+
+    /* Bottom band */
+    .p-bottom{margin-top:auto;padding-top:20px;border-top:3px solid #10162f;display:flex;justify-content:space-between;align-items:flex-end;gap:14px}
+    .p-price-box{background:#ef4444;color:#fffbea;padding:12px 16px;border:3px solid #10162f;box-shadow:4px 4px 0 #10162f}
+    .p-price-lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;opacity:0.85}
+    .p-price-main{font-weight:900;font-size:24px;margin-top:3px;line-height:1}
+    .p-price-promo{font-size:11px;margin-top:3px;opacity:0.85}
+    .p-cta{flex:1;background:#10b981;color:#fffbea;padding:14px 16px;border:3px solid #10162f;box-shadow:4px 4px 0 #10162f;display:flex;flex-direction:column;justify-content:center}
+    .p-cta-top{font-size:11px;font-family:'Space Mono',monospace;letter-spacing:1.5px;opacity:0.85}
+    .p-cta-main{font-weight:900;font-size:17px;margin-top:3px}
+    .p-cta-sub{font-size:11px;margin-top:3px;opacity:0.85}
+
+    .p-meta{margin-top:14px;display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;opacity:0.55;letter-spacing:0.5px}
+
+    /* Download button */
+    #dl{position:fixed;right:24px;bottom:24px;z-index:99999;background:#ef4444;color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:14px 22px;font-family:'Space Mono','DM Sans',monospace;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.15s}
+    #dl:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #000}
+    #dl:disabled{opacity:0.6;cursor:wait}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI 产品经理（BA）训练营 — 宣传海报</h1>
+  <p>1242 × 1660 px · 聚光 / 小红书 / 朋友圈可用 · 点右下角下载 PNG</p>
+</div>
+
+<div class="stage">
+  <div id="poster">
+    <div class="p-blob red"></div>
+    <div class="p-blob teal"></div>
+    <div class="p-grid"></div>
+
+    <div class="p-content">
+      <!-- Top brand -->
+      <div class="p-brand">
+        <div class="p-brand-l">
+          <div class="p-brand-mark">匠</div>
+          <div>
+            <div class="p-brand-name">JR ACADEMY</div>
+            <div class="p-brand-sub">全球华人学习 AI 第一站</div>
+          </div>
+        </div>
+        <div class="p-cohort">第 4 期 · 招生中</div>
+      </div>
+
+      <!-- Hero -->
+      <div class="p-hero">
+        <div class="p-eyebrow">Business Analyst × AI Product Manager</div>
+        <div class="p-title">
+          从 BA 到<br>
+          <span class="accent">AI 产品经理</span>
+        </div>
+        <div class="p-sub">
+          94 节课，Week 0–6 拆清楚 <strong>Prompt / PRD / RAG / Agent</strong> 在真实产品里怎么用。
+          不只是方法论，有 <strong>真实 P3 项目实习</strong>，毕业直接带着 AI PRD、Prompt 库、自动化 Demo 去面试。
+        </div>
+      </div>
+
+      <!-- Value stats -->
+      <div class="p-values">
+        <div class="p-value">
+          <div class="p-value-num">94</div>
+          <div class="p-value-lbl">节课 · 6 阶段</div>
+        </div>
+        <div class="p-value">
+          <div class="p-value-num">7</div>
+          <div class="p-value-lbl">互动 Lab<br>含 Prompt A/B / RAG</div>
+        </div>
+        <div class="p-value">
+          <div class="p-value-num">1v1</div>
+          <div class="p-value-lbl">面试简历辅导<br>×2 次</div>
+        </div>
+      </div>
+
+      <!-- Pillars -->
+      <div class="p-pillars">
+        <div class="p-pillar">
+          <div class="p-pillar-ico">📝</div>
+          <div><strong>AI PRD 七章结构</strong><br><span style="opacity:0.7">数据 / 模型 / 指标 / 风险 / 合规</span></div>
+        </div>
+        <div class="p-pillar">
+          <div class="p-pillar-ico">🎯</div>
+          <div><strong>Prompt 作为产品语言</strong><br><span style="opacity:0.7">4 层次 + A/B 实测</span></div>
+        </div>
+        <div class="p-pillar">
+          <div class="p-pillar-ico">🚀</div>
+          <div><strong>P3 真实项目实习</strong><br><span style="opacity:0.7">交付可上线 MVP</span></div>
+        </div>
+        <div class="p-pillar">
+          <div class="p-pillar-ico">🇦🇺</div>
+          <div><strong>澳洲 AI PM 就业</strong><br><span style="opacity:0.7">Canva / Atlassian / 四大行</span></div>
+        </div>
+      </div>
+
+      <!-- Bottom -->
+      <div>
+        <div class="p-bottom">
+          <div class="p-price-box">
+            <div class="p-price-lbl">EARLY BIRD</div>
+            <div class="p-price-main">¥4,400</div>
+            <div class="p-price-promo">标价 ¥4,800 · 省 ¥400</div>
+          </div>
+          <div class="p-cta">
+            <div class="p-cta-top">开课日期</div>
+            <div class="p-cta-main">2025.12.01 → 2026.01.18</div>
+            <div class="p-cta-sub">7 周直播 + 4 周项目实习</div>
+          </div>
+        </div>
+        <div class="p-meta">
+          <span>jiangren.com.au/bootcamp/business-analyst</span>
+          <span>JR · AI-Driven Education</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="dl" type="button">⬇ 下载 PNG</button>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+(function(){
+  const btn = document.getElementById('dl');
+  const poster = document.getElementById('poster');
+  btn.addEventListener('click', async function(){
+    const orig = btn.textContent;
+    btn.textContent = '渲染中…';
+    btn.disabled = true;
+    try{
+      const canvas = await html2canvas(poster, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+      });
+      const a = document.createElement('a');
+      a.download = 'business-analyst-poster-' + Date.now() + '.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+    } catch(err){
+      console.error(err);
+      alert('导出失败：' + (err && err.message ? err.message : err));
+    } finally {
+      btn.textContent = orig;
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>

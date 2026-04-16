@@ -100,6 +100,12 @@ jobs:
             cp -r openclaw-workshop/public/* _site/openclaw-workshop/
           fi
 
+          # business-analyst (AI 产品经理 BA 训练营): static HTML only, generated from outline.json
+          if [ -d business-analyst/public ]; then
+            mkdir -p _site/business-analyst
+            cp -r business-analyst/public/* _site/business-analyst/
+          fi
+
           mkdir -p _site/ai-engineer-bootcamp
           cp -r ai-engineer-bootcamp/dist/* _site/ai-engineer-bootcamp/
           cp ai-engineer-bootcamp/public/curriculum.html _site/ai-engineer-bootcamp/
@@ -275,6 +281,22 @@ jobs:
                     <span class="tag" style="background:#CB6CE6">PART 4</span>
                     <div class="title">RAG 工程实战</div>
                     <div class="desc">Part 4 — RAG 架构到生产部署全流程</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">AI 产品经理 BA · 7 周 · 94 节课</div>
+                <div class="cards">
+                  <a href="./business-analyst/curriculum.html">
+                    <span class="tag" style="background:#10b981">CURRICULUM</span>
+                    <div class="title">AI 产品经理（BA）</div>
+                    <div class="desc">94 节课 · 6 Phase — 从 BA 到 AI PM 转型 + P3 实习</div>
+                  </a>
+                  <a href="./business-analyst/poster.html">
+                    <span class="tag" style="background:#ef4444">POSTER</span>
+                    <div class="title">BA 训练营 海报</div>
+                    <div class="desc">1242×1660 竖版 · 聚光 / 小红书可用</div>
                   </a>
                 </div>
               </div>

@@ -3819,61 +3819,95 @@
 <!-- html2canvas 下载 -->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
-  document.querySelectorAll('.dl-btn').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const poster = document.getElementById(btn.dataset.target);
-      if (!poster) return;
+	document.querySelectorAll('.dl-btn').forEach(btn => {
+		btn.addEventListener('click', async () => {
+			const poster = document.getElementById(btn.dataset.target);
+			if (!poster) return;
 
-      const exportNode = poster.closest('.poster-scaler') || poster;
-      const exportPadding = 24;
-      const nodeWidth = exportNode.offsetWidth || 435;
-      const nodeHeight = exportNode.offsetHeight || 581;
-      const exportScale = nodeWidth ? 1242 / nodeWidth : 2;
+			// Native poster size — always export at exact 1242×1660 + frame + padding.
+			const POSTER_W = 1242;
+			const POSTER_H = 1660;
+			const FRAME_BORDER = 6;
+			const FRAME_RADIUS = 36;
+			const SHADOW_OFFSET = 24;
+			const PADDING = 48;
 
-      const wrapper = document.createElement('div');
-      wrapper.style.position = 'fixed';
-      wrapper.style.left = '-99999px';
-      wrapper.style.top = '0';
-      wrapper.style.padding = `${exportPadding}px`;
-      wrapper.style.background = '#eef0f4';
-      wrapper.style.display = 'inline-block';
-      wrapper.style.zIndex = '-1';
+			// Clone .poster (native 1242×1660) and strip the preview-only transform.
+			const clone = poster.cloneNode(true);
+			clone.style.transform = 'none';
+			clone.style.transformOrigin = 'top left';
+			clone.style.position = 'relative';
+			clone.style.top = '0';
+			clone.style.left = '0';
+			clone.style.width = POSTER_W + 'px';
+			clone.style.height = POSTER_H + 'px';
+			clone.style.margin = '0';
 
-      const clone = exportNode.cloneNode(true);
-      clone.style.margin = '0';
-      wrapper.appendChild(clone);
-      document.body.appendChild(wrapper);
+			// Frame mimics .poster-scaler: black border + offset shadow.
+			const frame = document.createElement('div');
+			frame.style.cssText = [
+				'box-sizing:border-box',
+				'width:' + (POSTER_W + FRAME_BORDER * 2) + 'px',
+				'height:' + (POSTER_H + FRAME_BORDER * 2) + 'px',
+				'border:' + FRAME_BORDER + 'px solid #10162f',
+				'border-radius:' + FRAME_RADIUS + 'px',
+				'box-shadow:' + SHADOW_OFFSET + 'px ' + SHADOW_OFFSET + 'px 0 #10162f',
+				'background:#fff',
+				'overflow:hidden',
+				'display:block',
+				'margin:0'
+			].join(';');
+			frame.appendChild(clone);
 
-      const oldLabel = btn.textContent;
-      btn.textContent = '生成中...';
-      btn.disabled = true;
+			const totalW = POSTER_W + FRAME_BORDER * 2 + PADDING * 2 + SHADOW_OFFSET;
+			const totalH = POSTER_H + FRAME_BORDER * 2 + PADDING * 2 + SHADOW_OFFSET;
 
-      try {
-        const canvas = await html2canvas(wrapper, {
-          backgroundColor: '#eef0f4',
-          scale: exportScale,
-          useCORS: true,
-          allowTaint: true,
-          logging: false,
-          width: nodeWidth + exportPadding * 2,
-          height: nodeHeight + exportPadding * 2,
-          windowWidth: nodeWidth + exportPadding * 2,
-          windowHeight: nodeHeight + exportPadding * 2
-        });
-        const link = document.createElement('a');
-        link.download = `xhs-openclaw-${btn.dataset.slug}-${Date.now()}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-      } catch (e) {
-        console.error(e);
-        alert('导出失败：' + e.message);
-      } finally {
-        wrapper.remove();
-        btn.textContent = oldLabel;
-        btn.disabled = false;
-      }
-    });
-  });
+			const wrapper = document.createElement('div');
+			wrapper.style.cssText = [
+				'position:fixed',
+				'left:-99999px',
+				'top:0',
+				'width:' + totalW + 'px',
+				'height:' + totalH + 'px',
+				'padding:' + PADDING + 'px ' + (PADDING + SHADOW_OFFSET) + 'px ' + (PADDING + SHADOW_OFFSET) + 'px ' + PADDING + 'px',
+				'background:#eef0f4',
+				'box-sizing:border-box',
+				'display:block',
+				'z-index:-1'
+			].join(';');
+			wrapper.appendChild(frame);
+			document.body.appendChild(wrapper);
+
+			const oldLabel = btn.textContent;
+			btn.textContent = '生成中...';
+			btn.disabled = true;
+
+			try {
+				const canvas = await html2canvas(wrapper, {
+					backgroundColor: '#eef0f4',
+					scale: 1,
+					useCORS: true,
+					allowTaint: true,
+					logging: false,
+					width: totalW,
+					height: totalH,
+					windowWidth: totalW,
+					windowHeight: totalH
+				});
+				const link = document.createElement('a');
+				link.download = `xhs-openclaw-${btn.dataset.slug}-${Date.now()}.png`;
+				link.href = canvas.toDataURL('image/png');
+				link.click();
+			} catch (e) {
+				console.error(e);
+				alert('导出失败：' + e.message);
+			} finally {
+				wrapper.remove();
+				btn.textContent = oldLabel;
+				btn.disabled = false;
+			}
+		});
+	});
 </script>
 
 </body>

@@ -13,7 +13,7 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 ### 尺寸（ratio 锁死）
 - **封面 + 所有配图**: **`1242 × 1660`**（3:4 竖版）
 - 这是小红书聚光主流投流素材尺寸，**不提供其他比例选项**
-- `html2canvas` 导出时 `scale: 2` → 导出 2484×3320 高清 PNG
+- `html2canvas` 导出：`scale: 1`，克隆原生 `.poster`（1242×1660）+ 外框 + padding → 固定 **1374×1792** PNG（保留边框和右下投影）
 - 容器必须 `width: 1242px; height: 1660px; overflow: hidden;`
 
 ### 数量
@@ -180,6 +180,64 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 ```
 
 按钮样式：居中在海报下方，不遮挡内容。
+
+### 下载脚本（html2canvas 导出 PNG）— 必用模板
+
+直接复制到页面底部。**不要自作主张改成 `exportNode.offsetWidth` 之类基于渲染尺寸的缩放**——那会导致 shadow/border 被吞、尺寸随浏览器缩放漂移。参考 `curriculum/ai-engineer-bootcamp/public/xhs-posters/index.html` 底部实现。
+
+要点：
+- 克隆 **`.poster`**（原生 1242×1660），清掉预览用的 `transform: scale(0.35)` 和 `position: absolute`
+- 新建一个 frame `<div>` 重新画出 `.poster-scaler` 的 `border + box-shadow`（别指望 html2canvas 完美渲染带 transform 子元素的 box-shadow）
+- `scale: 1` + 固定的 `totalW/totalH`，输出永远一致，不随浏览器缩放变化
+- 成品 PNG 尺寸固定：`1242 + 6*2 + 48*2 + 24 = 1374 × 1792`，四角露白 + 右下投影
+
+```js
+document.querySelectorAll('.dl-btn').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const poster = document.getElementById(btn.dataset.target);
+    if (!poster) return;
+
+    const POSTER_W = 1242, POSTER_H = 1660;
+    const FRAME_BORDER = 6, FRAME_RADIUS = 36;
+    const SHADOW_OFFSET = 24, PADDING = 48;
+
+    const clone = poster.cloneNode(true);
+    clone.style.transform = 'none';
+    clone.style.position = 'relative';
+    clone.style.top = '0'; clone.style.left = '0';
+    clone.style.width = POSTER_W + 'px';
+    clone.style.height = POSTER_H + 'px';
+    clone.style.margin = '0';
+
+    const frame = document.createElement('div');
+    frame.style.cssText = `box-sizing:border-box;width:${POSTER_W + FRAME_BORDER*2}px;height:${POSTER_H + FRAME_BORDER*2}px;border:${FRAME_BORDER}px solid #10162f;border-radius:${FRAME_RADIUS}px;box-shadow:${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 #10162f;background:#fff;overflow:hidden`;
+    frame.appendChild(clone);
+
+    const totalW = POSTER_W + FRAME_BORDER*2 + PADDING*2 + SHADOW_OFFSET;
+    const totalH = POSTER_H + FRAME_BORDER*2 + PADDING*2 + SHADOW_OFFSET;
+
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = `position:fixed;left:-99999px;top:0;width:${totalW}px;height:${totalH}px;padding:${PADDING}px ${PADDING+SHADOW_OFFSET}px ${PADDING+SHADOW_OFFSET}px ${PADDING}px;background:#eef0f4;box-sizing:border-box`;
+    wrapper.appendChild(frame);
+    document.body.appendChild(wrapper);
+
+    btn.disabled = true; const oldLabel = btn.textContent; btn.textContent = '生成中...';
+    try {
+      const canvas = await html2canvas(wrapper, {
+        backgroundColor: '#eef0f4', scale: 1, useCORS: true, allowTaint: true, logging: false,
+        width: totalW, height: totalH, windowWidth: totalW, windowHeight: totalH
+      });
+      const link = document.createElement('a');
+      link.download = `xhs-{bootcamp-slug}-${btn.dataset.slug}-${Date.now()}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch (e) { console.error(e); alert('导出失败：' + e.message); }
+    finally { wrapper.remove(); btn.textContent = oldLabel; btn.disabled = false; }
+  });
+});
+```
+
+`{bootcamp-slug}` 替换成课程前缀，如 `ai-engineer`、`ai-adoption`、`openclaw`。
 
 ### 左侧固定导航
 
@@ -437,7 +495,7 @@ cd curriculum/{bootcamp} && python3 -m http.server 80XX
 文件：curriculum/{bootcamp}/public/xhs-posters/index.html
 预览：cd curriculum/{bootcamp} && python3 -m http.server 8080
      → http://localhost:8080/public/xhs-posters/
-导出：每张图下方点「⬇ 下载 PNG」（html2canvas, 2484×3320 高清）
+导出：每张图下方点「⬇ 下载 PNG」（html2canvas, 固定 1374×1792 带边框+投影）
 投聚光前检查：文案无二维码 / 无绝对化用语 / 无联系方式
 ```
 

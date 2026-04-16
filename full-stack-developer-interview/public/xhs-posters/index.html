@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手撕全栈面试题班 · 小红书素材集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-blue: #3b82f6;
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-red: #ff5757;
+    --brand-green: #10b981;
+    --bg-light: #f8fbff;
+    --text-main: #10162f;
+    --text-gray: #64748b;
+    --border-color: #e2e8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #eef0f4;
+    color: var(--text-main);
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    padding: 40px 20px 120px 120px;
+    line-height: 1.5;
+  }
+
+  .page-wrap { max-width: 1400px; margin: 0 auto; }
+
+  .page-head {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 20px;
+    padding: 32px 40px;
+    margin-bottom: 32px;
+    box-shadow: 8px 8px 0 var(--brand-dark);
+  }
+  .page-head h1 { font-size: 30px; font-weight: 900; }
+  .page-head h1 span { color: var(--brand-blue); }
+  .page-head p { font-size: 15px; color: var(--text-gray); margin-top: 10px; }
+
+  .thumb-nav {
+    display: flex;
+    flex-direction: column; gap: 8px; background: #fff; border: 1.5px solid var(--brand-dark); border-radius: 14px; padding: 12px; position: fixed; top: 20px; left: 16px; width: 112px; max-height: calc(100vh - 40px); overflow-y: auto; z-index: 100;
+  }
+  .thumb {
+    aspect-ratio: 3/4; background: var(--bg-light); border: 1.5px solid var(--brand-dark); border-radius: 8px; font-weight: 900; color: var(--brand-dark); text-align: center; display: flex; align-items: center; justify-content: center; text-decoration: none; flex-direction: column; gap: 2px; padding: 4px; transition: all 0.1s;
+  }
+  .thumb:hover { background: var(--brand-yellow); transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  .poster-frame { display: grid; grid-template-columns: auto 460px; gap: 28px; align-items: start; justify-content: center; margin-bottom: 60px; }
+  .poster-main { display: flex; flex-direction: column; align-items: center; }
+
+  .poster-scaler {
+    width: 435px; height: 581px; position: relative; border: 2px solid var(--brand-dark); border-radius: 12px; box-shadow: 8px 8px 0 var(--brand-dark); overflow: hidden;
+  }
+  .poster {
+    width: 1242px; height: 1660px; transform: scale(0.35); transform-origin: top left; position: absolute; top: 0; left: 0; background: #fff; overflow: hidden; padding: 32px;
+  }
+
+  .p-inner {
+    position: relative; width: 100%; height: 100%; padding: 80px 72px; display: flex; flex-direction: column; background: #fff; border: 5px solid var(--brand-dark); border-radius: 36px; box-sizing: border-box; overflow: hidden;
+  }
+
+  .hl { position: relative; display: inline-block; z-index: 1; }
+  .hl::after { content: ''; position: absolute; bottom: 10px; left: -4px; right: -4px; height: 24px; background: var(--brand-yellow); z-index: -1; opacity: 0.75; }
+
+  .dl-btn {
+    display: block; margin: 20px auto 0; background: var(--brand-blue); color: #fff; border: 3px solid var(--brand-dark); box-shadow: 6px 6px 0 var(--brand-dark); padding: 14px 32px; font-size: 14px; font-weight: 900; cursor: pointer; border-radius: 10px; transition: all 0.15s;
+  }
+  .dl-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--brand-dark); }
+
+  /* ========== Poster Styles ========== */
+  .p1 .hook { font-size: 140px; font-weight: 900; line-height: 1.1; letter-spacing: -5px; margin-top: 40px; }
+  .p1 .sub { font-size: 52px; color: var(--text-gray); margin-top: 40px; font-weight: 600; }
+  .p1 .price-tag { margin-top: 60px; display: flex; align-items: center; gap: 20px; }
+  .p1 .version { background: var(--brand-dark); color: var(--brand-yellow); padding: 15px 30px; border-radius: 15px; font-size: 40px; font-weight: 900; font-family: 'JetBrains Mono'; }
+  .p1 .price { font-size: 64px; font-weight: 900; color: var(--brand-red); }
+
+  .p1b .hook { font-size: 120px; font-weight: 900; line-height: 1.1; margin-top: 20px; }
+  .p1b .contrast { margin-top: 60px; display: flex; flex-direction: column; gap: 30px; flex: 1; }
+  .p1b .card { border: 5px solid var(--brand-dark); border-radius: 30px; padding: 45px; position: relative; }
+  .p1b .card.v6 { background: #f1f5f9; opacity: 0.7; }
+  .p1b .card.v7 { background: var(--brand-dark); color: #fff; box-shadow: 15px 15px 0 var(--brand-blue); }
+  .p1b .card .label-tag { position: absolute; top: -30px; left: 40px; background: var(--brand-blue); color: #fff; padding: 10px 30px; border-radius: 12px; font-size: 32px; font-weight: 900; border: 3px solid var(--brand-dark); }
+  .p1b .card .val { font-size: 88px; font-weight: 900; line-height: 1; }
+  .p1b .card .desc { font-size: 36px; margin-top: 15px; opacity: 0.9; font-weight: 600; }
+
+  .p1c .hook { font-size: 110px; font-weight: 900; line-height: 1.1; }
+  .p1c .grid { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; flex: 1; }
+  .p1c .item { background: #fff; border: 4px solid var(--brand-dark); border-radius: 25px; padding: 40px 30px; text-align: center; box-shadow: 10px 10px 0 var(--brand-blue); }
+  .p1c .item .num { font-size: 72px; font-weight: 900; color: var(--brand-blue); }
+  .p1c .item .lbl { font-size: 36px; font-weight: 800; margin-top: 10px; }
+
+  .p1d .hook { font-size: 110px; font-weight: 900; line-height: 1.1; color: var(--brand-dark); }
+  .p1d .sticker-grid { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 35px; flex: 1; transform: rotate(-2deg); }
+  .p1d .sticker { background: #fff; border: 4px solid var(--brand-dark); border-radius: 20px; padding: 45px 25px; font-size: 52px; font-weight: 900; text-align: center; box-shadow: 12px 12px 0 var(--brand-yellow); display: flex; align-items: center; justify-content: center; }
+  .p1d .sticker:nth-child(even) { transform: rotate(4deg); background: var(--brand-blue); color: #fff; box-shadow: 12px 12px 0 var(--brand-red); }
+
+  .p1-outline .p-inner { justify-content: flex-start; background: #fff; padding: 60px 50px; }
+  .p1-outline .hook { font-size: 100px; font-weight: 900; line-height: 1.1; margin-bottom: 30px; }
+  .p1-outline .outline-grid { display: flex; flex-direction: column; gap: 15px; flex: 1; }
+  .p1-outline .mod-row { display: flex; align-items: center; gap: 20px; background: #f8fbff; border: 3px solid var(--brand-dark); border-radius: 20px; padding: 20px 30px; box-shadow: 6px 6px 0 var(--brand-blue); }
+  .p1-outline .mod-row .num { font-size: 32px; font-weight: 900; color: var(--brand-blue); font-family: 'JetBrains Mono'; min-width: 60px; }
+  .p1-outline .mod-row .title { font-size: 34px; font-weight: 800; color: var(--brand-dark); }
+  .p1-outline .mod-row .lessons { margin-left: auto; background: var(--brand-dark); color: #fff; padding: 5px 15px; border-radius: 10px; font-size: 22px; font-weight: 700; }
+
+  .course-chip { margin-top: auto; background: var(--brand-dark); color: #fff; padding: 35px 50px; border-radius: 30px; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .course-chip .name { font-size: 48px; font-weight: 900; }
+  .course-chip .meta { font-size: 30px; color: var(--brand-yellow); font-family: 'JetBrains Mono'; font-weight: 700; }
+
+  /* ========== Copy Panel Styles ========== */
+  .copy-panel { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 18px 20px; box-shadow: 6px 6px 0 rgba(16,22,47,0.08); display: flex; flex-direction: column; gap: 14px; width: 460px; }
+  .cp-title { font-size: 13px; font-weight: 900; color: var(--brand-blue); letter-spacing: 1px; border-bottom: 1.5px dashed var(--border-color); padding-bottom: 10px; }
+  .cp-section { display: flex; flex-direction: column; gap: 6px; }
+  .cp-label { font-size: 11px; font-weight: 900; color: var(--text-gray); text-transform: uppercase; }
+  .cp-box { background: #fafbfc; border: 1.5px solid var(--border-color); border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; position: relative; min-height: 40px; }
+  .cp-btn { align-self: flex-end; background: var(--brand-dark); color: #fff; border: none; padding: 5px 14px; font-size: 11px; font-weight: 700; border-radius: 6px; cursor: pointer; transition: all 0.1s; }
+  .cp-btn:hover { background: var(--brand-blue); }
+  .cp-tabs { display: flex; gap: 4px; background: #f3f4f6; padding: 4px; border-radius: 10px; }
+  .cp-tab { flex: 1; background: transparent; border: none; padding: 8px 6px; font-size: 12px; font-weight: 700; color: var(--text-gray); cursor: pointer; border-radius: 8px; }
+  .cp-tab.active { background: #fff; color: var(--brand-dark); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 900; }
+  .cp-pane { display: flex; flex-direction: column; gap: 14px; }
+  .cp-pane.hidden { display: none; }
+
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <header class="page-head">
+    <h1>手撕全栈面试题班 · <span>小红书素材集</span></h1>
+    <p>自学 + 1v1 模拟面试，助你撕碎全栈大厂面试。</p>
+  </header>
+
+  <nav class="thumb-nav">
+    <a href="#p1" class="thumb"><span class="num">1</span><span class="lbl">封面</span></a>
+    <a href="#p1b" class="thumb"><span class="num">1B</span><span class="lbl">V7升级</span></a>
+    <a href="#p1c" class="thumb"><span class="num">1C</span><span class="lbl">配置</span></a>
+    <a href="#p1d" class="thumb"><span class="num">1D</span><span class="lbl">考点</span></a>
+    <a href="#p1-outline" class="thumb"><span class="num">📋</span><span class="lbl">大纲</span></a>
+  </nav>
+
+  <!-- P1 封面 -->
+  <div class="poster-frame" id="p1">
+    <div class="poster-main">
+      <div class="label">P1 封面 <em>· 课程主图</em></div>
+      <div class="poster-scaler">
+        <div class="poster p1" id="poster-1">
+          <div class="p-inner">
+            <div class="hook">
+              手撕全栈<br>
+              <span class="hl">面试题班</span>
+            </div>
+            <div class="sub">撕碎 2026 大厂面试<br>讲清考点 / 扣分点 / 速答模板</div>
+            <div class="price-tag"><div class="version">VERSION 7</div><div class="price">限时 $270</div></div>
+            <div class="course-chip"><div class="name">Full-Stack Interview</div><div class="meta">40 LESSONS · 9 MODS</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-1" data-slug="p1-cover">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p1"></div>
+  </div>
+
+  <!-- P1B V7 升级 -->
+  <div class="poster-frame" id="p1b">
+    <div class="poster-main">
+      <div class="label">P1B 升级 <em>· V6 vs V7 史诗级加强</em></div>
+      <div class="poster-scaler">
+        <div class="poster p1b" id="poster-1b">
+          <div class="p-inner">
+            <div class="hook">描述扩充 <span style="color:var(--brand-blue)">4.1x</span><br>每一个坑都填平</div>
+            <div class="contrast">
+              <div class="card v6"><div class="label-tag">V6 OLD</div><div class="val">28 字</div><div class="desc">每节课描述，点到为止</div></div>
+              <div class="card v7"><div class="label-tag">V7 NEW</div><div class="val">115 字</div><div class="desc">考点 + 扣分点 + 速答模板</div></div>
+            </div>
+            <div class="course-chip"><div class="name">手撕全栈面试题班</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-1b" data-slug="p1b-v7-upgrade">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p1b"></div>
+  </div>
+
+  <!-- P1C 配置版 -->
+  <div class="poster-frame" id="p1c">
+    <div class="poster-main">
+      <div class="label">P1C 配置 <em>· 拿走这 3 样</em></div>
+      <div class="poster-scaler">
+        <div class="poster p1c" id="poster-1c">
+          <div class="p-inner">
+            <div class="hook">全视频教学<br>搭配 <span class="hl">1v1 模拟</span></div>
+            <div class="grid">
+              <div class="item"><div class="num">40</div><div class="lbl">节视频课</div></div>
+              <div class="item"><div class="num">9</div><div class="lbl">大核心模块</div></div>
+              <div class="item"><div class="num">4</div><div class="lbl">次 1v1 模拟</div></div>
+              <div class="item"><div class="num">∞</div><div class="lbl">配套 Lab</div></div>
+            </div>
+            <div class="course-chip"><div class="name">Full-Stack Interview</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-1c" data-slug="p1c-config">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p1c"></div>
+  </div>
+
+  <!-- P1D 考点 -->
+  <div class="poster-frame" id="p1d">
+    <div class="poster-main">
+      <div class="label">P1D 考点 <em>· 撕碎这些热词</em></div>
+      <div class="poster-scaler">
+        <div class="poster p1d" id="poster-1d">
+          <div class="p-inner">
+            <div class="hook">不考八股文<br>只面 <span class="hl">真实业务</span></div>
+            <div class="sticker-grid">
+              <div class="sticker">考点剖析</div><div class="sticker">扣分陷阱</div><div class="sticker">高分模板</div>
+              <div class="sticker">手写代码</div><div class="sticker">架构设计</div><div class="sticker">性能优化</div>
+            </div>
+            <div class="course-chip"><div class="name">手撕全栈面试题班</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-1d" data-slug="p1d-topics">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p1d"></div>
+  </div>
+
+  <!-- P1-Outline 模块大纲 -->
+  <div class="poster-frame" id="p1-outline">
+    <div class="poster-main">
+      <div class="label">大纲 <em>· 模块分布</em></div>
+      <div class="poster-scaler">
+        <div class="poster p1-outline" id="poster-1-outline">
+          <div class="p-inner">
+            <div class="hook">手撕全栈<br>9 大核心模块</div>
+            <div class="outline-grid">
+              <div class="mod-row"><div class="num">M1</div><div class="title">面试策略与求职准备</div><div class="lessons">5 节</div></div>
+              <div class="mod-row"><div class="num">M2</div><div class="title">前端面试高频突击</div><div class="lessons">8 节</div></div>
+              <div class="mod-row"><div class="num">M3</div><div class="title">后端面试高频突击</div><div class="lessons">6 节</div></div>
+              <div class="mod-row"><div class="num">M4</div><div class="title">系统设计深度剖析</div><div class="lessons">4 节</div></div>
+              <div class="mod-row"><div class="num">M5</div><div class="title">AI 编程面试新趋势</div><div class="lessons">3 节</div></div>
+              <div class="mod-row"><div class="num">M6</div><div class="title">常见算法题解析</div><div class="lessons">10 节</div></div>
+              <div class="mod-row"><div class="num">M7</div><div class="title">项目实战模拟</div><div class="lessons">4 节</div></div>
+            </div>
+            <div class="course-chip"><div class="name">手撕全栈面试题班</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-1-outline" data-slug="p1-outline">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p1-outline"></div>
+  </div>
+
+</div>
+
+<script src="./xhs-copy.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+  // 注入文案逻辑
+  if (typeof XHS_COPY !== 'undefined') {
+    Object.keys(XHS_COPY).forEach(key => {
+      const container = document.getElementById('copy-' + key);
+      if (!container) return;
+      
+      const data = XHS_COPY[key];
+      const panel = document.createElement('div');
+      panel.className = 'copy-panel';
+      panel.innerHTML = `
+        <div class="cp-title">XHS COPY · ${key.toUpperCase()}</div>
+        <div class="cp-tabs">
+          <button class="cp-tab active" data-type="xhs">小红书</button>
+          <button class="cp-tab" data-type="pyq">朋友圈</button>
+        </div>
+        <div class="cp-pane" id="pane-${key}-xhs">
+          <div class="cp-section"><div class="cp-label">标题</div><div class="cp-box">${data.title}</div><button class="cp-btn">复制</button></div>
+          <div class="cp-section"><div class="cp-label">正文</div><div class="cp-box">${data.body}</div><button class="cp-btn">复制</button></div>
+          <div class="cp-section"><div class="cp-label">标签</div><div class="cp-box hashtags" style="color:var(--brand-blue);font-weight:600;">${data.tags}</div><button class="cp-btn">复制</button></div>
+        </div>
+        <div class="cp-pane hidden" id="pane-${key}-pyq">
+          <div class="cp-section"><div class="cp-label">文案</div><div class="cp-box">${data.wechat[0]}</div><button class="cp-btn">复制</button></div>
+        </div>
+      `;
+      
+      // Tab 切换逻辑
+      panel.querySelectorAll('.cp-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          panel.querySelectorAll('.cp-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          panel.querySelectorAll('.cp-pane').forEach(p => p.classList.add('hidden'));
+          panel.querySelector(`#pane-${key}-${tab.dataset.type}`).classList.remove('hidden');
+        });
+      });
+
+      // 复制逻辑
+      panel.querySelectorAll('.cp-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const text = btn.previousElementSibling.innerText;
+          navigator.clipboard.writeText(text);
+          const old = btn.innerText;
+          btn.innerText = '已复制';
+          setTimeout(() => btn.innerText = old, 2000);
+        });
+      });
+
+      container.appendChild(panel);
+    });
+  }
+
+	document.querySelectorAll('.dl-btn').forEach(btn => {
+		btn.addEventListener('click', async () => {
+			const poster = document.getElementById(btn.dataset.target);
+			if (!poster) return;
+
+			const POSTER_W = 1242;
+			const POSTER_H = 1660;
+			const FRAME_BORDER = 6;
+			const FRAME_RADIUS = 36;
+			const SHADOW_OFFSET = 24;
+			const PADDING = 48;
+
+			const clone = poster.cloneNode(true);
+			clone.style.transform = 'none';
+			clone.style.transformOrigin = 'top left';
+			clone.style.position = 'relative';
+			clone.style.top = '0';
+			clone.style.left = '0';
+			clone.style.width = POSTER_W + 'px';
+			clone.style.height = POSTER_H + 'px';
+			clone.style.margin = '0';
+
+			const frame = document.createElement('div');
+			frame.style.cssText = [
+				'box-sizing:border-box',
+				'width:' + (POSTER_W + FRAME_BORDER * 2) + 'px',
+				'height:' + (POSTER_H + FRAME_BORDER * 2) + 'px',
+				'border:' + FRAME_BORDER + 'px solid #10162f',
+				'border-radius:' + FRAME_RADIUS + 'px',
+				'box-shadow:' + SHADOW_OFFSET + 'px ' + SHADOW_OFFSET + 'px 0 #10162f',
+				'background:#fff',
+				'overflow:hidden',
+				'display:block',
+				'margin:0'
+			].join(';');
+			frame.appendChild(clone);
+
+			const totalW = POSTER_W + FRAME_BORDER * 2 + PADDING * 2 + SHADOW_OFFSET;
+			const totalH = POSTER_H + FRAME_BORDER * 2 + PADDING * 2 + SHADOW_OFFSET;
+
+			const wrapper = document.createElement('div');
+			wrapper.style.cssText = [
+				'position:fixed',
+				'left:-99999px',
+				'top:0',
+				'width:' + totalW + 'px',
+				'height:' + totalH + 'px',
+				'padding:' + PADDING + 'px ' + (PADDING + SHADOW_OFFSET) + 'px ' + (PADDING + SHADOW_OFFSET) + 'px ' + PADDING + 'px',
+				'background:#eef0f4',
+				'box-sizing:border-box',
+				'display:block',
+				'z-index:-1'
+			].join(';');
+			wrapper.appendChild(frame);
+			document.body.appendChild(wrapper);
+
+			const oldLabel = btn.textContent;
+			btn.textContent = '生成中...';
+			btn.disabled = true;
+
+			try {
+				const canvas = await html2canvas(wrapper, {
+					backgroundColor: '#eef0f4',
+					scale: 1,
+					useCORS: true,
+					allowTaint: true,
+					logging: false,
+					width: totalW,
+					height: totalH,
+					windowWidth: totalW,
+					windowHeight: totalH
+				});
+				const link = document.createElement('a');
+				link.download = `xhs-fullstack-${btn.dataset.slug}.png`;
+				link.href = canvas.toDataURL('image/png');
+				link.click();
+			} catch (e) {
+				console.error(e);
+				alert('导出失败：' + e.message);
+			} finally {
+				wrapper.remove();
+				btn.textContent = oldLabel;
+				btn.disabled = false;
+			}
+		});
+	});
+</script>
+</body>
+</html>
