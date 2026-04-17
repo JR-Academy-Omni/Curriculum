@@ -133,6 +133,12 @@ jobs:
           [ -f posters.html ] && cp posters.html _site/posters.html || true
           [ -f quest-posters.html ] && cp quest-posters.html _site/quest-posters.html || true
 
+          # AI 每日头条海报 hub (daily auto-generated posters from jr-wiki /ai-daily-news)
+          if [ -d ai-news-posters ]; then
+            mkdir -p _site/ai-news-posters
+            cp -r ai-news-posters/* _site/ai-news-posters/
+          fi
+
           # Index page
           cat > _site/index.html << 'HTMLEOF'
           <!DOCTYPE html>
