@@ -44,11 +44,8 @@ def render_lesson(lesson: dict) -> str:
     color, label = TYPE_COLOR.get(ltype, ("#888", ltype.upper()))
     duration = fmt_duration(int(lesson.get("duration", 60)))
     desc = lesson.get("description", "").strip()
-    # If description is very long, show first ~600 chars (to avoid wall of HTML)
-    # NOTE: description may include HTML; trust it but truncate
+    # 展示完整描述。『只加不删』铁律：不做任何 UI 层截断。
     display_desc = desc
-    if len(display_desc) > 800:
-        display_desc = display_desc[:800].rstrip() + "…"
 
     # Resource bindings
     bindings_html = ""

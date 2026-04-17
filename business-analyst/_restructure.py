@@ -95,8 +95,9 @@ DESC_FILLERS = {
     "L90": "<p>Week 6 Quiz：自动化系统与 Agent 决策思维。20 题 30 分钟。覆盖：哪些流程适合自动化、何时用 Rule-based vs LLM、Agent 的决策边界、Human-in-the-loop 设计、多 Agent 编排模式（sequential / parallel / hierarchical）、Agent 的监控与回滚机制。</p>",
 }
 
-# ========== L29 TRUNCATION ==========
-L29_KEEP_CHARS = 3500  # first N chars of the 90k
+# ========== L29 —— 不压缩 ==========
+# L29 原文 90,673 字符，是完整 AI PM 讲义，必须保留全部内容。
+# 违反 curriculum/CLAUDE.md『只加不删』铁律就是生产事故。
 
 
 # ========== RESOURCE BINDINGS (PRD §6) ==========
@@ -283,18 +284,18 @@ def main():
     # Transform lessons
     for lesson in all_lessons:
         code = lesson.get("code")
-        # Fill empty descriptions
+        # Fill descriptions. 『只加不删』铁律：
+        # - 空描述 / 小于 50 字符的 title-echo → 替换为新内容
+        # - 已有实质内容 → 追加新内容到末尾，不覆盖
         if code in DESC_FILLERS:
-            lesson["description"] = DESC_FILLERS[code]
-        # Truncate L29
-        if code == "L29":
-            orig = lesson.get("description", "")
-            if len(orig) > L29_KEEP_CHARS:
-                lesson["description"] = (
-                    orig[:L29_KEEP_CHARS].rstrip()
-                    + "</p><p><em>[注：本节完整讲义另有详细的案例拆解和实践练习，在学员端的 learningMaterial 中展开。课堂上会按本节标题导读整套内容。]</em></p>"
-                )
-                print(f"  L29: truncated {len(orig)} -> {len(lesson['description'])}")
+            existing = (lesson.get("description") or "").strip()
+            stripped_chars = len(existing) - existing.count("<") * 3  # rough text-char estimate
+            if stripped_chars < 50:
+                lesson["description"] = DESC_FILLERS[code]
+            else:
+                # Append without overwriting
+                lesson["description"] = existing + DESC_FILLERS[code]
+        # L29 保留全部内容（90k+ 字符），不压缩
         # Bind labs/learns
         if code in BINDINGS:
             b = BINDINGS[code]
