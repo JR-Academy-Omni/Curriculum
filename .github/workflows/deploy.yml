@@ -14,6 +14,23 @@ jobs:
         with:
           bun-version: latest
 
+      # Setup Chrome + puppeteer-core + 预渲染 mp-article 的所有海报成真实 PNG
+      # 让公众号粘贴时能抓到图片 URL（base64 会被微信丢弃）
+      - name: Setup Chrome (for mp-article poster PNG rendering)
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+          install-dependencies: true
+
+      - name: Install curriculum root deps (puppeteer-core)
+        run: bun install
+
+      - name: Render mp-article posters to PNG (ai-engineer / business-analyst / web-code)
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+        run: bun run render:mp-posters
+
       # Build ai-adoption-bootcamp
       - name: Build ai-adoption-bootcamp
         working-directory: ai-adoption-bootcamp
@@ -128,16 +145,16 @@ jobs:
           if [ -d ai-engineer-bootcamp/public/mp-article ]; then
             cp -r ai-engineer-bootcamp/public/mp-article _site/ai-engineer-bootcamp/
           fi
+          if [ -d ai-engineer-bootcamp/public/video ]; then
+            cp -r ai-engineer-bootcamp/public/video _site/ai-engineer-bootcamp/
+          fi
 
           # Top-level posters aggregate page (internal marketing asset index)
           [ -f posters.html ] && cp posters.html _site/posters.html || true
           [ -f quest-posters.html ] && cp quest-posters.html _site/quest-posters.html || true
 
-          # AI 每日头条海报 hub (daily auto-generated posters from jr-wiki /ai-daily-news)
-          if [ -d ai-news-posters ]; then
-            mkdir -p _site/ai-news-posters
-            cp -r ai-news-posters/* _site/ai-news-posters/
-          fi
+          # AI 每日头条海报已迁至 jr-wiki，走 GitHub Pages:
+          # https://jr-academy-ai.github.io/jr-wiki/ai-news-posters/
 
           # Index page
           cat > _site/index.html << 'HTMLEOF'

@@ -1,1586 +1,267 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI 产品经理（BA）训练营 · 小红书素材集（聚光投流）</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --brand-red:#ff5757;
-  --brand-dark:#10162f;
-  --brand-yellow:#ffce44;
-  --brand-blue:#3b82f6;
-  --brand-indigo:#6366f1;
-  --brand-green:#10b981;
-  --brand-purple:#8b5cf6;
-  --brand-orange:#f97316;
-  --bg-light:#f8f9fb;
-  --bg-cream:#fff8ee;
-  --text-main:#10162f;
-  --text-gray:#64748b;
-  --border-color:#e2e8f0;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#eef0f4;color:var(--text-main);font-family:'Noto Sans SC',system-ui,sans-serif;padding:40px 20px 120px 160px;line-height:1.5}
-.page-wrap{max-width:1400px;margin:0 auto}
+  <meta charset="UTF-8">
+  <title>AI 产品经理实战班 · 视觉文案全案</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-red: #ff5757;
+      --brand-dark: #10162f;
+      --brand-yellow: #ffce44;
+      --brand-blue: #3b82f6;
+      --brand-green: #10b981;
+      --brand-purple: #8b5cf6;
+      --bg-light: #f8f9fb;
+      --text-main: #10162f;
+      --text-gray: #64748b;
+      --border-color: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans SC', sans-serif; background: #eaebef; padding: 40px; padding-left: 160px; color: var(--text-main); }
+    
+    .thumb-nav { position: fixed; top: 40px; left: 24px; width: 100px; display: flex; flex-direction: column; gap: 12px; }
+    .thumb-link { width: 80px; height: 107px; border: 2px solid var(--brand-dark); border-radius: 8px; overflow: hidden; cursor: pointer; transition: all 0.2s; opacity: 0.6; background: #fff; position: relative; }
+    .thumb-link:hover, .thumb-link.active { opacity: 1; transform: scale(1.05); box-shadow: 4px 4px 0 var(--brand-dark); }
+    .thumb-link .num { position: absolute; bottom: 4px; right: 4px; background: var(--brand-dark); color: #fff; font-family: 'JetBrains Mono'; font-size: 12px; padding: 2px 6px; border-radius: 4px; }
 
-/* 页面头 */
-.page-head{background:#fff;border:2px solid var(--brand-dark);border-radius:20px;padding:32px 40px;margin-bottom:32px;box-shadow:8px 8px 0 var(--brand-dark)}
-.page-head h1{font-size:30px;font-weight:900;letter-spacing:-0.5px}
-.page-head h1 span{color:var(--brand-indigo)}
-.page-head p{font-size:15px;color:var(--text-gray);margin-top:10px;max-width:900px}
-.spec-row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
-.spec-pill{font-size:12px;font-weight:700;padding:6px 14px;background:var(--bg-light);border:1.5px solid var(--brand-dark);border-radius:100px}
-.spec-pill.indigo{background:var(--brand-indigo);color:#fff;border-color:var(--brand-dark)}
-.guide{background:#fffbe7;border:1.5px dashed var(--brand-dark);border-radius:14px;padding:16px 20px;margin-top:20px;font-size:13px;line-height:1.7}
-.guide b{color:var(--brand-indigo)}
+    .poster-container { max-width: 1300px; margin: 0 auto; display: flex; flex-direction: column; gap: 80px; }
+    .poster-frame { display: flex; align-items: flex-start; gap: 40px; background: #fff; padding: 40px; border-radius: 24px; border: 3px solid var(--brand-dark); box-shadow: 12px 12px 0 rgba(16,22,47,0.08); }
+    .poster-scaler { width: 435px; height: 581px; flex-shrink: 0; background: var(--bg-light); border: 2px solid var(--border-color); border-radius: 12px; overflow: hidden; position: relative; }
+    
+    .poster { width: 1242px; height: 1660px; position: absolute; top: 0; left: 0; transform: scale(0.35); transform-origin: top left; background: var(--bg-light); padding: 32px; overflow: hidden; }
+    .p-inner { width: 100%; height: 100%; background: #fff; border: 6px solid var(--brand-dark); border-radius: 48px; padding: 80px 72px; position: relative; display: flex; flex-direction: column; }
+    
+    .p-course-bar { position: absolute; left: 50%; top: 32px; transform: translateX(-50%); background: var(--brand-purple); color: #fff; border: 3px solid var(--brand-dark); border-radius: 100px; padding: 12px 32px; font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; letter-spacing: 2px; box-shadow: 6px 6px 0 var(--brand-dark); white-space: nowrap; z-index: 10; }
+    
+    .copy-panel { flex-grow: 1; display: flex; flex-direction: column; gap: 0; min-height: 581px; }
+    .label { font-size: 24px; font-weight: 900; border-bottom: 4px solid var(--brand-yellow); padding-bottom: 8px; display: inline-block; margin-bottom: 20px; }
+    
+    .tabs { display: flex; gap: 4px; background: #eee; padding: 4px; border-radius: 12px; margin-bottom: 16px; }
+    .tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; border-radius: 8px; font-weight: 700; font-size: 14px; color: var(--text-gray); transition: all 0.2s; }
+    .tab.active { background: #fff; color: var(--brand-dark); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    
+    .tab-content { display: none; flex-grow: 1; background: var(--bg-light); border-radius: 12px; padding: 24px; border: 1px solid var(--border-color); overflow-y: auto; max-height: 400px; }
+    .tab-content.active { display: block; }
+    .copy-text { font-size: 15px; line-height: 1.6; white-space: pre-wrap; margin-bottom: 20px; color: #333; }
+    
+    .dl-btn { margin-top: auto; padding: 16px 32px; background: var(--brand-red); color: #fff; border: 3px solid var(--brand-dark); border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; box-shadow: 6px 6px 0 var(--brand-dark); transition: all 0.1s; display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; }
+    .dl-btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--brand-dark); }
 
-/* 左侧缩略导航 */
-.thumb-nav{display:flex;flex-direction:column;gap:6px;background:#fff;border:1.5px solid var(--brand-dark);border-radius:14px;padding:10px;position:fixed;top:20px;left:16px;width:120px;max-height:calc(100vh - 40px);overflow-y:auto;z-index:100;box-shadow:4px 4px 0 rgba(16,22,47,0.1)}
-.thumb-nav::before{content:'NAV';display:block;font-size:10px;font-weight:900;letter-spacing:2px;color:var(--brand-indigo);text-align:center;padding:2px 0 6px;border-bottom:1.5px dashed var(--border-color);font-family:'JetBrains Mono',monospace;margin-bottom:2px}
-.thumb{aspect-ratio:3/4;background:var(--bg-light);border:1.5px solid var(--brand-dark);border-radius:6px;font-weight:900;color:var(--brand-dark);text-align:center;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .12s;flex-direction:column;gap:1px;padding:4px;font-size:11px;line-height:1.2}
-.thumb .num{font-size:16px;line-height:1}
-.thumb .lbl{font-size:8px;color:var(--text-gray);font-weight:700;line-height:1.1}
-.thumb:hover{background:var(--brand-yellow);transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--brand-dark)}
-
-/* 海报框架（海报 + 右侧文案面板） */
-.poster-frame{display:grid;grid-template-columns:auto 460px;gap:28px;align-items:start;justify-content:center;margin-bottom:60px;position:relative}
-.poster-main{display:flex;flex-direction:column;align-items:center}
-.poster-frame .label{font-size:13px;font-weight:900;color:var(--brand-dark);margin-bottom:14px;display:flex;align-items:center;gap:10px;align-self:flex-start}
-.poster-frame .label::before{content:'';width:28px;height:4px;background:var(--brand-indigo);border-radius:2px}
-.poster-frame .label em{font-style:normal;color:var(--text-gray);font-weight:600;font-size:12px;margin-left:12px}
-
-/* 右侧文案面板 */
-.copy-panel{background:#fff;border:2px solid var(--brand-dark);border-radius:16px;padding:18px 20px;box-shadow:6px 6px 0 rgba(16,22,47,0.08);font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;gap:14px}
-.copy-panel .cp-title{font-size:13px;font-weight:900;color:var(--brand-indigo);letter-spacing:1px;font-family:'JetBrains Mono',monospace;padding-bottom:10px;border-bottom:1.5px dashed var(--border-color)}
-.cp-section{display:flex;flex-direction:column;gap:6px}
-.cp-section .cp-label{font-size:11px;font-weight:900;color:var(--text-gray);letter-spacing:1.5px;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
-.cp-section .cp-box{background:#fafbfc;border:1.5px solid var(--border-color);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.55;color:var(--text-main);white-space:pre-wrap;word-break:break-word;position:relative}
-.cp-section .cp-btn{align-self:flex-end;background:var(--brand-dark);color:#fff;border:none;padding:5px 14px;font-size:11px;font-weight:700;letter-spacing:1px;border-radius:6px;cursor:pointer;font-family:'Noto Sans SC',sans-serif;transition:all .15s}
-.cp-section .cp-btn:hover{background:var(--brand-indigo)}
-.cp-section .cp-btn.copied{background:var(--brand-green)}
-.cp-section .cp-box.hashtags{color:var(--brand-blue);font-weight:600;font-size:12.5px}
-.cp-section .cp-box.wechat{background:#f0fdf4;border-color:#86efac;font-size:13px}
-.cp-section .cp-box.community{background:#eff6ff;border-color:#93c5fd;font-size:13px}
-.cp-tabs{display:flex;gap:4px;background:#f3f4f6;padding:4px;border-radius:10px}
-.cp-tab{flex:1;background:transparent;border:none;padding:8px 6px;font-size:12px;font-weight:700;color:var(--text-gray);cursor:pointer;border-radius:8px;font-family:'Noto Sans SC',sans-serif;transition:all .15s}
-.cp-tab.active{background:#fff;color:var(--tab-color,var(--brand-dark));box-shadow:0 1px 3px rgba(0,0,0,0.08);font-weight:900}
-.cp-pane{display:flex;flex-direction:column;gap:14px}
-.cp-pane.hidden{display:none}
-.cp-tip{background:#fffbeb;border:1px dashed #f59e0b;border-radius:8px;padding:8px 12px;font-size:11.5px;color:#92400e;line-height:1.5}
-
-/* 海报预览缩放 */
-.poster-scaler{width:435px;height:581px;position:relative;border:2px solid var(--brand-dark);border-radius:12px;box-shadow:8px 8px 0 var(--brand-dark);overflow:hidden}
-.poster{width:1242px;height:1660px;transform:scale(0.35);transform-origin:top left;position:absolute;top:0;left:0;background:var(--bg-light);overflow:hidden;font-family:'Noto Sans SC',sans-serif;box-sizing:border-box;padding:32px}
-
-/* 下载按钮 */
-.dl-btn{display:block;margin:20px auto 0;background:var(--brand-indigo);color:#fff;border:3px solid var(--brand-dark);box-shadow:6px 6px 0 var(--brand-dark);padding:14px 32px;font-family:'Noto Sans SC',sans-serif;font-size:14px;font-weight:900;letter-spacing:1.5px;cursor:pointer;border-radius:10px;transition:all .15s}
-.dl-btn:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--brand-dark)}
-.dl-btn:active{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--brand-dark)}
-
-/* 海报内层 */
-.p-inner{position:relative;width:100%;height:100%;padding:80px 72px;display:flex;flex-direction:column;background:#fff;border:5px solid var(--brand-dark);border-radius:36px;box-sizing:border-box;overflow:hidden}
-.p-dots{position:absolute;top:0;right:0;width:400px;height:400px;background-image:radial-gradient(#64748b 1.5px,transparent 1.5px);background-size:28px 28px;opacity:0.1;pointer-events:none}
-.p-dots.bl{top:auto;right:auto;bottom:0;left:0}
-.p-tag{display:inline-flex;align-items:center;gap:8px;font-size:28px;font-weight:800;letter-spacing:1px;color:var(--brand-indigo);text-transform:uppercase;background:#eef2ff;border:1.5px solid var(--brand-indigo);padding:12px 24px;border-radius:100px;width:fit-content;font-family:'JetBrains Mono',monospace}
-.p-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--brand-indigo)}
-.hl{position:relative;display:inline-block;z-index:1}
-.hl::after{content:'';position:absolute;bottom:10px;left:-4px;right:-4px;height:24px;background:var(--brand-yellow);z-index:-1;opacity:0.75}
-
-/* P1 封面 */
-.p1 .p-inner{justify-content:center;background:#fff}
-.p1 .hook{font-size:150px;font-weight:900;line-height:1.05;letter-spacing:-4px;color:var(--brand-dark);margin-top:40px}
-.p1 .hook .hl::after{height:32px;bottom:14px}
-.p1 .sub{font-size:52px;font-weight:500;color:var(--text-gray);margin-top:40px;line-height:1.5}
-.p1 .course-chip{margin-top:60px;background:var(--brand-dark);color:#fff;padding:28px 36px;border-radius:18px;display:inline-flex;align-items:center;gap:20px;width:fit-content;box-shadow:10px 10px 0 var(--brand-indigo)}
-.p1 .course-chip .name{font-size:44px;font-weight:900;letter-spacing:-0.5px}
-.p1 .course-chip .meta{font-size:28px;color:var(--brand-yellow);font-family:'JetBrains Mono',monospace;font-weight:700}
-.p1 .corner-mark{position:absolute;top:70px;right:70px;background:var(--brand-yellow);border:2px solid var(--brand-dark);padding:14px 22px;border-radius:12px;font-size:26px;font-weight:900;transform:rotate(4deg);box-shadow:6px 6px 0 var(--brand-dark)}
-
-/* P1B 共鸣版 */
-.p1b .p-inner{justify-content:flex-start;background:#fff}
-.p1b .hook{font-size:140px;line-height:1.05;letter-spacing:-5px;margin-top:40px;font-weight:900}
-.p1b .hook .soft{color:#94a3b8;font-size:0.65em;display:block;margin-bottom:5px}
-.p1b .hook .accent{color:var(--brand-indigo);display:inline-block}
-.p1b .cards-wrap{margin-top:50px;display:flex;flex-direction:column;gap:24px;flex:1}
-.p1b .xhs-card{border-radius:30px;padding:40px;display:flex;flex-direction:column;gap:15px}
-.p1b .xhs-card.bad{background:#f8fafc;opacity:0.85}
-.p1b .xhs-card.good{background:var(--brand-dark);color:#fff;box-shadow:0 30px 60px rgba(16,22,47,0.2);position:relative;z-index:2}
-.p1b .label-tag{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:1px}
-.p1b .bad .label-tag{color:#94a3b8}
-.p1b .good .label-tag{color:var(--brand-yellow)}
-.p1b .card-main{font-size:52px;font-weight:900;line-height:1.15;margin-top:8px}
-.p1b .card-desc{font-size:32px;font-weight:600;color:inherit;opacity:0.8;margin-top:6px;line-height:1.35}
-
-/* P1C 转岗版 */
-.p1c .p-inner{background:#fff;justify-content:flex-start}
-.p1c .hook{font-size:120px;line-height:1.05;letter-spacing:-3px;margin-top:30px;font-weight:900}
-.p1c .ba-row{margin-top:60px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;flex:1}
-.p1c .stage{background:#fff;border:3px solid var(--brand-dark);border-radius:24px;padding:40px 36px;box-shadow:8px 8px 0 rgba(16,22,47,0.08)}
-.p1c .stage.after{background:var(--brand-indigo);color:#fff;box-shadow:10px 10px 0 var(--brand-dark)}
-.p1c .stage .stg-tag{font-size:28px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:1.5px}
-.p1c .stage .role{font-size:56px;font-weight:900;margin-top:12px;line-height:1.1}
-.p1c .stage .sal{font-size:30px;color:var(--text-gray);margin-top:16px;font-weight:700}
-.p1c .stage.after .sal{color:var(--brand-yellow)}
-.p1c .arrow{font-size:100px;font-weight:900;color:var(--brand-indigo);line-height:1}
-
-/* P1D 角色版 */
-.p1d .p-inner{justify-content:flex-start;background:var(--brand-dark);color:#fff}
-.p1d .hook{font-size:130px;line-height:1.05;letter-spacing:-3px;margin-top:30px;font-weight:900;color:#fff}
-.p1d .hook .accent{color:var(--brand-yellow)}
-.p1d .sticker-grid{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;flex:1;align-content:center}
-.p1d .sticker{background:#fff;color:var(--brand-dark);padding:32px 24px;border-radius:20px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;border:3px solid var(--brand-dark)}
-.p1d .sticker:nth-child(odd){transform:rotate(-2deg)}
-.p1d .sticker:nth-child(even){transform:rotate(2deg)}
-.p1d .sticker .ico{font-size:50px}
-.p1d .sticker .name{font-size:34px;font-weight:900;line-height:1.1}
-
-/* P2 痛点对比 */
-.p2 .p-inner{background:#fff}
-.p2 .eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:20px}
-.p2 .eyebrow .line{flex:0 0 60px;height:2px;border-top:2px dashed var(--brand-indigo)}
-.p2 .eyebrow .txt{font-size:28px;font-weight:900;letter-spacing:4px;color:var(--brand-indigo);font-family:'JetBrains Mono',monospace}
-.p2 h2{font-size:100px;line-height:1.1;letter-spacing:-2px;font-weight:900}
-.p2 .lead{font-size:42px;font-weight:600;color:var(--text-gray);margin-top:20px;line-height:1.4}
-.p2 .cmp{display:grid;grid-template-columns:1fr auto 1fr;gap:30px;margin-top:50px;flex:1;align-items:stretch}
-.p2 .col{background:var(--bg-light);border-radius:24px;padding:36px 28px;display:flex;flex-direction:column;gap:20px}
-.p2 .col.bad{border:2px solid #e2e8f0}
-.p2 .col.good{background:#eef2ff;border:3px solid var(--brand-indigo);box-shadow:10px 10px 0 var(--brand-dark)}
-.p2 .col-head{display:flex;flex-direction:column;gap:8px;padding-bottom:16px;border-bottom:2px dashed #cbd5e1}
-.p2 .col-head .kicker{font-size:24px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:1.5px;color:var(--text-gray)}
-.p2 .col-head h3{font-size:48px;font-weight:900;line-height:1.15}
-.p2 .col-head .col-sub{font-size:28px;color:var(--text-gray);font-weight:600}
-.p2 .col ul{list-style:none;display:flex;flex-direction:column;gap:16px;margin-top:10px}
-.p2 .col li{font-size:34px;font-weight:600;line-height:1.35;padding-left:16px;position:relative}
-.p2 .col.bad li::before{content:'×';position:absolute;left:-10px;top:-4px;font-weight:900;color:#94a3b8;font-size:42px}
-.p2 .col.good li::before{content:'✓';position:absolute;left:-10px;top:-4px;font-weight:900;color:var(--brand-green);font-size:36px}
-.p2 .divider{display:flex;align-items:center;justify-content:center;position:relative}
-.p2 .divider .vs{width:100px;height:100px;border-radius:50%;background:var(--brand-yellow);border:3px solid var(--brand-dark);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:40px;font-family:'JetBrains Mono',monospace;transform:rotate(-12deg);box-shadow:5px 5px 0 var(--brand-dark)}
-.p2 .bottom-note{margin-top:30px;background:var(--brand-yellow);border:2.5px solid var(--brand-dark);border-radius:20px;padding:28px 32px;box-shadow:8px 8px 0 var(--brand-dark);font-size:38px;font-weight:900;line-height:1.3}
-
-/* P3 同事群对话 */
-.p3 .p-inner{background:#f1f5f9;padding:60px 52px}
-.p3 h2{font-size:82px;font-weight:900;line-height:1.1;letter-spacing:-2px}
-.p3 .lead{font-size:36px;color:var(--text-gray);margin-top:12px}
-.p3 .chat{margin-top:40px;display:flex;flex-direction:column;gap:28px;flex:1}
-.p3 .msg{display:flex;gap:20px;max-width:85%}
-.p3 .msg.right{align-self:flex-end;flex-direction:row-reverse}
-.p3 .avatar{width:80px;height:80px;border-radius:50%;background:#cbd5e1;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:30px;color:#fff;flex-shrink:0}
-.p3 .msg:nth-child(1) .avatar{background:var(--brand-indigo)}
-.p3 .msg:nth-child(2) .avatar{background:var(--brand-red)}
-.p3 .msg:nth-child(3) .avatar{background:var(--brand-green)}
-.p3 .msg:nth-child(4) .avatar{background:var(--brand-orange)}
-.p3 .msg:nth-child(5) .avatar{background:var(--brand-purple)}
-.p3 .bubble{background:#fff;padding:24px 28px;border-radius:20px;font-size:36px;font-weight:500;line-height:1.4;box-shadow:4px 4px 0 rgba(16,22,47,0.06)}
-.p3 .bubble .who{font-size:24px;font-weight:900;color:var(--brand-indigo);margin-bottom:6px;font-family:'JetBrains Mono',monospace}
-.p3 .msg.right .bubble{background:var(--brand-dark);color:#fff}
-.p3 .msg.right .bubble .who{color:var(--brand-yellow)}
-.p3 .footer-note{margin-top:auto;padding-top:20px;font-size:30px;color:var(--text-gray);font-weight:600;text-align:center}
-
-/* P4 4 大能力 */
-.p4 .p-inner{background:#fff}
-.p4 h2{font-size:100px;line-height:1.1;letter-spacing:-2px;font-weight:900}
-.p4 .lead{font-size:40px;color:var(--text-gray);margin-top:16px;font-weight:600}
-.p4 .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px;flex:1}
-.p4 .cap{border:3px solid var(--brand-dark);border-radius:22px;padding:36px 30px;display:flex;flex-direction:column;gap:14px;position:relative;box-shadow:8px 8px 0 rgba(16,22,47,0.08)}
-.p4 .cap:nth-child(1){background:#eef2ff}
-.p4 .cap:nth-child(2){background:#fef3c7}
-.p4 .cap:nth-child(3){background:#d1fae5}
-.p4 .cap:nth-child(4){background:#fecaca}
-.p4 .cap .num{font-size:40px;font-family:'JetBrains Mono',monospace;font-weight:900;color:var(--brand-indigo)}
-.p4 .cap .name{font-size:48px;font-weight:900;line-height:1.15}
-.p4 .cap .desc{font-size:28px;font-weight:600;color:var(--text-main);line-height:1.35}
-.p4 .cap .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
-.p4 .cap .tag{background:#fff;border:1.5px solid var(--brand-dark);padding:6px 14px;border-radius:100px;font-size:22px;font-weight:700}
-
-/* P5 Phase 地图 */
-.p5 .p-inner{background:#fff}
-.p5 h2{font-size:96px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p5 .lead{font-size:36px;color:var(--text-gray);margin-top:14px;font-weight:600}
-.p5 .phases{margin-top:50px;display:flex;flex-direction:column;gap:20px;flex:1}
-.p5 .phase{display:grid;grid-template-columns:110px 1fr auto;gap:24px;align-items:center;background:#fff;border:2.5px solid var(--brand-dark);border-radius:18px;padding:20px 24px}
-.p5 .phase .idx{background:var(--ph-color);color:#fff;width:90px;height:90px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;box-shadow:4px 4px 0 var(--brand-dark)}
-.p5 .phase .idx .n{font-size:44px;line-height:1}
-.p5 .phase .idx .w{font-size:16px;font-family:'JetBrains Mono',monospace;margin-top:4px;opacity:0.9}
-.p5 .phase .meta h4{font-size:36px;font-weight:900;line-height:1.2}
-.p5 .phase .meta .topic{font-size:24px;color:var(--text-gray);font-weight:600;margin-top:4px;line-height:1.3}
-.p5 .phase .cnt{font-size:40px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--ph-color)}
-
-/* P6 工具栈（暗底） */
-.p6 .p-inner{background:var(--brand-dark);color:#fff}
-.p6 h2{font-size:100px;line-height:1.1;letter-spacing:-2px;font-weight:900}
-.p6 h2 span{color:var(--brand-yellow)}
-.p6 .lead{font-size:36px;color:#94a3b8;margin-top:14px;font-weight:600}
-.p6 .tool-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;flex:1}
-.p6 .tool{background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.15);border-radius:16px;padding:24px 20px;display:flex;flex-direction:column;gap:6px}
-.p6 .tool .cat{font-size:22px;font-family:'JetBrains Mono',monospace;color:var(--brand-yellow);font-weight:700;letter-spacing:1px}
-.p6 .tool .name{font-size:38px;font-weight:900;line-height:1.1}
-.p6 .tool .desc{font-size:22px;color:#94a3b8;font-weight:600}
-.p6 .bottom-note{margin-top:30px;background:var(--brand-yellow);color:var(--brand-dark);border-radius:20px;padding:24px 32px;font-size:36px;font-weight:900;line-height:1.3}
-
-/* P7 学员反馈 */
-.p7 .p-inner{background:#fff}
-.p7 h2{font-size:94px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p7 .lead{font-size:34px;color:var(--text-gray);margin-top:12px;font-weight:600}
-.p7 .quotes{margin-top:50px;display:flex;flex-direction:column;gap:30px;flex:1}
-.p7 .q{background:#fff;border:2.5px solid var(--brand-dark);border-radius:22px;padding:30px 32px;box-shadow:8px 8px 0 rgba(16,22,47,0.08);max-width:78%}
-.p7 .q:nth-child(1){align-self:flex-start;background:#eef2ff;transform:rotate(-1deg)}
-.p7 .q:nth-child(2){align-self:flex-end;background:#fef3c7;transform:rotate(1deg)}
-.p7 .q:nth-child(3){align-self:flex-start;background:#d1fae5;transform:rotate(-1deg)}
-.p7 .q .txt{font-size:40px;font-weight:600;line-height:1.35}
-.p7 .q .who{font-size:24px;color:var(--text-gray);font-weight:700;margin-top:14px;font-family:'JetBrains Mono',monospace}
-
-/* P8 课程配置 */
-.p8 .p-inner{background:#fff}
-.p8 h2{font-size:100px;line-height:1.1;letter-spacing:-2px;font-weight:900}
-.p8 .nums{margin-top:40px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.p8 .kpi{background:#eef2ff;border:3px solid var(--brand-indigo);border-radius:22px;padding:36px 28px;text-align:center}
-.p8 .kpi .n{font-size:120px;font-family:'JetBrains Mono',monospace;font-weight:900;color:var(--brand-indigo);line-height:1}
-.p8 .kpi .lbl{font-size:32px;font-weight:700;margin-top:10px}
-.p8 .package{margin-top:30px;background:var(--brand-dark);color:#fff;border-radius:20px;padding:32px}
-.p8 .package h4{font-size:36px;color:var(--brand-yellow);font-weight:900;margin-bottom:14px}
-.p8 .package ul{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;list-style:none}
-.p8 .package li{font-size:26px;font-weight:600;line-height:1.35;padding-left:20px;position:relative}
-.p8 .package li::before{content:'●';position:absolute;left:0;color:var(--brand-yellow)}
-
-/* P9 软 CTA */
-.p9 .p-inner{background:var(--brand-indigo);color:#fff;justify-content:center;text-align:center}
-.p9 .line1{font-size:72px;font-weight:900;line-height:1.15;letter-spacing:-1px}
-.p9 .giant{font-size:160px;font-weight:900;line-height:1;letter-spacing:-6px;margin-top:20px;color:var(--brand-yellow)}
-.p9 .line2{font-size:44px;margin-top:36px;line-height:1.4;font-weight:600;opacity:0.95}
-.p9 .pill-row{margin-top:48px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.p9 .pill{background:#fff;color:var(--brand-dark);padding:18px 32px;border-radius:100px;font-size:32px;font-weight:900;border:3px solid var(--brand-dark);box-shadow:6px 6px 0 rgba(0,0,0,0.3)}
-.p9 .bottom{margin-top:50px;font-size:28px;font-family:'JetBrains Mono',monospace;font-weight:700;opacity:0.8}
-
-/* P10 AI PM 岗位 explainer */
-.p10 .p-inner{background:#fff}
-.p10 .define{background:var(--brand-dark);color:#fff;border-radius:22px;padding:32px 30px;margin-top:30px}
-.p10 .define .kicker{font-size:26px;color:var(--brand-yellow);font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:1.5px;margin-bottom:10px}
-.p10 .define .sent{font-size:46px;font-weight:900;line-height:1.25}
-.p10 .define .sent .hl-y{background:var(--brand-yellow);color:var(--brand-dark);padding:2px 10px;border-radius:6px}
-.p10 h2{font-size:74px;line-height:1.1;letter-spacing:-2px;font-weight:900;margin-top:20px}
-.p10 .section-label{font-size:24px;font-family:'JetBrains Mono',monospace;font-weight:900;letter-spacing:2px;color:var(--brand-indigo);margin-top:36px;margin-bottom:14px}
-.p10 .day-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
-.p10 .day{background:#eef2ff;border:2px solid var(--brand-indigo);border-radius:16px;padding:22px 20px}
-.p10 .day .t{font-size:22px;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--brand-indigo);letter-spacing:1px}
-.p10 .day .a{font-size:30px;font-weight:700;margin-top:6px;line-height:1.3}
-.p10 .meta-row{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.p10 .meta{background:#fff;border:2px solid var(--brand-dark);border-radius:14px;padding:18px 14px;text-align:center}
-.p10 .meta .lbl{font-size:18px;color:var(--text-gray);font-weight:700;font-family:'JetBrains Mono',monospace}
-.p10 .meta .val{font-size:32px;font-weight:900;margin-top:4px;line-height:1.1}
-
-/* P11 BA vs AI PM 技能栈 */
-.p11 .p-inner{background:#fff}
-.p11 h2{font-size:90px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p11 .lead{font-size:34px;color:var(--text-gray);margin-top:12px;font-weight:600}
-.p11 .table{margin-top:36px;border:3px solid var(--brand-dark);border-radius:18px;overflow:hidden;flex:1}
-.p11 .tr{display:grid;grid-template-columns:220px 1fr 1fr;border-bottom:1.5px solid var(--border-color)}
-.p11 .tr:last-child{border-bottom:none}
-.p11 .tr.head{background:var(--brand-dark);color:#fff;font-weight:900}
-.p11 .tr.head .cell{padding:16px 18px;font-size:28px}
-.p11 .cell{padding:16px 20px;font-size:26px;line-height:1.35;font-weight:600;border-left:1.5px solid var(--border-color)}
-.p11 .cell:first-child{border-left:none;font-weight:900;background:#f8fafc}
-.p11 .cell.old{color:var(--text-gray)}
-.p11 .cell.new{background:#eef2ff;color:var(--brand-dark);font-weight:700;position:relative}
-.p11 .cell.new::before{content:'+';color:var(--brand-green);font-weight:900;margin-right:6px}
-
-/* P12 AI PRD 七章结构 */
-.p12 .p-inner{background:#fff}
-.p12 h2{font-size:98px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p12 .lead{font-size:36px;color:var(--text-gray);margin-top:14px;font-weight:600}
-.p12 .chapters{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1}
-.p12 .ch{background:var(--bg-light);border:2.5px solid var(--brand-dark);border-radius:16px;padding:22px 20px;display:flex;gap:14px;align-items:flex-start}
-.p12 .ch.span2{grid-column:1 / -1;background:var(--brand-yellow);box-shadow:6px 6px 0 var(--brand-dark)}
-.p12 .ch .idx{width:58px;height:58px;border-radius:12px;background:var(--brand-indigo);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:30px;font-family:'JetBrains Mono',monospace;flex-shrink:0}
-.p12 .ch .name{font-size:32px;font-weight:900;line-height:1.15}
-.p12 .ch .desc{font-size:22px;color:var(--text-gray);font-weight:600;margin-top:4px;line-height:1.35}
-.p12 .ch.ai{background:#fef3c7;border-color:var(--brand-orange)}
-.p12 .ch.ai .idx{background:var(--brand-orange)}
-
-/* P13 Prompt 四层次（暗底） */
-.p13 .p-inner{background:var(--brand-dark);color:#fff}
-.p13 h2{font-size:100px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p13 h2 span{color:var(--brand-yellow)}
-.p13 .lead{font-size:36px;color:#cbd5e1;margin-top:14px;font-weight:600}
-.p13 .layers{margin-top:40px;display:flex;flex-direction:column;gap:16px;flex:1}
-.p13 .layer{background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.15);border-radius:18px;padding:22px 24px;display:grid;grid-template-columns:90px 1fr;gap:20px;align-items:center}
-.p13 .layer .n{font-size:64px;font-weight:900;color:var(--brand-yellow);font-family:'JetBrains Mono',monospace;line-height:1}
-.p13 .layer .name{font-size:38px;font-weight:900;line-height:1.1}
-.p13 .layer .desc{font-size:24px;color:#cbd5e1;font-weight:600;margin-top:4px;line-height:1.35}
-.p13 .layer.l4{background:var(--brand-indigo);border-color:var(--brand-indigo);box-shadow:8px 8px 0 rgba(0,0,0,0.3)}
-.p13 .layer.l4 .n{color:#fff}
-
-/* P14 适合谁学 */
-.p14 .p-inner{background:#fff}
-.p14 h2{font-size:100px;line-height:1.1;letter-spacing:-2px;font-weight:900}
-.p14 .grid{margin-top:50px;display:grid;grid-template-columns:1fr 1fr;gap:22px;flex:1}
-.p14 .who-card{background:#fff;border:3px solid var(--brand-dark);border-radius:22px;padding:28px 26px;display:flex;flex-direction:column;gap:10px;box-shadow:6px 6px 0 rgba(16,22,47,0.08);position:relative}
-.p14 .who-card:nth-child(1){background:#eef2ff}
-.p14 .who-card:nth-child(2){background:#fef3c7}
-.p14 .who-card:nth-child(3){background:#d1fae5}
-.p14 .who-card:nth-child(4){background:#fecaca}
-.p14 .who-card .ico{font-size:44px}
-.p14 .who-card .role{font-size:36px;font-weight:900;line-height:1.15}
-.p14 .who-card .why{font-size:26px;font-weight:600;line-height:1.35;color:var(--text-main)}
-
-/* P15 Lab 分布 */
-.p15 .p-inner{background:#fff}
-.p15 h2{font-size:96px;line-height:1.1;letter-spacing:-2px;font-weight:900}
-.p15 .lead{font-size:34px;color:var(--text-gray);margin-top:14px;font-weight:600}
-.p15 .lab-grid{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1}
-.p15 .lab{border:2.5px solid var(--brand-dark);border-radius:18px;padding:24px 22px;background:#fff;display:flex;flex-direction:column;gap:8px}
-.p15 .lab .code{font-size:22px;font-family:'JetBrains Mono',monospace;font-weight:900;color:var(--brand-indigo);letter-spacing:1.5px}
-.p15 .lab .title{font-size:32px;font-weight:900;line-height:1.15}
-.p15 .lab .outcome{font-size:22px;color:var(--text-gray);font-weight:600;line-height:1.35;margin-top:4px}
-.p15 .lab:nth-child(1){background:#eef2ff}
-.p15 .lab:nth-child(2){background:#fef3c7}
-.p15 .lab:nth-child(3){background:#d1fae5}
-.p15 .lab:nth-child(4){background:#fecaca}
-.p15 .lab:nth-child(5){background:#f3e8ff}
-.p15 .lab:nth-child(6){background:#cffafe}
-.p15 .lab.span2{grid-column:1/-1;background:var(--brand-yellow);border-width:3px;box-shadow:6px 6px 0 var(--brand-dark)}
-
-/* P16 时间线 */
-.p16 .p-inner{background:#fff}
-.p16 h2{font-size:100px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p16 .lead{font-size:34px;color:var(--text-gray);margin-top:14px;font-weight:600}
-.p16 .timeline{margin-top:44px;position:relative;padding-left:48px;flex:1}
-.p16 .timeline::before{content:'';position:absolute;left:22px;top:10px;bottom:10px;width:4px;background:var(--brand-indigo);border-radius:2px}
-.p16 .milestone{position:relative;margin-bottom:26px;padding:14px 20px;background:#fff;border:2.5px solid var(--brand-dark);border-radius:14px;box-shadow:4px 4px 0 rgba(16,22,47,0.06)}
-.p16 .milestone::before{content:'';position:absolute;left:-36px;top:14px;width:24px;height:24px;border-radius:50%;background:var(--brand-indigo);border:3px solid var(--brand-dark)}
-.p16 .milestone .wk{font-size:22px;font-family:'JetBrains Mono',monospace;font-weight:900;color:var(--brand-indigo);letter-spacing:1.5px}
-.p16 .milestone .topic{font-size:34px;font-weight:900;line-height:1.2;margin-top:4px}
-.p16 .milestone.end{background:var(--brand-yellow);border-color:var(--brand-dark);box-shadow:6px 6px 0 var(--brand-dark)}
-.p16 .milestone.end::before{background:var(--brand-yellow);transform:scale(1.3)}
-
-/* P17 P3 项目 */
-.p17 .p-inner{background:#fff}
-.p17 h2{font-size:96px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p17 .lead{font-size:34px;color:var(--text-gray);margin-top:14px;font-weight:600;line-height:1.4}
-.p17 .team{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.p17 .role{background:var(--bg-light);border:2.5px solid var(--brand-dark);border-radius:14px;padding:20px 16px;text-align:center}
-.p17 .role .ico{font-size:40px}
-.p17 .role .name{font-size:28px;font-weight:900;margin-top:6px}
-.p17 .role .what{font-size:20px;color:var(--text-gray);font-weight:600;margin-top:4px;line-height:1.35}
-.p17 .role.you{background:var(--brand-indigo);color:#fff;border-color:var(--brand-dark);box-shadow:5px 5px 0 var(--brand-dark);transform:translateY(-8px)}
-.p17 .role.you .what{color:#e0e7ff}
-.p17 .output-list{margin-top:30px;background:var(--brand-dark);color:#fff;border-radius:20px;padding:28px;flex:1}
-.p17 .output-list h4{font-size:32px;color:var(--brand-yellow);font-weight:900;margin-bottom:12px}
-.p17 .output-list ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
-.p17 .output-list li{font-size:24px;font-weight:600;padding-left:18px;position:relative;line-height:1.35}
-.p17 .output-list li::before{content:'▸';position:absolute;left:0;color:var(--brand-yellow)}
-
-/* P18 工作流 */
-.p18 .p-inner{background:#fff}
-.p18 h2{font-size:88px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p18 .lead{font-size:34px;color:var(--text-gray);margin-top:14px;font-weight:600}
-.p18 .flow{margin-top:50px;display:flex;flex-direction:column;gap:20px;flex:1}
-.p18 .step{display:grid;grid-template-columns:90px 1fr;gap:24px;align-items:center;background:#fff;border:2.5px solid var(--brand-dark);border-radius:18px;padding:22px 24px}
-.p18 .step .n{width:70px;height:70px;border-radius:14px;background:var(--brand-indigo);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:38px;font-family:'JetBrains Mono',monospace}
-.p18 .step .title{font-size:36px;font-weight:900;line-height:1.1}
-.p18 .step .tool{font-size:24px;color:var(--text-gray);font-weight:700;margin-top:4px;font-family:'JetBrains Mono',monospace}
-.p18 .step.highlight{background:var(--brand-yellow);box-shadow:6px 6px 0 var(--brand-dark)}
-.p18 .step.highlight .n{background:var(--brand-dark)}
-
-/* P19 AI 成本框架 */
-.p19 .p-inner{background:#fff}
-.p19 h2{font-size:98px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p19 .formula{margin-top:40px;background:var(--brand-dark);color:#fff;border-radius:22px;padding:32px 30px;text-align:center;font-family:'JetBrains Mono',monospace}
-.p19 .formula .label{font-size:24px;color:var(--brand-yellow);letter-spacing:2px;font-weight:700}
-.p19 .formula .eq{font-size:38px;font-weight:900;line-height:1.5;margin-top:12px;letter-spacing:1px}
-.p19 .formula .eq em{font-style:normal;color:var(--brand-yellow)}
-.p19 .cards{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
-.p19 .cost-card{background:var(--bg-light);border:2.5px solid var(--brand-dark);border-radius:16px;padding:22px 20px}
-.p19 .cost-card .scene{font-size:30px;font-weight:900;line-height:1.15}
-.p19 .cost-card .range{font-size:42px;font-weight:900;color:var(--brand-indigo);font-family:'JetBrains Mono',monospace;margin-top:8px}
-.p19 .cost-card .note{font-size:22px;color:var(--text-gray);font-weight:600;margin-top:4px}
-.p19 .cost-card.hot{background:var(--brand-yellow);border-width:3px}
-.p19 .cost-card.hot .range{color:var(--brand-dark)}
-
-/* P20 澳洲公司（暗底） */
-.p20 .p-inner{background:var(--brand-dark);color:#fff}
-.p20 h2{font-size:100px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p20 h2 span{color:var(--brand-yellow)}
-.p20 .lead{font-size:34px;color:#cbd5e1;margin-top:14px;font-weight:600}
-.p20 .company-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1}
-.p20 .company{background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.15);border-radius:14px;padding:18px 14px;text-align:center}
-.p20 .company .name{font-size:30px;font-weight:900;line-height:1.15}
-.p20 .company .cat{font-size:18px;color:var(--brand-yellow);font-family:'JetBrains Mono',monospace;margin-top:6px;letter-spacing:1px;font-weight:700}
-.p20 .company.rich{background:var(--brand-yellow);color:var(--brand-dark)}
-.p20 .company.rich .cat{color:var(--brand-dark);opacity:0.7}
-.p20 .bottom-note{margin-top:28px;background:#fff;color:var(--brand-dark);border-radius:18px;padding:22px 28px;font-size:28px;font-weight:700;line-height:1.35}
-
-/* P21 薪资区间 */
-.p21 .p-inner{background:#fff}
-.p21 h2{font-size:100px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p21 .source{font-size:22px;color:var(--text-gray);font-family:'JetBrains Mono',monospace;margin-top:8px;font-weight:700;letter-spacing:1px}
-.p21 .tiers{margin-top:44px;display:flex;flex-direction:column;gap:18px;flex:1}
-.p21 .tier{display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:center;background:var(--bg-light);border:2.5px solid var(--brand-dark);border-radius:18px;padding:26px 28px}
-.p21 .tier .level{font-size:32px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--brand-indigo);letter-spacing:1.5px}
-.p21 .tier .exp{font-size:26px;color:var(--text-gray);font-weight:600;line-height:1.35}
-.p21 .tier .range{font-size:48px;font-weight:900;color:var(--brand-dark);font-family:'JetBrains Mono',monospace;line-height:1}
-.p21 .tier.senior{background:var(--brand-indigo);color:#fff;border-color:var(--brand-dark);box-shadow:8px 8px 0 var(--brand-dark)}
-.p21 .tier.senior .level,.p21 .tier.senior .range{color:var(--brand-yellow)}
-.p21 .tier.senior .exp{color:#e0e7ff}
-.p21 .bottom-note{margin-top:24px;background:var(--brand-yellow);border-radius:18px;padding:22px 28px;border:2.5px solid var(--brand-dark);box-shadow:6px 6px 0 var(--brand-dark);font-size:28px;font-weight:800;line-height:1.4}
-
-/* P22 AI Capability Spec 独家 */
-.p22 .p-inner{background:#fff}
-.p22 .corner{position:absolute;top:60px;right:60px;background:var(--brand-yellow);border:2.5px solid var(--brand-dark);padding:12px 20px;border-radius:12px;font-size:22px;font-weight:900;transform:rotate(6deg);box-shadow:6px 6px 0 var(--brand-dark);z-index:5}
-.p22 h2{font-size:88px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p22 .lead{font-size:34px;color:var(--text-gray);margin-top:14px;font-weight:600;line-height:1.4}
-.p22 .spec-box{margin-top:36px;background:var(--brand-dark);color:#fff;border-radius:22px;padding:30px 32px;flex:1}
-.p22 .spec-box h4{font-size:30px;color:var(--brand-yellow);font-weight:900;letter-spacing:1px;margin-bottom:14px;font-family:'JetBrains Mono',monospace}
-.p22 .field{display:grid;grid-template-columns:220px 1fr;gap:18px;padding:16px 0;border-top:1.5px dashed rgba(255,255,255,0.2)}
-.p22 .field:first-of-type{border-top:none}
-.p22 .field .k{font-size:24px;color:var(--brand-yellow);font-weight:900;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
-.p22 .field .v{font-size:26px;font-weight:600;line-height:1.35}
-
-/* P23 Stakeholder Power/Interest × AI（暗底独家） */
-.p23 .p-inner{background:var(--brand-dark);color:#fff}
-.p23 .corner{position:absolute;top:60px;right:60px;background:var(--brand-yellow);color:var(--brand-dark);border:2.5px solid var(--brand-dark);padding:12px 20px;border-radius:12px;font-size:22px;font-weight:900;transform:rotate(-4deg);box-shadow:6px 6px 0 rgba(0,0,0,0.4);z-index:5}
-.p23 h2{font-size:88px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p23 h2 span{color:var(--brand-yellow)}
-.p23 .lead{font-size:32px;color:#cbd5e1;margin-top:14px;font-weight:600}
-.p23 .matrix{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;flex:1}
-.p23 .cell{background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.2);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;gap:8px}
-.p23 .cell.hi-hi{background:var(--brand-yellow);color:var(--brand-dark);border-color:var(--brand-yellow)}
-.p23 .cell .q{font-size:22px;font-family:'JetBrains Mono',monospace;font-weight:900;letter-spacing:1px;opacity:0.85}
-.p23 .cell .role{font-size:36px;font-weight:900;line-height:1.15}
-.p23 .cell .ai{font-size:22px;font-weight:700;color:var(--brand-yellow);margin-top:4px;line-height:1.35}
-.p23 .cell.hi-hi .ai{color:var(--brand-dark);opacity:0.8}
-.p23 .cell .freq{font-size:20px;color:#cbd5e1;font-weight:600;margin-top:auto;padding-top:10px;border-top:1px dashed rgba(255,255,255,0.2)}
-.p23 .cell.hi-hi .freq{color:var(--brand-dark);border-top-color:rgba(16,22,47,0.2)}
-
-/* P24 FAQ 精华 */
-.p24 .p-inner{background:#fff}
-.p24 h2{font-size:100px;line-height:1.08;letter-spacing:-2px;font-weight:900}
-.p24 .faq-list{margin-top:40px;display:flex;flex-direction:column;gap:22px;flex:1}
-.p24 .faq{background:#fff;border:2.5px solid var(--brand-dark);border-radius:18px;padding:24px 28px}
-.p24 .faq:nth-child(1){background:#eef2ff}
-.p24 .faq:nth-child(2){background:#fef3c7}
-.p24 .faq:nth-child(3){background:#d1fae5}
-.p24 .faq .q{font-size:32px;font-weight:900;line-height:1.2;display:flex;gap:14px;align-items:flex-start}
-.p24 .faq .q::before{content:'Q';background:var(--brand-indigo);color:#fff;width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;flex-shrink:0;font-size:22px}
-.p24 .faq .a{font-size:26px;font-weight:600;line-height:1.4;margin-top:12px;color:var(--text-main)}
-
-/* P25 CTA（暗底） */
-.p25 .p-inner{background:var(--brand-dark);color:#fff;justify-content:center;align-items:center;text-align:center}
-.p25 .eyebrow{font-size:28px;color:var(--brand-yellow);letter-spacing:3px;font-family:'JetBrains Mono',monospace;font-weight:700}
-.p25 .big{font-size:140px;font-weight:900;line-height:1.05;letter-spacing:-4px;margin-top:20px}
-.p25 .big span{color:var(--brand-yellow)}
-.p25 .price-row{margin-top:36px;display:flex;gap:16px;align-items:center;justify-content:center}
-.p25 .price-old{font-size:40px;color:#94a3b8;text-decoration:line-through;font-weight:700;font-family:'JetBrains Mono',monospace}
-.p25 .price-new{font-size:100px;color:var(--brand-yellow);font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1}
-.p25 .tag-row{margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.p25 .tag{background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.25);padding:14px 24px;border-radius:100px;font-size:26px;font-weight:700}
-.p25 .bottom{margin-top:50px;font-size:30px;opacity:0.8;font-family:'JetBrains Mono',monospace;font-weight:700}
-
-/* ========== 小红书手机端字号铁律 v2 ========== */
-.poster .p-tag{font-size:32px !important;padding:12px 26px !important}
-.poster p,.poster li:not(.p8 .package li):not(.p17 .output-list li),.poster .lbl,.poster .note,.poster .topic:not(.p16 .topic),.poster .desc:not(.p4 .desc):not(.p2 .col li){font-size:32px !important;line-height:1.4 !important;font-weight:600 !important}
-.poster .bottom-note:not(.p20 .bottom-note):not(.p21 .bottom-note){font-size:36px !important}
-.hl::after{height:30px !important;bottom:14px !important}
-/* 课程标识 bar */
-.p-course-bar{position:absolute;left:50%;top:28px;transform:translateX(-50%);background:var(--brand-indigo);color:#fff;border:2px solid var(--brand-dark);border-radius:100px;padding:10px 26px;font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;letter-spacing:1.5px;box-shadow:4px 4px 0 var(--brand-dark);white-space:nowrap;z-index:10;display:flex;align-items:center;gap:12px}
-.p-course-bar::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--brand-yellow)}
-.p6 .p-course-bar,.p13 .p-course-bar,.p20 .p-course-bar,.p23 .p-course-bar,.p25 .p-course-bar,.p1d .p-course-bar{background:var(--brand-yellow);color:var(--brand-dark)}
-.p6 .p-course-bar::before,.p13 .p-course-bar::before,.p20 .p-course-bar::before,.p23 .p-course-bar::before,.p25 .p-course-bar::before,.p1d .p-course-bar::before{background:var(--brand-indigo)}
-.p1 .p-course-bar,.p1b .p-course-bar,.p1c .p-course-bar,.p9 .p-course-bar{display:none}
-</style>
+    /* Poster Visuals */
+    .poster h2 { font-size: 100px; line-height: 1.1; font-weight: 900; letter-spacing: -2px; margin-bottom: 40px; }
+    .poster h2 em { font-style: normal; position: relative; z-index: 1; }
+    .poster h2 em::after { content: ''; position: absolute; left: -5px; right: -5px; bottom: 10px; height: 28px; background: var(--brand-yellow); opacity: 0.8; z-index: -1; }
+    .hook { font-size: 150px; font-weight: 900; line-height: 1.1; margin-bottom: 60px; color: var(--brand-dark); }
+    .badge { display: inline-block; background: var(--brand-dark); color: #fff; padding: 12px 24px; border-radius: 12px; font-family: 'JetBrains Mono'; font-size: 36px; font-weight: 700; margin-bottom: 32px; }
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+    .v-card { background: #fff; border: 5px solid var(--brand-dark); border-radius: 32px; padding: 48px; box-shadow: 12px 12px 0 rgba(16,22,47,0.06); }
+    .v-card h3 { font-size: 64px; font-weight: 900; margin-bottom: 24px; color: var(--brand-purple); }
+    .v-card p { font-size: 44px; font-weight: 600; line-height: 1.4; }
+  </style>
 </head>
 <body>
-<div class="page-wrap">
-  <header class="page-head">
-    <h1>AI 产品经理（BA）训练营 · <span>小红书素材集</span></h1>
-    <p>28 张聚光投流素材（4 封面 + 24 配图），为小红书小聚光平台定制。每张右侧自带三通道文案（小红书 / 朋友圈 / 社群），一键复制。</p>
-    <div class="spec-row">
-      <span class="spec-pill indigo">1242 × 1660 竖版</span>
-      <span class="spec-pill">聚光合规</span>
-      <span class="spec-pill">28 张全套</span>
-      <span class="spec-pill">html2canvas 一键导出</span>
-    </div>
-    <div class="guide">
-      <b>导出方式：</b>每张海报下方点「⬇ 下载 PNG」直接导出高清 PNG（1242×1660，含外框）。<br>
-      <b>投流前自检：</b>文案无二维码 / 无绝对化用语 / 无具体薪资承诺 — 否则聚光直接拒审。
-    </div>
-  </header>
 
-  <!-- 左侧导航 -->
-  <nav class="thumb-nav">
-    <a class="thumb" href="#p1"><span class="num">1</span><span class="lbl">封面</span></a>
-    <a class="thumb" href="#p1b"><span class="num">1B</span><span class="lbl">共鸣</span></a>
-    <a class="thumb" href="#p1c"><span class="num">1C</span><span class="lbl">转岗</span></a>
-    <a class="thumb" href="#p1d"><span class="num">1D</span><span class="lbl">角色</span></a>
-    <a class="thumb" href="#p2"><span class="num">2</span><span class="lbl">差距</span></a>
-    <a class="thumb" href="#p3"><span class="num">3</span><span class="lbl">群聊</span></a>
-    <a class="thumb" href="#p4"><span class="num">4</span><span class="lbl">4 能力</span></a>
-    <a class="thumb" href="#p5"><span class="num">5</span><span class="lbl">地图</span></a>
-    <a class="thumb" href="#p6"><span class="num">6</span><span class="lbl">工具</span></a>
-    <a class="thumb" href="#p7"><span class="num">7</span><span class="lbl">反馈</span></a>
-    <a class="thumb" href="#p8"><span class="num">8</span><span class="lbl">配置</span></a>
-    <a class="thumb" href="#p9"><span class="num">9</span><span class="lbl">CTA</span></a>
-    <a class="thumb" href="#p10"><span class="num">10</span><span class="lbl">岗位</span></a>
-    <a class="thumb" href="#p11"><span class="num">11</span><span class="lbl">BA vs PM</span></a>
-    <a class="thumb" href="#p12"><span class="num">12</span><span class="lbl">PRD</span></a>
-    <a class="thumb" href="#p13"><span class="num">13</span><span class="lbl">Prompt</span></a>
-    <a class="thumb" href="#p14"><span class="num">14</span><span class="lbl">谁学</span></a>
-    <a class="thumb" href="#p15"><span class="num">15</span><span class="lbl">Lab</span></a>
-    <a class="thumb" href="#p16"><span class="num">16</span><span class="lbl">时间</span></a>
-    <a class="thumb" href="#p17"><span class="num">17</span><span class="lbl">P3</span></a>
-    <a class="thumb" href="#p18"><span class="num">18</span><span class="lbl">工作流</span></a>
-    <a class="thumb" href="#p19"><span class="num">19</span><span class="lbl">成本</span></a>
-    <a class="thumb" href="#p20"><span class="num">20</span><span class="lbl">公司</span></a>
-    <a class="thumb" href="#p21"><span class="num">21</span><span class="lbl">薪资</span></a>
-    <a class="thumb" href="#p22"><span class="num">22</span><span class="lbl">独家 1</span></a>
-    <a class="thumb" href="#p23"><span class="num">23</span><span class="lbl">独家 2</span></a>
-    <a class="thumb" href="#p24"><span class="num">24</span><span class="lbl">FAQ</span></a>
-    <a class="thumb" href="#p25"><span class="num">25</span><span class="lbl">招生</span></a>
-  </nav>
-
-  <!-- ========== P1 封面 ========== -->
-  <div class="poster-frame" id="p1">
-    <div class="poster-main">
-      <div class="label">P1 封面 <em>· 默认版 · 直接痛点 hook</em></div>
-      <div class="poster-scaler">
-        <div class="poster p1" id="poster-1">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag"><span class="dot"></span>BUSINESS ANALYST × AI PM</div>
-            <div class="corner-mark">第 4 期 · 招生中</div>
-            <div class="hook">从 BA<br>卷成 <span class="hl">AI 产品经理</span></div>
-            <div class="sub">2026 年的产品岗，<br>已经不是问『要什么功能』，<br>而是问『模型能做到多准、成本多少』。</div>
-            <div class="course-chip">
-              <div class="name">AI 产品经理（BA）训练营</div>
-              <div class="meta">7 周 · 94 节课</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-1" data-slug="p1-cover">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p1"></div>
-  </div>
-
-  <!-- ========== P1B 封面共鸣版 ========== -->
-  <div class="poster-frame" id="p1b">
-    <div class="poster-main">
-      <div class="label">P1B 封面 <em>· 共鸣版 · 会用 ChatGPT ≠ 会做 AI PM</em></div>
-      <div class="poster-scaler">
-        <div class="poster p1b" id="poster-1b">
-          <div class="p-inner">
-            <div class="p-tag" style="font-size:32px;padding:10px 26px;background:#f1f5f9;color:var(--text-gray);border-color:#cbd5e1">BA × AI PM · 7 WEEKS</div>
-            <div class="hook"><span class="soft">会用 ChatGPT</span>不等于<br>你会做 <span class="accent">AI PM</span></div>
-            <div class="cards-wrap">
-              <div class="xhs-card bad">
-                <div class="label-tag">很多人停在</div>
-                <div class="card-main">问 ChatGPT 几个问题</div>
-                <div class="card-desc">生成几段文案、润色 PRD、做点总结……就叫『用 AI』了</div>
-              </div>
-              <div class="xhs-card good">
-                <div class="label-tag">真岗位在要</div>
-                <div class="card-main">写能落地的 AI PRD</div>
-                <div class="card-desc">选模型 / 算成本 / 定指标 / 管风险 / 落 A/B 实验 — 这才是 2026 的 PM 基线</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-1b" data-slug="p1b-resonance">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p1b"></div>
-  </div>
-
-  <!-- ========== P1C 封面转岗版 ========== -->
-  <div class="poster-frame" id="p1c">
-    <div class="poster-main">
-      <div class="label">P1C 封面 <em>· 转岗版 · 从传统 BA → AI PM</em></div>
-      <div class="poster-scaler">
-        <div class="poster p1c" id="poster-1c">
-          <div class="p-inner">
-            <div class="p-tag">CAREER UPGRADE · 2026</div>
-            <div class="hook">从传统 <span class="hl">BA</span><br>升级成 <span class="hl">AI PM</span></div>
-            <div class="ba-row">
-              <div class="stage before">
-                <div class="stg-tag">BEFORE</div>
-                <div class="role">传统 BA</div>
-                <div class="sal">AUD $65K–$95K</div>
-                <div style="font-size:28px;color:var(--text-gray);font-weight:600;margin-top:14px;line-height:1.35">User Story · Agile · PRD · Jira</div>
-              </div>
-              <div class="arrow">→</div>
-              <div class="stage after">
-                <div class="stg-tag">AFTER</div>
-                <div class="role">AI PM</div>
-                <div class="sal">AUD $110K–$180K+</div>
-                <div style="font-size:28px;color:#e0e7ff;font-weight:600;margin-top:14px;line-height:1.35">+ AI PRD · Prompt A/B · RAG · 成本 · 评估</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-1c" data-slug="p1c-transition">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p1c"></div>
-  </div>
-
-  <!-- ========== P1D 封面角色版 ========== -->
-  <div class="poster-frame" id="p1d">
-    <div class="poster-main">
-      <div class="label">P1D 封面 <em>· 角色版 · 不懂这些 JD 接不上</em></div>
-      <div class="poster-scaler">
-        <div class="poster p1d" id="poster-1d">
-          <div class="p-inner">
-            <div class="p-tag" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.3)">AI PM CHECKLIST · 2026</div>
-            <div class="hook">不会这些<br>AI PM 面试<br><span class="accent">接不上话</span></div>
-            <div class="sticker-grid">
-              <div class="sticker"><div class="ico">📝</div><div class="name">AI PRD 7 章</div></div>
-              <div class="sticker"><div class="ico">🎯</div><div class="name">Prompt A/B</div></div>
-              <div class="sticker"><div class="ico">🔍</div><div class="name">RAG 选型</div></div>
-              <div class="sticker"><div class="ico">💰</div><div class="name">Token 成本</div></div>
-              <div class="sticker"><div class="ico">📊</div><div class="name">Eval 指标</div></div>
-              <div class="sticker"><div class="ico">🛡️</div><div class="name">AI 合规</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-1d" data-slug="p1d-checklist">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p1d"></div>
-  </div>
-
-  <!-- ========== P2 痛点对比 ========== -->
-  <div class="poster-frame" id="p2">
-    <div class="poster-main">
-      <div class="label">P2 痛点对比 <em>· X 还在 vs ✓ 他们在做</em></div>
-      <div class="poster-scaler">
-        <div class="poster p2" id="poster-2">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="eyebrow"><div class="line"></div><div class="txt">2026 · PM JD 已经换代</div></div>
-            <h2>同样做产品<br>差距已经<span class="hl">这么大</span>了</h2>
-            <div class="lead">扒了 12 份澳洲 AI PM JD 以后，<br>发现招人方向整体右移了。</div>
-            <div class="cmp">
-              <div class="col bad">
-                <div class="col-head">
-                  <div class="kicker">STILL AT</div>
-                  <h3>还在做</h3>
-                  <div class="col-sub">传统 PRD 思路</div>
-                </div>
-                <ul>
-                  <li>堆功能清单当 PRD</li>
-                  <li>写个『提升用户体验』当指标</li>
-                  <li>风险章节 = 进度延期</li>
-                  <li>要 AI 功能 = 抄 ChatGPT</li>
-                  <li>没听过 Prompt A/B</li>
-                  <li>不知道 token 多少钱</li>
-                </ul>
-              </div>
-              <div class="divider"><div class="vs">VS</div></div>
-              <div class="col good">
-                <div class="col-head">
-                  <div class="kicker">NOW DOING</div>
-                  <h3>他们在做</h3>
-                  <div class="col-sub">AI PM 真实技能</div>
-                </div>
-                <ul>
-                  <li>AI PRD 七章结构</li>
-                  <li>accuracy / latency / cost 三维指标</li>
-                  <li>风险含 Prompt 注入 / 幻觉 / PII</li>
-                  <li>自己跑 RAG 原型验证</li>
-                  <li>3 套 Prompt 做 A/B 测试</li>
-                  <li>会算月成本做 trade-off</li>
-                </ul>
-              </div>
-            </div>
-            <div class="bottom-note">不是努力没用，是方向变了 — 补一下就能追上。</div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-2" data-slug="p2-gap">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p2"></div>
-  </div>
-
-  <!-- ========== P3 同事群对话 ========== -->
-  <div class="poster-frame" id="p3">
-    <div class="poster-main">
-      <div class="label">P3 同事群对话 <em>· Slack 风格</em></div>
-      <div class="poster-scaler">
-        <div class="poster p3" id="poster-3">
-          <div class="p-inner">
-            <div class="p-tag" style="background:#fff;border-color:var(--brand-indigo)">WORKPLACE CHAT · 2026</div>
-            <h2 style="margin-top:28px">群里突然在聊<br><span class="hl">RAG Eval 指标</span>？</h2>
-            <div class="lead">作为 PM 我…… 这是什么</div>
-            <div class="chat">
-              <div class="msg">
-                <div class="avatar">T</div>
-                <div class="bubble">
-                  <div class="who">Tech Lead</div>
-                  我们下一版要上 RAG，PM 你来定 evaluation 指标吧
-                </div>
-              </div>
-              <div class="msg right">
-                <div class="avatar">我</div>
-                <div class="bubble">
-                  <div class="who">我</div>
-                  ……Evaluation 指标是看 accuracy 吗？
-                </div>
-              </div>
-              <div class="msg">
-                <div class="avatar">T</div>
-                <div class="bubble">
-                  <div class="who">Tech Lead</div>
-                  还要有 latency / hallucination rate / cost per query，别忘了做 A/B
-                </div>
-              </div>
-              <div class="msg">
-                <div class="avatar">D</div>
-                <div class="bubble">
-                  <div class="who">Data</div>
-                  顺便看下 Stakeholder 有没有批过 PII 脱敏流程
-                </div>
-              </div>
-              <div class="msg right">
-                <div class="avatar">我</div>
-                <div class="bubble">
-                  <div class="who">我</div>
-                  ……好的我晚点回你 🥲
-                </div>
-              </div>
-            </div>
-            <div class="footer-note">这节课的学员评论：「原话」</div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-3" data-slug="p3-chat">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p3"></div>
-  </div>
-
-  <!-- ========== P4 4 大能力 ========== -->
-  <div class="poster-frame" id="p4">
-    <div class="poster-main">
-      <div class="label">P4 四大能力 <em>· 学完你能做什么</em></div>
-      <div class="poster-scaler">
-        <div class="poster p4" id="poster-4">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">LEARNING OUTCOMES</div>
-            <h2 style="margin-top:28px">7 周带你拿<br>这 <span class="hl">4 个能力</span></h2>
-            <div class="lead">不是听讲，是真的做出来 — 每一个都能放 portfolio。</div>
-            <div class="grid">
-              <div class="cap">
-                <div class="num">01</div>
-                <div class="name">写一份完整<br>AI PRD</div>
-                <div class="desc">数据 / 模型 / 指标 / 风险 / 成本 五章齐整</div>
-                <div class="tags"><span class="tag">L64</span><span class="tag">L68</span><span class="tag">L74 Lab</span></div>
-              </div>
-              <div class="cap">
-                <div class="num">02</div>
-                <div class="name">Prompt 工程<br>4 层 + A/B</div>
-                <div class="desc">basic / few-shot / CoT / Agent，每层会写会测</div>
-                <div class="tags"><span class="tag">L76</span><span class="tag">L77</span><span class="tag">L78 Lab</span></div>
-              </div>
-              <div class="cap">
-                <div class="num">03</div>
-                <div class="name">搭 RAG<br>文档问答原型</div>
-                <div class="desc">用 ChatGPT / Notion AI 无代码搭，含 Prompt + 评估</div>
-                <div class="tags"><span class="tag">L83</span><span class="tag">L84 Lab</span></div>
-              </div>
-              <div class="cap">
-                <div class="num">04</div>
-                <div class="name">打通<br>自动化链路</div>
-                <div class="desc">Notion → AI → Jira 端到端 + 成本控制 + 监控</div>
-                <div class="tags"><span class="tag">L87</span><span class="tag">L89 Lab</span><span class="tag">L94</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-4" data-slug="p4-skills">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p4"></div>
-  </div>
-
-  <!-- ========== P5 Phase 地图 ========== -->
-  <div class="poster-frame" id="p5">
-    <div class="poster-main">
-      <div class="label">P5 课程地图 <em>· 6 个 Phase</em></div>
-      <div class="poster-scaler">
-        <div class="poster p5" id="poster-5">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">COURSE ROADMAP · 7 WEEKS</div>
-            <h2 style="margin-top:28px">6 个 Phase<br><span class="hl">7 周走完</span></h2>
-            <div class="lead">Week 0–6，94 节课 + 7 个 Lab + 10 个章节测验。</div>
-            <div class="phases">
-              <div class="phase" style="--ph-color:#6366f1">
-                <div class="idx"><div class="n">0</div><div class="w">WK 0</div></div>
-                <div class="meta"><h4>启程与 AI 基础</h4><div class="topic">AI 时代 BA 定位 · 工具装好 · P3 机制</div></div>
-                <div class="cnt">14 节</div>
-              </div>
-              <div class="phase" style="--ph-color:#10b981">
-                <div class="idx"><div class="n">1</div><div class="w">WK 1</div></div>
-                <div class="meta"><h4>BA 角色 × 求职</h4><div class="topic">Initiation · Discovery · Delivery · AI PM 差异</div></div>
-                <div class="cnt">25 节</div>
-              </div>
-              <div class="phase" style="--ph-color:#f59e0b">
-                <div class="idx"><div class="n">2</div><div class="w">WK 2</div></div>
-                <div class="meta"><h4>需求 × 敏捷</h4><div class="topic">User Story 全套 · Scrum 五仪式 · GenAI 需求分析</div></div>
-                <div class="cnt">23 节</div>
-              </div>
-              <div class="phase" style="--ph-color:#ef4444">
-                <div class="idx"><div class="n">3</div><div class="w">WK 3-4</div></div>
-                <div class="meta"><h4>文档 × Prompt 工程</h4><div class="topic">AI PRD · Stakeholder · Prompt 4 层 · A/B</div></div>
-                <div class="cnt">17 节</div>
-              </div>
-              <div class="phase" style="--ph-color:#8b5cf6">
-                <div class="idx"><div class="n">4</div><div class="w">WK 5</div></div>
-                <div class="meta"><h4>AI 原型实战</h4><div class="topic">Prompt / FT / RAG / Agent 四模式 · 文档问答</div></div>
-                <div class="cnt">9 节</div>
-              </div>
-              <div class="phase" style="--ph-color:#06b6d4">
-                <div class="idx"><div class="n">5</div><div class="w">WK 6</div></div>
-                <div class="meta"><h4>自动化 × Agent 落地</h4><div class="topic">自动化链路 · Agent 产品设计 · 毕业项目</div></div>
-                <div class="cnt">6 节</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-5" data-slug="p5-phases">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p5"></div>
-  </div>
-
-  <!-- ========== P6 工具栈（暗底） ========== -->
-  <div class="poster-frame" id="p6">
-    <div class="poster-main">
-      <div class="label">P6 工具栈 <em>· AI PM 真实工具集</em></div>
-      <div class="poster-scaler">
-        <div class="poster p6" id="poster-6">
-          <div class="p-inner">
-            <div class="p-tag" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.3)">TOOL STACK · 2026</div>
-            <h2 style="margin-top:28px">AI PM 要用的<br><span>真实工具集</span></h2>
-            <div class="lead">不是堆 logo，是每一个都在 94 节课里会用到。</div>
-            <div class="tool-grid">
-              <div class="tool"><div class="cat">LLM</div><div class="name">ChatGPT / Claude</div><div class="desc">对比选型</div></div>
-              <div class="tool"><div class="cat">LLM</div><div class="name">Gemini</div><div class="desc">备选 / cost</div></div>
-              <div class="tool"><div class="cat">PRD</div><div class="name">Notion</div><div class="desc">AI PRD 协作</div></div>
-              <div class="tool"><div class="cat">任务</div><div class="name">Jira</div><div class="desc">Story / Sprint</div></div>
-              <div class="tool"><div class="cat">原型</div><div class="name">Figma</div><div class="desc">流程 + Prototype</div></div>
-              <div class="tool"><div class="cat">研究</div><div class="name">Perplexity</div><div class="desc">用户访谈摘要</div></div>
-              <div class="tool"><div class="cat">RAG</div><div class="name">ChatGPT GPTs</div><div class="desc">文档问答原型</div></div>
-              <div class="tool"><div class="cat">RAG</div><div class="name">Notion AI Q&A</div><div class="desc">内部知识库</div></div>
-              <div class="tool"><div class="cat">自动化</div><div class="name">n8n</div><div class="desc">Notion → AI → Jira</div></div>
-              <div class="tool"><div class="cat">自动化</div><div class="name">Zapier</div><div class="desc">轻量 workflow</div></div>
-              <div class="tool"><div class="cat">代码</div><div class="name">Cursor</div><div class="desc">看懂前后端</div></div>
-              <div class="tool"><div class="cat">协作</div><div class="name">Slack / Linear</div><div class="desc">Stakeholder 沟通</div></div>
-            </div>
-            <div class="bottom-note">12 个工具 · 每个都会配 Cheat Sheet 速查卡</div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-6" data-slug="p6-tools">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p6"></div>
-  </div>
-
-  <!-- ========== P7 学员反馈 ========== -->
-  <div class="poster-frame" id="p7">
-    <div class="poster-main">
-      <div class="label">P7 学员反馈 <em>· 软性引言</em></div>
-      <div class="poster-scaler">
-        <div class="poster p7" id="poster-7">
-          <div class="p-inner">
-            <div class="p-dots bl"></div>
-            <div class="p-tag">STUDENT VOICES</div>
-            <h2 style="margin-top:28px">往期学员说<br><span class="hl">这几句</span>最对</h2>
-            <div class="lead">不是代言，是课后群里直接复制出来的。</div>
-            <div class="quotes">
-              <div class="q"><div class="txt">『讲 Prompt 不是教技巧，是教我怎么把需求翻成机器能懂的话。这个转译能力现在每天都在用。』</div><div class="who">— Lisa · 转产品岗 3 个月</div></div>
-              <div class="q"><div class="txt">『AI PRD 七章模板我直接拿去公司用了，Tech Lead 看完说这版终于不用他补数据章了。』</div><div class="who">— Eric · 悉尼 Fintech BA</div></div>
-              <div class="q"><div class="txt">『以前觉得 PM 就是写需求催进度，学完才发现 AI 时代 PM 真的要懂成本和评估指标。』</div><div class="who">— Wei · 回国互联网产品岗</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-7" data-slug="p7-voices">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p7"></div>
-  </div>
-
-  <!-- ========== P8 课程配置 ========== -->
-  <div class="poster-frame" id="p8">
-    <div class="poster-main">
-      <div class="label">P8 课程配置 <em>· 一张图看全</em></div>
-      <div class="poster-scaler">
-        <div class="poster p8" id="poster-8">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">WHAT'S INSIDE · 7 WEEKS</div>
-            <h2 style="margin-top:28px">94 节课<br>到底<span class="hl">装了什么</span></h2>
-            <div class="nums">
-              <div class="kpi"><div class="n">94</div><div class="lbl">节课 / 6 阶段</div></div>
-              <div class="kpi"><div class="n">7</div><div class="lbl">互动 Lab · 做出来</div></div>
-              <div class="kpi"><div class="n">10</div><div class="lbl">章节 Quiz · 卡关验收</div></div>
-              <div class="kpi"><div class="n">1v1</div><div class="lbl">面试 / 简历辅导 × 2 次</div></div>
-            </div>
-            <div class="package">
-              <h4>课程还打包了</h4>
-              <ul>
-                <li>真实 P3 项目实习</li>
-                <li>AI PRD 七章模板</li>
-                <li>PM Prompt 库 20+</li>
-                <li>AI 成本估算卡</li>
-                <li>毕业 portfolio 定稿</li>
-                <li>学员群长期答疑</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-8" data-slug="p8-inside">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p8"></div>
-  </div>
-
-  <!-- ========== P9 CTA 软性 ========== -->
-  <div class="poster-frame" id="p9">
-    <div class="poster-main">
-      <div class="label">P9 软性 CTA <em>· 无二维码合规版</em></div>
-      <div class="poster-scaler">
-        <div class="poster p9" id="poster-9">
-          <div class="p-inner">
-            <div class="line1">还想再<br>卷一卷？</div>
-            <div class="giant">94</div>
-            <div class="line2">节课 · 7 周 · 6 阶段<br>从 BA 到 AI PM，一期走完。</div>
-            <div class="pill-row">
-              <div class="pill">第 4 期 · 招生中</div>
-              <div class="pill">2025.12 开课</div>
-            </div>
-            <div class="bottom">jiangren.com.au · 匠人学院</div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-9" data-slug="p9-cta">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p9"></div>
-  </div>
-
-  <!-- ========== P10 AI PM 岗位 explainer ========== -->
-  <div class="poster-frame" id="p10">
-    <div class="poster-main">
-      <div class="label">P10 岗位 explainer <em>· AI PM 到底在做什么</em></div>
-      <div class="poster-scaler">
-        <div class="poster p10" id="poster-10">
-          <div class="p-inner">
-            <div class="p-tag">ROLE EXPLAINER · NEW IN 2026</div>
-            <div class="define">
-              <div class="kicker">ONE-LINE DEFINITION</div>
-              <div class="sent">AI PM = <span class="hl-y">把 AI 能力翻译成业务结果</span>的人</div>
-            </div>
-            <h2>那一天，他们<br>到底在做什么？</h2>
-            <div class="section-label">A DAY IN THE ROLE</div>
-            <div class="day-list">
-              <div class="day"><div class="t">MORNING 09:30</div><div class="a">跟客服团队聊用户投诉场景，找出一个可以自动化分诊的环节</div></div>
-              <div class="day"><div class="t">NOON 12:00</div><div class="a">写 3 套 Prompt 让 LLM 分诊，对比 accuracy / cost / latency</div></div>
-              <div class="day"><div class="t">AFTERNOON 15:00</div><div class="a">和工程师 review RAG 检索召回不理想的 case，定下周 eval 计划</div></div>
-              <div class="day"><div class="t">EVENING 17:30</div><div class="a">给 Stakeholder 写一页『本周 AI 指标 + 下周取舍』周报</div></div>
-            </div>
-            <div class="meta-row">
-              <div class="meta"><div class="lbl">ROLE TITLE</div><div class="val">AI Product Manager</div></div>
-              <div class="meta"><div class="lbl">AUD SALARY</div><div class="val">$85K–$180K+</div></div>
-              <div class="meta"><div class="lbl">ENTRY</div><div class="val">BA / 产品 / 运营转岗</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-10" data-slug="p10-role">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p10"></div>
-  </div>
-
-  <!-- ========== P11 BA vs AI PM 技能栈 ========== -->
-  <div class="poster-frame" id="p11">
-    <div class="poster-main">
-      <div class="label">P11 技能栈对比 <em>· 传统 BA vs AI PM</em></div>
-      <div class="poster-scaler">
-        <div class="poster p11" id="poster-11">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">SKILL STACK · 5 DIMENSIONS</div>
-            <h2 style="margin-top:28px">传统 BA vs <span class="hl">AI PM</span><br>到底差了什么</h2>
-            <div class="lead">不是两个岗位，是同一条路上的两个台阶。</div>
-            <div class="table">
-              <div class="tr head">
-                <div class="cell">维度</div>
-                <div class="cell">传统 BA</div>
-                <div class="cell">AI PM</div>
-              </div>
-              <div class="tr">
-                <div class="cell">需求方法论</div>
-                <div class="cell old">User Story · BRD · FSD</div>
-                <div class="cell new">AI Capability Spec</div>
-              </div>
-              <div class="tr">
-                <div class="cell">工具链</div>
-                <div class="cell old">Jira · Confluence · Figma</div>
-                <div class="cell new">GPTs · Claude · n8n · RAG</div>
-              </div>
-              <div class="tr">
-                <div class="cell">评估指标</div>
-                <div class="cell old">功能完成率 · 转化</div>
-                <div class="cell new">accuracy · latency · hallucination · cost</div>
-              </div>
-              <div class="tr">
-                <div class="cell">利益相关者</div>
-                <div class="cell old">业务方 · 开发 · QA</div>
-                <div class="cell new">数据 · 合规 · AI 伦理</div>
-              </div>
-              <div class="tr">
-                <div class="cell">风险清单</div>
-                <div class="cell old">范围蔓延 · 进度</div>
-                <div class="cell new">注入 · 泄漏 · 偏见 · 成本失控</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-11" data-slug="p11-skills">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p11"></div>
-  </div>
-
-  <!-- ========== P12 AI PRD 七章结构 ========== -->
-  <div class="poster-frame" id="p12">
-    <div class="poster-main">
-      <div class="label">P12 AI PRD 七章 <em>· 独家 · 差异化章节</em></div>
-      <div class="poster-scaler">
-        <div class="poster p12" id="poster-12">
-          <div class="p-inner">
-            <div class="p-dots bl"></div>
-            <div class="p-tag">AI PRD · 7 SECTIONS</div>
-            <h2 style="margin-top:28px">AI 产品 PRD<br>必备的<span class="hl">七个章节</span></h2>
-            <div class="lead">前 3 章传统 PRD 有，后 4 章是 AI 时代的差异化必修。</div>
-            <div class="chapters">
-              <div class="ch"><div class="idx">1</div><div><div class="name">功能定义</div><div class="desc">User Story + 验收标准</div></div></div>
-              <div class="ch"><div class="idx">2</div><div><div class="name">用户流程</div><div class="desc">前后交互 + 异常路径</div></div></div>
-              <div class="ch"><div class="idx">3</div><div><div class="name">约束与 NFR</div><div class="desc">性能 / 安全 / 合规底线</div></div></div>
-              <div class="ch ai"><div class="idx">4</div><div><div class="name">数据章节</div><div class="desc">RAG 数据源 + PII 脱敏</div></div></div>
-              <div class="ch ai"><div class="idx">5</div><div><div class="name">模型策略</div><div class="desc">选型 + Prompt + fallback</div></div></div>
-              <div class="ch ai"><div class="idx">6</div><div><div class="name">成功指标</div><div class="desc">accuracy / latency / cost 三维</div></div></div>
-              <div class="ch ai span2"><div class="idx">7</div><div><div class="name">风险与合规</div><div class="desc">Prompt 注入 · 幻觉 · GDPR / 澳洲 APP · 伦理</div></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-12" data-slug="p12-prd">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p12"></div>
-  </div>
-
-  <!-- ========== P13 Prompt 四层次（暗底） ========== -->
-  <div class="poster-frame" id="p13">
-    <div class="poster-main">
-      <div class="label">P13 Prompt 四层次 <em>· 独家 · 暗底</em></div>
-      <div class="poster-scaler">
-        <div class="poster p13" id="poster-13">
-          <div class="p-inner">
-            <div class="p-tag" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.3)">PROMPT ENGINEERING · 4 LAYERS</div>
-            <h2 style="margin-top:28px">Prompt 不是<br>『问得好』<br>是<span>产品语言</span></h2>
-            <div class="lead">会写 Prompt = 会把产品需求翻成机器能懂的话。</div>
-            <div class="layers">
-              <div class="layer"><div class="n">01</div><div><div class="name">Basic Prompt</div><div class="desc">指令 + 上下文 — 大多数新人停在这层</div></div></div>
-              <div class="layer"><div class="n">02</div><div><div class="name">Few-shot</div><div class="desc">给示例让 AI 学 — 能生成符合 INVEST 的 User Story</div></div></div>
-              <div class="layer"><div class="n">03</div><div><div class="name">Chain-of-Thought</div><div class="desc">推理路径显式化 — 复杂决策前先说思路</div></div></div>
-              <div class="layer l4"><div class="n">04</div><div><div class="name">Agent Prompt</div><div class="desc">工具调用 + 反思循环 — 2026 的 PM 必会</div></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-13" data-slug="p13-prompt">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p13"></div>
-  </div>
-
-  <!-- ========== P14 适合谁学 ========== -->
-  <div class="poster-frame" id="p14">
-    <div class="poster-main">
-      <div class="label">P14 适合谁学 <em>· 4 类人群</em></div>
-      <div class="poster-scaler">
-        <div class="poster p14" id="poster-14">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">WHO SHOULD JOIN</div>
-            <h2 style="margin-top:28px">这 <span class="hl">4 类人</span><br>来学最划得来</h2>
-            <div class="grid">
-              <div class="who-card">
-                <div class="ico">📚</div>
-                <div class="role">文科 / 商科背景</div>
-                <div class="why">想转产品 / BA，不会代码也能上 — Lab 都是无代码</div>
-              </div>
-              <div class="who-card">
-                <div class="ico">💼</div>
-                <div class="role">有 BA / PM 经验</div>
-                <div class="why">想补 AI 技能栈，薪资区间上一档</div>
-              </div>
-              <div class="who-card">
-                <div class="ico">🎨</div>
-                <div class="role">设计 / 运营转产品</div>
-                <div class="why">看得懂 PRD + 会用 AI 工具 = 转岗竞争力</div>
-              </div>
-              <div class="who-card">
-                <div class="ico">🛠️</div>
-                <div class="role">技术转产品</div>
-                <div class="why">懂工程 + 学 Stakeholder / 商业视角 = AI PM 顶配</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-14" data-slug="p14-who">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p14"></div>
-  </div>
-
-  <!-- ========== P15 Lab 分布 ========== -->
-  <div class="poster-frame" id="p15">
-    <div class="poster-main">
-      <div class="label">P15 7 个 Lab <em>· 每一个都能放 portfolio</em></div>
-      <div class="poster-scaler">
-        <div class="poster p15" id="poster-15">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">INTERACTIVE LABS · 7</div>
-            <h2 style="margin-top:28px">7 个 Lab<br><span class="hl">做出来再走</span></h2>
-            <div class="lead">不是理论题，是浏览器内做完提交 peer review。</div>
-            <div class="lab-grid">
-              <div class="lab"><div class="code">L06 · LAB</div><div class="title">工具与账号配置</div><div class="outcome">写出你第一个有用的 Prompt</div></div>
-              <div class="lab"><div class="code">L38 · LAB</div><div class="title">AI 应用体验对比</div><div class="outcome">3×3 工具 × 维度 对比表</div></div>
-              <div class="lab"><div class="code">L50 · LAB</div><div class="title">AI 小编剧</div><div class="outcome">需求一键 → 3 条 INVEST Story</div></div>
-              <div class="lab"><div class="code">L74 · LAB</div><div class="title">写一份 AI PRD</div><div class="outcome">含数据 / 模型 / 指标 / 风险</div></div>
-              <div class="lab"><div class="code">L78 · LAB</div><div class="title">Prompt A/B 测试</div><div class="outcome">6 套 prompt + 对比报告</div></div>
-              <div class="lab"><div class="code">L84 · LAB</div><div class="title">文档问答助手</div><div class="outcome">GPTs 或 Notion AI 原型</div></div>
-              <div class="lab span2"><div class="code">L89 · 毕业 LAB</div><div class="title">打通 Notion → AI → Jira 自动化链路</div><div class="outcome">端到端 workflow + 监控 + 成本控制 — 这是面试拿得出手的压轴 demo</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-15" data-slug="p15-labs">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p15"></div>
-  </div>
-
-  <!-- ========== P16 时间线 ========== -->
-  <div class="poster-frame" id="p16">
-    <div class="poster-main">
-      <div class="label">P16 学习时间线 <em>· Week 0 → Offer</em></div>
-      <div class="poster-scaler">
-        <div class="poster p16" id="poster-16">
-          <div class="p-inner">
-            <div class="p-dots bl"></div>
-            <div class="p-tag">TIMELINE · 7 WEEKS + P3</div>
-            <h2 style="margin-top:28px">7 周直播<br>+ 4 周<span class="hl">项目实习</span></h2>
-            <div class="lead">不是听课打卡，是每周卡关 + 真实项目交付。</div>
-            <div class="timeline">
-              <div class="milestone"><div class="wk">WEEK 0</div><div class="topic">AI 时代 BA 定位 · 工具装好</div></div>
-              <div class="milestone"><div class="wk">WEEK 1</div><div class="topic">BA 工作流 + AI PM 差异 + 求职准备</div></div>
-              <div class="milestone"><div class="wk">WEEK 2</div><div class="topic">User Story + Scrum 五仪式 + GenAI 需求</div></div>
-              <div class="milestone"><div class="wk">WEEK 3-4</div><div class="topic">AI PRD 7 章 + Prompt 4 层 + A/B</div></div>
-              <div class="milestone"><div class="wk">WEEK 5</div><div class="topic">RAG / Agent 原型实战 · 文档问答</div></div>
-              <div class="milestone"><div class="wk">WEEK 6</div><div class="topic">自动化链路 · Agent 落地 · 毕业项目</div></div>
-              <div class="milestone end"><div class="wk">+ WK 7–10</div><div class="topic">P3 真实项目 + 1v1 + portfolio 定稿</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-16" data-slug="p16-timeline">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p16"></div>
-  </div>
-
-  <!-- ========== P17 P3 项目 ========== -->
-  <div class="poster-frame" id="p17">
-    <div class="poster-main">
-      <div class="label">P17 P3 项目实习 <em>· 和全栈 / DevOps 班协作</em></div>
-      <div class="poster-scaler">
-        <div class="poster p17" id="poster-17">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">P3 INTERNSHIP · 4-6 WEEKS</div>
-            <h2 style="margin-top:28px">不是模拟，是<br>真实<span class="hl">可上线</span>的项目</h2>
-            <div class="lead">和 Web 全栈班 / DevOps 班同学组队，4-6 周交一个 MVP。<br>你是产品代表 — 需求 / PRD / Stakeholder / 验收全包。</div>
-            <div class="team">
-              <div class="role"><div class="ico">🎨</div><div class="name">设计</div><div class="what">原型 / UI</div></div>
-              <div class="role you"><div class="ico">📋</div><div class="name">你 · AI PM</div><div class="what">需求 / PRD / 验收</div></div>
-              <div class="role"><div class="ico">💻</div><div class="name">前端</div><div class="what">React / 交互</div></div>
-              <div class="role"><div class="ico">⚙️</div><div class="name">后端</div><div class="what">API / 数据</div></div>
-              <div class="role"><div class="ico">☁️</div><div class="name">DevOps</div><div class="what">部署 / 监控</div></div>
-              <div class="role"><div class="ico">🧪</div><div class="name">QA</div><div class="what">测试 / 回归</div></div>
-            </div>
-            <div class="output-list">
-              <h4>你作为 AI PM 的产出</h4>
-              <ul>
-                <li>Project Brief · 1 页</li>
-                <li>AI PRD · 7 章全</li>
-                <li>User Story Backlog</li>
-                <li>Stakeholder 周报</li>
-                <li>验收标准表</li>
-                <li>上线演示 + 复盘</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-17" data-slug="p17-p3">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p17"></div>
-  </div>
-
-  <!-- ========== P18 工作流 ========== -->
-  <div class="poster-frame" id="p18">
-    <div class="poster-main">
-      <div class="label">P18 AI PM 工作流 <em>· Stakeholder → PRD → Ticket</em></div>
-      <div class="poster-scaler">
-        <div class="poster p18" id="poster-18">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">AI PM WORKFLOW · END-TO-END</div>
-            <h2 style="margin-top:28px">从 Stakeholder<br>到 Jira Ticket<br>中间<span class="hl">6 步</span></h2>
-            <div class="flow">
-              <div class="step"><div class="n">1</div><div><div class="title">Stakeholder 访谈</div><div class="tool">Perplexity · Notion · 1:1</div></div></div>
-              <div class="step"><div class="n">2</div><div><div class="title">业务目标 + 用户画像</div><div class="tool">ChatGPT · Framework</div></div></div>
-              <div class="step highlight"><div class="n">3</div><div><div class="title">AI PRD 7 章</div><div class="tool">Notion · AI 辅助写作</div></div></div>
-              <div class="step"><div class="n">4</div><div><div class="title">User Story Backlog</div><div class="tool">Few-shot prompting · Jira</div></div></div>
-              <div class="step"><div class="n">5</div><div><div class="title">评审 + 风险对齐</div><div class="tool">Stakeholder 评审会</div></div></div>
-              <div class="step"><div class="n">6</div><div><div class="title">Jira Story + Sprint</div><div class="tool">n8n 自动化 · 通知</div></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-18" data-slug="p18-workflow">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p18"></div>
-  </div>
-
-  <!-- ========== P19 AI 成本 ========== -->
-  <div class="poster-frame" id="p19">
-    <div class="poster-main">
-      <div class="label">P19 AI 成本估算 <em>· 独家 · token 经济</em></div>
-      <div class="poster-scaler">
-        <div class="poster p19" id="poster-19">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">TOKEN ECONOMICS · AI PM BASELINE</div>
-            <h2 style="margin-top:28px">AI feature 到底<br><span class="hl">多少钱一个月</span></h2>
-            <div class="formula">
-              <div class="label">BASIC FORMULA</div>
-              <div class="eq">月成本 ≈ <em>调用量 × token/call × $/token</em> + 向量库 + Prompt cache 折扣</div>
-            </div>
-            <div class="cards">
-              <div class="cost-card"><div class="scene">客服分诊 Bot</div><div class="range">$150–$600</div><div class="note">5 万次 / 月 · GPT-4o-mini</div></div>
-              <div class="cost-card hot"><div class="scene">RAG 文档问答</div><div class="range">$800–$2,500</div><div class="note">向量库 + prompt caching 决定上下限</div></div>
-              <div class="cost-card"><div class="scene">文档摘要批处理</div><div class="range">$200–$700</div><div class="note">批量 API 有 50% 折扣</div></div>
-              <div class="cost-card"><div class="scene">Code Assistant</div><div class="range">$1,000–$4,000</div><div class="note">Claude Sonnet · 高 token 消耗</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-19" data-slug="p19-cost">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p19"></div>
-  </div>
-
-  <!-- ========== P20 澳洲公司（暗底） ========== -->
-  <div class="poster-frame" id="p20">
-    <div class="poster-main">
-      <div class="label">P20 澳洲招聘公司 <em>· 暗底 · 目标 JD</em></div>
-      <div class="poster-scaler">
-        <div class="poster p20" id="poster-20">
-          <div class="p-inner">
-            <div class="p-tag" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.3)">WHO'S HIRING · AUSTRALIA 2026</div>
-            <h2 style="margin-top:28px">这些公司<br>在<span>大量招 AI PM</span></h2>
-            <div class="lead">按公开 JD + LinkedIn / Seek 整理。公司列表每期更新。</div>
-            <div class="company-grid">
-              <div class="company rich"><div class="name">Canva</div><div class="cat">RICH · 32 条面经</div></div>
-              <div class="company rich"><div class="name">Atlassian</div><div class="cat">RICH · AI 重点</div></div>
-              <div class="company"><div class="name">Airwallex</div><div class="cat">FINTECH 独角兽</div></div>
-              <div class="company"><div class="name">Service NSW</div><div class="cat">政府数字化</div></div>
-              <div class="company"><div class="name">CBA / Westpac</div><div class="cat">四大行 AI 转型</div></div>
-              <div class="company"><div class="name">ANZ / NAB</div><div class="cat">四大行 AI 转型</div></div>
-              <div class="company"><div class="name">Telstra / Optus</div><div class="cat">电信 AI</div></div>
-              <div class="company"><div class="name">REA / Seek</div><div class="cat">平台产品</div></div>
-              <div class="company"><div class="name">Coles / Woolies</div><div class="cat">零售 AI</div></div>
-            </div>
-            <div class="bottom-note">12 家 + · Company Intelligence 每周更新招聘信号</div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-20" data-slug="p20-companies">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p20"></div>
-  </div>
-
-  <!-- ========== P21 薪资区间 ========== -->
-  <div class="poster-frame" id="p21">
-    <div class="poster-main">
-      <div class="label">P21 澳洲薪资 <em>· 三档区间</em></div>
-      <div class="poster-scaler">
-        <div class="poster p21" id="poster-21">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">SALARY RANGE · SYDNEY / MELBOURNE</div>
-            <h2 style="margin-top:28px">澳洲 AI PM<br>一年<span class="hl">拿多少</span></h2>
-            <div class="source">数据来源：Seek · LinkedIn Salary · Glassdoor AU · 2026-Q1</div>
-            <div class="tiers">
-              <div class="tier">
-                <div class="level">JUNIOR</div>
-                <div class="exp">0–2 年 · 转岗 / 应届</div>
-                <div class="range">$85K–$110K</div>
-              </div>
-              <div class="tier">
-                <div class="level">MID</div>
-                <div class="exp">2–5 年 · 独立带 feature</div>
-                <div class="range">$110K–$145K</div>
-              </div>
-              <div class="tier senior">
-                <div class="level">SENIOR</div>
-                <div class="exp">5 年+ · Principal / Lead</div>
-                <div class="range">$145K–$180K+</div>
-              </div>
-            </div>
-            <div class="bottom-note">AI PM 比传统 PM 高一档 · 非承诺区间，仅参考</div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-21" data-slug="p21-salary">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p21"></div>
-  </div>
-
-  <!-- ========== P22 独家 AI Capability Spec ========== -->
-  <div class="poster-frame" id="p22">
-    <div class="poster-main">
-      <div class="label">P22 独家 · AI Capability Spec <em>· 业内独有</em></div>
-      <div class="poster-scaler">
-        <div class="poster p22" id="poster-22">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="corner">独家 · 业内找不到第二家</div>
-            <div class="p-tag">AI CAPABILITY SPEC · EXCLUSIVE</div>
-            <h2 style="margin-top:28px">Capability Spec<br>是 AI PRD 的<br><span class="hl">灵魂那一章</span></h2>
-            <div class="lead">传统 User Story 写『用户能做什么』；<br>Capability Spec 写『AI 在什么范围做得到多准』。</div>
-            <div class="spec-box">
-              <h4>一份 Capability Spec 长这样</h4>
-              <div class="field"><div class="k">SCOPE</div><div class="v">LLM 对以下 5 类用户问题分类准确率 ≥ 85%</div></div>
-              <div class="field"><div class="k">INPUT</div><div class="v">用户自由文本 ≤ 500 字符 · 中文 / 英文</div></div>
-              <div class="field"><div class="k">OUTPUT</div><div class="v">枚举值（5 选 1）+ 置信度分数</div></div>
-              <div class="field"><div class="k">LATENCY</div><div class="v">P95 &lt; 2s · 人工 fallback 触发</div></div>
-              <div class="field"><div class="k">COST</div><div class="v">≤ $0.008 / query · 超则路由 fallback</div></div>
-              <div class="field"><div class="k">FALLBACK</div><div class="v">置信度 &lt; 0.7 转人工 · 带日志</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-22" data-slug="p22-spec">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p22"></div>
-  </div>
-
-  <!-- ========== P23 Stakeholder × AI 矩阵（暗底） ========== -->
-  <div class="poster-frame" id="p23">
-    <div class="poster-main">
-      <div class="label">P23 独家 · Stakeholder × AI <em>· 暗底 · 经典 × 新变量</em></div>
-      <div class="poster-scaler">
-        <div class="poster p23" id="poster-23">
-          <div class="p-inner">
-            <div class="corner">独家 · BA 经典 × AI 新维度</div>
-            <div class="p-tag" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.3)">STAKEHOLDER × AI · 2×2 MATRIX</div>
-            <h2 style="margin-top:28px">老的 <span>Power/Interest</span><br>加上 AI 两个<br>新变量</h2>
-            <div class="lead">Power / Interest 不变，AI 时代多了数据权和伦理权。</div>
-            <div class="matrix">
-              <div class="cell hi-hi">
-                <div class="q">HIGH POWER · HIGH INTEREST</div>
-                <div class="role">CDO / 数据负责人</div>
-                <div class="ai">+ 新：数据权 · 决定能不能进 RAG</div>
-                <div class="freq">会议频率：每周 1:1</div>
-              </div>
-              <div class="cell">
-                <div class="q">HIGH POWER · LOW INTEREST</div>
-                <div class="role">CFO / 法务</div>
-                <div class="ai">+ 新：成本 + 合规授权</div>
-                <div class="freq">两周一次 · 决策点同步</div>
-              </div>
-              <div class="cell">
-                <div class="q">LOW POWER · HIGH INTEREST</div>
-                <div class="role">终端用户代表</div>
-                <div class="ai">+ 新：AI 可解释性需求</div>
-                <div class="freq">每周 demo · 每月访谈</div>
-              </div>
-              <div class="cell">
-                <div class="q">LOW POWER · LOW INTEREST</div>
-                <div class="role">旁观部门</div>
-                <div class="ai">周报 cc · 不要惊动</div>
-                <div class="freq">月度 digest</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-23" data-slug="p23-matrix">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p23"></div>
-  </div>
-
-  <!-- ========== P24 FAQ ========== -->
-  <div class="poster-frame" id="p24">
-    <div class="poster-main">
-      <div class="label">P24 FAQ 精华 <em>· 3 个最常问</em></div>
-      <div class="poster-scaler">
-        <div class="poster p24" id="poster-24">
-          <div class="p-inner">
-            <div class="p-dots"></div>
-            <div class="p-tag">FAQ · MOST ASKED</div>
-            <h2 style="margin-top:28px">最常被问的<br><span class="hl">3 个问题</span></h2>
-            <div class="faq-list">
-              <div class="faq">
-                <div class="q">文科背景能学 AI PM 吗？</div>
-                <div class="a">可以。94 节课里有 7 个 Lab，全是无代码或低代码；毕业学员里有运营、设计、教师、HR 背景的转岗案例。</div>
-              </div>
-              <div class="faq">
-                <div class="q">和老的 BA 训练营（¥3500）什么区别？</div>
-                <div class="a">新加了 40% 的 AI 内容：AI PRD + Prompt 工程实战 + RAG 原型 + 成本管理 + 合规。外加 5 个新 Lab、6 张流程速查卡。</div>
-              </div>
-              <div class="faq">
-                <div class="q">学完能拿 offer 吗？</div>
-                <div class="a">无法保证。我们提供 1v1 辅导 / 澳洲 AI PM 市场信号 / 毕业 portfolio — 拿 offer 还得靠你自己面试发挥。</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-24" data-slug="p24-faq">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p24"></div>
-  </div>
-
-  <!-- ========== P25 CTA 招生（暗底） ========== -->
-  <div class="poster-frame" id="p25">
-    <div class="poster-main">
-      <div class="label">P25 招生 CTA <em>· 暗底 · 早鸟</em></div>
-      <div class="poster-scaler">
-        <div class="poster p25" id="poster-25">
-          <div class="p-inner">
-            <div class="eyebrow">COHORT 4 · 2025.12 → 2026.01</div>
-            <div class="big">AI PM<br>第 <span>4 期</span> 招生中</div>
-            <div class="price-row">
-              <div class="price-old">¥4,800</div>
-              <div class="price-new">¥4,400</div>
-            </div>
-            <div class="tag-row">
-              <div class="tag">早鸟立省 ¥400</div>
-              <div class="tag">老学员立减 ¥200</div>
-              <div class="tag">7 周 · 94 节</div>
-            </div>
-            <div class="bottom">jiangren.com.au / bootcamp / business-analyst</div>
-          </div>
-        </div>
-      </div>
-      <button class="dl-btn" data-target="poster-25" data-slug="p25-enrol">⬇ 下载 PNG</button>
-    </div>
-    <div class="copy-panel" data-copy-key="p25"></div>
-  </div>
-
+<div class="thumb-nav">
+  <div class="thumb-link active" onclick="scrollToPoster('p1')"><div class="num">01</div></div>
+  <div class="thumb-link" onclick="scrollToPoster('p2')"><div class="num">02</div></div>
+  <div class="thumb-link" onclick="scrollToPoster('p3')"><div class="num">03</div></div>
+  <div class="thumb-link" onclick="scrollToPoster('p4')"><div class="num">04</div></div>
+  <div class="thumb-link" onclick="scrollToPoster('p5')"><div class="num">05</div></div>
 </div>
 
-<!-- 右侧三通道文案 -->
-<script src="./xhs-copy.js"></script>
+<div class="poster-container">
+  <!-- P1 -->
+  <div class="poster-frame" id="p1" data-id="p1">
+    <div class="poster-scaler">
+      <div class="poster" id="poster-1">
+        <div class="p-inner" style="background: var(--bg-cream); justify-content: center; align-items: center; text-align: center;">
+          <div class="badge">2026 AI ERA</div>
+          <div class="hook">仅仅会提问<br>真的 <em class="hl">不够了</em></div>
+          <div style="font-size: 64px; font-weight: 600; color: var(--text-gray); margin-bottom: 60px;">2026 AI 产品经理实战班<br>做 AI 商业价值的操盘手</div>
+          <div style="background: var(--brand-dark); color: #fff; padding: 32px 64px; border-radius: 24px; font-size: 56px; font-weight: 900;">AI 产品经理实战班</div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-panel">
+      <div class="label">P1 封面 <em>· 商业操盘手</em></div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this, 0)">📕 小红书</div>
+        <div class="tab" onclick="switchTab(this, 1)">🎥 视频号</div>
+        <div class="tab" onclick="switchTab(this, 2)">🎵 抖音</div>
+      </div>
+      <div class="tab-content active"><div class="copy-text">加载中...</div></div>
+      <div class="tab-content"><div class="copy-text">加载中...</div></div>
+      <div class="tab-content"><div class="copy-text">加载中...</div></div>
+      <button class="dl-btn" onclick="download('poster-1', 'p1-cover')">⬇ 下载 PNG</button>
+    </div>
+  </div>
 
-<!-- 海报底部自动插入课程标识 bar -->
+  <!-- P2 -->
+  <div class="poster-frame" id="p2" data-id="p2">
+    <div class="poster-scaler">
+      <div class="poster" id="poster-2">
+        <div class="p-inner">
+          <div class="p-course-bar">AI PM · 澳洲 AI 产品经理 · 匠人 AI 12 周课</div>
+          <h2 style="margin-top: 100px;">为什么是 <em class="hl">AI 产品经理</em></h2>
+          <div style="font-size: 52px; font-weight: 600; color: var(--text-gray); margin-bottom: 60px;">澳洲 2024-2025 岗位需求爆发式增长</div>
+          <div class="card-grid">
+            <div class="v-card"><h3>210%</h3><p>Seek 数据：AI PM 岗位增长率</p></div>
+            <div class="v-card"><h3>$180K+</h3><p>Senior AI PM 年薪上限 (AUD)</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-panel">
+      <div class="label">P2 岗位趋势 <em>· 市场信号</em></div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this, 0)">📕 小红书</div>
+        <div class="tab" onclick="switchTab(this, 1)">🎥 视频号</div>
+        <div class="tab" onclick="switchTab(this, 2)">🎵 抖音</div>
+      </div>
+      <div class="tab-content active"><div class="copy-text"></div></div>
+      <div class="tab-content"><div class="copy-text"></div></div>
+      <div class="tab-content"><div class="copy-text"></div></div>
+      <button class="dl-btn" onclick="download('poster-2', 'p2-trend')">⬇ 下载 PNG</button>
+    </div>
+  </div>
+
+  <!-- P3 -->
+  <div class="poster-frame" id="p3" data-id="p3">
+    <div class="poster-scaler">
+      <div class="poster" id="poster-3">
+        <div class="p-inner">
+          <div class="p-course-bar">AI PM · 澳洲 AI 产品经理 · 匠人 AI 12 周课</div>
+          <h2 style="margin-top: 100px;">12 周 <em class="hl">真会四件事</em></h2>
+          <div style="font-size: 52px; font-weight: 600; color: var(--text-gray); margin-bottom: 60px;">不堆砌理论，只练生产级交付</div>
+          <div style="display: flex; flex-direction: column; gap: 40px;">
+            <div style="display: flex; align-items: center; gap: 32px;"><div style="width: 100px; height: 100px; background: var(--brand-purple); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; font-weight: 900;">1</div><p style="font-size: 48px !important;">AI PRD 撰写与成本评估</p></div>
+            <div style="display: flex; align-items: center; gap: 32px;"><div style="width: 100px; height: 100px; background: var(--brand-blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; font-weight: 900;">2</div><p style="font-size: 48px !important;">自动化流与 Agent 编排</p></div>
+            <div style="display: flex; align-items: center; gap: 32px;"><div style="width: 100px; height: 100px; background: var(--brand-green); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; font-weight: 900;">3</div><p style="font-size: 48px !important;">AI 交互体验 (AIUX) 设计</p></div>
+            <div style="display: flex; align-items: center; gap: 32px;"><div style="width: 100px; height: 100px; background: var(--brand-red); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; font-weight: 900;">4</div><p style="font-size: 48px !important;">RAG 评估与模型选型</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-panel">
+      <div class="label">P3 核心能力 <em>· 四项硬核</em></div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this, 0)">📕 小红书</div>
+        <div class="tab" onclick="switchTab(this, 1)">🎥 视频号</div>
+        <div class="tab" onclick="switchTab(this, 2)">🎵 抖音</div>
+      </div>
+      <div class="tab-content active"><div class="copy-text"></div></div>
+      <div class="tab-content"><div class="copy-text"></div></div>
+      <div class="tab-content"><div class="copy-text"></div></div>
+      <button class="dl-btn" onclick="download('poster-3', 'p3-outcomes')">⬇ 下载 PNG</button>
+    </div>
+  </div>
+
+  <!-- P4 -->
+  <div class="poster-frame" id="p4" data-id="p4">
+    <div class="poster-scaler">
+      <div class="poster" id="poster-4">
+        <div class="p-inner">
+          <div class="p-course-bar">AI PM · 澳洲 AI 产品经理 · 匠人 AI 12 周课</div>
+          <h2 style="margin-top: 100px;">真实 <em class="hl">P3 项目实习</em></h2>
+          <div style="font-size: 52px; font-weight: 600; color: var(--text-gray); margin-bottom: 60px;">担任 PO，带领团队完成交付</div>
+          <div style="background: var(--brand-dark); color: #fff; padding: 60px; border-radius: 40px;">
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 24px;">
+              <li style="font-size: 44px !important;">✅ 负责需求拆解与 AI PRD</li>
+              <li style="font-size: 44px !important;">✅ 与 Developer/DevOps 合作</li>
+              <li style="font-size: 44px !important;">✅ 交付 4-6 周真实上线 MVP</li>
+              <li style="font-size: 44px !important;">✅ 简历作品集，讲好 STAR 故事</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-panel">
+      <div class="label">P4 实战实习 <em>· 身份回归</em></div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this, 0)">📕 小红书</div>
+        <div class="tab" onclick="switchTab(this, 1)">🎥 视频号</div>
+        <div class="tab" onclick="switchTab(this, 2)">🎵 抖音</div>
+      </div>
+      <div class="tab-content active"><div class="copy-text"></div></div>
+      <div class="tab-content"><div class="copy-text"></div></div>
+      <div class="tab-content"><div class="copy-text"></div></div>
+      <button class="dl-btn" onclick="download('poster-4', 'p4-p3')">⬇ 下载 PNG</button>
+    </div>
+  </div>
+
+  <!-- P5 -->
+  <div class="poster-frame" id="p5" data-id="p1"> <!-- 复用 p1 文案 -->
+    <div class="poster-scaler">
+      <div class="poster" id="poster-5">
+        <div class="p-inner" style="background: var(--brand-dark); color: #fff; justify-content: center; align-items: center; text-align: center;">
+          <div class="p-course-bar" style="background: var(--brand-yellow); color: var(--brand-dark);">AI PM · 澳洲 AI 产品经理 · 匠人 AI 12 周课</div>
+          <div class="hook" style="color: #fff; font-size: 160px;">抢占 <em class="hl" style="color: #fff;">2026</em><br>AI 职业红利</div>
+          <div style="font-size: 64px; font-weight: 600; color: #94a3b8; margin-bottom: 80px;">开启你的职业新篇章</div>
+          <div class="badge" style="background: var(--brand-yellow); color: var(--brand-dark); font-size: 64px; padding: 32px 64px;">主页搜「匠人 AI」</div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-panel">
+      <div class="label">P5 软性 CTA <em>· 开启转型</em></div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this, 0)">📕 小红书</div>
+        <div class="tab" onclick="switchTab(this, 1)">🎥 视频号</div>
+        <div class="tab" onclick="switchTab(this, 2)">🎵 抖音</div>
+      </div>
+      <div class="tab-content active"><div class="copy-text"></div></div>
+      <div class="tab-content"><div class="copy-text"></div></div>
+      <div class="tab-content"><div class="copy-text"></div></div>
+      <button class="dl-btn" onclick="download('poster-5', 'p5-cta')">⬇ 下载 PNG</button>
+    </div>
+  </div>
+</div>
+
+<script src="xhs-copy.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
-  document.querySelectorAll('.p-inner').forEach(inner => {
-    if (inner.querySelector('.p-course-bar')) return;
-    const bar = document.createElement('div');
-    bar.className = 'p-course-bar';
-    bar.textContent = 'BUSINESS ANALYST × AI PM · 从 BA 到 AI 产品经理 · 匠人 AI 7 周课';
-    inner.appendChild(bar);
-  });
-</script>
+  function switchTab(el, index) {
+    const frame = el.closest('.poster-frame');
+    const tabs = frame.querySelectorAll('.tab');
+    const contents = frame.querySelectorAll('.tab-content');
+    tabs.forEach(t => t.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    contents[index].classList.add('active');
+  }
 
-<!-- html2canvas 下载 -->
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script>
-document.querySelectorAll('.dl-btn').forEach(btn => {
-  btn.addEventListener('click', async () => {
-    const poster = document.getElementById(btn.dataset.target);
-    if (!poster) return;
-    const POSTER_W = 1242, POSTER_H = 1660;
-    const FRAME_BORDER = 6, FRAME_RADIUS = 36, SHADOW_OFFSET = 24, PADDING = 48;
+  function scrollToPoster(id) {
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    document.querySelectorAll('.thumb-link').forEach(l => l.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+  }
 
-    const clone = poster.cloneNode(true);
-    clone.style.transform = 'none';
-    clone.style.transformOrigin = 'top left';
-    clone.style.position = 'relative';
-    clone.style.top = '0';
-    clone.style.left = '0';
-    clone.style.width = POSTER_W + 'px';
-    clone.style.height = POSTER_H + 'px';
-    clone.style.margin = '0';
+  async function download(id, slug) {
+    const element = document.getElementById(id);
+    const canvas = await html2canvas(element, { scale: 2, backgroundColor: '#f8f9fb' });
+    const link = document.createElement('a');
+    link.download = `mp-ai-pm-${slug}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }
 
-    const frame = document.createElement('div');
-    frame.style.cssText = [
-      'box-sizing:border-box',
-      'width:' + (POSTER_W + FRAME_BORDER * 2) + 'px',
-      'height:' + (POSTER_H + FRAME_BORDER * 2) + 'px',
-      'border:' + FRAME_BORDER + 'px solid #10162f',
-      'border-radius:' + FRAME_RADIUS + 'px',
-      'box-shadow:' + SHADOW_OFFSET + 'px ' + SHADOW_OFFSET + 'px 0 #10162f',
-      'background:#fff',
-      'overflow:hidden',
-      'display:block',
-      'margin:0'
-    ].join(';');
-    frame.appendChild(clone);
-
-    const totalW = POSTER_W + FRAME_BORDER * 2 + PADDING * 2 + SHADOW_OFFSET;
-    const totalH = POSTER_H + FRAME_BORDER * 2 + PADDING * 2 + SHADOW_OFFSET;
-    const wrapper = document.createElement('div');
-    wrapper.style.cssText = [
-      'position:fixed', 'left:-99999px', 'top:0',
-      'width:' + totalW + 'px', 'height:' + totalH + 'px',
-      'padding:' + PADDING + 'px ' + (PADDING + SHADOW_OFFSET) + 'px ' + (PADDING + SHADOW_OFFSET) + 'px ' + PADDING + 'px',
-      'background:#eef0f4', 'box-sizing:border-box', 'display:block', 'z-index:-1'
-    ].join(';');
-    wrapper.appendChild(frame);
-    document.body.appendChild(wrapper);
-
-    const oldLabel = btn.textContent;
-    btn.textContent = '生成中...';
-    btn.disabled = true;
-
-    try {
-      const canvas = await html2canvas(wrapper, {
-        backgroundColor: '#eef0f4', scale: 1, useCORS: true, allowTaint: true, logging: false,
-        width: totalW, height: totalH, windowWidth: totalW, windowHeight: totalH
-      });
-      const link = document.createElement('a');
-      link.download = `xhs-business-analyst-${btn.dataset.slug}-${Date.now()}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    } catch (e) {
-      console.error(e);
-      alert('导出失败：' + e.message);
-    } finally {
-      wrapper.remove();
-      btn.textContent = oldLabel;
-      btn.disabled = false;
-    }
-  });
-});
+  // 动态填充文案
+  window.onload = () => {
+    if (!window.AI_PM_COPY) return;
+    document.querySelectorAll('.poster-frame').forEach(frame => {
+      const id = frame.getAttribute('data-id');
+      const data = window.AI_PM_COPY[id];
+      if (!data) return;
+      
+      const contents = frame.querySelectorAll('.copy-text');
+      // Tab 0: 小红书 (Title + Body + Tags)
+      contents[0].innerText = `${data.title}\n\n${data.body}\n\n${data.tags}`;
+      // Tab 1: 视频号 (Wechat)
+      contents[1].innerText = data.wechat.join('\n\n');
+      // Tab 2: 抖音 (Douyin/Community)
+      contents[2].innerText = (data.douyin || data.community).join('\n\n');
+    });
+  };
 </script>
 
 </body>

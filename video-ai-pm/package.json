@@ -1,0 +1,27 @@
+{
+  "name": "video-ai-engineer",
+  "version": "0.1.0",
+  "description": "AI Engineer Bootcamp · 60s 竖版短片（Remotion + 13 张 xhs 海报）",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "npx remotion render src/index.ts ShortVideo out/ai-pm-short.mp4 && mkdir -p ../business-analyst/public/video/ && cp out/ai-pm-short.mp4 ../business-analyst/public/video/ai-pm-short.mp4 && echo '✓ Deployed to business-analyst public/video/'",
+    "render:preview": "remotion render src/index.ts ShortVideo out/preview.mp4 --scale=0.5",
+    "pipeline": "bun run scripts/export-xhs-to-images.mjs && bun run scripts/gen-voiceover.mjs && bun run scripts/sync-scenes-to-voiceover.mjs && bun run render",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.0",
+    "@remotion/cli": "^4.0.0",
+    "@remotion/renderer": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "puppeteer-core": "^24.41.0",
+    "typescript": "~5.9.0"
+  }
+}
