@@ -34,23 +34,28 @@ if (!API_KEY) {
 
 /* ---- 14 段台词（已按 TTS 实测速度收紧，目标总长 ~65s）---- */
 const segments = [
-	{ file: '00-cover.mp3', text: '2026，AI Engineer 岗位换代了。' },
-	{ file: '01-gap.mp3', text: '还在拼 Prompt 调 API？2026 岗位基线已经右移。' },
-	{ file: '02-chatroom.mp3', text: '同事群聊 GraphRAG、Eval，你能接上吗？' },
-	{ file: '03-outcomes.mp3', text: '12 周真学会：RAG、Agent、Multi-Agent、微调评估。' },
-	{ file: '04-structure.mp3', text: '10 个 Phase，Agent 独占 5 个。Memory 和 Harness 独家。' },
-	{ file: '05-stack.mp3', text: '15 个以上工具栈，每个都配独立 Lab。' },
-	{ file: '06-rag.mp3', text: 'RAG 45 节：向量、GraphRAG、LangChain、RAGAS 全链路。' },
-	{ file: '07-agent.mp3', text: 'Agent 拆成 5 层，每层都能独立成项目。' },
-	{ file: '08-labs.mp3', text: '68 个浏览器 Lab，独立 Lesson 可追踪进度。' },
-	{ file: '09-projects.mp3', text: '7 个简历项目，从 RAG 到 Multi-Agent，能讲 STAR 故事。' },
+	{ file: '00-cover.mp3', text: '二零二六年，AI Engineer 的岗位，已经换代了。' },
+	{ file: '01-gap.mp3', text: '还在拼 Prompt 调 API？岗位基线已经右移。' },
+	{ file: '02-chatroom.mp3', text: '同事群聊 GraphRAG 和 Eval，你能接上吗？' },
+	{ file: '03-outcomes.mp3', text: '12 周，真学会 RAG、Agent、Multi-Agent、微调四件事。' },
+	{ file: '04-structure.mp3', text: '10 个 Phase，光 Agent 就占 5 个，Memory 和 Harness 独家。' },
+	{ file: '05-stack.mp3', text: '15 个 2026 真实工具栈，每个都配独立 Lab。' },
+	{ file: '06-rag.mp3', text: 'RAG 整整 45 节课，从向量做到 GraphRAG 全链路。' },
+	{ file: '07-agent.mp3', text: 'Agent 拆 5 层，每层都能独立成项目。' },
+	{ file: '08-labs.mp3', text: '68 个浏览器 Lab，都是独立 Lesson，能追踪进度。' },
+	{ file: '09-projects.mp3', text: '7 个简历项目，能讲完整 STAR 故事。' },
 	{ file: '10-timeline.mp3', text: '12 周课加 12 周 P3 孵化，陪你到拿 Offer。' },
-	{ file: '11-feedback.mp3', text: '学员反馈日常不夸张，普通工程师的真实记录。' },
-	{ file: '12-package.mp3', text: '183 节课、68 Lab、7 项目，加大厂导师 Review。' },
+	{ file: '11-feedback.mp3', text: '学员反馈没有夸张数字，就是日常成长记录。' },
+	{ file: '12-package.mp3', text: '183 节课，68 个 Lab，7 个项目，加大厂导师 Review。' },
 	{ file: '13-cta.mp3', text: '今年一件 AI 投资，看看新一期 Bootcamp，主页搜匠人 AI。' },
 ];
 
-const SPEED = 1.15; // 略快，让节奏紧凑
+const SPEED = 1.05; // 略带紧凑但不抢拍
+const MODEL = 'gpt-4o-mini-tts'; // 2025 新 TTS，中文自然度比 tts-1-hd 高很多，支持 instructions
+const INSTRUCTIONS = `以自然、放松、略带温度的中文语气朗读。
+节奏上参考科技博主说话的口语感：句子读完有一个自然的微停顿，不要连着冲。
+遇到英文术语（RAG / Agent / Multi-Agent / Prompt / GraphRAG / Eval）按原音读英文，不要拆成字母拼读。
+整体情绪偏专业但不冷淡，像给朋友分享一个最近发现。`;
 
 mkdirSync(OUT_DIR, { recursive: true });
 
@@ -63,9 +68,10 @@ async function tts(text, outFile) {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-			model: 'tts-1-hd',
+			model: MODEL,
 			input: text,
 			voice: 'nova',
+			instructions: INSTRUCTIONS,
 			response_format: 'mp3',
 			speed: SPEED,
 		}),
