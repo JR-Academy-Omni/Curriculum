@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineer Bootcamp · 60s 竖版短视频</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-red: #ff5757;
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-green: #10b981;
+    --brand-blue: #3b82f6;
+    --bg-light: #f8f9fb;
+    --bg-cream: #fff8ee;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #eef0f4;
+    color: var(--text-main);
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    padding: 40px 20px 120px;
+    line-height: 1.6;
+  }
+
+  .page-wrap { max-width: 1420px; margin: 0 auto; }
+
+  /* ================= Top bar ================= */
+  .topbar {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    box-shadow: 8px 8px 0 var(--brand-dark);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .topbar h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.3px; margin: 0; }
+  .topbar h1 span { color: var(--brand-red); }
+  .topbar .sub {
+    font-size: 13px; color: var(--text-muted); margin-top: 6px; max-width: 720px;
+    line-height: 1.65;
+  }
+  .topbar .stats { display: inline-flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .topbar .stats .pill {
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    background: var(--bg-light); border: 1.5px solid var(--brand-dark); border-radius: 100px;
+  }
+  .topbar .stats .pill.red { background: var(--brand-red); color: #fff; border-color: var(--brand-dark); }
+
+  .top-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .top-btn {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px; font-weight: 700;
+    padding: 9px 16px;
+    border: 2px solid var(--brand-dark);
+    background: #fff;
+    color: var(--brand-dark);
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .top-btn.primary { background: var(--brand-red); color: #fff; border-color: var(--brand-dark); }
+  .top-btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--brand-dark); }
+
+  /* ================= Layout ================= */
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(380px, 460px) 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 1060px) { .layout { grid-template-columns: 1fr; } }
+
+  /* ================= Phone frame with video ================= */
+  .phone {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+  }
+  .phone-frame {
+    margin: 0 auto;
+    width: 408px;
+    background: #10162f;
+    border-radius: 40px;
+    padding: 14px;
+    box-shadow: 10px 10px 0 var(--brand-dark), inset 0 0 0 2px #000;
+  }
+  .phone-screen {
+    width: 380px;
+    background: #000;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+  }
+  .phone-screen video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #000;
+  }
+  .phone-notch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 24px;
+    background: #000;
+    border-radius: 0 0 14px 14px;
+    z-index: 5;
+  }
+
+  /* ================= Ops sidebar ================= */
+  .ops { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  .ops-card {
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: 6px 6px 0 rgba(16,22,47,0.1);
+  }
+  .ops-card h3 {
+    font-size: 14px; font-weight: 900; color: var(--brand-dark);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .ops-card h3::before {
+    content: ''; width: 4px; height: 18px;
+    background: var(--brand-red); border-radius: 2px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex; gap: 4px;
+    background: #f3f4f6;
+    padding: 5px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+  }
+  .tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 11px 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'Noto Sans SC', sans-serif;
+    transition: all 0.15s;
+    letter-spacing: 0.3px;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+  }
+  .tab:hover { color: var(--brand-dark); }
+  .tab.active {
+    background: #fff;
+    color: var(--tab-color, var(--brand-dark));
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    font-weight: 900;
+  }
+
+  .pane { display: none; flex-direction: column; gap: 16px; }
+  .pane.active { display: flex; }
+
+  .pane .label {
+    font-size: 11px; font-weight: 900;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .pane .label .count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--brand-green);
+    letter-spacing: 0;
+  }
+  .pane .label .count.warn { color: #f59e0b; }
+  .pane .label .count.over { color: var(--brand-red); }
+
+  /* Platform rules bar — 显示在 Tab 下面 */
+  .rules-bar {
+    background: #f1f5f9;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .rules-bar .rule {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .rules-bar .rule b { color: var(--brand-dark); font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+  .rules-bar .rule.allow { color: var(--brand-green); }
+  .rules-bar .rule.deny { color: var(--brand-red); }
+  .rules-bar .note {
+    width: 100%;
+    padding-top: 6px;
+    margin-top: 4px;
+    border-top: 1px dashed var(--border);
+    color: #475569;
+    font-size: 11.5px;
+  }
+
+  /* Title alternatives */
+  .title-alts {
+    background: #f0f9ff;
+    border: 1.5px dashed var(--brand-blue);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-size: 12.5px;
+    line-height: 1.75;
+  }
+  .title-alts .alt-label {
+    font-size: 11px; font-weight: 900;
+    color: var(--brand-blue);
+    letter-spacing: 1.2px;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 6px;
+  }
+  .title-alts .alt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px dotted #cbd5e1;
+    gap: 10px;
+  }
+  .title-alts .alt:last-child { border-bottom: none; }
+  .title-alts .alt .txt { flex: 1; color: var(--text-main); }
+  .title-alts .alt .chars {
+    font-size: 11px;
+    color: var(--brand-green);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .title-alts .alt .use {
+    background: var(--brand-dark); color: #fff;
+    border: none;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .title-alts .alt .use:hover { background: var(--brand-red); }
+  .title-alts .alt .use.copied { background: var(--brand-green); }
+  .pane .box {
+    background: #fafbfc;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    word-break: break-word;
+    position: relative;
+  }
+  .pane .box.title-box {
+    font-size: 17px; font-weight: 900;
+    color: var(--brand-dark);
+    background: var(--bg-cream);
+    border-color: var(--brand-yellow);
+    border-width: 2px;
+  }
+  .pane .box.cta-box {
+    background: #f0fdf4; border-color: var(--brand-green);
+    font-size: 13px;
+  }
+
+  .copy-btn {
+    align-self: flex-end;
+    background: var(--brand-dark); color: #fff;
+    border: none;
+    padding: 7px 16px;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Noto Sans SC', sans-serif;
+    transition: all 0.15s;
+    margin-top: 6px;
+  }
+  .copy-btn:hover { background: var(--brand-red); }
+  .copy-btn.copied { background: var(--brand-green); }
+
+  .copy-all-btn {
+    width: 100%;
+    background: var(--tab-color, var(--brand-dark));
+    color: #fff;
+    border: 2px solid var(--brand-dark);
+    padding: 13px 16px;
+    font-size: 14px; font-weight: 900;
+    letter-spacing: 0.5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Noto Sans SC', sans-serif;
+    transition: all 0.15s;
+    margin-top: 4px;
+  }
+  .copy-all-btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--brand-dark); }
+  .copy-all-btn.copied { background: var(--brand-green); }
+
+  /* Posting tips section */
+  .tips {
+    background: #fffbeb;
+    border: 1.5px dashed #f59e0b;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #78350f;
+  }
+  .tips b { color: #92400e; }
+  .tips ul { list-style: none; padding: 0; margin: 6px 0 0; }
+  .tips li {
+    padding: 3px 0 3px 18px;
+    position: relative;
+  }
+  .tips li::before {
+    content: '▸';
+    position: absolute; left: 0; color: #f59e0b;
+  }
+
+  .download-box {
+    background: var(--brand-dark);
+    color: #fff;
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .download-box .info {
+    font-size: 13px; color: #cbd5e1;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.4px;
+  }
+  .download-box .info b { color: #fff; font-weight: 900; }
+  .download-box a {
+    background: var(--brand-yellow);
+    color: var(--brand-dark);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+  }
+  .download-box a:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #000; }
+
+  .bgm-attr {
+    background: #fef3c7;
+    border: 1.5px solid #f59e0b;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #78350f;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .bgm-attr .title { font-weight: 900; margin-bottom: 4px; }
+  .bgm-attr a { color: #b45309; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div>
+      <h1>AI Engineer Bootcamp · <span>60s 竖版短视频</span></h1>
+      <p class="sub">视频号 / 抖音 / 小红书视频一键发布 —— 左边看视频，右边复制对应平台的标题、正文、话题标签。</p>
+      <div class="stats">
+        <span class="pill red">1080 × 1920 · 9:16</span>
+        <span class="pill">61.4 秒</span>
+        <span class="pill">54 MB</span>
+        <span class="pill">30 fps · H.264</span>
+      </div>
+    </div>
+    <div class="top-actions">
+      <a class="top-btn" href="../xhs-posters/">← 小红书配图集</a>
+      <a class="top-btn" href="../mp-article/">📰 公众号文章</a>
+      <a class="top-btn primary" href="../../posters.html">📎 海报中心</a>
+    </div>
+  </div>
+
+  <div class="layout">
+
+    <!-- LEFT: Phone with video -->
+    <aside class="phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <video
+            id="video-player"
+            src="https://jr-image.s3.ap-southeast-2.amazonaws.com/video/ai-engineer-short.mp4"
+            controls
+            playsinline
+            preload="metadata"
+            poster=""
+          ></video>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT: Ops panel with 3 platform tabs -->
+    <aside class="ops">
+
+      <!-- Tab switcher -->
+      <div class="ops-card">
+        <h3>🎬 3 平台发布文案</h3>
+        <div class="tabs">
+          <button class="tab active" data-tab="channels" style="--tab-color:#10b981">📺 视频号</button>
+          <button class="tab" data-tab="douyin" style="--tab-color:#000">🎵 抖音</button>
+          <button class="tab" data-tab="xhs" style="--tab-color:#ff2442">📕 小红书视频</button>
+        </div>
+
+        <!-- Panes will be rendered by video-copy.js -->
+        <div id="panes"></div>
+      </div>
+
+      <!-- Download box -->
+      <div class="ops-card" style="padding:0;overflow:hidden;border:none;box-shadow:none">
+        <div class="download-box">
+          <div>
+            <div style="font-size:14px;font-weight:900;color:#fff;margin-bottom:6px">⬇ 下载 MP4</div>
+            <div class="info"><b>ai-engineer-short.mp4</b> · 42 MB · 61.4s · <span style="color:#9ca3af">S3</span></div>
+          </div>
+          <a href="https://jr-image.s3.ap-southeast-2.amazonaws.com/video/ai-engineer-short.mp4" download="ai-engineer-short.mp4">⬇ 下载到本地</a>
+        </div>
+      </div>
+
+      <!-- BGM attribution reminder -->
+      <div class="ops-card" style="padding:0;overflow:hidden;border:none;box-shadow:none">
+        <div class="bgm-attr">
+          <div class="title">⚠️ 背景音乐版权标注（必写）</div>
+          <div>曲目：<b>"Aitech"</b> by Kevin MacLeod (<a href="https://incompetech.com" target="_blank" rel="noopener">incompetech.com</a>)</div>
+          <div>协议：CC BY 3.0 · 发视频时在简介/评论/片尾任一处注明作者即可</div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<script src="./video-copy.js"></script>
+<script>
+(function() {
+  const data = window.VIDEO_COPY;
+  const panesRoot = document.getElementById('panes');
+
+  /** 统计显示字符数（中文 1 字 + 英文字母 1 字 + 数字 1 字 + 标点 1 字 + emoji 1 字） */
+  function countChars(text) {
+    // 用 Array.from 拆 unicode（含 emoji）
+    return Array.from(text).length;
+  }
+
+  function mkSection(label, text, cls, limit) {
+    const wrap = document.createElement('div');
+    const l = document.createElement('div');
+    l.className = 'label';
+
+    const labelText = document.createElement('span');
+    labelText.textContent = label;
+    l.appendChild(labelText);
+
+    if (limit) {
+      const count = document.createElement('span');
+      count.className = 'count';
+      const n = countChars(text);
+      count.textContent = `${n} / ${limit} 字`;
+      if (n > limit) count.classList.add('over');
+      else if (n > limit * 0.9) count.classList.add('warn');
+      l.appendChild(count);
+    }
+
+    const box = document.createElement('div');
+    box.className = 'box ' + (cls || '');
+    box.textContent = text;
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = '复制';
+    btn.addEventListener('click', () => copyText(text, btn));
+    wrap.appendChild(l);
+    wrap.appendChild(box);
+    wrap.appendChild(btn);
+    return wrap;
+  }
+
+  function mkTitleAlts(alts, limit, onUse) {
+    if (!alts || !alts.length) return null;
+    const wrap = document.createElement('div');
+    wrap.className = 'title-alts';
+    const lb = document.createElement('div');
+    lb.className = 'alt-label';
+    lb.textContent = '💡 备选标题（一键替换）';
+    wrap.appendChild(lb);
+    alts.forEach((txt) => {
+      const row = document.createElement('div');
+      row.className = 'alt';
+      const t = document.createElement('span');
+      t.className = 'txt';
+      t.textContent = txt;
+      const c = document.createElement('span');
+      c.className = 'chars';
+      const n = countChars(txt);
+      c.textContent = `${n} 字`;
+      const btn = document.createElement('button');
+      btn.className = 'use';
+      btn.textContent = '复制';
+      btn.addEventListener('click', () => {
+        copyText(txt, btn, '✓');
+      });
+      row.appendChild(t);
+      row.appendChild(c);
+      row.appendChild(btn);
+      wrap.appendChild(row);
+    });
+    return wrap;
+  }
+
+  function mkRulesBar(rules, platformName) {
+    const wrap = document.createElement('div');
+    wrap.className = 'rules-bar';
+    const items = [
+      { label: '标题', value: `≤ ${rules.titleMaxChars} 字` },
+      { label: '正文', value: `≤ ${rules.descriptionMaxChars} 字` },
+      { label: '话题', value: `≤ ${rules.hashtagsMaxCount} 个` },
+    ];
+    items.forEach((r) => {
+      const e = document.createElement('span');
+      e.className = 'rule';
+      e.innerHTML = `<span>${r.label}</span> <b>${r.value}</b>`;
+      wrap.appendChild(e);
+    });
+    const qr = document.createElement('span');
+    qr.className = 'rule ' + (rules.allowQrCode ? 'allow' : 'deny');
+    qr.innerHTML = rules.allowQrCode ? '✅ 可放二维码' : '❌ 禁二维码';
+    wrap.appendChild(qr);
+
+    const abs = document.createElement('span');
+    abs.className = 'rule deny';
+    abs.innerHTML = '❌ 禁最/唯一/100%/保证';
+    wrap.appendChild(abs);
+
+    const note = document.createElement('div');
+    note.className = 'note';
+    note.textContent = `📌 ${rules.notes}`;
+    wrap.appendChild(note);
+    return wrap;
+  }
+
+  function mkTips(tips) {
+    const wrap = document.createElement('div');
+    wrap.className = 'tips';
+    const title = document.createElement('b');
+    title.textContent = '📌 发布小贴士';
+    wrap.appendChild(title);
+    const ul = document.createElement('ul');
+    tips.forEach(t => {
+      const li = document.createElement('li');
+      li.textContent = t;
+      ul.appendChild(li);
+    });
+    wrap.appendChild(ul);
+    return wrap;
+  }
+
+  function mkCopyAll(platform, data) {
+    const btn = document.createElement('button');
+    btn.className = 'copy-all-btn';
+    btn.style.setProperty('--tab-color', data.color);
+    btn.textContent = `${data.emoji} 一键复制【标题 + 正文 + 话题标签】`;
+    btn.addEventListener('click', () => {
+      const full = data.title + '\n\n' + data.description;
+      copyText(full, btn, '✓ 已复制完整文案');
+    });
+    return btn;
+  }
+
+  async function copyText(text, btn, msg = '✓ 已复制') {
+    try {
+      await navigator.clipboard.writeText(text);
+      const old = btn.textContent;
+      btn.textContent = msg;
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = old; btn.classList.remove('copied'); }, 1800);
+    } catch (e) {
+      alert('复制失败：' + e.message);
+    }
+  }
+
+  // Build 3 panes
+  ['channels', 'douyin', 'xhs'].forEach((key, idx) => {
+    const p = data.platforms[key];
+    const rules = data.platformRules[key];
+    const pane = document.createElement('div');
+    pane.className = 'pane' + (idx === 0 ? ' active' : '');
+    pane.dataset.pane = key;
+    pane.style.setProperty('--tab-color', p.color);
+
+    // 平台规则条（字数上限 / 合规约束）
+    pane.appendChild(mkRulesBar(rules, p.name));
+
+    // 标题（带字数 live count）
+    pane.appendChild(mkSection('📌 标题', p.title, 'title-box', rules.titleMaxChars));
+
+    // 备选标题
+    const alts = mkTitleAlts(p.titleAlts, rules.titleMaxChars);
+    if (alts) pane.appendChild(alts);
+
+    // 正文
+    pane.appendChild(mkSection('✍️ 正文 + 话题标签', p.description, '', rules.descriptionMaxChars));
+
+    // CTA
+    pane.appendChild(mkSection('🎯 CTA / 引流话术', p.cta, 'cta-box'));
+
+    // 发布小贴士
+    pane.appendChild(mkTips(p.postingTips));
+
+    // 一键复制全文
+    pane.appendChild(mkCopyAll(key, p));
+
+    panesRoot.appendChild(pane);
+  });
+
+  // Tab switching
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === tab));
+      document.querySelectorAll('.pane').forEach(p => p.classList.toggle('active', p.dataset.pane === target));
+    });
+  });
+})();
+</script>
+</body>
+</html>

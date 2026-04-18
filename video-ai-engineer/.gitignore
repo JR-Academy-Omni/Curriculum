@@ -1,0 +1,20 @@
+node_modules/
+out/
+.remotion/
+bun.lock
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+.DS_Store
+
+# 实验性的 edge_tts Python 脚本（另一种 TTS 方案，保留本地，不入仓）
+scripts/generate_all_assets.py
+scripts/generate_voiceover.py
+
+# Images + BGM 候选都是可重新抓取的，别入仓（图 3MB，BGM 16MB）
+src/assets/images/*.png
+!src/assets/images/.gitkeep
+src/assets/bgm/candidate-*.mp3
+src/assets/bgm/*.wav
+# main.mp3（当前在用的 BGM）提交进仓，保证 render 能跑
+!src/assets/bgm/.gitkeep

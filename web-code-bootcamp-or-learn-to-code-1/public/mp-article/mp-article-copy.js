@@ -733,140 +733,54 @@ document.querySelectorAll('[data-perspective-key]').forEach(btn => {
 });
 
 /* ==========================================================================
- * 预览 + 批量下载（共享 iframe + html2canvas）
+ * 预览 + 批量下载（直接用 ./images/poster-X.png 真实文件）
+ * CI 脚本 curriculum/scripts/render-mp-posters.mjs 用 puppeteer 预渲染。
  * ========================================================================== */
 (function setupPreviewAndDownload() {
-  const frame = document.getElementById('xhs-frame');
   const dlBtn = document.getElementById('dl-all-imgs');
   const status = document.getElementById('dl-status');
   const regenBtn = document.getElementById('regen-preview');
-  if (!frame) return;
+  const BC = (window.MP_ARTICLE && window.MP_ARTICLE.bootcampSlug) || 'bootcamp';
+  const perspTag = () => window.MP_CURRENT_KEY === 'parent' ? 'parent' : 'student';
 
-  const cache = new Map();
-  window.MP_IMG_CACHE = cache;
+  function slotImgSrc(posterId) { return './images/' + posterId + '.png'; }
 
-  function waitForFrame(timeoutMs = 30000) {
-    return new Promise((resolve, reject) => {
-      const started = Date.now();
-      const poll = () => {
-        try {
-          const doc = frame.contentDocument;
-          const ready = doc && doc.readyState === 'complete' && doc.querySelector('.poster-frame') && frame.contentWindow.html2canvas;
-          if (ready) return resolve(doc);
-        } catch (e) { /* 同源不会跨域 */ }
-        if (Date.now() - started > timeoutMs) return reject(new Error('xhs-posters iframe 加载超时（记得用 python3 -m http.server 跑）'));
-        setTimeout(poll, 300);
-      };
-      poll();
-    });
-  }
-
-  async function renderPosterDataUrl(doc, winRef, posterId, scale) {
-    const poster = doc.getElementById(posterId);
-    if (!poster) throw new Error(`找不到海报 #${posterId}`);
-
-    const POSTER_W = 1242, POSTER_H = 1660;
-    const FRAME_BORDER = 6, FRAME_RADIUS = 36;
-    const SHADOW_OFFSET = 24, PADDING = 48;
-
-    const clone = poster.cloneNode(true);
-    clone.style.transform = 'none';
-    clone.style.position = 'relative';
-    clone.style.top = '0'; clone.style.left = '0';
-    clone.style.width = POSTER_W + 'px';
-    clone.style.height = POSTER_H + 'px';
-    clone.style.margin = '0';
-
-    const frameDiv = doc.createElement('div');
-    frameDiv.style.cssText = `box-sizing:border-box;width:${POSTER_W + FRAME_BORDER*2}px;height:${POSTER_H + FRAME_BORDER*2}px;border:${FRAME_BORDER}px solid #10162f;border-radius:${FRAME_RADIUS}px;box-shadow:${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 #10162f;background:#fff;overflow:hidden`;
-    frameDiv.appendChild(clone);
-
-    const totalW = POSTER_W + FRAME_BORDER*2 + PADDING*2 + SHADOW_OFFSET;
-    const totalH = POSTER_H + FRAME_BORDER*2 + PADDING*2 + SHADOW_OFFSET;
-
-    const wrapper = doc.createElement('div');
-    wrapper.style.cssText = `position:fixed;left:-99999px;top:0;width:${totalW}px;height:${totalH}px;padding:${PADDING}px ${PADDING+SHADOW_OFFSET}px ${PADDING+SHADOW_OFFSET}px ${PADDING}px;background:#eef0f4;box-sizing:border-box`;
-    wrapper.appendChild(frameDiv);
-    doc.body.appendChild(wrapper);
-
-    try {
-      const canvas = await winRef.html2canvas(wrapper, {
-        backgroundColor: '#eef0f4', scale: scale, useCORS: true, allowTaint: true, logging: false,
-        width: totalW, height: totalH, windowWidth: totalW, windowHeight: totalH
-      });
-      return canvas.toDataURL('image/png');
-    } finally {
-      wrapper.remove();
-    }
-  }
-
-  function fillSlotWithImage(slot, dataUrl, idx, slug) {
+  function fillSlotWithImage(slot) {
+    const posterId = slot.dataset.poster;
+    const idx = slot.dataset.index;
+    const slug = slot.dataset.slug;
     slot.classList.add('has-img');
-    slot.innerHTML = `<img src="${dataUrl}" alt="图 ${idx} · ${slug}" style="display:block;width:100%;height:auto;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08)">`;
+    const img = document.createElement('img');
+    img.src = slotImgSrc(posterId);
+    img.alt = `图 ${idx} · ${slug}`;
+    img.loading = 'lazy';
+    img.style.cssText = 'display:block;width:100%;height:auto;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08)';
+    img.addEventListener('error', () => {
+      slot.classList.remove('has-img');
+      slot.classList.add('failed');
+      slot.innerHTML = `<span class="fig-placeholder">⚠️ 图 ${idx} (${posterId}) 没生成 · 本地跑 <code>bun run render:mp-posters</code> 或等 CI 部署</span>`;
+    });
+    slot.innerHTML = '';
+    slot.appendChild(img);
   }
 
-  function triggerDownload(dataUrl, fileSlug) {
-    const link = document.createElement('a');
-    link.download = fileSlug + '.png';
-    link.href = dataUrl;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
+  function generatePreviews() {
+    const slots = Array.from(document.querySelectorAll('.fig-slot'));
+    if (!slots.length) { if (status) status.textContent = ''; return; }
+    slots.forEach(fillSlotWithImage);
+    if (status) status.textContent = `✅ ${slots.length} 张配图已绑定 · 点「复制富文本」粘到公众号（图片自动抓取）或「批量下载」`;
+    if (regenBtn) regenBtn.disabled = true;
   }
 
-  async function generatePreviews() {
-    if (!status) return;
-    status.textContent = '🔄 正在加载配图源…';
-    try {
-      const doc = await waitForFrame();
-      const winRef = frame.contentWindow;
-      const slots = Array.from(document.querySelectorAll('.fig-slot'));
-      if (!slots.length) { status.textContent = ''; return; }
-
-      for (let i = 0; i < slots.length; i++) {
-        const slot = slots[i];
-        const posterId = slot.dataset.poster;
-        const posterSlug = slot.dataset.slug;
-        const idx = slot.dataset.index;
-        const slotN = `${i + 1}/${slots.length}`;
-        status.textContent = `🖼️ 渲染预览 ${slotN} · ${posterSlug}`;
-
-        try {
-          const cached = cache.get(posterId);
-          if (cached && cached.preview) {
-            fillSlotWithImage(slot, cached.preview, idx, posterSlug);
-          } else {
-            const dataUrl = await renderPosterDataUrl(doc, winRef, posterId, 0.5);
-            cache.set(posterId, Object.assign(cache.get(posterId) || {}, { preview: dataUrl }));
-            fillSlotWithImage(slot, dataUrl, idx, posterSlug);
-          }
-        } catch (e) {
-          console.error('[preview]', posterId, e);
-          slot.classList.add('failed');
-          slot.innerHTML = `<span class="fig-placeholder">⚠️ 图 ${idx} 渲染失败：${e.message}</span>`;
-        }
-        await new Promise(r => setTimeout(r, 60));
-      }
-      status.textContent = `✅ 预览已渲染 ${slots.length} 张 · 可以点「批量下载」导出高清 PNG`;
-      if (regenBtn) regenBtn.disabled = false;
-    } catch (e) {
-      console.error(e);
-      status.textContent = '❌ ' + e.message + '（记得用 python3 -m http.server 跑，不是双击打开）';
-    }
-  }
-
-  // 对外暴露，给 switchPerspective 调用
   window.MP_REGENERATE_PREVIEWS = generatePreviews;
 
   if (regenBtn) {
-    regenBtn.addEventListener('click', async () => {
-      regenBtn.disabled = true;
-      cache.clear();
+    regenBtn.addEventListener('click', () => {
       document.querySelectorAll('.fig-slot').forEach(s => {
         s.classList.remove('has-img', 'failed');
         s.innerHTML = `<span class="fig-placeholder">[图 ${s.dataset.index} · ${s.dataset.slug}]</span>`;
       });
-      await generatePreviews();
+      generatePreviews();
     });
   }
 
@@ -874,38 +788,37 @@ document.querySelectorAll('[data-perspective-key]').forEach(btn => {
     dlBtn.addEventListener('click', async () => {
       dlBtn.disabled = true;
       const oldLabel = dlBtn.textContent;
-      dlBtn.textContent = '🔄 加载配图源中…';
       try {
-        const doc = await waitForFrame();
-        const winRef = frame.contentWindow;
         const slots = Array.from(document.querySelectorAll('.fig-slot'));
         if (!slots.length) throw new Error('页面没有配图 slot');
-
         for (let i = 0; i < slots.length; i++) {
           const slot = slots[i];
           const posterId = slot.dataset.poster;
           const posterSlug = slot.dataset.slug;
           const idx = slot.dataset.index;
-          // 文件名带当前视角后缀，避免学生/家长两版图搞混
-          const perspTag = window.MP_CURRENT_KEY === 'parent' ? 'parent' : 'student';
-          const fileSlug = `mp-${window.MP_ARTICLE.bootcampSlug}-${perspTag}-${idx}-${posterSlug}`;
-          dlBtn.textContent = `⬇ 正在导出 ${idx}/${String(slots.length).padStart(2, '0')}…`;
-          status.textContent = `正在导出 ${fileSlug}.png（scale 1 高清版）`;
-
-          const entry = cache.get(posterId) || {};
-          let dataUrl = entry.full;
-          if (!dataUrl) {
-            dataUrl = await renderPosterDataUrl(doc, winRef, posterId, 1);
-            cache.set(posterId, Object.assign(entry, { full: dataUrl }));
+          const fileSlug = `mp-${BC}-${perspTag()}-${idx}-${posterSlug}`;
+          dlBtn.textContent = `⬇ 下载 ${idx}/${String(slots.length).padStart(2, '0')}…`;
+          if (status) status.textContent = `⬇ 下载 ${fileSlug}.png`;
+          try {
+            const resp = await fetch(slotImgSrc(posterId));
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const blob = await resp.blob();
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.download = fileSlug + '.png'; a.href = url;
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+          } catch (e) {
+            console.error('[download]', posterId, e);
+            if (status) status.textContent = `❌ ${fileSlug}：${e.message}`;
           }
-          triggerDownload(dataUrl, fileSlug);
-          await new Promise(r => setTimeout(r, 600));
+          await new Promise(r => setTimeout(r, 220));
         }
-        dlBtn.textContent = `✓ 已导出 ${slots.length} 张`;
-        status.textContent = `全部 ${slots.length} 张已下载到本地 · 文件名 mp-${window.MP_ARTICLE.bootcampSlug}-${window.MP_CURRENT_KEY}-NN-*.png`;
+        dlBtn.textContent = `✓ 已下载 ${slots.length} 张`;
+        if (status) status.textContent = `全部 ${slots.length} 张已下载 · 文件名 mp-${BC}-${perspTag()}-NN-*.png`;
       } catch (e) {
         console.error(e);
-        status.textContent = '❌ ' + e.message;
+        if (status) status.textContent = '❌ ' + e.message;
         dlBtn.textContent = oldLabel;
       } finally {
         setTimeout(() => { dlBtn.disabled = false; if (dlBtn.textContent.startsWith('✓')) dlBtn.textContent = oldLabel; }, 2500);
@@ -913,12 +826,8 @@ document.querySelectorAll('[data-perspective-key]').forEach(btn => {
     });
   }
 
-  // 页面 load 后延迟自动跑预览
-  if (document.readyState === 'complete') {
-    setTimeout(generatePreviews, 400);
-  } else {
-    window.addEventListener('load', () => setTimeout(generatePreviews, 400));
-  }
+  if (document.readyState === 'complete') setTimeout(generatePreviews, 50);
+  else window.addEventListener('load', () => setTimeout(generatePreviews, 50));
 })();
 
 /* ==========================================================================
@@ -931,13 +840,16 @@ document.querySelectorAll('[data-perspective-key]').forEach(btn => {
 
   function buildMpHtml() {
     const clone = body.cloneNode(true);
+    const base = new URL('.', location.href).href;
     clone.querySelectorAll('.fig-slot').forEach(slot => {
+      const posterId = slot.dataset.poster;
       const idx = slot.dataset.index;
       const s = slot.dataset.slug;
-      const ph = document.createElement('p');
-      ph.style.cssText = 'text-align:center;margin:24px 0;color:#64748b;font-size:13px;';
-      ph.innerHTML = `[在此插入第 ${idx} 张图 · 素材库文件名 <code>mp-${slug()}-${perspTag()}-${idx}-${s}.png</code>]`;
-      slot.replaceWith(ph);
+      const img = document.createElement('img');
+      img.src = new URL('./images/' + posterId + '.png', base).href;
+      img.alt = `图 ${idx} · ${s}`;
+      img.style.cssText = 'display:block;width:100%;max-width:1200px;margin:20px auto;height:auto;border-radius:6px;';
+      slot.replaceWith(img);
     });
     inlineStyles(clone);
     return clone.outerHTML;
@@ -1000,7 +912,7 @@ document.querySelectorAll('[data-perspective-key]').forEach(btn => {
       if (sec.poster) {
         figN += 1;
         const idx = String(figN).padStart(2, '0');
-        lines.push(`![${sec.poster.caption}](mp-${slug()}-${perspTag()}-${idx}-${sec.poster.slug}.png)`);
+        lines.push(`![${sec.poster.caption}](./images/${sec.poster.id}.png)`);
         lines.push(`*${sec.poster.caption}*`);
         lines.push('');
       }
@@ -1008,7 +920,7 @@ document.querySelectorAll('[data-perspective-key]').forEach(btn => {
       if (sec.poster2) {
         figN += 1;
         const idx = String(figN).padStart(2, '0');
-        lines.push(`![${sec.poster2.caption}](mp-${slug()}-${perspTag()}-${idx}-${sec.poster2.slug}.png)`);
+        lines.push(`![${sec.poster2.caption}](./images/${sec.poster2.id}.png)`);
         lines.push(`*${sec.poster2.caption}*`);
         lines.push('');
       }

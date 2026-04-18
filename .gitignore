@@ -3,3 +3,13 @@ dist
 .DS_Store
 *.local
 *.tsbuildinfo
+
+# mp-article 海报 PNG 是 CI 时通过 puppeteer 自动生成的产物（scripts/render-mp-posters.mjs）
+# 不 commit 到仓库，避免 PNG bloat git 历史
+*/public/mp-article/images/
+
+# 视频 MP4 放 S3，不进 git（GitHub 50MB 限制 + 媒体文件不该进 git）
+# 生产地址：https://jr-image.s3.ap-southeast-2.amazonaws.com/video/ai-engineer-short.mp4
+# 重新生成：cd video-ai-engineer && bun run render && bun run upload
+*/public/video/*.mp4
+video-ai-engineer/out/
