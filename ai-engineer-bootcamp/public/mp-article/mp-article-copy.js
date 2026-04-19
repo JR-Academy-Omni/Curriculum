@@ -456,14 +456,19 @@ function estimateWords(root) {
     return clone.outerHTML;
   }
 
+  // 🚨 公众号粘贴规则（2026-04-18 实测，踩坑记录见 curriculum/.claude/skills/mp-article/SKILL.md）
+  // 1) `background:` 简写会被 WeChat sanitizer 剥掉 → 必须用 `background-color:`
+  // 2) 短 hex `#fff` 有的 sanitizer 不认 → 必须用 6 位 `#ffffff`
+  // 3) `rgba()` 的 alpha 会被丢 → 改成纯 hex
+  // 4) 裸 <div>/<blockquote> 的背景色有时失效 → 包一层 <section> 双保险
   function inlineStyles(root) {
     const map = {
       '.article-title': 'font-size:22px;line-height:1.3;font-weight:900;color:#0f172a;margin:0 0 10px;letter-spacing:-0.3px;',
       '.article-subtitle': 'font-size:14px;color:#64748b;margin:0 0 14px;line-height:1.6;',
       '.article-meta': 'font-size:12.5px;color:#94a3b8;margin:0 0 18px;',
       '.article-meta .dot': 'margin:0 6px;',
-      '.lead': 'background:#f1f5f9;border-left:3px solid #10b981;padding:14px 16px;margin:0 0 22px;font-size:15px;color:#334155;font-style:normal;line-height:1.75;',
-      '.lead p': 'margin:0 0 10px;',
+      '.lead': 'background-color:#f1f5f9;border-left:3px solid #10b981;padding:14px 16px;margin:0 0 22px;font-size:15px;color:#334155;font-style:normal;line-height:1.75;',
+      '.lead p': 'margin:0 0 10px;color:#334155;',
       '.section-h2': 'font-size:19px;font-weight:900;color:#0f172a;margin:32px 0 14px;padding:0 0 0 14px;border-left:4px solid #ff5757;line-height:1.4;',
       '.section-h2 i': 'display:none;',
       'p': 'font-size:15px;line-height:1.85;color:#1e293b;margin:0 0 16px;',
@@ -471,10 +476,10 @@ function estimateWords(root) {
       'em': 'color:#ff5757;font-weight:800;font-style:normal;',
       '.fig': 'margin:22px 0;text-align:center;',
       'figcaption': 'font-size:12.5px;color:#64748b;margin-top:8px;',
-      '.cta-card': 'background:#fff8ee;border:2px solid #10162f;box-shadow:4px 4px 0 #10162f;padding:20px 18px;margin:30px 0 0;border-radius:8px;',
+      '.cta-card': 'background-color:#fff8ee;border:2px solid #10162f;padding:20px 18px;margin:30px 0 0;border-radius:8px;',
       '.cta-title': 'font-size:16px;font-weight:900;color:#10162f;margin:0 0 10px;',
       '.cta-body': 'font-size:14.5px;line-height:1.75;color:#1e293b;margin:0 0 14px;',
-      '.cta-qrcode': 'background:#fff;border:2px dashed #10162f;padding:40px;text-align:center;font-size:12px;color:#64748b;margin:0 0 8px;',
+      '.cta-qrcode': 'background-color:#ffffff;border:2px dashed #10162f;padding:40px;text-align:center;font-size:12px;color:#64748b;margin:0 0 8px;',
       '.cta-qrnote': 'font-size:12.5px;color:#64748b;text-align:center;margin:0 0 10px;',
       '.cta-link': 'font-size:13px;color:#ff5757;text-align:center;font-weight:700;',
     };
@@ -486,7 +491,20 @@ function estimateWords(root) {
       });
     });
 
-    // Apply to root itself if matches
+    // 彩色块外包一层 <section> 双保险（blockquote/div 的 background 公众号有时剥）
+    ['.lead', '.cta-card', '.cta-qrcode'].forEach(sel => {
+      const wrapStyle = map[sel] || '';
+      root.querySelectorAll(sel).forEach(el => {
+        if (el.tagName.toLowerCase() === 'section') return;
+        const wrapper = document.createElement('section');
+        wrapper.setAttribute('style', wrapStyle);
+        el.removeAttribute('style');
+        el.setAttribute('style', 'background-color:transparent;padding:0;margin:0;border:0;');
+        wrapper.appendChild(el.cloneNode(true));
+        el.replaceWith(wrapper);
+      });
+    });
+
     root.removeAttribute('class');
     root.removeAttribute('id');
   }
