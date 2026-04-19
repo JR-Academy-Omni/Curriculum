@@ -4,9 +4,9 @@
 window.VIDEO_COPY = {
   videoFile: 'ai-engineer-short.mp4',
   videoUrl: 'https://jr-image.s3.ap-southeast-2.amazonaws.com/video/ai-engineer-short.mp4',
-  duration: '61.4 秒',
+  duration: '80 秒',
   resolution: '1080×1920 · 9:16 · 30fps',
-  size: '42 MB',
+  size: '64.8 MB',
   bgm: {
     title: 'Aitech',
     author: 'Kevin MacLeod',
