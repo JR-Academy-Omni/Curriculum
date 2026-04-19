@@ -600,4 +600,60 @@ function estimateWords(root) {
   cHtml && cHtml.addEventListener('click', () => copyText(buildMpHtml(), cHtml));
   cMd && cMd.addEventListener('click', () => copyText(buildMarkdown(), cMd));
   cRich && cRich.addEventListener('click', () => copyRich(buildMpHtml(), cRich));
+
+  // ---- JR Social Publisher Chrome Extension 推送钩子 ----
+  // 插件没装时 postMessage 无人接听，不报错；装了插件会接住 payload 存到 chrome.storage
+  async function pushToExtension() {
+    const btn = document.getElementById('push-mp');
+    if (!btn) return;
+    const oldText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '准备中...';
+    try {
+      const bodyHtml = buildMpHtml();
+      const titleEl = body.querySelector('h1, .mp-title, [data-title]');
+      const title = titleEl ? (titleEl.textContent || '').trim() : document.title;
+      const leadEl = body.querySelector('.lead, .mp-lead, p');
+      const summary = (leadEl ? leadEl.textContent : '').trim().slice(0, 120);
+
+      btn.textContent = '抓封面...';
+      const base = new URL('.', location.href).href;
+      const firstImg = body.querySelector('.fig-slot');
+      const firstPoster = firstImg ? firstImg.dataset.poster : 'poster-p1';
+      const coverUrl = new URL('./images/' + firstPoster + '.png', base).href;
+      const resp = await fetch(coverUrl);
+      const blob = await resp.blob();
+      const coverImageBase64 = await new Promise((resolve, reject) => {
+        const fr = new FileReader();
+        fr.onload = () => resolve(fr.result);
+        fr.onerror = () => reject(new Error('封面图读取失败'));
+        fr.readAsDataURL(blob);
+      });
+
+      const payload = {
+        source: 'bootcamp-mp-article',
+        date: new Date().toISOString().slice(0, 10),
+        title,
+        summary,
+        wechat: {
+          author: 'JR Academy',
+          bodyHtml,
+          coverImageBase64,
+        },
+      };
+
+      window.postMessage({ type: 'JR_PUBLISH_PAYLOAD', version: 1, target: 'wechat', payload }, '*');
+      const sizeKB = Math.round(JSON.stringify(payload).length / 1024);
+      console.log('[JR Publisher push-mp] ' + sizeKB + ' KB 已推送');
+      btn.textContent = '✅ 已推送（' + sizeKB + ' KB）';
+      setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 2500);
+    } catch (e) {
+      console.error('[JR Publisher push-mp]', e);
+      btn.textContent = '❌ ' + (e.message || '失败');
+      setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 3000);
+    }
+  }
+
+  const pushBtn = document.getElementById('push-mp');
+  pushBtn && pushBtn.addEventListener('click', pushToExtension);
 })();

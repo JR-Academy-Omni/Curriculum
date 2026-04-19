@@ -499,6 +499,73 @@ cd curriculum/{bootcamp} && python3 -m http.server 80XX
 投聚光前检查：文案无二维码 / 无绝对化用语 / 无联系方式
 ```
 
+## 🔗 JR Social Publisher 插件钩子（每个 bootcamp xhs-posters 必带）
+
+> 见 `docs/MP_XHS_PUBLISHER_EXTENSION_PRD.md`。新生成的 `posters/index.html` 必须在顶部操作栏加「📤 推送到小红书」按钮，source 字段用 `'xhs-poster'`。
+
+HTML 按钮（放在页面顶部 actions bar 里）：
+
+```html
+<button class="btn" id="push-xhs" title="推送到 JR Social Publisher 插件，在小红书创作页一键导入">📤 推送到小红书（插件）</button>
+```
+
+JS（在下载脚本同一个 `<script>` 块里）：
+
+```javascript
+async function pushXhsToExtension() {
+  const btn = document.getElementById('push-xhs');
+  if (!btn) return;
+  const oldText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '准备中...';
+
+  try {
+    // 1. 读本目录的 xhs-caption.json（如果 skill 产出了）
+    let caption = null;
+    try {
+      const resp = await fetch('./xhs-caption.json');
+      if (resp.ok) caption = await resp.json();
+    } catch {}
+
+    // 2. 6 张海报 → base64（JPEG 85% 压缩控制 payload 体积）
+    const posterIds = ['poster-1', 'poster-2', 'poster-3', 'poster-4', 'poster-5', 'poster-6'];
+    const images = [];
+    for (let i = 0; i < posterIds.length; i++) {
+      btn.textContent = `传图 ${i + 1}/${posterIds.length}`;
+      const el = document.getElementById(posterIds[i]);
+      if (!el) continue;
+      // 复用本页的 html2canvas
+      const canvas = await html2canvas(el, { scale: 1.1, backgroundColor: '#ffffff' });
+      images.push(canvas.toDataURL('image/jpeg', 0.85));
+    }
+
+    const payload = {
+      source: 'xhs-poster',
+      date: new Date().toISOString().slice(0, 10),
+      title: caption?.shortTitle || document.title,
+      summary: (caption?.shortBody || '').slice(0, 120),
+      xiaohongshu: {
+        shortTitle: caption?.shortTitle || document.title.slice(0, 20),
+        shortBody: caption?.shortBody || '',
+        images,
+        tags: caption?.tags || ['AI学习', 'AIGC', 'JR Academy']
+      }
+    };
+
+    window.postMessage({ type: 'JR_PUBLISH_PAYLOAD', version: 1, target: 'xiaohongshu', payload }, '*');
+    btn.textContent = '✅ 已推送';
+    setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 2500);
+  } catch (e) {
+    console.error('[push-xhs]', e);
+    btn.textContent = '❌ ' + (e.message || '失败');
+    setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 3000);
+  }
+}
+document.getElementById('push-xhs')?.addEventListener('click', pushXhsToExtension);
+```
+
+**注意**：如果没产出 `xhs-caption.json`（早期 bootcamp），payload 里 shortBody 会是空字符串，运营需要在插件 popup 的"✏ 填文案"面板补一下再导入。建议每个 bootcamp 生成 xhs-posters 时顺手写个 `xhs-caption.json`（字段见 ai-news-poster SKILL.md）。
+
 ## 🚨 绝对不能做的事
 
 1. **改 ratio** — 1242×1660 写死，不给备选，不问用户想要什么比例

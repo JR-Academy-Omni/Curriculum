@@ -86,11 +86,91 @@ function inlineStyles(root) {
 iframe 偷偷加载 `../xhs-posters/index.html`，复用 xhs 的 html2canvas 脚本批量导出配图为 `mp-{slug}-NN-posterSlug.png`，运营手动上传到公众号素材库后按占位符顺序插入。
 
 ## 发文流程（给运营看）
+
+**方式 A（推荐，装了 JR Social Publisher 插件）**：
+1. 打开本地 mp-article/index.html
+2. 点「📤 推送到公众号」按钮
+3. 切到 mp.weixin.qq.com → 新建图文 → 页面顶部出现浮条「📥 导入 bootcamp 文章」→ 点击
+4. 自动填标题 / 作者 / 摘要 / 正文，封面图自动下载（或自动上传，看命中）
+5. 人工检查 → 发布
+
+**方式 B（手动，没装插件）**：
 1. 点「批量下载所有配图」→ 本地 12 张 PNG
 2. 登录 mp.weixin.qq.com → 素材管理 → 批量上传图片
 3. 点「复制富文本」→ 公众号编辑器粘贴
 4. 按占位符顺序把素材库图片插进去
 5. 预览 → 发布
+
+## 🔗 JR Social Publisher 插件钩子（每个 bootcamp mp-article 必带）
+
+> 见 `docs/MP_XHS_PUBLISHER_EXTENSION_PRD.md`。新生成的 bootcamp mp-article 必须在 `index.html` 加推送按钮，`mp-article-copy.js` 加 `pushToExtension()` 函数。
+
+**HTML 按钮**（放在 `.ops-actions` 里，跟其他复制按钮并列）：
+
+```html
+<button class="btn" id="push-mp" title="推送到 JR Social Publisher 插件">📤 推送到公众号</button>
+```
+
+**JS（加到 `mp-article-copy.js` 末尾，和现有 `cRich.addEventListener` 同级）**：
+
+```javascript
+// ---- JR Social Publisher Chrome Extension 推送钩子 ----
+async function pushToExtension() {
+  const btn = document.getElementById('push-mp');
+  if (!btn) return;
+  const oldText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '准备中...';
+  try {
+    const bodyHtml = buildMpHtml();
+    const titleEl = body.querySelector('h1, .mp-title, [data-title]');
+    const title = titleEl ? (titleEl.textContent || '').trim() : document.title;
+    const leadEl = body.querySelector('.lead, .mp-lead, p');
+    const summary = (leadEl ? leadEl.textContent : '').trim().slice(0, 120);
+
+    btn.textContent = '抓封面...';
+    const base = new URL('.', location.href).href;
+    const firstImg = body.querySelector('.fig-slot');
+    const firstPoster = firstImg ? firstImg.dataset.poster : 'poster-p1';
+    const coverUrl = new URL('./images/' + firstPoster + '.png', base).href;
+    const resp = await fetch(coverUrl);
+    const blob = await resp.blob();
+    const coverImageBase64 = await new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onload = () => resolve(fr.result);
+      fr.onerror = () => reject(new Error('封面图读取失败'));
+      fr.readAsDataURL(blob);
+    });
+
+    const payload = {
+      source: 'bootcamp-mp-article',
+      date: new Date().toISOString().slice(0, 10),
+      title,
+      summary,
+      wechat: {
+        author: 'JR Academy',
+        bodyHtml,
+        coverImageBase64,
+      },
+    };
+
+    window.postMessage({ type: 'JR_PUBLISH_PAYLOAD', version: 1, target: 'wechat', payload }, '*');
+    btn.textContent = '✅ 已推送';
+    setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 2500);
+  } catch (e) {
+    console.error('[push-mp]', e);
+    btn.textContent = '❌ ' + (e.message || '失败');
+    setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 3000);
+  }
+}
+
+const pushBtn = document.getElementById('push-mp');
+pushBtn && pushBtn.addEventListener('click', pushToExtension);
+```
+
+**Source 字段必须是 `'bootcamp-mp-article'`**（插件根据 source 区分 AI 日报 vs bootcamp 文章，将来可能做不同的导入策略）。
+
+**插件没装时** `window.postMessage` 只在自己窗口里广播没人听，按钮行为安全不报错。
 
 ## 注册
 - `curriculum/posters.html` 对应课程卡加 `📰 公众号` 按钮
