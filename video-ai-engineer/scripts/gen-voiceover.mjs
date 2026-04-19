@@ -1,103 +1,100 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 /**
- * 生成 14 段中文配音 mp3（OpenAI TTS, nova 女声）
- * 从 jr-academy/.env 读 OPENAI_API_KEY
+ * video-ai-engineer 的配音 wrapper · 转发给 tools/jr-tts/
  *
- * 使用：
- *   bun run scripts/gen-voiceover.mjs
+ * 实际的 TTS 实现在 ../../tools/jr-tts/（复用到其他项目）
+ * 这里只做 3 件事：
+ *   1. 把本项目的 scene 台词转成 jr-tts 的 script.json 格式
+ *   2. 调 jr-tts gen-voiceover.mjs 批量生成到 src/assets/voiceover/
+ *   3. 给不同 speaker 的便捷 preset
+ *
+ * 用法：
+ *   SPEAKER=中文女 bun run scripts/gen-voiceover.mjs
+ *   SPEAKER=chattts-seed-9528 bun run scripts/gen-voiceover.mjs
+ *   SPEAKER=cv-bundled-long bun run scripts/gen-voiceover.mjs
+ *   bun run scripts/gen-voiceover.mjs --speaker shimmer
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, unlinkSync, readdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = resolve(__dirname, '..');
-const OUT_DIR = resolve(PROJECT_ROOT, 'src', 'assets', 'voiceover');
+const JR_TTS = resolve(__dirname, '../../../tools/jr-tts');
+const OUT_DIR = resolve(PROJECT_ROOT, 'src/assets/voiceover');
 
-/* ---- 读 OpenAI 配置 ---- */
-function loadEnv(path) {
-	if (!existsSync(path)) return {};
-	const out = {};
-	for (const line of readFileSync(path, 'utf-8').split('\n')) {
-		const m = line.match(/^([A-Z_][A-Z0-9_]*)=(.*)$/);
-		if (m) out[m[1]] = m[2].replace(/^['"]|['"]$/g, '');
-	}
-	return out;
-}
-const env = loadEnv('/Users/lightman/Documents/sites/jr-academy-ai/jr-academy/.env');
-const API_KEY = env.OPENAI_API_KEY;
-const BASE_URL = env.OPENAI_BASE_URL || 'https://api.openai.com/v1';
-if (!API_KEY) {
-	console.error('❌ 没找到 OPENAI_API_KEY');
-	process.exit(1);
-}
-
-/* ---- 14 段台词（已按 TTS 实测速度收紧，目标总长 ~65s）---- */
-const segments = [
-	{ file: '00-cover.mp3', text: '二零二六年，AI Engineer 的岗位，已经换代了。' },
-	{ file: '01-gap.mp3', text: '还在拼 Prompt 调 API？岗位基线已经右移。' },
-	{ file: '02-chatroom.mp3', text: '同事群聊 GraphRAG 和 Eval，你能接上吗？' },
-	{ file: '03-outcomes.mp3', text: '12 周，真学会 RAG、Agent、Multi-Agent、微调四件事。' },
-	{ file: '04-structure.mp3', text: '10 个 Phase，光 Agent 就占 5 个，Memory 和 Harness 独家。' },
-	{ file: '05-stack.mp3', text: '15 个 2026 真实工具栈，每个都配独立 Lab。' },
-	{ file: '06-rag.mp3', text: 'RAG 整整 45 节课，从向量做到 GraphRAG 全链路。' },
-	{ file: '07-agent.mp3', text: 'Agent 拆 5 层，每层都能独立成项目。' },
-	{ file: '08-labs.mp3', text: '68 个浏览器 Lab，都是独立 Lesson，能追踪进度。' },
-	{ file: '09-projects.mp3', text: '7 个简历项目，能讲完整 STAR 故事。' },
-	{ file: '10-timeline.mp3', text: '12 周课加 12 周 P3 孵化，陪你到拿 Offer。' },
-	{ file: '11-feedback.mp3', text: '学员反馈没有夸张数字，就是日常成长记录。' },
-	{ file: '12-package.mp3', text: '183 节课，68 个 Lab，7 个项目，加大厂导师 Review。' },
-	{ file: '13-cta.mp3', text: '今年一件 AI 投资，看看新一期 Bootcamp，主页搜匠人 AI。' },
+/* ---- 本课 14 段台词（中英混读） ---- */
+const SCRIPT = [
+	{ id: '00-cover',     text: '2026年，AI Engineer 的岗位，已经换代了。' },
+	{ id: '01-gap',       text: '还在拼 Prompt 调 API 吗？岗位基线已经整体右移了。' },
+	{ id: '02-chatroom',  text: '同事群聊 GraphRAG 和 Eval，你能接上话吗？' },
+	{ id: '03-outcomes',  text: '12 周，真学会 RAG、Agent、Multi-Agent、微调这四件事。' },
+	{ id: '04-structure', text: '10 个 Phase，光 Agent 就占了 5 个，Memory 和 Harness 独家。' },
+	{ id: '05-stack',     text: '15 个 2026 真实工具栈，每个都配独立的 Lab。' },
+	{ id: '06-rag',       text: 'RAG 整整 45 节课，从向量做到 GraphRAG 全链路。' },
+	{ id: '07-agent',     text: 'Agent 拆成 5 层，每一层都能独立成一个项目。' },
+	{ id: '08-labs',      text: '68 个浏览器 Lab，都是独立 Lesson，可以追踪进度。' },
+	{ id: '09-projects',  text: '7 个简历项目，都能讲完整的 STAR 故事。' },
+	{ id: '10-timeline',  text: '12 周课加 12 周 P3 孵化，陪你到拿 Offer。' },
+	{ id: '11-feedback',  text: '学员反馈没有夸张数字，就是日常的成长记录。' },
+	{ id: '12-package',   text: '183 节课，68 个 Lab，7 个项目，加大厂导师 Review。' },
+	{ id: '13-cta',       text: '今年一件 AI 投资，看看新一期 Bootcamp，主页搜匠人 AI。' },
 ];
 
-const SPEED = 1.05; // 略带紧凑但不抢拍
-const MODEL = 'gpt-4o-mini-tts'; // 2025 新 TTS，中文自然度比 tts-1-hd 高很多，支持 instructions
-const INSTRUCTIONS = `以自然、放松、略带温度的中文语气朗读。
-节奏上参考科技博主说话的口语感：句子读完有一个自然的微停顿，不要连着冲。
-遇到英文术语（RAG / Agent / Multi-Agent / Prompt / GraphRAG / Eval）按原音读英文，不要拆成字母拼读。
-整体情绪偏专业但不冷淡，像给朋友分享一个最近发现。`;
+/* ChatTTS 不识别阿拉伯数字 —— 按 speaker 动态改写 */
+function adaptForSpeaker(speaker) {
+	if (!speaker.startsWith('chattts')) return SCRIPT;
+	const digitsToHans = (s) => s
+		.replace(/2026/g, '二零二六')
+		.replace(/183/g, '一百八十三')
+		.replace(/68/g, '六十八')
+		.replace(/45/g, '四十五')
+		.replace(/15/g, '十五')
+		.replace(/12/g, '十二')
+		.replace(/10/g, '十')
+		.replace(/7/g, '七')
+		.replace(/5/g, '五')
+		.replace(/4/g, '四')
+		.replace(/P3/g, 'P 三');  // 避免数字 token
+	return SCRIPT.map(({ id, text }) => ({ id, text: digitsToHans(text) }));
+}
 
+function parseArg(name, fallback) {
+	const idx = process.argv.indexOf(`--${name}`);
+	if (idx >= 0 && process.argv[idx + 1]) return process.argv[idx + 1];
+	return process.env[name.toUpperCase()] || fallback;
+}
+
+const speaker = parseArg('speaker', 'jr-female-1');
+console.log(`🎤 speaker = ${speaker}\n`);
+
+const adapted = adaptForSpeaker(speaker);
+const tmpScript = resolve(PROJECT_ROOT, '.tmp-script.json');
+writeFileSync(tmpScript, JSON.stringify(adapted, null, 2));
+
+// 清空老的 mp3（避免残留）
+if (existsSync(OUT_DIR)) {
+	for (const f of readdirSync(OUT_DIR)) {
+		if (f.endsWith('.mp3')) unlinkSync(resolve(OUT_DIR, f));
+	}
+}
 mkdirSync(OUT_DIR, { recursive: true });
 
-/* ---- 调 TTS ---- */
-async function tts(text, outFile) {
-	const res = await fetch(`${BASE_URL}/audio/speech`, {
-		method: 'POST',
-		headers: {
-			Authorization: `Bearer ${API_KEY}`,
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			model: MODEL,
-			input: text,
-			voice: 'nova',
-			instructions: INSTRUCTIONS,
-			response_format: 'mp3',
-			speed: SPEED,
-		}),
-	});
-	if (!res.ok) {
-		const err = await res.text();
-		throw new Error(`TTS ${res.status}: ${err}`);
-	}
-	const buf = Buffer.from(await res.arrayBuffer());
-	writeFileSync(outFile, buf);
-	return buf.length;
+const r = spawnSync('bun', [
+	resolve(JR_TTS, 'scripts/gen-voiceover.mjs'),
+	'--speaker', speaker,
+	'--script', tmpScript,
+	'--out', OUT_DIR,
+], { stdio: 'inherit' });
+
+unlinkSync(tmpScript);
+
+if (r.status !== 0) {
+	console.error('❌ jr-tts 生成失败');
+	process.exit(r.status || 1);
 }
 
-/* ---- 跑 ---- */
-console.log(`🎤 生成 14 段配音 → ${OUT_DIR}\n`);
-const start = Date.now();
-for (const seg of segments) {
-	const out = resolve(OUT_DIR, seg.file);
-	process.stdout.write(`  · ${seg.file.padEnd(22)} …`);
-	try {
-		const size = await tts(seg.text, out);
-		console.log(` ✓ ${(size / 1024).toFixed(1)} KB`);
-	} catch (e) {
-		console.log(` ❌ ${e.message}`);
-		process.exit(1);
-	}
-}
-console.log(`\n✅ 完成，用时 ${((Date.now() - start) / 1000).toFixed(1)}s`);
-console.log(`💡 下一步: bun run scripts/gen-bgm.mjs`);
+console.log('\n💡 下一步:');
+console.log('   bun run scripts/sync-scenes-to-voiceover.mjs');
+console.log('   bun run render');
