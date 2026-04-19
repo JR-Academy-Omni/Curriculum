@@ -584,232 +584,220 @@ window.MP_ARTICLES = {
 
       {
         id: 'opening',
-        h2: '一、为什么这篇不给你看 Phase 1 / Phase 2 / Phase 3',
+        h2: '一、这篇不讲故事，直接给你一张大纲表',
         beforeImage: [
-          `正常的课程介绍页看起来都差不多——「Phase 1: 前端基础」「Phase 2: 后端进阶」「Phase 3: AI 实战」，下面配几张图标。三分钟看完你记住的大概就是「好像有前端后端 AI 三块」，关掉页面以后该不知道的还是不知道。`,
-          `这篇我不这么写。我当你已经报了第 30 期、下周一就开课，我陪你把这 16 周像电影的分镜一样走一遍 —— 第一节老师在白板上画了什么、第五天你第一次 push 代码被 GitHub reject 的窘迫、第八周你第一次看见 CareerMate 在浏览器里打开的激动、第十一周被 merge conflict 卡住两小时最后学会 rebase 的那个深夜。`,
-          `读完你应该能判断三件事：你现在的底子够不够跟上第一周的节奏、16 周里哪一段最难你需要提前做心理准备、毕业那天简历上那几行项目经历对应的是自己真动过手的哪些代码。如果你读完决定"不报"也挺好 —— 这比你交了钱才发现"原来我没想清楚"要强得多。`,
+          `别的 Bootcamp 介绍页给你看的都是「Phase 1 · Phase 2 · Phase 3」那种概念图 —— 看完你还是不知道第一周到底敲什么、第八周交什么、毕业那天带走什么。`,
+          `这篇我换个形式：<strong>一张 16 周主表 + 3 张模块明细表</strong>，像课程大纲应该有的样子。你扫 30 秒大概能判断你是不是目标学员、会不会跟得上、毕业时手里多了什么东西；如果想看细节就往后翻明细表；不想看就直接拉到末尾看"读到这里怎么办"。`,
+          `表里的 L?? 是课程里每节课的编号，不是我编的。每个编号对应一节老师直播或者一段录播，都有配套 Lab / Assignment / Workshop。`,
         ],
         poster: { id: 'poster-16', slug: 'p16-timeline', caption: '图 01 · 第 30 期 16 周学习地图' },
+        afterImage: [],
+      },
+
+      {
+        id: 'box-frontend-foundation',
+        h2: '二、前端闯关 · 做出能发朋友圈的响应式作品集',
+        beforeImage: [
+          `<section style="border:2px solid #10162f;border-radius:10px;overflow:hidden;margin:12px 0;">
+<section style="background-color:#ff5757;color:#ffffff;padding:14px 16px;">
+<div style="font-size:15px;font-weight:900;line-height:1.35;">前端闯关 · 做出能发朋友圈的响应式作品集</div>
+<div style="font-size:12px;margin-top:4px;color:#ffffff;">第 1-2 周 · 覆盖 L05-L14 · 6 节直播 + Lab 1-3 + Assignment 01-02</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学到什么：</strong>语义化 HTML 标签 · Box Model 盒模型 · Position 定位 · Flex + Grid 布局 · Sass 变量/嵌套/mixin · 响应式 Media Query · Chrome DevTools 调试</p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;"><strong style="color:#ff5757;">学完做出来的：</strong>一个公网可访问的响应式作品集（手机 / iPad / Desktop 三档屏都正常）+ 一份 registration_form 表单作业 · <em>简历上"熟悉语义化 HTML5 / Flex Grid / Sass"不虚</em></p>
+</section>
+</section>`,
+        ],
+        poster: { id: 'poster-2', slug: 'p2-demo-vs-prod', caption: '图 02 · 从 tutorial 级到生产级前端' },
+        afterImage: [],
+      },
+
+      {
+        id: 'box-js-es6',
+        h2: '三、JavaScript 从小学生到工程师 · 写现代 JS',
+        beforeImage: [
+          `<section style="border:2px solid #10162f;border-radius:10px;overflow:hidden;margin:12px 0;">
+<section style="background-color:#f59e0b;color:#ffffff;padding:14px 16px;">
+<div style="font-size:15px;font-weight:900;line-height:1.35;">JavaScript 从小学生到工程师 · 写现代 JS 不再眼神闪躲</div>
+<div style="font-size:12px;margin-top:4px;color:#ffffff;">第 2-3 周 · 覆盖 L12 + L18-L20 · 3 节直播 + Lab 5-6 + Assignment 03-04</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学到什么：</strong>Hoisting 变量提升陷阱 · == vs === 精确差异 · 数字精度问题 · Promise 链式调用 · async/await · 解构赋值 · 箭头函数+this · Spread/Rest · Set/Map · ES6 Modules · Iterator/Generator</p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;"><strong style="color:#f59e0b;">学完做出来的：</strong>一个调用真 API 的天气应用 + 一个用 Promise 链串起来的进度条 · <em>跟现代前端团队平起平坐的 JS 水平</em></p>
+</section>
+</section>`,
+        ],
+        poster: { id: 'poster-24', slug: 'p24-jd-coverage', caption: '图 03 · 2026 Junior JD 必考 JS 知识点' },
+        afterImage: [],
+      },
+
+      {
+        id: 'box-git',
+        h2: '四、Git 那一晚 · 从 init 到解 conflict',
+        beforeImage: [
+          `<section style="border:2px solid #10162f;border-radius:10px;overflow:hidden;margin:12px 0;">
+<section style="background-color:#10162f;color:#ffffff;padding:14px 16px;">
+<div style="font-size:15px;font-weight:900;line-height:1.35;">Git 那一晚 · 每个学员都记得的一课</div>
+<div style="font-size:12px;margin-top:4px;color:#ffffff;">第 3 周末 · 覆盖 L15 + Lab 4 · 一节 3 小时深潜 + 实操练习</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学到什么：</strong>分布式 vs 集中式版本控制原理 · init / add / commit / .gitignore / remote 完整命令 · Sourcetree 图形化 · reset / revert / amend / checkout / stash 撤回修复 · <strong>merge vs rebase 两种分支策略</strong> · Pull Request + Code Review 规范 · <strong>Conflict 冲突解决</strong></p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学完做出来的：</strong>GitHub 上一个带完整分支历史 + .gitignore + README 的公开仓库 + 第一个被 merge 的 Pull Request · <em>简历上 GitHub 链接经得起招聘方点开看</em></p>
+</section>
+</section>`,
+        ],
+        poster: { id: 'poster-6', slug: 'p6-stack', caption: '图 04 · Git 那一晚的战果' },
+        afterImage: [],
+      },
+
+      {
+        id: 'box-react-foundation',
+        h2: '五、React 先自学打底 · 从 JSX 到自定义 Hook',
+        beforeImage: [
+          `<section style="border:2px solid #10162f;border-radius:10px;overflow:hidden;margin:12px 0;">
+<section style="background-color:#3b82f6;color:#ffffff;padding:14px 16px;">
+<div style="font-size:15px;font-weight:900;line-height:1.35;">React 先自学打底 · 从 JSX 到自定义 Hook</div>
+<div style="font-size:12px;margin-top:4px;color:#ffffff;">第 4-5 周 · 覆盖 L25-L32 · 8 节录播（按自己节奏看，卡了就暂停回放）</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学到什么：</strong>Node + VS Code 环境配置 · create-react-app 项目结构 · JSX 语法 · <strong>Props vs State 区别</strong> · 组件通讯（父子/兄弟）· React Router 路由 · 受控 vs 非受控表单 · Axios 拦截器（鉴权/日志/错误统一）· 组件生命周期 · VDOM 虚拟 DOM · 类 vs 函数组件 · 高阶组件 HOC · <strong>自定义 Hook</strong> · Context API vs React Redux · Jest 单元测试 · Cypress 集成测试</p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;"><strong style="color:#3b82f6;">学完做出来的：</strong>独立 React App · <em>能读懂别人 React 代码挑问题 · 能写自定义 Hook 复用逻辑 · 能跑单测 + 集成测</em></p>
+</section>
+</section>`,
+        ],
+        poster: { id: 'poster-3', slug: 'p3-chatroom', caption: '图 05 · React 8 节录播 · 从 JSX 到 Jest/Cypress' },
         afterImage: [
-          `深呼吸一下，第一节课要开始了。`,
+          `前 5 周基础打完。接下来就是整个课程的主轴 —— <strong>CareerMate 项目</strong>。以下三张卡片（前端 → 后端 → AI 大脑）是同一个项目的三个阶段，每一节课都往这个产品里加新功能，不是做三个零散的练手项目。`,
         ],
       },
 
       {
-        id: 'day-one',
-        h2: '二、第一天 · 开营那 3 小时，Jin 老师在白板上画的那张图',
+        id: 'box-careermate-frontend',
+        h2: '六、⭐ CareerMate 前端上线 · 从空白页到公网可访问的 React SPA',
         beforeImage: [
-          `开课第一天没有直接学代码。Jin 老师进教室，投影打开，上面是一张<strong>五边形</strong>，每个角写着一个词：Full-stack、Prompt Engineering、AI Engineering、Cloud、Data Thinking。这是 2026 年澳洲 Junior AI Engineer JD 上最常见的五种能力要求，老师叫它"五维能力地图"。`,
-          `接下来的一个半小时，老师把五边形拆开讲 —— Full-stack 不光是"会 React 会 Node"，是"知道 API 怎么设计、数据库怎么建、前后端怎么协作"；AI Engineering 不是"调 OpenAI API"，是"知道 RAG 里为什么要 Rerank、Streaming 怎么做、上下文被塞满怎么裁"。每一维老师都对照一家澳洲公司最近在招的 JD 讲："Atlassian 这条要求就是在考这一维、Canva 那一轮面试就是考那一维"。`,
-          `然后老师介绍<strong>CareerMate</strong>——这期所有学员要一起做的职业发展平台。它不是一个"期末作业"，是贯穿 16 周的主轴。从第一天你写第一个 HTML 标签开始，到毕业那天它是个带 AI Agent + RAG 检索 + 完整鉴权的上线产品。`,
-          `最后一个小时老师讲 Agile + Kanban：为什么课程按 Sprint 推进、什么叫 Definition of Done、每节课拆成任务卡给你领、为什么要写 User Story。不是形式主义 —— 你毕业后进的公司几乎每一家都在用这套东西。`,
-          `3 小时后你走出教室，脑子里多了三样东西：一张五边形路线图、一个叫 CareerMate 的终点、一套你要按什么节奏推进的工作方法。<em>你知道自己要去哪、怎么去</em>。这是很多 Bootcamp 开课第一周最缺的东西。`,
+          `<section style="border:3px solid #ff5757;border-radius:10px;overflow:hidden;margin:12px 0;box-shadow:4px 4px 0 #10162f;">
+<section style="background-color:#ff5757;color:#ffffff;padding:14px 16px;">
+<div style="font-size:12px;margin-bottom:4px;color:#ffffff;font-weight:700;">⭐ CareerMate 主轴 · 第 1 阶段（共 3 阶段）</div>
+<div style="font-size:15px;font-weight:900;line-height:1.35;">从空白页到公网可访问的 React SPA</div>
+<div style="font-size:12px;margin-top:4px;color:#ffffff;">第 5-7 周 · 覆盖 L113-L123 · 11 节直播 · 16 周里最关键的 6 周开始</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学到什么：</strong>HTML 写 CareerMate 主页骨架 → CSS 产品风格 → JavaScript 交互 → Git 上传 GitHub → <strong>GitHub Action + CI/CD 自动部署</strong>（push 一次自动上线）→ Flex + Grid 响应式布局 → React + SOLID 原则 → 登录 / 注册 / 表单验证 → S3 + CloudFront 生产部署（自定义域名 + HTTPS + CDN）</p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;"><strong style="color:#ff5757;">学完做出来的：</strong>CareerMate 前端<em>公网可访问</em> · 有完整登录注册 UI · 响应式三档屏 · push 一次自动部署上线 · <strong>第一个你敢发给爸妈看的"我做的网站"</strong></p>
+</section>
+</section>`,
         ],
-        poster: { id: 'poster-3', slug: 'p3-chatroom', caption: '图 02 · 第一天白板上那张五维能力地图' },
-        afterImage: [
-          `从第二天起，就是真刀真枪敲代码了。`,
-        ],
+        poster: { id: 'poster-12', slug: 'p12-projects', caption: '图 06 · CareerMate 前端上线那一刻' },
+        afterImage: [],
       },
 
       {
-        id: 'week-1-2-html-css',
-        h2: '三、第 1-2 周 · HTML 和 CSS 的"原来还能这样"',
+        id: 'box-careermate-backend',
+        h2: '七、⭐ CareerMate 长出后端 · 真登录 + 数据落盘 + 云部署',
         beforeImage: [
-          `很多人以为自己会 HTML —— 毕竟都写过 &lt;div&gt; 和 &lt;p&gt;。但第一节老师让你给一篇新闻页打框架，你下意识想全用 &lt;div&gt;，他摇头：「用 &lt;article&gt; 装正文、&lt;section&gt; 分章节、&lt;nav&gt; 包导航、&lt;header&gt; 和 &lt;footer&gt; 做页眉页脚 —— 这叫语义化。屏幕阅读器和 Google 爬虫都靠这些认内容。」`,
-          `第二节讲 Box Model。以前你写 padding 和 margin 凭感觉，这节你第一次搞懂了 content-box 和 border-box 到底在争什么 —— 为什么你加了 padding 后整个布局突然乱套。接着是 Position：static / relative / absolute / fixed 四种定位第一次被讲透，你回头看之前那些 tutorial 代码，发现好几处用 absolute 都用错了。`,
-          `再往后是 Viewport 和 Media Query —— 响应式不是"加个 @media (max-width: 768px)" 就算完，老师讲清楚为什么 mobile-first 比 desktop-first 更合理。接着 Flex 来了，以前你用 float 或者 grid-hack 搞不定的布局，现在 justify-content / align-items 三行代码搞定。第二周中段讲 Sass，变量 + 嵌套 + mixin 让你第一次觉得 CSS 也能"工程化"。`,
-          `实操也没停。<strong>Lab(1)</strong> 让你打开 Chrome DevTools 调一个响应式列表 —— 第一次你真的在浏览器里面 inspect element + 改 CSS + 看实时变化。<strong>Lab(2)</strong> 用 Grid + Flexbox 拼一套卡片布局。<strong>Lab(3)</strong> 做响应式定价卡 —— 就是你在 SaaS 官网总看到的那种"免费版 / 专业版 / 企业版"三栏卡。<strong>Assignment 01 + 02</strong> 是一整个 registration_form 作业，老师会批改 + 给回馈。`,
-          `两周结束时你回头看第一天写的 &lt;div&gt;&lt;div&gt;&lt;div&gt;，觉得那时候的自己像刚学写字的小学生。现在你的简历上可以老老实实写"熟悉语义化 HTML5、响应式设计、Flex / Grid 布局、Sass 预处理器"—— 不心虚。`,
+          `<section style="border:3px solid #10b981;border-radius:10px;overflow:hidden;margin:12px 0;box-shadow:4px 4px 0 #10162f;">
+<section style="background-color:#10b981;color:#ffffff;padding:14px 16px;">
+<div style="font-size:12px;margin-bottom:4px;color:#ffffff;font-weight:700;">⭐ CareerMate 主轴 · 第 2 阶段（共 3 阶段）</div>
+<div style="font-size:15px;font-weight:900;line-height:1.35;">长出后端 · 真登录 + 数据落盘 + 全栈上云</div>
+<div style="font-size:12px;margin-top:4px;color:#ffffff;">第 7-9 周 · 覆盖 L124-L133 · 10 节直播</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学到什么：</strong>Express 框架 + RESTful API 设计原则 → 连 MongoDB 数据持久化 → 注册 / 登录 API → <strong>JWT 认证 + 中间件权限保护</strong> → 用户 Dashboard + 资料编辑 API → 账号删除（级联/软删）→ 文件上传 + S3 头像管理 → <strong>AWS 部署（EC2 + RDS + Security Group + Route 53）</strong> → 前后端云端整合测试</p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;"><strong style="color:#10b981;">学完做出来的：</strong>CareerMate 变成<em>真实全栈产品</em> —— 注册进数据库、JWT 鉴权、文件上传存 S3、前后端都在 AWS 上跑。<strong>简历上"独立交付全栈 Web 项目"这一行不虚</strong></p>
+</section>
+</section>`,
         ],
-        poster: { id: 'poster-2', slug: 'p2-demo-vs-prod', caption: '图 03 · 第一次理解"语义化"这个词' },
-        afterImage: [
-          `能把页面画出来只是第一步，让页面"动起来"才是下一关 —— JavaScript 来了。`,
-        ],
+        poster: { id: 'poster-15', slug: 'p15-backend', caption: '图 07 · CareerMate 从前端玩具到全栈产品' },
+        afterImage: [],
       },
 
       {
-        id: 'week-2-3-js-es6',
-        h2: '四、第 2-3 周 · JavaScript 从"看得懂"到"写得像工程师"',
+        id: 'box-careermate-ai',
+        h2: '八、⭐⭐ CareerMate 装上 AI 大脑 · 从全栈 Web 到 AI 产品',
         beforeImage: [
-          `如果你之前跟过一些在线课，JavaScript 大概是最让人自信假象最严重的语言 —— 看着简单，用起来坑无数。这门课的 JS 模块从第一节就直奔那些坑。`,
-          `老师第一节先讲 Hoisting —— 为什么你 console.log(x) 在 var x = 1 之前不会报错，返回 undefined。为什么函数声明和函数表达式 hoisting 行为不一样。接着是 Data Types 和<strong>== 与 === 的精确差异</strong>——你看着老师写 <code>"0" == 0</code> 返回 true 感到诡异，然后意识到之前自己写的代码里可能就埋着类似的 bug。</p>`,
-          `再往后是<strong>数字精度陷阱</strong>——经典的 <code>0.1 + 0.2 !== 0.3</code>，以及实际项目里怎么安全处理金额计算。数组方法 sort / filter / break / continue 被一个一个拆开，老师强调<em>"不要死记 API 名字，要理解它们的返回值和是否修改原数组"</em>。Functions / Scope / Strict Mode / 常见 JS 陷阱，一个个过。`,
-          `第三周进入 ES6。<strong>let 和 const</strong>让你对 var 说再见，模板字符串让你告别"字符串拼接 + 号"的地狱。<strong>解构赋值</strong>—— 从对象和数组一步到位提取值，你第一次觉得"代码还能这么简洁"。接着是箭头函数 + this 的革命（为什么事件回调用箭头函数更好），Spread / Rest 操作符（<code>...args</code> 第一次让你明白原来函数参数可以这么玩）。`,
-          `<strong>Promise 那一节是转折点</strong>。你之前写回调地狱 callback(callback(callback()))，这节学完知道怎么 .then().catch().finally()。然后是 async / await ——"异步代码写得像同步代码"。进阶课还带你自己写一个 Iterator 和 Generator，认识 Map 和 Set（"为什么原生对象做字典会有问题"）、ES6 Modules（import / export）、Symbols 的高级用法。`,
-          `配套实战是 <strong>Lab(5) 天气应用</strong>（第一次调用真 API + 用 Promise 处理响应）、<strong>Lab(6) Promise 进度条</strong>（把 Promise 链串起来控制 UI 动画）、外加 <strong>Assignment 03 + 04</strong> 两个综合题。`,
-          `两周半下来，你不再是"会写 for 循环 + 会调 fetch"的水平 —— 你写 JS 时脑子里开始有类型、有作用域、有异步时序概念。<em>写出来的代码别人 review 不会在基础语法上挑毛病</em>。`,
+          `<section style="border:3px solid #7c3aed;border-radius:10px;overflow:hidden;margin:12px 0;box-shadow:4px 4px 0 #10162f;">
+<section style="background-color:#7c3aed;color:#ffffff;padding:14px 16px;">
+<div style="font-size:12px;margin-bottom:4px;color:#ffffff;font-weight:700;">⭐⭐ CareerMate 主轴 · 第 3 阶段 · 16 周的 climax</div>
+<div style="font-size:15px;font-weight:900;line-height:1.35;">装上 AI 大脑 · RAG + 记忆 + 流式 + 生产级稳定性</div>
+<div style="font-size:12px;margin-top:4px;color:#ffffff;">第 9-11 周 · 覆盖 L134-L141 + 🟡 30 期新增 3 节 · 合计 11 节直播</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学到什么（28 期已跑通的 8 节）：</strong>OpenAI API + Prompt Engineering → 前端聊天 UI + <strong>Streaming 打字机效果</strong> → Conversation Memory + 上下文裁剪 → <strong>Vector Database + RAG 检索增强</strong>（喂 PDF 给它能回答 PDF 内容的问题）→ POC 到 Prod 产品化 → 安全（限流 / Prompt Injection 防护 / 敏感内容过滤）→ 性能（caching / batching / tokenization 优化）→ 项目上线验收</p>
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;background-color:#fef3c7;padding:10px;border-radius:6px;border-left:3px solid #ffce44;"><strong style="color:#d97706;">🟡 30 期新增 3 节：</strong>Embeddings 原理专题（向量维度对检索精度的影响）· <strong>Building RAG from Scratch in JS</strong>（不用 LangChain，纯 JS 从 Embedding → Vector Store → Retrieval → Prompt Injection 全流程手搓）· Azure + OpenAI 双云集成（合规 + failover，澳洲金融/医疗行业必问）</p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;"><strong style="color:#7c3aed;">学完做出来的：</strong><em>一个带 Streaming Chat UI + 对话记忆 + PDF 知识库 + RAG 检索 + 双云 AI 集成 + 安全限流 + 性能优化的生产级 AI 产品</em>。简历上"AI 商业项目经验 · RAG + Vector DB + OpenAI"每一个关键词都有你亲手写的代码对应</p>
+</section>
+</section>`,
         ],
-        poster: { id: 'poster-24', slug: 'p24-jd-coverage', caption: '图 04 · 2026 Junior JD 必考的 JS 知识点' },
-        afterImage: [
-          `代码写得出来之后，下一个问题是：代码放哪、怎么跟别人一起改、出了问题怎么回退。Git 那一节，每个学员都记得。`,
-        ],
+        poster: { id: 'poster-1b', slug: 'p1b-fullstack-not-enough', caption: '图 08 · CareerMate 装上 AI 大脑 · 11 节主线' },
+        afterImage: [],
       },
 
       {
-        id: 'week-3-git',
-        h2: '五、第 3 周末 · Git 那一晚（每个学员都记得）',
+        id: 'box-team-collab',
+        h2: '九、团队协作 + React 工程化 · 跟真人 BA / UI / DevOps / QA 共事',
         beforeImage: [
-          `Git 这节老师一口气讲 3 小时，从<strong>分布式 vs 集中式版本控制</strong>的概念讲起。为什么 Git 比 SVN 革命性、什么叫"每个人的仓库都是完整历史"、为什么 Linus Torvalds 2005 年写了 Git 改变了整个开源世界。`,
-          `然后是命令实操 —— git init / add / commit 一气呵成，接着讲 <strong>.gitignore</strong>（"为什么 node_modules 永远不该进仓库"）、git log 美化、远程仓库的 clone / push / pull。老师推 Sourcetree 给新手，不是因为命令行不好，是"让你先看见再记语法"。`,
-          `接着就到救命环节 —— <strong>撤回和修复</strong>。reset / revert / amend 三种 undo 的本质区别、checkout 和 stash 的保命用法（"你改了一半突然要切分支改别的，不 stash 你就 GG"）。这几个命令每一届学员都会在之后几个月里用几十次。`,
-          `下半场是分支和团队协作。<strong>merge 和 rebase</strong>两种合并策略的价值观差异（"rebase 让历史线性，merge 保留真实协作结构，选哪个看团队文化"）。然后是 Pull Request 和 Code Review —— 老师在屏幕上开一个真实的开源 PR，逐条讲 reviewer 关注什么、你该怎么回复。`,
-          `最难的一关是 Conflict。老师在屏幕上故意制造一个 merge conflict，你看到那行 <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> 第一眼是懵的 —— 后来你在 Lab(4) 里自己遇上了，对着屏幕研究两小时才搞清楚"哦，上下两段代码是我自己和队友分别改的，要我手动选要哪个或者都要"。那一晚你没睡多久，但你第一次觉得自己"像个真开发者"。`,
-          `第二天你把 <strong>Lab(4) Git 实践练习</strong>交了，里面是分支创建 / merge / rebase / 处理 conflict 的一整套操作。<strong>Assignment</strong> 要求你开一个 GitHub 仓库、写完整的 README、至少 5 个 commit 历史、一个被 merge 的 PR。毕业时招聘方看你 GitHub，第一眼看的就是这些。`,
+          `<section style="border:2px solid #10162f;border-radius:10px;overflow:hidden;margin:12px 0;">
+<section style="background-color:#ffce44;color:#10162f;padding:14px 16px;">
+<div style="font-size:15px;font-weight:900;line-height:1.35;">团队协作 + React 工程化 · 6-8 人 Sprint 跟真人协作</div>
+<div style="font-size:12px;margin-top:4px;color:#10162f;">第 11-13 周 · 覆盖 L152-L157 + L56/L82/L83 Workshop · 6 节直播 + 5 节 Workshop + 真实 Sprint</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学到什么：</strong>Context API 全局状态 · useEffect 深入（陷阱 / cleanup / race condition）· CI/CD + ESLint + Jest 工程化闭环 · 环境变量 + secret 管理 · Agile Project Management Workshop · AWS IAM + Lambda Workshop · <strong>真实 Sprint 流程</strong>（User Story / 估 Story Point / Standup / Code Review / Retro）· 跟<strong> BA / UI Designer / DevOps / QA Tester</strong> 4 类真人角色协作</p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;"><strong style="color:#d97706;">学完做出来的：</strong>一个 6-8 人团队上线的项目 + 你自己 10+ 个 PR + 完整 Code Review 记录 · <em>面试 Atlassian / Canva 的 Values Round 你有真实故事可讲</em></p>
+</section>
+</section>`,
         ],
-        poster: { id: 'poster-6', slug: 'p6-stack', caption: '图 05 · Git 那一晚的战果' },
-        afterImage: [
-          `前端 + JS + Git 打底打完，下一步真正的主菜来了 —— React。`,
-        ],
+        poster: { id: 'poster-18', slug: 'p18-collab', caption: '图 09 · 跟 4 类真人角色协作' },
+        afterImage: [],
       },
 
       {
-        id: 'week-4-5-react-foundation',
-        h2: '六、第 4-5 周 · React 打底 · 8 节录播慢慢啃',
+        id: 'box-internship-vibe',
+        h2: '十、AI 实习启动 + Vibe Coding 收官 · 真业务 + AI-first 开发',
         beforeImage: [
-          `React 基础部分课程给的是 8 节录播课，按你自己的节奏看 —— 因为 JSX 和 Hooks 这些概念"不难但需要时间消化"，直播节奏一带就过。你在家边看边敲，卡住就暂停回放，这阶段比直播更合适。`,
-          `第一节讲 React 从 2013 到今天的版本演进，为什么它干掉了 Angular 早期版本、为什么全球前端都在用它。接着配环境 —— Node.js 安装、VS Code 插件、create-react-app 快速搭脚手架。第一次 <code>npm start</code> 跑起来看到那个旋转的 React logo，你可能会跟 2017 年我第一次一样有点激动。`,
-          `然后是 JSX —— HTML 和 JS 混在一起写，第一眼真的诡异。但十分钟之后你开始觉得"哎，比模板引擎顺手"。<strong>Props 和 State</strong> 是 React 的灵魂，老师把两者的区别掰碎讲：Props 是父组件传给你的"只读设置"，State 是你自己组件内部的"可变状态"。组件间通讯（父传子 / 子传父 / 兄弟）每种模式都给你配示例。`,
-          `L29 讲 Router —— SPA 路由的原理、BrowserRouter / HashRouter 的区别、动态路由和嵌套路由。L30 是表单处理 —— <strong>受控组件 vs 非受控组件</strong>这个概念第一次出现时容易懵，但它决定了你之后写所有表单的习惯。`,
-          `L31 最干货 —— React 服务端交互。老师从 Axios 基础用法讲到<strong>拦截器统一处理鉴权和日志</strong>、怎么封装成可复用的服务层。然后是组件生命周期、<strong>VDOM 虚拟 DOM 的原理</strong>（为什么 React 性能好的根本原因）、类组件 vs 函数式组件的取舍、高阶组件 HOC 的使用场景、开源组件库（Material-UI / Ant Design）的选型思路。`,
-          `最后一节是 Hooks 的深潜。useState / useEffect 讲透之后，老师教你<strong>自定义 Hook 复用状态逻辑</strong>——这是 Hooks 最优雅的部分。Context API 共享状态 vs React Redux，两种方案的场景对比。最后居然还塞了 Jest 单元测试和 Cypress 集成测试 —— 毕业面试被问"你们 React 项目怎么测"，你有答案。`,
-          `5 周结束，你不是"跟过 React 教程"的水平，是<em>"知道 React 为什么这么设计、能看别人代码能挑问题"</em>的水平。下周要动真的了 —— CareerMate 开工。`,
+          `<section style="border:2px solid #10162f;border-radius:10px;overflow:hidden;margin:12px 0;">
+<section style="background-color:#06b6d4;color:#ffffff;padding:14px 16px;">
+<div style="font-size:15px;font-weight:900;line-height:1.35;">AI 实习 + Vibe Coding 收官 · 从学生过渡到工程师</div>
+<div style="font-size:12px;margin-top:4px;color:#ffffff;">第 14-15 周 · P3 合作企业真项目 + L147 Vibe Coding</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">学到什么：</strong>进匠人合作企业做<strong>真业务 RAG / LLM 集成</strong> —— 真甲方、真用户数据、真上线压力、Meta / MS / Amazon 导师 Code Review · Vibe Coding 收官课教你写 spec 让 Claude Code / Cursor 帮你跑完实现+测试+PR</p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;"><strong style="color:#06b6d4;">学完做出来的：</strong>企业实习证明（<em>合作公司电话可核实</em>）+ 一个真的上线被用户用的功能 · <strong>简历上"AI 实习 · RAG / LLM 业务集成"那一行的真实来源</strong></p>
+</section>
+</section>`,
         ],
-        poster: { id: 'poster-15', slug: 'p15-backend', caption: '图 06 · React 基础 8 节录播 · 从 JSX 到自定义 Hook' },
-        afterImage: [
-          `到这里前五周所有铺垫做完。接下来 11 周的主角只有一个 —— CareerMate。`,
-        ],
+        poster: { id: 'poster-5', slug: 'p5-devops', caption: '图 10 · AI 实习 + Vibe Coding 收官' },
+        afterImage: [],
       },
 
       {
-        id: 'week-5-7-careermate-frontend',
-        h2: '七、第 5-7 周 · CareerMate 诞生 · 从空白页到上线 React SPA',
+        id: 'box-graduation-career',
+        h2: '十一、毕业 → 12 个月陪跑 → Junior AI Engineer Offer',
         beforeImage: [
-          `第五周周一，Jin 老师在群里发一张 Figma 设计稿 —— CareerMate 的主页。所有人下周一之前要给出这个页面的 HTML 骨架。这节课代码 <strong>L113「HTML 入门实战：从空白到 CareerMate 网页框架」</strong>是 CareerMate 的开工第一锤。`,
-          `接下来两周节奏很紧。<strong>L114</strong> 给 CareerMate 写产品级 CSS —— 老师强调"不是 CSS 能用就行，是要有产品感"。<strong>L115</strong> 第一次加 JS 交互让页面"动起来"（导航栏点开展开、图片懒加载、按钮悬停动画）。<strong>L116</strong> 把你这几天的代码 push 到 GitHub —— 这时候 Git 基础派上用场，分支策略你照着第三周学的那套来。`,
-          `<strong>L117 是转折点</strong>。老师教你配 GitHub Action：<code>push</code> 一次，CI 自动跑测试、build、部署到静态托管。第一次你看到 <code>careermate-yourname.vercel.app</code>（或者 S3 域名）在浏览器打开 —— 不是 localhost，是<em>公网上陌生人也能访问</em>的真正网站。那一刻大部分学员会截图发家族群。`,
-          `<strong>L118</strong> 用 Flex + Grid 重构 CareerMate 的真实布局 —— 响应式在 iPhone / iPad / Desktop 三档屏都要对。<strong>L119</strong> 正式从 HTML 切到 React 重写主页 —— 这节老师顺带把 <strong>SOLID 原则</strong>塞进来讲（单一职责 / 开闭原则 / 里氏替换 / 接口隔离 / 依赖倒置）。面试被问"你怎么组织 React 组件"，答案来自这里。`,
-          `后半周做用户系统。<strong>L120 登录界面</strong>、<strong>L121 注册界面</strong>（组件切换 + 表单复用逻辑）、<strong>L122 表单验证</strong>（前端做第一层防护）。最后一节 <strong>L123</strong> 把整个前端部署到 AWS S3 + CloudFront —— 自己的域名 + HTTPS + CDN 全球加速，<em>这是所有大厂生产环境的部署范式</em>。`,
-          `两周半结束。CareerMate 在公网上有一个可点开的主页、有登录注册界面、响应式布局完整。你第一次可以把链接发给朋友："这是我做的网站，点进来看看"。`,
+          `<section style="border:2px solid #10162f;border-radius:10px;overflow:hidden;margin:12px 0;">
+<section style="background-color:#dc2626;color:#ffffff;padding:14px 16px;">
+<div style="font-size:15px;font-weight:900;line-height:1.35;">毕业那天 → 12 个月求职陪跑 → 拿 Offer</div>
+<div style="font-size:12px;margin-top:4px;color:#ffffff;">第 16 周 + 毕业后 1-12 个月</div>
+</section>
+<section style="padding:14px 16px;background-color:#ffffff;">
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">毕业周（W16）拿到什么：</strong>L174 简历 v2（按 15 份 JD 关键词反推，每行对应真项目）· LinkedIn 改造（Headline + Skills + Summary）· 3 次一对一<strong>模拟面试全程录像</strong>（行为 / 技术 / 编程）· Demo Day 对真实 HR 讲项目 · <strong>校友内推群开通</strong>（Atlassian / Canva / CBA / Westpac / NAB / REA / SEEK / Xero / Deloitte 在职校友通道）</p>
+<p style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.75;"><strong style="color:#10162f;">毕业后 1-12 个月持续陪跑：</strong>简历持续迭代 · 新岗位优先内推 · 面试录像复盘找问题 · Offer 条件谈判参谋 · <em>只要你还在找工作，导师和顾问不会把你扔出去</em></p>
+<p style="margin:0;color:#1e293b;font-size:14px;line-height:1.75;background-color:#fef3c7;padding:10px;border-radius:6px;"><strong style="color:#dc2626;">最终目标：</strong>拿到澳洲 <strong>Junior AI Engineer Offer</strong> · 起薪区间 Grad（0-1 年）$75-95K · Junior（1-3 年）$95-130K AUD · 公司参考：Atlassian $95-130K / Canva $90-125K / CBA+Westpac $80-110K / REA+SEEK $85-125K / Xero $90-125K（levels.fyi + Seek + Glassdoor 2026 数据，不承诺不保证）</p>
+</section>
+</section>`,
         ],
-        poster: { id: 'poster-12', slug: 'p12-projects', caption: '图 07 · CareerMate 前端上线那一刻' },
+        poster: { id: 'poster-17', slug: 'p17-deliverables', caption: '图 11 · 毕业带走的 7 件东西' },
         afterImage: [
-          `但是这个登录还是"假的" —— 点提交后数据去哪了？存不下来。下一阶段，CareerMate 要长出后端。`,
+          `<strong>9 年 30 期 5000+ 位毕业生</strong>，绝大部分拿到澳洲本地 Offer。Atlassian / Canva / CBA / Westpac 这种每家都有一整批匠人校友 —— 这是别的 Bootcamp 复制不了的底子。`,
         ],
-      },
-
-      {
-        id: 'week-7-9-careermate-backend',
-        h2: '八、第 7-9 周 · CareerMate 长出后端 · 注册真的能登、数据真的落盘',
-        beforeImage: [
-          `第七周第一节 <strong>L124「初识后端世界」</strong>。老师讲 Express 框架和 RESTful API 的设计原则 —— 什么叫 resource-oriented、GET / POST / PUT / DELETE 各自对应什么语义、URL 怎么设计优雅。十分钟后你已经在本地跑起来一个 /hello 接口。<em>后端入门没你之前想的那么难</em>。`,
-          `<strong>L125</strong> 连数据库。MongoDB / PostgreSQL 选型的考量，然后实操 —— 第一次你看到自己注册的账号真的存进了数据库里，查询时能捞出来。那种"数据活了"的感觉是 tutorial 给不了的，因为 tutorial 用的是假数据。`,
-          `<strong>L126</strong> 写注册 API + 登录 API。前端传用户名密码进来，后端验证 + 存进数据库 + 返回 token。这节之后 CareerMate 的登录不再是假的了 —— <em>真的能注册、真的能登录、刷新页面还记得你是谁</em>。`,
-          `<strong>L127</strong> 用户认证和权限保护。JWT（JSON Web Token）的原理、怎么在中间件里验签、怎么保护不该公开的接口。这一节是澳洲面试必考题 —— "你们怎么做鉴权？" 你能画出 JWT 的三段结构 + 用中间件拦截的流程。`,
-          `接下来几节功能越来越完整：<strong>L128</strong> 用户 Dashboard（登录后的主页，展示用户信息）、<strong>L129</strong> 资料编辑（PATCH 接口更新字段）、<strong>L130</strong> 账号删除（级联删除 + 软删除的取舍）、<strong>L131</strong> 文件上传和头像管理（multipart form + S3 对象存储）。每个学员在 L131 之后都会上传一张自己的头像到 CareerMate —— 某种程度上这是你"入驻"自己产品的那一刻。`,
-          `<strong>L132 AWS 入门</strong>把后端也上云 —— EC2 起实例、RDS 托管数据库、Security Group 配规则、Route 53 配域名。<strong>L133</strong> 把前端和后端整合测试一遍，CareerMate 的全栈版本第一次在公网上完整跑通。`,
-          `九周结束。<strong>你手里是一个带完整鉴权 + 数据持久化 + 文件上传 + 全栈部署的真产品</strong>。简历上那行"独立交付全栈 Web 项目"不虚，因为你每一步都是自己敲的。`,
-        ],
-        poster: { id: 'poster-15', slug: 'p15-backend', caption: '图 08 · CareerMate 从前端玩具到全栈产品' },
-        afterImage: [
-          `但 2026 年"全栈 Web 产品"不够了 —— JD 上写 RAG、写 OpenAI、写 Agent。下一阶段，CareerMate 要装 AI 大脑。`,
-        ],
-      },
-
-      {
-        id: 'week-9-11-careermate-ai',
-        h2: '九、第 9-11 周 · CareerMate 装上 AI 大脑 · 从全栈产品到 AI 产品',
-        beforeImage: [
-          `这三周是第 30 期最大的升级主线。原版 8 节 + 新增 3 节 = 11 节 AI 模块，从 API 初体验一路干到生产级 AI 应用。`,
-          `<strong>L134</strong> 第一次调 OpenAI API。在 CareerMate 里加一个输入框，你敲"帮我改简历"，AI 回你一段话。那是 CareerMate 第一次有"大脑"的一刻，但现在它像一个一次性的问答机，问一句答一句。`,
-          `<strong>L135</strong> 加 Streaming 打字机效果。之前回复是一次性吐出整段，现在像 ChatGPT 那样一个字一个字蹦出来 —— SSE（Server-Sent Events）或者 fetch streaming 实现。用户体验立刻"专业"起来。`,
-          `<strong>L136</strong> 加 Conversation Memory。CareerMate 现在能记住你上一句说了什么，你说"那再帮我改一下项目经历" 它知道你在说上一句提到的简历。<em>这是从玩具到产品的分水岭</em>。`,
-          `<strong>L137 是最硬的一节 —— Vector Database 与 RAG</strong>。你上传一份 PDF 简历给 CareerMate，它把文档切 chunk、生成 embedding、存进向量库；你问它"我这份简历哪里弱"，它先检索 PDF 里相关段落，再把上下文喂给 LLM 生成针对性回答。<em>这是真正的 RAG，不是"假装检索"</em>。`,
-          `<strong>L138 从 POC 到 Prod</strong>—— AI 功能怎么上线、错误怎么兜底、prompt 怎么版本化。<strong>L139 安全与稳定性</strong>：限流、prompt injection 防护、敏感内容过滤（"用户让它说脏话它会吗"）。<strong>L140 性能与体验</strong>：caching 重复请求、batching 合并调用、tokenization 优化省成本。<strong>L141 项目上线验收</strong>，CareerMate AI 最终版走完 demo。`,
-          `<strong>第 30 期在原 8 节基础上新增 3 节更深的内容</strong>：一节专题讲 <em>Embeddings 原理</em>（为什么不同维度 Embedding 对检索精度影响那么大）；一节 <em>Building RAG from Scratch in JavaScript</em>（不用 LangChain，纯 JS 自己手搓 chunking + vector search + prompt stuffing —— 面试被问"你们 RAG 里 chunking 为什么选 512 token"你能讲出理由）；一节 <em>Azure + OpenAI 双云集成</em>（合规场景下的 failover 策略，澳洲金融/医疗行业 AI 岗必问）。`,
-          `三周下来 CareerMate 彻底变了。从一个职业发展平台变成一个<strong>带 Streaming Chat UI + 对话记忆 + PDF 知识库 + RAG 检索 + 双云 AI 集成 + 安全限流 + 性能优化的生产级 AI 产品</strong>。你简历上那行"AI 商业项目经验"从这里来 —— 每一个技术关键词背后都有你亲手写的代码。`,
-        ],
-        poster: { id: 'poster-1b', slug: 'p1b-fullstack-not-enough', caption: '图 09 · CareerMate AI 模块 11 节主线' },
-        afterImage: [
-          `做完 AI 模块，个人能力已经接近 Junior AI Engineer 的要求。接下来要补的是<em>"在团队里工作"</em>这一课 —— 因为公司里没人单兵作战。`,
-        ],
-      },
-
-      {
-        id: 'week-11-13-team-react-engineering',
-        h2: '十、第 11-13 周 · 团队协作项目 + React 工程化深潜',
-        beforeImage: [
-          `这三周你被打散重编 6-8 人小组，每组会有真的 BA（业务分析师）、UI Designer、DevOps 工程师、QA Tester 参与 —— 这些角色不是同学扮演，是匠人从合作企业请来的真人。`,
-          `开工第一天 BA 给你们一份模糊的需求文档，你们要花半天写 User Story、拆 Task、估 Story Point。这时候你会第一次体会"原来工程师最难的不是写代码，是理解需求"。UI Designer 交给你一套 Figma 稿，你第一次学会怎么跟设计师 push back："这个阴影值在 Figma 里 CSS 不好还原，我们简化一下？"`,
-          `技术层面这三周还有 6 节 React 工程化 Live Lesson 补深度 —— <strong>L152 Context API 和路由状态管理</strong>（Redux 之外的轻方案）、<strong>L153 注册登录调用后端 API 并保存状态</strong>（把你之前学的 Axios 拦截器在真项目里跑）、<strong>L154 CI/CD、静态代码检查、单元测试</strong>（ESLint + Jest + GitHub Actions 三位一体）、<strong>L155 React 哲学训练</strong>（如何像 React 团队那样"思考 UI"）、<strong>L156 useEffect 深入</strong>（陷阱、cleanup、race condition —— 每个 React 新手都摔过的坑）、<strong>L157 前端上线和环境变量</strong>（.env.production、secret 管理）。`,
-          `并排的 5 节 Workshop 同时推进：<strong>L56 Agile Project Management</strong>（Scrum 一整套实操，领 ticket → PR → Review → Merge → Demo）、<strong>L82 AWS IAM 深度</strong>（权限 / 角色 / Federation，生产 AWS 账号管理的血泪）、<strong>L83 AWS Lambda</strong>（Serverless 冷启动和触发器）、外加 2 节依各期需求调整的主题。`,
-          `第一次 Code Review 被 reviewer 打回重做是真会难受的 —— 你以为写得挺好，人家指出三处命名不规范 + 两处缺边界 case + 一个潜在的 race condition。这种打击之后你会改变写代码的习惯：不是"能跑就行"，是"别人 review 不挑毛病"。`,
-          `三周结束你手里多了一件东西：<strong>真实 Agile 协作经验</strong>。下次面试被问"讲讲你跟 BA 怎么合作" 或 "你遇到过最难的 merge conflict" 或 "Sprint Retro 你贡献过什么" —— 你有具体故事讲。Atlassian / Canva 面试有专门一轮叫 <em>Values Round</em>，考的就是这些。`,
-        ],
-        poster: { id: 'poster-18', slug: 'p18-collab', caption: '图 10 · 团队协作的 4 类角色' },
-        afterImage: [
-          `团队项目跑完，个人全栈 + AI + 协作全齐。下一步要走出课堂 —— 进真企业实习。`,
-        ],
-      },
-
-      {
-        id: 'week-14-15-internship-vibe',
-        h2: '十一、第 14-15 周 · AI 实习启动 + Vibe Coding 收官',
-        beforeImage: [
-          `第 14 周是课程的特殊阶段 —— 你进匠人合作企业做 AI 方向实习，做的是真业务里的 RAG / LLM / Agent 集成。不是"演示 demo"，是会上线被真实用户用的功能。这段履历写进简历是不能伪造的，面试官可以直接打电话给合作公司核实。`,
-          `第六周其实就已经开始的 <strong>P3 职业孵化器 Bootstrap</strong>在这里进入深水区 —— 你加入一个真实企业项目团队，跟着 Meta / Microsoft / Amazon 在职导师做 code review。每个 Sprint 交付一个功能模块，Demo Day 对着真甲方讲。`,
-          `实习里有一个瞬间特别有感 —— 你给公司内部知识库接上了一个 RAG 问答接口，公司的同事真的开始用它查文档。<em>你做的东西第一次对别人有用</em>。不少学员这段实习之后简历写一行："给 XX 公司内部 AI 知识库集成 RAG 检索，Rerank 优化后准确率提升 X%，上线后月活 XX。" 面试官听到这个会直接追问细节 —— 而你每个细节都答得出来，因为你真做过。`,
-          `同时收官课 <strong>L147 Vibe Coding</strong> 登场。这节课是 2026 最新的 AI-first 开发范式 —— 不是"AI 帮你补全代码"那个水平，是老师教你怎么写 spec（规格说明）让 Claude Code / Cursor / Copilot 自己把实现跑完、测试跑完、PR 开完。老师当场演示：写 500 字需求文档交给 AI，15 分钟后 AI 交回一个 GitHub PR，你做 review 就行。这是你毕业后工作的实际形态 —— <em>不会用 AI 写代码的工程师在 2026 就像不会用 IDE 的工程师</em>。`,
-        ],
-        poster: { id: 'poster-5', slug: 'p5-devops', caption: '图 11 · 真实 AI 实习 + Vibe Coding 收官' },
-        afterImage: [
-          `第 15 周结束你完成了从学生到工程师的身份过渡。最后一周，是把这些经历打包成求职武器。`,
-        ],
-      },
-
-      {
-        id: 'week-16-graduation',
-        h2: '十二、第 16 周 · 毕业那一天 · 你手里到底多了什么',
-        beforeImage: [
-          `最后一周节奏突然变慢，但压力其实最大 —— 因为要把前 15 周的所有产出收拢成能拿出去投的<strong>求职武器包</strong>。`,
-          `<strong>简历第二版重写</strong>。第七周你写过一版（那时候只有前端基础），现在你有 3 个真实项目 + 1 段真实 AI 实习 + 6 节 React 工程化深度 + 团队协作 Sprint 经验。导师会带你把 15 份澳洲真 JD 的共同关键词抽出来，让简历上每一行都对应到一个关键词 + 一个具体项目证据。不是套模板，是按你自己的履历重新排列组合。`,
-          `<strong>LinkedIn 改头换面</strong>。顾问会教你怎么按 LinkedIn 的招聘算法优化 Headline、Experience、Skills tag 三个字段 —— 让你出现在 HR 搜"Junior AI Engineer Sydney"时的前三页。`,
-          `<strong>3 次一对一模拟面试全部录像</strong>：行为面（STAR 故事 —— 每个项目你能讲 15 分钟细节）、技术面（讲你的 CareerMate AI 模块，面试官会追问"为什么选 512 token chunking"、"限流怎么做"）、编程面（现场白板写代码 —— 这是最多人栽的一轮，模拟面试录像回看你能清楚看到自己哪里卡壳、哪里表达不清）。`,
-          `<strong>校友内推群开通</strong>。9 年 30 期下来，<strong>5000+ 位毕业生</strong>分布在澳洲你能想到的几乎所有主流公司：Atlassian / Canva / Afterpay / CBA / Westpac / NAB / ANZ / Macquarie / REA / SEEK / carsales / Xero / Deloitte / Accenture …… 不是一家一两个，是每家一整批。Junior 岗内推成功率是冷投简历的<strong>5-8 倍</strong>（Seek 官方数据）—— 这是 16 周课程里最没法花钱买的东西。`,
-          `毕业 Demo Day 那天你对着来自合作企业的 HR 和 Hiring Manager 讲 15 分钟 CareerMate + 实习项目。讲完你把简历 PDF 发到群里 —— 直接有 HR 在下面评论"我们在招，可以聊聊"。这是别的 Bootcamp 给不了的东西，因为别的 Bootcamp 没有 9 年积累的合作企业网络。`,
-        ],
-        poster: { id: 'poster-17', slug: 'p17-deliverables', caption: '图 12 · 毕业那天手里的 7 件东西' },
-        afterImage: [
-          `但毕业还不算结束 —— 求职才真正开始。这门课最大的区别可能是这一段：毕业之后的 12 个月，你不是一个人扛。`,
-        ],
-        poster2: { id: 'poster-7', slug: 'p7-testimonials', caption: '图 13 · 9 年 30 期 5000+ 毕业生的真实轨迹' },
-        afterImage2: [
-          `过往几期毕业生的原话 —— 没编数字、没用"人均 FAANG"的话术：「入学前 3 个月没项目、不会 React；毕业时 CareerMate AI 商业项目被面试官问了整整 40 分钟细节。」「实习那段给公司内部知识库接了 RAG，后来那个功能一直在用。面试时讲完这段，两家公司当场给了 Junior Offer。」`,
-        ],
-      },
-
-      {
-        id: 'after-graduation',
-        h2: '十三、毕业不是结束 · 毕业后 12 个月陪跑',
-        beforeImage: [
-          `很多人报 Bootcamp 最大的焦虑是"毕业了万一还没找到工作怎么办"。这门课的答案是：<strong>毕业后 12 个月继续陪</strong>。简历该更新时更新、内推该对接时对接、面试复盘该录像时录像、Offer 谈判该参谋时参谋。只要你还在认真找工作，导师和顾问不会把你扔出去。`,
-          `这 12 个月里具体发生的事：新岗位出现在校友群的时候第一时间告诉你；你投的简历被拒了，拿出来复盘看是简历问题还是方向问题；你拿到面试但没过，录像给导师看问题出在哪；你拿到 Offer 但在两家之间犹豫，顾问帮你看薪资结构 / 签证条件 / 晋升路径。`,
-          `这种 12 个月连续支持，是 "买一次课，不止服务 16 周" —— 我们把它当课程的一部分而不是售后。从 2017 年第一期开始就是这样承诺的，<em>这是这门课最不敢砍的底子</em>。`,
-          `薪资区间给你做自我定位（levels.fyi + Seek + Glassdoor 2026 数据）—— Grad（0-1 年）$75-95K 澳元；Junior（1-3 年）$95-130K；Mid（3-5 年）$130-180K。具体公司参考：Atlassian $95-130K / Canva $90-125K / CBA + Westpac $80-110K / REA + SEEK $85-125K / Xero $90-125K。<em>我们不承诺、不保证 —— 找工作永远有运气成分。但 9 年 30 期 5000+ 毕业生的就业数据摆在这里，至少能告诉你走这条路的现实概率区间</em>。`,
-        ],
-        poster: { id: 'poster-19', slug: 'p19-career', caption: '图 14 · 12 个月陪跑到拿 Offer' },
-        afterImage: [
-          `2026 澳洲 Junior AI Engineer 起薪参考：`,
-        ],
-        poster2: { id: 'poster-25', slug: 'p25-salary', caption: '图 15 · 起薪区间 + 主要公司对照' },
-        afterImage2: [
-          `这些数字看着不夸张 —— 我们不写"毕业涨薪 50%"这种话术，就是普通澳洲 Junior 的真实水位。`,
-        ],
+        poster2: { id: 'poster-19', slug: 'p19-career', caption: '图 12 · 毕业后 12 个月求职闭环' },
+        afterImage2: [],
       },
 
       {
         id: 'final-cta',
-        h2: '十四、读到这里该怎么办',
+        h2: '十二、读到这里该怎么办',
         beforeImage: [
           `这篇 16 周走完了。如果你读到这里：`,
           `✅ <strong>你已经有 HTML/CSS/JS/Git 基础</strong>—— 你是目标学员，下一步扫下方二维码加顾问聊目标公司 + 目标方向，拿完整大纲 PDF + 2026 Q2 开课日程。`,
