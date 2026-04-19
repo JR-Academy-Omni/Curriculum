@@ -643,8 +643,138 @@ window.MP_ARTICLES = {
       },
 
       {
+        id: 'foundation-knowledge-points',
+        h2: '四、前置基础 L05-L23 · 知识点实拆（description 原文摘录）',
+        beforeImage: [
+          `前两周是"前置基础闯关期"—— HTML/CSS/JS/Git/ES6 一样不落。下面 8 节课的知识点清单全部从 <strong>outline.json 的 description 字段原文</strong>里摘录，不是我替老师编的，括号里的字数是 outline 里这节课 description 的原始长度：`,
+          `🧱 <strong>L05 HTML & CSS 的奥秘</strong>（2464 字 description）`,
+          `　· 网页如何从服务器传到屏幕 · HTML 结构 · Head 解析`,
+          `　· Block vs Inline 元素区分、为什么要区分`,
+          `　· 语义标签 &lt;article&gt; / &lt;section&gt; / &lt;nav&gt; / &lt;header&gt; / &lt;footer&gt;`,
+          `　· HTML5 多媒体 &lt;audio&gt; / &lt;video&gt;`,
+          `　· 表单基础 + 数据验证`,
+          `　· Box Model 盒模型 · Position 定位（static / relative / absolute / fixed）`,
+          `　· Viewport + Media Query 响应式入门`,
+          `　· 跨浏览器兼容性`,
+          `🎨 <strong>L07 HTML & CSS Part 2</strong>（4051 字）`,
+          `　· Emmet 语法（<code>ul&gt;li*5</code> 快速生成 5 个 li）`,
+          `　· 选择器：标签 / 类 / ID / 通配符 / 后代 / 子元素 / 并集 / 链接伪类`,
+          `　· CSS 字体 + 文本属性 · 复合属性一次设置多项`,
+          `　· 三大特性：层叠性 / 继承性 / 优先级权重（含 <code>!important</code>）`,
+          `　· 盒模型详解 · <code>margin: 0 auto</code> 水平居中 · margin 合并塌陷`,
+          `　· Flex 布局：flex-container / flex-item / justify-content / align-items`,
+          `　· flex-grow / flex-shrink / flex-basis 控制排列`,
+          `🔧 <strong>L10 CSS & Sass</strong>（2926 字）`,
+          `　· box-sizing 应用 · content-box vs border-box`,
+          `　· 长度单位：绝对（px/pt/cm）vs 相对（em/rem/vw/vh）`,
+          `　· 文本溢出 word-wrap / word-break`,
+          `　· 伪类与伪元素 :hover / ::before / ::after`,
+          `　· float 应用 · 选择器 specificity 权重计算`,
+          `　· Bootstrap + Semantic UI 对比`,
+          `　· Sass (SCSS) 预处理器：变量 / 嵌套 / mixin`,
+          `　· Material-UI + Ant Design 组件库原理`,
+          `⚙️ <strong>L12 JavaScript 入门</strong>（2452 字）`,
+          `　· JS 从脚本语言到 Web 核心语言的演进`,
+          `　· Data Types · 变量命名规范 · Hoisting 变量提升`,
+          `　· Operators · <code>==</code> vs <code>===</code> 精确差异 · Type Conversion`,
+          `　· 数字 Precision 陷阱与安全处理`,
+          `　· Arrays：创建 / 访问 / sort / filter / break+continue 循环控制`,
+          `　· Conditional Statements · Loops`,
+          `　· Functions · Scope · 参数传递 · Strict Mode`,
+          `　· Objects 建模复杂现实 · 常见 JS 陷阱`,
+          `🌿 <strong>L15 Git Introduction</strong>（3428 字）`,
+          `　· 分布式 vs 集中式版本控制 · 主流 git 系统对比`,
+          `　· git init / mkdir / 仓库初始化`,
+          `　· add / commit / 美化 git log 追溯历史 / .gitignore 配置`,
+          `　· 远程仓库：clone / push / pull`,
+          `　· Sourcetree 图形化工具提效`,
+          `　· 撤回修复：reset / revert / amend / checkout / stash`,
+          `　· 分支管理：merge / rebase / Pull Request / Code Review`,
+          `　· Conflict 冲突解决（merge vs rebase 策略）`,
+          `⚡ <strong>L18 ES6 之魅力</strong>（2777 字）`,
+          `　· let / const · 为何 var 不再流行 · const 不仅仅是常量`,
+          `　· Template Literals 模板字符串（多行 + 插值）`,
+          `　· Destructuring 解构赋值（数组 + 对象 + 函数参数）`,
+          `　· Enhanced Object Literals 增强对象字面量（动态属性名）`,
+          `　· Arrow Functions 箭头函数 + this 革命`,
+          `　· Spread & Rest Operators`,
+          `　· 参数默认值 · 告别 undefined`,
+          `　· Promises 告别回调地狱`,
+          `　· Set & Map 新数据结构`,
+          `　· Iterators & Generators 数据流控制`,
+          `🚀 <strong>L20 ES6 进阶</strong>（2666 字）`,
+          `　· Promises 链式调用 · then/catch/finally · async/await`,
+          `　· Destructuring + Spread/Rest 随堂练习`,
+          `　· Enhanced Object Literals 实战`,
+          `　· Iterators & Generators 自定义 + 生成器函数`,
+          `　· Map & Set 实际应用`,
+          `　· ES6 Modules：import / export`,
+          `　· Symbols 高级应用 + 内置 Symbols`,
+          `+ 配套 <strong>Lab(1)-Lab(6)</strong>（L09 Chrome Debugger + Responsive List / L11 Grid+Flex 卡片 / L14 Responsive 定价卡 / L17 Git 实践 / L22 天气应用 / L23 Promise 进度条）+ <strong>Assignment 01-04</strong>（HTML / CSS / JS / Git 每块独立交付打分）。`,
+        ],
+        poster: { id: 'poster-15', slug: 'p15-backend', caption: '图 04 · 前置基础 L05-L23 · 知识点原文 摘自 outline description' },
+        afterImage: [
+          `这一串下来字数密集是因为 <strong>每一条 · 符号后面都对应老师直播的一个知识点</strong> —— outline 里 description 字段被设计成"要讲什么都要写清楚给学员看"，不是营销用的模糊表达。走完 L23 毕业考核：能写语义化 HTML / 能 Flex 布局 / 能手写 Promise / 能 git merge 解冲突。`,
+        ],
+      },
+
+      {
+        id: 'react-foundation-video',
+        h2: '五、React 入门 L25-L32 · 8 节 Video 录播知识点',
+        beforeImage: [
+          `React 基础是 8 节 Video 录播课，学员自主节奏先过一遍，然后 L113 起的 CareerMate 直播把这些知识点放进真实项目里落地。这 8 节 description 字段加起来约 8000 字，内容覆盖：`,
+          `📦 <strong>L25 Node.js 如何安装</strong>（3403 字）+ <strong>L26 React 如何安装</strong>（1634 字）`,
+          `　· Node 版本管理（nvm）· npm / yarn / bun 对比`,
+          `　· create-react-app 底层工作机制`,
+          `　· VS Code + Chrome DevTools 工作台配置`,
+          `⚛️ <strong>L27 React 项目快速上手</strong>`,
+          `　· React 框架起源 + 版本演进`,
+          `　· JSX 语法 · useState / useEffect 核心概念`,
+          `　· 组件拆分提高复用性 + 可维护性`,
+          `🧱 <strong>L28 React 组件基础</strong>`,
+          `　· SASS + Bootstrap 构建组件外观`,
+          `　· JSX 模板语法深入`,
+          `　· <strong>Props & State</strong> 概念 + 区别联系 + 作用范围`,
+          `　· 组件间通讯：父子 / 兄弟组件`,
+          `　· 综合实例：复杂页面切分组件思想`,
+          `🔀 <strong>L29 React Router</strong>`,
+          `　· SPA 路由原理 · BrowserRouter / HashRouter`,
+          `　· Route / Link / Outlet · 编程式导航 useNavigate`,
+          `　· 动态路由 + 嵌套路由`,
+          `📝 <strong>L30 React 表单处理</strong>`,
+          `　· 受控组件 vs 非受控组件`,
+          `　· 表单验证策略`,
+          `　· 受控输入实战`,
+          `🔌 <strong>L31 React 服务端交互</strong>（1696 字）`,
+          `　· 典型方式：Ajax / Fetch / Axios 对比`,
+          `　· Axios 快速上手 + 配置 + HTTP 请求处理`,
+          `　· <strong>拦截器</strong>：日志记录 / 鉴权 / 错误统一处理`,
+          `　· 封装可复用 Axios 服务`,
+          `　· React 组件<strong>生命周期</strong>：挂载 / 更新 / 卸载`,
+          `　· <strong>VDOM</strong> 虚拟 DOM 工作原理`,
+          `　· 类组件 vs 函数式组件（为什么后者流行）`,
+          `　· <strong>复合组件</strong> + <strong>高阶组件 HOC</strong>`,
+          `　· 开源组件库 vs 企业业务组件库选型`,
+          `　· 动态生成页面 · React 低代码`,
+          `🎣 <strong>L32 React Hooks</strong>（1350 字）`,
+          `　· useState + useEffect 深入`,
+          `　· <strong>自定义 Hooks</strong> 复用状态逻辑`,
+          `　· useTranslation + i18n 国际化`,
+          `　· 状态管理基本概念：状态 / 单一数据源 / 不可变性`,
+          `　· <strong>Context API</strong> 组件间共享状态`,
+          `　· <strong>React Redux</strong> 与 Context 区别`,
+          `　· Jest 单元测试（含 Jasmine 语法）`,
+          `　· Cypress 集成测试`,
+        ],
+        poster: { id: 'poster-3', slug: 'p3-chatroom', caption: '图 05 · React 入门 8 节 Video · 知识点 摘自 outline description' },
+        afterImage: [
+          `L32 结束 React 录播课闭环，你对 Hooks / Context / Redux / HOC / 单测 + 集成测这整条有了系统认识。走到 L113 CareerMate 第一次进实战直播时你已经有完整基础，<em>不是老师还得从"什么是 JSX"开始讲</em>。`,
+        ],
+      },
+
+      {
         id: 'careermate-frontend',
-        h2: '四、CareerMate 前端 L113-L123 · 从空白页到上线 React SPA',
+        h2: '六、CareerMate 前端 L113-L123 · 从空白页到上线 React SPA',
         beforeImage: [
           `CareerMate 是第 30 期延续沿用的课程主轴项目（28 期引入并跑通），全班一起做一个职业发展平台。前端部分 11 节课，从纯 HTML 到 React 上线全打通：`,
           `🧱 <strong>L113 HTML 入门实战：从空白到 CareerMate 网页框架</strong>`,
@@ -668,7 +798,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'careermate-backend',
-        h2: '五、CareerMate 后端 L124-L133 · Express + 数据库 + 认证 + AWS',
+        h2: '七、CareerMate 后端 L124-L133 · Express + 数据库 + 认证 + AWS',
         beforeImage: [
           `前端完成后，L124 起切入后端 10 节：`,
           `🔌 <strong>L124 初识后端世界：Express 与 RESTful API 概念</strong>`,
@@ -691,7 +821,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'careermate-ai',
-        h2: '六、AI 模块 · 第 30 期扩容到 11 节 Live Lesson（28 期 8 节 + 新增 3 节）',
+        h2: '八、AI 模块 · 第 30 期扩容到 11 节 Live Lesson（28 期 8 节 + 新增 3 节）',
         beforeImage: [
           `AI 模块是整个课程过去两年最大的升级主线：26 期没有 → 28 期加 8 节 → <strong>30 期再扩到 11 节</strong>。这里先列 28 期已经跑通、30 期完整沿用的 8 节主骨架：`,
           `🤖 <strong>L134 AI 模块导入与 OpenAI API 初体验 & Prompt Engineering：让 AI 更懂你</strong>（打通 OpenAI API 调用 + Prompt 基础）`,
@@ -717,7 +847,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'react-advanced',
-        h2: '七、React 工程化深入 L152-L157 · CareerMate 之后的加餐',
+        h2: '九、React 工程化深入 L152-L157 · CareerMate 之后的加餐',
         beforeImage: [
           `L141 CareerMate 上线之后，课程给了 6 节 React 工程化 Live Lesson 拉深度：`,
           `🔀 <strong>L152 页面路由和 React Context</strong>（全局状态管理替代方案）`,
@@ -736,7 +866,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'workshops',
-        h2: '八、5 节 Workshop · 主题深潜',
+        h2: '十、5 节 Workshop · 主题深潜',
         beforeImage: [
           `第 30 期 Workshop 延续 28 期节奏排 5 节 —— 每节是一个独立主题的深潜，不属于 CareerMate 主线但面试会问到：`,
           `🤝 <strong>L56 Workshop: Agile Project Management</strong>（Scrum / Kanban / Jira 实操 / Sprint Planning / Retrospective）`,
@@ -754,7 +884,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'labs-assignments',
-        h2: '九、13 Lab + 6 Assignment · 每周都要交的东西',
+        h2: '十一、13 Lab + 6 Assignment · 每周都要交的东西',
         beforeImage: [
           `Lab 和 Assignment 不是选修，是强制的交付。第 30 期沿用的具体清单（参考 28 期 outline）：`,
           `🧪 <strong>Lab 13 节</strong>（浏览器内或本地做完直接交）：`,
@@ -780,7 +910,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'career-pipeline',
-        h2: '十、Career 贯穿 16 周 · L03 → L147 → 毕业后 12 个月',
+        h2: '十二、Career 贯穿 16 周 · L03 → L147 → 毕业后 12 个月',
         beforeImage: [
           `outline 里 courseObjective 写明：「+ 80 多节 Career Coaching Self-paced Learning 课程 + 12 月简历内推」。第 30 期 Career 骨架（沿用 28 期结构）：`,
           `🎯 <strong>L03 开营仪式 & 职业路线图</strong>（W1，180 分钟）—— 把 AI Engineer 五维能力地图铺开，定学习目标`,
@@ -798,7 +928,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'backend-directions',
-        h2: '十一、后端 4 方向并行 · 一份学费两个方向',
+        h2: '十三、后端 4 方向并行 · 一份学费两个方向',
         beforeImage: [
           `前端所有人一样，后端给 4 方向。outline 里 features 第 2 条写明：「一次费用，学双方向 —— 不仅仅可以终生学习 AI Web 全栈班，同时可以学习 .Net+Reactjs 以及 Nodejs+Reactjs 两个方向」。`,
           `📍 phase 1（26 期）= .NET 方向（176 节）`,
@@ -820,7 +950,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'official-highlights',
-        h2: '十二、outline 里官方 10 条课程亮点（原文照搬）',
+        h2: '十四、outline 里官方 10 条课程亮点（原文照搬）',
         beforeImage: [
           `把营销交给课程方自己讲 —— 下面 10 条是 outline.json 里 highlights 字段的原文，一个字都没改：`,
           `1️⃣ <strong>Junior AI Engineer 入门首选</strong>：从全栈基础到 AI 产品集成，系统掌握 RAG、OpenAI API 等核心技能，独立交付能上线的 AI 应用`,
@@ -847,7 +977,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'next-step',
-        h2: '十三、读完这篇该怎么办',
+        h2: '十五、读完这篇该怎么办',
         beforeImage: [
           `这篇课程大纲拆到这里差不多就结束了 —— outline.json 里的 158 节课 / 9 种 type / CareerMate 29 节主线 / 5 节 Workshop / 13 Lab / 6 Assignment / 后端 4 方向 / 10 条官方亮点，一条不藏讲完了。如果你看到这里：`,
           `✅ <strong>如果你已经有 HTML/CSS/JS/Git 基础</strong>—— 你是这门课明确的目标学员（看 outline 的 prerequisiteknowledge 字段），下一步是扫下方二维码加顾问，聊聊你的目标公司 + 目标方向，拿完整 158 节 + 80+ 节 Career 的大纲 PDF。`,
