@@ -561,6 +561,303 @@ window.MP_ARTICLES = {
     ],
   },
 
+  /* ==========================================================================
+   * 课程大纲视角 · 176 节课按 6 大模块拆开看
+   *   目标读者：已经决定要报一个 Bootcamp、但想先把课程到底教什么看清楚的技术型学员
+   *   叙事角度：跳过营销故事 —— 直接从 outline.json 抽 real lesson code + 标题，
+   *             按 HTML/CSS/JS → React → 后端 → AI+RAG → DevOps → 团队协作 6 大模块讲
+   *   数据口径：phase 1（26 期 .NET 方向）共 176 节，作为一期完整样本
+   * ========================================================================== */
+  curriculum: {
+    perspectiveLabel: '课程大纲视角',
+    bootcampSlug: 'fullstack-ai',
+    title: '匠人全栈项目班 176 节课到底教什么：六大模块逐个拆开看',
+    subtitle: '一期 176 节课、lesson code 全部实名 · 从 HTML/CSS/JS 到 RAG + JWT + CI/CD，跟着每周 L?? 范围看一遍',
+    author: '匠人 AI · Jin 老师（课程大纲版）',
+    readTime: '阅读约 14 分钟',
+    publishDate: '2026·04',
+
+    lead: `前两篇（学生视角 / 家长视角）讲的是市场、故事、Offer 数据。这篇跳过所有营销叙事——直接把课程大纲摊开给你看。\n\n匠人全栈项目班第 26 期（.NET 方向）完整排了 176 节课，按类型分：46 节 Live Lesson（讲师直播）+ 52 节 Video（录播）+ 26 节 Assignment（作业）+ 11 节 Lab（动手实验）+ 24 节 Tutorial（辅导）+ 8 节 Workshop（工作坊）+ 9 节 Information（资料）。\n\n这篇把所有这些按<strong>六大技术模块</strong>重新排序讲，并且每一节课都给出真实的 lesson code（L01、L42、L145 这种）——不是拍脑袋写"我们也教 React"，是告诉你"L39-L50 是 REACT(1)-REACT(5)、L79 是 REACT(6) Redux、L102 是 REACT(8) CI/CD、L105 是 REACT(9) Authentication Lab"。读完你应该能判断：这门课技术深度够不够、是不是真的覆盖了 2026 Junior AI Engineer 的 JD。`,
+
+    sections: [
+
+      {
+        id: 'module-map',
+        h2: '一、176 节课怎么分布 · 六大模块一览',
+        beforeImage: [
+          `先给张全景。176 节课按主题聚类，实际覆盖这六大模块（基于 phase 1 统计，剩余 phase 结构一致）：`,
+          `🔷 <strong>前端基础</strong>（HTML / CSS / JS / Git / TS / ES6）—— <em>21 节</em>`,
+          `🟣 <strong>React 前端工程</strong>（React 1-9 + Next.js + Redux + Unit Test）—— <em>44 节</em>`,
+          `🟡 <strong>后端（以 .NET 方向为例）</strong>（C# + WebAPI + EF Core + JWT）—— <em>23 节</em>`,
+          `🟢 <strong>AI + RAG 集成</strong>（Embeddings / RAG / Azure AI / OpenAI）—— <em>11 节</em>`,
+          `🔴 <strong>DevOps / 部署</strong>（AWS / CI/CD / ESLint / Docker）—— <em>9 节</em>`,
+          `⚫ <strong>Agile / Workshop / 协作</strong>（Agile 方法论 / AI Workshop / Vibe Coding）—— <em>9 节</em>`,
+          `⚪ <strong>项目 + 求职模块</strong>（Project 1/2/3 + 简历 + LinkedIn + IT Career）—— <em>26 节</em>`,
+          `以上是"讲师讲 / 实操 / 作业"的内容分布；剩下的 30+ 节是 Information（课前须知 / 工具安装引导 / 作业说明等支撑材料），不单独展开。`,
+        ],
+        poster: { id: 'poster-24', slug: 'p24-jd-coverage', caption: '图 01 · 176 节课按 6 大模块分布' },
+        afterImage: [
+          `数字背后的设计逻辑很直接：前端 21 + 44 = 65 节，占比最大（这是 2026 Junior JD 里 React+TS 要求 <em>98%</em> 对应的课时兑现）；.NET 方向 23 节（Node/Python/Java 对应方向课时量相同，只是框架不同）；AI 模块 11 节看着不多，但每一节都是"原理 → 项目落地"的高密度内容——从 Embeddings 到 Building RAG from Scratch in JS，一节都不跳。`,
+        ],
+      },
+
+      {
+        id: 'module-1-frontend-base',
+        h2: '二、模块 1 · 前端基础 21 节（L06-L37 区间）',
+        beforeImage: [
+          `不管后端方向选哪个，前端这 21 节都是必修，因为 React + TypeScript 是澳洲 2026 Junior 标配（JD 覆盖率 98%）。真实 lesson 排布：`,
+          `🧱 <strong>L06 HTML & CSS 的奥秘</strong> + <strong>L09 HTML&CSS (Part 2)</strong>—— 两节讲完语义化标签、盒模型、Flexbox 底层；`,
+          `🎨 <strong>L12 CSS & Sass</strong>—— Sass 变量 / mixin / nesting，带 <strong>Lab(2) 用 Grid+Flexbox 实现卡片布局</strong>；`,
+          `⚙️ <strong>L14 JavaScript</strong>—— 基础 + DOM 操作，带 <strong>Lab(5) 构建天气应用</strong>；`,
+          `🌿 <strong>L17 Git Introduction</strong>—— 分支 / merge / rebase / PR，带 <strong>Lab(4) Git 实践练习</strong>；`,
+          `⚡ <strong>L21 ES6 现代 JavaScript</strong> + <strong>L24 ES6 进阶</strong>—— Promise、async/await、模块化、解构、Spread，配 <strong>Lab(6) 用 Promise + ES6 做进度条</strong>；`,
+          `📐 <strong>L11 / L16 / L23 Tutorial</strong>—— 三次辅导课过前端基础题；`,
+          `✅ <strong>Assignment × 5</strong>—— HTML/CSS/JS/Git/ES6 每块都有独立作业产出。`,
+        ],
+        poster: { id: 'poster-2', slug: 'p2-demo-vs-prod', caption: '图 02 · 前端基础 21 节 —— 不是 tutorial 抄写' },
+        afterImage: [
+          `这块比很多在线课深的地方在 Lab 和 Assignment —— 每个知识点都有要交的具体代码产出。到 L28 时会有一节 <strong>Technical SEO 基础</strong>，学完能对作品集做基本 SEO 优化，是很多同类课不讲的细节。`,
+        ],
+      },
+
+      {
+        id: 'module-2-react',
+        h2: '三、模块 2 · React 前端工程 44 节（最厚的一块）',
+        beforeImage: [
+          `React 是整个前端的重头，44 节分三条主线排开：`,
+          `📘 <strong>React 基础系列（L39-L50）</strong>——`,
+          `　<em>L39 REACT(1): React with Modern JavaScript</em>`,
+          `　<em>L42 REACT(2): Make it stateful</em>`,
+          `　<em>L44 REACT(3): Make it interactive</em>`,
+          `　<em>L48 REACT(4): Talk to remote</em>`,
+          `　<em>L50 REACT(5): Thinking in React</em>`,
+          `五节按 from scratch → stateful → interactive → remote → thinking 这条真实的 React 学习路径走，不是拿官方 docs 复读。`,
+          `🔧 <strong>React 工程进阶系列（L79-L105）</strong>——`,
+          `　<em>L79 REACT(6): Redux & Redux Thunk</em>（状态管理）`,
+          `　<em>L95 REACT(7): Unit Test</em>（Jest + RTL）`,
+          `　<em>L102 REACT(8): Iteration 0, CI/CD, ESLint 和 Commit Hook</em>（工程化）`,
+          `　<em>L105 REACT(9): Authentication Lab</em>（鉴权全流程）`,
+          `这四节是市面同类课经常省掉的 —— 但 Atlassian / Canva Junior 面试会考的正好就是 "React + Redux + 测试 + CI/CD"。`,
+          `🚀 <strong>Next.js 渲染模式（L107 + L141）</strong>—— SSR / SSG / ISR / Server Components，对应 2026 JD 里明确要求 Next.js 经验的岗位；`,
+          `📺 <strong>Video 补充（L32-L38）</strong>—— React 快速上手 / 组件基础 / Router / 表单 / 服务端交互 / Hooks，录播随时复习。`,
+        ],
+        poster: { id: 'poster-3', slug: 'p3-chatroom', caption: '图 03 · React 44 节 = 基础 + Redux + Test + CI/CD + Next.js' },
+        afterImage: [
+          `44 节配 <strong>5 次 Assignment + 2 次 Lab + 3 次 Tutorial</strong>（L43 / L45 / L49 等），每一个 API 都要动手写、每一轮重构都要交 PR。毕业时简历上写"React 1 年经验"不虚——因为你真的从 React 基础一路做到了 Redux + Unit Test + CI/CD + Next.js SSR。`,
+        ],
+      },
+
+      {
+        id: 'module-3-backend',
+        h2: '四、模块 3 · 后端 4 方向，以 .NET 23 节为例',
+        beforeImage: [
+          `前端所有人都学 React，但后端给 4 个方向可选：Node.js / .NET / Python / Java。每个方向的课时量和深度相同，只是框架不一样。这里以 <strong>26 期 .NET 方向</strong>为样本展开：`,
+          `🟪 <strong>L60-L69 C# 基础（.NET 1-4）</strong>——`,
+          `　<em>L60 .NET(1): C# 编程语言基础</em>`,
+          `　<em>L63 .NET(2): Basic OOP Fundamental</em>`,
+          `　<em>L67 .NET(3): 高级面向对象</em>`,
+          `　<em>L69 .NET(4): C# 常用集合类型详解</em>`,
+          `这四节把语言层面铺完：值类型 / 引用类型、装箱拆箱、泛型约束、Linq 底层。`,
+          `🏗️ <strong>L72-L77 Web API 架构（.NET 5-7）</strong>——`,
+          `　<em>L72 构建 Web API：概念、管道、中间件、MVC</em>`,
+          `　<em>L75 特性、模型验证、切面编程、过滤器、自定义中间件</em>`,
+          `　<em>L77 泛型、依赖注入生命周期、异步编程、扩展方法</em>`,
+          `三节讲清 ASP.NET Core 的真实工程架构，不是"创建一个 CRUD Controller 就完事"。`,
+          `💾 <strong>L84 + L165 数据库与 ORM（.NET 8 + 9）</strong>——`,
+          `　<em>L84 数据库、SQL Script、ADO.NET</em>（原生 SQL 层）`,
+          `　<em>L165 Entity Framework Core、Linq、Swagger、NLog</em>（ORM + 工具）`,
+          `🔐 <strong>L166 认证与授权（.NET 10）</strong>—— JWT Authentication + RBAC 授权，这是 Atlassian/Canva 面试必问的一块；`,
+          `🧪 <strong>L97 .NET(12) Unit Test</strong>—— xUnit + Moq，配合 CI/CD 流水线。`,
+          `🎯 <strong>L100 .NET(11) 事件与委托</strong>—— 进阶语法，跟 Observer 模式一起讲。`,
+        ],
+        poster: { id: 'poster-15', slug: 'p15-backend', caption: '图 04 · .NET 方向 23 节 —— C# → WebAPI → EF Core → JWT' },
+        afterImage: [
+          `Node.js 方向对应 Express + TypeORM + JWT；Python 方向对应 FastAPI + SQLAlchemy + LangChain；Java 方向对应 Spring Boot + JPA。四个方向都有一样长度的"基础语言 → Web 框架 → 数据库 → 认证 → 测试"路径，只是技术栈不同。报名前免费一对一咨询会基于你背景 + 目标公司（金融偏 .NET/Java、互联网偏 Node/Python）给选方向建议。`,
+        ],
+      },
+
+      {
+        id: 'module-4-ai-rag',
+        h2: '五、模块 4 · AI + RAG 集成 11 节（30 期升级核心）',
+        beforeImage: [
+          `AI 模块是 26 期之后加上去的，30 期又从"附加选修"提升到"核心栈"。11 节每一节都有具体 lesson code：`,
+          `🧠 <strong>L142 The Four Prototyping Patterns: Prompting, Fine-Tuning, RAG, Agents</strong>—— 开宗明义把 2026 AI 应用开发的四种范式讲清楚，先建认知再动手；`,
+          `📐 <strong>L143 Introduction to Embeddings</strong>—— 向量化原理、语义相似度、Embedding 模型选型；`,
+          `🔍 <strong>L144 Introduction to Retrieval Augmented Generation (RAG)</strong>—— 为什么 RAG、chunking 策略、reranker；`,
+          `⚒️ <strong>L145 Building RAG from Scratch in JavaScript</strong>—— <em>这节最硬</em>：不用 LangChain，纯 JS 从 Embedding → Vector Store → Retrieval → Prompt Injection → Answer Generation 全流程手写一遍。做完你对 RAG 底层发生了什么有完整理解；`,
+          `🔌 <strong>L146 Integrate Azure AI and OpenAI</strong>—— 商业环境下怎么用企业级 API（Azure 合规 + OpenAI 推理），带 failover 和限流；`,
+          `🗣️ <strong>L111-L112 Azure AI Service & TTS + Streaming</strong>—— 文字转语音、流式响应（Chat UI 必备）；`,
+          `🎤 <strong>L173 AI in Programming Workshop</strong>—— 8 节 Workshop 之一，用 AI coding 工具（Cursor / Claude Code / Copilot）做真实需求；`,
+          `🎨 <strong>L176 Vibe Coding</strong>—— 最后一节，讲 2026 最新的 AI-first 开发范式。`,
+        ],
+        poster: { id: 'poster-1b', slug: 'p1b-fullstack-not-enough', caption: '图 05 · AI + RAG 11 节 —— 从 Embeddings 到 Building RAG from Scratch' },
+        afterImage: [
+          `这 11 节里最关键的就是 <strong>L145 "Building RAG from Scratch in JavaScript"</strong>。很多课教 RAG 是"装 LangChain / import chain.run()"——这节不一样，纯 JS 自己实现 chunking + vector search + prompt stuffing。毕业时面试被问"你给我讲一下 RAG 里 chunking 为什么选 512 token"，你能讲出理由——这是区分"做过 demo"和"做过产品"的那条线。`,
+          `AI 模块总体设计思路：<strong>不做算法训练，专注业务集成</strong>。L142 把 Fine-Tuning / RAG / Agents 4 种 pattern 讲清楚后，课程明确选了 RAG + Agent 作为 Junior AI Engineer 能落地的技术栈——不是因为 Fine-Tuning 不重要，是因为 Junior 岗真实在做的 99% 都是前两者。`,
+        ],
+      },
+
+      {
+        id: 'module-5-devops',
+        h2: '六、模块 5 · DevOps 5 阶 · 9 节真实部署',
+        beforeImage: [
+          `市面同类课最容易跳过的部分 —— 教完 React + Node 就结束了，不讲 Plan / Build / Test / Release。这门课反着来，9 节贯穿整个流程：`,
+          `📅 <strong>Plan 阶段</strong>—— L94 <em>Agile 方法论：解锁团队的协作潜力</em>（Jira User Story、Sprint 规划）；`,
+          `🌿 <strong>Develop 阶段</strong>—— L17 <em>Git Introduction</em>（分支策略、PR Review）+ L20 <em>Lab(4) Git 实践</em>；`,
+          `🐳 <strong>Build 阶段</strong>—— L102 <em>REACT(8): Iteration 0, CI/CD, ESLint 和 Commit Hook</em>（GitHub Actions 流水线、预提交钩子）；`,
+          `🧪 <strong>Test 阶段</strong>—— L95 <em>REACT(7) Unit Test</em>（Jest + RTL）+ L97 <em>.NET(12) Unit Test</em>（xUnit + Moq）+ Assignment 回归；`,
+          `🚀 <strong>Release 阶段</strong>—— L57 <em>利用 AWS 部署前端 SPA 项目</em>（S3 + CloudFront + Route53 + HTTPS）+ L105 <em>REACT(9) Authentication Lab</em>（生产鉴权）。`,
+          `这 9 节配合 16 周里的 3 个项目，全流程每个 sprint 都会真实跑一遍 Plan → Develop → Build → Test → Release。面试官问"你部署过 React 到 AWS 吗"能直接讲 S3 static hosting 的具体配置和 CloudFront cache 策略，不是眼神闪躲。`,
+        ],
+        poster: { id: 'poster-5', slug: 'p5-devops', caption: '图 06 · DevOps 5 阶全流程（Plan → Release）' },
+        afterImage: [
+          `16 周里用到的完整工具栈（每一个都至少在一个项目里配合过，不是 PPT 上罗列）：`,
+        ],
+        poster2: { id: 'poster-6', slug: 'p6-stack', caption: '图 07 · 16 周会真实用到的 15+ 技术栈' },
+        afterImage2: [
+          `这张栈图可以对你现在简历上写的技术一对一核对：<strong>"有项目验证"那栏能打勾的有几个？</strong>大部分转码同学自己评估后发现能打勾的不超过 3 个——16 周目标就是让这栏每一项都有项目证据。`,
+        ],
+      },
+
+      {
+        id: 'module-6-agile',
+        h2: '七、模块 6 · Agile + Workshop 协作 9 节',
+        beforeImage: [
+          `8 节 Workshop + 1 节 Agile 方法论课，是团队协作经验的主场：`,
+          `🤝 <strong>L94 Agile 方法论：解锁团队的协作潜力</strong>—— Scrum / Sprint / Kanban / Standup / Retro 完整铺一遍；`,
+          `🧠 <strong>L173 AI in Programming Workshop</strong>—— 用 Claude Code / Cursor / Copilot 做真实需求（AI-native 工作流）；`,
+          `🎨 <strong>L176 Vibe Coding</strong>—— 2026 最新 AI-first 开发范式，写 spec 交给 AI 实现；`,
+          `+ 5 节其他 Workshop（Figma 协作、Code Review 实战、Bug 复盘、Scrum Master 角色模拟等）；`,
+          `+ 实战中对接 4 类真人角色：<strong>BA（业务分析师）/ UI Designer / DevOps / QA Tester</strong>——这是团队协作项目（W11-W13）里的核心环节。`,
+        ],
+        poster: { id: 'poster-18', slug: 'p18-collab', caption: '图 08 · 团队协作的 4 类角色' },
+        afterImage: [
+          `澳洲面试（特别是 Atlassian / Canva）会专门设 <strong>Values Round</strong> 考协作场景：你跟 PM 吵过架吗？DevOps 提了什么让你改的建议？Code Review 被 block 怎么处理？这一轮的答案全部来自这 9 节课 + 团队项目 —— 不做过演不出来。`,
+        ],
+      },
+
+      {
+        id: 'projects',
+        h2: '八、3 个能写进简历的项目（贯穿 16 周）',
+        beforeImage: [
+          `课程的 26 节"项目 / 求职"模块主要挂在 3 个大项目上，这 3 个项目对应的 lesson code 如下：`,
+          `🛠️ <strong>Project 1 · 全栈 Web 应用（L29-L57 区间）</strong>`,
+          `　产出：React 前端 + 后端 REST API + PostgreSQL + AWS 部署上线版；`,
+          `　关键课：L29 <em>Project 1 介绍</em> / L30 <em>Project 1 Tutorial</em> / L57 <em>利用 AWS 部署前端 SPA</em>；`,
+          `　简历一行写法：「独立设计并上线全栈应用 · 前端 React + TS / 后端 {方向} / PostgreSQL + Redis / AWS 部署 · GitHub 链接可查」。`,
+          `🤖 <strong>Project 2 · AI 商业项目（L141-L173 区间）</strong>`,
+          `　产出：基于 RAG + OpenAI/Azure AI 做一个真业务场景的 AI 应用（企业知识库问答 / 客服工单分类 / 合同审阅等）；`,
+          `　关键课：L142 <em>Four Patterns</em> / L144 <em>RAG 原理</em> / L145 <em>Building RAG from Scratch</em> / L146 <em>Azure AI + OpenAI</em> / L173 <em>AI Workshop</em>；`,
+          `　简历一行写法：「主导 AI 商业项目 · RAG 知识库问答 · 真实业务数据 · 日活 XXX · 上线地址」。`,
+          `👥 <strong>Project 3 · 团队协作项目（W11-W13）</strong>`,
+          `　产出：6-8 人小组 + BA + UI + DevOps 协作，跑 2 个 Sprint；`,
+          `　关键课：L94 <em>Agile 方法论</em> + 团队 Sprint 实战；`,
+          `　简历一行写法：「6 人小组 Agile 项目 · 负责 XXX 模块 · 10+ PR · Code Review · Sprint Demo」。`,
+        ],
+        poster: { id: 'poster-12', slug: 'p12-projects', caption: '图 09 · 3 个项目对应的 lesson code 区间' },
+        afterImage: [
+          `项目之外，毕业那天实际带走的是这 7 件东西 —— 每一件都能直接贴进简历 / LinkedIn / GitHub：`,
+        ],
+        poster2: { id: 'poster-17', slug: 'p17-deliverables', caption: '图 10 · 毕业带走的 7 件真东西（3 项目 + AI 实习 + 简历包 + 作品集 + 12 月辅导）' },
+        afterImage2: [
+          `别的 Bootcamp 毕业给张证书就算数。这门课把"毕业那天要能去面试"倒推回来每一件做成实体交付 —— 这是 9 年 30 期踩出来的 checklist。`,
+        ],
+      },
+
+      {
+        id: 'career-lessons',
+        h2: '九、求职模块 26 节 · 从 L03 讲到 L174',
+        beforeImage: [
+          `求职不是"等毕业再说"，是从 L03 就开始：`,
+          `🎯 <strong>L03 Introduction & Career</strong>（W1）—— 开课第一讲就把澳洲 IT 求职闭环讲清楚（先理解目标再学内容）；`,
+          `📄 <strong>L113 如何撰写 IT 专业简历</strong>（W7 左右）—— 第一次简历打磨；`,
+          `💼 <strong>L150 手把手教你运营 LinkedIn</strong>（W10 左右）—— LinkedIn 优化 + 招聘算法 + 标签；`,
+          `📝 <strong>L174 如何撰写 IT 专业简历</strong>（W15，第二次）—— 基于 3 个项目 + 实习履历重写简历；`,
+          `🎤 <strong>3 次一对一模拟面试</strong>（W15-W16）—— 行为面 / 技术面 / 编程面；`,
+          `🤝 <strong>校友内推启动</strong>（W16 + 毕业后 12 个月）—— FLAG / Atlassian / Canva / CBA 在职校友内推通道；`,
+          `📞 <strong>12 个月陪跑</strong>—— 毕业后 12 个月内简历更新、面试复盘、Offer 谈判不断供。`,
+        ],
+        poster: { id: 'poster-19', slug: 'p19-career', caption: '图 11 · 求职闭环 —— 贯穿 16 周 + 毕业 12 个月' },
+        afterImage: [
+          `求职环节和课程内容是一一对应的：<strong>L03 定目标 → L113 第一版简历 → L150 LinkedIn → L174 第二版（基于真项目 + 实习）重写</strong>。这样你拿出去投的简历上每一行都对应到课程里一节具体 lesson，面试官问"你说你做过 JWT 认证，是哪个项目里用的"，你能说"L166 .NET(10) 里学的 JWT，在 Project 1 的用户系统里实现了"。`,
+        ],
+      },
+
+      {
+        id: 'week-mapping',
+        h2: '十、16 周节奏 · 每周对应 L?? 范围',
+        beforeImage: [
+          `把上面所有模块按时间线串起来 —— 每一段对应真实 lesson code 范围（便于你估算自己每周需要投入的学习强度）：`,
+          `📅 <strong>W1-3 前端基础 + 作品集（L01-L37）</strong>—— HTML/CSS/JS/Git/ES6 + Lab(1)(2)(3)(4)(5)(6) + Tutorial 1-3。交付：Vercel 上线的个人作品集。`,
+          `📅 <strong>W4-5 React 基础（L39-L57）</strong>—— REACT(1)-(5) + AWS SPA 部署。交付：一个独立部署的 React App。`,
+          `📅 <strong>W6-7 后端方向起步（L60-L94）</strong>—— .NET 1-5 / 或 Node / Python / Java 对应起步。`,
+          `📅 <strong>W8-10 React 工程化 + 后端深入（L95-L130）</strong>—— REACT(6-9) Redux + Test + CI/CD + Authentication Lab；后端 Web API + EF Core + JWT。交付：全栈 Project 1。`,
+          `📅 <strong>W11-13 团队协作项目 + Next.js（L141-L160）</strong>—— 6-8 人小组跑 2 个 Sprint + Next.js 渲染模式。交付：团队 Project 3 + 10+ PR + Code Review。`,
+          `📅 <strong>W14-15 AI + RAG + 商业项目（L142-L173）</strong>—— AI 模块 11 节 + AI 商业项目。交付：AI Project 2 + 实习启动。`,
+          `📅 <strong>W16 毕业 + 求职启动（L174-L176）</strong>—— 简历打磨（第二版）+ LinkedIn + 模拟面试 + Vibe Coding。交付：简历 + LinkedIn + 3 次模拟面试录像。`,
+        ],
+        poster: { id: 'poster-16', slug: 'p16-timeline', caption: '图 12 · 16 周 lesson code 映射' },
+        afterImage: [
+          `这个映射只是建议节奏 —— 26-28 期的实际运行里，每个学员完成 176 节课的时间在 14-20 周之间浮动。课程内容按 <em>学员自主节奏</em>推进，但直播课（46 节）按固定日程开，错过也有录播补；12 个月辅导期内你有充足时间反复追赶。`,
+        ],
+      },
+
+      {
+        id: 'cohort-history',
+        h2: '十一、26/27/28 期的课程演进 · 30 期在哪里补了 AI',
+        beforeImage: [
+          `phase 1 (26 期 .NET 方向) 是 2025 H2 开的班，176 节；phase 2 (27 期寒假班) 迭代到 151 节（更密集）；phase 3 (28 期 Node.js 方向) 158 节，AI 模块从"附加选修"上移到"核心技术栈"。<strong>30 期（2026 Q2 开课）</strong>在这个基础上继续升级：`,
+          `📍 <strong>AI 模块扩容</strong>：从 6 节（28 期）扩到 11 节，新增 <em>Embeddings 原理</em> + <em>Building RAG from Scratch in JS</em> + <em>Azure AI + OpenAI 集成</em>；`,
+          `📍 <strong>后端 4 方向并行</strong>：以前一期只跑 1 个方向，30 期同时开 Node / .NET / Python / Java 四班，学员按咨询结果选方向；`,
+          `📍 <strong>项目 2 从 Web 改成 AI 商业</strong>：以前 Project 2 是"给业务加个管理后台"，30 期改成"给业务做 AI 应用集成"，带真实甲方；`,
+          `📍 <strong>实习方向转 AI</strong>：以前合作企业实习是通用 Web 开发，30 期全部转 AI 方向（RAG / LLM 业务集成）；`,
+          `📍 <strong>求职辅导 6 → 12 个月</strong>：2026 Junior 岗拿 Offer 周期变长，辅导期同步拉长；`,
+          `📍 <strong>新增 Vibe Coding 收官课（L176）</strong>：2026 最新 AI-first 开发范式，让毕业学员直接跟上前沿。`,
+        ],
+        poster: { id: 'poster-20', slug: 'p20-upgrades', caption: '图 13 · 第 30 期 vs 26-28 期的 6 项升级' },
+        afterImage: [
+          `每一期升级不是"推翻重做"——是看过去一期学员的就业数据 + 当时市场 JD 后做的增量调整。lesson 核心代码（L01-L180 骨架）保留了 9 年的稳定性，变的是 AI / DevOps / 求职辅导这几块的颗粒度和深度。`,
+          `顺带附上 2026 澳洲 Junior AI Engineer 起薪参考（levels.fyi + Seek + Glassdoor 数据）：`,
+        ],
+        poster2: { id: 'poster-25', slug: 'p25-salary', caption: '图 14 · 2026 澳洲 Junior AI Engineer 薪资区间' },
+        afterImage2: [
+          `Grad（0-1 年）$75-95K / Junior（1-3 年）$95-130K / Mid（3-5 年）$130-180K 澳元。具体区间参考：Atlassian $95-130K / Canva $90-125K / CBA + Westpac $80-110K / REA + SEEK $85-125K。数据仅供定位，不承诺不保证。`,
+        ],
+      },
+
+      {
+        id: 'track-record',
+        h2: '十二、9 年 30 期 5000+ 毕业生 · 课程稳定的底子',
+        beforeImage: [
+          `把这篇课程大纲讲完，最后交代一下"为什么你应该相信这份大纲会被真的讲完"—— 因为它已经被讲完了 29 次。`,
+          `匠人学院这门全栈项目班从 <strong>2017 年开到现在，9 年 30 期 5000+ 位毕业生</strong>。过往每期的 lesson 设计、直播安排、Lab 产出、项目评估流程都有完整档案（这也是为什么我能给你甩出具体的 lesson code 到 L176）。澳洲主流公司里几乎都坐着匠人校友：<strong>Atlassian / Canva / CBA / Westpac / NAB / ANZ / REA / SEEK / Xero / Deloitte</strong>——不是一两个，是一整批。`,
+          `这个校友密度是 Junior AI Engineer 求职最值钱的资产 —— 毕业后投简历不是冷投，是走内推，成功率是冷投的 5-8 倍（Seek 数据）。`,
+        ],
+        poster: { id: 'poster-7', slug: 'p7-testimonials', caption: '图 15 · 9 年 30 期 5000+ 毕业生的真实轨迹' },
+        afterImage: [
+          `写到这里 176 节课的六大模块 + 3 个项目 + 求职闭环讲完了。如果你是先看了学生版或家长版再点进这篇大纲版——那恭喜，说明你已经过了"要不要学"这一关，只差"报哪一期 / 哪个方向"这最后一问。`,
+          `最后这一问我们用 <strong>一对一免费咨询</strong>解决：顾问基于你背景 + 目标公司 + 签证情况推荐方向，不是让你随便挑。扫下方二维码加顾问（备注「engineer30 大纲版」），可以拿到 278 节完整大纲 PDF（包含每节 lesson 的详细描述和配套材料清单）。`,
+        ],
+      },
+    ],
+
+    cta: {
+      title: '176 节完整大纲 PDF · 一对一免费方向咨询',
+      body: '9 年 30 期 5000+ 毕业生同款课程骨架。扫码添加课程顾问（备注「engineer30 大纲版」）领取：278 节完整大纲 PDF（含每节 lesson 详细描述 + 配套 Lab/Assignment 清单）+ 4 个后端方向深度对比表 + FLAG 导师背景 + 第 30 期（2026 Q2 开课）早鸟优惠 + 分期方式 + 1 对 1 免费方向咨询。',
+      qrcodeNote: '扫码添加课程顾问 · 备注「engineer30 大纲版」',
+      linkText: '点击阅读原文 → 查看 278 节完整课程详情',
+    },
+
+    usedPosters: [
+      'poster-24', 'poster-2', 'poster-3',
+      'poster-15', 'poster-1b',
+      'poster-5', 'poster-6', 'poster-18',
+      'poster-12', 'poster-17', 'poster-19',
+      'poster-16', 'poster-20', 'poster-25',
+      'poster-7',
+    ],
+  },
+
 };
 
 /* ==========================================================================
@@ -568,7 +865,8 @@ window.MP_ARTICLES = {
  * ========================================================================== */
 
 // 当前视角 key，localStorage 持久化
-window.MP_CURRENT_KEY = (localStorage.getItem('mp-perspective') === 'parent') ? 'parent' : 'student';
+const _savedKey = localStorage.getItem('mp-perspective');
+window.MP_CURRENT_KEY = (_savedKey === 'parent' || _savedKey === 'curriculum') ? _savedKey : 'student';
 
 // 兼容 shim：window.MP_ARTICLE 仍然可用，动态指向当前视角的数据
 Object.defineProperty(window, 'MP_ARTICLE', {
@@ -675,7 +973,7 @@ function renderArticle() {
   // 顶栏统计徽章
   const tally = document.getElementById('stats-tally');
   if (tally) {
-    const perspClass = window.MP_CURRENT_KEY === 'parent' ? 'blue' : 'red';
+    const perspClass = window.MP_CURRENT_KEY === 'parent' ? 'blue' : window.MP_CURRENT_KEY === 'curriculum' ? 'yellow' : 'red';
     tally.innerHTML = `<span class="pill ${perspClass}">${data.perspectiveLabel}</span><span class="pill">${figCounter} 张配图</span><span class="pill">${data.sections.length} 个 Section</span><span class="pill">${estimateWords(root)} 字</span><span class="pill">${data.readTime}</span>`;
   }
 
