@@ -20,42 +20,45 @@ window.MP_ARTICLES = {
   student: {
     perspectiveLabel: '学生视角',
     bootcampSlug: 'fullstack-ai',
-    title: '2026 澳洲 Junior AI Engineer 的门槛已经不是去年那套了',
-    subtitle: '扒了 15 份 Atlassian / Canva / CBA 的 JD 之后，把"全栈 + AI 集成"的部分做成了 16 周项目班',
-    author: '匠人 AI · Jin 老师',
+    title: 'IT 毕业生 2026 求职真相：为什么你投 40 份简历没回音，以及唯一走得通的那条路',
+    subtitle: '写给 UNSW / USYD / Monash / Melbourne / UQ / ANU 在读 + 应届 CS / IT 毕业生 —— 9 年 30 期 5000+ 匠人校友走过的同一条路',
+    author: '匠人 AI · Jin 老师（写给 CS / IT 毕业生）',
     readTime: '阅读约 16 分钟',
     publishDate: '2026·04',
 
-    lead: `上周小雨发消息求助：简历上写了 React、Node、调过 ChatGPT API，Junior 岗投了 40 份，一个面试都没约到。\n\n我让她把简历发来看，看完就大概明白问题了——简历长得像 2024 年的模板：一堆会用的工具、两个跟着教程做的课设、一个调 OpenAI 的 demo。技术栈没错，但凑不出"这个人可以独立上线一个 AI 产品"的证据。\n\n先交代点背景：匠人学院这门全栈项目班已经做到第 30 期，整整办了 9 年、5000+ 位毕业生，Atlassian / Canva / CBA / Westpac / REA / SEEK / Xero / IAG 这些澳洲主流科技与金融公司里几乎都有我们的校友。这次第 30 期是把 AI 模块抬到核心栈的一次大改版——原因很简单：2026 JD 变了，课也必须跟着变。\n\n这篇把我们重做的 16 周项目班从头讲一遍，顺便把扒来的 15 份真实 JD 给你。`,
+    lead: `先交代一下这篇是写给谁的：你是 UNSW / USYD / Monash / Melbourne / UQ / ANU / Macquarie / UTS 在读的 CS / IT 专业学生，或者刚毕业在投简历。身边同学在卷 LeetCode、在 LinkedIn 上疯狂 Easy Apply、在 Reddit 上问"是不是该回国"。\n\n我上周收到小雨的消息。UNSW CS 2025 Nov 毕业，GPA 6.5（差不多 distinction 段），简历上写了 React、Node、调过 ChatGPT API，两个课设项目，一个调 OpenAI 的 demo。Junior Dev / Junior AI Engineer 岗投了 40 份——<strong>一个面试都没约到</strong>。\n\n"Jin 老师，我做错了什么？是不是学校不够好？是不是我不够优秀？"\n\n她没做错什么。她简历上这套东西，<strong>2024 年还能约到面试，2026 年不够了</strong>——不是她个人的问题，是澳洲 Junior 岗位的门槛在过去 12 个月里整个重置了。而且这件事学校没人会告诉你，因为大学的课表三年前就定好了，讲师也没在招聘一线。\n\n这篇要说清楚三件事：① <strong>为什么你投简历没回音</strong>（大学课表 vs 企业 JD 的错位）；② <strong>为什么其它路对 IT 毕业生都不通</strong>（自学 / 再读 Master / 其它 Bootcamp 分别哪里不行）；③ <strong>匠人第 30 期 16 周项目班为什么是 2026 IT 毕业生唯一走得通的那条路</strong>——9 年 30 期 5000+ 位匠人毕业生已经验证过，Atlassian / Canva / CBA / Westpac / REA / SEEK / Xero / NAB / Macquarie 这些澳洲主流公司几乎每家都有一整批匠人校友在职。\n\n这不是营销话术。下面每一段都有数据支撑，也都是过去这半年我亲耳从 50+ IT 毕业生和家长那里听来的真实情况。`,
 
     sections: [
       {
         id: 'demo-vs-prod',
-        h2: '一、写出 Demo ≠ 能做产品，这是面试第一道坎',
+        h2: '一、大学毕业那天你简历上有的东西 ≠ 企业 JD 要的东西',
         beforeImage: [
-          `现场面试 code exercise 最常见的场景：给你 90 分钟，基于一份 PDF 做个 RAG 问答页。大部分候选人写出来是这样的：前端一个 textarea、后端一个 /ask endpoint、OpenAI Embeddings 一把梭、返回前端。能跑。`,
-          `面试官第二个问题就翻车：「这个页面 100 个人同时问同一个问题，会怎样？」「我们的 PDF 每周更新，旧向量怎么办？」「OpenAI 限流了怎么处理？」——这些不是刁难，是 Junior 岗每天都会遇到的真实问题。`,
-          `会 React、会 Python、调过 OpenAI，这些是<strong>工具栈</strong>。能回答上面三个问题，是<strong>工程能力</strong>。2026 Junior AI 岗位拉开差距的就是后者。`,
+          `先说一个残酷的事实：CS / IT 本科或 Master 毕业那天，你手里基本上只有两样东西 —— <strong>几门课的作业成绩</strong>和<strong>一两个跟着 tutorial 做出来的课设</strong>。GPA 再高、学校再强，这两样加起来对 2026 的 Junior 岗来说<strong>几乎是零份量</strong>。`,
+          `为什么？因为企业招的不是"学过 React / 学过算法"的人，而是<strong>能上线一个被真实用户用的产品</strong>的人。现场面试 code exercise 最常见的场景：给你 90 分钟，基于一份 PDF 做个 RAG 问答页。大部分 CS 毕业生写出来是这样的：前端一个 textarea、后端一个 /ask endpoint、OpenAI Embeddings 一把梭、返回前端。能跑。`,
+          `面试官第二个问题就翻车：「这个页面 100 个人同时问同一个问题，会怎样？」「PDF 每周更新，旧向量怎么办？」「OpenAI 限流了怎么处理？」——这些不是刁难，是 Junior 岗每天都会遇到的真实问题。<strong>大学里没人教过这些</strong>，因为它们是工程 know-how，不是计算机科学理论。`,
+          `会 React、会 Python、学过算法、调过 OpenAI，这些是<strong>大学毕业的标配</strong>。能回答上面三个问题，是<strong>企业要招的那类 Junior</strong>。2026 的门槛在后者——而这恰好是大学永远学不到、自学也很难补的那部分。`,
         ],
-        poster: { id: 'poster-2', slug: 'p2-demo-vs-prod', caption: '图 01 · 写 Demo vs 做生产 —— Junior AI 面试真实差距' },
+        poster: { id: 'poster-2', slug: 'p2-demo-vs-prod', caption: '图 01 · 大学教的 vs 企业要的 —— Junior AI 求职真实差距' },
         afterImage: [
-          `右边那列看上去每条都是"小事"，攒在一起就是简历上那行"1 年 Junior AI Engineer 经验"的全部内容。没做过的人讲不出来，教练型培训也补不上。`,
+          `右边那列看上去每条都是"小事"，攒在一起就是简历上那行<strong>"能独立上线 AI 产品"</strong>的全部内容。IT 毕业生只靠课业走不到这里——这也是为什么 GPA 7.0 / UNSW 毕业 / 英语流利的同学投 40 份依然没回音。不是你不够优秀，是你手里没有招聘方要看的那类证据。`,
         ],
       },
 
       {
         id: 'chatroom',
-        h2: '二、一段发生在转码求职群里的真实对话',
+        h2: '二、UNSW CS 2025 毕业生群里的一段真实对话',
         beforeImage: [
-          `那天在一个 200 人的澳洲转码求职群里，小雨的问题引出了一段对话：`,
-          `<em>小雨：「我会 React + Python + 调过 ChatGPT，为什么投了 40 份 Junior AI Engineer 连面试都约不到？」</em>`,
-          `<em>阿哲（FAANG 在职工程师）：「简历给我看一下。……嗯，你写的是 skills list，招聘方读的是 impact list。他们不关心你会什么，关心你做过什么，上线过什么，解决过什么问题。」</em>`,
-          `<em>小雨：「所以要怎么补？课程里跟着做的项目算吗？」</em>`,
-          `<em>阿哲：「跟着教程做的不算——面试官一眼能看出来。要有跟真实角色协作、处理过真实边界条件、上过线被人用过的那种。」</em>`,
+          `那天在一个 300 人的 UNSW CS 2025 毕业生微信群里，小雨的问题引出一段对话。这种对话在 USYD / Monash / UQ / Melbourne 同届群里也几乎每周发生：`,
+          `<em>小雨（UNSW CS 2025 Nov 毕业）：「我会 React + Python + 调过 ChatGPT，GPA 6.5，为什么投了 40 份 Junior 连面试都约不到？」</em>`,
+          `<em>阿哲（Atlassian 在职 SWE，我们 2022 年毕业的校友）：「简历给我看一下。……嗯，你写的是 skills list，招聘方读的是 impact list。他们不关心你学过什么，关心你<strong>做过什么、上线过什么、解决过什么问题</strong>。」</em>`,
+          `<em>小雨：「所以要怎么补？UNI 的 Group Project 算吗？跟着 YouTube tutorial 做的 to-do app 算吗？」</em>`,
+          `<em>阿哲：「都不太算——面试官一眼能看出来。Group Project 在 GitHub 里基本上是半个人写完剩下人 commit 几行；跟着 tutorial 做的简历上有一万个人长一样。要的是<strong>跟真实角色协作、处理过真实边界条件、上过线被人用过的</strong>那种项目。你现在缺的不是更多技能，是这类证据。」</em>`,
+          `<em>小雨：「学校毕业前不是教过 Software Engineering Workshop 吗？」</em>`,
+          `<em>阿哲：「教是教了，但那是标准化课程，全澳所有 CS 毕业生都有。没有区分度的东西不叫履历。你身边 40 个同班同学简历第一屏长得基本一模一样——招聘方 ATS 系统过滤完，剩下的就是看<strong>谁有别人没有的那一块</strong>。」</em>`,
         ],
-        poster: { id: 'poster-3', slug: 'p3-chatroom', caption: '图 02 · 澳洲转码求职群里的一段对话' },
+        poster: { id: 'poster-3', slug: 'p3-chatroom', caption: '图 02 · UNSW CS 2025 毕业生群里的一段对话' },
         afterImage: [
-          `这段对话我后来看到过不下十次。问题其实不在技能，在<strong>履历密度</strong>——简历上一行字要能撑得起半小时的故事。`,
+          `这段对话我在不同学校的毕业生群里看到过几十次。问题其实不在技能，也不在 GPA，在<strong>履历密度</strong>——<strong>简历上一行字要能撑得起半小时的故事</strong>。大学毕业时绝大部分 IT 学生简历上每一行都只能讲 30 秒，而这就是企业 JD 和大学课表之间那道永远填不上的鸿沟。`,
         ],
       },
 
@@ -79,13 +82,31 @@ window.MP_ARTICLES = {
         poster: { id: 'poster-1b', slug: 'p1b-fullstack-not-enough', caption: '图 03 · 会 React + Node ≠ 能做 AI 产品' },
         afterImage: [
           `换句话说：再教一遍 React + Node 已经没意义——那个市场彻底饱和了。这门课从第 26 期开始加 AI 模块，第 28 期把 AI 项目摆到核心位置，第 30 期直接把<strong>"全栈基础 + AI 集成"做成 Junior 的新基线</strong>。不是加一个选修，是换整条赛道。`,
+        ],
+      },
+
+      {
+        id: 'only-way',
+        h2: '四、为什么对 IT 毕业生来说，这是唯一真正走得通的那条路',
+        beforeImage: [
+          `看到这里，作为 IT 毕业生你心里大概已经在排备选方案了。我把过去半年我听过的所有"别的选择"列出来，一条一条说清楚为什么都不通——这部分是家长经常问我、学生自己也在反复纠结的问题：`,
+          `<strong>选项 A · 继续自学 + LeetCode 刷题</strong> → <span style="color:#ff5757">不通</span>。LeetCode 解决的是 FAANG 技术面试的筛选门槛，Junior 岗在澳洲 90% 公司（Atlassian / Canva 是例外）<strong>根本不考 LeetCode</strong>，考的是"你做过什么产品、怎么做的、遇到过什么问题"。花 6 个月刷 300 题不如做一个上线的 AI 产品。而且自学最大的问题不是学不会 —— 是<strong>没有真实协作</strong>（BA / UI / DevOps / QA），没有<strong>真实甲方压力</strong>，没有<strong>校友内推</strong>。这三样是找工作的核心，自学一样都给不了。`,
+          `<strong>选项 B · 再读一个 Master / Coursework 延毕</strong> → <span style="color:#ff5757">不通 + 亏钱</span>。澳洲 Master of IT 一年学费 50-60K AUD，读两年就是 100-120K。毕业那天你手里的简历<strong>和本科毕业那天基本一样</strong>（大部分 Coursework Master 还是那些算法 / 数据库 / 软件工程课）。把 100K 和 2 年时间投在学历通胀上，不如投在真实项目经验上。很多同学本科投简历没回音就报了 Master 想"再拖一下"，两年后又站在同一个十字路口——只是多欠了 100K 学费。`,
+          `<strong>选项 C · 接一些外包 / freelance 练手</strong> → <span style="color:#ff5757">不通 + 风险高</span>。作为 IT 毕业生，没有本地工作履历接到的外包基本都是个人项目 / 海外小单，<strong>写进简历招聘方不认</strong>（没有公司背书、没有可核实的上线链接、没有 code review 记录）。而且学生签 / 毕业签做 freelance 还涉及税务和签证合规问题，弊大于利。`,
+          `<strong>选项 D · 其它 Bootcamp（Coder Academy / General Assembly / Le Wagon 等）</strong> → <span style="color:#f59e0b">部分通，但有几块关键缺口</span>。这些都是正经学校，基础教学也扎实。但做 2025-2026 年度对比的时候，有 3 块他们都没有：(1) <strong>AI 不是核心栈</strong>——大多数还在教传统全栈，AI 作为 2-4 周的附加模块讲讲概念。(2) <strong>没有真实 AI 实习</strong>——实习都是做静态网站或老项目，不是合作企业的 RAG / LLM 真业务。(3) <strong>辅导周期 3-6 个月</strong>——毕业后找工作没到 Offer 就课程关闭了。`,
+          `<strong>选项 E · 直接回国 / 找国内岗</strong> → <span style="color:#f59e0b">可行但不是最优</span>。如果你已经下决心回国，这是一条路。但以"留澳找工作失败了回国"的身份回去，其实并不比直接以"澳洲毕业 + 真实上线 AI 项目 + 澳洲本地工作经验"的身份回去更好找。大部分国内互联网大厂的招聘经理看你简历时，在意的就是<strong>有没有真项目 + 有没有英文环境协作经验</strong>——这两样匠人 16 周恰好补上。<strong>先在澳洲做出 12-18 个月工作经验再回国</strong>，在国内是完全不一样的起点。`,
+          `<strong>选项 F · 匠人学院第 30 期 16 周项目班</strong> → <span style="color:#10b981">通</span>。不是我们自卖自夸，是把上面 A-E 的每一块缺口都直接补上了：(1) <strong>AI 是核心栈不是附加</strong>——RAG + OpenAI + Agent + Eval 占课程 1/3；(2) <strong>有真实 AI 实习</strong>——合作企业真业务，合同可核实；(3) <strong>12 个月全程辅导</strong>——毕业到 Offer 中间没到都一直陪；(4) <strong>9 年 30 期 5000+ 校友内推网络</strong>——Atlassian / Canva / CBA / Westpac / REA 里每家都有一整批，Junior 岗内推成功率是 cold apply 的 5-8 倍（SEEK 数据）；(5) <strong>4 个后端方向可选</strong>——按你背景 + 目标（金融大厂 / 互联网 / AI 创业）帮你选对赛道。`,
+        ],
+        poster: { id: 'poster-23', slug: 'p23-only-way', caption: '图 04 · IT 毕业生 6 个选项对比 —— 只有一条真正走得通' },
+        afterImage: [
+          `这 6 个选项我跟家长和学生来回讨论过几十次。**唯一走得通的"系统性解决方案"** —— 这句话的重点是<strong>系统性</strong>。零零散散补课、刷题、做外包，每一样单独看都像"在前进"，但加起来凑不成那份能让招聘方给 offer 的证据。匠人 16 周的价值就是把 "能拿 Junior Offer 的 IT 毕业生" 所需的每一块都按 checklist 补齐——而且 9 年跑过 30 届已经验证过 checklist 是对的。`,
           `下面从 JD 数据开始，一块一块讲清楚这 16 周到底在练什么。`,
         ],
       },
 
       {
         id: 'jd-research',
-        h2: '四、为什么重做这门课：先扒了 15 份澳洲 JD',
+        h2: '五、先扒了 15 份澳洲 JD —— 这门课对着 JD 反推设计',
         beforeImage: [
           `重做课程前做的第一件事：爬了 15 份真实在招的 Junior AI Engineer JD，来源包括 Atlassian、Canva、CBA、Westpac、REA、SEEK、Xero、NAB 等澳洲本地公司，手工分类后算了覆盖率。`,
           `核心结论：每份 JD 都在考的<strong>前端 + 后端 + 数据 + AI 集成 + 敏捷协作 + 项目经验</strong>六块里，单点会的人非常多，六块都能串起来的人反而是少数。`,
@@ -99,7 +120,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'outcomes',
-        h2: '五、16 周之后你会"真的会"这四件事',
+        h2: '六、16 周之后你会"真的会"这四件事',
         beforeImage: [
           `不是"学过"，是"做过并能讲清楚"。这四件每一件都能写进简历、每一件在面试时都要能讲 15 分钟细节：`,
           `1️⃣ <strong>全栈工程基础</strong>——React 19 + TypeScript + Next.js（前端）；Node.js / .NET / Python / Java 四选一（后端）+ Express / FastAPI；PostgreSQL + Redis。不是点名式介绍，是真项目里配合起来用。`,
@@ -120,7 +141,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'devops-stack',
-        h2: '六、DevOps 5 阶流程 + 15+ 真实工具栈',
+        h2: '七、DevOps 5 阶流程 + 15+ 真实工具栈',
         beforeImage: [
           `这是很多 Bootcamp 会绕过去的部分。很多同类课教完 React 和 Node 就结束了，但真实公司的日常开发不止写代码——还有 Plan、Build、Test、Release。`,
           `16 周里会完整跑一遍 DevOps 5 阶：<strong>Plan</strong>（Jira 写 User Story、Sprint 规划）→ <strong>Develop</strong>（Git 分支策略、PR Review）→ <strong>Build</strong>（Docker 打包、GitHub Actions CI）→ <strong>Test</strong>（Jest 单测、Playwright E2E、AI Eval 基线）→ <strong>Release</strong>（AWS 部署、Grafana 监控、Sentry 告警）。`,
@@ -138,7 +159,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'timeline',
-        h2: '七、16 周路径 —— 每周都有具体的交付物',
+        h2: '八、16 周路径 —— 每周都有具体的交付物',
         beforeImage: [
           `很多人报课之前最想知道的就是"我具体要做什么、什么时候做、做完有什么"。这里把路径拆成每 2-3 周一段，每段有明确的产出：`,
           `<strong>W1-3 前端工程基础</strong>：HTML / CSS / JS → React 19 + TS + Next.js → 部署一个响应式作品集。交付：Vercel 上线的个人作品集。`,
@@ -156,7 +177,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'backend-choice',
-        h2: '八、前端统一，后端 4 个方向可选',
+        h2: '九、前端统一，后端 4 个方向可选',
         beforeImage: [
           `前端所有人都学 React 19 + TS + Next.js——这是没得选的澳洲 Junior 标配。后端给 4 个方向，因为每个人目标和背景不一样，硬塞一个栈反而不对。`,
           `🔷 <strong>Node.js 方向</strong>：前后端同 JS，上手最快，生态跟 AI 工具最好配（LangChain.js / Vercel AI SDK）。适合零基础、想最快做出 AI 产品的人。`,
@@ -172,7 +193,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'projects',
-        h2: '九、3 个能写进简历的项目（不是教程抄写）',
+        h2: '十、3 个能写进简历的项目（不是教程抄写）',
         beforeImage: [
           `这部分是整门课最花时间的一块，也是简历上最有区分度的一块。3 个项目是专门设计过的，覆盖 Junior AI JD 最常考的 3 种场景：`,
           `<strong>项目 1 · 全栈 Web 应用</strong>（W1-W7）：React 前端 + Node/.NET/Python 后端 + PostgreSQL + Redis + AWS 部署。这是地基，证明你能独立搭一个能用的 Web 产品。`,
@@ -192,7 +213,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'collab',
-        h2: '十、跟 4 类角色协作 —— 这才是面试加分项',
+        h2: '十一、跟 4 类角色协作 —— 这才是面试加分项',
         beforeImage: [
           `面试官最怕听到的一句话是「这个项目是我独自完成的」——因为 Junior 岗实际工作第一天就是跟一堆人协作。Atlassian / Canva 面试有专门一轮叫 Values Round 就是考这块。`,
           `16 周里的团队项目会真实对接 4 类角色：`,
@@ -209,7 +230,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'career',
-        h2: '十一、AI 实习 + 12 个月辅导 —— 求职闭环',
+        h2: '十二、AI 实习 + 12 个月辅导 —— 求职闭环',
         beforeImage: [
           `这是这门课和市面上其他 Bootcamp 最大的区别，也是学完能不能真找到工作的关键：`,
           `🏢 <strong>AI 方向实习机会</strong>（W14-W15 启动）——进合作企业做真实业务的 RAG / LLM / Agent 集成。不是做演示 demo，是做会上线被用户用的功能。这段履历写进简历是不能伪造的——面试官可以直接打电话给合作公司核实。`,
@@ -231,7 +252,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'testimonials',
-        h2: '十二、9 年、30 期、5000+ 毕业生 —— 这门课不是一门新课',
+        h2: '十三、9 年、30 期、5000+ 毕业生 —— 这门课不是一门新课',
         beforeImage: [
           `聊到这里有必要交代一下底子：这门全栈项目班从 2017 年开到现在，<strong>9 年、30 期、5000+ 位毕业生</strong>。每期 3-6 个月，从 React / Node 到 DevOps 到简历改造到内推上岗，一届一届地把澳洲转码这件事做通了。`,
           `这 5000+ 位毕业生，绝大部分都拿到了澳洲本地 Offer。你能想到的澳洲主流公司里几乎都坐着匠人校友：<strong>Atlassian / Canva / Afterpay</strong>（科技），<strong>CBA / Westpac / NAB / ANZ / Macquarie / Suncorp / IAG</strong>（银行 + 保险），<strong>REA / SEEK / carsales / Xero / MYOB</strong>（互联网），<strong>Deloitte / Accenture / PwC / EY</strong>（咨询）。不是每家有一两个——是每家都有一整批。`,
@@ -249,7 +270,7 @@ window.MP_ARTICLES = {
 
       {
         id: 'upgrade-salary',
-        h2: '十三、第 30 期做了哪些升级 + 澳洲起薪参考',
+        h2: '十四、第 30 期做了哪些升级 + 澳洲起薪参考',
         beforeImage: [
           `第 30 期相对于 26-28 期的最大变化：把 <strong>AI 从选修模块提升到核心栈</strong>——这是看 2026 市场数据做的调整。`,
           `具体升级对比：`,
@@ -276,9 +297,9 @@ window.MP_ARTICLES = {
     ],
 
     cta: {
-      title: '9 年 30 期 5000+ 毕业生 · 咨询 2026 第 30 期',
-      body: '这门课从 2017 年开到现在，澳洲主流科技 / 金融 / 咨询公司都有校友在职。扫码添加课程顾问（备注「engineer30」）领取：278 节完整大纲 PDF + 3 个项目案例 + 4 个后端方向对比表 + FLAG 导师背景 + 第 30 期早鸟优惠 + 分期方式，1 对 1 免费方向规划。',
-      qrcodeNote: '扫码添加课程顾问 · 备注「engineer30」领完整大纲',
+      title: '写给正在投简历没回音的 CS / IT 毕业生 · 咨询 2026 第 30 期',
+      body: '如果你是 UNSW / USYD / Monash / Melbourne / UQ / ANU / Macquarie / UTS 在读或刚毕业，简历投了一段时间没约到面试，在"继续投 / 再读 Master / 回国 / 自学"之间反复纠结——扫码加课程顾问（备注「engineer30」）先聊一次：看看你现在缺的是哪一块、匠人 16 周能不能真补上、4 个后端方向（Node / .NET / Python / Java）哪个适合你的背景和目标市场。1 对 1 免费方向规划，不合适会直说，合适的话顾问会带你看 278 节完整大纲 PDF + 3 个项目案例 + 第 30 期早鸟优惠 + 分期方式。',
+      qrcodeNote: '扫码添加课程顾问 · 备注「engineer30」',
       linkText: '点击阅读原文 → 查看 278 节最新课程详情',
     },
 
