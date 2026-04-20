@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineer 全栈项目班 · 公众号封面设计器</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Bricolage+Grotesque:wght@700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<style>
+  :root {
+    --brand-red: #ff5757;
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-green: #10b981;
+    --brand-blue: #3b82f6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #eef0f4;
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    padding: 40px 20px 120px;
+    color: #10162f;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 24px; font-weight: 900; margin-bottom: 8px; }
+  h1 span { color: var(--brand-red); }
+  .hint {
+    font-size: 13px; color: #64748b; margin-bottom: 24px; line-height: 1.7;
+    background: #fff; border: 2px solid #10162f; border-radius: 10px;
+    padding: 14px 18px; box-shadow: 4px 4px 0 #10162f;
+  }
+  .hint b { color: #10162f; }
+
+  .cover-section {
+    margin: 32px 0;
+    background: #fff;
+    border: 2px solid #10162f;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 6px 6px 0 #10162f;
+  }
+  .cover-title {
+    font-size: 16px; font-weight: 900; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cover-title .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 700;
+    background: var(--brand-yellow); color: #10162f;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .cover-meta { font-size: 12px; color: #64748b; margin-bottom: 16px; }
+
+  /* --------- Cover preview scale (display only, not the render target) --------- */
+  .cover-preview-main {
+    width: 100%; max-width: 940px;
+    aspect-ratio: 2.35 / 1;
+    overflow: hidden;
+    border: 1px dashed #cbd5e1;
+    transform-origin: top left;
+  }
+  .cover-preview-square {
+    width: 100%; max-width: 540px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 1px dashed #cbd5e1;
+    transform-origin: top left;
+  }
+
+  /* --------- Render target actual sizes (scaled via transform) --------- */
+  .cover-main-render {
+    width: 2350px; height: 1000px;
+    transform: scale(0.4);
+    transform-origin: top left;
+  }
+  .cover-square-render {
+    width: 1080px; height: 1080px;
+    transform: scale(0.5);
+    transform-origin: top left;
+  }
+
+  /* ==================== Cover design · Main 2.35:1 ==================== */
+  .cm {
+    width: 2350px; height: 1000px;
+    background: #10162f;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    color: #fff;
+  }
+  .cm::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1.5px 1.5px, rgba(255,206,68,0.08) 1.5px, transparent 1.5px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .cm-eyebrow {
+    position: absolute; top: 72px; left: 96px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px; font-weight: 700; letter-spacing: 6px;
+    color: var(--brand-yellow);
+  }
+  .cm-eyebrow .dot {
+    display: inline-block; width: 14px; height: 14px; background: var(--brand-red);
+    border-radius: 50%; margin: 0 18px 2px 0; vertical-align: middle;
+  }
+  .cm-title {
+    position: absolute; top: 160px; left: 96px;
+    font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
+    font-weight: 900;
+    font-size: 168px; line-height: 0.95;
+    letter-spacing: -2px;
+    color: #fff;
+    max-width: 1600px;
+  }
+  .cm-title em {
+    color: var(--brand-red);
+    font-style: normal;
+    background: #fff;
+    padding: 0 18px;
+    margin-right: 10px;
+  }
+  .cm-title .highlight {
+    background: var(--brand-yellow);
+    color: #10162f;
+    padding: 0 16px;
+    display: inline-block;
+    transform: skew(-4deg);
+  }
+  .cm-sub {
+    position: absolute; top: 560px; left: 96px;
+    font-size: 40px; line-height: 1.5;
+    color: rgba(255,255,255,0.88);
+    max-width: 1500px;
+    font-weight: 500;
+  }
+  .cm-sub strong { color: var(--brand-yellow); font-weight: 700; }
+  .cm-stats {
+    position: absolute; bottom: 90px; left: 96px;
+    display: flex; gap: 24px;
+  }
+  .cm-stat {
+    background: #fff; color: #10162f;
+    border: 4px solid #fff;
+    padding: 18px 28px;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .cm-stat .v { font-size: 44px; color: var(--brand-red); }
+  .cm-stat .k { font-size: 20px; color: #334155; }
+  .cm-stat.alt { background: var(--brand-yellow); }
+  .cm-stat.alt .v { color: #10162f; }
+  .cm-brand {
+    position: absolute; top: 80px; right: 96px;
+    background: var(--brand-red); color: #fff;
+    padding: 18px 32px;
+    border-radius: 10px;
+    font-weight: 900; font-size: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 2px;
+  }
+  .cm-corner-tag {
+    position: absolute; bottom: 72px; right: 96px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; color: rgba(255,255,255,0.55); letter-spacing: 2px;
+  }
+
+  /* ==================== Cover design · Square 1:1 ==================== */
+  .cs {
+    width: 1080px; height: 1080px;
+    background: #10162f;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    color: #fff;
+  }
+  .cs::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1.5px 1.5px, rgba(255,206,68,0.08) 1.5px, transparent 1.5px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+  .cs-eyebrow {
+    position: absolute; top: 72px; left: 72px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; font-weight: 700; letter-spacing: 4px;
+    color: var(--brand-yellow);
+  }
+  .cs-eyebrow .dot {
+    display: inline-block; width: 11px; height: 11px; background: var(--brand-red);
+    border-radius: 50%; margin: 0 14px 2px 0; vertical-align: middle;
+  }
+  .cs-title {
+    position: absolute; top: 150px; left: 72px;
+    font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
+    font-weight: 900;
+    font-size: 130px; line-height: 0.98;
+    letter-spacing: -1.5px;
+    color: #fff;
+    max-width: 940px;
+  }
+  .cs-title .highlight {
+    background: var(--brand-yellow);
+    color: #10162f;
+    padding: 0 14px;
+    display: inline-block;
+    transform: skew(-4deg);
+  }
+  .cs-title .red {
+    color: var(--brand-red);
+  }
+  .cs-sub {
+    position: absolute; top: 620px; left: 72px;
+    font-size: 30px; line-height: 1.5;
+    color: rgba(255,255,255,0.85);
+    max-width: 940px;
+    font-weight: 500;
+  }
+  .cs-stats {
+    position: absolute; bottom: 190px; left: 72px; right: 72px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  }
+  .cs-stat {
+    background: #fff;
+    padding: 18px 24px;
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .cs-stat .v { font-size: 34px; color: var(--brand-red); }
+  .cs-stat .k { font-size: 16px; color: #334155; }
+  .cs-stat.alt { background: var(--brand-yellow); }
+  .cs-stat.alt .v { color: #10162f; }
+  .cs-brand {
+    position: absolute; bottom: 72px; left: 72px;
+    background: var(--brand-red); color: #fff;
+    padding: 14px 26px;
+    border-radius: 8px;
+    font-weight: 900; font-size: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 2px;
+  }
+  .cs-date {
+    position: absolute; bottom: 82px; right: 72px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px; color: rgba(255,255,255,0.55); letter-spacing: 2px;
+  }
+
+  /* --------- Download button --------- */
+  .dl-btn {
+    margin-top: 14px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px; font-weight: 800;
+    padding: 10px 18px;
+    border: 2px solid #10162f; background: #ff5757; color: #fff;
+    border-radius: 10px; cursor: pointer;
+    box-shadow: 3px 3px 0 #10162f;
+    transition: all 0.12s;
+  }
+  .dl-btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #10162f; }
+  .dl-btn:disabled { opacity: 0.55; cursor: wait; }
+  .dl-btn.secondary { background: #fff; color: #10162f; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>📰 <span>AI Engineer 全栈项目班</span> · 公众号封面设计器</h1>
+  <div class="hint">
+    两张封面对应微信公众号两种用法：<br>
+    · <b>大封面（2.35:1）</b>：头条图文封面，发布时传 900×383 或更高分辨率；此处渲染 <b>2350×1000</b>。<br>
+    · <b>小封面（1:1）</b>：次条封面 / 朋友圈缩略图，发布时传 200×200 或 500×500；此处渲染 <b>1080×1080</b>。<br>
+    点「⬇ 下载 PNG」得到的是<b>真实尺寸高清图</b>，预览缩小只是为了排版方便。
+  </div>
+
+  <!-- ============ Main 2.35:1 ============ -->
+  <div class="cover-section">
+    <div class="cover-title">
+      🖼️ 大封面（头条图文用） <span class="tag">2350 × 1000</span>
+    </div>
+    <div class="cover-meta">微信公众号标题封面图 · 2.35:1 比例 · 头条图文位置</div>
+    <div class="cover-preview-main">
+      <div class="cover-main-render">
+        <div class="cm" id="cm">
+          <div class="cm-brand">JR · 2026Q2</div>
+          <div class="cm-eyebrow"><span class="dot"></span>AI ENGINEER · 第 30 期 · 16 周</div>
+          <div class="cm-title">
+            <span class="highlight">2026</span><br>
+            Junior AI Engineer<br>
+            的岗位<span style="color:var(--brand-red)">换代了</span>
+          </div>
+          <div class="cm-sub">
+            扒了 <strong>15 份澳洲真实 JD</strong>，把"基线右移"的部分做成 <strong>158 节</strong>课 + <strong>3 个项目</strong> + <strong>真实 AI 实习</strong> + <strong>12 月求职陪跑</strong>。
+          </div>
+          <div class="cm-stats">
+            <div class="cm-stat"><span class="v">158</span><span class="k">节课</span></div>
+            <div class="cm-stat"><span class="v">3</span><span class="k">个项目</span></div>
+            <div class="cm-stat alt"><span class="v">12M</span><span class="k">求职陪跑</span></div>
+            <div class="cm-stat"><span class="v">5000+</span><span class="k">校友</span></div>
+          </div>
+          <div class="cm-corner-tag">JIANGREN.COM.AU · CODE BOOTCAMP</div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn" data-target="cm" data-name="mp-cover-main-ai-engineer.png">⬇ 下载大封面 PNG（2350×1000）</button>
+  </div>
+
+  <!-- ============ Square 1:1 ============ -->
+  <div class="cover-section">
+    <div class="cover-title">
+      🔲 小封面（次条 / 缩略图用） <span class="tag">1080 × 1080</span>
+    </div>
+    <div class="cover-meta">微信公众号次条封面 / 朋友圈缩略 · 1:1 比例</div>
+    <div class="cover-preview-square">
+      <div class="cover-square-render">
+        <div class="cs" id="cs">
+          <div class="cs-eyebrow"><span class="dot"></span>AI ENGINEER · 第 30 期</div>
+          <div class="cs-title">
+            2026<br>
+            <span class="red">Junior AI</span><br>
+            <span class="highlight">换代了</span>
+          </div>
+          <div class="cs-sub">
+            16 周 · 158 节课 · 3 个项目 · 真实 AI 实习 · 12 月求职陪跑
+          </div>
+          <div class="cs-stats">
+            <div class="cs-stat"><span class="v">158</span><span class="k">节课</span></div>
+            <div class="cs-stat alt"><span class="v">3</span><span class="k">个项目</span></div>
+            <div class="cs-stat"><span class="v">12M</span><span class="k">陪跑</span></div>
+            <div class="cs-stat alt"><span class="v">5000+</span><span class="k">校友</span></div>
+          </div>
+          <div class="cs-brand">JR ACADEMY</div>
+          <div class="cs-date">2026 Q2</div>
+        </div>
+      </div>
+    </div>
+    <button class="dl-btn secondary" data-target="cs" data-name="mp-cover-square-ai-engineer.png">⬇ 下载小封面 PNG（1080×1080）</button>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.dl-btn').forEach((btn) => {
+  btn.addEventListener('click', async () => {
+    const id = btn.dataset.target;
+    const name = btn.dataset.name;
+    const el = document.getElementById(id);
+    if (!el) return;
+    const oldText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '渲染中...';
+    try {
+      // 拿真实尺寸（scale 是 1，因为 .cm/.cs 已经是目标尺寸）
+      const canvas = await html2canvas(el, {
+        backgroundColor: null,
+        scale: 1,
+        useCORS: true,
+        logging: false,
+        width: el.offsetWidth,
+        height: el.offsetHeight,
+      });
+      const url = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.download = name;
+      a.href = url;
+      a.click();
+      btn.textContent = '✅ 已下载';
+      setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 1500);
+    } catch (e) {
+      console.error(e);
+      btn.textContent = '❌ ' + e.message;
+      setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 3000);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
