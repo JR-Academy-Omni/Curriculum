@@ -85,6 +85,87 @@ function inlineStyles(root) {
 ## 导出原理
 iframe 偷偷加载 `../xhs-posters/index.html`，复用 xhs 的 html2canvas 脚本批量导出配图为 `mp-{slug}-NN-posterSlug.png`，运营手动上传到公众号素材库后按占位符顺序插入。
 
+## 🚨 硬性要求：封面 / 海报生成器必须用原生 Canvas 2D（禁用 HTML/CSS + html2canvas）
+
+> 2026-04-21 实测确认（AI Engineer Bootcamp 封面设计器 `cover.html`，commit dd26b8d）。参考实现：`ai-engineer-bootcamp/public/mp-article/cover.html`。
+
+### 为什么禁用 HTML/CSS + html2canvas
+
+1. **字号溢出**：CSS 的 `font-size: 300px` + `overflow: hidden` 会直接把超长文字切掉，截图里可见 "Junior AI Engineer" 顶部被切、"了" 单独翻行挤出容器
+2. **字宽测不准**：CSS font-size 是"显示尺寸"，不同字体/浏览器实际占宽差异大，靠手调试错
+3. **三层跳转失真**：HTML → html2canvas → canvas → PNG 每一层都可能失真，文字位移、阴影丢失、字体 fallback
+4. **字体加载时序**：CSS 不等字体就绘制时，fallback 字体宽度不同 → 布局已经撑爆
+
+### 正确做法：原生 Canvas 2D API
+
+```html
+<canvas id="canvas-main" width="2350" height="1000"></canvas>
+```
+
+必备的辅助函数（直接从 cover.html 照搬）：
+
+```javascript
+/** 二分降字号直到文字能放下 maxWidth */
+function fitText(ctx, text, fontFamily, maxWidth, startSize, minSize = 30) {
+  let size = startSize;
+  ctx.font = `900 ${size}px ${fontFamily}`;
+  while (ctx.measureText(text).width > maxWidth && size > minSize) {
+    size -= 4;
+    ctx.font = `900 ${size}px ${fontFamily}`;
+  }
+  return size;
+}
+
+/** 背景点阵装饰（Neo-Brutalism 常用） */
+function drawDotPattern(ctx, W, H, step, dotR, alpha) { ... }
+
+/** 圆角矩形（brand chip 等） */
+function roundRect(ctx, x, y, w, h, r) { ... }
+```
+
+### 绘制流程模板
+
+```javascript
+async function init() {
+  try { await document.fonts.ready; } catch {}  // 🚨 必须等字体加载完
+  redraw();
+}
+
+function redraw() {
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#10162f';
+  ctx.fillRect(0, 0, W, H);                     // 背景
+  drawDotPattern(ctx, W, H, 60, 2, 0.12);       // 装饰
+  // ... 用 fitText() 动态缩字号 + ctx.fillText() 画内容
+}
+
+// 下载 PNG —— 直接 toDataURL，不走 html2canvas
+dlBtn.addEventListener('click', () => {
+  const url = canvas.toDataURL('image/png');
+  const a = document.createElement('a');
+  a.download = 'cover.png';
+  a.href = url;
+  a.click();
+});
+```
+
+### 额外必带的 UX
+
+- **表单实时重绘**：每个可变文案给 `<input>`，`input` 事件触发 `redraw()` 实时预览
+- **140px 手机缩略 canvas**：右侧加一个真实手机 feed 尺寸的同步缩略，让运营直接判断手机端可读性（不用自己缩浏览器窗口试）
+
+### 校验清单（新建 bootcamp 的 cover.html 时必须 ✅）
+
+- [ ] 用 `<canvas width="XXXX" height="XXXX">` 不用 CSS 定位布局
+- [ ] 有 `fitText()` 二分缩字号工具
+- [ ] 有 `await document.fonts.ready` 等字体加载
+- [ ] 下载按钮直接 `canvas.toDataURL('image/png')`，**不引 html2canvas**
+- [ ] 每个可改文案都有 `<input>` + `input` 事件实时重绘
+- [ ] 右侧有 140px 手机缩略 canvas 同步
+- [ ] 改文案超长时缩字号正常生效、文字不溢出容器
+
+**凡是新建封面 / 海报生成器 = 默认走 Canvas 2D。HTML/CSS + html2canvas 已废弃，别再用。**
+
 ## 发文流程（给运营看）
 
 **方式 A（推荐，装了 JR Social Publisher 插件）**：
