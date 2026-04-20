@@ -82,6 +82,9 @@
   }
 
   /* ==================== Cover design · Main 2.35:1 ==================== */
+  /* 手机端 feed 缩略 ~120px 宽 · 源 2350px · 缩放 0.05x */
+  /* 所以源图 300px 以下的字 = 手机缩略 15px 以下 = 看不清 */
+  /* 设计原则：只留巨大标题 + 品牌 tag，删除所有小字 */
   .cm {
     width: 2350px; height: 1000px;
     background: #10162f;
@@ -89,88 +92,64 @@
     overflow: hidden;
     font-family: 'Noto Sans SC', system-ui, sans-serif;
     color: #fff;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 100px;
   }
   .cm::before {
     content: '';
     position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 1.5px 1.5px, rgba(255,206,68,0.08) 1.5px, transparent 1.5px);
-    background-size: 48px 48px;
+    background-image: radial-gradient(circle at 2px 2px, rgba(255,206,68,0.10) 2px, transparent 2px);
+    background-size: 60px 60px;
     pointer-events: none;
   }
-  .cm-eyebrow {
-    position: absolute; top: 72px; left: 96px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 28px; font-weight: 700; letter-spacing: 6px;
-    color: var(--brand-yellow);
-  }
-  .cm-eyebrow .dot {
-    display: inline-block; width: 14px; height: 14px; background: var(--brand-red);
-    border-radius: 50%; margin: 0 18px 2px 0; vertical-align: middle;
-  }
-  .cm-title {
-    position: absolute; top: 220px; left: 96px;
+  .cm-line1 {
     font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
     font-weight: 900;
-    font-size: 180px; line-height: 1.02;
-    letter-spacing: -2px;
-    color: #fff;
-    max-width: 1800px;
+    font-size: 300px;
+    line-height: 0.95;
+    letter-spacing: -6px;
+    color: #ffffff;
   }
-  .cm-title em {
-    color: var(--brand-red);
-    font-style: normal;
-    background: #fff;
-    padding: 0 18px;
-    margin-right: 10px;
+  .cm-line2 {
+    font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
+    font-weight: 900;
+    font-size: 460px;
+    line-height: 0.95;
+    letter-spacing: -4px;
+    margin-top: 20px;
   }
-  .cm-title .highlight {
+  .cm-line2 .highlight {
     background: var(--brand-yellow);
     color: #10162f;
-    padding: 0 16px;
+    padding: 0 40px;
     display: inline-block;
     transform: skew(-4deg);
+    margin-right: 30px;
   }
-  .cm-sub {
-    position: absolute; top: 560px; left: 96px;
-    font-size: 40px; line-height: 1.5;
-    color: rgba(255,255,255,0.88);
-    max-width: 1500px;
-    font-weight: 500;
+  .cm-line2 .red {
+    color: var(--brand-red);
   }
-  .cm-sub strong { color: var(--brand-yellow); font-weight: 700; }
-  .cm-stats {
-    position: absolute; bottom: 90px; left: 96px;
-    display: flex; gap: 24px;
-  }
-  .cm-stat {
-    background: #fff; color: #10162f;
-    border: 4px solid #fff;
-    padding: 18px 28px;
-    border-radius: 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    display: flex; align-items: baseline; gap: 10px;
-  }
-  .cm-stat .v { font-size: 44px; color: var(--brand-red); }
-  .cm-stat .k { font-size: 20px; color: #334155; }
-  .cm-stat.alt { background: var(--brand-yellow); }
-  .cm-stat.alt .v { color: #10162f; }
   .cm-brand {
-    position: absolute; top: 80px; right: 96px;
+    position: absolute; top: 80px; right: 100px;
     background: var(--brand-red); color: #fff;
-    padding: 18px 32px;
-    border-radius: 10px;
-    font-weight: 900; font-size: 30px;
+    padding: 32px 56px;
+    border-radius: 16px;
+    font-weight: 900; font-size: 68px;
     font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
   }
-  .cm-corner-tag {
-    position: absolute; bottom: 72px; right: 96px;
+  .cm-corner {
+    position: absolute; bottom: 80px; right: 100px;
+    font-weight: 900;
+    font-size: 96px;
+    color: var(--brand-yellow);
     font-family: 'JetBrains Mono', monospace;
-    font-size: 22px; color: rgba(255,255,255,0.55); letter-spacing: 2px;
+    letter-spacing: 4px;
   }
 
   /* ==================== Cover design · Square 1:1 ==================== */
+  /* 手机端朋友圈 / 次条缩略 ~100-150px · 源 1080px · 缩放 ~0.1x */
+  /* 所以源图 200px 以下字 = 手机 20px 以下 = 看不清 */
   .cs {
     width: 1080px; height: 1080px;
     background: #10162f;
@@ -178,79 +157,64 @@
     overflow: hidden;
     font-family: 'Noto Sans SC', system-ui, sans-serif;
     color: #fff;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 0 60px;
+    text-align: center;
   }
   .cs::before {
     content: '';
     position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 1.5px 1.5px, rgba(255,206,68,0.08) 1.5px, transparent 1.5px);
-    background-size: 40px 40px;
+    background-image: radial-gradient(circle at 2px 2px, rgba(255,206,68,0.10) 2px, transparent 2px);
+    background-size: 50px 50px;
     pointer-events: none;
   }
-  .cs-eyebrow {
-    position: absolute; top: 72px; left: 72px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 22px; font-weight: 700; letter-spacing: 4px;
-    color: var(--brand-yellow);
-  }
-  .cs-eyebrow .dot {
-    display: inline-block; width: 11px; height: 11px; background: var(--brand-red);
-    border-radius: 50%; margin: 0 14px 2px 0; vertical-align: middle;
-  }
-  .cs-title {
-    position: absolute; top: 150px; left: 72px;
+  .cs-line1 {
     font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
     font-weight: 900;
-    font-size: 130px; line-height: 0.98;
-    letter-spacing: -1.5px;
+    font-size: 180px;
+    line-height: 1.0;
+    letter-spacing: -2px;
     color: #fff;
-    max-width: 940px;
+    z-index: 2;
   }
-  .cs-title .highlight {
+  .cs-line2 {
+    font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
+    font-weight: 900;
+    font-size: 330px;
+    line-height: 1.0;
+    letter-spacing: -4px;
+    margin-top: 20px;
+    z-index: 2;
+  }
+  .cs-line2 .highlight {
     background: var(--brand-yellow);
     color: #10162f;
-    padding: 0 14px;
+    padding: 0 28px;
     display: inline-block;
     transform: skew(-4deg);
   }
-  .cs-title .red {
+  .cs-line2 .red {
     color: var(--brand-red);
   }
-  .cs-sub {
-    position: absolute; top: 620px; left: 72px;
-    font-size: 30px; line-height: 1.5;
-    color: rgba(255,255,255,0.85);
-    max-width: 940px;
-    font-weight: 500;
-  }
-  .cs-stats {
-    position: absolute; bottom: 190px; left: 72px; right: 72px;
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
-  }
-  .cs-stat {
-    background: #fff;
-    padding: 18px 24px;
-    border-radius: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    display: flex; align-items: baseline; gap: 10px;
-  }
-  .cs-stat .v { font-size: 34px; color: var(--brand-red); }
-  .cs-stat .k { font-size: 16px; color: #334155; }
-  .cs-stat.alt { background: var(--brand-yellow); }
-  .cs-stat.alt .v { color: #10162f; }
   .cs-brand {
-    position: absolute; bottom: 72px; left: 72px;
+    position: absolute; top: 50px; right: 50px;
     background: var(--brand-red); color: #fff;
-    padding: 14px 26px;
-    border-radius: 8px;
-    font-weight: 900; font-size: 24px;
+    padding: 20px 36px;
+    border-radius: 12px;
+    font-weight: 900; font-size: 46px;
     font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    z-index: 2;
   }
-  .cs-date {
-    position: absolute; bottom: 82px; right: 72px;
+  .cs-period {
+    position: absolute; bottom: 60px; left: 0; right: 0;
+    font-weight: 900;
+    font-size: 72px;
+    color: var(--brand-yellow);
     font-family: 'JetBrains Mono', monospace;
-    font-size: 18px; color: rgba(255,255,255,0.55); letter-spacing: 2px;
+    letter-spacing: 6px;
+    text-align: center;
+    z-index: 2;
   }
 
   /* --------- Download button --------- */
@@ -289,20 +253,10 @@
     <div class="cover-preview-main">
       <div class="cover-main-render">
         <div class="cm" id="cm">
-          <div class="cm-brand">JR · 2026Q2</div>
-          <div class="cm-eyebrow"><span class="dot"></span>AI ENGINEER 全栈项目班 · 第 30 期</div>
-          <div class="cm-title">
-            Junior AI Engineer<br>
-            <span class="highlight">岗位</span> <span style="color:var(--brand-red)">换代了</span>
-          </div>
-          <div class="cm-stats">
-            <div class="cm-stat"><span class="v">16</span><span class="k">周</span></div>
-            <div class="cm-stat"><span class="v">158</span><span class="k">节课</span></div>
-            <div class="cm-stat alt"><span class="v">3</span><span class="k">项目</span></div>
-            <div class="cm-stat"><span class="v">12M</span><span class="k">陪跑</span></div>
-            <div class="cm-stat alt"><span class="v">5000+</span><span class="k">校友</span></div>
-          </div>
-          <div class="cm-corner-tag">JIANGREN.COM.AU</div>
+          <div class="cm-brand">JR ACADEMY</div>
+          <div class="cm-line1">Junior AI Engineer</div>
+          <div class="cm-line2"><span class="highlight">岗位</span><span class="red">换代了</span></div>
+          <div class="cm-corner">2026 · 第 30 期</div>
         </div>
       </div>
     </div>
@@ -318,19 +272,10 @@
     <div class="cover-preview-square">
       <div class="cover-square-render">
         <div class="cs" id="cs">
-          <div class="cs-eyebrow"><span class="dot"></span>AI ENGINEER · 第 30 期</div>
-          <div class="cs-title">
-            <span class="red">Junior AI</span><br>
-            <span class="highlight">换代了</span>
-          </div>
-          <div class="cs-stats">
-            <div class="cs-stat"><span class="v">16</span><span class="k">周</span></div>
-            <div class="cs-stat alt"><span class="v">158</span><span class="k">节课</span></div>
-            <div class="cs-stat alt"><span class="v">3</span><span class="k">项目</span></div>
-            <div class="cs-stat"><span class="v">12M</span><span class="k">陪跑</span></div>
-          </div>
-          <div class="cs-brand">JR ACADEMY</div>
-          <div class="cs-date">2026 Q2</div>
+          <div class="cs-brand">JR</div>
+          <div class="cs-line1"><span class="red">Junior AI</span></div>
+          <div class="cs-line2"><span class="highlight">换代了</span></div>
+          <div class="cs-period">第 30 期 · 2026</div>
         </div>
       </div>
     </div>
