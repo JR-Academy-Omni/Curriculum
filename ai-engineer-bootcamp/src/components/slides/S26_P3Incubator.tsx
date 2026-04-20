@@ -14,7 +14,7 @@ const pillars = [
 		tag: '多人协作',
 		accent: colors.yellow,
 		textOnAccent: colors.black,
-		title: '3-4 人小组 · 真企业客户',
+		title: '10 人小组 · 真企业客户',
 		points: [
 			['Tech Lead', '架构选型 / Code Review / 卡点拆解'],
 			['AI Engineer', 'RAG / Agent / Prompt / Eval pipeline'],
@@ -77,7 +77,7 @@ export default function S26_P3Incubator() {
 						fontFamily: fonts.heading, fontSize: 'clamp(26px,3.4vw,44px)', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0, color: colors.white,
 					}}>
-						3-4 人组队，把一个 AI 项目跑到{' '}
+						10 人组队，把一个 AI 项目跑到{' '}
 						<span style={{
 							display: 'inline-block', padding: '0 10px', background: colors.red, color: colors.white,
 							border: `3px solid ${colors.white}`,
