@@ -3,18 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Engineer 全栈项目班 · 公众号封面设计器</title>
+<title>AI Engineer 全栈项目班 · 公众号封面设计器（Canvas）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Bricolage+Grotesque:wght@700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <style>
   :root {
     --brand-red: #ff5757;
     --brand-dark: #10162f;
     --brand-yellow: #ffce44;
-    --brand-green: #10b981;
-    --brand-blue: #3b82f6;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -32,6 +29,7 @@
     padding: 14px 18px; box-shadow: 4px 4px 0 #10162f;
   }
   .hint b { color: #10162f; }
+  .hint code { background: #fff8ee; padding: 1px 6px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
 
   .cover-section {
     margin: 32px 0;
@@ -53,171 +51,44 @@
   }
   .cover-meta { font-size: 12px; color: #64748b; margin-bottom: 16px; }
 
-  /* --------- Cover preview scale (display only, not the render target) --------- */
-  .cover-preview-main {
-    width: 100%; max-width: 940px;
-    aspect-ratio: 2.35 / 1;
-    overflow: hidden;
+  /* Canvas 以真实分辨率绘制，CSS 只 scale 显示 */
+  canvas {
+    display: block;
+    background: #fff;
     border: 1px dashed #cbd5e1;
-    transform-origin: top left;
+    width: 100%;
+    height: auto;
   }
-  .cover-preview-square {
-    width: 100%; max-width: 540px;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    border: 1px dashed #cbd5e1;
-    transform-origin: top left;
+  #canvas-main { max-width: 940px; }
+  #canvas-square { max-width: 540px; }
+
+  /* Form 控件（微调文案用） */
+  .form {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 10px 12px;
+    align-items: center;
+    font-size: 12px;
+  }
+  .form label { font-weight: 700; color: #334155; }
+  .form input[type=text], .form select {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    padding: 6px 10px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fff;
+    min-width: 0;
+  }
+  .form input[type=text]:focus, .form select:focus {
+    outline: none; border-color: var(--brand-red);
   }
 
-  /* --------- Render target actual sizes (scaled via transform) --------- */
-  .cover-main-render {
-    width: 2350px; height: 1000px;
-    transform: scale(0.4);
-    transform-origin: top left;
-  }
-  .cover-square-render {
-    width: 1080px; height: 1080px;
-    transform: scale(0.5);
-    transform-origin: top left;
-  }
-
-  /* ==================== Cover design · Main 2.35:1 ==================== */
-  /* 手机端 feed 缩略 ~120px 宽 · 源 2350px · 缩放 0.05x */
-  /* 所以源图 300px 以下的字 = 手机缩略 15px 以下 = 看不清 */
-  /* 设计原则：只留巨大标题 + 品牌 tag，删除所有小字 */
-  .cm {
-    width: 2350px; height: 1000px;
-    background: #10162f;
-    position: relative;
-    overflow: hidden;
-    font-family: 'Noto Sans SC', system-ui, sans-serif;
-    color: #fff;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 0 100px;
-  }
-  .cm::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 2px 2px, rgba(255,206,68,0.10) 2px, transparent 2px);
-    background-size: 60px 60px;
-    pointer-events: none;
-  }
-  .cm-line1 {
-    font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
-    font-weight: 900;
-    font-size: 300px;
-    line-height: 0.95;
-    letter-spacing: -6px;
-    color: #ffffff;
-  }
-  .cm-line2 {
-    font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
-    font-weight: 900;
-    font-size: 460px;
-    line-height: 0.95;
-    letter-spacing: -4px;
-    margin-top: 20px;
-  }
-  .cm-line2 .highlight {
-    background: var(--brand-yellow);
-    color: #10162f;
-    padding: 0 40px;
-    display: inline-block;
-    transform: skew(-4deg);
-    margin-right: 30px;
-  }
-  .cm-line2 .red {
-    color: var(--brand-red);
-  }
-  .cm-brand {
-    position: absolute; top: 80px; right: 100px;
-    background: var(--brand-red); color: #fff;
-    padding: 32px 56px;
-    border-radius: 16px;
-    font-weight: 900; font-size: 68px;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 4px;
-  }
-  .cm-corner {
-    position: absolute; bottom: 80px; right: 100px;
-    font-weight: 900;
-    font-size: 96px;
-    color: var(--brand-yellow);
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 4px;
-  }
-
-  /* ==================== Cover design · Square 1:1 ==================== */
-  /* 手机端朋友圈 / 次条缩略 ~100-150px · 源 1080px · 缩放 ~0.1x */
-  /* 所以源图 200px 以下字 = 手机 20px 以下 = 看不清 */
-  .cs {
-    width: 1080px; height: 1080px;
-    background: #10162f;
-    position: relative;
-    overflow: hidden;
-    font-family: 'Noto Sans SC', system-ui, sans-serif;
-    color: #fff;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    padding: 0 60px;
-    text-align: center;
-  }
-  .cs::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 2px 2px, rgba(255,206,68,0.10) 2px, transparent 2px);
-    background-size: 50px 50px;
-    pointer-events: none;
-  }
-  .cs-line1 {
-    font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
-    font-weight: 900;
-    font-size: 180px;
-    line-height: 1.0;
-    letter-spacing: -2px;
-    color: #fff;
-    z-index: 2;
-  }
-  .cs-line2 {
-    font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
-    font-weight: 900;
-    font-size: 330px;
-    line-height: 1.0;
-    letter-spacing: -4px;
-    margin-top: 20px;
-    z-index: 2;
-  }
-  .cs-line2 .highlight {
-    background: var(--brand-yellow);
-    color: #10162f;
-    padding: 0 28px;
-    display: inline-block;
-    transform: skew(-4deg);
-  }
-  .cs-line2 .red {
-    color: var(--brand-red);
-  }
-  .cs-brand {
-    position: absolute; top: 50px; right: 50px;
-    background: var(--brand-red); color: #fff;
-    padding: 20px 36px;
-    border-radius: 12px;
-    font-weight: 900; font-size: 46px;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 3px;
-    z-index: 2;
-  }
-  .cs-period {
-    position: absolute; bottom: 60px; left: 0; right: 0;
-    font-weight: 900;
-    font-size: 72px;
-    color: var(--brand-yellow);
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 6px;
-    text-align: center;
-    z-index: 2;
-  }
-
-  /* --------- Download button --------- */
   .dl-btn {
     margin-top: 14px;
     font-family: 'Noto Sans SC', sans-serif;
@@ -227,21 +98,39 @@
     border-radius: 10px; cursor: pointer;
     box-shadow: 3px 3px 0 #10162f;
     transition: all 0.12s;
+    margin-right: 8px;
   }
   .dl-btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #10162f; }
-  .dl-btn:disabled { opacity: 0.55; cursor: wait; }
   .dl-btn.secondary { background: #fff; color: #10162f; }
+
+  .mobile-preview {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px;
+    background: #10162f;
+    border-radius: 12px;
+  }
+  .mobile-preview .label {
+    color: #ffce44; font-size: 11px; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;
+    text-align: center;
+  }
+  .mobile-preview canvas {
+    width: 140px !important;
+    height: auto !important;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+  }
 </style>
 </head>
 <body>
 
 <div class="wrap">
-  <h1>📰 <span>AI Engineer 全栈项目班</span> · 公众号封面设计器</h1>
+  <h1>📰 <span>AI Engineer 全栈项目班</span> · 公众号封面设计器（Canvas 版）</h1>
   <div class="hint">
-    两张封面对应微信公众号两种用法：<br>
-    · <b>大封面（2.35:1）</b>：头条图文封面，发布时传 900×383 或更高分辨率；此处渲染 <b>2350×1000</b>。<br>
-    · <b>小封面（1:1）</b>：次条封面 / 朋友圈缩略图，发布时传 200×200 或 500×500；此处渲染 <b>1080×1080</b>。<br>
-    点「⬇ 下载 PNG」得到的是<b>真实尺寸高清图</b>，预览缩小只是为了排版方便。
+    <b>用 Canvas 2D API 绘制，字号靠 <code>ctx.measureText()</code> 预量后动态缩放</b>，不再有 CSS 溢出问题。<br>
+    · <b>大封面 2350×1000</b>：头条图文标题图（2.35:1）<br>
+    · <b>小封面 1080×1080</b>：次条封面 / 朋友圈缩略（1:1）<br>
+    改下面的文案 → 自动重绘 → 点「下载 PNG」拿真实分辨率原图。右侧"手机缩略"显示手机 feed 中的真实尺寸（~140px），判断字够不够大。
   </div>
 
   <!-- ============ Main 2.35:1 ============ -->
@@ -250,17 +139,29 @@
       🖼️ 大封面（头条图文用） <span class="tag">2350 × 1000</span>
     </div>
     <div class="cover-meta">微信公众号标题封面图 · 2.35:1 比例 · 头条图文位置</div>
-    <div class="cover-preview-main">
-      <div class="cover-main-render">
-        <div class="cm" id="cm">
-          <div class="cm-brand">JR ACADEMY</div>
-          <div class="cm-line1">Junior AI Engineer</div>
-          <div class="cm-line2"><span class="highlight">岗位</span><span class="red">换代了</span></div>
-          <div class="cm-corner">2026 · 第 30 期</div>
-        </div>
-      </div>
+
+    <canvas id="canvas-main" width="2350" height="1000"></canvas>
+
+    <div class="form">
+      <label>Line 1（白字）</label>
+      <input id="m-line1" type="text" value="Junior AI Engineer">
+      <label>Line 2 黄底高亮</label>
+      <input id="m-highlight" type="text" value="岗位">
+      <label>Line 2 红字</label>
+      <input id="m-red" type="text" value="换代了">
+      <label>右上角 Logo</label>
+      <input id="m-brand" type="text" value="JR ACADEMY">
+      <label>右下角小标</label>
+      <input id="m-corner" type="text" value="2026 · 第 30 期">
     </div>
-    <button class="dl-btn" data-target="cm" data-name="mp-cover-main-ai-engineer.png">⬇ 下载大封面 PNG（2350×1000）</button>
+
+    <div style="margin-top:14px;">
+      <button class="dl-btn" data-canvas="canvas-main" data-name="mp-cover-main-ai-engineer.png">⬇ 下载大封面 PNG（2350×1000）</button>
+      <span class="mobile-preview">
+        <div class="label">手机 feed 缩略</div>
+        <canvas width="2350" height="1000" id="canvas-main-mini"></canvas>
+      </span>
+    </div>
   </div>
 
   <!-- ============ Square 1:1 ============ -->
@@ -269,54 +170,289 @@
       🔲 小封面（次条 / 缩略图用） <span class="tag">1080 × 1080</span>
     </div>
     <div class="cover-meta">微信公众号次条封面 / 朋友圈缩略 · 1:1 比例</div>
-    <div class="cover-preview-square">
-      <div class="cover-square-render">
-        <div class="cs" id="cs">
-          <div class="cs-brand">JR</div>
-          <div class="cs-line1"><span class="red">Junior AI</span></div>
-          <div class="cs-line2"><span class="highlight">换代了</span></div>
-          <div class="cs-period">第 30 期 · 2026</div>
-        </div>
-      </div>
+
+    <canvas id="canvas-square" width="1080" height="1080"></canvas>
+
+    <div class="form">
+      <label>Line 1（红字）</label>
+      <input id="s-line1" type="text" value="Junior AI">
+      <label>Line 2 黄底高亮</label>
+      <input id="s-highlight" type="text" value="换代了">
+      <label>右上角 Logo</label>
+      <input id="s-brand" type="text" value="JR">
+      <label>底部小标</label>
+      <input id="s-footer" type="text" value="第 30 期 · 2026">
     </div>
-    <button class="dl-btn secondary" data-target="cs" data-name="mp-cover-square-ai-engineer.png">⬇ 下载小封面 PNG（1080×1080）</button>
+
+    <div style="margin-top:14px;">
+      <button class="dl-btn secondary" data-canvas="canvas-square" data-name="mp-cover-square-ai-engineer.png">⬇ 下载小封面 PNG（1080×1080）</button>
+      <span class="mobile-preview">
+        <div class="label">手机缩略</div>
+        <canvas width="1080" height="1080" id="canvas-square-mini"></canvas>
+      </span>
+    </div>
   </div>
 </div>
 
 <script>
-document.querySelectorAll('.dl-btn').forEach((btn) => {
-  btn.addEventListener('click', async () => {
-    const id = btn.dataset.target;
-    const name = btn.dataset.name;
-    const el = document.getElementById(id);
-    if (!el) return;
-    const oldText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = '渲染中...';
-    try {
-      // 拿真实尺寸（scale 是 1，因为 .cm/.cs 已经是目标尺寸）
-      const canvas = await html2canvas(el, {
-        backgroundColor: null,
-        scale: 1,
-        useCORS: true,
-        logging: false,
-        width: el.offsetWidth,
-        height: el.offsetHeight,
-      });
-      const url = canvas.toDataURL('image/png');
-      const a = document.createElement('a');
-      a.download = name;
-      a.href = url;
-      a.click();
-      btn.textContent = '✅ 已下载';
-      setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 1500);
-    } catch (e) {
-      console.error(e);
-      btn.textContent = '❌ ' + e.message;
-      setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 3000);
+const COLORS = {
+  dark:   '#10162f',
+  red:    '#ff5757',
+  yellow: '#ffce44',
+  white:  '#ffffff',
+};
+
+// ==================== 通用绘制辅助 ====================
+
+/** 在 canvas 背景画 dot pattern */
+function drawDotPattern(ctx, W, H, step, dotR, alpha) {
+  ctx.fillStyle = `rgba(255,206,68,${alpha})`;
+  const offset = step / 2;
+  for (let x = offset; x < W; x += step) {
+    for (let y = offset; y < H; y += step) {
+      ctx.beginPath();
+      ctx.arc(x, y, dotR, 0, Math.PI * 2);
+      ctx.fill();
     }
+  }
+}
+
+/** 给定 maxWidth 求字号（二分降字号直到文字能放下） */
+function fitText(ctx, text, fontFamily, maxWidth, startSize, minSize = 30) {
+  let size = startSize;
+  ctx.font = `900 ${size}px ${fontFamily}`;
+  while (ctx.measureText(text).width > maxWidth && size > minSize) {
+    size -= 4;
+    ctx.font = `900 ${size}px ${fontFamily}`;
+  }
+  return size;
+}
+
+/** 画一个圆角矩形 */
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y,     x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x,     y + h, r);
+  ctx.arcTo(x,     y + h, x,     y,     r);
+  ctx.arcTo(x,     y,     x + w, y,     r);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// ==================== 大封面 2350×1000 ====================
+
+function drawMain(ctx, opts) {
+  const W = 2350, H = 1000;
+  const FF_EN = `'Bricolage Grotesque', 'Noto Sans SC', sans-serif`;
+  const FF_MONO = `'JetBrains Mono', monospace`;
+  const PAD = 100;
+
+  // Background
+  ctx.fillStyle = COLORS.dark;
+  ctx.fillRect(0, 0, W, H);
+  drawDotPattern(ctx, W, H, 60, 2, 0.12);
+
+  // ---- Brand chip (top right) ----
+  const brandText = opts.brand || 'JR ACADEMY';
+  const brandSize = 64;
+  ctx.font = `900 ${brandSize}px ${FF_MONO}`;
+  ctx.textBaseline = 'alphabetic';
+  const brandTextW = ctx.measureText(brandText).width;
+  const brandPadX = 48, brandPadY = 26;
+  const brandBoxW = brandTextW + brandPadX * 2;
+  const brandBoxH = brandSize + brandPadY * 2;
+  const brandX = W - PAD - brandBoxW;
+  const brandY = 90;
+  ctx.fillStyle = COLORS.red;
+  roundRect(ctx, brandX, brandY, brandBoxW, brandBoxH, 14);
+  ctx.fillStyle = COLORS.white;
+  ctx.fillText(brandText, brandX + brandPadX, brandY + brandPadY + brandSize * 0.82);
+
+  // ---- Line 1 (white) ----
+  const line1 = opts.line1 || 'Junior AI Engineer';
+  // 留出 brand chip 的空间
+  const line1MaxW = W - PAD * 2 - brandBoxW - 80;
+  const line1Size = fitText(ctx, line1, FF_EN, line1MaxW, 260);
+  const line1Y = 380;
+  ctx.fillStyle = COLORS.white;
+  ctx.font = `900 ${line1Size}px ${FF_EN}`;
+  ctx.fillText(line1, PAD, line1Y);
+
+  // ---- Line 2 combined: [highlight] + [red] ----
+  const hlText = opts.highlight || '岗位';
+  const redText = opts.red || '换代了';
+  const hlPadX = 36;
+  const gap = 30;
+
+  // 开始字号试 400，逐步降直到 highlight chip + gap + red 能放下
+  let line2Size = 400;
+  const line2MaxW = W - PAD * 2;
+  while (line2Size > 60) {
+    ctx.font = `900 ${line2Size}px ${FF_EN}`;
+    const wH = ctx.measureText(hlText).width + hlPadX * 2;
+    const wR = ctx.measureText(redText).width;
+    if (wH + gap + wR <= line2MaxW) break;
+    line2Size -= 6;
+  }
+  ctx.font = `900 ${line2Size}px ${FF_EN}`;
+  const hlTextW = ctx.measureText(hlText).width;
+  const redTextW = ctx.measureText(redText).width;
+  const hlChipW = hlTextW + hlPadX * 2;
+  const hlChipH = line2Size * 1.15;
+  const line2BaselineY = H - 200;
+  const hlChipY = line2BaselineY - line2Size * 0.94;
+
+  // 黄色 highlight chip
+  ctx.fillStyle = COLORS.yellow;
+  ctx.fillRect(PAD, hlChipY, hlChipW, hlChipH);
+  // 高亮文字（深色）
+  ctx.fillStyle = COLORS.dark;
+  ctx.fillText(hlText, PAD + hlPadX, line2BaselineY);
+  // 红字
+  ctx.fillStyle = COLORS.red;
+  ctx.fillText(redText, PAD + hlChipW + gap, line2BaselineY);
+
+  // ---- Corner tag (bottom right) ----
+  const corner = opts.corner || '2026 · 第 30 期';
+  const cornerSize = 74;
+  ctx.font = `900 ${cornerSize}px ${FF_MONO}`;
+  const cornerW = ctx.measureText(corner).width;
+  ctx.fillStyle = COLORS.yellow;
+  ctx.fillText(corner, W - PAD - cornerW, H - 80);
+}
+
+// ==================== 小封面 1080×1080 ====================
+
+function drawSquare(ctx, opts) {
+  const W = 1080, H = 1080;
+  const FF_EN = `'Bricolage Grotesque', 'Noto Sans SC', sans-serif`;
+  const FF_MONO = `'JetBrains Mono', monospace`;
+  const PAD = 70;
+
+  // Background
+  ctx.fillStyle = COLORS.dark;
+  ctx.fillRect(0, 0, W, H);
+  drawDotPattern(ctx, W, H, 50, 2, 0.12);
+
+  // ---- Brand chip (top right) ----
+  const brandText = opts.brand || 'JR';
+  const brandSize = 52;
+  ctx.font = `900 ${brandSize}px ${FF_MONO}`;
+  ctx.textBaseline = 'alphabetic';
+  const brandTextW = ctx.measureText(brandText).width;
+  const brandPadX = 30, brandPadY = 18;
+  const brandBoxW = brandTextW + brandPadX * 2;
+  const brandBoxH = brandSize + brandPadY * 2;
+  const brandX = W - PAD - brandBoxW;
+  const brandY = 60;
+  ctx.fillStyle = COLORS.red;
+  roundRect(ctx, brandX, brandY, brandBoxW, brandBoxH, 12);
+  ctx.fillStyle = COLORS.white;
+  ctx.fillText(brandText, brandX + brandPadX, brandY + brandPadY + brandSize * 0.82);
+
+  // ---- Line 1 (red) ----
+  const line1 = opts.line1 || 'Junior AI';
+  const line1MaxW = W - PAD * 2;
+  const line1Size = fitText(ctx, line1, FF_EN, line1MaxW, 220);
+  const line1Y = 430;
+  ctx.fillStyle = COLORS.red;
+  ctx.font = `900 ${line1Size}px ${FF_EN}`;
+  ctx.fillText(line1, PAD, line1Y);
+
+  // ---- Line 2 yellow highlight ----
+  const hlText = opts.highlight || '换代了';
+  const hlPadX = 32;
+  let line2Size = 380;
+  const line2MaxW = W - PAD * 2;
+  while (line2Size > 80) {
+    ctx.font = `900 ${line2Size}px ${FF_EN}`;
+    const wH = ctx.measureText(hlText).width + hlPadX * 2;
+    if (wH <= line2MaxW) break;
+    line2Size -= 6;
+  }
+  ctx.font = `900 ${line2Size}px ${FF_EN}`;
+  const hlTextW = ctx.measureText(hlText).width;
+  const hlChipW = hlTextW + hlPadX * 2;
+  const hlChipH = line2Size * 1.15;
+  const line2Y = 830;
+  const hlChipY = line2Y - line2Size * 0.94;
+
+  ctx.fillStyle = COLORS.yellow;
+  ctx.fillRect(PAD, hlChipY, hlChipW, hlChipH);
+  ctx.fillStyle = COLORS.dark;
+  ctx.fillText(hlText, PAD + hlPadX, line2Y);
+
+  // ---- Footer (bottom center) ----
+  const footer = opts.footer || '第 30 期 · 2026';
+  const footerSize = 58;
+  ctx.font = `900 ${footerSize}px ${FF_MONO}`;
+  const footerW = ctx.measureText(footer).width;
+  ctx.fillStyle = COLORS.yellow;
+  ctx.fillText(footer, (W - footerW) / 2, H - 50);
+}
+
+// ==================== 重绘驱动 ====================
+
+function redrawMain() {
+  const c = document.getElementById('canvas-main');
+  const cMini = document.getElementById('canvas-main-mini');
+  const ctx = c.getContext('2d');
+  const ctxMini = cMini.getContext('2d');
+  const opts = {
+    line1:     document.getElementById('m-line1').value || '',
+    highlight: document.getElementById('m-highlight').value || '',
+    red:       document.getElementById('m-red').value || '',
+    brand:     document.getElementById('m-brand').value || '',
+    corner:    document.getElementById('m-corner').value || '',
+  };
+  drawMain(ctx, opts);
+  drawMain(ctxMini, opts);
+}
+
+function redrawSquare() {
+  const c = document.getElementById('canvas-square');
+  const cMini = document.getElementById('canvas-square-mini');
+  const ctx = c.getContext('2d');
+  const ctxMini = cMini.getContext('2d');
+  const opts = {
+    line1:     document.getElementById('s-line1').value || '',
+    highlight: document.getElementById('s-highlight').value || '',
+    brand:     document.getElementById('s-brand').value || '',
+    footer:    document.getElementById('s-footer').value || '',
+  };
+  drawSquare(ctx, opts);
+  drawSquare(ctxMini, opts);
+}
+
+// 表单变化 → 重绘
+['m-line1','m-highlight','m-red','m-brand','m-corner'].forEach(id => {
+  document.getElementById(id).addEventListener('input', redrawMain);
+});
+['s-line1','s-highlight','s-brand','s-footer'].forEach(id => {
+  document.getElementById(id).addEventListener('input', redrawSquare);
+});
+
+// 下载按钮
+document.querySelectorAll('.dl-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const cid = btn.dataset.canvas;
+    const c = document.getElementById(cid);
+    const url = c.toDataURL('image/png');
+    const a = document.createElement('a');
+    a.download = btn.dataset.name;
+    a.href = url;
+    a.click();
   });
 });
+
+// 等字体就绪后首次绘制（避免 fallback 字体撑爆布局）
+async function init() {
+  try { await document.fonts.ready; } catch {}
+  redrawMain();
+  redrawSquare();
+}
+init();
 </script>
 
 </body>
