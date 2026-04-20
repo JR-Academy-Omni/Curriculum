@@ -1,5 +1,12 @@
 # Changelog — AI Engineer Bootcamp
 
+## 2026-04-20
+
+- 公开课 PPT 升级：slide deck 从 13 张扩充到 36 张（同步自 presentations/ 工作区）
+  - 覆盖 Cover / Pain / Market / Capability Map / 10 Phases / Demo / Projects / Teachers / P3 Incubator / Competitors / FAQ / Pricing
+  - S26 P3 Incubator 重写：去掉 82% 数据，强调多人协作 + Production 级 + Enterprise 级
+- curriculum.html 顶部加 "▶ 打开课程介绍 PPT" 按钮，链接到 ./index.html
+
 ## 2026-04-14
 
 - 新增 Phase 4: Harness Engineering（8 节课，90+30+120+30+90+20+60+30 = 470min）

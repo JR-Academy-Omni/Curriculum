@@ -6,9 +6,17 @@ interface SlideEngineProps {
 	children: ReactNode[];
 }
 
+function readPageFromUrl(total: number): number {
+	if (typeof window === 'undefined') return 0;
+	const params = new URLSearchParams(window.location.search);
+	const raw = Number(params.get('page'));
+	if (!Number.isFinite(raw) || raw < 1) return 0;
+	return Math.min(Math.max(0, Math.floor(raw) - 1), total - 1);
+}
+
 export default function SlideEngine({ children }: SlideEngineProps) {
-	const [current, setCurrent] = useState(0);
 	const total = children.length;
+	const [current, setCurrent] = useState(() => readPageFromUrl(total));
 	const isAnimating = useRef(false);
 	const touchStart = useRef({ x: 0, y: 0 });
 	const wheelTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -22,6 +30,20 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 
 	const next = useCallback(() => go(current + 1), [go, current]);
 	const prev = useCallback(() => go(current - 1), [go, current]);
+
+	// Sync current → URL (?page=N, 1-indexed)
+	useEffect(() => {
+		const url = new URL(window.location.href);
+		url.searchParams.set('page', String(current + 1));
+		window.history.replaceState({ page: current + 1 }, '', url.toString());
+	}, [current]);
+
+	// Respond to browser back/forward
+	useEffect(() => {
+		const onPop = () => setCurrent(readPageFromUrl(total));
+		window.addEventListener('popstate', onPop);
+		return () => window.removeEventListener('popstate', onPop);
+	}, [total]);
 
 	useEffect(() => {
 		const handler = (e: KeyboardEvent) => {
