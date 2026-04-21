@@ -45,9 +45,10 @@ jobs:
           bun install
           bun run build
 
-      # Build web-code-bootcamp-or-learn-to-code (第 30 期 Full-Stack + AI 公开课 slide deck)
-      - name: Build web-code-bootcamp-or-learn-to-code
-        working-directory: web-code-bootcamp-or-learn-to-code
+      # Build web-code-bootcamp-or-learn-to-code-1 (第 30 期 Full-Stack + AI · slide deck + mp-article + xhs-posters)
+      # URL slug with -1 suffix to match production: /program-course/web-code-bootcamp-or-learn-to-code-1
+      - name: Build web-code-bootcamp-or-learn-to-code-1
+        working-directory: web-code-bootcamp-or-learn-to-code-1
         run: |
           bun install
           bun run build
@@ -81,18 +82,15 @@ jobs:
           mkdir -p _site/ai-essentials-bootcamp
           cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/
 
-          # web-code-bootcamp-or-learn-to-code-1 (第 30 期 · Draft): static only
+          # web-code-bootcamp-or-learn-to-code-1 (第 30 期 · Full-Stack + AI)
+          # URL slug 匹配 production: /program-course/web-code-bootcamp-or-learn-to-code-1
+          # 包含：Vite slide deck（dist）+ curriculum.html + styles.css
+          #       + mp-article 公众号发稿页 + xhs-posters 小红书素材 + outline.json
+          mkdir -p _site/web-code-bootcamp-or-learn-to-code-1
+          cp -r web-code-bootcamp-or-learn-to-code-1/dist/* _site/web-code-bootcamp-or-learn-to-code-1/
           if [ -d web-code-bootcamp-or-learn-to-code-1/public ]; then
-            mkdir -p _site/web-code-bootcamp-or-learn-to-code-1
             cp -r web-code-bootcamp-or-learn-to-code-1/public/* _site/web-code-bootcamp-or-learn-to-code-1/
           fi
-
-          # web-code-bootcamp-or-learn-to-code (第 30 期 · Full-Stack + AI)
-          # Vite slide deck + static curriculum.html
-          mkdir -p _site/web-code-bootcamp-or-learn-to-code
-          cp -r web-code-bootcamp-or-learn-to-code/dist/* _site/web-code-bootcamp-or-learn-to-code/
-          [ -f web-code-bootcamp-or-learn-to-code/public/curriculum.html ] && cp web-code-bootcamp-or-learn-to-code/public/curriculum.html _site/web-code-bootcamp-or-learn-to-code/ || true
-          [ -f web-code-bootcamp-or-learn-to-code/public/styles.css ] && cp web-code-bootcamp-or-learn-to-code/public/styles.css _site/web-code-bootcamp-or-learn-to-code/ || true
 
           # ai-engineer-rag (AI Engineer 入门): static HTML only, no React build needed
           if [ -d ai-engineer-rag/public ]; then
@@ -307,12 +305,12 @@ jobs:
               <div class="section">
                 <div class="section-title">AI Engineer 全栈项目班 · 6 个月 · 第 30 期</div>
                 <div class="cards">
-                  <a href="./web-code-bootcamp-or-learn-to-code/">
+                  <a href="./web-code-bootcamp-or-learn-to-code-1/">
                     <span class="tag" style="background:#6366f1">SLIDE DECK</span>
                     <div class="title">Full-Stack + AI 公开课</div>
                     <div class="desc">24 页互动演示 — 10 Module、278 节课、CareerMate 项目</div>
                   </a>
-                  <a href="./web-code-bootcamp-or-learn-to-code/curriculum.html">
+                  <a href="./web-code-bootcamp-or-learn-to-code-1/curriculum.html">
                     <span class="tag" style="background:#10b981">CURRICULUM</span>
                     <div class="title">AI Engineer 全栈项目班</div>
                     <div class="desc">课程结构详情 — 10 Module · 278 节 · 80+ Lab</div>
@@ -321,6 +319,11 @@ jobs:
                     <span class="tag" style="background:#ef4444">XHS</span>
                     <div class="title">第 30 期 · 小红书素材集</div>
                     <div class="desc">25 张 1242×1660 竖版海报</div>
+                  </a>
+                  <a href="./web-code-bootcamp-or-learn-to-code-1/mp-article/">
+                    <span class="tag" style="background:#f59e0b">MP ARTICLE</span>
+                    <div class="title">第 30 期 · 公众号发稿页</div>
+                    <div class="desc">学生 / 家长 / 课程大纲 三视角 · 直接复制粘贴发稿</div>
                   </a>
                 </div>
               </div>
