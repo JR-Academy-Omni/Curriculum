@@ -45,6 +45,13 @@ jobs:
           bun install
           bun run build
 
+      # Build web-code-bootcamp-or-learn-to-code (第 30 期 Full-Stack + AI 公开课 slide deck)
+      - name: Build web-code-bootcamp-or-learn-to-code
+        working-directory: web-code-bootcamp-or-learn-to-code
+        run: |
+          bun install
+          bun run build
+
       # ai-essentials-bootcamp: static HTML only, no React build needed
 
       # ai-programming (Cursor AI 编程实战课): static HTML only, no React build needed
@@ -79,6 +86,13 @@ jobs:
             mkdir -p _site/web-code-bootcamp-or-learn-to-code-1
             cp -r web-code-bootcamp-or-learn-to-code-1/public/* _site/web-code-bootcamp-or-learn-to-code-1/
           fi
+
+          # web-code-bootcamp-or-learn-to-code (第 30 期 · Full-Stack + AI)
+          # Vite slide deck + static curriculum.html
+          mkdir -p _site/web-code-bootcamp-or-learn-to-code
+          cp -r web-code-bootcamp-or-learn-to-code/dist/* _site/web-code-bootcamp-or-learn-to-code/
+          [ -f web-code-bootcamp-or-learn-to-code/public/curriculum.html ] && cp web-code-bootcamp-or-learn-to-code/public/curriculum.html _site/web-code-bootcamp-or-learn-to-code/ || true
+          [ -f web-code-bootcamp-or-learn-to-code/public/styles.css ] && cp web-code-bootcamp-or-learn-to-code/public/styles.css _site/web-code-bootcamp-or-learn-to-code/ || true
 
           # ai-engineer-rag (AI Engineer 入门): static HTML only, no React build needed
           if [ -d ai-engineer-rag/public ]; then
@@ -286,6 +300,27 @@ jobs:
                     <span class="tag" style="background:#dc2626">INTERNAL</span>
                     <div class="title">AI Engineer 内部资料</div>
                     <div class="desc">Lab 映射、老师分工、JD 对比、Marketing 素材</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">AI Engineer 全栈项目班 · 6 个月 · 第 30 期</div>
+                <div class="cards">
+                  <a href="./web-code-bootcamp-or-learn-to-code/">
+                    <span class="tag" style="background:#6366f1">SLIDE DECK</span>
+                    <div class="title">Full-Stack + AI 公开课</div>
+                    <div class="desc">24 页互动演示 — 10 Module、278 节课、CareerMate 项目</div>
+                  </a>
+                  <a href="./web-code-bootcamp-or-learn-to-code/curriculum.html">
+                    <span class="tag" style="background:#10b981">CURRICULUM</span>
+                    <div class="title">AI Engineer 全栈项目班</div>
+                    <div class="desc">课程结构详情 — 10 Module · 278 节 · 80+ Lab</div>
+                  </a>
+                  <a href="./web-code-bootcamp-or-learn-to-code-1/xhs-posters/">
+                    <span class="tag" style="background:#ef4444">XHS</span>
+                    <div class="title">第 30 期 · 小红书素材集</div>
+                    <div class="desc">25 张 1242×1660 竖版海报</div>
                   </a>
                 </div>
               </div>
