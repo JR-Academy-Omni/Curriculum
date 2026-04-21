@@ -68,7 +68,7 @@ export const ShortVideo: React.FC = () => {
 				volume={(f) => {
 					const fadeIn = FPS; // 1s
 					const fadeOut = FPS * 2; // 2s
-					const peak = 0.18; // 真乐曲压更低（真乐器比合成声音更密，容易盖人声）
+					const peak = 0.32; // BGM 峰值，给人声留空间同时有存在感
 					if (f < fadeIn) return (f / fadeIn) * peak;
 					if (f > totalVideoDuration - fadeOut) {
 						return Math.max(0, (totalVideoDuration - f) / fadeOut) * peak;
