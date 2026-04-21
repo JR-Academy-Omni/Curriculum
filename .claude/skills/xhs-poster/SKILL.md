@@ -8,6 +8,26 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 
 为某个 bootcamp 生成一套可直接投放小红书聚光 (Juguang) 广告的视觉素材。输出独立 HTML 页面，浏览器打开后每张图下方「⬇ 下载 PNG」一键导出。
 
+## 🚨 硬性要求（2026-04-21 后新生成的都按这个做）
+
+**设计类生成器必须用原生 Canvas 2D API 绘制，禁止 HTML/CSS + html2canvas**。
+
+原因：html2canvas 方案字号溢出 + 字宽测不准 + 三层跳转失真 + 字体加载时序问题（用户多次踩坑）。Canvas 2D 的 `ctx.measureText()` 可以精确预量字宽 + `fitText()` 自动缩字号适配容器。
+
+**参考实现 + 完整模板**：`curriculum/.claude/skills/mp-article/SKILL.md` 的「🚨 硬性要求：封面/海报生成器必须用原生 Canvas 2D」章节 + `ai-engineer-bootcamp/public/mp-article/cover.html`（commit dd26b8d）。
+
+**校验清单**：
+- [ ] 用 `<canvas width="1242" height="1660">` 不用 CSS 定位布局
+- [ ] 有 `fitText()` 二分缩字号工具
+- [ ] 有 `await document.fonts.ready` 等字体加载
+- [ ] 下载按钮直接 `canvas.toDataURL('image/png')`（**不引 html2canvas**）
+- [ ] 每个可改文案有 `<input>` 实时重绘
+- [ ] 右侧有手机缩略 canvas 同步（判断手机端可读性）
+
+**已有 xhs-posters（用 html2canvas 做的）暂时不动，继续能用；新生成的必须走 Canvas 2D。**
+
+---
+
 ## 🔒 固定规格（不要改，不要问，不要给备选）
 
 ### 尺寸（ratio 锁死）
