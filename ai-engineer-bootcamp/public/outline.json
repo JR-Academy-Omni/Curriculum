@@ -7,7 +7,7 @@
   "level": "中级进阶",
   "type": "training",
   "targetAudience": "有编程基础的开发者、数据科学家、ML 工程师、DevOps 工程师",
-  "totalLessons": 183,
+  "totalLessons": 198,
   "totalSteps": 723,
   "liveClasses": 59,
   "estimatedHours": 82,
@@ -909,6 +909,86 @@
           "_id": "69b8e9888639a1eb66afe65a"
         },
         {
+          "code": "L16a",
+          "title": "Quest: 装好你的 AI Engineer 工作台",
+          "description": "Quest：AI 小花老师带你在本机从零搭建 AI Engineer 工作台 —— Python 3.11 + venv + .env + OpenAI API Key + 第一次成功调用。新人 80% 的卡点都在这一步：key 忘加 .gitignore 被推上 GitHub、venv 没激活装错位置、第一次调用遇到 quota 错误看不懂。跑完 Quest 你本机就有一套能直接开工的环境，后面所有 Lab 和作业不再被环境炸掉。",
+          "description_en": "Quest: Xiao Hua walks you through setting up a real AI Engineer workstation on your own machine—Python 3.11, venv, .env with a safely-stored API key, and your first successful OpenAI call. Most newcomers die here: key committed to GitHub, wrong venv, unreadable quota errors. After this Quest, every Lab and assignment in the bootcamp runs without environment friction.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 30,
+          "quest": {
+            "title": "装好你的 AI Engineer 本机工作台",
+            "learningGoal": "学完在本机拥有可复用的 Python 开发环境 + 安全存放的 API Key + 第一次成功的 OpenAI API 调用",
+            "successCriteria": "终端跑 `python main.py` 能打印出 LLM 返回，.env 没被 git 追踪，venv 已激活",
+            "difficulty": "beginner",
+            "estimatedMinutes": 30,
+            "uiMode": "chat",
+            "context": "学员刚看完 GenAI Overview 直播，要第一次在本机动手。大概率：还没装 Python 3.11、不知道 venv、对 key 泄露没概念、第一次调 OpenAI API。AI 要逐步带：(1) 检查 Python 版本并装 3.11；(2) 在项目目录创建 venv 并激活；(3) 装 openai 包；(4) 创建 .env 并加 .gitignore；(5) 写 main.py 做第一次 chat.completions 调用；(6) 若遇 RateLimitError / InvalidAPIKey 帮学员定位。关键坑：Mac 用 `source venv/bin/activate`，Windows 用 `venv\\Scripts\\activate`；.env 必须在 git add 之前加 .gitignore；新人容易把 API Key 粘在代码里而不是 .env。",
+            "stepSkeleton": [
+              {
+                "title": "检查 Python 版本",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "python --version 输出 Python 3.11.x"
+              },
+              {
+                "title": "创建并激活 venv",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "which python 指向 venv 目录"
+              },
+              {
+                "title": "安装 openai 并配置 .env + .gitignore",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "cat .gitignore 能看到 .env；pip list 有 openai"
+              },
+              {
+                "title": "写 main.py 并成功调用 OpenAI API",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "python main.py 打印出 LLM 回复"
+              }
+            ],
+            "prerequisites": [
+              "电脑上已装 git",
+              "有一个 OpenAI API Key（或课程提供的测试 Key）"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "env-setup",
+              "python",
+              "openai-api"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "检查 Python 版本",
+              "description": "检查 Python 版本",
+              "duration": 5
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "创建 venv 并激活",
+              "description": "创建 venv 并激活",
+              "duration": 8
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "配置 .env + .gitignore",
+              "description": "配置 .env + .gitignore",
+              "duration": 7
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "第一次调用 OpenAI",
+              "description": "第一次调用 OpenAI",
+              "duration": 10
+            }
+          ]
+        },
+        {
           "code": "L17",
           "title": "Lab: 第一次 LLM 体验",
           "description": "LLM 工程实验：第一次 LLM 体验。在浏览器内完成实操练习，即时验证结果。",
@@ -1662,6 +1742,76 @@
           "description_en": "The ISA (Industry Solution Assignment) is the red thread running across all 12 weeks. You pick a real problem from your own industry and level it up at the end of every Phase - from a prompt prototype, to RAG, to Agent, to production deployment. This briefing is the spec: rubric, deliverables per Phase, and what the reviewers actually look at. Submit your Proposal here - every week that follows builds on top of it.",
           "index": 33,
           "_id": "69b8e9888639a1eb66afe669"
+        },
+        {
+          "code": "L33a",
+          "title": "Quest: 提交你的 ISA Proposal",
+          "description": "Quest：把 ISA 主线项目从\"我想做个 AI 助手\"变成一份能直接提交评审的 Proposal。ISA 评分 40% 来自选题 —— 选对了后面 12 周越做越顺。AI 小花老师陪你走完：从你自己的行业抽一个真问题、评估 ROI 和数据可得性、定义 MVP 和指标、推到 GitHub 个人 repo。Quest 结束 Proposal 已经提交，你正式进入主线。",
+          "description_en": "Quest: turn your ISA main project from \"I wanna build an AI assistant\" into a proposal that can actually be reviewed. 40% of ISA scoring comes from problem selection—get it right and the next 12 weeks flow. Xiao Hua walks you through picking a real problem from your industry, validating ROI and data access, defining MVP and metrics, and pushing it to your own GitHub repo.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 45,
+          "quest": {
+            "title": "从你的行业抽一个 AI 能解的真问题，写出 Proposal",
+            "learningGoal": "产出一份可评审的 ISA Proposal，含问题定义、用户画像、MVP 范围、数据来源、评估指标",
+            "successCriteria": "Proposal.md 已推到 GitHub 个人仓库，5 个核心字段都填完",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 45,
+            "uiMode": "chat",
+            "context": "学员看完 Phase 1，对 LLM 能做什么有数。目标：从\"想象中的项目\"落到\"能推到 GitHub 的 Proposal\"。AI 先问学员所在行业/岗位，引导找一个具体场景（法律文书审查、制造合规、教育作业批改等），然后挑战：ROI 是什么？数据怎么拿？评估指标怎么定？12 周内能收敛到什么 MVP？最后让学员创建 ISA-{yourname} repo 推送 Proposal.md。常见坑：问题太大（\"通用 AI 助手\"）、数据拿不到、没有评估指标。",
+            "stepSkeleton": [
+              {
+                "title": "选一个来自真实行业的具体问题",
+                "verificationType": "self-confirm"
+              },
+              {
+                "title": "写清用户画像 + 痛点 + 现有方案",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "定义 MVP 范围和评估指标",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "创建 GitHub repo 并提交 Proposal.md",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "GitHub repo URL 可公开访问"
+              }
+            ],
+            "prerequisites": [
+              "完成 L33 ISA 介绍",
+              "有 GitHub 账号"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "isa",
+              "capstone",
+              "proposal"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "选题 + 范围界定",
+              "description": "选题 + 范围界定",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "用户画像 + MVP 定义",
+              "description": "用户画像 + MVP 定义",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "创建 GitHub repo 并推送",
+              "description": "创建 GitHub repo 并推送",
+              "duration": 15
+            }
+          ]
         }
       ]
     },
@@ -2002,6 +2152,82 @@
           "description_en": "Gartner reports 57% of Agent projects will fail in 2026 — and the root cause is context, not the model. This live session decomposes context into four layers (System / Retrieved / Memory / Task) and runs a side-by-side accuracy comparison between naive prompting and full context engineering on stage. Built for engineers whose Agents keep giving inconsistent answers in production.",
           "index": 37,
           "_id": "69b8e9888639a1eb66afe66d"
+        },
+        {
+          "code": "L37a",
+          "title": "Quest: 为你的 ISA 写第一版四层 Context",
+          "description": "Quest：Context Engineering 直播讲完了 System / Retrieved / Memory / Task 四层，但抽象理论落到你自己的 ISA 项目还差一公里。AI 小花老师陪你走：把你 Proposal 里那个真问题拆成四层 Context，逐层写完后跑一次 A/B 对比（纯 Prompt vs 四层 Context），亲眼看到准确率差多少。结束后你有一份 context-v1.md 文档和一次可复现的对比实验。",
+          "description_en": "Quest: the live session covered System / Retrieved / Memory / Task, but applying the four-layer theory to your own ISA problem is still a mile away. Xiao Hua walks you through breaking your ISA problem into the four layers, then runs an A/B comparison (raw prompt vs full context) so you see the accuracy lift with your own eyes. You leave with a context-v1.md and a reproducible experiment.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 45,
+          "quest": {
+            "title": "用四层 Context 重构你的 ISA 第一次真实调用",
+            "learningGoal": "产出 context-v1.md（四层都填完）+ 一次 A/B 实验记录",
+            "successCriteria": "跑完 A/B 能说出准确率差多少，写进 ISA repo 的 experiments/ 目录",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 45,
+            "uiMode": "chat",
+            "context": "学员刚学完 Context Engineering 理论，现在要落地到自己的 ISA 问题。AI 要逐层追问：System 层你想让模型扮演谁？Retrieved 层你的数据源是什么（v1 可以先 hardcode 几条样本）？Memory 层要不要存历史？Task 层怎么描述这次任务？然后让学员跑同一个 input 两次：一次裸 prompt、一次完整 context，把输出贴出来。关键是让学员亲眼看到 context 的价值，而不是相信老师说\"会提升准确率\"。",
+            "stepSkeleton": [
+              {
+                "title": "写 System 层（角色 + 约束）",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "准备 Retrieved 层（3-5 条样本数据）",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "写 Task 层（输入 + 输出 schema）",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "跑 A/B 对比并记录结果",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "两次输出对比写进 experiments/context-v1.md"
+              }
+            ],
+            "prerequisites": [
+              "已完成 L33a ISA Proposal",
+              "本机环境已配好"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "context-engineering",
+              "isa"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "拆 System 层",
+              "description": "拆 System 层",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "准备 Retrieved 层",
+              "description": "准备 Retrieved 层",
+              "duration": 10
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "写 Task 层",
+              "description": "写 Task 层",
+              "duration": 10
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "A/B 对比实验",
+              "description": "A/B 对比实验",
+              "duration": 15
+            }
+          ]
         },
         {
           "code": "L38",
@@ -3227,6 +3453,83 @@
           "_id": "69b8e9888639a1eb66afe684"
         },
         {
+          "code": "L60a",
+          "title": "Quest: 本机跑通你的第一个 RAG",
+          "description": "Quest：RAG from Scratch 讲完了原理，但把你自己的文档塞进去还要越过一堆坑：PDF parser 报错、chunk size 不知道选多少、embedding 向量存在哪。AI 小花老师陪你用 LangChain + Chroma 从零搭：灌你自己的 5 个 PDF 进去、做 chunking + embedding、跑一次 retrieval、肉眼验证检索质量。Quest 结束你有一个能 query 自己文档的本机 RAG 原型。",
+          "description_en": "Quest: RAG from Scratch covered the theory, but pushing your own documents into it hits a wall of gotchas—PDF parser errors, chunk size guessing, \"where do I store these vectors\". Xiao Hua walks you through LangChain + Chroma: ingest 5 of your own PDFs, chunk, embed, run a retrieval, and eyeball the quality. You leave with a working local RAG prototype over your own docs.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 45,
+          "quest": {
+            "title": "把你自己的 5 个文档灌进本机 RAG 并能检索",
+            "learningGoal": "跑通 PDF → chunk → embedding → Chroma 存储 → similarity search 全流程",
+            "successCriteria": "能对本机 RAG 问 3 个问题，答案里能引用到原文档的具体段落",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 45,
+            "uiMode": "chat",
+            "context": "学员刚学完 RAG 原理，现在要用 LangChain + Chroma 在本机跑通。引导：(1) 准备 5 个自己的 PDF（简历/工作文档/书籍 chapter 都行）；(2) 用 PyPDFLoader 或 unstructured 做 parsing（遇到 encoding 错误帮 debug）；(3) RecursiveCharacterTextSplitter 做 chunking，讨论 chunk_size=500 还是 1000；(4) OpenAI embedding；(5) Chroma persist；(6) 跑 similarity search 验证。关键坑：PyPDFLoader 对中文 PDF 经常乱码 → 换 unstructured；chunk_size 太小上下文丢失、太大超 token 限制。",
+            "stepSkeleton": [
+              {
+                "title": "准备 5 个自己的 PDF",
+                "verificationType": "self-confirm"
+              },
+              {
+                "title": "PDF → Document（处理 parser 报错）",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "Chunking + Embedding + Chroma",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "跑 3 个 query 验证检索质量",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "query 结果里能看到原文片段"
+              }
+            ],
+            "prerequisites": [
+              "完成 L16a 本机环境",
+              "准备 5 个 PDF"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "rag",
+              "langchain",
+              "chroma"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "PDF 灌入",
+              "description": "PDF 灌入",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "Chunking + Embedding",
+              "description": "Chunking + Embedding",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "Chroma 存储",
+              "description": "Chroma 存储",
+              "duration": 10
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "Retrieval 验证",
+              "description": "Retrieval 验证",
+              "duration": 10
+            }
+          ]
+        },
+        {
           "code": "L61",
           "title": "RAG Builder Toolbox",
           "description": "Vector DB 选 Chroma（起步最快）/ Pinecone（托管省心）/ Qdrant（自建首选）/ Weaviate（混合检索原生）？Chunker 用 LangChain RecursiveSplitter 还是 Unstructured？Embedding 服务自己跑还是用 API？这节把 RAG 工具箱拍成一张对照表——新项目 kick-off 直接对着选，不用再一个个搜。",
@@ -4363,6 +4666,71 @@
           "_id": "69b8e9888639a1eb66afe69e"
         },
         {
+          "code": "L85a",
+          "title": "Quest: 给你的 RAG 跑一次完整 RAGAS 评估",
+          "description": "Quest：你说你的 RAG \"感觉不错\" —— 拿数字说话。AI 小花老师带你给 L60a 搭的那个本机 RAG 跑一次完整 RAGAS 评估：构造 20 条 golden question + 参考答案、跑出 Context Recall / Context Precision / Answer Relevancy / Faithfulness 四个指标、分析哪一步拉低了分数。结束后你知道自己 RAG 的真实水平，并能给老板讲清楚\"改进前后从 0.62 升到 0.81\"。",
+          "description_en": "Quest: \"My RAG feels better\" doesn't cut it—prove it with numbers. Xiao Hua helps you run a full RAGAS eval against the local RAG you built in L60a: craft 20 golden questions, run the four metrics (Context Recall / Precision / Answer Relevancy / Faithfulness), and diagnose which step is dragging your score. You leave knowing your RAG's real quality and able to say \"0.62 → 0.81\" to your boss.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 45,
+          "quest": {
+            "title": "给你的 ISA RAG 跑一次 RAGAS 评估",
+            "learningGoal": "产出 20 条 golden dataset + 4 个指标的分数 + 一份 diagnosis.md",
+            "successCriteria": "RAGAS 四个指标都有数值，能说出哪一步最差、为什么",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 45,
+            "uiMode": "chat",
+            "context": "学员已经有了本机 RAG（L60a），现在要量化评估。AI 要带：(1) 构造 20 条 golden Q + A（不多不少，太少不可信、太多跑不动）；(2) 装 ragas 包，配置；(3) 跑四指标（Context Recall 看召回、Context Precision 看相关性、Answer Relevancy 看回答是否切题、Faithfulness 看有无幻觉）；(4) 分析：如果 Context Recall 低 → 改 chunking；Faithfulness 低 → 模型在 hallucinate；Answer Relevancy 低 → prompt 问题。关键是让学员学会读指标、做诊断，不是跑个分数就完事。",
+            "stepSkeleton": [
+              {
+                "title": "构造 20 条 golden dataset",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "装 ragas 并跑四指标",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "分析结果 + 写 diagnosis.md",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "experiments/ragas-baseline.md 里列出四个分数和诊断"
+              }
+            ],
+            "prerequisites": [
+              "完成 L60a 本机 RAG"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "rag",
+              "ragas",
+              "evaluation"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "构造 golden dataset",
+              "description": "构造 golden dataset",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "跑 RAGAS 评估",
+              "description": "跑 RAGAS 评估",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "分析 + 诊断",
+              "description": "分析 + 诊断",
+              "duration": 15
+            }
+          ]
+        },
+        {
           "code": "L86",
           "title": "Lab: LLM 评估",
           "description": "LLM 工程实验：LLM 评估。在浏览器内完成实操练习，即时验证结果。",
@@ -4506,7 +4874,7 @@
           "description_en": "Prompt interactive lab: Prompt 评估. Hands-on practice in browser with instant validation.",
           "index": 87,
           "interactiveLabType": "prompt",
-          "_id": "69b8e9888639a1eb66afe679"
+          "_id": "69e6bb8816241801641ae82e"
         },
         {
           "code": "L89",
@@ -4891,6 +5259,84 @@
           "index": 96,
           "interactiveLabType": "aws",
           "_id": "69d7ac2376e3e0c1b370210c"
+        },
+        {
+          "code": "L97a",
+          "title": "Quest: 把你的 ISA RAG 部署到 AWS Bedrock",
+          "description": "Quest：ISA Phase 3 gate。AI 小花老师陪你把本机 RAG 升级成 production 级部署：S3 存文档、Bedrock Knowledge Base 索引、Lambda 做 retrieval endpoint、API Gateway 对外。这是\"真 AWS 账号 + 真花钱\"的 Quest —— 学员需要自己的 AWS 账号（或课程沙箱），跑完会有一个公网可访问的 RAG endpoint，可以分享给同事 demo。简历上\"Deployed serverless RAG on AWS Bedrock\"是硬加分项。",
+          "description_en": "Quest: ISA Phase 3 gate. Xiao Hua walks you through promoting your local RAG to a production-grade deployment: S3 for documents, Bedrock Knowledge Base for indexing, Lambda for the retrieval endpoint, API Gateway for public access. This Quest runs on a real AWS account (or the course sandbox)—you end with a publicly callable RAG endpoint you can demo to colleagues. 'Deployed serverless RAG on AWS Bedrock' is a hard plus on your resume.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 60,
+          "quest": {
+            "title": "把你的 ISA RAG 部署到 AWS Bedrock + Lambda",
+            "learningGoal": "产出一个公网可访问的 RAG API endpoint，能用 curl 调通",
+            "successCriteria": "API Gateway URL 对外可用，返回 JSON 含 answer + sources",
+            "difficulty": "advanced",
+            "estimatedMinutes": 60,
+            "uiMode": "chat",
+            "context": "学员本机 RAG 已跑通，现在要上云。AI 要带：(1) S3 建 bucket 上传文档；(2) Bedrock Knowledge Base 创建并 ingest；(3) 写 Lambda function 调 Bedrock RetrieveAndGenerate API；(4) API Gateway 暴露 HTTPS endpoint；(5) 配 IAM role 和 policies（这一步最容易卡）；(6) curl 测通。关键坑：Bedrock 需要先 request access 到 Claude 模型（美东区 us-east-1 才有）；Lambda IAM 要加 bedrock:InvokeModel 和 s3:GetObject；cold start 延迟 5s+，要告诉学员正常。费用：Bedrock Knowledge Base 按量计费，每次 query 几分钱，跑几次不会烧光预算。",
+            "stepSkeleton": [
+              {
+                "title": "S3 bucket 上传你的文档",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "Bedrock Knowledge Base 创建并 ingest",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "Lambda + API Gateway 搭建",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "curl 测通公网 endpoint",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "curl 返回 JSON 含 answer 字段"
+              }
+            ],
+            "prerequisites": [
+              "完成 L60a + L85a",
+              "AWS 账号 + Bedrock Claude access"
+            ],
+            "targetPlatform": "aws-console",
+            "tags": [
+              "isa",
+              "aws",
+              "bedrock",
+              "rag-production"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "S3 + 文档上传",
+              "description": "S3 + 文档上传",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "Bedrock KB 创建",
+              "description": "Bedrock KB 创建",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "Lambda + API Gateway",
+              "description": "Lambda + API Gateway",
+              "duration": 25
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "curl 验证",
+              "description": "curl 验证",
+              "duration": 10
+            }
+          ]
         }
       ]
     },
@@ -5195,6 +5641,82 @@
             }
           ],
           "_id": "69e5c620162418016409eb27"
+        },
+        {
+          "code": "L102a",
+          "title": "Quest: 发布你的第一个 MCP Server",
+          "description": "Quest：MCP Lab 让你在 iframe 里写完了代码，但真正把自己的 MCP Server 发布出去、让 Claude Desktop 能连上、让同事能用 —— 还有一大段路。AI 小花老师陪你走：挑一个你真实工作中的痛点（比如查公司 Jira / 查 CRM / 查日程表）、封装成 MCP tool、本地 stdio 模式跑通、再接进 Claude Desktop 的 mcp_settings.json。结束后你的 Claude Desktop 里多了一个属于你自己的工具。",
+          "description_en": "Quest: the MCP Lab got your code working in an iframe, but shipping your own MCP Server—wiring it into Claude Desktop, handing it to colleagues—is a different game. Xiao Hua walks you through picking a real work pain point (query your Jira / CRM / calendar), wrapping it as an MCP tool, running it locally via stdio, then plugging it into Claude Desktop's mcp_settings.json. You finish with a real tool living inside your own Claude Desktop.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 45,
+          "quest": {
+            "title": "发布一个你自己用的 MCP Server 到 Claude Desktop",
+            "learningGoal": "从工作痛点抽一个工具、用 mcp sdk 实现、接进 Claude Desktop 能调用",
+            "successCriteria": "打开 Claude Desktop 问一个问题，看到你的 MCP tool 被调用并返回结果",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 45,
+            "uiMode": "chat",
+            "context": "学员已经做过 MCP Lab，对概念熟了，但没真正把 MCP 用在自己的工作流。AI 引导：(1) 问学员现在工作最烦的重复查询是什么（查订单号、查 HR 政策、查设计稿版本）；(2) 选一个最容易做的；(3) 用 @modelcontextprotocol/sdk 写一个最小 MCP Server（一个 tool 就够）；(4) 本地 stdio 模式测通；(5) 改 Claude Desktop 的 ~/Library/Application Support/Claude/claude_desktop_config.json（Mac）或对应 Windows 路径；(6) 重启 Claude Desktop 验证。关键坑：路径必须绝对路径；配置改错 Claude Desktop 启动不了；学员经常忘记加 node 可执行路径。",
+            "stepSkeleton": [
+              {
+                "title": "选一个工作痛点作为 tool",
+                "verificationType": "self-confirm"
+              },
+              {
+                "title": "实现 MCP Server（一个 tool）",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "stdio 模式本地测通",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "接入 Claude Desktop 并验证",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "Claude Desktop 回答里显示调用了你的 tool"
+              }
+            ],
+            "prerequisites": [
+              "完成 L102 MCP Lab",
+              "Claude Desktop 已安装"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "mcp",
+              "claude-desktop"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "选题 + MCP Server 骨架",
+              "description": "选题 + MCP Server 骨架",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "实现 tool",
+              "description": "实现 tool",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "stdio 测通",
+              "description": "stdio 测通",
+              "duration": 10
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "接入 Claude Desktop",
+              "description": "接入 Claude Desktop",
+              "duration": 10
+            }
+          ]
         },
         {
           "title": "MCP 源码解读",
@@ -5559,6 +6081,82 @@
             }
           ],
           "_id": "69e5c621162418016409eb60"
+        },
+        {
+          "code": "L110a",
+          "title": "Quest: 用 Computer Use 做一件真实工作",
+          "description": "Quest：Browser Use Lab 让你在 sandbox 里试了 Computer Use，但\"AI 替我工作一次\"还没体验过。AI 小花老师带你挑一件你下周就会做的真事 —— 比如\"把 LinkedIn 上 30 个职位复制到我的 Notion 求职表\"，让 Claude Computer Use 替你全自动跑完。Quest 目标不是学会 API，是让你第一次感受\"原来这活真的不用我干\"的冲击。",
+          "description_en": "Quest: the Browser Use Lab let you try Computer Use in a sandbox, but 'AI actually did my work' is a different feeling. Xiao Hua helps you pick a real task you'd otherwise do next week—say, 'copy 30 LinkedIn jobs into my Notion job tracker'—and has Claude Computer Use run it end-to-end. The point isn't learning the API; it's the first-time shock of 'wait, I really don't have to do this myself'.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 45,
+          "quest": {
+            "title": "让 Claude Computer Use 替你完成一件下周本来要做的真事",
+            "learningGoal": "跑通一次真实的 Computer Use 自动化任务，产出可量化的时间节省",
+            "successCriteria": "任务结果真的有用（比如 30 条 LinkedIn 岗位信息真的进了 Notion）",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 45,
+            "uiMode": "chat",
+            "context": "学员已经在 Lab 里跑过 Computer Use，知道怎么用。现在要让他用在真实工作里。AI 引导：(1) 问学员下周有什么重复性浏览器工作（找房、比价、收信息、填表）；(2) 评估这个任务 Computer Use 能不能做（有验证码的、要登录的企业内部系统都不适合）；(3) 写 instruction prompt；(4) 跑起来观察 AI 怎么点鼠标和打字；(5) 如果卡住（经常卡在 popup、captcha、dynamic content），帮学员调整 prompt 或加 human-in-the-loop。关键坑：Computer Use 对页面布局变化敏感；token 消耗大，30 分钟任务可能要 $1-2；不要让它碰支付页面。",
+            "stepSkeleton": [
+              {
+                "title": "挑一个真实任务 + 评估可行性",
+                "verificationType": "self-confirm"
+              },
+              {
+                "title": "写 instruction prompt",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "跑起来 + 观察 + 纠错",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "验证结果真的可用",
+                "verificationType": "self-confirm"
+              }
+            ],
+            "prerequisites": [
+              "完成 L110 Lab",
+              "Anthropic API Key with Computer Use access"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "computer-use",
+              "agent",
+              "automation"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "选任务 + 可行性",
+              "description": "选任务 + 可行性",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "写 prompt",
+              "description": "写 prompt",
+              "duration": 10
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "跑 + 观察",
+              "description": "跑 + 观察",
+              "duration": 20
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "验收",
+              "description": "验收",
+              "duration": 5
+            }
+          ]
         }
       ]
     },
@@ -6040,6 +6638,83 @@
           "_id": "69d7ac2576e3e0c1b3702142"
         },
         {
+          "code": "L119a",
+          "title": "Quest: 跑通你的第一个工具调用 Agent",
+          "description": "Quest：Agent 直播课讲完了 ReAct 和 Planning，但\"自己从零写一个能用的 Agent\"这一步大多数人走不过。AI 小花老师带你搭：三个工具（search / calculator / file_read）、ReAct loop、基本 guardrail，用 OpenAI function calling 实现。跑完你会发现 Agent 不是魔法 —— 就是 while loop + tool schema + 一点 system prompt。",
+          "description_en": "Quest: the Agent sessions covered ReAct and Planning, but 'write your own working Agent from scratch' is where most people get stuck. Xiao Hua helps you build one: three tools (search / calculator / file_read), a ReAct loop, basic guardrails, via OpenAI function calling. By the end you realize Agents aren't magic—just a while loop, a tool schema, and a bit of system prompt.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 45,
+          "quest": {
+            "title": "从零写一个能调三个工具的 Agent",
+            "learningGoal": "不用 LangChain，用原生 OpenAI SDK 写一个 ReAct agent",
+            "successCriteria": "给 agent 一个多步问题（\"比较 A 和 B 公司 2024 年营收并算差额\"），它能自动调 search + calculator 得到答案",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 45,
+            "uiMode": "chat",
+            "context": "学员学过 ReAct 理论，现在要自己写。AI 要刻意避开 LangChain，让学员理解底层机制。带：(1) 用 OpenAI function calling 定义三个 tool 的 JSON schema（search / calculator / file_read）；(2) 写 while loop：调 model → 如果有 tool_calls → 执行 tool → 把结果贴回 messages → 再调 model → 直到没有 tool_calls；(3) 加 max_iterations 防止死循环；(4) 丢一个真问题测。关键坑：tool_call_id 必须对应；parallel tool calling 的 messages 顺序；新手喜欢把 while loop 写成递归导致栈爆掉。",
+            "stepSkeleton": [
+              {
+                "title": "定义 3 个 tool schema",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "写 ReAct loop",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "加 max_iterations + guardrail",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "跑多步问题验证",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "输出日志能看到至少 2 次 tool 调用"
+              }
+            ],
+            "prerequisites": [
+              "完成 L16a 本机环境",
+              "看过 L111-L119"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "agent",
+              "react",
+              "function-calling"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "定义 tool schema",
+              "description": "定义 tool schema",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "写 ReAct loop",
+              "description": "写 ReAct loop",
+              "duration": 20
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "加 guardrail",
+              "description": "加 guardrail",
+              "duration": 5
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "多步问题验证",
+              "description": "多步问题验证",
+              "duration": 10
+            }
+          ]
+        },
+        {
           "code": "L120",
           "title": "Production-grade Agentic RAG",
           "description": "Naive RAG 只会'检索→拼 prompt'，用户问题稍微绕一点就答非所问。Agentic RAG 让 LLM 自己决定'要不要搜、搜几次、搜哪个库、检索结果够不够'——这才是生产环境能跑通的 RAG。这节两小时直播，我们在前几期的 ISA 项目上加装 Agent 路由层和 LangSmith 监控，当场看 Agent 怎么在三个向量库之间做决策、检索失败怎么 fallback，最后跑出完整 trace。",
@@ -6337,6 +7012,83 @@
             }
           ],
           "_id": "69e5c622162418016409eb75"
+        },
+        {
+          "code": "L125a",
+          "title": "Quest: 用 LangGraph 编排你的 ISA 多 Agent 系统",
+          "description": "Quest：ISA Phase 6 gate。你的 ISA 到这里已经有 RAG 和 Agent 了，该升级到 Multi-Agent。AI 小花老师陪你把 ISA 项目拆成 3 个 agent（retriever / analyzer / writer），用 LangGraph StateGraph 编排，加条件路由。跑完你有一个完整的 multi-agent ISA，可以作为 Demo Day 的骨架。",
+          "description_en": "Quest: ISA Phase 6 gate. Your ISA already has RAG and an Agent—time to level up to Multi-Agent. Xiao Hua helps you split your ISA into 3 agents (retriever / analyzer / writer), wire them together with LangGraph StateGraph, and add conditional routing. You leave with a full multi-agent ISA, the skeleton for your Demo Day.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 60,
+          "quest": {
+            "title": "把你的 ISA 升级成 3-agent LangGraph 编排",
+            "learningGoal": "产出一个 LangGraph 编排的多 Agent 系统，能跑通端到端查询",
+            "successCriteria": "LangSmith 上能看到完整 trace，3 个 agent 都被调用",
+            "difficulty": "advanced",
+            "estimatedMinutes": 60,
+            "uiMode": "chat",
+            "context": "学员已经学过 Multi-Agent 架构和 LangGraph Lab。现在要在 ISA 里真实拆分。AI 引导：(1) 用 Supervisor 还是 Hierarchical 架构？根据 ISA 场景来选；(2) 定义 State schema（各 agent 共享啥）；(3) 写三个 agent node（retriever 调 RAG / analyzer 判断结构 / writer 生成答案）；(4) 画条件边：如果 retriever 找不到相关文档 → 让 writer 直接说 \"no results\"；(5) compile 并跑端到端；(6) 接 LangSmith 看 trace。关键坑：State 设计太复杂学员会迷路 → 开始用最少字段；条件路由语法容易写错 → 用 add_conditional_edges。",
+            "stepSkeleton": [
+              {
+                "title": "决定 3 agent 架构 + State schema",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "写三个 agent node",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "画条件边 + compile",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "接 LangSmith 验证 trace",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "LangSmith 能看到三段 trace"
+              }
+            ],
+            "prerequisites": [
+              "完成 L119a",
+              "已有 LangSmith 账号"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "isa",
+              "multi-agent",
+              "langgraph"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "架构 + State 设计",
+              "description": "架构 + State 设计",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "三个 agent node",
+              "description": "三个 agent node",
+              "duration": 20
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "条件边 + compile",
+              "description": "条件边 + compile",
+              "duration": 15
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "LangSmith 验证",
+              "description": "LangSmith 验证",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L126",
@@ -6717,6 +7469,72 @@
             }
           ],
           "_id": "69e5c622162418016409eb81"
+        },
+        {
+          "code": "L134a",
+          "title": "Quest: 给你的 Agent 装上 Mem0 长期记忆",
+          "description": "Quest：Mem0 Lab 让你知道了概念，但\"我的 Agent 记得上次我说过的话\"是另一种体验。AI 小花老师带你给 L119a 那个 Agent 接 Mem0：跨 session 记住用户偏好、查询习惯、上次问过什么。跑完你开两个 Python session 测：第一个 session 告诉 agent \"我喜欢简洁回答\"，第二个 session 直接问问题看它是否仍然简洁。",
+          "description_en": "Quest: the Mem0 Lab taught you the concept, but 'my Agent remembers what I said last time' is a different feeling. Xiao Hua helps you bolt Mem0 onto the agent from L119a: remember user preferences, querying habits, last-asked questions across sessions. You verify it by opening two Python sessions—tell it 'I prefer concise answers' in the first, ask a question in the second, and see whether the concise preference survived.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 30,
+          "quest": {
+            "title": "让你的 Agent 跨 session 记住你",
+            "learningGoal": "给已有 Agent 接 Mem0，跨两次运行保持用户画像",
+            "successCriteria": "关掉 Python 重启后，agent 仍记得你上次说的偏好",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 30,
+            "uiMode": "chat",
+            "context": "学员刚做完 Mem0 Lab 知道 API。现在给 L119a Agent 装上。引导：(1) 装 mem0ai；(2) 在 agent 开头加 `memory.search(query, user_id)` 把历史拉进 system prompt；(3) 每轮结束 `memory.add(...)`；(4) 测：开两个 session 验证跨 session 记忆。关键：mem0 底层是 embedding + rerank，不是简单 k-v，所以每次 search 都有 embedding cost，要告诉学员。",
+            "stepSkeleton": [
+              {
+                "title": "装 mem0ai 并初始化",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "在 agent 加 memory.search + memory.add",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "跨 session 验证记忆",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "第二次运行 agent 引用了第一次的偏好"
+              }
+            ],
+            "prerequisites": [
+              "完成 L119a",
+              "Mem0 API Key 或本地 Qdrant"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "memory",
+              "mem0",
+              "agent"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "装 mem0 + 初始化",
+              "description": "装 mem0 + 初始化",
+              "duration": 5
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "接入 agent",
+              "description": "接入 agent",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "跨 session 验证",
+              "description": "跨 session 验证",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L135",
@@ -7559,6 +8377,79 @@
           "_id": "69d7ac2976e3e0c1b37021b6"
         },
         {
+          "code": "L149a",
+          "title": "Quest: 本机 Ollama 跑 Qwen 3.5",
+          "description": "Quest：Open-Weight 直播讲完了 2026 格局，是时候把 Qwen 跑在你自己电脑上。AI 小花老师带你装 Ollama、下载 Qwen 3.5 7B、跑第一个 prompt、接到 OpenAI-compatible endpoint，替换到你 ISA 里做 A/B 对比（GPT-4o vs Qwen 3.5 本地）。结束后你会知道：本地模型能做什么、不能做什么、省多少钱。",
+          "description_en": "Quest: the Open-Weight session mapped the 2026 landscape—time to run Qwen on your own machine. Xiao Hua walks you through installing Ollama, pulling Qwen 3.5 7B, running your first prompt, and exposing it as an OpenAI-compatible endpoint you can A/B swap into your ISA (GPT-4o vs local Qwen 3.5). You leave knowing what local models can and can't do, and how much you save.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 45,
+          "quest": {
+            "title": "本机跑起 Qwen 3.5 并对比 GPT-4o",
+            "learningGoal": "用 Ollama 本地跑 open-weight model，对比成本和质量",
+            "successCriteria": "能在 ISA 里一键切换 Qwen / GPT-4o，输出对比结果",
+            "difficulty": "intermediate",
+            "estimatedMinutes": 45,
+            "uiMode": "chat",
+            "context": "学员刚学完 Open-Weight 直播。引导：(1) 装 Ollama（Mac `brew install ollama` / Linux `curl -fsSL ollama.com/install.sh | sh`）；(2) `ollama pull qwen2.5:7b`（注意磁盘至少 5GB，内存 16GB+ 才流畅）；(3) 跑第一个 prompt；(4) Ollama 默认暴露 `http://localhost:11434/v1` 是 OpenAI-compatible；(5) 在 ISA 代码里把 base_url 改掉测对比；(6) 讨论：哪些任务 Qwen 本地够用（分类、简单问答）、哪些还是得 GPT-4o（复杂推理、代码）。关键坑：Mac M1/M2 用 MPS 加速很快，Windows 老显卡跑不动；7B 模型能力有限，不要期待 GPT-4o 水平。",
+            "stepSkeleton": [
+              {
+                "title": "装 Ollama + pull qwen2.5:7b",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "第一次本地推理",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "接到 ISA 做 A/B",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "同一个 query 两次输出并列贴出"
+              }
+            ],
+            "prerequisites": [
+              "电脑 16GB+ RAM，磁盘 10GB+",
+              "完成 L60a"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "open-weight",
+              "ollama",
+              "qwen"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "装 Ollama",
+              "description": "装 Ollama",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "pull qwen + 第一次推理",
+              "description": "pull qwen + 第一次推理",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "接到 ISA",
+              "description": "接到 ISA",
+              "duration": 15
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "A/B 对比",
+              "description": "A/B 对比",
+              "duration": 5
+            }
+          ]
+        },
+        {
           "code": "L150",
           "title": "Docker for AI Engineers",
           "description": "做完 RAG/Agent 想上线，第一个拦路虎往往是「开发机能跑、服务器不能跑」。这节把 LLM 应用的 Docker 化讲到位：多阶段构建压缩镜像从 8GB 到 800MB、nvidia-docker 怎么正确透传 GPU、vLLM 容器里 CUDA 版本对齐的坑、健康检查怎么判断模型真的加载完了。照着做，你的 AI 应用能打包给任何人一行命令跑起来。",
@@ -8333,6 +9224,83 @@
           "description_en": "Fine-tuning used to mean 8 A100s; now it's Unsloth plus QLoRA on a single consumer GPU for Llama 3 8B. Live in 60 minutes, we run the full flow—data prep, LoRA config, training monitoring, eval, weight merging, HuggingFace publish. You leave with a Llama model under your name on HF, making 'fine-tuned Llama 3' on your resume verifiable, not aspirational.",
           "index": 157,
           "_id": "69d7ac2c76e3e0c1b3702235"
+        },
+        {
+          "code": "L167a",
+          "title": "Quest: 你的第一次 QLoRA 微调",
+          "description": "Quest：PEFT-QLoRA 直播讲完了原理，现在用 Unsloth 在 Colab 免费 T4 上跑你的第一次微调。AI 小花老师带你：准备 100-500 条你自己领域的 instruction 数据、启动 Unsloth notebook、跑 Llama 3 8B QLoRA、对比 base model vs fine-tuned 在你领域问题上的差别。结束后你会有一个能放简历的 artifact：\"fine-tuned Llama 3 8B on custom 500-sample dataset\"。",
+          "description_en": "Quest: the PEFT-QLoRA session covered the theory—now run your first fine-tune on Colab's free T4 via Unsloth. Xiao Hua walks you through preparing 100-500 domain-specific instruction samples, firing up the Unsloth notebook, running Llama 3 8B QLoRA, and comparing base vs fine-tuned on your domain questions. You leave with a resume-worthy artifact: 'fine-tuned Llama 3 8B on custom 500-sample dataset'.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 60,
+          "quest": {
+            "title": "用 Unsloth + Colab T4 完成你的第一次 QLoRA 微调",
+            "learningGoal": "从数据准备到微调到推理对比全跑通",
+            "successCriteria": "对比同一个 domain 问题在 base 和 fine-tuned 上的回答差异",
+            "difficulty": "advanced",
+            "estimatedMinutes": 60,
+            "uiMode": "chat",
+            "context": "学员学完 QLoRA 理论，要实操。推荐用 Colab 免费 T4 避免本地 GPU 问题。引导：(1) 准备 100-500 条 instruction-output 数据（可以是学员工作里的常见问答）；(2) 格式转 alpaca 或 sharegpt；(3) Colab 新 notebook，用 Unsloth 官方 template；(4) 改几个参数（model_name, dataset_path, num_train_epochs）；(5) 跑 training（T4 上 500 条 3 epoch 约 30 分钟）；(6) 保存 LoRA adapter 并推理；(7) 对比 base vs fine-tuned。关键坑：Colab free tier 会断连，记得 checkpoint；数据格式不对会 silently 训练无效；epoch 数选太大过拟合。",
+            "stepSkeleton": [
+              {
+                "title": "准备 instruction 数据集",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "Colab + Unsloth 环境搭建",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "跑 QLoRA training",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "推理对比 base vs fine-tuned",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "同一 prompt 两次输出并列"
+              }
+            ],
+            "prerequisites": [
+              "Google 账号（Colab free）",
+              "看过 L165 + L167"
+            ],
+            "targetPlatform": "browser",
+            "tags": [
+              "fine-tuning",
+              "qlora",
+              "unsloth"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "数据准备",
+              "description": "数据准备",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "Unsloth notebook",
+              "description": "Unsloth notebook",
+              "duration": 10
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "Training 跑通",
+              "description": "Training 跑通",
+              "duration": 25
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "推理对比",
+              "description": "推理对比",
+              "duration": 10
+            }
+          ]
         }
       ]
     },
@@ -8448,6 +9416,84 @@
           "_id": "69d7ac2d76e3e0c1b3702239"
         },
         {
+          "code": "L168a",
+          "title": "Quest: 给你的 ISA 接 LangSmith Eval Pipeline",
+          "description": "Quest：AI Eval Engineering 直播讲完了方法论，现在把 LangSmith Eval 真的接到你 ISA 里。AI 小花老师带你：在 LangSmith 建 dataset、写 2 个 LLM-as-judge evaluator、接到 ISA 的 CI（每次 push 自动跑 eval）、看到 regression 会报警。结束后你的 ISA 是\"每次改完都有数字说话\"而不是\"感觉变好了\"。",
+          "description_en": "Quest: the AI Eval Engineering session covered methodology—time to wire LangSmith Eval into your ISA for real. Xiao Hua helps you create a dataset on LangSmith, write 2 LLM-as-judge evaluators, hook them into your ISA's CI (every push runs the evals), and alert on regressions. You leave with an ISA that says 'numbers got worse' instead of 'feels worse'.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 60,
+          "quest": {
+            "title": "让你的 ISA 每次改动都被自动 eval",
+            "learningGoal": "把 LangSmith Eval pipeline 接进 ISA CI",
+            "successCriteria": "GitHub Actions 跑完能看到 LangSmith dataset score",
+            "difficulty": "advanced",
+            "estimatedMinutes": 60,
+            "uiMode": "chat",
+            "context": "学员学完 Eval 理论，现在要把它从 notebook 搬到 CI。引导：(1) LangSmith 建 dataset（20-30 个 Q+A）；(2) 写两个 custom evaluator（相关性 + 安全性，都用 LLM-as-judge）；(3) 写 run_eval.py 脚本：调 ISA agent → submit to LangSmith dataset → 跑 evaluators；(4) 写 GitHub Actions workflow 在 push 时跑；(5) 结果发 Slack 或直接在 PR 里评论。关键坑：LangSmith API rate limits，dataset 太大会慢；LLM-as-judge 自己的偏好可能有 bias；CI 里密钥管理要用 GitHub Secrets。",
+            "stepSkeleton": [
+              {
+                "title": "LangSmith dataset 创建",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "写 2 个 evaluator",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "本地跑通 run_eval.py",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "接到 GitHub Actions",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "GitHub Actions run 成功，LangSmith 有新 run"
+              }
+            ],
+            "prerequisites": [
+              "完成 L125a",
+              "GitHub repo + LangSmith 账号"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "isa",
+              "eval",
+              "langsmith",
+              "ci"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "LangSmith dataset",
+              "description": "LangSmith dataset",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "写 evaluator",
+              "description": "写 evaluator",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "本地跑通",
+              "description": "本地跑通",
+              "duration": 15
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "CI 接入",
+              "description": "CI 接入",
+              "duration": 15
+            }
+          ]
+        },
+        {
           "code": "L169",
           "title": "Lab: LLM 评估",
           "description": "LLM 工程实验：LLM 评估。在浏览器内完成实操练习，即时验证结果。",
@@ -8492,7 +9538,7 @@
           "description_en": "LLM engineering lab: LLM 评估. Hands-on practice in browser with instant validation.",
           "index": 159,
           "interactiveLabType": "llm",
-          "_id": "69b8e9888639a1eb66afe69f"
+          "_id": "69e6bb8816241801641ae83e"
         },
         {
           "code": "L170",
@@ -8539,7 +9585,7 @@
           "description_en": "Prompt interactive lab: Prompt 评估. Hands-on practice in browser with instant validation.",
           "index": 160,
           "interactiveLabType": "prompt",
-          "_id": "69b8e9888639a1eb66afe679"
+          "_id": "69e6bb8916241801641ae856"
         },
         {
           "code": "L171",
@@ -9158,6 +10204,95 @@
           "description_en": "Post-graduation, job titles fragment fast: AI Engineer, Agent Developer, LLM Application Engineer, Eval Engineer, AI Platform Engineer—each with different JDs, salaries, and stacks. This session maps the actual Australian market bands (Junior 100-150K, Mid 150-220K, Senior 220-350K+), does live 1:1 resume review on five cohort resumes, and walks through the highest-frequency interview questions so you know exactly which role to aim at next.",
           "index": 171,
           "_id": "69d7ac2f76e3e0c1b3702289"
+        },
+        {
+          "code": "L183a",
+          "title": "Quest: 把你的 ISA 部署上生产（毕业 Quest）",
+          "description": "Quest：ISA 毕业 gate。走到这里你已经有 RAG + Agent + Memory + Eval，最后一步是把它真的丢给 10 个真实用户用 48 小时。AI 小花老师陪你：挂上 Vercel / Railway / Fly.io、加 Auth + 限流、拉 10 个种子用户、48 小时内每天看 LangSmith trace 发现问题、写一份 retrospective。结束后你不只\"学过 AI Engineer Bootcamp\"，你有一份\"真实部署给 10 个用户并迭代过\"的 case study，面试时直接可讲。",
+          "description_en": "Quest: ISA graduation gate. By now you have RAG + Agent + Memory + Eval—last step is putting it in front of 10 real users for 48 hours. Xiao Hua walks you through deploying to Vercel / Railway / Fly.io, adding auth + rate limits, recruiting 10 seed users, reading LangSmith traces daily for 48 hours, and writing a retrospective. You graduate not with 'I took a bootcamp' but with a 'deployed to 10 users and iterated' case study—interview gold.",
+          "type": "Quest",
+          "isLive": false,
+          "duration": 60,
+          "quest": {
+            "title": "你的 ISA 毕业前最后一跳：部署 + 真实用户 + 48h 观察",
+            "learningGoal": "一个跑着的公网 app + 10 个真实用户 + 48h 观察 + retrospective.md",
+            "successCriteria": "ISA 部署 URL 公网可用 ≥48h，retrospective.md 至少列 3 个 surprise findings",
+            "difficulty": "advanced",
+            "estimatedMinutes": 60,
+            "uiMode": "chat",
+            "context": "ISA 最后一跳，学员有所有组件了，现在要\"产品化\"。引导：(1) 选部署平台（Vercel 最快，Railway 适合后端重，Fly.io 适合 long-running agents）；(2) 加最简 Auth（Clerk 或 magic link）；(3) 加 rate limit（用 Upstash Redis）；(4) 准备一个 10 人种子用户名单（微信/LinkedIn/同事）+ onboarding 文案；(5) 48 小时每天看 LangSmith trace 3 次；(6) 发现 issue 立刻修；(7) 48h 后写 retrospective。关键：这是心理 Quest 多过技术 Quest —— 让学员迈过\"给真人用\"这道坎。大部分人会在\"拉 10 个用户\"这步卡住。",
+            "stepSkeleton": [
+              {
+                "title": "部署到 Vercel / Railway / Fly.io",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "公网 URL 可打开"
+              },
+              {
+                "title": "加 Auth + rate limit",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "拉 10 个种子用户",
+                "verificationType": "self-confirm"
+              },
+              {
+                "title": "48h 观察 LangSmith + 修 bug",
+                "verificationType": "text-evidence"
+              },
+              {
+                "title": "写 retrospective.md",
+                "verificationType": "text-evidence",
+                "expectedEvidence": "至少 3 条 surprise findings"
+              }
+            ],
+            "prerequisites": [
+              "完成 L168a",
+              "有 10 个能拉来的种子用户"
+            ],
+            "targetPlatform": "local-terminal",
+            "tags": [
+              "isa",
+              "graduation",
+              "production"
+            ]
+          },
+          "steps": [
+            {
+              "order": 1,
+              "type": "LAB",
+              "title": "部署",
+              "description": "部署",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "Auth + rate limit",
+              "description": "Auth + rate limit",
+              "duration": 10
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "拉种子用户",
+              "description": "拉种子用户",
+              "duration": 10
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "48h 观察 + 修 bug",
+              "description": "48h 观察 + 修 bug",
+              "duration": 10
+            },
+            {
+              "order": 5,
+              "type": "LAB",
+              "title": "写 retrospective",
+              "description": "写 retrospective",
+              "duration": 10
+            }
+          ]
         }
       ]
     }
