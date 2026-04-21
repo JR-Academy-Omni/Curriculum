@@ -391,6 +391,20 @@ jobs:
             fi
           done
 
+      # Clean up stale directories on server before deploy (SCP 只复制不删，改目录名后老数据会残留)
+      # 一次性清掉已知的废弃 slug —— 新增 bootcamp 改名 / 删除时都在这里加一行
+      - name: Clean stale directories on server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # 2026-04-21 · 错的无后缀 slug，已合并进 -1/
+            sudo rm -rf /var/www/static/curriculum/web-code-bootcamp-or-learn-to-code
+            # 列一下当前 curriculum 下还剩什么（方便日志核对）
+            ls /var/www/static/curriculum/
+
       # Deploy to server via SCP
       - name: Deploy to server
         uses: appleboy/scp-action@v0.1.7
