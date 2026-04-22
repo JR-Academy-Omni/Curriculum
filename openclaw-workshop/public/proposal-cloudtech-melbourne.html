@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw AI Workshop — Venue Partnership Proposal for CloudTech Melbourne · 6 May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;900&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; background: #10162f; color: #10162f; font-family: 'DM Sans', system-ui, sans-serif; }
+  body { overflow: hidden; }
+
+  .deck { position: relative; width: 100vw; height: 100vh; }
+  .slide {
+    position: absolute; inset: 0;
+    background: #fff1e7;
+    padding: 60px 80px;
+    display: none;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  /* Themed scrollbar for slides that overflow */
+  .slide::-webkit-scrollbar { width: 8px; }
+  .slide::-webkit-scrollbar-track { background: #fff1e7; }
+  .slide::-webkit-scrollbar-thumb { background: #10162f; border: 2px solid #fff1e7; }
+  .slide.active { display: flex; }
+
+  /* Header strip on every slide */
+  .header-strip {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: #666;
+    padding-bottom: 14px; border-bottom: 2px solid #10162f; margin-bottom: 36px;
+  }
+  .header-strip .brand { font-weight: 700; color: #E84142; }
+
+  h1.cover-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(44px, 6vw, 84px);
+    font-weight: 900; line-height: 1.02;
+    color: #10162f; margin-bottom: 24px;
+  }
+  h1.cover-title .accent { color: #E84142; }
+
+  .cover-subtitle {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(20px, 2.2vw, 30px);
+    font-weight: 400; color: #444; margin-bottom: 40px; max-width: 900px;
+  }
+
+  h2.slide-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 900; line-height: 1.1;
+    color: #10162f; margin-bottom: 10px;
+  }
+  .slide-eyebrow {
+    font-family: 'Space Mono', monospace; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: #E84142; font-weight: 700; margin-bottom: 12px;
+  }
+  .slide-lead {
+    font-size: clamp(16px, 1.4vw, 20px);
+    color: #444; max-width: 920px; line-height: 1.55; margin-bottom: 30px;
+  }
+
+  .cover-meta {
+    margin-top: auto;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    border-top: 2px solid #10162f; padding-top: 20px;
+    font-family: 'Space Mono', monospace; font-size: 13px; color: #10162f;
+  }
+  .cover-meta .dl { display: flex; flex-direction: column; gap: 6px; }
+  .cover-meta .dl b { font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; letter-spacing: 0; }
+
+  /* Grids */
+  .grid { display: grid; gap: 16px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .card {
+    background: #fff; border: 2px solid #10162f;
+    box-shadow: 5px 5px 0 #10162f;
+    padding: 20px 22px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .card .label {
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: #E84142; font-weight: 700;
+  }
+  .card h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px; font-weight: 900; color: #10162f; line-height: 1.25;
+  }
+  .card p { font-size: 14px; color: #444; line-height: 1.55; }
+  .card.dark { background: #10162f; color: #fff; border-color: #10162f; box-shadow: 5px 5px 0 #E84142; }
+  .card.dark h3, .card.dark p { color: #fff; }
+  .card.dark .label { color: #FFDE59; }
+  .card.accent { background: #E84142; color: #fff; border-color: #10162f; }
+  .card.accent h3, .card.accent p { color: #fff; }
+  .card.accent .label { color: #FFDE59; }
+
+  /* KPI stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+  .stat { border: 2px solid #10162f; padding: 16px 18px; background: #fff; }
+  .stat .n {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 36px; font-weight: 900; color: #10162f; line-height: 1;
+  }
+  .stat .l {
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: #666; margin-top: 6px;
+  }
+
+  /* Timeline for workshop format */
+  .timeline { display: flex; flex-direction: column; gap: 10px; }
+  .timeline .row {
+    display: grid; grid-template-columns: 80px 130px 1fr 80px;
+    align-items: center; gap: 14px;
+    border: 2px solid #10162f; padding: 14px 18px; background: #fff;
+  }
+  .timeline .code {
+    font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700;
+    background: #10162f; color: #fff; padding: 4px 10px; text-align: center;
+  }
+  .timeline .title { font-weight: 700; font-size: 15px; color: #10162f; }
+  .timeline .desc { font-size: 13px; color: #666; }
+  .timeline .duration { font-family: 'Space Mono', monospace; font-size: 12px; color: #E84142; text-align: right; font-weight: 700; }
+
+  /* Bullet list */
+  .bullets { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .bullets li {
+    padding-left: 28px; position: relative; font-size: 16px; color: #10162f; line-height: 1.55;
+  }
+  .bullets li::before {
+    content: ''; position: absolute; left: 0; top: 10px;
+    width: 14px; height: 14px; background: #E84142; border: 2px solid #10162f;
+  }
+  .bullets li b { font-weight: 700; color: #10162f; }
+
+  /* Two-column comparison */
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .twocol .col { border: 2px solid #10162f; padding: 22px 24px; background: #fff; }
+  .twocol .col h4 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 20px; font-weight: 900; color: #10162f; margin-bottom: 14px;
+    border-bottom: 2px solid #E84142; padding-bottom: 8px;
+  }
+  .twocol .col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .twocol .col li { font-size: 14px; color: #444; padding-left: 22px; position: relative; line-height: 1.5; }
+  .twocol .col li::before { content: '→'; position: absolute; left: 0; color: #E84142; font-weight: 700; }
+
+  /* Closing / CTA */
+  .cta-box {
+    margin-top: auto;
+    background: #10162f; color: #fff;
+    padding: 28px 32px; border: 2px solid #10162f;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cta-box .lead {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 22px; font-weight: 900; line-height: 1.25;
+  }
+  .cta-box .sub { font-size: 13px; color: #FFDE59; margin-top: 4px; font-family: 'Space Mono', monospace; }
+
+  /* Slide footer: page number + nav hint */
+  .slide-footer {
+    margin-top: auto; padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Space Mono', monospace; font-size: 11px; color: #666;
+    border-top: 2px solid #10162f;
+  }
+  .slide-footer .page b { color: #E84142; }
+
+  /* Nav arrows */
+  .nav {
+    position: fixed; bottom: 18px; right: 20px;
+    display: flex; gap: 8px; z-index: 100;
+  }
+  .nav button {
+    width: 40px; height: 40px;
+    border: 2px solid #10162f; background: #fff1e7; cursor: pointer;
+    font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700;
+    box-shadow: 3px 3px 0 #10162f;
+    transition: transform 0.12s, box-shadow 0.12s;
+  }
+  .nav button:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 #10162f; }
+  .nav button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #10162f; }
+
+  .progress {
+    position: fixed; top: 0; left: 0; height: 4px; background: #E84142;
+    transition: width 0.3s ease; z-index: 99;
+  }
+
+  @media print {
+    .nav, .progress { display: none; }
+    body { overflow: visible; background: #fff; }
+    .slide { display: flex !important; page-break-after: always; min-height: 100vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1 — COVER -->
+  <section class="slide active">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>Venue Partnership Proposal · 2026</span>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div class="slide-eyebrow">Proposal</div>
+      <h1 class="cover-title">OpenClaw AI <span class="accent">Workshop</span></h1>
+      <div class="cover-subtitle">A 2.5-hour hands-on evening workshop that turns non-technical professionals into real AI Agent users — hosted at CloudTech Melbourne on Wednesday 6 May 2026.</div>
+    </div>
+
+    <div class="cover-meta">
+      <div class="dl">
+        <span>PRESENTED BY</span>
+        <b>JR Academy</b>
+      </div>
+      <div class="dl">
+        <span>VENUE PARTNER</span>
+        <b>CloudTech Melbourne</b>
+      </div>
+      <div class="dl">
+        <span>DATE &amp; TIME</span>
+        <b>Wed 6 May 2026 · 6:00 – 8:30 PM</b>
+      </div>
+      <div class="dl">
+        <span>FORMAT</span>
+        <b>2.5-hour onsite workshop · 20–30 pax</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 — THE ASK -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>02 / 12 — The Ask</span>
+    </div>
+
+    <div class="slide-eyebrow">What we're asking</div>
+    <h2 class="slide-title">Host one OpenClaw hands-on workshop<br>in your Melbourne venue.</h2>
+    <div class="slide-lead">We run it, we fill the seats, we handle attendees end-to-end. CloudTech provides the physical space and gets brand exposure to a curated audience of mid-career professionals and SMB owners who are actively evaluating AI tools.</div>
+
+    <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="stat"><div class="n">2.5h</div><div class="l">Workshop length</div></div>
+      <div class="stat"><div class="n">20–30</div><div class="l">Attendees</div></div>
+      <div class="stat"><div class="n">Wed 6 May</div><div class="l">6:00 – 8:30 PM</div></div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="label">What you provide</div>
+        <h3>The physical space</h3>
+        <p>Room for 20–30 with tables, strong WiFi, projector, power. We'll cover the rest.</p>
+      </div>
+      <div class="card">
+        <div class="label">What we provide</div>
+        <h3>The complete event</h3>
+        <p>Curriculum, instructor + tutors, attendee marketing, registration, on-site check-in, refreshments, post-event follow-up.</p>
+      </div>
+      <div class="card dark">
+        <div class="label">What you get</div>
+        <h3>Brand alignment with the AI conversation</h3>
+        <p>Logo on materials, 5-min speaking slot, opt-in attendee connections, co-branded post-event content.</p>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>OpenClaw Workshop — CloudTech Melbourne Partnership Proposal</span>
+      <span class="page">PAGE <b>02</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 — WHAT IS OPENCLAW -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>03 / 12 — The Subject</span>
+    </div>
+
+    <div class="slide-eyebrow">The subject of the workshop</div>
+    <h2 class="slide-title">What is OpenClaw?</h2>
+    <div class="slide-lead">An open-source AI Agent platform launched in November 2025 by Austrian developer Peter Steinberger. MIT-licensed, 68K+ GitHub stars in 5 months — one of the fastest-growing AI projects of the year.</div>
+
+    <div class="grid grid-2" style="margin-bottom: 24px;">
+      <div class="card">
+        <div class="label">Key differentiator</div>
+        <h3>Runs on your own machine.</h3>
+        <p>Unlike ChatGPT, OpenClaw installs locally. Your data never leaves your device — critical for compliance-sensitive industries (legal, accounting, consulting).</p>
+      </div>
+      <div class="card">
+        <div class="label">How you interact</div>
+        <h3>Via WhatsApp, Telegram, Slack, Discord, Feishu.</h3>
+        <p>21+ messaging platforms. Your AI agent lives where you already communicate. No new app to learn.</p>
+      </div>
+      <div class="card">
+        <div class="label">What it does</div>
+        <h3>Actively executes tasks.</h3>
+        <p>Scheduled tasks, tool use, persistent memory. Not a chatbot — a true agent that runs your repetitive work autonomously.</p>
+      </div>
+      <div class="card dark">
+        <div class="label">Why now</div>
+        <h3>2025 tipping point.</h3>
+        <p>MCP protocol + local deployment + 200+ community skills finally make agent-based workflows viable for non-developers.</p>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>openclaw.ai · github.com/openclaw/openclaw · MIT License</span>
+      <span class="page">PAGE <b>03</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 4 — WHY THIS WORKSHOP -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>04 / 12 — The Problem</span>
+    </div>
+
+    <div class="slide-eyebrow">The problem we solve</div>
+    <h2 class="slide-title">"I've watched the AI demos,<br>but nothing is running on my laptop."</h2>
+    <div class="slide-lead">Every knowledge worker has watched hundreds of AI demos, followed dozens of influencers, bookmarked "must-have" AI tool lists. Yet on their actual laptop, only ChatGPT is open. The gap between awareness and adoption is massive — and it's where most paid AI courses fail. This 2.5-hour evening workshop closes that gap in one sitting.</div>
+
+    <div class="twocol">
+      <div class="col">
+        <h4>Typical online AI course</h4>
+        <ul>
+          <li>Video lectures on concepts</li>
+          <li>No real installation, no real account setup</li>
+          <li>70% of buyers never finish</li>
+          <li>Attendees leave with notes, not tools</li>
+          <li>"I'll set it up this weekend" — they never do</li>
+        </ul>
+      </div>
+      <div class="col" style="border-color: #E84142; background: #fff5f5;">
+        <h4 style="border-color: #10162f;">Our OpenClaw workshop</h4>
+        <ul>
+          <li>Installed on the attendee's own laptop — in the room</li>
+          <li>AI-guided "Quest" mode + 1:5-1:8 human tutor ratio</li>
+          <li>One real task completed before they leave</li>
+          <li>Personalized configuration that writes "like you"</li>
+          <li>Walks out with a working AI assistant, not a PDF</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Hands-on first. Theory second.</span>
+      <span class="page">PAGE <b>04</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 — WORKSHOP FORMAT -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>05 / 12 — Format</span>
+    </div>
+
+    <div class="slide-eyebrow">What happens in the room · 6:00 – 8:30 PM</div>
+    <h2 class="slide-title">5 segments. 150 minutes. Hands-on throughout.</h2>
+
+    <div class="timeline">
+      <div class="row">
+        <div class="code">S01</div>
+        <div class="title">Welcome &amp; AI Agent Fundamentals</div>
+        <div class="desc">CloudTech + JR Academy open. ChatGPT vs. AI Agent mental model. When to trust AI, when not to.</div>
+        <div class="duration">20 min · 6:00</div>
+      </div>
+      <div class="row">
+        <div class="code">S02</div>
+        <div class="title">Quest-Mode Install on Your Laptop</div>
+        <div class="desc">AI tutor walks each attendee through 6 verified steps. Human tutors circulate for backup. OpenClaw live on every laptop.</div>
+        <div class="duration">35 min · 6:20</div>
+      </div>
+      <div class="row">
+        <div class="code">S03</div>
+        <div class="title">Live Industry Demo</div>
+        <div class="desc">Instructor runs a real scenario matching the cohort (legal / real-estate / sales / content). AI executes end-to-end in the room.</div>
+        <div class="duration">25 min · 6:55</div>
+      </div>
+      <div class="row">
+        <div class="code">S04</div>
+        <div class="title">Guided Hands-On Workshop</div>
+        <div class="desc">Attendees use their own real work content (emails, contracts, docs). Tutors help personalize AI to write "like them".</div>
+        <div class="duration">50 min · 7:20</div>
+      </div>
+      <div class="row">
+        <div class="code">S05</div>
+        <div class="title">Networking + Q&amp;A + Close</div>
+        <div class="desc">Moderated cross-industry discussion, open Q&amp;A, next-step invitation to ongoing AI community + resources.</div>
+        <div class="duration">20 min · 8:10</div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Total: 150 minutes · Instructor + 3 tutors · 1:5-1:8 tutor ratio · Room closed by 8:30 PM</span>
+      <span class="page">PAGE <b>05</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 6 — WHO ATTENDS -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>06 / 12 — Audience</span>
+    </div>
+
+    <div class="slide-eyebrow">The audience in the room · Chinese-speaking professionals · Filtered</div>
+    <h2 class="slide-title">Premium Chinese-speaking professionals.<br>Screened, paid, committed.</h2>
+    <div class="slide-lead" style="margin-bottom: 24px;">JR Academy's core community is <strong>Chinese-speaking professionals and SMB owners in Australia</strong>. This 6 May workshop is conducted in Mandarin — a segment CloudTech has likely had limited exposure to. Attendees pay a fee + fill a short intake form, filtering out tire-kickers. What CloudTech gets in the room is 20–30 serious mid-career Mandarin-speaking buyers. <em>(English-language workshops are an easy follow-up — see slide 11.)</em></div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">中文</div><div class="l">Mandarin-speaking</div></div>
+      <div class="stat"><div class="n">28–50</div><div class="l">Age range</div></div>
+      <div class="stat"><div class="n">Paid</div><div class="l">Ticket (~$150 AUD)</div></div>
+      <div class="stat"><div class="n">Vetted</div><div class="l">Short intake form</div></div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="label">Segment 1</div>
+        <h3>Real Estate &amp; Mortgage Brokers</h3>
+        <p>Spending 2+ hours/day on client emails and project materials. Want AI to handle repetitive outreach.</p>
+      </div>
+      <div class="card">
+        <div class="label">Segment 2</div>
+        <h3>SMB Owners &amp; Founders</h3>
+        <p>Limited budget, want to offload customer service, email, content, CRM. OpenClaw's MIT license fits.</p>
+      </div>
+      <div class="card">
+        <div class="label">Segment 3</div>
+        <h3>Legal, Accounting, Consulting</h3>
+        <p>Can't upload client data to cloud AI. Local-first OpenClaw is a perfect compliance fit.</p>
+      </div>
+      <div class="card">
+        <div class="label">Segment 4</div>
+        <h3>Marketing &amp; Content Professionals</h3>
+        <p>Power users of ChatGPT who have hit the ceiling. Ready to systematize AI into real workflows.</p>
+      </div>
+      <div class="card">
+        <div class="label">Segment 5</div>
+        <h3>Team Leads &amp; People Managers</h3>
+        <p>Planning to introduce AI workflows to their team. This workshop gives them hands-on grounding.</p>
+      </div>
+      <div class="card accent">
+        <div class="label">Common thread</div>
+        <h3>Filtered, not open-door.</h3>
+        <p>Paid ticket + short screening form. Tire-kickers self-select out. Every seat is a qualified lead for CloudTech.</p>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Curated through JR Academy's network (~80K community members across WeChat, Xiaohongshu, LinkedIn)</span>
+      <span class="page">PAGE <b>06</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 7 — WHY CLOUDTECH -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>07 / 12 — Why CloudTech</span>
+    </div>
+
+    <div class="slide-eyebrow">Why we're asking CloudTech specifically</div>
+    <h2 class="slide-title">AI and Web3 are both<br>frontier tech. Your audience overlaps ours.</h2>
+    <div class="slide-lead">We considered co-working spaces and hotel conference rooms, but CloudTech stands out — you're already a recognised Web3 hub in Melbourne, and the people in your orbit are exactly the people leaning into emerging tech. Running an AI workshop at a Web3 venue signals "this is where Melbourne's emerging-tech community meets," and lifts both brands.</div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="label">Reason 1 · Audience overlap</div>
+        <h3>Web3 + AI = same early-adopter profile</h3>
+        <p>Web3 builders and AI adopters are largely the same people: tech-forward, frontier-curious, willing to pay to learn. Your community is our audience.</p>
+      </div>
+      <div class="card">
+        <div class="label">Reason 2 · Brand credibility</div>
+        <h3>Web3 credibility = emerging-tech credibility</h3>
+        <p>Attendees walking into a known Web3 venue immediately perceive the workshop as serious, not hobbyist. That expectation lift matters when they're paying AUD 150.</p>
+      </div>
+      <div class="card">
+        <div class="label">Reason 3 · Central location</div>
+        <h3>Melbourne CBD access</h3>
+        <p>Central enough for CBD-based professionals after work, with parking / transit for suburban SMB owners.</p>
+      </div>
+      <div class="card dark">
+        <div class="label">Reason 4 · Not a one-off</div>
+        <h3>Building the emerging-tech habit.</h3>
+        <p>If this lands, we'd love to make CloudTech a recurring venue and explore AI × Web3 crossover events (see slide 11). 4–6 events per year is realistic.</p>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Melbourne · Web3 venue hosting first AI workshop · First of a planned emerging-tech series</span>
+      <span class="page">PAGE <b>07</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 8 — WHAT CLOUDTECH GETS -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>08 / 12 — Partnership Value</span>
+    </div>
+
+    <div class="slide-eyebrow">What CloudTech gets in return</div>
+    <h2 class="slide-title">Partnership value, broken down.</h2>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="label">Brand visibility · In the room</div>
+        <h3>Logo on registration, materials, name-tags.</h3>
+        <p>CloudTech is visibly the host venue throughout all pre-event and in-event touchpoints.</p>
+      </div>
+      <div class="card">
+        <div class="label">Brand visibility · Digital</div>
+        <h3>Logo on event landing page, social posts.</h3>
+        <p>Minimum 4 cross-promotional posts across WeChat, Xiaohongshu, LinkedIn, WeCom groups.</p>
+      </div>
+      <div class="card">
+        <div class="label">Direct audience access</div>
+        <h3>5–10 minute speaking slot at opening.</h3>
+        <p>A CloudTech rep introduces the venue and your services to 20–30 targeted attendees in person during the welcome segment.</p>
+      </div>
+      <div class="card">
+        <div class="label">Lead generation</div>
+        <h3>Opt-in attendee list.</h3>
+        <p>Attendees who opt in (clear GDPR/Australian Privacy Act consent) are shared with CloudTech for future follow-up.</p>
+      </div>
+      <div class="card">
+        <div class="label">Co-branded content</div>
+        <h3>Post-event case study.</h3>
+        <p>Co-authored write-up of the event for both parties' marketing channels — evergreen asset for your sales team.</p>
+      </div>
+      <div class="card accent">
+        <div class="label">Strategic positioning</div>
+        <h3>CloudTech = Melbourne's AI × Web3 emerging-tech venue.</h3>
+        <p>CloudTech's Web3 brand + JR Academy's AI audience = the two frontier-tech communities in one venue. If this repeats, CloudTech owns the "where emerging tech happens in Melbourne" position.</p>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>All marketing assets co-created and approved by CloudTech before publishing</span>
+      <span class="page">PAGE <b>08</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 9 — VENUE REQUIREMENTS -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>09 / 12 — Venue Requirements</span>
+    </div>
+
+    <div class="slide-eyebrow">What we need from the space</div>
+    <h2 class="slide-title">Practical requirements.</h2>
+    <div class="slide-lead">Nothing exotic — a standard CloudTech training room should already meet this spec. Flagged here so we can confirm fit quickly.</div>
+
+    <div class="grid grid-2" style="margin-bottom: 20px;">
+      <div class="card">
+        <div class="label">Space</div>
+        <h3>Room for 20–30 with tables</h3>
+        <p>Laptop-workshop seating (tables, not theatre). Tutors circulate, so aisles between rows.</p>
+      </div>
+      <div class="card">
+        <div class="label">Connectivity</div>
+        <h3>WiFi for 30+ concurrent devices</h3>
+        <p>Each attendee downloads OpenClaw + authenticates LLM API keys simultaneously during S02 install. Guest network fine if bandwidth is sufficient.</p>
+      </div>
+      <div class="card">
+        <div class="label">AV</div>
+        <h3>Projector + HDMI/USB-C + microphone</h3>
+        <p>Standard A/V setup. We bring adapters as backup.</p>
+      </div>
+      <div class="card">
+        <div class="label">Power</div>
+        <h3>Power outlets at each seat</h3>
+        <p>2.5-hour session with laptops actively running — battery alone won't last for most attendees.</p>
+      </div>
+      <div class="card">
+        <div class="label">Timing</div>
+        <h3>5:00 – 9:00 PM venue access</h3>
+        <p>1-hour setup before (AV test, tutor stations, check-in) · Event 6:00–8:30 PM · 30 min pack-down after.</p>
+      </div>
+      <div class="card dark">
+        <div class="label">Refreshments (we handle)</div>
+        <h3>Water, coffee, light evening snacks</h3>
+        <p>We source refreshments independently for an evening crowd. Venue just needs kitchenette access or delivery acceptance.</p>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>All requirements are negotiable — flag any constraints early</span>
+      <span class="page">PAGE <b>09</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 10 — TIMELINE -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>10 / 12 — Timeline</span>
+    </div>
+
+    <div class="slide-eyebrow">Locked date · 2-week sprint from today</div>
+    <h2 class="slide-title">Wednesday 6 May 2026 · 6:00 – 8:30 PM.</h2>
+    <div class="slide-lead">Today is 22 April. Tight but doable with JR Academy's existing Melbourne WeChat / Xiaohongshu / LinkedIn distribution.</div>
+
+    <div class="timeline" style="margin-bottom: 20px;">
+      <div class="row">
+        <div class="code">D-14</div>
+        <div class="title">Confirm + launch</div>
+        <div class="desc">CloudTech confirms venue · Co-branded page live · Joint announcement on all channels.</div>
+        <div class="duration">22–23 Apr</div>
+      </div>
+      <div class="row">
+        <div class="code">D-7</div>
+        <div class="title">Capacity checkpoint</div>
+        <div class="desc">Under 15 regs → paid boost. Over 25 → open waitlist.</div>
+        <div class="duration">Wed 29 Apr</div>
+      </div>
+      <div class="row">
+        <div class="code">D-3</div>
+        <div class="title">Final headcount locked</div>
+        <div class="desc">Confirm with CloudTech for AV, refreshments, seating. 72-hour + 24-hour reminders fire.</div>
+        <div class="duration">3–5 May</div>
+      </div>
+      <div class="row">
+        <div class="code">D-0</div>
+        <div class="title">EVENT DAY</div>
+        <div class="desc">5:00 PM setup · 6:00 PM start · 8:30 PM close · 9:00 PM pack-down done.</div>
+        <div class="duration">Wed 6 May</div>
+      </div>
+      <div class="row">
+        <div class="code">D+7</div>
+        <div class="title">Recap + next-workshop talk</div>
+        <div class="desc">Co-published case study · Testimonial capture · Open conversation about event #2.</div>
+        <div class="duration">Wed 13 May</div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Contingency: if venue blocker emerges, fallback to Thu 7 May same time</span>
+      <span class="page">PAGE <b>10</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 11 — FUTURE PARTNERSHIP IDEAS -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>11 / 12 — Beyond May 6</span>
+    </div>
+
+    <div class="slide-eyebrow">8 concrete events we could run together through 2026</div>
+    <h2 class="slide-title">Specific titles. Specific audiences.<br>Pick the ones you like.</h2>
+    <div class="slide-lead">Below are actual event titles — not categories. Each has a format, audience, and why-CloudTech rationale. Mix-and-match after 6 May lands.</div>
+
+    <div class="grid grid-3">
+
+      <div class="card">
+        <div class="label">Jun 2026 · English · 2.5h</div>
+        <h3>"Cursor × Claude Code for Web3 Developers"</h3>
+        <p><b>Format:</b> Hands-on. Ship a dApp frontend in 90 min using AI-pair coding.<br><b>Audience:</b> 20–30 Web3 devs who write Solidity but are new to modern AI coding workflows.<br><b>Why CloudTech:</b> Your existing dev community is the exact target.</p>
+      </div>
+
+      <div class="card">
+        <div class="label">Jul 2026 · English · 2.5h</div>
+        <h3>"Build Your First AI Trading Bot on Telegram"</h3>
+        <p><b>Format:</b> Hands-on. Each attendee leaves with a working bot (price alerts, auto-buy logic) connected to their own wallet.<br><b>Audience:</b> 20–30 DeFi-curious non-devs &amp; beginner Web3 coders.<br><b>Why CloudTech:</b> Most Web3-native workshop topic imaginable.</p>
+      </div>
+
+      <div class="card">
+        <div class="label">Aug 2026 · English · Half-day · Advanced</div>
+        <h3>"AI-Powered Smart Contract Auditing"</h3>
+        <p><b>Format:</b> 4-hour deep workshop. Static analysis tooling + LLM review of real audit reports (Slither + Claude).<br><b>Audience:</b> Senior Web3 devs upskilling into audit roles. $500+ seat price viable.<br><b>Why CloudTech:</b> High-margin, niche, Web3-specific.</p>
+      </div>
+
+      <div class="card">
+        <div class="label">Sep 2026 · English · 2.5h · Intermediate</div>
+        <h3>"Building Your Own MCP Server"</h3>
+        <p><b>Format:</b> Hands-on. Each attendee ships an MCP server that queries on-chain data from Claude/ChatGPT.<br><b>Audience:</b> 20–30 intermediate devs. Hottest topic in AI-tool integration right now.<br><b>Why CloudTech:</b> MCP + Web3 data is a Melbourne-first angle.</p>
+      </div>
+
+      <div class="card">
+        <div class="label">Oct 2026 · 中文 · 2.5h</div>
+        <h3>"Claude Code 实战 — 中文进阶 Workshop"</h3>
+        <p><b>Format:</b> Hands-on. 6 May OpenClaw 学员的进阶路径 — Claude Code CLI + 真实项目改造。<br><b>Audience:</b> 20–30 华人 Web3 / AI 开发者.<br><b>Why CloudTech:</b> Same venue, same brand anchor. 中文社群回流.</p>
+      </div>
+
+      <div class="card">
+        <div class="label">Monthly · Free · 90min</div>
+        <h3>"Melbourne AI × Web3 Builders Meetup"</h3>
+        <p><b>Format:</b> Networking. Rotating monthly themes:<br>· Jun: AI Agents in Production<br>· Jul: On-chain AI Economy<br>· Aug: Privacy-First AI (local LLMs)<br>· Sep: MCP Ecosystem<br><b>Audience:</b> Open door, 50–80 drop-in per month.</p>
+      </div>
+
+      <div class="card dark">
+        <div class="label">Ongoing · Cross-promotion</div>
+        <h3>"Audience Exchange — Quarterly"</h3>
+        <p><b>Deliverable 1:</b> JR Academy features 1 CloudTech Web3 program per quarter to our 80K+ WeChat audience (untapped in AU Web3).<br><b>Deliverable 2:</b> CloudTech emails 1 JR Academy AI workshop per quarter to its Web3 list.<br><b>Measurable, bilateral, written.</b></p>
+      </div>
+
+      <div class="card accent">
+        <div class="label">Q3 2026 · Internal · 3 sessions</div>
+        <h3>"CloudTech Team AI Literacy Program"</h3>
+        <p><b>Format:</b> 3 × 90-min sessions over 3 months, delivered on-site.<br>· Session 1: Prompt Engineering for Web3 PMs<br>· Session 2: Claude Code for Solidity Devs<br>· Session 3: Building Internal AI Agents<br><b>Audience:</b> CloudTech staff only. Free to you.</p>
+      </div>
+
+    </div>
+
+    <div class="slide-footer">
+      <span>All titles are suggestions · Swap, kill, or add any · Revisit this list post-6 May with real data</span>
+      <span class="page">PAGE <b>11</b> / 12</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 12 — THANK YOU / CONTACT -->
+  <section class="slide">
+    <div class="header-strip">
+      <span class="brand">JR Academy × CloudTech Melbourne</span>
+      <span>12 / 12 — Let's Talk</span>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div class="slide-eyebrow">Next step</div>
+      <h2 class="slide-title" style="font-size: clamp(40px, 5vw, 68px);">Ready to lock<br>a Saturday afternoon?</h2>
+      <div class="slide-lead" style="font-size: 20px; max-width: 820px;">We're happy to run through this proposal in person, walk your team through the expected attendee profile, and answer anything about liability, insurance, or catering logistics. A 30-minute call is all we need to align.</div>
+
+      <div class="grid grid-3" style="margin-top: 30px;">
+        <div class="card dark">
+          <div class="label">Primary contact</div>
+          <h3>JR Academy</h3>
+          <p>hello@jiangren.com.au<br>jiangren.com.au</p>
+        </div>
+        <div class="card">
+          <div class="label">Proposal reference</div>
+          <h3>OpenClaw Workshop</h3>
+          <p>Internal: curriculum/openclaw-workshop<br>Public: jiangren.com.au/trainings/openclaw-workshop</p>
+        </div>
+        <div class="card accent">
+          <div class="label">Turnaround</div>
+          <h3>We can be ready<br>in 2 weeks.</h3>
+          <p>From CloudTech confirmation today to a full room on Wed 6 May. Compressed but well-rehearsed by JR Academy's Melbourne team.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="lead">Thank you, CloudTech Melbourne.</div>
+        <div class="sub">Looking forward to hosting Melbourne's first OpenClaw cohort with you.</div>
+      </div>
+      <div style="font-family: 'Space Mono', monospace; font-size: 48px; font-weight: 700; color: #FFDE59;">→</div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" aria-label="Previous slide">←</button>
+  <button id="next" aria-label="Next slide">→</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const progress = document.getElementById('progress');
+  let index = 0;
+
+  function show(i) {
+    index = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s, n) => s.classList.toggle('active', n === index));
+    progress.style.width = ((index + 1) / slides.length * 100) + '%';
+    if (location.hash !== '#' + (index + 1)) {
+      history.replaceState(null, '', '#' + (index + 1));
+    }
+  }
+
+  document.getElementById('prev').addEventListener('click', () => show(index - 1));
+  document.getElementById('next').addEventListener('click', () => show(index + 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { show(index + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(index - 1); e.preventDefault(); }
+    else if (e.key === 'Home') { show(0); }
+    else if (e.key === 'End') { show(slides.length - 1); }
+  });
+
+  // Deep link via hash
+  const initial = parseInt((location.hash || '#1').slice(1), 10);
+  if (!isNaN(initial) && initial > 0) show(initial - 1);
+  else show(0);
+</script>
+
+</body>
+</html>
