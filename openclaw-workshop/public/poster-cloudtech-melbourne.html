@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OpenClaw Workshop · Melbourne 5/6 · 小红书封面套装 (6 张)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@500;700;900&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1a0b0b; min-height: 100vh;
+      padding: 30px 20px 120px;
+      font-family: 'DM Sans','Noto Sans SC',sans-serif;
+      color: #fff;
+    }
+    .page-header { text-align: center; color: #FFDE59; margin-bottom: 30px; font-family: 'Space Mono', monospace; }
+    .page-header h1 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .page-header .sub { font-size: 13px; letter-spacing: 2px; opacity: 0.8; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 36px; max-width: 1800px; margin: 0 auto;
+    }
+    .slot { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .slot .label {
+      font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 2px;
+      color: #FFDE59; padding: 6px 14px; background: rgba(255,255,255,0.08); border: 2px solid #FFDE59;
+    }
+    canvas {
+      width: 420px; height: 561px;
+      box-shadow: 10px 10px 0 #000, 0 0 0 3px #000; background: #fff1e7;
+    }
+    .dl {
+      padding: 10px 22px; background: #E84142; color: #fff;
+      border: 3px solid #000; box-shadow: 4px 4px 0 #000;
+      font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      cursor: pointer; transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .dl:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #000; }
+    .dl:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 #000; }
+
+    .dl-all {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      padding: 16px 34px; background: #FFDE59; color: #000;
+      border: 3px solid #000; box-shadow: 6px 6px 0 #000;
+      font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 2px;
+      cursor: pointer; z-index: 100;
+    }
+    .dl-all:hover { transform: translateX(-50%) translate(-2px,-2px); box-shadow: 8px 8px 0 #000; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>OpenClaw Workshop · Melbourne 5/6 · 小红书封面套装</h1>
+  <div class="sub">6 张不同钩子 · 1242×1660 · 纯 Canvas 2D · 点单张或「一键下载全部」</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<button class="dl-all" id="dl-all">⬇ 一键下载全部 6 张 PNG</button>
+
+<script>
+// ============================================================
+// 通用工具库
+// ============================================================
+const C = {
+  cream: '#fff1e7', dark: '#10162f', red: '#E84142', yellow: '#FFDE59',
+  white: '#ffffff', black: '#000000', grey: '#666666', lightGrey: '#aaa',
+  success: '#10b981', warn: '#FF914D', purple: '#6366f1',
+};
+const F = {
+  title: 'Bricolage Grotesque',
+  zh: 'Noto Sans SC',
+  body: 'DM Sans',
+  mono: 'Space Mono',
+};
+
+function T(ctx, str, x, y, { font = `700 40px ${F.zh}`, color = C.dark, align = 'left', baseline = 'top' } = {}) {
+  ctx.font = font; ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = baseline;
+  ctx.fillText(str, x, y);
+  return ctx.measureText(str).width;
+}
+
+function rect(ctx, x, y, w, h, fill, border, bw = 0, sh = 0) {
+  if (sh) { ctx.fillStyle = C.black; ctx.fillRect(x+sh, y+sh, w, h); }
+  ctx.fillStyle = fill; ctx.fillRect(x, y, w, h);
+  if (bw > 0 && border) { ctx.strokeStyle = border; ctx.lineWidth = bw; ctx.strokeRect(x+bw/2, y+bw/2, w-bw, h-bw); }
+}
+
+function highlight(ctx, str, x, y, { font, bg = C.yellow, color = C.black, padX = 14, padY = 10, rotation = 0 } = {}) {
+  ctx.font = font;
+  const m = ctx.measureText(str);
+  const ascent = m.actualBoundingBoxAscent || parseInt(font, 10) * 0.78;
+  const descent = m.actualBoundingBoxDescent || parseInt(font, 10) * 0.22;
+  const h = ascent + descent + padY * 2;
+  const w = m.width + padX * 2;
+  ctx.save(); ctx.translate(x, y); if (rotation) ctx.rotate(rotation * Math.PI / 180);
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, w, h);
+  ctx.fillStyle = color; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText(str, padX, h / 2);
+  ctx.restore();
+  return { w, h };
+}
+
+// 通用顶部 kicker（所有海报共享）
+function drawKicker(ctx) {
+  T(ctx, 'MELBOURNE · 5/6 WED · 18:00 – 20:30', 72, 84, {
+    font: `700 26px ${F.mono}`, color: C.red,
+  });
+  ctx.fillStyle = C.red; ctx.fillRect(72, 122, 100, 6);
+}
+
+// 通用底部 CTA 条
+function drawCTA(ctx, W, H, { leadText = '扫码报名 · 5/6 见', urlText = 'JIANGREN.COM.AU / OPENCLAW-WORKSHOP' } = {}) {
+  const ctaY = H - 200;
+  rect(ctx, 0, ctaY, W, 200, C.dark);
+  rect(ctx, 0, ctaY, W, 12, C.yellow);
+  T(ctx, '→', 72, ctaY + 46, { font: `900 130px ${F.mono}`, color: C.red });
+  T(ctx, leadText, 240, ctaY + 58, { font: `900 60px ${F.zh}`, color: C.white });
+  T(ctx, urlText, 240, ctaY + 140, { font: `700 22px ${F.mono}`, color: C.yellow });
+}
+
+// ============================================================
+// P1 · 钩子版 —— "你还在打字聊 ChatGPT？ → 这里把 AI 装进你电脑"
+// ============================================================
+function renderP1(ctx, W, H) {
+  ctx.fillStyle = C.cream; ctx.fillRect(0, 0, W, H);
+  drawKicker(ctx);
+
+  T(ctx, '你还在打字聊 ChatGPT？', 72, 200, {
+    font: `500 52px ${F.zh}`, color: C.grey,
+  });
+
+  T(ctx, '这里把 AI', 72, 290, {
+    font: `900 180px ${F.zh}`, color: C.dark,
+  });
+
+  highlight(ctx, '装进你电脑。', 72, 530, {
+    font: `900 170px ${F.zh}`, bg: C.yellow, color: C.black,
+    padX: 20, padY: 18, rotation: -1.5,
+  });
+
+  T(ctx, '2.5 小时线下晚间 · 走时你电脑里有个能用的 AI 助手', 72, 780, {
+    font: `700 32px ${F.zh}`, color: C.dark,
+  });
+  T(ctx, '不是 PPT · 不是证书 · 是你真能继续用的工具', 72, 830, {
+    font: `500 26px ${F.zh}`, color: C.grey,
+  });
+
+  // 红卡 "2.5h" + 黑卡 "$150 / 20 席"
+  const cy = 920, ch = 280;
+  rect(ctx, 72, cy, 540, ch, C.red, C.black, 6, 14);
+  T(ctx, '2.5', 342, cy + 70, { font: `900 220px ${F.title}`, color: C.white, align: 'center' });
+  T(ctx, '小时 · 一晚', 342, cy + ch - 64, { font: `700 32px ${F.zh}`, color: C.yellow, align: 'center' });
+
+  rect(ctx, W - 612, cy, 540, ch, C.dark, C.black, 6, 14);
+  T(ctx, '$150', W - 342, cy + 60, { font: `900 130px ${F.title}`, color: C.white, align: 'center' });
+  T(ctx, 'AUD 单席', W - 342, cy + 190, { font: `700 24px ${F.mono}`, color: C.yellow, align: 'center' });
+  T(ctx, '仅 20 席 · 筛选制', W - 342, cy + 228, { font: `700 26px ${F.zh}`, color: C.white, align: 'center' });
+
+  // 信息条
+  const iy = 1240;
+  rect(ctx, 72, iy, W - 144, 180, C.white, C.black, 5);
+  T(ctx, '📅', 110, iy + 54, { font: `56px ${F.body}` });
+  T(ctx, 'Wed 6 May 2026', 190, iy + 48, { font: `900 44px ${F.title}`, color: C.dark });
+  T(ctx, '18:00 — 20:30 · 晚间 2.5h', 190, iy + 104, { font: `500 24px ${F.zh}`, color: C.grey });
+  ctx.fillStyle = C.black; ctx.fillRect(W/2, iy + 30, 3, 120);
+  T(ctx, '📍', W/2 + 30, iy + 54, { font: `56px ${F.body}` });
+  T(ctx, 'CloudTech Melbourne', W/2 + 110, iy + 48, { font: `900 42px ${F.title}`, color: C.dark });
+  T(ctx, 'Web3 venue · CBD · 晚间限定', W/2 + 110, iy + 104, { font: `500 24px ${F.zh}`, color: C.grey });
+
+  drawCTA(ctx, W, H);
+}
+
+// ============================================================
+// P2 · 对比版 —— ChatGPT ≠ AI Agent
+// ============================================================
+function renderP2(ctx, W, H) {
+  ctx.fillStyle = C.cream; ctx.fillRect(0, 0, W, H);
+  drawKicker(ctx);
+
+  T(ctx, '这场到底讲什么？', 72, 200, {
+    font: `500 42px ${F.zh}`, color: C.grey,
+  });
+
+  T(ctx, 'ChatGPT', 72, 260, {
+    font: `900 110px ${F.title}`, color: C.lightGrey,
+  });
+
+  // ≠ 符号（超大）
+  T(ctx, '≠', 72, 410, {
+    font: `900 200px ${F.title}`, color: C.red,
+  });
+
+  T(ctx, 'AI Agent', 72, 640, {
+    font: `900 160px ${F.title}`, color: C.dark,
+  });
+
+  highlight(ctx, '差的不只是一个词。', 72, 850, {
+    font: `900 50px ${F.zh}`, bg: C.yellow, color: C.black, padX: 16, padY: 12,
+  });
+
+  // 左右两列对比卡
+  const cy = 960, ch = 360;
+  // 左 · 灰 · ChatGPT
+  rect(ctx, 72, cy, 540, ch, C.white, C.black, 5, 10);
+  T(ctx, '❌', 110, cy + 32, { font: `64px ${F.body}` });
+  T(ctx, 'ChatGPT', 110, cy + 118, { font: `900 48px ${F.title}`, color: C.lightGrey });
+  T(ctx, '你问它才答', 110, cy + 182, { font: `700 30px ${F.zh}`, color: C.grey });
+  T(ctx, '上传 = 数据给云端', 110, cy + 226, { font: `700 30px ${F.zh}`, color: C.grey });
+  T(ctx, '只能聊 · 不动手', 110, cy + 270, { font: `700 30px ${F.zh}`, color: C.grey });
+  T(ctx, '关窗口 · 全忘了', 110, cy + 314, { font: `700 30px ${F.zh}`, color: C.grey });
+
+  // 右 · 红边 · Agent
+  rect(ctx, W - 612, cy, 540, ch, C.white, C.red, 6, 10);
+  T(ctx, '✅', W - 574, cy + 32, { font: `64px ${F.body}` });
+  T(ctx, 'AI Agent', W - 574, cy + 118, { font: `900 48px ${F.title}`, color: C.red });
+  T(ctx, '主动替你执行', W - 574, cy + 182, { font: `700 30px ${F.zh}`, color: C.dark });
+  T(ctx, '本地跑 · 数据你的', W - 574, cy + 226, { font: `700 30px ${F.zh}`, color: C.dark });
+  T(ctx, '调工具 · 会干活', W - 574, cy + 270, { font: `700 30px ${F.zh}`, color: C.dark });
+  T(ctx, '持续跑 · 有记忆', W - 574, cy + 314, { font: `700 30px ${F.zh}`, color: C.dark });
+
+  // 底部引导
+  T(ctx, '👇 2.5h 线下 · 5/6 墨尔本 · 现场装好跑通', W/2, 1380, {
+    font: `700 30px ${F.zh}`, color: C.dark, align: 'center',
+  });
+
+  drawCTA(ctx, W, H, { leadText: '看现场 · 5/6 晚' });
+}
+
+// ============================================================
+// P3 · 身份版 —— 合规敏感行业专场（律师/会计/顾问）
+// ============================================================
+function renderP3(ctx, W, H) {
+  ctx.fillStyle = C.cream; ctx.fillRect(0, 0, W, H);
+  drawKicker(ctx);
+
+  T(ctx, '👨‍⚖️ 律师 · 💼 会计 · 🏠 房产 · 📊 顾问', 72, 200, {
+    font: `700 34px ${F.zh}`, color: C.red,
+  });
+
+  T(ctx, '客户数据', 72, 280, {
+    font: `900 140px ${F.zh}`, color: C.dark,
+  });
+
+  highlight(ctx, '不能上云。', 72, 450, {
+    font: `900 140px ${F.zh}`, bg: C.yellow, color: C.black, padX: 18, padY: 16, rotation: -1,
+  });
+
+  T(ctx, 'ChatGPT 用不了 · 豆包怕泄密', 72, 650, {
+    font: `500 34px ${F.zh}`, color: C.grey,
+  });
+
+  T(ctx, '那就本地跑一个。', 72, 720, {
+    font: `900 62px ${F.zh}`, color: C.dark,
+  });
+
+  // 大横卡：OpenClaw = 本地部署
+  const cy = 830;
+  rect(ctx, 72, cy, W - 144, 320, C.dark, C.black, 6, 14);
+  T(ctx, 'OpenClaw', 112, cy + 36, { font: `900 72px ${F.title}`, color: C.yellow });
+  T(ctx, '开源 · MIT · GitHub 68K ⭐', 112, cy + 124, { font: `700 26px ${F.mono}`, color: C.white });
+
+  // 3 条 bullet
+  T(ctx, '🔒', 112, cy + 182, { font: `40px ${F.body}` });
+  T(ctx, '装在你电脑上 · 数据不离开设备', 172, cy + 198, { font: `700 28px ${F.zh}`, color: C.white });
+
+  T(ctx, '💬', 112, cy + 232, { font: `40px ${F.body}` });
+  T(ctx, 'WhatsApp / 飞书 / Slack 直接用', 172, cy + 248, { font: `700 28px ${F.zh}`, color: C.white });
+
+  T(ctx, '⚡', 112, cy + 282, { font: `40px ${F.body}` });
+  T(ctx, '自己跑定时任务 · 替你回邮件/写纪要', 172, cy + 298, { font: `700 28px ${F.zh}`, color: C.white });
+
+  // 底部 · 5/6 晚专为合规行业
+  T(ctx, '📍 墨尔本 5/6 晚 · 2.5h 现场装好 · 合规敏感行业专场', 72, 1200, {
+    font: `700 28px ${F.zh}`, color: C.dark,
+  });
+  T(ctx, '客户资料不会经过我们 / JR / CloudTech 任何服务器', 72, 1244, {
+    font: `500 22px ${F.zh}`, color: C.grey,
+  });
+
+  drawCTA(ctx, W, H);
+}
+
+// ============================================================
+// P4 · 结果版 —— 走时你带走的不是 PPT
+// ============================================================
+function renderP4(ctx, W, H) {
+  ctx.fillStyle = C.cream; ctx.fillRect(0, 0, W, H);
+  drawKicker(ctx);
+
+  T(ctx, '走出教室时 · 你带走的是：', 72, 200, {
+    font: `500 42px ${F.zh}`, color: C.grey,
+  });
+
+  // 3 个否定 + 1 个肯定
+  const rowY = 300;
+  const rowH = 130;
+
+  // ❌ 1
+  T(ctx, '❌', 72, rowY + 10, { font: `80px ${F.body}` });
+  T(ctx, '不是 PPT', 200, rowY + 20, { font: `900 80px ${F.zh}`, color: C.lightGrey });
+  ctx.strokeStyle = C.grey; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(200, rowY + 65); ctx.lineTo(600, rowY + 65); ctx.stroke();
+
+  // ❌ 2
+  T(ctx, '❌', 72, rowY + rowH + 10, { font: `80px ${F.body}` });
+  T(ctx, '不是证书', 200, rowY + rowH + 20, { font: `900 80px ${F.zh}`, color: C.lightGrey });
+  ctx.beginPath(); ctx.moveTo(200, rowY + rowH + 65); ctx.lineTo(620, rowY + rowH + 65); ctx.stroke();
+
+  // ❌ 3
+  T(ctx, '❌', 72, rowY + rowH * 2 + 10, { font: `80px ${F.body}` });
+  T(ctx, '不是笔记本', 200, rowY + rowH * 2 + 20, { font: `900 80px ${F.zh}`, color: C.lightGrey });
+  ctx.beginPath(); ctx.moveTo(200, rowY + rowH * 2 + 65); ctx.lineTo(720, rowY + rowH * 2 + 65); ctx.stroke();
+
+  // ✅ 黄色大块
+  const yy = rowY + rowH * 3 + 40;
+  rect(ctx, 72, yy, W - 144, 440, C.yellow, C.black, 6, 14);
+  T(ctx, '✅ 是这个：', 112, yy + 40, { font: `700 32px ${F.zh}`, color: C.black });
+  T(ctx, '一台你电脑里', 112, yy + 100, { font: `900 84px ${F.zh}`, color: C.black });
+  T(ctx, '真能用的', 112, yy + 200, { font: `900 84px ${F.zh}`, color: C.black });
+  T(ctx, 'AI 助手。', 112, yy + 300, { font: `900 108px ${F.title}`, color: C.red });
+
+  // 小注解
+  T(ctx, '装好 OpenClaw · 配好 LLM Key · 调成"像你本人"的风格 · 回家直接继续用', W/2, 1370, {
+    font: `500 22px ${F.zh}`, color: C.grey, align: 'center',
+  });
+
+  drawCTA(ctx, W, H, { leadText: '5/6 晚 · 带个真工具回家' });
+}
+
+// ============================================================
+// P5 · 稀缺版 —— 20 席 · 首场
+// ============================================================
+function renderP5(ctx, W, H) {
+  // 撞色：深蓝满底 + 黄色大字
+  ctx.fillStyle = C.dark; ctx.fillRect(0, 0, W, H);
+
+  T(ctx, 'MELBOURNE · 5/6 WED · 18:00', 72, 84, {
+    font: `700 26px ${F.mono}`, color: C.yellow,
+  });
+  ctx.fillStyle = C.yellow; ctx.fillRect(72, 122, 100, 6);
+
+  T(ctx, '墨尔本首场', 72, 200, {
+    font: `500 46px ${F.zh}`, color: C.white,
+  });
+
+  // 巨大 "20"
+  T(ctx, '20', 72, 280, {
+    font: `900 540px ${F.title}`, color: C.yellow,
+  });
+
+  T(ctx, '席 · 就这么多。', 72, 820, {
+    font: `900 88px ${F.zh}`, color: C.white,
+  });
+
+  T(ctx, '一次机会 · 筛选制 · 付费 + 填表 · 没补票', 72, 940, {
+    font: `500 30px ${F.zh}`, color: C.lightGrey,
+  });
+
+  // 3 个强化事实卡（透明深色）
+  const fy = 1020;
+  const fw = (W - 144 - 40) / 3;
+  const facts = [
+    { k: '5/6', l: 'WED · 晚 6:00' },
+    { k: '2.5h', l: '从 18:00 到 20:30' },
+    { k: '$150', l: 'AUD · 只此一场' },
+  ];
+  facts.forEach((f, i) => {
+    const fx = 72 + i * (fw + 20);
+    rect(ctx, fx, fy, fw, 200, 'rgba(255,255,255,0.06)', C.yellow, 3);
+    T(ctx, f.k, fx + fw/2, fy + 50, { font: `900 80px ${F.title}`, color: C.yellow, align: 'center' });
+    T(ctx, f.l, fx + fw/2, fy + 140, { font: `700 22px ${F.mono}`, color: C.white, align: 'center' });
+  });
+
+  // 底部 CTA（反色版 · 黄底）
+  const ctaY = H - 200;
+  rect(ctx, 0, ctaY, W, 200, C.yellow);
+  rect(ctx, 0, ctaY, W, 12, C.red);
+  T(ctx, '→', 72, ctaY + 46, { font: `900 130px ${F.mono}`, color: C.red });
+  T(ctx, '抢席 · 错过等半年', 240, ctaY + 58, { font: `900 60px ${F.zh}`, color: C.black });
+  T(ctx, 'JIANGREN.COM.AU / OPENCLAW-WORKSHOP', 240, ctaY + 140, { font: `700 22px ${F.mono}`, color: C.dark });
+}
+
+// ============================================================
+// P6 · 反差版 —— 别再收藏 AI 工具清单了
+// ============================================================
+function renderP6(ctx, W, H) {
+  ctx.fillStyle = C.cream; ctx.fillRect(0, 0, W, H);
+  drawKicker(ctx);
+
+  // 自嘲开场
+  T(ctx, '朋友圈 AI 博主: "必装的 50 个工具"', 72, 200, {
+    font: `500 32px ${F.zh}`, color: C.grey,
+  });
+  T(ctx, '你: "好的好的 mark 一下"', 72, 244, {
+    font: `500 32px ${F.zh}`, color: C.grey,
+  });
+
+  // 中间撞色大反差
+  T(ctx, '3 个月后', 72, 340, {
+    font: `700 42px ${F.zh}`, color: C.red,
+  });
+
+  T(ctx, '你电脑上', 72, 420, {
+    font: `900 130px ${F.zh}`, color: C.dark,
+  });
+
+  // 装饰红圈划重点 + 斜体 highlight
+  highlight(ctx, '还是只有 ChatGPT', 72, 570, {
+    font: `900 100px ${F.zh}`, bg: C.red, color: C.white,
+    padX: 20, padY: 14, rotation: -1,
+  });
+
+  T(ctx, '开着。', 72, 730, {
+    font: `900 130px ${F.zh}`, color: C.dark,
+  });
+
+  // 解决方案
+  T(ctx, '所以我们做了这场 workshop:', 72, 910, {
+    font: `500 30px ${F.zh}`, color: C.grey,
+  });
+
+  T(ctx, '不讲概念 · 不发清单', 72, 970, {
+    font: `900 62px ${F.zh}`, color: C.dark,
+  });
+
+  highlight(ctx, '现场把 OpenClaw 装到你电脑。', 72, 1060, {
+    font: `900 50px ${F.zh}`, bg: C.yellow, color: C.black, padX: 14, padY: 10,
+  });
+
+  // 小卡：能装上的保障
+  const gy = 1180;
+  rect(ctx, 72, gy, W - 144, 180, C.dark, C.black, 5, 10);
+  T(ctx, '🌸', 112, gy + 46, { font: `70px ${F.body}` });
+  T(ctx, 'AI 小花 + 人类 Tutor 双保险', 220, gy + 40, { font: `900 36px ${F.zh}`, color: C.yellow });
+  T(ctx, '1:5 陪跑 · 非技术零基础也能装上 · 装不上包复训', 220, gy + 100, { font: `500 24px ${F.zh}`, color: C.white });
+
+  drawCTA(ctx, W, H, { leadText: '5/6 晚 · 来把 AI 装上' });
+}
+
+// ============================================================
+// P7 · 异步场景 —— 散步时手机指挥电脑
+// ============================================================
+function renderP7(ctx, W, H) {
+  ctx.fillStyle = C.cream; ctx.fillRect(0, 0, W, H);
+  drawKicker(ctx);
+
+  T(ctx, '真实用户场景 · NOT a demo', 72, 200, {
+    font: `700 28px ${F.mono}`, color: C.red,
+  });
+
+  // 聊天气泡（模拟 Telegram UI）
+  const bubbleY = 260;
+  // 用户气泡（右）
+  rect(ctx, W - 720, bubbleY, 640, 110, '#3390ec', C.black, 4, 8);
+  T(ctx, 'You · 20:14', W - 100, bubbleY + 32, {
+    font: `700 20px ${F.mono}`, color: 'rgba(255,255,255,0.7)', align: 'right',
+  });
+  T(ctx, 'fix the tests', W - 100, bubbleY + 72, {
+    font: `900 44px ${F.mono}`, color: C.white, align: 'right',
+  });
+
+  // AI 气泡（左）
+  rect(ctx, 72, bubbleY + 140, 760, 210, C.white, C.black, 4, 8);
+  T(ctx, 'Claudia · OpenClaw', 110, bubbleY + 170, {
+    font: `700 22px ${F.mono}`, color: C.red,
+  });
+  T(ctx, '✓ 拉下最新 commit', 110, bubbleY + 210, { font: `600 24px ${F.zh}`, color: C.dark });
+  T(ctx, '✓ 跑 test suite · 8 个失败', 110, bubbleY + 246, { font: `600 24px ${F.zh}`, color: C.dark });
+  T(ctx, '✓ 修好 6 个 · 剩 2 个你来决定', 110, bubbleY + 282, { font: `600 24px ${F.zh}`, color: C.dark });
+  T(ctx, '✓ push 到 branch · 等你 review', 110, bubbleY + 318, { font: `600 24px ${F.zh}`, color: C.dark });
+
+  // 场景 caption
+  T(ctx, '📱 你在遛狗 · 💻 它在你家电脑上改代码', 72, 660, {
+    font: `700 36px ${F.zh}`, color: C.dark,
+  });
+
+  // 主引号（超大）
+  highlight(ctx, '这叫异步。', 72, 720, {
+    font: `900 120px ${F.zh}`, bg: C.yellow, color: C.black,
+    padX: 18, padY: 14, rotation: -1.5,
+  });
+
+  T(ctx, '你下班了 · AI 还在帮你干活。', 72, 900, {
+    font: `700 34px ${F.zh}`, color: C.dark,
+  });
+  T(ctx, '回家打开电脑 · 你要的东西已经在那儿了。', 72, 946, {
+    font: `500 28px ${F.zh}`, color: C.grey,
+  });
+
+  // 引用卡
+  const qy = 1020;
+  rect(ctx, 72, qy, W - 144, 220, C.dark, C.black, 5, 10);
+  T(ctx, '💬 真实用户 · @openclaw 推特', 112, qy + 36, {
+    font: `700 22px ${F.mono}`, color: C.yellow,
+  });
+  T(ctx, '"我在遛狗 · 手机 Telegram 让它跑 Codex', 112, qy + 80, {
+    font: `700 30px ${F.zh}`, color: C.white,
+  });
+  T(ctx, ' 给我写 spec 文件。Wtffff."', 112, qy + 124, {
+    font: `700 30px ${F.zh}`, color: C.white,
+  });
+  T(ctx, '— out on a walk with my dog. 🤯', 112, qy + 180, {
+    font: `500 22px ${F.mono}`, color: 'rgba(255,255,255,0.65)',
+  });
+
+  drawCTA(ctx, W, H, { leadText: '5/6 晚 · 学会这套' });
+}
+
+// ============================================================
+// P8 · Skill 自扩展 —— AI 自己写新技能
+// ============================================================
+function renderP8(ctx, W, H) {
+  ctx.fillStyle = C.cream; ctx.fillRect(0, 0, W, H);
+  drawKicker(ctx);
+
+  T(ctx, '最魔幻的一条 · 真实用户反馈', 72, 200, {
+    font: `700 28px ${F.mono}`, color: C.red,
+  });
+
+  // 钩子
+  T(ctx, '你说:', 72, 280, { font: `500 48px ${F.zh}`, color: C.grey });
+  highlight(ctx, '"帮我对接下 Todoist"', 72, 340, {
+    font: `900 80px ${F.zh}`, bg: C.yellow, color: C.black, padX: 14, padY: 10,
+  });
+
+  T(ctx, '它做:', 72, 500, { font: `500 48px ${F.zh}`, color: C.grey });
+
+  // 4 行步骤（编号列表）
+  const steps = [
+    '① 自己写了一个新 Skill',
+    '② 调 Todoist API 连上账号',
+    '③ 测试跑通 · 告诉你能用了',
+    '④ 下次你一说, 它自动用。',
+  ];
+  steps.forEach((s, i) => {
+    T(ctx, s, 72, 576 + i * 56, {
+      font: `700 36px ${F.zh}`, color: C.dark,
+    });
+  });
+
+  // 核心洞察（大字）
+  highlight(ctx, 'AI 在自己写自己。', 72, 820, {
+    font: `900 96px ${F.zh}`, bg: C.red, color: C.white,
+    padX: 18, padY: 14, rotation: -1,
+  });
+
+  T(ctx, '不用写代码 · 不用翻 API 文档 · 就跟它聊。', 72, 980, {
+    font: `700 30px ${F.zh}`, color: C.dark,
+  });
+
+  // 用户真实评价
+  const qy = 1050;
+  rect(ctx, 72, qy, W - 144, 180, C.dark, C.black, 5, 10);
+  T(ctx, '💬 @markjaquith · WordPress 核心贡献者', 112, qy + 32, {
+    font: `700 22px ${F.mono}`, color: C.yellow,
+  });
+  T(ctx, '"就算 LLM 停止进步, 光是把所有部分', 112, qy + 78, {
+    font: `700 28px ${F.zh}`, color: C.white,
+  });
+  T(ctx, ' 粘起来这个动作本身, 就足够改变行业好几年。"', 112, qy + 118, {
+    font: `700 28px ${F.zh}`, color: C.white,
+  });
+
+  drawCTA(ctx, W, H, { leadText: '5/6 晚 · 看它自己写 Skill' });
+}
+
+// ============================================================
+// P9 · Persona —— 给你的 AI 起名字
+// ============================================================
+function renderP9(ctx, W, H) {
+  ctx.fillStyle = C.cream; ctx.fillRect(0, 0, W, H);
+  drawKicker(ctx);
+
+  T(ctx, '所有用户都做了同一件事:', 72, 200, {
+    font: `500 36px ${F.zh}`, color: C.grey,
+  });
+
+  T(ctx, '给它起', 72, 270, {
+    font: `900 130px ${F.zh}`, color: C.dark,
+  });
+
+  highlight(ctx, '一个名字。', 72, 430, {
+    font: `900 130px ${F.zh}`, bg: C.yellow, color: C.black, padX: 18, padY: 14, rotation: -1.5,
+  });
+
+  // 3 个真实名字卡（水平排列）
+  const ny = 640;
+  const nh = 240;
+  const names = [
+    { name: 'Jarvis', who: '@mattt', note: '"每天早餐 · 交通 · pickleball 提醒"', color: C.red },
+    { name: 'Claudia', who: '@AryehDubois', note: '"Telegram 里住着 · 记得一切"', color: C.dark },
+    { name: 'Ema', who: '@otaru_dev', note: '"一句话让她关电脑（包括她自己）"', color: C.purple },
+  ];
+  const nw = (W - 144 - 40) / 3;
+  names.forEach((n, i) => {
+    const x = 72 + i * (nw + 20);
+    rect(ctx, x, ny, nw, nh, C.white, C.black, 5, 10);
+    // 小色条顶部
+    ctx.fillStyle = n.color; ctx.fillRect(x, ny, nw, 14);
+    T(ctx, n.name, x + nw/2, ny + 50, {
+      font: `900 72px ${F.title}`, color: n.color, align: 'center',
+    });
+    T(ctx, n.who, x + nw/2, ny + 138, {
+      font: `700 20px ${F.mono}`, color: C.grey, align: 'center',
+    });
+    T(ctx, n.note, x + nw/2, ny + 180, {
+      font: `500 18px ${F.zh}`, color: C.dark, align: 'center',
+    });
+  });
+
+  // 核心解释
+  T(ctx, '为什么？因为它：', 72, 940, {
+    font: `500 32px ${F.zh}`, color: C.grey,
+  });
+
+  T(ctx, '• 住在你的 WhatsApp 里', 72, 1000, { font: `700 32px ${F.zh}`, color: C.dark });
+  T(ctx, '• 记得你说过的每一句话', 72, 1048, { font: `700 32px ${F.zh}`, color: C.dark });
+  T(ctx, '• 知道你什么时候想打 pickleball', 72, 1096, { font: `700 32px ${F.zh}`, color: C.dark });
+  T(ctx, '• 是你的, 不是 OpenAI 的', 72, 1144, { font: `900 32px ${F.zh}`, color: C.red });
+
+  T(ctx, '5/6 晚 · 你也起一个', 72, 1240, {
+    font: `900 44px ${F.zh}`, color: C.dark,
+  });
+
+  drawCTA(ctx, W, H);
+}
+
+// ============================================================
+// 注册 9 张海报
+// ============================================================
+const POSTERS = [
+  { id: 1, tag: 'P1 · 主钩子 · Pain → Solution', render: renderP1, slug: 'p1-hook' },
+  { id: 2, tag: 'P2 · 对比 · ChatGPT ≠ Agent', render: renderP2, slug: 'p2-vs' },
+  { id: 3, tag: 'P3 · 身份 · 律师/会计/合规行业', render: renderP3, slug: 'p3-compliance' },
+  { id: 4, tag: 'P4 · 结果 · 不是 PPT 是 AI 助手', render: renderP4, slug: 'p4-outcome' },
+  { id: 5, tag: 'P5 · 稀缺 · 20 席 · 首场', render: renderP5, slug: 'p5-scarcity' },
+  { id: 6, tag: 'P6 · 反差 · 收藏 vs 真装上', render: renderP6, slug: 'p6-reality' },
+  { id: 7, tag: 'P7 · 异步 · 遛狗时电脑在改代码', render: renderP7, slug: 'p7-async' },
+  { id: 8, tag: 'P8 · 自扩展 · AI 自己写 Skill', render: renderP8, slug: 'p8-self-extend' },
+  { id: 9, tag: 'P9 · Persona · 给 AI 起名字', render: renderP9, slug: 'p9-persona' },
+];
+
+// ============================================================
+// 挂载 + 下载
+// ============================================================
+function mount() {
+  const grid = document.getElementById('grid');
+  POSTERS.forEach(p => {
+    const slot = document.createElement('div');
+    slot.className = 'slot';
+    slot.innerHTML = `
+      <div class="label">${p.tag}</div>
+      <canvas id="canvas-${p.id}" width="1242" height="1660"></canvas>
+      <button class="dl" data-id="${p.id}" data-slug="${p.slug}">⬇ 下载 PNG</button>
+    `;
+    grid.appendChild(slot);
+    const canvas = slot.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+    p.render(ctx, 1242, 1660);
+  });
+
+  document.querySelectorAll('.dl').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const slug = btn.dataset.slug;
+      const c = document.getElementById(`canvas-${id}`);
+      const link = document.createElement('a');
+      link.download = `openclaw-melbourne-2026-05-06-${slug}.png`;
+      link.href = c.toDataURL('image/png');
+      link.click();
+    });
+  });
+
+  document.getElementById('dl-all').addEventListener('click', async () => {
+    for (const p of POSTERS) {
+      const c = document.getElementById(`canvas-${p.id}`);
+      const link = document.createElement('a');
+      link.download = `openclaw-melbourne-2026-05-06-${p.slug}.png`;
+      link.href = c.toDataURL('image/png');
+      link.click();
+      await new Promise(r => setTimeout(r, 250));
+    }
+  });
+}
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(mount);
+} else {
+  setTimeout(mount, 500);
+}
+</script>
+
+</body>
+</html>
