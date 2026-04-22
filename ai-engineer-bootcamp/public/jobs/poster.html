@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Engineer Bootcamp · 今日 3 岗 · 社交媒体海报</title>
+  <meta name="description" content="AI Engineer Bootcamp 每日 3 岗海报（1242×1660 小红书竖版），班主任一键下载 PNG 发朋友圈/小红书/微信群。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      background: #e5e1d8;
+      color: #10162f;
+      min-height: 100vh;
+      padding: 36px 16px 100px;
+      line-height: 1.6;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; text-align: center; }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      display: inline-block;
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #10162f;
+      text-decoration: none;
+      border: 2px solid #000;
+      background: #fff;
+      padding: 6px 12px;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform .1s ease, box-shadow .1s ease;
+    }
+    .nav a:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 #000; }
+    .nav .meta {
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      color: #555;
+      align-self: center;
+      padding: 6px 0;
+    }
+
+    .download {
+      background: #ff5757;
+      color: #fff;
+      font-family: "Space Mono", monospace;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 #000;
+      padding: 14px 28px;
+      cursor: pointer;
+      margin-bottom: 24px;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .download:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #000; }
+    .download:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    #poster {
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      border: 3px solid #000;
+      box-shadow: 10px 10px 0 #000;
+      background: #fff1e7;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .loading {
+      padding: 80px 20px;
+      background: #fff;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 #000;
+      font-family: "Space Mono", monospace;
+      font-size: 14px;
+    }
+
+    .tip {
+      margin-top: 24px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #fff;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #444;
+      text-align: left;
+      line-height: 1.7;
+    }
+    .tip strong { color: #ff5757; }
+    .tip code {
+      background: #fff1e7;
+      padding: 1px 5px;
+      border: 1px solid #ddd;
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <a href="./">← 3 档卡片视图</a>
+      <a href="../../posters.html">← 运营中心</a>
+      <span class="meta" id="date-meta">—</span>
+    </div>
+
+    <button class="download" id="download" disabled>⬇ 下载 PNG (1242×1660)</button>
+
+    <canvas id="poster" width="1242" height="1660"></canvas>
+    <div class="loading" id="loading">加载岗位数据中…</div>
+
+    <div class="tip">
+      <strong>使用说明：</strong> 点「⬇ 下载 PNG」存到电脑 → 发小红书 / 朋友圈 / 微信群。<br>
+      尺寸 <code>1242×1660</code>（3:4 小红书聚光投流标准），发 Instagram / Threads 也兼容。
+    </div>
+  </div>
+
+  <script>
+    const COLORS = {
+      bg:        '#fff1e7',
+      ink:       '#10162f',
+      primary:   '#ff5757',
+      muted:     '#666',
+      border:    '#000',
+      tierAsp:   '#ffe066',
+      tierAct:   '#a7f3d0',
+      tierSpc:   '#c4b5fd',
+    };
+
+    const TIER_META = {
+      aspirational: { label: '理想档 · MID-SENIOR',  emoji: '🎯', color: COLORS.tierAsp },
+      actionable:   { label: '够得着档 · JUNIOR',    emoji: '✅', color: COLORS.tierAct },
+      special:      { label: '特殊机会 · INTERN/GRAD', emoji: '⭐', color: COLORS.tierSpc },
+    };
+
+    // ---- Canvas helpers ----
+
+    function drawShadowRect(ctx, x, y, w, h, fill, shadowOffset = 8) {
+      ctx.fillStyle = COLORS.border;
+      ctx.fillRect(x + shadowOffset, y + shadowOffset, w, h);
+      ctx.fillStyle = fill;
+      ctx.fillRect(x, y, w, h);
+      ctx.strokeStyle = COLORS.border;
+      ctx.lineWidth = 3;
+      ctx.strokeRect(x, y, w, h);
+    }
+
+    function drawFlatRect(ctx, x, y, w, h, fill, borderWidth = 2) {
+      ctx.fillStyle = fill;
+      ctx.fillRect(x, y, w, h);
+      ctx.strokeStyle = COLORS.border;
+      ctx.lineWidth = borderWidth;
+      ctx.strokeRect(x, y, w, h);
+    }
+
+    // Wrap a string into lines that each fit maxWidth.
+    // Handles both Chinese (char-by-char) and Western (word-break).
+    function wrapLines(ctx, text, maxWidth, maxLines = 3) {
+      if (!text) return [''];
+      const lines = [];
+      let current = '';
+      const chars = Array.from(text);
+      for (const ch of chars) {
+        const next = current + ch;
+        if (ctx.measureText(next).width > maxWidth) {
+          if (current) lines.push(current);
+          current = ch;
+          if (lines.length === maxLines - 1) {
+            // Last line: fit remaining text, truncate with ellipsis
+            const rest = chars.slice(chars.indexOf(ch)).join('');
+            let truncated = '';
+            for (const c of rest) {
+              if (ctx.measureText(truncated + c + '…').width > maxWidth) break;
+              truncated += c;
+            }
+            lines.push(truncated + '…');
+            return lines;
+          }
+        } else {
+          current = next;
+        }
+      }
+      if (current) lines.push(current);
+      return lines;
+    }
+
+    function setFont(ctx, weight, size, family = 'DM Sans') {
+      ctx.font = `${weight} ${size}px "${family}", "Noto Sans SC", sans-serif`;
+    }
+
+    // ---- Sections ----
+
+    function drawHeader(ctx, data) {
+      // Eyebrow bar
+      setFont(ctx, 700, 20, 'Space Mono');
+      const eyebrowText = '匠人学院 · AI ENGINEER BOOTCAMP';
+      const eyeW = ctx.measureText(eyebrowText).width + 36;
+      drawFlatRect(ctx, 80, 90, eyeW, 44, COLORS.ink, 2);
+      ctx.fillStyle = '#fff';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'left';
+      ctx.fillText(eyebrowText, 80 + 18, 90 + 22);
+
+      // Big title
+      ctx.fillStyle = COLORS.ink;
+      setFont(ctx, 900, 92, 'Bricolage Grotesque');
+      ctx.textBaseline = 'top';
+      ctx.fillText('今日 3 个精选岗位', 80, 160);
+
+      // Date + subtitle
+      const dateText = data.date;
+      setFont(ctx, 700, 20, 'Space Mono');
+      const dateW = ctx.measureText(dateText).width + 32;
+      drawFlatRect(ctx, 80, 280, dateW, 40, COLORS.primary, 2);
+      ctx.fillStyle = '#fff';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'left';
+      ctx.fillText(dateText, 80 + 16, 280 + 20);
+
+      // Bootcamp / cohort label
+      ctx.fillStyle = COLORS.ink;
+      setFont(ctx, 500, 22, 'DM Sans');
+      ctx.textBaseline = 'middle';
+      ctx.fillText('· Sydney / Melbourne · AI Engineer Cohort', 80 + dateW + 16, 280 + 20);
+
+      // Subtitle
+      ctx.fillStyle = COLORS.muted;
+      setFont(ctx, 500, 24, 'DM Sans');
+      ctx.textBaseline = 'top';
+      ctx.fillText('1 个理想档  ·  1 个够得着档  ·  1 个特殊机会', 80, 340);
+
+      // Divider line under header
+      ctx.fillStyle = COLORS.ink;
+      ctx.fillRect(80, 400, 1082, 4);
+    }
+
+    function drawJobCard(ctx, job, y) {
+      const x = 80;
+      const W = 1082;
+      const H = 340;
+
+      drawShadowRect(ctx, x, y, W, H, '#fff', 8);
+
+      // Tier label pill
+      const meta = TIER_META[job.tier] || { label: (job.tier || '').toUpperCase(), emoji: '•', color: COLORS.tierAsp };
+      setFont(ctx, 700, 18, 'Space Mono');
+      const labelText = `${meta.emoji}  ${meta.label}`;
+      const labelW = ctx.measureText(labelText).width + 32;
+      drawFlatRect(ctx, x + 28, y + 28, labelW, 38, meta.color, 2);
+      ctx.fillStyle = COLORS.ink;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(labelText, x + 28 + 16, y + 28 + 19);
+
+      // Posted date (right side of pill row)
+      if (job.posted) {
+        setFont(ctx, 400, 16, 'Space Mono');
+        ctx.fillStyle = COLORS.muted;
+        ctx.textAlign = 'right';
+        ctx.fillText(job.posted, x + W - 28, y + 28 + 19);
+      }
+
+      // Company (big)
+      ctx.fillStyle = COLORS.ink;
+      setFont(ctx, 900, 46, 'Bricolage Grotesque');
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      const companyLines = wrapLines(ctx, job.company || '', W - 56, 1);
+      ctx.fillText(companyLines[0], x + 28, y + 88);
+
+      // Job title
+      ctx.fillStyle = COLORS.ink;
+      setFont(ctx, 700, 28, 'DM Sans');
+      const titleLines = wrapLines(ctx, job.title || '', W - 56, 2);
+      titleLines.forEach((line, i) => {
+        ctx.fillText(line, x + 28, y + 146 + i * 36);
+      });
+
+      // Location
+      if (job.location) {
+        ctx.fillStyle = COLORS.muted;
+        setFont(ctx, 500, 18, 'Space Mono');
+        ctx.fillText('📍 ' + job.location, x + 28, y + 226);
+      }
+
+      // Why box
+      ctx.fillStyle = COLORS.bg;
+      ctx.fillRect(x + 28, y + 260, W - 56, 60);
+      ctx.strokeStyle = COLORS.border;
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x + 28, y + 260, W - 56, 60);
+      ctx.fillStyle = COLORS.ink;
+      setFont(ctx, 500, 16, 'DM Sans');
+      const whyLines = wrapLines(ctx, job.why || '', W - 84, 2);
+      whyLines.forEach((line, i) => {
+        ctx.fillText(line, x + 44, y + 272 + i * 22);
+      });
+    }
+
+    function drawFooter(ctx, data) {
+      const y = 1490;
+      // Dark CTA bar
+      ctx.fillStyle = COLORS.ink;
+      ctx.fillRect(80, y, 1082, 130);
+
+      ctx.fillStyle = '#fff';
+      setFont(ctx, 800, 28, 'Bricolage Grotesque');
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      ctx.fillText('想投递？查看完整岗位链接 ↗', 110, y + 22);
+
+      ctx.fillStyle = COLORS.primary;
+      setFont(ctx, 700, 18, 'Space Mono');
+      ctx.fillText('jiangren.com.au/curriculum/ai-engineer-bootcamp/jobs/', 110, y + 66);
+
+      ctx.fillStyle = '#aaa';
+      setFont(ctx, 400, 13, 'Space Mono');
+      ctx.fillText('匠人学院 · AI Engineer Bootcamp · 每日精选岗位 by /daily-jobs', 110, y + 96);
+    }
+
+    // ---- Main render ----
+
+    async function loadLatest() {
+      const now = new Date();
+      for (let i = 0; i < 14; i++) {
+        const d = new Date(now);
+        d.setDate(now.getDate() - i);
+        const ymd = d.toISOString().slice(0, 10);
+        try {
+          const res = await fetch(`./${ymd}.json`, { cache: 'no-store' });
+          if (res.ok) return await res.json();
+        } catch (e) { /* continue */ }
+      }
+      return null;
+    }
+
+    async function renderPoster() {
+      const data = await loadLatest();
+      const loading = document.getElementById('loading');
+      const btn = document.getElementById('download');
+
+      if (!data || !data.jobs || data.jobs.length === 0) {
+        loading.textContent = '今日尚未产出岗位数据。请运行 /daily-jobs ai-engineer-bootcamp';
+        return;
+      }
+
+      // Wait for fonts to load so measureText is accurate
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+
+      document.getElementById('date-meta').textContent = `· ${data.date} · ${data.jobs.length} 档岗位`;
+
+      const canvas = document.getElementById('poster');
+      const ctx = canvas.getContext('2d');
+
+      // Background
+      ctx.fillStyle = COLORS.bg;
+      ctx.fillRect(0, 0, 1242, 1660);
+
+      drawHeader(ctx, data);
+
+      // 3 cards, vertically stacked
+      data.jobs.slice(0, 3).forEach((job, i) => {
+        drawJobCard(ctx, job, 440 + i * 350);
+      });
+
+      drawFooter(ctx, data);
+
+      // Hide loading, enable download
+      loading.style.display = 'none';
+      btn.disabled = false;
+      btn.onclick = () => downloadPoster(canvas, data.date);
+    }
+
+    function downloadPoster(canvas, date) {
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ai-engineer-bootcamp-jobs-${date || 'today'}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 'image/png');
+    }
+
+    renderPoster();
+  </script>
+</body>
+</html>
