@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Engineer Bootcamp · 今日 3 个岗位</title>
+  <meta name="description" content="AI Engineer Bootcamp 学员每日精选 3 个岗位：1 个理想档、1 个够得着档、1 个特殊机会。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      background: #fff1e7;
+      color: #10162f;
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+      line-height: 1.6;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; }
+
+    .back {
+      display: inline-block;
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #10162f;
+      text-decoration: none;
+      border: 2px solid #000;
+      background: #fff;
+      padding: 6px 12px;
+      margin-bottom: 32px;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform .1s ease, box-shadow .1s ease;
+    }
+    .back:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 #000; }
+
+    header { margin-bottom: 40px; }
+    .eyebrow {
+      display: inline-block;
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: #10162f;
+      color: #fff;
+      padding: 6px 14px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: clamp(32px, 4.5vw, 48px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+    .sub {
+      font-size: 15px;
+      color: #444;
+      max-width: 620px;
+    }
+    .date-bar {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-family: "Space Mono", monospace;
+      font-size: 13px;
+      color: #555;
+    }
+    .date-badge {
+      background: #ff5757;
+      color: #fff;
+      padding: 4px 10px;
+      border: 2px solid #000;
+      font-weight: 700;
+    }
+
+    .tier {
+      background: #fff;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 #000;
+      padding: 28px 28px 24px;
+      margin-bottom: 28px;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .tier:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #000; }
+
+    .tier-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .tier-label {
+      font-family: "Space Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 2px solid #000;
+    }
+    .tier-aspirational .tier-label { background: #ffe066; }
+    .tier-actionable  .tier-label { background: #a7f3d0; }
+    .tier-special     .tier-label { background: #c4b5fd; }
+
+    .posted {
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .job-title {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: clamp(22px, 2.6vw, 28px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .company {
+      font-size: 17px;
+      font-weight: 700;
+      color: #10162f;
+      margin-bottom: 4px;
+    }
+    .location {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 14px;
+    }
+    .why {
+      font-size: 14px;
+      color: #333;
+      background: #fff1e7;
+      border: 2px solid #000;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+    }
+    .why strong { color: #ff5757; }
+
+    .cta {
+      display: inline-block;
+      font-family: "Space Mono", monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: #10162f;
+      color: #fff;
+      padding: 10px 18px;
+      border: 2px solid #000;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform .1s ease, box-shadow .1s ease;
+    }
+    .cta:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 #000; }
+
+    .alternatives {
+      margin-top: 40px;
+      background: #fff;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 #000;
+      padding: 24px;
+    }
+    .alternatives h2 {
+      font-family: "Space Mono", monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .alt-list { list-style: none; }
+    .alt-list li {
+      padding: 10px 0;
+      border-bottom: 1px dashed #ccc;
+      font-size: 14px;
+    }
+    .alt-list li:last-child { border-bottom: 0; }
+    .alt-list a { color: #10162f; font-weight: 600; text-decoration: none; }
+    .alt-list a:hover { color: #ff5757; }
+    .alt-tag {
+      font-family: "Space Mono", monospace;
+      font-size: 10px;
+      font-weight: 700;
+      background: #10162f;
+      color: #fff;
+      padding: 2px 6px;
+      margin-right: 8px;
+      letter-spacing: 1px;
+    }
+
+    .empty {
+      background: #fff;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 #000;
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      font-family: "Space Mono", monospace;
+      font-size: 11px;
+      color: #777;
+      letter-spacing: 1px;
+      line-height: 1.8;
+    }
+    .footer-note code { background: #fff; border: 1px solid #ccc; padding: 1px 5px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../posters.html">← 返回运营中心</a>
+
+    <header>
+      <span class="eyebrow">AI Engineer Bootcamp · 每日 3 岗</span>
+      <h1>今日精选 3 个岗位</h1>
+      <p class="sub">1 个理想档（目标感）· 1 个够得着档（立即投）· 1 个特殊机会（内推/实习/Grad Program）。每日早上由 Claude 自动抓取 + 筛选。</p>
+      <div class="date-bar">
+        <span>Last updated:</span>
+        <span class="date-badge" id="date">—</span>
+        <span id="source-note"></span>
+      </div>
+    </header>
+
+    <div id="jobs"></div>
+    <div id="alts"></div>
+
+    <div class="footer-note">
+      Generated by <code>/daily-jobs</code> skill · data: <code>curriculum/ai-engineer-bootcamp/public/jobs/YYYY-MM-DD.json</code>
+    </div>
+  </div>
+
+  <script>
+    const TIER_META = {
+      aspirational: { label: '🎯 理想档 · Mid-Senior', cls: 'tier-aspirational' },
+      actionable:   { label: '✅ 够得着档 · Junior/Entry', cls: 'tier-actionable' },
+      special:      { label: '⭐ 特殊机会 · Internship/Grad', cls: 'tier-special' },
+    };
+
+    function esc(s) { return String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+    function render(data) {
+      document.getElementById('date').textContent = data.date;
+      if (data.source) {
+        document.getElementById('source-note').textContent = '· source: ' + data.source;
+      }
+
+      const jobsEl = document.getElementById('jobs');
+      jobsEl.innerHTML = (data.jobs || []).map(j => {
+        const meta = TIER_META[j.tier] || { label: j.tierLabel || j.tier, cls: '' };
+        return `
+          <div class="tier ${meta.cls}">
+            <div class="tier-head">
+              <span class="tier-label">${esc(meta.label)}</span>
+              <span class="posted">${esc(j.posted || '')}</span>
+            </div>
+            <div class="job-title">${esc(j.title)}</div>
+            <div class="company">${esc(j.company)}</div>
+            <div class="location">${esc(j.location || '')}</div>
+            <div class="why">${esc(j.why || '')}</div>
+            <a class="cta" href="${esc(j.url)}" target="_blank" rel="noopener">查看职位 / Apply ↗</a>
+          </div>
+        `;
+      }).join('');
+
+      const alts = data.alternativeCandidates || [];
+      if (alts.length > 0) {
+        document.getElementById('alts').innerHTML = `
+          <div class="alternatives">
+            <h2>Alternative candidates (备选)</h2>
+            <ul class="alt-list">
+              ${alts.map(a => `
+                <li>
+                  <span class="alt-tag">${esc(a.tier)}</span>
+                  <a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)} · ${esc(a.company)}</a>
+                  <span style="color:#777; font-size:13px;"> — ${esc(a.location || '')}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        `;
+      }
+    }
+
+    function renderEmpty() {
+      document.getElementById('jobs').innerHTML = `
+        <div class="empty">
+          <strong>今日尚未产出岗位数据。</strong><br>
+          <span style="font-size:13px; color:#666;">请运行 <code>/daily-jobs ai-engineer-bootcamp</code> 或等待定时任务。</span>
+        </div>
+      `;
+    }
+
+    async function loadLatest() {
+      const now = new Date();
+      for (let i = 0; i < 14; i++) {
+        const d = new Date(now);
+        d.setDate(now.getDate() - i);
+        const ymd = d.toISOString().slice(0, 10);
+        try {
+          const res = await fetch(`./${ymd}.json`, { cache: 'no-store' });
+          if (res.ok) {
+            const data = await res.json();
+            render(data);
+            return;
+          }
+        } catch (e) { /* keep trying */ }
+      }
+      renderEmpty();
+    }
+
+    loadLatest();
+  </script>
+</body>
+</html>
