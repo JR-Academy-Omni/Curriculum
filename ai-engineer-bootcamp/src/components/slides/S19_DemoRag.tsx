@@ -59,7 +59,7 @@ export default function S19_DemoRag() {
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ delay: 0.15, duration: 0.5 }}
 					style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(26px, 3.2vw, 42px)',
+						fontFamily: fonts.heading, fontSize: '42px',
 						fontWeight: 900, lineHeight: 1.15, letterSpacing: -1,
 						color: colors.white, marginBottom: 28,
 					}}
@@ -185,7 +185,7 @@ export default function S19_DemoRag() {
 							sources: chunk_42, chunk_11
 						</span>
 					</div>
-					<div style={{ fontFamily: fonts.body, fontSize: 'clamp(13px,1.4vw,17px)', color: colors.black, fontWeight: 700, lineHeight: 1.5 }}>
+					<div style={{ fontFamily: fonts.body, fontSize: '17px', color: colors.black, fontWeight: 700, lineHeight: 1.5 }}>
 						GraphRAG 在检索前引入 <span style={{ background: colors.yellow, padding: '0 4px' }}>knowledge graph</span>，把实体关系显式建模，适合复杂关系推理；naive RAG 只做单跳 vector similarity，遇到多实体交叉问题就会丢信息。
 					</div>
 				</motion.div>
@@ -197,7 +197,7 @@ export default function S19_DemoRag() {
 					transition={{ delay: 0.3 }}
 					style={{ marginTop: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}
 				>
-					<p style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.4vw,18px)', fontWeight: 700, color: 'rgba(255,255,255,0.85)', borderLeft: `4px solid ${accent}`, paddingLeft: 12, lineHeight: 1.4, maxWidth: 640, margin: 0 }}>
+					<p style={{ fontFamily: fonts.heading, fontSize: '18px', fontWeight: 700, color: 'rgba(255,255,255,0.85)', borderLeft: `4px solid ${accent}`, paddingLeft: 12, lineHeight: 1.4, maxWidth: 640, margin: 0 }}>
 						<span style={{ color: accent }}>Phase 3 · L59 · RAG from Scratch</span> 你会亲手写出这套 Pipeline
 					</p>
 					<div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>

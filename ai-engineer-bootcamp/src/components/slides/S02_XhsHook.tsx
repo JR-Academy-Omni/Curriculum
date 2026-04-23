@@ -61,7 +61,7 @@ export default function S02_XhsHook() {
 					style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}
 				>
 					<span style={{ width: 36, height: 36, background: colors.red, border, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: fonts.heading, fontWeight: 900, color: colors.white, fontSize: 20, transform: 'rotate(-3deg)' }}>小</span>
-					<span style={{ fontFamily: fonts.heading, fontSize: 'clamp(18px,2.2vw,26px)', fontWeight: 800, color: colors.black }}>
+					<span style={{ fontFamily: fonts.heading, fontSize: '26px', fontWeight: 800, color: colors.black }}>
 						你可能在小红书刷到过我们 <span style={{ color: colors.red }}>👇</span>
 					</span>
 				</motion.div>
@@ -100,14 +100,14 @@ export default function S02_XhsHook() {
 								</div>
 
 								{/* 金句 */}
-								<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(14px,1.5vw,18px)', fontWeight: 800, lineHeight: 1.35, marginBottom: 10 }}>
+								<div style={{ fontFamily: fonts.heading, fontSize: '18px', fontWeight: 800, lineHeight: 1.35, marginBottom: 10 }}>
 									{h.quote}
 								</div>
-								<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(16px,1.9vw,24px)', fontWeight: 900, lineHeight: 1.2, letterSpacing: -0.5, background: textColor === colors.white ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.55)', padding: '6px 10px', display: 'inline-block', alignSelf: 'flex-start' }}>
+								<div style={{ fontFamily: fonts.heading, fontSize: '24px', fontWeight: 900, lineHeight: 1.2, letterSpacing: -0.5, background: textColor === colors.white ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.55)', padding: '6px 10px', display: 'inline-block', alignSelf: 'flex-start' }}>
 									{h.highlight}
 								</div>
 								{h.trail && (
-									<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.3vw,16px)', fontWeight: 700, marginTop: 10, opacity: 0.85, lineHeight: 1.4 }}>
+									<div style={{ fontFamily: fonts.heading, fontSize: '16px', fontWeight: 700, marginTop: 10, opacity: 0.85, lineHeight: 1.4 }}>
 										{h.trail}
 									</div>
 								)}
@@ -128,7 +128,7 @@ export default function S02_XhsHook() {
 					transition={{ delay: 0.7 }}
 					style={{ marginTop: 22, textAlign: 'center' }}
 				>
-					<span style={{ display: 'inline-block', padding: '10px 22px', background: colors.dark, color: colors.white, fontFamily: fonts.heading, fontSize: 'clamp(15px,1.7vw,20px)', fontWeight: 800, border, boxShadow: `5px 5px 0 ${colors.red}` }}>
+					<span style={{ display: 'inline-block', padding: '10px 22px', background: colors.dark, color: colors.white, fontFamily: fonts.heading, fontSize: '20px', fontWeight: 800, border, boxShadow: `5px 5px 0 ${colors.red}` }}>
 						这场公开课，把 4 条小红书的坑 · <span style={{ color: colors.yellow }}>一次说透</span>
 					</span>
 				</motion.div>

@@ -117,7 +117,7 @@ export default function S05d_FiveDimensions() {
 					transition={{ duration: 0.45, delay: 0.1 }}
 					style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(22px, 2.8vw, 38px)',
+						fontSize: '38px',
 						fontWeight: 900,
 						lineHeight: 1.2,
 						letterSpacing: -0.8,
@@ -151,7 +151,7 @@ export default function S05d_FiveDimensions() {
 					animate={{ opacity: 1 }}
 					transition={{ duration: 0.4, delay: 0.2 }}
 					style={{
-						fontSize: 'clamp(13px, 1.4vw, 16px)',
+						fontSize: '16px',
 						color: '#333',
 						fontWeight: 600,
 						marginTop: 8,
@@ -176,7 +176,7 @@ export default function S05d_FiveDimensions() {
 						alignItems: 'center',
 						gap: 8,
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(12px, 1.25vw, 14px)',
+						fontSize: '14px',
 						fontWeight: 800,
 					}}
 				>
@@ -249,7 +249,7 @@ export default function S05d_FiveDimensions() {
 								<div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 4 }}>
 									<span style={{
 										fontFamily: fonts.mono,
-										fontSize: 'clamp(28px,3.2vw,42px)',
+										fontSize: '42px',
 										fontWeight: 900,
 										color: p.color,
 										lineHeight: 1,
@@ -270,7 +270,7 @@ export default function S05d_FiveDimensions() {
 
 								<div style={{
 									fontFamily: fonts.heading,
-									fontSize: 'clamp(14px, 1.35vw, 17px)',
+									fontSize: '17px',
 									fontWeight: 900,
 									color: colors.black,
 									lineHeight: 1.15,
@@ -406,7 +406,7 @@ export default function S05d_FiveDimensions() {
 						alignItems: 'center',
 						gap: 10,
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(12px, 1.3vw, 15px)',
+						fontSize: '15px',
 						fontWeight: 900,
 						color: colors.black,
 						letterSpacing: -0.2,

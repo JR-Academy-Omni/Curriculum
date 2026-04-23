@@ -46,7 +46,7 @@ export default function S05b2_EngineeringConvergence() {
 					</div>
 					<h2 style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(26px, 3.6vw, 46px)',
+						fontSize: '46px',
 						fontWeight: 900,
 						lineHeight: 1.1,
 						letterSpacing: -1,
@@ -98,7 +98,7 @@ export default function S05b2_EngineeringConvergence() {
 						</div>
 						<div style={{
 							fontFamily: fonts.heading,
-							fontSize: 'clamp(17px, 2.1vw, 24px)',
+							fontSize: '24px',
 							fontWeight: 900,
 							color: colors.dark,
 							lineHeight: 1.15,
@@ -156,7 +156,7 @@ export default function S05b2_EngineeringConvergence() {
 							>
 								<div style={{
 									fontFamily: fonts.heading,
-									fontSize: 'clamp(13px, 1.4vw, 17px)',
+									fontSize: '17px',
 									fontWeight: 900,
 									color: colors.dark,
 									lineHeight: 1.1,
@@ -232,7 +232,7 @@ export default function S05b2_EngineeringConvergence() {
 							</div>
 							<div style={{
 								fontFamily: fonts.heading,
-								fontSize: 'clamp(22px, 2.6vw, 32px)',
+								fontSize: '32px',
 								fontWeight: 900,
 								lineHeight: 1,
 								letterSpacing: -0.8,
@@ -266,7 +266,7 @@ export default function S05b2_EngineeringConvergence() {
 											gap: 6,
 											alignItems: 'center',
 											fontFamily: fonts.heading,
-											fontSize: 'clamp(12px, 1.25vw, 15px)',
+											fontSize: '15px',
 											fontWeight: 700,
 											color: colors.black,
 										}}
@@ -300,7 +300,7 @@ export default function S05b2_EngineeringConvergence() {
 				>
 					<div style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(12px, 1.4vw, 16px)',
+						fontSize: '16px',
 						fontWeight: 900,
 						letterSpacing: -0.2,
 					}}>

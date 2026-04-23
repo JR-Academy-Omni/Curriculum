@@ -27,12 +27,12 @@ export function Half({ children, style }: { children: ReactNode; style?: CSSProp
 	return <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', ...style }}>{children}</div>;
 }
 
-export function Title({ children, white, size = 'clamp(36px,5vw,64px)', style }: { children: ReactNode; white?: boolean; size?: string; style?: CSSProperties }) {
+export function Title({ children, white, size = '64px', style }: { children: ReactNode; white?: boolean; size?: string; style?: CSSProperties }) {
 	return <h2 style={{ fontFamily: fonts.heading, fontSize: size, fontWeight: 900, lineHeight: 1.15, color: white ? colors.white : colors.black, letterSpacing: -1, ...style }}>{children}</h2>;
 }
 
 export function Subtitle({ children, style }: { children: ReactNode; style?: CSSProperties }) {
-	return <p style={{ fontSize: 'clamp(16px,2vw,22px)', color: '#555', fontWeight: 500, ...style }}>{children}</p>;
+	return <p style={{ fontSize: '22px', color: '#555', fontWeight: 500, ...style }}>{children}</p>;
 }
 
 export function Highlight({ children, color: bg = colors.red }: { children: ReactNode; color?: string }) {
@@ -112,7 +112,7 @@ export function StaggerItem({ children, style }: { children: ReactNode; style?: 
 
 export function BulletList({ items, white }: { items: (string | ReactNode)[]; white?: boolean }) {
 	return (
-		<ul style={{ listStyle: 'none', fontSize: 'clamp(14px,1.6vw,19px)', lineHeight: 2, color: white ? colors.white : colors.black }}>
+		<ul style={{ listStyle: 'none', fontSize: '19px', lineHeight: 2, color: white ? colors.white : colors.black }}>
 			{items.map((item, i) => (
 				<li key={i}><span style={{ color: white ? colors.yellow : colors.red, fontWeight: 700 }}>→ </span>{item}</li>
 			))}

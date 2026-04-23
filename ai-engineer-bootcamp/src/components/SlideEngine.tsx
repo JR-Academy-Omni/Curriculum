@@ -2,8 +2,31 @@ import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { colors } from './ui';
 
+const DESIGN_WIDTH = 1600;
+const DESIGN_HEIGHT = 900;
+
 interface SlideEngineProps {
 	children: ReactNode[];
+}
+
+function useSlideScale() {
+	const [scale, setScale] = useState(() => {
+		if (typeof window === 'undefined') return 1;
+		return Math.min(window.innerWidth / DESIGN_WIDTH, window.innerHeight / DESIGN_HEIGHT);
+	});
+	useEffect(() => {
+		const update = () => {
+			setScale(Math.min(window.innerWidth / DESIGN_WIDTH, window.innerHeight / DESIGN_HEIGHT));
+		};
+		update();
+		window.addEventListener('resize', update);
+		window.addEventListener('orientationchange', update);
+		return () => {
+			window.removeEventListener('resize', update);
+			window.removeEventListener('orientationchange', update);
+		};
+	}, []);
+	return scale;
 }
 
 function readPageFromUrl(total: number): number {
@@ -20,6 +43,7 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 	const isAnimating = useRef(false);
 	const touchStart = useRef({ x: 0, y: 0 });
 	const wheelTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const scale = useSlideScale();
 
 	const go = useCallback((index: number) => {
 		if (isAnimating.current || index < 0 || index >= total || index === current) return;
@@ -107,7 +131,15 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 			<NavArrow direction="prev" onClick={prev} disabled={current === 0} />
 			<NavArrow direction="next" onClick={next} disabled={current === total - 1} />
 			<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000' }}>
-				<div style={{ width: '100%', maxHeight: '100vh', aspectRatio: '16 / 9', position: 'relative', overflow: 'hidden' }}>
+				<div style={{
+					width: DESIGN_WIDTH,
+					height: DESIGN_HEIGHT,
+					position: 'relative',
+					overflow: 'hidden',
+					flexShrink: 0,
+					transform: `scale(${scale})`,
+					transformOrigin: 'center center',
+				}}>
 					<AnimatePresence mode="wait">
 						<motion.div
 							key={current}

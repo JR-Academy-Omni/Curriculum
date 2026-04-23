@@ -32,7 +32,7 @@ export default function S28_WhoFor() {
 					style={{ textAlign: 'center' }}
 				>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(28px,3.8vw,48px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '48px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0,
 					}}>
 						诚实告诉你：<span style={{
@@ -41,7 +41,7 @@ export default function S28_WhoFor() {
 						}}>谁应该报</span>、谁不应该
 					</h2>
 					<p style={{
-						fontFamily: fonts.mono, fontSize: 'clamp(11px,1.2vw,14px)', color: '#555',
+						fontFamily: fonts.mono, fontSize: '14px', color: '#555',
 						fontWeight: 700, marginTop: 8, letterSpacing: 0.5,
 					}}>
 						我们不想赚你学不动的钱
@@ -78,7 +78,7 @@ export default function S28_WhoFor() {
 							}}>✓</div>
 							<div>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(16px,1.7vw,22px)',
+									fontFamily: fonts.heading, fontSize: '22px',
 									fontWeight: 900, lineHeight: 1.1,
 								}}>
 									适合报名
@@ -98,7 +98,7 @@ export default function S28_WhoFor() {
 										transition={{ duration: 0.3, delay: 0.35 + i * 0.08 }}
 										style={{
 											display: 'flex', gap: 10, alignItems: 'flex-start',
-											fontSize: 'clamp(12px,1.3vw,16px)', lineHeight: 1.4,
+											fontSize: '16px', lineHeight: 1.4,
 											color: colors.black, fontWeight: 500,
 										}}
 									>
@@ -136,7 +136,7 @@ export default function S28_WhoFor() {
 							}}>✕</div>
 							<div>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(16px,1.7vw,22px)',
+									fontFamily: fonts.heading, fontSize: '22px',
 									fontWeight: 900, lineHeight: 1.1,
 								}}>
 									不适合报名
@@ -156,7 +156,7 @@ export default function S28_WhoFor() {
 										transition={{ duration: 0.3, delay: 0.4 + i * 0.08 }}
 										style={{
 											display: 'flex', gap: 10, alignItems: 'flex-start',
-											fontSize: 'clamp(12px,1.3vw,16px)', lineHeight: 1.4,
+											fontSize: '16px', lineHeight: 1.4,
 											color: '#444', fontWeight: 500,
 										}}
 									>
@@ -184,7 +184,7 @@ export default function S28_WhoFor() {
 					}}
 				>
 					<span style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(13px,1.5vw,20px)',
+						fontFamily: fonts.heading, fontSize: '20px',
 						fontWeight: 900, letterSpacing: 0.3,
 					}}>
 						诚实筛人，是对你<span style={{ color: colors.yellow }}>负责</span>。如果你在「适合」那边，这课就是为你做的

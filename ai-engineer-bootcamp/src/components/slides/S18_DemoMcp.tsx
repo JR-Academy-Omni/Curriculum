@@ -57,7 +57,7 @@ export default function S18_DemoMcp() {
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ delay: 0.2, duration: 0.5 }}
 					style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(26px, 3.2vw, 42px)',
+						fontFamily: fonts.heading, fontSize: '42px',
 						fontWeight: 900, lineHeight: 1.15, letterSpacing: -1,
 						color: colors.white, marginBottom: 36,
 					}}
@@ -144,7 +144,7 @@ export default function S18_DemoMcp() {
 					transition={{ delay: 0.3, duration: 0.4 }}
 					style={{ marginTop: 44, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}
 				>
-					<p style={{ fontFamily: fonts.heading, fontSize: 'clamp(14px,1.6vw,20px)', fontWeight: 700, color: 'rgba(255,255,255,0.85)', borderLeft: `4px solid ${accent}`, paddingLeft: 14, lineHeight: 1.4, maxWidth: 680, margin: 0 }}>
+					<p style={{ fontFamily: fonts.heading, fontSize: '20px', fontWeight: 700, color: 'rgba(255,255,255,0.85)', borderLeft: `4px solid ${accent}`, paddingLeft: 14, lineHeight: 1.4, maxWidth: 680, margin: 0 }}>
 						这不是录屏 —— 是 <span style={{ color: accent }}>Phase 4 · L100</span> 你会亲手写出的 MCP Server
 					</p>
 					<div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>

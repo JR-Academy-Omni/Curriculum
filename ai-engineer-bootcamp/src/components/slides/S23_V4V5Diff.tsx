@@ -33,7 +33,7 @@ export default function S23_V4V5Diff() {
 					style={{ textAlign: 'center' }}
 				>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(28px,3.6vw,48px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '48px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0,
 					}}>
 						第四期跑完了，<span style={{
@@ -42,7 +42,7 @@ export default function S23_V4V5Diff() {
 						}}>第五期</span>凭什么值得报？
 					</h2>
 					<p style={{
-						fontFamily: fonts.mono, fontSize: 'clamp(11px,1.2vw,14px)', color: '#555',
+						fontFamily: fonts.mono, fontSize: '14px', color: '#555',
 						fontWeight: 700, marginTop: 8, letterSpacing: 0.5,
 					}}>
 						左边是我们刚跑完的第四期 · 右边是 5 月开的第五期
@@ -81,7 +81,7 @@ export default function S23_V4V5Diff() {
 						>
 							{/* 维度 */}
 							<div style={{
-								fontFamily: fonts.heading, fontSize: 'clamp(13px,1.2vw,16px)',
+								fontFamily: fonts.heading, fontSize: '16px',
 								fontWeight: 800, color: colors.black,
 							}}>
 								{r.label}
@@ -89,7 +89,7 @@ export default function S23_V4V5Diff() {
 
 							{/* V4 (暗淡) */}
 							<div style={{
-								fontFamily: fonts.mono, fontSize: 'clamp(13px,1.4vw,17px)',
+								fontFamily: fonts.mono, fontSize: '17px',
 								fontWeight: 700, color: '#999',
 								textDecoration: 'line-through', textDecorationColor: '#ccc',
 							}}>
@@ -115,7 +115,7 @@ export default function S23_V4V5Diff() {
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 0.4, delay: 0.45 + i * 0.1 }}
 								style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(15px,1.7vw,22px)',
+									fontFamily: fonts.heading, fontSize: '22px',
 									fontWeight: 900, color: colors.black,
 								}}
 							>
@@ -125,7 +125,7 @@ export default function S23_V4V5Diff() {
 							{/* Delta */}
 							<div style={{
 								textAlign: 'right',
-								fontFamily: fonts.mono, fontSize: 'clamp(10px,1vw,12px)',
+								fontFamily: fonts.mono, fontSize: '12px',
 								fontWeight: 800, color: colors.white,
 								background: colors.red, padding: '3px 8px',
 								border: `2px solid ${colors.black}`,
@@ -149,7 +149,7 @@ export default function S23_V4V5Diff() {
 						}}
 					>
 						<div style={{
-							fontFamily: fonts.heading, fontSize: 'clamp(13px,1.2vw,16px)',
+							fontFamily: fonts.heading, fontSize: '16px',
 							fontWeight: 900, color: colors.yellow,
 						}}>
 							V5 独家 ↓
@@ -159,7 +159,7 @@ export default function S23_V4V5Diff() {
 								<div key={p.name} style={{
 									padding: '8px 14px', background: colors.yellow, color: colors.black,
 									border: `2px solid ${colors.black}`,
-									fontFamily: fonts.heading, fontSize: 'clamp(12px,1.2vw,15px)',
+									fontFamily: fonts.heading, fontSize: '15px',
 									fontWeight: 900,
 								}}>
 									+ {p.name}
@@ -180,7 +180,7 @@ export default function S23_V4V5Diff() {
 					}}
 				>
 					<span style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(14px,1.6vw,22px)',
+						fontFamily: fonts.heading, fontSize: '22px',
 						fontWeight: 900, letterSpacing: 0.3,
 					}}>
 						<span style={{ color: colors.yellow }}>第五期</span>
