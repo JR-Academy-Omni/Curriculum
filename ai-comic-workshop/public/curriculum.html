@@ -158,6 +158,34 @@
     .fq-item summary:hover{background:#fafafa}
     .fq-ans{padding:16px 22px 20px;font-size:14px;line-height:1.8;color:#333;background:#fffbeb}
     .fq-ans strong{color:#10162f}
+    /* Sticky CTA (floating bottom bar) */
+    .sticky-cta{position:fixed;right:24px;bottom:24px;z-index:999;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 20px;background:#FFDE59;border:3px solid #000;box-shadow:6px 6px 0 #000;font-family:'Bricolage Grotesque',sans-serif;transition:all 0.15s;text-decoration:none;color:#10162f}
+    .sticky-cta:hover{box-shadow:none;transform:translate(3px,3px);text-decoration:none;color:#10162f}
+    .sticky-cta .sc-price{font-size:22px;font-weight:900;letter-spacing:-0.5px;line-height:1}
+    .sticky-cta .sc-meta{display:flex;flex-direction:column;gap:2px;font-family:'Space Mono',monospace}
+    .sticky-cta .sc-meta .sc-m1{font-size:11px;font-weight:700;color:#10162f}
+    .sticky-cta .sc-meta .sc-m2{font-size:10px;color:#555}
+    .sticky-cta .sc-arrow{font-size:24px;font-weight:900;margin-left:6px;color:#ec4899}
+    @media(max-width:640px){.sticky-cta{left:12px;right:12px;bottom:12px;justify-content:center;padding:12px 14px}.sticky-cta .sc-meta .sc-m2{display:none}}
+    /* Site Footer */
+    .site-footer{margin-top:72px;background:#10162f;color:#fff;padding:48px 24px 24px 24px;border-top:4px solid #000}
+    .sf-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;padding-bottom:32px;border-bottom:2px solid rgba(255,255,255,0.15)}
+    .sf-brand h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;margin-bottom:8px;color:#FFDE59}
+    .sf-brand p{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.75);margin-bottom:12px}
+    .sf-brand .sf-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .sf-brand .sf-badges span{padding:4px 10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.5px}
+    .sf-col h4{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#CB6CE6;margin-bottom:14px}
+    .sf-col ul{list-style:none;padding:0}
+    .sf-col li{font-size:13px;line-height:1.9;color:rgba(255,255,255,0.7)}
+    .sf-col li strong{color:#fff;font-weight:600}
+    .sf-col a{color:rgba(255,255,255,0.7);text-decoration:none;transition:color 0.15s}
+    .sf-col a:hover{color:#FFDE59}
+    .sf-bottom{max-width:1200px;margin:0 auto;padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .sf-copy{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px}
+    .sf-legal{display:flex;gap:18px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px}
+    .sf-legal a{color:rgba(255,255,255,0.6)}
+    @media(max-width:900px){.sf-inner{grid-template-columns:1fr 1fr;gap:28px}.sf-brand{grid-column:1 / -1}}
+    @media(max-width:560px){.sf-inner{grid-template-columns:1fr}.sf-bottom{flex-direction:column;align-items:flex-start}}
   </style>
 </head>
 <body>
@@ -680,9 +708,72 @@
 <!-- TODO: tool cost breakdown -->
 <!-- TODO: FAQ -->
 
-<div class="footer">
-  © JIANGREN ACADEMY · AI 漫剧 2 小时实战直播 Workshop · 2026-05-13 悉尼时间 18:00 线上开课
-</div>
+<!-- Sticky CTA (floating) -->
+<a class="sticky-cta" href="{{AIRWALLEX_URL}}" target="_blank" rel="noopener">
+  <div class="sc-price">A$58</div>
+  <div class="sc-meta">
+    <span class="sc-m1">立即报名</span>
+    <span class="sc-m2">5.13 周三 18:00 · Zoom 直播</span>
+  </div>
+  <span class="sc-arrow">→</span>
+</a>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="sf-inner">
+    <div class="sf-brand">
+      <h3>🎭 AI 漫剧 2 小时沉浸式实操工作坊</h3>
+      <p>张彦伟老师直播带你走完 AI 漫剧生产全流程 — 从角色设计到视频合成，即梦 / Nano Banana / Tapnow 一次打通。不卖长期陪跑，卖 2 小时干货。</p>
+      <div class="sf-badges">
+        <span>🎓 JIANGREN ACADEMY</span>
+        <span>🌏 Sydney · Online Live</span>
+        <span>🇦🇺 AUD Payment</span>
+      </div>
+    </div>
+
+    <div class="sf-col">
+      <h4>📅 课程信息</h4>
+      <ul>
+        <li><strong>2026-05-13</strong> 周三</li>
+        <li><strong>18:00 – 20:00</strong> 悉尼时间</li>
+        <li><strong>Zoom</strong> 线上直播</li>
+        <li><strong>A$58 AUD</strong> 一口价</li>
+        <li>报名学员可看录播</li>
+      </ul>
+    </div>
+
+    <div class="sf-col">
+      <h4>🧭 快速跳转</h4>
+      <ul>
+        <li><a href="#">🎤 讲师张彦伟</a></li>
+        <li><a href="#">🗓 2 小时时间线</a></li>
+        <li><a href="#">🛠 工具栈对比</a></li>
+        <li><a href="#">💰 价格与退改</a></li>
+        <li><a href="#">❓ 常见问题</a></li>
+      </ul>
+    </div>
+
+    <div class="sf-col">
+      <h4>🔗 相关资源</h4>
+      <ul>
+        <li><a href="/curriculum/">JR 课程总览</a></li>
+        <li><a href="/curriculum/openclaw-workshop/curriculum.html">OpenClaw 4h 工作坊</a></li>
+        <li><a href="/curriculum/ai-essentials-bootcamp/curriculum.html">AI 必修课 · 4 周</a></li>
+        <li><a href="/curriculum/ai-programming/curriculum.html">Cursor AI 编程实战</a></li>
+        <li><a href="mailto:hello@jiangren.com.au">📧 hello@jiangren.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sf-bottom">
+    <div class="sf-copy">© 2026 JIANGREN ACADEMY PTY LTD · All rights reserved · Workshop 内容归讲师所有 · 录播不得外传</div>
+    <div class="sf-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Refund Policy</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
