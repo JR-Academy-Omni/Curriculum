@@ -59,7 +59,7 @@ export default function S01_Cover() {
 					transition={{ delay: 0.3, duration: 0.5 }}
 					style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(44px, 6.5vw, 96px)',
+						fontSize: '96px',
 						fontWeight: 900,
 						lineHeight: 1,
 						letterSpacing: -3,
@@ -71,14 +71,14 @@ export default function S01_Cover() {
 					<span style={{ display: 'inline-block', padding: '0 22px', background: colors.yellow, color: colors.black, border: `4px solid ${colors.black}`, boxShadow: `6px 6px 0 ${colors.black}`, transform: 'rotate(-1.5deg)', marginTop: 10 }}>
 						Bootcamp
 					</span>
-					<span style={{ display: 'inline-block', marginLeft: 18, padding: '0 16px', background: colors.red, color: colors.white, border: `4px solid ${colors.black}`, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(2deg)', fontSize: 'clamp(28px, 4vw, 54px)', verticalAlign: 'middle' }}>
+					<span style={{ display: 'inline-block', marginLeft: 18, padding: '0 16px', background: colors.red, color: colors.white, border: `4px solid ${colors.black}`, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(2deg)', fontSize: '54px', verticalAlign: 'middle' }}>
 						第 5 期
 					</span>
 				</motion.h1>
 
 				{/* 副标题 */}
 				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} style={{ marginTop: 30 }}>
-					<p style={{ fontFamily: fonts.heading, fontSize: 'clamp(18px, 2.3vw, 28px)', fontWeight: 700, color: 'rgba(255,255,255,0.95)', borderLeft: `5px solid ${colors.teal}`, paddingLeft: 16, lineHeight: 1.35 }}>
+					<p style={{ fontFamily: fonts.heading, fontSize: '28px', fontWeight: 700, color: 'rgba(255,255,255,0.95)', borderLeft: `5px solid ${colors.teal}`, paddingLeft: 16, lineHeight: 1.35 }}>
 						2026 最稳的技术饭碗<br />
 						<span style={{ color: colors.yellow }}>从"会用"到"会做"</span>的完整闭环
 					</p>

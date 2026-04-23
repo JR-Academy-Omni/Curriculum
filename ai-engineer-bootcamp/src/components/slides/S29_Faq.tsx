@@ -49,7 +49,7 @@ export default function S29_Faq() {
 					style={{ textAlign: 'center' }}
 				>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(28px,3.8vw,48px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '48px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0,
 					}}>
 						你可能<span style={{
@@ -58,7 +58,7 @@ export default function S29_Faq() {
 						}}>担心的 6 件事</span>
 					</h2>
 					<p style={{
-						fontFamily: fonts.mono, fontSize: 'clamp(11px,1.2vw,14px)', color: '#555',
+						fontFamily: fonts.mono, fontSize: '14px', color: '#555',
 						fontWeight: 700, marginTop: 8, letterSpacing: 0.5,
 					}}>
 						我们提前帮你想好了
@@ -101,7 +101,7 @@ export default function S29_Faq() {
 									Q{i + 1}
 								</div>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(14px,1.35vw,18px)',
+									fontFamily: fonts.heading, fontSize: '18px',
 									fontWeight: 800, lineHeight: 1.3,
 								}}>
 									{f.q}
@@ -121,7 +121,7 @@ export default function S29_Faq() {
 									A
 								</div>
 								<div style={{
-									fontSize: 'clamp(13px,1.25vw,15px)', lineHeight: 1.55,
+									fontSize: '15px', lineHeight: 1.55,
 									color: '#333', fontWeight: 600,
 								}}>
 									{f.a}

@@ -82,7 +82,7 @@ export default function S04b_Misconceptions() {
 					</div>
 					<h2 style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(28px, 3.8vw, 48px)',
+						fontSize: '48px',
 						fontWeight: 900,
 						lineHeight: 1.1,
 						letterSpacing: -1,
@@ -104,7 +104,7 @@ export default function S04b_Misconceptions() {
 						你想的那样
 					</h2>
 					<p style={{
-						fontSize: 'clamp(13px, 1.4vw, 16px)',
+						fontSize: '16px',
 						color: '#444',
 						fontWeight: 600,
 						marginTop: 8,
@@ -185,7 +185,7 @@ export default function S04b_Misconceptions() {
 								</span>
 								<span style={{
 									fontFamily: fonts.heading,
-									fontSize: 'clamp(12px, 1.3vw, 15px)',
+									fontSize: '15px',
 									fontWeight: 800,
 									color: colors.dark,
 									lineHeight: 1.3,
@@ -218,7 +218,7 @@ export default function S04b_Misconceptions() {
 								</span>
 								<span style={{
 									fontFamily: fonts.heading,
-									fontSize: 'clamp(12px, 1.25vw, 14px)',
+									fontSize: '14px',
 									fontWeight: 700,
 									color: colors.black,
 									lineHeight: 1.4,
@@ -268,7 +268,7 @@ export default function S04b_Misconceptions() {
 				>
 					<div style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(13px, 1.4vw, 17px)',
+						fontSize: '17px',
 						fontWeight: 900,
 						color: colors.white,
 						letterSpacing: -0.2,
@@ -279,7 +279,7 @@ export default function S04b_Misconceptions() {
 					</div>
 					<div style={{
 						fontFamily: fonts.mono,
-						fontSize: 'clamp(11px, 1.2vw, 13px)',
+						fontSize: '13px',
 						color: 'rgba(255,255,255,0.85)',
 						fontWeight: 700,
 						letterSpacing: 0.5,

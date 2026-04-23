@@ -74,7 +74,7 @@ export default function S26_P3Incubator() {
 						P3 INCUBATOR · 12 WEEKS · TEAM PROJECT
 					</div>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(26px,3.4vw,44px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '44px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0, color: colors.white,
 					}}>
 						10 人组队，把一个 AI 项目跑到{' '}
@@ -86,7 +86,7 @@ export default function S26_P3Incubator() {
 						</span>
 					</h2>
 					<p style={{
-						fontFamily: fonts.mono, fontSize: 'clamp(11px,1.1vw,13px)', color: 'rgba(255,255,255,0.65)',
+						fontFamily: fonts.mono, fontSize: '13px', color: 'rgba(255,255,255,0.65)',
 						fontWeight: 700, marginTop: 6, letterSpacing: 0.5,
 					}}>
 						真企业客户 · 真流量 · 真 SLO · Mentor 全程护航
@@ -120,7 +120,7 @@ export default function S26_P3Incubator() {
 									0{i + 1} · {p.tag.toUpperCase()}
 								</div>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(14px,1.4vw,18px)',
+									fontFamily: fonts.heading, fontSize: '18px',
 									fontWeight: 900, lineHeight: 1.2, marginTop: 2,
 								}}>
 									{p.title}
@@ -232,7 +232,7 @@ export default function S26_P3Incubator() {
 							★ DEMO DAY
 						</div>
 						<div style={{
-							fontFamily: fonts.heading, fontSize: 'clamp(12px,1.2vw,15px)',
+							fontFamily: fonts.heading, fontSize: '15px',
 							fontWeight: 900, lineHeight: 1.2, marginTop: 2,
 						}}>
 							企业客户 + 招聘方现场<br />

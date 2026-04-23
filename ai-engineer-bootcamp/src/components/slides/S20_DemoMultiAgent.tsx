@@ -51,7 +51,7 @@ export default function S20_DemoMultiAgent() {
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ delay: 0.15, duration: 0.5 }}
 					style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(26px, 3.2vw, 40px)',
+						fontFamily: fonts.heading, fontSize: '40px',
 						fontWeight: 900, lineHeight: 1.15, letterSpacing: -1,
 						color: colors.white, marginBottom: 18,
 					}}
@@ -172,7 +172,7 @@ export default function S20_DemoMultiAgent() {
 					transition={{ delay: 1.6, duration: 0.4 }}
 					style={{ marginTop: 14, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}
 				>
-					<p style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.4vw,18px)', fontWeight: 700, color: 'rgba(255,255,255,0.85)', borderLeft: `4px solid ${accent}`, paddingLeft: 12, lineHeight: 1.4, maxWidth: 640, margin: 0 }}>
+					<p style={{ fontFamily: fonts.heading, fontSize: '18px', fontWeight: 700, color: 'rgba(255,255,255,0.85)', borderLeft: `4px solid ${accent}`, paddingLeft: 12, lineHeight: 1.4, maxWidth: 640, margin: 0 }}>
 						<span style={{ color: accent }}>Phase 6 · L119 · Multi-Agent + LangGraph</span> 你会亲手搭出这套架构
 					</p>
 					<div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>

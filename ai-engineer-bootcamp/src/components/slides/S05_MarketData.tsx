@@ -76,7 +76,7 @@ export default function S05_MarketData() {
 						<span style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, color: colors.black }}>MARKET · 2026</span>
 					</div>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(26px,3.6vw,48px)',
+						fontFamily: fonts.heading, fontSize: '48px',
 						fontWeight: 900, color: colors.white, letterSpacing: -1.2, lineHeight: 1.1,
 					}}>
 						2026，AI Engineer{' '}
@@ -108,7 +108,7 @@ export default function S05_MarketData() {
 							SALARY · 6 国中位数
 						</span>
 						<span style={{
-							fontFamily: fonts.heading, fontSize: 'clamp(14px,1.5vw,18px)',
+							fontFamily: fonts.heading, fontSize: '18px',
 							fontWeight: 900, color: colors.black, letterSpacing: -0.3,
 						}}>
 							从硅谷到东南亚 · AI Engineer 全球都在抢人
@@ -135,16 +135,16 @@ export default function S05_MarketData() {
 								}}
 							>
 								<div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-									<span style={{ fontSize: 'clamp(18px,2.2vw,26px)', lineHeight: 1 }}>{s.flag}</span>
+									<span style={{ fontSize: '26px', lineHeight: 1 }}>{s.flag}</span>
 									<span style={{
-										fontFamily: fonts.heading, fontSize: 'clamp(11px,1.1vw,13px)',
+										fontFamily: fonts.heading, fontSize: '13px',
 										fontWeight: 900, color: colors.black, letterSpacing: -0.2,
 									}}>
 										{s.country}
 									</span>
 								</div>
 								<div style={{
-									fontFamily: fonts.mono, fontSize: 'clamp(13px,1.4vw,17px)',
+									fontFamily: fonts.mono, fontSize: '17px',
 									fontWeight: 900, color: colors.red, lineHeight: 1.05,
 									letterSpacing: -0.3, marginTop: 2,
 								}}>
@@ -198,14 +198,14 @@ export default function S05_MarketData() {
 							</span>
 							<span style={{
 								fontFamily: fonts.heading,
-								fontSize: 'clamp(12px, 1.3vw, 15px)',
+								fontSize: '15px',
 								fontWeight: 800,
 								color: colors.white,
 							}}>
 								OpenAI · Anthropic · Google DeepMind Senior ={' '}
 								<span style={{
 									fontFamily: fonts.mono,
-									fontSize: 'clamp(13px, 1.4vw, 17px)',
+									fontSize: '17px',
 									fontWeight: 900,
 									color: colors.yellow,
 								}}>
@@ -268,7 +268,7 @@ export default function S05_MarketData() {
 
 								<div style={{
 									fontFamily: fonts.mono,
-									fontSize: 'clamp(28px,3.6vw,46px)',
+									fontSize: '46px',
 									fontWeight: 900, lineHeight: 1,
 									letterSpacing: -1.5,
 									marginTop: 4,
@@ -278,7 +278,7 @@ export default function S05_MarketData() {
 
 								{c.secondary && (
 									<div style={{
-										fontFamily: fonts.heading, fontSize: 'clamp(11px,1.2vw,13px)',
+										fontFamily: fonts.heading, fontSize: '13px',
 										fontWeight: 700, marginTop: 6, lineHeight: 1.3,
 									}}>
 										{c.secondary}

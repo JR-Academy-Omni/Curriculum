@@ -30,7 +30,7 @@ function renderCell(value: string, isUs: boolean) {
 	if (isUs) {
 		return (
 			<div style={{
-				fontFamily: fonts.heading, fontSize: 'clamp(13px,1.3vw,17px)',
+				fontFamily: fonts.heading, fontSize: '17px',
 				fontWeight: 900, color: colors.black,
 				display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center',
 			}}>
@@ -40,7 +40,7 @@ function renderCell(value: string, isUs: boolean) {
 	}
 	return (
 		<div style={{
-			fontFamily: fonts.mono, fontSize: 'clamp(11px,1.1vw,13px)',
+			fontFamily: fonts.mono, fontSize: '13px',
 			fontWeight: 600, color: isNegative ? '#aaa' : '#555',
 			textAlign: 'center',
 		}}>
@@ -64,7 +64,7 @@ export default function S27_Competitors() {
 					style={{ textAlign: 'center' }}
 				>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(28px,3.8vw,48px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '48px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0,
 					}}>
 						和其他 AI 课的<span style={{
@@ -73,7 +73,7 @@ export default function S27_Competitors() {
 						}}>区别</span>
 					</h2>
 					<p style={{
-						fontFamily: fonts.mono, fontSize: 'clamp(11px,1.2vw,14px)', color: '#555',
+						fontFamily: fonts.mono, fontSize: '14px', color: '#555',
 						fontWeight: 700, marginTop: 8, letterSpacing: 0.5,
 					}}>
 						客观对比 · 你可以自己去查
@@ -105,7 +105,7 @@ export default function S27_Competitors() {
 						}}>
 							<div style={{
 								fontFamily: fonts.heading,
-								fontSize: 'clamp(12px,1.2vw,15px)', fontWeight: 900, lineHeight: 1.15,
+								fontSize: '15px', fontWeight: 900, lineHeight: 1.15,
 							}}>
 								{h.name}
 							</div>
@@ -137,7 +137,7 @@ export default function S27_Competitors() {
 							<div style={{
 								padding: '12px 14px',
 								border, borderTop: 'none', borderRight: 'none',
-								fontFamily: fonts.heading, fontSize: 'clamp(12px,1.2vw,15px)',
+								fontFamily: fonts.heading, fontSize: '15px',
 								fontWeight: 800, color: colors.black,
 								display: 'flex', alignItems: 'center',
 							}}>
@@ -174,7 +174,7 @@ export default function S27_Competitors() {
 					}}
 				>
 					<span style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(14px,1.6vw,22px)',
+						fontFamily: fonts.heading, fontSize: '22px',
 						fontWeight: 900, letterSpacing: 0.3,
 					}}>
 						国内唯一一个把完整 AI Engineer 技术栈做到{' '}

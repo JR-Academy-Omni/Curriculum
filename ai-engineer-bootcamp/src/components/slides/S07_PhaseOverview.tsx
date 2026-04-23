@@ -26,7 +26,7 @@ export default function S07_PhaseOverview() {
 						</span>
 					</div>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(30px,4vw,52px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '52px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0,
 					}}>
 						第五期 · <span style={{
@@ -35,7 +35,7 @@ export default function S07_PhaseOverview() {
 						}}>10 Phase</span> 全栈架构
 					</h2>
 					<p style={{
-						fontFamily: fonts.mono, fontSize: 'clamp(12px,1.4vw,16px)', color: '#555',
+						fontFamily: fonts.mono, fontSize: '16px', color: '#555',
 						fontWeight: 700, marginTop: 10, letterSpacing: 0.5,
 					}}>
 						{courseMeta.totalLessons} 节课 · {courseMeta.liveClasses} 节直播 · {courseMeta.interactiveLabs} 个 Interactive Lab · {courseMeta.weeksTechnical} 周技术 + {courseMeta.weeksP3} 周 P3 孵化
@@ -107,14 +107,14 @@ export default function S07_PhaseOverview() {
 							{/* 中部：英文大标题 + 中文小标题 */}
 							<div style={{ padding: '10px 12px', flex: 1, display: 'flex', flexDirection: 'column' }}>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(13px,1.25vw,17px)',
+									fontFamily: fonts.heading, fontSize: '17px',
 									fontWeight: 900, lineHeight: 1.15, color: colors.black,
 									letterSpacing: -0.3,
 								}}>
 									{p.name}
 								</div>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(11px,1.05vw,13px)', color: p.color,
+									fontFamily: fonts.heading, fontSize: '13px', color: p.color,
 									fontWeight: 700, marginTop: 3,
 								}}>
 									{p.nameCn}
@@ -122,7 +122,7 @@ export default function S07_PhaseOverview() {
 
 								{/* summary 截断 */}
 								<div style={{
-									fontSize: 'clamp(10px,1vw,12px)', color: '#555', lineHeight: 1.4,
+									fontSize: '12px', color: '#555', lineHeight: 1.4,
 									marginTop: 8, fontWeight: 500,
 									display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',
 									overflow: 'hidden',
@@ -155,7 +155,7 @@ export default function S07_PhaseOverview() {
 						border, boxShadow: shadowSm,
 					}}
 				>
-					<span style={{ fontFamily: fonts.mono, fontSize: 'clamp(11px,1.1vw,13px)', fontWeight: 700, letterSpacing: 1 }}>
+					<span style={{ fontFamily: fonts.mono, fontSize: '13px', fontWeight: 700, letterSpacing: 1 }}>
 						<span style={{ color: colors.yellow }}>Phase 1</span>
 						<span style={{ margin: '0 8px' }}>→</span>
 						<span style={{ color: colors.yellow }}>Phase 10</span>

@@ -47,7 +47,7 @@ export default function S05c_AiCodingCore() {
 					transition={{ duration: 0.45, delay: 0.1 }}
 					style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(30px, 4vw, 52px)',
+						fontSize: '52px',
 						fontWeight: 900,
 						lineHeight: 1.12,
 						letterSpacing: -1,
@@ -64,7 +64,7 @@ export default function S05c_AiCodingCore() {
 					animate={{ opacity: 1 }}
 					transition={{ duration: 0.4, delay: 0.2 }}
 					style={{
-						fontSize: 'clamp(14px, 1.5vw, 18px)',
+						fontSize: '18px',
 						color: '#444',
 						marginBottom: 22,
 						maxWidth: 900,
@@ -109,7 +109,7 @@ export default function S05c_AiCodingCore() {
 									<div>
 										<div style={{
 											fontFamily: fonts.heading,
-											fontSize: t.king ? 'clamp(17px, 1.9vw, 22px)' : 'clamp(15px, 1.6vw, 19px)',
+											fontSize: t.king ? '22px' : '19px',
 											fontWeight: 900,
 											color: colors.black,
 											display: 'flex',
@@ -176,7 +176,7 @@ export default function S05c_AiCodingCore() {
 							>
 								<div style={{
 									fontFamily: fonts.mono,
-									fontSize: 'clamp(22px, 2.6vw, 32px)',
+									fontSize: '32px',
 									fontWeight: 900,
 									color: colors.red,
 									minWidth: 72,
@@ -185,7 +185,7 @@ export default function S05c_AiCodingCore() {
 								</div>
 								<div>
 									<div style={{
-										fontSize: 'clamp(12px, 1.2vw, 14px)',
+										fontSize: '14px',
 										fontWeight: 700,
 										color: colors.black,
 										lineHeight: 1.35,
@@ -214,7 +214,7 @@ export default function S05c_AiCodingCore() {
 								border,
 								boxShadow: shadow,
 								fontFamily: fonts.heading,
-								fontSize: 'clamp(13px, 1.45vw, 17px)',
+								fontSize: '17px',
 								fontWeight: 800,
 								lineHeight: 1.4,
 							}}
@@ -253,7 +253,7 @@ export default function S05c_AiCodingCore() {
 					</div>
 					<div style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(13px, 1.4vw, 16px)',
+						fontSize: '16px',
 						fontWeight: 800,
 						color: colors.black,
 						flex: 1,

@@ -95,7 +95,7 @@ export default function S22_Projects() {
 							CAPSTONE · 7 + P3 REAL-WORLD
 						</div>
 						<h2 style={{
-							fontFamily: fonts.heading, fontSize: 'clamp(28px, 3.8vw, 50px)',
+							fontFamily: fonts.heading, fontSize: '50px',
 							fontWeight: 900, lineHeight: 1.05, letterSpacing: -2, color: colors.black, margin: 0,
 						}}>
 							7 个{' '}
@@ -104,7 +104,7 @@ export default function S22_Projects() {
 							</span>
 							{' '}实战项目 <span style={{ color: colors.red }}>+</span> 1 个 <span style={{ background: colors.red, color: colors.white, padding: '0 10px', border: `3px solid ${colors.black}`, boxShadow: `4px 4px 0 ${colors.black}`, display: 'inline-block' }}>P3 真实企业项目</span>
 						</h2>
-						<p style={{ fontFamily: fonts.body, fontSize: 'clamp(13px,1.4vw,17px)', color: '#333', fontWeight: 600, marginTop: 10, lineHeight: 1.4 }}>
+						<p style={{ fontFamily: fonts.body, fontSize: '17px', color: '#333', fontWeight: 600, marginTop: 10, lineHeight: 1.4 }}>
 							7 个自研 capstone 打底 + 1 个 P3 真实企业项目作结业 · 写进 CV 的都是 real-world 成果
 						</p>
 					</motion.div>
@@ -136,11 +136,11 @@ export default function S22_Projects() {
 				>
 					<div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
 						<span style={{ fontSize: 22 }}>💼</span>
-						<span style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.5vw,19px)', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
+						<span style={{ fontFamily: fonts.heading, fontSize: '19px', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
 							毕业后你的 GitHub 有 <span style={{ color: colors.yellow }}>7 个完整 repo</span> + <span style={{ color: colors.red }}>1 份企业案例</span>
 						</span>
 					</div>
-					<div style={{ fontFamily: fonts.mono, fontSize: 'clamp(11px,1.2vw,14px)', color: 'rgba(255,255,255,0.75)', fontWeight: 700 }}>
+					<div style={{ fontFamily: fonts.mono, fontSize: '14px', color: 'rgba(255,255,255,0.75)', fontWeight: 700 }}>
 						面试时用来回答"你做过什么"
 					</div>
 				</motion.div>
@@ -239,7 +239,7 @@ function ProjectCard({ project, index, delay }: { project: IProject; index: numb
 
 			{/* 项目名 */}
 			<div style={{
-				fontFamily: fonts.heading, fontSize: 'clamp(14px,1.4vw,17px)',
+				fontFamily: fonts.heading, fontSize: '17px',
 				fontWeight: 900, color: colors.black, lineHeight: 1.2, letterSpacing: -0.3,
 				marginBottom: 10, minHeight: 40,
 			}}>

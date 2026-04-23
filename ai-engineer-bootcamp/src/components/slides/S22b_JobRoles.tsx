@@ -140,7 +140,7 @@ export default function S22b_JobRoles() {
 
 					<h2 style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(26px, 3.6vw, 46px)',
+						fontSize: '46px',
 						fontWeight: 900,
 						lineHeight: 1.1,
 						letterSpacing: -1,
@@ -241,7 +241,7 @@ export default function S22b_JobRoles() {
 								{/* 英文大名 */}
 								<div style={{
 									fontFamily: fonts.heading,
-									fontSize: 'clamp(16px, 1.75vw, 21px)',
+									fontSize: '21px',
 									fontWeight: 900,
 									color: colors.black,
 									lineHeight: 1.15,
@@ -253,7 +253,7 @@ export default function S22b_JobRoles() {
 								{/* 中文小名 */}
 								<div style={{
 									fontFamily: fonts.heading,
-									fontSize: 'clamp(12px, 1.2vw, 15px)',
+									fontSize: '15px',
 									fontWeight: 700,
 									color: '#555',
 									marginTop: -4,
@@ -267,7 +267,7 @@ export default function S22b_JobRoles() {
 									background: colors.yellow,
 									border: `2px solid ${colors.black}`,
 									fontFamily: fonts.mono,
-									fontSize: 'clamp(15px, 1.65vw, 19px)',
+									fontSize: '19px',
 									fontWeight: 900,
 									color: colors.black,
 									letterSpacing: -0.3,
@@ -344,7 +344,7 @@ export default function S22b_JobRoles() {
 						</div>
 						<div style={{
 							fontFamily: fonts.heading,
-							fontSize: 'clamp(14px, 1.45vw, 17px)',
+							fontSize: '17px',
 							fontWeight: 900,
 							color: colors.black,
 							letterSpacing: -0.3,
@@ -456,7 +456,7 @@ export default function S22b_JobRoles() {
 				>
 					<div style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(13px, 1.45vw, 17px)',
+						fontSize: '17px',
 						fontWeight: 900,
 						letterSpacing: -0.3,
 					}}>

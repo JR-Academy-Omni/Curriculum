@@ -80,7 +80,7 @@ export default function S24_Teachers() {
 					<div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 4 }}>
 						<h2 style={{
 							fontFamily: fonts.heading,
-							fontSize: 'clamp(24px, 3.2vw, 42px)',
+							fontSize: '42px',
 							fontWeight: 900,
 							lineHeight: 1.1,
 							letterSpacing: -1,
@@ -114,7 +114,7 @@ export default function S24_Teachers() {
 						</span>
 					</div>
 					<p style={{
-						fontSize: 'clamp(12px, 1.3vw, 14px)',
+						fontSize: '14px',
 						color: '#444',
 						fontWeight: 600,
 						marginTop: 4,
@@ -169,7 +169,7 @@ export default function S24_Teachers() {
 								<div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 3 }}>
 									<span style={{
 										fontFamily: fonts.heading,
-										fontSize: 'clamp(13px, 1.35vw, 16px)',
+										fontSize: '16px',
 										fontWeight: 900,
 										color: colors.black,
 										letterSpacing: -0.3,
@@ -241,7 +241,7 @@ export default function S24_Teachers() {
 				>
 					<div style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(12px, 1.4vw, 16px)',
+						fontSize: '16px',
 						fontWeight: 900,
 						letterSpacing: -0.3,
 					}}>

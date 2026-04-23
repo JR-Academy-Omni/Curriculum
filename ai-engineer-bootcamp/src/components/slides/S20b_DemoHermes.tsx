@@ -258,7 +258,7 @@ export default function S20b_DemoHermes() {
 					font-size: 16px; color: var(--accent);
 				}
 				.hermes-head h1 {
-					margin: 0; font-size: clamp(18px, 2vw, 26px); font-weight: 700; letter-spacing: -.01em;
+					margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -.01em;
 					color: var(--ink);
 				}
 				.hermes-head h1 .cn { color: var(--ink-2); font-weight: 500; margin-left: 8px; font-size: .72em; }

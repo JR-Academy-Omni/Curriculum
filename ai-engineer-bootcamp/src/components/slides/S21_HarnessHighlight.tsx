@@ -60,7 +60,7 @@ export default function S21_HarnessHighlight() {
 					transition={{ duration: 0.5, delay: 0.3 }}
 					style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(44px, 6.2vw, 96px)',
+						fontSize: '96px',
 						fontWeight: 900, lineHeight: 0.95, letterSpacing: -3,
 						color: colors.white,
 						textShadow: `5px 5px 0 ${colors.black}`,
@@ -80,7 +80,7 @@ export default function S21_HarnessHighlight() {
 					style={{ marginTop: 16 }}
 				>
 					<p style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(18px, 2.2vw, 28px)',
+						fontFamily: fonts.heading, fontSize: '28px',
 						fontWeight: 800, color: colors.black, lineHeight: 1.3, margin: 0,
 					}}>
 						Claude Code、Cursor <span style={{ background: colors.yellow, padding: '0 8px', border: `2px solid ${colors.black}` }}>背后的秘密</span>
@@ -201,7 +201,7 @@ export default function S21_HarnessHighlight() {
 									<div style={{ fontFamily: fonts.mono, fontSize: 12, color: '#555', fontWeight: 700, marginBottom: 3 }}>
 										{s.title}
 									</div>
-									<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(16px,1.9vw,22px)', color: colors.black, fontWeight: 900, lineHeight: 1.25, letterSpacing: -0.5 }}>
+									<div style={{ fontFamily: fonts.heading, fontSize: '22px', color: colors.black, fontWeight: 900, lineHeight: 1.25, letterSpacing: -0.5 }}>
 										{s.hl}
 									</div>
 								</div>
@@ -223,14 +223,14 @@ export default function S21_HarnessHighlight() {
 					}}
 				>
 					<div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-						<span style={{ fontFamily: fonts.heading, fontSize: 'clamp(14px,1.5vw,20px)', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
+						<span style={{ fontFamily: fonts.heading, fontSize: '20px', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
 							Phase 8 · 13 节课 · 5 节直播
 						</span>
 						<span style={{ padding: '3px 10px', background: colors.yellow, color: colors.black, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, border: `2px solid ${colors.white}` }}>
 							V5 独家
 						</span>
 					</div>
-					<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.4vw,18px)', color: colors.yellow, fontWeight: 900, letterSpacing: -0.3 }}>
+					<div style={{ fontFamily: fonts.heading, fontSize: '18px', color: colors.yellow, fontWeight: 900, letterSpacing: -0.3 }}>
 						市场上这个内容，你找不到第二家
 					</div>
 				</motion.div>

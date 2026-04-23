@@ -74,7 +74,7 @@ export default function S25_StudentWorks() {
 					style={{ textAlign: 'center' }}
 				>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(28px,3.8vw,48px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '48px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0,
 					}}>
 						第四期<span style={{
@@ -83,7 +83,7 @@ export default function S25_StudentWorks() {
 						}}>学员</span>做出了什么
 					</h2>
 					<p style={{
-						fontFamily: fonts.mono, fontSize: 'clamp(11px,1.2vw,14px)', color: '#555',
+						fontFamily: fonts.mono, fontSize: '14px', color: '#555',
 						fontWeight: 700, marginTop: 8, letterSpacing: 0.5,
 					}}>
 						不是练习题 · 是真实能跑的产品
@@ -134,7 +134,7 @@ export default function S25_StudentWorks() {
 							{/* 内容区 */}
 							<div style={{ padding: '10px 12px', flex: 1, display: 'flex', flexDirection: 'column' }}>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(13px,1.3vw,17px)',
+									fontFamily: fonts.heading, fontSize: '17px',
 									fontWeight: 900, color: colors.black, lineHeight: 1.2,
 								}}>
 									{w.title}
@@ -181,7 +181,7 @@ export default function S25_StudentWorks() {
 					}}
 				>
 					<span style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(13px,1.4vw,18px)',
+						fontFamily: fonts.heading, fontSize: '18px',
 						fontWeight: 900, letterSpacing: 0.3,
 					}}>
 						100% 毕业拿到 <span style={{ color: colors.yellow }}>AI Engineer 相关 offer / 晋升 / 加薪 / 接项目</span>
