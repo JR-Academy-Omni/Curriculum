@@ -144,11 +144,11 @@
 
     <div class="form">
       <label>Line 1（白字）</label>
-      <input id="m-line1" type="text" value="Junior AI Engineer">
+      <input id="m-line1" type="text" value="造 AI 的人">
       <label>Line 2 黄底高亮</label>
-      <input id="m-highlight" type="text" value="岗位">
+      <input id="m-highlight" type="text" value="还在抢">
       <label>Line 2 红字</label>
-      <input id="m-red" type="text" value="换代了">
+      <input id="m-red" type="text" value="上车期">
       <label>右上角 Logo</label>
       <input id="m-brand" type="text" value="JR ACADEMY">
       <label>右下角小标</label>
@@ -175,9 +175,9 @@
 
     <div class="form">
       <label>Line 1（红字）</label>
-      <input id="s-line1" type="text" value="Junior AI">
+      <input id="s-line1" type="text" value="造 AI">
       <label>Line 2 黄底高亮</label>
-      <input id="s-highlight" type="text" value="换代了">
+      <input id="s-highlight" type="text" value="还在抢">
       <label>右上角 Logo</label>
       <input id="s-brand" type="text" value="JR">
       <label>底部小标</label>
@@ -270,7 +270,7 @@ function drawMain(ctx, opts) {
   ctx.fillText(brandText, brandX + brandPadX, brandY + brandPadY + brandSize * 0.82);
 
   // ---- Line 1 (white) ----
-  const line1 = opts.line1 || 'Junior AI Engineer';
+  const line1 = opts.line1 || '造 AI 的人';
   // 留出 brand chip 的空间
   const line1MaxW = W - PAD * 2 - brandBoxW - 80;
   const line1Size = fitText(ctx, line1, FF_EN, line1MaxW, 260);
@@ -280,8 +280,8 @@ function drawMain(ctx, opts) {
   ctx.fillText(line1, PAD, line1Y);
 
   // ---- Line 2 combined: [highlight] + [red] ----
-  const hlText = opts.highlight || '岗位';
-  const redText = opts.red || '换代了';
+  const hlText = opts.highlight || '还在抢';
+  const redText = opts.red || '上车期';
   const hlPadX = 36;
   const gap = 30;
 
@@ -352,7 +352,7 @@ function drawSquare(ctx, opts) {
   ctx.fillText(brandText, brandX + brandPadX, brandY + brandPadY + brandSize * 0.82);
 
   // ---- Line 1 (red) ----
-  const line1 = opts.line1 || 'Junior AI';
+  const line1 = opts.line1 || '造 AI';
   const line1MaxW = W - PAD * 2;
   const line1Size = fitText(ctx, line1, FF_EN, line1MaxW, 220);
   const line1Y = 430;
@@ -361,7 +361,7 @@ function drawSquare(ctx, opts) {
   ctx.fillText(line1, PAD, line1Y);
 
   // ---- Line 2 yellow highlight ----
-  const hlText = opts.highlight || '换代了';
+  const hlText = opts.highlight || '还在抢';
   const hlPadX = 32;
   let line2Size = 380;
   const line2MaxW = W - PAD * 2;
