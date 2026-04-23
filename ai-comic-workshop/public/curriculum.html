@@ -83,6 +83,43 @@
     .tl-wrap .lesson-body li{margin-bottom:3px}
     .tl-wrap .tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
     .tl-wrap .tag-row .pill{padding:3px 10px;font-size:11px;font-weight:700;font-family:'Space Mono',monospace}
+    /* Instructor */
+    .in-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .in-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .in-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .in-card{border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #CB6CE6;display:grid;grid-template-columns:280px 1fr;gap:0}
+    .in-left{background:linear-gradient(135deg,#10162f 0%,#CB6CE6 100%);color:#fff;padding:32px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;border-right:3px solid #000}
+    .in-avatar{width:110px;height:110px;border:3px solid #fff;background:#fff;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:5px 5px 0 rgba(0,0,0,0.35)}
+    .in-name{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;letter-spacing:0.5px;margin-top:6px}
+    .in-role{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.85}
+    .in-right{padding:28px 30px}
+    .in-tagline{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;color:#10162f;line-height:1.4;margin-bottom:14px}
+    .in-right p{font-size:14px;line-height:1.75;color:#333;margin-bottom:10px}
+    .in-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .in-chips .pc{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:#f3f4f6;border:2px solid #000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+    .in-chips .pc.p{background:#fce7f3;color:#9d174d}
+    .in-chips .pc.o{background:#fff7ed;color:#9a3412}
+    .in-chips .pc.b{background:#dbeafe;color:#1e40af}
+    .in-chips .pc.g{background:#d1fae5;color:#065f46}
+    @media(max-width:820px){.in-card{grid-template-columns:1fr}.in-left{border-right:none;border-bottom:3px solid #000;padding:28px 20px}}
+    /* Course Prep */
+    .pr-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .pr-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .pr-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .pr-box{border:3px solid #000;background:#fffbeb;box-shadow:6px 6px 0 #000;padding:0}
+    .pr-head{background:#FFDE59;padding:14px 24px;border-bottom:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:18px;color:#10162f;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .pr-head .mono{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.75}
+    .pr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;background:#fff}
+    .pr-item{display:flex;gap:14px;padding:20px 22px;border-right:2px dashed #e5e7eb;border-bottom:2px dashed #e5e7eb}
+    .pr-item:nth-child(2n){border-right:none}
+    .pr-item:nth-last-child(-n+2){border-bottom:none}
+    .pr-num{flex-shrink:0;width:34px;height:34px;border:3px solid #000;background:#CB6CE6;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #000}
+    .pr-body h5{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .pr-body p{font-size:13px;line-height:1.7;color:#444}
+    .pr-body .opt{display:inline-block;margin-left:6px;padding:1px 7px;background:#d1fae5;color:#065f46;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    .pr-body .req{display:inline-block;margin-left:6px;padding:1px 7px;background:#fee2e2;color:#991b1b;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    .pr-foot{padding:14px 22px;background:#fff5f5;border-top:2px solid #FF914D;font-size:12px;line-height:1.7;color:#555}
+    @media(max-width:640px){.pr-grid{grid-template-columns:1fr}.pr-item{border-right:none;border-bottom:2px dashed #e5e7eb}.pr-item:nth-last-child(1){border-bottom:none}}
   </style>
 </head>
 <body>
@@ -388,6 +425,89 @@
         <h5>🚀 下一步建议</h5>
         <p>老师会给 3 档行动方案：① 今晚就开工跑一条 · ② 周末闭关两天起个账号 · ③ 先啃一周工具再定赛道。按你自己的节奏选。</p>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Instructor -->
+<div class="in-wrap">
+  <div class="in-title">🎤 讲师</div>
+  <div class="in-sub">不是 AI 概念讲师 · 是天天在一线做 AI 漫剧的从业者 + 有十几年教学功底</div>
+  <div class="in-card">
+    <div class="in-left">
+      <div class="in-avatar">👨‍🏫</div>
+      <div class="in-name">张彦伟</div>
+      <div class="in-role">AI 漫剧 · 主讲</div>
+    </div>
+    <div class="in-right">
+      <div class="in-tagline">教过一线编程 · 教过新媒体 · 教过视频拍剪 · 现在把重心放在 AI 漫剧</div>
+      <p>张老师的教学履历横跨 <strong>传统编程、新媒体、视频拍摄剪辑、AI 视频</strong> 四个阶段 — 早年在 <strong>北大青鸟</strong> 任讲师，面向 <strong>18–30 岁</strong> 的高中生、大学毕业生和在职人群教编程和新媒体课程；随后在 <strong>B 站</strong> 等平台持续输出课程内容，做过 Java 编程、新媒体运营、视频拍摄与后期剪辑系列教程。</p>
+      <p>从 2024 年开始，老师把主要精力迁移到 <strong>AI 漫剧制作</strong> — 亲自跑过几乎所有主流 AI 视频工具（即梦、Runway、Kling、Vidu、Nano Banana、Tapnow 等），踩过足够多的坑，知道哪家工具在什么场景下真的能出活、哪家只是宣发好看。这节 2 小时工作坊不讲理论，就把他每天在做的事情分享出来。</p>
+      <div class="in-chips">
+        <span class="pc p">🎓 北大青鸟讲师</span>
+        <span class="pc o">📺 B 站长期创作者</span>
+        <span class="pc b">💻 早期：Java / 新媒体 / 视频拍剪</span>
+        <span class="pc g">🎬 现在：AI 漫剧一线从业者</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Course Prep -->
+<div class="pr-wrap">
+  <div class="pr-title">📋 课前准备清单</div>
+  <div class="pr-sub">线上直播 · 准备 15 分钟就够 · 不做也能来但体验会打折</div>
+  <div class="pr-box">
+    <div class="pr-head">
+      <span>🎯 到场前要搞定的 6 件事</span>
+      <span class="mono">6 steps · 约 15 min</span>
+    </div>
+    <div class="pr-grid">
+      <div class="pr-item">
+        <div class="pr-num">1</div>
+        <div class="pr-body">
+          <h5>装好 Zoom 客户端<span class="req">必做</span></h5>
+          <p>浏览器版直播体验不稳 — 下载 Zoom 桌面客户端（Mac / Win 都行）装好登录一次，避免开场卡在进房间。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">2</div>
+        <div class="pr-body">
+          <h5>网络 + 屏幕检查<span class="req">必做</span></h5>
+          <p>老师会分享屏幕演示 Nano Banana 出图和即梦下 Prompt，界面文字不大 — 电脑 / 大屏 iPad 体验最好，手机端能看但细节看不清。网络建议 20 Mbps 以上。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">3</div>
+        <div class="pr-body">
+          <h5>注册即梦账号<span class="opt">推荐</span></h5>
+          <p>提前注册 <a href="https://jimeng.jianying.com" target="_blank" rel="noopener">jimeng.jianying.com</a>（需要中国手机号 / 抖音账号）。新用户有免费额度，课上看老师下 Prompt 你能同步点着试。没有国内账号可看老师演示不强求。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">4</div>
+        <div class="pr-body">
+          <h5>Nano Banana 入口准备<span class="opt">推荐</span></h5>
+          <p>最低成本：登录 <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a>（Google 账号即可）选 Gemini 2.5 Flash Image 免费试用。海外账号无缝，国内需自理网络。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">5</div>
+        <div class="pr-body">
+          <h5>想好你要做哪一类漫剧<span class="opt">推荐</span></h5>
+          <p>甜宠 / 悬疑 / 搞笑 / 科普 / 都市…… 心里有个方向，L04 分类环节你能直接把自己对号入座，L05 实操时老师的每一步你也能对应到「我要做的那一类需不需要」。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">6</div>
+        <div class="pr-body">
+          <h5>笔 + 纸 / 随手记工具<span class="opt">推荐</span></h5>
+          <p>2 小时信息密度高 — Prompt 模板、账号推荐、工具对比表都要记。电脑打字 / 纸笔都行，挑你顺手的。课后不发 PPT（内容迭代快，直播的当下才是最新）。</p>
+        </div>
+      </div>
+    </div>
+    <div class="pr-foot">
+      💡 <strong>完全零基础别慌：</strong>没用过 AI 工具也能来，课上老师边演示边讲原理。但如果你连 ChatGPT / 豆包 / Kimi 都没打开过，建议课前一晚找任意一家聊 10 分钟建立手感，否则 L02 工具对比会跟得有点喘。
     </div>
   </div>
 </div>
