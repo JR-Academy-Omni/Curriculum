@@ -150,6 +150,18 @@
       special:      { label: '特殊机会 · INTERN/GRAD', emoji: '⭐', color: COLORS.tierSpc },
     };
 
+    // Social media poster minimum font sizes (per feedback_social_media_poster_min_font.md)
+    // 1242×1660 renders at ~60% on phone; below 24px becomes unreadable.
+    const FONT_SIZE = {
+      meta:     24,   // absolute minimum: URL, timestamps, brand credit
+      body:     28,   // why text, descriptions, bullet text
+      label:    30,   // pill labels, tier badges
+      subtitle: 32,   // secondary titles, eyebrow subtitle
+      title:    40,   // card title (job title)
+      headline: 60,   // company name, emphasis
+      display: 100,   // hero / main title
+    };
+
     // ---- Canvas helpers ----
 
     function drawShadowRect(ctx, x, y, w, h, fill, shadowOffset = 8) {
@@ -208,131 +220,119 @@
     // ---- Sections ----
 
     function drawHeader(ctx, data) {
-      // Eyebrow bar
-      setFont(ctx, 700, 20, 'Space Mono');
+      // Eyebrow bar (meta size, smallest allowed)
+      setFont(ctx, 700, FONT_SIZE.meta, 'Space Mono');
       const eyebrowText = '匠人学院 · AI ENGINEER BOOTCAMP';
       const eyeW = ctx.measureText(eyebrowText).width + 36;
-      drawFlatRect(ctx, 80, 90, eyeW, 44, COLORS.ink, 2);
+      drawFlatRect(ctx, 80, 70, eyeW, 50, COLORS.ink, 2);
       ctx.fillStyle = '#fff';
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'left';
-      ctx.fillText(eyebrowText, 80 + 18, 90 + 22);
+      ctx.fillText(eyebrowText, 80 + 18, 70 + 25);
 
-      // Big title
+      // Big hero title
       ctx.fillStyle = COLORS.ink;
-      setFont(ctx, 900, 92, 'Bricolage Grotesque');
+      setFont(ctx, 900, FONT_SIZE.display, 'Bricolage Grotesque');
       ctx.textBaseline = 'top';
-      ctx.fillText('今日 3 个精选岗位', 80, 160);
+      ctx.fillText('今日 3 个精选岗位', 80, 140);
 
-      // Date + subtitle
+      // Date badge (subtitle size)
       const dateText = data.date;
-      setFont(ctx, 700, 20, 'Space Mono');
-      const dateW = ctx.measureText(dateText).width + 32;
-      drawFlatRect(ctx, 80, 280, dateW, 40, COLORS.primary, 2);
+      setFont(ctx, 700, FONT_SIZE.subtitle, 'Space Mono');
+      const dateW = ctx.measureText(dateText).width + 36;
+      drawFlatRect(ctx, 80, 250, dateW, 56, COLORS.primary, 2);
       ctx.fillStyle = '#fff';
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'left';
-      ctx.fillText(dateText, 80 + 16, 280 + 20);
+      ctx.fillText(dateText, 80 + 18, 250 + 28);
 
-      // Bootcamp / cohort label
+      // Cohort label next to date (body size)
       ctx.fillStyle = COLORS.ink;
-      setFont(ctx, 500, 22, 'DM Sans');
+      setFont(ctx, 600, FONT_SIZE.body, 'DM Sans');
       ctx.textBaseline = 'middle';
-      ctx.fillText('· Sydney / Melbourne · AI Engineer Cohort', 80 + dateW + 16, 280 + 20);
-
-      // Subtitle
-      ctx.fillStyle = COLORS.muted;
-      setFont(ctx, 500, 24, 'DM Sans');
-      ctx.textBaseline = 'top';
-      ctx.fillText('1 个理想档  ·  1 个够得着档  ·  1 个特殊机会', 80, 340);
+      ctx.fillText('· Sydney / Melbourne · AI Engineer Cohort', 80 + dateW + 16, 250 + 28);
 
       // Divider line under header
       ctx.fillStyle = COLORS.ink;
-      ctx.fillRect(80, 400, 1082, 4);
+      ctx.fillRect(80, 340, 1082, 4);
     }
 
     function drawJobCard(ctx, job, y) {
       const x = 80;
       const W = 1082;
-      const H = 340;
+      const H = 420;
 
       drawShadowRect(ctx, x, y, W, H, '#fff', 8);
 
-      // Tier label pill
+      // Tier label pill (label size, MUST be big enough to read on phone)
       const meta = TIER_META[job.tier] || { label: (job.tier || '').toUpperCase(), emoji: '•', color: COLORS.tierAsp };
-      setFont(ctx, 700, 18, 'Space Mono');
+      setFont(ctx, 800, FONT_SIZE.label, 'Space Mono');
       const labelText = `${meta.emoji}  ${meta.label}`;
-      const labelW = ctx.measureText(labelText).width + 32;
-      drawFlatRect(ctx, x + 28, y + 28, labelW, 38, meta.color, 2);
+      const labelW = ctx.measureText(labelText).width + 36;
+      drawFlatRect(ctx, x + 32, y + 28, labelW, 56, meta.color, 2);
       ctx.fillStyle = COLORS.ink;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
-      ctx.fillText(labelText, x + 28 + 16, y + 28 + 19);
+      ctx.fillText(labelText, x + 32 + 18, y + 28 + 28);
 
-      // Posted date (right side of pill row)
+      // Posted date (meta size, right-aligned)
       if (job.posted) {
-        setFont(ctx, 400, 16, 'Space Mono');
+        setFont(ctx, 500, FONT_SIZE.meta, 'Space Mono');
         ctx.fillStyle = COLORS.muted;
         ctx.textAlign = 'right';
-        ctx.fillText(job.posted, x + W - 28, y + 28 + 19);
+        ctx.fillText(job.posted, x + W - 32, y + 28 + 28);
       }
 
-      // Company (big)
+      // Company name (headline size — most prominent)
       ctx.fillStyle = COLORS.ink;
-      setFont(ctx, 900, 46, 'Bricolage Grotesque');
+      setFont(ctx, 900, FONT_SIZE.headline, 'Bricolage Grotesque');
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
-      const companyLines = wrapLines(ctx, job.company || '', W - 56, 1);
-      ctx.fillText(companyLines[0], x + 28, y + 88);
+      const companyLines = wrapLines(ctx, job.company || '', W - 64, 1);
+      ctx.fillText(companyLines[0], x + 32, y + 110);
 
-      // Job title
+      // Job title (title size, up to 2 lines)
       ctx.fillStyle = COLORS.ink;
-      setFont(ctx, 700, 28, 'DM Sans');
-      const titleLines = wrapLines(ctx, job.title || '', W - 56, 2);
+      setFont(ctx, 700, FONT_SIZE.title, 'DM Sans');
+      const titleLines = wrapLines(ctx, job.title || '', W - 64, 2);
       titleLines.forEach((line, i) => {
-        ctx.fillText(line, x + 28, y + 146 + i * 36);
+        ctx.fillText(line, x + 32, y + 184 + i * 50);
       });
 
-      // Location
+      // Location (body size)
       if (job.location) {
         ctx.fillStyle = COLORS.muted;
-        setFont(ctx, 500, 18, 'Space Mono');
-        ctx.fillText('📍 ' + job.location, x + 28, y + 226);
+        setFont(ctx, 600, FONT_SIZE.body, 'Space Mono');
+        ctx.fillText('📍 ' + job.location, x + 32, y + 290);
       }
 
-      // Why box
+      // Why box (body size, 2 lines max, with padding)
+      const whyBoxY = y + 334;
+      const whyBoxH = 76;
       ctx.fillStyle = COLORS.bg;
-      ctx.fillRect(x + 28, y + 260, W - 56, 60);
+      ctx.fillRect(x + 32, whyBoxY, W - 64, whyBoxH);
       ctx.strokeStyle = COLORS.border;
       ctx.lineWidth = 2;
-      ctx.strokeRect(x + 28, y + 260, W - 56, 60);
+      ctx.strokeRect(x + 32, whyBoxY, W - 64, whyBoxH);
       ctx.fillStyle = COLORS.ink;
-      setFont(ctx, 500, 16, 'DM Sans');
-      const whyLines = wrapLines(ctx, job.why || '', W - 84, 2);
+      setFont(ctx, 500, FONT_SIZE.body, 'DM Sans');
+      const whyLines = wrapLines(ctx, job.why || '', W - 96, 2);
       whyLines.forEach((line, i) => {
-        ctx.fillText(line, x + 44, y + 272 + i * 22);
+        ctx.fillText(line, x + 48, whyBoxY + 14 + i * 36);
       });
     }
 
     function drawFooter(ctx, data) {
-      const y = 1490;
-      // Dark CTA bar
+      // Minimal footer: just the URL, meta size, centered on dark bar
+      const y = 1600;
       ctx.fillStyle = COLORS.ink;
-      ctx.fillRect(80, y, 1082, 130);
+      ctx.fillRect(80, y, 1082, 44);
 
       ctx.fillStyle = '#fff';
-      setFont(ctx, 800, 28, 'Bricolage Grotesque');
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'top';
-      ctx.fillText('想投递？查看完整岗位链接 ↗', 110, y + 22);
-
-      ctx.fillStyle = COLORS.primary;
-      setFont(ctx, 700, 18, 'Space Mono');
-      ctx.fillText('jiangren.com.au/curriculum/ai-engineer-bootcamp/jobs/', 110, y + 66);
-
-      ctx.fillStyle = '#aaa';
-      setFont(ctx, 400, 13, 'Space Mono');
-      ctx.fillText('匠人学院 · AI Engineer Bootcamp · 每日精选岗位 by /daily-jobs', 110, y + 96);
+      setFont(ctx, 700, FONT_SIZE.meta, 'Space Mono');
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('jiangren.com.au/curriculum/ai-engineer-bootcamp/jobs/', 80 + 541, y + 22);
     }
 
     // ---- Main render ----
@@ -377,12 +377,12 @@
 
       drawHeader(ctx, data);
 
-      // 3 cards, vertically stacked
+      // 3 cards, 420px each, stacked with 10px gap
+      // y: 360-780, 790-1210, 1220-1640 (fits in 1660 canvas, 20px bottom margin)
       data.jobs.slice(0, 3).forEach((job, i) => {
-        drawJobCard(ctx, job, 440 + i * 350);
+        drawJobCard(ctx, job, 360 + i * 430);
       });
-
-      drawFooter(ctx, data);
+      // Footer removed to fit bigger-font cards. URL is implicit in header brand.
 
       // Hide loading, enable download
       loading.style.display = 'none';
