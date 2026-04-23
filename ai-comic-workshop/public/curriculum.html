@@ -39,6 +39,36 @@
     .hl-card p{font-size:13px;line-height:1.65;color:#444}
     @media(max-width:1024px){.hl-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:640px){.hl-grid{grid-template-columns:1fr;gap:14px}}
+    /* Tool Stack */
+    .ts-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .ts-head{border:3px solid #000;background:#10162f;color:#fff;padding:18px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .ts-head .mono{font-family:'Space Mono',monospace;font-size:12px;opacity:0.7;font-weight:400}
+    .ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid #000;border-top:none;background:#fff}
+    .ts-col{padding:22px 22px 24px;border-right:3px solid #000}
+    .ts-col:last-child{border-right:none}
+    .ts-logo{font-size:32px;margin-bottom:8px}
+    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;margin-bottom:4px}
+    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#CB6CE6;font-weight:700;margin-bottom:12px}
+    .ts-col p{font-size:13px;line-height:1.7;color:#444;margin-bottom:10px}
+    .ts-col p strong{color:#10162f}
+    .ts-pros,.ts-cons{font-size:12px;line-height:1.65;padding:8px 10px;margin-top:8px}
+    .ts-pros{background:#d1fae5;color:#065f46;border-left:4px solid #10b981}
+    .ts-cons{background:#fef3c7;color:#92400e;border-left:4px solid #f59e0b}
+    .ts-footnote{margin-top:14px;padding:12px 16px;background:#fff5f5;border:2px dashed #CB6CE6;font-size:12px;line-height:1.7;color:#555}
+    @media(max-width:900px){.ts-grid{grid-template-columns:1fr}.ts-col{border-right:none;border-bottom:3px solid #000}.ts-col:last-child{border-bottom:none}}
+    /* Audience */
+    .au-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .au-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .au-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .au-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:18px 20px;transition:all 0.15s}
+    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .au-emoji{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
+    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .au-body p{font-size:13px;line-height:1.65;color:#555}
+    .au-not{margin-top:22px;padding:16px 20px;background:#10162f;color:#fff;font-size:13px;line-height:1.7}
+    .au-not strong{color:#FFDE59}
+    @media(max-width:640px){.au-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -93,6 +123,96 @@
       <h4>线上 Zoom 直播 · 错过也能补</h4>
       <p>报名学员可回看录播（活动后发送），临时有事不能来、开课前全额退款。一次 A$58 一口价，没有国内发票，没有学员群 — 我们只卖这 2 小时的干货。</p>
     </div>
+  </div>
+</div>
+
+<!-- Tool Stack -->
+<div class="ts-wrap">
+  <div class="ts-head">
+    <span>🛠 本期主用工具栈</span>
+    <span class="mono">3 家主力 · 按角色分工</span>
+  </div>
+  <div class="ts-grid">
+    <div class="ts-col">
+      <div class="ts-logo">🎞</div>
+      <div class="ts-name">即梦</div>
+      <div class="ts-role">Video Generation · ByteDance</div>
+      <p><strong>定位：</strong>本期视频生成主力，Seedance 模型目前综合效果最好 — 镜头语言、人物一致性、动作流畅度都领先一截。</p>
+      <div class="ts-pros">✅ 成片质感最好 · 中文理解准 · 适合长镜头和情绪戏</div>
+      <div class="ts-cons">⚠️ 高峰期排队几小时起步 — 当场出不来，直播演示 Prompt 怎么下，成品视频用提前生成的播给你看</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🍌</div>
+      <div class="ts-name">Nano Banana</div>
+      <div class="ts-role">Image Generation · Gemini 2.5 Flash Image</div>
+      <p><strong>定位：</strong>角色设计 + 场景出图主力。谷歌今年主推的图像模型，角色一致性（多张图里保持同一个人）是目前最能打的。</p>
+      <div class="ts-pros">✅ 出图 30 秒起 · 角色一致性强 · 细节可控 · Prompt 门槛低</div>
+      <div class="ts-cons">⚠️ 不做视频 · 需要接入 AI Studio 或 API Key（课上讲怎么拿）</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">📱</div>
+      <div class="ts-name">Tapnow</div>
+      <div class="ts-role">Short-form Video · 漫剧特化</div>
+      <p><strong>定位：</strong>做短剧 / 漫剧节奏顺的专用平台，模板、分镜、对白气泡一站式 — 补即梦不擅长的短节奏场景。</p>
+      <div class="ts-pros">✅ 上手快 · 漫剧模板现成 · 适合起号跑量</div>
+      <div class="ts-cons">⚠️ 单镜头质感不如即梦 · 风格偏固定 · 商用前看清会员档位</div>
+    </div>
+  </div>
+  <div class="ts-footnote">
+    <strong>💡 为什么三家都要会：</strong>AI 漫剧没有一家通吃的工具 — 图用 Nano Banana 出稳、视频用即梦拼质感、短节奏用 Tapnow 跑量。老师会把「哪段戏用哪家」的决策逻辑讲清楚，你回去不用再对着评测帖纠结。本课不含额外工具账号费用，各平台的免费额度 / 订阅档位在 L02 模块会对照讲。
+  </div>
+</div>
+
+<!-- Audience -->
+<div class="au-wrap">
+  <div class="au-title">👥 这节课适合谁</div>
+  <div class="au-sub">张彦伟老师早年在北大青鸟 + B 站教过大量 18–30 岁的学员 — 现在把经验浓缩成这 2 小时</div>
+  <div class="au-grid">
+    <div class="au-card">
+      <div class="au-emoji">📱</div>
+      <div class="au-body">
+        <h4>想起号的短视频创作者</h4>
+        <p>抖音 / 快手 / 小红书 / TikTok 有点流量没爆款，看到别人 AI 漫剧起号心痒 — 来搞清楚「我自己能不能做」以及「该从哪一步动手」。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🎨</div>
+      <div class="au-body">
+        <h4>传统视频 / 动画从业者</h4>
+        <p>剪辑师、特效、动画、插画师 — 手上有功底但被 AI 追赶得慌。2 小时看清 AI 生产链在哪能替代你、在哪还需要你，决定下一步怎么走。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🏢</div>
+      <div class="au-body">
+        <h4>MCN / 内容工作室负责人</h4>
+        <p>小团队想试 AI 内容线但不知道配什么工具、成本怎么算、流水怎么排 — 看完能直接拍板「我们要不要投 AI 漫剧赛道」。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">📣</div>
+      <div class="au-body">
+        <h4>文旅 / 广告 / 企宣方向从业者</h4>
+        <p>手上有项目需要视频内容，预算紧、周期短 — 来看 AI 视频能不能替你做一版「能上的」样片，不再外包报价一惊一乍。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🎓</div>
+      <div class="au-body">
+        <h4>想转型 AI 方向的在校生 / 应届生</h4>
+        <p>简历上写「做过 AI 漫剧」比写「会 PS」值钱太多 — 2 小时搞清整条工艺，回去自己做一条作品放 Portfolio。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">✍️</div>
+      <div class="au-body">
+        <h4>有故事想讲但不会做视频的作者</h4>
+        <p>有剧本、有创意、动不了剪辑软件 — AI 漫剧这条路恰好跳过最难的部分。看完知道自己那几百字能不能先做成一条 1 分钟片。</p>
+      </div>
+    </div>
+  </div>
+  <div class="au-not">
+    <strong>⛔ 不适合来：</strong>想系统学 AE / PR / C4D 传统视频制作 — 这课是 AI 工具流，不讲传统后期；想学编程 / 训练自己的模型 — 这课讲应用层，不碰模型训练；完全不关心 AI 短视频赛道，只想围观热闹 — 2 小时太密，围观划不来。
   </div>
 </div>
 
