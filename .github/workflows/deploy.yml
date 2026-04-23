@@ -129,6 +129,12 @@ jobs:
             cp -r openclaw-workshop/public/* _site/openclaw-workshop/
           fi
 
+          # ai-comic-workshop: static HTML only (2-hour online Zoom workshop, 张彦伟 · AI 漫剧)
+          if [ -d ai-comic-workshop/public ]; then
+            mkdir -p _site/ai-comic-workshop
+            cp -r ai-comic-workshop/public/* _site/ai-comic-workshop/
+          fi
+
           # business-analyst (AI 产品经理 BA 训练营): static HTML only, generated from outline.json
           if [ -d business-analyst/public ]; then
             mkdir -p _site/business-analyst
