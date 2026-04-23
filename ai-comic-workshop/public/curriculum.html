@@ -120,6 +120,44 @@
     .pr-body .req{display:inline-block;margin-left:6px;padding:1px 7px;background:#fee2e2;color:#991b1b;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
     .pr-foot{padding:14px 22px;background:#fff5f5;border-top:2px solid #FF914D;font-size:12px;line-height:1.7;color:#555}
     @media(max-width:640px){.pr-grid{grid-template-columns:1fr}.pr-item{border-right:none;border-bottom:2px dashed #e5e7eb}.pr-item:nth-last-child(1){border-bottom:none}}
+    /* Pricing */
+    .pc-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .pc-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .pc-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .pc-card{display:grid;grid-template-columns:400px 1fr;gap:0;border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #10162f}
+    .pc-left{background:linear-gradient(135deg,#FFDE59 0%,#FF914D 100%);border-right:3px solid #000;padding:36px 28px;display:flex;flex-direction:column;justify-content:center;gap:12px;text-align:center}
+    .pc-label{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#10162f;opacity:0.8}
+    .pc-price{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;color:#10162f;line-height:1}
+    .pc-price .cur{font-size:24px;vertical-align:top;margin-right:4px}
+    .pc-price .num{font-size:72px;letter-spacing:-2px}
+    .pc-price .unit{font-size:18px;margin-left:6px;font-weight:700}
+    .pc-tag{display:inline-block;padding:6px 14px;background:#10162f;color:#FFDE59;border:2px solid #000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;align-self:center}
+    .pc-cta{display:block;margin-top:14px;padding:14px 0;background:#10162f;color:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;text-decoration:none;letter-spacing:0.5px;transition:all 0.15s}
+    .pc-cta:hover{box-shadow:none;transform:translate(3px,3px);text-decoration:none;color:#fff}
+    .pc-right{padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .pc-inc h5,.pc-exc h5{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #000}
+    .pc-inc h5{color:#10b981}
+    .pc-exc h5{color:#ef4444}
+    .pc-inc ul,.pc-exc ul{list-style:none;padding:0}
+    .pc-inc li,.pc-exc li{font-size:13px;line-height:1.7;padding:5px 0 5px 24px;position:relative;color:#333}
+    .pc-inc li::before{content:"✓";position:absolute;left:0;top:5px;color:#10b981;font-weight:900;font-size:15px}
+    .pc-exc li::before{content:"✗";position:absolute;left:0;top:5px;color:#ef4444;font-weight:900;font-size:15px}
+    @media(max-width:820px){.pc-card{grid-template-columns:1fr}.pc-left{border-right:none;border-bottom:3px solid #000}.pc-right{grid-template-columns:1fr;gap:20px}}
+    /* FAQ */
+    .fq-wrap{max-width:1000px;margin:56px auto 0;padding:0 24px}
+    .fq-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .fq-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .fq-list{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000}
+    .fq-item{border-bottom:2px solid #000}
+    .fq-item:last-child{border-bottom:none}
+    .fq-item summary{padding:16px 22px;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;background:#fff;transition:background 0.15s}
+    .fq-item summary::-webkit-details-marker{display:none}
+    .fq-item summary::after{content:"+";font-size:22px;font-weight:900;color:#CB6CE6;flex-shrink:0;transition:transform 0.2s}
+    .fq-item[open] summary{background:#fff5f5;border-bottom:2px solid #000}
+    .fq-item[open] summary::after{content:"−";color:#ec4899;transform:rotate(0deg)}
+    .fq-item summary:hover{background:#fafafa}
+    .fq-ans{padding:16px 22px 20px;font-size:14px;line-height:1.8;color:#333;background:#fffbeb}
+    .fq-ans strong{color:#10162f}
   </style>
 </head>
 <body>
@@ -509,6 +547,121 @@
     <div class="pr-foot">
       💡 <strong>完全零基础别慌：</strong>没用过 AI 工具也能来，课上老师边演示边讲原理。但如果你连 ChatGPT / 豆包 / Kimi 都没打开过，建议课前一晚找任意一家聊 10 分钟建立手感，否则 L02 工具对比会跟得有点喘。
     </div>
+  </div>
+</div>
+
+<!-- Pricing -->
+<div class="pc-wrap">
+  <div class="pc-title">💰 报名与价格</div>
+  <div class="pc-sub">一口价 · 不卖套餐 · 不搞分期 · 到账就发 Zoom 链接</div>
+  <div class="pc-card">
+    <div class="pc-left">
+      <div class="pc-label">💳 一次性 · 单次工作坊</div>
+      <div class="pc-price"><span class="cur">A$</span><span class="num">58</span><span class="unit">AUD</span></div>
+      <div class="pc-tag">🌏 支持 Airwallex 全球支付</div>
+      <a class="pc-cta" href="{{AIRWALLEX_URL}}" target="_blank" rel="noopener">立即报名 · A$58 →</a>
+    </div>
+    <div class="pc-right">
+      <div class="pc-inc">
+        <h5>✅ 价格包含</h5>
+        <ul>
+          <li>2 小时线上直播 · Zoom 全程分享屏幕</li>
+          <li>录播回看权限（活动结束后发送 · 长期可看）</li>
+          <li>L06 现场 Q&amp;A 答疑</li>
+          <li>即梦 / Nano Banana Prompt 模板</li>
+          <li>三家工具的注册链接 + 入门路径</li>
+          <li>参考账号清单 + 起号方向建议</li>
+        </ul>
+      </div>
+      <div class="pc-exc">
+        <h5>⛔ 价格不含</h5>
+        <ul>
+          <li>即梦 / Nano Banana / Tapnow 的账号订阅费（各家自理）</li>
+          <li>中国大陆境内发票（本课为澳洲主体收款 · 仅提供 Airwallex 付款收据）</li>
+          <li>课后学员微信群 / 长期答疑（本课不设 · 问题集中在 L06）</li>
+          <li>一对一视频项目指导（不是咨询课 · 是直播工作坊）</li>
+          <li>回看无限期的担保（平台政策调整会另行通知）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="fq-wrap">
+  <div class="fq-title">❓ 常见问题</div>
+  <div class="fq-sub">9 个问题 · 买之前先看完 · 省得课上一堆误会</div>
+  <div class="fq-list">
+
+    <details class="fq-item" open>
+      <summary>Q1 · 完全没用过 AI 工具，也没做过视频，能来吗？</summary>
+      <div class="fq-ans">
+        <strong>能，但有底线。</strong>这是一节讲 AI 漫剧工艺流水的课，不讲 PS / AE / PR 这类传统视频基础。你不需要会任何视频软件，也不需要会编程。唯一要求：<strong>开课前至少打开过一次 ChatGPT / 豆包 / Kimi / 任意 AI 聊天工具</strong>，和 AI 对过话 — 不然 L02 工具对比那段跟不上节奏。彻底零接触 AI 的同学，建议课前一晚花 10 分钟聊一轮建立手感。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q2 · 需要提前准备什么？</summary>
+      <div class="fq-ans">
+        6 件事，页面「📋 课前准备清单」有完整版。<strong>必做两件</strong>：① 装好 Zoom 桌面客户端登录一次 ② 确认网络 20Mbps 起、电脑 / iPad 大屏看直播。<strong>推荐四件</strong>：③ 注册即梦账号（jimeng.jianying.com）④ 登录 Google AI Studio 备用 Nano Banana ⑤ 想好自己要做哪一类漫剧 ⑥ 带纸笔 / 记事本。不做推荐项也能来，体验会打折。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q3 · 2 小时结束，我能带走一条自己做的成品视频吗？</summary>
+      <div class="fq-ans">
+        <strong>不能，这里必须说实话。</strong>即梦 Seedance 目前综合效果最好，但高峰期排队 <strong>几小时起步</strong>，课堂 2 小时内根本跑不完一条完整视频。所以我们的策略是：<strong>直播演示 Prompt 怎么下、参数怎么调、队列怎么排</strong>，让你看清操作全过程；<strong>成品视频部分，老师用提前生成好的完整漫剧片段播给你看</strong>，节奏、质感、一致性完整呈现。你带走的是方法论 + Prompt 模板 + 流程图 — 回家自己跑一夜，第二天出成品。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q4 · 即梦 / Nano Banana / Tapnow 要额外花钱吗？</summary>
+      <div class="fq-ans">
+        工具账号费用 <strong>不在 A$58 里</strong>，各家自理。好消息是三家都有免费档：
+        <ul style="margin:8px 0 0 20px">
+          <li><strong>即梦</strong>：新用户送免费额度，跑几条 15 秒短片免费，想做长的一般充值几十块人民币起</li>
+          <li><strong>Nano Banana</strong>：Google AI Studio 免费档，日常出图够用</li>
+          <li><strong>Tapnow</strong>：有免费试用档，商用起号建议直接上订阅（具体档位课上对照讲）</li>
+        </ul>
+        L02 模块会把三家当期的免费额度 / 订阅档 / 单次计费一次性对照讲清楚。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q5 · 有学员群吗？课后有答疑吗？</summary>
+      <div class="fq-ans">
+        <strong>没有学员群，也没有课后长期答疑。</strong>这是一次性直播工作坊，答疑集中在 L06 那 10 分钟 — 你有问题请在直播过程中用 Zoom 聊天 / Q&amp;A 面板提出来，老师能打断就打断讲，不能就攒到 L06 一起答。我们不卖「长期陪跑」这个东西 — 如果需要长期学习 + 社群，看 JR Academy 的 Bootcamp 系列。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q6 · 能开国内发票吗？</summary>
+      <div class="fq-ans">
+        <strong>不能开中国大陆境内发票。</strong>本课由 JR Academy 澳洲主体（Jiangren Academy Pty Ltd）收款，支付链路是 Airwallex，付款后你会收到 <strong>Airwallex 的付款收据（可抬头开具公司名称）</strong>，可作为澳洲境内报销凭证。如果你单位必须要国内发票，这节课可能不适合 — 请先问清楚报销政策再报名，A$58 不贵但也别白花。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q7 · 有录播吗？错过直播能补吗？</summary>
+      <div class="fq-ans">
+        <strong>有录播，报名学员开课后发送回看链接。</strong>当天临时有事不能来直播、或者想回头再看一遍某一段（特别是 L05 实操那 45 分钟信息密度高），录播都能补。录播长期可看（平台政策调整会另行通知）。但现场 Q&amp;A 互动只能在直播时参与，录播看不到弹幕提问的回答节奏。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q8 · 报名后不能参加，能退款 / 转期吗？</summary>
+      <div class="fq-ans">
+        <strong>活动开始前全额退款。</strong>5.13 周三悉尼时间 18:00 开课前，发邮件 / 客服申请退款，原路退回（Airwallex 通常 3-5 个工作日到账）。<strong>直播开始后不退款</strong> — 因为你已经拿到了录播访问权（随时可看），和坐满教室不同，线上名额不稀缺。转期目前没有排期，一次就是一次，报名一节结一节。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q9 · 线上还是线下？直播在哪看？怎么进入？</summary>
+      <div class="fq-ans">
+        <strong>线上直播，Zoom 平台。</strong>支付成功后 <strong>24 小时内</strong> 你会收到邮件，里面有 Zoom Meeting ID + 密码 + 一键加入链接。<strong>开课前 2 小时会再发一遍</strong> 提醒。没有名额限制 — 这是线上课的好处，带朋友一起看建议让他也报一个，一个账号一个屏幕体验更好。如果 24 小时后没收到邮件（先查垃圾邮件夹），联系客服补发。
+      </div>
+    </details>
+
   </div>
 </div>
 
