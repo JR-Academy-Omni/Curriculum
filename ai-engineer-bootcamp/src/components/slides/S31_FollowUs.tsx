@@ -50,7 +50,7 @@ function FakeQR({ seed }: { seed: number }) {
 	}
 	return (
 		<div style={{
-			width: 'clamp(110px,11vw,150px)', aspectRatio: '1/1',
+			width: '150px', aspectRatio: '1/1',
 			background: colors.white, border: `3px solid ${colors.black}`, padding: 6,
 			display: 'grid',
 			gridTemplateColumns: `repeat(${SIZE}, 1fr)`,
@@ -78,7 +78,7 @@ export default function S31_FollowUs() {
 					style={{ textAlign: 'center' }}
 				>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(28px,3.8vw,48px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '48px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0,
 					}}>
 						没当场报也没关系，先<span style={{
@@ -125,7 +125,7 @@ export default function S31_FollowUs() {
 								display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12,
 							}}>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(14px,1.4vw,18px)',
+									fontFamily: fonts.heading, fontSize: '18px',
 									fontWeight: 900, color: colors.black, textAlign: 'center', lineHeight: 1.2,
 								}}>
 									{c.name}
@@ -166,13 +166,13 @@ export default function S31_FollowUs() {
 					}}
 				>
 					<div style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(18px,2.2vw,32px)',
+						fontFamily: fonts.heading, fontSize: '32px',
 						fontWeight: 900, lineHeight: 1.15, letterSpacing: -0.5,
 					}}>
 						2026，<span style={{ color: colors.yellow }}>AI Engineer</span> 是最稳的技术饭碗
 					</div>
 					<div style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(14px,1.5vw,20px)',
+						fontFamily: fonts.heading, fontSize: '20px',
 						fontWeight: 700, lineHeight: 1.2, marginTop: 6, color: 'rgba(255,255,255,0.85)',
 					}}>
 						我们在 <span style={{ color: colors.red, fontWeight: 900 }}>JR</span> 等你

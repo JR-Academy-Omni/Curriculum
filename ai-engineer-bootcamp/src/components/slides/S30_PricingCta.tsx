@@ -64,7 +64,7 @@ export default function S30_PricingCta() {
 					<div style={{
 						display: 'inline-block',
 						padding: '6px 20px', background: colors.yellow, color: colors.black,
-						fontFamily: fonts.heading, fontSize: 'clamp(14px,1.6vw,20px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '20px', fontWeight: 900,
 						border: `3px solid ${colors.black}`, boxShadow: `6px 6px 0 ${colors.red}`,
 						letterSpacing: 0.5, transform: 'rotate(-1deg)',
 					}}>
@@ -105,7 +105,7 @@ export default function S30_PricingCta() {
 									原价
 								</span>
 								<span style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(22px,2.5vw,34px)',
+									fontFamily: fonts.heading, fontSize: '34px',
 									fontWeight: 800, color: '#888',
 									textDecoration: 'line-through',
 								}}>
@@ -124,7 +124,7 @@ export default function S30_PricingCta() {
 								</div>
 								<div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginTop: 4 }}>
 									<span style={{
-										fontFamily: fonts.heading, fontSize: 'clamp(42px,5.2vw,76px)',
+										fontFamily: fonts.heading, fontSize: '76px',
 										fontWeight: 900, color: colors.red, lineHeight: 1,
 										letterSpacing: -2,
 									}}>
@@ -157,7 +157,7 @@ export default function S30_PricingCta() {
 										🇦🇺 AUSTRALIA · Self-education 退税
 									</div>
 									<div style={{
-										fontFamily: fonts.heading, fontSize: 'clamp(11px,1.1vw,14px)',
+										fontFamily: fonts.heading, fontSize: '14px',
 										fontWeight: 800, lineHeight: 1.4, marginTop: 2,
 									}}>
 										澳洲学员按 37% 税率可抵税约 <span style={{ color: colors.red }}>AUD 1,332</span>，实付约 <span style={{ color: colors.red }}>AUD 2,268</span>
@@ -178,7 +178,7 @@ export default function S30_PricingCta() {
 									EARLY BIRD 福利
 								</div>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(12px,1.2vw,15px)',
+									fontFamily: fonts.heading, fontSize: '15px',
 									fontWeight: 800, lineHeight: 1.4, marginTop: 4,
 								}}>
 									{/* TODO(讲师回填): 确认福利细节 */}
@@ -222,7 +222,7 @@ export default function S30_PricingCta() {
 					>
 						{/* 二维码 placeholder — TODO(讲师回填): 替换为真实二维码图片 */}
 						<div style={{
-							width: 'clamp(180px,22vw,250px)', aspectRatio: '1/1',
+							width: '250px', aspectRatio: '1/1',
 							background: colors.white, border: `3px solid ${colors.black}`,
 							padding: 8,
 							display: 'grid',
@@ -238,7 +238,7 @@ export default function S30_PricingCta() {
 						</div>
 
 						<div style={{
-							fontFamily: fonts.heading, fontSize: 'clamp(13px,1.3vw,17px)',
+							fontFamily: fonts.heading, fontSize: '17px',
 							fontWeight: 800, color: colors.black, textAlign: 'center', lineHeight: 1.3,
 						}}>
 							扫码加小助手 · 当场咨询<br />
@@ -254,7 +254,7 @@ export default function S30_PricingCta() {
 								width: '100%',
 								padding: '10px 14px', background: colors.red, color: colors.white,
 								border: `3px solid ${colors.black}`, boxShadow: shadow,
-								fontFamily: fonts.heading, fontSize: 'clamp(14px,1.5vw,20px)',
+								fontFamily: fonts.heading, fontSize: '20px',
 								fontWeight: 900, textAlign: 'center', letterSpacing: 0.3,
 							}}
 						>
@@ -280,7 +280,7 @@ export default function S30_PricingCta() {
 						gap: 12, flexWrap: 'wrap',
 					}}>
 						<div style={{
-							fontFamily: fonts.mono, fontSize: 'clamp(9px,0.85vw,11px)',
+							fontFamily: fonts.mono, fontSize: '11px',
 							fontWeight: 900, letterSpacing: 1, color: '#555',
 							whiteSpace: 'nowrap',
 						}}>
@@ -294,11 +294,11 @@ export default function S30_PricingCta() {
 							border: `2px solid ${colors.black}`,
 						}}>
 							<span style={{
-								fontFamily: fonts.mono, fontSize: 'clamp(9px,0.85vw,11px)',
+								fontFamily: fonts.mono, fontSize: '11px',
 								fontWeight: 900, color: colors.red,
 							}}>★ 当前</span>
 							<span style={{
-								fontFamily: fonts.heading, fontSize: 'clamp(10px,1vw,13px)',
+								fontFamily: fonts.heading, fontSize: '13px',
 								fontWeight: 800,
 							}}>
 								Bootcamp V5 · AUD 3,600 · 24 周 · Live + P3 · 冲就业
@@ -312,11 +312,11 @@ export default function S30_PricingCta() {
 							border: `2px solid #999`,
 						}}>
 							<span style={{
-								fontFamily: fonts.mono, fontSize: 'clamp(9px,0.85vw,11px)',
+								fontFamily: fonts.mono, fontSize: '11px',
 								fontWeight: 700, color: '#666',
 							}}>SELF-PACED</span>
 							<span style={{
-								fontFamily: fonts.heading, fontSize: 'clamp(10px,1vw,13px)',
+								fontFamily: fonts.heading, fontSize: '13px',
 								fontWeight: 700, color: '#333',
 							}}>
 								AI Engineer 入门 · AUD 299 · 4 周 · 视频 + Lab · 打基础
@@ -328,7 +328,7 @@ export default function S30_PricingCta() {
 					<div style={{
 						padding: '6px 14px', background: 'rgba(255,255,255,0.08)',
 						border: '2px solid rgba(255,255,255,0.15)',
-						fontFamily: fonts.mono, fontSize: 'clamp(10px,1vw,12px)',
+						fontFamily: fonts.mono, fontSize: '12px',
 						color: 'rgba(255,255,255,0.85)', fontWeight: 600,
 						textAlign: 'center', letterSpacing: 0.5,
 					}}>

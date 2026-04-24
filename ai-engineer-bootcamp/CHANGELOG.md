@@ -1,5 +1,13 @@
 # Changelog — AI Engineer Bootcamp
 
+## 2026-04-21
+
+- 新增 88 节「自学」Information lesson，绑定 ai-engineer / prompt-master / vibe-coding / openclaw 4 个 Learn 方向的章节
+  - 每个 learn 章节作为独立 lesson，遵循 `curriculum/CLAUDE.md` "Learn 章节也是独立 Lesson" 规则
+  - 覆盖 55 节原有 concept 课，横跨所有 10 个 Phase
+  - lesson 编号用 `L{N}{a/b/c}` 子后缀，与已有 Quest 子编号共存
+  - 总课数 198 → 286，totalSteps 723 → 869
+
 ## 2026-04-20
 
 - 公开课 PPT 升级：slide deck 从 13 张扩充到 36 张（同步自 presentations/ 工作区）

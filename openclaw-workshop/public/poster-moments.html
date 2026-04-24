@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OpenClaw · Melbourne 5/6 · 朋友圈海报套装 (5 款)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;700;900&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0d0d0d; min-height: 100vh;
+      padding: 40px 20px 140px;
+      font-family: 'DM Sans','Noto Sans SC',sans-serif;
+      color: #fff;
+    }
+    .page-header { text-align: center; margin-bottom: 36px; }
+    .page-header h1 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 40px; font-weight: 900; color: #fff; margin-bottom: 10px; }
+    .page-header .sub { font-size: 14px; letter-spacing: 2px; opacity: 0.7; font-family: 'Space Mono', monospace; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+      gap: 40px; max-width: 1920px; margin: 0 auto;
+    }
+    .slot { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .slot .label {
+      font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 2px;
+      color: #FFDE59; padding: 8px 16px; background: rgba(255,222,89,0.08); border: 2px solid #FFDE59;
+    }
+    canvas {
+      width: 440px; height: 588px;
+      box-shadow: 14px 14px 0 #000, 0 0 0 3px #000;
+      background: #fff1e7;
+    }
+    .dl {
+      padding: 12px 24px; background: #E84142; color: #fff;
+      border: 3px solid #000; box-shadow: 5px 5px 0 #000;
+      font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      cursor: pointer; transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .dl:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 #000; }
+    .dl:active { transform: translate(2px,2px); box-shadow: 3px 3px 0 #000; }
+
+    .dl-all {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+      padding: 18px 38px; background: #FFDE59; color: #000;
+      border: 3px solid #000; box-shadow: 7px 7px 0 #000;
+      font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 2px;
+      cursor: pointer; z-index: 100;
+    }
+    .dl-all:hover { transform: translateX(-50%) translate(-2px,-2px); box-shadow: 9px 9px 0 #000; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>OpenClaw · 墨尔本 5/6 · 朋友圈海报套装</h1>
+  <div class="sub">5 款视觉风格 · 1242×1660 · 纯 Canvas 2D · 点单张或「一键下载全部」</div>
+</div>
+
+<div id="grid" class="grid"></div>
+
+<button id="dl-all" class="dl-all">⬇ 一键下载全部 (5 PNG)</button>
+
+<script>
+// ==========================================================================
+// 常量
+// ==========================================================================
+const C = {
+  cream: '#fff1e7', dark: '#10162f', red: '#E84142', yellow: '#FFDE59',
+  white: '#ffffff', black: '#000000', grey: '#666666', lightGrey: '#cfcfcf',
+  iosBlue: '#007aff', iosGreyBubble: '#e9e9eb', paper: '#efe7d7',
+};
+const F = {
+  title: 'Bricolage Grotesque',
+  zh: 'Noto Sans SC',
+  body: 'DM Sans',
+  mono: 'Space Mono',
+  hand: 'Caveat',
+};
+// 最小字号 24px 硬约束（memory/feedback_social_media_poster_min_font）
+const SIZE = { meta: 24, body: 28, label: 30, subtitle: 36, title: 48, headline: 72, display: 140 };
+
+// ==========================================================================
+// helpers
+// ==========================================================================
+function T(ctx, str, x, y, { font = `700 40px ${F.zh}`, color = C.dark, align = 'left', baseline = 'top' } = {}) {
+  ctx.font = font; ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = baseline;
+  ctx.fillText(str, x, y);
+  return ctx.measureText(str).width;
+}
+function rect(ctx, x, y, w, h, fill, border, bw = 0, sh = 0) {
+  if (sh) { ctx.fillStyle = C.black; ctx.fillRect(x + sh, y + sh, w, h); }
+  ctx.fillStyle = fill; ctx.fillRect(x, y, w, h);
+  if (bw > 0 && border) { ctx.strokeStyle = border; ctx.lineWidth = bw; ctx.strokeRect(x + bw/2, y + bw/2, w - bw, h - bw); }
+}
+function roundRect(ctx, x, y, w, h, r, fill) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+}
+function dashedLine(ctx, x1, y1, x2, y2, color = C.black, lw = 3, dash = [12, 10]) {
+  ctx.save();
+  ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.setLineDash(dash);
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  ctx.restore();
+}
+// 根据最大宽度按字符拆行
+function wrapZh(ctx, str, maxWidth, font) {
+  ctx.font = font;
+  const lines = [];
+  let cur = '';
+  for (const ch of str) {
+    const w = ctx.measureText(cur + ch).width;
+    if (w > maxWidth && cur.length) { lines.push(cur); cur = ch; }
+    else cur += ch;
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
+// ==========================================================================
+// M1 · 极简大数字 —— "2.5H / 装个 AI 到电脑里"
+// ==========================================================================
+function renderM1(ctx, W, H) {
+  // 奶油底
+  rect(ctx, 0, 0, W, H, C.cream);
+
+  // 顶部小标
+  T(ctx, 'MELBOURNE · 5.6 WED · 6 PM', 72, 92, {
+    font: `700 36px ${F.mono}`, color: C.red,
+  });
+  ctx.fillStyle = C.red; ctx.fillRect(72, 144, 180, 8);
+
+  // 超大红色 2.5
+  T(ctx, '2.5', 72, 200, {
+    font: `900 700px ${F.title}`, color: C.red,
+  });
+  // H 小字压右下
+  T(ctx, 'HOURS', 1040, 770, {
+    font: `900 64px ${F.title}`, color: C.dark, align: 'right',
+  });
+
+  // 中间黑底一句话块
+  const y = 970;
+  rect(ctx, 0, y, W, 390, C.dark);
+  T(ctx, '一晚上，', 72, y + 50, { font: `900 96px ${F.zh}`, color: C.white });
+  T(ctx, '把 AI Agent', 72, y + 170, { font: `900 112px ${F.zh}`, color: C.yellow });
+  T(ctx, '装进你电脑。', 72, y + 280, { font: `900 112px ${F.zh}`, color: C.yellow });
+
+  // 底部信息条（加高 + 字号放大）
+  const iy = H - 260;
+  rect(ctx, 72, iy, W - 144, 200, C.white, C.black, 5);
+  T(ctx, 'WED 6 MAY 2026', 110, iy + 40, { font: `900 56px ${F.title}`, color: C.dark });
+  T(ctx, '18:00 — 20:30 · CloudTech Melbourne', 110, iy + 120, {
+    font: `500 36px ${F.zh}`, color: C.grey,
+  });
+  T(ctx, '20 席', W - 110, iy + 46, { font: `900 80px ${F.title}`, color: C.red, align: 'right' });
+  T(ctx, 'only', W - 110, iy + 136, { font: `700 30px ${F.mono}`, color: C.grey, align: 'right' });
+}
+
+// ==========================================================================
+// M2 · 便利贴风 —— 深蓝底 + 黄色便利贴（手写感）
+// ==========================================================================
+function renderM2(ctx, W, H) {
+  rect(ctx, 0, 0, W, H, C.dark);
+
+  // 背景小网格（纸张质感）
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)'; ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 60) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+  for (let y = 0; y < H; y += 60) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  ctx.restore();
+
+  // 顶部 kicker
+  T(ctx, '// MELBOURNE · AI WORKSHOP NIGHT', 72, 90, {
+    font: `700 34px ${F.mono}`, color: C.yellow,
+  });
+
+  // 便利贴（旋转 -3 度）—— 加高以容纳更大字号
+  const nx = 110, ny = 190, nw = 1020, nh = 1320;
+  ctx.save();
+  ctx.translate(nx + nw/2, ny + nh/2);
+  ctx.rotate(-3 * Math.PI / 180);
+  // 阴影
+  ctx.fillStyle = 'rgba(0,0,0,0.45)';
+  ctx.fillRect(-nw/2 + 20, -nh/2 + 26, nw, nh);
+  // 黄色纸
+  ctx.fillStyle = C.yellow;
+  ctx.fillRect(-nw/2, -nh/2, nw, nh);
+
+  // 顶部黏胶条（深色 overlay）
+  ctx.fillStyle = 'rgba(232,65,66,0.55)';
+  ctx.fillRect(-200, -nh/2 - 36, 400, 80);
+
+  // 便利贴内文（手写感）
+  const cx = -nw/2 + 80;
+  let cy = -nh/2 + 120;
+
+  T(ctx, '嘿，老朋友 👋', cx, cy, {
+    font: `700 94px ${F.hand}`, color: C.black,
+  });
+  cy += 150;
+
+  T(ctx, '5.6 周三晚 6 点', cx, cy, {
+    font: `700 124px ${F.hand}`, color: C.black,
+  });
+  cy += 138;
+  T(ctx, 'CloudTech Melbourne', cx, cy, {
+    font: `700 88px ${F.hand}`, color: '#d63031',
+  });
+  cy += 160;
+
+  // 画三个勾选框（放大）
+  const items = [
+    '带你自己的笔记本',
+    '带一件真实工作素材',
+    '不带任何 AI 基础也行',
+  ];
+  items.forEach((txt, i) => {
+    const yy = cy + i * 128;
+    ctx.strokeStyle = C.black; ctx.lineWidth = 6;
+    ctx.strokeRect(cx, yy, 72, 72);
+    ctx.strokeStyle = C.black; ctx.lineWidth = 8;
+    ctx.beginPath();
+    ctx.moveTo(cx + 12, yy + 40);
+    ctx.lineTo(cx + 30, yy + 60);
+    ctx.lineTo(cx + 64, yy + 14);
+    ctx.stroke();
+    T(ctx, txt, cx + 110, yy - 6, { font: `500 68px ${F.hand}`, color: C.black });
+  });
+
+  ctx.restore();
+
+  // 底部 meta（放大）
+  T(ctx, 'OPENCLAW · 2.5H · 20 席 · 中文场', W/2, H - 90, {
+    font: `700 40px ${F.mono}`, color: C.yellow, align: 'center',
+  });
+}
+
+// ==========================================================================
+// M3 · iMessage 聊天截图 —— 让朋友误以为是真实聊天
+// ==========================================================================
+function renderM3(ctx, W, H) {
+  rect(ctx, 0, 0, W, H, '#f2f2f7');
+
+  // 顶部 status bar
+  T(ctx, '9:41', 80, 36, { font: `700 42px ${F.body}`, color: C.black });
+  T(ctx, '···  ◐  ▬', W - 80, 36, { font: `700 38px ${F.body}`, color: C.black, align: 'right' });
+
+  // 聊天对话框头部（加高）
+  const headY = 120;
+  rect(ctx, 0, headY, W, 200, '#f8f8fa');
+  ctx.strokeStyle = '#d1d1d6'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(0, headY + 200); ctx.lineTo(W, headY + 200); ctx.stroke();
+
+  // 头像（红色圆圈 + OC）
+  ctx.beginPath(); ctx.arc(W/2, headY + 62, 56, 0, Math.PI * 2); ctx.fillStyle = C.red; ctx.fill();
+  T(ctx, 'OC', W/2, headY + 42, { font: `900 42px ${F.title}`, color: C.white, align: 'center' });
+  T(ctx, 'OpenClaw', W/2, headY + 138, { font: `700 42px ${F.body}`, color: C.black, align: 'center' });
+  T(ctx, 'online · on your laptop', W/2, headY + 184, { font: `500 30px ${F.body}`, color: '#8e8e93', align: 'center' });
+
+  // 日期 stamp
+  T(ctx, 'Wed 6 May · 6:00 PM', W/2, 360, {
+    font: `700 32px ${F.body}`, color: '#8e8e93', align: 'center',
+  });
+
+  // AI 气泡（左侧，灰色）
+  function leftBubble(text, y, { maxWidth = 860, font = `500 44px ${F.zh}`, bg = C.white } = {}) {
+    const pad = 34;
+    const lines = wrapZh(ctx, text, maxWidth, font);
+    const lh = 60;
+    const bh = lines.length * lh + pad * 2 - 12;
+    const bw = Math.min(maxWidth + pad * 2, Math.max(...lines.map(l => {
+      ctx.font = font; return ctx.measureText(l).width;
+    })) + pad * 2);
+    roundRect(ctx, 72, y, bw, bh, 42, bg);
+    // 尾巴
+    ctx.fillStyle = bg;
+    ctx.beginPath(); ctx.moveTo(72, y + bh - 24); ctx.lineTo(48, y + bh); ctx.lineTo(100, y + bh); ctx.closePath(); ctx.fill();
+    ctx.font = font; ctx.fillStyle = C.black; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    lines.forEach((l, i) => ctx.fillText(l, 72 + pad, y + pad + i * lh));
+    return bh;
+  }
+  function rightBubble(text, y, { maxWidth = 700, font = `500 44px ${F.zh}` } = {}) {
+    const pad = 34;
+    const lines = wrapZh(ctx, text, maxWidth, font);
+    const lh = 60;
+    const bh = lines.length * lh + pad * 2 - 12;
+    const bw = Math.max(...lines.map(l => { ctx.font = font; return ctx.measureText(l).width; })) + pad * 2;
+    const x = W - 72 - bw;
+    roundRect(ctx, x, y, bw, bh, 42, C.iosBlue);
+    ctx.fillStyle = C.iosBlue;
+    ctx.beginPath(); ctx.moveTo(x + bw, y + bh - 24); ctx.lineTo(x + bw + 24, y + bh); ctx.lineTo(x + bw - 28, y + bh); ctx.closePath(); ctx.fill();
+    ctx.font = font; ctx.fillStyle = C.white; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    lines.forEach((l, i) => ctx.fillText(l, x + pad, y + pad + i * lh));
+    return bh;
+  }
+
+  // 对话（简化为 4 条，留出更大气泡空间）
+  let y = 440;
+  y += leftBubble('邮件已经替你起草好了 ✅', y) + 30;
+  y += leftBubble('客户合同要点摘到你桌面了 📎', y) + 30;
+  y += rightBubble('等等你是谁？', y) + 30;
+  y += leftBubble('5.6 周三晚 6 点 · CloudTech Melbourne · 装我的那天', y, { maxWidth: 880 }) + 30;
+
+  // 底部输入框（加高）
+  const iy = H - 240;
+  rect(ctx, 0, iy, W, 240, '#f8f8fa');
+  ctx.strokeStyle = '#d1d1d6'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(0, iy); ctx.lineTo(W, iy); ctx.stroke();
+
+  roundRect(ctx, 72, iy + 60, W - 144, 108, 54, C.white);
+  ctx.strokeStyle = '#d1d1d6'; ctx.lineWidth = 2;
+  roundRect(ctx, 72, iy + 60, W - 144, 108, 54);
+  ctx.stroke();
+  T(ctx, '我来 · 5.6', 110, iy + 96, { font: `500 48px ${F.zh}`, color: '#8e8e93' });
+  // 蓝色发送按钮
+  ctx.beginPath(); ctx.arc(W - 132, iy + 114, 46, 0, Math.PI * 2); ctx.fillStyle = C.iosBlue; ctx.fill();
+  T(ctx, '↑', W - 132, iy + 76, { font: `900 56px ${F.body}`, color: C.white, align: 'center' });
+}
+
+// ==========================================================================
+// M4 · 报纸头条风 —— 复古杂志头版
+// ==========================================================================
+function renderM4(ctx, W, H) {
+  rect(ctx, 0, 0, W, H, C.paper);
+
+  // 顶部 报头
+  const headY = 86;
+  rect(ctx, 0, 0, W, 220, C.paper);
+  T(ctx, 'THE MELBOURNE AI HERALD', W/2, headY, {
+    font: `900 68px ${F.title}`, color: C.black, align: 'center',
+  });
+  // 细线上下
+  ctx.strokeStyle = C.black; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(72, 60); ctx.lineTo(W - 72, 60); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(72, 194); ctx.lineTo(W - 72, 194); ctx.stroke();
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(72, 66); ctx.lineTo(W - 72, 66); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(72, 188); ctx.lineTo(W - 72, 188); ctx.stroke();
+
+  T(ctx, 'VOL. XLVII · WED 6 MAY 2026 · MELBOURNE', W/2, 164, {
+    font: `700 32px ${F.mono}`, color: C.black, align: 'center',
+  });
+
+  // Eyebrow
+  T(ctx, 'BREAKING · LOCAL · TECH', 72, 248, {
+    font: `700 34px ${F.mono}`, color: C.red,
+  });
+
+  // 头版超大标题（三行）
+  T(ctx, 'Local shop will', 72, 298, { font: `900 130px ${F.title}`, color: C.black });
+  T(ctx, 'install an AI', 72, 432, { font: `900 130px ${F.title}`, color: C.black });
+  T(ctx, 'on your laptop.', 72, 566, { font: `900 130px ${F.title}`, color: C.red });
+
+  // 中文引文块
+  T(ctx, '「2.5 小时，手把手。走时 AI Agent 在你电脑里能用。」', 72, 740, {
+    font: `500 42px ${F.zh}`, color: C.black,
+  });
+  T(ctx, '— OpenClaw Workshop · JR Academy', 72, 800, {
+    font: `500 30px ${F.mono}`, color: C.grey,
+  });
+
+  // 分隔
+  ctx.strokeStyle = C.black; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(72, 860); ctx.lineTo(W - 72, 860); ctx.stroke();
+
+  // 两栏正文（字号放大 + 精简文本以避免溢出）
+  const colY = 890;
+  const leftX = 72, rightX = W/2 + 24, colW = (W - 144 - 48) / 2;
+
+  T(ctx, 'OFFLINE.', leftX, colY, {
+    font: `900 48px ${F.title}`, color: C.black,
+  });
+  T(ctx, 'HANDS-ON.', leftX, colY + 52, {
+    font: `900 48px ${F.title}`, color: C.black,
+  });
+  const p1 = '20 席线下晚间 · 老师 + 3 位 Tutor 现场陪跑 · 1:5–1:8 师生比 · 终端输出当场验证。';
+  const lines1 = wrapZh(ctx, p1, colW, `500 32px ${F.zh}`);
+  lines1.forEach((l, i) => T(ctx, l, leftX, colY + 132 + i * 50, {
+    font: `500 32px ${F.zh}`, color: C.black,
+  }));
+
+  T(ctx, 'WHO COMES.', rightX, colY, {
+    font: `900 48px ${F.title}`, color: C.black,
+  });
+  T(ctx, 'NON-TECH.', rightX, colY + 52, {
+    font: `900 48px ${F.title}`, color: C.black,
+  });
+  const p2 = '销售 · 房产 · 律师 · 会计 · 内容创作者 · SMB 老板 — 用过 ChatGPT 但没让 AI 真正干过活的人。';
+  const lines2 = wrapZh(ctx, p2, colW, `500 32px ${F.zh}`);
+  lines2.forEach((l, i) => T(ctx, l, rightX, colY + 132 + i * 50, {
+    font: `500 32px ${F.zh}`, color: C.black,
+  }));
+
+  // 竖线分栏
+  ctx.strokeStyle = C.black; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(W/2, colY - 14); ctx.lineTo(W/2, colY + 360); ctx.stroke();
+
+  // 底部信息方块（放大）
+  const iy = H - 280;
+  rect(ctx, 72, iy, W - 144, 220, C.black);
+  T(ctx, '18:00 — 20:30', 110, iy + 44, { font: `900 72px ${F.title}`, color: C.yellow });
+  T(ctx, 'CloudTech Melbourne · 20 席 · 中文场', 110, iy + 136, {
+    font: `500 38px ${F.zh}`, color: C.white,
+  });
+  T(ctx, 'openclaw →', W - 110, iy + 80, {
+    font: `900 54px ${F.title}`, color: C.red, align: 'right',
+  });
+  T(ctx, 'jiangren.com.au', W - 110, iy + 160, {
+    font: `700 30px ${F.mono}`, color: C.white, align: 'right',
+  });
+}
+
+// ==========================================================================
+// M5 · 入场券 / 票根 —— 红底 + 奶油色票根，斜切虚线
+// ==========================================================================
+function renderM5(ctx, W, H) {
+  rect(ctx, 0, 0, W, H, C.red);
+
+  // 对角网纹（ticket lines）
+  ctx.save();
+  ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 2;
+  for (let i = -H; i < W; i += 60) {
+    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + H, H); ctx.stroke();
+  }
+  ctx.restore();
+
+  // 顶 eyebrow（放大）
+  T(ctx, '★  OPENCLAW AI WORKSHOP  ★', W/2, 90, {
+    font: `900 52px ${F.mono}`, color: C.yellow, align: 'center',
+  });
+
+  // 票根主体（加高）
+  const tx = 62, ty = 180, tw = W - 124, th = 1400;
+  // 阴影
+  rect(ctx, tx + 14, ty + 18, tw, th, 'rgba(0,0,0,0.35)');
+  // 奶油底
+  rect(ctx, tx, ty, tw, th, C.cream, C.black, 6);
+
+  // 打孔装饰（左右四角）
+  const punches = [[tx+44,ty+44],[tx+tw-44,ty+44],[tx+44,ty+th-44],[tx+tw-44,ty+th-44]];
+  punches.forEach(([x,y]) => {
+    ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI*2); ctx.fillStyle = C.red; ctx.fill();
+    ctx.strokeStyle = C.black; ctx.lineWidth = 3; ctx.stroke();
+  });
+
+  // 上半部分 · ADMIT ONE（放大）
+  T(ctx, 'ADMIT', tx + 80, ty + 120, { font: `900 72px ${F.mono}`, color: C.red });
+  T(ctx, 'ONE', tx + 80, ty + 200, { font: `900 72px ${F.mono}`, color: C.red });
+
+  T(ctx, 'NO. 005 / 020', tx + tw - 80, ty + 124, {
+    font: `700 38px ${F.mono}`, color: C.grey, align: 'right',
+  });
+  T(ctx, 'MELBOURNE · 2026', tx + tw - 80, ty + 178, {
+    font: `700 32px ${F.mono}`, color: C.grey, align: 'right',
+  });
+
+  // 分割线
+  ctx.strokeStyle = C.black; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(tx + 60, ty + 320); ctx.lineTo(tx + tw - 60, ty + 320); ctx.stroke();
+
+  // 主标题（放大）
+  T(ctx, 'OpenClaw', tx + 80, ty + 380, { font: `900 150px ${F.title}`, color: C.dark });
+  T(ctx, '把 AI Agent 装进你电脑', tx + 80, ty + 550, { font: `700 60px ${F.zh}`, color: C.red });
+  T(ctx, '2.5 小时线下晚间 · 中文场 · 非技术友好', tx + 80, ty + 640, {
+    font: `500 36px ${F.zh}`, color: C.grey,
+  });
+
+  // 信息三段（横向）放大
+  const iy = ty + 730;
+  const cols = [
+    { label: 'DATE', big: '6 MAY', sub: 'Wed · 2026' },
+    { label: 'DOORS', big: '6:00 PM', sub: '— 8:30 PM' },
+    { label: 'VENUE', big: 'CloudTech', sub: 'Melbourne' },
+  ];
+  const colW2 = (tw - 160) / 3;
+  cols.forEach((c, i) => {
+    const x = tx + 80 + i * colW2;
+    T(ctx, c.label, x, iy, { font: `700 34px ${F.mono}`, color: C.red });
+    T(ctx, c.big, x, iy + 50, { font: `900 72px ${F.title}`, color: C.dark });
+    T(ctx, c.sub, x, iy + 134, { font: `500 34px ${F.zh}`, color: C.grey });
+  });
+
+  // 虚线分割（票根切口）
+  dashedLine(ctx, tx + 40, ty + 960, tx + tw - 40, ty + 960, C.black, 3, [16, 12]);
+  // 中央小剪刀图示
+  ctx.fillStyle = C.cream;
+  ctx.beginPath(); ctx.arc(tx + tw/2, ty + 960, 24, 0, Math.PI*2); ctx.fill();
+  T(ctx, '✂', tx + tw/2, ty + 938, { font: `36px ${F.body}`, color: C.black, align: 'center' });
+
+  // 票根底部 · 条形码区
+  const by = ty + 1010;
+  T(ctx, 'SEAT', tx + 80, by, { font: `700 34px ${F.mono}`, color: C.red });
+  T(ctx, 'X / 020', tx + 80, by + 50, { font: `900 88px ${F.title}`, color: C.dark });
+  T(ctx, '中文场 · 筛选制', tx + 80, by + 160, { font: `700 34px ${F.zh}`, color: C.grey });
+
+  // 条形码
+  const bcx = tx + tw - 460, bcy = by + 24;
+  for (let i = 0; i < 48; i++) {
+    const w = 2 + Math.floor(Math.random() * 6);
+    rect(ctx, bcx + i * 9, bcy, w, 130, C.dark);
+  }
+  T(ctx, 'OPENCLAW-MEL-050626', tx + tw - 80, by + 178, {
+    font: `700 28px ${F.mono}`, color: C.grey, align: 'right',
+  });
+
+  // 票根底部 CTA
+  const ay = ty + th - 130;
+  rect(ctx, tx + 60, ay, tw - 120, 84, C.dark);
+  T(ctx, 'jiangren.com.au / openclaw-workshop  →  报名', tx + tw/2, ay + 26, {
+    font: `700 32px ${F.mono}`, color: C.yellow, align: 'center',
+  });
+
+  // 最底 JR 标
+  T(ctx, 'JR ACADEMY · OPENCLAW USER GROUP', W/2, H - 52, {
+    font: `700 32px ${F.mono}`, color: C.yellow, align: 'center',
+  });
+}
+
+// ==========================================================================
+// 挂载
+// ==========================================================================
+const POSTERS = [
+  { id: 'm1', tag: 'M1 · 极简大数字 · 2.5H',      render: renderM1, slug: 'm1-minimal' },
+  { id: 'm2', tag: 'M2 · 便利贴 · 手写感',         render: renderM2, slug: 'm2-sticky-note' },
+  { id: 'm3', tag: 'M3 · iMessage 聊天截图',      render: renderM3, slug: 'm3-chat' },
+  { id: 'm4', tag: 'M4 · 复古报纸头条',           render: renderM4, slug: 'm4-newspaper' },
+  { id: 'm5', tag: 'M5 · 入场券 / 票根',           render: renderM5, slug: 'm5-ticket' },
+];
+
+function mount() {
+  const grid = document.getElementById('grid');
+  POSTERS.forEach(p => {
+    const slot = document.createElement('div');
+    slot.className = 'slot';
+    slot.innerHTML = `
+      <div class="label">${p.tag}</div>
+      <canvas id="canvas-${p.id}" width="1242" height="1660"></canvas>
+      <button class="dl" data-id="${p.id}" data-slug="${p.slug}">⬇ 下载 PNG</button>
+    `;
+    grid.appendChild(slot);
+    const canvas = slot.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+    p.render(ctx, 1242, 1660);
+  });
+
+  document.querySelectorAll('.dl').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const slug = btn.dataset.slug;
+      const c = document.getElementById(`canvas-${id}`);
+      const link = document.createElement('a');
+      link.download = `openclaw-moments-2026-05-06-${slug}.png`;
+      link.href = c.toDataURL('image/png');
+      link.click();
+    });
+  });
+
+  document.getElementById('dl-all').addEventListener('click', async () => {
+    for (const p of POSTERS) {
+      const c = document.getElementById(`canvas-${p.id}`);
+      const link = document.createElement('a');
+      link.download = `openclaw-moments-2026-05-06-${p.slug}.png`;
+      link.href = c.toDataURL('image/png');
+      link.click();
+      await new Promise(r => setTimeout(r, 250));
+    }
+  });
+}
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(mount);
+} else {
+  setTimeout(mount, 500);
+}
+</script>
+
+</body>
+</html>

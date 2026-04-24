@@ -85,11 +85,11 @@ export default function PhaseSlide({ phase, whyItMatters, representativeLessons 
 								{phase.lab} 个 Lab
 							</span>
 						</div>
-						<Title size="clamp(28px,3.8vw,46px)" style={{ lineHeight: 1.1 }}>{phase.name}</Title>
-						<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.4vw,17px)', color: '#555', fontWeight: 700, marginTop: 4 }}>
+						<Title size="46px" style={{ lineHeight: 1.1 }}>{phase.name}</Title>
+						<div style={{ fontFamily: fonts.heading, fontSize: '17px', color: '#555', fontWeight: 700, marginTop: 4 }}>
 							{phase.nameCn}
 						</div>
-						<p style={{ fontSize: 'clamp(13px,1.4vw,17px)', color: '#333', marginTop: 10, lineHeight: 1.5 }}>
+						<p style={{ fontSize: '17px', color: '#333', marginTop: 10, lineHeight: 1.5 }}>
 							{phase.summary}
 						</p>
 					</motion.div>
@@ -124,7 +124,7 @@ export default function PhaseSlide({ phase, whyItMatters, representativeLessons 
 									transition={{ duration: 0.3, delay: 0.3 + i * 0.06 }}
 									style={{
 										padding: '6px 0',
-										fontSize: 'clamp(13px,1.35vw,17px)',
+										fontSize: '17px',
 										fontWeight: 600,
 										borderBottom: i < phase.highlights.length - 1 ? '1px dashed #ddd' : 'none',
 										display: 'flex',
@@ -158,7 +158,7 @@ export default function PhaseSlide({ phase, whyItMatters, representativeLessons 
 							<div style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, color: colors.yellow, letterSpacing: 2, marginBottom: 6 }}>
 								学完可以胜任
 							</div>
-							<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(16px,1.8vw,22px)', fontWeight: 800, lineHeight: 1.3 }}>
+							<div style={{ fontFamily: fonts.heading, fontSize: '22px', fontWeight: 800, lineHeight: 1.3 }}>
 								{phase.jobOutcome}
 							</div>
 						</div>
@@ -179,7 +179,7 @@ export default function PhaseSlide({ phase, whyItMatters, representativeLessons 
 							<div style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, color: colors.black, letterSpacing: 2, marginBottom: 8 }}>
 								为什么这一层重要
 							</div>
-							<p style={{ fontSize: 'clamp(13px,1.35vw,16px)', fontWeight: 600, color: colors.black, lineHeight: 1.5, margin: 0 }}>
+							<p style={{ fontSize: '16px', fontWeight: 600, color: colors.black, lineHeight: 1.5, margin: 0 }}>
 								{whyItMatters}
 							</p>
 						</div>

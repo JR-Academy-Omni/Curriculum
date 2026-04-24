@@ -32,7 +32,7 @@ export default function S04_PainWarm() {
 				{/* 顶部：技术背景老学员 + 在职 SDE */}
 				<motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: 10 }}>
 					<div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 4 }}>
-						<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(16px,1.9vw,22px)', fontWeight: 800, color: colors.black }}>
+						<div style={{ fontFamily: fonts.heading, fontSize: '22px', fontWeight: 800, color: colors.black }}>
 							你可能是这几类背景 <span style={{ fontFamily: fonts.mono, fontSize: 14, color: '#888' }}>// 前提：会写代码</span>
 						</div>
 						<span style={{
@@ -75,7 +75,7 @@ export default function S04_PainWarm() {
 							<div style={{ display: 'inline-block', padding: '2px 8px', background: c.color, color: colors.white, fontFamily: fonts.mono, fontSize: 10, fontWeight: 800, marginBottom: 8 }}>
 								✓ 已学
 							</div>
-							<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(14px,1.5vw,17px)', fontWeight: 800, color: colors.black, lineHeight: 1.25, marginBottom: 4 }}>
+							<div style={{ fontFamily: fonts.heading, fontSize: '17px', fontWeight: 800, color: colors.black, lineHeight: 1.25, marginBottom: 4 }}>
 								{c.name}
 							</div>
 							<div style={{ fontSize: 12, color: '#666', lineHeight: 1.4 }}>
@@ -92,13 +92,13 @@ export default function S04_PainWarm() {
 					transition={{ delay: 0.5 }}
 					style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18, margin: '18px 0 14px' }}
 				>
-					<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(20px,2.5vw,30px)', fontWeight: 900, color: colors.red, letterSpacing: -0.5 }}>
+					<div style={{ fontFamily: fonts.heading, fontSize: '30px', fontWeight: 900, color: colors.red, letterSpacing: -0.5 }}>
 						但你仍然
 					</div>
 					<motion.div
 						animate={{ y: [0, 8, 0] }}
 						transition={{ duration: 1.2, repeat: Infinity }}
-						style={{ fontSize: 'clamp(28px,4vw,48px)', color: colors.red, lineHeight: 1, fontWeight: 900 }}
+						style={{ fontSize: '48px', color: colors.red, lineHeight: 1, fontWeight: 900 }}
 					>
 						↓
 					</motion.div>
@@ -119,7 +119,7 @@ export default function S04_PainWarm() {
 						flexDirection: 'column',
 					}}
 				>
-					<h3 style={{ fontFamily: fonts.heading, fontSize: 'clamp(22px,2.8vw,34px)', fontWeight: 900, color: colors.white, letterSpacing: -0.8, lineHeight: 1.2, marginBottom: 18 }}>
+					<h3 style={{ fontFamily: fonts.heading, fontSize: '34px', fontWeight: 900, color: colors.white, letterSpacing: -0.8, lineHeight: 1.2, marginBottom: 18 }}>
 						做不出真正的 <span style={{ background: colors.red, color: colors.white, padding: '0 10px', border: `3px solid ${colors.black}`, display: 'inline-block', transform: 'rotate(-1deg)' }}>AI Engineering</span> 工程作品
 					</h3>
 
@@ -140,7 +140,7 @@ export default function S04_PainWarm() {
 								<div style={{ display: 'inline-block', padding: '3px 10px', background: colors.yellow, color: colors.black, fontFamily: fonts.mono, fontWeight: 800, fontSize: 11, marginBottom: 10 }}>
 									{g.tag}
 								</div>
-								<div style={{ fontSize: 'clamp(12px,1.3vw,15px)', lineHeight: 1.55, fontWeight: 500 }}>
+								<div style={{ fontSize: '15px', lineHeight: 1.55, fontWeight: 500 }}>
 									{g.body}
 								</div>
 							</motion.div>

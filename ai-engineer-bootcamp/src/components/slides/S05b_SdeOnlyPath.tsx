@@ -47,7 +47,7 @@ export default function S05b_SdeOnlyPath() {
 					transition={{ duration: 0.5, delay: 0.1 }}
 					style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(32px, 4.2vw, 54px)',
+						fontSize: '54px',
 						fontWeight: 900,
 						lineHeight: 1.15,
 						letterSpacing: -1,
@@ -75,7 +75,7 @@ export default function S05b_SdeOnlyPath() {
 					animate={{ opacity: 1 }}
 					transition={{ duration: 0.4, delay: 0.25 }}
 					style={{
-						fontSize: 'clamp(14px, 1.5vw, 18px)',
+						fontSize: '18px',
 						color: 'rgba(255,255,255,0.7)',
 						marginBottom: 28,
 					}}
@@ -112,7 +112,7 @@ export default function S05b_SdeOnlyPath() {
 						</div>
 						<div style={{
 							fontFamily: fonts.heading,
-							fontSize: 'clamp(18px, 2vw, 24px)',
+							fontSize: '24px',
 							fontWeight: 800,
 							color: 'rgba(255,255,255,0.85)',
 							marginBottom: 14,
@@ -129,7 +129,7 @@ export default function S05b_SdeOnlyPath() {
 									alignItems: 'flex-start',
 									gap: 10,
 									padding: '6px 0',
-									fontSize: 'clamp(12px, 1.1vw, 14px)',
+									fontSize: '14px',
 									color: 'rgba(255,255,255,0.7)',
 								}}>
 									<span style={{ color: colors.red, fontWeight: 700 }}>✕</span>
@@ -197,7 +197,7 @@ export default function S05b_SdeOnlyPath() {
 						</div>
 						<div style={{
 							fontFamily: fonts.heading,
-							fontSize: 'clamp(18px, 2vw, 24px)',
+							fontSize: '24px',
 							fontWeight: 900,
 							color: colors.black,
 							marginBottom: 14,
@@ -211,7 +211,7 @@ export default function S05b_SdeOnlyPath() {
 									alignItems: 'flex-start',
 									gap: 10,
 									padding: '6px 0',
-									fontSize: 'clamp(12px, 1.1vw, 14px)',
+									fontSize: '14px',
 									color: colors.black,
 								}}>
 									<span style={{ color: colors.red, fontWeight: 900 }}>✓</span>
@@ -244,7 +244,7 @@ export default function S05b_SdeOnlyPath() {
 				>
 					<div style={{
 						fontFamily: fonts.heading,
-						fontSize: 'clamp(14px, 1.5vw, 19px)',
+						fontSize: '19px',
 						fontWeight: 900,
 						color: colors.white,
 					}}>
