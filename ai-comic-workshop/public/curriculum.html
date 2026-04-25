@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 漫剧 2 小时实战直播 Workshop · 课程大纲</title>
+  <meta name="description" content="AI 漫剧 2 小时线上直播 Workshop — 张彦伟老师带你走完 AI 漫剧完整生产流程：角色设计 → 场景设计 → 视频生成。5.13 周三悉尼时间 18:00，$58 AUD。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#CB6CE6 100%);padding:56px 24px 48px}
+    .header h1{font-size:clamp(28px,5vw,44px);line-height:1.15;max-width:1000px;margin:0 auto}
+    .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:820px;margin:14px auto 0;opacity:0.85}
+    .chips{display:flex;gap:10px;justify-content:center;margin-top:22px;flex-wrap:wrap}
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;color:#10162f;border:3px solid #000;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.3px}
+    .chip.yellow{background:#FFDE59}
+    .chip.pink{background:#ec4899;color:#fff}
+    .chip.orange{background:#FF914D;color:#fff}
+    .cta-wrap{margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:10px}
+    .cta{display:inline-block;padding:16px 40px;background:#FFDE59;color:#10162f;border:3px solid #000;box-shadow:6px 6px 0 #000;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;text-decoration:none;letter-spacing:0.5px;transition:all 0.15s}
+    .cta:hover{box-shadow:none;transform:translate(4px,4px);text-decoration:none;color:#10162f}
+    .cta-note{font-size:12px;color:#fff;opacity:0.85;font-family:'Space Mono',monospace}
+    @media(max-width:640px){.chip{font-size:12px;padding:6px 12px}.cta{padding:14px 28px;font-size:16px}}
+    /* Highlights */
+    .hl-wrap{max-width:1200px;margin:48px auto 0;padding:0 24px}
+    .hl-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .hl-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .hl-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:20px 20px 22px;transition:all 0.15s}
+    .hl-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .hl-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;margin-bottom:10px;color:#fff}
+    .hl-tag.p{background:#CB6CE6}
+    .hl-tag.o{background:#FF914D}
+    .hl-tag.b{background:#38B6FF}
+    .hl-tag.g{background:#10b981}
+    .hl-tag.y{background:#FFDE59;color:#10162f}
+    .hl-tag.r{background:#ec4899}
+    .hl-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:800;line-height:1.35;margin-bottom:8px;color:#10162f}
+    .hl-card p{font-size:13px;line-height:1.65;color:#444}
+    @media(max-width:1024px){.hl-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.hl-grid{grid-template-columns:1fr;gap:14px}}
+    /* Tool Stack */
+    .ts-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .ts-head{border:3px solid #000;background:#10162f;color:#fff;padding:18px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .ts-head .mono{font-family:'Space Mono',monospace;font-size:12px;opacity:0.7;font-weight:400}
+    .ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid #000;border-top:none;background:#fff}
+    .ts-col{padding:22px 22px 24px;border-right:3px solid #000}
+    .ts-col:last-child{border-right:none}
+    .ts-logo{font-size:32px;margin-bottom:8px}
+    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;margin-bottom:4px}
+    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#CB6CE6;font-weight:700;margin-bottom:12px}
+    .ts-col p{font-size:13px;line-height:1.7;color:#444;margin-bottom:10px}
+    .ts-col p strong{color:#10162f}
+    .ts-pros,.ts-cons{font-size:12px;line-height:1.65;padding:8px 10px;margin-top:8px}
+    .ts-pros{background:#d1fae5;color:#065f46;border-left:4px solid #10b981}
+    .ts-cons{background:#fef3c7;color:#92400e;border-left:4px solid #f59e0b}
+    .ts-footnote{margin-top:14px;padding:12px 16px;background:#fff5f5;border:2px dashed #CB6CE6;font-size:12px;line-height:1.7;color:#555}
+    @media(max-width:900px){.ts-grid{grid-template-columns:1fr}.ts-col{border-right:none;border-bottom:3px solid #000}.ts-col:last-child{border-bottom:none}}
+    /* Audience */
+    .au-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .au-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .au-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .au-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:18px 20px;transition:all 0.15s}
+    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .au-emoji{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
+    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .au-body p{font-size:13px;line-height:1.65;color:#555}
+    .au-not{margin-top:22px;padding:16px 20px;background:#10162f;color:#fff;font-size:13px;line-height:1.7}
+    .au-not strong{color:#FFDE59}
+    @media(max-width:640px){.au-grid{grid-template-columns:1fr}}
+    /* Timeline */
+    .tl-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .tl-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .tl-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .tl-wrap .box{margin-bottom:20px}
+    .tl-wrap .box-h{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:'Bricolage Grotesque',sans-serif;font-size:16px}
+    .tl-wrap .box-h .slot{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.8}
+    .tl-wrap .time-block{background:#fafafa;padding:10px 24px;font-size:12px;font-family:'Space Mono',monospace;color:#555;border-bottom:1px solid #eee}
+    .tl-wrap .lesson-body h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:6px}
+    .tl-wrap .lesson-body p{font-size:13px;line-height:1.7;color:#444}
+    .tl-wrap .lesson-body ul{font-size:13px;line-height:1.75;color:#444;padding-left:18px}
+    .tl-wrap .lesson-body li{margin-bottom:3px}
+    .tl-wrap .tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+    .tl-wrap .tag-row .pill{padding:3px 10px;font-size:11px;font-weight:700;font-family:'Space Mono',monospace}
+    /* Instructor */
+    .in-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .in-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .in-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .in-card{border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #CB6CE6;display:grid;grid-template-columns:280px 1fr;gap:0}
+    .in-left{background:linear-gradient(135deg,#10162f 0%,#CB6CE6 100%);color:#fff;padding:32px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;border-right:3px solid #000}
+    .in-avatar{width:110px;height:110px;border:3px solid #fff;background:#fff;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:5px 5px 0 rgba(0,0,0,0.35)}
+    .in-name{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;letter-spacing:0.5px;margin-top:6px}
+    .in-role{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.85}
+    .in-right{padding:28px 30px}
+    .in-tagline{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;color:#10162f;line-height:1.4;margin-bottom:14px}
+    .in-right p{font-size:14px;line-height:1.75;color:#333;margin-bottom:10px}
+    .in-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .in-chips .pc{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:#f3f4f6;border:2px solid #000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+    .in-chips .pc.p{background:#fce7f3;color:#9d174d}
+    .in-chips .pc.o{background:#fff7ed;color:#9a3412}
+    .in-chips .pc.b{background:#dbeafe;color:#1e40af}
+    .in-chips .pc.g{background:#d1fae5;color:#065f46}
+    @media(max-width:820px){.in-card{grid-template-columns:1fr}.in-left{border-right:none;border-bottom:3px solid #000;padding:28px 20px}}
+    /* Course Prep */
+    .pr-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .pr-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .pr-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .pr-box{border:3px solid #000;background:#fffbeb;box-shadow:6px 6px 0 #000;padding:0}
+    .pr-head{background:#FFDE59;padding:14px 24px;border-bottom:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:18px;color:#10162f;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .pr-head .mono{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.75}
+    .pr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;background:#fff}
+    .pr-item{display:flex;gap:14px;padding:20px 22px;border-right:2px dashed #e5e7eb;border-bottom:2px dashed #e5e7eb}
+    .pr-item:nth-child(2n){border-right:none}
+    .pr-item:nth-last-child(-n+2){border-bottom:none}
+    .pr-num{flex-shrink:0;width:34px;height:34px;border:3px solid #000;background:#CB6CE6;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #000}
+    .pr-body h5{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .pr-body p{font-size:13px;line-height:1.7;color:#444}
+    .pr-body .opt{display:inline-block;margin-left:6px;padding:1px 7px;background:#d1fae5;color:#065f46;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    .pr-body .req{display:inline-block;margin-left:6px;padding:1px 7px;background:#fee2e2;color:#991b1b;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    .pr-foot{padding:14px 22px;background:#fff5f5;border-top:2px solid #FF914D;font-size:12px;line-height:1.7;color:#555}
+    @media(max-width:640px){.pr-grid{grid-template-columns:1fr}.pr-item{border-right:none;border-bottom:2px dashed #e5e7eb}.pr-item:nth-last-child(1){border-bottom:none}}
+    /* Pricing */
+    .pc-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .pc-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .pc-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .pc-card{display:grid;grid-template-columns:400px 1fr;gap:0;border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #10162f}
+    .pc-left{background:linear-gradient(135deg,#FFDE59 0%,#FF914D 100%);border-right:3px solid #000;padding:36px 28px;display:flex;flex-direction:column;justify-content:center;gap:12px;text-align:center}
+    .pc-label{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#10162f;opacity:0.8}
+    .pc-price{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;color:#10162f;line-height:1}
+    .pc-price .cur{font-size:24px;vertical-align:top;margin-right:4px}
+    .pc-price .num{font-size:72px;letter-spacing:-2px}
+    .pc-price .unit{font-size:18px;margin-left:6px;font-weight:700}
+    .pc-tag{display:inline-block;padding:6px 14px;background:#10162f;color:#FFDE59;border:2px solid #000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;align-self:center}
+    .pc-cta{display:block;margin-top:14px;padding:14px 0;background:#10162f;color:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;text-decoration:none;letter-spacing:0.5px;transition:all 0.15s}
+    .pc-cta:hover{box-shadow:none;transform:translate(3px,3px);text-decoration:none;color:#fff}
+    .pc-right{padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .pc-inc h5,.pc-exc h5{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #000}
+    .pc-inc h5{color:#10b981}
+    .pc-exc h5{color:#ef4444}
+    .pc-inc ul,.pc-exc ul{list-style:none;padding:0}
+    .pc-inc li,.pc-exc li{font-size:13px;line-height:1.7;padding:5px 0 5px 24px;position:relative;color:#333}
+    .pc-inc li::before{content:"✓";position:absolute;left:0;top:5px;color:#10b981;font-weight:900;font-size:15px}
+    .pc-exc li::before{content:"✗";position:absolute;left:0;top:5px;color:#ef4444;font-weight:900;font-size:15px}
+    @media(max-width:820px){.pc-card{grid-template-columns:1fr}.pc-left{border-right:none;border-bottom:3px solid #000}.pc-right{grid-template-columns:1fr;gap:20px}}
+    /* FAQ */
+    .fq-wrap{max-width:1000px;margin:56px auto 0;padding:0 24px}
+    .fq-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .fq-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .fq-list{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000}
+    .fq-item{border-bottom:2px solid #000}
+    .fq-item:last-child{border-bottom:none}
+    .fq-item summary{padding:16px 22px;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;background:#fff;transition:background 0.15s}
+    .fq-item summary::-webkit-details-marker{display:none}
+    .fq-item summary::after{content:"+";font-size:22px;font-weight:900;color:#CB6CE6;flex-shrink:0;transition:transform 0.2s}
+    .fq-item[open] summary{background:#fff5f5;border-bottom:2px solid #000}
+    .fq-item[open] summary::after{content:"−";color:#ec4899;transform:rotate(0deg)}
+    .fq-item summary:hover{background:#fafafa}
+    .fq-ans{padding:16px 22px 20px;font-size:14px;line-height:1.8;color:#333;background:#fffbeb}
+    .fq-ans strong{color:#10162f}
+    /* Sticky CTA (floating bottom bar) */
+    .sticky-cta{position:fixed;right:24px;bottom:24px;z-index:999;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 20px;background:#FFDE59;border:3px solid #000;box-shadow:6px 6px 0 #000;font-family:'Bricolage Grotesque',sans-serif;transition:all 0.15s;text-decoration:none;color:#10162f}
+    .sticky-cta:hover{box-shadow:none;transform:translate(3px,3px);text-decoration:none;color:#10162f}
+    .sticky-cta .sc-price{font-size:22px;font-weight:900;letter-spacing:-0.5px;line-height:1}
+    .sticky-cta .sc-meta{display:flex;flex-direction:column;gap:2px;font-family:'Space Mono',monospace}
+    .sticky-cta .sc-meta .sc-m1{font-size:11px;font-weight:700;color:#10162f}
+    .sticky-cta .sc-meta .sc-m2{font-size:10px;color:#555}
+    .sticky-cta .sc-arrow{font-size:24px;font-weight:900;margin-left:6px;color:#ec4899}
+    @media(max-width:640px){.sticky-cta{left:12px;right:12px;bottom:12px;justify-content:center;padding:12px 14px}.sticky-cta .sc-meta .sc-m2{display:none}}
+    /* Site Footer */
+    .site-footer{margin-top:72px;background:#10162f;color:#fff;padding:48px 24px 24px 24px;border-top:4px solid #000}
+    .sf-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;padding-bottom:32px;border-bottom:2px solid rgba(255,255,255,0.15)}
+    .sf-brand h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;margin-bottom:8px;color:#FFDE59}
+    .sf-brand p{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.75);margin-bottom:12px}
+    .sf-brand .sf-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .sf-brand .sf-badges span{padding:4px 10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.5px}
+    .sf-col h4{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#CB6CE6;margin-bottom:14px}
+    .sf-col ul{list-style:none;padding:0}
+    .sf-col li{font-size:13px;line-height:1.9;color:rgba(255,255,255,0.7)}
+    .sf-col li strong{color:#fff;font-weight:600}
+    .sf-col a{color:rgba(255,255,255,0.7);text-decoration:none;transition:color 0.15s}
+    .sf-col a:hover{color:#FFDE59}
+    .sf-bottom{max-width:1200px;margin:0 auto;padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .sf-copy{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px}
+    .sf-legal{display:flex;gap:18px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px}
+    .sf-legal a{color:rgba(255,255,255,0.6)}
+    @media(max-width:900px){.sf-inner{grid-template-columns:1fr 1fr;gap:28px}.sf-brand{grid-column:1 / -1}}
+    @media(max-width:560px){.sf-inner{grid-template-columns:1fr}.sf-bottom{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="header">
+  <h1>AI 漫剧 2 小时沉浸式实操工作坊</h1>
+  <div class="sub">张彦伟老师线上直播带你走完 AI 漫剧完整生产流程 — 角色设计 → 场景设计 → 视频生成，一次讲清即梦 / Nano Banana / Tapnow 各家怎么配合用。</div>
+  <div class="chips">
+    <span class="chip yellow">💰 A$58 AUD · 一口价</span>
+    <span class="chip pink">📅 2026-05-13 · 周三</span>
+    <span class="chip orange">🌏 悉尼时间 18:00 · 线上直播</span>
+  </div>
+  <div class="cta-wrap">
+    <a class="cta" href="https://pay.airwallex.com/sgh0bh8gpur9" target="_blank" rel="noopener">立即报名 · A$58 →</a>
+    <div class="cta-note">支付后 24 小时内邮件发送 Zoom 直播链接 · 未到场前可退 · 报名学员可看录播</div>
+  </div>
+</div>
+
+<!-- Highlights -->
+<div class="hl-wrap">
+  <div class="hl-title">✨ 这 2 小时你会拿到什么</div>
+  <div class="hl-sub">不是看 AI 演示视频合集 — 是看一线从业者从 0 到 1 做完整个流程 · 你能抄回去</div>
+  <div class="hl-grid">
+    <div class="hl-card">
+      <span class="hl-tag p">🎬 完整流程</span>
+      <h4>一条漫剧是怎么从一句话做到成片的</h4>
+      <p>角色设计 → 场景生成 → 分镜 → 视频合成 → 剪辑拼接 — 张老师直播走完整条线，每一步用什么工具、为什么这么接，当场讲透。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag o">🛠 三家工具实测对比</span>
+      <h4>即梦 / Nano Banana / Tapnow 到底用哪个</h4>
+      <p>即梦 Seedance 效果最好但排队几小时；Nano Banana 出图又快又准适合角色和场景；Tapnow 做短剧节奏顺。老师讲每家的脾气 + 当期组合方案。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag b">📺 6 大应用场景覆盖</span>
+      <h4>AI 视频能干嘛，不只做漫剧</h4>
+      <p>抖音/快手/TikTok 短视频 · 文旅宣传 · 品牌广告 · 企业宣传 · AI 漫剧 · AI 仿真人剧 — 讲完你能自己判断「我手里这个项目该用哪条线」。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag r">📚 AI 漫剧分类地图</span>
+      <h4>漫剧不是一种东西 — 按题材/画风/受众分</h4>
+      <p>帮你把脑子里模糊的「AI 漫剧」拆成几类 — 知道自己想做的那种该参考谁、用哪条工艺流水、踩哪些点能起号。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag g">🎥 直播演示 + 预生成成品</span>
+      <h4>当场看老师开工具下 Prompt，成品一次看够</h4>
+      <p>即梦排队几小时出不来是硬伤 — 老师会当场演示怎么下指令、怎么调参，<strong>成品视频用提前生成好的完整漫剧片段</strong>播给你看。看过程 + 看结果都不缺。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag y">📼 可看录播 · 未开场可退</span>
+      <h4>线上 Zoom 直播 · 错过也能补</h4>
+      <p>报名学员可回看录播（活动后发送），临时有事不能来、开课前全额退款。一次 A$58 一口价，没有国内发票，没有学员群 — 我们只卖这 2 小时的干货。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Tool Stack -->
+<div class="ts-wrap">
+  <div class="ts-head">
+    <span>🛠 本期主用工具栈</span>
+    <span class="mono">3 家主力 · 按角色分工</span>
+  </div>
+  <div class="ts-grid">
+    <div class="ts-col">
+      <div class="ts-logo">🎞</div>
+      <div class="ts-name">即梦</div>
+      <div class="ts-role">Video Generation · ByteDance</div>
+      <p><strong>定位：</strong>本期视频生成主力，Seedance 模型目前综合效果最好 — 镜头语言、人物一致性、动作流畅度都领先一截。</p>
+      <div class="ts-pros">✅ 成片质感最好 · 中文理解准 · 适合长镜头和情绪戏</div>
+      <div class="ts-cons">⚠️ 高峰期排队几小时起步 — 当场出不来，直播演示 Prompt 怎么下，成品视频用提前生成的播给你看</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🍌</div>
+      <div class="ts-name">Nano Banana</div>
+      <div class="ts-role">Image Generation · Gemini 2.5 Flash Image</div>
+      <p><strong>定位：</strong>角色设计 + 场景出图主力。谷歌今年主推的图像模型，角色一致性（多张图里保持同一个人）是目前最能打的。</p>
+      <div class="ts-pros">✅ 出图 30 秒起 · 角色一致性强 · 细节可控 · Prompt 门槛低</div>
+      <div class="ts-cons">⚠️ 不做视频 · 需要接入 AI Studio 或 API Key（课上讲怎么拿）</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">📱</div>
+      <div class="ts-name">Tapnow</div>
+      <div class="ts-role">Short-form Video · 漫剧特化</div>
+      <p><strong>定位：</strong>做短剧 / 漫剧节奏顺的专用平台，模板、分镜、对白气泡一站式 — 补即梦不擅长的短节奏场景。</p>
+      <div class="ts-pros">✅ 上手快 · 漫剧模板现成 · 适合起号跑量</div>
+      <div class="ts-cons">⚠️ 单镜头质感不如即梦 · 风格偏固定 · 商用前看清会员档位</div>
+    </div>
+  </div>
+  <div class="ts-footnote">
+    <strong>💡 为什么三家都要会：</strong>AI 漫剧没有一家通吃的工具 — 图用 Nano Banana 出稳、视频用即梦拼质感、短节奏用 Tapnow 跑量。老师会把「哪段戏用哪家」的决策逻辑讲清楚，你回去不用再对着评测帖纠结。本课不含额外工具账号费用，各平台的免费额度 / 订阅档位在 L02 模块会对照讲。
+  </div>
+</div>
+
+<!-- Audience -->
+<div class="au-wrap">
+  <div class="au-title">👥 这节课适合谁</div>
+  <div class="au-sub">张彦伟老师早年在北大青鸟 + B 站教过大量 18–30 岁的学员 — 现在把经验浓缩成这 2 小时</div>
+  <div class="au-grid">
+    <div class="au-card">
+      <div class="au-emoji">📱</div>
+      <div class="au-body">
+        <h4>想起号的短视频创作者</h4>
+        <p>抖音 / 快手 / 小红书 / TikTok 有点流量没爆款，看到别人 AI 漫剧起号心痒 — 来搞清楚「我自己能不能做」以及「该从哪一步动手」。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🎨</div>
+      <div class="au-body">
+        <h4>传统视频 / 动画从业者</h4>
+        <p>剪辑师、特效、动画、插画师 — 手上有功底但被 AI 追赶得慌。2 小时看清 AI 生产链在哪能替代你、在哪还需要你，决定下一步怎么走。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🏢</div>
+      <div class="au-body">
+        <h4>MCN / 内容工作室负责人</h4>
+        <p>小团队想试 AI 内容线但不知道配什么工具、成本怎么算、流水怎么排 — 看完能直接拍板「我们要不要投 AI 漫剧赛道」。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">📣</div>
+      <div class="au-body">
+        <h4>文旅 / 广告 / 企宣方向从业者</h4>
+        <p>手上有项目需要视频内容，预算紧、周期短 — 来看 AI 视频能不能替你做一版「能上的」样片，不再外包报价一惊一乍。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🎓</div>
+      <div class="au-body">
+        <h4>想转型 AI 方向的在校生 / 应届生</h4>
+        <p>简历上写「做过 AI 漫剧」比写「会 PS」值钱太多 — 2 小时搞清整条工艺，回去自己做一条作品放 Portfolio。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">✍️</div>
+      <div class="au-body">
+        <h4>有故事想讲但不会做视频的作者</h4>
+        <p>有剧本、有创意、动不了剪辑软件 — AI 漫剧这条路恰好跳过最难的部分。看完知道自己那几百字能不能先做成一条 1 分钟片。</p>
+      </div>
+    </div>
+  </div>
+  <div class="au-not">
+    <strong>⛔ 不适合来：</strong>想系统学 AE / PR / C4D 传统视频制作 — 这课是 AI 工具流，不讲传统后期；想学编程 / 训练自己的模型 — 这课讲应用层，不碰模型训练；完全不关心 AI 短视频赛道，只想围观热闹 — 2 小时太密，围观划不来。
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="tl-wrap">
+  <div class="tl-title">🗓 2 小时时间线 · 6 个 Block</div>
+  <div class="tl-sub">18:00 – 20:00 悉尼时间 · 老师直播带节奏 · 全程互动不读稿</div>
+
+  <!-- L01 -->
+  <div class="box" style="box-shadow:6px 6px 0 #CB6CE6;border-color:#000">
+    <div class="box-h" style="background:#CB6CE6"><span>🎬 L01 · AI 漫剧设计流程介绍</span><span class="slot">18:00 – 18:15 · 15 min</span></div>
+    <div class="time-block">⏱ 15 分钟 · 老师主讲 · 先把地图展开你再走</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>📖 你会听到</h5>
+        <ul>
+          <li>一条 AI 漫剧从 0 到成片的 5 步工序</li>
+          <li>每一步卡在哪、能用哪家 AI 接手</li>
+          <li>个人 vs 团队做法的分叉点在哪</li>
+        </ul>
+      </div>
+      <div>
+        <h5>🎯 你会带走</h5>
+        <p>一张「AI 漫剧生产流水」全景图 — 从剧本 → 角色 → 场景 → 分镜 → 视频 → 剪辑，每个环节对应什么工具、每步花多久，心里有谱。</p>
+      </div>
+      <div>
+        <h5>⚙️ 为什么先讲流程</h5>
+        <p>直接开工具讲你容易走丢 — 先看清全图再深挖每块，后面的工具对比 / 分类 / 实操才接得上。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L02 -->
+  <div class="box" style="box-shadow:6px 6px 0 #38B6FF;border-color:#000">
+    <div class="box-h" style="background:#38B6FF"><span>🛠 L02 · AI 平台优劣解析</span><span class="slot">18:15 – 18:35 · 20 min</span></div>
+    <div class="time-block">⏱ 20 分钟 · 即梦 / Nano Banana / Tapnow 三家横评 · 当场开工具演示</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>📖 对比维度</h5>
+        <ul>
+          <li>生成质量（人物一致性 / 运镜 / 时长）</li>
+          <li>出片速度 + 排队时长</li>
+          <li>成本档位（免费额度 / 订阅 / 单次计费）</li>
+          <li>商用授权边界</li>
+        </ul>
+      </div>
+      <div>
+        <h5>🎯 你会带走</h5>
+        <p>「什么戏用哪家」的决策表 — 即梦担当长镜头和情绪戏、Nano Banana 出角色和场景图、Tapnow 扛短节奏分发。回去不用再对着评测贴发呆。</p>
+      </div>
+      <div>
+        <h5>💡 现场演示</h5>
+        <p>当场开即梦下一条 Prompt 给你看界面、参数、排队时长 — <strong>成品视频用提前生成的播</strong>（排队几小时硬伤）。Nano Banana 和 Tapnow 可以当场出图。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L03 -->
+  <div class="box" style="box-shadow:6px 6px 0 #FF914D;border-color:#000">
+    <div class="box-h" style="background:#FF914D"><span>📺 L03 · AI 视频设计应用范围</span><span class="slot">18:35 – 18:50 · 15 min</span></div>
+    <div class="time-block">⏱ 15 分钟 · 6 大场景展开 · 每场景配一条真实成片例子</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>📖 6 大应用方向</h5>
+        <ul>
+          <li>📱 AI 短视频（抖音 / 快手 / TikTok）</li>
+          <li>🏞 文旅宣传视频</li>
+          <li>🛍 广告投放视频</li>
+          <li>🏢 企业宣传片</li>
+          <li>🎭 AI 漫剧（本期主角）</li>
+          <li>🧑 AI 仿真人剧</li>
+        </ul>
+      </div>
+      <div>
+        <h5>🎯 你会带走</h5>
+        <p>看清 AI 视频赛道不只做漫剧 — 手上如果有广告 / 文旅 / 企宣项目，能自己判断「这个该不该接 AI」「走哪条工艺」。</p>
+      </div>
+      <div>
+        <h5>💰 每条线的起号成本</h5>
+        <p>不是每条线都适合个人做 — 老师会标「一个人能起」vs「至少 3 人小队」vs「必须工作室」的分水岭，避免你盲目投入。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L04 -->
+  <div class="box" style="box-shadow:6px 6px 0 #ec4899;border-color:#000">
+    <div class="box-h" style="background:#ec4899"><span>📚 L04 · AI 漫剧分类</span><span class="slot">18:50 – 19:05 · 15 min</span></div>
+    <div class="time-block">⏱ 15 分钟 · 按题材 / 画风 / 受众三维度拆分 · 帮你定位自己要做的那一类</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>📖 三维分类框架</h5>
+        <ul>
+          <li><strong>题材</strong>：甜宠 / 都市 / 玄幻 / 悬疑 / 搞笑 / 科普</li>
+          <li><strong>画风</strong>：二次元 / 半写实 / 写实 / Q 版 / 国风</li>
+          <li><strong>受众</strong>：年轻女性 / 男性番剧 / 亲子 / 银发族</li>
+        </ul>
+      </div>
+      <div>
+        <h5>🎯 你会带走</h5>
+        <p>把脑子里模糊的「AI 漫剧」落到一格具体坐标 — 知道你要做的是哪一类、对标哪些账号、踩哪些点能起号。</p>
+      </div>
+      <div>
+        <h5>💡 为什么分类重要</h5>
+        <p>每一类漫剧的工艺流水不同 — 甜宠走 Nano Banana 出静态分镜足够，悬疑需要即梦做长镜头氛围。不分类硬做容易四不像。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L05 -->
+  <div class="box" style="box-shadow:6px 6px 0 #10b981;border-color:#000">
+    <div class="box-h" style="background:#10b981"><span>🎥 L05 · AI 漫剧实操直播</span><span class="slot">19:05 – 19:50 · 45 min</span></div>
+    <div class="time-block">⏱ 45 分钟 · 老师从一句故事开始直播做完整条漫剧 · 全程分享屏幕 · 本节最干的部分</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>🎨 Step 1 · 角色设计（12 min）</h5>
+        <p>Nano Banana 出主角 — Prompt 怎么写、怎么锁定外形、怎么生成多个视角保持一致性。讲参考图喂法和种子锁定。</p>
+      </div>
+      <div>
+        <h5>🏞 Step 2 · 场景设计（10 min）</h5>
+        <p>同一套 Prompt 框架出 5-8 个分镜场景 — 室内 / 室外 / 夜景 / 特写，风格要统一。讲批量出图 + 风格迁移的套路。</p>
+      </div>
+      <div>
+        <h5>🎞 Step 3 · 视频生成（18 min）</h5>
+        <p>把角色 + 场景喂即梦跑视频 — Prompt 怎么写镜头语言、怎么控制时长、怎么保留人物一致性。<strong>成品视频用提前生成的播给你看整片节奏</strong>，排队过程老师直播讲怎么排。</p>
+      </div>
+      <div>
+        <h5>✂️ Step 4 · 拼接 + 配音 + BGM（5 min）</h5>
+        <p>Tapnow 或剪映拼分镜、加字幕、配 TTS 配音、叠 BGM — 一条 1 分钟漫剧发出去的最后一公里。</p>
+      </div>
+      <div>
+        <h5>🎯 你会看到</h5>
+        <p>完整一条漫剧从文字到视频的真实流程 — 不是剪辑好的教学片，是老师当场踩坑 + 解决问题 + 做决策的全过程。</p>
+      </div>
+      <div>
+        <h5>💬 全程可提问</h5>
+        <p>看到卡壳的地方可以随时弹幕提问 — 老师能打断就打断讲，不能的记下来 L06 一起答。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L06 -->
+  <div class="box" style="box-shadow:6px 6px 0 #6366f1;border-color:#000">
+    <div class="box-h" style="background:#6366f1"><span>💬 L06 · Q&amp;A + 收官</span><span class="slot">19:50 – 20:00 · 10 min</span></div>
+    <div class="time-block">⏱ 10 分钟 · 答疑 · 资源清单 · 下一步行动建议</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>💬 现场答疑</h5>
+        <p>把直播过程积压的问题清一轮 — 工具选择、成本测算、账号运营、商用合规都可以问。没课后学员群，群问题今天不落地。</p>
+      </div>
+      <div>
+        <h5>📦 带走清单</h5>
+        <ul>
+          <li>三家工具注册链接 + 入门教程</li>
+          <li>即梦 / Nano Banana 的 Prompt 模板</li>
+          <li>参考账号 + 起号内容方向</li>
+        </ul>
+      </div>
+      <div>
+        <h5>🚀 下一步建议</h5>
+        <p>老师会给 3 档行动方案：① 今晚就开工跑一条 · ② 周末闭关两天起个账号 · ③ 先啃一周工具再定赛道。按你自己的节奏选。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Instructor -->
+<div class="in-wrap">
+  <div class="in-title">🎤 讲师</div>
+  <div class="in-sub">不是 AI 概念讲师 · 是天天在一线做 AI 漫剧的从业者 + 有十几年教学功底</div>
+  <div class="in-card">
+    <div class="in-left">
+      <div class="in-avatar">👨‍🏫</div>
+      <div class="in-name">张彦伟</div>
+      <div class="in-role">AI 漫剧 · 主讲</div>
+    </div>
+    <div class="in-right">
+      <div class="in-tagline">教过一线编程 · 教过新媒体 · 教过视频拍剪 · 现在把重心放在 AI 漫剧</div>
+      <p>张老师的教学履历横跨 <strong>传统编程、新媒体、视频拍摄剪辑、AI 视频</strong> 四个阶段 — 早年在 <strong>北大青鸟</strong> 任讲师，面向 <strong>18–30 岁</strong> 的高中生、大学毕业生和在职人群教编程和新媒体课程；随后在 <strong>B 站</strong> 等平台持续输出课程内容，做过 Java 编程、新媒体运营、视频拍摄与后期剪辑系列教程。</p>
+      <p>从 2024 年开始，老师把主要精力迁移到 <strong>AI 漫剧制作</strong> — 亲自跑过几乎所有主流 AI 视频工具（即梦、Runway、Kling、Vidu、Nano Banana、Tapnow 等），踩过足够多的坑，知道哪家工具在什么场景下真的能出活、哪家只是宣发好看。这节 2 小时工作坊不讲理论，就把他每天在做的事情分享出来。</p>
+      <div class="in-chips">
+        <span class="pc p">🎓 北大青鸟讲师</span>
+        <span class="pc o">📺 B 站长期创作者</span>
+        <span class="pc b">💻 早期：Java / 新媒体 / 视频拍剪</span>
+        <span class="pc g">🎬 现在：AI 漫剧一线从业者</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Course Prep -->
+<div class="pr-wrap">
+  <div class="pr-title">📋 课前准备清单</div>
+  <div class="pr-sub">线上直播 · 准备 15 分钟就够 · 不做也能来但体验会打折</div>
+  <div class="pr-box">
+    <div class="pr-head">
+      <span>🎯 到场前要搞定的 6 件事</span>
+      <span class="mono">6 steps · 约 15 min</span>
+    </div>
+    <div class="pr-grid">
+      <div class="pr-item">
+        <div class="pr-num">1</div>
+        <div class="pr-body">
+          <h5>装好 Zoom 客户端<span class="req">必做</span></h5>
+          <p>浏览器版直播体验不稳 — 下载 Zoom 桌面客户端（Mac / Win 都行）装好登录一次，避免开场卡在进房间。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">2</div>
+        <div class="pr-body">
+          <h5>网络 + 屏幕检查<span class="req">必做</span></h5>
+          <p>老师会分享屏幕演示 Nano Banana 出图和即梦下 Prompt，界面文字不大 — 电脑 / 大屏 iPad 体验最好，手机端能看但细节看不清。网络建议 20 Mbps 以上。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">3</div>
+        <div class="pr-body">
+          <h5>注册即梦账号<span class="opt">推荐</span></h5>
+          <p>提前注册 <a href="https://jimeng.jianying.com" target="_blank" rel="noopener">jimeng.jianying.com</a>（需要中国手机号 / 抖音账号）。新用户有免费额度，课上看老师下 Prompt 你能同步点着试。没有国内账号可看老师演示不强求。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">4</div>
+        <div class="pr-body">
+          <h5>Nano Banana 入口准备<span class="opt">推荐</span></h5>
+          <p>最低成本：登录 <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a>（Google 账号即可）选 Gemini 2.5 Flash Image 免费试用。海外账号无缝，国内需自理网络。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">5</div>
+        <div class="pr-body">
+          <h5>想好你要做哪一类漫剧<span class="opt">推荐</span></h5>
+          <p>甜宠 / 悬疑 / 搞笑 / 科普 / 都市…… 心里有个方向，L04 分类环节你能直接把自己对号入座，L05 实操时老师的每一步你也能对应到「我要做的那一类需不需要」。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">6</div>
+        <div class="pr-body">
+          <h5>笔 + 纸 / 随手记工具<span class="opt">推荐</span></h5>
+          <p>2 小时信息密度高 — Prompt 模板、账号推荐、工具对比表都要记。电脑打字 / 纸笔都行，挑你顺手的。课后不发 PPT（内容迭代快，直播的当下才是最新）。</p>
+        </div>
+      </div>
+    </div>
+    <div class="pr-foot">
+      💡 <strong>完全零基础别慌：</strong>没用过 AI 工具也能来，课上老师边演示边讲原理。但如果你连 ChatGPT / 豆包 / Kimi 都没打开过，建议课前一晚找任意一家聊 10 分钟建立手感，否则 L02 工具对比会跟得有点喘。
+    </div>
+  </div>
+</div>
+
+<!-- Pricing -->
+<div class="pc-wrap">
+  <div class="pc-title">💰 报名与价格</div>
+  <div class="pc-sub">一口价 · 不卖套餐 · 不搞分期 · 到账就发 Zoom 链接</div>
+  <div class="pc-card">
+    <div class="pc-left">
+      <div class="pc-label">💳 一次性 · 单次工作坊</div>
+      <div class="pc-price"><span class="cur">A$</span><span class="num">58</span><span class="unit">AUD</span></div>
+      <div class="pc-tag">🌏 支持 Airwallex 全球支付</div>
+      <a class="pc-cta" href="https://pay.airwallex.com/sgh0bh8gpur9" target="_blank" rel="noopener">立即报名 · A$58 →</a>
+    </div>
+    <div class="pc-right">
+      <div class="pc-inc">
+        <h5>✅ 价格包含</h5>
+        <ul>
+          <li>2 小时线上直播 · Zoom 全程分享屏幕</li>
+          <li>录播回看权限（活动结束后发送 · 长期可看）</li>
+          <li>L06 现场 Q&amp;A 答疑</li>
+          <li>即梦 / Nano Banana Prompt 模板</li>
+          <li>三家工具的注册链接 + 入门路径</li>
+          <li>参考账号清单 + 起号方向建议</li>
+        </ul>
+      </div>
+      <div class="pc-exc">
+        <h5>⛔ 价格不含</h5>
+        <ul>
+          <li>即梦 / Nano Banana / Tapnow 的账号订阅费（各家自理）</li>
+          <li>中国大陆境内发票（本课为澳洲主体收款 · 仅提供 Airwallex 付款收据）</li>
+          <li>课后学员微信群 / 长期答疑（本课不设 · 问题集中在 L06）</li>
+          <li>一对一视频项目指导（不是咨询课 · 是直播工作坊）</li>
+          <li>回看无限期的担保（平台政策调整会另行通知）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="fq-wrap">
+  <div class="fq-title">❓ 常见问题</div>
+  <div class="fq-sub">9 个问题 · 买之前先看完 · 省得课上一堆误会</div>
+  <div class="fq-list">
+
+    <details class="fq-item" open>
+      <summary>Q1 · 完全没用过 AI 工具，也没做过视频，能来吗？</summary>
+      <div class="fq-ans">
+        <strong>能，但有底线。</strong>这是一节讲 AI 漫剧工艺流水的课，不讲 PS / AE / PR 这类传统视频基础。你不需要会任何视频软件，也不需要会编程。唯一要求：<strong>开课前至少打开过一次 ChatGPT / 豆包 / Kimi / 任意 AI 聊天工具</strong>，和 AI 对过话 — 不然 L02 工具对比那段跟不上节奏。彻底零接触 AI 的同学，建议课前一晚花 10 分钟聊一轮建立手感。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q2 · 需要提前准备什么？</summary>
+      <div class="fq-ans">
+        6 件事，页面「📋 课前准备清单」有完整版。<strong>必做两件</strong>：① 装好 Zoom 桌面客户端登录一次 ② 确认网络 20Mbps 起、电脑 / iPad 大屏看直播。<strong>推荐四件</strong>：③ 注册即梦账号（jimeng.jianying.com）④ 登录 Google AI Studio 备用 Nano Banana ⑤ 想好自己要做哪一类漫剧 ⑥ 带纸笔 / 记事本。不做推荐项也能来，体验会打折。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q3 · 2 小时结束，我能带走一条自己做的成品视频吗？</summary>
+      <div class="fq-ans">
+        <strong>不能，这里必须说实话。</strong>即梦 Seedance 目前综合效果最好，但高峰期排队 <strong>几小时起步</strong>，课堂 2 小时内根本跑不完一条完整视频。所以我们的策略是：<strong>直播演示 Prompt 怎么下、参数怎么调、队列怎么排</strong>，让你看清操作全过程；<strong>成品视频部分，老师用提前生成好的完整漫剧片段播给你看</strong>，节奏、质感、一致性完整呈现。你带走的是方法论 + Prompt 模板 + 流程图 — 回家自己跑一夜，第二天出成品。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q4 · 即梦 / Nano Banana / Tapnow 要额外花钱吗？</summary>
+      <div class="fq-ans">
+        工具账号费用 <strong>不在 A$58 里</strong>，各家自理。好消息是三家都有免费档：
+        <ul style="margin:8px 0 0 20px">
+          <li><strong>即梦</strong>：新用户送免费额度，跑几条 15 秒短片免费，想做长的一般充值几十块人民币起</li>
+          <li><strong>Nano Banana</strong>：Google AI Studio 免费档，日常出图够用</li>
+          <li><strong>Tapnow</strong>：有免费试用档，商用起号建议直接上订阅（具体档位课上对照讲）</li>
+        </ul>
+        L02 模块会把三家当期的免费额度 / 订阅档 / 单次计费一次性对照讲清楚。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q5 · 有学员群吗？课后有答疑吗？</summary>
+      <div class="fq-ans">
+        <strong>没有学员群，也没有课后长期答疑。</strong>这是一次性直播工作坊，答疑集中在 L06 那 10 分钟 — 你有问题请在直播过程中用 Zoom 聊天 / Q&amp;A 面板提出来，老师能打断就打断讲，不能就攒到 L06 一起答。我们不卖「长期陪跑」这个东西 — 如果需要长期学习 + 社群，看 JR Academy 的 Bootcamp 系列。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q6 · 能开国内发票吗？</summary>
+      <div class="fq-ans">
+        <strong>不能开中国大陆境内发票。</strong>本课由 JR Academy 澳洲主体（Jiangren Academy Pty Ltd）收款，支付链路是 Airwallex，付款后你会收到 <strong>Airwallex 的付款收据（可抬头开具公司名称）</strong>，可作为澳洲境内报销凭证。如果你单位必须要国内发票，这节课可能不适合 — 请先问清楚报销政策再报名，A$58 不贵但也别白花。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q7 · 有录播吗？错过直播能补吗？</summary>
+      <div class="fq-ans">
+        <strong>有录播，报名学员开课后发送回看链接。</strong>当天临时有事不能来直播、或者想回头再看一遍某一段（特别是 L05 实操那 45 分钟信息密度高），录播都能补。录播长期可看（平台政策调整会另行通知）。但现场 Q&amp;A 互动只能在直播时参与，录播看不到弹幕提问的回答节奏。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q8 · 报名后不能参加，能退款 / 转期吗？</summary>
+      <div class="fq-ans">
+        <strong>活动开始前全额退款。</strong>5.13 周三悉尼时间 18:00 开课前，发邮件 / 客服申请退款，原路退回（Airwallex 通常 3-5 个工作日到账）。<strong>直播开始后不退款</strong> — 因为你已经拿到了录播访问权（随时可看），和坐满教室不同，线上名额不稀缺。转期目前没有排期，一次就是一次，报名一节结一节。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q9 · 线上还是线下？直播在哪看？怎么进入？</summary>
+      <div class="fq-ans">
+        <strong>线上直播，Zoom 平台。</strong>支付成功后 <strong>24 小时内</strong> 你会收到邮件，里面有 Zoom Meeting ID + 密码 + 一键加入链接。<strong>开课前 2 小时会再发一遍</strong> 提醒。没有名额限制 — 这是线上课的好处，带朋友一起看建议让他也报一个，一个账号一个屏幕体验更好。如果 24 小时后没收到邮件（先查垃圾邮件夹），联系客服补发。
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- TODO: bar stats -->
+<!-- TODO: callout -->
+<!-- TODO: instructor card -->
+<!-- TODO: program note (honest disclaimer) -->
+<!-- TODO: summary grid -->
+<!-- TODO: L01 AI 漫剧设计流程介绍 -->
+<!-- TODO: L02 AI 平台优劣解析 -->
+<!-- TODO: L03 AI 视频设计应用范围 -->
+<!-- TODO: L04 AI 漫剧分类 -->
+<!-- TODO: L05 AI 漫剧实操直播 -->
+<!-- TODO: L06 Q&A + 收官 -->
+<!-- TODO: what you'll take away -->
+<!-- TODO: tool cost breakdown -->
+<!-- TODO: FAQ -->
+
+<!-- Sticky CTA (floating) -->
+<a class="sticky-cta" href="https://pay.airwallex.com/sgh0bh8gpur9" target="_blank" rel="noopener">
+  <div class="sc-price">A$58</div>
+  <div class="sc-meta">
+    <span class="sc-m1">立即报名</span>
+    <span class="sc-m2">5.13 周三 18:00 · Zoom 直播</span>
+  </div>
+  <span class="sc-arrow">→</span>
+</a>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="sf-inner">
+    <div class="sf-brand">
+      <h3>🎭 AI 漫剧 2 小时沉浸式实操工作坊</h3>
+      <p>张彦伟老师直播带你走完 AI 漫剧生产全流程 — 从角色设计到视频合成，即梦 / Nano Banana / Tapnow 一次打通。不卖长期陪跑，卖 2 小时干货。</p>
+      <div class="sf-badges">
+        <span>🎓 JIANGREN ACADEMY</span>
+        <span>🌏 Sydney · Online Live</span>
+        <span>🇦🇺 AUD Payment</span>
+      </div>
+    </div>
+
+    <div class="sf-col">
+      <h4>📅 课程信息</h4>
+      <ul>
+        <li><strong>2026-05-13</strong> 周三</li>
+        <li><strong>18:00 – 20:00</strong> 悉尼时间</li>
+        <li><strong>Zoom</strong> 线上直播</li>
+        <li><strong>A$58 AUD</strong> 一口价</li>
+        <li>报名学员可看录播</li>
+      </ul>
+    </div>
+
+    <div class="sf-col">
+      <h4>🧭 快速跳转</h4>
+      <ul>
+        <li><a href="#">🎤 讲师张彦伟</a></li>
+        <li><a href="#">🗓 2 小时时间线</a></li>
+        <li><a href="#">🛠 工具栈对比</a></li>
+        <li><a href="#">💰 价格与退改</a></li>
+        <li><a href="#">❓ 常见问题</a></li>
+      </ul>
+    </div>
+
+    <div class="sf-col">
+      <h4>🔗 相关资源</h4>
+      <ul>
+        <li><a href="/curriculum/">JR 课程总览</a></li>
+        <li><a href="/curriculum/openclaw-workshop/curriculum.html">OpenClaw 4h 工作坊</a></li>
+        <li><a href="/curriculum/ai-essentials-bootcamp/curriculum.html">AI 必修课 · 4 周</a></li>
+        <li><a href="/curriculum/ai-programming/curriculum.html">Cursor AI 编程实战</a></li>
+        <li><a href="mailto:hello@jiangren.com.au">📧 hello@jiangren.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sf-bottom">
+    <div class="sf-copy">© 2026 JIANGREN ACADEMY PTY LTD · All rights reserved · Workshop 内容归讲师所有 · 录播不得外传</div>
+    <div class="sf-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Refund Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
