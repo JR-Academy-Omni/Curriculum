@@ -26,13 +26,19 @@ import { writeFileSync, existsSync, mkdirSync } from 'node:fs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
-// ========== 配置：哪些 bootcamp 要跑 ==========
-// 只有同时拥有 public/xhs-posters/index.html 和 public/mp-article/index.html 的才处理
-const BOOTCAMPS = [
-	'ai-engineer-bootcamp',
-	'business-analyst',
-	'web-code-bootcamp-or-learn-to-code-1',
-];
+// ========== 自动发现所有 bootcamp ==========
+// 任何包含 public/xhs-posters/index.html 的目录都处理
+// 输出位置：
+//   - 有 public/mp-article/ 的 → public/mp-article/images/poster-X.png（mp-article-copy.js 用）
+//   - 否则 → public/xhs-posters/images/poster-X.png（仅 xhs-posters 下载用）
+import { readdirSync, statSync } from 'node:fs';
+const BOOTCAMPS = readdirSync(ROOT)
+	.filter((name) => {
+		const dir = resolve(ROOT, name);
+		try { if (!statSync(dir).isDirectory()) return false; } catch { return false; }
+		if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') return false;
+		return existsSync(resolve(dir, 'public/xhs-posters/index.html'));
+	});
 
 // ========== Chrome 路径探测 ==========
 const CHROME_CANDIDATES = [
@@ -58,16 +64,6 @@ console.log(`🌐 Chrome: ${chromePath}`);
 const filter = process.argv[2];
 const targets = BOOTCAMPS.filter((b) => {
 	if (filter && !b.includes(filter)) return false;
-	const xhs = resolve(ROOT, b, 'public/xhs-posters/index.html');
-	const mp = resolve(ROOT, b, 'public/mp-article/index.html');
-	if (!existsSync(xhs)) {
-		console.log(`⚠️ ${b}: 没有 xhs-posters/index.html，跳过`);
-		return false;
-	}
-	if (!existsSync(mp)) {
-		console.log(`⚠️ ${b}: 没有 mp-article/index.html，跳过`);
-		return false;
-	}
 	return true;
 });
 
@@ -98,10 +94,14 @@ const startAll = Date.now();
 try {
 	for (const slug of targets) {
 		const xhsPath = resolve(ROOT, slug, 'public/xhs-posters/index.html');
-		const outDir = resolve(ROOT, slug, 'public/mp-article/images');
+		// 输出路径：mp-article 存在用 mp-article/images（mp-article-copy.js 兼容），否则 xhs-posters/images
+		const hasMpArticle = existsSync(resolve(ROOT, slug, 'public/mp-article/index.html'));
+		const outDir = hasMpArticle
+			? resolve(ROOT, slug, 'public/mp-article/images')
+			: resolve(ROOT, slug, 'public/xhs-posters/images');
 		mkdirSync(outDir, { recursive: true });
 
-		console.log(`━━━ 📸 ${slug} ━━━`);
+		console.log(`━━━ 📸 ${slug} → ${hasMpArticle ? 'mp-article' : 'xhs-posters'}/images/ ━━━`);
 
 		const page = await browser.newPage();
 		await page.setViewport({ width: 1600, height: 2000, deviceScaleFactor: 1 });

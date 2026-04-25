@@ -1,30 +1,59 @@
 ---
 name: xhs-poster
-description: "为 Bootcamp 课程生成小红书封面 + 配图套装（锁死 1242×1660 / 3:4 竖版，聚光投流标准）。沿用 quest-posters.html 的设计语言（Neo-Brutalism + 品牌四色），每张图自带 html2canvas ⬇ 下载 PNG 按钮。Use when user wants to create Xiaohongshu cover/carousel images for a course, or prepare 聚光 ad creatives."
+description: "为 Bootcamp 课程生成小红书封面 + 配图套装（锁死 1242×1660 / 3:4 竖版，聚光投流标准）。沿用 quest-posters.html 的设计语言（Neo-Brutalism + 品牌四色），HTML/CSS 写设计，puppeteer 离线渲染成 PNG，下载按钮 fetch 静态 PNG（1:1 真 Chrome 渲染）。Use when user wants to create Xiaohongshu cover/carousel images for a course, or prepare 聚光 ad creatives."
 argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 ---
 
 # /xhs-poster — 课程小红书封面 + 配图生成器
 
-为某个 bootcamp 生成一套可直接投放小红书聚光 (Juguang) 广告的视觉素材。输出独立 HTML 页面，浏览器打开后每张图下方「⬇ 下载 PNG」一键导出。
+为某个 bootcamp 生成一套可直接投放小红书聚光 (Juguang) 广告的视觉素材。**HTML/CSS 写设计 → puppeteer + 真 Chrome 离线渲染成 PNG → 下载按钮直接 fetch 静态 PNG**。下载图和浏览器预览**字节级一致**。
 
-## 🚨 硬性要求（2026-04-21 后新生成的都按这个做）
+## 🚨 硬性要求（2026-04-25 起新规则）
 
-**设计类生成器必须用原生 Canvas 2D API 绘制，禁止 HTML/CSS + html2canvas**。
+**设计用 HTML/CSS 写，下载用 puppeteer 离线预渲染的 PNG，禁止任何浏览器内 DOM-to-image 转换库（html2canvas / html-to-image / dom-to-image）**。
 
-原因：html2canvas 方案字号溢出 + 字宽测不准 + 三层跳转失真 + 字体加载时序问题（用户多次踩坑）。Canvas 2D 的 `ctx.measureText()` 可以精确预量字宽 + `fitText()` 自动缩字号适配容器。
+原因（多次踩坑）：
+- html2canvas / html-to-image / Canvas 2D 重写都试过，全失败
+- 浏览器没暴露 DOM→Canvas 的真正 API，所有纯前端方案都走 DOM→SVG→Image 这条有损链，字体/布局总有偏差
+- **真 Chrome `page.screenshot()` 是浏览器自己 paint 完之后捕获的像素，1:1 完美**
 
-**参考实现 + 完整模板**：`curriculum/.claude/skills/mp-article/SKILL.md` 的「🚨 硬性要求：封面/海报生成器必须用原生 Canvas 2D」章节 + `ai-engineer-bootcamp/public/mp-article/cover.html`（commit dd26b8d）。
+### 工作流
 
-**校验清单**：
-- [ ] 用 `<canvas width="1242" height="1660">` 不用 CSS 定位布局
-- [ ] 有 `fitText()` 二分缩字号工具
-- [ ] 有 `await document.fonts.ready` 等字体加载
-- [ ] 下载按钮直接 `canvas.toDataURL('image/png')`（**不引 html2canvas**）
-- [ ] 每个可改文案有 `<input>` 实时重绘
-- [ ] 右侧有手机缩略 canvas 同步（判断手机端可读性）
+1. 写 HTML/CSS 海报（按 quest-posters.html 视觉语言）
+2. 跑 `cd curriculum && bun run render:mp-posters [bootcamp-slug]`，puppeteer 自动找到所有 `[id^="poster-"]` 元素，逐个截图存到：
+   - 有 mp-article 的 → `{bootcamp}/public/mp-article/images/poster-X.png`
+   - 否则 → `{bootcamp}/public/xhs-posters/images/poster-X.png`
+3. xhs-posters/index.html 的下载按钮模板：
+   ```js
+   document.querySelectorAll('.dl-btn').forEach(btn => {
+     btn.addEventListener('click', async () => {
+       const target = btn.dataset.target, slug = btn.dataset.slug;
+       btn.textContent = '下载中...';
+       try {
+         // 路径：./images/ 或 ../mp-article/images/ 看你的输出位置
+         const res = await fetch(`./images/${target}.png`, { cache: 'no-cache' });
+         if (!res.ok) throw new Error('PNG 未生成。请运行 cd curriculum && bun run render:mp-posters [slug]');
+         const blob = await res.blob();
+         const a = document.createElement('a');
+         a.href = URL.createObjectURL(blob);
+         a.download = `xhs-[bootcamp]-${slug}-${Date.now()}.png`;
+         a.click();
+       } catch (e) { alert('下载失败：' + e.message); }
+       finally { btn.textContent = '⬇ 下载 PNG'; }
+     });
+   });
+   ```
 
-**已有 xhs-posters（用 html2canvas 做的）暂时不动，继续能用；新生成的必须走 Canvas 2D。**
+### 校验清单
+
+- [ ] 海报用 HTML/CSS 写（`<div class="poster pX" id="poster-X">...</div>`），不用 Canvas
+- [ ] index.html 不引 `html2canvas` / `html-to-image` 任何 CDN script
+- [ ] 下载按钮走 `fetch('./images/poster-X.png')` 或 `'../mp-article/images/poster-X.png'`
+- [ ] 改完 HTML 跑一次 `bun run render:mp-posters [slug]`（~3-7 秒），57 张全更新
+- [ ] 字体不用 fitText 担心溢出 — 真 Chrome 渲染会按 CSS 老老实实排，溢出在浏览器预览就能看见
+- [ ] index.html 的 spec-pill 用「真 Chrome 预渲染 · 1:1 PNG」
+
+**所有 11 个已有 bootcamp 的 xhs-posters 都已迁移到这个新机制（2026-04-25）。**
 
 ---
 
@@ -33,7 +62,7 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 ### 尺寸（ratio 锁死）
 - **封面 + 所有配图**: **`1242 × 1660`**（3:4 竖版）
 - 这是小红书聚光主流投流素材尺寸，**不提供其他比例选项**
-- `html2canvas` 导出：`scale: 1`，克隆原生 `.poster`（1242×1660）+ 外框 + padding → 固定 **1374×1792** PNG（保留边框和右下投影）
+- puppeteer 离线渲染：原生 `.poster`（1242×1660）+ 外框 + padding → 固定 **1374×1792** PNG（保留边框和右下投影），由 `curriculum/scripts/render-mp-posters.mjs` 处理外框包装逻辑
 - 容器必须 `width: 1242px; height: 1660px; overflow: hidden;`
 
 ### 数量
@@ -167,7 +196,7 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
         └── padding: 80px 72px
 ```
 
-**为什么这样分层**：html2canvas 对外层 border-radius 截图不完整（已知 bug）。把圆角边框放在内层 `.p-inner`，外层 `.poster` 留纯矩形 + padding，导出 PNG 时边框 100% 包含且有呼吸空间。
+**为什么这样分层**：兼容 puppeteer 截图脚本 `render-mp-posters.mjs` 在外层 `.poster` 上额外包裹一圈 frame + padding（产出 1374×1792 含投影 PNG）。圆角边框放内层 `.p-inner`，外层留纯矩形 + padding，PNG 边框 100% 包含且有呼吸空间。
 
 ### 页面预览缩放
 
@@ -201,63 +230,52 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 
 按钮样式：居中在海报下方，不遮挡内容。
 
-### 下载脚本（html2canvas 导出 PNG）— 必用模板
+### 下载脚本（fetch 预渲染 PNG）— 必用模板
 
-直接复制到页面底部。**不要自作主张改成 `exportNode.offsetWidth` 之类基于渲染尺寸的缩放**——那会导致 shadow/border 被吞、尺寸随浏览器缩放漂移。参考 `curriculum/ai-engineer-bootcamp/public/xhs-posters/index.html` 底部实现。
-
-要点：
-- 克隆 **`.poster`**（原生 1242×1660），清掉预览用的 `transform: scale(0.35)` 和 `position: absolute`
-- 新建一个 frame `<div>` 重新画出 `.poster-scaler` 的 `border + box-shadow`（别指望 html2canvas 完美渲染带 transform 子元素的 box-shadow）
-- `scale: 1` + 固定的 `totalW/totalH`，输出永远一致，不随浏览器缩放变化
-- 成品 PNG 尺寸固定：`1242 + 6*2 + 48*2 + 24 = 1374 × 1792`，四角露白 + 右下投影
+**不再用 html2canvas / html-to-image / 任何浏览器内 DOM-to-image 库**。下载按钮直接 `fetch` puppeteer 离线生成的静态 PNG，下载图 = 浏览器预览，1:1 字节级一致。
 
 ```js
 document.querySelectorAll('.dl-btn').forEach(btn => {
   btn.addEventListener('click', async () => {
-    const poster = document.getElementById(btn.dataset.target);
-    if (!poster) return;
-
-    const POSTER_W = 1242, POSTER_H = 1660;
-    const FRAME_BORDER = 6, FRAME_RADIUS = 36;
-    const SHADOW_OFFSET = 24, PADDING = 48;
-
-    const clone = poster.cloneNode(true);
-    clone.style.transform = 'none';
-    clone.style.position = 'relative';
-    clone.style.top = '0'; clone.style.left = '0';
-    clone.style.width = POSTER_W + 'px';
-    clone.style.height = POSTER_H + 'px';
-    clone.style.margin = '0';
-
-    const frame = document.createElement('div');
-    frame.style.cssText = `box-sizing:border-box;width:${POSTER_W + FRAME_BORDER*2}px;height:${POSTER_H + FRAME_BORDER*2}px;border:${FRAME_BORDER}px solid #10162f;border-radius:${FRAME_RADIUS}px;box-shadow:${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 #10162f;background:#fff;overflow:hidden`;
-    frame.appendChild(clone);
-
-    const totalW = POSTER_W + FRAME_BORDER*2 + PADDING*2 + SHADOW_OFFSET;
-    const totalH = POSTER_H + FRAME_BORDER*2 + PADDING*2 + SHADOW_OFFSET;
-
-    const wrapper = document.createElement('div');
-    wrapper.style.cssText = `position:fixed;left:-99999px;top:0;width:${totalW}px;height:${totalH}px;padding:${PADDING}px ${PADDING+SHADOW_OFFSET}px ${PADDING+SHADOW_OFFSET}px ${PADDING}px;background:#eef0f4;box-sizing:border-box`;
-    wrapper.appendChild(frame);
-    document.body.appendChild(wrapper);
-
-    btn.disabled = true; const oldLabel = btn.textContent; btn.textContent = '生成中...';
+    const target = btn.dataset.target;   // 例：poster-1
+    const slug = btn.dataset.slug;       // 例：p1-cover
+    const oldLabel = btn.textContent;
+    btn.textContent = '下载中...';
+    btn.disabled = true;
     try {
-      const canvas = await html2canvas(wrapper, {
-        backgroundColor: '#eef0f4', scale: 1, useCORS: true, allowTaint: true, logging: false,
-        width: totalW, height: totalH, windowWidth: totalW, windowHeight: totalH
-      });
-      const link = document.createElement('a');
-      link.download = `xhs-{bootcamp-slug}-${btn.dataset.slug}-${Date.now()}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    } catch (e) { console.error(e); alert('导出失败：' + e.message); }
-    finally { wrapper.remove(); btn.textContent = oldLabel; btn.disabled = false; }
+      // 路径：./images/ 或 ../mp-article/images/，看 render-mp-posters.mjs 把 PNG 写到哪了
+      // 有 mp-article 时 → ../mp-article/images/，否则 → ./images/
+      const res = await fetch(`./images/${target}.png`, { cache: 'no-cache' });
+      if (!res.ok) throw new Error('PNG 未生成。请运行 cd curriculum && bun run render:mp-posters [slug]');
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `xhs-{bootcamp-slug}-${slug}-${Date.now()}.png`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      alert('下载失败：' + e.message);
+    } finally {
+      btn.textContent = oldLabel;
+      btn.disabled = false;
+    }
   });
 });
 ```
 
 `{bootcamp-slug}` 替换成课程前缀，如 `ai-engineer`、`ai-adoption`、`openclaw`。
+
+**PNG 生成命令**：
+```bash
+cd curriculum
+bun run render:mp-posters                # 全量重渲染（11 个 bootcamp，~40s）
+bun run render:mp-posters ai-engineer    # 只渲染匹配名字的（~2-3s）
+```
+
+输出位置由 `render-mp-posters.mjs` 自动判断：
+- 有 `public/mp-article/index.html` → 输出到 `public/mp-article/images/`（mp-article-copy.js 兼容）
+- 否则 → 输出到 `public/xhs-posters/images/`
 
 ### 左侧固定导航
 
@@ -515,7 +533,7 @@ cd curriculum/{bootcamp} && python3 -m http.server 80XX
 文件：curriculum/{bootcamp}/public/xhs-posters/index.html
 预览：cd curriculum/{bootcamp} && python3 -m http.server 8080
      → http://localhost:8080/public/xhs-posters/
-导出：每张图下方点「⬇ 下载 PNG」（html2canvas, 固定 1374×1792 带边框+投影）
+导出：先 `cd curriculum && bun run render:mp-posters [bootcamp-slug]` 生成 PNG（puppeteer），再每张图下方点「⬇ 下载 PNG」直接 fetch 静态文件（固定 1374×1792 带边框+投影）
 投聚光前检查：文案无二维码 / 无绝对化用语 / 无联系方式
 ```
 
@@ -547,16 +565,23 @@ async function pushXhsToExtension() {
       if (resp.ok) caption = await resp.json();
     } catch {}
 
-    // 2. 6 张海报 → base64（JPEG 85% 压缩控制 payload 体积）
+    // 2. 6 张海报 → 直接 fetch 预渲染的 PNG（不再用 html2canvas）
     const posterIds = ['poster-1', 'poster-2', 'poster-3', 'poster-4', 'poster-5', 'poster-6'];
+    // 自动探测路径：有 mp-article 用 ../mp-article/images/，否则 ./images/
+    const probe = await fetch('./images/poster-1.png', { method: 'HEAD' }).catch(() => null);
+    const imgBase = probe?.ok ? './images/' : '../mp-article/images/';
     const images = [];
     for (let i = 0; i < posterIds.length; i++) {
       btn.textContent = `传图 ${i + 1}/${posterIds.length}`;
-      const el = document.getElementById(posterIds[i]);
-      if (!el) continue;
-      // 复用本页的 html2canvas
-      const canvas = await html2canvas(el, { scale: 1.1, backgroundColor: '#ffffff' });
-      images.push(canvas.toDataURL('image/jpeg', 0.85));
+      try {
+        const blob = await fetch(`${imgBase}${posterIds[i]}.png`).then(r => r.blob());
+        const dataUrl = await new Promise(res => {
+          const reader = new FileReader();
+          reader.onloadend = () => res(reader.result);
+          reader.readAsDataURL(blob);
+        });
+        images.push(dataUrl);
+      } catch { /* skip 缺失图 */ }
     }
 
     const payload = {
@@ -589,7 +614,7 @@ document.getElementById('push-xhs')?.addEventListener('click', pushXhsToExtensio
 ## 🚨 绝对不能做的事
 
 1. **改 ratio** — 1242×1660 写死，不给备选，不问用户想要什么比例
-2. **不装下载按钮** — 每张 poster 必须有 html2canvas 下载按钮
+2. **不装下载按钮** — 每张 poster 必须有 fetch 预渲染 PNG 的下载按钮（不要用 html2canvas / html-to-image）
 3. **偏离 quest-posters 色板** — 必须用 brand 色变量，不要自创
 4. **写 AI 味文案** — 看到"在当今/深入探讨/全面掌握/comprehensive"立刻重写
 5. **放二维码或微信号** — 一次都不行，聚光直接拒审

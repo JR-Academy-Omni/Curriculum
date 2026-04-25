@@ -4,9 +4,12 @@ dist
 *.local
 *.tsbuildinfo
 
-# mp-article 海报 PNG 是 CI 时通过 puppeteer 自动生成的产物（scripts/render-mp-posters.mjs）
+# 海报 PNG 是 CI 时通过 puppeteer 自动生成的产物（scripts/render-mp-posters.mjs）
 # 不 commit 到仓库，避免 PNG bloat git 历史
+# - 有 mp-article 的 bootcamp → mp-article/images/
+# - 没有 mp-article 的 bootcamp → xhs-posters/images/
 */public/mp-article/images/
+*/public/xhs-posters/images/
 
 # 视频 MP4 放 S3，不进 git（GitHub 50MB 限制 + 媒体文件不该进 git）
 # 生产地址：https://jr-image.s3.ap-southeast-2.amazonaws.com/video/ai-engineer-short.mp4

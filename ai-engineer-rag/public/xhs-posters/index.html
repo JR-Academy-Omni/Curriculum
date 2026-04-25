@@ -597,7 +597,7 @@
       <span class="spec-pill">聚光合规</span>
       <span class="spec-pill">28 张全套</span>
       <span class="spec-pill">$299 AUD 自学</span>
-      <span class="spec-pill">html2canvas @2x</span>
+      <span class="spec-pill">真 Chrome 预渲染 · 1:1 PNG</span>
     </div>
     <div class="guide">
       <b>导出前自检：</b>① 无二维码 / 微信号 / 手机号 &nbsp; ② 无"最 / 第一 / 唯一 / 100% / 保证 / 包就业"等绝对化用语 &nbsp; ③ 薪资数据标来源（levels.fyi / Seek / LinkedIn）
@@ -1172,93 +1172,29 @@
   });
 </script>
 
-<!-- html2canvas 下载 -->
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<!-- 下载预渲染的 PNG —— 由 curriculum/scripts/render-mp-posters.mjs 用 puppeteer + 真 Chrome 离线生成 -->
+<!-- 重新生成： cd curriculum && bun run render:mp-posters ai -->
 <script>
 	document.querySelectorAll('.dl-btn').forEach(btn => {
 		btn.addEventListener('click', async () => {
-			const poster = document.getElementById(btn.dataset.target);
-			if (!poster) return;
-
-			// Native poster size — always export at exact 1242×1660 + frame + padding.
-			const POSTER_W = 1242;
-			const POSTER_H = 1660;
-			const FRAME_BORDER = 6;
-			const FRAME_RADIUS = 36;
-			const SHADOW_OFFSET = 24;
-			const PADDING = 48;
-
-			// Clone .poster (native 1242×1660) and strip the preview-only transform.
-			const clone = poster.cloneNode(true);
-			clone.style.transform = 'none';
-			clone.style.transformOrigin = 'top left';
-			clone.style.position = 'relative';
-			clone.style.top = '0';
-			clone.style.left = '0';
-			clone.style.width = POSTER_W + 'px';
-			clone.style.height = POSTER_H + 'px';
-			clone.style.margin = '0';
-
-			// Frame mimics .poster-scaler: black border + offset shadow.
-			const frame = document.createElement('div');
-			frame.style.cssText = [
-				'box-sizing:border-box',
-				'width:' + (POSTER_W + FRAME_BORDER * 2) + 'px',
-				'height:' + (POSTER_H + FRAME_BORDER * 2) + 'px',
-				'border:' + FRAME_BORDER + 'px solid #10162f',
-				'border-radius:' + FRAME_RADIUS + 'px',
-				'box-shadow:' + SHADOW_OFFSET + 'px ' + SHADOW_OFFSET + 'px 0 #10162f',
-				'background:#fff',
-				'overflow:hidden',
-				'display:block',
-				'margin:0'
-			].join(';');
-			frame.appendChild(clone);
-
-			const totalW = POSTER_W + FRAME_BORDER * 2 + PADDING * 2 + SHADOW_OFFSET;
-			const totalH = POSTER_H + FRAME_BORDER * 2 + PADDING * 2 + SHADOW_OFFSET;
-
-			const wrapper = document.createElement('div');
-			wrapper.style.cssText = [
-				'position:fixed',
-				'left:-99999px',
-				'top:0',
-				'width:' + totalW + 'px',
-				'height:' + totalH + 'px',
-				'padding:' + PADDING + 'px ' + (PADDING + SHADOW_OFFSET) + 'px ' + (PADDING + SHADOW_OFFSET) + 'px ' + PADDING + 'px',
-				'background:#eef0f4',
-				'box-sizing:border-box',
-				'display:block',
-				'z-index:-1'
-			].join(';');
-			wrapper.appendChild(frame);
-			document.body.appendChild(wrapper);
-
+			const target = btn.dataset.target;
+			const slug = btn.dataset.slug;
 			const oldLabel = btn.textContent;
-			btn.textContent = '生成中...';
+			btn.textContent = '下载中...';
 			btn.disabled = true;
-
 			try {
-				const canvas = await html2canvas(wrapper, {
-					backgroundColor: '#eef0f4',
-					scale: 1,
-					useCORS: true,
-					allowTaint: true,
-					logging: false,
-					width: totalW,
-					height: totalH,
-					windowWidth: totalW,
-					windowHeight: totalH
-				});
-				const link = document.createElement('a');
-				link.download = `xhs-ai-engineer-rag-${btn.dataset.slug}-${Date.now()}.png`;
-				link.href = canvas.toDataURL('image/png');
-				link.click();
+				const res = await fetch(`./images/${target}.png`, { cache: 'no-cache' });
+				if (!res.ok) throw new Error('PNG 未生成。请运行 cd curriculum && bun run render:mp-posters ai');
+				const blob = await res.blob();
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.href = url;
+				a.download = `xhs-ai-engineer-${slug}-${Date.now()}.png`;
+				a.click();
+				URL.revokeObjectURL(url);
 			} catch (e) {
-				console.error(e);
-				alert('导出失败：' + e.message);
+				alert('下载失败：' + e.message);
 			} finally {
-				wrapper.remove();
 				btn.textContent = oldLabel;
 				btn.disabled = false;
 			}
