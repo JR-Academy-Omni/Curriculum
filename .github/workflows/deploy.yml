@@ -168,6 +168,11 @@ jobs:
           [ -f posters.html ] && cp posters.html _site/posters.html || true
           [ -f quest-posters.html ] && cp quest-posters.html _site/quest-posters.html || true
 
+          # ChatGPT 海报 Prompt 库 (gpt-image-2 prompt 货架，posters.html banner 入口)
+          [ -f image-prompts.html ] && cp image-prompts.html _site/image-prompts.html || true
+          [ -d image-prompts ] && cp -r image-prompts _site/image-prompts || true
+          [ -f IMAGE_PROMPTS_PRD.md ] && cp IMAGE_PROMPTS_PRD.md _site/IMAGE_PROMPTS_PRD.md || true
+
           # AI 每日头条海报已迁至 jr-wiki，走 GitHub Pages:
           # https://jr-academy-ai.github.io/jr-wiki/ai-news-posters/
 
