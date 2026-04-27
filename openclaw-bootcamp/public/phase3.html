@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>W3 自动化 + 定时任务 · OpenClaw Bootcamp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#FF914D 100%)}
+    .box-h.live{background:#FF914D}
+    .box-h.quest{background:#E84142}
+    .box-h.demo{background:#6366f1}
+    .box-h.work{background:#10b981}
+    .box-h.self{background:#0ea5e9}
+    .timeline{padding:14px 24px;background:#fff4ed;border-bottom:2px solid #FF914D;font-family:'Space Mono',monospace;font-size:12px;color:#9a3412}
+    .goal-box{margin:24px 0;padding:20px 22px;border:3px solid #FF914D;background:#fff4ed;border-left-width:10px}
+    .goal-box strong{color:#FF914D}
+    .goal-box ul{margin-top:8px;margin-left:20px;line-height:1.8;font-size:14px}
+    .industry-flows{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+    .industry-flow{padding:14px 16px;background:#fff;border:2px solid #000}
+    .industry-flow h6{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;margin-bottom:6px}
+    .industry-flow ul{font-size:12px;margin-left:18px;line-height:1.8;color:#555}
+    @media(max-width:768px){.industry-flows{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>W3 · 自动化 + 定时任务</h1>
+  <div class="sub">Phase 3 · 4h 现场 + 课后自学 · 让 Agent 自己跑，不再等你喊</div>
+  <div class="tags">
+    <span class="tag a">Week 3</span>
+    <span class="tag a">4h Live</span>
+    <span class="tag a">Cron + YAML</span>
+    <span class="tag a">3 工作流</span>
+    <span class="tag a">错误处理</span>
+  </div>
+  <div class="nav">
+    <a href="./curriculum.html">📋 总览</a> ·
+    <a href="./phase1.html">W1 装机</a> ·
+    <a href="./phase2.html">W2 接工具</a> ·
+    <a href="./phase3.html"><strong>W3 自动化</strong></a> ·
+    <a href="./phase4.html">W4 Demo Day</a>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="s"><div class="n">10</div><div class="l">Lessons</div></div>
+  <div class="s"><div class="n">4h</div><div class="l">Live</div></div>
+  <div class="s"><div class="n">6</div><div class="l">现场</div></div>
+  <div class="s"><div class="n">4</div><div class="l">自学/Lab</div></div>
+  <div class="s"><div class="n">3</div><div class="l">工作流</div></div>
+</div>
+
+<div class="c">
+
+  <div class="goal-box">
+    <strong>🎯 W3 走出来你应该有的状态：</strong>
+    <ul>
+      <li>第一个定时任务跑起来 — 早上 8 点自动整理收件箱（持续每天跑）</li>
+      <li>2 个本行业核心工作流配好 — 多步编排 + 错误处理</li>
+      <li>3 个工作流加起来跑一周后能贴出运行日志（哪天挂了、为什么挂、怎么修）</li>
+      <li>知道怎么算 ROI — W1 vs W3 时间对比表雏形（W4 Demo 用）</li>
+      <li>对『多 Agent 路由』有概念 — W4 调语调时不再用一个万能 Agent</li>
+    </ul>
+  </div>
+
+  <!-- 现场课 -->
+  <div class="box">
+    <div class="box-h live"><span style="font-weight:900">📅 W3 现场课 · 4 小时安排</span><span style="float:right;font-family:'Space Mono',monospace;font-size:12px">6 节 lesson · 总 240 min</span></div>
+    <div class="timeline">⏱ 周 X 晚上 7-11pm · 线下沉浸式（不录播 · 不开线上）</div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#10162f;color:#fff">L21</span>
+        <h4>W3.1 自动化思维 — 把任务变成可重复跑的工作流</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">30 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">老师主讲</span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>🔄 模式切换</h5>
+          <p>W1-W2 你跟 Agent 是『一对一 chat 模式』 — 你说一句它做一件。这节起切到『工作流模式』 — 你定义一次（什么时候 / 做什么 / 发哪里），它自己跑。</p>
+        </div>
+        <div>
+          <h5>📅 Cron 5 个常用场景</h5>
+          <p>每天 8 点 / 每周一 9 点 / 每月 1 号 / 每小时 / 每隔 15 分钟。律师/地产/会计/内容各看 3 个本行业例子。</p>
+        </div>
+        <div>
+          <h5>⚠️ 触发器 vs 定时</h5>
+          <p>有些任务不是定时跑，是『新邮件 / 新客户进 CRM / 日历有新会议』触发。哪些用 cron 哪些用触发器，决策法老师讲。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson" style="border-color:#E84142;border-width:2px">
+      <div class="lesson-head" style="background:#fff5f5">
+        <span class="pill" style="background:#10162f;color:#fff">L22</span>
+        <h4>W3.2 Quest: 配第一个定时任务 — 早上 8 点自动整理收件箱</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">45 min</span>
+        <span class="pill" style="background:#E84142;color:#fff">🌸 Quest</span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>🌸 5 步 Quest</h5>
+          <p>所有学员第一个定时任务都是『早上 8 点整理过夜收件箱』 — 几乎所有职业都需要、效果立刻看见。AI 小花带你写 cron 表达式 → 写 YAML 工作流 → 测试 → 启动 → 看效果。</p>
+        </div>
+        <div>
+          <h5>🛟 守护规则</h5>
+          <p>① YAML 缩进必须空格不能 tab<br>② cron 5 字段必须解释每个含义不能直接抄<br>③ 必须明确『电脑关机 cron 不跑』<br>④ 起草回复必须放草稿箱</p>
+        </div>
+        <div>
+          <h5>📂 产出物</h5>
+          <p><code>~/openclaw/configs/workflows/morning-inbox.yaml</code> + 第二天早上 8 点真的跑 + Slack/WhatsApp 收到总结。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#10162f;color:#fff">L23</span>
+        <h4>W3.3 多步任务编排 — 一个工作流跑 5 个步骤</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">30 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">老师主讲</span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>📦 真实工作流 5-10 步</h5>
+          <p>L22 是单步（拉邮件 → 起草），但真实工作流多是 5-10 步。比如律师『新案件 intake』：客户邮件进 → 提取案件信息 → 写 Notion 案件库 → 生成首次咨询邀请发客户 → 提醒律师准备相关法规材料。</p>
+        </div>
+        <div>
+          <h5>🔧 编排技术点</h5>
+          <p>步骤间数据传递 / 条件分支（if 客户付了押金 then 走 A 否则走 B）/ 并发执行 / 依赖工作流（A 跑完才跑 B）</p>
+        </div>
+        <div>
+          <h5>🐛 怎么调试</h5>
+          <p>5 步工作流哪步挂了？怎么定位？老师演示日志查看 + 单步重跑 + 跳步执行。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson" style="border-color:#6366f1;border-width:2px">
+      <div class="lesson-head" style="background:#f0f4ff">
+        <span class="pill" style="background:#10162f;color:#fff">L24</span>
+        <h4>W3.4 Live Demo — 错误处理与监控</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">30 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">Live Demo</span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>🎬 老师故意把 Demo 跑挂</h5>
+          <p>真实情况工作流会挂 — Gmail rate limit / Notion 写入冲突 / 邮件格式跟预期不一样 / LLM 抽风。老师故意触发 4 种典型挂法。</p>
+        </div>
+        <div>
+          <h5>🛠 4 个工具</h5>
+          <p>① 退避重试机制怎么配<br>② Slack/邮件错误通知<br>③ 错误日志在哪看（<code>~/openclaw/data/logs/</code>）<br>④ 『跑挂了不要重试』场景（重复发邮件给客户的事故）怎么避免</p>
+        </div>
+        <div>
+          <h5>⚠️ 一句话总结</h5>
+          <p>『Agent 自己跑』前提是<strong>挂了你能知道 + 修得快</strong>，否则跑越久越危险。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson" style="border-color:#10b981;border-width:2px">
+      <div class="lesson-head" style="background:#ecfdf5">
+        <span class="pill" style="background:#10162f;color:#fff">L25</span>
+        <h4>W3.5 Workshop — 配你自己的 3 个工作流</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">75 min</span>
+        <span class="pill" style="background:#10b981;color:#fff">Tutor 1:8 陪练</span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>📋 每人配 3 个</h5>
+          <p>不是 1 个，不是 5 个。3 个本行业工作流，每个配完立刻跑测试。</p>
+        </div>
+        <div>
+          <h5>🛟 Tutor 看着</h5>
+          <p>YAML 格式 / cron 表达式 / 数据传递 / 错误处理 — Tutor 1:8 一对一帮你过。</p>
+        </div>
+        <div>
+          <h5>🎯 走出去 3 个跑着</h5>
+          <p>下课时这 3 个工作流不是『写好了等以后跑』，是<strong>已经在你电脑上启动 + 配好了定时</strong>。</p>
+        </div>
+      </div>
+
+      <div class="industry-flows">
+        <div class="industry-flow">
+          <h6>⚖️ 律师专场推荐 3 个</h6>
+          <ul>
+            <li>新案件 intake 工作流（客户邮件 → 案件库）</li>
+            <li>合同审核 prep（合同上传 → 关键条款提取）</li>
+            <li>月度 client 状态报告（每月 1 号自动生成）</li>
+          </ul>
+        </div>
+        <div class="industry-flow">
+          <h6>🏠 地产专场推荐 3 个</h6>
+          <ul>
+            <li>客户跟进每日提醒（8 点拉 CRM 该跟进的客户）</li>
+            <li>房源新上自动通知客户（按客户偏好匹配）</li>
+            <li>周报给 vendor（每周五自动生成本周房源数据）</li>
+          </ul>
+        </div>
+        <div class="industry-flow">
+          <h6>💰 会计专场推荐 3 个</h6>
+          <ul>
+            <li>每日 Xero 异常检查（早上 8 点扫 + Slack 通知）</li>
+            <li>月底 BAS 提醒（每月 25 号给所有客户提醒）</li>
+            <li>客户对账单自动生成（月初拉数据 + 起草邮件）</li>
+          </ul>
+        </div>
+        <div class="industry-flow">
+          <h6>📱 内容专场推荐 3 个</h6>
+          <ul>
+            <li>每天热点 → 选题建议（早上 7 点扫 5 个热点源）</li>
+            <li>发文后 24h 互动数据汇总（自动拉评论 + 数据）</li>
+            <li>周末选题包准备（每周日生成下周选题清单）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson" style="border-color:#10b981">
+      <div class="lesson-head" style="background:#ecfdf5">
+        <span class="pill" style="background:#10162f;color:#fff">L26</span>
+        <h4>W3.6 Networking + 周作业</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">30 min</span>
+        <span class="pill" style="background:#10b981;color:#fff">茶歇</span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>☕ 跨学员看『谁配的最聪明』</h5>
+          <p>每人 1 分钟讲自己 3 个工作流，老师点最巧的那个分享给全班。</p>
+        </div>
+        <div>
+          <h5>📋 W3 课后作业</h5>
+          <p>① 3 个工作流真跑一周，每天看日志，挂的就修<br>② 看 L27-L28 自学<br>③ 完成 L29-L30 两个 Lab<br>④ <strong>整理时间数据</strong>：W1 vs W3 对比表<br>⑤ <strong>挑 5 封最有你味道的真邮件</strong>给 W4 调语调</p>
+        </div>
+        <div>
+          <h5>🎯 W4 现场前准备</h5>
+          <p>5 封真邮件放电脑桌面 <code>l-真邮件/</code>，W4 Quest 直接喂给抽取 Prompt。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自学 -->
+  <div class="box">
+    <div class="box-h self"><span style="font-weight:900">📚 W3 课后自学（W4 现场前完成）</span><span style="float:right;font-family:'Space Mono',monospace;font-size:12px">2 章 + 2 Lab · 约 115 min</span></div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#0ea5e9;color:#fff">L27</span>
+        <h4>自学：定时任务与自动化深度</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">30 min</span>
+        <span class="pill" style="background:#10162f;color:#fff">Learn 章节</span>
+      </div>
+      <div class="lesson-body" style="grid-template-columns:1fr 1fr">
+        <div><h5>📖 内容</h5><p>L22 Quest 走基础。这章覆盖：cron 进阶语法（步进/范围/列表）、依赖工作流、并发控制、本地 vs 云端部署的取舍。</p></div>
+        <div><h5>🔗 资源</h5><p>OpenClaw 学习方向第 7 章《Scheduled Tasks》— /learn/openclaw/scheduled-tasks</p></div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#0ea5e9;color:#fff">L28</span>
+        <h4>自学：多 Agent 路由 — 一个 Agent 管邮件，一个管销售</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">25 min</span>
+        <span class="pill" style="background:#10162f;color:#fff">Learn 章节</span>
+      </div>
+      <div class="lesson-body" style="grid-template-columns:1fr 1fr">
+        <div><h5>📖 内容</h5><p>OpenClaw 支持多个独立 Agent — 邮件助手 / 销售助手 / 内容助手各一个。每个独立 SystemPrompt + 接的工具不同 + 按消息关键词自动路由。</p></div>
+        <div><h5>🔗 资源</h5><p>OpenClaw 学习方向第 8 章《Multi-Agent Routing》— /learn/openclaw/multi-agent-routing</p></div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#6366f1;color:#fff">L29</span>
+        <h4>Lab: Prompt Chaining — 多步骤编排</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">30 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">Prompt Lab</span>
+      </div>
+      <div class="lesson-body" style="grid-template-columns:1fr 1fr">
+        <div><h5>🧪 实操</h5><p>把复杂任务拆成 4-5 个 Prompt 串起来跑。在浏览器内完成。</p></div>
+        <div><h5>💡 跟 L23 关系</h5><p>L23 现场课讲 OpenClaw YAML 工作流写法，这个 Lab 练的是 Prompt 拆分思维（更基础的功底）。</p></div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#6366f1;color:#fff">L30</span>
+        <h4>Lab: Few-shot Learning — 用示例教会 AI</h4>
+        <span class="pill" style="background:#FF914D;color:#fff">30 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">Prompt Lab</span>
+      </div>
+      <div class="lesson-body" style="grid-template-columns:1fr 1fr">
+        <div><h5>🧪 实操</h5><p>给 AI 3-5 个示例，让它照你的风格做新任务。在浏览器内完成。</p></div>
+        <div><h5>💡 W4 用得上</h5><p>W4 调语调的核心技术 — 你的 5 封真邮件就是 Few-shot 示例。提前在 Lab 练熟。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gate">
+    <div class="gate-icon">🔒</div>
+    <div class="gate-text">
+      <strong>完成 W3 课后作业 → 解锁 W4</strong>
+      <span>3 工作流跑一周日志 + W1 vs W3 时间对比 + 5 封真邮件准备好</span>
+    </div>
+    <div class="gate-badge">→ W4</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  W3 · OpenClaw 4-Week Bootcamp · <a href="./phase2.html">← W2</a> · <a href="./curriculum.html">回总览</a> · <a href="./phase4.html">W4 Demo Day →</a>
+</div>
+
+</body>
+</html>

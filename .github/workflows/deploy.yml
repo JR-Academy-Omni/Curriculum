@@ -135,6 +135,12 @@ jobs:
             cp -r ai-comic-workshop/public/* _site/ai-comic-workshop/
           fi
 
+          # openclaw-bootcamp: static HTML only (4-week deep version of openclaw-workshop)
+          if [ -d openclaw-bootcamp/public ]; then
+            mkdir -p _site/openclaw-bootcamp
+            cp -r openclaw-bootcamp/public/* _site/openclaw-bootcamp/
+          fi
+
           # business-analyst (AI 产品经理 BA 训练营): static HTML only, generated from outline.json
           if [ -d business-analyst/public ]; then
             mkdir -p _site/business-analyst
