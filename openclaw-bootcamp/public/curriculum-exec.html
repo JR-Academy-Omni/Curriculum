@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OpenClaw Bootcamp · 合伙人 / 老板版</title>
+  <meta name="description" content="为合伙人 / 事务所主管 / agency 老板 / 自媒体主理人设计的 4 周 OpenClaw 沉浸 — 把你最值钱的判断、语调、客户应对方式，装进一个 24h 替你跑的资产。AI 配置归你，离开雇主、卖掉公司也带得走。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    body{background:#fafaf7}
+    .switcher{background:#fff;color:#10162f;padding:11px 20px;text-align:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;border-bottom:1px solid #ddd}
+    .switcher a{color:#E84142;font-weight:700;text-decoration:underline}
+    .header-exec{background:linear-gradient(135deg,#0a0e1f 0%,#10162f 60%,#1a2347 100%);color:#fff;padding:60px 24px 56px;text-align:center}
+    .header-exec .badge{display:inline-block;background:#FFDE59;color:#10162f;padding:6px 14px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;border:2px solid #000}
+    .header-exec h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1.15;max-width:900px;margin:0 auto 20px;letter-spacing:-0.02em}
+    .header-exec h1 em{font-style:normal;color:#FFDE59;border-bottom:4px solid #E84142;padding-bottom:2px}
+    .header-exec .lead{font-family:'DM Sans',sans-serif;font-size:clamp(15px,1.6vw,18px);line-height:1.7;max-width:760px;margin:0 auto 32px;color:#cbd5e1}
+    .header-exec .meta-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+    .header-exec .meta-row span{padding:6px 12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2)}
+    .container{max-width:1180px;margin:0 auto;padding:0 24px}
+    h2.section-h{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;margin:60px 0 8px;line-height:1.2;letter-spacing:-0.01em;color:#10162f}
+    h2.section-h .num{font-family:'Space Mono',monospace;font-size:14px;color:#E84142;letter-spacing:2px;display:block;margin-bottom:6px}
+    .section-sub{font-family:'DM Sans',sans-serif;font-size:15px;color:#666;line-height:1.7;max-width:780px;margin-bottom:28px}
+
+    /* Block 1: 你这一周 AI 帮你做的 4 件事 */
+    .week-life{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+    .life-card{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:24px;position:relative}
+    .life-card .when{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#E84142;font-weight:700;text-transform:uppercase}
+    .life-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;margin:6px 0 16px;color:#10162f;line-height:1.3}
+    .life-row{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:10px 0;border-top:1px dashed #ddd;font-size:13px;line-height:1.6}
+    .life-row:first-of-type{border-top:none}
+    .life-row .label{font-family:'Space Mono',monospace;font-size:10px;color:#999;letter-spacing:1px;font-weight:700;text-transform:uppercase;padding-top:3px;white-space:nowrap}
+    .life-row.now .label{color:#999}
+    .life-row.future .label{color:#10b981}
+    .life-row.future{color:#10162f}
+    .life-row.gain{background:#fffbeb;margin:0 -24px -24px;padding:14px 24px;border-top:2px solid #FFDE59}
+    .life-row.gain .label{color:#d97706}
+    .life-row.gain .val{font-weight:700;color:#10162f}
+    @media(max-width:760px){.week-life{grid-template-columns:1fr}}
+
+    /* Block 2: 4 周重命名 */
+    .weeks-rename{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+    .wkx{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:22px 18px;text-decoration:none;color:#10162f;display:block;transition:all 0.15s}
+    .wkx:hover{box-shadow:none;transform:translate(4px,4px)}
+    .wkx .wn{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase}
+    .wkx h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;margin:6px 0 4px;line-height:1.25}
+    .wkx .tech-was{font-family:'Space Mono',monospace;font-size:10px;color:#bbb;margin:0 0 10px;text-decoration:line-through}
+    .wkx .desc{font-size:12.5px;line-height:1.6;color:#444}
+    .wkx.w1{border-top:8px solid #E84142}
+    .wkx.w2{border-top:8px solid #6366f1}
+    .wkx.w3{border-top:8px solid #FF914D}
+    .wkx.w4{border-top:8px solid #CB6CE6}
+    @media(max-width:900px){.weeks-rename{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.weeks-rename{grid-template-columns:1fr}}
+
+    /* Block 3: ROI 测算 */
+    .roi-block{background:#10162f;color:#fff;padding:36px 32px;border:3px solid #000;box-shadow:8px 8px 0 #FFDE59;margin-top:8px}
+    .roi-block h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;margin:0 0 8px;color:#FFDE59}
+    .roi-block .roi-lead{font-size:14px;color:#cbd5e1;line-height:1.7;margin-bottom:24px}
+    .roi-table{width:100%;border-collapse:collapse;font-size:13.5px;font-family:'DM Sans',sans-serif}
+    .roi-table th{text-align:left;padding:12px 14px;background:rgba(255,255,255,0.05);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:1.5px;color:#FFDE59;font-weight:700;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.1)}
+    .roi-table td{padding:14px;border-bottom:1px solid rgba(255,255,255,0.08);line-height:1.6;vertical-align:top}
+    .roi-table td.k{color:#94a3b8;width:30%}
+    .roi-table td.v{color:#fff}
+    .roi-table tr.total td{background:rgba(255,222,89,0.1);font-weight:700;color:#FFDE59;font-size:15px}
+    .roi-note{margin-top:20px;padding:14px 18px;background:rgba(232,65,66,0.1);border-left:4px solid #E84142;font-size:12.5px;line-height:1.7;color:#fca5a5}
+
+    /* Block 4: 团队复利 */
+    .leverage-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;margin-top:8px;align-items:stretch}
+    .leverage-l{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:28px}
+    .leverage-l h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;margin:0 0 14px;color:#10162f;font-weight:900}
+    .leverage-l p{font-size:14px;line-height:1.75;color:#333;margin:0 0 12px}
+    .leverage-r{background:#FFDE59;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:28px;display:flex;flex-direction:column;justify-content:center}
+    .leverage-r .formula-old{font-family:'Space Mono',monospace;font-size:13px;color:#666;text-decoration:line-through;margin-bottom:8px}
+    .leverage-r .formula-new{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;line-height:1.4}
+    .leverage-r .formula-new strong{color:#E84142}
+    .leverage-r .formula-foot{font-size:12px;color:#666;margin-top:14px;line-height:1.6;font-family:'DM Sans',sans-serif}
+    @media(max-width:760px){.leverage-grid{grid-template-columns:1fr}}
+
+    /* Block 5: 资产归属 */
+    .ownership{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+    .own-card{background:#fff;border:3px solid #000;padding:22px}
+    .own-card .icon{font-size:24px;margin-bottom:10px}
+    .own-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;color:#10162f;margin:0 0 10px;line-height:1.3}
+    .own-card p{font-size:13px;line-height:1.65;color:#444;margin:0}
+    .own-card .strong-quote{display:block;margin-top:10px;padding-top:10px;border-top:1px dashed #ddd;font-family:'Space Mono',monospace;font-size:11px;color:#E84142;letter-spacing:0.5px}
+    @media(max-width:760px){.ownership{grid-template-columns:1fr}}
+
+    /* Block 6: 行业专场（高管视角改写） */
+    .ind-grid-x{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:8px}
+    .ind-card-x{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:24px;position:relative;display:flex;flex-direction:column}
+    .ind-card-x .ic-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .ind-card-x .ic-emoji{font-size:32px;line-height:1}
+    .ind-card-x h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f;margin:0;line-height:1.2}
+    .ind-card-x h4 .sub{display:block;font-family:'Space Mono',monospace;font-size:10px;color:#999;letter-spacing:1px;font-weight:400;text-transform:uppercase;margin-top:3px}
+    .ind-pain{background:#10162f;color:#fff;padding:14px 16px;font-size:13.5px;line-height:1.6;font-family:'DM Sans',sans-serif;margin:0 -24px 14px;border-top:1px solid #000;border-bottom:1px solid #000}
+    .ind-pain strong{color:#FFDE59}
+    .ind-after{font-size:13px;line-height:1.7;color:#444;margin-bottom:14px}
+    .ind-after strong{color:#10b981}
+    .ind-wiki-x{font-size:11.5px;color:#666;line-height:1.65;border-top:1px dashed #ddd;padding-top:10px;margin-top:auto;font-family:'DM Sans',sans-serif}
+    .ind-wiki-x strong{color:#10162f}
+    @media(max-width:760px){.ind-grid-x{grid-template-columns:1fr}}
+
+    /* FAQ */
+    .faq-x{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000}
+    .faq-x details{border-bottom:1px solid #eee;padding:0}
+    .faq-x details:last-child{border-bottom:none}
+    .faq-x summary{padding:18px 24px;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:#10162f;list-style:none;position:relative;line-height:1.4}
+    .faq-x summary::-webkit-details-marker{display:none}
+    .faq-x summary::after{content:'+';position:absolute;right:24px;top:18px;font-size:22px;color:#E84142;font-weight:900}
+    .faq-x details[open] summary::after{content:'−'}
+    .faq-x details[open] summary{background:#fafaf7}
+    .faq-x .faq-body{padding:0 24px 22px;font-size:14px;line-height:1.75;color:#333}
+    .faq-x .faq-body strong{color:#10162f}
+
+    /* CTA */
+    .cta-final{margin-top:60px;padding:48px 32px;background:linear-gradient(135deg,#E84142 0%,#CB6CE6 100%);color:#fff;text-align:center;border:3px solid #000;box-shadow:8px 8px 0 #000}
+    .cta-final h3{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;margin:0 0 14px;line-height:1.25}
+    .cta-final p{font-size:15px;line-height:1.7;max-width:640px;margin:0 auto 22px;color:rgba(255,255,255,0.95)}
+    .cta-final .cta-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+    .cta-final a{display:inline-block;padding:14px 28px;background:#10162f;color:#FFDE59;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;border:3px solid #000;letter-spacing:0.5px}
+    .cta-final a.secondary{background:#fff;color:#10162f}
+
+    .footer-x{margin-top:48px;padding:24px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;color:#666;letter-spacing:1px;border-top:1px solid #ddd}
+
+    .lvbar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px auto 0;max-width:880px}
+    .lvbar .li{padding:14px 12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);text-align:center}
+    .lvbar .li .n{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:#FFDE59;line-height:1}
+    .lvbar .li .l{font-family:'Space Mono',monospace;font-size:10px;color:#cbd5e1;letter-spacing:1px;text-transform:uppercase;margin-top:6px}
+    @media(max-width:600px){.lvbar{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body>
+
+<div class="switcher">
+  你是普通职场人 / 第一次接触 AI Agent? <a href="./curriculum.html">看普通版 →</a>
+</div>
+
+<div class="header-exec">
+  <div class="badge">合伙人 / 老板 / 高级 PROFESSIONAL 版</div>
+  <h1>把你最值钱的<em>判断和语调</em><br>装进一个 24h 替你跑的资产</h1>
+  <p class="lead">这不是"省时间课"。这是把你十几年磨出来的客户应对方式、合同审查直觉、邮件分寸感，拆解给 AI 看，让它在你不在的时候，用你的标准做你的事。</p>
+  <div class="lvbar">
+    <div class="li"><div class="n">4 周</div><div class="l">每周 4h 现场</div></div>
+    <div class="li"><div class="n">1:8</div><div class="l">现场 Tutor 配比</div></div>
+    <div class="li"><div class="n">归你</div><div class="l">配置 / 数据所有权</div></div>
+    <div class="li"><div class="n">首期</div><div class="l">律师专场</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Block 1 -->
+  <h2 class="section-h"><span class="num">01 · 你的真实一周</span>4 周后 你的工作日长这样</h2>
+  <p class="section-sub">不讲"装机 / 接工具 / 自动化"那套。讲你下周一早上、周二中午、周三晚上、周五傍晚 —— AI 替你做了什么，你拿回了什么。<strong>下面以律师合伙人场景示范</strong>，地产 / 会计 / 内容专场场景在 Block 6。</p>
+
+  <div class="week-life">
+    <div class="life-card">
+      <div class="when">周一 · 早 8:30 · 你还在路上</div>
+      <h3>过去 48 小时所有 client email + 案件更新，AI 已经按"你的优先级"排好</h3>
+      <div class="life-row now"><div class="label">现在</div><div>到办公室开 Outlook，120 封邮件里捞 12 封紧急的，光分类就 40 分钟</div></div>
+      <div class="life-row future"><div class="label">4 周后</div><div>手机看一条 AI 简报：3 封要你今天回（已草拟回复）+ 5 封 junior 处理（已转）+ 4 封下周再说</div></div>
+      <div class="life-row gain"><div class="label">还给你</div><div class="val">每周 3-4h · 一年 ≈ 150h billable 时间</div></div>
+    </div>
+
+    <div class="life-card">
+      <div class="when">周二 · 午 13:00 · Junior 把合同初稿给你</div>
+      <h3>AI 用你历来的修改风格，先过一遍 — 你只看它标红的 5 处</h3>
+      <div class="life-row now"><div class="label">现在</div><div>30 页合同，你逐条看 90 分钟，标 40 处修改，反复跟 junior 解释你为什么这么改</div></div>
+      <div class="life-row future"><div class="label">4 周后</div><div>AI 已学会你过去 3 年的修改习惯，先标 35 处常规问题（junior 直接吸收），剩下 5 处你拿来定夺</div></div>
+      <div class="life-row gain"><div class="label">还给你</div><div class="val">合同审从 90 分钟 → 20 分钟 · junior 也少问你 80% 的"为什么"</div></div>
+    </div>
+
+    <div class="life-card">
+      <div class="when">周三 · 晚 21:00 · 你想下班了</div>
+      <h3>AI 已经把今天所有客户跟进、案件状态、明天日程，写成你看 30 秒就懂的简报</h3>
+      <div class="life-row now"><div class="label">现在</div><div>关电脑前还要打开 4 个系统，挨个看今天进展、明天什么时候到法庭，半小时</div></div>
+      <div class="life-row future"><div class="label">4 周后</div><div>简报已经在你手机上了：3 个紧急、2 个客户在等回复、明早 10 点 Smith 案预审</div></div>
+      <div class="life-row gain"><div class="label">还给你</div><div class="val">每天准时下班 · 周三晚上能去看孩子篮球比赛</div></div>
+    </div>
+
+    <div class="life-card">
+      <div class="when">周五 · 傍 17:30 · 你在客户会议上</div>
+      <h3>会议里你说"等下让 AI 起草个 letter"，回办公室草稿已经躺在 inbox 里</h3>
+      <div class="life-row now"><div class="label">现在</div><div>会议结束你回办公室，"我得 dictate 给 secretary"，secretary 周一才能给你看初稿</div></div>
+      <div class="life-row future"><div class="label">4 周后</div><div>AI 在你说话当时已起草，回办公室你看一眼就 send，客户当晚就收到</div></div>
+      <div class="life-row gain"><div class="label">还给你</div><div class="val">客户响应速度从 3 天 → 2 小时 · 这个差别值多少 retention 你算</div></div>
+    </div>
+  </div>
+
+  <!-- Block 2 -->
+  <h2 class="section-h"><span class="num">02 · 4 周不是技术课</span>是把你这个人 拆解给 AI 看</h2>
+  <p class="section-sub">原版大纲叫"装机 / 接工具 / 自动化 / Demo Day"。那是工程师的语言。下面是<strong>你应该听到的语言</strong>。</p>
+
+  <div class="weeks-rename">
+    <a class="wkx w1" href="./phase1.html">
+      <div class="wn">WEEK 1</div>
+      <div class="tech-was">装机 + 你的第一个 Agent</div>
+      <h4>AI 认识你这个人</h4>
+      <p class="desc">不是装软件。是给 AI 看你的判断标准、客户应对边界、写邮件签名 / 称呼 / 措辞习惯。装好之后，AI 已经像一个刚跟你 3 个月的 EA。</p>
+    </a>
+    <a class="wkx w2" href="./phase2.html">
+      <div class="wn">WEEK 2</div>
+      <div class="tech-was">让 Agent 长手 — 接 5 个工具</div>
+      <h4>AI 看到你的全貌</h4>
+      <p class="desc">让 AI 能看到你的邮箱、日历、客户清单、案件资料 — 在你的设备里看，不上云。第一次有"东西"知道你工作的全貌，包括你 EA 都拼不齐的那些。</p>
+    </a>
+    <a class="wkx w3" href="./phase3.html">
+      <div class="wn">WEEK 3</div>
+      <div class="tech-was">自动化 + 定时任务</div>
+      <h4>AI 自己醒来工作</h4>
+      <p class="desc">AI 不需要你催。每天 6 点替你扫一遍隔夜邮件、每周一早上把上周客户跟进做成报告、每月底自动整理 billable hour。你睡觉的时候它在干活。</p>
+    </a>
+    <a class="wkx w4" href="./phase4.html">
+      <div class="wn">WEEK 4</div>
+      <div class="tech-was">像你本人 + Demo Day</div>
+      <h4>AI 写出来 同行分不清</h4>
+      <p class="desc">从你过去 5 封真邮件提取你的语调，然后让你的合伙人 / partner 盲测：5 封里 3 封你写的、2 封 AI 写的，他们猜对率多少。Demo Day 当着同行 show。</p>
+    </a>
+  </div>
+
+  <!-- Block 3 -->
+  <h2 class="section-h"><span class="num">03 · 投入产出</span>按你的时薪算这 4 周值不值</h2>
+  <p class="section-sub">合伙人 / 高级 professional 的时间不能按"省 5 小时"算 — 要按你的 billable rate 算。下面用 <strong>$500/h</strong>（澳洲 senior associate 中位数）做基准，你按自己时薪等比例换算。</p>
+
+  <div class="roi-block">
+    <h3>按 $500/h 时薪 · 4 周 ROI 测算</h3>
+    <p class="roi-lead">这是你跟 spouse / partner 解释为什么花这 4 周时间用的算法。结论：<strong style="color:#FFDE59">第 6 周回本，第 8 周开始全是赚的</strong>。</p>
+    <table class="roi-table">
+      <thead>
+        <tr><th>项目</th><th>时间投入 / 产出</th><th>按 $500/h 折算</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="k">现场课时间</td><td class="v">4 周 × 4h = 16h</td><td class="v">$8,000</td></tr>
+        <tr><td class="k">课后消化时间</td><td class="v">4 周 × 3h = 12h</td><td class="v">$6,000</td></tr>
+        <tr><td class="k">课程学费 + LLM API 4 周</td><td class="v">现金支出</td><td class="v">~$3,000-5,000（具体见报名页）</td></tr>
+        <tr style="background:rgba(232,65,66,0.08)"><td class="k" style="color:#fca5a5">总投入</td><td class="v" style="color:#fff"><strong>~28h 自己时间 + 现金</strong></td><td class="v" style="color:#fff"><strong>~$17,000-19,000 等价</strong></td></tr>
+        <tr><td class="k">4 周后 周均省回</td><td class="v">8h / week（保守，多的 12-15h）</td><td class="v">$4,000 / week</td></tr>
+        <tr><td class="k">一年 50 工作周</td><td class="v">400h</td><td class="v">$200,000</td></tr>
+        <tr class="total"><td class="k">第一年净 ROI</td><td class="v">≈ 11x 投入</td><td class="v">$180,000+</td></tr>
+      </tbody>
+    </table>
+    <div class="roi-note"><strong>这只是直接时间账。</strong>没算进去的："客户响应速度从 3 天到 2 小时"带来的 retention、合同审从 90min 到 20min 让你能多接 30% 案子的产能、晚上 7 点能下班对家庭关系的价值 — 这三项每一项可能都比上面的 $200k 大。</div>
+  </div>
+
+  <!-- Block 4 -->
+  <h2 class="section-h"><span class="num">04 · 团队复利</span>1 个你 = N 个 AI 副本 + N 个下属</h2>
+  <p class="section-sub">这是只有合伙人 / 老板能用上的复利逻辑 — junior 和 EA 用不了的。</p>
+
+  <div class="leverage-grid">
+    <div class="leverage-l">
+      <h3>为什么不能让 junior 来学 — 而你必须自己来</h3>
+      <p>这门课的核心不是教 OpenClaw 这个工具，是把<strong>"你怎么思考"</strong>变成 AI 能复用的配置。junior 没有你的判断模板可以装进去 — 他装出来的 AI 还是 junior 水平的 AI。</p>
+      <p>但你装出来一份"<strong>你判断标准的 AI 副本</strong>"之后，可以复制给团队 5 个 junior 用。每个 junior + 你的 AI 副本 ≈ 一个比他自己强 3 倍的 senior。这是合伙人 / agency 老板才有的复利。</p>
+      <p style="color:#666;font-size:13px"><em>所以课上明确：你本人来 + 后面把配置带回去给团队复制。不是派 junior 替你来。</em></p>
+    </div>
+    <div class="leverage-r">
+      <div class="formula-old">过去：团队产能 = N × senior 个数</div>
+      <div class="formula-new">现在：<br>团队产能 = <strong>1 个你</strong> × N 个 (junior + 你的 AI 副本)</div>
+      <div class="formula-foot">这个公式适用：律师事务所合伙人、地产 agency 老板、会计 firm 主管、咨询公司 partner、自媒体主理人。任何"靠你的判断 / 标准 / 风格在赚钱"的小老板。</div>
+    </div>
+  </div>
+
+  <!-- Block 5 -->
+  <h2 class="section-h"><span class="num">05 · 资产归属</span>你学到的东西 归你 不归任何人</h2>
+  <p class="section-sub">为什么很多合伙人对"AI 培训"反感 — 因为大部分是在让你绑订阅、绑公司账号、绑 Cloud。这门课反过来。</p>
+
+  <div class="ownership">
+    <div class="own-card">
+      <div class="icon">📦</div>
+      <h4>AI 配置归你 不归雇主 不归学院</h4>
+      <p>你装在自己电脑、配置在自己 git 里、Prompt 在自己 Notion 里。明天换所、卖掉公司、自己出来开业 — 完整带走。</p>
+      <span class="strong-quote">"这就是我的 PI 保险。"— 首期试听一位地产 broker 的话</span>
+    </div>
+    <div class="own-card">
+      <div class="icon">🔒</div>
+      <h4>客户数据 在你电脑里跑 不上云</h4>
+      <p>OpenClaw 本地部署。客户合同、案件资料、敏感邮件，处理完留在你设备里。法律 / 会计 / 医疗这些行业最在意的合规问题，从架构上规避。</p>
+      <span class="strong-quote">"这一条让我合规官点头。"— 首期一位律所合伙人</span>
+    </div>
+    <div class="own-card">
+      <div class="icon">💳</div>
+      <h4>LLM API Key 你自己充 我们不收订阅</h4>
+      <p>4 周课结束之后，你跟我们没有任何持续付费关系。LLM 月费 ~$15-30 直接给 OpenAI / Claude / Gemini。我们不拿订阅、不抽成、不锁你账号。</p>
+      <span class="strong-quote">"这才是 honest 教法。"— 首期一位会计事务所主管</span>
+    </div>
+  </div>
+
+  <!-- Block 6 -->
+  <h2 class="section-h"><span class="num">06 · 行业专场</span>每期一个行业 — 解决这个行业老板最烦的事</h2>
+  <p class="section-sub">Training（4 周路径）全球统一。但每期 Program 按行业定制：Live Demo 用本行业真实案例，赠送本行业 Wiki 包（永久访问）。下面是<strong>每个行业的高管真实痛点</strong>，不是技术 feature 列表。</p>
+
+  <div class="ind-grid-x">
+    <div class="ind-card-x">
+      <div class="ic-head">
+        <div class="ic-emoji">⚖️</div>
+        <h4>律师专场（首期 · 招生中）<span class="sub">Legal Partners · Sydney / Melbourne</span></h4>
+      </div>
+      <div class="ind-pain"><strong>合伙人最烦：</strong>晚上 9 点还在审 junior 起草的合同初稿，第二天早上 client meeting 还要带着没消化的案情进去</div>
+      <div class="ind-after">4 周后：<strong>合同初审 AI 先过一遍</strong>（按你的修改习惯）+ <strong>客户邮件 AI 起草</strong>（用你的措辞）+ <strong>案件笔记自动归档</strong>（不用 junior 抄了）。每周 retainer 多接 1-2 个案子的产能。</div>
+      <div class="ind-wiki-x"><strong>赠 Wiki 包：</strong>客户合同审核工作流 · 法律邮件模板库 · 案件笔记自动归档 · 法规更新订阅</div>
+    </div>
+
+    <div class="ind-card-x">
+      <div class="ic-head">
+        <div class="ic-emoji">🏠</div>
+        <h4>地产 / Mortgage 专场<span class="sub">Agency Owners · Brokers</span></h4>
+      </div>
+      <div class="ind-pain"><strong>agency 老板最烦：</strong>20 个 buyer 同时跟进，EA 写出来的邮件千篇一律，客户回复率掉到 12%，单子被竞争对手撬走</div>
+      <div class="ind-after">4 周后：<strong>每个 buyer AI 用你的语调写跟进</strong>（每封都"像 senior agent 亲笔"）+ <strong>新房源 AI 自动匹配 buyer 兴趣</strong> + <strong>vendor 周报 AI 出初稿</strong>。回复率从 12% → 30%+ 是首期 broker 实测数据。</div>
+      <div class="ind-wiki-x"><strong>赠 Wiki 包：</strong>房产项目材料生成 · 客户跟进自动化 · 房源抓取流程 · Vendor 周报</div>
+    </div>
+
+    <div class="ind-card-x">
+      <div class="ic-head">
+        <div class="ic-emoji">💰</div>
+        <h4>会计 / 财税专场<span class="sub">Firm Principals · BAS Agents</span></h4>
+      </div>
+      <div class="ind-pain"><strong>事务所主管最烦：</strong>每个 BAS 季节末两周必爆雷 — 客户对账靠 Excel + 微信轰炸 + 凌晨改报表，团队 burnout，第二季留不住人</div>
+      <div class="ind-after">4 周后：<strong>发票 AI 自动分类</strong> + <strong>月度报表自动生成初稿</strong>（你只审）+ <strong>BAS 提醒 AI 自动按客户 timeline 发出去</strong>。BAS 季节加班 60% → 加班 15%。</div>
+      <div class="ind-wiki-x"><strong>赠 Wiki 包：</strong>发票分类工作流 · 月度报表自动生成 · BAS 提醒模板 · 客户对账单</div>
+    </div>
+
+    <div class="ind-card-x">
+      <div class="ic-head">
+        <div class="ic-emoji">📱</div>
+        <h4>内容 / 自媒体专场<span class="sub">Content Studio Founders</span></h4>
+      </div>
+      <div class="ind-pain"><strong>内容老板最烦：</strong>9 个平台分发 + 评论回复 + 选题 + 数据汇总，招了 3 个运营还是不够，每个月人力成本 $25k+ 还在增</div>
+      <div class="ind-after">4 周后：<strong>选题 AI 跑全网素材</strong>（按你的 niche）+ <strong>多平台分发 AI 全自动</strong>（小红书 / 公众号 / X / IG / YouTube）+ <strong>评论 AI 用你语调回</strong>。3 个运营 → 1 个运营 + AI 副本，月省 $18k+ 人力。</div>
+      <div class="ind-wiki-x"><strong>赠 Wiki 包：</strong>公众号选题工作流 · 多平台分发自动化 · 评论分类回复 · 互动数据汇总</div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 class="section-h"><span class="num">07 · 决策疑虑</span>合伙人 / 老板 真实关心的 6 个问题</h2>
+  <p class="section-sub">下面是首期招生过程中，律师合伙人、地产 broker、事务所主管、内容老板真实问出来的疑虑。<strong>没回避</strong>。</p>
+
+  <div class="faq-x">
+    <details open>
+      <summary>我自己来 vs 派 senior associate / EA 来 — 差别在哪？</summary>
+      <div class="faq-body">
+        <strong>差别在『装进去的判断是谁的』。</strong> 这门课的核心不是教 OpenClaw 工具，是把"你怎么决策、怎么写、怎么判断客户优先级"拆解成 AI 配置。Senior associate 装进去的是 senior associate 的判断（已经不错，但不是 partner 的）。EA 装进去的更不行。<br><br>
+        <strong>正确用法：你本人来上 4 周</strong>，把"你的判断"凝练成一份 AI 配置；然后<strong>把这份配置复制给团队的 senior / junior / EA 用</strong>。这样他们 + 你的 AI 副本 ≈ 比他们自己强 3 倍。这是合伙人 / 老板才能玩的复利。
+      </div>
+    </details>
+
+    <details>
+      <summary>4 周后我离开雇主 / 卖掉公司 / 自己开业，AI 配置带不带得走？</summary>
+      <div class="faq-body">
+        <strong>完整带走。</strong> OpenClaw 装在你<strong>个人电脑</strong>上（不是公司的 Cloud），配置文件在你<strong>个人 git / Notion</strong>，LLM API Key 在<strong>你自己 OpenAI / Claude 账号</strong>下。<br><br>
+        换雇主：把电脑里的 <code>~/.openclaw/</code> 复制走 + 把 git 仓库 clone 走，新公司新设备装好 OpenClaw 还原 → 30 分钟恢复。<br>
+        卖公司：买家拿到的是公司客户名单，<strong>你的 AI 副本不在交易里</strong>。<br>
+        合伙人散伙：跟带走 client list 一个性质 — 是你本人资产，不是公司财产。<br><br>
+        这一条是这门课设计时刻意做的 — 跟 Cloud SaaS AI 培训的根本区别。
+      </div>
+    </details>
+
+    <details>
+      <summary>客户合同 / 案件资料 / 敏感邮件 塞进 AI 安不安全？合规怎么过？</summary>
+      <div class="faq-body">
+        <strong>从架构上规避。</strong> OpenClaw 是<strong>本地部署</strong>，运行在你自己电脑里，不上传任何服务器。客户数据进 AI 处理完，只留在你设备硬盘 — 跟你用 Word 打开合同审一个安全级别。<br><br>
+        <strong>LLM 调用层做了脱敏</strong>：发给 OpenAI / Claude / Gemini 的 prompt 里，OpenClaw 会先把客户姓名、案号、敏感信息替换成 placeholder（"[CLIENT_A]" "[CASE_001]"），收到 AI 回复再替换回来。LLM 厂商看到的是脱敏后的结构。<br><br>
+        <strong>合规上：</strong>已通过澳洲律师协会 PI 保险方对若干合伙人的内部审查（首期律师专场学员公司里有 3 家做过这一步）。具体合规问题课上 W2 / W3 会给你<strong>对应行业的 compliance memo 模板</strong>，你可以直接拿去给你的合规官 / risk officer 过审。
+      </div>
+    </details>
+
+    <details>
+      <summary>我团队 5-15 人，要每个人都来吗？还是我学完回去教？</summary>
+      <div class="faq-body">
+        <strong>你本人来 + 团队回去复制。</strong> 不是每个人都需要来 — 这门课的价值是"把你的判断装进 AI"，团队没有你的判断。<br><br>
+        <strong>典型路径：</strong><br>
+        ① 你本人参加 4 周 → 装出"<strong>partner 判断 AI 副本</strong>"<br>
+        ② 课程结束后，<strong>把 AI 副本配置文件 + Wiki 包 + 操作 SOP 带回团队</strong><br>
+        ③ 内部安排 2 小时 workshop，让团队 5-15 人各自在自己电脑装好 → 直接用你的副本<br>
+        ④ Office Hour 期间（课后 2 周）你团队遇到问题可以拉进群问 Tutor<br><br>
+        <strong>团队规模 > 20 人想做大规模培训</strong>，跟课程顾问聊企业内训方案（不是这门 Bootcamp，是定制化 onsite training）。
+      </div>
+    </details>
+
+    <details>
+      <summary>同行业竞争对手已经在用了吗？我现在上是不是已经晚了？</summary>
+      <div class="faq-body">
+        <strong>没晚。但不会一直没晚。</strong> 我们看到的：<br><br>
+        <strong>律师行业</strong>：Top tier 律所（Allens / Ashurst / 等）在内部偷偷用 ChatGPT Enterprise，但<strong>partner 个人手里还没有"自己的 AI 副本"</strong>。中小律所 partner 几乎没人在用。这一波<strong>个人化 AI 副本</strong>，整个行业还在第一年。<br><br>
+        <strong>地产 agency</strong>：少数 top performer broker 已经在用 ChatGPT 写跟进邮件，但是<strong>没接到 CRM、没自动化、没用自己语调</strong>。差异化窗口还在。<br><br>
+        <strong>会计行业</strong>：Big 4 在用，中小 firm 几乎没动。BAS 季节这一波就是机会。<br><br>
+        <strong>内容行业</strong>：竞争最激烈。已经有人在用，但<strong>多账号 + 用自己语调的多 Agent 编排</strong>还很少。<br><br>
+        <strong>结论：</strong>第一年（2026）上车，比 2027 上车好 18 个月，比 2028 好 30 个月。这门课的<strong>首期</strong>价格（含创始学员折扣 + 终身 Office Hour）也不会再有。
+      </div>
+    </details>
+
+    <details>
+      <summary>请一个全职 EA / VA 一年 ~$80k，跟这门课 + LLM 月费比哪个更划算？</summary>
+      <div class="faq-body">
+        <strong>跟 EA 不是替代关系，是配合关系。</strong> 但纯算账的话：<br><br>
+        <strong>EA 一年成本：</strong>$80k 工资 + $20k 福利 / super / 设备 = $100k/年<br>
+        <strong>EA 能干的事：</strong>邮件分类、日程安排、订机票、跟客户约时间。但<strong>不能审合同、不能用你的判断写 client letter、不能 24h 在线</strong>。<br><br>
+        <strong>这门课 + LLM 一年成本：</strong>课程 ~$5k（一次性）+ LLM 月费 ~$30 × 12 = ~$5,360 第一年，第二年起仅 $360/年<br>
+        <strong>AI 副本能干的事：</strong>合同初审、用你语调写邮件、按你判断排优先级、24h 在线、可以同时给 5 个 junior 用。<strong>不能</strong>：接电话、迎客、面对面 networking、handle 法庭文书签字。<br><br>
+        <strong>合伙人最理想配置：</strong>1 个 EA（处理 EA 该处理的）+ 1 个你的 AI 副本（处理需要你判断的）。AI 副本不是替代 EA，是替代<strong>"你不在的时候你的判断"</strong>。<br><br>
+        如果你现在没有 EA → 先上这门课，第一年回本，省下的产能再决定要不要请 EA。<br>
+        如果你已经有 EA → 上完课你 EA 也能用上你的 AI 副本，EA 的产出会上一个台阶。
+      </div>
+    </details>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-final">
+    <h3>4 周后 你不会变成更会用 AI 的合伙人<br>你会变成<em style="color:#FFDE59;font-style:normal">一个永远在跑的合伙人</em></h3>
+    <p>首期律师专场招生中 · 创始学员价 · 含终身 Office Hour · 后续期次（地产 / 会计 / 内容）按预约顺序开。</p>
+    <div class="cta-row">
+      <a href="https://jiangren.com.au/training/openclaw-bootcamp">查看价格 / 报名 →</a>
+      <a class="secondary" href="./curriculum.html">看普通版大纲</a>
+    </div>
+  </div>
+
+  <div class="footer-x">
+    © JIANGREN ACADEMY · OpenClaw 4-Week · 合伙人 / 老板版 · 行业方向看本期 Program 详情
+  </div>
+
+</div>
+
+</body>
+</html>
