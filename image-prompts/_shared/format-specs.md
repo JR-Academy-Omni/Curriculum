@@ -182,17 +182,82 @@ Subtle, premium, editorial feel.
 
 ---
 
-## 三格式对比速查
+## 4. 招生海报 / 全景图（`recruitment-poster`）
 
-| 维度 | xhs | wechat-cover | hero |
-|------|-----|--------------|------|
-| 尺寸 | 1242×1660 | 1080×1260 | 1920×900 |
-| 比例 | 3:4 竖 | ~9:11 竖 | 16:9 横 |
-| 文字段落 | ≤ 5 | ≤ 2 | 0–1 |
-| 视觉占比 | 60% | 70%+ | 100%（含留白） |
-| 风格变体 | A 写实生活 | C 冲突大字报 | B 极简编辑 |
-| 调性 | 真实、有故事 | 冲击、单点 | 质感、克制 |
-| 主用途 | 小红书种草 | 朋友圈、视频号封面 | 详情页 hero、邮件头图 |
+> 整张图把整个 bootcamp 讲清楚 —— 定位 + 数据 + 模块 + 受众 + CTA。详细规范见独立文档 [`recruitment-poster-spec.md`](recruitment-poster-spec.md)。
+
+### 基本参数
+- **尺寸**: `1024×1536`（2:3 竖版，gpt-image-2 原生比例）
+- **风格变体**: 不属于 A/B/C —— 每个 bootcamp 独立**签名风格**（13 种已用：GitHub Tech Zine / Vector Lab Notebook / Risograph Workbook / Cursor IDE Splashscreen / 80s Computer Manual / Swiss Corporate Memo / Excel Dashboard Print / Boarding Pass Itinerary / Subway Map Diagram / CI/CD Blueprint / Browser DevTools Inspector / Algorithm Card Deck / Open-Source Manifesto Zine），详见 [`style-lineage.md`](style-lineage.md)
+- **平台关键词**: `dense info-graphic recruitment poster, single page summary`
+- **gpt-image-2 模式**: **Thinking** 模式（Instant 模式渲染密集中文 + 多区块极易翻车）
+
+### 构图分区（9-block anatomy，所有 bootcamp 共享骨架）
+
+```
+┌────────────────────────────────────────┐ 1024 宽
+│  ① TOP NAV BAR                          │
+│  ② BREADCRUMB / 招生状态徽章             │
+│  ③ HERO TITLE BLOCK                     │
+│  ④ SUBTITLE STRIP (yellow #FFB800 bar)  │
+│  ⑤ HIGHLIGHT SECTION (3 cards)          │
+│  ⑥ STATS STRIP (4 columns)              │
+│  ⑦ AUDIENCE SECTION (4 personas + 插画) │
+│  ⑧ CTA BLOCK (QR + 黄条 tagline)        │
+│  ⑨ FOOTER                               │
+└────────────────────────────────────────┘ 1536 高
+```
+
+### 文字密度上限
+- 段落总数：25-35 段（包括所有 tag、数字、标签）
+- Hero EN 大标题：≤ 22 字符
+- 中文副标：≤ 18 字
+- Subtitle strip：≤ 24 字
+- 每张 module 卡 EN 标题：≤ 18 字符
+- 每张卡中文小标题：≤ 14 字
+- 4-tag 列：每 tag ≤ 5 字
+- 数字：1-4 位
+- persona 标题：≤ 8 字 / 副标 ≤ 14 字
+
+### 调性
+- **信息密度优先**：海报存在的目的是"一张图讲清楚整个 bootcamp"
+- **签名风格主导视觉**：每个 bootcamp 一眼能区分
+- **品牌色硬约束**：必须能看到 `#FF5757` / `#10162F` / `#FFF1E7` / `#FFB800` 中的至少 3 个
+- **无承诺话术**：CTA 用"扫码了解课程大纲" / "1v1 求职辅导"
+- **不画 logo**：右下角文字 tag `JR Academy · {Bootcamp}`
+
+### 关键 prompt 片段
+
+> 完整骨架在 [`recruitment-poster-spec.md`](recruitment-poster-spec.md)，每个 bootcamp 在 `GLOBAL STYLE` + `DECORATIVE DETAILS` 段填入自己的签名风格 DNA，LAYOUT 1-9 的骨架不动。
+
+```
+Model: gpt-image-2.
+Aspect ratio: 2:3. Image size: 1024x1536. Mode: Thinking.
+
+Create a 1024x1536 portrait print poster — a dense single-page recruitment
+poster summarizing an entire JR Academy bootcamp.
+
+GLOBAL STYLE
+- Signature style: {STYLE NAME}
+- Style DNA: {1-line description}
+- Brand colors (mandatory, at least 3 of):
+  #FF5757 · #10162F · #FFF1E7 · #FFB800
+... (LAYOUT 1-9 + DECORATIVE + NEGATIVE — see recruitment-poster-spec.md)
+```
+
+---
+
+## 四格式对比速查
+
+| 维度 | xhs | wechat-cover | hero | recruitment-poster |
+|------|-----|--------------|------|-------------------|
+| 尺寸 | 1242×1660 | 1080×1260 | 1920×900 | **1024×1536** |
+| 比例 | 3:4 竖 | ~9:11 竖 | 16:9 横 | **2:3 竖** |
+| 文字段落 | ≤ 5 | ≤ 2 | 0–1 | **25-35** |
+| 视觉占比 | 60% | 70%+ | 100%（含留白） | **30%（70% 信息）** |
+| 风格变体 | A 写实生活 | C 冲突大字报 | B 极简编辑 | **签名风格（13 选 1）** |
+| 调性 | 真实、有故事 | 冲击、单点 | 质感、克制 | **信息密度、严谨、可识别** |
+| 主用途 | 小红书种草 | 朋友圈、视频号封面 | 详情页 hero、邮件头图 | **招生主图、全景介绍** |
 
 ---
 

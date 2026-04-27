@@ -168,6 +168,12 @@
     .tag.pain { background: var(--accent); color: #fff; border-color: var(--accent); }
     .tag.lang { background: var(--warm); color: var(--ink); border-color: var(--ink); }
     .tag.lang.en { background: #2ecc71; color: #fff; border-color: #2ecc71; }
+    .tag.style {
+      background: linear-gradient(90deg, var(--warm) 0%, #fff 60%);
+      color: var(--ink);
+      border-color: var(--ink);
+      letter-spacing: 1px;
+    }
 
     .card-title {
       font-family: "Bricolage Grotesque", "Noto Sans SC", sans-serif;
@@ -553,7 +559,7 @@
         if (f.pain && p.painPoint !== f.pain) return false;
         if (f.format && p.format !== f.format) return false;
         if (f.search) {
-          const hay = (p.title + ' ' + (p.tags || []).join(' ') + ' ' + p.bootcampName).toLowerCase();
+          const hay = (p.title + ' ' + (p.tags || []).join(' ') + ' ' + p.bootcampName + ' ' + (p.styleName || '')).toLowerCase();
           if (!hay.includes(f.search)) return false;
         }
         return true;
@@ -574,14 +580,24 @@
       grid.innerHTML = filtered.map(p => {
         const langCode = p.lang || 'zh';
         const langLabel = langCode === 'en' ? 'EN' : '中文';
+        const styleChip = p.styleName
+          ? `<span class="tag style">✦ ${escapeHtml(p.styleName)}</span>`
+          : '';
+        const roleChip = p.roleName && p.role !== 'general'
+          ? `<span class="tag role">${escapeHtml(p.roleName)}</span>`
+          : '';
+        const painChip = p.painPointName
+          ? `<span class="tag pain">${escapeHtml(p.painPointName)}</span>`
+          : '';
         return `
         <div class="card" data-id="${p.id}">
           <div class="card-bootcamp-top">📦 ${escapeHtml(p.bootcampName)}</div>
           <div class="card-tags">
             <span class="tag lang ${langCode}">${langLabel}</span>
             <span class="tag format">${escapeHtml(p.formatName)}</span>
-            <span class="tag role">${escapeHtml(p.roleName)}</span>
-            <span class="tag pain">${escapeHtml(p.painPointName)}</span>
+            ${roleChip}
+            ${painChip}
+            ${styleChip}
           </div>
           <div class="card-title">${escapeHtml(p.title)}</div>
           <div class="card-size">${p.size}</div>
