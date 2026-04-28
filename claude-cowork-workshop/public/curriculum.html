@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Claude Cowork 工作坊 — 手把手装环境 + 跑两个真实 Case · 课程大纲</title>
+  <meta name="description" content="3 小时手把手 — 装 Anthropic Claude Cowork 桌面 App、配 4 个 Connectors、装第一个 Plugin、配对手机 Dispatch，然后跑 2 个真实 case：① 让 Cowork 调 PowerPoint 自动出 PPT ② 写 Skill + /schedule 每天 8 点自动爬校招岗位归档桌面。面向非技术岗位，零编程基础。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#FF914D 100%);padding:56px 24px 48px}
+    .header h1{font-size:clamp(28px,5vw,44px);line-height:1.15;max-width:1000px;margin:0 auto;color:#fff}
+    .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:840px;margin:14px auto 0;opacity:0.92;color:#fff;line-height:1.65}
+    .chips{display:flex;gap:10px;justify-content:center;margin-top:22px;flex-wrap:wrap}
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;color:#10162f;border:3px solid #000;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.3px}
+    .chip.yellow{background:#FFDE59}
+    .chip.orange{background:#FF914D;color:#fff}
+    .chip.green{background:#10b981;color:#fff}
+
+    /* Promise band */
+    .promise{max-width:1200px;margin:48px auto 0;padding:0 24px}
+    .promise-card{border:3px solid #000;background:#fffbeb;box-shadow:8px 8px 0 #FF914D;padding:28px 32px}
+    .promise-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:#10162f;color:#FFDE59;margin-bottom:14px}
+    .promise-card p{font-size:15.5px;line-height:1.8;color:#1a1a1a}
+    .promise-card p strong{color:#10162f}
+
+    /* Section title */
+    .sec-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .sec-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+
+    /* What is Cowork */
+    .what-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .what-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:28px 32px}
+    .what-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:#10162f;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+    .what-card p{font-size:14.5px;line-height:1.75;color:#333;margin-bottom:14px}
+    .what-card .tabs-row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .what-card .tab-pill{padding:8px 14px;border:2px solid #000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;background:#fff}
+    .what-card .tab-pill.active{background:#FF914D;color:#fff}
+
+    /* Cowork vs OpenClaw comparison */
+    .vs-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .vs-intro{text-align:center;color:#666;font-size:14px;line-height:1.7;max-width:820px;margin:0 auto 24px;padding:0 12px}
+    .vs-table{border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #10162f;overflow:hidden}
+    .vs-head{display:grid;grid-template-columns:1fr 1.3fr 1.3fr;background:#10162f;color:#fff}
+    .vs-head .vh{padding:16px 18px;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:16px;border-right:3px solid #000;display:flex;align-items:center;gap:8px}
+    .vs-head .vh:last-child{border-right:none}
+    .vs-head .vh.cowork{background:#FF914D}
+    .vs-head .vh.openclaw{background:#E84142}
+    .vs-head .vh .small{font-family:'Space Mono',monospace;font-size:10px;font-weight:400;opacity:0.85;letter-spacing:0.5px}
+    .vs-row{display:grid;grid-template-columns:1fr 1.3fr 1.3fr;border-top:2px solid #000}
+    .vs-row .vc{padding:14px 18px;border-right:2px solid #000;font-size:13.5px;line-height:1.65;color:#1a1a1a}
+    .vs-row .vc:last-child{border-right:none}
+    .vs-row .vc.axis{background:#fafafa;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#10162f;letter-spacing:0.5px;display:flex;align-items:center}
+    .vs-row:nth-child(even) .vc:not(.axis){background:#fffbf5}
+    @media(max-width:760px){
+      .vs-head{grid-template-columns:1fr 1fr}
+      .vs-head .vh.axis{display:none}
+      .vs-row{grid-template-columns:1fr 1fr;position:relative;padding-top:28px}
+      .vs-row .vc.axis{grid-column:1 / span 2;background:#10162f;color:#FFDE59;padding:6px 14px;border-right:none;border-bottom:2px solid #000;font-size:11px}
+    }
+
+    /* Decision band */
+    .vs-decide{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid #000;box-shadow:6px 6px 0 #000;background:#fff}
+    .vs-decide .pick{padding:24px 26px;border-right:3px solid #000}
+    .vs-decide .pick:last-child{border-right:none}
+    .vs-decide .pick.cowork{background:#fff5ec}
+    .vs-decide .pick.openclaw{background:#ffefef}
+    .vs-decide .pick h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .vs-decide .pick.cowork h4{color:#c2410c}
+    .vs-decide .pick.openclaw h4{color:#a30e0f}
+    .vs-decide .pick ul{list-style:none;padding:0}
+    .vs-decide .pick li{font-size:13.5px;line-height:1.7;padding:6px 0 6px 22px;position:relative;color:#1a1a1a}
+    .vs-decide .pick.cowork li::before{content:"→";position:absolute;left:0;top:6px;color:#FF914D;font-weight:900}
+    .vs-decide .pick.openclaw li::before{content:"→";position:absolute;left:0;top:6px;color:#E84142;font-weight:900}
+    .vs-both{margin-top:18px;padding:18px 24px;background:#10162f;color:#fff;border:3px solid #000;font-size:14px;line-height:1.75}
+    .vs-both strong{color:#FFDE59}
+    @media(max-width:760px){.vs-decide{grid-template-columns:1fr}.vs-decide .pick{border-right:none;border-bottom:3px solid #000}.vs-decide .pick:last-child{border-bottom:none}}
+
+    /* Tools — 6 grid for the Cowork features */
+    .ts-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .ts-head{border:3px solid #000;background:#10162f;color:#fff;padding:18px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .ts-head .mono{font-family:'Space Mono',monospace;font-size:12px;opacity:0.7;font-weight:400}
+    .ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid #000;border-top:none;background:#fff}
+    .ts-col{padding:22px 22px 24px;border-right:3px solid #000;border-bottom:3px solid #000}
+    .ts-col:nth-child(3n){border-right:none}
+    .ts-col:nth-last-child(-n+3){border-bottom:none}
+    .ts-logo{font-size:32px;margin-bottom:8px}
+    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;color:#10162f;margin-bottom:4px}
+    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#FF914D;font-weight:700;margin-bottom:12px}
+    .ts-col p{font-size:13px;line-height:1.7;color:#444;margin-bottom:8px}
+    .ts-col p strong{color:#10162f}
+    .ts-pros,.ts-cons{font-size:12px;line-height:1.65;padding:7px 10px;margin-top:8px}
+    .ts-pros{background:#d1fae5;color:#065f46;border-left:4px solid #10b981}
+    .ts-cons{background:#fef3c7;color:#92400e;border-left:4px solid #f59e0b}
+    @media(max-width:900px){.ts-grid{grid-template-columns:repeat(2,1fr)}.ts-col:nth-child(3n){border-right:3px solid #000}.ts-col:nth-child(2n){border-right:none}}
+    @media(max-width:600px){.ts-grid{grid-template-columns:1fr}.ts-col{border-right:none !important;border-bottom:3px solid #000}}
+
+    /* Audience */
+    .au-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .au-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:18px 20px;transition:all 0.15s}
+    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .au-emoji{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
+    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .au-body p{font-size:13px;line-height:1.65;color:#555}
+    .au-not{margin-top:22px;padding:16px 20px;background:#10162f;color:#fff;font-size:13px;line-height:1.7}
+    .au-not strong{color:#FFDE59}
+    @media(max-width:640px){.au-grid{grid-template-columns:1fr}}
+
+    /* Timeline */
+    .tl-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .tl-wrap .box{margin-bottom:20px}
+    .tl-wrap .box-h{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:'Bricolage Grotesque',sans-serif;font-size:16px}
+    .tl-wrap .box-h .slot{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.85}
+    .tl-wrap .time-block{background:#fafafa;padding:10px 24px;font-size:12px;font-family:'Space Mono',monospace;color:#555;border-bottom:1px solid #eee;line-height:1.6}
+    .tl-wrap .lesson-body{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;padding:16px 24px}
+    .tl-wrap .lesson-body h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:6px}
+    .tl-wrap .lesson-body p{font-size:13.5px;line-height:1.75;color:#333}
+    .tl-wrap .lesson-body ul{font-size:13px;line-height:1.75;color:#444;padding-left:18px;margin-top:4px}
+    .tl-wrap .lesson-body li{margin-bottom:4px}
+    .tl-wrap .step-list{margin-top:8px;border:2px dashed #FF914D;padding:10px 12px;background:#fff8f0}
+    .tl-wrap .step-list .step{display:grid;grid-template-columns:30px 1fr 50px;gap:8px;padding:6px 0;border-bottom:1px dashed #ffcca0;font-size:13px;line-height:1.6}
+    .tl-wrap .step-list .step:last-child{border-bottom:none}
+    .tl-wrap .step-list .sn{font-family:'Space Mono',monospace;font-weight:900;color:#FF914D;font-size:14px}
+    .tl-wrap .step-list .st{color:#10162f;font-weight:700}
+    .tl-wrap .step-list .sd{font-size:12px;color:#777;font-family:'Space Mono',monospace;text-align:right}
+    .tl-wrap .step-list .step .desc{grid-column:2 / span 1;color:#555;font-weight:400;font-size:12.5px;margin-top:2px;line-height:1.65}
+    .teacher-note{margin-top:10px;padding:10px 12px;background:#fff5f5;border-left:4px solid #ec4899;font-size:12px;line-height:1.7;color:#6b0a3a}
+    .teacher-note strong{color:#ec4899;font-family:'Space Mono',monospace;letter-spacing:0.5px}
+    @media(max-width:760px){.tl-wrap .lesson-body{grid-template-columns:1fr}}
+
+    /* Prep */
+    .pr-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .pr-box{border:3px solid #000;background:#fffbeb;box-shadow:6px 6px 0 #000;padding:0}
+    .pr-head{background:#FFDE59;padding:14px 24px;border-bottom:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:18px;color:#10162f;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .pr-head .mono{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.75}
+    .pr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;background:#fff}
+    .pr-item{display:flex;gap:14px;padding:20px 22px;border-right:2px dashed #e5e7eb;border-bottom:2px dashed #e5e7eb}
+    .pr-item:nth-child(2n){border-right:none}
+    .pr-item:nth-last-child(-n+2){border-bottom:none}
+    .pr-num{flex-shrink:0;width:34px;height:34px;border:3px solid #000;background:#FF914D;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #000}
+    .pr-body h5{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .pr-body p{font-size:13px;line-height:1.7;color:#444}
+    .pr-body .opt{display:inline-block;margin-left:6px;padding:1px 7px;background:#d1fae5;color:#065f46;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    .pr-body .req{display:inline-block;margin-left:6px;padding:1px 7px;background:#fee2e2;color:#991b1b;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    @media(max-width:640px){.pr-grid{grid-template-columns:1fr}.pr-item{border-right:none;border-bottom:2px dashed #e5e7eb}.pr-item:nth-last-child(1){border-bottom:none}}
+
+    /* FAQ */
+    .fq-wrap{max-width:1000px;margin:56px auto 0;padding:0 24px}
+    .fq-list{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000}
+    .fq-item{border-bottom:2px solid #000}
+    .fq-item:last-child{border-bottom:none}
+    .fq-item summary{padding:16px 22px;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;background:#fff;transition:background 0.15s}
+    .fq-item summary::-webkit-details-marker{display:none}
+    .fq-item summary::after{content:"+";font-size:22px;font-weight:900;color:#FF914D;flex-shrink:0;transition:transform 0.2s}
+    .fq-item[open] summary{background:#fff5f0;border-bottom:2px solid #000}
+    .fq-item[open] summary::after{content:"−";color:#ec4899}
+    .fq-item summary:hover{background:#fafafa}
+    .fq-ans{padding:16px 22px 20px;font-size:14px;line-height:1.8;color:#333;background:#fffbeb}
+    .fq-ans strong{color:#10162f}
+
+    /* Footer */
+    .site-footer{margin-top:72px;background:#10162f;color:#fff;padding:32px 24px;border-top:4px solid #000;text-align:center;font-size:13px;font-family:'Space Mono',monospace}
+    .site-footer a{color:#FFDE59}
+    .site-footer .sf-line{margin-top:6px;opacity:0.7;font-size:11px}
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="header">
+  <h1>Claude Cowork 工作坊 — 手把手装环境 + 跑两个真实 Case</h1>
+  <div class="sub">Anthropic 2026 GA 桌面 App 实战 · 装 Cowork → 配 Connectors → 装 Plugin → 手机 Dispatch → 用 Cowork 调 PowerPoint 出 PPT → 写 Skill + /schedule 每天自动爬校招归档桌面。零编程基础，3 小时全部跑通。</div>
+  <div class="chips">
+    <span class="chip yellow">🕒 3 小时 · 14:00–17:00</span>
+    <span class="chip orange">👥 面向非技术岗位</span>
+    <span class="chip green">💼 走时电脑里有装好的 Cowork + 1 个自动跑的 Skill</span>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="bar">
+  <div class="s"><div class="n">180</div><div class="l">分钟</div></div>
+  <div class="s"><div class="n">7</div><div class="l">模块</div></div>
+  <div class="s"><div class="n">2</div><div class="l">真实 Case</div></div>
+  <div class="s"><div class="n">4</div><div class="l">Connectors</div></div>
+  <div class="s"><div class="n">1</div><div class="l">手机 Dispatch</div></div>
+  <div class="s"><div class="n">1</div><div class="l">每天自动跑</div></div>
+</div>
+
+<!-- Promise -->
+<div class="promise">
+  <div class="promise-card">
+    <span class="promise-tag">这节课的承诺</span>
+    <p>3 小时不讲『AI 是什么』。前 80 分钟把 <strong>Claude Cowork</strong> 装上、切到 Cowork tab、配好 4 个 Connectors、装第一个 Plugin、用手机 Dispatch 派一次任务 — 这是后面所有事的地基。后 90 分钟手把手做完 2 个真实 case：① 给 Cowork 一个 PPT 主题，它打开 PowerPoint / 自动填好 / 存到桌面 ② 写一个 Skill 配 <code>/schedule</code> 每天早上 8 点自动爬校招岗位归档。明早起床数据已经在桌面。走时电脑里有：装好的 Cowork + 4 个 Connectors + 1 个 Plugin + 1 个手机 Dispatch 配对 + 1 个 PPT 流程 + 1 个每天自动跑的校招 Skill。</p>
+  </div>
+</div>
+
+<!-- What is Cowork -->
+<div class="what-wrap">
+  <div class="what-card">
+    <h3>🤝 Claude Cowork 是什么</h3>
+    <p>Anthropic 2026 GA 的桌面 App 产品。在 <strong>Claude Desktop</strong> 里跟 Chat / Code 并列的第三个 tab — 你给它一个目标，它在你桌面上跑：开你的 Excel / 读你本地文件 / 调你的 Connectors / 按 <code>/schedule</code> 每天自动跑 / 还能从手机 Dispatch 远程派活儿。</p>
+    <p>它把『Claude Code CLI 那一套能力』搬到了非技术人也能用的图形界面里 — <strong>不用终端、不用 npm、不用写命令，全是说人话</strong>。本节课就是手把手带你跑通这个界面。</p>
+    <div class="tabs-row">
+      <span class="tab-pill">Chat</span>
+      <span class="tab-pill active">Cowork ← 本节课主角</span>
+      <span class="tab-pill">Code</span>
+    </div>
+  </div>
+</div>
+
+<!-- Cowork vs OpenClaw -->
+<div class="vs-wrap">
+  <div class="sec-title">🆚 Cowork vs OpenClaw — 怎么选</div>
+  <div class="vs-intro">学员经常问『跟你们 OpenClaw Workshop 有啥区别 / 我该装哪个』。两个都能做 plugin / connector / skill / schedule / dispatch — 差别在『谁出的』『装在哪』『谁付钱』『数据在哪』。下表 30 秒选清楚。</div>
+  <div class="vs-table">
+    <div class="vs-head">
+      <div class="vh axis">对比维度<span class="small">12 axes</span></div>
+      <div class="vh cowork">🤝 Claude Cowork<span class="small">本节课主角</span></div>
+      <div class="vh openclaw">🦞 OpenClaw<span class="small">4-hour workshop 主角</span></div>
+    </div>
+    <div class="vs-row"><div class="vc axis">出品方</div><div class="vc">Anthropic 官方（商业产品）</div><div class="vc">Peter Steinberger（奥地利开发者）开源 · MIT</div></div>
+    <div class="vs-row"><div class="vc axis">形态</div><div class="vc">Claude Desktop 里第 3 个 tab · 图形界面 · 鼠标点</div><div class="vc">命令行 + WhatsApp / Telegram / Slack / Discord / 飞书 等 21+ 消息平台</div></div>
+    <div class="vs-row"><div class="vc axis">上手门槛</div><div class="vc">🟢 低 · 装 App + 登录就能用</div><div class="vc">🟡 中 · 需要 Node 22 + 终端基础</div></div>
+    <div class="vs-row"><div class="vc axis">费用</div><div class="vc">🔴 必须 Claude Pro A$30/月起</div><div class="vc">🟢 工具免费（MIT）· LLM Key 自付（月均 ~A$15）</div></div>
+    <div class="vs-row"><div class="vc axis">大模型选择</div><div class="vc">锁 Claude（Sonnet / Opus）</div><div class="vc">任选 Claude / OpenAI / Gemini / 本地模型（Ollama）</div></div>
+    <div class="vs-row"><div class="vc axis">数据走哪</div><div class="vc">Anthropic 服务器跑 · 合规取决于 plan 档</div><div class="vc">🟢 完全本地 · 数据不出设备 · 律师 / 会计 / 医疗友好</div></div>
+    <div class="vs-row"><div class="vc axis">Computer Use</div><div class="vc">🟢 原生 · 能开 PowerPoint / Excel / 浏览器</div><div class="vc">🟡 不直接控桌面 App · 但能跑脚本 / 命令行</div></div>
+    <div class="vs-row"><div class="vc axis">Plugin / Skill</div><div class="vc">官方 Plugin marketplace</div><div class="vc">ClawHub 社区 Skill · 完全开放</div></div>
+    <div class="vs-row"><div class="vc axis">Schedule</div><div class="vc">5 种 cadence · 必须电脑 awake + App 开着</div><div class="vc">Cron 自由配 · 可后台 daemon 常驻</div></div>
+    <div class="vs-row"><div class="vc axis">Dispatch</div><div class="vc">手机扫 QR 配对桌面（Pro / Max 含）</div><div class="vc">用 WhatsApp / Telegram / 飞书等已有 IM 派任务</div></div>
+    <div class="vs-row"><div class="vc axis">学习投入</div><div class="vc">1 小时上手 · 本节课 3 小时跑通完整流程</div><div class="vc">4 小时（去看 OpenClaw Workshop）+ 装机更细</div></div>
+    <div class="vs-row"><div class="vc axis">适合谁</div><div class="vc">想最快上手 + 已订 Claude Pro + 桌面办公为主</div><div class="vc">合规敏感 + 想多 LLM 切换 + 想从 IM 接入 + 数据必须本地</div></div>
+  </div>
+
+  <div class="vs-decide">
+    <div class="pick cowork">
+      <h4>🤝 选 Cowork 如果</h4>
+      <ul>
+        <li>你想 1 小时内上手，最好图形界面</li>
+        <li>已经在用 / 准备订 Claude Pro</li>
+        <li>工作主要在 PowerPoint / Excel / 浏览器（桌面 App 重度用户）</li>
+        <li>不在意数据走 Anthropic（销售 / 市场 / 内容 / HR / 普通办公）</li>
+        <li>想要手机 Dispatch 通勤路上派活儿</li>
+      </ul>
+    </div>
+    <div class="pick openclaw">
+      <h4>🦞 选 OpenClaw 如果</h4>
+      <ul>
+        <li>客户数据 / 合同 / 病历不能上云端（律师 / 会计 / 医疗 / 合规岗）</li>
+        <li>想用 Claude 以外的 LLM（OpenAI / Gemini / 本地 Ollama）</li>
+        <li>团队已经在用 WhatsApp / 飞书 / Slack 沟通，想直接 IM 派任务</li>
+        <li>需要 daemon 后台常驻不依赖电脑 awake</li>
+        <li>已经会一点终端 + 想要完全开源可改</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="vs-both">
+    <strong>其实大多数实战场景两个搭配最爽</strong> — Cowork 干桌面 GUI 活（出 PPT / 改 Excel），OpenClaw 干合规敏感 + IM 协作活。本节课主讲 Cowork，OpenClaw 看 4 小时进阶 Workshop（<a href="https://jiangren.com.au/curriculum/openclaw-workshop/" style="color:#FFDE59" target="_blank">openclaw-workshop</a>）。
+  </div>
+</div>
+
+<!-- Tools / Cowork features -->
+<div class="ts-wrap">
+  <div class="ts-head">
+    <span>🛠 Cowork 6 大能力 · 本节课每个都会用到</span>
+    <span class="mono">connectors · plugins · skills · schedule · dispatch · computer use</span>
+  </div>
+  <div class="ts-grid">
+    <div class="ts-col">
+      <div class="ts-logo">🔌</div>
+      <div class="ts-name">Connectors</div>
+      <div class="ts-role">L03 · MCP 集成</div>
+      <p>Cowork 接外部世界的桥 — Gmail / Drive / Slack / Linear / Notion 等。Settings 配一次，之后所有 task / Plugin / Schedule 自动继承。</p>
+      <div class="ts-pros">✓ 本节配 4 个：Filesystem / Web / Gmail / Drive</div>
+      <div class="ts-cons">⚠ Workspace 邮箱有时被组织策略拦 OAuth</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🧩</div>
+      <div class="ts-name">Plugins</div>
+      <div class="ts-role">L04 · 一键装一组能力</div>
+      <p>Skills + Connectors + sub-agents 打包。在 Cowork 输入框敲 <code>/</code> 弹 marketplace。按角色 / 行业拆（财务 / 工程 / HR / 销售）。</p>
+      <div class="ts-pros">✓ 比一个个装 Skill 高效 · 可启用 / 禁用 / 卸载</div>
+      <div class="ts-cons">⚠ Marketplace 早期，优质 Plugin 还在长</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">📲</div>
+      <div class="ts-name">Dispatch</div>
+      <div class="ts-role">L04 · 手机派活儿</div>
+      <p>手机扫 QR 跟桌面 Cowork 配对（一次配对长期有效）。通勤 / 开会 / 出差路上想到的事，手机派给桌面跑。Pro / Max 含。</p>
+      <div class="ts-pros">✓ 可同时派多任务并行跑 · 用桌面所有 App</div>
+      <div class="ts-cons">⚠ 桌面 Cowork 必须开 + 电脑 awake</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">⚙️</div>
+      <div class="ts-name">Skills</div>
+      <div class="ts-role">L05 / L06 · 工序卡</div>
+      <p>把『每次都这么干的事』固化成 Skill。下次 Cowork 输入框 <code>/</code> 一秒触发。可被 Plugin 打包、可被 <code>/schedule</code> 调用。</p>
+      <div class="ts-pros">✓ 团队共享 = 团队 SOP 喂给 Cowork</div>
+      <div class="ts-cons">⚠ Skill 写糟了 Cowork 跑出来的也糟</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">⏰</div>
+      <div class="ts-name">Scheduled Tasks</div>
+      <div class="ts-role">L06 · /schedule</div>
+      <p>5 种 cadence — hourly / daily / weekly / weekdays / manual。Cowork 输入框 <code>/schedule</code> 或左侧 Scheduled tab 新建。每次按独立 session 跑。</p>
+      <div class="ts-pros">✓ 自动继承所有 Connector / Plugin / Skill</div>
+      <div class="ts-cons">🚨 必须电脑 awake + Cowork 开着才跑</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🖥</div>
+      <div class="ts-name">Computer Use</div>
+      <div class="ts-role">L05 · 操作你的 App</div>
+      <p>Cowork 能开你电脑上任何 App — PowerPoint / Excel / 浏览器 / Outlook。每步会让你 Approve。Case 1 出 PPT 就靠它。</p>
+      <div class="ts-pros">✓ 不需要 API 集成 · 任何 App 都能用</div>
+      <div class="ts-cons">⚠ Cowork 跑时不要抢鼠标</div>
+    </div>
+  </div>
+</div>
+
+<!-- Audience -->
+<div class="au-wrap">
+  <div class="sec-title">这节课为谁准备</div>
+  <div class="sec-sub">非技术岗位 · 用过 ChatGPT 或 Claude.ai 任意一个即可，零编程基础</div>
+  <div class="au-grid">
+    <div class="au-card"><div class="au-emoji">💼</div><div class="au-body"><h4>销售 / 客户经理 / BD</h4><p>每天写大量客户跟进邮件、整理 CRM、做项目材料。让 Cowork 接管这块重复劳动 — 早上 8 点 daily-jobs Skill 一跑，岗位 / 客户线索数据自动归档桌面。</p></div></div>
+    <div class="au-card"><div class="au-emoji">⚖️</div><div class="au-body"><h4>律师 / 会计 / 咨询顾问</h4><p>客户资料合规敏感，需要桌面工具不传云端。Cowork 默认在你 working folder 内动文件 + 每步 Approve = 合规友好。Skill 模板可团队共享。</p></div></div>
+    <div class="au-card"><div class="au-emoji">📋</div><div class="au-body"><h4>HR / 行政 / 运营</h4><p>JD / 面试反馈 / 公告 / SOP 天天写。Cowork 调 PowerPoint / Word / Excel 自动出文档，配好 Plugin 后整个团队的格式 / tone 统一。</p></div></div>
+    <div class="au-card"><div class="au-emoji">🏢</div><div class="au-body"><h4>中小企业主 / 创业者</h4><p>团队预算紧。Cowork 把『准员工』补到团队里，月成本 A$30 顶一个兼职。Schedule 配好后每天自动出周报 / 每日岗位 / 客户跟进列表。</p></div></div>
+    <div class="au-card"><div class="au-emoji">📱</div><div class="au-body"><h4>市场 / 内容创作者</h4><p>ChatGPT 用得浅 — 知道还能深挖但没系统掌握。本节课跳过『聊天』直接进『让 AI 干活』，3 小时能看到自己电脑上 PowerPoint 真的在动。</p></div></div>
+    <div class="au-card"><div class="au-emoji">🎓</div><div class="au-body"><h4>老师 / 培训师</h4><p>课件 / 讲义 / 测验天天产。Cowork 调 PowerPoint 直接出 Deck，Skill 灌教学风格，Schedule 每周一自动出本周 5 节课的初稿。</p></div></div>
+  </div>
+  <div class="au-not">
+    <strong>谁不适合来：</strong>① 想系统学 AI 工程化（API / Agent SDK / RAG）→ 看 AI Engineer Bootcamp　② 没有 Claude 付费档（Pro/Max/Team/Enterprise）且不打算订 → Cowork tab 在免费档不可见，建议先订再来　③ 完全没用过任何 AI 工具的同学，建议课前先在 claude.ai 跟 Claude 对一句话再来。
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="tl-wrap">
+  <div class="sec-title">3 小时分钟级时间表</div>
+  <div class="sec-sub">7 模块 · 2 个真实 case · Tutor 1:5 陪练（实战环节全程）</div>
+
+  <!-- L01 -->
+  <div class="box">
+    <div class="box-h" style="background:#10162f"><span>🎬 L01 · 开场 + 今天 2 个 Case 预演</span><span class="slot">14:00 – 14:15 · 15 min · Demo</span></div>
+    <div class="time-block">不讲理论。开场就放老师电脑屏幕 — Cowork 现场跑两个 case 的完成态：① Cowork 自动开 PowerPoint 5 分钟出一份 PPT ② 调出昨晚 daily-jobs Skill 自动跑产物 — 桌面 jobs/2026-04-28.json。让你先看到终点。</div>
+    <div class="lesson-body">
+      <div>
+        <h5>讲什么</h5>
+        <ul>
+          <li>30 秒自我介绍 + 课程节奏说明</li>
+          <li>Case 1 完成态 demo — Cowork 自动开 PowerPoint 5 分钟出 PPT</li>
+          <li>Case 2 完成态 — 调昨晚 8:00 自动跑的 jobs/2026-04-28.json</li>
+          <li>180 分钟拆解：80 装环境 + 100 跑 case</li>
+          <li>课堂规则：跟不上举手，Tutor 1:5 立刻接手</li>
+        </ul>
+      </div>
+      <div>
+        <h5>带走</h5>
+        <ul>
+          <li>看到 2 个 case 完成态 — 知道 3 小时后能做到什么</li>
+          <li>对节奏有底</li>
+        </ul>
+        <div class="teacher-note"><strong>讲师笔记 ·</strong> 开场 5 分钟必须让全场『哇』一下。Case 1 PPT 演示要快（5 分钟内），Case 2 直接调出已有 JSON 不要现场跑。Cowork 自动开 PowerPoint 那一刻全场体感打开 — 比讲 100 句『AI 替你干活』有效。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L02 -->
+  <div class="box">
+    <div class="box-h" style="background:#38B6FF"><span>📦 L02 · 装 Claude Desktop + 切 Cowork tab + 登录付费档</span><span class="slot">14:15 – 14:35 · 20 min · 装机</span></div>
+    <div class="time-block">全员同步装。Mac 用户去 claude.com/download 下 DMG，Win 用户下 MSIX 包（不是老 .exe）。装完打开 → 登录 → 切 Cowork tab → 跑第一个 task 验证。Cowork 必须 Pro / Max / Team / Enterprise 付费档。</div>
+    <div class="lesson-body">
+      <div>
+        <h5>4 步装机</h5>
+        <div class="step-list">
+          <div class="step"><span class="sn">1</span><span class="st">下载 Claude Desktop</span><span class="sd">5 min</span><span class="desc">claude.com/download。Mac .dmg / Win MSIX 安装包。<strong>Win 不要装老 .exe — 那个版本没 Cowork tab</strong>。</span></div>
+          <div class="step"><span class="sn">2</span><span class="st">登录 + 确认付费档</span><span class="sd">5 min</span><span class="desc">浏览器 OAuth 登录。Settings → Subscription 确认 Pro/Max/Team/Enterprise — 免费档没 Cowork。</span></div>
+          <div class="step"><span class="sn">3</span><span class="st">切到 Cowork tab</span><span class="sd">3 min</span><span class="desc">界面顶部 Chat / Cowork / Code 三个 tab。点 Cowork。第一次进会弹引导。</span></div>
+          <div class="step"><span class="sn">4</span><span class="st">第一个 Cowork task — 验证</span><span class="sd">7 min</span><span class="desc">输：『在我桌面建文件夹 claude-workshop，里面建空 Excel hello.xlsx』。看 plan → Approve → 跑完桌面看一眼 = 装机成功。</span></div>
+        </div>
+      </div>
+      <div>
+        <h5>带走</h5>
+        <ul>
+          <li>Cowork tab 能进、能用</li>
+          <li>看到 Cowork 真的在你电脑上动文件夹和 Excel</li>
+          <li>桌面有 claude-workshop 文件夹</li>
+        </ul>
+        <div class="teacher-note"><strong>讲师笔记 ·</strong> 3 个最容易卡：① Win 下错版本（老 .exe 没 Cowork tab）— 强调 MSIX ② OAuth 跳转被广告拦截器拦 ③ 免费档没 Cowork tab 学员一脸懵 — 提前发共享测试账号清单。L02 通不过后面全废。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L03 -->
+  <div class="box">
+    <div class="box-h" style="background:#CB6CE6"><span>🔌 L03 · 配 4 个 Connectors（MCP）</span><span class="slot">14:35 – 14:55 · 20 min · 配置</span></div>
+    <div class="time-block">Cowork 装好之后还是『盲』的 — 默认只能动你电脑文件。配 Connector 之后它能：抓网页、读你 Gmail、写 Drive。本节配 4 个最常用的，每个 ~5 分钟，跟着老师同步配。</div>
+    <div class="lesson-body">
+      <div>
+        <h5>4 个 Connector</h5>
+        <div class="step-list">
+          <div class="step"><span class="sn">1</span><span class="st">Filesystem（默认有）</span><span class="sd">3 min</span><span class="desc">Settings → Connectors 看 Filesystem 绿 = 启用。让 Cowork『读 hello.xlsx 写第一行 Hello』验证。</span></div>
+          <div class="step"><span class="sn">2</span><span class="st">Web（抓网页）</span><span class="sd">4 min</span><span class="desc">启用 Web Connector。让 Cowork『抓 news.ycombinator.com 前 5 条标题写 hn.md』。Case 2 校招爬虫核心。</span></div>
+          <div class="step"><span class="sn">3</span><span class="st">Gmail（OAuth）</span><span class="sd">6 min</span><span class="desc">Connect → 用<strong>个人 Gmail</strong>授权（不是工作 G Workspace 邮箱 — 工作号有时被组织拦）。验证：『查我今天最新 5 封邮件』。</span></div>
+          <div class="step"><span class="sn">4</span><span class="st">Google Drive</span><span class="sd">7 min</span><span class="desc">同流程 OAuth 授权。Case 1 PPT 做完可选直接存 Drive 而非本地。验证：『列我 Drive 根目录前 10 个文件』。</span></div>
+        </div>
+      </div>
+      <div>
+        <h5>带走</h5>
+        <ul>
+          <li>配好 4 个 Connector，Cowork 能直接调</li>
+          <li>知道怎么加新的 Connector</li>
+          <li>理解 Cowork 干每件事前会让你 Approve</li>
+        </ul>
+        <div class="teacher-note"><strong>讲师笔记 ·</strong> Gmail OAuth 最容易卡：① G Workspace 工作邮箱被组织策略拦 — 让用个人 Gmail ② 浏览器跳转被拦截器拦 — 关插件 ③ 部分国家区域 Gmail OAuth 限制 — 走个人代理。Tutor 提前打开自己 Gmail OAuth 截图教学。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L04 -->
+  <div class="box">
+    <div class="box-h" style="background:#FF914D"><span>🧩 L04 · 装第一个 Plugin + 手机 Dispatch 配对</span><span class="slot">14:55 – 15:10 · 15 min · 实操</span></div>
+    <div class="time-block">L02 装好 / L03 配好 Connector — 这一节装第一个 Plugin（一组打包好的能力）+ 配对手机 Dispatch（路上派任务）。这两个是 Cowork 跟 Chat / Code 最大的差异点。</div>
+    <div class="lesson-body">
+      <div>
+        <h5>3 步实操</h5>
+        <div class="step-list">
+          <div class="step"><span class="sn">1</span><span class="st">敲 / 看 Plugin marketplace</span><span class="sd">5 min</span><span class="desc">Cowork 输入框敲 <code>/</code> 弹菜单 — 含已装 Skills 和 Plugin marketplace 入口。Plugin = Skills + Connectors + sub-agents 打包。</span></div>
+          <div class="step"><span class="sn">2</span><span class="st">装一个示例 Plugin</span><span class="sd">5 min</span><span class="desc">选轻量 Plugin → Install → Approve 权限。装完 <code>/</code> 菜单里能看到 Plugin 提供的命令和 Skill。</span></div>
+          <div class="step"><span class="sn">3</span><span class="st">手机 Dispatch 配对</span><span class="sd">5 min</span><span class="desc">Cowork 左下角 → Dispatch → Show QR。手机装 Claude App 扫 QR 配对。手机派『把 hn.md 整理成 Notion 页面』→ 桌面 Cowork 自动接住跑。</span></div>
+        </div>
+      </div>
+      <div>
+        <h5>带走</h5>
+        <ul>
+          <li>知道 <code>/</code> 怎么用 — Cowork 核心入口</li>
+          <li>电脑里装好第一个 Plugin</li>
+          <li>手机 ↔ 桌面配对成功，能远程派任务</li>
+        </ul>
+        <div class="teacher-note"><strong>讲师笔记 ·</strong> Dispatch QR 配对要让全场看到老师手机屏 — 投屏 / 实物展台。学员第一次看到『手机派活儿桌面跑』会立刻想到上下班路上的应用场景，体感最强。Plugin 选哪个不重要，重点是体验 <code>/</code> → marketplace → install → approve 完整循环。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Break -->
+  <div class="box">
+    <div class="box-h" style="background:#FFDE59;color:#10162f"><span>☕ 休息 + 充电</span><span class="slot">15:10 – 15:20 · 10 min</span></div>
+    <div class="time-block">救人窗口。Tutor 列出『谁 Cowork tab 没出 / 谁 Gmail OAuth 没过 / 谁 Dispatch QR 没扫上』，按优先级救。L05 全员从同一起点出发。</div>
+  </div>
+
+  <!-- L05 -->
+  <div class="box">
+    <div class="box-h" style="background:#10b981"><span>📊 L05 · Case 1 — 手把手用 Cowork 出 PPT</span><span class="slot">15:20 – 16:05 · 45 min · 实战</span></div>
+    <div class="time-block">你输入主题，Cowork 调 Computer Use 自动开 PowerPoint / Keynote、自动填每页内容、最后存到桌面。45 分钟从 0 到一份能用的 PPT。最后存成 Skill，下次 <code>/ppt-from-topic</code> 一句就跑。</div>
+    <div class="lesson-body">
+      <div>
+        <h5>4 步实操</h5>
+        <div class="step-list">
+          <div class="step"><span class="sn">1</span><span class="st">想清楚主题 + 受众 + 篇幅</span><span class="sd">5 min</span><span class="desc">挑『今天 / 这周本来就要做』的主题。提示词 4 件事：主题 / 给谁看 / 多少页 / 时长。例：『给客户讲 SaaS 产品 demo，10 页，10 分钟』。</span></div>
+          <div class="step"><span class="sn">2</span><span class="st">让 Cowork 先出大纲</span><span class="sd">10 min</span><span class="desc"><strong>先大纲后成品。</strong>每页一句标题 + 一句要点。不符合改提示词重出。省掉后面『PPT 写完发现方向错』的痛苦。</span></div>
+          <div class="step"><span class="sn">3</span><span class="st">Cowork 调 PowerPoint 自动出 PPT</span><span class="sd">20 min</span><span class="desc">Cowork 用 Computer Use 自动开 PowerPoint / 一页页填 — 学员看自己电脑上 PowerPoint 真的在动。每步 Approve。第一版有要改的，让 Cowork 改：『第 3 页拆两页』『所有标题简化到 5 字内』。</span></div>
+          <div class="step"><span class="sn">4</span><span class="st">存成 Skill 给以后复用</span><span class="sd">10 min</span><span class="desc">让 Cowork：『把这流程存成 Skill 叫 ppt-from-topic』。下次 <code>/ppt-from-topic &lt;主题&gt;</code> 一句就跑。Case 2 schedule 自动化的预演。</span></div>
+        </div>
+      </div>
+      <div>
+        <h5>带走</h5>
+        <ul>
+          <li>一份基于自己真实主题的 PPT，能直接用</li>
+          <li>『先大纲后成品』Cowork 流程</li>
+          <li>电脑里有 ppt-from-topic Skill</li>
+        </ul>
+        <div class="teacher-note"><strong>讲师笔记 ·</strong> 翻车点：① 学员一上来就要直接出 PPT 跳过大纲 — 必须按住 ② Computer Use 开 PowerPoint 时学员本能抢鼠标 — 强调『让 Cowork 自己跑，别碰』 ③ 视觉一般 — 这节讲『内容优先』，要好看让学员回家用 Beautiful.ai / Gamma 加工。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L06 -->
+  <div class="box">
+    <div class="box-h" style="background:#ec4899"><span>⏰ L06 · Case 2 — Skill + /schedule 每日自动爬校招</span><span class="slot">16:05 – 16:50 · 45 min · 实战</span></div>
+    <div class="time-block">把 L05 学的『写 Skill』升级一档 — 写 daily-jobs Skill 抓校招岗位（SEEK Graduate / Indeed Grad / GradAustralia），<code>/schedule</code> 配每天 8:00 自动跑，结果落 ~/Desktop/jobs/YYYY-MM-DD.json。明早起床数据已在桌面。<strong>真正的『AI 替你干活』。</strong></div>
+    <div class="lesson-body">
+      <div>
+        <h5>4 步实操</h5>
+        <div class="step-list">
+          <div class="step"><span class="sn">1</span><span class="st">想清楚抓什么 / 落到哪</span><span class="sd">5 min</span><span class="desc">4 件事：抓哪几个站 / 抓什么字段 / 落到哪 / 关键词筛。建议 SEEK + Indeed + GradAustralia / 公司+职位+地点+链接+截止 / 桌面 jobs/ / graduate intern 2026 grad。</span></div>
+          <div class="step"><span class="sn">2</span><span class="st">写 daily-jobs Skill</span><span class="sd">15 min</span><span class="desc">在 Cowork 输：『建 Skill 叫 daily-jobs，每次触发：抓 3 站 / 提 5 字段 / 去重 / 落到 ~/Desktop/jobs/YYYY-MM-DD.json。建完跑一次』。看产物 → 调 Skill → 再跑。迭代到满意。</span></div>
+          <div class="step"><span class="sn">3</span><span class="st">/schedule 配每天 8:00</span><span class="sd">10 min</span><span class="desc">Cowork 输 <code>/schedule</code> 或左侧 Scheduled tab → New task。任务名 daily-jobs / Prompt『跑 daily-jobs Skill』/ 频率 Daily / 时间 08:00 / Working folder 桌面 jobs/。Save。</span></div>
+          <div class="step"><span class="sn">4</span><span class="st">手动触发验证 + 长期注意</span><span class="sd">15 min</span><span class="desc">Scheduled tab 找 daily-jobs → Run now。看 jobs/2026-04-28.json 字段全 / 去重对 = 通过。3 件长期注意：🚨 电脑必须 awake + Cowork 开 / 反爬要 fallback / 月成本 ~A$15。扩展：当天 Top 3 用 Gmail 发邮件。</span></div>
+        </div>
+      </div>
+      <div>
+        <h5>带走</h5>
+        <ul>
+          <li>电脑里有 daily-jobs Skill</li>
+          <li>/schedule 每天 8:00 自动跑</li>
+          <li>明早起床 jobs/2026-04-29.json 已经在桌面</li>
+          <li>理解 Cowork『Skill + Schedule』= 真正自动化</li>
+        </ul>
+        <div class="teacher-note"><strong>讲师笔记 ·</strong> 整节课的高潮。技术坑：① SEEK / Indeed 反爬偶尔挂，提前准备 mock 备份 ② 时区确认用本地时间 ③ <strong>老师课前一晚已配好自己的 daily-jobs，第二天直接打开真实 JSON 给学员看『我桌面今早 8:01 这个文件就在这里』</strong> — 信任感拉满。最后强调电脑必须开机 + Cowork 开 — 不像 cron server。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L07 -->
+  <div class="box">
+    <div class="box-h" style="background:#6366f1"><span>💬 L07 · Q&A + 收官 + 课后行动</span><span class="slot">16:50 – 17:00 · 10 min · 答疑散场</span></div>
+    <div class="time-block">10 分钟集中答疑 + 课后 3 件事：今晚改 ppt-from-topic Skill / 这周让 daily-jobs 跑满 7 天 / 一个月内写第 3 个 Skill。</div>
+    <div class="lesson-body">
+      <div>
+        <h5>讲什么</h5>
+        <ul>
+          <li>💬 答疑 5 min — 优先全场关心的（Pro 还是 Max？数据安全？Plugin 商用？）</li>
+          <li>🚀 三档行动：今晚 / 这周 / 一个月</li>
+          <li>📚 进阶资源 — Cowork 官方 docs / Plugin marketplace / Schedule 文档 / Dispatch 文档</li>
+          <li>📝 反馈表 + 散场</li>
+        </ul>
+      </div>
+      <div>
+        <h5>带走</h5>
+        <ul>
+          <li>积压问题答完</li>
+          <li>三档行动清单</li>
+          <li>知道进阶在哪学</li>
+        </ul>
+        <div class="teacher-note"><strong>讲师笔记 ·</strong> 答疑控制 5 分钟，剩下 5 分钟讲行动。最重要一句：『今晚回家让 daily-jobs 跑一晚，明早起床看数据 — 那一刻你才真的相信 AI 替你干活』。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Prep -->
+<div class="pr-wrap">
+  <div class="sec-title">📋 课前准备清单</div>
+  <div class="sec-sub">5 件事 · 4 件必做 · 1 件推荐 · 总耗时 ~15 分钟</div>
+  <div class="pr-box">
+    <div class="pr-head"><span>到场前请完成</span><span class="mono">required &times; 4 / recommended &times; 1</span></div>
+    <div class="pr-grid">
+      <div class="pr-item">
+        <div class="pr-num">1</div>
+        <div class="pr-body">
+          <h5>自带笔记本电脑 <span class="req">必做</span></h5>
+          <p>Mac (macOS 11+) 或 Win 10+。Linux 暂时没 Cowork 桌面 App。手机 / iPad 不行（手机只能做 L04 Dispatch 派任务用）。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">2</div>
+        <div class="pr-body">
+          <h5>下载 Claude Desktop（含 Cowork）<span class="req">必做</span></h5>
+          <p>去 <a href="https://claude.com/download" target="_blank">claude.com/download</a>。Mac 选 .dmg；<strong>Win 选 MSIX 包，不要下老 .exe — 没 Cowork tab</strong>。装好打开能看到 Chat / Cowork / Code 三个 tab = 装对了。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">3</div>
+        <div class="pr-body">
+          <h5>订阅 Claude Pro <span class="req">必做</span></h5>
+          <p>去 <a href="https://claude.com/upgrade" target="_blank">claude.com/upgrade</a> 订 Pro A$30/月。Cowork 只在 Pro / Max / Team / Enterprise 有 — 免费档没 Cowork tab。课上没订的发 JR 共享号体验，回家继续用必须自己订。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">4</div>
+        <div class="pr-body">
+          <h5>桌面建空文件夹 ~/Desktop/claude-workshop <span class="req">必做</span></h5>
+          <p>L02 第一次跑 Cowork 用这个文件夹，所有 case 文件落里面。Finder / Explorer 直接桌面新建。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">5</div>
+        <div class="pr-body">
+          <h5>个人 Gmail + 想清楚 PPT 主题 <span class="opt">推荐</span></h5>
+          <p>L03 Gmail Connector 用<strong>个人 Gmail</strong>不是工作 G Workspace（工作号偶尔被组织拦 OAuth）。L05 想好主题（客户提案 / OKR / 培训课件随你）— 没主题只能跟模板做，少一半价值。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="fq-wrap">
+  <div class="sec-title">常见问题</div>
+  <div class="sec-sub">报名前最常被问到的 8 个问题</div>
+  <div class="fq-list">
+    <details class="fq-item">
+      <summary>我没用过 Cowork，只用过 ChatGPT，能跟得上吗？</summary>
+      <div class="fq-ans">能。Cowork 跟 ChatGPT 操作上 80% 像 — 都是输入框打字。差别在 Cowork 不只是回答你，它会真的开你电脑上的 App、动你的文件、按计划自动跑。本节课就是手把手带你装、配、跑，每一步老师等所有人完成才往下走。完全没碰过 AI 工具的同学，建议课前先开 ChatGPT 或 claude.ai 跟 AI 对一句话找下手感。</div>
+    </details>
+    <details class="fq-item">
+      <summary>Cowork 必须付费吗？哪个档？</summary>
+      <div class="fq-ans">必须。Cowork 只在 Claude <strong>Pro / Max / Team / Enterprise</strong> 付费档有 — 免费档没 Cowork tab。最便宜路径：Pro A$30/月。课上没付费档的现场用 JR 共享测试账号过流程，回家继续用必须自己订 — 这工具是真的会替你干活的，A$30/月不算贵。</div>
+    </details>
+    <details class="fq-item">
+      <summary>Mac / Win / Linux 都能上吗？</summary>
+      <div class="fq-ans">Mac + Win 都行（GA April 2026）。Linux 暂时没 Cowork 桌面 App。Win 用户务必下 MSIX 安装包，<strong>老的 .exe 版本没 Cowork tab</strong> — 这是踩坑率最高的点。本节课 L02 会强调。</div>
+    </details>
+    <details class="fq-item">
+      <summary>课前要准备什么？</summary>
+      <div class="fq-ans">5 件事：① 自带笔记本（Mac 11+ 或 Win 10+）② 下 Claude Desktop（claude.com/download）③ 订 Claude Pro（A$30/月，没订发共享号过流程）④ 桌面建空文件夹 ~/Desktop/claude-workshop ⑤ 准备个人 Gmail + 想清楚 Case 1 PPT 主题。详见上方课前清单。</div>
+    </details>
+    <details class="fq-item">
+      <summary>Cowork vs Chat vs Code 怎么选？</summary>
+      <div class="fq-ans">三个 tab 在同一个 Claude Desktop 里。<strong>Chat</strong> 适合『跟 AI 聊天 / 问问题 / 写文字』。<strong>Code</strong> 适合工程师改代码 / 跑命令行项目。<strong>Cowork</strong> 适合『让 AI 替你干电脑上的事』— 开 Excel / 改 PPT / 抓网页 / 定时跑 / 手机派活儿。本节课 2 个 case 必须 Cowork（Chat 没 Computer Use，Code 对非技术不友好）。回家三个一起用最爽。</div>
+    </details>
+    <details class="fq-item">
+      <summary>/schedule 配的 daily-jobs 任务，电脑关机会怎样？</summary>
+      <div class="fq-ans">🚨 跑不动。Cowork Scheduled Task <strong>不是云端 daemon</strong> — 必须电脑 awake + Cowork app 开着才跑。睡眠期间触发的会跳过，电脑醒了 + Cowork 重打开会自动补跑一次（你会收通知）。3 个解决：① 笔记本就让它常开（睡眠不影响 — Mac sleep + display off 算 awake，看 Energy 设置）② 装家里 / 公司常开台式机 ③ 不需要每天必跑就接受『偶尔跳一天』。本节课 daily-jobs 预设场景是『笔记本常开 + 8 点跑』，最简单可行。</div>
+    </details>
+    <details class="fq-item">
+      <summary>Cowork 会不会偷偷动我电脑？数据安全吗？</summary>
+      <div class="fq-ans">Cowork 干每件事前都会让你 <strong>Approve</strong>（除非你在 Settings 关了确认 — 不建议关）。文件读写默认只在 working folder 内 — 跨文件夹要单独授权。Connector 读 Gmail / Drive 走 OAuth，权限细到具体作用域。Anthropic 默认对 API 用户 zero data retention（消息发完即删）。但敏感数据（客户身份证 / 银行账户 / 未公开合同金额）上传前还是用 <code>[客户A] [金额X]</code> 打码 — 这是好习惯不是 Cowork 的锅。</div>
+    </details>
+    <details class="fq-item">
+      <summary>课后有支持吗？录播？答疑群？</summary>
+      <div class="fq-ans">3 件兜底：① 课程录播开课后发学员 ② 老师 L05 / L06 用的所有 Skill 模板 + Schedule 配置打包发学员（拿回家直接套自己场景） ③ JR Academy 平台 27+ 个 Prompt Lab 互动练习配套巩固。不开长期答疑群（避免变无效信息池）。想要长期社群和系统学习，看 JR Academy 的 OpenClaw Workshop（4 小时进阶）或 AI Adoption Bootcamp（8 周）。</div>
+    </details>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="site-footer">
+  <div>JR Academy · 全球华人学习 AI 第一站</div>
+  <div class="sf-line">Claude Cowork 工作坊 · 3 小时实战 · v2 · <a href="https://jiangren.com.au" target="_blank">jiangren.com.au</a></div>
+</div>
+
+</body>
+</html>

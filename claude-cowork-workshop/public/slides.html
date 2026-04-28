@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude Cowork Workshop · 2026-04-28</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Anthropic / Claude palette — official */
+    --dark: #141413;
+    --light: #faf9f5;
+    --mid: #b0aea5;
+    --light-gray: #e8e6dc;
+    --terracotta: #d97757;
+    --terracotta-deep: #c66943;
+    --blue: #6a9bcc;
+    --sage: #788c5d;
+
+    /* Motion */
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(20,20,19,0.04), 0 2px 6px rgba(20,20,19,0.04);
+    --shadow-md: 0 1px 2px rgba(20,20,19,0.04), 0 4px 16px rgba(20,20,19,0.06);
+    --shadow-lg: 0 4px 12px rgba(20,20,19,0.06), 0 16px 48px rgba(20,20,19,0.08);
+
+    /* Border */
+    --border-whisper: 1px solid rgba(20,20,19,0.08);
+    --border-soft: 1px solid rgba(20,20,19,0.12);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:#0a0a0a;font-family:'Lora','Noto Serif SC',Georgia,serif;color:var(--dark);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+  /* Stage = letterbox container, deck = 1920×1080 logical canvas */
+  .stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+  .deck{width:1920px;height:1080px;transform-origin:center;position:relative;background:var(--light)}
+  .slide{position:absolute;inset:0;padding:96px 112px;display:none;flex-direction:column;opacity:0}
+  .slide.active{display:flex;animation:slideEnter 700ms var(--ease) both}
+  .slide.center{align-items:center;justify-content:center;text-align:center}
+
+  @keyframes slideEnter{
+    from{opacity:0;transform:translateY(16px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* Stagger entrance for slide children */
+  .slide.active .stagger > *{animation:fadeUp 600ms var(--ease) both}
+  .slide.active .stagger > *:nth-child(1){animation-delay:100ms}
+  .slide.active .stagger > *:nth-child(2){animation-delay:180ms}
+  .slide.active .stagger > *:nth-child(3){animation-delay:260ms}
+  .slide.active .stagger > *:nth-child(4){animation-delay:340ms}
+  .slide.active .stagger > *:nth-child(5){animation-delay:420ms}
+  .slide.active .stagger > *:nth-child(6){animation-delay:500ms}
+  .slide.active .stagger > *:nth-child(7){animation-delay:580ms}
+  .slide.active .stagger > *:nth-child(8){animation-delay:660ms}
+
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes scaleIn{
+    from{opacity:0;transform:scale(0.96)}
+    to{opacity:1;transform:scale(1)}
+  }
+  @keyframes drift{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+  }
+
+  /* Type system */
+  h1,h2,h3,h4,.heading,.mono,.eyebrow{font-family:'Poppins','Noto Sans SC',sans-serif}
+  h1{font-weight:800;letter-spacing:-0.03em;line-height:1.0;color:var(--dark)}
+  h2{font-weight:800;letter-spacing:-0.02em;line-height:1.08;color:var(--dark)}
+  h3{font-weight:700;letter-spacing:-0.01em;line-height:1.15;color:var(--dark)}
+  h4{font-weight:700;line-height:1.2;color:var(--dark)}
+  p{line-height:1.6;color:var(--dark)}
+  .mono,.eyebrow{font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;font-size:18px;color:var(--mid)}
+
+  /* Topbar — eyebrow above slide content */
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:64px;font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--mid);letter-spacing:0.1em;text-transform:uppercase;font-weight:500}
+  .topbar .badge{padding:8px 16px;background:var(--dark);color:var(--light);font-size:14px;letter-spacing:0.15em;border-radius:6px}
+
+  /* Page chrome */
+  .pager{position:absolute;bottom:48px;right:64px;font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--mid);font-weight:500;letter-spacing:0.1em;opacity:0.7}
+  .brand{position:absolute;bottom:40px;left:64px;display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mid);letter-spacing:0.2em;text-transform:uppercase;opacity:0.85}
+  .brand img{height:34px;width:auto;display:block}
+  .brand .divider{width:1px;height:18px;background:var(--mid);opacity:0.4}
+  .brand-dark img{filter:none}
+  .brand-light img{filter:brightness(0) invert(1);opacity:0.85}
+  .brand-light .divider{background:var(--light)}
+
+  /* Pills (replace JR's pixel chips) */
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:var(--light-gray);color:var(--dark);border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;letter-spacing:0.05em}
+  .pill.terra{background:var(--terracotta);color:var(--light)}
+  .pill.dark{background:var(--dark);color:var(--light)}
+  .pill.blue{background:var(--blue);color:var(--light)}
+  .pill.sage{background:var(--sage);color:var(--light)}
+
+  /* Card primitive */
+  .card{background:#fff;border:var(--border-whisper);border-radius:16px;padding:40px 36px;box-shadow:var(--shadow-md);transition:transform 280ms var(--ease),box-shadow 280ms var(--ease)}
+  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+
+  /* ──────────── S01 Cover ──────────── */
+  .s-cover{background:linear-gradient(135deg,var(--light) 0%,#f5e8db 50%,var(--terracotta) 140%);align-items:flex-start;justify-content:center;padding:0 160px}
+  .s-cover .eyebrow{font-size:18px;letter-spacing:0.2em;color:var(--terracotta);font-weight:600;margin-bottom:32px}
+  .s-cover h1{font-size:180px;letter-spacing:-0.04em;line-height:0.95;color:var(--dark);max-width:1500px}
+  .s-cover h1 .accent{color:var(--terracotta);font-style:normal}
+  .s-cover .sub{font-family:'Lora',serif;font-size:34px;line-height:1.45;margin-top:40px;max-width:1100px;color:var(--dark);font-weight:400}
+  .s-cover .sub em{font-style:italic;color:var(--terracotta);font-weight:500}
+  .s-cover .meta{margin-top:64px;display:flex;gap:14px;flex-wrap:wrap}
+  .s-cover .corner-tl{position:absolute;top:56px;left:112px;display:flex;align-items:center;gap:18px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.25em;color:var(--mid);text-transform:uppercase}
+  .s-cover .corner-tl img{height:56px;width:auto;display:block}
+  .s-cover .corner-tl .divider{width:1px;height:28px;background:var(--mid);opacity:0.4}
+  .s-cover .corner-tr{position:absolute;top:64px;right:112px;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.2em;color:var(--mid);text-transform:uppercase}
+
+  /* ──────────── S02 Promise — 6 grid ──────────── */
+  .promise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px}
+  .promise-card{background:#fff;border:var(--border-whisper);border-radius:16px;padding:36px 32px;box-shadow:var(--shadow-sm);transition:transform 280ms var(--ease),box-shadow 280ms var(--ease)}
+  .promise-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .promise-card .num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--terracotta);font-weight:600;letter-spacing:0.15em;margin-bottom:16px;text-transform:uppercase}
+  .promise-card h4{font-family:'Poppins',sans-serif;font-size:32px;font-weight:700;color:var(--dark);line-height:1.1;margin-bottom:14px}
+  .promise-card p{font-family:'Lora',serif;font-size:19px;line-height:1.55;color:#3a3a38}
+
+  /* ──────────── S03 Tabs visualization ──────────── */
+  .s03-title{font-family:'Poppins',sans-serif;font-size:64px;font-weight:700;line-height:1.1;text-align:center;max-width:1500px;color:var(--dark);letter-spacing:-0.02em}
+  .s03-title em{color:var(--terracotta);font-style:normal}
+  .tabs-vis{display:flex;gap:24px;justify-content:center;margin-top:64px}
+  .tab-card{background:#fff;border:var(--border-whisper);border-radius:14px;padding:48px 64px;text-align:center;transition:all 400ms var(--ease)}
+  .tab-card .tname{font-family:'Poppins',sans-serif;font-size:48px;font-weight:700;color:var(--mid);letter-spacing:-0.02em}
+  .tab-card .tsub{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);margin-top:8px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;opacity:0.7}
+  .tab-card.active{background:var(--terracotta);transform:translateY(-12px);box-shadow:0 24px 48px rgba(217,119,87,0.25)}
+  .tab-card.active .tname{color:var(--light)}
+  .tab-card.active .tsub{color:var(--light);opacity:0.9}
+  .tabs-tagline{margin-top:64px;font-family:'Lora',serif;font-size:30px;line-height:1.55;text-align:center;color:var(--dark);max-width:1400px;font-weight:400}
+  .tabs-tagline strong{font-weight:600;color:var(--terracotta)}
+
+  /* ──────────── S04 vs table ──────────── */
+  .vs-mini{display:grid;grid-template-columns:0.9fr 1.3fr 1.3fr;background:#fff;border:var(--border-whisper);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);margin-top:24px;font-family:'Lora',serif;font-size:21px}
+  .vs-mini .vmh{padding:20px 24px;font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.01em;background:var(--light-gray);color:var(--dark);border-right:var(--border-whisper);border-bottom:var(--border-soft)}
+  .vs-mini .vmh.cw{background:var(--terracotta);color:var(--light)}
+  .vs-mini .vmh.oc{background:var(--sage);color:var(--light)}
+  .vs-mini .vmh:nth-child(3n){border-right:none}
+  .vs-mini .vmc{padding:18px 24px;border-top:var(--border-whisper);border-right:var(--border-whisper);line-height:1.45;color:#2a2a28}
+  .vs-mini .vmc:nth-child(3n){border-right:none}
+  .vs-mini .vmc.axis{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;background:#fafaf6;color:var(--mid);letter-spacing:0.08em;text-transform:uppercase;display:flex;align-items:center}
+
+  /* ──────────── S05 Cases ──────────── */
+  .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:32px}
+  .case-card{background:#fff;border:var(--border-whisper);border-radius:18px;padding:48px 44px;box-shadow:var(--shadow-md);position:relative;overflow:hidden;transition:transform 320ms var(--ease)}
+  .case-card:hover{transform:translateY(-4px)}
+  .case-card.c1{background:linear-gradient(180deg,#fff 0%,#fdf6ef 100%)}
+  .case-card.c2{background:linear-gradient(180deg,#fff 0%,#f7f3ec 100%)}
+  .case-card .ctag{display:inline-block;padding:6px 14px;color:var(--light);font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;margin-bottom:24px;letter-spacing:0.12em;text-transform:uppercase;border-radius:999px}
+  .case-card.c1 .ctag{background:var(--terracotta)}
+  .case-card.c2 .ctag{background:var(--sage)}
+  .case-card h3{font-family:'Poppins',sans-serif;font-size:44px;line-height:1.1;margin-bottom:20px;font-weight:700;letter-spacing:-0.02em}
+  .case-card p{font-family:'Lora',serif;font-size:21px;line-height:1.55;color:#3a3a38}
+  .case-card .emoji-big{font-size:88px;margin-bottom:16px;line-height:1;animation:drift 4s ease-in-out infinite}
+
+  /* ──────────── S06 Timeline ──────────── */
+  .tl-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-top:32px}
+  .tl-cell{border:var(--border-whisper);border-radius:12px;padding:22px 18px;background:#fff;font-family:'Lora',serif;box-shadow:var(--shadow-sm);transition:transform 240ms var(--ease)}
+  .tl-cell:hover{transform:translateY(-3px)}
+  .tl-cell .tt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mid);font-weight:500;letter-spacing:0.1em;text-transform:uppercase}
+  .tl-cell .tn{font-family:'Poppins',sans-serif;font-size:28px;font-weight:800;color:var(--dark);margin:8px 0;letter-spacing:-0.02em}
+  .tl-cell .td{font-size:14px;color:#2a2a28;line-height:1.4}
+  .tl-cell.terra{background:var(--terracotta);color:var(--light)}
+  .tl-cell.terra .tt,.tl-cell.terra .tn,.tl-cell.terra .td{color:var(--light)}
+  .tl-cell.terra .tt{opacity:0.85}
+  .tl-cell.blue{background:var(--blue);color:var(--light)}
+  .tl-cell.blue .tt,.tl-cell.blue .tn,.tl-cell.blue .td{color:var(--light)}
+  .tl-cell.blue .tt{opacity:0.85}
+  .tl-cell.sage{background:var(--sage);color:var(--light)}
+  .tl-cell.sage .tt,.tl-cell.sage .tn,.tl-cell.sage .td{color:var(--light)}
+  .tl-cell.sage .tt{opacity:0.85}
+  .tl-cell.dark{background:var(--dark);color:var(--light)}
+  .tl-cell.dark .tt,.tl-cell.dark .tn,.tl-cell.dark .td{color:var(--light)}
+  .tl-cell.dark .tt{opacity:0.7}
+  .tl-cell.brk{background:var(--light-gray)}
+  .rule-band{margin-top:48px;padding:28px 32px;background:var(--dark);color:var(--light);border-radius:14px;font-family:'Lora',serif;font-size:22px;line-height:1.5}
+  .rule-band strong{color:var(--terracotta);font-weight:600}
+
+  /* ──────────── Step cards (L02/L05/L06) ──────────── */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:36px}
+  .steps.col3{grid-template-columns:repeat(3,1fr)}
+  .step-card{background:#fff;border:var(--border-whisper);border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-sm);transition:transform 280ms var(--ease),box-shadow 280ms var(--ease)}
+  .step-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+  .step-card .sn{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--terracotta);letter-spacing:0.15em;text-transform:uppercase}
+  .step-card h4{font-family:'Poppins',sans-serif;font-size:26px;font-weight:700;color:var(--dark);line-height:1.2;letter-spacing:-0.01em}
+  .step-card p{font-family:'Lora',serif;font-size:18px;line-height:1.55;color:#3a3a38}
+  .step-card .dur{margin-top:auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mid);font-weight:500;padding-top:14px;border-top:var(--border-whisper);letter-spacing:0.12em;text-transform:uppercase}
+
+  /* Note bands */
+  .note{margin-top:36px;padding:22px 28px;border-radius:12px;font-family:'Lora',serif;font-size:21px;line-height:1.55}
+  .note.warn{background:#fdf2eb;border-left:3px solid var(--terracotta);color:#5a3520}
+  .note.warn strong{color:var(--terracotta);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-right:12px}
+  .note.dark{background:var(--dark);color:var(--light)}
+  .note.dark strong{color:var(--terracotta);font-weight:600}
+  .note.sage{background:#eff2ea;border-left:3px solid var(--sage);color:#3a4530}
+
+  /* ──────────── L03 Connectors ──────────── */
+  .conn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+  .conn-card{background:#fff;border:var(--border-whisper);border-radius:16px;padding:36px 28px;text-align:center;box-shadow:var(--shadow-sm);transition:transform 280ms var(--ease),box-shadow 280ms var(--ease)}
+  .conn-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+  .conn-card .em{font-size:80px;line-height:1;margin-bottom:18px;display:inline-block}
+  .conn-card:hover .em{animation:drift 1.4s ease-in-out infinite}
+  .conn-card h4{font-family:'Poppins',sans-serif;font-size:28px;font-weight:700;color:var(--dark);margin-bottom:10px;letter-spacing:-0.01em}
+  .conn-card p{font-family:'Lora',serif;font-size:17px;line-height:1.5;color:#3a3a38}
+  .conn-card .dur{margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mid);font-weight:500;letter-spacing:0.12em;text-transform:uppercase}
+
+  /* ──────────── Plugin marketplace grid ──────────── */
+  .plug-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+  .plug-card{background:#fff;border:var(--border-whisper);border-radius:14px;padding:24px 22px;box-shadow:var(--shadow-sm);transition:transform 280ms var(--ease),box-shadow 280ms var(--ease);display:flex;flex-direction:column;gap:10px}
+  .plug-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+  .plug-card .pem{font-size:44px;line-height:1}
+  .plug-card h4{font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;color:var(--dark);letter-spacing:-0.01em;line-height:1.15}
+  .plug-card p{font-family:'Lora',serif;font-size:15px;line-height:1.5;color:#3a3a38}
+  .plug-card .conns{margin-top:auto;display:flex;flex-wrap:wrap;gap:5px;padding-top:12px;border-top:var(--border-whisper)}
+  .plug-card .conn{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:var(--mid);padding:3px 8px;background:#fafaf6;border-radius:999px;letter-spacing:0.05em}
+  .plug-card.terra h4{color:var(--terracotta)}
+  .plug-card.blue h4{color:var(--blue)}
+  .plug-card.sage h4{color:var(--sage)}
+  .plug-howto{margin-top:32px;padding:22px 28px;background:#fff;border:var(--border-whisper);border-radius:12px;display:flex;align-items:center;gap:24px;font-family:'Lora',serif;font-size:18px;line-height:1.55;color:#2a2a28}
+  .plug-howto .arrow{font-family:'JetBrains Mono',monospace;color:var(--terracotta);font-weight:600;font-size:16px;letter-spacing:0.05em}
+  .plug-howto code{font-family:'JetBrains Mono',monospace;background:var(--light-gray);padding:2px 8px;border-radius:4px;font-size:15px;color:var(--dark);font-weight:500}
+
+  /* ──────────── BREAK slide ──────────── */
+  .s-break{background:linear-gradient(135deg,var(--light) 0%,#f0e8d8 100%)}
+  .s-break .big-em{font-size:280px;line-height:1;margin-bottom:32px;animation:drift 3s ease-in-out infinite}
+  .s-break h1{font-size:200px;color:var(--dark);letter-spacing:-0.04em;font-weight:800}
+  .s-break .sub{margin-top:32px;font-family:'JetBrains Mono',monospace;font-size:24px;color:var(--mid);letter-spacing:0.2em;text-transform:uppercase}
+
+  /* ──────────── Warning slide ──────────── */
+  .s-warn{background:var(--dark);color:var(--light)}
+  .s-warn h1{color:var(--light);font-size:140px;line-height:1.0;font-weight:800;letter-spacing:-0.03em;max-width:1500px}
+  .s-warn h1 .accent{color:var(--terracotta)}
+  .s-warn .sub{font-family:'Lora',serif;font-size:30px;color:var(--light);opacity:0.85;margin-top:40px;line-height:1.55;max-width:1400px;font-weight:400}
+  .s-warn .sub strong{color:var(--terracotta);font-weight:500}
+  .s-warn .em{font-size:160px;line-height:1;margin-bottom:32px;animation:drift 3s ease-in-out infinite}
+  .s-warn .pillrow{margin-top:56px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+  .s-warn .pillrow .p{padding:14px 24px;background:rgba(250,249,245,0.1);color:var(--light);font-family:'Lora',serif;font-size:20px;border:1px solid rgba(250,249,245,0.2);border-radius:999px;backdrop-filter:blur(4px)}
+
+  /* ──────────── Action plan ──────────── */
+  .actions{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:32px}
+  .act-card{background:#fff;border:var(--border-whisper);border-radius:18px;padding:48px 38px;box-shadow:var(--shadow-md);transition:transform 280ms var(--ease)}
+  .act-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .act-card .when{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;letter-spacing:0.15em;color:var(--light);padding:8px 16px;display:inline-block;margin-bottom:24px;border-radius:999px;text-transform:uppercase}
+  .act-card.now .when{background:var(--terracotta)}
+  .act-card.week .when{background:var(--blue)}
+  .act-card.month .when{background:var(--sage)}
+  .act-card h4{font-family:'Poppins',sans-serif;font-size:32px;color:var(--dark);line-height:1.15;margin-bottom:18px;font-weight:700;letter-spacing:-0.02em}
+  .act-card p{font-family:'Lora',serif;font-size:20px;line-height:1.55;color:#3a3a38}
+  .act-card p strong{color:var(--terracotta);font-weight:600}
+
+  /* ──────────── Q&A ──────────── */
+  .s-qa{background:linear-gradient(135deg,var(--dark) 0%,#2a2520 100%);color:var(--light)}
+  .s-qa h1{color:var(--terracotta);font-size:320px;letter-spacing:-0.06em;font-weight:800;line-height:1}
+  .s-qa .sub{font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--light);opacity:0.6;margin-top:32px;letter-spacing:0.3em;text-transform:uppercase}
+
+  /* ──────────── Feedback ──────────── */
+  .s-fb{background:var(--terracotta);color:var(--light)}
+  .s-fb .em{font-size:200px;line-height:1;margin-bottom:24px;animation:drift 3s ease-in-out infinite}
+  .s-fb h1{font-size:160px;color:var(--light);letter-spacing:-0.03em;font-weight:800}
+  .s-fb .sub{margin-top:28px;font-family:'Lora',serif;font-size:30px;color:var(--light);opacity:0.92;font-weight:400}
+
+  /* ──────────── Thanks ──────────── */
+  .s-thanks{background:linear-gradient(135deg,var(--light) 0%,#f5e8db 60%,var(--terracotta) 130%)}
+  .s-thanks h1{color:var(--dark);font-size:240px;letter-spacing:-0.05em;font-weight:800}
+  .s-thanks .sub{font-family:'Lora',serif;font-size:28px;color:var(--dark);margin-top:32px;line-height:1.5;max-width:1400px;font-weight:400}
+  .s-thanks .sub em{font-style:italic;color:var(--terracotta);font-weight:500}
+  .s-thanks .links{margin-top:64px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+  /* Generic title slide */
+  .slide-title{font-family:'Poppins',sans-serif;font-size:80px;font-weight:800;line-height:1.05;margin-bottom:36px;letter-spacing:-0.03em;color:var(--dark);max-width:1500px}
+  .slide-title em{color:var(--terracotta);font-style:normal}
+  .slide-sub{font-family:'Lora',serif;font-size:26px;line-height:1.55;color:#3a3a38;max-width:1400px}
+  .slide-sub strong{color:var(--terracotta);font-weight:600}
+
+  /* Help overlay */
+  .help{position:fixed;bottom:12px;left:12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mid);opacity:0.5;z-index:99;letter-spacing:0.1em}
+
+  /* Progress bar */
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--terracotta);transition:width 400ms var(--ease);z-index:100;box-shadow:0 0 12px rgba(217,119,87,0.4)}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="stage">
+  <div class="deck">
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S01 Cover -->
+    <section class="slide center s-cover active">
+      <div class="corner-tl"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Workshop</span></div>
+      <div class="corner-tr">Sydney · 14:00 — 17:00</div>
+      <div class="stagger" style="display:flex;flex-direction:column;align-items:flex-start">
+        <div class="eyebrow">2026 · 04 · 28</div>
+        <h1>Claude<br>Cowork<span class="accent">.</span></h1>
+        <div class="sub">把 AI 当同事用 — 一个 3 小时的<em>手把手实战</em>。<br>装环境，配 Connectors，跑两个真实 Case。</div>
+        <div class="meta">
+          <span class="pill">⏱ 180 min · 7 modules</span>
+          <span class="pill">👥 非技术岗位友好</span>
+          <span class="pill terra">💼 走时电脑里有自动跑的 Skill</span>
+        </div>
+      </div>
+      <div class="pager">01 / 18</div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S02 Promise -->
+    <section class="slide">
+      <div class="topbar"><span>02 · The Promise · 你今晚回家时</span><span class="badge">PROMISE</span></div>
+      <h2 class="slide-title">3 小时不讲『AI 是什么』<br>你带走 <em>6 件真东西</em></h2>
+      <div class="promise-grid stagger">
+        <div class="promise-card"><div class="num">01 · Setup</div><h4>装好的 Cowork</h4><p>Claude Desktop 里 Cowork tab 能用 · 登录 Pro</p></div>
+        <div class="promise-card"><div class="num">02 · Connectors</div><h4>4 个 Connectors</h4><p>Filesystem · Web · Gmail · Drive 都配好</p></div>
+        <div class="promise-card"><div class="num">03 · Plugin</div><h4>1 个 Plugin</h4><p>Marketplace 装一个看效果 · 知道怎么管</p></div>
+        <div class="promise-card"><div class="num">04 · Dispatch</div><h4>手机 Dispatch</h4><p>QR 配对完成 · 路上能远程派任务</p></div>
+        <div class="promise-card"><div class="num">05 · PPT Skill</div><h4>1 个 PPT 流程</h4><p><code>ppt-from-topic</code> Skill · 一句话出 PPT</p></div>
+        <div class="promise-card"><div class="num">06 · Auto-run</div><h4>1 个每天自动跑</h4><p><code>daily-jobs</code> Skill + <code>/schedule</code> 8:00 抓校招</p></div>
+      </div>
+      <div class="pager">02 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S03 What is Cowork -->
+    <section class="slide center">
+      <div class="topbar" style="position:absolute;top:96px;left:112px;right:112px;margin:0"><span>03 · What is Cowork</span><span class="badge">CONTEXT</span></div>
+      <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
+        <h2 class="s03-title">Anthropic 2026 GA 桌面 App<br>Claude Desktop 里第 <em>3 个 tab</em></h2>
+        <div class="tabs-vis">
+          <div class="tab-card"><div class="tname">Chat</div><div class="tsub">聊天</div></div>
+          <div class="tab-card active"><div class="tname">Cowork</div><div class="tsub">本节课主角</div></div>
+          <div class="tab-card"><div class="tname">Code</div><div class="tsub">工程师</div></div>
+        </div>
+        <div class="tabs-tagline">你给一个目标 — Cowork <strong>真的开你电脑上的 App</strong>、动你的文件、按 <strong>/schedule</strong> 自动跑、<br>还能从 <strong>手机 Dispatch</strong> 派活儿。</div>
+      </div>
+      <div class="pager">03 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S04 Cowork vs OpenClaw -->
+    <section class="slide">
+      <div class="topbar"><span>04 · Cowork vs OpenClaw</span><span class="badge">VS</span></div>
+      <h2 class="slide-title" style="font-size:64px">两个都能让 AI 替你干活 · <em>怎么选?</em></h2>
+      <div class="vs-mini stagger">
+        <div class="vmh">维度</div>
+        <div class="vmh cw">🤝 Cowork</div>
+        <div class="vmh oc">🦞 OpenClaw</div>
+
+        <div class="vmc axis">出品方</div>
+        <div class="vmc">Anthropic 商业产品</div>
+        <div class="vmc">奥地利开发者开源 MIT</div>
+
+        <div class="vmc axis">形态</div>
+        <div class="vmc">Desktop App · 鼠标点</div>
+        <div class="vmc">终端 + WhatsApp/飞书 21+ IM</div>
+
+        <div class="vmc axis">费用</div>
+        <div class="vmc">必订 Pro A$30/月</div>
+        <div class="vmc">工具免费 · LLM Key 自付</div>
+
+        <div class="vmc axis">数据走哪</div>
+        <div class="vmc">Anthropic 服务器</div>
+        <div class="vmc">完全本地 · 合规友好</div>
+
+        <div class="vmc axis">Computer Use</div>
+        <div class="vmc">原生 · 开 PowerPoint / Excel</div>
+        <div class="vmc">跑脚本不直控桌面</div>
+
+        <div class="vmc axis">适合谁</div>
+        <div class="vmc">最快上手 · 桌面办公</div>
+        <div class="vmc">合规敏感 · 多 LLM · IM 接入</div>
+      </div>
+      <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap"><span class="pill terra">本节课主角 → Cowork</span><span class="pill sage">想合规深挖 → OpenClaw 4-hour Workshop</span></div>
+      <div class="pager">04 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S05 Today's 2 Cases -->
+    <section class="slide">
+      <div class="topbar"><span>05 · Today's Two Cases</span><span class="badge">DEMO</span></div>
+      <h2 class="slide-title" style="font-size:64px">先给你看终点 · <em>然后一起从零走过去</em></h2>
+      <div class="cases-grid stagger">
+        <div class="case-card c1">
+          <div class="emoji-big">📊</div>
+          <span class="ctag">Case 1 · L05 · 45 min</span>
+          <h3>给主题 → 出 PPT</h3>
+          <p>Cowork 调 PowerPoint 自动开 / 自动填每页 / 存桌面。你看着自己电脑上 <strong>PowerPoint 真的在动</strong>。最后存成 <code>ppt-from-topic</code> Skill。</p>
+        </div>
+        <div class="case-card c2">
+          <div class="emoji-big">⏰</div>
+          <span class="ctag">Case 2 · L06 · 45 min</span>
+          <h3>Skill + /schedule 每天爬校招</h3>
+          <p>写 <code>daily-jobs</code> Skill 抓 SEEK + Indeed + GradAustralia。<code>/schedule</code> 配每天 8:00 自动跑。<strong>明早起床数据已在桌面。</strong></p>
+        </div>
+      </div>
+      <div class="pager">05 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S06 Timeline -->
+    <section class="slide">
+      <div class="topbar"><span>06 · 180 minutes · 7 modules</span><span class="badge">AGENDA</span></div>
+      <h2 class="slide-title" style="font-size:60px">前 80 分钟<em>装环境</em> · 后 90 分钟<em>跑 Case</em></h2>
+      <div class="tl-grid stagger">
+        <div class="tl-cell dark"><div class="tt">14:00 · 15min</div><div class="tn">L01</div><div class="td">开场 + 2 case 完成态 demo</div></div>
+        <div class="tl-cell blue"><div class="tt">14:15 · 20min</div><div class="tn">L02</div><div class="td">装 Claude Desktop + 切 Cowork tab</div></div>
+        <div class="tl-cell terra"><div class="tt">14:35 · 20min</div><div class="tn">L03</div><div class="td">配 4 个 Connectors</div></div>
+        <div class="tl-cell sage"><div class="tt">14:55 · 15min</div><div class="tn">L04</div><div class="td">装 Plugin（14 个岗位包）+ 手机 Dispatch</div></div>
+        <div class="tl-cell brk"><div class="tt">15:10 · 10min</div><div class="tn">☕</div><div class="td">休息 + Tutor 救人</div></div>
+        <div class="tl-cell terra"><div class="tt">15:20 · 45min</div><div class="tn">L05</div><div class="td">Case 1 · 出 PPT</div></div>
+        <div class="tl-cell sage"><div class="tt">16:05 · 45min</div><div class="tn">L06</div><div class="td">Case 2 · Skill+Schedule</div></div>
+        <div class="tl-cell dark"><div class="tt">16:50 · 10min</div><div class="tn">L07</div><div class="td">Q&A + 行动清单</div></div>
+      </div>
+      <div class="rule-band">课堂规则：<strong>跟不上举手 — Tutor 1:5 立刻接手</strong>。L02 装机通不过，后面全废 — Tutor 死守。</div>
+      <div class="pager">06 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S07 L02 Install -->
+    <section class="slide">
+      <div class="topbar"><span>07 · L02 · 装 Claude Desktop · 20 min</span><span class="badge" style="background:var(--blue)">L02</span></div>
+      <h2 class="slide-title" style="font-size:60px">📦 4 步 · <em>全员同步装</em></h2>
+      <div class="steps stagger">
+        <div class="step-card"><div class="sn">Step 01</div><h4>下载 Claude Desktop</h4><p>claude.com/download · Mac .dmg / Win <strong>MSIX 包</strong>（不是老 .exe — 没 Cowork tab）</p><div class="dur">⏱ 5 min</div></div>
+        <div class="step-card"><div class="sn">Step 02</div><h4>登录 + 确认付费档</h4><p>OAuth 登录 → Settings → Subscription 确认 Pro / Max / Team / Enterprise</p><div class="dur">⏱ 5 min</div></div>
+        <div class="step-card"><div class="sn">Step 03</div><h4>切到 Cowork tab</h4><p>顶部 Chat / Cowork / Code 三个 tab · 点 Cowork · 跟 onboarding 走完</p><div class="dur">⏱ 3 min</div></div>
+        <div class="step-card"><div class="sn">Step 04</div><h4>第一个 task 验证</h4><p>"在我桌面建文件夹 claude-workshop，里面建空 Excel hello.xlsx" · Approve · 桌面看 = 成功</p><div class="dur">⏱ 7 min</div></div>
+      </div>
+      <div class="note warn"><strong>三大坑</strong>① Win 下错 .exe 没 Cowork tab　② OAuth 跳转被广告拦截器拦　③ 免费档没 Cowork tab</div>
+      <div class="pager">07 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S08 L03 Connectors -->
+    <section class="slide">
+      <div class="topbar"><span>08 · L03 · 配 4 个 Connectors · 20 min</span><span class="badge" style="background:var(--terracotta)">L03</span></div>
+      <h2 class="slide-title" style="font-size:56px">🔌 装好之后 Cowork 还是『盲』的<br>配 Connector 它才能<em>动外部世界</em></h2>
+      <div class="conn-grid stagger">
+        <div class="conn-card"><div class="em">📁</div><h4>Filesystem</h4><p>默认有 · 确认 Settings 绿灯</p><div class="dur">⏱ 3 min</div></div>
+        <div class="conn-card"><div class="em">🌐</div><h4>Web</h4><p>抓网页 · Case 2 校招爬虫核心</p><div class="dur">⏱ 4 min</div></div>
+        <div class="conn-card"><div class="em">📧</div><h4>Gmail</h4><p>OAuth · <strong>用个人 Gmail</strong> 不是 G Workspace</p><div class="dur">⏱ 6 min</div></div>
+        <div class="conn-card"><div class="em">☁️</div><h4>Google Drive</h4><p>OAuth · Case 1 PPT 可存 Drive</p><div class="dur">⏱ 7 min</div></div>
+      </div>
+      <div class="note dark">Connector 配好后 <strong>所有 task / Plugin / Schedule 自动继承</strong> · 不用每次重配。</div>
+      <div class="pager">08 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S09 L04 Plugin + Dispatch -->
+    <section class="slide">
+      <div class="topbar"><span>09 · L04 · Plugin + Dispatch · 15 min</span><span class="badge" style="background:var(--sage)">L04</span></div>
+      <h2 class="slide-title" style="font-size:60px">🧩 装第一个 Plugin · <em>配对手机 Dispatch</em></h2>
+      <div class="steps col3 stagger">
+        <div class="step-card"><div class="sn">Step 01</div><h4>敲 / 看 marketplace</h4><p>Cowork 输入框 <strong>/</strong> 弹菜单 — 含 Skills 和 Plugin 入口。<br><br>Plugin = Skills + Connectors + sub-agents 打包。</p><div class="dur">⏱ 5 min</div></div>
+        <div class="step-card"><div class="sn">Step 02</div><h4>装一个示例 Plugin</h4><p>选轻量 Plugin → Install → Approve 权限 → / 菜单里能看到它的命令和 Skill</p><div class="dur">⏱ 5 min</div></div>
+        <div class="step-card"><div class="sn">Step 03</div><h4>📲 Dispatch QR 配对</h4><p>左下角 → Dispatch → Show QR · 手机扫 → 配对成功 · 手机派任务桌面跑</p><div class="dur">⏱ 5 min</div></div>
+      </div>
+      <div class="note sage">💡 <strong>Dispatch 体感最强</strong> — 学员第一次看到『手机派活儿桌面真的在跑』会立刻想到上下班路上的应用场景。</div>
+      <div class="pager">09 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S10 Plugin Marketplace — what you can install -->
+    <section class="slide">
+      <div class="topbar"><span>10 · 你能装哪些 Plugin · Anthropic Knowledge-Work Marketplace</span><span class="badge">PLUGINS</span></div>
+      <h2 class="slide-title" style="font-size:54px">官方有 14 个<em>按岗位打包</em>的 Plugin<br>挑你那行直接装 · 不用自己拼</h2>
+      <div class="plug-grid stagger">
+        <div class="plug-card terra"><div class="pem">💼</div><h4>Sales</h4><p>Research prospects · prep calls · draft outreach · build battlecards</p><div class="conns"><span class="conn">HubSpot</span><span class="conn">Slack</span><span class="conn">Clay</span><span class="conn">ZoomInfo</span></div></div>
+        <div class="plug-card terra"><div class="pem">📣</div><h4>Marketing</h4><p>Draft content · plan campaigns · enforce brand voice · channel report</p><div class="conns"><span class="conn">Canva</span><span class="conn">Figma</span><span class="conn">HubSpot</span><span class="conn">Ahrefs</span></div></div>
+        <div class="plug-card sage"><div class="pem">⚖️</div><h4>Legal</h4><p>Review contracts · triage NDAs · compliance · risk · meeting prep</p><div class="conns"><span class="conn">Box</span><span class="conn">Egnyte</span><span class="conn">Jira</span><span class="conn">M365</span></div></div>
+        <div class="plug-card sage"><div class="pem">💰</div><h4>Finance</h4><p>Journal entries · reconcile · statements · variance · close · audit</p><div class="conns"><span class="conn">Snowflake</span><span class="conn">Databricks</span><span class="conn">BigQuery</span></div></div>
+        <div class="plug-card blue"><div class="pem">👥</div><h4>Human Resources</h4><p>JD drafts · screening · onboarding flows · policy lookup</p><div class="conns"><span class="conn">Slack</span><span class="conn">Notion</span><span class="conn">M365</span></div></div>
+        <div class="plug-card blue"><div class="pem">🎯</div><h4>Productivity</h4><p>Task / calendar / daily workflow + personal context · 减重复</p><div class="conns"><span class="conn">Asana</span><span class="conn">Linear</span><span class="conn">Notion</span><span class="conn">M365</span></div></div>
+        <div class="plug-card terra"><div class="pem">🎧</div><h4>Customer Support</h4><p>Triage tickets · draft responses · package escalations · KB articles</p><div class="conns"><span class="conn">Intercom</span><span class="conn">Guru</span><span class="conn">HubSpot</span></div></div>
+        <div class="plug-card sage"><div class="pem">🔍</div><h4>Enterprise Search</h4><p>跨 email / chat / docs / wiki 一句话查公司里所有东西</p><div class="conns"><span class="conn">Slack</span><span class="conn">Notion</span><span class="conn">Guru</span><span class="conn">Jira</span></div></div>
+      </div>
+      <div class="plug-howto">
+        <span class="arrow">怎么装 →</span>
+        <span>Cowork 输入框敲 <code>/</code> · 选 Plugin marketplace · 找你岗位的 Plugin · Install · Approve 权限。每个 Plugin = 打包好的 Skills + Connectors + Sub-agents · 一次到位。</span>
+      </div>
+      <div class="pager">10 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S11 BREAK -->
+    <section class="slide center s-break">
+      <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
+        <div class="big-em">☕</div>
+        <h1>Break</h1>
+        <div class="sub">10 min · 15:10 → 15:20 · Tutor 救人窗口</div>
+      </div>
+      <div class="pager" style="color:var(--mid);opacity:0.5">11 / 18</div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S11 L05 Case 1 PPT -->
+    <section class="slide">
+      <div class="topbar"><span>11 · L05 · Case 1 · PPT · 45 min</span><span class="badge" style="background:var(--terracotta)">CASE 1</span></div>
+      <h2 class="slide-title" style="font-size:54px">📊 输入主题 → Cowork 自动开 PowerPoint<br><em>→ 出可用 PPT</em></h2>
+      <div class="steps stagger">
+        <div class="step-card"><div class="sn">Step 01</div><h4>想清楚 主题/受众/篇幅</h4><p>4 件事：主题 / 给谁看 / 多少页 / 时长。<br>例：『给客户讲 SaaS demo · 10 页 · 10 分钟』</p><div class="dur">⏱ 5 min</div></div>
+        <div class="step-card"><div class="sn">Step 02</div><h4>先大纲后成品</h4><p>每页一句标题 + 一句要点。不符合改提示词重出 — 省掉后面『方向错』的痛苦</p><div class="dur">⏱ 10 min</div></div>
+        <div class="step-card"><div class="sn">Step 03</div><h4>Cowork 调 PowerPoint</h4><p>Computer Use 自动开 / 一页页填 — 你看自己电脑上 PowerPoint 真的在动。每步 Approve</p><div class="dur">⏱ 20 min</div></div>
+        <div class="step-card"><div class="sn">Step 04</div><h4>存成 Skill 给以后用</h4><p>『把这流程存成 Skill 叫 ppt-from-topic』· 下次 <code>/ppt-from-topic</code> 一句就跑</p><div class="dur">⏱ 10 min</div></div>
+      </div>
+      <div class="note warn"><strong>三大坑</strong>① 学员跳过大纲直接出 PPT　② Computer Use 跑时学员抢鼠标　③ 视觉一般 — 这节讲『内容优先』</div>
+      <div class="pager">12 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S12 L06 Case 2 -->
+    <section class="slide">
+      <div class="topbar"><span>12 · L06 · Case 2 · daily-jobs Skill + /schedule · 45 min</span><span class="badge" style="background:var(--sage)">CASE 2</span></div>
+      <h2 class="slide-title" style="font-size:54px">⏰ 写 Skill + 配 /schedule<br><em>= 真正『AI 替你干活』</em></h2>
+      <div class="steps stagger">
+        <div class="step-card"><div class="sn">Step 01</div><h4>想清楚 抓什么/落到哪</h4><p>4 件事：抓哪些站 / 抓什么字段 / 落到哪 / 关键词筛<br>SEEK + Indeed + GradAustralia · 5 字段 · 桌面 jobs/</p><div class="dur">⏱ 5 min</div></div>
+        <div class="step-card"><div class="sn">Step 02</div><h4>写 daily-jobs Skill</h4><p>『建 Skill 抓 3 站 / 提 5 字段 / 去重 / 落 ~/Desktop/jobs/YYYY-MM-DD.json』· 跑 → 调 → 再跑</p><div class="dur">⏱ 15 min</div></div>
+        <div class="step-card"><div class="sn">Step 03</div><h4>/schedule 每天 8:00</h4><p>Cowork 输 <code>/schedule</code> 或左侧 Scheduled tab · 频率 Daily · 时间 08:00 · Save</p><div class="dur">⏱ 10 min</div></div>
+        <div class="step-card"><div class="sn">Step 04</div><h4>手动触发验证</h4><p>Scheduled tab → Run now · 看 jobs/2026-04-28.json · 字段全 / 去重对 = 通过</p><div class="dur">⏱ 15 min</div></div>
+      </div>
+      <div class="note sage">🎯 <strong>明早起床 ~/Desktop/jobs/2026-04-29.json 已经在桌面</strong> — 这一刻你才真的相信 AI 替你干活。</div>
+      <div class="pager">13 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S13 ⚠ Constraint -->
+    <section class="slide center s-warn">
+      <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
+        <div class="em">🚨</div>
+        <h1>电脑必须 <span class="accent">awake</span><br>+ Cowork 必须开</h1>
+        <div class="sub">Cowork Scheduled Task <strong>不是云端 daemon</strong> — 跟 cron server / GitHub Actions 不一样。<br>睡眠期间触发的会跳过，电脑醒了 + Cowork 重打开会自动补跑一次。</div>
+        <div class="pillrow">
+          <span class="p">✓ 笔记本常开（sleep + display off 算 awake）</span>
+          <span class="p">✓ 装家里 / 公司常开台式机</span>
+          <span class="p">✓ 接受『偶尔跳一天』也行</span>
+        </div>
+      </div>
+      <div class="pager" style="color:var(--light);opacity:0.4">14 / 18</div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S14 Action plan -->
+    <section class="slide">
+      <div class="topbar"><span>14 · 课后 3 档行动</span><span class="badge">ACTION</span></div>
+      <h2 class="slide-title" style="font-size:60px">🚀 走出教室不是终点 · <em>是起点</em></h2>
+      <div class="actions stagger">
+        <div class="act-card now"><span class="when">Tonight 今晚</span><h4>跑一晚 daily-jobs</h4><p>电脑别关 · 让 /schedule 跑 8:00。<strong>明早起床看桌面 jobs/2026-04-29.json</strong> — 那一刻你才真的相信。</p></div>
+        <div class="act-card week"><span class="when">This Week 这周</span><h4>每天用 Cowork 干 1-2 件事</h4><p>调 Excel / 改 PPT / 抓信息 / 整邮件 任意 · 攒手感。<strong>第 3 天起 / 菜单成肌肉记忆</strong>。</p></div>
+        <div class="act-card month"><span class="when">This Month 一月</span><h4>写第 3 个 Skill</h4><p>按你岗位最痛的事写。律师写合同初审 · HR 写 JD · 销售写客户跟进。<strong>3 个 Skill 后 Cowork 真的成你副手</strong>。</p></div>
+      </div>
+      <div class="note dark">进阶资源 · <strong>jiangren.com.au/curriculum/openclaw-workshop</strong>（合规深挖 · 4 小时）· Cowork 官方 docs · Plugin marketplace</div>
+      <div class="pager">15 / 18</div>
+      <div class="brand brand-dark"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Claude Cowork Workshop · 2026-04-28</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S15 Q&A -->
+    <section class="slide center s-qa">
+      <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
+        <h1>Q&amp;A</h1>
+        <div class="sub">Your Turn · 5 min</div>
+      </div>
+      <div class="pager" style="color:var(--light);opacity:0.4">16 / 18</div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S16 Feedback -->
+    <section class="slide center s-fb">
+      <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
+        <div class="em">📝</div>
+        <h1>2 分钟反馈</h1>
+        <div class="sub">5 道题 · 帮我们办下一期更准</div>
+      </div>
+      <div class="pager" style="color:var(--light);opacity:0.5">17 / 18</div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- S17 Thanks -->
+    <section class="slide center s-thanks">
+      <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
+        <h1>谢谢 🙌</h1>
+        <div class="sub">Claude Cowork 工作坊 · 2026-04-28<br><em>JR Academy · 全球华人学习 AI 第一站</em></div>
+        <div class="links">
+          <span class="pill dark">jiangren.com.au/curriculum/claude-cowork-workshop</span>
+          <span class="pill terra">openclaw-workshop · 4-hour 进阶</span>
+        </div>
+      </div>
+      <div class="pager" style="color:var(--dark);opacity:0.4">18 / 18</div>
+    </section>
+
+  </div>
+</div>
+
+<div class="help">← → 翻页 · F 全屏 · ESC 退出 · 数字键 1-9 跳页 · 点击右/左半屏</div>
+
+<script>
+  const deck = document.querySelector('.deck');
+  const slides = document.querySelectorAll('.slide');
+  const progress = document.getElementById('progress');
+  let cur = 0;
+
+  function fit(){
+    const sx = window.innerWidth / 1920;
+    const sy = window.innerHeight / 1080;
+    deck.style.transform = `scale(${Math.min(sx, sy)})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  function go(i){
+    cur = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === cur));
+    progress.style.width = ((cur + 1) / slides.length * 100) + '%';
+    if(location.hash !== '#' + (cur + 1)) history.replaceState(null, '', '#' + (cur + 1));
+  }
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown'){ e.preventDefault(); go(cur + 1); }
+    else if(e.key === 'ArrowLeft' || e.key === 'PageUp'){ e.preventDefault(); go(cur - 1); }
+    else if(e.key === 'Home') go(0);
+    else if(e.key === 'End') go(slides.length - 1);
+    else if(e.key === 'f' || e.key === 'F'){
+      if(document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+    else if(/^[1-9]$/.test(e.key)) go(parseInt(e.key) - 1);
+    else if(e.key === '0') go(9);
+  });
+
+  document.addEventListener('click', e => {
+    if(e.target.closest('a')) return;
+    if(e.clientX > window.innerWidth / 2) go(cur + 1);
+    else go(cur - 1);
+  });
+
+  const initHash = parseInt(location.hash.slice(1));
+  if(initHash > 0 && initHash <= slides.length) go(initHash - 1);
+  else go(0);
+</script>
+
+</body>
+</html>

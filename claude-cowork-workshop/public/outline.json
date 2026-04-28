@@ -1,0 +1,619 @@
+{
+  "course": {
+    "name_zh": "Claude Cowork 工作坊 — 手把手装环境 + 跑两个真实 Case",
+    "name_en": "Claude Cowork Workshop — Hands-on Setup + 2 Real Cases",
+    "date": "2026-04-28",
+    "weekday": "Tuesday",
+    "time_sydney": "14:00",
+    "duration_minutes": 180,
+    "format": "线下沉浸式 / 线上直播均可",
+    "price_aud": 0,
+    "currency": "AUD",
+    "url": "https://jiangren.com.au/curriculum/claude-cowork-workshop/",
+    "payment_url": ""
+  },
+  "curriculumPages": {
+    "pages": ["curriculum.html", "slides.html"],
+    "defaultPage": "curriculum.html"
+  },
+  "product_context_zh": "Claude Cowork 是 Anthropic 2026 年 GA 的桌面 App 产品。在 Claude Desktop 里跟 Chat / Code 并列的第三个 tab — 你给它一个目标，它在你桌面上跑：开你的 Excel、读你本地文件、调你的 Connectors、按 /schedule 每天自动跑、还能从手机 Dispatch 远程派活儿。它把『Claude Code CLI 那一套能力』搬到了非技术人也能用的图形界面里 — 不用终端、不用 npm、不用写命令，全是『说人话』。",
+  "comparison_with_openclaw": {
+    "headline_zh": "Cowork vs OpenClaw — 都能让 AI 替你干活，怎么选？",
+    "intro_zh": "学员经常问『跟你们 OpenClaw Workshop 有啥区别 / 我该装哪个』。两个都能做 plugin / connector / skill / schedule / dispatch — 差别在『谁出的』『装在哪』『谁付钱』『数据在哪』。下表帮你 30 秒选清楚。",
+    "rows": [
+      { "axis_zh": "出品方",        "cowork_zh": "Anthropic 官方（商业产品）",                                "openclaw_zh": "Peter Steinberger（奥地利开发者）开源 · MIT" },
+      { "axis_zh": "形态",          "cowork_zh": "Claude Desktop 里第 3 个 tab · 图形界面 · 鼠标点",        "openclaw_zh": "命令行 + WhatsApp / Telegram / Slack / Discord / 飞书 等 21+ 消息平台" },
+      { "axis_zh": "上手门槛",      "cowork_zh": "🟢 低 · 装 App + 登录就能用",                              "openclaw_zh": "🟡 中 · 需要 Node 22 + 终端基础" },
+      { "axis_zh": "费用",          "cowork_zh": "🔴 必须 Claude Pro A$30/月起",                            "openclaw_zh": "🟢 工具免费（MIT）· LLM Key 自付（月均 ~A$15）" },
+      { "axis_zh": "大模型选择",     "cowork_zh": "锁 Claude（Sonnet / Opus）",                              "openclaw_zh": "任选 Claude / OpenAI / Gemini / 本地模型（Ollama）" },
+      { "axis_zh": "数据走哪",       "cowork_zh": "Anthropic 服务器跑 · 合规取决于 plan 档",                  "openclaw_zh": "🟢 完全本地 · 数据不出设备 · 律师 / 会计 / 医疗友好" },
+      { "axis_zh": "Computer Use",   "cowork_zh": "🟢 原生 · 能开 PowerPoint / Excel / 浏览器",              "openclaw_zh": "🟡 不直接控桌面 App · 但能跑脚本 / 命令行" },
+      { "axis_zh": "Plugin / Skill", "cowork_zh": "官方 Plugin marketplace",                                "openclaw_zh": "ClawHub 社区 Skill · 完全开放" },
+      { "axis_zh": "Schedule",       "cowork_zh": "5 种 cadence · 必须电脑 awake + App 开着",                "openclaw_zh": "Cron 自由配 · 可后台 daemon 常驻" },
+      { "axis_zh": "Dispatch",       "cowork_zh": "手机扫 QR 配对桌面（Pro / Max 含）",                       "openclaw_zh": "用 WhatsApp / Telegram / 飞书等已有 IM 派任务" },
+      { "axis_zh": "学习投入",       "cowork_zh": "1 小时上手 · 本节课 3 小时跑通完整流程",                    "openclaw_zh": "4 小时（去看 OpenClaw Workshop）+ 装机更细" },
+      { "axis_zh": "适合谁",         "cowork_zh": "想最快上手 + 已订 Claude Pro + 桌面办公为主",              "openclaw_zh": "合规敏感 + 想多 LLM 切换 + 想从 IM 接入 + 数据必须本地" }
+    ],
+    "decision_zh": {
+      "pick_cowork_when_zh": [
+        "你想 1 小时内上手，最好图形界面",
+        "已经在用 / 准备订 Claude Pro",
+        "工作主要在 PowerPoint / Excel / 浏览器（桌面 App 重度用户）",
+        "不在意数据走 Anthropic（销售 / 市场 / 内容 / HR / 普通办公）",
+        "想要手机 Dispatch 通勤路上派活儿"
+      ],
+      "pick_openclaw_when_zh": [
+        "客户数据 / 合同 / 病历不能上云端（律师 / 会计 / 医疗 / 合规岗）",
+        "想用 Claude 以外的 LLM（OpenAI / Gemini / 本地 Ollama）",
+        "团队已经在用 WhatsApp / 飞书 / Slack 沟通，想直接 IM 派任务",
+        "需要 daemon 后台常驻不依赖电脑 awake",
+        "已经会一点终端 + 想要完全开源可改"
+      ],
+      "use_both_when_zh": "其实大多数实战场景两个搭配最爽 — Cowork 干桌面 GUI 活（出 PPT / 改 Excel），OpenClaw 干合规敏感 + IM 协作活。本节课主讲 Cowork，OpenClaw 看 4 小时进阶 Workshop。"
+    }
+  },
+  "audience_summary_zh": "面向非技术岗位 — 销售 / 行政 / 律师 / 会计 / HR / 老师 / 中小企业主 / 内容创作者。零编程基础。Claude Cowork 是图形界面 App，不需要碰终端。课上手把手装、配、跑。",
+  "audience_summary_en": "Non-technical professionals welcome. Cowork is a desktop GUI app — no terminal needed. We hand-hold install, configuration, and running 2 real cases live.",
+  "promise_zh": "3 小时不讲『AI 是什么』。前 80 分钟把 Claude Cowork 装上、切到 Cowork tab、配好 4 个 Connectors、装第一个 Plugin、用手机 Dispatch 派一次任务 — 这是后面所有事的地基。后 90 分钟手把手做完 2 个真实 case：① 给 Cowork 一个 PPT 主题，它打开 PowerPoint / 调 Excel / 写好交付到桌面 ② 写一个 Skill，配 /schedule 每天早上 8 点自动爬校招岗位归档。明早起床数据已经在桌面。走时电脑里有：装好的 Cowork + 4 个 Connectors + 1 个 Plugin + 1 个手机 Dispatch 配对 + 1 个 PPT 流程 + 1 个每天自动跑的校招 Skill。",
+  "tools": [
+    {
+      "id": "claude-cowork",
+      "name_zh": "Claude Cowork",
+      "name_en": "Claude Cowork",
+      "vendor": "Anthropic",
+      "role_zh": "本期主战场 · Claude Desktop App 里的 Cowork tab",
+      "role_en": "Primary tool — the Cowork tab in Claude Desktop App",
+      "category": "claude-product",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "🤝",
+      "tagline_zh": "你给目标，它在你桌面上跑活儿 · 不是聊天，是替你完成事",
+      "pros": [
+        "图形界面，零终端，非技术友好",
+        "能开你电脑上任何 App（Excel / PowerPoint / 浏览器 / Outlook）",
+        "Plugin / Connector / Skill / Schedule / Dispatch 一站式",
+        "Mac + Win 都有"
+      ],
+      "cons": [
+        "需要 Claude 付费档（Pro / Max / Team / Enterprise）— 免费档没有",
+        "Scheduled task 必须电脑开机 + Cowork app 开着才会跑（不是云端）",
+        "首次配 Connector 需要 OAuth 授权外部账号"
+      ],
+      "cost_notes_zh": "Pro A$30/月（本节课 + 回家继续用都够）。Max / Team / Enterprise 是高频用户档。免费档没 Cowork。",
+      "used_in_modules": ["L02", "L03", "L04", "L05", "L06"],
+      "demo_mode": "live-full"
+    },
+    {
+      "id": "plugins",
+      "name_zh": "Plugins",
+      "name_en": "Plugins",
+      "vendor": "Anthropic + 社区",
+      "role_zh": "把 Skills + Connectors + sub-agents 打包 · `/` 一键触发",
+      "role_en": "Bundles Skills + Connectors + sub-agents, triggered with /",
+      "category": "cowork-feature",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "🧩",
+      "tagline_zh": "在 Cowork 输入框敲 `/` 看 marketplace · 装一个就拿到一组打包能力",
+      "pros": [
+        "为你的角色 / 团队 / 公司定制 Cowork 行为",
+        "财务 / 工程 / HR / 销售 各领域 Plugin 在长",
+        "比一个个装 Skill 高效 — 一次到位"
+      ],
+      "cons": [
+        "Marketplace 早期，优质 Plugin 还在积累",
+        "权限要看清 — Plugin 可能调多个 Connector"
+      ],
+      "cost_notes_zh": "Plugin 本身免费。",
+      "used_in_modules": ["L04"],
+      "demo_mode": "live-full",
+      "demo_note_zh": "L04 输 `/` 在 Cowork 看 marketplace，装一个示例 Plugin"
+    },
+    {
+      "id": "connectors",
+      "name_zh": "Connectors（MCP）",
+      "name_en": "MCP Connectors",
+      "vendor": "Anthropic + 第三方",
+      "role_zh": "Cowork 接外部世界的桥 · Gmail / Drive / Slack / Linear / Notion 等",
+      "role_en": "Bridge Cowork to external services via MCP",
+      "category": "cowork-feature",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "🔌",
+      "tagline_zh": "Settings 里配一次 · 之后所有 task / Plugin / Schedule 都能用",
+      "pros": [
+        "本节课配 4 个：Filesystem（默认）/ Web / Gmail / Google Drive",
+        "OAuth 授权，权限可控",
+        "配好后 Dispatch / Schedule 自动继承"
+      ],
+      "cons": [
+        "首次 OAuth 需要外部账号在手",
+        "Workspace 账号有时被组织策略拦"
+      ],
+      "cost_notes_zh": "Connector 免费，对应外部服务 API 调用走对应账号。",
+      "used_in_modules": ["L03", "L05", "L06"],
+      "demo_mode": "live-full",
+      "demo_note_zh": "L03 现场配 4 个 Connector"
+    },
+    {
+      "id": "dispatch",
+      "name_zh": "Dispatch（手机派活儿）",
+      "name_en": "Dispatch",
+      "vendor": "Anthropic",
+      "role_zh": "手机 App 扫 QR 配对桌面 Cowork · 路上随时派任务",
+      "role_en": "Pair phone with desktop Cowork via QR — assign tasks remotely",
+      "category": "cowork-feature",
+      "url": "https://support.claude.com/en/articles/13947068-assign-tasks-to-claude-from-anywhere-in-cowork",
+      "emoji": "📲",
+      "tagline_zh": "通勤 / 开会 / 出差路上想到的事 · 手机派给桌面 Cowork 跑",
+      "pros": [
+        "手机 ↔ 桌面持久会话，扫一次 QR 长期生效",
+        "可同时派多个任务并行跑",
+        "能用桌面所有 App（Excel / 浏览器 / 内网 dashboard）"
+      ],
+      "cons": [
+        "桌面 Cowork app 必须开着 + 电脑 awake",
+        "Pro / Max 才有手机 dispatch 入口"
+      ],
+      "cost_notes_zh": "Pro / Max 含。",
+      "used_in_modules": ["L04"],
+      "demo_mode": "live-full",
+      "demo_note_zh": "L04 现场配对老师手机 + 学员看老师在咖啡厅派任务给桌面跑"
+    },
+    {
+      "id": "skills",
+      "name_zh": "Skills",
+      "name_en": "Skills",
+      "vendor": "Anthropic + 社区",
+      "role_zh": "可复用工序卡 · 写一次以后 `/` 一秒触发",
+      "role_en": "Reusable workflow cards, triggered with /",
+      "category": "cowork-feature",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "⚙️",
+      "tagline_zh": "把『每次都这么干的事』固化成 Skill · 跟 Plugin 一起用",
+      "pros": [
+        "可被 Plugin 打包，可被 /schedule 调用",
+        "团队共享 = 把团队 SOP 喂给 Cowork",
+        "升级 Plugin 时 Skill 自动跟新"
+      ],
+      "cons": [
+        "第一次写需要琢磨『把工序拆清楚』",
+        "Skill 写糟了 Cowork 跑出来的也糟"
+      ],
+      "cost_notes_zh": "免费（Skill 是文本，跑起来才走付费档度）。",
+      "used_in_modules": ["L05", "L06"],
+      "demo_mode": "live-full",
+      "demo_note_zh": "L06 现场写一个 daily-jobs Skill"
+    },
+    {
+      "id": "schedule",
+      "name_zh": "Scheduled Tasks（/schedule）",
+      "name_en": "Scheduled Tasks",
+      "vendor": "Anthropic",
+      "role_zh": "让 Cowork 按 cadence 自动跑某个 task / Skill",
+      "role_en": "Run Cowork tasks on a recurring cadence",
+      "category": "cowork-feature",
+      "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
+      "emoji": "⏰",
+      "tagline_zh": "Cowork 输入框敲 `/schedule` · 或左侧 Scheduled tab 新建",
+      "pros": [
+        "5 种 cadence：hourly / daily / weekly / weekdays / manual",
+        "每次按独立 Cowork session 跑 · 自动继承所有 Connector / Plugin / Skill",
+        "可暂停 / 修改 / 手动触发 / 看历史"
+      ],
+      "cons": [
+        "🚨 电脑必须 awake + Cowork App 必须开着才跑（睡眠就跳过，电脑醒了自动补一次）",
+        "不是云端 daemon — 跟 GitHub Actions / cron server 不一样"
+      ],
+      "cost_notes_zh": "走 Pro / Max 付费档度。校招 Skill 每天一次约 A$0.5 等值。",
+      "used_in_modules": ["L06"],
+      "demo_mode": "live-full"
+    }
+  ],
+  "modules": [
+    {
+      "code": "L01",
+      "title_zh": "开场 + 今天的 2 个 Case 预演",
+      "title_en": "Opening + Demo of Today's 2 Cases",
+      "emoji": "🎬",
+      "color": "#10162f",
+      "start_sydney": "14:00",
+      "end_sydney": "14:15",
+      "duration_minutes": 15,
+      "type": "demo-preview",
+      "summary_zh": "不讲理论。开场就放老师电脑屏幕 — Cowork 现场跑两个 case 的完成态：① 给 Cowork 一句话『出一份 AI 协作工作坊 PPT』5 分钟看到 PowerPoint 自动开 + 自动填写 + 文件存桌面 ② 调出昨晚 8:00 自动跑的 daily-jobs Skill 产物 — 桌面 jobs/ 文件夹里今早的校招 JSON。让你先看到终点，然后我们一起从零走到那里。",
+      "content_sections": [
+        "30 秒自我介绍 + 课程节奏说明",
+        "演示 Case 1 完成态：现场让 Cowork 出 PPT — 学员看 Cowork 自动开 PowerPoint，5 分钟跑完",
+        "演示 Case 2 完成态：打开桌面 jobs/2026-04-28.json，给大家看昨晚 8:00 daily-jobs Skill 自动抓的 30 个校招岗位",
+        "把 180 分钟拆给学员看：80 分钟装环境（Cowork app + Connectors + Plugin + Dispatch）+ 100 分钟跑 2 个 case",
+        "课堂规则：跟不上举手，Tutor 1:5 立刻接手"
+      ],
+      "learning_outcomes": [
+        "看到 2 个 case 的完成态 — 知道 3 小时后自己能做到什么",
+        "对节奏有底"
+      ],
+      "tools_used": ["claude-cowork"],
+      "demo_mode": "demo",
+      "teacher_notes_zh": "开场 5 分钟必须让全场『哇』一下。Case 1 PPT 演示要快（5 分钟内出文件），Case 2 直接调出已有 JSON 不要现场跑（耗时太长）。Cowork 自动开 PowerPoint 那一刻全场体感打开 — 这是非技术学员第一次看到 AI 真的『动鼠标』，比讲 100 句『AI 替你干活』有效。"
+    },
+    {
+      "code": "L02",
+      "title_zh": "装 Claude Desktop + 切到 Cowork tab + 登录付费档",
+      "title_en": "Install Claude Desktop + Switch to Cowork Tab + Sign In to Paid Plan",
+      "emoji": "📦",
+      "color": "#38B6FF",
+      "start_sydney": "14:15",
+      "end_sydney": "14:35",
+      "duration_minutes": 20,
+      "type": "live-install-hands-on",
+      "summary_zh": "全员同步装。Mac 用户去 claude.com/download 下 DMG，Win 用户下 MSIX 安装包（不是老的 .exe）。装完打开 Claude Desktop 登录 → 点左上 tab 切到 Cowork → 跑第一个 task 验证能用。Cowork 必须 Pro / Max / Team / Enterprise 付费档，没账号的现场用 JR 共享测试号过一遍。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "下载 Claude Desktop",
+          "duration_minutes": 5,
+          "tool": "claude-cowork",
+          "content_zh": "去 claude.com/download。Mac 选 .dmg，Win 选 MSIX 包（不要装老 .exe — 那个版本没 Cowork）。装好图标进 Applications / 开始菜单。"
+        },
+        {
+          "step": 2,
+          "title_zh": "登录 + 确认付费档",
+          "duration_minutes": 5,
+          "tool": "claude-cowork",
+          "content_zh": "首次启动浏览器 OAuth 登录 Anthropic 账号。Settings → Subscription 确认是 Pro / Max / Team / Enterprise — 免费档没 Cowork tab。没付费档的 Tutor 发 JR 共享测试账号让今天先体验。"
+        },
+        {
+          "step": 3,
+          "title_zh": "切到 Cowork tab",
+          "duration_minutes": 3,
+          "tool": "claude-cowork",
+          "content_zh": "Claude Desktop 界面顶部有三个 tab：Chat / Cowork / Code。点 Cowork。第一次进 Cowork 会弹引导，跟着走完。"
+        },
+        {
+          "step": 4,
+          "title_zh": "第一个 Cowork task — 验证能用",
+          "duration_minutes": 7,
+          "tool": "claude-cowork",
+          "content_zh": "在 Cowork 输入框输：『在我桌面建一个文件夹叫 claude-workshop，里面建一个空 Excel 叫 hello.xlsx』。Cowork 会先给你看 plan（要做什么 / 用什么 App），点 Approve 让它跑。跑完桌面看一眼文件夹和 Excel 都在 = 装机成功。"
+        }
+      ],
+      "learning_outcomes": [
+        "Claude Desktop 装好，Cowork tab 能进",
+        "看到 Cowork 真的在你电脑上动文件夹和 Excel",
+        "桌面有 `claude-workshop` 文件夹给后面 case 用"
+      ],
+      "tools_used": ["claude-cowork"],
+      "demo_mode": "live-full",
+      "interaction": "全员同步装 · Tutor 1:5 巡场",
+      "teacher_notes_zh": "最容易卡 3 个点：① Win 用户下错版本（老 .exe 没 Cowork tab）— 强调 MSIX ② OAuth 浏览器跳转被广告拦截器拦 ③ 免费档没 Cowork tab，学员一脸懵 — 提前发共享测试账号清单。L02 通不过后面全废，Tutor 死守。"
+    },
+    {
+      "code": "L03",
+      "title_zh": "配 4 个 Connectors（MCP）",
+      "title_en": "Configure 4 MCP Connectors",
+      "emoji": "🔌",
+      "color": "#CB6CE6",
+      "start_sydney": "14:35",
+      "end_sydney": "14:55",
+      "duration_minutes": 20,
+      "type": "live-config-hands-on",
+      "summary_zh": "Cowork 装好之后还是『盲』的 — 默认只能动你电脑文件。配 Connector 之后它能：抓网页、读你 Gmail、写 Google Drive。本节配 4 个最常用的，每个 ~5 分钟，跟着老师同步配。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "Filesystem Connector（默认有，确认就行）",
+          "duration_minutes": 3,
+          "tool": "connectors",
+          "content_zh": "Cowork 默认能动你『当前 working folder』内的文件。Settings → Connectors 看 Filesystem 是绿色 = 已启用。让 Cowork 跑『读 ~/Desktop/claude-workshop/hello.xlsx 写第一行 Hello』验证。"
+        },
+        {
+          "step": 2,
+          "title_zh": "Web Connector（抓网页用）",
+          "duration_minutes": 4,
+          "tool": "connectors",
+          "content_zh": "Settings → Connectors → 启用 Web。让 Cowork 跑『抓 https://news.ycombinator.com 首页前 5 条标题写到 hn.md』验证。Case 2 校招爬虫的核心就靠这个。"
+        },
+        {
+          "step": 3,
+          "title_zh": "Gmail Connector",
+          "duration_minutes": 6,
+          "tool": "connectors",
+          "content_zh": "Settings → Connectors → Gmail → Connect。OAuth 弹浏览器授权（用你常用 Gmail，不是 G Workspace 工作邮箱 — 工作号有时被组织策略拦）。授权后 Cowork 能读你 Gmail。让它跑『查我今天收到的最新 5 封邮件，写 inbox-today.md』验证。"
+        },
+        {
+          "step": 4,
+          "title_zh": "Google Drive Connector",
+          "duration_minutes": 7,
+          "tool": "connectors",
+          "content_zh": "同流程：Settings → Connectors → Google Drive → Connect。授权后能读写你 Drive 里的文件。Case 1 PPT 做完可选直接存 Drive 而不是本地（团队共享场景）。验证：『列我 Drive 根目录前 10 个文件』。"
+        }
+      ],
+      "learning_outcomes": [
+        "Settings 里配好 4 个 Connector，Cowork 能直接调",
+        "知道 Connector 是什么 + 怎么加新的",
+        "理解 Cowork 干每件事前会让你 Approve"
+      ],
+      "tools_used": ["claude-cowork", "connectors"],
+      "demo_mode": "live-full",
+      "interaction": "全员同步配 · Tutor 1:5 巡场",
+      "teacher_notes_zh": "Gmail OAuth 最容易卡：① G Workspace 工作邮箱被组织策略拦 — 让用个人 Gmail ② 浏览器跳转被拦截器拦 — 关插件 ③ 部分国家区域 Gmail OAuth 限制 — 走个人代理。Tutor 提前打开自己 Gmail OAuth 截图教学。"
+    },
+    {
+      "code": "L04",
+      "title_zh": "装第一个 Plugin + 手机 Dispatch 配对",
+      "title_en": "Install First Plugin + Phone Dispatch Pairing",
+      "emoji": "🧩",
+      "color": "#FF914D",
+      "start_sydney": "14:55",
+      "end_sydney": "15:10",
+      "duration_minutes": 15,
+      "type": "live-demo-hands-on",
+      "summary_zh": "L02 装好 / L03 配好 Connector — 这一节装第一个 Plugin（一组打包好的能力）+ 配对手机 Dispatch（路上派任务）。这两个是 Cowork 跟 Chat / Code 最大的差异点。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "Cowork 输入框敲 `/` 看 Plugin marketplace",
+          "duration_minutes": 5,
+          "tool": "plugins",
+          "content_zh": "Cowork 任务输入框敲 `/` 弹出菜单 — 包含已装 Skills 和 Plugin marketplace 入口。点 Plugin marketplace 浏览。讲清楚 Plugin = 一组 Skills + Connectors + sub-agents 打包，按角色 / 行业拆分（财务 / 工程 / HR / 销售）。"
+        },
+        {
+          "step": 2,
+          "title_zh": "装一个示例 Plugin",
+          "duration_minutes": 5,
+          "tool": "plugins",
+          "content_zh": "选一个轻量 Plugin（比如官方 starter 或社区 productivity 类）。Install → Approve 权限 → 装好后 `/` 菜单里能看到 Plugin 提供的命令和 Skill。讲清楚 Plugin 可随时启用 / 禁用 / 卸载，不污染主环境。"
+        },
+        {
+          "step": 3,
+          "title_zh": "手机 Dispatch 配对",
+          "duration_minutes": 5,
+          "tool": "dispatch",
+          "content_zh": "Cowork 左下角 → Dispatch → Show QR。手机装 Claude App（iOS / Android），扫 QR 完成配对（一次配对长期有效）。配对成功后手机派任务：在手机 Claude 里输『把我桌面 hn.md 整理成 Notion 页面』— Cowork 桌面端自动接住跑。学员看老师手机端发 → 桌面端跑 = 远程办公场景体感拉满。"
+        }
+      ],
+      "learning_outcomes": [
+        "知道 `/` 怎么用 — Cowork 的核心入口",
+        "电脑里装好第一个 Plugin",
+        "手机 Claude App 跟桌面 Cowork 配对成功，能远程派任务"
+      ],
+      "tools_used": ["claude-cowork", "plugins", "dispatch"],
+      "demo_mode": "live-full",
+      "interaction": "全员同步跑 · Tutor 巡场",
+      "teacher_notes_zh": "Dispatch QR 配对要让全场都看到老师手机屏 — 投屏 / 实物展台都行。学员第一次看到『手机派活儿桌面跑』会立刻想到上下班路上的应用场景，体感最强。Plugin 选哪个不重要，重点是让学员体验 `/` → marketplace → install → approve 这个完整循环。"
+    },
+    {
+      "code": "L04_break",
+      "title_zh": "☕ 休息 + 充电",
+      "title_en": "Break",
+      "emoji": "☕",
+      "color": "#FFDE59",
+      "start_sydney": "15:10",
+      "end_sydney": "15:20",
+      "duration_minutes": 10,
+      "type": "break",
+      "summary_zh": "10 分钟。Tutor 抓这段时间帮还没装上 / 没配上的学员补漏 — 后面 90 分钟全是实战，地基不稳跟不上。",
+      "content_sections": [],
+      "learning_outcomes": [],
+      "tools_used": [],
+      "demo_mode": "break",
+      "teacher_notes_zh": "救人窗口。Tutor 列出『谁 L02 Cowork tab 没出 / 谁 L03 Gmail OAuth 没过 / 谁 L04 Dispatch QR 没扫上』，按优先级救。L05 全员从同一起点出发。"
+    },
+    {
+      "code": "L05",
+      "title_zh": "Case 1 — 手把手用 Cowork 出 PPT",
+      "title_en": "Case 1 — Hands-on PPT with Cowork",
+      "emoji": "📊",
+      "color": "#10b981",
+      "start_sydney": "15:20",
+      "end_sydney": "16:05",
+      "duration_minutes": 45,
+      "type": "live-demo-hands-on",
+      "summary_zh": "你输入 PPT 主题（OKR 汇报 / 客户提案 / 培训课件随你），Cowork 调 Computer Use 自动开 PowerPoint / Keynote、自动填每页内容、最后存到桌面。45 分钟从 0 到一份能用的 PPT。最后把流程存成 Skill，下次说一句就跑。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "想清楚 PPT 主题 + 受众 + 篇幅",
+          "duration_minutes": 5,
+          "tool": "claude-cowork",
+          "content_zh": "Cowork 第一原则：开口前先想清楚。挑一个『今天 / 这周本来就要做』的主题。提示词要包含 4 件事：① 主题 ② 给谁看 ③ 多少页 ④ 时长。例：『给客户讲我们 SaaS 产品 demo，10 页，10 分钟讲完』。"
+        },
+        {
+          "step": 2,
+          "title_zh": "让 Cowork 先出大纲（不直接出 PPT）",
+          "duration_minutes": 10,
+          "tool": "claude-cowork",
+          "content_zh": "重要：先大纲后成品。让 Cowork 出 10 页大纲（每页一句标题 + 一句要点）。大纲符不符合自己思路 — 不符合改提示词重出。这一步省掉后面『PPT 写完发现整体方向错』的痛苦。"
+        },
+        {
+          "step": 3,
+          "title_zh": "Cowork 调 PowerPoint 自动出 PPT",
+          "duration_minutes": 20,
+          "tool": "claude-cowork",
+          "content_zh": "让 Cowork 按大纲出 .pptx 到桌面 claude-workshop/ 文件夹。Cowork 会用 Computer Use 自动开 PowerPoint / 创建文件 / 一页一页填 — 学员能看到自己电脑上 PowerPoint 真的在动。每步会让你 Approve。跑完打开看：第一版肯定有要改的（字太多 / 标题啰嗦 / 顺序不对），让 Cowork 改：『把第 3 页拆成两页』『所有标题简化到 5 字内』 — 改完它直接动 PowerPoint 改。"
+        },
+        {
+          "step": 4,
+          "title_zh": "存成 Skill 给以后复用",
+          "duration_minutes": 10,
+          "tool": "skills",
+          "content_zh": "让 Cowork：『把刚才出 PPT 的整个流程存成一个 Skill 叫 ppt-from-topic，下次我 / 触发它就跑这套』。Skill 写好后 Cowork 输入框敲 `/ppt-from-topic <主题>` 一句就跑 — 这是 Case 2 schedule 自动化的预演。"
+        }
+      ],
+      "learning_outcomes": [
+        "拿到一份基于自己真实主题的 PPT，能直接用",
+        "学会『先大纲后成品』的 Cowork 流程",
+        "电脑里有 ppt-from-topic Skill，回家说一句就出 PPT"
+      ],
+      "tools_used": ["claude-cowork", "skills"],
+      "demo_mode": "live-full",
+      "interaction": "全员同步跑 · Tutor 1:5 巡场",
+      "teacher_notes_zh": "翻车点：① 学员一上来要 Cowork 直接出 PPT 跳过大纲 — 必须按住先大纲 ② Computer Use 开 PowerPoint 时学员会本能去抢鼠标 — 强调『让 Cowork 自己跑，不要碰鼠标』 ③ 出来的 PPT 视觉一般 — 这节课讲『内容优先』，想要好看让学员回家用 Beautiful.ai / Gamma 加工。L05 本质教『把 Cowork 当 PPT 助理跑一次完整流程』。"
+    },
+    {
+      "code": "L06",
+      "title_zh": "Case 2 — Skill + /schedule 每日自动爬校招",
+      "title_en": "Case 2 — Skill + /schedule Daily Job Scraper",
+      "emoji": "⏰",
+      "color": "#ec4899",
+      "start_sydney": "16:05",
+      "end_sydney": "16:50",
+      "duration_minutes": 45,
+      "type": "live-demo-hands-on",
+      "summary_zh": "把 L05 学到的『写 Skill』升级一档 — 写一个 daily-jobs Skill 抓校招岗位（SEEK Graduate / Indeed Grad / GradAustralia 几个站），用 /schedule 配每天早上 8 点自动跑，结果落到 ~/Desktop/jobs/YYYY-MM-DD.json。明早起床数据已经在桌面。这是真正的『AI 替你干活』。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "想清楚要抓什么 / 落到哪",
+          "duration_minutes": 5,
+          "tool": "skills",
+          "content_zh": "决定 4 件事：① 抓哪几个站（建议 SEEK + Indeed + GradAustralia 三个稳定站）② 抓什么字段（公司名 / 职位 / 地点 / 链接 / 截止日期）③ 落到哪（推荐 `~/Desktop/jobs/YYYY-MM-DD.json` — 桌面一眼看到）④ 关键词筛选（『graduate』『intern』『2026 grad』）。"
+        },
+        {
+          "step": 2,
+          "title_zh": "写 daily-jobs Skill",
+          "duration_minutes": 15,
+          "tool": "skills",
+          "content_zh": "在 Cowork 输：『帮我建一个 Skill 叫 daily-jobs，每次触发：① 用 Web Connector 抓 SEEK / Indeed / GradAustralia 的 graduate 岗位 ② 提取 5 个字段写结构化 JSON ③ 去重（按 url 或 公司+职位）④ 落到 ~/Desktop/jobs/YYYY-MM-DD.json。建完跑一次让我看效果』。看产物 → 调 Skill → 再跑。迭代到满意。"
+        },
+        {
+          "step": 3,
+          "title_zh": "/schedule 配每天 8:00 触发",
+          "duration_minutes": 10,
+          "tool": "schedule",
+          "content_zh": "Cowork 输入框输 `/schedule`（也可点左侧 Scheduled tab → New task）。填：① 任务名 daily-jobs ② Prompt 写『跑 daily-jobs Skill』③ 频率选 Daily ④ 时间 08:00 ⑤ Working folder 选桌面 jobs/。Save。在 Scheduled tab 看到任务 = 配置成功。"
+        },
+        {
+          "step": 4,
+          "title_zh": "手动触发一次验证 + 长期注意事项",
+          "duration_minutes": 15,
+          "tool": "schedule",
+          "content_zh": "Scheduled tab 找 daily-jobs → Run now 手动触发一次。Cowork 跑完看 ~/Desktop/jobs/2026-04-28.json — 字段全 / 去重对 = 通过。讲清 3 件长期注意事项：① 🚨 Cowork app 必须开 + 电脑 awake 才跑（睡眠会跳过，醒了自动补一次） ② 反爬可能让某天数据为空，Skill 里要有 fallback ③ 配额成本要看（每天约 A$0.5，月成本 ~A$15）。最后扩展：让 Skill 把当天最匹配的 3 条岗位用 Gmail Connector 发到你邮箱。"
+        }
+      ],
+      "learning_outcomes": [
+        "电脑里有写好的 daily-jobs Skill",
+        "/schedule 配好每天 8:00 自动跑",
+        "明早起床 ~/Desktop/jobs/2026-04-29.json 已经躺在那里",
+        "理解 Cowork『Skill + Schedule』组合 = 真正的自动化"
+      ],
+      "tools_used": ["claude-cowork", "skills", "schedule", "connectors"],
+      "demo_mode": "live-full",
+      "interaction": "全员同步跑 · Tutor 1:5 巡场",
+      "teacher_notes_zh": "整节课的高潮。要让学员真正『我家 AI 给我干活』的体感落下来。技术坑：① SEEK / Indeed 反爬偶尔挂，提前准备 mock 页面备份 ② 时区要确认 Schedule cadence 用本地时间（Cowork 默认用电脑系统时区）③ 老师课前一晚已配好自己的 daily-jobs，第二天直接打开真实 JSON 给学员看『我桌面今早 8:01 这个文件就在这里』 — 信任感拉满。最后强调：电脑必须开机 + Cowork app 开着，否则睡过头 — 不像 cron server。"
+    },
+    {
+      "code": "L07",
+      "title_zh": "Q&A + 收官 + 课后行动",
+      "title_en": "Q&A + Wrap-up",
+      "emoji": "💬",
+      "color": "#6366f1",
+      "start_sydney": "16:50",
+      "end_sydney": "17:00",
+      "duration_minutes": 10,
+      "type": "qa-wrap",
+      "summary_zh": "10 分钟集中答疑 + 课后 3 件事：今晚改一版 ppt-from-topic Skill / 这周让 daily-jobs 跑满 7 天 / 一个月内写第 3 个 Skill（按你岗位需求选）。",
+      "content_sections": [
+        "💬 答疑 5 分钟 — 优先答全场关心的（Pro 还是 Max？Cowork vs Code 怎么选？数据安全？Plugin 商业化能不能用？）",
+        "🚀 三档行动：今晚 / 这周 / 一个月",
+        "📚 进阶资源：Cowork 官方 docs / Plugin marketplace / Schedule 文档 / Dispatch 文档",
+        "📝 反馈表 + 散场"
+      ],
+      "learning_outcomes": [
+        "积压问题答完",
+        "拿到一份『今晚 / 这周 / 一个月』行动清单",
+        "知道进阶在哪里继续学"
+      ],
+      "tools_used": [],
+      "demo_mode": "qa",
+      "teacher_notes_zh": "答疑控制 5 分钟，剩下 5 分钟讲行动。最重要一句：『今晚回家让 daily-jobs 跑一晚，明早起床看数据 — 那一刻你才真的相信 AI 替你干活』。"
+    }
+  ],
+  "faq": [
+    {
+      "id": "q1",
+      "question_zh": "我没用过 Claude Cowork，只用过 ChatGPT，能跟得上吗？",
+      "answer_zh": "能。Cowork 跟 ChatGPT 操作上 80% 像 — 都是输入框打字。差别在 Cowork 不只是回答你，它会真的开你电脑上的 App、动你的文件、按计划自动跑。本节课就是手把手带你装、配、跑，每一步老师等所有人完成才往下走。完全没碰过 AI 工具的同学，建议课前先开 ChatGPT 或 Claude.ai 跟 AI 对一句话找下手感。",
+      "topic": "prerequisite"
+    },
+    {
+      "id": "q2",
+      "question_zh": "Cowork 必须付费吗？哪个档？",
+      "answer_zh": "必须。Cowork 只在 Claude Pro / Max / Team / Enterprise 付费档有 — 免费档没 Cowork tab。最便宜路径：Pro A$30/月，本节课 + 回家继续用都够。课上没付费档的现场用 JR 共享测试账号过一遍流程，但回家继续用必须自己订 — 这工具是真的会替你干活的，A$30/月不算贵。",
+      "topic": "cost"
+    },
+    {
+      "id": "q3",
+      "question_zh": "Mac / Win / Linux 都能上吗？",
+      "answer_zh": "Mac + Win 都行（GA April 2026）。Linux 暂时没 Cowork 桌面 App。Win 用户务必下 MSIX 安装包，老的 .exe 版本没 Cowork tab — 这是踩坑率最高的点。本节课 L02 装机环节会强调。",
+      "topic": "platform"
+    },
+    {
+      "id": "q4",
+      "question_zh": "课前要准备什么？",
+      "answer_zh": "5 件事：① 自带笔记本（Mac 11+ 或 Win 10+）② 注册 Anthropic 账号 + Claude Pro 订阅（A$30/月，没订也能来用 JR 共享号过流程）③ 桌面建空文件夹 ~/Desktop/claude-workshop ④ 准备一个 Gmail 个人账号（L03 配 Connector 用，工作 G Workspace 邮箱有时被组织策略拦）⑤ 想清楚 Case 1 的 PPT 主题（客户提案 / OKR / 培训课件随你）。详见上方课前清单。",
+      "topic": "preparation"
+    },
+    {
+      "id": "q5",
+      "question_zh": "Cowork vs Chat vs Code 怎么选？",
+      "answer_zh": "三个 tab 在同一个 Claude Desktop 里。Chat 适合『跟 AI 聊天 / 问问题 / 写文字』。Code 适合工程师改代码 / 跑命令行项目。Cowork 适合『让 AI 替你干电脑上的事』— 开 Excel / 改 PPT / 抓网页 / 定时跑 / 手机派活儿。本节课 2 个 case 必须 Cowork（Chat 做不了 Computer Use，Code 对非技术不友好）。回家三个一起用最爽。",
+      "topic": "tools"
+    },
+    {
+      "id": "q6",
+      "question_zh": "/schedule 配的 daily-jobs 任务，电脑关机会怎样？",
+      "answer_zh": "🚨 跑不动。Cowork Scheduled Task 不是云端 daemon — 必须电脑 awake + Cowork app 开着才跑。睡眠期间触发的会跳过，电脑醒了 + Cowork 重新打开会自动补跑一次（你会收通知）。3 个解决方案：① 笔记本就让它常开（睡眠不影响 — Mac sleep + display off 算 awake，看 Settings → Energy）② 装家里 / 公司常开的台式机 ③ 不需要每天必跑的就接受『偶尔跳一天』。本节课 daily-jobs 预设场景是『笔记本常开 + 早上 8 点跑』，最简单可行。",
+      "topic": "schedule"
+    },
+    {
+      "id": "q7",
+      "question_zh": "Cowork 会不会偷偷动我电脑？数据安全吗？",
+      "answer_zh": "Cowork 干每件事前都会让你 Approve（除非你在 Settings 关了确认 — 不建议关）。文件读写默认只在 working folder 内 — 跨文件夹要单独授权。Connector 读 Gmail / Drive 走 OAuth，权限细到具体作用域。Anthropic 默认对 API 用户 zero data retention（消息发完即删）。但敏感数据（客户身份证 / 银行账户 / 未公开合同金额）上传前还是用 [客户A] [金额X] 打码 — 这是好习惯不是 Cowork 的锅。",
+      "topic": "security"
+    },
+    {
+      "id": "q8",
+      "question_zh": "课后有支持吗？录播？答疑群？",
+      "answer_zh": "3 件兜底：① 课程录播开课后发学员 ② 老师 L05 / L06 用的所有 Skill 模板 + Schedule 配置打包发学员（拿回家直接套自己场景） ③ JR Academy 平台 27+ 个 Prompt Lab 互动练习配套巩固。不开长期答疑群（避免变无效信息池）。想要长期社群和系统学习，看 JR Academy 的 OpenClaw Workshop（4 小时进阶）或 AI Adoption Bootcamp（8 周）。",
+      "topic": "support"
+    }
+  ],
+  "prep": [
+    {
+      "step": 1,
+      "title_zh": "自带笔记本电脑",
+      "requirement": "required",
+      "duration_minutes": 0,
+      "detail_zh": "Mac (macOS 11+) 或 Win 10+。Linux 暂时没 Cowork 桌面 App。手机 / iPad 不行（手机只能做 L04 Dispatch 派任务用，主战场是桌面）。"
+    },
+    {
+      "step": 2,
+      "title_zh": "下载 Claude Desktop（Cowork 在里面）",
+      "requirement": "required",
+      "duration_minutes": 5,
+      "detail_zh": "去 claude.com/download。Mac 选 .dmg；Win 选 MSIX 安装包，**不要下老的 .exe 版本** — 老版没有 Cowork tab。装好打开 Claude Desktop 顶部能看到 Chat / Cowork / Code 三个 tab = 装对了。",
+      "url": "https://claude.com/download"
+    },
+    {
+      "step": 3,
+      "title_zh": "订阅 Claude Pro（或确认有付费档）",
+      "requirement": "required",
+      "duration_minutes": 5,
+      "detail_zh": "去 claude.com/upgrade 订 Pro A$30/月。Cowork 只在 Pro / Max / Team / Enterprise 有，免费档没有 Cowork tab。课上没订的会发 JR 共享测试账号体验 3 小时，但回家继续用必须自己订。",
+      "url": "https://claude.com/upgrade"
+    },
+    {
+      "step": 4,
+      "title_zh": "桌面建空文件夹 ~/Desktop/claude-workshop",
+      "requirement": "required",
+      "duration_minutes": 1,
+      "detail_zh": "课上 L02 第一次跑 Cowork 会用这个文件夹，所有 case 文件落在里面。直接用 Finder / Explorer 在桌面新建即可。"
+    },
+    {
+      "step": 5,
+      "title_zh": "准备一个 Gmail 个人账号 + 想清楚 Case 1 的 PPT 主题",
+      "requirement": "recommended",
+      "duration_minutes": 5,
+      "detail_zh": "L03 配 Connector 用 Gmail，**用个人 Gmail，不是工作 G Workspace 邮箱**（工作号偶尔被组织策略拦 OAuth）。L05 PPT 实战要用真实主题，挑一个『今天 / 这周本来就要做』的（客户提案 / OKR / 培训课件 / 投资人沟通）。没主题就只能跟着老师做模板示例，少一半价值。"
+    }
+  ]
+}

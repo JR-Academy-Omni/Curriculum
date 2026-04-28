@@ -135,6 +135,12 @@ jobs:
             cp -r ai-comic-workshop/public/* _site/ai-comic-workshop/
           fi
 
+          # claude-cowork-workshop: static HTML only (3-hour hands-on workshop, Claude Cowork)
+          if [ -d claude-cowork-workshop/public ]; then
+            mkdir -p _site/claude-cowork-workshop
+            cp -r claude-cowork-workshop/public/* _site/claude-cowork-workshop/
+          fi
+
           # openclaw-bootcamp: static HTML only (4-week deep version of openclaw-workshop)
           if [ -d openclaw-bootcamp/public ]; then
             mkdir -p _site/openclaw-bootcamp
