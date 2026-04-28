@@ -95,6 +95,17 @@
   .brand-light img{filter:brightness(0) invert(1);opacity:0.85}
   .brand-light .divider{background:var(--light)}
 
+  /* Featuring lockup — Claude + Anthropic on every slide (top-right) */
+  .featuring{position:absolute;top:32px;right:64px;display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mid);letter-spacing:0.2em;text-transform:uppercase;opacity:0.85;z-index:5}
+  .featuring .label{font-weight:500;opacity:0.65;margin-right:2px}
+  .featuring .claude-mark{height:22px;width:22px;display:block}
+  .featuring .anthropic-wm{height:13px;width:auto;display:block}
+  .featuring .divider-v{width:1px;height:14px;background:var(--mid);opacity:0.35}
+  .featuring-light .label{color:var(--light);opacity:0.7}
+  .featuring-light .claude-mark{}  /* Already orange, keeps color */
+  .featuring-light .anthropic-wm{filter:brightness(0) invert(1);opacity:0.85}
+  .featuring-light .divider-v{background:var(--light);opacity:0.4}
+
   /* Pills (replace JR's pixel chips) */
   .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:var(--light-gray);color:var(--dark);border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;letter-spacing:0.05em}
   .pill.terra{background:var(--terracotta);color:var(--light)}
@@ -117,7 +128,11 @@
   .s-cover .corner-tl{position:absolute;top:56px;left:112px;display:flex;align-items:center;gap:18px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.25em;color:var(--mid);text-transform:uppercase}
   .s-cover .corner-tl img{height:56px;width:auto;display:block}
   .s-cover .corner-tl .divider{width:1px;height:28px;background:var(--mid);opacity:0.4}
-  .s-cover .corner-tr{position:absolute;top:64px;right:112px;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.2em;color:var(--mid);text-transform:uppercase}
+  .s-cover .corner-tr{position:absolute;top:56px;right:112px;display:flex;align-items:center;gap:18px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.25em;color:var(--mid);text-transform:uppercase}
+  .s-cover .corner-tr .label{font-weight:500;opacity:0.65}
+  .s-cover .corner-tr .claude-mark{height:48px;width:48px;display:block}
+  .s-cover .corner-tr .anthropic-wm{height:24px;width:auto;display:block}
+  .s-cover .corner-tr .divider{width:1px;height:36px;background:var(--mid);opacity:0.4}
 
   /* ──────────── S02 Promise — 6 grid ──────────── */
   .promise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px}
@@ -299,8 +314,13 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S01 Cover -->
     <section class="slide center s-cover active">
-      <div class="corner-tl"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Workshop</span></div>
-      <div class="corner-tr">Sydney · 14:00 — 17:00</div>
+      <div class="corner-tl"><img src="./jr-logo.png" alt="JR Academy 匠人学院"><span class="divider"></span><span>Workshop · Sydney · 14:00</span></div>
+      <div class="corner-tr">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="stagger" style="display:flex;flex-direction:column;align-items:flex-start">
         <div class="eyebrow">2026 · 04 · 28</div>
         <h1>Claude<br>Cowork<span class="accent">.</span></h1>
@@ -317,6 +337,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S02 Promise -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>02 · The Promise · 你今晚回家时</span><span class="badge">PROMISE</span></div>
       <h2 class="slide-title">3 小时不讲『AI 是什么』<br>你带走 <em>6 件真东西</em></h2>
       <div class="promise-grid stagger">
@@ -334,6 +360,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S03 What is Cowork -->
     <section class="slide center">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar" style="position:absolute;top:96px;left:112px;right:112px;margin:0"><span>03 · What is Cowork</span><span class="badge">CONTEXT</span></div>
       <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
         <h2 class="s03-title">Anthropic 2026 GA 桌面 App<br>Claude Desktop 里第 <em>3 个 tab</em></h2>
@@ -351,6 +383,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S04 Cowork vs OpenClaw -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>04 · Cowork vs OpenClaw</span><span class="badge">VS</span></div>
       <h2 class="slide-title" style="font-size:64px">两个都能让 AI 替你干活 · <em>怎么选?</em></h2>
       <div class="vs-mini stagger">
@@ -390,6 +428,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S05 Today's 2 Cases -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>05 · Today's Two Cases</span><span class="badge">DEMO</span></div>
       <h2 class="slide-title" style="font-size:64px">先给你看终点 · <em>然后一起从零走过去</em></h2>
       <div class="cases-grid stagger">
@@ -413,6 +457,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S06 Timeline -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>06 · 180 minutes · 7 modules</span><span class="badge">AGENDA</span></div>
       <h2 class="slide-title" style="font-size:60px">前 80 分钟<em>装环境</em> · 后 90 分钟<em>跑 Case</em></h2>
       <div class="tl-grid stagger">
@@ -433,6 +483,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S07 L02 Install -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>07 · L02 · 装 Claude Desktop · 20 min</span><span class="badge" style="background:var(--blue)">L02</span></div>
       <h2 class="slide-title" style="font-size:60px">📦 4 步 · <em>全员同步装</em></h2>
       <div class="steps stagger">
@@ -449,6 +505,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S08 L03 Connectors -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>08 · L03 · 配 4 个 Connectors · 20 min</span><span class="badge" style="background:var(--terracotta)">L03</span></div>
       <h2 class="slide-title" style="font-size:56px">🔌 装好之后 Cowork 还是『盲』的<br>配 Connector 它才能<em>动外部世界</em></h2>
       <div class="conn-grid stagger">
@@ -465,6 +527,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S09 L04 Plugin + Dispatch -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>09 · L04 · Plugin + Dispatch · 15 min</span><span class="badge" style="background:var(--sage)">L04</span></div>
       <h2 class="slide-title" style="font-size:60px">🧩 装第一个 Plugin · <em>配对手机 Dispatch</em></h2>
       <div class="steps col3 stagger">
@@ -480,6 +548,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S10 Plugin Marketplace — what you can install -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>10 · 你能装哪些 Plugin · Anthropic Knowledge-Work Marketplace</span><span class="badge">PLUGINS</span></div>
       <h2 class="slide-title" style="font-size:54px">官方有 14 个<em>按岗位打包</em>的 Plugin<br>挑你那行直接装 · 不用自己拼</h2>
       <div class="plug-grid stagger">
@@ -503,6 +577,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S11 BREAK -->
     <section class="slide center s-break">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
         <div class="big-em">☕</div>
         <h1>Break</h1>
@@ -514,6 +594,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S11 L05 Case 1 PPT -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>11 · L05 · Case 1 · PPT · 45 min</span><span class="badge" style="background:var(--terracotta)">CASE 1</span></div>
       <h2 class="slide-title" style="font-size:54px">📊 输入主题 → Cowork 自动开 PowerPoint<br><em>→ 出可用 PPT</em></h2>
       <div class="steps stagger">
@@ -530,6 +616,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S12 L06 Case 2 -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>12 · L06 · Case 2 · daily-jobs Skill + /schedule · 45 min</span><span class="badge" style="background:var(--sage)">CASE 2</span></div>
       <h2 class="slide-title" style="font-size:54px">⏰ 写 Skill + 配 /schedule<br><em>= 真正『AI 替你干活』</em></h2>
       <div class="steps stagger">
@@ -546,6 +638,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S13 ⚠ Constraint -->
     <section class="slide center s-warn">
+      <div class="featuring featuring-light">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
         <div class="em">🚨</div>
         <h1>电脑必须 <span class="accent">awake</span><br>+ Cowork 必须开</h1>
@@ -562,6 +660,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S14 Action plan -->
     <section class="slide">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="topbar"><span>14 · 课后 3 档行动</span><span class="badge">ACTION</span></div>
       <h2 class="slide-title" style="font-size:60px">🚀 走出教室不是终点 · <em>是起点</em></h2>
       <div class="actions stagger">
@@ -577,6 +681,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S15 Q&A -->
     <section class="slide center s-qa">
+      <div class="featuring featuring-light">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
         <h1>Q&amp;A</h1>
         <div class="sub">Your Turn · 5 min</div>
@@ -587,6 +697,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S16 Feedback -->
     <section class="slide center s-fb">
+      <div class="featuring featuring-light">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
         <div class="em">📝</div>
         <h1>2 分钟反馈</h1>
@@ -598,6 +714,12 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- S17 Thanks -->
     <section class="slide center s-thanks">
+      <div class="featuring">
+        <span class="label">Featuring</span>
+        <img src="./claude-logo.svg" alt="Claude" class="claude-mark">
+        <span class="divider-v"></span>
+        <img src="./anthropic-wordmark.svg" alt="Anthropic" class="anthropic-wm">
+      </div>
       <div class="stagger" style="display:flex;flex-direction:column;align-items:center">
         <h1>谢谢 🙌</h1>
         <div class="sub">Claude Cowork 工作坊 · 2026-04-28<br><em>JR Academy · 全球华人学习 AI 第一站</em></div>
