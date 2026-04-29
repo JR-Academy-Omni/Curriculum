@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Claude Cowork × 一人公司办公自动化 — 4 小时实战工作坊（Brisbane 5/23）</title>
+  <meta name="description" content="5 月 23 日 周六 1-5pm · 布里斯班 CBD · A$129（5/9 前 A$99 早鸟）· 8-12 人小班。4 小时手把手让 Claude Cowork 接管你的报价单、客户邮件、营销内容、业务周报。走时带走 5 个能复用的 Skill + 1 个每周自动跑的 Schedule。面向小老板和自由职业者，零编程基础。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    /* ===== Hero ===== */
+    .header{background:linear-gradient(135deg,#10162f 0%,#10b981 60%,#FF914D 100%);padding:60px 24px 56px;position:relative;overflow:hidden}
+    .header::before{content:"";position:absolute;top:-50px;right:-50px;width:240px;height:240px;background:radial-gradient(circle,#FFDE59 0%,transparent 70%);opacity:0.3}
+    .header h1{font-size:clamp(28px,5vw,46px);line-height:1.15;max-width:1000px;margin:0 auto;color:#fff;position:relative;z-index:1}
+    .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:840px;margin:14px auto 0;opacity:0.94;color:#fff;line-height:1.65;position:relative;z-index:1}
+    .chips{display:flex;gap:10px;justify-content:center;margin-top:24px;flex-wrap:wrap;position:relative;z-index:1}
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#fff;color:#10162f;border:3px solid #000;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.3px}
+    .chip.yellow{background:#FFDE59}
+    .chip.orange{background:#FF914D;color:#fff}
+    .chip.green{background:#10b981;color:#fff}
+    .chip.pink{background:#ec4899;color:#fff}
+    .cta-row{display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap;position:relative;z-index:1}
+    .cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;text-decoration:none;transition:all 0.15s;cursor:pointer}
+    .cta.primary{background:#FFDE59;color:#10162f;box-shadow:6px 6px 0 #000}
+    .cta.primary:hover{box-shadow:none;transform:translate(4px,4px)}
+    .cta.secondary{background:#fff;color:#10162f;box-shadow:6px 6px 0 #FF914D}
+    .cta.secondary:hover{box-shadow:none;transform:translate(4px,4px)}
+
+    /* ===== Promise ===== */
+    .promise{max-width:1200px;margin:48px auto 0;padding:0 24px}
+    .promise-card{border:3px solid #000;background:#fffbeb;box-shadow:8px 8px 0 #FF914D;padding:28px 32px}
+    .promise-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:#10162f;color:#FFDE59;margin-bottom:14px}
+    .promise-card p{font-size:15.5px;line-height:1.85;color:#1a1a1a}
+    .promise-card p strong{color:#10162f}
+
+    .sec-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .sec-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px;max-width:720px;margin-left:auto;margin-right:auto;padding:0 16px;line-height:1.65}
+
+    /* ===== Take-aways ===== */
+    .takeaway-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+    .takeaway-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:3px solid #000;box-shadow:8px 8px 0 #10b981;background:#fff}
+    .takeaway-card{padding:22px 18px;border-right:3px solid #000;text-align:center}
+    .takeaway-card:last-child{border-right:none}
+    .takeaway-card .ti{font-size:36px;line-height:1;margin-bottom:10px}
+    .takeaway-card .tn{font-family:'Space Mono',monospace;font-size:11px;color:#FF914D;font-weight:700;letter-spacing:1.2px;margin-bottom:6px;text-transform:uppercase}
+    .takeaway-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;color:#10162f;margin-bottom:6px;line-height:1.3}
+    .takeaway-card p{font-size:12.5px;line-height:1.6;color:#555}
+    @media(max-width:900px){.takeaway-grid{grid-template-columns:repeat(2,1fr)}.takeaway-card{border-right:3px solid #000;border-bottom:3px solid #000}.takeaway-card:nth-child(2n){border-right:none}.takeaway-card:nth-last-child(-n+1){border-bottom:none}}
+    @media(max-width:520px){.takeaway-grid{grid-template-columns:1fr}.takeaway-card{border-right:none !important;border-bottom:3px solid #000}.takeaway-card:last-child{border-bottom:none}}
+
+    /* ===== Audience ===== */
+    .au-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+    .au-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:20px 22px;transition:all 0.15s}
+    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .au-emoji{font-size:30px;line-height:1;flex-shrink:0;margin-top:2px}
+    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .au-body p{font-size:13px;line-height:1.65;color:#555}
+    .au-not{margin-top:22px;padding:18px 22px;background:#10162f;color:#fff;font-size:13.5px;line-height:1.7;border:3px solid #000;box-shadow:5px 5px 0 #FFDE59}
+    .au-not strong{color:#FFDE59}
+    @media(max-width:640px){.au-grid{grid-template-columns:1fr}}
+
+    /* ===== Tools ===== */
+    .ts-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+    .ts-head{border:3px solid #000;background:#10162f;color:#fff;padding:18px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .ts-head .mono{font-family:'Space Mono',monospace;font-size:12px;opacity:0.7;font-weight:400}
+    .ts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid #000;border-top:none;background:#fff}
+    .ts-col{padding:22px 22px 24px;border-right:3px solid #000}
+    .ts-col:last-child{border-right:none}
+    .ts-logo{font-size:34px;margin-bottom:10px}
+    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f;margin-bottom:4px}
+    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#FF914D;font-weight:700;margin-bottom:12px}
+    .ts-col p{font-size:13px;line-height:1.7;color:#444;margin-bottom:8px}
+    .ts-col p strong{color:#10162f}
+    .ts-pros,.ts-cons{font-size:11.5px;line-height:1.65;padding:8px 10px;margin-top:8px}
+    .ts-pros{background:#d1fae5;color:#065f46;border-left:4px solid #10b981}
+    .ts-cons{background:#fef3c7;color:#92400e;border-left:4px solid #f59e0b}
+    @media(max-width:900px){.ts-grid{grid-template-columns:repeat(2,1fr)}.ts-col{border-right:3px solid #000;border-bottom:3px solid #000}.ts-col:nth-child(2n){border-right:none}.ts-col:nth-last-child(-n+2){border-bottom:none}}
+    @media(max-width:560px){.ts-grid{grid-template-columns:1fr}.ts-col{border-right:none !important;border-bottom:3px solid #000}.ts-col:last-child{border-bottom:none}}
+
+    /* ===== Timeline ===== */
+    .tl-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+    .tl-wrap .box{margin-bottom:20px;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden}
+    .tl-wrap .box.break{box-shadow:5px 5px 0 #FFDE59}
+    .tl-wrap .box-h{padding:14px 20px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900}
+    .tl-wrap .box-h .slot{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.85}
+    .tl-wrap .box-h .badge{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);font-weight:700}
+    .tl-wrap .lesson-body{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;padding:18px 24px}
+    .tl-wrap .lesson-body h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:6px}
+    .tl-wrap .lesson-body p{font-size:13.5px;line-height:1.75;color:#333}
+    .tl-wrap .lesson-body ul{font-size:13px;line-height:1.75;color:#444;padding-left:18px;margin-top:4px}
+    .tl-wrap .lesson-body li{margin-bottom:4px}
+    .tl-wrap .steps-list{padding:14px 24px 18px;background:#fafafa;border-top:1px solid #e5e7eb}
+    .tl-wrap .steps-list h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#666;margin-bottom:10px}
+    .tl-wrap .step-row{display:grid;grid-template-columns:32px 1fr 80px;gap:12px;padding:8px 0;border-bottom:1px dashed #e5e7eb;align-items:start}
+    .tl-wrap .step-row:last-child{border-bottom:none}
+    .tl-wrap .step-num{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#10162f;background:#FFDE59;border:2px solid #000;width:26px;height:26px;display:flex;align-items:center;justify-content:center}
+    .tl-wrap .step-content{font-size:13px;line-height:1.65;color:#333}
+    .tl-wrap .step-content strong{color:#10162f;font-size:13.5px;display:block;margin-bottom:2px}
+    .tl-wrap .step-time{font-family:'Space Mono',monospace;font-size:11px;color:#FF914D;font-weight:700;text-align:right}
+    @media(max-width:760px){.tl-wrap .lesson-body{grid-template-columns:1fr}.tl-wrap .step-row{grid-template-columns:28px 1fr;gap:8px}.tl-wrap .step-time{display:none}}
+
+    /* ===== Prep ===== */
+    .prep-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+    .prep-list{display:flex;flex-direction:column;gap:0;border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #FF914D}
+    .prep-row{display:grid;grid-template-columns:48px 100px 1fr;gap:0;padding:18px 22px;border-bottom:2px solid #000;align-items:center}
+    .prep-row:last-child{border-bottom:none}
+    .prep-row .num{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:#10162f;background:#FFDE59;border:2px solid #000;width:34px;height:34px;display:flex;align-items:center;justify-content:center}
+    .prep-row .req{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border:2px solid #000;display:inline-block;align-self:start;margin-top:4px}
+    .prep-row .req.required{background:#dc2626;color:#fff}
+    .prep-row .req.recommended{background:#FF914D;color:#fff}
+    .prep-row .req.optional{background:#fafafa;color:#10162f}
+    .prep-row .body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:4px}
+    .prep-row .body p{font-size:13px;line-height:1.65;color:#555}
+    .prep-row .body a{color:#FF914D;font-weight:700;text-decoration:underline}
+    @media(max-width:640px){.prep-row{grid-template-columns:38px 1fr}.prep-row .req{grid-column:1 / span 2;margin-top:8px;justify-self:start}}
+
+    /* ===== FAQ ===== */
+    .faq-wrap{max-width:1000px;margin:64px auto 0;padding:0 24px}
+    .faq-item{border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;margin-bottom:14px;overflow:hidden}
+    .faq-item summary{padding:18px 22px;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:15.5px;font-weight:800;color:#10162f;display:flex;justify-content:space-between;align-items:center;list-style:none;gap:12px}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary::after{content:"+";font-family:'Space Mono',monospace;font-size:24px;color:#FF914D;font-weight:700;flex-shrink:0}
+    .faq-item[open] summary::after{content:"–"}
+    .faq-item p{padding:0 22px 18px;font-size:13.5px;line-height:1.8;color:#444}
+
+    /* ===== CTA Footer ===== */
+    .footer-cta{margin-top:80px;padding:56px 24px 56px;background:linear-gradient(135deg,#10162f 0%,#10b981 100%);color:#fff;text-align:center}
+    .footer-cta h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:900;margin-bottom:14px;line-height:1.2}
+    .footer-cta .sub{font-size:15px;line-height:1.7;max-width:680px;margin:0 auto 26px;opacity:0.92}
+    .footer-cta .price{display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+    .footer-cta .price .now{font-family:'Bricolage Grotesque',sans-serif;font-size:42px;font-weight:900;color:#FFDE59}
+    .footer-cta .price .reg{font-family:'Space Mono',monospace;font-size:14px;color:#fff;opacity:0.7;text-decoration:line-through}
+    .footer-cta .deadline{font-family:'Space Mono',monospace;font-size:12px;background:#FF914D;color:#fff;padding:6px 12px;border:2px solid #000;display:inline-block;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+    .footer-foot{padding:24px;background:#10162f;color:#fff;text-align:center;font-family:'Space Mono',monospace;font-size:12px;opacity:0.7}
+    .footer-foot a{color:#FFDE59}
+  </style>
+</head>
+<body style="font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;margin:0;padding:0;color:#1a1a1a">
+
+  <!-- ============== HEADER ============== -->
+  <header class="header">
+    <h1>Claude Cowork × 一人公司办公自动化<br><span style="color:#FFDE59">4 小时实战工作坊 · Brisbane</span></h1>
+    <p class="sub">把报价单、客户邮件、营销内容、业务周报这些<strong style="color:#FFDE59">不该你做的事</strong>，全交给 AI · 走时电脑里有 5 个能复用的 Skill + 1 个每周自动跑的 Schedule</p>
+    <div class="chips">
+      <span class="chip yellow">📅 5 月 23 日 周六</span>
+      <span class="chip">🕐 1:00pm – 5:00pm</span>
+      <span class="chip orange">📍 Brisbane CBD</span>
+      <span class="chip green">👥 8-12 人小班</span>
+      <span class="chip pink">💰 A$129 · 5/9 前 A$99 早鸟</span>
+    </div>
+    <div class="cta-row">
+      <a class="cta primary" href="#cta">立即报名 →</a>
+      <a class="cta secondary" href="#timeline">看 4 小时怎么走</a>
+    </div>
+  </header>
+
+  <!-- ============== PROMISE ============== -->
+  <section class="promise">
+    <div class="promise-card">
+      <span class="promise-tag">▎ 我们承诺 · 4 小时</span>
+      <p>4 小时不讲『AI 是什么』。开场 50 分钟把 <strong>Claude Cowork</strong> 装上、配好 4 个 Connectors（Filesystem / Web / Gmail / Google Drive）。然后直接做 <strong>4 件你这周本来就要做的事</strong>：① 把客户咨询邮件 → 报价单 PDF（含税号 / 抬头 / 项目明细全自动）② 清理积压客户邮件批量起草回复 ③ 一段产品介绍改写成朋友圈 / 小红书 / 公众号 / LinkedIn 4 个平台版本 ④ 写 Skill + /schedule 让 AI 每周一早 8 点自动出业务周报。<br><br>走时电脑里有：装好的 Cowork + 4 个 Connectors + <strong>5 个能复用的 Skill</strong>（报价 / 邮件 / 一稿多发 / 周报 / 跟进提醒）+ 1 个每周自动跑的业务周报 schedule。下周一早 8:01 你去倒咖啡，桌面 weekly-report 已经躺在那里。</p>
+    </div>
+  </section>
+
+  <!-- ============== 5 个带回家的 Skill ============== -->
+  <section class="takeaway-wrap">
+    <h2 class="sec-title">走时带回家的 5 个 Skill</h2>
+    <p class="sec-sub">每个 Skill 都是『把你今天调通的工序固化』 · 写一次以后 `/` 一秒触发 · 不是讲义、不是录像、是活的能复用的工具</p>
+    <div class="takeaway-grid">
+      <div class="takeaway-card">
+        <div class="ti">🧾</div>
+        <div class="tn">SKILL 1</div>
+        <h4>my-quote</h4>
+        <p>客户邮件 → 报价 PDF · 5 分钟出货</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="ti">📧</div>
+        <div class="tn">SKILL 2</div>
+        <h4>my-inbox-triage</h4>
+        <p>50 封邮件分类 + 起草回复进 Drafts</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="ti">📱</div>
+        <div class="tn">SKILL 3</div>
+        <h4>my-weekly-content</h4>
+        <p>一稿改 4 平台 · 出一周内容</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="ti">📊</div>
+        <div class="tn">SKILL 4</div>
+        <h4>my-weekly-report</h4>
+        <p>周一早 8 点自动出业务周报</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="ti">🔔</div>
+        <div class="tn">SKILL 5</div>
+        <h4>my-followup</h4>
+        <p>客户跟进自动建 Calendar 提醒</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== AUDIENCE ============== -->
+  <section class="au-wrap">
+    <h2 class="sec-title">这节课为谁设计</h2>
+    <p class="sec-sub">一人公司 / 1-3 人小团队的老板和自由职业者 · 共同特征：自己一个人就是行政、财务、客服、营销、销售 · 最缺的不是技能，是分身</p>
+    <div class="au-grid">
+      <div class="au-card">
+        <div class="au-emoji">🍱</div>
+        <div class="au-body">
+          <h4>餐饮 / 零售 / 电商小老板</h4>
+          <p>每天报企业团餐、回外卖平台投诉、整理销售数据 — 把这些用 Cowork 自动化，省下 1-2 小时做主业</p>
+        </div>
+      </div>
+      <div class="au-card">
+        <div class="au-emoji">🎨</div>
+        <div class="au-body">
+          <h4>设计师 / 摄影师 / 文案 / 咨询师</h4>
+          <p>客户提案、报价、合同模板、个人品牌内容 — Cowork 接管杂活，专注创作和服务客户</p>
+        </div>
+      </div>
+      <div class="au-card">
+        <div class="au-emoji">🏠</div>
+        <div class="au-body">
+          <h4>私厨 / 家庭手工 / 跨境代购</h4>
+          <p>朋友圈营销 + 客户咨询 + 订单跟进 — 每天 50 条微信自动分类、起草回复、设跟进提醒</p>
+        </div>
+      </div>
+      <div class="au-card">
+        <div class="au-emoji">📚</div>
+        <div class="au-body">
+          <h4>教育培训 / 自由教练 / 个人 IP</h4>
+          <p>课程介绍、学员沟通、内容多平台分发 — 一次创作 4 个平台版本（朋友圈 / 小红书 / 公众号 / LinkedIn）</p>
+        </div>
+      </div>
+    </div>
+    <div class="au-not"><strong>⚠️ 谁不太适合：</strong>大公司部门员工（流程审批多 / Cowork 改文件需要 IT 授权）· 律师 / 会计 / 医疗等数据完全不能上云的合规岗（推荐 OpenClaw Workshop）· 想学『AI 是什么』理论课的（这是实操课，理论几乎不讲）</div>
+  </section>
+
+  <!-- ============== TOOLS ============== -->
+  <section class="ts-wrap">
+    <div class="ts-head">
+      <span>🛠️ 你今天要碰的 4 个工具</span>
+      <span class="mono">CLAUDE COWORK STACK · 2026 GA</span>
+    </div>
+    <div class="ts-grid">
+      <div class="ts-col">
+        <div class="ts-logo">🤝</div>
+        <div class="ts-name">Claude Cowork</div>
+        <div class="ts-role">Primary</div>
+        <p>Claude Desktop 里的 Cowork tab — 让 AI 替你<strong>动鼠标</strong>。开你电脑上的 Excel / Word / 浏览器 / 邮箱。</p>
+        <div class="ts-pros">✓ 图形界面零终端<br>✓ Mac + Win 都行</div>
+        <div class="ts-cons">⚠ 需要 Pro A$30/月起</div>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">🔌</div>
+        <div class="ts-name">Connectors</div>
+        <div class="ts-role">Bridge</div>
+        <p>Cowork 接外部世界的桥 — 本节课配 4 个：<strong>Filesystem / Web / Gmail / Google Drive</strong>。OAuth 授权可控。</p>
+        <div class="ts-pros">✓ 一次配置永久用<br>✓ 权限细到 scope</div>
+        <div class="ts-cons">⚠ 工作 G Workspace 邮箱可能被组织拦</div>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">⚙️</div>
+        <div class="ts-name">Skills</div>
+        <div class="ts-role">Reusable</div>
+        <p>『每次都这么干的事』固化成 Skill — 写一次永久用。今天写 <strong>5 个</strong>，回家用一年。</p>
+        <div class="ts-pros">✓ `/` 一秒触发<br>✓ 团队可共享</div>
+        <div class="ts-cons">⚠ 第一次写要琢磨工序</div>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">⏰</div>
+        <div class="ts-name">/schedule</div>
+        <div class="ts-role">Auto Run</div>
+        <p>Skill + cadence = 自动跑。<strong>周一早 8 点自动出周报</strong>，你倒咖啡时它跑完。</p>
+        <div class="ts-pros">✓ 5 种 cadence<br>✓ 可手动触发 / 看历史</div>
+        <div class="ts-cons">⚠ 电脑必须 awake + Cowork 开着</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TIMELINE ============== -->
+  <section id="timeline" class="tl-wrap">
+    <h2 class="sec-title">4 小时怎么走 · 11 个 module</h2>
+    <p class="sec-sub">演示 + 实战交替 · 每个 module 老师先演示 5-15 分钟，然后学员用自己业务跑一遍 · Tutor 1:4 巡场</p>
+
+    <!-- L01 -->
+    <div class="box">
+      <div class="box-h" style="background:#10162f">
+        <span>🎬 L01 · 开场 — 你 1 个人就是一家公司</span>
+        <span><span class="badge">DEMO</span> <span class="slot">13:00–13:15 · 15min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 15 分钟做啥</h5>
+          <p>不讲『AI 是什么』。开场就给你看 5 分钟现场演示：老师把一封客户咨询邮件丢给 Cowork，Cowork 自动开 Excel 模板 / 抓客户公司税号 / 填项目明细 / 算 GST / 导出 PDF / 写好邮件草稿等你点发送。这是今天 4 小时学完后你自己能做到的事。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>看到 Cowork 真的『动鼠标』</li>
+            <li>对今天节奏有数</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- L02 -->
+    <div class="box">
+      <div class="box-h" style="background:#38B6FF">
+        <span>📦 L02 · 装机 + 配 4 个 Connectors</span>
+        <span><span class="badge">HANDS-ON</span> <span class="slot">13:15–13:50 · 35min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 35 分钟做啥</h5>
+          <p>全员同步装。Claude Desktop / Pro 付费档确认 / 切到 Cowork tab / 配好 4 个 Connectors（Filesystem / Web / Gmail / Google Drive）。这是今天后面所有 case 的地基 — 装不好后面全废，Tutor 死守。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>Claude Desktop + Cowork tab 进得去</li>
+            <li>4 个 Connector 全绿</li>
+            <li>桌面 ~/cowork-workshop/ 文件夹</li>
+          </ul>
+        </div>
+      </div>
+      <div class="steps-list">
+        <h5>步骤分解</h5>
+        <div class="step-row"><div class="step-num">1</div><div class="step-content"><strong>下载 Claude Desktop + 登录 + 确认 Pro</strong>Mac .dmg / Win MSIX（不要老 .exe）· 确认 Pro / Max 付费档</div><div class="step-time">8min</div></div>
+        <div class="step-row"><div class="step-num">2</div><div class="step-content"><strong>切到 Cowork tab + 跑第一个 task</strong>建桌面 cowork-workshop 文件夹 + 空 Excel · 看 Cowork 真的动了</div><div class="step-time">7min</div></div>
+        <div class="step-row"><div class="step-num">3</div><div class="step-content"><strong>配 Filesystem + Web Connector</strong>Filesystem 默认有 · Web 验证抓 news.com.au 首页</div><div class="step-time">7min</div></div>
+        <div class="step-row"><div class="step-num">4</div><div class="step-content"><strong>配 Gmail Connector</strong>OAuth 授权（用个人 Gmail）· 验证抓今天 5 封邮件</div><div class="step-time">7min</div></div>
+        <div class="step-row"><div class="step-num">5</div><div class="step-content"><strong>配 Google Drive Connector</strong>OAuth · 验证列 Drive 根目录前 10 个文件</div><div class="step-time">6min</div></div>
+      </div>
+    </div>
+
+    <!-- L03 -->
+    <div class="box">
+      <div class="box-h" style="background:#FF914D">
+        <span>🧾 L03 · Case 1 演示 — 客户咨询邮件 → 报价单 PDF</span>
+        <span><span class="badge">DEMO</span> <span class="slot">13:50–14:05 · 15min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 15 分钟做啥</h5>
+          <p>老师演示完整流程让学员先看一遍：① 给 Cowork 一封客户咨询邮件 ② Cowork 提取需求（数量 / 规格 / 交付时间）③ 打开 Excel 模板自动填 ④ 算 GST 和小计 ⑤ 导出 PDF 落到桌面 ⑥ 起草回复邮件进 Gmail Drafts。最后把工序存成 Skill 给学员用。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>看到完整链路：邮件 → PDF → Drafts</li>
+            <li>老师发的报价模板示例（Excel）</li>
+            <li>知道 quote-from-inquiry Skill 怎么用</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- L04 -->
+    <div class="box">
+      <div class="box-h" style="background:#FF914D">
+        <span>✍️ L04 · Case 1 实战 — 用你真实场景出报价</span>
+        <span><span class="badge">HANDS-ON</span> <span class="slot">14:05–14:30 · 25min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 25 分钟做啥</h5>
+          <p>学员用自己真实业务做一份。课前清单要求带：① 你常用的报价 / 发票 / 合同模板（Excel 或 Word）② 一封最近的客户咨询邮件（或描述清楚一个真实场景）③ 你公司抬头 / ABN / GST 注册号 / 联系方式。Tutor 1:4 巡场救场。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>电脑里有一份真实客户报价 PDF</li>
+            <li>Gmail Drafts 有起草好的回复</li>
+            <li>SKILL #1 my-quote 入袋</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- BREAK -->
+    <div class="box break">
+      <div class="box-h" style="background:#FFDE59;color:#10162f">
+        <span>☕ 茶歇 + 互救</span>
+        <span class="slot" style="opacity:1;color:#10162f">14:30–14:45 · 15min</span>
+      </div>
+      <div class="lesson-body" style="grid-template-columns:1fr">
+        <div>
+          <p>15 分钟。Tutor 抓这段救场 — 谁 L02 Connector 还没全绿 / 谁 L04 Skill 没存好 / 谁报价 PDF 算错。备咖啡 + 茶点 + 高速 Wi-Fi。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- L05 -->
+    <div class="box">
+      <div class="box-h" style="background:#10b981">
+        <span>📧 L05 · Case 2 演示 — 邮件批量起草 + 客户跟进</span>
+        <span><span class="badge">DEMO</span> <span class="slot">14:45–14:57 · 12min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 12 分钟做啥</h5>
+          <p>老师演示用 Cowork 清理 Gmail 收件箱：扫最近 50 封 → 自动分类（咨询 / 投诉 / 合作 / 广告）→ 给每封咨询起草回复进 Drafts → 给每个跟进客户在 Calendar 建提醒。流程存成 Skill 叫 inbox-triage。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>看到 50 封邮件 5 分钟分类完</li>
+            <li>知道 Drafts 模式 = AI 起草 + 人工把关</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- L06 -->
+    <div class="box">
+      <div class="box-h" style="background:#10b981">
+        <span>📨 L06 · Case 2 实战 — 清你的 Gmail 收件箱</span>
+        <span><span class="badge">HANDS-ON</span> <span class="slot">14:57–15:25 · 28min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 28 分钟做啥</h5>
+          <p>学员用自己 Gmail 跑一遍。L02 已配好 Gmail Connector 直接开干。28 分钟够把最近 50 封邮件全清完 + 起草回复进 Drafts + 设跟进提醒。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>Drafts 里 N 封起草好的客户回复</li>
+            <li>Calendar M 个跟进提醒</li>
+            <li>SKILL #2 my-inbox-triage 入袋</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- L07 -->
+    <div class="box">
+      <div class="box-h" style="background:#CB6CE6">
+        <span>📱 L07 · Case 3 演示 — 一稿改 4 个平台</span>
+        <span><span class="badge">DEMO</span> <span class="slot">15:25–15:37 · 12min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 12 分钟做啥</h5>
+          <p>老师演示一段 200 字产品介绍 → Cowork 改写成 4 个平台版本：朋友圈（100 字 + 卖点突出）/ 小红书（带 #话题 + emoji + 分段）/ 微信公众号（800 字长文 + 配图位）/ LinkedIn（英文专业版 + CTA）。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>看到平台调性如何区分</li>
+            <li>知道 multi-platform-content Skill 怎么用</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- L08 -->
+    <div class="box">
+      <div class="box-h" style="background:#CB6CE6">
+        <span>🎨 L08 · Case 3 实战 — 给你的业务做下周一周内容</span>
+        <span><span class="badge">HANDS-ON</span> <span class="slot">15:37–16:05 · 28min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 28 分钟做啥</h5>
+          <p>学员给自己业务做下周 5 天的内容素材：每天一个主题 × 4 个平台版本 = 20 份。全部落到 Google Drive ~/marketing/2026-W21/ 内容库。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>Drive 里 20 份下周内容素材</li>
+            <li>brand-context.md 业务记忆卡</li>
+            <li>SKILL #3 my-weekly-content 入袋</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- L09 -->
+    <div class="box">
+      <div class="box-h" style="background:#ec4899">
+        <span>⏰ L09 · Case 4 演示 — Skill + /schedule 周一 8 点自动出周报</span>
+        <span><span class="badge">DEMO</span> <span class="slot">16:05–16:20 · 15min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 15 分钟做啥</h5>
+          <p>前面 3 个 case 已经写了 3 个 Skill，这节升级一档 — 把多个 Skill 串成『业务周报』然后用 /schedule 配每周一早 8 点自动跑。明天起每周一你倒咖啡的时间，桌面 weekly-report-2026-WXX.md 已经躺在那里。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>看到 Skill 串多数据源（Excel + Gmail + Drive）</li>
+            <li>看到 /schedule 配置全流程</li>
+            <li>理解 Schedule 不是云端 daemon</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- L10 -->
+    <div class="box">
+      <div class="box-h" style="background:#ec4899">
+        <span>🤖 L10 · Case 4 实战 — 配你自己的每周自动化</span>
+        <span><span class="badge">HANDS-ON</span> <span class="slot">16:20–16:45 · 25min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 25 分钟做啥</h5>
+          <p>学员选一个最痛的场景配自动化。3 个推荐方向：① 周一早 8 点出业务周报 ② 每天早 9 点扫客户咨询自动起草报价 ③ 每周日下午 6 点出下周内容。25 分钟够选一个跑通 + 配 /schedule + 手动 Run now 验证。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>SKILL #4 + #5 入袋</li>
+            <li>第 1 个 /schedule 配好</li>
+            <li>下周开始它自动跑 — 不用你动手</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- L11 -->
+    <div class="box">
+      <div class="box-h" style="background:#6366f1">
+        <span>🎤 L11 · Demo Day + 课后 30 天行动</span>
+        <span><span class="badge">SHARE</span> <span class="slot">16:45–17:00 · 15min</span></span>
+      </div>
+      <div class="lesson-body">
+        <div>
+          <h5>这 15 分钟做啥</h5>
+          <p>每人 1 分钟分享今天做出来最有用的 1 个东西（11 人 × 1 = 11 分钟）+ 老师 4 分钟讲今晚 / 这周 / 一个月行动清单 + JR Academy 进阶路径推荐。</p>
+        </div>
+        <div>
+          <h5>你会拿到</h5>
+          <ul>
+            <li>30 天行动清单</li>
+            <li>看到全班 11 个不同行业的真实落地</li>
+            <li>知道下一步学习去哪</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============== PREP ============== -->
+  <section class="prep-wrap">
+    <h2 class="sec-title">课前准备清单</h2>
+    <p class="sec-sub">本节课实操量大 · 课前准备扎实 = 课上 4 小时全部能用在『跑你自己业务』上 · 准备空 = 跟着老师做模板示例少一半价值</p>
+    <div class="prep-list">
+      <div class="prep-row">
+        <div class="num">1</div>
+        <span class="req required">必备</span>
+        <div class="body">
+          <h4>自带笔记本电脑</h4>
+          <p>Mac (macOS 11+) 或 Win 10+ · 不能用 iPad / 手机 · 电源线带上（Cowork 跑 4 小时挺耗电）</p>
+        </div>
+      </div>
+      <div class="prep-row">
+        <div class="num">2</div>
+        <span class="req required">必备</span>
+        <div class="body">
+          <h4>下载 Claude Desktop</h4>
+          <p>去 <a href="https://claude.com/download" target="_blank">claude.com/download</a> · Mac 选 .dmg / Win 选 MSIX 安装包（<strong>不要下老的 .exe — 没 Cowork tab</strong>）· 装好顶部能看到 Chat / Cowork / Code 三个 tab = 装对了</p>
+        </div>
+      </div>
+      <div class="prep-row">
+        <div class="num">3</div>
+        <span class="req required">必备</span>
+        <div class="body">
+          <h4>订阅 Claude Pro（或确认有付费档）</h4>
+          <p>去 <a href="https://claude.com/upgrade" target="_blank">claude.com/upgrade</a> 订 Pro A$30/月 · 没订也可以来用 JR 共享号体验 4 小时，但回家继续用必须自己订</p>
+        </div>
+      </div>
+      <div class="prep-row">
+        <div class="num">4</div>
+        <span class="req required">必备</span>
+        <div class="body">
+          <h4>桌面建空文件夹 ~/Desktop/cowork-workshop</h4>
+          <p>课上 L02 第一次跑 Cowork 用这个文件夹 · 所有 case 文件落里面</p>
+        </div>
+      </div>
+      <div class="prep-row">
+        <div class="num">5</div>
+        <span class="req required">必备</span>
+        <div class="body">
+          <h4>准备一个个人 Gmail</h4>
+          <p>L02 配 Gmail Connector 用 · <strong>用个人 Gmail 不是工作 G Workspace 邮箱</strong>（工作号偶尔被组织策略拦 OAuth）</p>
+        </div>
+      </div>
+      <div class="prep-row">
+        <div class="num">6</div>
+        <span class="req required">必备</span>
+        <div class="body">
+          <h4>带 1-2 份你常用的业务模板</h4>
+          <p>报价 / 发票 / 合同 / 提案 模板（Excel 或 Word）· L04 实战要用你自己模板出 PDF · 模板里要有：你公司抬头 / ABN / GST 注册号 / 联系方式</p>
+        </div>
+      </div>
+      <div class="prep-row">
+        <div class="num">7</div>
+        <span class="req recommended">推荐</span>
+        <div class="body">
+          <h4>想清楚一个真实业务场景</h4>
+          <p>至少准备一个真实场景给 L04 / L06 / L08 / L10 用：① 一份下周要发的客户报价 ② 一周要清的客户邮件 ③ 一周要发的营销内容 ④ 一个想自动化的每周杂活</p>
+        </div>
+      </div>
+      <div class="prep-row">
+        <div class="num">8</div>
+        <span class="req optional">可选</span>
+        <div class="body">
+          <h4>写一份 brand-context.md</h4>
+          <p>L08 营销内容要喂给 Cowork · 课前写好回家更省时间 · 模板：公司做啥 / 主打卖点 / 目标客户 / 品牌语气 / 招牌产品 / 价位 / 红线 · 300-500 字够</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FAQ ============== -->
+  <section class="faq-wrap">
+    <h2 class="sec-title">常见问题</h2>
+    <p class="sec-sub">报名前看一眼 · 还有问题给我们邮箱：<a href="mailto:hello@jiangren.com.au" style="color:#FF914D">hello@jiangren.com.au</a></p>
+
+    <details class="faq-item">
+      <summary>我完全不懂技术，没用过 ChatGPT，能跟得上吗？</summary>
+      <p>能。这个 workshop 就是为零技术基础的小老板和自由职业者设计的。Cowork 全程图形界面，没有终端、没有命令行、不写代码 — 你只要会打字会用 Excel 就能跟上。每一步老师等所有人完成才往下走，1:4 Tutor 巡场救场。课前如果你完全没碰过 AI 工具，可以提前 5 分钟玩一下 ChatGPT 或 claude.ai 找下『跟 AI 说话』的手感。</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Claude Cowork 必须付费吗？我不付费能上这节课吗？</summary>
+      <p>Cowork 必须 Claude Pro / Max / Team / Enterprise 付费档（A$30/月起），免费档没有 Cowork tab。课上没付费档的可以用 JR 共享测试号过一遍 4 小时，但回家继续用必须自己订。说实话 A$30/月一份咖啡钱换一个不睡觉的助理 — 课上做完报价单 + 邮件批量回复 + 一周内容那一刻，你大概率自己就订了。</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>我业务数据很敏感（客户身份证、合同金额、内部财务），能用 Cowork 吗？</summary>
+      <p>Cowork 干每件事前都会让你 Approve（除非你在 Settings 关了 — 不建议关）。文件读写默认只在你指定的 working folder 内，跨文件夹要单独授权。Connector 走 OAuth 权限细到 scope。但敏感数据（客户身份证 / 银行账户 / 未公开合同金额）上传前还是建议用 [客户A] [金额X] 打码 — 这是好习惯不是 Cowork 的锅。如果你是律师 / 会计 / 医疗背景需要 100% 数据本地，那个场景应该看 OpenClaw Workshop。</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Mac / Win 都行吗？iPad 行不行？</summary>
+      <p>Mac (macOS 11+) 和 Win 10+ 都行。Linux 暂时没 Cowork 桌面 App。iPad / 手机不行 — 主战场必须是桌面（手机 Claude App 只能做 Dispatch 派活儿用）。Win 用户务必下 MSIX 安装包，老的 .exe 没 Cowork tab — 这是踩坑率最高的点。</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>课前要准备什么？</summary>
+      <p>6 件事：① 自带笔记本（Mac 11+ 或 Win 10+，不能 iPad）② 注册 Anthropic 账号 + Claude Pro 订阅 ③ 桌面建空文件夹 ~/Desktop/cowork-workshop ④ 准备一个个人 Gmail ⑤ 带你常用的报价/发票/合同模板（Excel 或 Word）⑥ 想清楚一个真实业务场景。详见上面课前清单。</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>/schedule 我配好周一早 8 点跑周报，那时候我电脑关机了怎么办？</summary>
+      <p>🚨 跑不动。Cowork Scheduled Task 不是云端 daemon — 必须电脑 awake + Cowork app 开着才跑。睡眠期间触发的会跳过，电脑醒了 + Cowork 重新打开会自动补跑一次（你会收通知）。3 个解决方案：① 笔记本就让它常开（Mac sleep + display off 算 awake，看 Settings → Energy）② 装家里 / 公司常开的台式机 ③ 不需要每周必跑的就接受『偶尔跳一次』。</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>我做餐饮（不是 IT 行业），4 小时学这个划算吗？</summary>
+      <p>划算。我们办过几期 SME workshop，餐饮老板回家做的事：① 用 my-quote 给周一企业团餐自动报价（之前 30 分钟手填模板，现在 3 分钟）② 用 my-inbox-triage 清外卖平台投诉邮件（一周省 2 小时）③ 用 weekly-content 出小红书 / 抖音文案（之前外包月 A$500）④ 用 weekly-report 看销售数据。一个月省下时间 + 省下外包费，A$129 课程费 + A$30/月 Pro 大概一周回本。</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>课后有支持吗？录播？答疑群？</summary>
+      <p>3 件兜底：① 课程录播开课后 3 天内发学员（中文字幕）② 老师 5 个 Skill 模板 + 4 个 Schedule 配置打包发学员 ③ JR Academy 平台 30 天试用（27+ Prompt Lab 互动练习 + Vibe Coding Hub）。课后 30 天遇到卡点可以邮件给老师，30 天后想要长期社群转 AI Adoption Bootcamp 学员社群。</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>我已经在用 ChatGPT Plus 了，再订 Claude Pro 是不是重复花钱？</summary>
+      <p>不重复。两个产品定位不一样：ChatGPT 主要『跟 AI 聊天 / 问问题 / 写文字』 — 你打开网页跟它对话。Cowork 是『让 AI 替你动鼠标干电脑上的事』 — 它真的会开你 Excel / 改你 PPT / 抓网页 / 发邮件 / 定时跑。本节课 4 个 case 全部是 ChatGPT 做不了的（ChatGPT 没有 Computer Use + 没有桌面 App + 没有 Schedule）。</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>我能拉我合伙人 / 员工一起来吗？团队价？</summary>
+      <p>欢迎，团队来 2-3 个人最划算 — 课后回去能马上互相配合。8-12 人小班一组家公司不超过 3 个名额。团队价：A$129 单人 / A$229 双人 / A$329 三人。报名时备注『团队报名』给我们邮箱。</p>
+    </details>
+  </section>
+
+  <!-- ============== CTA FOOTER ============== -->
+  <section id="cta" class="footer-cta">
+    <h2>下周一早 8:01 你倒咖啡的时候<br>桌面 weekly-report 已经躺在那里</h2>
+    <p class="sub">5 月 23 日 周六下午 1-5pm · 布里斯班 CBD · 8-12 人小班 · 中文为主<br>5/9 之前报名 A$99 早鸟价 · 5/9 之后 A$129 · 团队 2 人 A$229 / 3 人 A$329</p>
+    <div class="price">
+      <span class="now">A$99</span>
+      <span class="reg">A$129</span>
+      <span class="deadline">⏰ 早鸟截止 5/9</span>
+    </div>
+    <div class="cta-row">
+      <a class="cta primary" href="mailto:hello@jiangren.com.au?subject=报名 Claude Cowork SME Workshop · 5月23日 Brisbane">立即报名 →</a>
+      <a class="cta secondary" href="mailto:hello@jiangren.com.au?subject=咨询 Claude Cowork SME Workshop">先咨询</a>
+    </div>
+  </section>
+
+  <footer class="footer-foot">
+    JR Academy · Brisbane · 2026 · <a href="mailto:hello@jiangren.com.au">hello@jiangren.com.au</a> · <a href="https://jiangren.com.au">jiangren.com.au</a>
+  </footer>
+
+</body>
+</html>

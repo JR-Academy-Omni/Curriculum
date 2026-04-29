@@ -1,0 +1,728 @@
+{
+  "course": {
+    "name_zh": "Claude Cowork × 一人公司办公自动化 — 4 小时实战工作坊",
+    "name_en": "Claude Cowork for Solo Founders & Freelancers — 4-hour Hands-on Workshop",
+    "subtitle_zh": "把报价单、邮件回复、营销内容、月报这些杂活全交给 AI · 走时带走 5 个能复用的 Skill",
+    "date": "2026-05-23",
+    "weekday": "Saturday",
+    "time_brisbane": "13:00-17:00",
+    "duration_minutes": 240,
+    "format": "线下 · 布里斯班",
+    "city": "Brisbane",
+    "venue_zh": "布里斯班 CBD（具体场地课前 7 天邮件通知）",
+    "venue_en": "Brisbane CBD (exact venue confirmed 7 days before via email)",
+    "group_size": "8-12 人小班",
+    "language": "中文为主（关键术语保留英文）",
+    "price_aud": 129,
+    "price_aud_earlybird": 99,
+    "earlybird_deadline": "2026-05-09",
+    "currency": "AUD",
+    "url": "https://jiangren.com.au/curriculum/claude-cowork-sme-workshop/",
+    "payment_url": ""
+  },
+  "curriculumPages": {
+    "pages": ["curriculum.html"],
+    "defaultPage": "curriculum.html"
+  },
+  "audience_summary_zh": "一人公司 / 1-3 人小团队的老板 + 自由职业者。餐饮、零售、电商、设计、咨询、摄影、教育培训、私厨、跨境代购都可以来。共同特征：自己一个人就是行政、财务、客服、营销、销售 — 最缺的不是技能而是分身。零编程基础，不需要懂 AI。",
+  "audience_summary_en": "Solo founders, micro-business owners (1–3 staff), and freelancers. Hospitality, retail, e-commerce, design, consulting, photography, education, private chef, cross-border resellers all welcome. No coding background needed.",
+  "promise_zh": "4 小时不讲『AI 是什么』。开场 50 分钟把 Claude Cowork 装上、配好 4 个 Connectors（Filesystem / Web / Gmail / Google Drive）。然后直接做 4 件你这周本来就要做的事：① 把客户咨询邮件 → 报价单 PDF（含税号 / 抬头 / 项目明细全自动）② 清理积压客户邮件批量起草回复 ③ 一段产品介绍改写成朋友圈 / 小红书 / 公众号 / LinkedIn 4 个平台版本 ④ 写 Skill + /schedule 让 AI 每周一早 8 点自动出业务周报。走时电脑里有：装好的 Cowork + 4 个 Connectors + 5 个能复用的 Skill（报价 / 邮件 / 一稿多发 / 周报 / 跟进提醒）+ 1 个每周自动跑的业务周报 schedule。下周一早 8:01 你去倒咖啡，桌面 weekly-report 已经躺在那里。",
+  "core_value_zh": [
+    "🧾 报价单 / 发票 / 合同 — 客户邮件来了 5 分钟出 PDF（不再 30 分钟手工填模板）",
+    "📧 邮件 + 客户跟进 — 收件箱 50 封咨询批量起草回复（不再周末熬夜回邮件）",
+    "📱 营销内容 — 一稿多发到朋友圈 / 小红书 / 公众号 / LinkedIn（不再每个平台改写一遍）",
+    "📊 业务周报 — 每周一早 8 点自动汇总销售 + 待跟进 + 内容计划（不再周日加班对账）",
+    "🔁 5 个 Skill 带回家 — 这周课上调通的工序写一次永久复用"
+  ],
+  "tools": [
+    {
+      "id": "claude-cowork",
+      "name_zh": "Claude Cowork",
+      "name_en": "Claude Cowork",
+      "vendor": "Anthropic",
+      "role_zh": "今天的主战场 · Claude Desktop 里的 Cowork tab · 让 AI 替你动鼠标",
+      "role_en": "Primary tool — the Cowork tab in Claude Desktop App",
+      "category": "claude-product",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "🤝",
+      "tagline_zh": "你给目标 / 它在你桌面上跑活儿 · 不是聊天 · 是替你完成事",
+      "pros": [
+        "图形界面，零终端，一人公司零技术门槛",
+        "能开你电脑上任何 App（Excel / Word / 浏览器 / 邮箱）",
+        "Plugin / Connector / Skill / Schedule / Dispatch 一站式",
+        "Mac + Win 都有"
+      ],
+      "cons": [
+        "需要 Claude Pro 付费档（A$30/月起 · 免费档没有 Cowork）",
+        "Scheduled task 必须电脑开机 + Cowork app 开着才会跑",
+        "首次配 Connector 需要 OAuth 授权外部账号"
+      ],
+      "cost_notes_zh": "Pro A$30/月。一份咖啡钱换一个不睡觉的助理，本节课成本回得来。",
+      "used_in_modules": ["L02", "L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10"],
+      "demo_mode": "live-full"
+    },
+    {
+      "id": "connectors",
+      "name_zh": "Connectors（MCP）",
+      "name_en": "MCP Connectors",
+      "vendor": "Anthropic + 第三方",
+      "role_zh": "Cowork 接外部世界的桥 · Gmail / Drive / Web / 文件系统",
+      "role_en": "Bridge Cowork to external services via MCP",
+      "category": "cowork-feature",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "🔌",
+      "tagline_zh": "Settings 配一次 · 之后所有 task / Skill / Schedule 全继承",
+      "pros": [
+        "本节课配 4 个：Filesystem / Web / Gmail / Google Drive",
+        "OAuth 授权可控，权限细到 scope",
+        "免费"
+      ],
+      "cons": [
+        "首次 OAuth 需要外部账号在手",
+        "工作 G Workspace 邮箱有时被组织策略拦"
+      ],
+      "cost_notes_zh": "Connector 本身免费 · 外部 API 调用走对应账号配额",
+      "used_in_modules": ["L02", "L03", "L05", "L07", "L09"],
+      "demo_mode": "live-full"
+    },
+    {
+      "id": "skills",
+      "name_zh": "Skills（可复用工序卡）",
+      "name_en": "Skills",
+      "vendor": "Anthropic + 社区",
+      "role_zh": "把『每次都这么干的事』固化成 Skill · `/` 一秒触发",
+      "role_en": "Reusable workflow cards, triggered with /",
+      "category": "cowork-feature",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "⚙️",
+      "tagline_zh": "今天写 5 个 · 回家用一年",
+      "pros": [
+        "可被 /schedule 调用 → 自动化",
+        "团队共享 = 把 SOP 喂给 Cowork",
+        "免费"
+      ],
+      "cons": [
+        "第一次写需要琢磨『把工序拆清楚』",
+        "Skill 写糟跑出来的也糟"
+      ],
+      "cost_notes_zh": "Skill 是文本免费 · 跑起来才走付费档度",
+      "used_in_modules": ["L04", "L06", "L08", "L09", "L10"],
+      "demo_mode": "live-full"
+    },
+    {
+      "id": "schedule",
+      "name_zh": "Scheduled Tasks（/schedule）",
+      "name_en": "Scheduled Tasks",
+      "vendor": "Anthropic",
+      "role_zh": "Cowork 按 cadence 自动跑 task / Skill",
+      "role_en": "Run Cowork tasks on a recurring cadence",
+      "category": "cowork-feature",
+      "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
+      "emoji": "⏰",
+      "tagline_zh": "周一早 8 点自动出业务周报 · 你倒咖啡的时间它已经跑完",
+      "pros": [
+        "5 种 cadence：hourly / daily / weekly / weekdays / manual",
+        "自动继承所有 Connector / Plugin / Skill",
+        "可暂停 / 修改 / 手动触发 / 看历史"
+      ],
+      "cons": [
+        "🚨 电脑必须 awake + Cowork App 开着 · 睡眠跳过（醒了自动补一次）",
+        "不是云端 daemon · 跟 cron server 不一样"
+      ],
+      "cost_notes_zh": "走 Pro 付费档度 · 每周一次业务周报约 A$1 等值",
+      "used_in_modules": ["L09", "L10"],
+      "demo_mode": "live-full"
+    }
+  ],
+  "modules": [
+    {
+      "code": "L01",
+      "title_zh": "开场 — 你 1 个人就是一家公司，AI 是你最便宜的员工",
+      "title_en": "Opening — Why Solo Founders Need Cowork Most",
+      "emoji": "🎬",
+      "color": "#10162f",
+      "start_brisbane": "13:00",
+      "end_brisbane": "13:15",
+      "duration_minutes": 15,
+      "type": "demo-preview",
+      "summary_zh": "不讲『AI 是什么』。开场就给你看 5 分钟现场演示：老师把一封客户咨询邮件丢给 Cowork，Cowork 自动开 Excel 模板 / 抓客户公司税号 / 填项目明细 / 算 GST / 导出 PDF / 写好邮件草稿等你点发送。这是今天 4 小时学完后你自己能做到的事。",
+      "content_sections": [
+        "30 秒自我介绍 + 4 小时节奏说明",
+        "5 分钟现场演示：客户咨询邮件 → 报价单 PDF（学员看老师电脑屏幕投影）",
+        "5 分钟讲：小老板/自由职业者的 6 大杂活（报价 / 发票 / 邮件 / 跟进 / 营销 / 报表）",
+        "课堂规则：跟不上举手，1:4 Tutor 立刻接手"
+      ],
+      "learning_outcomes": [
+        "看到 Cowork 真的在『动鼠标』 — 知道 4 小时后自己能做到什么",
+        "对今天节奏有数"
+      ],
+      "tools_used": ["claude-cowork"],
+      "demo_mode": "demo",
+      "teacher_notes_zh": "开场 5 分钟必须让全场『哇』一下。报价单 demo 选一份客户真实邮件（脱敏），出来的 PDF 现场打开看。非技术学员第一次看到 AI 自动开 Excel + 填模板那一刻，比讲 100 句『AI 替你干活』都有效。"
+    },
+    {
+      "code": "L02",
+      "title_zh": "装机 — Claude Desktop + Cowork tab + 4 个 Connectors",
+      "title_en": "Setup — Claude Desktop + Cowork Tab + 4 Connectors",
+      "emoji": "📦",
+      "color": "#38B6FF",
+      "start_brisbane": "13:15",
+      "end_brisbane": "13:50",
+      "duration_minutes": 35,
+      "type": "live-install-hands-on",
+      "summary_zh": "全员同步装。35 分钟搞定 Claude Desktop 安装 / Pro 付费档确认 / 切到 Cowork tab / 配好 4 个 Connectors（Filesystem / Web / Gmail / Google Drive）。这是今天后面所有 case 的地基 — 装不好后面全废，Tutor 死守。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "下载 Claude Desktop + 登录 + 确认 Pro",
+          "duration_minutes": 8,
+          "tool": "claude-cowork",
+          "content_zh": "claude.com/download。Mac 选 .dmg / Win 选 MSIX 安装包（不要老 .exe — 没 Cowork tab）。装好登录 → Settings → Subscription 看是不是 Pro / Max。没付费档的发 JR 共享号体验 4 小时。"
+        },
+        {
+          "step": 2,
+          "title_zh": "切到 Cowork tab + 跑第一个 task",
+          "duration_minutes": 7,
+          "tool": "claude-cowork",
+          "content_zh": "Claude Desktop 顶部 3 个 tab：Chat / Cowork / Code，点 Cowork。第一次进有引导。在输入框输：『在我桌面建文件夹叫 cowork-workshop，里面建空 Excel 叫 quote-template.xlsx』。Cowork 给你看 plan → Approve → 跑完桌面看 = 装机成功。"
+        },
+        {
+          "step": 3,
+          "title_zh": "配 Filesystem + Web Connector",
+          "duration_minutes": 7,
+          "tool": "connectors",
+          "content_zh": "Settings → Connectors。Filesystem 默认绿色 = 已启用。启用 Web。验证：让 Cowork『读 https://news.com.au 首页前 5 条标题写到 news.md』 — Web Connector 能用。"
+        },
+        {
+          "step": 4,
+          "title_zh": "配 Gmail Connector",
+          "duration_minutes": 7,
+          "tool": "connectors",
+          "content_zh": "Settings → Connectors → Gmail → Connect。OAuth 浏览器授权 — 用个人 Gmail（工作 G Workspace 邮箱有时被组织策略拦）。验证：『查我今天最新 5 封邮件写到 inbox-today.md』。"
+        },
+        {
+          "step": 5,
+          "title_zh": "配 Google Drive Connector",
+          "duration_minutes": 6,
+          "tool": "connectors",
+          "content_zh": "Settings → Connectors → Google Drive → Connect。授权后能读写 Drive 文件。验证：『列我 Drive 根目录前 10 个文件』。后面 Module 3 营销内容会落到 Drive 共享。"
+        }
+      ],
+      "learning_outcomes": [
+        "Claude Desktop 装好，Cowork tab 进得去",
+        "4 个 Connector 全绿（Filesystem / Web / Gmail / Drive）",
+        "桌面有 cowork-workshop 文件夹给后面 case 用"
+      ],
+      "tools_used": ["claude-cowork", "connectors"],
+      "demo_mode": "live-full",
+      "interaction": "全员同步装 · Tutor 1:4 巡场",
+      "teacher_notes_zh": "最容易卡 4 个点：① Win 用户下错版本（老 .exe 没 Cowork tab）— 强调 MSIX ② OAuth 跳转被广告拦截器拦 — 关插件 ③ 免费档没 Cowork tab — 提前发共享测试号清单 ④ 工作 G Workspace 邮箱被组织策略拦 OAuth — 让用个人 Gmail。L02 通不过后面 3 小时全废，Tutor 死守。"
+    },
+    {
+      "code": "L03",
+      "title_zh": "Case 1 演示 — 客户咨询邮件 → 报价单 PDF",
+      "title_en": "Case 1 Demo — Email Inquiry to Quote PDF",
+      "emoji": "🧾",
+      "color": "#FF914D",
+      "start_brisbane": "13:50",
+      "end_brisbane": "14:05",
+      "duration_minutes": 15,
+      "type": "live-demo",
+      "summary_zh": "老师演示完整流程让学员先看一遍：① 给 Cowork 一封客户咨询邮件 ② Cowork 提取需求（数量 / 规格 / 交付时间）③ 打开 Excel 模板自动填 ④ 算 GST 和小计 ⑤ 导出 PDF 落到桌面 ⑥ 起草回复邮件进 Gmail Drafts。15 分钟讲透流程 + 把工序存成 Skill 给学员用。",
+      "content_sections": [
+        "🎬 演示 1（5 分钟）：老师粘贴一封客户咨询邮件原文 → Cowork 解析需求",
+        "📊 演示 2（5 分钟）：Cowork 调 Excel 自动填模板 / 算 GST / 导 PDF",
+        "💌 演示 3（3 分钟）：Cowork 起草回复邮件附 PDF → 进 Gmail Drafts（不直接发）",
+        "💾 把流程存成 Skill 叫 `quote-from-inquiry`（2 分钟）",
+        "💬 关键提示：报价模板要先准备好，Cowork 才能填"
+      ],
+      "learning_outcomes": [
+        "看到完整链路：邮件 → 解析 → 模板 → PDF → Drafts",
+        "知道 `quote-from-inquiry` Skill 怎么用",
+        "拿到老师发的报价模板示例（Excel）"
+      ],
+      "tools_used": ["claude-cowork", "connectors", "skills"],
+      "demo_mode": "live-full",
+      "teacher_notes_zh": "课前一天准备好 3 份脱敏的真实客户咨询邮件（餐饮 / 设计 / 咨询各一份）+ 对应 3 个行业的报价模板。演示用学员行业最贴近的那份。Skill 存好后让学员看 `/` → 看到 `quote-from-inquiry` 在列表里 = 可复用。"
+    },
+    {
+      "code": "L04",
+      "title_zh": "Case 1 实战 — 用你自己的真实场景出报价/发票/合同",
+      "title_en": "Case 1 Hands-on — Your Real Quote / Invoice / Contract",
+      "emoji": "✍️",
+      "color": "#FF914D",
+      "start_brisbane": "14:05",
+      "end_brisbane": "14:30",
+      "duration_minutes": 25,
+      "type": "quest-hands-on",
+      "summary_zh": "学员用自己真实业务做一份。课前清单要求带：① 你常用的报价 / 发票 / 合同模板（Excel 或 Word）② 一封最近的客户咨询邮件（或描述清楚一个真实场景）③ 你公司抬头 / ABN / GST 注册号 / 联系方式。Tutor 1:4 巡场救场。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "把你的模板放进 ~/Desktop/cowork-workshop/templates/",
+          "duration_minutes": 3,
+          "tool": "claude-cowork",
+          "content_zh": "Finder / Explorer 把你课前准备的报价 / 发票 / 合同模板拖进去。Cowork 跑的时候会从这个文件夹找模板。"
+        },
+        {
+          "step": 2,
+          "title_zh": "写你的 Cowork 提示词",
+          "duration_minutes": 5,
+          "tool": "claude-cowork",
+          "content_zh": "范本：『读 templates/quote-template.xlsx — 客户：[公司名]，需求：[描述]，金额含 GST 算好，PDF 落到桌面 quotes/[客户名]-[日期].pdf，同时起草回复邮件进 Gmail Drafts。』把方括号里换成你自己的。"
+        },
+        {
+          "step": 3,
+          "title_zh": "Approve 让 Cowork 跑 + 看产物",
+          "duration_minutes": 10,
+          "tool": "claude-cowork",
+          "content_zh": "Cowork 给你看 plan → Approve → 它会自动开 Excel / 填字段 / 算金额 / 导 PDF。跑完打开 PDF 看：客户信息对不对 / 金额对不对 / 排版能不能用。第一版肯定有要改的，让 Cowork 改：『金额改成 [X]、加一行 [Y]、把抬头公司名换成 [Z]』 — 改完它直接动 Excel 重生成 PDF。"
+        },
+        {
+          "step": 4,
+          "title_zh": "存成你专属的 Skill",
+          "duration_minutes": 7,
+          "tool": "skills",
+          "content_zh": "迭代到满意后让 Cowork：『把刚才出报价的整个流程存成 Skill 叫 my-quote，下次我 /my-quote [客户邮件] 就跑这套』。Skill 写好后输入框敲 `/my-quote` 一秒触发。这是你今天带回家的第 1 个 Skill。"
+        }
+      ],
+      "learning_outcomes": [
+        "电脑里有一份基于你真实客户的报价 PDF",
+        "Gmail Drafts 里有一封起草好的回复",
+        "电脑里有 my-quote Skill — 回家说一句就跑"
+      ],
+      "tools_used": ["claude-cowork", "connectors", "skills"],
+      "demo_mode": "live-full",
+      "interaction": "学员独立跑 · Tutor 1:4 巡场",
+      "teacher_notes_zh": "最易翻车点：① 学员模板字段名跟 Cowork 提示词对不上 — Tutor 教学员让 Cowork 自己『扫一眼模板，告诉我哪些字段需要填』 ② 学员不知道自己 GST 算法 — 准备一份 GST 速查卡（Australia 10% 标准 + 食品 0% 例外）③ 学员英文模板不熟 — 备一份中文版报价模板（来源：JR Academy 教学模板库）。"
+    },
+    {
+      "code": "L_BREAK",
+      "title_zh": "☕ 茶歇 + 互救",
+      "title_en": "Tea Break",
+      "emoji": "☕",
+      "color": "#FFDE59",
+      "start_brisbane": "14:30",
+      "end_brisbane": "14:45",
+      "duration_minutes": 15,
+      "type": "break",
+      "summary_zh": "15 分钟。Tutor 抓这段救场 — 谁 L02 Connector 还没全绿 / 谁 L04 Skill 没存好 / 谁报价 PDF 算错。后面 2.5 小时连跑 3 个 module，地基不稳全场跟不上。",
+      "content_sections": [],
+      "learning_outcomes": [],
+      "tools_used": [],
+      "demo_mode": "break",
+      "teacher_notes_zh": "救人窗口。Tutor 列出全班『谁卡哪一步』，按优先级补漏。茶歇要有点心 + 咖啡 — 小老板下午 2 点半血糖低，注意力会掉。"
+    },
+    {
+      "code": "L05",
+      "title_zh": "Case 2 演示 — 邮件批量起草 + 客户跟进",
+      "title_en": "Case 2 Demo — Bulk Email Reply + Follow-up",
+      "emoji": "📧",
+      "color": "#10b981",
+      "start_brisbane": "14:45",
+      "end_brisbane": "14:57",
+      "duration_minutes": 12,
+      "type": "live-demo",
+      "summary_zh": "老师演示用 Cowork 清理 Gmail 收件箱：扫最近 50 封 → 自动分类（咨询 / 投诉 / 合作 / 广告）→ 给每封咨询起草回复进 Drafts → 给每个跟进客户在 Calendar 建提醒。12 分钟跑透流程。",
+      "content_sections": [
+        "📥 演示（4 分钟）：Cowork 扫 Gmail 最近 50 封 → 输出分类表（每条带优先级）",
+        "✍️ 演示（5 分钟）：让 Cowork 给所有『高优先级咨询』批量起草回复进 Drafts（不直接发，人工 review）",
+        "📅 演示（3 分钟）：让 Cowork 给『需要 3 天后跟进』的客户在 Google Calendar 建提醒",
+        "💾 流程存成 Skill `inbox-triage` 给学员用"
+      ],
+      "learning_outcomes": [
+        "看到 50 封邮件 5 分钟分类完",
+        "知道 Drafts 草稿模式 = AI 起草 + 人工把关",
+        "知道 inbox-triage Skill 怎么用"
+      ],
+      "tools_used": ["claude-cowork", "connectors", "skills"],
+      "demo_mode": "live-full",
+      "teacher_notes_zh": "演示用老师自己的真实 Gmail（提前清理一次脱敏）。学员看到老师邮件分类表那一刻代入感最强 — 他们也是『邮件雪球越滚越大』。强调一句：草稿模式 = AI 不会替你乱发，你最后点 send 那一下还是你控制。"
+    },
+    {
+      "code": "L06",
+      "title_zh": "Case 2 实战 — 清你的 Gmail 收件箱",
+      "title_en": "Case 2 Hands-on — Triage Your Real Gmail",
+      "emoji": "📨",
+      "color": "#10b981",
+      "start_brisbane": "14:57",
+      "end_brisbane": "15:25",
+      "duration_minutes": 28,
+      "type": "quest-hands-on",
+      "summary_zh": "学员用自己 Gmail 跑一遍。L02 已配好 Gmail Connector，直接开干。28 分钟够把最近 50 封邮件全清完 + 起草回复 + 设跟进提醒。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "扫 + 分类",
+          "duration_minutes": 8,
+          "tool": "claude-cowork",
+          "content_zh": "提示词：『扫我 Gmail 最近 7 天的邮件，按 [咨询 / 投诉 / 合作 / 广告 / 杂事] 分类，输出表格写到 ~/Desktop/cowork-workshop/inbox-triage.md，每行带：发件人 / 主题 / 优先级 / 建议动作。』"
+        },
+        {
+          "step": 2,
+          "title_zh": "批量起草回复",
+          "duration_minutes": 12,
+          "tool": "claude-cowork",
+          "content_zh": "提示词：『按 inbox-triage.md 里所有标记『咨询』和『合作』的邮件，给每封起草一份个性化回复进 Gmail Drafts。回复风格：[你想要的语气，比如友善 + 直接 + 不卖关子]，结尾留我电话 [号]。不要直接发，留 Drafts 我审。』Cowork 跑完打开 Gmail Drafts 看 — 一份份 review、改、发。"
+        },
+        {
+          "step": 3,
+          "title_zh": "设跟进提醒",
+          "duration_minutes": 5,
+          "tool": "claude-cowork",
+          "content_zh": "提示词：『刚才所有标记『需要 3 天后跟进』的客户，在我 Google Calendar 建提醒，标题：跟进 [客户名] - [上次主题]，时间 3 天后上午 10 点。』"
+        },
+        {
+          "step": 4,
+          "title_zh": "存成 Skill",
+          "duration_minutes": 3,
+          "tool": "skills",
+          "content_zh": "『把刚才扫邮件 + 起草 + 设提醒整个流程存成 Skill 叫 my-inbox-triage，下次 /my-inbox-triage 一键跑。』 — 这是你今天带回家的第 2 个 Skill。"
+        }
+      ],
+      "learning_outcomes": [
+        "Gmail Drafts 里有 N 封起草好的客户回复",
+        "Calendar 有 M 个跟进提醒",
+        "电脑里有 my-inbox-triage Skill — 每周日下午跑一次清掉一周邮件"
+      ],
+      "tools_used": ["claude-cowork", "connectors", "skills"],
+      "demo_mode": "live-full",
+      "interaction": "学员独立跑 · Tutor 1:4 巡场",
+      "teacher_notes_zh": "学员最容易紧张：『AI 看我所有邮件不会乱发吧』 — 强调三遍 Drafts 模式。另外 Cowork 第一次扫 Gmail 速度有点慢（要拉 50 封逐封读），让学员有心理预期。如果有学员邮件量大（>500 封/天），让他先扫『带星标』或『今天』的子集。"
+    },
+    {
+      "code": "L07",
+      "title_zh": "Case 3 演示 — 一稿多发：朋友圈 / 小红书 / 公众号 / LinkedIn",
+      "title_en": "Case 3 Demo — One Draft, Four Platforms",
+      "emoji": "📱",
+      "color": "#CB6CE6",
+      "start_brisbane": "15:25",
+      "end_brisbane": "15:37",
+      "duration_minutes": 12,
+      "type": "live-demo",
+      "summary_zh": "老师演示一段 200 字产品介绍 → Cowork 改写成 4 个平台版本：朋友圈（100 字 + 卖点突出）/ 小红书（带 #话题 + emoji + 分段）/ 微信公众号（800 字长文 + 配图位）/ LinkedIn（英文专业版 + CTA）。12 分钟讲透平台调性。",
+      "content_sections": [
+        "📝 演示（3 分钟）：老师粘贴一段产品介绍原稿（中文 200 字）",
+        "📲 演示（6 分钟）：Cowork 一次出 4 个平台版本 — 学员看到调性如何不同",
+        "🖼️ 演示（2 分钟）：让 Cowork 把成品落到 Google Drive ~/marketing/2026-W21/ 共享给团队",
+        "💾 流程存 Skill `multi-platform-content`（1 分钟）"
+      ],
+      "learning_outcomes": [
+        "看到一稿如何因平台调整：字数 / 语气 / hashtag / emoji / CTA",
+        "知道哪些平台特征要抓：朋友圈直接卖、小红书带 SEO 话题、公众号深度故事、LinkedIn 专业可信",
+        "知道 multi-platform-content Skill 怎么用"
+      ],
+      "tools_used": ["claude-cowork", "connectors", "skills"],
+      "demo_mode": "live-full",
+      "teacher_notes_zh": "演示用『学员行业的真实产品』 — 比如学员名单里有人开茶饮店，就用茶饮店产品做演示。这样所有学员都能套自己业务。重点强调：AI 出的内容是初稿，你的品牌人格 / 招牌段子 / 客户梗 还是你的。"
+    },
+    {
+      "code": "L08",
+      "title_zh": "Case 3 实战 — 给你的业务做下周一周内容",
+      "title_en": "Case 3 Hands-on — A Week of Content for Your Biz",
+      "emoji": "🎨",
+      "color": "#CB6CE6",
+      "start_brisbane": "15:37",
+      "end_brisbane": "16:05",
+      "duration_minutes": 28,
+      "type": "quest-hands-on",
+      "summary_zh": "学员给自己业务做下周 5 天的内容素材：每天一个主题 × 4 个平台版本。28 分钟够出一周内容 + 落到 Drive 内容库。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "喂业务背景给 Cowork",
+          "duration_minutes": 6,
+          "tool": "claude-cowork",
+          "content_zh": "写一份 brand-context.md 放桌面 cowork-workshop/：你公司做啥 / 主打卖点 / 目标客户画像 / 品牌语气（直接 / 文艺 / 专业 / 接地气）/ 招牌产品 / 价位 / 不能踩的红线。Cowork 后面所有内容都基于这个。"
+        },
+        {
+          "step": 2,
+          "title_zh": "出一周 5 天主题",
+          "duration_minutes": 5,
+          "tool": "claude-cowork",
+          "content_zh": "提示词：『读 brand-context.md，给我下周 5 天的内容主题（周一到周五），每天一个主题：周一福利日 / 周二教育日 / 周三客户故事 / 周四上新 / 周五周末特惠。每个主题写 1 句话钩子。』"
+        },
+        {
+          "step": 3,
+          "title_zh": "5 个主题 × 4 个平台 = 20 个版本",
+          "duration_minutes": 12,
+          "tool": "claude-cowork",
+          "content_zh": "提示词：『给上面 5 个主题，每个出 4 个平台版本（朋友圈 100 字 / 小红书带话题 / 公众号 600-800 字 / LinkedIn 英文 200 字）。落到 Google Drive ~/marketing/2026-W21/，每天一个文件夹，里面 4 个 .md 文件。』"
+        },
+        {
+          "step": 4,
+          "title_zh": "存成 Skill",
+          "duration_minutes": 5,
+          "tool": "skills",
+          "content_zh": "『把刚才『读 brand-context → 出主题 → 4 平台改写 → 存 Drive』整个流程存成 Skill 叫 my-weekly-content，下次 /my-weekly-content 一键跑下一周内容。』 — 第 3 个 Skill。"
+        }
+      ],
+      "learning_outcomes": [
+        "Drive 里有下周 5 天 × 4 平台 = 20 份内容素材",
+        "电脑里有 my-weekly-content Skill",
+        "学会用 brand-context.md 这个『业务记忆卡』把品牌一致性喂给 AI"
+      ],
+      "tools_used": ["claude-cowork", "connectors", "skills"],
+      "demo_mode": "live-full",
+      "interaction": "学员独立跑 · Tutor 1:4 巡场",
+      "teacher_notes_zh": "brand-context.md 是关键 — 不写品牌定位 AI 出的内容会通用化没辨识度。Tutor 帮学员现场写 brand-context（5 分钟够了）。Drive 没启用的退路：内容存桌面 cowork-workshop/marketing/。"
+    },
+    {
+      "code": "L09",
+      "title_zh": "Case 4 演示 — Skill + /schedule 周一早 8 点自动出业务周报",
+      "title_en": "Case 4 Demo — Skill + /schedule Auto Weekly Report",
+      "emoji": "⏰",
+      "color": "#ec4899",
+      "start_brisbane": "16:05",
+      "end_brisbane": "16:20",
+      "duration_minutes": 15,
+      "type": "live-demo",
+      "summary_zh": "前面 3 个 case 已经写了 3 个 Skill，这节升级一档 — 把多个 Skill 串成一个『业务周报』然后用 /schedule 配每周一早 8 点自动跑。明天起每周一你倒咖啡的时间，桌面 weekly-report-2026-WXX.md 已经躺在那里。",
+      "content_sections": [
+        "📊 演示（5 分钟）：Cowork 写 weekly-report Skill — 拉本周销售（Excel）+ 待跟进（Gmail Drafts 数）+ 待发内容（Drive marketing 文件夹）+ 上周对比",
+        "⏰ 演示（5 分钟）：`/schedule` 配周一 08:00 cadence + Working folder 设到桌面",
+        "▶️ 演示（3 分钟）：手动 Run now 触发一次 — 桌面 weekly-report-2026-W21.md 落地",
+        "🚨 演示（2 分钟）：3 个长期注意事项（电脑必须 awake / 反爬 fallback / 配额成本）"
+      ],
+      "learning_outcomes": [
+        "看到 Skill 怎么串多个数据源（Excel + Gmail + Drive）",
+        "看到 /schedule 配置全流程",
+        "理解 Cowork 的 Schedule 不是云端 daemon — 电脑要醒着"
+      ],
+      "tools_used": ["claude-cowork", "skills", "schedule", "connectors"],
+      "demo_mode": "live-full",
+      "teacher_notes_zh": "演示前一晚老师已配好自己的 weekly-report，第二天直接打开真实周报给学员看『我桌面今早 8:01 这个文件就在这里』 — 信任感拉满。再强调电脑必须开机：笔记本就让它常开（Mac sleep + display off 算 awake，看 Settings → Energy）。"
+    },
+    {
+      "code": "L10",
+      "title_zh": "Case 4 实战 — 配你自己的每周自动化",
+      "title_en": "Case 4 Hands-on — Your Weekly Automation",
+      "emoji": "🤖",
+      "color": "#ec4899",
+      "start_brisbane": "16:20",
+      "end_brisbane": "16:45",
+      "duration_minutes": 25,
+      "type": "quest-hands-on",
+      "summary_zh": "学员选一个自己最痛的场景配自动化。3 个推荐方向：① 周一早 8 点出业务周报 ② 每天早 9 点扫客户咨询自动起草报价（串前面 my-quote Skill）③ 每周日下午 6 点出下周内容（串 my-weekly-content Skill）。25 分钟够选一个跑通。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "选你的场景 + 写 Skill 草稿",
+          "duration_minutes": 8,
+          "tool": "skills",
+          "content_zh": "3 个推荐场景 PPT 里有，挑一个最贴近你业务的。让 Cowork：『帮我写一个 Skill 叫 my-weekly-report（或别的名字），每次触发：[列你的步骤]。建完跑一次让我看效果。』"
+        },
+        {
+          "step": 2,
+          "title_zh": "迭代到满意",
+          "duration_minutes": 8,
+          "tool": "skills",
+          "content_zh": "看产物 → 不对的让 Cowork 改 — 哪个字段缺、哪个数据源不对、哪个格式难看。改完再跑。一般 2-3 轮收敛。"
+        },
+        {
+          "step": 3,
+          "title_zh": "/schedule 配 cadence",
+          "duration_minutes": 6,
+          "tool": "schedule",
+          "content_zh": "输 `/schedule`：① 任务名 my-weekly-report ② Prompt：『跑 my-weekly-report Skill』③ 频率 Weekly / Monday / 08:00（按你的场景调）④ Working folder 选桌面 cowork-workshop/。Save。Scheduled tab 看到任务 = 配置成功。"
+        },
+        {
+          "step": 4,
+          "title_zh": "Run now 验证",
+          "duration_minutes": 3,
+          "tool": "schedule",
+          "content_zh": "Scheduled tab 找 my-weekly-report → Run now。跑完看产物 — 字段全 / 格式对 = 通过。这是你今天带回家的第 4-5 个 Skill + 第 1 个 Schedule。"
+        }
+      ],
+      "learning_outcomes": [
+        "电脑里有第 4 个（Skill）+ 第 1 个（Schedule）",
+        "下周该 cadence 自动跑 — 不用你再动手",
+        "理解 Cowork『Skill + Schedule』组合 = 真正的自动化"
+      ],
+      "tools_used": ["claude-cowork", "skills", "schedule", "connectors"],
+      "demo_mode": "live-full",
+      "interaction": "学员独立跑 · Tutor 1:4 巡场",
+      "teacher_notes_zh": "整节课的高潮 — 学员真正『AI 替我干活』那一刻。Tutor 提前准备 3 个场景的 Skill 模板代码（周报 / 自动报价 / 周内容），学员在模板上改，比从零写省 70% 时间。强调电脑必须开机 — 这条不强调下周一会有学员问『我周报没跑啊』。"
+    },
+    {
+      "code": "L11",
+      "title_zh": "Demo Day + 课后 30 天行动",
+      "title_en": "Demo Day + 30-day Follow-up Plan",
+      "emoji": "🎤",
+      "color": "#6366f1",
+      "start_brisbane": "16:45",
+      "end_brisbane": "17:00",
+      "duration_minutes": 15,
+      "type": "demo-day-wrap",
+      "summary_zh": "每人 1 分钟分享今天做出来最有用的 1 个东西（11 人 × 1 = 11 分钟）+ 老师 4 分钟讲今晚 / 这周 / 一个月行动清单 + 进阶路径。",
+      "content_sections": [
+        "🎤 Demo Day（11 分钟）：每人轮流 1 分钟分享 — 你今天做出来最得意的一个 Skill / Schedule / 产物",
+        "📅 今晚回家（1 分钟）：让 my-quote 跑你下周一份要发的真实报价 + 让 my-inbox-triage 清掉今晚邮件",
+        "📅 这周（1 分钟）：让 weekly-content Skill 跑下周内容 + 给员工 / 合伙人演示一次 Cowork（团队推广开始）",
+        "📅 一个月（1 分钟）：再写第 6-10 个 Skill — 按你最痛的杂活选；评估 Pro A$30 是不是值（90% 学员一个月后说值）",
+        "📚 进阶路径（1 分钟）：JR Academy AI Adoption Bootcamp（8 周深度）+ OpenClaw Workshop（合规敏感场景 + IM 派活儿）+ Cowork 官方 docs / Plugin marketplace"
+      ],
+      "learning_outcomes": [
+        "拿到一份『今晚 / 这周 / 一个月』行动清单",
+        "看到全班 11 个不同行业的真实落地 — 知道自己不是孤军",
+        "知道下一步学习去哪（JR Academy 进阶 / Cowork 官方资源）"
+      ],
+      "tools_used": [],
+      "demo_mode": "demo-share",
+      "teacher_notes_zh": "Demo Day 控时严格 — 每人 1 分钟，超时直接打断（友善地）。这是学员看到全班 11 个行业落地的关键时刻 — 餐饮老板看到设计师在做啥、设计师看到电商在做啥，破圈感最强。最后 4 分钟讲行动 + 进阶 — 给 JR Academy bootcamp 转化做铺垫但不硬推。散场前发反馈表（NPS + 一句改进建议）。"
+    }
+  ],
+  "faq": [
+    {
+      "id": "q1",
+      "question_zh": "我完全不懂技术，没用过 ChatGPT，能跟得上吗？",
+      "answer_zh": "能。这个 workshop 就是为零技术基础的小老板和自由职业者设计的。Cowork 全程图形界面，没有终端、没有命令行、不写代码 — 你只要会打字会用 Excel 就能跟上。每一步老师等所有人完成才往下走，1:4 Tutor 巡场救场。课前如果你完全没碰过 AI 工具，可以提前 5 分钟玩一下 ChatGPT 或 claude.ai 找下『跟 AI 说话』的手感，不需要更多准备。",
+      "topic": "prerequisite"
+    },
+    {
+      "id": "q2",
+      "question_zh": "Claude Cowork 必须付费吗？我不付费能上这节课吗？",
+      "answer_zh": "Cowork 必须 Claude Pro / Max / Team / Enterprise 付费档（A$30/月起），免费档没有 Cowork tab。课上没付费档的可以用 JR 共享测试号过一遍 4 小时，但回家继续用必须自己订。说实话 A$30/月一份咖啡钱换一个不睡觉的助理 — 课上做完报价单 + 邮件批量回复 + 一周内容那一刻，你大概率自己就订了。",
+      "topic": "cost"
+    },
+    {
+      "id": "q3",
+      "question_zh": "我业务数据很敏感（客户身份证、合同金额、内部财务），能用 Cowork 吗？",
+      "answer_zh": "Cowork 干每件事前都会让你 Approve（除非你在 Settings 关了 — 不建议关）。文件读写默认只在你指定的 working folder 内，跨文件夹要单独授权。Connector 走 OAuth 权限细到 scope。但敏感数据（客户身份证 / 银行账户 / 未公开合同金额）上传前还是建议用 [客户A] [金额X] 打码 — 这是好习惯不是 Cowork 的锅。如果你是律师 / 会计 / 医疗背景需要 100% 数据本地 — 那个场景应该看 OpenClaw Workshop（数据完全不出设备）。",
+      "topic": "security"
+    },
+    {
+      "id": "q4",
+      "question_zh": "Mac / Win 都行吗？iPad 行不行？",
+      "answer_zh": "Mac (macOS 11+) 和 Win 10+ 都行。Linux 暂时没 Cowork 桌面 App。iPad / 手机不行 — 主战场必须是桌面（手机 Claude App 只能做 L11 Dispatch 派活儿用）。Win 用户务必下 MSIX 安装包，老的 .exe 没 Cowork tab — 这是踩坑率最高的点。",
+      "topic": "platform"
+    },
+    {
+      "id": "q5",
+      "question_zh": "课前要准备什么？",
+      "answer_zh": "6 件事：① 自带笔记本（Mac 11+ 或 Win 10+，不能 iPad）② 注册 Anthropic 账号 + Claude Pro 订阅（A$30/月，没订也能来用 JR 共享号）③ 桌面建空文件夹 ~/Desktop/cowork-workshop ④ 准备一个个人 Gmail（不是工作 G Workspace）⑤ 带你常用的报价/发票/合同模板（Excel 或 Word）⑥ 想清楚一个真实业务场景（一份要发的客户报价 / 一周要清的客户邮件 / 一周要发的营销内容 — 至少有一个准备好）。详见课前清单。",
+      "topic": "preparation"
+    },
+    {
+      "id": "q6",
+      "question_zh": "/schedule 我配好周一早 8 点跑周报，那时候我电脑关机了怎么办？",
+      "answer_zh": "🚨 跑不动。Cowork Scheduled Task 不是云端 daemon — 必须电脑 awake + Cowork app 开着才跑。睡眠期间触发的会跳过，电脑醒了 + Cowork 重新打开会自动补跑一次（你会收通知）。3 个解决方案：① 笔记本就让它常开（睡眠不影响 — Mac sleep + display off 算 awake，看 Settings → Energy）② 装家里 / 公司常开的台式机 ③ 不需要每周必跑的就接受『偶尔跳一次』。本节课设的『周一 8 点周报』预设场景是『笔记本周日不关机 / 周一一早自动跑完你 9 点开盖子就看到』，最简单可行。",
+      "topic": "schedule"
+    },
+    {
+      "id": "q7",
+      "question_zh": "我做餐饮（不是 IT 行业），4 小时学这个划算吗？",
+      "answer_zh": "划算。我们办过几期 SME workshop，餐饮老板回家做的事：① 用 my-quote Skill 给周一企业团餐自动报价（之前要 30 分钟手填模板，现在 3 分钟）② 用 my-inbox-triage 清外卖平台投诉邮件（一周省 2 小时）③ 用 weekly-content Skill 出小红书 / 抖音文案（之前要外包内容代运营月 A$500）④ 用 weekly-report 看销售数据（之前要会计周一打电话报）。一个月省下时间 + 省下外包费，A$129 课程费 + A$30/月 Pro 大概一周回本。",
+      "topic": "value"
+    },
+    {
+      "id": "q8",
+      "question_zh": "课后有支持吗？录播？答疑群？",
+      "answer_zh": "3 件兜底：① 课程录播开课后 3 天内发学员（中文字幕）② 老师 5 个 Skill 模板 + 4 个 Schedule 配置打包发学员（拿回家直接套自己场景）③ JR Academy 平台 27+ 个 Prompt Lab 互动练习配套巩固。不开长期答疑群（避免变无效信息池）。课后 30 天遇到卡点可以邮件给老师，30 天后想要长期社群和系统学习看 JR Academy 的 AI Adoption Bootcamp（8 周深度版）。",
+      "topic": "support"
+    },
+    {
+      "id": "q9",
+      "question_zh": "我已经在用 ChatGPT Plus 了，再订 Claude Pro 是不是重复花钱？",
+      "answer_zh": "不重复。两个产品定位不一样：ChatGPT 主要『跟 AI 聊天 / 问问题 / 写文字』 — 你打开网页跟它对话。Cowork 是『让 AI 替你动鼠标干电脑上的事』 — 它真的会开你 Excel / 改你 PPT / 抓网页 / 发邮件 / 定时跑。本节课 4 个 case 全部是 ChatGPT 做不了的（ChatGPT 没有 Computer Use + 没有桌面 App + 没有 Schedule）。如果你长期想自动化办公，Cowork 这个工具的可替代性目前为零。如果想停 ChatGPT 改用 Claude — Claude 的 Chat 也不弱，可以一起替。",
+      "topic": "tools"
+    },
+    {
+      "id": "q10",
+      "question_zh": "我能拉我合伙人 / 员工一起来吗？",
+      "answer_zh": "欢迎，团队来 2-3 个人最划算 — 课后回去能马上互相配合（一人写 brand-context、一人写报价模板、一人配 schedule）。8-12 人小班一组家公司不会超过 3 个名额（避免一家公司占太多席位影响多元化）。团队 2 人以上同时报名联系我们邮箱有团队价 — A$129 单人 / A$229 双人 / A$329 三人。",
+      "topic": "team"
+    }
+  ],
+  "prep": [
+    {
+      "step": 1,
+      "title_zh": "自带笔记本电脑",
+      "requirement": "required",
+      "duration_minutes": 0,
+      "detail_zh": "Mac (macOS 11+) 或 Win 10+。不能用 iPad / 手机 — 主战场是桌面 App。电源线带上（Cowork 跑 4 小时挺耗电）。"
+    },
+    {
+      "step": 2,
+      "title_zh": "下载 Claude Desktop",
+      "requirement": "required",
+      "duration_minutes": 5,
+      "detail_zh": "去 claude.com/download。Mac 选 .dmg；Win 选 MSIX 安装包，**不要下老的 .exe 版本** — 老版没有 Cowork tab。装好打开 Claude Desktop 顶部能看到 Chat / Cowork / Code 三个 tab = 装对了。",
+      "url": "https://claude.com/download"
+    },
+    {
+      "step": 3,
+      "title_zh": "订阅 Claude Pro（或确认有付费档）",
+      "requirement": "required",
+      "duration_minutes": 5,
+      "detail_zh": "去 claude.com/upgrade 订 Pro A$30/月。Cowork 只在 Pro / Max / Team / Enterprise 有，免费档没 Cowork tab。课上没订的会发 JR 共享测试账号体验 4 小时，但回家继续用必须自己订。",
+      "url": "https://claude.com/upgrade"
+    },
+    {
+      "step": 4,
+      "title_zh": "桌面建空文件夹 ~/Desktop/cowork-workshop",
+      "requirement": "required",
+      "duration_minutes": 1,
+      "detail_zh": "课上 L02 第一次跑 Cowork 用这个文件夹，所有 case 文件落在里面。Finder / Explorer 直接新建。"
+    },
+    {
+      "step": 5,
+      "title_zh": "准备一个个人 Gmail",
+      "requirement": "required",
+      "duration_minutes": 0,
+      "detail_zh": "L02 配 Gmail Connector 用，**用个人 Gmail，不是工作 G Workspace 邮箱**（工作号偶尔被组织策略拦 OAuth）。如果业务往来在工作邮箱也没关系，Cowork 配个人 Gmail 用来过流程，回家再配工作邮箱。"
+    },
+    {
+      "step": 6,
+      "title_zh": "带 1-2 份你常用的业务模板",
+      "requirement": "required",
+      "duration_minutes": 5,
+      "detail_zh": "至少带 1 份：报价单 / 发票 / 合同 / 提案 模板（Excel 或 Word）。L04 实战要用你自己模板出 PDF — 没模板就只能跟着老师做通用示例，少一半价值。模板里要有：你公司抬头 / ABN / GST 注册号 / 联系方式 — 这些是 Cowork 帮你自动填进去的字段。"
+    },
+    {
+      "step": 7,
+      "title_zh": "想清楚一个真实业务场景",
+      "requirement": "recommended",
+      "duration_minutes": 10,
+      "detail_zh": "至少准备一个真实场景给 L04 / L06 / L08 / L10 实战用：① 一份你下周要发的客户报价（场景 + 客户名 + 项目描述）② 一周要清的客户咨询邮件 ③ 一周要发的营销内容（产品介绍 + 目标客户）④ 一个想自动化的每周杂活（销售周报 / 月度对账 / 跟进提醒）。准备越具体课上跑出来的产物越能直接用。"
+    },
+    {
+      "step": 8,
+      "title_zh": "（可选）写一份 brand-context.md",
+      "requirement": "optional",
+      "duration_minutes": 15,
+      "detail_zh": "L08 营销内容实战要用 brand-context.md 喂 Cowork 你的品牌定位。课前写好回家更省时间。模板：你公司做啥 / 主打卖点 / 目标客户画像 / 品牌语气（直接 / 文艺 / 专业 / 接地气）/ 招牌产品 / 价位 / 不能踩的红线。300-500 字够。"
+    }
+  ],
+  "marketing": {
+    "tagline_zh": "AI 是你最便宜的员工 · 4 小时工作坊",
+    "tagline_en": "AI is your cheapest hire · 4-hour hands-on workshop",
+    "headline_zh": "你 1 个人就是一家公司 · 让 Claude Cowork 替你处理报价 / 邮件 / 营销 / 月报",
+    "subheadline_zh": "5 月 23 日 周六 1-5pm · 布里斯班 CBD · 8-12 人小班 · A$129（5/9 前 A$99 早鸟）",
+    "primary_cta_zh": "立即报名（A$129 限 12 席）",
+    "secondary_cta_zh": "5/9 前 A$99 早鸟",
+    "social_proof_zh": "上一期 Sydney 班 NPS 9.4 · 学员一周内全部用上 my-quote / my-inbox-triage 至少一个 Skill",
+    "highlights_zh": [
+      "🧾 走时电脑里有 5 个能复用的 Skill（报价 / 邮件 / 一稿多发 / 周报 / 跟进）",
+      "📧 现场清你 Gmail 50 封 · 起草回复进 Drafts · 不再周末熬夜",
+      "📱 一稿多发到朋友圈 / 小红书 / 公众号 / LinkedIn · 不再每平台改写一遍",
+      "⏰ 配置 /schedule 周一 8 点自动出业务周报 · 你倒咖啡的时间它跑完",
+      "👥 8-12 人小班 · 1:4 Tutor · 实操不掉队"
+    ],
+    "venue_note_zh": "具体场地（布里斯班 CBD / King George Square 附近）课前 7 天邮件通知。备咖啡 + 茶点 + 高速 Wi-Fi。"
+  },
+  "post_workshop_offering": {
+    "title_zh": "课后衔接",
+    "items": [
+      { "name_zh": "录播视频（中文字幕）", "delivery_zh": "课后 3 天内邮件发学员", "value_zh": "回家照着再跑一遍" },
+      { "name_zh": "5 个 Skill 模板包", "delivery_zh": "课后当天发", "value_zh": "my-quote / my-inbox-triage / my-weekly-content / my-weekly-report / my-followup — 改改就能套自己业务" },
+      { "name_zh": "1 次 30 天答疑邮件", "delivery_zh": "30 天内邮件 → 老师回", "value_zh": "卡点直接问，30 天后想要长期支持转 AI Adoption Bootcamp 学员社群" },
+      { "name_zh": "JR Academy 平台 30 天试用", "delivery_zh": "课后开通", "value_zh": "Prompt Lab 27+ 互动练习 + Vibe Coding Hub + 学习路径" }
+    ],
+    "next_steps_zh": [
+      "进阶 1（深度版）：AI Adoption Bootcamp 8 周课程（每周直播 + 长期社群 + 1:1 答疑）",
+      "进阶 2（合规场景）：OpenClaw Workshop 4 小时（数据完全本地 + IM 派活儿，律师/会计/医疗友好）",
+      "进阶 3（团队版）：上门企业培训（贵公司全员 4 小时，定制行业 case，A$2999/天起）"
+    ]
+  }
+}
