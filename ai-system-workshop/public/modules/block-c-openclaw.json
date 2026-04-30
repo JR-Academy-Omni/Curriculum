@@ -32,46 +32,99 @@
 
     {
       "code": "L08",
-      "title": "Live Demo：客户邮件 → 报价单 PDF 全自动",
+      "title": "Live Demo：OpenClaw 跑通一个完整业务任务",
       "type": "Lesson",
       "isLive": true,
       "duration": 25,
-      "description": "讲师现场演示一个完整业务任务 — 收到一封模拟客户咨询邮件（含需求清单），OpenClaw 读邮件 → 提取需求 → 调用 quote-pdf Skill → 套公司模板 → 输出带 GST / 抬头 / 项目明细的 PDF 给老板审。学员同步看屏幕，每一步问一次『为什么这步是这样』。",
-      "outline": [
-        "00:00-03:00  讲师把一封模拟客户邮件发到自己 Gmail（Subject: 询价 - 厨房翻新）",
-        "03:00-08:00  在 OpenClaw 里输入 `/read-latest-email --from clients`，AI 把邮件原文 + 提取的需求列表显示出来。讲师指出：『这一步 AI 在干什么、为什么这样写 prompt』",
-        "08:00-15:00  调用 `/quote-pdf` Skill — Skill 内部读模板（讲师事先放在 ~/skills/quote-pdf/template.md）+ 客户需求 + 公司抬头 + 当天 GST 税率，调用 Pandoc 生成 PDF",
-        "15:00-20:00  PDF 出来后讲师演示『AI 起草，老板审』 — 故意指出 PDF 里 1 处 AI 写得不对，演示怎么 1 句话让 OpenClaw 改，10 秒重新出版",
+      "description": "讲师现场演示一个完整业务任务 — 输入（邮件 / 文档 / 图片 / 客户消息）→ OpenClaw 处理 → 输出（PDF / 表格 / 邮件草稿 / WhatsApp 消息）。学员同步看屏幕，每一步问一次『为什么这步是这样』。具体场景待定（见 demo_status），但教学骨架已锁定。",
+      "demo_status": "❓ 待定 — 具体演示场景由讲师在开课前 2 周内定，从下方候选清单选 1 个，或自定。选定后回填 demo_script 字段。",
+      "demo_skeleton_outline": [
+        "00:00-03:00  讲师把『触发输入』喂进 OpenClaw（一封邮件 / 一份 PDF / 一句话指令）",
+        "03:00-08:00  OpenClaw 第一阶段：读取 + 理解 + 提取关键信息。讲师边讲『AI 在干什么 / 为什么 prompt 这样写』",
+        "08:00-15:00  OpenClaw 第二阶段：调用 Skill 模板 + 套公司信息 + 生成最终输出（PDF / 表格 / 草稿）",
+        "15:00-20:00  演示『AI 起草，老板审』 — 故意指出输出里 1 处 AI 没拿准的地方，1 句话让 OpenClaw 改，10 秒重新出版",
         "20:00-25:00  把整个流程拆成『Skill 模板 + 触发指令 + 审阅习惯』三件套 — 学员理解这是『可复用的工序』不是『一次性魔法』"
       ],
-      "demo_script": [
-        "邮件内容：『Hi，想做厨房翻新，3.5x4m 空间，要换橱柜 + 台面（Caesarstone）+ 洗碗机集成，预算 25k 以内，下周三前给个报价』",
-        "讲师 Prompt：『读最新一封 clients folder 里的邮件，按 quote-pdf Skill 出报价单 PDF，公司抬头 ABC Renovations，ABN 12 345 678 901，含 10% GST，明细分项列出』",
-        "预期 PDF 内容：客户信息 / 项目明细 4 行（橱柜 / 台面 / 洗碗机集成 / 安装人工）/ 小计 + GST + 总价 / 有效期 14 天 / 老板签字位"
+      "demo_candidates": [
+        {
+          "id": "quote-pdf",
+          "scenario": "客户咨询邮件 → 报价单 PDF（含 GST / ABN / 公司抬头）",
+          "fit_industries": "装修 / 律师 / 会计 / 美容 / 跨境代购 — 任何要发报价的行业",
+          "complexity": "中等",
+          "wow_factor": "高（PDF 一键出版让老板秒懂价值）",
+          "prep_effort": "讲师准备 3-5 行业模板 zip + 1 封模拟咨询邮件"
+        },
+        {
+          "id": "invoice-from-email",
+          "scenario": "客户确认订单邮件 → 自动生成 invoice + 推 Xero / MYOB",
+          "fit_industries": "零售 / 电商 / B2B 服务",
+          "complexity": "中高（要接 Xero MCP）",
+          "wow_factor": "高（直接对接会计系统冲击力强）",
+          "prep_effort": "讲师准备 Xero sandbox 账号 + invoice 模板"
+        },
+        {
+          "id": "contract-review",
+          "scenario": "上传合同 PDF → OpenClaw 标红风险条款 + 给修改建议",
+          "fit_industries": "律师 / 会计 / 房产 / 任何签合同的行业",
+          "complexity": "中等",
+          "wow_factor": "中高（专业人士秒懂）",
+          "prep_effort": "讲师准备 1 份脱敏合同 PDF + 标准红线规则"
+        },
+        {
+          "id": "customer-triage",
+          "scenario": "WhatsApp / 邮件咨询批量进来 → OpenClaw 分类（紧急/常规/广告）+ 起草初稿",
+          "fit_industries": "餐饮 / 美容 / 服务行业 / 律所小所",
+          "complexity": "中等",
+          "wow_factor": "高（堆积 50 封一键清空视觉冲击大）",
+          "prep_effort": "讲师准备 10-20 封模拟咨询邮件 / WhatsApp 截图"
+        },
+        {
+          "id": "doc-to-summary",
+          "scenario": "上传一份 30 页的会议纪要 / 报告 / 法规 → OpenClaw 出 1 页中文摘要 + 行动清单",
+          "fit_industries": "通用 — 所有行业老板都需要",
+          "complexity": "低",
+          "wow_factor": "中（容易但每个老板都用得上）",
+          "prep_effort": "讲师准备 1 份长文档（行业相关）"
+        },
+        {
+          "id": "social-repurpose",
+          "scenario": "一段产品介绍 → OpenClaw 改写成朋友圈 / 小红书 / LinkedIn / 公众号 4 个版本",
+          "fit_industries": "零售 / 电商 / 美容 / 餐饮 / 一切要做营销的",
+          "complexity": "低",
+          "wow_factor": "中高（一稿多发本来就是老板痛点）",
+          "prep_effort": "讲师准备 1 段产品文案"
+        }
+      ],
+      "selection_criteria": [
+        "1️⃣ 跟当期学员行业最匹配（看 Block A 报名表的行业分布，选最大公约数）",
+        "2️⃣ 视觉冲击强 — Live Demo 是『卖梦』时刻，PDF / 表格 / 多版本输出比『一段对话』更震撼",
+        "3️⃣ 时间可控 — 25 分钟内能跑完 + 留 5 分钟讲解，避免现场卡壳",
+        "4️⃣ 可复制到 L09 — 学员在 L09 实操时要能套同一个 Skill 跑自己数据，所以 Demo 场景必须有 5 行业模板可拷"
       ],
       "outcome": "学员看完一个完整可复制的 Skill 用法，知道下一步自己要装什么样的 Skill"
     },
 
     {
       "code": "L09",
-      "title": "实操：用你自己的 Gmail 跑通第一个 OpenClaw 任务",
+      "title": "实操：用你自己的素材跑通第一个 OpenClaw 任务",
       "type": "Workshop",
       "isLive": true,
       "duration": 25,
-      "description": "学员在自己电脑上重复 Live Demo 的流程 — 打开自己的 Gmail，找一封最近的客户邮件（或我们提供的模拟邮件），用 OpenClaw 跑通一次。我们准备了 5 个行业的 quote-pdf 模板（律师 / 会计 / 餐饮报价 / 装修 / 美容），学员选一个套上去。Tutor 1:5 陪跑，举手 30 秒到位。",
-      "outline": [
-        "00:00-05:00  学员选行业模板 — Tutor 把 5 个模板文件 cp 到学员 ~/skills/quote-pdf/ 目录",
-        "05:00-15:00  学员各自找一封自己邮箱里的咨询邮件（或用我们的模拟邮件兜底），跑 `/quote-pdf`，PDF 出来给同桌看",
-        "15:00-22:00  调风格 — 学员让 OpenClaw 改公司抬头 / ABN / GST 比例 / 加 logo / 改语气（正式 vs 亲切），每改一次 1 句 prompt，立刻重新出版",
-        "22:00-25:00  导出 PDF，存到 Desktop，讲师宣布『午饭时间 — 但你现在已经有一个能用的报价 Skill 了』"
+      "description": "学员重复 L08 Live Demo 的流程 — 用自己的输入素材（邮件 / 文档 / 客户消息 / 截图）跑同一套 Skill，输出自己公司专属版本。具体素材 + 模板跟 L08 选定的 demo 场景对齐。Tutor 1:5 陪跑，举手 30 秒到位。",
+      "skeleton_outline": [
+        "00:00-05:00  学员选行业模板 — Tutor 把对应 Skill 模板 cp 到学员 ~/skills/<skill-name>/ 目录",
+        "05:00-15:00  学员各自用自己的素材（自己邮箱 / 自己文档 / 自己客户记录），跑 Skill，输出给同桌看",
+        "15:00-22:00  调风格 — 让 OpenClaw 改公司抬头 / 字段 / 排版 / 语气（正式 vs 亲切），每改一次 1 句 prompt，立刻重新出版",
+        "22:00-25:00  导出最终输出存 Desktop，讲师宣布『午饭时间 — 你现在已经有一个能用的 Skill 了』"
       ],
+      "alignment_with_l08": "L08 一旦选定 demo 场景，L09 直接复用同一个 Skill — 讲师只需准备『5 行业占位符模板包』即可。模板包内容随 L08 demo 候选确定（quote-pdf / invoice / contract-review / customer-triage / doc-summary / social-repurpose 任一）。",
       "tutor_protocol": [
         "Tutor 1:5 比例。每位 Tutor 负责盯 5 位学员，举手 30 秒到位",
-        "最常见 3 个卡点：① Gmail Connector OAuth 走错账号 → 退出重接 ② quote-pdf Skill 模板里 ABN 占位符没替换 → 教学员改 frontmatter ③ Pandoc 没装 → brew install pandoc / WSL apt install pandoc",
-        "如果 5 分钟解决不了的，Tutor 直接给 backup 方案 — 用我们准备好的预制 PDF 文件让学员先看到结果，环境问题课后单独修"
+        "最常见 3 类卡点（具体内容随 demo 场景调整，但模式是固定的）：① Connector / OAuth 出错 → 退出重接 ② 模板占位符没替换全 → grep 一次扫光 ③ 依赖工具没装（如 Pandoc / 字体）→ Tutor 一行命令补"
       ],
-      "deliverable": "每位学员 Desktop 上有 1 个用自己公司抬头出的报价单 PDF",
-      "outcome": "OpenClaw 第一个真实业务任务跑通，学员 Desktop 上有自己公司抬头的报价单 PDF — 不是 demo 数据，是能直接发给客户的"
+      "fallback": "如果学员 5 分钟内还跑不通，Tutor 给 backup — 用讲师事先准备好的成品输出文件让学员先看到结果，环境问题课后 1:1 修",
+      "deliverable": "每位学员 Desktop 上有 1 个用自己公司抬头 / 自己素材的最终输出（PDF / 文档 / 邮件草稿 — 取决于 L08 demo 场景）",
+      "outcome": "OpenClaw 第一个真实业务任务跑通 — 不是 demo 数据，是学员自己业务素材产出"
     }
   ]
 }
