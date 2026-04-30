@@ -1,0 +1,78 @@
+{
+  "moduleId": "phase-0-pre-class",
+  "phaseName": "Phase 0 — 课前装机（T-3 天，远程）",
+  "color": "#6366f1",
+  "summary": "AI 小花 Quest 一对一装 OpenClaw + Hermes 云端模板",
+  "estimatedDuration": 60,
+  "schedule": "报名成功后 T-3 天发邮件，自由安排时间在线完成",
+  "deliveryMode": "远程 · AI 小花 Quest 模式（chat-driven）",
+  "supportSafetyNet": "AI 小花卡住超过 5 分钟自动叫人类 Tutor 接手；课前 24 小时内未完成会有专人电话联系",
+  "outcomes": [
+    "OpenClaw 装在你自己电脑上（Mac 或 Win），命令行能跑通",
+    "LLM API Key 配好（Claude / OpenAI / Gemini 任一）",
+    "Hermes 云端模板在你账号下创建好（一键 Fork），等当天激活",
+    "课前已经发出过『第一条指令』，知道这玩意儿真的会回话"
+  ],
+  "whyPreClass": "线下 Workshop 最大的坑是『前 1 小时全在装环境，剩 3 小时没干正事』。我们把装机搬到课前，AI 小花一对一带，每一步贴终端输出当场验证，出错立刻纠正。课前 100% 装完，当天直接上手做业务。",
+
+  "lessons": [
+    {
+      "code": "L01",
+      "title": "课前须知 — 设备清单 + 时间安排",
+      "type": "Information",
+      "isLive": false,
+      "duration": 10,
+      "description": "确认你的设备符合最低要求（Mac M1+ / Win 10+ 16G 内存 / 网络稳定），了解课前 T-3 / T-1 / 当天三个关键时间点该做什么。",
+      "outline": [
+        "Mac 系统要求：macOS 13+ · Apple Silicon 优先（Intel 也能跑但慢）",
+        "Win 系统要求：Windows 10/11 · 16GB 内存 · 启用 WSL2（Quest 会带你装）",
+        "网络：能稳定访问 GitHub / npm / Anthropic / OpenAI（普通家庭宽带 OK）",
+        "邮箱 / WhatsApp / 浏览器登录正常 — 当天我们会接进 OpenClaw",
+        "时间表：T-3 收装机邮件 · T-1 收场地 + 议程 · 当天 09:00 到场签到"
+      ],
+      "notes": "如果你公司用的是 Group Policy 锁定的电脑，必须能装第三方软件 — 否则报名前请先跟 IT 沟通，或当天用我们提供的云端虚拟机方案"
+    },
+
+    {
+      "code": "L02",
+      "title": "注册 LLM API Key（3 选 1）",
+      "type": "Information",
+      "isLive": false,
+      "duration": 15,
+      "description": "OpenClaw / Hermes 都需要一个『大脑』 — 一个 LLM API Key。Claude / OpenAI / Gemini 任选其一，报销额度 USD $5 课前由 JR Academy 充值给你。",
+      "outline": [
+        "推荐顺序：Claude（Anthropic）> OpenAI > Gemini · 我们的 Skill 主要测过 Claude",
+        "Claude API Key 注册：console.anthropic.com → 注册 → API Keys → Create",
+        "OpenAI API Key：platform.openai.com → 同上路径",
+        "拿到 sk-ant-xxx 或 sk-xxx 形式的字符串后，妥善保存，当天填入 OpenClaw",
+        "📩 课前 24 小时内回复邮件确认你拿到了 Key，我们给你充 USD $5 测试额度"
+      ],
+      "outcome": "拿到一个 sk-xxx 形式的 API Key，准备在 L03 装机时填入"
+    },
+
+    {
+      "code": "L03",
+      "title": "🌸 AI 小花 Quest — 装 OpenClaw + 配 Hermes 云端模板",
+      "type": "Quest",
+      "isLive": false,
+      "duration": 35,
+      "description": "AI 小花老师在你浏览器里一对一带你装机。6 步走完：① 系统检测 → ② 装运行时（Mac 终端 / Win WSL2）→ ③ 装 OpenClaw → ④ 填 API Key + 验证 → ⑤ 一键 Fork Hermes 云端模板 → ⑥ 发出第一条指令。每步贴终端输出 / 截图，AI 小花当场校验。",
+      "quest": {
+        "title": "🌸 装好你的 AI 工作系统（OpenClaw + Hermes）",
+        "learningGoal": "在自己的电脑上把 OpenClaw 装好并能发指令，把 Hermes 云端模板 Fork 到自己账号下，为线下 Workshop 当天做准备。",
+        "context": "学员是传统行业老板，零编程零 IT 背景。装机 6 步：(1) 检测系统（macOS 13+ 或 Win 10+，截图给我看 About This Mac / 系统信息）；(2) Mac 用户打开 Terminal 跑 `node -v` 确认 ≥22，没装就用我给的命令装 nvm；Win 用户先开 WSL2（PowerShell 管理员跑 `wsl --install`，重启后再 `node -v`）；(3) 跑 `npm install -g openclaw` 装 OpenClaw，贴终端输出验证；(4) 创建 ~/.openclaw/config.json 填 API Key（我会给你模板，你只改 sk-xxx 那一行），跑 `openclaw test` 验证返回成功；(5) 打开 github.com/jr-academy/hermes-template 点 Fork（如果学员没 GitHub 账号，引导他先 30 秒注册一个）；(6) 在 OpenClaw 终端输入『你好，介绍一下自己，并告诉我今天日期』，AI 应该回复一段中文 + 当天日期，截图给我确认。每一步都要等学员贴终端输出 / 截图我看过再走下一步。如果某步卡 5 分钟以上，告诉学员『马上叫人类 Tutor 接手』并发出 SOS 信号。语气要温柔耐心，把自己当对方家里的小辈帮长辈装电脑。",
+        "uiMode": "chat",
+        "stepSkeleton": [
+          { "title": "Step 1 · 检测你的系统版本", "verificationType": "screenshot" },
+          { "title": "Step 2 · 装运行时（Node ≥22 / WSL2）", "verificationType": "text-evidence" },
+          { "title": "Step 3 · 装 OpenClaw", "verificationType": "text-evidence" },
+          { "title": "Step 4 · 填 API Key + 跑 openclaw test", "verificationType": "text-evidence" },
+          { "title": "Step 5 · Fork Hermes 云端模板到你的 GitHub", "verificationType": "screenshot" },
+          { "title": "Step 6 · 发出第一条指令 + 截图回复", "verificationType": "screenshot" }
+        ],
+        "fallback": "AI 小花卡住 5 分钟自动通知人类 Tutor。Tutor 24 小时内电话或屏幕共享接手；如果学员设备实在装不上，提供云端预装好的虚拟机直接登录，绝不让学员当天因为装不上影响进度。"
+      },
+      "outcome": "OpenClaw 在你电脑上能跑、Hermes 模板在你 GitHub 账号下、第一条指令收到回复 — 当天直接进入业务实战，零环境时间损耗"
+    }
+  ]
+}
