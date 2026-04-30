@@ -1,0 +1,85 @@
+{
+  "moduleId": "block-d-hermes",
+  "phaseName": "Block D — Hermes 实战（13:30-14:30）",
+  "color": "#10b981",
+  "summary": "Hermes 是什么 + Live Demo（业务周报）+ 配你自己的自动化",
+  "estimatedDuration": 60,
+  "schedule": "Day 1 · 13:30-14:30",
+  "deliveryMode": "线下 · 讲师 Live Demo + 学员实操 · Tutor 1:5 陪跑",
+  "outcomes": [
+    "学员 GitHub 账号下 Fork 的 Hermes 模板已激活，云端跑起来了",
+    "学员配好至少 1 个 Schedule（每周一早 8 点出业务周报，发到自己邮箱）",
+    "学员理解 Hermes 跟 OpenClaw 怎么对话 — 谁触发谁、谁存数据"
+  ],
+
+  "lessons": [
+    {
+      "code": "L10",
+      "title": "Hermes：你不在的时候那个 24 小时盯着的引擎",
+      "type": "Lesson",
+      "isLive": true,
+      "duration": 20,
+      "description": "讲清楚 Hermes 跟 OpenClaw 的本质差异 — Hermes 跑在云端，永远在线，能定时触发 / 监听邮箱 / 接 Webhook，是你『晚上和周末』那部分工作的执行者。配合 L06 的『白班+夜班』心智模型，把架构图讲透。",
+      "outline": [
+        "00:00-05:00  Hermes 是什么：跑在云端 VPS（A$10/月 DigitalOcean）的一个长期进程，永远在线 — 跟 OpenClaw 装本地完全不同",
+        "05:00-12:00  Hermes 三大触发方式：① Cron 定时（每周一早 8 点）② 邮件触发（新邮件进 inbox 立刻跑）③ Webhook（网站表单提交 / Stripe 收款 / Calendly 预约）— 每个都给真实业务例子",
+        "12:00-17:00  Hermes 跟 OpenClaw 的协作接口：Hermes 在云端发现『有件事该处理』 → 走 API 把任务推给 OpenClaw（你电脑在线时）或自己跑（不依赖你电脑）。展示一个简化的架构图",
+        "17:00-20:00  你不需要会运维 — Hermes 模板我们配好了 GitHub Actions 自动部署 + 监控 + 故障重启，老板只管 Web 控制台点开关"
+      ],
+      "architecture_diagram": {
+        "layers": [
+          "你的手机 / 邮箱 / 网站表单 — Hermes 的输入源",
+          "Hermes Cloud（VPS · 24/7 在线）— Cron Scheduler + Event Listener + Skill Engine",
+          "OpenClaw（你电脑 · 你在线时）— 处理需要你审阅的任务 / 用本地敏感数据",
+          "输出 — 你的邮箱 / WhatsApp / 共享文档"
+        ],
+        "data_flow": "Webhook/邮件/Cron → Hermes 决定『立刻跑还是等老板上班再交给 OpenClaw』 → 跑完结果推回给你"
+      },
+      "outcome": "学员能用一句话说出 Hermes 跟 OpenClaw 的协作关系，理解为什么需要两者组合而不是只用一个"
+    },
+
+    {
+      "code": "L11",
+      "title": "Live Demo：每周一早 8 点自动出业务周报",
+      "type": "Lesson",
+      "isLive": true,
+      "duration": 20,
+      "description": "讲师现场激活 Hermes 模板里预置的 weekly-report Skill，配置数据源（讲师准备好的模拟邮箱 + 假销售数据 CSV），点 Run Once 立刻跑一次，2 分钟后讲师邮箱收到一封漂亮的 HTML 业务周报 — 含本周新询盘 / 待跟进客户 / 收款汇总 / 下周建议。",
+      "outline": [
+        "00:00-03:00  打开讲师 Hermes 控制台（github-pages 风格的简单 Web UI），找到 weekly-report 模板，点 Activate",
+        "03:00-08:00  填 3 个变量：① 你的邮箱（接收周报）② 数据源（这次用模拟邮箱 + sales.csv）③ Cron 表达式（默认 0 8 * * 1 = 周一早 8 点）",
+        "08:00-13:00  点 Run Once 立刻试跑 — 后台日志展示 Hermes 在做什么：读邮箱 / 解析 CSV / 调用 LLM 生成总结 / 渲染 HTML / 发邮件",
+        "13:00-17:00  讲师邮箱收到周报 — 投影展示。学员看到一份产品级的 HTML 邮件：『本周询盘 12 单 / 下周建议跟进的 3 单 / 收款 23k / 待催收 5k / AI 建议……』",
+        "17:00-20:00  解释这一切是怎么写出来的 — Skill 文件 ≈ 30 行 Markdown + YAML，老板能读懂能改。指出哪几行学员下午会自己改"
+      ],
+      "demo_data": {
+        "input_emails": "讲师准备 8 封模拟客户邮件（询盘 5 单 + 投诉 1 单 + 续约 2 单），课前播放到 demo 邮箱",
+        "input_csv": "sales.csv：5 列（日期、客户、金额、状态、备注），20 行假数据，覆盖本周和上周",
+        "output_email_sample": "标题：[Weekly Report] 本周业务摘要 · 2026-06-15 to 2026-06-21；正文 6 段：① 本周亮点 ② 询盘清单 ③ 待跟进 TOP 3 ④ 收款汇总 ⑤ 风险提醒 ⑥ AI 下周建议"
+      },
+      "outcome": "学员看到一份真实的产品级周报输出，知道下一步自己要把数据源换成自己的"
+    },
+
+    {
+      "code": "L12",
+      "title": "实操：配你自己的 weekly-report Schedule",
+      "type": "Workshop",
+      "isLive": true,
+      "duration": 20,
+      "description": "学员在自己 Hermes 控制台激活 weekly-report 模板，把数据源换成自己的邮箱 + 自己上传一份 CSV（或用模板提供的兜底数据），点 Run Once 试跑一次，确认下周一开始每周一早 8 点能收到周报。Tutor 1:5 陪跑，重点解决 OAuth 授权和 Cron 表达式两个常见卡点。",
+      "outline": [
+        "00:00-05:00  学员打开自己 Hermes 控制台（github.com/<user>/hermes-template/actions 或我们部署的简单 Web UI），登录、找到 weekly-report 模板",
+        "05:00-12:00  填变量 — 自己邮箱 OAuth 接通（Tutor 重点盯这一步），上传自己业务数据 CSV（或选用模板兜底数据），Cron 表达式用默认 `0 8 * * 1`",
+        "12:00-17:00  点 Run Once — 等结果。中位时长 90 秒。期间讲师在台前讲『下午 Block E 我们会做什么』填空时间",
+        "17:00-20:00  学员收到周报邮件 — 同桌互相看一下，举手分享『AI 在我数据里发现了我自己没看到的什么』。然后点 Activate Schedule，下周一早 8 点开始自动跑"
+      ],
+      "tutor_protocol": [
+        "1:5 陪跑。最常见 3 个卡点：① Gmail OAuth scope 没勾 readonly → 重接一次 ② CSV 列名跟模板对不上 → 改 Skill 配置文件里的 column-map 段（YAML 里 5 行）③ Cron 表达式打错 → 用 crontab.guru 验证",
+        "如果学员实在没现成业务数据，我们准备了 5 行业的模拟 CSV（零售订单 / 律所案件 / 会计客户 / 餐厅订座 / 装修项目）— 让学员先用模板数据跑通体验，回去再换自己的",
+        "Activate Schedule 之后提醒学员：你的电脑可以关，但 Hermes 在云端继续跑 — 这是它跟 OpenClaw 最大的区别"
+      ],
+      "deliverable": "学员 Hermes 控制台里一个 Active 的 weekly-report Schedule + 邮箱里一封刚试跑的周报样本",
+      "outcome": "下周一早 8:00 学员邮箱里会收到第一份真实业务周报 — 课后第一个 hands-off 价值点"
+    }
+  ]
+}
