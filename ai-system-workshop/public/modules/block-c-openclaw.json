@@ -1,0 +1,77 @@
+{
+  "moduleId": "block-c-openclaw",
+  "phaseName": "Block C — OpenClaw 实战（11:15-12:30）",
+  "color": "#E84142",
+  "summary": "环境校验 + Live Demo + 用你自己邮箱跑一次",
+  "estimatedDuration": 75,
+  "schedule": "Day 1 · 11:15-12:30（中间无休，Lunch 12:30 接上）",
+  "deliveryMode": "线下 · 讲师 Live Demo + 学员实操 · Tutor 1:5 陪跑",
+  "outcomes": [
+    "学员的 OpenClaw 跟 Gmail / Outlook 接通（最少 1 个邮箱 Connector 配好）",
+    "现场跑通 1 个『读邮件 → 提取报价需求 → 套模板出 PDF』的完整任务",
+    "学员手里有 1 个 Skill（命名为 quote-pdf），下周一在自己电脑上能直接重跑"
+  ],
+
+  "lessons": [
+    {
+      "code": "L07",
+      "title": "环境校验 + Skill 与 Connector 心智模型",
+      "type": "Lesson",
+      "isLive": true,
+      "duration": 25,
+      "description": "现场让每位学员打开 OpenClaw 跑 `openclaw doctor`，确认课前装机没有腐烂。讲解 OpenClaw 三个核心概念：Skill（你定义的工序）/ Connector（接外部世界的桥）/ Schedule（什么时候触发）— 这是后面所有实操的语言基础。",
+      "outline": [
+        "00:00-08:00  全员跑 `openclaw doctor` — 检查 Node 版本 / API Key / 网络 / 内置 Skill 完整性。Tutor 走场，2 人一组互查",
+        "08:00-15:00  Skill 是什么 — 不是『prompt』，是『一个有名字、可被 / 触发、可被 schedule 调用的工序卡』。展示一个 quote-pdf 的 Skill 长什么样（YAML + Markdown 模板，老板看得懂）",
+        "15:00-20:00  Connector 是什么 — Settings 里点几下 OAuth 接 Gmail / Drive / WhatsApp。今天我们只配 1 个：你的 Gmail（如果是 Outlook 用 IMAP 备选）",
+        "20:00-25:00  Schedule 简介（详细在 Block D Hermes 里讲）— 让学员知道『现在装的 Skill 之后能定时跑』，建立心理预期"
+      ],
+      "live_demo": "讲师当场用自己的 OpenClaw 装一个最简单的 Skill（hello-world），让学员看到从『目录里新建文件 → / 触发 → 看到效果』的全流程，30 秒完成",
+      "outcome": "全员 OpenClaw 跑过 doctor、理解 Skill / Connector / Schedule 三概念、Gmail Connector 接通"
+    },
+
+    {
+      "code": "L08",
+      "title": "Live Demo：客户邮件 → 报价单 PDF 全自动",
+      "type": "Lesson",
+      "isLive": true,
+      "duration": 25,
+      "description": "讲师现场演示一个完整业务任务 — 收到一封模拟客户咨询邮件（含需求清单），OpenClaw 读邮件 → 提取需求 → 调用 quote-pdf Skill → 套公司模板 → 输出带 GST / 抬头 / 项目明细的 PDF 给老板审。学员同步看屏幕，每一步问一次『为什么这步是这样』。",
+      "outline": [
+        "00:00-03:00  讲师把一封模拟客户邮件发到自己 Gmail（Subject: 询价 - 厨房翻新）",
+        "03:00-08:00  在 OpenClaw 里输入 `/read-latest-email --from clients`，AI 把邮件原文 + 提取的需求列表显示出来。讲师指出：『这一步 AI 在干什么、为什么这样写 prompt』",
+        "08:00-15:00  调用 `/quote-pdf` Skill — Skill 内部读模板（讲师事先放在 ~/skills/quote-pdf/template.md）+ 客户需求 + 公司抬头 + 当天 GST 税率，调用 Pandoc 生成 PDF",
+        "15:00-20:00  PDF 出来后讲师演示『AI 起草，老板审』 — 故意指出 PDF 里 1 处 AI 写得不对，演示怎么 1 句话让 OpenClaw 改，10 秒重新出版",
+        "20:00-25:00  把整个流程拆成『Skill 模板 + 触发指令 + 审阅习惯』三件套 — 学员理解这是『可复用的工序』不是『一次性魔法』"
+      ],
+      "demo_script": [
+        "邮件内容：『Hi，想做厨房翻新，3.5x4m 空间，要换橱柜 + 台面（Caesarstone）+ 洗碗机集成，预算 25k 以内，下周三前给个报价』",
+        "讲师 Prompt：『读最新一封 clients folder 里的邮件，按 quote-pdf Skill 出报价单 PDF，公司抬头 ABC Renovations，ABN 12 345 678 901，含 10% GST，明细分项列出』",
+        "预期 PDF 内容：客户信息 / 项目明细 4 行（橱柜 / 台面 / 洗碗机集成 / 安装人工）/ 小计 + GST + 总价 / 有效期 14 天 / 老板签字位"
+      ],
+      "outcome": "学员看完一个完整可复制的 Skill 用法，知道下一步自己要装什么样的 Skill"
+    },
+
+    {
+      "code": "L09",
+      "title": "实操：用你自己的 Gmail 跑通第一个 OpenClaw 任务",
+      "type": "Workshop",
+      "isLive": true,
+      "duration": 25,
+      "description": "学员在自己电脑上重复 Live Demo 的流程 — 打开自己的 Gmail，找一封最近的客户邮件（或我们提供的模拟邮件），用 OpenClaw 跑通一次。我们准备了 5 个行业的 quote-pdf 模板（律师 / 会计 / 餐饮报价 / 装修 / 美容），学员选一个套上去。Tutor 1:5 陪跑，举手 30 秒到位。",
+      "outline": [
+        "00:00-05:00  学员选行业模板 — Tutor 把 5 个模板文件 cp 到学员 ~/skills/quote-pdf/ 目录",
+        "05:00-15:00  学员各自找一封自己邮箱里的咨询邮件（或用我们的模拟邮件兜底），跑 `/quote-pdf`，PDF 出来给同桌看",
+        "15:00-22:00  调风格 — 学员让 OpenClaw 改公司抬头 / ABN / GST 比例 / 加 logo / 改语气（正式 vs 亲切），每改一次 1 句 prompt，立刻重新出版",
+        "22:00-25:00  导出 PDF，存到 Desktop，讲师宣布『午饭时间 — 但你现在已经有一个能用的报价 Skill 了』"
+      ],
+      "tutor_protocol": [
+        "Tutor 1:5 比例。每位 Tutor 负责盯 5 位学员，举手 30 秒到位",
+        "最常见 3 个卡点：① Gmail Connector OAuth 走错账号 → 退出重接 ② quote-pdf Skill 模板里 ABN 占位符没替换 → 教学员改 frontmatter ③ Pandoc 没装 → brew install pandoc / WSL apt install pandoc",
+        "如果 5 分钟解决不了的，Tutor 直接给 backup 方案 — 用我们准备好的预制 PDF 文件让学员先看到结果，环境问题课后单独修"
+      ],
+      "deliverable": "每位学员 Desktop 上有 1 个用自己公司抬头出的报价单 PDF",
+      "outcome": "OpenClaw 第一个真实业务任务跑通，学员 Desktop 上有自己公司抬头的报价单 PDF — 不是 demo 数据，是能直接发给客户的"
+    }
+  ]
+}
