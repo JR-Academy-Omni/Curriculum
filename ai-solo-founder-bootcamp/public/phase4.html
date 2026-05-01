@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 4 — Scale & Demo · AI 一人创业营</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .header h1 { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; }
+  .week-block { margin-bottom: 32px; border: 3px solid #000; background: #fff; box-shadow: 6px 6px 0 #000; overflow: hidden; }
+  .week-h { padding: 18px 24px; background: #CB6CE6; color: #fff; border-bottom: 3px solid #000; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .week-h .wnum { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; background: rgba(255,255,255,0.2); }
+  .week-h .wtitle { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; font-weight: 900; font-size: 20px; flex: 1; min-width: 240px; }
+  .week-h .wmeta { font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.85; }
+  .lesson-row { padding: 16px 24px; border-bottom: 1px solid #eee; display: grid; grid-template-columns: 80px 100px 1fr; gap: 16px; align-items: start; }
+  .lesson-row:last-child { border-bottom: none; }
+  .lesson-row:hover { background: #faf3ff; }
+  .lcode { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; color: #CB6CE6; }
+  .ltype { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; padding: 3px 8px; text-align: center; letter-spacing: 0.5px; }
+  .ltype.live { background: #CB6CE6; color: #fff; }
+  .ltype.guest { background: #ff5757; color: #fff; }
+  .ltype.optional { background: #888; color: #fff; }
+  .ltype.demo { background: #FFDE59; color: #000; }
+  .ltype.info { background: #e5e5e5; color: #555; }
+  .ltitle { font-weight: 700; font-size: 15px; line-height: 1.5; margin-bottom: 6px; }
+  .ldesc { font-size: 13px; color: #555; line-height: 1.7; }
+  .ldesc h3 { font-size: 13px; font-weight: 700; margin: 8px 0 4px; color: #10162f; }
+  .ldesc p { margin: 4px 0; }
+  .phase-hero { padding: 32px 28px; background: #faedff; border: 3px solid #000; box-shadow: 6px 6px 0 #000; margin: 24px 0; }
+  .phase-hero h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 900; line-height: 1.1; }
+  .phase-hero .sum { font-size: 15px; color: #444; line-height: 1.7; margin-top: 14px; }
+  .phase-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+  .phase-stat { padding: 12px; background: #fff; border: 2px solid #000; }
+  .phase-stat .n { font-size: 24px; font-weight: 900; color: #CB6CE6; }
+  .phase-stat .l { font-size: 11px; color: #888; font-family: 'Space Mono', monospace; }
+  .phase-nav { display: flex; gap: 10px; padding: 16px 24px; background: #f5f5f5; border-bottom: 1px solid #ddd; }
+  .phase-nav a { padding: 6px 14px; border: 2px solid #000; background: #fff; font-size: 12px; font-weight: 700; font-family: 'Space Mono', monospace; }
+  .phase-nav a.active { background: #CB6CE6; color: #fff; }
+  .demo-day-card { padding: 28px; background: linear-gradient(135deg, #FFDE59 0%, #FF914D 100%); border: 4px solid #000; box-shadow: 8px 8px 0 #000; text-align: center; margin: 32px 0; }
+  .demo-day-card .title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 32px; font-weight: 900; line-height: 1.1; }
+  .demo-day-card .sub { font-size: 14px; margin-top: 10px; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI 一人创业营</h1>
+  <div class="sub">Phase 4 — Scale &amp; Demo · W10-W11</div>
+</div>
+
+<div class="phase-nav">
+  <a href="curriculum.html">← 总览</a>
+  <a href="phase1.html">Phase 1</a>
+  <a href="phase2.html">Phase 2</a>
+  <a href="phase3.html">Phase 3</a>
+  <a href="phase4.html" class="active">Phase 4</a>
+</div>
+
+<div class="c">
+
+<div class="phase-hero">
+  <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#CB6CE6;letter-spacing:2px">PHASE 4 · W10 - W11</div>
+  <h2>Scale &amp; Demo</h2>
+  <div class="sum">
+    课程的最后两周。<strong>W10 是选修周</strong>——主轴 OPC 拒绝融资，但少数学员到了这一步可能发现产品已 PMF + 市场窗口期短，融资是合理的。我们请 2-4 位本地 VC 来 fireside chat（Blackbird / Square Peg / AfterWork / Antler / Startmate），让你听完做决定。<strong>W11 是 Demo Day</strong>——三城联合直播 + 三城本地 networking 晚宴，把 11 周的产出公开展示，建立校友网络。
+  </div>
+  <div class="phase-stats">
+    <div class="phase-stat"><div class="n">8</div><div class="l">节课</div></div>
+    <div class="phase-stat"><div class="n">5</div><div class="l">直播课</div></div>
+    <div class="phase-stat"><div class="n">2-4</div><div class="l">VC 嘉宾</div></div>
+    <div class="phase-stat"><div class="n">3</div><div class="l">城市联合</div></div>
+  </div>
+</div>
+
+<!-- W11 -->
+<div class="week-block">
+  <div class="week-h">
+    <span class="wnum">W10 · WEEK 10 · 选修</span>
+    <span class="wtitle">拿钱加速？— OPC vs VC 路线决策</span>
+    <span class="wmeta">线下 4h · 选修 · 不参加 VC 路径的学员可跳过</span>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L41</div>
+    <div class="ltype optional">选修 LIVE · 120min</div>
+    <div>
+      <div class="ltitle">[Live · 选修] VC 入门：什么时候该融钱、什么时候不该</div>
+      <div class="ldesc">
+        <h3>🎯 W10 选修开篇</h3>
+        <p>OPC 主轴是不融资，但有少数学员到了 W11 可能发现：①产品已 PMF + ②市场窗口期短（先发优势重要）+ ③需要资金加速这两件事——这种情况融资是合理的。融资也意味着你不再是 OPC 了，要雇人、要 board、要每季度向投资人汇报。课上把"该融"和"不该融"的 5 个判断点讲清楚，让学员不要被 hype 推着融资。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L42</div>
+    <div class="ltype optional">选修 LIVE · 90min</div>
+    <div>
+      <div class="ltitle">[Live · 选修] Term sheet 入门 / SAFE notes / 估值</div>
+      <div class="ldesc">
+        <h3>🎯 W10 第二节：如果决定融，至少看懂 term sheet</h3>
+        <p>SAFE（Simple Agreement for Future Equity）是早期最常见融资工具，比 priced round 简单。但 SAFE 也有陷阱（valuation cap / discount / MFN）。课上拆 3 个真实 SAFE term sheet，演示怎么 review、谈判、避免坑。估值入门：early stage 估值不是科学，是博弈。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L43</div>
+    <div class="ltype guest">🎤 嘉宾 LIVE · 90min</div>
+    <div>
+      <div class="ltitle">[Live · 嘉宾] Fireside chat 1：Blackbird / Square Peg / AfterWork Ventures</div>
+      <div class="ldesc">
+        <h3>🎯 W10 嘉宾 fireside 1：澳洲一线 VC</h3>
+        <p>Blackbird 是澳洲最大 VC（Canva、SafetyCulture 投资人），Square Peg 在 Tech 投资活跃，AfterWork Ventures 专投 ANZ 早期 founder。嘉宾来 1-2 位，跟学员聊：他们看什么、不看什么、AI 时代怎么变、华人 founder 在澳洲 raise 的真实经验。这场 fireside 主要是 networking 价值——学员加微信、留 LinkedIn，未来真要融资有联系方式。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L44</div>
+    <div class="ltype guest">🎤 嘉宾 LIVE · 90min</div>
+    <div>
+      <div class="ltitle">[Live · 嘉宾] Fireside chat 2：Antler 墨尔本 / Startmate 悉尼</div>
+      <div class="ldesc">
+        <h3>🎯 W10 嘉宾 fireside 2：澳洲 accelerator</h3>
+        <p>Antler 和 Startmate 是澳洲最大的两个 accelerator，他们的"6-12 周项目 + $X 投资 + alumni network"模式跟这门 bootcamp 性质有重叠（都是"群体加速"），但也有差异（accelerator 拿 7-10% equity）。嘉宾讲 accelerator 的标准 + 怎么申请 + 拿到了之后怎么用、什么样的 OPC 学员适合 graduate 后申请 accelerator。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L45</div>
+    <div class="ltype info">SELF · 60min</div>
+    <div>
+      <div class="ltitle">[Self] OPC vs VC 路线决策表</div>
+      <div class="ldesc">
+        <h3>🎯 W10 末 deliverable：你最终选哪条路</h3>
+        <p>课程发"OPC vs VC 决策表"（10 维度自评），学员填完后写 200 字"我接下来 12 个月走哪条"。这一步不是强制——大多数学员的答案就是 OPC（他们最初为这个来的）。少数走向 VC 的学员，课程会帮做 intro 到 W11 嘉宾。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- W11 Demo Day -->
+<div class="demo-day-card">
+  <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#10162f;letter-spacing:2px">⭐ W11 ⭐</div>
+  <div class="title">Demo Day &amp; Networking Tour</div>
+  <div class="sub">三城联合直播 · 每人 5min Demo · 评审团 5 位嘉宾点评 · 当晚三城本地 networking 晚宴</div>
+</div>
+
+<div class="week-block" style="border-color:#FFDE59;border-width:4px">
+  <div class="week-h" style="background:#10162f">
+    <span class="wnum">W11 · ⭐ DEMO DAY</span>
+    <span class="wtitle">三城联合 Demo Day + 本地 Networking 晚宴</span>
+    <span class="wmeta">全天 · 11 周课程的高潮</span>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L46</div>
+    <div class="ltype demo">⭐ DEMO · 240min</div>
+    <div>
+      <div class="ltitle">[Live] Demo Day Day 1 — 三城联合直播 + 每人 5min Demo</div>
+      <div class="ldesc">
+        <h3>🎉 W11 Demo Day：11 周课程的高潮</h3>
+        <p>三城联合直播。每个学员 5 分钟现场展示：<strong>产品 URL（live）、当前 MRR（截图）、用户数、最有效的获客渠道、6 个月 roadmap</strong>。评审团：课程主讲老师 + W8 会计师 + W9 Grant consultant + W10 两位 VC。每个学员有 2 分钟 Q&A。</p>
+        <p><strong>4 个 step</strong>：①墨尔本主场 Demo（10-12 人，每人 5+2min） ②悉尼卫星教室 Demo（6-8 人，直播切到悉尼场） ③布里斯班卫星教室 Demo（3-5 人） ④评审团总结 + 颁发结业证书。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L47</div>
+    <div class="ltype live">🍻 LIVE · 180min</div>
+    <div>
+      <div class="ltitle">[Live] Demo Day Day 2 — 三城本地 Networking 晚宴</div>
+      <div class="ldesc">
+        <h3>🍻 W11 第二天：三城各办本地晚宴</h3>
+        <p>线下 networking 晚宴，每城 8-15 人小圆桌，邀请本城嘉宾 + 历届 JR 校友 + 本地 VC / accountant / migration agent 来吃饭。<strong>这一晚是这门课最值钱的几小时</strong>——同期同学之间未来的合作、互相投资、收购、雇佣关系都从这里开始。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L48</div>
+    <div class="ltype info">校友 · 持续</div>
+    <div>
+      <div class="ltitle">[Self] 校友群 + 6 个月持续 Office Hour</div>
+      <div class="ldesc">
+        <h3>🎓 毕业不是结束，是开始</h3>
+        <p>毕业后进 JR Solo Founder 校友群（首期 + 后续期合并），每月一次线上 Office Hour（90min，主讲老师 + 1-2 位嘉宾轮流主持）。话题学员投票决定。这部分价值在于 6 个月内你做产品遇到具体问题（被 Grant 拒了 / 第一次招外包 / 考虑融资）有人答。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;margin:40px 0;padding:32px;background:#10162f;color:#fff;border:4px solid #000">
+  <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:32px;line-height:1.2">
+    🎉 11 周后你带走什么
+  </div>
+  <div style="margin-top:18px;font-size:14px;line-height:2;text-align:left;max-width:680px;margin-left:auto;margin-right:auto">
+    ✅ 一个 live 的产品 URL（不是 demo 玩具）<br/>
+    ✅ Stripe / Lemonsqueezy 后台真实交易记录<br/>
+    ✅ 完成的 ABN 注册（或 Pty Ltd）<br/>
+    ✅ 至少 1 个澳洲 Grant 申请已提交<br/>
+    ✅ 中文 5+ 条 / 英文 5+ 条公开内容<br/>
+    ✅ 
+    ✅ 一份 OPC vs VC 路线决策表（你已经决定 12 个月走哪条）<br/>
+    ✅ 17-24 个同期同学的微信 / LinkedIn / 校友群<br/>
+    ✅ 3 类专家嘉宾联系方式（CPA / Grant consultant / VC）<br/>
+    ✅ 6 个月持续 Office Hour
+  </div>
+  <a href="curriculum.html" style="display:inline-block;margin-top:24px;padding:12px 28px;background:#FFDE59;color:#10162f;border:3px solid #fff;font-weight:900;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-size:16px">← 回到课程总览申请</a>
+</div>
+
+</div>
+
+</body>
+</html>

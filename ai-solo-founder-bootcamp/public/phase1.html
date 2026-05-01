@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 1 — Build & Sell · AI 一人创业营</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .header h1 { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; }
+  .week-block { margin-bottom: 32px; border: 3px solid #000; background: #fff; box-shadow: 6px 6px 0 #000; overflow: hidden; }
+  .week-h { padding: 18px 24px; background: #6366f1; color: #fff; border-bottom: 3px solid #000; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .week-h .wnum { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; background: rgba(255,255,255,0.2); }
+  .week-h .wtitle { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; font-weight: 900; font-size: 20px; flex: 1; min-width: 240px; }
+  .week-h .wmeta { font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.85; }
+  .lesson-row { padding: 16px 24px; border-bottom: 1px solid #eee; display: grid; grid-template-columns: 80px 100px 1fr; gap: 16px; align-items: start; }
+  .lesson-row:last-child { border-bottom: none; }
+  .lesson-row:hover { background: #f9f9ff; }
+  .lcode { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; color: #6366f1; }
+  .ltype { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; padding: 3px 8px; text-align: center; letter-spacing: 0.5px; }
+  .ltype.live { background: #6366f1; color: #fff; }
+  .ltype.lab { background: #FFDE59; color: #000; }
+  .ltype.info { background: #e5e5e5; color: #555; }
+  .ltype.quest { background: #CB6CE6; color: #fff; }
+  .ltype.video { background: #38B6FF; color: #fff; }
+  .ltitle { font-weight: 700; font-size: 15px; line-height: 1.5; margin-bottom: 6px; }
+  .ldesc { font-size: 13px; color: #555; line-height: 1.7; }
+  .ldesc h3 { font-size: 13px; font-weight: 700; margin: 8px 0 4px; color: #10162f; }
+  .ldesc p { margin: 4px 0; }
+  .ldesc ul { padding-left: 20px; margin: 4px 0; }
+  .ldesc li { margin: 2px 0; }
+  .ldur { font-family: 'Space Mono', monospace; font-size: 10px; color: #888; margin-top: 6px; }
+  .breadcrumb { padding: 12px 24px; background: #fafafa; border-bottom: 1px solid #ddd; font-size: 13px; }
+  .breadcrumb a { color: #6366f1; }
+  .phase-hero { padding: 32px 28px; background: #eef0ff; border: 3px solid #000; box-shadow: 6px 6px 0 #000; margin: 24px 0; }
+  .phase-hero h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 900; line-height: 1.1; }
+  .phase-hero .sum { font-size: 15px; color: #444; line-height: 1.7; margin-top: 14px; }
+  .phase-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+  .phase-stat { padding: 12px; background: #fff; border: 2px solid #000; }
+  .phase-stat .n { font-size: 24px; font-weight: 900; color: #6366f1; }
+  .phase-stat .l { font-size: 11px; color: #888; font-family: 'Space Mono', monospace; }
+  .phase-nav { display: flex; gap: 10px; padding: 16px 24px; background: #f5f5f5; border-bottom: 1px solid #ddd; }
+  .phase-nav a { padding: 6px 14px; border: 2px solid #000; background: #fff; font-size: 12px; font-weight: 700; font-family: 'Space Mono', monospace; }
+  .phase-nav a.active { background: #6366f1; color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI 一人创业营</h1>
+  <div class="sub">Phase 1 — Build &amp; Sell · W0-W3</div>
+</div>
+
+<div class="phase-nav">
+  <a href="curriculum.html">← 总览</a>
+  <a href="phase1.html" class="active">Phase 1</a>
+  <a href="phase2.html">Phase 2</a>
+  <a href="phase3.html">Phase 3</a>
+  <a href="phase4.html">Phase 4</a>
+</div>
+
+<div class="c">
+
+<div class="phase-hero">
+  <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#6366f1;letter-spacing:2px">PHASE 1 · W0 - W3</div>
+  <h2>Build &amp; Sell</h2>
+  <div class="sum">
+    选品 + MVP + 上线 + 收第一笔钱。<strong>这是整门课最硬的核心 phase</strong>，4 周后你必须有一个能跑、能卖的产品和 Stripe / Lemonsqueezy 后台真实交易。Phase 1 不达标的学员通常是"想试试但不真做"，可以 W2 末走最后一次退款窗口。
+  </div>
+  <div class="phase-stats">
+    <div class="phase-stat"><div class="n">17</div><div class="l">节课</div></div>
+    <div class="phase-stat"><div class="n">5</div><div class="l">直播课</div></div>
+    <div class="phase-stat"><div class="n">4</div><div class="l">互动 Lab</div></div>
+    <div class="phase-stat"><div class="n">1</div><div class="l">⭐ 硬指标里程碑</div></div>
+  </div>
+</div>
+
+<!-- W0 -->
+<div class="week-block">
+  <div class="week-h">
+    <span class="wnum">W0 · PRE-WORK</span>
+    <span class="wtitle">装机 + LLM Key + ABN 预备</span>
+    <span class="wmeta">自学 · 开班前 2 周完成</span>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L00</div>
+    <div class="ltype info">INFO · 45min</div>
+    <div>
+      <div class="ltitle">Pre-work · 装机 + LLM Key + ABN 预备</div>
+      <div class="ldesc">
+        <h3>🎯 开课前 30 分钟做完，W1 不卡装机</h3>
+        <p>跟 OpenClaw Bootcamp 不同的是，这门课不只装 AI 工具——还要在课程过程中注册 ABN、开 Stripe 收款账号、连 Xero、办 GST。这些行政操作走流程要等几天到几周。预习把 OAuth、API Key、ABN 申请这些慢节奏的事先开起来，等 W3 真要收钱时才不会卡。</p>
+        <h3>📋 4 件事 W0 完成</h3>
+        <ul>
+          <li><strong>① LLM API Key 注册 + 充值 $50</strong> — Claude / OpenAI / Gemini 任一</li>
+          <li><strong>② Cursor / Claude Code 装好</strong> — 已上过 AI Engineer 的跳过</li>
+          <li><strong>③ ABN 申请预备</strong> — 登录 myGov / 准备 TFN / 想好商业实体名</li>
+          <li><strong>④ 写一份 5 件想做的事</strong> — 用 AI 替代/服务 5 件事，开课用</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- W1 -->
+<div class="week-block">
+  <div class="week-h">
+    <span class="wnum">W1 · WEEK 1</span>
+    <span class="wtitle">选品 + 验证</span>
+    <span class="wmeta">线下 4h · 自学 4h · 6 节课</span>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L01</div>
+    <div class="ltype live">LIVE · 120min</div>
+    <div>
+      <div class="ltitle">[Live] OPC 心智 + 澳洲华人 indie 案例 3-5 个</div>
+      <div class="ldesc">
+        <h3>🎯 第一节课定调：OPC 不是创业，是另一种自由</h3>
+        <p>OPC 跟传统创业最大的区别是：拒绝融资、永远不雇人、用 AI 替代员工、目标 $1k-$10k MRR 的自由而不是 $1B 估值的雄心。课上拆 3-5 个澳洲华人 indie 真实案例，嘉宾来 1-2 个本地 indie hacker（$3k-$30k MRR 范围）讲产品、用户、定价、营销、踩过的坑。课后发"OPC 适配评估表"，低分学员 W2 末有最后一次退款机会。</p>
+        <p><strong>课上 4 个 step</strong>：①OPC vs 传统创业 vs VC startup 三条路对比 ②嘉宾分享 1（墨尔本 indie $3-10k MRR） ③嘉宾分享 2（华人 micro-SaaS $10-30k MRR） ④OPC 适配 5 维度自评。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L02</div>
+    <div class="ltype live">LIVE · 120min</div>
+    <div>
+      <div class="ltitle">[Live] AI 用户调研：从 Reddit / X / 小红书 / 牛客挖痛点</div>
+      <div class="ldesc">
+        <h3>🎯 选品的核心是找到一个真实存在、有人愿意付费、AI 能解决的痛点</h3>
+        <p>不是凭空 brainstorming。课上演示用 Cursor + Claude 一小时挖完 200+ 条 Reddit 真实抱怨、用 perplexity 验证市场规模、用小红书评论提取中文用户的具体语言。这是选品最关键的输入数据。</p>
+        <p><strong>现场操作 4 步</strong>：Reddit API + Claude 抓高赞抱怨贴 / X 搜 "I wish there was" 句式 / 小红书爬虫 + AI 聚类 / 输出"痛点 × 频次 × 付费意愿"三维矩阵。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L03</div>
+    <div class="ltype lab">LAB · 30min</div>
+    <div>
+      <div class="ltitle">Lab: AI 用户调研模板（Prompt Lab）</div>
+      <div class="ldesc">
+        Prompt Lab 互动练习：给你一个目标行业，写出能完整跑通"找数据源 → 抓数据 → AI 分析 → 输出报告"的 4 段 Prompt 链。系统用真实数据集验证你的输出质量。
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L04</div>
+    <div class="ltype info">SELF · 60min</div>
+    <div>
+      <div class="ltitle">[Self] 5 个 idea → 1 个：选品决策矩阵</div>
+      <div class="ldesc">
+        <h3>🎯 W1 末的 deliverable：从 50 个候选痛点砍到 1 个 idea</h3>
+        <p>用课上发的"选品决策矩阵"（5 维度 × 加权评分），把 L02 你挖到的 50 个痛点筛到 5 个，再用 AI 模拟用户访谈的方式砍到 1 个。这 1 个 idea 就是 W2 MVP 周要 ship 的产品。</p>
+        <p><strong>验收</strong>：5 个候选 idea 各写 100 字 PRD + 5 维度评分（市场规模 / 付费意愿 / AI 可行性 / 不公平优势 / 6 个月做出 $1k MRR）+ 最后选 1 个写为什么。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L05</div>
+    <div class="ltype info">SELF · 90min</div>
+    <div>
+      <div class="ltitle">[Self] 跟 5 个目标用户做 30min interview</div>
+      <div class="ldesc">
+        <h3>🎯 idea 选完后必须做的事：跟 5 个真实潜在用户聊一次</h3>
+        <p>不是问"你愿意付费吗？"——这是 indie hacker 最容易踩的坑（用户嘴上说愿意，掏钱时全跑）。正确问法是 Mom Test 那一套："你过去一个月遇到这个问题几次？""上次遇到时怎么解决？""为这个问题花过多少钱？"用 AI 模拟用户面试一遍后，去真实用户那聊 5 个。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- W2 -->
+<div class="week-block">
+  <div class="week-h">
+    <span class="wnum">W2 · WEEK 2</span>
+    <span class="wtitle">MVP 周 — 一周做出能跑的产品</span>
+    <span class="wmeta">线下 4h · 自学 8h · 7 节课 · 4 个 Lab</span>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L06</div>
+    <div class="ltype live">LIVE · 120min</div>
+    <div>
+      <div class="ltitle">[Live] Cursor / Claude Code / Lovable / v0 工具地图</div>
+      <div class="ldesc">
+        <h3>🎯 W2 第一节：选对工具，一周 ship 产品</h3>
+        <p>4 个工具不是同一个东西：<strong>Cursor</strong> = IDE（写代码）、<strong>Claude Code</strong> = agentic CLI（自主写整个项目）、<strong>Lovable</strong> = 无代码 SaaS 生成器、<strong>v0</strong> = UI 组件生成器。课上 demo 同一个 idea 用 4 个工具各做一遍，对比时间、质量、限制，让你知道哪个适合你的能力和 idea 类型。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L07</div>
+    <div class="ltype live">LIVE · 120min</div>
+    <div>
+      <div class="ltitle">[Live] 一周做一个 SaaS 的 PRD → MVP playbook</div>
+      <div class="ldesc">
+        <h3>🎯 不是教你写完美 PRD，是教你写"AI 能直接 ship 出来"的 PRD</h3>
+        <p>传统 PRD 写给工程师看，AI 时代 PRD 写给 Claude / Cursor 看。结构、详细度、约束都不一样：要明确技术栈、要给 example、要标 must-have vs nice-to-have、要预留 AI 修改余地。课上拆 3 个真实 PRD 模板（SaaS / 工具 / API 服务），学员当场写自己的。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L08</div>
+    <div class="ltype lab">LAB · 30min</div>
+    <div>
+      <div class="ltitle">Lab: Vibe Coding — Cursor 入门</div>
+      <div class="ldesc">用 Cursor 在浏览器内完成第一个 AI 协作编码任务，理解 Cmd+K / Cmd+L / Composer 三种交互模式的差异。</div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L09</div>
+    <div class="ltype lab">LAB · 45min</div>
+    <div>
+      <div class="ltitle">Lab: Vibe Coding — Claude Code agentic 工作流</div>
+      <div class="ldesc">用 Claude Code CLI 完成一个完整的功能（PRD → 代码 → 测试 → commit），体验 agentic 自主编码 vs Cursor 半人工的差异。</div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L10</div>
+    <div class="ltype lab">LAB · 45min</div>
+    <div>
+      <div class="ltitle">Lab: Lovable — 无代码 ship 第一个 SaaS</div>
+      <div class="ldesc">用 Lovable 在 30 分钟内 ship 一个能跑、能 deploy、能登录的小型 SaaS，体验 no-code 路径。</div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L11</div>
+    <div class="ltype info">SELF · 180min</div>
+    <div>
+      <div class="ltitle">[Self] 自学：Vibe Coding Hub Phase 2 全部章节</div>
+      <div class="ldesc">复用 jiangren.com.au /learn/vibe-coding/hub Phase 2 章节（约 12 章 AI 编码进阶）。建议在 W2 末完成至少 8 章，跟你的 MVP 实操配合。</div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L12</div>
+    <div class="ltype info">SELF · 90min</div>
+    <div>
+      <div class="ltitle">[Self] 部署到 Vercel / Cloudflare / Railway</div>
+      <div class="ldesc">
+        <h3>🎯 W2 末必须有一个公网可访问的 URL</h3>
+        <p>不是 localhost 截图。买个 .com 域名（namecheap $10/年）+ 选 Vercel / Cloudflare Pages / Railway 之一部署。课程发部署模板（Next.js / Remix / Astro 三选一），学员选一个跟着做。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- W3 -->
+<div class="week-block" style="border-color:#FF914D;border-width:4px">
+  <div class="week-h" style="background:#FF914D">
+    <span class="wnum">W3 · WEEK 3 ⭐ 关键</span>
+    <span class="wtitle">上线 + 收第一笔钱（毕业硬指标 #1 里程碑）</span>
+    <span class="wmeta">线下 4h · 自学 4h · 4 节课</span>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L13</div>
+    <div class="ltype live">LIVE · 120min</div>
+    <div>
+      <div class="ltitle">[Live] Stripe / Lemonsqueezy 接入实战（澳洲版）</div>
+      <div class="ldesc">
+        <h3>🎯 W3 第一节：把"产品"变成"能收钱的东西"</h3>
+        <p>Stripe 在澳洲的限制：开账号需要 ABN（W0 已预备）、需要银行账号验证、首次提现要 7 天。Lemonsqueezy 是 Merchant of Record 模式（替你处理 GST / VAT），对 W3 暂未注册公司的学员是 fallback。课上演示两套接入流程，含 webhook、退款、订阅、One-time payment。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L14</div>
+    <div class="ltype live">LIVE · 90min</div>
+    <div>
+      <div class="ltitle">[Live] 域名 + 部署 + 监控基础</div>
+      <div class="ldesc">
+        <h3>🎯 不是教你成为 DevOps，是教 OPC 必须的最小运维栈</h3>
+        <p>域名 + Cloudflare DNS、SSL（Let's Encrypt 自动）、Sentry 错误监控（free tier 够用）、Plausible / Posthog 流量分析。这套配齐月成本 $0-15，是 OPC 标配。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row" style="background:#fff8d9">
+    <div class="lcode">L15</div>
+    <div class="ltype" style="background:#ff5757;color:#fff">⭐ 硬指标 #1</div>
+    <div>
+      <div class="ltitle">[Self] $1 真实付费挑战（毕业硬指标 #1）</div>
+      <div class="ldesc">
+        <h3>⭐ W3 末的核心 deliverable：拿到第一笔真金白银 ⭐</h3>
+        <p>$1 也算（很多 indie hacker 第一笔就是朋友 PayPal 转的 $5）。这个挑战的目的不是钱，是验证"你做的东西有人愿意为它付一次费用"。这一步是 OPC 路上最难的——从 0 到 1 比从 1 到 100 难得多。</p>
+        <p><strong>验收</strong>：Stripe / Lemonsqueezy / PayPal 后台截图，含交易时间、金额、买家。不接受朋友亲属"友情付费"——必须是不认识你的人。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L16</div>
+    <div class="ltype info">SELF · 60min</div>
+    <div>
+      <div class="ltitle">[Self] 法律文件：Privacy Policy / TOS / Disclaimer (澳洲版)</div>
+      <div class="ldesc">
+        <h3>🎯 收钱前必须挂的 3 份法律文件</h3>
+        <p>澳洲消费者法 (ACL) 比美国宽松但有具体要求：必须有清晰的 Privacy Policy（GDPR + APP 双合规）、Terms of Service、Refund Policy。课程发模板（已经过澳洲律师 review），学员填空 + 挂上线。这件事 5% 的 indie hacker 会偷懒不做，剩下 95% 用 ChatGPT 一键生成 + 人工 review。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;margin:40px 0;padding:24px;background:#fff8d9;border:3px dashed #FF914D">
+  <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:24px;color:#10162f">→ Phase 1 末里程碑</div>
+  <div style="margin-top:8px;font-size:14px;color:#444">公网产品 URL · Stripe 真实交易 · Privacy Policy / TOS 上线</div>
+  <a href="phase2.html" style="display:inline-block;margin-top:18px;padding:10px 22px;background:#FF914D;color:#fff;border:3px solid #000;font-weight:700;text-decoration:none">下一阶段 Phase 2 — Get Customers →</a>
+</div>
+
+</div>
+
+</body>
+</html>

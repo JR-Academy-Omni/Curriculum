@@ -159,6 +159,12 @@ jobs:
             cp -r openclaw-bootcamp/public/* _site/openclaw-bootcamp/
           fi
 
+          # ai-solo-founder-bootcamp: static HTML only (11-week 三城线下 AI 一人创业营，AU 专属)
+          if [ -d ai-solo-founder-bootcamp/public ]; then
+            mkdir -p _site/ai-solo-founder-bootcamp
+            cp -r ai-solo-founder-bootcamp/public/* _site/ai-solo-founder-bootcamp/
+          fi
+
           # business-analyst (AI 产品经理 BA 训练营): static HTML only, generated from outline.json
           if [ -d business-analyst/public ]; then
             mkdir -p _site/business-analyst

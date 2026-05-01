@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 一人创业营 — 课程总览</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .header h1 { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; }
+  .hero-claim { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+  .hero-claim em { font-style: normal; background: linear-gradient(180deg, transparent 60%, #FFDE59 60%); padding: 0 4px; }
+  .badge-au { display: inline-block; background: #ff5757; color: #fff; padding: 4px 12px; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 1px; border: 2px solid #000; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .grid-3, .grid-2, .phase-cards { grid-template-columns: 1fr !important; } }
+  .grad-card { padding: 16px 18px; border: 2px solid #000; background: #fff; }
+  .grad-card .num { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; color: #6366f1; letter-spacing: 1px; }
+  .grad-card .title { font-weight: 900; font-size: 16px; margin: 4px 0 6px; }
+  .grad-card .desc { font-size: 12px; color: #555; line-height: 1.6; }
+  .price-card { padding: 24px 20px; border: 3px solid #000; background: #fff; box-shadow: 6px 6px 0 #000; }
+  .price-card .label { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #888; }
+  .price-card .price { font-family: 'Bricolage Grotesque', sans-serif; font-size: 44px; font-weight: 900; line-height: 1; margin: 10px 0; }
+  .price-card .price em { font-style: normal; font-size: 16px; vertical-align: top; opacity: 0.6; }
+  .price-card.highlighted { background: #FFDE59; }
+  .city-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .city-card { padding: 16px; border: 2px solid #000; background: #fff; }
+  .city-card .city-name { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 900; font-size: 18px; }
+  .city-card .city-role { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; margin-top: 4px; }
+  .city-card.hub .city-role { color: #6366f1; }
+  .city-card.satellite .city-role { color: #FF914D; }
+  .guest-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 768px) { .guest-row { grid-template-columns: 1fr; } .city-row { grid-template-columns: 1fr; } }
+  .guest-card { padding: 14px; border: 2px solid #000; background: #fff; text-align: center; }
+  .guest-card .icon { font-size: 32px; line-height: 1; }
+  .guest-card .role { font-weight: 900; font-size: 13px; margin: 6px 0 2px; }
+  .guest-card .week { font-family: 'Space Mono', monospace; font-size: 10px; color: #888; }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .compare-table th, .compare-table td { padding: 10px 12px; border: 1px solid #ddd; text-align: left; }
+  .compare-table th { background: #10162f; color: #fff; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px; }
+  .compare-table .ours { background: #fff8d9; font-weight: 700; }
+  .audience-card { padding: 14px 16px; border-left: 4px solid #6366f1; background: #f5f5ff; margin-bottom: 10px; }
+  .audience-card .pct { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; color: #6366f1; letter-spacing: 1px; }
+  .audience-card .title { font-weight: 900; font-size: 15px; margin: 4px 0 4px; }
+  .audience-card .desc { font-size: 13px; color: #444; line-height: 1.6; }
+  .not-for { padding: 10px 14px; background: #fff5f5; border-left: 3px solid #ff5757; font-size: 13px; margin-bottom: 6px; color: #444; }
+  .quote-box { padding: 24px; background: #10162f; color: #fff; border: 3px solid #000; box-shadow: 6px 6px 0 #000; font-style: italic; line-height: 1.7; font-size: 16px; }
+  .faq-item { padding: 12px 16px; border: 1px solid #ddd; margin-bottom: 8px; background: #fff; }
+  .faq-q { font-weight: 700; font-size: 14px; cursor: pointer; }
+  .faq-a { margin-top: 8px; font-size: 13px; color: #444; line-height: 1.7; display: none; }
+  .faq-item.open .faq-a { display: block; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI 一人创业营</h1>
+  <div class="sub">11 周 · 三城线下 · 申请制 · 澳洲专属 · 首期 case study 价</div>
+  <div class="tags">
+    <span class="tag a">11 周</span>
+    <span class="tag">26 节直播</span>
+    <span class="tag">8 个互动 Lab</span>
+    <span class="tag">~96h</span>
+    <span class="tag" style="background:#ff5757;border-color:#ff5757">🇦🇺 AU 专属</span>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="s"><div class="n">4</div><div class="l">PHASES</div></div>
+  <div class="s"><div class="n">49</div><div class="l">节课</div></div>
+  <div class="s"><div class="n">26</div><div class="l">直播课</div></div>
+  <div class="s"><div class="n">8</div><div class="l">互动 Lab</div></div>
+  <div class="s"><div class="n">3</div><div class="l">城市同开</div></div>
+  <div class="s"><div class="n">$3.8k</div><div class="l">起 (早鸟价)</div></div>
+</div>
+
+<div class="c">
+
+<!-- HERO CLAIM -->
+<div class="box" style="border-color:#000;padding:32px 28px;background:#fff;margin-bottom:28px">
+  <div class="badge-au" style="margin-bottom:16px">WORLD-FIRST · 全世界独一份</div>
+  <div class="hero-claim">
+    用中文教 <em>澳洲华人专业人士</em> 用 AI 做<em>一人公司</em>，<br/>
+    拿<em>澳洲 Grant</em>，走出打工天花板
+  </div>
+  <div style="margin-top:20px;font-size:14px;color:#555;line-height:1.8">
+    OpenClaw Bootcamp 教你"AI 接管你每周 5h+ 重复劳动"——还是打工。<br/>
+    AI Engineer Bootcamp 教你"找到 AI 工程师 offer"——还是打工。<br/>
+    <strong style="color:#10162f">这门课教你不打工：自己做产品、卖产品、合规收钱、拿 Grant 退税。</strong>
+  </div>
+</div>
+
+<!-- WHY NOW -->
+<div class="box" style="margin-bottom:28px">
+  <div class="box-h" style="background:#6366f1">
+    <span class="pill" style="background:#fff;color:#6366f1">WHY NOW</span>
+    <span style="margin-left:12px;font-weight:900">为什么现在做这门课</span>
+  </div>
+  <div style="padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#6366f1;letter-spacing:1px">技术拐点</div>
+      <div style="font-weight:900;margin-top:6px;margin-bottom:8px;font-size:15px">一周做出过去半年的产品</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">Cursor / Claude Code / Lovable / v0 让一个程序员一周 ship 过去一个团队半年做的 SaaS。Pieter Levels、Marc Lou 这类 $30k-$100k MRR 的 indie hacker 不再是孤例，是可批量复制的 playbook。</div>
+    </div>
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#FF914D;letter-spacing:1px">焦虑供给侧</div>
+      <div style="font-weight:900;margin-top:6px;margin-bottom:8px;font-size:15px">200k+ 工资但天花板焦虑</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">澳洲拿 150-250k+ 的中产专业人士（senior dev、PM、咨询、律师、医生）都在想"打工的天花板在哪、能不能不打工"。AI 替代趋势放大了这个问题。</div>
+    </div>
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#10b981;letter-spacing:1px">差异化窗口</div>
+      <div style="font-weight:900;margin-top:6px;margin-bottom:8px;font-size:15px">澳洲专属 = 全球独家</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">"全球华人创业课"没有差异化（生财有术、出海帮、Greenlets 都在做）。"澳洲华人 + AI + Grant + 三城线下"是世界上唯一一门这种课。</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETITIVE TABLE -->
+<div class="box" style="margin-bottom:28px">
+  <div class="box-h" style="background:#10162f">
+    <span class="pill" style="background:#fff;color:#10162f">COMPETITIVE</span>
+    <span style="margin-left:12px;font-weight:900">vs 其他创业课</span>
+  </div>
+  <div style="padding:0 24px 20px">
+    <div style="overflow-x:auto;margin-top:16px">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>课程</th>
+            <th>定价</th>
+            <th>语言</th>
+            <th>地理</th>
+            <th>含 Grant？</th>
+            <th>线下？</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Reforge / On Deck</td>
+            <td>USD $4-7k</td>
+            <td>English</td>
+            <td>全球</td>
+            <td>❌</td>
+            <td>❌ 远程</td>
+          </tr>
+          <tr>
+            <td>YC Startup School</td>
+            <td>免费</td>
+            <td>English</td>
+            <td>全球</td>
+            <td>❌</td>
+            <td>❌ 远程</td>
+          </tr>
+          <tr>
+            <td>生财有术</td>
+            <td>RMB 3000-5000/年</td>
+            <td>中文</td>
+            <td>大陆为主</td>
+            <td>❌</td>
+            <td>❌ 社群</td>
+          </tr>
+          <tr>
+            <td>Antler / Startmate</td>
+            <td>免费(拿股份)</td>
+            <td>English</td>
+            <td>澳洲</td>
+            <td>❌</td>
+            <td>✅</td>
+          </tr>
+          <tr class="ours">
+            <td>JR AI 一人创业营 🇦🇺</td>
+            <td>AUD $3.8-6.8k</td>
+            <td>中文</td>
+            <td>澳洲三城</td>
+            <td>✅ W9</td>
+            <td>✅ Hub-Spoke</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- TARGET AUDIENCE -->
+<div class="box" style="margin-bottom:28px">
+  <div class="box-h" style="background:#10b981">
+    <span class="pill" style="background:#fff;color:#10b981">AUDIENCE</span>
+    <span style="margin-left:12px;font-weight:900">谁该来、谁不该来</span>
+  </div>
+  <div class="grid-2" style="padding:24px">
+    <div>
+      <div style="font-weight:900;margin-bottom:14px;font-size:14px;color:#10b981;font-family:'Space Mono',monospace;letter-spacing:1px">✅ 谁该来</div>
+      <div class="audience-card">
+        <div class="pct">画像 A · 45%</div>
+        <div class="title">🧑‍💻 焦虑型 senior 程序员</div>
+        <div class="desc">35-45 岁 · Atlassian/Canva/Telstra/银行 拿 150-250k+ · 已会用 Cursor/Claude Code · 看到 AI 替代趋势</div>
+      </div>
+      <div class="audience-card">
+        <div class="pct">画像 B · 35%</div>
+        <div class="title">🎨 高薪 PM / Designer / 咨询</div>
+        <div class="desc">看完 Lovable + Cursor 演示想绕过工程团队自己 ship · 有强行业洞察但缺技术信心</div>
+      </div>
+      <div class="audience-card">
+        <div class="pct">画像 C · 20%</div>
+        <div class="title">⚖️ 副业冲动 professional</div>
+        <div class="desc">律师 / 会计 / 医生 / 资深咨询 · 不想辞职但想用 AI 做行业 niche SaaS · 看重澳洲合规</div>
+      </div>
+</div>
+    <div>
+      <div style="font-weight:900;margin-bottom:14px;font-size:14px;color:#ff5757;font-family:'Space Mono',monospace;letter-spacing:1px">❌ 谁不该来（明确排除）</div>
+      <div class="not-for"><strong>没积蓄的应届生 / 在校生</strong> — 撑不到 $1k MRR，应该先打工攒钱</div>
+      <div class="not-for"><strong>没辞职勇气的纯打工者</strong> — 不投入时间，cohort 文化被污染</div>
+      <div class="not-for"><strong>想拍短视频割韭菜的</strong> — 申请面试会筛掉</div>
+      <div class="not-for"><strong>想做币圈 / Token 项目的</strong> — 不在课程范围</div>
+      <div class="not-for"><strong>不在澳洲且不打算来澳洲的</strong> — Grant/会计模块对你无用</div>
+      <div class="not-for"><strong>想做 VC fundable startup 的</strong> — 推荐去 Antler / Startmate / Y Combinator</div>
+      <div style="margin-top:18px;padding:14px;background:#fffaf0;border:2px dashed #FF914D;font-size:13px;line-height:1.7">
+        <strong style="color:#FF914D">申请制 + 1:1 面试 → 录取率 30-50%</strong><br/>
+        OPC 课最大资产是同期同学的网络。一个心智不对的学员会污染整个 cohort 文化。Reforge / On Deck / YC 都用申请制。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 PHASES NAV -->
+<div class="phase-cards">
+  <a class="phase-card" href="phase1.html" style="background:#eef0ff">
+    <div class="pnum">PHASE 1 · W0-W3</div>
+    <h3>Build &amp; Sell</h3>
+    <div class="pdesc">选品 + MVP + 上线 + 收第一笔钱。整门课最硬的 phase，4 周后必须有能跑能卖的产品 + Stripe 真实交易截图。</div>
+    <div class="pweek">17 节课 · 6 直播 · 4 互动 Lab</div>
+  </a>
+  <a class="phase-card" href="phase2.html" style="background:#fff5ec">
+    <div class="pnum">PHASE 2 · W4-W6</div>
+    <h3>Get Customers</h3>
+    <div class="pdesc">中文内容机器（小红书 + 视频号 + 公众号）+ 英文内容机器（X + LinkedIn + ProductHunt）+ SEO/GEO。中英文圈是两个完全不同的渠道。</div>
+    <div class="pweek">11 节课 · 6 直播 · 2 互动 Lab</div>
+  </a>
+  <a class="phase-card" href="phase3.html" style="background:#e8fff5">
+    <div class="pnum">PHASE 3 · W7-W9</div>
+    <h3>🇦🇺 Australia Operations</h3>
+    <div class="pdesc">财务自动化 + 澳洲会计 + Grant 实战。这是这门课在全球独家的 3 周。嘉宾 = 澳洲华人 CPA + Grant consultant 帮 5+ 客户拿过 RDTI。</div>
+    <div class="pweek">13 节课 · 8 直播 · 5 节嘉宾主讲</div>
+  </a>
+  <a class="phase-card" href="phase4.html" style="background:#faedff">
+    <div class="pnum">PHASE 4 · W10-W11</div>
+    <h3>Scale &amp; Demo</h3>
+    <div class="pdesc">VC 选修（拿钱加速？）+ 三城联合 Demo Day + 三城本地 Networking 晚宴。校友群 + 6 个月持续 Office Hour。</div>
+    <div class="pweek">8 节课 · 6 直播 · 2 场 VC fireside</div>
+  </a>
+</div>
+
+<!-- GRADUATION CRITERIA -->
+<div class="box" style="margin-bottom:28px">
+  <div class="box-h" style="background:#FF914D">
+    <span class="pill" style="background:#fff;color:#FF914D">GRADUATION</span>
+    <span style="margin-left:12px;font-weight:900">毕业硬指标 6 项 — 不达标不发证</span>
+  </div>
+  <div style="padding:20px">
+    <div style="font-size:13px;color:#555;line-height:1.7;margin-bottom:18px;padding:12px;background:#fffaf0;border-left:3px solid #FF914D">
+      <strong>这是这门课跟所有创业课的核心差异。</strong> Demo Day 不是结业 demo 玩具——必须真金白银收过钱、必须 ABN 注册、必须提交 Grant、必须有公网产品、必须出席 Demo Day。这条会让"想试试"和"真要干"自动分层。
+    </div>
+    <div class="grid-3">
+      <div class="grad-card">
+        <div class="num">⭐ 硬指标 #1 · CRITICAL</div>
+        <div class="title">$1+ 真实付费</div>
+        <div class="desc">Stripe / Lemonsqueezy / PayPal 后台截图，含交易时间、金额、买家。不接受亲属朋友"友情付费"——必须是不认识你的人。</div>
+      </div>
+      <div class="grad-card">
+        <div class="num">硬指标 #2</div>
+        <div class="title">10+ 内容产出</div>
+        <div class="desc">中文 5 条（小红书/视频号/公众号）+ 英文 5 条（X/LinkedIn/ProductHunt），公开链接可访问。</div>
+      </div>
+      <div class="grad-card">
+        <div class="num">硬指标 #3</div>
+        <div class="title">ABN 注册完成</div>
+        <div class="desc">已经过 W8 嘉宾会计师 review 选择正确实体（Sole trader 或 Pty Ltd）。</div>
+      </div>
+      <div class="grad-card">
+        <div class="num">⭐ 硬指标 #4 · CRITICAL</div>
+        <div class="title">Grant 申请提交</div>
+        <div class="desc">提交至少 1 个澳洲 Grant（RDTI / EMDG / NSW MVP / LaunchVic 任一）。提交不一定拿到，但提交本身是毕业要件。</div>
+      </div>
+      <div class="grad-card">
+        <div class="num">硬指标 #5</div>
+        <div class="title">产品 URL Live</div>
+        <div class="desc">公网可访问的产品 / 服务页（不是 localhost 截图）。含 SSL、隐私政策、TOS、退款政策。</div>
+      </div>
+      <div class="grad-card">
+        <div class="num">硬指标 #6</div>
+        <div class="title">Demo Day 出席</div>
+        <div class="desc">W12 Demo Day 三城联合直播，每人 5min Demo + 2min Q&A。本城卫星教室或主场墨尔本到场。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CITY MODEL -->
+<div class="box" style="margin-bottom:28px">
+  <div class="box-h" style="background:#6366f1">
+    <span class="pill" style="background:#fff;color:#6366f1">FORMAT</span>
+    <span style="margin-left:12px;font-weight:900">三城 Hub-and-Spoke 线下模式</span>
+  </div>
+  <div style="padding:24px">
+    <div class="city-row">
+      <div class="city-card hub" style="border-color:#6366f1;border-width:3px">
+        <div class="city-name">🏛 墨尔本</div>
+        <div class="city-role">主场教室 · HUB</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;margin-top:10px">
+          老师现场讲 · 嘉宾飞主场 · 本地 Tutor 1:8 · 招生目标 10-12 人
+        </div>
+      </div>
+      <div class="city-card satellite">
+        <div class="city-name">🌉 悉尼</div>
+        <div class="city-role">卫星教室 · SATELLITE</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;margin-top:10px">
+          线下教室一起看大屏直播 · 本地 Tutor 1:8 · 同城同学线下讨论 · 招生目标 6-8 人
+        </div>
+      </div>
+      <div class="city-card satellite">
+        <div class="city-name">☀️ 布里斯班</div>
+        <div class="city-role">卫星教室 · SATELLITE</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;margin-top:10px">
+          线下教室一起看大屏直播 · 本地 Tutor 1:8 · 招生目标 3-5 人
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:14px 16px;background:#f5f5ff;border-left:3px solid #6366f1;font-size:13px;line-height:1.7">
+      <strong>为什么不用纯线上？</strong> 卫星教室能跟身边的人吃饭、聊产品、搞 networking——这是纯线上替代不了的。匠人 2020 年前就用这个模式跑过多期。Demo Day 三城联合直播 + 各城本地 networking 晚宴。
+    </div>
+  </div>
+</div>
+
+<!-- GUESTS -->
+<div class="box" style="margin-bottom:28px">
+  <div class="box-h" style="background:#10b981">
+    <span class="pill" style="background:#fff;color:#10b981">GUESTS</span>
+    <span style="margin-left:12px;font-weight:900">嘉宾团队 — 不是连线讲完就走</span>
+  </div>
+  <div style="padding:24px">
+    <div class="guest-row">
+      <div class="guest-card" style="background:#fff8d9">
+        <div class="icon">📊</div>
+        <div class="role">澳洲华人 CPA/CA</div>
+        <div class="week">W8 · 3 节直播</div>
+      </div>
+      <div class="guest-card" style="background:#e8fff5">
+        <div class="icon">💰</div>
+        <div class="role">Grant Consultant</div>
+        <div class="week">W9 · 3 节直播</div>
+      </div>
+<div class="guest-card" style="background:#fff5ec">
+        <div class="icon">🚀</div>
+        <div class="role">本地 VC × 2-4 位</div>
+        <div class="week">W10 · 2 场 fireside</div>
+      </div>
+    </div>
+    <div style="margin-top:18px;padding:12px 14px;background:#fffaf0;border:2px dashed #FF914D;font-size:13px;line-height:1.7">
+      <strong>嘉宾互利逻辑</strong>：高净值学员是会计师 / Grant consultant 的目标客户，来讲课直接拿 leads；VC 想看华人 AI 创业 deal flow。所有嘉宾费用包含在学费里，不另外收，且嘉宾的服务定价课上公开（你自己决定要不要请他们做服务，我们不抽成）。
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="box" style="margin-bottom:28px">
+  <div class="box-h" style="background:#FF914D">
+    <span class="pill" style="background:#fff;color:#FF914D">PRICING</span>
+    <span style="margin-left:12px;font-weight:900">首期 case study 价 — 仅此一期</span>
+  </div>
+  <div style="padding:24px">
+    <div class="grid-3">
+      <div class="price-card">
+        <div class="label">EARLY BIRD · 前 30 天</div>
+        <div class="price">$3,800<em> AUD</em></div>
+        <div style="font-size:12px;color:#555;line-height:1.6">11 周课程 · 三城线下 · 3 类嘉宾 · Demo Day · 校友群 · 6 个月 Office Hour</div>
+      </div>
+      <div class="price-card highlighted">
+        <div class="label">⭐ STANDARD · 推荐</div>
+        <div class="price">$4,800<em> AUD</em></div>
+        <div style="font-size:12px;color:#10162f;line-height:1.6;font-weight:600">同上，最常见档位。85% 学员选这档。</div>
+      </div>
+      <div class="price-card">
+        <div class="label">PREMIUM · 含 1:1</div>
+        <div class="price">$6,800<em> AUD</em></div>
+        <div style="font-size:12px;color:#555;line-height:1.6">同上 + 12 次 1:1 教练（每周 30min · 主讲老师 + 嘉宾轮流）</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:14px 16px;background:#fff0f0;border-left:3px solid #ff5757;font-size:13px;line-height:1.7">
+      <strong>第二期起回标准价</strong>：Early Bird $4,800 / Standard $5,800 / Premium $9,800。首期是为建立 case study 的低开高走，后期不再有这个价。<br/>
+      <strong>退款</strong>：前两周（W1-W2 末）满意承诺，全额退款无理由。
+    </div>
+  </div>
+</div>
+
+<!-- APPLICATION -->
+<div class="box" style="margin-bottom:28px">
+  <div class="box-h" style="background:#10162f">
+    <span class="pill" style="background:#fff;color:#10162f">APPLICATION</span>
+    <span style="margin-left:12px;font-weight:900">怎么申请</span>
+  </div>
+  <div style="padding:24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px">
+      <div style="padding:16px;border:2px solid #000;background:#fff">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#6366f1;letter-spacing:1px">STEP 1</div>
+        <div style="font-weight:900;font-size:15px;margin-top:6px">填申请表</div>
+        <div style="font-size:12px;color:#555;line-height:1.6;margin-top:6px">5 分钟 · 6 题 · 包括为什么做 OPC、过去 90 天行动、财务储备、过往独立完成的事</div>
+      </div>
+      <div style="padding:16px;border:2px solid #000;background:#fff">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#FF914D;letter-spacing:1px">STEP 2</div>
+        <div style="font-weight:900;font-size:15px;margin-top:6px">1:1 视频面试</div>
+        <div style="font-size:12px;color:#555;line-height:1.6;margin-top:6px">30 分钟 · 跟课程主讲老师 · 互相评估匹配度</div>
+      </div>
+      <div style="padding:16px;border:2px solid #000;background:#fff">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#10b981;letter-spacing:1px">STEP 3</div>
+        <div style="font-weight:900;font-size:15px;margin-top:6px">录取通知</div>
+        <div style="font-size:12px;color:#555;line-height:1.6;margin-top:6px">面试后 7 天内 · 录取率 30-50%</div>
+      </div>
+      <div style="padding:16px;border:2px solid #000;background:#fff">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#CB6CE6;letter-spacing:1px">STEP 4</div>
+        <div style="font-weight:900;font-size:15px;margin-top:6px">缴费 + 入群</div>
+        <div style="font-size:12px;color:#555;line-height:1.6;margin-top:6px">Pre-work 自学开始 · W0 装机 + ABN 预备</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="box" style="margin-bottom:28px">
+  <div class="box-h" style="background:#CB6CE6">
+    <span class="pill" style="background:#fff;color:#CB6CE6">FAQ</span>
+    <span style="margin-left:12px;font-weight:900">常见问题</span>
+  </div>
+  <div style="padding:24px" id="faq-list">
+    <!-- Faqs rendered by JS from outline.json (or inline list below) -->
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">▸ OPC 一人公司 vs 可融资 startup，这门课是哪个？</div>
+      <div class="faq-a">主轴 OPC 一人公司——目标 $1k → $10k MRR 的自由，不雇人、不融资、用 AI 替代员工。VC 路线只在 W11 以选修 fireside chat 形式出现（请 1-2 个本地 VC 来分享）。如果你确定要做下一个 Canva 拿 A 轮，应该去 Antler / Startmate / YC，不是这门课。</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">▸ 我不在澳洲（或不打算来澳洲）能报吗？</div>
+      <div class="faq-a">可以，但 W7-W9 澳洲会计 + Grant 三周（占总课时 27%）跟你无关，价格不变。W1-W6 + W10-W11 全球通用，对其他国家学员也有价值，但 ROI 不如澳洲学员。强烈建议你等加拿大/英国/新加坡版开（计划在首期跑通后启动）。</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">▸ 首期为什么定 $3,800-$4,800 这么便宜？第二期就贵？</div>
+      <div class="faq-a">首期是 case study 价。我们需要 18-25 个学员的真实毕业 case 喂养第二期招生。这种"低开高走"是 cohort-based course 的标准玩法（Reforge / On Deck 都这么做）。第二期起 Standard $5,800、Premium $9,800（含 1:1 mentorship）。</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">▸ 录取率 30-50% 是不是噱头？</div>
+      <div class="faq-a">不是。OPC 课最大资产是同期同学的网络——5 年后这批人是澳洲华人 AI 圈的核心节点，互相投资、雇佣、收购。一个心智不对的学员（想拍短视频割韭菜 / 想做币圈 / 没辞职勇气的纯打工心态）会污染整个 cohort 文化。申请表 + 1:1 面试就是筛这个。</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">▸ 三城同时开课，悉尼和布里斯班是不是被当二等公民？</div>
+      <div class="faq-a">不是。墨尔本主场老师讲，悉尼/布里斯班线下教室一起看大屏直播 + 本地 Tutor 1:8 现场答疑 + 同城同学线下讨论。这跟纯线上完全不同——你在卫星教室能跟身边的人吃饭、聊产品、搞 networking。匠人 2020 年前就用这个模式跑过多期，已验证。Demo Day 三城联合，每城本地 networking 晚宴。</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">▸ 毕业硬指标 6 项，万一我达不到怎么办？</div>
+      <div class="faq-a">不达标不发结业证书。但课程内容你已经全部学完，材料、模板、嘉宾联系方式都在你手里。我们会在毕业 90 天内继续提供 Office Hour 帮你把指标补齐。这不是惩罚，是对认真完课的学员公平——把"上完了课"和"做出了东西"严格区分。</div>
+    </div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">▸ 我已经上过 AI Engineer / OpenClaw Bootcamp，这门课重复吗？</div>
+      <div class="faq-a">不重复。AI Engineer 教你"AI 工程技能"（找工作用），OpenClaw 教你"AI 接管你的 daily work"（个人提效），这门课教你"用前两门课学到的东西自己开公司、卖产品、合规收钱"。三门课构成一个完整的 AI 时代职业升级阶梯。老学员升级有专属优惠（待商务确认）。</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="quote-box">
+  这门课不教你创业。教你做出第一笔真实付费、注册 ABN、提交 Grant 申请——11 周后你不一定成功，但你会有一个能跑、能卖、能合规的 AI 一人创业的完整框架，和 18-25 个跟你一起走过这条路的同期同学。
+</div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(el => {
+    el.addEventListener('click', () => el.classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
