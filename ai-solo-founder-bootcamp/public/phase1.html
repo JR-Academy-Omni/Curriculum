@@ -68,8 +68,8 @@
     选品 + MVP + 上线 + 收第一笔钱。<strong>这是整门课最硬的核心 phase</strong>，4 周后你必须有一个能跑、能卖的产品和 Stripe / Lemonsqueezy 后台真实交易。Phase 1 不达标的学员通常是"想试试但不真做"，可以 W2 末走最后一次退款窗口。
   </div>
   <div class="phase-stats">
-    <div class="phase-stat"><div class="n">24</div><div class="l">节课</div></div>
-    <div class="phase-stat"><div class="n">12</div><div class="l">直播课</div></div>
+    <div class="phase-stat"><div class="n">25</div><div class="l">节课</div></div>
+    <div class="phase-stat"><div class="n">13</div><div class="l">直播课</div></div>
     <div class="phase-stat"><div class="n">5</div><div class="l">互动 Lab</div></div>
     <div class="phase-stat"><div class="n">1</div><div class="l">⭐ 硬指标里程碑</div></div>
   </div>
@@ -194,8 +194,8 @@
 <div class="week-block">
   <div class="week-h">
     <span class="wnum">W2 · WEEK 2</span>
-    <span class="wtitle">MVP 周 — 一周做出能跑的产品 + 装齐 OpenClaw + Hermes 企业大脑</span>
-    <span class="wmeta">线下 10h · 自学 10h · 13 节课 · 5 个 Lab</span>
+    <span class="wtitle">MVP 周 — 一周做出能跑的产品 + 装齐 AI 秘书 + Schedule 工作坊</span>
+    <span class="wmeta">线下 12h · 自学 10h · 14 节课 · 5 个 Lab</span>
   </div>
   <div class="lesson-row">
     <div class="lcode">L06</div>
@@ -364,6 +364,38 @@
         <p><strong>③ 自建路径</strong> — Crew AI / LangGraph + Pinecone/Weaviate/Supabase pgvector。给会写代码 + 隐私洁癖的学员，要写 200-500 行 Python。课程发完整 boilerplate，Cursor 一晚跑通。</p>
         <p><strong>④ 团队 Brain（Hermes 共享 daemon）</strong> — 当 OPC 长大到 2-5 人小团队时，Hermes 跑在公司 VPS 上做 shared memory（参考 JR 内部 <code>docs/HERMES_TEAM_BRAIN_PRD.md</code>）。OPC 一个人阶段先不动。</p>
         <p><strong>切换决策表</strong>：① 数据隐私升级 → 切 Cowork → OpenClaw；② 想要手机 IM 派活 → 补 Hermes；③ 团队化 → Hermes shared daemon；④ 想完全控制成本和模型 → 自建。配 5 个真实学员演化案例。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L11g</div>
+    <div class="ltype live">LIVE · 120min</div>
+    <div>
+      <div class="ltitle">[Live] Agent Schedule 工作坊：5 个真实案例一起做（Claude Code / Codex / Cowork / OpenClaw 跨平台）</div>
+      <div class="ldesc">
+        <h3>🎯 把 agent 从"交互工具"变成"后台 worker" — 设定一次，每天自动跑</h3>
+        <p>L11e 现场配过 7 个秘书任务，那是『示范』；这节课是<strong>工作坊形式</strong>：现场每个学员配 5 个真实 schedule，跑完离场，每个都在你日历上明天起每天自动触发。</p>
+        <h4>📐 Agent Schedule 跨平台对照（30min 概念 + 配置）</h4>
+        <ul>
+          <li><strong>Claude Cowork <code>/schedule</code></strong>：内置 5 种 cadence（hourly / daily / weekly / monthly / custom），UI 配置最简单。<strong>限制：必须 Mac awake + Claude Desktop App 开着</strong></li>
+          <li><strong>Claude Code cron skill</strong>：自定义 skill + 系统 cron / launchd，要写 wrapper script，灵活但要会 shell</li>
+          <li><strong>Codex CLI 定时任务</strong>：通过系统 cron 或 OpenAI Scheduled Tasks，跟 Claude Code 思路类似</li>
+          <li><strong>OpenClaw cron</strong>：自由配 cron 表达式，可后台 daemon 常驻不依赖 Mac awake</li>
+          <li><strong>n8n / Zapier scheduled trigger</strong>：可视化工作流编排，免装机直接 SaaS 跑</li>
+          <li><strong>系统 cron / launchd / GitHub Actions cron</strong>：最底层兜底，跑任意脚本（包括调任意 agent CLI）</li>
+        </ul>
+        <p><strong>选型决策</strong>：① Cowork 学员用 <code>/schedule</code> 直接配；② OpenClaw 学员用 cron + daemon；③ 想完全脱离本机依赖 → n8n self-host on VPS / GitHub Actions cron + 调 Claude API 直跑。</p>
+        <h4>🛠 现场工作坊：5 个案例一起配（90min · 每个 18min · TA 1:8 陪跑）</h4>
+        <ol>
+          <li><strong>案例 ① 每天 7:00 拉竞品价格 + push 邮件</strong>（SaaS / 电商 OPC）— scrape 竞品 pricing → AI 总结变化 → 邮件『今天 X 涨了 $5、Y 推了新 plan』</li>
+          <li><strong>案例 ② 每周一 9:00 GSC + AI SEO 周报</strong>（all OPC）— GSC API 拉上周数据 → AI 找异常 → 200 字 weekly report</li>
+          <li><strong>案例 ③ 每月 1 号 8:00 财务月报</strong>（all OPC）— Stripe API + Xero API → MRR / churn / GST 准备金 / 现金流月报 → push Telegram + 存 Drive</li>
+          <li><strong>案例 ④ 每周日 18:00 周报自动生成</strong>（all OPC）— git log + 邮件 + 日历 + agent memory → AI 综合周报 → Drive + Telegram push</li>
+          <li><strong>案例 ⑤ 每天 22:00 git commit 总结 + daily review email</strong>（写代码的 OPC）— 今天 git log + 关闭的 issue → AI 总结 → 早上邮件给自己『昨日 X/Y/Z，今天该 …』</li>
+        </ol>
+        <h4>🎓 工作坊收尾（10min）</h4>
+        <p>每个学员展示自己 5 个 schedule 的 Cron 表达式 + 第一次跑的输出截图。<strong>验收</strong>：W2 末 deliverable — 至少 3 个 schedule 已设置好且跑过一次成功。</p>
+        <p><strong>失败模式 + 排错</strong>：① Mac 睡眠 → schedule 没跑（caffeinate / Power Nap 兜底）；② API rate limit → 加 retry + 错峰；③ 输出爆 token → 截断 / 摘要前置；④ 没人看 push → 改成卡片 dashboard / 摘要置顶；⑤ AI 答错 → 加 sanity check + alert</p>
       </div>
     </div>
   </div>
