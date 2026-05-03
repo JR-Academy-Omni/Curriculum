@@ -68,9 +68,9 @@
     选品 + MVP + 上线 + 收第一笔钱。<strong>这是整门课最硬的核心 phase</strong>，4 周后你必须有一个能跑、能卖的产品和 Stripe / Lemonsqueezy 后台真实交易。Phase 1 不达标的学员通常是"想试试但不真做"，可以 W2 末走最后一次退款窗口。
   </div>
   <div class="phase-stats">
-    <div class="phase-stat"><div class="n">21</div><div class="l">节课</div></div>
-    <div class="phase-stat"><div class="n">10</div><div class="l">直播课</div></div>
-    <div class="phase-stat"><div class="n">4</div><div class="l">互动 Lab</div></div>
+    <div class="phase-stat"><div class="n">24</div><div class="l">节课</div></div>
+    <div class="phase-stat"><div class="n">12</div><div class="l">直播课</div></div>
+    <div class="phase-stat"><div class="n">5</div><div class="l">互动 Lab</div></div>
     <div class="phase-stat"><div class="n">1</div><div class="l">⭐ 硬指标里程碑</div></div>
   </div>
 </div>
@@ -194,8 +194,8 @@
 <div class="week-block">
   <div class="week-h">
     <span class="wnum">W2 · WEEK 2</span>
-    <span class="wtitle">MVP 周 — 一周做出能跑的产品 + 配齐 AI 秘书 / 记忆 / 文档系统</span>
-    <span class="wmeta">线下 6h · 自学 10h · 10 节课 · 4 个 Lab</span>
+    <span class="wtitle">MVP 周 — 一周做出能跑的产品 + 装齐 OpenClaw + Hermes 企业大脑</span>
+    <span class="wmeta">线下 10h · 自学 10h · 13 节课 · 5 个 Lab</span>
   </div>
   <div class="lesson-row">
     <div class="lcode">L06</div>
@@ -266,28 +266,102 @@
   </div>
   <div class="lesson-row">
     <div class="lcode">L11b</div>
-    <div class="ltype live">LIVE · 120min</div>
+    <div class="ltype live">LIVE · 90min</div>
     <div>
-      <div class="ltitle">[Live] 企业秘书：Agent OS 选型 + 7 个秘书任务 ship</div>
+      <div class="ltitle">[Live] 装 OpenClaw — 你的 AI 执行手（开源编码 / 自动化 agent）</div>
       <div class="ldesc">
-        <h3>🎯 让你有"企业秘书 / 大脑"的感觉 — OPC 的非对称杠杆</h3>
-        <p>没雇人的 OPC 怎么有"有秘书帮我打理"的感觉？答案是 Agent OS。这节课对比 4 个主流方案 + 现场 ship 7 个秘书任务。</p>
-        <p><strong>4 方案选型对比</strong>：① <strong>OpenClaw Hermes</strong>（JR 自家，跟 Bootcamp 学员深度集成 + 专属优惠）；② <strong>Claude Cowork</strong>（Anthropic 官方，工作流强、隐私好）；③ <strong>Lindy.ai</strong>（第三方 workflow agent，集成多但贵）；④ <strong>自建</strong>（Crew AI / LangGraph，灵活但要写代码）。课上发 4 维决策表（隐私 / 成本 / 集成度 / 学习曲线）。</p>
-        <p><strong>7 个秘书任务现场 ship</strong>：① 每天早上 8 点收件箱总结（重要 + 待回 + 噪音三档）；② 会议笔记自动整理（Otter.ai / Granola → 决策清单）；③ 日程冲突解决 + 客户预约协调；④ 客户跟进队列；⑤ 合同审查（用 AI 律师角色，跟 W3 L16 联动）；⑥ 财务月报（Stripe + Xero → 自动生成）；⑦ 周报生成。Demo 用 Hermes 接 Gmail + Calendar + Drive 跑通收件箱总结。</p>
+        <h3>🎯 W2 末第一节 Agent OS — 装好 OpenClaw 跟它建立第一次对话</h3>
+        <p><strong>OpenClaw 是什么</strong>：NousResearch 推出的开源 CLI agent（前身 Moltbot / ClawdBot），定位类 Claude Code —— 能在你电脑上读文件、写文件、跑命令、调 API。memory 层用本地 markdown：<code>MEMORY.md</code>（项目记忆）+ <code>USER.md</code>（你的人设）+ 可选 Mem0 向量插件。<strong>不是 JR 的产品，但 JR 的 4 周 OpenClaw Bootcamp 专门教这个</strong>——上过 OpenClaw Bootcamp 的学员可以跳过装机部分直接看 OPC 场景配置。</p>
+        <p><strong>课上 4 段</strong>：</p>
+        <ol>
+          <li><strong>装机（20min）</strong>：macOS 直装 / Win 10/11 走 WSL2；OpenClaw CLI + bun + LLM API key 配置</li>
+          <li><strong>配人设 USER.md（25min）</strong>：写出『你是谁、你的产品、你的写作语调、决策风格、行业术语偏好』——后面所有 agent 行为的根基</li>
+          <li><strong>配项目 MEMORY.md（20min）</strong>：把 W1 选好的产品 idea + W2 在做的 MVP 写进 MEMORY，让 agent 知道当前在做什么</li>
+          <li><strong>第一次对话验证（25min）</strong>：让 OpenClaw 跟你 W1 的产品 idea 写一篇小红书笔记。验收：跟你过往笔记盲测，至少 70% 像本人语调（不像就回去改 USER.md）</li>
+        </ol>
+        <p><strong>OpenClaw vs Claude Code 取舍</strong>：Claude Code 闭源 + Anthropic 官方支持，OpenClaw 开源 + 社区驱动 + 可深度定制 memory 格式。OPC 学员推荐 OpenClaw 因为后面 L11c 要接 Hermes 记忆层，OpenClaw 的 markdown 格式跟 Hermes 兼容（一个命令就能迁），Claude Code memory 格式不直接兼容。</p>
       </div>
     </div>
   </div>
   <div class="lesson-row">
     <div class="lcode">L11c</div>
-    <div class="ltype info">SELF · 90min</div>
+    <div class="ltype lab">LAB · 90min</div>
     <div>
-      <div class="ltitle">[Self] 企业超级记忆系统：Email/Drive/Notion/Slack/微信记录变成 AI 可查的记忆库</div>
+      <div class="ltitle">Lab: 装 Hermes 记忆层 — OpenClaw 跨设备 / 跨 IM 持久记忆</div>
       <div class="ldesc">
-        <h3>🎯 给"企业大脑"装上长期记忆（跟 L11b 配套）</h3>
-        <p>L11b 的 Agent 是"执行层"，这节课装的是"记忆层"。RAG over 个人/公司全部数据 — 让 AI 能回答你 6 个月前邮件聊过什么、上周 standup 决定了什么、客户上次提的折扣是多少。</p>
-        <p><strong>数据源接入</strong>：Gmail / Outlook + Google Drive / OneDrive + Notion / Confluence + Slack / Teams + 微信聊天记录（导出后入库）+ WhatsApp / Telegram + 飞书。</p>
-        <p><strong>工具栈选型</strong>：① Claude Cowork built-in memory；② OpenClaw Hermes 记忆模块（跟 L11b 同栈）；③ Mem.ai / Reflect（消费级）；④ 自建（Pinecone / Weaviate / Supabase pgvector，月成本 $0-30）。</p>
-        <p><strong>5 个典型问答</strong>：① "上次跟谁说过 X idea"；② "客户 Y 邮件里的折扣是多少"；③ "上周 standup 决定 Z"；④ "代码里 X 是怎么实现的"；⑤ "Q3 财务数据"。<strong>关键约束</strong>：本地 RAG 优先（隐私），微信/WhatsApp 记录绝不上云。</p>
+        <h3>🎯 让 OpenClaw 在 Mac 办公室 / 家 / 手机 / Telegram / Slack 上共享一个大脑</h3>
+        <p><strong>Hermes 是什么</strong>：NousResearch 出的开源跨平台持久记忆 agent（不是 JR 的，跟 OpenClaw 同一个组织出的），定位 = 记忆层而非编码 agent。文件存在 <code>~/.hermes/</code>：FTS5 索引的对话 memory（STM Ring Buffer + LTM）+ 自动生成的 skills + Slack/Telegram/Discord/WhatsApp/Signal/CLI gateway。</p>
+        <p><strong>关键能力（直接拿来用，不用自己写）</strong>：</p>
+        <ul>
+          <li>✅ Markdown + FTS5 双层记忆 — 全文搜索 + 时序压缩</li>
+          <li>✅ Agent-curated memory + periodic nudges — AI 自己整理你的记忆 + 定期问你『这条还重要吗』</li>
+          <li>✅ 自主 skill 创建 — 跑过的任务自动变成可复用的 skill 文件</li>
+          <li>✅ <code>hermes claw migrate</code> 一键把 OpenClaw 的 <code>MEMORY.md</code> + <code>USER.md</code> 迁到 Hermes</li>
+          <li>✅ 内置 Honcho 用户画像模块</li>
+        </ul>
+        <p><strong>Lab 实操（90min）</strong>：① 装 Hermes（pip / docker 任一）；② 跑 <code>hermes claw migrate</code> 把 L11b 配好的 OpenClaw memory 迁过来；③ 验证 1 — FTS5 搜索；④ 验证 2 — 跨设备同步（第二台 Mac 启 daemon）；⑤ 启用 Telegram gateway，手机上跟你的 agent 对话。</p>
+        <p><strong>跟 JR 内部 PRD 的关系</strong>：JR 内部也在演化 Hermes 作为团队共享大脑（<code>docs/HERMES_TEAM_BRAIN_PRD.md</code>）。bootcamp 学员的个人版是 L1（个人 scope），未来 L2/L3 公司 scope 由 JR 内部继续打磨。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L11d</div>
+    <div class="ltype live">LIVE · 120min</div>
+    <div>
+      <div class="ltitle">[Live] 接通公司核心数据：Gmail / Calendar / Drive / Notion / Slack 全部喂进 agent</div>
+      <div class="ldesc">
+        <h3>🎯 让你的 agent 真正"知道你的公司在发生什么"</h3>
+        <p>L11b 装好 OpenClaw、L11c 接好 Hermes 记忆层。这节课把<strong>公司核心数据源</strong>全部接进来 — agent 才有上下文回答 OPC 的真实问题（不接数据 = agent 只能聊天，没法干活）。</p>
+        <p><strong>5 个数据源 + 接入方式（120min 全演示）</strong>：</p>
+        <ol>
+          <li><strong>Gmail / Outlook 邮件（30min）</strong> — OpenClaw skill：OAuth → 索引最近 90 天邮件 → Hermes FTS5 入库。本地索引优先，邮件正文不上云</li>
+          <li><strong>Google Calendar / Outlook Calendar（15min）</strong> — Calendar API 读未来 30 天事件 + 历史 1 年画像</li>
+          <li><strong>Google Drive / OneDrive 文档（25min）</strong> — 选择性接：Working / Customer / 财务文件夹，敏感文件夹排除</li>
+          <li><strong>Notion / Confluence（20min）</strong> — Notion API integration token 全 workspace 索引</li>
+          <li><strong>Slack / Discord / Telegram 群消息（20min）</strong> — Hermes gateway 直接接，channel 白名单管理</li>
+          <li><strong>整合验证（10min）</strong>：现场问"客户 X 最近一次邮件提到什么 + standup 决定了什么"，agent 跨数据源回答</li>
+        </ol>
+        <p><strong>隐私 4 档</strong>：① 本地 only（Gmail / WhatsApp 必须）② 自建云（Supabase pgvector）③ zero-retention 端点（Anthropic / OpenAI）④ 完全云端（仅公开内容）。课上发数据源 × 隐私级别决策表。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L11e</div>
+    <div class="ltype live">LIVE · 120min</div>
+    <div>
+      <div class="ltitle">[Live] 7 个秘书任务现场 ship — 让你有"企业秘书 / 大脑"的真实感觉</div>
+      <div class="ldesc">
+        <h3>🎯 W2 Agent OS 总收官 — 让 agent 真正接管 OPC 的日常工作</h3>
+        <p>前面 L11b/c/d 把 OpenClaw + Hermes + 数据源都装好了。这节课现场把 agent 配成"真的秘书" —— 不是聊天玩具，是每天 8 点 push 总结、自动跟进客户、出月报的执行机器。</p>
+        <p><strong>7 个秘书任务（现场至少跑通 4 个，剩下作为 W2 末 deliverable）</strong>：</p>
+        <ol>
+          <li><strong>① 收件箱总结</strong> — 每天 8:00 push 到 Telegram，重要/待回/噪音三档 + 重要邮件回复 draft（OpenClaw skill + cron + Hermes Telegram gateway）</li>
+          <li><strong>② 会议笔记自动整理</strong> — Otter.ai / Granola 录音 → Hermes 入库 → AI 抽决策清单 + action items + owner</li>
+          <li><strong>③ 日程协调 + 客户预约</strong> — Cal.com / Calendly 接 OpenClaw skill，agent 看日历给客户回时段</li>
+          <li><strong>④ 客户跟进队列</strong> — 每周一 7:00 push：最近 7 天没回的客户 + 上次对话上下文 + AI 跟进文案 draft</li>
+          <li><strong>⑤ 合同审查</strong> — 联动 W3 L16 AI 律师角色 — agent 看到合同 PDF 自动 review 风险点 + 红线清单</li>
+          <li><strong>⑥ 财务月报</strong> — 每月 1 日 8:00 push — Stripe API + Xero API → MRR / churn / GST 准备金 / 现金流月报</li>
+          <li><strong>⑦ 周报生成</strong> — 每周日 18:00 — agent 看本周 git commit + 邮件 + 日历 + Hermes memory，自动出周报</li>
+        </ol>
+        <p><strong>课上 demo 顺序</strong>：先 ① 收件箱总结（最容易出效果），再 ⑥ 财务月报（OPC 学员最爽）。<strong>验收</strong>：W2 末每个学员至少跑通 4 个秘书任务（一周的 push 输出截图）。</p>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-row">
+    <div class="lcode">L11f</div>
+    <div class="ltype info">SELF · 60min</div>
+    <div>
+      <div class="ltitle">[Self] 进阶选型 — 自建 vs Mem0 vs Lindy.ai vs 团队 Brain</div>
+      <div class="ldesc">
+        <h3>🎯 OpenClaw + Hermes 之外的方案 — 知道存在 + 何时切换</h3>
+        <p>L11b-e 给的是『推荐方案』（OpenClaw + Hermes），适合 80% OPC 学员。其他 4 个备选方案对比：</p>
+        <ul>
+          <li><strong>① 自建（Crew AI / LangGraph + Pinecone / Weaviate / Supabase pgvector）</strong> — 给会写代码 + 隐私洁癖 + 想完全控制的学员，月成本 $0-30 但要写 200-500 行 Python</li>
+          <li><strong>② Mem0 向量插件</strong> — 不想装 Hermes 跨平台、只想给 OpenClaw 加向量检索的学员，装 1 个 npm 包搞定</li>
+          <li><strong>③ Lindy.ai</strong> — 第三方 workflow agent SaaS，UI 漂亮、集成多，但 $50-300/月 + 数据上他们云</li>
+          <li><strong>④ 团队 Brain（Hermes 共享 daemon）</strong> — 当 OPC 长大到 2-5 人小团队时，Hermes 跑在公司 VPS 上做 shared memory（参考 <code>HERMES_TEAM_BRAIN_PRD.md</code>），OPC 一个人阶段先不动</li>
+        </ul>
+        <p><strong>4 维决策表</strong>：① 隐私（本地 ↔ 云）② 成本（$0/月 ↔ $300/月）③ 跨设备 / 跨 IM 能力 ④ 学习曲线。课程发完整决策矩阵 + 5 个 OPC 真实学员选型案例。</p>
       </div>
     </div>
   </div>
