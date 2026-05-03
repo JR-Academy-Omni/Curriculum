@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30 分钟 ship 一个 AI 产品 — Mini Course (免费)</title>
+<meta name="description" content="30 分钟从 idea 到公网可访问的 AI 产品（含 Stripe checkout）。手把手 demo + 完整工具清单 + 配套模板，免费拿走。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.6}
+.header{background:linear-gradient(135deg,#10162f 0%,#FF914D 100%);color:#fff;padding:48px 24px 40px;text-align:center;border-bottom:4px solid #000}
+.header h1{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-0.02em;line-height:1.15;max-width:880px;margin:0 auto}
+.header .sub{font-size:15px;opacity:0.85;margin-top:14px;max-width:760px;margin:14px auto 0;line-height:1.7}
+.header .nav{margin-top:18px;font-size:13px}
+.header .nav a{color:#FFDE59;margin:0 10px;text-decoration:none;font-weight:700}
+.header .badges{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.header .badge{padding:5px 14px;font-size:12px;font-weight:700;font-family:'Space Mono',monospace;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4)}
+.c{max-width:920px;margin:0 auto;padding:32px 20px}
+.video-wrap{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;margin-bottom:28px;overflow:hidden}
+.video-placeholder{aspect-ratio:16/9;background:#10162f;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;position:relative}
+.video-placeholder::before{content:'▶';font-size:64px;color:#FFDE59;margin-bottom:10px}
+.video-placeholder h2{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;margin-bottom:6px}
+.video-placeholder p{opacity:0.7;font-size:13px;max-width:480px}
+.video-placeholder .youtube-link{margin-top:12px;font-family:'Space Mono',monospace;font-size:11px;background:#FFDE59;color:#10162f;padding:8px 14px;font-weight:700}
+
+.box{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;margin-bottom:28px;overflow:hidden}
+.box-h{padding:14px 24px;background:#10162f;color:#fff;display:flex;align-items:center;gap:12px}
+.box-h .pill{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;padding:4px 10px;background:#FFDE59;color:#10162f;letter-spacing:1px}
+.box-h h2{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:18px;font-weight:900;flex:1}
+.box-body{padding:22px 26px}
+.box-body p{font-size:14.5px;line-height:1.8;margin-bottom:10px;color:#333}
+
+.timeline{display:grid;gap:0}
+.tl-item{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid #eee}
+.tl-item:last-child{border-bottom:none}
+.tl-time{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#FF914D;padding-top:2px}
+.tl-content h3{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:16px;font-weight:900;margin-bottom:6px}
+.tl-content p{font-size:13.5px;line-height:1.7;color:#333;margin-bottom:6px}
+.tl-content code{font-family:'Space Mono',monospace;font-size:12px;background:#10162f;color:#FFDE59;padding:2px 6px}
+.tl-content .out{margin-top:8px;padding:8px 12px;background:#fff5ec;border-left:3px solid #FF914D;font-size:12.5px;color:#92400e}
+.tl-content .out strong{color:#10162f}
+
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.tool-card{padding:14px 16px;border:2px solid #000;background:#fafafa}
+.tool-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;margin-bottom:4px}
+.tool-card .role{font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;color:#FF914D;font-weight:700;letter-spacing:1px;margin-bottom:6px}
+.tool-card p{font-size:12.5px;color:#444;line-height:1.6}
+.tool-card .price{display:inline-block;margin-top:6px;padding:2px 8px;background:#10162f;color:#fff;font-size:10px;font-family:'Space Mono',monospace}
+.tool-card .price.free{background:#10b981}
+
+.checklist{padding:18px 22px;background:#fff8e1;border:2px dashed #FFDE59}
+.checklist h3{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;margin-bottom:10px;color:#10162f}
+.checklist ul{list-style:none;padding:0}
+.checklist li{padding:6px 0;font-size:13.5px;display:flex;align-items:flex-start;gap:8px}
+.checklist li::before{content:'☐';color:#FF914D;font-weight:900;font-size:16px;flex-shrink:0}
+
+.gotcha{padding:14px 18px;background:#fee2e2;border:2px solid #ef4444;font-size:13px;line-height:1.7;color:#7f1d1d}
+.gotcha strong{color:#7f1d1d}
+
+.cta-band{margin-top:36px;padding:28px 32px;background:#10162f;color:#fff;text-align:center;border:4px solid #000;box-shadow:8px 8px 0 #FFDE59}
+.cta-band h2{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:#FFDE59;margin-bottom:10px}
+.cta-band p{font-size:14.5px;opacity:0.85;margin-bottom:18px;max-width:640px;margin:0 auto 18px;line-height:1.7}
+.cta-band a{display:inline-block;padding:14px 30px;background:#FFDE59;color:#10162f;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;text-decoration:none;border:3px solid #fff;margin:0 6px 6px 0}
+.cta-band a.alt{background:transparent;color:#FFDE59;border-color:#FFDE59}
+@media(max-width:600px){.tl-item{grid-template-columns:1fr}.tl-time{margin-bottom:4px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>30 分钟 ship 一个能收钱的 AI 产品 — 完整 demo + 工具清单</h1>
+  <div class="sub">不是 demo 截图、不是 Figma 静态页 — 一个公网能打开、能注册、能跑测试支付的 AI 产品。手把手录屏 + 完整工具清单 + 配套模板，免费。</div>
+  <div class="badges">
+    <span class="badge">⏱ 30 分钟</span>
+    <span class="badge">🆓 完全免费</span>
+    <span class="badge">💻 零编程基础也能跟</span>
+    <span class="badge">🇦🇺 含澳洲 Stripe 配置</span>
+  </div>
+  <div class="nav">
+    <a href="../curriculum.html">← 课程总览</a>
+    <a href="../lead-magnets.html">所有免费工具</a>
+  </div>
+</div>
+
+<div class="c">
+
+<!-- Video / Recording placeholder -->
+<div class="video-wrap">
+  <div class="video-placeholder">
+    <h2>录屏 demo · 30 分钟从 idea 到 live URL</h2>
+    <p>视频跟着下方时间线一节一节做完，30 分钟后你的产品也在公网可访问</p>
+    <div class="youtube-link">YouTube 链接将于首期开课前 2 周公开</div>
+  </div>
+</div>
+
+<!-- Why this matters -->
+<div class="box">
+  <div class="box-h">
+    <span class="pill">WHY</span>
+    <h2>为什么这个 mini course 重要</h2>
+  </div>
+  <div class="box-body">
+    <p>OPC（One-Person Company AI 一人公司）这件事最大的心理门槛是：『感觉很复杂，要懂代码、懂部署、懂支付、懂法律』。<strong>2026 年这一切都假了</strong>——AI 工具栈让一个非技术人 30 分钟内可以 ship 出能跑能收钱的产品。</p>
+    <p>这个 mini course 用一个真实的微 SaaS idea（『AI 帮你写小红书爆款标题』）从零跑通：选品 → 用 Lovable 一句话生成网站 → 加 Stripe checkout（test mode）→ 部署到 Vercel 拿公网 URL → 测试一笔交易。<strong>不是教你成为开发者，是让你看到这件事真的不复杂</strong>。</p>
+    <p>这是 AI 一人创业营 W2 第一节课的<strong>压缩公开版</strong>。完整版课上 14 节课覆盖：选品验证 / 5 大定价模型 / Cursor + Claude Code + Lovable 工具地图 / Source of Truth 一份文档出全套对外 asset / 装企业 AI 秘书 + Agent Schedule 工作坊。这 30 分钟 mini course 是其中 W2 开篇 30 分钟的精华。</p>
+  </div>
+</div>
+
+<!-- Lesson timeline -->
+<div class="box">
+  <div class="box-h">
+    <span class="pill">课程时间线</span>
+    <h2>30 分钟分秒安排（跟着做就能 ship）</h2>
+  </div>
+  <div class="box-body">
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-time">0-3min</div>
+        <div class="tl-content">
+          <h3>① 介绍 + 今天 ship 什么</h3>
+          <p>看 OPC 心智 + 今天目标：一个 micro-SaaS landing page + 一个 working demo + Stripe checkout（test mode），所有都在公网可访问。</p>
+          <div class="out"><strong>产出</strong>：一句话产品定位（"AI 帮小红书博主写爆款标题，每月 $9"）</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">3-10min</div>
+        <div class="tl-content">
+          <h3>② 用 Lovable 一句话生成 landing page</h3>
+          <p>打开 <code>lovable.dev</code>，写一句 prompt：『做一个 AI 小红书爆款标题生成器的 landing page，hero 标题 + 痛点 + 演示 + pricing 三档 + FAQ』。Lovable 30-60 秒生成完整页面，含响应式 + Tailwind 样式 + 工作的表单。</p>
+          <div class="out"><strong>产出</strong>：一个真的 landing page，能在 Lovable 预览 URL 直接打开</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">10-17min</div>
+        <div class="tl-content">
+          <h3>③ 加 Stripe Checkout（test mode）</h3>
+          <p>注册 Stripe（澳洲 ABN 不必须，先 test mode）→ Stripe Dashboard 创一个 product（$9/month subscription）→ 复制 Checkout link → 贴到 landing page 的『立刻订阅』按钮。<strong>注意 test mode 用 4242 4242 4242 4242 测试卡</strong>。</p>
+          <div class="out"><strong>产出</strong>：landing 上的『订阅』按钮真的能跳到 Stripe checkout，能完成 test mode 交易</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">17-24min</div>
+        <div class="tl-content">
+          <h3>④ 部署到 Vercel 拿公网 URL</h3>
+          <p>Lovable 内置 GitHub 集成 → 1 click 推到 GitHub → Vercel import GitHub repo → 30 秒部署完成 → 拿到 <code>your-product.vercel.app</code> 公网 URL。<strong>这一步以前要懂 git/CI/DNS，现在 3 个 click 完成。</strong></p>
+          <div class="out"><strong>产出</strong>：公网可访问的 URL，朋友能点开</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">24-28min</div>
+        <div class="tl-content">
+          <h3>⑤ 测试一笔交易（test mode）</h3>
+          <p>用 4242 测试卡走完整 checkout → Stripe Dashboard 看到 test 交易记录 → landing 上加一个『最近付费用户』wall（社交证明），先用 test 数据填，进 live mode 后自动切换。</p>
+          <div class="out"><strong>产出</strong>：Stripe Dashboard 一笔 test 交易截图，可作为 build in public 第一帖素材</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">28-30min</div>
+        <div class="tl-content">
+          <h3>⑥ 收尾 + 7 个进阶方向</h3>
+          <p>30 分钟完成，但你的产品才刚起步。下一步 7 个方向：① 真的 AI 后端（连 Claude API / OpenAI）② 用户系统（Lovable 内置 Clerk 集成）③ Stripe live mode（要 ABN）④ 自定义域名 ⑤ 法律文件（Privacy / TOS / Refund）⑥ Analytics（Plausible / Posthog）⑦ 第一笔真实付费的获客（去哪发？发什么？）</p>
+          <div class="out"><strong>产出</strong>：一份『下一步 checklist』，对应 AI 一人创业营 W2-W6 完整内容</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Tools needed -->
+<div class="box">
+  <div class="box-h">
+    <span class="pill">TOOLS</span>
+    <h2>完整工具清单（开课前装好）</h2>
+  </div>
+  <div class="box-body">
+    <div class="tools">
+
+      <div class="tool-card">
+        <div class="role">必备 · No-Code 生成</div>
+        <h4>Lovable</h4>
+        <p>一句话生成完整 SaaS landing + UI。本视频主要工具。</p>
+        <span class="price free">免费档够用</span>
+      </div>
+
+      <div class="tool-card">
+        <div class="role">必备 · 支付</div>
+        <h4>Stripe</h4>
+        <p>支付收款。test mode 不需要 ABN，立刻能跑。Live mode 需要本地商业实体。</p>
+        <span class="price free">test mode 完全免费</span>
+      </div>
+
+      <div class="tool-card">
+        <div class="role">必备 · 部署</div>
+        <h4>Vercel</h4>
+        <p>1 click 部署，免费 plan 给个人项目够用。自动 SSL + CDN。</p>
+        <span class="price free">Hobby plan 免费</span>
+      </div>
+
+      <div class="tool-card">
+        <div class="role">必备 · 代码托管</div>
+        <h4>GitHub</h4>
+        <p>Lovable 自动推到 GitHub，Vercel 自动从 GitHub 部署。中间不用手动操作。</p>
+        <span class="price free">免费</span>
+      </div>
+
+      <div class="tool-card">
+        <div class="role">可选 · 替代 Lovable</div>
+        <h4>Bolt.new</h4>
+        <p>StackBlitz 出的同类工具，对 React/Next 生成强，免费档相对慷慨。</p>
+        <span class="price free">免费档</span>
+      </div>
+
+      <div class="tool-card">
+        <div class="role">可选 · 替代 Lovable</div>
+        <h4>v0.dev</h4>
+        <p>Vercel 出的 UI 组件生成器。专注组件不专注完整应用，跟 Lovable 互补。</p>
+        <span class="price free">免费档</span>
+      </div>
+
+      <div class="tool-card">
+        <div class="role">进阶 · 写代码 IDE</div>
+        <h4>Cursor / Claude Code</h4>
+        <p>本 mini course 不用，但想从 Lovable 进一步定制就要装。AI 一人创业营 W2 第二节课主讲。</p>
+        <span class="price">$20/月起</span>
+      </div>
+
+      <div class="tool-card">
+        <div class="role">进阶 · LLM API</div>
+        <h4>Claude API / OpenAI API</h4>
+        <p>真接 LLM 后端处理用户请求时用。本视频暂用 mock，下一步教程接真 API。</p>
+        <span class="price">按用量</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Pre-flight checklist -->
+<div class="box">
+  <div class="box-h">
+    <span class="pill">PRE-FLIGHT</span>
+    <h2>开始前 5 分钟准备 checklist</h2>
+  </div>
+  <div class="box-body">
+    <div class="checklist">
+      <h3>✅ 跟视频做之前确认</h3>
+      <ul>
+        <li>电脑准备好（macOS 12+ / Windows 10+ 浏览器最新）</li>
+        <li>注册 GitHub 账号（必备，Lovable / Vercel 都用 GitHub 登录）</li>
+        <li>注册 Stripe 账号（不用 KYC，test mode 立刻可用）</li>
+        <li>注册 Vercel 账号（用 GitHub 一键登录）</li>
+        <li>注册 Lovable 账号（lovable.dev 用 Google 一键登录）</li>
+        <li>想好 1 个产品 idea（任何痛点，本视频用『小红书爆款标题生成器』作 demo，你可以替换）</li>
+        <li>留出 45 分钟整段时间（实际跑下来加排错可能 35-45min）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Common gotchas -->
+<div class="box">
+  <div class="box-h" style="background:#7f1d1d">
+    <span class="pill" style="background:#fff;color:#7f1d1d">GOTCHAS</span>
+    <h2>常见踩坑（提前看少 30 分钟排错）</h2>
+  </div>
+  <div class="box-body">
+    <div class="gotcha"><strong>① Lovable 生成失败 / 卡住</strong>：刷新重试一次；prompt 太长拆短。免费档每天有限额，跑多次会被限速。</div>
+    <div class="gotcha" style="margin-top:10px"><strong>② Stripe Checkout link 跳 404</strong>：Stripe 要求 product 必须激活（active=true）；如果是 subscription 必须有定期 billing 周期。test mode 也要全配齐。</div>
+    <div class="gotcha" style="margin-top:10px"><strong>③ Vercel 部署 build 失败</strong>：通常是 environment variable 缺失（Stripe API key 等）；在 Vercel project settings 加上重新部署。</div>
+    <div class="gotcha" style="margin-top:10px"><strong>④ 测试卡 4242 不工作</strong>：必须用 Stripe test mode（看 Dashboard 顶部 toggle），live mode 必须真卡。</div>
+    <div class="gotcha" style="margin-top:10px"><strong>⑤ 域名问题</strong>：本视频用 vercel.app 默认子域，自定义域名（如 your-product.com）需要 namecheap 买域名 + Vercel DNS 配置，本视频不教。</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>看完想 ship 真东西？</h2>
+  <p>这 30 分钟是 AI 一人创业营 W2 第一节的压缩版。完整 11 周 cohort 课程把『一个 demo』变成『能跑能卖能合规的 OPC』 — 加企业 AI 秘书 + 多渠道营销 + Stripe + 法律 + 澳洲 Grant。首期 $3,800 起（standard $5,800），<strong>申请制 30-50% 录取率</strong>。</p>
+  <a href="../curriculum.html">查看 11 周完整大纲 →</a>
+  <a href="opc-assessment.html" class="alt">先做 5 维度自评</a>
+</div>
+
+</div>
+
+</body>
+</html>

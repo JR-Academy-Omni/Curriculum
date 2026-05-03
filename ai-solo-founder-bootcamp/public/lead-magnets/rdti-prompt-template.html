@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>澳洲 RDTI 申请书 AI Prompt 模板 (Starter) — 免费拿走</title>
+<meta name="description" content="澳洲 R&D Tax Incentive (RDTI) 43.5% 退税申请书的 AI prompt 模板入门版。喂入产品 + R&D 支出，AI 输出符合 ATO 评审框架的初稿。免费工具。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.6}
+.header{background:linear-gradient(135deg,#10162f 0%,#10b981 100%);color:#fff;padding:48px 24px 40px;text-align:center;border-bottom:4px solid #000}
+.header h1{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(24px,4vw,38px);font-weight:900;letter-spacing:-0.02em;line-height:1.2;max-width:880px;margin:0 auto}
+.header .sub{font-size:14.5px;opacity:0.9;margin-top:14px;max-width:740px;margin:14px auto 0;line-height:1.7}
+.header .nav{margin-top:18px;font-size:13px}
+.header .nav a{color:#FFDE59;margin:0 10px;text-decoration:none;font-weight:700}
+.header .badges{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.header .badge{padding:5px 14px;font-size:12px;font-weight:700;font-family:'Space Mono',monospace;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4)}
+.c{max-width:920px;margin:0 auto;padding:32px 20px}
+
+.disclaimer{padding:18px 22px;background:#fff8e1;border:3px dashed #f59e0b;margin-bottom:28px;font-size:13.5px;line-height:1.75}
+.disclaimer strong{color:#92400e}
+
+.box{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;margin-bottom:28px;overflow:hidden}
+.box-h{padding:14px 24px;background:#10162f;color:#fff;display:flex;align-items:center;gap:12px}
+.box-h .pill{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;padding:4px 10px;background:#FFDE59;color:#10162f;letter-spacing:1px}
+.box-h h2{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:18px;font-weight:900;flex:1}
+.box-body{padding:22px 26px}
+.box-body p{font-size:14.5px;line-height:1.8;margin-bottom:10px;color:#333}
+.box-body ul{margin:8px 0 10px 22px;font-size:14px;line-height:1.8}
+.box-body li{margin:4px 0}
+
+.prompt-block{background:#10162f;color:#e5e7eb;padding:24px 28px;font-family:'Space Mono',monospace;font-size:12.5px;line-height:1.8;white-space:pre-wrap;overflow-x:auto;border:2px solid #000;position:relative;max-height:none}
+.prompt-block .role{color:#FFDE59;font-weight:700}
+.prompt-block .placeholder{color:#FF914D;font-weight:700}
+.copy-btn{position:absolute;top:12px;right:12px;padding:6px 14px;background:#FFDE59;color:#10162f;border:2px solid #fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:1px}
+.copy-btn:hover{background:#fff}
+.copy-btn.copied{background:#10b981;color:#fff;border-color:#fff}
+
+.input-table{display:grid;gap:0;border:2px solid #000;background:#fff}
+.input-row{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:1px solid #ddd}
+.input-row:last-child{border-bottom:none}
+.input-row .label{padding:12px 16px;background:#fafafa;font-weight:700;font-size:13px;border-right:2px solid #000;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;color:#10162f}
+.input-row .desc{padding:12px 16px;font-size:13px;line-height:1.7;color:#444}
+.input-row .desc code{background:#10162f;color:#FFDE59;padding:1px 5px;font-family:'Space Mono',monospace;font-size:11.5px}
+
+.checklist{padding:16px 20px;background:#d1fae5;border:2px solid #10b981;margin-top:16px}
+.checklist h3{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;color:#065f46;margin-bottom:8px}
+.checklist ul{list-style:none;padding:0;margin:0}
+.checklist li{padding:4px 0;font-size:13px;display:flex;align-items:flex-start;gap:8px;color:#064e3b}
+.checklist li::before{content:'✓';color:#10b981;font-weight:900;flex-shrink:0}
+
+.warning{padding:14px 18px;background:#fee2e2;border-left:4px solid #ef4444;font-size:13px;line-height:1.7;color:#7f1d1d;margin:14px 0}
+.warning strong{color:#7f1d1d}
+
+.section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.sec-card{padding:14px 16px;border:2px solid #000;background:#fafafa}
+.sec-card .num{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#10b981;letter-spacing:1px}
+.sec-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;margin:4px 0 6px}
+.sec-card p{font-size:12.5px;color:#555;line-height:1.6}
+
+.cta-band{margin-top:36px;padding:28px 32px;background:#10162f;color:#fff;text-align:center;border:4px solid #000;box-shadow:8px 8px 0 #FFDE59}
+.cta-band h2{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:#FFDE59;margin-bottom:10px}
+.cta-band p{font-size:14.5px;opacity:0.85;margin-bottom:18px;max-width:680px;margin:0 auto 18px;line-height:1.7}
+.cta-band a{display:inline-block;padding:14px 30px;background:#FFDE59;color:#10162f;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;text-decoration:none;border:3px solid #fff;margin:0 6px 6px 0}
+.cta-band a.alt{background:transparent;color:#FFDE59;border-color:#FFDE59}
+@media(max-width:600px){.input-row{grid-template-columns:1fr}.input-row .label{border-right:none;border-bottom:1px solid #ddd}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>澳洲 RDTI 申请书 AI Prompt 模板（Starter 版）</h1>
+  <div class="sub">R&amp;D Tax Incentive 43.5% 现金退税 — 澳洲 AI 创业最大单笔补贴。这是 starter 版 prompt 模板，喂入产品 + R&amp;D 支出，AI 输出符合 ATO 评审结构的申请书初稿。<strong>免费拿走，就算不报名 AI 一人创业营也能用</strong>。</div>
+  <div class="badges">
+    <span class="badge">📋 ATO RDTI 6 大 section</span>
+    <span class="badge">🆓 免费 starter 版</span>
+    <span class="badge">⚖ 含 ATO 审计常见拒理由</span>
+    <span class="badge">🇦🇺 仅适用澳洲</span>
+  </div>
+  <div class="nav">
+    <a href="../curriculum.html">← 课程总览</a>
+    <a href="../lead-magnets.html">所有免费工具</a>
+  </div>
+</div>
+
+<div class="c">
+
+<!-- Disclaimer -->
+<div class="disclaimer">
+  <strong>⚠ 重要免责声明</strong>：这是<strong>入门版 starter 模板</strong>，用来帮你快速搭起申请书初稿框架，不是替代 Grant Consultant 或税务师。<strong>RDTI 申请书最终提交前必须由有 RDTI 经验的 Grant Consultant / R&amp;D 顾问 / 税务师审核</strong>，特别注意 R&amp;D 活动定义、Eligible Activity 与 Supporting Activity 区分、技术风险声明的语言精度 — 这些是 ATO 审计退回的常见原因。AI 一人创业营 W9 嘉宾（帮 5+ 客户成功拿过 RDTI 的 Grant Consultant）会发完整版深度模板（基于真实成功案例 + ATO 审计回复学习），本 starter 模板覆盖结构 + 起草思路。
+</div>
+
+<!-- What is RDTI -->
+<div class="box">
+  <div class="box-h">
+    <span class="pill">背景</span>
+    <h2>什么是 RDTI · 为什么 OPC 必看</h2>
+  </div>
+  <div class="box-body">
+    <p><strong>R&amp;D Tax Incentive (RDTI)</strong> 是澳洲税务局（ATO）+ AusIndustry 联合管理的研发税务激励计划。年营业额 $20M 以下的小公司：符合条件的 R&amp;D 支出可拿 <strong>43.5% 现金退税</strong>（refundable tax offset，亏损公司也能拿到现金）；年营业额 $20M+ 的拿 38.5%（non-refundable）。</p>
+    <p><strong>为什么 OPC 学员特别该看</strong>：① AI / 软件研发本身可被认定为 R&amp;D activity；② 退税额度通常 $30k-$200k 一笔，远超 OPC 创业营的学费 ROI；③ AusIndustry 在 2024 年起特别欢迎 AI / Generative AI 类研发申请。</p>
+    <p><strong>ATO 审计严格的 3 个点</strong>：① 必须有<strong>明确的『技术不确定性』(technical uncertainty)</strong> — 申请人不知道结果，需要实验；② 必须有<strong>系统化实验设计</strong>（hypothesis → method → result → analysis）；③ 必须有<strong>R&amp;D 活动 vs 普通商业活动的清晰区分</strong>（写代码不等于 R&amp;D，但解决新算法 / 新模型微调可能是）。</p>
+  </div>
+</div>
+
+<!-- ATO 6 sections -->
+<div class="box">
+  <div class="box-h">
+    <span class="pill">SECTIONS</span>
+    <h2>ATO RDTI 申请书 6 大 section（必填）</h2>
+  </div>
+  <div class="box-body">
+    <p>RDTI 申请通过 R&amp;D Tax Incentive Customer Portal 提交，每年 4 月 30 日是上一财年的截止日（错过即失效）。完整申请要覆盖以下 6 部分：</p>
+    <div class="section-grid">
+      <div class="sec-card">
+        <div class="num">SECTION 1</div>
+        <h4>R&amp;D Entity Details</h4>
+        <p>实体类型（Pty Ltd 必备 — sole trader 不能申请）、ABN、ACN、年营业额、行业代码。</p>
+      </div>
+      <div class="sec-card">
+        <div class="num">SECTION 2</div>
+        <h4>Core R&amp;D Activities</h4>
+        <p>核心 R&amp;D 活动 — 含 Hypothesis / 实验方法 / 预期结果 / 知识鸿沟。每个 activity 单独描述。</p>
+      </div>
+      <div class="sec-card">
+        <div class="num">SECTION 3</div>
+        <h4>Supporting Activities</h4>
+        <p>支持性活动 — 服务于 core 但不构成实验的部分（数据准备、文档、UI 等）。区分 vs core 是 ATO 重点审计项。</p>
+      </div>
+      <div class="sec-card">
+        <div class="num">SECTION 4</div>
+        <h4>Project Description</h4>
+        <p>整体项目背景 + 商业目标 + 与 R&amp;D 关系。500-2000 字，要展示 R&amp;D 与商业化路径。</p>
+      </div>
+      <div class="sec-card">
+        <div class="num">SECTION 5</div>
+        <h4>Expenditure</h4>
+        <p>R&amp;D 支出明细：员工工资 / 合同工 / 软件订阅 / 云服务 / 测试设备。每一笔要有发票 + 时间日志支撑。</p>
+      </div>
+      <div class="sec-card">
+        <div class="num">SECTION 6</div>
+        <h4>Records &amp; Compliance</h4>
+        <p>R&amp;D 记录证据：实验日志 / 测试结果 / 代码 commit history / 会议纪要。ATO 可能审计要求出示。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The actual prompt -->
+<div class="box">
+  <div class="box-h">
+    <span class="pill">PROMPT</span>
+    <h2>RDTI 申请书 AI 起草 Prompt 模板（喂给 Claude / GPT）</h2>
+  </div>
+  <div class="box-body">
+    <p>下面是 starter 版完整 prompt — 复制到 Claude / GPT-4 / Gemini，把 <code style="background:#10162f;color:#FF914D;padding:1px 5px;font-family:Space Mono,monospace">[尖括号]</code> 替换为你的真实信息，AI 输出符合 ATO 6 section 框架的申请书初稿。建议<strong>分段 prompt</strong>（先跑 Section 2 Core Activities，再跑 Section 3 Supporting，再跑 Section 4 Project Description）— 一次性跑 6 段会输出质量下降。</p>
+
+    <div class="prompt-block" id="promptText"><button class="copy-btn" id="copyBtn" type="button">📋 COPY</button><span class="role">你是一位有 5 年以上澳洲 R&amp;D Tax Incentive (RDTI) 申请经验的资深 Grant Consultant，专长是 AI / 软件研发类申请。你帮过 50+ 家小公司（年营收 &lt; $20M）成功拿到 RDTI 退税，熟悉 AusIndustry 评审标准 + ATO 审计常见拒理由。
+
+你现在帮我起草 RDTI 申请书初稿。这是 starter 版本，最终提交前我会找有牌照的 R&amp;D 顾问审核。
+
+# 我的公司基本信息（Section 1）
+- 实体类型：<span class="placeholder">[Pty Ltd / Sole Trader（注：sole trader 不能申请，请提示我注册 Pty Ltd）]</span>
+- 公司名 / ABN：<span class="placeholder">[公司名 + 11 位 ABN]</span>
+- 行业代码（ANZSIC）：<span class="placeholder">[如 J5910 软件出版业 / J6900 计算机系统设计]</span>
+- 财年：<span class="placeholder">[FY24 / FY25 / FY26]</span>
+- 年营业额：<span class="placeholder">[$X — 必须 &lt; $20M 才能拿 refundable 43.5%]</span>
+
+# 我的产品 / R&amp;D 项目（Section 4）
+- 产品名 + 一句话描述：<span class="placeholder">[例：Notion Glossary — AI 帮 PMF 阶段 SaaS 自动生成产品术语表]</span>
+- 商业目标：<span class="placeholder">[Q3 推出 → 12 个月 200 客户 / $50k MRR]</span>
+- 目标用户：<span class="placeholder">[早期 SaaS founder + 内容运营]</span>
+- 行业 / 市场背景：<span class="placeholder">[竞品列举 + 你的差异化]</span>
+
+# Core R&amp;D Activities（Section 2 — 这是最重要的）
+对每个 core activity，描述：
+1. <strong>知识鸿沟（Knowledge Gap）</strong>：现有公开知识 / 行业实践不能解决什么？
+2. <strong>技术不确定性（Technical Uncertainty）</strong>：开始时不知道什么？
+3. <strong>Hypothesis</strong>：你假设什么方法可能解决？
+4. <strong>实验设计</strong>：如何系统化测试 hypothesis？metrics 是什么？
+5. <strong>预期结果 + 实际结果</strong>：到 FY 末你的实验得到了什么？
+
+我的 Core R&amp;D Activities：
+- Activity 1：<span class="placeholder">[例：用 RAG over 用户产品文档生成自动术语表 — 不知道 chunk size / overlap / re-rank model 哪个组合最准]</span>
+- Activity 2：<span class="placeholder">[如有，列出]</span>
+- Activity 3：<span class="placeholder">[如有，列出]</span>
+
+# Supporting Activities（Section 3）
+列出服务于 core 但不构成实验的活动：<span class="placeholder">[例：数据清洗 / UI 设计 / 客户访谈 / 部署运维]</span>
+（注意：ATO 会严格区分 supporting vs commercial activities — 普通商业开发不算 supporting）
+
+# Expenditure（Section 5）
+- 员工工资（含 Super）：$<span class="placeholder">[X]</span>
+- 合同工 / 外包：$<span class="placeholder">[X]</span>
+- 软件订阅（Claude API / OpenAI / Cursor / 云服务）：$<span class="placeholder">[X]</span>
+- AWS / GCP / Azure 计算资源：$<span class="placeholder">[X]</span>
+- 测试设备：$<span class="placeholder">[X]</span>
+- 总 R&amp;D 支出：$<span class="placeholder">[X]</span>
+
+# Records &amp; Compliance（Section 6）
+我有以下证据可以提交给 ATO 审计：
+- <span class="placeholder">[Git commit history — 跨度 X 月]</span>
+- <span class="placeholder">[实验日志 / Notion / Google Doc — X 篇]</span>
+- <span class="placeholder">[每周 standup 会议纪要 / Slack 决策记录]</span>
+- <span class="placeholder">[发票 / 收据 — 总数 X]</span>
+
+# 输出要求
+1. 严格按 ATO RDTI portal 6 section 结构输出
+2. <strong>用过去时态描述实验</strong>（"we tested" 而非 "we will test")
+3. 每个 Core Activity 必须明确写出 Knowledge Gap + Technical Uncertainty + Hypothesis + Method + Result
+4. Supporting vs Core 区分清晰
+5. 输出长度：Section 2 (Core Activities) 800-1500 字 / Section 3 (Supporting) 300-500 字 / Section 4 (Project Description) 600-1000 字 / 其他按需
+6. 用 plain English 写（避免行业黑话），ATO 评审是普通会计 / 公务员可能不懂深度技术
+7. 末尾列出 5 个 ATO 可能的<strong>审计追问</strong>，并给出回答方向
+
+输出格式：Markdown，6 section 用 ## 二级标题分隔。
+
+开始起草。</span></div>
+
+    <div class="checklist" style="margin-top:18px">
+      <h3>使用 checklist</h3>
+      <ul>
+        <li>所有 [尖括号] 替换为你的真实信息（不留空）</li>
+        <li>Core Activity 必须有真实 hypothesis + 真实结果（编造的会被 ATO 看穿）</li>
+        <li>分段 prompt — 先 Section 2，再 Section 3，再 Section 4</li>
+        <li>AI 输出后人工 review — 特别是 Knowledge Gap 和 Technical Uncertainty 的语言精度</li>
+        <li>提交前必须找有牌照的 Grant Consultant / 税务师 review（不要省这步）</li>
+        <li>保存所有 R&amp;D 记录（Git commits / 实验日志 / 发票）至少 5 年（ATO 可追溯审计）</li>
+      </ul>
+    </div>
+
+    <div class="warning">
+      <strong>常见拒理由（避免）</strong>：① Hypothesis 写成『我们想做 X』而非『我们假设 Y 方法可能解决 Z 问题』；② Core 跟 Supporting 混淆 — 写代码本身不算 Core，解决某个新技术问题才算；③ Expenditure 没发票支撑；④ 没有系统化实验记录；⑤ 把普通商业开发包装成 R&amp;D（ATO 审计组对软件类审计经验丰富，看得出）。
+    </div>
+  </div>
+</div>
+
+<!-- Inputs to gather -->
+<div class="box">
+  <div class="box-h">
+    <span class="pill">INPUTS</span>
+    <h2>跑 prompt 前要准备的真实数据</h2>
+  </div>
+  <div class="box-body">
+    <p>在喂给 AI 之前，先收齐这些信息（用 30-60 分钟）：</p>
+    <div class="input-table">
+      <div class="input-row">
+        <div class="label">公司信息</div>
+        <div class="desc">ABN + ACN（实体注册号）+ ANZSIC 行业代码（查 <code>abr.business.gov.au</code>）+ 财年 + 营业额估算</div>
+      </div>
+      <div class="input-row">
+        <div class="label">R&amp;D 时间线</div>
+        <div class="desc">列出本财年内（7/1 - 6/30）你做的 1-3 个核心 R&amp;D activity，每个 activity 起止时间</div>
+      </div>
+      <div class="input-row">
+        <div class="label">技术不确定性证据</div>
+        <div class="desc">每个 activity 开始时『不知道什么 / 已知方法不够用』 — 找到当时的对比文献 / Stack Overflow 问题 / 内部讨论记录</div>
+      </div>
+      <div class="input-row">
+        <div class="label">实验记录</div>
+        <div class="desc">每个 activity 的实验设计 + 数据 + 最终结果（即使失败也要写 — ATO 接受『实验失败』的 R&amp;D）</div>
+      </div>
+      <div class="input-row">
+        <div class="label">Expenditure 明细</div>
+        <div class="desc">从 Xero / MYOB / 银行流水拉本财年 R&amp;D 相关支出（工资 / API / 云服务 / 软件 / 外包）</div>
+      </div>
+      <div class="input-row">
+        <div class="label">证据文件链接</div>
+        <div class="desc">Git repo URL / Notion 实验日志链接 / Slack 决策记录 / 关键发票扫描件</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>想要嘉宾的完整 1500 行 RDTI prompt 模板？</h2>
+  <p>本 starter 版覆盖结构和起草思路。AI 一人创业营 W9 嘉宾（帮 5+ 客户成功拿过 RDTI 退税的 Grant Consultant）会发完整深度版 prompt 模板（基于真实成功案例学习 + ATO 审计回复模式），还会现场评估每个学员的 R&amp;D 支出 + 1:1 邮件 review 申请书。<strong>毕业硬指标 #4 = 提交至少 1 份 Grant 申请。</strong></p>
+  <a href="../curriculum.html">查看 W9 完整内容 →</a>
+  <a href="opc-assessment.html" class="alt">先做 OPC 适配自评</a>
+</div>
+
+</div>
+
+<script>
+const copyBtn = document.getElementById('copyBtn');
+copyBtn.addEventListener('click', () => {
+  // Get prompt text without the COPY button text
+  const promptDiv = document.getElementById('promptText');
+  // Clone, remove button, get text
+  const clone = promptDiv.cloneNode(true);
+  const btn = clone.querySelector('.copy-btn');
+  if(btn) btn.remove();
+  const text = clone.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    copyBtn.textContent = '✓ COPIED';
+    copyBtn.classList.add('copied');
+    setTimeout(() => {
+      copyBtn.textContent = '📋 COPY';
+      copyBtn.classList.remove('copied');
+    }, 2000);
+  });
+});
+</script>
+
+</body>
+</html>

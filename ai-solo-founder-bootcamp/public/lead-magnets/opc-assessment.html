@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPC 适配评估表 — AI 一人创业营 5 维度自评</title>
+<meta name="description" content="5 分钟 5 维度自评 — 看你是不是 OPC（One-Person Company AI 一人公司）适配人选。免费工具，立刻知道你的薄弱项 + 改进路径。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.6}
+.header{background:linear-gradient(135deg,#10162f 0%,#6366f1 100%);color:#fff;padding:48px 24px 40px;text-align:center;border-bottom:4px solid #000}
+.header h1{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(26px,4vw,38px);font-weight:900;letter-spacing:-0.02em;line-height:1.15;max-width:880px;margin:0 auto}
+.header .sub{font-size:15px;opacity:0.8;margin-top:14px;max-width:720px;margin:14px auto 0;line-height:1.7}
+.header .nav{margin-top:18px;font-size:13px}
+.header .nav a{color:#FFDE59;margin:0 10px;text-decoration:none;font-weight:700}
+.c{max-width:840px;margin:0 auto;padding:32px 20px}
+.intro{padding:24px 28px;background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;margin-bottom:28px}
+.intro h2{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;margin-bottom:12px}
+.intro p{font-size:14.5px;line-height:1.75;color:#333;margin-bottom:8px}
+.intro strong{color:#10162f}
+.dim{margin-bottom:24px;background:#fff;border:3px solid #000;box-shadow:5px 5px 0 #000;overflow:hidden}
+.dim-h{padding:14px 22px;background:#10162f;color:#fff;display:flex;align-items:center;gap:14px}
+.dim-h .num{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;background:#FFDE59;color:#10162f;padding:4px 10px;letter-spacing:1px}
+.dim-h .title{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:17px;font-weight:900;flex:1}
+.dim-h .max{font-family:'Space Mono',monospace;font-size:12px;opacity:0.7}
+.dim-body{padding:18px 22px}
+.q{margin-bottom:16px;padding-bottom:14px;border-bottom:1px dashed #ddd}
+.q:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.q-text{font-size:14.5px;font-weight:700;margin-bottom:10px;color:#10162f}
+.options{display:grid;gap:8px}
+.option{display:flex;align-items:center;gap:10px;padding:10px 14px;border:2px solid #e5e5e5;background:#fafafa;cursor:pointer;font-size:13.5px;transition:all 0.1s}
+.option:hover{border-color:#6366f1;background:#eef0ff}
+.option input[type=radio]{accent-color:#6366f1;cursor:pointer}
+.option input[type=radio]:checked + span{font-weight:700;color:#10162f}
+.option.selected{border-color:#6366f1;background:#eef0ff}
+.cta-row{display:flex;align-items:center;gap:16px;margin-top:24px;padding:18px 22px;background:#10162f;color:#fff;border:3px solid #000;flex-wrap:wrap}
+.cta-row p{flex:1;min-width:240px;font-size:13.5px;opacity:0.85}
+button.submit-btn{padding:14px 32px;background:#FFDE59;color:#10162f;border:3px solid #fff;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;cursor:pointer;letter-spacing:0.5px}
+button.submit-btn:hover{background:#fff}
+button.submit-btn:disabled{opacity:0.4;cursor:not-allowed}
+.result{display:none;margin-top:32px;padding:28px 32px;background:#fff;border:4px solid #10162f;box-shadow:10px 10px 0 #FFDE59}
+.result.show{display:block}
+.result .score-big{font-family:'Bricolage Grotesque',sans-serif;font-size:64px;font-weight:900;line-height:1;color:#10162f}
+.result .score-label{font-family:'Space Mono',monospace;font-size:12px;color:#888;letter-spacing:1px;margin-top:4px}
+.result .verdict{margin-top:18px;padding:14px 18px;font-size:15px;font-weight:700;line-height:1.6;border:2px solid #000}
+.verdict.green{background:#d1fae5;color:#065f46}
+.verdict.yellow{background:#fef3c7;color:#92400e}
+.verdict.red{background:#fee2e2;color:#991b1b}
+.verdict.gray{background:#f3f4f6;color:#374151}
+.breakdown{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.bd-cell{padding:10px 12px;border:2px solid #000;background:#fff}
+.bd-cell .bd-num{font-family:'Space Mono',monospace;font-size:10px;color:#888;font-weight:700}
+.bd-cell .bd-title{font-size:11px;font-weight:700;margin:2px 0;line-height:1.3}
+.bd-cell .bd-score{font-family:'Space Mono',monospace;font-size:18px;font-weight:900}
+.bd-cell.high{background:#d1fae5}
+.bd-cell.mid{background:#fef3c7}
+.bd-cell.low{background:#fee2e2}
+.action{margin-top:18px;padding:16px 18px;background:#fff5ec;border:2px dashed #FF914D;font-size:14px;line-height:1.7}
+.action h3{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;color:#FF914D;margin-bottom:8px}
+.action ul{margin-left:18px}.action li{margin:4px 0}
+.next-cta{margin-top:24px;padding:20px 22px;background:#10162f;color:#fff;text-align:center}
+.next-cta a{display:inline-block;margin-top:12px;padding:14px 36px;background:#FFDE59;color:#10162f;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;text-decoration:none;border:3px solid #fff}
+.email-form{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+.email-form input{flex:1;min-width:220px;padding:11px 14px;border:2px solid #000;font-size:14px;font-family:inherit}
+.email-form button{padding:11px 22px;background:#FF914D;color:#fff;border:2px solid #000;font-weight:900;cursor:pointer;font-family:inherit}
+@media(max-width:600px){.dim-h .max{display:none}.cta-row{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>OPC 适配评估表 · 5 维度自评</h1>
+  <div class="sub">5 分钟 12 道题 — 看你是不是 OPC（AI 一人公司）适配人选。本表免费工具，**就算不报名 AI 一人创业营也能用**：用来诊断自己当前的创业起点 + 找到最薄弱的那个 dimension 优先补。</div>
+  <div class="nav">
+    <a href="../curriculum.html">← 课程总览</a>
+    <a href="../lead-magnets.html">所有免费工具</a>
+  </div>
+</div>
+
+<div class="c">
+
+<div class="intro">
+  <h2>📋 这个表诊断什么</h2>
+  <p>这是 <strong>AI 一人创业营</strong>（jiangren.com.au/curriculum/ai-solo-founder-bootcamp/）申请制评分用的内部 5 维度模型，公开版本给所有想做 AI 一人公司的华人专业人士。<strong>5 个维度</strong>：① 现金跑道 ② AI 工具熟练度 ③ 时间投入 ④ 行业洞察 ⑤ 澳洲身份 + 心智。每维度 20 分，总分 100。</p>
+  <p style="margin-top:8px"><strong>得分含义</strong>：80-100 强烈适配 / 60-79 适合但有薄弱项 / 40-59 申请前先解决某项 / 0-39 现在不适合 OPC 路径。<strong>不达标不是淘汰</strong> — 是看清楚你应该先补哪一块再来报名。</p>
+</div>
+
+<form id="assessment">
+
+<div class="dim">
+  <div class="dim-h">
+    <span class="num">维度 1</span>
+    <span class="title">💰 现金跑道</span>
+    <span class="max">满分 20</span>
+  </div>
+  <div class="dim-body">
+    <div class="q">
+      <div class="q-text">Q1. 你目前的生活费储蓄能撑多久？</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q1" value="0"> <span>0-3 个月（含负债）</span></label>
+        <label class="option"><input type="radio" name="q1" value="6"> <span>3-6 个月</span></label>
+        <label class="option"><input type="radio" name="q1" value="14"> <span>6-12 个月（推荐起步线）</span></label>
+        <label class="option"><input type="radio" name="q1" value="20"> <span>12 个月以上 / 有被动收入支撑</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dim">
+  <div class="dim-h">
+    <span class="num">维度 2</span>
+    <span class="title">🤖 AI 工具熟练度</span>
+    <span class="max">满分 20</span>
+  </div>
+  <div class="dim-body">
+    <div class="q">
+      <div class="q-text">Q2.1. 你用过 ChatGPT / Claude（或类似 LLM）多久？</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q21" value="0"> <span>不到 3 个月</span></label>
+        <label class="option"><input type="radio" name="q21" value="5"> <span>3-6 个月</span></label>
+        <label class="option"><input type="radio" name="q21" value="10"> <span>6-12 个月</span></label>
+        <label class="option"><input type="radio" name="q21" value="14"> <span>12 个月以上 + 每天用</span></label>
+      </div>
+    </div>
+    <div class="q">
+      <div class="q-text">Q2.2. 你用过 Cursor / Claude Code / Lovable / v0 任意一个？</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q22" value="0"> <span>都没用过</span></label>
+        <label class="option"><input type="radio" name="q22" value="3"> <span>用过 1 个，跑通过 1 个 demo</span></label>
+        <label class="option"><input type="radio" name="q22" value="6"> <span>用过 2 个以上 + 至少做出过一个真实小项目</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dim">
+  <div class="dim-h">
+    <span class="num">维度 3</span>
+    <span class="title">⏰ 时间投入 + 出席度</span>
+    <span class="max">满分 20</span>
+  </div>
+  <div class="dim-body">
+    <div class="q">
+      <div class="q-text">Q3.1. 接下来 11 周，你能否稳定每周投入 8 小时（4h 现场 + 4h 自学）？</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q31" value="0"> <span>不能保证 / 工作太忙</span></label>
+        <label class="option"><input type="radio" name="q31" value="6"> <span>大部分周可以，少数周可能缺席</span></label>
+        <label class="option"><input type="radio" name="q31" value="14"> <span>每周都能保证</span></label>
+      </div>
+    </div>
+    <div class="q">
+      <div class="q-text">Q3.2. 11 周课程中，至少 80% 出席度（含 W11 三城联合 Demo Day 必到）你能保证？</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q32" value="0"> <span>不能保证</span></label>
+        <label class="option"><input type="radio" name="q32" value="6"> <span>能保证 80%+ 出席率</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dim">
+  <div class="dim-h">
+    <span class="num">维度 4</span>
+    <span class="title">🎯 行业洞察 / 痛点深度</span>
+    <span class="max">满分 20</span>
+  </div>
+  <div class="dim-body">
+    <div class="q">
+      <div class="q-text">Q4.1. 你能用 1 句话描述出你的目标用户群（不是『所有人』那种）？</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q41" value="0"> <span>没想过 / 想做的群体太宽</span></label>
+        <label class="option"><input type="radio" name="q41" value="5"> <span>能写出大类，但没细分到职业 / 行业 / 阶段</span></label>
+        <label class="option"><input type="radio" name="q41" value="14"> <span>能精确到『XX 行业的 YY 角色，正在做 ZZ 阶段』</span></label>
+      </div>
+    </div>
+    <div class="q">
+      <div class="q-text">Q4.2. 你或你周围的人为这个群体的痛点付过钱吗？（不是『我觉得有人会付』）</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q42" value="0"> <span>没有付费证据</span></label>
+        <label class="option"><input type="radio" name="q42" value="6"> <span>有 — 有真实付费案例可佐证</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dim">
+  <div class="dim-h">
+    <span class="num">维度 5</span>
+    <span class="title">🇦🇺 澳洲身份 + cohort 心智</span>
+    <span class="max">满分 20</span>
+  </div>
+  <div class="dim-body">
+    <div class="q">
+      <div class="q-text">Q5.1. 你在澳洲身份合法（PR / Citizen / 长期签证如 482/494/186）？</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q51" value="0"> <span>不在澳洲且不计划来（W7-W9 三周 27% 课时跟你无关）</span></label>
+        <label class="option"><input type="radio" name="q51" value="8"> <span>暂时学生签 / 旅游签，未来 12 个月内拿 PR / 长期签证概率高</span></label>
+        <label class="option"><input type="radio" name="q51" value="14"> <span>是 — 已经 PR / Citizen / 长期签证</span></label>
+      </div>
+    </div>
+    <div class="q">
+      <div class="q-text">Q5.2. 你接受『申请制 + 1:1 面试 + 录取率 30-50%』的招生模式？（cohort 课最大资产是同学网络，需要筛掉心智不对的人）</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q52" value="0"> <span>不接受 — 觉得这是噱头</span></label>
+        <label class="option"><input type="radio" name="q52" value="6"> <span>接受 — 理解 cohort 文化的价值</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-row">
+  <p><strong>填完 12 道题，立刻看你的 5 维度得分 + 改进建议。</strong>不需要邮箱即可看结果（提交邮箱可拿到完整 PDF 报告 + 申请通道）。</p>
+  <button type="button" class="submit-btn" id="submitBtn" disabled>计算我的得分 →</button>
+</div>
+
+</form>
+
+<div class="result" id="result">
+  <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <div>
+      <div class="score-big" id="scoreNum">--</div>
+      <div class="score-label">YOUR OPC SCORE / 100</div>
+    </div>
+    <div style="flex:1;min-width:240px" id="verdictBox"></div>
+  </div>
+  <div class="breakdown" id="breakdown"></div>
+  <div class="action" id="actionBox"></div>
+  <div class="next-cta">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900">下一步</div>
+    <div style="margin-top:6px;font-size:13px;opacity:0.85" id="nextCtaText">看完得分？回到 AI 一人创业营课程总览了解 11 周完整大纲</div>
+    <a href="../curriculum.html">查看完整课程大纲 →</a>
+    <div class="email-form">
+      <input type="email" id="emailInput" placeholder="留邮箱拿完整 PDF 报告 + 申请通道（不会群发）">
+      <button type="button" id="emailBtn">领取报告</button>
+    </div>
+    <div id="emailFeedback" style="margin-top:10px;font-size:12px;color:#FFDE59;display:none">已记录 ✓ 我们会在 24h 内发送 PDF 报告</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const form = document.getElementById('assessment');
+const submitBtn = document.getElementById('submitBtn');
+const result = document.getElementById('result');
+const questions = ['q1','q21','q22','q31','q32','q41','q42','q51','q52'];
+
+// Enable submit when all questions answered
+form.addEventListener('change', () => {
+  const allAnswered = questions.every(q => form.querySelector('input[name="'+q+'"]:checked'));
+  submitBtn.disabled = !allAnswered;
+
+  // Visual selected state
+  document.querySelectorAll('.option').forEach(opt => {
+    const radio = opt.querySelector('input[type=radio]');
+    if(radio && radio.checked) opt.classList.add('selected');
+    else opt.classList.remove('selected');
+  });
+});
+
+submitBtn.addEventListener('click', () => {
+  const get = q => parseInt(form.querySelector('input[name="'+q+'"]:checked').value);
+  const dims = {
+    cash: get('q1'),
+    aiSkill: get('q21') + get('q22'),
+    time: get('q31') + get('q32'),
+    insight: get('q41') + get('q42'),
+    auMindset: get('q51') + get('q52')
+  };
+  const total = dims.cash + dims.aiSkill + dims.time + dims.insight + dims.auMindset;
+
+  document.getElementById('scoreNum').textContent = total;
+
+  // Verdict
+  const v = document.getElementById('verdictBox');
+  let cls, head, body;
+  if(total >= 80){
+    cls='green'; head='✅ 强烈适配 — 立刻申请';
+    body='你处在 OPC 准备最齐的档位（前 15-20% 申请者）。建议立刻投申请表，赶首期 case study 价 $3,800（标准价 $5,800）。';
+  } else if(total >= 60){
+    cls='yellow'; head='🟡 适合报名 — 但有 1-2 个薄弱项';
+    body='你已经过申请门槛，但下方某个 dimension 拉低了总分。建议申请的同时把那一项补上，开课前完成最关键的部分。';
+  } else if(total >= 40){
+    cls='red'; head='🔶 申请前先解决最低分维度';
+    body='你的某个 dimension 严重不足（看下方分项）。建议先补这一块（通常 1-3 个月），再来申请下期 cohort，否则 11 周里很可能掉队。';
+  } else {
+    cls='gray'; head='⚪ 现在不适合 OPC 路径';
+    body='短期内不建议报 AI 一人创业营。先解决最基础的 1-2 块（通常是现金跑道 + AI 熟练度），半年到一年后再来。这门课每年 4-6 期，不急。';
+  }
+  v.innerHTML = '<div class="verdict '+cls+'"><strong>'+head+'</strong><br><span style="font-weight:400;font-size:13.5px">'+body+'</span></div>';
+
+  // Breakdown
+  const dimNames = [
+    {key:'cash', n:'1', t:'现金跑道', max:20},
+    {key:'aiSkill', n:'2', t:'AI 工具熟练度', max:20},
+    {key:'time', n:'3', t:'时间投入', max:20},
+    {key:'insight', n:'4', t:'行业洞察', max:20},
+    {key:'auMindset', n:'5', t:'澳洲身份+心智', max:20}
+  ];
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = dimNames.map(d => {
+    const score = dims[d.key];
+    const pct = score / d.max;
+    const bdcls = pct >= 0.7 ? 'high' : pct >= 0.4 ? 'mid' : 'low';
+    return '<div class="bd-cell '+bdcls+'"><div class="bd-num">维度 '+d.n+'</div><div class="bd-title">'+d.t+'</div><div class="bd-score">'+score+' / '+d.max+'</div></div>';
+  }).join('');
+
+  // Action box
+  const action = document.getElementById('actionBox');
+  let actions = [];
+  if(dims.cash < 14) actions.push('<strong>现金跑道</strong>不足 — 先攒够 6-12 个月生活费再辞职 / 兼职过渡。OPC 不是穷人创业，撑不到 PMF 必败。');
+  if(dims.aiSkill < 14) actions.push('<strong>AI 工具熟练度</strong>不够 — 推荐先看 JR 的 OpenClaw Workshop（4h 免费） + AI Engineer Bootcamp 入门部分。3 个月每天用 ChatGPT / Cursor 解决真实问题。');
+  if(dims.time < 14) actions.push('<strong>时间投入</strong>不够 — cohort 课程不能旁听不能拖。如果工作太忙，建议等下期或选 self-paced 模式（未来开放）。');
+  if(dims.insight < 14) actions.push('<strong>行业洞察</strong>不够具体 — 在你最熟的 1 个行业做 5 个用户访谈（30min/人），用 Mom Test 提问法找真实付费意愿。');
+  if(dims.auMindset < 14) actions.push('<strong>澳洲身份 / 心智</strong>不到位 — 如果 W7-W9 澳洲 Grant + 会计模块对你无用（27% 课时浪费），建议等加拿大 / 英国 / 新加坡版（首期跑通后启动）。');
+  if(actions.length === 0){
+    action.innerHTML = '<h3>✨ 你 5 个维度都达标</h3>你属于 OPC 高度适配人选。建议 24 小时内提交申请，赶首期 case study 价 + 18-25 人 cohort 名额。';
+  } else {
+    action.innerHTML = '<h3>📋 你需要先补的事（按优先级）</h3><ul><li>'+actions.join('</li><li>')+'</li></ul>';
+  }
+
+  result.classList.add('show');
+  result.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+// Email capture (no backend - simulate, replace with real API later)
+document.getElementById('emailBtn').addEventListener('click', () => {
+  const email = document.getElementById('emailInput').value.trim();
+  if(!email || !email.includes('@')){
+    alert('请输入有效邮箱');
+    return;
+  }
+  // TODO: 接入真实邮箱收集 API（Mailchimp / SendGrid / 自建）
+  // 现在先用 localStorage + console 记录，后续接入 backend
+  const data = {email, timestamp: new Date().toISOString(), score: document.getElementById('scoreNum').textContent};
+  const existing = JSON.parse(localStorage.getItem('opc_assessments') || '[]');
+  existing.push(data);
+  localStorage.setItem('opc_assessments', JSON.stringify(existing));
+  console.log('[OPC Assessment] Email collected:', data);
+  document.getElementById('emailFeedback').style.display = 'block';
+  document.getElementById('emailInput').disabled = true;
+  document.getElementById('emailBtn').disabled = true;
+});
+</script>
+
+</body>
+</html>
