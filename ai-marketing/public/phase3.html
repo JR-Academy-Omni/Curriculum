@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 3 · W3 AI 私域 + 获客 agent — AI Marketing Bootcamp</title>
+<meta name="description" content="W3 搭一个能用的客服 / 获客 bot — System Prompt + QA System + Agent Patterns + Memory + 4 个新建私域 Lab + Coze / n8n + Lindy 中英分轨直播 + 部署到自己入口的 Quest。openclaw 主轴。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>Phase 3 · W3 — AI 私域 + 获客 agent</h1>
+  <div class="sub">客服 bot 人格 / FAQ 知识库 / Agent Patterns / Mem0 长记忆 / 微信私域漏斗 / 获客 agent 多步骤工作流 — 把 LLM 真的接到自己的入口。</div>
+  <div class="nav">
+    <a href="phase2.html">← Phase 2 · W2</a>
+    | <a href="curriculum.html">课程总览</a>
+    | <a href="phase4.html">Phase 4 · W4 数据 →</a>
+  </div>
+  <div class="tags">
+    <span class="tag w3">W3 · 19 lessons</span>
+    <span class="tag track-cn pill">中文轨 · Coze</span>
+    <span class="tag track-en pill">EN track · n8n + Lindy</span>
+    <span class="tag">4 新 Lab + 8 复用</span>
+    <span class="tag">4 直播 + Quest</span>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="s"><div class="n">19</div><div class="l">LESSONS</div></div>
+  <div class="s"><div class="n">12</div><div class="l">LABS</div></div>
+  <div class="s"><div class="n">4</div><div class="l">直播</div></div>
+  <div class="s"><div class="n">1</div><div class="l">QUEST</div></div>
+  <div class="s"><div class="n">~13h</div><div class="l">学习时长</div></div>
+</div>
+
+<div class="c">
+
+<!-- 学习目标 -->
+<div class="callout" style="background:#faf5ff;border-color:var(--w3)">
+  <strong>W3 学习目标：</strong>搭 1 个能用的客服 / 选品 bot（中文学员用 Coze；英文学员 Lindy / Relevance AI 二选一），跑 1 条 lead nurture 流水线，并把 bot 部署到一个学员可控的真实入口（公众号 / WhatsApp / 自家网站 chatwidget）。<br><br>
+  <strong>中英分轨：</strong>W3 是 4 周里中英分轨最重的一周。中文学员主轴 = Coze 0 代码 + 微信私域；英文学员主轴 = n8n + Lindy + HubSpot AI lead-nurture。所有直播都录播，跨场学员可以看回放。<br><br>
+  <strong>毕业作品集 · 第 3 件：</strong>1 个能用的 bot（含部署链接 / 二维码）+ 1 份用户分层标签设计（≥5 层）+ 1 周 bot 实跑数据（解决率 / 人工接管率截图）。
+</div>
+
+<!-- ===== 资源覆盖率提示 ===== -->
+<div class="callout callout-green">
+  <strong>✅ W3 资源覆盖率 75%（4 周里最厚的一周）：</strong>5 Prompt Lab + 4 LLM Lab + openclaw direction 11 章 + 3 个自动化 wiki 全部复用。仅 4 个 Lab 需要新建（私域漏斗 / 获客 agent / 用户分层 / 话术库），全部第 1 期交付。
+</div>
+
+<!-- ===== Section 1: 直播 + Clinic ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--w3)">
+    <span style="font-size:18px;font-weight:900">Section 1 · 私域心智 + 中英分轨直播</span>
+    <span style="float:right;opacity:0.85" class="mono">L32 · L38 · L39 · L50</span>
+  </div>
+
+  <!-- L32 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-live">L32 · 直播</span>
+      <h4>私域底层 — 朋友圈 → 1v1 → 社群 → 复购 + AI 切入哪一环</h4>
+      <span class="pill track-both">合班</span>
+      <span class="pill dur">90min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>私域 4 段漏斗 — <strong>朋友圈 / 1v1 / 社群 / 复购</strong>。每段的目标是什么、最容易卡哪、AI agent 在每段的具体切入点。中英两边的工具栈差异（中：企微 + 微信群 + Coze 客服；英：HubSpot + Klaviyo + Lindy）。</p>
+        <div class="tools"><span class="tool">朋友圈</span><span class="tool">1v1</span><span class="tool">社群</span><span class="tool">复购</span></div>
+      </div>
+      <div>
+        <h5>🔬 真实案例</h5>
+        <p>讲师拆 1 个真实中文私域 case（DTC 品牌 + 知识付费团队） + 1 个英文 SaaS lead-nurture case，演示 AI agent 在朋友圈日更 / 1v1 客服 / 社群活跃 / 复购召回 4 个节点带来的具体效率提升。</p>
+      </div>
+      <div>
+        <h5>📋 产出</h5>
+        <p>学员选定自己 W3 主修平台（中文：Coze + 公众号 / 微信；英文：Lindy / Relevance + WhatsApp / 自家站）+ 选定 W3 想搭的 bot 类型（客服 / 导购 / lead nurture 任选 1）。</p>
+        <span class="review teacher">👨‍🏫 直播 + 私域漏斗拆解</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- L38 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-live">L38 · 中文轨</span>
+      <h4>Coze 实操（导购 / 客服 / 知识库）</h4>
+      <span class="pill track-cn">中文轨</span>
+      <span class="pill dur">90min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>中文学员主轴：<strong>Coze 0 代码搭客服 bot + 导购 bot + 知识库接入 + 工具调用</strong>。讲师用真账号端到端演示从 0 配 bot 到上线的完整流程。澳洲学员可选修，但实操作业以 n8n / Lindy 为主。</p>
+        <div class="tools"><span class="tool">Coze</span><span class="tool">导购 bot</span><span class="tool">客服 bot</span><span class="tool">知识库</span><span class="tool">工具调用</span></div>
+      </div>
+      <div>
+        <h5>🔬 真实演示</h5>
+        <p>开 1 个新 Coze workflow，挂 30 条 FAQ 知识库 + 接 1 个工具（查库存 / 查物流任选）+ 配 1 个转人工触发条件。讲师边讲边操作，学员可全程截屏 / 录屏存档。</p>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>学员用 Coze 搭 1 个最简版 bot（FAQ + 1 个工具调用），下周 Clinic 上贴 bot 入口给同学测试。</p>
+        <span class="review teacher">👨‍🏫 Coze 后台帮看</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- L39 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-live">L39 · EN track</span>
+      <h4>n8n + Lindy + HubSpot AI lead-nurture</h4>
+      <span class="pill track-en">英文轨</span>
+      <span class="pill dur">90min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 Content</h5>
+        <p>English track main: <strong>n8n workflow + Lindy assistants + HubSpot AI lead-nurture sequence</strong>. Walk through a real lead-gen funnel from form-fill → AI qualification → personalized email sequence → CRM tagging.</p>
+        <div class="tools"><span class="tool">n8n</span><span class="tool">Lindy</span><span class="tool">HubSpot AI</span><span class="tool">Klaviyo</span></div>
+      </div>
+      <div>
+        <h5>🔬 Live demo</h5>
+        <p>Build a 5-step n8n flow live: form webhook → AI lead scoring (GPT) → branch (high / mid / low) → personalized HubSpot email → log to CRM. Then plug a Lindy assistant in for inbound chat triage.</p>
+      </div>
+      <div>
+        <h5>📋 Homework</h5>
+        <p>Pick 1 stack (n8n + Lindy or Lindy + HubSpot or Relevance AI standalone) and ship a working lead-nurture for your business / your client. Bring it to Clinic.</p>
+        <span class="review teacher">👨‍🏫 Live workflow review</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- L50 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-live">L50 · Clinic</span>
+      <h4>W3 答疑 + bot 互测</h4>
+      <span class="pill track-both">分场</span>
+      <span class="pill dur">60min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 现场流程</h5>
+        <p>W3 周末 Clinic（中英分场各开 1 次）：学员把 bot 链接 / 二维码贴到 Clinic 看板。讲师定点拆 5-8 个真实 bot，覆盖人格设定 / 边界处理 / 转人工触发 / 数据回流典型问题。</p>
+      </div>
+      <div>
+        <h5>🔬 互测机制</h5>
+        <p>每位学员花 5 分钟测 2 位同学的 bot，按"识别准确度 / 回复自然度 / 边界处理 / 转人工合理性"4 个维度打分 + 给 1 句具体改进建议。学员互测产生的"bug 报告"汇总成下周 W4 数据课的真实输入素材。</p>
+      </div>
+      <div>
+        <h5>📋 产出</h5>
+        <p>学员收到「老师 1 句建议 + 同学 3 句建议」反馈，下周 W4 数据课带 bot 1 周实跑数据来。</p>
+        <span class="review teacher">👨‍🏫 老师定点拆解</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 2: 4 个 bot 基础 Lab（复用） ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--teal)">
+    <span style="font-size:18px;font-weight:900">Section 2 · bot 基础四件套（搭 bot 前必修，全部复用）</span>
+    <span style="float:right;opacity:0.85" class="mono">L33-L36</span>
+  </div>
+
+  <!-- L33 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L33 · Lab</span>
+      <h4>System Prompt Design — 客服 bot 人格</h4>
+      <span class="pill lab-prompt">prompt</span>
+      <span class="pill dur">45min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>System Prompt 五段式 — <strong>人格 / 任务 / 边界 / 反幻觉 / 转人工触发条件</strong>。是 W3 所有 bot 的基础。客服 bot 翻车几乎都翻在"边界没写清"和"该转人工时硬答"两件事。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>Prompt Lab: <code>system-prompt-design</code>。学员选定一个 bot 场景（电商客服 / 知识付费选品 / SaaS 售前任选）→ 写 5 段 system prompt → Lab 用规则引擎检测 5 段是否完整 + 转人工条件是否够明确。</p>
+        <span class="review ai">🤖 五段完整度 + 边界明确度</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>给自己 W3 想搭的 bot 写一份 production-ready system prompt，下周 L38 / L39 直接拿去配 Coze / Lindy。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L34 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L34 · Lab</span>
+      <h4>QA System Design — FAQ → 智能客服</h4>
+      <span class="pill lab-prompt">prompt</span>
+      <span class="pill dur">45min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>FAQ 升级三步 — <strong>结构化 + 元信息 + 检索 prompt + fallback 策略</strong>。把 30 条原始 FAQ 变成可被 AI 高准确率检索的知识库。智能客服的内容主轴。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>Prompt Lab: <code>qa-system-design</code>。学员上传 30 条原始 FAQ → AI 自动加结构化字段（场景 / 紧迫度 / 转人工标记）+ 写检索 prompt + 设计找不到答案时的 fallback。</p>
+        <span class="review ai">🤖 字段完整度 + fallback 合理性</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>从自己业务历史客服记录 / 工单中提 30 条 FAQ，跑通完整升级流程，输出可挂 Coze / Lindy 知识库的 JSON。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L35 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L35 · Lab</span>
+      <h4>AI Agent Patterns — 让 LLM 干活</h4>
+      <span class="pill lab-llm">llm</span>
+      <span class="pill dur">45min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>4 个核心 agent 模式 — <strong>Reflection / Tool Use / Planning / Multi-Agent</strong>。各自适用场景 + 各自的失败模式。私域 agent 设计的概念底层。</p>
+        <div class="tools"><span class="tool">Reflection</span><span class="tool">Tool Use</span><span class="tool">Planning</span><span class="tool">Multi-Agent</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>LLM Lab: <code>ai-agent-patterns</code>。4 个 pattern 各跑一次小实验：Reflection（让 agent 自己改稿）/ Tool Use（接 1 个外部 API）/ Planning（拆任务）/ Multi-Agent（2 个 agent 投票）。Lab 自动比较 4 个 pattern 在同一个营销任务上的表现差异。</p>
+        <span class="review ai">🤖 4 模式对比 + 适用场景判断</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>选定自己 W3 想搭的 bot 用哪个 pattern（一般客服用 Tool Use + Reflection；获客 agent 用 Planning + Multi-Agent）。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L36 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L36 · Lab</span>
+      <h4>Agent Memory Mem0 — 客服 bot 长记忆</h4>
+      <span class="pill lab-llm">llm</span>
+      <span class="pill dur">30min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>短记忆 vs 长记忆 — <strong>context window 装不下的东西放哪？</strong>Mem0 的三种存储模式（fact / preference / episode）+ 记忆膨胀时的裁剪策略。客服 bot 接长记忆，能记住老客户偏好 / 过往订单 / 投诉历史。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>LLM Lab: <code>agent-memory-mem0</code>。给一个客服 bot 加 Mem0 接口 → 模拟 5 次老客户对话（每次都让 bot 回忆上次说什么）→ Lab 检测记忆是否被正确召回。</p>
+        <span class="review ai">🤖 记忆召回准确度</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>给自己 W3 的 bot 设计 1 套记忆 schema（fact + preference + episode 各 3 条），暂不必接代码，先把 schema 写明白。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 3: openclaw 自学主轴 + Wiki ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--blue)">
+    <span style="font-size:18px;font-weight:900">Section 3 · openclaw 自学主轴 + 自动化平台速查</span>
+    <span style="float:right;opacity:0.85" class="mono">L37 · L44 · 复用 OpenClaw 章节</span>
+  </div>
+
+  <!-- L37 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-info">L37 · 自学</span>
+      <h4>openclaw 方向 11 章（多 Agent 路由 + 定时任务 + MCP + 实战）</h4>
+      <span class="pill dur">180min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容（复用 OpenClaw 章节）</h5>
+        <p>openclaw 方向是 W3 主轴 — 11 章覆盖 <strong>多 agent 路由 / 定时任务自动化 / MCP 集成 / 个人助理实战 / 团队协作实战</strong>。全部复用 <code>/learn/openclaw</code> 已上线的章节，学员通读后可直接搭私域 agent。</p>
+        <div class="tools"><span class="tool">single-agent</span><span class="tool">multi-agent-routing</span><span class="tool">tool-use</span><span class="tool">scheduled-tasks</span><span class="tool">mcp-integration</span><span class="tool">team-collaboration</span></div>
+      </div>
+      <div>
+        <h5>🔬 章末练习</h5>
+        <p>每章 3-5 道 MCQ + 1 道开放题。学员通读后完成所有章末小练习。重点章建议精读 — multi-agent-routing / scheduled-tasks / practical-team-collaboration。</p>
+        <span class="review ai">🤖 MCQ 自动批改</span>
+      </div>
+      <div>
+        <h5>📋 产出</h5>
+        <p>对 agent / multi-agent / 自动化的整体心智模型有完整认知，为 L40-L48 的 8 个 agent 实战 lab 打底。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L44 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-info">L44 · Wiki</span>
+      <h4>自动化平台速查（Zapier / Make / n8n）</h4>
+      <span class="pill dur">60min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>3 个自动化平台对比 — <strong>Zapier 易用 / Make 性价比 / n8n 自托管 + 全功能</strong>。每个平台的最佳场景 + 学习曲线 + 价格门槛。</p>
+        <div class="tools"><span class="tool">Zapier</span><span class="tool">Make</span><span class="tool">n8n</span></div>
+      </div>
+      <div>
+        <h5>🔬 选型建议</h5>
+        <p>团队预算紧 → Make；想自托管 + 不限步数 → n8n（英文学员主推）；要快速接 1000+ SaaS → Zapier；中文私域 + 微信生态 → Coze（不在这 3 个里，但值得首选）。<strong>不要工具收集癖</strong> — 选 1 个深用。</p>
+      </div>
+      <div>
+        <h5>📋 产出</h5>
+        <p>学员选定自己 W3 的自动化主轴（中文：Coze；英文：n8n / Lindy / Make 任选 1），写到学习群「我的工具栈」中。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 4: 4 个 agent 实战 Lab（复用） ===== -->
+<div class="box">
+  <div class="box-h" style="background:#7c3aed">
+    <span style="font-size:18px;font-weight:900">Section 4 · 4 个 agent 实战 Lab（复用）</span>
+    <span style="float:right;opacity:0.85" class="mono">L40-L43</span>
+  </div>
+
+  <!-- L40 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L40 · Lab</span>
+      <h4>Prompt Chaining — 选题 → 写稿 → 改稿流水线</h4>
+      <span class="pill lab-prompt">prompt</span>
+      <span class="pill dur">45min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>Prompt Chaining 三段 — <strong>前一步输出 = 后一步输入</strong>。把 3 个独立 prompt 串成 1 条流水线，对接私域内容生产。中间一步出错时如何防止串错（加校验 + retry + fallback）。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>Prompt Lab: <code>prompt-chaining</code>。学员输入主题 → 自动产出 3 条选题 + 1 条初稿 + 1 条改稿。Lab 校验链路是否完整 + 中间步骤出错时是否有 fallback。</p>
+        <span class="review ai">🤖 链路完整度 + fallback 设计</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>用 chaining 给自己 W3 bot 搭一条「用户提问 → 知识库检索 → 答复生成 → 答案检查」的链路。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L41 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L41 · Lab</span>
+      <h4>Multi-Agent — 选题 / 撰写 / 审核分工</h4>
+      <span class="pill lab-prompt">prompt</span>
+      <span class="pill dur">45min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>Multi-Agent 三种基本拓扑 — <strong>并行 / 串行 / 投票</strong>。3 个 agent 分工（选题官 / 写手 / 审核官），用 multi-agent 协作产出 1 篇符合品牌 SOP 的稿子。<strong>agent 数量越多越好吗？不是</strong> — 多了反而决策慢 + 易冲突。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>Prompt Lab: <code>multi-agent</code>。学员配 3 个 agent 各自的 system prompt + 协作规则 → 跑 1 个真实选题 → Lab 检测分工是否清晰 + 投票机制是否合理。</p>
+        <span class="review ai">🤖 分工清晰度 + 投票机制</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>给自己 W3 bot 拆 multi-agent — 至少 2 个角色（如客服 + 转人工判官 / 选品 + 价格审核）。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L42 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L42 · Lab</span>
+      <h4>Tool Use — agent 接搜索 / 查库存</h4>
+      <span class="pill lab-prompt">prompt</span>
+      <span class="pill dur">45min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>Function calling 让 agent 调外部工具 — <strong>搜索 / 查库存 / 查物流 / 查会员等级</strong>。私域 bot 离不开这一步。tool description 怎么写 AI 才会准确判断什么时候调；工具返回数据如何安全 parse。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>Prompt Lab: <code>tool-use</code>。学员给 bot 接 3 个 mock 工具（搜索 / 库存 / 物流）→ 跑 5 个真实场景对话 → Lab 检测调用准确率 + 返回数据 parse 是否安全。</p>
+        <span class="review ai">🤖 调用准确率 + 安全性</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>给自己 W3 bot 接至少 1 个真实工具（中文学员可在 Coze 直接配；英文学员用 n8n function calling）。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L43 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L43 · Lab</span>
+      <h4>Browser Use — 自动抓评论 / 竞品</h4>
+      <span class="pill lab-llm">llm</span>
+      <span class="pill dur">30min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>Browser Use — 让 agent 自动打开浏览器抓<strong>竞品评论 / 爆款标题 / 产品价格</strong>。给 W2 投放素材库 + W3 私域内容补充新鲜素材。注意：抓内容必须遵守平台 ToS + robots.txt，禁止商用爬。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>LLM Lab: <code>browser-use</code>。学员定义抓取目标（小红书 30 条同类爆款标题 / Trustpilot 50 条竞品评论任选）→ agent 自动浏览 + 提取 + 落 CSV → Lab 校验数据完整性。</p>
+        <span class="review ai">🤖 数据完整度 + ToS 检查</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>给自己业务跑一次 browser use 抓 30 条竞品评论 / 标题，喂给 L19 (W2) 的 information-extraction lab 处理。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 5: 4 个新建 Lab — 私域专项 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--w3)">
+    <span style="font-size:18px;font-weight:900">Section 5 · 4 个新建 Lab — 私域专项 ⭐</span>
+    <span style="float:right;opacity:0.85" class="mono">L45-L48 · 全部新建</span>
+  </div>
+
+  <!-- L45 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L45 · Lab</span>
+      <h4>微信私域漏斗（朋友圈 → 1v1 → 社群 → 复购）</h4>
+      <span class="pill lab-prompt">prompt</span>
+      <span class="pill new-badge">NEW</span>
+      <span class="pill dur">60min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>4 段漏斗各自的 AI 切入 prompt 模板 — <strong>朋友圈日更 SOP / 1v1 话术 / 社群活跃 / 复购召回</strong>。每段 prompt 应该带上什么品牌信号、什么禁用词。中文私域专项，但英文学员可拿同样模板套到 WhatsApp / 邮件序列。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>Prompt Lab: <code>wechat-private-domain-funnel</code>。Lab 内置 4 段模板 + 1 套品牌口吻样例。学员代入自己品牌 → AI 自动出 4 段对应内容 → Lab 校验每段是否覆盖该段任务（朋友圈≠卖货 / 1v1≠群发 / 社群≠广告）。</p>
+        <span class="review ai">🤖 4 段任务匹配度自动校验</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>用 Lab 给自己业务出 1 套 4 段漏斗 prompt + 各 1 条样例文案，下周 W4 看哪段转化最强。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L46 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L46 · Lab</span>
+      <h4>获客 agent 多步骤工作流</h4>
+      <span class="pill lab-prompt">prompt</span>
+      <span class="pill new-badge">NEW</span>
+      <span class="pill dur">60min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>获客 agent 5 步工作流 — <strong>lead 进来 → 自动打标签 → 触达内容个性化 → 转化埋点 → 数据回流</strong>。中英学员都能跑通的多步骤模板。每一步的输入 / 输出 / 失败 fallback 写到 prompt 里。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>Prompt Lab: <code>lead-gen-agent-multistep</code>。学员输入业务背景 + lead source → AI 出 5 步可执行 prompt 链 → Lab 校验链路完整性 + 各步骤 fallback。中文学员可直接复制到 Coze workflow；英文学员可直接喂给 n8n。</p>
+        <span class="review ai">🤖 链路完整度 + fallback 检查</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>用 Lab 给自己业务搭 1 条获客 agent → 在 Coze / n8n / Lindy 任选 1 个平台真的部署起来 → 先用 5 个 mock lead 测试。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L47 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L47 · Lab</span>
+      <h4>用户分层打标签 agent</h4>
+      <span class="pill lab-prompt">prompt</span>
+      <span class="pill new-badge">NEW</span>
+      <span class="pill dur">45min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>用户分层 5 维度 — <strong>兴趣 / 行为 / 价值 / 生命周期 / 风险</strong>。每个维度的判断信号 + 互相不重叠的设计原则。输出可直接导入 CRM 的标签 schema。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>Prompt Lab: <code>customer-segment-tagging</code>。学员上传 50 条真实用户行为数据（可脱敏）→ AI 自动打 5 层标签 → Lab 校验标签是否互斥 + 是否覆盖所有用户。</p>
+        <span class="review ai">🤖 标签互斥性 + 覆盖率</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>给自己业务出 1 套用户分层标签设计（≥5 层），是 W3 作品集的核心交付件之一。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L48 -->
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill t-lab">L48 · Lab</span>
+      <h4>客服话术库 + 自动回复</h4>
+      <span class="pill lab-prompt">prompt</span>
+      <span class="pill new-badge">NEW</span>
+      <span class="pill dur">45min</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>话术库 = <strong>50 条高频问题 × 标准答案 × 调用规则</strong>。怎么从历史客服记录中提取（信息密度 / 频次 / 难度三维筛选）+ 怎么写 bot 调用规则（什么时候直接套话术 / 什么时候在话术上微调 / 什么时候转人工）。</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>Prompt Lab: <code>auto-reply-script-bank</code>。学员上传 100-300 条历史客服记录 → AI 提取 50 条高频问答 + 调用规则 → Lab 检查话术覆盖率 + 调用规则可执行性。</p>
+        <span class="review ai">🤖 覆盖率 + 规则可执行性</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>把 Lab 输出的话术库挂进自己 W3 bot 的知识库（Coze / Lindy 任选）。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Quest ===== -->
+<div class="quest-callout">
+  <h4>L49 · Quest 实战 — 把 bot 接到自己网站 / 公众号 / WhatsApp</h4>
+  <p><strong>双线 Quest：</strong>(中) 公众号 + Coze webhook / (英) WhatsApp Business API 或站点 chatwidget + Lindy / Relevance AI。AI Tutor 同时引导。</p>
+  <p style="margin-top:8px"><strong>学习目标：</strong>把 W3 搭好的客服 bot 部署到 1 个真实入口，且能接收外部用户消息。</p>
+  <p style="margin-top:8px"><strong>成功标准：</strong>外部入口收到至少 3 条真实用户对话（同事 / 朋友冒名测试都算），bot 答完且数据回流到自己的后台。</p>
+</div>
+
+<div class="box">
+  <div class="box-h" style="background:var(--red)">
+    <span style="font-size:18px;font-weight:900">L49 · Quest 详细流程（双线引导）</span>
+    <span style="float:right;opacity:0.85" class="mono">90min · chat 模式</span>
+  </div>
+  <div style="padding:14px 24px">
+    <div style="font-size:13px;line-height:1.8;color:#333">
+      <p><strong>Step 1（10min）— 选定入口 + 资质确认：</strong>AI 引导学员说明选哪个入口 + 当前账号资质（公众号有没有认证 / WhatsApp Business 是否激活 / 自家站是否能挂 chatwidget）。</p>
+      <p><strong>Step 2（30min）— 完成入口接入配置：</strong>(中) 公众号 → Coze webhook 配置 + 服务号验证；(英) WhatsApp Business API → Meta Business 验证 + Lindy / Relevance AI 接入。学员上传后台配置截图。</p>
+      <p><strong>Step 3（30min）— 用户冒名测试 3 次：</strong>找 3 个同事 / 朋友冒充真实客户问 3 类问题（产品介绍 / 价格疑问 / 售后纠纷），学员上传对话截图。</p>
+      <p><strong>Step 4（20min）— 记录解决率 + 人工接管率：</strong>评估 3 次对话（解决 / 转人工 / 失败），AI 帮归因 — 失败的是边界没写清还是知识库不全？转人工的是该转还是误转？</p>
+      <p style="margin-top:10px;padding:10px 14px;background:#fffde7;border-left:3px solid var(--red)"><strong>坑点提醒：</strong>(1) 公众号要认证服务号才能接 webhook，未认证号要走客服消息接口绕过；(2) WhatsApp 需要 Meta Business 验证，新号不一定通过 — 来不及就改部署到自家站 chatwidget；(3) 部署后第 1 个真实用户最容易暴露 bot 边界问题，要让学员准备好转人工兜底。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 工具栈对比 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--dark)">
+    <span style="font-size:18px;font-weight:900">W3 工具栈 · 中英对照</span>
+    <span style="float:right;opacity:0.7" class="mono">TOOL STACK</span>
+  </div>
+  <div style="padding:18px 24px;overflow-x:auto">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>类别</th>
+          <th>中文学员主轴</th>
+          <th>英文学员主轴</th>
+          <th>必备 / 选修</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Bot 搭建平台</td><td>Coze（字节出品 · 0 代码 · 中文社区厚 · 免费起）</td><td>Lindy / Relevance AI（SaaS 即开即用）</td><td>必备 · 二选一</td></tr>
+        <tr><td>自动化引擎</td><td>Coze workflow（同上）</td><td>n8n（自托管 / 全功能）/ Make</td><td>必备</td></tr>
+        <tr><td>分发入口</td><td>公众号 / 微信 / 企业微信 / 小红书</td><td>WhatsApp Business / 自家网站 chatwidget / Slack</td><td>必备（Quest 用）</td></tr>
+        <tr><td>CRM / 用户分层</td><td>有赞 / 微盟 / 自有 SCRM</td><td>HubSpot / Salesforce / Klaviyo</td><td>选修</td></tr>
+        <tr><td>记忆 / 长上下文</td><td>Mem0（开源）/ Coze 内置变量</td><td>Mem0 / Lindy memory</td><td>选修</td></tr>
+        <tr><td>Agent 监控 / 测试</td><td>飞书多维表（手工日志）</td><td>LangSmith / LangFuse</td><td>选修</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== Persona Lens ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--dark)">
+    <span style="font-size:18px;font-weight:900">5 类学员的 W3 视角（角色 Lens）</span>
+    <span style="float:right;opacity:0.7" class="mono">PERSONA · WHAT YOU GET</span>
+  </div>
+  <div class="personas">
+    <div class="persona">
+      <span class="ptrack track-cn pill">P3 · 私域操盘手</span>
+      <h4>W3 是为你量身定做的</h4>
+      <p>L33 + L34 + L45 + L47 + L48 是核心。学完拿到 1 个能用的 Coze 客服 bot（接知识库 + 工具调用） + 1 套用户分层打标签 agent + 1 套话术库。直接能给老板 / 客户演示。</p>
+    </div>
+    <div class="persona">
+      <span class="ptrack track-en pill">P4 · AU freelancer</span>
+      <h4>W3 = a Lindy / Relevance AI deliverable for your portfolio</h4>
+      <p>L35 + L39 + L41 + L46 are core. Build a multi-agent lead-nurture flow on n8n + Lindy for a real account (yours / a friend's small biz / a sandbox). The end-to-end SOP becomes a portfolio piece you can show to potential clients or to hiring managers — the course only covers building the artifact, not landing the deal.</p>
+    </div>
+    <div class="persona">
+      <span class="ptrack track-en pill">P5 · AU in-house</span>
+      <h4>W3 = team's customer-support / lead-nurture SOP</h4>
+      <p>L33 + L34 + L42 + L46 are core. Design a HubSpot AI + Lindy stack for the team's inbound lead triage. Pair with W2 GEO report = a complete AI marketing infra audit doc the team can rerun every quarter.</p>
+    </div>
+    <div class="persona">
+      <span class="ptrack track-cn pill">P1 · 内容运营菜鸟</span>
+      <h4>W3 学一点也行，不必都做完</h4>
+      <p>新人重点：L40（Prompt Chaining 选题流水线）+ L48（话术库）。先把内容生产流水线串通，bot 部署可以放到下期再深度做。L37 openclaw 11 章可以挑 single-agent / tool-use 两章先看。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== W3 作业 ===== -->
+<div class="box">
+  <div class="box-h" style="background:#92400e">
+    <span style="font-size:18px;font-weight:900">W3 周末作业 · 我的 bot + 用户分层 + 实跑数据</span>
+    <span style="float:right;opacity:0.85" class="mono">DUE · W4 开课前</span>
+  </div>
+  <div style="padding:18px 24px;font-size:14px;line-height:1.8">
+    <p><strong>交付物：</strong>1 份「我的 W3 私域 + agent 工作流」(PDF / Notion 公开页)，包含：</p>
+    <ul style="padding-left:24px;margin-top:8px">
+      <li>(1) <strong>1 个能用的 bot</strong>（中文 Coze / 英文 Lindy 或 Relevance AI），含部署链接 / 二维码 / system prompt 全文</li>
+      <li>(2) <strong>用户分层标签设计</strong>（≥5 层，来自 L47）+ 标签判断逻辑说明</li>
+      <li>(3) <strong>1 周 bot 实跑数据</strong>（解决率 / 人工接管率 / 至少 10 次真实对话截图）</li>
+      <li>(4) <strong>话术库 50 条</strong>（来自 L48）+ 调用规则文档</li>
+    </ul>
+    <p style="margin-top:12px"><strong>评分标准：</strong></p>
+    <ul style="padding-left:24px;margin-top:8px">
+      <li>🤖 AI 评：bot system prompt 五段是否完整 / 标签互斥性 / 话术库覆盖率 / 数据格式完整度</li>
+      <li>👨‍🏫 老师评（教学版 + 陪跑版）：bot 边界处理 / 转人工触发是否合理 / 标签设计是否能直接落 CRM</li>
+      <li>👥 同学互评（Clinic 上）：识别准确度 / 回复自然度 / 边界处理 / 转人工合理性 4 维</li>
+    </ul>
+    <p style="margin-top:12px;padding:10px 14px;background:#fef2f2;border-left:3px solid var(--red);font-size:13px"><strong>承诺红线：</strong>作业评估只看「过程性结果」 — 是否搭出 bot / 是否完成部署 / 是否拿到 1 周真实数据。<strong>不评估 bot 是否带来订单 / 是否帮你赚到钱 / 是否替代了客服岗位</strong>。</p>
+  </div>
+</div>
+
+<!-- ===== Lab 全览 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--teal)">
+    <span style="font-size:18px;font-weight:900">W3 · 12 个 Lab 全览</span>
+    <span style="float:right;opacity:0.85" class="mono">4 NEW + 8 复用</span>
+  </div>
+  <div class="lab-gallery">
+    <div class="lab-card"><span class="lc-tag">prompt</span> <span class="pill new-badge" style="font-size:9px">NEW</span><div class="lc-name">wechat-private-domain-funnel</div><div class="lc-desc">微信 4 段漏斗 prompt 模板</div></div>
+    <div class="lab-card"><span class="lc-tag">prompt</span> <span class="pill new-badge" style="font-size:9px">NEW</span><div class="lc-name">lead-gen-agent-multistep</div><div class="lc-desc">获客 agent 5 步工作流（中英都能跑）</div></div>
+    <div class="lab-card"><span class="lc-tag">prompt</span> <span class="pill new-badge" style="font-size:9px">NEW</span><div class="lc-name">customer-segment-tagging</div><div class="lc-desc">用户分层 5 维度 → CRM 标签</div></div>
+    <div class="lab-card"><span class="lc-tag">prompt</span> <span class="pill new-badge" style="font-size:9px">NEW</span><div class="lc-name">auto-reply-script-bank</div><div class="lc-desc">话术库 + 自动回复调用规则</div></div>
+    <div class="lab-card"><span class="lc-tag">prompt</span><div class="lc-name">system-prompt-design</div><div class="lc-desc">客服 bot 五段 system prompt（复用）</div></div>
+    <div class="lab-card"><span class="lc-tag">prompt</span><div class="lc-name">qa-system-design</div><div class="lc-desc">FAQ → 智能客服知识库（复用）</div></div>
+    <div class="lab-card"><span class="lc-tag">prompt</span><div class="lc-name">prompt-chaining</div><div class="lc-desc">3 步内容流水线（复用）</div></div>
+    <div class="lab-card"><span class="lc-tag">prompt</span><div class="lc-name">multi-agent</div><div class="lc-desc">3 agent 分工产稿（复用）</div></div>
+    <div class="lab-card"><span class="lc-tag">prompt</span><div class="lc-name">tool-use</div><div class="lc-desc">function calling 接外部工具（复用）</div></div>
+    <div class="lab-card"><span class="lc-tag">llm</span><div class="lc-name">ai-agent-patterns</div><div class="lc-desc">4 个核心 agent 模式（复用）</div></div>
+    <div class="lab-card"><span class="lc-tag">llm</span><div class="lc-name">agent-memory-mem0</div><div class="lc-desc">Mem0 长记忆（复用）</div></div>
+    <div class="lab-card"><span class="lc-tag">llm</span><div class="lc-name">browser-use</div><div class="lc-desc">自动浏览器抓评论 / 竞品（复用）</div></div>
+  </div>
+</div>
+
+<!-- ===== Nav ===== -->
+<div class="cta-row">
+  <a href="phase2.html" class="btn btn-dark">← Phase 2 · W2</a>
+  <a href="curriculum.html" class="btn btn-dark" style="background:#444">课程总览</a>
+  <a href="phase4.html" class="btn btn-blue" style="background:var(--w4)">Phase 4 · W4 数据 →</a>
+</div>
+
+<div class="footer">
+  Phase 3 · W3 — AI 私域 + 获客 agent · JR Academy AI Marketing Bootcamp
+  <div class="promise">承诺红线：禁写月入 / 接单 / 包就业 / 副业。课程承诺只覆盖过程结果。</div>
+</div>
+
+</div>
+</body>
+</html>
