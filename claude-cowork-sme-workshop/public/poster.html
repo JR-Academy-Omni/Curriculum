@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Cowork × 一人公司办公自动化 · 多渠道海报</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#1a1a1a;min-height:100vh;padding:32px 16px 100px;font-family:'DM Sans','Noto Sans SC',sans-serif;color:#fff}
+    .page-header{text-align:center;margin-bottom:24px;max-width:1100px;margin-left:auto;margin-right:auto}
+    .page-header h1{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;letter-spacing:-0.5px;line-height:1.2}
+    .page-header p{opacity:0.6;margin-top:8px;font-size:13px}
+
+    /* Tabs */
+    .tabs{display:flex;gap:8px;justify-content:center;margin:20px 0 28px;flex-wrap:wrap;max-width:1100px;margin-left:auto;margin-right:auto}
+    .tab{padding:11px 22px;background:#fff;color:#10162f;border:3px solid #000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.15s;text-transform:uppercase;box-shadow:4px 4px 0 #FF914D}
+    .tab:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #FF914D}
+    .tab.active{background:#FF914D;color:#fff;box-shadow:4px 4px 0 #fff}
+    .tab .size{font-size:9px;opacity:0.7;display:block;margin-top:2px;letter-spacing:0.5px}
+
+    /* Stage */
+    .stage{display:flex;justify-content:center;padding:20px}
+    .poster{display:none;background:#fffbea;color:#10162f;font-family:'Noto Sans SC','DM Sans',sans-serif;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(255,145,77,0.25)}
+    .poster.active{display:block}
+
+    /* Shared poster components */
+    .grid-bg{position:absolute;inset:0;z-index:1;opacity:0.05;background-image:linear-gradient(#10162f 1px,transparent 1px),linear-gradient(90deg,#10162f 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+    .blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
+    .blob.orange{background:#FF914D;opacity:0.45}
+    .blob.green{background:#10b981;opacity:0.32}
+    .blob.yellow{background:#FFDE59;opacity:0.40}
+
+    /* Brand mark — used in all */
+    .brand-mark{display:flex;align-items:center;gap:10px}
+    .brand-icon{background:#10162f;color:#fffbea;font-weight:900;display:flex;align-items:center;justify-content:center;border:2.5px solid #10162f;box-shadow:3px 3px 0 #FF914D}
+    .brand-text{display:flex;flex-direction:column;line-height:1.1}
+    .brand-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;letter-spacing:0.5px}
+    .brand-tag{font-family:'Space Mono',monospace;opacity:0.65;letter-spacing:1.8px;text-transform:uppercase}
+
+    /* ============================================================ */
+    /* Tab 1 · 小红书竖版 1242 × 1660                                  */
+    /* ============================================================ */
+    #poster-xhs{width:621px;height:830px} /* displayed at 0.5x; html2canvas exports at scale 2 = real 1242×1660 */
+    #poster-xhs .blob.orange{width:340px;height:340px;top:-90px;right:-80px}
+    #poster-xhs .blob.green{width:280px;height:280px;bottom:-60px;left:-60px}
+    #poster-xhs .blob.yellow{width:200px;height:200px;top:300px;left:-80px}
+    #poster-xhs .content{position:relative;z-index:10;padding:38px 36px;height:100%;display:flex;flex-direction:column;gap:18px}
+
+    #poster-xhs .top{display:flex;align-items:center;justify-content:space-between}
+    #poster-xhs .brand-icon{width:36px;height:36px;font-size:16px}
+    #poster-xhs .brand-name{font-size:14px}
+    #poster-xhs .brand-tag{font-size:9px;margin-top:2px}
+    #poster-xhs .badge{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:6px 11px;background:#10162f;color:#FFDE59;letter-spacing:1.5px;border:2px solid #10162f;box-shadow:3px 3px 0 #FF914D}
+
+    #poster-xhs .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:#FF914D;font-weight:700;text-transform:uppercase;margin-top:6px}
+    #poster-xhs .title{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:48px;font-weight:900;line-height:1.02;letter-spacing:-1.5px;color:#10162f;margin-top:8px}
+    #poster-xhs .title .acc{display:inline-block;background:#FF914D;color:#fffbea;padding:0 10px;transform:rotate(-1deg);margin:2px -2px}
+    #poster-xhs .sub{font-size:14px;line-height:1.55;color:#334155;max-width:520px;margin-top:14px}
+    #poster-xhs .sub strong{color:#10162f;font-weight:800}
+
+    /* 5 Skills grid */
+    #poster-xhs .skills{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:6px}
+    #poster-xhs .skill{background:#fff;border:2.5px solid #10162f;padding:11px 8px;text-align:center;box-shadow:3px 3px 0 #10162f}
+    #poster-xhs .skill .ico{font-size:22px;line-height:1;margin-bottom:4px}
+    #poster-xhs .skill .nm{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;color:#FF914D;letter-spacing:0.3px;text-transform:uppercase;line-height:1.2}
+    #poster-xhs .skill .lb{font-size:10.5px;font-weight:700;color:#10162f;line-height:1.3;margin-top:3px}
+
+    /* Pillars */
+    #poster-xhs .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    #poster-xhs .pillar{background:#10162f;color:#fffbea;padding:11px 13px;font-size:12px;line-height:1.45;display:flex;gap:9px;align-items:flex-start}
+    #poster-xhs .pillar .pi{font-size:16px;flex-shrink:0;line-height:1.2}
+    #poster-xhs .pillar strong{font-weight:800}
+    #poster-xhs .pillar span{opacity:0.7;font-size:11px}
+
+    /* Bottom band */
+    #poster-xhs .bottom{margin-top:auto;padding-top:14px;border-top:3px solid #10162f}
+    #poster-xhs .bot-row{display:flex;gap:10px}
+    #poster-xhs .price-box{background:#FF914D;color:#fffbea;padding:11px 14px;border:2.5px solid #10162f;box-shadow:3px 3px 0 #10162f}
+    #poster-xhs .price-lbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1.5px;opacity:0.9}
+    #poster-xhs .price-now{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:22px;margin-top:2px;line-height:1}
+    #poster-xhs .price-old{font-family:'Space Mono',monospace;font-size:10px;margin-top:3px;opacity:0.85;text-decoration:line-through}
+    #poster-xhs .when{flex:1;background:#10b981;color:#fffbea;padding:11px 14px;border:2.5px solid #10162f;box-shadow:3px 3px 0 #10162f}
+    #poster-xhs .when-lbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1.5px;opacity:0.9}
+    #poster-xhs .when-d{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:18px;margin-top:2px;line-height:1.1}
+    #poster-xhs .when-p{font-size:11px;margin-top:3px;opacity:0.92}
+    #poster-xhs .meta{margin-top:10px;display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:9.5px;opacity:0.55;letter-spacing:0.5px}
+
+    /* ============================================================ */
+    /* Tab 2 · 朋友圈 1080 × 1080                                       */
+    /* ============================================================ */
+    #poster-moments{width:540px;height:540px}
+    #poster-moments .blob.orange{width:300px;height:300px;top:-80px;right:-90px}
+    #poster-moments .blob.green{width:220px;height:220px;bottom:-50px;left:-40px}
+    #poster-moments .content{position:relative;z-index:10;padding:36px 34px;height:100%;display:flex;flex-direction:column;gap:14px}
+
+    #poster-moments .top{display:flex;align-items:center;justify-content:space-between}
+    #poster-moments .brand-icon{width:32px;height:32px;font-size:14px}
+    #poster-moments .brand-name{font-size:12px}
+    #poster-moments .brand-tag{font-size:8px;margin-top:2px}
+    #poster-moments .badge{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;padding:5px 10px;background:#FF914D;color:#fffbea;letter-spacing:1px;border:2px solid #10162f;box-shadow:2px 2px 0 #10162f}
+
+    #poster-moments .eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2.5px;color:#FF914D;font-weight:700;text-transform:uppercase;margin-top:6px}
+    #poster-moments .title{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:36px;font-weight:900;line-height:1.05;letter-spacing:-1px;color:#10162f;margin-top:6px}
+    #poster-moments .title .acc{display:inline-block;background:#FF914D;color:#fffbea;padding:0 9px;transform:rotate(-1deg);margin:2px -2px}
+    #poster-moments .sub{font-size:13px;line-height:1.5;color:#334155;max-width:430px;margin-top:8px}
+    #poster-moments .sub strong{color:#10162f;font-weight:800}
+
+    /* 4 deliverables compact */
+    #poster-moments .deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:auto}
+    #poster-moments .d{background:#10162f;color:#fffbea;padding:10px 12px;display:flex;gap:8px;align-items:center;font-size:11.5px;line-height:1.35}
+    #poster-moments .d .ico{font-size:18px;flex-shrink:0}
+    #poster-moments .d strong{font-weight:800}
+
+    /* Bottom CTA */
+    #poster-moments .cta{display:flex;gap:8px;margin-top:8px}
+    #poster-moments .cta-l{background:#FF914D;color:#fffbea;padding:11px 14px;border:2.5px solid #10162f;box-shadow:3px 3px 0 #10162f;flex:0 0 auto}
+    #poster-moments .cta-l-lbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1.2px;opacity:0.9}
+    #poster-moments .cta-l-num{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:20px;margin-top:1px;line-height:1}
+    #poster-moments .cta-r{flex:1;background:#10b981;color:#fffbea;padding:11px 14px;border:2.5px solid #10162f;box-shadow:3px 3px 0 #10162f;display:flex;flex-direction:column;justify-content:center}
+    #poster-moments .cta-r-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1.2px;opacity:0.9}
+    #poster-moments .cta-r-m{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:14px;margin-top:1px;line-height:1.15}
+    #poster-moments .cta-r-s{font-size:10px;margin-top:2px;opacity:0.92}
+
+    /* ============================================================ */
+    /* Tab 3 · 公众号头图 1200 × 628                                    */
+    /* ============================================================ */
+    #poster-banner{width:600px;height:314px}
+    #poster-banner .blob.orange{width:280px;height:280px;top:-100px;right:-80px}
+    #poster-banner .blob.green{width:180px;height:180px;bottom:-40px;left:-30px}
+    #poster-banner .content{position:relative;z-index:10;padding:26px 32px;height:100%;display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:center}
+
+    #poster-banner .left{display:flex;flex-direction:column;justify-content:space-between;height:100%}
+    #poster-banner .top{display:flex;align-items:center;gap:10px}
+    #poster-banner .brand-icon{width:30px;height:30px;font-size:13px;box-shadow:2px 2px 0 #FF914D}
+    #poster-banner .brand-name{font-size:11px}
+    #poster-banner .brand-tag{font-size:8px;margin-top:1px}
+
+    #poster-banner .eyebrow{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:2.5px;color:#FF914D;font-weight:700;text-transform:uppercase;margin-top:6px}
+    #poster-banner .title{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:30px;font-weight:900;line-height:1.05;letter-spacing:-0.8px;color:#10162f;margin-top:4px}
+    #poster-banner .title .acc{display:inline-block;background:#FF914D;color:#fffbea;padding:0 6px;transform:rotate(-1deg)}
+    #poster-banner .sub{font-size:11.5px;line-height:1.45;color:#334155;margin-top:8px}
+    #poster-banner .sub strong{color:#10162f;font-weight:800}
+
+    #poster-banner .right{display:flex;flex-direction:column;gap:7px}
+    #poster-banner .stat{background:#fff;border:2.5px solid #10162f;padding:10px 13px;box-shadow:3px 3px 0 #10162f;display:flex;align-items:baseline;gap:8px}
+    #poster-banner .stat-n{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:22px;color:#FF914D;line-height:1}
+    #poster-banner .stat-l{font-size:11px;font-weight:700;color:#10162f;line-height:1.3}
+
+    #poster-banner .footer{position:absolute;bottom:14px;right:32px;font-family:'Space Mono',monospace;font-size:9px;color:#10162f;opacity:0.5;letter-spacing:0.4px}
+
+    /* ============================================================ */
+    /* Tab 4 · 详情长图 1242 × 2840                                     */
+    /* ============================================================ */
+    #poster-long{width:621px;height:1420px} /* 1:2.29 long form, scale 2 -> 1242 × 2840 */
+    #poster-long .blob.orange{width:380px;height:380px;top:-100px;right:-100px}
+    #poster-long .blob.green{width:300px;height:300px;top:680px;left:-80px}
+    #poster-long .blob.yellow{width:280px;height:280px;bottom:-60px;right:-80px}
+    #poster-long .content{position:relative;z-index:10;padding:38px 38px 32px;height:100%;display:flex;flex-direction:column;gap:18px}
+
+    #poster-long .top{display:flex;align-items:center;justify-content:space-between}
+    #poster-long .brand-icon{width:36px;height:36px;font-size:16px}
+    #poster-long .brand-name{font-size:14px}
+    #poster-long .brand-tag{font-size:9px;margin-top:2px}
+    #poster-long .badge{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:6px 11px;background:#10162f;color:#FFDE59;letter-spacing:1.5px;border:2px solid #10162f;box-shadow:3px 3px 0 #FF914D}
+
+    #poster-long .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:#FF914D;font-weight:700;text-transform:uppercase;margin-top:6px}
+    #poster-long .title{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:46px;font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:#10162f;margin-top:6px}
+    #poster-long .title .acc{display:inline-block;background:#FF914D;color:#fffbea;padding:0 10px;transform:rotate(-1deg);margin:2px -2px}
+    #poster-long .sub{font-size:14px;line-height:1.6;color:#334155;margin-top:10px;max-width:540px}
+    #poster-long .sub strong{color:#10162f;font-weight:800}
+
+    #poster-long .section-title{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f;margin-top:12px;display:flex;align-items:center;gap:8px}
+    #poster-long .section-title::before{content:"";width:24px;height:3px;background:#FF914D}
+
+    /* Promise card */
+    #poster-long .promise{background:#fff;border:3px solid #10162f;padding:16px 18px;box-shadow:5px 5px 0 #FF914D}
+    #poster-long .promise p{font-size:12.5px;line-height:1.7;color:#1a1a1a}
+    #poster-long .promise strong{color:#10162f;font-weight:800}
+
+    /* 4 modules */
+    #poster-long .modules{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    #poster-long .mod{background:#10162f;color:#fffbea;padding:13px 15px}
+    #poster-long .mod .h{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+    #poster-long .mod .h-ico{font-size:18px}
+    #poster-long .mod .h-tt{font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:800}
+    #poster-long .mod .h-time{font-family:'Space Mono',monospace;font-size:10px;opacity:0.65;margin-left:auto}
+    #poster-long .mod p{font-size:11px;line-height:1.5;opacity:0.92}
+
+    /* 5 Skills full */
+    #poster-long .skills{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+    #poster-long .skill{background:#fff;border:2.5px solid #10162f;padding:11px 8px;text-align:center;box-shadow:3px 3px 0 #10162f}
+    #poster-long .skill .ico{font-size:24px;line-height:1;margin-bottom:5px}
+    #poster-long .skill .nm{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;color:#FF914D;letter-spacing:0.3px;line-height:1.2}
+    #poster-long .skill .lb{font-size:10.5px;font-weight:700;color:#10162f;line-height:1.3;margin-top:3px}
+
+    /* Audience cards */
+    #poster-long .audi{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+    #poster-long .a{background:#fff;border:2.5px solid #10162f;padding:11px 13px;display:flex;gap:9px;align-items:flex-start;box-shadow:3px 3px 0 #10162f}
+    #poster-long .a .ai{font-size:22px;line-height:1;flex-shrink:0}
+    #poster-long .a .at{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:800;color:#10162f;line-height:1.3}
+    #poster-long .a .ad{font-size:10.5px;line-height:1.45;color:#555;margin-top:2px}
+
+    /* Final CTA band */
+    #poster-long .final{margin-top:auto;padding-top:14px;border-top:3px solid #10162f}
+    #poster-long .final-row{display:flex;gap:10px}
+    #poster-long .price-box{background:#FF914D;color:#fffbea;padding:13px 16px;border:2.5px solid #10162f;box-shadow:4px 4px 0 #10162f}
+    #poster-long .price-lbl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:1.5px;opacity:0.9}
+    #poster-long .price-now{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:24px;margin-top:2px;line-height:1}
+    #poster-long .price-old{font-family:'Space Mono',monospace;font-size:10.5px;margin-top:3px;opacity:0.85;text-decoration:line-through}
+    #poster-long .when{flex:1;background:#10b981;color:#fffbea;padding:13px 16px;border:2.5px solid #10162f;box-shadow:4px 4px 0 #10162f}
+    #poster-long .when-lbl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:1.5px;opacity:0.9}
+    #poster-long .when-d{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:19px;margin-top:2px;line-height:1.1}
+    #poster-long .when-p{font-size:11.5px;margin-top:3px;opacity:0.92}
+    #poster-long .meta-foot{margin-top:12px;display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;opacity:0.55;letter-spacing:0.5px}
+
+    /* Download button */
+    #dl{position:fixed;right:24px;bottom:24px;z-index:99999;background:#FF914D;color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:14px 22px;font-family:'Space Mono','DM Sans',monospace;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.15s}
+    #dl:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #000}
+    #dl:disabled{opacity:0.6;cursor:wait}
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Claude Cowork × 一人公司办公自动化 · 多渠道宣传海报</h1>
+  <p>4 种渠道格式 · 切换 tab 选要的 · 右下角 ⬇ 下载当前 PNG</p>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-target="poster-xhs" type="button">小红书竖版<span class="size">1242 × 1660</span></button>
+  <button class="tab" data-target="poster-moments" type="button">朋友圈<span class="size">1080 × 1080</span></button>
+  <button class="tab" data-target="poster-banner" type="button">公众号头图<span class="size">1200 × 628</span></button>
+  <button class="tab" data-target="poster-long" type="button">详情长图<span class="size">1242 × 2840</span></button>
+</div>
+
+<div class="stage">
+
+  <!-- ================= 小红书竖版 ================= -->
+  <div id="poster-xhs" class="poster active">
+    <div class="blob orange"></div>
+    <div class="blob green"></div>
+    <div class="blob yellow"></div>
+    <div class="grid-bg"></div>
+    <div class="content">
+      <div class="top">
+        <div class="brand-mark">
+          <div class="brand-icon">匠</div>
+          <div class="brand-text">
+            <div class="brand-name">JR ACADEMY</div>
+            <div class="brand-tag">AI-DRIVEN EDUCATION</div>
+          </div>
+        </div>
+        <div class="badge">5/23 · BRISBANE</div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Claude Cowork · For Solo Founders</div>
+        <div class="title">
+          你 1 个人就是<br>
+          一家<span class="acc">公司</span>
+        </div>
+        <div class="sub">
+          4 小时不讲『AI 是什么』。<strong>装 Cowork → 客户邮件秒变报价 PDF → Gmail 50 封批量起草 → 一稿改 4 平台 → /schedule 周一早 8 点自动出周报</strong>。走时电脑里有 5 个能复用的 Skill。
+        </div>
+      </div>
+
+      <div class="section-title" style="font-family:'Bricolage Grotesque';font-size:14px;font-weight:900;color:#10162f">▎ 走时带回家的 5 个 Skill</div>
+      <div class="skills">
+        <div class="skill"><div class="ico">🧾</div><div class="nm">SKILL 1</div><div class="lb">my-quote</div></div>
+        <div class="skill"><div class="ico">📧</div><div class="nm">SKILL 2</div><div class="lb">inbox-triage</div></div>
+        <div class="skill"><div class="ico">📱</div><div class="nm">SKILL 3</div><div class="lb">multi-platform</div></div>
+        <div class="skill"><div class="ico">📊</div><div class="nm">SKILL 4</div><div class="lb">weekly-report</div></div>
+        <div class="skill"><div class="ico">🔔</div><div class="nm">SKILL 5</div><div class="lb">followup</div></div>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar"><div class="pi">🧾</div><div><strong>客户邮件 → 报价 PDF</strong><br><span>5 分钟出货 · 不再 30 分钟手填模板</span></div></div>
+        <div class="pillar"><div class="pi">📧</div><div><strong>Gmail 50 封批量起草</strong><br><span>进 Drafts 你 review · 不再周末熬夜</span></div></div>
+        <div class="pillar"><div class="pi">📱</div><div><strong>一稿改 4 平台</strong><br><span>朋友圈/小红书/公众号/LinkedIn</span></div></div>
+        <div class="pillar"><div class="pi">⏰</div><div><strong>周一 8 点自动出周报</strong><br><span>你倒咖啡时它跑完</span></div></div>
+      </div>
+
+      <div class="bottom">
+        <div class="bot-row">
+          <div class="price-box">
+            <div class="price-lbl">EARLY BIRD</div>
+            <div class="price-now">A$99</div>
+            <div class="price-old">A$129</div>
+          </div>
+          <div class="when">
+            <div class="when-lbl">5/23 SAT · BRISBANE CBD</div>
+            <div class="when-d">1:00 — 5:00 PM</div>
+            <div class="when-p">8-12 人小班 · 中文为主 · 1:4 Tutor</div>
+          </div>
+        </div>
+        <div class="meta">
+          <span>jiangren.com.au/curriculum/claude-cowork-sme-workshop</span>
+          <span>HELLO@JIANGREN.COM.AU</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 朋友圈 ================= -->
+  <div id="poster-moments" class="poster">
+    <div class="blob orange"></div>
+    <div class="blob green"></div>
+    <div class="grid-bg"></div>
+    <div class="content">
+      <div class="top">
+        <div class="brand-mark">
+          <div class="brand-icon">匠</div>
+          <div class="brand-text">
+            <div class="brand-name">JR ACADEMY</div>
+            <div class="brand-tag">AI-DRIVEN</div>
+          </div>
+        </div>
+        <div class="badge">5/23 BRISBANE</div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Claude Cowork × Solo Founder</div>
+        <div class="title">
+          AI 是你最便宜的<br>
+          <span class="acc">员工</span>
+        </div>
+        <div class="sub">
+          4 小时实战：报价单 PDF / Gmail 批量回复 / 一稿 4 平台 / 周报自动跑。<strong>走时带 5 个能复用的 Skill。</strong>
+        </div>
+      </div>
+
+      <div class="deliv">
+        <div class="d"><div class="ico">🧾</div><div><strong>报价 PDF</strong> · 5 分钟出货</div></div>
+        <div class="d"><div class="ico">📧</div><div><strong>50 封邮件</strong> · 批量起草</div></div>
+        <div class="d"><div class="ico">📱</div><div><strong>4 平台版本</strong> · 一稿全出</div></div>
+        <div class="d"><div class="ico">⏰</div><div><strong>周一 8 点</strong> · 自动周报</div></div>
+      </div>
+
+      <div class="cta">
+        <div class="cta-l">
+          <div class="cta-l-lbl">EARLY BIRD</div>
+          <div class="cta-l-num">A$99</div>
+        </div>
+        <div class="cta-r">
+          <div class="cta-r-l">5/23 SAT · 1-5PM · BRISBANE CBD</div>
+          <div class="cta-r-m">8-12 人小班 · 限 12 席</div>
+          <div class="cta-r-s">jiangren.com.au/curriculum/claude-cowork-sme-workshop</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 公众号头图 ================= -->
+  <div id="poster-banner" class="poster">
+    <div class="blob orange"></div>
+    <div class="blob green"></div>
+    <div class="grid-bg"></div>
+    <div class="content">
+      <div class="left">
+        <div class="top">
+          <div class="brand-icon">匠</div>
+          <div class="brand-text">
+            <div class="brand-name">JR ACADEMY</div>
+            <div class="brand-tag">2026 BRISBANE</div>
+          </div>
+        </div>
+        <div>
+          <div class="eyebrow">Claude Cowork · 一人公司</div>
+          <div class="title">
+            办公杂活 · 全交给 <span class="acc">AI</span>
+          </div>
+          <div class="sub">
+            4 小时实战工作坊 · <strong>报价 PDF / 邮件批量 / 多平台内容 / 周报自动化</strong> · 走时带 5 个能复用 Skill
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="stat"><div class="stat-n">4</div><div class="stat-l">小时实战<br>11 模块</div></div>
+        <div class="stat"><div class="stat-n">5</div><div class="stat-l">Skill 带回家<br>能复用</div></div>
+        <div class="stat"><div class="stat-n">A$99</div><div class="stat-l">早鸟价 · 5/9 截止<br>标 A$129</div></div>
+      </div>
+      <div class="footer">5/23 · BRISBANE CBD · jiangren.com.au/curriculum/claude-cowork-sme-workshop</div>
+    </div>
+  </div>
+
+  <!-- ================= 详情长图 ================= -->
+  <div id="poster-long" class="poster">
+    <div class="blob orange"></div>
+    <div class="blob green"></div>
+    <div class="blob yellow"></div>
+    <div class="grid-bg"></div>
+    <div class="content">
+      <div class="top">
+        <div class="brand-mark">
+          <div class="brand-icon">匠</div>
+          <div class="brand-text">
+            <div class="brand-name">JR ACADEMY</div>
+            <div class="brand-tag">AI-DRIVEN EDUCATION</div>
+          </div>
+        </div>
+        <div class="badge">5/23 · BRISBANE</div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Claude Cowork × Solo Founder Workshop</div>
+        <div class="title">
+          你 1 个人就是<br>
+          一家<span class="acc">公司</span>
+        </div>
+        <div class="sub">
+          4 小时不讲『AI 是什么』。<strong>装 Claude Cowork → 配 4 个 Connectors → 跑 4 个真实 case</strong>。走时电脑里有 5 个能复用的 Skill + 1 个每周自动跑的 Schedule。下周一早 8:01 你去倒咖啡，桌面 weekly-report 已经躺在那里。
+        </div>
+      </div>
+
+      <div class="promise">
+        <p><strong>承诺：</strong>4 小时做完 4 件你这周本来就要做的事 — ① 客户咨询邮件 → 报价 PDF（含税号 / 抬头 / GST 全自动）② 清理积压客户邮件批量起草回复 ③ 一段产品介绍改写成朋友圈 / 小红书 / 公众号 / LinkedIn 4 个平台版本 ④ 写 Skill + /schedule 让 AI 每周一早 8 点自动出业务周报。</p>
+      </div>
+
+      <div class="section-title">4 小时怎么走 · 4 个 case</div>
+      <div class="modules">
+        <div class="mod">
+          <div class="h"><span class="h-ico">🧾</span><span class="h-tt">CASE 1 报价 PDF</span><span class="h-time">40 min</span></div>
+          <p>客户邮件 → 提取需求 → 自动开 Excel → 算 GST → 导 PDF → 起草回复进 Gmail Drafts</p>
+        </div>
+        <div class="mod">
+          <div class="h"><span class="h-ico">📧</span><span class="h-tt">CASE 2 邮件批量</span><span class="h-time">40 min</span></div>
+          <p>扫 Gmail 50 封 → 自动分类 → 起草回复进 Drafts → Calendar 跟进提醒</p>
+        </div>
+        <div class="mod">
+          <div class="h"><span class="h-ico">📱</span><span class="h-tt">CASE 3 一稿多发</span><span class="h-time">40 min</span></div>
+          <p>brand-context.md → 一周 5 主题 × 4 平台 = 20 份内容 → 落到 Google Drive</p>
+        </div>
+        <div class="mod">
+          <div class="h"><span class="h-ico">⏰</span><span class="h-tt">CASE 4 自动化</span><span class="h-time">40 min</span></div>
+          <p>Skill + /schedule 周一 8 点自动出业务周报 · 销售数据 + 待跟进 + 待发内容</p>
+        </div>
+      </div>
+
+      <div class="section-title">▎ 走时带回家 5 个 Skill</div>
+      <div class="skills">
+        <div class="skill"><div class="ico">🧾</div><div class="nm">SKILL 1</div><div class="lb">my-quote</div></div>
+        <div class="skill"><div class="ico">📧</div><div class="nm">SKILL 2</div><div class="lb">inbox-triage</div></div>
+        <div class="skill"><div class="ico">📱</div><div class="nm">SKILL 3</div><div class="lb">multi-platform</div></div>
+        <div class="skill"><div class="ico">📊</div><div class="nm">SKILL 4</div><div class="lb">weekly-report</div></div>
+        <div class="skill"><div class="ico">🔔</div><div class="nm">SKILL 5</div><div class="lb">followup</div></div>
+      </div>
+
+      <div class="section-title">▎ 这节课为谁设计</div>
+      <div class="audi">
+        <div class="a"><div class="ai">🍱</div><div><div class="at">餐饮 / 零售 / 电商小老板</div><div class="ad">企业团餐报价、外卖平台投诉、销售数据 — 用 Cowork 自动化省 1-2 小时/天</div></div></div>
+        <div class="a"><div class="ai">🎨</div><div><div class="at">设计师 / 摄影师 / 文案 / 咨询师</div><div class="ad">客户提案、报价、合同、个人品牌 — Cowork 接管杂活专注创作</div></div></div>
+        <div class="a"><div class="ai">🏠</div><div><div class="at">私厨 / 手工 / 跨境代购</div><div class="ad">朋友圈营销 + 客户咨询 + 订单跟进 — 50 条微信自动分类回复</div></div></div>
+        <div class="a"><div class="ai">📚</div><div><div class="at">教练 / 个人 IP / 教育培训</div><div class="ad">课程介绍、学员沟通、内容多平台分发 — 一稿出 4 个平台版本</div></div></div>
+      </div>
+
+      <div class="final">
+        <div class="final-row">
+          <div class="price-box">
+            <div class="price-lbl">EARLY BIRD · 5/9 截止</div>
+            <div class="price-now">A$99</div>
+            <div class="price-old">A$129</div>
+          </div>
+          <div class="when">
+            <div class="when-lbl">5/23 SATURDAY · BRISBANE CBD</div>
+            <div class="when-d">1:00 — 5:00 PM · 4 小时</div>
+            <div class="when-p">8-12 人小班 · 1:4 Tutor · 中文为主 · 团队 2 人 A$229 / 3 人 A$329</div>
+          </div>
+        </div>
+        <div class="meta-foot">
+          <span>jiangren.com.au/curriculum/claude-cowork-sme-workshop</span>
+          <span>HELLO@JIANGREN.COM.AU</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<button id="dl" type="button">⬇ 下载当前 PNG</button>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+(function(){
+  const tabs = document.querySelectorAll('.tab');
+  const posters = document.querySelectorAll('.poster');
+  const btn = document.getElementById('dl');
+  let active = 'poster-xhs';
+
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      const target = t.dataset.target;
+      active = target;
+      tabs.forEach(x => x.classList.toggle('active', x === t));
+      posters.forEach(p => p.classList.toggle('active', p.id === target));
+    });
+  });
+
+  btn.addEventListener('click', async () => {
+    const node = document.getElementById(active);
+    if(!node) return;
+    const orig = btn.textContent;
+    btn.textContent = '渲染中…';
+    btn.disabled = true;
+    try{
+      const canvas = await html2canvas(node, {
+        backgroundColor: '#fffbea',
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+      });
+      const a = document.createElement('a');
+      a.download = 'cowork-sme-' + active.replace('poster-','') + '-' + Date.now() + '.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+    } catch(err){
+      console.error(err);
+      alert('导出失败：' + (err && err.message ? err.message : err));
+    } finally {
+      btn.textContent = orig;
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>
