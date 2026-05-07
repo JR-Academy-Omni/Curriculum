@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 图文号 2.5 小时起号 Workshop · 小红书专场 · ¥99</title>
+  <meta name="description" content="AI 图文号 2.5 小时起号 Workshop — 只讲小红书 / 只针对自媒体小白。从赛道定位到选题到 AI 出文案配图，老师带你当场发出第一条笔记。仅 ¥99。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#ff2741 60%,#ff914d 100%);padding:56px 24px 48px;color:#fff;text-align:center}
+    .header .eyebrow{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:3px;color:#FFDE59;font-weight:700;text-transform:uppercase;margin-bottom:14px}
+    .header h1{font-size:clamp(28px,5vw,46px);line-height:1.15;max-width:1000px;margin:0 auto;font-weight:900;letter-spacing:-0.5px}
+    .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:820px;margin:16px auto 0;opacity:0.9;line-height:1.65}
+    .header .price-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+    .header .price-row .pill{padding:8px 16px;border:3px solid #fff;background:rgba(255,255,255,0.08);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:1px;backdrop-filter:blur(8px)}
+    .header .price-row .pill.yellow{background:#FFDE59;color:#10162f;border-color:#10162f}
+
+    /* Highlights */
+    .hl-wrap{max-width:1200px;margin:48px auto 0;padding:0 24px}
+    .hl-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .hl-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .hl-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:20px 20px 22px;transition:all 0.15s}
+    .hl-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .hl-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;margin-bottom:10px;color:#fff}
+    .hl-tag.r{background:#ff2741}
+    .hl-tag.o{background:#FF914D}
+    .hl-tag.b{background:#38B6FF}
+    .hl-tag.g{background:#10b981}
+    .hl-tag.y{background:#FFDE59;color:#10162f}
+    .hl-tag.p{background:#ec4899}
+    .hl-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:800;line-height:1.35;margin-bottom:8px;color:#10162f}
+    .hl-card p{font-size:13px;line-height:1.65;color:#444}
+    @media(max-width:1024px){.hl-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.hl-grid{grid-template-columns:1fr;gap:14px}}
+
+    /* Promise box */
+    .pm-wrap{max-width:1200px;margin:48px auto 0;padding:0 24px}
+    .pm-box{border:3px solid #000;background:#FFDE59;box-shadow:8px 8px 0 #ff2741;padding:26px 30px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+    .pm-icon{font-size:48px;line-height:1}
+    .pm-body h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;margin-bottom:6px}
+    .pm-body p{font-size:14px;line-height:1.7;color:#10162f}
+    .pm-body p strong{background:#ff2741;color:#fff;padding:2px 8px;font-weight:800}
+    @media(max-width:640px){.pm-box{grid-template-columns:1fr;text-align:center}}
+
+    /* Tool Stack */
+    .ts-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .ts-head{border:3px solid #000;background:#10162f;color:#fff;padding:18px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .ts-head .mono{font-family:'Space Mono',monospace;font-size:12px;opacity:0.7;font-weight:400}
+    .ts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:3px solid #000;border-top:none;background:#fff}
+    .ts-col{padding:22px 22px 24px;border-right:3px solid #000;border-bottom:3px solid #000}
+    .ts-col:nth-child(2n){border-right:none}
+    .ts-col:nth-last-child(-n+1){border-bottom:none}
+    .ts-col:nth-last-child(2):not(:nth-child(2n)){border-bottom:none}
+    .ts-logo{font-size:32px;margin-bottom:8px}
+    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;margin-bottom:4px}
+    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#ff2741;font-weight:700;margin-bottom:12px}
+    .ts-col p{font-size:13px;line-height:1.7;color:#444;margin-bottom:8px}
+    .ts-col .ts-cost{font-size:12px;line-height:1.65;padding:8px 10px;margin-top:8px;background:#d1fae5;color:#065f46;border-left:4px solid #10b981}
+    @media(max-width:900px){.ts-grid{grid-template-columns:1fr}.ts-col{border-right:none;border-bottom:3px solid #000}.ts-col:last-child{border-bottom:none}}
+
+    /* Audience */
+    .au-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .au-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .au-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .au-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:18px 20px;transition:all 0.15s}
+    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .au-emoji{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
+    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .au-body p{font-size:13px;line-height:1.65;color:#555}
+    .au-not{margin-top:22px;padding:18px 22px;background:#10162f;color:#fff;font-size:13px;line-height:1.85;border:3px solid #000}
+    .au-not strong{color:#FFDE59}
+    .au-not ul{list-style:none;padding:0;margin-top:8px}
+    .au-not li{padding:3px 0}
+    .au-not li::before{content:"⛔ ";color:#ff2741}
+    @media(max-width:1024px){.au-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.au-grid{grid-template-columns:1fr}}
+
+    /* Timeline */
+    .tl-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .tl-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .tl-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .tl-wrap .box{margin-bottom:20px}
+    .tl-wrap .box-h{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:'Bricolage Grotesque',sans-serif;font-size:16px}
+    .tl-wrap .box-h .slot{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.85}
+    .tl-wrap .time-block{background:#fafafa;padding:10px 24px;font-size:12px;font-family:'Space Mono',monospace;color:#555;border-bottom:1px solid #eee}
+    .tl-wrap .lesson-body h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:6px}
+    .tl-wrap .lesson-body p{font-size:13px;line-height:1.7;color:#444}
+    .tl-wrap .lesson-body ul{font-size:13px;line-height:1.75;color:#444;padding-left:18px}
+    .tl-wrap .lesson-body li{margin-bottom:3px}
+    .tl-deliverable{margin:0 24px 18px;padding:10px 14px;background:#FFDE59;border:2px dashed #10162f;font-size:12.5px;font-weight:700;color:#10162f;display:flex;align-items:center;gap:8px}
+    .tl-deliverable::before{content:"🎁";font-size:16px}
+
+    /* Course Prep */
+    .pr-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .pr-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .pr-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .pr-box{border:3px solid #000;background:#fffbeb;box-shadow:6px 6px 0 #000;padding:0}
+    .pr-head{background:#FFDE59;padding:14px 24px;border-bottom:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:18px;color:#10162f;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .pr-head .mono{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.75}
+    .pr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;background:#fff}
+    .pr-item{display:flex;gap:14px;padding:20px 22px;border-right:2px dashed #e5e7eb;border-bottom:2px dashed #e5e7eb}
+    .pr-item:nth-child(2n){border-right:none}
+    .pr-item:nth-last-child(-n+2){border-bottom:none}
+    .pr-num{flex-shrink:0;width:34px;height:34px;border:3px solid #000;background:#ff2741;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #000}
+    .pr-body h5{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .pr-body p{font-size:13px;line-height:1.7;color:#444}
+    .pr-body .opt{display:inline-block;margin-left:6px;padding:1px 7px;background:#d1fae5;color:#065f46;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    .pr-body .req{display:inline-block;margin-left:6px;padding:1px 7px;background:#fee2e2;color:#991b1b;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    @media(max-width:640px){.pr-grid{grid-template-columns:1fr}.pr-item{border-right:none;border-bottom:2px dashed #e5e7eb}}
+
+    /* Pricing block */
+    .pc-wrap{max-width:900px;margin:56px auto 0;padding:0 24px}
+    .pc-box{border:3px solid #000;background:#fff;box-shadow:10px 10px 0 #ff2741;padding:32px 30px;text-align:center}
+    .pc-box .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:2.5px;color:#ff2741;font-weight:700;text-transform:uppercase}
+    .pc-box .price-num{font-family:'Bricolage Grotesque',sans-serif;font-size:96px;font-weight:900;color:#10162f;line-height:1;margin:8px 0;letter-spacing:-3px}
+    .pc-box .price-num .yuan{font-size:42px;vertical-align:top;margin-right:6px;color:#ff2741}
+    .pc-box .price-num .unit{font-size:18px;font-weight:700;color:#888;margin-left:8px;letter-spacing:0;text-transform:uppercase;font-family:'Space Mono',monospace}
+    .pc-box .pc-desc{font-size:14px;color:#555;line-height:1.7;max-width:600px;margin:8px auto 18px}
+    .pc-box .pc-incl{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;text-align:left;max-width:640px;margin:0 auto}
+    .pc-box .pc-incl div{padding:9px 14px;background:#fffbeb;border:2px solid #10162f;font-size:13px;line-height:1.5;font-weight:600;color:#10162f}
+    .pc-box .pc-incl div::before{content:"✅ ";margin-right:4px}
+    .pc-box .refund{margin-top:18px;font-family:'Space Mono',monospace;font-size:12px;color:#10b981;font-weight:700}
+    @media(max-width:600px){.pc-box .pc-incl{grid-template-columns:1fr}.pc-box .price-num{font-size:64px}}
+
+    /* FAQ */
+    .fq-wrap{max-width:1000px;margin:56px auto 0;padding:0 24px}
+    .fq-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .fq-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .fq-list{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000}
+    .fq-item{border-bottom:2px solid #000}
+    .fq-item:last-child{border-bottom:none}
+    .fq-item summary{padding:16px 22px;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;background:#fff;transition:background 0.15s}
+    .fq-item summary::-webkit-details-marker{display:none}
+    .fq-item summary::after{content:"+";font-size:22px;font-weight:900;color:#ff2741;flex-shrink:0;transition:transform 0.2s}
+    .fq-item[open] summary{background:#fff5f5;border-bottom:2px solid #000}
+    .fq-item[open] summary::after{content:"−"}
+    .fq-item summary:hover{background:#fafafa}
+    .fq-ans{padding:16px 22px 20px;font-size:14px;line-height:1.8;color:#333;background:#fffbeb}
+    .fq-ans strong{color:#10162f}
+
+    /* Footer */
+    .site-footer{margin-top:72px;background:#10162f;color:#fff;padding:48px 24px 24px 24px;border-top:4px solid #000}
+    .sf-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;padding-bottom:32px;border-bottom:2px solid rgba(255,255,255,0.15)}
+    .sf-brand h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;margin-bottom:8px;color:#FFDE59}
+    .sf-brand p{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.75);margin-bottom:12px}
+    .sf-brand .sf-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .sf-brand .sf-badges span{padding:4px 10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.5px}
+    .sf-col h4{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#ff2741;margin-bottom:14px}
+    .sf-col ul{list-style:none;padding:0}
+    .sf-col li{font-size:13px;line-height:1.9;color:rgba(255,255,255,0.7)}
+    .sf-col li strong{color:#fff;font-weight:600}
+    .sf-col a{color:rgba(255,255,255,0.7);text-decoration:none}
+    .sf-col a:hover{color:#FFDE59}
+    .sf-bottom{max-width:1200px;margin:0 auto;padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .sf-copy{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px}
+    @media(max-width:900px){.sf-inner{grid-template-columns:1fr 1fr;gap:28px}.sf-brand{grid-column:1 / -1}}
+    @media(max-width:560px){.sf-inner{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="header">
+  <div class="eyebrow">📕 小红书专场 · 2.5 小时直播 · ¥99</div>
+  <h1>AI 图文号 2.5 小时起号 Workshop</h1>
+  <div class="sub">不讲全平台、只讲小红书 — 老师带你从赛道定位 → 选题挖掘 → AI 写文案 → 出图拼封面 → 当场发出第一条笔记。专门给完全没做过自媒体的小白。</div>
+  <div class="price-row">
+    <span class="pill yellow">💰 ¥99 / 人</span>
+    <span class="pill">⏱ 2.5 小时直播</span>
+    <span class="pill">📺 Zoom 平台</span>
+    <span class="pill">📼 报名可看录播</span>
+    <span class="pill">↩️ 24h 内不满意全额退</span>
+  </div>
+</div>
+
+<!-- Promise -->
+<div class="pm-wrap">
+  <div class="pm-box">
+    <div class="pm-icon">✨</div>
+    <div class="pm-body">
+      <h3>2.5 小时之后，你的小红书账号上会出现你的第一条笔记</h3>
+      <p>不是听完回家自己琢磨 — L04 是 50 分钟的实操，老师带你从选题挑选到 AI 写文案、出图、拼封面、加标签、<strong>当场发出去</strong>。每个学员发完才算下课。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Highlights -->
+<div class="hl-wrap">
+  <div class="hl-title">✨ 这 2.5 小时你会拿到什么</div>
+  <div class="hl-sub">不是看 AI 演示合集 · 不是听理论 · 是带着你跑通一遍可复用的流程</div>
+  <div class="hl-grid">
+    <div class="hl-card">
+      <span class="hl-tag r">🎯 你自己的定位</span>
+      <h4>1 份属于你的赛道 + 人设文档</h4>
+      <p>L02 现场跑出来 — 不是「美妆」这种大赛道，是「敏感肌打工人快手护肤」这种细分坐标。配套账号简介 + 头像方向 + 风格关键词。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag o">📋 50 条选题清单</span>
+      <h4>你赛道的爆款选题库（带优先级）</h4>
+      <p>L03 实操产出 — 喂 AI 你的 20 条对标爆款，跑出 50 条你能直接拍的选题。一周更一条都能更两个月。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag g">📕 一条真实笔记</span>
+      <h4>当场在你账号上发出去</h4>
+      <p>L04 50 分钟实操 — 文案 / 配图 / 封面 / 标题 / 标签全用 AI 跑完，你的小红书账号当场多一条新笔记。可查可分享。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag b">🤖 全套 Prompt 包</span>
+      <h4>课上用的所有 Prompt 都送</h4>
+      <p>4 段式文案 Prompt / 出图 Prompt / 标题 10 版本 Prompt / 评论高赞回复 Prompt / 违禁词自查 Prompt — 全打包带走，回家自己跑能复用。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag p">📊 数据复盘指南</span>
+      <h4>发完 24 小时怎么判断这条是否值得继续推</h4>
+      <p>看 3 个关键数据 + 5 个新号最容易踩的限流坑。看不懂数据等于发了白发。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag y">🎯 不限行业能套</span>
+      <h4>美食 / 母婴 / 健身 / 知识 / 职场都能跑</h4>
+      <p>方法论通用 — 我们已经带过卖咖啡的、做会计的、教瑜伽的、写代码的、做心理咨询的，都跑通了。L02 让你把自己的行业当输入。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Tool Stack -->
+<div class="ts-wrap">
+  <div class="ts-head">
+    <span>🛠 课上要用的工具</span>
+    <span class="mono">全部免费档够用 · 0 成本跟课</span>
+  </div>
+  <div class="ts-grid">
+    <div class="ts-col">
+      <div class="ts-logo">💬</div>
+      <div class="ts-name">ChatGPT / Kimi / 豆包</div>
+      <div class="ts-role">Text · 文案主力</div>
+      <p><strong>定位：</strong>写笔记正文、标题、评论回复 — 任选一家就行。Kimi / 豆包国内可直接用，ChatGPT 需自理网络。课上跑的 Prompt 三家都吃。</p>
+      <div class="ts-cost">💰 免费档够用 — 课堂 2.5 小时跑十几轮 Prompt 不会爆</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🎨</div>
+      <div class="ts-name">即梦</div>
+      <div class="ts-role">Image · 配图主力</div>
+      <p><strong>定位：</strong>出小红书图片主力 — 知识卡片、生活场景、Q 版插画都行。抖音账号一键登录，新用户送免费额度，跑 9 张图绰绰有余。</p>
+      <div class="ts-cost">💰 免费额度课堂够用 · 后期想跑量充几十块</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🍌</div>
+      <div class="ts-name">Nano Banana</div>
+      <div class="ts-role">Image · 配图备选</div>
+      <p><strong>定位：</strong>真人出镜风、生活方式风出图最稳的一家。走 Google AI Studio 免费档，海外账号无缝。和即梦一起用，互补不同风格。</p>
+      <div class="ts-cost">💰 Google AI Studio 免费档 · 国内自理网络</div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🖼</div>
+      <div class="ts-name">Canva / 醒图</div>
+      <div class="ts-role">Design · 排版收尾</div>
+      <p><strong>定位：</strong>把 AI 出的图加上文字、做封面、拼九宫格。Canva 有大量小红书专属模板（课上送 5 个）。醒图手机端用着更顺。</p>
+      <div class="ts-cost">💰 免费档完全够用</div>
+    </div>
+  </div>
+</div>
+
+<!-- Audience -->
+<div class="au-wrap">
+  <div class="au-title">👥 这节课适合谁</div>
+  <div class="au-sub">这课就是给完全没做过自媒体的小白设计的 — 不假设你懂任何平台规则</div>
+  <div class="au-grid">
+    <div class="au-card">
+      <div class="au-emoji">📱</div>
+      <div class="au-body">
+        <h4>完全没做过自媒体的小白</h4>
+        <p>刷小红书 3 年没发过一条笔记 — 不知道发什么、不知道做什么风格、不知道从哪开始。这节课就是为你设计的。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">💼</div>
+      <div class="au-body">
+        <h4>上班族想做副业账号</h4>
+        <p>白天上班晚上想搞点流量副业 — 时间紧想用 AI 提效。学完知道怎么用 1-2 小时做出一条像样的笔记。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🏪</div>
+      <div class="au-body">
+        <h4>实体店主 / 个人服务者</h4>
+        <p>餐厅 / 美容 / 瑜伽馆 / 心理咨询 / 律师 / 会计师 — 自己有手艺想用小红书引流。学完知道怎么把专业内容做得「能看」。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🎨</div>
+      <div class="au-body">
+        <h4>已经在更但没流量的账号</h4>
+        <p>更了三个月只有几十个粉 — 大概率是定位 + 选题 + 封面有问题。这节课从底层重置思路，比单点优化有用。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🎓</div>
+      <div class="au-body">
+        <h4>学生 / 应届生想做个人品牌</h4>
+        <p>毕业前先把账号立起来 — 比简历上写「会 PS」值钱。AI 把内容生产门槛打下来了，正是好时候。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">✍️</div>
+      <div class="au-body">
+        <h4>做过公众号 / 知乎想转小红书</h4>
+        <p>习惯长文写作但小红书完全是另一套语言 — 来学怎么把你已有的内容资产改造成小红书风格。</p>
+      </div>
+    </div>
+  </div>
+  <div class="au-not">
+    <strong>⛔ 不适合来：</strong>
+    <ul>
+      <li>想学抖音 / 视频号 / B 站做视频号 — 这课只讲小红书图文</li>
+      <li>已经有 10 万粉想学进阶变现 — 这是起号课不是变现课</li>
+      <li>纯卖货商家想学投流 — 这课讲自然流量不讲付费投放</li>
+      <li>想学传统 PS / Lr 修图技术 — 这课全用 AI + Canva，不碰专业修图软件</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="tl-wrap">
+  <div class="tl-title">🗓 2.5 小时课程结构 · 6 个 Block</div>
+  <div class="tl-sub">L04 是核心实操 50 分钟 · 其他 Block 围绕实操服务</div>
+
+  <!-- L01 -->
+  <div class="box" style="box-shadow:6px 6px 0 #ff2741;border-color:#000">
+    <div class="box-h" style="background:#ff2741"><span>📕 L01 · 小红书起号底层逻辑</span><span class="slot">15 min</span></div>
+    <div class="time-block">⏱ 15 分钟 · 老师主讲 · 先讲清平台脾气你再发</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>📖 你会听到</h5>
+        <ul>
+          <li>小红书 vs 抖音 vs 公众号：图文号现在还值不值得做</li>
+          <li>笔记从发布到爆款的 5 个流量池逻辑</li>
+          <li>影响曝光的 4 大维度：封面 / 标题 / 标签 / 互动</li>
+          <li>新号 7 天养号怎么做、哪些动作触发限流</li>
+          <li>2026 小红书 3 个新机会赛道</li>
+        </ul>
+      </div>
+      <div>
+        <h5>🎯 你会带走</h5>
+        <p>明白「为什么我发的没人看」的根本原因 — 不是你内容差，是平台脾气没摸清。新号前两周该做什么不该做什么，心里有谱。</p>
+      </div>
+      <div>
+        <h5>⚙️ 为什么先讲规则</h5>
+        <p>直接开 AI 出文案出图你能快出，但发出去没流量等于白做。先把平台底层逻辑打通，后面所有动作才有判断基准。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L02 -->
+  <div class="box" style="box-shadow:6px 6px 0 #ff914d;border-color:#000">
+    <div class="box-h" style="background:#ff914d"><span>🎯 L02 · 用 AI 找你的赛道 + 人设</span><span class="slot">25 min</span></div>
+    <div class="time-block">⏱ 25 分钟 · 实操 · 你提供 3 个标签，AI 跑出你的赛道</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>📖 内容</h5>
+        <ul>
+          <li>赛道筛选三角：兴趣 × 能力 × 流量需求</li>
+          <li>实操：3 个标签 → 5 个细分赛道 + 竞争度评分</li>
+          <li>人设公式：身份 + 反差 + 价值钩子</li>
+          <li>10 个真实账号拆解：人设为什么立得住</li>
+          <li>实操：AI 帮你写简介 + 头像方向 + 风格关键词</li>
+        </ul>
+      </div>
+      <div>
+        <h5>🎯 你会带走</h5>
+        <p>1 个具体的赛道选择（细分到「敏感肌打工人快手护肤」级别） + 1 份完整账号定位文档（昵称 / 简介 / 头像 / 内容方向）。</p>
+      </div>
+      <div>
+        <h5>💡 现场互动</h5>
+        <p>每个学员当场跑一遍 — 老师挑 2-3 个有意思的赛道现场点评。你不会跑卡在哪老师当场带。</p>
+      </div>
+    </div>
+    <div class="tl-deliverable">交付：你自己的小红书账号定位文档（一页纸）</div>
+  </div>
+
+  <!-- L03 -->
+  <div class="box" style="box-shadow:6px 6px 0 #ec4899;border-color:#000">
+    <div class="box-h" style="background:#ec4899"><span>🔥 L03 · 用 AI 挖爆款选题</span><span class="slot">30 min</span></div>
+    <div class="time-block">⏱ 30 分钟 · 实操 · 跑出你赛道的 50 条选题清单</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>📖 选题三大来源</h5>
+        <ul>
+          <li>对标账号爆款拆解</li>
+          <li>热搜 / 热门话题</li>
+          <li>评论区高赞问题</li>
+        </ul>
+        <h5 style="margin-top:10px">📐 标题公式 6 板斧</h5>
+        <p>数字款 / 反差款 / 痛点款 / 干货款 / 情绪款 / 悬念款</p>
+      </div>
+      <div>
+        <h5>🎯 实操产出</h5>
+        <p>喂 20 条对标爆款 → AI 跑出 50 条你赛道的选题清单（带优先级）。AI 标题生成 Prompt 一次出 10 个版本。</p>
+      </div>
+      <div>
+        <h5>💡 不是给你答案，是给你方法</h5>
+        <p>50 条选题用完了怎么办？老师讲清你以后怎么自己一直挖 — 选题不是一次性活，是日常习惯。</p>
+      </div>
+    </div>
+    <div class="tl-deliverable">交付：你自己赛道的 50 条爆款选题清单</div>
+  </div>
+
+  <!-- L04 -->
+  <div class="box" style="box-shadow:8px 8px 0 #10b981;border-color:#000">
+    <div class="box-h" style="background:#10b981"><span>✨ L04 · 实战：AI 一条龙做完整条笔记</span><span class="slot">50 min · 核心</span></div>
+    <div class="time-block">⏱ 50 分钟 · 老师全程直播带做 · 每个学员当场发出第一条笔记</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>✍️ Step 1 · AI 写文案（15 min）</h5>
+        <p>4 段式 Prompt：钩子 - 痛点 - 干货 - 互动。一次出 3 个风格版本（专业 / 闺蜜 / 痞气）让你挑。讲怎么调语气让 AI 写得不像 AI。</p>
+      </div>
+      <div>
+        <h5>🎨 Step 2 · AI 出配图（15 min）</h5>
+        <p>小红书 3 种主流图风：知识卡片 / 真人出镜 / 生活场景。即梦 + Nano Banana Prompt 模板，一次出 9 张图。讲 9 张图风格怎么统一。</p>
+      </div>
+      <div>
+        <h5>🖼 Step 3 · Canva 拼图 + 封面（10 min）</h5>
+        <p>把 AI 出的图拼九宫格、第一张做封面、加文字标题。Canva 5 个小红书专属模板老师当场送你。</p>
+      </div>
+      <div>
+        <h5>🚀 Step 4 · 标题 + 标签 + 发布（10 min）</h5>
+        <p>标题 10 版本 / 标签 5+5（精准 + 大流量）/ 检查违禁词 / 选发布时间 / 当场发出。卡住的老师单独看。</p>
+      </div>
+      <div>
+        <h5>🎯 你会带走</h5>
+        <p>完整一条笔记从 0 到发布的真实流程 — 不是剪辑好的教学片，是老师当场踩坑 + 解决 + 决策的全过程。</p>
+      </div>
+      <div>
+        <h5>💬 全程可弹幕提问</h5>
+        <p>看到卡壳的可以随时弹幕 — 老师能打断就打断讲，不能就 L06 一起答。这 50 分钟信息密度最高，建议直播参与不要看录播。</p>
+      </div>
+    </div>
+    <div class="tl-deliverable">交付：你自己账号上发出的第一条 AI 协作笔记（真实可链接）</div>
+  </div>
+
+  <!-- L05 -->
+  <div class="box" style="box-shadow:6px 6px 0 #38B6FF;border-color:#000">
+    <div class="box-h" style="background:#38B6FF"><span>📊 L05 · 发出去之后 — 数据 + 避坑</span><span class="slot">20 min</span></div>
+    <div class="time-block">⏱ 20 分钟 · 笔记发出去不是结束 · 数据怎么看 + 5 个限流坑</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>📊 头 24 小时看 3 个数据</h5>
+        <ul>
+          <li>曝光率 — 平台愿不愿意推</li>
+          <li>点击率 — 封面 + 标题行不行</li>
+          <li>互动率 — 内容留得住人不</li>
+        </ul>
+      </div>
+      <div>
+        <h5>⚠️ 5 个限流坑</h5>
+        <ul>
+          <li>违禁词（AI 自查 Prompt 一键扫）</li>
+          <li>引流词（微信 / 加我）</li>
+          <li>夹带广告（产品名直出）</li>
+          <li>搬运（别人爆款改个标题）</li>
+          <li>营销号味（AI 不调直接发）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>📈 起号节奏</h5>
+        <p>第 1 周 / 第 2 周 / 第 1 月分别该怎么打 — 不同阶段重点不一样。一上来就追爆款是反节奏。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L06 -->
+  <div class="box" style="box-shadow:6px 6px 0 #6366f1;border-color:#000">
+    <div class="box-h" style="background:#6366f1"><span>💬 L06 · Q&amp;A + 下一步行动</span><span class="slot">10 min</span></div>
+    <div class="time-block">⏱ 10 分钟 · 答疑 · 资料包 · 三档行动建议</div>
+    <div class="lesson-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 24px">
+      <div>
+        <h5>💬 现场答疑</h5>
+        <p>把直播过程攒下的问题清一轮 — 工具选择、内容方向、限流判断、商业化路径都可以问。</p>
+      </div>
+      <div>
+        <h5>📦 带走清单</h5>
+        <ul>
+          <li>4 段式文案 Prompt</li>
+          <li>出图 Prompt 模板</li>
+          <li>50 条选题（你赛道的）</li>
+          <li>Canva 5 个模板链接</li>
+          <li>违禁词自查 Prompt</li>
+        </ul>
+      </div>
+      <div>
+        <h5>🚀 三档行动建议</h5>
+        <p>① 今晚再发一条 · ② 一周更 7 条找爆款手感 · ③ 一个月坚持起号节奏 — 按你时间挑一档。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Course Prep -->
+<div class="pr-wrap">
+  <div class="pr-title">📋 课前准备清单</div>
+  <div class="pr-sub">15 分钟搞定 · 不做也能来但 L04 实操跟不上节奏</div>
+  <div class="pr-box">
+    <div class="pr-head">
+      <span>🎯 到场前要搞定的 6 件事</span>
+      <span class="mono">3 必做 · 3 推荐</span>
+    </div>
+    <div class="pr-grid">
+      <div class="pr-item">
+        <div class="pr-num">1</div>
+        <div class="pr-body">
+          <h5>装好 Zoom 客户端<span class="req">必做</span></h5>
+          <p>下载 Zoom 桌面客户端登录一次，避免开课卡在进房间。浏览器版直播体验不稳。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">2</div>
+        <div class="pr-body">
+          <h5>注册一个小红书账号<span class="req">必做</span></h5>
+          <p>没有的话开课前注册一个 — L04 实操要在这个账号上发笔记。已经有账号的直接用。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">3</div>
+        <div class="pr-body">
+          <h5>电脑 + 手机同时在线<span class="req">必做</span></h5>
+          <p>电脑看老师演示 + 跑 AI 工具，手机用来发笔记到小红书。两个屏幕配合体验最好。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">4</div>
+        <div class="pr-body">
+          <h5>注册 Kimi 或豆包<span class="opt">推荐</span></h5>
+          <p>国内手机号即可，免费档够用。已经有 ChatGPT 的也行。课上跑 Prompt 用。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">5</div>
+        <div class="pr-body">
+          <h5>想好你的 3 个标签<span class="opt">推荐</span></h5>
+          <p>兴趣 / 能力 / 行业各 1 个 — 比如「健身 / 文案 / 互联网」。L02 用这 3 个词跑你的赛道。没想好课上一起跑也行。</p>
+        </div>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">6</div>
+        <div class="pr-body">
+          <h5>笔记本 / 备忘录<span class="opt">推荐</span></h5>
+          <p>2.5 小时密度高 — Prompt 模板、选题、工具链接都要记。课后会发资料包，但课上自己记一遍记得最牢。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pricing -->
+<div class="pc-wrap">
+  <div class="pc-box">
+    <div class="eyebrow">📕 一次性付费 · 一次性 Workshop</div>
+    <div class="price-num"><span class="yuan">¥</span>99<span class="unit">/ 人</span></div>
+    <div class="pc-desc">不是引流课、不是套路课、不会逼你买后续课程。这 ¥99 就是 2.5 小时干货 + 资料包 + 录播回看 — 听完不满意，24 小时内全额退款。</div>
+    <div class="pc-incl">
+      <div>2.5 小时直播（Zoom）</div>
+      <div>报名学员可看录播</div>
+      <div>全套 Prompt 模板包</div>
+      <div>50 条你赛道选题清单</div>
+      <div>Canva 小红书模板 5 个</div>
+      <div>L06 现场答疑</div>
+    </div>
+    <div class="refund">↩️ 24 小时内不满意全额退款，无理由</div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="fq-wrap">
+  <div class="fq-title">❓ 常见问题</div>
+  <div class="fq-sub">来之前先看完 · 省得课上一堆误会</div>
+  <div class="fq-list">
+
+    <details class="fq-item" open>
+      <summary>Q1 · 完全没发过小红书笔记，能跟得上吗？</summary>
+      <div class="fq-ans">
+        <strong>能，这课就是为小白设计的。</strong>整套流程从 0 讲起，不假设你懂任何平台规则。L01 把小红书的脾气讲一遍，L02 帮你定位，L03 给选题，L04 手把手做完发出去。<strong>唯一要求</strong>：开课前打开过 ChatGPT / Kimi / 豆包 任意一个 AI 聊过 5 句话，建立点手感就行。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q2 · 99 元是不是引流课？后面会推几千块的进阶课吗？</summary>
+      <div class="fq-ans">
+        <strong>不是引流课。</strong>这 2.5 小时是独立完整产品 — 走出去你已经有定位 / 选题 / 一条发布的笔记，不会让你觉得「关键内容没讲」。我们后续可能会做更深的陪跑营，但那是另一个产品另一个钱包，跟这节没关系。<strong>听完不满意 24 小时内全额退款。</strong>
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q3 · 我是做 XX 行业的，这课对我有用吗？</summary>
+      <div class="fq-ans">
+        <strong>方法论通用 — 不挑行业。</strong>不管你是卖咖啡、做会计、教瑜伽、写代码、做心理咨询，定位 / 选题 / 出图 / 文案这套方法都能套。L02 让你把自己的行业作为输入跑赛道，L03 选题清单是基于你的赛道生成的。我们已经带过的学员里有：宠物美容师、Excel 培训师、Pilates 教练、会计师、咖啡店主、律师助理 — 都跑通了。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q4 · AI 工具要花钱吗？</summary>
+      <div class="fq-ans">
+        <strong>课上用的全部免费档够用：</strong>
+        <ul style="margin:8px 0 0 20px">
+          <li><strong>Kimi / 豆包 / ChatGPT</strong>：免费档可以写文案</li>
+          <li><strong>即梦</strong>：免费额度跑 9 张图绰绰有余</li>
+          <li><strong>Nano Banana</strong>：走 Google AI Studio 免费档</li>
+          <li><strong>Canva</strong>：免费档够做小红书图</li>
+        </ul>
+        完全可以 0 成本跟下来。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q5 · 2.5 小时结束，我真的能发出去一条笔记吗？</summary>
+      <div class="fq-ans">
+        <strong>能，这是 L04 的明确目标。</strong>50 分钟实操是带着你从选题挑选 → AI 写文案 → 出图 → 拼图 → 写标题 → 加标签 → 当场发出去。<strong>老师不会让任何人在 L04 结束时还没发完笔记</strong> — 卡住的会单独帮你看。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q6 · 有学员群吗？课后有答疑吗？</summary>
+      <div class="fq-ans">
+        <strong>没有学员群</strong> — 这是一节性 Workshop，不卖长期陪跑。答疑集中在 L06 那 10 分钟以及直播过程随时弹幕提问。如果你需要长期答疑 + 起号陪跑，看 JR Academy 后续的进阶产品（不在这节课的承诺范围）。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q7 · 有录播吗？错过直播怎么办？</summary>
+      <div class="fq-ans">
+        <strong>有录播，报名学员开课后发回看链接。</strong>临时有事不能来直播，回头补也行。但 <strong>L04 实操强烈建议直播参加</strong> — 卡住老师能现场帮你看，录播只能自己琢磨。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q8 · 怎么报名？怎么进直播间？</summary>
+      <div class="fq-ans">
+        <strong>线上 Zoom 直播。</strong>报名后 24 小时内会收到邮件，里面有 Zoom Meeting ID + 密码 + 一键加入链接，开课前 2 小时再发一遍提醒。带朋友一起看建议让 ta 也单独报一个 — 一个账号一个屏幕体验更好。
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="sf-inner">
+    <div class="sf-brand">
+      <h3>📕 AI 图文号 2.5h 起号 Workshop · 小红书专场</h3>
+      <p>不讲全平台、只讲小红书 — 老师带你从赛道定位到当场发出第一条 AI 协作笔记。专门给完全没做过自媒体的小白。¥99 一次性付费，听完不满意全额退款。</p>
+      <div class="sf-badges">
+        <span>🎓 JIANGREN ACADEMY</span>
+        <span>🌏 Online · Zoom</span>
+        <span>💰 ¥99</span>
+      </div>
+    </div>
+
+    <div class="sf-col">
+      <h4>📅 课程信息</h4>
+      <ul>
+        <li><strong>2.5 小时</strong>线上直播</li>
+        <li><strong>Zoom</strong> 平台</li>
+        <li>6 个 Block · L01–L06</li>
+        <li>报名学员可看录播</li>
+        <li>24h 内不满意全额退</li>
+      </ul>
+    </div>
+
+    <div class="sf-col">
+      <h4>🧭 快速跳转</h4>
+      <ul>
+        <li><a href="#">✨ 6 大亮点</a></li>
+        <li><a href="#">🛠 工具栈</a></li>
+        <li><a href="#">🗓 课程结构</a></li>
+        <li><a href="#">📋 课前准备</a></li>
+        <li><a href="#">❓ 常见问题</a></li>
+      </ul>
+    </div>
+
+    <div class="sf-col">
+      <h4>🔗 相关资源</h4>
+      <ul>
+        <li><a href="/curriculum/">JR 课程总览</a></li>
+        <li><a href="/curriculum/ai-comic-workshop/curriculum.html">AI 漫剧 2h Workshop</a></li>
+        <li><a href="/curriculum/omnichannel-marketing-workshop/curriculum.html">AI 全渠道营销</a></li>
+        <li><a href="mailto:hello@jiangren.com.au">📧 hello@jiangren.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sf-bottom">
+    <div class="sf-copy">© 2026 JIANGREN ACADEMY PTY LTD · All rights reserved · Workshop 内容归讲师所有 · 录播不得外传</div>
+  </div>
+</footer>
+
+</body>
+</html>
