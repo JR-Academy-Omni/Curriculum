@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AI赋能会计工作坊（4小时）— 课程大纲</title>
-  <meta name="description" content="面向会计协会合作的4小时工作坊：用Claude + Cowork实现财务数据分析、智能展示与管理层汇报。">
+  <title>AI 赋能会计：Claude Cowork 数据智能展示工作坊（4 小时） — 课程大纲</title>
+  <meta name="description" content="协会合作 4 小时实战：开场 → Cowork 装机 → 损益分析 → 图表叙事 + 3 分钟管理层汇报演练。配套《澳洲会计数据准备指南》— 从 Xero/MYOB/Quickbooks 数据到 Cowork 的完整实操参考。">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root{--indigo:#6366f1;--teal:#10b981;--orange:#FF914D;--yellow:#FFDE59;--dark:#10162f;--bg:#fafafa;--border:#000}
@@ -28,86 +28,375 @@
     .meta h4{font-size:12px;font-family:'Space Mono',monospace;color:#888;margin-bottom:4px}
     .meta p{margin:0;font-size:13px;font-weight:600;color:#111}
     .lesson{margin:14px 0;border:2px solid #e5e5e5}
-    .lesson-head{padding:10px 14px;background:#fafafa;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+    .lesson.install{border-color:#10b981;background:#f0fdf4}
+    .lesson.demo{border-color:#FF914D;background:#fff7ed}
+    .lesson.break{border-color:#ddd;background:#fafafa;border-style:dashed}
+    .lesson-head{padding:10px 14px;background:#fafafa;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center}
+    .lesson.install .lesson-head{background:#dcfce7}
+    .lesson.demo .lesson-head{background:#fed7aa}
+    .lesson.break .lesson-head{background:#f5f5f5}
     .lesson-head h4{font-size:15px;font-weight:800}
+    .lesson-head .who{font-family:'Space Mono',monospace;font-size:10px;color:#666;letter-spacing:0.5px}
     .slot{font-family:'Space Mono',monospace;font-size:12px;color:#555}
     .lesson-body{padding:12px 14px;display:grid;grid-template-columns:1.3fr 1fr;gap:14px}
     .lesson-body h5{font-size:11px;font-family:'Space Mono',monospace;color:#999;text-transform:uppercase;margin-bottom:6px}
     .lesson-body ul{padding-left:18px;color:#444}
     .lesson-body li{font-size:13.5px;line-height:1.7;margin-bottom:4px}
+    .lesson-body li.step{list-style:none;padding-left:0;display:flex;gap:8px;align-items:flex-start;margin-bottom:6px}
+    .lesson-body li.step .num{flex-shrink:0;width:22px;height:22px;background:#10b981;color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:50%}
+    .lesson-body li.step .txt{flex:1}
+    .lesson-body li.step .mins{font-family:'Space Mono',monospace;font-size:10px;color:#666;font-weight:700;margin-left:4px}
     .out{background:#f0fdf4;border-left:4px solid var(--teal);padding:10px 12px;font-size:13px}
     .checklist{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .item{border:2px dashed #ddd;padding:12px}
     .item h4{font-size:14px;font-weight:800;margin-bottom:6px}
     .item ul{padding-left:18px}.item li{font-size:13px;line-height:1.7}
     .footer{margin-top:36px;padding:22px;text-align:center;border-top:3px solid #000;color:#888;font-size:12px;font-family:'Space Mono',monospace}
-    @media(max-width:900px){.grid3{grid-template-columns:1fr 1fr}.lesson-body{grid-template-columns:1fr}}
-    @media(max-width:640px){.grid3,.checklist{grid-template-columns:1fr}.bar{gap:14px}.header{padding:34px 14px}}
+    .nav-bar{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap;font-size:13px}
+    .nav-bar a{color:#fff;opacity:0.85;text-decoration:none;padding:5px 10px;border:1px solid rgba(255,255,255,0.3);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.5px}
+    .nav-bar a:hover{opacity:1;background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.6)}
+    .lesson-resources{margin-top:10px;padding-top:10px;border-top:1px dashed #ddd;font-size:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .lesson-resources .lr-label{font-family:'Space Mono',monospace;color:#999;font-size:10px;letter-spacing:1px;text-transform:uppercase}
+    .lesson-resources a{display:inline-block;padding:3px 9px;background:#fff;border:1px solid #FF914D;color:#FF914D;font-size:11px;font-weight:700;text-decoration:none}
+    .lesson-resources a:hover{background:#FF914D;color:#fff}
+    .lesson-resources a.lab{border-color:#10b981;color:#10b981}
+    .lesson-resources a.lab:hover{background:#10b981;color:#fff}
+    .deliv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .deliv-card{border:2px solid #000;padding:14px;background:#fff;text-decoration:none;color:#10162f;display:block;transition:all 0.15s;box-shadow:4px 4px 0 #000}
+    .deliv-card:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #000}
+    .deliv-card .dc-tag{font-family:'Space Mono',monospace;font-size:10px;color:#FF914D;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+    .deliv-card .dc-name{font-weight:800;font-size:14px;margin:6px 0 4px}
+    .deliv-card .dc-desc{font-size:12px;color:#666;line-height:1.55}
+    .platform-res{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-top:12px}
+    .pr{border:2px dashed #aaa;padding:12px;font-size:12.5px;line-height:1.6}
+    .pr h5{font-family:'Space Mono',monospace;font-size:10px;color:#10b981;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+    .pr a{color:#10162f;font-weight:700;text-decoration:none;border-bottom:1.5px solid #FFDE59}
+    .pr a:hover{background:#FFDE59}
+    .toolstack{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-top:8px}
+    .tool-main{border:3px solid #10162f;padding:16px 18px;background:#fffbea;box-shadow:5px 5px 0 #FF914D}
+    .tool-main h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f}
+    .tool-main h4 .role{font-family:'Space Mono',monospace;font-size:10px;color:#FF914D;font-weight:700;letter-spacing:1px;margin-left:8px}
+    .tool-main p{font-size:13px;color:#333;margin-top:8px;line-height:1.7}
+    .tool-fb{border:2px dashed #999;padding:14px;font-size:12.5px;line-height:1.6;background:#fafafa}
+    .tool-fb h4{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;color:#666}
+    .tool-fb h4 .role{font-family:'Space Mono',monospace;font-size:9px;color:#ef4444;font-weight:700;letter-spacing:1px;margin-left:6px}
+    .tool-fb p{margin-top:6px;color:#555}
+    .install-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+    .if-step{border:2px solid #10b981;padding:10px 12px;background:#fff;font-size:12px;line-height:1.5;position:relative}
+    .if-step .ifn{position:absolute;top:-10px;left:10px;background:#10b981;color:#fff;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:1px 8px}
+    .if-step strong{display:block;margin-top:2px;font-size:13px;color:#10162f}
+    .if-step .mins{font-family:'Space Mono',monospace;font-size:10px;color:#FF914D;font-weight:700;margin-top:4px;display:block}
+    @media(max-width:900px){.grid3,.deliv-grid,.platform-res,.toolstack,.install-flow{grid-template-columns:1fr 1fr}.lesson-body{grid-template-columns:1fr}}
+    @media(max-width:640px){.grid3,.checklist,.deliv-grid,.platform-res,.toolstack,.install-flow{grid-template-columns:1fr}.bar{gap:14px}.header{padding:34px 14px}}
   </style>
 </head>
 <body>
   <div class="header">
-    <h1>AI赋能会计：Claude + Cowork 数据智能展示工作坊</h1>
-    <div class="sub">与会计协会联合举办的4小时实战课。重点解决“会计人员如何用AI从报表走向洞察与表达”，现场完成财务分析、图表叙事与管理层汇报演练。</div>
+    <h1>AI 赋能会计：Claude Cowork 数据智能展示工作坊</h1>
+    <div class="sub">协会 co-host 4 小时实战。开场 5 分钟现场演示 → Cowork 装机 + Connector 配通 → 70m 损益分析 + 70m 图表叙事 + 3 分钟管理层汇报演练 → 收尾。配套《澳洲会计数据准备指南》— 从 Xero/MYOB/Quickbooks 真实数据到 Cowork 的完整参考。</div>
     <div class="tags">
-      <span class="tag">🕒 240分钟</span>
-      <span class="tag">👥 协会合作班</span>
-      <span class="tag">📊 财务数据展示</span>
-      <span class="tag">🤖 Claude + Cowork</span>
+      <span class="tag">🕒 240 分钟</span>
+      <span class="tag">👥 协会内训 30-50 人</span>
+      <span class="tag">💻 Claude Cowork 主战场</span>
+      <span class="tag">💼 Codex CLI 备选</span>
     </div>
+    <nav class="nav-bar" aria-label="course-resources">
+      <a href="./templates/prompt-pack.html">🧾 提示词包</a>
+      <a href="./templates/sample-data.csv">📊 样本数据 CSV</a>
+      <a href="./templates/au-data-prep.html">🇦🇺 AU 数据准备</a>
+      <a href="./templates/action-card.html">📅 7 天行动卡</a>
+      <a href="./poster.html">🖼 海报</a>
+      <a href="./internal.html" rel="nofollow">🔒 内部</a>
+    </nav>
   </div>
 
   <div class="bar">
     <div class="s"><div class="n">4h</div><div class="l">总时长</div></div>
-    <div class="s"><div class="n">6</div><div class="l">课程模块</div></div>
-    <div class="s"><div class="n">2</div><div class="l">实操环节</div></div>
-    <div class="s"><div class="n">1</div><div class="l">小组汇报</div></div>
+    <div class="s"><div class="n">5+1</div><div class="l">模块（含茶歇）</div></div>
+    <div class="s"><div class="n">55m</div><div class="l">Cowork 装机</div></div>
+    <div class="s"><div class="n">2×70m</div><div class="l">实操环节</div></div>
+    <div class="s"><div class="n">5</div><div class="l">Cowork Skill</div></div>
+    <div class="s"><div class="n">🇦🇺</div><div class="l">AU 数据指南</div></div>
   </div>
 
   <div class="c">
     <div class="box">
       <div class="box-h">课程定位 <span class="pill">Workshop Positioning</span></div>
       <div class="body">
-        <p>本课程面向企业会计、财务经理、事务所从业者，强调“可直接带回岗位”的应用能力，而非泛AI概念讲解。</p>
+        <p>面向企业会计、财务经理、事务所从业者，强调"可直接带回岗位"的应用能力。本节课不教 AI 是什么，<strong>开课就装 Claude Cowork 到你电脑上</strong>，4 小时之后你桌面上有：装好的 Cowork + 配通的 2 个 Connector + 5 个能复用的会计场景 Skill + 1 份《澳洲会计数据准备指南》 + 7 天行动卡。</p>
         <div class="grid3">
-          <div class="meta"><h4>适合人群</h4><p>会计协会会员 / 财务团队</p></div>
-          <div class="meta"><h4>核心能力</h4><p>分析、可视化、汇报表达</p></div>
-          <div class="meta"><h4>课程产出</h4><p>模板包 + 简报成品 + 合规清单</p></div>
+          <div class="meta"><h4>适合人群</h4><p>会计协会会员 / 财务团队 · 在岗 5+ 年</p></div>
+          <div class="meta"><h4>核心能力</h4><p>Cowork 装机 + 5 个会计 Skill + 汇报表达</p></div>
+          <div class="meta"><h4>课程产出</h4><p>桌面 Cowork + 5 个 Skill + 6 件交付物</p></div>
         </div>
       </div>
     </div>
 
     <div class="box">
-      <div class="box-h">4小时课程大纲 <span class="pill">Curriculum</span></div>
+      <div class="box-h">🔧 工具栈 <span class="pill">Tool Stack</span></div>
       <div class="body">
-        <div class="lesson">
-          <div class="lesson-head"><h4>模块1：开场与目标对齐</h4><span class="slot">00:00–00:20（20m）</span></div>
-          <div class="lesson-body"><div><h5>内容</h5><ul><li>协会开场与项目背景</li><li>学习目标与成果说明</li><li>学员现状调研（AI使用习惯）</li></ul></div><div><h5>产出</h5><div class="out">统一学习预期，明确“AI增强会计，而非替代会计”。</div></div></div>
+        <div class="toolstack">
+          <div class="tool-main">
+            <h4>Claude Cowork <span class="role">PRIMARY · 主战场</span></h4>
+            <p>Anthropic 官方桌面 GUI（Mac / Windows）。Claude Desktop App 里的 Cowork tab，能直接开你电脑上的 Excel / 浏览器 / 邮箱替你动手做事 — 不是聊天，是替你完成事。本节课所有实操（L04 / L05）都在 Cowork 里跑：Cowork 通过 Filesystem Connector 直接读你电脑上的 sample-data.csv，输出 Artifact 形式的简报，再把 prompt 存成 Skill 永久复用。</p>
+            <p><strong>课堂上免费档够用</strong>（次数受限）；课后想继续用 Pro A$30/月。Skill / Schedule 功能 Pro 才有，但今天用不到。</p>
+          </div>
+          <div class="tool-fb">
+            <h4>OpenAI Codex CLI <span class="role">FALLBACK</span></h4>
+            <p>极少数学员单位 IT 不让装 Claude Desktop 时的备选。纯命令行，没 GUI，没 Skill 系统，但 prompt 能跑。L02 装机时助教单独带这条路线，确保所有学员能跟上 L04 / L05。</p>
+            <p style="font-family:'Space Mono',monospace;font-size:11px;background:#0f172a;color:#e2e8f0;padding:6px 8px;margin-top:6px">npm i -g @openai/codex</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-h">4 小时课程大纲 <span class="pill">Curriculum · 7 模块含茶歇</span></div>
+      <div class="body">
+
+        <!-- L01 -->
+        <div class="lesson demo">
+          <div class="lesson-head">
+            <h4>🎬 模块 1：开场 + 现场 5 分钟 Cowork 演示</h4>
+            <span class="who">AI 教练 + 协会方主持</span>
+            <span class="slot">00:00–00:15（15m）</span>
+          </div>
+          <div class="lesson-body">
+            <div>
+              <h5>内容</h5>
+              <ul>
+                <li>协会开场 + 项目背景（协会方 5 分钟）</li>
+                <li>学习目标对齐 + 5 件带回家的东西预告（AI 教练 5 分钟）</li>
+                <li><strong>🎬 现场 5 分钟 Cowork 演示</strong> — AI 教练当场把 sample-data.csv 拖给 Cowork，Cowork 自动开 Excel 看一眼 → 输出简报 + 推荐图表。让学员先看见"4 小时之后我电脑上能跑出来这个"。</li>
+              </ul>
+            </div>
+            <div>
+              <h5>产出 / 锚点</h5>
+              <div class="out">建立学习预期：今天学的是<strong>装机 + 5 个 Skill + AU 数据准备指南 + 7 天行动卡</strong>，不是 AI 理论课。"AI 增强会计，不替代会计 — Cowork 是放大镜不是裁判"。</div>
+            </div>
+          </div>
         </div>
 
-        <div class="lesson">
-          <div class="lesson-head"><h4>模块2：会计AI思维与合规边界</h4><span class="slot">00:20–01:00（40m）</span></div>
-          <div class="lesson-body"><div><h5>内容</h5><ul><li>会计场景4类AI价值（整理/分析/表达/协同）</li><li>Claude + Cowork 在流程中的角色</li><li>数据脱敏、口径一致、人工复核机制</li></ul></div><div><h5>产出</h5><div class="out">《会计AI使用红线与复核清单》。</div></div></div>
+        <!-- L02 -->
+        <div class="lesson install">
+          <div class="lesson-head">
+            <h4>💻 模块 2：Cowork 装机 + 4 步使用流程（全员同步装）</h4>
+            <span class="who">AI 教练主导 · 助教 1:10 救场</span>
+            <span class="slot">00:15–01:10（55m）</span>
+          </div>
+          <div class="lesson-body">
+            <div style="grid-column:1/-1">
+              <h5>4 步装机流程</h5>
+              <div class="install-flow">
+                <div class="if-step">
+                  <span class="ifn">STEP 1</span>
+                  <strong>装 Claude Desktop App</strong>
+                  claude.ai/download 下载对应系统（Mac arm64 / Mac Intel / Win x64），双击装。<span class="mins">10 分钟</span>
+                </div>
+                <div class="if-step">
+                  <span class="ifn">STEP 2</span>
+                  <strong>登账号 + 切到 Cowork tab</strong>
+                  工作邮箱登入，左侧导航切到 Cowork。免费档今天够用，不强求 Pro。<span class="mins">8 分钟</span>
+                </div>
+                <div class="if-step">
+                  <span class="ifn">STEP 3</span>
+                  <strong>配 Filesystem + Web 两个 Connector</strong>
+                  Settings → Connectors。Filesystem 点选 ~/Documents/AI-Workshop（独立目录，不要给整个家目录）；Web OAuth 一下。Gmail / Drive 今天不配。<span class="mins">15 分钟</span>
+                </div>
+                <div class="if-step">
+                  <span class="ifn">STEP 4</span>
+                  <strong>跑 hello-world</strong>
+                  在 Cowork 里说『读 sample-data.csv 第一行，告诉我有哪些列』。看到 6 列 + 144 行 = 装机成功，进 L03。<span class="mins">8 分钟</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5>救场预案</h5>
+              <ul>
+                <li>助教 1:10 配比 — 协会大班装机必须有救场资源</li>
+                <li>装好的截屏对照表（成功 vs 卡点）每位助教 1 份</li>
+                <li>🚨 单位 IT 不让装 Desktop 的学员 → 助教单独带去 Codex CLI fallback（4 分钟），保证 L04 / L05 跟得上</li>
+              </ul>
+            </div>
+            <div>
+              <h5>产出</h5>
+              <div class="out">每位学员桌面 Cowork 装好登好 + Filesystem + Web 两个 Connector 配通 + hello-world 跑通。助教抽检通过率 ≥ 95%。</div>
+            </div>
+            <div style="grid-column:1/-1" class="lesson-resources">
+              <span class="lr-label">现场用</span>
+              <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download ↗</a>
+              <a href="https://claude.com/product/cowork" target="_blank" rel="noopener">Cowork 产品页 ↗</a>
+              <a href="./templates/sample-data.csv">样本 CSV ↓</a>
+              <a class="lab" href="https://github.com/openai/codex" target="_blank" rel="noopener">Codex CLI fallback ↗</a>
+              <a class="lab" href="./templates/au-data-prep.html">🇦🇺 AU 数据准备指南（课后参考）→</a>
+            </div>
+          </div>
         </div>
 
+        <!-- L03 (was L04) -->
         <div class="lesson">
-          <div class="lesson-head"><h4>模块3：实操一｜从数据到结论</h4><span class="slot">01:00–02:00（60m）</span></div>
-          <div class="lesson-body"><div><h5>内容</h5><ul><li>演示：损益/费用数据AI分析流程</li><li>分组：What / Why / So What 三段式简报</li><li>讲评：口径错误与归因偏差纠正</li></ul></div><div><h5>产出</h5><div class="out">每组完成1页财务经营简报草稿。</div></div></div>
+          <div class="lesson-head">
+            <h4>📊 模块 3：实操一｜Cowork 跑损益分析（演示 + 实战 + 讲评 + 存 Skill）</h4>
+            <span class="who">AI 教练 + 助教巡场</span>
+            <span class="slot">01:10–02:20（70m）</span>
+          </div>
+          <div class="lesson-body">
+            <div>
+              <h5>3 步实操</h5>
+              <ul>
+                <li class="step"><span class="num">1</span><span class="txt">AI 教练演示完整流程：Cowork 通过 Filesystem 读 csv → 跑 prompt① → 输出 Artifact 简报。故意演示 1 个错误 prompt，再用 prompt② push back 自查纠正<span class="mins">15m</span></span></li>
+                <li class="step"><span class="num">2</span><span class="txt">分组实战：4-6 人/组，挑分析角度（毛利异常 / 费用激增 / 区域差异 / 渠道转化），跑 prompt-pack 模板。助教巡场救卡<span class="mins">30m</span></span></li>
+                <li class="step"><span class="num">3</span><span class="txt">抽 5 组上台 1.5m 讲 + 讲评 3 类错误 + 把 prompt① 存成第一个 Cowork Skill：<code>pnl-analysis</code><span class="mins">25m</span></span></li>
+              </ul>
+            </div>
+            <div>
+              <h5>产出</h5>
+              <div class="out">每组 1 页财务经营简报（Cowork Artifact PDF）+ 每位学员桌面 1 个 Cowork Skill <code>pnl-analysis</code>。</div>
+            </div>
+            <div style="grid-column:1/-1" class="lesson-resources">
+              <span class="lr-label">现场用</span>
+              <a href="./templates/sample-data.csv">样本 CSV ↓</a>
+              <a href="./templates/prompt-pack.html#p1">Prompt ① 损益三段式 →</a>
+              <a href="./templates/prompt-pack.html#p2">Prompt ② 异常归因 →</a>
+              <a class="lab" href="https://jiangren.com.au/study-center?tab=learn&mode=prompt-lab" target="_blank" rel="noopener">Prompt Lab: Clear Task ↗</a>
+              <a class="lab" href="./templates/au-data-prep.html">🇦🇺 AU 数据指南 §7 Prompt 增项 →</a>
+            </div>
+          </div>
         </div>
 
-        <div class="lesson">
-          <div class="lesson-head"><h4>模块4：实操二｜数据智能展示与汇报表达</h4><span class="slot">02:10–03:10（60m）</span></div>
-          <div class="lesson-body"><div><h5>内容</h5><ul><li>会计图表三原则（明确/对比/可行动）</li><li>AI辅助生成图表叙事与高管问答</li><li>完成3分钟小组汇报演练</li></ul></div><div><h5>产出</h5><div class="out">每组产出“图表+讲稿”微型汇报包。</div></div></div>
+        <!-- L_BREAK -->
+        <div class="lesson break">
+          <div class="lesson-head">
+            <h4>☕ 茶歇 + 助教救场</h4>
+            <span class="who">助教抓这段救卡</span>
+            <span class="slot">02:20–02:30（10m）</span>
+          </div>
+          <div class="lesson-body">
+            <div style="grid-column:1/-1">
+              茶歇 10 分钟 + 助教抓这段救场：谁 L02 Connector 还没全绿 / 谁 L04 Skill 没存好 / 谁 Cowork 老超时。后面 1.5 小时实操要顺，这 10 分钟必须救完。
+            </div>
+          </div>
         </div>
 
+        <!-- L05 -->
         <div class="lesson">
-          <div class="lesson-head"><h4>模块5：协会合作落地路径</h4><span class="slot">03:10–03:50（40m）</span></div>
-          <div class="lesson-body"><div><h5>内容</h5><ul><li>2周会员单位试点机制</li><li>L1/L2/L3 能力等级模型</li><li>模板库、案例库、助教机制</li></ul></div><div><h5>产出</h5><div class="out">协会后续项目执行框架（可复制）。</div></div></div>
+          <div class="lesson-head">
+            <h4>📈 模块 4：实操二｜图表叙事 + 3 分钟管理层汇报演练</h4>
+            <span class="who">AI 教练 + 助教参与打分</span>
+            <span class="slot">02:30–03:40（70m）</span>
+          </div>
+          <div class="lesson-body">
+            <div>
+              <h5>4 步实操</h5>
+              <ul>
+                <li class="step"><span class="num">1</span><span class="txt">图表三原则演示：Cowork 跑 prompt③ 出 3 种画法对比（错的 / 平庸的 / 能上汇报的）<span class="mins">12m</span></span></li>
+                <li class="step"><span class="num">2</span><span class="txt">AI 辅助讲稿：用 prompt④ 喂自己组的简报 → 30 秒出讲稿 → 手改 → 把 prompt③④ 存成 Skill：<code>chart-story</code> / <code>mgmt-brief</code><span class="mins">18m</span></span></li>
+                <li class="step"><span class="num">3</span><span class="txt">高管 5 问演练：Cowork 跑 prompt⑤ 模拟 CFO/CEO，组内对答，存成 Skill：<code>exec-grilling</code><span class="mins">10m</span></span></li>
+                <li class="step"><span class="num">4</span><span class="txt">3 分钟分组汇报 + AI 教练 + 助教双盲打分（5 维度，不互通分数）— 时间充裕能让 6-8 组都上台<span class="mins">30m</span></span></li>
+              </ul>
+            </div>
+            <div>
+              <h5>产出</h5>
+              <div class="out">每组 1 段 3 分钟汇报录像 + 1 份图表+讲稿打包 + 桌面 Cowork 里再多 3 个 Skill — 走时<strong>共 5 个会计场景 Skill</strong>。</div>
+            </div>
+            <div style="grid-column:1/-1" class="lesson-resources">
+              <span class="lr-label">现场用</span>
+              <a href="./templates/prompt-pack.html#p3">Prompt ③ 图表叙事 →</a>
+              <a href="./templates/prompt-pack.html#p4">Prompt ④ 管理层讲稿 →</a>
+              <a href="./templates/prompt-pack.html#p5">Prompt ⑤ 高管 5 问 →</a>
+              <a class="lab" href="https://jiangren.com.au/study-center?tab=learn&mode=prompt-lab" target="_blank" rel="noopener">Prompt Lab: Constraints ↗</a>
+            </div>
+          </div>
         </div>
 
+        <!-- L05 (was L06) -->
         <div class="lesson">
-          <div class="lesson-head"><h4>模块6：总结与行动承诺</h4><span class="slot">03:50–04:00（10m）</span></div>
-          <div class="lesson-body"><div><h5>内容</h5><ul><li>回顾3个岗位可立即落地动作</li><li>填写7天行动卡与跟进计划</li></ul></div><div><h5>产出</h5><div class="out">明确课后执行任务与复盘节点。</div></div></div>
+          <div class="lesson-head">
+            <h4>✅ 模块 5：总结 + 7 天行动卡 + 合影</h4>
+            <span class="who">AI 教练 + 协会方致谢</span>
+            <span class="slot">03:40–04:00（20m）</span>
+          </div>
+          <div class="lesson-body">
+            <div>
+              <h5>内容</h5>
+              <ul>
+                <li>回顾今天桌面 Cowork 上有什么（5 Skill + 2 Connector + AU 数据准备指南 PDF）</li>
+                <li>填《7 天行动卡》— D+1 / D+3 / D+7 三件事（约 8 分钟）</li>
+                <li>学员个人后续路径（自愿）：JR Prompt Lab / Wiki / Roadmap 免费自学，不绑定协会</li>
+                <li>自由 Q&A — 4 小时积压问题最后处理</li>
+                <li>协会方致谢 + 合影（征得同意）</li>
+              </ul>
+            </div>
+            <div>
+              <h5>产出</h5>
+              <div class="out">每人 1 张已填的 7 天行动卡 + 桌面 Cowork（5 Skill 已存好）。<strong>没有协会续作 / 没有报名漏斗 / 没有推销</strong> — 今天讲完就结束。</div>
+            </div>
+            <div style="grid-column:1/-1" class="lesson-resources">
+              <span class="lr-label">现场填</span>
+              <a href="./templates/action-card.html">7 天行动卡 →</a>
+              <a class="lab" href="https://jiangren.com.au/study-center?tab=learn&mode=prompt-lab" target="_blank" rel="noopener">JR Prompt Lab（自愿）↗</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-h">📦 课程产出物（学员带走的 4 件 + 5 个 Cowork Skill） <span class="pill">Deliverables</span></div>
+      <div class="body">
+        <div class="deliv-grid">
+          <a class="deliv-card" href="./templates/prompt-pack.html">
+            <div class="dc-tag">PROMPT PACK</div>
+            <div class="dc-name">5 个会计场景 Prompt</div>
+            <div class="dc-desc">损益三段式 / 异常归因 / 图表叙事 / 管理层讲稿 / 高管 5 问 — 在 Cowork 里跑 → 存成 Skill 永久复用</div>
+          </a>
+          <a class="deliv-card" href="./templates/sample-data.csv">
+            <div class="dc-tag">SAMPLE DATA</div>
+            <div class="dc-name">脱敏样本数据 CSV</div>
+            <div class="dc-desc">虚构 SaaS 公司 12 月损益+费用明细，144 行；故意埋了 4 类异常给学员发现</div>
+          </a>
+          <a class="deliv-card" href="./templates/au-data-prep.html" style="border-color:#10b981;box-shadow:4px 4px 0 #10b981">
+            <div class="dc-tag" style="color:#10b981">🇦🇺 AU DATA PREP</div>
+            <div class="dc-name">澳洲会计数据准备指南</div>
+            <div class="dc-desc">从 Xero/MYOB/Quickbooks 导出 → 列名映射 → 脱敏 → 放进 Cowork Filesystem。FY 财年 / GST / BAS 周期 / Cowork prompt 增项 — <strong>课程所有 lesson 的数据基准参考</strong>，回去用真实数据必读</div>
+          </a>
+          <a class="deliv-card" href="./templates/action-card.html">
+            <div class="dc-tag">ACTION CARD</div>
+            <div class="dc-name">7 天行动卡</div>
+            <div class="dc-desc">D+1 / D+3 / D+7 三件事 — 课后这 7 天决定你能不能真的用上</div>
+          </a>
+        </div>
+        <p style="margin-top:14px;font-size:13px;color:#475569;padding:10px 14px;background:#f0fdf4;border-left:3px solid #10b981"><strong>💻 桌面 Cowork 上的 5 个 Skill</strong>：<code>pnl-analysis</code> · <code>anomaly-attribution</code> · <code>chart-story</code> · <code>mgmt-brief</code> · <code>exec-grilling</code> — 走时桌面就有，不用回家自己装。</p>
+        <p style="margin-top:10px;font-size:12.5px;color:#666;font-style:italic">今天 4 小时讲完就结束 — 没有协会续作 / 没有 L2/L3 项目 / 没有推销。学员后续想继续学是个人的事，下面 JR 平台资源都免费。</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-h" style="background:#10b981">🔗 JR + Anthropic 平台资源（课后自学） <span class="pill">Platform</span></div>
+      <div class="body">
+        <p style="font-size:13.5px;color:#475569">课后想深化是<strong>学员个人</strong>的事 — 下面 4 个资源全部免费，自己上去看自己学。不绑定协会、没人催、没人答疑。</p>
+        <div class="platform-res">
+          <div class="pr">
+            <h5>COWORK 官方</h5>
+            <a href="https://claude.com/product/cowork" target="_blank" rel="noopener">Cowork 产品页 ↗</a>
+            <p style="margin-top:6px;color:#666">装机源 + 官方 Skill 库。我们今天写的 5 个会计 Skill 比官方通用 Skill 更贴你岗位。</p>
+          </div>
+          <div class="pr">
+            <h5>PROMPT LAB</h5>
+            <a href="https://jiangren.com.au/study-center?tab=learn&mode=prompt-lab" target="_blank" rel="noopener">22+ 个互动 Prompt 练习 ↗</a>
+            <p style="margin-top:6px;color:#666">Clear Task / Constraints / Few-shot 三个 lab，把 prompt 底层逻辑跑一遍。</p>
+          </div>
+          <div class="pr" style="border-color:#10b981;border-style:solid">
+            <h5 style="color:#FF914D">🇦🇺 AU DATA PREP</h5>
+            <a href="./templates/au-data-prep.html"><strong>澳洲会计数据准备指南 →</strong></a>
+            <p style="margin-top:6px;color:#666">课程内核心交付物。Xero/MYOB/QB 导出对接 + FY/GST/BAS + Cowork 口径增项。回去用真实数据必读。</p>
+          </div>
+          <div class="pr">
+            <h5>ROADMAP</h5>
+            <a href="https://jiangren.com.au/roadmaps" target="_blank" rel="noopener">会计人 AI 学习路径 ↗</a>
+            <p style="margin-top:6px;color:#666">可视化的 AI 学习路径，自学进阶用。免费，不绑定协会。</p>
+          </div>
         </div>
       </div>
     </div>
@@ -115,14 +404,47 @@
     <div class="box">
       <div class="box-h">协会执行建议 <span class="pill">Operations</span></div>
       <div class="body checklist">
-        <div class="item"><h4>班型建议</h4><ul><li>30–50人为佳，4–6人/组</li><li>1主讲 + 每20人1助教</li><li>优先线下实操教室</li></ul></div>
-        <div class="item"><h4>课前准备（T-7天）</h4><ul><li>账号/网络/软件环境检查</li><li>发放预习视频与脱敏数据</li><li>明确“真实隐私数据不上云”</li></ul></div>
-        <div class="item"><h4>课后延展（3周）</h4><ul><li>第1周：月报分析模板实战</li><li>第2周：提交管理层简报</li><li>第3周：协会复盘分享会</li></ul></div>
-        <div class="item"><h4>交付物清单</h4><ul><li>提示词模板（会计场景）</li><li>可视化叙事模板</li><li>合规审查与复核清单</li></ul></div>
+        <div class="item">
+          <h4>班型建议</h4>
+          <ul>
+            <li>30–50 人为佳，4–6 人/组</li>
+            <li>1 主讲（AI 教练）+ 每 10 人 1 助教（替代评分角色）+ 协会派主持人 1 名（仅开场致辞 + 收尾合影）</li>
+            <li>线下实操教室必须 — 装机环节要现场看屏幕</li>
+            <li>学员必须自带笔记本，手机做不了 Cowork</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h4>课前准备（T-7 天）</h4>
+          <ul>
+            <li>🔴 装机预检：学员自查能装第三方 App（不要带公司锁屏机）</li>
+            <li>账号检查：claude.ai 网页版能登</li>
+            <li>数据下发：sample-data.csv 课前 24h 邮件</li>
+            <li>网络确认：能访问 claude.ai + claude.com，网速 ≥50Mbps</li>
+            <li>印刷《AU 数据准备指南》PDF：每位学员 1 份纸版（templates/au-data-prep.html → print to PDF）</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h4>课后（学员个人 · 自愿）</h4>
+          <ul>
+            <li>D+1 / D+3 / D+7：按行动卡完成（学员自查）</li>
+            <li>JR Prompt Lab / Wiki / Roadmap 免费自学</li>
+            <li>协会方可发活动留档（合影 + 总结），不做转化漏斗</li>
+            <li>没有协会续作 / 没有 L2/L3 / 没有推销</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h4>交付物清单</h4>
+          <ul>
+            <li>桌面 Cowork + 5 个会计场景 Skill</li>
+            <li>提示词模板包（5 个 Prompt 含变量占位）</li>
+            <li>样本数据 CSV + 澳洲会计数据准备指南</li>
+            <li>7 天行动卡（手填）</li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="footer">AI Accounting Workshop Curriculum · For Accounting Association Collaboration</div>
+    <div class="footer">AI Accounting Workshop Curriculum · Claude Cowork × AU Accounting · v4 · 协会 = co-host · 无合规讲座 · 含 AU 数据准备指南</div>
   </div>
 </body>
 </html>

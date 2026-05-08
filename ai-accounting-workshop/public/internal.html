@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>内部资料：AI 会计工作坊 · 助教手册 + 模块脚本（v2 Cowork 装机版）</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .warn{background:#fff3cd;border:3px solid #f59e0b;padding:14px 18px;margin:20px 24px;font-size:13px;line-height:1.7}
+    .role{display:inline-block;padding:3px 10px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px;margin-right:6px}
+    .role.ai{background:#e0e7ff;color:#3730a3}
+    .role.assoc{background:#fef3c7;color:#92400e}
+    .role.both{background:#d1fae5;color:#065f46}
+    .role.tutor{background:#fce7f3;color:#9f1239}
+    .module-script{margin:0 24px 28px;border:2px solid #ddd}
+    .module-script.install{border-color:#10b981}
+    .module-script .head{padding:12px 18px;background:#10162f;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+    .module-script.install .head{background:#10b981}
+    .module-script .head h3{font-size:16px;font-weight:800}
+    .module-script .head .slot{font-family:'Space Mono',monospace;font-size:12px;opacity:0.8}
+    .script-table{width:100%;border-collapse:collapse;font-size:13px}
+    .script-table th{background:#fafafa;padding:8px 12px;text-align:left;font-weight:700;font-family:'Space Mono',monospace;font-size:11px;color:#666;border-bottom:2px solid #ddd}
+    .script-table td{padding:10px 12px;border-bottom:1px solid #eee;vertical-align:top;line-height:1.6}
+    .script-table tr:last-child td{border-bottom:none}
+    .script-table .min{font-family:'Space Mono',monospace;font-weight:700;color:#FF914D;white-space:nowrap;width:60px}
+    .qa-card{margin:0 24px 16px;border-left:4px solid var(--indigo,#6366f1);padding:12px 16px;background:#f0f4ff;font-size:13px;line-height:1.7}
+    .qa-card.install{border-left-color:#10b981;background:#f0fdf4}
+    .qa-card .q{font-weight:700;color:#10162f;margin-bottom:4px}
+    .qa-card .a{color:#444}
+    .group-table{width:calc(100% - 48px);margin:0 24px 24px;border-collapse:collapse;font-size:12px;border:2px solid #ddd}
+    .group-table th{background:#FF914D;color:#fff;padding:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.5px}
+    .group-table td{padding:8px;border:1px solid #eee;height:32px}
+    .install-cheat{margin:0 24px 24px;padding:18px 22px;background:#0f172a;color:#e2e8f0;font-family:'Space Mono',monospace;font-size:12.5px;line-height:1.8;border:3px solid #10b981}
+    .install-cheat h4{color:#10b981;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;margin-bottom:8px;letter-spacing:1px;text-transform:uppercase}
+    .install-cheat .ok{color:#10b981}
+    .install-cheat .bad{color:#ef4444}
+    .install-cheat .cmd{background:#1e293b;padding:6px 10px;display:inline-block;border-left:3px solid #FFDE59;margin:2px 0}
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>内部资料 · 助教手册 v4</h1>
+    <div class="sub">AI 赋能会计：Claude Cowork 数据智能展示工作坊 · 4 小时 5 模块 · 协会 co-host 内训 · 无合规讲座 · 含 AU 数据准备指南</div>
+    <div class="nav">
+      <a href="./curriculum.html">← 返回课程大纲</a>
+      <a href="./templates/prompt-pack.html">提示词包</a>
+      <a href="./templates/au-data-prep.html">🇦🇺 AU 数据指南</a>
+      <a href="./templates/action-card.html">行动卡</a>
+    </div>
+    <div class="tags"><span class="tag">INTERNAL ONLY</span><span class="tag">不要分享给学员</span></div>
+  </div>
+
+  <div class="c">
+
+    <div class="warn">
+      <strong>⚠️ 三角色分工铁律</strong><br>
+      <span class="role ai">AI 教练</span> = JR Academy 派驻，主讲 L01 / L02 装机 / L03 / L04 / L05 全部 5 个模块。<br>
+      <span class="role tutor">助教 1:10</span> = L02 装机救场必须 + L03 巡场 + 茶歇 10m 抢救卡点学员 + L04 双盲打分（第二评分者）。装机环节是整门课的入场券，助教不到位整门课塌。<br>
+      <span class="role assoc">协会方</span> = 纯 co-host：L01 开场 5m 致辞 + L05 收尾 3m 致谢合影。<strong>不参与教学、不打分、不讲合规</strong>。<br>
+      <strong>🚨 三大铁律</strong>：① 协会角色 = co-host / 合作方，不是续约客户。今天 4 小时讲完就结束。② 不讲合规 / 不讲国家准则 / 不发合规清单 — 学员合规问题指向单位合规部门 / CPA / CA。③ 没有 L2/L3 续作 / 没有报名漏斗 / 没有推销 / 没有协会跟进群。
+    </div>
+
+    <div class="install-cheat">
+      <h4>🔑 L02 装机助教速查（贴在助教身上）</h4>
+      <div><span class="ok">✓ 装机成功状态</span> = Claude Desktop App 左侧能看到 Cowork tab + Settings → Connectors 看到 Filesystem / Web 都是绿色 ✓ + 在 Cowork chat 里说『读 sample-data.csv 第一行』返回 6 列。</div>
+      <div style="margin-top:8px"><span class="bad">✗ 卡点 1：装不上 Desktop App</span> → 99% 是单位 IT 锁权限。带去 Codex CLI fallback：<span class="cmd">npm i -g @openai/codex && codex login</span>。L03/L04 的 prompt 改用 <span class="cmd">codex 'paste prompt here'</span> 调起。</div>
+      <div style="margin-top:8px"><span class="bad">✗ 卡点 2：登不上 Pro 账号</span> → 让他用免费档登。今天免费档 Cowork tab 也能用，次数受限但够 4 小时实操。</div>
+      <div style="margin-top:8px"><span class="bad">✗ 卡点 3：Filesystem Connector 加不进目录</span> → 多半是路径打错。直接帮他在 ~/Documents/ 下创建 AI-Workshop 子目录，把 sample-data.csv 拖进去，再让他 Connector 选这个目录。</div>
+      <div style="margin-top:8px"><span class="bad">✗ 卡点 4：Cowork 读 csv 没反应</span> → 90% 是 Filesystem 路径授权范围不对。Settings → Connectors → Filesystem → 看授权目录是不是包含 sample-data.csv 那个路径。</div>
+      <div style="margin-top:8px"><span class="bad">✗ 卡点 5：网络太慢装不下载 Desktop App（150MB）</span> → 提前 U 盘存好安装包给助教，离线装。</div>
+    </div>
+
+    <div class="box">
+      <div class="box-h" style="background:#10162f">📋 课前 T-7 天 Checklist</div>
+      <div class="body">
+        <ul style="padding-left:24px;line-height:2;font-size:13px">
+          <li>🔴 <strong>装机预检（最关键）</strong>：群里发邮件让学员课前 24h 自查 — (a) 笔记本能开（不要带公司锁屏机）(b) 能装第三方 App (c) 能登 claude.ai 网页版试一下。任一项不通过，协会助教单独沟通走 Codex fallback 或公用电脑安排。</li>
+          <li><strong>U 盘备份 Desktop App 安装包</strong>：Mac arm64 / Mac Intel / Win x64 三个版本提前从 claude.ai/download 下到助教 U 盘。现场网慢就直接拷贝。</li>
+          <li><strong>印《AU 数据准备指南》PDF</strong>：每位学员 1 份纸版（templates/au-data-prep.html → print to PDF）+ 助教 5 份备用。这是课程核心交付物。</li>
+          <li><strong>数据下发</strong>：sample-data.csv 课前 24h 邮件给学员，附说明『虚构数据，可直接放进 Cowork Filesystem』。</li>
+          <li><strong>场地</strong>：投影 + 白板 + 每组 1 个移动白板；网络 ≥50Mbps（30 人同时下 Cowork 150MB ≈ 4.5GB 总下载量）；能访问 claude.ai + claude.com（部分协会内网需提前白名单）。</li>
+          <li><strong>物料</strong>：A4 打印《AU 数据准备指南》《7 天行动卡》各 50 份；Cowork 装机截图对照表（成功状态 vs 卡点）打印 1 份给每个助教；纸质 sample-data.csv 备 5 份（应急）。</li>
+          <li><strong>助教培训</strong>：开课前 1 天助教过一遍 Cowork 装机 + Filesystem 配置 + 5 个 Skill 调用 + Codex CLI fallback 路径，知道学员卡哪里 → 怎么救。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-h" style="background:#FF914D">⏱ 模块脚本（4 小时分钟级 · v2 装机版）</div>
+
+      <!-- L01 -->
+      <div class="module-script">
+        <div class="head"><h3>🎬 L01 · 开场 + 现场 5 分钟 Cowork 演示</h3><span class="slot">00:00–00:15 · 15m</span></div>
+        <table class="script-table">
+          <thead><tr><th>分钟</th><th>谁讲</th><th>做什么</th><th>关键</th></tr></thead>
+          <tbody>
+            <tr><td class="min">0-5</td><td><span class="role assoc">协会</span></td><td>协会致辞 + 项目背景 + 介绍 AI 教练</td><td>建立"协会牵头"权威 — 不是 JR 单方面推广</td></tr>
+            <tr><td class="min">5-10</td><td><span class="role ai">AI 教练</span></td><td>5 件带回家的东西预告 + 学习目标</td><td>『今天不学装 AI，今天 4 小时之后你电脑上就有装好的 Cowork 和 5 个 Skill』</td></tr>
+            <tr><td class="min">10-15</td><td><span class="role ai">AI 教练</span></td><td>🎬 现场 5 分钟 Cowork 演示：拖 csv → 跑 prompt① → 出简报 + 图表</td><td>必演不是解释 — 让学员先看到成品。如果 Cowork 慢提前录屏 backup</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- L02 -->
+      <div class="module-script install">
+        <div class="head"><h3>💻 L02 · Cowork 装机（整门课入场券）</h3><span class="slot">00:15–01:05 · 50m</span></div>
+        <table class="script-table">
+          <thead><tr><th>分钟</th><th>谁讲</th><th>做什么</th><th>关键</th></tr></thead>
+          <tbody>
+            <tr><td class="min">0-2</td><td><span class="role ai">AI 教练</span></td><td>4 步流程 1 张图说明 + 助教分配（每助教负责哪几桌）</td><td>把『卡了就举手 / 助教 30 秒到位』讲清楚 — 减少学员独自挣扎</td></tr>
+            <tr><td class="min">2-12</td><td><span class="role tutor">助教</span></td><td><strong>Step 1 · 装 Claude Desktop App</strong>：claude.ai/download 下载，双击装。Mac 第一次开要授权"打开来自互联网的 App"</td><td>装机 10m 是最容易出问题的环节。助教 U 盘有备份安装包。装好的同学举手让助教抽检</td></tr>
+            <tr><td class="min">12-20</td><td><span class="role ai">AI 教练</span></td><td><strong>Step 2 · 登账号 + 切到 Cowork tab</strong>：投影演示登入流程，导航到 Cowork tab 在哪</td><td>没有 Pro 的同学用免费档 — 别让付费成为入场门槛。建议下周有空再升 Pro</td></tr>
+            <tr><td class="min">20-37</td><td><span class="role ai">AI 教练</span></td><td><strong>Step 3 · 配 Filesystem + Web 两个 Connector</strong>：投影演示 Settings → Connectors。Filesystem 选 ~/Documents/AI-Workshop 独立目录（提前让学员把 sample-data.csv 放进去）；Web OAuth 一下</td><td>Gmail / Drive 今天<strong>不配</strong> — 涉及单位邮箱权限，学员个人后续根据自己单位情况自己加</td></tr>
+            <tr><td class="min">37-47</td><td><span class="role ai">AI 教练</span></td><td><strong>Step 4 · 跑 hello-world</strong>：在 Cowork chat 里说『读 sample-data.csv 第一行，告诉我有哪些列』。返回 6 列 + 144 行 = 装机成功</td><td>这一步是『装机成功』唯一判据。看到这个回答的同学再进 L03，看不到的助教继续救</td></tr>
+            <tr><td class="min">47-50</td><td><span class="role tutor">助教</span></td><td>抽检通过率：每个助教对自己负责的 10 人逐个看屏幕，记录通过 / 卡住</td><td>通过率 ≥95% 才能进 L03。&lt;95% 整班再延长 3 分钟（吃 L03 的时间）</td></tr>
+          </tbody>
+        </table>
+        <table class="script-table" style="margin-top:14px">
+          <thead><tr><th colspan="2" style="background:#fef3c7;color:#92400e;font-size:12px">🚨 Codex CLI fallback 路径（助教单带 · 极少数学员）</th></tr></thead>
+          <tbody>
+            <tr><td colspan="2" style="font-family:'Space Mono',monospace;font-size:12px;line-height:1.8;background:#0f172a;color:#e2e8f0;padding:12px 16px">
+              # 装：<span style="color:#FFDE59">npm i -g @openai/codex</span><br>
+              # 登：<span style="color:#FFDE59">codex login</span> （走浏览器 OAuth ChatGPT 账号）<br>
+              # hello-world：<span style="color:#FFDE59">cd ~/Documents/AI-Workshop && codex 'read sample-data.csv first row, list columns'</span><br>
+              # L03 跑 prompt①：<span style="color:#FFDE59">codex "$(cat prompt-1.txt)"</span> （prompt 提前粘到 prompt-1.txt）<br>
+              # 限制：没图形界面 / 没 Skill 系统 / 不能存 prompt 永久复用 — 这位学员每次要重粘 prompt
+            </td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- L03 (was L04) -->
+      <div class="module-script">
+        <div class="head"><h3>📊 L03 · 实操一｜Cowork 跑损益分析</h3><span class="slot">01:10–02:20 · 70m</span></div>
+        <table class="script-table">
+          <thead><tr><th>分钟</th><th>谁讲</th><th>做什么</th><th>关键</th></tr></thead>
+          <tbody>
+            <tr><td class="min">0-15</td><td><span class="role ai">AI 教练</span></td><td>演示 Cowork 完整流程：在 chat 里贴 prompt①（投影显示）→ Cowork 自动通过 Filesystem 读 csv → 输出 Artifact。故意演示 1 个错误 prompt 让 AI 给口径混淆答案 → 用 prompt② push back</td><td>『Cowork 是放大镜，错的时候它会承认』 — 这个演示比讲 10 分钟道理有用</td></tr>
+            <tr><td class="min">15-45</td><td>学员</td><td>分组实操（4-6 人/组，每组挑 1 个角度）— 多 5m 给学员深挖 + 助教救卡</td><td>助教巡场。看到学员卡住先问『你 prompt 第一句是什么？』『口径写清楚了吗？』 — 90% 的卡点是 prompt 没说清</td></tr>
+            <tr><td class="min">45-60</td><td><span class="role ai">AI 教练</span></td><td>抽 5 组上台 1.5m 讲，纠 3 类错误（口径 / 因果倒置 / 过度解读）— 比之前能多 2 组上台</td><td>讲评直接但不挫伤 — 重点夸『发现得对的洞察』，再温和指出错误</td></tr>
+            <tr><td class="min">60-70</td><td><span class="role ai">AI 教练</span></td><td>全员把 prompt① 存成 Cowork Skill：命名 <code>pnl-analysis</code>。投影演示 Skill 怎么存怎么调起 + <strong>顺便提一下 au-data-prep §7 给真实数据用的口径前缀</strong></td><td>命名规范：动词 + 名词，全小写，连字符。月底一句 <code>/pnl-analysis 这个月数据</code> 调起</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- L_BREAK -->
+      <div class="module-script">
+        <div class="head" style="background:#666"><h3>☕ 茶歇 + 助教救场</h3><span class="slot">02:20–02:30 · 10m</span></div>
+        <table class="script-table"><tbody>
+          <tr><td>10 分钟。茶歇 + 助教抓这段救场：谁 L02 Connector 还没全绿 / 谁 L03 Skill 没存好 / 谁 Cowork 老超时（网络慢可能要切手机热点）。<strong>L04 / L05 不能再装机</strong>，这是最后救场窗口。</td></tr>
+        </tbody></table>
+      </div>
+
+      <!-- L04 (was L05) -->
+      <div class="module-script">
+        <div class="head"><h3>📈 L04 · 实操二｜图表叙事 + 3 分钟汇报</h3><span class="slot">02:30–03:40 · 70m</span></div>
+        <table class="script-table">
+          <thead><tr><th>分钟</th><th>谁讲</th><th>做什么</th><th>关键</th></tr></thead>
+          <tbody>
+            <tr><td class="min">0-12</td><td><span class="role ai">AI 教练</span></td><td>图表三原则演示 + Cowork 跑 prompt③ 出 3 种画法对比</td><td>用真实截图，不要现场画 — 节省时间</td></tr>
+            <tr><td class="min">12-30</td><td>学员</td><td>用 prompt④ 生成讲稿 + 手改。把 prompt③④ 存成 Skill：<code>chart-story</code> / <code>mgmt-brief</code></td><td>提醒『AI 出的稿是底稿，不是终稿』。手改 5 分钟比 AI 重生 30 秒值钱</td></tr>
+            <tr><td class="min">30-40</td><td>学员</td><td>组内对答 AI 模拟的高管 5 问。把 prompt⑤ 存成 Skill：<code>exec-grilling</code></td><td>每组指定 1 个『高管』负责发问</td></tr>
+            <tr><td class="min">40-70</td><td><span class="role tutor">双</span></td><td>每组 1 人上台 3 分钟讲，AI 教练 + 助教双盲打分（5 维度评分表）— 时间充裕能让 6-8 组都上台</td><td>分数当场宣读，<strong>不出排名只发反馈</strong>，避免学员之间尴尬。助教做第二评分者</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- L05 (was L06) -->
+      <div class="module-script">
+        <div class="head"><h3>✅ L05 · 总结 + 行动卡 + 合影（轻收尾）</h3><span class="slot">03:40–04:00 · 20m</span></div>
+        <table class="script-table">
+          <thead><tr><th>分钟</th><th>谁讲</th><th>做什么</th><th>关键</th></tr></thead>
+          <tbody>
+            <tr><td class="min">0-4</td><td><span class="role ai">AI 教练</span></td><td>回顾今天桌面 Cowork 上有什么（5 Skill + 2 Connector + AU 数据准备指南 PDF 1 份 + 7 天行动卡 1 张）</td><td>不展开讲续作 — 没有这东西。今天讲完就结束</td></tr>
+            <tr><td class="min">4-12</td><td><span class="role ai">AI 教练</span></td><td>带学员填《7 天行动卡》— 每人写 D+1 / D+3 / D+7 三件事</td><td>不收回卡片，让学员自己留着。助教不再抓拍备份 — 不做 D+21 复盘</td></tr>
+            <tr><td class="min">12-17</td><td><span class="role both">双</span></td><td>自由 Q&A — 4 小时积压问题最后处理</td><td>常见会问『课后还能找你们答疑吗』 — 答：『方法和 Skill 永久属于你，没有持续答疑通道。想继续学免费去 JR Prompt Lab 自学』</td></tr>
+            <tr><td class="min">17-20</td><td><span class="role assoc">协会</span></td><td>致谢 + 合影（征得同意，作为协会活动留档 — 不做下一期招生素材）</td><td>不收 L2 试点意向 / 不加协会跟进群 / 不发 L1 完成证书。今天讲完就结束</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="box">
+      <div class="box-h" style="background:#6366f1">💬 学员高频问题预案（Q&A）</div>
+      <div class="body">
+
+        <div class="qa-card install">
+          <div class="q">Q1（装机相关）: 我电脑装不上 Claude Desktop App，单位 IT 锁了权限。怎么办？</div>
+          <div class="a">A: 先承认这是单位策略不是你的问题。然后 3 选 1：(a) 助教带去 Codex CLI fallback 路径，npm 装 codex CLI 走终端跑 prompt — 4 小时下来你能跟上 L03/L04；(b) 用今天的备用电脑（协会会备 2-3 台）；(c) 用你私人手机连热点 + 借助教笔记本演示一遍。三选一都至少能完整经历今天的实操，不让你白来。回去后想在公司机器上跑 Cowork 是你和单位 IT 之间的事，今天我们不介入。</div>
+        </div>
+
+        <div class="qa-card install">
+          <div class="q">Q2（装机相关）: Cowork 装好了但 Filesystem Connector 一直读不到 sample-data.csv，提示路径无权限。</div>
+          <div class="a">A: Settings → Connectors → Filesystem → 看授权目录列表。常见 3 错：① 你把 csv 放到了授权目录之外（比如放到 Downloads，但 Connector 只授权了 Documents）— 把 csv 移到授权目录里；② Mac 系统弹窗『允许访问 Documents』那时候点了拒绝 — 系统设置 → 隐私与安全 → 文件夹访问权限重新授权；③ 路径打错（中文目录名 / 空格） — 用纯英文目录名。助教 30 秒到位帮你排查。</div>
+        </div>
+
+        <div class="qa-card install">
+          <div class="q">Q3（装机相关）: Cowork tab 看不到，左侧导航只有 Chat 和 Projects。</div>
+          <div class="a">A: 99% 是版本问题。退出 Claude Desktop App，重新去 claude.ai/download 下载最新版（Cowork 是较新功能）。极个别区域 Cowork 还没开放（亚洲个别国家），这种情况助教带去 Codex fallback。</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="q">Q4: 我们公司禁止用任何 AI 处理财务数据，今天学的回去也用不了？</div>
+          <div class="a">A: 三层回应。① 你今天学的方法论 + Prompt 模板 + 5 个 Cowork Skill 永久有效，等政策放开就能用；② 整节课用脱敏 sample-data 演示，方法本身可在脱敏后用 — 怎么脱敏 + 怎么对接 Xero/MYOB/QB 真实数据看《AU 数据准备指南》(au-data-prep.html)；③ Cowork 的 Filesystem Connector 设计本身就比网页版聊天安全（数据在你电脑没上云）。具体到你单位的合规审查规则不在本课范围 — 那是你和单位合规部门 / 你单位 CPA/CA 之间的事。</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="q">Q5: 我刚才让 Cowork 分析数据，它给的结论跟我经验不符，到底信不信？</div>
+          <div class="a">A: 不信。Cowork 是『放大镜』不是『裁判』 — 它把你看到的角度放大，不替你做判断。你的经验告诉你不对，多半是 (a) 你看到了它没看到的口径细节 (b) 它从相关性瞎推因果。回去把你的判断写进 prompt（用 prompt② 异常归因 push back）让它再跑一遍，看它怎么承认。这是模块 4 讲的 3 类典型错误。</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="q">Q6: Cowork 用免费档每月够用吗？</div>
+          <div class="a">A: 看你怎么用。如果只是月底跑一次月度损益分析（用 Skill 调起，5 个 prompt × ~3-5 次对话/月）— 免费档够。如果每天都用（日常对账 / 周报 / 临时查询） — Pro A$30/月（一份咖啡）划算。Pro 升级是你个人 / 单位的决定，不通过协会团购。</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="q">Q7: 课后还能找你们答疑吗？有没有学员群？</div>
+          <div class="a">A: <strong>没有。</strong>今天 4 小时讲完就结束 — 没有协会专属群 / 没有持续答疑 / 没有 L2/L3 续作项目 / 没有 D+21 复盘。你拿走的方法 + 5 个 Cowork Skill 永久属于你，永远可用。想继续学免费去 jiangren.com.au 平台 — Prompt Lab / Wiki / Roadmap 全部免费，自己看自己学。我们不卖『长期陪跑』，需要那个的去看 JR Bootcamp 系列（独立产品，跟今天这门课无关）。</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="q">Q8: AI 教练你能保证 4 小时学完，我下周一上班就能用吗？</div>
+          <div class="a">A: 能用，但不会马上熟。今天你拿走的是『装好的 Cowork + 5 个 Skill + 1 份《AU 数据准备指南》 + 7 天行动卡』 — 下周第一次用还是会卡，这是正常的。模块 5 的 7 天行动卡设计就是给你这周的脚手架，AU 数据指南 §8 一页 checklist 就是给你『首次用真实数据』的 SOP。卡在哪里 → 自己 Google / 问 Cowork 自己 / 去 JR Prompt Lab 看相关 lab — 学习是你自己的事。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-h" style="background:#10b981">📋 分组管理表（助教打印 1 份现场用）</div>
+      <table class="group-table">
+        <thead>
+          <tr><th>组号</th><th>组长</th><th>组员</th><th>L02 装机状态</th><th>L03 角度</th><th>L04 评分（双盲）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>组 1</td><td></td><td></td><td>Cowork ☐ / Codex ☐ / 卡 ☐</td><td>毛利异常</td><td></td></tr>
+          <tr><td>组 2</td><td></td><td></td><td>Cowork ☐ / Codex ☐ / 卡 ☐</td><td>费用激增</td><td></td></tr>
+          <tr><td>组 3</td><td></td><td></td><td>Cowork ☐ / Codex ☐ / 卡 ☐</td><td>区域差异</td><td></td></tr>
+          <tr><td>组 4</td><td></td><td></td><td>Cowork ☐ / Codex ☐ / 卡 ☐</td><td>渠道转化</td><td></td></tr>
+          <tr><td>组 5</td><td></td><td></td><td>Cowork ☐ / Codex ☐ / 卡 ☐</td><td>毛利异常</td><td></td></tr>
+          <tr><td>组 6</td><td></td><td></td><td>Cowork ☐ / Codex ☐ / 卡 ☐</td><td>费用激增</td><td></td></tr>
+          <tr><td>组 7</td><td></td><td></td><td>Cowork ☐ / Codex ☐ / 卡 ☐</td><td>区域差异</td><td></td></tr>
+          <tr><td>组 8</td><td></td><td></td><td>Cowork ☐ / Codex ☐ / 卡 ☐</td><td>渠道转化</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box">
+      <div class="box-h" style="background:#10162f">🎯 课后 24h（助教 owner · 简化版）</div>
+      <div class="body">
+        <ul style="padding-left:24px;line-height:2;font-size:13px">
+          <li>合影 / 现场照片归档（征得同意，给协会方做活动留档使用）</li>
+          <li>《学员调研基线表》归档 curriculum/ai-accounting-workshop/post-class/{date}/（用于下一期改进自身课程，不是续作分析）</li>
+          <li>装机彻底失败的学员（极少数）发一封邮件附 Codex CLI fallback 的链接 — 让他个人 D+3 内补装</li>
+        </ul>
+        <p style="margin-top:12px;padding:10px 14px;background:#fef3c7;border-left:3px solid #f59e0b;font-size:12.5px;line-height:1.7"><strong>⚠️ 不做的事：</strong>不发 L1 完成证书 / 不收 L2 试点意向 / 不拉协会专属群 / 不做 D+21 复盘 / 不整理 prompt 案例集邮件给学员。这些都是续作漏斗的产物，今天的课不做这些。</p>
+      </div>
+    </div>
+
+    <div class="footer">INTERNAL ONLY · DO NOT SHARE WITH STUDENTS · AI Accounting Workshop · v4 (Cowork 装机版 · 5 模块 · 无合规讲座 · 含 AU 数据准备指南 · 协会 = co-host 仅开场致辞 + 收尾合影)</div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>会计场景提示词模板包 · AI 会计工作坊</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .prompt-card{margin:20px 24px;border:3px solid #000;box-shadow:6px 6px 0 #000;background:#fff;overflow:hidden}
+    .prompt-head{padding:14px 20px;background:#10162f;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+    .prompt-head h3{font-size:17px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif}
+    .prompt-meta{font-family:'Space Mono',monospace;font-size:11px;opacity:0.85}
+    .prompt-body{padding:18px 20px;font-size:13.5px;line-height:1.7}
+    .prompt-when{padding:10px 14px;background:#fff7ed;border-left:4px solid #FF914D;margin-bottom:14px;font-size:13px}
+    .prompt-when strong{color:#9a3412}
+    .prompt-text{background:#0f172a;color:#e2e8f0;padding:18px 20px;font-family:'Space Mono',monospace;font-size:12.5px;line-height:1.75;white-space:pre-wrap;border:2px solid #000;position:relative}
+    .prompt-text .var{background:#FFDE59;color:#10162f;padding:0 6px;font-weight:700}
+    .copy-btn{position:absolute;top:10px;right:10px;padding:6px 12px;background:#FF914D;color:#fff;border:2px solid #fff;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;cursor:pointer;letter-spacing:0.5px}
+    .copy-btn:hover{background:#fff;color:#FF914D;border-color:#FF914D}
+    .example{margin-top:14px;padding:12px 14px;background:#f0fdf4;border-left:4px solid #10b981;font-size:12.5px;line-height:1.7}
+    .example strong{color:#065f46}
+    .example .out{margin-top:6px;font-family:'DM Sans',sans-serif;color:#0f172a;background:#fff;padding:10px 12px;border:1px dashed #10b981}
+    .nav-row{margin:0 24px 20px;padding:14px 18px;background:#f8f9fa;border:2px solid #ddd;font-size:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>会计场景提示词模板包</h1>
+    <div class="sub">5 个可立即复用的 Prompt · 模块 3 / 模块 4 实操用</div>
+    <div class="nav">
+      <a href="../curriculum.html">← 课程大纲</a>
+      <a href="./au-data-prep.html">🇦🇺 AU 数据准备指南</a>
+      <a href="./sample-data.csv">样本数据 CSV</a>
+      <a href="./action-card.html">7 天行动卡</a>
+    </div>
+    <div class="tags"><span class="tag">PROMPT PACK · v2 Cowork</span></div>
+  </div>
+
+  <div class="c">
+
+    <div class="nav-row" style="background:#dcfce7;border:2px solid #10b981">
+      <span>📌 <strong>主用法（推荐）</strong>：在 <strong>Claude Cowork</strong> 里跑 — Cowork 通过 Filesystem Connector 直接读你电脑上的 sample-data.csv，跑完输出 Artifact 形式的简报。跑通后<strong>把每个 prompt 存成 Cowork Skill</strong>（命名见下表），月底一句话调起，不用每次重粘。</span>
+      <span class="mono">5 PROMPT · 5 SKILL · 中文</span>
+    </div>
+
+    <div class="nav-row" style="background:#fef3c7;border:2px dashed #f59e0b;font-size:12.5px">
+      <span>🚨 <strong>Fallback</strong>（极少数装不上 Cowork 的同学走这条）：把 prompt 存成 <code>prompt-N.txt</code>，在终端跑 <code>codex "$(cat prompt-1.txt)"</code> — Codex CLI 会读你当前目录下的 csv。本页底部有完整 Codex 调用方法。</span>
+      <span class="mono">CODEX CLI 备选</span>
+    </div>
+
+    <div class="nav-row" style="background:#f0f4ff;border:2px solid #6366f1">
+      <span style="font-family:'Space Mono',monospace;font-size:12px">
+        <strong>SKILL 命名规范</strong>：①→<code>pnl-analysis</code> / ②→<code>anomaly-attribution</code> / ③→<code>chart-story</code> / ④→<code>mgmt-brief</code> / ⑤→<code>exec-grilling</code>
+      </span>
+    </div>
+
+    <div class="prompt-card" style="border-color:#10b981;background:#f0fdf4;box-shadow:6px 6px 0 #10b981">
+      <div class="prompt-head" style="background:#10b981">
+        <h3>🎯 Cowork 4 步通用用法（5 个 prompt 都一样）</h3>
+        <span class="prompt-meta">读这一遍 · 后面 5 个 prompt 直接跑</span>
+      </div>
+      <div class="prompt-body">
+        <ol style="padding-left:24px;line-height:1.95;font-size:13.5px">
+          <li><strong>打开 Cowork</strong>：Claude Desktop App 左侧切到 Cowork tab（已在 L02 装好）。</li>
+          <li><strong>确认数据在 Filesystem 授权目录里</strong>：<code>~/Documents/AI-Workshop/sample-data.csv</code>（L02 配过的目录）。换成你单位真实数据时，先脱敏放到同目录。</li>
+          <li><strong>粘 prompt + 让 Cowork 自己读 csv</strong>：复制下面任一 prompt → 粘进 Cowork chat → 不要自己粘 csv 内容！直接说『读 sample-data.csv 然后按上面 prompt 跑』，Cowork 会通过 Filesystem Connector 自动读。</li>
+          <li><strong>跑通后存成 Skill</strong>：Cowork chat 右上角『Save as Skill』→ 命名（见上方规范表）→ 下次月底一句 <code>/pnl-analysis 这个月数据</code> 调起，不用重粘。</li>
+        </ol>
+        <p style="margin-top:12px;padding:10px 14px;background:#fef3c7;border-left:3px solid #f59e0b;font-size:12.5px;line-height:1.7">
+          <strong>⚠️ 三件事不要做</strong>：① 不要把整个家目录授权给 Filesystem（只给 AI-Workshop 子目录）；② 不要在 prompt 里粘真实身份号 / 银行卡 / 工资明细 — Cowork 默认不会主动读这些，但 prompt 里粘了它就看到了；③ 不要用 Cowork 直接生成可入账凭证 — 它产出『可用于沟通的简报』，不产出『可入账的数字』。<br><br><strong>🇦🇺 真实数据先看 AU 数据准备指南</strong>：拿你单位真实数据时，先看 <a href="./au-data-prep.html" style="color:#FF914D;font-weight:700;text-decoration:underline">au-data-prep.html</a> §6 脱敏清单 + §7 给 Cowork 的『澳洲口径』Prompt 增项。把 au-context 存成 Cowork Skill，调用时一句 <code>/au-context</code> 即可。
+        </p>
+      </div>
+    </div>
+
+    <!-- Prompt 1 -->
+    <div class="prompt-card">
+      <div class="prompt-head">
+        <h3>① 损益分析三段式（What / Why / So What）</h3>
+        <span class="prompt-meta">模块 3 · 主力 prompt</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-when"><strong>什么时候用：</strong>拿到一份月度 / 季度损益表，老板问『这个月怎么样』 — 你需要在 5 分钟内出一份能讲的简报。</div>
+        <div class="prompt-text" id="p1"><button class="copy-btn" data-target="p1">复制</button>你是一位资深财务分析师。我给你一份 [<span class="var">公司名/部门名</span>] 的损益数据（CSV 格式，下面贴出）。请用『What / Why / So What』三段式给我一份 1 页简报：
+
+【What】先用 5-7 句话客观陈述本期数据特征：哪几条线上涨 / 下降，幅度多少（百分比 + 绝对值），与上期 / 同期对比是否异常（>15% 算异常）。**只描述数字，不解释原因**。
+
+【Why】列 3 个最可能的归因，每个归因要：(a) 标注是事实归因还是推测 (b) 给出能验证的方法（例如『需要看客户分布』『需要看采购单价』）。**禁止用『可能因为市场环境』这种废话**，归因必须能落地验证。
+
+【So What】给 3 条管理层决策建议，每条建议必须：(a) 指向一个具体岗位 / 部门 (b) 标明时间紧迫度（本周 / 本月 / 下季度）(c) 注明若不做的潜在影响。
+
+数据来源（Cowork 用 Filesystem 自动读取）：
+~/Documents/AI-Workshop/sample-data.csv
+
+口径说明：[<span class="var">月度 / 季度 / 年度，本币单位</span>]</div>
+        <div class="example">
+          <strong>示例输出（节选）：</strong>
+          <div class="out">【What】6 月营销费用 $48k，环比上涨 35%（绝对值 +$12.5k），是过去 12 个月最高 — 异常。同期销售收入仅上涨 8%（环比 +$15k），ROI 显著恶化。<br>【Why】① 6 月新增渠道投放（推测 — 需看营销 invoice 分类）；② 旧渠道 CPC 上涨（推测 — 需看 GA / 投放后台）；③ 一次性活动赞助（事实归因可能性 — 看 invoice 抬头）。<br>【So What】① 营销负责人：本周内出『6 月渠道-投入-产出』明细；② CFO：本月评估是否暂停 ROI 最差的渠道；③ 数据团队：下季度起加 weekly ROI 看板，否则 Q3 同样情况会再发生。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prompt 2 -->
+    <div class="prompt-card">
+      <div class="prompt-head">
+        <h3>② 异常归因（避免因果倒置）</h3>
+        <span class="prompt-meta">模块 3 · 纠错 prompt</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-when"><strong>什么时候用：</strong>第 ① 个 prompt 跑完，AI 给的归因你看着不对劲（比如把『相关性』当『因果』讲），用这个 prompt 让 AI 自己 push back。</div>
+        <div class="prompt-text" id="p2"><button class="copy-btn" data-target="p2">复制</button>你刚才给我的归因里第 [<span class="var">N</span>] 条说：『[<span class="var">复制 AI 上一条归因原文</span>]』。
+
+请你做三件事：
+
+1. **区分相关性 vs 因果性**：你这条归因是基于数据相关性还是逻辑因果？如果只是相关性，请明说『这只是相关，因果待验证』。
+
+2. **列举证伪条件**：什么样的数据会推翻这条归因？（即 — 如果我看到 X，就说明这条归因是错的）
+
+3. **替代解释**：除了你这条归因，还有什么完全不同的解释能解释同一组数据？至少给 2 个替代解释。
+
+回答只针对这一条归因，不要扩展到其他。</div>
+        <div class="example">
+          <strong>什么时候它会承认：</strong>
+          <div class="out">用户：你上面说『营销费上涨是因为新渠道』，请按这个 prompt 自查。<br>AI：你说得对，这只是时间相关性 — 6 月营销费上涨同期新渠道上线，但我没看到具体哪个渠道吃了多少预算。证伪条件：如果新渠道 6 月预算占比 &lt;10%，则归因不成立。替代解释：(a) 6 月行业 CPC 整体上涨（需要外部数据）；(b) 一次性活动赞助计入了营销科目（需要看 invoice）。建议你先看营销科目的 invoice 分类再下结论。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prompt 3 -->
+    <div class="prompt-card">
+      <div class="prompt-head">
+        <h3>③ 图表叙事（明确 / 对比 / 可行动）</h3>
+        <span class="prompt-meta">模块 4 · 可视化 prompt</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-when"><strong>什么时候用：</strong>简报草稿出来了，你要把数字配成图表。这个 prompt 让 AI 帮你判断『这张图能不能上汇报』。</div>
+        <div class="prompt-text" id="p3"><button class="copy-btn" data-target="p3">复制</button>我有这样一组数据需要做图表：[<span class="var">描述数据 — 例如『过去 6 个月各渠道营销费用 vs 收入』</span>]
+
+请按图表叙事三原则给我建议：
+
+1. **明确**：这张图想告诉看的人哪一句话？（一句话，&lt;15 字）如果你能给出超过一句话，说明这张图想表达的太多，应该拆成多张。
+
+2. **对比**：这张图的核心对比维度是什么？（例如：渠道之间 vs 时间趋势 vs 实际 vs 预算）建议用什么图表类型最能突出这个对比？（柱状 / 折线 / 散点 / 堆叠 / 瀑布）。
+
+3. **可行动**：看完这张图，看的人下一步该做什么决定？如果一张图看完没有任何决定可做（只是『知道了』），它就不该出现在管理层汇报里。
+
+请用上面三条标准，对我描述的数据给出 (a) 推荐图表类型 (b) 一句话标题 (c) 你认为可不可上管理层汇报，理由是什么。</div>
+      </div>
+    </div>
+
+    <!-- Prompt 4 -->
+    <div class="prompt-card">
+      <div class="prompt-head">
+        <h3>④ 管理层汇报讲稿（3 分钟版）</h3>
+        <span class="prompt-meta">模块 4 · 主力 prompt</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-when"><strong>什么时候用：</strong>简报和图表都有了，需要把它压缩成 3 分钟（约 450 字）能讲的稿。</div>
+        <div class="prompt-text" id="p4"><button class="copy-btn" data-target="p4">复制</button>你要帮我把下面的财务简报压缩成一段 3 分钟的管理层汇报讲稿（中文，约 400-450 字，正式但不生硬）。
+
+简报内容：
+[<span class="var">把 prompt 1 的输出粘在这里</span>]
+
+要求：
+1. **开场 1 句话直击结论**（不要『今天我向大家汇报…』这种废话）。
+2. **中间用 3 个『发现 → 解释 → 建议』循环**，每个循环约 100 字。
+3. **结尾 1 句话给一个明确的决策请求**（请求 CFO / CEO 当场拍板的事，或本周需对齐的事）。
+4. **不要用 PowerPoint 套话**：不出现『综上所述』『总而言之』『进一步深化』『赋能』『闭环』。
+5. **不要给免责声明**（『以上数据仅供参考』之类的话不要写 — 老板要的是判断不是免责）。
+
+读出来用秒表掐表，应该在 2 分 50 秒到 3 分 10 秒之间。</div>
+      </div>
+    </div>
+
+    <!-- Prompt 5 -->
+    <div class="prompt-card">
+      <div class="prompt-head">
+        <h3>⑤ 高管 5 问演练（CFO / CEO 模拟）</h3>
+        <span class="prompt-meta">模块 4 · 反向 prompt</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-when"><strong>什么时候用：</strong>讲稿写完了，但你不知道老板会问什么。让 AI 扮演 CFO / CEO 提 5 个最可能问的问题，你提前准备好答案。</div>
+        <div class="prompt-text" id="p5"><button class="copy-btn" data-target="p5">复制</button>你现在扮演一位严格、不耐烦但专业的 [<span class="var">CFO / CEO 二选一</span>]。我刚做完下面这段汇报，请你按这位高管的视角问我 5 个最可能问的问题。
+
+我的汇报：
+[<span class="var">把 prompt 4 的输出粘在这里</span>]
+
+要求：
+1. 5 个问题必须涵盖：(a) 数据可信度 (b) 成本影响 (c) 现金流影响 (d) 同行 / 历史对比 (e) 下季度预测。
+2. 每个问题要尖锐 — 不要『可以介绍一下吗』这种敷衍问题。要像真实老板会问的：『为什么我之前没看到这个？』『这个数能不能用上个月的口径再算一遍？』『你拿什么保证下季度不会更糟？』
+3. 每个问题后面给一段『理想回答框架』（不要给完整答案，给框架就好）— 让我自己填血肉。
+4. 标注每个问题的潜在『地雷』 — 我答错会怎样？
+
+最后给一段总建议：根据我的汇报内容，<strong>哪一个问题我现在最答不上来</strong>？我应该回去补什么数据再来？</div>
+      </div>
+    </div>
+
+    <div class="box" style="margin-top:30px;border:3px dashed #f59e0b;background:#fffbeb">
+      <div class="box-h" style="background:#f59e0b">🚨 Codex CLI Fallback 附录（极少数装不上 Cowork 的同学）</div>
+      <div class="body" style="font-size:13px;line-height:1.75">
+        <p style="margin-bottom:10px">单位 IT 不让装 Claude Desktop App 时走这条路。Codex 是 OpenAI 的命令行工具，跑同一套 prompt 但没有 GUI / 没有 Skill 系统 / 不能出图表 — 只用来保证你能跟上 L04/L05 的 prompt 实操。</p>
+        <h5 style="font-family:'Bricolage Grotesque',sans-serif;font-size:14px;margin:14px 0 6px;color:#92400e">① 装 + 登</h5>
+        <pre style="background:#0f172a;color:#e2e8f0;padding:12px 14px;font-family:'Space Mono',monospace;font-size:12px;line-height:1.7;border-left:4px solid #FFDE59;overflow-x:auto"># 前提：Node.js ≥18 已装（node -v 确认）
+npm install -g @openai/codex
+codex login                # 浏览器 OAuth ChatGPT Plus 账号</pre>
+
+        <h5 style="font-family:'Bricolage Grotesque',sans-serif;font-size:14px;margin:14px 0 6px;color:#92400e">② 把 5 个 prompt 存成 txt 文件</h5>
+        <pre style="background:#0f172a;color:#e2e8f0;padding:12px 14px;font-family:'Space Mono',monospace;font-size:12px;line-height:1.7;border-left:4px solid #FFDE59;overflow-x:auto">cd ~/Documents/AI-Workshop
+# 上面 5 个 prompt 分别复制保存到：
+# prompt-1-pnl.txt / prompt-2-anomaly.txt / prompt-3-chart.txt /
+# prompt-4-brief.txt / prompt-5-grilling.txt</pre>
+
+        <h5 style="font-family:'Bricolage Grotesque',sans-serif;font-size:14px;margin:14px 0 6px;color:#92400e">③ 跑 prompt（替代 Cowork 的 chat）</h5>
+        <pre style="background:#0f172a;color:#e2e8f0;padding:12px 14px;font-family:'Space Mono',monospace;font-size:12px;line-height:1.7;border-left:4px solid #FFDE59;overflow-x:auto"># Codex 会自动读当前目录下的 csv（类似 Cowork Filesystem）
+codex "$(cat prompt-1-pnl.txt)"
+# 输出在终端 — 复制下来手粘到 Word/Excel 做后续
+
+# Prompt 2/3/4/5 同理：
+codex "$(cat prompt-2-anomaly.txt)"
+codex "$(cat prompt-3-chart.txt)"
+codex "$(cat prompt-4-brief.txt)"
+codex "$(cat prompt-5-grilling.txt)"</pre>
+
+        <p style="margin-top:14px;padding:10px 14px;background:#fff;border-left:3px solid #ef4444;font-size:12.5px;line-height:1.7">
+          <strong>⚠️ Codex 限制</strong>：① 没图表（prompt③ 出的图表叙事在 Codex 里只有文字描述，画图得自己用 Excel）；② 没 Skill 永久复用（每次都得 cat 一遍 txt）；③ 终端环境，会计人接受度低。所以这是 fallback 不是主推荐 — 课后你还是建议尝试在私人电脑上装 Cowork。
+        </p>
+      </div>
+    </div>
+
+    <div class="box" style="margin-top:30px">
+      <div class="box-h" style="background:#10b981">🎓 课后扩展练习（推荐去 Prompt Lab）</div>
+      <div class="body" style="font-size:13.5px;line-height:1.8">
+        <p>这 5 个 prompt 的底层逻辑分别对应 <strong>JR Prompt Lab</strong> 的几个互动练习。课后想深化，去这里：</p>
+        <ul style="padding-left:24px;margin-top:10px">
+          <li><a href="https://jiangren.com.au/study-center?tab=learn&mode=prompt-lab" target="_blank">JR Prompt Lab</a> · <strong>Clear Task</strong> → 对应 prompt ①（任务边界 + 输出格式）</li>
+          <li><a href="https://jiangren.com.au/study-center?tab=learn&mode=prompt-lab" target="_blank">JR Prompt Lab</a> · <strong>Constraints</strong> → 对应 prompt ④（不要套话 / 字数限制 / 风格约束）</li>
+          <li><a href="https://jiangren.com.au/study-center?tab=learn&mode=prompt-lab" target="_blank">JR Prompt Lab</a> · <strong>Few-shot</strong> → 进阶版 prompt ①（你给 AI 看 1-2 个好简报样例，它产出会更稳）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">© AI Accounting Workshop · Prompt Pack v2 (Cowork-first) · 内容可复制使用，二次发表请注明出处</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const targetId = btn.dataset.target;
+        const node = document.getElementById(targetId);
+        const text = node.innerText.replace(/^复制\s*/, '').trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          const orig = btn.textContent;
+          btn.textContent = '✓ 已复制';
+          btn.style.background = '#10b981';
+          setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 1500);
+        } catch(e) {
+          alert('复制失败，请手动选择文本');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

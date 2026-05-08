@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>澳洲会计数据准备指南 — 给 Cowork 喂对的数据 | AI 会计工作坊</title>
+  <meta name="description" content="实操手册：怎么把 Xero / MYOB / Quickbooks Australia 导出的 CSV 准备好放进 Cowork Filesystem。FY 财年口径 / GST 处理 / BAS 周期 / 脱敏要素 / Cowork prompt 增项 — 课程所有 lesson 的数据基准参考。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .toc{margin:0 24px 24px;padding:18px 22px;background:#10162f;color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #FF914D}
+    .toc h3{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;margin-bottom:10px;letter-spacing:0.5px}
+    .toc ol{padding-left:22px;font-size:13px;line-height:1.95;column-count:2;column-gap:24px}
+    .toc ol li a{color:#FFDE59;text-decoration:none;border-bottom:1px solid rgba(255,222,89,0.3)}
+    .toc ol li a:hover{border-bottom-color:#FFDE59}
+
+    .section{margin:0 24px 26px;border:2px solid #000;background:#fff;box-shadow:5px 5px 0 #000;overflow:hidden}
+    .section-h{padding:14px 20px;background:#FF914D;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px}
+    .section-h .num{display:inline-flex;width:30px;height:30px;background:#10162f;color:#fff;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;align-items:center;justify-content:center;flex-shrink:0;border:2px solid #fff}
+    .section-h .tag{margin-left:auto;font-family:'Space Mono',monospace;font-size:11px;background:rgba(0,0,0,0.2);padding:3px 10px;letter-spacing:1px}
+    .section-body{padding:18px 22px;font-size:13.5px;line-height:1.8}
+    .section-body p{margin-bottom:10px;color:#1f2937}
+    .section-body p strong{color:#10162f}
+    .section-body ul,.section-body ol{padding-left:22px;margin:10px 0}
+    .section-body li{margin-bottom:6px;line-height:1.75}
+
+    .key-callout{background:#fff7ed;border-left:5px solid #FF914D;padding:12px 16px;margin:14px 0;font-size:13px;line-height:1.75}
+    .key-callout strong{color:#9a3412}
+    .danger-callout{background:#fef2f2;border-left:5px solid #ef4444;padding:12px 16px;margin:14px 0;font-size:13px;line-height:1.75}
+    .danger-callout strong{color:#991b1b}
+    .ok-callout{background:#f0fdf4;border-left:5px solid #10b981;padding:12px 16px;margin:14px 0;font-size:13px;line-height:1.75}
+    .ok-callout strong{color:#065f46}
+
+    .field-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:12px 0;border:2px solid #000}
+    .field-table th{background:#10162f;color:#fff;padding:10px 12px;text-align:left;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase}
+    .field-table td{padding:9px 12px;border-bottom:1px solid #eee;vertical-align:top;line-height:1.55}
+    .field-table tr:last-child td{border-bottom:none}
+    .field-table .req{color:#ef4444;font-weight:700;font-size:11px;font-family:'Space Mono',monospace}
+    .field-table .opt{color:#94a3b8;font-weight:700;font-size:11px;font-family:'Space Mono',monospace}
+    .field-table code{background:#f1f5f9;padding:1px 5px;font-size:11.5px;font-family:'Space Mono',monospace;color:#0f172a}
+
+    .source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+    .source-card{border:2px solid #000;padding:14px 16px;background:#fffbea;box-shadow:4px 4px 0 #10162f}
+    .source-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px}
+    .source-card .vendor{font-family:'Space Mono',monospace;font-size:10px;color:#FF914D;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+    .source-card ol{padding-left:18px;font-size:12px;line-height:1.7}
+    .source-card ol li{margin-bottom:3px}
+    .source-card code{background:#fff;padding:1px 5px;font-size:11px;font-family:'Space Mono',monospace;border:1px solid #ddd}
+
+    pre.code{background:#0f172a;color:#e2e8f0;padding:14px 18px;font-family:'Space Mono',monospace;font-size:12px;line-height:1.75;border-left:4px solid #FFDE59;overflow-x:auto;margin:10px 0}
+    pre.code .cm{color:#94a3b8}
+    pre.code .kw{color:#FFDE59}
+    pre.code .v{color:#10b981}
+
+    .gst-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0}
+    .gst-table th{background:#fef3c7;color:#92400e;padding:8px 12px;text-align:left;font-family:'Space Mono',monospace;font-size:11px}
+    .gst-table td{padding:8px 12px;border-bottom:1px solid #eee;line-height:1.55}
+    .gst-table .pct{font-family:'Space Mono',monospace;font-weight:700;color:#FF914D}
+
+    .prompt-snippet{background:#f0fdf4;border:2px solid #10b981;padding:12px 16px;margin:12px 0;font-size:12.5px;line-height:1.75;font-family:'Space Mono',monospace;color:#0f172a;position:relative}
+    .prompt-snippet .label{position:absolute;top:-10px;left:12px;background:#10b981;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;letter-spacing:0.5px;font-family:'Space Mono',monospace}
+
+    .checklist-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+    .checklist-grid .ci{border:2px dashed #ddd;padding:10px 14px;font-size:12.5px;line-height:1.65;background:#fafafa}
+    .checklist-grid .ci.must{border-color:#ef4444;background:#fef2f2}
+    .checklist-grid .ci.must strong{color:#991b1b}
+    .checklist-grid .ci.opt strong{color:#10162f}
+
+    .timeline{display:flex;gap:6px;margin:14px 0;flex-wrap:wrap}
+    .tl-block{padding:10px 14px;background:#fff;border:2px solid #000;font-size:11px;font-family:'Space Mono',monospace;text-align:center;flex:1;min-width:90px}
+    .tl-block .month{font-weight:700;color:#10162f;font-size:12px}
+    .tl-block .quarter{color:#FF914D;font-weight:700;font-size:10px;letter-spacing:0.5px}
+    .tl-block.q1{background:#fff7ed}
+    .tl-block.q2{background:#dcfce7}
+    .tl-block.q3{background:#fce7f3}
+    .tl-block.q4{background:#dbeafe}
+
+    @media(max-width:900px){.source-grid{grid-template-columns:1fr 1fr}.checklist-grid{grid-template-columns:1fr}.toc ol{column-count:1}}
+    @media(max-width:640px){.source-grid{grid-template-columns:1fr}.timeline{justify-content:flex-start}.timeline .tl-block{min-width:60px;flex:0 0 calc(33% - 4px)}}
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>澳洲会计数据准备指南</h1>
+    <div class="sub">给 Cowork 喂对的数据 — Xero / MYOB / Quickbooks Australia 导出 CSV 完整字段映射 + FY 财年 + GST 处理 + BAS 周期 + 脱敏要素 · 课程所有 lesson 的数据基准参考</div>
+    <div class="nav">
+      <a href="../curriculum.html">← 课程大纲</a>
+      <a href="./prompt-pack.html">提示词包</a>
+      <a href="./sample-data.csv">通用样本 CSV</a>
+      <a href="./action-card.html">7 天行动卡</a>
+    </div>
+    <div class="tags">
+      <span class="tag">📋 AU DATA PREP · v1</span>
+      <span class="tag">🇦🇺 Australian Accounting</span>
+      <span class="tag">📂 Cowork Filesystem 输入参考</span>
+    </div>
+  </div>
+
+  <div class="c">
+
+    <div class="key-callout" style="margin:24px;font-size:14px">
+      <strong>📌 这份文档是干什么的：</strong>课堂上我们用通用 sample-data.csv（虚构 SaaS 公司）演示 Cowork 跑 prompt。<strong>但你回去要拿你单位真实数据跑</strong> — 这页教你 4 件事：① 怎么从 Xero/MYOB/Quickbooks Australia 把数据导出来；② 哪些列 Cowork 必须看到才能算对（GST / FY / BAS 周期）；③ 哪些字段必须脱敏后再放进 Cowork Filesystem；④ 要在 prompt 里加什么"澳洲口径提示"让 Cowork 不算错。<br><br>
+      <strong>📌 这份文档<u>不是</u>什么：</strong>不是合规法律建议。AASB 准则解释 / ATO 报送规则 / GST 边界争议 — 找你的 CPA / CA。本指南只解决"数据格式 + Cowork 可读性"的工程问题。
+    </div>
+
+    <div class="toc">
+      <h3>📑 目录 · 4 大块 8 小节</h3>
+      <ol>
+        <li><a href="#sec1">FY 澳洲财年（July → June，不是自然年）</a></li>
+        <li><a href="#sec2">GST 字段（10% / GST-free / Input-taxed 三类）</a></li>
+        <li><a href="#sec3">BAS / IAS 报送周期对应数据切分</a></li>
+        <li><a href="#sec4">Cowork 读得懂的标准字段表</a></li>
+        <li><a href="#sec5">从 Xero / MYOB / Quickbooks Australia 导出</a></li>
+        <li><a href="#sec6">脱敏要素（ABN / TFN / 客户姓名 / 银行账号）</a></li>
+        <li><a href="#sec7">给 Cowork 的『澳洲口径』Prompt 增项</a></li>
+        <li><a href="#sec8">完整一页 checklist（打印贴工位）</a></li>
+      </ol>
+    </div>
+
+    <!-- Section 1: FY -->
+    <div class="section" id="sec1">
+      <div class="section-h"><span class="num">1</span>FY 澳洲财年 — July 1 → June 30 <span class="tag">FINANCIAL YEAR</span></div>
+      <div class="section-body">
+        <p>澳洲财年（Financial Year, FY）是 <strong>7 月 1 日到次年 6 月 30 日</strong>，<strong>不是</strong>自然年（calendar year）。所有 ATO 报送、年度 P&amp;L、薪酬 PAYG summary 都按 FY 切。</p>
+
+        <div class="timeline">
+          <div class="tl-block q1"><div class="quarter">FY Q1</div><div class="month">7</div></div>
+          <div class="tl-block q1"><div class="quarter">FY Q1</div><div class="month">8</div></div>
+          <div class="tl-block q1"><div class="quarter">FY Q1</div><div class="month">9</div></div>
+          <div class="tl-block q2"><div class="quarter">FY Q2</div><div class="month">10</div></div>
+          <div class="tl-block q2"><div class="quarter">FY Q2</div><div class="month">11</div></div>
+          <div class="tl-block q2"><div class="quarter">FY Q2</div><div class="month">12</div></div>
+          <div class="tl-block q3"><div class="quarter">FY Q3</div><div class="month">1</div></div>
+          <div class="tl-block q3"><div class="quarter">FY Q3</div><div class="month">2</div></div>
+          <div class="tl-block q3"><div class="quarter">FY Q3</div><div class="month">3</div></div>
+          <div class="tl-block q4"><div class="quarter">FY Q4</div><div class="month">4</div></div>
+          <div class="tl-block q4"><div class="quarter">FY Q4</div><div class="month">5</div></div>
+          <div class="tl-block q4"><div class="quarter">FY Q4</div><div class="month">6</div></div>
+        </div>
+
+        <div class="danger-callout">
+          <strong>🚨 最高频踩坑</strong>：你粘了 12 个月 P&amp;L 给 Cowork，没说清是 FY 还是 calendar year，Cowork 默认按自然年切 — 你 Q3 涨了 30% 它说是『年初到现在』，但你单位口径是『FY Q3 = 1-3 月，是上半财年的第 3 季度』。<strong>所有跨期分析必须开篇说明 FY vs calendar year 口径</strong>。
+        </div>
+
+        <p><strong>实操：</strong>在 prompt 里第一行就写清楚：</p>
+        <div class="prompt-snippet">
+          <span class="label">PROMPT 增项</span>
+          口径说明：本数据使用<strong>澳洲财年（FY）</strong>，FY2025 = 2024-07 至 2025-06。所有"Q1/Q2/Q3/Q4"指 FY 季度（7-9 / 10-12 / 1-3 / 4-6 月）。所有"年度同比"按 FY 同比，<strong>不要</strong>按自然年同比。
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: GST -->
+    <div class="section" id="sec2">
+      <div class="section-h"><span class="num">2</span>GST 字段 — 10% / GST-free / Input-taxed 三类 <span class="tag">GST TREATMENT</span></div>
+      <div class="section-body">
+        <p>澳洲 GST 不是单一 10% — 一笔交易可能是 <strong>三种 GST treatment 之一</strong>，Cowork 看不见 treatment 标签会算错应缴 GST 和 BAS 上的 G1/G3/G10 等格子。</p>
+
+        <table class="gst-table">
+          <thead><tr><th>Treatment</th><th>含 GST 吗</th><th>典型场景</th><th>列名建议</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Taxable</strong></td><td class="pct">+10%</td><td>大部分销售 / 采购</td><td><code>GST_treatment=taxable</code></td></tr>
+            <tr><td><strong>GST-free</strong></td><td class="pct">0%</td><td>新鲜食品 / 教育 / 部分医疗 / 出口</td><td><code>GST_treatment=gst_free</code></td></tr>
+            <tr><td><strong>Input-taxed</strong></td><td class="pct">不抵扣</td><td>住宅租金 / 金融服务</td><td><code>GST_treatment=input_taxed</code></td></tr>
+          </tbody>
+        </table>
+
+        <p><strong>CSV 列怎么准备：</strong>每行至少要有 <code>amount_ex_gst</code>（不含税）+ <code>gst_amount</code>（GST 金额，可以是 0）+ <code>gst_treatment</code>（三选一标签）三列。如果只有总额 <code>amount_inc_gst</code>，Cowork 会要你回头去算，浪费 token。</p>
+
+        <div class="key-callout">
+          <strong>实操简化：</strong>大部分 SME 单位日常分析不需要那么细，<strong>只要</strong>把 <code>amount</code>（总额含 GST）+ <code>gst_amount</code>（GST 部分）两列出齐，Cowork 就能算准毛利、归因费用、判断净额走势。treatment 三类是给 BAS 报送用的，月度损益分析不一定需要。
+        </div>
+
+        <div class="prompt-snippet">
+          <span class="label">PROMPT 增项</span>
+          GST 口径：所有 amount 列已是<strong>含 GST 总额</strong>（GST-inclusive）。GST 部分在 <code>gst_amount</code> 列单独标出。做毛利分析时<strong>用不含税金额</strong>（<code>amount - gst_amount</code>）；做现金流分析时用含税总额。<strong>不要</strong>把不同 GST treatment 的行加总（taxable + gst-free 加起来没有意义）。
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: BAS -->
+    <div class="section" id="sec3">
+      <div class="section-h"><span class="num">3</span>BAS / IAS 报送周期 <span class="tag">REPORTING PERIOD</span></div>
+      <div class="section-body">
+        <p>澳洲单位按规模走不同的 BAS / IAS 报送周期。Cowork 做"本期 vs 上期"分析必须知道你按哪种周期切：</p>
+
+        <ul>
+          <li><strong>月度 BAS</strong>（年营业额 ≥ $20M）：每月 21 号前报</li>
+          <li><strong>季度 BAS</strong>（绝大多数 SME）：FY Q1 (10-28) / Q2 (2-28) / Q3 (4-28) / Q4 (7-28)</li>
+          <li><strong>年度 IAS</strong>（小规模注册 GST 但 turnover &lt; $75K）：年度报送</li>
+        </ul>
+
+        <div class="key-callout">
+          <strong>怎么影响数据准备：</strong>① 时间序列分析要按你的报送周期切（月度报送 → 12 期对比；季度报送 → 4 期对比 + FY 同期对比）。② 异常归因要参考报送日期 — 比如『为什么 4 月费用突增』可能是 Q3 BAS 在 4 月 28 日前要交，做了一些 timing 调整。在 prompt 里告诉 Cowork 你的报送周期它会少瞎猜。
+        </div>
+
+        <div class="prompt-snippet">
+          <span class="label">PROMPT 增项</span>
+          报送口径：本单位按<strong>季度 BAS</strong>报送（FY Q1 = 7-9 / Q2 = 10-12 / Q3 = 1-3 / Q4 = 4-6），所有跨期对比按 BAS 季度。<strong>异常归因时</strong>请考虑报送时点（4 月 / 7 月 / 10 月 / 2 月底前后）可能存在的 timing 调整。
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Standard fields -->
+    <div class="section" id="sec4">
+      <div class="section-h"><span class="num">4</span>Cowork 读得懂的标准字段表 <span class="tag">CSV SCHEMA</span></div>
+      <div class="section-body">
+        <p>下面这张表是 <strong>Cowork 跑 AU 会计 prompt 时最稳的列结构</strong>。从 Xero/MYOB/Quickbooks 导出后做一次列名映射，对齐到这个 schema 再放进 Filesystem 目录。</p>
+
+        <table class="field-table">
+          <thead>
+            <tr><th>字段名</th><th>必/选</th><th>类型</th><th>含义 / 例子</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>date</code></td><td class="req">REQ</td><td>YYYY-MM-DD</td><td>交易日期。如 <code>2025-04-15</code>。Cowork 会按这个切 FY/季度/月度</td></tr>
+            <tr><td><code>fy_year</code></td><td class="opt">REC</td><td>integer</td><td>财年标签，如 <code>2025</code> 表示 FY2025（即 2024-07 至 2025-06）。算了你也可以让 Cowork 自己从 date 推</td></tr>
+            <tr><td><code>account_code</code></td><td class="req">REQ</td><td>string</td><td>会计科目代码。如 <code>4000</code> = Sales Revenue / <code>6300</code> = Marketing。每个单位 chart of accounts 不同，Xero/MYOB 导出自带</td></tr>
+            <tr><td><code>account_name</code></td><td class="req">REQ</td><td>string</td><td>科目名称。如 <code>Subscription Revenue</code> / <code>Marketing - Online</code></td></tr>
+            <tr><td><code>category</code></td><td class="req">REQ</td><td>enum</td><td>大类：<code>Revenue</code> / <code>COGS</code> / <code>OpEx</code> / <code>Other</code>。Cowork 用这个做毛利率拆分</td></tr>
+            <tr><td><code>amount</code></td><td class="req">REQ</td><td>decimal</td><td>含 GST 总额（AUD）。<strong>正数 = 收入或费用本身</strong>，<strong>负数 = 退款/冲销</strong></td></tr>
+            <tr><td><code>gst_amount</code></td><td class="req">REQ</td><td>decimal</td><td>GST 部分（AUD）。可以是 0（GST-free）或 amount/11（taxable，10% on ex-GST = 1/11 of inc-GST）</td></tr>
+            <tr><td><code>gst_treatment</code></td><td class="opt">REC</td><td>enum</td><td><code>taxable</code> / <code>gst_free</code> / <code>input_taxed</code>。BAS 分析需要，月度分析可省</td></tr>
+            <tr><td><code>currency</code></td><td class="opt">REC</td><td>string</td><td>默认 <code>AUD</code>。多币种单位才需要这列 + <code>amount_aud</code> 折算列</td></tr>
+            <tr><td><code>contact</code></td><td class="opt">REC</td><td>string</td><td>客户/供应商<strong>脱敏后</strong>编号。如 <code>客户 12</code> / <code>供应商 V3</code>。<strong>禁</strong>真名/真公司名</td></tr>
+            <tr><td><code>description</code></td><td class="opt">OPT</td><td>string</td><td>交易备注（脱敏后）。Cowork 用于异常归因时找线索</td></tr>
+            <tr><td><code>tracking_category</code></td><td class="opt">OPT</td><td>string</td><td>Xero 的 Tracking / MYOB 的 Job Code。如部门 / 项目 / 渠道。多维度分析用</td></tr>
+            <tr><td><code>notes</code></td><td class="opt">OPT</td><td>string</td><td>你自己的口径备注（如『6 月含一次性赞助』）— 帮 Cowork 不瞎猜</td></tr>
+          </tbody>
+        </table>
+
+        <p><strong>禁止出现在 CSV 里的列</strong>（脱敏阶段就要删）：</p>
+
+        <div class="danger-callout">
+          ❌ <code>employee_name</code> · <code>tfn</code>（Tax File Number）· <code>bank_bsb</code> · <code>bank_account</code> · <code>abn</code>（除非已脱敏成假码）· <code>email</code> · <code>phone</code> · <code>address</code> · <strong>未公开并购/估值/上市相关</strong>
+        </div>
+
+        <p><strong>建议的最简列集</strong>（先跑通分析够用了）：<code>date, account_code, account_name, category, amount, gst_amount, contact</code> — 7 列起步，缺什么再加。</p>
+      </div>
+    </div>
+
+    <!-- Section 5: Export from accounting systems -->
+    <div class="section" id="sec5">
+      <div class="section-h"><span class="num">5</span>从 Xero / MYOB / Quickbooks Australia 导出 <span class="tag">EXPORT GUIDE</span></div>
+      <div class="section-body">
+        <p>三大主流 AU 会计系统的导出路径不同。下面是 <strong>"导出 → 列重命名 → 放进 Cowork Filesystem"</strong> 三步走：</p>
+
+        <div class="source-grid">
+          <div class="source-card">
+            <div class="vendor">XERO</div>
+            <h4>Xero</h4>
+            <ol>
+              <li>Reports → Account Transactions / Profit &amp; Loss</li>
+              <li>选时间范围（按 FY 季度）</li>
+              <li>右上 Export → CSV</li>
+              <li>列名对照：<br>
+                <code>Date → date</code><br>
+                <code>Account Code → account_code</code><br>
+                <code>Description → description</code><br>
+                <code>Reference → contact</code>（脱敏后）<br>
+                <code>Net → amount_ex_gst</code><br>
+                <code>Tax → gst_amount</code><br>
+                <code>Gross → amount</code>
+              </li>
+              <li>另存到 ~/Documents/AI-Workshop/</li>
+            </ol>
+          </div>
+          <div class="source-card">
+            <div class="vendor">MYOB</div>
+            <h4>MYOB AccountRight</h4>
+            <ol>
+              <li>Reports → Index to Reports → Accounts → General Ledger Detail</li>
+              <li>Customise → 时间范围 + Account categories</li>
+              <li>Send To → Excel → 另存为 CSV</li>
+              <li>列名对照：<br>
+                <code>Date → date</code><br>
+                <code>Account No. → account_code</code><br>
+                <code>Account Name → account_name</code><br>
+                <code>Memo → description</code><br>
+                <code>Amount → amount</code><br>
+                <code>Tax Amount → gst_amount</code><br>
+                <code>Tax Code → gst_treatment</code>
+              </li>
+              <li>另存到 ~/Documents/AI-Workshop/</li>
+            </ol>
+          </div>
+          <div class="source-card">
+            <div class="vendor">QUICKBOOKS</div>
+            <h4>Quickbooks Online (AU)</h4>
+            <ol>
+              <li>Reports → Profit and Loss Detail / Transaction Detail by Account</li>
+              <li>选 FY 季度时间范围 + Customise → Show GST columns</li>
+              <li>Export → Export to Excel → 另存 CSV</li>
+              <li>列名对照：<br>
+                <code>Date → date</code><br>
+                <code>Account → account_name</code><br>
+                <code>Memo/Description → description</code><br>
+                <code>Customer/Vendor → contact</code>（脱敏后）<br>
+                <code>Amount → amount</code><br>
+                <code>Tax Amount → gst_amount</code><br>
+                <code>Tax Type → gst_treatment</code>
+              </li>
+              <li>另存到 ~/Documents/AI-Workshop/</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="ok-callout">
+          <strong>简化做法：</strong>不想手工映射列名？让 Cowork 自己映射。把原始导出 CSV 放进 Filesystem，然后开 prompt：『读这份 CSV，按 <a href="#sec4">第 4 节 schema</a> 的列名映射到一份新文件 <code>~/Documents/AI-Workshop/standardized.csv</code>』 — Cowork 一次跑完，下次就用 standardized.csv。
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 6: 脱敏 -->
+    <div class="section" id="sec6">
+      <div class="section-h"><span class="num">6</span>脱敏要素 — 哪些必删、哪些可保留 <span class="tag">DATA SANITIZATION</span></div>
+      <div class="section-body">
+        <p>Cowork 通过 Filesystem Connector 读你电脑上的 CSV — 数据本身在你电脑没"上云"，但 prompt 出去时 Cowork 会读这些字段。所以<strong>放进 Filesystem 之前先脱敏</strong>是最稳做法。</p>
+
+        <div class="checklist-grid">
+          <div class="ci must">
+            <strong>❌ 必删（PII / 财税敏感）</strong>
+            <ul style="margin-top:6px;padding-left:18px">
+              <li>员工姓名 → 编号（员工 A / 员工 B）</li>
+              <li>员工 TFN（Tax File Number）→ <strong>整列删除</strong></li>
+              <li>客户/供应商真实公司名 → 编号（客户 12）</li>
+              <li>真实 ABN → 假码或删除（除非分析必须）</li>
+              <li>银行 BSB / 账号 → 整列删除</li>
+              <li>个人邮箱 / 电话 / 地址 → 删除</li>
+            </ul>
+          </div>
+          <div class="ci opt">
+            <strong>✅ 可保留（且应保留）</strong>
+            <ul style="margin-top:6px;padding-left:18px">
+              <li>日期（保留原值，时间序列分析要）</li>
+              <li>金额（保留原值，扰动会破坏归因）</li>
+              <li>account_code / account_name（聚合层级，不算敏感）</li>
+              <li>category（Revenue / COGS / OpEx 大类）</li>
+              <li>GST 字段（金额 + treatment）</li>
+              <li>tracking_category（部门 / 项目 / 渠道，已聚合）</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="key-callout">
+          <strong>映射表本地保存原则：</strong>『客户 12 = XXX Pty Ltd』这张映射表 <strong>不进 Filesystem 授权目录</strong> — 用 Excel 加密码或直接打印纸版，放抽屉。Cowork 永远不该看到这张表。
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 7: Prompt 增项 -->
+    <div class="section" id="sec7">
+      <div class="section-h"><span class="num">7</span>给 Cowork 的『澳洲口径』Prompt 增项 <span class="tag">PROMPT BOOSTER</span></div>
+      <div class="section-body">
+        <p>课堂上 5 个 prompt 是<strong>通用版</strong>。回去用真实 AU 数据时，<strong>每个 prompt 顶部加一段澳洲口径声明</strong>，Cowork 会少瞎猜：</p>
+
+        <div class="prompt-snippet">
+          <span class="label">AU 口径声明 · 通用前缀（粘到任何 prompt 顶部）</span>
+口径声明：本数据为<strong>澳洲单位</strong>。
+- 财年（FY）：7 月 1 日 → 次年 6 月 30 日（如 FY2025 = 2024-07 至 2025-06）。
+- 报送：<strong>季度 BAS</strong>（FY Q1=7-9 / Q2=10-12 / Q3=1-3 / Q4=4-6）。
+- GST：<code>amount</code> 列为含 GST 总额（GST-inclusive），<code>gst_amount</code> 单列。
+- 跨期对比：所有"同比/环比"按 FY 季度，<strong>不要</strong>按自然年。
+- 货币：默认 AUD。
+- 异常归因：考虑 BAS 报送时点（4 月 / 7 月 / 10 月 / 2 月底前后）的 timing 调整。
+        </div>
+
+        <p><strong>融合后的 Prompt ① 损益三段式（AU 版）样例</strong>：</p>
+
+        <pre class="code"><span class="cm"># 顶部：AU 口径声明（同上）</span>
+<span class="cm"># 然后：原 prompt-pack 第 ① 个 prompt（损益三段式 What/Why/So What）</span>
+
+<span class="kw">你是一位资深财务分析师</span>。我给你一份 [<span class="v">公司名</span>] FY[<span class="v">2025 Q3</span>] 的损益数据
+（CSV 已通过 Filesystem 读取：~/Documents/AI-Workshop/standardized.csv）。
+
+请用『What / Why / So What』三段式给我一份 1 页简报，<strong>所有跨期对比按 FY 季度</strong>。
+
+【What】用 5-7 句话客观陈述本期数据特征 ...
+【Why】3 个最可能的归因 ... <strong>归因时考虑 BAS 报送时点（4 月底前后的 timing 调整）</strong>
+【So What】3 条管理层决策建议 ...</pre>
+
+        <div class="ok-callout">
+          <strong>把这段口径前缀也存成 Cowork Skill：</strong>命名 <code>au-context</code>，调用 <code>/au-context</code> 即可在任何 prompt 前自动注入。这样你 5 个会计场景 Skill + 1 个 au-context = <strong>『AU-aware 会计 Skill 包』</strong>。
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 8: Checklist -->
+    <div class="section" id="sec8">
+      <div class="section-h"><span class="num">8</span>一页 Checklist（打印贴工位） <span class="tag">PRINTABLE</span></div>
+      <div class="section-body">
+        <p>每次拿真实数据放进 Cowork 之前，按这张表过一遍：</p>
+
+        <div class="checklist-grid">
+          <div class="ci">
+            <strong>① 数据导出</strong>
+            <ul style="margin-top:4px;padding-left:18px;font-size:12px">
+              <li>☐ 从 Xero/MYOB/QB 导出 CSV</li>
+              <li>☐ 时间范围按 FY 季度切</li>
+              <li>☐ 含 GST 列（amount / gst_amount）</li>
+            </ul>
+          </div>
+          <div class="ci">
+            <strong>② 列名映射</strong>
+            <ul style="margin-top:4px;padding-left:18px;font-size:12px">
+              <li>☐ 7 列必填齐：date / account_code / account_name / category / amount / gst_amount / contact</li>
+              <li>☐ 列名英文小写连字符</li>
+            </ul>
+          </div>
+          <div class="ci must">
+            <strong>③ 脱敏（不可省）</strong>
+            <ul style="margin-top:4px;padding-left:18px;font-size:12px">
+              <li>☐ 员工姓名 → 编号</li>
+              <li>☐ TFN / 银行账号整列删</li>
+              <li>☐ 客户公司名 → 客户 N</li>
+              <li>☐ 映射表加密码本地保存</li>
+            </ul>
+          </div>
+          <div class="ci">
+            <strong>④ 放进 Filesystem</strong>
+            <ul style="margin-top:4px;padding-left:18px;font-size:12px">
+              <li>☐ 存到 ~/Documents/AI-Workshop/</li>
+              <li>☐ Filesystem Connector 已授权该目录</li>
+              <li>☐ 文件名：YYYY-MM-{slug}.csv</li>
+            </ul>
+          </div>
+          <div class="ci">
+            <strong>⑤ Prompt 加 AU 口径</strong>
+            <ul style="margin-top:4px;padding-left:18px;font-size:12px">
+              <li>☐ 顶部加 au-context 前缀（或 Skill 调起）</li>
+              <li>☐ 明确写 FY 季度 vs 自然年</li>
+              <li>☐ 明确 GST 含税口径</li>
+            </ul>
+          </div>
+          <div class="ci">
+            <strong>⑥ 跑完复核</strong>
+            <ul style="margin-top:4px;padding-left:18px;font-size:12px">
+              <li>☐ 数字：用 Excel 抽 2-3 行复算</li>
+              <li>☐ 归因：问 Cowork『还有什么解释』(prompt ②)</li>
+              <li>☐ 结论：自己读出来一遍听有没有套话</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="key-callout" style="margin-top:18px">
+          <strong>⏱ 习惯了之后</strong>这 6 步从原始数据到 Cowork 跑出第一份分析大概 <strong>15-20 分钟</strong>。第一次会久一些（30-45 分钟），主要花在列名映射和脱敏。<strong>把这两步存成你自己的『准备模板』</strong>（Excel 公式 + Skill），之后每月只是换数据，不用重做。
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer">© AI Accounting Workshop · AU Data Prep Guide v1 · 实操参考，不构成法律/合规建议 · 内容可复制使用，二次发表请注明出处</div>
+
+  </div>
+
+</body>
+</html>

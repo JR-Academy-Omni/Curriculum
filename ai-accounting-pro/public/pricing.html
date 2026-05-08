@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>定价 + 报名 · AI 会计 Pro 6 周训练营</title>
+  <meta name="description" content="4 渠道定价 · 引流课转化 $1,799 / 协会 $1,899 / 团购 $1,899 / 标准 $2,299 AUD · 7 天退款保障 · 10-12 人小班，先到先得">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--indigo:#6366f1;--teal:#10b981;--orange:#FF914D;--yellow:#FFDE59;--dark:#10162f;--bg:#fafafa}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:var(--bg);color:#1a1a1a;line-height:1.6}
+    .header{background:linear-gradient(135deg,#10162f 0%,#10b981 100%);color:#fff;padding:50px 20px 40px;text-align:center;border-bottom:4px solid #000}
+    .header h1{font-size:clamp(28px,5vw,42px);font-weight:900;line-height:1.15;letter-spacing:-1px}
+    .header .sub{margin-top:14px;opacity:0.92;font-size:15px;max-width:780px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .nav-bar{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+    .nav-bar a{color:#fff;text-decoration:none;padding:7px 14px;border:2px solid rgba(255,255,255,0.4);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.8px;font-weight:700}
+    .nav-bar a:hover{background:rgba(255,255,255,0.15);border-color:#fff}
+    .c{max-width:1200px;margin:0 auto;padding:34px 20px}
+
+    .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:20px 0}
+    .price-card{border:3px solid #000;background:#fff;padding:24px 20px;display:flex;flex-direction:column;position:relative;box-shadow:6px 6px 0 #000;transition:all 0.15s}
+    .price-card.featured{border-color:#FF914D;box-shadow:6px 6px 0 #FF914D;background:#fff7ed;transform:translateY(-4px)}
+    .price-card .badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#FF914D;color:#10162f;padding:5px 14px;font-size:11px;font-weight:800;font-family:'Space Mono',monospace;letter-spacing:0.5px;border:2px solid #000;text-transform:uppercase;white-space:nowrap}
+    .price-card .ch-name{font-family:'Space Mono',monospace;font-size:11px;color:#FF914D;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+    .price-card .ch-name.ind{color:#6366f1}
+    .price-card .ch-name.assoc{color:#10b981}
+    .price-card .ch-name.b2b{color:#CB6CE6}
+    .price-card .price-now{font-family:'Bricolage Grotesque',sans-serif;font-size:42px;font-weight:900;color:#10162f;line-height:1;margin:6px 0}
+    .price-card .price-now small{font-size:18px;opacity:0.7}
+    .price-card .price-old{font-size:14px;color:#999;text-decoration:line-through;margin-bottom:4px}
+    .price-card .save{font-family:'Space Mono',monospace;font-size:11px;color:#10b981;font-weight:800;margin-bottom:14px;letter-spacing:0.5px}
+    .price-card .desc{font-size:13px;color:#475569;line-height:1.65;margin-bottom:14px}
+    .price-card .includes{font-size:12px;line-height:1.7;flex:1;margin-bottom:18px}
+    .price-card .includes strong{color:#10162f;font-size:11px;font-family:'Space Mono',monospace;letter-spacing:0.5px;display:block;margin-bottom:6px;color:#666;text-transform:uppercase}
+    .price-card .includes ul{padding-left:18px;color:#444}
+    .price-card .includes li{margin-bottom:3px}
+    .price-card .btn{display:block;text-align:center;padding:12px 18px;background:#10162f;color:#fff;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #10162f;font-family:'Bricolage Grotesque',sans-serif;letter-spacing:0.5px}
+    .price-card .btn:hover{background:#FF914D;border-color:#FF914D}
+    .price-card.featured .btn{background:#FF914D;border-color:#FF914D}
+    .price-card.featured .btn:hover{background:#10162f;border-color:#10162f}
+
+    .roi-box{margin:30px 0;padding:28px;background:linear-gradient(135deg,#dcfce7 0%,#f0fdf4 100%);border:3px solid #10b981;box-shadow:6px 6px 0 #10b981}
+    .roi-box h2{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:#065f46;margin-bottom:12px}
+    .roi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0}
+    .roi-stat{text-align:center;padding:18px 14px;background:#fff;border:2px solid #10b981}
+    .roi-stat .num{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:900;color:#065f46;line-height:1}
+    .roi-stat .unit{font-size:11px;color:#10b981;font-weight:700;font-family:'Space Mono',monospace;margin-top:3px;letter-spacing:0.5px}
+    .roi-stat .lbl{font-size:11.5px;color:#666;margin-top:5px;line-height:1.4}
+
+    .what-included{margin:30px 0}
+    .what-included h2{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;margin-bottom:14px;color:#10162f}
+    .incl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .incl-card{border:2px solid #000;padding:16px;background:#fff;box-shadow:4px 4px 0 #6366f1}
+    .incl-card .ic{font-size:28px;line-height:1;margin-bottom:6px}
+    .incl-card h4{font-size:14px;font-weight:800;color:#10162f;margin-bottom:4px}
+    .incl-card p{font-size:12.5px;color:#475569;line-height:1.6}
+
+    .policy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0}
+    .policy-card{padding:18px;border:2px solid #ddd;background:#fff}
+    .policy-card.refund{border-color:#10b981;background:#f0fdf4}
+    .policy-card.cancel{border-color:#f59e0b;background:#fef3c7}
+    .policy-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;margin-bottom:8px}
+    .policy-card.refund h4{color:#065f46}
+    .policy-card.cancel h4{color:#92400e}
+    .policy-card p{font-size:13px;line-height:1.7;color:#444}
+    .policy-card ul{padding-left:18px;font-size:13px;line-height:1.8;color:#444}
+
+    .registration{margin:30px 0;padding:30px 24px;background:#10162f;color:#fff;border:3px solid #000;box-shadow:8px 8px 0 #FFDE59;text-align:center}
+    .registration h2{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;margin-bottom:10px}
+    .registration p{font-size:14px;opacity:0.9;max-width:700px;margin:0 auto 18px}
+    .reg-form{max-width:540px;margin:0 auto;padding:18px;background:#fff;color:#10162f}
+    .reg-form .field{margin-bottom:12px;text-align:left}
+    .reg-form .field label{display:block;font-size:11px;font-weight:700;font-family:'Space Mono',monospace;letter-spacing:0.5px;color:#666;margin-bottom:4px;text-transform:uppercase}
+    .reg-form .field input,.reg-form .field select{width:100%;padding:10px 12px;border:2px solid #ddd;font-size:14px;font-family:inherit;background:#fff}
+    .reg-form .field input:focus,.reg-form .field select:focus{outline:none;border-color:#FF914D}
+    .reg-form button{width:100%;padding:14px;background:#FF914D;color:#10162f;border:3px solid #10162f;font-weight:800;font-size:16px;font-family:'Bricolage Grotesque',sans-serif;cursor:pointer;letter-spacing:0.5px;margin-top:6px}
+    .reg-form button:hover{background:#FFDE59}
+
+    .b2b-box{margin:24px 0;padding:24px;background:#fff;border:3px solid #CB6CE6;box-shadow:6px 6px 0 #CB6CE6}
+    .b2b-box h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;color:#10162f;margin-bottom:8px}
+    .b2b-box p{font-size:13.5px;line-height:1.75;color:#444;margin-bottom:8px}
+    .b2b-box ul{padding-left:22px;font-size:13.5px;line-height:1.75;color:#444}
+
+    .footer{margin-top:36px;padding:24px;text-align:center;border-top:3px solid #000;color:#888;font-size:12px;font-family:'Space Mono',monospace;letter-spacing:0.5px}
+
+    @media(max-width:900px){.price-grid{grid-template-columns:repeat(2,1fr)}.roi-grid{grid-template-columns:repeat(2,1fr)}.incl-grid{grid-template-columns:1fr 1fr}.policy-grid{grid-template-columns:1fr}}
+    @media(max-width:640px){.price-grid,.roi-grid,.incl-grid{grid-template-columns:1fr}.header{padding:34px 14px}}
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>4 个渠道，自己选最划算的入口</h1>
+    <div class="sub">
+      AI 会计 Pro · 6 周 12 小时小班训练营 · 10-12 人 · cohort-based <br>
+      引流课转化 <strong>$1,799</strong> · 协会会员 <strong>$1,899</strong> · 团购 ≥3 人 <strong>$1,899/人</strong> · 标准价 <strong>$2,299</strong> AUD（含 GST）
+    </div>
+    <nav class="nav-bar">
+      <a href="./curriculum.html">← 返回课程大纲</a>
+      <a href="./poster.html">🖼 海报</a>
+      <a href="../ai-accounting-workshop/curriculum.html">先看 4h 引流课</a>
+    </nav>
+  </div>
+
+  <div class="c">
+
+    <!-- Pricing Grid -->
+    <div class="price-grid">
+
+      <!-- Channel 1: From Workshop (FEATURED) -->
+      <div class="price-card featured">
+        <div class="badge">🔥 最划算</div>
+        <div class="ch-name">⭐ 4H 引流课转化</div>
+        <div class="price-old">原价 $2,299 AUD</div>
+        <div class="price-now">$1,799<small> AUD</small></div>
+        <div class="save">SAVE $500 · 78 折</div>
+        <div class="desc">4h 引流课结业 4 周内报名享转化价。最经济入口。</div>
+        <div class="includes">
+          <strong>报名要求</strong>
+          <ul>
+            <li>4h ai-accounting-workshop 结业证明</li>
+            <li>结业后 28 天内报名</li>
+          </ul>
+          <strong>包含全部</strong>
+          <ul>
+            <li>6 周课 + 录像永久</li>
+            <li>2 次 30min 1v1 office hour</li>
+            <li>12 周轻量答疑群</li>
+            <li>结业证书 + Demo Day 录像</li>
+            <li>12+ Cowork Skill 库</li>
+          </ul>
+        </div>
+        <a href="mailto:hello@jiangren.com.au?subject=AI%20Pro%20%E8%BD%AC%E5%8C%96%E4%BB%B7%E6%8A%A5%E5%90%8D&body=%E6%88%91%E5%9C%A8%204h%20%E5%BC%95%E6%B5%81%E8%AF%BE%20cohort%20%5B___%5D%20%E5%B7%B2%E7%BB%93%E4%B8%9A%EF%BC%8C%E6%83%B3%E6%8A%A5%2012h%20Pro%20%E4%B8%8B%E4%B8%80%E6%9C%9F%E3%80%82" class="btn">$1,799 报名 →</a>
+      </div>
+
+      <!-- Channel 2: Association -->
+      <div class="price-card">
+        <div class="ch-name assoc">协会会员</div>
+        <div class="price-old">原价 $2,299 AUD</div>
+        <div class="price-now">$1,899<small> AUD</small></div>
+        <div class="save">SAVE $400 · 83 折</div>
+        <div class="desc">协会发邮件 / 群推荐链接来。协会会获 5-10% referral 分成。</div>
+        <div class="includes">
+          <strong>报名要求</strong>
+          <ul>
+            <li>有效协会会员证明</li>
+            <li>从协会推荐链接进入</li>
+          </ul>
+          <strong>包含全部</strong>
+          <ul>
+            <li>6 周课 + 录像永久</li>
+            <li>2 次 30min 1v1 office hour</li>
+            <li>12 周轻量答疑群</li>
+            <li>结业证书 + Demo Day 录像</li>
+            <li>12+ Cowork Skill 库</li>
+          </ul>
+        </div>
+        <a href="mailto:hello@jiangren.com.au?subject=AI%20Pro%20%E5%8D%8F%E4%BC%9A%E4%BC%9A%E5%91%98%E4%BB%B7%E6%8A%A5%E5%90%8D&body=%E6%88%91%E6%98%AF%20%5B%E5%8D%8F%E4%BC%9A%E5%90%8D%5D%20%E4%BC%9A%E5%91%98%EF%BC%8C%E4%BC%9A%E5%91%98%E5%8F%B7%5B___%5D%EF%BC%8C%E6%83%B3%E6%8A%A5%E4%B8%8B%E4%B8%80%E6%9C%9F%2012h%20Pro%E3%80%82" class="btn">$1,899 报名 →</a>
+      </div>
+
+      <!-- Channel 3: B2B Team -->
+      <div class="price-card">
+        <div class="ch-name b2b">B2B 团购</div>
+        <div class="price-old">原价 $2,299 / 人</div>
+        <div class="price-now">$1,899<small> /人</small></div>
+        <div class="save">SAVE $400/人 · 单位发票</div>
+        <div class="desc">同一期 cohort 同时报名 ≥3 人。事务所 / 企业财务团队首选。</div>
+        <div class="includes">
+          <strong>报名要求</strong>
+          <ul>
+            <li>≥3 人同期 cohort 报名</li>
+            <li>单位发票（含 GST）</li>
+          </ul>
+          <strong>额外加值</strong>
+          <ul>
+            <li>团内学员可互相 review homework</li>
+            <li>Demo Day 团内可联合 pitch</li>
+            <li>≥5 人议价 + 课程定制（联系咨询）</li>
+          </ul>
+        </div>
+        <a href="mailto:hello@jiangren.com.au?subject=AI%20Pro%20B2B%20%E5%9B%A2%E8%B4%AD%E6%8A%A5%E5%90%8D&body=%E5%8D%95%E4%BD%8D%5B___%5D%20%E6%83%B3%E5%9B%A2%E8%B4%AD%E6%8A%A5%E5%90%8D%2012h%20Pro%EF%BC%8C%E4%BA%BA%E6%95%B0%5B___%5D%E4%BA%BA%EF%BC%8C%E5%8D%95%E4%BD%8D%E5%8F%91%E7%A5%A8%E4%BF%A1%E6%81%AF%5B___%5D%E3%80%82" class="btn">联系团购 →</a>
+      </div>
+
+      <!-- Channel 4: Direct -->
+      <div class="price-card">
+        <div class="ch-name ind">JR 直接招生</div>
+        <div class="price-old">&nbsp;</div>
+        <div class="price-now">$2,299<small> AUD</small></div>
+        <div class="save">标准价 · 无渠道折扣</div>
+        <div class="desc">SEO / Google Ads / 公众号 / 小红书直接报。无附加要求。</div>
+        <div class="includes">
+          <strong>报名要求</strong>
+          <ul>
+            <li>无 — 直接报名即可</li>
+          </ul>
+          <strong>包含全部</strong>
+          <ul>
+            <li>6 周课 + 录像永久</li>
+            <li>2 次 30min 1v1 office hour</li>
+            <li>12 周轻量答疑群</li>
+            <li>结业证书 + Demo Day 录像</li>
+            <li>12+ Cowork Skill 库</li>
+          </ul>
+        </div>
+        <a href="mailto:hello@jiangren.com.au?subject=AI%20Pro%20%E6%A0%87%E5%87%86%E4%BB%B7%E6%8A%A5%E5%90%8D&body=%E6%88%91%E6%83%B3%E6%8A%A5%E4%B8%8B%E4%B8%80%E6%9C%9F%2012h%20Pro%EF%BC%8C%E6%A0%87%E5%87%86%E4%BB%B7%20%242%2C299%E3%80%82" class="btn">$2,299 报名 →</a>
+      </div>
+
+    </div>
+
+    <!-- ROI -->
+    <div class="roi-box">
+      <h2>💰 不卖故事，算清楚账 — 2-4 个月回本</h2>
+      <p style="font-size:13.5px;color:#065f46;margin-bottom:6px">会计的时间是钱。这门课节省的时间 × 你的时薪 = 实打实的回本。</p>
+      <div class="roi-grid">
+        <div class="roi-stat">
+          <div class="num">8-15</div>
+          <div class="unit">h / month</div>
+          <div class="lbl">月度节省时间</div>
+        </div>
+        <div class="roi-stat">
+          <div class="num">$80</div>
+          <div class="unit">AUD / hour</div>
+          <div class="lbl">会计中位时薪 (AU 2025)</div>
+        </div>
+        <div class="roi-stat">
+          <div class="num">$640+</div>
+          <div class="unit">AUD / month</div>
+          <div class="lbl">月度节省金额</div>
+        </div>
+        <div class="roi-stat">
+          <div class="num">2-4</div>
+          <div class="unit">months</div>
+          <div class="lbl">课程回本周期</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:#065f46;margin-top:14px">
+        <strong>第 5 个月起，你赚的全是净利润。</strong>年化节省 $7,680 - $14,400 AUD。如果你单位有 5 个会计 → 单位整体节省 $38k - $72k/年。
+      </p>
+    </div>
+
+    <!-- What's Included -->
+    <div class="what-included">
+      <h2>📦 所有渠道都包含什么（4 档价位 = 一样的内容）</h2>
+      <p style="font-size:13.5px;color:#475569;margin-bottom:14px">不管你走哪个渠道，6 周课 + 1v1 office hour + Demo Day + 全部交付物完全一样。<strong>价格只是入口，内容不打折</strong>。</p>
+      <div class="incl-grid">
+        <div class="incl-card">
+          <div class="ic">📅</div>
+          <h4>6 周 × 2h Cowork 现场课</h4>
+          <p>Zoom 同步上课，10-12 人小班。课后录像永久 access。</p>
+        </div>
+        <div class="incl-card">
+          <div class="ic">🎯</div>
+          <h4>2 次 30min 1v1 Office Hour</h4>
+          <p>W3 + W5 课后各 1 次。教练 review 你单位真实场景的 work，给定制建议。</p>
+        </div>
+        <div class="incl-card">
+          <div class="ic">📝</div>
+          <h4>5-6 个 Homework（用单位真实数据）</h4>
+          <p>每周 2.5-5h homework，脱敏后用你单位真实数据跑。教练改作业。</p>
+        </div>
+        <div class="incl-card">
+          <div class="ic">🧩</div>
+          <h4>12+ Cowork Skill 库</h4>
+          <p>课上一边学一边存 — 走时桌面有 12+ 个会计场景 Skill，月底一句话调起。</p>
+        </div>
+        <div class="incl-card">
+          <div class="ic">🎤</div>
+          <h4>Demo Day 录像</h4>
+          <p>5min 个人 pitch（讲自己单位 AI 改造），可剪辑后放 LinkedIn / 简历 / 内部晋升 portfolio。</p>
+        </div>
+        <div class="incl-card">
+          <div class="ic">📜</div>
+          <h4>结业证书 + JR Pro 校友身份</h4>
+          <p>JR Academy AI 会计 Pro 完成证书（电子版）+ 不定期校友 alumni 活动 / 行业资源分享。</p>
+        </div>
+        <div class="incl-card">
+          <div class="ic">💬</div>
+          <h4>12 周轻量答疑群</h4>
+          <p>Cohort 专属群（3 个月后归档）。课后真实使用时卡住了有地方问。</p>
+        </div>
+        <div class="incl-card">
+          <div class="ic">🎬</div>
+          <h4>课程录像 + 课件（永久）</h4>
+          <p>6 节 Zoom 录像 + 课件 PDF + 讲师问答合集。落下 1 周可用录像补。</p>
+        </div>
+        <div class="incl-card">
+          <div class="ic">🇦🇺</div>
+          <h4>4h 引流课全套资源（赠送）</h4>
+          <p>含《澳洲会计数据准备指南》+ 5 个基础 Skill + sample-data.csv。引流课没上的同学进 Pro 时一并送。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- B2B 内训 -->
+    <div class="b2b-box">
+      <h3>🏢 B2B 内训定制（≥5 人单位）</h3>
+      <p>你单位 5 人以上想集中培训？走单位级别定制方案：</p>
+      <ul>
+        <li>课程内容定制（用你单位真实业务场景做 case，homework 全部基于单位真实流水）</li>
+        <li>专属 cohort（不混报）+ 单位讲师 / IT 在场协调</li>
+        <li>Demo Day 改成单位内部分享会（管理层旁听）</li>
+        <li>议价 — $1,499-$1,799/人 视团规模（≥10 人议价空间更大）</li>
+        <li>单位发票（含 GST）+ 培训费可走单位预算</li>
+      </ul>
+      <p style="margin-top:12px"><strong>联系：</strong>邮件 <a href="mailto:hello@jiangren.com.au?subject=AI%20Pro%20B2B%20%E5%8D%95%E4%BD%8D%E5%AE%9A%E5%88%B6">hello@jiangren.com.au</a> 注明『B2B 内训咨询』+ 单位 + 人数 + 想覆盖场景，48h 内回复方案。</p>
+    </div>
+
+    <!-- Policies -->
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;margin:30px 0 14px;color:#10162f">📋 退款 + 取消政策（透明）</h2>
+    <div class="policy-grid">
+      <div class="policy-card refund">
+        <h4>💰 退款政策</h4>
+        <ul>
+          <li><strong>课程开始前 7 天</strong>：100% 退款（无理由）</li>
+          <li><strong>W1 课后 7 天内</strong>：50% 退款（已发 1 节录像 + 部分课件）</li>
+          <li><strong>W1 课后 7 天后</strong>：不退款（已发 ≥2 节录像）</li>
+          <li>退款 7 个工作日内原路退回</li>
+        </ul>
+      </div>
+      <div class="policy-card cancel">
+        <h4>⚠️ Cohort 取消保障</h4>
+        <ul>
+          <li>开课前 7 天报名 &lt; 6 人 → cohort 取消</li>
+          <li>取消时 100% 退款 OR 转下一期 cohort（你选）</li>
+          <li>转下一期不另收费</li>
+          <li>邮件 + 电话双通知，不会突然取消</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>📅 改期政策</h4>
+        <ul>
+          <li>课程开始前可免费改 1 次 cohort</li>
+          <li>课程开始后跳 ≤2 周（用录像补）— 不另收费</li>
+          <li>跳 ≥3 周 → 转下一期 cohort 不另收费</li>
+          <li>Demo Day 必须本期参加（否则证书延期）</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>🔒 数据隐私</h4>
+        <ul>
+          <li>JR 永远不接触你单位真实数据</li>
+          <li>Homework 全部脱敏在你电脑本地</li>
+          <li>Office Hour share screen 时教练不录屏</li>
+          <li>Demo Day 录像未经你本人同意不公开</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Registration -->
+    <div class="registration">
+      <h2>准备报名了？</h2>
+      <p>下一期 cohort 开课时间公告 4 周前发出。先到先得，10-12 人封班。</p>
+      <p style="font-size:13.5px;opacity:0.85;margin-bottom:0"><strong>3 种方式：</strong>① 直接邮件 hello@jiangren.com.au · ② 上方 4 个渠道按钮发邮件 · ③ 下方表单提交意向（我们 24h 内联系你）</p>
+
+      <div class="reg-form" style="margin-top:24px">
+        <div class="field">
+          <label>姓名</label>
+          <input type="text" placeholder="Full Name">
+        </div>
+        <div class="field">
+          <label>邮箱</label>
+          <input type="email" placeholder="email@example.com">
+        </div>
+        <div class="field">
+          <label>单位 / 公司</label>
+          <input type="text" placeholder="Company / Organization">
+        </div>
+        <div class="field">
+          <label>哪个渠道</label>
+          <select>
+            <option>4h 引流课转化（$1,799）— 已结业证明</option>
+            <option>协会会员推荐（$1,899）— 注明协会名</option>
+            <option>B2B 团购（$1,899/人）— 同期 ≥3 人</option>
+            <option>JR 直接招生（$2,299）— 标准价</option>
+            <option>不确定 / 想了解更多再决定</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>有什么想问的？（可选）</label>
+          <input type="text" placeholder="比如下一期开课时间 / 单位 IT 限制 / 其他">
+        </div>
+        <button onclick="alert('表单只是设计稿。请直接邮件 hello@jiangren.com.au，主题写「AI Accounting Pro 报名意向」+ 你的渠道选择，24h 内回复。')">提交意向 — JR 24h 内联系你</button>
+        <p style="font-size:11px;color:#888;text-align:center;margin-top:10px">⚠️ 表单只是设计稿，目前仅做静态展示。请走邮件方式正式报名。</p>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:14px"><a href="./curriculum.html" style="color:#666;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.5px">← 返回课程大纲看 6 周内容详情</a></p>
+
+    <div class="footer">© AI Accounting Pro · Pricing v1 · jiangren.com.au · 价格含 GST · 转账 / 信用卡 / Stripe 均可</div>
+
+  </div>
+
+</body>
+</html>

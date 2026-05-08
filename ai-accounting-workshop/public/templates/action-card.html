@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>7 天行动卡 · AI 会计工作坊</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .card{max-width:840px;margin:24px auto;padding:32px;background:#fffbea;border:3px solid #000;box-shadow:8px 8px 0 #FF914D}
+    .card h2{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;letter-spacing:-0.5px;border-bottom:3px solid #FF914D;padding-bottom:10px;margin-bottom:8px}
+    .card .meta{font-family:'Space Mono',monospace;font-size:11px;color:#666;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+    .name-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin-bottom:24px;font-size:13px}
+    .name-row .field{border-bottom:2px solid #999;padding-bottom:6px;min-height:32px;font-family:'Space Mono',monospace}
+    .name-row .lbl{display:block;font-size:10px;color:#999;letter-spacing:1px;text-transform:uppercase;margin-top:4px;font-family:'DM Sans',sans-serif}
+
+    .day-row{margin-bottom:18px;border:2px solid #000;background:#fff;display:grid;grid-template-columns:80px 1fr;overflow:hidden}
+    .day-tag{background:#10162f;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;letter-spacing:-1px}
+    .day-tag.d1{background:#10b981}
+    .day-tag.d3{background:#FF914D}
+    .day-tag.d7{background:#10162f}
+    .day-body{padding:14px 18px}
+    .day-body .when{font-family:'Space Mono',monospace;font-size:11px;color:#666;letter-spacing:1px;text-transform:uppercase}
+    .day-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;margin:4px 0 8px;color:#10162f}
+    .day-body .prompt{font-size:12.5px;color:#475569;margin-bottom:10px;font-style:italic;line-height:1.6}
+    .day-body .write-line{border-bottom:1px solid #999;min-height:30px;font-size:13px;font-family:'DM Sans',sans-serif;margin-bottom:8px;padding-bottom:4px}
+    .checkbox-row{display:flex;gap:14px;font-size:12px;color:#666;margin-top:10px;padding-top:8px;border-top:1px dashed #ccc}
+    .checkbox-row label{display:flex;align-items:center;gap:6px;cursor:pointer}
+    .checkbox-row input{accent-color:#FF914D}
+
+    .summary{margin-top:24px;padding:18px 20px;background:#10162f;color:#fff;border:3px solid #000}
+    .summary h3{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;margin-bottom:10px}
+    .summary p{font-size:12.5px;line-height:1.7;opacity:0.9}
+    .summary .review-link{font-family:'Space Mono',monospace;font-size:11px;background:#FF914D;color:#fff;padding:2px 8px;letter-spacing:1px}
+
+    @media print {
+      body{background:#fff !important}
+      .header,.footer,.nav{display:none !important}
+      .card{box-shadow:none;border:1px solid #000;margin:0;max-width:100%}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>7 天行动卡</h1>
+    <div class="sub">AI 会计工作坊 · 模块 6 主交付物 · 课后这 7 天决定你能不能真的用上</div>
+    <div class="nav">
+      <a href="../curriculum.html">← 课程大纲</a>
+      <a href="./prompt-pack.html">提示词包</a>
+      <a href="./au-data-prep.html">🇦🇺 AU 数据指南</a>
+      <a href="javascript:window.print()">🖨 打印</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>7 天行动卡</h2>
+    <div class="meta">7-DAY ACTION CARD · 写下来 · 拍照备份 · 不写就忘</div>
+
+    <div class="name-row">
+      <div>
+        <div class="field"></div>
+        <span class="lbl">姓名</span>
+      </div>
+      <div>
+        <div class="field"></div>
+        <span class="lbl">所在单位 / 部门</span>
+      </div>
+      <div>
+        <div class="field"></div>
+        <span class="lbl">课程日期</span>
+      </div>
+    </div>
+
+    <!-- D+1 -->
+    <div class="day-row">
+      <div class="day-tag d1">D+1</div>
+      <div class="day-body">
+        <div class="when">明天 · 30 分钟内可做完</div>
+        <h4>把今天的 5 个 prompt 跑一遍自己单位的真实数据（脱敏后）</h4>
+        <div class="prompt">不必做完一份完整简报。挑其中 1 个 prompt（推荐 ① 损益分析三段式），喂自己单位上个月的 P&L（脱敏后），跑一次。目的：在记忆还热的时候建立『真的能用』的体感。卡住了发邮件给助教。</div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="checkbox-row">
+          <label><input type="checkbox"> 已完成</label>
+          <label><input type="checkbox"> 已脱敏</label>
+          <label><input type="checkbox"> 已截图存档</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- D+3 -->
+    <div class="day-row">
+      <div class="day-tag d3">D+3</div>
+      <div class="day-body">
+        <div class="when">第 3 天 · 60 分钟</div>
+        <h4>把 D+1 的输出改写成一段 3 分钟讲稿，发给一个同事 / 上级请反馈</h4>
+        <div class="prompt">用 prompt 模板 ④（管理层汇报讲稿）。不需要真的找老板讲，发给一个你信任的同事，请他/她回答两个问题：(a) 你听完，记住了哪句话？ (b) 你听完，会想问什么问题？</div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="checkbox-row">
+          <label><input type="checkbox"> 讲稿已写</label>
+          <label><input type="checkbox"> 已发给：__________</label>
+          <label><input type="checkbox"> 收到反馈</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- D+7 -->
+    <div class="day-row">
+      <div class="day-tag d7">D+7</div>
+      <div class="day-body">
+        <div class="when">第 7 天 · 90 分钟</div>
+        <h4>把 D+1 + D+3 整合成一份 1 页正式简报，提交给直属上级 / CFO</h4>
+        <div class="prompt">不是『发邮件求 review』 — 是真的给一次工作场景下的输出。可以以『我学了一个新方法，想试试用在本月分析上』开场。重点是：把 AI 当『放大镜』而非『代笔』 — 简报里的每个数字你都能解释、每个建议你都同意。</div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="checkbox-row">
+          <label><input type="checkbox"> 简报已交</label>
+          <label><input type="checkbox"> 收到反馈</label>
+          <label><input type="checkbox"> 决定要不要进 L2</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h3>🎯 这 7 天才是关键</h3>
+      <p>
+        没在 7 天内做的事，14 天后基本不会再做 — 学完不立刻用，1 个月后这门课就只是一段记忆。<br>
+        所以填完这张卡，<strong>贴到工位上看得见的地方</strong>，每天瞄一眼。<br>
+        没有 D+21 协会复盘 / 没有助教催进度 / 没有学员群打卡 — 这 7 天是你和你自己的事。<br>
+        卡住想问问题：自己 Google / 问 Cowork 自己 / 去 jiangren.com.au 的 Prompt Lab 找相关 lab — 学习是你自己的事。
+      </p>
+    </div>
+
+    <div style="margin-top:18px;padding:14px 16px;background:#fff7ed;border:2px solid #FF914D;font-size:12px;line-height:1.7">
+      <strong>📸 课后建议：</strong>把这张卡片填完后用手机拍照存档（自己留底）。原件贴工位上，每天看一眼直到 D+7 都打勾完成。<strong>不需要发给任何人</strong> — 没有助教接收、没有协会回收。
+    </div>
+
+  </div>
+
+  <div class="footer">© AI Accounting Workshop · 7-Day Action Card v1</div>
+
+</body>
+</html>

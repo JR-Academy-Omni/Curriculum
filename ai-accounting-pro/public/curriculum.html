@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 会计 Pro · 6 周 Cowork 深度训练营 — 课程大纲</title>
+  <meta name="description" content="把 AI 接进你单位月末流水的精品训练营。6 周 × 2h 小班 cohort + 真实场景 homework + 1v1 office hour + Demo Day。每月节省 8-15h，2-4 个月回本。$1,799-$2,299 AUD。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--indigo:#6366f1;--teal:#10b981;--orange:#FF914D;--yellow:#FFDE59;--purple:#CB6CE6;--dark:#10162f;--bg:#fafafa;--border:#000}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:var(--bg);color:#1a1a1a;line-height:1.6}
+    .header{background:linear-gradient(135deg,#10162f 0%,#6366f1 50%,#FF914D 100%);color:#fff;padding:60px 20px 50px;text-align:center;border-bottom:4px solid var(--border);position:relative;overflow:hidden}
+    .header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+    .header-inner{position:relative;z-index:2}
+    .pre-title{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:0.8;margin-bottom:8px;color:#FFDE59}
+    .header h1{font-size:clamp(32px,6vw,52px);font-weight:900;line-height:1.1;letter-spacing:-1.5px}
+    .header h1 .acc{display:inline-block;background:#FF914D;color:#10162f;padding:0 12px;transform:rotate(-1deg)}
+    .header .sub{max-width:920px;margin:18px auto 0;opacity:.95;font-size:16px;line-height:1.75}
+    .price-flash{display:inline-flex;align-items:center;gap:14px;margin-top:24px;padding:12px 24px;background:#fff;color:#10162f;border:3px solid #fff;box-shadow:6px 6px 0 #FFDE59}
+    .price-flash .lbl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;color:#FF914D;font-weight:700}
+    .price-flash .now{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;color:#10162f;line-height:1}
+    .price-flash .from{font-size:13px;color:#666}
+    .tags{display:flex;gap:10px;justify-content:center;margin-top:22px;flex-wrap:wrap}
+    .tag{padding:6px 14px;font-size:12px;font-weight:700;font-family:'Space Mono',monospace;border:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);letter-spacing:0.5px}
+    .nav-bar{display:flex;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap;font-size:13px}
+    .nav-bar a{color:#fff;opacity:0.9;text-decoration:none;padding:8px 14px;border:2px solid rgba(255,255,255,0.4);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.8px;font-weight:700}
+    .nav-bar a:hover{opacity:1;background:rgba(255,255,255,0.15);border-color:#fff}
+    .nav-bar a.cta{background:#FF914D;border-color:#FF914D;color:#10162f}
+    .nav-bar a.cta:hover{background:#FFDE59;border-color:#FFDE59}
+
+    .bar{display:flex;justify-content:center;gap:36px;padding:18px;background:#fff;border-bottom:3px solid #000;flex-wrap:wrap}
+    .bar .s{text-align:center;min-width:80px}
+    .bar .n{font-size:26px;font-weight:900;color:var(--indigo);font-family:'Bricolage Grotesque',sans-serif}
+    .bar .l{font-size:11px;color:#777;font-family:'Space Mono',monospace;letter-spacing:0.5px;margin-top:2px}
+
+    .c{max-width:1200px;margin:0 auto;padding:34px 20px}
+    .box{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden;margin-bottom:28px}
+    .box-h{padding:14px 22px;border-bottom:3px solid #000;color:#fff;background:#10162f;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .pill{display:inline-block;padding:3px 10px;font-size:11px;font-weight:700;font-family:'Space Mono',monospace;background:#fff;color:#000;letter-spacing:0.5px}
+    .body{padding:20px 22px}
+    .body p{font-size:14.5px;line-height:1.8;color:#333;margin-bottom:10px}
+
+    /* Promise hero */
+    .promise{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:14px 0}
+    .pm{padding:14px 16px;border:2px solid #000;background:#fff;text-align:center;box-shadow:4px 4px 0 #FFDE59}
+    .pm .ico{font-size:30px;line-height:1;margin-bottom:6px}
+    .pm .lb{font-size:13px;font-weight:800;color:#10162f;line-height:1.4;margin-bottom:4px}
+    .pm .ds{font-size:11.5px;color:#666;line-height:1.5}
+
+    /* Week timeline */
+    .week-grid{margin-top:14px}
+    .week-card{margin-bottom:18px;border:3px solid #000;background:#fff;overflow:hidden;box-shadow:5px 5px 0 var(--w-color,#000)}
+    .week-card.w1{--w-color:#10b981}
+    .week-card.w2{--w-color:#FF914D}
+    .week-card.w3{--w-color:#CB6CE6}
+    .week-card.w4{--w-color:#6366f1}
+    .week-card.w5{--w-color:#FF914D}
+    .week-card.w6{--w-color:#10162f}
+    .week-head{padding:14px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:2px solid #000}
+    .week-head.w1{background:#dcfce7}.week-head.w2{background:#fed7aa}.week-head.w3{background:#fce7f3}
+    .week-head.w4{background:#e0e7ff}.week-head.w5{background:#fed7aa}.week-head.w6{background:#1e293b;color:#fff}
+    .week-tag{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;background:#10162f;color:#fff;padding:6px 14px;letter-spacing:-0.5px;flex-shrink:0}
+    .week-head.w6 .week-tag{background:#FFDE59;color:#10162f}
+    .week-title{font-size:17px;font-weight:800;font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;flex:1;min-width:200px}
+    .week-meta{font-family:'Space Mono',monospace;font-size:11px;color:#666;display:flex;gap:14px;flex-wrap:wrap;letter-spacing:0.5px}
+    .week-head.w6 .week-meta{color:#FFDE59}
+    .week-body{padding:18px 22px;display:grid;grid-template-columns:1.5fr 1fr;gap:18px}
+    .week-body h5{font-size:11px;font-family:'Space Mono',monospace;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+    .week-body .summary{font-size:13.5px;line-height:1.75;color:#333;margin-bottom:12px}
+    .week-body ul{padding-left:18px;color:#444}
+    .week-body li{font-size:13px;line-height:1.7;margin-bottom:4px}
+    .week-body li code{background:#f1f5f9;padding:1px 6px;font-size:11.5px;font-family:'Space Mono',monospace;color:#0f172a}
+    .week-body .homework{padding:11px 14px;background:#fff7ed;border-left:4px solid #FF914D;font-size:12.5px;line-height:1.65;margin-top:8px}
+    .week-body .homework strong{color:#9a3412}
+    .week-body .office-hour{padding:11px 14px;background:#f0fdf4;border-left:4px solid #10b981;font-size:12.5px;line-height:1.65;margin-top:8px}
+    .week-body .office-hour strong{color:#065f46}
+
+    /* Deliverables */
+    .deliv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+    .deliv-card{border:3px solid #000;padding:16px;background:#fff;box-shadow:5px 5px 0 #6366f1}
+    .deliv-card .dc-tag{font-family:'Space Mono',monospace;font-size:10px;color:#FF914D;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+    .deliv-card .dc-name{font-weight:800;font-size:15px;margin:6px 0 6px;line-height:1.3}
+    .deliv-card .dc-desc{font-size:12.5px;color:#475569;line-height:1.6}
+
+    /* ROI */
+    .roi-box{padding:24px;background:linear-gradient(135deg,#dcfce7 0%,#f0fdf4 100%);border:3px solid #10b981}
+    .roi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:14px}
+    .roi-stat{text-align:center;padding:16px;background:#fff;border:2px solid #10b981}
+    .roi-stat .num{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:900;color:#065f46;line-height:1}
+    .roi-stat .unit{font-size:12px;color:#10b981;font-weight:700;font-family:'Space Mono',monospace;margin-top:2px;letter-spacing:0.5px}
+    .roi-stat .lbl{font-size:11px;color:#666;margin-top:6px;line-height:1.4}
+    .roi-formula{margin-top:18px;padding:14px 18px;background:#10162f;color:#fff;font-family:'Space Mono',monospace;font-size:12.5px;line-height:1.85;letter-spacing:0.3px}
+    .roi-formula .h{color:#FFDE59;font-weight:700}
+
+    /* Comparison table */
+    .vs-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+    .vs-table th{background:#10162f;color:#fff;padding:10px 14px;text-align:left;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase}
+    .vs-table th:nth-child(2){background:#94a3b8}
+    .vs-table th:nth-child(3){background:#FF914D}
+    .vs-table td{padding:10px 14px;border-bottom:1px solid #eee;vertical-align:top;line-height:1.65}
+    .vs-table td:first-child{font-weight:700;color:#10162f;width:120px;background:#f8f9fa}
+    .vs-table td:nth-child(2){color:#666;font-size:12.5px}
+    .vs-table td:nth-child(3){color:#10162f;font-weight:600;background:#fff7ed}
+
+    /* Channel cards */
+    .channel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+    .ch-card{border:2px solid #000;padding:14px;background:#fff}
+    .ch-card.featured{border-color:#FF914D;background:#fff7ed;box-shadow:4px 4px 0 #FF914D}
+    .ch-card .ch-name{font-family:'Space Mono',monospace;font-size:10px;color:#FF914D;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+    .ch-card .ch-price{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:#10162f;margin:6px 0}
+    .ch-card .ch-discount{font-size:11px;color:#10b981;font-weight:700;font-family:'Space Mono',monospace}
+    .ch-card .ch-desc{font-size:12px;color:#666;line-height:1.55;margin-top:6px}
+
+    /* FAQ */
+    details{border:2px solid #e5e5e5;margin-bottom:8px}
+    details summary{padding:12px 18px;font-weight:700;font-size:14px;cursor:pointer;background:#fafafa;list-style:none}
+    details summary::-webkit-details-marker{display:none}
+    details summary::before{content:'+';display:inline-block;margin-right:10px;color:#FF914D;font-weight:900;font-size:18px;width:14px}
+    details[open] summary::before{content:'−'}
+    details>div{padding:12px 18px;font-size:13px;line-height:1.85;border-top:1px solid #eee;color:#444}
+
+    /* CTA */
+    .big-cta{margin:30px 0;padding:36px 24px;text-align:center;background:linear-gradient(135deg,#10162f 0%,#FF914D 100%);color:#fff;border:3px solid #000;box-shadow:8px 8px 0 #FFDE59}
+    .big-cta h2{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:900;letter-spacing:-1px;margin-bottom:8px}
+    .big-cta p{font-size:15px;opacity:0.95;max-width:700px;margin:0 auto 18px}
+    .big-cta .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+    .big-cta .btn{display:inline-block;padding:14px 28px;background:#fff;color:#10162f;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;border:3px solid #fff;text-decoration:none;letter-spacing:0.5px}
+    .big-cta .btn:hover{background:#FFDE59;color:#10162f;border-color:#FFDE59}
+    .big-cta .btn.outline{background:transparent;color:#fff}
+    .big-cta .btn.outline:hover{background:#fff;color:#10162f}
+
+    .footer{margin-top:40px;padding:24px;text-align:center;border-top:3px solid #000;color:#888;font-size:12px;font-family:'Space Mono',monospace;letter-spacing:0.5px}
+
+    @media(max-width:900px){
+      .promise{grid-template-columns:repeat(2,1fr)}
+      .deliv-grid{grid-template-columns:repeat(2,1fr)}
+      .roi-grid{grid-template-columns:repeat(2,1fr)}
+      .channel-grid{grid-template-columns:repeat(2,1fr)}
+      .week-body{grid-template-columns:1fr}
+    }
+    @media(max-width:640px){
+      .promise,.deliv-grid,.roi-grid,.channel-grid{grid-template-columns:1fr}
+      .bar{gap:18px}
+      .header{padding:40px 14px}
+      .big-cta h2{font-size:24px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-inner">
+      <div class="pre-title">JR ACADEMY · AI ACCOUNTING PRO · 6-WEEK COHORT</div>
+      <h1>把 AI 接进你单位<br><span class="acc">月末流水</span> · 6 周让你回本</h1>
+      <div class="sub">
+        4h 引流课让你<strong>看见</strong> Cowork 能用。这门 12h Pro 训练营让你<strong>真用起来</strong>。<br>
+        每周 2h × 6 周 + 真实场景 homework + 2 次 1v1 office hour + Demo Day。每月节省 8-15h，2-4 个月回本。
+      </div>
+      <div class="price-flash">
+        <div>
+          <div class="lbl">FROM 引流课转化价</div>
+          <div class="now">$1,799 AUD</div>
+          <div class="from">标价 $2,299 · 协会 $1,899 · 团购 $1,899/人</div>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="tag">📅 6 周 × 2h</span>
+        <span class="tag">👥 10-12 人小班</span>
+        <span class="tag">💼 真实场景 homework</span>
+        <span class="tag">🎤 Demo Day 录像</span>
+        <span class="tag">📜 结业证书</span>
+      </div>
+      <nav class="nav-bar">
+        <a href="#weeks">📅 6 周大纲</a>
+        <a href="#roi">💰 ROI 计算</a>
+        <a href="#vs">🆚 vs 4h 引流课</a>
+        <a href="#deliverables">📦 6 件交付</a>
+        <a href="#faq">❓ FAQ</a>
+        <a href="./pricing.html" class="cta">立即报名 →</a>
+        <a href="../ai-accounting-workshop/curriculum.html" style="opacity:0.5">← 4h 引流课</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="s"><div class="n">12h</div><div class="l">课堂总时</div></div>
+    <div class="s"><div class="n">6</div><div class="l">周 × 2h</div></div>
+    <div class="s"><div class="n">10-12</div><div class="l">人小班</div></div>
+    <div class="s"><div class="n">2×30m</div><div class="l">1v1 教练</div></div>
+    <div class="s"><div class="n">12+</div><div class="l">Cowork Skill</div></div>
+    <div class="s"><div class="n">$640+</div><div class="l">月度节省 ¹</div></div>
+  </div>
+
+  <div class="c">
+
+    <!-- Promise hero -->
+    <div class="box">
+      <div class="box-h">课程承诺 · 6 周后你能做到的 5 件事 <span class="pill">Promise</span></div>
+      <div class="body">
+        <div class="promise">
+          <div class="pm">
+            <div class="ico">📅</div>
+            <div class="lb">月末 close 5 天 → 1.5 天</div>
+            <div class="ds">银行对账 + accruals + journal entry 自动化</div>
+          </div>
+          <div class="pm">
+            <div class="ico">📊</div>
+            <div class="lb">Variance + 现金流 + Pack 一键生成</div>
+            <div class="ds">CFO/CEO 月会必看的 3 份报表全自动</div>
+          </div>
+          <div class="pm">
+            <div class="ico">🛡</div>
+            <div class="lb">异常检测 ongoing 监督</div>
+            <div class="ds">AI 监督员每天扫数据 → 邮件告警</div>
+          </div>
+          <div class="pm">
+            <div class="ico">💼</div>
+            <div class="lb">单位 1 条真实流水跑通</div>
+            <div class="ds">不只 sample data — 真的搬回岗位用</div>
+          </div>
+          <div class="pm">
+            <div class="ico">🎤</div>
+            <div class="lb">Demo Day 录像 + 简历资产</div>
+            <div class="ds">5min pitch 录像可放 LinkedIn</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI -->
+    <div class="box" id="roi">
+      <div class="box-h" style="background:#10b981">💰 ROI · 2-4 个月回本 <span class="pill">Return on Investment</span></div>
+      <div class="body" style="background:#f0fdf4">
+        <div class="roi-box">
+          <p style="font-size:14px;color:#065f46"><strong>不卖故事，算清楚账</strong>：会计的时间是钱。这门课节省的时间 × 你的时薪 = 实打实的回本。</p>
+          <div class="roi-grid">
+            <div class="roi-stat">
+              <div class="num">8-15</div>
+              <div class="unit">h / month</div>
+              <div class="lbl">月度节省时间</div>
+            </div>
+            <div class="roi-stat">
+              <div class="num">$80</div>
+              <div class="unit">AUD / hour</div>
+              <div class="lbl">会计中位时薪 ²</div>
+            </div>
+            <div class="roi-stat">
+              <div class="num">$640+</div>
+              <div class="unit">AUD / month</div>
+              <div class="lbl">月度节省金额</div>
+            </div>
+            <div class="roi-stat">
+              <div class="num">2-4</div>
+              <div class="unit">months</div>
+              <div class="lbl">回本周期</div>
+            </div>
+          </div>
+          <div class="roi-formula">
+            <span class="h"># 保守算法（按月度节省 8h）</span><br>
+            月度节省  = 8h × $80/h = $640<br>
+            年度节省  = $640 × 12 = $7,680<br>
+            回本周期  = $2,299 ÷ $640 = 3.6 个月<br>
+            <br>
+            <span class="h"># 乐观算法（按月度节省 15h）</span><br>
+            月度节省  = 15h × $80/h = $1,200<br>
+            年度节省  = $1,200 × 12 = $14,400<br>
+            回本周期  = $2,299 ÷ $1,200 = 1.9 个月<br>
+            <br>
+            <span class="h">→ 第 3 - 6 个月起，剩下的全是净赚。</span>
+          </div>
+          <p style="font-size:11.5px;color:#666;margin-top:12px;line-height:1.65">
+            ¹ ² ROI 基于会计行业中位时薪 $80/h（澳洲 ABS 2025）+ W1-W6 各模块汇总（月末 close 5-8h + variance 1-2h + AR/AP 2-3h + cashflow 1-2h + management pack 2-3h - 维护 1h）= 10-17h 净节省。保守 8-15h。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6-Week Timeline -->
+    <div class="box" id="weeks">
+      <div class="box-h" style="background:#FF914D">📅 6 周课程大纲 <span class="pill">12 hours · cohort-based</span></div>
+      <div class="body">
+        <div class="week-grid">
+
+          <!-- W1 -->
+          <div class="week-card w1">
+            <div class="week-head w1">
+              <div class="week-tag">W1</div>
+              <div class="week-title">📅 月末 close 自动化</div>
+              <div class="week-meta"><span>2h 课</span><span>3h homework</span></div>
+            </div>
+            <div class="week-body">
+              <div>
+                <h5>本周内容</h5>
+                <p class="summary">月末 close 是会计每月最痛的 5-7 天 — 银行对账 / accruals 计提 / inter-company 对消。本周教 Cowork 读 bank statement + GL trial balance，自动找差异、起草 journal entry 草稿、生成 reconciliation working paper。</p>
+                <h5>带走的 Skill</h5>
+                <ul>
+                  <li><code>bank-rec</code> — bank reconciliation 自动化</li>
+                  <li><code>accrual-draft</code> — 月底 accruals 计提 draft</li>
+                  <li><code>jrnl-entry-draft</code> — journal entry 起草</li>
+                </ul>
+              </div>
+              <div>
+                <h5>课后产出</h5>
+                <p style="font-size:13px;color:#333;line-height:1.7">每月手工 1.5h 银行对账 → <strong>15 分钟搞定</strong>。Inter-company elimination 草稿（多公司单位用）。</p>
+                <div class="homework">
+                  <strong>📝 Homework（~3h）</strong>：用单位上月银行对账 + GL trial balance 跑一遍（脱敏后），W2 课前提交 1 页 working paper 给助教。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- W2 -->
+          <div class="week-card w2">
+            <div class="week-head w2">
+              <div class="week-tag">W2</div>
+              <div class="week-title">📊 预算 vs 实际差异分析（Variance）</div>
+              <div class="week-meta"><span>2h 课</span><span>2.5h homework</span></div>
+            </div>
+            <div class="week-body">
+              <div>
+                <h5>本周内容</h5>
+                <p class="summary">CFO 月会必问的『为什么这个月超预算 8%？』变成你 30 分钟搞定。Cowork 读 budget vs actual 表，自动找出 top 5 异常 line items + 三段式归因 + 趋势预警 + 1 页 variance commentary。</p>
+                <h5>带走的 Skill</h5>
+                <ul>
+                  <li><code>variance-commentary</code> — 一键 variance 分析报告（共 4 个 Skill）</li>
+                </ul>
+              </div>
+              <div>
+                <h5>课后产出</h5>
+                <p style="font-size:13px;color:#333;line-height:1.7">Variance commentary 一键 + Top 异常 highlight + 连续 3 月偏离的 line items 自动列出。</p>
+                <div class="homework">
+                  <strong>📝 Homework（~2.5h）</strong>：用单位上月 budget vs actual 跑 variance commentary（脱敏后），W3 课前提交。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- W3 -->
+          <div class="week-card w3">
+            <div class="week-head w3">
+              <div class="week-tag">W3</div>
+              <div class="week-title">💰 AR/AP 账龄管理 + 自动催收</div>
+              <div class="week-meta"><span>2h 课</span><span>2.5h homework</span><span>+ 30min 1v1</span></div>
+            </div>
+            <div class="week-body">
+              <div>
+                <h5>本周内容</h5>
+                <p class="summary">应收账款（AR）老化 90 天客户、应付账款（AP）即将到期账单 — 这两件事每月吃 3-5 天。Cowork 跑 aging report + 0-30/30-60/60-90/90+ 分桶 + 自动起草 collection letter（3 级语气）+ AP 优先级排序。</p>
+                <h5>带走的 Skill</h5>
+                <ul>
+                  <li><code>aging-report</code> — AR/AP 账龄报告 + 风险高亮</li>
+                  <li><code>collection-draft</code> — 催收信 draft（轻 / 中 / 重三级语气，共 6 个 Skill）</li>
+                </ul>
+              </div>
+              <div>
+                <h5>课后产出</h5>
+                <p style="font-size:13px;color:#333;line-height:1.7">Aging report 一键 + 90+ 天客户列出 + 催收信模板（中英文）+ AP 按 due date / discount 优先级排序。</p>
+                <div class="homework">
+                  <strong>📝 Homework（~2.5h）</strong>：选 1 类（AR or AP），跑账龄 + 起草 3 封催收/通知信。
+                </div>
+                <div class="office-hour">
+                  <strong>🎯 Office Hour #1（30min/学员）</strong>：W3 课后 1 周内安排，教练 review 你 W1-W3 的 work + 单位场景定制建议。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- W4 -->
+          <div class="week-card w4">
+            <div class="week-head w4">
+              <div class="week-tag">W4</div>
+              <div class="week-title">💸 13-week 滚动现金流预测</div>
+              <div class="week-meta"><span>2h 课</span><span>4h homework</span></div>
+            </div>
+            <div class="week-body">
+              <div>
+                <h5>本周内容</h5>
+                <p class="summary">CEO/CFO 关心度最高的报表 — 未来 13 周每周现金流预测。Cowork 整合 W3 的 AR/AP aging + 已知收支（订阅 / 工资 / 租金 / BAS 报税）+ 历史 trend，输出滚动 13 周预测 + 风险周告警。</p>
+                <h5>带走的 Skill</h5>
+                <ul>
+                  <li><code>cashflow-13w</code> — 13-week rolling forecast（共 7 个 Skill）</li>
+                </ul>
+              </div>
+              <div>
+                <h5>课后产出</h5>
+                <p style="font-size:13px;color:#333;line-height:1.7">13-week forecast Excel/Sheets 模板（每周更新只需 5-10 分钟）+ Cash position 风险周自动标红 + Best/Base/Worst 三档敏感性分析。</p>
+                <div class="homework">
+                  <strong>📝 Homework（~4h）</strong>：用单位真实数据 + W3 aging 输出，跑 1 份 13-week forecast，W5 课前提交。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- W5 -->
+          <div class="week-card w5">
+            <div class="week-head w5">
+              <div class="week-tag">W5</div>
+              <div class="week-title">📑 Management Pack 月报自动化</div>
+              <div class="week-meta"><span>2h 课</span><span>5h homework</span><span>+ 30min 1v1</span></div>
+            </div>
+            <div class="week-body">
+              <div>
+                <h5>本周内容</h5>
+                <p class="summary">把 W1-W4 的所有产出整合成一份『一键生成的月度 Management Pack』— 8-12 页 PDF，含 P&L 简报 + Variance + AR/AP aging + 13-week forecast + KPI dashboard + 高管 5 问预案。原本人工组装 1-2 天，现在 30 分钟。</p>
+                <h5>带走的 Skill</h5>
+                <ul>
+                  <li><code>monthly-pack</code> — Master Skill 串 W1-W4 产出（共 8 个 Skill 含 1 个 master）</li>
+                </ul>
+              </div>
+              <div>
+                <h5>课后产出</h5>
+                <p style="font-size:13px;color:#333;line-height:1.7">完整 Management Pack 模板（8-12 页 HTML/PDF）+ 数据自动汇总流（4 个 Skill 串成 1 个 master）+ 高管 5 问预案。</p>
+                <div class="homework">
+                  <strong>📝 Homework（~5h）</strong>：用单位真实数据 + W1-W4 所有产出，组装 1 份完整 Management Pack — <strong>这是 Demo Day 主交付物</strong>。
+                </div>
+                <div class="office-hour">
+                  <strong>🎯 Office Hour #2（30min/学员）</strong>：W5 课后 1 周内安排，重点 review Management Pack 草稿 + Demo Day pitch 演练。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- W6 -->
+          <div class="week-card w6">
+            <div class="week-head w6">
+              <div class="week-tag">W6</div>
+              <div class="week-title">🚀 异常检测 + 监督员 + Demo Day</div>
+              <div class="week-meta"><span>2h 课</span><span>2h Demo 准备</span></div>
+            </div>
+            <div class="week-body">
+              <div>
+                <h5>本周内容（前 45m）</h5>
+                <p class="summary">教 Cowork 建『AI 监督员』 — 不是月底查，是 ongoing 每天扫数据，发现异常自动告警邮件给你。用 Cowork Schedule 功能 + 自定义 prompt。</p>
+                <h5>Demo Day（后 75m）</h5>
+                <p class="summary">每位学员 5 分钟讲自己单位的 AI 改造（用 W1-W5 跑通的真实场景），AI 教练 + 同学双向反馈，颁发结业证书 + 合影。</p>
+                <h5>带走的 Skill</h5>
+                <ul>
+                  <li><code>anomaly-watcher</code> + <code>daily-alert</code> — AI 监督员（毕业共 9-10 个 Skill）</li>
+                </ul>
+              </div>
+              <div>
+                <h5>毕业资产</h5>
+                <p style="font-size:13px;color:#333;line-height:1.7">
+                  <strong>① Demo Day 录像</strong>（5 min pitch 个人录像，可剪辑后放 LinkedIn）<br>
+                  <strong>② 结业证书</strong>（电子版 30 天内发）<br>
+                  <strong>③ JR Pro 校友身份</strong>（不定期 alumni 活动）<br>
+                  <strong>④ 12 周轻量答疑群</strong>（cohort 专属，3 个月后归档）<br>
+                  <strong>⑤ 12+ Cowork Skill 库</strong>（4h 课 5 个 + 本课 7-10 个）
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- vs 4h workshop -->
+    <div class="box" id="vs">
+      <div class="box-h" style="background:#6366f1">🆚 vs 4h 引流课 — 区别在哪 <span class="pill">Comparison</span></div>
+      <div class="body">
+        <p style="font-size:13.5px;color:#475569;margin-bottom:8px">很多人会问：『4h 课和 12h 课内容差不多？』 — 区别不是内容多 3 倍，是<strong>形式和深度完全不同档</strong>：</p>
+        <table class="vs-table">
+          <thead>
+            <tr>
+              <th>维度</th>
+              <th>4h 引流课（$99）</th>
+              <th>12h Pro（$1,799-$2,299）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>定位</td>
+              <td>试水 / 看看 AI 能不能用</td>
+              <td>把 AI 真正接进单位月度流水</td>
+            </tr>
+            <tr>
+              <td>学员</td>
+              <td>30-50 人协会大班</td>
+              <td>10-12 人精品小班</td>
+            </tr>
+            <tr>
+              <td>形式</td>
+              <td>1 整段 4h</td>
+              <td>6 周 × 2h + homework + 1v1 + Demo Day</td>
+            </tr>
+            <tr>
+              <td>深度</td>
+              <td>5 个会计场景 prompt + AU 数据指南</td>
+              <td>5 大月末流水模块 + 12+ Skill + 真实场景改造</td>
+            </tr>
+            <tr>
+              <td>数据</td>
+              <td>用虚构 sample-data.csv</td>
+              <td>homework 用学员单位真实数据（脱敏后）</td>
+            </tr>
+            <tr>
+              <td>反馈</td>
+              <td>大班巡场 + 当场点评</td>
+              <td>2 次 30min 1v1 教练 review + Demo Day 同行验证</td>
+            </tr>
+            <tr>
+              <td>毕业资产</td>
+              <td>5 个 Skill + AU 数据指南 + 7 天行动卡</td>
+              <td>+ Demo Day 录像 + 结业证书 + 12+ Skill 库 + 12 周答疑群</td>
+            </tr>
+            <tr>
+              <td>价格</td>
+              <td>$99 协会团购价</td>
+              <td><strong>$1,799 - $2,299 AUD</strong>（看你走哪个渠道）</td>
+            </tr>
+            <tr>
+              <td>承诺</td>
+              <td>"Cowork 能装上 + 跑出第 1 份分析"</td>
+              <td><strong>"每月节省 8-15h，2-4 个月回本"</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:12.5px;color:#666;margin-top:12px;font-style:italic">
+          没上过 4h 引流课能直接报 12h Pro 吗？能 — 但建议先看 4h 课件（免费，<a href="../ai-accounting-workshop/curriculum.html" style="color:#FF914D">这里</a>）。Pro 课 W1 假设你已经跑过 sample-data.csv。
+        </p>
+      </div>
+    </div>
+
+    <!-- Deliverables -->
+    <div class="box" id="deliverables">
+      <div class="box-h" style="background:#CB6CE6">📦 6 周后你带走什么 <span class="pill">Deliverables</span></div>
+      <div class="body">
+        <div class="deliv-grid">
+          <div class="deliv-card">
+            <div class="dc-tag">SKILL LIBRARY</div>
+            <div class="dc-name">12+ 个 Cowork Skill 库</div>
+            <div class="dc-desc">4h 引流课 5 个 + 本课新增 7-10 个：bank-rec / accrual-draft / jrnl-entry-draft / variance-commentary / aging-report / collection-draft / cashflow-13w / monthly-pack / anomaly-watcher / daily-alert</div>
+          </div>
+          <div class="deliv-card">
+            <div class="dc-tag">TEMPLATES</div>
+            <div class="dc-name">完整 Month-End Close 模板包</div>
+            <div class="dc-desc">5 类核心模板：reconciliation working paper / variance commentary / AR-AP aging / 13-week forecast / management pack。含变量占位 + 示例数据</div>
+          </div>
+          <div class="deliv-card">
+            <div class="dc-tag">DEMO DAY</div>
+            <div class="dc-name">5 分钟 pitch 录像 + LinkedIn 案例</div>
+            <div class="dc-desc">Demo Day 个人录像（讲自己单位 AI 改造）— 可剪辑后放 LinkedIn / 简历 / 内部晋升 portfolio。结业 30 天内发</div>
+          </div>
+          <div class="deliv-card">
+            <div class="dc-tag">CERTIFICATE</div>
+            <div class="dc-name">JR Pro 结业证书 + 校友身份</div>
+            <div class="dc-desc">JR Academy AI 会计 Pro 完成证书（电子版）+ 不定期校友 alumni 活动 / 行业资源分享 / 1v1 follow-up</div>
+          </div>
+          <div class="deliv-card">
+            <div class="dc-tag">SUPPORT</div>
+            <div class="dc-name">12 周轻量答疑群</div>
+            <div class="dc-desc">Cohort 专属群（3 个月后归档）— JR 教练每周 1 次群答疑 + 同学互助。课后真实使用时卡住了有地方问</div>
+          </div>
+          <div class="deliv-card">
+            <div class="dc-tag">RECORDINGS</div>
+            <div class="dc-name">课程录像 + 课件（永久 access）</div>
+            <div class="dc-desc">6 节 Zoom 录像 + 课件 PDF + 讲师问答合集，永久属于你。落下 1 周可以用录像补</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channel pricing teaser -->
+    <div class="box">
+      <div class="box-h">💳 4 个渠道定价（详情看 pricing.html） <span class="pill">Pricing Snapshot</span></div>
+      <div class="body">
+        <div class="channel-grid">
+          <div class="ch-card featured">
+            <div class="ch-name">⭐ 4h 引流课转化</div>
+            <div class="ch-price">$1,799</div>
+            <div class="ch-discount">SAVE $500 · 78 折</div>
+            <div class="ch-desc">4h 课结业 4 周内报名享。最划算入口</div>
+          </div>
+          <div class="ch-card">
+            <div class="ch-name">协会会员</div>
+            <div class="ch-price">$1,899</div>
+            <div class="ch-discount">SAVE $400 · 83 折</div>
+            <div class="ch-desc">协会发邮件 / 群推荐链接</div>
+          </div>
+          <div class="ch-card">
+            <div class="ch-name">B2B 团购 ≥3 人</div>
+            <div class="ch-price">$1,899/人</div>
+            <div class="ch-discount">SAVE $400 / 人 · 单位发票</div>
+            <div class="ch-desc">同一期 cohort 同时报名才算</div>
+          </div>
+          <div class="ch-card">
+            <div class="ch-name">JR 直接招生</div>
+            <div class="ch-price">$2,299</div>
+            <div class="ch-discount">标准价</div>
+            <div class="ch-desc">SEO / Google Ads / 公众号 / 小红书直接报</div>
+          </div>
+        </div>
+        <p style="margin-top:14px;text-align:center"><a href="./pricing.html" style="display:inline-block;padding:12px 28px;background:#FF914D;color:#fff;font-weight:800;font-size:15px;text-decoration:none;border:3px solid #000;box-shadow:5px 5px 0 #000;font-family:'Bricolage Grotesque',sans-serif">查看完整定价 + 报名 →</a></p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="box" id="faq">
+      <div class="box-h">❓ 常见问题（FAQ） <span class="pill">9 questions</span></div>
+      <div class="body">
+        <details>
+          <summary>我没上过 4h 引流课，能直接报 12h Pro 吗？</summary>
+          <div>能，但建议先看 4h 引流课 outline.json + au-data-prep.html（免费）。Pro 课假设你已经知道 Cowork 是什么 + 跑过 sample-data.csv。如果完全没接触 AI / Cowork，第一周会跟得辛苦。可选方案：(a) 先报最近一期 4h 引流课（$99），结业后享 $1,799 转化价；(b) 直接报 Pro，但 W1 课前 1 周自学 4h 课件（JR 免费提供）。</div>
+        </details>
+        <details>
+          <summary>我们公司数据敏感，homework 用真实数据安全吗？</summary>
+          <div>homework 你做的全部脱敏在你电脑本地 — JR 和教练永远不接触你单位真实财务数据。Office Hour review 时你 share screen 给教练看脱敏后的输出，教练给方法论 / prompt 调整建议。如果你单位连脱敏都不允许出门，这门课可能不适合你 — 但绝大多数单位允许学员把脱敏数据用于内部学习。</div>
+        </details>
+        <details>
+          <summary>12h 跟 6 周 × 2h 是不是太短？我能学完吗？</summary>
+          <div>12h 是<strong>课堂时间</strong>。每周还有 2.5-5h homework（你单位真实场景）+ 2 次 30min office hour。<strong>总投入约 30-40h</strong>（6 周里）。这个强度刚好够把方法变成肌肉记忆 — 比一次性 4 天 intensive 消化得更扎实。</div>
+        </details>
+        <details>
+          <summary>课后多久能回本？</summary>
+          <div>保守估计 2-4 个月。节省 8-15h/月 × $80/h（会计中位时薪）= $640-1,200/月节省。$2,299 / $640 ≈ 3.6 月，/ $1,200 ≈ 1.9 月。年化节省 $7.7k - $14.4k AUD。</div>
+        </details>
+        <details>
+          <summary>Demo Day 一定要上台讲吗？</summary>
+          <div>强烈建议但不强制。上台讲是核心毕业资产 — 录像可剪辑后放 LinkedIn / 简历 / 内部晋升 portfolio。如果你确实不想录像，可以申请『私下 1v1 pitch』替代（不录像 / 仅教练听），但拿不到公开 Demo Day 录像那份资产。</div>
+        </details>
+        <details>
+          <summary>团购 ≥3 人是同 cohort 还是不同 cohort 都算？</summary>
+          <div>同一期 cohort 同时报名才算团购价 $1,899/人。3 人单位发票 → JR 给单位开 1 张总票（含 GST）。如果你单位想 5 人但 3 个 cohort 拆 → 走标准价 / 协会价不享团购。建议单位走 B2B 内训定制方案（联系 hello@jiangren.com.au）— 同期 5 人以上可议价 + 课程内容定制（用你单位真实业务场景做 case）。</div>
+        </details>
+        <details>
+          <summary>小班 10-12 人，每年只跑 6 期，会买不到吗？</summary>
+          <div>对 — 这是精品班定位，不走规模化。每期开课 4 周前公告，先到先得。一期满 14 人封班，建议有意向就早报。常见错过原因：等『下一期再说』结果 6 期/年的 cohort 都满。</div>
+        </details>
+        <details>
+          <summary>如果中途因为工作太忙跟不上能怎么办？</summary>
+          <div>实操：(a) 录像永久 access — 落下 1 周自己补；(b) 同 cohort 最多允许跳 2 周（录像 + homework 自己补）；(c) 跳 ≥3 周建议转下一期 cohort（不另收费）。Demo Day 必须本期参加 — 否则结业证书顺延到下期。</div>
+        </details>
+        <details>
+          <summary>事务所员工跟 corporate accountant 学的内容一样吗？</summary>
+          <div>课程模块通用化设计（不分赛道）。差异在 homework 选材：corporate 学员用自己单位月末数据；事务所学员用自己服务的某个客户数据（脱敏后）做 case。Demo Day 上事务所学员讲『给客户做 monthly advisory pack』；corporate 讲『单位月末 close 自动化』 — 同样的方法，不同应用场景。</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- Big CTA -->
+    <div class="big-cta">
+      <h2>准备好把 AI 真正接进你的月末流水？</h2>
+      <p>下一期开课前 4 周公告。10-12 人小班，先到先得。引流课转化价 $1,799 / 协会会员 $1,899 / 团购 $1,899/人 / 标准 $2,299。</p>
+      <div class="btns">
+        <a href="./pricing.html" class="btn">💳 查看 4 渠道定价 →</a>
+        <a href="../ai-accounting-workshop/curriculum.html" class="btn outline">先看 4h 引流课</a>
+        <a href="mailto:hello@jiangren.com.au?subject=AI%20Accounting%20Pro%20%E8%AF%A2%E9%97%AE" class="btn outline">📧 直接邮件咨询</a>
+      </div>
+    </div>
+
+    <div class="footer">AI Accounting Pro · Claude Cowork × 6-Week Cohort · v1 · jiangren.com.au · hello@jiangren.com.au</div>
+  </div>
+
+</body>
+</html>

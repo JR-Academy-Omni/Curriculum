@@ -1,0 +1,529 @@
+{
+  "course": {
+    "name_zh": "AI 赋能会计：Claude Cowork 数据智能展示工作坊",
+    "name_en": "AI Accounting Workshop · Claude Cowork × Financial Data Storytelling",
+    "subtitle_zh": "Cowork 装机 → 损益分析 → 图表叙事 → 3 分钟管理层汇报 · 4 小时协会内训",
+    "subtitle_en": "Install Cowork, run your P&L, tell the story, brief the CFO — in 4 hours.",
+    "format": "线下 / 协会内训均可（4 小时整段）",
+    "duration_minutes": 240,
+    "group_size": "30–50 人，4–6 人/组",
+    "language": "中文为主（关键术语保留英文）",
+    "audience_zh": "企业会计 / 财务经理 / 事务所从业者 / 协会会员单位团队",
+    "audience_en": "Corporate accountants, finance managers, public practice professionals, association member teams",
+    "pricing": {
+      "member_aud": "TBD",
+      "non_member_aud": "TBD",
+      "currency": "AUD",
+      "note_zh": "协会会员价 vs 非会员价（散卖）双轨。具体数字课前 7 天确认。"
+    },
+    "date": "TBD",
+    "city": "TBD",
+    "venue_zh": "线下会议室 / 协会场地（课前 7 天通知）",
+    "instructor_model": "AI 教练（JR Academy）+ 助教 1:10 装机救场。协会方=co-host，只参与开场致辞 + 收尾合影",
+    "url": "https://jiangren.com.au/curriculum/ai-accounting-workshop/",
+    "payment_url": ""
+  },
+  "curriculumPages": {
+    "pages": [
+      "curriculum.html",
+      "internal.html",
+      "poster.html",
+      "templates/prompt-pack.html",
+      "templates/au-data-prep.html",
+      "templates/action-card.html"
+    ],
+    "defaultPage": "curriculum.html"
+  },
+  "audience_summary_zh": "面向会计协会会员的实战工作坊（协会作为 co-host）。学员是已经在岗的财务从业者 — 不是教 AI 是什么，而是 4 小时让 Claude Cowork 装到你电脑上、配好 Filesystem + Web Connector、直接拿你脱敏的损益数据跑一份能给老板讲的简报。零编程基础。",
+  "promise_zh": "4 小时不讲『AI 是什么』，今天讲完就结束 — 没有续作 / 没有推销 / 没有报名漏斗。开场 5 分钟现场演示让你看 Cowork 替你跑完一份月报；接着 55 分钟全员装机（Claude Desktop + Cowork tab + Filesystem / Web 两个 Connector）；然后两个 70 分钟实操：① 用 Cowork 把 sample-data.csv 跑成 What/Why/So What 三段式简报 ② 把简报变成 3 分钟管理层汇报演练。走时电脑里有：装好的 Cowork + 配通的 2 个 Connector + 5 个能复用的 Cowork Skill（损益分析 / 异常归因 / 图表叙事 / 管理层讲稿 / 高管 5 问）+ 7 天行动卡 + 一份《澳洲会计数据准备指南》— 回去拿你 Xero/MYOB/Quickbooks 真实数据跑分析的基准参考。下周一你打开电脑，桌面 Cowork 就在那。课后想继续学是你个人的事 — JR Prompt Lab / Wiki / Roadmap 都免费，不绑定协会。",
+  "core_value_zh": [
+    "💻 Cowork 装到你电脑上 — 不是网页聊天，是能开 Excel / 浏览器 / 邮箱替你动手的 GUI",
+    "📊 5 个会计场景 Cowork Skill — 损益 / 异常 / 图表 / 汇报 / 高管 5 问，写一次永久复用",
+    "📈 图表叙事三原则（明确/对比/可行动） — 一张图能不能上汇报，3 秒判断",
+    "🎤 3 分钟管理层汇报演练 — 现场分组讲，AI 教练 + 助教双盲打分",
+    "🇦🇺 澳洲会计数据准备指南 — 从 Xero/MYOB/Quickbooks 导出 → 列名映射 → 脱敏 → 放进 Cowork Filesystem 的实操参考（FY 财年 / GST / BAS 周期）"
+  ],
+  "tools": [
+    {
+      "id": "claude-cowork",
+      "name_zh": "Claude Cowork",
+      "name_en": "Claude Cowork",
+      "vendor": "Anthropic",
+      "role_zh": "本节课主战场 · Claude Desktop App 里的 Cowork tab · 让 AI 替你动鼠标 / 开 Excel / 跑分析",
+      "role_en": "Primary tool — Cowork tab inside Claude Desktop App",
+      "category": "claude-product",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "🤝",
+      "tagline_zh": "你给目标 / 它在你桌面上跑活儿 · 不是聊天 · 是替你完成事",
+      "pros": [
+        "图形界面零终端 — 会计岗零技术门槛",
+        "能开 Excel / 浏览器 / 邮箱替你动手，不是只会聊天",
+        "Connector 配一次永久继承到所有 Skill / Schedule",
+        "Skill 写一次永久复用 — 5 个会计场景 Skill 走时带走",
+        "Mac + Windows 都有"
+      ],
+      "cons": [
+        "需要 Claude Pro 付费档（A$30/月起 · 免费档没有 Cowork）",
+        "首次装机 + Connector 配置需 ~30-45 分钟（L02 全员同步装）",
+        "Scheduled task 必须电脑开机 + Cowork app 开着才会跑"
+      ],
+      "cost_notes_zh": "Pro A$30/月。一份咖啡钱换一个不睡觉的财务助理，本节课成本回得来。协会会员单位可考虑团购年付折扣。",
+      "used_in_modules": ["L01", "L02", "L03", "L04", "L05"],
+      "demo_mode": "live-full"
+    },
+    {
+      "id": "connectors",
+      "name_zh": "Cowork Connectors（MCP）",
+      "name_en": "Cowork Connectors (MCP)",
+      "vendor": "Anthropic",
+      "role_zh": "Cowork 接外部世界的桥 · 本节课配 2 个：Filesystem（读你电脑上的 CSV）+ Web（查公开资料）",
+      "category": "cowork-feature",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "🔌",
+      "tagline_zh": "Settings 配一次 · 之后所有 Skill / Schedule 全继承",
+      "pros": [
+        "本节课只配 2 个最必须的：Filesystem / Web",
+        "OAuth / 路径授权可控",
+        "免费"
+      ],
+      "cons": [
+        "首次配置需要点选目录 / 授权浏览器",
+        "Filesystem 限制路径范围 — 不要给整个家目录权限"
+      ],
+      "used_in_modules": ["L02", "L03", "L04"],
+      "demo_mode": "live-full",
+      "note_zh": "本节课不配 Gmail / Google Drive — 财务岗位的邮箱和云盘通常受单位 IT 限制，学员个人后续根据自己单位情况自己加。"
+    },
+    {
+      "id": "cowork-skills",
+      "name_zh": "Cowork Skills",
+      "name_en": "Cowork Skills (reusable workflows)",
+      "vendor": "Anthropic",
+      "role_zh": "把今天调通的 5 段提示词永久写成 Skill · 下次一句话调起",
+      "category": "cowork-feature",
+      "url": "https://claude.com/product/cowork",
+      "emoji": "🧩",
+      "tagline_zh": "L03 / L04 跑完后，把每个 prompt 存成 Skill — 月底一句『跑这个月损益分析』即可",
+      "pros": [
+        "不用每次都粘提示词，5 个场景一句话调起",
+        "Skill 可分享给同事（导出 / 导入）",
+        "学员个人后续可以根据自己单位实际数据迭代 Skill"
+      ],
+      "cons": [
+        "需要 Pro 档",
+        "命名混乱会导致月底忘了哪个 Skill 干什么 — 课上教命名规范"
+      ],
+      "used_in_modules": ["L03", "L04", "L05"],
+      "demo_mode": "instructor-demo"
+    },
+    {
+      "id": "codex-cli",
+      "name_zh": "OpenAI Codex CLI（备选 fallback）",
+      "name_en": "OpenAI Codex CLI (fallback option)",
+      "vendor": "OpenAI",
+      "role_zh": "极少数学员单位 IT 不让装 Claude Desktop App 时的备选 · 走终端跑 prompt + 读 CSV",
+      "category": "ai-cli",
+      "url": "https://github.com/openai/codex",
+      "emoji": "💻",
+      "tagline_zh": "Cowork 装不上时走这条 · 助教单独带 · 不在主流程",
+      "pros": [
+        "只要能装 Node.js 就能用，不依赖 Desktop App",
+        "ChatGPT Plus 订阅可用，不需额外开 Claude Pro",
+        "终端环境，部分大企业 IT 反而更允许"
+      ],
+      "cons": [
+        "纯 CLI，会计人接受度低",
+        "看不到图形界面，不适合做图表叙事",
+        "没有 Skill 系统，每次要重新粘 prompt"
+      ],
+      "cost_notes_zh": "ChatGPT Plus US$20/月（折合 A$30 上下）。",
+      "used_in_modules": ["L02"],
+      "demo_mode": "instructor-only-fallback",
+      "note_zh": "🚨 这是 fallback 不是主流程。L02 装机时如果某学员单位 IT 真的不让装 Claude Desktop，助教单独把这位学员带去 Codex CLI 路径，让他至少能跟上 L03/L04 的 prompt 实操。Codex 路线的 prompt-pack.html 附录有 CLI 调用方法。"
+    },
+    {
+      "id": "excel",
+      "name_zh": "Excel / Google Sheets",
+      "name_en": "Excel / Google Sheets",
+      "vendor": "Microsoft / Google",
+      "role_zh": "Cowork 通过 Filesystem Connector 读这里的 CSV · 学员现场拿 sample-data.csv 进 Cowork",
+      "category": "spreadsheet",
+      "emoji": "📊",
+      "used_in_modules": ["L03", "L04"],
+      "demo_mode": "live-full"
+    }
+  ],
+  "modules": [
+    {
+      "code": "L01",
+      "title_zh": "开场 + 现场 5 分钟 Cowork 演示",
+      "title_en": "Kickoff & Live 5-min Cowork Demo",
+      "emoji": "🎬",
+      "color": "#6366f1",
+      "duration_minutes": 15,
+      "slot": "00:00–00:15",
+      "type": "lecture-with-demo",
+      "owner": "AI 教练 + 协会方主持",
+      "summary_zh": "不讲『AI 是什么』。开场 5 分钟协会致辞 + 学习目标对齐，然后 AI 教练当场演示：把 sample-data.csv 拖给 Cowork → Cowork 自动开 Excel 看一眼 → 输出 What/Why/So What 三段式简报 + 一张推荐图表。让学员先看见『这就是今天 4 小时之后你电脑上能跑出来的东西』。",
+      "content_sections": [
+        "协会开场 + 项目背景（协会方 5 分钟）",
+        "学习目标对齐 + 5 件带回家的东西预告（AI 教练 5 分钟）",
+        "🎬 现场 5 分钟 Cowork 演示 — 端到端跑一遍 sample-data.csv → 简报 + 图表"
+      ],
+      "learning_outcomes": [
+        "看见 Cowork 跑完整流水的真实样子（不是 PPT 上的截图）",
+        "明确『AI 增强会计，而非替代会计』 — Cowork 是放大镜不是裁判",
+        "建立学习预期：今天学的是『装机 + 5 个 Skill + AU 数据准备指南 + 7 天行动卡』，不是 AI 理论课"
+      ],
+      "tools_used": ["claude-cowork"],
+      "deliverable": "学员调研基线（每组 1 人记录现状 — 谁有 Mac / Win / 是否装过 Claude）"
+    },
+    {
+      "code": "L02",
+      "title_zh": "Cowork 装机 + 4 步使用流程（全员同步装）",
+      "title_en": "Install Cowork + 4-Step Workflow (Everyone Installs Together)",
+      "emoji": "💻",
+      "color": "#10b981",
+      "duration_minutes": 55,
+      "slot": "00:15–01:10",
+      "type": "hands-on-install",
+      "owner": "AI 教练主导 + 助教 1:10 救场",
+      "summary_zh": "本模块是整门课的入场券 — 装不上后面 3 个实操全废。全员同步装 4 步：① 装 Claude Desktop App（Mac / Win）② 登 Pro 账号切到 Cowork tab ③ 配 Filesystem + Web 两个 Connector ④ 跑一个 hello-world 任务（让 Cowork 读你刚下载的 sample-data.csv 列出有哪些列）。卡住的助教 1:10 救场。极少数单位 IT 不让装 Desktop 的学员，助教带去 Codex CLI fallback 路线。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "装 Claude Desktop App",
+          "duration_minutes": 10,
+          "content_zh": "claude.ai/download 下载对应系统版本（Mac arm64 / Mac Intel / Win x64），双击安装。已经装过 Claude 网页版的同学注意：Desktop App 是另一个东西，要单独装。"
+        },
+        {
+          "step": 2,
+          "title_zh": "登 Pro 账号 + 切到 Cowork tab",
+          "duration_minutes": 8,
+          "content_zh": "用工作邮箱登。如果没有 Pro，今天试用免费档（部分功能受限），课后想继续用再升级。登入后左侧导航切到 Cowork — 这是今天的主战场。"
+        },
+        {
+          "step": 3,
+          "title_zh": "配 Filesystem + Web 两个 Connector",
+          "duration_minutes": 15,
+          "content_zh": "Settings → Connectors。Filesystem：点选一个目录（推荐 ~/Documents/AI-Workshop 这种独立目录，不要给整个家目录），把 sample-data.csv 放进去。Web：勾选启用，OAuth 一下浏览器即可。Gmail / Google Drive 两个 Connector 今天不配 — 涉及单位邮箱权限，学员个人后续根据自己单位情况自己加。"
+        },
+        {
+          "step": 4,
+          "title_zh": "跑 hello-world 任务",
+          "duration_minutes": 8,
+          "content_zh": "在 Cowork chat 里说：『读 ~/Documents/AI-Workshop/sample-data.csv 第一行，告诉我有哪些列』。Cowork 应该返回 6 列（month / category / line_item / amount / currency / notes）+ 144 行。能看到这个回答 = 装机成功，进 L03。看不到 = 助教救场。"
+        },
+        {
+          "step": 5,
+          "title_zh": "（备选）Codex CLI fallback",
+          "duration_minutes": 4,
+          "content_zh": "🚨 仅供单位 IT 不让装 Claude Desktop 的学员。助教带去 internal.html 的 Codex 路径：装 Node.js → npm install -g @openai/codex → 登 ChatGPT 账号 → 在终端跑 codex 'read sample-data.csv first row'。这条路线没图形界面 / 没 Skill 系统 / 不能做图表，但至少 prompt 能跑。"
+        }
+      ],
+      "learning_outcomes": [
+        "Cowork Desktop App 装好登好",
+        "Cowork tab + Filesystem + Web 两个 Connector 配通",
+        "跑通 hello-world：Cowork 能读你电脑上的 CSV 并列出列名",
+        "（极少数）走 Codex fallback 的学员能在终端跑 prompt"
+      ],
+      "tools_used": ["claude-cowork", "connectors", "codex-cli"],
+      "deliverable": "每位学员桌面上一个能跑的 Cowork + 一张 Filesystem 截图存档（助教抽检）"
+    },
+    {
+      "code": "L03",
+      "title_zh": "实操一｜Cowork 跑损益分析（演示 + 实战 + 讲评 + 存 Skill）",
+      "title_en": "Hands-on 1: Run P&L Analysis in Cowork",
+      "emoji": "📊",
+      "color": "#FF914D",
+      "duration_minutes": 70,
+      "slot": "01:10–02:20",
+      "type": "live-demo-hands-on",
+      "owner": "AI 教练主导 + 助教 1:10 巡场",
+      "summary_zh": "Cowork 装好了，开干。AI 教练演示完整 What/Why/So What 流程 — 不是粘 CSV 进聊天框，是让 Cowork 通过 Filesystem 直接读 sample-data.csv，跑提示词模板包里的 prompt①，输出 Artifact 简报。学员分组复刻；最后讲评 3 类常见错误（口径错误 / 归因偏差 / 因果倒置）。跑完把这段 prompt 存成第一个 Cowork Skill — 月底一句话调起。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "AI 教练演示完整流程",
+          "duration_minutes": 15,
+          "tool": "claude-cowork",
+          "content_zh": "在 Cowork 里输入 prompt①（损益三段式），让 Cowork 自己读 Filesystem 里的 csv → 算异常 → 输出 Artifact 形式的 1 页简报。故意演示 1 个错误 prompt（口径混淆）让 Cowork 给出错误答案，再用 prompt②（异常归因 push back）让 Cowork 自查纠正 — 现场展示『Cowork 是放大镜，错的时候它会告诉你』。"
+        },
+        {
+          "step": 2,
+          "title_zh": "分组实战",
+          "duration_minutes": 25,
+          "tool": "claude-cowork",
+          "content_zh": "4-6 人/组，每组挑 1 个分析角度（毛利异常 / 费用激增 / 区域差异 / 渠道转化），用 prompt-pack 的模板自己跑一遍。助教巡场，遇到『Cowork 不出有用结果』的组优先去 — 通常是 Filesystem 路径写错或 prompt 没写清口径。"
+        },
+        {
+          "step": 3,
+          "title_zh": "讲评 + 把 prompt 存成 Skill",
+          "duration_minutes": 15,
+          "tool": "cowork-skills",
+          "content_zh": "随机抽 3 组上台 1 分钟讲，AI 教练纠 3 类错误。最后 5 分钟全员把 prompt① 存成 Cowork Skill，命名 `pnl-analysis` — 下次直接 `/pnl-analysis 这个月数据` 调起，不用重粘 prompt。"
+        }
+      ],
+      "learning_outcomes": [
+        "每组完成 1 页《财务经营简报草稿》（Cowork Artifact 直接下载）",
+        "桌面 Cowork 里有第 1 个会计场景 Skill：`pnl-analysis`",
+        "见过 3 类典型错误并知道怎么避"
+      ],
+      "tools_used": ["claude-cowork", "connectors", "cowork-skills"],
+      "deliverable": "每组 1 页财务经营简报草稿 (Artifact PDF) + 每位学员电脑上 1 个 Cowork Skill",
+      "static_resources": [
+        "templates/prompt-pack.html",
+        "templates/sample-data.csv"
+      ]
+    },
+    {
+      "code": "L_BREAK",
+      "title_zh": "☕ 茶歇 + 助教救场",
+      "title_en": "Tea Break + Tutor Triage",
+      "duration_minutes": 10,
+      "slot": "02:20–02:30",
+      "type": "break",
+      "summary_zh": "10 分钟。茶歇 + 助教抓这段救场：谁 L02 Connector 还没全绿 / 谁 L03 Skill 没存好 / 谁 Cowork 老超时。后面 1.5 小时实操要顺，这 10 分钟必须救完。"
+    },
+    {
+      "code": "L04",
+      "title_zh": "实操二｜图表叙事 + 3 分钟管理层汇报演练",
+      "title_en": "Hands-on 2: Charts & 3-min Management Briefing",
+      "emoji": "🎤",
+      "color": "#CB6CE6",
+      "duration_minutes": 70,
+      "slot": "02:30–03:40",
+      "type": "live-demo-hands-on",
+      "owner": "AI 教练主导 + 助教参与打分",
+      "summary_zh": "把 L03 的简报变成 3 分钟管理层汇报。重点：图表叙事三原则（明确 / 对比 / 可行动） + AI 辅助生成讲稿（prompt④）+ 高管常问 5 问（prompt⑤）。最后每组上台 3 分钟讲，AI 教练 + 助教双盲打分。跑完把 prompt③④⑤ 都存成 Skill — 走时桌面有 5 个会计场景 Cowork Skill + 1 个 au-context（澳洲口径前缀）= 6 个 AU-aware Skill。",
+      "steps": [
+        {
+          "step": 1,
+          "title_zh": "图表三原则演示",
+          "duration_minutes": 12,
+          "tool": "claude-cowork",
+          "content_zh": "拿 L03 数据，AI 教练在 Cowork 里跑 prompt③ 生成 3 种画法对比（错的 / 平庸的 / 能上汇报的）— Cowork 直接出 SVG / PNG Artifact。讲『可行动 vs 装饰』的差距。"
+        },
+        {
+          "step": 2,
+          "title_zh": "AI 辅助讲稿 + 手改",
+          "duration_minutes": 18,
+          "tool": "claude-cowork",
+          "content_zh": "用 prompt④（管理层汇报讲稿 prompt）喂自己组的简报 → Cowork 30 秒出一版讲稿。学员手改 + 加自己理解。把 prompt③④ 存成 Skill：`chart-story` / `mgmt-brief`。"
+        },
+        {
+          "step": 3,
+          "title_zh": "高管 5 问演练",
+          "duration_minutes": 10,
+          "tool": "claude-cowork",
+          "content_zh": "Cowork 跑 prompt⑤ 模拟 CFO/CEO 问 5 个最尖锐问题。学员组内对答。把 prompt⑤ 存成 Skill：`exec-grilling`。"
+        },
+        {
+          "step": 4,
+          "title_zh": "3 分钟分组汇报 + 双盲打分",
+          "duration_minutes": 15,
+          "tool": "",
+          "content_zh": "每组 1 人上台 3 分钟讲，AI 教练 + 助教分别用 5 维度评分表打分（不互通）。当场宣读分数但不出排名，避免学员之间尴尬。"
+        }
+      ],
+      "learning_outcomes": [
+        "图表三原则内化（明确 / 对比 / 可行动）",
+        "桌面 Cowork 里再多 3 个 Skill：`chart-story` / `mgmt-brief` / `exec-grilling`",
+        "自己上过台讲过 3 分钟，知道下次面对老板要补什么"
+      ],
+      "tools_used": ["claude-cowork", "cowork-skills"],
+      "deliverable": "每组 1 段 3 分钟汇报 + 1 份图表+讲稿打包 + 5 个 Cowork Skill 全装好",
+      "static_resources": ["templates/prompt-pack.html"]
+    },
+    {
+      "code": "L05",
+      "title_zh": "总结 + 7 天行动卡 + 合影",
+      "title_en": "Wrap-up + 7-Day Action Card + Group Photo",
+      "emoji": "✅",
+      "color": "#10162f",
+      "duration_minutes": 20,
+      "slot": "03:40–04:00",
+      "type": "wrap",
+      "owner": "AI 教练 + 协会方致谢",
+      "summary_zh": "今天 4 小时讲完就结束 — 没有续作 / 没有推销 / 没有报名漏斗。前 12 分钟回顾 + 填《7 天行动卡》；后 8 分钟自由 Q&A + 协会方致谢 + 合影。课后想继续学是学员个人的事 — JR Prompt Lab / Wiki / Roadmap 都免费，不绑定协会。",
+      "content_sections": [
+        "回顾今天桌面 Cowork 上有哪些东西（5 个 Skill + 2 个 Connector）",
+        "现场填《7 天行动卡》(action-card.html) — 每人写 D+1 / D+3 / D+7 三件事",
+        "学员个人后续路径（自愿）：JR Prompt Lab / Wiki / Roadmap 免费自学",
+        "自由 Q&A — 4 小时积压问题最后处理",
+        "协会方致谢 + 合影（征得同意，作为协会活动留档）"
+      ],
+      "learning_outcomes": [
+        "明确课后 7 天执行任务 — 知道 D+1 / D+3 / D+7 各做什么",
+        "知道想继续学免费去哪里（JR 平台资源）",
+        "走时电脑里有装好的 Cowork + 5 个 Skill + 1 份 AU 数据准备指南"
+      ],
+      "tools_used": [],
+      "deliverable": "每人 1 张已填写的 7 天行动卡 + 桌面 Cowork（5 Skill 已存）",
+      "static_resources": [
+        "templates/action-card.html"
+      ]
+    }
+  ],
+  "platform_resources": [
+    {
+      "type": "Anthropic 官方",
+      "title_zh": "Claude Cowork 产品页（装机源 + Skill 库）",
+      "url": "https://claude.com/product/cowork",
+      "used_by_modules": ["L02", "L03", "L04"],
+      "note_zh": "L02 装机直接走这里下载。Skill 库里有官方示例，可参考但不必照搬 — 我们今天写的 5 个会计场景 Skill 比官方通用 Skill 更贴你岗位。"
+    },
+    {
+      "type": "Prompt Lab",
+      "title_zh": "JR Prompt Lab — 22+ 个互动 Prompt 练习",
+      "url": "https://jiangren.com.au/study-center?tab=learn&mode=prompt-lab",
+      "used_by_modules": ["L03", "L04"],
+      "note_zh": "推荐课后做『Clear Task / Constraints / Few-shot』三个 lab，把今天 prompt 模板的底层逻辑跑一遍。这些 prompt 技巧在 Cowork 里同样适用。"
+    },
+    {
+      "type": "AU Data Prep Guide",
+      "title_zh": "澳洲会计数据准备指南（templates/au-data-prep.html）",
+      "url": "templates/au-data-prep.html",
+      "used_by_modules": ["L02", "L03", "L04"],
+      "note_zh": "课程所有 lesson 的数据基准参考。从 Xero/MYOB/Quickbooks Australia 导出 CSV 的字段映射 + FY 财年口径 + GST 处理 + BAS 周期 + 脱敏要素 + 给 Cowork 的『澳洲口径』Prompt 增项。回去用真实数据跑前必读。"
+    },
+    {
+      "type": "Roadmap",
+      "title_zh": "会计人 AI 学习路径 Roadmap",
+      "url": "https://jiangren.com.au/roadmaps",
+      "used_by_modules": ["L05"],
+      "note_zh": "可视化的 AI 学习路径，自学进阶用。免费，不绑定协会。"
+    },
+    {
+      "type": "Codex CLI（fallback）",
+      "title_zh": "OpenAI Codex CLI — 装不上 Cowork 时的备选",
+      "url": "https://github.com/openai/codex",
+      "used_by_modules": ["L02"],
+      "note_zh": "🚨 极少数单位 IT 不让装 Claude Desktop 的学员走这条路。GitHub 仓库有 install / login / 基本用法，prompt-pack.html 附录有会计场景的 CLI 调用方法。"
+    }
+  ],
+  "operations": {
+    "class_size_zh": "30–50 人为佳，4–6 人/组",
+    "staffing_zh": "1 主讲（AI 教练）+ 每 10 人配 1 助教（L02 装机救场必须 + L04 评分）。协会方仅出 1 名主持做开场致辞和收尾合影，不参与教学。",
+    "format_zh": "线下实操教室必须 — 装机环节需要现场看屏幕。学员必须自带笔记本电脑（Mac / Win 都行），手机端做不了 Cowork。",
+    "pre_class_t_minus_7_days": [
+      "🔴 装机预检（最关键）：群里发邮件让学员课前 24 小时自查：(a) 笔记本能开（不要带公司锁屏的不能装第三方 App 的电脑）(b) 能装第三方 App（部分单位 IT 锁权限）(c) 能登 claude.ai 网页版试试。任一项不通过，课前协会助教单独沟通走 Codex fallback 或公用电脑安排",
+      "账号检查：学员每人课前确认 claude.ai 账号能登；想用 Pro 的同学课前自助升级（不强求，免费档今天够用）",
+      "数据下发：sample-data.csv 课前 24h 邮件给学员，附简短说明『这是虚构脱敏数据，可直接放进 Cowork Filesystem』",
+      "场地：投影 + 白板 + 每组 1 个移动白板；网络确认能访问 claude.ai 与 claude.com（部分协会内网需提前申请白名单）+ 网速 ≥ 50Mbps（30 人同时装 Cowork Desktop App ~150MB × 30）",
+      "印好 AU 数据准备指南 PDF：每位学员 1 份纸版（templates/au-data-prep.html 直接 print to PDF）",
+      "助教培训：开课前 1 天，助教过一遍 Cowork 装机 + Filesystem 配置 + 5 个 Skill 调用，知道学员卡哪里 → 怎么救",
+      "物料：A4 打印《AU 数据准备指南》《7 天行动卡》各 50 份；Cowork 装机截图对照表（成功状态 vs 卡点状态）打印 1 份给每个助教"
+    ],
+    "post_class": [
+      "今天 4 小时讲完就结束。没有协会续作 / 没有 L2/L3 项目 / 没有推销。",
+      "学员个人后续（自愿）：JR Prompt Lab (jiangren.com.au/study-center) / Wiki / Roadmap 都免费，想继续学自己上去看。",
+      "协会方角度：今天结束后 7-14 天可发一份『活动留档』给会员（合影 + 总结），不做转化漏斗。"
+    ],
+    "deliverables_to_students": [
+      "桌面 Claude Cowork 装好登好（Pro 或免费档）",
+      "Filesystem + Web 两个 Connector 配通",
+      "5 个会计场景 Cowork Skill：pnl-analysis / anomaly-attribution / chart-story / mgmt-brief / exec-grilling",
+      "提示词模板包（5 个 Prompt 含变量占位）",
+      "样本数据 CSV（虚构 12 月 SaaS P&L）",
+      "澳洲会计数据准备指南（templates/au-data-prep.html）",
+      "7 天行动卡（手填）"
+    ]
+  },
+  "faq": [
+    {
+      "id": "q1",
+      "question_zh": "完全没用过 AI，会计岗 10 年了，今天能装上 Cowork 跟得上吗？",
+      "answer_zh": "能。L02 全员同步装 45 分钟 + 助教 1:10 救场 — 不是『讲完装机你回家自己装』，是当场装好才进 L03。装不上的学员（很罕见，通常是单位 IT 锁权限）助教带去 Codex CLI fallback，至少 prompt 能跑。开课前唯一要求：自带笔记本（不要公司锁屏机）+ 课前自查能登 claude.ai 网页版。",
+      "topic": "prerequisite"
+    },
+    {
+      "id": "q2",
+      "question_zh": "为什么用 Cowork 不用 ChatGPT / 通义 / 文心？",
+      "answer_zh": "三个原因。① Cowork 不只是聊天 — 它能开你电脑上的 Excel / 浏览器 / 邮箱替你动手，会计岗位的『打开 5 张表对账』场景 ChatGPT 网页版做不了。② Cowork 的 Skill 系统 — 今天调通的 5 段 prompt 写一次永久复用，月底一句话调起，ChatGPT 每次要重粘。③ Cowork 走 Anthropic Claude — 中文长上下文 + 财务表格归因比 ChatGPT 稳。课后你想继续用别的工具，方法论一样适用 — 但今天我们专攻 Cowork。",
+      "topic": "tool-choice"
+    },
+    {
+      "id": "q3",
+      "question_zh": "Codex 是什么？什么时候会用到？",
+      "answer_zh": "Codex 是 OpenAI 的命令行 AI 工具（终端里跑 prompt）。本节课它是 fallback — 极少数学员单位 IT 不让装 Claude Desktop App 时，助教带去走 Codex 路线。Codex 没图形界面 / 没 Skill 系统 / 不能做图表，但 prompt 能跑，至少跟得上 L04/L05 的实操。绝大多数学员不需要碰 Codex，主流程走 Cowork。",
+      "topic": "fallback"
+    },
+    {
+      "id": "q4",
+      "question_zh": "我们公司数据敏感，不允许传上 Cowork，这节课对我有用吗？",
+      "answer_zh": "有用。整节课实操用脱敏样本 sample-data.csv（虚构数据）。回去拿真实数据怎么脱敏 + 怎么对接 Xero/MYOB/Quickbooks 的导出 — 看《澳洲会计数据准备指南》(templates/au-data-prep.html)。Cowork 的 Filesystem Connector 本身设计就比网页版聊天安全（数据在你电脑没上云）。具体到你单位的合规审查规则不在本课范围 — 那是你和单位合规部门之间的事。",
+      "topic": "data-privacy"
+    },
+    {
+      "id": "q5",
+      "question_zh": "需要花钱买 Claude Pro 才能上课吗？",
+      "answer_zh": "课堂上免费档够用 — Cowork tab 在免费档也有（次数受限）。课后想持续用 Pro A$30/月（一份咖啡钱）。协会会员单位可考虑团购年付折扣 — 课后协会会发协议价（如适用）。Pro 的 Skill / Schedule 功能更强，建议日常重度用户升级。",
+      "topic": "cost"
+    },
+    {
+      "id": "q6",
+      "question_zh": "课后有什么持续支持？",
+      "answer_zh": "今天 4 小时讲完就结束。没有协会专属群 / 没有 L2/L3 续作项目 / 没有推销。想继续学是你个人的事 — JR Academy 平台上的 Prompt Lab / Wiki / Roadmap 都免费，jiangren.com.au 自己上去逛。今天教的方法 + 5 个 Cowork Skill 永久属于你，月底用得上不用再来上课。",
+      "topic": "support"
+    },
+    {
+      "id": "q7",
+      "question_zh": "有录播吗？",
+      "answer_zh": "线下场不出录播（保护学员现场实操隐私 + Cowork 装机环节涉及个人账号）。L01 讲解部分会发讲义 PDF + 一份完整的《澳洲会计数据准备指南》PDF。L03 / L04 实操部分不出案例集 — 今天讲完就结束。",
+      "topic": "recording"
+    }
+  ],
+  "prep": [
+    {
+      "step": 1,
+      "title_zh": "🔴 自查电脑能装第三方 App（最重要）",
+      "requirement": "required",
+      "duration_minutes": 5,
+      "detail_zh": "不要带公司锁屏的不能装第三方 App 的电脑来 — L02 装机会直接卡住。课前 24h 试装一个无关紧要的小工具（比如 VLC 播放器）确认权限。装不了的同学：要么换私人电脑，要么联系协会助教提前安排 Codex fallback / 公用电脑。"
+    },
+    {
+      "step": 2,
+      "title_zh": "登录 claude.ai 网页版跟它说一次话",
+      "requirement": "required",
+      "duration_minutes": 5,
+      "detail_zh": "用工作邮箱注册或登录 claude.ai，问它 1 个问题（任何问题，比如『今天天气怎么样』）。目的是确认账号能用 — 课上 L02 装 Cowork Desktop App 后会用同一账号登。",
+      "url": "https://claude.ai"
+    },
+    {
+      "step": 3,
+      "title_zh": "笔记本电脑（必须自带）",
+      "requirement": "required",
+      "duration_minutes": 0,
+      "detail_zh": "Mac (arm64 / Intel) 或 Windows x64 都行，确保能装 ~150MB 的 Desktop App。手机 / iPad 做不了 Cowork。带充电器，4 小时实操费电。"
+    },
+    {
+      "step": 4,
+      "title_zh": "提前下载 sample-data.csv",
+      "requirement": "recommended",
+      "duration_minutes": 2,
+      "detail_zh": "课前 24 小时邮件会发链接。提前下来用 Excel / Sheets 打开看一眼（不需要分析），熟悉这份脱敏数据有哪些列。L02 装机后会把它放进 Cowork 的 Filesystem 目录。"
+    },
+    {
+      "step": 5,
+      "title_zh": "想 1 个你单位真实场景",
+      "requirement": "recommended",
+      "duration_minutes": 5,
+      "detail_zh": "比如『每月对账要花 2 天』『季度报表给老板讲不清楚』『费用归类总有口径争议』 — 写下来。L04/L05 实操时可以拿这个真实场景在心里对照课件里的虚构数据，看哪些方法能直接搬回去。"
+    },
+    {
+      "step": 6,
+      "title_zh": "纸笔 + 计时器",
+      "requirement": "recommended",
+      "duration_minutes": 0,
+      "detail_zh": "信息密度高，L05 还要做 3 分钟汇报演练 — 计时器（手机就行）很有用。纸笔记 Cowork Skill 名字 + 关键 prompt 模板。"
+    }
+  ],
+  "branding": {
+    "primary_color": "#FF914D",
+    "accent_color": "#10b981",
+    "dark": "#10162f",
+    "tagline_zh": "AI 增强会计 · 不替代会计 · Cowork 是放大镜不是裁判",
+    "tagline_en": "AI augments accounting. Cowork is a magnifying glass, not a judge."
+  }
+}
