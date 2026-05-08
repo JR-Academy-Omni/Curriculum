@@ -736,44 +736,6 @@
         </div>
       </div>
 
-      <!-- accounting-ai-workshop (引流课) -->
-      <div class="card">
-        <div class="preview accounting">AI 会计<br>引流课 · 4h</div>
-        <span class="tag new">4-Hour · 协会 co-host · $99</span>
-        <h3>AI 赋能会计：数据智能展示工作坊</h3>
-        <div class="subtitle">引流课 · Claude Cowork · 装机 + 5 个 Skill + AU 数据指南 · 4 小时</div>
-        <p>面向会计协会会员的入门实战课：开课就装 Cowork，损益分析+图表叙事+3 分钟管理层汇报演练。今天讲完就结束 — 想继续学转 12h Pro 主课。</p>
-        <div class="meta">
-          <span class="m"><b>5+1</b> 模块</span>
-          <span class="m"><b>4</b> 小时</span>
-          <span class="m"><b>5</b> Skill</span>
-        </div>
-        <div class="card-actions">
-          <a class="action-btn primary" href="./ai-accounting-workshop/curriculum.html">📋 课程大纲</a>
-          <a class="action-btn" href="./ai-accounting-workshop/poster.html">🖼 海报</a>
-        </div>
-      </div>
-
-      <!-- accounting-ai-pro (主课) -->
-      <div class="card">
-        <div class="preview" style="background:linear-gradient(135deg,#10162f 0%,#6366f1 50%,#FF914D 100%);color:#fff">AI 会计 PRO<br>6-Week · 12h</div>
-        <span class="tag new" style="background:#6366f1">Pro 主课 · $1,799-$2,299 · 转化品</span>
-        <h3>AI 会计 Pro · 6 周 Cowork 深度训练营</h3>
-        <div class="subtitle">主课 · 10-12 人小班 cohort · 真实场景 homework + 1v1 + Demo Day · 12 小时</div>
-        <p>4h 引流课让你看见，12h Pro 让你真用起来。W1 月末 close → W6 Demo Day。每月节省 8-15h，2-4 月回本。10-12 人精品小班，每年 6 期。</p>
-        <div class="meta">
-          <span class="m"><b>6</b> 周课</span>
-          <span class="m"><b>12</b> 小时</span>
-          <span class="m"><b>12+</b> Skill</span>
-          <span class="m"><b>2×</b> 1v1</span>
-        </div>
-        <div class="card-actions">
-          <a class="action-btn primary" href="./ai-accounting-pro/curriculum.html">📋 课程大纲</a>
-          <a class="action-btn" href="./ai-accounting-pro/pricing.html">💳 定价</a>
-          <a class="action-btn" href="./ai-accounting-pro/poster.html">🖼 海报</a>
-        </div>
-      </div>
-
       <!-- ai-marketing -->
       <div class="card">
         <div class="preview" style="background:linear-gradient(135deg,#ec4899 0%,#f97316 100%);color:#fff">AI 营销<br>4 周实战</div>
@@ -857,6 +819,91 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 1.5: AI 会计课程漏斗（引流 → 主课） -->
+    <!-- ============================================ -->
+    <style>
+      .funnel-row{display:grid;grid-template-columns:1fr 80px 1fr;gap:18px;align-items:stretch;margin:24px 0}
+      .funnel-arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#FF914D;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;text-align:center;line-height:1.2}
+      .funnel-arrow .ar{font-size:48px;line-height:0.8}
+      .funnel-arrow .lbl{font-family:'Space Mono',monospace;font-size:9px;color:#10162f;letter-spacing:1.2px;margin-top:6px;text-transform:uppercase;font-weight:700;background:#FFDE59;padding:3px 8px;border:2px solid #10162f;display:inline-block;white-space:nowrap}
+      .funnel-arrow .pct{font-size:11px;font-family:'Space Mono',monospace;color:#666;margin-top:4px;letter-spacing:0.5px}
+      .funnel-card{display:flex;flex-direction:column;background:#fff;border:3px solid #000;box-shadow:8px 8px 0 #000;padding:28px;color:#000;transition:transform 0.15s, box-shadow 0.15s;position:relative;overflow:hidden}
+      .funnel-card:hover{transform:translate(4px,4px);box-shadow:4px 4px 0 #000}
+      .funnel-card .preview{height:140px;margin:-28px -28px 24px;border-bottom:3px solid #000;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:26px;letter-spacing:-0.5px;color:#fff;text-align:center;padding:0 16px;line-height:1.1}
+      .funnel-card.tier1{border-color:#FF914D;box-shadow:8px 8px 0 #FF914D}
+      .funnel-card.tier1 .preview{background:linear-gradient(135deg,#0f172a 0%,#0ea5e9 55%,#22c55e 100%)}
+      .funnel-card.tier2{border-color:#6366f1;box-shadow:8px 8px 0 #6366f1}
+      .funnel-card.tier2 .preview{background:linear-gradient(135deg,#10162f 0%,#6366f1 50%,#FF914D 100%)}
+      .funnel-tier-tag{position:absolute;top:14px;right:14px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;padding:4px 10px;border:2px solid #000;text-transform:uppercase;z-index:2;background:#FFDE59;color:#10162f}
+      .funnel-card.tier2 .funnel-tier-tag{background:#6366f1;color:#fff}
+      .funnel-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;margin-bottom:14px;padding:10px;background:#f8f9fa;border:1px dashed #ddd}
+      .funnel-stats .fs{text-align:center}
+      .funnel-stats .fs b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;color:#10162f;line-height:1}
+      .funnel-stats .fs span{font-size:9.5px;color:#666;font-family:'Space Mono',monospace;letter-spacing:0.3px;margin-top:3px;display:block;text-transform:uppercase}
+      @media(max-width:760px){.funnel-row{grid-template-columns:1fr;gap:12px}.funnel-arrow{padding:10px;border:2px dashed #FF914D;flex-direction:row;gap:14px}.funnel-arrow .ar{font-size:32px;transform:rotate(90deg)}}
+    </style>
+    <div class="section-title" id="ai-accounting-funnel">💰 AI 会计课程漏斗 · 引流 → 主课</div>
+    <p class="section-intro">会计垂直赛道的<strong>双产品配对</strong>：4h 引流课让协会会员先看见 Cowork 能用，12h Pro 主课接住有意向的人转化成付费学员。引流课本身定价低或免费跟协会合作，<strong>真正赚钱的是主课</strong>。Marketing 推广时两张海报一起用 — 投引流课吸量，私下定向跟进转主课。</p>
+
+    <div class="funnel-row">
+
+      <!-- TIER 1: 引流课 -->
+      <a class="funnel-card tier1" href="./ai-accounting-workshop/curriculum.html" style="text-decoration:none">
+        <span class="funnel-tier-tag">⭐ TIER 1 · 引流</span>
+        <div class="preview">AI 会计<br>引流课 · 4h</div>
+        <span class="tag new">4 小时 · 协会 co-host · $99</span>
+        <h3>AI 赋能会计：数据智能展示工作坊</h3>
+        <div class="subtitle">Claude Cowork × 装机 + 5 个 Skill + 《AU 数据准备指南》</div>
+        <p>面向会计协会会员的入门实战课：开课就装 Cowork，损益分析+图表叙事+3 分钟管理层汇报演练。今天讲完就结束 — 不卖续作 / 不留漏斗 / 不收 L2/L3 钱。学员体验完<strong>自己想学更多</strong>才转主课。</p>
+        <div class="funnel-stats">
+          <div class="fs"><b>5+1</b><span>模块</span></div>
+          <div class="fs"><b>4h</b><span>整段</span></div>
+          <div class="fs"><b>$99</b><span>协会团购</span></div>
+        </div>
+        <div class="card-actions" onclick="event.stopPropagation()">
+          <a class="action-btn primary" href="./ai-accounting-workshop/curriculum.html">📋 大纲</a>
+          <a class="action-btn" href="./ai-accounting-workshop/poster.html">🖼 海报</a>
+          <a class="action-btn" href="./ai-accounting-workshop/templates/au-data-prep.html">🇦🇺 AU 数据指南</a>
+        </div>
+      </a>
+
+      <!-- ARROW -->
+      <div class="funnel-arrow">
+        <div class="ar">→</div>
+        <div class="lbl">15-25%<br>转化</div>
+        <div class="pct">引流课结业 4 周内<br>报名享 $1,799 转化价</div>
+      </div>
+
+      <!-- TIER 2: 主课 -->
+      <a class="funnel-card tier2" href="./ai-accounting-pro/curriculum.html" style="text-decoration:none">
+        <span class="funnel-tier-tag">💰 TIER 2 · 主课</span>
+        <div class="preview">AI 会计 PRO<br>6-Week · 12h</div>
+        <span class="tag new" style="background:#6366f1">12 小时 · 6 周 cohort · $1,799-$2,299</span>
+        <h3>AI 会计 Pro · 6 周 Cowork 深度训练营</h3>
+        <div class="subtitle">10-12 人小班 · 真实场景 homework + 2 次 1v1 + Demo Day 录像</div>
+        <p>4h 让你看见，12h 让你<strong>真用起来</strong>。W1 月末 close → W2 Variance → W3 AR/AP → W4 现金流 → W5 Mgmt Pack → W6 Demo Day。每月节省 8-15h，<strong>2-4 月回本</strong>。10-12 人精品小班，每年 6 期，先到先得。</p>
+        <div class="funnel-stats">
+          <div class="fs"><b>6 周</b><span>×2h cohort</span></div>
+          <div class="fs"><b>12+</b><span>Cowork Skill</span></div>
+          <div class="fs"><b>$1,799+</b><span>4 渠道定价</span></div>
+        </div>
+        <div class="card-actions" onclick="event.stopPropagation()">
+          <a class="action-btn primary" href="./ai-accounting-pro/curriculum.html">📋 大纲</a>
+          <a class="action-btn" href="./ai-accounting-pro/pricing.html">💳 定价</a>
+          <a class="action-btn" href="./ai-accounting-pro/poster.html">🖼 海报</a>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- 漏斗策略说明 -->
+    <div style="margin:0 auto 24px;max-width:1100px;padding:18px 22px;background:#fffbea;border:2px solid #10162f;font-size:13px;line-height:1.75;color:#333">
+      <strong style="color:#10162f">📊 漏斗经济学</strong>：单期主课 cohort 10-12 人 × $1,799-$2,299 ≈ <strong>$18-27k AUD/期</strong>，6 期/年 ≈ <strong>$108-162k/年</strong>。引流课不指望赚钱（甚至 $99 是为了筛掉纯凑热闹的）— 它的 KPI 是 <strong>15-25% 转主课</strong>。<br>
+      <strong style="color:#10162f">📣 推广分工</strong>：引流课走协会 / 公众号 / 小红书 / 朋友圈广吸量；主课走 ① 引流课结业邮件跟进（核心转化通路）② 协会定向推荐链接（享 $1,899 + 协会拿 5-10% referral 分成）③ B2B 团购包班（≥3 人 $1,899/人，单位发票）④ JR 直接招生（标准价 $2,299）。<br>
+      <strong style="color:#10162f">⚠️ 红线</strong>：引流课<u>课后绝对不在群里推主课</u> — 学员体验过自己看完产出物决定要不要转。强推会让 4h 课的『co-host 信任感』掉链。
     </div>
 
     <!-- ============================================ -->
