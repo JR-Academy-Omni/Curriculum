@@ -100,44 +100,6 @@ AI 是把**一个人**放大成**一个团队**。
 </div>
 
 ---
-
-<div class="section-eyebrow">课程定位</div>
-
-# 这门课跟其他 AI 课不一样
-
-<div class="grid grid-cols-2 gap-12 mt-8">
-
-<div class="card card-muted">
-
-<div class="big-icon-sm">💬</div>
-
-### 其他课
-
-- 教你**调 ChatGPT**
-- 停在 Prompt
-- 没有交付物
-
-</div>
-
-<div class="card card-accent">
-
-<div class="big-icon-sm">🚀</div>
-
-### 这门课
-
-- 教你**让 AI 写完整 Web 应用**
-- 交付 PR / 跑 CI/CD / 上线
-- 第 8 周交毕业项目（自己的 web app 上线）
-
-</div>
-
-</div>
-
-<div class="muted text-center mt-12" style="font-size: 18px;">
-8 周 · 每周 2 次 · 每次都有 deliverable
-</div>
-
----
 layout: center
 ---
 
@@ -617,6 +579,22 @@ class: text-center
 -->
 
 ---
+
+<div class="section-eyebrow">完整路线图 · 后面 8 周走的路</div>
+
+# AI Coding · From Idea to Product
+
+<div class="muted" style="margin-bottom: 12px; font-size: 18px;">
+45 个知识点 · 40 小时 · jiangren.com.au/roadmaps/ai-coding
+</div>
+
+<iframe
+  src="https://jiangren.com.au/roadmaps/ai-coding"
+  style="width: 100%; height: 740px; border: 1px solid rgba(20,20,19,0.10); border-radius: 12px; background: white; box-shadow: 0 1px 2px rgba(20,20,19,0.04), 0 4px 16px rgba(20,20,19,0.06);"
+  loading="lazy"
+></iframe>
+
+---
 layout: section
 class: text-center
 ---
@@ -643,74 +621,6 @@ class: text-center
 <div class="pull-quote accent text-center mt-8">
 人做判断 · AI 做体力
 </div>
-
----
-layout: center
----
-
-<div class="section-eyebrow">PLAN MODE</div>
-
-# Plan Mode 是 Vibe Coding 的灵魂
-
-<div class="big-icon mt-4">🧭</div>
-
-<div class="pull-quote">
-先让 AI <strong>想清楚</strong> 再动手 ——
-<br/>
-省下 90% 返工
-</div>
-
-<div class="grid grid-cols-2 gap-8 mt-12">
-  <div class="card card-muted">
-    <h3 class="muted">❌ 不用 Plan Mode</h3>
-    <p>"帮我加个登录功能" → AI 闷头写 → 改了 50 个文件 → 你看不懂 → 全推倒重来</p>
-  </div>
-  <div class="card card-accent">
-    <h3>✅ 用 Plan Mode</h3>
-    <p>"先列出要改的文件 + 每个文件改什么，等我确认" → 你 review → 删掉两个不必要的 → 再开始写</p>
-  </div>
-</div>
-
----
-
-<div class="section-eyebrow">实操 · Claude Code Plan Mode 长这样</div>
-
-# 在终端按 <span class="t-key" style="font-size: inherit; padding: 4px 12px;">Shift</span> + <span class="t-key" style="font-size: inherit; padding: 4px 12px;">Tab</span> · 进入 Plan Mode
-
-<div class="terminal mt-4">
-
-<div class="t-row"><span class="t-meta">~/projects/mini-crm</span></div>
-<div class="t-row"><span class="t-prompt">❯</span> <span class="t-cmd">claude</span></div>
-<div class="t-row">&nbsp;</div>
-
-<div class="t-banner">⏵ Claude Code · Anthropic · v0.49</div>
-
-<div class="t-row">&nbsp;</div>
-<div class="t-row"><span class="t-prompt">›</span> 帮我做一个 Mini CRM，管理客户列表（姓名 / 公司 / email）。</div>
-<div class="t-row" style="padding-left: 18px;">4 个 action：Create / Edit / Delete / List。</div>
-<div class="t-row" style="padding-left: 18px;">数据存本地 JSON。<strong style="color:#faf9f5;">先给我 PRD，等我确认。</strong></div>
-<div class="t-row">&nbsp;</div>
-<div class="t-row"><span class="t-ai">⏺</span> <span class="t-em">Let me plan this out before writing any code...</span></div>
-
-<div class="t-plan">
-<div class="t-plan-header">📋 Plan</div>
-<ol>
-  <li>Create <code>app/page.tsx</code> — 客户列表 + 搜索框</li>
-  <li>Create <code>app/api/customers/route.ts</code> — GET / POST / DELETE</li>
-  <li>Create <code>lib/db.ts</code> — JSON 文件读写</li>
-  <li>Create <code>components/CustomerForm.tsx</code> — Create + Edit 复用</li>
-  <li>Add Tailwind base styles + 简单 layout</li>
-</ol>
-<div class="t-plan-footer"><span class="t-key">Tab</span> to accept · <span class="t-key">e</span> to edit · <span class="t-key">Esc</span> to refine</div>
-</div>
-
-<div class="t-row"><span class="t-mode">⏸ plan mode · read-only · no files written</span></div>
-
-</div>
-
-<blockquote class="mt-4" style="font-size: 18px;">
-看到了吗？AI 没动手写一行代码 —— 列出 5 个文件等你按 <strong>Tab</strong> 才开始。
-</blockquote>
 
 ---
 
@@ -817,53 +727,35 @@ layout: center
 
 <div>
 
-<svg viewBox="0 0 800 460" style="width: 100%; height: auto; background: white; border-radius: 12px; box-shadow: 0 1px 2px rgba(20,20,19,0.04), 0 4px 16px rgba(20,20,19,0.06);">
-  <!-- Grid lines -->
+<svg width="700" height="420" viewBox="0 0 800 460" style="background: white; border-radius: 12px; box-shadow: 0 1px 2px rgba(20,20,19,0.04), 0 4px 16px rgba(20,20,19,0.06); display: block;">
   <g stroke="#e8e6dc" stroke-width="1">
     <line x1="80" y1="80" x2="760" y2="80" />
     <line x1="80" y1="160" x2="760" y2="160" />
     <line x1="80" y1="240" x2="760" y2="240" />
     <line x1="80" y1="320" x2="760" y2="320" />
   </g>
-
-  <!-- Axes -->
   <line x1="80" y1="40" x2="80" y2="380" stroke="#141413" stroke-width="2" />
   <line x1="80" y1="380" x2="760" y2="380" stroke="#141413" stroke-width="2" />
 
-  <!-- X-axis ticks -->
-  <g font-family="JetBrains Mono, monospace" font-size="13" fill="#6b6a65" text-anchor="middle">
-    <text x="80" y="405">0%</text>
-    <text x="216" y="405">20%</text>
-    <text x="352" y="405">40%</text>
-    <text x="488" y="405">60%</text>
-    <text x="624" y="405">80%</text>
-    <text x="760" y="405">100%</text>
-  </g>
+  <text class="svg-axis" x="80"  y="402" text-anchor="middle">0%</text>
+  <text class="svg-axis" x="216" y="402" text-anchor="middle">20%</text>
+  <text class="svg-axis" x="352" y="402" text-anchor="middle">40%</text>
+  <text class="svg-axis" x="488" y="402" text-anchor="middle">60%</text>
+  <text class="svg-axis" x="624" y="402" text-anchor="middle">80%</text>
+  <text class="svg-axis" x="760" y="402" text-anchor="middle">100%</text>
 
-  <!-- Y-axis labels -->
-  <g font-family="JetBrains Mono, monospace" font-size="13" fill="#6b6a65" text-anchor="end">
-    <text x="68" y="60">High</text>
-    <text x="68" y="385">Low</text>
-  </g>
+  <text class="svg-axis" x="68" y="64"  text-anchor="end">High</text>
+  <text class="svg-axis" x="68" y="384" text-anchor="end">Low</text>
 
-  <!-- Axis titles -->
-  <text x="420" y="445" font-family="Lora, serif" font-size="16" fill="#141413" text-anchor="middle">Context Window Usage (%)</text>
-  <text x="22" y="210" font-family="Lora, serif" font-size="16" fill="#141413" text-anchor="middle" transform="rotate(-90 22 210)">Model Intelligence / Accuracy</text>
+  <text class="svg-label" x="420" y="438" text-anchor="middle">Context Window Usage (%)</text>
+  <text class="svg-label" x="28" y="210" text-anchor="middle" transform="rotate(-90 28 210)">Model Intelligence / Accuracy</text>
 
-  <!-- The performance curve: flat high until ~70%, gentle drop to 80%, cliff after 85% -->
-  <path d="M 80,60
-           L 540,60
-           Q 600,60 640,110
-           Q 690,240 740,360
-           L 760,378"
+  <path d="M 80,60 L 540,60 Q 600,60 640,110 Q 690,240 740,360 L 760,378"
         stroke="#d97757" stroke-width="4" fill="none" stroke-linecap="round" />
 
-  <!-- Annotation -->
-  <g font-family="Lora, serif" fill="#d97757">
-    <text x="430" y="240" font-size="20" font-style="italic">Performance Degrades</text>
-    <text x="430" y="268" font-size="16">（遗忘指令 / 犯错）</text>
-  </g>
-  <!-- Arrow pointing to cliff -->
+  <text class="svg-anno-em" x="430" y="240">Performance Degrades</text>
+  <text class="svg-anno-zh" x="430" y="266">（遗忘指令 / 犯错）</text>
+
   <path d="M 615,255 L 690,295" stroke="#d97757" stroke-width="2" fill="none" />
   <polygon points="690,295 678,288 678,300" fill="#d97757" />
 </svg>
@@ -908,7 +800,7 @@ layout: center
 <h3>Rules</h3>
 <p style="font-size: 18px;">AI <strong>必须</strong> 遵守的硬规则</p>
 <p class="muted" style="font-size: 14px;">
-<code>.cursor/rules/</code><br/>
+<code>CLAUDE.md</code><br/><code>.claude/rules/</code><br/>
 <code>CLAUDE.md</code>
 </p>
 </div>
@@ -988,149 +880,144 @@ class: text-center
 
 <div class="section-eyebrow">Block 4 · Live Demo</div>
 
-# Mini CRM
+# Daily Job Card
 
-<div class="big-icon mt-4">🎬</div>
-
+<div class="big-icon mt-4">🎯</div>
 
 ---
 
-<div class="section-eyebrow">Demo 目标</div>
+<div class="section-eyebrow">Demo 目标 · 完整流程</div>
 
-# 30 分钟 · 从 idea 到能跑
+# 9 步 · 从 idea 到能跑
 
-<div class="grid grid-cols-3 gap-6 mt-12">
+<div class="grid mt-6" style="grid-template-columns: 1fr 1fr; gap: 32px;">
 
 <div class="card card-accent">
-<div class="pill pill-accent">产出</div>
-
-<div class="mt-4">
-能 add / list / edit / delete 客户的 Mini CRM
-</div>
-
+<div class="pill pill-accent">Phase A · 开局 5 件事</div>
+<ol class="mt-3" style="font-size: 17px; line-height: 1.8;">
+  <li><strong>PRD</strong> — 把 idea 写成结构化文档</li>
+  <li><strong>Rules</strong> — <code>CLAUDE.md</code> 约束 AI 行为</li>
+  <li><strong>design.md</strong> — 颜色 / 字体 / 间距规范</li>
+  <li><strong>README</strong> — 项目长什么样</li>
+  <li><strong>CLAUDE.md</strong> — AI 项目记忆</li>
+</ol>
 </div>
 
 <div class="card card-blue">
-<div class="pill">技术栈</div>
-
-<div class="mt-4">
-Next.js 14<br/>+ Tailwind<br/>+ 本地 JSON
+<div class="pill">Phase B · 让 AI 动手</div>
+<ol class="mt-3" start="6" style="font-size: 17px; line-height: 1.8;">
+  <li><strong>PLAN</strong> — Plan Mode 列文件再写</li>
+  <li><strong>IMPLEMENTATION</strong> — AI 写代码 + 你边讲</li>
+  <li><strong>DEBUG</strong> — 报错贴回 Claude</li>
+  <li><strong>PR</strong> — AI 写 commit · 你 review</li>
+</ol>
 </div>
 
 </div>
 
-<div class="card card-sage">
-<div class="pill">时长</div>
+<blockquote class="mt-6 text-center" style="font-size: 18px;">
+产出：<code>daily-jobs.html</code> · 单文件 · 双击能跑 · 学员明天就能用
+</blockquote>
 
-<div class="mt-4">
-30 min 写代码<br/>+ 10 min 演示
-</div>
+---
+layout: section
+class: text-center
+---
 
-</div>
+<div class="section-eyebrow">Phase A</div>
 
-</div>
+# 项目开局 · 5 件事
 
-<div class="pull-quote accent text-center mt-12">
-你看到的，是你下周开始每天做的事
-</div>
+<div class="muted mt-4">PRD · Rules · design.md · README · CLAUDE.md</div>
 
 ---
 
 <div class="section-eyebrow">Step 1 · PRD</div>
 
-# 写给 AI 看 · 不是写给人看
+## PRD · 写给 AI 看
 
-<div class="terminal mt-4">
+<div class="terminal mt-3" style="font-size: 16px; line-height: 1.55; padding: 18px 24px;">
 
-<div class="t-row"><span class="t-meta">~/projects/mini-crm</span></div>
-<div class="t-row"><span class="t-prompt">❯</span> <span class="t-cmd">claude</span></div>
+<div class="t-row"><span class="t-meta">~/projects/daily-jobs</span> · <span class="t-prompt">❯</span> <span class="t-cmd">claude</span></div>
 <div class="t-row">&nbsp;</div>
-<div class="t-banner">⏵ Claude Code · Anthropic · v0.49</div>
-<div class="t-row">&nbsp;</div>
-<div class="t-row"><span class="t-prompt">›</span> 我要做一个 Mini CRM，给小型咨询工作室用。</div>
-<div class="t-row" style="padding-left:18px;">- 管理客户列表（姓名 / 公司 / email / 备注）</div>
-<div class="t-row" style="padding-left:18px;">- 4 个 Action：Create / Edit / Delete / List</div>
-<div class="t-row" style="padding-left:18px;">- 数据存本地 JSON · Next.js 14 + Tailwind</div>
-<div class="t-row" style="padding-left:18px;"><strong style="color:#faf9f5;">先生成 PRD，等我确认。</strong></div>
-<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-prompt">›</span> 我要做 <code style="color:#faf9f5;">daily-jobs.html</code> — 单文件，每天推荐工作机会。</div>
+<div class="t-row" style="padding-left:18px;">- 顶部搜索框：关键词 / 城市过滤 · 写 localStorage</div>
+<div class="t-row" style="padding-left:18px;">- 15 条示例 jobs · "今日推荐" hero · ⭐ 收藏</div>
+<div class="t-row" style="padding-left:18px;">- 纯 HTML + JS · 不要 npm install · 双击能跑</div>
+<div class="t-row" style="padding-left:18px;"><strong style="color:#faf9f5;">先给我 PRD，等我确认。</strong></div>
 <div class="t-row"><span class="t-ai">⏺</span> <span class="t-em">Drafting PRD.md...</span></div>
 
-<div class="t-plan">
-<div class="t-plan-header">📋 PRD · Mini CRM v0.1</div>
-<ol style="list-style: none; padding-left: 0;">
-  <li><strong style="color:#faf9f5;">1. Goal</strong> · 单人咨询工作室管理客户档案</li>
-  <li><strong style="color:#faf9f5;">2. User</strong> · 顾问本人 · 单一 admin 角色</li>
-  <li><strong style="color:#faf9f5;">3. Data Model</strong> · <code>Customer { id, name, company, email, notes, createdAt }</code></li>
-  <li><strong style="color:#faf9f5;">4. Pages</strong> · <code>/</code> List · <code>/new</code> Create · <code>/[id]</code> Detail+Edit</li>
-  <li><strong style="color:#faf9f5;">5. Storage</strong> · <code>data/customers.json</code> (fs/promises async)</li>
-  <li><strong style="color:#faf9f5;">6. Out of scope</strong> · auth · 多用户 · 部署</li>
+<div class="t-plan" style="padding: 14px 18px; margin: 10px 0;">
+<div class="t-plan-header" style="font-size: 18px; margin-bottom: 6px;">📋 PRD · Daily Job Card v0.1</div>
+<ol style="list-style: none; padding-left: 0; font-size: 15px; line-height: 1.55;">
+  <li><strong style="color:#faf9f5;">1. Goal</strong> · 求职者每天打开 1 个 HTML，看到匹配岗位</li>
+  <li><strong style="color:#faf9f5;">2. User</strong> · 学员本人 · 单设备 · 浏览器</li>
+  <li><strong style="color:#faf9f5;">3. Data</strong> · <code>Job { id, title, company, location, salary, link }</code></li>
+  <li><strong style="color:#faf9f5;">4. UI</strong> · Hero + 搜索 + 卡片列表 + ⭐ 收藏</li>
+  <li><strong style="color:#faf9f5;">5. Storage</strong> · <code>localStorage</code> 存关键词 + 收藏</li>
+  <li><strong style="color:#faf9f5;">6. Out of scope</strong> · 后端 / 登录 / 真实 API</li>
 </ol>
 </div>
 
-<div class="t-row"><span class="t-mode">⏸ plan mode · awaiting your approval</span></div>
+<div class="t-row"><span class="t-mode">⏸ plan mode · awaiting approval</span></div>
 
 </div>
 
-<blockquote class="mt-4" style="font-size: 18px;">
+<blockquote class="mt-3" style="font-size: 18px;">
 我<strong>没说</strong>"写代码" — 先要 PRD。这就是 PLAN MODE 思维。
 </blockquote>
 
 ---
 
-<div class="section-eyebrow">Step 2</div>
+<div class="section-eyebrow">Step 2 · Rules · 概念 + 目录</div>
 
-# PLAN · 让 AI 列文件再写
+# <code>CLAUDE.md</code> + <code>.claude/rules/</code> 约束 AI
 
-```text
-PRD 看起来不错。现在请列出你要创建/修改的所有文件，
-以及每个文件的职责，等我确认再开始写代码。
-```
+<div class="grid mt-4" style="grid-template-columns: 1.1fr 1fr; gap: 32px;">
 
-<div class="card card-accent mt-8">
-
-**讲师演示流程**
-
-1. 看 Claude 列出的文件树
-2. 故意发现漏掉了 search 功能
-3. 现场补一句：
-
+<div class="terminal" style="font-size: 16px;">
+<div class="t-row"><span class="t-meta">~/projects/daily-jobs</span></div>
+<div class="t-row"><span class="t-prompt">❯</span> <span class="t-cmd">tree -L 3 . | grep -v node_modules</span></div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row" style="color:#d4d2c8;">.</div>
+<div class="t-row" style="color:#d4d2c8;">├── <span style="color:#d97757;">CLAUDE.md</span>                   <span class="t-meta"># 项目主入口 · AI 启动自动读</span></div>
+<div class="t-row" style="color:#d4d2c8;">├── <span style="color:#6a9bcc;">.claude/</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   ├── <span style="color:#6a9bcc;">rules/</span>                  <span class="t-meta"># 模块化规则</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   ├── architecture.md  <span class="t-meta"># 系统架构</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   ├── <span style="color:#6a9bcc;">frontend/</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   │   ├── component.md  <span class="t-meta"># 前端组件</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   │   ├── styling.md    <span class="t-meta"># 样式 + 主题</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   │   └── state.md      <span class="t-meta"># 状态管理</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   ├── <span style="color:#6a9bcc;">backend/</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   │   ├── api-design.md <span class="t-meta"># API</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   │   └── database.md   <span class="t-meta"># 数据库</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   ├── <span style="color:#6a9bcc;">workflow/</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   │   ├── git.md        <span class="t-meta"># Git</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   │   └── ci-cd.md      <span class="t-meta"># CI/CD</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │   └── <span style="color:#6a9bcc;">code-quality/</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │       ├── naming.md     <span class="t-meta"># 命名</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │       ├── testing.md    <span class="t-meta"># 测试</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   │       └── performance.md <span class="t-meta"># 性能</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   ├── <span style="color:#788c5d;">commands/</span>               <span class="t-meta"># 自定义 /slash 命令</span></div>
+<div class="t-row" style="color:#d4d2c8;">│   └── <span style="color:#788c5d;">skills/</span>                 <span class="t-meta"># 复用型 skill 模块</span></div>
 </div>
 
-```text
-加一个搜索框，按姓名 / 公司 fuzzy 搜索。
-然后开始写。
-```
+<div class="stagger" style="display: flex; flex-direction: column; gap: 16px;">
 
----
-
-<div class="section-eyebrow">Step 3</div>
-
-# IMPLEMENTATION · 边写边讲
-
-<div class="big-icon-sm">⚙️</div>
-
-<div class="stagger mt-8">
-
-<div class="card">
-<div class="pill">1</div>
-
-<strong>不要发呆</strong>：边写边讲解每个文件的作用
-
+<div class="card card-accent">
+<h3>为什么要 Rules？</h3>
+<p>让 AI 的回答 <strong>不会那么随心所欲</strong> — 约束它符合我们的项目要求。</p>
 </div>
 
-<div class="card">
-<div class="pill">2</div>
-
-<strong>指出 AI 的取舍</strong>：
-"看，它选了 <code>fs/promises</code> 不是 <code>fs.readFileSync</code> — 因为 Next.js 是 async"
-
+<div class="card card-blue">
+<h3>CLAUDE.md 是核心</h3>
+<p>项目根目录 · Claude Code 启动 <strong>自动读</strong>。子模块用 <code>@import .claude/rules/xxx.md</code> 引入。</p>
 </div>
 
-<div class="card">
-<div class="pill">3</div>
-
-<strong>有 bug 不要慌</strong>：
-现场让 AI 自己 debug — <strong>这就是真实工作流</strong>
+<div class="card card-sage">
+<h3>怎么拆分</h3>
+<p>按 <strong>架构 / 前后端 / 工作流 / 代码质量</strong> 4 大类，每个 <code>.md</code> 一个 topic。复杂度低就全写在 CLAUDE.md。</p>
+</div>
 
 </div>
 
@@ -1138,53 +1025,436 @@ PRD 看起来不错。现在请列出你要创建/修改的所有文件，
 
 ---
 
-<div class="section-eyebrow">Step 4</div>
+<div class="section-eyebrow">Step 2 · Rules · 三大核心原则</div>
 
-# DEBUG · 真实场景
+# SOLID · DRY · KISS · 你必须教 AI 的常识
 
-```bash
-npm run dev
-```
+<div class="grid grid-cols-3 gap-6 mt-8 stagger">
 
-打开 <code>http://localhost:3000</code> 现场操作：
-- 添加："张三" / "匠人学院" / 邮箱
-- 编辑 / 删除 / 搜索 各做一次
-- **报错？直接贴回 Claude Code**
+<div class="card card-accent">
+<div class="big-icon-sm">🏛️</div>
+<h3>SOLID</h3>
+<p style="font-size: 17px; line-height: 1.6;">
+<strong>S</strong>ingle Responsibility · 每个模块一件事<br/>
+<strong>O</strong>pen/Closed · 扩展开放 / 修改关闭<br/>
+<strong>L</strong>iskov Substitution · 子类可替换父类<br/>
+<strong>I</strong>nterface Segregation · 接口窄 → 不臃肿<br/>
+<strong>D</strong>ependency Inversion · 依赖抽象不依赖具体
+</p>
+</div>
 
-<div class="card card-muted mt-8">
+<div class="card card-blue">
+<div class="big-icon-sm">🔁</div>
+<h3>DRY</h3>
+<p style="font-size: 18px; line-height: 1.7;">
+<strong>D</strong>on't <strong>R</strong>epeat <strong>Y</strong>ourself
+</p>
+<p style="font-size: 16px; line-height: 1.6; color: var(--c-mid-gray);">
+每个知识点在 codebase 里有<strong>唯一权威表达</strong>。
+不要 copy-paste · 抽出可复用的 function / constant / config。
+</p>
+</div>
 
-### 端口被占？
-
-```bash
-lsof -i:3000
-kill -9 [PID]
-```
-
-> 这是你每天会遇到 5 次的命令。AI 经常忘记 kill 旧进程。<strong class="accent">记住</strong>。
+<div class="card card-sage">
+<div class="big-icon-sm">✂️</div>
+<h3>KISS</h3>
+<p style="font-size: 18px; line-height: 1.7;">
+<strong>K</strong>eep <strong>I</strong>t <strong>S</strong>imple, <strong>S</strong>tupid
+</p>
+<p style="font-size: 16px; line-height: 1.6; color: var(--c-mid-gray);">
+favor 最简单能跑的设计。
+避免 clever 一行 · 不必要的 pattern · 过早优化 —
+今天的读者（包括你未来 self 和 LLM）会感谢你。
+</p>
+</div>
 
 </div>
 
 ---
 
-<div class="section-eyebrow">Step 5</div>
+<div class="section-eyebrow">Step 2 · Rules · 13 条可执行清单</div>
 
-# PR · 让 AI 自己写 commit
+# Rules List · 写进 <code>CLAUDE.md</code> 或 <code>.claude/rules/code-quality.md</code>
 
-```text
-帮我把这次改动 commit 一下，
-message 按 conventional commit 写，
-不要 push，我自己来。
+<div class="grid grid-cols-2 gap-6 mt-6 stagger">
+
+<div class="card card-accent">
+<h4 style="color: var(--c-terracotta);">🛡️ 工程纪律</h4>
+<ul style="font-size: 18px; line-height: 1.7; margin: 8px 0 0;">
+<li>Single Responsibility</li>
+<li>Clear Naming</li>
+<li>No Hard-Coded Secrets</li>
+<li>Comments First</li>
+<li>Test-Driven</li>
+<li>Explicit Error Handling</li>
+<li>Secure by Default</li>
+</ul>
+</div>
+
+<div class="card card-blue">
+<h4 style="color: var(--c-blue);">⚡ 性能 + 可读性</h4>
+<ul style="font-size: 18px; line-height: 1.7; margin: 8px 0 0;">
+<li>Performance Boundaries</li>
+<li>Minimal Dependencies</li>
+<li>YAGNI — You Aren't Gonna Need It</li>
+<li>Code for the Reader</li>
+<li>Every exported value has explicit type / interface</li>
+<li>No <code>any</code> unless whitelisted</li>
+</ul>
+</div>
+
+</div>
+
+<div class="card card-sage mt-6" style="padding: 18px 24px;">
+
+<h4 style="color: var(--c-sage); margin: 0;">🎯 三步用法 · 落地这套规则</h4>
+<div class="grid grid-cols-3 gap-4 mt-3">
+  <div><strong>1. Prompt it in</strong><br/><span style="font-size: 14px;">"Follow SOLID, DRY, KISS, and readability rules above."</span></div>
+  <div><strong>2. Audit the output</strong><br/><span style="font-size: 14px;">每个 PR 对照 13 点 checklist 检查</span></div>
+  <div><strong>3. Refine</strong><br/><span style="font-size: 14px;">AI 违反规则 → 更新 prompt 或 inline comment 再问</span></div>
+</div>
+
+</div>
+
+---
+
+<div class="section-eyebrow">Step 3 · design.md · 设计规范</div>
+
+# 让 AI 知道 "好看是什么" · 不靠它瞎猜
+
+<div class="grid mt-4" style="grid-template-columns: 1fr 1fr; gap: 32px;">
+
+<div>
+
+```markdown
+# Design System · daily-jobs
+
+## Color
+- Background: #faf9f5 (cream)
+- Text: #141413 (near-black)
+- Accent: #d97757 (terracotta)
+- Secondary: #6a9bcc (dusty blue)
+
+## Typography
+- Headings: Poppins 700 / 800
+- Body: Lora 400 (serif)
+- Mono: JetBrains Mono
+
+## Spacing
+8px base · 8 / 16 / 24 / 32 / 48 / 64 / 96
+
+## Shapes
+- Border-radius: 8px (cards) · 999px (pills)
+- Shadow: 0 1px 2px rgba(0,0,0,0.04),
+          0 4px 16px rgba(0,0,0,0.06)
+- Border: none, or 1px @ 8% opacity
 ```
 
+</div>
+
+<div class="stagger" style="display: flex; flex-direction: column; gap: 16px;">
+
+<div class="card card-accent">
+<h3>为什么要 design.md？</h3>
+<p>没有它 → AI 默认套 Bootstrap 风 + 蓝色按钮 + 圆角乱给。<br/>有它 → AI 套你的色板和字体。</p>
+</div>
+
+<div class="card card-blue">
+<h3>该写什么</h3>
+<p><strong>颜色 · 字体 · 间距 · 圆角 · 阴影</strong> 5 件事。<br/>放 hex / px 数值，不要"友好"、"现代"这种形容词。</p>
+</div>
+
+<div class="card card-sage">
+<h3>怎么用</h3>
+<p>放在 repo 根目录 / 在 PRD 里引用 <code>see design.md</code>。<br/>AI 会自动读。</p>
+</div>
+
+</div>
+
+</div>
+
+---
+
+<div class="section-eyebrow">Step 4 + 5 · README + CLAUDE.md</div>
+
+# 给人看的 README · 给 AI 看的 CLAUDE.md
+
+<div class="grid mt-6" style="grid-template-columns: 1fr 1fr; gap: 32px;">
+
+<div class="card card-accent" style="padding: 28px 32px;">
+
+<div class="big-icon-sm">📖</div>
+<h3>README.md · 给人看</h3>
+
+```markdown
+# daily-jobs
+
+每天打开看到匹配的工作机会。
+
+## Run
+double-click daily-jobs.html
+
+## Features
+- 关键词 / 城市搜索
+- localStorage 存"我的关注"
+- ⭐ 收藏 / 一键 Copy JD
+
+## Stack
+HTML + JS + Tailwind CDN · 0 deps
+```
+
+<p style="font-size: 16px;" class="muted mt-2">
+新人 / 协作者 / 未来的你打开第一眼看的东西。
+</p>
+
+</div>
+
+<div class="card card-blue" style="padding: 28px 32px;">
+
+<div class="big-icon-sm">🤖</div>
+<h3>CLAUDE.md · 给 AI 看</h3>
+
+```markdown
+# Project Memory · daily-jobs
+
+## Tech constraints
+- 单文件 HTML · 严禁拆多文件
+- 不要引 React / Vue / 任何 framework
+- Tailwind 用 CDN · 不要本地编译
+
+## Style
+按 design.md · cream + 赤陶橙
+
+## Don't
+- 不要加 backend
+- 不要加 login
+- 不要"顺便重构"未提到的部分
+```
+
+<p style="font-size: 16px;" class="muted mt-2">
+Claude Code 启动时<strong>自动读</strong> · 永久生效。
+</p>
+
+</div>
+
+</div>
+
+<blockquote class="mt-4 text-center" style="font-size: 18px;">
+README 给<strong>人</strong>看 · CLAUDE.md 给<strong>AI</strong>看 · 两者并存不冲突
+</blockquote>
+
+---
+layout: section
+class: text-center
+---
+
+<div class="section-eyebrow">Phase B</div>
+
+# 让 AI 真正动手
+
+<div class="muted mt-4">PLAN · IMPLEMENTATION · DEBUG · PR</div>
+
+---
+layout: center
+---
+
+<div class="section-eyebrow">PLAN MODE</div>
+
+# Plan Mode 是 Vibe Coding 的灵魂
+
+<div class="big-icon mt-4">🧭</div>
+
+<div class="pull-quote">
+先让 AI <strong>想清楚</strong> 再动手 —— 省下 90% 返工
+</div>
+
+<div class="grid grid-cols-2 gap-8 mt-8">
+  <div class="card card-muted">
+    <h3 class="muted">❌ 不用 Plan Mode</h3>
+    <p>"帮我加个登录功能" → AI 闷头写 → 改了 50 个文件 → 你看不懂 → 全推倒重来</p>
+  </div>
+  <div class="card card-accent">
+    <h3>✅ 用 Plan Mode</h3>
+    <p>"先列出要改的文件 + 每个文件改什么，等我确认" → 你 review → 删掉两个不必要的 → 再开始写</p>
+  </div>
+</div>
+
+---
+
+<div class="section-eyebrow">怎么进入 Plan Mode</div>
+
+# 在终端按 <span class="t-key" style="font-size: inherit; padding: 4px 12px;">Shift</span> + <span class="t-key" style="font-size: inherit; padding: 4px 12px;">Tab</span>
+
+<div class="terminal mt-3" style="font-size: 16px; padding: 18px 24px;">
+
+<div class="t-row"><span class="t-meta">~/projects/daily-jobs</span> · <span class="t-prompt">❯</span> <span class="t-cmd">claude</span></div>
+<div class="t-banner">⏵ Claude Code · Anthropic · v0.49</div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-prompt">›</span> 帮我做 <code>daily-jobs.html</code> · 单文件 · 自动推荐工作机会。</div>
+<div class="t-row" style="padding-left:18px;">15 条示例 jobs · 关键词搜索 · localStorage 收藏。</div>
+<div class="t-row" style="padding-left:18px;"><strong style="color:#faf9f5;">先给我 PRD，等我确认。</strong></div>
+<div class="t-row"><span class="t-ai">⏺</span> <span class="t-em">Let me plan this out before writing any code...</span></div>
+
+<div class="t-plan" style="padding: 14px 18px; margin: 8px 0;">
+<div class="t-plan-header" style="font-size: 18px;">📋 Plan</div>
+<ol style="font-size: 15px; line-height: 1.55;">
+  <li>Single <code>daily-jobs.html</code> · &lt;style&gt; + &lt;body&gt; + &lt;script&gt;</li>
+  <li>JOBS[] · 15 条种子数据 · 内嵌 JSON</li>
+  <li><code>renderHero()</code> · 随机选 1 条匹配 hero</li>
+  <li><code>renderList()</code> · 过滤 + 卡片 + ⭐ 收藏</li>
+  <li><code>onSearchInput()</code> · debounce 写 localStorage</li>
+</ol>
+<div class="t-plan-footer"><span class="t-key">Tab</span> to accept · <span class="t-key">e</span> to edit · <span class="t-key">Esc</span> to refine</div>
+</div>
+
+<div class="t-row"><span class="t-mode">⏸ plan mode · read-only · no files written</span></div>
+
+</div>
+
+<blockquote class="mt-3" style="font-size: 18px;">
+看到了吗？AI 没动一行代码 — 列出 5 个块等你按 <strong>Tab</strong> 才开始。
+</blockquote>
+
+---
+
+<div class="section-eyebrow">Step 6 · PLAN</div>
+
+# 列出实现方案 · 等我确认
+
+<div class="terminal mt-4">
+
+<div class="t-row"><span class="t-prompt">›</span> PRD 看起来不错。请列出 <code>daily-jobs.html</code> 的代码块结构 + 每块职责。</div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-ai">⏺</span> <span class="t-em">Single file with 4 sections...</span></div>
+
+<div class="t-plan">
+<div class="t-plan-header">📋 daily-jobs.html · Plan</div>
+<ol>
+  <li><code>&lt;style&gt;</code> · Tailwind via CDN + 自定义 hero 样式</li>
+  <li><code>JOBS = [...]</code> · 15 条种子数据（AI Engineer / Frontend / Data ...）</li>
+  <li><code>renderHero()</code> · 随机选一个匹配关键词的 job 当 hero</li>
+  <li><code>renderList()</code> · 按搜索框过滤 + 卡片渲染</li>
+  <li><code>onSearchInput()</code> · 节流写 localStorage + 重渲</li>
+  <li><code>copyJD()</code> · navigator.clipboard 复制描述</li>
+</ol>
+<div class="t-plan-footer"><span class="t-key">Tab</span> to accept · <span class="t-key">e</span> to edit · <span class="t-key">Esc</span> to refine</div>
+</div>
+
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-prompt">›</span> 漏了一个：把"我收藏的 jobs"也存 localStorage，每个卡片加个 ⭐ 按钮。然后开始写。</div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-ai">⏺</span> <span class="t-em">Updated plan + 1 function. Starting implementation...</span></div>
+
+</div>
+
+<blockquote class="mt-4" style="font-size: 18px;">
+不满意 → 直接说 → AI 改 plan，<strong>没动一行代码</strong>
+</blockquote>
+
+---
+
+<div class="section-eyebrow">Step 7 · IMPLEMENTATION</div>
+
+# 让 AI 写 · 你边看边讲解
+
+<div class="terminal mt-4">
+
+<div class="t-row"><span class="t-ai">⏺</span> <span class="t-em">Implementing daily-jobs.html...</span></div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-cmd" style="color:#788c5d;">✓</span> Created <code style="color:#6a9bcc;">daily-jobs.html</code> <span class="t-meta">(238 lines · single file · 0 dependencies)</span></div>
+<div class="t-row" style="padding-left:18px;"><span class="t-meta">├─ &lt;style&gt; Tailwind CDN + hero gradient</span></div>
+<div class="t-row" style="padding-left:18px;"><span class="t-meta">├─ JOBS[] · 15 条种子（AI Engineer · Frontend · Data ...）</span></div>
+<div class="t-row" style="padding-left:18px;"><span class="t-meta">├─ renderHero() · 随机选 1 条匹配 hero</span></div>
+<div class="t-row" style="padding-left:18px;"><span class="t-meta">├─ renderList() · 过滤 + 卡片渲染 + ⭐ 收藏</span></div>
+<div class="t-row" style="padding-left:18px;"><span class="t-meta">├─ onSearchInput() · debounce 200ms · 写 localStorage</span></div>
+<div class="t-row" style="padding-left:18px;"><span class="t-meta">└─ copyJD() · navigator.clipboard.writeText()</span></div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-ai">⏺</span> Done · 1 file · <span class="t-meta">直接</span> <code style="color:#faf9f5;">open daily-jobs.html</code></div>
+
+</div>
+
+<div class="grid grid-cols-3 gap-4 mt-4">
+  <div class="card card-accent" style="padding: 16px 20px;">
+    <strong>不要发呆</strong>
+    <p style="font-size:14px; margin: 4px 0 0;">边写边讲每段的作用</p>
+  </div>
+  <div class="card card-blue" style="padding: 16px 20px;">
+    <strong>指出 AI 的取舍</strong>
+    <p style="font-size:14px; margin: 4px 0 0;">"它用 Tailwind CDN 不打包，因为单文件不能 npm install"</p>
+  </div>
+  <div class="card card-sage" style="padding: 16px 20px;">
+    <strong>有 bug 不要慌</strong>
+    <p style="font-size:14px; margin: 4px 0 0;">让 AI 自己 debug — <strong>真实工作流</strong></p>
+  </div>
+</div>
+
+---
+
+<div class="section-eyebrow">Step 8 · DEBUG</div>
+
+# 浏览器报错？直接贴回 Claude
+
+<div class="terminal mt-4">
+
+<div class="t-row"><span class="t-prompt">❯</span> <span class="t-cmd">open daily-jobs.html</span></div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-meta">// 现场点击搜索框，输入 "AI Engineer"...</span></div>
+<div class="t-row"><span style="color:#e8a070;">⨯ Console:</span> <span style="color:#e8a070;">Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')</span></div>
+<div class="t-row"><span class="t-meta">    at daily-jobs.html:142</span></div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-prompt">›</span> <span class="t-cmd">[paste 错误]</span> 搜索框 listener 报 null。</div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-ai">⏺</span> <span class="t-em">脚本在 DOM 渲染前执行了。两个修法：</span></div>
+<div class="t-row" style="padding-left:18px;"><span class="t-meta">A. 把 &lt;script&gt; 移到 &lt;/body&gt; 之前</span></div>
+<div class="t-row" style="padding-left:18px;"><span class="t-meta">B. 包一层 DOMContentLoaded</span></div>
+<div class="t-row"><span class="t-ai">⏺</span> <span class="t-em">用 B 改一行...</span></div>
+<div class="t-row"><span class="t-cmd" style="color:#788c5d;">✓</span> Updated <code style="color:#6a9bcc;">daily-jobs.html</code> <span class="t-meta">+ 2 lines · DOMContentLoaded wrapper</span></div>
+
+</div>
+
+<div class="card card-muted mt-4" style="padding: 16px 24px;">
+
+### 真实开发常见 — AI 经常忘
 ```bash
-git diff   # 自己看一眼
+lsof -i:3000      # 查端口占用
+kill -9 [PID]     # 强杀旧进程
 ```
 
-<div style="text-align: center; margin-top: 80px;">
-<div class="big-icon">✨</div>
+</div>
 
-<div class="pull-quote accent">
-30 分钟，从 idea 到能跑的 Mini CRM
+---
+
+<div class="section-eyebrow">Step 9 · PR</div>
+
+# 让 AI 写 commit · 你 review
+
+<div class="terminal mt-4">
+
+<div class="t-row"><span class="t-prompt">›</span> 帮我 commit。conventional commit 格式，<strong style="color:#faf9f5;">不要 push</strong>，我自己来。</div>
+<div class="t-row">&nbsp;</div>
+<div class="t-row"><span class="t-ai">⏺</span> <span class="t-em">Staging 1 file · drafting message...</span></div>
+
+<div class="t-plan">
+<div class="t-plan-header">💾 Commit Message</div>
+<div style="color: #faf9f5; font-size: 14px;">
+feat(jobs): daily-jobs.html · 自动推荐工作机会<br/>
+<br/>
+- 单文件 HTML · Tailwind CDN · 0 dependencies<br/>
+- 15 条种子岗位 · 关键词搜索 + 城市过滤<br/>
+- localStorage 存"我的关键词"和"⭐ 收藏"<br/>
+- Hero "今日推荐" + 一键 Copy JD<br/>
+- 238 lines · 双击打开即用<br/>
+</div>
+</div>
+
+<div class="t-row"><span class="t-cmd" style="color:#788c5d;">✓</span> <code style="color:#6a9bcc;">git commit</code> <span class="t-meta">[main 7a3f2c1]</span></div>
+<div class="t-row"><span class="t-meta">    Skipped: git push (per your request)</span></div>
+
+</div>
+
+<div style="text-align: center; margin-top: 24px;">
+<div class="pull-quote accent" style="font-size: 32px;">
+30 分钟 · 从 idea 到一个你<strong>明天就能用</strong>的工具
 </div>
 </div>
 
@@ -1372,22 +1642,6 @@ class: text-center
 </div>
 
 ---
-
-<div class="section-eyebrow">完整路线图 · 课后自学</div>
-
-# AI Coding · From Idea to Product
-
-<div class="muted" style="margin-bottom: 16px;">
-45 个知识点 · 40 小时 · jiangren.com.au/roadmaps/ai-coding
-</div>
-
-<iframe
-  src="https://jiangren.com.au/roadmaps/ai-coding"
-  style="width: 100%; height: 720px; border: 1px solid rgba(20,20,19,0.10); border-radius: 12px; background: white; box-shadow: 0 1px 2px rgba(20,20,19,0.04), 0 4px 16px rgba(20,20,19,0.06);"
-  loading="lazy"
-></iframe>
-
----
 layout: center
 class: text-center
 ---
@@ -1422,8 +1676,6 @@ class: text-center
 <div class="big-icon">👋</div>
 
 # Thank You
-
-<div class="muted mt-4" style="font-size: 22px;">下节课见 · PRD 工程</div>
 
 <div style="margin-top: 64px; display: flex; justify-content: center;">
   <img src="/jr-logo.svg" alt="JR Academy" style="height: 48px; opacity: 0.85;" />

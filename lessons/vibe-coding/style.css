@@ -33,26 +33,34 @@ section.slidev-layout {
   background-color: var(--c-cream) !important;
   /* Layered: warm corner glow + cool corner glow + tiny dot grid */
   background-image:
-    radial-gradient(ellipse 800px 600px at 0% 0%, rgba(217,119,87,0.10), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 100% 100%, rgba(106,155,204,0.08), transparent 60%),
-    radial-gradient(circle, rgba(20,20,19,0.06) 1px, transparent 1px) !important;
-  background-size: auto, auto, 32px 32px !important;
+    radial-gradient(ellipse 800px 600px at 0% 0%, rgba(217,119,87,0.12), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 100%, rgba(106,155,204,0.10), transparent 60%),
+    radial-gradient(circle, rgba(20,20,19,0.14) 1.6px, transparent 1.6px) !important;
+  background-size: auto, auto, 28px 28px !important;
   background-position: 0 0, 0 0, 0 0 !important;
   color: var(--c-dark) !important;
   font-family: 'Lora', Georgia, serif;
-  padding: 96px 112px !important;
+  padding: 56px 96px !important;
 }
 
-/* Center / end / section layouts get a softer wash without the dots */
+/* Default content slides — vertically center内容 (skip slidev built-in layouts that have their own structure) */
+.slidev-layout:not(.cover):not(.end):not(.section):not(.center):not(.iframe):not(.intro) {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Center / end / section layouts — soft wash + faint dots (less dense) */
 .slidev-layout.cover,
 .slidev-layout.end,
 section.slidev-layout[class*="layout-center"],
 section.slidev-layout[class*="layout-section"],
 section.slidev-layout[class*="layout-end"] {
   background-image:
-    radial-gradient(ellipse 1000px 700px at 30% 20%, rgba(217,119,87,0.14), transparent 55%),
-    radial-gradient(ellipse 900px 600px at 80% 90%, rgba(106,155,204,0.10), transparent 55%) !important;
-  background-size: auto, auto !important;
+    radial-gradient(ellipse 1000px 700px at 30% 20%, rgba(217,119,87,0.16), transparent 55%),
+    radial-gradient(ellipse 900px 600px at 80% 90%, rgba(106,155,204,0.12), transparent 55%),
+    radial-gradient(circle, rgba(20,20,19,0.08) 1.6px, transparent 1.6px) !important;
+  background-size: auto, auto, 40px 40px !important;
 }
 
 /* Headings — Poppins, near-black, tight tracking · fixed px (no clamp/vw) */
@@ -68,23 +76,23 @@ section.slidev-layout[class*="layout-end"] {
 }
 
 /* 内容 slide 默认 — 收紧 */
-.slidev-layout h1 { font-size: 64px; margin-bottom: 32px; }
-.slidev-layout h2 { font-size: 44px; margin-bottom: 20px; }
-.slidev-layout h3 { font-size: 28px; font-weight: 700; }
+.slidev-layout h1 { font-size: 80px; margin-bottom: 32px; }
+.slidev-layout h2 { font-size: 56px; margin-bottom: 20px; }
+.slidev-layout h3 { font-size: 36px; font-weight: 700; }
 
 /* Cover / Section / Center / End 类 layout 用大 hero 字号 */
 .slidev-layout.cover h1,
 .slidev-layout.end h1,
 section.slidev-layout[class*="layout-center"] h1,
 section.slidev-layout[class*="layout-section"] h1,
-section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
+section.slidev-layout[class*="layout-end"] h1 { font-size: 120px; }
 
 /* 卡片内字号收紧 */
-.card h3 { font-size: 22px; margin: 0 0 8px; }
-.card h4 { font-size: 18px; margin: 0 0 6px; }
-.card p, .card li { font-size: 16px; line-height: 1.5; }
-.card .big-icon-sm { font-size: 56px; margin-bottom: 12px; }
-.card .big-icon { font-size: 96px; }
+.card h3 { font-size: 28px; margin: 0 0 8px; }
+.card h4 { font-size: 22px; margin: 0 0 6px; }
+.card p, .card li { font-size: 20px; line-height: 1.5; }
+.card .big-icon-sm { font-size: 72px; margin-bottom: 12px; }
+.card .big-icon { font-size: 120px; }
 .card.logo-card .logo-mark { height: 56px; }
 
 /* Body — Lora serif */
@@ -92,7 +100,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 .slidev-layout li,
 .slidev-layout td {
   font-family: 'Lora', Georgia, serif;
-  font-size: 22px;
+  font-size: 26px;
   line-height: 1.6;
   color: var(--c-dark);
 }
@@ -105,7 +113,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 .slidev-layout code,
 .slidev-layout pre {
   font-family: 'JetBrains Mono', 'Space Mono', monospace !important;
-  font-size: 18px;
+  font-size: 22px;
 }
 .slidev-layout :not(pre) > code {
   background: var(--c-light-gray);
@@ -136,13 +144,13 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   font-weight: 600;
   text-align: left;
   padding: 16px 20px;
-  font-size: 18px;
+  font-size: 22px;
   color: var(--c-dark);
 }
 .slidev-layout td {
   padding: 16px 20px;
   border-top: 1px solid rgba(20,20,19,0.06);
-  font-size: 18px;
+  font-size: 22px;
 }
 .slidev-layout tr:hover td { background: rgba(217,119,87,0.04); }
 
@@ -167,7 +175,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   margin: 24px 0;
   font-style: italic;
   font-family: 'Lora', Georgia, serif;
-  font-size: 24px;
+  font-size: 30px;
   color: var(--c-dark);
 }
 
@@ -178,7 +186,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 /* Cover layout */
 .cover-eyebrow {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--c-mid-gray);
@@ -186,7 +194,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 }
 .cover-byline {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.1em;
   color: var(--c-mid-gray);
   margin-top: 64px;
@@ -195,7 +203,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 /* Section divider */
 .section-eyebrow {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--c-terracotta);
@@ -204,14 +212,14 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 
 /* Big icon — used as visual anchor */
 .big-icon {
-  font-size: 144px;
+  font-size: 168px;
   line-height: 1;
   filter: saturate(0.95);
   display: inline-block;
   margin-bottom: 32px;
 }
-.big-icon-sm { font-size: 80px; line-height: 1; }
-.big-icon-xl { font-size: 200px; line-height: 1; }
+.big-icon-sm { font-size: 96px; line-height: 1; }
+.big-icon-xl { font-size: 224px; line-height: 1; }
 
 /* Card */
 .card {
@@ -234,7 +242,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   background: var(--c-light-gray);
   color: var(--c-dark);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 16px;
   letter-spacing: 0.05em;
 }
 .pill-accent { background: var(--c-terracotta); color: var(--c-cream); }
@@ -243,7 +251,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 .pull-quote {
   font-family: 'Lora', Georgia, serif;
   font-style: italic;
-  font-size: 48px;
+  font-size: 60px;
   line-height: 1.4;
   color: var(--c-dark);
 }
@@ -257,7 +265,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 .big-num {
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
-  font-size: 160px;
+  font-size: 192px;
   line-height: 1;
   letter-spacing: -0.04em;
   color: var(--c-terracotta);
@@ -328,7 +336,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
+  height: 72px;
   opacity: 0.85;
   transition: opacity var(--d-fast) var(--ease-out), transform var(--d-fast) var(--ease-out);
 }
@@ -340,8 +348,8 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   max-width: none !important;
   display: block;
 }
-.logo-mark.is-tall { height: 72px; }
-.logo-mark.is-sm { height: 40px; }
+.logo-mark.is-tall { height: 88px; }
+.logo-mark.is-sm { height: 52px; }
 .logo-bar .logo-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
@@ -362,24 +370,35 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   gap: 16px;
   padding: 24px;
 }
-.logo-card .logo-mark { height: 80px; }
+.logo-card .logo-mark { height: 104px; }
 .logo-card h3, .logo-card h4 { margin: 0; }
 
 /* ============================================================
    Claude Code TUI mockup — used in Plan Mode demo slide
    ============================================================ */
+/* Terminal inline code — override global cream-on-light-gray (illegible on dark bg) */
+.terminal code,
+.terminal :not(pre) > code,
+.slidev-layout .terminal :not(pre) > code {
+  background: rgba(217,119,87,0.18) !important;
+  color: #fde8db !important;
+  padding: 1px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
 .terminal {
   background: #1e1d1c;
   border-radius: 12px;
   padding: 24px 32px;
   box-shadow: 0 8px 32px rgba(20,20,19,0.12);
   font-family: 'JetBrains Mono', 'Space Mono', monospace !important;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.65;
   color: #d4d2c8;
 }
 .terminal .t-row { display: block; }
-.terminal .t-meta { color: #6b6a65; font-size: 12px; letter-spacing: 0.05em; }
+.terminal .t-meta { color: #6b6a65; font-size: 15px; letter-spacing: 0.05em; }
 .terminal .t-prompt { color: #d97757; font-weight: 600; }
 .terminal .t-ai { color: #788c5d; font-weight: 600; }
 .terminal .t-cmd { color: #faf9f5; }
@@ -390,7 +409,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   background: rgba(217,119,87,0.12);
   padding: 1px 6px;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 16px;
 }
 .terminal .t-banner {
   display: inline-block;
@@ -399,7 +418,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   padding: 6px 14px;
   margin: 10px 0;
   color: #d97757;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0.05em;
 }
 .terminal .t-plan {
@@ -414,6 +433,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   font-weight: 700;
   margin-bottom: 10px;
   letter-spacing: 0.03em;
+  font-size: 22px;
 }
 .terminal .t-plan ol {
   padding-left: 24px;
@@ -423,7 +443,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 .terminal .t-plan ol li {
   margin: 5px 0;
   color: #d4d2c8;
-  font-size: 14px;
+  font-size: 18px;
   list-style: decimal;
 }
 .terminal .t-plan ol li::before { content: none; }
@@ -431,13 +451,13 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   color: #6a9bcc;
   background: transparent;
   padding: 0;
-  font-size: 14px;
+  font-size: 18px;
 }
 .terminal .t-plan-footer {
   margin-top: 12px;
   padding-top: 10px;
   border-top: 1px solid rgba(212,210,200,0.12);
-  font-size: 12px;
+  font-size: 15px;
   color: #6b6a65;
 }
 .terminal .t-mode {
@@ -447,7 +467,7 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   background: rgba(120,140,93,0.18);
   border-left: 2px solid #788c5d;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: 15px;
   color: #c5d2ad;
   letter-spacing: 0.05em;
 }
@@ -456,10 +476,10 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
 .slidev-layout svg text {
   line-height: 1;
 }
-.slidev-layout svg text.svg-axis { font-family: 'JetBrains Mono', monospace; font-size: 13px; fill: #6b6a65; }
-.slidev-layout svg text.svg-label { font-family: 'Lora', serif; font-size: 15px; fill: #141413; }
-.slidev-layout svg text.svg-anno-em { font-family: 'Lora', serif; font-style: italic; font-size: 20px; fill: #d97757; }
-.slidev-layout svg text.svg-anno-zh { font-family: 'Lora', serif; font-size: 14px; fill: #d97757; }
+.slidev-layout svg text.svg-axis { font-family: 'JetBrains Mono', monospace; font-size: 17px; fill: #6b6a65; }
+.slidev-layout svg text.svg-label { font-family: 'Lora', serif; font-size: 20px; fill: #141413; }
+.slidev-layout svg text.svg-anno-em { font-family: 'Lora', serif; font-style: italic; font-size: 26px; fill: #d97757; }
+.slidev-layout svg text.svg-anno-zh { font-family: 'Lora', serif; font-size: 18px; fill: #d97757; }
 
 /* Footer logo — auto-injected on every slide via ::after */
 .slidev-layout::after {
@@ -467,8 +487,8 @@ section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
   position: absolute;
   bottom: 36px;
   right: 56px;
-  width: 180px;
-  height: 44px;
+  width: 220px;
+  height: 56px;
   background: url('/jr-logo.svg') no-repeat right center / contain;
   opacity: 0.7;
   z-index: 5;
