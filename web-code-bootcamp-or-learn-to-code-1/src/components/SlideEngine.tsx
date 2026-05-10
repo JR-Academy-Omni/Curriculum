@@ -148,6 +148,17 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 							{children[current]}
 						</motion.div>
 					</AnimatePresence>
+					{/* 全局 JR Academy logo · 每张 slide 自动出现 */}
+					<img
+						src={`${(import.meta as unknown as { env: { BASE_URL: string } }).env.BASE_URL.replace(/\/$/, '')}/jr-logo.png`}
+						alt="JR Academy"
+						style={{
+							position: 'absolute', top: 32, right: 44,
+							width: 200, height: 'auto',
+							zIndex: 50, pointerEvents: 'none',
+							filter: 'drop-shadow(2px 2px 0 rgba(255,255,255,0.6))',
+						}}
+					/>
 				</div>
 			</div>
 		</div>

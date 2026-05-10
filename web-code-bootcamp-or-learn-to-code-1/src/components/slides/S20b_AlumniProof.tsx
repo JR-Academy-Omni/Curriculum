@@ -12,7 +12,7 @@ const companies = [
 const bigStats = [
 	{ value: '5,000+', label: '匠人学员拿到 offer', sub: '8 年累计' },
 	{ value: '29', label: '期 IT 就业课 · 第 30 期招生中', sub: '2018 年首期至今' },
-	{ value: '80+', label: '澳洲互联网公司有匠人校友', sub: 'Tech / Fintech / Ecommerce' },
+	{ value: '80+', label: '全球科技公司有匠人校友', sub: '澳洲 / 新西兰 / 新加坡 / 大陆 / 欧美' },
 ];
 
 export default function S20b_AlumniProof() {
