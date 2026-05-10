@@ -37,10 +37,10 @@ export default function S23_PricingCta() {
 						transition={{ duration: 0.4 }}
 						style={{ marginBottom: 20 }}
 					>
-						<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 14 }}>
+						<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 14 }}>
 							第 30 期 · 招生中
 						</div>
-						<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(36px,5vw,70px)', fontWeight: 900, lineHeight: 1, letterSpacing: -2, color: colors.white, margin: 0 }}>
+						<h2 style={{ fontFamily: fonts.heading, fontSize: '70px', fontWeight: 900, lineHeight: 1, letterSpacing: -2, color: colors.white, margin: 0 }}>
 							准备好，<br />
 							<span style={{ display: 'inline-block', padding: '0 14px', background: colors.yellow, color: colors.black, border, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(-1deg)', marginTop: 10 }}>
 								6 个月
@@ -56,17 +56,17 @@ export default function S23_PricingCta() {
 						style={{ background: colors.white, border, boxShadow: `8px 8px 0 ${colors.red}`, padding: '20px 22px' }}
 					>
 						<div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 8 }}>
-							<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(34px,4.5vw,60px)', fontWeight: 900, color: colors.black, letterSpacing: -2 }}>
+							<div style={{ fontFamily: fonts.heading, fontSize: '60px', fontWeight: 900, color: colors.black, letterSpacing: -2 }}>
 								${courseMeta.promoTuition}
 							</div>
-							<div style={{ fontFamily: fonts.mono, fontSize: 14, color: '#888', textDecoration: 'line-through', fontWeight: 700 }}>
+							<div style={{ fontFamily: fonts.mono, fontSize: 17, color: '#888', textDecoration: 'line-through', fontWeight: 700 }}>
 								${courseMeta.tuition}
 							</div>
-							<div style={{ padding: '3px 8px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 10, fontWeight: 900, border: `2px solid ${colors.black}` }}>
+							<div style={{ padding: '3px 8px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, border: `2px solid ${colors.black}` }}>
 								公开课福利
 							</div>
 						</div>
-						<div style={{ fontFamily: fonts.body, fontSize: 13, color: '#333', fontWeight: 600 }}>
+						<div style={{ fontFamily: fonts.body, fontSize: 16, color: '#333', fontWeight: 600 }}>
 							开课 {courseMeta.commenceDate} · 结课 {courseMeta.completeDate} · 6 个月 · 可分期
 						</div>
 					</motion.div>
@@ -77,10 +77,10 @@ export default function S23_PricingCta() {
 						transition={{ delay: 0.6 }}
 						style={{ marginTop: 18, padding: '12px 16px', background: 'rgba(255,255,255,0.08)', border: `2px dashed ${colors.yellow}` }}
 					>
-						<div style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.yellow, fontWeight: 800, letterSpacing: 1, marginBottom: 4 }}>
+						<div style={{ fontFamily: fonts.mono, fontSize: 14, color: colors.yellow, fontWeight: 800, letterSpacing: 1, marginBottom: 4 }}>
 							✓ 公开课观众专属福利
 						</div>
-						<div style={{ fontFamily: fonts.body, fontSize: 13, color: colors.white, fontWeight: 600 }}>
+						<div style={{ fontFamily: fonts.body, fontSize: 16, color: colors.white, fontWeight: 600 }}>
 							扫码加顾问 → 提"第 30 期公开课" → 锁定 9 折优惠 + 1v1 学前评估
 						</div>
 					</motion.div>
@@ -92,7 +92,7 @@ export default function S23_PricingCta() {
 					transition={{ delay: 0.4 }}
 					style={{ background: colors.white, border, boxShadow: shadow, padding: '20px 22px' }}
 				>
-					<div style={{ display: 'inline-block', padding: '4px 10px', background: colors.black, color: colors.yellow, fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, marginBottom: 14, letterSpacing: 1 }}>
+					<div style={{ display: 'inline-block', padding: '4px 10px', background: colors.black, color: colors.yellow, fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, marginBottom: 14, letterSpacing: 1 }}>
 						$5,360 包含
 					</div>
 					<div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -102,14 +102,14 @@ export default function S23_PricingCta() {
 								initial={{ opacity: 0, x: -10 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ delay: 0.5 + i * 0.07 }}
-								style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: fonts.body, fontSize: 'clamp(12px,1.3vw,15px)', color: colors.black, fontWeight: 600 }}
+								style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: fonts.body, fontSize: '18px', color: colors.black, fontWeight: 600 }}
 							>
 								<span style={{ fontSize: 20, width: 26, textAlign: 'center' }}>{inc.icon}</span>
 								<span>{inc.label}</span>
 							</motion.div>
 						))}
 					</div>
-					<div style={{ marginTop: 16, padding: '10px 12px', background: colors.yellow, border: `2px solid ${colors.black}`, fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, textAlign: 'center', letterSpacing: 0.5 }}>
+					<div style={{ marginTop: 16, padding: '10px 12px', background: colors.yellow, border: `2px solid ${colors.black}`, fontFamily: fonts.mono, fontSize: 14, fontWeight: 800, textAlign: 'center', letterSpacing: 0.5 }}>
 						👉 报名官网: jiangren.com.au/programs/web-code-bootcamp-or-learn-to-code
 					</div>
 				</motion.div>

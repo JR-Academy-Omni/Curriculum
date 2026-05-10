@@ -18,14 +18,14 @@ export default function S06_ModuleOverview() {
 					<div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
 						<span style={{
 							padding: '4px 14px', background: colors.red, color: colors.white,
-							fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, letterSpacing: 2,
+							fontFamily: fonts.mono, fontSize: 15, fontWeight: 800, letterSpacing: 2,
 							border, boxShadow: shadowSm,
 						}}>
 							V30 · COHORT {courseMeta.cohort}
 						</span>
 					</div>
 					<h2 style={{
-						fontFamily: fonts.heading, fontSize: 'clamp(30px,4vw,52px)', fontWeight: 900,
+						fontFamily: fonts.heading, fontSize: '52px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0,
 					}}>
 						第 30 期 · <span style={{
@@ -34,7 +34,7 @@ export default function S06_ModuleOverview() {
 						}}>10 Module</span> 全栈 + AI
 					</h2>
 					<p style={{
-						fontFamily: fonts.mono, fontSize: 'clamp(12px,1.4vw,16px)', color: '#555',
+						fontFamily: fonts.mono, fontSize: '19px', color: '#555',
 						fontWeight: 700, marginTop: 10, letterSpacing: 0.5,
 					}}>
 						{courseMeta.totalLessons} 节课 · {courseMeta.liveClasses} 节直播 · {courseMeta.interactiveLabs}+ Lab · {courseMeta.quests} Quest · {courseMeta.weeks} 周技术 + P3 孵化
@@ -76,7 +76,7 @@ export default function S06_ModuleOverview() {
 								<div style={{
 									position: 'absolute', top: 6, right: -2,
 									padding: '2px 10px', background: colors.red, color: colors.yellow,
-									fontFamily: fonts.mono, fontSize: 10, fontWeight: 800, letterSpacing: 1,
+									fontFamily: fonts.mono, fontSize: 13, fontWeight: 800, letterSpacing: 1,
 									border: `2px solid ${colors.black}`, transform: 'rotate(3deg)',
 									zIndex: 2,
 								}}>
@@ -90,33 +90,33 @@ export default function S06_ModuleOverview() {
 								borderBottom: `3px solid ${colors.black}`,
 							}}>
 								<div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-									<span style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, letterSpacing: 1 }}>
+									<span style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 800, letterSpacing: 1 }}>
 										{m.code}
 									</span>
 									<span style={{ fontSize: 18, lineHeight: 1 }}>{m.icon}</span>
 								</div>
-								<span style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, opacity: 0.9 }}>
+								<span style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 800, opacity: 0.9 }}>
 									{m.lessons} 节
 								</span>
 							</div>
 
 							<div style={{ padding: '10px 12px', flex: 1, display: 'flex', flexDirection: 'column' }}>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(13px,1.25vw,17px)',
+									fontFamily: fonts.heading, fontSize: '20px',
 									fontWeight: 900, lineHeight: 1.15, color: colors.black,
 									letterSpacing: -0.3,
 								}}>
 									{m.name}
 								</div>
 								<div style={{
-									fontFamily: fonts.heading, fontSize: 'clamp(11px,1.05vw,13px)', color: m.color,
+									fontFamily: fonts.heading, fontSize: '16px', color: m.color,
 									fontWeight: 700, marginTop: 3,
 								}}>
 									{m.nameCn}
 								</div>
 
 								<div style={{
-									fontSize: 'clamp(10px,1vw,12px)', color: '#555', lineHeight: 1.4,
+									fontSize: '15px', color: '#555', lineHeight: 1.4,
 									marginTop: 8, fontWeight: 500,
 									display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',
 									overflow: 'hidden',
@@ -128,7 +128,7 @@ export default function S06_ModuleOverview() {
 							<div style={{
 								padding: '6px 12px', background: '#f7f7f7', borderTop: '1px solid #ddd',
 								display: 'flex', justifyContent: 'space-between',
-								fontFamily: fonts.mono, fontSize: 10, fontWeight: 700, color: '#333',
+								fontFamily: fonts.mono, fontSize: 13, fontWeight: 700, color: '#333',
 							}}>
 								<span>🎥 {m.live}</span>
 								<span>🧪 {m.lab}</span>
@@ -148,7 +148,7 @@ export default function S06_ModuleOverview() {
 						border, boxShadow: shadowSm,
 					}}
 				>
-					<span style={{ fontFamily: fonts.mono, fontSize: 'clamp(11px,1.1vw,13px)', fontWeight: 700, letterSpacing: 1 }}>
+					<span style={{ fontFamily: fonts.mono, fontSize: '16px', fontWeight: 700, letterSpacing: 1 }}>
 						<span style={{ color: colors.yellow }}>M1 Launchpad</span>
 						<span style={{ margin: '0 8px' }}>→</span>
 						<span style={{ color: colors.yellow }}>M10 Career Accelerator</span>

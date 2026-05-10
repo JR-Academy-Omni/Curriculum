@@ -33,10 +33,10 @@ export default function S04_MarketData() {
 					transition={{ duration: 0.4 }}
 					style={{ marginBottom: 22 }}
 				>
-					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
+					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
 						MARKET · 2026 Q1
 					</div>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(28px,4vw,52px)', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '52px', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
 						2026 澳洲就业市场 —{' '}
 						<span style={{ display: 'inline-block', padding: '0 12px', background: colors.yellow, border, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(-1deg)' }}>
 							AI 时代的全栈
@@ -58,14 +58,14 @@ export default function S04_MarketData() {
 							transition={{ duration: 0.4 }}
 							style={{ background: colors.white, border, boxShadow: shadow, padding: '18px 16px' }}
 						>
-							<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(32px,4vw,56px)', fontWeight: 900, color: s.color, letterSpacing: -2, lineHeight: 1 }}>
+							<div style={{ fontFamily: fonts.heading, fontSize: '56px', fontWeight: 900, color: s.color, letterSpacing: -2, lineHeight: 1 }}>
 								{s.value}
 								{s.unit && <span style={{ fontSize: '0.5em', marginLeft: 4, color: colors.black }}>{s.unit}</span>}
 							</div>
-							<div style={{ fontFamily: fonts.body, fontSize: 13, fontWeight: 700, color: colors.black, marginTop: 8, lineHeight: 1.3 }}>
+							<div style={{ fontFamily: fonts.body, fontSize: 16, fontWeight: 700, color: colors.black, marginTop: 8, lineHeight: 1.3 }}>
 								{s.label}
 							</div>
-							<div style={{ fontFamily: fonts.mono, fontSize: 10, color: '#888', marginTop: 6, letterSpacing: 0.5 }}>
+							<div style={{ fontFamily: fonts.mono, fontSize: 13, color: '#888', marginTop: 6, letterSpacing: 0.5 }}>
 								{s.source}
 							</div>
 						</motion.div>
@@ -78,16 +78,16 @@ export default function S04_MarketData() {
 					transition={{ delay: 0.6 }}
 					style={{ background: colors.dark, border, boxShadow: shadow, padding: '20px 22px' }}
 				>
-					<div style={{ display: 'inline-block', padding: '4px 12px', background: colors.yellow, color: colors.black, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, marginBottom: 14 }}>
+					<div style={{ display: 'inline-block', padding: '4px 12px', background: colors.yellow, color: colors.black, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, marginBottom: 14 }}>
 						SALARY LADDER · AUD / YEAR
 					</div>
 					<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 10 }}>
 						{salaryTiers.map((t) => (
 							<div key={t.role} style={{ background: 'rgba(255,255,255,0.08)', border: `2px solid ${t.color}`, padding: '10px 12px' }}>
-								<div style={{ fontFamily: fonts.mono, fontSize: 11, color: 'rgba(255,255,255,0.7)', fontWeight: 700, marginBottom: 6 }}>
+								<div style={{ fontFamily: fonts.mono, fontSize: 14, color: 'rgba(255,255,255,0.7)', fontWeight: 700, marginBottom: 6 }}>
 									{t.role}
 								</div>
-								<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(16px,1.8vw,22px)', fontWeight: 900, color: t.color }}>
+								<div style={{ fontFamily: fonts.heading, fontSize: '22px', fontWeight: 900, color: t.color }}>
 									{t.salary}
 								</div>
 							</div>

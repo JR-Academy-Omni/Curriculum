@@ -1,0 +1,517 @@
+/* ============================================================
+   Claude / Anthropic Design Style — Slidev override
+   Reference: curriculum/CLAUDE_DESIGN_STYLE.md
+   ============================================================ */
+
+:root {
+  /* Foundation */
+  --c-dark: #141413;
+  --c-cream: #faf9f5;
+  --c-mid-gray: #b0aea5;
+  --c-light-gray: #e8e6dc;
+  --c-white: #ffffff;
+
+  /* Accents */
+  --c-terracotta: #d97757;
+  --c-blue: #6a9bcc;
+  --c-sage: #788c5d;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --d-fast: 200ms;
+  --d-base: 400ms;
+  --d-slow: 600ms;
+
+  /* Slidev theme overrides */
+  --slidev-theme-primary: var(--c-terracotta);
+}
+
+/* Global slide background + text — fixed 16:9 / 1920×1080 canvas, no responsive */
+.slidev-layout,
+.slidev-page,
+section.slidev-layout {
+  background-color: var(--c-cream) !important;
+  /* Layered: warm corner glow + cool corner glow + tiny dot grid */
+  background-image:
+    radial-gradient(ellipse 800px 600px at 0% 0%, rgba(217,119,87,0.10), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 100%, rgba(106,155,204,0.08), transparent 60%),
+    radial-gradient(circle, rgba(20,20,19,0.06) 1px, transparent 1px) !important;
+  background-size: auto, auto, 32px 32px !important;
+  background-position: 0 0, 0 0, 0 0 !important;
+  color: var(--c-dark) !important;
+  font-family: 'Lora', Georgia, serif;
+  padding: 96px 112px !important;
+}
+
+/* Center / end / section layouts get a softer wash without the dots */
+.slidev-layout.cover,
+.slidev-layout.end,
+section.slidev-layout[class*="layout-center"],
+section.slidev-layout[class*="layout-section"],
+section.slidev-layout[class*="layout-end"] {
+  background-image:
+    radial-gradient(ellipse 1000px 700px at 30% 20%, rgba(217,119,87,0.14), transparent 55%),
+    radial-gradient(ellipse 900px 600px at 80% 90%, rgba(106,155,204,0.10), transparent 55%) !important;
+  background-size: auto, auto !important;
+}
+
+/* Headings — Poppins, near-black, tight tracking · fixed px (no clamp/vw) */
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4 {
+  font-family: 'Poppins', Arial, sans-serif !important;
+  color: var(--c-dark) !important;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* 内容 slide 默认 — 收紧 */
+.slidev-layout h1 { font-size: 64px; margin-bottom: 32px; }
+.slidev-layout h2 { font-size: 44px; margin-bottom: 20px; }
+.slidev-layout h3 { font-size: 28px; font-weight: 700; }
+
+/* Cover / Section / Center / End 类 layout 用大 hero 字号 */
+.slidev-layout.cover h1,
+.slidev-layout.end h1,
+section.slidev-layout[class*="layout-center"] h1,
+section.slidev-layout[class*="layout-section"] h1,
+section.slidev-layout[class*="layout-end"] h1 { font-size: 96px; }
+
+/* 卡片内字号收紧 */
+.card h3 { font-size: 22px; margin: 0 0 8px; }
+.card h4 { font-size: 18px; margin: 0 0 6px; }
+.card p, .card li { font-size: 16px; line-height: 1.5; }
+.card .big-icon-sm { font-size: 56px; margin-bottom: 12px; }
+.card .big-icon { font-size: 96px; }
+.card.logo-card .logo-mark { height: 56px; }
+
+/* Body — Lora serif */
+.slidev-layout p,
+.slidev-layout li,
+.slidev-layout td {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.6;
+  color: var(--c-dark);
+}
+
+/* Strong / em */
+.slidev-layout strong { color: var(--c-terracotta); font-weight: 600; }
+.slidev-layout em { font-style: italic; color: var(--c-dark); }
+
+/* Code / mono */
+.slidev-layout code,
+.slidev-layout pre {
+  font-family: 'JetBrains Mono', 'Space Mono', monospace !important;
+  font-size: 18px;
+}
+.slidev-layout :not(pre) > code {
+  background: var(--c-light-gray);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.slidev-layout pre {
+  background: #1e1d1c !important;
+  border-radius: 8px !important;
+  padding: 24px !important;
+  box-shadow: 0 1px 2px rgba(20,20,19,0.04), 0 4px 16px rgba(20,20,19,0.06);
+}
+
+/* Tables */
+.slidev-layout table {
+  border-collapse: collapse;
+  margin: 24px 0;
+  width: 100%;
+  background: var(--c-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(20,20,19,0.04), 0 4px 16px rgba(20,20,19,0.06);
+}
+.slidev-layout th {
+  background: var(--c-light-gray);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-align: left;
+  padding: 16px 20px;
+  font-size: 18px;
+  color: var(--c-dark);
+}
+.slidev-layout td {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(20,20,19,0.06);
+  font-size: 18px;
+}
+.slidev-layout tr:hover td { background: rgba(217,119,87,0.04); }
+
+/* Lists */
+.slidev-layout ul, .slidev-layout ol { padding-left: 28px; }
+.slidev-layout ul li { list-style: none; position: relative; }
+.slidev-layout ul li::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--c-terracotta);
+}
+
+/* Blockquote — pull-quote style */
+.slidev-layout blockquote {
+  border-left: 3px solid var(--c-terracotta);
+  padding: 8px 0 8px 24px;
+  margin: 24px 0;
+  font-style: italic;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 24px;
+  color: var(--c-dark);
+}
+
+/* ============================================================
+   Component classes — used in slides via class="..."
+   ============================================================ */
+
+/* Cover layout */
+.cover-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-mid-gray);
+  margin-bottom: 32px;
+}
+.cover-byline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--c-mid-gray);
+  margin-top: 64px;
+}
+
+/* Section divider */
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-terracotta);
+  margin-bottom: 24px;
+}
+
+/* Big icon — used as visual anchor */
+.big-icon {
+  font-size: 144px;
+  line-height: 1;
+  filter: saturate(0.95);
+  display: inline-block;
+  margin-bottom: 32px;
+}
+.big-icon-sm { font-size: 80px; line-height: 1; }
+.big-icon-xl { font-size: 200px; line-height: 1; }
+
+/* Card */
+.card {
+  background: var(--c-white);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 1px 2px rgba(20,20,19,0.04), 0 4px 16px rgba(20,20,19,0.06);
+  transition: transform var(--d-fast) var(--ease-out), box-shadow var(--d-fast) var(--ease-out);
+}
+.card-accent { border-top: 3px solid var(--c-terracotta); }
+.card-blue   { border-top: 3px solid var(--c-blue); }
+.card-sage   { border-top: 3px solid var(--c-sage); }
+.card-muted  { background: var(--c-light-gray); box-shadow: none; }
+
+/* Pill */
+.pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--c-light-gray);
+  color: var(--c-dark);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+.pill-accent { background: var(--c-terracotta); color: var(--c-cream); }
+
+/* Pull quote / hero phrase */
+.pull-quote {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 48px;
+  line-height: 1.4;
+  color: var(--c-dark);
+}
+
+/* Accent strong text */
+.accent { color: var(--c-terracotta); }
+.muted  { color: var(--c-mid-gray); }
+.dim    { opacity: 0.5; }
+
+/* Big number */
+.big-num {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 160px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--c-terracotta);
+}
+
+/* ============================================================
+   Entrance animations — Anthropic ease-out, no bounce/rotate
+   ============================================================ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes drift {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(8px, -6px); }
+  100% { transform: translate(0, 0); }
+}
+
+.slidev-layout h1 { animation: fade-up 800ms var(--ease-out) both; animation-delay: 100ms; }
+.slidev-layout h2 { animation: fade-up 700ms var(--ease-out) both; animation-delay: 50ms; }
+.slidev-layout > p,
+.slidev-layout > .pull-quote { animation: fade-up 700ms var(--ease-out) both; animation-delay: 200ms; }
+.slidev-layout .big-icon,
+.slidev-layout .big-icon-sm,
+.slidev-layout .big-icon-xl { animation: scale-in 800ms var(--ease-out) both, drift 6s var(--ease-out) infinite 1s; }
+.slidev-layout .section-eyebrow,
+.slidev-layout .cover-eyebrow { animation: fade-in 600ms var(--ease-out) both; }
+.slidev-layout blockquote { animation: fade-up 700ms var(--ease-out) both; animation-delay: 300ms; }
+.slidev-layout table { animation: fade-up 700ms var(--ease-out) both; animation-delay: 200ms; }
+
+/* Stagger — applied via class="stagger" on a parent grid/flex */
+.stagger > * {
+  animation: fade-up var(--d-slow) var(--ease-out) both;
+}
+.stagger > *:nth-child(1) { animation-delay: 80ms; }
+.stagger > *:nth-child(2) { animation-delay: 160ms; }
+.stagger > *:nth-child(3) { animation-delay: 240ms; }
+.stagger > *:nth-child(4) { animation-delay: 320ms; }
+.stagger > *:nth-child(5) { animation-delay: 400ms; }
+.stagger > *:nth-child(6) { animation-delay: 480ms; }
+.stagger > *:nth-child(7) { animation-delay: 560ms; }
+.stagger > *:nth-child(8) { animation-delay: 640ms; }
+.stagger > *:nth-child(9) { animation-delay: 720ms; }
+.stagger > *:nth-child(10) { animation-delay: 800ms; }
+.stagger > *:nth-child(11) { animation-delay: 880ms; }
+.stagger > *:nth-child(12) { animation-delay: 960ms; }
+
+/* ============================================================
+   Logo bar — used on cover, tool slides, end slide
+   ============================================================ */
+.logo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin: 32px 0;
+  flex-wrap: wrap;
+}
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  opacity: 0.85;
+  transition: opacity var(--d-fast) var(--ease-out), transform var(--d-fast) var(--ease-out);
+}
+.logo-mark:hover { opacity: 1; transform: translateY(-2px); }
+.logo-mark img,
+.logo-mark svg {
+  height: 100% !important;
+  width: auto !important;
+  max-width: none !important;
+  display: block;
+}
+.logo-mark.is-tall { height: 72px; }
+.logo-mark.is-sm { height: 40px; }
+.logo-bar .logo-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--c-mid-gray);
+  text-transform: uppercase;
+  margin-top: 6px;
+  display: block;
+  text-align: center;
+}
+
+/* Logo card — show big logo + label inside a card */
+.logo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+}
+.logo-card .logo-mark { height: 80px; }
+.logo-card h3, .logo-card h4 { margin: 0; }
+
+/* ============================================================
+   Claude Code TUI mockup — used in Plan Mode demo slide
+   ============================================================ */
+.terminal {
+  background: #1e1d1c;
+  border-radius: 12px;
+  padding: 24px 32px;
+  box-shadow: 0 8px 32px rgba(20,20,19,0.12);
+  font-family: 'JetBrains Mono', 'Space Mono', monospace !important;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #d4d2c8;
+}
+.terminal .t-row { display: block; }
+.terminal .t-meta { color: #6b6a65; font-size: 12px; letter-spacing: 0.05em; }
+.terminal .t-prompt { color: #d97757; font-weight: 600; }
+.terminal .t-ai { color: #788c5d; font-weight: 600; }
+.terminal .t-cmd { color: #faf9f5; }
+.terminal .t-comment { color: #6a9bcc; }
+.terminal .t-em { font-style: italic; color: #b0aea5; }
+.terminal .t-key {
+  color: #d97757;
+  background: rgba(217,119,87,0.12);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.terminal .t-banner {
+  display: inline-block;
+  border: 1px solid rgba(217,119,87,0.5);
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin: 10px 0;
+  color: #d97757;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.terminal .t-plan {
+  border: 1px solid rgba(217,119,87,0.45);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 14px 0;
+  background: rgba(217,119,87,0.06);
+}
+.terminal .t-plan-header {
+  color: #d97757;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+.terminal .t-plan ol {
+  padding-left: 24px;
+  margin: 0;
+  list-style: decimal;
+}
+.terminal .t-plan ol li {
+  margin: 5px 0;
+  color: #d4d2c8;
+  font-size: 14px;
+  list-style: decimal;
+}
+.terminal .t-plan ol li::before { content: none; }
+.terminal .t-plan ol li code {
+  color: #6a9bcc;
+  background: transparent;
+  padding: 0;
+  font-size: 14px;
+}
+.terminal .t-plan-footer {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(212,210,200,0.12);
+  font-size: 12px;
+  color: #6b6a65;
+}
+.terminal .t-mode {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 12px;
+  background: rgba(120,140,93,0.18);
+  border-left: 2px solid #788c5d;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #c5d2ad;
+  letter-spacing: 0.05em;
+}
+
+/* SVG text — protect from global Lora 22px typography */
+.slidev-layout svg text {
+  line-height: 1;
+}
+.slidev-layout svg text.svg-axis { font-family: 'JetBrains Mono', monospace; font-size: 13px; fill: #6b6a65; }
+.slidev-layout svg text.svg-label { font-family: 'Lora', serif; font-size: 15px; fill: #141413; }
+.slidev-layout svg text.svg-anno-em { font-family: 'Lora', serif; font-style: italic; font-size: 20px; fill: #d97757; }
+.slidev-layout svg text.svg-anno-zh { font-family: 'Lora', serif; font-size: 14px; fill: #d97757; }
+
+/* Footer logo — auto-injected on every slide via ::after */
+.slidev-layout::after {
+  content: '';
+  position: absolute;
+  bottom: 36px;
+  right: 56px;
+  width: 180px;
+  height: 44px;
+  background: url('/jr-logo.svg') no-repeat right center / contain;
+  opacity: 0.7;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Cover / End slides 不重复贴小 logo（这两张已经有大 logo） */
+.slidev-layout.cover::after,
+.slidev-layout.end::after { display: none; }
+
+/* Manual placement variant if a slide overrides */
+.slide-footer-logo {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  height: 24px;
+  opacity: 0.4;
+  z-index: 1;
+}
+.slide-footer-logo img { height: 100%; width: auto; }
+
+/* ============================================================
+   Kill ALL Slidev default chrome (TOC drawer / quick goto / menu)
+   User explicitly does not want any navigation overlay visible.
+   ============================================================ */
+
+/* Bottom-right control buttons / page indicator */
+.slidev-page-root .slidev-icon-btn,
+.slidev-controls,
+.slidev-info-btn,
+.slidev-page-no,
+.slidev-nav-controls,
+[class*="NavControls"] { display: none !important; }
+
+/* Right-edge slide-list drawer (Slidev Goto/Overview/Info dialogs).
+   Slidev uses ID selectors here, not classes — must use #. */
+#slidev-goto-dialog,
+#slidev-overview,
+#slidev-info-dialog {
+  display: none !important;
+}
+
+/* Keep presenter mode chrome intact */
+.slidev-presenter .slidev-icon-btn,
+.slidev-presenter .slidev-controls,
+.slidev-presenter .slidev-nav-controls { display: flex !important; }

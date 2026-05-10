@@ -1,6 +1,12 @@
-import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
+import { useState, useEffect, useCallback, useRef, useLayoutEffect, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { colors } from './ui';
+
+// Fixed slide canvas — 16:9. All slides author at this exact pixel size and the
+// engine uniformly scales the stage to fit any viewport. Anything that uses
+// 1920px = 100% of canvas, so prefer fixed px over vw inside slides.
+const STAGE_WIDTH = 1920;
+const STAGE_HEIGHT = 1080;
 
 interface SlideEngineProps {
 	children: ReactNode[];
@@ -20,6 +26,22 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 	const isAnimating = useRef(false);
 	const touchStart = useRef({ x: 0, y: 0 });
 	const wheelTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const fitRef = useRef<HTMLDivElement>(null);
+	const [scale, setScale] = useState(1);
+
+	useLayoutEffect(() => {
+		const el = fitRef.current;
+		if (!el) return;
+		const update = () => {
+			const r = el.getBoundingClientRect();
+			setScale(Math.min(r.width / STAGE_WIDTH, r.height / STAGE_HEIGHT));
+		};
+		update();
+		const ro = new ResizeObserver(update);
+		ro.observe(el);
+		window.addEventListener('orientationchange', update);
+		return () => { ro.disconnect(); window.removeEventListener('orientationchange', update); };
+	}, []);
 
 	const go = useCallback((index: number) => {
 		if (isAnimating.current || index < 0 || index >= total || index === current) return;
@@ -88,7 +110,7 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 			</div>
 			<div style={{
 				position: 'fixed', bottom: 24, right: 32, fontFamily: '"Space Mono", monospace',
-				fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.5)', zIndex: 1000, letterSpacing: 2,
+				fontSize: 17, fontWeight: 600, color: 'rgba(255,255,255,0.5)', zIndex: 1000, letterSpacing: 2,
 				mixBlendMode: 'difference',
 			}}>
 				{pad(current + 1)} / {pad(total)}
@@ -104,8 +126,16 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 			</div>
 			<NavArrow direction="prev" onClick={prev} disabled={current === 0} />
 			<NavArrow direction="next" onClick={next} disabled={current === total - 1} />
-			<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000' }}>
-				<div style={{ width: '100%', maxHeight: '100vh', aspectRatio: '16 / 9', position: 'relative', overflow: 'hidden' }}>
+			<div ref={fitRef} style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000', overflow: 'hidden' }}>
+				<div style={{
+					width: STAGE_WIDTH,
+					height: STAGE_HEIGHT,
+					transform: `scale(${scale})`,
+					transformOrigin: 'center center',
+					flexShrink: 0,
+					position: 'relative',
+					overflow: 'hidden',
+				}}>
 					<AnimatePresence mode="wait">
 						<motion.div
 							key={current}

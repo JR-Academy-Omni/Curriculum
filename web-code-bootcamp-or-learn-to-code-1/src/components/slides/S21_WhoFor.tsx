@@ -24,10 +24,10 @@ export default function S21_WhoFor() {
 					transition={{ duration: 0.4 }}
 					style={{ marginBottom: 22 }}
 				>
-					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
+					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
 						WHO IS THIS FOR
 					</div>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(28px,4vw,52px)', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '52px', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
 						谁适合来学第 30 期？
 					</h2>
 				</motion.div>
@@ -38,7 +38,7 @@ export default function S21_WhoFor() {
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ delay: 0.2 }}
 					>
-						<div style={{ display: 'inline-block', padding: '4px 10px', background: colors.teal, color: colors.white, fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, marginBottom: 12, letterSpacing: 1 }}>
+						<div style={{ display: 'inline-block', padding: '4px 10px', background: colors.teal, color: colors.white, fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, marginBottom: 12, letterSpacing: 1 }}>
 							✓ 非常适合
 						</div>
 						<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
@@ -51,10 +51,10 @@ export default function S21_WhoFor() {
 									style={{ background: colors.white, border, boxShadow: shadow, padding: '14px 16px' }}
 								>
 									<div style={{ fontSize: 26, marginBottom: 6 }}>{f.icon}</div>
-									<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(14px,1.5vw,18px)', fontWeight: 900, color: colors.black, letterSpacing: -0.3, marginBottom: 4 }}>
+									<div style={{ fontFamily: fonts.heading, fontSize: '18px', fontWeight: 900, color: colors.black, letterSpacing: -0.3, marginBottom: 4 }}>
 										{f.title}
 									</div>
-									<div style={{ fontFamily: fonts.body, fontSize: 12, color: '#555', fontWeight: 500, lineHeight: 1.4 }}>
+									<div style={{ fontFamily: fonts.body, fontSize: 15, color: '#555', fontWeight: 500, lineHeight: 1.4 }}>
 										{f.desc}
 									</div>
 								</motion.div>
@@ -67,7 +67,7 @@ export default function S21_WhoFor() {
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ delay: 0.3 }}
 					>
-						<div style={{ display: 'inline-block', padding: '4px 10px', background: '#999', color: colors.white, fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, marginBottom: 12, letterSpacing: 1 }}>
+						<div style={{ display: 'inline-block', padding: '4px 10px', background: '#999', color: colors.white, fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, marginBottom: 12, letterSpacing: 1 }}>
 							△ 先走别的路径
 						</div>
 						<div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -79,10 +79,10 @@ export default function S21_WhoFor() {
 									transition={{ delay: 0.4 + i * 0.08 }}
 									style={{ background: '#f5f5f5', border, boxShadow: shadowSm, padding: '12px 14px' }}
 								>
-									<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.4vw,16px)', fontWeight: 800, color: '#333', letterSpacing: -0.2, marginBottom: 4 }}>
+									<div style={{ fontFamily: fonts.heading, fontSize: '19px', fontWeight: 800, color: '#333', letterSpacing: -0.2, marginBottom: 4 }}>
 										{n.title}
 									</div>
-									<div style={{ fontFamily: fonts.body, fontSize: 11, color: '#666', fontWeight: 500, lineHeight: 1.4 }}>
+									<div style={{ fontFamily: fonts.body, fontSize: 14, color: '#666', fontWeight: 500, lineHeight: 1.4 }}>
 										{n.desc}
 									</div>
 								</motion.div>

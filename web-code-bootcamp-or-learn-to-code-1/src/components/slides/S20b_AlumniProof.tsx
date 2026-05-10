@@ -31,10 +31,10 @@ export default function S20b_AlumniProof() {
 					transition={{ duration: 0.4 }}
 					style={{ marginBottom: 20 }}
 				>
-					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
+					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
 						ALUMNI · 匠人校友网络
 					</div>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(28px,4vw,52px)', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '52px', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
 						<span style={{ display: 'inline-block', padding: '0 12px', background: colors.yellow, border, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(-1deg)' }}>
 							5,000+
 						</span>{' '}学员拿到 offer · 遍布澳洲几乎所有互联网公司
@@ -55,13 +55,13 @@ export default function S20b_AlumniProof() {
 							transition={{ duration: 0.4 }}
 							style={{ background: colors.white, border, boxShadow: shadow, padding: '16px 18px' }}
 						>
-							<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(36px,4.5vw,66px)', fontWeight: 900, color: colors.red, letterSpacing: -2, lineHeight: 1 }}>
+							<div style={{ fontFamily: fonts.heading, fontSize: '66px', fontWeight: 900, color: colors.red, letterSpacing: -2, lineHeight: 1 }}>
 								{s.value}
 							</div>
-							<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.4vw,17px)', fontWeight: 800, color: colors.black, marginTop: 8, lineHeight: 1.3 }}>
+							<div style={{ fontFamily: fonts.heading, fontSize: '20px', fontWeight: 800, color: colors.black, marginTop: 8, lineHeight: 1.3 }}>
 								{s.label}
 							</div>
-							<div style={{ fontFamily: fonts.mono, fontSize: 11, color: '#888', marginTop: 4, letterSpacing: 0.5 }}>
+							<div style={{ fontFamily: fonts.mono, fontSize: 14, color: '#888', marginTop: 4, letterSpacing: 0.5 }}>
 								{s.sub}
 							</div>
 						</motion.div>
@@ -76,10 +76,10 @@ export default function S20b_AlumniProof() {
 					style={{ background: colors.dark, border, boxShadow: shadow, padding: '16px 18px' }}
 				>
 					<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-						<div style={{ display: 'inline-block', padding: '4px 10px', background: colors.yellow, color: colors.black, fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, letterSpacing: 1 }}>
+						<div style={{ display: 'inline-block', padding: '4px 10px', background: colors.yellow, color: colors.black, fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, letterSpacing: 1 }}>
 							CAREER · 部分校友雇主
 						</div>
-						<span style={{ fontFamily: fonts.mono, fontSize: 11, color: 'rgba(255,255,255,0.55)', fontWeight: 700, letterSpacing: 0.5 }}>
+						<span style={{ fontFamily: fonts.mono, fontSize: 14, color: 'rgba(255,255,255,0.55)', fontWeight: 700, letterSpacing: 0.5 }}>
 							只展示 25 家 · 实际远超于此
 						</span>
 					</div>
@@ -99,7 +99,7 @@ export default function S20b_AlumniProof() {
 									background: 'rgba(255,255,255,0.08)',
 									border: `1.5px solid rgba(255,255,255,0.25)`,
 									fontFamily: fonts.heading,
-									fontSize: 'clamp(12px,1.15vw,15px)',
+									fontSize: '18px',
 									fontWeight: 800,
 									color: colors.white,
 									textAlign: 'center',
@@ -118,7 +118,7 @@ export default function S20b_AlumniProof() {
 					transition={{ delay: 1.2 }}
 					style={{ marginTop: 16, padding: '12px 18px', background: colors.black, border, boxShadow: `5px 5px 0 ${colors.yellow}`, textAlign: 'center' }}
 				>
-					<span style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.5vw,19px)', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
+					<span style={{ fontFamily: fonts.heading, fontSize: '19px', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
 						你毕业后去面试 —— <span style={{ color: colors.yellow }}>大概率面试官就是匠人校友</span>。内推 + 模拟面试 + 经验传承全打通
 					</span>
 				</motion.div>

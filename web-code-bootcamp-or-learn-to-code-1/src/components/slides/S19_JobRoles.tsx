@@ -60,10 +60,10 @@ export default function S19_JobRoles() {
 					transition={{ duration: 0.4 }}
 					style={{ marginBottom: 22 }}
 				>
-					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
+					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
 						JOB OUTCOMES · 6 条路径
 					</div>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(28px,4vw,52px)', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '52px', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
 						毕业后,{' '}
 						<span style={{ display: 'inline-block', padding: '0 12px', background: colors.yellow, border, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(-1deg)' }}>
 							6 条路径
@@ -94,7 +94,7 @@ export default function S19_JobRoles() {
 								<div style={{
 									position: 'absolute', top: -12, right: -10,
 									padding: '3px 9px', background: colors.red, color: colors.white,
-									fontFamily: fonts.mono, fontSize: 10, fontWeight: 900, letterSpacing: 0.5,
+									fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, letterSpacing: 0.5,
 									border: `2px solid ${colors.black}`, boxShadow: `2px 2px 0 ${colors.black}`,
 									transform: 'rotate(6deg)',
 								}}>
@@ -102,15 +102,15 @@ export default function S19_JobRoles() {
 								</div>
 							)}
 
-							<div style={{ padding: '3px 8px', background: r.bg, color: r.bg === colors.yellow ? colors.black : colors.white, fontFamily: fonts.mono, fontSize: 10, fontWeight: 900, border: `2px solid ${colors.black}`, display: 'inline-block', marginBottom: 10 }}>
+							<div style={{ padding: '3px 8px', background: r.bg, color: r.bg === colors.yellow ? colors.black : colors.white, fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, border: `2px solid ${colors.black}`, display: 'inline-block', marginBottom: 10 }}>
 								{r.salary} AUD
 							</div>
-							<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(15px,1.6vw,19px)', fontWeight: 900, color: colors.black, letterSpacing: -0.3, lineHeight: 1.2, marginBottom: 12 }}>
+							<div style={{ fontFamily: fonts.heading, fontSize: '19px', fontWeight: 900, color: colors.black, letterSpacing: -0.3, lineHeight: 1.2, marginBottom: 12 }}>
 								{r.title}
 							</div>
 							<div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
 								{r.needs.map((n) => (
-									<div key={n} style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 700, color: '#333', lineHeight: 1.4 }}>
+									<div key={n} style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 700, color: '#333', lineHeight: 1.4 }}>
 										<span style={{ color: colors.red, marginRight: 4 }}>→</span>{n}
 									</div>
 								))}
@@ -125,7 +125,7 @@ export default function S19_JobRoles() {
 					transition={{ delay: 0.9 }}
 					style={{ marginTop: 20, padding: '12px 18px', background: colors.dark, color: colors.white, border, boxShadow: shadowSm, textAlign: 'center' }}
 				>
-					<span style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.5vw,19px)', fontWeight: 900, letterSpacing: -0.3 }}>
+					<span style={{ fontFamily: fonts.heading, fontSize: '19px', fontWeight: 900, letterSpacing: -0.3 }}>
 						全栈 × AI 的组合 = <span style={{ color: colors.yellow }}>2026 最稀缺、最抗替代</span> 的技能包
 					</span>
 				</motion.div>

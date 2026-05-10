@@ -25,10 +25,10 @@ export default function S02_XhsHook() {
 					transition={{ duration: 0.4 }}
 					style={{ textAlign: 'center', marginBottom: 28 }}
 				>
-					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 14 }}>
+					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 14 }}>
 						2026 · V30 · NEW KERNEL
 					</div>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(32px,4.5vw,58px)', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '58px', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
 						8 年 29 期 IT 就业课，
 						<br />
 						<span style={{ display: 'inline-block', padding: '0 14px', background: colors.yellow, border, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(-1deg)', marginTop: 8 }}>
@@ -44,14 +44,14 @@ export default function S02_XhsHook() {
 						transition={{ delay: 0.2 }}
 						style={{ background: '#f5f5f5', border, boxShadow: shadow, padding: '22px 22px', transform: 'rotate(-0.8deg)' }}
 					>
-						<div style={{ display: 'inline-block', padding: '4px 12px', background: '#999', color: colors.white, fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, marginBottom: 14 }}>
+						<div style={{ display: 'inline-block', padding: '4px 12px', background: '#999', color: colors.white, fontFamily: fonts.mono, fontSize: 15, fontWeight: 800, marginBottom: 14 }}>
 							29 期之前
 						</div>
-						<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(18px,2.2vw,26px)', fontWeight: 900, color: '#333', marginBottom: 14, lineHeight: 1.25 }}>
+						<div style={{ fontFamily: fonts.heading, fontSize: '26px', fontWeight: 900, color: '#333', marginBottom: 14, lineHeight: 1.25 }}>
 							"做全栈去求 Junior offer"
 						</div>
 						{oldStack.map((item, i) => (
-							<div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 8, fontSize: 'clamp(12px,1.3vw,15px)', color: '#555', fontWeight: 500 }}>
+							<div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 8, fontSize: '18px', color: '#555', fontWeight: 500 }}>
 								<span style={{ color: '#999', marginTop: 2 }}>×</span>
 								<span>{item}</span>
 							</div>
@@ -75,14 +75,14 @@ export default function S02_XhsHook() {
 						transition={{ delay: 0.3 }}
 						style={{ background: colors.white, border, boxShadow: `8px 8px 0 ${colors.red}`, padding: '22px 22px', transform: 'rotate(1deg)' }}
 					>
-						<div style={{ display: 'inline-block', padding: '4px 12px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, marginBottom: 14 }}>
+						<div style={{ display: 'inline-block', padding: '4px 12px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 15, fontWeight: 800, marginBottom: 14 }}>
 							第 30 期 · AI 新内核
 						</div>
-						<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(18px,2.2vw,26px)', fontWeight: 900, color: colors.black, marginBottom: 14, lineHeight: 1.25 }}>
+						<div style={{ fontFamily: fonts.heading, fontSize: '26px', fontWeight: 900, color: colors.black, marginBottom: 14, lineHeight: 1.25 }}>
 							"全栈 + AI 直接进场"
 						</div>
 						{newStack.map((item, i) => (
-							<div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 8, fontSize: 'clamp(12px,1.3vw,15px)', color: colors.black, fontWeight: 600 }}>
+							<div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 8, fontSize: '18px', color: colors.black, fontWeight: 600 }}>
 								<span style={{ color: colors.red, marginTop: 2, fontWeight: 900 }}>→</span>
 								<span>{item}</span>
 							</div>
@@ -96,7 +96,7 @@ export default function S02_XhsHook() {
 					transition={{ delay: 0.8 }}
 					style={{ marginTop: 28, padding: '14px 22px', background: colors.black, border, boxShadow: `5px 5px 0 ${colors.yellow}`, textAlign: 'center' }}
 				>
-					<span style={{ fontFamily: fonts.heading, fontSize: 'clamp(14px,1.7vw,22px)', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
+					<span style={{ fontFamily: fonts.heading, fontSize: '22px', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
 						面向 IT 在校生 / 毕业生 —— <span style={{ background: colors.yellow, color: colors.black, padding: '0 10px' }}>AI 时代的全栈就业课</span>
 					</span>
 				</motion.div>

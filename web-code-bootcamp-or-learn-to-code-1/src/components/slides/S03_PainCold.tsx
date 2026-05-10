@@ -22,7 +22,7 @@ export default function S03_PainCold() {
 			<Inner split>
 				<Half>
 					<motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-						<Title size="clamp(30px,4vw,52px)">
+						<Title size="52px">
 							你会这样<br />
 							<span style={{ display: 'inline-block', background: colors.yellow, padding: '0 14px', border: `3px solid ${colors.black}`, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(-1deg)', marginTop: 6 }}>
 								"用 AI 写代码"
@@ -37,9 +37,9 @@ export default function S03_PainCold() {
 								initial={{ opacity: 0, x: -20 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ delay: 0.2 + i * 0.08 }}
-								style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14, fontSize: 'clamp(15px,1.7vw,20px)', fontWeight: 700 }}
+								style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14, fontSize: '20px', fontWeight: 700 }}
 							>
-								<span style={{ fontFamily: fonts.mono, fontSize: 13, fontWeight: 800, padding: '4px 10px', background: colors.white, border: `2px solid ${colors.black}`, minWidth: 120, textAlign: 'center' }}>
+								<span style={{ fontFamily: fonts.mono, fontSize: 16, fontWeight: 800, padding: '4px 10px', background: colors.white, border: `2px solid ${colors.black}`, minWidth: 120, textAlign: 'center' }}>
 									{item.tool}
 								</span>
 								<span style={{ color: colors.red, fontWeight: 900 }}>→</span>
@@ -52,7 +52,7 @@ export default function S03_PainCold() {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{ delay: 0.8 }}
-						style={{ marginTop: 20, fontSize: 14, color: '#888', fontFamily: fonts.mono, fontStyle: 'italic' }}
+						style={{ marginTop: 20, fontSize: 17, color: '#888', fontFamily: fonts.mono, fontStyle: 'italic' }}
 					>
 						// 大多数"AI 编程速成班"教到这就打住了
 					</motion.div>
@@ -71,11 +71,11 @@ export default function S03_PainCold() {
 							transform: 'rotate(1deg)',
 						}}
 					>
-						<div style={{ display: 'inline-block', padding: '6px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontWeight: 800, fontSize: 14, border: `2px solid ${colors.black}`, marginBottom: 20 }}>
+						<div style={{ display: 'inline-block', padding: '6px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontWeight: 800, fontSize: 17, border: `2px solid ${colors.black}`, marginBottom: 20 }}>
 							但招聘方真正在问：
 						</div>
 
-						<h3 style={{ fontFamily: fonts.heading, fontSize: 'clamp(22px,2.8vw,34px)', fontWeight: 900, color: colors.white, lineHeight: 1.25, marginBottom: 24, letterSpacing: -0.5 }}>
+						<h3 style={{ fontFamily: fonts.heading, fontSize: '34px', fontWeight: 900, color: colors.white, lineHeight: 1.25, marginBottom: 24, letterSpacing: -0.5 }}>
 							当 JD 写着<br />
 							<span style={{ color: colors.yellow }}>"Full-Stack Developer (AI)"</span>
 						</h3>
@@ -87,7 +87,7 @@ export default function S03_PainCold() {
 									initial={{ opacity: 0, x: 20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ delay: 0.5 + i * 0.1 }}
-									style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 12, fontSize: 'clamp(14px,1.6vw,18px)', color: colors.white, lineHeight: 1.5 }}
+									style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 12, fontSize: '18px', color: colors.white, lineHeight: 1.5 }}
 								>
 									<span style={{ color: colors.red, fontSize: 20, fontWeight: 900, flexShrink: 0, marginTop: -2 }}>❌</span>
 									<span style={{ fontWeight: 600 }}>{q}</span>
@@ -104,7 +104,7 @@ export default function S03_PainCold() {
 				transition={{ delay: 1.0 }}
 				style={{ position: 'absolute', bottom: 30, left: '50%', transform: 'translateX(-50%) rotate(-0.5deg)', background: colors.red, border, boxShadow: `6px 6px 0 ${colors.black}`, padding: '12px 28px', maxWidth: '85%' }}
 			>
-				<p style={{ fontFamily: fonts.heading, fontSize: 'clamp(16px,2vw,24px)', fontWeight: 900, color: colors.yellow, lineHeight: 1.3, textAlign: 'center', letterSpacing: -0.5 }}>
+				<p style={{ fontFamily: fonts.heading, fontSize: '24px', fontWeight: 900, color: colors.yellow, lineHeight: 1.3, textAlign: 'center', letterSpacing: -0.5 }}>
 					让 AI 写代码 ≠ 能把 AI 产品交付上线。前者是 <span style={{ color: colors.white }}>使用者</span>，后者才是 <span style={{ background: colors.yellow, color: colors.black, padding: '0 8px' }}>Full-Stack + AI Engineer</span>
 				</p>
 			</motion.div>

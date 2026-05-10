@@ -55,16 +55,16 @@ export default function S17_CareerMateCapstone() {
 					transition={{ duration: 0.5 }}
 					style={{ marginBottom: 22 }}
 				>
-					<div style={{ display: 'inline-block', padding: '5px 12px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 0.5, border, boxShadow: shadowSm, transform: 'rotate(-2deg)', marginBottom: 12 }}>
+					<div style={{ display: 'inline-block', padding: '5px 12px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 0.5, border, boxShadow: shadowSm, transform: 'rotate(-2deg)', marginBottom: 12 }}>
 						CAPSTONE · CAREERMATE
 					</div>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(28px, 4vw, 50px)', fontWeight: 900, lineHeight: 1.05, letterSpacing: -2, color: colors.black, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '50px', fontWeight: 900, lineHeight: 1.05, letterSpacing: -2, color: colors.black, margin: 0 }}>
 						毕业项目:{' '}
 						<span style={{ background: colors.yellow, padding: '0 10px', border, boxShadow: `4px 4px 0 ${colors.black}`, display: 'inline-block' }}>
 							CareerMate
 						</span>{' '}— AI 驱动的求职助手
 					</h2>
-					<p style={{ fontFamily: fonts.body, fontSize: 'clamp(13px,1.4vw,17px)', color: '#333', fontWeight: 600, marginTop: 10, lineHeight: 1.4 }}>
+					<p style={{ fontFamily: fonts.body, fontSize: '20px', color: '#333', fontWeight: 600, marginTop: 10, lineHeight: 1.4 }}>
 						从简历解析 → JD 匹配 → AI 改简历 → Agent 自动投递 —— 把 M3-M9 学的东西全部串起来，不是 Todo App
 					</p>
 				</motion.div>
@@ -79,19 +79,19 @@ export default function S17_CareerMateCapstone() {
 							style={{ background: colors.white, border, boxShadow: shadow, padding: '14px 14px', display: 'flex', flexDirection: 'column' }}
 						>
 							<div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
-								<span style={{ padding: '3px 8px', background: s.color, color: colors.white, fontFamily: fonts.mono, fontSize: 10, fontWeight: 900, border: `2px solid ${colors.black}` }}>
+								<span style={{ padding: '3px 8px', background: s.color, color: colors.white, fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, border: `2px solid ${colors.black}` }}>
 									{s.phase}
 								</span>
-								<span style={{ fontFamily: fonts.heading, fontSize: 'clamp(14px,1.5vw,18px)', fontWeight: 900, color: colors.black, letterSpacing: -0.3 }}>
+								<span style={{ fontFamily: fonts.heading, fontSize: '18px', fontWeight: 900, color: colors.black, letterSpacing: -0.3 }}>
 									{s.title}
 								</span>
 							</div>
-							<div style={{ fontFamily: fonts.body, fontSize: 12, color: '#333', fontWeight: 600, lineHeight: 1.4, marginBottom: 10, flex: 1 }}>
+							<div style={{ fontFamily: fonts.body, fontSize: 15, color: '#333', fontWeight: 600, lineHeight: 1.4, marginBottom: 10, flex: 1 }}>
 								{s.work}
 							</div>
 							<div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
 								{s.stack.map((t) => (
-									<div key={t} style={{ fontFamily: fonts.mono, fontSize: 10.5, fontWeight: 700, color: '#555' }}>
+									<div key={t} style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 700, color: '#555' }}>
 										→ {t}
 									</div>
 								))}
@@ -105,10 +105,10 @@ export default function S17_CareerMateCapstone() {
 						transition={{ delay: 0.6 }}
 						style={{ background: colors.dark, color: colors.white, border, boxShadow: `6px 6px 0 ${colors.red}`, padding: '14px 16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', minWidth: 180 }}
 					>
-						<div style={{ fontFamily: fonts.mono, fontSize: 10, fontWeight: 900, color: colors.yellow, letterSpacing: 1, marginBottom: 6 }}>
+						<div style={{ fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, color: colors.yellow, letterSpacing: 1, marginBottom: 6 }}>
 							结果
 						</div>
-						<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(14px,1.6vw,19px)', fontWeight: 900, lineHeight: 1.2, letterSpacing: -0.3 }}>
+						<div style={{ fontFamily: fonts.heading, fontSize: '19px', fontWeight: 900, lineHeight: 1.2, letterSpacing: -0.3 }}>
 							写进 Resume<br />的 Production<br />级 AI 全栈项目
 						</div>
 					</motion.div>
@@ -127,11 +127,11 @@ export default function S17_CareerMateCapstone() {
 				>
 					<div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
 						<span style={{ fontSize: 22 }}>🎯</span>
-						<span style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.5vw,19px)', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
+						<span style={{ fontFamily: fonts.heading, fontSize: '19px', color: colors.white, fontWeight: 900, letterSpacing: -0.3 }}>
 							不做 Todo App。做一个 <span style={{ color: colors.yellow }}>能上线、能赚钱、能写进简历</span> 的 AI 全栈产品
 						</span>
 					</div>
-					<div style={{ fontFamily: fonts.mono, fontSize: 'clamp(11px,1.2vw,14px)', color: 'rgba(255,255,255,0.75)', fontWeight: 700 }}>
+					<div style={{ fontFamily: fonts.mono, fontSize: '17px', color: 'rgba(255,255,255,0.75)', fontWeight: 700 }}>
 						面试时就答这个项目
 					</div>
 				</motion.div>

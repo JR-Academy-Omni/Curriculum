@@ -64,10 +64,10 @@ export default function S20_Teachers() {
 					transition={{ duration: 0.4 }}
 					style={{ marginBottom: 22 }}
 				>
-					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
+					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
 						TEACHERS · 6 人导师团
 					</div>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(28px,4vw,52px)', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '52px', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
 						8 年讲师团 +{' '}
 						<span style={{ display: 'inline-block', padding: '0 12px', background: colors.yellow, border, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(-1deg)' }}>
 							AI 新讲师团
@@ -89,24 +89,24 @@ export default function S20_Teachers() {
 							style={{ background: colors.white, border, boxShadow: shadow, padding: '16px 16px', display: 'flex', flexDirection: 'column' }}
 						>
 							<div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-								<div style={{ width: 44, height: 44, background: t.bg, color: colors.white, border, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: fonts.heading, fontSize: 16, fontWeight: 900, flexShrink: 0 }}>
+								<div style={{ width: 44, height: 44, background: t.bg, color: colors.white, border, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: fonts.heading, fontSize: 19, fontWeight: 900, flexShrink: 0 }}>
 									{t.name.substring(0, 2)}
 								</div>
 								<div style={{ minWidth: 0 }}>
-									<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(14px,1.5vw,18px)', fontWeight: 900, color: colors.black, letterSpacing: -0.3, lineHeight: 1.1 }}>
+									<div style={{ fontFamily: fonts.heading, fontSize: '18px', fontWeight: 900, color: colors.black, letterSpacing: -0.3, lineHeight: 1.1 }}>
 										{t.name}
 									</div>
-									<div style={{ fontFamily: fonts.mono, fontSize: 11, color: t.bg, fontWeight: 700, marginTop: 2 }}>
+									<div style={{ fontFamily: fonts.mono, fontSize: 14, color: t.bg, fontWeight: 700, marginTop: 2 }}>
 										{t.role}
 									</div>
 								</div>
 							</div>
-							<div style={{ fontFamily: fonts.body, fontSize: 12, color: '#333', fontWeight: 500, lineHeight: 1.4, marginBottom: 10, flex: 1 }}>
+							<div style={{ fontFamily: fonts.body, fontSize: 15, color: '#333', fontWeight: 500, lineHeight: 1.4, marginBottom: 10, flex: 1 }}>
 								{t.bio}
 							</div>
 							<div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
 								{t.tags.map((tag) => (
-									<span key={tag} style={{ padding: '2px 7px', background: '#f7f7f7', border: `1.5px solid ${colors.black}`, fontFamily: fonts.mono, fontSize: 10, fontWeight: 700 }}>
+									<span key={tag} style={{ padding: '2px 7px', background: '#f7f7f7', border: `1.5px solid ${colors.black}`, fontFamily: fonts.mono, fontSize: 13, fontWeight: 700 }}>
 										{tag}
 									</span>
 								))}

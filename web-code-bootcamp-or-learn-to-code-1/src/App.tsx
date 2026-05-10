@@ -13,6 +13,8 @@ import S11 from './components/slides/S11_M5_Backend';
 import S12 from './components/slides/S12_M6_FullStack';
 import S13 from './components/slides/S13_M7_AiFoundations';
 import S14 from './components/slides/S14_M8_RagAgentMcp';
+import S14b from './components/slides/S14b_HarnessIntro';
+import S14c from './components/slides/S14c_HarnessHighlight';
 import S15 from './components/slides/S15_M9_ProductionAI';
 import S16 from './components/slides/S16_M10_Career';
 import S17 from './components/slides/S17_CareerMateCapstone';
@@ -42,6 +44,8 @@ export default function App() {
 			<S12 />
 			<S13 />
 			<S14 />
+			<S14b />
+			<S14c />
 			<S15 />
 			<S16 />
 			<S17 />

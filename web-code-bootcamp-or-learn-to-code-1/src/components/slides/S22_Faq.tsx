@@ -43,10 +43,10 @@ export default function S22_Faq() {
 					transition={{ duration: 0.4 }}
 					style={{ marginBottom: 18 }}
 				>
-					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
+					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.dark, color: colors.yellow, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
 						FAQ · 常见问题
 					</div>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(26px,3.6vw,46px)', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '46px', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1, margin: 0 }}>
 						你可能会问的{' '}
 						<span style={{ display: 'inline-block', padding: '0 12px', background: colors.yellow, border, boxShadow: `4px 4px 0 ${colors.black}`, transform: 'rotate(-1deg)' }}>
 							6 个问题
@@ -68,14 +68,14 @@ export default function S22_Faq() {
 							style={{ background: colors.white, border, boxShadow: shadow, padding: '14px 16px' }}
 						>
 							<div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 8 }}>
-								<div style={{ width: 26, height: 26, background: colors.red, color: colors.white, border: `2px solid ${colors.black}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, flexShrink: 0 }}>
+								<div style={{ width: 26, height: 26, background: colors.red, color: colors.white, border: `2px solid ${colors.black}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, flexShrink: 0 }}>
 									Q{i + 1}
 								</div>
-								<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(13px,1.4vw,17px)', fontWeight: 900, color: colors.black, letterSpacing: -0.3, lineHeight: 1.3 }}>
+								<div style={{ fontFamily: fonts.heading, fontSize: '20px', fontWeight: 900, color: colors.black, letterSpacing: -0.3, lineHeight: 1.3 }}>
 									{f.q}
 								</div>
 							</div>
-							<div style={{ fontFamily: fonts.body, fontSize: 12.5, color: '#333', fontWeight: 500, lineHeight: 1.5, paddingLeft: 36 }}>
+							<div style={{ fontFamily: fonts.body, fontSize: 16, color: '#333', fontWeight: 500, lineHeight: 1.5, paddingLeft: 36 }}>
 								{f.a}
 							</div>
 						</motion.div>

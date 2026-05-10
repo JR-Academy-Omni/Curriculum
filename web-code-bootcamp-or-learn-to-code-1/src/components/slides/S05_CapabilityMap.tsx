@@ -52,16 +52,16 @@ export default function S05_CapabilityMap() {
 					transition={{ duration: 0.4 }}
 					style={{ marginBottom: 20 }}
 				>
-					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
+					<div style={{ display: 'inline-block', padding: '5px 14px', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, letterSpacing: 2, border, boxShadow: shadowSm, marginBottom: 12 }}>
 						V30 · CAPABILITY MAP
 					</div>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(28px,4vw,52px)', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '52px', fontWeight: 900, lineHeight: 1.1, letterSpacing: -1.5, margin: 0 }}>
 						毕业时你将拥有的{' '}
 						<span style={{ display: 'inline-block', padding: '0 12px', background: colors.yellow, border, boxShadow: `5px 5px 0 ${colors.black}`, transform: 'rotate(-1deg)' }}>
 							五层能力地图
 						</span>
 					</h2>
-					<p style={{ fontFamily: fonts.mono, fontSize: 'clamp(12px,1.4vw,16px)', color: '#555', fontWeight: 700, marginTop: 10, letterSpacing: 0.5 }}>
+					<p style={{ fontFamily: fonts.mono, fontSize: '19px', color: '#555', fontWeight: 700, marginTop: 10, letterSpacing: 0.5 }}>
 						前端 · 后端 · 部署 · AI 工程 · AI 应用 — 从 HTML 到 Production AI 的完整链路
 					</p>
 				</motion.div>
@@ -80,16 +80,16 @@ export default function S05_CapabilityMap() {
 							style={{ display: 'grid', gridTemplateColumns: '220px 1fr', border, boxShadow: shadow, background: colors.white }}
 						>
 							<div style={{ background: layer.bg, color: layer.textColor, padding: '16px 18px', borderRight: border, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-								<div style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, opacity: 0.8, letterSpacing: 2, marginBottom: 4 }}>
+								<div style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 800, opacity: 0.8, letterSpacing: 2, marginBottom: 4 }}>
 									L{i + 1} · {layer.en}
 								</div>
-								<div style={{ fontFamily: fonts.heading, fontSize: 'clamp(18px,2vw,24px)', fontWeight: 900, letterSpacing: -0.3 }}>
+								<div style={{ fontFamily: fonts.heading, fontSize: '24px', fontWeight: 900, letterSpacing: -0.3 }}>
 									{layer.name}
 								</div>
 							</div>
 							<div style={{ padding: '16px 18px', display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
 								{layer.skills.map((s) => (
-									<span key={s} style={{ padding: '5px 10px', background: '#f7f7f7', border: `2px solid ${colors.black}`, fontFamily: fonts.mono, fontSize: 12, fontWeight: 700, color: colors.black }}>
+									<span key={s} style={{ padding: '5px 10px', background: '#f7f7f7', border: `2px solid ${colors.black}`, fontFamily: fonts.mono, fontSize: 15, fontWeight: 700, color: colors.black }}>
 										{s}
 									</span>
 								))}

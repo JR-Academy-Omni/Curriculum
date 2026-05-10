@@ -1,0 +1,475 @@
+/* =========================================================
+ * Mars Lab Zine 主题 — design.md 驱动
+ * Slide canvas: 1280×720 (16:9 固定 ratio)
+ * 所有内容必须 fit 进 canvas，不允许溢出
+ * ========================================================= */
+
+:root {
+  /* —— 颜色 —— */
+  --c-base: #F2EFE6;          /* 米白底 */
+  --c-base-soft: #EDE8DC;
+  --c-ink: #0F0F0F;            /* 主墨色 */
+  --c-ink-soft: #2A2A2A;
+  --c-grid: #D9D5C8;           /* 网格线 */
+  --c-accent: #FFD83D;         /* 高亮黄 */
+  --c-accent-soft: #FFE14D;
+  --c-signal: #E63329;         /* 朱红 */
+  --c-muted: #6B6B6B;
+
+  /* —— 章节封面色 —— */
+  --c-ch1: #8FA773;  /* 橄榄绿 (Fundamentals) */
+  --c-ch2: #C16A85;  /* 玫红 (Planning) */
+  --c-ch3: #B5A0D6;  /* 淡紫 (Testing) */
+  --c-ch4: #6E97C8;  /* 雾蓝 (Distribution) */
+  --c-ch5: #B0C9B8;  /* 浅薄荷 (Patterns) */
+  --c-ch6: #DAD0BF;  /* 米咖 (Resources) */
+
+  /* —— 字体 —— */
+  --f-sans: "Inter", "Helvetica Neue", "Helvetica", "Arial", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --f-serif: "EB Garamond", "Georgia", "Songti SC", "Source Han Serif", serif;
+  --f-mono: "JetBrains Mono", "IBM Plex Mono", "Menlo", "Consolas", monospace;
+  --f-cn-bold: "PingFang SC", "Source Han Sans", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+
+  /* —— 间距 —— */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+}
+
+/* =========================================================
+ * Slide 容器：固定 1280×720，三段式 flex column
+ * 顶部 masthead / 中间内容自伸缩 / 底部 meta — 永不重叠
+ * ========================================================= */
+.slidev-layout {
+  background-color: var(--c-base);
+  color: var(--c-ink);
+  font-family: var(--f-sans);
+  background-image:
+    linear-gradient(var(--c-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: -1px -1px;
+  padding: 2rem 3.5rem !important;
+  display: flex !important;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* —— 主内容区（masthead 和 bottom-meta 之间）自动撑满 —— */
+.slidev-layout > *:not(.masthead):not(.bottom-meta) {
+  flex-shrink: 0;
+}
+
+/* —— 排版：字号收紧匹配 1280 canvas —— */
+.slidev-layout h1 {
+  font-family: var(--f-cn-bold);
+  font-weight: 900;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+  margin: 0 0 0.6rem 0;
+}
+
+.slidev-layout h2 {
+  font-family: var(--f-cn-bold);
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+}
+
+.slidev-layout h3 {
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  margin: 0 0 0.3rem 0;
+}
+
+.slidev-layout p,
+.slidev-layout li {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin: 0.2rem 0;
+}
+
+.slidev-layout strong { font-weight: 700; }
+
+.slidev-layout ul,
+.slidev-layout ol {
+  margin: 0.3rem 0;
+  padding-left: 1.2rem;
+}
+
+/* —— 代码块：收紧 padding + 字号 —— */
+.slidev-layout code {
+  font-family: var(--f-mono);
+  font-size: 0.88em;
+  background: rgba(15, 15, 15, 0.06);
+  padding: 0.08em 0.32em;
+  border-radius: 3px;
+}
+
+.slidev-layout pre,
+.slidev-layout .shiki {
+  font-family: var(--f-mono) !important;
+  font-size: 0.72rem !important;
+  line-height: 1.45 !important;
+  border: 1px solid var(--c-ink) !important;
+  border-radius: 0 !important;
+  padding: 0.7rem 0.9rem !important;
+  background: #FAF8F1 !important;
+  box-shadow: 3px 3px 0 var(--c-ink);
+  margin: 0.4rem 0 !important;
+  overflow: hidden;
+}
+
+/* —— 黄色高亮 —— */
+.highlight {
+  background: var(--c-accent);
+  padding: 0.05em 0.32em;
+  font-weight: 700;
+}
+
+mark {
+  background: var(--c-accent);
+  color: var(--c-ink);
+  padding: 0.05em 0.3em;
+}
+
+/* —— 朱红强调 —— */
+.signal { color: var(--c-signal); font-weight: 700; }
+
+/* —— 表格：紧凑 —— */
+.slidev-layout table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin: 0.6rem 0;
+}
+.slidev-layout th,
+.slidev-layout td {
+  border: 1px solid var(--c-ink);
+  padding: 0.35rem 0.55rem;
+  text-align: left;
+  line-height: 1.35;
+}
+.slidev-layout th {
+  background: var(--c-accent);
+  font-weight: 700;
+}
+
+/* —— 引用块 —— */
+.slidev-layout blockquote {
+  border-left: 4px solid var(--c-signal);
+  padding-left: 0.9rem;
+  color: var(--c-ink-soft);
+  font-style: italic;
+  margin: 0.6rem 0;
+  font-size: 1rem;
+}
+
+/* —— 期刊页眉：固定高度，不允许压缩 —— */
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-ink);
+  border-bottom: 1px solid var(--c-ink);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.9rem;
+  flex-shrink: 0;
+}
+
+.masthead .badge {
+  background: var(--c-ink);
+  color: var(--c-base);
+  padding: 0.15em 0.6em;
+}
+
+/* —— 页脚：作为 flex 子项常驻底部，不再 absolute —— */
+.bottom-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-top: 1px solid var(--c-grid);
+  padding-top: 0.4rem;
+  margin-top: auto;     /* 关键：吸附到底部 */
+  flex-shrink: 0;
+}
+
+/* —— FIG 标注 —— */
+.fig-tag {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-signal);
+  margin-bottom: 0.25rem;
+}
+
+/* —— 卡片：紧凑 padding —— */
+.card {
+  border: 1px solid var(--c-ink);
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.card h3 {
+  margin: 0 0 0.3rem 0 !important;
+  font-size: 1rem;
+}
+
+.card p {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.card ul, .card ol {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+}
+
+.card-good { border-left: 6px solid #2E7D32; }
+.card-bad  { border-left: 6px solid var(--c-signal); }
+
+/* —— Grid gap 收紧 —— */
+.slidev-layout .grid {
+  gap: 0.75rem !important;
+}
+
+/* =========================================================
+ * 章节封面 layout — 固定 ratio，文字大但 fit
+ * ========================================================= */
+.chapter-cover {
+  background-color: var(--c-ch1);
+  background-image: none !important;
+  color: var(--c-ink);
+  justify-content: flex-end;
+  padding: 3rem !important;
+}
+
+.chapter-cover .ch-tag {
+  display: inline-block;
+  border: 1.5px solid var(--c-ink);
+  border-radius: 999px;
+  padding: 0.25rem 0.9rem;
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  margin-bottom: 0.8rem;
+  width: fit-content;
+  animation: slideInLeft 0.5s ease-out 0.1s both;
+}
+
+.chapter-cover h1 {
+  font-family: var(--f-serif);
+  font-weight: 500;
+  font-size: 3.6rem;
+  line-height: 1.05;
+  margin: 0;
+  animation: slideInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+/* 章节封面里 markdown 渲染的 H1（带 inline style 4.5rem）也要降字号 */
+.chapter-cover h1[style*="4.5rem"] {
+  font-size: 3.6rem !important;
+}
+
+.chapter-cover > div:last-child {
+  animation: fadeIn 0.6s ease-out 0.7s both;
+}
+
+/* =========================================================
+ * 封面 layout
+ * ========================================================= */
+.cover-page {
+  background: var(--c-base);
+  justify-content: space-between;
+}
+
+.cover-page .hero-title {
+  font-family: var(--f-cn-bold);
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.cover-page .hero-title .hl {
+  background: var(--c-accent);
+  padding: 0.05em 0.2em;
+}
+
+.cover-page .hero-sub {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--c-ink-soft);
+  margin-top: 0.8rem;
+}
+
+/* 封面里 inline style 强写 4.2rem 的 H1 也要降下来 */
+.slidev-layout h1[style*="4.2rem"] {
+  font-size: 3rem !important;
+}
+
+/* =========================================================
+ * 检查清单 layout
+ * ========================================================= */
+.checklist {
+  background: var(--c-base);
+}
+.checklist ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0.3rem 0;
+}
+.checklist ul > li {
+  padding: 0.2rem 0 0.2rem 1.6rem !important;
+  position: relative;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.checklist ul > li::before {
+  content: "□";
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  font-size: 1.1rem;
+  color: var(--c-ink);
+  font-family: var(--f-mono);
+  line-height: 1.2;
+}
+
+/* =========================================================
+ * 暗色（暂保守，用主题色反相）
+ * ========================================================= */
+.dark .slidev-layout {
+  background-color: #1A1A18;
+  color: #F2EFE6;
+}
+
+/* =========================================================
+ * 入场动画 keyframes
+ * ========================================================= */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes highlightSweep {
+  from { background-size: 0% 100%; }
+  to   { background-size: 100% 100%; }
+}
+
+/* —— 标准内容页：标题入场 —— */
+.slidev-layout > h1:first-of-type,
+.slidev-layout .masthead + h1 {
+  animation: slideInUp 0.5s ease-out 0.05s both;
+}
+
+/* —— 标准内容页：masthead 横条入场 —— */
+.slidev-layout .masthead {
+  animation: slideInLeft 0.4s ease-out both;
+}
+
+/* —— 标准内容页：表格入场 —— */
+.slidev-layout table {
+  animation: scaleIn 0.5s ease-out 0.2s both;
+}
+
+/* —— 黄色高亮：扫描式入场 —— */
+.highlight {
+  background: linear-gradient(transparent 60%, var(--c-accent) 60%) no-repeat;
+  background-size: 100% 100%;
+  animation: highlightSweep 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+/* —— 封面页 hero 大标题：分行渐入 —— */
+.cover-page .hero-title,
+.slidev-layout > div h1[style*="4.2rem"] {
+  animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.cover-page .hero-sub {
+  animation: fadeIn 0.6s ease-out 0.8s both;
+}
+
+/* —— v-click 自定义动画（覆盖 slidev 默认） —— */
+.slidev-vclick-target {
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.slidev-vclick-target:not(.slidev-vclick-current):not(.slidev-vclick-prior) {
+  transform: translateY(8px);
+}
+
+/* —— 代码块：略微缩放入场 —— */
+.slidev-layout pre,
+.slidev-layout .shiki {
+  animation: scaleIn 0.5s ease-out 0.15s both;
+}
+
+/* =========================================================
+ * 隐藏 Slidev 默认的侧边幻灯片目录 (right side panel)
+ * 同时隐藏触发它的菜单按钮，让讲师专心翻页
+ * ========================================================= */
+.slidev-page-list-wrapper,
+.slidev-page-list,
+nav.slidev-nav-list,
+.slidev-nav-list-wrapper,
+[class*="page-list-wrapper"] {
+  display: none !important;
+}
+
+/* 隐藏 NavControls 里的「Slides Overview / Menu」按钮 */
+.slidev-icon-btn[title*="Slides"],
+.slidev-icon-btn[title*="overview" i],
+.slidev-icon-btn[title*="Menu" i],
+button[aria-label*="overview" i] {
+  display: none !important;
+}
+
+/* 隐藏 GoTo / Jump-to-slide 的 autocomplete 浮动列表（右侧那个目录） */
+.autocomplete-list,
+[class*="autocomplete-list"],
+.fixed.right-5.transition-all {
+  display: none !important;
+}

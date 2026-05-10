@@ -10,10 +10,10 @@ export default function S24_FollowUs() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.4 }}
 				>
-					<h2 style={{ fontFamily: fonts.heading, fontSize: 'clamp(34px,5vw,68px)', fontWeight: 900, letterSpacing: -2, lineHeight: 1.05, margin: 0 }}>
+					<h2 style={{ fontFamily: fonts.heading, fontSize: '68px', fontWeight: 900, letterSpacing: -2, lineHeight: 1.05, margin: 0 }}>
 						感谢你看到这里 ✨
 					</h2>
-					<p style={{ fontFamily: fonts.heading, fontSize: 'clamp(18px,2.2vw,28px)', fontWeight: 700, color: '#333', marginTop: 16, lineHeight: 1.4 }}>
+					<p style={{ fontFamily: fonts.heading, fontSize: '28px', fontWeight: 700, color: '#333', marginTop: 16, lineHeight: 1.4 }}>
 						继续关注 <span style={{ background: colors.yellow, padding: '0 10px', border, boxShadow: `4px 4px 0 ${colors.black}`, display: 'inline-block' }}>匠人学院 JR Academy</span>
 					</p>
 				</motion.div>
@@ -42,7 +42,7 @@ export default function S24_FollowUs() {
 							<div style={{ fontFamily: fonts.heading, fontSize: 18, fontWeight: 900, color: colors.black }}>
 								{c.name}
 							</div>
-							<div style={{ fontFamily: fonts.mono, fontSize: 12, color: '#666', fontWeight: 700 }}>
+							<div style={{ fontFamily: fonts.mono, fontSize: 15, color: '#666', fontWeight: 700 }}>
 								{c.url}
 							</div>
 						</motion.div>
@@ -53,7 +53,7 @@ export default function S24_FollowUs() {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ delay: 0.9 }}
-					style={{ marginTop: 30, fontFamily: fonts.mono, fontSize: 13, color: '#888', fontWeight: 700, letterSpacing: 1 }}
+					style={{ marginTop: 30, fontFamily: fonts.mono, fontSize: 16, color: '#888', fontWeight: 700, letterSpacing: 1 }}
 				>
 					// 2026 最稳的技术饭碗 = 会交付 × 会 AI · 咱们班见
 				</motion.div>
