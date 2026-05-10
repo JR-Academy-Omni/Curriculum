@@ -1045,47 +1045,39 @@
     <!-- Section 1.5: AI 会计课程漏斗（引流 → 主课） -->
     <!-- ============================================ -->
     <style>
-      .funnel-row{display:grid;grid-template-columns:1fr 80px 1fr;gap:18px;align-items:stretch;margin:24px 0}
-      .funnel-arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#FF914D;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;text-align:center;line-height:1.2}
-      .funnel-arrow .ar{font-size:48px;line-height:0.8}
-      .funnel-arrow .lbl{font-family:'Space Mono',monospace;font-size:9px;color:#10162f;letter-spacing:1.2px;margin-top:6px;text-transform:uppercase;font-weight:700;background:#FFDE59;padding:3px 8px;border:2px solid #10162f;display:inline-block;white-space:nowrap}
-      .funnel-arrow .pct{font-size:11px;font-family:'Space Mono',monospace;color:#666;margin-top:4px;letter-spacing:0.5px}
-      .funnel-card{display:flex;flex-direction:column;background:#fff;border:3px solid #000;box-shadow:8px 8px 0 #000;padding:28px;color:#000;transition:transform 0.15s, box-shadow 0.15s;position:relative;overflow:hidden}
-      .funnel-card:hover{transform:translate(4px,4px);box-shadow:4px 4px 0 #000}
-      .funnel-card .preview{height:140px;min-height:0;margin:-28px -28px 24px;border-bottom:3px solid #000;border-right:none;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:26px;letter-spacing:-0.5px;color:#fff;text-align:center;padding:0 16px;line-height:1.1}
-      .funnel-card.tier1{border-color:#FF914D;box-shadow:8px 8px 0 #FF914D}
-      .funnel-card.tier1 .preview{background:linear-gradient(135deg,#0f172a 0%,#0ea5e9 55%,#22c55e 100%)}
-      .funnel-card.tier2{border-color:#6366f1;box-shadow:8px 8px 0 #6366f1}
-      .funnel-card.tier2 .preview{background:linear-gradient(135deg,#10162f 0%,#6366f1 50%,#FF914D 100%)}
-      .funnel-tier-tag{position:absolute;top:14px;right:14px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;padding:4px 10px;border:2px solid #000;text-transform:uppercase;z-index:2;background:#FFDE59;color:#10162f}
-      .funnel-card.tier2 .funnel-tier-tag{background:#6366f1;color:#fff}
-      .funnel-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;margin-bottom:14px;padding:10px;background:#f8f9fa;border:1px dashed #ddd}
-      .funnel-stats .fs{text-align:center}
-      .funnel-stats .fs b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;color:#10162f;line-height:1}
-      .funnel-stats .fs span{font-size:9.5px;color:#666;font-family:'Space Mono',monospace;letter-spacing:0.3px;margin-top:3px;display:block;text-transform:uppercase}
-      @media(max-width:760px){.funnel-row{grid-template-columns:1fr;gap:12px}.funnel-arrow{padding:10px;border:2px dashed #FF914D;flex-direction:row;gap:14px}.funnel-arrow .ar{font-size:32px;transform:rotate(90deg)}}
-
-      /* ===== 紧凑 list 模式（同步 .card 处理）===== */
-      .funnel-row{margin:16px 0;gap:14px}
-      .funnel-card{padding:16px}
-      .funnel-card.tier1{box-shadow:5px 5px 0 #FF914D}
-      .funnel-card.tier2{box-shadow:5px 5px 0 #6366f1}
-      .funnel-card:hover{transform:translate(2px,2px)}
+      .funnel-row{display:grid;grid-template-columns:minmax(0,1fr) 118px minmax(0,1fr);gap:18px;align-items:stretch;margin:22px 0 18px}
+      .funnel-arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#10162f;font-family:'Space Mono',monospace;text-align:center;line-height:1.25}
+      .funnel-arrow .ar{width:54px;height:54px;border:3px solid #10162f;background:#FFDE59;box-shadow:4px 4px 0 #10162f;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:900;line-height:1;margin-bottom:12px}
+      .funnel-arrow .lbl{font-size:12px;color:#10162f;letter-spacing:1px;text-transform:uppercase;font-weight:700;background:#fff;border:2px solid #10162f;padding:7px 10px;display:inline-block;white-space:nowrap}
+      .funnel-arrow .pct{font-size:10px;color:#666;margin-top:8px;letter-spacing:0.4px}
+      .funnel-card{display:flex;flex-direction:column;background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;color:#000;transition:transform 0.15s, box-shadow 0.15s;position:relative;overflow:hidden;text-decoration:none}
+      .funnel-card:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #000}
+      .funnel-card .preview{height:92px;min-height:0;margin:0;border-bottom:3px solid #000;border-right:none;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:25px;letter-spacing:-0.4px;color:#fff;text-align:center;padding:0 18px;line-height:1.08}
+      .funnel-card.tier1{border-color:#FF914D;box-shadow:6px 6px 0 #FF914D}
       .funnel-card.tier1:hover{box-shadow:3px 3px 0 #FF914D}
+      .funnel-card.tier1 .preview{background:linear-gradient(135deg,#0f172a 0%,#0ea5e9 55%,#22c55e 100%)}
+      .funnel-card.tier2{border-color:#6366f1;box-shadow:6px 6px 0 #6366f1}
       .funnel-card.tier2:hover{box-shadow:3px 3px 0 #6366f1}
-      .funnel-card .preview{height:64px;margin:-16px -16px 12px;font-size:15px;letter-spacing:0;line-height:1.15;border-bottom-width:2px}
-      .funnel-tier-tag{top:8px;right:8px;font-size:9px;padding:3px 7px;letter-spacing:0.5px}
-      .funnel-card .tag{font-size:10px;padding:2px 7px;margin-bottom:6px;display:inline-block}
-      .funnel-card h3{font-size:15px;margin-bottom:3px;letter-spacing:-0.2px;line-height:1.25}
-      .funnel-card .subtitle{font-size:10px;margin-bottom:8px;color:#888}
-      .funnel-card>p{display:none}
-      .funnel-stats{display:none}
-      .funnel-card .card-actions{padding-top:8px;margin-top:auto;border-top:1px dashed #d0d0d0;gap:6px}
-      .funnel-card .action-btn{font-size:10px;padding:6px 10px;letter-spacing:0.3px}
-
-      .funnel-arrow .ar{font-size:32px}
-      .funnel-arrow .lbl{font-size:8.5px;padding:2px 6px;margin-top:4px;line-height:1.25}
-      .funnel-arrow .pct{font-size:9.5px;margin-top:3px;line-height:1.35}
+      .funnel-card.tier2 .preview{background:linear-gradient(135deg,#10162f 0%,#6366f1 52%,#FF914D 100%)}
+      .funnel-tier-tag{position:absolute;top:12px;left:12px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;padding:5px 9px;border:2px solid #000;text-transform:uppercase;z-index:2;background:#FFDE59;color:#10162f;box-shadow:2px 2px 0 #000}
+      .funnel-card.tier2 .funnel-tier-tag{background:#6366f1;color:#fff}
+      .funnel-card .tag{display:inline-block;width:fit-content;font-size:10px;padding:5px 9px;margin:18px 18px 8px;border:2px solid #000;box-shadow:2px 2px 0 #000}
+      .funnel-card h3{font-size:20px;margin:0 18px 6px;letter-spacing:-0.2px;line-height:1.22}
+      .funnel-card .subtitle{font-size:11px;margin:0 18px 14px;color:#666;line-height:1.55}
+      .funnel-card>p{display:block;margin:0 18px 14px;font-size:12px;color:#444;line-height:1.65}
+      .funnel-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 18px 16px;padding:10px;background:#f8fafc;border:1px dashed #cbd5e1}
+      .funnel-stats .fs{text-align:center}
+      .funnel-stats .fs b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:19px;color:#10162f;line-height:1}
+      .funnel-stats .fs span{font-size:9px;color:#666;font-family:'Space Mono',monospace;letter-spacing:0.3px;margin-top:4px;display:block;text-transform:uppercase}
+      .funnel-card .card-actions{padding:13px 18px 18px;margin-top:auto;border-top:1px solid #e4e4e7;gap:8px}
+      .funnel-card .action-btn{font-size:10px;padding:7px 10px;letter-spacing:0.2px}
+      .funnel-notes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:0 auto 28px}
+      .funnel-note-card{background:#fffbea;border:2px solid #10162f;box-shadow:4px 4px 0 #10162f;padding:14px 16px;font-size:12px;line-height:1.65;color:#333}
+      .funnel-note-card strong{display:block;color:#10162f;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:5px}
+      .funnel-note-card.warning{background:#fff1f2;box-shadow:4px 4px 0 #ff5757}
+      .funnel-note-card.warning strong{color:#ff5757}
+      @media(max-width:900px){.funnel-row{grid-template-columns:1fr;gap:14px}.funnel-arrow{padding:10px 0;flex-direction:row;gap:14px}.funnel-arrow .ar{margin:0;transform:rotate(90deg)}.funnel-notes{grid-template-columns:1fr}}
+      @media(max-width:760px){.funnel-card .preview{height:86px;font-size:22px}.funnel-card h3{font-size:18px}.funnel-stats{grid-template-columns:1fr 1fr 1fr}.funnel-arrow .lbl{white-space:normal}}
     </style>
     <div class="section-title" id="ai-accounting-funnel">💰 AI 会计课程漏斗 · 引流 → 主课</div>
     <p class="section-intro">会计垂直赛道的<strong>双产品配对</strong>：4h 引流课让协会会员先看见 Cowork 能用，12h Pro 主课接住有意向的人转化成付费学员。引流课本身定价低或免费跟协会合作，<strong>真正赚钱的是主课</strong>。Marketing 推广时两张海报一起用 — 投引流课吸量，私下定向跟进转主课。</p>
@@ -1093,24 +1085,24 @@
     <div class="funnel-row">
 
       <!-- TIER 1: 引流课 -->
-      <a class="funnel-card tier1" href="./ai-accounting-workshop/curriculum.html" style="text-decoration:none">
+      <div class="funnel-card tier1">
         <span class="funnel-tier-tag">⭐ TIER 1 · 引流</span>
         <div class="preview">AI 会计<br>引流课 · 4h</div>
         <span class="tag new">4 小时 · 协会 co-host · $99</span>
         <h3>AI 赋能会计：数据智能展示工作坊</h3>
         <div class="subtitle">Claude Cowork × 装机 + 5 个 Skill + 《AU 数据准备指南》</div>
-        <p>面向会计协会会员的入门实战课：开课就装 Cowork，损益分析+图表叙事+3 分钟管理层汇报演练。今天讲完就结束 — 不卖续作 / 不留漏斗 / 不收 L2/L3 钱。学员体验完<strong>自己想学更多</strong>才转主课。</p>
+        <p>让会计协会会员现场跑通 Cowork：损益分析、图表叙事、3 分钟管理层汇报。目标不是卖课，而是筛出真的想继续学的人。</p>
         <div class="funnel-stats">
           <div class="fs"><b>5+1</b><span>模块</span></div>
           <div class="fs"><b>4h</b><span>整段</span></div>
           <div class="fs"><b>$99</b><span>协会团购</span></div>
         </div>
-        <div class="card-actions" onclick="event.stopPropagation()">
+        <div class="card-actions">
           <a class="action-btn primary" href="./ai-accounting-workshop/curriculum.html">📋 大纲</a>
           <a class="action-btn" href="./ai-accounting-workshop/poster.html">🖼 海报</a>
           <a class="action-btn" href="./ai-accounting-workshop/templates/au-data-prep.html">🇦🇺 AU 数据指南</a>
         </div>
-      </a>
+      </div>
 
       <!-- ARROW -->
       <div class="funnel-arrow">
@@ -1120,32 +1112,41 @@
       </div>
 
       <!-- TIER 2: 主课 -->
-      <a class="funnel-card tier2" href="./ai-accounting-pro/curriculum.html" style="text-decoration:none">
+      <div class="funnel-card tier2">
         <span class="funnel-tier-tag">💰 TIER 2 · 主课</span>
         <div class="preview">AI 会计 PRO<br>6-Week · 12h</div>
         <span class="tag new" style="background:#6366f1">12 小时 · 6 周 cohort · $1,799-$2,299</span>
         <h3>AI 会计 Pro · 6 周 Cowork 深度训练营</h3>
         <div class="subtitle">10-12 人小班 · 真实场景 homework + 2 次 1v1 + Demo Day 录像</div>
-        <p>4h 让你看见，12h 让你<strong>真用起来</strong>。W1 月末 close → W2 Variance → W3 AR/AP → W4 现金流 → W5 Mgmt Pack → W6 Demo Day。每月节省 8-15h，<strong>2-4 月回本</strong>。10-12 人精品小班，每年 6 期，先到先得。</p>
+        <p>把 4h 体验课里的兴趣转成真实能力：月末 close、Variance、AR/AP、现金流、Management Pack，最后用 Demo Day 交付作品。</p>
         <div class="funnel-stats">
           <div class="fs"><b>6 周</b><span>×2h cohort</span></div>
           <div class="fs"><b>12+</b><span>Cowork Skill</span></div>
           <div class="fs"><b>$1,799+</b><span>4 渠道定价</span></div>
         </div>
-        <div class="card-actions" onclick="event.stopPropagation()">
+        <div class="card-actions">
           <a class="action-btn primary" href="./ai-accounting-pro/curriculum.html">📋 大纲</a>
           <a class="action-btn" href="./ai-accounting-pro/pricing.html">💳 定价</a>
           <a class="action-btn" href="./ai-accounting-pro/poster.html">🖼 海报</a>
         </div>
-      </a>
+      </div>
 
     </div>
 
     <!-- 漏斗策略说明 -->
-    <div style="margin:0 auto 24px;max-width:1100px;padding:18px 22px;background:#fffbea;border:2px solid #10162f;font-size:13px;line-height:1.75;color:#333">
-      <strong style="color:#10162f">📊 漏斗经济学</strong>：单期主课 cohort 10-12 人 × $1,799-$2,299 ≈ <strong>$18-27k AUD/期</strong>，6 期/年 ≈ <strong>$108-162k/年</strong>。引流课不指望赚钱（甚至 $99 是为了筛掉纯凑热闹的）— 它的 KPI 是 <strong>15-25% 转主课</strong>。<br>
-      <strong style="color:#10162f">📣 推广分工</strong>：引流课走协会 / 公众号 / 小红书 / 朋友圈广吸量；主课走 ① 引流课结业邮件跟进（核心转化通路）② 协会定向推荐链接（享 $1,899 + 协会拿 5-10% referral 分成）③ B2B 团购包班（≥3 人 $1,899/人，单位发票）④ JR 直接招生（标准价 $2,299）。<br>
-      <strong style="color:#10162f">⚠️ 红线</strong>：引流课<u>课后绝对不在群里推主课</u> — 学员体验过自己看完产出物决定要不要转。强推会让 4h 课的『co-host 信任感』掉链。
+    <div class="funnel-notes">
+      <div class="funnel-note-card">
+        <strong>📊 经济模型</strong>
+        主课每期 10-12 人，单期约 $18-27k AUD。引流课 KPI 只看 15-25% 转主课，不靠 $99 赚钱。
+      </div>
+      <div class="funnel-note-card">
+        <strong>📣 推广路径</strong>
+        引流课走协会、公众号、小红书、朋友圈吸量。主课靠结业邮件、协会推荐、B2B 团购和 JR 标准价转化。
+      </div>
+      <div class="funnel-note-card warning">
+        <strong>⚠️ 红线</strong>
+        引流课课后不在群里强推主课。学员先看到自己的产出物，再决定要不要进 6 周 Pro。
+      </div>
     </div>
 
     <!-- ============================================ -->
