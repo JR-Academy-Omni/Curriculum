@@ -7,6 +7,53 @@
 
 ---
 
+## 🎨 AI 出图 Prompt（市场 / 产品 copy & paste）
+
+把下面这一整段粘贴给 Claude / GPT / Midjourney / DALL-E / Nano Banana 等任何 AI 模型，它就会按本课主题色出图。也可以在 `curriculum/theme-colors.html` 总览页一键复制。
+
+```
+设计任务：为「AI 会计 Workshop（4 小时）」做配图 / 海报 / banner / 封面图。
+课程定位：会计协会 co-host·脱敏数据跑月报（垂直行业线（会计/财务））
+
+═══ 主题色（必须严格执行）═══
+主色：#7FB69E（浅苔绿）
+主色上的文字色：#10162F
+主色应占画面 ≥ 30%，用作大色块、标题底色或主背景
+
+═══ 视觉风格 ═══
+Neo-Brutalism 极简扁平：
+- 所有元素 3px 纯黑（#000）边框
+- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）
+- 不要渐变、不要发光、不要拟物质感、不要 3D
+- 转折硬朗、留白干脆、对比强烈
+
+═══ 配色规则（搭配主色用）═══
+JR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F
+
+辅助色（只在指定场景用）：
+- CTA：#FF914D（橙色突出）
+- 数据：#10162F
+
+═══ 严格避开的色 ═══
+下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：
+- AI Accounting Pro：#3D8B6B（6 周进阶版，深一档）
+- Claude Cowork SME：#C96442（中小企业主同观众但配色不同）
+
+═══ 字体 ═══
+- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）
+- 中文正文：思源黑体 / 苹方
+- 数字 / 数据：Space Mono / DM Sans
+- 标题字号至少是正文的 3 倍
+
+═══ 输出 ═══
+- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）
+- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染
+- 如果是 SVG：扁平矢量，路径全部带 stroke="#000" stroke-width="3"
+
+```
+
+---
+
 ## 主题色
 
 | 属性 | 值 |
@@ -85,13 +132,13 @@ transform: translate(6px, 6px);
 - ❌ 不要在主色背景上叠加另一个高饱和色（除非是已声明的强调对比色）
 - ❌ 不要换成接近的色相（如把本课的橙改成 Adoption 的橙），保持课程识别度
 - ❌ 海报不要让主色占比 < 20%，否则识别度归零
-- ❌ 不要在同一张海报里同时使用本课主色和"相邻课程主色"——会让两节课看起来是同一节
+- ❌ 不要在同一张海报里同时使用本课主色和「相邻课程主色」——会让两节课看起来是同一节
 
 ---
 
 ## 落地检查清单
 
-- [ ] `public/outline.json` 顶层加 `themeColor: "#7FB69E"` 字段
+- [x] `public/outline.json` 顶层 `themeColor` 字段（已写入）
 - [ ] `public/curriculum.html` 的 banner / H1 区域使用主色
 - [ ] `public/poster.html`（如有）的封面色块改为主色
 - [ ] Slide Deck 封面 slide bg 改为主色
