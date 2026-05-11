@@ -41,6 +41,7 @@ JR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e
 - AI Builder：#6366F1（进阶 Vibe Coding，靛蓝）
 - AI Programming：#FF7B5A（入门级编程课，珊瑚色）
 - AI Solo Founder：#D7263D（朱砂红，避免与品牌红混淆）
+- OpenClaw Bootcamp：#E84142（OpenClaw 红，靠 logo 区分）
 
 ═══ 字体 ═══
 - 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）
@@ -89,6 +90,7 @@ JR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e
 | AI Builder | `#6366F1` | 进阶 Vibe Coding，靛蓝 |
 | AI Programming | `#FF7B5A` | 入门级编程课，珊瑚色 |
 | AI Solo Founder | `#D7263D` | 朱砂红，避免与品牌红混淆 |
+| OpenClaw Bootcamp | `#E84142` | OpenClaw 红，靠 logo 区分 |
 
 ---
 

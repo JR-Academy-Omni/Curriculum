@@ -5,8 +5,6 @@
 
 本文档定义本课程的视觉主色与海报/Slide/页面应用规范。色卡来源：`curriculum/CLAUDE.md`、`curriculum/DESIGN.md`（JR 品牌四色 + Neo-Brutalism 风格）。
 
-> ⚠️ **待核对**：此色为占位值，需要从 OpenClaw 官方 logo / 现有海报 (`curriculum/quest-posters.html`、`curriculum/posters.html`) 抓取真实品牌色后替换。
-
 ---
 
 ## 🎨 AI 出图 Prompt（市场 / 产品 copy & paste）
@@ -18,7 +16,7 @@
 课程定位：OpenClaw·入门·4 小时跑通（合作品牌线（OpenClaw））
 
 ═══ 主题色（必须严格执行）═══
-主色：#60A5FA（OpenClaw 浅蓝）
+主色：#F87171（OpenClaw 浅红）
 主色上的文字色：#10162F
 主色应占画面 ≥ 30%，用作大色块、标题底色或主背景
 
@@ -39,7 +37,8 @@ JR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e
 
 ═══ 严格避开的色 ═══
 下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：
-- OpenClaw Bootcamp：#2563EB（4 周进阶版，深一档）
+- OpenClaw Bootcamp：#E84142（4 周进阶版，深一档）
+- AI Programming：#FF7B5A（暖珊瑚，入门编程）
 - Claude Cowork Workshop：#D97757（Anthropic 联名）
 
 ═══ 字体 ═══
@@ -61,21 +60,21 @@ JR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e
 
 | 属性 | 值 |
 |---|---|
-| **主色 (primary)** | `#60A5FA` |
-| **色名** | OpenClaw 浅蓝 |
+| **主色 (primary)** | `#F87171` |
+| **色名** | OpenClaw 浅红 |
 | **主色上文字色** | `#10162F` |
 
 ### 选色理由
 
-Bootcamp 的浅色配对，海报放一起一深一浅成系列。
+OpenClaw Bootcamp 红 (#E84142) 的浅色配对——4 小时入门课配更亲和的浅红，海报放一起一深一浅成系列（同 Anthropic Cowork D97757/C96442 的搭配逻辑）。
 
 ### 色卡
 
 ```
-█████████████████████████  #60A5FA  (OpenClaw 浅蓝)
+█████████████████████████  #F87171  (OpenClaw 浅红)
 ```
 
-> 在 HTML/Slide 里使用时，以变量形式声明：`--theme-primary: #60A5FA;`
+> 在 HTML/Slide 里使用时，以变量形式声明：`--theme-primary: #F87171;`
 
 ---
 
@@ -85,7 +84,8 @@ Bootcamp 的浅色配对，海报放一起一深一浅成系列。
 
 | 相邻课程 | 主色 | 区分点 |
 |---|---|---|
-| OpenClaw Bootcamp | `#2563EB` | 4 周进阶版，深一档 |
+| OpenClaw Bootcamp | `#E84142` | 4 周进阶版，深一档 |
+| AI Programming | `#FF7B5A` | 暖珊瑚，入门编程 |
 | Claude Cowork Workshop | `#D97757` | Anthropic 联名 |
 
 ---

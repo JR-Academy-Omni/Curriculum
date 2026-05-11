@@ -38,7 +38,8 @@ JR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e
 ═══ 严格避开的色 ═══
 下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：
 - Claude Cowork SME Workshop：#C96442（中小企业主版，深一档）
-- OpenClaw Bootcamp：#2563EB（OpenClaw 自有蓝色）
+- OpenClaw Bootcamp：#E84142（OpenClaw 红，另一个联名品牌）
+- AI Programming：#FF7B5A（暖珊瑚，入门编程）
 
 ═══ 字体 ═══
 - 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）
@@ -84,7 +85,8 @@ JR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e
 | 相邻课程 | 主色 | 区分点 |
 |---|---|---|
 | Claude Cowork SME Workshop | `#C96442` | 中小企业主版，深一档 |
-| OpenClaw Bootcamp | `#2563EB` | OpenClaw 自有蓝色 |
+| OpenClaw Bootcamp | `#E84142` | OpenClaw 红，另一个联名品牌 |
+| AI Programming | `#FF7B5A` | 暖珊瑚，入门编程 |
 
 ---
 
