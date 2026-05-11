@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>【内部】GP Workshop 讲师交付手册</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    body{background:#fafafa}
+    .ihead{background:#10162f;color:#fff;padding:32px 24px;text-align:center}
+    .ihead h1{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900}
+    .ihead .warn{display:inline-block;margin-top:10px;padding:5px 12px;background:#FF914D;color:#fff;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1px}
+    .ic{max-width:1100px;margin:0 auto;padding:32px 20px}
+    .ic h2{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;margin:36px 0 12px;border-bottom:3px solid #38B6FF;padding-bottom:6px}
+    .ic h3{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;color:#10162f;margin:18px 0 8px}
+    .ic p{font-size:14px;line-height:1.75;color:#333;margin-bottom:10px}
+    .ic ul,.ic ol{margin:6px 0 12px 20px;font-size:14px;line-height:1.85;color:#333}
+    .ic li{margin-bottom:4px}
+    .ic strong{color:#10162f}
+    .ic table{width:100%;border-collapse:collapse;margin:10px 0;background:#fff;border:2px solid #000}
+    .ic th{background:#10162f;color:#fff;padding:10px 12px;text-align:left;font-family:'Space Mono',monospace;font-size:12px}
+    .ic td{padding:10px 12px;border-top:1px solid #eee;font-size:13px;vertical-align:top}
+    .ic tr:nth-child(even) td{background:#fafafa}
+    .block{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;margin-bottom:24px}
+    .block-h{padding:12px 18px;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+    .block-h .slot{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.9}
+    .block-body{padding:18px 20px}
+    .callout{background:#fffbeb;border-left:4px solid #FF914D;padding:10px 14px;margin:10px 0;font-size:13px;line-height:1.7}
+    .callout.warn{background:#fef2f2;border-color:#dc2626}
+    .callout.ok{background:#ecfdf5;border-color:#10b981}
+    .callout.info{background:#f0f9ff;border-color:#38B6FF}
+    .script{background:#fafafa;border:1px dashed #999;padding:12px 14px;margin:10px 0;font-size:13px;line-height:1.8;font-style:italic;color:#222}
+    .script::before{content:"🎙 老师讲点：";font-weight:700;font-style:normal;color:#10162f}
+    .qa{background:#f8f4ff;border-left:4px solid #CB6CE6;padding:10px 14px;margin:6px 0;font-size:13px;line-height:1.7}
+    .qa strong{color:#7c2d6e}
+    .toc{background:#fff;border:2px solid #000;padding:14px 18px;margin-bottom:24px;font-size:13px;line-height:1.85}
+    .toc a{color:#10162f;text-decoration:none}
+    .toc a:hover{color:#38B6FF}
+  </style>
+</head>
+<body>
+
+<div class="ihead">
+  <h1>🧑‍🏫 GP Workshop 讲师交付手册</h1>
+  <p style="margin-top:6px;opacity:0.8">3 小时 Zoom 直播 · 7 个 Block · 内部使用 · 不对学员公开</p>
+  <span class="warn">⚠️ INTERNAL ONLY · DO NOT DISTRIBUTE TO STUDENTS</span>
+</div>
+
+<div class="ic">
+
+  <div class="toc">
+    <strong>📑 目录：</strong>
+    <a href="#prep">🔧 课前 1 周准备</a> ·
+    <a href="#run">⏱ 时间表</a> ·
+    <a href="#l00">L00 开场</a> ·
+    <a href="#l01">L01 GP 认知</a> ·
+    <a href="#l02">L02 找 GP</a> ·
+    <a href="#l03">L03 Resume</a> ·
+    <a href="#l04">L04 OA</a> ·
+    <a href="#l05">L05 STAR</a> ·
+    <a href="#l06">L06 Networking + AC</a> ·
+    <a href="#l07">L07 Q&A</a> ·
+    <a href="#examples">📚 案例库</a> ·
+    <a href="#contingency">🚨 应急预案</a>
+  </div>
+
+  <h2 id="prep">🔧 课前 1 周准备清单</h2>
+  <table>
+    <thead>
+      <tr><th>T-7d</th><th>负责</th><th>动作</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>T-7d</td><td>助教</td><td>报名学员邮件发『课前简历征集表』· 收上传的简历（脱敏）</td></tr>
+      <tr><td>T-5d</td><td>讲师</td><td>从收到的简历里挑 2 份 · 准备 before/after 改写稿（L03 演示用）</td></tr>
+      <tr><td>T-3d</td><td>助教</td><td>统计报名学员的目标行业分布 · 投票数据决定 L01 / L02 节奏侧重</td></tr>
+      <tr><td>T-2d</td><td>讲师</td><td>过一遍课件 · 准备 6 大行业最新招聘日历更新（每年 2-3 月会变）</td></tr>
+      <tr><td>T-1d</td><td>讲师 + 助教</td><td>Zoom 排练 · 测试 Breakout Room / Poll / Chat / Q&A 4 个功能都能用</td></tr>
+      <tr><td>T-2h</td><td>助教</td><td>给报名学员发提醒邮件（Zoom 链接 + Chat 准备好简历）</td></tr>
+      <tr><td>T-15m</td><td>讲师</td><td>开 Zoom · 测麦 · 测屏幕共享 · 准备好 3 个 tab：GradAustralia / EY careers / LinkedIn</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="run">⏱ 完整时间表（180 min）</h2>
+  <table>
+    <thead><tr><th>时间</th><th>Block</th><th>形式</th><th>关键产出</th></tr></thead>
+    <tbody>
+      <tr><td>00:00 – 00:05</td><td>L00 开场</td><td>独白 + 介绍</td><td>暖场 · 学员安静 · 3 误区</td></tr>
+      <tr><td>00:05 – 00:25</td><td>L01 GP 认知</td><td>讲解 + Zoom 投票</td><td>6 行业日历表 + 学员定位</td></tr>
+      <tr><td>00:25 – 00:45</td><td>L02 找 GP</td><td>讲解 + 屏幕演示</td><td>投递追踪表模板</td></tr>
+      <tr><td>00:45 – 01:20</td><td>L03 Resume + CL</td><td>讲解 + 当场改 2 条 bullet</td><td>STAR 改写 + ATS</td></tr>
+      <tr><td>01:20 – 01:25</td><td>Buffer / 短休</td><td>—</td><td>如赶进度可省 · 给学员喘息</td></tr>
+      <tr><td>01:25 – 01:45</td><td>L04 OA</td><td>讲解 + 1 道现场题</td><td>OA 资源清单</td></tr>
+      <tr><td>01:45 – 02:30</td><td>L05 STAR 面试</td><td>讲解 + Breakout 10 min</td><td>故事工程 Worksheet</td></tr>
+      <tr><td>02:30 – 02:55</td><td>L06 Networking + AC</td><td>讲解 + Chat 互动</td><td>LinkedIn 话术 + AC 战术</td></tr>
+      <tr><td>02:55 – 03:00</td><td>L07 Q&A + 收官</td><td>答疑 + 资源发放</td><td>资源包 + 3 档行动方案</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <strong>🚨 时间纪律：</strong>L03 + L05 是核心，<strong>时间紧时优先保 L05</strong>（Breakout Room 不能省）。如果 L03 超时 5+ 分钟，从 L04 砍 5 分钟（去掉现场算题，直接讲题型）。L06 群面 / Case / Role Play 三个环节如果时间紧可以只挑 2 个详细讲。
+  </div>
+
+  <!-- L00 -->
+  <div class="block" id="l00">
+    <div class="block-h" style="background:#10162f"><span>🎬 L00 · 开场 · 校招赛道的真实地图</span><span class="slot">00:00 – 00:05 · 5 min</span></div>
+    <div class="block-body">
+      <h3>讲点结构</h3>
+      <ol>
+        <li>感谢报名 + 自我介绍 30 秒（不超时）</li>
+        <li>"今天 3 小时不卖鸡汤" — 说明这节课的产品定位（不要让学员期待『毕业即上岸』）</li>
+        <li>3 个误区铺垫</li>
+        <li>说明互动方式（举手 / Zoom Chat / Q&A 面板）</li>
+      </ol>
+
+      <div class="script">
+        欢迎大家来到澳洲校招 GP 申请实战 Workshop。我们这 3 小时不讲鸡汤、不讲励志故事，把澳洲 Graduate Program 招聘漏斗每一关拆开讲 — 找岗位、简历、OA、面试、AC、Networking 都讲一遍。每一节给你一份能直接用的模板或决策表。课后你自己走路 — 这课不卖长期陪跑。
+      </div>
+
+      <h3>3 个误区（必讲）</h3>
+      <ul>
+        <li><strong>误区 1：投得越多越好</strong> — 错。盲投是最大的时间浪费。一周深度准备 5 家 ＞ 一周模板化投 50 家。</li>
+        <li><strong>误区 2：等收到拒信再改简历</strong> — 错。第一份简历就要按目标 JD 重写。等拒信你的窗口期已经过了一半。</li>
+        <li><strong>误区 3：AC 群面靠演技</strong> — 错。AC 评的是结构化思维 + 团队协作 + 沟通节奏，不是看谁话多。</li>
+      </ul>
+
+      <div class="callout info">
+        💡 <strong>开场禁忌：</strong>不要花 5 分钟讲自己背景 · 不要花 3 分钟介绍 JR Academy · 不要承诺『来这节课 100% 能拿 Offer』。
+      </div>
+    </div>
+  </div>
+
+  <!-- L01 -->
+  <div class="block" id="l01">
+    <div class="block-h" style="background:#38B6FF"><span>🎯 L01 · GP Program 认知 & 招聘流程</span><span class="slot">00:05 – 00:25 · 20 min</span></div>
+    <div class="block-body">
+      <h3>讲点结构</h3>
+      <ol>
+        <li>GP 定义（2 min） — 1-2 年 rotational program · 给应届生设计</li>
+        <li>招聘日历核心点（4 min） — 「提前 1 年」是什么意思 · 6 大行业各自周期</li>
+        <li>5 关漏斗（5 min） — 各阶段通过率 · 学员应该把精力放在哪关</li>
+        <li>签证 / Citizenship 限制（4 min） — Gov 严 · Big 4 中 · Tech / 工程松</li>
+        <li>Zoom 投票（3 min） — 收当前阶段 · 决定后面节奏</li>
+        <li>过渡到 L02（2 min）</li>
+      </ol>
+
+      <h3>关键数据（每年 Q1 / Q3 复核更新）</h3>
+      <ul>
+        <li>Big 4 招聘窗口：<strong>Feb-Apr 开 · May-Jul AC · Jul-Sep 发 Offer</strong></li>
+        <li>四大银行：<strong>Mar-May 开 · Jun-Aug AC · Aug-Oct 发 Offer</strong></li>
+        <li>Gov（NSW / VIC / APS）：<strong>Feb-Jun 开 · Jun-Sep AC · Sep-Dec 发 Offer · 多要 PR</strong></li>
+        <li>Tech（Atlassian / Canva / REA）：<strong>滚动招聘 · 2-4 周完成全流程 · 485 接受</strong></li>
+        <li>Engineering：<strong>Mar-Jul 开 · Jun-Sep AC · Sep-Nov 发 Offer · 矿业偏好 PR · 工程咨询接受 485</strong></li>
+      </ul>
+
+      <div class="callout">
+        ⚠️ <strong>每次开课前核对：</strong>各家 careers page 当前年份的实际开放日期 — 公司会调整。2026 开始 NSW Gov 改了一次时间窗口，要查最新公告。
+      </div>
+
+      <h3>Zoom 投票题</h3>
+      <div class="callout info">
+        <strong>问题：</strong>你目前在 GP 申请的哪个阶段？<br>
+        (A) 还没开始（刚听说有 GP 这回事）<br>
+        (B) 在找岗位 / 列清单<br>
+        (C) 投了 &lt; 5 家<br>
+        (D) 投了 5-15 家 · 部分 OA 阶段<br>
+        (E) 投了 15+ 家 · 进了 AC / 等 Offer
+      </div>
+
+      <p><strong>投票结果用法：</strong></p>
+      <ul>
+        <li>A / B 占大多数 → 后面 L02 / L03 多花时间</li>
+        <li>C / D 占大多数 → L04 / L05 重点讲（他们已经卡在测评 / 面试）</li>
+        <li>E 占多数 → L05 / L06 重点（AC 战术）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- L02 -->
+  <div class="block" id="l02">
+    <div class="block-h" style="background:#7ED957"><span>🔍 L02 · 如何找 GP Program</span><span class="slot">00:25 – 00:45 · 20 min</span></div>
+    <div class="block-body">
+      <h3>讲点结构</h3>
+      <ol>
+        <li>4 大渠道概览（5 min）</li>
+        <li>屏幕共享演示（10 min） — GradAustralia + EY careers + LinkedIn Jobs</li>
+        <li>筛选 6 维度 + 投递追踪表演示（5 min）</li>
+      </ol>
+
+      <h3>屏幕共享演示步骤（10 min）</h3>
+      <ol>
+        <li><strong>GradAustralia 搜索演示</strong>（3 min）— 输入「Graduate Consultant Sydney 2026」· 展示筛选器（Industry / Location / Visa） · 展示一个 EY Consulting Graduate 页面</li>
+        <li><strong>公司官网对比</strong>（3 min）— 打开 EY 官方 careers · 展示『隐藏岗位』（GradAustralia 没显示但公司官网有的） · 强调『官网永远是最权威』</li>
+        <li><strong>LinkedIn Jobs 用法</strong>（2 min）— 搜「Graduate Program 2026」· 演示设 Job Alert</li>
+        <li><strong>投递追踪表演示</strong>（2 min）— 切换到准备好的 Notion 模板 · 展示一行『EY Consulting Graduate · Sydney · Applied · OA due Mar 15 · Status: Pending』</li>
+      </ol>
+
+      <div class="callout ok">
+        ✅ <strong>演示前准备：</strong>开课前 30 min 把这 3 个 tab 都打开登录好 · 不要现场注册账号浪费时间。
+      </div>
+
+      <h3>核心口播</h3>
+      <div class="script">
+        找岗位不是去 SEEK 搜「Graduate」然后投 50 家。澳洲 GP 招聘的水比这深。你要做的是：先打开 GradAustralia 看行业地图 → 再去你想去那 5-10 家公司的官网 careers page 确认时间窗口 → 最后用 LinkedIn 找该公司在职校友 — 这是组合拳。
+      </div>
+    </div>
+  </div>
+
+  <!-- L03 -->
+  <div class="block" id="l03">
+    <div class="block-h" style="background:#FF914D"><span>📝 L03 · Resume + Cover Letter 实战改写</span><span class="slot">00:45 – 01:20 · 35 min</span></div>
+    <div class="block-body">
+      <h3>讲点结构</h3>
+      <ol>
+        <li>Graduate 简历结构（5 min）</li>
+        <li>STAR + 结果导向（8 min）</li>
+        <li>ATS 关键词 + 动词清单（5 min）</li>
+        <li><strong>当场改写演示</strong>（10 min） — 拿课前征集的简历改 2-3 条 bullet</li>
+        <li>Cover Letter 4 段式（5 min）</li>
+        <li>Zoom Chat 互动 — 收学员 bullet 重写（2 min）</li>
+      </ol>
+
+      <h3>当场改写示例（每次直播可用同一套）</h3>
+      <table>
+        <thead><tr><th>Before（学员原版）</th><th>After（老师改）</th><th>讲点</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Responsible for compiling weekly reports for the team.</td>
+            <td>Built automated weekly KPI dashboard tracking 8 metrics across 4 product lines — reduced team's reporting time from 6h to 45min, adopted as team standard.</td>
+            <td>① 动词换 Responsible → Built ② 加数字（8 metrics / 4 lines / 6h→45min） ③ 加 Result（adopted as team standard）</td>
+          </tr>
+          <tr>
+            <td>Helped customers solve problems in the cafe.</td>
+            <td>Served 100+ customers daily during peak hours in a 30-seat cafe; resolved order errors in real-time, maintaining 4.8/5 rating across 200+ Google reviews.</td>
+            <td>① 把 Casual 工作量化 ② 加上 quality metric（4.8/5 rating） ③ 反驳『学生工作没含金量』</td>
+          </tr>
+          <tr>
+            <td>Participated in a group project for marketing class.</td>
+            <td>Led 4-person team to design Instagram campaign for local bakery (real client) — campaign reached 12K impressions, increased foot traffic by 18% in 4 weeks, awarded top 3 in class of 60.</td>
+            <td>① Participated → Led ② 强调真实客户（distinguishes from generic class project） ③ Impact 数字 + 排名</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>ATS 关键词演示</h3>
+      <p>打开任意一份 EY Consulting Graduate JD · 现场标出 top 10 关键词。例如：</p>
+      <ul>
+        <li>关键词样例：<code>data analysis</code>, <code>stakeholder management</code>, <code>problem-solving</code>, <code>client-facing</code>, <code>collaborative</code>, <code>presentation skills</code>, <code>Excel/SQL/Python</code>, <code>business acumen</code></li>
+        <li>讲：『这 10 个词要在你简历里出现至少 7 个 — 如果你简历一个都没有，ATS 直接刷你。不是要堆词，是要在 bullet 里自然把你做过的事用这些词描述出来。』</li>
+      </ul>
+
+      <h3>Cover Letter 4 段式骨架</h3>
+      <ol>
+        <li><strong>段 1 · Why this company：</strong>具体到一个细节（不要说『vibrant culture』）— 例如：『I attended your Insight Day on Mar 12 and was struck by [具体话题/项目]』</li>
+        <li><strong>段 2 · Why this role：</strong>JD 里 1-2 个 responsibility 对应你做过的事</li>
+        <li><strong>段 3 · What you bring：</strong>2-3 个 STAR mini-story（每个 1 句）</li>
+        <li><strong>段 4 · Call to action：</strong>『I would welcome the opportunity to discuss how I can contribute to your [team/project]』 + 联系信息</li>
+      </ol>
+
+      <div class="callout warn">
+        🚨 <strong>Zoom Chat 互动应急：</strong>如果没人发 bullet 进 Chat（常见），老师直接念准备好的 3 条 before/after 示例。<strong>不要尴尬等待 30 秒以上</strong>。
+      </div>
+    </div>
+  </div>
+
+  <!-- L04 -->
+  <div class="block" id="l04">
+    <div class="block-h" style="background:#FFDE59;color:#10162f"><span>🧠 L04 · OA & 初筛通关</span><span class="slot">01:25 – 01:45 · 20 min</span></div>
+    <div class="block-body">
+      <h3>讲点结构</h3>
+      <ol>
+        <li>Aptitude Test 三大类（4 min）</li>
+        <li>供应商差异（3 min）</li>
+        <li>SJT + Pymetrics（3 min）</li>
+        <li>HireVue 视频面试 + 30 秒自我介绍模板（5 min）</li>
+        <li>现场算 1 道 Numerical（3 min）</li>
+        <li>资源清单 + 考前 24h 准备（2 min）</li>
+      </ol>
+
+      <h3>现场 Numerical 题（备一道，60 秒）</h3>
+      <div class="callout info">
+        <strong>题目：</strong>一家公司 2024 营收 $850M，毛利率 32%；2025 营收增长 18%，毛利率提升 2pp。问 2025 毛利金额是多少？<br>
+        <strong>答案：</strong>$850M × 1.18 = $1003M · 毛利率 34% → 毛利 ≈ $341M<br>
+        <strong>解题路径教学：</strong>① 先算 2025 营收 ② 加 2pp 得新毛利率 ③ 相乘。<strong>关键：在 60 秒内不要先精算 18%，先估 20% 再调整。</strong>
+      </div>
+
+      <h3>30 秒自我介绍 3 个模板</h3>
+      <table>
+        <thead><tr><th>方向</th><th>模板</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Consulting</td>
+            <td>「I'm a final-year Master of Business student at UNSW. Over the past two years I've led a 4-person consulting project for a Sydney NGO, increasing their donor retention by 22%, and interned at a boutique strategy firm helping with market sizing. I'm applying to [Company] because your work on [specific recent project] aligns with where I want to build my next 3 years.」</td>
+          </tr>
+          <tr>
+            <td>Tech</td>
+            <td>「I'm a Computer Science honours student at UMelb. I've shipped two side projects to production — a Sydney rental price tracker with 800 monthly active users, and a study group matching tool used by 200 students at my faculty. I'm applying to [Company] because your engineering blog on [specific tech topic] matches the kind of problem-solving I want to do at scale.」</td>
+          </tr>
+          <tr>
+            <td>Finance</td>
+            <td>「I'm in my final year of Bachelor of Commerce at USyd, majoring in Finance and Accounting. I interned at a mid-tier accounting firm last summer where I helped on three audit engagements and built a reconciliation automation that saved 4 hours per engagement. I'm drawn to [Company] specifically because of [recent deal / strategy / news].」</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        💡 <strong>讲完模板必须加：</strong>「这 3 个不是让你背，是给你脑回路。回去把你的实习 / 学术 / 兼职填进 [bracket] 里，自己练 10 遍录视频回看。」
+      </div>
+    </div>
+  </div>
+
+  <!-- L05 -->
+  <div class="block" id="l05">
+    <div class="block-h" style="background:#CB6CE6"><span>💬 L05 · Behavioural + STAR 面试（核心节）</span><span class="slot">01:45 – 02:30 · 45 min</span></div>
+    <div class="block-body">
+      <h3>讲点结构（这是 3 小时最重要的一节）</h3>
+      <ol>
+        <li>Behavioural 底层逻辑（3 min）</li>
+        <li>STAR 完整公式 + 经典坑（8 min）</li>
+        <li>12 类高频题 + 例题（5 min）</li>
+        <li>故事工程：5-7 个模块化（5 min）</li>
+        <li><strong>Breakout Room 演练</strong>（10 min · 3-4 人组 · 每人讲 1 个 Leadership 故事）</li>
+        <li>老师巡场返回总结 + 现场点 1-2 位学员讲（10 min）</li>
+        <li>Why-this-company / Why-this-role（4 min）</li>
+      </ol>
+
+      <h3>12 类高频 Behavioural 题（每类配 1 个例题）</h3>
+      <table>
+        <thead><tr><th>类别</th><th>例题</th><th>挖什么</th></tr></thead>
+        <tbody>
+          <tr><td>Leadership</td><td>Tell me about a time you led a team without formal authority.</td><td>影响力 · 不靠职位</td></tr>
+          <tr><td>Teamwork</td><td>Describe a situation where you had a difficult team member.</td><td>协作 · 处理冲突</td></tr>
+          <tr><td>Conflict</td><td>Tell me about a disagreement with a manager / professor.</td><td>专业沟通 · 不情绪化</td></tr>
+          <tr><td>Failure</td><td>Tell me about a time you failed.</td><td>反思 · 学到什么 · 不甩锅</td></tr>
+          <tr><td>Initiative</td><td>When did you go beyond what was expected?</td><td>主动性 · 创造影响</td></tr>
+          <tr><td>Problem-solving</td><td>A complex problem you solved with limited info.</td><td>分析 · 决策</td></tr>
+          <tr><td>Time pressure</td><td>A tight deadline you delivered under.</td><td>优先级 · 执行力</td></tr>
+          <tr><td>Learning</td><td>A new skill you learned quickly.</td><td>学习能力 · 成长心态</td></tr>
+          <tr><td>Customer focus</td><td>How you handled an unhappy customer.</td><td>同理心 · 解决问题</td></tr>
+          <tr><td>Ethics</td><td>An ethical dilemma you faced.</td><td>价值观 · 判断力</td></tr>
+          <tr><td>Change</td><td>Adapting to unexpected change.</td><td>韧性 · 适应力</td></tr>
+          <tr><td>Communication</td><td>Explained complex info to non-expert.</td><td>表达 · 听众意识</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Breakout Room 操作（10 min）</h3>
+      <div class="callout info">
+        <strong>分组：</strong>3-4 人 / 组（助教操作 Zoom Breakout） · 自动分配<br>
+        <strong>任务：</strong>每人讲 1 个 Leadership 故事 60 秒 · 其他人按 STAR 打分（S / T / A / R 各 5 分，满分 20）<br>
+        <strong>计时：</strong>10 分钟（4 人组：60s 讲 + 60s 反馈 × 4 = 8 min，剩 2 min 缓冲）<br>
+        <strong>老师巡场：</strong>10 分钟内逐个进 3-4 个房间 listen 30s + 给 1 句反馈
+      </div>
+
+      <h3>巡场回来后必做（5 min）</h3>
+      <ul>
+        <li>分享听到的『最好的一个 bullet』（举例 + 不点名）</li>
+        <li>分享听到的『最常见的坑』 — 通常是：① S 太长（45 秒在铺背景）② A 太虚（『我和团队一起努力』）③ R 没数字</li>
+        <li>现场点 1-2 位讲过故事的学员 · 老师当场用 STAR 框架重新拆解</li>
+      </ul>
+
+      <h3>故事工程 Worksheet</h3>
+      <p>课后发给学员填写 — 5-7 个故事 × 每个打 3-5 个 tag：</p>
+      <table>
+        <thead><tr><th>故事</th><th>核心场景</th><th>tags</th><th>关键数字</th></tr></thead>
+        <tbody>
+          <tr><td>Story 1</td><td>大三 Marketing class group project</td><td>Leadership / Teamwork / Initiative</td><td>4 人 · 12K impressions · 18% foot traffic</td></tr>
+          <tr><td>Story 2</td><td>Casual cafe 处理愤怒客户</td><td>Customer / Conflict / Communication</td><td>30-seat · 4.8/5 rating</td></tr>
+          <tr><td>Story 3</td><td>实习时 Excel 自动化</td><td>Initiative / Problem-solving / Learning</td><td>6h → 45min · 4 product lines</td></tr>
+          <tr><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout ok">
+        ✅ <strong>核心口播：</strong>「面试不是背 20 个答案 · 是准备 5-7 个故事模块 + 现场拼装。问 Leadership 我用 Story 1 + Story 3 · 问 Failure 我用 Story 4 + Story 6。这才是 ready 的状态。」
+      </div>
+    </div>
+  </div>
+
+  <!-- L06 -->
+  <div class="block" id="l06">
+    <div class="block-h" style="background:#6366f1"><span>🤝 L06 · Networking + AC</span><span class="slot">02:30 – 02:55 · 25 min</span></div>
+    <div class="block-body">
+      <h3>讲点结构</h3>
+      <ol>
+        <li>LinkedIn 找人 + 邀约话术（8 min）</li>
+        <li>Coffee Chat 30 分钟剧本（5 min）</li>
+        <li>AC 群面玩法（4 min）</li>
+        <li>AC Case Study 框架（4 min）</li>
+        <li>AC Role Play + 当天战术（4 min）</li>
+      </ol>
+
+      <h3>LinkedIn 邀约模板</h3>
+      <div class="script">
+        Hi [Name], I noticed we're both from [UniName] — I'm currently in my final year of [Major] and exploring graduate roles in [Industry]. I really admire your path from grad to [Current Role] at [Company], and I'd love to learn from how you approached your first 2 years there.<br><br>
+        Would you be open to a 15-minute coffee chat (virtual is fine) in the next 2-3 weeks? Happy to work around your schedule. No worries if not — I appreciate you reading this.<br><br>
+        Best, [Your Name]
+      </div>
+
+      <h3>邀约 4 要素</h3>
+      <ol>
+        <li><strong>共同点</strong>（学校 / Society / 城市 / 项目） — 不能是『我也喜欢 AI』这种烂大街的</li>
+        <li><strong>具体到对方</strong>（提到他的某段经历 / 某篇 LinkedIn post / 某次跳槽路径）— 证明你看过他主页</li>
+        <li><strong>明确要求</strong>（15 min · 虚拟也行 · 2-3 周内）— 不要问『can we chat sometime?』</li>
+        <li><strong>给台阶</strong>（『No worries if not』）— 礼貌 + 不显得急切</li>
+      </ol>
+
+      <h3>Coffee Chat 30 分钟剧本</h3>
+      <table>
+        <thead><tr><th>时间</th><th>环节</th><th>关键</th></tr></thead>
+        <tbody>
+          <tr><td>0-5 min</td><td>寒暄 + 感谢</td><td>简短 · 不要假装很熟</td></tr>
+          <tr><td>5-20 min</td><td>问问题（提前准备 5 个）</td><td>不问个人薪资 / 不要内推</td></tr>
+          <tr><td>20-25 min</td><td>简单介绍自己</td><td>2-3 句 · 不要复读简历</td></tr>
+          <tr><td>25-30 min</td><td>道谢 + Next step</td><td>『可不可以保持联系』· 24h 内 LinkedIn 跟进感谢信</td></tr>
+        </tbody>
+      </table>
+
+      <h3>5 个有深度的 Coffee Chat 问题（避免烂大街）</h3>
+      <ul>
+        <li>❌ 烂大街："How did you get into [Company]?"</li>
+        <li>✅ 替换："Looking back at your first 6 months at [Company], what's one thing you wish you'd done differently?"</li>
+        <li>✅ "How has your role evolved compared to what the JD originally described?"</li>
+        <li>✅ "Among [Company]'s competitors like X and Y, why do candidates choose [Company]? What's the unique value?"</li>
+        <li>✅ "What separates the grads who get promoted in 2 years from those who don't?"</li>
+        <li>✅ "If you were applying today as a [your background] candidate, what would you do differently from a typical applicant?"</li>
+      </ul>
+
+      <h3>AC 群面 3 角色</h3>
+      <ul>
+        <li><strong>Leader</strong>（推进议题 · 不强势） — 适合表达力强 + 节奏感好的</li>
+        <li><strong>Timekeeper</strong>（控时 · 关键节点提醒） — 隐形发力位</li>
+        <li><strong>Note-taker</strong>（汇总观点 · 最后陈述） — 给沉默学员的好位置</li>
+      </ul>
+
+      <div class="callout warn">
+        🚨 <strong>群面禁忌：</strong>① 抢话（评分官只看到你 disruptive）② 沉默（被打 0 分）③ 否定别人观点（说『我不同意你』- 改成『我想补充另一个角度』）④ 看时间太频繁（焦虑感写在脸上）
+      </div>
+
+      <h3>Case Study 框架</h3>
+      <p>Big 4 / Consulting AC 经典 Case：『一家咖啡连锁想进入 Sydney 市场 · 评估可行性』给 30 分钟分析 · 10 分钟陈述。</p>
+      <ul>
+        <li><strong>MECE 框架：</strong>Market（size / growth）· Competition（incumbents / barriers）· Customer（segments / willingness to pay）· Internal（capability / cost）</li>
+        <li><strong>Profit Tree：</strong>Revenue (Price × Volume) − Cost (Fixed + Variable) — 适合财务问题</li>
+        <li><strong>数据估算：</strong>Sydney 人口 ~5.5M · 假设 20% 是 cafe 客群 · 每周消费 3 次 · 单价 $5 → 周市场 ~$16.5M</li>
+      </ul>
+
+      <h3>当天战术 5 条</h3>
+      <ol>
+        <li>早到 30 min · 在 lobby 不刷手机 · 主动认识其他候选人（『Hi, are you here for the AC?』）</li>
+        <li>穿着：Business casual · 衬衫 + 西裤 / 西装裙 + low heel</li>
+        <li>午餐也在评估 · 不要抱怨题难 · 不要 vent · 主动和 panel 聊天但不假装很熟</li>
+        <li>Break 时主动和 1-2 个其他候选人聊（评分官观察 social-fit）</li>
+        <li>结束前问 panel 一个有深度的问题 — 不要问『下一步是什么』· 问类似『what's the most rewarding moment for a grad in their first year here?』</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- L07 -->
+  <div class="block" id="l07">
+    <div class="block-h" style="background:#10b981"><span>📦 L07 · Q&A + 收官</span><span class="slot">02:55 – 03:00 · 10 min</span></div>
+    <div class="block-body">
+      <h3>讲点结构</h3>
+      <ol>
+        <li>现场答疑（5-6 min · 助教提前从 Chat 挑 3-5 个高频题）</li>
+        <li>资源包链接发放（1 min）</li>
+        <li>3 档行动建议（2 min）</li>
+        <li>JR Academy 后续支持指引（1 min · 不强推销）</li>
+      </ol>
+
+      <h3>资源包内容（课后 24h 内发邮件）</h3>
+      <ul>
+        <li>📅 6 大行业招聘日历对照表（PDF）</li>
+        <li>📋 投递追踪表（Notion 模板 + Excel 模板）</li>
+        <li>📝 Graduate Resume 模板（Word + PDF）</li>
+        <li>📝 Cover Letter 4 段式骨架（Word）</li>
+        <li>💬 12 类 Behavioural 题清单 + STAR 评分卡</li>
+        <li>💬 故事工程 Worksheet（Notion）</li>
+        <li>🤝 LinkedIn 邀约话术（中英双版）</li>
+        <li>☕ Coffee Chat 5 个深度问题清单</li>
+        <li>🧠 OA 备考资源站点清单（JobTestPrep / Practice Aptitude Tests / Assessment Day 等）</li>
+        <li>🎥 30 秒 Video 自我介绍 3 个模板（Consulting / Tech / Finance）</li>
+      </ul>
+
+      <h3>3 档行动建议（必念）</h3>
+      <ol>
+        <li><strong>今晚 1 小时</strong> — 打开 GradAustralia 列 10 家目标公司 · 加进追踪表</li>
+        <li><strong>周末 2 天闭关</strong> — 用今天的模板重写简历 · 填故事工程 Worksheet 的 5-7 个故事</li>
+        <li><strong>一个月攻坚</strong> — 每周投 5 家 + 练 3 道 OA + 找 2 个校友 Coffee Chat · 4 周后回头看自己的简历版本 v3 已经完全不一样</li>
+      </ol>
+
+      <h3>JR Academy 后续指引（轻度）</h3>
+      <div class="script">
+        如果今天讲的内容你想继续打磨：① 简历想做更深的 ATS 匹配 → JR 平台有 JobPin AI · 喂 JD + 简历自动比对 ② STAR 故事讲得好不好需要被打分 → Mock Interview 模块可以反复练 ③ 想长线规划职业方向 → Career Planning 提供 AI 1v1 路径建议。今天这节课我们卖的就是 3 小时，不长期陪跑。如果你需要长期辅导，那些产品在那里 — 你自己决定要不要。
+      </div>
+    </div>
+  </div>
+
+  <!-- Examples -->
+  <h2 id="examples">📚 备用案例库（讲师随时调用）</h2>
+
+  <h3>案例 1 · 学员投了 30 家全挂的诊断流程</h3>
+  <ol>
+    <li>问『你简历用了几个版本？』 — 如果只有 1 版 → 第一关挂在 ATS 关键词没对齐</li>
+    <li>问『被刷的是 OA / Video / 网申阶段？』 — 网申就挂 → 简历问题；OA 挂 → 没练；Video 挂 → 没准备模板</li>
+    <li>问『目标行业有几个？』 — 如果 5+ → 太分散 · 建议聚焦 2-3 个</li>
+    <li>问『有没有任何一次进 AC？』 — 如果 0 次 → 网申/OA/Video 三层都要改；如果进过 1-2 次 → AC 战术问题</li>
+  </ol>
+
+  <h3>案例 2 · 学员问『我没实习只有 Casual 工作能投 GP 吗？』</h3>
+  <p>能。Casual 工作 = 你能服务客户 / 处理冲突 / 团队协作 — 这些都是 GP 招聘官看的。关键是<strong>怎么用 STAR + 数字把 Casual 经历讲出含金量</strong>。看 L03 的 cafe 例子 — 同样是 cafe，写法不一样含金量差 10 倍。</p>
+
+  <h3>案例 3 · 学员问『GPA 不到 5/7 (Distinction) 还有戏吗？』</h3>
+  <p>Big 4 / Banks / Gov 大多卡 GPA 5/7 · Tech / 工程稍松。<strong>GPA 不到 5/7 的策略</strong>：① 别投 Big 4 / Banks 浪费时间 ② 重点投 Tier-2 咨询 / 本土科技 / 中型工程公司 ③ 简历用 Internship / Project / 兼职 / Society leadership 补 ④ 找 GPA-blind 的 Pymetrics 入门公司（这点 L04 会提）</p>
+
+  <h3>案例 4 · 学员问『AI 写简历会被发现吗？』</h3>
+  <p>HR 自己也用 AI · 用 AI 修语法 / 优化措辞没问题。问题在 3 个地方：① <strong>编造经历</strong>（背调会查）② <strong>整段复制 AI 输出</strong>（HR 一眼看『AI 味』）③ <strong>太完美没个性</strong>（ATS 现在能识别 too-perfect-no-voice 的简历）。建议：让 AI 帮你优化已有 bullet，不要让 AI 凭空生成 bullet。</p>
+
+  <!-- Contingency -->
+  <h2 id="contingency">🚨 应急预案</h2>
+
+  <table>
+    <thead><tr><th>意外</th><th>预案</th></tr></thead>
+    <tbody>
+      <tr><td>报名 &lt; 10 人</td><td>L05 Breakout 改为全员逐个 60 秒讲 + 老师当场反馈（更宝贵）</td></tr>
+      <tr><td>报名 &gt; 80 人</td><td>L05 Breakout 改为 5 人 / 组 · 助教协助巡场 · 不要超过 10 个房间老师巡不过来</td></tr>
+      <tr><td>Zoom Chat 死寂</td><td>L03 / L05 / L06 互动时如果 30 秒没人发言 → 老师直接念准备好的示例往下走，不要追问</td></tr>
+      <tr><td>课前没收到学员简历</td><td>L03 用 3 条准备好的 before/after 示例（见 L03 表格）· 不要中断流程去临时拿别的</td></tr>
+      <tr><td>L03 超时 5+ min</td><td>L04 砍现场算题 · 直接 5 min 走完所有题型 · 保 L05 完整</td></tr>
+      <tr><td>讲师网络掉线</td><td>助教接管 Q&A 5 min · 讲师重连后从断点继续 · 不要重新介绍背景</td></tr>
+      <tr><td>L05 Breakout 房间分配失败</td><td>改为全员举手讲 · 老师点 4 位 60 秒 + 4 个 1 句反馈 = 8 min · 剩 2 min 老师总结</td></tr>
+      <tr><td>有学员提敏感问题（如歧视 / 签证黑幕）</td><td>承认现实存在 · 不深入展开 · 引导回方法论『不管怎样下面这步你能做』· 不传播未经证实的信息</td></tr>
+    </tbody>
+  </table>
+
+  <h2>📤 课后 24h 助教 To-do</h2>
+  <ol>
+    <li>剪开场水印 · 上传录播 · 邮件发送学员（包含跳转章节时间戳）</li>
+    <li>资源包邮件 — 所有模板的 Notion / Drive 链接</li>
+    <li>收 Chat / Q&A 没答的问题 · 整理给讲师 · 邮件统一回复（限 5 个问题，超出引导走付费 1v1）</li>
+    <li>NPS 问卷 · 邀请学员填 5 分钟反馈表</li>
+    <li>下一期 workshop 报名链接（顺便宣传，不强推销）</li>
+  </ol>
+
+  <p style="margin-top:40px;padding:14px;background:#10162f;color:#fff;text-align:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.5px">
+    ⚠️ 本文档仅供 JR Academy 讲师 + 助教内部使用 · 不发学员 · 不发 marketing
+  </p>
+
+</div>
+
+</body>
+</html>
