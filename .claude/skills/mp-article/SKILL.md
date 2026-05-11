@@ -23,6 +23,32 @@ argument-hint: "[bootcamp目录]"
 - 微信合规：可以放二维码 + 公众号名片（和小红书不同）
 - 手机预览宽 375px、正文 15px/行高 1.85
 
+## 🎨 Per-Course Theme Color（2026-05 新规则）
+
+每门课的主题色都不一样，**生成 mp-article 时必须读 `{bootcamp}/public/outline.json` 顶层的 `themeColor`** 字段，并按 `{bootcamp}/DESIGN.md` 拿到主色上文字色与禁用色。
+
+#### 在 `inlineStyles()` map 里替换的位置
+
+公众号 sanitizer 不认 `var(--*)`，所以必须把 themeColor 的真实 hex 写死进 `inlineStyles()` map：
+
+| selector | 用 themeColor 替换的属性 |
+|---|---|
+| `.cta-card` | `border` 颜色 / 标题或按钮 `background-color` |
+| `.hl` / `mark` / 主色高亮块 | `background-color` |
+| `.lead` | `border-left` 颜色（保留 `background-color:#f1f5f9` 浅灰底） |
+| 主 CTA 按钮 | `background-color` + `color` (用 text_on_primary) |
+
+**保留不动**：`.lead` 浅灰底 `#f1f5f9` / `.cta-qrcode` 白底 / 正文文字色 `#10162f` —— 这些是品牌标准，跨课统一。
+
+#### 兜底
+
+- 没 themeColor → 用旧默认 `#ff5757`
+- 主色上文字色：DESIGN.md 没指明就用启发式（亮色 themeColor → 黑字 #000000；暗色 → 白字 #FFFFFF）
+
+#### cover.html 的 Canvas 2D 颜色
+
+封面生成器（cover.html）里的 `ctx.fillStyle` 也按 themeColor 改：背景或主色块用 themeColor，文字按 text_on_primary。
+
 ## 🚨 硬性要求：`inlineStyles()` 必须用公众号能识别的写法
 
 > **2026-04-18 实测**（在 jr-wiki `ai-news-posters/2026-04-18/mp-article.html` 上跑通过 mp.weixin.qq.com 图文编辑器，保留全部视觉）。参考实现：`ai-engineer-bootcamp/public/mp-article/mp-article-copy.js` 的 `inlineStyles()` 函数。

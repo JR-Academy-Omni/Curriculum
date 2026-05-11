@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>JR Academy 课程主题色总览 · Course Theme Colors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Bricolage Grotesque', 'PingFang SC', -apple-system, sans-serif;
+    background: #fff1e7;
+    color: #10162F;
+    padding: 40px 24px 80px;
+    line-height: 1.5;
+}
+.container { max-width: 1400px; margin: 0 auto; }
+header {
+    border: 3px solid #000;
+    background: #FFDE59;
+    padding: 32px 28px;
+    margin-bottom: 40px;
+    box-shadow: 6px 6px 0 #000;
+}
+header h1 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; margin-bottom: 8px; }
+header p { font-size: 16px; max-width: 880px; }
+header code { background: #000; color: #FFDE59; padding: 2px 6px; border-radius: 2px; font-family: 'Space Mono', monospace; font-size: 14px; }
+h2.track {
+    font-size: clamp(22px, 3vw, 30px);
+    margin: 48px 0 20px;
+    padding: 8px 16px;
+    background: #000;
+    color: #fff;
+    display: inline-block;
+    transform: rotate(-1deg);
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 24px;
+}
+.card {
+    border: 3px solid #000;
+    background: #fff;
+    box-shadow: 6px 6px 0 #000;
+    transition: transform .12s, box-shadow .12s;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.card:hover { transform: translate(2px, 2px); box-shadow: 4px 4px 0 #000; }
+.swatch {
+    background: var(--primary);
+    color: var(--on-primary);
+    padding: 28px 20px;
+    border-bottom: 3px solid #000;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.swatch .hex {
+    font-family: 'Space Mono', 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.swatch .cname {
+    font-size: 14px;
+    opacity: .85;
+    font-weight: 600;
+}
+.body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+.body h3 {
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+.body .tagline { font-size: 13px; color: #555; line-height: 1.45; min-height: 36px; }
+.verify {
+    background: #FFDE59;
+    border: 2px solid #000;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.copy-btn {
+    margin-top: 8px;
+    border: 3px solid #000;
+    background: var(--primary);
+    color: var(--on-primary);
+    font: inherit;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 10px 14px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #000;
+    transition: transform .1s, box-shadow .1s;
+}
+.copy-btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
+.copy-btn.copied { background: #7ED957 !important; color: #000 !important; }
+.spec-link {
+    font-size: 12px;
+    color: #10162F;
+    text-decoration: none;
+    border-bottom: 2px solid #10162F;
+    align-self: flex-start;
+    font-weight: 600;
+    padding-bottom: 1px;
+}
+.spec-link:hover { color: #FF5757; border-color: #FF5757; }
+.usage {
+    margin-top: 64px;
+    border: 3px solid #000;
+    background: #fff;
+    padding: 28px;
+    box-shadow: 6px 6px 0 #000;
+}
+.usage h2 { font-size: 22px; margin-bottom: 14px; }
+.usage ol { padding-left: 22px; }
+.usage li { margin-bottom: 8px; font-size: 15px; }
+.usage code { background: #f0f0f0; padding: 2px 6px; border-radius: 2px; font-family: 'Space Mono', monospace; font-size: 13px; }
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #10162F;
+    color: #fff;
+    padding: 12px 24px;
+    border: 3px solid #000;
+    box-shadow: 6px 6px 0 #FF5757;
+    font-weight: 700;
+    transition: transform .3s;
+    z-index: 1000;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+@media (max-width: 600px) {
+    body { padding: 20px 12px 60px; }
+    .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+    <h1>🎨 课程主题色总览</h1>
+    <p>JR Academy 23 门课程的视觉主色。打开后找到课程，点击 <code>📋 复制 AI 出图 Prompt</code> 按钮，粘贴给 Claude / GPT / Midjourney / DALL-E / Nano Banana / 任何 AI 模型，它就会按本课主题色出图。色卡与选色理由详见每门课目录下的 <code>DESIGN.md</code>。</p>
+</header>
+
+<h2 class="track">入门 / 大众线</h2>
+<div class="grid">
+
+            <article class="card" style="--primary: #FFDE59; --on-primary: #000000;">
+                <div class="swatch">
+                    <div class="hex">#FFDE59</div>
+                    <div class="cname">JR 黄</div>
+                </div>
+                <div class="body">
+                    <h3>AI 必修课 (AI Essentials Bootcamp)</h3>
+                    <p class="tagline">4 周·零基础·各行各业 AI 入门实战</p>
+                    
+                    <button class="copy-btn" data-slug="ai-essentials-bootcamp">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-essentials-bootcamp/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #FF914D; --on-primary: #000000;">
+                <div class="swatch">
+                    <div class="hex">#FF914D</div>
+                    <div class="cname">JR 橙</div>
+                </div>
+                <div class="body">
+                    <h3>AI Adoption Specialist Bootcamp</h3>
+                    <p class="tagline">8 周·企业 AI 落地·从工具到组织级采纳</p>
+                    
+                    <button class="copy-btn" data-slug="ai-adoption-bootcamp">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-adoption-bootcamp/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #FF7B5A; --on-primary: #000000;">
+                <div class="swatch">
+                    <div class="hex">#FF7B5A</div>
+                    <div class="cname">暖珊瑚</div>
+                </div>
+                <div class="body">
+                    <h3>人人都能学的 AI Coding 实战课</h3>
+                    <p class="tagline">零基础·Cursor + AI·从想法到产品上线</p>
+                    
+                    <button class="copy-btn" data-slug="ai-programming">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-programming/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+</div>
+<h2 class="track">工程 / 技术线（旗舰）</h2>
+<div class="grid">
+
+            <article class="card" style="--primary: #FF5757; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#FF5757</div>
+                    <div class="cname">JR 红（品牌主色）</div>
+                </div>
+                <div class="body">
+                    <h3>AI Engineer Bootcamp</h3>
+                    <p class="tagline">12 周技术 + 12 周 P3 职业孵化·旗舰课</p>
+                    
+                    <button class="copy-btn" data-slug="ai-engineer-bootcamp">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-engineer-bootcamp/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+</div>
+<h2 class="track">工程 / 技术线</h2>
+<div class="grid">
+
+            <article class="card" style="--primary: #38B6FF; --on-primary: #000000;">
+                <div class="swatch">
+                    <div class="hex">#38B6FF</div>
+                    <div class="cname">天蓝</div>
+                </div>
+                <div class="body">
+                    <h3>AI Engineer 入门</h3>
+                    <p class="tagline">37 节视频 + 25 个 Lab + 5 节 AI Tutor·从会用到能构建</p>
+                    
+                    <button class="copy-btn" data-slug="ai-engineer-rag">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-engineer-rag/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #6366F1; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#6366F1</div>
+                    <div class="cname">靛蓝</div>
+                </div>
+                <div class="body">
+                    <h3>Vibe Coding 提升班</h3>
+                    <p class="tagline">Claude Code + Cursor + Codex·全栈 + Skills/MCP/Agent</p>
+                    
+                    <button class="copy-btn" data-slug="ai-builder">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-builder/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #10162F; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#10162F</div>
+                    <div class="cname">深夜蓝（JR 深色）</div>
+                </div>
+                <div class="body">
+                    <h3>AI Engineer 全栈项目班</h3>
+                    <p class="tagline">全栈 + DevOps·从计划到发布五阶段</p>
+                    
+                    <button class="copy-btn" data-slug="web-code-bootcamp-or-learn-to-code-1">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./web-code-bootcamp-or-learn-to-code-1/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #10B981; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#10B981</div>
+                    <div class="cname">青 Teal</div>
+                </div>
+                <div class="body">
+                    <h3>TechScrum DevOps 项目实训营</h3>
+                    <p class="tagline">7 周·真实 TechScrum Web 项目·初级 DevOps 进阶</p>
+                    
+                    <button class="copy-btn" data-slug="techscrum-devops">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./techscrum-devops/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #475569; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#475569</div>
+                    <div class="cname">钢蓝灰</div>
+                </div>
+                <div class="body">
+                    <h3>手撕全栈面试题班</h3>
+                    <p class="tagline">Full-stack Developer Interview·硬核刷题</p>
+                    
+                    <button class="copy-btn" data-slug="full-stack-developer-interview">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./full-stack-developer-interview/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+</div>
+<h2 class="track">职业 / 职场线</h2>
+<div class="grid">
+
+            <article class="card" style="--primary: #7ED957; --on-primary: #000000;">
+                <div class="swatch">
+                    <div class="hex">#7ED957</div>
+                    <div class="cname">JR 绿</div>
+                </div>
+                <div class="body">
+                    <h3>IT Career Coaching Bootcamp</h3>
+                    <p class="tagline">479 节·澳洲 IT 职业全周期·找工/面试/谈薪/晋升</p>
+                    
+                    <button class="copy-btn" data-slug="it-career-support">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./it-career-support/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #4ECDC4; --on-primary: #10162F;">
+                <div class="swatch">
+                    <div class="hex">#4ECDC4</div>
+                    <div class="cname">薄荷绿</div>
+                </div>
+                <div class="body">
+                    <h3>AI 产品经理 (BA) 训练营 + 实习</h3>
+                    <p class="tagline">Business Analyst·本地工作经验·实习直通</p>
+                    
+                    <button class="copy-btn" data-slug="business-analyst">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./business-analyst/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+</div>
+<h2 class="track">营销 / 创作线</h2>
+<div class="grid">
+
+            <article class="card" style="--primary: #E63977; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#E63977</div>
+                    <div class="cname">玫红</div>
+                </div>
+                <div class="body">
+                    <h3>AI 营销全链路实战 4 周</h3>
+                    <p class="tagline">内容生产 / 投放 GEO / 私域 agent / 数据复盘</p>
+                    
+                    <button class="copy-btn" data-slug="ai-marketing">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-marketing/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #FF2E4D; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#FF2E4D</div>
+                    <div class="cname">小红书粉</div>
+                </div>
+                <div class="body">
+                    <h3>AI 小红书图文 Workshop</h3>
+                    <p class="tagline">2.5 小时·零基础·跑通定位→选题→制作→发布</p>
+                    
+                    <button class="copy-btn" data-slug="ai-image-text-workshop">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-image-text-workshop/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #FF6B9D; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#FF6B9D</div>
+                    <div class="cname">桃粉</div>
+                </div>
+                <div class="body">
+                    <h3>全渠道营销 Workshop</h3>
+                    <p class="tagline">Omnichannel Marketing·多平台投放整合</p>
+                    
+                    <button class="copy-btn" data-slug="omnichannel-marketing-workshop">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./omnichannel-marketing-workshop/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #CB6CE6; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#CB6CE6</div>
+                    <div class="cname">JR 紫</div>
+                </div>
+                <div class="body">
+                    <h3>AI 漫画 Workshop</h3>
+                    <p class="tagline">AI Comic·创意创作·人人能画</p>
+                    
+                    <button class="copy-btn" data-slug="ai-comic-workshop">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-comic-workshop/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #D7263D; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#D7263D</div>
+                    <div class="cname">朱砂红</div>
+                </div>
+                <div class="body">
+                    <h3>AI 一人创业营</h3>
+                    <p class="tagline">AI Solo Founder·一人公司·从 0 到上线</p>
+                    
+                    <button class="copy-btn" data-slug="ai-solo-founder-bootcamp">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-solo-founder-bootcamp/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+</div>
+<h2 class="track">垂直行业线（会计/财务）</h2>
+<div class="grid">
+
+            <article class="card" style="--primary: #3D8B6B; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#3D8B6B</div>
+                    <div class="cname">苔绿</div>
+                </div>
+                <div class="body">
+                    <h3>AI 会计 Pro（6 周深度）</h3>
+                    <p class="tagline">Corporate / 事务所·month-end close·13-week 现金流</p>
+                    
+                    <button class="copy-btn" data-slug="ai-accounting-pro">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-accounting-pro/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #7FB69E; --on-primary: #10162F;">
+                <div class="swatch">
+                    <div class="hex">#7FB69E</div>
+                    <div class="cname">浅苔绿</div>
+                </div>
+                <div class="body">
+                    <h3>AI 会计 Workshop（4 小时）</h3>
+                    <p class="tagline">会计协会 co-host·脱敏数据跑月报</p>
+                    
+                    <button class="copy-btn" data-slug="ai-accounting-workshop">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-accounting-workshop/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+</div>
+<h2 class="track">垂直行业线（数据/办公）</h2>
+<div class="grid">
+
+            <article class="card" style="--primary: #F59E0B; --on-primary: #10162F;">
+                <div class="swatch">
+                    <div class="hex">#F59E0B</div>
+                    <div class="cname">金黄/琥珀</div>
+                </div>
+                <div class="body">
+                    <h3>AI 数据分析 & Copilot 自动化实战</h3>
+                    <p class="tagline">Excel + Copilot·数据分析·自动化</p>
+                    
+                    <button class="copy-btn" data-slug="ai-copilot">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./ai-copilot/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+</div>
+<h2 class="track">合作品牌线（Anthropic）</h2>
+<div class="grid">
+
+            <article class="card" style="--primary: #D97757; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#D97757</div>
+                    <div class="cname">Anthropic 珊瑚</div>
+                </div>
+                <div class="body">
+                    <h3>Claude Cowork Workshop（3 小时通用）</h3>
+                    <p class="tagline">Anthropic Claude Cowork·桌面 App·非技术岗</p>
+                    
+                    <button class="copy-btn" data-slug="claude-cowork-workshop">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./claude-cowork-workshop/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #C96442; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#C96442</div>
+                    <div class="cname">Anthropic 棕橙</div>
+                </div>
+                <div class="body">
+                    <h3>Claude Cowork SME Workshop（4 小时·中小企业主）</h3>
+                    <p class="tagline">一人公司 / 1-3 人小团队·餐饮零售设计咨询</p>
+                    
+                    <button class="copy-btn" data-slug="claude-cowork-sme-workshop">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./claude-cowork-sme-workshop/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+</div>
+<h2 class="track">合作品牌线（OpenClaw）</h2>
+<div class="grid">
+
+            <article class="card" style="--primary: #E84142; --on-primary: #FFFFFF;">
+                <div class="swatch">
+                    <div class="hex">#E84142</div>
+                    <div class="cname">OpenClaw 红</div>
+                </div>
+                <div class="body">
+                    <h3>OpenClaw 4 周个人 AI 助手 Bootcamp</h3>
+                    <p class="tagline">OpenClaw·个人定制·从工具到日常</p>
+                    
+                    <button class="copy-btn" data-slug="openclaw-bootcamp">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./openclaw-bootcamp/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+
+            <article class="card" style="--primary: #F87171; --on-primary: #10162F;">
+                <div class="swatch">
+                    <div class="hex">#F87171</div>
+                    <div class="cname">OpenClaw 浅红</div>
+                </div>
+                <div class="body">
+                    <h3>OpenClaw 4 小时沉浸式工作坊</h3>
+                    <p class="tagline">OpenClaw·入门·4 小时跑通</p>
+                    
+                    <button class="copy-btn" data-slug="openclaw-workshop">📋 复制 AI 出图 Prompt</button>
+                    <a class="spec-link" href="./openclaw-workshop/DESIGN.md">查看完整规范 →</a>
+                </div>
+            </article>
+</div>
+
+<section class="usage">
+    <h2>📖 怎么用</h2>
+    <ol>
+        <li>找到你要做海报/封面/插图的课程，比如 <strong>AI Engineer Bootcamp</strong></li>
+        <li>点击卡片上的 <code>📋 复制 AI 出图 Prompt</code> 按钮（已自动复制到剪贴板）</li>
+        <li>打开 Claude / ChatGPT / Midjourney / 你常用的 AI 工具，粘贴 prompt</li>
+        <li>在 prompt 后面补充你的具体需求，例如「再加一句标题：『12 周从 0 到 AI 工程师』，画幅 3:4 小红书」</li>
+        <li>AI 会按指定的主题色 + Neo-Brutalism 风格出图，海报放一起品牌识别一致</li>
+    </ol>
+    <p style="margin-top: 14px; font-size: 14px; color: #555;">⚠️ 如果你的输出和品牌色不一致，多半是 AI 没严格遵守 hex 值——把 prompt 里 <code>主色：#XXXXXX</code> 那一行单独再说一次"严格使用 #XXXXXX，不要换其他颜色"通常就能纠正。</p>
+</section>
+
+</div>
+
+<div class="toast" id="toast">✅ 已复制 Prompt — 现在粘贴给 AI 即可</div>
+
+<script>
+const PROMPTS = {
+  "ai-essentials-bootcamp": "设计任务：为「AI 必修课 (AI Essentials Bootcamp)」做配图 / 海报 / banner / 封面图。\n课程定位：4 周·零基础·各行各业 AI 入门实战（入门 / 大众线）\n\n═══ 主题色（必须严格执行）═══\n主色：#FFDE59（JR 黄）\n主色上的文字色：#000000\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- 强调/CTA：#000000（黑作为反差色）\n- 数据/数字：#10162F（JR 深色）\n- 成功状态：#7ED957（JR 绿）\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Adoption Bootcamp：#FF914D（下一阶进阶——黄→橙过渡）\n- AI Programming：#FF7B5A（同属入门带，珊瑚比黄更技术感）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-adoption-bootcamp": "设计任务：为「AI Adoption Specialist Bootcamp」做配图 / 海报 / banner / 封面图。\n课程定位：8 周·企业 AI 落地·从工具到组织级采纳（入门 / 大众线）\n\n═══ 主题色（必须严格执行）═══\n主色：#FF914D（JR 橙）\n主色上的文字色：#000000\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- 强调/CTA：#10162F（深夜蓝沉稳压色）\n- 数据/数字：#000000\n- 成功状态：#7ED957（JR 绿）\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Essentials Bootcamp：#FFDE59（前置入门课，黄色）\n- AI Programming：#FF7B5A（同入门带的偏红版本）\n- AI Solo Founder：#D7263D（更深的红，避免混淆）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-programming": "设计任务：为「人人都能学的 AI Coding 实战课」做配图 / 海报 / banner / 封面图。\n课程定位：零基础·Cursor + AI·从想法到产品上线（入门 / 大众线）\n\n═══ 主题色（必须严格执行）═══\n主色：#FF7B5A（暖珊瑚）\n主色上的文字色：#000000\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- 强调/CTA：#10162F\n- 代码块底色：#1a1a2e（深色背景）\n- 成功状态：#7ED957\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Adoption Bootcamp：#FF914D（纯橙，更职场）\n- AI Engineer Bootcamp：#FF5757（JR 红旗舰，更硬核）\n- AI Builder：#6366F1（进阶开发者，靛蓝）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-engineer-bootcamp": "设计任务：为「AI Engineer Bootcamp」做配图 / 海报 / banner / 封面图。\n课程定位：12 周技术 + 12 周 P3 职业孵化·旗舰课（工程 / 技术线（旗舰））\n\n═══ 主题色（必须严格执行）═══\n主色：#FF5757（JR 红（品牌主色））\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- 深色 slide 底：#10162F（JR 深色）\n- 数据高亮：#FFDE59（黄色）\n- 代码 token：#38B6FF（蓝色）\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Engineer 入门 (RAG)：#38B6FF（旗舰的轻量版，蓝色降权）\n- AI Builder：#6366F1（进阶 Vibe Coding，靛蓝）\n- AI Programming：#FF7B5A（入门级编程课，珊瑚色）\n- AI Solo Founder：#D7263D（朱砂红，避免与品牌红混淆）\n- OpenClaw Bootcamp：#E84142（OpenClaw 红，靠 logo 区分）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-engineer-rag": "设计任务：为「AI Engineer 入门」做配图 / 海报 / banner / 封面图。\n课程定位：37 节视频 + 25 个 Lab + 5 节 AI Tutor·从会用到能构建（工程 / 技术线）\n\n═══ 主题色（必须严格执行）═══\n主色：#38B6FF（天蓝）\n主色上的文字色：#000000\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- 代码高亮：#10162F\n- 成功状态：#7ED957\n- 警告/注意：#FF914D\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Engineer Bootcamp：#FF5757（旗舰直播版）\n- AI Builder：#6366F1（进阶 Vibe Coding，靛蓝偏紫）\n- Business Analyst：#4ECDC4（薄荷绿，BA）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-builder": "设计任务：为「Vibe Coding 提升班」做配图 / 海报 / banner / 封面图。\n课程定位：Claude Code + Cursor + Codex·全栈 + Skills/MCP/Agent（工程 / 技术线）\n\n═══ 主题色（必须严格执行）═══\n主色：#6366F1（靛蓝）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- 代码块：#10162F\n- Skill / MCP 标签：#CB6CE6（紫色 tag）\n- 成功状态：#10B981（Teal）\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Engineer 入门 (RAG)：#38B6FF（更浅的蓝，自学版）\n- AI Engineer Bootcamp：#FF5757（旗舰红）\n- Full-stack Bootcamp：#10162F（深夜蓝，更深）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "web-code-bootcamp-or-learn-to-code-1": "设计任务：为「AI Engineer 全栈项目班」做配图 / 海报 / banner / 封面图。\n课程定位：全栈 + DevOps·从计划到发布五阶段（工程 / 技术线）\n\n═══ 主题色（必须严格执行）═══\n主色：#10162F（深夜蓝（JR 深色））\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA / 强调：#FF5757（JR 红做强反差）\n- 数据：#FFDE59（黄色）\n- 代码 token：#38B6FF（蓝色）\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Builder：#6366F1（靛蓝，比深夜蓝亮）\n- TechScrum DevOps：#10B981（Teal，DevOps 同主题不同色相）\n- Full-stack Developer Interview：#475569（钢蓝灰，面试专攻）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "techscrum-devops": "设计任务：为「TechScrum DevOps 项目实训营」做配图 / 海报 / banner / 封面图。\n课程定位：7 周·真实 TechScrum Web 项目·初级 DevOps 进阶（工程 / 技术线）\n\n═══ 主题色（必须严格执行）═══\n主色：#10B981（青 Teal）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CI/CD pipeline：#10162F\n- alert / 失败：#FF5757\n- 数据：#FFDE59\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- Full-stack Bootcamp：#10162F（全栈深度，深夜蓝）\n- IT Career Coaching：#7ED957（JR 绿，职业全周期）\n- AI Builder：#6366F1（靛蓝）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "full-stack-developer-interview": "设计任务：为「手撕全栈面试题班」做配图 / 海报 / banner / 封面图。\n课程定位：Full-stack Developer Interview·硬核刷题（工程 / 技术线）\n\n═══ 主题色（必须严格执行）═══\n主色：#475569（钢蓝灰）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- 正确答案：#10B981\n- 错误标记：#FF5757\n- 代码：#FFDE59\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Engineer Bootcamp：#FF5757（旗舰红）\n- Full-stack Bootcamp：#10162F（全栈项目班，深夜蓝）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "it-career-support": "设计任务：为「IT Career Coaching Bootcamp」做配图 / 海报 / banner / 封面图。\n课程定位：479 节·澳洲 IT 职业全周期·找工/面试/谈薪/晋升（职业 / 职场线）\n\n═══ 主题色（必须严格执行）═══\n主色：#7ED957（JR 绿）\n主色上的文字色：#000000\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA / 行动：#FF5757（JR 红）\n- 数据/薪资：#10162F（深夜蓝）\n- 徽章/认证：#FFDE59（黄色）\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- Business Analyst：#4ECDC4（BA，薄荷绿（绿+蓝过渡））\n- TechScrum DevOps：#10B981（Teal，DevOps 同色相但更冷）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "business-analyst": "设计任务：为「AI 产品经理 (BA) 训练营 + 实习」做配图 / 海报 / banner / 封面图。\n课程定位：Business Analyst·本地工作经验·实习直通（职业 / 职场线）\n\n═══ 主题色（必须严格执行）═══\n主色：#4ECDC4（薄荷绿）\n主色上的文字色：#10162F\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#FF5757\n- 数据/图表：#10162F\n- 文档/wireframe：#FFDE59\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- IT Career Coaching：#7ED957（更暖的绿）\n- AI Engineer Bootcamp：#FF5757（工程线旗舰，红色）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-marketing": "设计任务：为「AI 营销全链路实战 4 周」做配图 / 海报 / banner / 封面图。\n课程定位：内容生产 / 投放 GEO / 私域 agent / 数据复盘（营销 / 创作线）\n\n═══ 主题色（必须严格执行）═══\n主色：#E63977（玫红）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA / 转化按钮：#FFDE59（黄色撞色）\n- 数据/ROI：#10162F\n- 私域/agent 标签：#CB6CE6（紫色）\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Image Text Workshop：#FF2E4D（小红书粉，平台原生色）\n- Omnichannel Marketing：#FF6B9D（桃粉，更柔）\n- AI Engineer Bootcamp：#FF5757（旗舰 JR 红）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-image-text-workshop": "设计任务：为「AI 小红书图文 Workshop」做配图 / 海报 / banner / 封面图。\n课程定位：2.5 小时·零基础·跑通定位→选题→制作→发布（营销 / 创作线）\n\n═══ 主题色（必须严格执行）═══\n主色：#FF2E4D（小红书粉）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#FFDE59\n- 文案 highlight：#FFFFFF\n- 数据：#10162F\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Marketing：#E63977（玫红，更深）\n- Omnichannel Marketing：#FF6B9D（桃粉，全渠道）\n- AI Comic Workshop：#CB6CE6（紫，创意/漫画）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "omnichannel-marketing-workshop": "设计任务：为「全渠道营销 Workshop」做配图 / 海报 / banner / 封面图。\n课程定位：Omnichannel Marketing·多平台投放整合（营销 / 创作线）\n\n═══ 主题色（必须严格执行）═══\n主色：#FF6B9D（桃粉）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#FFDE59\n- 数据：#10162F\n- 渠道标签：#CB6CE6\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Marketing：#E63977（4 周深度版）\n- AI Image Text Workshop：#FF2E4D（小红书原生色）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-comic-workshop": "设计任务：为「AI 漫画 Workshop」做配图 / 海报 / banner / 封面图。\n课程定位：AI Comic·创意创作·人人能画（营销 / 创作线）\n\n═══ 主题色（必须严格执行）═══\n主色：#CB6CE6（JR 紫）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#FFDE59\n- 分镜框：#000000（黑色边框）\n- 对话气泡：#FFFFFF\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Image Text Workshop：#FF2E4D（图文小红书）\n- AI Marketing：#E63977（营销长课）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-solo-founder-bootcamp": "设计任务：为「AI 一人创业营」做配图 / 海报 / banner / 封面图。\n课程定位：AI Solo Founder·一人公司·从 0 到上线（营销 / 创作线）\n\n═══ 主题色（必须严格执行）═══\n主色：#D7263D（朱砂红）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#FFDE59（黄色破局感）\n- 数据/营收：#10162F\n- MVP 标签：#10B981（Teal）\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Engineer Bootcamp：#FF5757（旗舰红，要拉开）\n- AI Programming：#FF7B5A（更浅的珊瑚）\n- AI Marketing：#E63977（玫红）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-accounting-pro": "设计任务：为「AI 会计 Pro（6 周深度）」做配图 / 海报 / banner / 封面图。\n课程定位：Corporate / 事务所·month-end close·13-week 现金流（垂直行业线（会计/财务））\n\n═══ 主题色（必须严格执行）═══\n主色：#3D8B6B（苔绿）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#FFDE59\n- 数据/金额：#10162F\n- 警告/差异：#FF5757\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Accounting Workshop：#7FB69E（4 小时引流，浅一档）\n- IT Career Coaching：#7ED957（JR 绿）\n- TechScrum DevOps：#10B981（Teal）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-accounting-workshop": "设计任务：为「AI 会计 Workshop（4 小时）」做配图 / 海报 / banner / 封面图。\n课程定位：会计协会 co-host·脱敏数据跑月报（垂直行业线（会计/财务））\n\n═══ 主题色（必须严格执行）═══\n主色：#7FB69E（浅苔绿）\n主色上的文字色：#10162F\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#FF914D（橙色突出）\n- 数据：#10162F\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Accounting Pro：#3D8B6B（6 周进阶版，深一档）\n- Claude Cowork SME：#C96442（中小企业主同观众但配色不同）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "ai-copilot": "设计任务：为「AI 数据分析 & Copilot 自动化实战」做配图 / 海报 / banner / 封面图。\n课程定位：Excel + Copilot·数据分析·自动化（垂直行业线（数据/办公））\n\n═══ 主题色（必须严格执行）═══\n主色：#F59E0B（金黄/琥珀）\n主色上的文字色：#10162F\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#10162F\n- 数据/图表：#FF5757\n- Copilot 标签：#0078D4（Microsoft 蓝（如出现））\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- AI Essentials Bootcamp：#FFDE59（JR 黄，更亮）\n- AI Accounting Pro：#3D8B6B（财务深绿）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "claude-cowork-workshop": "设计任务：为「Claude Cowork Workshop（3 小时通用）」做配图 / 海报 / banner / 封面图。\n课程定位：Anthropic Claude Cowork·桌面 App·非技术岗（合作品牌线（Anthropic））\n\n═══ 主题色（必须严格执行）═══\n主色：#D97757（Anthropic 珊瑚）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- Anthropic black：#000000\n- Connector 标签：#FFDE59\n- CTA：#10162F\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- Claude Cowork SME Workshop：#C96442（中小企业主版，深一档）\n- OpenClaw Bootcamp：#E84142（OpenClaw 红，另一个联名品牌）\n- AI Programming：#FF7B5A（暖珊瑚，入门编程）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "claude-cowork-sme-workshop": "设计任务：为「Claude Cowork SME Workshop（4 小时·中小企业主）」做配图 / 海报 / banner / 封面图。\n课程定位：一人公司 / 1-3 人小团队·餐饮零售设计咨询（合作品牌线（Anthropic））\n\n═══ 主题色（必须严格执行）═══\n主色：#C96442（Anthropic 棕橙）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- Anthropic black：#000000\n- 数据/ROI：#FFDE59\n- CTA：#10162F\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- Claude Cowork Workshop：#D97757（通用 3h 版）\n- AI Solo Founder：#D7263D（创业营，朱砂红）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "openclaw-bootcamp": "设计任务：为「OpenClaw 4 周个人 AI 助手 Bootcamp」做配图 / 海报 / banner / 封面图。\n课程定位：OpenClaw·个人定制·从工具到日常（合作品牌线（OpenClaw））\n\n═══ 主题色（必须严格执行）═══\n主色：#E84142（OpenClaw 红）\n主色上的文字色：#FFFFFF\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#FFDE59（JR 黄反差）\n- Plugin / Skill 标签：#CB6CE6（紫色）\n- 数据：#10162F\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- OpenClaw Workshop：#F87171（4 小时入门版，浅一档同色系）\n- AI Engineer Bootcamp：#FF5757（JR 旗舰红，靠 logo 区分）\n- AI Solo Founder：#D7263D（朱砂红，创业课）\n- Claude Cowork Workshop：#D97757（Anthropic 珊瑚联名）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n",
+  "openclaw-workshop": "设计任务：为「OpenClaw 4 小时沉浸式工作坊」做配图 / 海报 / banner / 封面图。\n课程定位：OpenClaw·入门·4 小时跑通（合作品牌线（OpenClaw））\n\n═══ 主题色（必须严格执行）═══\n主色：#F87171（OpenClaw 浅红）\n主色上的文字色：#10162F\n主色应占画面 ≥ 30%，用作大色块、标题底色或主背景\n\n═══ 视觉风格 ═══\nNeo-Brutalism 极简扁平：\n- 所有元素 3px 纯黑（#000）边框\n- 卡片 / 按钮 / 标签带 6px×6px 黑色硬阴影（box-shadow: 6px 6px 0 #000）\n- 不要渐变、不要发光、不要拟物质感、不要 3D\n- 转折硬朗、留白干脆、对比强烈\n\n═══ 配色规则（搭配主色用）═══\nJR 品牌四色（永远可用）：黑 #000000 / 白 #FFFFFF / 暖背景 #fff1e7 / 深色 #10162F\n\n辅助色（只在指定场景用）：\n- CTA：#FFDE59\n- Plugin 标签：#CB6CE6\n- 数据：#10162F\n\n═══ 严格避开的色 ═══\n下列是其他课程的主色，海报放在一起会混淆品牌识别，本课禁止大面积使用：\n- OpenClaw Bootcamp：#E84142（4 周进阶版，深一档）\n- AI Programming：#FF7B5A（暖珊瑚，入门编程）\n- Claude Cowork Workshop：#D97757（Anthropic 联名）\n\n═══ 字体 ═══\n- 标题：粗体无衬线（Bricolage Grotesque / 思源黑体 Heavy）\n- 中文正文：思源黑体 / 苹方\n- 数字 / 数据：Space Mono / DM Sans\n- 标题字号至少是正文的 3 倍\n\n═══ 输出 ═══\n- 如果是 Midjourney / DALL-E / Imagen / Nano Banana：直接出 PNG，画幅 3:4（小红书）或 9:16（视频号/抖音）\n- 如果是 Claude / GPT 写 HTML：用 inline style，符合上述 Neo-Brutalism 规范，可直接 puppeteer 渲染\n- 如果是 SVG：扁平矢量，路径全部带 stroke=\"#000\" stroke-width=\"3\"\n"
+};
+
+document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const slug = btn.dataset.slug;
+        const text = PROMPTS[slug];
+        try {
+            await navigator.clipboard.writeText(text);
+            btn.classList.add('copied');
+            btn.textContent = '✅ 已复制！';
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+                btn.classList.remove('copied');
+                btn.textContent = '📋 复制 AI 出图 Prompt';
+            }, 2000);
+        } catch (e) {
+            alert('复制失败，请手动复制：\n\n' + text);
+        }
+    });
+});
+</script>
+</body>
+</html>

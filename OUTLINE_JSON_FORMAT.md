@@ -8,6 +8,7 @@
 
 ```json
 {
+  "themeColor": "#FFDE59",
   "slug": "ai-essentials-bootcamp",
   "name": "AI 必修课",
   "name_en": "AI Essentials Bootcamp",
@@ -102,6 +103,7 @@
 | 字段 | 类型 | 必填 | 说明 |
 |------|------|:---:|------|
 | `slug` | string | ✅ | URL 标识符，如 `ai-essentials-bootcamp` |
+| `themeColor` | string | | 课程主题色（hex，如 `#FF5757`）。供 xhs-poster / mp-article / bootcamp-video / posters.html 等海报与封面 skill 统一读取，保证多课程视觉区分。每门课的色值与选色理由见该课目录下的 `DESIGN.md` |
 | `name` | string | ✅ | 中文课程名 |
 | `name_en` | string | | 英文课程名 |
 | `description` | string | ✅ | 课程简介 |
