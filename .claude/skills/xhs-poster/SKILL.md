@@ -79,7 +79,7 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 
 ### 色板（CSS 变量，必须用这套）
 ```css
---brand-red: #ff5757;    /* 主强调色，hook 标题 em / 下载按钮 */
+--brand-red: #ff5757;    /* 主强调色，hook 标题 em / 下载按钮 — 注意：可被 themeColor 覆盖 */
 --brand-dark: #10162f;   /* 文字主色 + 边框 + 深底 */
 --brand-yellow: #ffce44; /* 标题下划线高亮、次强调 */
 --brand-blue: #3b82f6;   /* 辅助信息、链接感 */
@@ -90,6 +90,56 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 --text-gray: #64748b;
 --border-color: #e2e8f0;
 ```
+
+### 🎨 Per-Course Theme Color Override（必读·2026-05 新规则）
+
+**每门课有自己的主题色**，不要所有课都用 `--brand-red: #ff5757`（这是 AI Engineer Bootcamp 旗舰课的色）。否则所有课的小红书海报都长一样，品牌识别归零。
+
+#### 生成本课 xhs-posters 时的标准流程
+
+1. **第一步**：读 `curriculum/{bootcamp}/public/outline.json` 顶层的 `themeColor` 字段（hex，例如 `"#FFDE59"`）
+2. 读 `curriculum/{bootcamp}/DESIGN.md` 拿到完整规范：主色名、主色上文字色（`text_on_primary`）、辅助色、严格避开的色（siblings）
+3. **生成 CSS 时**：用 `themeColor` **替换 `--brand-red`** 的值（其他 4 个 brand 色不动）；并新增一个 `--theme-on-primary: <text_on_primary>;` 变量
+4. **应用范围**（凡是原来用 `var(--brand-red)` 的位置都用 themeColor）：
+   - 封面 hook `<em>` 高亮底色
+   - 下载按钮 `.dl-btn` 背景
+   - h2 标题的黄色 `::after` 下划线（如果 themeColor 本身是黄，改用 `--brand-dark` 或主色对比色）
+   - CTA 大字 `.giant`
+   - 数字/KPI 高亮色
+   - 角标 `.corner-mark` 背景
+5. **主色上的文字**：所有压在 themeColor 背景上的文字一律用 `var(--theme-on-primary)`（不是写死 `#fff` 也不是 `#10162f`，让 DESIGN.md 决定）
+6. **严格避开的色**：从 `DESIGN.md` 的 "siblings" 表读出相邻课程的主色，本课海报里**不要大面积使用**（小面积装饰可以，但不能做主背景或标题底色）
+
+#### 示例
+
+```css
+/* AI Essentials Bootcamp (themeColor=#FFDE59) */
+:root {
+  --theme-primary: #FFDE59;
+  --theme-on-primary: #000000;
+  --brand-red: var(--theme-primary);  /* 主色统一通道 */
+}
+
+/* AI Engineer Bootcamp (themeColor=#FF5757) — 旗舰课，恰好就是 brand-red */
+:root {
+  --theme-primary: #FF5757;
+  --theme-on-primary: #FFFFFF;
+  --brand-red: var(--theme-primary);
+}
+
+/* 应用 */
+.p1 .hook em { background: var(--theme-primary); color: var(--theme-on-primary); }
+.dl-btn      { background: var(--theme-primary); color: var(--theme-on-primary); }
+```
+
+#### 兜底
+
+- 没找到 outline.json themeColor 字段 → 默认 `#ff5757`（保持旧行为，向后兼容）
+- 找不到 DESIGN.md → 仍然按 themeColor 替换 brand-red，但 `text_on_primary` 用启发式：浅色 themeColor (luminance > 0.6) → `#000000`，深色 → `#FFFFFF`
+
+#### 为什么不直接改 brand 色板
+
+`--brand-yellow` / `--brand-blue` / `--brand-green` / `--brand-dark` 是 JR 品牌的"标识系统色"，跨课程一致（信号灯语义）；`--brand-red` 是"主强调色"槽位，每门课可以替换成自己的主题色。这样既保留 JR 品牌识别（深色文字 / 黄高亮 / 绿成功），又能区分课程。
 
 ### Neo-Brutalism 要点（照抄 quest-posters）
 - 边框 `2px solid var(--brand-dark)`（内框 `.p-inner` 上）

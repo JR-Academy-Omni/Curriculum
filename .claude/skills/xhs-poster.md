@@ -18,6 +18,7 @@
 
 - 尺寸: 1242×1660 竖版（锁死）
 - 设计: Neo-Brutalism + 品牌四色
+- **主题色**: 从 `{bootcamp}/public/outline.json` 的 `themeColor` 字段读取，替换 `--brand-red`；详见 `{bootcamp}/DESIGN.md` 和长版 SKILL.md "Per-Course Theme Color Override" 一节
 - 导出: html2canvas @2x PNG
 - 合规: 无二维码 / 无绝对化用语
 - 数量: 不限，从 curriculum.html 尽可能多挖素材
