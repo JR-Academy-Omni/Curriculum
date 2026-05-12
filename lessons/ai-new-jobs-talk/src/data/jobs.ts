@@ -90,6 +90,29 @@ export const TECH_DEEP: DeepJob[] = [
 				insight: '2025 1-10 月 AI 岗 +543% · 9 月单月 +11 倍 · 杭州六小龙崛起',
 			},
 		},
+		whoFits: [
+			{ trait: '扎实软件工程师', detail: '有 2+ 年 production 工程经验，会写干净代码、debug、做系统设计，是最大优势' },
+			{ trait: 'Python 熟练者', detail: '日常用 Python 写脚本/服务，能快速上手 PyTorch、Hugging Face、FastAPI 工具链' },
+			{ trait: '产品/业务感强', detail: '愿意贴近真实用户问题，能把模糊需求拆成可评估的 LLM 任务' },
+			{ trait: '动手做完整项目', detail: '喜欢从 idea 到上线全流程通跑，3-5 个 end-to-end RAG/Agent 项目胜过任何证书' },
+		],
+		howToBecome: [
+			{ step: '打基础 (1-2 个月)', detail: '啃完 Python + Pandas，跑通 OpenAI/Anthropic API，做一个能问答的 RAG demo' },
+			{ step: '做评估与上线 (2 个月)', detail: '学 LangSmith / Evals，给自己的 RAG 加 faithfulness/recall@k 指标并部署到云端' },
+			{ step: '啃 Agent 与生产化 (2 个月)', detail: '用 function calling 做多步骤 Agent，加 vector DB、监控、cost 控制和回滚' },
+			{ step: '输出与求职 (1-2 个月)', detail: 'GitHub 放 3 个 end-to-end 项目，写技术博客复盘，投 AI-first 公司岗位' },
+		],
+		transitionExample: {
+			who: 'Shawn Wang (swyx) · 前 AWS / Netlify / Temporal DevRel',
+			story: '做了多年量化和开发者关系，2023 年发文 The Rise of the AI Engineer 提出这个岗位，现创办 Latent Space 与 AI Engineer 大会',
+		},
+		recommendedResources: [
+			{ name: 'The Rise of the AI Engineer', type: 'article', url: 'https://www.latent.space/p/ai-engineer' },
+			{ name: 'What We Learned from a Year of Building with LLMs', type: 'article', url: 'https://www.oreilly.com/radar/what-we-learned-from-a-year-of-building-with-llms-part-i/' },
+			{ name: 'Hugging Face Transformers', type: 'repo', url: 'https://github.com/huggingface/transformers' },
+			{ name: 'OpenAI Cookbook', type: 'repo', url: 'https://github.com/openai/openai-cookbook' },
+			{ name: 'Cursor', type: 'tool', url: 'https://cursor.com' },
+		],
 	},
 	{
 		id: 'forward-deployment-engineer',
@@ -130,6 +153,29 @@ export const TECH_DEEP: DeepJob[] = [
 				insight: 'Palantir 式 FDE 命名在中国不流行 · 多挂"解决方案架构师 / 客户成功 / 交付架构师"',
 			},
 		},
+		whoFits: [
+			{ trait: '全栈工程底子', detail: '能独立从前端 React 到后端 API 到云部署一条龙交付原型' },
+			{ trait: '客户现场不晕场', detail: '接受 25-40% 出差，在客户会议室边听需求边敲代码改方案' },
+			{ trait: 'LLM 落地经验', detail: '做过 RAG、Agent、Prompt 工程，不只调过 ChatGPT 网页版' },
+			{ trait: '业务嗅觉强', detail: '能把 CFO 说的"降本"翻成数据管道，把工程师说的"token 限制"翻给老板' },
+		],
+		howToBecome: [
+			{ step: '打基础 (3-6 个月)', detail: 'Python + TypeScript + 一朵云（AWS 优先），跑通 REST/GraphQL 与认证' },
+			{ step: '做 LLM 项目 (3 个月)', detail: 'GitHub 上交付 2-3 个端到端 RAG/Agent 应用，部署上线带 README' },
+			{ step: '接咨询单 (3-6 个月)', detail: '在 Upwork 或本地中小企业承接 AI POC，练客户沟通与需求拆解' },
+			{ step: '投 FDE 岗 (持续)', detail: '投 OpenAI/Anthropic/Palantir/Scale，简历突出"客户交付 + 上线案例"而非论文' },
+		],
+		transitionExample: {
+			who: 'Nabeel S. Qureshi · Palantir 前 Forward Deployed Engineer',
+			story: '在 Palantir 做 FDE 近 8 年，做过 COVID 响应、AI 药物发现、Airbus 制造优化，现为创业者与 Mercatus Center AI 政策访问学者',
+		},
+		recommendedResources: [
+			{ name: 'OpenAI Careers · FDE NYC', type: 'article', url: 'https://openai.com/careers/forward-deployed-engineer-(fde)-nyc-new-york-city/' },
+			{ name: 'Anthropic · Forward Deployed Engineer', type: 'article', url: 'https://job-boards.greenhouse.io/anthropic/jobs/4985877008' },
+			{ name: 'Nabeel · Reflections on Palantir', type: 'article', url: 'https://nabeelqu.substack.com/p/reflections-on-palantir' },
+			{ name: 'AI Engineering Field Guide', type: 'repo', url: 'https://github.com/alexeygrigorev/ai-engineering-field-guide' },
+			{ name: 'Bloomberry · Analyzed 1000 FDE jobs', type: 'article', url: 'https://bloomberry.com/blog/i-analyzed-1000-forward-deployed-engineer-jobs-what-i-learned/' },
+		],
 	},
 	{
 		id: 'ai-agent-developer',
@@ -172,6 +218,29 @@ export const TECH_DEEP: DeepJob[] = [
 				insight: 'DeepSeek 2026/03 一次放 17 个 Agent 岗（"重度 Vibe Coding 优先"）',
 			},
 		},
+		whoFits: [
+			{ trait: '后端/全栈背景', detail: '懂 API、数据库、系统集成的开发者最容易切入，工程能力比算法更稀缺' },
+			{ trait: '工作流拆解能力', detail: '能把复杂任务拆成可调用的工具和步骤，比写 Prompt 更核心的能力' },
+			{ trait: '对 LLM 边界敏感', detail: '知道模型会幻觉、会失败，愿意写评测和日志而不是盲目信任输出' },
+			{ trait: '产品思维', detail: '愿意贴近真实业务场景做 Agent，而不只是跑 demo 和发 Twitter 截图' },
+		],
+		howToBecome: [
+			{ step: '打基础 (2-4 周)', detail: '吃透 Tool Use、Function Calling、ReAct 模式；跑通 LangChain 官方 Quickstart' },
+			{ step: '学框架 (4-6 周)', detail: '深入 LangGraph 做状态机编排，CrewAI 做多 Agent 协作，Claude Agent SDK 做生产级' },
+			{ step: '做项目 (6-8 周)', detail: '做 2-3 个真实 Agent：研究助手、客服自动化、代码 Reviewer，部署上线带 Trace' },
+			{ step: '进入市场 (持续)', detail: '开源到 GitHub、写 Blog 拆解架构、投递 OpenAI/Microsoft/Grab 等 Agent 团队岗位' },
+		],
+		transitionExample: {
+			who: 'Harrison Chase · 原 Robust Intelligence ML 团队负责人',
+			story: 'Kensho 做实体链接、Robust Intelligence 带 ML 测试团队，2022 年 11 月业余创建 LangChain，半年后成为 Agent 框架事实标准',
+		},
+		recommendedResources: [
+			{ name: 'Building agents with Claude Agent SDK', type: 'article', url: 'https://www.anthropic.com/engineering/building-agents-with-the-claude-agent-sdk' },
+			{ name: 'Anthropic Claude Cookbooks · Agent SDK', type: 'repo', url: 'https://github.com/anthropics/claude-cookbooks/tree/main/claude_agent_sdk' },
+			{ name: 'AI Agents in LangGraph (Harrison Chase)', type: 'course', url: 'https://learn.deeplearning.ai/courses/ai-agents-in-langgraph/information' },
+			{ name: 'LangChain 官方文档', type: 'tool', url: 'https://python.langchain.com/docs/introduction/' },
+			{ name: 'CrewAI 多 Agent 协作框架', type: 'repo', url: 'https://github.com/crewAIInc/crewAI' },
+		],
 	},
 	{
 		id: 'ai-adoption-specialist',
@@ -212,6 +281,26 @@ export const TECH_DEEP: DeepJob[] = [
 				insight: 'AI 技能培训岗 +112.4% · 字节单季度 2 亿+ 投 AI 培训 · 非技术 AI 岗占比 12.25%→17.36%',
 			},
 		},
+		whoFits: [
+			{ trait: 'HR / L&D 出身', detail: '做过培训设计、员工赋能、绩效改进，懂成人学习与组织行为，自带变革落地经验' },
+			{ trait: '咨询 / PM 背景', detail: '管过跨部门项目、做过流程梳理、能写干系人沟通方案，能把 AI 试点推到全员落地' },
+			{ trait: '心理学 / 组织行为', detail: '懂抗拒情绪、能做共情访谈、识别中层阻力，比纯工程师更能化解员工对 AI 的恐惧' },
+			{ trait: '业务运营老兵', detail: '在某个垂直岗位深耕 5 年以上，懂真实工作流痛点，AI 工具选型时能说人话给老板' },
+		],
+		howToBecome: [
+			{ step: '工具栈 (4 周)', detail: '把 ChatGPT、Copilot、Claude、Gemini、NotebookLM 用熟，能给非技术同事做 30 分钟演示' },
+			{ step: '变革方法论 (6 周)', detail: '学 Prosci ADKAR 或 ATD AI in L&D 证书，掌握抗拒诊断与采纳度量化指标' },
+			{ step: '内部试点 (8 周)', detail: '挑一个 10 人小团队跑 AI 工具试点，量化时间节省并写成案例文档' },
+			{ step: '求职打包 (4 周)', detail: '把试点案例做成 portfolio，简历改成 Change/Enablement 关键词，投 Big 4 与企业内训岗' },
+		],
+		transitionExample: null,
+		recommendedResources: [
+			{ name: 'Prosci Change Management Certification', type: 'course', url: 'https://www.prosci.com/solutions/training-programs/change-management-certification-program' },
+			{ name: 'ATD Applying AI in L&D Certificate', type: 'course', url: 'https://www.td.org/education-courses/applying-ai-in-learning-and-development-certificate' },
+			{ name: "Rewired (McKinsey)", type: 'book', url: 'https://www.mckinsey.com/featured-insights/mckinsey-on-books/rewired' },
+			{ name: 'ServiceNow · Change Adoption Specialist', type: 'article', url: 'https://www.servicenow.com/blogs/2024/become-change-adoption-specialist' },
+			{ name: 'Prosci AI Change Management Hub', type: 'article', url: 'https://www.prosci.com/ai-change-management' },
+		],
 	},
 ];
 
@@ -268,6 +357,29 @@ export const GOV_DEEP: DeepJob[] = [
 				insight: '中国 CAIO 常与"首席科学家/首席数智官/大模型负责人"混用 · 多内部任命非外招',
 			},
 		},
+		whoFits: [
+			{ trait: '已是 VP/总监级', detail: '10-15 年管理经验，带过跨部门团队，对预算和组织变革有实操' },
+			{ trait: '数据科学背景', detail: 'ML/数据团队负责人占 CAIO 池 50%，最自然的入口' },
+			{ trait: '咨询合伙人', detail: 'Big 4 / MBB 出身占 21%，擅长把 AI 战略对齐业务' },
+			{ trait: '懂治理与合规', detail: '能向董事会讲 AI 风险、伦理、监管，不只是技术 demo' },
+		],
+		howToBecome: [
+			{ step: '立 AI 战略案例 (6-12 月)', detail: '在现岗交付一个有 P&L 影响的 AI 项目，量化 ROI 给 CEO 看' },
+			{ step: '补高管教育 (3-6 月)', detail: 'MIT/Wharton/Chicago Booth 的 CAIO Program，进高管圈' },
+			{ step: '跨职能轮岗 (12 月)', detail: '主动接 governance / 风控 / HR 变革议题，脱离纯技术身份' },
+			{ step: '对外发声 + 猎头 (持续)', detail: 'LinkedIn 写 AI 战略观点、上行业峰会，让 Egon Zehnder 等高管猎头能找到你' },
+		],
+		transitionExample: {
+			who: 'Martin Stumpe · Danaher CAIO（前 Tempus AI Lead）',
+			story: '2025-06-27 Danaher 官方公告任命其为 Chief Technology and AI Officer，2024 年先以 Chief Data and AI Officer 加入',
+		},
+		recommendedResources: [
+			{ name: 'MIT Sloan AI Executive Academy', type: 'course', url: 'https://executive.mit.edu/course/ai-executive-academy/a05U1000002o7uoIAA.html' },
+			{ name: 'Chicago Booth CAIO Program', type: 'course', url: 'https://www.chicagobooth.edu/executiveeducation/programs/executive-management/cxo-programs/caio-program' },
+			{ name: 'IBM IBV · CEOs Reshaping C-suite for AI', type: 'article', url: 'https://newsroom.ibm.com/2026-05-04-ibm-study-ceos-are-reshaping-c-suite-roles-for-the-ai-era' },
+			{ name: 'HBR · Why You Need a Chief Data/Analytics/AI Officer', type: 'article', url: 'https://hbr.org/2025/12/why-your-company-needs-a-chief-data-analytics-and-ai-officer' },
+			{ name: 'CMU Heinz Chief Data and AI Officer Certificate', type: 'course', url: 'https://www.heinz.cmu.edu/programs/executive-education/chief-data-ai-officer-certificate' },
+		],
 	},
 	{
 		id: 'ai-product-manager',
@@ -308,6 +420,29 @@ export const GOV_DEEP: DeepJob[] = [
 				insight: '脉脉 AI PM 岗位量 +369.36% 居所有岗位首位 · 阿里 2026 秋招 7000 offer AI 占比 60%+',
 			},
 		},
+		whoFits: [
+			{ trait: '现任 PM / BA', detail: '已有产品/需求经验，想用 AI 把现有产品升级而不是从零转行' },
+			{ trait: '技术好奇心强', detail: '愿意亲手跑 ChatGPT API、写 prompt、读 model eval，不只把 AI 当 buzzword' },
+			{ trait: '懂业务翻译', detail: '能把模糊的用户痛点翻成可衡量指标，再翻成工程师能落地的需求' },
+			{ trait: '接受不确定性', detail: 'AI 输出有概率性，做得了 A/B 实验、能接受模型 70% 准确率上线迭代' },
+		],
+		howToBecome: [
+			{ step: '打底 AI 认知 (4 周)', detail: '读 OpenAI / Anthropic 官方文档，跑通 ChatGPT、Claude API，理解 token、context、eval' },
+			{ step: '做 AI Side Project (6 周)', detail: '用 Cursor / v0 自己 vibe coding 一个 AI 小工具上线，写复盘文章' },
+			{ step: '内部转岗或加 AI Feature (3 个月)', detail: '在现公司主动接 AI 相关 feature，积累 launch + metric 案例做 portfolio' },
+			{ step: '对外面试 AI PM 岗 (2 个月)', detail: '针对 AI 产品 sense、eval 系统、prototype 三类题准备，投 OpenAI / Anthropic / AI 创业公司' },
+		],
+		transitionExample: {
+			who: 'Marily Nika · 原 Google Assistant / Meta Labs AI PM（ML 博士转 PM）',
+			story: 'Imperial College ML 博士毕业，Google 8 年 AI PM + Meta Labs AI Product Lead，后创办 AI Product Academy 培训 2 万+ PM 转型',
+		},
+		recommendedResources: [
+			{ name: "Lenny's Newsletter · Marily Nika 专访", type: 'article', url: 'https://www.lennysnewsletter.com/p/summary-ai-and-product-management' },
+			{ name: 'AI PM Bootcamp (Marily Nika · Maven)', type: 'course', url: 'https://maven.com/marily-nika/ai-pm-bootcamp' },
+			{ name: 'Product Growth · AI PM Newsletter', type: 'article', url: 'https://www.news.aakashg.com/t/ai-pm' },
+			{ name: 'Reforge · PM in the Age of AI', type: 'article', url: 'https://www.reforge.com/blog/ai-impact-product-management' },
+			{ name: 'OpenAI Careers · PM 岗位列表', type: 'tool', url: 'https://openai.com/careers/search/?l=e8062547-b090-4206-8f1e-7329e0014e98' },
+		],
 	},
 	{
 		id: 'ai-ethics-officer',
@@ -349,6 +484,29 @@ export const GOV_DEEP: DeepJob[] = [
 				insight: 'CAC 算法备案 + 深度合成标识 · 截至 2025/12/31 全国 748 个 AI 服务完成备案 · 每家配合规岗',
 			},
 		},
+		whoFits: [
+			{ trait: '法律合规背景', detail: '律师、企业法务、数据隐私顾问，熟悉 GDPR/PIPL，能把法条翻译成工程团队听得懂的清单' },
+			{ trait: '政策研究出身', detail: '智库、政府监管、政策分析师，理解立法逻辑，能预判 EU AI Act 落地的执行边界' },
+			{ trait: '审计与风控经验', detail: 'Big 4 审计、ISO 27001、SOX 合规审计员，擅长把抽象风险拆成可量化的控制点' },
+			{ trait: '社科或哲学背景', detail: '社会学、伦理学、公共政策研究者，对算法偏见、社会影响有系统性框架' },
+		],
+		howToBecome: [
+			{ step: '法规打底 (2 个月)', detail: '通读 EU AI Act 全文、NIST AI RMF 四大功能、新加坡 Model AI Governance Framework' },
+			{ step: '考 IAPP AIGP 认证 (3 个月)', detail: '全球首个 AI 治理专业认证，覆盖伦理、风险、法规三大支柱' },
+			{ step: '真实场景脱敏练习 (2 个月)', detail: '用 NIST AI RMF Playbook 给一个公开 AI 产品（如招聘算法）做风险评估报告' },
+			{ step: '进入 Big 4 或大厂 (3-6 个月)', detail: 'Deloitte/PwC 的 AI Assurance team 是最佳跳板，再横跳 Meta/Google 的 Responsible AI 团队' },
+		],
+		transitionExample: {
+			who: 'Jack Clark · Anthropic 联合创始人 & Head of Policy（原 Bloomberg 记者）',
+			story: '2015 Bloomberg 写 AI 报道，2016 跳 OpenAI 做 Policy Director 4 年，2021 联合创办 Anthropic 主管全球 AI 政策，零工程背景',
+		},
+		recommendedResources: [
+			{ name: 'EU AI Act 官方全文', type: 'article', url: 'https://artificialintelligenceact.eu/' },
+			{ name: 'NIST AI Risk Management Framework', type: 'article', url: 'https://www.nist.gov/itl/ai-risk-management-framework' },
+			{ name: 'IAPP AIGP 认证', type: 'course', url: 'https://iapp.org/certify/aigp' },
+			{ name: 'OECD AI Principles & Policy Observatory', type: 'article', url: 'https://oecd.ai/en/ai-principles' },
+			{ name: 'Import AI · Jack Clark Newsletter', type: 'article', url: 'https://jack-clark.net/' },
+		],
 	},
 ];
 
@@ -399,6 +557,29 @@ export const INDUSTRY_DEEP: DeepJob[] = [
 				insight: '适配豆包/Kimi/腾讯元宝/通义/文心/DeepSeek/百度 AI 搜索 · 2026 从概念到乙方服务化拐点',
 			},
 		},
+		whoFits: [
+			{ trait: 'SEO 老兵转型', detail: '已经做过 3-5 年传统 SEO 或内容营销，懂关键词、E-E-A-T、技术 SEO 基础' },
+			{ trait: '内容营销人', detail: 'Content marketer / 编辑，会写英文长文、懂搜索意图，熟悉 HubSpot / WordPress 等内容平台' },
+			{ trait: '技术型 Digital Marketer', detail: '能读懂 JSON-LD、Schema.org 标记、HTML head，会用 Ahrefs / Semrush / GSC 看数据' },
+			{ trait: 'AI 工具早期使用者', detail: '每天用 ChatGPT / Perplexity / Claude 工作，理解 LLM 引用机制，对 AI Overviews 输出敏感' },
+		],
+		howToBecome: [
+			{ step: '打底 SEO 基础 (1-2 月)', detail: '跟 Aleyda Solis 的 LearningSEO.io 免费 roadmap 把 E-E-A-T、技术 SEO、Schema 基础走一遍' },
+			{ step: '学 AI 搜索原理 (1 月)', detail: '读 Princeton GEO 论文 + LearningAIsearch.com 免费 roadmap，理解 LLM 如何选 source 和引用' },
+			{ step: '实操 Schema + GEO 案例 (2 月)', detail: '在自己博客做 JSON-LD entity / FAQ / Article schema，跟踪 ChatGPT / Perplexity 引用率变化' },
+			{ step: '输出公开作品集 (持续)', detail: '在 LinkedIn / Substack 写 GEO 实验复盘，参考 Lily Ray 模式建立个人品牌进 GEO 圈子' },
+		],
+		transitionExample: {
+			who: 'Lily Ray · Amsive VP of SEO & AI Search（15 年 SEO 老兵）',
+			story: '2025 年创立 Algorythmic 专做 SEO + AI Search 咨询，公开分享传统 SEO 资产如何自然延伸到 GEO/AEO',
+		},
+		recommendedResources: [
+			{ name: 'LearningAIsearch.com · Aleyda Solis', type: 'course', url: 'https://learningaisearch.com/' },
+			{ name: 'LearningSEO.io · Aleyda Solis', type: 'course', url: 'https://learningseo.io/' },
+			{ name: 'GEO: Generative Engine Optimization (KDD 2024)', type: 'article', url: 'https://arxiv.org/abs/2311.09735' },
+			{ name: 'Lily Ray · A Reflection on SEO, GEO & AI Search', type: 'article', url: 'https://lilyraynyc.substack.com/p/a-reflection-on-seo-and-ai-search' },
+			{ name: 'HubSpot · GEO Best Practices', type: 'article', url: 'https://blog.hubspot.com/marketing/generative-engine-optimization-best-practices' },
+		],
 	},
 	{
 		id: 'healthcare-ai-integrator',
@@ -439,6 +620,29 @@ export const INDUSTRY_DEEP: DeepJob[] = [
 				insight: '华为 2025/03 成立医疗卫生军团 · NMPA AI 三类证审批门槛高 · 临床+AI 复合背景吃香',
 			},
 		},
+		whoFits: [
+			{ trait: '临床医生背景', detail: '已是医生 / 护士 / 药剂师，懂临床工作流和患者安全，缺 AI 工程能力' },
+			{ trait: '医疗 IT 从业者', detail: '做过 Epic / Cerner EHR 实施、HL7 / FHIR 接口、医院信息科 5 年以上' },
+			{ trait: '流行病学 / 公卫', detail: '懂临床数据结构 + 统计建模，转 AI 模型评估和上线监测最快' },
+			{ trait: 'HIPAA 合规敏感', detail: '做过医疗合规 / IRB / 数据治理，能在 PHI 和 AI 训练之间架桥' },
+		],
+		howToBecome: [
+			{ step: '医疗 AI 基础 (2 个月)', detail: '刷完 Coursera AI for Medicine 三课，能跑 CNN 做 X 光分类和病情预测' },
+			{ step: '临床数据 + FHIR (2 个月)', detail: '学 Epic App Orchard / FHIR R4 / HL7，能在 EHR 沙箱里部署一个 AI 接口' },
+			{ step: 'HIPAA + 模型验证 (2 个月)', detail: '考 CAHIMS 或 AHIMA 健康信息认证，跑通模型偏倚 + 临床验证流程' },
+			{ step: '真实项目落地 (6 个月)', detail: '在所在医院或 Mayo Clinic Platform / Tempus 开放数据上做一个端到端部署案例' },
+		],
+		transitionExample: {
+			who: 'Eric Topol · 原 Cleveland Clinic 心脏科主任',
+			story: '心内科医生 14 年后转 Scripps Research Translational Institute，主推 AI + 基因组个体化医疗，写《Deep Medicine》',
+		},
+		recommendedResources: [
+			{ name: 'AI for Medicine Specialization (DeepLearning.AI)', type: 'course', url: 'https://www.coursera.org/specializations/ai-for-medicine' },
+			{ name: 'Stanford AIMI Summer Health AI Bootcamp', type: 'course', url: 'https://aimi.stanford.edu/education/aimi-summer-bootcamp' },
+			{ name: 'Stanford AIMI Educational Resources', type: 'tool', url: 'https://aimi.stanford.edu/education/educational-resources' },
+			{ name: 'Deep Medicine · Eric Topol', type: 'book', url: 'https://en.wikipedia.org/wiki/Eric_Topol' },
+			{ name: 'Epic Healthcare Intelligence 2026 outlook', type: 'article', url: 'https://thisweekhealth.com/news_story/epic-expands-ai-in-ehrs-transforming-healthcare-operations-by-2026/' },
+		],
 	},
 	{
 		id: 'ai-compliance-expert',
@@ -479,6 +683,29 @@ export const INDUSTRY_DEEP: DeepJob[] = [
 				insight: '杭州（蚂蚁）+ 深圳（微众/平安/招行）双中心 · 要 CFA/FRM + 算法/数据治理 + 央行监管经验',
 			},
 		},
+		whoFits: [
+			{ trait: '审计 / 合规背景', detail: '已在四大、内控、合规部做过 3 年以上，懂控制框架和监管语言' },
+			{ trait: 'Model Risk / 风控量化', detail: '做过信用评分、反欺诈、AML 模型验证，熟 SR 11-7 / SR 26-02 模型治理流程' },
+			{ trait: '金融法律 / 监管律师', detail: '懂 GDPR、巴塞尔、消保法的法律背景，对 EU AI Act 高风险条款敏感' },
+			{ trait: '数据 / ML 工程师转治理', detail: '做过金融场景 ML 部署，想从写模型转去审模型公平性 / 可解释性' },
+		],
+		howToBecome: [
+			{ step: '啃透三大监管框架 (4 周)', detail: 'EU AI Act 高风险条款 + Fed SR 11-7/SR 26-02 + MAS FEAT 原则，建合规 checklist' },
+			{ step: '考 GARP RAI 证书 (2-3 月)', detail: 'Risk and AI Certificate 是目前金融 AI 风险唯一权威证，2026 年 10 月考' },
+			{ step: '做模型公平性 / 可解释性实战 (6 周)', detail: '用 SHAP / Fairlearn / AIF360 跑信用模型偏见审计，输出可给监管看的报告' },
+			{ step: '投递银行 AI Governance 岗 (持续)', detail: 'JPMorgan MRGR、DBS、ANZ、HSBC，强调你的合规 + AI 复合背景' },
+		],
+		transitionExample: {
+			who: 'Kai Yang · ANZ 首位 Chief Data and AI Officer（原 HSBC 亚洲 CDAO）',
+			story: '从 Deloitte 咨询到 CBA 首席数据官，再到 HSBC 数据治理，2026 年 7 月被 ANZ 挖去主导 AI agenda 与监管控制',
+		},
+		recommendedResources: [
+			{ name: 'GARP Risk and AI (RAI) Certificate', type: 'course', url: 'https://www.garp.org/rai' },
+			{ name: 'MAS FEAT Principles', type: 'article', url: 'https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/emerging-risks-and-opportunities-of-generative-ai-for-banks.pdf' },
+			{ name: 'Fed SR 11-7 Model Risk Management', type: 'article', url: 'https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm' },
+			{ name: 'EU AI Act · Financial Services Guide', type: 'article', url: 'https://matproof.com/blog/eu-ai-act-compliance-financial-services' },
+			{ name: 'Fairlearn · 模型公平性审计工具', type: 'repo', url: 'https://github.com/fairlearn/fairlearn' },
+		],
 	},
 ];
 
@@ -529,6 +756,29 @@ export const MISSING_JOBS: DeepJob[] = [
 				insight: '国内"中国版 Cursor" 言创万物等已获千万级融资 · 深圳/杭州出台"一人公司创新社区"政策',
 			},
 		},
+		whoFits: [
+			{ trait: '想自己说了算', detail: '不想再帮别人执行需求，想验证自己的点子，能接受短期收入波动' },
+			{ trait: '会用语言表达', detail: '能把想法写清楚、讲明白，因为 AI 编程靠的是描述能力不是语法' },
+			{ trait: '懂用户痛点', detail: '做过营销、设计、内容、客服或销售，对真实需求敏感，比纯技术背景更占优' },
+			{ trait: '公开做事不怕被看', detail: '愿意在 Twitter / 小红书 / 公众号 build in public，把过程当内容分发' },
+		],
+		howToBecome: [
+			{ step: '2 周打磨工具流', detail: '把 Cursor 或 Claude Code 用顺，配 Stripe + Vercel，做一个能上线收款的小工具练手' },
+			{ step: '1 个月跑 3 个小产品', detail: '每个产品只做一个具体痛点，2 周从想法到上线，验证有没有人愿意付钱' },
+			{ step: '公开记录过程', detail: '在 Twitter / 小红书每天发进度、数据、踩坑，把构建过程本身当作获客渠道' },
+			{ step: '留下能跑的、关掉跑不动的', detail: '用 3-6 个月数据决定哪个产品值得加投入，其余果断关停，把时间集中到能复利的一个' },
+		],
+		transitionExample: {
+			who: 'Marc Lou · 原餐厅服务员（自学转独立开发者）',
+			story: '靠 Next.js 模板 ShipFast 起家，2025 年 14 个个人产品总营收公开披露 103 万美元，全过程在 Twitter build in public',
+		},
+		recommendedResources: [
+			{ name: 'Karpathy 原始 vibe coding 推文', type: 'article', url: 'https://x.com/karpathy/status/1886192184808149383' },
+			{ name: 'Marc Lou · 2025 年报：$1,032,000 复盘', type: 'article', url: 'https://newsletter.marclou.com/p/i-made-1-032-000-in-2025' },
+			{ name: 'Pieter Levels 个人主页', type: 'article', url: 'https://levels.io/' },
+			{ name: 'Indie Hackers 社区', type: 'article', url: 'https://www.indiehackers.com/' },
+			{ name: 'Cursor 编辑器', type: 'tool', url: 'https://cursor.com/' },
+		],
 	},
 	{
 		id: 'robotics-ai-engineer',
@@ -566,6 +816,30 @@ export const MISSING_JOBS: DeepJob[] = [
 				insight: '宇树最高月薪 7 万/年薪 91 万 · 整体涨薪 60% · 杭州六小龙占具身赛道 3 席 · 性价比最高赛道',
 			},
 		},
+		whoFits: [
+			{ trait: '机器人工程师', detail: '已会 ROS / 控制 / 运动规划，想把传统 pipeline 升级到端到端 VLA 大模型路线' },
+			{ trait: 'CV / 感知工程师', detail: '做过 SLAM、3D 重建、目标检测，缺机械臂控制和 RL 训练经验需要补' },
+			{ trait: 'RL / 仿真研究者', detail: '玩过 Isaac Gym / MuJoCo / PPO，想把 sim-to-real 落到真实双足或机械臂硬件' },
+			{ trait: '自动驾驶感知决策', detail: 'Waymo / Cruise / 蔚小理出身，已熟悉传感器栈，转人形机器人门槛最低' },
+		],
+		howToBecome: [
+			{ step: '补 RL 基础 (4 周)', detail: '跟完 Berkeley CS 285 Sergey Levine 全 23 讲，跑通 PPO / SAC 在 Gym 的 baseline' },
+			{ step: '上手 VLA (6 周)', detail: '本地跑 OpenVLA-7B 推理，在 LIBERO 仿真 fine-tune，理解 SigLIP+DinoV2+Llama 架构' },
+			{ step: '真实硬件 (8 周)', detail: '买 SO-100 / LeRobot 机械臂或租 Unitree G1，跑 Diffusion Policy / ACT 端到端遥操作收集数据' },
+			{ step: '开源刷脸 (持续)', detail: '在 Open X-Embodiment 数据集上贡献新 embodiment，arxiv 挂 workshop paper，投 Figure / 1X / PI' },
+		],
+		transitionExample: {
+			who: 'Karol Hausman · 前 Google DeepMind Staff Research Scientist',
+			story: '2024 年与 Sergey Levine、Chelsea Finn 离职创办 Physical Intelligence，做通用机器人基础模型，已融资超 $1B',
+		},
+		recommendedResources: [
+			{ name: 'Berkeley CS 285 Deep RL (Sergey Levine)', type: 'course', url: 'https://rail.eecs.berkeley.edu/deeprlcourse/' },
+			{ name: 'OpenVLA: Vision-Language-Action Model', type: 'repo', url: 'https://github.com/openvla/openvla' },
+			{ name: 'OpenVLA Paper (arxiv 2406.09246)', type: 'article', url: 'https://arxiv.org/abs/2406.09246' },
+			{ name: 'OpenVLA-7B Weights (HuggingFace)', type: 'tool', url: 'https://huggingface.co/openvla/openvla-7b' },
+			{ name: 'Figure AI Careers', type: 'article', url: 'https://www.figure.ai/careers' },
+			{ name: '1X Technologies Careers', type: 'article', url: 'https://www.1x.tech/careers' },
+		],
 	},
 	{
 		id: 'synthetic-data-engineer',
@@ -603,6 +877,29 @@ export const MISSING_JOBS: DeepJob[] = [
 				insight: '自动驾驶（采集 vs 仿真 100 倍成本差）+ 大模型数据枯竭 + 具身智能 sim2real 三口拉动',
 			},
 		},
+		whoFits: [
+			{ trait: 'Data Engineer 想升级', detail: '已会 ETL / Spark / 数据建模，想从搬运数据升级到生成数据，给大模型当饲料供应商' },
+			{ trait: 'ML Engineer 懂数据', detail: '训过模型踩过过拟合坑，知道什么数据让模型崩，能反推该生成什么分布的数据' },
+			{ trait: '统计学 / 概率背景', detail: '懂分布、KS 检验、JSD 距离，能定量评估合成数据和真实数据的统计相似度' },
+			{ trait: 'Privacy / 安全方向', detail: '做过差分隐私、k-匿名、GDPR 合规的工程师，天然适合生成不泄露 PII 的训练数据' },
+		],
+		howToBecome: [
+			{ step: '跑通 Mostly AI / Gretel SDK (2 周)', detail: '用真实表格数据，跑通 TabularARGN / Gretel Navigator，理解 fidelity vs privacy 的权衡' },
+			{ step: '学 Diffusion + GAN 生成 (4 周)', detail: 'Hugging Face Diffusers 教程，复现 Stable Diffusion fine-tune；理解 mode collapse 和数据漂移' },
+			{ step: '做数据质量评估管线 (3 周)', detail: '实现 PCA / TSTR / Privacy Risk Score，能量化判断合成数据能不能用于训练' },
+			{ step: '复现 NVIDIA Cosmos 数据流 (3 周)', detail: '用 Isaac Sim + Cosmos Predict 生成机器人训练数据，组 portfolio' },
+		],
+		transitionExample: {
+			who: 'Alex Watson · Gretel.ai 联合创始人（前 AWS Macie 总经理）',
+			story: '数据安全 + ML 背景出身，把 Macie 卖给 AWS 后联合 NSA 工程师创立 Gretel，把数据隐私经验转成 synthetic data 平台',
+		},
+		recommendedResources: [
+			{ name: 'Will we run out of data? · Epoch AI', type: 'article', url: 'https://epoch.ai/blog/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data' },
+			{ name: 'NVIDIA Cosmos · Synthetic Data for Physical AI', type: 'article', url: 'https://developer.nvidia.com/blog/scale-synthetic-data-and-physical-ai-reasoning-with-nvidia-cosmos-world-foundation-models/' },
+			{ name: 'Mostly AI Synthetic Data Tutorials', type: 'repo', url: 'https://github.com/mostly-ai/mostly-tutorials' },
+			{ name: 'Mostly AI SDK', type: 'tool', url: 'https://github.com/mostly-ai/mostlyai' },
+			{ name: 'Gretel.ai · 2025 Synthetic Data Goes Mainstream', type: 'article', url: 'https://gretel.ai/blog/2025-the-year-synthetic-data-goes-mainstream' },
+		],
 	},
 	{
 		id: 'ai-sales-engineer',
@@ -640,6 +937,29 @@ export const MISSING_JOBS: DeepJob[] = [
 				insight: '阿里云秋招 AI 占比 80% · DeepSeek 后国央企/银行/制造业 AI 预算大开 · 北京（央企）+ 深圳（制造/金融）双中心',
 			},
 		},
+		whoFits: [
+			{ trait: '传统 SaaS SE', detail: '已在 Salesforce/Snowflake/Okta 做技术售前 3 年以上，熟悉 B2B 销售周期' },
+			{ trait: 'Solution Architect', detail: '云厂商或 SaaS Solution Architect，懂企业架构和 POC 设计，缺 LLM 实操' },
+			{ trait: '客户沟通强', detail: '敢站在 C-level 面前讲技术，能把复杂方案翻译成商业价值，演讲不怯场' },
+			{ trait: '半技术背景', detail: 'Python/JS 能改 demo 不写生产代码，会读 API 文档，对 LLM 有学习热情' },
+		],
+		howToBecome: [
+			{ step: '补 LLM 应用 (4 周)', detail: 'OpenAI/Anthropic API 实战，复现 RAG/Agent/Function Calling 三个企业级 demo' },
+			{ step: '做 POC 作品集 (6 周)', detail: '选 3 个行业（金融/法务/客服）各做 1 个端到端 demo，含 ROI 测算和安全方案' },
+			{ step: '进 PreSales 社区 (持续)', detail: '加入 PreSales Collective，参加 demo 评审，建立 LLM 售前圈内人脉网' },
+			{ step: '内推+面试 (2 个月)', detail: '投 OpenAI/Anthropic/Databricks/Glean Solutions Engineer 岗，准备 mock demo 和客户场景演练' },
+		],
+		transitionExample: {
+			who: 'Jennifer Majlessi · 前 Salesforce 资深销售高管',
+			story: '从 Salesforce go-to-market 跳槽 OpenAI 任 head of go-to-market，把企业销售经验直接迁移到 LLM 商业化',
+		},
+		recommendedResources: [
+			{ name: 'OpenAI Solutions Engineer Pre-Sales JD', type: 'article', url: 'https://openai.com/careers/solutions-engineer-pre-sales-san-francisco/' },
+			{ name: 'PreSales Academy', type: 'course', url: 'https://www.presalescollective.com/academy' },
+			{ name: 'Databricks Solutions Engineer Careers', type: 'article', url: 'https://www.databricks.com/company/careers/field-engineering---other/solutions-engineer-8349427002' },
+			{ name: 'Anthropic Careers (Sales/SE)', type: 'article', url: 'https://www.anthropic.com/careers' },
+			{ name: 'AI in Presales · Redefining Your Playbook', type: 'video', url: 'https://www.youtube.com/watch?v=XUmwjUVwvTU' },
+		],
 	},
 ];
 
