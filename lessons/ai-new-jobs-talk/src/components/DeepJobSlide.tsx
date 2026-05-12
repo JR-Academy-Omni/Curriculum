@@ -52,9 +52,9 @@ export default function DeepJobSlide({ job, accentColor, accentBg, chapterTag }:
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.45, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
 						>
-							<Title size="52px" style={{ lineHeight: 1.05 }}>{job.nameZh}</Title>
-							{job.nameEn && job.nameEn !== job.nameZh && (
-								<div style={{ fontFamily: fonts.mono, fontSize: 18, color: '#555', marginTop: 6 }}>{job.nameEn}</div>
+							<Title size="52px" style={{ lineHeight: 1.05 }}>{job.title}</Title>
+							{job.subtitle && (
+								<div style={{ fontSize: 17, color: '#444', marginTop: 8, fontWeight: 600, letterSpacing: 0.3 }}>{job.subtitle}</div>
 							)}
 						</motion.div>
 					</div>
