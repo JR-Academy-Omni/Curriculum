@@ -1,873 +1,109 @@
-<!DOCTYPE html>
-<html lang="zh">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>学习计划 — 人人都能学的 AI Coding 实战课</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-</head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;900&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif; background: #faf9f5; color: #10162f; line-height: 1.6; padding: 28px 24px 80px; max-width: 1240px; margin: 0 auto; }
+  h1, h2, h3 { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; line-height: 1.15; }
+  h1 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.5px; }
+  h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; margin-top: 36px; margin-bottom: 14px; }
+  h3 { font-size: 17px; font-weight: 800; }
+  code, .mono { font-family: 'Space Mono', monospace; }
+  a { color: #10162f; text-decoration: none; border-bottom: 1.5px solid #10162f; }
+  a:hover { background: #fef08a; }
+  .sub { font-size: 14px; color: #666; margin-top: 4px; }
+  .nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 24px; padding-bottom: 16px; border-bottom: 2px dashed #ccc; }
+  .nav a { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; padding: 6px 12px; border: 1.5px solid #10162f; background: #fff; }
+  .nav a:hover { background: #10162f; color: #fff; }
+  .nav a.active { background: #10162f; color: #fff; }
+  .card { background: #fff; border: 2px solid #10162f; box-shadow: 6px 6px 0 #10162f; padding: 18px 20px; margin-bottom: 16px; }
+  .card.tight { padding: 12px 14px; box-shadow: 4px 4px 0 #10162f; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 18px 0; }
+  .stat { background: #fff; border: 2px solid #10162f; box-shadow: 3px 3px 0 #10162f; padding: 10px 14px; }
+  .stat .n { font-size: 28px; font-weight: 900; font-family: 'Space Mono', monospace; line-height: 1; }
+  .stat .l { font-size: 11px; color: #666; margin-top: 4px; font-family: 'Space Mono', monospace; letter-spacing: 0.5px; }
+  .tier { display: inline-block; padding: 3px 8px; font-size: 10px; font-weight: 800; border-radius: 999px; font-family: 'Space Mono', monospace; letter-spacing: 0.5px; vertical-align: middle; }
+  .tier.both { background: #dbeafe; color: #1e40af; border: 1.5px solid #1e40af; }
+  .tier.basic { background: #fce7f3; color: #9d174d; border: 1.5px solid #9d174d; }
+  .tier.advanced { background: #fef08a; color: #854d0e; border: 1.5px solid #ca8a04; }
+  .type-pill { display: inline-block; padding: 2px 7px; font-size: 10px; font-weight: 700; border-radius: 999px; font-family: 'Space Mono', monospace; }
+  .t-Lesson { background: #fef3c7; }
+  .t-Information { background: #dbeafe; }
+  .t-InteractiveLab { background: #fce7f3; }
+  .t-Quest { background: #dcfce7; }
+  .t-Video { background: #fed7aa; }
+  .live { color: #dc2626; font-weight: 900; font-family: 'Space Mono', monospace; font-size: 10px; }
+  .lesson-row { padding: 10px 12px; border-bottom: 1px solid #eee; display: grid; grid-template-columns: 60px 110px 1fr 50px; gap: 12px; align-items: start; }
+  .lesson-row:last-child { border-bottom: 0; }
+  .lesson-row .code { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; white-space: nowrap; }
+  .lesson-row .title { font-weight: 600; font-size: 13px; }
+  .lesson-row .meta { font-size: 11px; color: #666; margin-top: 3px; }
+  .lesson-row .dur { font-family: 'Space Mono', monospace; font-size: 11px; color: #888; white-space: nowrap; text-align: right; }
+  .phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 18px 0; }
+  .phase-card { background: #fff; border: 2px solid #10162f; box-shadow: 5px 5px 0 #10162f; padding: 16px 18px; transition: transform 0.15s, box-shadow 0.15s; }
+  .phase-card:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #10162f; }
+  .phase-card .label { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--phase-color, #10162f); font-weight: 800; letter-spacing: 1px; }
+  .phase-card .name { font-size: 15px; font-weight: 800; margin: 6px 0 8px; line-height: 1.3; }
+  .phase-card .summary { font-size: 11px; color: #666; font-family: 'Space Mono', monospace; }
+  .phase-card .ct { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; font-size: 10px; }
+  .phase-card a { border: 0; }
+  .price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+  @media (max-width: 600px) { .price-cards { grid-template-columns: 1fr; } .lesson-row { grid-template-columns: 50px 1fr; } .lesson-row .meta, .lesson-row .dur { grid-column: 2; } }
+  .price-card { background: #fff; border: 2px solid #10162f; box-shadow: 6px 6px 0 #10162f; padding: 18px 20px; }
+  .price-card .tag { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 800; letter-spacing: 1px; }
+  .price-card .price { font-family: 'Space Mono', monospace; font-size: 42px; font-weight: 900; margin: 8px 0; }
+  .price-card ul { margin-top: 10px; padding-left: 20px; font-size: 12px; line-height: 1.8; }
+  .footer { font-size: 11px; color: #888; font-family: 'Space Mono', monospace; margin-top: 36px; padding-top: 14px; border-top: 1px dashed #ccc; }
+</style>
+<title>人人都能学的 AI Coding 实战课 — 学习计划</title></head>
 <body>
-<div class="header">
-  <h1>学习计划</h1>
-  <div class="sub">基础班 5 周 / 进阶班 8 周 · 103 节课</div>
-  <div class="nav"><a href="curriculum.html">← 返回课程总览</a> | <a href="outline.html">完整大纲 →</a></div>
+<h1>📅 学习计划</h1>
+<div class="sub">基础班 6 周（76 节）· 进阶班 8 周（109 节）</div>
+<nav class="nav"><a href="./curriculum.html">🏠 课程总览</a><a href="./outline.html">📋 详细大纲</a><a href="./outline-preview.html">🔍 实时预览</a><a href="./learning-plan.html" class="active">📅 学习计划</a><a href="./tools.html">🛠️ AI 工具大全</a><a href="./poster.html">🎨 营销海报</a><a href="./marketing.html">📣 营销文案库</a></nav>
+
+<div class="card tight">
+  <div style="font-size:13px">📌 <strong>基础班</strong>到 <strong>P8 答辩</strong>结束；<strong>进阶班</strong>跳过 P8，从 P9 继续到 P12 答辩。同一周可能基础班 + 进阶班并行不同 phase。</div>
 </div>
 
-<div class="c">
-<div class="box">
-  <div class="box-h" style="background:#6366f1">
-    <span style="font-size:18px;font-weight:900">Phase 0 — AI 体验 &amp; 工具准备</span>
-    <span style="float:right;opacity:0.7" class="mono">17 节 · 0 直播 · 5 Lab · 12 自学</span>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L01</span>
-      <h4>AI Coding是什么？</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L02</span>
-      <h4>Lab: Hello AI — 你的第一个 Prompt</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L03</span>
-      <h4>Lab: 你的第一个 Vibe 项目 — 从需求到指令</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L04</span>
-      <h4>自学：Vibe Coding 是什么</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L05</span>
-      <h4>工具安装 &amp; 环境准备</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L06</span>
-      <h4>Lab: 电脑基础 — 浏览器、搜索、复制粘贴</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L07</span>
-      <h4>Lab: Cursor 入门 — Vibe Coding 的代名词</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L08</span>
-      <h4>自学：安装 Cursor 与环境准备</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L09</span>
-      <h4>什么是“一个好的互联网产品”？</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L10</span>
-      <h4>自学：AI Native 产品是什么</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L11</span>
-      <h4>入门IT必懂的 10 个基础概念</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L12</span>
-      <h4>Lab: AI 基础概念 — 5 分钟搞懂大模型</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L13</span>
-      <h4>自学：开发者工具栈速览</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L14</span>
-      <h4>不同电脑系统的快捷键操作</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L15</span>
-      <h4>什么是终端（Terminal）&amp; 本地环境 VS 云端环境</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L16</span>
-      <h4>如何创建并管理你的第一个GitHub仓库</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L17</span>
-      <h4>自学：Git Commit 规范与 Emoji</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-</div>
 
-<div class="box">
-  <div class="box-h" style="background:#f59e0b">
-    <span style="font-size:18px;font-weight:900">Phase 1 — 产品设计 &amp; PRD</span>
-    <span style="float:right;opacity:0.7" class="mono">23 节 · 5 直播 · 5 Lab · 13 自学</span>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L18</span>
-      <h4>什么是AI Product Manangement</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">2h</span>
+    <div class="card">
+      <div class="mono" style="font-size:11px;color:#666;font-weight:800;letter-spacing:1px">WEEK 1</div>
+      <div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_0.html" style="border:0"><strong>P0</strong> 上手 Claude Cowork（零代码起步） <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">6 节</span></a></div><div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_1.html" style="border:0"><strong>P1</strong> 产品设计：PRD + design.md + UI 展示 <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">11 节</span></a></div>
     </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L19</span>
-      <h4>Lab: 明确任务 — 让 AI 准确理解你的需求</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
+    <div class="card">
+      <div class="mono" style="font-size:11px;color:#666;font-weight:800;letter-spacing:1px">WEEK 2</div>
+      <div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_1.html" style="border:0"><strong>P1</strong> 产品设计：PRD + design.md + UI 展示 <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">11 节</span></a></div><div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_2.html" style="border:0"><strong>P2</strong> 第 1 个交付物：你的第一份专业级在线 PPT（房地产楼盘为教学案例） <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">6 节</span></a></div>
     </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L20</span>
-      <h4>自学：从想法到 PRD（用 AI 写 PRD）</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
+    <div class="card">
+      <div class="mono" style="font-size:11px;color:#666;font-weight:800;letter-spacing:1px">WEEK 3</div>
+      <div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_2.html" style="border:0"><strong>P2</strong> 第 1 个交付物：你的第一份专业级在线 PPT（房地产楼盘为教学案例） <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">6 节</span></a></div><div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_3.html" style="border:0"><strong>P3</strong> 第 2 个交付物：A4 PDF 全家桶（海报 / BP / 简历 / 提案 / 白皮书） <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">6 节</span></a></div>
     </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L21</span>
-      <h4>课程项目示例：推荐给你的 3 个可参考的项目</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
+    <div class="card">
+      <div class="mono" style="font-size:11px;color:#666;font-weight:800;letter-spacing:1px">WEEK 4</div>
+      <div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_4.html" style="border:0"><strong>P4</strong> 第 3 个交付物：把你的 PPT 转成 Landing Page 网站（房地产楼盘为教学案例） <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">21 节</span></a></div>
     </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L22</span>
-      <h4>自学：实战：Todo App</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
+    <div class="card">
+      <div class="mono" style="font-size:11px;color:#666;font-weight:800;letter-spacing:1px">WEEK 5</div>
+      <div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_4.html" style="border:0"><strong>P4</strong> 第 3 个交付物：把你的 PPT 转成 Landing Page 网站（房地产楼盘为教学案例） <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">21 节</span></a></div><div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_5.html" style="border:0"><strong>P5</strong> 自动化基础 + Obsidian 知识管理 <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">8 节</span></a></div>
     </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L23</span>
-      <h4>什么是User Story（用户故事）？</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
+    <div class="card">
+      <div class="mono" style="font-size:11px;color:#666;font-weight:800;letter-spacing:1px">WEEK 6</div>
+      <div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_5.html" style="border:0"><strong>P5</strong> 自动化基础 + Obsidian 知识管理 <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">8 节</span></a></div><div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_6.html" style="border:0"><strong>P6</strong> 第 4 个交付物：60 秒知识科普视频（PPT 即视频） <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">10 节</span></a></div>
     </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L24</span>
-      <h4>自学：AI User Research：数据驱动的需求洞察</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
+    <div class="card">
+      <div class="mono" style="font-size:11px;color:#666;font-weight:800;letter-spacing:1px">WEEK 7</div>
+      <div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_7.html" style="border:0"><strong>P7</strong> 内容分发：一稿多发到 5 大平台（小红书/公众号/朋友圈/LinkedIn/Twitter） <span class="tier both">🟦 基础+进阶</span> <span class="mono" style="font-size:11px;color:#666">4 节</span></a></div><div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_9.html" style="border:0"><strong>P9</strong> 网站智能化 + Admin CMS + 内容自动化 Agent（进阶起点） <span class="tier advanced">🟨 仅进阶班</span> <span class="mono" style="font-size:11px;color:#666">19 节</span></a></div>
     </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L25</span>
-      <h4>Proposal自己的AI产品</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
+    <div class="card">
+      <div class="mono" style="font-size:11px;color:#666;font-weight:800;letter-spacing:1px">WEEK 8</div>
+      <div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_8.html" style="border:0"><strong>P8</strong> 🎓 基础班 项目答辩 + 结业 <span class="tier basic">🟪 仅基础班</span> <span class="mono" style="font-size:11px;color:#666">4 节</span></a></div><div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_10.html" style="border:0"><strong>P10</strong> 视频进阶：给 P6 视频加 BGM 升级 <span class="tier advanced">🟨 仅进阶班</span> <span class="mono" style="font-size:11px;color:#666">3 节</span></a></div><div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_11.html" style="border:0"><strong>P11</strong> 数据深度 + AI Excel/Sheets：存储 + Skills + 表格加速 + 告警 + Dashboard <span class="tier advanced">🟨 仅进阶班</span> <span class="mono" style="font-size:11px;color:#666">11 节</span></a></div><div style="padding:8px 0;border-bottom:1px dashed #eee"><a href="./phase_12.html" style="border:0"><strong>P12</strong> 🎓 进阶班 项目答辩 + 结业 <span class="tier advanced">🟨 仅进阶班</span> <span class="mono" style="font-size:11px;color:#666">4 节</span></a></div>
     </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L26</span>
-      <h4>Lab: 输出格式 — 让 AI 按你要的格式回答</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L27</span>
-      <h4>HTML介绍</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L28</span>
-      <h4>CSS介绍</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L29</span>
-      <h4>Git基础：保存进度不掉线</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">2h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L30</span>
-      <h4>把想法变成计划书</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">2h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L31</span>
-      <h4>AI Coding Prompt公式</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L32</span>
-      <h4>Lab: 代码 Prompt 五要素 — 让 AI 写出能用的代码</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L33</span>
-      <h4>Lab: Few-shot Learning — 用示例教会 AI</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L34</span>
-      <h4>自学：写出第一个 Prompt</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L35</span>
-      <h4>自学：高质量 Prompt 模板</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L36</span>
-      <h4>如何阅读 AI 写的代码</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L37</span>
-      <h4>Lab: 代码生成 — AI 辅助编程的正确姿势</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L38</span>
-      <h4>自学：理解与校验 AI 的回复</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L39</span>
-      <h4>网页文件结构入门（HTML/CSS/JS）</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L40</span>
-      <h4>提交你的完整 PRD 文档</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-</div>
 
-<div class="box">
-  <div class="box-h" style="background:#10b981">
-    <span style="font-size:18px;font-weight:900">Phase 2 — AI 编程实战</span>
-    <span style="float:right;opacity:0.7" class="mono">36 节 · 10 直播 · 10 Lab · 16 自学</span>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L41</span>
-      <h4>让 AI 帮我写第一个功能</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L42</span>
-      <h4>自学：交付一个小功能的全流程</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L43</span>
-      <h4>报错时正确的 Debug 方法</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L44</span>
-      <h4>Lab: 调试 AI 代码 — 读错误日志和修复 Bug</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L45</span>
-      <h4>Lab: 约束与负面 Prompt — 告诉 AI </h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L46</span>
-      <h4>自学：用 AI 做 Debug</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L47</span>
-      <h4>Debug不再可怕</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">2h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L48</span>
-      <h4>Lab: Chain of Thought — 让 AI 展示思考过程</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L49</span>
-      <h4>新手开发流程</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L50</span>
-      <h4>自学：Vibe Coding 思维模型</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L51</span>
-      <h4>Lab 01：手把手带你搭建cms系统（上）</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">2h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L52</span>
-      <h4>Lab: AI 前端开发 — 从截图到 React 代码</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L53</span>
-      <h4>自学：与 AI 结对编程</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L54</span>
-      <h4>常见前端页面组件介绍</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L55</span>
-      <h4>用 AI 搭建一个完整官网页面</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L56</span>
-      <h4>自学：多文件协作与项目级修改</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L57</span>
-      <h4>后台系统入门：CMS、数据库与管理员登录</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L58</span>
-      <h4>Lab: AI 后端开发 — 从 API 设计到实现</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L59</span>
-      <h4>Lab: JSON 结构化输出 — 让 AI 返回可解析的数据</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L60</span>
-      <h4>自学：前后端协同与 API 生成</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L61</span>
-      <h4>什么是数据库</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L62</span>
-      <h4>自学：数据与知识库协作</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L63</span>
-      <h4>用户系统入门：注册、登录与用户管理</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L64</span>
-      <h4>Lab: 安全与认证 — AI 生成的代码怎么不掉坑</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L65</span>
-      <h4>网站从CMS读取Service，在官网显示，实现网站管理</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L66</span>
-      <h4>注册用户网站下单，管理端查看订单</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L67</span>
-      <h4>什么是部署上线？</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L68</span>
-      <h4>自学：脚手架与自动化交付</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L69</span>
-      <h4>产品上线啦，域名管理</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L70</span>
-      <h4>Lab: 部署到上线 — AI 加速从开发到生产</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L71</span>
-      <h4>什么是SEO？</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L72</span>
-      <h4>Lab: 信息提取 — 让 AI 当你的数据挖掘助手</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L73</span>
-      <h4>自学：内容创作全景图</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L74</span>
-      <h4>SEO入门 &amp; 检测网站</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">2h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L75</span>
-      <h4>Lab: 职场 AI 全场景实战</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L76</span>
-      <h4>自学：AI 调研、摘要与知识库</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
+<div class="footer">
+  📄 数据源：<code>public/outline.json</code>（phase summary 字段提取 Week N） · 自动生成
 </div>
-
-<div class="box">
-  <div class="box-h" style="background:#ef4444">
-    <span style="font-size:18px;font-weight:900">Phase 3 — AI 功能进阶</span>
-    <span style="float:right;opacity:0.7" class="mono">27 节 · 4 直播 · 9 Lab · 14 自学</span>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L77</span>
-      <h4>什么是API？</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L78</span>
-      <h4>什么是JSON？</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L79</span>
-      <h4>让产品更聪明</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L80</span>
-      <h4>Lab: 角色扮演 — 让 AI 成为领域专家</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L81</span>
-      <h4>自学：MVP 规划与工具选型</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L82</span>
-      <h4>什么是OCR</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L83</span>
-      <h4>Lab: 多模态 Prompt — 让 AI 看图、听声、读文</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L84</span>
-      <h4>自学：AI 多模态输入与解析</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L85</span>
-      <h4>什么是Chatbot</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L86</span>
-      <h4>Lab: System Prompt 设计 — 产品级 AI 人格构建</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L87</span>
-      <h4>Lab: AI 问答系统设计 — 从 FAQ 到智能客服</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L88</span>
-      <h4>自学：Coze Bot 构建</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L89</span>
-      <h4>给网站增加AI功能</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L90</span>
-      <h4>Lab: 上下文管理 — 高效利用 Context Window</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L91</span>
-      <h4>自学：AI Agents 与工具调用</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L92</span>
-      <h4>什么是 Embedding？</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L93</span>
-      <h4>Lab: RAG 基础 — 检索增强生成</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L94</span>
-      <h4>自学：RAG 系统入门</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L95</span>
-      <h4>什么是互联网产品原型</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L96</span>
-      <h4>自学：Bolt 快速生成 Web 应用</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L97</span>
-      <h4>什么是产品迭代</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L98</span>
-      <h4>Lab: Prompt 评估 — 量化你的 Prompt 质量</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L99</span>
-      <h4>自学：AI 产品迭代管理：从 MVP 到规模化</h4>
-      <span class="pill" style="background:#888;color:#fff">INFO</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L100</span>
-      <h4>AI互联网产品原型完成</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">3h</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L101</span>
-      <h4>Lab: Code Review 和质量保证 — AI 写的代码咋审</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L102</span>
-      <h4>Lab: Prompt Chaining — 多步骤编排</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
-    </div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="mono" style="font-size:12px;opacity:0.5;min-width:32px">L103</span>
-      <h4>项目最终展示与导师点评</h4>
-      <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">2h</span>
-    </div>
-  </div>
-</div>
-
-</div>
-<div class="footer">JR Academy · AI-Driven Education</div>
 </body>
 </html>

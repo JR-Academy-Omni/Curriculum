@@ -1,1284 +1,229 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Coding 实战课海报生成器</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:
-        radial-gradient(circle at top left, rgba(34, 211, 238, 0.08), transparent 24%),
-        radial-gradient(circle at top right, rgba(168, 85, 247, 0.09), transparent 22%),
-        linear-gradient(180deg, #08111d 0%, #050b13 52%, #03060b 100%);
-      --panel: rgba(8, 14, 24, 0.92);
-      --panel-border: rgba(255, 255, 255, 0.08);
-      --card: rgba(255, 255, 255, 0.06);
-      --text: #f8fafc;
-      --muted: rgba(226, 232, 240, 0.72);
-      --soft: rgba(226, 232, 240, 0.48);
-      --font-main: "Noto Sans SC", sans-serif;
-      --font-mono: "Space Mono", monospace;
-      --shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
-    }
-
-    * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; }
-    body {
-      padding: 20px 14px 56px;
-      font-family: var(--font-main);
-      color: var(--text);
-      background: var(--bg);
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; border: 0; }
-
-    .app {
-      width: min(1440px, 100%);
-      margin: 0 auto;
-      display: grid;
-      gap: 18px;
-    }
-
-    .shell {
-      background: var(--panel);
-      border: 1px solid var(--panel-border);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-    }
-
-    .header {
-      padding: 26px;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-start;
-    }
-    .header h1 {
-      margin: 0;
-      font-size: clamp(30px, 4.2vw, 50px);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-      font-weight: 900;
-    }
-    .header p {
-      margin: 12px 0 0;
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.68;
-    }
-    .brand {
-      flex: 0 0 auto;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .controls {
-      padding: 20px;
-      display: grid;
-      gap: 16px;
-    }
-    .section {
-      display: grid;
-      gap: 10px;
-    }
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-    }
-    .section-head strong {
-      font-size: 15px;
-      letter-spacing: 0.04em;
-    }
-    .section-head span {
-      color: var(--soft);
-      font-size: 12px;
-    }
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .tab,
-    .dir,
-    .btn {
-      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
-    }
-    .tab:hover,
-    .dir:hover,
-    .btn:hover {
-      transform: translateY(-1px);
-    }
-    .tab {
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text);
-      font-weight: 700;
-    }
-    .tab.active,
-    .dir.active {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
-      border-color: rgba(255, 255, 255, 0.18);
-    }
-    .dir-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-    .dir {
-      min-height: 74px;
-      padding: 12px 14px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text);
-      text-align: left;
-      display: grid;
-      gap: 4px;
-      align-content: center;
-    }
-    .dir strong { font-size: 14px; }
-    .dir small {
-      color: var(--soft);
-      font-size: 11px;
-      line-height: 1.35;
-    }
-    .utility {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .utility span {
-      color: var(--soft);
-      font-size: 13px;
-    }
-    .btn {
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-weight: 800;
-    }
-    .btn.primary {
-      background: linear-gradient(135deg, #f8fafc, #dbeafe);
-      color: #08111d;
-    }
-    .btn.ghost {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
-      gap: 18px;
-      align-items: start;
-    }
-    .sidebar {
-      display: grid;
-      gap: 16px;
-      position: sticky;
-      top: 16px;
-    }
-    .side-card {
-      padding: 18px;
-    }
-    .side-card h2 {
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
-    .meta {
-      display: grid;
-      gap: 10px;
-    }
-    .meta-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .meta-row span {
-      color: var(--soft);
-      font-size: 13px;
-    }
-    .meta-row strong {
-      text-align: right;
-      font-size: 13px;
-    }
-    .copy-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .copy-head span {
-      color: var(--soft);
-      font-size: 12px;
-    }
-    .copy-box {
-      margin: 0;
-      padding: 15px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.035);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      color: var(--muted);
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-size: 14px;
-      line-height: 1.72;
-      max-height: 280px;
-      overflow: auto;
-    }
-
-    .preview {
-      padding: 16px;
-      display: grid;
-      gap: 14px;
-    }
-    .preview-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .preview-head strong { font-size: 18px; }
-    .preview-head span {
-      display: block;
-      margin-top: 4px;
-      color: var(--soft);
-      font-size: 13px;
-    }
-    .back-link {
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-weight: 700;
-    }
-    .stage {
-      min-height: 720px;
-      padding: 12px;
-      border-radius: 22px;
-      overflow: auto;
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
-        rgba(4, 8, 14, 0.92);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .mount {
-      width: fit-content;
-      margin: 0 auto;
-    }
-
-    .poster {
-      position: relative;
-      overflow: hidden;
-      color: #fff;
-      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42);
-      isolation: isolate;
-      background-color: #0a1320;
-    }
-    .poster.wechat { width: 540px; height: 540px; border-radius: 28px; }
-    .poster.xhs { width: 540px; height: 720px; border-radius: 30px; }
-    .poster.banner { width: 900px; height: 383px; border-radius: 28px; }
-    .poster.long { width: 540px; min-height: 1320px; border-radius: 32px; }
-    .poster::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(3, 7, 18, 0.08), rgba(3, 7, 18, 0.2)),
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.08), transparent 22%);
-      pointer-events: none;
-    }
-    .poster::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 26px 26px;
-      opacity: 0.12;
-      pointer-events: none;
-    }
-
-    .poster-photo {
-      position: absolute;
-      inset: 0 0 0 auto;
-      width: 46%;
-      background-image:
-        linear-gradient(90deg, rgba(8, 14, 24, 0) 0%, rgba(8, 14, 24, 0.18) 22%, rgba(8, 14, 24, 0.58) 100%),
-        var(--photo);
-      background-size: cover;
-      background-position: center;
-      opacity: 0.34;
-      filter: saturate(0.82) contrast(1.02);
-      mix-blend-mode: screen;
-      pointer-events: none;
-      mask-image: linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.88) 34%, rgba(0,0,0,1) 100%);
-      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.88) 34%, rgba(0,0,0,1) 100%);
-    }
-
-    .poster-inner {
-      position: relative;
-      z-index: 1;
-      height: 100%;
-      display: grid;
-    }
-    .poster.wechat .poster-inner,
-    .poster.xhs .poster-inner {
-      grid-template-rows: auto auto 1fr auto;
-      gap: 18px;
-      padding: 36px;
-    }
-    .poster.banner .poster-inner {
-      grid-template-columns: minmax(0, 1.15fr) minmax(250px, 0.85fr);
-      gap: 20px;
-      padding: 30px 38px;
-    }
-    .poster.long .poster-inner {
-      padding: 38px 34px 40px;
-      gap: 18px;
-      align-content: start;
-    }
-
-    .poster-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.88);
-    }
-    .brand-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 16px var(--accent);
-    }
-
-    .hero {
-      display: grid;
-      gap: 16px;
-    }
-    .hero-top {
-      display: block;
-    }
-    .hero-copy {
-      display: grid;
-      gap: 10px;
-      min-width: 0;
-    }
-    .eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.66);
-    }
-    .title {
-      margin: 0;
-      font-size: clamp(32px, 6vw, 56px);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      font-weight: 900;
-      white-space: pre-line;
-      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
-    }
-    .subtitle {
-      margin: 0;
-      max-width: 36ch;
-      color: rgba(255, 255, 255, 0.82);
-      line-height: 1.65;
-      font-size: 14px;
-    }
-    .poster.xhs .hero-copy,
-    .poster.wechat .hero-copy,
-    .poster.long .hero-copy {
-      max-width: 58%;
-    }
-    .poster.banner .hero-copy {
-      max-width: 88%;
-    }
-
-    .chips,
-    .stack,
-    .stats,
-    .compare,
-    .emotion,
-    .phases,
-    .works,
-    .schedule,
-    .details,
-    .salary {
-      display: grid;
-      gap: 12px;
-    }
-    .chips {
-      grid-template-columns: repeat(3, max-content);
-    }
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 11px;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.9);
-    }
-    .card {
-      padding: 16px;
-      border-radius: 20px;
-      background: rgba(8, 15, 27, 0.62);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(8px);
-    }
-    .card h3,
-    .card-title {
-      margin: 0 0 8px;
-      font-size: 18px;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-    }
-    .card p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .item {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .stats.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .stats.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .stat {
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .stat-value {
-      display: block;
-      margin-bottom: 8px;
-      font-family: var(--font-mono);
-      font-size: 28px;
-      line-height: 1;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.96);
-    }
-    .stat-label {
-      display: block;
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.66);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 18px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
-      color: #08111d;
-      font-weight: 800;
-      font-size: 14px;
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
-    }
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-      padding-top: 4px;
-    }
-
-    .compare { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .compare .bad {
-      background: linear-gradient(180deg, rgba(248, 113, 113, 0.12), rgba(127, 29, 29, 0.16));
-      border-color: rgba(252, 165, 165, 0.16);
-    }
-    .compare .good {
-      background: linear-gradient(180deg, rgba(34, 211, 238, 0.12), rgba(8, 47, 73, 0.18));
-      border-color: rgba(103, 232, 249, 0.16);
-    }
-    .compare-total {
-      margin: 10px 0 12px;
-      font-family: var(--font-mono);
-      font-size: 24px;
-      font-weight: 700;
-    }
-    .list {
-      display: grid;
-      gap: 8px;
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .emotion,
-    .phases,
-    .works,
-    .schedule,
-    .details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .salary { grid-template-columns: 1.1fr 0.9fr; }
-
-    .tag {
-      display: inline-flex;
-      width: fit-content;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .mono { font-family: var(--font-mono); }
-    .big {
-      margin: 10px 0 6px;
-      font-family: var(--font-mono);
-      font-size: 38px;
-      line-height: 1;
-      font-weight: 700;
-    }
-    .muted {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .poster.banner .left,
-    .poster.banner .right {
-      display: grid;
-      gap: 16px;
-      align-content: start;
-    }
-    .poster.banner .title {
-      font-size: 42px;
-      max-width: 10ch;
-    }
-    .poster.banner .compare,
-    .poster.banner .emotion,
-    .poster.banner .phases,
-    .poster.banner .works,
-    .poster.banner .schedule,
-    .poster.banner .details,
-    .poster.banner .salary { grid-template-columns: 1fr; }
-    .poster.banner .cta { width: 100%; }
-    .poster.banner .poster-photo { width: 32%; opacity: 0.26; }
-    .poster.long .poster-photo { width: 42%; opacity: 0.24; }
-
-    .poster.wechat .poster-inner {
-      gap: 14px;
-      padding: 28px;
-    }
-    .poster.wechat .hero {
-      gap: 12px;
-    }
-    .poster.wechat .hero-copy {
-      max-width: 56%;
-      gap: 8px;
-    }
-    .poster.wechat .title {
-      font-size: 42px;
-      line-height: 0.94;
-    }
-    .poster.wechat .subtitle {
-      font-size: 12px;
-      line-height: 1.5;
-      max-width: 28ch;
-    }
-    .poster.wechat .chips {
-      gap: 8px;
-    }
-    .poster.wechat .chip {
-      padding: 7px 10px;
-      font-size: 10px;
-    }
-    .poster.wechat .card {
-      padding: 14px;
-      border-radius: 18px;
-    }
-    .poster.wechat .card h3,
-    .poster.wechat .card-title {
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-    .poster.wechat .card p,
-    .poster.wechat .item,
-    .poster.wechat .list {
-      font-size: 12px;
-      line-height: 1.45;
-    }
-    .poster.wechat .item {
-      padding: 12px 14px;
-    }
-    .poster.wechat .stats {
-      gap: 8px;
-    }
-    .poster.wechat .stat {
-      padding: 12px 10px;
-      border-radius: 16px;
-    }
-    .poster.wechat .stat-value {
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
-    .poster.wechat .stat-label {
-      font-size: 10px;
-      letter-spacing: 0.06em;
-    }
-    .poster.wechat .cta {
-      padding: 12px 16px;
-      font-size: 13px;
-    }
-
-    @media (max-width: 1180px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar { position: static; }
-    }
-    @media (max-width: 860px) {
-      body { padding: 16px 12px 40px; }
-      .header { flex-direction: column; padding: 22px; }
-      .dir-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 640px) {
-      .dir-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;900&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif; background: #faf9f5; color: #10162f; line-height: 1.6; padding: 28px 24px 80px; max-width: 1240px; margin: 0 auto; }
+  h1, h2, h3 { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; line-height: 1.15; }
+  h1 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.5px; }
+  h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; margin-top: 36px; margin-bottom: 14px; }
+  h3 { font-size: 17px; font-weight: 800; }
+  code, .mono { font-family: 'Space Mono', monospace; }
+  a { color: #10162f; text-decoration: none; border-bottom: 1.5px solid #10162f; }
+  a:hover { background: #fef08a; }
+  .sub { font-size: 14px; color: #666; margin-top: 4px; }
+  .nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 24px; padding-bottom: 16px; border-bottom: 2px dashed #ccc; }
+  .nav a { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; padding: 6px 12px; border: 1.5px solid #10162f; background: #fff; }
+  .nav a:hover { background: #10162f; color: #fff; }
+  .nav a.active { background: #10162f; color: #fff; }
+  .card { background: #fff; border: 2px solid #10162f; box-shadow: 6px 6px 0 #10162f; padding: 18px 20px; margin-bottom: 16px; }
+  .card.tight { padding: 12px 14px; box-shadow: 4px 4px 0 #10162f; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 18px 0; }
+  .stat { background: #fff; border: 2px solid #10162f; box-shadow: 3px 3px 0 #10162f; padding: 10px 14px; }
+  .stat .n { font-size: 28px; font-weight: 900; font-family: 'Space Mono', monospace; line-height: 1; }
+  .stat .l { font-size: 11px; color: #666; margin-top: 4px; font-family: 'Space Mono', monospace; letter-spacing: 0.5px; }
+  .tier { display: inline-block; padding: 3px 8px; font-size: 10px; font-weight: 800; border-radius: 999px; font-family: 'Space Mono', monospace; letter-spacing: 0.5px; vertical-align: middle; }
+  .tier.both { background: #dbeafe; color: #1e40af; border: 1.5px solid #1e40af; }
+  .tier.basic { background: #fce7f3; color: #9d174d; border: 1.5px solid #9d174d; }
+  .tier.advanced { background: #fef08a; color: #854d0e; border: 1.5px solid #ca8a04; }
+  .type-pill { display: inline-block; padding: 2px 7px; font-size: 10px; font-weight: 700; border-radius: 999px; font-family: 'Space Mono', monospace; }
+  .t-Lesson { background: #fef3c7; }
+  .t-Information { background: #dbeafe; }
+  .t-InteractiveLab { background: #fce7f3; }
+  .t-Quest { background: #dcfce7; }
+  .t-Video { background: #fed7aa; }
+  .live { color: #dc2626; font-weight: 900; font-family: 'Space Mono', monospace; font-size: 10px; }
+  .lesson-row { padding: 10px 12px; border-bottom: 1px solid #eee; display: grid; grid-template-columns: 60px 110px 1fr 50px; gap: 12px; align-items: start; }
+  .lesson-row:last-child { border-bottom: 0; }
+  .lesson-row .code { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; white-space: nowrap; }
+  .lesson-row .title { font-weight: 600; font-size: 13px; }
+  .lesson-row .meta { font-size: 11px; color: #666; margin-top: 3px; }
+  .lesson-row .dur { font-family: 'Space Mono', monospace; font-size: 11px; color: #888; white-space: nowrap; text-align: right; }
+  .phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 18px 0; }
+  .phase-card { background: #fff; border: 2px solid #10162f; box-shadow: 5px 5px 0 #10162f; padding: 16px 18px; transition: transform 0.15s, box-shadow 0.15s; }
+  .phase-card:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #10162f; }
+  .phase-card .label { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--phase-color, #10162f); font-weight: 800; letter-spacing: 1px; }
+  .phase-card .name { font-size: 15px; font-weight: 800; margin: 6px 0 8px; line-height: 1.3; }
+  .phase-card .summary { font-size: 11px; color: #666; font-family: 'Space Mono', monospace; }
+  .phase-card .ct { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; font-size: 10px; }
+  .phase-card a { border: 0; }
+  .price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+  @media (max-width: 600px) { .price-cards { grid-template-columns: 1fr; } .lesson-row { grid-template-columns: 50px 1fr; } .lesson-row .meta, .lesson-row .dur { grid-column: 2; } }
+  .price-card { background: #fff; border: 2px solid #10162f; box-shadow: 6px 6px 0 #10162f; padding: 18px 20px; }
+  .price-card .tag { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 800; letter-spacing: 1px; }
+  .price-card .price { font-family: 'Space Mono', monospace; font-size: 42px; font-weight: 900; margin: 8px 0; }
+  .price-card ul { margin-top: 10px; padding-left: 20px; font-size: 12px; line-height: 1.8; }
+  .footer { font-size: 11px; color: #888; font-family: 'Space Mono', monospace; margin-top: 36px; padding-top: 14px; border-top: 1px dashed #ccc; }
+</style>
+<title>人人都能学的 AI Coding 实战课 — 营销海报</title>
+<style>
+  body { background: linear-gradient(135deg, #faf9f5 0%, #fef08a 100%); }
+  .hero { background: #10162f; color: #fef08a; padding: 40px 32px; border: 3px solid #10162f; box-shadow: 12px 12px 0 #dc2626; margin-bottom: 32px; }
+  .hero h1 { color: #fef08a; font-size: clamp(32px, 5vw, 56px); }
+  .hero .super { font-size: 18px; color: #fff; margin-top: 16px; line-height: 1.6; }
+  .hero .sub-hook { font-size: 14px; color: #fed7aa; margin-top: 8px; font-style: italic; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+  .badge { background: #fef08a; color: #10162f; padding: 4px 12px; border: 2px solid #10162f; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 800; }
+  .pain-card { background: #fff; border-left: 5px solid #dc2626; padding: 14px 18px; margin-bottom: 12px; }
+  .pain-card .who { font-size: 11px; color: #dc2626; font-family: 'Space Mono', monospace; font-weight: 800; letter-spacing: 1px; }
+  .pain-card .pain { font-size: 14px; margin-top: 4px; font-weight: 600; }
+  .pain-card .arrow { font-size: 18px; color: #10b981; margin: 4px 0; }
+  .pain-card .solve { font-size: 13px; color: #10162f; }
+  .deliverable { background: #fff; border: 2px solid #10162f; box-shadow: 4px 4px 0 #10162f; padding: 14px 16px; }
+  .deliverable .num { font-family: 'Space Mono', monospace; font-size: 12px; color: #dc2626; font-weight: 800; }
+  .deliverable .title { font-size: 14px; font-weight: 800; margin: 4px 0; }
+  .deliverable .desc { font-size: 11px; color: #666; }
+  .deliverable .use { font-size: 11px; color: #10b981; margin-top: 6px; font-weight: 600; }
+  .deliverable.adv { border-color: #ca8a04; box-shadow: 4px 4px 0 #ca8a04; }
+  .deliverable.adv .num { color: #ca8a04; }
+</style>
 </head>
 <body>
-  <div class="app">
-    <header class="shell header">
-      <div>
-        <h1>AI Coding 实战课<br>宣传海报生成器</h1>
-        <p>目标是截图即可发布，所以这版优先保证清晰、可读和层级，不走“背景很花但字看不清”的路子。</p>
-      </div>
-      <div class="brand">匠人学院 · jiangren.com.au</div>
-    </header>
 
-    <section class="shell controls">
-      <div class="section">
-        <div class="section-head">
-          <strong>渠道尺寸</strong>
-          <span id="channelHint">540 × 540</span>
-        </div>
-        <div class="tabs" id="channelTabs"></div>
-      </div>
-
-      <div class="section">
-        <div class="section-head">
-          <strong>宣传方向</strong>
-          <span id="directionHint">零基础也能 5 周做出产品</span>
-        </div>
-        <div class="dir-grid" id="directionTabs"></div>
-      </div>
-
-      <div class="utility">
-        <span>点击右下角红色「⬇ 下载当前海报 PNG」按钮一键导出（2x 高清）；也可用系统截图 Mac <span class="mono">⌘⇧4</span> / Windows <span class="mono">Win + Shift + S</span>。</span>
-        <div class="tabs">
-          <button class="btn primary" id="copyButton" type="button">复制配套文案</button>
-          <button class="btn ghost" id="toggleCopy" type="button">收起文案面板</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="layout">
-      <aside class="sidebar">
-        <div class="shell side-card">
-          <h2>当前组合</h2>
-          <div class="meta" id="meta"></div>
-        </div>
-
-        <div class="shell side-card" id="copyCard">
-          <div class="copy-head">
-            <h2>发布文案</h2>
-            <span id="copyStatus">已同步当前组合</span>
-          </div>
-          <pre class="copy-box" id="copyText"></pre>
-        </div>
-      </aside>
-
-      <div class="shell preview">
-        <div class="preview-head">
-          <div>
-            <strong id="previewTitle">预览海报</strong>
-            <span id="previewSub">当前海报会按所选渠道比例渲染，可直接截图发布。</span>
-          </div>
-          <a class="back-link" href="curriculum.html">返回 curriculum.html</a>
-        </div>
-        <div class="stage">
-          <div class="mount" id="mount"></div>
-        </div>
-      </div>
-    </section>
+<div class="hero">
+  <div class="mono" style="font-size:12px;color:#fed7aa;letter-spacing:2px">人人都能学的 AI Coding 实战课 · 2026 Q2 · 第 2 期</div>
+  <h1>人人都能学的 AI Coding 实战课</h1>
+  <div class="super">一门课学会做 <strong style="color:#fef08a">8 种 AI 产出</strong>：PPT · 海报 · 音乐 · 配音 · 视频 · 网站 · 数据 Dashboard · 自动化 Agent ✋</div>
+  <div class="sub-hook">市面上 99% 的 AI 课只教 1 个工具或 1 类产出。这门让你 6-8 周掌握 32 个工具 + 8 类创作能力，全程不写代码。</div>
+  <div class="badge-row">
+    <span class="badge">113 节课</span>
+    <span class="badge">14 个 Quest 实战</span>
+    <span class="badge">18 个互动 Lab</span>
+    <span class="badge">27 节直播</span>
+    <span class="badge">13 个 Phase</span>
+    <span class="badge" style="background:#dc2626;color:#fef08a">非技术友好</span>
   </div>
+</div>
 
-  <script>
-    const COURSE = {
-      name: "人人都能学的 AI Coding 实战课",
-      url: "https://jiangren.com.au/program-course/ai-programming",
-      brand: "匠人学院",
-      site: "jiangren.com.au",
-      highlights: ["103 节课", "29 个互动 Lab", "4 个阶段", "基础班 5 周", "完整版 8 周", "零基础友好"]
-    };
+<nav class="nav"><a href="./curriculum.html">🏠 课程总览</a><a href="./outline.html">📋 详细大纲</a><a href="./outline-preview.html">🔍 实时预览</a><a href="./learning-plan.html">📅 学习计划</a><a href="./tools.html">🛠️ AI 工具大全</a><a href="./poster.html" class="active">🎨 营销海报</a><a href="./marketing.html">📣 营销文案库</a></nav>
 
-    const CHANNELS = {
-      wechat: { label: "朋友圈", size: "540 × 540", ratio: "1:1", desc: "微信朋友圈配图", klass: "wechat" },
-      xhs: { label: "小红书", size: "540 × 720", ratio: "3:4", desc: "小红书封面", klass: "xhs" },
-      banner: { label: "公众号头图", size: "900 × 383", ratio: "2.35:1", desc: "微信公众号文章头图", klass: "banner" },
-      long: { label: "详情长图", size: "540 × Auto", ratio: "长图", desc: "课程详情完整介绍", klass: "long" }
-    };
+<h2>🎯 这门课解决谁的什么痛点</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:18px 0">
+  <div class="pain-card">
+    <div class="who">在职白领 · 5+ 年经验</div>
+    <div class="pain">做了 100 份 PPT、写了 50 篇报告，但回头看一年没做出过一个"真东西"</div>
+    <div class="arrow">↓</div>
+    <div class="solve">6 周做出 5 件能放进作品集的真实产品</div>
+  </div>
+  <div class="pain-card">
+    <div class="who">大学生 · 在读 / 应届</div>
+    <div class="pain">简历空，没项目；JD 都要"AI 项目经验"但学校没教</div>
+    <div class="arrow">↓</div>
+    <div class="solve">作品集多 5-8 个 AI 项目，求职面试有料聊</div>
+  </div>
+  <div class="pain-card">
+    <div class="who">创业者 · 想做 MVP</div>
+    <div class="pain">有想法但请不起开发团队，做 BP 给投资人都没产品 demo</div>
+    <div class="arrow">↓</div>
+    <div class="solve">自己用 Cowork 做出可演示的 MVP + BP + Landing Page</div>
+  </div>
+  <div class="pain-card">
+    <div class="who">想转型者 · 不知道方向</div>
+    <div class="pain">AI 时代该学什么？编程太难、读完书也不会做东西</div>
+    <div class="arrow">↓</div>
+    <div class="solve">系统化"AI 主导产品制作"能力，6 周建立完整闭环</div>
+  </div>
+</div>
 
-    const DIRECTIONS = {
-      beginner: {
-        label: "零基础小白",
-        short: "不会写代码？AI 帮你写。",
-        eyebrow: "Zero to Builder",
-        title: "不会写代码？\nAI 帮你写。",
-        subtitle: "你负责把想法说清楚，AI 负责把代码写出来。零基础也能 5 周做出第一个产品。",
-        hook: "从“完全不会”到“自己上线”",
-        theme: { bg: "linear-gradient(145deg, #08101f 0%, #161d52 42%, #4c1d95 100%)", accent: "#a78bfa", accentAlt: "#67e8f9" },
-        photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=480&q=80",
-        badges: ["中文说需求", "不用背语法", "实战驱动"],
-        stats: [{ value: "$0", label: "前置要求" }, { value: "5周", label: "做出产品" }, { value: "103", label: "节课内容" }],
-        bullets: ["不会写 for 循环也能开始做网站", "每节课都在真实产品场景里练", "29 个互动 Lab 边学边做", "适合想跨入 AI Coding 的小白"],
-        copy: "不会写代码，也可以先做出产品。\n\n这门课从 AI 工具和 Prompt 开始，不要求传统编程基础。你负责把需求说清楚，AI 帮你写，课程里再教你怎么判断、怎么改、怎么上线。\n\n103 节课、29 个互动 Lab，基础班 5 周，零基础友好。"
-      },
-      entrepreneur: {
-        label: "创业者",
-        short: "外包 $10,000 vs 自己做 $0",
-        eyebrow: "Founder Mode",
-        title: "外包 $10,000\n自己做 $0",
-        subtitle: "创业最贵的不是想法，是每一次需求变更都要重新付费。学会 AI Coding，MVP 自己控制。",
-        hook: "把创业成本压回地面",
-        theme: { bg: "linear-gradient(145deg, #0a1018 0%, #182033 40%, #5a3410 100%)", accent: "#f59e0b", accentAlt: "#f97316" },
-        photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=480&q=80",
-        badges: ["MVP 自己做", "需求随时改", "不再被外包绑架"],
-        stats: [{ value: "$9K+", label: "单项目省下" }, { value: "2天", label: "做出 MVP" }, { value: "∞", label: "改版自由" }],
-        compare: {
-          leftTitle: "找外包",
-          leftItems: ["需求沟通 2 周", "开发 1-2 个月", "每次改需求都加钱", "上线后继续依赖别人"],
-          leftTotal: "$10,000+",
-          rightTitle: "自己 + AI",
-          rightItems: ["想到就做原型", "随时修改文案和流程", "课程学费可控", "技能能反复复用"],
-          rightTotal: "$999"
-        },
-        copy: "以前做一个落地页，要么找人排期，要么看外包报价。\n\n现在创业者更划算的做法，是先用 AI 把 MVP 自己搭出来。需求一改就能继续迭代，不再被技术资源卡住。\n\n这门课把 Landing Page、全栈 AI 应用、Agent 和部署都串起来，适合想自己验证产品的人。"
-      },
-      quit: {
-        label: "学编程劝退",
-        short: "传统编程 6 个月放弃 vs AI 编程 5 周上线",
-        eyebrow: "Stop Suffering",
-        title: "传统编程 6 个月\nAI 编程 5 周",
-        subtitle: "过去的门槛是先学语法，再学框架，再学部署。现在更高效的路径，是先把产品做出来。",
-        hook: "别再被旧学习路径折磨",
-        theme: { bg: "linear-gradient(145deg, #14090b 0%, #3a0f16 40%, #7f1d1d 100%)", accent: "#fb7185", accentAlt: "#f97316" },
-        photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=480&q=80",
-        badges: ["拒绝死背语法", "先出结果", "学完能上线"],
-        stats: [{ value: "6月", label: "旧路径" }, { value: "5周", label: "新路径" }, { value: "0", label: "语法焦虑" }],
-        compare: {
-          leftTitle: "传统编程",
-          leftItems: ["先学语法", "再背 API", "然后调试到怀疑人生", "最后 Demo 还很难看"],
-          leftTotal: "24周+",
-          rightTitle: "AI 编程",
-          rightItems: ["直接说需求", "AI 先写出可运行版本", "你只做判断和修改", "课程里带你部署上线"],
-          rightTotal: "5周"
-        },
-        copy: "很多人不是不适合学技术，而是被传统编程学习路径劝退了。\n\n以前要先学一堆语法、框架、环境配置，几个月后还不一定能做出一个像样的东西。AI Coding 的路径反过来了：先做出产品，再在过程中理解代码。\n\n5 周能看到真实成果，这比空耗 6 个月更有价值。"
-      },
-      anxiety: {
-        label: "AI 焦虑",
-        short: "焦虑 → 行动",
-        eyebrow: "Anxiety to Action",
-        title: "别再刷焦虑帖。\n先做一个产品。",
-        subtitle: "你怕被 AI 取代，本质上是还没真正用过它。把焦虑变成行动，速度才会回来。",
-        hook: "情绪只有落到动作上才会消失",
-        theme: { bg: "linear-gradient(145deg, #05141d 0%, #093449 40%, #0f766e 100%)", accent: "#2dd4bf", accentAlt: "#38bdf8" },
-        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=480&q=80",
-        badges: ["把慌变成作品", "5 周见成果", "从输入焦虑到输出能力"],
-        stats: [{ value: "5周", label: "焦虑转行动" }, { value: "29", label: "互动 Lab" }, { value: "4", label: "实战阶段" }],
-        emotion: {
-          before: ["每天刷 AI 新闻更慌", "怕岗位变化跟不上", "知道重要但不知道从哪开始"],
-          after: ["先做出自己的小产品", "开始理解 AI 真正能做什么", "把“怕落后”换成“我已经在做”"]
-        },
-        copy: "很多 AI 焦虑，其实是信息过载，不是能力不足。\n\n真正有用的办法不是继续看别人总结，而是自己动手做一个东西。你一旦开始用 AI 写页面、做流程、接接口，心态会立刻从“怕落后”切到“我已经在路上”。\n\n这门课适合拿来把焦虑落地成行动。"
-      },
-      data: {
-        label: "课程数据",
-        short: "103 节课、29 个 Lab、4 阶段",
-        eyebrow: "Hard Numbers",
-        title: "103 节课\n29 个互动 Lab",
-        subtitle: "不是一个“看懂概念”的泛泛课程，而是一条从工具、页面、应用到 Agent 部署的完整实战路径。",
-        hook: "硬核课程结构直接摆出来",
-        theme: { bg: "linear-gradient(145deg, #0a1022 0%, #1f1d4f 40%, #312e81 100%)", accent: "#818cf8", accentAlt: "#22d3ee" },
-        photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=480&q=80",
-        badges: ["完整体系", "不是碎片教程", "可交付导向"],
-        stats: [{ value: "103", label: "节课" }, { value: "29", label: "互动 Lab" }, { value: "4", label: "阶段" }, { value: "8周", label: "完整版" }],
-        phases: [
-          { tag: "P1", title: "AI 工具 + Prompt", desc: "先把 AI 工具链、提问方式和输出质量打牢。" },
-          { tag: "P2", title: "Landing Page 实战", desc: "把产品页、营销页和基础交互先做出来。" },
-          { tag: "P3", title: "全栈 AI 应用", desc: "接接口、管状态、做真正能用的 AI 功能。" },
-          { tag: "P4", title: "高级 Agent + 部署", desc: "把项目推到可部署、可交付、可复用的水平。" }
-        ],
-        copy: "课程不是只有几个 AI 工具 demo，而是完整走完一条做产品的路径。\n\n一共 103 节课、29 个互动 Lab、4 个阶段。前面先学 AI 工具和 Prompt，中间做 Landing Page 和全栈 AI 应用，后面再进 Agent 和部署。\n\n如果你要的是“系统学一遍然后能用”，这套结构是完整的。"
-      },
-      career: {
-        label: "职场转型",
-        short: "AI Product Builder $80-120K",
-        eyebrow: "Career Shift",
-        title: "AI Product Builder\n$80-120K",
-        subtitle: "不一定非要转纯开发岗。会用 AI 快速做出产品的人，本身就是新岗位的核心能力。",
-        hook: "不是学技术，是拿新岗位门票",
-        theme: { bg: "linear-gradient(145deg, #071421 0%, #112742 40%, #1d4ed8 100%)", accent: "#60a5fa", accentAlt: "#22d3ee" },
-        photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=480&q=80",
-        badges: ["新岗位机会", "会做原型", "会交付 AI 功能"],
-        stats: [{ value: "5周", label: "基础班" }, { value: "$80K", label: "起薪区间" }, { value: "$120K", label: "上限区间" }],
-        salary: {
-          role: "AI Product Builder",
-          salary: "$80-120K",
-          items: ["能把需求转成产品原型", "能做 Landing Page 和产品流程", "能接入 AI 能力并部署演示", "更懂业务侧怎么快速试错"]
-        },
-        copy: "未来几年最有价值的，不只是会写代码的人，而是能把 AI 真正用进产品里的人。\n\n像 AI Product Builder 这种岗位，本质上要的是快速做原型、能和业务沟通、也能把 AI 功能接进来。对很多职场人来说，这是比纯转开发更现实的一条升级路线。\n\n这门课正好把这套能力练出来。"
-      },
-      side: {
-        label: "宝妈 / 副业",
-        short: "碎片时间学习，一天时间表",
-        eyebrow: "Busy Life Friendly",
-        title: "每天 1 小时。\n也能做出副业产品。",
-        subtitle: "碎片时间最怕学不会，AI Coding 的好处是每次打开电脑都能推进一点真实成果。",
-        hook: "时间少，也能有输出",
-        theme: { bg: "linear-gradient(145deg, #221237 0%, #4c1d95 40%, #db2777 100%)", accent: "#f472b6", accentAlt: "#c084fc" },
-        photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=480&q=80",
-        badges: ["碎片时间友好", "每天都有成就感", "适合副业探索"],
-        stats: [{ value: "1h", label: "每天投入" }, { value: "5周", label: "看到成果" }, { value: "29", label: "互动 Lab" }],
-        schedule: [
-          { time: "07:20", title: "送娃前 15 分钟", desc: "看一节短课，把当天要做的产品任务定下来。" },
-          { time: "13:00", title: "午休 25 分钟", desc: "照着互动 Lab 把一个页面模块搭出来。" },
-          { time: "21:30", title: "晚上 20 分钟", desc: "跟 AI 一起改交互、调文案、继续推进。" },
-          { time: "周末", title: "集中 1-2 小时", desc: "把这周学的内容拼成完整页面或小工具。" }
-        ],
-        copy: "很多人不是没想法，而是没整块时间。\n\nAI Coding 适合碎片化学习的原因，是你每次打开电脑都能把产品往前推一点。看一节短课、做一个互动 Lab、跟 AI 改一次页面，这些都是真成果，不是空记笔记。\n\n每天 1 小时，5 周足够做出一个能展示的产品。"
-      },
-      outsource: {
-        label: "花钱请外包",
-        short: "详细成本对比表",
-        eyebrow: "Cost Breakdown",
-        title: "做一个网站，\n钱到底花在哪？",
-        subtitle: "外包贵的不只是报价，还有沟通成本、返工成本、延期成本和后续维护成本。",
-        hook: "把一笔账算透了再决定",
-        theme: { bg: "linear-gradient(145deg, #120b03 0%, #3e1f0a 40%, #b45309 100%)", accent: "#fbbf24", accentAlt: "#fb7185" },
-        photo: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=480&q=80",
-        badges: ["详细成本表", "沟通成本", "返工成本"],
-        stats: [{ value: "$10K", label: "传统外包" }, { value: "$999", label: "课程成本" }, { value: "终身", label: "技能复利" }],
-        details: [
-          { label: "报价", value: "$5,000-15,000", desc: "看起来是开发费，实际上只是起步价。" },
-          { label: "需求沟通", value: "1-2 周", desc: "需求没说明白，项目一开始就会反复重来。" },
-          { label: "改版成本", value: "持续追加", desc: "每次改页面、改流程、改功能都可能重新报价。" },
-          { label: "交接风险", value: "很高", desc: "一旦外包团队退出，后面维护很容易断掉。" }
-        ],
-        copy: "很多人觉得外包贵，是因为只看到报价单。\n\n真正更贵的是沟通来回、需求理解偏差、改版重复收费，还有项目交付之后没人维护。学会 AI Coding，不是为了省一次钱，而是以后每个项目都能自己掌控。\n\n第一个项目就可能把学费赚回来。"
-      },
-      showcase: {
-        label: "学员作品",
-        short: "真实学员 5 周内做出的产品展示",
-        eyebrow: "Student Results",
-        title: "这些不是 Demo。\n是学员做出来的产品。",
-        subtitle: "真正有说服力的不是课程介绍，而是学员在几周内能做出什么。这里展示的是“能拿去讲故事”的成果。",
-        hook: "5 周内拿得出手的作品",
-        theme: { bg: "linear-gradient(145deg, #0b1022 0%, #2e2961 40%, #7c3aed 100%)", accent: "#c084fc", accentAlt: "#2dd4bf" },
-        photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=480&q=80",
-        badges: ["真实成果", "不是老师代做", "可以拿去展示"],
-        stats: [{ value: "5周", label: "首个作品" }, { value: "50+", label: "作品样本" }, { value: "200+", label: "真实用户" }],
-        works: [
-          { tag: "Week 3", title: "个人品牌网站", desc: "带作品集、博客、表单收集和 AI 聊天入口。" },
-          { tag: "Week 5", title: "AI 客服助手", desc: "接知识库回答常见问题，能用在真实业务里。" },
-          { tag: "Week 6", title: "内部效率工具", desc: "把表单、表格、自动化流程整合成团队小工具。" },
-          { tag: "Week 8", title: "副业 MVP", desc: "拿来测试市场反馈，已经开始收集真实用户。" }
-        ],
-        copy: "最能说明课程价值的，不是宣传词，而是学员几周后做出了什么。\n\n有的人第 3 周就上线了个人品牌网站，有的人做了 AI 客服，有的人把公司里的重复流程做成了内部工具。不是老师代做，是学员自己跟着课程做出来的。\n\n如果你也想尽快拿出一个能展示的作品，这门课的路径很直接。"
-      }
-    };
+<h2>📦 你学完能拿到手的"实物"（基础班 5 件 + 进阶班 +3 件）</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0">
+  <div class="deliverable">
+    <div class="num">交付 01 · 基础班</div>
+    <div class="title">📊 在线 HTML PPT</div>
+    <div class="desc">不是 .pptx — 是可分享 URL 的 HTML PPT（Slidev/reveal.js），能嵌入网站</div>
+    <div class="use">→ 用在产品介绍、招生宣传、培训演示</div>
+  </div>
+  <div class="deliverable">
+    <div class="num">交付 02 · 基础班</div>
+    <div class="title">📄 A4 PDF 全家桶</div>
+    <div class="desc">海报 / BP / 简历 / 提案 / 白皮书 任选其一完整产出</div>
+    <div class="use">→ 求职简历 / 创业 BP / 客户提案立刻用</div>
+  </div>
+  <div class="deliverable">
+    <div class="num">交付 03 · 基础班</div>
+    <div class="title">🌐 Landing Page 网站</div>
+    <div class="desc">真实部署到 Vercel 的网站，带域名 + SEO 优化</div>
+    <div class="use">→ 个人 IP / 项目展示 / 产品官网立刻可访问</div>
+  </div>
+  <div class="deliverable">
+    <div class="num">交付 04 · 基础班</div>
+    <div class="title">🎬 60s 知识科普视频</div>
+    <div class="desc">PPT 即视频（HyperFrames 自动出片），含 AI 配音 + 字幕</div>
+    <div class="use">→ B 站 / YouTube / 视频号 / 抖音内容</div>
+  </div>
+  <div class="deliverable">
+    <div class="num">交付 05 · 基础班</div>
+    <div class="title">📣 多平台分发能力</div>
+    <div class="desc">一份内容自动改成 5 平台风格（小红书 / 公众号 / 朋友圈 / LinkedIn / Twitter）</div>
+    <div class="use">→ 自媒体 / 个人品牌运营立刻应用</div>
+  </div>
+  <div class="deliverable adv">
+    <div class="num">交付 06 · 仅进阶班 🟨</div>
+    <div class="title">🤖 内容自动化 Agent</div>
+    <div class="desc">每天自动抓数据 + AI 整理 + 自动部署到你网站</div>
+    <div class="use">→ 内容站无人值守每天自动更新</div>
+  </div>
+  <div class="deliverable adv">
+    <div class="num">交付 07 · 仅进阶班 🟨</div>
+    <div class="title">📊 数据 Dashboard</div>
+    <div class="desc">抓数据 → 存数据库 → 可视化 → 阈值告警闭环</div>
+    <div class="use">→ 房产 / 加密币 / 求职岗位等数据监控</div>
+  </div>
+  <div class="deliverable adv">
+    <div class="num">交付 08 · 仅进阶班 🟨</div>
+    <div class="title">📈 AI Excel/Sheets 加速能力</div>
+    <div class="desc">AI 写公式 / VBA / Apps Script — 表格自动跑</div>
+    <div class="use">→ 日常工作 Excel 速度翻倍</div>
+  </div>
+</div>
 
-    const state = { channel: "wechat", direction: "beginner", copyVisible: true };
+<h2>💰 班型与定价</h2>
+<div class="price-cards">
+  <div class="price-card">
+    <div class="tag" style="color:#9d174d">🟪 基础班</div>
+    <div style="font-size:13px;margin-top:4px">基础班 (6 周 for Non-tech)</div>
+    <div class="price">$960<span style="font-size:14px;font-weight:700;color:#666"> AUD</span></div>
+    <div class="mono" style="font-size:11px;color:#666">6 周 · 76 节课</div>
+    <div style="font-size:12px;color:#888;margin-top:4px">第 1 期 $960 → 价格不变（升级内容免费送）</div>
+    <ul><li>PPT (online HTML)</li><li>PDF 全家桶</li><li>Landing Page 网站</li><li>自动化基础</li><li>60s 知识科普视频</li></ul>
+  </div>
+  <div class="price-card">
+    <div class="tag" style="color:#ca8a04">🟨 进阶班</div>
+    <div style="font-size:13px;margin-top:4px">进阶班 (8 周 for Non-tech)</div>
+    <div class="price">$2280<span style="font-size:14px;font-weight:700;color:#666"> AUD</span></div>
+    <div class="mono" style="font-size:11px;color:#666">8 周 · 109 节课</div>
+    <div style="font-size:12px;color:#888;margin-top:4px">单课均价 $21（市场 AI 课普遍 ${30-50}/课）</div>
+    <ul><li>基础班全部</li><li>Admin CMS + 用户数据采集</li><li>视频进阶 (BGM + 深度 TTS + B-roll)</li><li>数据自动化 Dashboard</li></ul>
+  </div>
+</div>
 
-    const channelTabs = document.getElementById("channelTabs");
-    const directionTabs = document.getElementById("directionTabs");
-    const channelHint = document.getElementById("channelHint");
-    const directionHint = document.getElementById("directionHint");
-    const meta = document.getElementById("meta");
-    const copyText = document.getElementById("copyText");
-    const copyStatus = document.getElementById("copyStatus");
-    const copyCard = document.getElementById("copyCard");
-    const previewTitle = document.getElementById("previewTitle");
-    const previewSub = document.getElementById("previewSub");
-    const mount = document.getElementById("mount");
-    const copyButton = document.getElementById("copyButton");
-    const toggleCopy = document.getElementById("toggleCopy");
+<h2>🏆 14 个 Quest 实战（AI Tutor 一对一带练）</h2>
+<div class="card">
+  <div style="font-size:12px;color:#666;margin-bottom:10px">每个 Quest 是一次"真实产出"的实战：AI Tutor 主动引导你完成，最后你提交真实作品 — 不是看视频不是做题。</div>
+  <ol style="padding-left:24px;line-height:1.9;font-size:13px">
+    <li>用 AI 写出你产品的完整 PRD</li><li>完成你的第一份在线 HTML PPT</li><li>完成你的 PDF 交付物（任选类型）</li><li>装好 Cursor 用一句话生成你第一个网页</li><li>用 Cursor 搭一个真实可用的官网首页</li><li>把你的网站真的部署到 Vercel 上线</li><li>完成你的 60 秒知识科普视频</li><li>完成你产品的&quot;五平台分发&quot;</li><li>给你的网站加一个真实可用的 AI Chatbot</li><li>给你的网站加 Admin CMS + 用户数据采集系统</li><li>跑通&quot;每日内容聚合 + 自动上线&quot;完整流程</li><li>给 P6 视频加 BGM 升级版</li><li>写一个 Claude Skill 抓数据并存到 Airtable / Supabase</li><li>完整数据 Dashboard + 自动告警</li>
+  </ol>
+</div>
 
-    function renderStats(stats) {
-      const cols = stats.length === 4 ? 4 : 3;
-      return `
-        <div class="stats cols-${cols}">
-          ${stats.map((stat) => `
-            <div class="stat">
-              <span class="stat-value">${stat.value}</span>
-              <span class="stat-label">${stat.label}</span>
-            </div>
-          `).join("")}
-        </div>
-      `;
-    }
+<h2>📣 营销文案库</h2>
+<div class="card" style="background:#fef08a;border-color:#ca8a04;box-shadow:6px 6px 0 #ca8a04">
+  <div style="font-size:14px;font-weight:700">运营/小编可以从 <a href="./marketing.html">📣 营销文案库</a> 直接复制：</div>
+  <ul style="margin-top:10px;padding-left:20px;font-size:13px;line-height:1.9">
+    <li>5 个角度的核心 hook（痛点 / 时间 / 方法 / 趋势 / 对比）</li>
+    <li>5 套小红书图文（标题 + 正文 + 配图建议 + 话题）</li>
+    <li>1 篇微信公众号长文大纲（3000 字）+ 5 个标题候选</li>
+    <li>6 条朋友圈文案（不同时间段 + 不同主题）</li>
+    <li>2 条 LinkedIn 专业 post</li>
+    <li>30 秒视频脚本（B 站/抖音/视频号通用）</li>
+    <li>3 个私信冷启动话术（在职 / 应届 / 自由职业）</li>
+  </ul>
+</div>
 
-    function renderBadges(badges) {
-      return `<div class="chips">${badges.map((item) => `<div class="chip">${item}</div>`).join("")}</div>`;
-    }
-
-    function renderList(items) {
-      return `<div class="stack">${items.map((item) => `<div class="item">${item}</div>`).join("")}</div>`;
-    }
-
-    function renderCompare(data) {
-      return `
-        <div class="compare">
-          <div class="card bad">
-            <div class="tag">${data.leftTitle}</div>
-            <div class="compare-total">${data.leftTotal}</div>
-            <div class="list">${data.leftItems.map((item) => `<div>${item}</div>`).join("")}</div>
-          </div>
-          <div class="card good">
-            <div class="tag">${data.rightTitle}</div>
-            <div class="compare-total">${data.rightTotal}</div>
-            <div class="list">${data.rightItems.map((item) => `<div>${item}</div>`).join("")}</div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderEmotion(data) {
-      return `
-        <div class="emotion">
-          <div class="card">
-            <div class="tag">焦虑状态</div>
-            <div class="list" style="margin-top:12px;">${data.before.map((item) => `<div>${item}</div>`).join("")}</div>
-          </div>
-          <div class="card">
-            <div class="tag">行动状态</div>
-            <div class="list" style="margin-top:12px;">${data.after.map((item) => `<div>${item}</div>`).join("")}</div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderPhases(data) {
-      return `
-        <div class="phases">
-          ${data.map((item) => `
-            <div class="card">
-              <div class="tag">${item.tag}</div>
-              <div class="card-title" style="margin-top:12px;">${item.title}</div>
-              <p>${item.desc}</p>
-            </div>
-          `).join("")}
-        </div>
-      `;
-    }
-
-    function renderSalary(data) {
-      return `
-        <div class="salary">
-          <div class="card">
-            <div class="tag">New Role</div>
-            <div class="card-title" style="margin-top:12px;">${data.role}</div>
-            <div class="big">${data.salary}</div>
-            <div class="muted">岗位标签不是噱头，而是企业正在寻找的新组合能力。</div>
-          </div>
-          <div class="card">
-            <div class="tag">核心能力</div>
-            <div class="list" style="margin-top:12px;">${data.items.map((item) => `<div>${item}</div>`).join("")}</div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderSchedule(data) {
-      return `
-        <div class="schedule">
-          ${data.map((item) => `
-            <div class="card">
-              <div class="tag mono">${item.time}</div>
-              <div class="card-title" style="margin-top:12px;">${item.title}</div>
-              <p>${item.desc}</p>
-            </div>
-          `).join("")}
-        </div>
-      `;
-    }
-
-    function renderDetails(data) {
-      return `
-        <div class="details">
-          ${data.map((item) => `
-            <div class="card">
-              <div class="tag">${item.label}</div>
-              <div class="big" style="font-size:24px;">${item.value}</div>
-              <p>${item.desc}</p>
-            </div>
-          `).join("")}
-        </div>
-      `;
-    }
-
-    function renderWorks(data) {
-      return `
-        <div class="works">
-          ${data.map((item) => `
-            <div class="card">
-              <div class="tag">${item.tag}</div>
-              <div class="card-title" style="margin-top:12px;">${item.title}</div>
-              <p>${item.desc}</p>
-            </div>
-          `).join("")}
-        </div>
-      `;
-    }
-
-    function body(direction) {
-      if (direction.compare) return renderCompare(direction.compare);
-      if (direction.emotion) return renderEmotion(direction.emotion);
-      if (direction.phases) return renderPhases(direction.phases);
-      if (direction.salary) return renderSalary(direction.salary);
-      if (direction.schedule) return renderSchedule(direction.schedule);
-      if (direction.details) return renderDetails(direction.details);
-      if (direction.works) return renderWorks(direction.works);
-      return renderList(direction.bullets);
-    }
-
-    function hero(direction, bannerMode) {
-      return `
-        <div class="hero">
-          <div class="hero-top">
-            <div class="hero-copy">
-              <div class="eyebrow">${direction.eyebrow}</div>
-              <h1 class="title">${direction.title}</h1>
-              <p class="subtitle">${direction.subtitle}</p>
-            </div>
-          </div>
-          ${renderBadges(direction.badges)}
-          ${bannerMode ? "" : `<div class="card"><h3>${direction.hook}</h3><p>${COURSE.name} · ${COURSE.highlights.join(" · ")}</p></div>`}
-        </div>
-      `;
-    }
-
-    function poster(direction, channel) {
-      const style = `style="background:${direction.theme.bg};--accent:${direction.theme.accent};--accent-alt:${direction.theme.accentAlt};--photo:url('${direction.photo}');"`;
-
-      if (channel === "banner") {
-        return `
-          <div class="poster ${CHANNELS[channel].klass}" ${style}>
-            <div class="poster-photo"></div>
-            <div class="poster-inner">
-              <div class="left">
-                <div class="poster-brand"><span class="brand-dot"></span>${COURSE.brand} · ${CHANNELS[channel].label}</div>
-                ${hero(direction, true)}
-                <div class="card"><h3>${direction.hook}</h3><p>${COURSE.name} · ${COURSE.highlights.slice(0, 4).join(" · ")}</p></div>
-                <div class="cta">立即了解课程</div>
-              </div>
-              <div class="right">
-                ${renderStats(direction.stats)}
-                ${body(direction)}
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
-      const longExtra = channel === "long"
-        ? `
-          ${renderStats(direction.stats)}
-          ${body(direction)}
-          <div class="card">
-            <h3>课程基本信息</h3>
-            <p>${COURSE.highlights.join(" · ")}。零基础友好，不要求先学传统编程语法。适合想用 AI 更快做出产品、作品或副业的人。</p>
-          </div>
-        `
-        : body(direction);
-
-      return `
-        <div class="poster ${CHANNELS[channel].klass}" ${style}>
-          <div class="poster-photo"></div>
-          <div class="poster-inner">
-            <div class="poster-brand"><span class="brand-dot"></span>${COURSE.brand} · AI Coding 实战课</div>
-            ${hero(direction, false)}
-            ${longExtra}
-            <div class="footer">
-              ${channel === "long" ? `<div class="muted">${COURSE.url}</div>` : renderStats(direction.stats)}
-              <div class="cta">立即了解课程</div>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function buildCopy(direction, channel) {
-      const labels = {
-        wechat: "朋友圈配文：",
-        xhs: "小红书配文：",
-        banner: "公众号头图配文：",
-        long: "详情长图配文："
-      };
-      return `${labels[channel]}\n${direction.copy}\n\n课程名：${COURSE.name}\n课程链接：${COURSE.url}\n品牌：${COURSE.brand} ${COURSE.site}`;
-    }
-
-    function renderMeta(direction, channel) {
-      const rows = [
-        ["渠道", `${CHANNELS[channel].label} · ${CHANNELS[channel].size}`],
-        ["用途", CHANNELS[channel].desc],
-        ["方向", direction.label],
-        ["卖点", direction.short],
-        ["课程信息", COURSE.highlights.join(" / ")],
-        ["风格", direction.eyebrow]
-      ];
-      meta.innerHTML = rows.map(([key, value]) => `
-        <div class="meta-row">
-          <span>${key}</span>
-          <strong>${value}</strong>
-        </div>
-      `).join("");
-    }
-
-    function buildTabs() {
-      channelTabs.innerHTML = Object.entries(CHANNELS).map(([key, item]) => `
-        <button class="tab ${state.channel === key ? "active" : ""}" data-channel="${key}" type="button">${item.label}</button>
-      `).join("");
-
-      directionTabs.innerHTML = Object.entries(DIRECTIONS).map(([key, item], idx) => `
-        <button class="dir ${state.direction === key ? "active" : ""}" data-direction="${key}" type="button">
-          <strong>${String(idx + 1).padStart(2, "0")} · ${item.label}</strong>
-          <small>${item.short}</small>
-        </button>
-      `).join("");
-
-      channelTabs.querySelectorAll("[data-channel]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          state.channel = btn.dataset.channel;
-          render();
-        });
-      });
-
-      directionTabs.querySelectorAll("[data-direction]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          state.direction = btn.dataset.direction;
-          render();
-        });
-      });
-    }
-
-    function render() {
-      const channel = state.channel;
-      const direction = DIRECTIONS[state.direction];
-      buildTabs();
-      channelHint.textContent = `${CHANNELS[channel].size} · ${CHANNELS[channel].ratio}`;
-      directionHint.textContent = direction.short;
-      previewTitle.textContent = `${CHANNELS[channel].label} · ${direction.label}`;
-      previewSub.textContent = `${CHANNELS[channel].desc}，当前视觉方向：${direction.short}`;
-      mount.innerHTML = poster(direction, channel);
-      copyText.textContent = buildCopy(direction, channel);
-      copyStatus.textContent = "已同步当前组合";
-      copyCard.style.display = state.copyVisible ? "block" : "none";
-      toggleCopy.textContent = state.copyVisible ? "收起文案面板" : "展开文案面板";
-      renderMeta(direction, channel);
-    }
-
-    async function copyNow() {
-      try {
-        await navigator.clipboard.writeText(copyText.textContent);
-        copyStatus.textContent = "已复制到剪贴板";
-      } catch (error) {
-        copyStatus.textContent = "浏览器未授权剪贴板，请手动复制";
-      }
-    }
-
-    copyButton.addEventListener("click", copyNow);
-    toggleCopy.addEventListener("click", () => {
-      state.copyVisible = !state.copyVisible;
-      render();
-    });
-
-    render();
-  </script>
-
-  <!-- 下载 PNG 按钮（捕获 #mount 内当前渲染的 .poster） -->
-  <button id="jr-download-btn" type="button" style="position:fixed;right:24px;bottom:24px;z-index:99999;background:#ff5757;color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:14px 22px;font-family:'Space Mono','DM Sans',monospace;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;">⬇ 下载当前海报 PNG</button>
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script>
-  (function(){
-    var btn = document.getElementById('jr-download-btn');
-    btn.addEventListener('mouseenter', function(){ btn.style.transform='translate(3px,3px)'; btn.style.boxShadow='3px 3px 0 #000'; });
-    btn.addEventListener('mouseleave', function(){ btn.style.transform=''; btn.style.boxShadow='6px 6px 0 #000'; });
-    btn.addEventListener('click', async function(){
-      var target = document.querySelector('#mount .poster') || document.getElementById('mount');
-      if (!target) { alert('未找到海报元素'); return; }
-      var original = btn.textContent;
-      btn.textContent = '渲染中…';
-      btn.disabled = true;
-      btn.style.opacity = '0.7';
-      try {
-        var canvas = await html2canvas(target, { backgroundColor: null, scale: 2, useCORS: true, allowTaint: true, logging: false });
-        var channelBtn = document.querySelector('#channelTabs .tab.active');
-        var dirBtn = document.querySelector('#directionTabs .dir.active');
-        var channel = channelBtn ? channelBtn.dataset.channel : 'poster';
-        var direction = dirBtn ? dirBtn.dataset.direction : 'default';
-        var link = document.createElement('a');
-        link.download = 'ai-coding-' + channel + '-' + direction + '-' + Date.now() + '.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-      } catch (err) {
-        console.error(err);
-        alert('导出失败：' + (err && err.message ? err.message : err));
-      } finally {
-        btn.textContent = original;
-        btn.disabled = false;
-        btn.style.opacity = '';
-      }
-    });
-  })();
-  </script>
+<div class="footer">
+  📄 数据源：<code>public/outline.json</code> · 本页由 <code>scripts/generate-html.py</code> 自动生成
+</div>
 </body>
 </html>

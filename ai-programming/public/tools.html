@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;900&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif; background: #faf9f5; color: #10162f; line-height: 1.6; padding: 28px 24px 80px; max-width: 1240px; margin: 0 auto; }
+  h1, h2, h3 { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; line-height: 1.15; }
+  h1 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.5px; }
+  h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; margin-top: 36px; margin-bottom: 14px; }
+  h3 { font-size: 17px; font-weight: 800; }
+  code, .mono { font-family: 'Space Mono', monospace; }
+  a { color: #10162f; text-decoration: none; border-bottom: 1.5px solid #10162f; }
+  a:hover { background: #fef08a; }
+  .sub { font-size: 14px; color: #666; margin-top: 4px; }
+  .nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 24px; padding-bottom: 16px; border-bottom: 2px dashed #ccc; }
+  .nav a { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; padding: 6px 12px; border: 1.5px solid #10162f; background: #fff; }
+  .nav a:hover { background: #10162f; color: #fff; }
+  .nav a.active { background: #10162f; color: #fff; }
+  .card { background: #fff; border: 2px solid #10162f; box-shadow: 6px 6px 0 #10162f; padding: 18px 20px; margin-bottom: 16px; }
+  .card.tight { padding: 12px 14px; box-shadow: 4px 4px 0 #10162f; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 18px 0; }
+  .stat { background: #fff; border: 2px solid #10162f; box-shadow: 3px 3px 0 #10162f; padding: 10px 14px; }
+  .stat .n { font-size: 28px; font-weight: 900; font-family: 'Space Mono', monospace; line-height: 1; }
+  .stat .l { font-size: 11px; color: #666; margin-top: 4px; font-family: 'Space Mono', monospace; letter-spacing: 0.5px; }
+  .tier { display: inline-block; padding: 3px 8px; font-size: 10px; font-weight: 800; border-radius: 999px; font-family: 'Space Mono', monospace; letter-spacing: 0.5px; vertical-align: middle; }
+  .tier.both { background: #dbeafe; color: #1e40af; border: 1.5px solid #1e40af; }
+  .tier.basic { background: #fce7f3; color: #9d174d; border: 1.5px solid #9d174d; }
+  .tier.advanced { background: #fef08a; color: #854d0e; border: 1.5px solid #ca8a04; }
+  .type-pill { display: inline-block; padding: 2px 7px; font-size: 10px; font-weight: 700; border-radius: 999px; font-family: 'Space Mono', monospace; }
+  .t-Lesson { background: #fef3c7; }
+  .t-Information { background: #dbeafe; }
+  .t-InteractiveLab { background: #fce7f3; }
+  .t-Quest { background: #dcfce7; }
+  .t-Video { background: #fed7aa; }
+  .live { color: #dc2626; font-weight: 900; font-family: 'Space Mono', monospace; font-size: 10px; }
+  .lesson-row { padding: 10px 12px; border-bottom: 1px solid #eee; display: grid; grid-template-columns: 60px 110px 1fr 50px; gap: 12px; align-items: start; }
+  .lesson-row:last-child { border-bottom: 0; }
+  .lesson-row .code { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; white-space: nowrap; }
+  .lesson-row .title { font-weight: 600; font-size: 13px; }
+  .lesson-row .meta { font-size: 11px; color: #666; margin-top: 3px; }
+  .lesson-row .dur { font-family: 'Space Mono', monospace; font-size: 11px; color: #888; white-space: nowrap; text-align: right; }
+  .phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 18px 0; }
+  .phase-card { background: #fff; border: 2px solid #10162f; box-shadow: 5px 5px 0 #10162f; padding: 16px 18px; transition: transform 0.15s, box-shadow 0.15s; }
+  .phase-card:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #10162f; }
+  .phase-card .label { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--phase-color, #10162f); font-weight: 800; letter-spacing: 1px; }
+  .phase-card .name { font-size: 15px; font-weight: 800; margin: 6px 0 8px; line-height: 1.3; }
+  .phase-card .summary { font-size: 11px; color: #666; font-family: 'Space Mono', monospace; }
+  .phase-card .ct { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; font-size: 10px; }
+  .phase-card a { border: 0; }
+  .price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+  @media (max-width: 600px) { .price-cards { grid-template-columns: 1fr; } .lesson-row { grid-template-columns: 50px 1fr; } .lesson-row .meta, .lesson-row .dur { grid-column: 2; } }
+  .price-card { background: #fff; border: 2px solid #10162f; box-shadow: 6px 6px 0 #10162f; padding: 18px 20px; }
+  .price-card .tag { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 800; letter-spacing: 1px; }
+  .price-card .price { font-family: 'Space Mono', monospace; font-size: 42px; font-weight: 900; margin: 8px 0; }
+  .price-card ul { margin-top: 10px; padding-left: 20px; font-size: 12px; line-height: 1.8; }
+  .footer { font-size: 11px; color: #888; font-family: 'Space Mono', monospace; margin-top: 36px; padding-top: 14px; border-top: 1px dashed #ccc; }
+</style>
+<title>人人都能学的 AI Coding 实战课 — AI 工具大全</title>
+<style>
+  .tool-card { background: #fff; border: 2px solid #10162f; box-shadow: 4px 4px 0 #10162f; padding: 12px 14px; transition: transform 0.15s, box-shadow 0.15s; }
+  .tool-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #10162f; }
+  .tool-name { font-size: 14px; font-weight: 800; }
+  .tool-desc { font-size: 12px; color: #444; margin-top: 4px; line-height: 1.5; }
+  .tool-meta { display: flex; gap: 10px; font-family: 'Space Mono', monospace; font-size: 11px; color: #666; margin-top: 8px; }
+  .tool-alt { font-size: 10px; color: #888; margin-top: 4px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<h1>🛠️ AI 工具大全</h1>
+<div class="sub">学完这门课，你掌握的不是 1-2 个工具，而是 <strong>38 个 AI 工具组成的完整工作流</strong></div>
+
+<nav class="nav"><a href="./curriculum.html">🏠 课程总览</a><a href="./outline.html">📋 详细大纲</a><a href="./outline-preview.html">🔍 实时预览</a><a href="./learning-plan.html">📅 学习计划</a><a href="./tools.html" class="active">🛠️ AI 工具大全</a><a href="./poster.html">🎨 营销海报</a><a href="./marketing.html">📣 营销文案库</a></nav>
+
+<div class="stats">
+  <div class="stat"><div class="n">38</div><div class="l">工具总数</div></div>
+  <div class="stat"><div class="n">13</div><div class="l">工具类别</div></div>
+  <div class="stat"><div class="n">19</div><div class="l">基础班可学</div></div>
+  <div class="stat"><div class="n">19</div><div class="l">进阶班专属</div></div>
+</div>
+
+<div class="card tight" style="background:#fef08a;border-color:#ca8a04">
+  <div style="font-size:13px;line-height:1.7"><strong>💡 怎么用这页：</strong>
+    <br>1. 报名前可看："这门课能让我用上哪些工具" — 直观对比同行课程
+    <br>2. 报名后查："P5 学到的时候我需要装哪些工具" — 提前准备
+    <br>3. 学完后炫："我作为零基础掌握了 32 个 AI 工具" — 简历 / 朋友圈 / LinkedIn 用
+    <br>4. 营销发："学这门课送你 32 个 AI 工具速查表" — 引流 hook
+  </div>
+</div>
+
+
+    <section style="margin-bottom:28px">
+      <h2 style="color:#6366f1;border-bottom:3px solid #6366f1;padding-bottom:6px">
+        🧠 AI 编程助手 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P0/P4 · 3 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Claude Cowork</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">不写代码、对话做产品（课程主工具）</div>
+          <div class="tool-meta">
+            <span>💰 订阅制</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：ChatGPT / Gemini</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Cursor</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">AI 编辑器，写代码时 AI 给建议</div>
+          <div class="tool-meta">
+            <span>💰 免费 / $20/月</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Windsurf / GitHub Copilot</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Claude Code</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">命令行 AI 编程，能跑命令读文件</div>
+          <div class="tool-meta">
+            <span>💰 订阅制</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Aider / OpenAI Codex</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#ec4899;border-bottom:3px solid #ec4899;padding-bottom:6px">
+        🎨 AI 生图 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P2/P3/P6 · 5 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">ChatGPT gpt-image-2</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">中文文字渲染最强的生图模型</div>
+          <div class="tool-meta">
+            <span>💰 $0.08/张</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：Imagen / FLUX</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Midjourney</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">艺术性最强的 AI 生图</div>
+          <div class="tool-meta">
+            <span>💰 $10-60/月</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Niji 风格化</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">FLUX</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">开源 / 高质量 / 速度快</div>
+          <div class="tool-meta">
+            <span>💰 免费 / API</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：SDXL / Stable Diffusion</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">DALL·E 3</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">集成 ChatGPT，对话式生图</div>
+          <div class="tool-meta">
+            <span>💰 订阅制</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：gpt-image-2</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">即梦 (字节)</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">中文 prompt 友好、人物精准</div>
+          <div class="tool-meta">
+            <span>💰 免费 / 付费</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：可灵 / 文心一格</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#f59e0b;border-bottom:3px solid #f59e0b;padding-bottom:6px">
+        🎙️ AI 配音 TTS <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P6 (基础) / P10 (进阶) · 4 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">ElevenLabs</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">英文 TTS 最强 + 音色克隆</div>
+          <div class="tool-meta">
+            <span>💰 免费 / $22/月</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：PlayHT / OpenAI TTS</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">阿里云语音合成</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">中文 TTS 主流选择</div>
+          <div class="tool-meta">
+            <span>💰 按量</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：火山 / 腾讯云</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">火山引擎语音</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">中文音色情感丰富</div>
+          <div class="tool-meta">
+            <span>💰 按量</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：阿里云 / 腾讯</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">腾讯云语音</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">中文 + 多语种支持</div>
+          <div class="tool-meta">
+            <span>💰 按量</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：阿里云 / 火山</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#8b5cf6;border-bottom:3px solid #8b5cf6;padding-bottom:6px">
+        🎵 AI 生音乐 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P10 (进阶) · 3 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Suno</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">歌曲 / 配乐一键生成</div>
+          <div class="tool-meta">
+            <span>💰 $8-30/月</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：Udio / Stable Audio</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Udio</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">专业制作级 AI 音乐</div>
+          <div class="tool-meta">
+            <span>💰 $10-30/月</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Suno</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Stable Audio</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">专做 BGM / 音效</div>
+          <div class="tool-meta">
+            <span>💰 免费 / 付费</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：AIVA</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#06b6d4;border-bottom:3px solid #06b6d4;padding-bottom:6px">
+        🎬 AI 视频生成 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P10 (进阶) · 3 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Runway Gen-3</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">专业 AI 视频生成（文/图 → 视频）</div>
+          <div class="tool-meta">
+            <span>💰 $12-95/月</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Pika / Luma</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Google Veo3</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">Google 最新视频生成模型</div>
+          <div class="tool-meta">
+            <span>💰 订阅制</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Runway / Kling</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">可灵 Kling (快手)</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">中文场景视频生成强</div>
+          <div class="tool-meta">
+            <span>💰 免费 / 付费</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：即梦 / 海螺</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#0891b2;border-bottom:3px solid #0891b2;padding-bottom:6px">
+        🎞️ 视频合成 / 渲染 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P6 · 1 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">HyperFrames</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">HTML → 视频，一行命令出 MP4</div>
+          <div class="tool-meta">
+            <span>💰 开源</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Remotion / Motion Canvas</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#10b981;border-bottom:3px solid #10b981;padding-bottom:6px">
+        📊 在线 PPT <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P2 · 2 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Slidev</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">Vue 驱动、Markdown 写 PPT</div>
+          <div class="tool-meta">
+            <span>💰 开源</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：reveal.js / Marp</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">reveal.js</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">老牌 HTML PPT 框架</div>
+          <div class="tool-meta">
+            <span>💰 开源</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Slidev / Impress.js</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#0ea5e9;border-bottom:3px solid #0ea5e9;padding-bottom:6px">
+        🌐 部署 / 域名 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P4 · 3 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Vercel</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">零配置静态站部署</div>
+          <div class="tool-meta">
+            <span>💰 免费 / $20/月</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：Netlify / Cloudflare Pages</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">GitHub Pages</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">直接从 git repo 部署</div>
+          <div class="tool-meta">
+            <span>💰 免费</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：Vercel / Netlify</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Cloudflare Pages</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">全球 CDN + 边缘函数</div>
+          <div class="tool-meta">
+            <span>💰 免费</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Vercel</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#a855f7;border-bottom:3px solid #a855f7;padding-bottom:6px">
+        🤖 自动化 / Skills <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P5 (基础) / P8/P11 (进阶) · 4 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">cron / schedule</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">Linux/Mac 定时任务</div>
+          <div class="tool-meta">
+            <span>💰 系统自带</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Windows 任务计划</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Claude /schedule</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">Claude 内置定时任务</div>
+          <div class="tool-meta">
+            <span>💰 订阅制</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：cron + bash</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Claude Skills</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">把 AI + 脚本封装成可复用单元</div>
+          <div class="tool-meta">
+            <span>💰 订阅制</span>
+            <span>📐 ★★★</span>
+          </div>
+          <div class="tool-alt">替代品：自写 Python script</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">GitHub Actions</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">免费 CI/CD + 定时任务</div>
+          <div class="tool-meta">
+            <span>💰 免费 / 付费</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Vercel Cron</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#f97316;border-bottom:3px solid #f97316;padding-bottom:6px">
+        📚 知识管理 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P5 · 1 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Obsidian</div>
+            <div><span class="tier both">🟦</span></div>
+          </div>
+          <div class="tool-desc">本地优先 + 双链 + AI 友好</div>
+          <div class="tool-meta">
+            <span>💰 免费 / $50/年</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Logseq / Roam Research</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#14b8a6;border-bottom:3px solid #14b8a6;padding-bottom:6px">
+        💾 数据存储 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P11 (进阶) · 4 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Google Sheets</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">最轻量数据库 + 协作</div>
+          <div class="tool-meta">
+            <span>💰 免费</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：Excel</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Airtable</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">&quot;会写公式的 Notion&quot;，最好用</div>
+          <div class="tool-meta">
+            <span>💰 免费 / $20/月</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：Sheets / Notion</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Supabase</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">开源 Firebase 替代品（真 SQL 数据库）</div>
+          <div class="tool-meta">
+            <span>💰 免费 / $25/月</span>
+            <span>📐 ★★★</span>
+          </div>
+          <div class="tool-alt">替代品：Firebase / PocketBase</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Notion API</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">用 Notion 当数据库 + 团队协作</div>
+          <div class="tool-meta">
+            <span>💰 免费 / 付费</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：Airtable</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#dc2626;border-bottom:3px solid #dc2626;padding-bottom:6px">
+        📈 数据可视化 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P11 (进阶) · 2 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">ECharts</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">百度开源图表库，AI 写它最熟</div>
+          <div class="tool-meta">
+            <span>💰 开源</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：D3.js / Chart.js</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Mermaid</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">文字 → 流程图 / 时序图 / 思维导图</div>
+          <div class="tool-meta">
+            <span>💰 开源</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：PlantUML</div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-bottom:28px">
+      <h2 style="color:#84cc16;border-bottom:3px solid #84cc16;padding-bottom:6px">
+        📋 Excel / 表格加速 <span style="font-size:13px;color:#666;font-family:'Space Mono',monospace;font-weight:400">· P11 (进阶) · 3 个工具</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Google Apps Script</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">Sheets 自动化 + 触发邮件</div>
+          <div class="tool-meta">
+            <span>💰 免费</span>
+            <span>📐 ★★</span>
+          </div>
+          <div class="tool-alt">替代品：VBA</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">Excel VBA</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">老牌 Excel 自动化</div>
+          <div class="tool-meta">
+            <span>💰 Office</span>
+            <span>📐 ★★★</span>
+          </div>
+          <div class="tool-alt">替代品：Apps Script</div>
+        </div>
+        <div class="tool-card">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:8px">
+            <div class="tool-name">ChatGPT Code Interpreter</div>
+            <div><span class="tier advanced">🟨</span></div>
+          </div>
+          <div class="tool-desc">上传表格让 AI 处理</div>
+          <div class="tool-meta">
+            <span>💰 订阅制</span>
+            <span>📐 ★</span>
+          </div>
+          <div class="tool-alt">替代品：Claude Analysis</div>
+        </div>
+      </div>
+    </section>
+
+<div class="footer">
+  📄 工具数据：手动维护在 <code>scripts/generate-html.py</code> 的 <code>TOOLS_DATA</code> · 新加工具改这个字典即可
+</div>
+</body>
+</html>
