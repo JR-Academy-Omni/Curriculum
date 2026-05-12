@@ -53,6 +53,20 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
+      # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
+      # base 已写进 package.json: --base /curriculum/lessons/vibe-coding/
+      - name: Setup Node (for Slidev)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build lessons/vibe-coding (Slidev)
+        working-directory: lessons/vibe-coding
+        run: |
+          npm install --no-audit --no-fund
+          npm run build
+
       # ai-essentials-bootcamp: static HTML only, no React build needed
 
       # ai-programming (Cursor AI 编程实战课): static HTML only, no React build needed
@@ -236,6 +250,15 @@ jobs:
 
           # Course theme colors cheatsheet (marketing/product copy-paste prompts for AI image gen)
           [ -f theme-colors.html ] && cp theme-colors.html _site/theme-colors.html || true
+
+          # Lesson library — cross-bootcamp reusable lesson decks (internal)
+          [ -f lessons.html ] && cp lessons.html _site/lessons.html || true
+
+          # Lessons — Vibe Coding Slidev deck (跨课复用 · 全栈班 L1 / Solo Founder 开篇 / AI Adoption W2)
+          if [ -d lessons/vibe-coding/dist ]; then
+            mkdir -p _site/lessons/vibe-coding
+            cp -r lessons/vibe-coding/dist/* _site/lessons/vibe-coding/
+          fi
 
           # ChatGPT 海报 Prompt 库 (gpt-image-2 prompt 货架，posters.html banner 入口)
           [ -f image-prompts.html ] && cp image-prompts.html _site/image-prompts.html || true
