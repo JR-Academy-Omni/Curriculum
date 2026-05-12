@@ -53,6 +53,14 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
+      # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
+      - name: Build lessons/ai-new-jobs-talk
+        working-directory: lessons/ai-new-jobs-talk
+        run: |
+          bun install
+          bun run build
+
       # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
       # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
       # base 已写进 package.json: --base /curriculum/lessons/vibe-coding/
@@ -213,6 +221,14 @@ jobs:
           if [ -d business-analyst/public ]; then
             mkdir -p _site/business-analyst
             cp -r business-analyst/public/* _site/business-analyst/
+          fi
+
+          # lessons/ai-new-jobs-talk: 60-min 公开讲座 slide deck (React + Vite · 40 张 slide)
+          # 跨课复用 lesson · 数据源 jiangren.com.au/ai-new-jobs + /career-impact-map
+          # Vite build 已 copy public/ 到 dist/，outline.json 也在 dist 里
+          if [ -d lessons/ai-new-jobs-talk/dist ]; then
+            mkdir -p _site/lessons/ai-new-jobs-talk
+            cp -r lessons/ai-new-jobs-talk/dist/* _site/lessons/ai-new-jobs-talk/
           fi
 
           mkdir -p _site/ai-engineer-bootcamp
