@@ -64,7 +64,7 @@
 | [ai-builder](ai-builder/) — Vibe Coding 提升班 | 4p / 113l | — | ⚪ 未检 | — | — |
 | [ai-marketing](ai-marketing/) — AI 营销全链路 4 周 | 4p / 64l | — | ⚪ 未检 | — | — |
 | [ai-essentials-bootcamp](ai-essentials-bootcamp/) — AI 必修课 | 4p / 33l | — | ⚪ 未检 | — | — |
-| [ai-programming](ai-programming/) — AI Coding 实战课 | 4p / 108l | — | ⚪ 未检 | — | — |
+| [ai-programming](ai-programming/) — AI Coding 实战课 | 4p / 108l | 2026-05-12 | 🟡 partial | 45 个 _id 已对齐第 1 期 prod；内容重构待用户启动；sync 待跑 | [log](ai-programming/AUDIT_LOG.md) |
 | [ai-solo-founder-bootcamp](ai-solo-founder-bootcamp/) — AI 一人创业营 | 4p / 59l | — | ⚪ 未检 | — | — |
 | [ai-engineer-rag](ai-engineer-rag/) — AI Engineer 入门（self-paced） | 1p / 79l | — | ⚪ 未检 | self-paced，不分 cohort | — |
 | [ai-adoption-bootcamp](ai-adoption-bootcamp/) — AI Adoption Specialist | 4p / 74l | — | ⚪ 未检 | — | — |

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>ai-programming outline.json 实时预览</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; margin: 0; padding: 24px; background: #f7f7f5; color: #10162f; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { font-size: 13px; color: #666; margin-bottom: 20px; }
+  .toolbar { display:flex; gap:8px; flex-wrap:wrap; margin: 16px 0; padding: 12px 14px; background:#fff; border:2px solid #10162f; box-shadow:4px 4px 0 #10162f; align-items:center; font-size:13px; }
+  .toolbar button { font-family:inherit; font-size:12px; padding:6px 12px; border:1.5px solid #10162f; background:#fff; cursor:pointer; font-weight:600; }
+  .toolbar button.active { background:#10162f; color:#fff; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:8px; margin-bottom:20px; }
+  .stat { background:#fff; border:2px solid #10162f; padding:10px 12px; box-shadow:3px 3px 0 #10162f; }
+  .stat .n { font-size:22px; font-weight:900; font-family:'Space Mono',monospace; }
+  .stat .l { font-size:11px; color:#666; margin-top:2px; }
+  .phase { background:#fff; border:2px solid #10162f; box-shadow:6px 6px 0 #10162f; margin-bottom: 24px; }
+  .phase-head { padding: 14px 18px; border-bottom: 2px solid #10162f; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+  .phase-head .name { font-size: 17px; font-weight: 800; }
+  .phase-head .summary { font-size: 12px; color: #666; font-family:'Space Mono',monospace; }
+  .phase-tier { display:inline-block; padding:4px 10px; font-size:11px; font-weight:800; border-radius:999px; font-family:'Space Mono',monospace; margin-left:8px; vertical-align:middle; }
+  .phase-tier.both { background:#dbeafe; color:#1e40af; border:2px solid #1e40af; }
+  .phase-tier.basic-only { background:#fce7f3; color:#9d174d; border:2px solid #9d174d; }
+  .phase-tier.advanced-only { background:#fef08a; color:#854d0e; border:2px solid #ca8a04; }
+  table { width:100%; border-collapse:collapse; font-size: 13px; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  th { background: #faf9f5; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #444; position:sticky; top:0; }
+  td.code { font-family:'Space Mono',monospace; font-weight: 700; white-space:nowrap; }
+  td.title { font-weight: 600; }
+  .type-pill { display:inline-block; padding:2px 8px; font-size: 10px; font-weight: 700; border: 1.5px solid #10162f; border-radius: 999px; font-family:'Space Mono',monospace; }
+  .t-Lesson { background:#fef3c7; }
+  .t-Information { background:#dbeafe; }
+  .t-InteractiveLab { background:#fce7f3; }
+  .t-Quest { background:#dcfce7; }
+  .t-Video { background:#fed7aa; }
+  .live-dot { color:#dc2626; font-weight:900; }
+  .id-status { font-size: 10px; padding: 2px 6px; border-radius: 3px; font-family:'Space Mono',monospace; font-weight:700; }
+  .id-restored { background:#10b981; color:#fff; }
+  .id-placeholder { background:#9ca3af; color:#fff; }
+  .tier-pill { display:inline-block; padding:1px 6px; font-size: 9px; font-weight: 700; border-radius: 999px; font-family:'Space Mono',monospace; margin-left:4px; }
+  .tier-both { background:#dbeafe; color:#1e40af; border:1px solid #1e40af; }
+  .tier-advanced { background:#fef08a; color:#854d0e; border:1px solid #ca8a04; }
+  .id-detail { font-size: 10px; color: #555; font-family:'Space Mono',monospace; margin-top: 3px; }
+  .id-detail b { color:#10162f; }
+  .extras { font-size: 11px; color:#666; margin-top: 3px; }
+  .extras code { background:#f3f4f6; padding: 1px 5px; border-radius: 2px; font-size: 10px; }
+  .filter-hide { display:none !important; }
+  td.duration { font-family:'Space Mono',monospace; color:#666; font-size: 11px; white-space:nowrap; }
+</style>
+</head>
+<body>
+<h1>ai-programming · outline.json 实时预览</h1>
+<div class="sub">从 <code>public/outline.json</code> 直接渲染 · <span id="ts"></span></div>
+
+<div id="pricing" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;"></div>
+
+<div class="stats" id="stats"></div>
+
+<div class="toolbar">
+  <strong style="margin-right:4px">筛选:</strong>
+  <button data-filter="all" class="active">全部</button>
+  <button data-filter="Lesson">直播课</button>
+  <button data-filter="Information">Information</button>
+  <button data-filter="InteractiveLab">InteractiveLab</button>
+  <button data-filter="Quest">Quest</button>
+  <button data-filter="Video">Video</button>
+  <button data-filter="basic">基础班可见</button>
+  <button data-filter="advanced-only">进阶班专属</button>
+  <button data-filter="restored">已绑定第1期 _id</button>
+  <button data-filter="placeholder">占位 _id</button>
+  <span style="margin-left:auto;font-size:11px;color:#666">实时从 outline.json fetch · 文件变了刷新即可看到新内容</span>
+</div>
+
+<div id="content">加载中…</div>
+
+<script>
+fetch('./outline.json').then(r => r.json()).then(data => {
+  document.getElementById('ts').textContent = '加载于 ' + new Date().toLocaleString('zh-CN');
+
+  // Pricing cards
+  if (data.programPricing) {
+    const pricingCard = (key, p, tone) => `
+      <div style="background:#fff;border:2px solid #10162f;box-shadow:6px 6px 0 #10162f;padding:16px 18px">
+        <div style="font-size:11px;font-family:'Space Mono',monospace;color:${tone === 'basic' ? '#9d174d' : '#ca8a04'};font-weight:800;letter-spacing:1px;">${tone === 'basic' ? '🟪 基础班' : '🟨 进阶班'}</div>
+        <div style="font-size:14px;font-weight:700;margin-top:4px;">${p.name}</div>
+        <div style="display:flex;align-items:baseline;gap:8px;margin:10px 0 4px">
+          <div style="font-size:36px;font-weight:900;font-family:'Space Mono',monospace;">$${p.tuition}</div>
+          <div style="font-size:13px;color:#666">${p.currency} · ${p.weeks} 周</div>
+        </div>
+        <div style="font-size:11px;color:#666;font-family:'Space Mono',monospace;">
+          ${p.lessonsCount} 节课 · 上期 $${p.tuitionPrevCohort} → 涨 ${Math.round((p.tuition - p.tuitionPrevCohort) / p.tuitionPrevCohort * 100)}%
+        </div>
+        <ul style="font-size:12px;margin:10px 0 0;padding-left:18px;line-height:1.7;">
+          ${p.deliverables.map(d => `<li>${d}</li>`).join('')}
+        </ul>
+      </div>`;
+    document.getElementById('pricing').innerHTML =
+      pricingCard('basic', data.programPricing.basic, 'basic') +
+      pricingCard('advanced', data.programPricing.advanced, 'advanced');
+  }
+
+  // Stats
+  const allLessons = data.phases.flatMap(p => p.lessons);
+  const stat = (n, l) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`;
+  const liveCount = allLessons.filter(l => l.isLive).length;
+  const lessonLiveCount = allLessons.filter(l => l.type === 'Lesson').length;
+  const labCount = allLessons.filter(l => l.type === 'InteractiveLab').length;
+  const questCount = allLessons.filter(l => l.type === 'Quest').length;
+  const videoCount = allLessons.filter(l => l.type === 'Video').length;
+  const infoCount = allLessons.filter(l => l.type === 'Information').length;
+  const restoredCount = allLessons.filter(l => l.prodLessonIds).length;
+  const placeholderCount = allLessons.length - restoredCount;
+  // tier comes from PHASE level
+  let basicCount = 0, advancedCount = 0;
+  data.phases.forEach(p => {
+    const progs = p.programs || ['basic', 'advanced'];
+    if (progs.includes('basic')) basicCount += p.lessons.length;
+    if (progs.includes('advanced')) advancedCount += p.lessons.length;
+  });
+  document.getElementById('stats').innerHTML = [
+    stat(allLessons.length, '总课时'),
+    stat(basicCount, '基础班课数'),
+    stat(advancedCount, '进阶班课数'),
+    stat(lessonLiveCount, '直播课 Lesson'),
+    stat(labCount, 'InteractiveLab'),
+    stat(questCount, 'Quest'),
+    stat(videoCount, 'Video 5min'),
+  ].join('');
+
+  // Render phases
+  const html = data.phases.map(phase => {
+    const phasePrograms = phase.programs || ['basic', 'advanced'];
+    const phaseTierCls = phasePrograms.length === 2 ? 'both' :
+                         (phasePrograms[0] === 'basic' ? 'basic-only' : 'advanced-only');
+    const phaseTierLabel = phasePrograms.length === 2 ? '🟦 基础+进阶' :
+                          (phasePrograms[0] === 'basic' ? '🟪 仅基础班' : '🟨 仅进阶班');
+
+    const rows = phase.lessons.map(l => {
+      const restored = !!l.prodLessonIds;
+      const idStatus = restored
+        ? '<span class="id-status id-restored">已绑定</span>'
+        : '<span class="id-status id-placeholder">占位</span>';
+
+      let idDetail = '<div class="id-detail"><b>_id:</b> ' + l._id + '</div>';
+      if (l.prodLessonIds) {
+        const m = l.prodLessonIds;
+        idDetail += '<div class="id-detail">';
+        if (m.basic) idDetail += '<b>basic:</b> ' + m.basic.slice(-8) + '  ';
+        if (m.advanced) idDetail += '<b>advanced:</b> ' + m.advanced.slice(-8);
+        idDetail += '</div>';
+      }
+
+      const extras = [];
+      if (l.interactiveLabSlug) extras.push(`Lab: <code>${l.interactiveLabSlug}</code>`);
+      if (l.learns && l.learns.length) extras.push(`Learn: <code>${l.learns.map(x => x.direction + '/' + x.slug).join(', ')}</code>`);
+      if (l.quest) extras.push(`Quest skeleton: ${l.quest.stepSkeleton?.length || 0} 步`);
+      if (l.steps && l.steps.length) extras.push(`${l.steps.length} steps`);
+
+      // Tier comes from PHASE level, not lesson level
+      const tierKind = phasePrograms.length === 2 ? 'both' :
+                       (phasePrograms[0] === 'basic' ? 'basic-only' : 'advanced-only');
+      const dataAttrs = `data-type="${l.type}" data-id-status="${restored ? 'restored' : 'placeholder'}" data-tier="${tierKind}"`;
+
+      return `<tr ${dataAttrs}>
+        <td class="code">${l.code}${l.isLive ? ' <span class="live-dot">●LIVE</span>' : ''}</td>
+        <td><span class="type-pill t-${l.type}">${l.type}</span></td>
+        <td class="title">${l.title}
+          ${extras.length ? '<div class="extras">' + extras.join(' · ') + '</div>' : ''}
+        </td>
+        <td class="duration">${l.duration || '-'}min</td>
+        <td>${idStatus}${idDetail}</td>
+      </tr>`;
+    }).join('');
+
+    return `<div class="phase">
+      <div class="phase-head">
+        <div><div class="name">${phase.name}<span class="phase-tier ${phaseTierCls}">${phaseTierLabel}</span></div></div>
+        <div class="summary">${phase.summary} · ${phase.lessons.length} 节</div>
+      </div>
+      <table>
+        <thead><tr><th>Code</th><th>Type</th><th>Title</th><th>Dur</th><th>_id 绑定</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = html;
+
+  // Filter
+  document.querySelectorAll('.toolbar button[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toolbar button[data-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('tbody tr').forEach(tr => {
+        let show = false;
+        if (f === 'all') show = true;
+        else if (f === 'restored') show = tr.dataset.idStatus === 'restored';
+        else if (f === 'placeholder') show = tr.dataset.idStatus === 'placeholder';
+        else if (f === 'basic') show = tr.dataset.tier === 'basic';
+        else if (f === 'advanced-only') show = tr.dataset.tier === 'advanced-only';
+        else show = tr.dataset.type === f;
+        tr.classList.toggle('filter-hide', !show);
+      });
+    });
+  });
+}).catch(e => {
+  document.getElementById('content').innerHTML = '<p style="color:red">加载失败: ' + e.message + '</p>';
+});
+</script>
+</body>
+</html>
