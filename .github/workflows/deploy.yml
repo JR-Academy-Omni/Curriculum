@@ -151,6 +151,12 @@ jobs:
             cp -r openclaw-workshop/public/* _site/openclaw-workshop/
           fi
 
+          # openclaw-fullday-workshop: static HTML only (8-hour SMB owner fullday version of openclaw-workshop)
+          if [ -d openclaw-fullday-workshop/public ]; then
+            mkdir -p _site/openclaw-fullday-workshop
+            cp -r openclaw-fullday-workshop/public/* _site/openclaw-fullday-workshop/
+          fi
+
           # ai-comic-workshop: static HTML only (2-hour online Zoom workshop, 张彦伟 · AI 漫剧)
           if [ -d ai-comic-workshop/public ]; then
             mkdir -p _site/ai-comic-workshop

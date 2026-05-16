@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OpenClaw 一日实操班 · 你公司里多一个 24h AI 员工 · 2026-06-24 悉尼线下</title>
+  <meta name="description" content="你公司里多一个 24h AI 员工。一整天 8 小时把 OpenClaw 装到你电脑上 — 接客户消息 / 处理发票 PDF / 每日简报，3 件你每天最烦的重复事 AI 当场接管。2026-06-24 悉尼线下 · AU$299 · 50 人小班。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#E84142 100%)}
+    .header h1{font-size:44px;line-height:1.1;letter-spacing:-1.5px;font-weight:900}
+    .header .sub{font-size:18px;opacity:0.9;margin-top:12px;max-width:900px;margin-left:auto;margin-right:auto;line-height:1.5}
+    @media(max-width:768px){.header h1{font-size:26px}.header .sub{font-size:14px}}
+
+    .box-h.oc{background:#E84142}
+    .box-h.demo{background:#FF914D}
+    .box-h.workshop{background:#6366f1}
+    .box-h.network{background:#10b981}
+    .box-h.deploy{background:#10162f}
+
+    /* Top hero — date / city / price banner */
+    .hero-banner{background:#FFDE59;border-top:3px solid #000;border-bottom:3px solid #000;padding:14px 24px}
+    .hero-banner-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+    .hero-fact{font-family:'Bricolage Grotesque',sans-serif;font-weight:900}
+    .hero-fact .label{font-size:11px;font-family:'Space Mono',monospace;color:#10162f;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:2px;opacity:0.6;font-weight:700}
+    .hero-fact .v{font-size:22px;color:#10162f;line-height:1.1}
+    .hero-fact .v small{font-size:13px;font-weight:600;opacity:0.7}
+    .hero-cta{padding:12px 26px;background:#10162f;color:#FFDE59;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:16px;border:3px solid #000;box-shadow:5px 5px 0 #000;text-decoration:none;transition:all 0.15s}
+    .hero-cta:hover{box-shadow:none;transform:translate(3px,3px);text-decoration:none}
+
+    /* PAIN section — the marketing core */
+    .pain-section{margin:40px 0 32px}
+    .pain-section h2{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:900;line-height:1.15;color:#10162f;text-align:center;margin-bottom:8px}
+    .pain-section .pain-tag{font-family:'Space Mono',monospace;font-size:12px;color:#E84142;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;display:block;margin-bottom:14px}
+    .pain-section h3{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:900;line-height:1.15;color:#E84142;text-align:center;margin:6px 0 18px}
+    .pain-section .pain-sub{text-align:center;color:#555;font-size:14px;margin-bottom:24px}
+    .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .pain-card{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:22px;transition:all 0.15s}
+    .pain-card:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #000}
+    .pain-card .icon{font-size:32px;display:block;margin-bottom:10px}
+    .pain-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;color:#10162f;margin-bottom:8px;line-height:1.25}
+    .pain-card p{font-size:13px;color:#444;line-height:1.7}
+    .pain-card p strong{color:#E84142}
+    @media(max-width:900px){.pain-grid{grid-template-columns:1fr}}
+
+    /* 3 Skill spotlight (THE thing) */
+    .skill-spotlight{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
+    .skill-card{background:#fff5f5;border:3px solid #000;box-shadow:6px 6px 0 #E84142;padding:22px;transition:all 0.15s}
+    .skill-card:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #E84142}
+    .skill-card .badge{display:inline-block;padding:4px 10px;background:#E84142;color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+    .skill-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;color:#10162f;line-height:1.2;margin-bottom:8px}
+    .skill-card .who{font-size:11px;color:#E84142;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+    .skill-card p{font-size:13px;color:#333;line-height:1.7;margin-bottom:10px}
+    .skill-card .got{font-size:12px;color:#065f46;background:#d1fae5;padding:6px 10px;display:inline-block;font-weight:700;font-family:'Space Mono',monospace}
+    @media(max-width:900px){.skill-spotlight{grid-template-columns:1fr;gap:14px}}
+
+    /* More capabilities gallery */
+    .more-cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+    .more-cap-card{padding:16px;border:2px solid #000;background:#fff}
+    .more-cap-card .icon{font-size:24px;display:block;margin-bottom:6px}
+    .more-cap-card h5{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.25}
+    .more-cap-card p{font-size:12px;color:#555;line-height:1.6}
+    @media(max-width:900px){.more-cap-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.more-cap-grid{grid-template-columns:1fr}}
+
+    /* Summary grid */
+    .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+    .summary-card{border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:18px}
+    .summary-card .n{font-size:32px;font-weight:900;font-family:'Bricolage Grotesque',sans-serif;color:#E84142;line-height:1}
+    .summary-card .l{font-size:12px;color:#666;margin-top:8px;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+    @media(max-width:900px){.summary-grid{grid-template-columns:repeat(2,1fr)}}
+
+    .time-line{display:inline-block;padding:3px 10px;background:#10162f;color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;margin-right:8px}
+    .time-block{background:#fafafa;padding:8px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#666;border-bottom:1px solid #eee}
+    .callout{margin:24px 0;padding:24px 26px;border:3px solid #E84142;background:#fff5f5;border-left-width:10px;font-size:15px;line-height:1.8}
+    .callout strong{color:#E84142}
+    .callout .lead{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;margin-bottom:10px;display:block;line-height:1.2}
+
+    .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .audience-card{padding:18px;border:2px solid #000;background:#fff}
+    .audience-card .icon{font-size:28px;margin-bottom:8px;display:block}
+    .audience-card h5{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;margin-bottom:4px;font-weight:800;color:#10162f}
+    .audience-card .sub{font-size:11px;color:#E84142;font-family:'Space Mono',monospace;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;display:block}
+    .audience-card p{font-size:13px;color:#333;line-height:1.65}
+    .audience-card p strong{color:#10162f}
+    @media(max-width:900px){.audience-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.audience-grid{grid-template-columns:1fr}}
+
+    .what-you-get{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
+    .what-item{padding:16px;background:#fff;border:2px solid #000}
+    .what-item h5{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;margin-bottom:6px}
+    .what-item p{font-size:12px;color:#666;line-height:1.6}
+    @media(max-width:768px){.what-you-get{grid-template-columns:1fr}}
+
+    /* CTA section */
+    .cta-block{margin:36px 0;padding:32px 24px;background:#10162f;color:#fff;border:3px solid #000;text-align:center;box-shadow:8px 8px 0 #E84142}
+    .cta-block h2{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;margin-bottom:12px;line-height:1.2}
+    .cta-block .price{font-family:'Bricolage Grotesque',sans-serif;font-size:56px;font-weight:900;color:#FFDE59;line-height:1;margin:14px 0}
+    .cta-block .price small{font-size:18px;font-weight:600;color:#fff;opacity:0.7}
+    .cta-block .detail{font-size:13px;color:#fff;opacity:0.8;margin-bottom:18px;line-height:1.7}
+    .cta-block .btn{display:inline-block;padding:16px 40px;background:#FFDE59;color:#10162f;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:18px;border:3px solid #FFDE59;text-decoration:none;transition:all 0.15s}
+    .cta-block .btn:hover{background:#fff;color:#10162f;text-decoration:none}
+
+    /* Universal hook line */
+    .universal-hook{background:#10162f;color:#fff;padding:36px 24px;text-align:center;border-bottom:3px solid #000}
+    .universal-hook .big{font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:900;line-height:1.2;color:#FFDE59}
+    .universal-hook .small{font-size:15px;margin-top:10px;opacity:0.85}
+    @media(max-width:768px){.universal-hook .big{font-size:22px}.universal-hook{padding:24px 16px}}
+  </style>
+  <link rel="stylesheet" href="./jr-brand-refresh.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="brand-shell">
+    <div class="brand-topline">
+      <img src="./assets/brand/jr-logo-zh-full.png" alt="JR Academy 匠人学院" class="brand-logo">
+      <span>学 AI 来匠人 · STUDY AI AT JR ACADEMY</span>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-kicker">OpenClaw 一日实操班 · 悉尼线下</div>
+        <h1>你公司里，<br>多一个 24h AI 员工</h1>
+        <div class="sub">一整天 8 小时，把 OpenClaw 装到你电脑上。接客户消息、处理发票 PDF、出每日简报，3 件每天最烦的重复事现场跑通。</div>
+        <div class="tags">
+          <span class="tag a">8 Hours 一整天</span>
+          <span class="tag a">3 件事 AI 接管</span>
+          <span class="tag a">悉尼线下</span>
+          <span class="tag a">2026-06-24</span>
+          <span class="tag a">50 人小班</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="ai-card">
+          <span class="ai-dot"></span>
+          <span class="ai-label">AI Assistant</span>
+          <strong>OpenClaw</strong>
+          <small>本地运行 · 现场装机 · 课后继续用</small>
+        </div>
+        <img src="./assets/brand/niuxiaojiang-laptop.png" alt="" class="hero-mascot">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 顶部价格 / 日期 / 城市 / CTA banner -->
+<div class="hero-banner">
+  <div class="hero-banner-inner">
+    <div class="hero-fact"><span class="label">📅 日期</span><div class="v">2026-06-24 <small>周三 10:00-18:00</small></div></div>
+    <div class="hero-fact"><span class="label">📍 地点</span><div class="v">悉尼 CBD <small>具体场地报名后告知</small></div></div>
+    <div class="hero-fact"><span class="label">💰 价格</span><div class="v">AU$299 <small>/ 人 · 单一价</small></div></div>
+    <div class="hero-fact"><span class="label">👥 名额</span><div class="v">50 人 <small>先报先得</small></div></div>
+    <a href="#cta" class="hero-cta">立即报名 →</a>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="s"><div class="n">8</div><div class="l">Hours 一整天</div></div>
+  <div class="s"><div class="n">3</div><div class="l">件事 AI 接管</div></div>
+  <div class="s"><div class="n">🌸</div><div class="l">Quest 装机</div></div>
+  <div class="s"><div class="n">2</div><div class="l">Tutor 现场陪跑</div></div>
+  <div class="s"><div class="n">27+</div><div class="l">免费资源解锁</div></div>
+</div>
+
+<div class="c">
+
+  <!-- PAIN SECTION — opens the marketing flow -->
+  <div class="pain-section">
+    <span class="pain-tag">⚠️ 现状对照</span>
+    <h2>你每天在浪费时间。</h2>
+    <h3>这些事，AI 比你做得更快、更准。</h3>
+    <p class="pain-sub">不管你的身份是什么 — 老板、自雇、顾问、专业人士、内容创作者 — 下面这些场景你一定碰到过。</p>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="icon">💸</span>
+        <h4>海外人工成本太高</h4>
+        <p>澳洲最低时薪超过 <strong>$24/h</strong>，一个全职助理一年 <strong>$60,000+</strong>。AI 助手一次性投入，<strong>24 小时工作，永不请病假</strong>。</p>
+      </div>
+      <div class="pain-card">
+        <span class="icon">🔁</span>
+        <h4>每天都要做一遍的事</h4>
+        <p>早上看邮件、整理日程、查数据、发通知 — 同样的动作每天重复，<strong>毫无价值感</strong>。这本来就不该是人干的。</p>
+      </div>
+      <div class="pain-card">
+        <span class="icon">😴</span>
+        <h4>你下班了，事情还没完</h4>
+        <p>客户发消息、邮件等回复、账单待处理 — 你<strong>去接孩子、出去旅行</strong>，没人管就是没人管。生意永远停不下来。</p>
+      </div>
+      <div class="pain-card">
+        <span class="icon">👥</span>
+        <h4>招人难、留人难、培训贵</h4>
+        <p>花三个月培训出来的员工可能下个月就走。<strong>AI 不辞职、不谈条件、不需要重新培训</strong>。</p>
+      </div>
+      <div class="pain-card">
+        <span class="icon">🔍</span>
+        <h4>找东西比做事花时间</h4>
+        <p>截图在哪儿？那个链接存哪了？上次那个数据在哪个表？<strong>信息散落各处，效率归零</strong>。</p>
+      </div>
+      <div class="pain-card">
+        <span class="icon">🤯</span>
+        <h4>想用 AI 但不知道怎么落地</h4>
+        <p>听说 ChatGPT 厉害，自己试了几次没什么用，<strong>感觉 AI 跟自己的业务没什么关系</strong>。这堂课就是修这个的。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Universal hook strip -->
+  <div class="universal-hook">
+    <div class="big">"只要你每天有重复的事情要做，<br>OpenClaw 就能替你做。"</div>
+    <div class="small">— 这就是为什么不管你做什么，都该花一天，把 AI 助手装上、跑通、接手你工作里最烦的事。</div>
+  </div>
+
+  <div class="callout">
+    <span class="lead">这堂课不是 AI 概念讲座。是一整天，把 AI 助手装到你电脑上、跑通、用起来。</span>
+    一天结束你会带走：① <strong>OpenClaw</strong>（开源 AI 助手 · GitHub 24 万 ⭐）已经装在你自己电脑上跑通；② 你的 AI 助手当场学会 <strong>3 件每天最烦的重复事</strong>（接客户消息 / 处理发票 PDF / 出每日简报）；③ 周一上班接着用，<strong>不是回去"等有空再装"</strong>。
+  </div>
+
+  <!-- 行业卡片 - 6 个 persona -->
+  <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;margin:36px 0 12px;color:#10162f">你的 AI 助手 · 替你做什么</h2>
+  <p style="color:#555;font-size:14px;margin-bottom:16px">下面 6 类场景几乎覆盖了所有有重复劳动的工作。你做的那一行属于哪一类，AI 助手就替你做相应的活儿 — 不是给你 PPT，是真的接管。</p>
+
+  <div class="audience-grid">
+    <div class="audience-card">
+      <span class="icon">🍜</span>
+      <h5>你做餐饮 / 咖啡店 / 外卖</h5>
+      <span class="sub">AI 替你接客户消息</span>
+      <p><strong>WhatsApp / 微信订位咨询从早回到晚</strong>，菜单问题答 100 遍。<br>→ AI 24h 接消息 · 自动回 80% 重复问题 · 把新订位转给真人确认。</p>
+    </div>
+    <div class="audience-card">
+      <span class="icon">🛒</span>
+      <h5>你做电商 / 跨境 / Shopify</h5>
+      <span class="sub">AI 替你看后台 + 分级</span>
+      <p><strong>每天看后台订单 + 客诉 + 物流</strong>，时差导致半夜也要回。<br>→ AI 自动看后台 · 按紧急程度分级 · 半夜自动回标准问题 · 早 9 点推日报。</p>
+    </div>
+    <div class="audience-card">
+      <span class="icon">🏠</span>
+      <h5>你做地产中介 / Mortgage Broker</h5>
+      <span class="sub">AI 替你监控 + 跟进</span>
+      <p><strong>挂牌房源跟踪 + 客户跟进记录 + Settlement 节点</strong>。<br>→ AI 自动监控同行价格变动 · 整理买家资料 · Settlement 节点自动提醒。</p>
+    </div>
+    <div class="audience-card">
+      <span class="icon">⚖️</span>
+      <h5>你做律师 / 会计 / 专业服务</h5>
+      <span class="sub">AI 替你处理文档（合规友好）</span>
+      <p><strong>客户合同 / 财报 PDF / GST 发票一堆</strong>，数据合规敏感不能上云。<br>→ AI 本地跑 · 数据不出设备 · 合同/财报自动提取 · GST 自动 · 客户档案归档。</p>
+    </div>
+    <div class="audience-card">
+      <span class="icon">✍️</span>
+      <h5>你做内容 / 博主 / 自媒体</h5>
+      <span class="sub">AI 替你出灵感 + 初稿</span>
+      <p><strong>选题、写作、排程、多平台分发 — 一个人做不完</strong>。<br>→ AI 自动整理灵感库 · 生成多版本初稿 · 一稿改 4 平台 · 定时发布。</p>
+    </div>
+    <div class="audience-card">
+      <span class="icon">📚</span>
+      <h5>你做教培 / 顾问 / 服务业</h5>
+      <span class="sub">AI 替你接咨询 + 跟进</span>
+      <p><strong>报名咨询 / 学员问答 / 课后回访</strong>。<br>→ AI 接咨询消息 · 答常见问题 · 报名记录归档 · 课后回访自动跟进。</p>
+    </div>
+  </div>
+
+  <!-- 3 Skill spotlight - the AI assistant learns 3 things today -->
+  <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:900;margin:40px 0 8px;color:#10162f">📦 当天可以完成的事</h2>
+  <p style="color:#555;font-size:14px;margin-bottom:16px">一整天 8 小时，AI 助手当场学会 3 件事。每件现场跑通一次 · 预置 3 套场景模板 · 你只改自己生意的数据 · 不写一行代码。</p>
+
+  <div class="skill-spotlight">
+    <div class="skill-card">
+      <span class="badge">Skill 1 · 75 min</span>
+      <h4>替你接客户消息</h4>
+      <div class="who">微信 / WhatsApp · FAQ 客服</div>
+      <p>把你工作里最常被问的 10 个问题 + 标准回复填进模板。导入 OpenClaw → 接通微信 / WhatsApp。客户消息进来 AI 自动按规则回，复杂的转真人。</p>
+      <span class="got">✅ 现场接通跑通</span>
+    </div>
+    <div class="skill-card">
+      <span class="badge">Skill 2 · 75 min</span>
+      <h4>替你开发票 / 处理 PDF</h4>
+      <div class="who">澳洲 GST 发票 · 合同 / 订单 PDF 提取</div>
+      <p>一句话 → 自动生成澳洲合规 GST 发票 PDF（带 ABN / 税率 / Tax Invoice 字段）。客户邮件附件 PDF → AI 自动提金额 / 日期 / 收货地址 → 落 Excel / Xero。</p>
+      <span class="got">✅ 自动开澳洲发票</span>
+    </div>
+    <div class="skill-card">
+      <span class="badge">Skill 3 · 60 min</span>
+      <h4>替你出每日简报 + 日程推送</h4>
+      <div class="who">每日简报 · 日程 · 邮件分级</div>
+      <p>每天早上 9 点 AI 自动看邮箱 + 微信群 + 订单 + 日历 → 推送 5 条关键信息 + 今日重点日程。邮件分级：紧急 / 待回 / 群发 / 垃圾自动归类。</p>
+      <span class="got">✅ 触发器配通收到测试</span>
+    </div>
+  </div>
+
+  <!-- 课后还能继续做的事 - extended capabilities gallery -->
+  <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;margin:36px 0 8px;color:#10162f">🚀 课后继续 · AI 助手还能替你做</h2>
+  <p style="color:#555;font-size:14px;margin-bottom:14px">课上 3 件事跑通后，你已经会"教 AI 干活"的方法。下面这些课后社群继续讨论 · 27 个免费资源里有详细教程。</p>
+
+  <div class="more-cap-grid">
+    <div class="more-cap-card">
+      <span class="icon">📚</span>
+      <h5>知识库自动整理</h5>
+      <p>浏览过的文章、保存的资料、重要邮件 — AI 自动归档分类，可以随时<strong>用一句话搜索调用</strong>。</p>
+    </div>
+    <div class="more-cap-card">
+      <span class="icon">📅</span>
+      <h5>日程 + 关键节点提醒</h5>
+      <p>Settlement 日期 / 税务期限 / 客户续约 / 员工生日 — AI 主动提醒，<strong>不让你错过任何一个</strong>。</p>
+    </div>
+    <div class="more-cap-card">
+      <span class="icon">📊</span>
+      <h5>销售 / 数据自动汇总</h5>
+      <p>每天销售、库存、客诉 — AI 自动汇总，<strong>一句话查"上周哪款卖得最好"</strong>。</p>
+    </div>
+    <div class="more-cap-card">
+      <span class="icon">💰</span>
+      <h5>工资 / ABA 转账（讲解）</h5>
+      <p>澳洲 Award 工资条款套用 + 生成 ABA 银行批量转账文件。<strong>课上讲方法，课后自己配</strong>。</p>
+    </div>
+    <div class="more-cap-card">
+      <span class="icon">🔔</span>
+      <h5>同行价格监控</h5>
+      <p>地产挂牌 / 电商竞品 / 行业资讯 — AI 每日扫一遍，<strong>有变动就通知你</strong>。</p>
+    </div>
+    <div class="more-cap-card">
+      <span class="icon">📝</span>
+      <h5>内容多平台分发</h5>
+      <p>一稿改 4 平台（小红书 / 朋友圈 / 公众号 / LinkedIn）+ 定时发布，<strong>一个人当编辑部</strong>。</p>
+    </div>
+    <div class="more-cap-card">
+      <span class="icon">🤝</span>
+      <h5>客户跟进 CRM</h5>
+      <p>聊天记录 → AI 自动提取客户偏好、下次跟进点、价格敏感度 → <strong>变成可搜索的 CRM</strong>。</p>
+    </div>
+    <div class="more-cap-card">
+      <span class="icon">🔐</span>
+      <h5>合规敏感数据处理</h5>
+      <p>律师 / 会计客户资料、合同条款 — <strong>本地跑、不上云</strong>。课程 L07 专门讲这块。</p>
+    </div>
+  </div>
+
+  <!-- 全天分镜 -->
+  <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;margin:36px 0 12px;color:#10162f">8 小时怎么过</h2>
+
+  <div class="summary-grid">
+    <div class="summary-card"><div class="n">90'</div><div class="l">认知 + 案例 + 装机里程碑</div></div>
+    <div class="summary-card"><div class="n">60'</div><div class="l">🍱 午餐 + 1v1 答疑</div></div>
+    <div class="summary-card"><div class="n">210'</div><div class="l">3 件事 × AI 接管 + 茶歇</div></div>
+    <div class="summary-card"><div class="n">30'</div><div class="l">部署 + 成本 + 行动清单</div></div>
+  </div>
+
+  <div class="box">
+    <div class="box-h oc"><span style="font-weight:900">🧠 上半场 · 看见可能性 + 装起来</span><span style="float:right;font-family:'Space Mono',monospace;font-size:12px">10:00 - 12:30</span></div>
+    <div class="time-block">⏱ 2.5 小时 · 老师讲 + AI 小花装机 Quest + Tutor 陪跑</div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#10162f;color:#fff">L01</span>
+        <h4>开场 + 痛点征集</h4>
+        <span class="pill" style="background:#E84142;color:#fff">30 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">10:00-10:30</span>
+      </div>
+      <div class="lesson-body">
+        <div><h5>📖 你会做</h5><p>30 秒自我介绍 + 写下"我每天最烦的 3 件重复事"。讲师板书汇总全班痛点。</p></div>
+        <div><h5>🎯 这一节目标</h5><p>下午 AI 助手要替你做的 3 件事 — 就是从这些痛点里挑出来的。</p></div>
+        <div><h5>💡 算笔账</h5><p>澳洲请人 $24+/h / 招人难 / 24h 客服做不到 / 培训贵 — 算明白 AI 助手能省你多少。</p></div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#10162f;color:#fff">L02</span>
+        <h4>什么是 AI 助手 + 6 个行业的真实案例</h4>
+        <span class="pill" style="background:#E84142;color:#fff">60 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">10:30-11:30</span>
+      </div>
+      <div class="lesson-body">
+        <div><h5>📖 你会听到</h5><p>AI 助手是装在你电脑里的"24h 员工"（不是聊天框，是干活的）· 跟 ChatGPT / Claude.ai 的差别 · 为什么本地部署对合规敏感行业关键。</p></div>
+        <div><h5>🎯 6 个真实案例（按当期学员行业定制）</h5><p>餐饮 / 电商 / 地产 / 律师会计 / 内容创作 / 教培顾问 — 老师当期选 3-4 个跑一遍，整堂课的 Demo 围绕当期学员行业组合。</p></div>
+        <div><h5>💡 你会带走</h5><p>"AI 助手能和不能替我干什么"的判断心智模型 — 立刻能用上的判断工具。</p></div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#10162f;color:#fff">L03</span>
+        <h4>🌸 Quest 装机里程碑 — AI 小花一对一带你装好 OpenClaw</h4>
+        <span class="pill" style="background:#E84142;color:#fff">60 min</span>
+        <span class="pill" style="background:#FF914D;color:#fff">🌸 Quest</span>
+        <span class="pill" style="background:#10b981;color:#fff">2 名 Tutor 陪跑</span>
+      </div>
+      <div class="lesson-body">
+        <div><h5>📖 老师讲（10 分钟）</h5><p>OpenClaw 工作原理 · 本地部署优势 · 装机环节最常见的 3 个坑（Win 没装 WSL2 / Node ≥22 / 不要用 Bun）。</p></div>
+        <div><h5>🌸 AI 小花 Quest（50 分钟）</h5><p>AI 小花一对一带你走 5 步：下载 → 注册 → 接 API Key（讲师统一发临时 Key）→ 跑通"你好" → 接通聊天界面。每步贴终端输出 AI 当场验证。</p><span class="review ai">✅ 12:30 前 100% 装上</span></div>
+        <div><h5>🛟 Tutor Backup</h5><p>AI 小花搞不定的边缘情况，2 名人类 Tutor（1:25）立刻接手。前 3 期 120+ 学员（4h 版）72 岁老太太都装上了。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box" style="border-color:#10b981;box-shadow:6px 6px 0 #10b981">
+    <div class="box-h" style="background:#10b981"><span style="font-weight:900">🍱 中场 · 午餐 + 1v1 答疑</span><span style="float:right;font-family:'Space Mono',monospace;font-size:12px">12:30 - 13:30</span></div>
+    <div class="time-block">⏱ 60 分钟 · 提供餐食（含素食）· 讲师 + 助教散坐答疑</div>
+    <div style="padding:14px 24px;font-size:13px;color:#444;line-height:1.7">边吃边问"我这个生意能用吗"。讲师 + 助教散坐，每个人都能聊上几分钟。加班级微信群 — 课后社群直接落地。</div>
+  </div>
+
+  <div class="box">
+    <div class="box-h workshop"><span style="font-weight:900">🛠 下半场 · 3 件事 AI 当场接管</span><span style="float:right;font-family:'Space Mono',monospace;font-size:12px">13:30 - 17:30</span></div>
+    <div class="time-block">⏱ 3.5 小时 · 3 件事 × AI 接管 · 含 2 个 15 分钟茶歇</div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#10162f;color:#fff">L04</span>
+        <h4>Skill 1 · AI 替你接客户消息 — 微信 / WhatsApp 跑通</h4>
+        <span class="pill" style="background:#E84142;color:#fff">75 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">13:30-14:45</span>
+        <span class="pill" style="background:#10b981;color:#fff">现场跑通</span>
+      </div>
+      <div class="lesson-body">
+        <div><h5>📖 演示 + 跟做</h5><p>讲师手机给 AI 助手发"今晚 6 点 4 人有位吗" → 自动回复 ✓。你填模板：自己工作中最常被问的 10 个问题 + 标准回复。</p></div>
+        <div><h5>🔬 接通 + 测试</h5><p>导入 OpenClaw → 接通微信 / WhatsApp（讲师投屏带做）→ 学员之间互发消息测试 + 拍照打卡发群。</p></div>
+        <div><h5>📦 预置文件</h5><p>多套现成 FAQ Excel 模板（餐饮 / 电商 / 服务业 / 咨询 等行业各 1 份），照着改。</p><span class="review ai">✅ 微信 / WhatsApp 接通</span></div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#10162f;color:#fff">L05</span>
+        <h4>Skill 2 · AI 替你开澳洲发票 + 处理 PDF — 真实合同跑一遍</h4>
+        <span class="pill" style="background:#E84142;color:#fff">75 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">15:00-16:15</span>
+        <span class="pill" style="background:#dc2626;color:#fff">你的素材</span>
+      </div>
+      <div class="lesson-body">
+        <div><h5>📖 演示</h5><p>① "给客户 ABC 开 $1200 GST 发票，今天日期" → AI 生成澳洲合规 PDF（ABN / GST / Tax Invoice 字段齐全）<br>② 客户邮件附件 PDF → AI 自动提金额 / 日期 / 收货地址 → 落 Excel / Xero。</p></div>
+        <div><h5>🔬 用你自己的合同跑</h5><p>上传你最近 3 份真实合同 / 订单 PDF 跑一遍。接通 Xero / MYOB / 微信收款（讲师演示 1 个，按需问）。</p></div>
+        <div><h5>⚠️ GST 注意</h5><p>澳洲 GST 不是统一 10% — 模板支持自定义税率。不同行业 / 出口商品规则不同，现场讲清楚。</p><span class="review ai">✅ 真实合同跑通</span></div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#10162f;color:#fff">L06</span>
+        <h4>Skill 3 · AI 替你出每日简报 + 日程推送 — 触发器配通</h4>
+        <span class="pill" style="background:#E84142;color:#fff">60 min</span>
+        <span class="pill" style="background:#6366f1;color:#fff">16:30-17:30</span>
+        <span class="pill" style="background:#10b981;color:#fff">每天自动跑</span>
+      </div>
+      <div class="lesson-body">
+        <div><h5>📖 演示</h5><p>① 每天早 9 点 AI 自动看邮箱 + 微信群 + 订单 + 日历 → 推送 5 条关键信息 + 今日日程<br>② 邮件分级：紧急 / 待回 / 群发 / 垃圾 自动归类。</p></div>
+        <div><h5>🔬 配你自己的触发器</h5><p>配置自己的日报时间 + 接通 Gmail / Outlook → 手动触发一次自己的日报 → 收到 ✓。</p></div>
+        <div><h5>💡 进阶用法</h5><p>每周五自动生成员工周报 / 客户欠款提醒 / 库存低位预警 / Settlement 提醒 — 课后社群继续讨论。</p><span class="review ai">✅ 触发器配通收到测试</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box" style="border-color:#10162f">
+    <div class="box-h deploy"><span style="font-weight:900">🚀 收尾 · 让 AI 助手在你公司 7×24 跑</span><span style="float:right;font-family:'Space Mono',monospace;font-size:12px">17:30 - 18:00</span></div>
+    <div class="time-block">⏱ 30 分钟 · 学完不只是会用 · 要把 AI 助手在你公司真上线</div>
+
+    <div class="lesson">
+      <div class="lesson-head">
+        <span class="pill" style="background:#10162f;color:#fff">L07</span>
+        <h4>7×24 部署 + 成本控制 + 数据安全清单</h4>
+        <span class="pill" style="background:#E84142;color:#fff">30 min</span>
+      </div>
+      <div class="lesson-body">
+        <div><h5>🖥 7×24 部署 3 方案</h5><p>① 家里旧电脑（免费，最常用）<br>② NUC 迷你主机一次性 AU$400（推荐）<br>③ 云服务器 AU$10-15/月（不想管硬件的）</p></div>
+        <div><h5>💰 成本控制</h5><p>API Key 月用量预估 — 日常使用 <strong>&lt; AU$50/月</strong>够用。Gemini 免费额度优先 / Claude Haiku 便宜模式什么时候用。</p></div>
+        <div><h5>🔒 数据安全</h5><p>本地存储 / API Key 保管 / 哪些数据<strong>别</strong>喂 AI（客户隐私 · 合规敏感）· 律师 / 会计行业的合规检查清单。</p></div>
+      </div>
+    </div>
+
+    <div class="lesson" style="border-color:#FFDE59">
+      <div class="lesson-head" style="background:#fffbeb">
+        <span class="pill" style="background:#10162f;color:#fff">📝</span>
+        <h4>每人写下：下周一让 AI 助手接管的 1 件具体事 + deadline</h4>
+        <span class="pill" style="background:#dc2626;color:#fff">必交</span>
+      </div>
+      <div class="lesson-body">
+        <div><h5>📝 现场写在 A4 卡上</h5><p>不是写"我要好好学" — 写"周一上午 10:00 我让 AI 助手接管 Skill X 在我公司"。</p></div>
+        <div><h5>📷 拍照发群</h5><p>每个人拍照发班级微信群 — 互相监督 + 课后 30 天追踪。</p></div>
+        <div><h5>🎓 结业小证 + 合影</h5><p>电子证书 + 实物结业证 + 50 人现场大合影 → 朋友圈素材包 24h 内发群。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block" id="cta">
+    <h2>2026-06-24 周三 · 悉尼线下 · 50 人小班</h2>
+    <div class="price">AU$299 <small>/ 人</small></div>
+    <div class="detail">含 全天课程 · 午餐 · 多套场景模板包 · 课后社群 30 天 · 27 资源解锁 · 结业证<br>名额 50 人 · 先报先得 · 报名截止 2026-06-17（D-7）</div>
+    <a href="mailto:hello@jiangren.com.au?subject=OpenClaw 一日实操班报名 · 2026-06-24" class="btn">📩 立即报名 →</a>
+    <div style="font-size:12px;margin-top:14px;opacity:0.7">报名邮箱 hello@jiangren.com.au · 或加客服微信 <strong style="color:#FFDE59">jracademy6</strong></div>
+  </div>
+
+  <!-- 走出 8 小时 你会带走 -->
+  <div class="box" style="margin-top:32px">
+    <div class="box-h" style="background:#10162f"><span style="font-weight:900">📦 走出这 8 小时 · 你会带走</span></div>
+    <div style="padding:20px 24px">
+      <div class="what-you-get">
+        <div class="what-item">
+          <h5>✅ 跑起来的 AI 助手</h5>
+          <p>装在你自己电脑上 + 接好 API Key + 跑通过的 OpenClaw 实例，不用回家"等有空再装"。</p>
+        </div>
+        <div class="what-item">
+          <h5>✅ 3 件事 AI 当场学会</h5>
+          <p>接客户消息 + 开发票/处理 PDF + 出每日简报 — 不是看演示，是你自己跑通。</p>
+        </div>
+        <div class="what-item">
+          <h5>✅ 微信 / WhatsApp 接通的 AI 助手</h5>
+          <p>带回家周一上班就能用，不是回去再调环境。</p>
+        </div>
+        <div class="what-item">
+          <h5>✅ 下周一行动清单</h5>
+          <p>1 件具体事 + 明确 deadline，照着干就行。班级群互相追踪 30 天。</p>
+        </div>
+        <div class="what-item">
+          <h5>✅ 27 个免费学习资源解锁</h5>
+          <p>9 章 OpenClaw 学习方向 + 16 个 Prompt Lab + 2 篇 Wiki — 课后 30 天有人答疑 + 自学路径。</p>
+        </div>
+        <div class="what-item">
+          <h5>✅ 跨行业同行社群</h5>
+          <p>50 人班级群 + OpenClaw 使用者大群 — 别的行业怎么用，你能直接抄。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="box" style="margin-top:20px">
+    <div class="box-h" style="background:#10162f"><span style="font-weight:900">❓ 常见问题</span></div>
+    <div style="padding:16px 24px">
+      <details open>
+        <summary>我完全零代码，复制粘贴 API Key 都怕，能学吗？</summary>
+        <div>这就是为什么我们设计了 <strong>AI 小花 Quest 装机 + 2 名人类 Tutor 现场 1:25 陪跑</strong>。前 3 期 4h 版 120+ 学员包括 72 岁老太太都装上了。所有需要复制粘贴的命令都有讲师统一发的临时 API Key（不用你自己注册），3 件事都有预置模板，你只改自己生意的数据，不写一行代码。</div>
+      </details>
+      <details>
+        <summary>6/24 是周三 — 我能请一天假吗？</summary>
+        <div>周三场地费便宜、避开周末家庭安排，可以走公司账记入 professional development。如果你确实周三动不开，请联系客服 — 如果超过 10 位同学有同样问题，我们会改成 6/27 周六或 6/28 周日。报名链接里会更新。</div>
+      </details>
+      <details>
+        <summary>跟你们 4 小时版有什么区别？我该报哪个？</summary>
+        <div>4 小时版（入门体验价）是装机 + 跟练 1 次 + 自己素材 1 次，让你"看清能不能上手"。一日版（AU$299）是决心版主课 — AI 助手当场学会 <strong>3 件事</strong>（接客户 / 开发票处理 PDF / 出每日简报）+ 部署上线方案 + 30 天行动追踪。如果你已经知道要把 AI 助手引入工作，直接报一日版；先看看再说就报 4 小时。可以补差价升级。</div>
+      </details>
+      <details>
+        <summary>AU$299 包含什么？有隐藏费用吗？</summary>
+        <div>包含：全天课程（10:00-18:00） + 午餐（含素食） + 多套场景模板包 U 盘 + 学员手册 PDF + 课后微信群 30 天 + 27 个免费资源解锁 + 结业证 + 现场合影朋友圈素材包。<strong>没有隐藏费用</strong>。课后 OpenClaw 本身 MIT 开源免费 — 你长期跑 AI 助手的成本是 LLM API Key，日常 &lt; AU$50/月。</div>
+      </details>
+      <details>
+        <summary>AI 助手 24h 跑起来要花钱吗？</summary>
+        <div>OpenClaw 本身 <strong>MIT 开源免费</strong>。<strong>主要成本是 LLM API Key</strong> — 按用量付费，日常使用一个月 AU$10-50。课上我们会教你怎么选模型省钱（Gemini 免费额度 / Claude Haiku 便宜模式）。课上没自备 Key 会发共享测试 Key 让你用完这 8 小时。</div>
+      </details>
+      <details>
+        <summary>我是律师 / 会计，客户数据不能上云 — 这个能用吗？</summary>
+        <div>正中靶心。OpenClaw 装在你自己电脑上跑，<strong>数据不离开你的设备</strong>（除了你主动调 LLM API 的那部分内容）。课程 L07 部署段会专门讲合规敏感行业的设置 — 哪些数据可以喂 AI、哪些不行、API Key 怎么保管、本地存储怎么加密。</div>
+      </details>
+      <details>
+        <summary>报名了临时来不了能退 / 转期吗？</summary>
+        <div>50 人线下小班容量有限，建议至少提前 7 天告诉我们 — 可以转给下期同城同学或你推荐的朋友。开课前 7 天内取消恕不退款，但可以全额转下一期。具体看报名链接里的条款。</div>
+      </details>
+      <details>
+        <summary>能线上参加吗？</summary>
+        <div>不能。这堂课设计成线下沉浸式的核心原因是 Tutor 陪跑装机 + 1v1 答疑 + Networking — 这三件事线上做不出效果。想线上学 AI 助手入门，去平台 <a href="/learn/openclaw">免费自学 9 章</a>。</div>
+      </details>
+      <details>
+        <summary>有录播吗？</summary>
+        <div>不录播。设计成全互动的，Tutor 陪跑 + Networking 录下来没意义。错过可以等下一期，或先在平台自学 OpenClaw 学习方向。</div>
+      </details>
+      <details>
+        <summary>我在墨尔本 / 布里斯班，会去这些城市开吗？</summary>
+        <div>首期先在悉尼试跑，复盘后再决定是否复制到墨尔本 / 布里斯班。如果你在其他城市感兴趣，可以加客服微信 <strong>jracademy6</strong> 备注 "OpenClaw fullday + 你的城市"，我们攒够 30 人就开。</div>
+      </details>
+    </div>
+  </div>
+
+  <!-- 终极 CTA -->
+  <div class="cta-block" style="margin-bottom:0">
+    <h2>不管你做什么 — 给自己算一笔账</h2>
+    <div style="font-size:14px;line-height:1.8;margin:16px 0">
+      请一个 Part-time 客服澳洲 $24/h × 4h/天 = <strong style="color:#FFDE59">$96/天</strong><br>
+      AI 助手接管 80% 重复活儿 = 回家就回本 <strong style="color:#FFDE59">3.1 天</strong><br>
+      花 8 小时换 365 天的 AI 助手 — 你公司里多一个 24h 员工
+    </div>
+    <a href="mailto:hello@jiangren.com.au?subject=OpenClaw 一日实操班报名 · 2026-06-24" class="btn" style="margin-top:8px">📩 锁定我的名额 →</a>
+    <div style="font-size:12px;margin-top:14px;opacity:0.7">报名邮箱 hello@jiangren.com.au · 或加客服微信 <strong style="color:#FFDE59">jracademy6</strong></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  © JIANGREN ACADEMY · OpenClaw 一日实操班 · 你公司里多一个 24h AI 员工 · 2026-06-24 悉尼线下 · AU$299
+</div>
+
+</body>
+</html>
