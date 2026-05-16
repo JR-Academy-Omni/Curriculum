@@ -32,6 +32,12 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background:
     radial-gradient(circle at top left, rgba(255, 200, 77, 0.18), transparent 30rem),
@@ -728,11 +734,44 @@ details > div {
 
 @media (max-width: 480px) {
   .header h1 {
-    font-size: 32px !important;
+    font-size: 30px !important;
+    line-height: 1.12 !important;
+  }
+
+  .brand-topline span {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .header .sub {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  .tags {
+    width: 100%;
+  }
+
+  .tag {
+    white-space: normal;
   }
 
   .hero-kicker {
     font-size: 12px;
+  }
+
+  .hero-banner-inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-items: stretch !important;
+  }
+
+  .hero-fact {
+    padding: 2px 0;
+  }
+
+  .hero-fact .v {
+    font-size: 18px !important;
   }
 
   .hero-visual {
@@ -747,6 +786,11 @@ details > div {
   }
 
   .bar {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    padding: 16px !important;
+  }
+
+  .bar .s {
+    width: 100%;
   }
 }
