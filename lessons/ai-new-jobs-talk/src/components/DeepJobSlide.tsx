@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
 import { Slide, Inner, Half, Title, colors, fonts, border, shadow, shadowSm } from './ui';
 import type { DeepJob, RegionCode, RegionSnapshot } from '../data/jobs';
 
@@ -7,6 +8,7 @@ interface Props {
 	accentColor: string;
 	accentBg: string;
 	chapterTag: string;
+	promoBanner?: ReactNode;
 }
 
 const REGIONS: { code: RegionCode; flag: string; name: string; nameEn: string }[] = [
@@ -93,7 +95,7 @@ function RegionCard({
 	);
 }
 
-export default function DeepJobSlide({ job, accentColor, accentBg, chapterTag }: Props) {
+export default function DeepJobSlide({ job, accentColor, accentBg, chapterTag, promoBanner }: Props) {
 	return (
 		<Slide bg={accentBg}>
 			<Inner style={{ flexDirection: 'column', gap: 14, height: '92%' }}>
@@ -272,6 +274,7 @@ export default function DeepJobSlide({ job, accentColor, accentBg, chapterTag }:
 						))}
 					</div>
 				</div>
+				{promoBanner}
 			</Inner>
 		</Slide>
 	);
