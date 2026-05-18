@@ -1,0 +1,378 @@
+{
+  "themeColor": "#FF914D",
+  "accentColor": "#B91C1C",
+  "course": {
+    "name_zh": "AI 漫剧从 0 到 1 视频课 · 8 节录播",
+    "name_en": "AI Comic Drama · 8-Lesson Video Course",
+    "format": "video-on-demand",
+    "format_zh": "录播视频课 · 永久可看 · 章节式解锁",
+    "lessons_count": 8,
+    "total_duration_minutes": 360,
+    "level": "intermediate",
+    "level_zh": "零基础友好 · 但更适合『看过 2h 工作坊还想深做』的同学",
+    "url": "https://jiangren.com.au/curriculum/ai-comic-video-course/",
+    "source_note_zh": "课程主体录制于 Bilibili Cheese · 在 JR Academy 同步上线 · 含中文配套讲义 + Prompt 模板包",
+    "related_workshop": {
+      "slug": "ai-comic-workshop",
+      "title_zh": "AI 漫剧 2 小时直播工作坊",
+      "relation_zh": "想先看全景再决定要不要深入 → 看 2h 工作坊；想真把一条完整漫剧从小说做到成片 → 看这套 8 节录播"
+    }
+  },
+  "curriculumPages": {
+    "pages": ["curriculum.html"],
+    "defaultPage": "curriculum.html"
+  },
+  "instructor": {
+    "name_zh": "张彦伟",
+    "name_en": "Zhang Yanwei",
+    "role_zh": "AI 漫剧主讲 · 一线从业者",
+    "tagline_zh": "教过编程 · 教过新媒体 · 教过视频拍剪 · 现在每天在做 AI 漫剧",
+    "bio_zh": "张老师早年在北大青鸟教 Java 和新媒体，后在 B 站等平台做视频拍摄与后期剪辑系列课。2024 年起把主要精力迁移到 AI 漫剧 — 这套 8 节录播是他『从一本小说到一条 1 分钟漫剧成片』完整工艺的逐步拆解。",
+    "badges": [
+      "🎓 北大青鸟讲师",
+      "📺 B 站长期创作者",
+      "🎬 AI 漫剧一线从业者"
+    ]
+  },
+  "tools": [
+    {
+      "id": "ai-chat",
+      "name_zh": "AI 聊天工具",
+      "name_en": "ChatGPT / 豆包 / Kimi / Claude",
+      "role_zh": "剧本生成 + 分镜剧本生成",
+      "category": "text-generation",
+      "emoji": "💬",
+      "used_in_modules": ["L02", "L03"]
+    },
+    {
+      "id": "ai-agent",
+      "name_zh": "AI 智能体（Coze / Dify / Skills）",
+      "name_en": "AI Agent",
+      "role_zh": "自动化『剧本 → 分镜剧本』转换",
+      "category": "agent",
+      "emoji": "🤖",
+      "used_in_modules": ["L03"]
+    },
+    {
+      "id": "nano-banana",
+      "name_zh": "Nano Banana (香蕉)",
+      "name_en": "Nano Banana · Gemini 2.5 Flash Image",
+      "role_zh": "角色 / 场景 / 分镜图生成主力",
+      "category": "image-generation",
+      "url": "https://aistudio.google.com",
+      "emoji": "🍌",
+      "used_in_modules": ["L04", "L05"]
+    },
+    {
+      "id": "jimeng",
+      "name_zh": "即梦 Seedance 2.0",
+      "name_en": "Jimeng Seedance 2.0",
+      "role_zh": "视频生成主力 · 把分镜图喂成动态镜头",
+      "category": "video-generation",
+      "url": "https://jimeng.jianying.com",
+      "emoji": "🎞",
+      "used_in_modules": ["L06"]
+    },
+    {
+      "id": "tts",
+      "name_zh": "AI 配音 + 音效",
+      "name_en": "ElevenLabs / 海螺 AI / Suno",
+      "role_zh": "角色配音 + BGM + 音效",
+      "category": "audio",
+      "emoji": "🎙",
+      "used_in_modules": ["L07"]
+    },
+    {
+      "id": "editing",
+      "name_zh": "剪映 / CapCut / Tapnow",
+      "name_en": "Jianying / CapCut / Tapnow",
+      "role_zh": "剪辑 + 字幕 + 包装 + 导出",
+      "category": "video-editing",
+      "emoji": "✂️",
+      "used_in_modules": ["L08"]
+    }
+  ],
+  "modules": [
+    {
+      "code": "L01",
+      "title_zh": "小说选择",
+      "title_en": "Source Material — How to Pick a Novel",
+      "emoji": "📖",
+      "color": "#B91C1C",
+      "duration_minutes": 30,
+      "type": "lecture",
+      "summary_zh": "AI 漫剧的第一道工序不是开 AI — 是挑对一本小说。挑错了后面所有工序都白做。",
+      "content_sections": [
+        "什么样的小说适合做 AI 漫剧（题材 / 长度 / 节奏 / 画面感）",
+        "甜宠 / 玄幻 / 悬疑 / 都市 — 哪类起号最快",
+        "公版书 / 自创剧本 / 授权改编的版权红线",
+        "看『有没有强情节钩子』比看『文笔』重要 10 倍",
+        "怎么从一本 30 万字小说里抠出 1 分钟漫剧的『黄金 30 秒』"
+      ],
+      "learning_outcomes": [
+        "拿到 5 个挑书清单维度，能自己判断手上素材能不能做",
+        "知道哪几类起号最快、哪类容易暴雷",
+        "理解版权红线，避免发出去就被下架"
+      ]
+    },
+    {
+      "code": "L02",
+      "title_zh": "AI 小说拆分成剧本",
+      "title_en": "AI · Novel → Script",
+      "emoji": "📝",
+      "color": "#FF914D",
+      "duration_minutes": 40,
+      "type": "lecture-with-demo",
+      "summary_zh": "小说几万字，漫剧只有 1 分钟 — 中间这一步把『故事压缩成戏剧结构』是 AI 干得最漂亮的活。",
+      "content_sections": [
+        "剧本和小说的本质区别：戏剧动作 vs 文字描写",
+        "用 AI 拆小说的 Prompt 公式（人物 / 场景 / 冲突 / 反转）",
+        "1 分钟漫剧的标准剧本结构：钩子 5s → 矛盾 30s → 反转 15s → 收尾 10s",
+        "对白要写成『AI 能配音』的口语 — 一条铁律避坑",
+        "ChatGPT / 豆包 / Kimi / Claude 拆剧本横向对比 · 选最稳的那家"
+      ],
+      "learning_outcomes": [
+        "带走一份『小说拆剧本』的标准 Prompt 模板",
+        "能把任意一本中长篇小说在 30 分钟内拆成 1 分钟漫剧剧本",
+        "知道哪家 AI 在中文剧本上最靠谱"
+      ]
+    },
+    {
+      "code": "L03",
+      "title_zh": "AI 智能体将剧本转分镜剧本",
+      "title_en": "AI Agent · Script → Storyboard Script",
+      "emoji": "🤖",
+      "color": "#F59E0B",
+      "duration_minutes": 50,
+      "type": "agent-workflow",
+      "summary_zh": "剧本只有对白和动作，分镜剧本要写清楚每一镜的镜头 / 景别 / 角色 / 场景 / 时长 — 用一个 AI 智能体一次跑完。",
+      "content_sections": [
+        "什么是分镜剧本（shooting script）— 一表见全片",
+        "搭一个『剧本 → 分镜剧本』的智能体（Coze / Dify / Claude Skills 三种方式选一）",
+        "智能体怎么自动拆镜：景别（特写/中景/远景）/ 机位 / 时长 / 转场",
+        "分镜剧本的 6 列标准模板：镜号 / 景别 / 内容 / 对白 / 时长 / 备注",
+        "演示：一段剧本喂进智能体，30 秒输出 12 镜分镜表"
+      ],
+      "learning_outcomes": [
+        "学会怎么搭一个能跑完整工序的智能体",
+        "拿到分镜剧本模板（CSV / Notion / 飞书三版）",
+        "理解为什么有了智能体后，1 分钟漫剧的前期可以从 4 小时压到 30 分钟"
+      ]
+    },
+    {
+      "code": "L04",
+      "title_zh": "AI 角色场景设计",
+      "title_en": "AI Character & Scene Design",
+      "emoji": "🎨",
+      "color": "#10b981",
+      "duration_minutes": 50,
+      "type": "design-demo",
+      "summary_zh": "角色和场景是后面所有分镜图的『资产库』— 这一步出图必须锁死，否则后面 12 镜会变成 12 个长相不一样的人。",
+      "content_sections": [
+        "主角 + 配角的视觉锁定法（外貌词组 + 服装 + 标志特征）",
+        "怎么让 AI 在多张图里保持同一个人 — 种子值 / 参考图喂法 / 描述词冻结",
+        "场景库搭建：室内 / 室外 / 夜景 / 雨景 — 一次出 6-8 张备用",
+        "风格统一：把『画风 Prompt』抽成一段模板词，每张图都带上",
+        "演示：从『古风 18 岁少女』到锁定 5 个角度都能复用的角色集"
+      ],
+      "learning_outcomes": [
+        "建好自己第一个漫剧的角色资产库 + 场景资产库",
+        "理解角色一致性问题的 3 种解法（种子 / 参考图 / 词组冻结）",
+        "拿到『古风 / 都市 / 玄幻 / 校园』四套风格 Prompt 模板"
+      ]
+    },
+    {
+      "code": "L05",
+      "title_zh": "AI 香蕉 (Nano Banana) 分镜图设计",
+      "title_en": "Nano Banana · Storyboard Image Generation",
+      "emoji": "🍌",
+      "color": "#FFDE59",
+      "duration_minutes": 60,
+      "type": "live-image-gen",
+      "summary_zh": "Nano Banana 是目前角色一致性最能打的图像 AI — 这一节把 L03 的分镜剧本 + L04 的角色场景资产，逐镜出成正式分镜图。",
+      "content_sections": [
+        "Nano Banana 平台入口：Google AI Studio / Tapnow 内置 / API",
+        "分镜图 Prompt 公式：角色 + 场景 + 动作 + 景别 + 情绪 + 风格",
+        "怎么把 L04 锁定的角色喂进去保持长相一致",
+        "批量出图工作流：12 镜串行 vs 并行 vs 半人工挑选",
+        "失败处理：手指 / 眼神 / 服装错乱的 3 种返工策略",
+        "演示：完整一条 12 镜分镜图，老师从头跑到尾"
+      ],
+      "learning_outcomes": [
+        "完整跑完一条 12 镜分镜图（带走源文件）",
+        "拿到 Nano Banana 的『分镜图 Prompt 公式表』",
+        "学会失败镜的高效返工方法 — 不是重新跑，是局部改"
+      ]
+    },
+    {
+      "code": "L06",
+      "title_zh": "AI 即梦 Seedance 2.0 生成视频",
+      "title_en": "Jimeng Seedance 2.0 · Video Generation",
+      "emoji": "🎞",
+      "color": "#38B6FF",
+      "duration_minutes": 60,
+      "type": "video-gen-demo",
+      "summary_zh": "把 L05 的静态分镜图喂进即梦 Seedance 2.0，跑成 3-5 秒的动态镜头 — 这是整套课最关键的一步，也是最容易踩坑的一步。",
+      "content_sections": [
+        "Seedance 2.0 相比 1.0 / Vidu / Runway 的核心优势（人物一致性 + 运镜）",
+        "图生视频 vs 文生视频：漫剧场景为什么必须图生视频",
+        "运镜 Prompt 怎么写：推 / 拉 / 摇 / 移 / 跟 + 情绪节奏词",
+        "时长控制：3 秒 / 5 秒 / 10 秒 — 漫剧用 3-5 秒最稳",
+        "队列管理：高峰期排队几小时怎么办（5 个真实可用的对策）",
+        "成本测算：一条 1 分钟漫剧大约花多少钱"
+      ],
+      "learning_outcomes": [
+        "完整跑出 12 个动态镜头（带走源视频）",
+        "拿到『即梦运镜 Prompt 速查表』",
+        "知道一条 1 分钟漫剧的真实硬成本"
+      ]
+    },
+    {
+      "code": "L07",
+      "title_zh": "AI 声音设计",
+      "title_en": "AI Sound Design — Voice + Music + SFX",
+      "emoji": "🎙",
+      "color": "#CB6CE6",
+      "duration_minutes": 35,
+      "type": "audio-demo",
+      "summary_zh": "漫剧 80% 的情绪靠声音 — 不是配几句旁白，而是角色配音 / BGM / 音效三层都要做。这节讲怎么用 AI 把三层都跑完。",
+      "content_sections": [
+        "角色配音：怎么挑声线（少女 / 御姐 / 大叔 / 旁白），怎么调情绪",
+        "AI 配音工具横评：ElevenLabs（情绪最强）/ 海螺 AI（中文最稳）/ 豆包配音 / 剪映自带 TTS",
+        "BGM：怎么用 Suno 出主题音乐 · 怎么从素材库挑（5 个免费商用站推荐）",
+        "音效层：脚步 / 风声 / 心跳 / 转场音 — 漫剧专用音效包",
+        "三层混音的音量比例：人声 0dB / BGM -18dB / SFX -12dB"
+      ],
+      "learning_outcomes": [
+        "学会用 AI 配出『不像 AI 的』角色声线",
+        "拿到一份漫剧专用音效素材清单（全部免费商用）",
+        "理解三层混音的工业标准"
+      ]
+    },
+    {
+      "code": "L08",
+      "title_zh": "AI 漫剧剪辑包装",
+      "title_en": "Editing & Final Packaging",
+      "emoji": "✂️",
+      "color": "#6366f1",
+      "duration_minutes": 35,
+      "type": "editing-demo",
+      "summary_zh": "把 L06 的视频 + L07 的声音 + 字幕 / 封面 / 标题在剪映里拼成成片，导出能直接发抖音 / 快手 / 小红书的 1080p 1:1 / 9:16 多版本。",
+      "content_sections": [
+        "剪映 / CapCut 的漫剧专用模板（章节卡 / 转场 / 字幕样式）",
+        "字幕规范：每行 ≤12 字 / 出现 1.2s 起 / 颜色对比够",
+        "封面三秒原则：1 张图说清『谁 + 在做什么 + 反转点是啥』",
+        "标题钩子：抖音 / 小红书 / 视频号 三平台标题分别怎么写",
+        "导出参数：抖音 1080×1920 / 小红书 1080×1350 / 视频号 1080×1920",
+        "发布节奏：单条还是连载，第一条该不该投流"
+      ],
+      "learning_outcomes": [
+        "完成第一条完整漫剧成片（1 分钟 / 1080p / 三平台版本）",
+        "拿到剪辑模板 + 字幕样式预设 + 封面模板",
+        "理解发布节奏 · 第一条投不投流的判断逻辑"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "icon": "🎬",
+      "title_zh": "一条完整漫剧成片",
+      "desc_zh": "从挑小说到发抖音，跟着 8 节课走完一遍，你手里有一条 1 分钟、自己做的、可以直接发布的漫剧"
+    },
+    {
+      "icon": "📦",
+      "title_zh": "一整套 Prompt + 智能体 + 模板包",
+      "desc_zh": "拆剧本 Prompt / 分镜剧本智能体 / 角色一致性词组 / 即梦运镜速查表 / 字幕模板 / 封面模板 — 一站式带走"
+    },
+    {
+      "icon": "🔁",
+      "title_zh": "可复用的生产流水",
+      "desc_zh": "这套工艺不是一次性的 — 学完后你能像一个微型工作室一样，每周稳定输出 2-3 条漫剧"
+    },
+    {
+      "icon": "💰",
+      "title_zh": "成本透明",
+      "desc_zh": "课程里把每个工具的真实月成本算给你看 — 一条 1 分钟漫剧硬成本大约 ¥10-30，知道你在花什么钱"
+    }
+  ],
+  "audience": [
+    {
+      "emoji": "📱",
+      "title_zh": "想起号的短视频创作者",
+      "desc_zh": "看到别人 AI 漫剧 100w 播放心痒 — 跟着这 8 节自己做一遍，知道能不能做、值不值得做"
+    },
+    {
+      "emoji": "✍️",
+      "title_zh": "有故事但不会做视频的作者",
+      "desc_zh": "网文作者 / 编剧 / 业余写手 — 手里有几本小说想拍但成本扛不住，AI 漫剧把这条路打通"
+    },
+    {
+      "emoji": "🎨",
+      "title_zh": "传统视频 / 动画从业者",
+      "desc_zh": "剪辑师 / 动画师 / 插画师想转 AI 流 — 这 8 节就是你的迁移路线图"
+    },
+    {
+      "emoji": "🏢",
+      "title_zh": "MCN / 内容工作室",
+      "desc_zh": "想试 AI 漫剧赛道但不知道工艺细节 — 学完直接拍板要不要投人投资源"
+    },
+    {
+      "emoji": "🎓",
+      "title_zh": "应届生 / 转行人士",
+      "desc_zh": "简历上写『做过 AI 漫剧 + 有作品』比写『会 PS』值钱十倍 — 8 节课带你做出 portfolio"
+    },
+    {
+      "emoji": "🧑‍💻",
+      "title_zh": "想做 AI 副业的上班族",
+      "desc_zh": "晚上 + 周末做漫剧账号 — 学完知道一条片要多久、要多少钱、能不能跑出来"
+    }
+  ],
+  "not_for": [
+    "想学传统 AE / PR / C4D 视频制作 — 这是 AI 工具流，不讲传统软件",
+    "想训练自己的 AI 模型 — 这是应用层，不碰模型训练",
+    "纯围观 AI 进展 — 8 节课信息密度高，要动手才划算",
+    "完全不打算做内容 — 工具学完不用就是浪费"
+  ],
+  "faq": [
+    {
+      "id": "q1",
+      "question_zh": "这套录播课和 2 小时直播工作坊有什么区别？",
+      "answer_zh": "维度完全不同。<strong>2 小时工作坊（ai-comic-workshop）</strong>是『俯瞰版』— 讲清楚 AI 漫剧赛道全貌、工具横评、决策框架，看完知道要不要入坑。<strong>8 节录播（这套）</strong>是『实操版』— 从挑小说到发抖音，一节一节带你做完一条完整漫剧，看完手里有作品。如果时间够 + 预算够，建议先看 2h 工作坊定方向，再用这 8 节录播做出第一条片。"
+    },
+    {
+      "id": "q2",
+      "question_zh": "完全零基础能学吗？",
+      "answer_zh": "能，但要做好心理准备。课程不假设你会任何视频软件 / 编程 / AI 操作，每节都是从开账号开始演示。但 AI 漫剧是个『多工具串联』的工艺 — 8 个工具来回切，零基础同学要做好『每节看 1 遍 + 跟着做 1 遍』的节奏，整套课大约要花 12-20 小时。不是 2 小时看完就完事的那种课。"
+    },
+    {
+      "id": "q3",
+      "question_zh": "课程多长？看一遍要多久？",
+      "answer_zh": "8 节录播总时长约 <strong>6 小时</strong>（每节 30-60 分钟不等，L05 / L06 最长）。如果只是『看一遍』大约 6-8 小时；想跟着做一条完整漫剧出来，建议留 12-20 小时（包括工具排队等待、自己出图调整、剪辑迭代）。"
+    },
+    {
+      "id": "q4",
+      "question_zh": "工具账号要花多少钱？",
+      "answer_zh": "全部走免费档可以完整学完所有 8 节，但产出 1-2 条片就会用完免费额度。真要稳定做：<strong>即梦</strong> 跑视频是大头，月订阅约 ¥69-199；<strong>Nano Banana</strong> 走 Google AI Studio 免费档日常够用，重度用走 API 按量；<strong>AI 配音</strong> ElevenLabs 月 $5 起、海螺 AI 国内便宜很多；<strong>剪映</strong> 免费版够用。一条 1 分钟漫剧的硬成本大约 ¥10-30，每月做 10 条算下来工具开销 ¥200-500。"
+    },
+    {
+      "id": "q5",
+      "question_zh": "录播能看多久？有更新吗？",
+      "answer_zh": "<strong>报名后永久可看</strong>（平台政策调整会另行通知）。课程主体录制于 Bilibili Cheese，JR Academy 同步上线，所有学员可访问。AI 工具迭代很快（即梦 1.0 → 2.0 / Nano Banana 还在更新），<strong>关键工具有重大版本更新时会补录新片段</strong>放进对应章节，老学员免费看。"
+    },
+    {
+      "id": "q6",
+      "question_zh": "有学员群 / 答疑 / 1 对 1 吗？",
+      "answer_zh": "这套录播课<strong>不包含</strong>学员群、长期答疑、1 对 1 指导 — 我们卖的是『完整工艺录播』，不是『长期陪跑』。如果需要 cohort 学习 / 真人答疑 / Demo Day，看 JR Academy 的 <a href=\"/curriculum/ai-comic-workshop/curriculum.html\">2h 直播工作坊</a> 或 Bootcamp 系列。"
+    },
+    {
+      "id": "q7",
+      "question_zh": "课程在哪看？怎么访问？",
+      "answer_zh": "报名成功后 24 小时内你会收到邮件，里面有<strong>访问链接 + 学员账号</strong>。访问入口有两个：① Bilibili Cheese（原始录制平台）② JR Academy 学员中心（中文配套讲义 + Prompt 模板包 + 学员问答存档）— 两个入口看到的视频内容一致。"
+    },
+    {
+      "id": "q8",
+      "question_zh": "Bilibili 的链接已经能买了，在 JR Academy 报名有什么不一样？",
+      "answer_zh": "JR Academy 报名<strong>额外送</strong>：① 中文配套讲义 PDF（每节一份，可打印）② 全套 Prompt 模板包（拆剧本 / 分镜剧本智能体 / 角色一致性 / 即梦运镜）③ 学员问答存档（学过的同学问过什么、老师怎么答）④ 课程更新优先通知（工具有大版本更新会补录）。如果你已经在 Bilibili 买过，发证明给客服可以以学员价补订『JR Academy 配套包』。"
+    }
+  ]
+}
