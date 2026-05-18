@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>[员工后台] Claude Code Workshop · 公众号文章</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#10b981 100%)}
+    .header h1{font-size:28px;line-height:1.2}
+    .header .sub{font-size:14px;opacity:0.9;margin-top:8px}
+    .action-bar{background:#fff;padding:18px 24px;border-bottom:3px solid #000;text-align:center;position:sticky;top:0;z-index:10;box-shadow:0 4px 0 rgba(0,0,0,0.06)}
+    .action-bar .btn-group{display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .article-meta{margin-top:10px;font-family:'Space Mono',monospace;font-size:11px;color:#888}
+    .article-wrap{padding:32px 16px}
+    .review-note{max-width:780px;margin:0 auto 20px;padding:14px 18px;background:#fffbeb;border:2px solid var(--cc);font-size:13px;line-height:1.7}
+    .review-note strong{color:var(--cc)}
+  </style>
+</head>
+<body>
+
+<div class="internal-ribbon">
+  ⚠️ 本页给运营 / 公众号编辑使用 · 请勿对外分享链接 · 复制粘贴到 mp.weixin.qq.com
+</div>
+
+<header class="header">
+  <div class="c">
+    <h1>📝 Claude Code Workshop · 公众号文章</h1>
+    <div class="sub">C 类推广文 · 1500-2000 字 · 钩子→痛点→价值→大纲→资产→CTA→FAQ</div>
+    <div class="nav">
+      <a href="./index.html">营销页</a> ·
+      <a href="./curriculum.html">课程大纲</a> ·
+      <a href="./event-announcement.html">Copy 中心</a>
+    </div>
+  </div>
+</header>
+
+<div class="action-bar">
+  <div class="btn-group">
+    <button class="copy-btn" id="btn-text">📋 复制纯文本</button>
+    <button class="copy-btn" id="btn-html">📋 复制 HTML（带格式）</button>
+    <button class="copy-btn" id="btn-md">⬇ 下载 Markdown</button>
+  </div>
+  <div class="article-meta" id="meta">中文字数计算中...</div>
+</div>
+
+<main class="article-wrap">
+
+  <div class="review-note">
+    <strong>编辑前自检</strong>：① 标题不能改成"震惊体" ② 不准加"涨薪 / 副业 / 接单 / 月入" ③ 不准写"在当今 AI 时代 / 让我们一起 / 准备好了吗"等万能句式 ④ 配图建议用课程大纲页的截图 + 海报，<strong>禁止用代码生成 pptx / docx 当配图</strong>。
+  </div>
+
+  <article class="mp-body" id="article">
+
+    <h2>把 AI 从「补全工具」升级到「任务编排」</h2>
+
+    <p>上周我帮一个朋友 review 他的作品集 repo。三个 Next.js 项目，每个 README 都是同一段话——「This is a Next.js project bootstrapped with create-next-app」。问他为什么没改，他说每次都想 AI 帮他写一个像样的，但 Cursor 给的版本永远是「项目介绍+技术栈+如何启动」三段模板。</p>
+
+    <p>这不是 AI 不够聪明，是<strong>用 AI 的方式还停留在 2023 年</strong>——把它当聊天框，要什么补什么。Cursor / Copilot / Windsurf 这一代工具的天花板就在「行级补全」，再往上走就是另一种范式：把 AI 当成多线程协作的工程师来<strong>编排</strong>，不是当聊天对象来「问」。</p>
+
+    <h2>同样在用 AI 编程，差距在哪</h2>
+
+    <p>我观察过两类人写代码的过程。</p>
+
+    <p>第一类：打开 Cursor，光标停在文件里，问"帮我写一个用户登录的接口"。AI 写了，跑一下，报错，再问"为什么报错"，改一下，再跑。一上午改三个 bug，最后产出一个能跑但没人能维护的接口——连他自己一周后都看不懂为什么这么写。</p>
+
+    <p>第二类：打开 Claude Code，先写一份 PRD（产品需求文档）和 design.md（架构说明），把要做什么、模块怎么拆、接口怎么设计先想清楚。然后 <code>/plan</code> 让 Claude 读懂整个 repo，再发 3 个 subagent 并行——一个查现有相似代码、一个出实现方案、一个准备 review checklist。半小时后拿到的不是一段代码，是一个完整的 PR：含设计文档、实现、测试、和给 reviewer 的说明。</p>
+
+    <p>两种产出的差别，不是「AI 写得好不好」，是<strong>有没有把开发流程沉到工具里</strong>。这场 workshop 讲的就是后者。</p>
+
+    <h2>不是教按钮，是教工作流</h2>
+
+    <p>市面上 90% 的 AI 编程课在讲「怎么写 prompt 让 AI 给你写代码」。本场 workshop 不讲这个。讲的是把 AI 当成多线程工程师怎么编排——这是工具范式的差异，不是技巧差异。</p>
+
+    <p>3 小时跟着敲，覆盖 Agent 开发全生命周期。<strong>顺序刻意</strong>——前 50 分钟讲的不是 Claude Code 的命令，而是动 Claude Code 之前你应该准备的事：怎么写一份 AI 能直接读懂的 PRD，怎么写一份让 AI 不乱写的 design.md。这两件事写好了，后面的 <code>/init</code> <code>/plan</code> <code>/resume</code> 才有意义。</p>
+
+    <p>很多人卡在「AI 写出来不是我想要的」这一步，根本原因不是 AI 不行，是你给的输入是「写一个用户管理系统」这种话——AI 也只能给你一个泛泛的系统。换成有结构的 PRD + design.md，AI 拿到的信息量增加 10 倍，产出的代码自然不一样。</p>
+
+    <h2>3 小时五段式 · 走通一遍</h2>
+
+    <p>线上速通版 180 分钟，匠人课堂 Zoom 实操，每段都有跟着敲的 demo。</p>
+
+    <ul>
+      <li><strong>Part 1（50min）开发前准备 + 常用命令</strong>——写 PRD 模板 + design.md 模板 + 常用命令（<code>/init</code> <code>/plan</code> <code>/resume</code> <code>/clear</code> <code>/compact</code>）+ context window 工作原理。在自己 repo 写一份 mini-PRD，用 <code>/plan</code> 让 Claude 读懂全局。</li>
+      <li><strong>Part 2（40min）Agents 管理</strong>——Fleet View / Agents View 演示。主 agent 和 subagent 怎么分工，一次发 3 个 subagent 并行跑 research / implementation / review。对比串行和并行的速度差异。</li>
+      <li><strong>Part 3（35min）最佳实践</strong>——CLAUDE.md（项目宪法，让 AI 遵守你的命名约定、技术栈红线）、Skills（把团队 SOP 沉成可复用命令）、Slash Commands、Hooks（强制规则，比如 pre-commit 自动跑检查）、推荐 MCP server（context7 实时查文档、playwright 让 Claude 自己测页面）。</li>
+      <li><strong>Part 4（35min）ADLC 实战</strong>——Agent Development Lifecycle 完整跑通：Plan（PRD / design.md）→ Code（subagent 并行）→ Review（自动跑检查）→ Ship（提 PR）。跟着老师在 demo repo 提一个真实 PR。</li>
+      <li><strong>Q&A（10min）+ 拿走 cheat sheet</strong>——拿 PRD 模板 + design.md 模板 + 命令 cheat sheet + ADLC prompts + 加群。</li>
+    </ul>
+
+    <p>前 50 分钟是基础段，零基础学员（会基础 git + 命令行就行）保底跟上；后续两小时是高阶段，在职工程师拿到能直接用的技巧。中间用同一个 demo repo 串起来，跟不上的随时 <code>git checkout part-3-start</code> 跳过。</p>
+
+    <h2>走出 3 小时 · 6 件资产带回家</h2>
+
+    <p>不是「提升认知」这种虚的承诺。每一件你都能 clone 回自己 repo 直接用：</p>
+
+    <ol>
+      <li><strong>PRD 模板</strong>——AI 能直接读懂、拆 task、生成代码的写法。含结构 + 正反示例。</li>
+      <li><strong>design.md 模板</strong>——架构 / 模块拆分 / 接口约定，让 AI 不乱写。一页纸覆盖一个中型 feature。</li>
+      <li><strong>单页命令 cheat sheet</strong>——<code>/init</code> <code>/plan</code> <code>/resume</code> <code>/clear</code> <code>/compact</code> + context window 原理图，打印贴墙。</li>
+      <li><strong>自己写的 CLAUDE.md</strong>——给自己 repo 写一份能直接 commit 的项目宪法。</li>
+      <li><strong>Subagent + Slash + Hook 三件套</strong>——自定义 subagent 配置 + 一个 <code>/&lt;命令&gt;</code> + 一个 pre-commit hook。</li>
+      <li><strong>ADLC 工作流模板</strong>——Plan → Code → Review → Ship 完整的 prompt 串 + 教学示范。</li>
+    </ol>
+
+    <p>加上持续答疑社群——会后碰到坑能继续问，不是听完就散。</p>
+
+    <h2>谁来听 · 谁不要来</h2>
+
+    <p>这场是给两类人写的：① <strong>IT 在职工程师</strong>——每天用 Cursor / Copilot 但还停在「高级补全」阶段，想把 AI 升级成「任务编排」；② <strong>在校 / 转码学习者</strong>——写过 demo 但项目永远停在「能跑」阶段，想让作品集像「工程项目」而非「教程项目」。</p>
+
+    <p><strong>不适合</strong>从没写过代码的纯小白。前 30min 拉齐起点段也要求会基础 git（clone / branch / commit）+ 命令行。如果这两个你都没接触过，建议先看 1 小时入门视频再来。</p>
+
+    <h2>报名信息</h2>
+
+    <p><strong>🖥 线上速通版</strong>：3h 匠人课堂 Zoom · <strong>A$99 早鸟</strong>（原价 A$199）· 名额 ≤ 50</p>
+
+    <p><strong>🏛 线下全天小班</strong>：墨尔本 / 悉尼两城 · 10:00–16:00 含午餐 · <strong>A$299 一价</strong> · ~15 人小班</p>
+
+    <p>线上版适合「想自己快速上手」的工程师，线下版适合「想被陪着把 Claude Code 真正落到自己 repo 里」的团队负责人。两种形式覆盖同一个内容骨架，差异在实操深度。</p>
+
+    <p>日期、报名链接、讲师阵容公布中。<strong>关注公众号「匠人学院」回复「Claude Code」</strong>，第一时间收到通知 + 进答疑预报名群。</p>
+
+    <h2>三个最常被问到的问题</h2>
+
+    <p><strong>Q：完全没用过 Claude Code 能跟上吗？</strong></p>
+    <p>A：可以。前 30 分钟会拉齐起点，带你从零跑通第一个任务。但要求会基础 git + 命令行（如果你这两个都没接触过，建议先看 1 小时入门视频再来）。</p>
+
+    <p><strong>Q：可以用 Cursor / Copilot 代替来跟课吗？</strong></p>
+    <p>A：不可以。Claude Code 的 plan mode / subagent / hooks 这些机制和 Cursor / Copilot 是不同的工作范式，工具替换不了。</p>
+
+    <p><strong>Q：线上 A$99 和线下 A$299 差别只是价格吗？</strong></p>
+    <p>A：不是。线下 5 小时实操 vs 线上 3 小时 / 线下 ~15 人小班 + 助教 1v1 救场 / 线下含午餐茶歇 + 现场互评。线上更适合"想自己快速上手"，线下更适合"想被陪着把工具真正落到自己 repo 里"。</p>
+
+    <hr/>
+
+    <p style="color:#888;font-size:13px;font-style:italic">匠人学院 · 全球华人学习 AI 第一站 · 中文站 jiangren.com.au<br/>
+    本场不承诺涉及金钱回报 · 只承诺过程、作品、技能</p>
+
+  </article>
+
+</main>
+
+<!-- Markdown source for download -->
+<template id="md-source">---
+title: 把 AI 从「补全工具」升级到「任务编排」
+subtitle: Claude Code 实战 Workshop · 3h A$99 早鸟
+---
+
+# 把 AI 从「补全工具」升级到「任务编排」
+
+上周我帮一个朋友 review 他的作品集 repo。三个 Next.js 项目，每个 README 都是同一段话——「This is a Next.js project bootstrapped with create-next-app」。问他为什么没改，他说每次都想 AI 帮他写一个像样的，但 Cursor 给的版本永远是「项目介绍+技术栈+如何启动」三段模板。
+
+这不是 AI 不够聪明，是**用 AI 的方式还停留在 2023 年**——把它当聊天框，要什么补什么。Cursor / Copilot / Windsurf 这一代工具的天花板就在「行级补全」，再往上走就是另一种范式：把 AI 当成多线程协作的工程师来**编排**，不是当聊天对象来「问」。
+
+## 同样在用 AI 编程，差距在哪
+
+我观察过两类人写代码的过程。
+
+第一类：打开 Cursor，光标停在文件里，问"帮我写一个用户登录的接口"。AI 写了，跑一下，报错，再问"为什么报错"，改一下，再跑。一上午改三个 bug，最后产出一个能跑但没人能维护的接口——连他自己一周后都看不懂为什么这么写。
+
+第二类：打开 Claude Code，先写一份 PRD（产品需求文档）和 design.md（架构说明），把要做什么、模块怎么拆、接口怎么设计先想清楚。然后 `/plan` 让 Claude 读懂整个 repo，再发 3 个 subagent 并行——一个查现有相似代码、一个出实现方案、一个准备 review checklist。半小时后拿到的不是一段代码，是一个完整的 PR。
+
+两种产出的差别，不是「AI 写得好不好」，是**有没有把开发流程沉到工具里**。这场 workshop 讲的就是后者。
+
+## 不是教按钮，是教工作流
+
+市面上 90% 的 AI 编程课在讲「怎么写 prompt 让 AI 给你写代码」。本场 workshop 不讲这个。讲的是把 AI 当成多线程工程师怎么编排——这是工具范式的差异，不是技巧差异。
+
+3 小时跟着敲，覆盖 Agent 开发全生命周期。**顺序刻意**——前 50 分钟讲的不是 Claude Code 的命令，而是动 Claude Code 之前你应该准备的事：怎么写一份 AI 能直接读懂的 PRD，怎么写一份让 AI 不乱写的 design.md。这两件事写好了，后面的 `/init` `/plan` `/resume` 才有意义。
+
+## 3 小时五段式
+
+线上速通版 180 分钟，匠人课堂 Zoom 实操，每段都有跟着敲的 demo。
+
+- **Part 1（50min）开发前准备 + 常用命令**——PRD 模板 + design.md 模板 + 常用命令 + context window 原理
+- **Part 2（40min）Agents 管理**——Fleet View / Agents View · 一次发 3 个 subagent 并行
+- **Part 3（35min）最佳实践**——CLAUDE.md / Skills / Slash / Hooks / 推荐 MCP
+- **Part 4（35min）ADLC 实战**——Plan → Code → Review → Ship 跑通真实 PR
+- **Q&A（10min）+ cheat sheet 发放**
+
+## 6 件资产带回家
+
+1. **PRD 模板**
+2. **design.md 模板**
+3. **单页命令 cheat sheet**
+4. **自己写的 CLAUDE.md**
+5. **Subagent + Slash + Hook 三件套**
+6. **ADLC 工作流模板**
+
+加上持续答疑社群——会后碰到坑能继续问。
+
+## 报名信息
+
+- 🖥 **线上速通版**：3h · 匠人课堂 Zoom · **A$99 早鸟** / A$199 全价 · ≤ 50 人
+- 🏛 **线下全天小班**：墨尔本 / 悉尼 · 10:00–16:00 含午餐 · **A$299 一价** · ~15 人
+
+关注公众号「匠人学院」回复「Claude Code」，第一时间收到日期 + 报名链接 + 答疑预报名群。
+
+---
+
+匠人学院 · 全球华人学习 AI 第一站 · jiangren.com.au
+</template>
+
+<footer class="footer">
+  内部页面 · 仅员工使用 · © 匠人学院
+</footer>
+
+<script>
+// 统计中文字数
+function countChinese(text) {
+  return [...text].filter(c => /[一-鿿]/.test(c)).length;
+}
+
+const article = document.getElementById('article');
+const meta = document.getElementById('meta');
+const textContent = article.textContent || article.innerText || '';
+const cnCount = countChinese(textContent);
+const totalLen = [...textContent].length;
+meta.textContent = `中文字数 ${cnCount} · 总长度 ${totalLen} · 目标 1500–2000 中文字`;
+
+// 复制纯文本
+document.getElementById('btn-text').addEventListener('click', async () => {
+  const text = article.innerText.replace(/\n\s*\n\s*\n/g, '\n\n').trim();
+  await copyAndFlash(text, 'btn-text', '📋 复制纯文本');
+});
+
+// 复制 HTML（保留格式给 WeChat editor）
+document.getElementById('btn-html').addEventListener('click', async () => {
+  const html = article.outerHTML;
+  try {
+    if (navigator.clipboard && window.ClipboardItem) {
+      const blob = new Blob([html], { type: 'text/html' });
+      const textBlob = new Blob([article.innerText], { type: 'text/plain' });
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'text/html': blob, 'text/plain': textBlob })
+      ]);
+    } else {
+      // fallback: select + copy
+      const range = document.createRange();
+      range.selectNode(article);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      document.execCommand('copy');
+      sel.removeAllRanges();
+    }
+    flashButton('btn-html', '📋 复制 HTML（带格式）');
+  } catch (err) {
+    alert('复制失败：' + err.message);
+  }
+});
+
+// 下载 Markdown
+document.getElementById('btn-md').addEventListener('click', () => {
+  const mdTemplate = document.getElementById('md-source');
+  const md = mdTemplate.innerHTML.trim();
+  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'claude-code-workshop-mp-article.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  flashButton('btn-md', '⬇ 下载 Markdown');
+});
+
+async function copyAndFlash(text, btnId, originalLabel) {
+  try {
+    await navigator.clipboard.writeText(text);
+    flashButton(btnId, originalLabel);
+  } catch (err) {
+    alert('复制失败：' + err.message);
+  }
+}
+
+function flashButton(btnId, originalLabel) {
+  const btn = document.getElementById(btnId);
+  btn.textContent = '✅ 已复制';
+  btn.classList.add('success');
+  setTimeout(() => {
+    btn.textContent = originalLabel;
+    btn.classList.remove('success');
+  }, 2000);
+}
+</script>
+
+</body>
+</html>

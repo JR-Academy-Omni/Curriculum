@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Claude Code 实战 Workshop ｜ 3h 学会用 Anthropic 官方 AI 编程工具直接帮你写代码 · A$99 早鸟</title>
+  <meta name="description" content="Claude Code 是 Anthropic 出的命令行 AI 编程工具——你告诉它要做什么，它能读你整个 GitHub repo、自己改代码、跑测试、提 PR。3 小时手把手教你用：从写一份它能听懂的需求开始，到同时跑 3 个 AI 助手并行干活，最后提一个真实 PR。匠人课堂 Zoom · A$99 早鸟。另设墨/悉线下全天小班 A$299。">
+  <meta property="og:title" content="3 小时学会 Claude Code · Anthropic 官方 AI 编程工具">
+  <meta property="og:description" content="跟 ChatGPT 不同，Claude Code 不是给你建议——它在你电脑上直接改代码、跑测试、提 PR。3h 手把手教，带走 6 件可复用模板。A$99 早鸟。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    /* Hero — bold marketing entry */
+    .hero{background:linear-gradient(135deg,#10162f 0%,#1a1f3a 60%,#D97706 100%);color:#fff;padding:80px 24px 60px;text-align:center;border-bottom:4px solid #000;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 20%,rgba(255,222,89,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(99,102,241,0.12) 0%,transparent 50%);pointer-events:none}
+    .hero-inner{max-width:980px;margin:0 auto;position:relative;z-index:1}
+    .hero-eyebrow{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:3px;color:var(--yellow);font-weight:700;text-transform:uppercase;margin-bottom:18px;display:inline-block;padding:5px 14px;border:2px solid var(--yellow)}
+    .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-size:64px;font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:18px}
+    .hero h1 .hl{color:var(--yellow);background:rgba(255,222,89,0.15);padding:0 10px}
+    .hero p.lead{font-size:19px;line-height:1.6;opacity:0.92;margin-bottom:32px;max-width:780px;margin-left:auto;margin-right:auto}
+    .hero-price-box{display:inline-block;padding:16px 28px;background:rgba(255,255,255,0.06);border:3px solid var(--yellow);margin:8px 0 22px}
+    .hero-price-box .v{font-family:'Bricolage Grotesque',sans-serif;font-size:42px;font-weight:900;color:var(--yellow);line-height:1}
+    .hero-price-box .strike{text-decoration:line-through;opacity:0.5;font-size:22px;margin-left:8px}
+    .hero-price-box .label{font-size:13px;font-family:'Space Mono',monospace;letter-spacing:1px;opacity:0.7;text-transform:uppercase;margin-top:4px}
+    .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+    .hero-foot{margin-top:28px;font-size:13px;opacity:0.6;font-family:'Space Mono',monospace}
+    @media(max-width:768px){.hero{padding:50px 18px 40px}.hero h1{font-size:34px;letter-spacing:-1px}.hero p.lead{font-size:15px}.hero-price-box .v{font-size:32px}}
+
+    /* Pain wall */
+    .pain-wall{background:#fff;border-bottom:3px solid #000;padding:50px 24px 40px}
+
+    /* SP block (selling points) */
+    .sp-block{background:#fafafa;padding:50px 24px;border-bottom:3px solid #000}
+
+    /* Asset gallery */
+    .asset-block{background:#10162f;color:#fff;padding:50px 24px;border-bottom:3px solid #000}
+    .asset-block .section-h{color:#fff}
+    .asset-block .section-tag{color:var(--yellow)}
+    .asset-block .section-sub{color:rgba(255,255,255,0.7)}
+    .asset-block .asset-card{background:rgba(255,255,255,0.05);border-color:var(--yellow);box-shadow:5px 5px 0 var(--yellow)}
+    .asset-block .asset-card:hover{box-shadow:2px 2px 0 var(--yellow)}
+    .asset-block .asset-card h5{color:#fff}
+    .asset-block .asset-card p{color:rgba(255,255,255,0.75)}
+
+    /* Outcome block */
+    .outcome-block{background:#fff;padding:50px 24px;border-bottom:3px solid #000}
+
+    /* Offline upsell */
+    .offline-block{background:linear-gradient(180deg,#FFE9D6 0%,#FFD4A8 100%);padding:50px 24px;border-bottom:3px solid #000}
+    .offline-inner{max-width:1000px;margin:0 auto}
+    .offline-tag{font-family:'Space Mono',monospace;font-size:13px;color:var(--orange);font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;display:block;margin-bottom:10px}
+    .offline-block h2{font-family:'Bricolage Grotesque',sans-serif;font-size:36px;font-weight:900;color:#10162f;text-align:center;line-height:1.2;margin-bottom:10px}
+    .offline-block .offline-sub{text-align:center;font-size:15px;color:#444;max-width:780px;margin:0 auto 28px}
+    .offline-features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+    .offline-feat{padding:18px 14px;background:#fff;border:3px solid #000;text-align:center}
+    .offline-feat .icon{font-size:28px;display:block;margin-bottom:8px}
+    .offline-feat h5{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;color:#10162f;margin-bottom:4px}
+    .offline-feat p{font-size:12px;color:#666;line-height:1.5}
+    @media(max-width:768px){.offline-features{grid-template-columns:repeat(2,1fr)}.offline-block h2{font-size:24px}}
+
+    /* Final CTA */
+    .final-cta-block{background:#10162f;padding:60px 24px;text-align:center;color:#fff;border-bottom:3px solid #000}
+    .final-cta-block h2{font-family:'Bricolage Grotesque',sans-serif;font-size:42px;font-weight:900;line-height:1.15;margin-bottom:14px}
+    .final-cta-block h2 .hl{color:var(--yellow)}
+    .final-cta-block p{font-size:17px;opacity:0.85;margin-bottom:28px;max-width:780px;margin:0 auto 28px}
+    @media(max-width:768px){.final-cta-block h2{font-size:26px}.final-cta-block p{font-size:14px}}
+
+    .nav-bar{background:#fff;padding:12px 24px;border-bottom:3px solid #000;text-align:center}
+    .nav-bar a{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#10162f;margin:0 14px}
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Anthropic 官方 AI 编程工具 · 3h 实操 workshop</span>
+    <h1>3 小时学会 <span class="hl">Claude Code</span> · 让 AI 真的帮你写代码</h1>
+    <p class="lead">Claude Code 是 Anthropic 出的命令行 AI 编程工具。你在 terminal 里告诉它要做什么——它能<strong>读你整个 GitHub repo、自己改代码、跑测试、提 PR</strong>。不是 ChatGPT 那种给你建议让你复制粘贴，也不是 Cursor / Copilot 那种只能补全一行——它直接动手干活。<br/><br/>这场 workshop 手把手教你怎么用：从写一份「让 AI 听懂」的需求开始，到同时跑 3 个 AI 助手并行干活，最后在你自己的 repo 提一个真实 PR。</p>
+    <div class="hero-price-box">
+      <div class="v">A$99 <span class="strike">A$199</span></div>
+      <div class="label">🔥 首期早鸟 · 开课前 7 天截止 · 名额 ≤ 50</div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#cta" class="hero-cta">🎯 立即报名线上 A$99</a>
+      <a href="#offline" class="hero-cta secondary">🏛 想要全天小班？看 A$299 线下</a>
+      <a href="#cta" class="hero-cta ghost" style="background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)">⏰ 还没定？先加群</a>
+    </div>
+    <div class="hero-foot">报名前看完整课程大纲 · 装机有问题报名后立刻进群解决</div>
+  </div>
+</section>
+
+<nav class="nav-bar">
+  <a href="#what">CC 是什么</a>
+  <a href="#pain">为什么需要</a>
+  <a href="#sp">凭什么选这场</a>
+  <a href="#assets">带走 6 件</a>
+  <a href="#diy">我能自学吗？</a>
+  <a href="#trust">凭什么相信</a>
+  <a href="#offline">线上 vs 线下</a>
+  <a href="./curriculum.html">完整大纲 →</a>
+</nav>
+
+<!-- Claude Code 是什么 -->
+<section id="what" class="pain-wall">
+  <div class="c">
+    <span class="section-tag">先讲清楚 · Claude Code 是什么</span>
+    <h2 class="section-h">不是聊天框，也不是补全 —— 它在你电脑上直接干活</h2>
+    <p class="section-sub">如果你只听过 ChatGPT / Cursor，下面这张对比表说明它是另一种工具。</p>
+    <table class="compare-table" style="margin-top:24px">
+      <thead>
+        <tr>
+          <th style="width:25%">工具</th>
+          <th>它怎么帮你写代码？</th>
+          <th>你要做什么</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ChatGPT / 豆包 / 文心</strong><br/><small style="color:#888">网页聊天框</small></td>
+          <td>你贴一段代码问它，它给你建议。它不知道你整个项目长什么样。</td>
+          <td>复制 → 粘贴 → 跑 → 报错 → 回去问 → 复制 → 粘贴。一上午改三个 bug。</td>
+        </tr>
+        <tr>
+          <td><strong>Cursor / GitHub Copilot</strong><br/><small style="color:#888">编辑器插件</small></td>
+          <td>你写到一半它给你补完这一行 / 这个方法。看的是光标附近几十行。</td>
+          <td>它写一行你按 Tab 一次。让它"重构这整个模块"就抓瞎了。</td>
+        </tr>
+        <tr style="background:#fffbeb !important">
+          <td style="background:#fffbeb"><strong style="color:var(--cc)">Claude Code</strong><br/><small style="color:#888">命令行 AI 工具</small></td>
+          <td><strong>它能读你整个 repo</strong>，记住你所有文件 + 命名规范 + 技术栈。你说「给登录模块加 Google OAuth」，它自己规划步骤、改多个文件、跑测试、提 PR。</td>
+          <td>说一句话 → 看它干活 → 检查 PR → 合并。你是它的产品经理。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout" style="margin-top:24px">
+      <span class="lead">🎯 一句话总结</span>
+      Claude Code = <strong>Anthropic（Claude 的公司）出的官方编程工具</strong>。在 terminal 里 <code>npm i -g @anthropic-ai/claude-code</code> 一行装好，然后你不用打开 VS Code 也不用复制粘贴——直接跟它说人话，它在你 repo 里把事做完。
+    </div>
+  </div>
+</section>
+
+<!-- 痛点 -->
+<section id="pain" class="sp-block">
+  <div class="c">
+    <span class="section-tag">为什么需要这场 workshop</span>
+    <h2 class="section-h">3 个你现在每天都在卡的地方</h2>
+    <p class="section-sub">不是讲 Claude Code 多牛——讲它能解决你今天就在头疼的事。</p>
+    <div class="grid3" style="margin-top:32px">
+      <div class="pain-card">
+        <span class="icon">📋</span>
+        <h4>问 AI 写代码 = 复制粘贴循环</h4>
+        <p>用 ChatGPT / 豆包写代码：它给你一段 → 你贴到 VS Code → 跑一下报错 → 回去问 → 再贴。<strong>一上午改三个 bug，最后产出连自己一周后都看不懂的代码</strong>。</p>
+      </div>
+      <div class="pain-card">
+        <span class="icon">📁</span>
+        <h4>作品集打开就一段「This is a Next.js project」</h4>
+        <p>面试官点开你 GitHub repo —— 教程项目一眼看穿。没架构文档、没 review 流程、没自动检查。<strong>三个项目长得像一个，因为都是 create-next-app 出来的</strong>。</p>
+      </div>
+      <div class="pain-card">
+        <span class="icon">🔁</span>
+        <h4>新人入职 = 你再讲一遍规范</h4>
+        <p>命名怎么起、PR 怎么提、上线前跑哪几个检查 —— 每来一个新人你都得讲一遍。<strong>规范没沉到工具里，每次都靠口头</strong>。Claude Code 能让规范变成「AI 自动遵守的项目规则书」。</p>
+      </div>
+    </div>
+
+    <!-- 老 Claude Code 用户 hook -->
+    <div class="callout" style="margin:36px auto 0;max-width:920px;background:#fffbeb;border-color:var(--cc);border-left-width:10px">
+      <span class="lead">🧐 你已经在用 Claude Code 了？</span>
+      <p>那这场前 50 分钟你可以喝口水。<strong>后两小时</strong>是为你准备的：</p>
+      <ul style="margin:10px 0 10px 22px;line-height:2;font-size:14px">
+        <li>还在用<strong>一个 agent 串行</strong>干活？这场教你同时开 3 个分工跑</li>
+        <li>没配过 <strong>pre-commit hook</strong> 让 AI 自动 review？这场会写一个</li>
+        <li><code>CLAUDE.md</code> 还只写了 3 条规则？这场带你写到能让团队新人不用培训</li>
+      </ul>
+      <p style="font-size:13px;color:#666;margin-top:6px">如果这三件事你都已经在做 —— 请等我们后续的进阶 workshop，这场对你来说会浅。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 大卖点 -->
+<section id="sp" class="pain-wall">
+  <div class="c">
+    <span class="section-tag">为什么是这一场</span>
+    <h2 class="section-h">不是看 demo，是在你自己 repo 上跟着敲</h2>
+    <p class="section-sub">3 小时全程实操。走出会场你的 GitHub repo 真的比来之前多了 6 件可复用的东西。</p>
+    <div class="grid2" style="margin-top:32px">
+      <div class="sp-card">
+        <span class="badge">卖点 1</span>
+        <h4>动你自己的项目，不是 demo</h4>
+        <p>90% 的 AI 工具教程是「这里有个按钮，点一下能干什么」。本场全程让你打开<strong>自己的 GitHub repo</strong>，跟着改：写自己的需求清单、自己的项目规则书、配自己的 AI 助手。走出会场你的 repo 比来之前多了真东西，不是看了一场演示。</p>
+      </div>
+      <div class="sp-card">
+        <span class="badge">卖点 2</span>
+        <h4>教完整开发流程，不是几个命令</h4>
+        <p>很多教程只教「输 <code>/init</code> 看会发生什么」。本场教的是<strong>从一个想法到提一个 PR 的完整闭环</strong>：①写需求清单 → ②让 AI 读懂你 repo → ③同时跑 3 个 AI 助手分工干活 → ④AI 自己 review → ⑤提 PR。每一步都在你自己 repo 上跑一遍。</p>
+      </div>
+      <div class="sp-card">
+        <span class="badge">卖点 3</span>
+        <h4>零基础 / 老司机都不浪费</h4>
+        <p>前 50 分钟是基础段——零基础学员（会 git 基础命令就行）保底跟上：写需求清单、装好 Claude Code、跑第一个任务。后续 2 小时是高阶段——在职工程师拿到「同时跑多个 AI 助手」「给 AI 写项目规则书」「自动 review hook」这些能直接用的技巧。</p>
+      </div>
+      <div class="sp-card">
+        <span class="badge">卖点 4</span>
+        <h4>带走 6 件可复用模板，不是 PPT</h4>
+        <p>需求清单模板 + 架构设计模板 + 命令速查卡 + 项目规则书 + AI 助手定制三件套 + 完整开发流程 prompt 串。每一件都是 .md / .json 文件，能直接 commit 到自己 repo。加上持续答疑群，会后碰到坑继续问。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 件资产 -->
+<section id="assets" class="asset-block">
+  <div class="c">
+    <span class="section-tag">具体的承诺</span>
+    <h2 class="section-h">走出 3 小时 · 6 件能 commit 到自己 repo 的东西</h2>
+    <p class="section-sub">不是"提升认知"这种虚的，是 6 个真实文件 + 配置。带走就能用。</p>
+    <div class="asset-grid">
+      <div class="asset-card"><span class="icon">📋</span><h5>需求清单模板</h5><p>「让 AI 听懂」的需求写法。比「帮我写一个登录系统」这种话清晰 10 倍。</p></div>
+      <div class="asset-card"><span class="icon">🏗</span><h5>架构设计模板</h5><p>把模块、接口、数据流先想清楚再让 AI 动手，AI 不会乱写一气。</p></div>
+      <div class="asset-card"><span class="icon">📜</span><h5>Claude Code 命令速查卡</h5><p>关键命令一页纸：让 AI <code>/init</code> 读 repo、<code>/plan</code> 出方案、<code>/resume</code> 续之前的活。打印贴墙。</p></div>
+      <div class="asset-card"><span class="icon">📐</span><h5>项目规则书（CLAUDE.md）</h5><p>给自己 repo 写一份「这里命名用什么、不许动什么文件、技术栈红线在哪」，AI 自动遵守。</p></div>
+      <div class="asset-card"><span class="icon">🤖</span><h5>AI 助手定制三件套</h5><p>① 分身 AI 助手配置 ② 团队自定义命令（比如 <code>/code-review</code>） ③ 提交前自动检查 hook。</p></div>
+      <div class="asset-card"><span class="icon">🔁</span><h5>完整开发流程 prompt 串</h5><p>从「我想做 X」到「PR 已提交」的完整对话模板，跟着填空就能跑。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Outcome -->
+<section id="outcome" class="outcome-block">
+  <div class="c">
+    <span class="section-tag">学完能做到</span>
+    <h2 class="section-h">5 件具体的事 · 不是 5 句口号</h2>
+    <p class="section-sub">只承诺过程、作品、技能 —— 走出会场，你的 repo 比来之前多了真实的东西。</p>
+    <ol class="outcome-list">
+      <li>在动手写代码前，先写出一份<strong>「AI 能听懂」的需求清单 + 架构设计</strong> —— 不是「帮我写一个登录系统」那种话</li>
+      <li>会用 Claude Code 几个关键命令：<code>/init</code> 让它读 repo、<code>/plan</code> 出方案、<code>/resume</code> 续上次的活、<code>/clear</code> 清空记忆、<code>/compact</code> 压缩长对话</li>
+      <li><strong>同时开 3 个 AI 助手分工干活</strong>：一个查 repo 里现有的相似代码、一个写实现、一个做 review。半小时拿到完整 PR</li>
+      <li>给自己 repo 写一份<strong>「项目规则书」</strong>（CLAUDE.md）+ 一个团队<strong>自定义命令</strong>（比如 <code>/code-review</code>） + 一个<strong>提交前自动检查 hook</strong>。AI 自动遵守，新人不用再口头培训</li>
+      <li>跑通一次完整开发流程：<strong>从「我想做 X」到「PR 已提交」</strong>，AI 全程参与（写需求 → 写代码 → review → 提 PR）</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 我能自学吗？最大异议直接回答 -->
+<section id="diy" class="sp-block" style="background:#fffbeb">
+  <div class="c">
+    <span class="section-tag">最常被问的问题</span>
+    <h2 class="section-h">你说我能自学吗？</h2>
+    <p class="section-sub">来到这页的人 90% 在心里问这一句。我直接回答。</p>
+
+    <div style="max-width:880px;margin:32px auto 0;background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:32px 28px">
+      <p style="font-size:20px;font-weight:900;color:var(--cc);font-family:'Bricolage Grotesque',sans-serif;margin-bottom:14px">✅ 当然能。Anthropic docs 是免费的，YouTube 上有视频，ChatGPT 也能问。</p>
+      <p style="font-size:15px;line-height:1.85;margin-bottom:14px">但你要自己趟这些坑：</p>
+      <ul style="font-size:14.5px;line-height:2;margin:0 0 0 22px;color:#333">
+        <li>哪几个命令真的常用、哪些其实没人用，看 docs 看不出来</li>
+        <li><code>/plan</code> 出来的方案不对 —— 是 prompt 问题还是 model 问题？怎么调？</li>
+        <li>hooks 怎么配才不会卡 git commit 卡到崩溃？</li>
+        <li>同时跑 3 个 AI 助手怎么避免它们互相覆盖文件？</li>
+        <li><code>CLAUDE.md</code> 写多少条规则刚好？少了 AI 不听，多了它记不住</li>
+        <li>哪些 MCP server 真的值得装？官方推的清单里 80% 用不上</li>
+      </ul>
+      <p style="font-size:15px;line-height:1.85;margin-top:18px">自学这些坑大概要 <strong>30 小时</strong>（Reddit r/ClaudeAI 上学习者的常见反馈）。</p>
+      <div style="margin-top:22px;padding:18px 22px;background:#FFDE59;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f;text-align:center;line-height:1.5">
+        3 小时 × A$33/h = <strong>A$99 实操</strong><br/>
+        30 小时 × <strong>你的时薪</strong> = 自学<br/>
+        <span style="font-size:14px;font-weight:600;opacity:0.7;display:block;margin-top:6px">自己算 —— 哪个划算</span>
+      </div>
+      <p style="font-size:13px;color:#888;font-style:italic;margin-top:14px;text-align:center">如果你时薪 ≤ A$3 / 小时，请自学。如果时薪 ≥ A$10 / 小时，3 小时 A$99 是赚的。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 讲师 + 信任 -->
+<section id="trust" class="outcome-block">
+  <div class="c">
+    <span class="section-tag">凭什么相信</span>
+    <h2 class="section-h">市面上 AI 课多到看不完 · 这场凭什么不是套路？</h2>
+    <p class="section-sub">说几件能查证的事实。</p>
+
+    <div class="grid3" style="margin-top:32px">
+      <div class="pain-card">
+        <span class="icon">🎙</span>
+        <h4>讲师</h4>
+        <p>讲师正在最后确认。原则：<strong>必须是日常重度使用 Claude Code、把它推到生产团队踩过坑的工程师</strong>，不接受只会念 docs 的人。</p>
+        <p style="margin-top:8px;font-size:12px;color:#888;font-style:italic">⏳ 名字 / 头像 / 过往项目 报名页公布前会贴出来，不会让你盲买</p>
+      </div>
+      <div class="pain-card">
+        <span class="icon">🏫</span>
+        <h4>出品方 · 匠人学院</h4>
+        <p><a href="https://jiangren.com.au" target="_blank" rel="noopener">jiangren.com.au</a> · 在澳本地 IT 培训出身。已经做过的 AI workshop：OpenClaw 一日实操班、AI Engineer Bootcamp、AI Adoption Bootcamp 等。<strong>线下学员累计 2000+</strong>。</p>
+      </div>
+      <div class="pain-card">
+        <span class="icon">📐</span>
+        <h4>承诺红线</h4>
+        <p>本场<strong>只承诺过程 / 作品 / 技能</strong>。不承诺金钱回报、不承诺找工作、不承诺涨工资 —— 这是匠人学院所有 workshop 的硬性规定。<strong>看到承诺这些的，请直接走</strong>。</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:32px;background:#fff;border-color:var(--indigo)">
+      <span class="lead">⚠️ 首期开班 · 不忽悠</span>
+      <p>这是 Claude Code Workshop 的<strong>首期开班</strong>。意味着：我们没有「上期 500 人好评如潮」可以贴。我们能给你的是：<strong>3 小时不到，A$99，6 件能 commit 的模板带回家</strong>。如果觉得没值回票价，把模板贴出来骂我们。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Offline upsell · 改为线上 vs 线下选择题 -->
+<section id="offline" class="offline-block">
+  <div class="offline-inner">
+    <span class="offline-tag">线上 vs 线下 · 哪个适合你</span>
+    <h2>看完上面想报名了？这里看哪个版本对得上你</h2>
+    <p class="offline-sub">两种形式覆盖同一个内容骨架，差异在「自己上手」vs「被陪着上手」。</p>
+
+    <div class="grid2" style="margin-top:32px;align-items:stretch">
+      <div class="sp-card" style="background:#fff;box-shadow:6px 6px 0 var(--indigo);border-color:#000">
+        <span class="badge" style="background:var(--indigo)">🖥 线上速通版</span>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:42px;font-weight:900;color:#10162f;line-height:1;margin:12px 0">A$99 <small style="font-size:18px;text-decoration:line-through;opacity:0.4">A$199</small></div>
+        <p style="font-size:14px;margin-bottom:14px;color:#555"><strong>3 小时匠人课堂 Zoom 实操 · ≤ 50 人</strong></p>
+        <p style="font-size:13px;color:#10162f;font-weight:700;margin-bottom:6px">✅ 适合你如果：</p>
+        <ul style="font-size:13px;line-height:1.9;margin:0 0 14px 20px;color:#444">
+          <li>能自己消化文字材料 + 视频回看</li>
+          <li>想 3 小时快速过一遍核心工作流</li>
+          <li>装机能自己搞定（按前置要求 5 条准备好）</li>
+          <li>预算敏感 / 跨城跑不动</li>
+        </ul>
+        <a href="#cta" class="hero-cta" style="display:block;text-align:center">🎯 报名线上 A$99</a>
+      </div>
+      <div class="sp-card" style="background:#fff;box-shadow:6px 6px 0 var(--orange);border-color:#000">
+        <span class="badge" style="background:var(--orange)">🏛 线下全天小班</span>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:42px;font-weight:900;color:#10162f;line-height:1;margin:12px 0">A$299 <small style="font-size:13px;font-weight:600;opacity:0.6;display:inline-block;margin-left:4px">含午餐</small></div>
+        <p style="font-size:14px;margin-bottom:14px;color:#555"><strong>10:00 – 16:00 · 墨/悉两城 · ~15 人小班</strong></p>
+        <p style="font-size:13px;color:#10162f;font-weight:700;margin-bottom:6px">✅ 适合你如果：</p>
+        <ul style="font-size:13px;line-height:1.9;margin:0 0 14px 20px;color:#444">
+          <li>想被老师 + 助教 1v1 盯着写</li>
+          <li>装机问题想<strong>现场</strong>解决（不想自己 debug）</li>
+          <li>想在自己 repo 上做出能<strong>真的 commit</strong> 的 PR</li>
+          <li>团队 lead · 想带一份现场材料回团队</li>
+        </ul>
+        <a href="./curriculum.html#offline" class="hero-cta secondary" style="display:block;text-align:center;background:var(--orange);color:#fff">🏛 看线下完整大纲 →</a>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:13px;color:#444;margin-top:24px;font-style:italic">
+      💡 还在犹豫？大多数人选线上 A$99 —— 是个低成本试错的方式。觉得需要再花 A$200 上线下版我们再聊。
+    </p>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section id="cta" class="final-cta-block">
+  <h2>3 小时学会 <span class="hl">Claude Code</span> · 让 AI 真的帮你写代码</h2>
+  <p>报名后进答疑群 · 装机遇到坑助教排查 · workshop 当天直接在你自己 repo 上跟着敲</p>
+  <div style="display:inline-block;padding:24px 36px;background:rgba(255,222,89,0.08);border:3px solid var(--yellow);margin-bottom:24px">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;opacity:0.7;text-transform:uppercase;color:var(--yellow)">首期早鸟 · 开课前 7 天截止</div>
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:56px;font-weight:900;color:var(--yellow);line-height:1;margin-top:6px">A$99 <span style="text-decoration:line-through;opacity:0.4;font-size:28px">A$199</span></div>
+    <div style="font-size:12px;opacity:0.7;margin-top:6px;font-family:'Space Mono',monospace">名额 ≤ 50 · 报满即截止</div>
+  </div>
+  <div>
+    <a href="#" class="hero-cta" style="background:#FFDE59;color:#10162f">🎯 报名线上 A$99 早鸟</a>
+    <!-- TODO: 报名链接 -->
+    <a href="#" class="hero-cta ghost" style="margin-left:8px;background:transparent;color:#fff;border-color:rgba(255,255,255,0.4)">⏰ 还没定？先加群</a>
+    <!-- TODO: 加群链接 -->
+    <a href="./curriculum.html" class="hero-cta ghost" style="margin-left:8px;background:transparent;color:#fff;border-color:rgba(255,255,255,0.4)">📚 看完整课程大纲</a>
+  </div>
+  <p style="margin-top:24px;font-size:12px;opacity:0.5;font-family:'Space Mono',monospace">日期、报名平台公布中 · 加群第一时间收到通知</p>
+  <p style="margin-top:8px;font-size:11px;opacity:0.45;font-family:'Space Mono',monospace">💼 团队 5 人以上 · 私信联系团队折扣</p>
+</section>
+
+<footer class="footer">
+  © Claude Code 实战 Workshop · 由 <a href="https://jiangren.com.au">匠人学院</a> 出品<br/>
+  <small>本场不承诺涉及金钱回报 · 只承诺过程、作品、技能</small>
+</footer>
+
+</body>
+</html>

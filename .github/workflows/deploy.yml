@@ -157,6 +157,12 @@ jobs:
             cp -r openclaw-fullday-workshop/public/* _site/openclaw-fullday-workshop/
           fi
 
+          # claude-code-workshop: static HTML only (3h online + offline fullday small-class, Claude Code 实战)
+          if [ -d claude-code-workshop/public ]; then
+            mkdir -p _site/claude-code-workshop
+            cp -r claude-code-workshop/public/* _site/claude-code-workshop/
+          fi
+
           # ai-comic-workshop: static HTML only (2-hour online Zoom workshop, 张彦伟 · AI 漫剧)
           if [ -d ai-comic-workshop/public ]; then
             mkdir -p _site/ai-comic-workshop

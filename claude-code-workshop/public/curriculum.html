@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Claude Code 实战 Workshop · 课程大纲 · 3h 线上 A$99 早鸟 / 全天线下小班 A$299</title>
+  <meta name="description" content="3 小时跟着敲：从写 PRD + design.md 到 Claude Code 常用命令、Agents 管理（Fleet View 多 subagent 并行）、CLAUDE.md / Skills / Hooks 最佳实践、完整 Agent Development Lifecycle。匠人课堂 Zoom · A$99 早鸟 / A$199 全价。另设墨/悉线下全天 A$299。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#D97706 100%)}
+    .header h1{font-size:42px;line-height:1.15;letter-spacing:-1px}
+    .header .sub{font-size:17px;opacity:0.92;margin-top:12px;max-width:780px;margin-left:auto;margin-right:auto;line-height:1.6}
+    @media(max-width:768px){.header h1{font-size:24px}.header .sub{font-size:13px}}
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="c">
+    <h1>Claude Code 实战 Workshop</h1>
+    <div class="sub">从命令行到任务编排 ｜ 3 小时跟着敲，掌握从开发前准备到 Agent Development Lifecycle 的完整工作流</div>
+    <div class="tags">
+      <span class="tag a">线上 3h · 匠人课堂 Zoom</span>
+      <span class="tag b">线下全天小班 · 墨/悉</span>
+    </div>
+    <div class="nav">
+      <a href="./index.html">营销页</a> ·
+      <a href="#agenda">课程大纲</a> ·
+      <a href="#offline">线下全天版</a> ·
+      <a href="#prereq">前置要求</a> ·
+      <a href="#instructor">讲师</a> ·
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-banner">
+  <div class="hero-banner-inner">
+    <div class="hero-fact"><span class="label">线上 · 早鸟价</span><span class="v">A$99 <small>/ 全价 A$199</small></span></div>
+    <div class="hero-fact"><span class="label">线下 · 单一价</span><span class="v">A$299 <small>/ 含午餐</small></span></div>
+    <div class="hero-fact"><span class="label">时长</span><span class="v">3 小时 <small>/ 全天 6h</small></span></div>
+    <div class="hero-fact"><span class="label">名额</span><span class="v">≤ 50 <small>/ 小班 ~15</small></span></div>
+    <a class="hero-cta" href="#cta">立即报名</a>
+  </div>
+</div>
+
+<main class="c">
+
+  <!-- 形式对照 -->
+  <section class="box">
+    <div class="box-h cc">📋 两种形式 · 一份内容</div>
+    <div class="box-body">
+      <p style="margin-bottom:14px;font-size:14px;color:#444">本场 workshop 同时跑两种形式 —— <strong>线上 3h 速通版</strong>面向想自己快速上手的工程师，<strong>线下全天小班版</strong>面向想现场 1v1 救场、把 Claude Code 真正落到自己 repo 里的团队负责人。两种形式覆盖同一个内容骨架，差异在<strong>实操深度</strong>。</p>
+      <table class="compare-table">
+        <thead><tr><th></th><th>🖥 线上 · 速通版</th><th>🏛 线下 · 全天小班版</th></tr></thead>
+        <tbody>
+          <tr><td class="label">时长</td><td>180 分钟（含 10min Q&amp;A）</td><td>10:00 – 16:00（含 60min 午餐 ≈ 5h 实操）</td></tr>
+          <tr><td class="label">形式</td><td>匠人课堂 Zoom 直播 + 屏幕共享 + 实操</td><td>现场小班，老师 + 助教 1v1 救场</td></tr>
+          <tr><td class="label">名额</td><td>≤ 50 人</td><td>小班 ~15 人</td></tr>
+          <tr><td class="label">地点</td><td>匠人课堂（Zoom）报名后发链接</td><td>墨尔本 / 悉尼（场地待公布）</td></tr>
+          <tr><td class="label">价格</td><td><strong>A$99 早鸟</strong> / A$199 全价</td><td><strong>A$299 一价</strong>（含午餐 + 茶歇）</td></tr>
+          <tr><td class="label">适合谁</td><td>想自学上手、能消化文字材料的工程师</td><td>想被陪着把 Claude Code 真正落到自己 repo 里的人</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 受众 -->
+  <section class="box">
+    <div class="box-h indigo">👥 给谁看 · 受众画像 + 切入痛点</div>
+    <div class="box-body">
+      <div class="grid2">
+        <div class="pain-card">
+          <span class="icon">💻</span>
+          <h4>主受众 A · IT 在职工程师</h4>
+          <p><strong>现状</strong>：每天在用 Cursor / Copilot / Windsurf，AI 已经能补全方法，但任务级的工作（写一个新模块、迁移一个 service、review 一个 PR）还是手工拆步。</p>
+          <p style="margin-top:8px"><strong>痛点</strong>：感觉 AI 工具就是"高级补全"，没把它当生产力杠杆用。</p>
+          <p style="margin-top:8px"><strong>来这里能得到</strong>：把 AI 从「行级补全」升级到「任务编排」——一个指令同时跑 3 个 subagent、把团队规范沉到 CLAUDE.md 让 AI 自动遵守、用 MCP 让 Claude 自己开浏览器测自己写的页面。</p>
+        </div>
+        <div class="pain-card">
+          <span class="icon">🎓</span>
+          <h4>主受众 B · 在校 / 转码学习者</h4>
+          <p><strong>现状</strong>：写过几个 demo，会基本命令行 + git，但项目永远停在「能跑」阶段，没有工程感。</p>
+          <p style="margin-top:8px"><strong>痛点</strong>：作品集打开 README 就一段「This is a Next.js project」，面试官一看就是教程项目。</p>
+          <p style="margin-top:8px"><strong>来这里能得到</strong>：用 Claude Code 把作品集从「demo 项目」做出「工程项目」的样子——有架构文档、有 review 流程、有自定义 agent 自动跑检查。</p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:24px">
+        <strong>⚠️ 不适合</strong>：从没写过代码的纯小白。前 30min 拉齐起点段也要求会基础 git + 命令行。如果你这俩都没接触过，建议先看 1 小时入门视频再来。
+      </div>
+    </div>
+  </section>
+
+  <!-- 大纲 -->
+  <section id="agenda" class="box">
+    <div class="box-h cc">📚 课程大纲 · 线上 3h 五段式</div>
+    <div class="box-body">
+      <p style="margin-bottom:18px;font-size:14px;color:#444">
+        主线流程：<strong>开发前准备（PRD + design.md）+ 常用命令 → Agents 管理 → 最佳实践 → ADLC 实战 → Q&amp;A</strong>。顺序刻意 —— 先教学员"动 Claude Code 之前怎么准备"，而不是上来教按钮。每段都有跟着敲的 demo，不是纯讲。
+      </p>
+      <table class="agenda">
+        <thead>
+          <tr><th>时段</th><th>主题</th><th>你会动手做</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="t-time">0–10min</td>
+            <td><div class="t-title">开场 + 环境检查</div></td>
+            <td class="t-do">跑 <code>claude --version</code> 确认装好；助教在匠人课堂 breakout room 1v1 救装机</td>
+          </tr>
+          <tr>
+            <td class="t-time">10–60min<br/><small style="opacity:0.6">50min</small></td>
+            <td>
+              <div class="t-title">Part 1 · 开发前准备 + 常用命令</div>
+              <div class="t-sub">
+                ① 准备：怎么写 AI 能读懂的 <strong>PRD</strong>（10min）<br/>
+                ② 准备：写 <strong>design.md</strong>（架构 / 模块 / 接口，10min）<br/>
+                ③ 常用命令：<code>/init</code> <code>/plan</code> <code>/resume</code> <code>/clear</code> <code>/compact</code>（20min）<br/>
+                ④ 工作原理：context window + Plan Mode + 任务循环（10min）
+              </div>
+            </td>
+            <td class="t-do">在自己 repo 写一份 mini-PRD + design.md，用 <code>/init</code> <code>/plan</code> 让 Claude 读懂全局并出第一个 plan</td>
+          </tr>
+          <tr>
+            <td class="t-time">60–100min<br/><small style="opacity:0.6">40min</small></td>
+            <td>
+              <div class="t-title">Part 2 · Agents 管理（Fleet View / Agents View）</div>
+              <div class="t-sub">主 agent vs subagent 任务分配 · Fleet view UI 演示 · 一次发 3 个 subagent 并行（research / implementation / review）</div>
+            </td>
+            <td class="t-do">在自己 repo 同时跑 3 个 subagent，对比串行 / 并行的速度</td>
+          </tr>
+          <tr>
+            <td class="t-time">100–135min<br/><small style="opacity:0.6">35min</small></td>
+            <td>
+              <div class="t-title">Part 3 · 最佳实践</div>
+              <div class="t-sub">CLAUDE.md = 项目宪法 · Skills = 团队 SOP · Slash Commands · Hooks 强制规则 · 推荐 MCP（context7 / playwright）</div>
+            </td>
+            <td class="t-do">给自己 repo 写 5 条 CLAUDE.md 规则 + 一个 <code>/&lt;命令&gt;</code> + 一个 pre-commit hook</td>
+          </tr>
+          <tr>
+            <td class="t-time">135–170min<br/><small style="opacity:0.6">35min</small></td>
+            <td>
+              <div class="t-title">Part 4 · Agent Development Lifecycle 实战</div>
+              <div class="t-sub">Plan（PRD / design.md）→ Code（subagent 并行）→ Review（自动跑检查）→ Ship（提 PR）全循环</div>
+            </td>
+            <td class="t-do">跟着老师在 demo repo 跑通一次完整 ADLC，提一个真实 PR</td>
+          </tr>
+          <tr>
+            <td class="t-time">170–180min</td>
+            <td><div class="t-title">收尾 + Q&amp;A</div></td>
+            <td class="t-do">拿 cheat sheet PDF + PRD 模板 + design.md 模板 + ADLC prompts + 加群</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 6 件资产 -->
+  <section class="box">
+    <div class="box-h dark">📦 走出 3 小时 · 带走 6 件可复用资产</div>
+    <div class="box-body">
+      <div class="asset-grid">
+        <div class="asset-card"><span class="icon">📋</span><h5>PRD 模板</h5><p>AI 能直接读懂、拆 task、生成代码的写法。结构 + 示例 + 反面教材都有。</p></div>
+        <div class="asset-card"><span class="icon">🏗</span><h5>design.md 模板</h5><p>架构 / 模块拆分 / 接口约定，让 AI 不乱写。一页纸覆盖一个中型 feature。</p></div>
+        <div class="asset-card"><span class="icon">📜</span><h5>命令 cheat sheet</h5><p>单页 <code>/init</code> <code>/plan</code> <code>/resume</code> <code>/clear</code> <code>/compact</code> + context window 原理图。</p></div>
+        <div class="asset-card"><span class="icon">📐</span><h5>CLAUDE.md 项目宪法</h5><p>给自己 repo 写一份能直接 commit 的版本，AI 自动遵守。</p></div>
+        <div class="asset-card"><span class="icon">🤖</span><h5>Subagent + Slash + Hook</h5><p>自定义 subagent 配置 + 一个 <code>/&lt;命令&gt;</code> + 一个 pre-commit hook。</p></div>
+        <div class="asset-card"><span class="icon">🔁</span><h5>ADLC 工作流模板</h5><p>Plan → Code → Review → Ship 完整的 prompt 串 + 教学版示范。</p></div>
+      </div>
+      <p style="margin-top:18px;font-size:13px;color:#666">加上持续答疑社群，会后碰到坑能继续问。</p>
+    </div>
+  </section>
+
+  <!-- 线下版 -->
+  <section id="offline" class="box">
+    <div class="box-h orange">🏛 线下全天小班版 · 墨尔本 / 悉尼</div>
+    <div class="box-body">
+      <p style="margin-bottom:16px;font-size:14px;color:#444">
+        线下版骨架沿用线上的四段式（开发准备+命令 / Agents 管理 / 最佳实践 / ADLC），<strong>每段拉长到 60–90min</strong>，加上现场 1v1 救场 + 真实 PR 出货 + 1h 午餐自由敲。
+      </p>
+      <p style="margin-bottom:18px;font-size:13px;color:#888;font-style:italic">
+        ⚠️ 草稿，待线上版锁定后镜像更新最终内容。下表为初版占位。
+      </p>
+      <table class="agenda">
+        <thead><tr><th>时段</th><th>主题</th><th>比线上多出的"深度"</th></tr></thead>
+        <tbody>
+          <tr><td class="t-time">10:00–10:30<br/><small>30min</small></td><td><div class="t-title">签到 + 装机救援 + 破冰</div></td><td class="t-do">老师 + 助教挨个看每个学员的本机环境，没装好的不让进 Part 1</td></tr>
+          <tr><td class="t-time">10:30–12:00<br/><small>90min</small></td><td><div class="t-title">Part 1 · 开发前准备 + 常用命令</div></td><td class="t-do">现场写出能 commit 的 PRD + design.md，互评 + 用命令跑通</td></tr>
+          <tr><td class="t-time">12:00–13:00<br/><small>60min</small></td><td><div class="t-title">🍱 午餐 + 自由敲</div></td><td class="t-do">助教在场答疑，可以继续改自己 PRD / CLAUDE.md</td></tr>
+          <tr><td class="t-time">13:00–14:00<br/><small>60min</small></td><td><div class="t-title">Part 2 · Agents 管理（Fleet View）</div></td><td class="t-do">一次跑 3 个 subagent，出真实 PR</td></tr>
+          <tr><td class="t-time">14:00–15:00<br/><small>60min</small></td><td><div class="t-title">Part 3 · 最佳实践（CLAUDE.md / Skills / Hooks / MCP）</div></td><td class="t-do">写团队级规范 + <code>/&lt;命令&gt;</code> + hook 并提交</td></tr>
+          <tr><td class="t-time">15:00–15:50<br/><small>50min</small></td><td><div class="t-title">Part 4 · ADLC 完整跑通</div></td><td class="t-do">在自己 repo 上做一次 Plan → Code → Review → Ship 全循环</td></tr>
+          <tr><td class="t-time">15:50–16:00<br/><small>10min</small></td><td><div class="t-title">收尾 + 1v1 答疑预约 + 加群</div></td><td class="t-do">留电话/微信继续答疑</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 前置 -->
+  <section id="prereq" class="box">
+    <div class="box-h teal">⚙️ 前置要求（报名前自行准备）</div>
+    <div class="box-body">
+      <ul style="list-style:none;padding:0;font-size:14px;line-height:2">
+        <li>✅ 自带笔记本（Mac / Windows / Linux 均可）</li>
+        <li>✅ 已安装 Node 20+ 和 Claude Code（<code>npm i -g @anthropic-ai/claude-code</code>）</li>
+        <li>✅ 有可用的 Anthropic API key 或 Claude Pro/Max 订阅</li>
+        <li>✅ 至少有 1 个自己的 GitHub repo（任意语言任意大小，workshop 中要在上面动手）</li>
+        <li>✅ 会基本的 git 命令（clone / branch / commit）和命令行操作</li>
+      </ul>
+      <div class="callout" style="margin-top:18px;border-color:var(--teal);background:#ecfdf5">
+        <strong>装环境遇到问题</strong>：报名后 3 天内进答疑群，会有助教协助排查；workshop 当天不留装环境的时间。
+      </div>
+    </div>
+  </section>
+
+  <!-- 讲师 -->
+  <section id="instructor" class="box">
+    <div class="box-h purple">🎙 讲师介绍</div>
+    <div class="box-body">
+      <p style="font-size:15px;color:#444;line-height:1.8">
+        讲师信息即将公布。<!-- TODO: 讲师名 + 一句话身份 + 跟 Claude Code 的关系 -->
+      </p>
+      <p style="margin-top:10px;font-size:13px;color:#888;font-style:italic">
+        ⓘ 我们正在最后确认讲师 + 助教阵容。订阅 Newsletter 第一时间收到讲师揭晓通知。
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="box">
+    <div class="box-h indigo">❓ 常见问题</div>
+    <div class="box-body">
+      <details>
+        <summary>完全没用过 Claude Code 能跟上吗？</summary>
+        <div>可以。前 30 分钟会拉齐起点，带你从零跑通第一个任务。但要求会基础 git + 命令行（如果你这俩都没接触过，建议先看 1 小时入门视频再来）。</div>
+      </details>
+      <details>
+        <summary>可以用 Cursor / Copilot 代替来跟课吗？</summary>
+        <div>不可以。Claude Code 的 plan mode / subagent / hooks 这些机制和 Cursor / Copilot 是不同的工作范式，工具替换不了。</div>
+      </details>
+      <details>
+        <summary>会有录像吗？</summary>
+        <div>录像政策待公布。<!-- TODO: 是否录像 / 谁能看 / 保留多久 --></div>
+      </details>
+      <details>
+        <summary>可以退款吗？</summary>
+        <div>退款政策待公布。<!-- TODO: 退款政策 --></div>
+      </details>
+      <details>
+        <summary>线上 A$99 早鸟和 A$199 全价的差别只是价格吗？</summary>
+        <div>对。内容、时长、讲师、cheat sheet 完全一致，只是早鸟有时间窗口（截止时间报名时见），过期自动调到全价 A$199。</div>
+      </details>
+      <details>
+        <summary>线下 A$299 比线上贵那么多，到底贵在哪？</summary>
+        <div>三件事：① 5 小时实操（vs 线上 3 小时） ② 小班 ~15 人 + 老师 + 助教 1v1 救场 ③ 午餐茶歇 + 现场互评。线上更适合"想自己快速上手"的工程师，线下更适合"想被陪着把 Claude Code 真正落到自己 repo 里"的团队负责人。</div>
+      </details>
+      <details>
+        <summary>和市面上其他 "AI 编程课" 有什么区别？</summary>
+        <div>市面上 90% 的课在讲「怎么写 prompt 让 AI 给你写代码」。这场讲的是把 AI 当成<strong>多线程协作的工程师</strong>怎么编排 —— 这是工具范式的差异，不是技巧差异。</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="cta-block">
+    <h2>把 AI 从「补全工具」升级到「任务编排」</h2>
+    <p class="sub">线上 3h 速通版 · 匠人课堂 Zoom · 早鸟报名中</p>
+    <div class="price">A$99 <small>早鸟价</small> <span class="strike">A$199</span></div>
+    <div style="margin-top:14px">
+      <a href="#" class="hero-cta" style="background:#FFDE59;color:#10162f">🎯 报名线上 A$99 早鸟</a>
+      <!-- TODO: 报名链接 -->
+      <a href="#offline" class="hero-cta secondary" style="background:#FF914D;color:#fff;margin-left:8px">🏛 想要全天小班？看 A$299 线下</a>
+    </div>
+    <p style="margin-top:14px;font-size:12px;opacity:0.6;font-family:'Space Mono',monospace">日期、报名链接公布中 · 持续答疑群提前进</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  © Claude Code 实战 Workshop · 由 <a href="https://jiangren.com.au">匠人学院</a> 出品<br/>
+  <small>本场不录像政策待公布 · 不承诺涉及金钱回报 · 只承诺过程、作品、技能</small>
+</footer>
+
+</body>
+</html>
