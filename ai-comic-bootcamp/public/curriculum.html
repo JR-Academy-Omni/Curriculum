@@ -20,8 +20,12 @@
     .stats .l{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:#aaa;margin-top:6px}
     /* Section base */
     .sec{max-width:1200px;margin:56px auto 0;padding:0 24px}
-    .sec h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .sec h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:900;color:#10162f;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:16px}
+    .sec h2::before,.sec h2::after{content:"";flex:0 0 32px;height:5px;background:#CB6CE6}
     .sec .sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .sec:nth-of-type(2n) h2::before,.sec:nth-of-type(2n) h2::after{background:#FF914D}
+    .sec:nth-of-type(3n) h2::before,.sec:nth-of-type(3n) h2::after{background:#38B6FF}
+    .sec:nth-of-type(4n) h2::before,.sec:nth-of-type(4n) h2::after{background:#ec4899}
     /* Phase cards */
     .ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .ph-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:24px;transition:all 0.15s;display:block;text-decoration:none;color:#10162f}
@@ -91,18 +95,25 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>AI 漫剧 Bootcamp · 从剧本到成片实战</h1>
-    <p class="sub">张彦伟老师 · 11 章 49 节录播系统课。把 AI 漫剧的整条生产工艺从 AIGC 工具矩阵讲到 Seedance 2.0 项目实例，一节都不省。</p>
-    <div class="meta-bar">
-      <span>📚 49 LESSONS</span>
-      <span>⏱ ~24 HOURS</span>
-      <span>📺 录播 · 按自己节奏</span>
-      <span>🎬 一线工艺</span>
+  <div class="header halftone speedlines" style="position:relative;overflow:hidden">
+    <!-- 漫剧 SFX 装饰 -->
+    <div class="sfx" style="position:absolute;top:18px;left:6%;z-index:3;color:#FFDE59">ドン！</div>
+    <div class="sfx pink" style="position:absolute;top:30%;right:5%;z-index:3;transform:rotate(8deg)">BANG!</div>
+    <div class="sfx blue" style="position:absolute;bottom:18px;left:8%;z-index:3;transform:rotate(-4deg);font-size:clamp(22px,3vw,38px)">パシャ！</div>
+    <div class="pow-burst pink" style="position:absolute;bottom:24px;right:8%;z-index:3">11<br>章<br>49 节</div>
+    <div style="position:relative;z-index:4">
+      <h1>AI 漫剧 Bootcamp · 从剧本到成片实战</h1>
+      <p class="sub">张彦伟老师 · 11 章 49 节录播系统课。把 AI 漫剧的整条生产工艺从 AIGC 工具矩阵讲到 Seedance 2.0 项目实例，一节都不省。</p>
+      <div class="meta-bar">
+        <span>📚 49 LESSONS</span>
+        <span>⏱ ~24 HOURS</span>
+        <span>📺 录播 · 按自己节奏</span>
+        <span>🎬 一线工艺</span>
+      </div>
     </div>
   </div>
 
-  <div class="stats">
+  <div class="stats halftone" style="position:relative">
     <div class="s"><div class="n">11</div><div class="l">章节</div></div>
     <div class="s"><div class="n">49</div><div class="l">节课</div></div>
     <div class="s"><div class="n">6</div><div class="l">Phase</div></div>
@@ -115,8 +126,8 @@
     <h2>6 个 Phase · 按工艺环节走</h2>
     <p class="sub">每个 Phase 对应漫剧生产的一段工序 · 跳着学也行 · 想从头吃也行</p>
     <div class="ph-grid">
-      <a class="ph-card" href="./phase1.html">
-        <span class="ph-tag" style="background:#CB6CE6">Phase 1</span>
+      <a class="ph-card panel-shadow-purple tilt-l" href="./phase1.html">
+        <span class="ph-tag" style="background:#CB6CE6">🎬 Phase 1 · EP 0-1</span>
         <h3>工具准备 & 入门</h3>
         <p class="ph-sum">先把 AIGC 工具矩阵梳清楚 — 大模型 / 视频 / 音乐 / 云部署 / 辅助五大类 + AI 漫剧赛道总览。</p>
         <ul class="ph-bullets">
@@ -126,8 +137,8 @@
         </ul>
         <div class="ph-foot"><span>8 节 · 219 min</span><span>查看详情 →</span></div>
       </a>
-      <a class="ph-card" href="./phase2.html">
-        <span class="ph-tag" style="background:#38B6FF">Phase 2</span>
+      <a class="ph-card panel-shadow-blue tilt-r" href="./phase2.html">
+        <span class="ph-tag" style="background:#38B6FF">🎨 Phase 2 · EP 2-3</span>
         <h3>角色 & 场景设计</h3>
         <p class="ph-sum">角色三视图 + 场景空间一致性 — 漫剧最痛的两个一致性问题都在这个 Phase 解决。</p>
         <ul class="ph-bullets">
@@ -136,8 +147,8 @@
         </ul>
         <div class="ph-foot"><span>7 节 · 167 min</span><span>查看详情 →</span></div>
       </a>
-      <a class="ph-card" href="./phase3.html">
-        <span class="ph-tag" style="background:#10b981">Phase 3</span>
+      <a class="ph-card panel-shadow-green tilt-l" href="./phase3.html">
+        <span class="ph-tag" style="background:#10b981">⚡ Phase 3 · EP 4-5</span>
         <h3>视频生成 & 爆款 & 首尾帧</h3>
         <p class="ph-sum">视频 Prompt / 运镜 / 爆款短视频 3 节 / 首尾帧法 / 智能体多帧 — 出片能力一次性补齐。</p>
         <ul class="ph-bullets">
@@ -147,8 +158,8 @@
         </ul>
         <div class="ph-foot"><span>8 节 · 279 min</span><span>查看详情 →</span></div>
       </a>
-      <a class="ph-card" href="./phase4.html">
-        <span class="ph-tag" style="background:#FF914D">Phase 4</span>
+      <a class="ph-card panel-shadow-orange tilt-r" href="./phase4.html">
+        <span class="ph-tag" style="background:#FF914D">🎙 Phase 4 · EP 6-7</span>
         <h3>分镜 & 声音设计</h3>
         <p class="ph-sum">5 节分镜（含智能体）+ 5 节声音（含声音克隆 / 智声云配 / 对口型 / 音效）。</p>
         <ul class="ph-bullets">
@@ -157,8 +168,8 @@
         </ul>
         <div class="ph-foot"><span>10 节 · 225 min</span><span>查看详情 →</span></div>
       </a>
-      <a class="ph-card" href="./phase5.html">
-        <span class="ph-tag" style="background:#FFDE59;color:#10162f">Phase 5</span>
+      <a class="ph-card panel-shadow-yellow tilt-l" href="./phase5.html">
+        <span class="ph-tag" style="background:#FFDE59;color:#10162f">🎯 Phase 5 · EP 8-10</span>
         <h3>综合实战</h3>
         <p class="ph-sum">第 9 章一镜到底走完整集 + 剧本设计兜底 · 把前 4 个 Phase 学的方法用在一份真实剧本上从 0 出片。</p>
         <ul class="ph-bullets">
@@ -168,8 +179,9 @@
         </ul>
         <div class="ph-foot"><span>8 节 · 248 min</span><span>查看详情 →</span></div>
       </a>
-      <a class="ph-card" href="./phase6.html">
-        <span class="ph-tag" style="background:#ec4899">Phase 6</span>
+      <a class="ph-card panel-shadow-pink tilt-r" href="./phase6.html" style="position:relative">
+        <div class="pow-burst" style="position:absolute;top:-22px;right:-14px;z-index:5;width:74px;height:74px;font-size:13px">FINALE!</div>
+        <span class="ph-tag" style="background:#ec4899">💥 Phase 6 · EP 11</span>
         <h3>Seedance 漫剧项目实例</h3>
         <p class="ph-sum">即梦 Seedance 2.0 真实漫剧项目 8 节 — 从小说改剧本到剪辑配音的完整演示，前面学的所有方法在这里组合验证。</p>
         <ul class="ph-bullets">
@@ -177,7 +189,7 @@
           <li>L45-L47 Seedance 2.0 全能参考生视频 + 配音展示</li>
           <li>L48-L49 项目级音效 + 漫剧剪辑配音</li>
         </ul>
-        <div class="ph-foot"><span>8 节 · 280 min</span><span>查看详情 →</span></div>
+        <div class="ph-foot"><span>8 节 · 286 min</span><span>查看详情 →</span></div>
       </a>
     </div>
   </div>
@@ -187,32 +199,32 @@
     <h2>这门课和别的 AI 视频课的差别</h2>
     <p class="sub">不是体验课、不是发布会、不是单点工具教程</p>
     <div class="hl-grid">
-      <div class="hl-card">
+      <div class="hl-card panel-shadow-purple tilt-l">
         <span class="hl-tag">SYSTEMATIC</span>
         <h4>11 章 49 节 · 工艺全链路</h4>
         <p>市面大部分 AI 视频课停在『出一段视频』。这门课把工具矩阵 → 剧本 → 角色 → 场景 → 分镜 → 视频 → 声音 → 剪辑 + Seedance 项目实例全部讲清楚，能直接落成 SOP。</p>
       </div>
-      <div class="hl-card">
+      <div class="hl-card panel-shadow-blue tilt-r">
         <span class="hl-tag" style="background:#38B6FF">CONSISTENCY</span>
         <h4>一致性问题逐个攻破</h4>
         <p>三视图、空间关系、主体库、多帧智能体 — 漫剧最痛的『跨镜头跑偏』问题，每个角度都有专门一节讲解。</p>
       </div>
-      <div class="hl-card">
+      <div class="hl-card panel-shadow-orange tilt-l">
         <span class="hl-tag" style="background:#FF914D">PRACTITIONER</span>
         <h4>一线日常工艺直接公开</h4>
         <p>张老师每天都在做 AI 漫剧项目。这门课不是把 PPT 录一遍，是把他每天打开电脑做的事情 — Prompt、智能体、配音工具、剪辑节奏 — 全部摊开。</p>
       </div>
-      <div class="hl-card">
+      <div class="hl-card panel-shadow-green tilt-r">
         <span class="hl-tag" style="background:#10b981">END-TO-END</span>
         <h4>Phase 5 一镜到底 + Phase 6 Seedance 项目</h4>
         <p>Phase 5 第 9 章 6 节连成完整工艺一镜到底；Phase 6 是即梦 Seedance 2.0 真实漫剧项目 8 节，从小说改剧本到剪辑配音的项目级演示双兜底。</p>
       </div>
-      <div class="hl-card">
+      <div class="hl-card panel-shadow-pink tilt-l">
         <span class="hl-tag" style="background:#ec4899">AGENT</span>
         <h4>智能体上场</h4>
         <p>分镜智能体写 Prompt、多帧智能体跑批、配音智能体管音色 — 把『一人能干一个工作室活』的能力打开。</p>
       </div>
-      <div class="hl-card">
+      <div class="hl-card panel-shadow-yellow tilt-r">
         <span class="hl-tag" style="background:#FFDE59;color:#10162f">SCRIPT</span>
         <h4>用剧本兜底</h4>
         <p>第 10 章单拎剧本设计 — 好剧本是漫剧的天花板。漫剧剧本 vs 传统剧本的差别、AI 能 / 不能 hold 的镜头、起号期剧本结构模板。</p>

@@ -194,3 +194,108 @@ details>div{padding:10px 16px;font-size:13px;line-height:1.8;border-top:1px soli
   .lesson-head h4 { font-size: 13px; }
   .pill { font-size: 10px; padding: 2px 6px; }
 }
+
+/* =========================================== */
+/* 漫剧风 · Manga / Comic-style utilities */
+/* =========================================== */
+
+/* Halftone dot overlay — 漫画网点 */
+.halftone { position: relative; }
+.halftone > * { position: relative; z-index: 2; }
+.halftone::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.22) 1.5px, transparent 1.6px);
+  background-size: 14px 14px;
+  pointer-events: none; z-index: 1;
+}
+.halftone-dark::before {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.13) 1.5px, transparent 1.6px);
+}
+
+/* Speed lines — 漫画速度线（放射性） */
+.speedlines { position: relative; }
+.speedlines > * { position: relative; z-index: 2; }
+.speedlines::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: repeating-linear-gradient(
+    -20deg,
+    transparent 0, transparent 18px,
+    rgba(255,255,255,0.10) 18px, rgba(255,255,255,0.10) 20px
+  );
+}
+
+/* Pow / Bang 爆炸星贴纸 */
+.pow-burst {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 88px; height: 88px;
+  background: #FFDE59;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 900; font-size: 18px; color: #10162f;
+  line-height: 1; text-align: center;
+  transform: rotate(-8deg);
+  clip-path: polygon(
+    50% 0%, 60% 18%, 78% 8%, 80% 30%, 100% 32%, 84% 50%,
+    100% 68%, 78% 70%, 78% 92%, 60% 80%, 50% 100%, 40% 80%,
+    22% 92%, 22% 70%, 0% 68%, 16% 50%, 0% 32%, 20% 30%, 22% 8%, 40% 18%
+  );
+  filter: drop-shadow(4px 4px 0 #000);
+}
+.pow-burst.red { background: #ff5757; color: #fff; }
+.pow-burst.pink { background: #ec4899; color: #fff; }
+.pow-burst.blue { background: #38B6FF; color: #fff; }
+
+/* 漫画对白气泡 */
+.bubble {
+  position: relative; display: inline-block;
+  background: #fff; border: 3px solid #000;
+  padding: 10px 16px; border-radius: 18px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800; color: #10162f;
+  box-shadow: 3px 3px 0 #000;
+}
+.bubble::after {
+  content: ""; position: absolute; bottom: -16px; left: 28px;
+  border: 9px solid transparent; border-top-color: #000;
+}
+.bubble::before {
+  content: ""; position: absolute; bottom: -10px; left: 31px;
+  border: 6px solid transparent; border-top-color: #fff; z-index: 2;
+}
+
+/* 漫剧章节斜切带 */
+.chapter-band {
+  display: inline-block; background: #ec4899; color: #fff;
+  font-family: 'Bricolage Grotesque', sans-serif; font-weight: 900;
+  padding: 7px 26px; transform: skewX(-12deg);
+  border: 3px solid #000; box-shadow: 4px 4px 0 #000;
+  letter-spacing: 1px;
+}
+.chapter-band > span { display: inline-block; transform: skewX(12deg); }
+
+/* 拟声词（SFX） */
+.sfx {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 900; font-style: italic;
+  font-size: clamp(34px, 5vw, 60px);
+  color: #FFDE59;
+  -webkit-text-stroke: 2.5px #000;
+  text-shadow: 5px 5px 0 #000;
+  letter-spacing: 2px; line-height: 1;
+  display: inline-block;
+  transform: rotate(-6deg);
+}
+.sfx.pink { color: #ec4899; }
+.sfx.blue { color: #38B6FF; }
+.sfx.green { color: #10b981; }
+
+/* 漫剧倾斜贴纸 */
+.tilt-l { transform: rotate(-1.5deg); }
+.tilt-r { transform: rotate(1.5deg); }
+
+/* 漫剧色彩交替 box-shadow（comic panel 错位投影） */
+.panel-shadow-pink { box-shadow: 6px 6px 0 #ec4899, 6px 6px 0 1px #000 !important; }
+.panel-shadow-yellow { box-shadow: 6px 6px 0 #FFDE59, 6px 6px 0 1px #000 !important; }
+.panel-shadow-blue { box-shadow: 6px 6px 0 #38B6FF, 6px 6px 0 1px #000 !important; }
+.panel-shadow-orange { box-shadow: 6px 6px 0 #FF914D, 6px 6px 0 1px #000 !important; }
+.panel-shadow-green { box-shadow: 6px 6px 0 #10b981, 6px 6px 0 1px #000 !important; }
+.panel-shadow-purple { box-shadow: 6px 6px 0 #CB6CE6, 6px 6px 0 1px #000 !important; }
