@@ -54,85 +54,90 @@
 
   <article class="mp-body" id="article">
 
-    <h2>把 AI 从「补全工具」升级到「任务编排」</h2>
+    <h2>用 ChatGPT 写代码累？是时候认识 Claude Code 了</h2>
 
-    <p>上周我帮一个朋友 review 他的作品集 repo。三个 Next.js 项目，每个 README 都是同一段话——「This is a Next.js project bootstrapped with create-next-app」。问他为什么没改，他说每次都想 AI 帮他写一个像样的，但 Cursor 给的版本永远是「项目介绍+技术栈+如何启动」三段模板。</p>
+    <p>上周我帮一个朋友 review 他 GitHub 上的作品集 repo。三个 Next.js 项目，每个 README 都是同一段——「This is a Next.js project bootstrapped with create-next-app」。我问他为什么没改，他说他每次都让 ChatGPT 帮写，回来的版本永远是「项目介绍 + 技术栈 + 启动方式」三段模板。看一眼就知道是 AI 模板生成的。</p>
 
-    <p>这不是 AI 不够聪明，是<strong>用 AI 的方式还停留在 2023 年</strong>——把它当聊天框，要什么补什么。Cursor / Copilot / Windsurf 这一代工具的天花板就在「行级补全」，再往上走就是另一种范式：把 AI 当成多线程协作的工程师来<strong>编排</strong>，不是当聊天对象来「问」。</p>
-
-    <h2>同样在用 AI 编程，差距在哪</h2>
-
-    <p>我观察过两类人写代码的过程。</p>
-
-    <p>第一类：打开 Cursor，光标停在文件里，问"帮我写一个用户登录的接口"。AI 写了，跑一下，报错，再问"为什么报错"，改一下，再跑。一上午改三个 bug，最后产出一个能跑但没人能维护的接口——连他自己一周后都看不懂为什么这么写。</p>
-
-    <p>第二类：打开 Claude Code，先写一份 PRD（产品需求文档）和 design.md（架构说明），把要做什么、模块怎么拆、接口怎么设计先想清楚。然后 <code>/plan</code> 让 Claude 读懂整个 repo，再发 3 个 subagent 并行——一个查现有相似代码、一个出实现方案、一个准备 review checklist。半小时后拿到的不是一段代码，是一个完整的 PR：含设计文档、实现、测试、和给 reviewer 的说明。</p>
-
-    <p>两种产出的差别，不是「AI 写得好不好」，是<strong>有没有把开发流程沉到工具里</strong>。这场 workshop 讲的就是后者。</p>
-
-    <h2>不是教按钮，是教工作流</h2>
-
-    <p>市面上 90% 的 AI 编程课在讲「怎么写 prompt 让 AI 给你写代码」。本场 workshop 不讲这个。讲的是把 AI 当成多线程工程师怎么编排——这是工具范式的差异，不是技巧差异。</p>
-
-    <p>3 小时跟着敲，覆盖 Agent 开发全生命周期。<strong>顺序刻意</strong>——前 50 分钟讲的不是 Claude Code 的命令，而是动 Claude Code 之前你应该准备的事：怎么写一份 AI 能直接读懂的 PRD，怎么写一份让 AI 不乱写的 design.md。这两件事写好了，后面的 <code>/init</code> <code>/plan</code> <code>/resume</code> 才有意义。</p>
-
-    <p>很多人卡在「AI 写出来不是我想要的」这一步，根本原因不是 AI 不行，是你给的输入是「写一个用户管理系统」这种话——AI 也只能给你一个泛泛的系统。换成有结构的 PRD + design.md，AI 拿到的信息量增加 10 倍，产出的代码自然不一样。</p>
-
-    <h2>3 小时五段式 · 走通一遍</h2>
-
-    <p>线上速通版 180 分钟，匠人课堂 Zoom 实操，每段都有跟着敲的 demo。</p>
+    <p>这不是 AI 不够聪明，是<strong>他用 AI 的方式没跟上 2025 年的工具</strong>。市面上 AI 编程工具其实走过了三代：</p>
 
     <ul>
-      <li><strong>Part 1（50min）开发前准备 + 常用命令</strong>——写 PRD 模板 + design.md 模板 + 常用命令（<code>/init</code> <code>/plan</code> <code>/resume</code> <code>/clear</code> <code>/compact</code>）+ context window 工作原理。在自己 repo 写一份 mini-PRD，用 <code>/plan</code> 让 Claude 读懂全局。</li>
-      <li><strong>Part 2（40min）Agents 管理</strong>——Fleet View / Agents View 演示。主 agent 和 subagent 怎么分工，一次发 3 个 subagent 并行跑 research / implementation / review。对比串行和并行的速度差异。</li>
-      <li><strong>Part 3（35min）最佳实践</strong>——CLAUDE.md（项目宪法，让 AI 遵守你的命名约定、技术栈红线）、Skills（把团队 SOP 沉成可复用命令）、Slash Commands、Hooks（强制规则，比如 pre-commit 自动跑检查）、推荐 MCP server（context7 实时查文档、playwright 让 Claude 自己测页面）。</li>
-      <li><strong>Part 4（35min）ADLC 实战</strong>——Agent Development Lifecycle 完整跑通：Plan（PRD / design.md）→ Code（subagent 并行）→ Review（自动跑检查）→ Ship（提 PR）。跟着老师在 demo repo 提一个真实 PR。</li>
-      <li><strong>Q&A（10min）+ 拿走 cheat sheet</strong>——拿 PRD 模板 + design.md 模板 + 命令 cheat sheet + ADLC prompts + 加群。</li>
+      <li>第一代 <strong>ChatGPT / 豆包 / 文心一言</strong>：网页聊天框。你贴一段代码问，它回一段建议。它根本不知道你整个项目长什么样。</li>
+      <li>第二代 <strong>Cursor / GitHub Copilot</strong>：编辑器插件。你打字时它帮你补完这一行 / 这个方法。看的是光标附近几十行代码。</li>
+      <li>第三代 <strong>Claude Code</strong>（这场 workshop 讲的工具）：Anthropic（Claude 那家公司）自己出的命令行 AI 工具。装好之后你在 terminal 里跟它说话 —— 它<strong>能读你整个 repo</strong>，记住所有文件、命名规范、技术栈。你说「给登录模块加 Google OAuth」，它自己看哪些文件要改、自己改、跑测试、最后提一个 PR 给你看。你是它的产品经理，不是它的打字员。</li>
     </ul>
 
-    <p>前 50 分钟是基础段，零基础学员（会基础 git + 命令行就行）保底跟上；后续两小时是高阶段，在职工程师拿到能直接用的技巧。中间用同一个 demo repo 串起来，跟不上的随时 <code>git checkout part-3-start</code> 跳过。</p>
+    <p>差距不在 AI 智商，差距在<strong>你怎么让 AI 干活</strong>。这场 3 小时 workshop 就是教你切到第三代工具的工作方式。</p>
 
-    <h2>走出 3 小时 · 6 件资产带回家</h2>
+    <h2>同样写一个登录接口 · 两种工具差在哪</h2>
+
+    <p>具体一点。我观察过两类工程师同样要写「用户登录接口」时的全过程。</p>
+
+    <p><strong>第一类用 Cursor</strong>：光标停在 <code>auth.ts</code>，问「帮我写一个用户登录」。AI 写了，跑一下报错（数据库连接没配），回去问「为什么报错」，改一下，再跑（密码加密用错库了），再问，再改。一上午折腾下来产出一个能跑但没人能维护的接口 —— 他一周后自己看都不知道当时为啥这么写。</p>
+
+    <p><strong>第二类用 Claude Code</strong>：先在 <code>spec/login.md</code> 写一份「需求清单」 —— 要支持哪几种登录方式、密码怎么存、错误怎么提示、要不要限流。再写一份「架构说明」 —— 这个模块在 repo 里放哪、依赖哪些已有的组件、对外暴露什么接口。然后让 Claude Code 自己读这两份文件 + 整个 repo，<strong>同时开 3 个 AI 助手</strong>：一个查 repo 里已有的相似登录代码、一个写实现、一个准备 review checklist。半小时后他拿到的不是一段代码，是一个完整的 PR：含文档、实现、测试、和给 reviewer 的说明。</p>
+
+    <p>差别不在 AI 聪明不聪明，差别在 <strong>「你有没有把开发流程教给工具」</strong>。这场 workshop 教的就是后者。</p>
+
+    <h2>3 小时五段式 · 在你自己 repo 上跑一遍</h2>
+
+    <p>线上速通版 180 分钟，匠人课堂 Zoom 实操。每段都有跟着敲的 demo，不是看视频。</p>
+
+    <ul>
+      <li><strong>Part 1（50min）开发前准备 + 关键命令</strong> —— 动 Claude Code 之前你应该准备的事：怎么写一份「让 AI 听懂」的需求清单（不是「帮我写一个登录系统」这种话），怎么写一份「让 AI 不乱写」的架构设计。然后是 5 个核心命令：<code>/init</code> 让它读 repo、<code>/plan</code> 出方案、<code>/resume</code> 续上次的活、<code>/clear</code> 清记忆、<code>/compact</code> 压缩长对话。</li>
+      <li><strong>Part 2（40min）同时跑多个 AI 助手干活</strong> —— Claude Code 支持你<strong>一次开 3 个甚至更多 AI 助手并行</strong>。一个查 repo 里相似代码 / 一个写实现 / 一个做 review。这一段教你怎么分工、怎么避免它们互相覆盖。比串行干活快 3 倍。</li>
+      <li><strong>Part 3（35min）让 AI 自动遵守你的规则</strong> —— 给自己 repo 写一份「项目规则书」（<code>CLAUDE.md</code>）：命名规范、技术栈红线、不许动的文件、PR 必须做的事。AI 从此自动遵守，新人入职不用再口头培训。再配一个<strong>提交前自动检查</strong>，强制跑 lint / 测试 / 你的自定义检查。</li>
+      <li><strong>Part 4（35min）完整开发流程跑一遍</strong> —— 从「我想做 X」到「PR 已提交」的完整闭环：写需求 → AI 读 repo + 出方案 → 同时跑 3 个 AI 助手分工 → AI 自己 review → 提 PR。跟着老师在 demo repo 提一个真实 PR 出来。</li>
+      <li><strong>Q&amp;A 10min + 拿走 6 件模板</strong> —— 加群继续答疑。</li>
+    </ul>
+
+    <p>前 50 分钟是基础段，零基础学员（会 git clone / branch / commit + 命令行就行）保底跟上。后续 2 小时是高阶段，在职工程师拿到能直接用的技巧。中间用同一个 demo repo 串起来，跟不上的随时 <code>git checkout part-3-start</code> 跳过。</p>
+
+    <h2>走出 3 小时 · 6 件能 commit 到自己 repo 的模板</h2>
 
     <p>不是「提升认知」这种虚的承诺。每一件你都能 clone 回自己 repo 直接用：</p>
 
     <ol>
-      <li><strong>PRD 模板</strong>——AI 能直接读懂、拆 task、生成代码的写法。含结构 + 正反示例。</li>
-      <li><strong>design.md 模板</strong>——架构 / 模块拆分 / 接口约定，让 AI 不乱写。一页纸覆盖一个中型 feature。</li>
-      <li><strong>单页命令 cheat sheet</strong>——<code>/init</code> <code>/plan</code> <code>/resume</code> <code>/clear</code> <code>/compact</code> + context window 原理图，打印贴墙。</li>
-      <li><strong>自己写的 CLAUDE.md</strong>——给自己 repo 写一份能直接 commit 的项目宪法。</li>
-      <li><strong>Subagent + Slash + Hook 三件套</strong>——自定义 subagent 配置 + 一个 <code>/&lt;命令&gt;</code> + 一个 pre-commit hook。</li>
-      <li><strong>ADLC 工作流模板</strong>——Plan → Code → Review → Ship 完整的 prompt 串 + 教学示范。</li>
+      <li><strong>需求清单模板</strong> —— 「让 AI 听懂」的写法。比「帮我写一个登录系统」这种话清晰 10 倍，AI 拿到能直接拆 task。</li>
+      <li><strong>架构设计模板</strong> —— 把模块、接口、数据流先想清楚再让 AI 动手，AI 不会乱写一气。</li>
+      <li><strong>Claude Code 关键命令速查卡</strong> —— 单页纸 5 个核心命令 + 什么时候用，打印贴墙。</li>
+      <li><strong>项目规则书 <code>CLAUDE.md</code></strong> —— 给自己 repo 写一份能直接 commit 的项目宪法，AI 自动遵守。</li>
+      <li><strong>3 件 AI 助手定制工具</strong> —— ① 分身助手配置 ② 团队自定义命令（比如 <code>/code-review</code>） ③ 提交前自动检查。</li>
+      <li><strong>完整开发流程 prompt 串</strong> —— 从「我想做 X」到「PR 已提交」的对话模板，跟着填空就能跑。</li>
     </ol>
 
-    <p>加上持续答疑社群——会后碰到坑能继续问，不是听完就散。</p>
+    <p>加上持续答疑社群 —— 会后碰到坑能继续问，不是听完就散。</p>
 
     <h2>谁来听 · 谁不要来</h2>
 
-    <p>这场是给两类人写的：① <strong>IT 在职工程师</strong>——每天用 Cursor / Copilot 但还停在「高级补全」阶段，想把 AI 升级成「任务编排」；② <strong>在校 / 转码学习者</strong>——写过 demo 但项目永远停在「能跑」阶段，想让作品集像「工程项目」而非「教程项目」。</p>
+    <p>这场是给两类人写的：</p>
+
+    <ul>
+      <li><strong>① 在职 IT 工程师</strong> —— 每天用 Cursor / Copilot 但还停在「让 AI 写下一行」的阶段，想知道怎么让 AI 帮你<strong>写完整个 feature</strong>。</li>
+      <li><strong>② 在校 / 转码学习者</strong> —— 写过 demo 但项目永远停在「能跑」阶段，想让 GitHub 作品集像「真工程项目」而不是「教程项目」。</li>
+    </ul>
 
     <p><strong>不适合</strong>从没写过代码的纯小白。前 30min 拉齐起点段也要求会基础 git（clone / branch / commit）+ 命令行。如果这两个你都没接触过，建议先看 1 小时入门视频再来。</p>
 
     <h2>报名信息</h2>
 
-    <p><strong>🖥 线上速通版</strong>：3h 匠人课堂 Zoom · <strong>A$99 早鸟</strong>（原价 A$199）· 名额 ≤ 50</p>
+    <p><strong>🖥 线上速通版</strong>：3h 匠人课堂 Zoom · <strong>A$99 早鸟</strong>（开课前 7 天截止）/ A$199 全价 · 名额 ≤ 50</p>
 
     <p><strong>🏛 线下全天小班</strong>：墨尔本 / 悉尼两城 · 10:00–16:00 含午餐 · <strong>A$299 一价</strong> · ~15 人小班</p>
 
-    <p>线上版适合「想自己快速上手」的工程师，线下版适合「想被陪着把 Claude Code 真正落到自己 repo 里」的团队负责人。两种形式覆盖同一个内容骨架，差异在实操深度。</p>
+    <p>线上版适合「想自己快速上手」的工程师，线下版适合「想被陪着真把 Claude Code 落到自己 repo 里」的团队负责人。两种形式覆盖同一个内容骨架，差异在动手深度。</p>
 
     <p>日期、报名链接、讲师阵容公布中。<strong>关注公众号「匠人学院」回复「Claude Code」</strong>，第一时间收到通知 + 进答疑预报名群。</p>
 
-    <h2>三个最常被问到的问题</h2>
+    <h2>三个最常被问的问题</h2>
 
     <p><strong>Q：完全没用过 Claude Code 能跟上吗？</strong></p>
     <p>A：可以。前 30 分钟会拉齐起点，带你从零跑通第一个任务。但要求会基础 git + 命令行（如果你这两个都没接触过，建议先看 1 小时入门视频再来）。</p>
 
     <p><strong>Q：可以用 Cursor / Copilot 代替来跟课吗？</strong></p>
-    <p>A：不可以。Claude Code 的 plan mode / subagent / hooks 这些机制和 Cursor / Copilot 是不同的工作范式，工具替换不了。</p>
+    <p>A：不可以。Claude Code 能做的事（读整个 repo / 同时开多个 AI 助手 / 自动跑测试 / 给 repo 写规则 AI 自动遵守）和 Cursor / Copilot 是两种工具，替换不了。</p>
 
     <p><strong>Q：线上 A$99 和线下 A$299 差别只是价格吗？</strong></p>
-    <p>A：不是。线下 5 小时实操 vs 线上 3 小时 / 线下 ~15 人小班 + 助教 1v1 救场 / 线下含午餐茶歇 + 现场互评。线上更适合"想自己快速上手"，线下更适合"想被陪着把工具真正落到自己 repo 里"。</p>
+    <p>A：不是。线下 5 小时实操 vs 线上 3 小时 / 线下 ~15 人小班 + 助教 1v1 救场 / 线下含午餐茶歇 + 现场互评。线上更适合「想自己快速上手」，线下更适合「想被陪着把工具真正落到自己 repo 里」。</p>
 
     <hr/>
 
@@ -145,59 +150,51 @@
 
 <!-- Markdown source for download -->
 <template id="md-source">---
-title: 把 AI 从「补全工具」升级到「任务编排」
+title: 用 ChatGPT 写代码累？是时候认识 Claude Code 了
 subtitle: Claude Code 实战 Workshop · 3h A$99 早鸟
 ---
 
-# 把 AI 从「补全工具」升级到「任务编排」
+# 用 ChatGPT 写代码累？是时候认识 Claude Code 了
 
-上周我帮一个朋友 review 他的作品集 repo。三个 Next.js 项目，每个 README 都是同一段话——「This is a Next.js project bootstrapped with create-next-app」。问他为什么没改，他说每次都想 AI 帮他写一个像样的，但 Cursor 给的版本永远是「项目介绍+技术栈+如何启动」三段模板。
+上周我帮一个朋友 review 他 GitHub 上的作品集 repo。三个 Next.js 项目，每个 README 都是同一段——「This is a Next.js project bootstrapped with create-next-app」。我问他为什么没改，他说他每次都让 ChatGPT 帮写，回来的永远是三段模板。
 
-这不是 AI 不够聪明，是**用 AI 的方式还停留在 2023 年**——把它当聊天框，要什么补什么。Cursor / Copilot / Windsurf 这一代工具的天花板就在「行级补全」，再往上走就是另一种范式：把 AI 当成多线程协作的工程师来**编排**，不是当聊天对象来「问」。
+这不是 AI 不够聪明，是**他用 AI 的方式没跟上 2025 年的工具**。市面上 AI 编程工具走过了三代：
 
-## 同样在用 AI 编程，差距在哪
+- 第一代 **ChatGPT / 豆包 / 文心**：网页聊天框。你贴一段代码问，它回一段建议。它不知道你整个项目长什么样。
+- 第二代 **Cursor / GitHub Copilot**：编辑器插件。打字时帮你补完这一行 / 这个方法。看的是光标附近的代码。
+- 第三代 **Claude Code**（本场讲的工具）：Anthropic 自己出的命令行 AI 工具。装好之后在 terminal 里跟它说话——**它能读你整个 repo**，自己改文件、跑测试、提 PR。你是它的产品经理，不是打字员。
 
-我观察过两类人写代码的过程。
+差距不在 AI 智商，差距在**你怎么让 AI 干活**。
 
-第一类：打开 Cursor，光标停在文件里，问"帮我写一个用户登录的接口"。AI 写了，跑一下，报错，再问"为什么报错"，改一下，再跑。一上午改三个 bug，最后产出一个能跑但没人能维护的接口——连他自己一周后都看不懂为什么这么写。
+## 同样写一个登录接口 · 两种工具差在哪
 
-第二类：打开 Claude Code，先写一份 PRD（产品需求文档）和 design.md（架构说明），把要做什么、模块怎么拆、接口怎么设计先想清楚。然后 `/plan` 让 Claude 读懂整个 repo，再发 3 个 subagent 并行——一个查现有相似代码、一个出实现方案、一个准备 review checklist。半小时后拿到的不是一段代码，是一个完整的 PR。
+**第一类用 Cursor**：光标停在 auth.ts，问"帮我写一个用户登录"。AI 写了 → 跑 → 报错 → 回去问 → 改 → 再跑。一上午折腾出一个能跑但没人能维护的接口。
 
-两种产出的差别，不是「AI 写得好不好」，是**有没有把开发流程沉到工具里**。这场 workshop 讲的就是后者。
+**第二类用 Claude Code**：先写一份"需求清单"和"架构说明"，再让 Claude Code 自己读这两份 + 整个 repo，**同时开 3 个 AI 助手**：一个查 repo 已有代码、一个写实现、一个准备 review checklist。半小时拿到完整 PR，含文档 + 实现 + 测试 + 给 reviewer 的说明。
 
-## 不是教按钮，是教工作流
+## 3 小时五段式 · 在你自己 repo 上跑一遍
 
-市面上 90% 的 AI 编程课在讲「怎么写 prompt 让 AI 给你写代码」。本场 workshop 不讲这个。讲的是把 AI 当成多线程工程师怎么编排——这是工具范式的差异，不是技巧差异。
+- **Part 1（50min）开发前准备 + 关键命令** —— 写"让 AI 听懂"的需求清单 + 架构设计 + 5 个核心命令（让 AI 读 repo / 出方案 / 续工作 / 清记忆 / 压缩对话）
+- **Part 2（40min）同时跑多个 AI 助手干活** —— 一次开 3 个分工跑，比串行快 3 倍
+- **Part 3（35min）让 AI 自动遵守你的规则** —— 给 repo 写一份"项目规则书"+ 提交前自动检查
+- **Part 4（35min）完整开发流程跑一遍** —— 从"我想做 X"到"PR 已提交"全闭环
+- **Q&A 10min + 拿走 6 件模板**
 
-3 小时跟着敲，覆盖 Agent 开发全生命周期。**顺序刻意**——前 50 分钟讲的不是 Claude Code 的命令，而是动 Claude Code 之前你应该准备的事：怎么写一份 AI 能直接读懂的 PRD，怎么写一份让 AI 不乱写的 design.md。这两件事写好了，后面的 `/init` `/plan` `/resume` 才有意义。
+## 6 件能 commit 到自己 repo 的模板
 
-## 3 小时五段式
-
-线上速通版 180 分钟，匠人课堂 Zoom 实操，每段都有跟着敲的 demo。
-
-- **Part 1（50min）开发前准备 + 常用命令**——PRD 模板 + design.md 模板 + 常用命令 + context window 原理
-- **Part 2（40min）Agents 管理**——Fleet View / Agents View · 一次发 3 个 subagent 并行
-- **Part 3（35min）最佳实践**——CLAUDE.md / Skills / Slash / Hooks / 推荐 MCP
-- **Part 4（35min）ADLC 实战**——Plan → Code → Review → Ship 跑通真实 PR
-- **Q&A（10min）+ cheat sheet 发放**
-
-## 6 件资产带回家
-
-1. **PRD 模板**
-2. **design.md 模板**
-3. **单页命令 cheat sheet**
-4. **自己写的 CLAUDE.md**
-5. **Subagent + Slash + Hook 三件套**
-6. **ADLC 工作流模板**
-
-加上持续答疑社群——会后碰到坑能继续问。
+1. **需求清单模板**
+2. **架构设计模板**
+3. **Claude Code 关键命令速查卡**
+4. **项目规则书 CLAUDE.md 模板**
+5. **3 件 AI 助手定制工具**：分身助手 + 自定义命令 + 提交前自动检查
+6. **完整开发流程 prompt 串**
 
 ## 报名信息
 
-- 🖥 **线上速通版**：3h · 匠人课堂 Zoom · **A$99 早鸟** / A$199 全价 · ≤ 50 人
-- 🏛 **线下全天小班**：墨尔本 / 悉尼 · 10:00–16:00 含午餐 · **A$299 一价** · ~15 人
+- 🖥 **线上速通版**：3h · 匠人课堂 Zoom · **A$99 早鸟**（开课前 7 天截止）/ A$199 全价 · ≤ 50 人
+- 🏛 **线下全天小班**：墨/悉两城 · 10:00–16:00 含午餐 · **A$299 一价** · ~15 人
 
-关注公众号「匠人学院」回复「Claude Code」，第一时间收到日期 + 报名链接 + 答疑预报名群。
+关注公众号「匠人学院」回复「Claude Code」，第一时间收到日期 + 报名链接 + 答疑群。
 
 ---
 
@@ -238,7 +235,6 @@ document.getElementById('btn-html').addEventListener('click', async () => {
         new ClipboardItem({ 'text/html': blob, 'text/plain': textBlob })
       ]);
     } else {
-      // fallback: select + copy
       const range = document.createRange();
       range.selectNode(article);
       const sel = window.getSelection();
