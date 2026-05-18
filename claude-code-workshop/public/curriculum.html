@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Claude Code 实战 Workshop · 课程大纲 · 3h 线上 A$99 早鸟 / 全天线下小班 A$299</title>
-  <meta name="description" content="3 小时跟着敲：从写 PRD + design.md 到 Claude Code 常用命令、Agents 管理（Fleet View 多 subagent 并行）、CLAUDE.md / Skills / Hooks 最佳实践、完整 Agent Development Lifecycle。匠人课堂 Zoom · A$99 早鸟 / A$199 全价。另设墨/悉线下全天 A$299。">
+  <meta name="description" content="Claude Code 是 Anthropic 出的命令行 AI 编程工具——能读你整个 GitHub repo、自己改代码、跑测试、提 PR。3 小时跟着敲：写「让 AI 听懂」的需求清单 + 架构设计 → 同时跑 3 个 AI 助手分工干活 → 给 repo 写「项目规则书」AI 自动遵守 → 完整开发流程跑通一次真实 PR。匠人课堂 Zoom · A$99 早鸟。另设墨/悉线下全天 A$299。">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <style>
@@ -19,7 +19,7 @@
 <header class="header">
   <div class="c">
     <h1>Claude Code 实战 Workshop</h1>
-    <div class="sub">从命令行到任务编排 ｜ 3 小时跟着敲，掌握从开发前准备到 Agent Development Lifecycle 的完整工作流</div>
+    <div class="sub">3 小时学会用 Anthropic 官方命令行 AI 编程工具 —— 让 AI 读你整个 repo、自己改代码、提 PR，不是给你建议让你复制粘贴</div>
     <div class="tags">
       <span class="tag a">线上 3h · 匠人课堂 Zoom</span>
       <span class="tag b">线下全天小班 · 墨/悉</span>
@@ -74,9 +74,9 @@
         <div class="pain-card">
           <span class="icon">💻</span>
           <h4>主受众 A · IT 在职工程师</h4>
-          <p><strong>现状</strong>：每天在用 Cursor / Copilot / Windsurf，AI 已经能补全方法，但任务级的工作（写一个新模块、迁移一个 service、review 一个 PR）还是手工拆步。</p>
-          <p style="margin-top:8px"><strong>痛点</strong>：感觉 AI 工具就是"高级补全"，没把它当生产力杠杆用。</p>
-          <p style="margin-top:8px"><strong>来这里能得到</strong>：把 AI 从「行级补全」升级到「任务编排」——一个指令同时跑 3 个 subagent、把团队规范沉到 CLAUDE.md 让 AI 自动遵守、用 MCP 让 Claude 自己开浏览器测自己写的页面。</p>
+          <p><strong>现状</strong>：每天在用 Cursor / Copilot / Windsurf，AI 帮你补完下一行很快。但让它「写一个新模块」「迁移一个 service」「review 一个 PR」 —— 它就抓瞎，因为它只看光标附近几十行代码。</p>
+          <p style="margin-top:8px"><strong>痛点</strong>：AI 帮你写下一行，但任务级的活还是你手工拆步、手工跑、手工 review。</p>
+          <p style="margin-top:8px"><strong>来这里能得到</strong>：换到 Claude Code 之后 —— 它能读你<strong>整个 repo</strong>，一个指令同时开 3 个 AI 助手分工干活（一个查代码 / 一个写实现 / 一个做 review），把团队规范沉到「项目规则书」让 AI 自动遵守，让 Claude 自己开浏览器测自己写的页面。</p>
         </div>
         <div class="pain-card">
           <span class="icon">🎓</span>
@@ -97,7 +97,7 @@
     <div class="box-h cc">📚 课程大纲 · 线上 3h 五段式</div>
     <div class="box-body">
       <p style="margin-bottom:18px;font-size:14px;color:#444">
-        主线流程：<strong>开发前准备（PRD + design.md）+ 常用命令 → Agents 管理 → 最佳实践 → ADLC 实战 → Q&amp;A</strong>。顺序刻意 —— 先教学员"动 Claude Code 之前怎么准备"，而不是上来教按钮。每段都有跟着敲的 demo，不是纯讲。
+        主线流程：<strong>开发前准备（需求清单 + 架构设计）+ 关键命令 → 同时跑多个 AI 助手干活 → 让 AI 自动遵守你的规则 → 完整开发流程跑通 → Q&amp;A</strong>。顺序刻意 —— 先教学员"动 Claude Code 之前怎么准备"，而不是上来教按钮。每段都有跟着敲的 demo，不是纯讲。
       </p>
       <table class="agenda">
         <thead>
@@ -112,44 +112,44 @@
           <tr>
             <td class="t-time">10–60min<br/><small style="opacity:0.6">50min</small></td>
             <td>
-              <div class="t-title">Part 1 · 开发前准备 + 常用命令</div>
+              <div class="t-title">Part 1 · 开发前准备 + 关键命令</div>
               <div class="t-sub">
-                ① 准备：怎么写 AI 能读懂的 <strong>PRD</strong>（10min）<br/>
-                ② 准备：写 <strong>design.md</strong>（架构 / 模块 / 接口，10min）<br/>
-                ③ 常用命令：<code>/init</code> <code>/plan</code> <code>/resume</code> <code>/clear</code> <code>/compact</code>（20min）<br/>
-                ④ 工作原理：context window + Plan Mode + 任务循环（10min）
+                ① 准备：写一份「让 AI 听懂」的<strong>需求清单</strong>（10min）<br/>
+                ② 准备：写一份「让 AI 不乱写」的<strong>架构设计</strong>（10min）<br/>
+                ③ 5 个核心命令：<code>/init</code> 读 repo · <code>/plan</code> 出方案 · <code>/resume</code> 续工作 · <code>/clear</code> 清记忆 · <code>/compact</code> 压缩对话（20min）<br/>
+                ④ AI 是怎么记住代码的：「记忆容量」工作原理（10min）
               </div>
             </td>
-            <td class="t-do">在自己 repo 写一份 mini-PRD + design.md，用 <code>/init</code> <code>/plan</code> 让 Claude 读懂全局并出第一个 plan</td>
+            <td class="t-do">在自己 repo 写一份需求清单 + 架构设计，用 <code>/init</code> <code>/plan</code> 让 Claude 读懂全局并出第一个方案</td>
           </tr>
           <tr>
             <td class="t-time">60–100min<br/><small style="opacity:0.6">40min</small></td>
             <td>
-              <div class="t-title">Part 2 · Agents 管理（Fleet View / Agents View）</div>
-              <div class="t-sub">主 agent vs subagent 任务分配 · Fleet view UI 演示 · 一次发 3 个 subagent 并行（research / implementation / review）</div>
+              <div class="t-title">Part 2 · 同时跑多个 AI 助手干活</div>
+              <div class="t-sub">Claude Code 支持你一次开 3 个甚至更多 AI 助手并行：一个查 repo 相似代码 / 一个写实现 / 一个做 review。这一段教你怎么分工、怎么避免它们互相覆盖。比串行快 3 倍。</div>
             </td>
-            <td class="t-do">在自己 repo 同时跑 3 个 subagent，对比串行 / 并行的速度</td>
+            <td class="t-do">在自己 repo 同时跑 3 个 AI 助手，对比串行 / 并行的速度差异</td>
           </tr>
           <tr>
             <td class="t-time">100–135min<br/><small style="opacity:0.6">35min</small></td>
             <td>
-              <div class="t-title">Part 3 · 最佳实践</div>
-              <div class="t-sub">CLAUDE.md = 项目宪法 · Skills = 团队 SOP · Slash Commands · Hooks 强制规则 · 推荐 MCP（context7 / playwright）</div>
+              <div class="t-title">Part 3 · 让 AI 自动遵守你的规则</div>
+              <div class="t-sub">给 repo 写一份「项目规则书」（<code>CLAUDE.md</code>）：命名规范、技术栈红线、不许动的文件、PR 必须做的事。再写一个团队<strong>自定义命令</strong>（如 <code>/code-review</code>），配一个<strong>提交前自动检查</strong>。AI 自动遵守，新人不用再口头培训。两个值得装的扩展推荐：<code>context7</code> 实时查文档 / <code>playwright</code> 让 Claude 自己测页面。</div>
             </td>
-            <td class="t-do">给自己 repo 写 5 条 CLAUDE.md 规则 + 一个 <code>/&lt;命令&gt;</code> + 一个 pre-commit hook</td>
+            <td class="t-do">给自己 repo 写 5 条「项目规则书」+ 一个 <code>/&lt;自定义命令&gt;</code> + 一个提交前自动检查</td>
           </tr>
           <tr>
             <td class="t-time">135–170min<br/><small style="opacity:0.6">35min</small></td>
             <td>
-              <div class="t-title">Part 4 · Agent Development Lifecycle 实战</div>
-              <div class="t-sub">Plan（PRD / design.md）→ Code（subagent 并行）→ Review（自动跑检查）→ Ship（提 PR）全循环</div>
+              <div class="t-title">Part 4 · 完整开发流程跑一遍</div>
+              <div class="t-sub">从「我想做 X」到「PR 已提交」整个流程走一遍：写需求清单 + 架构 → AI 读 repo + 出方案 → 同时跑 3 个 AI 助手分工干活 → AI 自己 review → 提 PR。</div>
             </td>
-            <td class="t-do">跟着老师在 demo repo 跑通一次完整 ADLC，提一个真实 PR</td>
+            <td class="t-do">跟着老师在 demo repo 跑通完整流程，提一个真实 PR 出来</td>
           </tr>
           <tr>
             <td class="t-time">170–180min</td>
             <td><div class="t-title">收尾 + Q&amp;A</div></td>
-            <td class="t-do">拿 cheat sheet PDF + PRD 模板 + design.md 模板 + ADLC prompts + 加群</td>
+            <td class="t-do">拿走 6 件模板：需求清单 / 架构设计 / 命令速查卡 / 项目规则书 / AI 助手定制三件套 / 完整流程 prompt 串 + 加群</td>
           </tr>
         </tbody>
       </table>
@@ -158,15 +158,15 @@
 
   <!-- 6 件资产 -->
   <section class="box">
-    <div class="box-h dark">📦 走出 3 小时 · 带走 6 件可复用资产</div>
+    <div class="box-h dark">📦 走出 3 小时 · 带走 6 件能 commit 到自己 repo 的模板</div>
     <div class="box-body">
       <div class="asset-grid">
-        <div class="asset-card"><span class="icon">📋</span><h5>PRD 模板</h5><p>AI 能直接读懂、拆 task、生成代码的写法。结构 + 示例 + 反面教材都有。</p></div>
-        <div class="asset-card"><span class="icon">🏗</span><h5>design.md 模板</h5><p>架构 / 模块拆分 / 接口约定，让 AI 不乱写。一页纸覆盖一个中型 feature。</p></div>
-        <div class="asset-card"><span class="icon">📜</span><h5>命令 cheat sheet</h5><p>单页 <code>/init</code> <code>/plan</code> <code>/resume</code> <code>/clear</code> <code>/compact</code> + context window 原理图。</p></div>
-        <div class="asset-card"><span class="icon">📐</span><h5>CLAUDE.md 项目宪法</h5><p>给自己 repo 写一份能直接 commit 的版本，AI 自动遵守。</p></div>
-        <div class="asset-card"><span class="icon">🤖</span><h5>Subagent + Slash + Hook</h5><p>自定义 subagent 配置 + 一个 <code>/&lt;命令&gt;</code> + 一个 pre-commit hook。</p></div>
-        <div class="asset-card"><span class="icon">🔁</span><h5>ADLC 工作流模板</h5><p>Plan → Code → Review → Ship 完整的 prompt 串 + 教学版示范。</p></div>
+        <div class="asset-card"><span class="icon">📋</span><h5>需求清单模板</h5><p>「让 AI 听懂」的写法，比「帮我写一个登录系统」清晰 10 倍，AI 拿到能直接拆成步骤动手干。</p></div>
+        <div class="asset-card"><span class="icon">🏗</span><h5>架构设计模板</h5><p>把模块、接口、数据流先想清楚再让 AI 动手，AI 不会乱写一气。</p></div>
+        <div class="asset-card"><span class="icon">📜</span><h5>Claude Code 命令速查卡</h5><p>单页纸 5 个核心命令：<code>/init</code> 读 repo · <code>/plan</code> 出方案 · <code>/resume</code> 续工作 · <code>/clear</code> 清记忆 · <code>/compact</code> 压缩。</p></div>
+        <div class="asset-card"><span class="icon">📐</span><h5>项目规则书（CLAUDE.md）</h5><p>给 repo 写一份能直接 commit 的项目规则，AI 自动遵守你的命名规范 / 不许动的文件等。</p></div>
+        <div class="asset-card"><span class="icon">🤖</span><h5>3 件 AI 助手定制工具</h5><p>① 分身助手配置 ② 团队自定义命令（如 <code>/code-review</code>） ③ 提交前自动检查。</p></div>
+        <div class="asset-card"><span class="icon">🔁</span><h5>完整开发流程 prompt 串</h5><p>从「我想做 X」到「PR 已提交」的对话模板，跟着填空就能跑。</p></div>
       </div>
       <p style="margin-top:18px;font-size:13px;color:#666">加上持续答疑社群，会后碰到坑能继续问。</p>
     </div>
@@ -177,7 +177,7 @@
     <div class="box-h orange">🏛 线下全天小班版 · 墨尔本 / 悉尼</div>
     <div class="box-body">
       <p style="margin-bottom:16px;font-size:14px;color:#444">
-        线下版骨架沿用线上的四段式（开发准备+命令 / Agents 管理 / 最佳实践 / ADLC），<strong>每段拉长到 60–90min</strong>，加上现场 1v1 救场 + 真实 PR 出货 + 1h 午餐自由敲。
+        线下版骨架沿用线上的四段式（开发准备+命令 / 同时跑多个 AI 助手 / 让 AI 自动遵守规则 / 完整开发流程），<strong>每段拉长到 60–90min</strong>，加上现场 1v1 救场 + 真实 PR 出货 + 1h 午餐自由敲。
       </p>
       <p style="margin-bottom:18px;font-size:13px;color:#888;font-style:italic">
         ⚠️ 草稿，待线上版锁定后镜像更新最终内容。下表为初版占位。
@@ -186,11 +186,11 @@
         <thead><tr><th>时段</th><th>主题</th><th>比线上多出的"深度"</th></tr></thead>
         <tbody>
           <tr><td class="t-time">10:00–10:30<br/><small>30min</small></td><td><div class="t-title">签到 + 装机救援 + 破冰</div></td><td class="t-do">老师 + 助教挨个看每个学员的本机环境，没装好的不让进 Part 1</td></tr>
-          <tr><td class="t-time">10:30–12:00<br/><small>90min</small></td><td><div class="t-title">Part 1 · 开发前准备 + 常用命令</div></td><td class="t-do">现场写出能 commit 的 PRD + design.md，互评 + 用命令跑通</td></tr>
-          <tr><td class="t-time">12:00–13:00<br/><small>60min</small></td><td><div class="t-title">🍱 午餐 + 自由敲</div></td><td class="t-do">助教在场答疑，可以继续改自己 PRD / CLAUDE.md</td></tr>
-          <tr><td class="t-time">13:00–14:00<br/><small>60min</small></td><td><div class="t-title">Part 2 · Agents 管理（Fleet View）</div></td><td class="t-do">一次跑 3 个 subagent，出真实 PR</td></tr>
-          <tr><td class="t-time">14:00–15:00<br/><small>60min</small></td><td><div class="t-title">Part 3 · 最佳实践（CLAUDE.md / Skills / Hooks / MCP）</div></td><td class="t-do">写团队级规范 + <code>/&lt;命令&gt;</code> + hook 并提交</td></tr>
-          <tr><td class="t-time">15:00–15:50<br/><small>50min</small></td><td><div class="t-title">Part 4 · ADLC 完整跑通</div></td><td class="t-do">在自己 repo 上做一次 Plan → Code → Review → Ship 全循环</td></tr>
+          <tr><td class="t-time">10:30–12:00<br/><small>90min</small></td><td><div class="t-title">Part 1 · 开发前准备 + 关键命令</div></td><td class="t-do">现场写出能 commit 的需求清单 + 架构设计，互评 + 用命令跑通</td></tr>
+          <tr><td class="t-time">12:00–13:00<br/><small>60min</small></td><td><div class="t-title">🍱 午餐 + 自由敲</div></td><td class="t-do">助教在场答疑，可以继续改自己的需求清单 / 项目规则书</td></tr>
+          <tr><td class="t-time">13:00–14:00<br/><small>60min</small></td><td><div class="t-title">Part 2 · 同时跑多个 AI 助手干活</div></td><td class="t-do">一次跑 3 个 AI 助手分工，出真实 PR</td></tr>
+          <tr><td class="t-time">14:00–15:00<br/><small>60min</small></td><td><div class="t-title">Part 3 · 让 AI 自动遵守你的规则</div></td><td class="t-do">写一份「项目规则书」+ 一个自定义命令 + 一个提交前自动检查，全部提交到 repo</td></tr>
+          <tr><td class="t-time">15:00–15:50<br/><small>50min</small></td><td><div class="t-title">Part 4 · 完整开发流程跑一遍</div></td><td class="t-do">在自己 repo 上做一次「我想做 X → PR 已提交」完整闭环</td></tr>
           <tr><td class="t-time">15:50–16:00<br/><small>10min</small></td><td><div class="t-title">收尾 + 1v1 答疑预约 + 加群</div></td><td class="t-do">留电话/微信继续答疑</td></tr>
         </tbody>
       </table>
@@ -237,7 +237,7 @@
       </details>
       <details>
         <summary>可以用 Cursor / Copilot 代替来跟课吗？</summary>
-        <div>不可以。Claude Code 的 plan mode / subagent / hooks 这些机制和 Cursor / Copilot 是不同的工作范式，工具替换不了。</div>
+        <div>不可以。Claude Code 能做的事（读整个 repo / 同时开多个 AI 助手分工 / 自动跑测试 / 给 repo 写规则 AI 自动遵守）和 Cursor / Copilot 是两种工具，替换不了。</div>
       </details>
       <details>
         <summary>会有录像吗？</summary>
@@ -257,14 +257,14 @@
       </details>
       <details>
         <summary>和市面上其他 "AI 编程课" 有什么区别？</summary>
-        <div>市面上 90% 的课在讲「怎么写 prompt 让 AI 给你写代码」。这场讲的是把 AI 当成<strong>多线程协作的工程师</strong>怎么编排 —— 这是工具范式的差异，不是技巧差异。</div>
+        <div>市面上 90% 的课在讲「怎么写 prompt 让 ChatGPT 给你写代码」。这场讲的是切到第三代工具（Claude Code）的工作方式——让 AI 读你整个 repo、自己改文件、跑测试、提 PR。这是<strong>工具的差异</strong>，不是技巧的差异。</div>
       </details>
     </div>
   </section>
 
   <!-- CTA -->
   <section id="cta" class="cta-block">
-    <h2>把 AI 从「补全工具」升级到「任务编排」</h2>
+    <h2>3 小时学会 Claude Code · 让 AI 真的帮你写代码</h2>
     <p class="sub">线上 3h 速通版 · 匠人课堂 Zoom · 早鸟报名中</p>
     <div class="price">A$99 <small>早鸟价</small> <span class="strike">A$199</span></div>
     <div style="margin-top:14px">

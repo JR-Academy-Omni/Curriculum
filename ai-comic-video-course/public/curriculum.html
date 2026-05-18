@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 漫剧从 0 到 1 视频课 · 15 节录播 · 课程大纲</title>
+  <meta name="description" content="AI 漫剧 15 节录播实战精讲课 — 张彦伟老师带你从挑小说到发抖音，逐节做完一条完整漫剧。重点演示即梦 Seedance 2.0 的 6 种视频生成路径 + Nano Banana 分镜出图三种工艺 + AI 配音剪辑全流程。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#1a0f0a 0%,#B91C1C 50%,#FF914D 100%);padding:64px 24px 56px;color:#fff;text-align:center;position:relative;overflow:hidden}
+    .header::before{content:"🌙";position:absolute;top:20px;right:48px;font-size:80px;opacity:0.18;filter:blur(1px)}
+    .header::after{content:"🏮";position:absolute;bottom:24px;left:48px;font-size:48px;opacity:0.35}
+    .header .ribbon{display:inline-block;background:#FFDE59;color:#1a0f0a;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:5px 14px;letter-spacing:1.2px;margin-bottom:16px;border:2px solid #1a0f0a;box-shadow:3px 3px 0 #1a0f0a}
+    .header h1{font-size:clamp(28px,5vw,46px);line-height:1.15;max-width:1000px;margin:0 auto;font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif}
+    .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:820px;margin:14px auto 0;opacity:0.92;line-height:1.7}
+    .header .stats{display:flex;gap:28px;justify-content:center;margin-top:24px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.5px}
+    .header .stats .s{padding:6px 14px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.3)}
+    .header .stats .s strong{color:#FFDE59;font-weight:700}
+    /* Highlights */
+    .hl-wrap{max-width:1200px;margin:48px auto 0;padding:0 24px}
+    .hl-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#1a0f0a;text-align:center;margin-bottom:8px}
+    .hl-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .hl-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:20px 20px 22px;transition:all 0.15s}
+    .hl-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .hl-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;margin-bottom:10px;color:#fff}
+    .hl-tag.r{background:#B91C1C}
+    .hl-tag.o{background:#FF914D}
+    .hl-tag.y{background:#FFDE59;color:#1a0f0a}
+    .hl-tag.g{background:#10b981}
+    .hl-tag.b{background:#38B6FF}
+    .hl-tag.p{background:#CB6CE6}
+    .hl-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:800;line-height:1.35;margin-bottom:8px;color:#1a0f0a}
+    .hl-card p{font-size:13px;line-height:1.65;color:#444}
+    @media(max-width:1024px){.hl-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.hl-grid{grid-template-columns:1fr;gap:14px}}
+    /* Decorative divider (chinese cloud) */
+    .divider{max-width:1200px;margin:48px auto 0;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:16px}
+    .divider .line{flex:1;height:2px;background:linear-gradient(90deg,transparent,#B91C1C 30%,#FF914D 70%,transparent)}
+    .divider .ornament{font-size:22px;color:#B91C1C;letter-spacing:6px}
+    .divider .seal{display:inline-block;width:44px;height:44px;background:#B91C1C;color:#FFDE59;border:3px solid #FFDE59;font-family:'Noto Sans SC',sans-serif;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;transform:rotate(-6deg);box-shadow:3px 3px 0 #1a0f0a;line-height:1.05;text-align:center}
+    /* Workflow pipeline */
+    .wf-wrap{max-width:1200px;margin:40px auto 0;padding:0 24px}
+    .wf-head{text-align:center;margin-bottom:22px}
+    .wf-head h3{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#1a0f0a;display:inline-flex;align-items:center;gap:10px}
+    .wf-head h3::before,.wf-head h3::after{content:"";display:inline-block;width:36px;height:3px;background:#B91C1C}
+    .wf-head p{color:#666;font-size:14px;margin-top:6px}
+    .wf-box{border:3px solid #1a0f0a;background:#fffbeb;box-shadow:6px 6px 0 #B91C1C;padding:28px 22px;position:relative;overflow:hidden}
+    .wf-box::before{content:"☁️";position:absolute;top:8px;left:14px;font-size:22px;opacity:0.25}
+    .wf-box::after{content:"☁️";position:absolute;bottom:8px;right:14px;font-size:22px;opacity:0.25;transform:scaleX(-1)}
+    .wf-pipeline{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;align-items:start;position:relative;z-index:2}
+    .wf-step{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative}
+    .wf-step:not(:last-child)::after{content:"→";position:absolute;top:34px;right:-9px;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:22px;color:#B91C1C;z-index:3;background:#fffbeb;padding:0 2px;line-height:1}
+    .wf-circle{width:68px;height:68px;background:#fff;border:3px solid #1a0f0a;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:4px 4px 0 #1a0f0a;transition:transform 0.15s}
+    .wf-step:hover .wf-circle{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #1a0f0a}
+    .wf-code{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#B91C1C;letter-spacing:1px}
+    .wf-label{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:12px;font-weight:800;color:#1a0f0a;text-align:center;line-height:1.25;max-width:100px}
+    @media(max-width:900px){.wf-pipeline{grid-template-columns:repeat(4,1fr);gap:18px 6px}.wf-step:nth-child(4n)::after{display:none}.wf-step:nth-child(4)::after{display:none}}
+    @media(max-width:560px){.wf-pipeline{grid-template-columns:repeat(2,1fr);gap:18px 8px}.wf-step::after{display:none !important}.wf-circle{width:54px;height:54px;font-size:24px}}
+    /* Storyboard preview */
+    .sb-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .sb-head{text-align:center;margin-bottom:22px}
+    .sb-head h3{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#1a0f0a}
+    .sb-head p{color:#666;font-size:14px;margin-top:6px}
+    .sb-head .demo-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;background:#1a0f0a;color:#FFDE59;padding:3px 10px;margin-top:8px;border:2px solid #1a0f0a}
+    .sb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .sb-frame{border:3px solid #1a0f0a;background:#1a0f0a;aspect-ratio:9/12;position:relative;overflow:hidden;box-shadow:5px 5px 0 #B91C1C;transition:all 0.15s;display:flex;flex-direction:column;justify-content:space-between;color:#fffbea}
+    .sb-frame:hover{box-shadow:none;transform:translate(3px,3px)}
+    .sb-frame .sb-bg{position:absolute;inset:0;z-index:1}
+    .sb-frame .sb-actor{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;z-index:2;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5))}
+    .sb-frame .sb-top{position:relative;z-index:3;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(0,0,0,0.55),transparent);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    .sb-frame .sb-scene{background:rgba(0,0,0,0.5);padding:2px 7px;border:1px solid rgba(255,251,234,0.4);color:#FFDE59}
+    .sb-frame .sb-style{background:rgba(255,222,89,0.85);color:#1a0f0a;padding:2px 7px}
+    .sb-frame .sb-bottom{position:relative;z-index:3;padding:10px 12px;background:linear-gradient(0deg,rgba(0,0,0,0.75),transparent);text-align:left}
+    .sb-frame .sb-title{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:14px;font-weight:900;line-height:1.2;margin-bottom:3px}
+    .sb-frame .sb-cap{font-size:10.5px;opacity:0.85;line-height:1.4}
+    .sb-bg.s1{background:radial-gradient(circle at 70% 30%,#fff8d6 0%,#FF914D 25%,#B91C1C 60%,#1a0f0a 100%)}
+    .sb-bg.s2{background:linear-gradient(180deg,#0a1428 0%,#1e3a5f 40%,#ec4899 80%,#FFDE59 100%)}
+    .sb-bg.s3{background:radial-gradient(ellipse at center,#a78bfa 0%,#6366f1 40%,#1e1b4b 90%)}
+    .sb-bg.s4{background:linear-gradient(135deg,#0a0a0f 0%,#1f2937 35%,#10b981 75%,#fef3c7 110%)}
+    .sb-bg.s5{background:linear-gradient(180deg,#fef3c7 0%,#fbbf24 30%,#f59e0b 60%,#9a3412 100%)}
+    .sb-bg.s6{background:radial-gradient(ellipse at 40% 60%,#fce7f3 0%,#f9a8d4 35%,#ec4899 70%,#831843 100%)}
+    @media(max-width:900px){.sb-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.sb-grid{grid-template-columns:1fr}}
+    /* Workshop relation */
+    .rel-wrap{max-width:1200px;margin:48px auto 0;padding:0 24px}
+    .rel-box{border:3px solid #1a0f0a;background:linear-gradient(135deg,#fffbeb 0%,#fff5f5 100%);padding:24px 28px;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;box-shadow:6px 6px 0 #FF914D}
+    .rel-icon{font-size:48px;line-height:1}
+    .rel-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;color:#1a0f0a;margin-bottom:6px}
+    .rel-body p{font-size:13px;line-height:1.7;color:#444}
+    .rel-body p strong{color:#B91C1C}
+    .rel-cta{padding:10px 18px;background:#1a0f0a;color:#FFDE59;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-decoration:none;border:2px solid #1a0f0a;letter-spacing:0.5px;white-space:nowrap;transition:all 0.15s}
+    .rel-cta:hover{background:#FFDE59;color:#1a0f0a}
+    @media(max-width:760px){.rel-box{grid-template-columns:1fr;text-align:center}.rel-icon{margin:0 auto}}
+    /* Tool Stack */
+    .ts-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .ts-head{border:3px solid #000;background:#1a0f0a;color:#fff;padding:18px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .ts-head .mono{font-family:'Space Mono',monospace;font-size:12px;opacity:0.7;font-weight:400}
+    .ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid #000;border-top:none;background:#fff}
+    .ts-col{padding:20px 22px 22px;border-right:3px solid #000;border-bottom:3px solid #000}
+    .ts-col:nth-child(3n){border-right:none}
+    .ts-col:nth-last-child(-n+3){border-bottom:none}
+    .ts-logo{font-size:32px;margin-bottom:8px}
+    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#1a0f0a;margin-bottom:4px}
+    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#B91C1C;font-weight:700;margin-bottom:10px}
+    .ts-col p{font-size:13px;line-height:1.7;color:#444}
+    .ts-col .used{margin-top:10px;font-family:'Space Mono',monospace;font-size:11px;color:#666}
+    .ts-col .used strong{color:#FF914D}
+    @media(max-width:900px){.ts-grid{grid-template-columns:1fr}.ts-col{border-right:none;border-bottom:3px solid #000}.ts-col:nth-child(3n){border-right:none}.ts-col:nth-last-child(-n+3){border-bottom:3px solid #000}.ts-col:last-child{border-bottom:none}}
+    /* Outcomes */
+    .oc-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .oc-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#1a0f0a;text-align:center;margin-bottom:8px}
+    .oc-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .oc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .oc-card{border:3px solid #000;background:#fffbeb;padding:20px 18px;box-shadow:5px 5px 0 #B91C1C;transition:all 0.15s}
+    .oc-card:hover{box-shadow:none;transform:translate(3px,3px)}
+    .oc-icon{font-size:32px;margin-bottom:10px}
+    .oc-card h5{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;color:#1a0f0a;margin-bottom:6px;line-height:1.3}
+    .oc-card p{font-size:12px;line-height:1.65;color:#555}
+    @media(max-width:960px){.oc-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.oc-grid{grid-template-columns:1fr}}
+    /* Audience */
+    .au-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .au-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#1a0f0a;text-align:center;margin-bottom:8px}
+    .au-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .au-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:18px 20px;transition:all 0.15s}
+    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .au-emoji{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
+    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#1a0f0a;margin-bottom:6px;line-height:1.35}
+    .au-body p{font-size:12px;line-height:1.6;color:#555}
+    .au-not{margin-top:22px;padding:18px 22px;background:#1a0f0a;color:#fff;font-size:13px;line-height:1.85;border:3px solid #000;box-shadow:6px 6px 0 #B91C1C}
+    .au-not strong{color:#FFDE59;display:block;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px}
+    .au-not ul{margin:0;padding-left:20px}
+    .au-not li{margin-bottom:3px}
+    @media(max-width:960px){.au-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.au-grid{grid-template-columns:1fr}}
+    /* Phase blocks (15-lesson layout) */
+    .ph-block{margin-bottom:28px;border:3px solid #1a0f0a;background:#fff;box-shadow:8px 8px 0 #1a0f0a;overflow:hidden}
+    .ph-bar{display:flex;align-items:center;gap:14px;padding:14px 22px;color:#fff;flex-wrap:wrap}
+    .ph-bar .ph-icon{font-size:28px;line-height:1}
+    .ph-bar .ph-title{flex:1;font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:20px;font-weight:900;letter-spacing:0.3px}
+    .ph-bar .ph-meta{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;background:rgba(0,0,0,0.3);padding:4px 10px;border:1px solid rgba(255,255,255,0.3)}
+    .ph-summary{padding:12px 22px;background:#fffbeb;border-bottom:2px solid #f3e8c4;font-size:13px;line-height:1.7;color:#3a2810;font-style:italic}
+    .ph-lessons{padding:0}
+    .lr{border-bottom:2px dashed #e5e7eb;transition:background 0.15s}
+    .lr:last-child{border-bottom:none}
+    .lr:hover{background:#fffbeb}
+    .lr summary{display:flex;align-items:center;gap:14px;padding:14px 22px;cursor:pointer;list-style:none;flex-wrap:wrap}
+    .lr summary::-webkit-details-marker{display:none}
+    .lr .lr-code{flex-shrink:0;width:46px;height:34px;display:flex;align-items:center;justify-content:center;background:#1a0f0a;color:#FFDE59;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;border:2px solid #1a0f0a;letter-spacing:0.5px}
+    .lr .lr-body{flex:1;min-width:0}
+    .lr .lr-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+    .lr .lr-title{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:15px;font-weight:800;color:#1a0f0a;line-height:1.3}
+    .lr .lr-trial{display:inline-block;padding:2px 8px;background:#10b981;color:#fff;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+    .lr .lr-sum{font-size:12.5px;line-height:1.55;color:#555}
+    .lr .lr-meta{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+    .lr .lr-dur{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#B91C1C;background:#fff5f5;padding:4px 10px;border:2px solid #B91C1C}
+    .lr .lr-type{font-family:'Space Mono',monospace;font-size:10px;color:#999;letter-spacing:0.5px}
+    .lr summary::after{content:"+";font-size:20px;font-weight:900;color:#B91C1C;flex-shrink:0;margin-left:6px;transition:transform 0.2s}
+    .lr[open] summary::after{content:"−";color:#FF914D}
+    .lr[open] summary{background:#fff5f5}
+    .lr-detail{padding:0 22px 16px 82px;font-size:13px;line-height:1.8;color:#444;background:#fffbeb;border-top:1px solid #f3e8c4}
+    .lr-detail ul{margin:8px 0 0 0;padding-left:18px}
+    .lr-detail li{margin-bottom:3px}
+    .lr-detail li strong{color:#1a0f0a}
+    @media(max-width:680px){.lr summary{gap:10px;padding:12px 16px}.lr .lr-code{width:40px;height:30px;font-size:11px}.lr .lr-meta{align-items:flex-start;flex-direction:row;width:100%;padding-left:54px}.lr-detail{padding:0 16px 14px 16px}}
+    /* Timeline / lessons */
+    .tl-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .tl-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#1a0f0a;text-align:center;margin-bottom:8px}
+    .tl-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .tl-wrap .lesson{margin-bottom:22px;border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #000;transition:all 0.15s}
+    .tl-wrap .lesson:hover{box-shadow:4px 4px 0 #000;transform:translate(4px,4px)}
+    .tl-wrap .lesson-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;color:#fff;flex-wrap:wrap;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900}
+    .tl-wrap .lesson-h .code{font-family:'Space Mono',monospace;font-size:12px;background:rgba(0,0,0,0.3);padding:3px 10px;letter-spacing:1px;font-weight:700}
+    .tl-wrap .lesson-h .min{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.85}
+    .tl-wrap .summary{padding:14px 22px;background:#fffbeb;border-bottom:2px solid #f3e8c4;font-size:14px;line-height:1.7;color:#3a2810;font-style:italic}
+    .tl-wrap .lesson-body{display:grid;grid-template-columns:2fr 1fr;gap:0}
+    .tl-wrap .lesson-body .col{padding:18px 22px}
+    .tl-wrap .lesson-body .col-r{background:#fafafa;border-left:2px solid #eee}
+    .tl-wrap .lesson-body h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:10px}
+    .tl-wrap .lesson-body ul{font-size:13px;line-height:1.85;color:#444;padding-left:18px;margin:0}
+    .tl-wrap .lesson-body li{margin-bottom:4px}
+    .tl-wrap .lesson-body li strong{color:#1a0f0a}
+    .tl-wrap .lesson-body .col-r ul{padding-left:16px;font-size:12.5px}
+    @media(max-width:760px){.tl-wrap .lesson-body{grid-template-columns:1fr}.tl-wrap .lesson-body .col-r{border-left:none;border-top:2px solid #eee}}
+    /* Instructor */
+    .in-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .in-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#1a0f0a;text-align:center;margin-bottom:8px}
+    .in-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .in-card{border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #B91C1C;display:grid;grid-template-columns:280px 1fr;gap:0}
+    .in-left{background:linear-gradient(135deg,#1a0f0a 0%,#B91C1C 100%);color:#fff;padding:32px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;border-right:3px solid #000}
+    .in-avatar{width:110px;height:110px;border:3px solid #FFDE59;background:#fff;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:5px 5px 0 rgba(0,0,0,0.35)}
+    .in-name{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;letter-spacing:0.5px;margin-top:6px}
+    .in-role{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.85}
+    .in-right{padding:28px 30px}
+    .in-tagline{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;color:#1a0f0a;line-height:1.4;margin-bottom:14px}
+    .in-right p{font-size:14px;line-height:1.75;color:#333;margin-bottom:10px}
+    .in-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .in-chips .pc{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:#f3f4f6;border:2px solid #000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+    .in-chips .pc.r{background:#fee2e2;color:#991b1b}
+    .in-chips .pc.o{background:#fff7ed;color:#9a3412}
+    .in-chips .pc.y{background:#fef9c3;color:#854d0e}
+    @media(max-width:820px){.in-card{grid-template-columns:1fr}.in-left{border-right:none;border-bottom:3px solid #000;padding:28px 20px}}
+    /* CTA */
+    .cta-wrap{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .cta-box{border:3px solid #000;background:linear-gradient(135deg,#1a0f0a 0%,#B91C1C 60%,#FF914D 100%);color:#fff;padding:40px 32px;text-align:center;box-shadow:10px 10px 0 #FFDE59;position:relative;overflow:hidden}
+    .cta-box::before{content:"🏮";position:absolute;top:24px;left:32px;font-size:48px;opacity:0.4}
+    .cta-box::after{content:"🌙";position:absolute;bottom:24px;right:36px;font-size:54px;opacity:0.3}
+    .cta-box h3{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(22px,3.4vw,32px);font-weight:900;margin-bottom:10px;line-height:1.3}
+    .cta-box p{font-size:14px;line-height:1.7;opacity:0.92;max-width:680px;margin:0 auto 22px}
+    .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
+    .cta-btn{padding:14px 28px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;text-decoration:none;border:3px solid #1a0f0a;transition:all 0.15s;letter-spacing:0.5px}
+    .cta-btn.primary{background:#FFDE59;color:#1a0f0a;box-shadow:5px 5px 0 #1a0f0a}
+    .cta-btn.primary:hover{box-shadow:none;transform:translate(3px,3px)}
+    .cta-btn.secondary{background:#fff;color:#1a0f0a;box-shadow:5px 5px 0 #1a0f0a}
+    .cta-btn.secondary:hover{box-shadow:none;transform:translate(3px,3px)}
+    /* FAQ */
+    .fq-wrap{max-width:1000px;margin:56px auto 0;padding:0 24px}
+    .fq-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#1a0f0a;text-align:center;margin-bottom:8px}
+    .fq-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .fq-list{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000}
+    .fq-item{border-bottom:2px solid #000}
+    .fq-item:last-child{border-bottom:none}
+    .fq-item summary{padding:16px 22px;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#1a0f0a;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;background:#fff;transition:background 0.15s}
+    .fq-item summary::-webkit-details-marker{display:none}
+    .fq-item summary::after{content:"+";font-size:22px;font-weight:900;color:#B91C1C;flex-shrink:0;transition:transform 0.2s}
+    .fq-item[open] summary{background:#fffbeb;border-bottom:2px solid #000}
+    .fq-item[open] summary::after{content:"−";color:#FF914D}
+    .fq-item summary:hover{background:#fafafa}
+    .fq-ans{padding:16px 22px 20px;font-size:14px;line-height:1.8;color:#333;background:#fffbeb}
+    .fq-ans strong{color:#1a0f0a}
+    .fq-ans a{color:#B91C1C;font-weight:700}
+    /* Site Footer */
+    .site-footer{margin-top:72px;background:#1a0f0a;color:#fff;padding:48px 24px 24px 24px;border-top:4px solid #000}
+    .sf-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;padding-bottom:32px;border-bottom:2px solid rgba(255,255,255,0.15)}
+    .sf-brand h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;margin-bottom:8px;color:#FFDE59}
+    .sf-brand p{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.75);margin-bottom:12px}
+    .sf-brand .sf-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .sf-brand .sf-badges span{padding:4px 10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.5px}
+    .sf-col h4{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#FF914D;margin-bottom:14px}
+    .sf-col ul{list-style:none;padding:0}
+    .sf-col li{font-size:13px;line-height:1.9;color:rgba(255,255,255,0.7)}
+    .sf-col li strong{color:#fff;font-weight:600}
+    .sf-col a{color:rgba(255,255,255,0.7);text-decoration:none;transition:color 0.15s}
+    .sf-col a:hover{color:#FFDE59}
+    .sf-bottom{max-width:1200px;margin:0 auto;padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .sf-copy{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px}
+    .sf-legal{display:flex;gap:18px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px}
+    .sf-legal a{color:rgba(255,255,255,0.6)}
+    @media(max-width:900px){.sf-inner{grid-template-columns:1fr 1fr;gap:28px}.sf-brand{grid-column:1 / -1}}
+    @media(max-width:560px){.sf-inner{grid-template-columns:1fr}.sf-bottom{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="header">
+  <span class="ribbon">🎬 15 节录播 · 7h46m · 永久可看 · JR Academy 独家</span>
+  <h1>AI 漫剧从 0 到 1 · 15 节录播实战精讲课</h1>
+  <div class="sub">张彦伟老师带你从挑小说开始 · 一节一节做完一条完整漫剧 — <strong>14 节实操 + 1 节预告</strong>。重点演示即梦 Seedance 2.0 的 <strong>6 种</strong>视频生成路径 + Nano Banana <strong>3 种</strong>分镜出图工艺 + AI 配音剪辑全流程。</div>
+  <div class="stats">
+    <div class="s"><strong>15</strong> 节视频</div>
+    <div class="s"><strong>7h46m</strong> 总时长</div>
+    <div class="s"><strong>6</strong> 种视频生成法</div>
+    <div class="s"><strong>永久</strong> 可看</div>
+  </div>
+</div>
+
+<!-- Workshop relation -->
+<div class="rel-wrap">
+  <div class="rel-box">
+    <div class="rel-icon">🆚</div>
+    <div class="rel-body">
+      <h4>这套和 2 小时直播工作坊有什么区别？</h4>
+      <p>
+        <strong>2h 直播工作坊（ai-comic-workshop）</strong> = 全景版 · 讲清楚工具横评 / 应用场景 / 决策框架，看完知道要不要入坑。<br>
+        <strong>这套 15 节录播</strong> = 实战精讲版 · 从挑小说到发抖音，跟着做完手里有作品。<br>
+        建议：时间够先看 2h 直播定方向，再用这 15 节做出第一条片。
+      </p>
+    </div>
+    <a class="rel-cta" href="../ai-comic-workshop/curriculum.html">🎤 看 2h 直播 →</a>
+  </div>
+</div>
+
+<!-- Divider -->
+<div class="divider">
+  <div class="line"></div>
+  <div class="seal">漫剧<br>工艺</div>
+  <div class="line"></div>
+</div>
+
+<!-- Workflow Pipeline -->
+<div class="wf-wrap">
+  <div class="wf-head">
+    <h3>🎬 5 大阶段 · 15 节视频</h3>
+    <p>按工艺顺序分 5 阶段 · 每阶段几节视频深度拆 · 总时长 7h46m</p>
+  </div>
+  <div class="wf-box">
+    <div class="wf-pipeline" style="grid-template-columns:repeat(5,1fr)">
+      <div class="wf-step">
+        <div class="wf-circle" style="background:#fff5f5;border-color:#B91C1C">📖</div>
+        <div class="wf-code">L01 · 1 节</div>
+        <div class="wf-label">文字工序<br><span style="opacity:0.6;font-weight:400">小说→剧本→分镜</span></div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-circle" style="background:#ecfdf5;border-color:#10b981">🎨</div>
+        <div class="wf-code">L02-03 · 2 节</div>
+        <div class="wf-label">视觉资产<br><span style="opacity:0.6;font-weight:400">角色 + 场景</span></div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-circle" style="background:#fefce8;border-color:#FFDE59">🍌</div>
+        <div class="wf-code">L04-05, L07 · 3 节</div>
+        <div class="wf-label">分镜图<br><span style="opacity:0.6;font-weight:400">三种 Nano Banana 出法</span></div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-circle" style="background:#eff6ff;border-color:#38B6FF">🎞</div>
+        <div class="wf-code">L06, L08-12 · 6 节</div>
+        <div class="wf-label">视频生成<br><span style="opacity:0.6;font-weight:400">Seedance 2.0 六种用法</span></div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-circle" style="background:#faf5ff;border-color:#CB6CE6">✂️</div>
+        <div class="wf-code">L13-14 · 2 节</div>
+        <div class="wf-label">后期成片<br><span style="opacity:0.6;font-weight:400">配音 + 剪辑</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Highlights -->
+<div class="hl-wrap">
+  <div class="hl-title">✨ 这 15 节录播你会拿到什么</div>
+  <div class="hl-sub">不是看 AI 演示视频合集 — 是跟着一线从业者把一条漫剧从 0 做到 1，每一步抠到 Prompt 级别</div>
+  <div class="hl-grid">
+    <div class="hl-card">
+      <span class="hl-tag r">📖 完整工艺</span>
+      <h4>从挑小说到发抖音 5 个阶段</h4>
+      <p>文字工序 → 视觉资产 → 分镜图 → 视频生成 → 后期成片 — 14 节实操 + 1 节预告，前后串得起来。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag b">🎞 Seedance 2.0 六种用法</span>
+      <h4>同一个工具讲 6 节</h4>
+      <p>基础图生视频 · 九宫格喂法 · 全能参考 · 豆包小云雀辅助 · 全能参考 v2 · 配音一体 — 每种适合不同题材，你能根据手上故事选最稳的那条。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag y">🍌 Nano Banana 三种出法</span>
+      <h4>分镜图工艺深度拆</h4>
+      <p>L04 单镜入门 · L05 批量 12 镜（56 分钟超长干货）· L07 九宫格分镜 — 三套出图工艺都会，一致性差异讲透。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag g">🎨 角色场景独立成节</span>
+      <h4>L02 / L03 各一节</h4>
+      <p>角色一致性是 AI 漫剧最大门槛，专门 51 分钟讲透 — 锁外形、5 视角、种子值 / 参考图 / 描述词冻结三种解法。场景库另起一节。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag p">🎙 三层声音 + 完整后期</span>
+      <h4>配音 / 音效 / 剪辑独立两节</h4>
+      <p>L13 三层声音设计（人声 + BGM + 音效）· L14 剪映拼成片 + 抖音 / 小红书 / 视频号 三平台导出 — 不止讲生成、把发布前最后一公里也带完。</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-tag o">📦 配套模板包</span>
+      <h4>抄回家就能跑</h4>
+      <p>拆剧本 Prompt / 角色一致性词组 / 九宫格 Prompt 公式 / Seedance 运镜速查表 / 字幕封面模板 / 学员问答存档 — 一站式带走。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Divider -->
+<div class="divider">
+  <div class="line"></div>
+  <div class="ornament">⸻ 🏮 ⸻</div>
+  <div class="line"></div>
+</div>
+
+<!-- Storyboard Preview -->
+<div class="sb-wrap">
+  <div class="sb-head">
+    <h3>📺 这套课能做出什么样的片</h3>
+    <p>同一套工艺 · 不同题材都能跑 · 下面是张老师演示用的 6 类样片风格</p>
+    <span class="demo-tag">⚠️ MOCKUP · 实际样片在录播 L05-L08 演示</span>
+  </div>
+  <div class="sb-grid">
+    <div class="sb-frame">
+      <div class="sb-bg s1"></div>
+      <div class="sb-actor">👘</div>
+      <div class="sb-top">
+        <span class="sb-scene">SCENE 01</span>
+        <span class="sb-style">古风</span>
+      </div>
+      <div class="sb-bottom">
+        <div class="sb-title">古风甜宠 · 月下相逢</div>
+        <div class="sb-cap">少女将军遇见游侠 · 灯下定情</div>
+      </div>
+    </div>
+    <div class="sb-frame">
+      <div class="sb-bg s2"></div>
+      <div class="sb-actor">🌃</div>
+      <div class="sb-top">
+        <span class="sb-scene">SCENE 02</span>
+        <span class="sb-style">都市</span>
+      </div>
+      <div class="sb-bottom">
+        <div class="sb-title">都市霸总 · 雨夜电梯</div>
+        <div class="sb-cap">CEO 与新人 · 一场误会的开始</div>
+      </div>
+    </div>
+    <div class="sb-frame">
+      <div class="sb-bg s3"></div>
+      <div class="sb-actor">⚔️</div>
+      <div class="sb-top">
+        <span class="sb-scene">SCENE 03</span>
+        <span class="sb-style">玄幻</span>
+      </div>
+      <div class="sb-bottom">
+        <div class="sb-title">玄幻仙侠 · 渡劫</div>
+        <div class="sb-cap">少年剑修对抗心魔 · 雷光劈空</div>
+      </div>
+    </div>
+    <div class="sb-frame">
+      <div class="sb-bg s4"></div>
+      <div class="sb-actor">🕵️</div>
+      <div class="sb-top">
+        <span class="sb-scene">SCENE 04</span>
+        <span class="sb-style">悬疑</span>
+      </div>
+      <div class="sb-bottom">
+        <div class="sb-title">悬疑反转 · 三分钟逆转</div>
+        <div class="sb-cap">案发现场倒叙 · 凶手另有其人</div>
+      </div>
+    </div>
+    <div class="sb-frame">
+      <div class="sb-bg s5"></div>
+      <div class="sb-actor">🎓</div>
+      <div class="sb-top">
+        <span class="sb-scene">SCENE 05</span>
+        <span class="sb-style">校园</span>
+      </div>
+      <div class="sb-bottom">
+        <div class="sb-title">校园青春 · 夕阳操场</div>
+        <div class="sb-cap">毕业前最后一节体育课</div>
+      </div>
+    </div>
+    <div class="sb-frame">
+      <div class="sb-bg s6"></div>
+      <div class="sb-actor">🌸</div>
+      <div class="sb-top">
+        <span class="sb-scene">SCENE 06</span>
+        <span class="sb-style">甜宠</span>
+      </div>
+      <div class="sb-bottom">
+        <div class="sb-title">现代甜宠 · 樱花树下</div>
+        <div class="sb-cap">青梅竹马回归 · 三秒识破伪装</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Divider -->
+<div class="divider">
+  <div class="line"></div>
+  <div class="ornament">⸻ 🌙 ⸻</div>
+  <div class="line"></div>
+</div>
+
+<!-- Tool Stack -->
+<div class="ts-wrap">
+  <div class="ts-head">
+    <span>🛠 主用工具栈 · 6 条线</span>
+    <span class="mono">每节锁定 1-2 个工具 · 不让你来回切</span>
+  </div>
+  <div class="ts-grid">
+    <div class="ts-col">
+      <div class="ts-logo">💬</div>
+      <div class="ts-name">AI 聊天工具</div>
+      <div class="ts-role">Text · 小说→剧本→分镜</div>
+      <p>ChatGPT / 豆包 / Kimi / Claude 都可以，L01 用它一节课跑通小说→剧本→分镜表三步。中文长文本任务豆包 / Kimi 通常更稳。</p>
+      <div class="used">用于：<strong>L01</strong></div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🍌</div>
+      <div class="ts-name">Nano Banana</div>
+      <div class="ts-role">Image · 角色 / 场景 / 分镜</div>
+      <p>Gemini 2.5 Flash Image — 目前角色一致性最能打的图像 AI。课程用三种方式：单镜（L04）/ 批量 12 镜（L05）/ 九宫格（L07）。</p>
+      <div class="used">用于：<strong>L02 · L03 · L04 · L05 · L07</strong></div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🎞</div>
+      <div class="ts-name">即梦 Seedance 2.0</div>
+      <div class="ts-role">Video · 6 种用法</div>
+      <p>这套课的核心 — Seedance 2.0 的 6 种视频生成法各一节：基础（L06）/ 九宫格喂法（L08）/ 全能参考（L09）/ 豆包辅助（L10）/ 全能参考 v2（L11）/ 配音一体（L12）。</p>
+      <div class="used">用于：<strong>L06 · L08 · L09 · L10 · L11 · L12</strong></div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🫛</div>
+      <div class="ts-name">豆包 · 小云雀</div>
+      <div class="ts-role">Image · 九宫格辅助</div>
+      <p>不会用 Nano Banana 出九宫格的同学的替代方案 — L10 专门讲豆包小云雀生成九宫格 + 喂 Seedance 2.0 跑视频的完整链路。</p>
+      <div class="used">用于：<strong>L10</strong></div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">🎙</div>
+      <div class="ts-name">AI 配音 + 音乐</div>
+      <div class="ts-role">Audio · 三层声音</div>
+      <p>ElevenLabs（情绪强）/ 海螺 AI（中文稳）/ 豆包配音 / Suno（出 BGM）— 配音 + BGM + 音效三层一次跑完。L12 还讲 Seedance 内置配音的一体化做法。</p>
+      <div class="used">用于：<strong>L12 · L13</strong></div>
+    </div>
+    <div class="ts-col">
+      <div class="ts-logo">✂️</div>
+      <div class="ts-name">剪映 / CapCut</div>
+      <div class="ts-role">Editing · 剪辑导出</div>
+      <p>剪映漫剧专用模板 + 字幕预设 + 三平台导出参数（抖音 1080×1920 / 小红书 1080×1350 / 视频号 1080×1920）。</p>
+      <div class="used">用于：<strong>L14</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- What you'll take away -->
+<div class="oc-wrap">
+  <div class="oc-title">🎁 学完你会带走什么</div>
+  <div class="oc-sub">不是听完就完事 · 这 4 件东西是这套课的承诺</div>
+  <div class="oc-grid">
+    <div class="oc-card">
+      <div class="oc-icon">🎬</div>
+      <h5>一条完整漫剧成片</h5>
+      <p>从挑小说到发抖音，跟着 14 节实操走完一遍 — 手里有一条 1 分钟、自己做的、可以直接发布的漫剧。</p>
+    </div>
+    <div class="oc-card">
+      <div class="oc-icon">📦</div>
+      <h5>全套 Prompt + 模板包</h5>
+      <p>拆剧本 Prompt / 角色一致性词组 / 九宫格 Prompt / 全能参考配比 / Seedance 运镜速查表 / 字幕封面模板 — 一站式带走。</p>
+    </div>
+    <div class="oc-card">
+      <div class="oc-icon">🍌</div>
+      <h5>三种分镜图工艺</h5>
+      <p>Nano Banana 单镜 / 批量 12 镜 / 九宫格 — L04、L05、L07 三节课讲三种出图方法，不同题材选最稳的那条。</p>
+    </div>
+    <div class="oc-card">
+      <div class="oc-icon">🎞</div>
+      <h5>六种 Seedance 2.0 用法</h5>
+      <p>基础 / 九宫格喂 / 全能参考 / 豆包辅助 / 全能参考 v2 / 配音一体 — L06、L08-L12 六节专门讲 Seedance 2.0 的六条路径。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Audience -->
+<div class="au-wrap">
+  <div class="au-title">👥 这套课适合谁</div>
+  <div class="au-sub">看完 2h 工作坊还想再深一步 · 或者直接想做出第一条片的同学</div>
+  <div class="au-grid">
+    <div class="au-card">
+      <div class="au-emoji">📱</div>
+      <div class="au-body">
+        <h4>想起号的短视频创作者</h4>
+        <p>看到别人 AI 漫剧 100w 播放心痒 — 跟着这 15 节自己做一遍，知道能不能做、值不值得做。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">✍️</div>
+      <div class="au-body">
+        <h4>有故事但不会做视频的作者</h4>
+        <p>网文作者 / 编剧 / 业余写手 — 手里有几本小说想拍但成本扛不住，AI 漫剧把这条路打通。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🎨</div>
+      <div class="au-body">
+        <h4>传统视频 / 动画从业者</h4>
+        <p>剪辑师 / 动画师 / 插画师想转 AI 流 — 这 15 节就是你的迁移路线图。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🏢</div>
+      <div class="au-body">
+        <h4>MCN / 内容工作室</h4>
+        <p>想试 AI 漫剧赛道但不知道工艺细节 — 学完直接拍板要不要投人投资源。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🎓</div>
+      <div class="au-body">
+        <h4>应届生 / 转行人士</h4>
+        <p>简历上写「做过 AI 漫剧 + 有作品」比写「会 PS」值钱十倍 — 15 节带你做出 portfolio。</p>
+      </div>
+    </div>
+    <div class="au-card">
+      <div class="au-emoji">🧑‍💻</div>
+      <div class="au-body">
+        <h4>想做 AI 副业的上班族</h4>
+        <p>晚上 + 周末做漫剧账号 — 学完知道一条片要多久、多少钱、能不能跑出来。</p>
+      </div>
+    </div>
+  </div>
+  <div class="au-not">
+    <strong>⛔ 不适合来：</strong>
+    <ul>
+      <li>想学传统 AE / PR / C4D 视频制作 — 这是 AI 工具流，不讲传统软件</li>
+      <li>想训练自己的 AI 模型 — 这是应用层，不碰模型训练</li>
+      <li>纯围观 AI 进展 — 15 节信息密度高，要动手才划算</li>
+      <li>完全不打算做内容 — 工具学完不用就是浪费</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Divider -->
+<div class="divider">
+  <div class="line"></div>
+  <div class="seal" style="background:#1a0f0a;color:#FFDE59;border-color:#B91C1C">逐节<br>详解</div>
+  <div class="line"></div>
+</div>
+
+<!-- Lessons -->
+<div class="tl-wrap">
+  <div class="tl-title">📚 5 个阶段 · 15 节视频 · 逐节拆</div>
+  <div class="tl-sub">按真实 Bilibili 章节 1:1 映射 · 含每节真实时长 · 总时长 7h46m</div>
+
+  <!-- Phase 0 · 课程预告 -->
+  <div class="ph-block">
+    <div class="ph-bar" style="background:#FFDE59;color:#1a0f0a">
+      <span class="ph-icon">🎬</span>
+      <span class="ph-title">Phase 0 · 课程预告</span>
+      <span class="ph-meta">1 节 · 45 秒</span>
+    </div>
+    <div class="ph-lessons">
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L00</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">【即梦 Seedance 2.0】AI 漫剧从剧本到成片</span>
+            </div>
+            <div class="lr-sum">课程开篇 · 一条完整 AI 漫剧成片演示 · 让你看到最终能做出什么样的东西</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 0:45</span>
+            <span class="lr-type">trailer</span>
+          </div>
+        </summary>
+      </details>
+    </div>
+  </div>
+
+  <!-- Phase 1 · 文字工序 · 小说 → 剧本 → 分镜 -->
+  <div class="ph-block">
+    <div class="ph-bar" style="background:#B91C1C;color:#fff">
+      <span class="ph-icon">📖</span>
+      <span class="ph-title">Phase 1 · 文字工序 · 小说 → 剧本 → 分镜</span>
+      <span class="ph-meta">1 节 · 46 分</span>
+    </div>
+    <div class="ph-summary">AI 漫剧的写作前期 — 一节讲完小说怎么拆成剧本、剧本怎么拆成分镜</div>
+    <div class="ph-lessons">
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L01</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">小说-剧本-分镜</span>
+              <span class="lr-trial">⭐ 部分试看</span>
+            </div>
+            <div class="lr-sum">AI 漫剧的第一道工序 — 把几万字小说压缩成 1 分钟漫剧的剧本和分镜表 · 含完整 Prompt 演示</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 46:37</span>
+            <span class="lr-type">lecture · with · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>小说选择的判断维度（题材 / 钩子 / 节奏 / 画面感）</li>
+            <li>AI 拆剧本 Prompt 公式：人物 / 场景 / 冲突 / 反转</li>
+            <li>1 分钟漫剧标准结构：钩子 5s → 矛盾 30s → 反转 15s → 收尾 10s</li>
+            <li>剧本→分镜剧本的转换：景别 / 机位 / 时长 / 转场</li>
+            <li>完整演示：一段小说现场拆出 12 镜分镜表</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Phase 2 · 视觉资产 · 角色 + 场景 -->
+  <div class="ph-block">
+    <div class="ph-bar" style="background:#10b981;color:#fff">
+      <span class="ph-icon">🎨</span>
+      <span class="ph-title">Phase 2 · 视觉资产 · 角色 + 场景</span>
+      <span class="ph-meta">2 节 · 71 分</span>
+    </div>
+    <div class="ph-summary">锁定主角和场景库 · 后面所有分镜图都从这里复用 · 一致性的根</div>
+    <div class="ph-lessons">
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L02</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">角色设计</span>
+            </div>
+            <div class="lr-sum">用 Nano Banana 出主角 · 多角度保持同一个人 · 一致性的三种解法</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 51:42</span>
+            <span class="lr-type">design · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>主角外貌词组 + 服装 + 标志特征锁定法</li>
+            <li>多张图保持同一个人的 3 种解法：种子值 / 参考图 / 描述词冻结</li>
+            <li>正脸 / 侧脸 / 背面 / 半身 / 全身 — 5 视角资产集</li>
+            <li>实战演示：从「古风 18 岁少女」到完整角色资产库</li>
+          </ul>
+        </div>
+      </details>
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L03</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">场景设计</span>
+            </div>
+            <div class="lr-sum">批量出场景 · 风格统一 · 室内外日夜各种条件一次跑齐</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 19:42</span>
+            <span class="lr-type">design · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>场景库怎么搭：室内 / 室外 / 日 / 夜 / 雨 — 6-8 张备用</li>
+            <li>风格统一：把『画风 Prompt』抽成模板，每张图都带</li>
+            <li>古风 / 都市 / 玄幻 / 校园 — 4 套风格 Prompt</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Phase 3 · 分镜图 · 三种出法 -->
+  <div class="ph-block">
+    <div class="ph-bar" style="background:#FFDE59;color:#1a0f0a">
+      <span class="ph-icon">🍌</span>
+      <span class="ph-title">Phase 3 · 分镜图 · 三种出法</span>
+      <span class="ph-meta">3 节 · 122 分</span>
+    </div>
+    <div class="ph-summary">Nano Banana 是这套课的图像主力 · 三节课讲三种出分镜图的工艺 · 含九宫格法</div>
+    <div class="ph-lessons">
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L04</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">生成分镜图</span>
+            </div>
+            <div class="lr-sum">Nano Banana 入门法 · 用 L01 分镜表 + L02 角色 + L03 场景，一镜一镜出图</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 17:31</span>
+            <span class="lr-type">image · gen · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>Nano Banana 平台入口（Google AI Studio / Tapnow / API）</li>
+            <li>分镜图 Prompt 公式：角色 + 场景 + 动作 + 景别 + 情绪 + 风格</li>
+            <li>怎么把 L02 锁定的角色喂进去保持长相一致</li>
+          </ul>
+        </div>
+      </details>
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L05</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">生成分镜图 2</span>
+            </div>
+            <div class="lr-sum">进阶批量法 · 12 镜一次跑完 · 失败镜返工策略 · 本节最长（56 分钟）</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 56:01</span>
+            <span class="lr-type">image · gen · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>12 镜批量出图工作流：串行 vs 并行 vs 半人工挑选</li>
+            <li>失败镜的 3 种返工策略（局部改 / 重出 / 替换）</li>
+            <li>手指 / 眼神 / 服装错乱的针对性解法</li>
+          </ul>
+        </div>
+      </details>
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L07</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">生成九宫格分镜图</span>
+            </div>
+            <div class="lr-sum">九宫格分镜法 · 一张图 9 个镜头 · 同角色多动作一次出 · Seedance 2.0 喂这种最稳</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 48:49</span>
+            <span class="lr-type">image · gen · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>什么是九宫格分镜（3×3 同角色多动作）</li>
+            <li>九宫格 Prompt 怎么写 · 一张图同时锁人物 + 9 个动作</li>
+            <li>为什么 Seedance 2.0 视频生成喂九宫格效果最稳</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Phase 4 · 视频生成 · Seedance 2.0 六种用法 -->
+  <div class="ph-block">
+    <div class="ph-bar" style="background:#38B6FF;color:#fff">
+      <span class="ph-icon">🎞</span>
+      <span class="ph-title">Phase 4 · 视频生成 · Seedance 2.0 六种用法</span>
+      <span class="ph-meta">6 节 · 166 分</span>
+    </div>
+    <div class="ph-summary">这套课的重头戏 · 即梦 Seedance 2.0 的 6 种视频生成路径 · 6 节课讲清每种用法的差异和适用场景</div>
+    <div class="ph-lessons">
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L06</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">运用 Seedance 2.0 生成分镜视频</span>
+            </div>
+            <div class="lr-sum">Seedance 2.0 基础用法 · 用 L04/L05 单镜分镜图喂视频生成</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 17:30</span>
+            <span class="lr-type">video · gen · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>Seedance 2.0 平台入口 + 界面</li>
+            <li>图生视频 vs 文生视频：漫剧为什么必须图生视频</li>
+            <li>基础运镜 Prompt：推 / 拉 / 摇 / 移 / 跟</li>
+          </ul>
+        </div>
+      </details>
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L08</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">采用 Seedance 2.0 九宫格分镜图生成视频</span>
+            </div>
+            <div class="lr-sum">九宫格喂法 · L07 出的九宫格分镜图喂 Seedance 2.0 · 一致性最强的工艺路径</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 15:53</span>
+            <span class="lr-type">video · gen · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>怎么把九宫格图喂给 Seedance 2.0</li>
+            <li>九宫格法 vs 单镜法的一致性对比</li>
+            <li>什么戏适合九宫格 · 什么戏不适合</li>
+          </ul>
+        </div>
+      </details>
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L09</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">采用即梦 Seedance 2.0 全能参考生成视频</span>
+            </div>
+            <div class="lr-sum">全能参考模式 · Seedance 2.0 的高级玩法 · 喂角色 + 场景 + 动作多张参考图 · 一致性进一步加强</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 46:56</span>
+            <span class="lr-type">video · gen · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>什么是『全能参考』模式 · 跟普通图生视频的区别</li>
+            <li>多参考图喂法：角色 + 场景 + 动作分别参考</li>
+            <li>参数调优：参考强度、运镜幅度、时长</li>
+          </ul>
+        </div>
+      </details>
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L10</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">豆包 · 小云雀 + Seedance 2.0 九宫格生成</span>
+            </div>
+            <div class="lr-sum">豆包小云雀辅助九宫格生成 · 不会出九宫格图的同学的替代方案</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 24:04</span>
+            <span class="lr-type">video · gen · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>豆包小云雀生成九宫格的能力对比 Nano Banana</li>
+            <li>什么时候用豆包小云雀更划算</li>
+            <li>完整链路：豆包出九宫格 → Seedance 2.0 跑视频</li>
+          </ul>
+        </div>
+      </details>
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L11</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">采用即梦 Seedance 2.0 全能参考生成视频 2</span>
+            </div>
+            <div class="lr-sum">全能参考进阶 · 第二轮案例 · 不同题材下参考组合策略的差异</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 15:53</span>
+            <span class="lr-type">video · gen · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>玄幻 / 古风 / 都市三种题材下全能参考的不同配比</li>
+            <li>参考图『主次权重』调校手法</li>
+            <li>翻车案例 + 修复对策</li>
+          </ul>
+        </div>
+      </details>
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L12</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">即梦 Seedance 2.0 全能参考生成视频及配音</span>
+            </div>
+            <div class="lr-sum">完整闭环 · 全能参考跑完视频 + 即梦内置配音 + 一次性出带音轨成片</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 45:59</span>
+            <span class="lr-type">video · gen · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>Seedance 2.0 内置配音功能</li>
+            <li>视频 + 配音一次性出片的工艺路径</li>
+            <li>和后面独立配音工序（L13）的对比 · 什么时候用哪种</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Phase 5 · 后期 · 配音 + 音效 + 剪辑 -->
+  <div class="ph-block">
+    <div class="ph-bar" style="background:#CB6CE6;color:#fff">
+      <span class="ph-icon">✂️</span>
+      <span class="ph-title">Phase 5 · 后期 · 配音 + 音效 + 剪辑</span>
+      <span class="ph-meta">2 节 · 58 分</span>
+    </div>
+    <div class="ph-summary">成片最后一公里 · 独立配音 + 音效设计 + 剪辑包装 · 把分镜视频拼成能直接发抖音的 1080p 成片</div>
+    <div class="ph-lessons">
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L13</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">漫剧配音 + 音效设计</span>
+            </div>
+            <div class="lr-sum">三层声音 · 角色配音 + BGM + 音效 · 漫剧 80% 情绪的来源</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 19:12</span>
+            <span class="lr-type">audio · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>角色配音：声线挑选 + 情绪调校</li>
+            <li>配音工具：ElevenLabs / 海螺 AI / 豆包配音 / 剪映 TTS 横评</li>
+            <li>音效层：脚步 / 风声 / 心跳 / 转场音</li>
+            <li>三层混音音量比例：人声 0dB / BGM -18dB / SFX -12dB</li>
+          </ul>
+        </div>
+      </details>
+      <details class="lr">
+        <summary>
+          <div class="lr-code">L14</div>
+          <div class="lr-body">
+            <div class="lr-title-row">
+              <span class="lr-title">AI 漫剧剪辑配音</span>
+            </div>
+            <div class="lr-sum">剪映拼成片 · 字幕 + 封面 + 三平台导出 · 一条 1 分钟漫剧的最后一公里</div>
+          </div>
+          <div class="lr-meta">
+            <span class="lr-dur">⏱ 39:41</span>
+            <span class="lr-type">editing · demo</span>
+          </div>
+        </summary>
+        <div class="lr-detail">
+          <strong>本节内容：</strong>
+          <ul>
+            <li>剪映 / CapCut 漫剧专用模板</li>
+            <li>字幕规范：每行 ≤12 字 / 出现 1.2s 起</li>
+            <li>封面三秒原则 + 抖音 / 小红书 / 视频号 标题钩子</li>
+            <li>导出参数：抖音 1080×1920 / 小红书 1080×1350 / 视频号 1080×1920</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div>
+
+<!-- Instructor -->
+<div class="in-wrap">
+  <div class="in-title">🎤 讲师</div>
+  <div class="in-sub">不是 AI 概念讲师 · 是天天在一线做 AI 漫剧的从业者 + 有十几年教学功底</div>
+  <div class="in-card">
+    <div class="in-left">
+      <div class="in-avatar">👨‍🏫</div>
+      <div class="in-name">张彦伟</div>
+      <div class="in-role">AI 漫剧 · 主讲</div>
+    </div>
+    <div class="in-right">
+      <div class="in-tagline">教过一线编程 · 教过新媒体 · 教过视频拍剪 · 现在每天在做 AI 漫剧</div>
+      <p>张老师早年在<strong>北大青鸟</strong>教 Java 和新媒体，后在 <strong>B 站</strong>等平台做视频拍摄与后期剪辑系列课。2024 年起把主要精力迁移到 <strong>AI 漫剧</strong> — 亲自跑过几乎所有主流 AI 视频工具（即梦 / Vidu / Runway / Kling / Nano Banana / Tapnow），踩过足够多的坑，知道哪家在什么场景下真的能出活。</p>
+      <p>这套 15 节录播是他「从一本小说到一条 1 分钟漫剧成片」<strong>完整工艺的逐步拆解</strong> — 不是 demo 合集，是把每一步抠到 Prompt 级别。</p>
+      <div class="in-chips">
+        <span class="pc r">🎓 北大青鸟讲师</span>
+        <span class="pc o">📺 B 站长期创作者</span>
+        <span class="pc y">🎬 AI 漫剧一线从业者</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="cta-box">
+    <h3>🏮 准备好把第一条漫剧做出来了吗？</h3>
+    <p>15 节录播 · 7h46m · 永久可看 · 含中文配套讲义 + Prompt 模板包 + 学员问答存档 · JR Academy 独家上线</p>
+    <div class="cta-row">
+      <a class="cta-btn primary" href="mailto:hello@jiangren.com.au?subject=报名 AI 漫剧 15 节录播">🎬 我要报名</a>
+      <a class="cta-btn secondary" href="../ai-comic-workshop/curriculum.html">🆚 先看 2h 直播</a>
+    </div>
+  </div>
+</div>
+
+<!-- Divider -->
+<div class="divider">
+  <div class="line"></div>
+  <div class="ornament">⸻ ❓ ⸻</div>
+  <div class="line"></div>
+</div>
+
+<!-- FAQ -->
+<div class="fq-wrap">
+  <div class="fq-title">❓ 常见问题</div>
+  <div class="fq-sub">报名前先看完 · 省得入手后落差</div>
+  <div class="fq-list">
+
+    <details class="fq-item" open>
+      <summary>Q1 · 这套录播课和 2 小时直播工作坊有什么区别？</summary>
+      <div class="fq-ans">
+        维度完全不同。<strong>2 小时工作坊（<a href="../ai-comic-workshop/curriculum.html">ai-comic-workshop</a>）</strong>是「俯瞰版」— 讲清楚 AI 漫剧赛道全貌、工具横评、决策框架，看完知道要不要入坑。<strong>15 节录播（这套）</strong>是「实战精讲版」— 从挑小说到发抖音，一节一节带你做完一条完整漫剧，看完手里有作品。重点演示即梦 Seedance 2.0 的 <strong>六种</strong>视频生成路径。如果时间够 + 预算够，建议先看 2h 工作坊定方向，再用这 15 节录播做出第一条片。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q2 · 完全零基础能学吗？</summary>
+      <div class="fq-ans">
+        能，但要做好心理准备。课程不假设你会任何视频软件 / 编程 / AI 操作，每节都是从开账号开始演示。但 AI 漫剧是个<strong>多工具串联</strong>的工艺 — 8 个工具来回切，零基础同学要做好「每节看 1 遍 + 跟着做 1 遍」的节奏，整套课大约要花 <strong>12-20 小时</strong>。不是 2 小时看完就完事的那种课。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q3 · 课程多长？看一遍要多久？</summary>
+      <div class="fq-ans">
+        <strong>15 个视频</strong>（1 预告 45 秒 + 14 节实操）· 总时长约 <strong>7 小时 46 分钟</strong>。最短的 L08 仅 15:53，最长的 L05 56 分钟。如果只是「看一遍」大约 8-10 小时；想跟着做一条完整漫剧出来，建议留 <strong>15-25 小时</strong>（包括工具排队等待、自己出图调整、剪辑迭代）。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q4 · 工具账号要花多少钱？</summary>
+      <div class="fq-ans">
+        全部走免费档可以完整学完所有 15 节，但产出 1-2 条片就会用完免费额度。真要稳定做：
+        <ul style="margin:8px 0 0 20px">
+          <li><strong>即梦</strong>：跑视频是大头，月订阅约 ¥69-199</li>
+          <li><strong>Nano Banana</strong>：走 Google AI Studio 免费档日常够用，重度用走 API 按量</li>
+          <li><strong>AI 配音</strong>：ElevenLabs 月 $5 起、海螺 AI 国内便宜很多</li>
+          <li><strong>剪映</strong>：免费版够用</li>
+        </ul>
+        一条 1 分钟漫剧的硬成本大约 <strong>¥10-30</strong>，每月做 10 条算下来工具开销 ¥200-500。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q5 · 录播能看多久？有更新吗？</summary>
+      <div class="fq-ans">
+        <strong>报名后永久可看</strong>（平台政策调整会另行通知）。AI 工具迭代很快（即梦 1.0 → 2.0 / Nano Banana 还在更新），<strong>关键工具有重大版本更新时会补录新片段</strong>放进对应章节，老学员免费看。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q6 · 有学员群 / 答疑 / 1 对 1 吗？</summary>
+      <div class="fq-ans">
+        这套录播课<strong>不包含</strong>学员群、长期答疑、1 对 1 指导 — 我们卖的是「完整工艺录播」，不是「长期陪跑」。如果需要 cohort 学习 / 真人答疑 / Demo Day，看 JR Academy 的 <a href="../ai-comic-workshop/curriculum.html">2h 直播工作坊</a> 或 Bootcamp 系列。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q7 · 课程在哪看？怎么访问？</summary>
+      <div class="fq-ans">
+        报名成功后 <strong>24 小时内</strong>你会收到邮件，里面有<strong>访问链接 + 学员账号</strong>。登录 JR Academy 学员中心即可观看全部 15 节录播，配套中文讲义 + Prompt 模板包 + 学员问答存档也在同一处一站式访问。
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary>Q8 · JR Academy 学员报名包含哪些配套资料？</summary>
+      <div class="fq-ans">
+        除 15 节录播视频外，<strong>额外包含</strong>：
+        <ul style="margin:8px 0 0 20px">
+          <li>中文配套讲义 PDF（每节一份，可打印）</li>
+          <li>全套 Prompt 模板包（拆剧本 / 角色一致性 / 九宫格分镜 / 全能参考 / 即梦运镜）</li>
+          <li>学员问答存档（学过的同学问过什么、老师怎么答）</li>
+          <li>课程更新优先通知（工具有大版本更新会补录）</li>
+        </ul>
+        所有资料学员中心一站式访问。
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="sf-inner">
+    <div class="sf-brand">
+      <h3>🎬 AI 漫剧从 0 到 1 · 15 节录播实战精讲课</h3>
+      <p>张彦伟老师带你从挑小说做到发抖音 — 15 节录播逐步拆完整 AI 漫剧工艺。JR Academy 独家上线，学员加送中文讲义 + Prompt 模板包。</p>
+      <div class="sf-badges">
+        <span>🎓 JIANGREN ACADEMY</span>
+        <span>🎬 15 Lessons · 7h46m</span>
+        <span>♾ 永久可看</span>
+      </div>
+    </div>
+
+    <div class="sf-col">
+      <h4>📅 课程信息</h4>
+      <ul>
+        <li><strong>15 节录播</strong>视频课</li>
+        <li>总时长 <strong>~7h46m</strong></li>
+        <li>L01–L08 · 逐节解锁</li>
+        <li>含 Prompt 模板包</li>
+      </ul>
+    </div>
+
+    <div class="sf-col">
+      <h4>🧭 快速跳转</h4>
+      <ul>
+        <li><a href="#">📚 5 阶段 · 15 节视频</a></li>
+        <li><a href="#">🛠 工具栈 6 条线</a></li>
+        <li><a href="#">🎤 讲师张彦伟</a></li>
+        <li><a href="#">❓ 常见问题</a></li>
+      </ul>
+    </div>
+
+    <div class="sf-col">
+      <h4>🔗 相关资源</h4>
+      <ul>
+        <li><a href="/curriculum/">JR 课程总览</a></li>
+        <li><a href="/curriculum/ai-comic-workshop/curriculum.html">🎤 2h 直播工作坊（同主题）</a></li>
+        <li><a href="/curriculum/ai-image-text-workshop/curriculum.html">📕 小红书图文起号课</a></li>
+        <li><a href="/curriculum/ai-essentials-bootcamp/curriculum.html">AI 必修课 · 4 周</a></li>
+        <li><a href="mailto:hello@jiangren.com.au">📧 hello@jiangren.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sf-bottom">
+    <div class="sf-copy">© 2026 JIANGREN ACADEMY PTY LTD · All rights reserved · 录播内容归讲师所有 · 不得外传</div>
+    <div class="sf-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Refund Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

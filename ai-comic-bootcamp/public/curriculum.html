@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AI 漫剧 Bootcamp · 从剧本到成片 · 课程大纲</title>
-  <meta name="description" content="AI 漫剧 Bootcamp — 张彦伟老师 11 章 49 节录播系统课：AIGC 工具矩阵 / 角色 / 场景 / 视频 / 爆款短视频 / 首尾帧 / 分镜 / 声音 / 全流程 / 剧本 / Seedance 项目实例，一份剧本走到成片。">
+  <title>AI 漫剧课程体系 · 入门班 + 进阶班 · 张彦伟主讲</title>
+  <meta name="description" content="AI 漫剧课程体系 — 张彦伟老师两阶录播：入门班 15 节（7h46m）从挑小说到发抖音做出第一条片；进阶班 49 节（24h）工艺全链路 + Seedance 项目实例。进阶班学完赠送项目素材包 + Prompt 库 + 智能体配置。">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <style>
@@ -92,39 +92,126 @@
     .fq-item summary::before{content:"+";display:inline-block;margin-right:12px;font-family:'Space Mono',monospace;color:#CB6CE6;font-weight:900}
     .fq-item[open] summary::before{content:"−"}
     .fq-item .ans{padding:0 22px 18px 40px;font-size:14px;line-height:1.75;color:#444}
+    /* tier comparison + intro phase grid responsive */
+    @media(max-width:760px){
+      .tier-grid{grid-template-columns:1fr !important}
+      .intro-phase-grid{grid-template-columns:1fr !important}
+      .intro-phase-grid > div[style*="grid-column:span 2"]{grid-column:auto !important}
+      .resource-grid{grid-template-columns:1fr !important}
+    }
   </style>
 </head>
 <body>
   <div class="header halftone speedlines" style="position:relative;overflow:hidden">
     <!-- 漫剧 SFX 装饰 -->
-    <div class="sfx" style="position:absolute;top:18px;left:6%;z-index:3;color:#FFDE59">ドン！</div>
-    <div class="sfx pink" style="position:absolute;top:30%;right:5%;z-index:3;transform:rotate(8deg)">BANG!</div>
-    <div class="sfx blue" style="position:absolute;bottom:18px;left:8%;z-index:3;transform:rotate(-4deg);font-size:clamp(22px,3vw,38px)">パシャ！</div>
-    <div class="pow-burst pink" style="position:absolute;bottom:24px;right:8%;z-index:3">11<br>章<br>49 节</div>
+    <div class="sfx" style="position:absolute;top:18px;left:6%;z-index:3;color:#FFDE59">砰！</div>
+    <div class="sfx pink" style="position:absolute;top:30%;right:5%;z-index:3;transform:rotate(8deg)">大片！</div>
+    <div class="sfx blue" style="position:absolute;bottom:18px;left:8%;z-index:3;transform:rotate(-4deg);font-size:clamp(22px,3vw,38px)">咻——</div>
+    <div class="pow-burst pink" style="position:absolute;bottom:24px;right:8%;z-index:3">入门<br>+<br>进阶</div>
     <div style="position:relative;z-index:4">
-      <h1>AI 漫剧 Bootcamp · 从剧本到成片实战</h1>
-      <p class="sub">张彦伟老师 · 11 章 49 节录播系统课。把 AI 漫剧的整条生产工艺从 AIGC 工具矩阵讲到 Seedance 2.0 项目实例，一节都不省。</p>
+      <h1>AI 漫剧课程体系 · 入门班 + 进阶班</h1>
+      <p class="sub">张彦伟老师 · 两阶录播体系。入门班 <strong>15 节 / 7h46m</strong> 从挑小说到发抖音做出第一条片；进阶班 <strong>49 节 / 24h</strong> 工艺全链路 + Seedance 2.0 真实项目实例。进阶班毕业额外赠送项目资源包。</p>
       <div class="meta-bar">
-        <span>📚 49 LESSONS</span>
-        <span>⏱ ~24 HOURS</span>
-        <span>📺 录播 · 按自己节奏</span>
-        <span>🎬 一线工艺</span>
+        <span>🎯 入门班 · 15 节 / 7.8h</span>
+        <span>🚀 进阶班 · 49 节 / 24h</span>
+        <span>📦 进阶班毕业 · 项目资源包</span>
+        <span>📺 全程录播 · 永久可看</span>
       </div>
     </div>
   </div>
 
   <div class="stats halftone" style="position:relative">
-    <div class="s"><div class="n">11</div><div class="l">章节</div></div>
-    <div class="s"><div class="n">49</div><div class="l">节课</div></div>
-    <div class="s"><div class="n">6</div><div class="l">Phase</div></div>
-    <div class="s"><div class="n">24<small style="font-size:18px">h</small></div><div class="l">总时长</div></div>
+    <div class="s"><div class="n">2</div><div class="l">阶 · TIERS</div></div>
+    <div class="s"><div class="n">64</div><div class="l">节课合计</div></div>
+    <div class="s"><div class="n">32<small style="font-size:18px">h</small></div><div class="l">总时长</div></div>
     <div class="s"><div class="n">8+</div><div class="l">AI 工具</div></div>
+    <div class="s"><div class="n">📦</div><div class="l">进阶 · 项目资源</div></div>
   </div>
 
-  <!-- Phase cards -->
+  <!-- ============ Tier comparison ============ -->
   <div class="sec">
-    <h2>6 个 Phase · 按工艺环节走</h2>
-    <p class="sub">每个 Phase 对应漫剧生产的一段工序 · 跳着学也行 · 想从头吃也行</p>
+    <h2>两阶课程 · 怎么选</h2>
+    <p class="sub">先做出第一条片 → 选入门班 · 想把 AI 漫剧做成稳定生产线 → 选进阶班 · 两个都吃最稳</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1100px;margin:0 auto" class="tier-grid">
+      <!-- 入门班 -->
+      <a class="ph-card panel-shadow-orange tilt-l" href="/curriculum/ai-comic-video-course/curriculum.html" style="display:block;text-decoration:none;color:#10162f;position:relative;background:linear-gradient(180deg,#fffbeb 0%,#fff 60%)">
+        <div class="pow-burst" style="position:absolute;top:-22px;left:-14px;z-index:5;width:78px;height:78px;font-size:12px;background:#FFDE59;color:#10162f;line-height:1.15">入门<br>TIER 1</div>
+        <span class="ph-tag" style="background:#B91C1C;color:#fff;font-size:12px;padding:5px 12px">🎯 入门班 · 从 0 到 1</span>
+        <h3 style="font-size:22px;margin-top:6px">AI 漫剧从 0 到 1 视频课</h3>
+        <p style="font-family:'Space Mono',monospace;font-size:12px;color:#888;margin-bottom:10px">15 节 · 7h46m · ¥ TBD</p>
+        <p class="ph-sum">1 节预告 + 14 节实操 · 挑小说 → 拆剧本 → 角色 / 场景 → 三种分镜图工艺 → <strong>Seedance 2.0 六种用法</strong> → 配音剪辑 → 1 分钟漫剧成片发抖音。</p>
+        <ul class="ph-bullets">
+          <li>🍌 Nano Banana 分镜图 · 3 种工艺</li>
+          <li>🎞 Seedance 2.0 · 6 种视频生成路径</li>
+          <li>🎬 第 1 节支持试看</li>
+          <li>📦 含 Prompt 模板包 + 中文讲义</li>
+        </ul>
+        <div style="margin-top:14px;padding:10px 14px;background:#FFDE59;border:2px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#10162f;text-align:center">👉 查看入门班完整大纲</div>
+      </a>
+
+      <!-- 进阶班 -->
+      <a class="ph-card panel-shadow-pink tilt-r" href="#advanced" style="display:block;text-decoration:none;color:#10162f;position:relative;background:linear-gradient(180deg,#fdf2f8 0%,#fff 60%)">
+        <div class="pow-burst pink" style="position:absolute;top:-22px;right:-14px;z-index:5;width:78px;height:78px;font-size:12px;line-height:1.15">进阶<br>TIER 2</div>
+        <span class="ph-tag" style="background:#ec4899;color:#fff;font-size:12px;padding:5px 12px">🚀 进阶班 · 工艺全链路</span>
+        <h3 style="font-size:22px;margin-top:6px">AI 漫剧 Bootcamp · 全工艺</h3>
+        <p style="font-family:'Space Mono',monospace;font-size:12px;color:#888;margin-bottom:10px">49 节 · 24h · 6 Phase · ¥ TBD</p>
+        <p class="ph-sum">11 章录播系统课 · AIGC 工具矩阵 / 角色 / 场景 / 视频 / <strong>爆款短视频</strong> / 首尾帧 / 分镜 / 声音克隆 / 全流程 / 剧本 / <strong>Seedance 项目实例</strong>。把入门班点到为止的部分全部讲深。</p>
+        <ul class="ph-bullets">
+          <li>🛠 第 0 章 AIGC 工具矩阵 6 节</li>
+          <li>🔥 爆款短视频 3 节 + 声音克隆 + 分镜智能体</li>
+          <li>💥 Seedance 真实项目实例 8 节</li>
+          <li>📦 <strong>毕业赠送项目资源包</strong>（见下）</li>
+        </ul>
+        <div style="margin-top:14px;padding:10px 14px;background:#ec4899;color:#fff;border:2px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;text-align:center">👉 跳转进阶班 6 Phase 详情</div>
+      </a>
+    </div>
+    <p style="text-align:center;color:#666;font-size:13px;margin-top:18px">💡 建议路径：先入门做出第一条片找到感觉 → 进阶班深挖工艺 + 拿项目资源 — 两阶搭配最稳。</p>
+  </div>
+
+  <!-- ============ 入门班 详情 ============ -->
+  <div class="sec" id="intro">
+    <h2>入门班 · 15 节做出第一条片</h2>
+    <p class="sub">L01 → L14 · 挑小说 → 发抖音 · 6 个工序连成完整工艺 · 张彦伟主讲</p>
+    <div style="background:linear-gradient(135deg,#1a0f0a 0%,#B91C1C 50%,#FF914D 100%);color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #B91C1C;padding:24px;max-width:1100px;margin:0 auto;position:relative;overflow:hidden">
+      <span style="position:absolute;top:14px;right:24px;font-size:60px;opacity:0.15">🏮</span>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px" class="intro-phase-grid">
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 1 · 文字</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">小说 → 剧本 → 分镜</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85;margin-bottom:6px">L01 小说-剧本-分镜（46:37 · 试看）</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 2 · 视觉资产</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">角色 + 场景</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85">L02 角色设计 (51:42)<br>L03 场景设计 (19:42)</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 3 · 🍌 分镜图</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">Nano Banana 三种工艺</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85">L04 单镜 (17:31)<br>L05 批量 (56:01)<br>L07 九宫格 (48:49)</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px;grid-column:span 2">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 4 · 🎞 Seedance 2.0 六种用法</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">视频生成 · 本课的重头戏</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85">L06 基础图生视频 / L08 九宫格喂法 / L09 全能参考 / L10 豆包小云雀 + 九宫格 / L11 全能参考 v2 / L12 全能参考 + 配音一体</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 5 · ✂ 后期</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">配音 / 音效 / 剪辑</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85">L13 配音 + 音效 (19:12)<br>L14 漫剧剪辑 (39:41)</p>
+        </div>
+      </div>
+      <div style="margin-top:18px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap">
+        <a href="/curriculum/ai-comic-video-course/curriculum.html" style="display:inline-block;padding:11px 22px;background:#FFDE59;color:#10162f;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;text-decoration:none;box-shadow:4px 4px 0 #000;transition:all 0.15s">📋 入门班完整大纲 →</a>
+        <span style="font-size:13px;opacity:0.85">15 节 · 7h46m · 含 Prompt 模板包</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 进阶班 · 6 Phase ============ -->
+  <div class="sec" id="advanced">
+    <h2>进阶班 · 6 个 Phase 工艺全链路</h2>
+    <p class="sub">11 章 49 节 · 24 小时 · 每个 Phase 对应漫剧生产的一段工序 · 跳着学也行 · 想从头吃也行</p>
     <div class="ph-grid">
       <a class="ph-card panel-shadow-purple tilt-l" href="./phase1.html">
         <span class="ph-tag" style="background:#CB6CE6">🎬 Phase 1 · EP 0-1</span>
@@ -180,7 +267,7 @@
         <div class="ph-foot"><span>8 节 · 248 min</span><span>查看详情 →</span></div>
       </a>
       <a class="ph-card panel-shadow-pink tilt-r" href="./phase6.html" style="position:relative">
-        <div class="pow-burst" style="position:absolute;top:-22px;right:-14px;z-index:5;width:74px;height:74px;font-size:13px">FINALE!</div>
+        <div class="pow-burst" style="position:absolute;top:-22px;right:-14px;z-index:5;width:74px;height:74px;font-size:13px">出片！</div>
         <span class="ph-tag" style="background:#ec4899">💥 Phase 6 · EP 11</span>
         <h3>Seedance 漫剧项目实例</h3>
         <p class="ph-sum">即梦 Seedance 2.0 真实漫剧项目 8 节 — 从小说改剧本到剪辑配音的完整演示，前面学的所有方法在这里组合验证。</p>
@@ -191,6 +278,51 @@
         </ul>
         <div class="ph-foot"><span>8 节 · 286 min</span><span>查看详情 →</span></div>
       </a>
+    </div>
+  </div>
+
+  <!-- ============ 进阶班毕业 · 项目资源包 ============ -->
+  <div class="sec">
+    <div style="max-width:1100px;margin:0 auto;border:3px solid #000;background:linear-gradient(135deg,#FFDE59 0%,#FF914D 60%,#ec4899 100%);box-shadow:8px 8px 0 #000;padding:32px 28px;position:relative;overflow:hidden">
+      <span class="sfx" style="position:absolute;top:-8px;right:24px;font-size:clamp(28px,4vw,52px);color:#fff;-webkit-text-stroke:3px #000;text-shadow:5px 5px 0 #000;transform:rotate(-8deg);opacity:0.95">出片！</span>
+      <div style="display:inline-block;background:#10162f;color:#FFDE59;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:1.5px;padding:5px 14px;margin-bottom:12px;border:2px solid #000">🚀 进阶班专属 · ADVANCED ONLY</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3.5vw,34px);font-weight:900;color:#10162f;line-height:1.2;margin-bottom:10px;display:block">📦 学完即送 · 项目级资源包</h2>
+      <p style="font-size:15px;line-height:1.7;color:#10162f;max-width:760px;margin-bottom:18px"><strong>进阶班毕业额外赠送</strong>张老师做项目过程中沉淀的全套生产资料 — 不是课件 PPT，是能直接拿去做下一条片的可复用资产。</p>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:920px" class="resource-grid">
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">🎬</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">项目级分镜表 + 全套素材</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">第 11 章 Seedance 项目实例用的完整分镜表、角色资产库、场景库、道具库 — 全部打包给你。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">🤖</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">分镜智能体 + 多帧智能体配置</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">L18 / L23 / L27 用到的 Coze / Dify 智能体导出 JSON · 一键导入直接用。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">📝</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">Seedance 2.0 全场景 Prompt 库</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">古风 / 都市 / 玄幻 / 校园 / 悬疑 5 套题材 × 4 工艺路径的 Prompt 模板，按场景检索。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">🎙</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">声音克隆 + 配音方案库</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">L29 演示的声音克隆样本 + L30-L33 各类角色音色 / 情绪节奏配置表。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">📊</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">爆款短视频钩子库</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">L18-L20 爆款专题分析的 50+ 条对标爆款 + 钩子 / 节奏 / 反转模板。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">🎓</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">学员片源参考 + 更新通道</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">毕业学员片源精选 + 工具迭代补录视频 + 张老师每季度的工艺更新记录。</p>
+        </div>
+      </div>
+
+      <p style="margin-top:18px;font-size:13px;color:#10162f;font-family:'Space Mono',monospace">📌 资源包随课程版本持续更新 · 工具大版本变更（如 Seedance 3.0 上线）老学员免费拿新版</p>
     </div>
   </div>
 
@@ -340,7 +472,8 @@
     <h2>常见问题</h2>
     <p class="sub">报名前最关心的 6 个问题</p>
     <div class="fq-list">
-      <details class="fq-item"><summary>课程是录播还是直播？</summary><div class="ans">全程录播，11 章 49 节、约 24 小时。报名后按自己节奏看。课程页只展示大纲，播放入口走另外的渠道（B 站 Cheese / 私域微信群等）。</div></details>
+      <details class="fq-item" open><summary>入门班 vs 进阶班，怎么选？</summary><div class="ans"><strong>没做过 AI 漫剧 → 选入门班。</strong>15 节带你从挑小说到发抖音做出第一条片，重点演示 Seedance 2.0 六种用法和 Nano Banana 三种分镜工艺，是「能上手」的最快路径。<br><br><strong>已经能做出片、想做稳定生产线 → 选进阶班。</strong>49 节工艺全链路 — AIGC 工具矩阵 / 爆款短视频专题 / 声音克隆 / 分镜智能体 / 真实项目实例 8 节 + 毕业项目资源包。<br><br><strong>预算够、想最稳 → 两个都买。</strong>入门班找感觉、进阶班深挖 — 进阶班的项目资源能直接套到你做入门班练习的那条片上。</div></details>
+      <details class="fq-item"><summary>课程是录播还是直播？</summary><div class="ans">两阶都是<strong>全程录播</strong>。入门班 15 节 / 7h46m；进阶班 11 章 49 节 / 约 24 小时。报名后按自己节奏看。课程页只展示大纲，播放入口走另外的渠道（B 站 Cheese / 私域微信群等）。</div></details>
       <details class="fq-item"><summary>需要什么基础？</summary><div class="ans">需要会用电脑、装过常见 AI 工具账号（即梦 / Vidu / Nano Banana / Tapnow 任一即可），看得懂中文 Prompt。无需画画、编剧、视频剪辑基础，课里都会带。</div></details>
       <details class="fq-item"><summary>AI 工具是否免费？</summary><div class="ans">课程不强制买任何工具。免费档可以跑完 Phase 1-2 的所有练习。Phase 3-4 想出整集片建议至少订阅 1 家视频工具（即梦或 Vidu，几十块 / 月起步）。</div></details>
       <details class="fq-item"><summary>课程里的工具不能用怎么办？</summary><div class="ans">即梦 / Tapnow 需要中国手机号或抖音账号。海外学员可以用 Vidu + Nano Banana 替代主线工艺。课里讲方法不绑工具。</div></details>

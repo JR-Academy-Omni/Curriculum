@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 漫剧 15 节录播 · 海报 · 1242×1660</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0604;min-height:100vh;padding:32px 16px 100px;font-family:'DM Sans','Noto Sans SC',sans-serif;color:#fff}
+  .page-header{text-align:center;margin-bottom:20px;max-width:900px;margin-left:auto;margin-right:auto}
+  .page-header h1{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;line-height:1.2}
+  .page-header p{opacity:0.6;margin-top:8px;font-size:13px}
+  .stage{display:flex;justify-content:center;padding:20px}
+  .dl{position:fixed;bottom:24px;right:24px;background:#FFDE59;color:#1a0f0a;border:3px solid #1a0f0a;box-shadow:6px 6px 0 #B91C1C;padding:12px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;cursor:pointer;letter-spacing:0.5px;z-index:100;transition:all 0.15s}
+  .dl:hover{box-shadow:none;transform:translate(4px,4px)}
+
+  /* Poster — 1242×1660 displayed at 0.5x; html2canvas exports at scale 2 = real 1242×1660 */
+  #poster{width:621px;height:830px;background:linear-gradient(160deg,#1a0f0a 0%,#3a1a10 35%,#6b2418 65%,#B91C1C 100%);color:#fffbea;font-family:'Noto Sans SC','DM Sans',sans-serif;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(185,28,28,0.45)}
+
+  .grid-bg{position:absolute;inset:0;z-index:1;opacity:0.06;background-image:linear-gradient(#fffbea 1px,transparent 1px),linear-gradient(90deg,#fffbea 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none}
+  .blob.orange{width:380px;height:380px;top:-100px;right:-110px;background:#FF914D;opacity:0.55}
+  .blob.gold{width:260px;height:260px;bottom:-60px;left:-60px;background:#FFDE59;opacity:0.30}
+  .blob.red{width:200px;height:200px;top:420px;right:-50px;background:#B91C1C;opacity:0.50}
+
+  /* Decorative 月 + 灯笼 */
+  .moon{position:absolute;top:42px;right:60px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff8d6,#FFDE59 55%,#FF914D 100%);box-shadow:0 0 60px rgba(255,222,89,0.55);z-index:2}
+  .lantern{position:absolute;font-size:32px;opacity:0.65;z-index:2}
+  .lantern.l1{top:130px;left:32px;transform:rotate(-8deg)}
+  .lantern.l2{bottom:140px;right:38px;transform:rotate(6deg)}
+
+  .content{position:relative;z-index:10;padding:42px 38px;height:100%;display:flex;flex-direction:column;gap:14px}
+
+  .top{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand-icon{width:38px;height:38px;background:#FFDE59;color:#1a0f0a;font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center;border:2.5px solid #1a0f0a;box-shadow:3px 3px 0 #1a0f0a;font-family:'Bricolage Grotesque',sans-serif}
+  .brand-text{display:flex;flex-direction:column;line-height:1.1}
+  .brand-text .l1{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;letter-spacing:0.5px}
+  .brand-text .l2{font-family:'Space Mono',monospace;font-size:9px;opacity:0.7;margin-top:2px;letter-spacing:1px}
+  .ribbon{padding:5px 10px;background:#FFDE59;color:#1a0f0a;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;border:2px solid #1a0f0a;box-shadow:2px 2px 0 #1a0f0a}
+
+  .badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .badge-row .b{padding:3px 9px;background:rgba(255,251,234,0.12);border:1.5px solid rgba(255,251,234,0.3);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+  .badge-row .b.hl{background:#FFDE59;color:#1a0f0a;border-color:#1a0f0a}
+
+  .hero{margin-top:6px}
+  .hero h1{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:46px;font-weight:900;line-height:1.05;letter-spacing:-1px;color:#fffbea;text-shadow:3px 3px 0 rgba(0,0,0,0.4)}
+  .hero h1 .em{color:#FFDE59;display:block}
+  .hero .sub{margin-top:14px;font-size:15px;line-height:1.55;opacity:0.92;max-width:520px;font-weight:500}
+  .hero .sub strong{color:#FFDE59}
+
+  .outline-title{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;letter-spacing:1px;color:#FFDE59;margin-top:8px;display:flex;align-items:center;gap:8px}
+  .outline-title::before{content:"";display:inline-block;width:24px;height:3px;background:#FFDE59}
+
+  .phases-grid{display:flex;flex-direction:column;gap:7px}
+  .phase-row{background:rgba(255,251,234,0.94);color:#1a0f0a;padding:9px 12px;border:2px solid #1a0f0a;box-shadow:3px 3px 0 #1a0f0a;display:flex;align-items:center;gap:10px;font-size:12px;line-height:1.2;font-weight:700}
+  .phase-row .pn{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;color:#fff;background:#B91C1C;flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:2px solid #1a0f0a;letter-spacing:0}
+  .phase-row .pi{font-size:18px;flex-shrink:0;line-height:1}
+  .phase-row .pt{flex:1;font-weight:800}
+  .phase-row .pt .ps{display:block;font-size:10px;opacity:0.6;font-weight:600;margin-top:2px}
+  .phase-row .pc{flex-shrink:0;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#B91C1C;background:#fff5f5;padding:3px 7px;border:1.5px solid #B91C1C}
+
+  .stat-row{display:flex;justify-content:space-between;gap:8px;margin-top:8px}
+  .stat{flex:1;background:rgba(0,0,0,0.35);border:2px solid rgba(255,251,234,0.4);padding:8px 10px;text-align:center}
+  .stat .n{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#FFDE59;line-height:1}
+  .stat .l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.5px;opacity:0.85;margin-top:4px}
+
+  .footer{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;gap:10px}
+  .footer .left{font-size:11px;line-height:1.5;opacity:0.85}
+  .footer .left strong{color:#FFDE59;font-weight:700}
+  .footer .url{padding:8px 14px;background:#FFDE59;color:#1a0f0a;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;border:2.5px solid #1a0f0a;box-shadow:3px 3px 0 #1a0f0a;letter-spacing:0.5px;white-space:nowrap}
+
+  .instructor-strip{margin-top:4px;padding:10px 14px;background:rgba(255,251,234,0.10);border:2px solid rgba(255,251,234,0.35);display:flex;align-items:center;gap:12px}
+  .instructor-strip .av{width:40px;height:40px;background:#FFDE59;color:#1a0f0a;display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid #1a0f0a;flex-shrink:0}
+  .instructor-strip .info .n{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;line-height:1.1}
+  .instructor-strip .info .r{font-family:'Space Mono',monospace;font-size:10px;opacity:0.85;letter-spacing:0.5px;margin-top:2px}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>AI 漫剧 15 节录播 · 推广海报</h1>
+  <p>1242 × 1660 · 3:4 竖版 · 小红书 / 朋友圈 / 聚光投流 · 点右下角下载 PNG</p>
+</div>
+
+<div class="stage">
+  <div id="poster">
+    <div class="grid-bg"></div>
+    <div class="blob orange"></div>
+    <div class="blob gold"></div>
+    <div class="blob red"></div>
+    <div class="moon"></div>
+    <div class="lantern l1">🏮</div>
+    <div class="lantern l2">🏮</div>
+
+    <div class="content">
+
+      <div class="top">
+        <div class="brand">
+          <div class="brand-icon">JR</div>
+          <div class="brand-text">
+            <div class="l1">JIANGREN ACADEMY</div>
+            <div class="l2">VIDEO COURSE · 录播</div>
+          </div>
+        </div>
+        <div class="ribbon">🎬 15 VIDEOS</div>
+      </div>
+
+      <div class="badge-row">
+        <span class="b hl">⭐ 张彦伟 主讲</span>
+        <span class="b">📺 JR Academy 独家</span>
+        <span class="b">♾ 永久可看</span>
+      </div>
+
+      <div class="hero">
+        <h1>从一本小说<br><span class="em">做出 1 条漫剧</span></h1>
+        <div class="sub">AI 漫剧从 <strong>0 到 1</strong> 完整工艺 — 重点拆解即梦 Seedance 2.0 <strong>六种</strong>视频生成路径 + Nano Banana <strong>三种</strong>分镜出图工艺 + AI 配音剪辑。<strong>15 节录播 · 7h46m。</strong></div>
+      </div>
+
+      <div class="outline-title">📚 5 阶段 · 15 节视频</div>
+
+      <div class="phases-grid">
+        <div class="phase-row" style="border-left:6px solid #B91C1C">
+          <span class="pn" style="background:#B91C1C">1</span>
+          <span class="pi">📖</span>
+          <span class="pt">文字工序<span class="ps">小说 → 剧本 → 分镜</span></span>
+          <span class="pc">1 节 · 47min</span>
+        </div>
+        <div class="phase-row" style="border-left:6px solid #10b981">
+          <span class="pn" style="background:#10b981">2</span>
+          <span class="pi">🎨</span>
+          <span class="pt">视觉资产<span class="ps">角色 + 场景设计</span></span>
+          <span class="pc">2 节 · 71min</span>
+        </div>
+        <div class="phase-row" style="border-left:6px solid #F59E0B">
+          <span class="pn" style="background:#F59E0B">3</span>
+          <span class="pi">🍌</span>
+          <span class="pt">分镜图<span class="ps">Nano Banana 三种出法 + 九宫格</span></span>
+          <span class="pc">3 节 · 122min</span>
+        </div>
+        <div class="phase-row" style="border-left:6px solid #38B6FF">
+          <span class="pn" style="background:#38B6FF">4</span>
+          <span class="pi">🎞</span>
+          <span class="pt">视频生成<span class="ps">Seedance 2.0 六种用法</span></span>
+          <span class="pc">6 节 · 166min</span>
+        </div>
+        <div class="phase-row" style="border-left:6px solid #CB6CE6">
+          <span class="pn" style="background:#CB6CE6">5</span>
+          <span class="pi">✂️</span>
+          <span class="pt">后期包装<span class="ps">配音 + 音效 + 剪辑</span></span>
+          <span class="pc">2 节 · 59min</span>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="n">15</div><div class="l">VIDEOS</div></div>
+        <div class="stat"><div class="n">7h46m</div><div class="l">总时长</div></div>
+        <div class="stat"><div class="n">6</div><div class="l">Seedance 用法</div></div>
+        <div class="stat"><div class="n">∞</div><div class="l">永久可看</div></div>
+      </div>
+
+      <div class="instructor-strip">
+        <div class="av">👨‍🏫</div>
+        <div class="info">
+          <div class="n">张彦伟 老师</div>
+          <div class="r">北大青鸟讲师 · B 站长期创作者 · AI 漫剧一线从业者</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="left">配套带走：<br><strong>Prompt 模板 + 九宫格公式 + Seedance 运镜表 + 字幕封面模板</strong></div>
+        <div class="url">jiangren.com.au<br>/curriculum/ai-comic-video-course/</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<button class="dl" onclick="downloadPoster()">⬇ 下载 PNG (1242×1660)</button>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+function downloadPoster(){
+  const el=document.getElementById('poster');
+  html2canvas(el,{scale:2,useCORS:true,backgroundColor:null,logging:false}).then(canvas=>{
+    const link=document.createElement('a');
+    link.download='ai-comic-video-course-poster-1242x1660.png';
+    link.href=canvas.toDataURL('image/png');
+    link.click();
+  });
+}
+</script>
+
+</body>
+</html>
