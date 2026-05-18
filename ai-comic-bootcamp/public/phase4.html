@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phase 4 · 综合实战 & 剧本 · AI 漫剧 Bootcamp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#10b981 100%);padding:48px 24px 36px;color:#fff}
+    .header .crumb{font-family:'Space Mono',monospace;font-size:12px;opacity:0.75;text-align:center;margin-bottom:10px}
+    .header .crumb a{color:#fff;opacity:0.9}
+    .header h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,4.5vw,40px);font-weight:900;text-align:center;line-height:1.2;max-width:1000px;margin:0 auto}
+    .header .sub{text-align:center;font-size:14px;opacity:0.85;max-width:800px;margin:12px auto 0;line-height:1.65}
+    .header .meta{display:flex;gap:14px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .header .meta span{font-family:'Space Mono',monospace;font-size:11px;padding:4px 10px;border:2px solid rgba(255,255,255,0.35);background:rgba(0,0,0,0.15)}
+    .ph-wrap{max-width:1100px;margin:32px auto;padding:0 24px}
+    .less{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #10b981;margin-bottom:22px;transition:all 0.15s}
+    .less:hover{box-shadow:none;transform:translate(4px,4px)}
+    .less-head{padding:16px 22px;display:flex;align-items:center;gap:14px;background:#fafafa;border-bottom:2px solid #000;flex-wrap:wrap}
+    .less-code{font-family:'Space Mono',monospace;font-size:14px;font-weight:900;color:#10b981;padding:4px 10px;background:#d1fae5;border:2px solid #10b981;flex-shrink:0}
+    .less-title{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;color:#10162f;flex:1;min-width:200px}
+    .less-meta{font-family:'Space Mono',monospace;font-size:11px;color:#888;display:flex;gap:10px;flex-wrap:wrap}
+    .less-meta .pill{padding:2px 8px;background:#10162f;color:#fff;font-weight:700}
+    .less-meta .pill.v{background:#10b981}
+    .less-body{padding:18px 22px}
+    .less-desc{font-size:14px;line-height:1.7;color:#333;margin-bottom:14px}
+    .less-steps{border-top:1px dashed #ddd;padding-top:12px}
+    .less-steps h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#999;margin-bottom:10px}
+    .step{display:grid;grid-template-columns:32px 1fr auto;gap:12px;padding:8px 0;border-bottom:1px solid #f3f3f3;align-items:start}
+    .step:last-child{border-bottom:none}
+    .step-num{width:28px;height:28px;border:2px solid #000;background:#10b981;color:#fff;font-family:'Space Mono',monospace;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center}
+    .step-body h6{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;color:#10162f;margin-bottom:3px}
+    .step-body p{font-size:13px;line-height:1.6;color:#555}
+    .step-time{font-family:'Space Mono',monospace;font-size:11px;color:#888;white-space:nowrap}
+    .sec-divider{margin:32px 0 16px;padding:14px 22px;background:#10162f;color:#fff;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:16px}
+    .sec-divider small{font-family:'Space Mono',monospace;font-weight:400;font-size:11px;opacity:0.7;margin-left:10px}
+    .nav-bar{max-width:1100px;margin:32px auto 0;padding:0 24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .nav-btn{padding:10px 18px;border:3px solid #000;background:#fff;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-decoration:none;color:#10162f;transition:all 0.15s}
+    .nav-btn:hover{box-shadow:none;transform:translate(2px,2px);text-decoration:none}
+    .nav-btn.next{background:#10b981;color:#fff}
+    .grad-banner{margin:32px 0;padding:24px;border:3px solid #000;background:linear-gradient(135deg,#FFDE59 0%,#FF914D 100%);box-shadow:6px 6px 0 #000;text-align:center}
+    .grad-banner h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;margin-bottom:8px}
+    .grad-banner p{font-size:14px;line-height:1.65;color:#10162f;max-width:760px;margin:0 auto}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="crumb"><a href="./curriculum.html">课程大纲</a> · Phase 4</div>
+    <h1>Phase 4 · 综合实战 & 剧本</h1>
+    <p class="sub">第 9 章一镜到底走完整集 + 剧本设计收口 · 把前 3 个 Phase 学的方法用在一份真实剧本上从 0 出片。</p>
+    <div class="meta">
+      <span>📚 8 LESSONS</span>
+      <span>⏱ ~207 MIN</span>
+      <span>🎯 一镜到底</span>
+      <span>📝 剧本兜底</span>
+    </div>
+  </div>
+
+  <div class="ph-wrap">
+    <div class="grad-banner">
+      <h3>🎬 这是整门课的检验环节</h3>
+      <p>前 23 节学的角色 / 场景 / 视频 / 分镜 / 声音方法，在 Phase 4 第 9 章一次性组合，从一份剧本走到完整成片。学完 Phase 4 你能独立复制这条工艺。</p>
+    </div>
+
+    <div class="sec-divider">第 8 章 · 参考生视频 <small>1 节 · 22 min</small></div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L24</span><span class="less-title">参考生视频 — 主体库</span><span class="less-meta"><span class="pill v">VIDEO</span><span>22 min</span><span class="pill" style="background:#ec4899">资产管理</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">把生成好的角色 / 场景 / 道具存进自己的『主体库』 · 后续所有片都从主体库调用，保证跨集一致性。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>主体库的目录结构</h6><p>按角色 / 场景 / 道具 / 风格分文件夹存。</p></div><div class="step-time">8 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>用主体库参考生新片</h6><p>调用已有主体生成新一集镜头。</p></div><div class="step-time">14 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider">第 9 章 · 漫剧全流程一镜到底 <small>6 节 · 共 155 min</small></div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L25</span><span class="less-title">全流程 — 从剧本中提取角色</span><span class="less-meta"><span class="pill v">VIDEO</span><span>25 min</span><span class="pill">⛓ Step 1/6</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">第 9 章一镜到底走整条工艺的第 1 步 · 拿一份剧本逐人提取并出形象，复用 Phase 1 学到的方法。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>剧本逐人列表</h6><p>用剧本案例完整列人物 + 出形象。</p></div><div class="step-time">25 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L26</span><span class="less-title">全流程 — 从剧本中提取道具和场景</span><span class="less-meta"><span class="pill v">VIDEO</span><span>22 min</span><span class="pill">⛓ Step 2/6</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">继续走第 9 章 · 把剧本里的道具 / 场景全列出来 · 优先级排序 + 主体库归档。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>道具 / 场景全表 + 出图</h6><p>完整列表生成 + 入主体库。</p></div><div class="step-time">22 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L27</span><span class="less-title">全流程 — 通过智能体生成分镜</span><span class="less-meta"><span class="pill v">VIDEO</span><span>28 min</span><span class="pill">⛓ Step 3/6</span><span class="pill" style="background:#ec4899">🤖 智能体</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">把剧本 + 已建的角色 / 场景一起喂智能体 → 一次性出整集分镜表 + 镜头 Prompt。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>智能体喂养顺序</h6><p>上下文怎么喂分镜智能体才不忘人物。</p></div><div class="step-time">12 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>整集分镜表落地</h6><p>智能体输出 + 人工修订。</p></div><div class="step-time">16 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L28</span><span class="less-title">全流程 — 角色配音</span><span class="less-meta"><span class="pill v">VIDEO</span><span>25 min</span><span class="pill">⛓ Step 4/6</span><span class="pill">🎙 智声云配</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">第 9 章配音环节 · 把整集台词喂智声云配 · 多角色音色分配 · 节奏处理。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>整集逐人配音</h6><p>把上一节的分镜台词全部配出。</p></div><div class="step-time">25 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L29</span><span class="less-title">全流程 — 通过参考视频生成分镜</span><span class="less-meta"><span class="pill v">VIDEO</span><span>25 min</span><span class="pill">⛓ Step 5/6</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">用『参考视频 → 出视频』的玩法批量生成所有镜头 · 节省 Prompt 时间 · 保持风格一致。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>参考视频法的边界</h6><p>什么戏适合用 · 什么戏会破画风。</p></div><div class="step-time">8 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>整集参考视频跑批</h6><p>用参考视频法一次生成全部镜头。</p></div><div class="step-time">17 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L30</span><span class="less-title">全流程 — 漫剧剪辑</span><span class="less-meta"><span class="pill v">VIDEO</span><span>30 min</span><span class="pill">⛓ Step 6/6</span><span class="pill" style="background:#FF914D">出片</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">拿到所有镜头 + 配音 + 音效后怎么剪 · 节奏 / 字幕 / 转场 / 音乐铺垫 · 出最终成片。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>剪辑节奏与字幕规范</h6><p>漫剧的剪辑节奏比电影快、比短剧慢，找平衡。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>完整剪辑出片</h6><p>把整集所有素材剪成最终成片。</p></div><div class="step-time">20 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider">第 10 章 · 剧本设计 <small>1 节 · 30 min</small></div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L31</span><span class="less-title">剧本设计</span><span class="less-meta"><span class="pill v">VIDEO</span><span>30 min</span><span class="pill" style="background:#FFDE59;color:#10162f">兜底关键</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">好剧本是 AI 漫剧的上限 · 漫剧剧本和传统剧本的差别 · 钩子 / 节奏 / 反转 / 信息密度的把控。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>漫剧剧本的 4 个特殊约束</h6><p>AI 能做哪些镜头 / 不擅长哪些镜头，剧本要避坑。</p></div><div class="step-time">12 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>钩子 / 反转 / 节奏 SOP</h6><p>起号期短剧 / 漫剧的剧本结构模板。</p></div><div class="step-time">18 min</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <a class="nav-btn" href="./phase3.html">← Phase 3</a>
+    <a class="nav-btn next" href="./curriculum.html">🎉 返回大纲</a>
+  </div>
+
+  <div class="footer" style="margin-top:48px">
+    <p>AI 漫剧 Bootcamp · Phase 4 · 张彦伟</p>
+  </div>
+</body>
+</html>

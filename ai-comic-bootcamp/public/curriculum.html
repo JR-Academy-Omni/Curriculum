@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 漫剧 Bootcamp · 从剧本到成片 · 课程大纲</title>
+  <meta name="description" content="AI 漫剧 Bootcamp — 张彦伟老师 10 章 31 节录播系统课：角色 / 场景 / 视频 / 首尾帧 / 分镜 / 声音 / 全流程 / 剧本，一份剧本走到成片。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#CB6CE6 100%);padding:56px 24px 48px}
+    .header h1{font-size:clamp(28px,5vw,46px);line-height:1.15;max-width:1000px;margin:0 auto;font-family:'Bricolage Grotesque',sans-serif}
+    .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:820px;margin:14px auto 0;opacity:0.85;line-height:1.6}
+    .header .meta-bar{display:flex;gap:18px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+    .header .meta-bar span{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;padding:4px 12px;border:2px solid rgba(255,255,255,0.4);background:rgba(0,0,0,0.15)}
+    /* Stats */
+    .stats{background:#10162f;color:#fff;padding:28px 24px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;border-bottom:4px solid #000}
+    .stats .s{text-align:center}
+    .stats .n{font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:900;color:#CB6CE6;line-height:1}
+    .stats .l{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:#aaa;margin-top:6px}
+    /* Section base */
+    .sec{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .sec h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+    .sec .sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    /* Phase cards */
+    .ph-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .ph-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:24px;transition:all 0.15s;display:block;text-decoration:none;color:#10162f}
+    .ph-card:hover{box-shadow:none;transform:translate(4px,4px);text-decoration:none}
+    .ph-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;margin-bottom:12px;color:#fff}
+    .ph-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;margin-bottom:8px;line-height:1.3}
+    .ph-card .ph-sum{font-size:13px;color:#444;line-height:1.65;margin-bottom:12px}
+    .ph-card .ph-bullets{font-size:13px;color:#444;padding-left:18px;line-height:1.85;margin-top:10px}
+    .ph-card .ph-bullets li{margin-bottom:2px}
+    .ph-card .ph-foot{margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;color:#999;display:flex;justify-content:space-between;align-items:center}
+    .ph-card .ph-foot a{font-weight:700;color:#CB6CE6}
+    @media(max-width:768px){.ph-grid{grid-template-columns:1fr}}
+    /* Instructor */
+    .in-card{border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #CB6CE6;display:grid;grid-template-columns:280px 1fr;gap:0}
+    .in-left{background:linear-gradient(135deg,#10162f 0%,#CB6CE6 100%);color:#fff;padding:32px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;border-right:3px solid #000}
+    .in-avatar{width:110px;height:110px;border:3px solid #fff;background:#fff;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:5px 5px 0 rgba(0,0,0,0.35)}
+    .in-name{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;letter-spacing:0.5px;margin-top:6px}
+    .in-role{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.85}
+    .in-right{padding:28px 30px}
+    .in-tagline{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;color:#10162f;line-height:1.4;margin-bottom:14px}
+    .in-right p{font-size:14px;line-height:1.75;color:#333;margin-bottom:10px}
+    .in-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .in-chips .pc{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:#f3f4f6;border:2px solid #000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+    .in-chips .pc.p{background:#fce7f3;color:#9d174d}
+    .in-chips .pc.o{background:#fff7ed;color:#9a3412}
+    .in-chips .pc.b{background:#dbeafe;color:#1e40af}
+    .in-chips .pc.g{background:#d1fae5;color:#065f46}
+    @media(max-width:820px){.in-card{grid-template-columns:1fr}.in-left{border-right:none;border-bottom:3px solid #000;padding:28px 20px}}
+    /* Tool stack */
+    .ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid #000;background:#fff}
+    .ts-col{padding:22px;border-right:3px solid #000;border-bottom:3px solid #000}
+    .ts-col:nth-child(3n){border-right:none}
+    .ts-col:nth-last-child(-n+2):not(:nth-child(3n+1)),.ts-col:last-child{border-bottom:none}
+    .ts-col:nth-last-child(-n+3):nth-child(3n+1),.ts-col:nth-last-child(-n+3):nth-child(3n+1) ~ .ts-col{border-bottom:none}
+    .ts-logo{font-size:30px;margin-bottom:8px}
+    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;color:#10162f}
+    .ts-vendor{font-family:'Space Mono',monospace;font-size:11px;color:#888;margin-top:2px}
+    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#CB6CE6;font-weight:700;margin-top:10px;margin-bottom:8px}
+    @media(max-width:900px){.ts-grid{grid-template-columns:1fr 1fr}.ts-col{border-right:none !important;border-bottom:3px solid #000 !important}.ts-col:last-child{border-bottom:none !important}}
+    @media(max-width:540px){.ts-grid{grid-template-columns:1fr}}
+    /* Audience */
+    .au-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:18px 20px;transition:all 0.15s}
+    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .au-emoji{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
+    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .au-body p{font-size:13px;line-height:1.65;color:#555}
+    @media(max-width:900px){.au-grid{grid-template-columns:1fr}}
+    /* Highlights */
+    .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .hl-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:20px;transition:all 0.15s}
+    .hl-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .hl-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 8px;margin-bottom:10px;color:#fff;background:#CB6CE6}
+    .hl-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;line-height:1.4;color:#10162f;margin-bottom:8px}
+    .hl-card p{font-size:13px;line-height:1.65;color:#444}
+    @media(max-width:900px){.hl-grid{grid-template-columns:1fr}}
+    /* FAQ */
+    .fq-list{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;max-width:1000px;margin:0 auto}
+    .fq-item{border-bottom:2px solid #000}
+    .fq-item:last-child{border-bottom:none}
+    .fq-item summary{padding:16px 22px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:16px;color:#10162f;cursor:pointer;list-style:none}
+    .fq-item summary::-webkit-details-marker{display:none}
+    .fq-item summary::before{content:"+";display:inline-block;margin-right:12px;font-family:'Space Mono',monospace;color:#CB6CE6;font-weight:900}
+    .fq-item[open] summary::before{content:"−"}
+    .fq-item .ans{padding:0 22px 18px 40px;font-size:14px;line-height:1.75;color:#444}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>AI 漫剧 Bootcamp · 从剧本到成片实战</h1>
+    <p class="sub">张彦伟老师 · 10 章 31 节录播系统课。把 AI 漫剧的整条生产工艺从角色三视图讲到漫剧剪辑，一节都不省。</p>
+    <div class="meta-bar">
+      <span>📚 31 LESSONS</span>
+      <span>⏱ ~13 HOURS</span>
+      <span>📺 录播 · 按自己节奏</span>
+      <span>🎬 一线工艺</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="s"><div class="n">10</div><div class="l">章节</div></div>
+    <div class="s"><div class="n">31</div><div class="l">节课</div></div>
+    <div class="s"><div class="n">4</div><div class="l">Phase</div></div>
+    <div class="s"><div class="n">13<small style="font-size:18px">h</small></div><div class="l">总时长</div></div>
+    <div class="s"><div class="n">5+</div><div class="l">AI 工具</div></div>
+  </div>
+
+  <!-- Phase cards -->
+  <div class="sec">
+    <h2>4 个 Phase · 按工艺环节走</h2>
+    <p class="sub">每个 Phase 对应漫剧生产的一段工序 · 跳着学也行 · 想从头吃也行</p>
+    <div class="ph-grid">
+      <a class="ph-card" href="./phase1.html">
+        <span class="ph-tag" style="background:#CB6CE6">Phase 1</span>
+        <h3>入门 & 角色设计</h3>
+        <p class="ph-sum">先把 AI 漫剧的赛道和工艺地图展开，然后把角色设计这件事做透 — 从单人出图到三视图一致性。</p>
+        <ul class="ph-bullets">
+          <li>L01 了解 AI 漫剧</li>
+          <li>L02 小和尚角色形象设计</li>
+          <li>L03 从剧本中提取人物形象</li>
+          <li>L04 生成三视图（正 / 侧 / 背）</li>
+        </ul>
+        <div class="ph-foot"><span>4 节 · 80 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card" href="./phase2.html">
+        <span class="ph-tag" style="background:#38B6FF">Phase 2</span>
+        <h3>场景设计 & 视频生成</h3>
+        <p class="ph-sum">场景一致性是漫剧第二大坑 · 视频 Prompt / 运镜 / 首尾帧 / 智能体多帧一次讲完。</p>
+        <ul class="ph-bullets">
+          <li>L05-L08 AI 场景设计（茶室案例 / 提炼 / 融合 / 空间一致性）</li>
+          <li>L09-L10 视频生成（Prompt 结构 / 运镜）</li>
+          <li>L11-L13 首尾帧法 + 智能体多帧</li>
+        </ul>
+        <div class="ph-foot"><span>9 节 · 214 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card" href="./phase3.html">
+        <span class="ph-tag" style="background:#FF914D">Phase 3</span>
+        <h3>分镜 & 声音设计</h3>
+        <p class="ph-sum">分镜是漫剧的语法、声音是漫剧的灵魂 · 5 节分镜（含智能体）+ 5 节声音（含智声云配 / 对口型 / 音效）。</p>
+        <ul class="ph-bullets">
+          <li>L14-L18 分镜设计（组接 / 景别 / 对话 / 智能体）</li>
+          <li>L19-L23 声音设计（配音 / 对口型 / 音效 / 综合）</li>
+        </ul>
+        <div class="ph-foot"><span>10 节 · 254 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card" href="./phase4.html">
+        <span class="ph-tag" style="background:#10b981">Phase 4</span>
+        <h3>综合实战 & 剧本</h3>
+        <p class="ph-sum">第 9 章一镜到底走完整集 + 剧本设计收口 · 把前 3 个 Phase 学的方法用在一份真实剧本上从 0 出片。</p>
+        <ul class="ph-bullets">
+          <li>L24 参考生视频 · 主体库</li>
+          <li>L25-L30 漫剧全流程（角色 / 道具 / 分镜 / 配音 / 参考视频 / 剪辑）</li>
+          <li>L31 剧本设计</li>
+        </ul>
+        <div class="ph-foot"><span>8 节 · 207 min</span><span>查看详情 →</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <div class="sec">
+    <h2>这门课和别的 AI 视频课的差别</h2>
+    <p class="sub">不是体验课、不是发布会、不是单点工具教程</p>
+    <div class="hl-grid">
+      <div class="hl-card">
+        <span class="hl-tag">SYSTEMATIC</span>
+        <h4>10 章 31 节 · 工艺全链路</h4>
+        <p>市面大部分 AI 视频课停在『出一段视频』。这门课把剧本 → 角色 → 场景 → 分镜 → 视频 → 声音 → 剪辑全部讲清楚，能直接落成 SOP。</p>
+      </div>
+      <div class="hl-card">
+        <span class="hl-tag" style="background:#38B6FF">CONSISTENCY</span>
+        <h4>一致性问题逐个攻破</h4>
+        <p>三视图、空间关系、主体库、多帧智能体 — 漫剧最痛的『跨镜头跑偏』问题，每个角度都有专门一节讲解。</p>
+      </div>
+      <div class="hl-card">
+        <span class="hl-tag" style="background:#FF914D">PRACTITIONER</span>
+        <h4>一线日常工艺直接公开</h4>
+        <p>张老师每天都在做 AI 漫剧项目。这门课不是把 PPT 录一遍，是把他每天打开电脑做的事情 — Prompt、智能体、配音工具、剪辑节奏 — 全部摊开。</p>
+      </div>
+      <div class="hl-card">
+        <span class="hl-tag" style="background:#10b981">END-TO-END</span>
+        <h4>Phase 4 一镜到底</h4>
+        <p>第 9 章 6 节连成一条完整工艺，拿一份真实剧本从 0 走到成片，前面学的所有方法在这里组合验证。</p>
+      </div>
+      <div class="hl-card">
+        <span class="hl-tag" style="background:#ec4899">AGENT</span>
+        <h4>智能体上场</h4>
+        <p>分镜智能体写 Prompt、多帧智能体跑批、配音智能体管音色 — 把『一人能干一个工作室活』的能力打开。</p>
+      </div>
+      <div class="hl-card">
+        <span class="hl-tag" style="background:#FFDE59;color:#10162f">SCRIPT</span>
+        <h4>用剧本兜底</h4>
+        <p>第 10 章单拎剧本设计 — 好剧本是漫剧的天花板。漫剧剧本 vs 传统剧本的差别、AI 能 / 不能 hold 的镜头、起号期剧本结构模板。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audience -->
+  <div class="sec">
+    <h2>这门课适合谁</h2>
+    <p class="sub">3 类人 · 看下你在哪一类</p>
+    <div class="au-grid">
+      <div class="au-card">
+        <div class="au-emoji">🎨</div>
+        <div class="au-body">
+          <h4>个人创作者 / 短视频起号</h4>
+          <p>已经摸过 AI 出图 / 出视频，但做不出整条片。想把每天发一条漫剧变成现实，需要工艺 SOP 而不是工具介绍。</p>
+        </div>
+      </div>
+      <div class="au-card">
+        <div class="au-emoji">🏢</div>
+        <div class="au-body">
+          <h4>内容团队 / 工作室成员</h4>
+          <p>团队在跑 AI 短剧 / 漫剧项目，需要把工艺标准化、能复用、能交接。这门课直接拿来当内部培训教材。</p>
+        </div>
+      </div>
+      <div class="au-card">
+        <div class="au-emoji">🎬</div>
+        <div class="au-body">
+          <h4>传统视频 / 编剧 / 美术转型</h4>
+          <p>已经懂剧本 / 镜头 / 剪辑，缺一份『AI 工具怎么换掉前期 70% 工作量』的具体方案。本课直接对接传统工艺的相应环节。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructor -->
+  <div class="sec">
+    <h2>讲师 · 张彦伟</h2>
+    <p class="sub">教过编程 · 教过新媒体 · 教过视频拍剪 · 现在每天在做 AI 漫剧</p>
+    <div class="in-card">
+      <div class="in-left">
+        <div class="in-avatar">🎬</div>
+        <div class="in-name">张彦伟</div>
+        <div class="in-role">AI Comic Drama · Practitioner</div>
+      </div>
+      <div class="in-right">
+        <div class="in-tagline">教过一线编程、新媒体、视频拍剪，现在把重心放在 AI 漫剧。</div>
+        <p>张老师的教学履历横跨传统编程、新媒体、视频拍摄剪辑、AI 视频四个阶段。早年在北大青鸟任讲师，面向 18–30 岁高中生、大学毕业生和在职人群教编程和新媒体；随后在 B 站等平台持续输出课程内容，做过 Java 编程、新媒体运营、视频拍摄与后期剪辑系列教程。</p>
+        <p>现在把主要精力迁移到 AI 漫剧制作，每天在一线做项目。这门 Bootcamp 不是一节体验课，而是把他日常工艺整套搬到镜头前。</p>
+        <div class="in-chips">
+          <span class="pc p">🎓 北大青鸟讲师</span>
+          <span class="pc o">📺 B 站长期创作者</span>
+          <span class="pc b">💻 Java / 新媒体 / 视频拍剪</span>
+          <span class="pc g">🎬 AI 漫剧一线从业</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tool Stack -->
+  <div class="sec">
+    <h2>课程会用到的 AI 工具</h2>
+    <p class="sub">每个工具都不要求全买 · 课里会讲什么戏用哪家</p>
+    <div class="ts-grid">
+      <div class="ts-col">
+        <div class="ts-logo">🎞</div>
+        <div class="ts-name">即梦</div>
+        <div class="ts-vendor">ByteDance · Seedance</div>
+        <div class="ts-role">视频生成主力</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">成片质感、镜头语言、人物一致性综合最强。长镜头和情绪戏的首选。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">🎥</div>
+        <div class="ts-name">Vidu</div>
+        <div class="ts-vendor">生数科技</div>
+        <div class="ts-role">视频生成 · 次主力</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">多主体一致性 + 二次元风格强。Q1 模型常用作即梦的对照组。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">🍌</div>
+        <div class="ts-name">Nano Banana</div>
+        <div class="ts-vendor">Google · Gemini 2.5 Flash Image</div>
+        <div class="ts-role">图像生成 · 角色 / 场景</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">角色出图主力。多视角保持同一个人 + 出图 30 秒起。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">📱</div>
+        <div class="ts-name">Tapnow</div>
+        <div class="ts-vendor">Tapnow</div>
+        <div class="ts-role">漫剧 / 分镜模板</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">漫剧模板 + 分镜 + 对白气泡一站式。起号跑量首选。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">🎙</div>
+        <div class="ts-name">智声云配</div>
+        <div class="ts-vendor">智声云配</div>
+        <div class="ts-role">AI 配音 / 对口型</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">本课声音设计主用配音平台。多音色 + 嘴型同步能力。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">🤖</div>
+        <div class="ts-name">分镜智能体</div>
+        <div class="ts-vendor">课程内定制 Prompt 工作流</div>
+        <div class="ts-role">分镜 / Prompt 批量化</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">L18 / L27 用到。把剧本喂智能体一次出整集 Prompt 表。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sec">
+    <h2>常见问题</h2>
+    <p class="sub">报名前最关心的 6 个问题</p>
+    <div class="fq-list">
+      <details class="fq-item"><summary>课程是录播还是直播？</summary><div class="ans">全程录播，10 章 31 节、约 13 小时。报名后按自己节奏看。课程页只展示大纲，播放入口走另外的渠道（B 站 Cheese / 私域微信群等）。</div></details>
+      <details class="fq-item"><summary>需要什么基础？</summary><div class="ans">需要会用电脑、装过常见 AI 工具账号（即梦 / Vidu / Nano Banana / Tapnow 任一即可），看得懂中文 Prompt。无需画画、编剧、视频剪辑基础，课里都会带。</div></details>
+      <details class="fq-item"><summary>AI 工具是否免费？</summary><div class="ans">课程不强制买任何工具。免费档可以跑完 Phase 1-2 的所有练习。Phase 3-4 想出整集片建议至少订阅 1 家视频工具（即梦或 Vidu，几十块 / 月起步）。</div></details>
+      <details class="fq-item"><summary>课程里的工具不能用怎么办？</summary><div class="ans">即梦 / Tapnow 需要中国手机号或抖音账号。海外学员可以用 Vidu + Nano Banana 替代主线工艺。课里讲方法不绑工具。</div></details>
+      <details class="fq-item"><summary>学完能做到什么？</summary><div class="ans">能独立把一份剧本变成一条完整的 AI 漫剧 — 角色三视图 / 场景一致性 / 分镜表 / 视频生成 / 配音对口型 / 剪辑出片，每一环节都有 SOP 在手。Phase 4 一镜到底就是这个能力的检验。</div></details>
+      <details class="fq-item"><summary>课程会更新吗？</summary><div class="ans">AI 视频工具更新非常快（即梦半年发 2 个大版本是常态）。一线工艺有重大调整时会补录新内容。</div></details>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>AI 漫剧 Bootcamp · 张彦伟 · JR Academy 2026</p>
+    <p style="margin-top:6px;font-size:12px;opacity:0.7">大纲会随一线工艺迭代调整 · 已购学员获得后续更新</p>
+  </div>
+</body>
+</html>

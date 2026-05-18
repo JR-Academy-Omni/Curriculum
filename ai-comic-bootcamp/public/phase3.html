@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phase 3 · 分镜 & 声音设计 · AI 漫剧 Bootcamp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#FF914D 100%);padding:48px 24px 36px;color:#fff}
+    .header .crumb{font-family:'Space Mono',monospace;font-size:12px;opacity:0.75;text-align:center;margin-bottom:10px}
+    .header .crumb a{color:#fff;opacity:0.9}
+    .header h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,4.5vw,40px);font-weight:900;text-align:center;line-height:1.2;max-width:1000px;margin:0 auto}
+    .header .sub{text-align:center;font-size:14px;opacity:0.85;max-width:800px;margin:12px auto 0;line-height:1.65}
+    .header .meta{display:flex;gap:14px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .header .meta span{font-family:'Space Mono',monospace;font-size:11px;padding:4px 10px;border:2px solid rgba(255,255,255,0.35);background:rgba(0,0,0,0.15)}
+    .ph-wrap{max-width:1100px;margin:32px auto;padding:0 24px}
+    .less{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #FF914D;margin-bottom:22px;transition:all 0.15s}
+    .less:hover{box-shadow:none;transform:translate(4px,4px)}
+    .less-head{padding:16px 22px;display:flex;align-items:center;gap:14px;background:#fafafa;border-bottom:2px solid #000;flex-wrap:wrap}
+    .less-code{font-family:'Space Mono',monospace;font-size:14px;font-weight:900;color:#FF914D;padding:4px 10px;background:#fff7ed;border:2px solid #FF914D;flex-shrink:0}
+    .less-title{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;color:#10162f;flex:1;min-width:200px}
+    .less-meta{font-family:'Space Mono',monospace;font-size:11px;color:#888;display:flex;gap:10px;flex-wrap:wrap}
+    .less-meta .pill{padding:2px 8px;background:#10162f;color:#fff;font-weight:700}
+    .less-meta .pill.v{background:#FF914D}
+    .less-body{padding:18px 22px}
+    .less-desc{font-size:14px;line-height:1.7;color:#333;margin-bottom:14px}
+    .less-steps{border-top:1px dashed #ddd;padding-top:12px}
+    .less-steps h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#999;margin-bottom:10px}
+    .step{display:grid;grid-template-columns:32px 1fr auto;gap:12px;padding:8px 0;border-bottom:1px solid #f3f3f3;align-items:start}
+    .step:last-child{border-bottom:none}
+    .step-num{width:28px;height:28px;border:2px solid #000;background:#FF914D;color:#fff;font-family:'Space Mono',monospace;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center}
+    .step-body h6{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;color:#10162f;margin-bottom:3px}
+    .step-body p{font-size:13px;line-height:1.6;color:#555}
+    .step-time{font-family:'Space Mono',monospace;font-size:11px;color:#888;white-space:nowrap}
+    .sec-divider{margin:32px 0 16px;padding:14px 22px;background:#10162f;color:#fff;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:16px}
+    .sec-divider small{font-family:'Space Mono',monospace;font-weight:400;font-size:11px;opacity:0.7;margin-left:10px}
+    .nav-bar{max-width:1100px;margin:32px auto 0;padding:0 24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .nav-btn{padding:10px 18px;border:3px solid #000;background:#fff;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-decoration:none;color:#10162f;transition:all 0.15s}
+    .nav-btn:hover{box-shadow:none;transform:translate(2px,2px);text-decoration:none}
+    .nav-btn.next{background:#FF914D;color:#fff}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="crumb"><a href="./curriculum.html">课程大纲</a> · Phase 3</div>
+    <h1>Phase 3 · 分镜 & 声音设计</h1>
+    <p class="sub">分镜是漫剧的语法、声音是漫剧的灵魂 · 5 节分镜（含智能体）+ 5 节声音（含智声云配 / 对口型 / 音效）。</p>
+    <div class="meta">
+      <span>📚 10 LESSONS</span>
+      <span>⏱ ~254 MIN</span>
+      <span>🎬 分镜组接</span>
+      <span>🎙 声音设计</span>
+    </div>
+  </div>
+
+  <div class="ph-wrap">
+    <div class="sec-divider">第 6 章 · 分镜设计 <small>5 节 · 共 133 min</small></div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L14</span><span class="less-title">分镜设计 — 镜头组接基础</span><span class="less-meta"><span class="pill v">VIDEO</span><span>22 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">什么是分镜 · 镜头组接的语法 · 蒙太奇怎么读 · 第一节先把术语对齐。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>分镜术语库</h6><p>景别 / 角度 / 时长 / 转场 — 一条镜头的 4 个描述维度。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>组接的 3 个目标</h6><p>讲故事 / 给情绪 / 控节奏。</p></div><div class="step-time">12 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L15</span><span class="less-title">分镜设计 — 总览</span><span class="less-meta"><span class="pill v">VIDEO</span><span>28 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">拿到一段剧本怎么列分镜表 · 分镜表模板（场景 / 景别 / 时长 / 描述 / Prompt）· 真实例子拆解。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>分镜表 5 列模板</h6><p>镜号 / 场景 / 景别 / 时长 / 视频 Prompt。</p></div><div class="step-time">12 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>把一段剧本拆成 12 个分镜</h6><p>现场示范完整拆解。</p></div><div class="step-time">16 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L16</span><span class="less-title">分镜设计 — 按景别组接镜头</span><span class="less-meta"><span class="pill v">VIDEO</span><span>25 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">远 / 中 / 近 / 特 — 景别变化驱动节奏 · 不同情绪段适合怎么组 · 起伏段落举例。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>4 种景别的情绪功能</h6><p>每种景别擅长承载的情绪 + 节奏。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>情绪段景别组接示范</h6><p>从『平静』到『高潮』的 6 镜组接。</p></div><div class="step-time">15 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L17</span><span class="less-title">分镜设计 — 对话场景镜头组接</span><span class="less-meta"><span class="pill v">VIDEO</span><span>28 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">两人对话怎么切 · 正反打 / 越轴 / 视线衔接 · 漫剧里对话戏占大头，这节单拎出来。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>正反打 + 越轴规则</h6><p>传统视频的对话语法在 AI 漫剧里依然适用。</p></div><div class="step-time">12 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>一场对话戏完整组接</h6><p>现场拆 8 镜对话戏。</p></div><div class="step-time">16 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L18</span><span class="less-title">分镜设计 — 借助智能体写分镜提示词</span><span class="less-meta"><span class="pill v">VIDEO</span><span>30 min</span><span class="pill" style="background:#ec4899">🤖 智能体</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">把分镜表喂智能体，让它一次性出所有镜头的视频 Prompt · 模板设计 + 智能体调教。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>分镜智能体的角色设定</h6><p>怎么让智能体记住人物 / 场景 / 画风的一致性约束。</p></div><div class="step-time">12 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>智能体一键生 12 条 Prompt</h6><p>拿分镜表喂智能体看输出。</p></div><div class="step-time">18 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider">第 7 章 · 声音设计 <small>5 节 · 共 121 min</small></div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L19</span><span class="less-title">声音设计 — 概述</span><span class="less-meta"><span class="pill v">VIDEO</span><span>18 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">声音是漫剧的灵魂 · 一条片里包含配音 / 环境 / 音效 / 配乐 4 层 · 本章 5 节怎么走。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>声音 4 层结构</h6><p>配音 / 环境 / 音效 / 配乐，每层的作用。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>本章节奏与工具</h6><p>智声云配 + 对口型 + 音效库的使用顺序。</p></div><div class="step-time">8 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L20</span><span class="less-title">声音设计 — 通过智声云配给角色配音</span><span class="less-meta"><span class="pill v">VIDEO</span><span>28 min</span><span class="pill">🎙 智声云配</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">智声云配怎么用 · 选音色 / 调情绪 / 拼台词 · 配音和角色形象怎么对上。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>音色筛选标准</h6><p>年龄 / 性别 / 音域 / 情绪 4 个维度对齐角色设定。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>为小和尚配音</h6><p>现场为 Phase 1 案例角色配出一段台词。</p></div><div class="step-time">18 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L21</span><span class="less-title">声音设计 — 对口型</span><span class="less-meta"><span class="pill v">VIDEO</span><span>25 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">配好的音怎么贴上画面 · 嘴型同步技术 · 哪些工具能做、效果差别在哪。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>口型同步的 3 种实现路径</h6><p>AI 口型 / 手动对齐 / 取巧规避（背面镜头 / 远景）。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>对口型实操</h6><p>把上一节的台词贴回画面演示。</p></div><div class="step-time">15 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L22</span><span class="less-title">声音设计 — 音效设计</span><span class="less-meta"><span class="pill v">VIDEO</span><span>22 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">门开 / 风声 / 脚步 / 心跳 / 转场 — 音效库怎么选 · 哪些场景必加 · 自己用 AI 出音效的方法。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>漫剧必备音效清单</h6><p>常用 20 个音效分类 + 来源库。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>音效贴片实操</h6><p>为一段 30 秒漫剧逐层叠音效。</p></div><div class="step-time">12 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L23</span><span class="less-title">声音设计 — 综合声音设计</span><span class="less-meta"><span class="pill v">VIDEO</span><span>28 min</span><span class="pill" style="background:#10b981">综合实战</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">把配音 + 环境 + 音效 + 配乐叠在一起 · 4 层声音的混音逻辑 · 一条完整片的声音工程。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>混音层级与音量平衡</h6><p>对白 > 音效 > 环境 > 配乐的相对音量。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>整条 1 分钟漫剧的混音</h6><p>现场把 4 层叠完出成片。</p></div><div class="step-time">18 min</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <a class="nav-btn" href="./phase2.html">← Phase 2</a>
+    <a class="nav-btn next" href="./phase4.html">Phase 4 · 综合实战 & 剧本 →</a>
+  </div>
+
+  <div class="footer" style="margin-top:48px">
+    <p>AI 漫剧 Bootcamp · Phase 3 · 张彦伟</p>
+  </div>
+</body>
+</html>
