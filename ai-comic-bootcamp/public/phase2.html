@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phase 2 · 角色 &amp; 场景设计 · AI 漫剧 Bootcamp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#38B6FF 100%);padding:48px 24px 36px;color:#fff}
+    .header .crumb{font-family:'Space Mono',monospace;font-size:12px;opacity:0.75;text-align:center;margin-bottom:10px}
+    .header .crumb a{color:inherit;opacity:0.9}
+    .header h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,4.5vw,40px);font-weight:900;text-align:center;line-height:1.2;max-width:1000px;margin:0 auto}
+    .header .sub{text-align:center;font-size:14px;opacity:0.85;max-width:800px;margin:12px auto 0;line-height:1.65}
+    .header .meta{display:flex;gap:14px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .header .meta span{font-family:'Space Mono',monospace;font-size:11px;padding:4px 10px;border:2px solid rgba(0,0,0,0.18);background:rgba(255,255,255,0.18)}
+    .ph-wrap{max-width:1100px;margin:32px auto;padding:0 24px}
+    .less{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #38B6FF;margin-bottom:22px;transition:all 0.15s}
+    .less:hover{box-shadow:none;transform:translate(4px,4px)}
+    .less-head{padding:16px 22px;display:flex;align-items:center;gap:14px;background:#fafafa;border-bottom:2px solid #000;flex-wrap:wrap}
+    .less-code{font-family:'Space Mono',monospace;font-size:14px;font-weight:900;color:#38B6FF;padding:4px 10px;background:rgba(0,0,0,0.05);border:2px solid #38B6FF;flex-shrink:0}
+    .less-title{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;color:#10162f;flex:1;min-width:200px}
+    .less-meta{font-family:'Space Mono',monospace;font-size:11px;color:#888;display:flex;gap:10px;flex-wrap:wrap}
+    .less-meta .pill{padding:2px 8px;background:#10162f;color:#fff;font-weight:700}
+    .less-meta .pill.v{background:#38B6FF;color:#fff}
+    .less-body{padding:18px 22px}
+    .less-desc{font-size:14px;line-height:1.7;color:#333;margin-bottom:14px}
+    .less-steps{border-top:1px dashed #ddd;padding-top:12px}
+    .less-steps h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#999;margin-bottom:10px}
+    .step{display:grid;grid-template-columns:32px 1fr auto;gap:12px;padding:8px 0;border-bottom:1px solid #f3f3f3;align-items:start}
+    .step:last-child{border-bottom:none}
+    .step-num{width:28px;height:28px;border:2px solid #000;background:#38B6FF;color:#fff;font-family:'Space Mono',monospace;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center}
+    .step-body h6{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;color:#10162f;margin-bottom:3px}
+    .step-body p{font-size:13px;line-height:1.6;color:#555}
+    .step-time{font-family:'Space Mono',monospace;font-size:11px;color:#888;white-space:nowrap}
+    .sec-divider{margin:32px 0 16px;padding:14px 22px;background:#10162f;color:#fff;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:16px}
+    .sec-divider small{font-family:'Space Mono',monospace;font-weight:400;font-size:11px;opacity:0.7;margin-left:10px}
+    .nav-bar{max-width:1100px;margin:32px auto 0;padding:0 24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .nav-btn{padding:10px 18px;border:3px solid #000;background:#fff;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-decoration:none;color:#10162f;transition:all 0.15s}
+    .nav-btn:hover{box-shadow:none;transform:translate(2px,2px);text-decoration:none}
+
+    .less:nth-child(odd){transform:rotate(-0.4deg)}
+    .less:nth-child(even){transform:rotate(0.4deg)}
+    .less:hover{transform:translate(4px,4px) !important}
+    .less-code{position:relative;font-style:italic}
+    .less-code::after{content:"!";color:#ec4899;margin-left:2px}
+    .nav-btn.next{background:#38B6FF;color:#fff}
+  </style>
+</head>
+<body>
+  <div class="header halftone speedlines" style="position:relative;overflow:hidden">
+    <div class="sfx" style="position:absolute;top:14px;left:5%;z-index:3;color:#FFDE59;font-size:clamp(22px,3vw,40px)">唰！</div>
+    <div class="sfx" style="position:absolute;bottom:14px;right:5%;z-index:3;color:#10b981;transform:rotate(8deg);font-size:clamp(18px,2.5vw,32px)">出图！</div>
+    <div class="pow-burst blue" style="position:absolute;top:28px;right:6%;z-index:3;width:74px;height:74px;font-size:13px;line-height:1.15">EP<br>2-3</div>
+    <div class="crumb"><a href="./curriculum.html">课程大纲</a> · Phase 2</div>
+    <h1>Phase 2 — 角色 &amp; 场景设计</h1>
+    <p class="sub">角色形象 + 三视图 + 场景一致性（7 节 · 167 min）</p>
+      <div class="meta"><span>📚 7 LESSONS</span><span>🎨 角色一致性</span><span>🏞 场景一致性</span></div>
+  </div>
+
+  <div class="ph-wrap">
+    <div class="sec-divider">第 2 章 · 角色形象设计 <small>3 节 · 共 73 min</small></div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L09</span><span class="less-title">小和尚角色形象设计</span><span class="less-meta"><span class="pill v">VIDEO</span><span>22 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">用一个『小和尚』案例从零做角色 · Nano Banana 出主角的 Prompt 写法、参考图喂法、外形锁定要点。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>角色 Prompt 四要素</h6><p>外形 / 服饰 / 神态 / 风格四个维度。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>小和尚出图实操</h6><p>Prompt → 出 4 张 → 选定主形象。</p></div><div class="step-time">12 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L10</span><span class="less-title">通过剧本提取人物形象</span><span class="less-meta"><span class="pill v">VIDEO</span><span>24 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">拿到一份剧本怎么把所有人物的外形 / 性格 / 关系拆出来 · 拆人模板 + 喂 AI 的 Prompt 写法。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>拆人物模板（5 字段）</h6><p>姓名 / 年龄 / 外形 / 性格 / 关系。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>人物表喂 AI 出图</h6><p>用拆出的表批量出形象稿。</p></div><div class="step-time">14 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L11</span><span class="less-title">生成三视图（正面 / 侧面 / 背面）</span><span class="less-meta"><span class="pill v">VIDEO</span><span>27 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">角色一致性的命根 — 三视图 · 怎么让 AI 在不同视角下保持同一个人 · 种子锁定、参考图喂法、修脸技巧。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>为什么必须做三视图</h6><p>三视图是后续所有镜头一致性的源材料。</p></div><div class="step-time">6 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>三视图 SOP</h6><p>首图 → 正面 → 侧面 → 背面的迭代顺序。</p></div><div class="step-time">15 min</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><h6>崩脸 / 服装走形修复</h6><p>常见跑偏类型 + 修复手法。</p></div><div class="step-time">6 min</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-divider">第 3 章 · AI 场景设计 <small>4 节 · 共 94 min</small></div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L12</span><span class="less-title">AI 场景设计 — 茶室案例</span><span class="less-meta"><span class="pill v">VIDEO</span><span>14 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">用一个『茶室』场景从 0 出图 · 场景 Prompt 的拆法、光照氛围、镜头远近的描述习惯。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>场景 Prompt 的 4 个轴</h6><p>建筑 / 光照 / 物件 / 视角。</p></div><div class="step-time">6 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>茶室出图实操</h6><p>从『茶室』到『午后阳光茶室』的迭代。</p></div><div class="step-time">8 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L13</span><span class="less-title">AI 场景设计 — 从剧本中提炼场景</span><span class="less-meta"><span class="pill v">VIDEO</span><span>41 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">拿到剧本怎么把所有场景一次性列出来 · 场景表 + 复用关系 + 优先级 · 避免后期发现少一个场景。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>场景表模板</h6><p>场景编号 / 出现集数 / 主光 / 必备物件。</p></div><div class="step-time">16 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>场景表批量出图</h6><p>相同画风 Prompt 一次出齐所有场景。</p></div><div class="step-time">25 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L14</span><span class="less-title">AI 场景设计 — 角色和场景融合</span><span class="less-meta"><span class="pill v">VIDEO</span><span>14 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">角色已出 / 场景已出 → 怎么把人放进场景里又不破坏一致性 · 合成顺序、参考图喂法、人物站位。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>为什么直接画一起会崩</h6><p>AI 合图的限制。</p></div><div class="step-time">4 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>人 + 场景融合 SOP</h6><p>先画空场景 → 喂角色参考 → 加位置描述。</p></div><div class="step-time">10 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L15</span><span class="less-title">AI 场景设计 — 实现空间关系的一致性</span><span class="less-meta"><span class="pill v">VIDEO</span><span>25 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">同一场景在不同镜头下要稳定 — 茶室从大全景到特写要保持是同一间茶室 · 锁场技巧 + 多角度规避崩坏。</p>
+        <div class="less-steps"><h5>STEPS</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>空间一致性问题成因</h6><p>同一场景不同 Prompt 跑偏的根因。</p></div><div class="step-time">8 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>锁场参考图法</h6><p>主图做种子，变体都喂这张作参考。</p></div><div class="step-time">17 min</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <a class="nav-btn" href="./phase1.html">← Phase 1</a>
+    <a class="nav-btn next" href="./phase3.html">Phase 3 · 视频生成 & 爆款 & 首尾帧 →</a>
+  </div>
+
+  <div class="footer" style="margin-top:48px">
+    <p>AI 漫剧 Bootcamp · Phase 2 · 张彦伟</p>
+  </div>
+</body>
+</html>

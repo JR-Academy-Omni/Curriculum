@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 漫剧课程体系 · 入门班 + 进阶班 · 张彦伟主讲</title>
+  <meta name="description" content="AI 漫剧课程体系 — 张彦伟老师两阶录播：入门班 15 节（7h46m）从挑小说到发抖音做出第一条片；进阶班 49 节（24h）工艺全链路 + Seedance 项目实例。进阶班学完赠送项目素材包 + Prompt 库 + 智能体配置。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#10162f 0%,#CB6CE6 100%);padding:56px 24px 48px}
+    .header h1{font-size:clamp(28px,5vw,46px);line-height:1.15;max-width:1000px;margin:0 auto;font-family:'Bricolage Grotesque',sans-serif}
+    .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:820px;margin:14px auto 0;opacity:0.85;line-height:1.6}
+    .header .meta-bar{display:flex;gap:18px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+    .header .meta-bar span{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;padding:4px 12px;border:2px solid rgba(255,255,255,0.4);background:rgba(0,0,0,0.15)}
+    /* Stats */
+    .stats{background:#10162f;color:#fff;padding:28px 24px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;border-bottom:4px solid #000}
+    .stats .s{text-align:center}
+    .stats .n{font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:900;color:#CB6CE6;line-height:1}
+    .stats .l{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:#aaa;margin-top:6px}
+    /* Section base */
+    .sec{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .sec h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:900;color:#10162f;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:16px}
+    .sec h2::before,.sec h2::after{content:"";flex:0 0 32px;height:5px;background:#CB6CE6}
+    .sec .sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .sec:nth-of-type(2n) h2::before,.sec:nth-of-type(2n) h2::after{background:#FF914D}
+    .sec:nth-of-type(3n) h2::before,.sec:nth-of-type(3n) h2::after{background:#38B6FF}
+    .sec:nth-of-type(4n) h2::before,.sec:nth-of-type(4n) h2::after{background:#ec4899}
+    /* Phase cards */
+    .ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .ph-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:24px;transition:all 0.15s;display:block;text-decoration:none;color:#10162f}
+    .ph-card:hover{box-shadow:none;transform:translate(4px,4px);text-decoration:none}
+    .ph-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;margin-bottom:12px;color:#fff}
+    .ph-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;margin-bottom:8px;line-height:1.3}
+    .ph-card .ph-sum{font-size:13px;color:#444;line-height:1.65;margin-bottom:12px}
+    .ph-card .ph-bullets{font-size:13px;color:#444;padding-left:18px;line-height:1.85;margin-top:10px}
+    .ph-card .ph-bullets li{margin-bottom:2px}
+    .ph-card .ph-foot{margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;color:#999;display:flex;justify-content:space-between;align-items:center}
+    .ph-card .ph-foot a{font-weight:700;color:#CB6CE6}
+    @media(max-width:1024px){.ph-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.ph-grid{grid-template-columns:1fr}}
+    /* Instructor */
+    .in-card{border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #CB6CE6;display:grid;grid-template-columns:280px 1fr;gap:0}
+    .in-left{background:linear-gradient(135deg,#10162f 0%,#CB6CE6 100%);color:#fff;padding:32px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;border-right:3px solid #000}
+    .in-avatar{width:110px;height:110px;border:3px solid #fff;background:#fff;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:5px 5px 0 rgba(0,0,0,0.35)}
+    .in-name{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;letter-spacing:0.5px;margin-top:6px}
+    .in-role{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.85}
+    .in-right{padding:28px 30px}
+    .in-tagline{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;color:#10162f;line-height:1.4;margin-bottom:14px}
+    .in-right p{font-size:14px;line-height:1.75;color:#333;margin-bottom:10px}
+    .in-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .in-chips .pc{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:#f3f4f6;border:2px solid #000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+    .in-chips .pc.p{background:#fce7f3;color:#9d174d}
+    .in-chips .pc.o{background:#fff7ed;color:#9a3412}
+    .in-chips .pc.b{background:#dbeafe;color:#1e40af}
+    .in-chips .pc.g{background:#d1fae5;color:#065f46}
+    @media(max-width:820px){.in-card{grid-template-columns:1fr}.in-left{border-right:none;border-bottom:3px solid #000;padding:28px 20px}}
+    /* Tool stack */
+    .ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid #000;background:#fff}
+    .ts-col{padding:22px;border-right:3px solid #000;border-bottom:3px solid #000}
+    .ts-col:nth-child(3n){border-right:none}
+    .ts-col:nth-last-child(-n+2):not(:nth-child(3n+1)),.ts-col:last-child{border-bottom:none}
+    .ts-col:nth-last-child(-n+3):nth-child(3n+1),.ts-col:nth-last-child(-n+3):nth-child(3n+1) ~ .ts-col{border-bottom:none}
+    .ts-logo{font-size:30px;margin-bottom:8px}
+    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;color:#10162f}
+    .ts-vendor{font-family:'Space Mono',monospace;font-size:11px;color:#888;margin-top:2px}
+    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#CB6CE6;font-weight:700;margin-top:10px;margin-bottom:8px}
+    @media(max-width:900px){.ts-grid{grid-template-columns:1fr 1fr}.ts-col{border-right:none !important;border-bottom:3px solid #000 !important}.ts-col:last-child{border-bottom:none !important}}
+    @media(max-width:540px){.ts-grid{grid-template-columns:1fr}}
+    /* Audience */
+    .au-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:18px 20px;transition:all 0.15s}
+    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .au-emoji{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
+    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+    .au-body p{font-size:13px;line-height:1.65;color:#555}
+    @media(max-width:900px){.au-grid{grid-template-columns:1fr}}
+    /* Highlights */
+    .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .hl-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:20px;transition:all 0.15s}
+    .hl-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .hl-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 8px;margin-bottom:10px;color:#fff;background:#CB6CE6}
+    .hl-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;line-height:1.4;color:#10162f;margin-bottom:8px}
+    .hl-card p{font-size:13px;line-height:1.65;color:#444}
+    @media(max-width:900px){.hl-grid{grid-template-columns:1fr}}
+    /* FAQ */
+    .fq-list{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;max-width:1000px;margin:0 auto}
+    .fq-item{border-bottom:2px solid #000}
+    .fq-item:last-child{border-bottom:none}
+    .fq-item summary{padding:16px 22px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:16px;color:#10162f;cursor:pointer;list-style:none}
+    .fq-item summary::-webkit-details-marker{display:none}
+    .fq-item summary::before{content:"+";display:inline-block;margin-right:12px;font-family:'Space Mono',monospace;color:#CB6CE6;font-weight:900}
+    .fq-item[open] summary::before{content:"−"}
+    .fq-item .ans{padding:0 22px 18px 40px;font-size:14px;line-height:1.75;color:#444}
+    /* tier comparison + intro phase grid responsive */
+    @media(max-width:1024px){
+      .tier-grid{grid-template-columns:1fr 1fr !important}
+    }
+    @media(max-width:760px){
+      .tier-grid{grid-template-columns:1fr !important}
+      .intro-phase-grid{grid-template-columns:1fr !important}
+      .intro-phase-grid > div[style*="grid-column:span 2"]{grid-column:auto !important}
+      .resource-grid{grid-template-columns:1fr !important}
+      .coach-grid{grid-template-columns:1fr !important}
+      .coach-grid > div{border-right:none !important;border-bottom:3px solid #000 !important}
+      .coach-grid > div:last-child{border-bottom:none !important}
+      .coach-outcome{grid-template-columns:1fr !important}
+    }
+  </style>
+</head>
+<body>
+  <div class="header halftone speedlines" style="position:relative;overflow:hidden">
+    <!-- 漫剧 SFX 装饰 -->
+    <div class="sfx" style="position:absolute;top:18px;left:6%;z-index:3;color:#FFDE59">砰！</div>
+    <div class="sfx pink" style="position:absolute;top:30%;right:5%;z-index:3;transform:rotate(8deg)">大片！</div>
+    <div class="sfx blue" style="position:absolute;bottom:18px;left:8%;z-index:3;transform:rotate(-4deg);font-size:clamp(22px,3vw,38px)">咻——</div>
+    <div class="pow-burst pink" style="position:absolute;bottom:24px;right:8%;z-index:3">3 档<br>任选</div>
+    <div style="position:relative;z-index:4">
+      <h1>AI 漫剧课程体系 · 入门 / 进阶 / 陪跑</h1>
+      <p class="sub">张彦伟老师 · 三档录播 + 1v1 陪跑。<strong>入门班 A$298</strong>（15 节 / 7h46m 做出第一条片）· <strong>进阶班 A$999</strong>（49 节 / 24h 工艺全链路 + 项目资源包）· <strong>老师陪跑 A$2399</strong>（含进阶班 + 1 个月 1v1 + 每周直播 + 半年答疑群）。</p>
+      <div class="meta-bar">
+        <span>🎯 入门班 · A$298</span>
+        <span>🚀 进阶班 · A$999</span>
+        <span>🎓 老师陪跑 · A$2399</span>
+        <span>📺 全程录播 · 永久可看</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats halftone" style="position:relative">
+    <div class="s"><div class="n">3</div><div class="l">阶 · TIERS</div></div>
+    <div class="s"><div class="n">64</div><div class="l">节课合计</div></div>
+    <div class="s"><div class="n">32<small style="font-size:18px">h</small></div><div class="l">录播总时长</div></div>
+    <div class="s"><div class="n">1<small style="font-size:18px">v</small>1</div><div class="l">陪跑可选</div></div>
+    <div class="s"><div class="n">📦</div><div class="l">进阶 · 项目资源</div></div>
+  </div>
+
+  <!-- ============ Tier comparison ============ -->
+  <div class="sec">
+    <h2>三档任选 · 录播 / 全工艺 / 1v1 陪跑</h2>
+    <p class="sub">A$298 做出第一条片 · A$999 把工艺学透 · A$2399 老师亲自陪跑一个月</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;max-width:1280px;margin:0 auto" class="tier-grid">
+      <!-- TIER 1 · 入门班 -->
+      <a class="ph-card panel-shadow-orange tilt-l" href="/curriculum/ai-comic-video-course/curriculum.html" style="display:block;text-decoration:none;color:#10162f;position:relative;background:linear-gradient(180deg,#fffbeb 0%,#fff 60%)">
+        <div class="pow-burst" style="position:absolute;top:-22px;left:-14px;z-index:5;width:78px;height:78px;font-size:12px;background:#FFDE59;color:#10162f;line-height:1.15">入门<br>TIER 1</div>
+        <span class="ph-tag" style="background:#B91C1C;color:#fff;font-size:12px;padding:5px 12px">🎯 入门班 · 从 0 到 1</span>
+        <h3 style="font-size:20px;margin-top:6px">AI 漫剧从 0 到 1 视频课</h3>
+        <div style="display:flex;align-items:baseline;gap:6px;margin:8px 0 4px"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:900;color:#B91C1C">A$298</span></div>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;color:#888;margin-bottom:10px">15 节 · 7h46m · 录播 · 永久可看</p>
+        <p class="ph-sum">1 节预告 + 14 节实操 · 挑小说 → 拆剧本 → 角色 / 场景 → 三种分镜图 → <strong>Seedance 2.0 六种用法</strong> → 配音剪辑 → 1 分钟漫剧成片。</p>
+        <ul class="ph-bullets">
+          <li>🍌 Nano Banana 分镜图 · 3 种工艺</li>
+          <li>🎞 Seedance 2.0 · 6 种视频生成路径</li>
+          <li>🎬 L01 支持试看</li>
+          <li>📦 含 Prompt 模板包 + 中文讲义</li>
+        </ul>
+        <div style="margin-top:14px;padding:10px 14px;background:#FFDE59;border:2px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:#10162f;text-align:center">👉 入门班大纲</div>
+      </a>
+
+      <!-- TIER 2 · 进阶班 -->
+      <a class="ph-card panel-shadow-pink tilt-r" href="#advanced" style="display:block;text-decoration:none;color:#10162f;position:relative;background:linear-gradient(180deg,#fdf2f8 0%,#fff 60%)">
+        <div class="pow-burst pink" style="position:absolute;top:-22px;right:-14px;z-index:5;width:78px;height:78px;font-size:12px;line-height:1.15">进阶<br>TIER 2</div>
+        <span class="ph-tag" style="background:#ec4899;color:#fff;font-size:12px;padding:5px 12px">🚀 进阶班 · 工艺全链路</span>
+        <h3 style="font-size:20px;margin-top:6px">AI 漫剧 Bootcamp · 全工艺</h3>
+        <div style="display:flex;align-items:baseline;gap:6px;margin:8px 0 4px"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:900;color:#ec4899">A$999</span></div>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;color:#888;margin-bottom:10px">49 节 · 24h · 6 Phase · 录播 + 项目资源</p>
+        <p class="ph-sum">11 章录播系统课 · AIGC 工具矩阵 / 爆款短视频 / 声音克隆 / 分镜智能体 / 全流程 / <strong>Seedance 项目实例 8 节</strong>。把入门班点到为止的部分全讲深。</p>
+        <ul class="ph-bullets">
+          <li>🛠 第 0 章 AIGC 工具矩阵 6 节</li>
+          <li>🔥 爆款短视频 3 节 + 声音克隆</li>
+          <li>💥 Seedance 真实项目实例 8 节</li>
+          <li>📦 <strong>毕业送项目资源包</strong></li>
+        </ul>
+        <div style="margin-top:14px;padding:10px 14px;background:#ec4899;color:#fff;border:2px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;text-align:center">👉 跳转进阶班详情</div>
+      </a>
+
+      <!-- TIER 3 · 老师陪跑 -->
+      <a class="ph-card panel-shadow-yellow tilt-l" href="#coaching" style="display:block;text-decoration:none;color:#10162f;position:relative;background:linear-gradient(180deg,#fff7ed 0%,#fffbeb 40%,#fff 80%);border-width:4px !important">
+        <div class="pow-burst" style="position:absolute;top:-22px;right:-14px;z-index:5;width:84px;height:84px;font-size:11px;background:#10162f;color:#FFDE59;line-height:1.2">1v1<br>陪跑<br>TIER 3</div>
+        <span class="ph-tag" style="background:#10162f;color:#FFDE59;font-size:12px;padding:5px 12px">🎓 老师陪跑 · ELITE</span>
+        <h3 style="font-size:20px;margin-top:6px">AI 漫剧 1v1 陪跑套餐</h3>
+        <div style="display:flex;align-items:baseline;gap:6px;margin:8px 0 4px"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:900;color:#10162f">A$2399</span><span style="font-size:11px;color:#888;font-family:'Space Mono',monospace">省 A$899 vs 单买</span></div>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;color:#888;margin-bottom:10px">进阶班 49 节 + 1 个月陪跑 + 半年答疑</p>
+        <p class="ph-sum"><strong>包含进阶班全部内容</strong> + 张老师 1 个月 1v1 陪跑 + 每周 2h 直播 + 半年陪跑群答疑。从有问题到能问 → 直接私聊老师。</p>
+        <ul class="ph-bullets">
+          <li>📺 进阶班 49 节录播 + 项目资源包</li>
+          <li>🎯 <strong>1 个月 1v1 陪跑辅导</strong></li>
+          <li>📡 每周 2h 直播 · 共 4 次 / 8h</li>
+          <li>💬 <strong>陪跑群 · 半年答疑</strong></li>
+        </ul>
+        <div style="margin-top:14px;padding:10px 14px;background:#10162f;color:#FFDE59;border:2px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;text-align:center">👉 陪跑套餐详情</div>
+      </a>
+    </div>
+    <p style="text-align:center;color:#666;font-size:13px;margin-top:18px">💡 三档对比：A$298 自学跑通流程 · A$999 全工艺 + 项目资源 · A$2399 老师亲自带一个月，做出能起号的账号</p>
+  </div>
+
+  <!-- ============ 入门班 详情 ============ -->
+  <div class="sec" id="intro">
+    <h2>入门班 · 15 节做出第一条片</h2>
+    <p class="sub">L01 → L14 · 挑小说 → 发抖音 · 6 个工序连成完整工艺 · 张彦伟主讲</p>
+    <div style="background:linear-gradient(135deg,#1a0f0a 0%,#B91C1C 50%,#FF914D 100%);color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #B91C1C;padding:24px;max-width:1100px;margin:0 auto;position:relative;overflow:hidden">
+      <span style="position:absolute;top:14px;right:24px;font-size:60px;opacity:0.15">🏮</span>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px" class="intro-phase-grid">
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 1 · 文字</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">小说 → 剧本 → 分镜</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85;margin-bottom:6px">L01 小说-剧本-分镜（46:37 · 试看）</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 2 · 视觉资产</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">角色 + 场景</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85">L02 角色设计 (51:42)<br>L03 场景设计 (19:42)</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 3 · 🍌 分镜图</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">Nano Banana 三种工艺</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85">L04 单镜 (17:31)<br>L05 批量 (56:01)<br>L07 九宫格 (48:49)</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px;grid-column:span 2">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 4 · 🎞 Seedance 2.0 六种用法</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">视频生成 · 本课的重头戏</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85">L06 基础图生视频 / L08 九宫格喂法 / L09 全能参考 / L10 豆包小云雀 + 九宫格 / L11 全能参考 v2 / L12 全能参考 + 配音一体</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,222,89,0.4);padding:14px 16px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#FFDE59;font-weight:700;letter-spacing:1px">PHASE 5 · ✂ 后期</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;margin:4px 0 6px">配音 / 音效 / 剪辑</h4>
+          <p style="font-size:12px;line-height:1.6;opacity:0.85">L13 配音 + 音效 (19:12)<br>L14 漫剧剪辑 (39:41)</p>
+        </div>
+      </div>
+      <div style="margin-top:18px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap">
+        <a href="/curriculum/ai-comic-video-course/curriculum.html" style="display:inline-block;padding:11px 22px;background:#FFDE59;color:#10162f;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;text-decoration:none;box-shadow:4px 4px 0 #000;transition:all 0.15s">📋 入门班完整大纲 →</a>
+        <span style="font-size:13px;opacity:0.85">15 节 · 7h46m · 含 Prompt 模板包</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 进阶班 · 6 Phase ============ -->
+  <div class="sec" id="advanced">
+    <h2>进阶班 · 6 个 Phase 工艺全链路</h2>
+    <p class="sub">11 章 49 节 · 24 小时 · 每个 Phase 对应漫剧生产的一段工序 · 跳着学也行 · 想从头吃也行</p>
+    <div class="ph-grid">
+      <a class="ph-card panel-shadow-purple tilt-l" href="./phase1.html">
+        <span class="ph-tag" style="background:#CB6CE6">🎬 Phase 1 · EP 0-1</span>
+        <h3>工具准备 & 入门</h3>
+        <p class="ph-sum">先把 AIGC 工具矩阵梳清楚 — 大模型 / 视频 / 音乐 / 云部署 / 辅助五大类 + AI 漫剧赛道总览。</p>
+        <ul class="ph-bullets">
+          <li>L01 试听课（3 分钟看完全课）</li>
+          <li>L02-L07 AIGC 工具矩阵 6 节</li>
+          <li>L08 了解 AI 漫剧</li>
+        </ul>
+        <div class="ph-foot"><span>8 节 · 219 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card panel-shadow-blue tilt-r" href="./phase2.html">
+        <span class="ph-tag" style="background:#38B6FF">🎨 Phase 2 · EP 2-3</span>
+        <h3>角色 & 场景设计</h3>
+        <p class="ph-sum">角色三视图 + 场景空间一致性 — 漫剧最痛的两个一致性问题都在这个 Phase 解决。</p>
+        <ul class="ph-bullets">
+          <li>L09-L11 角色形象 + 拆人物 + 三视图</li>
+          <li>L12-L15 AI 场景设计（茶室 / 提炼 / 融合 / 空间一致性）</li>
+        </ul>
+        <div class="ph-foot"><span>7 节 · 167 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card panel-shadow-green tilt-l" href="./phase3.html">
+        <span class="ph-tag" style="background:#10b981">⚡ Phase 3 · EP 4-5</span>
+        <h3>视频生成 & 爆款 & 首尾帧</h3>
+        <p class="ph-sum">视频 Prompt / 运镜 / 爆款短视频 3 节 / 首尾帧法 / 智能体多帧 — 出片能力一次性补齐。</p>
+        <ul class="ph-bullets">
+          <li>L16-L17 视频 Prompt + 运镜</li>
+          <li>L18-L20 爆款短视频专题（总览 + 分镜 + 包装）</li>
+          <li>L21-L23 首尾帧法 + 智能体多帧</li>
+        </ul>
+        <div class="ph-foot"><span>8 节 · 279 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card panel-shadow-orange tilt-r" href="./phase4.html">
+        <span class="ph-tag" style="background:#FF914D">🎙 Phase 4 · EP 6-7</span>
+        <h3>分镜 & 声音设计</h3>
+        <p class="ph-sum">5 节分镜（含智能体）+ 5 节声音（含声音克隆 / 智声云配 / 对口型 / 音效）。</p>
+        <ul class="ph-bullets">
+          <li>L24-L28 分镜设计（组接 / 景别 / 对话 / 智能体）</li>
+          <li>L29-L33 声音设计（克隆 / 配音 / 对口型 / 音效 / 综合）</li>
+        </ul>
+        <div class="ph-foot"><span>10 节 · 225 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card panel-shadow-yellow tilt-l" href="./phase5.html">
+        <span class="ph-tag" style="background:#FFDE59;color:#10162f">🎯 Phase 5 · EP 8-10</span>
+        <h3>综合实战</h3>
+        <p class="ph-sum">第 9 章一镜到底走完整集 + 剧本设计兜底 · 把前 4 个 Phase 学的方法用在一份真实剧本上从 0 出片。</p>
+        <ul class="ph-bullets">
+          <li>L34 参考生视频 · 主体库</li>
+          <li>L35-L40 漫剧全流程（角色 / 道具 / 分镜 / 配音 / 参考 / 剪辑）</li>
+          <li>L41 剧本设计</li>
+        </ul>
+        <div class="ph-foot"><span>8 节 · 248 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card panel-shadow-pink tilt-r" href="./phase6.html" style="position:relative">
+        <div class="pow-burst" style="position:absolute;top:-22px;right:-14px;z-index:5;width:74px;height:74px;font-size:13px">出片！</div>
+        <span class="ph-tag" style="background:#ec4899">💥 Phase 6 · EP 11</span>
+        <h3>Seedance 漫剧项目实例</h3>
+        <p class="ph-sum">即梦 Seedance 2.0 真实漫剧项目 8 节 — 从小说改剧本到剪辑配音的完整演示，前面学的所有方法在这里组合验证。</p>
+        <ul class="ph-bullets">
+          <li>L42-L44 项目实例 1-3（小说→剧本 / 角色 / 场景）</li>
+          <li>L45-L47 Seedance 2.0 全能参考生视频 + 配音展示</li>
+          <li>L48-L49 项目级音效 + 漫剧剪辑配音</li>
+        </ul>
+        <div class="ph-foot"><span>8 节 · 286 min</span><span>查看详情 →</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============ 进阶班毕业 · 项目资源包 ============ -->
+  <div class="sec">
+    <div style="max-width:1100px;margin:0 auto;border:3px solid #000;background:linear-gradient(135deg,#FFDE59 0%,#FF914D 60%,#ec4899 100%);box-shadow:8px 8px 0 #000;padding:32px 28px;position:relative;overflow:hidden">
+      <span class="sfx" style="position:absolute;top:-8px;right:24px;font-size:clamp(28px,4vw,52px);color:#fff;-webkit-text-stroke:3px #000;text-shadow:5px 5px 0 #000;transform:rotate(-8deg);opacity:0.95">出片！</span>
+      <div style="display:inline-block;background:#10162f;color:#FFDE59;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:1.5px;padding:5px 14px;margin-bottom:12px;border:2px solid #000">🚀 进阶班专属 · ADVANCED ONLY</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3.5vw,34px);font-weight:900;color:#10162f;line-height:1.2;margin-bottom:10px;display:block">📦 学完即送 · 项目级资源包</h2>
+      <p style="font-size:15px;line-height:1.7;color:#10162f;max-width:760px;margin-bottom:18px"><strong>进阶班毕业额外赠送</strong>张老师做项目过程中沉淀的全套生产资料 — 不是课件 PPT，是能直接拿去做下一条片的可复用资产。</p>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:920px" class="resource-grid">
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">🎬</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">项目级分镜表 + 全套素材</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">第 11 章 Seedance 项目实例用的完整分镜表、角色资产库、场景库、道具库 — 全部打包给你。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">🤖</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">分镜智能体 + 多帧智能体配置</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">L18 / L23 / L27 用到的 Coze / Dify 智能体导出 JSON · 一键导入直接用。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">📝</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">Seedance 2.0 全场景 Prompt 库</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">古风 / 都市 / 玄幻 / 校园 / 悬疑 5 套题材 × 4 工艺路径的 Prompt 模板，按场景检索。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">🎙</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">声音克隆 + 配音方案库</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">L29 演示的声音克隆样本 + L30-L33 各类角色音色 / 情绪节奏配置表。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">📊</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">爆款短视频钩子库</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">L18-L20 爆款专题分析的 50+ 条对标爆款 + 钩子 / 节奏 / 反转模板。</p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:16px 18px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:22px;line-height:1;margin-bottom:6px">🎓</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:6px">学员片源参考 + 更新通道</h4>
+          <p style="font-size:13px;line-height:1.65;color:#444">毕业学员片源精选 + 工具迭代补录视频 + 张老师每季度的工艺更新记录。</p>
+        </div>
+      </div>
+
+      <p style="margin-top:18px;font-size:13px;color:#10162f;font-family:'Space Mono',monospace">📌 资源包随课程版本持续更新 · 工具大版本变更（如 Seedance 3.0 上线）老学员免费拿新版</p>
+    </div>
+  </div>
+
+  <!-- ============ 老师陪跑 · TIER 3 ============ -->
+  <div class="sec" id="coaching">
+    <h2>老师陪跑 · 1v1 加直播加答疑</h2>
+    <p class="sub">A$2399 · 含进阶班 49 节 + 项目资源包 · 张老师亲自带一个月 · 半年陪跑群答疑</p>
+    <div style="max-width:1100px;margin:0 auto;border:4px solid #000;background:#fff;box-shadow:10px 10px 0 #10162f;position:relative;overflow:hidden">
+      <!-- Header band -->
+      <div style="background:linear-gradient(135deg,#10162f 0%,#1f2547 50%,#10162f 100%);color:#fff;padding:24px 28px;border-bottom:4px solid #000;position:relative;overflow:hidden">
+        <span class="sfx" style="position:absolute;top:-8px;right:18px;font-size:clamp(28px,4vw,52px);color:#FFDE59;-webkit-text-stroke:3px #000;text-shadow:5px 5px 0 #000;transform:rotate(-8deg);opacity:0.95">来吧！</span>
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px;justify-content:space-between">
+          <div>
+            <div style="display:inline-block;background:#FFDE59;color:#10162f;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:1.5px;padding:5px 14px;margin-bottom:12px;border:2px solid #000">🎓 TIER 3 · ELITE · 名额有限</div>
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3.5vw,32px);font-weight:900;line-height:1.2;margin-bottom:8px">AI 漫剧 · 老师 1v1 陪跑套餐</h3>
+            <p style="font-size:14px;opacity:0.85;line-height:1.65;max-width:640px">不是录播 + 答疑邮箱那种敷衍套餐。张老师把你当一个真实项目带，一个月内每天可以私聊问题、每周直播看你的进度、半年陪跑群持续答疑。</p>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:48px;font-weight:900;color:#FFDE59;line-height:1">A$2399</div>
+            <div style="font-family:'Space Mono',monospace;font-size:11px;color:#aaa;margin-top:4px">含进阶班 A$999 · 实际陪跑 A$1400</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 服务模块 -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0" class="coach-grid">
+        <div style="padding:24px 26px;border-right:3px solid #000;border-bottom:3px solid #000;background:#fff7ed">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <div style="width:46px;height:46px;background:#FF914D;border:3px solid #000;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:3px 3px 0 #000">🎯</div>
+            <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f">1 个月 · 1v1 陪跑辅导</h4>
+          </div>
+          <p style="font-size:13px;line-height:1.7;color:#444;margin-bottom:8px">从开课日起 30 天，<strong>直接私聊老师</strong> — 不限提问次数。你做项目卡在哪里、Prompt 调不出效果、镜头出不来、剪辑节奏拿不准，截图发过去 24 小时内回复（工作日）。</p>
+          <p style="font-size:12px;color:#888;font-family:'Space Mono',monospace">📌 一个月 · 不限问题 · 微信 / Slack 任选</p>
+        </div>
+        <div style="padding:24px 26px;border-bottom:3px solid #000;background:#fce7f3">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <div style="width:46px;height:46px;background:#ec4899;color:#fff;border:3px solid #000;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:3px 3px 0 #000">📡</div>
+            <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f">每周 2 小时直播 · 共 4 次</h4>
+          </div>
+          <p style="font-size:13px;line-height:1.7;color:#444;margin-bottom:8px">每周固定一次 Zoom 直播，张老师对着你这周做的片现场拆 — <strong>哪里崩了 / Prompt 怎么改 / 这条片如果是他会怎么做</strong>。直播可看回放。</p>
+          <p style="font-size:12px;color:#888;font-family:'Space Mono',monospace">📌 4 周 × 2h = 8h 直播 · 含回放</p>
+        </div>
+        <div style="padding:24px 26px;border-right:3px solid #000;background:#d1fae5">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <div style="width:46px;height:46px;background:#10b981;color:#fff;border:3px solid #000;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:3px 3px 0 #000">💬</div>
+            <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f">陪跑群 · 半年答疑</h4>
+          </div>
+          <p style="font-size:13px;line-height:1.7;color:#444;margin-bottom:8px">1v1 月结束后，陪跑群继续开放 <strong>5 个月</strong> — 工具版本更新、新坑、商单接活心得，老师在群里持续答疑。同期学员互相交流也省了找同温层的成本。</p>
+          <p style="font-size:12px;color:#888;font-family:'Space Mono',monospace">📌 群组半年活跃 · 老师不撤群</p>
+        </div>
+        <div style="padding:24px 26px;background:linear-gradient(135deg,#FFDE59 0%,#FF914D 100%)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <div style="width:46px;height:46px;background:#10162f;color:#FFDE59;border:3px solid #000;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:3px 3px 0 #000">📦</div>
+            <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f">含进阶班 49 节 + 项目资源包</h4>
+          </div>
+          <p style="font-size:13px;line-height:1.75;color:#10162f;margin-bottom:8px">老师陪跑套餐<strong>包含进阶班全部内容</strong>：11 章 49 节录播 + 项目资源包（分镜表 / 角色资产 / 智能体配置 / Prompt 库 / 声音克隆样本 / 爆款钩子库）。</p>
+          <p style="font-size:12px;color:#10162f;font-family:'Space Mono',monospace;font-weight:700">📌 进阶班 A$999 价值已含在内</p>
+        </div>
+      </div>
+
+      <!-- 陪跑成果 -->
+      <div style="background:#10162f;color:#fff;padding:24px 28px;border-top:4px solid #000">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:18px;color:#FFDE59">🚀 陪跑期望成果</span>
+        </div>
+        <ul style="font-size:14px;line-height:1.85;color:#fff;padding-left:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px" class="coach-outcome">
+          <li>✅ 1 个月内做出 <strong>3-5 条</strong> 完整漫剧成片（不是 demo）</li>
+          <li>✅ 起一个抖音 / 视频号 / 小红书账号</li>
+          <li>✅ 拿到老师审过的 <strong>个人 Prompt 库 + 分镜模板</strong></li>
+          <li>✅ 学会判断 <strong>哪种题材该用哪条工艺</strong></li>
+          <li>✅ 半年内有问题随时回群问，工具版本迭代有人带</li>
+          <li>✅ 接到第一单商业 AI 漫剧（如果你想接）</li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div style="padding:22px 28px;background:#fff;text-align:center;border-top:3px solid #000">
+        <a href="mailto:hello@jiangren.com.au?subject=AI%20%E6%BC%AB%E5%89%A7%20%E9%99%AA%E8%B7%91%E5%A5%97%E9%A4%90" style="display:inline-block;padding:14px 32px;background:#10162f;color:#FFDE59;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:15px;text-decoration:none;box-shadow:5px 5px 0 #FFDE59;transition:all 0.15s">🎓 申请陪跑名额 · A$2399</a>
+        <p style="margin-top:12px;font-size:12px;color:#888;font-family:'Space Mono',monospace">名额有限 · 每月最多 5 人 · 报名前可先 30 分钟通话沟通</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <div class="sec">
+    <h2>这门课和别的 AI 视频课的差别</h2>
+    <p class="sub">不是体验课、不是发布会、不是单点工具教程</p>
+    <div class="hl-grid">
+      <div class="hl-card panel-shadow-purple tilt-l">
+        <span class="hl-tag">SYSTEMATIC</span>
+        <h4>11 章 49 节 · 工艺全链路</h4>
+        <p>市面大部分 AI 视频课停在『出一段视频』。这门课把工具矩阵 → 剧本 → 角色 → 场景 → 分镜 → 视频 → 声音 → 剪辑 + Seedance 项目实例全部讲清楚，能直接落成 SOP。</p>
+      </div>
+      <div class="hl-card panel-shadow-blue tilt-r">
+        <span class="hl-tag" style="background:#38B6FF">CONSISTENCY</span>
+        <h4>一致性问题逐个攻破</h4>
+        <p>三视图、空间关系、主体库、多帧智能体 — 漫剧最痛的『跨镜头跑偏』问题，每个角度都有专门一节讲解。</p>
+      </div>
+      <div class="hl-card panel-shadow-orange tilt-l">
+        <span class="hl-tag" style="background:#FF914D">PRACTITIONER</span>
+        <h4>一线日常工艺直接公开</h4>
+        <p>张老师每天都在做 AI 漫剧项目。这门课不是把 PPT 录一遍，是把他每天打开电脑做的事情 — Prompt、智能体、配音工具、剪辑节奏 — 全部摊开。</p>
+      </div>
+      <div class="hl-card panel-shadow-green tilt-r">
+        <span class="hl-tag" style="background:#10b981">END-TO-END</span>
+        <h4>Phase 5 一镜到底 + Phase 6 Seedance 项目</h4>
+        <p>Phase 5 第 9 章 6 节连成完整工艺一镜到底；Phase 6 是即梦 Seedance 2.0 真实漫剧项目 8 节，从小说改剧本到剪辑配音的项目级演示双兜底。</p>
+      </div>
+      <div class="hl-card panel-shadow-pink tilt-l">
+        <span class="hl-tag" style="background:#ec4899">AGENT</span>
+        <h4>智能体上场</h4>
+        <p>分镜智能体写 Prompt、多帧智能体跑批、配音智能体管音色 — 把『一人能干一个工作室活』的能力打开。</p>
+      </div>
+      <div class="hl-card panel-shadow-yellow tilt-r">
+        <span class="hl-tag" style="background:#FFDE59;color:#10162f">SCRIPT</span>
+        <h4>用剧本兜底</h4>
+        <p>第 10 章单拎剧本设计 — 好剧本是漫剧的天花板。漫剧剧本 vs 传统剧本的差别、AI 能 / 不能 hold 的镜头、起号期剧本结构模板。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audience -->
+  <div class="sec">
+    <h2>这门课适合谁</h2>
+    <p class="sub">3 类人 · 看下你在哪一类</p>
+    <div class="au-grid">
+      <div class="au-card">
+        <div class="au-emoji">🎨</div>
+        <div class="au-body">
+          <h4>个人创作者 / 短视频起号</h4>
+          <p>已经摸过 AI 出图 / 出视频，但做不出整条片。想把每天发一条漫剧变成现实，需要工艺 SOP 而不是工具介绍。</p>
+        </div>
+      </div>
+      <div class="au-card">
+        <div class="au-emoji">🏢</div>
+        <div class="au-body">
+          <h4>内容团队 / 工作室成员</h4>
+          <p>团队在跑 AI 短剧 / 漫剧项目，需要把工艺标准化、能复用、能交接。这门课直接拿来当内部培训教材。</p>
+        </div>
+      </div>
+      <div class="au-card">
+        <div class="au-emoji">🎬</div>
+        <div class="au-body">
+          <h4>传统视频 / 编剧 / 美术转型</h4>
+          <p>已经懂剧本 / 镜头 / 剪辑，缺一份『AI 工具怎么换掉前期 70% 工作量』的具体方案。本课直接对接传统工艺的相应环节。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructor -->
+  <div class="sec">
+    <h2>讲师 · 张彦伟</h2>
+    <p class="sub">教过编程 · 教过新媒体 · 教过视频拍剪 · 现在每天在做 AI 漫剧</p>
+    <div class="in-card">
+      <div class="in-left">
+        <div class="in-avatar">🎬</div>
+        <div class="in-name">张彦伟</div>
+        <div class="in-role">AI Comic Drama · Practitioner</div>
+      </div>
+      <div class="in-right">
+        <div class="in-tagline">教过一线编程、新媒体、视频拍剪，现在把重心放在 AI 漫剧。</div>
+        <p>张老师的教学履历横跨传统编程、新媒体、视频拍摄剪辑、AI 视频四个阶段。早年在北大青鸟任讲师，面向 18–30 岁高中生、大学毕业生和在职人群教编程和新媒体；随后在 B 站等平台持续输出课程内容，做过 Java 编程、新媒体运营、视频拍摄与后期剪辑系列教程。</p>
+        <p>现在把主要精力迁移到 AI 漫剧制作，每天在一线做项目。这门 Bootcamp 不是一节体验课，而是把他日常工艺整套搬到镜头前。</p>
+        <div class="in-chips">
+          <span class="pc p">🎓 北大青鸟讲师</span>
+          <span class="pc o">📺 B 站长期创作者</span>
+          <span class="pc b">💻 Java / 新媒体 / 视频拍剪</span>
+          <span class="pc g">🎬 AI 漫剧一线从业</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tool Stack -->
+  <div class="sec">
+    <h2>课程会用到的 AI 工具</h2>
+    <p class="sub">每个工具都不要求全买 · 课里会讲什么戏用哪家</p>
+    <div class="ts-grid">
+      <div class="ts-col">
+        <div class="ts-logo">🎞</div>
+        <div class="ts-name">即梦</div>
+        <div class="ts-vendor">ByteDance · Seedance</div>
+        <div class="ts-role">视频生成主力</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">成片质感、镜头语言、人物一致性综合最强。长镜头和情绪戏的首选。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">🎥</div>
+        <div class="ts-name">Vidu</div>
+        <div class="ts-vendor">生数科技</div>
+        <div class="ts-role">视频生成 · 次主力</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">多主体一致性 + 二次元风格强。Q1 模型常用作即梦的对照组。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">🍌</div>
+        <div class="ts-name">Nano Banana</div>
+        <div class="ts-vendor">Google · Gemini 2.5 Flash Image</div>
+        <div class="ts-role">图像生成 · 角色 / 场景</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">角色出图主力。多视角保持同一个人 + 出图 30 秒起。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">📱</div>
+        <div class="ts-name">Tapnow</div>
+        <div class="ts-vendor">Tapnow</div>
+        <div class="ts-role">漫剧 / 分镜模板</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">漫剧模板 + 分镜 + 对白气泡一站式。起号跑量首选。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">🎙</div>
+        <div class="ts-name">智声云配</div>
+        <div class="ts-vendor">智声云配</div>
+        <div class="ts-role">AI 配音 / 对口型</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">本课声音设计主用配音平台。多音色 + 嘴型同步能力。</p>
+      </div>
+      <div class="ts-col">
+        <div class="ts-logo">🤖</div>
+        <div class="ts-name">分镜智能体</div>
+        <div class="ts-vendor">课程内定制 Prompt 工作流</div>
+        <div class="ts-role">分镜 / Prompt 批量化</div>
+        <p style="font-size:13px;line-height:1.65;color:#444">L18 / L27 用到。把剧本喂智能体一次出整集 Prompt 表。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sec">
+    <h2>常见问题</h2>
+    <p class="sub">报名前最关心的 6 个问题</p>
+    <div class="fq-list">
+      <details class="fq-item" open><summary>入门班 / 进阶班 / 老师陪跑 三档怎么选？</summary><div class="ans"><strong>🎯 A$298 入门班 — 没做过 AI 漫剧选这个。</strong>15 节带你从挑小说到发抖音做出第一条片，Seedance 2.0 六种用法 + Nano Banana 三种分镜工艺，是「能上手」的最快路径。<br><br><strong>🚀 A$999 进阶班 — 已经能做出片、想做稳定生产线选这个。</strong>49 节工艺全链路 + AIGC 工具矩阵 + 爆款短视频 + 声音克隆 + 真实项目实例 8 节 + 毕业项目资源包。适合自驱力强、能自己学透录播的同学。<br><br><strong>🎓 A$2399 老师陪跑 — 想最快出结果、想接商单、自学反复卡壳选这个。</strong>含进阶班全部内容 + 张老师 1 个月 1v1 陪跑（私聊不限问） + 每周 2h 直播看你的进度 + 半年陪跑群答疑。每月名额 5 人。<br><br><strong>💡 路径建议：</strong>预算紧 → 入门班；预算中 → 直接进阶班；想最快起号 / 接商单 → 陪跑套餐（实际比单买进阶班 + 私下找老师便宜）。</div></details>
+      <details class="fq-item"><summary>课程是录播还是直播？</summary><div class="ans">两阶都是<strong>全程录播</strong>。入门班 15 节 / 7h46m；进阶班 11 章 49 节 / 约 24 小时。报名后按自己节奏看。课程页只展示大纲，播放入口走另外的渠道（B 站 Cheese / 私域微信群等）。</div></details>
+      <details class="fq-item"><summary>需要什么基础？</summary><div class="ans">需要会用电脑、装过常见 AI 工具账号（即梦 / Vidu / Nano Banana / Tapnow 任一即可），看得懂中文 Prompt。无需画画、编剧、视频剪辑基础，课里都会带。</div></details>
+      <details class="fq-item"><summary>AI 工具是否免费？</summary><div class="ans">课程不强制买任何工具。免费档可以跑完 Phase 1-2 的所有练习。Phase 3-4 想出整集片建议至少订阅 1 家视频工具（即梦或 Vidu，几十块 / 月起步）。</div></details>
+      <details class="fq-item"><summary>课程里的工具不能用怎么办？</summary><div class="ans">即梦 / Tapnow 需要中国手机号或抖音账号。海外学员可以用 Vidu + Nano Banana 替代主线工艺。课里讲方法不绑工具。</div></details>
+      <details class="fq-item"><summary>学完能做到什么？</summary><div class="ans">能独立把一份剧本变成一条完整的 AI 漫剧 — 角色三视图 / 场景一致性 / 分镜表 / 视频生成 / 配音对口型 / 剪辑出片，每一环节都有 SOP 在手。Phase 5 一镜到底 + Phase 6 Seedance 项目实例就是这个能力的双重检验。</div></details>
+      <details class="fq-item"><summary>课程会更新吗？</summary><div class="ans">AI 视频工具更新非常快（即梦半年发 2 个大版本是常态）。一线工艺有重大调整时会补录新内容。</div></details>
+      <details class="fq-item"><summary>陪跑套餐的 1v1 是怎么进行的？时间冲突怎么办？</summary><div class="ans">1v1 = <strong>不限次微信 / Slack 私聊</strong>，不是排时间面对面那种。你做项目卡在哪、Prompt 出不来、镜头崩了 — 截图发过去，工作日 24h 内回。每周 2h 直播是<strong>固定时段</strong>（报名时确认），现场看你的进度 + 拆问题，错过有回放。陪跑群半年随时问，老师不撤。</div></details>
+      <details class="fq-item"><summary>陪跑期满后怎么办？还能问问题吗？</summary><div class="ans">1 个月 1v1 期满后 → <strong>陪跑群继续开 5 个月</strong>，群里随时问。半年后群关闭，但你已经积累了同期学员的人脉 + 老师审过的 Prompt 库，自驱学习已经不是问题。如果半年后还想继续 1v1，单独按月续费（A$700/月）。</div></details>
+      <details class="fq-item"><summary>陪跑名额怎么报？多久开课？</summary><div class="ans">每月最多 <strong>5 个陪跑名额</strong>，先到先得。报名前可以先 30 分钟通话和张老师对一下你的方向是否适合（题材 / 起号目标 / 时间预算），确认匹配再付费。付款后 7 天内开课，1v1 起算 30 天。</div></details>
+      <details class="fq-item"><summary>三档之间能升级吗？</summary><div class="ans">能。<strong>入门班 → 进阶班</strong>：补差价 A$701。<strong>进阶班 → 陪跑套餐</strong>：补差价 A$1400。<strong>入门班 → 陪跑套餐</strong>：补差价 A$2101。升级需在购买后 6 个月内办理，6 个月外按全款计算。</div></details>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>AI 漫剧 Bootcamp · 张彦伟 · JR Academy 2026</p>
+    <p style="margin-top:6px;font-size:12px;opacity:0.7">大纲会随一线工艺迭代调整 · 已购学员获得后续更新</p>
+  </div>
+</body>
+</html>
