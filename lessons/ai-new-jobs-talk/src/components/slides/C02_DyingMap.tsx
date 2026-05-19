@@ -69,11 +69,11 @@ export default function C02_DyingMap() {
 					<div style={{ display: 'flex', gap: 10, marginBottom: 10 }}>
 						<span style={{
 							padding: '5px 12px', background: colors.dark, color: colors.white,
-							fontFamily: fonts.mono, fontSize: 11, fontWeight: 700, letterSpacing: 2,
+							fontFamily: fonts.mono, fontSize: 13, fontWeight: 700, letterSpacing: 2,
 						}}>78 JOBS · AI RISK MAP</span>
 						<span style={{
 							padding: '5px 12px', background: colors.explosive, color: colors.white,
-							fontFamily: fonts.mono, fontSize: 11, fontWeight: 700, letterSpacing: 1,
+							fontFamily: fonts.mono, fontSize: 13, fontWeight: 700, letterSpacing: 1,
 						}}>SOURCE · jiangren.com.au/career-impact-map</span>
 					</div>
 					<Title size="52px">
@@ -113,12 +113,12 @@ export default function C02_DyingMap() {
 										style={{ width: 14, height: 14, background: t.dot, border: `2px solid ${colors.black}` }}
 									/>
 									<span style={{
-										fontFamily: fonts.mono, fontSize: 11, fontWeight: 700,
+										fontFamily: fonts.mono, fontSize: 13, fontWeight: 700,
 										color: '#444', letterSpacing: 2,
 									}}>{t.level}</span>
 								</div>
 								<div style={{ fontSize: 26, fontWeight: 900, marginBottom: 4 }}>{t.label}</div>
-								<div style={{ fontFamily: fonts.mono, fontSize: 13, color: '#666', marginBottom: 14 }}>
+								<div style={{ fontFamily: fonts.mono, fontSize: 15, color: '#666', marginBottom: 14 }}>
 									{t.labelEn} · <span style={{ color: t.dot, fontWeight: 700 }}>{t.count}</span>
 								</div>
 								<div style={{ height: 2, background: colors.black, marginBottom: 14, opacity: 0.15 }} />

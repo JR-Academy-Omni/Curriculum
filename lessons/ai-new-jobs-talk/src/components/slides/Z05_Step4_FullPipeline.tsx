@@ -77,7 +77,7 @@ export default function Z05_Step4_FullPipeline() {
 				>
 					<div style={{
 						display: 'inline-block', padding: '6px 14px', background: colors.red,
-						color: colors.white, fontFamily: fonts.mono, fontSize: 12,
+						color: colors.white, fontFamily: fonts.mono, fontSize: 14,
 						fontWeight: 700, letterSpacing: 2, marginBottom: 10,
 					}}>STEP 4 · 完整 PIPELINE + 反馈学习闭环</div>
 					<Title size="42px">
@@ -222,13 +222,13 @@ export default function Z05_Step4_FullPipeline() {
 								}}
 							>
 								<div style={{
-									fontFamily: fonts.mono, fontSize: 11, color: c.color,
+									fontFamily: fonts.mono, fontSize: 13, color: c.color,
 									letterSpacing: 2, marginBottom: 6, fontWeight: 700,
 								}}>{c.side}</div>
 								<div style={{ fontSize: 18, fontWeight: 900, marginBottom: 10 }}>
 									{c.team}
 								</div>
-								<div style={{ fontSize: 12, color: '#444', lineHeight: 1.6, marginBottom: 10 }}>
+								<div style={{ fontSize: 14, color: '#444', lineHeight: 1.6, marginBottom: 10 }}>
 									{c.detail.map((d) => (
 										<div key={d}>· {d}</div>
 									))}
@@ -241,7 +241,7 @@ export default function Z05_Step4_FullPipeline() {
 										padding: '6px 10px',
 									}}>
 										<div style={{
-											fontFamily: fonts.mono, fontSize: 9, opacity: 0.7,
+											fontFamily: fonts.mono, fontSize: 11, opacity: 0.7,
 											letterSpacing: 1.5,
 										}}>TIME</div>
 										<div style={{ fontSize: 14, fontWeight: 900 }}>{c.time}</div>
@@ -251,7 +251,7 @@ export default function Z05_Step4_FullPipeline() {
 										padding: '6px 10px',
 									}}>
 										<div style={{
-											fontFamily: fonts.mono, fontSize: 9, opacity: 0.7,
+											fontFamily: fonts.mono, fontSize: 11, opacity: 0.7,
 											letterSpacing: 1.5,
 										}}>OUTPUT</div>
 										<div style={{ fontSize: 14, fontWeight: 900 }}>{c.output}</div>

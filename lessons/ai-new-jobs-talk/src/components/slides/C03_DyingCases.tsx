@@ -54,7 +54,7 @@ export default function C03_DyingCases() {
 					<div style={{ display: 'flex', gap: 10, marginBottom: 10 }}>
 						<span style={{
 							padding: '5px 12px', background: colors.dark, color: colors.white,
-							fontFamily: fonts.mono, fontSize: 11, fontWeight: 700, letterSpacing: 2,
+							fontFamily: fonts.mono, fontSize: 13, fontWeight: 700, letterSpacing: 2,
 						}}>4 CASES · DEEP DIVE</span>
 					</div>
 					<Title size="50px">
@@ -89,7 +89,7 @@ export default function C03_DyingCases() {
 								{/* 顶部 job 名 + 跌幅大字 */}
 								<div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 16 }}>
 									<div>
-										<div style={{ fontFamily: fonts.mono, fontSize: 11, color: '#888', letterSpacing: 2, marginBottom: 6 }}>
+										<div style={{ fontFamily: fonts.mono, fontSize: 13, color: '#888', letterSpacing: 2, marginBottom: 6 }}>
 											CASE 0{idx + 1}
 										</div>
 										<div style={{ fontSize: 24, fontWeight: 900, lineHeight: 1.2 }}>{c.job}</div>
@@ -111,7 +111,7 @@ export default function C03_DyingCases() {
 								<div style={{ marginBottom: 14 }}>
 									<div style={{
 										display: 'inline-block', padding: '3px 10px', background: c.accent,
-										color: colors.white, fontFamily: fonts.mono, fontSize: 10,
+										color: colors.white, fontFamily: fonts.mono, fontSize: 12,
 										fontWeight: 700, letterSpacing: 1.5, marginBottom: 8,
 									}}>
 										REPLACED BY
@@ -125,7 +125,7 @@ export default function C03_DyingCases() {
 								<div style={{ paddingTop: 14, borderTop: '2px dashed #ddd' }}>
 									<div style={{
 										display: 'inline-block', padding: '3px 10px', background: '#16a34a',
-										color: colors.white, fontFamily: fonts.mono, fontSize: 10,
+										color: colors.white, fontFamily: fonts.mono, fontSize: 12,
 										fontWeight: 700, letterSpacing: 1.5, marginBottom: 8,
 									}}>
 										→ TRANSITION

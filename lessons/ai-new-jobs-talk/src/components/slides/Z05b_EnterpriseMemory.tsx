@@ -91,7 +91,7 @@ export default function Z05b_EnterpriseMemory() {
 				>
 					<div style={{
 						display: 'inline-block', padding: '6px 14px', background: colors.techPurple,
-						color: colors.white, fontFamily: fonts.mono, fontSize: 12,
+						color: colors.white, fontFamily: fonts.mono, fontSize: 14,
 						fontWeight: 700, letterSpacing: 2, marginBottom: 8,
 					}}>STEP 5 · 企业级 · 不止一条 pipeline</div>
 					<Title size="40px">
@@ -108,7 +108,7 @@ export default function Z05b_EnterpriseMemory() {
 					{/* Left: 3 layers stacked */}
 					<div style={{ flex: 1.1, display: 'flex', flexDirection: 'column', gap: 10 }}>
 						<div style={{
-							fontFamily: fonts.mono, fontSize: 11, color: '#666',
+							fontFamily: fonts.mono, fontSize: 13, color: '#666',
 							letterSpacing: 2, fontWeight: 700,
 						}}>INPUT · 3 层企业记忆</div>
 						{LAYERS.map((l, i) => (
@@ -133,14 +133,14 @@ export default function Z05b_EnterpriseMemory() {
 											{l.title}
 										</div>
 										<div style={{
-											fontFamily: fonts.mono, fontSize: 9, color: '#888',
+											fontFamily: fonts.mono, fontSize: 11, color: '#888',
 											letterSpacing: 1.2, textTransform: 'uppercase',
 										}}>{l.subtitle}</div>
 									</div>
 								</div>
 								<div style={{
 									display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 12px',
-									fontSize: 10.5, color: '#444', lineHeight: 1.5,
+									fontSize: 13, color: '#444', lineHeight: 1.5,
 								}}>
 									{l.examples.map((ex) => (
 										<div key={ex}>· {ex}</div>
@@ -167,7 +167,7 @@ export default function Z05b_EnterpriseMemory() {
 							display: 'flex', alignItems: 'center', justifyContent: 'center',
 						}}>AI</div>
 						<div style={{
-							marginTop: 8, fontFamily: fonts.mono, fontSize: 10,
+							marginTop: 8, fontFamily: fonts.mono, fontSize: 12,
 							color: '#666', letterSpacing: 1.5, fontWeight: 700,
 						}}>BRAIN</div>
 						<div style={{
@@ -179,7 +179,7 @@ export default function Z05b_EnterpriseMemory() {
 					{/* Right: 4 actions */}
 					<div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
 						<div style={{
-							fontFamily: fonts.mono, fontSize: 11, color: '#666',
+							fontFamily: fonts.mono, fontSize: 13, color: '#666',
 							letterSpacing: 2, fontWeight: 700,
 						}}>OUTPUT · 4 件 AI 主动做的事</div>
 						{ACTIONS.map((a, i) => (
@@ -202,7 +202,7 @@ export default function Z05b_EnterpriseMemory() {
 										{a.label}
 									</span>
 								</div>
-								<div style={{ fontSize: 11, lineHeight: 1.5, color: '#ddd' }}>
+								<div style={{ fontSize: 13, lineHeight: 1.5, color: '#ddd' }}>
 									{a.example}
 								</div>
 							</motion.div>
@@ -218,11 +218,11 @@ export default function Z05b_EnterpriseMemory() {
 					style={{
 						width: '100%', background: colors.yellow, color: colors.black,
 						border, padding: '10px 16px', display: 'flex', alignItems: 'center',
-						gap: 14, fontSize: 13,
+						gap: 14, fontSize: 15,
 					}}
 				>
 					<span style={{
-						fontFamily: fonts.mono, fontSize: 11, fontWeight: 800,
+						fontFamily: fonts.mono, fontSize: 13, fontWeight: 800,
 						letterSpacing: 1.5, background: colors.black, color: colors.yellow,
 						padding: '3px 8px',
 					}}>WHY 这是终态</span>

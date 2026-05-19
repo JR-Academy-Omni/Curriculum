@@ -66,7 +66,7 @@ export default function Z06_WhatIsAIAdoption() {
 				>
 					<div style={{
 						display: 'inline-block', padding: '6px 14px', background: colors.black,
-						color: colors.yellow, fontFamily: fonts.mono, fontSize: 12,
+						color: colors.yellow, fontFamily: fonts.mono, fontSize: 14,
 						fontWeight: 700, letterSpacing: 2, marginBottom: 12,
 					}}>CHAPTER 5 · 概念收口</div>
 					<Title size="44px">
@@ -111,7 +111,7 @@ export default function Z06_WhatIsAIAdoption() {
 								}}>
 									<div style={{ fontSize: 32 }}>{tier.emoji}</div>
 									<div style={{
-										fontFamily: fonts.mono, fontSize: 11, color: tier.accent,
+										fontFamily: fonts.mono, fontSize: 13, color: tier.accent,
 										letterSpacing: 2, fontWeight: 700,
 									}}>{tier.level}</div>
 								</div>
@@ -121,7 +121,7 @@ export default function Z06_WhatIsAIAdoption() {
 									whiteSpace: 'pre-line', color: colors.black,
 								}}>{tier.role}</div>
 								<div style={{
-									fontSize: 13, color: '#666', marginBottom: 18, fontStyle: 'italic',
+									fontSize: 15, color: '#666', marginBottom: 18, fontStyle: 'italic',
 								}}>{tier.who}</div>
 
 								<div style={{
@@ -134,7 +134,7 @@ export default function Z06_WhatIsAIAdoption() {
 								}}>
 									{tier.tools.map((t) => (
 										<span key={t} style={{
-											fontFamily: fonts.mono, fontSize: 11, fontWeight: 700,
+											fontFamily: fonts.mono, fontSize: 13, fontWeight: 700,
 											padding: '3px 8px', background: colors.white,
 											border: `2px solid ${colors.black}`, color: colors.black,
 										}}>{t}</span>
@@ -154,7 +154,7 @@ export default function Z06_WhatIsAIAdoption() {
 									}}
 								>
 									<div style={{
-										fontFamily: fonts.mono, fontSize: 10, color: tier.accent,
+										fontFamily: fonts.mono, fontSize: 12, color: tier.accent,
 										letterSpacing: 1.5, marginBottom: 4, fontWeight: 700,
 									}}>市场价值</div>
 									<div style={{
@@ -162,7 +162,7 @@ export default function Z06_WhatIsAIAdoption() {
 										color: tier.accent, lineHeight: 1.1, marginBottom: 4,
 									}}>{tier.value}</div>
 									<div style={{
-										fontSize: 11, color: '#bbb', whiteSpace: 'pre-line',
+										fontSize: 13, color: '#bbb', whiteSpace: 'pre-line',
 										lineHeight: 1.4,
 									}}>{tier.valueDetail}</div>
 								</motion.div>
@@ -188,7 +188,7 @@ export default function Z06_WhatIsAIAdoption() {
 						差价 = 这条 <span style={{ color: colors.yellow }}>pipeline 的设计 + 落地能力</span>
 					</div>
 					<div style={{
-						fontFamily: fonts.mono, fontSize: 12, color: colors.yellow,
+						fontFamily: fonts.mono, fontSize: 14, color: colors.yellow,
 						letterSpacing: 2,
 					}}>L1 → L3 · ×100 价值跃迁</div>
 				</motion.div>

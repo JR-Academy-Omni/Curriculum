@@ -47,7 +47,7 @@ export default function Z03_Step2_Templated() {
 				>
 					<div style={{
 						display: 'inline-block', padding: '6px 14px', background: colors.indigo,
-						color: colors.white, fontFamily: fonts.mono, fontSize: 12,
+						color: colors.white, fontFamily: fonts.mono, fontSize: 14,
 						fontWeight: 700, letterSpacing: 2, marginBottom: 14,
 					}}>STEP 2 · 模板化自动化</div>
 					<Title size="58px">
@@ -87,7 +87,7 @@ export default function Z03_Step2_Templated() {
 									display: 'inline-block', alignSelf: 'center',
 									padding: '4px 10px', background: stage.color,
 									color: colors.white, fontFamily: fonts.mono,
-									fontSize: 10, fontWeight: 700, letterSpacing: 1.5,
+									fontSize: 12, fontWeight: 700, letterSpacing: 1.5,
 									marginBottom: 14,
 								}}>{stage.tag}</div>
 								<div style={{
@@ -95,7 +95,7 @@ export default function Z03_Step2_Templated() {
 									color: colors.black,
 								}}>{stage.title}</div>
 								<div style={{
-									fontSize: 13, color: '#444', whiteSpace: 'pre-line',
+									fontSize: 15, color: '#444', whiteSpace: 'pre-line',
 									lineHeight: 1.5, fontFamily: fonts.mono,
 								}}>
 									{stage.detail}
@@ -138,7 +138,7 @@ export default function Z03_Step2_Templated() {
 						borderRight: `3px solid ${colors.black}`,
 					}}>
 						<div style={{
-							fontFamily: fonts.mono, fontSize: 11, color: colors.red,
+							fontFamily: fonts.mono, fontSize: 13, color: colors.red,
 							letterSpacing: 2, marginBottom: 6, fontWeight: 700,
 						}}>BEFORE · Step 1</div>
 						<div style={{ fontSize: 22, fontWeight: 900, color: colors.black }}>
@@ -149,7 +149,7 @@ export default function Z03_Step2_Templated() {
 						flex: 1, padding: '20px 24px', background: '#dcfce7',
 					}}>
 						<div style={{
-							fontFamily: fonts.mono, fontSize: 11, color: '#16a34a',
+							fontFamily: fonts.mono, fontSize: 13, color: '#16a34a',
 							letterSpacing: 2, marginBottom: 6, fontWeight: 700,
 						}}>NOW · Step 2</div>
 						<div style={{ fontSize: 22, fontWeight: 900, color: colors.black }}>

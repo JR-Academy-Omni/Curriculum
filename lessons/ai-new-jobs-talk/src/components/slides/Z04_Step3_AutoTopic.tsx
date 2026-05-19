@@ -98,12 +98,12 @@ export default function Z04_Step3_AutoTopic() {
 					}}>
 						<div style={{
 							padding: '6px 14px', background: colors.techPurple,
-							color: colors.white, fontFamily: fonts.mono, fontSize: 12,
+							color: colors.white, fontFamily: fonts.mono, fontSize: 14,
 							fontWeight: 700, letterSpacing: 2,
 						}}>STEP 3 · 自动选题 + 多平台分发</div>
 						<div style={{
 							padding: '6px 14px', background: colors.black,
-							color: colors.yellow, fontFamily: fonts.mono, fontSize: 12,
+							color: colors.yellow, fontFamily: fonts.mono, fontSize: 14,
 							fontWeight: 700, letterSpacing: 2, border: `2px solid ${colors.black}`,
 						}}>BUILT WITH · Claude Skills × 5</div>
 					</div>
@@ -141,14 +141,14 @@ export default function Z04_Step3_AutoTopic() {
 								justifyContent: 'center', borderRight: `3px solid ${colors.black}`,
 							}}>
 								<div style={{
-									fontFamily: fonts.mono, fontSize: 11, fontWeight: 700,
+									fontFamily: fonts.mono, fontSize: 13, fontWeight: 700,
 									letterSpacing: 2, opacity: 0.85, marginBottom: 4,
 								}}>LAYER {layer.tag}</div>
 								<div style={{ fontSize: 16, fontWeight: 900, lineHeight: 1.2, marginBottom: 4 }}>
 									{layer.tagLabel}
 								</div>
 								<div style={{
-									fontFamily: fonts.mono, fontSize: 10, fontWeight: 700,
+									fontFamily: fonts.mono, fontSize: 12, fontWeight: 700,
 									letterSpacing: 1, background: 'rgba(0,0,0,0.25)',
 									padding: '2px 6px', alignSelf: 'flex-start',
 									borderRadius: 2,
@@ -178,13 +178,13 @@ export default function Z04_Step3_AutoTopic() {
 											}}
 										>
 											<div style={{
-												fontSize: 13, fontWeight: 900, color: colors.black,
+												fontSize: 15, fontWeight: 900, color: colors.black,
 												lineHeight: 1.25, marginBottom: 2,
 												whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
 											}}>{node.label}</div>
 											{node.hint && (
 												<div style={{
-													fontFamily: fonts.mono, fontSize: 10, color: '#666',
+													fontFamily: fonts.mono, fontSize: 12, color: '#666',
 													lineHeight: 1.3,
 													whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
 												}}>{node.hint}</div>
@@ -218,7 +218,7 @@ export default function Z04_Step3_AutoTopic() {
 						你从<span style={{ color: colors.yellow }}> 内容生产者</span>，变成<span style={{ color: colors.green }}> 内容架构师</span>。
 					</div>
 					<div style={{
-						fontFamily: fonts.mono, fontSize: 12, color: '#aaa', letterSpacing: 2,
+						fontFamily: fonts.mono, fontSize: 14, color: '#aaa', letterSpacing: 2,
 					}}>5 CLAUDE SKILLS · 1 PIPELINE · 4 PLATFORM</div>
 				</motion.div>
 			</Inner>

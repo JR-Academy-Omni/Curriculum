@@ -48,7 +48,7 @@ export default function Z07_YourPosition() {
 				>
 					<div style={{
 						display: 'inline-block', padding: '6px 14px', background: colors.red,
-						color: colors.white, fontFamily: fonts.mono, fontSize: 12,
+						color: colors.white, fontFamily: fonts.mono, fontSize: 14,
 						fontWeight: 700, letterSpacing: 2, marginBottom: 14,
 					}}>SELF CHECK · 现在轮到你</div>
 					<Title size="68px">
@@ -105,7 +105,7 @@ export default function Z07_YourPosition() {
 							{/* Step tag */}
 							<div style={{
 								flexShrink: 0, padding: '6px 12px', background: opt.color,
-								color: colors.white, fontFamily: fonts.mono, fontSize: 12,
+								color: colors.white, fontFamily: fonts.mono, fontSize: 14,
 								fontWeight: 700, letterSpacing: 2, minWidth: 80, textAlign: 'center',
 							}}>{opt.step.toUpperCase()}</div>
 
@@ -116,7 +116,7 @@ export default function Z07_YourPosition() {
 									lineHeight: 1.3, marginBottom: 4,
 								}}>{opt.desc}</div>
 								<div style={{
-									fontFamily: fonts.mono, fontSize: 13, color: '#666',
+									fontFamily: fonts.mono, fontSize: 15, color: '#666',
 								}}>{opt.detail}</div>
 							</div>
 
@@ -143,7 +143,7 @@ export default function Z07_YourPosition() {
 				>
 					<div>
 						<div style={{
-							fontFamily: fonts.mono, fontSize: 12, color: colors.yellow,
+							fontFamily: fonts.mono, fontSize: 14, color: colors.yellow,
 							letterSpacing: 2, marginBottom: 6, fontWeight: 700,
 						}}>下一节</div>
 						<div style={{

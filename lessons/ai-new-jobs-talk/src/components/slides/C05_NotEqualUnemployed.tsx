@@ -12,7 +12,7 @@ export default function C05_NotEqualUnemployed() {
 					transition={{ duration: 0.4 }}
 					style={{
 						display: 'inline-block', padding: '8px 18px', background: colors.yellow,
-						color: colors.black, fontFamily: fonts.mono, fontSize: 13, fontWeight: 700,
+						color: colors.black, fontFamily: fonts.mono, fontSize: 15, fontWeight: 700,
 						letterSpacing: 3, border: `2px solid ${colors.black}`,
 					}}
 				>
@@ -67,7 +67,7 @@ export default function C05_NotEqualUnemployed() {
 					<span style={{ fontSize: 24, fontWeight: 900 }}>→</span>
 					<div style={{ textAlign: 'left' }}>
 						<div style={{
-							fontFamily: fonts.mono, fontSize: 11, color: '#555',
+							fontFamily: fonts.mono, fontSize: 13, color: '#555',
 							letterSpacing: 2, marginBottom: 2,
 						}}>
 							NEXT CHAPTER

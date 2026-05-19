@@ -67,12 +67,12 @@ export default function Z04b_MasterVariantArch() {
 					<div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10, flexWrap: 'wrap' }}>
 						<div style={{
 							padding: '6px 14px', background: colors.red,
-							color: colors.white, fontFamily: fonts.mono, fontSize: 12,
+							color: colors.white, fontFamily: fonts.mono, fontSize: 14,
 							fontWeight: 700, letterSpacing: 2,
 						}}>STEP 3.5 · 匠人做法（升级版 pipeline）</div>
 						<div style={{
 							padding: '6px 14px', background: colors.black,
-							color: colors.yellow, fontFamily: fonts.mono, fontSize: 12,
+							color: colors.yellow, fontFamily: fonts.mono, fontSize: 14,
 							fontWeight: 700, letterSpacing: 2,
 						}}>BUILT WITH · Claude Skills × 6</div>
 					</div>
@@ -97,14 +97,14 @@ export default function Z04b_MasterVariantArch() {
 						}}
 					>
 						<div style={{
-							fontFamily: fonts.mono, fontSize: 10, letterSpacing: 2,
+							fontFamily: fonts.mono, fontSize: 12, letterSpacing: 2,
 							color: colors.yellow, fontWeight: 700, marginBottom: 6,
 						}}>LAYER 01 · SOURCE</div>
 						<div style={{ fontSize: 36, marginBottom: 4 }}>📄</div>
 						<div style={{ fontSize: 22, fontWeight: 900, marginBottom: 6, lineHeight: 1.15 }}>
 							MASTER
 						</div>
-						<div style={{ fontSize: 11, color: '#ccc', lineHeight: 1.55, marginBottom: 10 }}>
+						<div style={{ fontSize: 13, color: '#ccc', lineHeight: 1.55, marginBottom: 10 }}>
 							1 篇主稿 + 1 套基础素材<br />
 							· 完整论点 + 数据 + 案例<br />
 							· 1 套基础高清图<br />
@@ -115,16 +115,16 @@ export default function Z04b_MasterVariantArch() {
 							marginBottom: 8, borderLeft: `3px solid ${colors.yellow}`,
 						}}>
 							<div style={{
-								fontFamily: fonts.mono, fontSize: 9, color: colors.yellow,
+								fontFamily: fonts.mono, fontSize: 11, color: colors.yellow,
 								letterSpacing: 1.2, fontWeight: 700, marginBottom: 2,
 							}}>SKILL</div>
 							<div style={{
-								fontFamily: fonts.mono, fontSize: 11, color: colors.white, fontWeight: 700,
+								fontFamily: fonts.mono, fontSize: 13, color: colors.white, fontWeight: 700,
 							}}>/master-author</div>
 						</div>
 						<div style={{
 							marginTop: 'auto', padding: '6px 8px', background: colors.red,
-							fontFamily: fonts.mono, fontSize: 10, fontWeight: 700, letterSpacing: 1,
+							fontFamily: fonts.mono, fontSize: 12, fontWeight: 700, letterSpacing: 1,
 						}}>单一真相 · SINGLE SOURCE OF TRUTH</div>
 					</motion.div>
 
@@ -134,7 +134,7 @@ export default function Z04b_MasterVariantArch() {
 						gap: 8, minWidth: 0, position: 'relative',
 					}}>
 						<div style={{
-							fontFamily: fonts.mono, fontSize: 10, color: '#666',
+							fontFamily: fonts.mono, fontSize: 12, color: '#666',
 							letterSpacing: 2, fontWeight: 700,
 						}}>LAYER 02 · VARIANT TRANSFORMERS（per-platform Skills · 并行执行）</div>
 						{PLATFORMS.map((p, i) => (
@@ -167,7 +167,7 @@ export default function Z04b_MasterVariantArch() {
 										{p.name}
 									</div>
 									<div style={{
-										marginTop: 4, fontFamily: fonts.mono, fontSize: 9,
+										marginTop: 4, fontFamily: fonts.mono, fontSize: 11,
 										fontWeight: 700, letterSpacing: 0.5, color: p.color,
 										background: colors.white, border: `1.5px solid ${p.color}`,
 										padding: '1px 4px', alignSelf: 'flex-start',
@@ -180,10 +180,10 @@ export default function Z04b_MasterVariantArch() {
 									borderRight: '1px dashed #ddd', minWidth: 0,
 								}}>
 									<div style={{
-										fontFamily: fonts.mono, fontSize: 9, color: '#888',
+										fontFamily: fonts.mono, fontSize: 11, color: '#888',
 										letterSpacing: 1, fontWeight: 700, marginBottom: 2,
 									}}>TEXT VARIANT</div>
-									<div style={{ fontSize: 12, color: colors.dark, lineHeight: 1.4, fontWeight: 600 }}>
+									<div style={{ fontSize: 14, color: colors.dark, lineHeight: 1.4, fontWeight: 600 }}>
 										{p.textSpec}
 									</div>
 								</div>
@@ -193,10 +193,10 @@ export default function Z04b_MasterVariantArch() {
 									flexDirection: 'column', justifyContent: 'center', minWidth: 0,
 								}}>
 									<div style={{
-										fontFamily: fonts.mono, fontSize: 9, color: '#888',
+										fontFamily: fonts.mono, fontSize: 11, color: '#888',
 										letterSpacing: 1, fontWeight: 700, marginBottom: 2,
 									}}>IMAGE VARIANT · /imagery-adapter</div>
-									<div style={{ fontSize: 12, color: colors.dark, lineHeight: 1.4, fontWeight: 600 }}>
+									<div style={{ fontSize: 14, color: colors.dark, lineHeight: 1.4, fontWeight: 600 }}>
 										{p.imageSpec}
 									</div>
 								</div>
@@ -219,14 +219,14 @@ export default function Z04b_MasterVariantArch() {
 					>
 						<div>
 							<div style={{
-								fontFamily: fonts.mono, fontSize: 10, letterSpacing: 1.5,
+								fontFamily: fonts.mono, fontSize: 12, letterSpacing: 1.5,
 								color: colors.dark, fontWeight: 700, marginBottom: 6, opacity: 0.7,
 							}}>LAYER 03</div>
 							<div style={{ fontSize: 26, marginBottom: 4 }}>🚀</div>
 							<div style={{ fontSize: 16, fontWeight: 900, marginBottom: 8, lineHeight: 1.1 }}>
 								Parallel<br />Publish
 							</div>
-							<div style={{ fontSize: 10, color: colors.dark, lineHeight: 1.5, opacity: 0.8 }}>
+							<div style={{ fontSize: 12, color: colors.dark, lineHeight: 1.5, opacity: 0.8 }}>
 								4 平台同时发布<br />
 								schedule + 错峰<br />
 								互动数据回流
@@ -234,7 +234,7 @@ export default function Z04b_MasterVariantArch() {
 						</div>
 						<div style={{
 							marginTop: 8, padding: '4px 6px', background: colors.dark,
-							color: colors.yellow, fontFamily: fonts.mono, fontSize: 9,
+							color: colors.yellow, fontFamily: fonts.mono, fontSize: 11,
 							fontWeight: 700, letterSpacing: 1,
 						}}>SKILL /publisher</div>
 					</motion.div>
@@ -253,9 +253,9 @@ export default function Z04b_MasterVariantArch() {
 					}}>
 						<span style={{
 							background: colors.yellow, color: colors.black, padding: '3px 8px',
-							fontFamily: fonts.mono, fontSize: 10, fontWeight: 800, letterSpacing: 1.2,
+							fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, letterSpacing: 1.2,
 						}}>FEEDBACK LOOP</span>
-						<span style={{ fontSize: 12, lineHeight: 1.5 }}>
+						<span style={{ fontSize: 14, lineHeight: 1.5 }}>
 							4 平台互动数据 → 回流到 Master → AI 学习"哪类 hook / 哪类配图 在哪个平台转化好" → 下一篇 Master 由数据驱动
 						</span>
 					</div>
@@ -265,9 +265,9 @@ export default function Z04b_MasterVariantArch() {
 					}}>
 						<span style={{
 							background: colors.black, color: colors.yellow, padding: '3px 8px',
-							fontFamily: fonts.mono, fontSize: 10, fontWeight: 800, letterSpacing: 1.2,
+							fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, letterSpacing: 1.2,
 						}}>VS STEP 3</span>
-						<span style={{ fontSize: 12, lineHeight: 1.5, fontWeight: 600 }}>
+						<span style={{ fontSize: 14, lineHeight: 1.5, fontWeight: 600 }}>
 							改 1 个数据点 / hook / 论据 = <b>5 个平台同步生效</b>，不用各平台分别改。这是<b>团队级</b>的 pipeline。
 						</span>
 					</div>

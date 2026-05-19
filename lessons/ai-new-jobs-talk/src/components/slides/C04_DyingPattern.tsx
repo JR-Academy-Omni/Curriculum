@@ -28,8 +28,7 @@ const QUADRANTS: Quadrant[] = [
 		jobs: [
 			'Founder / Co-founder',
 			'Exec / 决策型 PM',
-			'Senior IC（主动定义 roadmap）',
-			'Investor / Operator 双栖',
+			'Senior IC · 主动定义 roadmap',
 		],
 	},
 	{
@@ -42,9 +41,8 @@ const QUADRANTS: Quadrant[] = [
 		verdict: '还能转型',
 		jobs: [
 			'Intrapreneur（内部创业 IC）',
-			'Tech Lead (主动改流程)',
-			'Solo creator / 自媒体',
-			'Career Switcher · 主动学习的人',
+			'Tech Lead · 主动改流程',
+			'Solo Creator / 自媒体 / 主动学习者',
 		],
 	},
 	{
@@ -58,8 +56,7 @@ const QUADRANTS: Quadrant[] = [
 		jobs: [
 			'惯性 Senior Manager',
 			'职务在但不再思考的中层',
-			'决策延误型 Director',
-			'"等指令" Stakeholder',
+			'决策延误型 Director · "等指令" 型',
 		],
 	},
 	{
@@ -72,9 +69,8 @@ const QUADRANTS: Quadrant[] = [
 		verdict: 'AI 先吃这一批',
 		jobs: [
 			'Junior CRUD Dev · Manual QA',
-			'Junior Data Analyst · Bookkeeper',
-			'Admin Assistant · 排程 Coord',
-			'Paralegal · Junior Designer',
+			'Data Analyst · Bookkeeper',
+			'Admin Assistant · Paralegal · Junior Designer',
 		],
 	},
 ];
@@ -136,13 +132,13 @@ export default function C04_DyingPattern() {
 							fontFamily: fonts.mono, fontSize: 11, fontWeight: 700, letterSpacing: 2,
 						}}>CORE THEORY · 2×2 MATRIX</span>
 					</div>
-					<Title size="50px">
+					<Title size="42px">
 						为什么 AI <span style={{ color: colors.explosive }}>先吃这批人</span>？
 					</Title>
 					<div style={{
-						marginTop: 12, padding: '10px 18px',
+						marginTop: 8, padding: '8px 16px',
 						background: colors.black, color: colors.white,
-						display: 'inline-block', fontSize: 22, fontWeight: 700, lineHeight: 1.4,
+						display: 'inline-block', fontSize: 18, fontWeight: 700, lineHeight: 1.4,
 					}}>
 						核心定理：<span style={{ color: colors.yellow }}>你不是 Stakeholder + 被动接任务</span> → AI 会先吃你。
 					</div>
@@ -178,6 +174,7 @@ export default function C04_DyingPattern() {
 							style={{
 								flex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr',
 								gridTemplateRows: '1fr 1fr', gap: 8, minHeight: 0,
+								overflow: 'hidden',
 							}}
 						>
 							{grid.flat().map((q) => {
@@ -208,23 +205,24 @@ export default function C04_DyingPattern() {
 											fontFamily: fonts.mono, fontSize: 10, color: '#666',
 											letterSpacing: 1.5, fontWeight: 700, marginBottom: 4,
 										}}>{q.subtitle}</div>
-										<div style={{ fontSize: 24, fontWeight: 900, lineHeight: 1.2, marginBottom: 6 }}>
+										<div style={{ fontSize: 22, fontWeight: 900, lineHeight: 1.2, marginBottom: 4 }}>
 											{q.title}
 										</div>
 										<div style={{
-											fontFamily: fonts.mono, fontSize: 17, fontWeight: 800,
-											color: style.verdictColor, marginBottom: 12,
+											fontFamily: fonts.mono, fontSize: 15, fontWeight: 800,
+											color: style.verdictColor, marginBottom: 8,
 											letterSpacing: 0.5,
 										}}>
 											→ {q.verdict}
 										</div>
 
 										<div style={{
-											fontSize: 16, color: '#333', lineHeight: 1.65, flex: 1,
-											borderTop: '1px dashed rgba(0,0,0,0.2)', paddingTop: 10,
+											fontSize: 14, color: '#333', lineHeight: 1.5, flex: 1, minHeight: 0,
+											borderTop: '1px dashed rgba(0,0,0,0.2)', paddingTop: 6,
+											overflow: 'hidden',
 										}}>
 											{q.jobs.map((j) => (
-												<div key={j} style={{ marginBottom: 3 }}>· {j}</div>
+												<div key={j} style={{ marginBottom: 2 }}>· {j}</div>
 											))}
 										</div>
 									</motion.div>
@@ -254,8 +252,8 @@ export default function C04_DyingPattern() {
 					style={{ width: '100%', textAlign: 'center' }}
 				>
 					<span style={{
-						display: 'inline-block', padding: '14px 28px', background: colors.dark, color: colors.white,
-						fontSize: 22, fontWeight: 900, letterSpacing: 0.3,
+						display: 'inline-block', padding: '10px 22px', background: colors.dark, color: colors.white,
+						fontSize: 18, fontWeight: 900, letterSpacing: 0.3,
 					}}>
 						不是岗位<span style={{ color: colors.explosive }}>消失</span>，是
 						<span style={{ color: colors.yellow }}> Q4 → Q1 </span>

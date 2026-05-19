@@ -97,7 +97,7 @@ export default function C02b_AffectedCategories() {
 				>
 					<div style={{
 						display: 'inline-block', padding: '5px 12px', background: colors.explosive,
-						color: colors.white, fontFamily: fonts.mono, fontSize: 11,
+						color: colors.white, fontFamily: fonts.mono, fontSize: 13,
 						fontWeight: 700, letterSpacing: 2, marginBottom: 10,
 					}}>8 个工作品类 · 全部正在被 AI 重塑</div>
 					<Title size="40px">
@@ -137,7 +137,7 @@ export default function C02b_AffectedCategories() {
 								<div style={{
 									position: 'absolute', top: -10, right: -8,
 									padding: '3px 8px', background: sev.bg, color: sev.text,
-									fontFamily: fonts.mono, fontSize: 9, fontWeight: 700,
+									fontFamily: fonts.mono, fontSize: 11, fontWeight: 700,
 									letterSpacing: 1, border: `2px solid ${colors.black}`,
 								}}>{sev.label}</div>
 
@@ -148,7 +148,7 @@ export default function C02b_AffectedCategories() {
 										color: colors.explosive, lineHeight: 1,
 									}}>{c.no}</span>
 									<span style={{
-										fontFamily: fonts.mono, fontSize: 9, color: '#999',
+										fontFamily: fonts.mono, fontSize: 11, color: '#999',
 										letterSpacing: 1, textTransform: 'uppercase',
 									}}>{c.nameEn}</span>
 								</div>
@@ -169,11 +169,11 @@ export default function C02b_AffectedCategories() {
 								{/* Why */}
 								<div style={{
 									borderTop: '1px dashed #ccc', paddingTop: 6,
-									fontSize: 10.5, color: '#666', lineHeight: 1.45,
+									fontSize: 13, color: '#666', lineHeight: 1.45,
 									fontStyle: 'italic',
 								}}>
 									<span style={{
-										fontFamily: fonts.mono, fontSize: 9, color: colors.explosive,
+										fontFamily: fonts.mono, fontSize: 11, color: colors.explosive,
 										fontWeight: 700, letterSpacing: 1,
 									}}>WHY · </span>
 									{c.why}
@@ -191,12 +191,12 @@ export default function C02b_AffectedCategories() {
 					style={{
 						width: '100%', background: colors.dark, color: colors.white,
 						padding: '12px 18px', display: 'flex', alignItems: 'center',
-						gap: 16, fontSize: 13,
+						gap: 16, fontSize: 15,
 					}}
 				>
 					<span style={{
 						background: colors.yellow, color: colors.black, padding: '4px 8px',
-						fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, letterSpacing: 1.5,
+						fontFamily: fonts.mono, fontSize: 13, fontWeight: 800, letterSpacing: 1.5,
 					}}>判断公式</span>
 					<span>
 						只要一个工作同时满足这 4 条 → <span style={{ color: colors.yellow, fontWeight: 700 }}>AI 会先吃掉它</span>，

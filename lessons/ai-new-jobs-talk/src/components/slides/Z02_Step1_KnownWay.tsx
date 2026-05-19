@@ -21,7 +21,7 @@ export default function Z02_Step1_KnownWay() {
 				>
 					<div style={{
 						display: 'inline-block', padding: '6px 14px', background: colors.dark,
-						color: colors.yellow, fontFamily: fonts.mono, fontSize: 12,
+						color: colors.yellow, fontFamily: fonts.mono, fontSize: 14,
 						fontWeight: 700, letterSpacing: 2, marginBottom: 14,
 					}}>STEP 1 · 大家都知道的</div>
 					<Title size="60px">用 ChatGPT 写一条小红书文案</Title>
@@ -56,7 +56,7 @@ export default function Z02_Step1_KnownWay() {
 							>
 								<div style={{ fontSize: 48, marginBottom: 12 }}>{node.icon}</div>
 								<div style={{ fontSize: 20, fontWeight: 900, marginBottom: 8 }}>{node.label}</div>
-								<div style={{ fontSize: 13, color: '#555', whiteSpace: 'pre-line', lineHeight: 1.5 }}>
+								<div style={{ fontSize: 15, color: '#555', whiteSpace: 'pre-line', lineHeight: 1.5 }}>
 									{node.detail}
 								</div>
 							</motion.div>
@@ -97,7 +97,7 @@ export default function Z02_Step1_KnownWay() {
 							padding: '14px 18px',
 						}}>
 							<div style={{
-								fontFamily: fonts.mono, fontSize: 11, color: '#666',
+								fontFamily: fonts.mono, fontSize: 13, color: '#666',
 								letterSpacing: 1.5, marginBottom: 6,
 							}}>{s.label.toUpperCase()}</div>
 							<div style={{ fontSize: 18, fontWeight: 900, color: colors.black }}>{s.value}</div>
