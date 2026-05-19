@@ -136,13 +136,13 @@ export default function C04_DyingPattern() {
 							fontFamily: fonts.mono, fontSize: 11, fontWeight: 700, letterSpacing: 2,
 						}}>CORE THEORY · 2×2 MATRIX</span>
 					</div>
-					<Title size="38px">
+					<Title size="50px">
 						为什么 AI <span style={{ color: colors.explosive }}>先吃这批人</span>？
 					</Title>
 					<div style={{
-						marginTop: 8, padding: '8px 14px',
+						marginTop: 12, padding: '10px 18px',
 						background: colors.black, color: colors.white,
-						display: 'inline-block', fontSize: 17, fontWeight: 700, lineHeight: 1.4,
+						display: 'inline-block', fontSize: 22, fontWeight: 700, lineHeight: 1.4,
 					}}>
 						核心定理：<span style={{ color: colors.yellow }}>你不是 Stakeholder + 被动接任务</span> → AI 会先吃你。
 					</div>
@@ -158,12 +158,12 @@ export default function C04_DyingPattern() {
 					}}>
 						<div style={{
 							writingMode: 'vertical-rl', transform: 'rotate(180deg)',
-							fontFamily: fonts.mono, fontSize: 11, fontWeight: 700,
+							fontFamily: fonts.mono, fontSize: 14, fontWeight: 700,
 							letterSpacing: 2, color: colors.dark,
 						}}>↑ 主动定义工作</div>
 						<div style={{
 							writingMode: 'vertical-rl', transform: 'rotate(180deg)',
-							fontFamily: fonts.mono, fontSize: 11, fontWeight: 700,
+							fontFamily: fonts.mono, fontSize: 14, fontWeight: 700,
 							letterSpacing: 2, color: colors.explosive,
 						}}>↓ 被动接受任务</div>
 					</div>
@@ -208,23 +208,23 @@ export default function C04_DyingPattern() {
 											fontFamily: fonts.mono, fontSize: 10, color: '#666',
 											letterSpacing: 1.5, fontWeight: 700, marginBottom: 4,
 										}}>{q.subtitle}</div>
-										<div style={{ fontSize: 18, fontWeight: 900, lineHeight: 1.2, marginBottom: 4 }}>
+										<div style={{ fontSize: 24, fontWeight: 900, lineHeight: 1.2, marginBottom: 6 }}>
 											{q.title}
 										</div>
 										<div style={{
-											fontFamily: fonts.mono, fontSize: 13, fontWeight: 800,
-											color: style.verdictColor, marginBottom: 10,
+											fontFamily: fonts.mono, fontSize: 17, fontWeight: 800,
+											color: style.verdictColor, marginBottom: 12,
 											letterSpacing: 0.5,
 										}}>
 											→ {q.verdict}
 										</div>
 
 										<div style={{
-											fontSize: 12, color: '#333', lineHeight: 1.6, flex: 1,
-											borderTop: '1px dashed rgba(0,0,0,0.2)', paddingTop: 8,
+											fontSize: 16, color: '#333', lineHeight: 1.65, flex: 1,
+											borderTop: '1px dashed rgba(0,0,0,0.2)', paddingTop: 10,
 										}}>
 											{q.jobs.map((j) => (
-												<div key={j}>· {j}</div>
+												<div key={j} style={{ marginBottom: 3 }}>· {j}</div>
 											))}
 										</div>
 									</motion.div>
@@ -235,11 +235,11 @@ export default function C04_DyingPattern() {
 						{/* X-axis labels */}
 						<div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 8px' }}>
 							<div style={{
-								fontFamily: fonts.mono, fontSize: 11, fontWeight: 700,
+								fontFamily: fonts.mono, fontSize: 14, fontWeight: 700,
 								letterSpacing: 2, color: colors.explosive,
 							}}>← 非 Stakeholder (不能决策)</div>
 							<div style={{
-								fontFamily: fonts.mono, fontSize: 11, fontWeight: 700,
+								fontFamily: fonts.mono, fontSize: 14, fontWeight: 700,
 								letterSpacing: 2, color: '#16a34a',
 							}}>Stakeholder (能决策) →</div>
 						</div>
@@ -254,8 +254,8 @@ export default function C04_DyingPattern() {
 					style={{ width: '100%', textAlign: 'center' }}
 				>
 					<span style={{
-						display: 'inline-block', padding: '10px 22px', background: colors.dark, color: colors.white,
-						fontSize: 17, fontWeight: 900, letterSpacing: 0.3,
+						display: 'inline-block', padding: '14px 28px', background: colors.dark, color: colors.white,
+						fontSize: 22, fontWeight: 900, letterSpacing: 0.3,
 					}}>
 						不是岗位<span style={{ color: colors.explosive }}>消失</span>，是
 						<span style={{ color: colors.yellow }}> Q4 → Q1 </span>

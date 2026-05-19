@@ -161,7 +161,7 @@ export default function C02b_AffectedCategories() {
 								<div style={{ flex: 1, marginBottom: 8 }}>
 									{c.jobs.map((j) => (
 										<div key={j} style={{
-											fontSize: 11, lineHeight: 1.55, color: '#333',
+											fontSize: 14, lineHeight: 1.6, color: '#333',
 										}}>· {j}</div>
 									))}
 								</div>
