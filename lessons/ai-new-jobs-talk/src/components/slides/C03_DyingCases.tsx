@@ -25,7 +25,7 @@ const CASES: Case[] = [
 		accent: '#ea580c',
 	},
 	{
-		job: 'BI Dashboard Analyst',
+		job: 'Data Analyst',
 		change: '-52%',
 		replacedBy: 'ChatGPT Code Interpreter + Hex AI + 自动化 dashboard 工具，业务人员自己问数',
 		transition: 'AI Product Analyst · Decision Engineer',
@@ -35,7 +35,7 @@ const CASES: Case[] = [
 		job: 'Admin Assistant',
 		change: '-45%',
 		replacedBy: 'Claude / GPT 排程 + Zapier + AI 自动处理 email、会议纪要、报销审批',
-		transition: 'AI Operations · AI Adoption Specialist',
+		transition: 'Chief of Staff · Executive Operations Lead',
 		accent: '#f87171',
 	},
 ];

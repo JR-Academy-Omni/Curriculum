@@ -20,8 +20,8 @@ const TIERS: Tier[] = [
 		labelEn: 'Extreme Risk',
 		bg: '#fee2e2',
 		dot: colors.explosive,
-		count: '6+',
-		jobs: ['Bookkeeper', 'Data Entry Clerk', 'Telemarketer', 'Manual SEO', 'CRUD Developer', 'Translation (literal)'],
+		count: '9+',
+		jobs: ['Bookkeeper', 'Junior Accountant', 'Data Entry Clerk', 'Telemarketer', 'Manual SEO', 'CRUD Developer', 'UI / UX Designer (junior)', 'Data Analyst', 'Translation (literal)'],
 	},
 	{
 		key: 'high',
@@ -30,8 +30,8 @@ const TIERS: Tier[] = [
 		labelEn: 'High Risk',
 		bg: '#fed7aa',
 		dot: '#ea580c',
-		count: '6+',
-		jobs: ['Marketing Coordinator', 'Junior Lawyer (paralegal)', 'Admin Assistant', 'BI Dashboard Analyst', 'Junior Accountant', 'QA Manual Tester'],
+		count: '5+',
+		jobs: ['Marketing Coordinator', 'Junior Lawyer (paralegal)', 'Admin Assistant', 'Data Analyst (senior · 战略)', 'QA Manual Tester'],
 	},
 	{
 		key: 'medium',

@@ -24,30 +24,30 @@ export default function S01_Cover() {
 						JR ACADEMY · 60 MIN 公开讲座
 					</motion.div>
 
-					<Title size="116px" style={{ lineHeight: 1.05, marginBottom: 24 }}>
+					<Title size="104px" style={{ lineHeight: 1.05, marginBottom: 24 }}>
 						<motion.span
 							initial={{ opacity: 0, y: 24 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.15 }}
 							style={{ display: 'block' }}
-						>AI 催生了</motion.span>
+						>Your Career</motion.span>
 						<motion.span
-							initial={{ opacity: 0, scale: 0.9 }}
-							animate={{ opacity: 1, scale: 1 }}
-							transition={{ duration: 0.4, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-							style={{
-								display: 'inline-block', background: colors.red,
-								color: colors.white, padding: '0 24px',
-							}}
+							initial={{ opacity: 0, y: 24 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: 0.3 }}
+							style={{ display: 'block' }}
 						>
-							哪些新岗位
+							in the Age of{' '}
+							<motion.span
+								initial={{ opacity: 0, scale: 0.9 }}
+								animate={{ opacity: 1, scale: 1 }}
+								transition={{ duration: 0.4, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+								style={{
+									display: 'inline-block', background: colors.red,
+									color: colors.white, padding: '0 24px',
+								}}
+							>AI</motion.span>
 						</motion.span>
-						<motion.span
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							transition={{ duration: 0.3, delay: 0.7 }}
-							style={{ color: colors.red }}
-						>？</motion.span>
 					</Title>
 
 					<motion.p
@@ -55,13 +55,26 @@ export default function S01_Cover() {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: 0.85 }}
 						style={{
-							fontSize: 28,
+							fontSize: 26,
 							fontWeight: 600,
 							color: colors.dark,
 							marginTop: 32,
-							marginBottom: 48,
+							marginBottom: 16,
 						}}>
-						一共 27 个全新岗位 · 跨技术 / 管理 / 行业 / 野生 4 大类
+						消失的 5 个 · 出现的 26 个 · 一个正在发生的案例
+					</motion.p>
+					<motion.p
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.5, delay: 1.0 }}
+						style={{
+							fontSize: 17,
+							color: '#666',
+							marginBottom: 40,
+							fontFamily: fonts.mono,
+							letterSpacing: 1.5,
+						}}>
+						AI 时代的职业变化 · 你的下一步在哪
 					</motion.p>
 
 					<motion.div

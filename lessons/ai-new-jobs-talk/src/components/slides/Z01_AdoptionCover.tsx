@@ -4,10 +4,10 @@ import { colors } from '../ui';
 export default function Z01_AdoptionCover() {
 	return (
 		<ChapterCover
-			chapter="CHAPTER 5 · CASE STUDY"
+			chapter="CHAPTER 5 · 正在发生的事"
 			count="01"
-			title="AI Adoption 正在发生"
-			subtitle="看完职业地图，再看一件正在发生的事 —— 一个 Social Media 工作流，怎么从「人 + AI」变成「全自动 pipeline」"
+			title="AI Adoption 不是用 AI，是搭 pipeline"
+			subtitle="一个 Social Media 工作流 4 步演进 + 企业级长期记忆系统 · 本章现场演示 Claude Cowork 怎么搭这条 pipeline"
 			bg={colors.warmBg}
 			accent={colors.techPurple}
 		/>

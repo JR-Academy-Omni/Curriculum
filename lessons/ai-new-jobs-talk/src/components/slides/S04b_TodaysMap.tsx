@@ -11,7 +11,9 @@ const TECH: JobIcon[] = [
 	{ emoji: '🧠', nameZh: 'AI Engineer', deep: true },
 	{ emoji: '🚀', nameZh: 'FDE', deep: true },
 	{ emoji: '🤖', nameZh: 'AI Agent Dev', deep: true },
-	{ emoji: '🤝', nameZh: 'AI Adoption', deep: true },
+	{ emoji: '✨', nameZh: 'Vibe Coder', deep: true },
+	{ emoji: '🦾', nameZh: 'Robotics-AI', deep: true },
+	{ emoji: '🧬', nameZh: 'Synthetic Data', deep: true },
 	{ emoji: '✍️', nameZh: 'Prompt Engineer' },
 	{ emoji: '📐', nameZh: 'Context Engineer' },
 	{ emoji: '📚', nameZh: 'RAG Engineer' },
@@ -24,26 +26,20 @@ const TECH: JobIcon[] = [
 ];
 
 const GOV: JobIcon[] = [
-	{ emoji: '👔', nameZh: 'CAIO', deep: true },
+	{ emoji: '🤝', nameZh: 'AI Adoption', deep: true },
 	{ emoji: '🧭', nameZh: 'AI PM', deep: true },
 	{ emoji: '📜', nameZh: 'AI Ethics', deep: true },
 	{ emoji: '💰', nameZh: 'AI Revenue Officer' },
 	{ emoji: '🧩', nameZh: 'Human-AI Lead' },
+	{ emoji: '👔', nameZh: 'CAIO (附录)' },
 ];
 
 const INDUSTRY: JobIcon[] = [
 	{ emoji: '🔍', nameZh: 'GEO Specialist', deep: true },
-	{ emoji: '🏥', nameZh: 'Healthcare AI', deep: true },
 	{ emoji: '🏦', nameZh: 'AI Finance', deep: true },
+	{ emoji: '🎤', nameZh: 'AI Sales Eng', deep: true },
 	{ emoji: '🌾', nameZh: 'Digital Agronomist' },
 	{ emoji: '🎓', nameZh: 'AI EdTech' },
-];
-
-const MISSING: JobIcon[] = [
-	{ emoji: '✨', nameZh: 'Vibe Coder' },
-	{ emoji: '🦾', nameZh: 'Robotics-AI' },
-	{ emoji: '🧬', nameZh: 'Synthetic Data' },
-	{ emoji: '🎤', nameZh: 'AI Sales Eng' },
 ];
 
 interface RowProps {
@@ -113,7 +109,7 @@ export default function S04b_TodaysMap() {
 							color: colors.yellow, fontFamily: fonts.mono, fontSize: 11, fontWeight: 700,
 							letterSpacing: 2, marginBottom: 10,
 						}}>TODAY'S MAP · 60 MIN</div>
-						<Title size="44px">今天<span style={{ color: colors.red }}>会讲到的 27 个岗位</span></Title>
+						<Title size="44px">今天<span style={{ color: colors.red }}>会讲到的 26 个新岗位</span></Title>
 					</div>
 					<div style={{
 						display: 'flex', alignItems: 'center', gap: 12, padding: '8px 14px',
@@ -124,16 +120,15 @@ export default function S04b_TodaysMap() {
 							border: `2px solid ${colors.black}`, borderRadius: '50%', fontSize: 11, fontWeight: 900,
 							display: 'flex', alignItems: 'center', justifyContent: 'center',
 						}}>🔥</div>
-						<span style={{ fontSize: 13, fontWeight: 700 }}>= 10 个深讲</span>
-						<span style={{ fontSize: 12, color: '#888' }}>· 其余 17 个一句话带过</span>
+						<span style={{ fontSize: 13, fontWeight: 700 }}>= 12 个深讲</span>
+						<span style={{ fontSize: 12, color: '#888' }}>· 其余一句话带过</span>
 					</div>
 				</div>
 
-				<Row label="技术岗" count="CH 1 · 13 个" color={colors.techPurple} bg={colors.techBg} jobs={TECH.slice(0, 7)} startDelay={0.05} />
-				<Row label="(续 13/13)" count="" color={colors.techPurple} bg={colors.techBg} jobs={TECH.slice(7)} startDelay={0.35} />
-				<Row label="治理管理岗" count="CH 2 · 5 个" color={colors.govOrange} bg={colors.govBg} jobs={GOV} startDelay={0.6} />
-				<Row label="行业垂直岗" count="CH 3 · 5 个" color={colors.industryCyan} bg={colors.industryBg} jobs={INDUSTRY} startDelay={0.8} />
-				<Row label="野生新工种" count="CH 4 · +4 BONUS" color={colors.dark} bg={colors.yellow} jobs={MISSING} startDelay={1.0} />
+				<Row label="技术岗" count="CH 2 · 15 个" color={colors.techPurple} bg={colors.techBg} jobs={TECH.slice(0, 7)} startDelay={0.05} />
+				<Row label="(续 15/15)" count="" color={colors.techPurple} bg={colors.techBg} jobs={TECH.slice(7)} startDelay={0.35} />
+				<Row label="治理管理岗" count="CH 3 · 6 个" color={colors.govOrange} bg={colors.govBg} jobs={GOV} startDelay={0.6} />
+				<Row label="行业垂直岗" count="CH 4 · 5 个" color={colors.industryCyan} bg={colors.industryBg} jobs={INDUSTRY} startDelay={0.8} />
 			</Inner>
 		</Slide>
 	);
