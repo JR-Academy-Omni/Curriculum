@@ -17,6 +17,7 @@ import C05 from './components/slides/C05_NotEqualUnemployed';
 // Chapter 2 · Tech Jobs (incl Vibe Coder / Robotics / Synthetic Data merged from old MISSING)
 import S05 from './components/slides/S05_TechCover';
 import S06 from './components/slides/S06_AIEngineer';
+import S06c from './components/slides/S06c_AIEngineerSkills';
 import S06b from './components/slides/S06b_AIEngineerTransition';
 import S07 from './components/slides/S07_FDE';
 import S07b from './components/slides/S07b_FDETransition';
@@ -97,7 +98,7 @@ export default function App() {
 
 			{/* CH 2 · Tech Jobs (6 deep + 9 brief = 15) */}
 			<S05 />
-			<S06 /><S06b />
+			<S06 /><S06c /><S06b />
 			<S07 /><S07b />
 			<S08 /><S08b />
 			<S29 /><S29b />
