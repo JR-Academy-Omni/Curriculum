@@ -267,6 +267,13 @@ jobs:
             cp -r lessons/ai-new-jobs-talk/dist/* _site/lessons/ai-new-jobs-talk/
           fi
 
+          # lessons/ai-new-jobs-talk/xhs: 小红书改编系列（6 主稿 + case-T01 演示 + 116 选题池）
+          # 纯静态 HTML，跳过 Vite，直接 copy
+          if [ -d lessons/ai-new-jobs-talk/xhs ]; then
+            mkdir -p _site/lessons/ai-new-jobs-talk/xhs
+            cp -r lessons/ai-new-jobs-talk/xhs/* _site/lessons/ai-new-jobs-talk/xhs/
+          fi
+
           mkdir -p _site/ai-engineer-bootcamp
           cp -r ai-engineer-bootcamp/dist/* _site/ai-engineer-bootcamp/
           cp ai-engineer-bootcamp/public/curriculum.html _site/ai-engineer-bootcamp/
