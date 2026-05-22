@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N6 · 1 个人替代 6 人 marketing · 8 张配图（1242×1660）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Bricolage+Grotesque:wght@500;700;900&family=JetBrains+Mono:wght@500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.min.js"></script>
+<style>
+  :root { --brand-red:#ff5757; --brand-dark:#10162f; --brand-yellow:#ffce44; --brand-blue:#3b82f6; --brand-green:#10b981; --bg-cream:#fff8ee; --bg-page:#eef0f4; --text-main:#10162f; --text-gray:#64748b; --border-color:#e2e8f0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-page); color:var(--text-main); font-family:'Noto Sans SC',system-ui,sans-serif; padding:24px 16px 24px 132px; line-height:1.5; }
+  .topbar { background:var(--brand-dark); color:var(--bg-cream); border:3px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:16px 24px; margin:0 auto 24px; max-width:1400px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .topbar h1 { font-size:18px; font-weight:900; }
+  .topbar h1 span { color:var(--brand-yellow); }
+  .topbar nav { display:flex; gap:8px; flex-wrap:wrap; }
+  .topbar nav a { background:var(--brand-yellow); color:var(--brand-dark); padding:6px 12px; font-size:12px; font-weight:700; text-decoration:none; border:2px solid var(--bg-cream); }
+  .topbar nav a.active { background:var(--brand-red); color:#fff; }
+  .intro { background:var(--bg-cream); border:3px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:22px 28px; margin:0 auto 28px; max-width:1400px; }
+  .intro .label { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; background:var(--brand-dark); color:var(--brand-yellow); padding:3px 10px; display:inline-block; margin-bottom:10px; }
+  .intro h2 { font-size:24px; font-weight:900; margin-bottom:8px; }
+  .intro h2 span { background:var(--brand-yellow); padding:0 6px; }
+  .intro h2 span.r { background:var(--brand-red); color:#fff; }
+  .intro p { font-size:14px; color:var(--text-gray); margin-bottom:8px; }
+  .intro .pills { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+  .intro .pill { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; padding:4px 10px; background:#fff; border:2px solid var(--brand-dark); }
+  .thumb-nav { position:fixed; top:20px; left:16px; width:104px; background:#fff; border:2.5px solid var(--brand-dark); box-shadow:4px 4px 0 var(--brand-dark); padding:10px 8px; z-index:100; max-height:calc(100vh - 40px); overflow-y:auto; }
+  .thumb-nav::before { content:'N6 · NAV'; display:block; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:900; color:var(--brand-red); text-align:center; letter-spacing:1.5px; padding-bottom:6px; border-bottom:1.5px dashed var(--border-color); margin-bottom:6px; }
+  .thumb-nav .thumb { display:flex; flex-direction:column; aspect-ratio:3/4; background:var(--bg-cream); border:1.5px solid var(--brand-dark); margin-bottom:6px; text-decoration:none; color:var(--brand-dark); align-items:center; justify-content:center; padding:4px; transition:all .15s; }
+  .thumb-nav .thumb:hover { background:var(--brand-yellow); }
+  .thumb-nav .thumb .n { font-size:18px; font-weight:900; line-height:1; }
+  .thumb-nav .thumb .l { font-size:9px; color:var(--text-gray); margin-top:2px; }
+  .poster-frame { display:grid; grid-template-columns:auto 380px; gap:24px; align-items:start; margin:0 auto 56px; max-width:1400px; position:relative; }
+  .poster-main { display:flex; flex-direction:column; align-items:center; }
+  .poster-label { align-self:stretch; display:flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:14px; margin-bottom:12px; font-weight:900; color:var(--brand-dark); }
+  .poster-label::before { content:''; width:28px; height:4px; background:var(--brand-red); }
+  .poster-label .meta { color:var(--text-gray); font-size:11px; margin-left:6px; font-weight:600; }
+  .poster-scaler { width:435px; height:581px; position:relative; border:2.5px solid var(--brand-dark); box-shadow:8px 8px 0 var(--brand-dark); overflow:hidden; background:#fff; }
+  .poster { width:1242px; height:1660px; transform:scale(0.35); transform-origin:top left; position:absolute; top:0; left:0; overflow:hidden; font-family:'Noto Sans SC',sans-serif; box-sizing:border-box; background:var(--bg-cream); }
+  .dl-btn { margin-top:16px; background:var(--brand-red); color:#fff; border:2.5px solid var(--brand-dark); box-shadow:4px 4px 0 var(--brand-dark); padding:10px 24px; font-family:'Noto Sans SC',sans-serif; font-size:13px; font-weight:900; letter-spacing:1px; cursor:pointer; transition:all .15s; }
+  .dl-btn:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--brand-dark); }
+  .copy-panel { background:#fff; border:2.5px solid var(--brand-dark); box-shadow:4px 4px 0 var(--brand-dark); padding:16px 18px; }
+  .copy-panel .cp-title { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:900; color:var(--brand-red); letter-spacing:1.5px; padding-bottom:8px; border-bottom:1.5px dashed var(--border-color); margin-bottom:12px; }
+  .copy-panel .cp-box { background:var(--bg-cream); border:1.5px solid var(--brand-dark); padding:10px 12px; font-size:12.5px; line-height:1.65; white-space:pre-wrap; margin-bottom:8px; }
+  .copy-panel .cp-box.hashtags { color:var(--brand-blue); font-weight:700; font-size:12px; }
+  .copy-panel .cp-label { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; color:var(--text-gray); margin:8px 0 4px; text-transform:uppercase; }
+  .copy-panel .cp-btn { width:100%; background:var(--brand-dark); color:#fff; border:none; padding:8px 12px; font-size:11px; font-weight:700; letter-spacing:1px; cursor:pointer; margin-top:8px; font-family:'Noto Sans SC',sans-serif; transition:all .15s; }
+  .copy-panel .cp-btn:hover { background:var(--brand-red); }
+  .copy-panel .cp-btn.copied { background:var(--brand-green); }
+  .p { width:100%; height:100%; padding:72px 64px; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+  .p-tag { display:inline-flex; align-items:center; gap:12px; background:var(--brand-dark); color:var(--brand-yellow); padding:14px 28px; font-family:'JetBrains Mono',monospace; font-size:28px; font-weight:900; letter-spacing:3px; width:fit-content; margin-bottom:36px; }
+  .p-tag .dot { width:16px; height:16px; border-radius:50%; background:var(--brand-yellow); }
+  .p-logo { position:absolute; bottom:56px; right:64px; display:flex; align-items:center; gap:12px; font-family:'JetBrains Mono',monospace; font-size:24px; font-weight:900; color:var(--brand-dark); }
+  .p-logo .box { background:var(--brand-dark); color:var(--brand-yellow); padding:6px 12px; letter-spacing:2px; }
+
+  /* === P1 封面 6→1 === */
+  .p1 { background:linear-gradient(135deg,#ff5757 0%, #10162f 100%); color:#fff; justify-content:center; align-items:center; text-align:center; }
+  .p1 .p-tag { background:#fff; color:var(--brand-dark); align-self:center; margin-bottom:48px; }
+  .p1 .p-tag .dot { background:var(--brand-red); }
+  .p1 .num-row { display:flex; align-items:center; gap:40px; font-family:'Bricolage Grotesque',sans-serif; font-weight:900; line-height:0.9; }
+  .p1 .num6 { font-size:380px; color:#fff; text-decoration:line-through; text-decoration-thickness:18px; text-decoration-color:var(--brand-yellow); }
+  .p1 .arrow { font-size:120px; color:var(--brand-yellow); }
+  .p1 .num1 { font-size:380px; color:var(--brand-yellow); text-shadow:12px 12px 0 var(--brand-red); }
+  .p1 .title-row { font-size:64px; font-weight:900; margin-top:48px; line-height:1.2; letter-spacing:-1px; }
+  .p1 .title-row .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 12px; }
+  .p1 .sub-row { font-size:32px; font-weight:600; margin-top:36px; opacity:0.85; }
+  .p1 .badge { margin-top:48px; background:#fff; color:var(--brand-dark); padding:18px 32px; font-family:'JetBrains Mono',monospace; font-size:28px; font-weight:900; letter-spacing:3px; border:4px solid var(--brand-dark); box-shadow:8px 8px 0 rgba(0,0,0,0.4); }
+  .p1 .p-logo { color:#fff; }
+  .p1 .p-logo .box { background:var(--brand-yellow); color:var(--brand-dark); }
+
+  /* === P2 旧团队 6 人 === */
+  .p2 { background:#fff; }
+  .p2 h2 { font-size:72px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; margin-bottom:8px; line-height:1.1; }
+  .p2 h2 .strike { text-decoration:line-through; text-decoration-color:var(--brand-red); text-decoration-thickness:6px; }
+  .p2 .h-sub { font-size:28px; font-weight:600; color:var(--text-gray); margin-bottom:40px; }
+  .p2 .team { display:grid; grid-template-columns:1fr 1fr; gap:14px; flex:1; }
+  .p2 .role { background:var(--bg-cream); border:3px solid var(--brand-dark); padding:18px 22px; display:flex; gap:18px; align-items:center; }
+  .p2 .role .num { font-size:64px; font-weight:900; font-family:'Bricolage Grotesque',sans-serif; color:var(--brand-red); line-height:1; min-width:80px; }
+  .p2 .role .body { flex:1; }
+  .p2 .role .body .name { font-size:28px; font-weight:900; color:var(--brand-dark); margin-bottom:4px; }
+  .p2 .role .body .det { font-size:22px; color:var(--text-gray); }
+  .p2 .stats { display:flex; gap:14px; margin-top:24px; }
+  .p2 .stat { flex:1; background:var(--brand-dark); color:var(--brand-yellow); padding:16px 20px; text-align:center; }
+  .p2 .stat .v { font-size:42px; font-weight:900; font-family:'Bricolage Grotesque',sans-serif; line-height:1; }
+  .p2 .stat .l { font-size:22px; font-weight:700; margin-top:6px; letter-spacing:1px; }
+
+  /* === P3 新团队 1 人 === */
+  .p3 { background:var(--brand-dark); color:var(--bg-cream); }
+  .p3 .p-tag { background:var(--brand-yellow); color:var(--brand-dark); }
+  .p3 h2 { font-size:80px; font-weight:900; letter-spacing:-2px; line-height:1.1; margin-bottom:8px; color:#fff; }
+  .p3 h2 .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 12px; }
+  .p3 .h-sub { font-size:32px; font-weight:600; color:var(--brand-yellow); margin-bottom:40px; }
+  .p3 .single-card { background:var(--bg-cream); color:var(--brand-dark); border:4px solid var(--brand-yellow); padding:32px 36px; margin-bottom:32px; box-shadow:10px 10px 0 var(--brand-red); }
+  .p3 .single-card .you { font-size:120px; font-weight:900; font-family:'Bricolage Grotesque',sans-serif; color:var(--brand-red); line-height:0.9; margin-bottom:16px; }
+  .p3 .single-card .role { font-size:34px; font-weight:900; margin-bottom:8px; }
+  .p3 .single-card .det { font-size:24px; font-weight:500; color:var(--text-main); line-height:1.5; }
+  .p3 .stats { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+  .p3 .stat { background:var(--brand-red); border:3px solid var(--brand-yellow); padding:18px 20px; text-align:center; }
+  .p3 .stat .v { font-size:42px; font-weight:900; font-family:'Bricolage Grotesque',sans-serif; line-height:1; color:#fff; }
+  .p3 .stat .l { font-size:22px; font-weight:700; margin-top:6px; letter-spacing:1px; color:var(--brand-yellow); }
+  .p3 .punchline { font-size:36px; font-weight:900; text-align:center; margin-top:32px; color:var(--brand-yellow); letter-spacing:-0.5px; }
+  .p3 .punchline .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 10px; }
+  .p3 .p-logo { color:var(--bg-cream); }
+  .p3 .p-logo .box { background:var(--brand-yellow); color:var(--brand-dark); }
+
+  /* === P4-P7 Step 共用 === */
+  .step-page { background:var(--bg-cream); }
+  .step-page h2 { font-size:72px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; line-height:1.1; margin-bottom:8px; }
+  .step-page h2 .hl { background:var(--brand-yellow); padding:0 8px; }
+  .step-page .h-sub { font-size:28px; font-weight:600; color:var(--text-gray); margin-bottom:40px; }
+  .step-page .flow { display:flex; flex-direction:column; gap:14px; flex:1; }
+  .step-page .node { background:#fff; border:3px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:20px 24px; display:flex; gap:20px; align-items:center; }
+  .step-page .node .ico { font-size:48px; line-height:1; min-width:60px; text-align:center; }
+  .step-page .node .body { flex:1; }
+  .step-page .node .name { font-size:28px; font-weight:900; color:var(--brand-dark); margin-bottom:4px; }
+  .step-page .node .det { font-size:22px; color:var(--text-main); line-height:1.4; }
+  .step-page .stats-row { display:flex; gap:12px; margin-top:24px; }
+  .step-page .stats-row .st { flex:1; background:var(--brand-dark); color:var(--brand-yellow); padding:14px 18px; text-align:center; }
+  .step-page .stats-row .st .v { font-size:32px; font-weight:900; font-family:'Bricolage Grotesque',sans-serif; line-height:1; }
+  .step-page .stats-row .st .l { font-size:20px; font-weight:700; margin-top:4px; letter-spacing:1px; }
+
+  /* === P6 Master+Variant === */
+  .p6 { background:#fff; }
+  .p6 h2 { font-size:72px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; line-height:1.1; margin-bottom:8px; }
+  .p6 h2 .hl { background:var(--brand-yellow); padding:0 8px; }
+  .p6 h2 .hlr { background:var(--brand-red); color:#fff; padding:0 8px; }
+  .p6 .h-sub { font-size:28px; font-weight:600; color:var(--text-gray); margin-bottom:32px; }
+  .p6 .master { background:var(--brand-dark); color:var(--brand-yellow); padding:20px 28px; border:4px solid var(--brand-dark); box-shadow:8px 8px 0 var(--brand-red); margin-bottom:24px; text-align:center; }
+  .p6 .master .label { font-family:'JetBrains Mono',monospace; font-size:22px; letter-spacing:2px; margin-bottom:6px; }
+  .p6 .master .title { font-size:36px; font-weight:900; color:#fff; }
+  .p6 .down { text-align:center; font-size:48px; color:var(--brand-red); margin-bottom:8px; font-weight:900; }
+  .p6 .variants { display:grid; grid-template-columns:1fr 1fr; gap:14px; flex:1; }
+  .p6 .v { background:var(--bg-cream); border:3px solid var(--brand-dark); box-shadow:5px 5px 0 var(--brand-dark); padding:18px 22px; }
+  .p6 .v .pname { font-size:28px; font-weight:900; color:var(--brand-dark); margin-bottom:6px; }
+  .p6 .v .pdet { font-size:22px; color:var(--text-main); line-height:1.4; }
+  .p6 .v .psrc { font-family:'JetBrains Mono',monospace; font-size:18px; color:var(--brand-red); margin-top:6px; font-weight:700; }
+
+  /* === P7 Pipeline + Memory === */
+  .p7 { background:var(--bg-cream); }
+  .p7 h2 { font-size:72px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; line-height:1.1; margin-bottom:8px; }
+  .p7 h2 .hl { background:var(--brand-yellow); padding:0 8px; }
+  .p7 .h-sub { font-size:28px; font-weight:600; color:var(--text-gray); margin-bottom:32px; }
+  .p7 .skills { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:24px; }
+  .p7 .sk { background:#fff; border:3px solid var(--brand-dark); padding:14px 8px; text-align:center; }
+  .p7 .sk .ico { font-size:36px; line-height:1; margin-bottom:6px; }
+  .p7 .sk .n { font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:900; color:var(--brand-red); line-height:1.1; }
+  .p7 .memory { background:var(--brand-dark); color:var(--bg-cream); padding:22px 28px; border:4px solid var(--brand-dark); box-shadow:8px 8px 0 var(--brand-yellow); }
+  .p7 .memory .mtitle { font-size:28px; font-weight:900; margin-bottom:14px; color:var(--brand-yellow); }
+  .p7 .memory .layers { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+  .p7 .memory .layer { background:rgba(255,255,255,0.08); padding:12px 14px; border-left:4px solid var(--brand-yellow); }
+  .p7 .memory .layer .ln { font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:900; color:var(--brand-yellow); margin-bottom:4px; }
+  .p7 .memory .layer .ld { font-size:18px; line-height:1.4; color:var(--bg-cream); }
+  .p7 .punchline { font-size:30px; font-weight:900; text-align:center; margin-top:24px; color:var(--brand-dark); letter-spacing:-0.5px; line-height:1.3; }
+  .p7 .punchline .hl { background:var(--brand-yellow); padding:0 8px; }
+
+  /* === P8 CTA === */
+  .p8 { background:var(--brand-dark); color:var(--bg-cream); justify-content:center; align-items:center; text-align:center; }
+  .p8 .corner-yellow { position:absolute; top:-100px; right:-100px; width:360px; height:360px; background:var(--brand-yellow); transform:rotate(45deg); }
+  .p8 .corner-red { position:absolute; bottom:-100px; left:-100px; width:280px; height:280px; background:var(--brand-red); transform:rotate(45deg); }
+  .p8 .ctop { font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:900; letter-spacing:4px; color:var(--brand-yellow); margin-bottom:24px; z-index:2; position:relative; }
+  .p8 .q { font-size:72px; font-weight:900; color:#fff; line-height:1.1; margin-bottom:32px; z-index:2; position:relative; letter-spacing:-1px; }
+  .p8 .q .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 10px; }
+  .p8 .steps-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:32px; z-index:2; position:relative; max-width:880px; }
+  .p8 .sg { background:rgba(255,255,255,0.08); border:3px solid var(--brand-yellow); padding:16px 20px; text-align:left; }
+  .p8 .sg .stn { font-family:'JetBrains Mono',monospace; font-size:22px; color:var(--brand-yellow); margin-bottom:4px; font-weight:900; letter-spacing:1px; }
+  .p8 .sg .std { font-size:24px; color:#fff; font-weight:700; }
+  .p8 .cta-sub { font-size:30px; font-weight:600; color:var(--bg-cream); margin-top:16px; opacity:0.85; z-index:2; position:relative; }
+  .p8 .p-logo { color:var(--bg-cream); }
+  .p8 .p-logo .box { background:var(--brand-yellow); color:var(--brand-dark); }
+</style>
+</head>
+<body>
+<aside class="thumb-nav">
+  <a class="thumb" href="#p1"><span class="n">1</span><span class="l">封面</span></a>
+  <a class="thumb" href="#p2"><span class="n">2</span><span class="l">旧 6 人</span></a>
+  <a class="thumb" href="#p3"><span class="n">3</span><span class="l">新 1 人</span></a>
+  <a class="thumb" href="#p4"><span class="n">4</span><span class="l">Step 1</span></a>
+  <a class="thumb" href="#p5"><span class="n">5</span><span class="l">Step 2</span></a>
+  <a class="thumb" href="#p6"><span class="n">6</span><span class="l">Step 3</span></a>
+  <a class="thumb" href="#p7"><span class="n">7</span><span class="l">Step 4</span></a>
+  <a class="thumb" href="#p8"><span class="n">8</span><span class="l">CTA</span></a>
+</aside>
+<header class="topbar">
+  <h1>JR ACADEMY · <span>XHS</span> 配图 · N6 · 1 人替代 6 人 marketing</h1>
+  <nav><a href="../index.html">← 总览</a><a href="../case-T01.html">Case T01</a><a href="N2.html">N2</a><a class="active" href="N6.html">N6</a></nav>
+</header>
+<section class="intro">
+  <span class="label">XHS POSTERS · N6 · 8 张 · 震撼篇</span>
+  <h2>🔥 用 AI 把整个 marketing 团队拆成 <span class="r">4 步</span> · 8 张配图</h2>
+  <p>JR Academy 内部 dogfood · 跨讲座 page 49-56 AI Adoption 演进的具象化</p>
+  <div class="pills">
+    <span class="pill">8 张 3:4 海报</span><span class="pill">字号 ≥ 24px</span>
+    <span class="pill">5 Claude Skills</span><span class="pill">3 层企业记忆</span>
+    <span class="pill">/xhs-score 90+/100</span>
+  </div>
+</section>
+
+<section class="poster-frame" id="p1">
+  <div class="poster-main">
+    <div class="poster-label">P1 · 封面 <span class="meta">6 → 1 反差</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p1">
+      <div class="p-tag"><span class="dot"></span>JR · DOGFOOD</div>
+      <div class="num-row"><div class="num6">6</div><div class="arrow">→</div><div class="num1">1</div></div>
+      <div class="title-row">人 marketing 团队 <span class="hl">→ 1 个人</span></div>
+      <div class="sub-row">差的不是人 · 是 pipeline</div>
+      <div class="badge">REAL · 不是 demo</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p1',event)">📷 下载 P1 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">N6 主稿 · 震撼篇</div>
+    <div class="cp-label">标题</div>
+    <div class="cp-box" id="t-title">🔥 用 AI 把整个 marketing 团队拆成 4 步</div>
+    <button class="cp-btn" data-target="t-title">复制标题</button>
+    <div class="cp-label">话题</div>
+    <div class="cp-box hashtags">#AI落地 #AIAgent #自动化 #创业 #AI</div>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p2">
+  <div class="poster-main">
+    <div class="poster-label">P2 · 旧 marketing 团队 <span class="meta">6 人 / 4 小时 / 1x</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p2">
+      <div class="p-tag"><span class="dot"></span>BEFORE · 旧方式</div>
+      <h2><span class="strike">6 人</span></h2>
+      <h2>marketing 团队每天</h2>
+      <div class="h-sub">2 选题 / 1 文案 / 1 设计 / 1 发布 / 1 数据</div>
+      <div class="team">
+        <div class="role"><div class="num">2</div><div class="body"><div class="name">选题</div><div class="det">刷热点 · 看竞品</div></div></div>
+        <div class="role"><div class="num">1</div><div class="body"><div class="name">写文案</div><div class="det">手动起稿</div></div></div>
+        <div class="role"><div class="num">1</div><div class="body"><div class="name">做设计</div><div class="det">配图 · 排版</div></div></div>
+        <div class="role"><div class="num">1</div><div class="body"><div class="name">发布排期</div><div class="det">手动 4 平台</div></div></div>
+        <div class="role"><div class="num">1</div><div class="body"><div class="name">数据分析</div><div class="det">每周复盘</div></div></div>
+        <div class="role"><div class="num">6</div><div class="body"><div class="name">合计</div><div class="det">每天 4 小时</div></div></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="v">4h</div><div class="l">每天</div></div>
+        <div class="stat"><div class="v">4</div><div class="l">个平台</div></div>
+        <div class="stat"><div class="v">1x</div><div class="l">产出</div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p2',event)">📷 下载 P2 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P2 旧团队</div>
+    <div class="cp-box" id="t-p2">旧 marketing 团队 6 人架构：
+- 2 选题（刷热点 / 看竞品）
+- 1 写文案
+- 1 做设计
+- 1 发布排期
+- 1 数据分析
+
+4 小时 / 天 · 4 个平台 · 1x 产出</div>
+    <button class="cp-btn" data-target="t-p2">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p3">
+  <div class="poster-main">
+    <div class="poster-label">P3 · 新 AI-native 团队 <span class="meta">1 人 / 30 分钟 / 3x</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p3">
+      <div class="p-tag"><span class="dot"></span>AFTER · AI-native</div>
+      <h2><span class="hl">1 个人</span></h2>
+      <h2>+ AI Pipeline</h2>
+      <div class="h-sub">监控 30 分钟 / 天</div>
+      <div class="single-card">
+        <div class="you">1</div>
+        <div class="role">监督员（不是写手）</div>
+        <div class="det">每天 30 分钟看 dashboard + 调权重 + 审异常稿。Pipeline 自己跑。</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="v">30m</div><div class="l">每天</div></div>
+        <div class="stat"><div class="v">4</div><div class="l">个平台</div></div>
+        <div class="stat"><div class="v">3x</div><div class="l">产出</div></div>
+      </div>
+      <div class="punchline">差的不是人 · 是 <span class="hl">pipeline</span></div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p3',event)">📷 下载 P3 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P3 新团队</div>
+    <div class="cp-box" id="t-p3">新 AI-native 团队 1 人：
+- 30 分钟 / 天监控
+- 4 个平台同时跑
+- 3x 产出
+
+角色从"写手"变"监督员"。
+差的不是人，是 pipeline。</div>
+    <button class="cp-btn" data-target="t-p3">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p4">
+  <div class="poster-main">
+    <div class="poster-label">P4 · Step 1 手工玩 AI <span class="meta">99% 人卡这</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p step-page">
+      <div class="p-tag"><span class="dot"></span>STEP 1 · 手工</div>
+      <h2><span class="hl">Step 1</span></h2>
+      <h2>用 ChatGPT 写一条</h2>
+      <div class="h-sub">99% 的人对"用 AI"的理解 · 评分 28-35</div>
+      <div class="flow">
+        <div class="node"><div class="ico">🧑‍💻</div><div class="body"><div class="name">你</div><div class="det">打开浏览器</div></div></div>
+        <div class="node"><div class="ico">💬</div><div class="body"><div class="name">ChatGPT</div><div class="det">"帮我写一条小红书 主题 X"</div></div></div>
+        <div class="node"><div class="ico">📋</div><div class="body"><div class="name">复制粘贴</div><div class="det">手动贴到小红书 + 配图</div></div></div>
+        <div class="node"><div class="ico">📱</div><div class="body"><div class="name">发布</div><div class="det">手动选话题 + 时段</div></div></div>
+      </div>
+      <div class="stats-row">
+        <div class="st"><div class="v">2 分</div><div class="l">每条</div></div>
+        <div class="st"><div class="v">1</div><div class="l">平台</div></div>
+        <div class="st"><div class="v">0%</div><div class="l">自动化</div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p4',event)">📷 下载 P4 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P4 Step 1</div>
+    <div class="cp-box" id="t-p4">Step 1 · 手工玩 AI：
+你 → ChatGPT → 复制粘贴 → 发布
+
+每条 2 分钟 / 1 平台 / 自动化 0%
+
+99% 的人卡在这。能发，但不会爆款。</div>
+    <button class="cp-btn" data-target="t-p4">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p5">
+  <div class="poster-main">
+    <div class="poster-label">P5 · Step 2 模板化 <span class="meta">5 阶段 pipeline</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p step-page">
+      <div class="p-tag"><span class="dot"></span>STEP 2 · 模板化</div>
+      <h2><span class="hl">Step 2</span></h2>
+      <h2>AI 写 + 你审 + 自动发</h2>
+      <div class="h-sub">5 阶段 pipeline · 单条 57min → 1min</div>
+      <div class="flow">
+        <div class="node"><div class="ico">⏰</div><div class="body"><div class="name">Trigger · Cron</div><div class="det">周一 9 AM 自动触发</div></div></div>
+        <div class="node"><div class="ico">📝</div><div class="body"><div class="name">Generate · LLM</div><div class="det">按 200 字 system prompt 出 5 候选</div></div></div>
+        <div class="node"><div class="ico">🎨</div><div class="body"><div class="name">Visual · gpt-image-2</div><div class="det">按品牌色出 5 套首图</div></div></div>
+        <div class="node"><div class="ico">✅</div><div class="body"><div class="name">Review · 你</div><div class="det">飞书卡片点确认（不打字）</div></div></div>
+        <div class="node"><div class="ico">📤</div><div class="body"><div class="name">Schedule · Buffer</div><div class="det">最佳时段自动发</div></div></div>
+      </div>
+      <div class="stats-row">
+        <div class="st"><div class="v">1 分</div><div class="l">每条</div></div>
+        <div class="st"><div class="v">+80%</div><div class="l">效率</div></div>
+        <div class="st"><div class="v">⌫</div><div class="l">写手→审核员</div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p5',event)">📷 下载 P5 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P5 Step 2</div>
+    <div class="cp-box" id="t-p5">Step 2 · 模板化 5 阶段：
+Cron → AI 写 → AI 配图 → 你审 → Buffer 自动发
+
+每条 2 分钟 → 1 分钟（-80% 时间）
+角色：写手 → 审核员
+
+但选题还是你定 · 跨平台还是手发</div>
+    <button class="cp-btn" data-target="t-p5">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p6">
+  <div class="poster-main">
+    <div class="poster-label">P6 · Step 3 Master + Variant <span class="meta">4 平台 fan-out</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p6">
+      <div class="p-tag"><span class="dot"></span>STEP 3 · 4 平台</div>
+      <h2><span class="hl">Step 3</span></h2>
+      <h2>1 份 Master · <span class="hlr">4 个 Variant</span></h2>
+      <div class="h-sub">从内容生产者 → 内容架构师</div>
+      <div class="master">
+        <div class="label">MASTER · 主稿</div>
+        <div class="title">26 岗位核心数据 + 5 处数据源 + 品牌语调</div>
+      </div>
+      <div class="down">↓ Variant Transformer ↓</div>
+      <div class="variants">
+        <div class="v"><div class="pname">🐦 X / Twitter</div><div class="pdet">280 字 thread · hook + 拆解</div><div class="psrc">16:9 主图</div></div>
+        <div class="v"><div class="pname">📕 小红书</div><div class="pdet">400-600 字 · emoji + 5 话题</div><div class="psrc">3:4 × 8 张</div></div>
+        <div class="v"><div class="pname">💼 LinkedIn</div><div class="pdet">1200 字 · 专业语气 + hashtag</div><div class="psrc">1200×627 banner</div></div>
+        <div class="v"><div class="pname">📱 公众号</div><div class="pdet">1800 字 · 排版 + 引用 + CTA</div><div class="psrc">900×500 header + 内文</div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p6',event)">📷 下载 P6 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P6 Step 3</div>
+    <div class="cp-box" id="t-p6">Step 3 · Master + Variant 架构：
+1 份主稿 fan-out 到 4 平台
+
+X 280 字 thread · 小红书 400 字 · LinkedIn 1200 字 · 公众号 1800 字
+
+改 Master 一处 = 4 平台同步生效。
+你从审核员 → 内容架构师。</div>
+    <button class="cp-btn" data-target="t-p6">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p7">
+  <div class="poster-main">
+    <div class="poster-label">P7 · Step 4 进化 Pipeline + Memory <span class="meta">5 Skills + 3 层记忆</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p7">
+      <div class="p-tag"><span class="dot"></span>STEP 4 · 自我进化</div>
+      <h2><span class="hl">Step 4</span></h2>
+      <h2>自我进化 + 长期记忆</h2>
+      <div class="h-sub">/xhs-score 89/100 · 推荐发</div>
+      <div class="skills">
+        <div class="sk"><div class="ico">🎯</div><div class="n">topic-picker</div></div>
+        <div class="sk"><div class="ico">✍️</div><div class="n">draft</div></div>
+        <div class="sk"><div class="ico">🔍</div><div class="n">review</div></div>
+        <div class="sk"><div class="ico">🎨</div><div class="n">poster</div></div>
+        <div class="sk"><div class="ico">📊</div><div class="n">score</div></div>
+      </div>
+      <div class="memory">
+        <div class="mtitle">+ Enterprise Memory 3 层</div>
+        <div class="layers">
+          <div class="layer"><div class="ln">👤 员工</div><div class="ld">KIKI 钩子偏好 · 上周开头 · 个人 ban-list</div></div>
+          <div class="layer"><div class="ln">🏢 品牌</div><div class="ld">语调 · 违禁词 · 历史爆款 · 受众分布</div></div>
+          <div class="layer"><div class="ln">📈 业务</div><div class="ld">本季 OKR · 活动 · 团队带宽 · 发布时段</div></div>
+        </div>
+      </div>
+      <div class="punchline">没记忆的 AI = 工具 · <span class="hl">有记忆的 AI = 同事</span></div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p7',event)">📷 下载 P7 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P7 Step 4</div>
+    <div class="cp-box" id="t-p7">Step 4 · 完整 Pipeline + Enterprise Memory：
+
+5 个 Claude Skills：
+topic-picker → draft → review → poster → score
+
++ 3 层企业记忆：
+- 员工（写手历史 / 偏好 / ban-list）
+- 品牌（语调 / 违禁 / 爆款规律）
+- 业务（OKR / 活动 / 排期）
+
+没记忆的 AI = 工具
+有记忆的 AI = 同事</div>
+    <button class="cp-btn" data-target="t-p7">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p8">
+  <div class="poster-main">
+    <div class="poster-label">P8 · CTA <span class="meta">你在第几步？</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p8">
+      <div class="corner-yellow"></div>
+      <div class="corner-red"></div>
+      <div class="ctop">XHS · 自检 + 互动</div>
+      <div class="q">你卡在 <span class="hl">第几步</span>？</div>
+      <div class="steps-grid">
+        <div class="sg"><div class="stn">STEP 1</div><div class="std">手工用 AI</div></div>
+        <div class="sg"><div class="stn">STEP 2</div><div class="std">会写模板</div></div>
+        <div class="sg"><div class="stn">STEP 3</div><div class="std">会串多工具</div></div>
+        <div class="sg"><div class="stn">STEP 4</div><div class="std">会设计 pipeline</div></div>
+      </div>
+      <div class="cta-sub">评论扣 "你在第几步" · 主页 60min 讲座完整版</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p8',event)">📷 下载 P8 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">CTA 文案</div>
+    <div class="cp-box" id="t-p8">📌 评论扣 "你在第几步"，我给具体下一步学习路径
+📌 主页 60 分钟讲座完整版讲了这套系统怎么搭</div>
+    <button class="cp-btn" data-target="t-p8">复制 CTA</button>
+  </aside>
+</section>
+
+<script>
+  document.querySelectorAll('.cp-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const t = btn.dataset.target;
+      const el = document.getElementById(t);
+      if (!el) return;
+      try {
+        await navigator.clipboard.writeText(el.textContent.trim());
+        const o = btn.textContent;
+        btn.textContent = '✓ 已复制'; btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = o; btn.classList.remove('copied'); }, 1500);
+      } catch (e) { alert('复制失败：' + e.message); }
+    });
+  });
+  async function dlP(id, ev) {
+    const btn = ev.target;
+    const p = document.querySelector(`#${id} .poster`);
+    if (!p) return;
+    const o = btn.textContent; btn.textContent = '⏳ 生成中...'; btn.disabled = true;
+    try {
+      const ot = p.style.transform;
+      p.style.transform = 'none'; p.style.position = 'fixed'; p.style.left = '-9999px'; p.style.top = '0';
+      const url = await htmlToImage.toPng(p, { width:1242, height:1660, pixelRatio:1, cacheBust:true, style:{transform:'none'} });
+      p.style.transform = ot; p.style.position = ''; p.style.left = ''; p.style.top = '';
+      const a = document.createElement('a'); a.href = url; a.download = `N6-${id}-${Date.now()}.png`; a.click();
+    } catch (e) { alert('下载失败：' + e.message); }
+    finally { btn.textContent = o; btn.disabled = false; }
+  }
+</script>
+</body>
+</html>
