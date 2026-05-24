@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 一人创业营 · 机构合作策划方案（团队内部 BD 用）</title>
+<meta name="description" content="AI 一人创业营机构合作策划方案 — 创业协会 / 华人商会 / 青商会的 4 种合作模式 + 邮件话术 + 分成结构 + 4 周 BD outreach SOP。">
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.65}
+.header{background:linear-gradient(135deg,#10162f 0%,#6366f1 100%);color:#fff;padding:48px 24px 40px;text-align:center;border-bottom:4px solid #000}
+.header h1{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-0.02em;line-height:1.15;max-width:900px;margin:0 auto}
+.header .sub{font-size:14.5px;opacity:0.9;margin-top:14px;max-width:780px;margin:14px auto 0;line-height:1.7}
+.header .nav{margin-top:18px;font-size:13px}
+.header .nav a{color:#FFDE59;margin:0 10px;text-decoration:none;font-weight:700}
+.banner{padding:14px 20px;background:#FFDE59;color:#10162f;text-align:center;font-size:13px;font-weight:700;border-bottom:2px solid #10162f}
+.c{max-width:1100px;margin:0 auto;padding:32px 20px}
+
+.intro{padding:24px 28px;background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;margin-bottom:32px}
+.intro h2{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;margin-bottom:10px;color:#10162f}
+.intro p{font-size:14px;line-height:1.8;color:#333;margin-bottom:10px}
+.intro p strong{color:#10162f}
+.intro p code{background:#10162f;color:#FFDE59;padding:1px 6px;font-family:'Space Mono',monospace;font-size:12px}
+.intro ul{margin:8px 0 8px 22px;font-size:14px;line-height:1.85;color:#333}
+.intro ul li{margin:3px 0}
+
+.section-h{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:900;margin:36px 0 16px;color:#10162f;border-left:6px solid #6366f1;padding-left:14px;display:flex;align-items:baseline;gap:10px}
+.section-h .sub{font-size:13px;font-weight:500;color:#666;font-family:'DM Sans','Noto Sans SC',sans-serif}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:14px}
+@media (max-width:880px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+.org-card{background:#fff;border:3px solid #000;box-shadow:5px 5px 0 #000;padding:0;display:flex;flex-direction:column}
+.org-card .h{padding:14px 18px;border-bottom:2px solid #000;color:#fff}
+.org-card .h .tag{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;opacity:0.85}
+.org-card .h h3{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;margin-top:4px}
+.org-card .body{padding:16px 18px;flex:1;font-size:13px;line-height:1.7;color:#333}
+.org-card .body .row{margin-bottom:10px}
+.org-card .body .row b{display:block;font-family:'Space Mono',monospace;font-size:10px;color:#6366f1;letter-spacing:1px;margin-bottom:2px}
+.org-card .body .priority{margin-top:8px;padding:8px 10px;background:#fff8d9;border-left:3px solid #FFDE59;font-size:12px}
+
+.org-card.proto-1 .h{background:#6366f1}
+.org-card.proto-2 .h{background:#FF914D}
+.org-card.proto-3 .h{background:#10b981}
+
+.mode-card{background:#fff;border:3px solid #000;box-shadow:5px 5px 0 #000;padding:18px 20px;display:flex;flex-direction:column}
+.mode-card .num{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#6366f1;letter-spacing:1px}
+.mode-card .title{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;margin:6px 0 10px;color:#10162f}
+.mode-card .body{flex:1;font-size:13px;line-height:1.75;color:#333;margin-bottom:10px}
+.mode-card .body p{margin-bottom:8px}
+.mode-card .body p:last-child{margin-bottom:0}
+.mode-card .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.mode-card .meta span{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:3px 8px;border:1px solid #000;background:#fafafa}
+.mode-card.recommended{background:#fffbe6;border-color:#FFDE59;border-width:4px;box-shadow:5px 5px 0 #FFDE59}
+.mode-card.recommended .num{color:#FF914D}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 6px}
+.compare-table th,.compare-table td{padding:10px 12px;border:1px solid #ddd;text-align:left;vertical-align:top;line-height:1.6}
+.compare-table th{background:#10162f;color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px}
+.compare-table tr:nth-child(even){background:#fafafa}
+.compare-table .tbd{font-family:'Space Mono',monospace;font-size:11px;color:#FF914D;font-weight:700}
+
+.sop-step{display:grid;grid-template-columns:120px 1fr;gap:14px 18px;padding:18px 20px;background:#fff;border:2px solid #000;margin-bottom:12px;font-size:13.5px;line-height:1.8}
+.sop-step .week{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#6366f1;letter-spacing:1px;padding-top:2px}
+.sop-step .week .label{display:block;font-size:14px;color:#10162f;font-family:'Bricolage Grotesque',sans-serif;margin-top:4px;letter-spacing:0;font-weight:900}
+.sop-step .content strong{color:#10162f}
+.sop-step .content code{background:#10162f;color:#FFDE59;padding:1px 6px;font-family:'Space Mono',monospace;font-size:11.5px}
+.sop-step .content ul{margin:6px 0 0 20px}
+.sop-step .content ul li{margin:3px 0}
+
+.email-preview{background:#10162f;color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #FFDE59;padding:22px 26px;margin-bottom:14px}
+.email-preview .label{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#FFDE59;letter-spacing:1px;margin-bottom:6px}
+.email-preview .subject{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;color:#fff;margin-bottom:10px}
+.email-preview .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.email-preview .meta span{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;background:#FFDE59;color:#10162f;font-weight:700}
+.email-preview pre{font-family:'Noto Sans SC','DM Sans',sans-serif;font-size:13.5px;line-height:1.85;color:#eee;white-space:pre-wrap;background:rgba(255,255,255,0.05);padding:16px 18px;border-left:3px solid #FFDE59;margin-bottom:10px}
+.email-preview .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.email-preview .btn{padding:7px 14px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.5px;border:2px solid #FFDE59;background:transparent;color:#FFDE59;cursor:pointer;text-decoration:none;display:inline-block}
+.email-preview .btn:hover{background:#FFDE59;color:#10162f}
+.email-preview .btn.copied{background:#10b981;color:#fff;border-color:#10b981}
+
+.qa-item{background:#fff;border:2px solid #000;padding:14px 18px;margin-bottom:10px}
+.qa-item .q{font-weight:900;font-size:14px;color:#10162f;margin-bottom:6px}
+.qa-item .q::before{content:"Q · ";color:#6366f1;font-family:'Space Mono',monospace}
+.qa-item .a{font-size:13px;color:#333;line-height:1.8}
+.qa-item .a::before{content:"A · ";color:#FF914D;font-family:'Space Mono',monospace;font-weight:700}
+
+.warn{padding:20px 24px;background:#7f1d1d;color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #FFDE59;margin-bottom:14px}
+.warn h3{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;color:#FFDE59;margin-bottom:10px}
+.warn ul{margin-left:20px;font-size:13.5px;line-height:1.9}
+.warn li{margin:5px 0}
+.warn li strong{color:#FFDE59}
+
+.roi-box{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #10b981;padding:24px 28px;margin-bottom:14px}
+.roi-box h3{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f;margin-bottom:12px}
+.roi-box .funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+@media (max-width:880px){.roi-box .funnel{grid-template-columns:1fr 1fr}}
+.roi-box .funnel-step{padding:12px 10px;background:#f5f5ff;border:2px solid #000;text-align:center;font-size:12.5px;line-height:1.55}
+.roi-box .funnel-step .n{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:#6366f1;display:block;margin-bottom:4px}
+.roi-box .funnel-step .l{font-family:'Space Mono',monospace;font-size:9.5px;color:#666;letter-spacing:0.5px}
+.roi-box p{font-size:13px;color:#333;line-height:1.75;margin-top:8px}
+.roi-box p code{background:#10162f;color:#FFDE59;padding:1px 6px;font-family:'Space Mono',monospace;font-size:11.5px}
+
+.checklist{background:#fff;border:3px dashed #6366f1;padding:18px 22px;margin-bottom:14px}
+.checklist h3{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;color:#10162f;margin-bottom:10px}
+.checklist label{display:block;font-size:13.5px;line-height:1.7;padding:4px 0;cursor:pointer}
+.checklist input[type=checkbox]{margin-right:8px;transform:scale(1.1);vertical-align:-2px}
+.checklist label.done{color:#888;text-decoration:line-through}
+
+.placeholder{background:#fff8d9;border-left:4px solid #FFDE59;padding:10px 14px;font-size:13px;color:#666;margin:6px 0}
+.placeholder b{color:#10162f}
+</style>
+</head>
+<body>
+
+<div class="banner">⚠️ 团队内部 BD / Marketing 页面 · 不索引 · 所有分成数字标「待商务确认」· 跟机构沟通前请先跟 Mason / 商务对齐</div>
+
+<div class="header">
+  <h1>机构合作策划方案 · AI 一人创业营</h1>
+  <div class="sub">针对澳洲华人<strong style="color:#FFDE59">创业协会 / 华人商会 / 青商会</strong>的 B2B 渠道合作方案 — 4 种合作模式 + 邮件话术 + 分成结构 + 4 周 BD outreach SOP。所有商务数字基于课程页定价推算，落地前由 Mason / 商务团队最终敲定。</div>
+  <div class="nav">
+    <a href="curriculum.html">← 课程总览</a>
+    <a href="promo-kit.html">C2C 推广文案包</a>
+    <a href="lead-magnets.html">Lead Magnets Hub</a>
+  </div>
+</div>
+
+<div class="c">
+
+<!-- INTRO -->
+<div class="intro">
+  <h2>📦 这套方案要解决什么问题</h2>
+  <p>现有 <code>promo-kit.html</code> 是 <strong>C2C 个人渠道</strong>（小红书 / X / 公众号 / 微信群），靠创始人 build-in-public 和 lead magnet 自然吸引。但首期 18-25 人 cohort 全靠 C2C 风险高 — 一篇笔记数据扑街就少 5-8 个 lead。<strong>这套 B2B 方案补的是另一条腿：跟已经聚集了目标受众的组织合作，一场 workshop 一次性接触 30-80 个高匹配画像</strong>。</p>
+  <p><strong>为什么是创业协会 / 商会 / 青商会，而不是其他渠道</strong>：</p>
+  <ul>
+    <li><strong>受众画像 100% 对齐</strong> — 协会会员就是课程目标人群（澳洲华人专业人士 / 小老板 / 已有 ABN / 想用 AI 升级业务），不用我们再做漏斗教育</li>
+    <li><strong>已有信任背书</strong> — 协会会长 / 创始人推荐课程比我们自吹强 10 倍，缩短决策周期</li>
+    <li><strong>互利结构成立</strong> — 协会需要给会员持续输出价值（线下活动 / 学习内容 / 创业支持），我们正好供给；我们需要高质量 lead，他们正好聚集</li>
+    <li><strong>0-1 阶段尤其需要</strong> — 首期没有学员 case study 没有口碑，机构信任背书能直接打过这个空窗期</li>
+  </ul>
+  <p><strong>跟 C2C 文案的关系</strong>：B2B 拿 lead，C2C 文案做后续 nurture。机构 workshop 现场扫码进群 → C2C 文案在群里二次种草 → 申请漏斗。两条腿都不能瘸。</p>
+</div>
+
+<!-- ACTIVE PARTNERSHIPS -->
+<div class="section-h">📍 已立项的具体机构合作 <span class="sub">每家机构的专属落地版页面（事实 + 数字 + 邮件填好的操作版）</span></div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:32px">
+  <a href="partnerships/melbourne-venture-club.html" style="display:block;padding:18px 20px;background:#fff;border:3px solid #7c3aed;box-shadow:5px 5px 0 #7c3aed;text-decoration:none;color:#10162f;transition:transform 0.15s" onmouseover="this.style.transform='translate(2px,2px)'" onmouseout="this.style.transform='none'">
+    <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#7c3aed;letter-spacing:1px">TIER 0 · MELBOURNE HUB</div>
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;margin-top:6px">Melbourne Venture Club →</div>
+    <div style="font-size:12.5px;color:#444;line-height:1.6;margin-top:6px">墨尔本本地创投社群 · 已聊过一轮 · 接续递交 3 套定制提案 + Workshop 议程 + 邮件 + MOU 预填。<strong>BD 必填 10 个事实空白后才能发对方。</strong></div>
+    <div style="margin-top:10px;display:inline-block;font-family:'Space Mono',monospace;font-size:10px;background:#FFDE59;color:#10162f;padding:2px 8px;font-weight:700">🟡 DRAFT · 待填空 + 商务签字</div>
+  </a>
+</div>
+<div style="padding:10px 14px;background:#f5e9ff;border-left:4px solid #7c3aed;font-size:13px;line-height:1.7;margin-bottom:32px;color:#444">
+  <strong style="color:#7c3aed">怎么用</strong>：每家具体机构都建一个 <code style="background:#10162f;color:#FFDE59;padding:1px 6px;font-family:'Space Mono',monospace;font-size:11.5px">partnerships/{org-slug}.html</code> 落地版 — 把通用 Mode 1-4 框架翻译成"这家对应的话术 + 数字 + 议程 + 邮件"，BD 拿来就能改占位符发。<strong>禁止在落地版瞎编对方事实</strong>（创办人、会员规模、上次聊到啥），必填字段放在每个页面 §1 的红框里强制 BD 补完。
+</div>
+
+<!-- ORG TYPE MATRIX -->
+<div class="section-h">🎯 3 类目标机构 <span class="sub">从画像匹配度排序，优先打 Tier 1</span></div>
+
+<div class="grid-3">
+
+  <div class="org-card proto-1">
+    <div class="h">
+      <div class="tag">TIER 1 · 优先级最高</div>
+      <h3>🚀 创业协会 / 创业孵化社群</h3>
+    </div>
+    <div class="body">
+      <div class="row"><b>典型机构（待 BD 核实清单）</b>澳洲华人创业者联盟 · 各州 Chinese Australian Entrepreneurs 组织 · 大学创业中心下属华人 founder 社群 · LinkedIn 上活跃的 AU Chinese Founders 群组 · 城市级 Founder Drinks 华人专场</div>
+      <div class="row"><b>会员画像</b>已有 ABN / 已在做产品 / 想申请 Grant 但卡 paperwork / 想用 AI 替代雇人 — <strong>跟课程 D 类（小公司老板）+ E 类（YC/Antler 申请准备者）高度重合</strong></div>
+      <div class="row"><b>痛点</b>会员卡在「想用 AI 但不知怎么进」「想申请 RDTI / EMDG 但不知如何写申请书」「想 ship 产品但被工程团队拖住」— Phase 1 + Phase 3 是直接打这些点</div>
+      <div class="priority"><strong>🔥 优先级最高的原因</strong>：受众 100% 对齐 + 协会本身在持续找内容供给 + 多数没有自己的 AI / Grant 课程模块（不是竞争关系）</div>
+    </div>
+  </div>
+
+  <div class="org-card proto-2">
+    <div class="h">
+      <div class="tag">TIER 2 · 同等优先</div>
+      <h3>💼 华人商会 / 行业商会</h3>
+    </div>
+    <div class="body">
+      <div class="row"><b>典型机构（待 BD 核实清单）</b>各州 Chinese Chamber of Commerce · 澳中工商业委员会（ACBC）地方分会 · 华人 IT 协会 · 华人科技协会 · 行业垂直商会（律师 / 会计 / 地产 / 医疗 华人协会）</div>
+      <div class="row"><b>会员画像</b>已有公司 / 已经在做生意 / 资深专业人士 — <strong>跟课程 C 类（律师 / 会计 / 医生）+ D 类（小公司老板）高度重合</strong>。客单价承受能力 >$5k</div>
+      <div class="row"><b>痛点</b>会员都是中小企业主，关心「AI 怎么帮我现有业务降本」「员工不会用 AI 怎么办」「能不能拿 R&D 退税」— Phase 1（AI 接管业务环节）+ Phase 3（澳洲会计 + RDTI）正中下怀</div>
+      <div class="priority"><strong>💡 节奏建议</strong>：商会比创业协会更慢节奏 + 更看重正式 MOU，要预留 2-3 周谈判周期。但一旦谈成往往承诺整年合作而不是单次</div>
+    </div>
+  </div>
+
+  <div class="org-card proto-3">
+    <div class="h">
+      <div class="tag">TIER 3 · 选打不强求</div>
+      <h3>🎓 青商会 / 华人青年组织</h3>
+    </div>
+    <div class="body">
+      <div class="row"><b>典型机构（待 BD 核实清单）</b>各州 Chinese Australian Young Professional 组织 · 大学 CSSA 创业部门 · 25-35 岁华人青年 founder 群体 · LinkedIn AU Chinese Young Pros 群</div>
+      <div class="row"><b>会员画像</b>25-35 岁 · 在 Atlassian / Canva / Telstra / 4 大行 / 4 大律所拿 150-250k · 想跳但还没跳 — <strong>跟课程 A 类（焦虑型 senior 程序员）+ B 类（高薪 PM/Designer）高度重合</strong></div>
+      <div class="row"><b>痛点</b>会员普遍「打工天花板焦虑」「想做点自己的事但不知从哪开始」「试过 side project 都做不下去」— 课程的承诺（11 周后有能跑能卖的产品）正中</div>
+      <div class="priority"><strong>⚠️ 注意点</strong>：青商会偏社交属性 > 学习属性，活动转化率会比 Tier 1/2 低 30-50%。优先级低不是受众不对，是 ROI 不如前两类</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="placeholder">
+  <b>📝 行动项（BD 第一周必做）</b>：以上每类机构「典型机构」列表只是脑暴起点，<strong>必须 BD 自己 LinkedIn + Google + 朋友圈调研建立真实可联系清单</strong>，每类至少列出 8-10 个具体机构名 + 联系人 + 邮箱。模板见 <code>promo/partnership-orgs-list.md</code>（BD 自己创建）。<strong>禁止用本页面里的『典型机构』直接对外，那是脑暴方向，不是确认存在的清单。</strong>
+</div>
+
+<!-- 4 COOPERATION MODES -->
+<div class="section-h">🤝 4 种合作模式 <span class="sub">按价值密度排序 · Mode 1 + Mode 2 组合是最佳搭配</span></div>
+
+<div class="grid-2">
+
+  <div class="mode-card recommended">
+    <div class="num">MODE 01 · ⭐ 主推</div>
+    <div class="title">联合 Workshop / 公开课</div>
+    <div class="body">
+      <p><strong>结构</strong>：协会出场地 + 邀请 30-80 名会员（线下或线上），匠人出讲师讲 60-90 分钟"30 分钟 ship 一个 AI 产品 + RDTI 退税 AI Prompt"实战课。现场发 3 个 lead magnet 二维码（OPC 自评 / 30min ship / RDTI 模板）。</p>
+      <p><strong>对协会</strong>：免费内容供给（不收讲师费）+ 会员一致好评（实战不灌水）+ 协会品牌曝光（材料封面挂协会 logo）+ 持续合作可能（每季度一场）。</p>
+      <p><strong>对我们</strong>：一次接触 30-80 个高匹配 lead + 协会会长开场背书 + 收割 lead magnet 私域 → 申请漏斗。<strong>转化最高的模式</strong>。</p>
+      <p><strong>形式选择</strong>：优先线下（墨尔本 / 悉尼 / 布里斯班三城轮跑）— Networking 价值是线上换不来的。其次混合（线下 30 + 线上直播）。最后纯线上（适合距离远的协会 / 时间不允许飞）。</p>
+    </div>
+    <div class="meta">
+      <span>主推</span>
+      <span>60-90 min</span>
+      <span>30-80 人触达</span>
+      <span>预期转化 5-10%</span>
+    </div>
+  </div>
+
+  <div class="mode-card">
+    <div class="num">MODE 02 · 主推搭配</div>
+    <div class="title">会员专属折扣码 + 返佣</div>
+    <div class="body">
+      <p><strong>结构</strong>：协会拿到专属折扣码（如 <code>ACBC-300</code>）— 会员凭码报名直减 $300。每成交一单返协会 <strong style="color:#FF914D">10-15%</strong> referral fee（待商务确认，按 $4,800 标准价 = $480-720/人）。</p>
+      <p><strong>对协会</strong>：实打实的会员福利（会员每个人省 $300）+ 协会拿真金白银返佣 — 不再是单次活动，而是<strong>持续被动收入</strong>。一个 18 人 cohort 协会能拿 $5,400-8,640。</p>
+      <p><strong>对我们</strong>：协会有动力主动在会员群、newsletter、年会上推（不是我们求着推）+ 折扣码不影响其他渠道定价（差异化定价合理）。</p>
+      <p><strong>关键设计</strong>：折扣码绑定 cohort（首期专属）+ 协会每月拿到一份 attribution report（看到 X 人用了码、X 人付了款、协会拿了 $X）— 让协会运营有数据可炫耀，这是续约的关键。</p>
+    </div>
+    <div class="meta">
+      <span>主推搭配</span>
+      <span>持续被动</span>
+      <span>10-15% 返佣</span>
+      <span>待商务确认</span>
+    </div>
+  </div>
+
+  <div class="mode-card">
+    <div class="num">MODE 03 · 升级合作 · 两个 variant</div>
+    <div class="title">保留席位 + 协会主理人体验权益</div>
+    <div class="body">
+      <p><strong>共同结构</strong>：每期 cohort 给协会预留 2-3 个 reserved seat（协会推荐会员，<strong>优先审核（24h 内回复）+ 录取概率提升，不保证录取</strong> · 申请制不破例红线）。<strong>首期无视频面试（case study cohort 门槛较低），第二期起加视频面试 + 严筛</strong>。主理人体验权益按协会类型分两个 variant 选择：</p>
+
+      <p style="background:#fff8d9;border-left:3px solid #FFDE59;padding:8px 12px;margin-top:8px"><strong style="color:#FF914D">Variant A · 适用：商会 / 专业人士协会（律师 / 会计 / 医生 / 行业 senior）</strong><br/>主理人本人享免费 <strong>1:1 Office Hour 4 次 × 30min</strong>（课程主讲老师）。这类主理人是行业 senior 不是 founder，对系统化 AI / 一人公司课程内容真的想学。</p>
+
+      <p style="background:#f5e9ff;border-left:3px solid #7c3aed;padding:8px 12px;margin-top:8px"><strong style="color:#7c3aed">Variant B · 适用：创业协会 / Founder community / Venture Club</strong><br/><strong>不</strong>给 1:1 Office Hour — <strong>创业的人喜欢跟创业的人聊，不喜欢听讲师讲</strong>。改成 <strong>Founder Network Access</strong>：① Demo Day Networking 晚宴 2-3 reserved seats（跟 cohort + 校友 + VC + 嘉宾同桌） ② JR 校友 founder warm intro（每季度 3-5 个） ③ W10 VC fireside 旁听 + 提问优先 ④ 主理人本人 W10/W11 嘉宾席（画像合适时）。详见落地版 <a href="partnerships/melbourne-venture-club.html" style="color:#7c3aed;font-weight:700">Melbourne Venture Club</a>。</p>
+
+      <p><strong>对协会</strong>（两个 variant 通用）：主理人成为内部 KOL（亲身体验后推 = 最强推荐）+ 录取保留 2-3 个高质量 lead 名额，不浪费。</p>
+    </div>
+    <div class="meta">
+      <span>升级合作</span>
+      <span>2-3 reserved</span>
+      <span>2 个 variant</span>
+      <span>申请制不破例</span>
+    </div>
+  </div>
+
+  <div class="mode-card">
+    <div class="num">MODE 04 · 长期绑定</div>
+    <div class="title">嘉宾互利 / Demo Day 评审席</div>
+    <div class="body">
+      <p><strong>结构</strong>：邀请协会的明星会员 / 资深 founder 来 W11 Demo Day 当评审 + W10 VC fireside chat 当嘉宾。<strong>不付出场费</strong>（嘉宾互利原则与会计师 / Grant consultant 相同）— 提供高质量曝光 + 评审席背书 + 跟 18-25 个 cohort 学员互动机会（这些是协会嘉宾的潜在客户 / 合伙人）。</p>
+      <p><strong>对协会</strong>：协会明星会员获得行业地位提升（被 JR 邀请当评审）+ 协会品牌出现在 Demo Day 物料（社媒、PR、视频回放、毕业证书）+ 协会嘉宾跟学员一晚 Networking 晚宴 = 直接对接高净值 leads。</p>
+      <p><strong>对我们</strong>：评审席嘉宾质量提升 + 协会嘉宾后续在自己社群帮推下一期（隐式背书）+ 跨协会 cross-promotion（多协会嘉宾互相介绍其他协会）。</p>
+      <p><strong>这是长期绑定模式</strong> — 第一期跑通后，第二期、第三期沿用，协会成为长期合作伙伴而不是一次性甲方。</p>
+    </div>
+    <div class="meta">
+      <span>长期绑定</span>
+      <span>不付出场费</span>
+      <span>嘉宾互利</span>
+      <span>持续关系</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- COMMERCIAL TABLE -->
+<div class="section-h">💰 商务结构 / 分成对比 <span class="sub">所有数字基于课程页定价推算 · 落地前由商务最终敲定</span></div>
+
+<div style="overflow-x:auto;background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:6px;margin-bottom:14px">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>合作模式</th>
+        <th>给协会的对价</th>
+        <th>给协会会员的对价</th>
+        <th>我们的成本</th>
+        <th>预期 ROI / 单次</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mode 1<br>联合 Workshop</strong></td>
+        <td>免费讲师 60-90min<br/>+ 现场材料 / 物料<br/>+ 协会品牌出现在所有 asset<br/><span class="tbd">[出场费 $0 · 待商务确认]</span></td>
+        <td>workshop 免费参加<br/>+ 3 个 lead magnet<br/>+ 折扣码（搭配 Mode 2）</td>
+        <td>讲师时间 ~3h<br/>+ 物料 $50-200<br/>+ 三城轮跑差旅自负</td>
+        <td>触达 30-80 人 → 3-8 申请 → 1-3 录取<br/>= <strong>$4.8k-14.4k GMV</strong><br/><span class="tbd">[待商务确认]</span></td>
+      </tr>
+      <tr>
+        <td><strong>Mode 2<br>专属折扣码</strong></td>
+        <td>每单返佣 10-15%<br/>= <strong>$480-720/人</strong><br/>（按 Standard $4,800 算）<br/><span class="tbd">[10-20% 区间 · 待商务确认]</span></td>
+        <td>报名直减 $300<br/>（独立折扣码）<br/>= 早鸟价 $3,500</td>
+        <td>折扣 $300<br/>+ 返佣 $480-720<br/>= 单人毛利让出 $780-1,020</td>
+        <td>协会主动在群推<br/>= 持续被动 lead<br/>1 期 cohort 协会拿 <strong>$5,400-8,640</strong><br/><span class="tbd">[待商务确认]</span></td>
+      </tr>
+      <tr>
+        <td><strong>Mode 3<br>保留席位 + 主理人体验</strong><br/><span style="font-size:10px;color:#888">两个 variant 选一</span></td>
+        <td>2-3 reserved seat（不破例）<br/>+ <strong>Variant A（商会）</strong>：4 次 1:1 Office Hour 免费<br/>+ <strong>Variant B（founder community）</strong>：Founder Network Access（Demo Day 晚宴 / 校友 warm intro / VC fireside / 嘉宾席）</td>
+        <td>申请优先审核（24h 内回复）<br/>（不是保证录取）<br/>+ <strong>B</strong>：Demo Day 同桌 cohort/校友/VC</td>
+        <td><strong>A</strong>：审核 ~1h + 1:1 ×4 = 2h<br/><strong>B</strong>：~0 边际成本（晚宴/intro 都是已有资源）</td>
+        <td>主理人成为内部 KOL<br/><strong>B 比 A LTV 更高</strong>（network 关系比上课强）<br/><span class="tbd">[待商务确认]</span></td>
+      </tr>
+      <tr>
+        <td><strong>Mode 4<br>嘉宾互利</strong></td>
+        <td>Demo Day 评审席<br/>+ VC fireside 嘉宾席<br/>+ 物料品牌曝光<br/>= 不付出场费</td>
+        <td>Demo Day 现场旁听<br/>+ Networking 晚宴邀请<br/>（每协会 2-3 名额）</td>
+        <td>评审准备时间<br/>+ 晚宴餐饮分摊</td>
+        <td>下一期招生隐式背书<br/>+ 跨协会 cross-promotion<br/><strong>第二期招生的最大杠杆</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="placeholder">
+  <b>🔑 推荐组合策略</b>：跟 Tier 1 创业协会 / Founder community 做 <strong>Mode 1 + Mode 2 + Mode 3 (Variant B network access) + Mode 4</strong>（活动 + 返佣 + founder 网络 + 嘉宾互利）— 别给 founder 1:1 office hour，他们要的是跟同类聊。跟 Tier 2 商会做 <strong>Mode 2 + Mode 3 (Variant A 1:1)</strong>（被动返佣 + 行业 senior 主理人想真学课程）。跟 Tier 3 青商会做 <strong>Mode 1 单点</strong>（活动转化即可，不预期长期）。
+</div>
+
+<!-- ROI BOX -->
+<div class="section-h">📊 单场 Workshop ROI 推算 <span class="sub">基于课程定价 + 行业转化基准</span></div>
+
+<div class="roi-box">
+  <h3>典型场景：墨尔本一场创业协会联合 Workshop · 50 人到场</h3>
+  <div class="funnel">
+    <div class="funnel-step">
+      <span class="n">50</span>
+      <span class="l">活动到场</span>
+    </div>
+    <div class="funnel-step">
+      <span class="n">25</span>
+      <span class="l">扫码进群<br/>(50%)</span>
+    </div>
+    <div class="funnel-step">
+      <span class="n">10</span>
+      <span class="l">完成 lead magnet<br/>(20%)</span>
+    </div>
+    <div class="funnel-step">
+      <span class="n">4-6</span>
+      <span class="l">提交申请<br/>(8-12%)</span>
+    </div>
+    <div class="funnel-step">
+      <span class="n">2-3</span>
+      <span class="l">录取付费<br/>(4-6%)</span>
+    </div>
+  </div>
+  <p><strong>财务 / 单次 workshop（按 Standard $4,800 算）</strong>：录取 2-3 人 → GMV <code>$9,600-14,400</code> → 协会返佣 10-15% = <code>$960-2,160</code> 给协会 → 我们净收入 <code>$8,640-12,240</code>。<strong>讲师 1 次 90min 投入 + 协会拿持续被动收入，双方都赚。</strong></p>
+  <p><strong>三城跑一遍的全局推算（待商务确认）</strong>：墨尔本 + 悉尼 + 布里斯班各 1 场，3×50=150 人触达 → 6-9 人录取 = <code>$28.8k-43.2k</code> GMV。<strong>占首期 cohort 招生目标（18-25 人）的 30-50%</strong>。剩余靠 C2C 文案 + 申请漏斗补齐。</p>
+  <p><span class="tbd">[转化率基准来自一般教育 affiliate 行业基准 5-12%，<strong>首期需用实际数据校准</strong>。如低于 4% 录取率，下期重新评估机构选择 / 内容呈现 / 申请漏斗。]</span></p>
+</div>
+
+<!-- 4-WEEK SOP -->
+<div class="section-h">🗓️ 4 周 BD Outreach SOP <span class="sub">从立项到第一场 workshop 落地</span></div>
+
+<div class="sop-step">
+  <div class="week">WEEK 1<br/><span class="label">名单建立 + 内部对齐</span></div>
+  <div class="content">
+    <strong>目标：30 个具体机构 + 联系人清单 + 商务对齐到位。</strong>
+    <ul>
+      <li>BD 用 LinkedIn / Google / 朋友圈 + ChatGPT search 调研，建立 <code>promo/partnership-orgs-list.md</code>：每行一个机构（名称 / 类型 / 城市 / 大概会员数 / 联系人 / 邮箱 / LinkedIn）— 30 个起步，Tier 1/2/3 比例 50% / 35% / 15%</li>
+      <li><strong>跟 Mason / 商务对齐分成红线</strong>：返佣比例上限（10% / 15% / 20% 哪档）+ 折扣码上限 + reserved seat 个数 + 是否允许写"承诺录取 N 人"（默认不允许）</li>
+      <li>准备话术包：使用 <code>promo/partnership-outreach-emails.md</code>（含 cold email / 跟进 / 议程提案 / MOU 框架）</li>
+      <li>建立 <code>promo/partnership-tracking.csv</code>（机构 / 联系人 / 状态 / 邮件发出日 / 跟进日 / 备注）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sop-step">
+  <div class="week">WEEK 2<br/><span class="label">Cold Outreach</span></div>
+  <div class="content">
+    <strong>目标：30 封首封邮件发出 + LinkedIn connect + 5-8 个回复约 meeting。</strong>
+    <ul>
+      <li>每个机构同步走两路：① <strong>邮件</strong>（用模板 1，含课程一页纸 + 议程提案）② <strong>LinkedIn</strong>（先 connect 不带 pitch，3 天后发跟进消息）</li>
+      <li>邮件发送节奏：每天 6 封（避免被 Gmail 标垃圾），周一 / 周三上午 9-11am 澳洲时间最高 open rate</li>
+      <li>7 天内无回复 → 跟进邮件（模板 2，换个角度："是否邮件被淹"+ 附 lead magnet 链接）</li>
+      <li>14 天无回复 → 标记 cold，放回池子 8 周后再 outreach</li>
+      <li><strong>关键指标</strong>：回复率 15-25% 算正常 / >30% 算优秀 / <10% 检查话术问题</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sop-step">
+  <div class="week">WEEK 3<br/><span class="label">1:1 Meeting + 模式定型</span></div>
+  <div class="content">
+    <strong>目标：5-8 个 30min 视频会议 + 3-5 个确定合作意向 + 1-2 个签 MOU。</strong>
+    <ul>
+      <li>每个 meeting <strong>30min 议程</strong>：5min 互相介绍 / 5min 课程概览（用一页纸 + Demo） / 10min 协会需求倾听（关键！）/ 5min 提议合作模式 / 5min 下一步</li>
+      <li><strong>带 3 套合作模式去谈</strong>，不要一上来 push Mode 1。倾听协会需求后再匹配 — 协会想要曝光选 Mode 1，想要被动收入选 Mode 2。<strong>Mode 3 要先听对方主理人画像</strong>：行业 senior（律师 / 会计） → Variant A 1:1 Office Hour；founder community 主理人 → Variant B Founder Network Access（别给 founder 上课）</li>
+      <li>愿意签 MOU 的 → 发 <code>promo/partnership-mou-draft.md</code> 框架（不是法律合同，是合作意向书 + 关键数字）— 来回 1-2 轮敲定</li>
+      <li>有意向但还在内部讨论的 → 7 天跟进，发"这周更新"邮件（招生进度、新增嘉宾、新 lead magnet 数据）保持 top of mind</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sop-step">
+  <div class="week">WEEK 4<br/><span class="label">落地执行 + 第一场 Workshop</span></div>
+  <div class="content">
+    <strong>目标：MOU 签 2-3 个 + 排第一场 workshop + 折扣码上线 + tracking 跑起来。</strong>
+    <ul>
+      <li>MOU 签完 → 排 workshop 日期（开课前 4-6 周最佳，给报名留时间）+ 跟协会确认物料（海报、签到表、扫码进群 QR、lead magnet 二维码）</li>
+      <li>折扣码上线：JR 后台生成 <code>[ORG-CODE]-300</code>（如 <code>ACBC-300</code>），后台配置返佣百分比 + 归因 tracking</li>
+      <li>给协会发 <strong>分发包</strong>：① 协会用海报 / 转发文案（中英文） ② 会员群推送话术 ③ Newsletter 文案 ④ FAQ 答疑（协会会员可能问什么）— 不要让协会自己写</li>
+      <li>第一场 workshop 后 48h 内：① 给协会发 thank-you + Recap（参会人数 / lead magnet 完成率 / 群增量） ② 跟所有扫码进群的发欢迎私信（C2C 话术接管）③ 7 天后跟协会复盘看返佣码使用数据</li>
+    </ul>
+  </div>
+</div>
+
+<!-- EMAIL TEMPLATES PREVIEW -->
+<div class="section-h">📧 邮件话术模板预览 <span class="sub">完整 5 套见 <code style="background:#10162f;color:#FFDE59;padding:2px 6px;font-family:'Space Mono',monospace;font-size:11px">promo/partnership-outreach-emails.md</code></span></div>
+
+<div class="email-preview">
+  <div class="label">模板 1 · COLD EMAIL · 首封</div>
+  <div class="subject">[协会名] 会员可能感兴趣的 AI 实战课 — 想跟你聊 15 分钟</div>
+  <div class="meta">
+    <span>200-280 字</span>
+    <span>含一页纸链接</span>
+    <span>不硬广</span>
+    <span>问 yes/no question</span>
+  </div>
+  <pre>你好 [联系人名]，
+
+我是 [BD 姓名]，来自匠人学院（jiangren.com.au）。我们 11 月开一门叫 "AI 一人创业营" 的课，11 周三城线下（墨尔本主场 + 悉尼 / 布里斯班卫星），教澳洲华人专业人士用 AI 做一人公司、拿 RDTI 退税。
+
+我看了 [协会名] 的 [某个具体活动 / Newsletter / LinkedIn post]，[非常具体的细节 — 比如：你们上次办的 founder dinner 主题正好是 AI in business],我觉得你们会员的画像跟课程目标人群高度重合 — 已有 ABN / 想用 AI 升级业务 / 关心 R&D 退税。
+
+我们想跟 [协会名] 探索合作可能，比如：
+① 给会员办一场 60-90min 实战 workshop（不收讲师费）—— 现场带做 "30 分钟 ship 一个 AI 产品" + RDTI 申请 AI Prompt
+② 会员专属折扣码 + 协会返佣
+③ 协会创始人 / 会长免费体验课程内容
+
+不知道你方不方便下周约 15 分钟视频聊聊？我可以先发一份课程一页纸给你看。
+
+谢谢你的时间。
+[BD 姓名]
+[职位] · 匠人学院
+[电话] · [邮箱] · [LinkedIn]
+
+📎 课程一页纸：https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/curriculum.html</pre>
+  <div class="actions">
+    <a href="promo/partnership-outreach-emails.md" target="_blank" class="btn">查看 5 套完整模板</a>
+    <button class="btn" data-copy="cold-email">复制此模板</button>
+  </div>
+</div>
+
+<div class="email-preview" style="box-shadow:6px 6px 0 #FF914D">
+  <div class="label">模板 3 · 议程提案 · 1:1 meeting 后发</div>
+  <div class="subject">谢谢今天的会议 — 这是我们具体的合作提案，你们 review 下</div>
+  <div class="meta">
+    <span>提供 3 套选项</span>
+    <span>明确数字</span>
+    <span>给协会决定权</span>
+  </div>
+  <pre>[联系人名]，
+
+谢谢今天 30 分钟。根据你说的协会今年想给会员加 "AI / Grant 实战" 内容，我整理了 3 套合作方案让你们内部 review：
+
+【方案 A · 轻量】单次联合 Workshop
+- [日期] [城市] 90min · 我们出讲师不收费 · 协会出场地 + 邀请会员
+- 现场 3 个 lead magnet 二维码 → 会员可以选择拿来
+- 协会品牌出现在所有材料 + 后续 recap 物料
+- 适合：先看效果再深入合作
+
+【方案 B · 深度】Workshop + 专属折扣码 + 返佣
+- 包含方案 A 全部
+- 会员专属折扣码 [ORG-CODE]-300 (会员省 $300)
+- 我们每成交一单返协会 [10-15%] = [$480-720/人]
+- 一个 18 人 cohort 协会能拿 [$5,400-8,640] 被动收入
+- 适合：协会想给会员持续福利 + 拿一份运营经费
+
+【方案 C · 长期绑定】方案 B + 主理人体验权益（两个 variant 任选）
+- 包含方案 B 全部
+- 协会派 1 名明星会员 Demo Day 评审席 + W10 VC fireside 嘉宾席
+- 【Variant A · 商会 / 行业协会】协会会长免费 4 次 1:1 Office Hour（主讲老师）
+- 【Variant B · Founder community】Founder Network Access：Demo Day 晚宴 2-3 reserved seats + 每季度 3-5 个 JR 校友 founder warm intro + VC fireside 旁听 + 主理人本人 W10/W11 嘉宾席
+- 适合：协会愿意把这门课当长期会员福利推
+
+哪个方案最贴近你们设想？我可以根据你的反馈调整数字 / 时间安排。如果觉得三个都不太对，我们再聊。
+
+[BD 姓名]</pre>
+  <div class="actions">
+    <a href="promo/partnership-outreach-emails.md" target="_blank" class="btn">查看 5 套完整模板</a>
+    <button class="btn" data-copy="proposal">复制此模板</button>
+  </div>
+</div>
+
+<!-- Q&A FAQ -->
+<div class="section-h">❓ 协会会问的 6 个高频问题 <span class="sub">提前准备好答案 · meeting 不慌</span></div>
+
+<div class="qa-item">
+  <div class="q">"匠人学院在澳洲华人圈子的口碑怎么样？我们没听过。"</div>
+  <div class="a">直接给数据 + 案例：匠人学院 2018 年起跑 IT 培训 / Bootcamp，澳洲华人技术圈累积 2000+ 学员，毕业生分布 Atlassian / Canva / Telstra / 4 大行 / 4 大律所 / 自创公司。<strong>这门课是匠人学院第一门面向"已经在工作的资深华人专业人士"做的 OPC 课</strong>，不是新手培训。给一份 <a href="https://jiangren.com.au" style="color:#6366f1">jiangren.com.au</a> 主站链接让他们自己看，再发 2-3 个有公开 LinkedIn 的毕业生例子。</div>
+</div>
+
+<div class="qa-item">
+  <div class="q">"返佣听起来不错 — 但我们协会是 not-for-profit，能收返佣吗？"</div>
+  <div class="a">这是真问题，每个 NFP 章程不同。我们灵活处理：① 如果章程不允许商业返佣 → 转化成"<strong>协会运营经费赞助</strong>"形式，按招生数发票形式拨付（协会内部走赞助流程） ② 或者改成"<strong>协会指定供应商折扣</strong>"模式 — 协会自己分发折扣码，我们后台给协会成员特别价（不走返佣链路）③ 让 BD 直接问协会的 admin / 财务 ：「你们以前跟教育/培训机构合作时怎么处理收入」— 跟着对方流程走最快。</div>
+</div>
+
+<div class="qa-item">
+  <div class="q">"workshop 不收讲师费 — 你们是不是变着法子来卖课的硬广？"</div>
+  <div class="a">直接承认 + 划线：workshop 不是慈善是商业合作，我们的目的就是从协会会员里招到合适学员。但<strong>课程内容必须独立成立</strong> — 即使会员一个都不报名，他们也能拿走 "30 分钟 ship 一个 AI 产品" 的完整操作 + RDTI Prompt 模板，自己回家用。课程介绍部分严格控制在最后 10 分钟内，不是 60 分钟硬广 + 30 分钟内容。<strong>这条 BD 自己内部 review workshop 议程时严格把关</strong>，否则毁口碑下次协会不会再合作。</div>
+</div>
+
+<div class="qa-item">
+  <div class="q">"$3,800-6,800 我们会员可能觉得贵 — 能不能再低？"</div>
+  <div class="a">价格红线不能破 — 首期就是 case study 价，第二期起回 $5,800-9,800。但有几个不破价的让步空间：① <strong>会员折扣码 $300</strong>（Mode 2，等于早鸟价的 8% off）② <strong>分期付款</strong>（前两周满意全退后再付剩余）③ <strong>奖学金名额</strong>（每期保留 1-2 个 50% off 名额给协会推荐的有潜力但预算紧的会员，需要协会会长推荐信） — 这三招够了，再低就破坏其他渠道公平。<strong>明确告诉协会：保护价格稳定也是保护协会会员的利益（避免「我提前付了原价、后来的人半价」的尴尬）。</strong></div>
+</div>
+
+<div class="qa-item">
+  <div class="q">"能不能保证我们推荐的会员一定被录取？"</div>
+  <div class="a">不能。<strong>这是申请制的核心，不能为协会破例</strong>。但可以给协会推荐的会员两个具体好处：① <strong>优先审核</strong>（24h 内回复，不用排队等批准 — 首期无视频面试，纯后台 review 申请单 + LinkedIn）② <strong>申请单带专属 referral code 字段</strong> — 让审核同事提前知道这位申请人是 X 协会推荐，加分项（但不是录取 guarantee）。<strong>红线话术</strong>：「提高被认真考虑的概率，不是提高录取率」。<strong>首期无视频面试这点 BD 要主动说</strong>（避免协会以为我们这边卡很严，让会员误以为通过率很低不敢申请）。<strong>第二期起加视频面试 + 严筛</strong>，到时候 reserved seat 价值会更高，协会现在合作就是锁早期合作窗口。</div>
+</div>
+
+<div class="qa-item">
+  <div class="q">"我们能不能签独家 — 你们只跟我们一家协会合作？"</div>
+  <div class="a"><strong>明确拒绝独家</strong>。理由直说：① 首期招生目标 18-25 人，单个协会撑不起 cohort，必须多渠道 ② 协会自己也不希望承担"我们一家协会要负责把这门课填满"的压力 ③ 我们最多能给"<strong>同城同类型协会优先合作</strong>"（比如墨尔本你们是第一家创业协会合作伙伴，6 个月内不跟墨尔本其他创业协会做 Mode 1 workshop）— 这个让步对协会有意义（差异化），对我们也成立（不影响多城多类型铺开）。<strong>这条 BD 心里要硬</strong>，独家协议会卡死后面所有商务空间。</div>
+</div>
+
+<!-- RED LINES -->
+<div class="section-h">⚠️ 严格红线 <span class="sub">违反会被打回 · 影响课程品牌长期信誉</span></div>
+
+<div class="warn">
+  <h3>承诺红线（沿用 CLAUDE.md + promo-kit.html 的口径）</h3>
+  <ul>
+    <li><strong>❌ 不承诺金钱 / 收入</strong>：不对协会说"会员学完月入 $10k"，不写"3 个月回本"，不承诺会员"拿到 RDTI $80k 退税"（实际拿到与否不一定，必须加这句免责）</li>
+    <li><strong>❌ 不说"副业"</strong>：协会推广材料里不出现"副业 / 下班后做 AI / 兼职"。改为"建立第二条收入腿 / 自由职业 / 一人公司"</li>
+    <li><strong>❌ 不承诺录取</strong>：跟协会签的所有材料里录取仍走申请制 + 审核（首期无视频面试 · 第二期起加视频面试 + 严筛）。协会推荐 ≠ 保证录取。这条破例 1 次，整个申请制 credibility 崩塌</li>
+    <li><strong>❌ 不签独家协议</strong>：单个协会拿不下 18-25 人 cohort，独家协议自杀。最多让"同城同类型优先合作 6 个月"</li>
+    <li><strong>❌ 不付头部费 / 入会费</strong>：合作是互利模式，不是协会甲方我们乙方。协会要求 sponsor fee / 入会费 / 平台费 / 内容审核费 → 礼貌拒绝。我们出讲师 + 出物料 + 出返佣，已经是足够的对价</li>
+    <li><strong>❌ 不让 workshop 变硬广</strong>：90 分钟实战内容 + 10 分钟课程介绍。如果协会要求把课程介绍占比提高到 30%+ → 拒绝，否则毁课程口碑 + 协会会员也不会再来</li>
+  </ul>
+</div>
+
+<div class="warn" style="background:#10162f;box-shadow:6px 6px 0 #ff5757">
+  <h3>商务红线（落地前必须商务确认）</h3>
+  <ul>
+    <li><strong>返佣百分比上限</strong> — 本页面用 10-15% 推算，<strong>实际由 Mason / 商务最终定</strong>（不要 BD 自己在 meeting 上随口承诺 18% 20%）</li>
+    <li><strong>折扣码深度上限</strong> — 本页面用 $300 推算，最多让到 $500（约 10% off Standard 价），<strong>不许给到 $1,000 以上</strong>（破坏其他渠道）</li>
+    <li><strong>奖学金名额</strong> — 50% off 每期保留上限 2 个，需要协会会长亲笔推荐信 + 申请人额外写一份"为什么需要奖学金"</li>
+    <li><strong>所有 MOU / 合作协议 BD 自己不能签字</strong> — 必须 Mason / 商务负责人最终签</li>
+    <li><strong>协会推荐的高净值学员（一次性付 Premium $6,800）</strong>处理方式跟普通学员一样，<strong>不允许偷偷加返佣比例</strong>（违反返佣表）</li>
+  </ul>
+</div>
+
+<!-- CHECKLIST -->
+<div class="section-h">✅ BD 落地 Checklist <span class="sub">每完成一项打勾 · 顺序执行</span></div>
+
+<div class="checklist">
+  <h3>本周（Week 1）</h3>
+  <label><input type="checkbox"> 跟 Mason / 商务对齐返佣 / 折扣 / 奖学金所有数字红线</label>
+  <label><input type="checkbox"> 建立 <code>promo/partnership-orgs-list.md</code>（30 个机构 + 联系人 + 邮箱 + LinkedIn）</label>
+  <label><input type="checkbox"> 建立 <code>promo/partnership-tracking.csv</code>（用于跟踪 outreach 状态）</label>
+  <label><input type="checkbox"> 阅读完 <code>promo/partnership-outreach-emails.md</code> 里 5 套话术 + 个性化 [机构名] [BD 姓名] 等占位符</label>
+  <label><input type="checkbox"> 把课程一页纸 PDF / Google Slide 链接准备好（不要带 BD 自己手写的"卖"话术）</label>
+</div>
+
+<div class="checklist" style="border-color:#FF914D">
+  <h3>下周（Week 2）</h3>
+  <label><input type="checkbox"> 周一 9-11am 发出第一批 6 封 cold email（Tier 1 优先）</label>
+  <label><input type="checkbox"> 周三周五 LinkedIn connect 30 个机构联系人（不带 pitch）</label>
+  <label><input type="checkbox"> 7 天无回复发跟进邮件（模板 2）</label>
+  <label><input type="checkbox"> 每天更新 tracking.csv 状态</label>
+  <label><input type="checkbox"> Week 2 末统计回复率（目标 15-25%）+ 决定是否需调话术</label>
+</div>
+
+<div class="checklist" style="border-color:#10b981">
+  <h3>第 3-4 周</h3>
+  <label><input type="checkbox"> 安排 5-8 个 30min 1:1 video meeting</label>
+  <label><input type="checkbox"> 每场 meeting 后 24h 内发 thank-you + 议程提案邮件（模板 3）</label>
+  <label><input type="checkbox"> 给 2-3 家有意向的发 MOU 框架（<code>promo/partnership-mou-draft.md</code>）</label>
+  <label><input type="checkbox"> 折扣码后台配置 + 返佣 tracking 跑通（跟 Mason 对接）</label>
+  <label><input type="checkbox"> 排第一场 workshop 日期 + 物料分发包发给协会</label>
+</div>
+
+</div>
+
+<script>
+// Toggle done state on checklist items
+document.querySelectorAll('.checklist label').forEach(label => {
+  label.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'INPUT') {
+      const cb = label.querySelector('input[type=checkbox]');
+      cb.checked = !cb.checked;
+    }
+    const cb = label.querySelector('input[type=checkbox]');
+    label.classList.toggle('done', cb.checked);
+  });
+});
+
+// Copy email templates inline
+const templates = {
+  'cold-email': `你好 [联系人名]，
+
+我是 [BD 姓名]，来自匠人学院（jiangren.com.au）。我们 11 月开一门叫 "AI 一人创业营" 的课，11 周三城线下（墨尔本主场 + 悉尼 / 布里斯班卫星），教澳洲华人专业人士用 AI 做一人公司、拿 RDTI 退税。
+
+我看了 [协会名] 的 [某个具体活动 / Newsletter / LinkedIn post]，[非常具体的细节 — 比如：你们上次办的 founder dinner 主题正好是 AI in business]，我觉得你们会员的画像跟课程目标人群高度重合 — 已有 ABN / 想用 AI 升级业务 / 关心 R&D 退税。
+
+我们想跟 [协会名] 探索合作可能，比如：
+① 给会员办一场 60-90min 实战 workshop（不收讲师费）—— 现场带做 "30 分钟 ship 一个 AI 产品" + RDTI 申请 AI Prompt
+② 会员专属折扣码 + 协会返佣
+③ 协会创始人 / 会长免费体验课程内容
+
+不知道你方不方便下周约 15 分钟视频聊聊？我可以先发一份课程一页纸给你看。
+
+谢谢你的时间。
+[BD 姓名]
+[职位] · 匠人学院
+[电话] · [邮箱] · [LinkedIn]
+
+📎 课程一页纸：https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/curriculum.html`,
+  'proposal': `[联系人名]，
+
+谢谢今天 30 分钟。根据你说的协会今年想给会员加 "AI / Grant 实战" 内容，我整理了 3 套合作方案让你们内部 review：
+
+【方案 A · 轻量】单次联合 Workshop
+- [日期] [城市] 90min · 我们出讲师不收费 · 协会出场地 + 邀请会员
+- 现场 3 个 lead magnet 二维码 → 会员可以选择拿来
+- 协会品牌出现在所有材料 + 后续 recap 物料
+- 适合：先看效果再深入合作
+
+【方案 B · 深度】Workshop + 专属折扣码 + 返佣
+- 包含方案 A 全部
+- 会员专属折扣码 [ORG-CODE]-300 (会员省 $300)
+- 我们每成交一单返协会 [10-15%] = [$480-720/人]
+- 一个 18 人 cohort 协会能拿 [$5,400-8,640] 被动收入
+- 适合：协会想给会员持续福利 + 拿一份运营经费
+
+【方案 C · 长期绑定】方案 B + 主理人体验权益（两个 variant 任选）
+- 包含方案 B 全部
+- 协会派 1 名明星会员 Demo Day 评审席 + W10 VC fireside 嘉宾席
+- 【Variant A · 商会 / 行业协会】协会会长免费 4 次 1:1 Office Hour（主讲老师）
+- 【Variant B · Founder community】Founder Network Access：Demo Day 晚宴 2-3 reserved seats + 每季度 3-5 个 JR 校友 founder warm intro + VC fireside 旁听 + 主理人本人 W10/W11 嘉宾席
+- 适合：协会愿意把这门课当长期会员福利推
+
+哪个方案最贴近你们设想？我可以根据你的反馈调整数字 / 时间安排。如果觉得三个都不太对，我们再聊。
+
+[BD 姓名]`
+};
+
+document.querySelectorAll('button.btn[data-copy]').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const key = btn.dataset.copy;
+    const text = templates[key];
+    if (!text) return;
+    try {
+      await navigator.clipboard.writeText(text);
+      const orig = btn.textContent;
+      btn.textContent = '✓ 已复制';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 2000);
+    } catch (e) {
+      alert('复制失败：' + e.message);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
