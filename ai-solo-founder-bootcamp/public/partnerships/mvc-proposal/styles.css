@@ -1,0 +1,317 @@
+/* ============================================================
+   MVC Proposal · Multi-page Deck Shared CSS
+   12 pages · 16:9 landscape · independent URLs
+   ============================================================ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'DM Sans','Noto Sans SC',sans-serif;
+  background:#0a0e1f;
+  color:#fff;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ============ Page Frame (16:9 landscape) ============ */
+.page{
+  flex:1;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  padding:32px 64px 60px;
+  overflow:hidden;
+}
+.page.cream{background:#fffbe6;color:#10162f}
+.page.navy{background:#10162f;color:#fff}
+.page.navy-glow{background:#10162f;color:#fff;position:relative}
+.page.navy-glow::before{
+  content:'';position:absolute;top:-150px;right:-150px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,#FF914D 0%,transparent 70%);
+  opacity:0.13;pointer-events:none;
+}
+.page.orange{background:linear-gradient(135deg,#FF914D 0%,#FFDE59 100%);color:#10162f}
+.page.dark{background:#0a0e1f;color:#fff}
+
+.page-inner{
+  flex:1;
+  max-width:1400px;
+  width:100%;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+}
+
+/* ============ Top Nav Bar ============ */
+.deck-nav{
+  position:absolute;top:0;left:0;right:0;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 32px;
+  background:rgba(10,14,31,0.6);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;
+  z-index:10;
+  backdrop-filter:blur(6px);
+}
+.page.cream .deck-nav{background:rgba(16,22,47,0.04);border-bottom-color:rgba(16,22,47,0.08)}
+.page.orange .deck-nav{background:rgba(16,22,47,0.06);border-bottom-color:rgba(16,22,47,0.1)}
+.deck-nav .brand{color:#FF914D;font-weight:700;letter-spacing:2px}
+.deck-nav .page-count{color:#FFDE59;font-weight:700}
+.page.cream .deck-nav .page-count,.page.orange .deck-nav .page-count{color:#FF914D}
+.deck-nav .links{display:flex;gap:14px;align-items:center}
+.deck-nav .links a{
+  color:rgba(255,255,255,0.7);
+  text-decoration:none;
+  padding:6px 14px;
+  border:1px solid rgba(255,255,255,0.2);
+  transition:all 0.15s;
+}
+.page.cream .deck-nav .links a,.page.orange .deck-nav .links a{color:rgba(16,22,47,0.7);border-color:rgba(16,22,47,0.2)}
+.deck-nav .links a:hover{background:#FF914D;color:#fff;border-color:#FF914D}
+.deck-nav .links a.disabled{opacity:0.3;pointer-events:none}
+.deck-nav .print-btn{background:#FF914D;color:#fff;border-color:#FF914D;font-weight:700;cursor:pointer;font-family:inherit;font-size:11px;letter-spacing:1.5px}
+.deck-nav .print-btn:hover{background:#fff;color:#FF914D;border-color:#FF914D}
+
+/* ============ Page Footer ============ */
+.deck-footer{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;justify-content:space-between;
+  padding:16px 32px;
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;
+  color:rgba(255,255,255,0.4);
+  border-top:1px solid rgba(255,255,255,0.06);
+  z-index:10;
+}
+.page.cream .deck-footer{color:rgba(16,22,47,0.45);border-top-color:rgba(16,22,47,0.08)}
+.page.orange .deck-footer{color:rgba(16,22,47,0.55);border-top-color:rgba(16,22,47,0.1)}
+
+/* ============ Typography ============ */
+.eyebrow{
+  font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:2.5px;color:#FF914D;margin-bottom:18px;text-transform:uppercase;
+}
+.page.orange .eyebrow{color:#10162f;font-weight:700}
+h1.hero{
+  font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;
+  font-size:clamp(36px,5.5vw,82px);font-weight:900;line-height:1.04;
+  letter-spacing:-0.02em;margin-bottom:24px;
+}
+h1.hero em{font-style:normal;color:#FFDE59}
+h2{
+  font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;
+  font-size:clamp(28px,3.8vw,48px);font-weight:900;line-height:1.12;
+  letter-spacing:-0.01em;margin-bottom:20px;
+}
+h2 em{font-style:normal;color:#FF914D}
+.page.navy h2 em,.page.navy-glow h2 em{color:#FFDE59}
+.page.orange h2 em{color:#10162f;background:rgba(16,22,47,0.08);padding:0 6px}
+h3{
+  font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;
+  font-size:20px;font-weight:900;line-height:1.3;margin-bottom:10px;
+}
+p{font-size:16px;line-height:1.7;margin-bottom:12px}
+p.lead{font-size:20px;line-height:1.65;margin-bottom:18px}
+p.lead strong{color:#FFDE59}
+.page.cream p.lead strong{color:#FF914D}
+
+/* ============ Grids ============ */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+
+/* ============ Cards ============ */
+.card{
+  padding:22px 24px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,145,77,0.3);
+}
+.card .num{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:30px;font-weight:900;color:#FF914D;line-height:1;margin-bottom:8px;
+}
+.card h3{font-size:17px;color:#fff;margin-bottom:8px}
+.card p{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.65;margin-bottom:0}
+.card p strong{color:#FFDE59}
+
+.page.cream .card{background:#fff;border:1px solid #e8e4dc;color:#10162f}
+.page.cream .card h3{color:#10162f}
+.page.cream .card p{color:#555}
+.page.cream .card p strong{color:#FF914D}
+
+.page.orange .card{background:rgba(255,255,255,0.6);border:1px solid #10162f;color:#10162f}
+.page.orange .card h3{color:#10162f}
+.page.orange .card p{color:#10162f}
+/* orange page: strong 必须深色（不是默认金色 · 否则在 orange/yellow 背景看不见） */
+.page.orange .card p strong{color:#10162f;font-weight:700}
+.page.orange .card .num{color:#10162f}
+.page.orange .quote strong{color:#10162f;font-weight:700}
+
+/* ============ Stats ============ */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:24px}
+.stat{
+  padding:20px 22px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,145,77,0.4);
+}
+.stat .val{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:36px;font-weight:900;color:#FFDE59;line-height:1;margin-bottom:6px;
+}
+.stat .label{
+  font-family:'Space Mono',monospace;font-size:10.5px;
+  color:rgba(255,255,255,0.7);letter-spacing:1.3px;text-transform:uppercase;
+}
+.page.cream .stat{background:#fff;border-color:#e8e4dc}
+.page.cream .stat .val{color:#FF914D}
+.page.cream .stat .label{color:#888}
+
+/* ============ Quote / Highlight box ============ */
+.quote{
+  background:rgba(255,222,89,0.08);
+  border-left:4px solid #FFDE59;
+  padding:20px 24px;
+  margin:20px 0;
+  font-size:16px;line-height:1.7;font-style:italic;
+  color:rgba(255,255,255,0.92);
+}
+.quote strong{color:#FFDE59;font-style:normal}
+.page.cream .quote{background:#fff8d9;color:#10162f}
+.page.cream .quote strong{color:#FF914D}
+.page.orange .quote{background:rgba(16,22,47,0.08);border-left-color:#10162f;color:#10162f}
+.page.orange .quote strong{color:#10162f;font-weight:700}
+
+/* ============ Proposal cards (page 8) ============ */
+.proposal{
+  padding:24px 26px;
+  background:#fff;
+  border:2px solid #e8e4dc;
+  display:flex;flex-direction:column;
+  color:#10162f;
+  height:100%;
+}
+.proposal.featured{
+  background:#FFDE59;
+  border-color:#FFDE59;
+  box-shadow:0 8px 28px rgba(255,222,89,0.18);
+}
+.proposal .tier{
+  font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;
+  letter-spacing:2px;color:#FF914D;margin-bottom:10px;
+}
+.proposal h3{font-size:18px;color:#10162f;margin-bottom:4px}
+.proposal .tagline{font-size:12.5px;color:#888;font-style:italic;margin-bottom:14px}
+.proposal.featured .tagline{color:#10162f;opacity:0.75;font-weight:600;font-style:normal}
+.proposal ul{list-style:none;flex:1}
+.proposal li{
+  font-size:13.5px;line-height:1.65;color:#444;
+  padding:5px 0 5px 20px;position:relative;
+}
+.proposal li::before{
+  content:'▸';position:absolute;left:0;color:#FF914D;font-weight:bold;
+}
+.proposal li strong{color:#FF914D}
+.proposal.featured li{color:#10162f}
+.proposal .ideal{
+  padding:12px 14px;background:#fff8d9;border-left:3px solid #FF914D;
+  margin-top:14px;font-size:12px;font-style:italic;line-height:1.6;color:#10162f;
+}
+.proposal.featured .ideal{background:rgba(16,22,47,0.08);border-left-color:#10162f}
+
+/* ============ Agenda table (page 9) ============ */
+.agenda-table{width:100%;border-collapse:collapse;margin-top:14px}
+.agenda-table th{
+  text-align:left;padding:12px 16px;
+  font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;
+  letter-spacing:2px;color:#FF914D;text-transform:uppercase;
+  border-bottom:2px solid #FF914D;
+}
+.agenda-table td{
+  padding:14px 16px;vertical-align:top;
+  border-bottom:1px solid rgba(255,255,255,0.08);font-size:13.5px;
+}
+.agenda-table .time{
+  font-family:'Space Mono',monospace;color:#FFDE59;
+  font-weight:700;font-size:12px;white-space:nowrap;width:80px;
+}
+.agenda-table .seg{color:#fff;font-weight:700;font-size:14px;width:28%}
+.agenda-table .desc{color:rgba(255,255,255,0.75);line-height:1.6}
+/* cream page · agenda-table 深色文字 override (cream 背景上白字看不见) */
+.page.cream .agenda-table th{color:#FF914D;border-bottom-color:#FF914D}
+.page.cream .agenda-table td{border-bottom-color:#e8e4dc}
+.page.cream .agenda-table .time{color:#FF914D}
+.page.cream .agenda-table .seg{color:#10162f}
+.page.cream .agenda-table .desc{color:#444}
+
+/* ============ Timeline (page 11) ============ */
+.timeline-row{
+  display:grid;grid-template-columns:130px 1fr;gap:22px;
+  padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);
+  align-items:start;
+}
+.timeline-row:last-child{border-bottom:none}
+.timeline-row .when{
+  font-family:'Space Mono',monospace;color:#FF914D;
+  font-size:12px;font-weight:700;letter-spacing:1px;padding-top:4px;
+}
+.timeline-row .when .label{
+  display:block;color:#FFDE59;font-family:'Bricolage Grotesque',sans-serif;
+  font-size:14px;margin-top:3px;letter-spacing:0;font-weight:900;
+}
+.timeline-row h3{font-size:17px;color:#fff;margin-bottom:5px}
+.timeline-row p{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.65;margin-bottom:0}
+
+/* ============ CTA box (page 12) ============ */
+.cta-box{
+  background:#10162f;color:#fff;
+  padding:28px 32px;
+  margin-top:20px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.cta-box .text strong{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:20px;display:block;margin-bottom:6px;color:#FFDE59;
+}
+.cta-box .text p{font-size:13.5px;color:rgba(255,255,255,0.78);margin-bottom:0;line-height:1.7}
+.cta-box .button{
+  background:#FF914D;color:#fff;padding:14px 28px;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:900;
+  font-size:14px;letter-spacing:0.5px;text-decoration:none;flex-shrink:0;
+}
+.cta-box .button:hover{background:#fff;color:#FF914D}
+
+/* ============ Print ============ */
+@media print {
+  body{background:#fff;overflow:visible}
+  .page{height:100vh;width:100%;page-break-after:always;page-break-inside:avoid;overflow:visible}
+  .deck-nav,.print-btn{display:none !important}
+}
+
+/* ============ Page hint / keyboard shortcuts ============ */
+.kb-hint{
+  position:absolute;bottom:54px;right:32px;
+  font-family:'Space Mono',monospace;font-size:9.5px;
+  color:rgba(255,255,255,0.3);letter-spacing:1.2px;
+  z-index:9;pointer-events:none;
+}
+.page.cream .kb-hint{color:rgba(16,22,47,0.35)}
+.page.orange .kb-hint{color:rgba(16,22,47,0.45)}
+
+/* ============ Responsive (横版 PPT 至少要 768px) ============ */
+@media (max-width: 980px) {
+  .grid-3,.grid-4,.grid-5{grid-template-columns:repeat(2,1fr)}
+  .stat-row{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 640px) {
+  .grid-2,.grid-3,.grid-4,.grid-5{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:1fr 1fr}
+  .page{padding:80px 24px 60px}
+  .cta-box{flex-direction:column;text-align:center}
+  .timeline-row{grid-template-columns:1fr}
+}
