@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 一人创业营 · ONE PERSON COMPANY | 匠人学院 JR Academy</title>
+<meta name="description" content="11 周三城线下 · 用 AI 做澳洲一人公司 · 拿 Grant · 心智匹配优先 · 首期 case study 价 $3,800 起 · 限额 25 人">
+<meta property="og:title" content="AI 一人创业营 · ONE PERSON COMPANY">
+<meta property="og:description" content="用中文教澳洲华人专业人士用 AI 做一人公司，拿澳洲 Grant 退税，走出打工天花板">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#faf7f2;color:#1a1a1a;line-height:1.65}
+
+/* Sticky CTA bar */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;background:#10162f;color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,0.2)}
+.sticky-cta .label{font-size:13px}
+.sticky-cta .label strong{color:#FF914D}
+.sticky-cta a{background:#FF914D;color:#fff;padding:10px 22px;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;text-decoration:none;font-size:14px;letter-spacing:0.5px;transition:all 0.15s;border:2px solid #FF914D}
+.sticky-cta a:hover{background:#fff;color:#FF914D}
+@media(max-width:640px){.sticky-cta{flex-direction:column;gap:8px;padding:10px 16px} .sticky-cta .label{font-size:12px;text-align:center}}
+
+/* HERO */
+.hero{background:#10162f;color:#fff;padding:60px 24px 50px;border-bottom:4px solid #FF914D;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,#FF914D 0%,transparent 70%);opacity:0.15;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero .badge{display:inline-block;background:#FF914D;color:#fff;padding:5px 14px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;margin-bottom:24px;border:2px solid #fff}
+.hero h1{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(36px,6vw,68px);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin-bottom:6px}
+.hero h1 em{font-style:normal;color:#FFDE59}
+.hero .tagline{font-family:'Space Mono',monospace;font-size:13px;color:#FF914D;letter-spacing:2px;margin-bottom:24px}
+.hero .lead{font-size:clamp(15px,2vw,18px);max-width:760px;line-height:1.75;opacity:0.95;margin-bottom:32px}
+.hero .lead strong{color:#FFDE59;background:rgba(255,222,89,0.1);padding:0 6px}
+.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+@media(max-width:768px){.hero-meta{grid-template-columns:1fr 1fr}}
+.hero-meta-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,145,77,0.4);padding:16px 18px;backdrop-filter:blur(4px)}
+.hero-meta-card .lbl{font-family:'Space Mono',monospace;font-size:10px;color:#FF914D;letter-spacing:1.5px;font-weight:700;margin-bottom:6px}
+.hero-meta-card .val{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#fff;line-height:1.3}
+.hero-meta-card .sub{font-size:11.5px;color:rgba(255,255,255,0.7);margin-top:4px}
+.hero-cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{background:#FF914D;color:#fff;padding:16px 32px;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;text-decoration:none;font-size:16px;letter-spacing:0.5px;border:3px solid #FF914D;transition:all 0.15s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:#fff;color:#FF914D}
+.btn-secondary{background:transparent;color:#fff;padding:14px 28px;font-family:'DM Sans',sans-serif;font-weight:600;text-decoration:none;font-size:14px;border:2px solid rgba(255,255,255,0.4);transition:all 0.15s}
+.btn-secondary:hover{border-color:#FF914D;color:#FF914D}
+
+/* Progress bar */
+.progress-bar{background:rgba(255,255,255,0.08);border:1px solid rgba(255,145,77,0.4);padding:14px 18px;margin-top:24px}
+.progress-bar .row{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:8px}
+.progress-bar .row .num{color:#FFDE59;font-family:'Space Mono',monospace;font-weight:700}
+.progress-bar .track{height:8px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden}
+.progress-bar .fill{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,#FF914D,#FFDE59);width:[BD 填: 进度%]}
+
+/* Sections */
+.section{padding:72px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{display:inline-block;background:#10162f;color:#FFDE59;padding:5px 14px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;margin-bottom:14px}
+.section-title{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:900;line-height:1.15;color:#10162f;margin-bottom:14px;letter-spacing:-0.01em}
+.section-title em{font-style:normal;color:#FF914D}
+.section-sub{font-size:15px;color:#555;line-height:1.75;max-width:760px;margin-bottom:40px}
+
+.section.alt{background:#10162f;color:#fff}
+.section.alt .section-title{color:#fff}
+.section.alt .section-title em{color:#FFDE59}
+.section.alt .section-sub{color:rgba(255,255,255,0.75)}
+.section.alt .section-eyebrow{background:#FF914D;color:#fff}
+
+.section.cream{background:#fffbe6}
+
+/* Persona cards (4-up) */
+.persona-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:8px}
+@media(max-width:880px){.persona-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.persona-grid{grid-template-columns:1fr}}
+.persona-card{background:#fff;border:1px solid #e8e4dc;padding:24px 22px;text-align:left;position:relative;transition:all 0.2s}
+.persona-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(16,22,47,0.08);border-color:#FF914D}
+.persona-card .num{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:900;color:#FF914D;line-height:1;margin-bottom:14px}
+.persona-card .icon{font-size:32px;line-height:1;margin-bottom:12px;color:#10162f}
+.persona-card h3{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:18px;font-weight:900;color:#10162f;margin-bottom:8px}
+.persona-card p{font-size:13.5px;color:#555;line-height:1.65}
+
+/* Kill point cards (5 精选) */
+.kill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.kill-card{background:#fff;border:1px solid #e8e4dc;padding:28px 26px;position:relative;transition:all 0.2s}
+.kill-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(16,22,47,0.08);border-color:#10162f}
+.kill-card .num{position:absolute;top:18px;right:22px;font-family:'Bricolage Grotesque',sans-serif;font-size:48px;font-weight:900;color:rgba(255,145,77,0.18);line-height:1}
+.kill-card .icon-circle{width:54px;height:54px;background:#10162f;color:#FF914D;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.kill-card h3{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:19px;font-weight:900;color:#10162f;margin-bottom:10px;line-height:1.3}
+.kill-card p{font-size:14px;color:#444;line-height:1.7}
+.kill-card p strong{color:#10162f}
+
+/* Outcomes cards (5 outcomes 学对手) */
+.outcome-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:8px}
+@media(max-width:980px){.outcome-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.outcome-grid{grid-template-columns:1fr}}
+.outcome-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,145,77,0.3);padding:22px 18px;text-align:center;transition:all 0.2s}
+.outcome-card:hover{background:rgba(255,145,77,0.08);transform:translateY(-3px)}
+.outcome-card .icon-circle{width:60px;height:60px;background:#FF914D;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px}
+.outcome-card h4{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:14.5px;font-weight:900;color:#fff;line-height:1.35;margin-bottom:8px}
+.outcome-card p{font-size:12px;color:rgba(255,255,255,0.7);line-height:1.6}
+
+/* Why now compact */
+.window-row{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid #e8e4dc;align-items:start}
+.window-row:last-child{border-bottom:none}
+.window-row .num-tag{font-family:'Space Mono',monospace;font-size:11px;color:#FF914D;letter-spacing:1.5px;font-weight:700;padding-top:4px}
+.window-row .num-tag .label{display:block;font-size:13px;color:#10162f;font-family:'Bricolage Grotesque',sans-serif;margin-top:4px;letter-spacing:0;font-weight:900}
+.window-row h3{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:17px;font-weight:900;color:#10162f;margin-bottom:6px}
+.window-row p{font-size:13.5px;color:#555;line-height:1.75}
+.window-row p strong{color:#10162f}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:24px}
+@media(max-width:880px){.pricing-grid{grid-template-columns:1fr}}
+.pricing-card{background:#fff;border:2px solid #e8e4dc;padding:32px 28px;text-align:left;transition:all 0.2s;position:relative}
+.pricing-card.featured{border-color:#FF914D;border-width:3px;background:#fffbe6}
+.pricing-card.featured::before{content:'⭐ 推荐 · 85% 学员选这档';position:absolute;top:-13px;left:24px;background:#FF914D;color:#fff;padding:5px 12px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px}
+.pricing-card .tier{font-family:'Space Mono',monospace;font-size:11px;color:#888;letter-spacing:1.5px;font-weight:700;margin-bottom:10px}
+.pricing-card .price{font-family:'Bricolage Grotesque',sans-serif;font-size:48px;font-weight:900;color:#10162f;line-height:1;margin-bottom:6px}
+.pricing-card .price em{font-style:normal;font-size:16px;color:#888;font-weight:600;vertical-align:top}
+.pricing-card .desc{font-size:13px;color:#555;line-height:1.7;margin-bottom:18px;min-height:48px}
+.pricing-card .btn-card{display:inline-block;background:#10162f;color:#fff;padding:12px 24px;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;text-decoration:none;font-size:14px;border:2px solid #10162f;transition:all 0.15s;width:100%;text-align:center}
+.pricing-card.featured .btn-card{background:#FF914D;border-color:#FF914D}
+.pricing-card .btn-card:hover{background:#fff;color:#10162f}
+.pricing-card.featured .btn-card:hover{color:#FF914D}
+
+.value-anchor{background:#10162f;color:#fff;padding:28px 32px;margin-top:14px}
+.value-anchor h3{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#FFDE59;margin-bottom:14px}
+.value-anchor table{width:100%;font-size:13.5px;line-height:1.8}
+.value-anchor td{padding:5px 0}
+.value-anchor td:last-child{text-align:right;font-family:'Space Mono',monospace;color:#FFDE59;font-weight:700}
+.value-anchor .total{border-top:2px solid #FFDE59;padding-top:10px;margin-top:8px;font-size:16px}
+.value-anchor .total td{font-weight:900}
+.value-anchor .ours td:last-child{color:#10b981;font-size:18px}
+
+.gamification{background:#FFDE59;color:#10162f;padding:18px 24px;margin-top:18px;display:flex;align-items:center;gap:16px}
+.gamification .icon{font-size:32px}
+.gamification .text{flex:1}
+.gamification .text strong{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;display:block;margin-bottom:4px}
+.gamification .text p{font-size:13px;line-height:1.6}
+
+/* FAQ teaser */
+.faq-teaser{background:#fff;border:1px solid #e8e4dc;padding:18px 22px;margin-bottom:10px;cursor:pointer;transition:all 0.15s}
+.faq-teaser:hover{border-color:#FF914D}
+.faq-teaser h4{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:15px;font-weight:900;color:#10162f;display:flex;justify-content:space-between;align-items:center}
+.faq-teaser h4::after{content:'→';color:#FF914D}
+
+/* Footer */
+.footer{background:#0a0e1f;color:#fff;padding:50px 24px 80px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;margin-bottom:32px}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr}}
+.footer h4{font-family:'Bricolage Grotesque',sans-serif;font-size:13px;color:#FF914D;letter-spacing:1px;font-weight:900;margin-bottom:14px;text-transform:uppercase}
+.footer p,.footer a{font-size:13.5px;color:rgba(255,255,255,0.7);line-height:1.85;text-decoration:none;display:block;margin-bottom:4px}
+.footer a:hover{color:#FF914D}
+.footer .brand{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;color:#fff;margin-bottom:10px}
+.footer .brand-sub{font-family:'Space Mono',monospace;font-size:11px;color:#FF914D;letter-spacing:1.5px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:18px;font-size:12px;color:rgba(255,255,255,0.4);text-align:center}
+
+/* Final CTA banner */
+.final-cta{background:linear-gradient(135deg,#FF914D 0%,#FFDE59 100%);padding:60px 24px;text-align:center;color:#10162f}
+.final-cta h2{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:900;line-height:1.2;margin-bottom:14px}
+.final-cta p{font-size:15px;color:#10162f;line-height:1.75;margin-bottom:28px;max-width:680px;margin-left:auto;margin-right:auto;opacity:0.85}
+.final-cta a{background:#10162f;color:#FFDE59;padding:18px 40px;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;text-decoration:none;font-size:17px;letter-spacing:0.5px;border:3px solid #10162f;transition:all 0.15s;display:inline-block}
+.final-cta a:hover{background:#fff;color:#10162f}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="badge">🇦🇺 BOOTCAMP M01 · JUN-AUG 2026 · 限额 25 人</div>
+    <h1>用 AI 做 <em>一人公司</em><br/>拿澳洲 <em>Grant</em><br/>走出打工天花板</h1>
+    <div class="tagline">ONE PERSON COMPANY · 11 WEEKS · 三城线下</div>
+
+    <p class="lead">
+      OpenClaw 教你 AI 接管工作 <strong>还是打工</strong>。<br/>
+      AI Engineer 教你找 AI offer <strong>还是打工</strong>。<br/>
+      <strong>这门课教你不打工：自己做产品 / 卖产品 / 合规收钱 / 拿 Grant 退税。</strong>
+    </p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-card">
+        <div class="lbl">DATE · 日期</div>
+        <div class="val">2026 年 6-8 月</div>
+        <div class="sub">11 周 · 4 Phase</div>
+      </div>
+      <div class="hero-meta-card">
+        <div class="lbl">FORMAT · 形式</div>
+        <div class="val">三城线下</div>
+        <div class="sub">墨尔本 hub + 悉尼/布里斯班 satellite</div>
+      </div>
+      <div class="hero-meta-card">
+        <div class="lbl">COHORT · 限额</div>
+        <div class="val">18-25 人</div>
+        <div class="sub">申请制 + LinkedIn 必填</div>
+      </div>
+      <div class="hero-meta-card">
+        <div class="lbl">EARLY BIRD · 学费</div>
+        <div class="val">A$ 3,800 起</div>
+        <div class="sub">首期 case study 价 · 第二期回标准价</div>
+      </div>
+    </div>
+
+    <div class="hero-cta-row">
+      <a href="#apply" class="btn-primary">→ 立即申请（3 分钟）</a>
+      <a href="curriculum.html" class="btn-secondary">查看完整课程大纲</a>
+    </div>
+
+    <div class="progress-bar">
+      <div class="row">
+        <span>首期招生进度</span>
+        <span><strong>[BD 填: 已申请 N 人]</strong> / <span class="num">25 个目标名额</span></span>
+      </div>
+      <div class="track">
+        <div class="fill" style="width:[BD 填: N%]"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 PERSONAS ============ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">👥 WHO IT'S FOR</div>
+    <h2 class="section-title">这门课为<em>这 4 类人</em>而设计</h2>
+    <p class="section-sub">不需要你已经有想法或创业经验 — 但需要你认真做事的心态</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="num">01</div>
+        <div class="icon">🚀</div>
+        <h3>独立创业者</h3>
+        <p>已有想法 / 已 ship 一些 / 想验证一个高杠杆增长方向 → 拿到能跑能卖的 MVP + 第一笔真实付费</p>
+      </div>
+      <div class="persona-card">
+        <div class="num">02</div>
+        <div class="icon">⚖️</div>
+        <h3>自由职业 / 律师 / 会计</h3>
+        <p>已有客户 / 想用 AI 把咨询服务 productize → 1 对 1 咨询变成 AI 出初稿 + 你审，毛利翻倍</p>
+      </div>
+      <div class="persona-card">
+        <div class="num">03</div>
+        <div class="icon">💼</div>
+        <h3>职场转型 senior</h3>
+        <p>35-45 岁 senior 程序员 / PM / Designer / 拿 150-250k+ → 想做一条副路，1 个月内 ship 雏形，可尽可退</p>
+      </div>
+      <div class="persona-card">
+        <div class="num">04</div>
+        <div class="icon">🏢</div>
+        <h3>小微企业主</h3>
+        <p>已有 ABN + 1-5 人公司 → 用 AI 重构流程 + 客服 + 报价 + 跟进，每周省 5-10 小时</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 KILL POINTS ============ -->
+<section class="section cream">
+  <div class="section-inner">
+    <div class="section-eyebrow">⚡ WHY US</div>
+    <h2 class="section-title">5 个让你 <em>非选这门课不可</em> 的理由</h2>
+    <p class="section-sub">不是 8 个不是 10 个 — 这 5 个是匠人对 Reforge / 生财有术 / Antler / 对手课程的真正护城河</p>
+
+    <div class="kill-grid">
+
+      <div class="kill-card">
+        <div class="num">01</div>
+        <div class="icon-circle">🎯</div>
+        <h3>不打工 · 唯一这么承诺的课</h3>
+        <p>OpenClaw 教 AI 接管工作 / AI Engineer 教找 AI offer · 都还是打工。<strong>这门课明确教你不打工</strong>：产品 + 卖 + 合规收钱 + Grant 退税。</p>
+      </div>
+
+      <div class="kill-card">
+        <div class="num">02</div>
+        <div class="icon-circle">🤝</div>
+        <h3>24 同学 = $240k-1.9M 网络</h3>
+        <p>5 类商业角色：互为客户 / 合伙人 / 天使 / 服务采购 / 推荐源。普通课卖完课率，<strong>OPC 课卖"你 11 周后认识的这 24 个人"</strong>。</p>
+      </div>
+
+      <div class="kill-card">
+        <div class="num">03</div>
+        <div class="icon-circle">🎓</div>
+        <h3>10 类 Faculty · $43-176k 价值</h3>
+        <p>麦肯锡 · 微软资深工程师 · AI Engineer · SEO · Growth · CPA · Grant consultant · 投资人 · 已退出 founder · Senior eng。<strong>单独找 1 年 $43-176k AUD</strong>。</p>
+      </div>
+
+      <div class="kill-card">
+        <div class="num">04</div>
+        <div class="icon-circle">🇦🇺</div>
+        <h3>RDTI 43.5% 退税 · 全球独家</h3>
+        <p>Phase 3 三周澳洲会计 + Grant 实战。持牌 CPA + Grant consultant 帮 5+ 客户拿过 RDTI。<strong>雇外面 CPA + Grant consultant 单独搞 $8-18k</strong>。</p>
+      </div>
+
+      <div class="kill-card">
+        <div class="num">05</div>
+        <div class="icon-circle">⭐</div>
+        <h3>6 项硬指标真产出毕业</h3>
+        <p><strong>$1+ 真实付费</strong>（不接受朋友友情付）+ ABN + Grant 申请提交 + 产品 URL + 10+ 内容 + Demo Day 出席。<strong>11 周后手里是产品 + 真实付款截图，不是结业证</strong>。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 OUTCOMES ============ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-eyebrow">📦 OUTCOMES</div>
+    <h2 class="section-title">11 周后 <em>你能带走什么</em></h2>
+    <p class="section-sub">5 个具体 outcome · 不是技能点不是 toolbox · 是可以直接拿出去用的 asset</p>
+
+    <div class="outcome-grid">
+      <div class="outcome-card">
+        <div class="icon-circle">💸</div>
+        <h4>能跑能卖的产品 + 第一笔真实付费</h4>
+        <p>Stripe 后台截图 + ABN 注册的合规公司</p>
+      </div>
+      <div class="outcome-card">
+        <div class="icon-circle">⚙️</div>
+        <h4>可复用的 AI 自动化 system</h4>
+        <p>Memory + Workflow + Marketing OS 5 层管道</p>
+      </div>
+      <div class="outcome-card">
+        <div class="icon-circle">🇦🇺</div>
+        <h4>澳洲合规 + Grant 申请提交</h4>
+        <p>RDTI / EMDG 申请书 + 持牌 CPA 审核过</p>
+      </div>
+      <div class="outcome-card">
+        <div class="icon-circle">🍷</div>
+        <h4>三城 Demo Day + 互为客户日晚宴</h4>
+        <p>Networking 晚宴邀请制 + 始终免费</p>
+      </div>
+      <div class="outcome-card">
+        <div class="icon-circle">🌐</div>
+        <h4>24 同学 + 10 类 Faculty + 6 月校友 Office Hour</h4>
+        <p>校友群持续 + 未来 cohort 嘉宾位</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY NOW 紧凑 ============ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">⏰ WHY 2026</div>
+    <h2 class="section-title">为什么是 <em>2026 这一年</em></h2>
+    <p class="section-sub">5 个错过就要等 5 年的窗口 · 4 个外部窗口同时打开 + 1 个匠人首期独享 = 历史性协同效应</p>
+
+    <div class="window-row">
+      <div class="num-tag">01<span class="label">~2027 关</span></div>
+      <div>
+        <h3>🛠 AI 工具"非工程师也能 ship"拐点元年</h3>
+        <p>2024 工具还不稳定 · <strong>2025-2026 Lovable / Cursor / Claude Code / Sora 真正成熟</strong> → 非工程师第一次能一周 ship SaaS。窗口期内 = founders，窗口关后 = followers。</p>
+      </div>
+    </div>
+
+    <div class="window-row">
+      <div class="num-tag">02<span class="label">政策可能动</span></div>
+      <div>
+        <h3>📉 RDTI 43.5% 政策仍在历史高位</h3>
+        <p>澳洲 R&D Tax Incentive: 年营业额 &lt; $20M 公司享 <strong>43.5% refundable 退税</strong>（没盈利也能拿现金）。<strong>政府每年都在审视</strong>，财政部曾多次提议下调。早申请早锁定当前比例。</p>
+      </div>
+    </div>
+
+    <div class="window-row">
+      <div class="num-tag">03<span class="label">已在发生</span></div>
+      <div>
+        <h3>⚠️ 白领 AI 替代不是焦虑，是事实</h3>
+        <p>2023 Goldman 报告：generative AI 可替代 25% 工作岗位。<strong>2024-2025 现实</strong>：Atlassian / Canva / 4 大 / Microsoft / Google / Meta 已经裁员 5-15%。<strong>现在还在职 + 有储蓄 = 学 OPC 最好时机</strong>，被 layoff 时再开始要 6-12 月。</p>
+      </div>
+    </div>
+
+    <div class="window-row">
+      <div class="num-tag">04<span class="label">~2028-2030 关</span></div>
+      <div>
+        <h3>🌏 澳洲华人 founder 网络早期窗口</h3>
+        <p>vs 硅谷华人 founder community 已成熟（要 warm intro 才能进核心圈）。<strong>澳洲华人 founder 圈还没形成密集 cohort 网络</strong> — 现在进 = 核心节点。<strong>5 年后澳洲华人 AI 圈的核心节点，就是现在这批首期 cohort 同学</strong>。</p>
+      </div>
+    </div>
+
+    <div class="window-row">
+      <div class="num-tag">05<span class="label">仅此一期</span></div>
+      <div>
+        <h3>💰 匠人首期 case study 价 + 低门槛 + 高密度 cohort</h3>
+        <p>① 价格：早鸟 $3,800 → 第二期 $4,800 ② 门槛：首期无视频面试 → 第二期加视频面试 + 严筛 ③ cohort 密度：首期 18-25 个学员是 5 年后澳洲华人 AI 圈核心节点。<strong>本期招满 = 永远拿不到这个组合</strong>。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING + CTA ============ -->
+<section class="section cream" id="apply">
+  <div class="section-inner">
+    <div class="section-eyebrow">💎 PRICING</div>
+    <h2 class="section-title">首期 case study 价 · <em>仅此一期</em></h2>
+    <p class="section-sub">第二期起回标准价 + 加视频面试 + 严筛 + 公布录取率 · 前两周满意承诺无理由全额退款</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="tier">EARLY BIRD · 前 30 天</div>
+        <div class="price">A$ 3,800<em> AUD</em></div>
+        <div class="desc">11 周课程 · 三城线下 · 10 类 Faculty · Demo Day · 校友群 · 6 个月 Office Hour</div>
+        <a href="#apply-form" class="btn-card">→ 锁定早鸟价（3 分钟申请）</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="tier">STANDARD · 最常见</div>
+        <div class="price">A$ 4,800<em> AUD</em></div>
+        <div class="desc">同上 · 85% 学员选这档位 · 最平衡选择</div>
+        <a href="#apply-form" class="btn-card">→ 申请这档（最受欢迎）</a>
+      </div>
+      <div class="pricing-card">
+        <div class="tier">PREMIUM · 含 1:1</div>
+        <div class="price">A$ 6,800<em> AUD</em></div>
+        <div class="desc">同上 + 12 次 1:1 教练（每周 30min · 主讲老师 + 嘉宾轮流）</div>
+        <a href="#apply-form" class="btn-card">→ 申请 Premium</a>
+      </div>
+    </div>
+
+    <div class="gamification">
+      <div class="icon">🏆</div>
+      <div class="text">
+        <strong>Demo Day 第一名 50% 学费返还 · 前 3 名 25% 返还</strong>
+        <p>不是退款是 reward — 鼓励真做出东西的学员。Demo Day 评审团 = 主讲老师 + W8 CPA + W9 Grant consultant + W10 VC + 校友 founder。</p>
+      </div>
+    </div>
+
+    <div class="value-anchor">
+      <h3>💡 真实价格锚 — 你单独要花 $70-240k AUD 才能拿到的东西</h3>
+      <table>
+        <tr><td>麦肯锡 / 战略 4 次 1h 咨询</td><td>$2-6k</td></tr>
+        <tr><td>SEO consultant audit + 3 月 retainer</td><td>$11-45k</td></tr>
+        <tr><td>Growth consultant audit + 月 retainer × 3</td><td>$12-57k</td></tr>
+        <tr><td>Senior eng / 微软老师 帮装 AI system</td><td>$10-50k + 用钱买不到</td></tr>
+        <tr><td>澳洲 CPA onboarding + 一年咨询</td><td>$5-10k</td></tr>
+        <tr><td>Grant consultant 帮写 RDTI 申请</td><td>$3-8k</td></tr>
+        <tr><td>VC partner 见面（用钱买不到）</td><td>∞</td></tr>
+        <tr><td>认识 24 个澳洲华人 founder（networking 时间）</td><td>$10-30k + 2-3 年</td></tr>
+        <tr><td>澳洲律师起草 5 份法律文件</td><td>$3-8k</td></tr>
+        <tr><td>Reforge / On Deck / Antler 等</td><td>$6-11k AUD</td></tr>
+        <tr class="total"><td>单独搞合计</td><td>$70-240k + 2-3 年 + 不可买的 VC/founder 人脉</td></tr>
+        <tr class="ours total"><td>这门课打包 11 周</td><td>A$ 3,800-6,800</td></tr>
+      </table>
+      <div style="margin-top:14px;font-size:12.5px;color:#FFDE59;font-style:italic">
+        + $240k-1.9M cohort 内部网络潜在交易额 + Demo Day 第一名 50% 学费返还 · 学费在这三个数字面前就是送的。
+      </div>
+    </div>
+
+    <div style="margin-top:32px;text-align:center">
+      <a href="#apply-form" class="btn-primary" style="font-size:18px;padding:20px 44px">→ 立即申请（3 分钟 · LinkedIn 必填 · 24-48h 审核）</a>
+      <div style="font-size:13px;color:#666;margin-top:14px">或 <a href="mailto:hello@jiangren.com.au" style="color:#FF914D;text-decoration:underline">先聊 30 分钟</a> · 看课程是否适合你</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ TEASER ============ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">❓ FAQ</div>
+    <h2 class="section-title">5 个 <em>最常问的问题</em></h2>
+    <p class="section-sub">完整 FAQ（19 条）在 <a href="curriculum.html#faq" style="color:#FF914D;font-weight:700">课程大纲页</a></p>
+
+    <a href="curriculum.html#faq" class="faq-teaser" style="text-decoration:none"><h4>我没创业想法 / 没经验，能来吗？</h4></a>
+    <a href="curriculum.html#faq" class="faq-teaser" style="text-decoration:none"><h4>每周 8-12 小时我做不到怎么办？</h4></a>
+    <a href="curriculum.html#faq" class="faq-teaser" style="text-decoration:none"><h4>讲师阵容是真的吗 / 麦肯锡顾问能不能验证？</h4></a>
+    <a href="curriculum.html#faq" class="faq-teaser" style="text-decoration:none"><h4>Cohort 同学真的会互相做生意吗？</h4></a>
+    <a href="curriculum.html#faq" class="faq-teaser" style="text-decoration:none"><h4>课程教的是 enterprise-grade 不是个人用 ChatGPT 的水平吗？</h4></a>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <h2>11 周后你不一定成功<br/>但你会有一个能跑能卖能合规的<br/>AI 一人公司框架 + 24 个跟你一起走过这条路的同期同学</h2>
+  <p>首期 18-25 人 · case study 价 · 仅此一期 · 申请后 24-48h 内回复</p>
+  <a href="#apply-form">→ 立即申请（3 分钟）</a>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="brand">AI 一人创业营</div>
+        <div class="brand-sub">ONE PERSON COMPANY · 11 WEEKS · 三城线下</div>
+        <p style="margin-top:14px">匠人学院出品 · 2026 年首期 case study cohort · 限额 18-25 人</p>
+        <p style="margin-top:8px;color:rgba(255,255,255,0.5);font-size:12px">© 2026 JR Academy Pty Ltd · jiangren.com.au</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <a href="curriculum.html">完整课程大纲</a>
+        <a href="phase1.html">Phase 1 · Build & Sell</a>
+        <a href="phase2.html">Phase 2 · Marketing</a>
+        <a href="phase3.html">Phase 3 · Australia Ops 🇦🇺</a>
+        <a href="phase4.html">Phase 4 · Scale & Demo</a>
+      </div>
+      <div>
+        <h4>资源</h4>
+        <a href="lead-magnets.html">3 个免费工具</a>
+        <a href="lead-magnets/opc-assessment.html">OPC 适配 5 维度自评</a>
+        <a href="lead-magnets/30min-ship.html">30 分钟 ship AI 产品</a>
+        <a href="lead-magnets/rdti-prompt-template.html">RDTI AI Prompt 模板</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      ⚠️ 这是对外营销 landing page · 完整课程内容 + 师资详情 + 商务合作见 <a href="curriculum.html" style="color:#FF914D;display:inline">curriculum.html</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky CTA bar -->
+<div class="sticky-cta">
+  <div class="label">首期招生 <strong>仅剩 [BD 填: N] 个名额</strong> · 早鸟 A$ 3,800 仅前 30 天</div>
+  <a href="#apply">→ 立即申请</a>
+</div>
+
+</body>
+</html>
