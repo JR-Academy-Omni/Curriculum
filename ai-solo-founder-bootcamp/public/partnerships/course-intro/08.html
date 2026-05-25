@@ -35,6 +35,13 @@
   .fac-card.guest { background:#fffbe6; border-color:#10162f; }
   .fac-card.guest .name::before { content:"嘉宾 · "; font-size:11px; color:#FF914D; font-weight:700; letter-spacing:1px; }
 
+  /* advisor cards · 金底深字 prestige look */
+  .fac-card.advisor { background:linear-gradient(180deg,#FFDE59 0%,#fff5b8 100%); border:2px solid #10162f; }
+  .fac-card.advisor .name { color:#10162f; }
+  .fac-card.advisor .name::before { content:"顾问 · "; font-size:11px; color:#10162f; font-weight:700; letter-spacing:1px; opacity:0.6; }
+  .fac-card.advisor.tbd { background:rgba(255,222,89,0.18); border:2px dashed #10162f; }
+  .fac-card.advisor .role { color:#10162f; }
+
   .scroll-hint { font-family:'Space Mono',monospace; font-size:9.5px; color:#666; letter-spacing:1px; margin-top:2px; text-align:right }
 </style>
 </head>
@@ -52,8 +59,8 @@
 
   <div class="page-inner">
     <div class="eyebrow">08 · 导师团队 · 不是 KOL · 是真在做这件事的人</div>
-    <h2 style="margin-bottom:6px;font-size:30px">导师团队 · <em>6 核心 + 4 嘉宾 + 2 VC 投资人</em></h2>
-    <p class="lead" style="color:#555;margin-bottom:4px;font-size:13px">McKinsey · GitHub · Microsoft · Canva · WiseTech · USYD · Ausgrant — 每位都是现役 / 资深从业者</p>
+    <h2 style="margin-bottom:6px;font-size:28px">导师团队 · <em>6 核心 + 5 顾问 + 4 嘉宾 + 2 VC</em></h2>
+    <p class="lead" style="color:#555;margin-bottom:4px;font-size:13px">McKinsey · GitHub · Microsoft · Canva · WiseTech · USYD · Ausgrant · Google I/O — 每位都是现役 / 资深从业者</p>
 
     <!-- ===== 6 核心讲师 ===== -->
     <div class="section-label">⭐ 核心讲师 · 6 名 · 11 周全程陪跑</div>
@@ -124,6 +131,61 @@
       </div>
     </div>
     <div class="scroll-hint">← 横向滑动看完 6 位核心讲师 →</div>
+
+    <!-- ===== 顾问团 ===== -->
+    <div class="section-label" style="color:#10162f">🏆 顾问团 · ADVISORY BOARD · 不讲课 · 不定期站台 / 资源对接</div>
+    <div class="fac-row">
+      <!-- 已退出 founder advisor -->
+      <div class="fac-card advisor tbd">
+        <div class="name">[已退出 Founder · TBD]</div>
+        <div class="role">上市 / 收购退出过的 founder<br/>创业方法论 + Angel 投资</div>
+        <div class="fac-badges">
+          <span class="fac-badge navy">EXITED · FOUNDER</span>
+        </div>
+        <div class="teach"><strong>价值</strong>：方法论背书 · 季度学员 AMA · 优秀学员 angel 跟投意向</div>
+      </div>
+
+      <!-- 大厂 exec advisor -->
+      <div class="fac-card advisor tbd">
+        <div class="name">[大厂 Senior Exec · TBD]</div>
+        <div class="role">FAANG / 国内大厂 Director+<br/>行业 connection + partnership</div>
+        <div class="fac-badges">
+          <span class="fac-badge navy">BIG TECH · EXEC</span>
+        </div>
+        <div class="teach"><strong>价值</strong>：学员合作 / recruiting / paid pilot 对接 · 行业人脉 referral</div>
+      </div>
+
+      <!-- 学术 advisor -->
+      <div class="fac-card advisor tbd">
+        <div class="name">[学术 / 研究 · TBD]</div>
+        <div class="role">悉尼 / 墨尔本 / UNSW 教授<br/>AI / Data / Commerce 方向</div>
+        <div class="fac-badges">
+          <span class="fac-badge navy">PROFESSOR · ACADEMIC</span>
+        </div>
+        <div class="teach"><strong>价值</strong>：科研背书 · 论文署名 / IP 保护建议 · 研究生 intern 对接</div>
+      </div>
+
+      <!-- 澳洲商会 / 政府关系 advisor -->
+      <div class="fac-card advisor tbd">
+        <div class="name">[商会 / 政府关系 · TBD]</div>
+        <div class="role">澳洲华人商会 / 行业协会<br/>政府 ecosystem + 监管支持</div>
+        <div class="fac-badges">
+          <span class="fac-badge navy">CHAMBER · GOV REL</span>
+        </div>
+        <div class="teach"><strong>价值</strong>：政府 grant 一手信息 · 商会 networking · 监管早期预警</div>
+      </div>
+
+      <!-- 媒体 / KOL advisor -->
+      <div class="fac-card advisor tbd">
+        <div class="name">[媒体 / 行业 KOL · TBD]</div>
+        <div class="role">澳洲华人媒体主编 / Tech KOL<br/>+ 海外华人 V 矩阵</div>
+        <div class="fac-badges">
+          <span class="fac-badge navy">MEDIA · KOL</span>
+        </div>
+        <div class="teach"><strong>价值</strong>：学员产品 PR 曝光 · 联合直播 / 文章互推 · 流量 ecosystem</div>
+      </div>
+    </div>
+    <div class="scroll-hint">← 横向滑动看完顾问团 →</div>
 
     <!-- ===== 4 嘉宾老师 ===== -->
     <div class="section-label">🎤 嘉宾老师 · 4 名 · 各自专属周</div>
@@ -203,7 +265,7 @@
     </div>
 
     <div class="quote" style="margin-top:10px;font-size:12.5px;padding:10px 14px">
-      <strong>匠人独家优势</strong>：6 核心讲师 + 4 嘉宾 + 2 投资人都是<strong style="color:#FF914D">在做这件事的人</strong>（不是退休讲师 / 不是 KOL）· <strong style="color:#FF914D">外面单独找一节 1h 起跳 $300-500</strong> · 12 类专家 × 1h = $3.6k-6k · 11 周课程价 ≈ 1-2 次单独咨询的钱
+      <strong>匠人独家优势</strong>：6 核心 + 5 顾问 + 4 嘉宾 + 2 投资人 = <strong style="color:#FF914D">17 人导师团队</strong>。核心讲师是<strong style="color:#FF914D">在做这件事的人</strong>（不是 KOL）· 顾问团是<strong style="color:#FF914D">行业 senior</strong>（不讲课但站台 / 对接资源）· <strong style="color:#FF914D">外面单独找一节 1h 起跳 $300-500</strong>· 11 周课程价 ≈ 1-2 次单独咨询的钱
     </div>
   </div>
 
