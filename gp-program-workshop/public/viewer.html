@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GP Workshop · 资源</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+<style>
+:root{
+  --indigo:#6366f1;--orange:#FF914D;--yellow:#FFDE59;--green:#7ED957;
+  --blue:#38B6FF;--purple:#CB6CE6;--dark:#10162f;--bg:#fafafa;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+body{
+  font-family:'DM Sans','Noto Sans SC',sans-serif;
+  background:var(--bg);color:#1a1a1a;line-height:1.7;
+  padding:0;
+}
+.topbar{
+  background:var(--dark);color:#fff;
+  padding:14px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:10px;
+  border-bottom:4px solid #000;
+}
+.topbar .home{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;
+  color:#fff;text-decoration:none;padding:6px 14px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  border-radius:4px;transition:all 0.15s;
+}
+.topbar .home:hover{background:rgba(255,255,255,0.2);text-decoration:none}
+.topbar .crumb{
+  font-family:'Space Mono',monospace;font-size:11px;
+  color:rgba(255,255,255,0.6);letter-spacing:0.5px;
+}
+.wrap{
+  max-width:880px;margin:0 auto;padding:48px 28px 80px;
+}
+.kicker{
+  display:inline-block;
+  font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:1.5px;color:#fff;background:var(--dark);
+  padding:5px 12px;margin-bottom:16px;
+}
+.kicker.worksheet{background:var(--orange)}
+.kicker.wiki{background:var(--blue)}
+.kicker.roadmap{background:var(--purple)}
+
+/* Markdown rendered styles */
+#doc h1{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(28px,4vw,40px);font-weight:900;
+  color:var(--dark);line-height:1.15;
+  margin:0 0 8px;letter-spacing:-1px;
+}
+#doc h2{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:24px;font-weight:800;color:var(--dark);
+  margin:40px 0 14px;padding-top:8px;
+  border-top:3px solid var(--dark);padding-top:18px;
+}
+#doc h2:first-of-type{border-top:0;padding-top:0;margin-top:20px}
+#doc h3{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:19px;font-weight:800;color:var(--dark);
+  margin:24px 0 10px;
+}
+#doc h4{
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;font-weight:700;color:var(--dark);
+  margin:16px 0 8px;
+}
+#doc p{
+  font-size:15px;line-height:1.8;color:#333;
+  margin:0 0 14px;
+}
+#doc blockquote{
+  border-left:4px solid var(--orange);
+  background:#fff7ed;padding:14px 18px;margin:16px 0;
+  font-size:14px;color:#7c2d12;
+}
+#doc blockquote p{margin:0;color:#7c2d12}
+#doc ul,#doc ol{
+  margin:0 0 16px 24px;
+  font-size:15px;line-height:1.8;color:#333;
+}
+#doc li{margin-bottom:4px}
+#doc li strong{color:var(--dark)}
+#doc code{
+  font-family:'Space Mono',monospace;font-size:13px;
+  background:#f1f5f9;padding:2px 7px;border-radius:4px;
+  color:#0f172a;
+}
+#doc pre{
+  background:#10162f;color:#e2e8f0;padding:18px 22px;
+  border-radius:8px;overflow-x:auto;margin:14px 0;
+  font-family:'Space Mono',monospace;font-size:13px;line-height:1.7;
+}
+#doc pre code{background:none;color:#e2e8f0;padding:0}
+#doc a{color:var(--indigo);font-weight:600;border-bottom:1px solid var(--indigo)}
+#doc a:hover{background:var(--indigo);color:#fff;text-decoration:none}
+#doc table{
+  border-collapse:collapse;width:100%;margin:16px 0;
+  font-size:14px;background:#fff;
+  border:2px solid var(--dark);
+}
+#doc th{
+  background:var(--dark);color:#fff;
+  font-family:'Space Mono',monospace;font-size:12px;
+  font-weight:700;letter-spacing:0.5px;
+  padding:10px 14px;text-align:left;border:1px solid var(--dark);
+}
+#doc td{
+  padding:10px 14px;border-top:1px solid #e5e7eb;
+  vertical-align:top;line-height:1.65;
+}
+#doc tr:nth-child(even) td{background:#fafafa}
+#doc hr{
+  border:0;border-top:2px dashed #cbd5e1;
+  margin:32px 0;
+}
+#doc input[type=checkbox]{margin-right:8px}
+#doc del,#doc s{color:#94a3b8}
+.loading{padding:80px 0;text-align:center;color:#94a3b8;font-family:'Space Mono',monospace}
+.error{padding:60px 0;text-align:center;color:#dc2626}
+.error h2{color:#dc2626;border:0;margin-bottom:8px}
+
+/* Bottom CTA */
+.bottom{
+  margin-top:56px;padding:28px;
+  background:var(--dark);color:#fff;border-radius:16px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:20px;flex-wrap:wrap;
+}
+.bottom .b-left h3{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:20px;font-weight:800;color:#fff;
+  margin-bottom:4px;border:0;padding:0;
+}
+.bottom .b-left p{
+  font-size:13px;color:rgba(255,255,255,0.7);margin:0;
+}
+.bottom a.btn{
+  background:var(--yellow);color:var(--dark);
+  padding:10px 22px;font-weight:800;
+  font-family:'DM Sans',sans-serif;font-size:14px;
+  border-radius:999px;text-decoration:none;border:0;
+  transition:transform 0.12s;
+}
+.bottom a.btn:hover{transform:translateY(-2px);background:var(--yellow)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="./curriculum.html" class="home">← 返回 GP Workshop 大纲</a>
+  <span class="crumb" id="crumb">资源</span>
+</div>
+
+<div class="wrap">
+  <div id="kicker"></div>
+  <div id="doc"><div class="loading">⏳ 加载中…</div></div>
+
+  <div class="bottom" id="bottom" style="display:none">
+    <div class="b-left">
+      <h3>下一步：上 Quest L05a · STAR AI 陪练</h3>
+      <p>把 worksheet 03 填完的故事喂给 AI 评分 + 改写 → 改到 75 分以上</p>
+    </div>
+    <a class="btn" href="./curriculum.html#l05a">看 L05a 入口 →</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const file = params.get('file') || '';
+  const ok = /^(worksheets|wiki-drafts)\/[\w-]+\.md$/.test(file);
+
+  const doc = document.getElementById('doc');
+  const crumb = document.getElementById('crumb');
+  const kicker = document.getElementById('kicker');
+
+  if (!ok) {
+    doc.innerHTML = '<div class="error"><h2>无效的资源路径</h2><p>请从 <a href="./curriculum.html">课程大纲</a> 重新进入。</p></div>';
+    return;
+  }
+
+  // Set kicker + crumb based on file type
+  const isWorksheet = file.startsWith('worksheets/');
+  const isWiki = file.startsWith('wiki-drafts/');
+  if (isWorksheet) {
+    kicker.innerHTML = '<span class="kicker worksheet">📋 WORKSHEET · 学员资源</span>';
+    crumb.textContent = '资源包 / worksheet';
+  } else if (isWiki) {
+    kicker.innerHTML = '<span class="kicker wiki">📖 WIKI · 知识库参考</span>';
+    crumb.textContent = '知识库 / wiki';
+  }
+
+  // Configure marked
+  marked.setOptions({ gfm: true, breaks: false });
+
+  fetch('./' + file, { cache: 'no-cache' })
+    .then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(md => {
+      doc.innerHTML = marked.parse(md);
+      // Title from first H1
+      const h1 = doc.querySelector('h1');
+      if (h1) document.title = h1.textContent + ' · GP Workshop';
+      // Show bottom CTA only for worksheets
+      if (isWorksheet) document.getElementById('bottom').style.display = 'flex';
+    })
+    .catch(err => {
+      doc.innerHTML = '<div class="error"><h2>加载失败</h2><p>' + err.message + '</p><p><a href="./curriculum.html">← 返回大纲</a></p></div>';
+    });
+})();
+</script>
+
+</body>
+</html>
