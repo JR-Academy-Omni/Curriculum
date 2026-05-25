@@ -4,8 +4,8 @@ import { Slide, Inner, Title, Divider, colors, fonts, border, shadow } from '../
 const phases = [
 	{ weeks: 'Week 1-2', title: 'AI 工具精通', icon: '🔧', color: colors.indigo, items: ['ChatGPT / Claude / Copilot 深度实操', 'Prompt Engineering 实战', 'Zapier / n8n 自动化', 'Vibe Coding (Non-coder 版)'] },
 	{ weeks: 'Week 3-5', title: '业务场景实战', icon: '🎯', color: colors.teal, items: ['AI 做 Facebook 广告', 'AI 做 Sales Outreach', 'AI 做简历筛选', 'AI 做发票处理', '+ 更多 48 个场景'] },
-	{ weeks: 'Week 6-7', title: '组织采纳方法论', icon: '🏢', color: colors.orange, items: ['AI 就绪度评估', 'AI 机会审计 & ROI', '变革管理 (ADKAR)', 'AI 治理 & 合规'] },
-	{ weeks: 'Week 8', title: '毕业项目', icon: '🎓', color: colors.red, items: ['完整 AI 采纳方案', 'Demo Day 展示', '证书颁发'] },
+	{ weeks: 'Week 6-7', title: '部门工作流方法论', icon: '🏢', color: colors.orange, items: ['AI 就绪度评估', 'AI 机会审计 & ROI', '变革管理 (ADKAR)', 'AI 治理 & 合规'] },
+	{ weeks: 'Week 8', title: '毕业项目', icon: '🎓', color: colors.red, items: ['5 个可复用 SOP + ROI 报告', 'Demo Day 展示', 'AI Workflow Specialist 证书'] },
 ];
 
 export default function S05_Curriculum() {

@@ -39,7 +39,7 @@ export default function S13_CTA() {
 					style={{ fontSize: 22, color: 'rgba(255,255,255,0.7)', marginTop: 28, lineHeight: 1.8 }}
 				>
 					8 周 · 48 个业务场景 · 不用写代码<br />
-					从个人技能到组织转型
+					把 AI 装进你部门的工作流，给老板看到 ROI
 				</motion.p>
 
 				<motion.div
