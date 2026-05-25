@@ -157,10 +157,16 @@ jobs:
             cp -r openclaw-fullday-workshop/public/* _site/openclaw-fullday-workshop/
           fi
 
-          # claude-code-workshop: static HTML only (3h online + offline fullday small-class, Claude Code 实战)
+          # claude-code-workshop: static HTML only (3h Zoom 工程师友好版, Claude Code CLI 实战)
           if [ -d claude-code-workshop/public ]; then
             mkdir -p _site/claude-code-workshop
             cp -r claude-code-workshop/public/* _site/claude-code-workshop/
+          fi
+
+          # claude-code-workshop-fullday: static HTML only (1day 线下非技术友好版, Claude Code CLI)
+          if [ -d claude-code-workshop-fullday/public ]; then
+            mkdir -p _site/claude-code-workshop-fullday
+            cp -r claude-code-workshop-fullday/public/* _site/claude-code-workshop-fullday/
           fi
 
           # ai-comic-workshop: static HTML only (2-hour online Zoom workshop, 张彦伟 · AI 漫剧)
@@ -610,6 +616,22 @@ jobs:
                     <span class="tag" style="background:#FF914D">CURRICULUM</span>
                     <div class="title">Claude Cowork × 一人公司办公自动化</div>
                     <div class="desc">5/23 周六 1-5pm · 8-12 人小班 · A$129 · 4 小时 11 模块 · 装机 + 报价单 PDF + 邮件批量回复 + 一稿多发 4 平台 + /schedule 周报 · 走时带走 5 个能复用的 Skill</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">Claude Code 大师课 · 工程师 3h Zoom + 非技术 1day 线下 · 同系列两课</div>
+                <div class="cards">
+                  <a href="./claude-code-workshop/curriculum.html">
+                    <span class="tag" style="background:#FFDE59;color:#000">CURRICULUM · 3h 工程师版</span>
+                    <div class="title">Claude Code 3h Zoom · 工程师友好版</div>
+                    <div class="desc">3h Zoom 直播 · A$99 早鸟 / A$199 全价 · 5 节连讲 · 需求清单 + 5 核心命令 + 3 个 AI 助手并行 + CLAUDE.md 项目规则书 + 完整 PR 流程 · 走时带走 6 件能 commit 到自己 repo 的模板 · 要求会基础 git + 命令行</div>
+                  </a>
+                  <a href="./claude-code-workshop-fullday/curriculum.html">
+                    <span class="tag" style="background:#0f1a2e;color:#FFDE59">CURRICULUM · 1day 非技术版</span>
+                    <div class="title">Claude Code 1day · 非技术友好版</div>
+                    <div class="desc">墨/悉/布里斯班 线下小班 8-12 人 · A$299 早鸟 / A$399 全价 · 10:00-17:00 含午餐 · 1:5 助教救场 · 上午装机 + 终端入门，下午用你真实素材跑 3 个办公自动化（批量改文件 / Excel + 邮件 + PPT / 爬资料写报告）· 销售 / 行政 / 律师 / 会计 / HR / 小老板 / 内容创作者 / 转行学员 — 完全不需要会代码</div>
                   </a>
                 </div>
               </div>
