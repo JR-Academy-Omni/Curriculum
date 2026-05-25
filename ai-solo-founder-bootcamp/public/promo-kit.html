@@ -59,6 +59,29 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
 .tips ul{margin-left:20px;font-size:13.5px;line-height:1.85}
 .tips li{margin:5px 0}
 .tips li strong{color:#FFDE59}
+
+/* AIGC poster prompt library */
+.prompt-intro{padding:18px 22px;background:#fffbe6;border:3px solid #000;box-shadow:5px 5px 0 #000;margin-bottom:24px;font-size:13px;line-height:1.75}
+.prompt-intro strong{color:#10162f}
+.prompt-intro code{background:#10162f;color:#FFDE59;padding:1px 5px;font-family:'Space Mono',monospace;font-size:11px}
+.prompt-sub-h{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;color:#10162f;margin:28px 0 14px;text-transform:uppercase;letter-spacing:1px;padding:6px 10px;background:#FFDE59;border:2px solid #000;display:inline-block;box-shadow:3px 3px 0 #000}
+.prompt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;margin-bottom:24px}
+.prompt-card{background:#fff;border:3px solid #000;box-shadow:5px 5px 0 #000;display:flex;flex-direction:column;overflow:hidden}
+.prompt-card-h{padding:11px 14px;background:#10162f;color:#fff;border-bottom:2px solid #000}
+.prompt-card-h .pc-code{font-family:'Space Mono',monospace;font-size:10px;color:#FFDE59;letter-spacing:1px;font-weight:700}
+.prompt-card-h h4{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;margin-top:4px;line-height:1.35}
+.prompt-card-body{padding:12px 14px;flex:1;display:flex;flex-direction:column}
+.prompt-card-meta{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.prompt-card-meta span{font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;padding:2px 7px;border:1.5px solid #000;background:#fafafa;text-transform:uppercase;letter-spacing:0.5px}
+.prompt-card-meta span.pf-gpt{background:#10b981;color:#fff;border-color:#10b981}
+.prompt-card-meta span.pf-sora{background:#000;color:#fff;border-color:#000}
+.prompt-card-meta span.pf-nano{background:#FFDE59;color:#10162f;border-color:#10162f}
+.prompt-card-meta span.pf-mj{background:#7c3aed;color:#fff;border-color:#7c3aed}
+.prompt-card-use{font-size:11.5px;color:#555;line-height:1.6;margin-bottom:10px;flex:1}
+.prompt-card-pre{background:#fafafa;border:1.5px solid #000;padding:10px 12px;font-family:'Space Mono','Noto Sans SC',monospace;font-size:10.5px;line-height:1.65;color:#1a1a1a;white-space:pre-wrap;max-height:160px;overflow-y:auto;margin-bottom:10px;display:none}
+.prompt-card.expanded .prompt-card-pre{display:block;max-height:340px}
+.prompt-card-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.prompt-card-actions .btn{padding:7px 11px;font-size:10.5px;letter-spacing:0.4px}
 </style>
 </head>
 <body>
@@ -203,6 +226,474 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
   </ul>
 </div>
 
+<div class="section-h">🎨 AIGC 海报 Prompt 库（28 张 · 一键复制）</div>
+
+<div class="prompt-intro">
+  <p>📌 <strong>用法</strong>：点 <code>📋 复制 Prompt</code> → 去 <code>chat.openai.com</code> / Sora / Nano Banana 粘贴 → 生图 → 上传 S3 → 替换 landing.html 对应 <code>&lt;img src=&gt;</code>。</p>
+  <p>🎨 <strong>风格基准</strong>：墨蓝 <code>#10162f</code> + 橙 <code>#FF914D</code> + 金 <code>#FFDE59</code> + 米黄 <code>#fffbe6</code>。商务感 ≠ wild west，参考 Stripe brand × Antler annual report。</p>
+  <p>🔴 <strong>红线</strong>：① 不生中国风 / 红灯笼 ② 不生打鸡血风 ③ 不生虚假 logo（Atlassian / Canva 编出来直接拒）④ AI 手指数错 / 文字乱码 → 立刻重生 ⑤ 同 Persona 4 张图脸要像同一个人（用 Nano Banana 编辑而不是重生）。</p>
+  <p>📚 <strong>完整文档</strong>：<a href="promo/aigc-image-prompts.md" target="_blank" style="color:#FF914D;font-weight:700">aigc-image-prompts.md</a>（含 4 平台对比表 + 调优 tips + 验收 checklist）</p>
+</div>
+
+<!-- ============ HERO 主视觉 ============ -->
+<h3 class="prompt-sub-h">① HERO 主视觉 · 3 张</h3>
+<div class="prompt-grid">
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-01 · HERO</div><h4>主 Hero · "一人公司" 概念图</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1920×1080</span></div>
+      <div class="prompt-card-use">landing.html hero 背景 / 朋友圈分享主图 / 小红书封面</div>
+      <pre class="prompt-card-pre">A premium business poster designed in the style of high-end Australian fintech / VC firm marketing material. Dark navy blue background (#10162f) with subtle orange gradient glow in the upper right (#FF914D). A symbolic icon in the center: a single human silhouette holding a glowing growth-arrow chart that ascends from left to right, suggesting one-person leverage with AI. The arrow integrates with circuit-pattern elements (subtle, not crowded) representing AI infrastructure.
+
+Text overlay (Chinese, rendered in clean modern sans-serif):
+- Top: "ONE PERSON COMPANY" in monospace English, small caps, orange
+- Center: "一人公司" in massive Chinese characters, white, bold geometric
+- Bottom: "用 AI 做澳洲一人公司 · 拿 Grant · 不打工" in smaller white text
+
+Mood: confident, premium, McKinsey-meets-tech-startup. Not corny, not overly tech-bro, not Web3-flashy. Think Stripe brand x Antler annual report. NO clip-art icons, NO stock photo people, NO neon, NO crypto aesthetic.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-02 · HERO</div><h4>主 Hero · 社媒方版变体</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1200×1200</span></div>
+      <div class="prompt-card-use">小红书 / 朋友圈方版封面（基于 P-01 的方版变体）</div>
+      <pre class="prompt-card-pre">Same as P-01 but 1200×1200 square format, with Chinese title "一人公司" stacked vertically. Bottom 30% reserved for sub-headline copy in Chinese. Same color palette: navy #10162f + orange #FF914D glow.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-03 · HERO</div><h4>Hero 替代版 · 三城地图风</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1920×1080</span></div>
+      <div class="prompt-card-use">如果 P-01 不喜欢可以换这个 · 强调三城 cohort</div>
+      <pre class="prompt-card-pre">Minimalist editorial illustration in dark navy + cream + orange palette. A stylized map of Australia, with three glowing nodes marking Melbourne (largest), Sydney (medium), Brisbane (small) connected by thin orange lines. Above the map: floating UI elements suggesting Stripe payment screens, Notion docs, AI chat bubbles — all minimalist and abstract.
+
+Text overlay (Chinese, modern sans-serif):
+- "三城线下 · 11 周 · 18-25 人 cohort"
+- Bottom right corner: "ONE PERSON COMPANY · M01 · JUN 2026"
+
+Style references: The Economist illustration, Stripe brand assets, Antler annual report. NOT corporate photography. NOT generic vector clipart.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ 4 目标人群 portrait ============ -->
+<h3 class="prompt-sub-h">② 4 目标人群 Portrait · 4 张</h3>
+<div class="prompt-grid">
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-04 · PERSONA</div><h4>独立创业者</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span class="pf-nano">Nano Banana</span><span>800×800</span></div>
+      <div class="prompt-card-use">landing 人群分诊卡 · "我刚 ship 了点东西" 能量</div>
+      <pre class="prompt-card-pre">Style: Photorealistic editorial portrait, soft natural light, slight depth-of-field. Asian Australian professional in their 30s-40s, looking at viewer with confident quiet expression (not smiling broadly, not corporate stock-photo posed). Outfit business-casual, neutral colors. Background: blurred Melbourne / Sydney CBD office interior in warm tones. Color grade: warm cream + navy + subtle orange accent. No corporate photography clichés. No stock-photo handshakes. No "boss" poses. Think New York Times Sunday business profile photo.
+
+Persona: Asian Australian male or female, late 30s, casual blazer over t-shirt, holding a Macbook open to a Stripe dashboard. Faintly visible on screen: payment transactions in AUD. Setting: their own home office or a Cremorne co-working space. Mood: focused calm, "I just shipped something" energy.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-05 · PERSONA</div><h4>自由职业 / 律师 / 会计</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span class="pf-nano">Nano Banana</span><span>800×800</span></div>
+      <div class="prompt-card-use">landing 人群分诊卡 · "我在升级我的服务" 能量</div>
+      <pre class="prompt-card-pre">Style: Photorealistic editorial portrait, soft natural light, slight depth-of-field. Asian Australian professional in their 30s-40s, looking at viewer with confident quiet expression (not smiling broadly, not corporate stock-photo posed). Outfit business-casual, neutral colors. Background: blurred Melbourne / Sydney CBD office interior in warm tones. Color grade: warm cream + navy + subtle orange accent. No corporate photography clichés. No stock-photo handshakes. No "boss" poses. Think New York Times Sunday business profile photo.
+
+Persona: Asian Australian professional, 40s, in a slightly more polished outfit (suit jacket without tie, OR professional blouse). Setting: a sleek private office with law/accounting reference books visible on a shelf in soft focus. Looking at a laptop with a Notion-style document visible (productized service template). Mood: established, confident, "I'm upgrading my services" energy.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-06 · PERSONA</div><h4>职场转型 senior 工程师</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span class="pf-nano">Nano Banana</span><span>800×800</span></div>
+      <div class="prompt-card-use">landing 人群分诊卡 · "我想要更多" 能量</div>
+      <pre class="prompt-card-pre">Style: Photorealistic editorial portrait, soft natural light, slight depth-of-field. Asian Australian professional in their 30s-40s, looking at viewer with confident quiet expression (not smiling broadly, not corporate stock-photo posed). Outfit business-casual, neutral colors. Background: blurred Melbourne / Sydney CBD office interior in warm tones. Color grade: warm cream + navy + subtle orange accent. No corporate photography clichés. No stock-photo handshakes. No "boss" poses. Think New York Times Sunday business profile photo.
+
+Persona: Asian Australian male, mid 30s to mid 40s, tech worker style — clean hoodie or crew-neck sweater over collared shirt. Setting: Atlassian/Canva-style modern office cafeteria, blurred colleagues in background. Holding coffee, looking at phone with a side-project app preview visible. Mood: contemplative, "I want something more than this job" energy.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-07 · PERSONA</div><h4>小微企业主</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span class="pf-nano">Nano Banana</span><span>800×800</span></div>
+      <div class="prompt-card-use">landing 人群分诊卡 · "我要 AI 帮我 scale" 能量</div>
+      <pre class="prompt-card-pre">Style: Photorealistic editorial portrait, soft natural light, slight depth-of-field. Asian Australian professional in their 30s-40s, looking at viewer with confident quiet expression (not smiling broadly, not corporate stock-photo posed). Outfit business-casual, neutral colors. Background: blurred Melbourne / Sydney CBD office interior in warm tones. Color grade: warm cream + navy + subtle orange accent. No corporate photography clichés. No stock-photo handshakes. No "boss" poses. Think New York Times Sunday business profile photo.
+
+Persona: Asian Australian, 40s-50s, slightly more mature look, casual but neat business attire. Setting: small business shop / clinic / consultancy office — visible but blurred shelves or counter behind them. Holding tablet showing business automation dashboard. Mood: experienced, "I run this and I want AI to help me scale" energy.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ 10 类 Faculty portrait ============ -->
+<h3 class="prompt-sub-h">③ 10 类 Faculty Portrait · 10 张</h3>
+<div class="prompt-grid">
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-08 · FACULTY</div><h4>F01 · 麦肯锡 / 战略顾问</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section / speaker invitation kit</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 40s Asian Australian, sharp suit jacket without tie, MBB consultant aesthetic. Background subtly suggests a strategy room with whiteboard frameworks.
+Caption (Chinese, in white sans-serif at bottom): "麦肯锡 · 战略顾问"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-09 · FACULTY</div><h4>F02 · SEO / GEO 专家</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 30s-40s casual professional, glasses optional, indie-marketer vibe. Background: subtle Google Search Console / Ahrefs screen blur.
+Caption: "SEO / GEO 专家"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-10 · FACULTY</div><h4>F03 · Growth / Marketing 专家</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 30s creative-professional aesthetic, slightly more colorful outfit accent. Background: subtle Notion dashboard / Stripe analytics blur.
+Caption: "Growth / Marketing 专家"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-11 · FACULTY</div><h4>F04 · AI 工程 / Stripe / 自动化</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 30s engineer aesthetic, plain dark shirt, slight stubble OK. Background: subtle code editor (Cursor / Claude Code) blur.
+Caption: "AI 工程 / Stripe / 自动化"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-12 · FACULTY</div><h4>F05 · 澳洲华人 CPA / CA</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section · Phase 3 W8 嘉宾</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 40s-50s Asian Australian accountant, formal but warm appearance. Background: subtle law books / Xero dashboard.
+Caption: "澳洲华人 CPA / CA"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-13 · FACULTY</div><h4>F06 · Grant Consultant</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section · Phase 3 W9 嘉宾</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 40s consultant aesthetic, sharp but approachable. Background: subtle "Australian Government R&D Tax Incentive" document blur.
+Caption: "Grant Consultant · RDTI 专家"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-14 · FACULTY</div><h4>F07 · 投资人 / Local VC</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section · W10 fireside chat</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 40s-50s polished VC partner aesthetic, sharp suit no tie, confident. Background: subtle modern VC office (think Antler / Blackbird office aesthetic).
+Caption: "投资人 / Local VC"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-15 · FACULTY</div><h4>F08 · 已退出 founder 校友</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section · Faculty 矩阵图</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 30s-40s founder aesthetic, more casual than VC (hoodie or polo). Background: subtle "exit announcement" article blur OR confident pose against exposed brick startup-office wall.
+Caption: "已退出 / $X MRR 华人 Founder"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-16 · FACULTY</div><h4>F09 · 微软 / 大厂资深工程师</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section · 大厂背书</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 40s Asian Australian senior engineer, polished but technical vibe, Microsoft / Atlassian / Canva employee aesthetic. Plain dark t-shirt or collared shirt. Background: subtle big-tech office architecture blur.
+Caption: "微软 / 大厂资深工程师 + 架构师"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-17 · FACULTY</div><h4>F10 · AI Engineer / LLM 实战</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora</span><span>600×600</span></div>
+      <div class="prompt-card-use">curriculum.html FACULTY section · LLM 实战导师</div>
+      <pre class="prompt-card-pre">Style: Editorial portrait, soft studio lighting, neutral gray-cream background. Subject is an Asian Australian professional in their 35-55, dressed appropriately to their role. Looking at viewer with quiet authority. Close framing (chest up). Color palette: warm cream background + subtle navy/orange accent. NO corporate clichés, NO stock photos, NO obvious AI artifacts. Think LinkedIn premium photographer.
+
+Subject: 30s AI engineer aesthetic, slightly indie-tech, glasses optional. Background: subtle vector DB / LangChain / OpenAI dashboard blur.
+Caption: "AI Engineer / LLM 实战"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ 三城 + 场景 ============ -->
+<h3 class="prompt-sub-h">④ 三城线下 + Networking 场景 · 4 张</h3>
+<div class="prompt-grid">
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-18 · SCENE</div><h4>三城 Networking 晚宴</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span>1600×900</span></div>
+      <div class="prompt-card-use">Phase 4 / Cohort Economy 配图 / 小红书封面 / 公众号头图</div>
+      <pre class="prompt-card-pre">Photorealistic editorial photograph of an intimate business networking dinner in Melbourne CBD. 8-12 Asian Australian professionals (mid 30s to early 50s, mixed gender, business-casual attire) seated around a round dinner table. Setting: upscale modern restaurant (think Vue de monde / Bistro Guillaume private dining room aesthetic), warm pendant lighting, exposed brick or wood-panel walls.
+
+People are mid-conversation — some leaning in, one person showing something on their phone to another, a few holding wine glasses. On the table: scattered business cards, two-page printed cards visible showing "我能给的 / 我要的" (I can offer / I need) in Chinese, half-eaten dessert plates.
+
+Mood: warm camaraderie, founders-after-Demo-Day energy. Not corporate "client dinner" stiffness. Not Instagrammable-girls-night-out. Think "the moment when real business gets done."
+
+Avoid: stock photo clichés, fake laughs, obvious AI artifacts on faces or hands.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-19 · SCENE</div><h4>互为客户日 · 卡片机制特写</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1200×800</span></div>
+      <div class="prompt-card-use">PHASE 4 W11 section / 小红书干货图</div>
+      <pre class="prompt-card-pre">Editorial close-up flatlay photograph of two printed cards on a wood dinner table, slightly out of focus background showing wine glass + a hand reaching. Cards are minimal cream-colored cardstock with:
+
+Card 1 (left): "我能给的 / WHAT I CAN OFFER" headline in Chinese + English, followed by 4 bullet points in handwritten ink: "AI 自动化系统 · 财务模型 · Stripe 接入 · 澳洲 RDTI 经验"
+
+Card 2 (right): "我要的 / WHAT I NEED" headline, followed by 4 bullet points: "10 个早期付费用户 · 一个 co-founder · $5k angel check · 律师 review TOS"
+
+Style: NYT magazine flatlay aesthetic. Warm cream + soft shadows. NO clip-art. NO obvious AI text artifacts. Hand-written ink looks like an actual person wrote it, not perfect typography.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-20 · SCENE</div><h4>墨尔本主场教室</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span>1600×900</span></div>
+      <div class="prompt-card-use">City Model section / Phase 1-3 配图 / 招生主图</div>
+      <pre class="prompt-card-pre">Photorealistic photograph of a modern Melbourne co-working classroom mid-session. 12-15 Asian Australian professionals seated at simple wooden tables facing a screen. The instructor (40s Asian male/female) stands near a large display showing a Cursor IDE / Stripe dashboard. Natural light from large windows showing Melbourne CBD skyline (subtle Eureka tower visible in distance).
+
+Mood: focused workshop energy, NOT lecture hall passive. Some students have laptops open mid-typing, a few are taking notes. Coffee cups on tables.
+
+Style: Stripe Press photography aesthetic + Maker Faire warmth. Avoid: corporate training photo clichés.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-21 · SCENE</div><h4>悉尼 / 布里斯班 卫星教室</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span>1600×900 × 2 张</span></div>
+      <div class="prompt-card-use">City Model section · Sydney + Brisbane 各一张</div>
+      <pre class="prompt-card-pre">Photorealistic photograph of a co-working classroom mid-session, students gathered around a single large screen showing a Zoom-style livestream of the Melbourne instructor.
+
+For Sydney version: backdrop shows Sydney harbor / opera house silhouette through windows.
+For Brisbane version: backdrop shows Brisbane river + Story Bridge through windows.
+
+In both versions, 8-12 Asian Australian professionals seated at simple wooden tables. Some students are discussing with their physical neighbors. Local Tutor (different person from Melbourne instructor) visible standing near, ready to answer questions.
+
+Mood: focused workshop energy, satellite-room camaraderie. NOT lecture hall passive.
+Style: Stripe Press photography aesthetic + Maker Faire warmth.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ 关键卖点 配图 ============ -->
+<h3 class="prompt-sub-h">⑤ 关键卖点配图 (RDTI / Demo Day / KILL POINT) · 4 张</h3>
+<div class="prompt-grid">
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-22 · KILL</div><h4>Phase 3 · RDTI 退税审核场景</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1200×800</span></div>
+      <div class="prompt-card-use">Phase 3 section / KILL 04 配图 · 全球独家 3 周亮点</div>
+      <pre class="prompt-card-pre">Editorial photograph of an Australian accounting firm office, mid-consultation. A 40s Asian Australian CPA (in business casual) sits across from a 30s-40s client (founder), both reviewing a printed R&D Tax Incentive application document spread on a desk. Highlighter and pen visible. Mac open showing ATO myGov interface (subtle blur).
+
+Atmosphere: collaborative, warm, "we're filling out this application together" energy, NOT formal client-meeting stiffness.
+
+Caption overlay (Chinese, white text on subtle dark gradient at bottom): "Phase 3 · 澳洲 RDTI 43.5% 退税实战 · 持牌 CPA + Grant consultant 陪写申请"</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-23 · KILL</div><h4>Demo Day pitch 现场</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span>1600×900</span></div>
+      <div class="prompt-card-use">Phase 4 / Hero alternate / KILL 06 毕业硬指标</div>
+      <pre class="prompt-card-pre">Photorealistic photograph of a Demo Day presentation moment. A 30s Asian Australian founder stands at the front of a small modern auditorium (50-80 seat capacity) presenting to an audience. On the screen behind: a clean landing page mockup showing real Stripe transaction data + traction metrics (MRR growth chart, user count, etc.).
+
+In the front row: a panel of 4-5 judges visible — a senior CPA, a VC partner, the main instructor — taking notes. Audience: 18-25 fellow founders + some alumni + guests.
+
+Mood: high-energy but not pep-rally — "I built this and I'm proud" energy.
+
+Style: Y Combinator Demo Day photography aesthetic.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-24 · DATA</div><h4>KILL 02 · Cohort 经济网络图</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1200×1200</span></div>
+      <div class="prompt-card-use">COHORT ECONOMY section 顶部 / 小红书数据图</div>
+      <pre class="prompt-card-pre">Editorial data visualization in dark navy + cream + orange palette. A central node labeled "YOU" (你) surrounded by 24 smaller nodes labeled with archetype icons (senior eng / PM / lawyer / accountant / founder). Lines connecting all nodes form a dense network web in orange and yellow.
+
+Around the edges: floating callout cards in Chinese:
+- "互为早期客户 · $500-5,000 / 次"
+- "互为服务采购 · $2k-20k / 次"
+- "互为天使投资 · $5-50k angel check"
+- "互为客户引荐 · 每次 $5-50k value"
+
+Bottom right large stat: "$240k-1.9M 网络潜在交易额"
+
+Style: The Economist data viz + Stripe annual report. Clean lines, not crowded. NO clip-art people icons. NO crypto/Web3 aesthetic. Minimal and dense.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-25 · DATA</div><h4>KILL 03 · 10 Faculty 矩阵图</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1200×800</span></div>
+      <div class="prompt-card-use">FACULTY section 顶部 banner</div>
+      <pre class="prompt-card-pre">Editorial illustration in navy + cream + orange. A 2-row × 5-column grid, each cell containing:
+- A minimalist circular icon representing a faculty type (think Linear / Notion icon aesthetic, not generic clipart)
+- Label below in Chinese: 麦肯锡 · SEO · Growth · Senior eng · 微软 · AI Engineer · CPA · Grant · VC · Founder
+
+Above the grid: large headline in Chinese "10 类 Faculty 单独咨询 1 年 $43-176k AUD"
+Below the grid: small stat "微软 + VC 用钱买不到"
+
+Style: clean editorial poster, NOT a slide template. NO photos in cells. NO stock-photo handshakes.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ 社媒变体 ============ -->
+<h3 class="prompt-sub-h">⑥ 社媒投放变体 (小红书 / X / 公众号) · 3 张</h3>
+<div class="prompt-grid">
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-26 · SOCIAL</div><h4>小红书 9 宫格 · 课程封面</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1242×1660 × 9 张</span></div>
+      <div class="prompt-card-use">小红书发文 9 图 carousel · 招生首发图</div>
+      <pre class="prompt-card-pre">Vertical poster, 1242×1660 portrait. Cream background #fffbe6 + subtle orange #FF914D corner accent.
+
+Page 1 / Cover:
+- Headline (60px, black bold): "OPC 一人公司"
+- Sub (32px, orange): "11 周 · 三城线下 · 拿澳洲 Grant"
+- Bottom badge (28px, white on navy): "首期招生 · 限额 25 人"
+- Visual: minimal hand-drawn arrow ↗ icon
+
+Font minimum 24px (社媒小字不可读硬要求). Single punchy headline + 2-3 supporting bullets per page.
+
+Page 2 / WHY NOT 其他课:
+- Headline: "OpenClaw / AI Engineer 都是打工"
+- Body: 3 bullets in 32-40px font
+- Background: same cream + orange
+
+Page 3-9 follow similar structure for the 7 KILL POINTS (cohort 经济 / 10 类 Faculty / RDTI 退税 / 6 项硬指标 / Demo Day / 三城线下 / 校友 office hour).</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-27 · SOCIAL</div><h4>X / Twitter / LinkedIn 配图</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1600×900</span></div>
+      <div class="prompt-card-use">X 单帖配图 / LinkedIn post · build-in-public</div>
+      <pre class="prompt-card-pre">Editorial poster, dark navy background, single bold quote in white center:
+
+"用 AI 做澳洲一人公司
+拿 Grant 退税
+走出打工天花板"
+
+Below the quote, smaller orange text: "ONE PERSON COMPANY · 11 weeks · Melbourne + Sydney + Brisbane · Apply now"
+
+Style: extremely minimal, NYT op-ed aesthetic. NO clutter. NO logos beyond a small "jiangren.com.au" at bottom corner.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-28 · SOCIAL</div><h4>微信公众号头图</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>900×500</span></div>
+      <div class="prompt-card-use">公众号长文头图</div>
+      <pre class="prompt-card-pre">Editorial photograph + text overlay. Background: dim Melbourne CBD evening skyline (Eureka tower / Federation Square area). Overlay text:
+
+- Large title (Chinese, white bold): "AI 一人创业营 · 首期招生"
+- Subtitle (orange): "11 周 · 三城线下 · 限额 25 人"
+- Bottom-left small text: "ONE PERSON COMPANY · M01 · JUN 2026"
+
+Style: Bloomberg / The Atlantic banner aesthetic.</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="tips" style="background:#10b981;color:#fff">
+  <h3 style="color:#fff">✅ 验收 checklist · 每张生完跑一遍</h3>
+  <ul>
+    <li>中文字渲染清楚（<strong>gpt-image-2 一般 OK · MJ 一般不行 → 换平台</strong>）</li>
+    <li>人物没多手指 / 眼睛对称（AI 标志性 artifact → 拒）</li>
+    <li>色调跟 brand 一致（<strong>#10162f 墨蓝 / #FF914D 橙 / #FFDE59 金 / #fffbe6 米黄</strong>）</li>
+    <li>没有虚假 logo / 招牌（Atlassian / Canva 编出来直接拒）</li>
+    <li>没有 "AI 味" 渲染（过 saturated / 完美对称 / 玻璃质感过头）</li>
+    <li>用途清晰（属于哪个 section / 哪个平台）</li>
+  </ul>
+</div>
+
 </div>
 
 <div class="preview-modal" id="previewModal">
@@ -214,7 +705,7 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
 </div>
 
 <script>
-// Copy markdown content
+// Copy markdown content (existing 4 platform cards)
 document.querySelectorAll('button.btn[data-file]').forEach(btn => {
   btn.addEventListener('click', async () => {
     const file = btn.dataset.file;
@@ -232,6 +723,42 @@ document.querySelectorAll('button.btn[data-file]').forEach(btn => {
     } catch (e) {
       alert('复制失败：' + e.message + '\n\n请直接打开 markdown 文件复制');
     }
+  });
+});
+
+// Copy AIGC poster prompt (inline pre)
+document.querySelectorAll('button[data-copy-prompt]').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const card = btn.closest('.prompt-card');
+    const pre = card.querySelector('.prompt-card-pre');
+    try {
+      await navigator.clipboard.writeText(pre.textContent.trim());
+      const orig = btn.textContent;
+      btn.textContent = '✓ 已复制';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 2000);
+    } catch (e) {
+      // Fallback: select textarea trick
+      const ta = document.createElement('textarea');
+      ta.value = pre.textContent.trim();
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); btn.textContent = '✓ 已复制'; } catch (e2) { alert('复制失败，请手动展开后复制 pre 文本'); }
+      document.body.removeChild(ta);
+      setTimeout(() => { btn.textContent = '📋 复制 Prompt'; }, 2000);
+    }
+  });
+});
+
+// Toggle expand/collapse poster prompt preview
+document.querySelectorAll('button[data-toggle-prompt]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.prompt-card');
+    card.classList.toggle('expanded');
+    btn.textContent = card.classList.contains('expanded') ? '🙈 收起' : '👁 展开';
   });
 });
 </script>
