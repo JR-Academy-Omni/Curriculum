@@ -82,6 +82,64 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
 .prompt-card.expanded .prompt-card-pre{display:block;max-height:340px}
 .prompt-card-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
 .prompt-card-actions .btn{padding:7px 11px;font-size:10.5px;letter-spacing:0.4px}
+
+/* Inline markdown preview (公众号卡片内嵌全文渲染) */
+.md-preview-details{margin-top:14px;border:3px dashed #FF914D;background:#fffbe6;padding:6px 14px}
+.md-preview-details summary{cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:#10162f;padding:8px 0;font-size:13px;list-style:none}
+.md-preview-details summary::-webkit-details-marker{display:none}
+.md-preview-details summary::before{content:'▶  ';color:#FF914D;font-weight:900}
+.md-preview-details[open] summary::before{content:'▼  '}
+.md-preview-details summary:hover{color:#FF914D}
+.md-rendered{margin:14px 0 8px;padding:20px 24px;background:#fff;border:2px solid #000;max-height:620px;overflow-y:auto;font-size:13.5px;line-height:1.75;font-family:'Noto Sans SC','DM Sans',sans-serif}
+.md-rendered h1{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;color:#10162f;margin-bottom:14px;border-bottom:3px solid #10162f;padding-bottom:8px;line-height:1.3}
+.md-rendered h2{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;color:#10162f;margin:20px 0 10px;border-left:5px solid #FF914D;padding-left:10px;line-height:1.35}
+.md-rendered h3{font-family:'Bricolage Grotesque',sans-serif;font-size:14.5px;color:#10162f;margin:14px 0 6px;font-weight:900}
+.md-rendered h4{font-size:13.5px;color:#10162f;margin:10px 0 4px;font-weight:700}
+.md-rendered p{margin:8px 0;color:#222}
+.md-rendered strong{color:#10162f;font-weight:700}
+.md-rendered em{color:#FF914D;font-style:normal}
+.md-rendered code{background:#10162f;color:#FFDE59;padding:1px 6px;font-family:'Space Mono',monospace;font-size:11.5px}
+.md-rendered pre{background:#10162f;color:#FFDE59;padding:12px 14px;margin:10px 0;font-family:'Space Mono',monospace;font-size:11.5px;overflow-x:auto;border:2px solid #000}
+.md-rendered pre code{background:none;padding:0}
+.md-rendered ul,.md-rendered ol{padding-left:22px;margin:8px 0}
+.md-rendered li{margin:4px 0;line-height:1.7}
+.md-rendered table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px;border:2px solid #000}
+.md-rendered th{background:#10162f;color:#fff;padding:7px 9px;border:1px solid #000;text-align:left;font-family:'Bricolage Grotesque',sans-serif}
+.md-rendered td{padding:7px 9px;border:1px solid #ddd;vertical-align:top;line-height:1.6}
+.md-rendered tbody tr:nth-child(even){background:#fafafa}
+.md-rendered blockquote{border-left:4px solid #FFDE59;background:#fffbe6;padding:10px 14px;margin:10px 0;font-size:12.5px;color:#555}
+.md-rendered a{color:#FF914D;text-decoration:underline;text-underline-offset:2px}
+.md-rendered a:hover{color:#10162f}
+.md-rendered hr{border:none;border-top:2px dashed #ddd;margin:18px 0}
+.md-rendered-loading{text-align:center;padding:40px 20px;color:#888;font-size:13px}
+.md-rendered-loading::before{content:'⏳ ';font-size:18px}
+
+/* 实施优先级 badge 系统 */
+.pri-badge{display:inline-block;padding:3px 9px;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.6px;border:2px solid #000;text-transform:none;margin-right:6px;margin-bottom:4px;vertical-align:middle;line-height:1.3}
+.pri-p0{background:#dc2626;color:#fff;border-color:#dc2626;animation:pri-pulse 1.5s ease-in-out infinite}
+.pri-p1{background:#FF914D;color:#fff;border-color:#FF914D}
+.pri-p2{background:#10b981;color:#fff;border-color:#10b981}
+.pri-p3{background:#cbd5e1;color:#475569;border-color:#94a3b8}
+@keyframes pri-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.75;transform:scale(0.96)}}
+
+/* 优先级矩阵框 */
+.pri-matrix{padding:24px 28px;background:#10162f;color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #FF914D;margin-bottom:32px}
+.pri-matrix h2{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:900;color:#FFDE59;margin-bottom:6px}
+.pri-matrix .sub{font-size:13px;opacity:0.85;margin-bottom:18px;line-height:1.7}
+.pri-matrix-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.pri-tier{padding:14px 16px;border:2px solid #fff;background:rgba(255,255,255,0.05)}
+.pri-tier h3{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.5px;margin-bottom:8px;text-transform:uppercase}
+.pri-tier ul{margin:0;padding:0;list-style:none;font-size:12px;line-height:1.85}
+.pri-tier li{padding:2px 0;color:#e8e8e8}
+.pri-tier li strong{color:#FFDE59}
+.pri-tier.t-p0{border-color:#dc2626;background:rgba(220,38,38,0.12)}
+.pri-tier.t-p0 h3{color:#fca5a5}
+.pri-tier.t-p1{border-color:#FF914D;background:rgba(255,145,77,0.12)}
+.pri-tier.t-p1 h3{color:#FF914D}
+.pri-tier.t-p2{border-color:#10b981;background:rgba(16,185,129,0.12)}
+.pri-tier.t-p2 h3{color:#6ee7b7}
+.pri-tier.t-p3{border-color:#94a3b8;background:rgba(148,163,184,0.1)}
+.pri-tier.t-p3 h3{color:#cbd5e1}
 </style>
 </head>
 <body>
@@ -107,6 +165,62 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
   <p><strong>承诺红线（必读）</strong>：① 不承诺金钱 / 收入 / 月入 N 元 / 订单 ② 不说『副业』③ 只承诺过程性结果（产品 / 技能 / 申请提交 / 同期校友）④ 提到 RDTI 退税额度时必须明确『拿到与否不一定』。</p>
 </div>
 
+<div class="pri-matrix">
+  <h2>🎯 实施优先级矩阵 · 招满 15 席预售目标倒推</h2>
+  <p class="sub">页面上每张卡片左上角带颜色 badge：<span class="pri-badge pri-p0">🔥 P0 今晚</span> <span class="pri-badge pri-p1">🟠 P1 本周</span> <span class="pri-badge pri-p2">🟢 P2 看转化</span> <span class="pri-badge pri-p3">🔵 P3 后续</span> · 不用 29 张全生 / 5 套文案全发，按优先级做 P0+P1 已经够首期启动</p>
+  <div class="pri-matrix-grid">
+
+    <div class="pri-tier t-p0">
+      <h3>🔥 P0 · 今晚必做（&lt; 1.5h）</h3>
+      <ul>
+        <li><strong>📰 完整课程介绍长文</strong> 发公众号（30 min）</li>
+        <li><strong>P-29 预售招生主海报</strong> 生图（30 min）</li>
+        <li><strong>定金金额 + 截止时间</strong>拍板（5 min）</li>
+      </ul>
+    </div>
+
+    <div class="pri-tier t-p1">
+      <h3>🟠 P1 · 本周必做（招生第一周）</h3>
+      <ul>
+        <li><strong>📖 30min ship 故事版</strong> 第二波公众号</li>
+        <li><strong>小红书 3 帖</strong>（加你真实细节再发）</li>
+        <li><strong>X 12-tweet thread</strong> build-in-public</li>
+        <li><strong>P-01 主 Hero</strong> 生图换 landing 顶部</li>
+        <li><strong>P-23 Demo Day</strong> 生图配公众号</li>
+        <li><strong>P-25 Faculty 矩阵</strong> 生图配 landing FACULTY 区</li>
+        <li>Apply form（Tally/Google Form 30 min）</li>
+        <li>Stripe Payment Link 预售定金（30 min）</li>
+      </ul>
+    </div>
+
+    <div class="pri-tier t-p2">
+      <h3>🟢 P2 · 招生中途看转化</h3>
+      <ul>
+        <li>微信群 4 套（弱关系群分发）</li>
+        <li>P-02/P-03 Hero 变体</li>
+        <li>P-04~07 Persona 头像 × 4</li>
+        <li>P-18 三城 Networking 晚宴</li>
+        <li>P-20 墨尔本主场教室 / P-21 卫星教室</li>
+        <li>P-22 RDTI 退税现场</li>
+        <li>P-24 Cohort 经济数据图</li>
+        <li>倒计时 banner（剩 5 席内再加）</li>
+      </ul>
+    </div>
+
+    <div class="pri-tier t-p3">
+      <h3>🔵 P3 · 首期跑完再说</h3>
+      <ul>
+        <li>P-08~17 Faculty 10 张（等 BD 锁实名再生）</li>
+        <li>P-19 互为客户日卡片特写</li>
+        <li>P-26~28 小红书 carousel / X / 公众号头图</li>
+        <li>Stripe webhook 后端自动化</li>
+        <li>海外复制（加拿大/英国/新加坡）</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
 <div class="section-h">📱 4 套文案 · 按平台分</div>
 
 <div class="grid">
@@ -124,9 +238,13 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
         <span>含话题</span>
       </div>
       <div class="actions">
-        <a href="promo/xhs-posts.md" target="_blank" class="btn">查看 markdown</a>
-        <button class="btn primary" data-file="promo/xhs-posts.md">复制全部</button>
+        <a href="promo/article-view.html?file=xhs-posts.md" target="_blank" class="btn primary">📖 大屏全文（新窗口）</a>
+        <button class="btn" data-file="promo/xhs-posts.md">📋 复制 Markdown</button>
       </div>
+      <details class="md-preview-details">
+        <summary>在这里展开 3 帖文案（不下载 · 直接读）</summary>
+        <div class="md-rendered" data-md-file="promo/xhs-posts.md"></div>
+      </details>
     </div>
   </div>
 
@@ -143,28 +261,61 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
         <span>build-in-public</span>
       </div>
       <div class="actions">
-        <a href="promo/x-thread-build-in-public.md" target="_blank" class="btn">查看 markdown</a>
-        <button class="btn primary" data-file="promo/x-thread-build-in-public.md">复制全部</button>
+        <a href="promo/article-view.html?file=x-thread-build-in-public.md" target="_blank" class="btn primary">📖 大屏全文（新窗口）</a>
+        <button class="btn" data-file="promo/x-thread-build-in-public.md">📋 复制 Markdown</button>
       </div>
+      <details class="md-preview-details">
+        <summary>在这里展开 12 tweets 全文（不下载 · 直接读）</summary>
+        <div class="md-rendered" data-md-file="promo/x-thread-build-in-public.md"></div>
+      </details>
     </div>
   </div>
 
   <div class="card mp">
     <div class="card-h">
       <div class="platform">PLATFORM · 公众号</div>
-      <h3>30 分钟 ship 长文 (~2400 字)</h3>
+      <h3>📖 30min ship 长文 · 故事版 (~2400 字)</h3>
     </div>
     <div class="card-body">
-      <p>一个朋友 K 的真实故事开场 → 痛点拆解 → 30 分钟分秒走完 → K 的故事后续 → 课程 CTA。配 Stripe test 交易截图最有说服力。</p>
+      <p>一个朋友 K 的真实故事开场 → 痛点拆解 → 30 分钟分秒走完 → K 的故事后续 → 课程 CTA。配 Stripe test 交易截图最有说服力。<strong>切入角度</strong>：单点 quick win lead magnet。</p>
       <div class="meta">
         <span>~2400 字</span>
-        <span>含 SEO 关键词</span>
+        <span>故事叙事体</span>
         <span>3 张配图建议</span>
       </div>
       <div class="actions">
-        <a href="promo/mp-30min-ship-longform.md" target="_blank" class="btn">查看 markdown</a>
-        <button class="btn primary" data-file="promo/mp-30min-ship-longform.md">复制全部</button>
+        <a href="promo/article-view.html?file=mp-30min-ship-longform.md" target="_blank" class="btn primary">📖 大屏全文（新窗口）</a>
+        <button class="btn" data-file="promo/mp-30min-ship-longform.md">📋 复制 Markdown</button>
       </div>
+      <details class="md-preview-details">
+        <summary>在这里展开全文（不下载 · 直接读）</summary>
+        <div class="md-rendered" data-md-file="promo/mp-30min-ship-longform.md"></div>
+      </details>
+    </div>
+  </div>
+
+  <div class="card mp">
+    <div class="card-h">
+      <div class="platform">PLATFORM · 公众号</div>
+      <h3>📰 完整课程介绍长文 · 观点版 (~2800 字)</h3>
+    </div>
+    <div class="card-body">
+      <p>完整课程介绍版。市场窗口 + 5 大亮点（三城 / 10 类 Faculty / RDTI 全球独家 / 6 项毕业硬指标 / Cohort 经济 $240k-1.9M）+ 4 Phase 结构 + 谁该来谁不该来 + 预售 $2,400 / 早鸟 $2,800 / 二期 $3,800 定价阶梯 + 申请通道。<strong>切入角度</strong>：观点 + 数据驱动，每段含具体数字 / 工具 / 价格锚。</p>
+      <div class="meta">
+        <span>~2800 字</span>
+        <span>5 大亮点</span>
+        <span>6 项硬指标</span>
+        <span>含定价阶梯</span>
+        <span>5 配图建议</span>
+      </div>
+      <div class="actions">
+        <a href="promo/article-view.html?file=mp-course-intro-longform.md" target="_blank" class="btn primary">📖 大屏全文（新窗口）</a>
+        <button class="btn" data-file="promo/mp-course-intro-longform.md">📋 复制 Markdown</button>
+      </div>
+      <details class="md-preview-details" open>
+        <summary>在这里展开全文（不下载 · 直接读）</summary>
+        <div class="md-rendered" data-md-file="promo/mp-course-intro-longform.md"></div>
+      </details>
     </div>
   </div>
 
@@ -181,9 +332,13 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
         <span>不同群类型</span>
       </div>
       <div class="actions">
-        <a href="promo/wechat-group-shares.md" target="_blank" class="btn">查看 markdown</a>
-        <button class="btn primary" data-file="promo/wechat-group-shares.md">复制全部</button>
+        <a href="promo/article-view.html?file=wechat-group-shares.md" target="_blank" class="btn primary">📖 大屏全文（新窗口）</a>
+        <button class="btn" data-file="promo/wechat-group-shares.md">📋 复制 Markdown</button>
       </div>
+      <details class="md-preview-details">
+        <summary>在这里展开 4 套群文案（不下载 · 直接读）</summary>
+        <div class="md-rendered" data-md-file="promo/wechat-group-shares.md"></div>
+      </details>
     </div>
   </div>
 
@@ -226,7 +381,7 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
   </ul>
 </div>
 
-<div class="section-h">🎨 AIGC 海报 Prompt 库（28 张 · 一键复制）</div>
+<div class="section-h">🎨 AIGC 海报 Prompt 库（29 张 · 一键复制）</div>
 
 <div class="prompt-intro">
   <p>📌 <strong>用法</strong>：点 <code>📋 复制 Prompt</code> → 去 <code>chat.openai.com</code> / Sora / Nano Banana 粘贴 → 生图 → 上传 S3 → 替换 landing.html 对应 <code>&lt;img src=&gt;</code>。</p>
@@ -236,7 +391,7 @@ body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1
 </div>
 
 <!-- ============ HERO 主视觉 ============ -->
-<h3 class="prompt-sub-h">① HERO 主视觉 · 3 张</h3>
+<h3 class="prompt-sub-h">① HERO 主视觉 + 招生海报 · 4 张</h3>
 <div class="prompt-grid">
 
   <div class="prompt-card">
@@ -282,6 +437,37 @@ Style references: The Economist illustration, Stripe brand assets, Antler annual
     </div>
   </div>
 
+  <div class="prompt-card">
+    <div class="prompt-card-h"><div class="pc-code">P-29 · HERO</div><h4>🔥 预售招生主海报（含 CTA）</h4></div>
+    <div class="prompt-card-body">
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span>1080×1350 (3:4)</span><span style="background:#FF914D;color:#fff;border-color:#FF914D">招生 CTA</span></div>
+      <div class="prompt-card-use">预售期招生主图 · 小红书封面 · 朋友圈倒计时图 · 公众号头图 · 转化型海报（带定价 + CTA）</div>
+      <pre class="prompt-card-pre">Premium editorial recruitment poster for a bootcamp pre-sale launch. Vertical 3:4 format. Dark navy background #10162f with a subtle orange #FF914D radial gradient glow from top-left.
+
+Central visual element: 15 minimalist isometric "seat" icons arranged in a 3×5 or 5×3 grid (think tiny pill-shaped tickets or chair silhouettes), each labeled with a small number 01 to 15. About 11 of the seats glow soft orange (taken), the last 3-4 seats pulse with a brighter warm yellow #FFDE59 (still open). Subtle motion lines or sparkle around the last available seat to suggest "going fast" urgency. The seat grid sits in the upper-middle 40% of the canvas.
+
+Text overlay (Chinese, clean modern sans-serif, all positioned in lower 50% of canvas with strong contrast):
+- Eyebrow at very top (28-32px, monospace, orange #FF914D, all-caps spacing): "PRE-SALE · 限 15 席 · 仅此一期"
+- Big primary headline (88-104px, bold geometric, white): 首期 OPC
+- Massive price (124-148px, bold geometric, orange #FF914D): A$ 2,400
+- Inline price suffix (40px, white, monospace): " AUD · 可付定金锁席"
+- Mid supporting line (32-36px, regular, white): "满 15 即关 · 涨至首期早鸟 $2,800 · 第二期 $3,800"
+- Mid value-prop line (28-32px, regular, orange): "11 周 · 三城线下 · 10 类 Faculty · RDTI 实战 · Demo Day · 校友群"
+- Bottom CTA button shape (rounded rectangle #FFDE59 yellow background, 48-60px text, bold black): "👉 立即申请 · jiangren.com.au"
+- Bottom right corner (16-18px, monospace, white 60% opacity): "ONE PERSON COMPANY · M01 · MELBOURNE + SYDNEY + BRISBANE"
+
+Mandatory style rules:
+- Font minimum 24px (社媒小字硬要求)
+- Text contrast WCAG AA against navy background
+- Yellow CTA button must look clickable (not flat) — subtle 3px black border + 4px black drop-shadow (Neo-brutalism aesthetic matching 匠人 brand)
+- NO clip-art, NO stock-photo people, NO neon glow overdose, NO Web3 crypto aesthetic
+- 风格基准：Stripe Press × Antler annual report × Y Combinator demo day announcement poster
+- 中文字间距均匀 · 用 ChatGPT gpt-image-2 (Sora 中文文字弱 · MJ 字符乱)
+- 验收：截图给非设计同事看 3 秒内能说出"这是个限 15 席预售课、$2,400、戳链接申请"= 合格</pre>
+      <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ============ 4 目标人群 portrait ============ -->
@@ -291,11 +477,19 @@ Style references: The Economist illustration, Stripe brand assets, Antler annual
   <div class="prompt-card">
     <div class="prompt-card-h"><div class="pc-code">P-04 · PERSONA</div><h4>独立创业者</h4></div>
     <div class="prompt-card-body">
-      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span class="pf-nano">Nano Banana</span><span>800×800</span></div>
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-nano">Nano Banana 编辑</span><span>800×800</span></div>
       <div class="prompt-card-use">landing 人群分诊卡 · "我刚 ship 了点东西" 能量</div>
       <pre class="prompt-card-pre">Style: Photorealistic editorial portrait, soft natural light, slight depth-of-field. Asian Australian professional in their 30s-40s, looking at viewer with confident quiet expression (not smiling broadly, not corporate stock-photo posed). Outfit business-casual, neutral colors. Background: blurred Melbourne / Sydney CBD office interior in warm tones. Color grade: warm cream + navy + subtle orange accent. No corporate photography clichés. No stock-photo handshakes. No "boss" poses. Think New York Times Sunday business profile photo.
 
-Persona: Asian Australian male or female, late 30s, casual blazer over t-shirt, holding a Macbook open to a Stripe dashboard. Faintly visible on screen: payment transactions in AUD. Setting: their own home office or a Cremorne co-working space. Mood: focused calm, "I just shipped something" energy.</pre>
+Persona: Asian Australian male or female, late 30s, casual blazer over t-shirt, holding a Macbook open to a Stripe dashboard. Faintly visible on screen: payment transactions in AUD. Setting: their own home office or a Cremorne co-working space. Mood: focused calm, "I just shipped something" energy.
+
+Text overlay (Chinese, clean modern sans-serif, white text on subtle dark gradient anchored to bottom 30% of frame):
+- Big headline (60-72px, bold geometric): 不打工
+- Subhead (40-48px, bold): 也能体面活着
+- Supporting line (24-28px, regular, orange #FF914D): "Stripe 后台跑通的那一晚 · 不焦虑 · 不汇报 · 不开会"
+- Bottom right corner (16px, monospace, orange): "ONE PERSON COMPANY · M01 · 2026"
+
+Font minimum 24px (社媒小字不可读硬要求). Text contrast against background must pass WCAG AA. Avoid: 文字糊掉 / 中文字间距怪异 / "AI 字" 错字现象 → 用 ChatGPT gpt-image-2 而非 Sora 生 (Sora 中文文字渲染弱).</pre>
       <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
     </div>
   </div>
@@ -303,11 +497,19 @@ Persona: Asian Australian male or female, late 30s, casual blazer over t-shirt, 
   <div class="prompt-card">
     <div class="prompt-card-h"><div class="pc-code">P-05 · PERSONA</div><h4>自由职业 / 律师 / 会计</h4></div>
     <div class="prompt-card-body">
-      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span class="pf-nano">Nano Banana</span><span>800×800</span></div>
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-nano">Nano Banana 编辑</span><span>800×800</span></div>
       <div class="prompt-card-use">landing 人群分诊卡 · "我在升级我的服务" 能量</div>
       <pre class="prompt-card-pre">Style: Photorealistic editorial portrait, soft natural light, slight depth-of-field. Asian Australian professional in their 30s-40s, looking at viewer with confident quiet expression (not smiling broadly, not corporate stock-photo posed). Outfit business-casual, neutral colors. Background: blurred Melbourne / Sydney CBD office interior in warm tones. Color grade: warm cream + navy + subtle orange accent. No corporate photography clichés. No stock-photo handshakes. No "boss" poses. Think New York Times Sunday business profile photo.
 
-Persona: Asian Australian professional, 40s, in a slightly more polished outfit (suit jacket without tie, OR professional blouse). Setting: a sleek private office with law/accounting reference books visible on a shelf in soft focus. Looking at a laptop with a Notion-style document visible (productized service template). Mood: established, confident, "I'm upgrading my services" energy.</pre>
+Persona: Asian Australian professional, 40s, in a slightly more polished outfit (suit jacket without tie, OR professional blouse). Setting: a sleek private office with law/accounting reference books visible on a shelf in soft focus. Looking at a laptop with a Notion-style document visible (productized service template). Mood: established, confident, "I'm upgrading my services" energy.
+
+Text overlay (Chinese, white text on subtle dark gradient at bottom 30%):
+- Big headline (60-72px, bold geometric): 不靠出卖时间换钱
+- Subhead (40-48px, bold): 专业 × AI = productized service
+- Supporting line (24-28px, regular, orange #FF914D): "律师 / 会计 / 咨询 · 把时薪从 $300 升到 $1,500 · 把方法论变成可复制产品"
+- Bottom right corner (16px, monospace, orange): "ONE PERSON COMPANY · M01 · 2026"
+
+Font minimum 24px hard requirement. Use ChatGPT gpt-image-2 not Sora (Sora 中文文字渲染弱). Avoid: 中文字间距怪异 / AI 错字 / 字体糊掉.</pre>
       <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
     </div>
   </div>
@@ -315,11 +517,19 @@ Persona: Asian Australian professional, 40s, in a slightly more polished outfit 
   <div class="prompt-card">
     <div class="prompt-card-h"><div class="pc-code">P-06 · PERSONA</div><h4>职场转型 senior 工程师</h4></div>
     <div class="prompt-card-body">
-      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span class="pf-nano">Nano Banana</span><span>800×800</span></div>
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-nano">Nano Banana 编辑</span><span>800×800</span></div>
       <div class="prompt-card-use">landing 人群分诊卡 · "我想要更多" 能量</div>
       <pre class="prompt-card-pre">Style: Photorealistic editorial portrait, soft natural light, slight depth-of-field. Asian Australian professional in their 30s-40s, looking at viewer with confident quiet expression (not smiling broadly, not corporate stock-photo posed). Outfit business-casual, neutral colors. Background: blurred Melbourne / Sydney CBD office interior in warm tones. Color grade: warm cream + navy + subtle orange accent. No corporate photography clichés. No stock-photo handshakes. No "boss" poses. Think New York Times Sunday business profile photo.
 
-Persona: Asian Australian male, mid 30s to mid 40s, tech worker style — clean hoodie or crew-neck sweater over collared shirt. Setting: Atlassian/Canva-style modern office cafeteria, blurred colleagues in background. Holding coffee, looking at phone with a side-project app preview visible. Mood: contemplative, "I want something more than this job" energy.</pre>
+Persona: Asian Australian male, mid 30s to mid 40s, tech worker style — clean hoodie or crew-neck sweater over collared shirt. Setting: Atlassian/Canva-style modern office cafeteria, blurred colleagues in background. Holding coffee, looking at phone with a side-project app preview visible. Mood: contemplative, "I want something more than this job" energy.
+
+Text overlay (Chinese, white text on subtle dark gradient at bottom 30%):
+- Big headline (60-72px, bold geometric): Cursor 替我写代码这一年
+- Subhead (40-48px, bold): 我重新算了人生数学
+- Supporting line (24-28px, regular, orange #FF914D): "Atlassian Senior · 200k AUD · 32 岁 · 我开始想第二条腿"
+- Bottom right corner (16px, monospace, orange): "ONE PERSON COMPANY · M01 · 2026"
+
+Font minimum 24px hard requirement. Use ChatGPT gpt-image-2 not Sora. Avoid: 中文字间距怪异 / AI 错字.</pre>
       <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
     </div>
   </div>
@@ -327,11 +537,19 @@ Persona: Asian Australian male, mid 30s to mid 40s, tech worker style — clean 
   <div class="prompt-card">
     <div class="prompt-card-h"><div class="pc-code">P-07 · PERSONA</div><h4>小微企业主</h4></div>
     <div class="prompt-card-body">
-      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span class="pf-nano">Nano Banana</span><span>800×800</span></div>
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-nano">Nano Banana 编辑</span><span>800×800</span></div>
       <div class="prompt-card-use">landing 人群分诊卡 · "我要 AI 帮我 scale" 能量</div>
       <pre class="prompt-card-pre">Style: Photorealistic editorial portrait, soft natural light, slight depth-of-field. Asian Australian professional in their 30s-40s, looking at viewer with confident quiet expression (not smiling broadly, not corporate stock-photo posed). Outfit business-casual, neutral colors. Background: blurred Melbourne / Sydney CBD office interior in warm tones. Color grade: warm cream + navy + subtle orange accent. No corporate photography clichés. No stock-photo handshakes. No "boss" poses. Think New York Times Sunday business profile photo.
 
-Persona: Asian Australian, 40s-50s, slightly more mature look, casual but neat business attire. Setting: small business shop / clinic / consultancy office — visible but blurred shelves or counter behind them. Holding tablet showing business automation dashboard. Mood: experienced, "I run this and I want AI to help me scale" energy.</pre>
+Persona: Asian Australian, 40s-50s, slightly more mature look, casual but neat business attire. Setting: small business shop / clinic / consultancy office — visible but blurred shelves or counter behind them. Holding tablet showing business automation dashboard. Mood: experienced, "I run this and I want AI to help me scale" energy.
+
+Text overlay (Chinese, white text on subtle dark gradient at bottom 30%):
+- Big headline (60-72px, bold geometric): AI 替我管前台
+- Subhead (40-48px, bold): 我做我擅长的事
+- Supporting line (24-28px, regular, orange #FF914D): "这家店开了 8 年 · 团队成本压到 0 · 我还在场"
+- Bottom right corner (16px, monospace, orange): "ONE PERSON COMPANY · M01 · 2026"
+
+Font minimum 24px hard requirement. Use ChatGPT gpt-image-2 not Sora. Avoid: 中文字间距怪异 / AI 错字.</pre>
       <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
     </div>
   </div>
@@ -481,7 +699,7 @@ Caption: "AI Engineer / LLM 实战"</pre>
   <div class="prompt-card">
     <div class="prompt-card-h"><div class="pc-code">P-18 · SCENE</div><h4>三城 Networking 晚宴</h4></div>
     <div class="prompt-card-body">
-      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span>1600×900</span></div>
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora 2-pass</span><span>1600×900</span></div>
       <div class="prompt-card-use">Phase 4 / Cohort Economy 配图 / 小红书封面 / 公众号头图</div>
       <pre class="prompt-card-pre">Photorealistic editorial photograph of an intimate business networking dinner in Melbourne CBD. 8-12 Asian Australian professionals (mid 30s to early 50s, mixed gender, business-casual attire) seated around a round dinner table. Setting: upscale modern restaurant (think Vue de monde / Bistro Guillaume private dining room aesthetic), warm pendant lighting, exposed brick or wood-panel walls.
 
@@ -489,7 +707,15 @@ People are mid-conversation — some leaning in, one person showing something on
 
 Mood: warm camaraderie, founders-after-Demo-Day energy. Not corporate "client dinner" stiffness. Not Instagrammable-girls-night-out. Think "the moment when real business gets done."
 
-Avoid: stock photo clichés, fake laughs, obvious AI artifacts on faces or hands.</pre>
+Avoid: stock photo clichés, fake laughs, obvious AI artifacts on faces or hands.
+
+Text overlay (Chinese, large bold sans-serif, white on subtle dark gradient bottom-left third):
+- Big headline (72-84px, bold geometric): 24 个同学
+- Subhead (48-56px, bold): 5 年后澳洲华人 AI 圈的核心节点
+- Supporting line (28-32px, regular, orange #FF914D): "互为早期客户 · 互为天使 · 互为联合创始人 · $240k-1.9M 网络潜在交易额"
+- Bottom right corner (18px, monospace, orange): "COHORT ECONOMY · OPC · M01 · 2026"
+
+Font minimum 24px hard requirement. Use ChatGPT gpt-image-2 for text rendering (not Sora). Text layer should NOT obscure faces — anchor to bottom-left or fully bottom band.</pre>
       <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
     </div>
   </div>
@@ -513,13 +739,21 @@ Style: NYT magazine flatlay aesthetic. Warm cream + soft shadows. NO clip-art. N
   <div class="prompt-card">
     <div class="prompt-card-h"><div class="pc-code">P-20 · SCENE</div><h4>墨尔本主场教室</h4></div>
     <div class="prompt-card-body">
-      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span>1600×900</span></div>
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora 2-pass</span><span>1600×900</span></div>
       <div class="prompt-card-use">City Model section / Phase 1-3 配图 / 招生主图</div>
       <pre class="prompt-card-pre">Photorealistic photograph of a modern Melbourne co-working classroom mid-session. 12-15 Asian Australian professionals seated at simple wooden tables facing a screen. The instructor (40s Asian male/female) stands near a large display showing a Cursor IDE / Stripe dashboard. Natural light from large windows showing Melbourne CBD skyline (subtle Eureka tower visible in distance).
 
 Mood: focused workshop energy, NOT lecture hall passive. Some students have laptops open mid-typing, a few are taking notes. Coffee cups on tables.
 
-Style: Stripe Press photography aesthetic + Maker Faire warmth. Avoid: corporate training photo clichés.</pre>
+Style: Stripe Press photography aesthetic + Maker Faire warmth. Avoid: corporate training photo clichés.
+
+Text overlay (Chinese, large bold sans-serif, white on subtle dark gradient at top-left third):
+- Big headline (72-84px, bold geometric): 周三晚 7pm · 墨尔本 CBD
+- Subhead (44-52px, bold): 嘉宾飞过来 · 学员物理出席
+- Supporting line (28-32px, regular, orange #FF914D): "11 周线下 cohort · 不是 Zoom · 不是录播 · 同期校友是真的人"
+- Bottom right corner (18px, monospace, orange): "MELBOURNE HUB · OPC · M01 · 2026"
+
+Font minimum 24px hard requirement. Use ChatGPT gpt-image-2 (Sora 中文字弱). Text layer anchored top-left to avoid obscuring instructor / screen / students faces.</pre>
       <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
     </div>
   </div>
@@ -527,7 +761,7 @@ Style: Stripe Press photography aesthetic + Maker Faire warmth. Avoid: corporate
   <div class="prompt-card">
     <div class="prompt-card-h"><div class="pc-code">P-21 · SCENE</div><h4>悉尼 / 布里斯班 卫星教室</h4></div>
     <div class="prompt-card-body">
-      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span>1600×900 × 2 张</span></div>
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora 2-pass</span><span>1600×900 × 2 张</span></div>
       <div class="prompt-card-use">City Model section · Sydney + Brisbane 各一张</div>
       <pre class="prompt-card-pre">Photorealistic photograph of a co-working classroom mid-session, students gathered around a single large screen showing a Zoom-style livestream of the Melbourne instructor.
 
@@ -537,7 +771,15 @@ For Brisbane version: backdrop shows Brisbane river + Story Bridge through windo
 In both versions, 8-12 Asian Australian professionals seated at simple wooden tables. Some students are discussing with their physical neighbors. Local Tutor (different person from Melbourne instructor) visible standing near, ready to answer questions.
 
 Mood: focused workshop energy, satellite-room camaraderie. NOT lecture hall passive.
-Style: Stripe Press photography aesthetic + Maker Faire warmth.</pre>
+Style: Stripe Press photography aesthetic + Maker Faire warmth.
+
+Text overlay (Chinese, large bold sans-serif, white on subtle dark gradient at top-left or top-right third):
+- Big headline (72-84px, bold geometric): 悉尼 / 布里斯班 不是二等公民
+- Subhead (40-48px, bold): 卫星直播 + 本地 Tutor + 本地 networking 晚宴
+- Supporting line (26-30px, regular, orange #FF914D): "你不用飞墨尔本 · 你的城市有人陪你 · 同期同城互相找客户"
+- Bottom right corner (18px, monospace, orange): "SATELLITE CLASSROOM · OPC · M01 · 2026"
+
+Font minimum 24px hard requirement. Use ChatGPT gpt-image-2 for text rendering. Two versions: Sydney version 文字色调 warmer, Brisbane version 文字色调 slightly cooler — same layout system.</pre>
       <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
     </div>
   </div>
@@ -565,7 +807,7 @@ Caption overlay (Chinese, white text on subtle dark gradient at bottom): "Phase 
   <div class="prompt-card">
     <div class="prompt-card-h"><div class="pc-code">P-23 · KILL</div><h4>Demo Day pitch 现场</h4></div>
     <div class="prompt-card-body">
-      <div class="prompt-card-meta"><span class="pf-sora">Sora</span><span>1600×900</span></div>
+      <div class="prompt-card-meta"><span class="pf-gpt">gpt-image-2</span><span class="pf-sora">Sora 2-pass</span><span>1600×900</span></div>
       <div class="prompt-card-use">Phase 4 / Hero alternate / KILL 06 毕业硬指标</div>
       <pre class="prompt-card-pre">Photorealistic photograph of a Demo Day presentation moment. A 30s Asian Australian founder stands at the front of a small modern auditorium (50-80 seat capacity) presenting to an audience. On the screen behind: a clean landing page mockup showing real Stripe transaction data + traction metrics (MRR growth chart, user count, etc.).
 
@@ -573,7 +815,15 @@ In the front row: a panel of 4-5 judges visible — a senior CPA, a VC partner, 
 
 Mood: high-energy but not pep-rally — "I built this and I'm proud" energy.
 
-Style: Y Combinator Demo Day photography aesthetic.</pre>
+Style: Y Combinator Demo Day photography aesthetic.
+
+Text overlay (Chinese, large bold sans-serif, white on subtle dark gradient at top quarter or bottom band):
+- Big headline (72-84px, bold geometric): 11 周后 · 你站在这里
+- Subhead (40-48px, bold): 手里是 $1+ 真实付费 + ABN + Grant 申请回执
+- Supporting line (26-30px, regular, orange #FF914D): "不是结业证 · 不是 PPT · VC + CPA + Grant consultant 真的在判断"
+- Bottom right corner (18px, monospace, orange): "DEMO DAY · OPC · M01 · 2026"
+
+Font minimum 24px hard requirement. Use ChatGPT gpt-image-2 for text rendering. Text layer should NOT obscure the founder's face / the projection screen — anchor to top OR full-width bottom band.</pre>
       <div class="prompt-card-actions"><button class="btn primary" data-copy-prompt>📋 复制 Prompt</button><button class="btn" data-toggle-prompt>👁 展开</button></div>
     </div>
   </div>
@@ -704,7 +954,90 @@ Style: Bloomberg / The Atlantic banner aesthetic.</pre>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
 <script>
+// =================================================================
+// 实施优先级 badge 自动注入 — 数据驱动，改这个 map 即可同步所有卡片
+// =================================================================
+const POSTER_PRIORITY = {
+  // 🔥 P0 今晚 — 1 张
+  'P-29': 'p0',
+  // 🟠 P1 本周 — 3 张
+  'P-01': 'p1', 'P-23': 'p1', 'P-25': 'p1',
+  // 🟢 P2 看转化 — 11 张
+  'P-02': 'p2', 'P-03': 'p2', 'P-04': 'p2', 'P-05': 'p2', 'P-06': 'p2', 'P-07': 'p2',
+  'P-18': 'p2', 'P-20': 'p2', 'P-21': 'p2', 'P-22': 'p2', 'P-24': 'p2',
+  // 🔵 P3 后续 — 14 张
+  'P-08': 'p3', 'P-09': 'p3', 'P-10': 'p3', 'P-11': 'p3', 'P-12': 'p3', 'P-13': 'p3',
+  'P-14': 'p3', 'P-15': 'p3', 'P-16': 'p3', 'P-17': 'p3', 'P-19': 'p3',
+  'P-26': 'p3', 'P-27': 'p3', 'P-28': 'p3'
+};
+const COPY_PRIORITY = {
+  'promo/mp-course-intro-longform.md': 'p0',
+  'promo/mp-30min-ship-longform.md': 'p1',
+  'promo/xhs-posts.md': 'p1',
+  'promo/x-thread-build-in-public.md': 'p1',
+  'promo/wechat-group-shares.md': 'p2'
+};
+const PRI_LABEL = { p0: '🔥 P0 今晚', p1: '🟠 P1 本周', p2: '🟢 P2 看转化', p3: '🔵 P3 后续' };
+
+// 给 29 张海报 prompt 卡注入 badge
+document.querySelectorAll('.prompt-card .pc-code').forEach(el => {
+  const m = el.textContent.match(/P-\d+/);
+  if (!m) return;
+  const pri = POSTER_PRIORITY[m[0]];
+  if (!pri) return;
+  const badge = document.createElement('span');
+  badge.className = 'pri-badge pri-' + pri;
+  badge.textContent = PRI_LABEL[pri];
+  el.parentElement.insertBefore(badge, el);
+});
+
+// 给 5 张推广文案卡（按 data-file 识别）注入 badge
+document.querySelectorAll('.card [data-file]').forEach(btn => {
+  const pri = COPY_PRIORITY[btn.dataset.file];
+  if (!pri) return;
+  const cardH = btn.closest('.card')?.querySelector('.card-h');
+  if (!cardH || cardH.querySelector('.pri-badge')) return;
+  const badge = document.createElement('span');
+  badge.className = 'pri-badge pri-' + pri;
+  badge.textContent = PRI_LABEL[pri];
+  badge.style.marginBottom = '6px';
+  cardH.insertBefore(badge, cardH.firstChild);
+});
+
+// Inline markdown render in promo cards (公众号卡片内嵌全文)
+if (typeof marked !== 'undefined') {
+  marked.setOptions({ breaks: false, gfm: true });
+}
+async function renderMd(targetDiv) {
+  if (targetDiv.dataset.loaded) return;
+  const file = targetDiv.dataset.mdFile;
+  targetDiv.innerHTML = '<div class="md-rendered-loading">正在加载渲染长文…</div>';
+  try {
+    const resp = await fetch(file);
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const md = await resp.text();
+    targetDiv.innerHTML = (typeof marked !== 'undefined')
+      ? marked.parse(md)
+      : '<pre style="white-space:pre-wrap;font-family:Noto Sans SC,sans-serif">' + md.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])) + '</pre>';
+    targetDiv.dataset.loaded = '1';
+  } catch (e) {
+    targetDiv.innerHTML = '<p style="color:#7f1d1d;padding:14px">⚠️ 加载失败：' + e.message + '。请用上面「📖 大屏全文」按钮看。</p>';
+  }
+}
+// Pre-render any details that start with [open] attribute
+document.querySelectorAll('details.md-preview-details[open] .md-rendered').forEach(renderMd);
+// Lazy-load on toggle
+document.querySelectorAll('details.md-preview-details').forEach(d => {
+  d.addEventListener('toggle', () => {
+    if (d.open) {
+      const target = d.querySelector('.md-rendered');
+      if (target) renderMd(target);
+    }
+  });
+});
+
 // Copy markdown content (existing 4 platform cards)
 document.querySelectorAll('button.btn[data-file]').forEach(btn => {
   btn.addEventListener('click', async () => {
