@@ -4,7 +4,7 @@
 - curriculum.html  课程总览（hero + stats + 13 phase 卡片 + 双 tier 对比 + 定价）
 - outline.html     详细 lesson 列表（按 phase 分组，所有 lesson 平铺）
 - phase_N.html × N 每个 phase 的详情页（含 lesson 列表 + 学习目标）
-- learning-plan.html 周日历（basic 8 周 / advanced 8 周）
+- learning-plan.html 周日历（basic 8 周 / advanced 12 周）
 
 运行：python3 scripts/generate-html.py
 输出：public/*.html
@@ -435,7 +435,7 @@ def render_poster() -> str:
   <div class="mono" style="font-size:12px;color:#fed7aa;letter-spacing:2px">{html.escape(OUTLINE['name_en'])} · 2026 Q2 · 第 2 期</div>
   <h1>{html.escape(OUTLINE['name'])}</h1>
   <div class="super">一门课学会做 <strong style="color:#fef08a">8 种 AI 产出</strong>：PPT · 海报 · 音乐 · 配音 · 视频 · 网站 · 数据 Dashboard · 自动化 Agent ✋</div>
-  <div class="sub-hook">市面上 99% 的 AI 课只教 1 个工具或 1 类产出。这门让你 6-8 周掌握 33 个工具 + 8 类创作能力，全程不写代码。</div>
+  <div class="sub-hook">市面上 99% 的 AI 课只教 1 个工具或 1 类产出。这门让你在 8-12 周里掌握 33 个工具 + 8 类创作能力，每周 2 节直播，全程不写代码。</div>
   <div class="badge-row">
     <span class="badge">{total} 节课</span>
     <span class="badge">{quest_count} 个 Quest 实战</span>
@@ -454,7 +454,7 @@ def render_poster() -> str:
     <div class="who">在职白领 · 5+ 年经验</div>
     <div class="pain">做了 100 份 PPT、写了 50 篇报告，但回头看一年没做出过一个"真东西"</div>
     <div class="arrow">↓</div>
-    <div class="solve">6 周做出 5 件能放进作品集的真实产品</div>
+    <div class="solve">基础班 8 周做出 5 件能放进作品集的真实产品</div>
   </div>
   <div class="pain-card">
     <div class="who">大学生 · 在读 / 应届</div>
@@ -472,7 +472,7 @@ def render_poster() -> str:
     <div class="who">想转型者 · 不知道方向</div>
     <div class="pain">AI 时代该学什么？编程太难、读完书也不会做东西</div>
     <div class="arrow">↓</div>
-    <div class="solve">系统化"AI 主导产品制作"能力，6 周建立完整闭环</div>
+    <div class="solve">系统化"AI 主导产品制作"能力，8 周建立完整闭环</div>
   </div>
 </div>
 
@@ -786,7 +786,7 @@ def render_marketing() -> str:
 
 【顶部标题】
 - Main title (large Chinese): "课程涉及的 33 个 AI 工具"
-- Subtitle: "13 个类别 · 6-8 周完整工作流 · 全程不写代码"
+- Subtitle: "13 个类别 · 8-12 周完整工作流 · 全程不写代码"
 
 【中部主体】
 A circular network diagram with 13 hexagonal category nodes arranged in a wheel:
@@ -928,7 +928,7 @@ Style: cream bg, black 3px borders, yellow checkboxes, red 🟨 badges for advan
 Left column (pink #fce7f3 bg + black border):
 - 🟪 头部标签: "基础班"
 - Mega price: "$960 AUD"
-- "6 周 · 76 节课 · 9 个 Quest"
+- "8 周 · 76 节课 · 9 个 Quest"
 - 学完做出（清单 5 件）:
   ✓ 在线 HTML PPT
   ✓ A4 PDF 全家桶
@@ -939,7 +939,7 @@ Left column (pink #fce7f3 bg + black border):
 Right column (yellow #fef08a bg + black border):
 - 🟨 头部标签: "进阶班"
 - Mega price: "$2280 AUD"
-- "8 周 · 109 节课 · 14 个 Quest"
+- "12 周 · 109 节课 · 14 个 Quest"
 - 学完做出（清单 5+3 件）:
   ✓ 基础班全部 5 件
   ✓ +Admin CMS + 用户数据采集
@@ -963,7 +963,7 @@ Style: Neo-Brutalism, bold 3px black borders, contrasting tier colors.</div>
   <div class="content">A horizontal-flow roadmap poster, can be 9:16 or 16:9.
 
 【顶部】
-- Title: "6-8 周学习路径 · 13 Phase 完整闭环"
+- Title: "8-12 周学习路径 · 13 Phase 完整闭环"
 
 【主体：13 step 时间轴】
 Horizontal arrow flow (or vertical for 9:16):
@@ -1028,7 +1028,7 @@ Below the line:
 ✗ 看 AI 工具课但学完还是不会做产品
 ✗ 想转型不知道学什么
 
-📍 学完 6-8 周后：
+📍 学完 8-12 周后：
 ✓ 简历多 5-8 个 AI 项目（真链接 / 真文件）
 ✓ "我做过 Landing Page + AI Chatbot + Dashboard"
 ✓ 用 Cowork 处理日常工作每周省 10 小时
@@ -1036,7 +1036,7 @@ Below the line:
 
 【底部】
 - "匠人学院《AI Coding 实战课》"
-- "基础班 $960 / 进阶班 $2280 · 6-8 周"
+- "基础班 $960 / 进阶班 $2280 · 8-12 周"
 - QR + 链接
 
 Style: cream bg, large emotional typography for quote (hand-written feel可用 Caveat 或类似). Bold black borders for cards. ✗ in red, ✓ in green/yellow background.</div>
@@ -1095,7 +1095,7 @@ Style: per-tool brand color accent (Suno = violet / HyperFrames = cyan etc.), Ne
    8 张海报用同一组 style keywords（"Neo-Brutalism, cream background, bold 3px black borders, yellow #fef08a highlights, hand-drawn imperfection"），保证整套视觉一致。
 
 4. **必查 4 项再发布**：
-   ✓ 课程名 + 价格 + 周期 标注准确（$960/6 周 · $2280/8 周）
+   ✓ 课程名 + 价格 + 周期 标注准确（$960/8 周 · $2280/12 周）
    ✓ "不写代码" / "13 phase" / "33 工具" 关键数字一致
    ✓ QR 码可扫（用真二维码生成器）
    ✓ 没有违规承诺词（月入 / 入职 / 副业 / 包就业）— 严守红线</div>
@@ -1175,7 +1175,7 @@ Style: per-tool brand color accent (Suno = violet / HyperFrames = cyan etc.), Ne
 
 2. 别再纠结学哪个 AI 工具 — 这门课让你一次涉及 33 个，组成 8 种创作能力
 
-3. 6 周：从 0 学会做 PPT、做视频、做网站、做音乐、做海报、做数据 Dashboard
+3. 8 周：从 0 学会做 PPT、做视频、做网站、做音乐、做海报、做数据 Dashboard
 
 4. 99% 的 AI 课只教你"用 AI 聊天"。这门教你 8 种 AI 创作能力，一个比一个能用
 
@@ -1194,7 +1194,7 @@ Style: per-tool brand color accent (Suno = violet / HyperFrames = cyan etc.), Ne
 📣 分发：5 平台同步 / 一稿多发
 
 匠人学院《人人都能学的 AI Coding 实战课》，基础班 $960 / 进阶班 $2280 AUD。
-全程不写代码，6-8 周做出 5-8 件能放进作品集的真东西。</div>
+全程不写代码，8-12 周做出 5-8 件能放进作品集的真东西。</div>
 </div>
 
 <div class="copy-block">
@@ -1230,7 +1230,7 @@ Style: per-tool brand color accent (Suno = violet / HyperFrames = cyan etc.), Ne
 
 <div class="hook-card">
   <div class="angle">角度 2 · 时间</div>
-  <div class="hook">"6 周做出 5 个真产品（PPT / PDF / 网站 / 视频 / 自动化）"</div>
+  <div class="hook">"8 周做出 5 个真产品（PPT / PDF / 网站 / 视频 / 自动化）"</div>
   <div class="note" style="margin-top:8px">— 适合：通用 · 情绪：直接量化</div>
 </div>
 
@@ -1328,7 +1328,7 @@ Style: per-tool brand color accent (Suno = violet / HyperFrames = cyan etc.), Ne
 
 正文配文：
 "很多人问我学了多少工具，画了张图。
-6-8 周里你会用 33 个 AI 工具组成一套完整工作流。
+8-12 周里你会用 33 个 AI 工具组成一套完整工作流。
 不是为了用工具而用工具 — 是每个工具对应一个具体产出。
 存图 → 报名时对照看自己能学到什么。"</div>
   <div class="note">💡 配图制作：可用 Figma / Canva 或让 Cowork 帮你生成 SVG。详细工具数据见 <a href="./tools.html">🛠️ AI 工具大全</a></div>
@@ -1404,7 +1404,7 @@ CTA："如果你想系统学这 33 个工具，匠人学院第 2 期招生中。
 
 PPT、报告、活动 — 这些都是工作"流程"，不是"成果"。
 
-直到我跟了一门叫《人人都能学的 AI Coding 实战课》的课程，6 周做出 5 个真实产品：
+直到我跟了一门叫《人人都能学的 AI Coding 实战课》的课程，8 周做出 5 个真实产品：
 
 1️⃣ 一个可在线分享的 HTML PPT（不是 .pptx）
 2️⃣ 一份印刷级 A4 PDF（BP / 简历 / 提案任选）
@@ -1431,35 +1431,36 @@ PPT、报告、活动 — 这些都是工作"流程"，不是"成果"。
   <div class="copy-block">
     <div class="label">套 2 · 时间紧迫感</div>
     <div class="title">📝 标题</div>
-    <div class="content">我用 6 周做出了 5 个产品（without 写一行代码）🤯</div>
+    <div class="content">我用 8 周做出了 5 个产品（without 写一行代码）🤯</div>
 
     <div class="title" style="margin-top:14px">📄 正文</div>
-    <div class="content">6 周学习日记，每周做出一个真产品 👇
+    <div class="content">8 周学习日记，每周做出一个真产品 👇
 
-📅 Week 1 — 装 Cowork、写 PRD、做产品 design.md
-📅 Week 2 — 做出第一份 PPT（楼盘案例教学）
-📅 Week 3 — 做出 PDF 全家桶（我选了 BP 模板）
-📅 Week 4 — 做出 landing page 网站（部署上线 Vercel）
-📅 Week 5 — 做出 60s 视频（AI 配音 + BGM + HyperFrames 出片）
-📅 Week 6 — 一稿多发到 5 大社交平台
+📅 Week 1 — 装 Cowork、上手对话式做产品（零代码起步）
+📅 Week 2 — 写 PRD + design.md + UI 展示
+📅 Week 3 — 做出第一份 PPT（楼盘案例教学）
+📅 Week 4 — 做出 PDF 全家桶（我选了 BP 模板）
+📅 Week 5-6 — 做出 landing page 网站（部署上线 Vercel）
+📅 Week 7 — 自动化基础 + 做出 60s 视频（AI 配音 + HyperFrames 出片）
+📅 Week 8 — 一稿多发到 5 大社交平台 + 作品集答辩
 
 学的过程像在玩游戏 — AI Tutor 每节课带练（叫 Quest 实战）
 有时甚至忘了我在"学习"，只觉得在"做产品"。
 
-最 surprising 的：6 周下来我开始用 Cowork 处理工作里的 PPT、文档、邮件 — 一周省下 10 小时。
+最 surprising 的：8 周下来我开始用 Cowork 处理工作里的 PPT、文档、邮件 — 一周省下 10 小时。
 
 是匠人学院出的，叫《人人都能学的 AI Coding 实战课》。
-基础班 $960 / 6 周；进阶班 $2280 / 8 周（多 admin CMS + 数据 dashboard + 视频升级）。
+基础班 $960 / 8 周；进阶班 $2280 / 12 周（多 admin CMS + 数据 dashboard + 视频升级）。
 
 链接评论里取🔗</div>
 
     <div class="title" style="margin-top:14px">📷 配图建议（6 张）</div>
-    <div class="content">图 1: 封面 — "6 周 5 个产品" 大字 + 数字图标
-图 2: Week 1-6 时间线（每周一个交付物 emoji）
+    <div class="content">图 1: 封面 — "8 周 5 个产品" 大字 + 数字图标
+图 2: Week 1-8 时间线（每周节奏 emoji，2 节直播/周）
 图 3-7: 每个交付物展示截图（PPT / PDF / 网站 / 视频 / 分发）一图一个
 图 8: 班型对比 + CTA</div>
 
-    <div class="hashtags">#AI做产品 #零基础学AI #6周计划 #数字游民 #学员日记 #作品集</div>
+    <div class="hashtags">#AI做产品 #零基础学AI #8周计划 #数字游民 #学员日记 #作品集</div>
   </div>
 
   <div class="copy-block">
@@ -1485,7 +1486,7 @@ Cowork 就帮你做出来。
 ❌ 旧方法：学语法 → 学库 → 学框架 → 学部署 → 终于做出第一个网页（半年）
 ✅ 新方法：描述需求 → Cowork 做 → 你检查 → 调整 → 上线（一节课）
 
-这门课叫《人人都能学的 AI Coding 实战课》，6-8 周让零基础非技术人员做出 5-8 个真产品。
+这门课叫《人人都能学的 AI Coding 实战课》，8-12 周让零基础非技术人员做出 5-8 个真产品。
 
 我已经报名了，留言一起？</div>
 
@@ -1510,7 +1511,7 @@ Cowork 就帮你做出来。
    — 这门课在中间 — 教方法论 + 教做东西
 
 3️⃣ 算了 ROI（不算工资，算时间）
-   — 8 周 × 每周 10 小时 = 80 小时
+   — 基础班 8 周 × 每周 10 小时 ≈ 80 小时（进阶班 12 周 ≈ 120 小时）
    — 学完能做 PPT/PDF/网站/视频/Dashboard
    — 如果只学一个产品形态都值这个钱
 
@@ -1574,9 +1575,9 @@ Cowork 就帮你做出来。
     <div class="label">5 个标题候选</div>
     <div class="content">1. 做了 5 年 PPT 的运营人，为什么我决定停下来学 AI 做产品
 
-2. 2026 年最值得学的 AI 课终于来了：不写代码，6 周做出 5 个产品
+2. 2026 年最值得学的 AI 课终于来了：不写代码，8 周做出 5 个产品
 
-3. 用 6 周做出 5 个 AI 产品 — 一个零基础非技术学员的真实路径
+3. 用 8 周做出 5 个 AI 产品 — 一个零基础非技术学员的真实路径
 
 4. 市面上 99% 的 AI 课在教你聊天，这门课教你做产品
 
@@ -1615,8 +1616,8 @@ P8 基础班结业（基础班结束）
 [进阶班继续] P9-P12 Admin CMS + Agent + 数据 Dashboard + 进阶答辩
 
 ═══ 第 5 段 · 班型 + 价格（300 字）═══
-- 基础班 6 周 / $960 AUD / 76 节课 / 5 件交付物
-- 进阶班 8 周 / $2280 AUD / 109 节课 / 8 件交付物
+- 基础班 8 周 / $960 AUD / 76 节课 / 5 件交付物
+- 进阶班 12 周 / $2280 AUD / 109 节课 / 8 件交付物
 - 价格逻辑：基础班对标 $192/周（不变第 1 期价）；进阶班单课均价 $21（市场 AI 课普遍 $30-50/课）
 
 ═══ 第 6 段 · 学完拿到手（400 字）═══
@@ -1641,7 +1642,7 @@ P8 基础班结业（基础班结束）
     <div class="label">Day 1 · 早 8 点 · 励志开篇</div>
     <div class="content">早上好。
 今天是我学 AI 做产品的第 1 天。
-6 周后我会做出 5 个真产品 — PPT、PDF、网站、视频、自动化。
+8 周后我会做出 5 个真产品 — PPT、PDF、网站、视频、自动化。
 不学一行代码。
 你呢，要不要一起？
 
@@ -1693,7 +1694,7 @@ Cowork（写需求 + 想思路）
 + Claude Code（自动化）
 + HyperFrames（一键出视频）
 
-零基础 → 6 周做出能用的产品。
+零基础 → 8 周做出能用的产品。
 
 这门课叫《人人都能学的 AI Coding 实战课》，匠人学院出的。
 
@@ -1727,7 +1728,7 @@ Cowork（写需求 + 想思路）
     <div class="label">Post 1 · 行业洞察型</div>
     <div class="content">AI 时代的最大变化不是 ChatGPT 能写代码 — 而是不会写代码的人也能做产品。
 
-6 周前，我连"网站"和"前端后端"都分不清。
+8 周前，我连"网站"和"前端后端"都分不清。
 
 今天，我上线了一个 landing page，
 用 AI 写了一份 BP 给我的导师看，
@@ -1744,7 +1745,7 @@ Cowork（写需求 + 想思路）
 
   <div class="copy-block">
     <div class="label">Post 2 · 学完总结型</div>
-    <div class="content">6 周课程 + 5 个交付物 + 1 套系统化思维：
+    <div class="content">8 周课程 + 5 个交付物 + 1 套系统化思维：
 
 1. 用 Cowork 写 PRD + design.md（产品设计文档）
 2. 做出在线 HTML PPT（不是 .pptx — 是可分享 URL，能嵌网站）
@@ -1770,7 +1771,7 @@ Cowork（写需求 + 想思路）
     <div class="label">完整脚本 · 30s · 含分镜</div>
     <div class="content">═══ 镜头 1 · 0-3 秒（Hook）═══
 画面：大字标题 "AI 真的能让我做出产品吗？"
-旁白：（疑问语气）"AI 真的能让我做出产品吗？我决定 6 周亲自验证。"
+旁白：（疑问语气）"AI 真的能让我做出产品吗？我决定 8 周亲自验证。"
 
 ═══ 镜头 2 · 3-10 秒（冲突）═══
 画面：黑屏白字依次出现：
@@ -1786,7 +1787,7 @@ Cowork（写需求 + 想思路）
 🌐 上线 landing page 网站
 🎬 60s 视频片段
 📣 5 平台分发截图
-旁白：（兴奋）"6 周 — 一份 PPT、一份 BP、一个网站、一支视频、5 平台分发。
+旁白：（兴奋）"8 周 — 一份 PPT、一份 BP、一个网站、一支视频、5 平台分发。
 真的做出来了。"
 
 ═══ 镜头 4 · 20-25 秒（亮点）═══
@@ -1819,8 +1820,8 @@ Cowork（写需求 + 想思路）
 你做过一个能拿出手的"真正的产品"吗？
 不是 PPT、报告、文章 — 而是一个用户能用的 app / 网站 / 工具？
 
-如果没有 / 不多 — 我们刚出了一门课，让在职白领 6 周做出 5 个真产品（用 AI，不写代码）。
-基础班 $960 AUD，6 周完成。
+如果没有 / 不多 — 我们刚出了一门课，让在职白领 8 周做出 5 个真产品（用 AI，不写代码）。
+基础班 $960 AUD，8 周完成。
 
 有兴趣聊聊吗？发你课程大纲？</div>
   </div>
@@ -1833,7 +1834,7 @@ Cowork（写需求 + 想思路）
 最近的招聘 JD 普遍要求"AI 项目经验"——
 但学校没教你怎么做 AI 项目（也没人教）。
 
-我们最近一门课叫《人人都能学的 AI Coding 实战课》，6 周帮零基础学员做出 5 个 AI 项目（可直接放进作品集）。
+我们最近一门课叫《人人都能学的 AI Coding 实战课》，8 周帮零基础学员做出 5 个 AI 项目（可直接放进作品集）。
 
 学员说找完这门课的工作面试中，被问"做过什么 AI 项目"时不再尴尬了。
 
@@ -1848,10 +1849,10 @@ Cowork（写需求 + 想思路）
 - 你想给客户做 BP / 提案 / 网站，但要请开发太贵？
 - 你想做内容（PPT / 视频 / 海报），但工具学不过来？
 
-我们出了一门课，6-8 周教非技术创业者用 Cowork 自己做出来 —
+我们出了一门课，8-12 周教非技术创业者用 Cowork 自己做出来 —
 PPT / PDF / 网站 / 视频 / Admin CMS / 数据 Dashboard 全套。
 
-进阶班 8 周 $2280 AUD，包含 Admin CMS + 每日自动 Agent + 数据 Dashboard。
+进阶班 12 周 $2280 AUD，包含 Admin CMS + 每日自动 Agent + 数据 Dashboard。
 
 对创业者特别合适。要不要看下大纲？</div>
   </div>
@@ -2008,7 +2009,7 @@ P4 教 "用 Cursor + Claude Code"：
 - 工作：跟同事讨论"AI 怎么用"但没真用上
 - 心理：知道要学但不知道学什么
 
-📍 学完后（6 周后）
+📍 学完后（8 周后）
 - 简历多了一栏 "AI 项目经验"：
   · 用 AI 主导制作了 1 份 BP（10 页 PDF）
   · 上线了 1 个 landing page（Vercel 部署）
@@ -2051,7 +2052,7 @@ P4 教 "用 Cursor + Claude Code"：
 - 自己用 Cowork + Cursor 做出 MVP（landing page + admin + 用户表单）
 - 上线 Vercel + 自定义域名 → 真有用户能访问
 - 视频 demo + BP PDF 一起发投资人
-- 不用 9 万开发费 — $2280 + 8 周时间
+- 不用 9 万开发费 — $2280 + 12 周时间
 - 后续迭代靠自己改，不用再找开发</div>
   </div>
 </div>
@@ -2064,19 +2065,19 @@ P4 教 "用 Cursor + Claude Code"：
 
   <div class="copy-block">
     <div class="label">10 秒 · 一句话定位</div>
-    <div class="content">"6 周教零基础非技术人员用 AI 做出 5 个真产品，全程不写代码。"</div>
+    <div class="content">"8 周教零基础非技术人员用 AI 做出 5 个真产品，全程不写代码。"</div>
   </div>
 
   <div class="copy-block">
     <div class="label">30 秒 · 朋友群 / 一句话推荐</div>
-    <div class="content">"匠人学院新出的《人人都能学的 AI Coding 实战课》第 2 期 —— 6 周做出 5 个真产品（PPT / PDF / 网站 / 视频 / 自动化），全程用 Cowork 对话，不写代码。基础班 $960 AUD，进阶班 $2280 多 Admin CMS + 数据 Dashboard。我学过他们家课，质量稳。链接私我。"</div>
+    <div class="content">"匠人学院新出的《人人都能学的 AI Coding 实战课》第 2 期 —— 8 周做出 5 个真产品（PPT / PDF / 网站 / 视频 / 自动化），全程用 Cowork 对话，不写代码。基础班 $960 AUD，进阶班 $2280 多 Admin CMS + 数据 Dashboard。我学过他们家课，质量稳。链接私我。"</div>
   </div>
 
   <div class="copy-block">
     <div class="label">1 分钟 · 直播开场 / 短视频</div>
     <div class="content">"我想推荐一门 AI 课，不是教你用 ChatGPT 聊天，而是教你做出能用的产品。
 
-匠人学院《人人都能学的 AI Coding 实战课》第 2 期，6-8 周时间。
+匠人学院《人人都能学的 AI Coding 实战课》第 2 期，8-12 周时间。
 
 学完你电脑上 / 网上有 5-8 个东西：一份在线 HTML PPT、一份 A4 PDF 全家桶（BP/简历/提案）、一个上线的 landing page 网站、一支 60 秒科普视频，进阶班还有 Admin CMS、内容自动化 Agent、数据 Dashboard。
 
@@ -2088,7 +2089,7 @@ P4 教 "用 Cursor + Claude Code"：
   <div class="copy-block">
     <div class="label">3 分钟 · 微信直播 / 抖音直播</div>
     <div class="content">═══ 开头 30s · Hook ═══
-"今天聊一门让在职白领 6 周做出 5 个真产品的 AI 课。不是聊 AI、不是写 prompt — 是真的做出能用的产品。
+"今天聊一门让在职白领 8 周做出 5 个真产品的 AI 课。不是聊 AI、不是写 prompt — 是真的做出能用的产品。
 如果你做了 5 年 PPT 但回头看一年没做出过一个真东西 — 这门课就是讲给你听的。"
 
 ═══ 30s-1:30 · 痛点 + 转折 ═══
@@ -2097,7 +2098,7 @@ P4 教 "用 Cursor + Claude Code"：
 直到 Anthropic 出了 Cowork — 不写代码、对话做产品。这门课就是基于 Cowork 设计的完整工作流。"
 
 ═══ 1:30-2:30 · 课程亮点 ═══
-"分基础班 6 周 / 进阶班 8 周：
+"分基础班 8 周 / 进阶班 12 周：
 P0-P2 学用 Cowork 写 PRD / design.md / 做在线 HTML PPT。
 P3 设计 A4 PDF 全家桶。
 P4 用 Cursor + Claude Code 把 PPT 转 landing page，上线 Vercel。
@@ -2116,7 +2117,7 @@ P7 一稿多发 5 大平台。
   <div class="copy-block">
     <div class="label">5 分钟 · B 站 / YouTube 长视频脚本</div>
     <div class="content">═══ 0-30s · Hook ═══
-"AI 时代过去 3 年了，你做出过什么产品？不是 PPT、不是报告、不是邮件 — 是用户能用的产品。今天聊一门刚出的课，让零基础非技术人员 6 周做出 5 个真产品。"
+"AI 时代过去 3 年了，你做出过什么产品？不是 PPT、不是报告、不是邮件 — 是用户能用的产品。今天聊一门刚出的课，让零基础非技术人员 8 周做出 5 个真产品。"
 
 ═══ 30s-1:30 · 测评背景 ═══
 "我看过 50+ AI 课、买过 12 门（花了 $6000+）、跟了 5 门到底。其中 4 门浪费时间。1 门真有用 — 让我做出了能上线的产品。这门就是匠人学院《人人都能学的 AI Coding 实战课》。"
@@ -2125,8 +2126,8 @@ P7 一稿多发 5 大平台。
 "13 个 Phase 我快速过一遍 [同 3 分钟版 P0-P11]"
 
 ═══ 3:00-4:00 · 价格 + 班型对比 ═══
-"基础班 $960 / 6 周 / 76 节课 / 5 件作品。
-进阶班 $2280 / 8 周 / 109 节课 / 8 件作品。
+"基础班 $960 / 8 周 / 76 节课 / 5 件作品。
+进阶班 $2280 / 12 周 / 109 节课 / 8 件作品。
 谁选哪个我画了一张图 [展示 tier 对比图]。"
 
 ═══ 4:00-4:30 · 红线说明 ═══
@@ -2204,8 +2205,8 @@ P7 一稿多发 5 大平台。
 📋 标准 CTA 结尾（贴在所有营销内容末尾）：
 ─────────────────────────────────────
 🚀 立即报名第 2 期
-🟪 基础班 $960 / 6 周 / 76 课 / 5 件作品
-🟨 进阶班 $2280 / 8 周 / 109 课 / 8 件作品
+🟪 基础班 $960 / 8 周 / 76 课 / 5 件作品
+🟨 进阶班 $2280 / 12 周 / 109 课 / 8 件作品
 🔗 [报名链接]
 💬 [课程顾问微信]
 ─────────────────────────────────────</div>
