@@ -235,6 +235,12 @@ jobs:
             cp -r gp-program-workshop/public/* _site/gp-program-workshop/
           fi
 
+          # china-campus-workshop: static HTML only (3-hour Zoom workshop, 留学生回国校招冲刺 · Steven Yu 主讲 · 49 元)
+          if [ -d china-campus-workshop/public ]; then
+            mkdir -p _site/china-campus-workshop
+            cp -r china-campus-workshop/public/* _site/china-campus-workshop/
+          fi
+
           # ai-accounting-pro: static HTML only (12-hour 主课 · 6 周 cohort · 10-12 人小班 · $1,799-$2,299 AUD · 引流课的转化主课)
           if [ -d ai-accounting-pro/public ]; then
             mkdir -p _site/ai-accounting-pro
