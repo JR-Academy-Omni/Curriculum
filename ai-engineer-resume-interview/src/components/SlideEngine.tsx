@@ -112,6 +112,15 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 			<div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: 4, background: 'rgba(255,255,255,0.1)', zIndex: 1000 }}>
 				<motion.div animate={{ width: `${((current + 1) / total) * 100}%` }} transition={{ duration: 0.3 }} style={{ height: '100%', background: colors.indigo }} />
 			</div>
+			{/* 全局 logo watermark · 左上角 · difference 模式确保任何背景可见 */}
+			<img
+				src="logo.svg"
+				alt="JR Academy"
+				style={{
+					position: 'fixed', top: 18, left: 24, height: 36, width: 'auto', zIndex: 1000,
+					mixBlendMode: 'difference', opacity: 0.85, pointerEvents: 'none',
+				}}
+			/>
 			<div style={{
 				position: 'fixed', bottom: 24, right: 32, fontFamily: '"Space Mono", monospace',
 				fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.5)', zIndex: 1000, letterSpacing: 2,

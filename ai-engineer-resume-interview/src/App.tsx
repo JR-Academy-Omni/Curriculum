@@ -43,6 +43,9 @@ import S24d from './components/slides/S24d_ModelComparison';
 import S25 from './components/slides/S25_SystemDesignCase';
 import S26 from './components/slides/S26_BehavioralReverse';
 import S26b from './components/slides/S26b_ProjectDeepDive';
+import S26c from './components/slides/S26c_SystemDesignRAG';
+import S26d from './components/slides/S26d_SystemDesignMultiAgentMemory';
+import S26e from './components/slides/S26e_SystemDesignCodeAssistant';
 
 import S27 from './components/slides/S27_BootcampOutline';
 import S28 from './components/slides/S28_NextSteps';
@@ -90,6 +93,9 @@ export default function App() {
       <S25 />
       <S26 />
       <S26b />
+      <S26c />
+      <S26d />
+      <S26e />
       <S27 />
       <S28 />
     </SlideEngine>
