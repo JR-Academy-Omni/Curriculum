@@ -45,6 +45,14 @@ jobs:
           bun install
           bun run build
 
+      # Build ai-engineer-resume-interview (3h 内部学员讲座 · 42 张 slide · 简历 + 面试)
+      # 复用 ai-engineer-bootcamp 的 SlideEngine + theme，含 jd-company-skill-extractor.zip 学员下载
+      - name: Build ai-engineer-resume-interview
+        working-directory: ai-engineer-resume-interview
+        run: |
+          bun install
+          bun run build
+
       # Build web-code-bootcamp-or-learn-to-code-1 (第 30 期 Full-Stack + AI · slide deck + mp-article + xhs-posters)
       # URL slug with -1 suffix to match production: /program-course/web-code-bootcamp-or-learn-to-code-1
       - name: Build web-code-bootcamp-or-learn-to-code-1
@@ -290,6 +298,13 @@ jobs:
           if [ -d lessons/ai-new-jobs-talk/xhs ]; then
             mkdir -p _site/lessons/ai-new-jobs-talk/xhs
             cp -r lessons/ai-new-jobs-talk/xhs/* _site/lessons/ai-new-jobs-talk/xhs/
+          fi
+
+          # ai-engineer-resume-interview · 3h 内部学员讲座（slide deck + public/ zip 下载）
+          mkdir -p _site/ai-engineer-resume-interview
+          cp -r ai-engineer-resume-interview/dist/* _site/ai-engineer-resume-interview/
+          if [ -d ai-engineer-resume-interview/public ]; then
+            cp -r ai-engineer-resume-interview/public/* _site/ai-engineer-resume-interview/
           fi
 
           mkdir -p _site/ai-engineer-bootcamp
