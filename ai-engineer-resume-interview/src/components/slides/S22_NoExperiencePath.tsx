@@ -60,7 +60,7 @@ const paths: Path[] = [
 		color: colors.p5,
 	},
 	{
-		num: '03',
+		num: '04',
 		title: '开源贡献',
 		tag: '成本最低',
 		desc: '给主流 LLM 生态项目提 PR、写 example notebook 进官方 cookbook。',
@@ -74,7 +74,7 @@ const paths: Path[] = [
 		color: colors.p1,
 	},
 	{
-		num: '04',
+		num: '05',
 		title: '实习 / 创业项目',
 		tag: '真实场景',
 		desc: '在公司 / 创业 team 里做的真 AI 项目 — 哪怕 3 个月也比 toy project 强 10 倍。',
@@ -106,7 +106,7 @@ export default function S22_NoExperiencePath() {
 					style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12, flexWrap: 'wrap' }}
 				>
 					<span style={{ padding: '5px 12px', background: colors.orange, color: colors.white, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, border, boxShadow: `3px 3px 0 ${colors.black}`, letterSpacing: 0.5 }}>
-						NO EXPERIENCE · 4 PATHS
+						NO EXPERIENCE · 5 PATHS
 					</span>
 					<span style={{ fontFamily: fonts.heading, fontSize: 28, fontWeight: 900, color: colors.black, letterSpacing: -0.5 }}>
 						没干过 AI 项目，怎么写经验？<span style={{ fontSize: 18, color: colors.red, marginLeft: 8 }}>· 企业级项目放首位，最有含金量</span>
@@ -114,7 +114,7 @@ export default function S22_NoExperiencePath() {
 				</motion.div>
 
 				{/* 4 path grid */}
-				<div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, minHeight: 0 }}>
+				<div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 10, minHeight: 0 }}>
 					{paths.map((p, i) => (
 						<PathCard key={p.num} p={p} delay={0.15 + i * 0.08} />
 					))}
