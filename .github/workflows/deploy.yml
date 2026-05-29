@@ -249,6 +249,12 @@ jobs:
             cp -r china-campus-workshop/public/* _site/china-campus-workshop/
           fi
 
+          # china-career: 留学生回国就业产品线 Hub (11 SKU 一站式入口 · PRD_CHINA_CAREER_HUB_2026.md)
+          if [ -d china-career ]; then
+            mkdir -p _site/china-career
+            cp -r china-career/* _site/china-career/
+          fi
+
           # ai-accounting-pro: static HTML only (12-hour 主课 · 6 周 cohort · 10-12 人小班 · $1,799-$2,299 AUD · 引流课的转化主课)
           if [ -d ai-accounting-pro/public ]; then
             mkdir -p _site/ai-accounting-pro
@@ -339,6 +345,16 @@ jobs:
           # Top-level posters aggregate page (internal marketing asset index)
           [ -f posters.html ] && cp posters.html _site/posters.html || true
           [ -f quest-posters.html ] && cp quest-posters.html _site/quest-posters.html || true
+
+          # Marketing 文档总览 dashboard — 渲染各课 PERSONAS / FUNNEL / PROMOTION / AUDIT markdown
+          [ -f marketing-dashboard.html ] && cp marketing-dashboard.html _site/marketing-dashboard.html || true
+          # 同时复制每门课的 marketing markdown 到 _site（dashboard fetch 时要能读到）
+          for slug in $(ls -d */ 2>/dev/null | grep -v '^_' | sed 's|/$||'); do
+            mkdir -p "_site/$slug"
+            for f in DESIGN.md PERSONAS.md PERSONAS-INIT-REPORT.md FUNNEL_PLAN.md PROMOTION_PLAN.md AUDIT_LOG.md; do
+              [ -f "$slug/$f" ] && cp "$slug/$f" "_site/$slug/$f" || true
+            done
+          done
 
           # Course theme colors cheatsheet (marketing/product copy-paste prompts for AI image gen)
           [ -f theme-colors.html ] && cp theme-colors.html _site/theme-colors.html || true

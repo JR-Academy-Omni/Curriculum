@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>留学生回国就业 · JR Academy 一站式服务 · Workshop / 1v1 / Bootcamp / 猎头模式</title>
+<meta name="description" content="留学生回国就业完整产品矩阵 — 应届校招（¥49 Workshop / ¥1,599 简历精修 / ¥3,999 面试包 / ¥4,999 内推 / ¥9,999 Bootcamp）+ 已工作社招（¥4,999 决策 Coach / ¥7,999 包装 / ¥14,999 内推 / ¥60,000 猎头模式 / ¥69,999 包年陪跑）。11 SKU 覆盖海外到国内全旅程。">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#DC2626;--red-dark:#991B1B;--gold:#FFDE59;--ink:#10162f;--ink-soft:#475569;
+  --bg:#fafafa;--card:#fff;--border:#000;--shadow:6px 6px 0 #000;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:var(--bg);color:#1a1a1a;line-height:1.6}
+a{color:var(--red);text-decoration:none}
+
+/* ── Hero ── */
+.hero{background:linear-gradient(135deg,var(--ink) 0%,var(--red) 100%);color:#fff;padding:80px 24px 64px;position:relative;overflow:hidden}
+.hero-inner{max-width:1100px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero .brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:2px;opacity:0.7;margin-bottom:18px;text-transform:uppercase}
+.hero h1{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(32px,5.5vw,52px);line-height:1.1;font-weight:900;margin-bottom:18px;letter-spacing:-1px}
+.hero h1 .hl{background:var(--gold);color:var(--ink);padding:0 14px;border-radius:6px;display:inline-block}
+.hero .sub{font-size:clamp(15px,1.8vw,19px);max-width:840px;margin:0 auto 28px;opacity:0.93;line-height:1.55}
+.hero .stats{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;margin-top:32px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.5px}
+.hero .stats .stat{padding:10px 18px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:6px}
+.hero .stats .stat b{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;display:block;color:var(--gold);font-weight:900}
+
+/* ── Persona Picker ── */
+.persona{max-width:1100px;margin:64px auto 0;padding:0 24px}
+.persona h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:var(--ink);text-align:center;margin-bottom:8px}
+.persona .sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.persona-card{border:3px solid var(--border);background:#fff;box-shadow:var(--shadow);padding:32px 28px;cursor:pointer;transition:all 0.15s}
+.persona-card:hover{box-shadow:none;transform:translate(4px,4px)}
+.persona-card.fresh{background:linear-gradient(135deg,#fef2f2 0%,#fff 100%)}
+.persona-card.experienced{background:linear-gradient(135deg,#10162f 0%,#1e293b 100%);color:#fff}
+.persona-card .icon{font-size:36px;margin-bottom:14px;display:block}
+.persona-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;margin-bottom:10px}
+.persona-card .tag{display:inline-block;padding:3px 10px;background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:14px}
+.persona-card.experienced .tag{background:var(--gold);color:var(--ink)}
+.persona-card p{font-size:14px;line-height:1.7;opacity:0.92}
+.persona-card ul{font-size:13px;line-height:1.85;margin:10px 0 14px 18px;opacity:0.85}
+.persona-card .price-range{font-family:'Space Mono',monospace;font-size:12px;padding:8px 12px;background:rgba(0,0,0,0.05);border-left:3px solid var(--red);margin-top:14px;font-weight:700}
+.persona-card.experienced .price-range{background:rgba(255,222,89,0.15);border-color:var(--gold);color:#fff}
+.persona-card .jump{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.5px;color:var(--red);text-transform:uppercase}
+.persona-card.experienced .jump{color:var(--gold)}
+@media(max-width:768px){.persona-grid{grid-template-columns:1fr}}
+
+/* ── Section base ── */
+.section{max-width:1200px;margin:80px auto 0;padding:0 24px}
+.section-h{text-align:center;margin-bottom:36px}
+.section-h .kicker{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:#fff;background:var(--ink);padding:5px 14px;margin-bottom:14px;text-transform:uppercase}
+.section-h .kicker.red{background:var(--red)}
+.section-h h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,4vw,38px);font-weight:900;color:var(--ink);margin-bottom:10px;line-height:1.15}
+.section-h .sub{color:var(--ink-soft);font-size:15px;max-width:800px;margin:0 auto;line-height:1.55}
+
+/* ── SKU Cards ── */
+.sku-list{display:grid;gap:16px}
+.sku-list.fresh{grid-template-columns:repeat(6,1fr)}
+.sku-list.exp{grid-template-columns:repeat(5,1fr)}
+@media(max-width:1100px){.sku-list.fresh,.sku-list.exp{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.sku-list.fresh,.sku-list.exp{grid-template-columns:1fr}}
+.sku{position:relative;border:3px solid #000;background:#fff;padding:20px 18px;display:flex;flex-direction:column;gap:8px;transition:all 0.15s}
+.sku.live{box-shadow:5px 5px 0 var(--red)}
+.sku.live:hover{box-shadow:none;transform:translate(4px,4px)}
+.sku.upcoming{border:3px dashed #cbd5e1;background:#fafafa;opacity:0.85}
+.sku.upcoming:hover{opacity:1}
+.sku.hero-sku{border-color:var(--red);box-shadow:6px 6px 0 var(--gold)}
+.sku.hero-sku:hover{box-shadow:none;transform:translate(4px,4px)}
+.sku .ribbon{position:absolute;top:-12px;right:-8px;background:var(--red);color:var(--gold);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:4px 10px;letter-spacing:1px;transform:rotate(3deg);box-shadow:2px 2px 0 #000}
+.sku .step{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;color:#888;text-transform:uppercase}
+.sku h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;color:var(--ink);line-height:1.3;margin-top:4px}
+.sku p{font-size:12px;color:#555;line-height:1.55;flex-grow:1;margin-top:4px}
+.sku .price{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:var(--red);margin-top:8px;line-height:1}
+.sku.hero-sku .price{color:var(--red);font-size:24px}
+.sku .price small{font-family:'DM Sans',sans-serif;font-size:11px;color:#888;font-weight:500}
+.sku .status{margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.sku .status.live-tag{color:#16a34a}
+.sku .status.phase-tag{color:#9ca3af}
+.sku .cta{margin-top:12px;display:inline-block;padding:8px 14px;background:var(--ink);color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;text-align:center;border:none}
+.sku.live .cta{background:var(--red)}
+.sku.upcoming .cta{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.sku .cta:hover{opacity:0.85}
+
+/* ── 唯一已开放 mega CTA ── */
+.mega-cta{max-width:1100px;margin:80px auto 0;padding:0 24px}
+.mega-cta-box{background:var(--ink);color:#fff;border:4px solid #000;box-shadow:8px 8px 0 var(--gold);padding:40px;display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:center}
+.mega-cta-left .kicker{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:12px;text-transform:uppercase}
+.mega-cta-left h3{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;line-height:1.2;margin-bottom:14px}
+.mega-cta-left p{font-size:14px;opacity:0.85;line-height:1.7;margin-bottom:18px}
+.mega-cta-left .meta{display:flex;gap:18px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px}
+.mega-cta-left .meta span{padding:6px 12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:4px}
+.mega-cta-right{display:flex;flex-direction:column;gap:14px;align-items:stretch}
+.mega-cta-btn{display:block;padding:18px 24px;text-align:center;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;border:3px solid;letter-spacing:0.5px;transition:all 0.15s}
+.mega-cta-btn.primary{background:var(--gold);color:var(--ink);border-color:var(--ink)}
+.mega-cta-btn.secondary{background:transparent;color:#fff;border-color:#fff}
+.mega-cta-btn:hover{transform:translate(2px,2px)}
+.mega-cta-btn.primary:hover{box-shadow:none}
+.mega-cta-price-anchor{font-family:'Space Mono',monospace;font-size:12px;text-align:center;color:rgba(255,255,255,0.6);margin-top:6px}
+.mega-cta-price-anchor s{opacity:0.6}
+@media(max-width:768px){.mega-cta-box{grid-template-columns:1fr}}
+
+/* ── 蓄水池 ── */
+.waitlist{max-width:900px;margin:80px auto 0;padding:0 24px}
+.waitlist-box{background:#fff;border:3px solid var(--border);box-shadow:6px 6px 0 var(--red);padding:36px 32px}
+.waitlist-box h3{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:var(--ink);margin-bottom:10px;line-height:1.25}
+.waitlist-box p{font-size:14px;color:var(--ink-soft);line-height:1.7;margin-bottom:22px}
+.waitlist-box .perk{background:#fef9c3;border-left:4px solid var(--red);padding:12px 16px;font-size:13px;margin-bottom:22px;line-height:1.7}
+.waitlist-box .perk strong{color:var(--red)}
+.waitlist-form{display:grid;gap:14px}
+.waitlist-form label{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--ink);text-transform:uppercase;display:block;margin-bottom:6px}
+.waitlist-form input[type=email]{width:100%;padding:14px 16px;border:2px solid var(--ink);font-family:'DM Sans',sans-serif;font-size:15px;background:#fff}
+.waitlist-form input[type=email]:focus{outline:none;border-color:var(--red);box-shadow:4px 4px 0 var(--red)}
+.waitlist-form .sku-pick{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+@media(max-width:640px){.waitlist-form .sku-pick{grid-template-columns:1fr}}
+.waitlist-form .sku-pick label{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #cbd5e1;background:#fafafa;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0;text-transform:none;cursor:pointer;margin:0;color:#1a1a1a}
+.waitlist-form .sku-pick label:hover{background:#fff;border-color:var(--red)}
+.waitlist-form .sku-pick input{margin:0}
+.waitlist-form button{background:var(--red);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;padding:16px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);cursor:pointer;letter-spacing:1px;transition:all 0.15s}
+.waitlist-form button:hover{box-shadow:none;transform:translate(2px,2px)}
+.waitlist .compliance{font-size:11px;color:#94a3b8;margin-top:14px;text-align:center;font-family:'Space Mono',monospace}
+
+/* ── FAQ ── */
+.faq{max-width:900px;margin:80px auto 0;padding:0 24px}
+.faq details{border:2px solid #000;background:#fff;margin-bottom:10px;padding:18px 22px}
+.faq details[open]{box-shadow:4px 4px 0 var(--red)}
+.faq summary{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::after{content:'+';font-family:'Bricolage Grotesque',sans-serif;font-size:24px;color:var(--red);transition:transform 0.2s}
+.faq details[open] summary::after{content:'×';transform:rotate(0)}
+.faq details p{font-size:13.5px;line-height:1.75;color:#333;margin-top:12px}
+.faq details p strong{color:var(--ink)}
+
+/* ── Footer ── */
+.footer{background:var(--ink);color:#fff;padding:48px 24px 28px;margin-top:80px}
+.sf-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;font-size:13px}
+.sf-grid h5{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;margin-bottom:10px;color:var(--gold)}
+.sf-grid ul{list-style:none;padding:0}
+.sf-grid li{margin-bottom:6px;opacity:0.85}
+.sf-grid a{color:#fff;opacity:0.85;text-decoration:none}
+.sf-grid a:hover{opacity:1;text-decoration:underline}
+.sf-copy{max-width:1100px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.15);text-align:center;font-family:'Space Mono',monospace;font-size:11px;opacity:0.6}
+@media(max-width:768px){.sf-grid{grid-template-columns:1fr}}
+
+/* ── Sticky CTA ── */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;background:var(--red);color:#fff;padding:14px 20px;display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 -4px 12px rgba(0,0,0,0.2);z-index:50;transform:translateY(100%);transition:transform 0.3s}
+.sticky-cta.visible{transform:translateY(0)}
+.sticky-cta .txt{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600}
+.sticky-cta .txt b{font-family:'Bricolage Grotesque',sans-serif;font-weight:900}
+.sticky-cta a{display:inline-block;padding:9px 22px;background:var(--gold);color:var(--ink);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;text-decoration:none;border:2px solid var(--ink)}
+
+</style>
+</head>
+<body>
+
+<!-- ═══ Hero ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="brand">JR ACADEMY · CHINA RETURN CAREER SUITE</div>
+    <h1>留学生回国就业 ·<br><span class="hl">一站式产品矩阵</span></h1>
+    <div class="sub">从 ¥49 看清漏斗，到 ¥69,999 包年陪跑 — 11 个 SKU 覆盖应届校招（提前批/秋招/春招）+ 已工作社招（决策/包装/内推/猎头）完整海归求职旅程。</div>
+    <div class="stats">
+      <div class="stat"><b>11</b>SKU 产品</div>
+      <div class="stat"><b>2</b>条平行线（校招/社招）</div>
+      <div class="stat"><b>1</b>已开放（¥49 Workshop）</div>
+      <div class="stat"><b>4+</b>Phase 2 即将上线</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Persona Picker ═══ -->
+<section class="persona">
+  <h2>🎯 30 秒判断你走哪条线</h2>
+  <div class="sub">校招线和社招线的产品 / 价位 / 流程完全不同 · 选错了体验会打折</div>
+  <div class="persona-grid">
+
+    <a class="persona-card fresh" href="#fresh">
+      <span class="icon">🎓</span>
+      <span class="tag">校招线 · 应届</span>
+      <h3>我是应届生 / 准备秋招</h3>
+      <p>大三 / Master 倒数第二学期 / 已毕业 < 2 年没正式就业 — 应届身份还在，目标进 BAT / 国央企 / 银行 / 外企管培</p>
+      <ul>
+        <li>核心需求：学习 + 模板 + 信心</li>
+        <li>价位段：¥49 - ¥9,999</li>
+        <li>决策周期：1-2 周</li>
+      </ul>
+      <div class="price-range">⬇ 6 个 SKU · ¥49 起</div>
+      <div class="jump">看校招线产品 →</div>
+    </a>
+
+    <a class="persona-card experienced" href="#experienced">
+      <span class="icon">💼</span>
+      <span class="tag">社招线 · 已工作</span>
+      <h3>我已工作想回国 / 跨行</h3>
+      <p>海外工作 1-10 年 · 想回国 / 换 sector / 换公司 — 不需要学课，需要内推 + 决策 + 包装</p>
+      <ul>
+        <li>核心需求：结果 + 渠道 + 决策</li>
+        <li>价位段：¥4,999 - ¥69,999</li>
+        <li>决策周期：1-3 月</li>
+      </ul>
+      <div class="price-range">⬇ 5 个 SKU · outcome-led</div>
+      <div class="jump">看社招线产品 →</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ═══ 校招线 ═══ -->
+<section class="section" id="fresh">
+  <div class="section-h">
+    <div class="kicker red">B-校招线 · 应届 < 2 年</div>
+    <h2>📚 校招线 · 5 步漏斗 + 长期社群</h2>
+    <div class="sub">从 ¥49 看清地图，到 ¥9,999 系统训练 — 按你当前卡点选下一步</div>
+  </div>
+
+  <div class="sku-list fresh">
+
+    <div class="sku live">
+      <span class="step">STEP 1 · L1</span>
+      <h4>看清全漏斗</h4>
+      <p>3 小时 Workshop · 三轮制 + 5 sector + 中文简历 + 网测 + 4 轮面试 + 内推</p>
+      <div class="price">¥49<small> / 3h</small></div>
+      <div class="status live-tag">✅ 已开放</div>
+      <a class="cta" href="/program-course/china-campus-workshop">立即报名 →</a>
+    </div>
+
+    <div class="sku upcoming">
+      <span class="step">STEP 2 · L4·①</span>
+      <h4>简历精修</h4>
+      <p>异步 2 轮反馈 · 中英双版 · STAR + ATS + 党员/学生干部转化 · Steven 亲改</p>
+      <div class="price">¥1,599<small> / 2 轮</small></div>
+      <div class="status phase-tag">🔜 Phase 2 开放</div>
+      <a class="cta" href="#waitlist">加入候补 →</a>
+    </div>
+
+    <div class="sku upcoming">
+      <span class="step">STEP 3 · L4·②</span>
+      <h4>面试加速包</h4>
+      <p>60min Mock + 60min Career Coach + 12 周 action plan + 30 天 follow-up</p>
+      <div class="price">¥3,999<small> / 套</small></div>
+      <div class="status phase-tag">🔜 Phase 2.5</div>
+      <a class="cta" href="#waitlist">加入候补 →</a>
+    </div>
+
+    <div class="sku upcoming">
+      <span class="step">STEP 4 · L4·③</span>
+      <h4>校招内推</h4>
+      <p>7 天提供 1-3 真实可达岗位 · Rose 老师月限 10 单 · 含 30 min prep</p>
+      <div class="price">¥4,999<small> / 单</small></div>
+      <div class="status phase-tag">🔜 Phase 2 开放</div>
+      <a class="cta" href="#waitlist">加入候补 →</a>
+    </div>
+
+    <div class="sku upcoming">
+      <span class="step">STEP 5 · L5</span>
+      <h4>校招冲刺 Bootcamp</h4>
+      <p>4 周 12 人小班 · Steven 班主任 · 简历改 2 轮 + Mock × 3 + 内推 1 次</p>
+      <div class="price">¥9,999<small> / 期</small></div>
+      <div class="status phase-tag">🔜 Phase 3 开放</div>
+      <a class="cta" href="#waitlist">加入候补 →</a>
+    </div>
+
+    <div class="sku upcoming">
+      <span class="step">STEP ∞ · L6</span>
+      <h4>校友 / 内推社群</h4>
+      <p>每周内推岗位推送 + 答疑 + 嘉宾分享 + 跨 cohort 同伴</p>
+      <div class="price">¥99<small> / 月</small></div>
+      <div class="status phase-tag">🔜 Phase 3 开放</div>
+      <a class="cta" href="#waitlist">加入候补 →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ 社招线 ═══ -->
+<section class="section" id="experienced">
+  <div class="section-h">
+    <div class="kicker">B-社招线 · 已工作 1-10 年</div>
+    <h2>💼 社招线 · outcome-led 5 档</h2>
+    <div class="sub">不学课 · 直接走结果 — 决策 / 包装 / 内推 / 猎头 / 长期 5 档按你目标深度选</div>
+  </div>
+
+  <div class="sku-list exp">
+
+    <div class="sku upcoming">
+      <span class="step">① 入门</span>
+      <h4>决策 Coach</h4>
+      <p>60 min 1v1 · 现状 SWOT + 国内市场最新情况 + 目标 sector 决策 + 90 天 plan · 30 天 3 次答疑</p>
+      <div class="price">¥4,999</div>
+      <div class="status phase-tag">🔜 Phase 2.5</div>
+      <a class="cta" href="#waitlist">加入候补 →</a>
+    </div>
+
+    <div class="sku upcoming">
+      <span class="step">② 包装</span>
+      <h4>包装套餐</h4>
+      <p>中文简历 3 轮 + LinkedIn + Boss 改写 + 1 次沟通策略 · 海归 narrative 打磨</p>
+      <div class="price">¥7,999</div>
+      <div class="status phase-tag">🔜 Phase 2.5</div>
+      <a class="cta" href="#waitlist">加入候补 →</a>
+    </div>
+
+    <div class="sku upcoming">
+      <span class="step">③ 内推</span>
+      <h4>内推单次</h4>
+      <p>14 天提供 2-4 真实 active 岗位 + 内推路径 · 含 60 min 面试 prep</p>
+      <div class="price">¥14,999</div>
+      <div class="status phase-tag">🔜 Phase 2.5</div>
+      <a class="cta" href="#waitlist">加入候补 →</a>
+    </div>
+
+    <div class="sku hero-sku upcoming">
+      <span class="ribbon">⭐ Phase 2 Hero</span>
+      <span class="step">④ 猎头模式</span>
+      <h4>90 天 active search</h4>
+      <p>Patrick Yu 主理 · 3-7 个 active 岗位 + 全程跟进 + 面试/谈薪辅导 · 不达标退 ¥10k</p>
+      <div class="price">¥60,000<small><br>Deposit ¥20k + Success ¥40k</small></div>
+      <div class="status phase-tag">🔜 Phase 2 开放</div>
+      <a class="cta" href="#waitlist">优先候补 →</a>
+    </div>
+
+    <div class="sku upcoming">
+      <span class="step">⑤ 包年</span>
+      <h4>包年陪跑</h4>
+      <p>12 月 retainer · 季度 Coach + 季度 2 内推 + 全套兜底 · 老板教练模式</p>
+      <div class="price">¥69,999<small> / 年</small></div>
+      <div class="status phase-tag">🔜 Phase 3 开放</div>
+      <a class="cta" href="#waitlist">加入候补 →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ Mega CTA · 唯一已开放 ═══ -->
+<section class="mega-cta">
+  <div class="mega-cta-box">
+    <div class="mega-cta-left">
+      <div class="kicker">⚡ 现在唯一已开放</div>
+      <h3>留学生回国校招冲刺 · 3 小时 Workshop</h3>
+      <p>三轮制时间窗 + 应届身份 + 5 sector + 中文简历 + 网测 + 4 轮面试 + 内推 · 讲师 Steven Yu（上交 + 墨尔本 + Career Coach 近百案例 + 百度推荐话题首位）</p>
+      <div class="meta">
+        <span>📅 滚动开班</span>
+        <span>⏱ 3h + 30min Q&A</span>
+        <span>🎥 录播长期可看</span>
+        <span>📦 6 worksheets + 3 wikis + 12 月 Roadmap</span>
+      </div>
+    </div>
+    <div class="mega-cta-right">
+      <a class="mega-cta-btn primary" href="/program-course/china-campus-workshop">🎯 立即报名 ¥49</a>
+      <a class="mega-cta-btn secondary" href="/curriculum/china-campus-workshop/landing.html">📋 查看详细介绍</a>
+      <div class="mega-cta-price-anchor"><s>原价 ¥99</s> · 限时 ¥49</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 蓄水池 ═══ -->
+<section class="waitlist" id="waitlist">
+  <div class="waitlist-box">
+    <h3>📬 Phase 2 / 3 候补名单 · 上线 7 天内 50% off 优惠</h3>
+    <p>留个邮箱告诉我你最感兴趣的 SKU — 上线 24h 前我会发邮件通知你 · 首批 5 名学员享 <strong>50% off launch promo</strong>（例：¥60k 猎头模式 → ¥30k）。</p>
+
+    <div class="perk">
+      <strong>⏰ 不会反复推销</strong>：除了候补 SKU 的上线通知 + 1 次 launch 提醒，其它内容不会发。可以随时退订。
+    </div>
+
+    <form class="waitlist-form" id="waitlistForm" onsubmit="event.preventDefault(); handleWaitlist();">
+      <div>
+        <label for="email">你的邮箱</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div>
+        <label>最感兴趣的 SKU（至少选 1 个 · 多选 OK）</label>
+        <div class="sku-pick">
+          <label><input type="checkbox" name="sku" value="resume"> 简历精修 ¥1,599</label>
+          <label><input type="checkbox" name="sku" value="interview"> 面试加速包 ¥3,999</label>
+          <label><input type="checkbox" name="sku" value="referral-fresh"> 校招内推 ¥4,999</label>
+          <label><input type="checkbox" name="sku" value="bootcamp"> Bootcamp ¥9,999</label>
+          <label><input type="checkbox" name="sku" value="decision-coach"> 决策 Coach ¥4,999</label>
+          <label><input type="checkbox" name="sku" value="packaging"> 包装套餐 ¥7,999</label>
+          <label><input type="checkbox" name="sku" value="referral-exp"> 社招内推 ¥14,999</label>
+          <label><input type="checkbox" name="sku" value="headhunter"> ⭐ 猎头模式 ¥60,000</label>
+          <label><input type="checkbox" name="sku" value="retainer"> 包年陪跑 ¥69,999</label>
+          <label><input type="checkbox" name="sku" value="community"> 社群 ¥99/月</label>
+        </div>
+      </div>
+      <button type="submit">加入候补名单 →</button>
+    </form>
+    <p class="compliance">收集仅用于产品上线通知 · 不分享给第三方 · 随时退订 · 不承诺 launch 日期，以实际开放为准</p>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq">
+  <div class="section-h">
+    <div class="kicker red">关于产品矩阵</div>
+    <h2>❓ 候补名单常见问题</h2>
+  </div>
+
+  <details>
+    <summary>Q1 · 现在只有 Workshop 开放，其它产品什么时候上？</summary>
+    <p><strong>Phase 2（接下来 90 天内）</strong>：① 校招内推 ¥4,999（Rose 老师）+ ⭐ 社招猎头模式 ¥60,000（Patrick Yu Hero · 验证 90 天后扩）+ 简历精修 ¥1,599。<br><strong>Phase 2.5（90-180 天）</strong>：面试加速包 / 决策 Coach / 包装套餐 / 社招内推。<br><strong>Phase 3（180-365 天）</strong>：校招 Bootcamp / 包年陪跑 / 跨线社群。具体上线时间会提前 24h 邮件通知候补名单。</p>
+  </details>
+
+  <details>
+    <summary>Q2 · 我是已工作的，为什么走社招线？跟校招有什么区别？</summary>
+    <p><strong>校招线</strong>是给应届生（毕业 &lt; 2 年）的「学习 + 模板 + 信心」产品 — 你需要先看 ¥49 Workshop 学方法。<br><strong>社招线</strong>是给已工作 1+ 年的「结果 + 渠道 + 决策」产品 — 你不需要学课（你已经会工作了），需要的是真实内推 + 决策辅导 + 高端包装。最低门槛 ¥4,999 决策 Coach，全部 outcome-led。如果你是已工作但只想了解国内市场，建议直接预约 ¥4,999 决策 Coach。</p>
+  </details>
+
+  <details>
+    <summary>Q3 · 猎头模式 ¥60,000 真的会推真实岗位吗？</summary>
+    <p><strong>是真实 active 岗位</strong>（招聘方已知简历的内推码绑定职位 · 不是公网职位群发）。模式是 <strong>Deposit ¥20,000 + Success ¥40,000</strong>（拿到 offer 后 7 天内付）· 90 天周期 · 3-7 个 active positions + 全程跟进 + 面试 / 谈薪辅导。<strong>不达标承诺：90 天内 &lt; 2 个 active positions → 退 ¥10,000</strong>。主理人 Patrick Yu（Atlassian Principal SWE · 个人 5 年内从 6 万年薪到 30 万案例）。<br>⚠ 不承诺一定拿 offer — offer 取决于你的真实能力，我们只承诺接触到真实岗位 + 全程辅导。</p>
+  </details>
+
+  <details>
+    <summary>Q4 · 加候补会被反复推销吗？</summary>
+    <p>不会。除了「候补 SKU 上线 24h 前的通知」 + 「上线 7 天内 1 次 launch promo 提醒」，其它内容不会发。每封邮件都有 unsubscribe 一键退订。我们不会把邮箱分享给第三方（教育合规 + GDPR 风格政策）。</p>
+  </details>
+
+  <details>
+    <summary>Q5 · 50% off launch promo 是怎么算的？</summary>
+    <p><strong>每个 SKU 上线前 5 名候补名单付费学员享 50% off</strong>（即 ¥60k → ¥30k、¥9,999 → ¥4,999 等）。条件：① 在候补名单里 ② 上线 7 天内决定付费 ③ 该 SKU 前 5 名（按候补名单先后顺序排）。具体优惠规则上线时邮件确认。</p>
+  </details>
+
+  <details>
+    <summary>Q6 · 校招线还是社招线，我自己拿不准怎么办？</summary>
+    <p>判断标准：① <strong>毕业时间</strong> &lt; 2 年（学位证日期）= 应届身份还在 → 校招线 · ② 已正式工作 ≥ 1 年（签过劳动合同 + 缴过社保）→ 社招线 · ③ 中间状态（毕业 1-2 年内 + 没正式就业 + 想冲一次校招最后机会）→ 校招线优先。如果还是拿不准，先看 ¥49 Workshop（覆盖所有应届逻辑），看完后还是想走社招路线，再单独预约 ¥4,999 决策 Coach。</p>
+  </details>
+</section>
+
+<!-- ═══ Footer ═══ -->
+<footer class="footer">
+  <div class="sf-grid">
+    <div>
+      <h5>校招线产品</h5>
+      <ul>
+        <li><a href="/program-course/china-campus-workshop">✅ Workshop ¥49（已开放）</a></li>
+        <li><a href="#waitlist">🔜 简历精修 ¥1,599</a></li>
+        <li><a href="#waitlist">🔜 面试加速包 ¥3,999</a></li>
+        <li><a href="#waitlist">🔜 校招内推 ¥4,999</a></li>
+        <li><a href="#waitlist">🔜 Bootcamp ¥9,999</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>社招线产品</h5>
+      <ul>
+        <li><a href="#waitlist">🔜 决策 Coach ¥4,999</a></li>
+        <li><a href="#waitlist">🔜 包装套餐 ¥7,999</a></li>
+        <li><a href="#waitlist">🔜 内推单次 ¥14,999</a></li>
+        <li><a href="#waitlist">⭐ 猎头模式 ¥60,000</a></li>
+        <li><a href="#waitlist">🔜 包年陪跑 ¥69,999</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>姊妹课程</h5>
+      <ul>
+        <li><a href="/curriculum/gp-program-workshop/curriculum.html">澳洲 GP Workshop</a></li>
+        <li><a href="/curriculum/it-career-support/curriculum.html">澳洲 IT Career Bootcamp</a></li>
+        <li><a href="/curriculum/">全部课程目录</a></li>
+        <li><a href="/curriculum/posters.html">课程海报中心</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="sf-copy">© 2026 JIANGREN ACADEMY PTY LTD · All rights reserved · 留学生回国就业产品矩阵 · PRD v2</div>
+</footer>
+
+<!-- ═══ Sticky CTA ═══ -->
+<div class="sticky-cta" id="stickyCTA">
+  <span class="txt"><b>留学生回国校招冲刺</b> · 3h Workshop · <s style="opacity:0.7">¥99</s> 限时 <b>¥49</b></span>
+  <a href="/program-course/china-campus-workshop">立即报名 →</a>
+</div>
+
+<script>
+// Sticky CTA: 滚出 hero 后显示
+(function(){
+  const sticky=document.getElementById('stickyCTA');
+  const hero=document.querySelector('.hero');
+  window.addEventListener('scroll',()=>{
+    const heroBottom=hero.getBoundingClientRect().bottom;
+    sticky.classList.toggle('visible',heroBottom < 0);
+  },{passive:true});
+})();
+
+// 候补表单处理（占位 · 运营接 SendGrid / Tally）
+function handleWaitlist(){
+  const email=document.getElementById('email').value;
+  const skus=Array.from(document.querySelectorAll('input[name=sku]:checked')).map(x=>x.value);
+  if(skus.length===0){alert('请至少选 1 个感兴趣的 SKU');return;}
+  // TODO 运营接 Tally / Formspree / SendGrid endpoint
+  // 临时落地: localStorage + alert
+  const lead={email,skus,ts:new Date().toISOString(),source:'china-career-hub'};
+  console.log('Waitlist lead:',lead);
+  alert('✅ 已加入候补名单！\n\n你选了 '+skus.length+' 个 SKU · 上线 24h 前会发邮件 + 首批 5 名 50% off。\n\n（提示：本表单当前为 placeholder · 运营接入 Tally / SendGrid 后会真实写入数据库）');
+  document.getElementById('waitlistForm').reset();
+}
+</script>
+
+</body>
+</html>
