@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>匠人学院 · Marketing 文档总览（内部）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      background: #fff1e7;
+      color: #10162f;
+      line-height: 1.6;
+      overflow: hidden;
+    }
+
+    /* ============ LAYOUT ============ */
+    .app {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      grid-template-rows: 72px 1fr;
+      grid-template-areas: "header header" "sidebar main";
+      height: 100vh;
+    }
+
+    /* ============ HEADER ============ */
+    header.top {
+      grid-area: header;
+      background: #10162f;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 3px solid #000;
+    }
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: #ff5757;
+      border: 3px solid #fff;
+      box-shadow: 4px 4px 0 #000;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #fff;
+    }
+    h1.title {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .top-stats {
+      display: flex;
+      gap: 20px;
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .stat-pill {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 6px 12px;
+    }
+    .stat-pill .num { color: #ff5757; font-size: 14px; }
+    .stat-pill .lab { color: #fff; opacity: 0.7; margin-left: 6px; }
+
+    /* ============ SIDEBAR ============ */
+    aside {
+      grid-area: sidebar;
+      background: #fff;
+      border-right: 3px solid #000;
+      overflow-y: auto;
+      padding: 16px;
+    }
+    .filter {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .filter button {
+      font-family: "Space Mono", monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 6px 10px;
+      background: #fff1e7;
+      border: 2px solid #000;
+      cursor: pointer;
+      color: #10162f;
+      transition: all .12s;
+    }
+    .filter button:hover { transform: translate(-1px, -1px); box-shadow: 2px 2px 0 #000; }
+    .filter button.active {
+      background: #10162f;
+      color: #fff;
+    }
+    .search {
+      width: 100%;
+      padding: 8px 10px;
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      font-size: 13px;
+      border: 2px solid #000;
+      background: #fff1e7;
+      margin-bottom: 12px;
+    }
+    .search:focus { outline: none; box-shadow: 3px 3px 0 #000; transform: translate(-1px, -1px); }
+    .course-list { display: flex; flex-direction: column; gap: 6px; }
+    .course-card {
+      border: 2px solid #000;
+      background: #fff1e7;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all .12s;
+      position: relative;
+    }
+    .course-card:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 #000;
+    }
+    .course-card.active {
+      background: #10162f;
+      color: #fff;
+      box-shadow: 3px 3px 0 #ff5757;
+    }
+    .course-card.active .slug { color: #fff; }
+    .course-card.hidden { display: none; }
+    .course-card .slug {
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #10162f;
+      word-break: break-all;
+    }
+    .course-card .status-dots {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .dot {
+      width: 16px; height: 16px;
+      border: 1.5px solid #000;
+      font-family: "Space Mono", monospace;
+      font-size: 9px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      background: #ddd;
+      color: #999;
+    }
+    .dot.on { background: #7ed957; color: #10162f; }
+    .dot.warn { background: #ffb800; color: #10162f; }
+    .course-card.active .dot { border-color: #fff; }
+
+    /* ============ MAIN ============ */
+    main {
+      grid-area: main;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .tabs {
+      display: flex;
+      background: #fff1e7;
+      border-bottom: 3px solid #000;
+      padding: 0 24px;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .tab {
+      font-family: "Space Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 14px 16px;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      color: #888;
+      transition: all .12s;
+      text-transform: uppercase;
+      margin-bottom: -3px;
+    }
+    .tab:hover { color: #10162f; background: rgba(0,0,0,0.04); }
+    .tab.active {
+      color: #ff5757;
+      border-bottom-color: #ff5757;
+    }
+    .tab .badge {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ddd;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .tab .badge.on { background: #7ed957; }
+    .tab .badge.warn { background: #ffb800; }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 32px 48px 80px;
+      background: #fff;
+    }
+
+    /* ============ EMPTY STATE ============ */
+    .empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      color: #888;
+      padding: 40px;
+    }
+    .empty h2 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: #10162f;
+      margin-bottom: 12px;
+    }
+    .empty p { max-width: 480px; font-size: 14px; }
+
+    /* ============ MARKDOWN STYLES ============ */
+    .md {
+      max-width: 920px;
+      margin: 0 auto;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .md h1, .md h2, .md h3, .md h4 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #10162f;
+      margin-top: 1.8em;
+      margin-bottom: 0.6em;
+    }
+    .md h1 { font-size: 34px; border-bottom: 3px solid #000; padding-bottom: 12px; margin-top: 0; }
+    .md h2 { font-size: 24px; padding-left: 12px; border-left: 4px solid #ff5757; }
+    .md h3 { font-size: 18px; color: #ff5757; }
+    .md h4 { font-size: 15px; }
+    .md p { margin-bottom: 1em; }
+    .md strong { color: #10162f; }
+    .md a { color: #ff5757; text-decoration: underline; }
+    .md a:hover { background: #fff1e7; }
+    .md ul, .md ol { margin: 0 0 1em 1.5em; }
+    .md li { margin: 0.3em 0; }
+    .md code {
+      background: #fff1e7;
+      padding: 1px 6px;
+      border: 1px solid #ddd;
+      font-family: "Space Mono", monospace;
+      font-size: 13px;
+      color: #10162f;
+    }
+    .md pre {
+      background: #10162f;
+      color: #fff;
+      padding: 16px;
+      border: 3px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      overflow-x: auto;
+      margin: 1em 0;
+      font-family: "Space Mono", monospace;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .md pre code { background: transparent; border: none; color: #fff; padding: 0; }
+    .md blockquote {
+      border-left: 4px solid #10162f;
+      padding: 12px 18px;
+      background: #fff1e7;
+      margin: 1em 0;
+      color: #444;
+      font-size: 14px;
+    }
+    .md blockquote p { margin: 0; }
+    .md table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1em 0;
+      border: 2px solid #000;
+      font-size: 13px;
+    }
+    .md th, .md td {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+    .md th {
+      background: #10162f;
+      color: #fff;
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .md tr:nth-child(even) { background: #fff1e7; }
+    .md hr { border: none; border-top: 2px solid #000; margin: 2em 0; }
+    .md img { max-width: 100%; border: 2px solid #000; box-shadow: 4px 4px 0 #000; margin: 1em 0; }
+
+    /* ============ LOADING / ERROR ============ */
+    .loading, .error {
+      padding: 60px;
+      text-align: center;
+      color: #888;
+      font-family: "Space Mono", monospace;
+      font-size: 13px;
+    }
+    .error { color: #ff5757; }
+    .error h3 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: 22px;
+      color: #10162f;
+      margin-bottom: 12px;
+    }
+    .file-status {
+      display: inline-block;
+      font-family: "Space Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border: 2px solid #000;
+      margin-top: 16px;
+    }
+    .file-status.exists { background: #7ed957; }
+    .file-status.missing { background: #ffd4d4; color: #ff5757; }
+
+    /* ============ INFO BAR ABOVE CONTENT ============ */
+    .doc-meta {
+      max-width: 920px;
+      margin: 0 auto 24px;
+      padding: 12px 16px;
+      background: #fff1e7;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      font-size: 12px;
+      font-family: "Space Mono", monospace;
+      color: #555;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .doc-meta strong { color: #10162f; }
+    .doc-meta .path {
+      background: #fff;
+      padding: 3px 8px;
+      border: 1px solid #ddd;
+      font-size: 11px;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .app { grid-template-columns: 1fr; grid-template-rows: 72px auto 1fr; grid-template-areas: "header" "sidebar" "main"; }
+      aside { max-height: 200px; }
+      .content { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+
+    <header class="top">
+      <div class="top-left">
+        <div class="logo-mark">JR</div>
+        <div>
+          <h1 class="title">Marketing 文档总览</h1>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;opacity:0.6;letter-spacing:1px;">PERSONAS · FUNNEL · PROMOTION · AUDIT</div>
+        </div>
+      </div>
+      <div class="top-stats" id="topStats"></div>
+    </header>
+
+    <aside>
+      <input type="text" class="search" id="search" placeholder="搜索课程 slug…" />
+      <div class="filter">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="has-persona">有 Persona</button>
+        <button data-filter="has-promotion">有 Promotion</button>
+        <button data-filter="empty">空</button>
+      </div>
+      <div class="course-list" id="courseList"></div>
+    </aside>
+
+    <main>
+      <div class="tabs" id="tabs"></div>
+      <div class="content" id="content">
+        <div class="empty">
+          <h2>👈 左侧选一门课</h2>
+          <p>每门课包含 6 个 marketing 文档：<br/>DESIGN · PERSONAS · PERSONAS-INIT-REPORT · FUNNEL_PLAN · PROMOTION_PLAN · AUDIT_LOG</p>
+          <p style="margin-top:16px;">绿点 = 文档存在；灰点 = 还没产出。</p>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    // ============================================================
+    // 课程清单（从 curriculum/ 扫描，需要新课时手动加 slug）
+    // ============================================================
+    const COURSES = [
+      "agile-ai-workshop",
+      "ai-accounting-pro",
+      "ai-accounting-workshop",
+      "ai-adoption-bootcamp",
+      "ai-adoption-workshop",
+      "ai-builder",
+      "ai-comic-bootcamp",
+      "ai-comic-video-course",
+      "ai-comic-workshop",
+      "ai-copilot",
+      "ai-engineer-bootcamp",
+      "ai-engineer-rag",
+      "ai-essentials-bootcamp",
+      "ai-image-text-workshop",
+      "ai-marketing",
+      "ai-programming",
+      "ai-solo-founder-bootcamp",
+      "business-analyst",
+      "china-campus-workshop",
+      "claude-code-workshop",
+      "claude-code-workshop-fullday",
+      "claude-cowork-sme-workshop",
+      "claude-cowork-workshop",
+      "claude-skills-workshop",
+      "full-stack-developer-interview",
+      "gp-program-workshop",
+      "it-career-support",
+      "omnichannel-marketing-workshop",
+      "openclaw-bootcamp",
+      "openclaw-fullday-workshop",
+      "openclaw-workshop",
+      "techscrum-devops",
+      "web-code-bootcamp-or-learn-to-code-1",
+    ];
+
+    // 每门课的文档（按 marketing 工作流顺序，2026-05-29 加 3 个 ai-programming workflow 系统文档）
+    const DOCS = [
+      { key: "DESIGN", file: "DESIGN.md", label: "DESIGN" },
+      { key: "PERSONAS", file: "PERSONAS.md", label: "PERSONAS" },
+      { key: "PERSONAS_INIT_REPORT", file: "PERSONAS-INIT-REPORT.md", label: "INIT-REPORT" },
+      { key: "FUNNEL_PLAN", file: "FUNNEL_PLAN.md", label: "FUNNEL" },
+      { key: "PROMOTION_PLAN", file: "PROMOTION_PLAN.md", label: "PROMOTION" },
+      { key: "MASTER_WORKFLOW", file: "MARKETING_WORKFLOW_MASTER.md", label: "MASTER" },
+      { key: "EXECUTION_TIMELINE", file: "EXECUTION_TIMELINE.md", label: "TIMELINE" },
+      { key: "WORKFLOW_AUDIT", file: "MARKETING_WORKFLOW_GAP_AUDIT.md", label: "GAP-AUDIT" },
+      { key: "SOP_STUDENT_OUTPUT", file: "sops/STUDENT_OUTPUT_COLLECTION_SOP.md", label: "SOP·学员产出" },
+      { key: "SOP_COHORT_GROUP", file: "sops/COHORT_GROUP_OPERATIONS_SOP.md", label: "SOP·班级群" },
+      { key: "SOP_ALUMNI", file: "sops/ALUMNI_NURTURE_LOOP.md", label: "SOP·Alumni" },
+      { key: "AUDIT_LOG", file: "AUDIT_LOG.md", label: "AUDIT" },
+    ];
+
+    // 状态徽章用的核心 4 文档（侧栏 dots）— 故意只保留 4 个避免侧栏 dots 太多
+    const STATUS_DOCS = ["PERSONAS", "FUNNEL_PLAN", "PROMOTION_PLAN", "AUDIT_LOG"];
+
+    const state = {
+      selectedSlug: null,
+      selectedTab: null,
+      docStatus: {},    // { slug: { DESIGN: true/false, ... } }
+      gtCoverage: {},   // { slug: "25%" }
+      filter: "all",
+    };
+
+    // ============================================================
+    // 探测每门课的文档存在状态（HEAD 请求）
+    // ============================================================
+    async function probeCourse(slug) {
+      const status = {};
+      for (const doc of DOCS) {
+        try {
+          const r = await fetch(`${slug}/${doc.file}`, { method: "HEAD" });
+          status[doc.key] = r.ok;
+        } catch (e) { status[doc.key] = false; }
+      }
+      state.docStatus[slug] = status;
+
+      // 如果 PERSONAS.md 存在，顺便抓 GT 覆盖率
+      if (status.PERSONAS) {
+        try {
+          const r = await fetch(`${slug}/PERSONAS.md`);
+          const text = await r.text();
+          const m = text.match(/Ground truth 覆盖率[^|]*\|\s*([^\s|❌✅⚠️🚨]+)/);
+          if (m) state.gtCoverage[slug] = m[1].trim().replace(/\*/g, "");
+        } catch (e) {}
+      }
+    }
+
+    async function probeAll() {
+      // 并发探测
+      await Promise.all(COURSES.map(probeCourse));
+      renderSidebar();
+      renderTopStats();
+    }
+
+    // ============================================================
+    // 渲染顶部统计
+    // ============================================================
+    function renderTopStats() {
+      const total = COURSES.length;
+      const withPersona = COURSES.filter(s => state.docStatus[s]?.PERSONAS).length;
+      const withFunnel = COURSES.filter(s => state.docStatus[s]?.FUNNEL_PLAN).length;
+      const withPromotion = COURSES.filter(s => state.docStatus[s]?.PROMOTION_PLAN).length;
+
+      document.getElementById("topStats").innerHTML = `
+        <div class="stat-pill"><span class="num">${total}</span><span class="lab">课程</span></div>
+        <div class="stat-pill"><span class="num">${withPersona}</span><span class="lab">有 Persona</span></div>
+        <div class="stat-pill"><span class="num">${withFunnel}</span><span class="lab">有 Funnel</span></div>
+        <div class="stat-pill"><span class="num">${withPromotion}</span><span class="lab">有 Promotion</span></div>
+      `;
+    }
+
+    // ============================================================
+    // 渲染侧栏课程列表
+    // ============================================================
+    function renderSidebar() {
+      const list = document.getElementById("courseList");
+      const sorted = [...COURSES].sort((a, b) => {
+        const aScore = STATUS_DOCS.filter(k => state.docStatus[a]?.[k]).length;
+        const bScore = STATUS_DOCS.filter(k => state.docStatus[b]?.[k]).length;
+        if (aScore !== bScore) return bScore - aScore;
+        return a.localeCompare(b);
+      });
+
+      list.innerHTML = sorted.map(slug => {
+        const status = state.docStatus[slug] || {};
+        const dots = STATUS_DOCS.map(k => {
+          const label = ({ PERSONAS: "P", FUNNEL_PLAN: "F", PROMOTION_PLAN: "M", AUDIT_LOG: "A" })[k];
+          return `<span class="dot ${status[k] ? "on" : ""}" title="${k}">${label}</span>`;
+        }).join("");
+        const gt = state.gtCoverage[slug] ? `<span class="dot warn" title="GT 覆盖率">${state.gtCoverage[slug]}</span>` : "";
+        return `
+          <div class="course-card" data-slug="${slug}">
+            <div class="slug">${slug}</div>
+            <div class="status-dots">${dots}${gt}</div>
+          </div>
+        `;
+      }).join("");
+
+      list.querySelectorAll(".course-card").forEach(el => {
+        el.addEventListener("click", () => selectCourse(el.dataset.slug));
+      });
+      applyFilter();
+    }
+
+    // ============================================================
+    // 选课
+    // ============================================================
+    function selectCourse(slug) {
+      state.selectedSlug = slug;
+      localStorage.setItem("md.lastSlug", slug);
+
+      document.querySelectorAll(".course-card").forEach(el => {
+        el.classList.toggle("active", el.dataset.slug === slug);
+      });
+
+      renderTabs();
+
+      // 默认选第一个存在的 tab
+      const status = state.docStatus[slug] || {};
+      const firstDoc = DOCS.find(d => status[d.key]) || DOCS[0];
+      selectTab(firstDoc.key);
+    }
+
+    // ============================================================
+    // 渲染 tabs
+    // ============================================================
+    function renderTabs() {
+      const status = state.docStatus[state.selectedSlug] || {};
+      document.getElementById("tabs").innerHTML = DOCS.map(d => `
+        <button class="tab" data-key="${d.key}">
+          ${d.label}
+          <span class="badge ${status[d.key] ? "on" : ""}"></span>
+        </button>
+      `).join("");
+      document.querySelectorAll(".tab").forEach(el => {
+        el.addEventListener("click", () => selectTab(el.dataset.key));
+      });
+    }
+
+    function selectTab(key) {
+      state.selectedTab = key;
+      localStorage.setItem("md.lastTab", key);
+      document.querySelectorAll(".tab").forEach(el => {
+        el.classList.toggle("active", el.dataset.key === key);
+      });
+      loadDoc();
+    }
+
+    // ============================================================
+    // 加载并渲染 markdown
+    // ============================================================
+    async function loadDoc() {
+      const { selectedSlug, selectedTab } = state;
+      if (!selectedSlug || !selectedTab) return;
+      const doc = DOCS.find(d => d.key === selectedTab);
+      const path = `${selectedSlug}/${doc.file}`;
+      const content = document.getElementById("content");
+      content.innerHTML = `<div class="loading">加载中… ${path}</div>`;
+      try {
+        const r = await fetch(path);
+        if (!r.ok) {
+          content.innerHTML = `
+            <div class="error">
+              <h3>${doc.label} 还没有</h3>
+              <p>这门课 (<code>${selectedSlug}</code>) 还没有 <code>${doc.file}</code>。</p>
+              <div class="file-status missing">404 · ${path}</div>
+              <p style="margin-top:20px;color:#888;">用对应 skill 生成：</p>
+              <p>
+                ${doc.key === "PERSONAS" ? "<code>/target-user-persona-mapper init " + selectedSlug + "</code>" : ""}
+                ${doc.key === "FUNNEL_PLAN" ? "<code>/course-funnel-architect init " + selectedSlug + "</code>" : ""}
+                ${doc.key === "PROMOTION_PLAN" ? "<code>/course-promotion-architect init " + selectedSlug + "</code>" : ""}
+                ${doc.key === "AUDIT_LOG" ? "<code>/curriculum-review " + selectedSlug + "</code>" : ""}
+                ${doc.key === "DESIGN" ? "（每门课首次创建时手写）" : ""}
+                ${doc.key === "PERSONAS_INIT_REPORT" ? "（跑 persona-mapper init 时同时产出）" : ""}
+              </p>
+            </div>
+          `;
+          return;
+        }
+        const md = await r.text();
+        const html = marked.parse(md, { gfm: true, breaks: false });
+        content.innerHTML = `
+          <div class="md">
+            <div class="doc-meta">
+              <span><strong>${doc.label}</strong> · ${selectedSlug}</span>
+              <span class="path">curriculum/${path}</span>
+            </div>
+            ${html}
+          </div>
+        `;
+        // 滚到顶
+        content.scrollTop = 0;
+      } catch (e) {
+        content.innerHTML = `<div class="error"><h3>读取失败</h3><p>${e.message}</p></div>`;
+      }
+    }
+
+    // ============================================================
+    // 搜索 + 过滤
+    // ============================================================
+    document.getElementById("search").addEventListener("input", applyFilter);
+    document.querySelectorAll(".filter button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter button").forEach(b => b.classList.toggle("active", b === btn));
+        state.filter = btn.dataset.filter;
+        applyFilter();
+      });
+    });
+
+    function applyFilter() {
+      const q = document.getElementById("search").value.toLowerCase().trim();
+      document.querySelectorAll(".course-card").forEach(el => {
+        const slug = el.dataset.slug;
+        const status = state.docStatus[slug] || {};
+        let pass = true;
+        if (state.filter === "has-persona") pass = !!status.PERSONAS;
+        if (state.filter === "has-promotion") pass = !!status.PROMOTION_PLAN;
+        if (state.filter === "empty") pass = !status.PERSONAS && !status.FUNNEL_PLAN && !status.PROMOTION_PLAN;
+        if (q) pass = pass && slug.toLowerCase().includes(q);
+        el.classList.toggle("hidden", !pass);
+      });
+    }
+
+    // ============================================================
+    // 启动
+    // ============================================================
+    (async function () {
+      await probeAll();
+      const lastSlug = localStorage.getItem("md.lastSlug");
+      const lastTab = localStorage.getItem("md.lastTab");
+      if (lastSlug && COURSES.includes(lastSlug)) {
+        selectCourse(lastSlug);
+        if (lastTab) selectTab(lastTab);
+      }
+    })();
+  </script>
+</body>
+</html>
