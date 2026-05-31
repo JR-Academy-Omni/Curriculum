@@ -170,17 +170,17 @@
 
 | # | Task | 负责人 | 优先级 | 用什么 skill | 产出 |
 |---|------|--------|--------|------------|------|
-| 1 | 课程顾问 Amelia / Rain / Angela 面访 30min — 问咨询 ai-programming / 类似课的人到底是谁、问什么、为什么没买 | Mason 组织 | P0 | 按 `.claude/skills/target-user-persona-mapper/INTERVIEW_SCRIPT.md` 4-part 结构跑 | `gt-sources/interview-sales-{date}.md` |
+| 1 | 课程顾问 Amelia / Rain / Angela 面访 30min — 问咨询 ai-programming / 类似课的人到底是谁、问什么、为什么没买 | Beta 组织 | P0 | 按 `.claude/skills/target-user-persona-mapper/INTERVIEW_SCRIPT.md` 4-part 结构跑 | `gt-sources/interview-sales-{date}.md` |
 | 2 | 翻 ai-programming 已有咨询记录 / 类似课（ai-essentials）历史学员名单 + 自我介绍 | 课程运营 | P0 | 人工 + INTERVIEW_SCRIPT 拉课程主理人 30min | `gt-sources/historical-students.md` |
 | 3 | 扒小红书 / Boss / 公众号 评论区："零基础学 AI 编程 / Cursor 入门"真实评论 | 新媒体 Summer | P1 | `/persona-ground-truth-scraper init ai-programming --source=xhs,wechat` | `gt-sources/scrape-xhs-{date}.{json,md}` + `scrape-wechat-{date}.{json,md}` |
 | 3b | 扒 Reddit r/Entrepreneur + r/IndieHackers 看英文站候选 persona（如有英文站需求）| 任何人 | P2 | `/persona-ground-truth-scraper init ai-programming --source=reddit,v2ex` | `gt-sources/scrape-reddit-{date}.{json,md}` |
-| 4 | 确认客单价档（要先有 FUNNEL_PLAN.md）— 决定 persona 收入区间是否合理 | Aurora + Mason | P0 | `/course-funnel-architect init ai-programming` | `FUNNEL_PLAN.md` |
+| 4 | 确认客单价档（要先有 FUNNEL_PLAN.md）— 决定 persona 收入区间是否合理 | Aurora + Beta | P0 | `/course-funnel-architect init ai-programming` | `FUNNEL_PLAN.md` |
 | 5 | 补 Persona A/B/C 的"不信什么"黑名单（最重要字段，全空）+ 异议 Top 3 | 销售口播 + Summer 扒评论 | P0 | INTERVIEW（销售）+ scraper（公开评论）合起来 | 回填 PERSONAS.md §2 |
-| 6 | 确认是否真要做英文站 persona（outline 有 en 字段）| Mason | P2 | 决策 + 如做则跑 scraper Reddit/Twitter | 决定建不建 PERSONAS.en.md |
+| 6 | 确认是否真要做英文站 persona（outline 有 en 字段）| Beta | P2 | 决策 + 如做则跑 scraper Reddit/Twitter | 决定建不建 PERSONAS.en.md |
 
 **补完 task 1+2+3+5 后立刻跑 `/target-user-persona-mapper validate ai-programming`** 看 coverage 是否过 50%。过了才能让 PROMOTION_PLAN 用。
 
-**预计 task 完成总耗时**：3-5 人/天（不含等 Mason / Aurora 排会议时间）。
+**预计 task 完成总耗时**：3-5 人/天（不含等 Beta / Aurora 排会议时间）。
 - INTERVIEW × 3 次（课顾 + 课程主理人 + 销售主管）= 1.5h × 3 = 4.5h 实操 + 各 30min 整理
 - Scraper init = 员工开页面截图 10 张 × 3 源 = 1.5h + AI 提取 30min
 - FUNNEL_PLAN = 0.5d（已有产品端 skill 流程）

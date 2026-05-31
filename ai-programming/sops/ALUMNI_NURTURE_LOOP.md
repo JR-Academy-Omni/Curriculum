@@ -73,13 +73,13 @@
 |-----|------|---------|---------|---------|
 | **L0** | 基础班结业（完成 6 周 95+ lessons 中 ≥80%）| ~37 人 | prod 后端 cohortProgress（gap Top4 数据系统造好后）/ 暂用 Beta 凭记忆 + 课程作业提交记录 | D-14 升级窗 / D+7 最终升级窗 / D+30 跨课升学推荐 |
 | **L1** | 进阶班结业（完成 8 周 113 lessons 中 ≥80%）| ~47 人 | 同上 | D+30 跨课升学 / 招募 OFFER WALL 候选 / Testimonial 视频 |
-| **L2** | 朋友圈晒证 / 主动分享 / 主动推荐课程链接 | 估算 5-10 人 | Mason / Aurora 手动看 wechat moment + 给 referral link | 个性化感谢 + 邀请进 alumni 内圈群 + 优先 OFFER WALL |
+| **L2** | 朋友圈晒证 / 主动分享 / 主动推荐课程链接 | 估算 5-10 人 | Beta / Aurora 手动看 wechat moment + 给 referral link | 个性化感谢 + 邀请进 alumni 内圈群 + 优先 OFFER WALL |
 | **L3** | 推荐过 ≥1 个新学员成交 | 待 03 期开课后才有数据 | referrals collection（待造）/ 暂用飞书表 | 老带新立减 $200（详 §3）+ 公开致谢 + 优先 mentor |
 | **L4** | 成为 Faculty / 助教 / mentor / 答辩评委 | 长期目标，理论上 0 人 | 主动邀请 | 04+ 期收讲师课时费 / 头衔 / 销售页 Faculty 段位 |
 
 **晋级是流动的**：L0 学员朋友圈晒证后晋 L2；L1 推荐成交后晋 L3；L3 持续推荐 + 愿意分享后邀请晋 L4。
 
-**晋级触发**：每月 1 号 Beta + Mason 跑一次 alumni 等级 review（30min）。L3+ 个人通知；L2 个性化感谢；L0/L1 走标准 nurture 时间轴。
+**晋级触发**：每月 1 号 Beta + Beta 跑一次 alumni 等级 review（30min）。L3+ 个人通知；L2 个性化感谢；L0/L1 走标准 nurture 时间轴。
 
 ---
 
@@ -126,7 +126,7 @@ ai-programming 进阶班 8 周结业（L1 · ~47 人）
 
 #### Path B · 升 ai-engineer-bootcamp
 
-- **触发时机**：进阶班结业 D+30 → Mason 1v1 私聊
+- **触发时机**：进阶班结业 D+30 → Beta 1v1 私聊
 - **判定**：学员目标里写过"想做 AI 工程师 / 想接 AI 项目 / 想做 RAG / 想做 agent"（B EOI intake 记录或群里聊过）
 - **升学优惠**：alumni $200 立减
 - **话术**（**禁用副业 / 包就业**）：
@@ -196,7 +196,7 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 **短期**（数据系统未造完）：
 
 - 飞书表 `ai-programming-referrals.xlsx`，字段：推荐人 wechat / 被推荐人 wechat / 报名时间 / 报名金额 / store credit 发放状态
-- Mason 每周一 30min review，把上周成交的 referral 关系打表
+- Beta 每周一 30min review，把上周成交的 referral 关系打表
 
 **长期**（数据系统造完后）：
 
@@ -227,7 +227,7 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 | 群 | 性质 | 活跃度 | 谁加入 | 谁运营 |
 |-----|-----|------|------|------|
 | 02 期 cohort 群 | 课程期间高密度群 | 已开课起每天活跃 | 02 期所有报名学员 + 助教 + 讲师 | Beta（凭记忆运营，gap audit Top3）|
-| **ai-programming Alumni 群** | 跨期 alumni 总群（本 SOP 新建）| 季度活跃 | L0+ 所有期 alumni（02 期 + 03 期 + ...）| Mason + Beta 共同 |
+| **ai-programming Alumni 群** | 跨期 alumni 总群（本 SOP 新建）| 季度活跃 | L0+ 所有期 alumni（02 期 + 03 期 + ...）| Beta + Beta 共同 |
 | **ai-programming Inner Circle** | L2+ 内圈群（晒证 / 推荐过的）| 月度活跃 | L2-L4，邀请制 | Lightman 偶尔下场 + Beta |
 | 各姐妹课程 Alumni 总群 | 跨课程 alumni 群 | 季度活跃 | 任一 JR Academy AI 课结业者 | 各课负责人轮流 |
 
@@ -235,7 +235,7 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 
 | 频次 | 动作 | 谁 |
 |-----|-----|----|
-| 每周 1 次 | 群里发 1 条"本周我用 AI Coding 做了 X"（Beta / Mason / alumni 主动）| Beta |
+| 每周 1 次 | 群里发 1 条"本周我用 AI Coding 做了 X"（Beta / Beta / alumni 主动）| Beta |
 | 每月 1 次 | Alumni 主题分享（自荐讲，30min 在线腾讯会议）| 主讲 = 上月最活跃 alumni / 受邀 alumni |
 | 每季 1 次 | 跨 cohort 大聚会（在线 90min）| Lightman 主持 + 邀请 5-10 alumni 分享 |
 | 6 月 / 12 月 | 线下聚会（一线城市轮流：墨尔本 / 悉尼 / 上海 / 北京 / 深圳）| 当地 alumni 中心 + Aurora / Seren 协助场地 |
@@ -243,9 +243,9 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 ### 4.3 月度 alumni 主题分享 SOP
 
 - **T-7 天**：Beta 在群里 + 1v1 私聊确认下月主讲人（优先 L2+ 自荐）
-- **T-3 天**：Mason 帮主讲人捋讲稿 outline（30min）
+- **T-3 天**：Beta 帮主讲人捋讲稿 outline（30min）
 - **T-1 天**：群里发预告海报（用 DESIGN.md 主色 + neo-brutalism）+ 腾讯会议链接
-- **当天**：主讲 20min + Q&A 10min + Beta / Mason 主持互动
+- **当天**：主讲 20min + Q&A 10min + Beta / Beta 主持互动
 - **T+1**：录播剪辑（5-10min 精华片段）→ 公众号长文（消费 `/blog-longform-writer`）+ 小红书 3 条切角（消费 `/xhs-draft`）+ 视频号 1 条
 - **T+3**：群里发剪辑链接 + 谢主讲
 
@@ -274,7 +274,7 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 | W5 中（结业前 14 天）| 群里 1 条预告"进阶班升级窗下周开"+ 个性化标记 | Beta | wechat 群 |
 | 结业前 10 天 | 1v1 私聊符合条件的 alumni | Beta | wechat 1v1 |
 | 结业前 7 天 | 进阶班 sneak peek 直播 30min（Lightman + 进阶班讲师）| Lightman | 腾讯会议 |
-| 结业前 3 天 | 个性化邮件 + wechat 二次推送 + 限时差价倒计时 | Mason | email + wechat |
+| 结业前 3 天 | 个性化邮件 + wechat 二次推送 + 限时差价倒计时 | Beta | email + wechat |
 | 结业当天 (D0) | 群里发结业证书 + 个性化升学邀请 | Beta | wechat 群 + 1v1 |
 
 ### 5.2 基础班结业后 D+7 → 进阶班升级最终窗
@@ -283,16 +283,16 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 |-----|-----|---------|
 | D+3 | 群里 1 条"还有 4 天升级窗" | wechat 群 |
 | D+5 | 1v1 私聊未升学者 | wechat 1v1 |
-| D+7 | 升级窗关闭 / store credit 补偿（如果他后期升，差价不退但能用 $100 抵扣其他课）| Mason |
+| D+7 | 升级窗关闭 / store credit 补偿（如果他后期升，差价不退但能用 $100 抵扣其他课）| Beta |
 
 ### 5.3 进阶班结业后 D+30 / D+60 / D+90 → 跨课升学窗（Path B/C/D）
 
 | 时间 | 动作 | 谁 |
 |-----|-----|----|
-| D+7 | 结业满意度问卷（NPS + 跨课兴趣）| Mason |
+| D+7 | 结业满意度问卷（NPS + 跨课兴趣）| Beta |
 | D+14 | Alumni 群欢迎入群仪式 | Beta |
-| **D+30** | 1v1 私聊：基于 §2.2 决策树推一门姐妹课 | Mason + 课程顾问 Amelia / Rain / Angela |
-| D+60 | 群里发"姐妹课 03 期开课预告" + 个性化 | Mason |
+| **D+30** | 1v1 私聊：基于 §2.2 决策树推一门姐妹课 | Beta + 课程顾问 Amelia / Rain / Angela |
+| D+60 | 群里发"姐妹课 03 期开课预告" + 个性化 | Beta |
 | **D+90** | 二次 1v1 私聊：跨课升学最终窗 | 课程顾问 |
 | D+180 | Half-year check in（不推销，问近况，可作内容素材）| Beta |
 | D+365 | 周年 check in + alumni 老带新感谢 | Lightman |
@@ -311,8 +311,8 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 
 | 类型 | Alumni 投入 | 产出物 | 下游消费者 |
 |-----|---------|-------|---------|
-| **故事文**（"我用 AI Coding 做了什么"）| 30min 写 + 1 轮 Mason 修 | 公众号长文 1 篇 + 朋友圈版 | `/wechat-article-quality` 审核 → 公众号 + 销售页 |
-| **Testimonial 视频** | 5-10min 录像（自录或 Mason 远程引导）| 30-90s 视频片段 ×2 | 销售页 alumni section（位于 Faculty 段之后）+ 小红书 |
+| **故事文**（"我用 AI Coding 做了什么"）| 30min 写 + 1 轮 Beta 修 | 公众号长文 1 篇 + 朋友圈版 | `/wechat-article-quality` 审核 → 公众号 + 销售页 |
+| **Testimonial 视频** | 5-10min 录像（自录或 Beta 远程引导）| 30-90s 视频片段 ×2 | 销售页 alumni section（位于 Faculty 段之后）+ 小红书 |
 | **作品上墙**（4 大交付物 ）| 0（学员已做完）+ 授权签字 | 销售页 OFFER WALL（gap audit Top2 cohort-graduate-portfolio-collector skill 产出）| 销售页 content.ts OFFER_WALL_DATA 数组 |
 
 ### 6.2 内容产出激励
@@ -342,7 +342,7 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 
 | KPI | 02→03 期目标 ⚠️ 假设 | 数据来源 | 回收 SOP |
 |-----|---------------------|---------|---------|
-| 老带新转化率 = referral 报名数 / alumni 总人数 | 5-10% | referrals 表 / collection | Mason 每周一 review |
+| 老带新转化率 = referral 报名数 / alumni 总人数 | 5-10% | referrals 表 / collection | Beta 每周一 review |
 | 进阶班升级率（基础班结业 30 天内）| 20-30% | cohort + payments collection | 每月 1 号 review |
 | 跨课程升学率（进阶班结业 90 天内 → 任一姐妹课报名）| 8-15% | cross-course attribution | 每月 1 号 review |
 | Alumni 群日活（日发言人数 / 群总人数）| 10-20% | wechat 群手动统计 / 飞书表 | 每周五 Beta 统计 |
@@ -354,9 +354,9 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 | KPI | 目标 | 谁 |
 |-----|------|----|
 | Alumni 月度分享按时举办率 | 100%（12 次/年）| Beta |
-| Testimonial 视频累计数 | 03 期开课前 ≥10 条 | Mason |
-| 故事文累计篇数 | 03 期开课前 ≥6 篇 | Mason |
-| OFFER WALL 真实作品上墙数 | 03 期开课前 ≥12 件 | Beta + Mason |
+| Testimonial 视频累计数 | 03 期开课前 ≥10 条 | Beta |
+| 故事文累计篇数 | 03 期开课前 ≥6 篇 | Beta |
+| OFFER WALL 真实作品上墙数 | 03 期开课前 ≥12 件 | Beta + Beta |
 | Referral link 自助生成使用率 | 数据系统造好后 alumni 30%+ 用过 | 数据系统 referrals collection |
 
 ### 7.3 失败信号（需 escalate Lightman）
@@ -377,12 +377,12 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 
 | PERSONAS 待补字段 | Alumni 数据如何补 |
 |---|---|
-| Persona A/B/C 占比 ⚠️ 推测 → 真实 | 02 期真实学员职业分布 + 报名 EOI intake → Mason 标 Persona 类型 → 占比真实化 |
-| Persona A 痛点 Top 3 ⚠️ 推测 → 真实 | 月度 alumni 分享 + 故事文里真实原话 → Mason 提取 30 条原话 → 替换 AI 拟写 |
+| Persona A/B/C 占比 ⚠️ 推测 → 真实 | 02 期真实学员职业分布 + 报名 EOI intake → Beta 标 Persona 类型 → 占比真实化 |
+| Persona A 痛点 Top 3 ⚠️ 推测 → 真实 | 月度 alumni 分享 + 故事文里真实原话 → Beta 提取 30 条原话 → 替换 AI 拟写 |
 | 决策周期 ⚠️ 推测 → 真实 | 02 期报名记录：知道课程到付费天数 → 数据系统造好后自动统计 |
 | 信任谁 / 不信什么（黑名单）| Testimonial 视频里学员讲"我之前不信 / 后来信了" → 直接拿原话 |
 | 购买触发器 | 故事文里"我看到 X 才决定报名"原话 → 销售页 hero 切角 |
-| 异议 Top 3 ⚠️ 全部待补 → 真实 | Mason 回访拒报名 / 退款学员（5-10 个）→ 异议原话池 → 销售页 FAQ + 顾问话术 |
+| 异议 Top 3 ⚠️ 全部待补 → 真实 | Beta 回访拒报名 / 退款学员（5-10 个）→ 异议原话池 → 销售页 FAQ + 顾问话术 |
 
 → **PERSONAS refresh 节奏**：02 期结业 + 03 期开课 30 天后，target-user-persona-mapper refresh mode 跑一次，GT 应到 0.85+
 
@@ -395,7 +395,7 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 
 ### 8.3 验证 PERSONAS 准确度 — 用 alumni 反推
 
-每月 alumni 主题分享后，Mason 标讲者属于哪个 Persona：
+每月 alumni 主题分享后，Beta 标讲者属于哪个 Persona：
 
 - 如果 4 个月里讲者 80% 都是 Persona A → 验证 A 是核心
 - 如果讲者大量出现 Persona D（资深程序员）→ 重大信号，PERSONAS 写"D 是误点进来"假设错了，要 refresh
@@ -451,16 +451,16 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 | 相对日期 | 动作 | 谁 | 产出 |
 |-----|-----|----|-----|
 | 02 期结业前 14 天 | 启动基础班升级窗 § 5.1 | Beta | 升进阶班的 L0 alumni 列表 |
-| 02 期结业 D-0 | 发结业证书 + 朋友圈晒图模板 | Beta + Mason | 02 期 ~37 + 47 = ~84 张证书 ⚠️ 估算 |
-| 02 期结业 D+3 | 满意度问卷 + NPS + 跨课兴趣调研 | Mason | 02 期满意度报告 + alumni 跨课兴趣画像 |
-| 02 期结业 D+7 | 进阶班升级最终窗关闭 + Alumni 群正式开（§4）| Beta + Mason | 03 期升级人数 + Alumni 群 ~84 人 |
+| 02 期结业 D-0 | 发结业证书 + 朋友圈晒图模板 | Beta + Beta | 02 期 ~37 + 47 = ~84 张证书 ⚠️ 估算 |
+| 02 期结业 D+3 | 满意度问卷 + NPS + 跨课兴趣调研 | Beta | 02 期满意度报告 + alumni 跨课兴趣画像 |
+| 02 期结业 D+7 | 进阶班升级最终窗关闭 + Alumni 群正式开（§4）| Beta + Beta | 03 期升级人数 + Alumni 群 ~84 人 |
 | **D+14 = ALUMNI 群第一次主题分享** | 首场 alumni 月度分享（§4.3）| Beta + 主讲（L2 自荐）| 1 篇公众号 recap + 5-8 条小红书切角 |
 | D+21 | OFFER WALL 收集启动（§3.4）| Beta | 4-12 件真实作品授权 + 上墙 |
-| D+28 | Testimonial 视频拍摄 launch（§6）| Mason | 5-10 条 30-90s 视频 |
-| **D+30 = 跨课升学推荐启动** | §5.3 D+30 1v1 触达 进阶班 L1 alumni | Mason + Amelia / Rain / Angela | ai-engineer / ai-solo-founder / ai-marketing 升学 lead 池 |
-| D+45 | 销售页 03 期改版（消费 alumni 素材）| Lightman + Mason | content.ts OFFER WALL / Testimonial section / alumni 故事 |
+| D+28 | Testimonial 视频拍摄 launch（§6）| Beta | 5-10 条 30-90s 视频 |
+| **D+30 = 跨课升学推荐启动** | §5.3 D+30 1v1 触达 进阶班 L1 alumni | Beta + Amelia / Rain / Angela | ai-engineer / ai-solo-founder / ai-marketing 升学 lead 池 |
+| D+45 | 销售页 03 期改版（消费 alumni 素材）| Lightman + Beta | content.ts OFFER WALL / Testimonial section / alumni 故事 |
 | D+60 | 第二次 alumni 月度分享 | Beta | 1 篇公众号 + 5-8 条小红书 |
-| D+90 | 跨课升学二次窗 + 03 期开课进入 4 周倒计时 | Mason + 课程顾问 | 03 期 alumni 老带新成交人数 |
+| D+90 | 跨课升学二次窗 + 03 期开课进入 4 周倒计时 | Beta + 课程顾问 | 03 期 alumni 老带新成交人数 |
 
 ### 10.2 配套需先 ready 的依赖
 
@@ -477,10 +477,10 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 
 | 动作 | 谁 | 何时 |
 |-----|----|-----|
-| 起飞书表 `ai-programming-referrals` | Mason | 下周一 |
+| 起飞书表 `ai-programming-referrals` | Beta | 下周一 |
 | 起 alumni 群（wechat 拉群 02 期 L0/L1）| Beta | 02 期结业前 7 天 |
-| 起 OFFER WALL 授权书模板 + 收集表 | Mason | 02 期结业前 14 天 |
-| 起朋友圈晒图模板（设计师 Melody / Ada）| Mason 派单 | 02 期结业前 14 天 |
+| 起 OFFER WALL 授权书模板 + 收集表 | Beta | 02 期结业前 14 天 |
+| 起朋友圈晒图模板（设计师 Melody / Ada）| Beta 派单 | 02 期结业前 14 天 |
 | 起结业证书模板（DESIGN.md 主色 #FF7B5A）| 设计师 | 02 期结业前 14 天 |
 | 起首场 alumni 月度分享主讲征集 | Beta | 02 期结业 D+3 |
 
@@ -508,7 +508,7 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 - referral 仅成交后发 credit，不预付（防套利）
 - alumni 升学折扣不叠加任何早鸟 / 多币种优惠（一次只用 1 折扣）
 
-### 11.4 自检 checklist（每月 1 号 Beta + Mason 30min review）
+### 11.4 自检 checklist（每月 1 号 Beta + Beta 30min review）
 
 - [ ] 上月 §5 时间轴所有窗口动作是否准时执行？
 - [ ] §7 KPI 是否回写到飞书表？
@@ -524,7 +524,7 @@ Q4：学员本职是 marketing / 运营 / 内容吗？
 
 | Field | Value |
 |---|---|
-| 主要 Owner | Mason（alumni / referral 数据 / 跨课升学 1v1）+ Beta（群运营 / cohort 衔接 / OFFER WALL 收集）|
+| 主要 Owner | Beta（alumni / referral 数据 / 跨课升学 1v1）+ Beta（群运营 / cohort 衔接 / OFFER WALL 收集）|
 | 升级决策 | Lightman（差价 / 优惠机制 / Faculty 邀请 / 红线判定）|
 | Review 节奏 | 月度（每月 1 号 30min）+ 每期 cohort 结业后 postmortem |
 | 配套待造 | `cohort-graduate-portfolio-collector`（gap Top2）+ `/cohort-ops-conductor`（gap Top3）+ `/marketing-data-collector`（gap Top8）+ referrals collection（gap Top4）|

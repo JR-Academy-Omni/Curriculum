@@ -22,7 +22,7 @@
 ### 2. 学员侧 / 用户侧 ground truth 采集机制为零（PERSONAS / 作品 / Testimonial / NPS 全靠 AI 推测）
 出现在: Phase A pre-launch, Phase C 课程运营, Phase D 课后复盘续费, Phase E 内容生产闭环
 
-PERSONAS.md GT 0.55 是阈值刚过（Phase A）；OFFER WALL 校友作品 0 收集（Phase A + D）；113 lessons × 24 人 = 768 次 Quest 提交无批改闭环（Phase C）；30/60/90 天落地追踪 0 SOP（Phase D）；内容选题 anchoring 缺真实用户语料（Phase E）。**根因**：02 期已开课 = 最值钱的 ground truth 来源（学员真实痛点 / 真实异议 / 真实作品 / 真实退款理由），但全公司 0 skill 覆盖『cohort 期间真实数据采集 SOP』。Mason 一人扛不动，Beta 凭记忆运营。结果：销售页 hero / xhs 切角 / 顾问话术 / FUNNEL 转化率全部基于推测，A/B 测出结论也归因不了。
+PERSONAS.md GT 0.55 是阈值刚过（Phase A）；OFFER WALL 校友作品 0 收集（Phase A + D）；113 lessons × 24 人 = 768 次 Quest 提交无批改闭环（Phase C）；30/60/90 天落地追踪 0 SOP（Phase D）；内容选题 anchoring 缺真实用户语料（Phase E）。**根因**：02 期已开课 = 最值钱的 ground truth 来源（学员真实痛点 / 真实异议 / 真实作品 / 真实退款理由），但全公司 0 skill 覆盖『cohort 期间真实数据采集 SOP』。Beta 一人扛不动，Beta 凭记忆运营。结果：销售页 hero / xhs 切角 / 顾问话术 / FUNNEL 转化率全部基于推测，A/B 测出结论也归因不了。
 
 ### 3. Cohort 学员侧 onboarding / 运营 / 留存 / 升学 SOP 全套零落盘
 出现在: Phase B 招生期, Phase C 课程运营, Phase D 课后复盘续费
@@ -37,7 +37,7 @@ PERSONAS.md GT 0.55 是阈值刚过（Phase A）；OFFER WALL 校友作品 0 收
 ### 5. Product decision 阻塞 + 关键岗位 owner 缺失，导致整条链路无法启动
 出现在: Phase A pre-launch, Phase B 招生期, Phase D 课后复盘续费
 
-Phase A：03 期 commenceCourseDate 未定 + 50/80/120 target 未拍 = FUNNEL 红色阻塞 + PROMOTION_PLAN 时间轴无法展开；Phase A + D：销售页倒计时 banner + 实时席位计数等待 Lightman 拍板早鸟价 / 涨价幅度；Phase A：marketing 文案岗位 RACI 标『—』未指派 → 公众号 / 销售页 / OFFER WALL testimonial 改写无 owner → 任务全摊到 Mason / Aurora 必然延期。结果：每多等 1 周 03 期可招生时间 -1 周，Marketing 团队 4 周『等待』状态。
+Phase A：03 期 commenceCourseDate 未定 + 50/80/120 target 未拍 = FUNNEL 红色阻塞 + PROMOTION_PLAN 时间轴无法展开；Phase A + D：销售页倒计时 banner + 实时席位计数等待 Lightman 拍板早鸟价 / 涨价幅度；Phase A：marketing 文案岗位 RACI 标『—』未指派 → 公众号 / 销售页 / OFFER WALL testimonial 改写无 owner → 任务全摊到 Beta / Aurora 必然延期。结果：每多等 1 周 03 期可招生时间 -1 周，Marketing 团队 4 周『等待』状态。
 
 ### 6. 复盘 / 翻车归因 / 红线 audit 单一真相文档缺失
 出现在: Phase A pre-launch, Phase C 课程运营, Phase D 课后复盘续费, Phase E 内容生产闭环
@@ -72,7 +72,7 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 | 2 | P0 | 2-3-day | new-skill | 新建 skill: cohort-graduate-portfolio-collector（学员 4 大作品 + Testimonial + 授权 + OFFER WALL wiring） |
 | 3 | P0 | 1-week | new-skill | 新建 skill 套件: cohort-launch-sop + cohort-daily-ops + cohort-progress-tracker（学员侧 onboarding + 群运营 + 进度看板三件套） |
 | 4 | P0 | 1-week | data-system | 数据系统: 后端建 cohort + attribution + referral 三个 collection + admin Content ROI 看板 |
-| 5 | P0 | 2-3-day | wire-existing | Mason 强制完成 5 个 02 期学员访谈 + Summer 扫小红书评论 → PERSONAS GT 0.55 升 0.75+ |
+| 5 | P0 | 2-3-day | wire-existing | Beta 强制完成 5 个 02 期学员访谈 + Summer 扫小红书评论 → PERSONAS GT 0.55 升 0.75+ |
 | 6 | P0 | 2-3-day | new-skill | 新建 skill: xhs-comment-ops + content-to-private-domain-bridge（前 24h 评论运营 + 合规引流私域） |
 | 7 | P0 | 1-week | new-skill | 新建 skill 套件: content-multi-platform-distributor + content-schedule-planner（一稿多发 + 66 发布点自动排期） |
 | 8 | P0 | 1-week | new-skill | 新建 skill: marketing-metrics-collector + content-attribution-tracker（小红书后台爬取 + UTM 短链 attribution） |
@@ -99,9 +99,9 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 
 - Impact: 横跨全 5 phase 的『数据黑盒 → 白盒』地基。当前没这个底座，所有 metrics-collector / progress-tracker / referral-program skill 都跑不动。具体：(1) cohortProgress collection（lesson 完成 / Lab 通过 / Quest 提交 / NPS）；(2) contentAttributions collection（contentId / platform / leadsCount / paidUsers / courseId）；(3) referrals collection（推荐人 / 被推荐人 / 优惠码）。admin 加 Content ROI tab。$50k+ marketing 预算才有 ROI 归因。
 
-**#5 Mason 强制完成 5 个 02 期学员访谈 + Summer 扫小红书评论 → PERSONAS GT 0.55 升 0.75+** (P0 · 2-3-day · wire-existing)
+**#5 Beta 强制完成 5 个 02 期学员访谈 + Summer 扫小红书评论 → PERSONAS GT 0.55 升 0.75+** (P0 · 2-3-day · wire-existing)
 
-- Impact: 解 Phase A→B→E 全链路 ground truth 断链。skill 齐全（target-user-persona-mapper + persona-ground-truth-scraper + INTERVIEW_SCRIPT）只是 Mason 没排时间。访谈 + 评论 scrape 各占 1 天 = 技术债不是技术难题。完成后销售页 hero / xhs 切角 / 顾问话术 / 7 天 nurture 全部有真实语料 → 转化率可对账可优化。
+- Impact: 解 Phase A→B→E 全链路 ground truth 断链。skill 齐全（target-user-persona-mapper + persona-ground-truth-scraper + INTERVIEW_SCRIPT）只是 Beta 没排时间。访谈 + 评论 scrape 各占 1 天 = 技术债不是技术难题。完成后销售页 hero / xhs 切角 / 顾问话术 / 7 天 nurture 全部有真实语料 → 转化率可对账可优化。
 
 **#6 新建 skill: xhs-comment-ops + content-to-private-domain-bridge（前 24h 评论运营 + 合规引流私域）** (P0 · 2-3-day · new-skill)
 
@@ -179,7 +179,7 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 
 ### B. 现有 skill 没接上 workflow (12 个)
 
-- **target-user-persona-mapper + persona-ground-truth-scraper + INTERVIEW_SCRIPT** → Phase A：Mason 强制完成 5 个 02 期学员访谈 + Summer 扫小红书评论 → PERSONAS GT 0.55 升 0.75+。skill 完整缺执行排期。流程 SOP：每个 Bootcamp 前一期开课中点（02 期 W3）强制完成。
+- **target-user-persona-mapper + persona-ground-truth-scraper + INTERVIEW_SCRIPT** → Phase A：Beta 强制完成 5 个 02 期学员访谈 + Summer 扫小红书评论 → PERSONAS GT 0.55 升 0.75+。skill 完整缺执行排期。流程 SOP：每个 Bootcamp 前一期开课中点（02 期 W3）强制完成。
 
 - **course-promotion-architect (daily-standup mode 扩展)** → Phase B 招生期 7 天日 KPI 看板 + 21:00 复盘会模板（weekly mode 太慢，扩 daily-standup mode 含 4 核心指标 + 自动 gap 报警），关联 marketing-agent-orchestra metrics-agent。
 
@@ -199,7 +199,7 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 
 - **main-course-tier-design** → Phase D 基础班 → 进阶班续费转化机制。扩『同学院老学员升级 SOP』mode：续报折扣 + 推荐礼 + 进阶班试听课 + 已学知识衔接保证。
 
-- **xhs-draft + xhs-poster + xhs-review + blog-longform-writer + poster-user-test** → Phase D D+14 海报 / 公众号 / 小红书加 02 期真实学员案例。skill 全齐，唯一卡点是 Mason 提供 5-10 个真实案例文字稿（来自 OFFER WALL task）。零新建需求。
+- **xhs-draft + xhs-poster + xhs-review + blog-longform-writer + poster-user-test** → Phase D D+14 海报 / 公众号 / 小红书加 02 期真实学员案例。skill 全齐，唯一卡点是 Beta 提供 5-10 个真实案例文字稿（来自 OFFER WALL task）。零新建需求。
 
 - **marketing-agent-orchestra (Phase 0 manual runbook 补)** → Phase E 11 账号矩阵任务派单：补 MANUAL_RUNBOOK 派单 SOP；admin Kanban 加『内容任务』列；xhs-topic-picker 输出直接 import 到 admin 派单。
 
@@ -227,7 +227,7 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 
 ### D. SOP 文档 (12 个)
 
-- Bootcamp 开课日决策会 SOP：每个 Bootcamp 在前一期开课中点（W3）由 Lightman + Aurora + Mason 三方 30min 锁下一期 launch date + target + 早鸟截止 + 报名截止，结论落 FUNNEL_PLAN.md §0 Meta 表
+- Bootcamp 开课日决策会 SOP：每个 Bootcamp 在前一期开课中点（W3）由 Lightman + Aurora + Beta 三方 30min 锁下一期 launch date + target + 早鸟截止 + 报名截止，结论落 FUNNEL_PLAN.md §0 Meta 表
 
 - PROMOTION_PLAN.md RACI 表加『缺岗预警 🚨』列：缺岗 task 自动标 BLOCKED 防止排期假装满，HR 短期补 marketing 文案岗
 
@@ -235,7 +235,7 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 
 - OFFER WALL 校友作品采集 SOP（先用 Markdown 起步，后续 cohort-graduate-portfolio-collector skill 实现）：每期 Bootcamp 进入最后 2 周自动触发
 
-- 顾问话术库 SOP：Amelia 整理过去 02 期 EOI 跟进真实对话 → Top 5 异议真实频次 → Mason + Aurora 出标准回答 + 红线，落 curriculum/ai-programming/CONSULTANT_PLAYBOOK.md
+- 顾问话术库 SOP：Amelia 整理过去 02 期 EOI 跟进真实对话 → Top 5 异议真实频次 → Beta + Aurora 出标准回答 + 红线，落 curriculum/ai-programming/CONSULTANT_PLAYBOOK.md
 
 - 11 账号矩阵人设差异化文档：docs/XHS_ACCOUNT_MATRIX.md 一次性梳理 11 个账号当前粉丝 / 笔记主题 / 互动数据 → 每个账号人设 + 目标 persona + 内容切角 + 禁发清单
 
@@ -262,43 +262,43 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 
 | When | Task | Owner | Coverage | Existing Skill | Gap |
 |------|------|-------|----------|--------------|-----|
-| T-28 ~ T-21（开课前 4-3 周，所有下游决策的硬 | PERSONAS GT 从 0.55 升到 0.75+（真实访谈 ×2 + 评论 scrape ×3 源） | Mason（课程主理人）主跑访谈 + Summer 配合扫小红书评论 + Amelia 出 02 期 | full | target-user-persona-mapper + persona-ground-truth- | PERSONAS.md 当前 0.55 是阈值刚过，痛点 Top 3 / 异议 Top 3 / 决策周期 / 黑名单 / 触发器全部仍是 AI 推测。02 期已经开课但没人去拉学员名单做 5 个访谈 + 没人扫小红书"零基础学编程"评论。不补到 0.75+ → 销售页 hero 原话 / xhs 切角 / 公众号长文标题全部靠猜，转化率没法对账 |
-| T-28（最迟，决定整个 PROMOTION_PLAN 时间 | 03 期开课日 + 早鸟名额 + 报名截止日 product decision | Lightman 拍板 + Aurora 反推招生节奏 + Mason 评估开课承载力 | partial | course-funnel-architect + main-course-tier-design | FUNNEL_PLAN.md 明确标 03 期 commenceCourseDate 待定 = 红色阻塞项。销售页现在让人看不到"什么时候能上车"。skill 能给三档模板但定不了具体日期。需要决策：(1) 03 期目标人数（50/80/120 三档 FUNNEL 已给反推公式）(2) 早鸟截止日（影响海报"剩余名额"压力点）(3) 02 期还在跑 vs 03 期开班的衔接窗口 |
-| T-28 ~ T-21（与 PERSONAS 并行，给 fu | Course Market Reality Check — AU + CN 两市场 AI Coding 岗位池 + 学员承诺 gap 复审 | Mason + Aurora | full | course-market-reality-check | ai-programming 定位"做出可上线产品"不是"找工作"，但销售页和 PROMOTION_PLAN 还没做过 reality check。需要验证：(1) 零基础 → 6 周 → 真的能做出 4 件交付物吗（02 期出货率多少）(2) 进阶班 $1360 客单价在零基础人群可接受度 (3) marketing 反馈"学员咨询时问能不能找工作"如何用红线回答。skill 描述完全覆盖此场景 |
-| T-21 ~ T-14（销售页改版前必须完成） | FUNNEL_PLAN 选项 B 落地 — ¥99 引流课「3 天 Claude Cowork 做 PPT 网站」拆 Phase 0 独立成课 | Mason 内容裁切 + Dev 起独立 program 页面 + Lightman 审定价 | full | intro-course-design + funnel-handoff-design | FUNNEL_PLAN 已经推荐选项 B 且 Phase 0 内容现成（6 节完整课）。skill 流程齐全。gap 是落地动作：(1) 拆完 Phase 0 后 outline.json 要不要从 ai-programming 主课里删（不要 — 主课保留）(2) 独立 program ObjectId 在 admin 新建 (3) ¥99 / $29 定价多币种配齐 (4) Phase 0 转 |
-| T-21 ~ T-14（与引流课并行） | 销售页 Custom Landing 升级（加 03 期日期 + 校友 OFFER WALL + Faculty 实名） | Dev + Mason 提供 02 期学员作品 URL + Designer 拍 Faculty 头 | full | course-custom-landing (Mode B 已存在 landing 迭代) | Custom landing 已上线（5 文件 19KB）但 FUNNEL_PLAN 列出 3 个缺口：(1) 销售页未列 Faculty 实名 (vs ai-engineer-bootcamp 有 5 张 OFFER 截图) (2) 02 期校友作品 / 反馈未加（需要 ai-engineer-bootcamp v1.6 OFFER WALL 模式）(3) 03 期 commenceCourse |
-| T-28 ~ T-14（必须先收集才能改销售页） | 02 期校友作品收集 + Testimonial 拍摄 + OFFER WALL 素材生产 | Mason 联系 02 期学员 + Beta 教务跟进 + Designer 出 OFFER WAL | none |  | ai-engineer-bootcamp v1.6 加了 5 张 OFFER 截图大幅提转化，但本课没有对应 workflow。需要：(1) 02 期 113 lessons 完结时收集学员做的 4 大交付物（PPT/PDF/网站/视频）真实链接 (2) 1-2 句话 testimonial（不能假，必须本人授权）(3) Designer 出标准化 OFFER WALL 卡片。当前 76 skil |
+| T-28 ~ T-21（开课前 4-3 周，所有下游决策的硬 | PERSONAS GT 从 0.55 升到 0.75+（真实访谈 ×2 + 评论 scrape ×3 源） | Beta（课程主理人）主跑访谈 + Summer 配合扫小红书评论 + Amelia 出 02 期 | full | target-user-persona-mapper + persona-ground-truth- | PERSONAS.md 当前 0.55 是阈值刚过，痛点 Top 3 / 异议 Top 3 / 决策周期 / 黑名单 / 触发器全部仍是 AI 推测。02 期已经开课但没人去拉学员名单做 5 个访谈 + 没人扫小红书"零基础学编程"评论。不补到 0.75+ → 销售页 hero 原话 / xhs 切角 / 公众号长文标题全部靠猜，转化率没法对账 |
+| T-28（最迟，决定整个 PROMOTION_PLAN 时间 | 03 期开课日 + 早鸟名额 + 报名截止日 product decision | Lightman 拍板 + Aurora 反推招生节奏 + Beta 评估开课承载力 | partial | course-funnel-architect + main-course-tier-design | FUNNEL_PLAN.md 明确标 03 期 commenceCourseDate 待定 = 红色阻塞项。销售页现在让人看不到"什么时候能上车"。skill 能给三档模板但定不了具体日期。需要决策：(1) 03 期目标人数（50/80/120 三档 FUNNEL 已给反推公式）(2) 早鸟截止日（影响海报"剩余名额"压力点）(3) 02 期还在跑 vs 03 期开班的衔接窗口 |
+| T-28 ~ T-21（与 PERSONAS 并行，给 fu | Course Market Reality Check — AU + CN 两市场 AI Coding 岗位池 + 学员承诺 gap 复审 | Beta + Aurora | full | course-market-reality-check | ai-programming 定位"做出可上线产品"不是"找工作"，但销售页和 PROMOTION_PLAN 还没做过 reality check。需要验证：(1) 零基础 → 6 周 → 真的能做出 4 件交付物吗（02 期出货率多少）(2) 进阶班 $1360 客单价在零基础人群可接受度 (3) marketing 反馈"学员咨询时问能不能找工作"如何用红线回答。skill 描述完全覆盖此场景 |
+| T-21 ~ T-14（销售页改版前必须完成） | FUNNEL_PLAN 选项 B 落地 — ¥99 引流课「3 天 Claude Cowork 做 PPT 网站」拆 Phase 0 独立成课 | Beta 内容裁切 + Dev 起独立 program 页面 + Lightman 审定价 | full | intro-course-design + funnel-handoff-design | FUNNEL_PLAN 已经推荐选项 B 且 Phase 0 内容现成（6 节完整课）。skill 流程齐全。gap 是落地动作：(1) 拆完 Phase 0 后 outline.json 要不要从 ai-programming 主课里删（不要 — 主课保留）(2) 独立 program ObjectId 在 admin 新建 (3) ¥99 / $29 定价多币种配齐 (4) Phase 0 转 |
+| T-21 ~ T-14（与引流课并行） | 销售页 Custom Landing 升级（加 03 期日期 + 校友 OFFER WALL + Faculty 实名） | Dev + Beta 提供 02 期学员作品 URL + Designer 拍 Faculty 头 | full | course-custom-landing (Mode B 已存在 landing 迭代) | Custom landing 已上线（5 文件 19KB）但 FUNNEL_PLAN 列出 3 个缺口：(1) 销售页未列 Faculty 实名 (vs ai-engineer-bootcamp 有 5 张 OFFER 截图) (2) 02 期校友作品 / 反馈未加（需要 ai-engineer-bootcamp v1.6 OFFER WALL 模式）(3) 03 期 commenceCourse |
+| T-28 ~ T-14（必须先收集才能改销售页） | 02 期校友作品收集 + Testimonial 拍摄 + OFFER WALL 素材生产 | Beta 联系 02 期学员 + Beta 教务跟进 + Designer 出 OFFER WAL | none |  | ai-engineer-bootcamp v1.6 加了 5 张 OFFER 截图大幅提转化，但本课没有对应 workflow。需要：(1) 02 期 113 lessons 完结时收集学员做的 4 大交付物（PPT/PDF/网站/视频）真实链接 (2) 1-2 句话 testimonial（不能假，必须本人授权）(3) Designer 出标准化 OFFER WALL 卡片。当前 76 skil |
 | T-21 ~ T-14 | SEO 长尾词调研 + 销售页 metadata + JSON-LD + E-E-A-T 升级 | Dev | full | seo-optimizer + eeat-optimizer | PROMOTION_PLAN 列出关键长尾词"零基础 AI 编程 / Cursor 教程 / 不会代码做网站"但没真做过 GSC 调研。skill 齐全可直接跑。gap 是这个课的 production /program-course/ai-programming 页面是否上 FAQ Schema + author markup 还没 audit |
 | T-28 ~ T-21（账号画风要提前 14 天养） | 小红书 11 账号矩阵预热 — 周 9 篇内容选题库储备 + 切角差异化 | Summer 主账号 + Lily + KIKI 分账号 | full | xhs-topic-picker → xhs-draft → xhs-poster → xhs-re | skill 五件套齐全。gap 是产出节奏要前置 2 周：(1) 11 个账号每个的人设是什么没沉淀（创业者账号 vs 转型者账号 vs 学生账号画风不同）(2) PERSONAS 没补完前选题切角靠猜 (3) 第一周 9 稿要在 T-21 之前入库审完，不能到 T-14 才写 |
 | T-21 ~ T-14 | 海报矩阵升级 + ChatGPT poster-user-test 6→3 persona 反馈 | Designer + Aurora 跑 ChatGPT 测试 | full | poster-user-test | 已有 8 张海报（poster-v1~v6 + xhs-posters）但没跑过 poster-user-test。skill 是 Custom GPT 用 vision 让 3 个 persona（A 创业者 + B 转型者 + C 学生其中一个邻圈）反应。gap 是 Aurora / Summer 没人配置过这个 Custom GPT。海报发出去之前必须过 user-test 否则发到小红书" |
-| T-21（topic 审）→ T-14（直播） | 第 1 场试听讲座 topic 审核 + Webinar 报名页 + 公开预热 | Mason 主持 + Aurora 渠道宣发 | full | webinar-topic-feasibility + speaker-invitation-kit | PROMOTION_PLAN 已写「零基础 30 分钟做出第一个网页」候选 topic。skill 齐全（10 维度评分 ≥ 80 才能开）。gap 是讲座流程没有 SOP：(1) 报名页用 admin 哪个 mock-test/event 模板还没定 (2) 直播平台是视频号 vs 小鹅通 vs B 站没拍 (3) 讲座 deck 用 classroom-deck-builder 跑过但内容 r |
+| T-21（topic 审）→ T-14（直播） | 第 1 场试听讲座 topic 审核 + Webinar 报名页 + 公开预热 | Beta 主持 + Aurora 渠道宣发 | full | webinar-topic-feasibility + speaker-invitation-kit | PROMOTION_PLAN 已写「零基础 30 分钟做出第一个网页」候选 topic。skill 齐全（10 维度评分 ≥ 80 才能开）。gap 是讲座流程没有 SOP：(1) 报名页用 admin 哪个 mock-test/event 模板还没定 (2) 直播平台是视频号 vs 小鹅通 vs B 站没拍 (3) 讲座 deck 用 classroom-deck-builder 跑过但内容 r |
 | T-21 + T-14（每周 1 篇） | 公众号长文 2 篇预热 — 「零基础做出产品的真实故事」+ 「AI Coding 工具谱 33 选」 | Marketing 文案（待补，PROMOTION_PLAN §5 标 — — 缺岗 🚨） | full | blog-longform-writer + wechat-article-quality | skill 完整（含 9 维度审 + 5 类内容结构 A/B/C/D/E 推广文判定）。gap 是 PROMOTION_PLAN §5 RACI 表标 Marketing 文案"—"未指派人。33 工具谱 ground truth 在 content.ts QUICK_STATS 里写好但没人去把工具名 + 用途 + 案例做成长文。1500-3000 字深度长文需要时间，T-21 之前没起稿来不及 |
-| T-28（与 launch date 同步定） | 营销日历 + KPI baseline 设定 — 50/80/120 三档 target 反推渠道 UV | Aurora + Lightman | partial | course-promotion-architect (init mode) | PROMOTION_PLAN §2 已给反推公式（5% 主课转化 × 5 渠道分配权重）但全部标⚠️示例占位"。skill 能在确定 launch+target 后展开完整时间轴 T-21→D+30。gap 是 baseline 数字没有历史数据可参考：(1) 02 期实际渠道分布转化率没人去 GTM / GA4 拉 (2) 当前 50/80/120 是猜的，需要 Mason 评估 Faculty |
+| T-28（与 launch date 同步定） | 营销日历 + KPI baseline 设定 — 50/80/120 三档 target 反推渠道 UV | Aurora + Lightman | partial | course-promotion-architect (init mode) | PROMOTION_PLAN §2 已给反推公式（5% 主课转化 × 5 渠道分配权重）但全部标⚠️示例占位"。skill 能在确定 launch+target 后展开完整时间轴 T-21→D+30。gap 是 baseline 数字没有历史数据可参考：(1) 02 期实际渠道分布转化率没人去 GTM / GA4 拉 (2) 当前 50/80/120 是猜的，需要 Beta 评估 Faculty |
 | T-14 ~ T-7（02 期接近毕业窗口） | 02 期老学员唤醒 — 进阶班 upsell + 朋友圈裂变 + 内推奖励机制 | Beta 教务 + Amelia 1v1 + Aurora 设计奖励 | none |  | 02 期 113 lessons 完成后学员是最暖的 lead，但当前没有"老学员 → 03 期推荐 → 升级进阶班"机制。没 skill 覆盖。gap：(1) 02 期学员上完基础班是否给进阶班升级折扣未定 (2) 内推 03 期一人奖励什么没定（积分 / 现金返点 / 1v1 时间）(3) 朋友圈裂变物料（结业证书 + 一句话 + 03 期 referral link）没生产 |
 | T-14 ~ T-7（讲座前必须就绪） | EOI 三道闸 SOP 演练 + 课程顾问话术库 + 24h SLA 监控仪表盘 | Neomi 派单 + Amelia/Rain/Angela 顾问 + Aurora 监控 | full | eoi-followup | skill 完整（24h/72h/7d + 4 mode intake/status/script/roi + 4 角色映射）。gap 是落地：(1) 顾问话术库 — 针对零基础人群的 Top 5 异议（我不会编程 / 时间不够 / 工具太贵 / 学完没用 / 比 ChatGPT 强在哪）没沉淀真实话术 (2) 24h SLA 监控当前没仪表盘看 (3) curriculum/events/ai- |
-| T-21 ~ T-14 | Faculty 邀请 + 实名露出 + 1 节大师课视频生产 | Mason 邀请 + Designer 出头像 + Dev 在销售页加 Faculty sectio | partial | speaker-invitation-kit | ai-solo-founder-bootcamp 的双护城河之一是 Faculty mentorship（8 类讲师 $43-176k AUD 价值）。ai-programming 销售页当前 0 Faculty 露出 vs ai-engineer-bootcamp 已有。skill 覆盖讲师邀请话术。gap：(1) 谁是 ai-programming 的 Faculty 还没定（Mason 1  |
+| T-21 ~ T-14 | Faculty 邀请 + 实名露出 + 1 节大师课视频生产 | Beta 邀请 + Designer 出头像 + Dev 在销售页加 Faculty sectio | partial | speaker-invitation-kit | ai-solo-founder-bootcamp 的双护城河之一是 Faculty mentorship（8 类讲师 $43-176k AUD 价值）。ai-programming 销售页当前 0 Faculty 露出 vs ai-engineer-bootcamp 已有。skill 覆盖讲师邀请话术。gap：(1) 谁是 ai-programming 的 Faculty 还没定（Beta 1  |
 | T-28 ~ T-21 | 渠道账号矩阵预热盘点 — 即刻 / 视频号 / Boss 直聘 / B 站 | Aurora | none |  | PROMOTION_PLAN §3 列了 7 个启用渠道（小红书 / 公众号 / 讲座 / 海报 / SEO / 销售页 / EOI）但漏掉零基础创业者强相关的：(1) 即刻 — 独立开发者 / 创业者聚集地（持续低频发声养号 14 天才有人看）(2) 视频号 — 公众号绑定可联动 (3) Boss 直聘 — 不是招岗位是反向运营，让 HR 看到"我们教零基础做产品"。当前 76 skill 没覆 |
 | T-14（销售页改完最后必须过 Lightman 红线审） | 课程承诺红线复审 + 销售页文案 audit（防"包做出 / 副业 / 月入"违规） | Lightman 终审 + Aurora 出 audit checklist | partial | wechat-article-quality + xhs-review (违禁词) | CLAUDE.md 明确铁律「禁止承诺金钱结果 + 禁用"副业"一词」。02 期已上线但销售页 / 海报 / 小红书草稿是否扫过红线没记录。xhs-review 覆盖小红书违禁词，wechat-article-quality 覆盖公众号合规，但**销售页本身**没有专门的红线 audit skill。gap：(1) content.ts 全文扫一遍 (2) 海报 v1-v6 文案逐张扫 (3) 公 |
 
 #### Phase PHASEA gaps_summary
 
 - **[P0] 03 期开课日 + target 人数没拍板 = 所有时间轴无法展开** — FUNNEL_PLAN 标红色阻塞、PROMOTION_PLAN §2 数字全部⚠️占位、销售页让用户看不到上车窗口。Lightman 不拍板 launch date，Marketing 团队接下来 4 周都是"等"状态。海报"剩余名额"压力点 / EOI 7d 截止日 / 老学员唤醒窗口全部依赖此决策。每多等 1 周 03 期可招生时间就少 1 周
-  → 流程 SOP — 设立"Bootcamp 开课日决策会"机制：每个 Bootcamp 在前一期开课中点（02 期 W3）就要锁下一期 launch date。Lightman + Aurora + Mason 三方 30min 会议拍板 launch date + target + 早鸟截止 + 报名截止。结论落 FUNNEL_PLAN.md §0 Meta 表
+  → 流程 SOP — 设立"Bootcamp 开课日决策会"机制：每个 Bootcamp 在前一期开课中点（02 期 W3）就要锁下一期 launch date。Lightman + Aurora + Beta 三方 30min 会议拍板 launch date + target + 早鸟截止 + 报名截止。结论落 FUNNEL_PLAN.md §0 Meta 表
 
 - **[P0] 02 期校友作品 + Testimonial 采集 SOP 缺失 = 销售页 OFFER WALL 做不出来** — ai-engineer-bootcamp v1.6 加 5 张 OFFER 截图大幅提转化是数据已验证的杀招。ai-programming 现在 0 校友作品上销售页。零基础人群最大异议"我能不能学会"只能靠"看到跟我一样的人做出来"破除。02 期 113 lessons 跑完了但没人去收集作品 = 错过最佳采集窗口。03 期开课后再回去找 02 期学员配合度会断崖下跌
   → 新建 skill `cohort-graduate-portfolio-collector` — 每期 Bootcamp 进入最后 2 周自动触发：(1) 给学员发授权同意表 (2) 收集 4 大交付物 URL + 1 句 testimonial + 头像 (3) Designer 出标准化 OFFER WALL 卡片 (4) 自动 wire 到 content.ts。覆盖所有 Bootcamp 不只 ai-programming
 
 - **[P0] PERSONAS GT 0.55 是阈值刚过 = marketing 物料文案信不过** — 痛点 Top 3 / 异议 Top 3 / 黑名单 / 触发器全是 AI 推测。销售页 hero 原话 / xhs 切角 / 公众号长文标题 / 顾问话术全部基于推测 → 转化率没法对账，A/B 测出来的结论也归因不了。02 期已经开课但没人去访谈学员把真实痛点话术挖出来 = 浪费了最值钱的 ground truth 来源。0.55 → 0.75 是从"能启动"到"能优化"的临界点
-  → 现有 skill wire — target-user-persona-mapper + persona-ground-truth-scraper + INTERVIEW_SCRIPT 工具齐全，但 Mason 没排时间。流程 SOP：每个 Bootcamp 前一期开课中点（02 期 W3）由 Mason 强制完成 5 个学员访谈，落 PERSONAS.md GT 0.75+。访谈+评论 scrape 各占 1 天，是技术债不是技术难题
+  → 现有 skill wire — target-user-persona-mapper + persona-ground-truth-scraper + INTERVIEW_SCRIPT 工具齐全，但 Beta 没排时间。流程 SOP：每个 Bootcamp 前一期开课中点（02 期 W3）由 Beta 强制完成 5 个学员访谈，落 PERSONAS.md GT 0.75+。访谈+评论 scrape 各占 1 天，是技术债不是技术难题
 
-- **[P1] 营销文案岗位空缺 = 公众号 / 销售页文案产出无 owner** — PROMOTION_PLAN.md §5 RACI 表 Marketing 文案标"—"明确缺岗。公众号长文 2 篇 / 销售页改版 / 海报文案 / OFFER WALL testimonial 改写都需要专人，当前都摊到 Mason / Aurora 头上 = 必然延期。每周 1-2 篇公众号长文是 Type 2 课程基线必交付物，没文案 = 渠道 §3 第 2 项直接哑火
-  → 数据系统 + 流程 SOP — (1) HR 短期补一个 Marketing 文案岗位（哪怕兼职）(2) 临时方案：blog-longform-writer skill 让 Aurora / Lightman 直接跑产出初稿，Mason 审 (3) 长期：在 PROMOTION_PLAN.md RACI 表加"缺岗预警 🚨"列，缺岗的 task 自动标 BLOCKED 防止排期假装满
+- **[P1] 营销文案岗位空缺 = 公众号 / 销售页文案产出无 owner** — PROMOTION_PLAN.md §5 RACI 表 Marketing 文案标"—"明确缺岗。公众号长文 2 篇 / 销售页改版 / 海报文案 / OFFER WALL testimonial 改写都需要专人，当前都摊到 Beta / Aurora 头上 = 必然延期。每周 1-2 篇公众号长文是 Type 2 课程基线必交付物，没文案 = 渠道 §3 第 2 项直接哑火
+  → 数据系统 + 流程 SOP — (1) HR 短期补一个 Marketing 文案岗位（哪怕兼职）(2) 临时方案：blog-longform-writer skill 让 Aurora / Lightman 直接跑产出初稿，Beta 审 (3) 长期：在 PROMOTION_PLAN.md RACI 表加"缺岗预警 🚨"列，缺岗的 task 自动标 BLOCKED 防止排期假装满
 
 - **[P1] 11 个小红书账号矩阵无人设差异化 SOP = 11 个号发同样内容互相吃量** — Summer + Lily + KIKI 11 个账号是匠人学院最大流量入口，但每个账号的人设 / 受众 / 切角差异化没沉淀文档。3 个 persona（A 创业者 / B 转型者 / C 学生）需要不同账号承接但当前混发 = 算法识别不出账号定位 = 11 个号互相竞争 = ROI 远低于潜力。03 期推广启动 = 流量翻倍 = 这个 gap 会被放大
   → 新建 skill `xhs-account-matrix-positioning` — 输入 11 个账号当前粉丝 / 笔记主题分布 / 互动数据 → 输出每个账号的人设 + 目标 persona + 内容切角 + 禁发清单。一次性梳理产出物：`docs/XHS_ACCOUNT_MATRIX.md`。可以基于 target-user-persona-mapper export-channels 模式
 
 - **[P1] 课程顾问零基础人群异议话术库为空 = EOI 转化卡在 Top 5 异议** — Amelia / Rain / Angela 课程顾问跟进 EOI 时遇到的 Top 5 异议（我不会编程 / 时间不够 / 工具太贵 / 学完没用 / 比 ChatGPT 强在哪）当前各自靠经验回答。没沉淀文档 = 新顾问 ramp-up 慢 / 回答口径不统一 / 红线话术（不承诺找工作 / 不承诺金钱）漂移风险。eoi-followup skill 提到 script mode 但实际话术内容空
-  → 现有 skill wire + 数据系统 — (1) Amelia 把过去 02 期 EOI 跟进真实对话整理出 Top 5 异议真实出现频次 (2) Mason + Aurora 一起出标准回答 + 红线 (3) 落 curriculum/ai-programming/CONSULTANT_PLAYBOOK.md (4) eoi-followup skill script mode 直接读这个文件
+  → 现有 skill wire + 数据系统 — (1) Amelia 把过去 02 期 EOI 跟进真实对话整理出 Top 5 异议真实出现频次 (2) Beta + Aurora 一起出标准回答 + 红线 (3) 落 curriculum/ai-programming/CONSULTANT_PLAYBOOK.md (4) eoi-followup skill script mode 直接读这个文件
 
 
 ### Phase B · 招生期 (stage: 招生期 (T-7 to D0) — 开课前 7 天高压招生窗口 + 开学典礼当天)
@@ -308,18 +308,18 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 | When | Task | Owner | Coverage | Existing Skill | Gap |
 |------|------|-------|----------|--------------|-----|
 | T-7 周一 09:00 | T-7 倒计时 banner 上线 + 销售页全局插入「03 期 X 月 X 日开课，仅剩 N 席」 | Dev + Marketing 文案（Aurora 拍板） | partial | course-custom-landing | course-custom-landing 是 Mode B 改销售页内容/FAQ/hero 文案，但没有专门的「倒计时 banner 组件 + 实时席位计数」模块。当前 ai-programming content.ts 只有静态「前 10 名」标签，无真实倒计时。需新建 CountdownBanner 通用组件 + admin 配置后台（cohort.commenceCourseDate +  |
-| T-7 周一 14:00（与正课开课同步开放报名） | T-7 启动 ¥99 引流课「3 天用 Claude Cowork 做出第一个 PPT 网站」 | Mason（课程主理人）+ Dev（落地页） | full | intro-course-design | intro-course-design skill 已覆盖引流课 deliverable / 3 节直播 / 1 个 Lab 设计 + FUNNEL_PLAN.md §3 选项 B 推荐做。但 ai-programming/ 目前没真起跑（FUNNEL_PLAN 列为「未做」）— skill 在但人没动手。 |
-| T-7 周二 19:30（晚上黄金时段，对标朋友圈下班后传播 | T-7 公开试听讲座「零基础 30 min 做出第一个网页」直播 + 录屏存档 | Mason 主讲 + Summer/Lily 直播间运营 | partial | webinar-topic-feasibility | webinar-topic-feasibility 只审 topic 能不能爆（10 维度评分），不覆盖：(1) 直播间 SOP（开播前 30min 设备 checklist / 答题板 / 引导加微信话术）(2) 直播间转化 CTA 节奏（每 15min 一次 ApplyForm 弹窗）(3) 录屏剪辑发回放规范。需要新建 webinar-live-sop skill 或扩展 offline-e |
-| T-7 至 T-1 每日 09:30 群发 + 14:00  | T-7 → T-1 七天 nurture 序列内容生产 + 自动化群发（每日 1 案例 + 1 工具 SOP） | Summer / Lily / KIKI 三人轮值 + Mason 内容审校 | partial | funnel-handoff-design | funnel-handoff-design 是「引流课买完→主课」的 7 天反推销序列（D0-D7 用户已付费），不是「加微信→报正课」的招生期序列。当前 PROMOTION_PLAN.md 未做 7 天序列，需扩展 funnel-handoff-design 增加 pre-enrollment 模式，或新建 pre-enrollment-nurture-sequence skill 输出 7 篇 |
+| T-7 周一 14:00（与正课开课同步开放报名） | T-7 启动 ¥99 引流课「3 天用 Claude Cowork 做出第一个 PPT 网站」 | Beta（课程主理人）+ Dev（落地页） | full | intro-course-design | intro-course-design skill 已覆盖引流课 deliverable / 3 节直播 / 1 个 Lab 设计 + FUNNEL_PLAN.md §3 选项 B 推荐做。但 ai-programming/ 目前没真起跑（FUNNEL_PLAN 列为「未做」）— skill 在但人没动手。 |
+| T-7 周二 19:30（晚上黄金时段，对标朋友圈下班后传播 | T-7 公开试听讲座「零基础 30 min 做出第一个网页」直播 + 录屏存档 | Beta 主讲 + Summer/Lily 直播间运营 | partial | webinar-topic-feasibility | webinar-topic-feasibility 只审 topic 能不能爆（10 维度评分），不覆盖：(1) 直播间 SOP（开播前 30min 设备 checklist / 答题板 / 引导加微信话术）(2) 直播间转化 CTA 节奏（每 15min 一次 ApplyForm 弹窗）(3) 录屏剪辑发回放规范。需要新建 webinar-live-sop skill 或扩展 offline-e |
+| T-7 至 T-1 每日 09:30 群发 + 14:00  | T-7 → T-1 七天 nurture 序列内容生产 + 自动化群发（每日 1 案例 + 1 工具 SOP） | Summer / Lily / KIKI 三人轮值 + Beta 内容审校 | partial | funnel-handoff-design | funnel-handoff-design 是「引流课买完→主课」的 7 天反推销序列（D0-D7 用户已付费），不是「加微信→报正课」的招生期序列。当前 PROMOTION_PLAN.md 未做 7 天序列，需扩展 funnel-handoff-design 增加 pre-enrollment 模式，或新建 pre-enrollment-nurture-sequence skill 输出 7 篇 |
 | T-7 起持续运行至 D-1（招生期 SLA 比平时缩短到  | T-7 EOI 收单 → 课程顾问派单 + 24h/72h/7d SLA 启动 | Neomi（销售助理派单）+ Amelia / Rain / Angela（课程顾问 1v1） | full | eoi-followup | eoi-followup skill 覆盖完整（24h/72h/7d 三道闸 + 4 mode intake/status/script/roi + 4 角色映射）。落盘到 curriculum/events/{slug}/eoi.json — 但 ai-programming 是 bootcamp 不是 event，路径要适配 curriculum/ai-programming/cohort-0 |
-| T-5 周四 11:00 上线（赶上下班前最后一波咨询） | T-5 三档定价决策辅助页「我该选哪个」+ 课程顾问统一话术 | Mason（决策树设计）+ Amelia（话术）+ Dev（页面） | partial | main-course-tier-design | main-course-tier-design 是设计三档定价结构（自学/教学/陪跑），但 ai-programming 当前只有 2 档（基础 6 周 / 进阶 8 周，FUNNEL_PLAN 不推 C 选项）。需要的是「2 档选择题」决策树 + Q&A（编程基础 / 时间 / 目标 / 预算 4 个分支）— skill 没覆盖。建议新建 tier-selection-helper skill  |
+| T-5 周四 11:00 上线（赶上下班前最后一波咨询） | T-5 三档定价决策辅助页「我该选哪个」+ 课程顾问统一话术 | Beta（决策树设计）+ Amelia（话术）+ Dev（页面） | partial | main-course-tier-design | main-course-tier-design 是设计三档定价结构（自学/教学/陪跑），但 ai-programming 当前只有 2 档（基础 6 周 / 进阶 8 周，FUNNEL_PLAN 不推 C 选项）。需要的是「2 档选择题」决策树 + Q&A（编程基础 / 时间 / 目标 / 预算 4 个分支）— skill 没覆盖。建议新建 tier-selection-helper skill  |
 | T-3 周六 18:00 启动 + 23:30 last c | T-3 早鸟截止机制 + 临门一脚朋友圈刷屏（「今晚 23:59 涨价 ¥100」） | Aurora 拍板涨幅 + Summer/Lily/KIKI 朋友圈三轮发布 + 课程顾问 1v1  | none |  | 当前 76+ skill 没有「紧迫感设计 + 涨价倒计时 + 朋友圈刷屏 SOP」覆盖。FUNNEL_PLAN.md §3 选项 A 提过「前 10 名实时倒计时（防止假紧迫感被识破）」但没有 skill 实现。课程承诺红线（不夸大不虚假紧迫感）+ 早鸟价合规边界 需要 SOP。建议新建 enrollment-urgency-sop skill：早鸟价梯度 / 真实剩余席位显示规则 / 朋友圈刷 |
-| T-3 周日 14:00-16:00（周末下午刷小红书黄金  | T-3 公开 1v1 答疑直播（CTO 时间 / Office Hour，解决报名前最后疑虑） | Mason 主答 + Amelia/Rain 蹲守评论区 + 销售助理实时派单 | none |  | 没有现成 skill 覆盖「招生期 Office Hour 形式 / 提问引导 / 转化埋点」。webinar-topic-feasibility 只审讲座 topic 评分，不覆盖 1v1 答疑形式。这是高转化但高成本动作（Mason 2h），需要 SOP 把每个高意向问题落到 EOI 数据库 + 24h 派单。建议新建 enrollment-office-hour-sop skill。 |
-| T-1 周一 10:00（开课前最后一天降焦虑） | T-1 退费政策公示 + 学员焦虑安抚 FAQ 加 5 条「我担心 X 怎么办」 | Aurora（政策文案）+ Mason（内容焦虑）+ Dev（销售页 FAQ section 加） | partial | course-custom-landing | course-custom-landing 能改 FAQ，但「退费政策 + 焦虑安抚」是 legal + emotional 双重内容，当前 6 条 FAQ 都偏功能性（编程基础/时间/工具费/方式/学完做什么/双班选择），缺「我学不会怎么办 / 跟不上节奏怎么办 / 7 天无理由退费」三件套。skill 没有「焦虑安抚 FAQ 模板库」，需扩展 course-custom-landing 增加  |
+| T-3 周日 14:00-16:00（周末下午刷小红书黄金  | T-3 公开 1v1 答疑直播（CTO 时间 / Office Hour，解决报名前最后疑虑） | Beta 主答 + Amelia/Rain 蹲守评论区 + 销售助理实时派单 | none |  | 没有现成 skill 覆盖「招生期 Office Hour 形式 / 提问引导 / 转化埋点」。webinar-topic-feasibility 只审讲座 topic 评分，不覆盖 1v1 答疑形式。这是高转化但高成本动作（Beta 2h），需要 SOP 把每个高意向问题落到 EOI 数据库 + 24h 派单。建议新建 enrollment-office-hour-sop skill。 |
+| T-1 周一 10:00（开课前最后一天降焦虑） | T-1 退费政策公示 + 学员焦虑安抚 FAQ 加 5 条「我担心 X 怎么办」 | Aurora（政策文案）+ Beta（内容焦虑）+ Dev（销售页 FAQ section 加） | partial | course-custom-landing | course-custom-landing 能改 FAQ，但「退费政策 + 焦虑安抚」是 legal + emotional 双重内容，当前 6 条 FAQ 都偏功能性（编程基础/时间/工具费/方式/学完做什么/双班选择），缺「我学不会怎么办 / 跟不上节奏怎么办 / 7 天无理由退费」三件套。skill 没有「焦虑安抚 FAQ 模板库」，需扩展 course-custom-landing 增加  |
 | D-1 周二全天（确认已付款名单 → 拉群 → 群公告 →  | D-1 学员入营仪式准备：欢迎邮件 + 微信群拉群 + 班委自我介绍模板 | Neomi（群管）+ Beta（教务）+ 学习陪伴助教（待招或 Aurora 兼） | none |  | 完全没有覆盖。当前 76+ skill 里 employee-onboarding 是「公司新员工」入职，不是「Bootcamp 学员入营」。需要新建 student-cohort-onboarding-sop skill 覆盖：(1) 已付款学员 Welcome Email 模板（个性化称呼 + Day 1 学习路径 + 群入口 QR）(2) 微信群命名规则 + 群公告模板 + 群规 (3) 班 |
-| D0 周三 19:30-21:00（晚上下班后开学典礼） | D0 开学典礼 / Welcome Workshop（90 min 直播 + 录屏存档给后报学员） | Mason 主持 + Aurora 致欢迎辞 + Lightman 远程问候 + 助教介绍 | partial | classroom-deck-builder | classroom-deck-builder 能做 Quest 课的 deck + ElevenLabs 配音 + 主动讲解动作，但开学典礼是「破冰 + 期待管理 + 学习路径预告 + 师资亮相」组合形式，不是单节 Quest。需扩展 classroom-deck-builder 增加 kickoff-ceremony mode，或新建 cohort-kickoff-ceremony skill： |
+| D0 周三 19:30-21:00（晚上下班后开学典礼） | D0 开学典礼 / Welcome Workshop（90 min 直播 + 录屏存档给后报学员） | Beta 主持 + Aurora 致欢迎辞 + Lightman 远程问候 + 助教介绍 | partial | classroom-deck-builder | classroom-deck-builder 能做 Quest 课的 deck + ElevenLabs 配音 + 主动讲解动作，但开学典礼是「破冰 + 期待管理 + 学习路径预告 + 师资亮相」组合形式，不是单节 Quest。需扩展 classroom-deck-builder 增加 kickoff-ceremony mode，或新建 cohort-kickoff-ceremony skill： |
 | D0 21:00-22:00（开学典礼结束立刻进群完成） | D0 学员入群破冰 + 班委选举 + Day 1 作业派发（开学第一天活跃度引爆） | Beta 群管 + 助教（每 10 人 1 个）+ 班长候选人 | none |  | 和 task 10 同根问题：没有 student-cohort-onboarding-sop skill。破冰仪式（4 句话自我介绍模板：地点+职业+想做的产品+期待）+ 班委选举 SOP（自荐 + 投票 + 任期）+ Day 1 作业（30 min 内完成的小任务，制造正反馈）— 全靠经验，新员工接手就翻车。这是完课率（招生期 KPI 的延伸）的核心抓手。 |
-| D0 晚 22:00 群内统一 + 1v1 推送 | D0 晚 22:00 学习路径个性化派发（基础 vs 进阶分流 + 推荐学习节奏） | Mason + 助教 | partial | learning-journey | learning-journey skill 描述里没明确覆盖「cohort kickoff 当天个性化路径派发」场景。当前 outline.json 113 lessons 大纲清晰，但学员第一次看会被吓到。需要扩展 learning-journey 增加 personalize-by-tier mode（基础班 vs 进阶班分流推荐顺序）+ 「第一周必看 / 选看 / 后看」分级，让零基础学员 |
+| D0 晚 22:00 群内统一 + 1v1 推送 | D0 晚 22:00 学习路径个性化派发（基础 vs 进阶分流 + 推荐学习节奏） | Beta + 助教 | partial | learning-journey | learning-journey skill 描述里没明确覆盖「cohort kickoff 当天个性化路径派发」场景。当前 outline.json 113 lessons 大纲清晰，但学员第一次看会被吓到。需要扩展 learning-journey 增加 personalize-by-tier mode（基础班 vs 进阶班分流推荐顺序）+ 「第一周必看 / 选看 / 后看」分级，让零基础学员 |
 | T-7 至 D0 每日 21:00 复盘 + 周一晨会 | T-7 至 D0 招生期每日 KPI 看板（UV / EOI / 付款 / 转化率）+ 21:00 复盘会 | Aurora 主持 + Neomi（EOI 数据）+ Dev（埋点数据） | partial | course-promotion-architect | course-promotion-architect 有 weekly mode（晨会）但没有「招生期日报 SOP」。当前没有：(1) 招生期专用 dashboard（销售页 UV / EOI 收单 / 付款转化 / 24h 跟进完成率 4 个核心指标）(2) 21:00 每日复盘 15 min 会议议程模板 (3) gap > 20% 自动触发 rescue 流程。建议新建 enrollment |
 
 #### Phase PHASEB gaps_summary
@@ -342,7 +342,7 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 - **[P1] 退费政策 + 焦虑安抚 FAQ + 澳洲 ACL 合规缺失** — ai-programming 销售页 6 条 FAQ 都偏功能性，缺「学不会怎么办 / 退费政策 / 7 天冷静期」三件套。澳洲消费者法（ACL）对教育产品有冷静期要求，没合规文案 = 一旦学员投诉 ACCC 或申请 chargeback，平台输官司 + 信用受损。零基础人群本来焦虑就高，没退费保障直接劝退 30% 高意向 lead。
   → 扩展现有 skill: course-custom-landing 增加 anxiety-FAQ + refund-policy 模板（合规法务联审），或新建 refund-policy-page skill（澳洲 ACL + 中国消费者权益法双合规）。
 
-- **[P2] 直播间 SOP（公开试听讲座 + Office Hour）缺失** — webinar-topic-feasibility 只做事前 topic 评分，不覆盖直播执行（开播前 30min checklist / 答题板节奏 / CTA 弹窗时机 / 录屏剪辑 / 回放发送）。Mason 一个人主讲 + 没助理，开播 5 min 卡机或 CTA 时机错过 = 整场流量浪费。试听讲座是招生期最大单点流量来源，没 SOP 不可复制（Mason 病了下场不能播）。
+- **[P2] 直播间 SOP（公开试听讲座 + Office Hour）缺失** — webinar-topic-feasibility 只做事前 topic 评分，不覆盖直播执行（开播前 30min checklist / 答题板节奏 / CTA 弹窗时机 / 录屏剪辑 / 回放发送）。Beta 一个人主讲 + 没助理，开播 5 min 卡机或 CTA 时机错过 = 整场流量浪费。试听讲座是招生期最大单点流量来源，没 SOP 不可复制（Beta 病了下场不能播）。
   → 新建 skill: webinar-live-sop（开播前 30min checklist / 直播间分工 / CTA 节奏表 / 录屏剪辑模板 / 回放发送话术），或扩展 offline-event-sop 增加 online webinar 形态分支。
 
 
@@ -393,20 +393,20 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 
 | When | Task | Owner | Coverage | Existing Skill | Gap |
 |------|------|-------|----------|--------------|-----|
-| D+7（结课后 1 周内） | 02 期 cohort 复盘报告（完课率 / NPS / 翻车点 / 学员问卷） | Mason（课程主理人）+ Beta（教务）+ Aurora（拉问卷数据） | partial | course-promotion-architect (Mode E postmortem) | promotion-architect 的 postmortem 只覆盖『渠道转化数据回填 + 3 条 lessons learned』。它不包含『学员维度复盘』：113 lessons 的完课率分布、每个 lesson 的卡点、问卷设计（NPS / CSAT / 续费意向 / 推荐意向）、学员逐字反馈聚合、翻车 lesson 标记。当前 `AUDIT_LOG.md` 模板也只记决策日志不是 co |
-| D+7 ~ D+14 | OFFER WALL / 学员真实作品集收集（4 大交付物 × 02 期学员） | Mason + Aurora + Designer | none |  | ai-engineer-bootcamp v1.6 销售页有 5 张校友 OFFER 截图模式（PROMOTION_PLAN §0.5 明确指出 ai-programming 还没做）。需要的能力：(1) 群发学员收集作品授权（PPT/PDF/Landing Page/60s 视频 4 类）；(2) 脱敏处理（去掉客户名/真实公司数据）；(3) 统一缩略图风格出 wall；(4) 同步到 cont |
-| D+10 ~ D+21 | Testimonial 视频拍摄 / Vlog 邀请 3-5 位代表学员 | Aurora + Seren + 视频剪辑（外部 / Mason 内部） | none |  | PERSONAS A/B/C 三类各挑 1-2 人拍 30-60s vlog（『我之前完全不懂代码，6 周做出了 X』）→ 销售页 + 小红书 + 公众号复用。当前 skill 矩阵里：speaker-invitation-kit 是邀讲师不是学员；offline-event-* 是线下活动；没有『学员 testimonial 拍摄 brief + 问题清单 + 授权书 + 剪辑 spec』ski |
-| D+7（趁热）+ D+30（second touch） | 基础班 → 进阶班 续费转化机制（02 期已结业学员定向） | Mason + Amelia（课程顾问）+ Lightman 定价审批 | partial | main-course-tier-design | main-course-tier-design 覆盖『三档定价设计』但是**预售期的事**。这里需要的是『已结业基础班 → 续报进阶班』的转化机制：续报折扣（$1360 → 老学员价？）/ 推荐礼 / 进阶班试听课 / 已学知识衔接保证。FUNNEL_PLAN.md 当前只到 D0 不覆盖『同课程内的两档升级路径』。建议扩 main-course-tier-design 增『同学院老学员升级 SO |
+| D+7（结课后 1 周内） | 02 期 cohort 复盘报告（完课率 / NPS / 翻车点 / 学员问卷） | Beta（课程主理人）+ Beta（教务）+ Aurora（拉问卷数据） | partial | course-promotion-architect (Mode E postmortem) | promotion-architect 的 postmortem 只覆盖『渠道转化数据回填 + 3 条 lessons learned』。它不包含『学员维度复盘』：113 lessons 的完课率分布、每个 lesson 的卡点、问卷设计（NPS / CSAT / 续费意向 / 推荐意向）、学员逐字反馈聚合、翻车 lesson 标记。当前 `AUDIT_LOG.md` 模板也只记决策日志不是 co |
+| D+7 ~ D+14 | OFFER WALL / 学员真实作品集收集（4 大交付物 × 02 期学员） | Beta + Aurora + Designer | none |  | ai-engineer-bootcamp v1.6 销售页有 5 张校友 OFFER 截图模式（PROMOTION_PLAN §0.5 明确指出 ai-programming 还没做）。需要的能力：(1) 群发学员收集作品授权（PPT/PDF/Landing Page/60s 视频 4 类）；(2) 脱敏处理（去掉客户名/真实公司数据）；(3) 统一缩略图风格出 wall；(4) 同步到 cont |
+| D+10 ~ D+21 | Testimonial 视频拍摄 / Vlog 邀请 3-5 位代表学员 | Aurora + Seren + 视频剪辑（外部 / Beta 内部） | none |  | PERSONAS A/B/C 三类各挑 1-2 人拍 30-60s vlog（『我之前完全不懂代码，6 周做出了 X』）→ 销售页 + 小红书 + 公众号复用。当前 skill 矩阵里：speaker-invitation-kit 是邀讲师不是学员；offline-event-* 是线下活动；没有『学员 testimonial 拍摄 brief + 问题清单 + 授权书 + 剪辑 spec』ski |
+| D+7（趁热）+ D+30（second touch） | 基础班 → 进阶班 续费转化机制（02 期已结业学员定向） | Beta + Amelia（课程顾问）+ Lightman 定价审批 | partial | main-course-tier-design | main-course-tier-design 覆盖『三档定价设计』但是**预售期的事**。这里需要的是『已结业基础班 → 续报进阶班』的转化机制：续报折扣（$1360 → 老学员价？）/ 推荐礼 / 进阶班试听课 / 已学知识衔接保证。FUNNEL_PLAN.md 当前只到 D0 不覆盖『同课程内的两档升级路径』。建议扩 main-course-tier-design 增『同学院老学员升级 SO |
 | D+7 ~ D+14（结业气氛最热时） | 老带新 / 推荐奖励机制设计 + 落地（学员推荐学员） | Aurora + Lightman + Dev（埋点） | none |  | AUD $860/$1360 客单价 + 零基础人群（PERSONAS A/B 决策依赖『身边人推荐』ground truth）→ 老带新 ROI 极高。需要的能力：推荐人奖励档位（现金 vs 抵扣券）/ 被推荐人优惠 / 推荐链接生成 / 后端 attribution / 防刷规则。当前 0 skill 覆盖，FUNNEL_PLAN.md 也没列。**P1 gap** — 不解决就只能靠付费投放 |
-| 持续（D+7 起每周 1 次输出） | 已结业 alumni 社群维护（不让学员走丢 / 持续输出价值） | Mason + Beta（教务）+ Summer（内容代发） | partial | daily-jobs | daily-jobs 每天往学员侧 `/ai-jobs` 推 AU+CN 岗位（已在跑）但**只是岗位**，不是 alumni 群运营内容。alumni 群需要：每周精选 AI 工具 / 学员作品 spotlight / 行业新闻 / 群答疑沉淀。课程运营反原则明确禁止『群公告内容工厂』，但 alumni 群属于『从外部世界拉价值给学员』允许。当前**无 skill 覆盖『alumni 内容周报生 |
-| D+14 ~ D+21（确定 03 期日期后） | 03 期招生提前预告 + 销售页加『上期同学反馈 / 这期改了什么』 | Mason 拍板改进点 + Aurora 出推广文案 + Dev 改 content.ts | partial | course-custom-landing (Mode B 迭代) | course-custom-landing Mode B 覆盖『已有 landing 迭代』，能做 hero / FAQ / 价格更新。但『上期翻车点 → 这期改进』的**叙事板块**（『02 期同学反馈进度太赶 → 03 期 6 周延到 7 周』这种 honest changelog）不是它的 strength。PROMOTION_PLAN.md 当前 03 期开课倒计时 banner 也标 ` |
-| D+14（问卷数据回收后） | PERSONAS.md 用 02 期真实 cohort 数据 refresh（v0.55 → v0.80） | Mason + Aurora | full | target-user-persona-mapper | target-user-persona-mapper 有 `refresh` mode 专门做这事（『半年后用真实数据替换 AI 推测』）。当前 PERSONAS.md GT 0.55 是『刚过阈值』，02 期问卷 + 群聊记录 + 真实退款理由 → 直接喂进 refresh mode 升到 0.75-0.80。**zero gap**，会做但要等 cohort 复盘数据先出。 |
+| 持续（D+7 起每周 1 次输出） | 已结业 alumni 社群维护（不让学员走丢 / 持续输出价值） | Beta + Beta（教务）+ Summer（内容代发） | partial | daily-jobs | daily-jobs 每天往学员侧 `/ai-jobs` 推 AU+CN 岗位（已在跑）但**只是岗位**，不是 alumni 群运营内容。alumni 群需要：每周精选 AI 工具 / 学员作品 spotlight / 行业新闻 / 群答疑沉淀。课程运营反原则明确禁止『群公告内容工厂』，但 alumni 群属于『从外部世界拉价值给学员』允许。当前**无 skill 覆盖『alumni 内容周报生 |
+| D+14 ~ D+21（确定 03 期日期后） | 03 期招生提前预告 + 销售页加『上期同学反馈 / 这期改了什么』 | Beta 拍板改进点 + Aurora 出推广文案 + Dev 改 content.ts | partial | course-custom-landing (Mode B 迭代) | course-custom-landing Mode B 覆盖『已有 landing 迭代』，能做 hero / FAQ / 价格更新。但『上期翻车点 → 这期改进』的**叙事板块**（『02 期同学反馈进度太赶 → 03 期 6 周延到 7 周』这种 honest changelog）不是它的 strength。PROMOTION_PLAN.md 当前 03 期开课倒计时 banner 也标 ` |
+| D+14（问卷数据回收后） | PERSONAS.md 用 02 期真实 cohort 数据 refresh（v0.55 → v0.80） | Beta + Aurora | full | target-user-persona-mapper | target-user-persona-mapper 有 `refresh` mode 专门做这事（『半年后用真实数据替换 AI 推测』）。当前 PERSONAS.md GT 0.55 是『刚过阈值』，02 期问卷 + 群聊记录 + 真实退款理由 → 直接喂进 refresh mode 升到 0.75-0.80。**zero gap**，会做但要等 cohort 复盘数据先出。 |
 | D+14（销售数据 + 完课数据齐） | FUNNEL_PLAN.md 真实转化率回写（替换行业基线 5% 假设） | Aurora + Lightman | partial | course-promotion-architect (Mode E postmortem) + c | course-promotion-architect postmortem 明确说『把真实数据更新回 FUNNEL_PLAN.md 让下次 init 不再用行业基线』。但 ai-programming 销售页早就在跑 + 02 期已结业，**这次回写要同时盖：销售期转化（UV→加微→主课）+ 课中（完课率 / lesson 退出节点）+ 课后（NPS / 续费意向 / 老带新）**，跨度比 pos |
-| D+14（复盘会议后） | 内部 AUDIT_LOG.md 写本次 cohort 翻了什么车（教训沉淀） | Mason + Lightman 联合签字 | partial | curriculum-positioning-audit | AUDIT_LOG.md 模板（参考 curriculum/ai-engineer-bootcamp/AUDIT_LOG.md）当前已存在，但 `/curriculum-positioning-audit` 是『漏斗机制翻车风险』预防性扫描，不是『cohort 结束后回写实测翻车』。两者结构不同。当前 AUDIT_LOG.md 是空模板 — 需要 manual fill。建议扩 curriculu |
-| D+21 ~ D+30 | 老学员唤醒到下一门 JR Academy 课（ai-engineer / ai-solo-founder / ai-marketing 等） | Mason + Amelia + Aurora（跨课程协调） | none |  | ai-programming 学员学完后的下一步：(1) 想深入做 AI 产品 → ai-engineer-bootcamp；(2) 想做 AI 创业 → ai-solo-founder；(3) 想做 AI 营销 → ai-marketing。**当前 0 skill 覆盖『学员学习路径设计 + 跨课程 upsell 文案 + 个性化推荐』**。eoi-followup 是 lead → 成交不是 |
-| D+14 ~ D+30 | 海报 / 公众号 / 小红书 加 02 期真实学员案例（content refresh） | Summer / Lily / KIKI（小红书）+ 文案（公众号）+ Designer（海报） | full | xhs-draft + xhs-poster + xhs-review + blog-longfor | skill 全齐：小红书四件套 / 公众号 longform / 海报 user-test。**唯一卡点是『真实学员案例 brief』作为 input**——需要 Mason 提供 5-10 个学员案例文字稿（来自 OFFER WALL task）。skill 之间 wire 完整。零新建 skill 需求。 |
-| D+21（cohort retro + OFFER WALL | Custom landing 销售页加新 cohort data + Faculty 实名 + 校友 OFFER 模块 | Mason 提供 input + Dev 改 content.ts + Designer 出 wal | partial | course-custom-landing (Mode B) | course-custom-landing Mode B 能改 hero/FAQ/价格，但 PROMOTION_PLAN.md §0.5 标了两个具体缺口：(1) Faculty 未列实名（ai-engineer-bootcamp 是有的）；(2) 校友作品 / 反馈未加（OFFER WALL 模式）。Mode B 描述里没写明这两个模块的 wiring spec — 改要靠 Mason 手动指挥 |
-| D+21 ~ T-30（衔接到 03 期推广窗口） | 03 期 cohort 启动前的 promotion-architect rescue / weekly 排期 | Aurora + Mason | full | course-promotion-architect (Mode A init / Mode D w | course-promotion-architect 完全覆盖：postmortem（02 期数据）→ init（03 期 T-30 重启）→ weekly（持续排期）形成闭环。**只是 03 期日期未定阻塞这个 task** — 看 PROMOTION_PLAN.md `03 期 launch date: ⚠️ 待运营/Mason 定`。Skill OK，等业务侧给日期。 |
+| D+14（复盘会议后） | 内部 AUDIT_LOG.md 写本次 cohort 翻了什么车（教训沉淀） | Beta + Lightman 联合签字 | partial | curriculum-positioning-audit | AUDIT_LOG.md 模板（参考 curriculum/ai-engineer-bootcamp/AUDIT_LOG.md）当前已存在，但 `/curriculum-positioning-audit` 是『漏斗机制翻车风险』预防性扫描，不是『cohort 结束后回写实测翻车』。两者结构不同。当前 AUDIT_LOG.md 是空模板 — 需要 manual fill。建议扩 curriculu |
+| D+21 ~ D+30 | 老学员唤醒到下一门 JR Academy 课（ai-engineer / ai-solo-founder / ai-marketing 等） | Beta + Amelia + Aurora（跨课程协调） | none |  | ai-programming 学员学完后的下一步：(1) 想深入做 AI 产品 → ai-engineer-bootcamp；(2) 想做 AI 创业 → ai-solo-founder；(3) 想做 AI 营销 → ai-marketing。**当前 0 skill 覆盖『学员学习路径设计 + 跨课程 upsell 文案 + 个性化推荐』**。eoi-followup 是 lead → 成交不是 |
+| D+14 ~ D+30 | 海报 / 公众号 / 小红书 加 02 期真实学员案例（content refresh） | Summer / Lily / KIKI（小红书）+ 文案（公众号）+ Designer（海报） | full | xhs-draft + xhs-poster + xhs-review + blog-longfor | skill 全齐：小红书四件套 / 公众号 longform / 海报 user-test。**唯一卡点是『真实学员案例 brief』作为 input**——需要 Beta 提供 5-10 个学员案例文字稿（来自 OFFER WALL task）。skill 之间 wire 完整。零新建 skill 需求。 |
+| D+21（cohort retro + OFFER WALL | Custom landing 销售页加新 cohort data + Faculty 实名 + 校友 OFFER 模块 | Beta 提供 input + Dev 改 content.ts + Designer 出 wal | partial | course-custom-landing (Mode B) | course-custom-landing Mode B 能改 hero/FAQ/价格，但 PROMOTION_PLAN.md §0.5 标了两个具体缺口：(1) Faculty 未列实名（ai-engineer-bootcamp 是有的）；(2) 校友作品 / 反馈未加（OFFER WALL 模式）。Mode B 描述里没写明这两个模块的 wiring spec — 改要靠 Beta 手动指挥 |
+| D+21 ~ T-30（衔接到 03 期推广窗口） | 03 期 cohort 启动前的 promotion-architect rescue / weekly 排期 | Aurora + Beta | full | course-promotion-architect (Mode A init / Mode D w | course-promotion-architect 完全覆盖：postmortem（02 期数据）→ init（03 期 T-30 重启）→ weekly（持续排期）形成闭环。**只是 03 期日期未定阻塞这个 task** — 看 PROMOTION_PLAN.md `03 期 launch date: ⚠️ 待运营/Beta 定`。Skill OK，等业务侧给日期。 |
 
 #### Phase PHASED gaps_summary
 
@@ -416,7 +416,7 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 - **[P0] Alumni 长期留存与跨课程 upsell 路径（『学完下一门学什么』）** — JR Academy 有 ai-programming / ai-engineer-bootcamp / ai-solo-founder / ai-marketing / ai-adoption / ai-essentials 等十几门 AI 课，但**没有学员 LTV 矩阵**。ai-programming 学员结业即流失 = LTV 卡在 $860-$1360。横向看 ai-solo-founder $43-176k AUD faculty mentorship 完全可以是 ai-programming 学员的 next step。不解决：每门课重新拉新成本极高（推广预算 80% 给新 lead），老学员是金矿被浪费；学员侧也不知道下一步学什么 → 流失到外部社区 / Coursera。
   → 新建 skill `/alumni-next-course-recommender`（input：学员 cohort + 完课率 + NPS + 自填目标；output：3 个推荐路径 + 升级优惠 + 跨课程文案）。配套数据系统：后端加 `alumni_journey` collection 记录学员跨课程轨迹。先用 ai-programming 02 期作为 pilot。
 
-- **[P1] Testimonial 视频拍摄 SOP（brief / 问题清单 / 授权 / 剪辑 spec）** — 30-60s 学员 vlog 是销售页 + 小红书 + 公众号通用社会证明素材。当前 skill 矩阵 0 覆盖：speaker-invitation-kit 是讲师不是学员；offline-event-* 是活动现场不是 1v1 vlog；视频系统 jr-academy-videos 是品牌讲解视频不是 testimonial。不解决：(1) Aurora / Mason 凭感觉问学员问题，每次问的不一样 → 素材质量不稳定；(2) 没授权书 → 后期不敢用怕被告；(3) 多门 bootcamp 都缺这能力 → 重复造轮子。
+- **[P1] Testimonial 视频拍摄 SOP（brief / 问题清单 / 授权 / 剪辑 spec）** — 30-60s 学员 vlog 是销售页 + 小红书 + 公众号通用社会证明素材。当前 skill 矩阵 0 覆盖：speaker-invitation-kit 是讲师不是学员；offline-event-* 是活动现场不是 1v1 vlog；视频系统 jr-academy-videos 是品牌讲解视频不是 testimonial。不解决：(1) Aurora / Beta 凭感觉问学员问题，每次问的不一样 → 素材质量不稳定；(2) 没授权书 → 后期不敢用怕被告；(3) 多门 bootcamp 都缺这能力 → 重复造轮子。
   → 新建 skill `/testimonial-video-brief`（4 mode：候选人筛选标准 / 问题清单按 persona 分支 / 授权书模板 / 剪辑结构 spec）。出 1 个『学员 testimonial 内容池』在 curriculum/{slug}/testimonials/ 落盘，多平台复用。
 
 - **[P1] Cohort 复盘维度扩展（学员侧 + 课程侧 + 漏斗侧三层）** — course-promotion-architect postmortem 现在只覆盖『销售漏斗数据回填』；curriculum-positioning-audit 是『预防性翻车扫描』；AUDIT_LOG.md 是『决策日志』。**三者都不覆盖 113 lessons cohort 实际怎么过的**：哪节课最多人卡 / 哪节课问卷低分 / Faculty 哪些动作有效。不解决：03 期 04 期继续凭直觉改课程内容；翻车点在不同 cohort 重复发生；学员 NPS 数据没沉淀到 ground truth pool 喂回 PERSONAS / FUNNEL。
@@ -442,7 +442,7 @@ Phase D 02 期校友作品 + Testimonial 视频拍摄完成后，本应反哺 Ph
 | 每日发布窗口 | 多平台发布排期（小红书 18:30 / 视频号 19:00 / 公众号 21:00 / 朋友圈 20:00 / LinkedIn 早 8 点） | 员工手动 + 排期表 | none |  | 完全无 skill 覆盖。当前靠 Aurora 维护 Notion 排期表手动喊号，发完忘填、抢窗口、错峰发都靠人脑；11 账号 × 6 平台 = 66 个发布点，每天人工排错率 30%+。 |
 | 小红书发布后 24h 内 | 一稿多发（小红书稿 → 改适配公众号长文 / 视频号脚本 / LinkedIn 英文 / X / 朋友圈短文） | 员工手动改写 | none |  | 完全无 skill 覆盖。当前一篇稿子 6 个平台 = 员工手动改 6 次，单稿耗时 2 小时；blog-longform-writer / wechat-article-quality 只审不改；没有'小红书→其他平台'的一稿多发 skill。 |
 | 周三 / 周六 21:00 | 公众号长文深度版同步（小红书 500 字 → 公众号 2000 字加干货） | Summer / Aurora 写 | partial | blog-longform-writer | blog-longform-writer 能写原创长文但没有'小红书爆款 → 公众号扩写'的转换模式；wechat-article-quality 只审不写；本课暂无公众号专属发布节奏 SOP。 |
-| 每周 2-3 条 | 60s 竖屏短视频生产（视频号 / 抖音 / B 站 / X / Reels） | Mason（视频剪辑）+ 新媒体配脚本 | partial | remotion-best-practices | remotion / hyperframes 偏视频生产技术；没有'小红书爆款帖 → 60s 短视频脚本 + 字幕 + 配音'的内容转化 skill；视频号矩阵 0 账号在跑，是 ai-programming 漏掉的关键流量池。 |
+| 每周 2-3 条 | 60s 竖屏短视频生产（视频号 / 抖音 / B 站 / X / Reels） | Beta（视频剪辑）+ 新媒体配脚本 | partial | remotion-best-practices | remotion / hyperframes 偏视频生产技术；没有'小红书爆款帖 → 60s 短视频脚本 + 字幕 + 配音'的内容转化 skill；视频号矩阵 0 账号在跑，是 ai-programming 漏掉的关键流量池。 |
 | 发布后 0-24h 持续 | 前 24h 评论区运营（≥5 条优质评论才能进自然流量池） | 员工自己回复 + 小号互动 | none |  | 完全无 skill 覆盖。小红书算法硬规则：前 24h 评论 <5 推流减半。当前员工发完就走，没人盯评论区；没有'评论话术库 / 小号互动 SOP / 引流话术合规审核'。爆款率 5% 大部分死在这一步。 |
 | 发布后 0-72h | 评论区引流到私域（合规话术 + 不留联系方式 + 钩子 → 私信 → 加微信） | 员工 + 课程顾问（Amelia/Rain/Angela）接力 | none |  | 完全无 skill 覆盖。小红书严打留联系方式，评论引流必须用合规话术（如'扣 1 / 主页见 / 关注我私信'）；当前员工乱写被限流；没有'内容 → 私信 → 加微信 → 课程顾问'的话术 SOP + handoff 流程。eoi-followup 是活动后的，不是内容引流的。 |
 | 每日 23:00 | 每日 KPI 数据日报（11 账号 × 曝光 / 点赞 / 收藏 / 评论 / 涨粉 / 引流加微） | Aurora 汇总 + 员工填报 | none |  | 完全无 skill 覆盖。当前靠员工每晚手填 Notion 表，11 账号 × 7 指标 = 77 个数据点，漏填率 50%；没有'小红书后台数据爬取 + 自动汇总 + 异常账号预警'的 metrics-collector skill。marketing-agent-orchestra 标 P0 待建但还没造。 |

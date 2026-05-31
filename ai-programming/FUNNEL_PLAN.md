@@ -141,7 +141,7 @@
 
 **为什么不强推**：
 - 当前 02 期还在跑 cohort 模式，运营 bandwidth 紧
-- 陪跑版需要 Mason / Faculty 1v1 时间，目前没人手
+- 陪跑版需要 Beta / Faculty 1v1 时间，目前没人手
 - ai-solo-founder-bootcamp 已经在做高客单价市场 ¥9800-30k，本课错配
 - → **建议暂时不做 C，等课程跑 3-5 期后再加**
 

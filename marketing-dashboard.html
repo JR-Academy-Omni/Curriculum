@@ -119,6 +119,91 @@
     }
     .search:focus { outline: none; box-shadow: 3px 3px 0 #000; transform: translate(-1px, -1px); }
     .course-list { display: flex; flex-direction: column; gap: 6px; }
+
+    /* ============ STATE PANEL（侧栏底部 marketing agent runtime） ============ */
+    .state-panel { margin-top: 18px; padding: 0; }
+    .state-panel:empty { display: none; }
+    .state-head {
+      font-family: "Space Mono", monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: #10162f;
+      color: #fff;
+      padding: 8px 10px;
+      border: 2px solid #000;
+    }
+    .state-agents { background: #fff; border: 2px solid #000; border-top: none; padding: 8px 10px; }
+    .state-agent {
+      display: grid;
+      grid-template-columns: 18px 1fr auto;
+      gap: 6px;
+      align-items: center;
+      font-family: "Space Mono", monospace;
+      font-size: 10px;
+      padding: 3px 0;
+      border-bottom: 1px dashed #eee;
+    }
+    .state-agent:last-child { border-bottom: none; }
+    .state-agent .agent-name { color: #10162f; font-weight: 700; }
+    .state-agent .agent-status { color: #888; font-size: 9px; }
+    .state-section-title {
+      font-family: "Space Mono", monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #ff5757;
+      padding: 8px 10px 4px;
+      background: #fff;
+      border-left: 2px solid #000;
+      border-right: 2px solid #000;
+    }
+    .state-blocked {
+      background: #fff;
+      border-left: 2px solid #000;
+      border-right: 2px solid #000;
+      padding: 5px 10px;
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      font-size: 10px;
+      line-height: 1.4;
+      color: #555;
+    }
+    .state-blocked b { color: #ff5757; font-family: "Space Mono", monospace; }
+    .state-blocked .state-owner { color: #888; font-size: 9px; }
+    .state-gates {
+      background: #fff;
+      border: 2px solid #000;
+      border-top: none;
+      padding: 6px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .state-gate {
+      font-family: "Space Mono", monospace;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border: 1.5px solid #000;
+      background: #ddd;
+      color: #999;
+    }
+    .state-gate.pending { background: #ffb800; color: #10162f; }
+    .state-gate.standby { background: #ddd; color: #666; }
+    .state-gate.done { background: #7ed957; color: #10162f; }
+    .state-refresh {
+      width: 100%;
+      margin-top: 8px;
+      padding: 6px 10px;
+      font-family: "Space Mono", monospace;
+      font-size: 10px;
+      font-weight: 700;
+      background: #fff1e7;
+      border: 2px solid #000;
+      cursor: pointer;
+      color: #10162f;
+    }
+    .state-refresh:hover { background: #ff5757; color: #fff; transform: translate(-1px,-1px); box-shadow: 2px 2px 0 #000; }
     .course-card {
       border: 2px solid #000;
       background: #fff1e7;
@@ -138,13 +223,24 @@
     }
     .course-card.active .slug { color: #fff; }
     .course-card.hidden { display: none; }
-    .course-card .slug {
-      font-family: "Space Mono", monospace;
-      font-size: 12px;
+    .course-card .course-name {
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      font-size: 13px;
       font-weight: 700;
       color: #10162f;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .course-card .slug-mono {
+      font-family: "Space Mono", monospace;
+      font-size: 9px;
+      font-weight: 500;
+      color: #999;
+      letter-spacing: -0.3px;
       word-break: break-all;
     }
+    .course-card.active .course-name { color: #fff; }
+    .course-card.active .slug-mono { color: #888; }
     .course-card .status-dots {
       display: flex;
       gap: 4px;
@@ -393,7 +489,7 @@
     </header>
 
     <aside>
-      <input type="text" class="search" id="search" placeholder="搜索课程 slug…" />
+      <input type="text" class="search" id="search" placeholder="搜索中文课名 或 slug…" />
       <div class="filter">
         <button data-filter="all" class="active">All</button>
         <button data-filter="has-persona">有 Persona</button>
@@ -401,6 +497,7 @@
         <button data-filter="empty">空</button>
       </div>
       <div class="course-list" id="courseList"></div>
+      <div class="state-panel" id="statePanel"></div>
     </aside>
 
     <main>
@@ -420,6 +517,44 @@
     // ============================================================
     // 课程清单（从 curriculum/ 扫描，需要新课时手动加 slug）
     // ============================================================
+    // 真实中文课名映射（从各课 outline.json 抓的）
+    const COURSE_NAMES = {
+      "agile-ai-workshop": "Agile AI Workshop",
+      "ai-accounting-pro": "AI 财会 Pro",
+      "ai-accounting-workshop": "AI 财会 Workshop",
+      "ai-adoption-bootcamp": "AI 工作流提效营",
+      "ai-adoption-workshop": "AI 工作流提效 Workshop",
+      "ai-builder": "Vibe Coding 提升班",
+      "ai-comic-bootcamp": "AI 漫剧从剧本到成片实战 Bootcamp",
+      "ai-comic-video-course": "AI 漫剧视频课",
+      "ai-comic-workshop": "AI 漫剧 Workshop",
+      "ai-copilot": "AI 数据分析 & Copilot 自动化实战",
+      "ai-engineer-bootcamp": "AI Engineer Bootcamp",
+      "ai-engineer-rag": "AI Engineer 入门",
+      "ai-essentials-bootcamp": "AI 必修课",
+      "ai-image-text-workshop": "AI 图文 Workshop",
+      "ai-marketing": "AI 营销全链路实战 4 周",
+      "ai-programming": "人人都能学的 AI Coding 实战课",
+      "ai-solo-founder-bootcamp": "AI 一人创业营",
+      "business-analyst": "AI 产品经理 Business Analyst 训练营",
+      "china-campus-workshop": "留学生回国校招冲刺 3 小时 Workshop",
+      "claude-code-workshop": "Claude Code 大师课",
+      "claude-code-workshop-fullday": "Claude Code 1day 大师课（非技术友好版）",
+      "claude-cowork-sme-workshop": "Claude Cowork SME Workshop",
+      "claude-cowork-workshop": "Claude Cowork Workshop",
+      "claude-skills-workshop": "Claude Skills Workshop",
+      "full-stack-developer-interview": "手撕全栈面试题班",
+      "gp-program-workshop": "澳洲校招 GP Program 申请实战 Workshop",
+      "it-career-support": "IT Career Coaching Bootcamp",
+      "omnichannel-marketing-workshop": "全渠道营销 Workshop",
+      "openclaw-bootcamp": "OpenClaw 4 周个人 AI 助手 Bootcamp",
+      "openclaw-fullday-workshop": "OpenClaw 一日实操班（8 小时）",
+      "openclaw-workshop": "OpenClaw 4 小时沉浸实操工作坊",
+      "techscrum-devops": "TechScrum DevOps 项目实训营",
+      "web-code-bootcamp-or-learn-to-code-1": "AI Engineer 全栈项目班 / Code Bootcamp",
+    };
+    const courseName = (slug) => COURSE_NAMES[slug] || slug;
+
     const COURSES = [
       "agile-ai-workshop",
       "ai-accounting-pro",
@@ -471,6 +606,9 @@
       { key: "SOP_ALUMNI", file: "sops/ALUMNI_NURTURE_LOOP.md", label: "SOP·Alumni" },
       { key: "AUDIT_LOG", file: "AUDIT_LOG.md", label: "AUDIT" },
     ];
+    // dynamicAgentDocs 在 selectCourse 时通过 /list-outputs?slug=X fetch 动态填充
+    let dynamicAgentDocs = [];
+    function allDocs() { return [...DOCS, ...dynamicAgentDocs]; }
 
     // 状态徽章用的核心 4 文档（侧栏 dots）— 故意只保留 4 个避免侧栏 dots 太多
     const STATUS_DOCS = ["PERSONAS", "FUNNEL_PLAN", "PROMOTION_PLAN", "AUDIT_LOG"];
@@ -552,7 +690,8 @@
         const gt = state.gtCoverage[slug] ? `<span class="dot warn" title="GT 覆盖率">${state.gtCoverage[slug]}</span>` : "";
         return `
           <div class="course-card" data-slug="${slug}">
-            <div class="slug">${slug}</div>
+            <div class="course-name">${courseName(slug)}</div>
+            <div class="slug-mono">${slug}</div>
             <div class="status-dots">${dots}${gt}</div>
           </div>
         `;
@@ -567,7 +706,7 @@
     // ============================================================
     // 选课
     // ============================================================
-    function selectCourse(slug) {
+    async function selectCourse(slug, opts = {}) {
       state.selectedSlug = slug;
       localStorage.setItem("md.lastSlug", slug);
 
@@ -575,12 +714,64 @@
         el.classList.toggle("active", el.dataset.slug === slug);
       });
 
+      // 异步加载 agent-outputs + STATE.json（不阻塞主流程）
+      await loadCourseRuntime(slug);
       renderTabs();
 
-      // 默认选第一个存在的 tab
+      // 默认选第一个存在的 tab（除非 opts.preserveTab 且当前 tab 有效）
       const status = state.docStatus[slug] || {};
-      const firstDoc = DOCS.find(d => status[d.key]) || DOCS[0];
-      selectTab(firstDoc.key);
+      const docs = allDocs();
+      let targetTab = opts.preserveTab && state.selectedTab && docs.find(d => d.key === state.selectedTab)
+        ? state.selectedTab
+        : (docs.find(d => status[d.key]) || docs[0]).key;
+      selectTab(targetTab, opts);
+    }
+
+    // 切课时 fetch agent-outputs + STATE.json，渲染侧栏 state panel
+    async function loadCourseRuntime(slug) {
+      dynamicAgentDocs = [];
+      // 1. agent-outputs 自动扫描（如果 server.py 在跑）
+      try {
+        const r = await fetch(`/list-outputs?slug=${slug}`);
+        if (r.ok) {
+          const items = await r.json();
+          dynamicAgentDocs = items.map(it => ({ key: it.key, file: it.file, label: it.label }));
+        }
+      } catch (e) { /* fallback: 没 server.py 就只显示静态 DOCS */ }
+      // 2. STATE.json 实时状态
+      let stateJson = null;
+      try {
+        const r = await fetch(`/state?slug=${slug}`);
+        if (r.ok) stateJson = await r.json();
+      } catch (e) { /* runtime 不存在就不显示 panel */ }
+      renderStatePanel(slug, stateJson);
+    }
+
+    function renderStatePanel(slug, st) {
+      const el = document.getElementById("statePanel");
+      if (!el) return;
+      if (!st) { el.innerHTML = ""; return; }
+      const agents = Object.entries(st.agents || {}).map(([name, a]) => {
+        const icon = ({
+          "ready": "✅", "ready-to-cron": "⏰", "blocked": "🚨",
+          "paused": "⏸", "standby": "💤", "running": "⏳"
+        })[a.status] || "•";
+        return `<div class="state-agent" title="${a.mainSkill || ''}"><span>${icon}</span><span class="agent-name">${name}</span><span class="agent-status">${a.status}</span></div>`;
+      }).join("");
+      const blocked = (st.blocked || []).map(b =>
+        `<div class="state-blocked"><b>[${b.id}]</b> ${b.agent}: ${b.reason} <span class="state-owner">→ ${b.owner}</span></div>`
+      ).join("");
+      const gates = Object.entries(st.humanApprovalGates || {}).map(([g, v]) =>
+        `<span class="state-gate ${v.status}">${g.split('_')[0]}</span>`
+      ).join(" ");
+      el.innerHTML = `
+        <div class="state-head">🤖 Marketing Agent Runtime</div>
+        <div class="state-agents">${agents}</div>
+        ${blocked ? `<div class="state-section-title">🚨 Blocked</div>${blocked}` : ''}
+        <div class="state-section-title">Approval Gates</div>
+        <div class="state-gates">${gates}</div>
+        <button class="state-refresh" onclick="loadCourseRuntime('${slug}')">🔄 刷新</button>
+      `;
     }
 
     // ============================================================
@@ -588,7 +779,7 @@
     // ============================================================
     function renderTabs() {
       const status = state.docStatus[state.selectedSlug] || {};
-      document.getElementById("tabs").innerHTML = DOCS.map(d => `
+      document.getElementById("tabs").innerHTML = allDocs().map(d => `
         <button class="tab" data-key="${d.key}">
           ${d.label}
           <span class="badge ${status[d.key] ? "on" : ""}"></span>
@@ -599,14 +790,34 @@
       });
     }
 
-    function selectTab(key) {
+    function selectTab(key, opts = {}) {
       state.selectedTab = key;
       localStorage.setItem("md.lastTab", key);
       document.querySelectorAll(".tab").forEach(el => {
         el.classList.toggle("active", el.dataset.key === key);
       });
       loadDoc();
+      // URL state sync — 可分享 + back button
+      if (!opts.fromPopstate) {
+        const url = new URL(window.location);
+        url.searchParams.set("course", state.selectedSlug);
+        url.searchParams.set("tab", key);
+        history.pushState({ slug: state.selectedSlug, tab: key }, "", url);
+        // 顶部 title 也跟着改
+        document.title = `${courseName(state.selectedSlug)} · ${key} · Marketing Dashboard`;
+      }
     }
+
+    // 浏览器 back / forward
+    window.addEventListener("popstate", (e) => {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("course");
+      const tab = params.get("tab");
+      if (slug && COURSES.includes(slug)) {
+        state.selectedTab = tab;
+        selectCourse(slug, { preserveTab: true, fromPopstate: true });
+      }
+    });
 
     // ============================================================
     // 加载并渲染 markdown
@@ -614,7 +825,7 @@
     async function loadDoc() {
       const { selectedSlug, selectedTab } = state;
       if (!selectedSlug || !selectedTab) return;
-      const doc = DOCS.find(d => d.key === selectedTab);
+      const doc = allDocs().find(d => d.key === selectedTab);
       const path = `${selectedSlug}/${doc.file}`;
       const content = document.getElementById("content");
       content.innerHTML = `<div class="loading">加载中… ${path}</div>`;
@@ -644,7 +855,7 @@
         content.innerHTML = `
           <div class="md">
             <div class="doc-meta">
-              <span><strong>${doc.label}</strong> · ${selectedSlug}</span>
+              <span><strong>${doc.label}</strong> · ${courseName(selectedSlug)}</span>
               <span class="path">curriculum/${path}</span>
             </div>
             ${html}
@@ -678,7 +889,7 @@
         if (state.filter === "has-persona") pass = !!status.PERSONAS;
         if (state.filter === "has-promotion") pass = !!status.PROMOTION_PLAN;
         if (state.filter === "empty") pass = !status.PERSONAS && !status.FUNNEL_PLAN && !status.PROMOTION_PLAN;
-        if (q) pass = pass && slug.toLowerCase().includes(q);
+        if (q) pass = pass && (slug.toLowerCase().includes(q) || courseName(slug).toLowerCase().includes(q));
         el.classList.toggle("hidden", !pass);
       });
     }
@@ -688,11 +899,19 @@
     // ============================================================
     (async function () {
       await probeAll();
+      // 启动优先级：URL params > localStorage
+      const params = new URLSearchParams(window.location.search);
+      const urlSlug = params.get("course");
+      const urlTab = params.get("tab");
       const lastSlug = localStorage.getItem("md.lastSlug");
       const lastTab = localStorage.getItem("md.lastTab");
-      if (lastSlug && COURSES.includes(lastSlug)) {
-        selectCourse(lastSlug);
-        if (lastTab) selectTab(lastTab);
+
+      const initialSlug = (urlSlug && COURSES.includes(urlSlug)) ? urlSlug : lastSlug;
+      const initialTab = urlTab || lastTab;
+
+      if (initialSlug && COURSES.includes(initialSlug)) {
+        state.selectedTab = initialTab; // 让 selectCourse 知道要保留这 tab
+        selectCourse(initialSlug, { preserveTab: !!initialTab });
       }
     })();
   </script>

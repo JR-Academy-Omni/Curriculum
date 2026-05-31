@@ -81,11 +81,11 @@
 
 | Task | 工作量 | 负责人 | 用什么 |
 |------|------|--------|--------|
-| **GT-A1**：拉 Amelia / Rain / Angela 任一课顾访谈 30min | 30min + 30min 整理 | Mason 约 + 课顾接受 | `INTERVIEW_SCRIPT.md` 4-part 结构 |
-| **GT-A2**：拉课程主理人 / 教学主管访谈 30min | 30min + 30min 整理 | Mason 约 | 同上 |
+| **GT-A1**：拉 Amelia / Rain / Angela 任一课顾访谈 30min | 30min + 30min 整理 | Beta 约 + 课顾接受 | `INTERVIEW_SCRIPT.md` 4-part 结构 |
+| **GT-A2**：拉课程主理人 / 教学主管访谈 30min | 30min + 30min 整理 | Beta 约 | 同上 |
 | **GT-B1**：扒小红书"零基础 AI 编程 / Cursor 入门"评论 5-10 张截图 | 10min + 30min vision 提取 | Summer | `/persona-ground-truth-scraper init ai-programming --source=xhs` |
 | **GT-B2**：扒公众号留言 5-10 张截图 | 10min + 30min vision 提取 | Summer / Lily | `/persona-ground-truth-scraper init ai-programming --source=wechat` |
-| **GT-D**：确认 FUNNEL_PLAN.md 客单价档 | 2-4h | Aurora + Mason | `/course-funnel-architect init ai-programming` |
+| **GT-D**：确认 FUNNEL_PLAN.md 客单价档 | 2-4h | Aurora + Beta | `/course-funnel-architect init ai-programming` |
 
 → **2 周内全做完 → GT 覆盖率 0.70+**
 
@@ -145,7 +145,7 @@ FUNNEL_PLAN.md 决定客单价
 | `PERSONAS.md` | `curriculum/ai-programming/PERSONAS.md` | 157 行 v0 stub · 4 persona 占位 · 7 项 GT task 清单 |
 | `PERSONAS-INIT-REPORT.md` | `curriculum/ai-programming/PERSONAS-INIT-REPORT.md`（本文件）| 现状对账 + 阻塞链 + fast path |
 | 还没生成 | `gt-sources/` 目录 | INTERVIEW + scraper 跑完才会有 |
-| 还没生成 | `FUNNEL_PLAN.md` | 等 Aurora + Mason 用 `/course-funnel-architect` |
+| 还没生成 | `FUNNEL_PLAN.md` | 等 Aurora + Beta 用 `/course-funnel-architect` |
 | 还没生成 | `PROMOTION_PLAN.md` | 等 GT 补 + FUNNEL 完 |
 
 打开 PERSONAS.md 你会看到 Claude 现在能"猜"成什么样 + 7 个 task 表清楚列出哪几个人/skill 要补什么数据。
@@ -158,7 +158,7 @@ FUNNEL_PLAN.md 决定客单价
 1. 现在：cat curriculum/ai-programming/PERSONAS.md 在 IDE 打开看
    ↓ 知道当前 AI 推测的 persona 长什么样
 
-2. 30 min：让 Mason 约一个课顾（Amelia/Rain/Angela）做 INTERVIEW
+2. 30 min：让 Beta 约一个课顾（Amelia/Rain/Angela）做 INTERVIEW
    ↓ GT-A1 完成，覆盖率 0.25 → 0.40
 
 3. 2 天内：让 Summer 跑 /persona-ground-truth-scraper init --source=xhs,wechat
