@@ -77,7 +77,7 @@ article table strong{color:#10162f}
   <div class="meta-info" id="metaInfo">公众号长文预览</div>
   <div class="actions">
     <button id="btnCopyMd">📋 复制 Markdown</button>
-    <button id="btnCopyHtml">📄 复制 HTML</button>
+    <button id="btnCopyHtml">📄 复制 HTML（公众号）</button>
     <button id="btnPrint">🖨 打印 / PDF</button>
   </div>
 </div>
@@ -149,20 +149,58 @@ document.getElementById('btnCopyMd').addEventListener('click', async (e) => {
   } catch (err) { alert('复制失败：' + err.message); }
 });
 
-// Copy rendered HTML (good for pasting into WeChat MP editor / Notion)
+// Inline computed styles onto a clone so formatting survives paste into
+// 微信公众号编辑器 (it strips <style>/class, only keeps inline styles).
+const INLINE_PROPS = [
+  'color','background-color','font-size','font-weight','font-style','font-family',
+  'line-height','text-align','letter-spacing','text-decoration-line',
+  'margin-top','margin-bottom','margin-left','margin-right',
+  'padding-top','padding-bottom','padding-left','padding-right',
+  'border-top','border-bottom','border-left','border-right',
+  'border-collapse','border-radius','white-space','vertical-align','width'
+];
+function buildWeChatHtml(srcRoot) {
+  const clone = srcRoot.cloneNode(true);
+  const srcEls = [srcRoot, ...srcRoot.querySelectorAll('*')];
+  const cloneEls = [clone, ...clone.querySelectorAll('*')];
+  srcEls.forEach((el, i) => {
+    const cs = getComputedStyle(el);
+    const t = cloneEls[i];
+    if (!t || t.nodeType !== 1) return;
+    let style = '';
+    INLINE_PROPS.forEach(p => {
+      let v = cs.getPropertyValue(p);
+      if (!v) return;
+      if (v === 'normal' || v === 'none' || v === 'auto' || v === '0px') return;
+      if (p === 'background-color' && v === 'rgba(0, 0, 0, 0)') return;
+      if (p === 'text-decoration-line') { if (v !== 'underline') return; v = 'underline'; style += 'text-decoration:underline;'; return; }
+      if (p === 'width' && t.tagName !== 'TABLE') return; // only force table width
+      style += p + ':' + v + ';';
+    });
+    t.setAttribute('style', style);
+  });
+  // wrap so WeChat keeps a consistent body font
+  const wrap = document.createElement('section');
+  wrap.setAttribute('style', "font-size:16px;color:#222;line-height:1.75;font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;");
+  wrap.innerHTML = clone.innerHTML;
+  return wrap.outerHTML;
+}
+
+// Copy WeChat-ready HTML (inline styles) — paste straight into mp.weixin.qq.com
 document.getElementById('btnCopyHtml').addEventListener('click', async (e) => {
-  const html = document.getElementById('content').innerHTML;
+  const src = document.getElementById('content');
+  const html = buildWeChatHtml(src);
   try {
     if (navigator.clipboard && window.ClipboardItem) {
       const blob = new Blob([html], { type: 'text/html' });
-      const plainBlob = new Blob([document.getElementById('content').innerText], { type: 'text/plain' });
+      const plainBlob = new Blob([src.innerText], { type: 'text/plain' });
       await navigator.clipboard.write([new ClipboardItem({ 'text/html': blob, 'text/plain': plainBlob })]);
     } else {
       await navigator.clipboard.writeText(html);
     }
-    e.target.textContent = '✓ HTML 已复制';
+    e.target.textContent = '✓ 已复制（粘进公众号即带样式）';
     e.target.classList.add('copied');
-    setTimeout(() => { e.target.textContent = '📄 复制 HTML'; e.target.classList.remove('copied'); }, 2000);
+    setTimeout(() => { e.target.textContent = '📄 复制 HTML（公众号）'; e.target.classList.remove('copied'); }, 2200);
   } catch (err) { alert('复制失败：' + err.message); }
 });
 
