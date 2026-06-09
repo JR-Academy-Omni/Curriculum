@@ -103,7 +103,13 @@ Stripe 2025 年初那封年度信里有组很硬的数据：做到 500 万美元
 
 如果你想找人带着走一遍，匠人学院（JR Academy，澳洲做项目制 AI 实战教育的平台）在墨尔本、悉尼、布里斯班三城同时开了门「AI 一人创业营」，干的就是这件事：11 周，从选品、用 AI 把产品 ship 出来、收到第一笔付款，到注册 ABN、搭税务结构、递交 Grant，从头陪你走一遍。
 
+![AI 一人创业营 × P3 职业孵化器：从创业项目导入到 P3 职业孵化器的完整 11 周路径](https://jiangren.com.au/image/ai-solo-founder-p3-incubator.png)
+
 但这门课真正的核心不是教程，是圈子——三城线下面授、校友群、6 个月不断线的 Office Hour，Demo Day 当天三城本地的「互为客户日」networking 晚宴，还有跟 Blackbird、Square Peg、Antler、Startmate 这些澳洲一线机构的 fireside chat。你在这儿认识的会计师、Grant 顾问、其他正在 ship 的人、投资人，才是副业路上最压箱底的资产。
+
+![三城线下同步开课：布里斯班、墨尔本、悉尼，同课程同步开、可跨城通学、线下 Networking 社交](https://jiangren.com.au/image/ai-solo-founder-three-cities.png)
+
+![AI 一人公司生态闭环：中心是创业者 OPC，外围是核心老师、顾问圈、财税合规、社交 Networking、AI Engineer 协作五类资源](https://jiangren.com.au/image/ai-solo-founder-opc-ecosystem.png)
 
 毕业那天，你手里至少有：一个能跑能卖的产品、一笔真实付款、一个注册好的 ABN、一份递出去的 Grant 申请。这不是一张证书，是一条已经迈出第一步的第二收入腿。
 
