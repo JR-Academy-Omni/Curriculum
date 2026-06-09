@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>澳洲校招 GP Workshop · 海报 v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800;900&family=DM+Sans:wght@500;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+body {
+  background: #f1f5f9;
+  font-family: 'DM Sans','Noto Sans SC',sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 80px;
+}
+
+.toolbar {
+  width: 100%;
+  max-width: 1242px;
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+}
+.toolbar .title { font-size: 13px; color: #64748b; font-family: 'Space Mono',monospace; }
+.toolbar .actions { display: flex; gap: 10px; }
+.dl-btn {
+  background: #10162f;
+  color: #fff;
+  border: none;
+  font-family: 'DM Sans',sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16,22,47,0.2);
+  transition: transform .12s ease;
+}
+.dl-btn:hover { transform: translateY(-2px); }
+.dl-btn.secondary { background: #fff; color: #10162f; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+
+/* === POSTER 1242x1660 (小红书 3:4) === */
+#poster {
+  width: 1242px;
+  height: 1660px;
+  background: #FAFAFA;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(16,22,47,0.18);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background ornaments */
+.bg-blob-1 {
+  position: absolute;
+  top: -180px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, #38B6FF 0%, transparent 70%);
+  opacity: 0.18;
+  filter: blur(20px);
+  z-index: 0;
+}
+.bg-blob-2 {
+  position: absolute;
+  bottom: -120px; left: -160px;
+  width: 540px; height: 540px;
+  background: radial-gradient(circle, #FF914D 0%, transparent 70%);
+  opacity: 0.15;
+  filter: blur(20px);
+  z-index: 0;
+}
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #10162f 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.04;
+  z-index: 1;
+}
+
+/* === HEADER === */
+.p-header {
+  position: relative;
+  z-index: 3;
+  padding: 60px 72px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: #10162f;
+  color: #fff;
+  font-family: 'Space Mono',monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border-radius: 999px;
+}
+.brand-tag .dot { width: 8px; height: 8px; background: #38B6FF; border-radius: 50%; }
+.price-tag {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFDE59;
+  color: #10162f;
+  border: 3px solid #10162f;
+  padding: 10px 18px;
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 #10162f;
+  transform: rotate(2deg);
+}
+.price-tag .amount { font-family: 'Bricolage Grotesque',sans-serif; font-size: 36px; font-weight: 900; line-height: 1; }
+.price-tag .currency { font-family: 'Space Mono',monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; margin-top: 4px; }
+
+/* === HERO === */
+.p-hero {
+  position: relative;
+  z-index: 3;
+  padding: 0 72px 50px;
+}
+.eyebrow {
+  font-family: 'Space Mono',monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: #38B6FF;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+.title-main {
+  font-family: 'Bricolage Grotesque','Noto Sans SC',sans-serif;
+  font-size: 108px;
+  font-weight: 900;
+  line-height: 0.95;
+  color: #10162f;
+  margin-bottom: 22px;
+  letter-spacing: -2px;
+}
+.title-main .hl {
+  background: linear-gradient(180deg, transparent 65%, #FFDE59 65%);
+  padding: 0 8px;
+}
+.subline {
+  font-family: 'Noto Sans SC',sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #475569;
+  line-height: 1.5;
+  max-width: 950px;
+}
+.subline strong { color: #10162f; font-weight: 700; }
+
+/* === FUNNEL === */
+.funnel-section {
+  position: relative;
+  z-index: 3;
+  margin: 0 72px;
+  background: #fff;
+  border: 3px solid #10162f;
+  border-radius: 24px;
+  padding: 36px 40px;
+  box-shadow: 8px 8px 0 #10162f;
+  margin-bottom: 40px;
+}
+.funnel-title {
+  font-family: 'Bricolage Grotesque','Noto Sans SC',sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #10162f;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.funnel-title .icon { font-size: 38px; }
+.funnel-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.funnel-step {
+  text-align: center;
+  padding: 16px 8px;
+  border-radius: 14px;
+  position: relative;
+}
+.funnel-step .step-num {
+  font-family: 'Space Mono',monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: 0.6;
+  margin-bottom: 6px;
+}
+.funnel-step .step-name {
+  font-family: 'Bricolage Grotesque','Noto Sans SC',sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #10162f;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.funnel-step .step-rate {
+  font-family: 'Space Mono',monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: #10162f;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.fs-1 { background: #E0F2FE; }
+.fs-2 { background: #FEF9C3; }
+.fs-3 { background: #FFEDD5; }
+.fs-4 { background: #FCE7F3; }
+.fs-5 { background: #DCFCE7; }
+
+/* === MODULES GRID === */
+.modules-section {
+  position: relative;
+  z-index: 3;
+  padding: 0 72px;
+  margin-bottom: 40px;
+}
+.modules-title {
+  font-family: 'Bricolage Grotesque','Noto Sans SC',sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #10162f;
+  margin-bottom: 18px;
+}
+.modules-title .pill {
+  display: inline-block;
+  background: #10162f;
+  color: #FFDE59;
+  font-family: 'Space Mono',monospace;
+  font-size: 16px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.mod-card {
+  background: #fff;
+  border: 2px solid #10162f;
+  border-radius: 16px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mod-card .code {
+  font-family: 'Space Mono',monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: #10162f;
+  padding: 3px 8px;
+  border-radius: 5px;
+  display: inline-block;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+.mod-card .name {
+  font-family: 'Noto Sans SC',sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #10162f;
+  line-height: 1.3;
+  margin-top: 4px;
+}
+.mod-card .duration {
+  font-family: 'Space Mono',monospace;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  margin-top: auto;
+}
+.mod-card.accent-1 { background: #FEF3C7; }
+.mod-card.accent-2 { background: #FCE7F3; }
+.mod-card.accent-3 { background: #DBEAFE; }
+.mod-card.accent-4 { background: #DCFCE7; }
+
+/* === FOOTER CTA === */
+.p-footer {
+  position: relative;
+  z-index: 3;
+  margin: auto 72px 50px;
+  background: #10162f;
+  border-radius: 24px;
+  padding: 36px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+.cta-left .cta-eyebrow {
+  font-family: 'Space Mono',monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFDE59;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.cta-left .cta-headline {
+  font-family: 'Bricolage Grotesque','Noto Sans SC',sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.cta-left .cta-url {
+  font-family: 'Space Mono',monospace;
+  font-size: 15px;
+  font-weight: 500;
+  color: #38B6FF;
+  letter-spacing: 0.5px;
+}
+.cta-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.qr-placeholder {
+  width: 140px;
+  height: 140px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Mono',monospace;
+  font-size: 11px;
+  color: #94a3b8;
+  text-align: center;
+  padding: 8px;
+}
+.qr-label {
+  font-family: 'Space Mono',monospace;
+  font-size: 11px;
+  color: #FFDE59;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+/* === FOOTER STRIP === */
+.p-strip {
+  position: relative;
+  z-index: 3;
+  background: #38B6FF;
+  padding: 14px 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono',monospace;
+  color: #10162f;
+}
+.p-strip .l { font-size: 13px; font-weight: 700; letter-spacing: 1px; }
+.p-strip .r { font-size: 12px; font-weight: 500; opacity: 0.8; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="title">🎨 GP Workshop · 海报 v1 · 1242×1660 (小红书 3:4)</span>
+  <div class="actions">
+    <button class="dl-btn secondary" onclick="window.location.reload()">🔄 刷新</button>
+    <button class="dl-btn" onclick="downloadPoster()">⬇ 下载 PNG</button>
+  </div>
+</div>
+
+<div id="poster">
+
+  <div class="bg-blob-1"></div>
+  <div class="bg-blob-2"></div>
+  <div class="bg-grid"></div>
+
+  <!-- HEADER -->
+  <div class="p-header">
+    <div class="brand-tag">
+      <span class="dot"></span>
+      JR ACADEMY · WORKSHOP
+    </div>
+    <div class="price-tag">
+      <div class="amount">29</div>
+      <div class="currency">AUD</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="p-hero">
+    <div class="eyebrow">3 小时 ZOOM 直播 · 1 次搞定</div>
+    <h1 class="title-main">
+      澳洲校招<br>
+      <span class="hl">GP Program</span><br>
+      申请实战
+    </h1>
+    <p class="subline">
+      不是泛泛的留学生职业规划课 — <strong>把澳洲 Graduate Program 招聘漏斗一关一关拆给你看</strong>，每节给你一张能直接用的模板或决策表。
+    </p>
+  </div>
+
+  <!-- FUNNEL -->
+  <div class="funnel-section">
+    <div class="funnel-title">
+      <span class="icon">🗺</span>
+      <span>5 关漏斗 · 你卡在哪？</span>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-step fs-1">
+        <div class="step-num">STEP 01</div>
+        <div class="step-name">网申</div>
+        <div class="step-rate">100%</div>
+      </div>
+      <div class="funnel-step fs-2">
+        <div class="step-num">STEP 02</div>
+        <div class="step-name">OA</div>
+        <div class="step-rate">40-60%</div>
+      </div>
+      <div class="funnel-step fs-3">
+        <div class="step-num">STEP 03</div>
+        <div class="step-name">Video</div>
+        <div class="step-rate">20-30%</div>
+      </div>
+      <div class="funnel-step fs-4">
+        <div class="step-num">STEP 04</div>
+        <div class="step-name">AC</div>
+        <div class="step-rate">5-10%</div>
+      </div>
+      <div class="funnel-step fs-5">
+        <div class="step-num">STEP 05</div>
+        <div class="step-name">Offer</div>
+        <div class="step-rate">2-5%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODULES -->
+  <div class="modules-section">
+    <h2 class="modules-title">
+      <span class="pill">8 BLOCK</span>
+      每节都给你模板
+    </h2>
+    <div class="modules-grid">
+      <div class="mod-card accent-3">
+        <span class="code">L01</span>
+        <div class="name">GP 认知 + 5 关漏斗</div>
+        <div class="duration">20 min</div>
+      </div>
+      <div class="mod-card">
+        <span class="code">L02</span>
+        <div class="name">4 大渠道找岗位</div>
+        <div class="duration">20 min</div>
+      </div>
+      <div class="mod-card accent-1">
+        <span class="code">L03</span>
+        <div class="name">Resume STAR 改写</div>
+        <div class="duration">35 min · 现场改</div>
+      </div>
+      <div class="mod-card">
+        <span class="code">L04</span>
+        <div class="name">OA 4 大供应商</div>
+        <div class="duration">20 min</div>
+      </div>
+      <div class="mod-card accent-2">
+        <span class="code">L05</span>
+        <div class="name">Behavioural + 故事工程</div>
+        <div class="duration">50 min · Breakout</div>
+      </div>
+      <div class="mod-card accent-4">
+        <span class="code">L05a</span>
+        <div class="name">AI STAR 陪练 Quest</div>
+        <div class="duration">30 min · 课后</div>
+      </div>
+      <div class="mod-card">
+        <span class="code">L06</span>
+        <div class="name">Networking + AC 战术</div>
+        <div class="duration">25 min</div>
+      </div>
+      <div class="mod-card accent-3">
+        <span class="code">L07</span>
+        <div class="name">Q&A + 资源包</div>
+        <div class="duration">30 min</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER CTA -->
+  <div class="p-footer">
+    <div class="cta-left">
+      <div class="cta-eyebrow">立即报名 · 录播长期可看</div>
+      <div class="cta-headline">29 元拿走整套<br>GP 申请模板包</div>
+      <div class="cta-url">jiangren.com.au/curriculum/gp-program-workshop</div>
+    </div>
+    <div class="cta-right">
+      <div class="qr-placeholder">
+        二维码<br>占位<br>(运营替换)
+      </div>
+      <div class="qr-label">扫码报名</div>
+    </div>
+  </div>
+
+  <!-- STRIP -->
+  <div class="p-strip">
+    <div class="l">📍 BIG 4 · BANKS · GOV · CONSULTING · TECH · ENGINEERING</div>
+    <div class="r">© JR Academy 2026 · 澳洲校招</div>
+  </div>
+
+</div>
+
+<script>
+function downloadPoster() {
+  const poster = document.getElementById('poster');
+  const btn = document.querySelector('.dl-btn:not(.secondary)');
+  btn.disabled = true;
+  btn.textContent = '⏳ 生成中...';
+
+  html2canvas(poster, {
+    scale: 2,
+    backgroundColor: '#FAFAFA',
+    useCORS: true,
+    logging: false,
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'gp-workshop-poster-v1.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    btn.disabled = false;
+    btn.textContent = '⬇ 下载 PNG';
+  }).catch(err => {
+    console.error(err);
+    btn.disabled = false;
+    btn.textContent = '⬇ 下载 PNG';
+    alert('下载失败：' + err.message);
+  });
+}
+</script>
+
+</body>
+</html>

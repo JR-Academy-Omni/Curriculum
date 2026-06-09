@@ -43,23 +43,23 @@ export default function S01_Cover() {
 						textShadow: `4px 4px 0 ${colors.black}`,
 					}}
 				>
-					AI Adoption<br />
+					AI 工作流<br />
 					<span style={{ display: 'inline-block', padding: '0 20px', background: colors.yellow, color: colors.black, border: `4px solid ${colors.black}`, boxShadow: `6px 6px 0 ${colors.black}`, transform: 'rotate(-1deg)', marginTop: 8 }}>
-						Specialist
+						提效营
 					</span>
 					<br />
-					<span style={{ fontSize: 'clamp(36px, 5vw, 72px)', color: 'rgba(255,255,255,0.7)' }}>Bootcamp</span>
+					<span style={{ fontSize: 'clamp(36px, 5vw, 72px)', color: 'rgba(255,255,255,0.7)' }}>AI Workflow Bootcamp</span>
 				</motion.h1>
 
 				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} style={{ marginTop: 32 }}>
 					<p style={{ fontFamily: fonts.heading, fontSize: 'clamp(18px, 2.5vw, 28px)', fontWeight: 700, color: 'rgba(255,255,255,0.9)', borderLeft: `5px solid ${colors.teal}`, paddingLeft: 16 }}>
-						让你的团队真正用好 AI — 8 周成为 AI 落地专家
+						把 AI 装进你部门的工作流 — 8 周搭出 5 个 SOP + 1 份 ROI 报告
 					</p>
 				</motion.div>
 
 				<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} style={{ marginTop: 32, display: 'flex', gap: 16 }}>
-					<span style={{ padding: '10px 24px', background: colors.teal, border: `3px solid ${colors.black}`, boxShadow: `4px 4px 0 ${colors.black}`, fontFamily: fonts.mono, fontSize: 16, fontWeight: 700 }}>48 个业务场景</span>
-					<span style={{ padding: '10px 24px', background: colors.white, border: `3px solid ${colors.black}`, boxShadow: `4px 4px 0 ${colors.black}`, fontFamily: fonts.mono, fontSize: 16, fontWeight: 700 }}>不用写代码</span>
+					<span style={{ padding: '10px 24px', background: colors.teal, border: `3px solid ${colors.black}`, boxShadow: `4px 4px 0 ${colors.black}`, fontFamily: fonts.mono, fontSize: 16, fontWeight: 700 }}>在岗提效</span>
+					<span style={{ padding: '10px 24px', background: colors.white, border: `3px solid ${colors.black}`, boxShadow: `4px 4px 0 ${colors.black}`, fontFamily: fonts.mono, fontSize: 16, fontWeight: 700 }}>不是转职课</span>
 					<span style={{ padding: '10px 24px', border: `3px solid ${colors.white}`, color: colors.white, fontFamily: fonts.mono, fontSize: 16, fontWeight: 700 }}>8 周完成</span>
 				</motion.div>
 			</div>

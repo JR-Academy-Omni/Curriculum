@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N3 · AI Engineer 5 支柱 77 项技能 · 8 张配图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Bricolage+Grotesque:wght@500;700;900&family=DM+Sans:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.min.js"></script>
+<style>
+  :root {
+    /* 严格对齐 src/styles/theme.ts */
+    --red: #ff5757; --dark: #10162f; --yellow: #FFDE59; --green: #7ED957;
+    --blue: #38B6FF; --purple: #CB6CE6; --orange: #FF914D;
+    --warmBg: #fff1e7; --darkBg: #1a1a2e;
+    --indigo: #6366f1; --pink: #fce7f3;
+    --techPurple: #8b5cf6; --techBg: #ede9fe;
+    --govOrange: #f59e0b; --govBg: #fef3c7;
+    --industryCyan: #06b6d4; --industryBg: #cffafe;
+    /* 别名（向后兼容旧 CSS）*/
+    --brand-red: var(--red); --brand-dark: var(--dark); --brand-yellow: var(--yellow);
+    --brand-blue: #3b82f6; --brand-green: var(--green);
+    --bg-cream: var(--warmBg); --bg-page: #eef0f4;
+    --text-main: var(--dark); --text-gray: #64748b; --border-color: #e2e8f0;
+    /* 字体 */
+    --font-heading: 'Bricolage Grotesque','Noto Sans SC',sans-serif;
+    --font-body: 'DM Sans','Noto Sans SC',sans-serif;
+    --font-mono: 'Space Mono',monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-page); color:var(--text-main); font-family:var(--font-body); padding:24px 16px 24px 132px; line-height:1.5; }
+  .topbar { background:var(--brand-dark); color:var(--bg-cream); border:3px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:16px 24px; margin:0 auto 24px; max-width:1400px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .topbar h1 { font-size:18px; font-weight:900; }
+  .topbar h1 span { color:var(--brand-yellow); }
+  .topbar nav { display:flex; gap:8px; flex-wrap:wrap; }
+  .topbar nav a { background:var(--brand-yellow); color:var(--brand-dark); padding:6px 12px; font-size:12px; font-weight:700; text-decoration:none; border:2px solid var(--bg-cream); }
+  .topbar nav a.active { background:var(--brand-red); color:#fff; }
+  .intro { background:var(--bg-cream); border:3px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:18px 24px; margin:0 auto 28px; max-width:1400px; }
+  .intro .label { font-family:'Space Mono','JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; background:var(--brand-dark); color:var(--brand-yellow); padding:3px 10px; display:inline-block; margin-bottom:10px; }
+  .intro h2 { font-size:46px; font-weight:900; margin-bottom:8px; }
+  .intro h2 span { background:var(--brand-yellow); padding:0 6px; }
+  .intro p { font-size:14px; color:var(--text-gray); margin-bottom:8px; }
+  .intro .pills { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+  .intro .pill { font-family:'Space Mono','JetBrains Mono',monospace; font-size:11px; font-weight:700; padding:4px 10px; background:#fff; border:2px solid var(--brand-dark); }
+  .thumb-nav { position:fixed; top:20px; left:16px; width:104px; background:#fff; border:2.5px solid var(--brand-dark); box-shadow:4px 4px 0 var(--brand-dark); padding:10px 8px; z-index:100; max-height:calc(100vh - 40px); overflow-y:auto; }
+  .thumb-nav::before { content:'N3 · NAV'; display:block; font-family:'Space Mono','JetBrains Mono',monospace; font-size:10px; font-weight:900; color:var(--brand-red); text-align:center; letter-spacing:1.5px; padding-bottom:6px; border-bottom:1.5px dashed var(--border-color); margin-bottom:6px; }
+  .thumb-nav .thumb { display:flex; flex-direction:column; aspect-ratio:3/4; background:var(--bg-cream); border:1.5px solid var(--brand-dark); margin-bottom:6px; text-decoration:none; color:var(--brand-dark); align-items:center; justify-content:center; padding:4px; transition:all .15s; }
+  .thumb-nav .thumb:hover { background:var(--brand-yellow); }
+  .thumb-nav .thumb .n { font-size:18px; font-weight:900; line-height:1; }
+  .thumb-nav .thumb .l { font-size:9px; color:var(--text-gray); margin-top:2px; }
+  .poster-frame { display:grid; grid-template-columns:auto 380px; gap:18px; align-items:start; margin:0 auto 56px; max-width:1400px; position:relative; }
+  .poster-main { display:flex; flex-direction:column; align-items:center; }
+  .poster-label { align-self:stretch; display:flex; align-items:center; gap:10px; font-family:'Space Mono','JetBrains Mono',monospace; font-size:14px; margin-bottom:12px; font-weight:900; color:var(--brand-dark); }
+  .poster-label::before { content:''; width:28px; height:4px; background:var(--brand-red); }
+  .poster-label .meta { color:var(--text-gray); font-size:11px; margin-left:6px; font-weight:600; }
+  .poster-scaler { width:435px; height:581px; position:relative; border:2.5px solid var(--brand-dark); box-shadow:8px 8px 0 var(--brand-dark); overflow:hidden; background:#fff; }
+  .poster { width:1242px; height:1660px; transform:scale(0.35); transform-origin:top left; position:absolute; top:0; left:0; overflow:hidden; font-family:'DM Sans','Noto Sans SC',sans-serif; box-sizing:border-box; background:var(--bg-cream); }
+  .dl-btn { margin-top:16px; background:var(--brand-red); color:#fff; border:2.5px solid var(--brand-dark); box-shadow:4px 4px 0 var(--brand-dark); padding:10px 24px; font-family:'DM Sans','Noto Sans SC',sans-serif; font-size:13px; font-weight:900; letter-spacing:1px; cursor:pointer; transition:all .15s; }
+  .dl-btn:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--brand-dark); }
+  .copy-panel { background:#fff; border:2.5px solid var(--brand-dark); box-shadow:4px 4px 0 var(--brand-dark); padding:16px 18px; }
+  .copy-panel .cp-title { font-family:'Space Mono','JetBrains Mono',monospace; font-size:12px; font-weight:900; color:var(--brand-red); letter-spacing:1.5px; padding-bottom:8px; border-bottom:1.5px dashed var(--border-color); margin-bottom:12px; }
+  .copy-panel .cp-box { background:var(--bg-cream); border:1.5px solid var(--brand-dark); padding:10px 12px; font-size:12.5px; line-height:1.65; white-space:pre-wrap; margin-bottom:8px; }
+  .copy-panel .cp-box.hashtags { color:var(--brand-blue); font-weight:700; font-size:12px; }
+  .copy-panel .cp-label { font-family:'Space Mono','JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; color:var(--text-gray); margin:8px 0 4px; text-transform:uppercase; }
+  .copy-panel .cp-btn { width:100%; background:var(--brand-dark); color:#fff; border:none; padding:8px 12px; font-size:11px; font-weight:700; letter-spacing:1px; cursor:pointer; margin-top:8px; font-family:'DM Sans','Noto Sans SC',sans-serif; transition:all .15s; }
+  .copy-panel .cp-btn:hover { background:var(--brand-red); }
+  .copy-panel .cp-btn.copied { background:var(--brand-green); }
+  .p { width:100%; height:100%; padding:48px 56px; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+  .p-tag { display:inline-flex; align-items:center; gap:12px; background:var(--brand-dark); color:var(--brand-yellow); padding:14px 28px; font-family:'Space Mono','JetBrains Mono',monospace; font-size:58px; font-weight:900; letter-spacing:3px; width:fit-content; margin-bottom:36px; }
+  .p-tag .dot { width:16px; height:16px; border-radius:50%; background:var(--brand-yellow); }
+  .p-logo { position:absolute; bottom:56px; right:64px; display:flex; align-items:center; gap:12px; font-family:'Space Mono','JetBrains Mono',monospace; font-size:46px; font-weight:900; color:var(--brand-dark); }
+  .p-logo .box { background:var(--brand-dark); color:var(--brand-yellow); padding:6px 12px; letter-spacing:2px; }
+
+  /* === P1 封面 === */
+  .p1 { background:var(--bg-cream); justify-content:center; align-items:center; text-align:center; }
+  .p1 .topline { font-size:48px; font-weight:700; color:var(--text-gray); margin-bottom:24px; letter-spacing:1px; }
+  .p1 .formula { display:flex; align-items:center; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:36px; }
+  .p1 .formula .num { font-size:200px; font-weight:900; color:var(--brand-red); line-height:0.85; font-family:'Bricolage Grotesque',sans-serif; }
+  .p1 .formula .x { font-size:120px; font-weight:900; color:var(--brand-dark); }
+  .p1 .formula .pl { font-size:84px; font-weight:900; color:var(--brand-dark); }
+  .p1 .title { font-size:108px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; line-height:1.1; margin-bottom:24px; }
+  .p1 .title .hl { background:var(--brand-yellow); padding:0 12px; }
+  .p1 .sub { font-size:48px; font-weight:600; color:var(--text-gray); margin-bottom:36px; }
+  .p1 .bar { background:var(--brand-dark); color:var(--brand-yellow); padding:18px 32px; font-family:'Space Mono','JetBrains Mono',monospace; font-size:52px; font-weight:900; letter-spacing:2px; border:4px solid var(--brand-dark); box-shadow:8px 8px 0 var(--brand-red); }
+  .p1 .p-logo { color:var(--brand-dark); }
+
+  /* === P2 5 支柱总览 === */
+  .p2 { background:#fff; }
+  .p2 h2 { font-size:100px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; line-height:1.1; margin-bottom:8px; }
+  .p2 h2 .hl { background:var(--brand-yellow); padding:0 8px; }
+  .p2 .h-sub { font-size:58px; font-weight:600; color:var(--text-gray); margin-bottom:36px; }
+  .p2 .pillars { display:flex; flex-direction:column; gap:8px; flex:1; }
+  .p2 .pillar { background:var(--bg-cream); border:3.5px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:18px 24px; display:flex; gap:14px; align-items:center; }
+  .p2 .pillar.core { background:var(--brand-red); color:#fff; }
+  .p2 .pillar .num { font-size:76px; font-weight:900; font-family:'Bricolage Grotesque',sans-serif; line-height:1; min-width:80px; color:var(--brand-red); }
+  .p2 .pillar.core .num { color:#fff; background:var(--brand-dark); padding:0 12px; }
+  .p2 .pillar .body { flex:1; }
+  .p2 .pillar .body .name { font-size:44px; font-weight:900; margin-bottom:4px; }
+  .p2 .pillar .body .det { font-size:42px; font-weight:500; line-height:1.4; }
+  .p2 .pillar .items { font-family:'Space Mono','JetBrains Mono',monospace; font-size:52px; font-weight:900; padding:8px 14px; background:var(--brand-dark); color:var(--brand-yellow); align-self:center; }
+  .p2 .pillar.core .items { background:#fff; color:var(--brand-red); }
+
+  /* === P3 / P4 / P5 支柱详拆 === */
+  .pillar-page { background:var(--bg-cream); }
+  .pillar-page .head { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .pillar-page .head .badge { font-family:'Space Mono','JetBrains Mono',monospace; font-size:46px; font-weight:900; background:var(--brand-dark); color:var(--brand-yellow); padding:6px 16px; letter-spacing:2px; }
+  .pillar-page .head .badge.core { background:var(--brand-red); color:#fff; }
+  .pillar-page h2 { font-size:88px; font-weight:900; color:var(--brand-dark); letter-spacing:-1.5px; line-height:1.1; }
+  .pillar-page h2 .hl { background:var(--brand-yellow); padding:0 8px; }
+  .pillar-page .h-sub { font-size:52px; font-weight:600; color:var(--text-gray); margin-bottom:32px; }
+  .pillar-page .skill-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; flex:1; }
+  .pillar-page .skill-grid.single { grid-template-columns:1fr; }
+  .pillar-page .sk-card { background:#fff; border:3px solid var(--brand-dark); padding:16px 20px; }
+  .pillar-page .sk-card .gname { font-size:46px; font-weight:900; color:var(--brand-red); margin-bottom:6px; }
+  .pillar-page .sk-card .gitems { font-size:42px; color:var(--text-main); font-weight:500; line-height:1.5; }
+  .pillar-page .pillar-summary { background:var(--brand-dark); color:var(--brand-yellow); padding:16px 24px; margin-top:20px; text-align:center; font-size:46px; font-weight:900; letter-spacing:1px; }
+
+  /* === P6 转型 4 步 === */
+  .p6 { background:var(--warmBg); color:var(--bg-cream); }
+  .p6 .p-tag { background:var(--brand-yellow); color:var(--brand-dark); }
+  .p6 h2 { font-size:88px; font-weight:900; color:#fff; letter-spacing:-1.5px; line-height:1.1; margin-bottom:8px; }
+  .p6 h2 .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 10px; }
+  .p6 .h-sub { font-size:58px; font-weight:600; color:var(--brand-yellow); margin-bottom:36px; }
+  .p6 .steps { display:flex; flex-direction:column; gap:8px; flex:1; }
+  .p6 .step { background:var(--bg-cream); color:var(--brand-dark); border:4px solid var(--brand-yellow); padding:18px 24px; display:flex; gap:18px; align-items:center; }
+  .p6 .step .ph { font-family:'Space Mono','JetBrains Mono',monospace; font-size:48px; font-weight:900; color:var(--brand-red); min-width:120px; }
+  .p6 .step .body .name { font-size:44px; font-weight:900; color:var(--brand-dark); margin-bottom:4px; }
+  .p6 .step .body .det { font-size:42px; color:var(--text-main); line-height:1.4; }
+  .p6 .total { text-align:center; margin-top:24px; font-size:44px; font-weight:900; color:var(--brand-yellow); letter-spacing:-0.5px; }
+  .p6 .total .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 10px; }
+  .p6 .p-logo { color:var(--bg-cream); }
+  .p6 .p-logo .box { background:var(--brand-yellow); color:var(--brand-dark); }
+
+  /* === P7 swyx 推荐 + 数据 === */
+  .p7 { background:#fff; }
+  .p7 h2 { font-size:88px; font-weight:900; color:var(--brand-dark); letter-spacing:-1.5px; line-height:1.1; margin-bottom:8px; }
+  .p7 h2 .hl { background:var(--brand-yellow); padding:0 8px; }
+  .p7 .h-sub { font-size:52px; font-weight:600; color:var(--text-gray); margin-bottom:32px; }
+  .p7 .swyx { background:var(--bg-cream); border:4px solid var(--brand-dark); box-shadow:8px 8px 0 var(--brand-dark); padding:20px 24px; margin-bottom:20px; }
+  .p7 .swyx .name { font-size:48px; font-weight:900; color:var(--brand-dark); margin-bottom:6px; }
+  .p7 .swyx .ref { font-family:'Space Mono','JetBrains Mono',monospace; font-size:42px; color:var(--brand-red); margin-bottom:12px; }
+  .p7 .swyx .quote { font-size:46px; font-weight:500; line-height:1.5; color:var(--text-main); border-left:6px solid var(--brand-yellow); padding-left:16px; }
+  .p7 .data-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .p7 .data-card { background:var(--brand-dark); color:var(--brand-yellow); padding:18px 22px; border:3px solid var(--brand-dark); }
+  .p7 .data-card .v { font-family:'Bricolage Grotesque',sans-serif; font-size:68px; font-weight:900; line-height:1; margin-bottom:6px; }
+  .p7 .data-card .l { font-size:42px; font-weight:700; line-height:1.3; }
+
+  /* === P8 CTA === */
+  .p8 { background:var(--brand-dark); color:var(--bg-cream); justify-content:center; align-items:center; text-align:center; }
+  .p8 .corner-yellow { position:absolute; top:-100px; right:-100px; width:360px; height:360px; background:var(--brand-yellow); transform:rotate(45deg); }
+  .p8 .corner-red { position:absolute; bottom:-100px; left:-100px; width:280px; height:280px; background:var(--brand-red); transform:rotate(45deg); }
+  .p8 .ctop { font-family:'Space Mono','JetBrains Mono',monospace; font-size:48px; font-weight:900; letter-spacing:4px; color:var(--brand-yellow); margin-bottom:24px; z-index:2; position:relative; }
+  .p8 .num3 { font-size:480px; font-weight:900; color:var(--brand-yellow); line-height:0.85; letter-spacing:-16px; font-family:'Bricolage Grotesque',sans-serif; text-shadow:12px 12px 0 var(--brand-red); z-index:2; position:relative; }
+  .p8 .cta-text { font-size:72px; font-weight:900; color:#fff; margin-top:24px; line-height:1.3; z-index:2; position:relative; }
+  .p8 .cta-text .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 10px; }
+  .p8 .cta-sub { font-size:58px; font-weight:600; color:var(--bg-cream); margin-top:24px; opacity:0.85; z-index:2; position:relative; }
+  .p8 .p-logo { color:var(--bg-cream); }
+  .p8 .p-logo .box { background:var(--brand-yellow); color:var(--brand-dark); }
+
+  /* === PPT 风格 .hl 下划线（来自讲座 ui.tsx Highlight 组件，覆盖各 .pX 内部 .hl 定义）=== */
+  .p .hl, .poster .hl { position:relative !important; display:inline-block !important; z-index:1 !important; background:transparent !important; color:inherit !important; padding:0 !important; }
+  .p .hl::after, .poster .hl::after { content:''; position:absolute; bottom:6px; left:-6px; right:-6px; height:22px; background:var(--yellow); z-index:-1; opacity:0.85; }
+  /* 红字高亮（保留原 .hlr 红底白字风格转为红色文字） */
+  .p .hlr, .poster .hlr { color:var(--red) !important; background:transparent !important; }
+  /* 绿字 */
+  .p .hlg, .poster .hlg { color:var(--green) !important; background:transparent !important; font-weight:900; }
+  /* 蓝字 */
+  .p .hl-b { color:var(--indigo); }
+  /* p-dots 点阵装饰（PPT 同款）*/
+  .p::before { content:''; position:absolute; top:0; right:0; width:400px; height:400px; background-image:radial-gradient(#64748b 1.5px, transparent 1.5px); background-size:28px 28px; opacity:0.10; pointer-events:none; z-index:0; }
+  .p > * { position:relative; z-index:1; }
+
+</style>
+</head>
+<body>
+<aside class="thumb-nav">
+  <a class="thumb" href="#p1"><span class="n">1</span><span class="l">封面</span></a>
+  <a class="thumb" href="#p2"><span class="n">2</span><span class="l">5 支柱</span></a>
+  <a class="thumb" href="#p3"><span class="n">3</span><span class="l">Full-stack</span></a>
+  <a class="thumb" href="#p4"><span class="n">4</span><span class="l">Prompt+Cloud</span></a>
+  <a class="thumb" href="#p5"><span class="n">5</span><span class="l">AI Core</span></a>
+  <a class="thumb" href="#p6"><span class="n">6</span><span class="l">4 步路径</span></a>
+  <a class="thumb" href="#p7"><span class="n">7</span><span class="l">swyx</span></a>
+  <a class="thumb" href="#p8"><span class="n">8</span><span class="l">CTA</span></a>
+</aside>
+<header class="topbar">
+  <h1>JR ACADEMY · <span>XHS</span> 配图 · N3 · AI Engineer 5 支柱</h1>
+  <nav><a href="../index.html">← 总览</a><a href="N1.html">N1</a><a href="N2.html">N2</a><a class="active" href="N3.html">N3</a><a href="N6.html">N6</a></nav>
+</header>
+<section class="intro">
+  <span class="label">XHS POSTERS · N3 · 8 张 · 澄清钩</span>
+  <h2>💼 AI Engineer 跟普通程序员到底差什么 · <span>5 支柱 77 项</span></h2>
+  <p>2300+ 人测试过的能力地图 · 5 支柱清晰对应转型路径</p>
+  <div class="pills">
+    <span class="pill">5 支柱</span><span class="pill">77 项技能</span>
+    <span class="pill">字号 ≥ 24px</span><span class="pill">0 违禁词</span>
+  </div>
+</section>
+
+<section class="poster-frame" id="p1">
+  <div class="poster-main">
+    <div class="poster-label">P1 · 封面 <span class="meta">5 × 77 公式</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p1">
+      <div class="p-tag"><span class="dot"></span>AI ENGINEER</div>
+      <div class="topline">不是会写代码就能转</div>
+      <div class="formula"><div class="num">5</div><div class="x">×</div><div class="num">77</div></div>
+      <div class="title">支柱 · <span class="hl">77 项技能</span></div>
+      <div class="sub">AI Engineer 跟普通程序员的完整差距</div>
+      <div class="bar">2300+ 人测试过</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p1',event)">📷 下载 P1 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">N3 主稿 · 澄清钩</div>
+    <div class="cp-label">标题</div>
+    <div class="cp-box" id="t-title">💼 AI Engineer 跟普通程序员到底差什么</div>
+    <button class="cp-btn" data-target="t-title">复制标题</button>
+    <div class="cp-label">话题</div>
+    <div class="cp-box hashtags">#AIEngineer #程序员转型 #求职 #AI #编程</div>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p2">
+  <div class="poster-main">
+    <div class="poster-label">P2 · 5 支柱总览 <span class="meta">CORE × 2 + 3 支撑</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p2">
+      <div class="p-tag"><span class="dot"></span>5 PILLARS</div>
+      <h2>AI Engineer =</h2>
+      <h2><span class="hl">5 支柱合起来</span></h2>
+      <div class="h-sub">2 CORE + 3 支撑 · 共 77 项</div>
+      <div class="pillars">
+        <div class="pillar core"><div class="num">1</div><div class="body"><div class="name">Full-stack</div><div class="det">React · Next · NestJS · Postgres · Redis · Stripe · Auth · CI/CD 底座</div></div><div class="items">23 项</div></div>
+        <div class="pillar"><div class="num">2</div><div class="body"><div class="name">Prompt Engineering</div><div class="det">四要素 · CoT · Few-shot · Eval-driven 迭代</div></div><div class="items">11 项</div></div>
+        <div class="pillar"><div class="num">3</div><div class="body"><div class="name">Cloud Foundation</div><div class="det">AWS · Docker · K8s · CI/CD · 监控 · IaC</div></div><div class="items">12 项</div></div>
+        <div class="pillar"><div class="num">4</div><div class="body"><div class="name">Data Thinking</div><div class="det">Vector DB · Embeddings · Chunking · Recall@K · NDCG</div></div><div class="items">8 项</div></div>
+        <div class="pillar core"><div class="num">5</div><div class="body"><div class="name">AI Engineering Core</div><div class="det">OpenAI/Anthropic SDK · RAG · Agent · Function calling · Token 成本</div></div><div class="items">23 项</div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p2',event)">📷 下载 P2 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P2 5 支柱</div>
+    <div class="cp-box" id="t-p2">AI Engineer = 5 支柱合起来：
+
+🔴 CORE 支柱：
+1. Full-stack 23 项（底座）
+5. AI Engineering Core 23 项（真正吃饭的本事）
+
+支撑支柱：
+2. Prompt Engineering 11 项
+3. Cloud Foundation 12 项
+4. Data Thinking 8 项
+
+普通程序员只占 1-2 支柱，剩 3-4 个要补。</div>
+    <button class="cp-btn" data-target="t-p2">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p3">
+  <div class="poster-main">
+    <div class="poster-label">P3 · 支柱 1 · Full-stack <span class="meta">23 项 CORE</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p pillar-page">
+      <div class="head"><div class="badge core">PILLAR 1 · CORE</div></div>
+      <h2><span class="hl">Full-stack</span> 23 项</h2>
+      <div class="h-sub">底座 · 与普通全栈共用</div>
+      <div class="skill-grid">
+        <div class="sk-card"><div class="gname">前端</div><div class="gitems">React · Next.js · Tailwind · TypeScript · Vite · 状态管理</div></div>
+        <div class="sk-card"><div class="gname">后端</div><div class="gitems">Node.js · NestJS · API 设计 · 中间件 · Webhook</div></div>
+        <div class="sk-card"><div class="gname">数据库</div><div class="gitems">PostgreSQL · MongoDB · Redis · ORM · 索引</div></div>
+        <div class="sk-card"><div class="gname">认证 / 支付</div><div class="gitems">Auth / RBAC · JWT · Stripe · Webhook 签名</div></div>
+      </div>
+      <div class="pillar-summary">底座 · 占 AI Engineer 整体能力 30%</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p3',event)">📷 下载 P3 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P3 Full-stack</div>
+    <div class="cp-box" id="t-p3">支柱 1 · Full-stack 23 项（CORE）：
+
+前端：React / Next.js / Tailwind
+后端：Node.js / NestJS / API 设计
+数据库：PostgreSQL / MongoDB / Redis
+认证 / 支付：Auth / RBAC / Stripe
+
+这部分跟普通全栈差不多，是底座。占 30% 能力。</div>
+    <button class="cp-btn" data-target="t-p3">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p4">
+  <div class="poster-main">
+    <div class="poster-label">P4 · 支柱 2+3 · Prompt + Cloud <span class="meta">11 + 12 项</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p pillar-page">
+      <div class="head"><div class="badge">PILLAR 2 + 3</div></div>
+      <h2><span class="hl">Prompt</span> · <span class="hl">Cloud</span></h2>
+      <div class="h-sub">输入指令 + 云端跑 · 11 + 12 项</div>
+      <div class="skill-grid">
+        <div class="sk-card"><div class="gname">Prompt 四要素</div><div class="gitems">任务 / 输入 / 约束 / 输出格式</div></div>
+        <div class="sk-card"><div class="gname">推理技巧</div><div class="gitems">CoT 思维链 · Few-shot · System prompt</div></div>
+        <div class="sk-card"><div class="gname">迭代</div><div class="gitems">Prompt 版本化 · Eval-driven · A/B test</div></div>
+        <div class="sk-card"><div class="gname">AWS</div><div class="gitems">EC2 / S3 / Lambda / API Gateway</div></div>
+        <div class="sk-card"><div class="gname">容器 / 编排</div><div class="gitems">Docker · K8s · Helm</div></div>
+        <div class="sk-card"><div class="gname">DevOps</div><div class="gitems">CI/CD · Secrets · CloudWatch · Sentry</div></div>
+      </div>
+      <div class="pillar-summary">普通程序员一般只摸到 50% · AI Engineer 必须 100%</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p4',event)">📷 下载 P4 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P4 Prompt+Cloud</div>
+    <div class="cp-box" id="t-p4">支柱 2 · Prompt Engineering 11 项：
+四要素 · CoT · Few-shot · System prompt · 版本化 · Eval-driven
+
+支柱 3 · Cloud Foundation 12 项：
+AWS · Docker / K8s · CI/CD · Secrets · CloudWatch
+
+普通程序员只摸到 50%，AI Engineer 必须 100%。</div>
+    <button class="cp-btn" data-target="t-p4">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p5">
+  <div class="poster-main">
+    <div class="poster-label">P5 · 支柱 4+5 · Data + AI Core <span class="meta">8 + 23 项 CORE</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p pillar-page" style="background:#fff;">
+      <div class="head"><div class="badge core">PILLAR 5 · CORE</div></div>
+      <h2><span class="hl">AI Engineering</span> 真本事</h2>
+      <div class="h-sub">支柱 4 Data + 支柱 5 Core · 8 + 23 项</div>
+      <div class="skill-grid">
+        <div class="sk-card"><div class="gname">SDK · 直连</div><div class="gitems">OpenAI / Anthropic SDK · Streaming · Tool use · Function calling</div></div>
+        <div class="sk-card"><div class="gname">RAG 系统</div><div class="gitems">Embeddings · Vector DB · Chunking · Retrieval rerank</div></div>
+        <div class="sk-card"><div class="gname">Agent 框架</div><div class="gitems">LangChain · AutoGen · CrewAI · Multi-Agent 编排</div></div>
+        <div class="sk-card"><div class="gname">Eval / 监控</div><div class="gitems">Eval metrics · LLM-as-judge · Hallucination 检测</div></div>
+      </div>
+      <div class="pillar-summary" style="background:var(--brand-red);">普通后端不碰 · AI Engineer 吃饭本事</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p5',event)">📷 下载 P5 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P5 AI Core</div>
+    <div class="cp-box" id="t-p5">支柱 4 · Data Thinking 8 项：
+Vector DB · Embeddings · Chunking · Eval metrics
+
+支柱 5 · AI Engineering Core 23 项（CORE）：
+OpenAI/Anthropic SDK · RAG · Agent 框架 · Function calling · Model Eval
+
+这是 AI Engineer 真正吃饭的本事。普通后端基本不碰。</div>
+    <button class="cp-btn" data-target="t-p5">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p6">
+  <div class="poster-main">
+    <div class="poster-label">P6 · 4 步转型路径 <span class="meta">6-8 个月</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p6">
+      <div class="p-tag"><span class="dot"></span>PATH · 4 步</div>
+      <h2><span class="hl">6-8 个月</span></h2>
+      <h2>从程序员到 AI Engineer</h2>
+      <div class="h-sub">4 步路径 · 每步 1-2 月</div>
+      <div class="steps">
+        <div class="step"><div class="ph">Phase 1</div><div class="body"><div class="name">打基础（1-2 月）</div><div class="det">5 支柱挑薄弱补 · Prompt 模板 · SDK 直连</div></div></div>
+        <div class="step"><div class="ph">Phase 2</div><div class="body"><div class="name">评估与上线（2 月）</div><div class="det">部署你的第一版 RAG · Eval 跑通</div></div></div>
+        <div class="step"><div class="ph">Phase 3</div><div class="body"><div class="name">Agent 与生产化（2 月）</div><div class="det">Multi-Agent 工作流 · 监控 · 容错</div></div></div>
+        <div class="step"><div class="ph">Phase 4</div><div class="body"><div class="name">输出与求职（1-2 月）</div><div class="det">个人项目 + GitHub + 作品集 portfolio</div></div></div>
+      </div>
+      <div class="total">合计：<span class="hl">6-8 个月</span> · 可直接面试中级岗</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p6',event)">📷 下载 P6 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P6 转型 4 步</div>
+    <div class="cp-box" id="t-p6">4 步转型路径（6-8 个月）：
+
+Phase 1: 打基础（1-2 月）
+Phase 2: 评估与上线（部署第一版 RAG · 2 月）
+Phase 3: Agent 与生产化（2 月）
+Phase 4: 输出与求职（个人项目 + 作品集 · 1-2 月）
+
+合计 6-8 个月可直接面试中级岗。</div>
+    <button class="cp-btn" data-target="t-p6">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p7">
+  <div class="poster-main">
+    <div class="poster-label">P7 · swyx 推荐 + 薪资数据 <span class="meta">原文 + Levels.fyi</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p7">
+      <div class="p-tag"><span class="dot"></span>READING · swyx</div>
+      <h2>这个岗位<span class="hl">谁起的名</span>？</h2>
+      <div class="h-sub">2023 年 swyx · 现在已是行业标准类别</div>
+      <div class="swyx">
+        <div class="name">Shawn Wang (swyx)</div>
+        <div class="ref">@swyx · 前 AWS / Netlify / Temporal DevRel</div>
+        <div class="quote">"AI Engineer 不做模型训练 — 专门把 LLM API + RAG + Agent 框架组装成产品的人。" — The Rise of the AI Engineer (2023)</div>
+      </div>
+      <div class="data-grid">
+        <div class="data-card"><div class="v">$400K-$1.15M</div><div class="l">OpenAI L4-5 TC<br>base $155-310K + stock $400-800K</div></div>
+        <div class="data-card"><div class="v">$746K</div><div class="l">Anthropic Research<br>median total compensation</div></div>
+        <div class="data-card"><div class="v">$893K</div><div class="l">Google DeepMind<br>senior 含股权</div></div>
+        <div class="data-card"><div class="v">AU$255K</div><div class="l">Canva Sydney AI Eng<br>median 澳洲数据</div></div>
+        <div class="data-card"><div class="v">100万¥</div><div class="l">DeepSeek/字节<br>中国高级 AI Eng + 股权</div></div>
+        <div class="data-card"><div class="v">+543%</div><div class="l">中国 1-10 月 YoY<br>9 月单月 +11 倍飙升</div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p7',event)">📷 下载 P7 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P7 swyx + 数据</div>
+    <div class="cp-box" id="t-p7">Shawn Wang (swyx) 2023 年提出 AI Engineer 定义：
+
+"不做模型训练，专门把 LLM API + RAG + Agent 框架组装成产品的人。"
+
+原文 The Rise of the AI Engineer。建议去翻 — 挺短，写得很直接。
+
+薪资数据（Levels.fyi）：
+- 中级 $200K
+- Senior $600K+
+- OpenAI 人均股权 $1.5M
+- Anthropic Research 总包 $746K</div>
+    <button class="cp-btn" data-target="t-p7">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p8">
+  <div class="poster-main">
+    <div class="poster-label">P8 · CTA <span class="meta">扣 3 + 主页</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p8">
+      <div class="corner-yellow"></div>
+      <div class="corner-red"></div>
+      <div class="ctop">XHS · 评论区互动</div>
+      <div class="num3">3</div>
+      <div class="cta-text">扣 <span class="hl">3</span> · 我整理了<br><span class="hl">77 项</span>技能 + 4 步路径</div>
+      <div class="cta-sub">主页讲座完整版 · 含薪资段位详解</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p8',event)">📷 下载 P8 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">CTA 文案</div>
+    <div class="cp-box" id="t-p8">📌 评论扣 3，我整理了 77 项技能清单 + 4 步路径
+📌 主页讲座完整版有薪资段位详解</div>
+    <button class="cp-btn" data-target="t-p8">复制 CTA</button>
+  </aside>
+</section>
+
+<script>
+  document.querySelectorAll('.cp-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const t = btn.dataset.target;
+      const el = document.getElementById(t);
+      if (!el) return;
+      try {
+        await navigator.clipboard.writeText(el.textContent.trim());
+        const o = btn.textContent;
+        btn.textContent = '✓ 已复制'; btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = o; btn.classList.remove('copied'); }, 1500);
+      } catch (e) { alert('复制失败：' + e.message); }
+    });
+  });
+  async function dlP(id, ev) {
+    const btn = ev.target;
+    const p = document.querySelector(`#${id} .poster`);
+    if (!p) return;
+    const o = btn.textContent; btn.textContent = '⏳ 生成中...'; btn.disabled = true;
+    try {
+      const ot = p.style.transform;
+      p.style.transform = 'none'; p.style.position = 'fixed'; p.style.left = '-9999px'; p.style.top = '0';
+      const url = await htmlToImage.toPng(p, { width:1242, height:1660, pixelRatio:1, cacheBust:true, style:{transform:'none'} });
+      p.style.transform = ot; p.style.position = ''; p.style.left = ''; p.style.top = '';
+      const a = document.createElement('a'); a.href = url; a.download = `N3-${id}-${Date.now()}.png`; a.click();
+    } catch (e) { alert('下载失败：' + e.message); }
+    finally { btn.textContent = o; btn.disabled = false; }
+  }
+</script>
+</body>
+</html>

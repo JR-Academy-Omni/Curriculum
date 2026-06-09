@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 一人创业营 · 公众号文章预览</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.75}
+
+.topbar{background:linear-gradient(135deg,#10162f 0%,#FF914D 100%);color:#fff;padding:18px 24px;border-bottom:4px solid #000;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+.topbar a.back{color:#FFDE59;text-decoration:none;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.5px}
+.topbar a.back:hover{color:#fff}
+.topbar .meta-info{font-family:'Space Mono',monospace;font-size:12px;opacity:0.85}
+.topbar .actions{display:flex;gap:8px;flex-wrap:wrap}
+.topbar button{padding:7px 14px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.5px;border:2px solid #fff;background:rgba(255,255,255,0.1);color:#fff;cursor:pointer}
+.topbar button:hover{background:#fff;color:#10162f}
+.topbar button.copied{background:#10b981;border-color:#10b981;color:#fff}
+
+.banner{padding:10px 20px;background:#FFDE59;color:#10162f;text-align:center;font-size:12.5px;font-weight:700;border-bottom:2px solid #10162f}
+
+.container{max-width:780px;margin:0 auto;padding:48px 28px 80px;background:#fff;min-height:calc(100vh - 60px);box-shadow:0 0 40px rgba(0,0,0,0.05)}
+
+article{font-size:16px}
+article h1{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-size:clamp(26px,3.5vw,36px);font-weight:900;letter-spacing:-0.02em;line-height:1.2;color:#10162f;margin:0 0 28px;border-bottom:4px solid #10162f;padding-bottom:18px}
+article h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,28px);font-weight:900;color:#10162f;margin:48px 0 16px;border-left:6px solid #FF914D;padding-left:14px;line-height:1.3}
+article h3{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(18px,2.5vw,22px);font-weight:900;color:#10162f;margin:32px 0 12px;line-height:1.35}
+article h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:#10162f;margin:24px 0 10px}
+article p{margin:14px 0;color:#222}
+article strong{color:#10162f;font-weight:700}
+article em{color:#FF914D;font-style:normal}
+article a{color:#FF914D;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+article a:hover{color:#10162f;text-decoration-color:#10162f}
+article ul,article ol{margin:14px 0;padding-left:24px}
+article li{margin:6px 0;line-height:1.75}
+article li strong{color:#10162f}
+article hr{border:none;border-top:2px dashed #ddd;margin:36px 0}
+
+article blockquote{border-left:4px solid #FFDE59;background:#fffbe6;padding:14px 18px;margin:18px 0;font-size:14.5px;color:#444;line-height:1.7}
+article blockquote p{margin:6px 0}
+
+article code{background:#10162f;color:#FFDE59;padding:2px 8px;font-family:'Space Mono',monospace;font-size:13px;border-radius:2px}
+article pre{background:#10162f;color:#FFDE59;padding:18px 22px;margin:18px 0;border:2px solid #000;font-family:'Space Mono','Noto Sans SC',monospace;font-size:13px;line-height:1.7;overflow-x:auto;border-radius:0}
+article pre code{background:none;padding:0;font-size:inherit}
+
+article table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;border:2px solid #000}
+article table thead{background:#10162f;color:#fff}
+article table th{padding:10px 12px;text-align:left;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;border:1px solid #000;font-size:13.5px}
+article table td{padding:10px 12px;border:1px solid #ddd;vertical-align:top;line-height:1.65}
+article table tbody tr:nth-child(even){background:#fafafa}
+article table tbody tr:hover{background:#fffbe6}
+article table strong{color:#10162f}
+
+@media (max-width:600px){
+  .container{padding:28px 18px 60px}
+  article{font-size:15px}
+  article table{font-size:13px}
+  article table th,article table td{padding:7px 8px}
+}
+
+#loading{text-align:center;padding:80px 20px;color:#888;font-size:14px}
+#loading .spinner{display:inline-block;width:24px;height:24px;border:3px solid #ddd;border-top:3px solid #FF914D;border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+#error{text-align:center;padding:80px 20px;color:#7f1d1d;background:#fff5f5;border:2px solid #7f1d1d;margin:40px 0}
+#error h2{color:#7f1d1d;border:none;padding:0;margin:0 0 12px}
+#error code{display:inline-block;margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back" href="../promo-kit.html">← 返回推广包</a>
+  <div class="meta-info" id="metaInfo">公众号长文预览</div>
+  <div class="actions">
+    <button id="btnCopyMd">📋 复制 Markdown</button>
+    <button id="btnCopyHtml">📄 复制 HTML（公众号）</button>
+    <button id="btnPrint">🖨 打印 / PDF</button>
+  </div>
+</div>
+
+<div class="banner">⚠️ 团队内部预览 · 发布前请加自己的真实细节避免 AI 味 · 不索引</div>
+
+<div class="container">
+  <div id="loading">
+    <div class="spinner"></div>
+    <div>正在加载 markdown 长文…</div>
+  </div>
+  <article id="content" style="display:none"></article>
+  <div id="error" style="display:none">
+    <h2>⚠️ 加载失败</h2>
+    <p id="errorMsg"></p>
+    <p>请检查 URL query 参数：<code id="urlInfo"></code></p>
+    <p style="margin-top:18px"><a href="../promo-kit.html">← 返回推广包</a></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const file = urlParams.get('file') || 'mp-course-intro-longform.md';
+let rawMarkdown = '';
+
+function showError(msg) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('error').style.display = 'block';
+  document.getElementById('errorMsg').textContent = msg;
+  document.getElementById('urlInfo').textContent = '?file=' + file;
+}
+
+marked.setOptions({ breaks: false, gfm: true });
+
+fetch(file)
+  .then(r => {
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' — 找不到 ' + file);
+    return r.text();
+  })
+  .then(md => {
+    rawMarkdown = md;
+    const html = marked.parse(md);
+    document.getElementById('content').innerHTML = html;
+    document.getElementById('content').style.display = 'block';
+    document.getElementById('loading').style.display = 'none';
+
+    // Extract first H1 as document title
+    const firstH1 = md.match(/^#\s+(.+)$/m);
+    if (firstH1) {
+      const cleanTitle = firstH1[1].replace(/[*_`#]/g, '').trim();
+      document.title = cleanTitle + ' · AI 一人创业营';
+    }
+
+    // Count rough character length
+    const charCount = md.replace(/\s+/g, '').length;
+    document.getElementById('metaInfo').textContent = '📰 ' + file + ' · 约 ' + charCount + ' 字符';
+  })
+  .catch(e => showError(e.message));
+
+// Copy raw markdown
+document.getElementById('btnCopyMd').addEventListener('click', async (e) => {
+  if (!rawMarkdown) return;
+  try {
+    await navigator.clipboard.writeText(rawMarkdown);
+    e.target.textContent = '✓ Markdown 已复制';
+    e.target.classList.add('copied');
+    setTimeout(() => { e.target.textContent = '📋 复制 Markdown'; e.target.classList.remove('copied'); }, 2000);
+  } catch (err) { alert('复制失败：' + err.message); }
+});
+
+// Inline computed styles onto a clone so formatting survives paste into
+// 微信公众号编辑器 (it strips <style>/class, only keeps inline styles).
+const INLINE_PROPS = [
+  'color','background-color','font-size','font-weight','font-style','font-family',
+  'line-height','text-align','letter-spacing','text-decoration-line',
+  'margin-top','margin-bottom','margin-left','margin-right',
+  'padding-top','padding-bottom','padding-left','padding-right',
+  'border-top','border-bottom','border-left','border-right',
+  'border-collapse','border-radius','white-space','vertical-align','width'
+];
+function buildWeChatHtml(srcRoot) {
+  const clone = srcRoot.cloneNode(true);
+  const srcEls = [srcRoot, ...srcRoot.querySelectorAll('*')];
+  const cloneEls = [clone, ...clone.querySelectorAll('*')];
+  srcEls.forEach((el, i) => {
+    const cs = getComputedStyle(el);
+    const t = cloneEls[i];
+    if (!t || t.nodeType !== 1) return;
+    let style = '';
+    INLINE_PROPS.forEach(p => {
+      let v = cs.getPropertyValue(p);
+      if (!v) return;
+      if (v === 'normal' || v === 'none' || v === 'auto' || v === '0px') return;
+      if (p === 'background-color' && v === 'rgba(0, 0, 0, 0)') return;
+      if (p === 'text-decoration-line') { if (v !== 'underline') return; v = 'underline'; style += 'text-decoration:underline;'; return; }
+      if (p === 'width' && t.tagName !== 'TABLE') return; // only force table width
+      style += p + ':' + v + ';';
+    });
+    t.setAttribute('style', style);
+  });
+  // wrap so WeChat keeps a consistent body font
+  const wrap = document.createElement('section');
+  wrap.setAttribute('style', "font-size:16px;color:#222;line-height:1.75;font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;");
+  wrap.innerHTML = clone.innerHTML;
+  return wrap.outerHTML;
+}
+
+// Copy WeChat-ready HTML (inline styles) — paste straight into mp.weixin.qq.com
+document.getElementById('btnCopyHtml').addEventListener('click', async (e) => {
+  const src = document.getElementById('content');
+  const html = buildWeChatHtml(src);
+  try {
+    if (navigator.clipboard && window.ClipboardItem) {
+      const blob = new Blob([html], { type: 'text/html' });
+      const plainBlob = new Blob([src.innerText], { type: 'text/plain' });
+      await navigator.clipboard.write([new ClipboardItem({ 'text/html': blob, 'text/plain': plainBlob })]);
+    } else {
+      await navigator.clipboard.writeText(html);
+    }
+    e.target.textContent = '✓ 已复制（粘进公众号即带样式）';
+    e.target.classList.add('copied');
+    setTimeout(() => { e.target.textContent = '📄 复制 HTML（公众号）'; e.target.classList.remove('copied'); }, 2200);
+  } catch (err) { alert('复制失败：' + err.message); }
+});
+
+// Print / Save PDF
+document.getElementById('btnPrint').addEventListener('click', () => window.print());
+</script>
+
+</body>
+</html>

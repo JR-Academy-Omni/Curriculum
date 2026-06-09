@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case T01 · Pipeline 4 步演示（page 49-56）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-red: #ff5757;
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-blue: #3b82f6;
+    --brand-green: #10b981;
+    --bg-cream: #fff8ee;
+    --bg-page: #eef0f4;
+    --text-main: #10162f;
+    --text-gray: #64748b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    padding: 40px 24px 120px;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1400px; margin: 0 auto; }
+
+  .topnav {
+    background: var(--brand-dark); color: var(--bg-cream);
+    border: 3px solid var(--brand-dark); box-shadow: 8px 8px 0 var(--brand-dark);
+    padding: 18px 28px; margin-bottom: 32px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .topnav .brand { font-weight: 900; font-size: 18px; }
+  .topnav .brand span { color: var(--brand-yellow); }
+  .topnav nav a {
+    background: var(--brand-yellow); color: var(--brand-dark);
+    padding: 8px 16px; border: 2px solid var(--bg-cream);
+    text-decoration: none; font-weight: 700; font-size: 13px; margin-left: 8px;
+  }
+  .topnav nav a:hover { background: var(--brand-red); color: #fff; }
+  .topnav nav a.active { background: var(--brand-red); color: #fff; }
+
+  .hero {
+    background: var(--bg-cream); border: 3px solid var(--brand-dark);
+    box-shadow: 8px 8px 0 var(--brand-dark); padding: 36px 40px; margin-bottom: 40px;
+  }
+  .hero .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 3px;
+    background: var(--brand-dark); color: var(--brand-yellow); padding: 4px 12px;
+    display: inline-block; margin-bottom: 14px;
+  }
+  .hero h1 { font-size: 38px; font-weight: 900; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 12px; }
+  .hero h1 span.hl { background: var(--brand-yellow); padding: 0 6px; }
+  .hero p.lead { font-size: 16px; color: var(--text-gray); margin-bottom: 18px; max-width: 900px; }
+  .hero .meta { display: flex; gap: 10px; flex-wrap: wrap; }
+  .hero .meta .pill {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+    padding: 6px 14px; background: #fff; border: 2px solid var(--brand-dark);
+  }
+  .hero .meta .pill.red { background: var(--brand-red); color: #fff; }
+  .hero .meta .pill.yellow { background: var(--brand-yellow); }
+  .hero .meta .pill.green { background: var(--brand-green); color: #fff; }
+
+  /* === Timeline === */
+  .timeline-wrap {
+    background: #fff; border: 3px solid var(--brand-dark);
+    box-shadow: 8px 8px 0 var(--brand-dark);
+    padding: 28px 32px; margin-bottom: 40px;
+    overflow-x: auto;
+  }
+  .timeline-wrap h3 {
+    font-size: 14px; letter-spacing: 3px; font-family: 'JetBrains Mono', monospace;
+    color: var(--text-gray); margin-bottom: 18px;
+  }
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    min-width: 900px;
+  }
+  .tstep {
+    background: var(--bg-cream);
+    border: 2.5px solid var(--brand-dark);
+    padding: 18px 18px 22px;
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+  }
+  .tstep:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--brand-dark); }
+  .tstep .step-no {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px;
+    background: var(--brand-dark); color: var(--brand-yellow);
+    padding: 3px 9px; display: inline-block; margin-bottom: 12px;
+  }
+  .tstep h4 { font-size: 17px; font-weight: 900; margin-bottom: 8px; line-height: 1.3; }
+  .tstep .score {
+    font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 900;
+    color: var(--brand-red); margin: 8px 0 4px;
+  }
+  .tstep .score.good { color: var(--brand-green); }
+  .tstep .desc { font-size: 12.5px; color: var(--text-gray); line-height: 1.5; }
+  .tstep .arrow {
+    position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+    font-size: 24px; font-weight: 900;
+    background: var(--brand-yellow); border: 2px solid var(--brand-dark);
+    padding: 2px 6px; z-index: 2;
+  }
+  .tstep:last-child .arrow { display: none; }
+  .tstep.step1 { background: #ffe5e5; }
+  .tstep.step2 { background: #fff1c2; }
+  .tstep.step3 { background: #d4f1e5; }
+  .tstep.step4 { background: var(--brand-yellow); }
+
+  /* === Step section === */
+  .step-section {
+    background: #fff; border: 3px solid var(--brand-dark);
+    box-shadow: 8px 8px 0 var(--brand-dark);
+    margin-bottom: 36px; overflow: hidden;
+  }
+  .step-header {
+    background: var(--brand-dark); color: var(--bg-cream);
+    padding: 22px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .step-header .left { display: flex; align-items: center; gap: 16px; }
+  .step-header .step-tag {
+    background: var(--brand-yellow); color: var(--brand-dark);
+    padding: 4px 10px; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; font-weight: 700;
+  }
+  .step-header h2 { font-size: 22px; font-weight: 900; }
+  .step-header .page-tag {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand-yellow); font-size: 12px; letter-spacing: 2px;
+  }
+
+  .step-body { padding: 32px; }
+
+  /* Two-column compare for step 1 */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  .compare-col {
+    background: var(--bg-cream);
+    border: 2.5px solid var(--brand-dark);
+    padding: 20px 22px;
+    position: relative;
+  }
+  .compare-col.bad { background: #ffe5e5; }
+  .compare-col.good { background: #d4f1e5; }
+  .compare-col .col-tag {
+    position: absolute; top: -14px; left: 16px;
+    background: var(--brand-dark); color: var(--brand-yellow);
+    padding: 4px 10px; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; font-weight: 700;
+  }
+  .compare-col h4 { font-size: 18px; font-weight: 900; margin-bottom: 12px; margin-top: 4px; }
+  .compare-col .content {
+    background: #fff; padding: 14px 16px;
+    font-size: 13px; line-height: 1.7;
+    border: 1.5px solid var(--brand-dark);
+    max-height: 360px; overflow-y: auto;
+    white-space: pre-wrap;
+  }
+  .compare-col .content strong.bad-word {
+    background: var(--brand-red); color: #fff;
+    padding: 0 4px; font-weight: 900;
+  }
+  .compare-col .content strong.good-word {
+    background: var(--brand-green); color: #fff;
+    padding: 0 4px; font-weight: 900;
+  }
+
+  /* Diagnosis table */
+  .table {
+    width: 100%; border-collapse: collapse; margin-top: 16px;
+    border: 2.5px solid var(--brand-dark);
+  }
+  .table th, .table td {
+    padding: 10px 12px; border: 1.5px solid var(--brand-dark);
+    font-size: 13px; text-align: left;
+  }
+  .table th {
+    background: var(--brand-dark); color: var(--brand-yellow);
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+  .table tr:nth-child(even) td { background: var(--bg-cream); }
+  .table .red-tag { background: var(--brand-red); color: #fff; padding: 2px 6px; font-size: 11px; font-weight: 700; }
+  .table .green-tag { background: var(--brand-green); color: #fff; padding: 2px 6px; font-size: 11px; font-weight: 700; }
+  .table .yellow-tag { background: var(--brand-yellow); padding: 2px 6px; font-size: 11px; font-weight: 700; }
+
+  /* Pipeline 5 阶段 */
+  .pipe5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin: 16px 0;
+  }
+  .pipe5 .node {
+    background: var(--bg-cream);
+    border: 2px solid var(--brand-dark);
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 12px;
+    position: relative;
+  }
+  .pipe5 .node .icon { font-size: 28px; margin-bottom: 6px; display: block; }
+  .pipe5 .node .name { font-weight: 900; font-size: 13px; margin-bottom: 4px; }
+  .pipe5 .node .det { font-size: 11px; color: var(--text-gray); line-height: 1.4; }
+  .pipe5 .node::after {
+    content: '→'; position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
+    font-size: 22px; font-weight: 900; background: var(--brand-yellow);
+    border: 2px solid var(--brand-dark); padding: 0 4px; z-index: 1;
+  }
+  .pipe5 .node:last-child::after { display: none; }
+
+  /* Variant grid */
+  .variant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .variant {
+    background: var(--bg-cream);
+    border: 2.5px solid var(--brand-dark);
+    padding: 16px 18px;
+  }
+  .variant .vhead {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1.5px dashed var(--brand-dark);
+    padding-bottom: 8px; margin-bottom: 12px;
+  }
+  .variant .vhead h5 { font-size: 16px; font-weight: 900; }
+  .variant .vhead .meta {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-gray);
+  }
+  .variant .vbody {
+    background: #fff; border: 1.5px solid var(--brand-dark);
+    padding: 12px 14px; font-size: 12.5px; line-height: 1.65;
+    max-height: 240px; overflow-y: auto;
+    white-space: pre-wrap;
+  }
+
+  /* Score card */
+  .scorecard {
+    background: var(--brand-dark); color: var(--bg-cream);
+    border: 3px solid var(--brand-dark); padding: 24px 28px; margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .scorecard .score-big {
+    font-size: 56px; font-weight: 900; line-height: 1;
+    color: var(--brand-yellow); margin-bottom: 6px;
+  }
+  .scorecard .score-lbl { font-size: 12px; letter-spacing: 2px; margin-bottom: 18px; }
+  .scorecard .dims {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 6px; margin-top: 12px;
+  }
+  .scorecard .dim {
+    background: rgba(255,255,255,0.08); padding: 8px 12px;
+    border-left: 3px solid var(--brand-yellow);
+    font-size: 12px;
+  }
+  .scorecard .dim .v {
+    color: var(--brand-yellow); font-weight: 900;
+    margin-right: 8px;
+  }
+
+  /* Memory architecture */
+  .memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .mem-card {
+    background: var(--bg-cream);
+    border: 2.5px solid var(--brand-dark);
+    padding: 16px 18px;
+  }
+  .mem-card h5 { font-size: 14px; font-weight: 900; margin-bottom: 10px; }
+  .mem-card .item { font-size: 12px; padding: 4px 0; border-bottom: 1px dashed #ccc; }
+  .mem-card .item:last-child { border: none; }
+  .mem-card .item code { background: #fff; padding: 1px 5px; font-size: 11px; }
+
+  /* Levels */
+  .levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin: 16px 0 8px;
+  }
+  .level-card {
+    border: 2.5px solid var(--brand-dark);
+    padding: 20px;
+    position: relative;
+  }
+  .level-card.l1 { background: #ffe5e5; }
+  .level-card.l2 { background: #fff1c2; }
+  .level-card.l3 { background: #d4f1e5; }
+  .level-card .ltag {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--brand-dark); color: var(--brand-yellow);
+    padding: 3px 8px; font-size: 11px; letter-spacing: 2px;
+    display: inline-block; margin-bottom: 10px;
+  }
+  .level-card h4 { font-size: 18px; font-weight: 900; margin-bottom: 8px; }
+  .level-card .rate { font-size: 24px; font-weight: 900; color: var(--brand-red); margin: 6px 0; }
+  .level-card.l3 .rate { color: var(--brand-green); }
+  .level-card .det { font-size: 12px; color: var(--text-gray); line-height: 1.55; }
+
+  /* Self-check */
+  .self-check {
+    background: var(--bg-cream);
+    border: 2.5px solid var(--brand-dark);
+    padding: 22px 26px; margin-top: 16px;
+  }
+  .self-check h5 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+  .self-check .q { font-size: 14px; margin-bottom: 6px; }
+  .self-check .a {
+    background: #fff; border-left: 4px solid var(--brand-yellow);
+    padding: 8px 14px; margin: 6px 0 14px;
+    font-size: 13px;
+  }
+
+  /* Quote */
+  .quote {
+    background: var(--brand-yellow); border: 3px solid var(--brand-dark);
+    padding: 24px 28px; margin: 24px 0;
+    font-size: 16px; line-height: 1.65; font-style: italic;
+  }
+  .quote .who {
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 2px; color: var(--brand-dark);
+    font-style: normal;
+  }
+
+  /* Helpers */
+  h3.sub {
+    font-size: 17px; font-weight: 900; margin: 18px 0 10px;
+    padding-bottom: 6px; border-bottom: 2px solid var(--brand-dark);
+  }
+  p { font-size: 14px; margin-bottom: 10px; }
+  ul.bullet { margin-left: 20px; }
+  ul.bullet li { font-size: 14px; margin-bottom: 4px; }
+  code { background: var(--bg-cream); padding: 1px 6px; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topnav">
+    <div class="brand">JR ACADEMY · <span>XHS</span> Case T01 演示</div>
+    <nav>
+      <a href="index.html">总览</a>
+      <a href="index.html#drafts">6 主稿</a>
+      <a class="active" href="case-T01.html">Case T01</a>
+      <a href="backlog.html">116 选题池</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="label">CASE STUDY · 选题 T01 · 跨讲座 page 49-56</span>
+    <h1>用 <span class="hl">T01「2026 年 26 个 AI 新岗位完整地图」</span> 演示 AI Adoption 真正的定义</h1>
+    <p class="lead">同一个选题，Step 1 用 ChatGPT 朴素版写出来是 28-35 分（违规挂掉），Step 4 走完完整 Pipeline 是 89 分（推荐发）。差距不在工具，在 pipeline。</p>
+    <div class="meta">
+      <span class="pill red">Step 1: 28-35 分</span>
+      <span class="pill yellow">Step 2: 模板化 -57x 耗时</span>
+      <span class="pill">Step 3: 4 平台 fan-out</span>
+      <span class="pill green">Step 4: 89/100 ⭐</span>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <div class="timeline-wrap">
+    <h3>PIPELINE 4 步 · 同一选题 T01 的演进</h3>
+    <div class="timeline">
+      <a href="#step1" class="tstep step1">
+        <div class="step-no">STEP 1 · page 49</div>
+        <h4>ChatGPT 朴素版</h4>
+        <div class="score">28-35</div>
+        <div class="desc">99% 的人停在这。手工、单平台、违禁词命中 5 处。</div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="#step2" class="tstep step2">
+        <div class="step-no">STEP 2 · page 50</div>
+        <h4>模板化 5 阶段</h4>
+        <div class="score">65-75</div>
+        <div class="desc">System prompt 固化 + 一次出 5 候选。耗时 57min → 1min。</div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="#step3" class="tstep step3">
+        <div class="step-no">STEP 3 · page 51-52</div>
+        <h4>4 平台 fan-out</h4>
+        <div class="score">75-85</div>
+        <div class="desc">Master + 4 Variant。X / 小红书 / LinkedIn / 公众号 一稿四发。</div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="#step4" class="tstep step4">
+        <div class="step-no">STEP 4 · page 53</div>
+        <h4>进化 Pipeline</h4>
+        <div class="score good">89</div>
+        <div class="desc">数据回流自动调权。5 个 skill 串联，0 违禁，推荐发。</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============ STEP 1 ============ -->
+  <section class="step-section" id="step1">
+    <header class="step-header">
+      <div class="left">
+        <span class="step-tag">STEP 1</span>
+        <h2>用 ChatGPT 写一条小红书文案（大家都知道的）</h2>
+      </div>
+      <span class="page-tag">page 49 · Z02</span>
+    </header>
+    <div class="step-body">
+
+      <h3 class="sub">用户输入到 ChatGPT 的提示词</h3>
+      <p><code>帮我写一条小红书文案，主题是 2026 年有哪些新的 AI 岗位。</code></p>
+      <p>→ 复制 → 粘贴到小红书 → 配图随便选一张 → 发布<br>→ <strong>总耗时：2 分钟</strong></p>
+
+      <h3 class="sub">ChatGPT 实际输出（典型朴素版）</h3>
+      <div class="compare">
+        <div class="compare-col bad">
+          <span class="col-tag">❌ Step 1 朴素版</span>
+          <h4>✨ 2026 年最热门的 AI 新岗位盘点！🚀</h4>
+          <div class="content">宝子们！👋 大家有没有发现，AI 已经悄悄改变了我们的职场？
+
+最近很多朋友都在问我：AI 时代到底有哪些新机会？今天就来给大家盘点一下 2026 年<strong class="bad-word">最</strong>值得关注的 AI 新岗位～❤️
+
+🌟 1. AI 工程师 (AI Engineer)
+现在<strong class="bad-word">最火爆</strong>的岗位！会写代码 + 懂 AI 就能进，年薪<strong class="bad-word">超级高</strong> 💰
+
+🌟 2. Prompt 工程师
+就是教 AI 怎么"听话"的人，门槛相对友好
+
+🌟 3. AI 产品经理
+不需要会写代码也能进入 AI 行业，超适合文科背景的小伙伴！
+
+🌟 4. AI 训练师
+帮 AI 学习成长，新兴方向非常有潜力
+
+🌟 5. AI 伦理官
+随着 AI 越来越强大，这个岗位需求也在<strong class="bad-word">猛增</strong>
+
+🌟 6. 机器学习工程师
+传统 ML 岗位升级版
+
+🌟 7. 数据科学家 + AI
+数据相关岗位的延伸方向
+
+💡 <strong class="bad-word">总之</strong>，AI 时代充满了机会！只要我们保持学习的心态，<strong class="bad-word">一定可以</strong>找到属于自己的位置！💪
+
+姐妹们觉得自己适合哪一个呢？评论区聊聊～👇
+
+#AI #求职 #职业规划 #2026 #小红书</div>
+        </div>
+
+        <div class="compare-col good">
+          <span class="col-tag">✅ Step 4 Pipeline 成品</span>
+          <h4>📊 AI 时代 26 个新岗位（薪资分档）</h4>
+          <div class="content">不要再问"AI 时代该转什么"。这是 26 个真实在招的 AI-native 岗位，按薪资分档列出来。数据源在结尾。
+
+<strong class="good-word">$300K+ 起跳（高薪段技术岗）</strong>
+
+- Forward Deployment Engineer：$270K-$500K+。OpenAI / Anthropic 派出去给客户搭 AI 系统的人。
+- AI Engineer：$155K-$400K+。中级 $200K，senior $350-$600K+。OpenAI 人均股权 $1.5M，Anthropic 总包 $746K（<strong class="good-word">Levels.fyi 数据</strong>）。
+- Chief AI Officer：$200K-$400K+，部分公司总包 $1.8M。
+
+<strong class="good-word">$100K-$250K（中坚力量）</strong>
+
+技术岗：AI Agent Developer / Prompt Engineer / Context Engineer（<strong class="good-word">Karpathy 2025</strong> 提出）/ RAG Engineer / MLOps Engineer / AI Automation Specialist / Knowledge Architect / AI Red Teamer。
+
+治理岗：AI Product Manager / AI Adoption Specialist / Human-AI Collaboration Leader / Chief AI Revenue Officer / AI Ethics & Compliance Officer。
+
+<strong class="good-word">$70K-$140K（入门档 · 非技术友好）</strong>
+
+- GEO Specialist：$70K-$140K（顶 36% 在 $200-$500K）
+- AI Trainer：$60K-$180K，做 RLHF + 数据标注
+- Algorithm Bias Auditor：$90K-$160K（欧盟 AI Act 后会爆涨）
+
+<strong class="good-word">行业垂直岗</strong>
+Healthcare AI Integrator / AI Finance Compliance Officer / AI Sales Engineer / Digital Agronomist / AI EdTech。
+
+26 个分 3 类：技术 15 + 治理 6 + 行业垂直 5。
+
+<strong class="good-word">数据源</strong>：Levels.fyi / Karpathy / OpenAI careers / Figure.ai careers / Pieter Levels。18 个月观察整理。
+
+📌 评论扣 2，我整理了完整版（含转型路径）
+📌 主页 60 分钟讲座完整版讲了每个岗位的细节
+
+#AI岗位 #求职 #职业规划 #AI #转型</div>
+        </div>
+      </div>
+
+      <h3 class="sub">10 处硬伤诊断（Step 1）</h3>
+      <table class="table">
+        <thead>
+          <tr><th>#</th><th>原文</th><th>问题</th><th>类别</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>标题 "<b>最热门</b>"</td><td>绝对化用语</td><td><span class="red-tag">限流红线</span></td></tr>
+          <tr><td>2</td><td>"<b>最火爆</b>的岗位"</td><td>同上</td><td><span class="red-tag">限流红线</span></td></tr>
+          <tr><td>3</td><td>"年薪<b>超级高</b>"</td><td>模糊承诺，0 数字 0 出处</td><td><span class="yellow-tag">虚假宣传灰区</span></td></tr>
+          <tr><td>4</td><td>"需求也在<b>猛增</b>"</td><td>夸大、无数据源</td><td><span class="yellow-tag">虚假宣传灰区</span></td></tr>
+          <tr><td>5</td><td>"<b>一定可以</b>找到属于自己的位置"</td><td>承诺类违禁词</td><td><span class="red-tag">限流红线</span></td></tr>
+          <tr><td>6</td><td>标题写 "2026 新岗位"，正文只 <b>7 个</b></td><td>标题党 — 用户预期完整盘点被骗</td><td><span class="yellow-tag">信任崩</span></td></tr>
+          <tr><td>7</td><td>数据源 <b>0 处署名</b></td><td>没有 Levels.fyi / Karpathy / Gartner</td><td><span class="yellow-tag">内容空</span></td></tr>
+          <tr><td>8</td><td>"<b>总之</b>...保持学习的心态..."</td><td>AI 味连接词 + 鸡汤套话</td><td><span class="yellow-tag">降权</span></td></tr>
+          <tr><td>9</td><td>"<b>宝子们 大家有没有发现</b>"</td><td>套话开场，3 秒钩子为 0</td><td><span class="yellow-tag">完读率低</span></td></tr>
+          <tr><td>10</td><td>"<b>评论区聊聊</b>"</td><td>互动钩子弱，转化为 0</td><td><span class="yellow-tag">数据差</span></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;"><strong>预测发布数据：</strong> 曝光 &lt; 500，点赞 &lt; 20，0 收藏，0 评论。可能挂"违规提示"。</p>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2 ============ -->
+  <section class="step-section" id="step2">
+    <header class="step-header">
+      <div class="left">
+        <span class="step-tag">STEP 2</span>
+        <h2>模板化 · AI 帮你执行，你只做决策</h2>
+      </div>
+      <span class="page-tag">page 50 · Z03</span>
+    </header>
+    <div class="step-body">
+      <p>把 Step 1 朴素版做成模板，每周自动跑。固化的不是 prompt 本身，是<strong>人设 + 规则 + 红线 + 数据源</strong>这 4 件事。</p>
+
+      <h3 class="sub">5 阶段 Pipeline</h3>
+      <div class="pipe5">
+        <div class="node">
+          <span class="icon">⏰</span>
+          <div class="name">TRIGGER</div>
+          <div class="det">Cron Job<br>周一 9:00 AM</div>
+        </div>
+        <div class="node">
+          <span class="icon">📝</span>
+          <div class="name">GENERATE</div>
+          <div class="det">LLM 按模板<br>一次出 5 条</div>
+        </div>
+        <div class="node">
+          <span class="icon">🎨</span>
+          <div class="name">VISUAL</div>
+          <div class="det">gpt-image-2<br>按品牌色出图</div>
+        </div>
+        <div class="node">
+          <span class="icon">✅</span>
+          <div class="name">REVIEW</div>
+          <div class="det">飞书 / Notion<br>你点确认</div>
+        </div>
+        <div class="node">
+          <span class="icon">📤</span>
+          <div class="name">SCHEDULE</div>
+          <div class="det">Buffer 自动<br>最佳时段</div>
+        </div>
+      </div>
+
+      <h3 class="sub">真实 System Prompt 模板（核心）</h3>
+      <div class="variant">
+        <div class="vbody" style="max-height:380px;">你是 JR Academy 求职号 A 的小红书写手。
+账号人设：澳洲华人求职 / IT 转行受众 / 偏理性数据派 / 不卖鸡汤。
+
+任务：根据下面给定的【主题】和【数据点】，写 5 个候选小红书笔记，
+每个用不同的钩子：① 信息钩 ② 痛点钩 ③ 故事钩 ④ 反共识钩 ⑤ 自检钩
+
+输出规则（硬性）：
+- 标题 ≤20 字 · 含数字 · 含 emoji · 不许含违禁词
+- 正文 400-600 字
+- 数据源至少 3 处署名（必须从【数据源清单】里选，不许编）
+- 3-5 个 #话题
+- 必须 0 命中以下违禁词：
+  最 / 第一 / 唯一 / 100% / 绝对 / 顶级 / 包过 / 月入 / 副业 /
+  翻倍 / 一定 / +V / 扫码 / 私信领 / 站外外链
+- AI 味禁词：首先 / 其次 / 此外 / 综上所述 / 值得注意的是 / 与此同时
+- 项目红线：禁说"副业" / 禁承诺金钱结果 / 只承诺过程产出
+
+【主题】：{{topic_headline}}
+【关键数据点】：{{key_data_points}}
+【数据源清单】：{{data_sources}}
+【账号 CTA 模式】：{{cta_template}}
+
+输出 JSON：candidates[] 含 hookType / title / body / tags</div>
+      </div>
+
+      <h3 class="sub">填入 T01 后 AI 输出的 5 个候选标题</h3>
+      <table class="table">
+        <thead><tr><th>钩子类型</th><th>标题</th><th>适配账号</th></tr></thead>
+        <tbody>
+          <tr><td>① 信息钩</td><td>📊 AI 时代 26 个新岗位（薪资分档）</td><td>求职 / IT 转行 / 留学</td></tr>
+          <tr><td>② 痛点钩</td><td>你以为 AI 岗位只有写代码 还有 26 个</td><td>文科 / 留学</td></tr>
+          <tr><td>③ 故事钩</td><td>朋友 1 年从 SEO 转 AI Engineer 怎么做到的</td><td>主号 / 转行</td></tr>
+          <tr><td>④ 反共识钩</td><td>AI 行业薪资全曝光 $300K 不是顶配</td><td>硅谷 / 海外</td></tr>
+          <tr><td>⑤ 自检钩</td><td>测一下 你能进 26 个 AI 岗位的哪一个</td><td>互动 / 全员</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub">Step 1 vs Step 2 · 同选题 T01 总耗时</h3>
+      <table class="table">
+        <thead><tr><th>阶段</th><th>Step 1</th><th>Step 2</th></tr></thead>
+        <tbody>
+          <tr><td>选题</td><td>0 分（脑子里）</td><td>0 分（cron）</td></tr>
+          <tr><td>写文案</td><td>10 分（5 条 × 2 分）</td><td>0 分（LLM）</td></tr>
+          <tr><td>找配图</td><td>2.5 分</td><td>0 分（gpt-image-2）</td></tr>
+          <tr><td>审核</td><td>0 分</td><td>1 分（点确认）</td></tr>
+          <tr><td>发布到 3 平台</td><td>45 分（手动）</td><td>0 分（Buffer）</td></tr>
+          <tr><td><b>合计</b></td><td><b>57.5 分</b></td><td><b>1 分</b></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;">→ <strong>效率提升 ~57 倍</strong>。但选题还是你定，跨平台还是同稿，没数据回流。</p>
+    </div>
+  </section>
+
+  <!-- ============ STEP 3 ============ -->
+  <section class="step-section" id="step3">
+    <header class="step-header">
+      <div class="left">
+        <span class="step-tag">STEP 3</span>
+        <h2>自动选题 + 4 平台 fan-out（Master + Variant）</h2>
+      </div>
+      <span class="page-tag">page 51-52 · Z04 + Z04b</span>
+    </header>
+    <div class="step-body">
+      <p>你从"审核员"升级为"内容架构师"。<strong>Master 主稿 + 4 个平台 Variant</strong>，改一处 = 4 平台同步生效。</p>
+
+      <h3 class="sub">T01 在 Layer 02 怎么被 AI Agent 选中的</h3>
+      <div class="variant">
+        <div class="vbody">[2026-05-22 08:15] AI Agent 跑分
+
+候选选题打分（热度 × 相关度 × 新鲜度 × 历史转化）：
+
+T01 · 2026 年 26 个 AI 新岗位完整地图
+  - 热度: 9.2 (Reddit + Google Trends 强信号)
+  - 相关度: 9.5 (JR 求职号核心受众)
+  - 新鲜度: 9.0 (Levels.fyi 5/21 更新)
+  - 历史转化: 8.8 (相似主题平均收藏率 9.1%)
+  → 综合分: 9.1 ⭐ Top1
+
+T02 · OpenAI 股权 $1.5M 怎么算       → 8.4
+T03 · Karpathy Context Engineer 啥区别 → 7.9
+
+→ 选定 T01 进入 Layer 03 生成
+→ 自动调起 5 个 Claude Skill 串联</div>
+      </div>
+
+      <h3 class="sub">同一 Master，4 个平台 Variant 实际产出</h3>
+      <div class="variant-grid">
+
+        <div class="variant">
+          <div class="vhead"><h5>🐦 X / Twitter</h5><span class="meta">280 字 · 9 推 thread · 16:9 主图</span></div>
+          <div class="vbody">🧵 26 AI jobs in 2026, sorted by salary. (1/9)
+
+1/ Top tier ($300K+):
+- Forward Deployment Engineer ($270-500K)
+- AI Engineer ($155-400K, sr $600K+)
+- Chief AI Officer ($200K-$1.8M)
+Source: Levels.fyi
+
+2/ Mid tier ($100-250K), 12 roles:
+- AI Agent Dev
+- Prompt / Context Engineer (@karpathy)
+- RAG Engineer / MLOps...
+
+3/ Entry tier ($70-140K), non-tech:
+- GEO Specialist
+- AI Trainer
+- Bias Auditor (EU AI Act driver)
+
+...
+
+9/ Bookmark this if you're job hunting in 2026.
+
+#AIEngineer #FutureOfWork #AICareers</div>
+        </div>
+
+        <div class="variant">
+          <div class="vhead"><h5>📕 小红书</h5><span class="meta">523 字 · 8 张 3:4 海报 · 5 #话题</span></div>
+          <div class="vbody">📊 AI 时代 26 个新岗位（薪资分档）
+
+不要再问"AI 时代该转什么"。这是 26 个真实在招的 AI-native 岗位，按薪资分档列出来。数据源在结尾。
+
+$300K+ 起跳（高薪段技术岗）
+- Forward Deployment Engineer：$270K-$500K+
+- AI Engineer：$155K-$400K+。OpenAI 人均股权 $1.5M（Levels.fyi）
+- Chief AI Officer：$200K-$400K+，总包 $1.8M
+
+$100K-$250K（中坚力量）
+技术岗：AI Agent Dev / Prompt / Context Engineer（Karpathy）/ RAG / MLOps / Knowledge Architect / Red Teamer
+治理岗：AI PM / AI Adoption / Ethics / Revenue Officer / Human-AI Lead
+
+$70K-$140K（入门档 · 非技术友好）
+GEO Specialist / AI Trainer / Bias Auditor
+
+26 个分 3 类：技术 15 + 治理 6 + 行业 5。
+
+数据源：Levels.fyi / Karpathy / OpenAI careers / Figure.ai / Pieter Levels。
+
+📌 评论扣 2 完整版
+📌 主页 60min 讲座完整版
+
+#AI岗位 #求职 #职业规划 #AI #转型</div>
+        </div>
+
+        <div class="variant">
+          <div class="vhead"><h5>💼 LinkedIn</h5><span class="meta">1200 字 · 专业语气 · 1200×627 banner</span></div>
+          <div class="vbody">The 26 AI Jobs That Actually Exist in 2026 — Sorted by Salary
+(18 months of tracking, fully sourced)
+
+After watching this market shift for 18 months — tracking Levels.fyi data, scraping public JDs from OpenAI / Anthropic / Figure / Google DeepMind, and reading what @karpathy and @swyx have written publicly — I've consolidated 26 AI-native roles that are genuinely hiring in 2026.
+
+A few patterns worth flagging upfront:
+
+1. The top tier is dominated by Forward Deployment Engineering — a role pioneered by OpenAI and Anthropic where you fly to enterprise clients to architect their AI integration. Compensation reflects rarity: $270K-$500K+ base, with senior FDEs commanding equity that rivals Anthropic Research Scientists ($746K total per Levels.fyi).
+
+2. Six of the 26 roles are "Governance" — meaning non-coding. For professionals worried they're "too late" to enter AI without a CS degree, this category is your runway.
+
+3. Three salary bands map cleanly onto background:
+   - $300K+: Top-tier technical
+   - $100-250K: Mid-tier or senior governance
+   - $70-140K: Entry-level or non-technical with domain expertise
+
+...
+
+Happy to break down any specific role in the comments.
+
+#AIEngineer #FutureOfWork #CareerStrategy</div>
+        </div>
+
+        <div class="variant">
+          <div class="vhead"><h5>📱 公众号</h5><span class="meta">1850 字 · 深度长文 · 900×500 header + 内文配图</span></div>
+          <div class="vbody">标题：2026 年 AI 行业 26 个岗位完整地图（18 个月追踪 · 5 个数据源 · 含转型路径）
+
+【开篇 · 这件事正在发生】
+2026 年 5 月 21 日，Levels.fyi 公开了 OpenAI 一组数据：人均股权 $1.5M。这条更新在 LinkedIn 上引发了一轮讨论。同一天，Anthropic 招聘页放出 12 个新的 Forward Deployment Engineer 开放岗位。
+
+这不是新闻，是常态。
+
+【一、为什么需要这张地图】
+两个误区：
+误区 1：以为 AI 岗位 = 写代码
+误区 2：以为"等更明朗了再决定"
+
+实际数据：11/26 ≈ 42% 的 AI 岗位对非技术背景友好。Gartner 预测 2028 年新增 71,000 个 AI Adoption Specialist 岗位 —— 但招聘高峰在 2026-2027 落地。
+
+【二、$300K+ 起跳的 3 个高薪段位】
+...（详细拆 FDE / AIE / CAIO）
+
+【三、$100-250K 中坚 12 个岗位】
+（按技术岗 8 个 + 治理 4 个分类）
+
+【四、$70-140K 入门档（非技术友好）】
+...
+
+【五、行业垂直岗 5 个】
+...
+
+【六、数据源说明】
+1. Levels.fyi 2. Karpathy 3. Gartner 4. OpenAI/Anthropic JD 5. Pieter Levels
+
+【七、行动建议】
+三条转型路径...
+
+#职业规划 #AI #求职 #AIEngineer</div>
+        </div>
+
+      </div>
+
+      <h3 class="sub">反馈循环（T01 发布 7 天后真实数据）</h3>
+      <div class="variant">
+        <div class="vbody">[T+7d 反馈采集]
+
+X / Twitter:
+  - thread 第 2 推单推转发 142，全 thread 87
+  - 学习：列表型在 X 表现 +60%
+  - 下次：单推改成"列表前置 + summary 收尾"
+
+小红书:
+  - 收藏率 12.3%（远超平台均值 6%）
+  - 高频评论词：完整 PDF / 转型 / 路径
+  - 学习：用户要"可下载完整版"
+  - 下次：CTA 改"扣 2 我发 PDF"
+
+LinkedIn:
+  - 阅读完成率 38%（行业均 22%）
+  - 评论方向：是否有北美区域细分
+  - 下次：单独出"$ 数字 - 北美" vs "$ 数字 - 澳洲"版
+
+公众号:
+  - 阅读 3.2K / 在看 47 / 转发 11
+  - 留言要"中国 AI 岗位"数据
+  - 下次：出 T01-CN variant
+
+→ Master 主稿自动加入这 4 条反馈，再次 fan-out → 持续进化</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 4 ============ -->
+  <section class="step-section" id="step4">
+    <header class="step-header">
+      <div class="left">
+        <span class="step-tag">STEP 4 · 完整 Pipeline</span>
+        <h2>会自我进化的系统</h2>
+      </div>
+      <span class="page-tag">page 53 · Z05</span>
+    </header>
+    <div class="step-body">
+
+      <h3 class="sub">5 个 Claude Skill 串联（T01 实际跑通）</h3>
+      <div class="pipe5">
+        <div class="node">
+          <span class="icon">🎯</span>
+          <div class="name">topic-picker</div>
+          <div class="det">扫 Reddit/X/Trends<br>Top3 选题</div>
+        </div>
+        <div class="node">
+          <span class="icon">✍️</span>
+          <div class="name">draft</div>
+          <div class="det">三切角并出<br>痛点/故事/干货</div>
+        </div>
+        <div class="node">
+          <span class="icon">🔍</span>
+          <div class="name">review</div>
+          <div class="det">违禁词扫<br>降 AI 率</div>
+        </div>
+        <div class="node">
+          <span class="icon">🎨</span>
+          <div class="name">poster</div>
+          <div class="det">gpt-image-2<br>8 张 3:4 配图</div>
+        </div>
+        <div class="node">
+          <span class="icon">📊</span>
+          <div class="name">score</div>
+          <div class="det">9 维度评分<br>发布线 75</div>
+        </div>
+      </div>
+
+      <h3 class="sub">/xhs-score 自评卡（T01 实际跑出）</h3>
+      <div class="scorecard">
+        <div class="score-big">89 <span style="font-size:24px;">/ 100</span></div>
+        <div class="score-lbl">⭐ 推荐发（发布线 75）</div>
+        <div class="dims">
+          <div class="dim"><span class="v">✅</span>1. 合规红线 · 0 违禁</div>
+          <div class="dim"><span class="v">14/15</span>2. AI 率</div>
+          <div class="dim"><span class="v">14/15</span>3. 标题钩子</div>
+          <div class="dim"><span class="v">7/10</span>4. 开头 3 秒</div>
+          <div class="dim"><span class="v">14/15</span>5. 内容结构</div>
+          <div class="dim"><span class="v">12/15</span>6. 种草角度</div>
+          <div class="dim"><span class="v">14/15</span>7. 配图（spec 8 张）</div>
+          <div class="dim"><span class="v">8/10</span>8. 互动钩子</div>
+          <div class="dim"><span class="v">5/5</span>9. 关键词 & 话题</div>
+        </div>
+      </div>
+
+      <h3 class="sub">Step 1 vs Step 4 · 终极对比</h3>
+      <table class="table">
+        <thead>
+          <tr><th>维度</th><th>Step 1 (ChatGPT 朴素)</th><th>Step 4 (Pipeline)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>耗时</td><td>2 分钟</td><td>0 分（自动）+ 30 秒人工审</td></tr>
+          <tr><td>岗位数</td><td>7 个（标题党）</td><td><b>26 个</b>（真实库）</td></tr>
+          <tr><td>薪资数据</td><td>"超级高"空话</td><td>三档区间 + $1.5M / $746K / $893K 真数字</td></tr>
+          <tr><td>数据源</td><td>0 处</td><td><b>5 处</b>全署名</td></tr>
+          <tr><td>违禁词</td><td>5 处</td><td><b>0 处</b></td></tr>
+          <tr><td>AI 味词</td><td>2 处</td><td><b>0 处</b></td></tr>
+          <tr><td>xhs-score</td><td>估测 28-35</td><td><b>89 / 100</b> ⭐</td></tr>
+          <tr><td>配图</td><td>随便一张</td><td><b>8 张 1242×1660 spec 化</b></td></tr>
+          <tr><td>可复用</td><td>不可（每次手抄）</td><td>3 账号差异化分发</td></tr>
+          <tr><td>可监控</td><td>0</td><td>互动数据自动回流</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ Enterprise Memory ============ -->
+  <section class="step-section">
+    <header class="step-header">
+      <div class="left">
+        <span class="step-tag">EXTRA · Enterprise Memory</span>
+        <h2>单条 Pipeline 不够 — 让 AI 记住整个公司</h2>
+      </div>
+      <span class="page-tag">page 54 · Z05b</span>
+    </header>
+    <div class="step-body">
+
+      <h3 class="sub">3 层企业记忆（T01 这条笔记触发时 AI 读到的）</h3>
+      <div class="memory-grid">
+        <div class="mem-card">
+          <h5>📁 员工长期记忆 · KIKI</h5>
+          <div class="item">recent: 5/14 Vibe Coding 收藏率 <code>11.2%</code></div>
+          <div class="item">recent: 5/16 26 岗预告 转发 <code>142</code></div>
+          <div class="item">钩子模式偏好："你以为 X？其实 Y"</div>
+          <div class="item">emoji 密度：每段 ~0.8 个（克制派）</div>
+          <div class="item">本周已用开头："上个月朋友 SEO" → 换</div>
+          <div class="item">个人 ban-list："私信领"</div>
+        </div>
+        <div class="mem-card">
+          <h5>📚 公司知识库记忆 · JR</h5>
+          <div class="item">brand voice：Neo-Brutalism 数据驱动</div>
+          <div class="item">forbidden: <code>最/第一/月入/包过/+V</code></div>
+          <div class="item">项目红线：副业/包就业/学完月入 X</div>
+          <div class="item">historical 收藏 Top："AI Engineer vs 程序员" <code>14.1%</code></div>
+          <div class="item">受众分布：澳洲华人 65%/留学 25%/国内 10%</div>
+          <div class="item">数据源白名单：Levels.fyi/Karpathy/Gartner...</div>
+        </div>
+        <div class="mem-card">
+          <h5>📈 业务状态记忆</h5>
+          <div class="item">本季 OKR：求职号 A 涨粉 +5K</div>
+          <div class="item">活动：AI Engineer Bootcamp 5/31 截止</div>
+          <div class="item">活动：60min 讲座导流 +500 人次</div>
+          <div class="item">KIKI 本周可发 5 条 / Summer 满 / Lily 攻 AI Marketing</div>
+          <div class="item">CTA 优先承接当前活动</div>
+          <div class="item">最佳发布时段：周三 12:30 PM</div>
+        </div>
+      </div>
+
+      <h3 class="sub">同 Master 主稿，AI 自动定制后输出（KIKI 版 vs Summer 版）</h3>
+      <table class="table">
+        <thead><tr><th>定制点</th><th>KIKI 版（理性派）</th><th>Summer 版（情绪派）</th></tr></thead>
+        <tbody>
+          <tr><td>开头</td><td>"不要再问 AI 时代该转什么"（反问）</td><td>"宝子们看完直接收藏 这是 26 个真实在招的岗位"（强情绪）</td></tr>
+          <tr><td>emoji 密度</td><td>每段 ~0.8 个</td><td>每段 ~2.5 个</td></tr>
+          <tr><td>结构</td><td>三档薪资 + 数据源</td><td>故事开场 + 三档薪资 + CTA</td></tr>
+          <tr><td>CTA</td><td>评论扣 2 + 主页讲座</td><td>姐妹评论扣完整版 + 主页讲座</td></tr>
+          <tr><td>发布时段</td><td>周三 12:30 PM</td><td>周日 21:00 PM</td></tr>
+          <tr><td>避用</td><td>"上个月朋友"开头（上周用过）</td><td>"宝子们大家有没有发现"（违 brand voice）</td></tr>
+        </tbody>
+      </table>
+
+      <div class="quote" style="background:var(--brand-dark); color: var(--brand-yellow); border-color: var(--brand-dark);">
+        没有记忆的 AI = 工具。<br>
+        有记忆的 AI = 同事。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 三层价值 ============ -->
+  <section class="step-section">
+    <header class="step-header">
+      <div class="left">
+        <span class="step-tag">AI ADOPTION 定义</span>
+        <h2>同一选题 T01，三层人会怎么做</h2>
+      </div>
+      <span class="page-tag">page 55 · Z06</span>
+    </header>
+    <div class="step-body">
+
+      <div class="levels">
+        <div class="level-card l1">
+          <span class="ltag">LEVEL 1</span>
+          <h4>AI 用户</h4>
+          <div class="rate">$0 /hr 提升</div>
+          <div class="det"><b>大部分人</b><br>打开 ChatGPT 输入"帮我写一条小红书"。提速 20%，不会涨工资。每次都是新对话，没有记忆。</div>
+        </div>
+        <div class="level-card l2">
+          <span class="ltag">LEVEL 2</span>
+          <h4>AI Operator</h4>
+          <div class="rate">~$30 /hr 提升</div>
+          <div class="det"><b>会用工具的人</b><br>会写 System prompt + 串 N8N / Zapier / Notion AI。模板复用，团队效率 ×2-3。但跨平台还是手发。</div>
+        </div>
+        <div class="level-card l3">
+          <span class="ltag">LEVEL 3</span>
+          <h4>AI Specialist</h4>
+          <div class="rate">$80-200 /hr · AU$130-200K/年</div>
+          <div class="det"><b>设计 Pipeline 的人</b><br>整条 Pipeline + Enterprise Memory。系统自我进化。监控 30 分钟/周。直接对接公司 KPI。</div>
+        </div>
+      </div>
+
+      <h3 class="sub">L1 → L3 · 价值跃迁 ×100（按 T01 这个选题量化）</h3>
+      <table class="table">
+        <thead><tr><th>维度</th><th>L1 用户</th><th>L2 Operator</th><th>L3 Specialist</th></tr></thead>
+        <tbody>
+          <tr><td>单条耗时</td><td>2 分钟</td><td>5-10 分钟</td><td>0 分（监控 30 分钟/周）</td></tr>
+          <tr><td>单条覆盖</td><td>1 平台 1 账号</td><td>1 平台 1 账号</td><td><b>4 平台 6 账号</b></td></tr>
+          <tr><td>周产出</td><td>5 条（如果坚持）</td><td>15-20 条</td><td><b>35-50 条</b></td></tr>
+          <tr><td>内容质量</td><td>28-35 分</td><td>65-75 分</td><td><b>85-92 分</b></td></tr>
+          <tr><td>数据回流</td><td>0</td><td>手动看</td><td>自动学习</td></tr>
+          <tr><td>时薪</td><td>$0 提升</td><td>~$30</td><td><b>$80-200</b></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;"><strong>差价 = Pipeline 的设计 + 落地能力。</strong>不是工具差距，是架构差距 + 系统思维差距。</p>
+    </div>
+  </section>
+
+  <!-- ============ Self-check ============ -->
+  <section class="step-section">
+    <header class="step-header">
+      <div class="left">
+        <span class="step-tag">SELF-CHECK</span>
+        <h2>你卡在第几步？</h2>
+      </div>
+      <span class="page-tag">page 56 · Z07</span>
+    </header>
+    <div class="step-body">
+
+      <div class="self-check">
+        <h5>Step 1 · 我还在手动用 AI</h5>
+        <div class="q">问：你写小红书是不是打开 ChatGPT 输入"帮我写一条 主题 X"？</div>
+        <div class="a">是 → 你在 Step 1<br>下一步：学 prompt 模板 + 平台规则 + 数据源管理</div>
+
+        <h5>Step 2 · 我用模板把重复任务自动化了</h5>
+        <div class="q">问：你有没有一个写得很细的 System prompt（200+ 字含人设/规则/数据源），每次复用？</div>
+        <div class="a">是 → 你在 Step 2<br>下一步：学 N8N / Zapier / Make 串工具 + 学 fan-out 架构</div>
+
+        <h5>Step 3 · 我会用 N8N/Make/Zapier 串多个工具</h5>
+        <div class="q">问：你的工作流会不会自动从 Reddit / Levels.fyi 拉数据？写完会不会自动 fan out 到 4 平台？</div>
+        <div class="a">是 → 你在 Step 3<br>下一步：学 Multi-Agent + 反馈学习 + 长期记忆架构</div>
+
+        <h5>Step 4 · 我能设计 + 监控完整业务 pipeline</h5>
+        <div class="q">问：你的系统会不会从 4 平台互动数据自动学"哪种钩子在哪平台最好"，下次自动优化？有没有 Enterprise Memory？</div>
+        <div class="a">是 → 你在 Step 4<br>下一步：跨业务复用 Pipeline（marketing → sales → support → HR），变成公司级 AI Operator</div>
+      </div>
+
+      <div class="quote">
+        26 个 AI 新岗位听上去很多。但其实只要你能搭一条 T01 这样的 pipeline，你就已经在 'AI Engineer / AI Adoption Specialist' 这个赛道上了。<br><br>
+        区别不是你叫什么 title。<br>
+        区别是你愿不愿意把"用 ChatGPT 写一条小红书"这件事，拆成 5 个 skill / 5 层 pipeline / 3 层记忆，然后让它自我进化。<br><br>
+        <strong>这就是 AI Adoption 真正的定义 ——<br>不是用 AI，是把 AI 做成可复用、可监控、可进化的 pipeline。</strong>
+        <div class="who">— 收尾陈述 · page 56 · Z07 · 讲座台词</div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

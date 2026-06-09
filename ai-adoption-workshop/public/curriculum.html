@@ -1,725 +1,725 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AI Adoption Specialist 入门工作坊 — 2 小时免费 Zoom 直播</title>
-  <meta name="description" content="2 小时免费 Zoom 直播 · 看懂 $70K-$250K 新岗位 · 看清澳洲企业 AI 落地痛点 · 3 大干货 Demo（ChatGPT RAG / Claude Vibe Coding / AI Workflow 自动化）+ 真实澳洲 SME 案例。面向想转 AI Adoption Specialist 的求职者/转职者/升职者，以及想用 AI 弯道超车的中小企业主和创业者。零编程基础。">
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-  <style>
-    /* ===== Hero ===== */
-    .header{background:linear-gradient(135deg,#10162f 0%,#FF914D 60%,#FFDE59 100%);padding:60px 24px 56px;position:relative;overflow:hidden}
-    .header::before{content:"";position:absolute;top:-50px;right:-50px;width:240px;height:240px;background:radial-gradient(circle,#10b981 0%,transparent 70%);opacity:0.3}
-    .header h1{font-size:clamp(28px,5vw,46px);line-height:1.15;max-width:1000px;margin:0 auto;color:#fff;position:relative;z-index:1}
-    .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:840px;margin:14px auto 0;opacity:0.94;color:#fff;line-height:1.65;position:relative;z-index:1}
-    .chips{display:flex;gap:10px;justify-content:center;margin-top:24px;flex-wrap:wrap;position:relative;z-index:1}
-    .chip{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#fff;color:#10162f;border:3px solid #000;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.3px}
-    .chip.yellow{background:#FFDE59}
-    .chip.orange{background:#FF914D;color:#fff}
-    .chip.green{background:#10b981;color:#fff}
-    .chip.indigo{background:#6366f1;color:#fff}
-    .cta-row{display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap;position:relative;z-index:1}
-    .cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;text-decoration:none;transition:all 0.15s;cursor:pointer}
-    .cta.primary{background:#FFDE59;color:#10162f;box-shadow:6px 6px 0 #000}
-    .cta.primary:hover{box-shadow:none;transform:translate(4px,4px)}
-    .cta.secondary{background:#fff;color:#10162f;box-shadow:6px 6px 0 #FF914D}
-    .cta.secondary:hover{box-shadow:none;transform:translate(4px,4px)}
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>AI 工作流提效营 · 公开课 — 2 小时免费 Zoom 直播</title>
+ <meta name="description" content="2 小时免费 Zoom 直播 · 学会把 AI 装进你部门的工作流（不是入门课，不是转职课）· 3 大干货 Demo（ChatGPT RAG / Claude Vibe Coding / AI Workflow 自动化）+ 真实澳洲 SME 案例。面向已在职 1 年+、想在现有岗位用 AI 提效给老板看到 ROI 的 PM / BA / Operations / Marketing / HR / Finance / 客服 / 财务，以及想用 AI 跑通业务流程的中小企业主和创业者。零编程基础。">
+ <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="./styles.css">
+ <style>
+ /* ===== Hero ===== */
+ .header{background:linear-gradient(135deg,#10162f 0%,#FF914D 60%,#FFDE59 100%);padding:60px 24px 56px;position:relative;overflow:hidden}
+ .header::before{content:"";position:absolute;top:-50px;right:-50px;width:240px;height:240px;background:radial-gradient(circle,#10b981 0%,transparent 70%);opacity:0.3}
+ .header h1{font-size:clamp(28px,5vw,46px);line-height:1.15;max-width:1000px;margin:0 auto;color:#fff;position:relative;z-index:1}
+ .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:840px;margin:14px auto 0;opacity:0.94;color:#fff;line-height:1.65;position:relative;z-index:1}
+ .chips{display:flex;gap:10px;justify-content:center;margin-top:24px;flex-wrap:wrap;position:relative;z-index:1}
+ .chip{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#fff;color:#10162f;border:3px solid #000;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.3px}
+ .chip.yellow{background:#FFDE59}
+ .chip.orange{background:#FF914D;color:#fff}
+ .chip.green{background:#10b981;color:#fff}
+ .chip.indigo{background:#6366f1;color:#fff}
+ .cta-row{display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap;position:relative;z-index:1}
+ .cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:3px solid #000;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;text-decoration:none;transition:all 0.15s;cursor:pointer}
+ .cta.primary{background:#FFDE59;color:#10162f;box-shadow:6px 6px 0 #000}
+ .cta.primary:hover{box-shadow:none;transform:translate(4px,4px)}
+ .cta.secondary{background:#fff;color:#10162f;box-shadow:6px 6px 0 #FF914D}
+ .cta.secondary:hover{box-shadow:none;transform:translate(4px,4px)}
 
-    /* ===== Promise ===== */
-    .promise{max-width:1200px;margin:48px auto 0;padding:0 24px}
-    .promise-card{border:3px solid #000;background:#fffbeb;box-shadow:8px 8px 0 #FF914D;padding:28px 32px}
-    .promise-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:#10162f;color:#FFDE59;margin-bottom:14px}
-    .promise-card p{font-size:15.5px;line-height:1.85;color:#1a1a1a}
-    .promise-card p strong{color:#10162f}
+ /* ===== Promise ===== */
+ .promise{max-width:1200px;margin:48px auto 0;padding:0 24px}
+ .promise-card{border:3px solid #000;background:#fffbeb;box-shadow:8px 8px 0 #FF914D;padding:28px 32px}
+ .promise-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:#10162f;color:#FFDE59;margin-bottom:14px}
+ .promise-card p{font-size:15.5px;line-height:1.85;color:#1a1a1a}
+ .promise-card p strong{color:#10162f}
 
-    .sec-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
-    .sec-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px;max-width:720px;margin-left:auto;margin-right:auto;padding:0 16px;line-height:1.65}
+ .sec-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:900;color:#10162f;text-align:center;margin-bottom:8px}
+ .sec-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px;max-width:720px;margin-left:auto;margin-right:auto;padding:0 16px;line-height:1.65}
 
-    /* ===== Take-aways ===== */
-    .takeaway-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
-    .takeaway-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:3px solid #000;box-shadow:8px 8px 0 #10b981;background:#fff}
-    .takeaway-card{padding:22px 18px;border-right:3px solid #000;text-align:center}
-    .takeaway-card:last-child{border-right:none}
-    .takeaway-card .ti{font-size:36px;line-height:1;margin-bottom:10px}
-    .takeaway-card .tn{font-family:'Space Mono',monospace;font-size:11px;color:#FF914D;font-weight:700;letter-spacing:1.2px;margin-bottom:6px;text-transform:uppercase}
-    .takeaway-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;color:#10162f;margin-bottom:6px;line-height:1.3}
-    .takeaway-card p{font-size:12.5px;line-height:1.6;color:#555}
-    @media(max-width:900px){.takeaway-grid{grid-template-columns:repeat(2,1fr)}.takeaway-card{border-right:3px solid #000;border-bottom:3px solid #000}.takeaway-card:nth-child(2n){border-right:none}}
-    @media(max-width:520px){.takeaway-grid{grid-template-columns:1fr}.takeaway-card{border-right:none !important;border-bottom:3px solid #000}.takeaway-card:last-child{border-bottom:none}}
+ /* ===== Take-aways ===== */
+ .takeaway-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+ .takeaway-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:3px solid #000;box-shadow:8px 8px 0 #10b981;background:#fff}
+ .takeaway-card{padding:22px 18px;border-right:3px solid #000;text-align:center}
+ .takeaway-card:last-child{border-right:none}
+ .takeaway-card .ti{font-size:36px;line-height:1;margin-bottom:10px}
+ .takeaway-card .tn{font-family:'Space Mono',monospace;font-size:11px;color:#FF914D;font-weight:700;letter-spacing:1.2px;margin-bottom:6px;text-transform:uppercase}
+ .takeaway-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;color:#10162f;margin-bottom:6px;line-height:1.3}
+ .takeaway-card p{font-size:12.5px;line-height:1.6;color:#555}
+ @media(max-width:900px){.takeaway-grid{grid-template-columns:repeat(2,1fr)}.takeaway-card{border-right:3px solid #000;border-bottom:3px solid #000}.takeaway-card:nth-child(2n){border-right:none}}
+ @media(max-width:520px){.takeaway-grid{grid-template-columns:1fr}.takeaway-card{border-right:none !important;border-bottom:3px solid #000}.takeaway-card:last-child{border-bottom:none}}
 
-    /* ===== Pain Points (gap chart) ===== */
-    .pain-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
-    .pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .pain-card{border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #10162f;padding:22px 20px;transition:all 0.15s}
-    .pain-card:hover{box-shadow:none;transform:translate(4px,4px)}
-    .pain-card .pn{font-family:'Space Mono',monospace;font-size:11px;color:#dc2626;font-weight:700;letter-spacing:1.2px;margin-bottom:8px}
-    .pain-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;color:#10162f;margin-bottom:8px;line-height:1.35}
-    .pain-card p{font-size:13px;line-height:1.7;color:#444}
-    .pain-card .opportunity{margin-top:12px;padding:8px 10px;background:#d1fae5;color:#065f46;font-size:12px;line-height:1.5;border-left:3px solid #10b981}
-    @media(max-width:900px){.pain-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:560px){.pain-grid{grid-template-columns:1fr}}
+ /* ===== Pain Points (gap chart) ===== */
+ .pain-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+ .pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+ .pain-card{border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #10162f;padding:22px 20px;transition:all 0.15s}
+ .pain-card:hover{box-shadow:none;transform:translate(4px,4px)}
+ .pain-card .pn{font-family:'Space Mono',monospace;font-size:11px;color:#dc2626;font-weight:700;letter-spacing:1.2px;margin-bottom:8px}
+ .pain-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:900;color:#10162f;margin-bottom:8px;line-height:1.35}
+ .pain-card p{font-size:13px;line-height:1.7;color:#444}
+ .pain-card .opportunity{margin-top:12px;padding:8px 10px;background:#d1fae5;color:#065f46;font-size:12px;line-height:1.5;border-left:3px solid #10b981}
+ @media(max-width:900px){.pain-grid{grid-template-columns:repeat(2,1fr)}}
+ @media(max-width:560px){.pain-grid{grid-template-columns:1fr}}
 
-    /* ===== Audience ===== */
-    .au-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
-    .au-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:20px 22px;transition:all 0.15s}
-    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
-    .au-emoji{font-size:30px;line-height:1;flex-shrink:0;margin-top:2px}
-    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
-    .au-body p{font-size:13px;line-height:1.65;color:#555}
-    .au-not{margin-top:22px;padding:18px 22px;background:#10162f;color:#fff;font-size:13.5px;line-height:1.7;border:3px solid #000;box-shadow:5px 5px 0 #FFDE59}
-    .au-not strong{color:#FFDE59}
-    @media(max-width:640px){.au-grid{grid-template-columns:1fr}}
+ /* ===== Audience ===== */
+ .au-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+ .au-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+ .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:20px 22px;transition:all 0.15s}
+ .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+ .au-emoji{font-size:30px;line-height:1;flex-shrink:0;margin-top:2px}
+ .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;color:#10162f;margin-bottom:6px;line-height:1.35}
+ .au-body p{font-size:13px;line-height:1.65;color:#555}
+ .au-not{margin-top:22px;padding:18px 22px;background:#10162f;color:#fff;font-size:13.5px;line-height:1.7;border:3px solid #000;box-shadow:5px 5px 0 #FFDE59}
+ .au-not strong{color:#FFDE59}
+ @media(max-width:640px){.au-grid{grid-template-columns:1fr}}
 
-    /* ===== Salary table ===== */
-    .salary-wrap{max-width:1100px;margin:48px auto 0;padding:0 24px}
-    .salary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #FF914D}
-    .salary-card{padding:22px 18px;border-right:3px solid #000;text-align:center}
-    .salary-card:last-child{border-right:none}
-    .salary-card .tier{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#666;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
-    .salary-card .amount{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:#10162f;margin-bottom:6px}
-    .salary-card .role{font-size:12.5px;color:#555;line-height:1.5}
-    @media(max-width:760px){.salary-grid{grid-template-columns:repeat(2,1fr)}.salary-card{border-right:3px solid #000;border-bottom:3px solid #000}.salary-card:nth-child(2n){border-right:none}.salary-card:nth-last-child(-n+2){border-bottom:none}}
+ /* ===== Salary table ===== */
+ .salary-wrap{max-width:1100px;margin:48px auto 0;padding:0 24px}
+ .salary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #FF914D}
+ .salary-card{padding:22px 18px;border-right:3px solid #000;text-align:center}
+ .salary-card:last-child{border-right:none}
+ .salary-card .tier{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#666;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
+ .salary-card .amount{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:900;color:#10162f;margin-bottom:6px}
+ .salary-card .role{font-size:12.5px;color:#555;line-height:1.5}
+ @media(max-width:760px){.salary-grid{grid-template-columns:repeat(2,1fr)}.salary-card{border-right:3px solid #000;border-bottom:3px solid #000}.salary-card:nth-child(2n){border-right:none}.salary-card:nth-last-child(-n+2){border-bottom:none}}
 
-    /* ===== Tools ===== */
-    .ts-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
-    .ts-head{border:3px solid #000;background:#10162f;color:#fff;padding:18px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-    .ts-head .mono{font-family:'Space Mono',monospace;font-size:12px;opacity:0.7;font-weight:400}
-    .ts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid #000;border-top:none;background:#fff}
-    .ts-col{padding:22px 22px 24px;border-right:3px solid #000}
-    .ts-col:last-child{border-right:none}
-    .ts-logo{font-size:34px;margin-bottom:10px}
-    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f;margin-bottom:4px}
-    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#FF914D;font-weight:700;margin-bottom:12px}
-    .ts-col p{font-size:13px;line-height:1.7;color:#444;margin-bottom:8px}
-    .ts-col p strong{color:#10162f}
-    .ts-pros,.ts-cons{font-size:11.5px;line-height:1.65;padding:8px 10px;margin-top:8px}
-    .ts-pros{background:#d1fae5;color:#065f46;border-left:4px solid #10b981}
-    .ts-cons{background:#fef3c7;color:#92400e;border-left:4px solid #f59e0b}
-    @media(max-width:900px){.ts-grid{grid-template-columns:repeat(2,1fr)}.ts-col{border-right:3px solid #000;border-bottom:3px solid #000}.ts-col:nth-child(2n){border-right:none}.ts-col:nth-last-child(-n+2){border-bottom:none}}
-    @media(max-width:560px){.ts-grid{grid-template-columns:1fr}.ts-col{border-right:none !important;border-bottom:3px solid #000}.ts-col:last-child{border-bottom:none}}
+ /* ===== Tools ===== */
+ .ts-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+ .ts-head{border:3px solid #000;background:#10162f;color:#fff;padding:18px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+ .ts-head .mono{font-family:'Space Mono',monospace;font-size:12px;opacity:0.7;font-weight:400}
+ .ts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid #000;border-top:none;background:#fff}
+ .ts-col{padding:22px 22px 24px;border-right:3px solid #000}
+ .ts-col:last-child{border-right:none}
+ .ts-logo{font-size:34px;margin-bottom:10px}
+ .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:900;color:#10162f;margin-bottom:4px}
+ .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#FF914D;font-weight:700;margin-bottom:12px}
+ .ts-col p{font-size:13px;line-height:1.7;color:#444;margin-bottom:8px}
+ .ts-col p strong{color:#10162f}
+ .ts-pros,.ts-cons{font-size:11.5px;line-height:1.65;padding:8px 10px;margin-top:8px}
+ .ts-pros{background:#d1fae5;color:#065f46;border-left:4px solid #10b981}
+ .ts-cons{background:#fef3c7;color:#92400e;border-left:4px solid #f59e0b}
+ @media(max-width:900px){.ts-grid{grid-template-columns:repeat(2,1fr)}.ts-col{border-right:3px solid #000;border-bottom:3px solid #000}.ts-col:nth-child(2n){border-right:none}.ts-col:nth-last-child(-n+2){border-bottom:none}}
+ @media(max-width:560px){.ts-grid{grid-template-columns:1fr}.ts-col{border-right:none !important;border-bottom:3px solid #000}.ts-col:last-child{border-bottom:none}}
 
-    /* ===== Timeline ===== */
-    .tl-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
-    .tl-wrap .box{margin-bottom:20px;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden}
-    .tl-wrap .box-h{padding:14px 20px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900}
-    .tl-wrap .box-h .slot{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.85}
-    .tl-wrap .box-h .badge{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);font-weight:700}
-    .tl-wrap .lesson-body{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;padding:18px 24px}
-    .tl-wrap .lesson-body h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:6px}
-    .tl-wrap .lesson-body p{font-size:13.5px;line-height:1.75;color:#333}
-    .tl-wrap .lesson-body ul{font-size:13px;line-height:1.75;color:#444;padding-left:18px;margin-top:4px}
-    .tl-wrap .lesson-body li{margin-bottom:4px}
-    @media(max-width:760px){.tl-wrap .lesson-body{grid-template-columns:1fr}}
+ /* ===== Timeline ===== */
+ .tl-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+ .tl-wrap .box{margin-bottom:20px;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden}
+ .tl-wrap .box-h{padding:14px 20px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900}
+ .tl-wrap .box-h .slot{font-family:'Space Mono',monospace;font-size:12px;font-weight:400;opacity:0.85}
+ .tl-wrap .box-h .badge{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);font-weight:700}
+ .tl-wrap .lesson-body{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;padding:18px 24px}
+ .tl-wrap .lesson-body h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:6px}
+ .tl-wrap .lesson-body p{font-size:13.5px;line-height:1.75;color:#333}
+ .tl-wrap .lesson-body ul{font-size:13px;line-height:1.75;color:#444;padding-left:18px;margin-top:4px}
+ .tl-wrap .lesson-body li{margin-bottom:4px}
+ @media(max-width:760px){.tl-wrap .lesson-body{grid-template-columns:1fr}}
 
-    /* ===== Bootcamp Preview ===== */
-    .bc-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
-    .bc-card{border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #6366f1;padding:32px}
-    .bc-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;margin-bottom:8px}
-    .bc-card .bc-sub{color:#666;font-size:14px;margin-bottom:24px}
-    .bc-phases{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-    .bc-phase{padding:16px 14px;background:#f8f9ff;border:2px solid #e5e7eb;text-align:left}
-    .bc-phase .pn{font-family:'Space Mono',monospace;font-size:10px;color:#6366f1;font-weight:700;letter-spacing:1.2px;margin-bottom:6px}
-    .bc-phase h5{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;color:#10162f;margin-bottom:6px;line-height:1.3}
-    .bc-phase p{font-size:12px;color:#555;line-height:1.6}
-    .bc-mods{margin-top:18px;padding-top:18px;border-top:2px dashed #e5e7eb}
-    .bc-mods h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;color:#10162f;margin-bottom:10px}
-    .bc-mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
-    .bc-mod{padding:8px 12px;background:#fef3c7;border-left:3px solid #FF914D;font-size:12.5px;color:#92400e;font-weight:600}
-    @media(max-width:760px){.bc-phases{grid-template-columns:repeat(2,1fr)}}
+ /* ===== Bootcamp Preview ===== */
+ .bc-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+ .bc-card{border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #6366f1;padding:32px}
+ .bc-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:900;color:#10162f;margin-bottom:8px}
+ .bc-card .bc-sub{color:#666;font-size:14px;margin-bottom:24px}
+ .bc-phases{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+ .bc-phase{padding:16px 14px;background:#f8f9ff;border:2px solid #e5e7eb;text-align:left}
+ .bc-phase .pn{font-family:'Space Mono',monospace;font-size:10px;color:#6366f1;font-weight:700;letter-spacing:1.2px;margin-bottom:6px}
+ .bc-phase h5{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:900;color:#10162f;margin-bottom:6px;line-height:1.3}
+ .bc-phase p{font-size:12px;color:#555;line-height:1.6}
+ .bc-mods{margin-top:18px;padding-top:18px;border-top:2px dashed #e5e7eb}
+ .bc-mods h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:900;color:#10162f;margin-bottom:10px}
+ .bc-mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+ .bc-mod{padding:8px 12px;background:#fef3c7;border-left:3px solid #FF914D;font-size:12.5px;color:#92400e;font-weight:600}
+ @media(max-width:760px){.bc-phases{grid-template-columns:repeat(2,1fr)}}
 
-    /* ===== Prep ===== */
-    .prep-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
-    .prep-list{display:flex;flex-direction:column;gap:0;border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #FF914D}
-    .prep-row{display:grid;grid-template-columns:48px 100px 1fr;gap:0;padding:18px 22px;border-bottom:2px solid #000;align-items:center}
-    .prep-row:last-child{border-bottom:none}
-    .prep-row .num{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:#10162f;background:#FFDE59;border:2px solid #000;width:34px;height:34px;display:flex;align-items:center;justify-content:center}
-    .prep-row .req{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border:2px solid #000;display:inline-block;align-self:start;margin-top:4px}
-    .prep-row .req.required{background:#dc2626;color:#fff}
-    .prep-row .req.recommended{background:#FF914D;color:#fff}
-    .prep-row .req.optional{background:#fafafa;color:#10162f}
-    .prep-row .body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:4px}
-    .prep-row .body p{font-size:13px;line-height:1.65;color:#555}
-    .prep-row .body a{color:#FF914D;font-weight:700;text-decoration:underline}
-    @media(max-width:640px){.prep-row{grid-template-columns:38px 1fr}.prep-row .req{grid-column:1 / span 2;margin-top:8px;justify-self:start}}
+ /* ===== Prep ===== */
+ .prep-wrap{max-width:1200px;margin:64px auto 0;padding:0 24px}
+ .prep-list{display:flex;flex-direction:column;gap:0;border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #FF914D}
+ .prep-row{display:grid;grid-template-columns:48px 100px 1fr;gap:0;padding:18px 22px;border-bottom:2px solid #000;align-items:center}
+ .prep-row:last-child{border-bottom:none}
+ .prep-row .num{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:#10162f;background:#FFDE59;border:2px solid #000;width:34px;height:34px;display:flex;align-items:center;justify-content:center}
+ .prep-row .req{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border:2px solid #000;display:inline-block;align-self:start;margin-top:4px}
+ .prep-row .req.required{background:#dc2626;color:#fff}
+ .prep-row .req.recommended{background:#FF914D;color:#fff}
+ .prep-row .req.optional{background:#fafafa;color:#10162f}
+ .prep-row .body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#10162f;margin-bottom:4px}
+ .prep-row .body p{font-size:13px;line-height:1.65;color:#555}
+ .prep-row .body a{color:#FF914D;font-weight:700;text-decoration:underline}
+ @media(max-width:640px){.prep-row{grid-template-columns:38px 1fr}.prep-row .req{grid-column:1 / span 2;margin-top:8px;justify-self:start}}
 
-    /* ===== FAQ ===== */
-    .faq-wrap{max-width:1000px;margin:64px auto 0;padding:0 24px}
-    .faq-item{border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;margin-bottom:14px;overflow:hidden}
-    .faq-item summary{padding:18px 22px;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:15.5px;font-weight:800;color:#10162f;display:flex;justify-content:space-between;align-items:center;list-style:none;gap:12px}
-    .faq-item summary::-webkit-details-marker{display:none}
-    .faq-item summary::after{content:"+";font-family:'Space Mono',monospace;font-size:24px;color:#FF914D;font-weight:700;flex-shrink:0}
-    .faq-item[open] summary::after{content:"–"}
-    .faq-item p{padding:0 22px 18px;font-size:13.5px;line-height:1.8;color:#444}
+ /* ===== FAQ ===== */
+ .faq-wrap{max-width:1000px;margin:64px auto 0;padding:0 24px}
+ .faq-item{border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;margin-bottom:14px;overflow:hidden}
+ .faq-item summary{padding:18px 22px;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:15.5px;font-weight:800;color:#10162f;display:flex;justify-content:space-between;align-items:center;list-style:none;gap:12px}
+ .faq-item summary::-webkit-details-marker{display:none}
+ .faq-item summary::after{content:"+";font-family:'Space Mono',monospace;font-size:24px;color:#FF914D;font-weight:700;flex-shrink:0}
+ .faq-item[open] summary::after{content:"–"}
+ .faq-item p{padding:0 22px 18px;font-size:13.5px;line-height:1.8;color:#444}
 
-    /* ===== CTA Footer ===== */
-    .footer-cta{margin-top:80px;padding:56px 24px 56px;background:linear-gradient(135deg,#10162f 0%,#FF914D 100%);color:#fff;text-align:center}
-    .footer-cta h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:900;margin-bottom:14px;line-height:1.2}
-    .footer-cta .sub{font-size:15px;line-height:1.7;max-width:680px;margin:0 auto 26px;opacity:0.92}
-    .footer-cta .price{display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
-    .footer-cta .price .now{font-family:'Bricolage Grotesque',sans-serif;font-size:42px;font-weight:900;color:#FFDE59}
-    .footer-cta .deadline{font-family:'Space Mono',monospace;font-size:12px;background:#FFDE59;color:#10162f;padding:6px 12px;border:2px solid #000;display:inline-block;letter-spacing:1px;text-transform:uppercase;font-weight:700}
-    .footer-foot{padding:24px;background:#10162f;color:#fff;text-align:center;font-family:'Space Mono',monospace;font-size:12px;opacity:0.7}
-    .footer-foot a{color:#FFDE59}
-  </style>
+ /* ===== CTA Footer ===== */
+ .footer-cta{margin-top:80px;padding:56px 24px 56px;background:linear-gradient(135deg,#10162f 0%,#FF914D 100%);color:#fff;text-align:center}
+ .footer-cta h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:900;margin-bottom:14px;line-height:1.2}
+ .footer-cta .sub{font-size:15px;line-height:1.7;max-width:680px;margin:0 auto 26px;opacity:0.92}
+ .footer-cta .price{display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+ .footer-cta .price .now{font-family:'Bricolage Grotesque',sans-serif;font-size:42px;font-weight:900;color:#FFDE59}
+ .footer-cta .deadline{font-family:'Space Mono',monospace;font-size:12px;background:#FFDE59;color:#10162f;padding:6px 12px;border:2px solid #000;display:inline-block;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+ .footer-foot{padding:24px;background:#10162f;color:#fff;text-align:center;font-family:'Space Mono',monospace;font-size:12px;opacity:0.7}
+ .footer-foot a{color:#FFDE59}
+ </style>
 </head>
 <body style="font-family:'DM Sans','Noto Sans SC',sans-serif;background:#fafafa;margin:0;padding:0;color:#1a1a1a">
 
-  <!-- ============== HEADER ============== -->
-  <header class="header">
-    <h1>AI Adoption Specialist 入门工作坊<br><span style="color:#FFDE59">2 小时看懂澳洲企业 AI 转型机会</span></h1>
-    <p class="sub">看懂 <strong style="color:#FFDE59">$70K-$250K</strong> 新岗位 · 看清澳洲企业 AI 落地痛点 · 看会 3 大干货 Demo（ChatGPT RAG · Claude Vibe Coding · AI Workflow 自动化）+ 真实澳洲 SME 案例</p>
-    <div class="chips">
-      <span class="chip yellow">📅 5 月 28 日 周四</span>
-      <span class="chip">🕐 7:30-9:30pm 布里斯班</span>
-      <span class="chip orange">💻 Zoom 直播 + 录播</span>
-      <span class="chip green">🎁 完全免费</span>
-      <span class="chip indigo">👥 100-300 人</span>
-    </div>
-    <div class="cta-row">
-      <a class="cta primary" href="#cta">免费报名 →</a>
-      <a class="cta secondary" href="#timeline">看 2 小时怎么走</a>
-    </div>
-  </header>
+ <!-- ============== HEADER ============== -->
+ <header class="header">
+ <h1>AI 工作流提效营 · 公开课<br><span style="color:#FFDE59">2 小时学会把 AI 装进你部门的工作流</span></h1>
+ <p class="sub">看懂 <strong style="color:#FFDE59"></strong> 新岗位 · 看清澳洲企业 AI 落地痛点 · 看会 3 大干货 Demo（ChatGPT RAG · Claude Vibe Coding · AI Workflow 自动化）+ 真实澳洲 SME 案例</p>
+ <div class="chips">
+ <span class="chip yellow">📅 5 月 28 日 周四</span>
+ <span class="chip">🕐 7:30-9:30pm 布里斯班</span>
+ <span class="chip orange">💻 Zoom 直播 + 录播</span>
+ <span class="chip green">🎁 完全免费</span>
+ <span class="chip indigo">👥 100-300 人</span>
+ </div>
+ <div class="cta-row">
+ <a class="cta primary" href="#cta">免费报名 →</a>
+ <a class="cta secondary" href="#timeline">看 2 小时怎么走</a>
+ </div>
+ </header>
 
-  <!-- ============== PROMISE ============== -->
-  <section class="promise">
-    <div class="promise-card">
-      <span class="promise-tag">▎ 我们承诺 · 2 小时</span>
-      <p>2 小时不卖关子。前 40 分钟讲透两件事：① <strong>澳洲企业 AI Adoption 现状</strong>（数据 + 4 大痛点 + 这个 gap 怎么变成你的机会）② <strong>AI Adoption Specialist 这个新岗位到底做啥</strong>、市场薪资多少（$70K-$250K）、和 AI Engineer / AI PM 怎么区分、什么背景的人最有优势。<br><br>中间 50 分钟连跑 <strong>3 个干货 Demo</strong> —— 你现场看老师用 ChatGPT 的 RAG + 数据分析 / Claude 一句话生成产品落地页 / n8n + Claude API 串成自动化客户咨询工作流，再串 2 个真实澳洲 SME 案例。<br><br>最后 30 分钟讲透 <strong>AI Adoption Specialist 8 周 Bootcamp</strong> 的学习路径、39 个 Hands-on Lab、7 个市场上没人教的 Adoption 专属模块（Governance / ROI / Change Mgmt），以及谁适合 / 谁不适合 / 怎么报名。走时你脑子里有 3 件事：① 这个岗位是不是给我准备的 ② 我现在的背景能不能切进去 ③ 下一步怎么走。</p>
-    </div>
-  </section>
+ <!-- ============== PROMISE ============== -->
+ <section class="promise">
+ <div class="promise-card">
+ <span class="promise-tag">▎ 我们承诺 · 2 小时</span>
+ <p>2 小时不卖关子。前 40 分钟讲透两件事：① <strong>澳洲企业 AI Adoption 现状</strong>（数据 + 4 大痛点 + 这个 gap 怎么变成你的机会）② <strong>AI 工作流提效师 这个新岗位到底做啥</strong>、市场薪资多少（）、和 AI Engineer / AI PM 怎么区分、什么背景的人最有优势。<br><br>中间 50 分钟连跑 <strong>3 个干货 Demo</strong> —— 你现场看老师用 ChatGPT 的 RAG + 数据分析 / Claude 一句话生成产品落地页 / n8n + Claude API 串成自动化客户咨询工作流，再串 2 个真实澳洲 SME 案例。<br><br>最后 30 分钟讲透 <strong>AI 工作流提效师 8 周 Bootcamp</strong> 的学习路径、39 个 Hands-on Lab、7 个市场上没人教的 Adoption 专属模块（Governance / ROI / Change Mgmt），以及谁适合 / 谁不适合 / 怎么报名。走时你脑子里有 3 件事：① 这个岗位是不是给我准备的 ② 我现在的背景能不能切进去 ③ 下一步怎么走。</p>
+ </div>
+ </section>
 
-  <!-- ============== 5 大带走 ============== -->
-  <section class="takeaway-wrap">
-    <h2 class="sec-title">2 小时带走的 5 件事</h2>
-    <p class="sec-sub">不是『听老师讲一堆 AI 大概念』· 是『看完心里能做 5 个具体判断』</p>
-    <div class="takeaway-grid">
-      <div class="takeaway-card">
-        <div class="ti">📊</div>
-        <div class="tn">TAKE 1</div>
-        <h4>看清市场</h4>
-        <p>澳洲 AI Adoption 真实数据 + 4 大企业痛点</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="ti">🎯</div>
-        <div class="tn">TAKE 2</div>
-        <h4>看懂角色</h4>
-        <p>AI Adoption Specialist 职责 / 薪资 / 适合背景</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="ti">🤖</div>
-        <div class="tn">TAKE 3</div>
-        <h4>看会干货</h4>
-        <p>ChatGPT RAG + Claude Vibe Coding + AI Workflow</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="ti">💼</div>
-        <div class="tn">TAKE 4</div>
-        <h4>看到案例</h4>
-        <p>2 个真实澳洲 SME · 客服自动化 + Onboarding</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="ti">📚</div>
-        <div class="tn">TAKE 5</div>
-        <h4>看清下一步</h4>
-        <p>8 周 Bootcamp 路径 + 怎么判断适不适合自己</p>
-      </div>
-    </div>
-  </section>
+ <!-- ============== 5 大带走 ============== -->
+ <section class="takeaway-wrap">
+ <h2 class="sec-title">2 小时带走的 5 件事</h2>
+ <p class="sec-sub">不是『听老师讲一堆 AI 大概念』· 是『看完心里能做 5 个具体判断』</p>
+ <div class="takeaway-grid">
+ <div class="takeaway-card">
+ <div class="ti">📊</div>
+ <div class="tn">TAKE 1</div>
+ <h4>看清市场</h4>
+ <p>澳洲 AI Adoption 真实数据 + 4 大企业痛点</p>
+ </div>
+ <div class="takeaway-card">
+ <div class="ti">🎯</div>
+ <div class="tn">TAKE 2</div>
+ <h4>看懂角色</h4>
+ <p>AI 工作流提效师 职责 / 薪资 / 适合背景</p>
+ </div>
+ <div class="takeaway-card">
+ <div class="ti">🤖</div>
+ <div class="tn">TAKE 3</div>
+ <h4>看会干货</h4>
+ <p>ChatGPT RAG + Claude Vibe Coding + AI Workflow</p>
+ </div>
+ <div class="takeaway-card">
+ <div class="ti">💼</div>
+ <div class="tn">TAKE 4</div>
+ <h4>看到案例</h4>
+ <p>2 个真实澳洲 SME · 客服自动化 + Onboarding</p>
+ </div>
+ <div class="takeaway-card">
+ <div class="ti">📚</div>
+ <div class="tn">TAKE 5</div>
+ <h4>看清下一步</h4>
+ <p>8 周 Bootcamp 路径 + 怎么判断适不适合自己</p>
+ </div>
+ </div>
+ </section>
 
-  <!-- ============== 4 大痛点 = 4 大机会 ============== -->
-  <section class="pain-wrap">
-    <h2 class="sec-title">澳洲企业 AI Adoption 的 4 大痛点 = 你的 4 大机会</h2>
-    <p class="sec-sub">3 份权威报告显示：78% 员工已经在用 AI · 但只有 8% 企业有正式 AI 策略 · 42% 老板说『不知道下一步怎么做』· 这中间巨大的 gap 就是你的舞台</p>
-    <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pn">▎ GAP #1</div>
-        <h4>选工具困难</h4>
-        <p>ChatGPT / Claude / Copilot / Gemini / 国产模型 — 老板眼花，IT 说『先评估一下』，评估了半年没结论。</p>
-        <div class="opportunity">→ 你能帮公司在 2 周内做完工具选型 + 试点</div>
-      </div>
-      <div class="pain-card">
-        <div class="pn">▎ GAP #2</div>
-        <h4>用法停留在『聊天玩具』</h4>
-        <p>员工开会写邮件用 ChatGPT 偶尔玩一下，但 RAG / Workflow / Custom GPT 这些真正提效的能力没人用。</p>
-        <div class="opportunity">→ 你能把单点工具串成业务流，提效 10 倍</div>
-      </div>
-      <div class="pain-card">
-        <div class="pn">▎ GAP #3</div>
-        <h4>试点跑通了但推不开</h4>
-        <p>财务部 3 个人用 AI 跑得很好，但推到 HR / 销售就被『太麻烦 / 我们的活不一样 / 老板没要求』顶回去。</p>
-        <div class="opportunity">→ 你懂 Change Management，能推动组织级落地</div>
-      </div>
-      <div class="pain-card">
-        <div class="pn">▎ GAP #4</div>
-        <h4>没人会算 ROI</h4>
-        <p>老板问『今年投 AI 花了 $X 万，效果怎么样？』— 没人能给出令 CFO 信服的数字答案，明年预算砍掉。</p>
-        <div class="opportunity">→ 你能用 ROI Framework 把 AI 价值量化</div>
-      </div>
-    </div>
-  </section>
+ <!-- ============== 4 大痛点 = 4 大机会 ============== -->
+ <section class="pain-wrap">
+ <h2 class="sec-title">澳洲企业 AI Adoption 的 4 大痛点 = 你的 4 大机会</h2>
+ <p class="sec-sub">3 份权威报告显示：78% 员工已经在用 AI · 但只有 8% 企业有正式 AI 策略 · 42% 老板说『不知道下一步怎么做』· 这中间巨大的 gap 就是你的舞台</p>
+ <div class="pain-grid">
+ <div class="pain-card">
+ <div class="pn">▎ GAP #1</div>
+ <h4>选工具困难</h4>
+ <p>ChatGPT / Claude / Copilot / Gemini / 国产模型 — 老板眼花，IT 说『先评估一下』，评估了半年没结论。</p>
+ <div class="opportunity">→ 你能帮公司在 2 周内做完工具选型 + 试点</div>
+ </div>
+ <div class="pain-card">
+ <div class="pn">▎ GAP #2</div>
+ <h4>用法停留在『聊天玩具』</h4>
+ <p>员工开会写邮件用 ChatGPT 偶尔玩一下，但 RAG / Workflow / Custom GPT 这些真正提效的能力没人用。</p>
+ <div class="opportunity">→ 你能把单点工具串成业务流，提效 10 倍</div>
+ </div>
+ <div class="pain-card">
+ <div class="pn">▎ GAP #3</div>
+ <h4>试点跑通了但推不开</h4>
+ <p>财务部 3 个人用 AI 跑得很好，但推到 HR / 销售就被『太麻烦 / 我们的活不一样 / 老板没要求』顶回去。</p>
+ <div class="opportunity">→ 你懂 Change Management，能推动组织级落地</div>
+ </div>
+ <div class="pain-card">
+ <div class="pn">▎ GAP #4</div>
+ <h4>没人会算 ROI</h4>
+ <p>老板问『今年投 AI 花了 $X 万，效果怎么样？』— 没人能给出令 CFO 信服的数字答案，明年预算砍掉。</p>
+ <div class="opportunity">→ 你能用 ROI Framework 把 AI 价值量化</div>
+ </div>
+ </div>
+ </section>
 
-  <!-- ============== Salary range ============== -->
-  <section class="salary-wrap">
-    <h2 class="sec-title">澳洲市场薪资带（最近 3 个月 Seek / LinkedIn 真实 JD）</h2>
-    <p class="sec-sub">L02 工作坊环节会展示真实 JD 截图（脱敏）· 数据范围 Brisbane / Sydney / Melbourne</p>
-    <div class="salary-grid">
-      <div class="salary-card">
-        <div class="tier">JUNIOR</div>
-        <div class="amount">$70-90K</div>
-        <div class="role">AI Adoption Analyst / AI Champion 起步岗位</div>
-      </div>
-      <div class="salary-card">
-        <div class="tier">MID</div>
-        <div class="amount">$100-140K</div>
-        <div class="role">AI Adoption Specialist · 跑试点 / 培训 / 推广</div>
-      </div>
-      <div class="salary-card">
-        <div class="tier">SENIOR</div>
-        <div class="amount">$150-200K</div>
-        <div class="role">Senior Specialist / AI Transformation Lead</div>
-      </div>
-      <div class="salary-card">
-        <div class="tier">LEAD</div>
-        <div class="amount">$200-250K</div>
-        <div class="role">Head of AI Adoption / Chief AI Officer (SME)</div>
-      </div>
-    </div>
-  </section>
+ <!-- ============== Salary range ============== -->
+ <section class="salary-wrap">
+ <h2 class="sec-title">澳洲市场薪资带（最近 3 个月 Seek / LinkedIn 真实 JD）</h2>
+ <p class="sec-sub">L02 工作坊环节会展示真实 JD 截图（脱敏）· 数据范围 Brisbane / Sydney / Melbourne</p>
+ <div class="salary-grid">
+ <div class="salary-card">
+ <div class="tier">JUNIOR</div>
+ <div class="amount">$70-90K</div>
+ <div class="role">AI Adoption Analyst / AI Champion 起步岗位</div>
+ </div>
+ <div class="salary-card">
+ <div class="tier">MID</div>
+ <div class="amount">$100-140K</div>
+ <div class="role">AI 工作流提效师 · 跑试点 / 培训 / 推广</div>
+ </div>
+ <div class="salary-card">
+ <div class="tier">SENIOR</div>
+ <div class="amount">$150-200K</div>
+ <div class="role">Senior Specialist / AI Transformation Lead</div>
+ </div>
+ <div class="salary-card">
+ <div class="tier">LEAD</div>
+ <div class="amount">$200-250K</div>
+ <div class="role">Head of AI Adoption / Chief AI Officer (SME)</div>
+ </div>
+ </div>
+ </section>
 
-  <!-- ============== AUDIENCE ============== -->
-  <section class="au-wrap">
-    <h2 class="sec-title">这 2 小时为谁设计</h2>
-    <p class="sec-sub">4 类人都能拿走自己想要的判断 · 共同特征：知道 AI 是趋势但还没想清楚怎么切自己的牌</p>
-    <div class="au-grid">
-      <div class="au-card">
-        <div class="au-emoji">💼</div>
-        <div class="au-body">
-          <h4>求职者 · 想切 AI 方向</h4>
-          <p>IT / 业务背景，想转 AI 相关岗位但不想从程序员重新开始 — AI Adoption Specialist 是『懂业务的人最容易切进去的 AI 岗位』</p>
-        </div>
-      </div>
-      <div class="au-card">
-        <div class="au-emoji">🔄</div>
-        <div class="au-body">
-          <h4>转职者 · BA / Consulting / Ops 想升级</h4>
-          <p>已经在做 BA / Consulting / Product / Operations / Data 的人 — 你的业务理解力 + 推动能力是 AI Adoption 的 70% 核心能力，剩下 30% Bootcamp 帮你补</p>
-        </div>
-      </div>
-      <div class="au-card">
-        <div class="au-emoji">📈</div>
-        <div class="au-body">
-          <h4>升职者 · 中层管理者推动组织转型</h4>
-          <p>部门经理 / 项目主管 — 公司要求你 own AI 转型这件事，但不知道从哪入手 / 怎么算 ROI 给 CFO 看 / 怎么处理员工抵触</p>
-        </div>
-      </div>
-      <div class="au-card">
-        <div class="au-emoji">🚀</div>
-        <div class="au-body">
-          <h4>SME 主 / 创业者 · 想用 AI 弯道超车</h4>
-          <p>1-50 人公司老板 / 创业者 — 大公司 AI 转型要 12 个月，你 1 个月就能跑通；用 AI 让 10 人公司做出 50 人公司的产能</p>
-        </div>
-      </div>
-    </div>
-    <div class="au-not"><strong>⚠️ 谁不太适合（我们也说清楚）：</strong>想转 <strong>AI Engineer / ML Engineer 写代码训模型</strong> 方向的（推荐 AI Engineer Bootcamp）· 完全 <strong>零工作经验的应届生</strong>（建议先做 1-2 年 BA / Ops 积累业务经验）· 期待『学完月入 10 万』的 <strong>速成班</strong> 心态（这是技能课不是发财课）</div>
-  </section>
+ <!-- ============== AUDIENCE ============== -->
+ <section class="au-wrap">
+ <h2 class="sec-title">这 2 小时为谁设计</h2>
+ <p class="sec-sub">4 类人都能拿走自己想要的判断 · 共同特征：知道 AI 是趋势但还没想清楚怎么切自己的牌</p>
+ <div class="au-grid">
+ <div class="au-card">
+ <div class="au-emoji">💼</div>
+ <div class="au-body">
+ <h4>求职者 · 想切 AI 方向</h4>
+ <p>IT / 业务背景，想转 AI 相关岗位但不想从程序员重新开始 — AI 工作流提效师 是『懂业务的人最容易切进去的 AI 岗位』</p>
+ </div>
+ </div>
+ <div class="au-card">
+ <div class="au-emoji">🔄</div>
+ <div class="au-body">
+ <h4>转职者 · BA / Consulting / Ops 想升级</h4>
+ <p>已经在做 BA / Consulting / Product / Operations / Data 的人 — 你的业务理解力 + 推动能力是 AI Adoption 的 70% 核心能力，剩下 30% Bootcamp 帮你补</p>
+ </div>
+ </div>
+ <div class="au-card">
+ <div class="au-emoji">📈</div>
+ <div class="au-body">
+ <h4>升职者 · 中层管理者推动组织转型</h4>
+ <p>部门经理 / 项目主管 — 公司要求你 own AI 转型这件事，但不知道从哪入手 / 怎么算 ROI 给 CFO 看 / 怎么处理员工抵触</p>
+ </div>
+ </div>
+ <div class="au-card">
+ <div class="au-emoji">🚀</div>
+ <div class="au-body">
+ <h4>SME 主 / 创业者 · 想用 AI 弯道超车</h4>
+ <p>1-50 人公司老板 / 创业者 — 大公司 AI 转型要 12 个月，你 1 个月就能跑通；用 AI 让 10 人公司做出 50 人公司的产能</p>
+ </div>
+ </div>
+ </div>
+ <div class="au-not"><strong>⚠️ 谁不太适合（我们也说清楚）：</strong>想转 <strong>AI Engineer / ML Engineer 写代码训模型</strong> 方向的（推荐 AI Engineer Bootcamp）· 完全 <strong>零工作经验的应届生</strong>（建议先做 1-2 年 BA / Ops 积累业务经验）· 期待『学完月入 10 万』的 <strong>速成班</strong> 心态（这是技能课不是发财课）</div>
+ </section>
 
-  <!-- ============== TOOLS ============== -->
-  <section class="ts-wrap">
-    <div class="ts-head">
-      <span>🛠️ Demo 用到的 4 个工具栈</span>
-      <span class="mono">AI ADOPTION STACK · 2026</span>
-    </div>
-    <div class="ts-grid">
-      <div class="ts-col">
-        <div class="ts-logo">🤖</div>
-        <div class="ts-name">ChatGPT (GPT-5)</div>
-        <div class="ts-role">Demo 1</div>
-        <p>RAG 知识库 + Code Interpreter 数据分析。<strong>30 页 PDF → 企业 FAQ Bot · CSV → 自动出图表 + 异常检测。</strong></p>
-        <div class="ts-pros">✓ 文件上传 + 内置 RAG<br>✓ Custom GPT 团队复用</div>
-        <div class="ts-cons">⚠ Plus 订阅 A$30/月起</div>
-      </div>
-      <div class="ts-col">
-        <div class="ts-logo">🎨</div>
-        <div class="ts-name">Claude</div>
-        <div class="ts-role">Demo 2</div>
-        <p>Vibe Coding · 一句话生成<strong>产品级落地页 + UX wireframe + 内部工具</strong>。BA / PM 也能 ship。</p>
-        <div class="ts-pros">✓ Artifact 实时预览<br>✓ 设计 / 文案能力领先</div>
-        <div class="ts-cons">⚠ Pro 订阅 A$30/月起</div>
-      </div>
-      <div class="ts-col">
-        <div class="ts-logo">⚙️</div>
-        <div class="ts-name">n8n / Make</div>
-        <div class="ts-role">Demo 3</div>
-        <p>+ Claude API 把 AI 嵌入业务流程 · <strong>客户咨询 → 自动分类 → 起草回复 → 进 CRM。</strong></p>
-        <div class="ts-pros">✓ n8n 自托管免费<br>✓ 1000+ 现成连接器</div>
-        <div class="ts-cons">⚠ 复杂流要做异常监控</div>
-      </div>
-      <div class="ts-col">
-        <div class="ts-logo">💼</div>
-        <div class="ts-name">Case Library</div>
-        <div class="ts-role">案例</div>
-        <p>2 个真实澳洲 SME 案例：<strong>电商客服 6→2 人省 $8K/月 · B2B SaaS Onboarding 5 天→1 天。</strong></p>
-        <div class="ts-pros">✓ ROI 拆解给你看<br>✓ 全脱敏可放心听</div>
-        <div class="ts-cons">⚠ 案例数字仅供参考</div>
-      </div>
-    </div>
-  </section>
+ <!-- ============== TOOLS ============== -->
+ <section class="ts-wrap">
+ <div class="ts-head">
+ <span>🛠️ Demo 用到的 4 个工具栈</span>
+ <span class="mono">AI ADOPTION STACK · 2026</span>
+ </div>
+ <div class="ts-grid">
+ <div class="ts-col">
+ <div class="ts-logo">🤖</div>
+ <div class="ts-name">ChatGPT (GPT-5)</div>
+ <div class="ts-role">Demo 1</div>
+ <p>RAG 知识库 + Code Interpreter 数据分析。<strong>30 页 PDF → 企业 FAQ Bot · CSV → 自动出图表 + 异常检测。</strong></p>
+ <div class="ts-pros">✓ 文件上传 + 内置 RAG<br>✓ Custom GPT 团队复用</div>
+ <div class="ts-cons">⚠ Plus 订阅 A$30/月起</div>
+ </div>
+ <div class="ts-col">
+ <div class="ts-logo">🎨</div>
+ <div class="ts-name">Claude</div>
+ <div class="ts-role">Demo 2</div>
+ <p>Vibe Coding · 一句话生成<strong>产品级落地页 + UX wireframe + 内部工具</strong>。BA / PM 也能 ship。</p>
+ <div class="ts-pros">✓ Artifact 实时预览<br>✓ 设计 / 文案能力领先</div>
+ <div class="ts-cons">⚠ Pro 订阅 A$30/月起</div>
+ </div>
+ <div class="ts-col">
+ <div class="ts-logo">⚙️</div>
+ <div class="ts-name">n8n / Make</div>
+ <div class="ts-role">Demo 3</div>
+ <p>+ Claude API 把 AI 嵌入业务流程 · <strong>客户咨询 → 自动分类 → 起草回复 → 进 CRM。</strong></p>
+ <div class="ts-pros">✓ n8n 自托管免费<br>✓ 1000+ 现成连接器</div>
+ <div class="ts-cons">⚠ 复杂流要做异常监控</div>
+ </div>
+ <div class="ts-col">
+ <div class="ts-logo">💼</div>
+ <div class="ts-name">Case Library</div>
+ <div class="ts-role">案例</div>
+ <p>2 个真实澳洲 SME 案例：<strong>电商客服 6→2 人省 $8K/月 · B2B SaaS Onboarding 5 天→1 天。</strong></p>
+ <div class="ts-pros">✓ ROI 拆解给你看<br>✓ 全脱敏可放心听</div>
+ <div class="ts-cons">⚠ 案例数字仅供参考</div>
+ </div>
+ </div>
+ </section>
 
-  <!-- ============== TIMELINE ============== -->
-  <section id="timeline" class="tl-wrap">
-    <h2 class="sec-title">2 小时怎么走 · 8 个模块</h2>
-    <p class="sec-sub">前 40 分钟讲透市场 + 角色 · 中间 50 分钟连跑 3 个 demo · 后 30 分钟讲 Bootcamp + 报名 · 全程 Zoom 直播 + 录播</p>
+ <!-- ============== TIMELINE ============== -->
+ <section id="timeline" class="tl-wrap">
+ <h2 class="sec-title">2 小时怎么走 · 8 个模块</h2>
+ <p class="sec-sub">前 40 分钟讲透市场 + 角色 · 中间 50 分钟连跑 3 个 demo · 后 30 分钟讲 Bootcamp + 报名 · 全程 Zoom 直播 + 录播</p>
 
-    <!-- L01 -->
-    <div class="box">
-      <div class="box-h" style="background:#10162f">
-        <span>📊 L01 · 澳洲 AI Adoption 市场趋势</span>
-        <span><span class="badge">LECTURE</span> <span class="slot">19:30–19:50 · 20min</span></span>
-      </div>
-      <div class="lesson-body">
-        <div>
-          <h5>这 20 分钟做啥</h5>
-          <p>不寒暄。开场 3 分钟讲清今晚 2 小时怎么走，然后直接上数据：<strong>Microsoft Work Trend Index / AWS AI Adoption Survey / Atlassian State of Teams</strong> 三份报告里关于澳洲企业 AI Adoption 的关键数字。讲透当前企业落地 AI 的 4 大痛点，最后讲这个 gap 怎么变成你的机会。</p>
-        </div>
-        <div>
-          <h5>你会看到</h5>
-          <ul>
-            <li>3 份权威报告关键数据卡</li>
-            <li>4 大痛点拆解（选工具 / 用法 / 推广 / ROI）</li>
-            <li>3 种切入机会：求职 / 转职 / 升职 / SME 弯道超车</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+ <!-- L01 -->
+ <div class="box">
+ <div class="box-h" style="background:#10162f">
+ <span>📊 L01 · 澳洲 AI Adoption 市场趋势</span>
+ <span><span class="badge">LECTURE</span> <span class="slot">19:30–19:50 · 20min</span></span>
+ </div>
+ <div class="lesson-body">
+ <div>
+ <h5>这 20 分钟做啥</h5>
+ <p>不寒暄。开场 3 分钟讲清今晚 2 小时怎么走，然后直接上数据：<strong>Microsoft Work Trend Index / AWS AI Adoption Survey / Atlassian State of Teams</strong> 三份报告里关于澳洲企业 AI Adoption 的关键数字。讲透当前企业落地 AI 的 4 大痛点，最后讲这个 gap 怎么变成你的机会。</p>
+ </div>
+ <div>
+ <h5>你会看到</h5>
+ <ul>
+ <li>3 份权威报告关键数据卡</li>
+ <li>4 大痛点拆解（选工具 / 用法 / 推广 / ROI）</li>
+ <li>3 种切入机会：求职 / 转职 / 升职 / SME 弯道超车</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-    <!-- L02 -->
-    <div class="box">
-      <div class="box-h" style="background:#FF914D">
-        <span>🎯 L02 · 什么是 AI Adoption Specialist</span>
-        <span><span class="badge">LECTURE</span> <span class="slot">19:50–20:10 · 20min</span></span>
-      </div>
-      <div class="lesson-body">
-        <div>
-          <h5>这 20 分钟做啥</h5>
-          <p>把这个新岗位讲透：① <strong>6 个核心职责</strong>（识别机会 / 选工具 / 跑试点 / 培训团队 / 变革管理 / 度量 ROI）② 澳洲市场薪资 $70K-$250K 怎么分布 ③ 和 AI Engineer / AI PM / Data Analyst 怎么区分 ④ 哪些背景最有优势：BA / Consulting / Product / Operations / Data。重点强调：<strong>这是偏 business transformation 的岗位，不是『包装一下转 AI 程序员』</strong>。</p>
-        </div>
-        <div>
-          <h5>你会看到</h5>
-          <ul>
-            <li>6 个职责 × 1 句话 + 1 个例子</li>
-            <li>Seek / LinkedIn 真实 JD 薪资截图</li>
-            <li>4 个角色对比表</li>
-            <li>5 种适合背景 × 真实学员案例</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+ <!-- L02 -->
+ <div class="box">
+ <div class="box-h" style="background:#FF914D">
+ <span>🎯 L02 · 什么是 AI 工作流提效师</span>
+ <span><span class="badge">LECTURE</span> <span class="slot">19:50–20:10 · 20min</span></span>
+ </div>
+ <div class="lesson-body">
+ <div>
+ <h5>这 20 分钟做啥</h5>
+ <p>把这个新岗位讲透：① <strong>6 个核心职责</strong>（识别机会 / 选工具 / 跑试点 / 培训团队 / 变革管理 / 度量 ROI）② 澳洲市场薪资 怎么分布 ③ 和 AI Engineer / AI PM / Data Analyst 怎么区分 ④ 哪些背景最有优势：BA / Consulting / Product / Operations / Data。重点强调：<strong>这是偏 business transformation 的岗位，不是『包装一下转 AI 程序员』</strong>。</p>
+ </div>
+ <div>
+ <h5>你会看到</h5>
+ <ul>
+ <li>6 个职责 × 1 句话 + 1 个例子</li>
+ <li>Seek / LinkedIn 真实 JD 薪资截图</li>
+ <li>4 个角色对比表</li>
+ <li>5 种适合背景 × 真实学员案例</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-    <!-- L03 -->
-    <div class="box">
-      <div class="box-h" style="background:#10b981">
-        <span>🤖 L03 · Demo 1 — ChatGPT RAG + 数据分析</span>
-        <span><span class="badge">LIVE DEMO</span> <span class="slot">20:10–20:25 · 15min</span></span>
-      </div>
-      <div class="lesson-body">
-        <div>
-          <h5>这 15 分钟看啥</h5>
-          <p>现场 demo 两个高级能力：① <strong>30 页员工手册 PDF → Custom GPT FAQ Bot</strong>，现场提问『年假怎么休 / WFH 政策』看回答；② <strong>脱敏 CSV 销售数据 → Code Interpreter 自动出 5 张图表 + 找异常订单 + 写业务建议</strong>。学员看到的不是『AI 聊天』，是『AI 替你跑 BA / 内训助手该做的事』。</p>
-        </div>
-        <div>
-          <h5>你会看到</h5>
-          <ul>
-            <li>RAG 概念实战长什么样（不需要懂向量数据库）</li>
-            <li>Code Interpreter 把 BA 一天的活压到 5 分钟</li>
-            <li>2 个最容易『当场起飞』的企业场景</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+ <!-- L03 -->
+ <div class="box">
+ <div class="box-h" style="background:#10b981">
+ <span>🤖 L03 · Demo 1 — ChatGPT RAG + 数据分析</span>
+ <span><span class="badge">LIVE DEMO</span> <span class="slot">20:10–20:25 · 15min</span></span>
+ </div>
+ <div class="lesson-body">
+ <div>
+ <h5>这 15 分钟看啥</h5>
+ <p>现场 demo 两个高级能力：① <strong>30 页员工手册 PDF → Custom GPT FAQ Bot</strong>，现场提问『年假怎么休 / WFH 政策』看回答；② <strong>脱敏 CSV 销售数据 → Code Interpreter 自动出 5 张图表 + 找异常订单 + 写业务建议</strong>。学员看到的不是『AI 聊天』，是『AI 替你跑 BA / 内训助手该做的事』。</p>
+ </div>
+ <div>
+ <h5>你会看到</h5>
+ <ul>
+ <li>RAG 概念实战长什么样（不需要懂向量数据库）</li>
+ <li>Code Interpreter 把 BA 一天的活压到 5 分钟</li>
+ <li>2 个最容易『当场起飞』的企业场景</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-    <!-- L04 -->
-    <div class="box">
-      <div class="box-h" style="background:#6366f1">
-        <span>🎨 L04 · Demo 2 — Claude Vibe Coding 一句话做产品</span>
-        <span><span class="badge">LIVE DEMO</span> <span class="slot">20:25–20:45 · 20min</span></span>
-      </div>
-      <div class="lesson-body">
-        <div>
-          <h5>这 20 分钟看啥</h5>
-          <p>① <strong>一句话 Prompt → Claude Artifact 现场渲染产品落地页</strong>，改几次配色 / 加表单 / 最后 deploy 拿真实链接；② <strong>BA 场景：用户调研可视化 / 客户旅程图 / 内部工具 dashboard</strong>，全程不写代码。一句话总结：『AI Adoption Specialist 的价值不是自己写代码，是知道哪些事现在能用 AI 跑、并帮业务部门跑通。』</p>
-        </div>
-        <div>
-          <h5>你会看到</h5>
-          <ul>
-            <li>一句话 → 真实产品落地页（8 分钟）</li>
-            <li>BA / PM 自己 ship 内部工具</li>
-            <li>『不会写代码不再是瓶颈』在企业里的真实意义</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+ <!-- L04 -->
+ <div class="box">
+ <div class="box-h" style="background:#6366f1">
+ <span>🎨 L04 · Demo 2 — Claude Vibe Coding 一句话做产品</span>
+ <span><span class="badge">LIVE DEMO</span> <span class="slot">20:25–20:45 · 20min</span></span>
+ </div>
+ <div class="lesson-body">
+ <div>
+ <h5>这 20 分钟看啥</h5>
+ <p>① <strong>一句话 Prompt → Claude Artifact 现场渲染产品落地页</strong>，改几次配色 / 加表单 / 最后 deploy 拿真实链接；② <strong>BA 场景：用户调研可视化 / 客户旅程图 / 内部工具 dashboard</strong>，全程不写代码。一句话总结：『AI 工作流提效师 的价值不是自己写代码，是知道哪些事现在能用 AI 跑、并帮业务部门跑通。』</p>
+ </div>
+ <div>
+ <h5>你会看到</h5>
+ <ul>
+ <li>一句话 → 真实产品落地页（8 分钟）</li>
+ <li>BA / PM 自己 ship 内部工具</li>
+ <li>『不会写代码不再是瓶颈』在企业里的真实意义</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-    <!-- L05 -->
-    <div class="box">
-      <div class="box-h" style="background:#CB6CE6">
-        <span>⚙️ L05 · Demo 3 — AI Workflow + Business Scenario</span>
-        <span><span class="badge">LIVE DEMO</span> <span class="slot">20:45–21:00 · 15min</span></span>
-      </div>
-      <div class="lesson-body">
-        <div>
-          <h5>这 15 分钟看啥</h5>
-          <p>前两个 demo 是『单点能力』，这个是『串成业务流』。<strong>n8n 现场搭：客户咨询 Gmail → AI 分类 → 起草回复 → 进 HubSpot CRM → Slack 通知销售</strong>。配 2 个真实澳洲 SME 案例：电商客服 6→2 人 + AI · 每月省 A$8K · 客户响应 8h→30min；B2B SaaS Onboarding 5 天→1 天 · Churn 下降 18%。ROI 拆解给你看 — 给 CFO 听得懂。</p>
-        </div>
-        <div>
-          <h5>你会看到</h5>
-          <ul>
-            <li>AI = 嵌进业务流程的『隐形员工』</li>
-            <li>ROI 怎么算（人力 + 响应时长 + 转化率）</li>
-            <li>2 个真实澳洲 SME 案例数字</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+ <!-- L05 -->
+ <div class="box">
+ <div class="box-h" style="background:#CB6CE6">
+ <span>⚙️ L05 · Demo 3 — AI Workflow + Business Scenario</span>
+ <span><span class="badge">LIVE DEMO</span> <span class="slot">20:45–21:00 · 15min</span></span>
+ </div>
+ <div class="lesson-body">
+ <div>
+ <h5>这 15 分钟看啥</h5>
+ <p>前两个 demo 是『单点能力』，这个是『串成业务流』。<strong>n8n 现场搭：客户咨询 Gmail → AI 分类 → 起草回复 → 进 HubSpot CRM → Slack 通知销售</strong>。配 2 个真实澳洲 SME 案例：电商客服 6→2 人 + AI · 每月省 A$8K · 客户响应 8h→30min；B2B SaaS Onboarding 5 天→1 天 · Churn 下降 18%。ROI 拆解给你看 — 给 CFO 听得懂。</p>
+ </div>
+ <div>
+ <h5>你会看到</h5>
+ <ul>
+ <li>AI = 嵌进业务流程的『隐形员工』</li>
+ <li>ROI 怎么算（人力 + 响应时长 + 转化率）</li>
+ <li>2 个真实澳洲 SME 案例数字</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-    <!-- L06 -->
-    <div class="box">
-      <div class="box-h" style="background:#10b981">
-        <span>📚 L06 · Bootcamp 能带来什么</span>
-        <span><span class="badge">OVERVIEW</span> <span class="slot">21:00–21:15 · 15min</span></span>
-      </div>
-      <div class="lesson-body">
-        <div>
-          <h5>这 15 分钟看啥</h5>
-          <p>把 8 周课程一次性讲透：<strong>Phase 1 工具精通 + 角色定位（W1-2）→ Phase 2 企业场景实战 48 case（W3-4）→ Phase 3 AI Adoption 专属模块（W5-6 · 市场独家）→ Phase 4 毕业项目 + Demo Day（W7-8）</strong>。配套：39 个互动 Lab、22 节直播课、30+ 自学内容、AI Tutor 1:1 带练。毕业产出：一份完整 AI 采纳方案。</p>
-        </div>
-        <div>
-          <h5>你会看到</h5>
-          <ul>
-            <li>8 周 4 Phase 完整路径图</li>
-            <li>7 个市场独家 Adoption 专属模块</li>
-            <li>毕业方案（真实学员脱敏 PDF）</li>
-            <li>39 个 Hands-on Lab 抽样</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+ <!-- L06 -->
+ <div class="box">
+ <div class="box-h" style="background:#10b981">
+ <span>📚 L06 · Bootcamp 能带来什么</span>
+ <span><span class="badge">OVERVIEW</span> <span class="slot">21:00–21:15 · 15min</span></span>
+ </div>
+ <div class="lesson-body">
+ <div>
+ <h5>这 15 分钟看啥</h5>
+ <p>把 8 周课程一次性讲透：<strong>Phase 1 工具精通 + 角色定位（W1-2）→ Phase 2 企业场景实战 48 case（W3-4）→ Phase 3 AI Adoption 专属模块（W5-6 · 市场独家）→ Phase 4 毕业项目 + Demo Day（W7-8）</strong>。配套：39 个互动 Lab、22 节直播课、30+ 自学内容、AI Tutor 1:1 带练。毕业产出：一份完整 AI 采纳方案。</p>
+ </div>
+ <div>
+ <h5>你会看到</h5>
+ <ul>
+ <li>8 周 4 Phase 完整路径图</li>
+ <li>7 个市场独家 Adoption 专属模块</li>
+ <li>毕业方案（真实学员脱敏 PDF）</li>
+ <li>39 个 Hands-on Lab 抽样</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-    <!-- L07 -->
-    <div class="box">
-      <div class="box-h" style="background:#ec4899">
-        <span>👥 L07 · 谁适合 + 怎么报名</span>
-        <span><span class="badge">CTA</span> <span class="slot">21:15–21:25 · 10min</span></span>
-      </div>
-      <div class="lesson-body">
-        <div>
-          <h5>这 10 分钟讲啥</h5>
-          <p>4 类适合人群（求职 / 转职 / 升职 / SME 主）每类 1 个真实学员故事。<strong>也讲清楚谁不适合</strong>：想转 AI Engineer 写代码的、应届生、速成班心态 — 不卖关子直接说。然后讲报名细节：早鸟价 / 团购价 / 奖学金通道 / 下一步加助教 1v1 评估。</p>
-        </div>
-        <div>
-          <h5>你会拿到</h5>
-          <ul>
-            <li>4 类人群 × 真实学员故事</li>
-            <li>『谁不适合』诚实清单</li>
-            <li>报名 / 1v1 评估 / Cohort 排位流程</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+ <!-- L07 -->
+ <div class="box">
+ <div class="box-h" style="background:#ec4899">
+ <span>👥 L07 · 谁适合 + 怎么报名</span>
+ <span><span class="badge">CTA</span> <span class="slot">21:15–21:25 · 10min</span></span>
+ </div>
+ <div class="lesson-body">
+ <div>
+ <h5>这 10 分钟讲啥</h5>
+ <p>4 类适合人群（求职 / 转职 / 升职 / SME 主）每类 1 个真实学员故事。<strong>也讲清楚谁不适合</strong>：想转 AI Engineer 写代码的、应届生、速成班心态 — 不卖关子直接说。然后讲报名细节：早鸟价 / 团购价 / 奖学金通道 / 下一步加助教 1v1 评估。</p>
+ </div>
+ <div>
+ <h5>你会拿到</h5>
+ <ul>
+ <li>4 类人群 × 真实学员故事</li>
+ <li>『谁不适合』诚实清单</li>
+ <li>报名 / 1v1 评估 / Cohort 排位流程</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-    <!-- L08 -->
-    <div class="box">
-      <div class="box-h" style="background:#6366f1">
-        <span>💬 L08 · Q&A 学员现场提问</span>
-        <span><span class="badge">Q&A</span> <span class="slot">21:25–21:30 · 5min</span></span>
-      </div>
-      <div class="lesson-body">
-        <div>
-          <h5>这 5 分钟做啥</h5>
-          <p>Zoom Q&A 收 5-8 个高质量问题现场回答。剩余问题统一在 <strong>24 小时内邮件回复</strong>。散场福利：课程大纲 PDF + 录播链接 + 7 天 JR Academy 平台体验 + 工作坊学员专属优惠码。</p>
-        </div>
-        <div>
-          <h5>你会拿到</h5>
-          <ul>
-            <li>最关心问题的现场解答</li>
-            <li>录播 + PDF + 平台体验 + 优惠码</li>
-            <li>助教微信 → 明天起 1v1 评估</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+ <!-- L08 -->
+ <div class="box">
+ <div class="box-h" style="background:#6366f1">
+ <span>💬 L08 · Q&A 学员现场提问</span>
+ <span><span class="badge">Q&A</span> <span class="slot">21:25–21:30 · 5min</span></span>
+ </div>
+ <div class="lesson-body">
+ <div>
+ <h5>这 5 分钟做啥</h5>
+ <p>Zoom Q&A 收 5-8 个高质量问题现场回答。剩余问题统一在 <strong>24 小时内邮件回复</strong>。散场福利：课程大纲 PDF + 录播链接 + 7 天 JR Academy 平台体验 + 工作坊学员专属优惠码。</p>
+ </div>
+ <div>
+ <h5>你会拿到</h5>
+ <ul>
+ <li>最关心问题的现场解答</li>
+ <li>录播 + PDF + 平台体验 + 优惠码</li>
+ <li>助教微信 → 明天起 1v1 评估</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-  </section>
+ </section>
 
-  <!-- ============== BOOTCAMP PREVIEW ============== -->
-  <section class="bc-wrap">
-    <h2 class="sec-title">8 周 AI Adoption Specialist Bootcamp 路径预览</h2>
-    <p class="sec-sub">工作坊里 L06 会讲透 · 这里先给你看大图 · 详细大纲见 <a href="../ai-adoption-bootcamp/curriculum.html" style="color:#FF914D;text-decoration:underline">AI Adoption Bootcamp 完整大纲</a></p>
-    <div class="bc-card">
-      <h3>22 节直播 + 39 个 Hands-on Lab + 30+ 自学内容 + Demo Day</h3>
-      <p class="bc-sub">毕业输出：一份能直接放 portfolio / 给现公司提案 / 谈薪谈升职的 AI 采纳方案</p>
+ <!-- ============== BOOTCAMP PREVIEW ============== -->
+ <section class="bc-wrap">
+ <h2 class="sec-title">8 周 AI 工作流提效营 路径预览</h2>
+ <p class="sec-sub">工作坊里 L06 会讲透 · 这里先给你看大图 · 详细大纲见 <a href="../ai-adoption-bootcamp/curriculum.html" style="color:#FF914D;text-decoration:underline">AI Adoption Bootcamp 完整大纲</a></p>
+ <div class="bc-card">
+ <h3>22 节直播 + 39 个 Hands-on Lab + 30+ 自学内容 + Demo Day</h3>
+ <p class="bc-sub">毕业输出：一份能直接放 portfolio / 给现公司提案 / 谈薪谈升职的 AI 采纳方案</p>
 
-      <div class="bc-phases">
-        <div class="bc-phase">
-          <div class="pn">▎ PHASE 1 · W1-2</div>
-          <h5>工具精通 + 角色定位</h5>
-          <p>ChatGPT / Claude / Copilot / Gemini 深度实操 · 6 节直播 + AI 自学 · 看清自己背景该怎么切</p>
-        </div>
-        <div class="bc-phase">
-          <div class="pn">▎ PHASE 2 · W3-4</div>
-          <h5>企业场景 48 case</h5>
-          <p>销售 / 客服 / HR / 财务 / 运营 / 营销 6 大部门 × 48 个真实业务场景 hands-on</p>
-        </div>
-        <div class="bc-phase">
-          <div class="pn">▎ PHASE 3 · W5-6</div>
-          <h5>Adoption 专属（市场独家）</h5>
-          <p>7 个市场上几乎没人教的模块 — Governance / ROI / Change Mgmt 这才是 Specialist 的真本事</p>
-        </div>
-        <div class="bc-phase">
-          <div class="pn">▎ PHASE 4 · W7-8</div>
-          <h5>毕业项目 + Demo Day</h5>
-          <p>完整 AI 采纳方案 · 真实场景路演 · 行业评审 · 获 JR Academy AI Adoption Specialist 证书</p>
-        </div>
-      </div>
+ <div class="bc-phases">
+ <div class="bc-phase">
+ <div class="pn">▎ PHASE 1 · W1-2</div>
+ <h5>工具精通 + 角色定位</h5>
+ <p>ChatGPT / Claude / Copilot / Gemini 深度实操 · 6 节直播 + AI 自学 · 看清自己背景该怎么切</p>
+ </div>
+ <div class="bc-phase">
+ <div class="pn">▎ PHASE 2 · W3-4</div>
+ <h5>企业场景 48 case</h5>
+ <p>销售 / 客服 / HR / 财务 / 运营 / 营销 6 大部门 × 48 个真实业务场景 hands-on</p>
+ </div>
+ <div class="bc-phase">
+ <div class="pn">▎ PHASE 3 · W5-6</div>
+ <h5>Adoption 专属（市场独家）</h5>
+ <p>7 个市场上几乎没人教的模块 — Governance / ROI / Change Mgmt 这才是 Specialist 的真本事</p>
+ </div>
+ <div class="bc-phase">
+ <div class="pn">▎ PHASE 4 · W7-8</div>
+ <h5>毕业项目 + Demo Day</h5>
+ <p>完整 AI 采纳方案 · 真实场景路演 · 行业评审 · 获 JR Academy AI 工作流提效师 证书</p>
+ </div>
+ </div>
 
-      <div class="bc-mods">
-        <h4>🎓 Phase 3 · 7 个 Adoption 专属模块（市场独家）</h4>
-        <div class="bc-mods-grid">
-          <div class="bc-mod">AI Governance · 合规 + 隐私</div>
-          <div class="bc-mod">ROI Framework · 给 CFO 看</div>
-          <div class="bc-mod">Change Management · 处理抵触</div>
-          <div class="bc-mod">Tool Selection · 工具选型</div>
-          <div class="bc-mod">Pilot Design · 试点设计</div>
-          <div class="bc-mod">Training Playbook · 培训手册</div>
-          <div class="bc-mod">Scale-up Strategy · 规模化</div>
-        </div>
-      </div>
-    </div>
-  </section>
+ <div class="bc-mods">
+ <h4>🎓 Phase 3 · 7 个 Adoption 专属模块（市场独家）</h4>
+ <div class="bc-mods-grid">
+ <div class="bc-mod">AI Governance · 合规 + 隐私</div>
+ <div class="bc-mod">ROI Framework · 给 CFO 看</div>
+ <div class="bc-mod">Change Management · 处理抵触</div>
+ <div class="bc-mod">Tool Selection · 工具选型</div>
+ <div class="bc-mod">Pilot Design · 试点设计</div>
+ <div class="bc-mod">Training Playbook · 培训手册</div>
+ <div class="bc-mod">Scale-up Strategy · 规模化</div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- ============== PREP ============== -->
-  <section class="prep-wrap">
-    <h2 class="sec-title">工作坊准备清单</h2>
-    <p class="sec-sub">线上 Zoom · 2 小时 · 完全免费 · 准备越扎实越能拿走有用判断 · 不准备直接来也 OK</p>
-    <div class="prep-list">
-      <div class="prep-row">
-        <div class="num">1</div>
-        <span class="req required">必备</span>
-        <div class="body">
-          <h4>报名 + 拿 Zoom 链接</h4>
-          <p>报名表单提交后 24 小时内收到邮件 — 含 Zoom 链接 + 日历邀请 + 工作坊配套 PDF 预习材料</p>
-        </div>
-      </div>
-      <div class="prep-row">
-        <div class="num">2</div>
-        <span class="req required">必备</span>
-        <div class="body">
-          <h4>测试 Zoom + 网络</h4>
-          <p>提前 10 分钟进 Zoom 测试音视频 · 国内同学需自备稳定网络工具 · <strong>强烈建议笔电 / 平板</strong>（手机屏幕看 demo 太小）</p>
-        </div>
-      </div>
-      <div class="prep-row">
-        <div class="num">3</div>
-        <span class="req optional">可选</span>
-        <div class="body">
-          <h4>注册 ChatGPT + Claude 免费账号</h4>
-          <p>如果你想 demo 时跟着试一下 · 提前去 <a href="https://chatgpt.com" target="_blank">chatgpt.com</a> 和 <a href="https://claude.com" target="_blank">claude.com</a> 注册免费账号（不付费也能看基础能力）</p>
-        </div>
-      </div>
-      <div class="prep-row">
-        <div class="num">4</div>
-        <span class="req recommended">推荐</span>
-        <div class="body">
-          <h4>想一个你最痛的工作场景</h4>
-          <p>带着具体场景听 demo 会更有感 · 比如『我每周 4 小时整理客户邮件 / 我每月 2 天对账 / 我每次写客户提案查 3 个 PDF』· Q&A 环节可以直接提问『我这个场景能用 demo 里的方法做吗？』</p>
-        </div>
-      </div>
-      <div class="prep-row">
-        <div class="num">5</div>
-        <span class="req optional">可选</span>
-        <div class="body">
-          <h4>下载工作坊配套 PDF 预习</h4>
-          <p>报名邮件里附 PDF · 含澳洲 AI Adoption 现状数据卡 + 角色画像表 + 8 周 Bootcamp 路径图 · 提前 15 分钟翻一遍工作坊跟得更快</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- ============== PREP ============== -->
+ <section class="prep-wrap">
+ <h2 class="sec-title">工作坊准备清单</h2>
+ <p class="sec-sub">线上 Zoom · 2 小时 · 完全免费 · 准备越扎实越能拿走有用判断 · 不准备直接来也 OK</p>
+ <div class="prep-list">
+ <div class="prep-row">
+ <div class="num">1</div>
+ <span class="req required">必备</span>
+ <div class="body">
+ <h4>报名 + 拿 Zoom 链接</h4>
+ <p>报名表单提交后 24 小时内收到邮件 — 含 Zoom 链接 + 日历邀请 + 工作坊配套 PDF 预习材料</p>
+ </div>
+ </div>
+ <div class="prep-row">
+ <div class="num">2</div>
+ <span class="req required">必备</span>
+ <div class="body">
+ <h4>测试 Zoom + 网络</h4>
+ <p>提前 10 分钟进 Zoom 测试音视频 · 国内同学需自备稳定网络工具 · <strong>强烈建议笔电 / 平板</strong>（手机屏幕看 demo 太小）</p>
+ </div>
+ </div>
+ <div class="prep-row">
+ <div class="num">3</div>
+ <span class="req optional">可选</span>
+ <div class="body">
+ <h4>注册 ChatGPT + Claude 免费账号</h4>
+ <p>如果你想 demo 时跟着试一下 · 提前去 <a href="https://chatgpt.com" target="_blank">chatgpt.com</a> 和 <a href="https://claude.com" target="_blank">claude.com</a> 注册免费账号（不付费也能看基础能力）</p>
+ </div>
+ </div>
+ <div class="prep-row">
+ <div class="num">4</div>
+ <span class="req recommended">推荐</span>
+ <div class="body">
+ <h4>想一个你最痛的工作场景</h4>
+ <p>带着具体场景听 demo 会更有感 · 比如『我每周 4 小时整理客户邮件 / 我每月 2 天对账 / 我每次写客户提案查 3 个 PDF』· Q&A 环节可以直接提问『我这个场景能用 demo 里的方法做吗？』</p>
+ </div>
+ </div>
+ <div class="prep-row">
+ <div class="num">5</div>
+ <span class="req optional">可选</span>
+ <div class="body">
+ <h4>下载工作坊配套 PDF 预习</h4>
+ <p>报名邮件里附 PDF · 含澳洲 AI Adoption 现状数据卡 + 角色画像表 + 8 周 Bootcamp 路径图 · 提前 15 分钟翻一遍工作坊跟得更快</p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- ============== FAQ ============== -->
-  <section class="faq-wrap">
-    <h2 class="sec-title">常见问题</h2>
-    <p class="sec-sub">还有问题给我们邮箱：<a href="mailto:hello@jiangren.com.au" style="color:#FF914D">hello@jiangren.com.au</a></p>
+ <!-- ============== FAQ ============== -->
+ <section class="faq-wrap">
+ <h2 class="sec-title">常见问题</h2>
+ <p class="sec-sub">还有问题给我们邮箱：<a href="mailto:hello@jiangren.com.au" style="color:#FF914D">hello@jiangren.com.au</a></p>
 
-    <details class="faq-item">
-      <summary>工作坊真的免费吗？有没有套路？</summary>
-      <p>真免费。报名 = 进 Zoom + 拿录播 + 拿课程大纲，0 元。我们的转化漏斗是：免费工作坊 → 加助教 → 1v1 评估 → 进 8 周 Bootcamp（付费）。<strong>工作坊不卖任何东西</strong> — 你今晚听完，对 Bootcamp 不感兴趣，散场拿福利走人完全没问题。我们坚信好内容自己会说话 — 100 个人听完只有 10 个适合上 Bootcamp，剩下 90 个我们也希望他们少走弯路。</p>
-    </details>
+ <details class="faq-item">
+ <summary>工作坊真的免费吗？有没有套路？</summary>
+ <p>真免费。报名 = 进 Zoom + 拿录播 + 拿课程大纲，0 元。我们的转化漏斗是：免费工作坊 → 加助教 → 1v1 评估 → 进 8 周 Bootcamp（付费）。<strong>工作坊不卖任何东西</strong> — 你今晚听完，对 Bootcamp 不感兴趣，散场拿福利走人完全没问题。我们坚信好内容自己会说话 — 100 个人听完只有 10 个适合上 Bootcamp，剩下 90 个我们也希望他们少走弯路。</p>
+ </details>
 
-    <details class="faq-item">
-      <summary>我完全不懂 AI / 没用过 ChatGPT，能跟上工作坊吗？</summary>
-      <p>能。工作坊面向『听过 AI 但没系统用过』的人。前 40 分钟讲市场趋势 + 角色画像，全程白话；中间 50 分钟你只是『看老师 demo』不需要自己跑；后 30 分钟讲 Bootcamp 路径 + 报名。整个 2 小时<strong>你不需要打开任何工具</strong>，带耳朵和笔记本即可。</p>
-    </details>
+ <details class="faq-item">
+ <summary>我完全不懂 AI / 没用过 ChatGPT，能跟上工作坊吗？</summary>
+ <p>能。工作坊面向『听过 AI 但没系统用过』的人。前 40 分钟讲市场趋势 + 角色画像，全程白话；中间 50 分钟你只是『看老师 demo』不需要自己跑；后 30 分钟讲 Bootcamp 路径 + 报名。整个 2 小时<strong>你不需要打开任何工具</strong>，带耳朵和笔记本即可。</p>
+ </details>
 
-    <details class="faq-item">
-      <summary>我现在做 BA / Ops / Consulting，能转 AI Adoption Specialist 吗？</summary>
-      <p>这正是这个岗位最欢迎的背景。L02 会专门讲『5 种最容易切入的背景』— BA / Consulting / Product / Operations / Data，每种配真实学员故事。简单说：你已经有的『<strong>理解业务流程 + 跟人打交道 + 推动事情发生</strong>』的能力是 AI Adoption Specialist 的 70% 核心能力，剩下 30% 是 AI 工具熟练度 — 这正是 Bootcamp 帮你补的。</p>
-    </details>
+ <details class="faq-item">
+ <summary>我现在做 BA / Ops / Consulting，这门课能帮我什么？</summary>
+ <p>这正是这个岗位最欢迎的背景。L02 会专门讲『5 种最容易切入的背景』— BA / Consulting / Product / Operations / Data，每种配真实学员故事。简单说：你已经有的『<strong>理解业务流程 + 跟人打交道 + 推动事情发生</strong>』的能力是 AI 工作流提效师 的 70% 核心能力，剩下 30% 是 AI 工具熟练度 — 这正是 Bootcamp 帮你补的。</p>
+ </details>
 
-    <details class="faq-item">
-      <summary>AI Adoption Specialist 跟 AI Engineer / AI PM 有啥区别？</summary>
-      <p>L02 会有一张对比表讲清楚，简单说：AI Engineer 写代码搭模型 / AI PM 定义 AI 产品需求 / Data Analyst 跑数据 — 这三个都是『技术或半技术』岗。AI Adoption Specialist 是『推动企业 AI 落地的人』 — <strong>不写代码、不训模型</strong>，核心能力是识别业务 AI 机会、选工具、跑试点、培训团队、管理变革、度量 ROI。这是偏 business transformation 的岗位，不是『包装一下转 AI 程序员』。</p>
-    </details>
+ <details class="faq-item">
+ <summary>在岗 AI 工作流提效 跟 转职 AI Engineer / AI PM 是什么关系？</summary>
+ <p>L02 会有一张对比表讲清楚，简单说：AI Engineer 写代码搭模型 / AI PM 定义 AI 产品需求 / Data Analyst 跑数据 — 这三个都是『技术或半技术』岗。AI 工作流提效师 是『推动企业 AI 落地的人』 — <strong>不写代码、不训模型</strong>，核心能力是识别业务 AI 机会、选工具、跑试点、培训团队、管理变革、度量 ROI。这是偏 business transformation 的岗位，不是『包装一下转 AI 程序员』。</p>
+ </details>
 
-    <details class="faq-item">
-      <summary>Demo 部分我能不能跟着做？需要装什么吗？</summary>
-      <p>不需要。Demo 都是老师演示（Zoom 屏幕共享），你看就行。如果你想跟着试，提前注册 ChatGPT 账号（免费档够看 Demo 1）+ Anthropic Claude 账号（免费档够看 Demo 2）。Demo 3 的 n8n 用现成账号演示，你不用装。<strong>8 周 Bootcamp 才会让你自己装环境跑全套 39 个 Lab。</strong></p>
-    </details>
+ <details class="faq-item">
+ <summary>Demo 部分我能不能跟着做？需要装什么吗？</summary>
+ <p>不需要。Demo 都是老师演示（Zoom 屏幕共享），你看就行。如果你想跟着试，提前注册 ChatGPT 账号（免费档够看 Demo 1）+ Anthropic Claude 账号（免费档够看 Demo 2）。Demo 3 的 n8n 用现成账号演示，你不用装。<strong>8 周 Bootcamp 才会让你自己装环境跑全套 39 个 Lab。</strong></p>
+ </details>
 
-    <details class="faq-item">
-      <summary>Bootcamp 多少钱？有早鸟 / 团购吗？</summary>
-      <p>L07 会讲细节，简单说：标准价 / 早鸟价 / 团购价（3 人以上）/ 奖学金通道都有。<strong>工作坊学员有专属优惠码（散场发）</strong>。具体价格会根据下一期 cohort 时间调整，详细价目跟助教 1v1 评估时聊 — 不同背景适合不同入学方式（比如有些学员有 NDIS / Smart and Skilled 等政府补贴可用）。</p>
-    </details>
+ <details class="faq-item">
+ <summary>Bootcamp 多少钱？有早鸟 / 团购吗？</summary>
+ <p>L07 会讲细节，简单说：标准价 / 早鸟价 / 团购价（3 人以上）/ 奖学金通道都有。<strong>工作坊学员有专属优惠码（散场发）</strong>。具体价格会根据下一期 cohort 时间调整，详细价目跟助教 1v1 评估时聊 — 不同背景适合不同入学方式（比如有些学员有 NDIS / Smart and Skilled 等政府补贴可用）。</p>
+ </details>
 
-    <details class="faq-item">
-      <summary>我在国内 / 不在澳洲，这个 Bootcamp 适合我吗？</summary>
-      <p>适合。课程里『澳洲市场数据 + 澳洲企业案例』是亮点之一，但 AI Adoption 这个能力本身是全球通用的。国内学员里有这几类：① 想未来跳到澳洲 / 外企的 ② 在国内做 AI 转型咨询想加上『国际案例视角』的 ③ 一人公司 / SME 主想抄澳洲企业 AI 落地经验的。直播课考虑了时区（布里斯班晚间 = 北京下午），<strong>录播 24 小时内放出，含中文字幕</strong>。</p>
-    </details>
+ <details class="faq-item">
+ <summary>我在国内 / 不在澳洲，这个 Bootcamp 适合我吗？</summary>
+ <p>适合。课程里『澳洲市场数据 + 澳洲企业案例』是亮点之一，但 AI Adoption 这个能力本身是全球通用的。国内学员里有这几类：① 想未来跳到澳洲 / 外企的 ② 在国内做 AI 转型咨询想加上『国际案例视角』的 ③ 一人公司 / SME 主想抄澳洲企业 AI 落地经验的。直播课考虑了时区（布里斯班晚间 = 北京下午），<strong>录播 24 小时内放出，含中文字幕</strong>。</p>
+ </details>
 
-    <details class="faq-item">
-      <summary>工作坊结束后我能拿到什么？</summary>
-      <p>3 件：① <strong>录播链接</strong>（24 小时内邮件 · 中文字幕）② <strong>工作坊配套 PDF</strong>（市场趋势数据卡 + 角色画像表 + Bootcamp 8 周路径图 + 7 个 Adoption 专属模块清单）③ <strong>7 天 JR Academy 平台体验</strong>（Prompt Lab + Vibe Coding Hub + 学习路径，价值 A$49）。如果加助教做 1v1 评估，还会拿到一份个性化的『AI Adoption 入门 30 天行动清单』。</p>
-    </details>
+ <details class="faq-item">
+ <summary>工作坊结束后我能拿到什么？</summary>
+ <p>3 件：① <strong>录播链接</strong>（24 小时内邮件 · 中文字幕）② <strong>工作坊配套 PDF</strong>（市场趋势数据卡 + 角色画像表 + Bootcamp 8 周路径图 + 7 个 Adoption 专属模块清单）③ <strong>7 天 JR Academy 平台体验</strong>（Prompt Lab + Vibe Coding Hub + 学习路径，价值 A$49）。如果加助教做 1v1 评估，还会拿到一份个性化的『AI Adoption 入门 30 天行动清单』。</p>
+ </details>
 
-    <details class="faq-item">
-      <summary>我是公司 HR / L&D 想给团队报名工作坊和 Bootcamp，可以吗？</summary>
-      <p>完全欢迎。<strong>工作坊免费团报无人数限制</strong> — 你可以拉公司 10 人一起进 Zoom（建议提前告诉助教方便统计）。Bootcamp 有专门的『企业版』方案：5 人以上团购价 / 上门企业培训定制版 / Train-the-Trainer 内训师培养方案（A$2999/天起）。直接邮件 <a href="mailto:hello@jiangren.com.au" style="color:#FF914D">hello@jiangren.com.au</a> 或加助教微信沟通。</p>
-    </details>
+ <details class="faq-item">
+ <summary>我是公司 HR / L&D 想给团队报名工作坊和 Bootcamp，可以吗？</summary>
+ <p>完全欢迎。<strong>工作坊免费团报无人数限制</strong> — 你可以拉公司 10 人一起进 Zoom（建议提前告诉助教方便统计）。Bootcamp 有专门的『企业版』方案：5 人以上团购价 / 上门企业培训定制版 / Train-the-Trainer 内训师培养方案（A$2999/天起）。直接邮件 <a href="mailto:hello@jiangren.com.au" style="color:#FF914D">hello@jiangren.com.au</a> 或加助教微信沟通。</p>
+ </details>
 
-    <details class="faq-item">
-      <summary>我能不能直接报 Bootcamp 不上工作坊？</summary>
-      <p>可以，但不推荐。工作坊免费 2 小时，能帮你判断这个岗位适不适合自己 / 你现在的背景能不能切 / 你期待的产出跟 Bootcamp 实际给的对不对得上 — <strong>少花 90% 的时间避免一次错误付费决定</strong>。Bootcamp 8 周时间成本 + A$1000+ 学费，不是冲动消费品。先来工作坊看看再决定，对你对我们都好。</p>
-    </details>
-  </section>
+ <details class="faq-item">
+ <summary>我能不能直接报 Bootcamp 不上工作坊？</summary>
+ <p>可以，但不推荐。工作坊免费 2 小时，能帮你判断这个岗位适不适合自己 / 你现在的背景能不能切 / 你期待的产出跟 Bootcamp 实际给的对不对得上 — <strong>少花 90% 的时间避免一次错误付费决定</strong>。Bootcamp 8 周时间成本 + A$1000+ 学费，不是冲动消费品。先来工作坊看看再决定，对你对我们都好。</p>
+ </details>
+ </section>
 
-  <!-- ============== CTA FOOTER ============== -->
-  <section id="cta" class="footer-cta">
-    <h2>2 小时后你脑子里会有 3 件事<br>① 这岗位适不适合我 ② 我能不能切 ③ 下一步怎么走</h2>
-    <p class="sub">5 月 28 日 周四晚 7:30-9:30pm 布里斯班时间（北京 5:30-7:30pm）<br>线上 Zoom 直播 + 24h 内放录播 · 完全免费 · 报名即拿配套 PDF</p>
-    <div class="price">
-      <span class="now">FREE</span>
-      <span class="deadline">📺 报名 = 拿录播 + PDF</span>
-    </div>
-    <div class="cta-row">
-      <a class="cta primary" href="mailto:hello@jiangren.com.au?subject=报名 AI Adoption Specialist 入门工作坊 · 5月28日 Zoom">免费报名 →</a>
-      <a class="cta secondary" href="../ai-adoption-bootcamp/curriculum.html">先看 8 周 Bootcamp 大纲</a>
-    </div>
-  </section>
+ <!-- ============== CTA FOOTER ============== -->
+ <section id="cta" class="footer-cta">
+ <h2>2 小时后你脑子里会有 3 件事<br>① 这岗位适不适合我 ② 我能不能切 ③ 下一步怎么走</h2>
+ <p class="sub">5 月 28 日 周四晚 7:30-9:30pm 布里斯班时间（北京 5:30-7:30pm）<br>线上 Zoom 直播 + 24h 内放录播 · 完全免费 · 报名即拿配套 PDF</p>
+ <div class="price">
+ <span class="now">FREE</span>
+ <span class="deadline">📺 报名 = 拿录播 + PDF</span>
+ </div>
+ <div class="cta-row">
+ <a class="cta primary" href="mailto:hello@jiangren.com.au?subject=报名 AI 工作流提效营 · 公开课 · 5月28日 Zoom">免费报名 →</a>
+ <a class="cta secondary" href="../ai-adoption-bootcamp/curriculum.html">先看 8 周 Bootcamp 大纲</a>
+ </div>
+ </section>
 
-  <footer class="footer-foot">
-    JR Academy · 2026 · <a href="mailto:hello@jiangren.com.au">hello@jiangren.com.au</a> · <a href="https://jiangren.com.au">jiangren.com.au</a>
-  </footer>
+ <footer class="footer-foot">
+ JR Academy · 2026 · <a href="mailto:hello@jiangren.com.au">hello@jiangren.com.au</a> · <a href="https://jiangren.com.au">jiangren.com.au</a>
+ </footer>
 
 </body>
 </html>

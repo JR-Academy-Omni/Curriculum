@@ -6,19 +6,19 @@ const CATEGORIES = [
 		key: 'tech',
 		label: '技术岗',
 		labelEn: 'Technical',
-		count: 13,
+		count: 15,
 		bg: colors.techBg,
 		dot: colors.techPurple,
-		examples: ['AI Engineer', 'FDE', 'AI Agent Developer', 'AI Adoption Specialist', '+9 个'],
+		examples: ['AI Engineer', 'FDE', 'AI Agent Developer', 'Vibe Coder', 'Robotics AI', 'Synthetic Data Eng', '+9 个'],
 	},
 	{
 		key: 'gov',
 		label: '治理管理岗',
 		labelEn: 'Governance',
-		count: 5,
+		count: 6,
 		bg: colors.govBg,
 		dot: colors.govOrange,
-		examples: ['CAIO', 'AI PM', 'AI Ethics Officer', '+2 个'],
+		examples: ['AI Adoption Specialist', 'AI PM', 'AI Ethics Officer', '+3 个'],
 	},
 	{
 		key: 'industry',
@@ -27,7 +27,7 @@ const CATEGORIES = [
 		count: 5,
 		bg: colors.industryBg,
 		dot: colors.industryCyan,
-		examples: ['GEO Specialist', 'Healthcare AI', 'AI Finance Compliance', '+2 个'],
+		examples: ['GEO Specialist', 'AI Finance Compliance', 'AI Sales Engineer', '+2 个'],
 	},
 ];
 
@@ -41,9 +41,9 @@ export default function S04_CategoryMap() {
 					transition={{ duration: 0.4 }}
 					style={{ marginBottom: 32, textAlign: 'center', width: '100%' }}
 				>
-					<Title size="64px">23 个新岗位 · <span style={{ color: colors.red }}>3 大分类</span></Title>
+					<Title size="64px">26 个新岗位 · <span style={{ color: colors.red }}>3 大分类</span></Title>
 					<p style={{ fontSize: 22, color: '#555', marginTop: 12 }}>
-						60 分钟内我们会过完这 23 个，挑 10 个深讲，最后再补 4 个中文圈还没系统盘点过的。
+						60 分钟内我们会过完这 26 个新岗位 + 5 个正在消失的岗位 + 一个 AI Adoption 实战案例。
 					</p>
 				</motion.div>
 				<motion.div
@@ -114,7 +114,7 @@ export default function S04_CategoryMap() {
 						display: 'inline-block', padding: '12px 24px', background: colors.dark, color: colors.white,
 						fontSize: 18, fontWeight: 700,
 					}}>
-						+ 4 个 <span style={{ color: colors.yellow }}>野生新工种</span> · 2025-2026 才显著爆发
+						先聊一聊 <span style={{ color: colors.yellow }}>正在消失的岗位</span> · 才看得懂出现的
 					</span>
 				</motion.div>
 			</Inner>

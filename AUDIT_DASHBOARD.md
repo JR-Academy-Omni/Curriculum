@@ -31,6 +31,8 @@
 | **OpenClaw 工作坊** / OpenClaw 4h / OpenClaw 沉浸式 | `openclaw-workshop` | OpenClaw 4 小时沉浸式实操工作坊 |
 | **DevOps** / TechScrum / TechScrum DevOps | `techscrum-devops` | TechScrum DevOps 项目实训营 |
 | AI 漫画 / Comic | `ai-comic-workshop` | 🟠 stub |
+| **Claude Code 3h** / Code 工程师班 / Code Zoom | `claude-code-workshop` | Claude Code 大师课 · 工程师友好版 (3h Zoom) |
+| **Claude Code 1day** / Code 非技术版 / Code Fullday | `claude-code-workshop-fullday` | Claude Code 1day 大师课 · 非技术友好版 (墨/悉/布里斯班线下) |
 | Claude / Cowork | `claude-cowork-workshop` | 🟠 stub |
 | Claude SME / Cowork SME | `claude-cowork-sme-workshop` | 🟠 stub |
 | 全渠道营销 / Omnichannel | `omnichannel-marketing-workshop` | 🟠 stub |
@@ -51,6 +53,12 @@
    - `openclaw-bootcamp` = 4 周完整 bootcamp（6 phase / 48 lesson）
    - `openclaw-workshop` = 4 小时单次工作坊（7 phase / 36 lesson）
    - 默认指哪个 → 看用户语境提"4 周" / "工作坊" / "4 小时"
+
+4. **"Claude Code" 两班** — 同系列两不同受众
+   - `claude-code-workshop` = 3h Zoom 工程师友好版（1 phase / 5 lesson，A$99 早鸟，假设会 git + 命令行）
+   - `claude-code-workshop-fullday` = 1day 线下非技术友好版（1 phase / 6 lesson，A$299 早鸟，零基础 + 1:5 助教救场）
+   - 用户说"Claude Code 工作坊" 默认看语境：提"工程师 / 3h / Zoom" → 前者；提"非技术 / 1day / 线下 / 小老板" → 后者
+   - 两课不替代：工程师走 3h，运营/销售/律师走 1day
 
 **Claude 处理规则**：用户说的简称在上表能找到唯一映射 → 直接执行；找不到唯一 → 列出候选 slug 让用户选，**禁止猜**（呼应 CLAUDE.md "禁止瞎编"）。
 
@@ -74,6 +82,8 @@
 | [it-career-support](it-career-support/) — IT Career Coaching | 14p / 479l | — | ⚪ 未检 | 规模最大 | — |
 | [openclaw-bootcamp](openclaw-bootcamp/) — OpenClaw 4 周 | 6p / 48l | — | ⚪ 未检 | — | — |
 | [openclaw-workshop](openclaw-workshop/) — OpenClaw 4 小时工作坊 | 7p / 36l | — | ⚪ 未检 | — | — |
+| [claude-code-workshop](claude-code-workshop/) — Claude Code 3h Zoom **工程师**版 | 1p / 5l | 2026-05-25 | 🟢 fresh | 首次同步上 prod；trainingId 6a13a57d… | [log](claude-code-workshop/AUDIT_LOG.md) |
+| [claude-code-workshop-fullday](claude-code-workshop-fullday/) — Claude Code 1day **非技术**版 | 1p / 6l | 2026-05-25 | 🟢 fresh | 首次同步上 prod；trainingId 6a13c292…；墨/悉/布 1:5 助教 | [log](claude-code-workshop-fullday/AUDIT_LOG.md) |
 | [techscrum-devops](techscrum-devops/) — TechScrum DevOps | 1p / 7l | — | ⚪ 未检 | — | — |
 | [web-code-bootcamp-or-learn-to-code-1](web-code-bootcamp-or-learn-to-code-1/) — AI Engineer **全栈项目班** | 3p / 485l | — | ⚪ 未检 | ⚠️ 默认"全栈班" = 这个 | — |
 

@@ -45,6 +45,14 @@ jobs:
           bun install
           bun run build
 
+      # Build ai-engineer-resume-interview (3h 内部学员讲座 · 42 张 slide · 简历 + 面试)
+      # 复用 ai-engineer-bootcamp 的 SlideEngine + theme，含 jd-company-skill-extractor.zip 学员下载
+      - name: Build ai-engineer-resume-interview
+        working-directory: ai-engineer-resume-interview
+        run: |
+          bun install
+          bun run build
+
       # Build web-code-bootcamp-or-learn-to-code-1 (第 30 期 Full-Stack + AI · slide deck + mp-article + xhs-posters)
       # URL slug with -1 suffix to match production: /program-course/web-code-bootcamp-or-learn-to-code-1
       - name: Build web-code-bootcamp-or-learn-to-code-1
@@ -157,10 +165,16 @@ jobs:
             cp -r openclaw-fullday-workshop/public/* _site/openclaw-fullday-workshop/
           fi
 
-          # claude-code-workshop: static HTML only (3h online + offline fullday small-class, Claude Code 实战)
+          # claude-code-workshop: static HTML only (3h Zoom 工程师友好版, Claude Code CLI 实战)
           if [ -d claude-code-workshop/public ]; then
             mkdir -p _site/claude-code-workshop
             cp -r claude-code-workshop/public/* _site/claude-code-workshop/
+          fi
+
+          # claude-code-workshop-fullday: static HTML only (1day 线下非技术友好版, Claude Code CLI)
+          if [ -d claude-code-workshop-fullday/public ]; then
+            mkdir -p _site/claude-code-workshop-fullday
+            cp -r claude-code-workshop-fullday/public/* _site/claude-code-workshop-fullday/
           fi
 
           # ai-comic-workshop: static HTML only (2-hour online Zoom workshop, 张彦伟 · AI 漫剧)
@@ -205,6 +219,12 @@ jobs:
             cp -r ai-adoption-workshop/public/* _site/ai-adoption-workshop/
           fi
 
+          # agile-ai-workshop: static HTML only (3-hour online Workshop · 企业决策层版 · Mini-Bootcamp 第一节 · 引出 Human Agility)
+          if [ -d agile-ai-workshop/public ]; then
+            mkdir -p _site/agile-ai-workshop
+            cp -r agile-ai-workshop/public/* _site/agile-ai-workshop/
+          fi
+
           # omnichannel-marketing-workshop: static HTML only (1-day in-person workshop, KL · AI 营销全渠道)
           if [ -d omnichannel-marketing-workshop/public ]; then
             mkdir -p _site/omnichannel-marketing-workshop
@@ -223,10 +243,28 @@ jobs:
             cp -r gp-program-workshop/public/* _site/gp-program-workshop/
           fi
 
+          # china-campus-workshop: static HTML only (3-hour Zoom workshop, 留学生回国校招冲刺 · Steven Yu 主讲 · 49 元)
+          if [ -d china-campus-workshop/public ]; then
+            mkdir -p _site/china-campus-workshop
+            cp -r china-campus-workshop/public/* _site/china-campus-workshop/
+          fi
+
+          # china-career: 留学生回国就业产品线 Hub (11 SKU 一站式入口 · PRD_CHINA_CAREER_HUB_2026.md)
+          if [ -d china-career ]; then
+            mkdir -p _site/china-career
+            cp -r china-career/* _site/china-career/
+          fi
+
           # ai-accounting-pro: static HTML only (12-hour 主课 · 6 周 cohort · 10-12 人小班 · $1,799-$2,299 AUD · 引流课的转化主课)
           if [ -d ai-accounting-pro/public ]; then
             mkdir -p _site/ai-accounting-pro
             cp -r ai-accounting-pro/public/* _site/ai-accounting-pro/
+          fi
+
+          # techscrum-devops: static HTML only (DevOps 小班课 · 三阶定价 · $990 / $3,550 / $5,350 AUD · 8 次直播陪跑 Dispatch AI 项目 + AWS K8s 特训营)
+          if [ -d techscrum-devops/public ]; then
+            mkdir -p _site/techscrum-devops
+            cp -r techscrum-devops/public/* _site/techscrum-devops/
           fi
 
           # openclaw-bootcamp: static HTML only (4-week deep version of openclaw-workshop)
@@ -261,6 +299,20 @@ jobs:
             cp -r lessons/ai-new-jobs-talk/dist/* _site/lessons/ai-new-jobs-talk/
           fi
 
+          # lessons/ai-new-jobs-talk/xhs: 小红书改编系列（6 主稿 + case-T01 演示 + 116 选题池）
+          # 纯静态 HTML，跳过 Vite，直接 copy
+          if [ -d lessons/ai-new-jobs-talk/xhs ]; then
+            mkdir -p _site/lessons/ai-new-jobs-talk/xhs
+            cp -r lessons/ai-new-jobs-talk/xhs/* _site/lessons/ai-new-jobs-talk/xhs/
+          fi
+
+          # ai-engineer-resume-interview · 3h 内部学员讲座（slide deck + public/ zip 下载）
+          mkdir -p _site/ai-engineer-resume-interview
+          cp -r ai-engineer-resume-interview/dist/* _site/ai-engineer-resume-interview/
+          if [ -d ai-engineer-resume-interview/public ]; then
+            cp -r ai-engineer-resume-interview/public/* _site/ai-engineer-resume-interview/
+          fi
+
           mkdir -p _site/ai-engineer-bootcamp
           cp -r ai-engineer-bootcamp/dist/* _site/ai-engineer-bootcamp/
           cp ai-engineer-bootcamp/public/curriculum.html _site/ai-engineer-bootcamp/
@@ -293,6 +345,16 @@ jobs:
           # Top-level posters aggregate page (internal marketing asset index)
           [ -f posters.html ] && cp posters.html _site/posters.html || true
           [ -f quest-posters.html ] && cp quest-posters.html _site/quest-posters.html || true
+
+          # Marketing 文档总览 dashboard — 渲染各课 PERSONAS / FUNNEL / PROMOTION / AUDIT markdown
+          [ -f marketing-dashboard.html ] && cp marketing-dashboard.html _site/marketing-dashboard.html || true
+          # 同时复制每门课的 marketing markdown 到 _site（dashboard fetch 时要能读到）
+          for slug in $(ls -d */ 2>/dev/null | grep -v '^_' | sed 's|/$||'); do
+            mkdir -p "_site/$slug"
+            for f in DESIGN.md PERSONAS.md PERSONAS-INIT-REPORT.md FUNNEL_PLAN.md PROMOTION_PLAN.md AUDIT_LOG.md; do
+              [ -f "$slug/$f" ] && cp "$slug/$f" "_site/$slug/$f" || true
+            done
+          done
 
           # Course theme colors cheatsheet (marketing/product copy-paste prompts for AI image gen)
           [ -f theme-colors.html ] && cp theme-colors.html _site/theme-colors.html || true
@@ -602,6 +664,22 @@ jobs:
               </div>
 
               <div class="section">
+                <div class="section-title">Claude Code 大师课 · 工程师 3h Zoom + 非技术 1day 线下 · 同系列两课</div>
+                <div class="cards">
+                  <a href="./claude-code-workshop/curriculum.html">
+                    <span class="tag" style="background:#FFDE59;color:#000">CURRICULUM · 3h 工程师版</span>
+                    <div class="title">Claude Code 3h Zoom · 工程师友好版</div>
+                    <div class="desc">3h Zoom 直播 · A$99 早鸟 / A$199 全价 · 5 节连讲 · 需求清单 + 5 核心命令 + 3 个 AI 助手并行 + CLAUDE.md 项目规则书 + 完整 PR 流程 · 走时带走 6 件能 commit 到自己 repo 的模板 · 要求会基础 git + 命令行</div>
+                  </a>
+                  <a href="./claude-code-workshop-fullday/curriculum.html">
+                    <span class="tag" style="background:#0f1a2e;color:#FFDE59">CURRICULUM · 1day 非技术版</span>
+                    <div class="title">Claude Code 1day · 非技术友好版</div>
+                    <div class="desc">墨/悉/布里斯班 线下小班 8-12 人 · A$299 早鸟 / A$399 全价 · 10:00-17:00 含午餐 · 1:5 助教救场 · 上午装机 + 终端入门，下午用你真实素材跑 3 个办公自动化（批量改文件 / Excel + 邮件 + PPT / 爬资料写报告）· 销售 / 行政 / 律师 / 会计 / HR / 小老板 / 内容创作者 / 转行学员 — 完全不需要会代码</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
                 <div class="section-title">AI 会计漏斗 · 4h 引流课 + 12h Pro 主课</div>
                 <div class="cards">
                   <a href="./ai-accounting-workshop/curriculum.html">
@@ -624,6 +702,22 @@ jobs:
                     <span class="tag" style="background:#38B6FF">CURRICULUM</span>
                     <div class="title">澳洲校招 GP Program 申请 3 小时 Workshop</div>
                     <div class="desc">3h Zoom 直播 · 7 个 Block · 把整条 Graduate Program 招聘漏斗一节一节拆开讲 — 找岗位 / 简历 ATS / OA / STAR 面试 / Networking / AC 终面 · 每节带走一个能直接用的模板 · 澳洲在读 / 应届留学生专属</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">敏捷反思 × Human Agility · 3h 线上 Workshop · 企业决策层版</div>
+                <div class="cards">
+                  <a href="./agile-ai-workshop/curriculum.html">
+                    <span class="tag" style="background:#FF914D">CURRICULUM · 3h</span>
+                    <div class="title">AI 时代，敏捷真的正在消亡吗？</div>
+                    <div class="desc">3h Zoom 直播 · Mini-Bootcamp 第一节 · 企业高层 / EXCO / 部门负责人 · 不教 Scrum 质疑 Scrum · 8 模块穿过 6 个反思层 · 揭幕 Human Agility · 带走 5 个能让 EXCO 睡不着觉的问题 · 不卖答案卖更好的问题</div>
+                  </a>
+                  <a href="./agile-ai-workshop/internal.html">
+                    <span class="tag" style="background:#dc2626">INTERNAL</span>
+                    <div class="title">敏捷反思 Workshop · 主讲手册</div>
+                    <div class="desc">节奏图 · 投票 SOP · 5 反思问题精准版 · 高转化金句 · 销售跟进话术（不冷推）· 风险应急</div>
                   </a>
                 </div>
               </div>

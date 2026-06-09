@@ -773,11 +773,21 @@ details > div {
   }
 
   .tags {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
   }
 
   .tag {
+    min-width: 0;
+    text-align: center;
+    font-size: 11px !important;
+    padding: 7px 8px !important;
     white-space: normal;
+  }
+
+  .tag:last-child {
+    grid-column: 1 / -1;
   }
 
   .hero-kicker {
@@ -800,6 +810,20 @@ details > div {
 
   .hero-visual {
     min-height: 280px;
+  }
+
+  .poster-visual {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-self: stretch;
+    padding: 6px;
+    border-radius: 24px;
+  }
+
+  .hero-poster {
+    border-radius: 18px;
+    object-fit: contain;
+    background: var(--jr-black);
   }
 
   .ai-card {

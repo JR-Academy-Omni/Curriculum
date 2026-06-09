@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N4 · 不会代码也能进 AI · 8 张配图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Bricolage+Grotesque:wght@500;700;900&family=DM+Sans:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.min.js"></script>
+<style>
+  :root {
+    /* 严格对齐 src/styles/theme.ts */
+    --red: #ff5757; --dark: #10162f; --yellow: #FFDE59; --green: #7ED957;
+    --blue: #38B6FF; --purple: #CB6CE6; --orange: #FF914D;
+    --warmBg: #fff1e7; --darkBg: #1a1a2e;
+    --indigo: #6366f1; --pink: #fce7f3;
+    --techPurple: #8b5cf6; --techBg: #ede9fe;
+    --govOrange: #f59e0b; --govBg: #fef3c7;
+    --industryCyan: #06b6d4; --industryBg: #cffafe;
+    /* 别名（向后兼容旧 CSS）*/
+    --brand-red: var(--red); --brand-dark: var(--dark); --brand-yellow: var(--yellow);
+    --brand-blue: #3b82f6; --brand-green: var(--green);
+    --bg-cream: var(--warmBg); --bg-page: #eef0f4;
+    --text-main: var(--dark); --text-gray: #64748b; --border-color: #e2e8f0;
+    /* 字体 */
+    --font-heading: 'Bricolage Grotesque','Noto Sans SC',sans-serif;
+    --font-body: 'DM Sans','Noto Sans SC',sans-serif;
+    --font-mono: 'Space Mono',monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-page); color:var(--text-main); font-family:var(--font-body); padding:24px 16px 24px 132px; line-height:1.5; }
+  .topbar { background:var(--brand-dark); color:var(--bg-cream); border:3px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:16px 24px; margin:0 auto 24px; max-width:1400px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .topbar h1 { font-size:18px; font-weight:900; } .topbar h1 span { color:var(--brand-yellow); }
+  .topbar nav { display:flex; gap:8px; flex-wrap:wrap; }
+  .topbar nav a { background:var(--brand-yellow); color:var(--brand-dark); padding:6px 12px; font-size:12px; font-weight:700; text-decoration:none; border:2px solid var(--bg-cream); }
+  .topbar nav a.active { background:var(--brand-red); color:#fff; }
+  .intro { background:var(--bg-cream); border:3px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:18px 24px; margin:0 auto 28px; max-width:1400px; }
+  .intro .label { font-family:'Space Mono','JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; background:var(--brand-dark); color:var(--brand-yellow); padding:3px 10px; display:inline-block; margin-bottom:10px; }
+  .intro h2 { font-size:46px; font-weight:900; margin-bottom:8px; } .intro h2 span { background:var(--brand-yellow); padding:0 6px; }
+  .intro p { font-size:14px; color:var(--text-gray); margin-bottom:8px; }
+  .intro .pills { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+  .intro .pill { font-family:'Space Mono','JetBrains Mono',monospace; font-size:11px; font-weight:700; padding:4px 10px; background:#fff; border:2px solid var(--brand-dark); }
+  .thumb-nav { position:fixed; top:20px; left:16px; width:104px; background:#fff; border:2.5px solid var(--brand-dark); box-shadow:4px 4px 0 var(--brand-dark); padding:10px 8px; z-index:100; max-height:calc(100vh - 40px); overflow-y:auto; }
+  .thumb-nav::before { content:'N4 · NAV'; display:block; font-family:'Space Mono','JetBrains Mono',monospace; font-size:10px; font-weight:900; color:var(--brand-red); text-align:center; letter-spacing:1.5px; padding-bottom:6px; border-bottom:1.5px dashed var(--border-color); margin-bottom:6px; }
+  .thumb-nav .thumb { display:flex; flex-direction:column; aspect-ratio:3/4; background:var(--bg-cream); border:1.5px solid var(--brand-dark); margin-bottom:6px; text-decoration:none; color:var(--brand-dark); align-items:center; justify-content:center; padding:4px; transition:all .15s; }
+  .thumb-nav .thumb:hover { background:var(--brand-yellow); }
+  .thumb-nav .thumb .n { font-size:18px; font-weight:900; line-height:1; }
+  .thumb-nav .thumb .l { font-size:9px; color:var(--text-gray); margin-top:2px; }
+  .poster-frame { display:grid; grid-template-columns:auto 380px; gap:18px; align-items:start; margin:0 auto 56px; max-width:1400px; position:relative; }
+  .poster-main { display:flex; flex-direction:column; align-items:center; }
+  .poster-label { align-self:stretch; display:flex; align-items:center; gap:10px; font-family:'Space Mono','JetBrains Mono',monospace; font-size:14px; margin-bottom:12px; font-weight:900; color:var(--brand-dark); }
+  .poster-label::before { content:''; width:28px; height:4px; background:var(--brand-red); }
+  .poster-label .meta { color:var(--text-gray); font-size:11px; margin-left:6px; font-weight:600; }
+  .poster-scaler { width:435px; height:581px; position:relative; border:2.5px solid var(--brand-dark); box-shadow:8px 8px 0 var(--brand-dark); overflow:hidden; background:#fff; }
+  .poster { width:1242px; height:1660px; transform:scale(0.35); transform-origin:top left; position:absolute; top:0; left:0; overflow:hidden; font-family:'DM Sans','Noto Sans SC',sans-serif; box-sizing:border-box; background:var(--bg-cream); }
+  .dl-btn { margin-top:16px; background:var(--brand-red); color:#fff; border:2.5px solid var(--brand-dark); box-shadow:4px 4px 0 var(--brand-dark); padding:10px 24px; font-family:'DM Sans','Noto Sans SC',sans-serif; font-size:13px; font-weight:900; letter-spacing:1px; cursor:pointer; transition:all .15s; }
+  .dl-btn:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--brand-dark); }
+  .copy-panel { background:#fff; border:2.5px solid var(--brand-dark); box-shadow:4px 4px 0 var(--brand-dark); padding:16px 18px; }
+  .copy-panel .cp-title { font-family:'Space Mono','JetBrains Mono',monospace; font-size:12px; font-weight:900; color:var(--brand-red); letter-spacing:1.5px; padding-bottom:8px; border-bottom:1.5px dashed var(--border-color); margin-bottom:12px; }
+  .copy-panel .cp-box { background:var(--bg-cream); border:1.5px solid var(--brand-dark); padding:10px 12px; font-size:12.5px; line-height:1.65; white-space:pre-wrap; margin-bottom:8px; }
+  .copy-panel .cp-box.hashtags { color:var(--brand-blue); font-weight:700; font-size:12px; }
+  .copy-panel .cp-label { font-family:'Space Mono','JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; color:var(--text-gray); margin:8px 0 4px; text-transform:uppercase; }
+  .copy-panel .cp-btn { width:100%; background:var(--brand-dark); color:#fff; border:none; padding:8px 12px; font-size:11px; font-weight:700; letter-spacing:1px; cursor:pointer; margin-top:8px; font-family:'DM Sans','Noto Sans SC',sans-serif; transition:all .15s; }
+  .copy-panel .cp-btn:hover { background:var(--brand-red); }
+  .copy-panel .cp-btn.copied { background:var(--brand-green); }
+  .p { width:100%; height:100%; padding:48px 56px; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+  .p-tag { display:inline-flex; align-items:center; gap:12px; background:var(--brand-dark); color:var(--brand-yellow); padding:14px 28px; font-family:'Space Mono','JetBrains Mono',monospace; font-size:58px; font-weight:900; letter-spacing:3px; width:fit-content; margin-bottom:36px; }
+  .p-tag .dot { width:16px; height:16px; border-radius:50%; background:var(--brand-yellow); }
+  .p-logo { position:absolute; bottom:56px; right:64px; display:flex; align-items:center; gap:12px; font-family:'Space Mono','JetBrains Mono',monospace; font-size:46px; font-weight:900; color:var(--brand-dark); }
+  .p-logo .box { background:var(--brand-dark); color:var(--brand-yellow); padding:6px 12px; letter-spacing:2px; }
+
+  /* === P1 封面 === */
+  .p1 { background:var(--brand-dark); color:var(--bg-cream); justify-content:center; align-items:center; text-align:center; }
+  .p1 .p-tag { background:var(--brand-yellow); color:var(--brand-dark); }
+  .p1 .crossed { font-size:110px; font-weight:900; color:#fff; text-decoration:line-through; text-decoration-color:var(--brand-red); text-decoration-thickness:12px; line-height:1; margin-bottom:32px; letter-spacing:-2px; }
+  .p1 .num { font-size:120px; font-weight:900; color:var(--brand-yellow); margin-bottom:8px; font-family:'Bricolage Grotesque',sans-serif; line-height:1; }
+  .p1 .title { font-size:116px; font-weight:900; color:#fff; line-height:1.1; margin-bottom:32px; letter-spacing:-2px; }
+  .p1 .title .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 12px; }
+  .p1 .sub { font-size:52px; font-weight:600; color:var(--brand-yellow); margin-bottom:40px; }
+  .p1 .stats-row { display:flex; gap:8px; }
+  .p1 .stat { background:var(--bg-cream); color:var(--brand-dark); padding:18px 28px; border:4px solid var(--brand-yellow); }
+  .p1 .stat .v { font-family:'Bricolage Grotesque',sans-serif; font-size:60px; font-weight:900; line-height:1; }
+  .p1 .stat .l { font-size:42px; font-weight:700; margin-top:6px; letter-spacing:1px; }
+  .p1 .p-logo { color:#fff; } .p1 .p-logo .box { background:var(--brand-yellow); color:var(--brand-dark); }
+
+  /* === P2 6 治理岗 === */
+  .p2 { background:var(--bg-cream); }
+  .p2 h2 { font-size:100px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; line-height:1.1; margin-bottom:8px; }
+  .p2 h2 .hl { background:var(--brand-yellow); padding:0 8px; }
+  .p2 .h-sub { font-size:58px; font-weight:600; color:var(--text-gray); margin-bottom:36px; }
+  .p2 .roles { display:grid; grid-template-columns:1fr 1fr; gap:8px; flex:1; }
+  .p2 .role { background:#fff; border:3.5px solid var(--brand-dark); box-shadow:5px 5px 0 var(--brand-dark); padding:18px 22px; }
+  .p2 .role.deep { background:var(--brand-red); color:#fff; }
+  .p2 .role .top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
+  .p2 .role .name { font-size:52px; font-weight:900; line-height:1.2; }
+  .p2 .role .salary { font-family:'Space Mono','JetBrains Mono',monospace; font-size:42px; font-weight:900; color:var(--brand-red); }
+  .p2 .role.deep .salary { color:#fff; background:var(--brand-dark); padding:2px 8px; }
+  .p2 .role .det { font-size:42px; font-weight:500; line-height:1.4; }
+  .p2 .role .det.dark { color:var(--text-main); } .p2 .role.deep .det { color:#fff; }
+  .p2 .role .star { font-family:'Space Mono','JetBrains Mono',monospace; font-size:18px; font-weight:900; margin-top:6px; }
+  .p2 .role.deep .star { color:var(--brand-yellow); }
+
+  /* === P3 AI Adoption 深拆 === */
+  .p3 { background:#fff; }
+  .p3 h2 { font-size:100px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; line-height:1.1; margin-bottom:8px; }
+  .p3 h2 .hl { background:var(--brand-yellow); padding:0 8px; }
+  .p3 .h-sub { font-size:58px; font-weight:600; color:var(--text-gray); margin-bottom:32px; }
+  .p3 .halves { display:flex; gap:8px; margin-bottom:24px; }
+  .p3 .half { flex:1; background:var(--bg-cream); border:4px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:20px 24px; }
+  .p3 .half .pct { font-family:'Bricolage Grotesque',sans-serif; font-size:116px; font-weight:900; color:var(--brand-red); line-height:1; margin-bottom:8px; }
+  .p3 .half .name { font-size:44px; font-weight:900; color:var(--brand-dark); margin-bottom:6px; }
+  .p3 .half .det { font-size:42px; font-weight:500; line-height:1.4; }
+  .p3 .data { background:var(--brand-dark); color:var(--brand-yellow); padding:20px 28px; border:4px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-red); margin-bottom:20px; }
+  .p3 .data .v { font-family:'Bricolage Grotesque',sans-serif; font-size:88px; font-weight:900; line-height:1; }
+  .p3 .data .l { font-size:46px; font-weight:700; margin-top:6px; color:#fff; line-height:1.4; }
+  .p3 .src { font-family:'Space Mono','JetBrains Mono',monospace; font-size:42px; color:var(--text-gray); text-align:right; }
+
+  /* === P4 谁适合 === */
+  .p4 { background:var(--bg-cream); }
+  .p4 h2 { font-size:108px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; line-height:1.1; margin-bottom:8px; }
+  .p4 h2 .hl { background:var(--brand-yellow); padding:0 10px; }
+  .p4 .h-sub { font-size:58px; font-weight:600; color:var(--text-gray); margin-bottom:40px; }
+  .p4 .who { display:grid; grid-template-columns:1fr 1fr; gap:12px; flex:1; }
+  .p4 .item { background:#fff; border:4px solid var(--brand-dark); box-shadow:8px 8px 0 var(--brand-dark); padding:20px 24px; display:flex; flex-direction:column; gap:8px; }
+  .p4 .item .ico { font-size:88px; line-height:1; }
+  .p4 .item .name { font-size:44px; font-weight:900; color:var(--brand-dark); }
+  .p4 .item .det { font-size:42px; font-weight:500; color:var(--text-gray); line-height:1.4; }
+
+  /* === P5 软实力护城河 === */
+  .p5 { background:var(--warmBg); color:#fff; }
+  .p5 .p-tag { background:#fff; color:var(--brand-dark); } .p5 .p-tag .dot { background:var(--brand-red); }
+  .p5 h2 { font-size:84px; font-weight:900; color:#fff; letter-spacing:-1.5px; line-height:1.15; margin-bottom:36px; }
+  .p5 h2 .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 8px; }
+  .p5 .compare { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
+  .p5 .col { background:#fff; color:var(--brand-dark); border:4px solid var(--brand-dark); padding:20px 24px; }
+  .p5 .col.no { background:#ffdcdc; }
+  .p5 .col.yes { background:var(--brand-yellow); }
+  .p5 .col .ico { font-size:84px; line-height:1; margin-bottom:12px; }
+  .p5 .col .lbl { font-family:'Space Mono','JetBrains Mono',monospace; font-size:42px; font-weight:900; margin-bottom:8px; letter-spacing:1px; }
+  .p5 .col .det { font-size:52px; font-weight:700; line-height:1.4; }
+  .p5 .quote { background:var(--brand-dark); color:var(--brand-yellow); padding:28px 32px; border:4px solid var(--brand-yellow); }
+  .p5 .quote .text { font-size:44px; font-weight:700; line-height:1.5; }
+  .p5 .quote .text .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 6px; }
+  .p5 .p-logo { color:#fff; } .p5 .p-logo .box { background:var(--brand-yellow); color:var(--brand-dark); }
+
+  /* === P6 4 步转型 === */
+  .p6 { background:var(--bg-cream); }
+  .p6 h2 { font-size:88px; font-weight:900; color:var(--brand-dark); letter-spacing:-1.5px; line-height:1.1; margin-bottom:8px; }
+  .p6 h2 .hl { background:var(--brand-yellow); padding:0 8px; }
+  .p6 .h-sub { font-size:58px; font-weight:600; color:var(--text-gray); margin-bottom:32px; }
+  .p6 .ph { display:flex; flex-direction:column; gap:8px; flex:1; }
+  .p6 .pi { background:#fff; border:4px solid var(--brand-dark); box-shadow:6px 6px 0 var(--brand-dark); padding:18px 22px; display:flex; gap:18px; align-items:center; }
+  .p6 .pi .wk { font-family:'Space Mono','JetBrains Mono',monospace; font-size:58px; font-weight:900; color:var(--brand-red); min-width:120px; }
+  .p6 .pi .body .name { font-size:44px; font-weight:900; color:var(--brand-dark); margin-bottom:4px; }
+  .p6 .pi .body .det { font-size:42px; color:var(--text-main); line-height:1.4; }
+  .p6 .total { background:var(--brand-dark); color:var(--brand-yellow); padding:18px 28px; margin-top:20px; text-align:center; font-size:44px; font-weight:900; }
+
+  /* === P7 三大优势 === */
+  .p7 { background:#fff; }
+  .p7 h2 { font-size:100px; font-weight:900; color:var(--brand-dark); letter-spacing:-2px; line-height:1.1; margin-bottom:8px; }
+  .p7 h2 .hl { background:var(--brand-green); color:#fff; padding:0 10px; }
+  .p7 .h-sub { font-size:58px; font-weight:600; color:var(--text-gray); margin-bottom:40px; }
+  .p7 .perks { display:flex; flex-direction:column; gap:12px; flex:1; }
+  .p7 .perk { background:var(--bg-cream); border:4px solid var(--brand-dark); box-shadow:8px 8px 0 var(--brand-dark); padding:20px 24px; display:flex; gap:18px; align-items:center; }
+  .p7 .perk .ico { font-size:108px; line-height:1; min-width:100px; text-align:center; }
+  .p7 .perk .body .name { font-size:48px; font-weight:900; color:var(--brand-dark); margin-bottom:6px; }
+  .p7 .perk .body .det { font-size:46px; font-weight:500; color:var(--text-main); line-height:1.4; }
+
+  /* === P8 CTA === */
+  .p8 { background:var(--brand-dark); color:var(--bg-cream); justify-content:center; align-items:center; text-align:center; }
+  .p8 .corner-yellow { position:absolute; top:-100px; right:-100px; width:360px; height:360px; background:var(--brand-yellow); transform:rotate(45deg); }
+  .p8 .corner-red { position:absolute; bottom:-100px; left:-100px; width:280px; height:280px; background:var(--brand-red); transform:rotate(45deg); }
+  .p8 .ctop { font-family:'Space Mono','JetBrains Mono',monospace; font-size:48px; font-weight:900; letter-spacing:4px; color:var(--brand-yellow); margin-bottom:24px; z-index:2; position:relative; }
+  .p8 .num4 { font-size:480px; font-weight:900; color:var(--brand-yellow); line-height:0.85; letter-spacing:-16px; font-family:'Bricolage Grotesque',sans-serif; text-shadow:12px 12px 0 var(--brand-red); z-index:2; position:relative; }
+  .p8 .cta-text { font-size:72px; font-weight:900; color:#fff; margin-top:24px; line-height:1.3; z-index:2; position:relative; }
+  .p8 .cta-text .hl { background:var(--brand-yellow); color:var(--brand-dark); padding:0 10px; }
+  .p8 .cta-sub { font-size:58px; font-weight:600; color:var(--bg-cream); margin-top:24px; opacity:0.85; z-index:2; position:relative; }
+  .p8 .p-logo { color:var(--bg-cream); } .p8 .p-logo .box { background:var(--brand-yellow); color:var(--brand-dark); }
+
+  /* === PPT 风格 .hl 下划线（来自讲座 ui.tsx Highlight 组件，覆盖各 .pX 内部 .hl 定义）=== */
+  .p .hl, .poster .hl { position:relative !important; display:inline-block !important; z-index:1 !important; background:transparent !important; color:inherit !important; padding:0 !important; }
+  .p .hl::after, .poster .hl::after { content:''; position:absolute; bottom:6px; left:-6px; right:-6px; height:22px; background:var(--yellow); z-index:-1; opacity:0.85; }
+  /* 红字高亮（保留原 .hlr 红底白字风格转为红色文字） */
+  .p .hlr, .poster .hlr { color:var(--red) !important; background:transparent !important; }
+  /* 绿字 */
+  .p .hlg, .poster .hlg { color:var(--green) !important; background:transparent !important; font-weight:900; }
+  /* 蓝字 */
+  .p .hl-b { color:var(--indigo); }
+  /* p-dots 点阵装饰（PPT 同款）*/
+  .p::before { content:''; position:absolute; top:0; right:0; width:400px; height:400px; background-image:radial-gradient(#64748b 1.5px, transparent 1.5px); background-size:28px 28px; opacity:0.10; pointer-events:none; z-index:0; }
+  .p > * { position:relative; z-index:1; }
+
+</style>
+</head>
+<body>
+<aside class="thumb-nav">
+  <a class="thumb" href="#p1"><span class="n">1</span><span class="l">封面</span></a>
+  <a class="thumb" href="#p2"><span class="n">2</span><span class="l">6 治理岗</span></a>
+  <a class="thumb" href="#p3"><span class="n">3</span><span class="l">Adoption</span></a>
+  <a class="thumb" href="#p4"><span class="n">4</span><span class="l">谁适合</span></a>
+  <a class="thumb" href="#p5"><span class="n">5</span><span class="l">软实力</span></a>
+  <a class="thumb" href="#p6"><span class="n">6</span><span class="l">4 步</span></a>
+  <a class="thumb" href="#p7"><span class="n">7</span><span class="l">3 优势</span></a>
+  <a class="thumb" href="#p8"><span class="n">8</span><span class="l">CTA</span></a>
+</aside>
+<header class="topbar">
+  <h1>JR ACADEMY · <span>XHS</span> 配图 · N4 · 不会代码也能进 AI</h1>
+  <nav><a href="../index.html">← 总览</a><a href="N1.html">N1</a><a href="N2.html">N2</a><a href="N3.html">N3</a><a class="active" href="N4.html">N4</a><a href="N6.html">N6</a></nav>
+</header>
+<section class="intro">
+  <span class="label">XHS POSTERS · N4 · 8 张 · 反共识钩</span>
+  <h2>🏛️ 不会代码也能进 AI · <span>HR / 咨询 / PM 路径</span></h2>
+  <p>26 个 AI-native 岗位里治理管理岗占 6 个 · AI Adoption Specialist 深拆 · 5-6 个月转型</p>
+  <div class="pills">
+    <span class="pill">6 治理岗</span><span class="pill">$90-190K</span>
+    <span class="pill">字号 ≥ 24px</span><span class="pill">Gartner 71K 增量</span>
+  </div>
+</section>
+
+<section class="poster-frame" id="p1">
+  <div class="poster-main">
+    <div class="poster-label">P1 · 封面 <span class="meta">不会代码 ✕ 也能进</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p1">
+      <div class="p-tag"><span class="dot"></span>NON-TECHNICAL</div>
+      <div class="crossed">不会代码</div>
+      <div class="num">6</div>
+      <div class="title">个治理岗 <span class="hl">也能进 AI</span></div>
+      <div class="sub">HR / 咨询 / PM / 心理学路径</div>
+      <div class="stats-row">
+        <div class="stat"><div class="v">$90-190K</div><div class="l">薪资段位</div></div>
+        <div class="stat"><div class="v">5-6 月</div><div class="l">转型周期</div></div>
+        <div class="stat"><div class="v">71K</div><div class="l">2028 增量</div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p1',event)">📷 下载 P1 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">N4 主稿 · 反共识钩</div>
+    <div class="cp-label">标题</div>
+    <div class="cp-box" id="t-title">🏛️ 不会代码也能进 AI 的具体路径</div>
+    <button class="cp-btn" data-target="t-title">复制标题</button>
+    <div class="cp-label">话题</div>
+    <div class="cp-box hashtags">#AI转型 #非技术 #求职 #职业规划 #AI</div>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p2">
+  <div class="poster-main">
+    <div class="poster-label">P2 · 6 治理岗全景 <span class="meta">AI Adoption 深讲</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p2">
+      <div class="p-tag"><span class="dot"></span>6 GOVERNANCE</div>
+      <h2><span class="hl">6 个</span>治理岗</h2>
+      <h2>都不写代码</h2>
+      <div class="h-sub">薪资 $90-400K · 北美 / 澳洲数据</div>
+      <div class="roles">
+        <div class="role deep"><div class="top"><div class="name">AI Adoption Specialist</div><div class="salary">$90-190K</div></div><div class="det">Lockheed Martin / McKinsey / Deloitte 都在招 · ServiceNow 预测 2028 前增 71,000 岗</div><div class="star">⭐ 本篇深讲</div></div>
+        <div class="role"><div class="top"><div class="name">AI Product Manager</div><div class="salary">$120-220K</div></div><div class="det dark">把 ML 能力翻译成用户价值 · ChatGPT / Claude / Gemini 产品团队</div></div>
+        <div class="role"><div class="top"><div class="name">AI Ethics Officer</div><div class="salary">$120-200K</div></div><div class="det dark">EU AI Act 2026/8 强制 → Big 4 已开 · +45% YoY 增长</div></div>
+        <div class="role"><div class="top"><div class="name">Human-AI Lead</div><div class="salary">$110-190K</div></div><div class="det dark">Gartner: 2026 底 40% 企业用 Agent (2025 初 &lt;5%)</div></div>
+        <div class="role"><div class="top"><div class="name">Chief AI Revenue Officer</div><div class="salary">$180-350K</div></div><div class="det dark">不管 AI 怎么用 · 只管 AI 怎么变现</div></div>
+        <div class="role"><div class="top"><div class="name">CAIO</div><div class="salary">$200K-$1.8M</div></div><div class="det dark">Figure AI Staff RS $1.29M · Lyft / Citi / Mastercard / Carlyle 已开</div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p2',event)">📷 下载 P2 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P2 6 岗</div>
+    <div class="cp-box" id="t-p2">26 个 AI 岗位里治理管理岗占 6 个：
+1. AI Adoption Specialist $90-190K
+2. AI Product Manager $120-220K
+3. AI Ethics Officer $120-200K
+4. Human-AI Lead $110-190K
+5. Chief AI Revenue Officer $180-350K
+6. CAIO $200K-$1.8M
+
+都不写代码。</div>
+    <button class="cp-btn" data-target="t-p2">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p3">
+  <div class="poster-main">
+    <div class="poster-label">P3 · AI Adoption 干什么的 <span class="meta">一半培训 / 一半心理</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p3">
+      <div class="p-tag"><span class="dot"></span>WHAT · AI Adoption</div>
+      <h2>AI Adoption Specialist</h2>
+      <h2><span class="hl">干什么的</span>？</h2>
+      <div class="h-sub">公司买了 AI 工具 · 员工不会用 / 不愿用 / 用错了</div>
+      <div class="halves">
+        <div class="half"><div class="pct">50%</div><div class="name">工具培训</div><div class="det">教员工用 ChatGPT / Claude / Cursor / N8N</div></div>
+        <div class="half"><div class="pct">50%</div><div class="name">心理疏导</div><div class="det">让"工作很多年的财务同事"愿意打开 ChatGPT</div></div>
+      </div>
+      <div class="data">
+        <div class="v">+71,000</div>
+        <div class="l">ServiceNow 预测 2028 前全球新增 AI Adoption 岗位<br>72% 男性主导 → 女性占比快速提升 · 跨性别友好</div>
+      </div>
+      <div class="src">Source · ServiceNow Future of Work 报告</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p3',event)">📷 下载 P3 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P3 干什么的</div>
+    <div class="cp-box" id="t-p3">AI Adoption Specialist 干什么的？
+
+公司花几千万买 AI 工具，结果员工不会用 / 不愿用 / 用错了。
+就是负责把 AI 工具落地到每一个员工 / 流程的人。
+
+50% 工具培训 + 50% 员工心理疏导
+
+Gartner 预测 2028 年前全球新增 71,000 个这类岗位。</div>
+    <button class="cp-btn" data-target="t-p3">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p4">
+  <div class="poster-main">
+    <div class="poster-label">P4 · 谁适合 <span class="meta">4 类背景</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p4">
+      <div class="p-tag"><span class="dot"></span>WHO · 谁适合</div>
+      <h2>这<span class="hl">4 类背景</span></h2>
+      <h2>特别能打</h2>
+      <div class="h-sub">不需要写代码 · 不需要数学</div>
+      <div class="who">
+        <div class="item"><div class="ico">👥</div><div class="name">HR / L&D</div><div class="det">学习发展 · 培训 · 员工赋能</div></div>
+        <div class="item"><div class="ico">💼</div><div class="name">咨询 / PM</div><div class="det">变革管理 · 流程设计 · 项目交付</div></div>
+        <div class="item"><div class="ico">🧠</div><div class="name">心理学 / 组织行为</div><div class="det">理解阻抗 · 设计动机机制</div></div>
+        <div class="item"><div class="ico">📊</div><div class="name">业务运营老兵</div><div class="det">懂行业 · 懂流程 · 懂人</div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p4',event)">📷 下载 P4 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P4 谁适合</div>
+    <div class="cp-box" id="t-p4">谁适合做 AI Adoption Specialist？
+
+- HR / L&D（学习发展）出身
+- 咨询 / PM 背景
+- 心理学 / 组织行为学专业
+- 业务运营老兵
+
+不需要写代码 · 不需要数学 · 不需要统计背景</div>
+    <button class="cp-btn" data-target="t-p4">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p5">
+  <div class="poster-main">
+    <div class="poster-label">P5 · 为什么这批人更有优势 <span class="meta">软实力护城河</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p5">
+      <div class="p-tag"><span class="dot"></span>WHY · 护城河</div>
+      <h2>为什么这批人比<br>纯工程师<span class="hl">更有优势</span>？</h2>
+      <div class="compare">
+        <div class="col no"><div class="ico">❌</div><div class="lbl">不缺</div><div class="det">AI 工具的技术评估能力 · 满地都是工程师</div></div>
+        <div class="col yes"><div class="ico">✓</div><div class="lbl">缺</div><div class="det">让"工作很多年的财务同事"愿意打开 ChatGPT 的人</div></div>
+      </div>
+      <div class="quote"><div class="text">"跟人打交道"反而是 <span class="hl">稀缺资源</span>。<br>软实力变成 AI 时代的护城河。</div></div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p5',event)">📷 下载 P5 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P5 软实力</div>
+    <div class="cp-box" id="t-p5">为什么这批人比纯工程师更有优势？
+
+不缺：AI 工具的技术评估能力（满地都是工程师）
+缺的是：让"工作很多年的财务同事"愿意打开 ChatGPT 的人
+
+"跟人打交道"反成稀缺资源。
+软实力变成 AI 时代的护城河。</div>
+    <button class="cp-btn" data-target="t-p5">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p6">
+  <div class="poster-main">
+    <div class="poster-label">P6 · 4 步转型路径 <span class="meta">5-6 个月</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p6">
+      <div class="p-tag"><span class="dot"></span>PATH · 4 步</div>
+      <h2><span class="hl">5-6 个月</span></h2>
+      <h2>从 HR / 咨询到 AI Adoption</h2>
+      <div class="h-sub">4 个 Phase · 每个 4-8 周</div>
+      <div class="ph">
+        <div class="pi"><div class="wk">Week 1-4</div><div class="body"><div class="name">补 AI 工具栈</div><div class="det">ChatGPT / Claude / Cursor / N8N 都用一遍</div></div></div>
+        <div class="pi"><div class="wk">Week 5-10</div><div class="body"><div class="name">变革管理方法论</div><div class="det">ADKAR · Kotter 8 步 · 阻抗管理</div></div></div>
+        <div class="pi"><div class="wk">Week 11-18</div><div class="body"><div class="name">公司内部试点项目</div><div class="det">在自己部门跑一个真实试点 · 量化 ROI</div></div></div>
+        <div class="pi"><div class="wk">Week 19-22</div><div class="body"><div class="name">求职打包</div><div class="det">试点 case → portfolio · 改简历 · 投</div></div></div>
+      </div>
+      <div class="total">大约 5-6 个月可以投简历</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p6',event)">📷 下载 P6 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P6 4 步转型</div>
+    <div class="cp-box" id="t-p6">4 步转型路径（5-6 个月）：
+
+Week 1-4：补 AI 工具栈
+Week 5-10：变革管理方法论（ADKAR / Kotter）
+Week 11-18：公司内部试点项目
+Week 19-22：求职打包
+
+大约 5-6 个月可以投简历。</div>
+    <button class="cp-btn" data-target="t-p6">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p7">
+  <div class="poster-main">
+    <div class="poster-label">P7 · 3 大优势 <span class="meta">这条赛道的好处</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p7">
+      <div class="p-tag"><span class="dot"></span>PERKS · 3 优势</div>
+      <h2>这条赛道<span class="hl">的 3 大优势</span></h2>
+      <div class="h-sub">为什么文科 / 转型者特别值得做</div>
+      <div class="perks">
+        <div class="perk"><div class="ico">🚫</div><div class="body"><div class="name">不需要写代码</div><div class="det">SQL / Python 都不要求 · 用 GPT 即可</div></div></div>
+        <div class="perk"><div class="ico">📐</div><div class="body"><div class="name">不需要数学 / 统计</div><div class="det">不要 ML 数学 · 不要算法 · 不要数据科学</div></div></div>
+        <div class="perk"><div class="ico">💎</div><div class="body"><div class="name">软实力反成稀缺</div><div class="det">"跟人打交道"是 AI 时代最贵的能力</div></div></div>
+      </div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p7',event)">📷 下载 P7 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">配文要点 · P7 3 优势</div>
+    <div class="cp-box" id="t-p7">3 大优势：
+🚫 不需要写代码
+📐 不需要数学 / 统计背景
+💎 你"跟人打交道"的能力反而是稀缺资源</div>
+    <button class="cp-btn" data-target="t-p7">复制要点</button>
+  </aside>
+</section>
+
+<section class="poster-frame" id="p8">
+  <div class="poster-main">
+    <div class="poster-label">P8 · CTA <span class="meta">扣 4 + 主页</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p8">
+      <div class="corner-yellow"></div>
+      <div class="corner-red"></div>
+      <div class="ctop">XHS · 评论区互动</div>
+      <div class="num4">4</div>
+      <div class="cta-text">扣 <span class="hl">4</span> · 我整理了<br><span class="hl">AI Adoption</span> 4 步路径</div>
+      <div class="cta-sub">主页 60 分钟讲座完整版</div>
+      <div class="p-logo"><div class="box">JR</div>匠人学院</div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p8',event)">📷 下载 P8 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">CTA 文案</div>
+    <div class="cp-box" id="t-p8">📌 评论扣 4，我整理了 AI Adoption 4 步路径详细版
+📌 主页有 60 分钟讲座完整版</div>
+    <button class="cp-btn" data-target="t-p8">复制 CTA</button>
+  </aside>
+</section>
+
+<script>
+  document.querySelectorAll('.cp-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const t = btn.dataset.target;
+      const el = document.getElementById(t);
+      if (!el) return;
+      try {
+        await navigator.clipboard.writeText(el.textContent.trim());
+        const o = btn.textContent;
+        btn.textContent = '✓ 已复制'; btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = o; btn.classList.remove('copied'); }, 1500);
+      } catch (e) { alert('复制失败：' + e.message); }
+    });
+  });
+  async function dlP(id, ev) {
+    const btn = ev.target;
+    const p = document.querySelector(`#${id} .poster`);
+    if (!p) return;
+    const o = btn.textContent; btn.textContent = '⏳ 生成中...'; btn.disabled = true;
+    try {
+      const ot = p.style.transform;
+      p.style.transform = 'none'; p.style.position = 'fixed'; p.style.left = '-9999px'; p.style.top = '0';
+      const url = await htmlToImage.toPng(p, { width:1242, height:1660, pixelRatio:1, cacheBust:true, style:{transform:'none'} });
+      p.style.transform = ot; p.style.position = ''; p.style.left = ''; p.style.top = '';
+      const a = document.createElement('a'); a.href = url; a.download = `N4-${id}-${Date.now()}.png`; a.click();
+    } catch (e) { alert('下载失败：' + e.message); }
+    finally { btn.textContent = o; btn.disabled = false; }
+  }
+</script>
+</body>
+</html>

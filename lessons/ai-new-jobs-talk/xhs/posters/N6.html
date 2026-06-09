@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N6 · 1 人替代 6 人 marketing · 8 张配图（PPT 风格 v2）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Bricolage+Grotesque:wght@500;700;900&family=DM+Sans:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.min.js"></script>
+<style>
+  :root {
+    /* 严格对齐 src/styles/theme.ts */
+    --red: #ff5757; --dark: #10162f; --yellow: #FFDE59; --green: #7ED957;
+    --blue: #38B6FF; --purple: #CB6CE6; --orange: #FF914D;
+    --warmBg: #fff1e7; --darkBg: #1a1a2e;
+    --indigo: #6366f1; --pink: #fce7f3; --pink-light: #fdf2f8;
+    --techPurple: #8b5cf6; --techBg: #ede9fe;
+    --govOrange: #f59e0b; --govBg: #fef3c7;
+    --industryCyan: #06b6d4; --industryBg: #cffafe;
+    --bg-page: #eef0f4; --text-gray: #64748b; --border-color: #e2e8f0;
+    /* PPT 字体 */
+    --font-heading: 'Bricolage Grotesque','Noto Sans SC',sans-serif;
+    --font-body: 'DM Sans','Noto Sans SC',sans-serif;
+    --font-mono: 'Space Mono',monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-page); color:var(--dark); font-family:var(--font-body); padding:24px 16px 24px 132px; line-height:1.5; }
+
+  /* === chrome === */
+  .topbar { background:var(--dark); color:var(--warmBg); border:3px solid var(--dark); box-shadow:6px 6px 0 var(--dark); padding:16px 24px; margin:0 auto 24px; max-width:1400px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .topbar h1 { font-size:18px; font-weight:900; } .topbar h1 span { color:var(--yellow); }
+  .topbar nav { display:flex; gap:8px; flex-wrap:wrap; }
+  .topbar nav a { background:var(--yellow); color:var(--dark); padding:6px 12px; font-size:12px; font-weight:700; text-decoration:none; border:2px solid var(--warmBg); }
+  .topbar nav a.active { background:var(--red); color:#fff; }
+  .intro { background:var(--warmBg); border:3px solid var(--dark); box-shadow:6px 6px 0 var(--dark); padding:18px 24px; margin:0 auto 28px; max-width:1400px; }
+  .intro .label { font-family:var(--font-mono); font-size:11px; letter-spacing:3px; background:var(--red); color:#fff; padding:4px 12px; display:inline-block; margin-bottom:10px; font-weight:700; }
+  .intro h2 { font-size:34px; font-weight:900; margin-bottom:8px; font-family:var(--font-heading); }
+  .intro h2 .hl-y { background:var(--yellow); padding:0 6px; }
+  .intro h2 .hl-r { background:var(--red); color:#fff; padding:0 8px; }
+  .intro p { font-size:14px; color:var(--text-gray); margin-bottom:8px; }
+  .intro .pills { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+  .intro .pill { font-family:var(--font-mono); font-size:11px; font-weight:700; padding:4px 10px; background:#fff; border:2px solid var(--dark); }
+  .thumb-nav { position:fixed; top:20px; left:16px; width:104px; background:#fff; border:2.5px solid var(--dark); box-shadow:4px 4px 0 var(--dark); padding:10px 8px; z-index:100; max-height:calc(100vh - 40px); overflow-y:auto; }
+  .thumb-nav::before { content:'N6 · PPT'; display:block; font-family:var(--font-mono); font-size:10px; font-weight:900; color:var(--red); text-align:center; letter-spacing:1.5px; padding-bottom:6px; border-bottom:1.5px dashed var(--border-color); margin-bottom:6px; }
+  .thumb-nav .thumb { display:flex; flex-direction:column; aspect-ratio:3/4; background:var(--warmBg); border:1.5px solid var(--dark); margin-bottom:6px; text-decoration:none; color:var(--dark); align-items:center; justify-content:center; padding:4px; transition:all .15s; }
+  .thumb-nav .thumb:hover { background:var(--yellow); }
+  .thumb-nav .thumb .n { font-size:18px; font-weight:900; line-height:1; }
+  .thumb-nav .thumb .l { font-size:9px; color:var(--text-gray); margin-top:2px; }
+  .poster-frame { display:grid; grid-template-columns:auto 380px; gap:18px; align-items:start; margin:0 auto 56px; max-width:1400px; position:relative; }
+  .poster-main { display:flex; flex-direction:column; align-items:center; }
+  .poster-label { align-self:stretch; display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:14px; margin-bottom:12px; font-weight:900; color:var(--dark); }
+  .poster-label::before { content:''; width:28px; height:4px; background:var(--red); }
+  .poster-label .meta { color:var(--text-gray); font-size:11px; margin-left:6px; font-weight:600; }
+  .poster-scaler { width:435px; height:581px; position:relative; border:2.5px solid var(--dark); box-shadow:8px 8px 0 var(--dark); overflow:hidden; background:#fff; }
+  .poster { width:1242px; height:1660px; transform:scale(0.35); transform-origin:top left; position:absolute; top:0; left:0; overflow:hidden; font-family:var(--font-body); box-sizing:border-box; background:var(--warmBg); }
+  .dl-btn { margin-top:16px; background:var(--red); color:#fff; border:2.5px solid var(--dark); box-shadow:4px 4px 0 var(--dark); padding:10px 24px; font-family:var(--font-body); font-size:13px; font-weight:900; letter-spacing:1px; cursor:pointer; transition:all .15s; }
+  .dl-btn:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--dark); }
+  .copy-panel { background:#fff; border:2.5px solid var(--dark); box-shadow:4px 4px 0 var(--dark); padding:16px 18px; }
+  .copy-panel .cp-title { font-family:var(--font-mono); font-size:12px; font-weight:900; color:var(--red); letter-spacing:1.5px; padding-bottom:8px; border-bottom:1.5px dashed var(--border-color); margin-bottom:12px; }
+  .copy-panel .cp-box { background:var(--warmBg); border:1.5px solid var(--dark); padding:10px 12px; font-size:12.5px; line-height:1.65; white-space:pre-wrap; margin-bottom:8px; }
+  .copy-panel .cp-box.hashtags { color:var(--blue); font-weight:700; font-size:12px; }
+  .copy-panel .cp-label { font-family:var(--font-mono); font-size:10px; letter-spacing:1.5px; color:var(--text-gray); margin:8px 0 4px; text-transform:uppercase; }
+  .copy-panel .cp-btn { width:100%; background:var(--dark); color:#fff; border:none; padding:8px 12px; font-size:11px; font-weight:700; letter-spacing:1px; cursor:pointer; margin-top:8px; font-family:var(--font-body); transition:all .15s; }
+  .copy-panel .cp-btn:hover { background:var(--red); }
+  .copy-panel .cp-btn.copied { background:var(--green); }
+
+  /* ============================================== */
+  /* ============== PPT 风格 基底 ================== */
+  /* ============================================== */
+  .p { width:100%; height:100%; padding:48px 56px; display:flex; flex-direction:column; position:relative; overflow:hidden; background:var(--warmBg); }
+
+  /* p-dots 点阵装饰（PPT 同款）*/
+  .p-dots { position:absolute; top:0; right:0; width:400px; height:400px; background-image:radial-gradient(#64748b 1.5px, transparent 1.5px); background-size:28px 28px; opacity:0.12; pointer-events:none; }
+  .p-dots.bl { top:auto; right:auto; bottom:0; left:0; }
+
+  /* PPT 风格 STEP pill：彩色方形（不带 dot），来自 Z03 设计 */
+  .p-pill { display:inline-block; padding:12px 24px; font-family:var(--font-mono); font-size:42px; font-weight:700; letter-spacing:3px; width:fit-content; margin-bottom:32px; color:#fff; }
+  .p-pill.red { background:var(--red); }
+  .p-pill.purple { background:var(--indigo); }
+  .p-pill.indigo { background:var(--techPurple); }
+  .p-pill.green { background:var(--green); color:var(--dark); }
+  .p-pill.orange { background:var(--orange); }
+  .p-pill.blue { background:var(--blue); color:var(--dark); }
+  .p-pill.pink { background:var(--purple); color:#fff; }
+
+  /* PPT 标题 + .hl 下划线高亮（来自讲座 ui.tsx Highlight 组件）*/
+  .p-title { font-family:var(--font-heading); font-size:88px; font-weight:900; color:var(--dark); letter-spacing:-2px; line-height:1.1; }
+  .p-title.lg { font-size:108px; }
+  .p-title.sm { font-size:72px; }
+  /* .hl 下划线效果（PPT ui.tsx 同款）*/
+  .hl { position:relative; display:inline-block; z-index:1; }
+  .hl::after { content:''; position:absolute; bottom:6px; left:-6px; right:-6px; height:20px; background:var(--yellow); z-index:-1; opacity:0.85; }
+  .hl-r { color:var(--red); }
+  .hl-b { color:var(--indigo); }
+  .hl-p { color:var(--purple); }
+  .hl-g { color:var(--green); font-weight:900; }
+
+  .p-sub { font-size:52px; font-weight:500; color:var(--text-gray); margin-top:12px; margin-bottom:48px; }
+
+  /* PPT 风格白卡（来自 Z03 五个节点）*/
+  .pp-card { background:#fff; border:3px solid var(--dark); box-shadow:8px 8px 0 var(--dark); padding:20px 24px; display:flex; flex-direction:column; gap:8px; }
+
+  /* 卡片顶部小色 pill */
+  .pp-tag { display:inline-block; padding:6px 16px; font-family:var(--font-mono); font-size:32px; font-weight:700; letter-spacing:2px; color:#fff; width:fit-content; }
+  .pp-tag.red { background:var(--red); }
+  .pp-tag.indigo { background:var(--indigo); }
+  .pp-tag.purple { background:var(--techPurple); }
+  .pp-tag.orange { background:var(--orange); }
+  .pp-tag.green { background:var(--green); color:var(--dark); }
+  .pp-tag.blue { background:var(--blue); color:var(--dark); }
+  .pp-tag.pink { background:var(--purple); }
+
+  /* JR Logo（PPT 右上角） */
+  .p-logo-tr { position:absolute; top:48px; right:64px; display:flex; align-items:center; gap:8px; }
+  .p-logo-tr .ic { width:60px; height:60px; background:var(--red); display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-weight:900; color:#fff; font-size:52px; border:3px solid var(--dark); }
+  .p-logo-tr .nm { font-family:var(--font-mono); font-size:20px; font-weight:700; color:var(--dark); letter-spacing:1px; }
+  .p-logo-tr .nm small { display:block; font-size:14px; color:var(--text-gray); margin-top:2px; }
+
+  /* PPT 风格页脚 */
+  .p-footer { position:absolute; bottom:48px; left:64px; right:64px; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:18px; color:var(--text-gray); }
+  .p-footer .pno { color:var(--red); font-weight:700; }
+
+  /* ====================================== */
+  /* ========== P1 封面 ==================== */
+  /* ====================================== */
+  .p1 { justify-content:center; }
+  .p1 .p-pill { background:var(--red); color:#fff; align-self:flex-start; }
+  .p1 .big-row { display:flex; align-items:center; gap:48px; margin:40px 0 48px; }
+  .p1 .num6 { font-family:var(--font-heading); font-size:380px; font-weight:900; color:var(--red); line-height:0.85; text-decoration:line-through; text-decoration-thickness:18px; text-decoration-color:var(--dark); }
+  .p1 .arrow { font-size:140px; color:var(--green); font-weight:900; line-height:1; }
+  .p1 .num1 { font-family:var(--font-heading); font-size:380px; font-weight:900; color:var(--green); line-height:0.85; }
+  .p1 .pun { font-family:var(--font-heading); font-size:84px; font-weight:900; color:var(--dark); line-height:1.15; letter-spacing:-1.5px; margin-bottom:32px; }
+  .p1 .pun .hl-r { color:var(--red); }
+  .p1 .sub { font-size:52px; color:var(--text-gray); margin-bottom:36px; line-height:1.5; }
+  .p1 .badge { background:var(--dark); color:var(--yellow); padding:18px 32px; font-family:var(--font-mono); font-size:40px; font-weight:700; letter-spacing:3px; border:3px solid var(--dark); width:fit-content; }
+
+  /* ====================================== */
+  /* ========== P2 旧 6 人 ================= */
+  /* ====================================== */
+  .p2 .roles6 { display:grid; grid-template-columns:1fr 1fr; gap:14px; flex:1; }
+  .p2 .pp-card { padding:18px 22px; }
+  .p2 .pp-card .name { font-size:52px; font-weight:900; color:var(--dark); font-family:var(--font-heading); margin-top:6px; }
+  .p2 .pp-card .det { font-size:40px; color:var(--text-gray); font-weight:500; }
+  .p2 .pp-card .num { font-family:var(--font-heading); font-size:64px; font-weight:900; line-height:1; margin-top:auto; align-self:flex-end; }
+  .p2 .pp-card .num.indigo { color:var(--indigo); }
+  .p2 .pp-card .num.purple { color:var(--techPurple); }
+  .p2 .pp-card .num.pink { color:var(--purple); }
+  .p2 .pp-card .num.orange { color:var(--orange); }
+  .p2 .pp-card .num.green { color:var(--green); }
+  .p2 .pp-card .num.red { color:var(--red); }
+  .p2 .stats { display:flex; gap:8px; margin-top:24px; }
+  .p2 .stat { flex:1; background:var(--pink); border:3px solid var(--dark); padding:18px 22px; }
+  .p2 .stat .v { font-family:var(--font-heading); font-size:48px; font-weight:900; color:var(--red); line-height:1; }
+  .p2 .stat .l { font-size:34px; font-weight:700; color:var(--dark); margin-top:6px; }
+
+  /* ====================================== */
+  /* ========== P3 新 1 人 ================= */
+  /* ====================================== */
+  .p3 .big-card { background:#fff; border:3px solid var(--dark); box-shadow:10px 10px 0 var(--dark); padding:48px 56px; margin-bottom:28px; }
+  .p3 .big-card .num1 { font-family:var(--font-heading); font-size:200px; font-weight:900; color:var(--green); line-height:0.9; margin-bottom:12px; }
+  .p3 .big-card .role { font-family:var(--font-heading); font-size:48px; font-weight:900; color:var(--dark); margin-bottom:8px; }
+  .p3 .big-card .det { font-size:42px; color:var(--text-gray); font-weight:500; line-height:1.5; }
+  .p3 .stats { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:32px; }
+  .p3 .stat { background:#d4f4dd; border:3px solid var(--dark); padding:18px 22px; text-align:center; }
+  .p3 .stat .v { font-family:var(--font-heading); font-size:56px; font-weight:900; color:var(--green); line-height:1; }
+  .p3 .stat .l { font-size:34px; font-weight:700; color:var(--dark); margin-top:6px; }
+  .p3 .pun { font-family:var(--font-heading); font-size:48px; font-weight:900; color:var(--dark); text-align:center; line-height:1.4; }
+
+  /* ====================================== */
+  /* ========== P4 Step 1 ================= */
+  /* ====================================== */
+  .p4 .flow4 { display:grid; grid-template-columns:1fr 1fr; gap:14px; flex:1; align-content:start; }
+  .p4 .pp-card { min-height:200px; }
+  .p4 .pp-card .ico { font-size:60px; line-height:1; margin-bottom:8px; }
+  .p4 .pp-card .name { font-size:50px; font-weight:900; color:var(--dark); font-family:var(--font-heading); margin-bottom:8px; }
+  .p4 .pp-card .det { font-size:38px; color:var(--text-gray); line-height:1.4; }
+  .p4 .stats { display:flex; gap:8px; margin-top:24px; }
+  .p4 .stat { flex:1; background:#ffd6d6; border:3px solid var(--dark); padding:18px 22px; text-align:center; }
+  .p4 .stat .v { font-family:var(--font-heading); font-size:44px; font-weight:900; color:var(--red); line-height:1; }
+  .p4 .stat .l { font-size:32px; font-weight:700; color:var(--dark); margin-top:6px; }
+
+  /* ====================================== */
+  /* ========== P5 Step 2 (复刻 Z03) ====== */
+  /* ====================================== */
+  .p5 .flow5 { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; flex:1; }
+  .p5 .pp-card { display:flex; flex-direction:column; align-items:center; text-align:center; padding:20px 14px; }
+  .p5 .pp-card .pp-tag { margin-bottom:14px; font-size:16px; padding:5px 12px; }
+  .p5 .pp-card .name { font-family:var(--font-heading); font-size:38px; font-weight:900; color:var(--dark); margin-bottom:10px; }
+  .p5 .pp-card .det { font-size:18px; color:var(--text-gray); line-height:1.4; flex:1; }
+  .p5 .pp-card .no { font-family:var(--font-heading); font-size:60px; font-weight:900; margin-top:14px; line-height:1; }
+  .p5 .pp-card .no.indigo { color:var(--indigo); }
+  .p5 .pp-card .no.purple { color:var(--techPurple); }
+  .p5 .pp-card .no.pink { color:var(--purple); }
+  .p5 .pp-card .no.orange { color:var(--orange); }
+  .p5 .pp-card .no.green { color:var(--green); }
+  .p5 .compare { display:flex; margin-top:28px; border:3px solid var(--dark); }
+  .p5 .compare .col { flex:1; padding:18px 22px; }
+  .p5 .compare .col.before { background:var(--pink); border-right:3px solid var(--dark); }
+  .p5 .compare .col.now { background:#d4f4dd; }
+  .p5 .compare .ttl { font-family:var(--font-mono); font-size:32px; font-weight:700; letter-spacing:2px; margin-bottom:10px; }
+  .p5 .compare .col.before .ttl { color:var(--red); }
+  .p5 .compare .col.now .ttl { color:var(--green); }
+  .p5 .compare .v { font-size:42px; font-weight:900; color:var(--dark); }
+  .p5 .compare .v small { font-size:32px; font-weight:500; color:var(--text-gray); }
+
+  /* ====================================== */
+  /* ========== P6 Master + Variant ======= */
+  /* ====================================== */
+  .p6 .master { background:var(--dark); color:#fff; border:3px solid var(--dark); box-shadow:8px 8px 0 var(--red); padding:28px 32px; margin-bottom:24px; text-align:center; }
+  .p6 .master .lbl { font-family:var(--font-mono); font-size:32px; letter-spacing:2px; color:var(--yellow); margin-bottom:8px; }
+  .p6 .master .ttl { font-family:var(--font-heading); font-size:44px; font-weight:900; color:#fff; }
+  .p6 .down { text-align:center; font-size:48px; color:var(--red); font-weight:900; margin-bottom:8px; }
+  .p6 .variants { display:grid; grid-template-columns:1fr 1fr; gap:8px; flex:1; }
+  .p6 .pp-card { padding:20px 24px; }
+  .p6 .pp-card .name { font-family:var(--font-heading); font-size:42px; font-weight:900; color:var(--dark); margin:6px 0; }
+  .p6 .pp-card .det { font-size:34px; color:var(--text-gray); line-height:1.4; }
+  .p6 .pp-card .spec { font-family:var(--font-mono); font-size:18px; color:var(--red); margin-top:6px; font-weight:700; }
+
+  /* ====================================== */
+  /* ========== P7 Pipeline + Memory ====== */
+  /* ====================================== */
+  .p7 .skills { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:28px; }
+  .p7 .sk { background:#fff; border:3px solid var(--dark); padding:14px 8px; text-align:center; }
+  .p7 .sk .ico { font-size:58px; line-height:1; margin-bottom:6px; }
+  .p7 .sk .n { font-family:var(--font-mono); font-size:18px; font-weight:700; color:var(--dark); line-height:1.2; }
+  .p7 .memory-ttl { font-family:var(--font-heading); font-size:52px; font-weight:900; color:var(--dark); margin-bottom:16px; }
+  .p7 .layers { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:24px; }
+  .p7 .layer { background:#fff; border:3px solid var(--dark); box-shadow:6px 6px 0 var(--dark); padding:20px 24px; }
+  .p7 .layer.l1 { background:var(--techBg); }
+  .p7 .layer.l2 { background:var(--govBg); }
+  .p7 .layer.l3 { background:var(--industryBg); }
+  .p7 .layer .lbl { font-family:var(--font-mono); font-size:32px; font-weight:700; margin-bottom:10px; letter-spacing:1.5px; }
+  .p7 .layer.l1 .lbl { color:var(--techPurple); }
+  .p7 .layer.l2 .lbl { color:var(--govOrange); }
+  .p7 .layer.l3 .lbl { color:var(--industryCyan); }
+  .p7 .layer .ttl { font-family:var(--font-heading); font-size:38px; font-weight:900; color:var(--dark); margin-bottom:6px; }
+  .p7 .layer .det { font-size:20px; color:var(--text-gray); line-height:1.4; }
+  .p7 .pun { font-family:var(--font-heading); font-size:58px; font-weight:900; color:var(--dark); text-align:center; line-height:1.4; }
+  .p7 .pun .hl { padding:0 4px; }
+
+  /* ====================================== */
+  /* ========== P8 CTA（深色保留） ========= */
+  /* ====================================== */
+  .p8 { background:var(--dark); color:var(--warmBg); justify-content:center; }
+  .p8 .p-pill { background:var(--yellow); color:var(--dark); align-self:flex-start; }
+  .p8 .p-title { color:#fff; }
+  .p8 .p-title .hl::after { background:var(--yellow); opacity:1; }
+  .p8 .grid4 { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:32px 0; }
+  .p8 .sg { background:rgba(255,255,255,0.08); border:3px solid var(--yellow); padding:18px 22px; }
+  .p8 .sg .stn { font-family:var(--font-mono); font-size:34px; font-weight:700; color:var(--yellow); margin-bottom:8px; letter-spacing:2px; }
+  .p8 .sg .std { font-family:var(--font-heading); font-size:46px; font-weight:900; color:#fff; }
+  .p8 .cta-sub { font-size:42px; font-weight:500; color:var(--warmBg); opacity:0.9; line-height:1.5; }
+  .p8 .p-logo-tr .ic { background:var(--yellow); color:var(--dark); }
+  .p8 .p-logo-tr .nm { color:#fff; }
+  .p8 .p-logo-tr .nm small { color:var(--yellow); }
+  .p8 .p-footer { color:var(--yellow); }
+  .p8 .p-footer .pno { color:#fff; }
+</style>
+</head>
+<body>
+<aside class="thumb-nav">
+  <a class="thumb" href="#p1"><span class="n">1</span><span class="l">封面</span></a>
+  <a class="thumb" href="#p2"><span class="n">2</span><span class="l">旧 6 人</span></a>
+  <a class="thumb" href="#p3"><span class="n">3</span><span class="l">新 1 人</span></a>
+  <a class="thumb" href="#p4"><span class="n">4</span><span class="l">Step 1</span></a>
+  <a class="thumb" href="#p5"><span class="n">5</span><span class="l">Step 2</span></a>
+  <a class="thumb" href="#p6"><span class="n">6</span><span class="l">Step 3</span></a>
+  <a class="thumb" href="#p7"><span class="n">7</span><span class="l">Step 4</span></a>
+  <a class="thumb" href="#p8"><span class="n">8</span><span class="l">CTA</span></a>
+</aside>
+<header class="topbar">
+  <h1>JR ACADEMY · <span>XHS</span> 配图 · N6 · 1 人替代 6 人 marketing（PPT 风格 v2）</h1>
+  <nav><a href="../index.html">← 总览</a><a href="../case-T01.html">Case T01</a><a href="N1.html">N1</a><a href="N2.html">N2</a><a class="active" href="N6.html">N6</a></nav>
+</header>
+<section class="intro">
+  <span class="label">XHS POSTERS · N6 · v2 PPT 风格</span>
+  <h2>🔥 用 AI 把整个 marketing 团队拆成 <span class="hl-r">4 步</span> · PPT 风格 v2</h2>
+  <p>奶油底 · 白卡 + 多色 pill · 黄色下划线高亮 · 严格对齐讲座 theme.ts</p>
+  <div class="pills">
+    <span class="pill">奶油底 #fff1e7</span><span class="pill">7 色卡片</span>
+    <span class="pill">.hl 下划线效果</span><span class="pill">DM Sans + Bricolage</span>
+    <span class="pill">.p-dots 点阵装饰</span>
+  </div>
+</section>
+
+<!-- ============ P1 封面 ============ -->
+<section class="poster-frame" id="p1">
+  <div class="poster-main">
+    <div class="poster-label">P1 · 封面 <span class="meta">6→1 反差</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p1">
+      <div class="p-dots"></div>
+      <div class="p-logo-tr"><div class="ic">JR</div><div class="nm">匠人学院<small>JR ACADEMY</small></div></div>
+      <div class="p-pill red">JR · 内部 DOGFOOD</div>
+      <div class="big-row">
+        <div class="num6">6</div>
+        <div class="arrow">→</div>
+        <div class="num1">1</div>
+      </div>
+      <div class="pun">用 AI 把整个 marketing 团队<br>拆成 <span class="hl">4 步</span></div>
+      <div class="sub">差的不是人 · 是 <span class="hl-b">pipeline</span></div>
+      <div class="badge">REAL · 不是 demo</div>
+      <div class="p-footer"><span>case-N6 · ai-new-jobs-talk</span><span><span class="pno">01</span> / 08</span></div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p1',event)">📷 下载 P1 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">N6 主稿 · 震撼篇</div>
+    <div class="cp-label">标题</div>
+    <div class="cp-box" id="t-title">🔥 用 AI 把整个 marketing 团队拆成 4 步</div>
+    <button class="cp-btn" data-target="t-title">复制标题</button>
+    <div class="cp-label">话题</div>
+    <div class="cp-box hashtags">#AI落地 #AIAgent #自动化 #创业 #AI</div>
+  </aside>
+</section>
+
+<!-- ============ P2 旧 6 人 ============ -->
+<section class="poster-frame" id="p2">
+  <div class="poster-main">
+    <div class="poster-label">P2 · 旧 6 人团队 <span class="meta">6 色 pp-tag</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p2">
+      <div class="p-dots"></div>
+      <div class="p-logo-tr"><div class="ic">JR</div><div class="nm">匠人学院<small>JR ACADEMY</small></div></div>
+      <div class="p-pill red">BEFORE · 旧方式</div>
+      <div class="p-title">传统营销团队 · <span class="hl">6 人</span></div>
+      <div class="p-sub">每天 4 小时 · 4 平台 · 1x 产出</div>
+      <div class="roles6">
+        <div class="pp-card"><div class="pp-tag indigo">01 · 选题</div><div class="name">2 人</div><div class="det">刷热点 · 看竞品</div><div class="num indigo">01</div></div>
+        <div class="pp-card"><div class="pp-tag purple">02 · 选题</div><div class="name">2 人</div><div class="det">数据分析师协同</div><div class="num purple">02</div></div>
+        <div class="pp-card"><div class="pp-tag pink">03 · 写文案</div><div class="name">1 人</div><div class="det">手动起稿 · 排版</div><div class="num pink">03</div></div>
+        <div class="pp-card"><div class="pp-tag orange">04 · 设计</div><div class="name">1 人</div><div class="det">配图 · 视觉</div><div class="num orange">04</div></div>
+        <div class="pp-card"><div class="pp-tag green">05 · 发布</div><div class="name">1 人</div><div class="det">手动 4 平台</div><div class="num green">05</div></div>
+        <div class="pp-card"><div class="pp-tag red">06 · 数据</div><div class="name">1 人</div><div class="det">复盘 · 报表</div><div class="num red">06</div></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="v">4h</div><div class="l">每天</div></div>
+        <div class="stat"><div class="v">4</div><div class="l">平台</div></div>
+        <div class="stat"><div class="v">1x</div><div class="l">产出</div></div>
+      </div>
+      <div class="p-footer"><span>BEFORE · 6 人架构</span><span><span class="pno">02</span> / 08</span></div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p2',event)">📷 下载 P2 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">P2 · 旧 6 人架构</div>
+    <div class="cp-box" id="t-p2">旧 marketing 团队 6 人架构：
+2 选题 / 1 写文案 / 1 设计 / 1 发布 / 1 数据
+4 小时 / 天 · 4 平台 · 1x 产出</div>
+    <button class="cp-btn" data-target="t-p2">复制要点</button>
+  </aside>
+</section>
+
+<!-- ============ P3 新 1 人 ============ -->
+<section class="poster-frame" id="p3">
+  <div class="poster-main">
+    <div class="poster-label">P3 · 新 1 人 + AI Pipeline <span class="meta">绿色 stats</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p3">
+      <div class="p-dots bl"></div>
+      <div class="p-logo-tr"><div class="ic">JR</div><div class="nm">匠人学院<small>JR ACADEMY</small></div></div>
+      <div class="p-pill green">AFTER · AI-native</div>
+      <div class="p-title">AI-native 团队 · <span class="hl">1 人</span></div>
+      <div class="p-sub">监控 30 分钟 / 天 · 角色从"写手"变"监督员"</div>
+      <div class="big-card">
+        <div class="num1">1</div>
+        <div class="role">监督员（不是写手）</div>
+        <div class="det">JR Academy <b>11 个小红书号矩阵 · 每周 35+ 条内容</b>。<br>30 分钟看 dashboard · pipeline 跑过 /xhs-score 89/100 自动发。</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="v">30m</div><div class="l">每天</div></div>
+        <div class="stat"><div class="v">4</div><div class="l">平台</div></div>
+        <div class="stat"><div class="v">3x</div><div class="l">产出</div></div>
+      </div>
+      <div class="pun">差的不是人 · 是 <span class="hl hl-b">pipeline</span></div>
+      <div class="p-footer"><span>AFTER · AI-native 架构</span><span><span class="pno">03</span> / 08</span></div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p3',event)">📷 下载 P3 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">P3 · 新 1 人架构</div>
+    <div class="cp-box" id="t-p3">新 AI-native 团队 1 人：
+30 分钟 / 天监控 · 4 平台 · 3x 产出
+角色：写手 → 监督员</div>
+    <button class="cp-btn" data-target="t-p3">复制要点</button>
+  </aside>
+</section>
+
+<!-- ============ P4 Step 1 ============ -->
+<section class="poster-frame" id="p4">
+  <div class="poster-main">
+    <div class="poster-label">P4 · Step 1 手工玩 AI <span class="meta">4 流程白卡</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p4">
+      <div class="p-dots"></div>
+      <div class="p-logo-tr"><div class="ic">JR</div><div class="nm">匠人学院<small>JR ACADEMY</small></div></div>
+      <div class="p-pill red">STEP 1 · 99% 人卡这</div>
+      <div class="p-title">用 ChatGPT 写一条<br><span class="hl">小红书文案</span></div>
+      <div class="p-sub">大家都知道的 · 手工 · 单平台 · 0 自动化</div>
+      <div class="flow4">
+        <div class="pp-card"><div class="ico">🧑‍💻</div><div class="pp-tag indigo">01</div><div class="name">你</div><div class="det">打开浏览器</div></div>
+        <div class="pp-card"><div class="ico">💬</div><div class="pp-tag purple">02</div><div class="name">ChatGPT</div><div class="det">输入 prompt：<br>"帮我写一条小红书 主题 X"</div></div>
+        <div class="pp-card"><div class="ico">📋</div><div class="pp-tag pink">03</div><div class="name">复制粘贴</div><div class="det">手动贴到小红书 + 配图</div></div>
+        <div class="pp-card"><div class="ico">📱</div><div class="pp-tag orange">04</div><div class="name">发布</div><div class="det">手动选话题 + 时段</div></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="v">2 分</div><div class="l">每条耗时</div></div>
+        <div class="stat"><div class="v">1</div><div class="l">平台 · 1 条</div></div>
+        <div class="stat"><div class="v">0%</div><div class="l">自动化</div></div>
+      </div>
+      <div class="p-footer"><span>STEP 1 · 手工</span><span><span class="pno">04</span> / 08</span></div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p4',event)">📷 下载 P4 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">P4 · Step 1 朴素</div>
+    <div class="cp-box" id="t-p4">Step 1 · 手工玩 AI：
+你 → ChatGPT → 复制粘贴 → 发布
+2 分钟 / 条 · 1 平台 · 0% 自动化
+99% 人卡这。</div>
+    <button class="cp-btn" data-target="t-p4">复制要点</button>
+  </aside>
+</section>
+
+<!-- ============ P5 Step 2 (复刻 Z03) ============ -->
+<section class="poster-frame" id="p5">
+  <div class="poster-main">
+    <div class="poster-label">P5 · Step 2 模板化 <span class="meta">5 阶段（复刻 Z03）</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p5">
+      <div class="p-dots"></div>
+      <div class="p-logo-tr"><div class="ic">JR</div><div class="nm">匠人学院<small>JR ACADEMY</small></div></div>
+      <div class="p-pill indigo">STEP 2 · 模板化自动化</div>
+      <div class="p-title">AI 帮你 <span class="hl hl-b">执行</span>，你只做 <span class="hl hl-r">决策</span></div>
+      <div class="p-sub">一次配置 · 每周自动跑 · 你的工作从"写文案"变成"审文案"</div>
+      <div class="flow5">
+        <div class="pp-card"><div class="pp-tag indigo">TRIGGER</div><div class="name">Cron Job</div><div class="det">每周一<br>9:00 AM<br>自动触发</div><div class="no indigo">01</div></div>
+        <div class="pp-card"><div class="pp-tag purple">GENERATE</div><div class="name">AI 写文案</div><div class="det">按模板<br>(hook+痛点+CTA)<br>一次生成 5 条</div><div class="no purple">02</div></div>
+        <div class="pp-card"><div class="pp-tag pink">VISUAL</div><div class="name">AI 配图</div><div class="det">gpt-image-2<br>按品牌色<br>出图</div><div class="no pink">03</div></div>
+        <div class="pp-card"><div class="pp-tag orange">REVIEW</div><div class="name">推送给你审</div><div class="det">Notion / 飞书<br>卡片 · 你点<br>"确认 ✓"</div><div class="no orange">04</div></div>
+        <div class="pp-card"><div class="pp-tag green">SCHEDULE</div><div class="name">Buffer / Later</div><div class="det">自动按最佳时段<br>schedule 到<br>小红书 / X</div><div class="no green">05</div></div>
+      </div>
+      <div class="compare">
+        <div class="col before">
+          <div class="ttl">BEFORE · Step 1</div>
+          <div class="v">2 分钟 × 5 条 = 10 分钟 <small>· 你写、你发、你重复</small></div>
+        </div>
+        <div class="col now">
+          <div class="ttl">NOW · Step 2</div>
+          <div class="v">0 写作时间 + 5 分钟审稿 <small>· AI 执行 · 你决策</small></div>
+        </div>
+      </div>
+      <div class="p-footer"><span>STEP 2 · 模板化（复刻 PPT Z03）</span><span><span class="pno">05</span> / 08</span></div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p5',event)">📷 下载 P5 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">P5 · Step 2（PPT Z03 复刻）</div>
+    <div class="cp-box" id="t-p5">Step 2 · 模板化 5 阶段：
+Cron → AI 写 → AI 配图 → 你审 → Buffer
+每条 2 分钟 → 1 分钟（-80% 时间）
+角色：写手 → 审核员</div>
+    <button class="cp-btn" data-target="t-p5">复制要点</button>
+  </aside>
+</section>
+
+<!-- ============ P6 Master + Variant ============ -->
+<section class="poster-frame" id="p6">
+  <div class="poster-main">
+    <div class="poster-label">P6 · Master + Variant <span class="meta">4 平台 fan-out</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p6">
+      <div class="p-dots"></div>
+      <div class="p-logo-tr"><div class="ic">JR</div><div class="nm">匠人学院<small>JR ACADEMY</small></div></div>
+      <div class="p-pill blue">STEP 3 · 4 平台分发</div>
+      <div class="p-title">1 份 <span class="hl">Master</span> · 4 个 Variant</div>
+      <div class="p-sub">从内容生产者 → 内容架构师</div>
+      <div class="master">
+        <div class="lbl">⭐ MASTER · 主稿</div>
+        <div class="ttl">26 岗位核心数据 + 5 处数据源 + 品牌语调</div>
+      </div>
+      <div class="down">↓ Variant Transformer ↓</div>
+      <div class="variants">
+        <div class="pp-card"><div class="pp-tag indigo">🐦 X</div><div class="name">Twitter Thread</div><div class="det">280 字 · hook + 拆解</div><div class="spec">16:9 主图</div></div>
+        <div class="pp-card"><div class="pp-tag pink">📕 小红书</div><div class="name">3:4 海报集</div><div class="det">400-600 字 · 5 话题</div><div class="spec">3:4 × 8 张</div></div>
+        <div class="pp-card"><div class="pp-tag blue">💼 LinkedIn</div><div class="name">长文 + banner</div><div class="det">1200 字 · 专业语气</div><div class="spec">1200×627 banner</div></div>
+        <div class="pp-card"><div class="pp-tag orange">📱 公众号</div><div class="name">深度长文</div><div class="det">1800 字 · 排版 + CTA</div><div class="spec">900×500 header</div></div>
+      </div>
+      <div class="p-footer"><span>STEP 3 · Master + Variant 架构</span><span><span class="pno">06</span> / 08</span></div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p6',event)">📷 下载 P6 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">P6 · Step 3 Master+Variant</div>
+    <div class="cp-box" id="t-p6">Step 3 · Master + 4 Variant：
+1 份主稿 → fan-out X / 小红书 / LinkedIn / 公众号
+改 Master 一处 = 4 平台同步生效。
+你从审核员 → 内容架构师。</div>
+    <button class="cp-btn" data-target="t-p6">复制要点</button>
+  </aside>
+</section>
+
+<!-- ============ P7 Pipeline + Memory ============ -->
+<section class="poster-frame" id="p7">
+  <div class="poster-main">
+    <div class="poster-label">P7 · Step 4 进化 Pipeline + Memory <span class="meta">5 skills + 3 层记忆</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p7">
+      <div class="p-dots"></div>
+      <div class="p-logo-tr"><div class="ic">JR</div><div class="nm">匠人学院<small>JR ACADEMY</small></div></div>
+      <div class="p-pill purple">STEP 4 · 自我进化</div>
+      <div class="p-title">5 Skills + <span class="hl">3 层记忆</span></div>
+      <div class="p-sub">/xhs-score 89/100 · 推荐发 · 数据回流自动调权</div>
+      <div class="skills">
+        <div class="sk"><div class="ico">🎯</div><div class="n">topic-<br>picker</div></div>
+        <div class="sk"><div class="ico">✍️</div><div class="n">draft</div></div>
+        <div class="sk"><div class="ico">🔍</div><div class="n">review</div></div>
+        <div class="sk"><div class="ico">🎨</div><div class="n">poster</div></div>
+        <div class="sk"><div class="ico">📊</div><div class="n">score</div></div>
+      </div>
+      <div class="memory-ttl">+ Enterprise Memory 3 层</div>
+      <div class="layers">
+        <div class="layer l1">
+          <div class="lbl">👤 员工记忆</div>
+          <div class="ttl">KIKI 偏好</div>
+          <div class="det">钩子模式 / 上周开头 / 个人 ban-list</div>
+        </div>
+        <div class="layer l2">
+          <div class="lbl">🏢 品牌记忆</div>
+          <div class="ttl">JR 语调</div>
+          <div class="det">违禁词 / 历史爆款 / 受众分布</div>
+        </div>
+        <div class="layer l3">
+          <div class="lbl">📈 业务记忆</div>
+          <div class="ttl">本季 OKR</div>
+          <div class="det">活动 / 团队带宽 / 发布时段</div>
+        </div>
+      </div>
+      <div class="pun">没记忆的 AI = 工具 · <span class="hl hl-g">有记忆的 AI = 同事</span></div>
+      <div class="p-footer"><span>STEP 4 · Pipeline + Memory</span><span><span class="pno">07</span> / 08</span></div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p7',event)">📷 下载 P7 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">P7 · Step 4 + Memory</div>
+    <div class="cp-box" id="t-p7">Step 4 · 5 个 Skills + 3 层企业记忆：
+topic-picker → draft → review → poster → score
++ 员工 / 品牌 / 业务 三层记忆
+没记忆 = 工具 · 有记忆 = 同事</div>
+    <button class="cp-btn" data-target="t-p7">复制要点</button>
+  </aside>
+</section>
+
+<!-- ============ P8 CTA ============ -->
+<section class="poster-frame" id="p8">
+  <div class="poster-main">
+    <div class="poster-label">P8 · CTA <span class="meta">深色收尾</span></div>
+    <div class="poster-scaler"><div class="poster"><div class="p p8">
+      <div class="p-dots" style="opacity:0.08"></div>
+      <div class="p-logo-tr"><div class="ic">JR</div><div class="nm">匠人学院<small>JR ACADEMY</small></div></div>
+      <div class="p-pill" style="background:var(--yellow);color:var(--dark)">XHS · 自检 + 互动</div>
+      <div class="p-title">你卡在 <span class="hl">第几步</span>？</div>
+      <div class="p-sub" style="color:var(--yellow); opacity:0.9">差距不在工具 · 在你愿不愿意把流程拆开重组</div>
+      <div class="grid4">
+        <div class="sg"><div class="stn">STEP 1</div><div class="std">手工用 AI</div></div>
+        <div class="sg"><div class="stn">STEP 2</div><div class="std">会写模板</div></div>
+        <div class="sg"><div class="stn">STEP 3</div><div class="std">会串多工具</div></div>
+        <div class="sg"><div class="stn">STEP 4</div><div class="std">会设计 pipeline</div></div>
+      </div>
+      <div class="cta-sub">📌 评论扣 "你在第几步" · 我给具体下一步学习路径<br>📌 主页 60 分钟讲座完整版讲了这套系统怎么搭</div>
+      <div class="p-footer"><span>CTA · 互动收尾</span><span><span class="pno">08</span> / 08</span></div>
+    </div></div></div>
+    <button class="dl-btn" onclick="dlP('p8',event)">📷 下载 P8 (PNG)</button>
+  </div>
+  <aside class="copy-panel">
+    <div class="cp-title">P8 · CTA 文案</div>
+    <div class="cp-box" id="t-p8">📌 评论扣 "你在第几步"，我给具体下一步学习路径
+📌 主页 60 分钟讲座完整版讲了这套系统怎么搭</div>
+    <button class="cp-btn" data-target="t-p8">复制 CTA</button>
+  </aside>
+</section>
+
+<script>
+  document.querySelectorAll('.cp-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const t = btn.dataset.target;
+      const el = document.getElementById(t);
+      if (!el) return;
+      try {
+        await navigator.clipboard.writeText(el.textContent.trim());
+        const o = btn.textContent; btn.textContent = '✓ 已复制'; btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = o; btn.classList.remove('copied'); }, 1500);
+      } catch (e) { alert('复制失败：' + e.message); }
+    });
+  });
+  async function dlP(id, ev) {
+    const btn = ev.target;
+    const p = document.querySelector(`#${id} .poster`);
+    if (!p) return;
+    const o = btn.textContent; btn.textContent = '⏳ 生成中...'; btn.disabled = true;
+    try {
+      const ot = p.style.transform;
+      p.style.transform = 'none'; p.style.position = 'fixed'; p.style.left = '-9999px'; p.style.top = '0';
+      const url = await htmlToImage.toPng(p, { width:1242, height:1660, pixelRatio:1, cacheBust:true, style:{transform:'none'} });
+      p.style.transform = ot; p.style.position = ''; p.style.left = ''; p.style.top = '';
+      const a = document.createElement('a'); a.href = url; a.download = `N6-v2-${id}-${Date.now()}.png`; a.click();
+    } catch (e) { alert('下载失败：' + e.message); }
+    finally { btn.textContent = o; btn.disabled = false; }
+  }
+</script>
+</body>
+</html>
