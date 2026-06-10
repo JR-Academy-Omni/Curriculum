@@ -29,6 +29,7 @@ import S14 from './components/slides/S14_Step4Loop';
 import S14b from './components/slides/S14b_XhsAudit';
 import S15 from './components/slides/S15_Step5Memory';
 import S16 from './components/slides/S16_LadderRecap';
+import S16b from './components/slides/S16b_AdOPC';
 
 // CH 3 · 核心：维护一份真相（Master / Source of Truth）
 import S17 from './components/slides/S17_SoTThesis';
@@ -53,6 +54,7 @@ import S28 from './components/slides/S28_CourseCoding';
 import S29 from './components/slides/S29_CourseOPC';
 import S30 from './components/slides/S30_MetaClose';
 import S31 from './components/slides/S31_End';
+import S31b from './components/slides/S31b_AdOPC';
 import S32 from './components/slides/S32_Metatree';
 
 export default function App() {
@@ -74,6 +76,8 @@ export default function App() {
 			{/* CH 2 · 演示落差 · 5 级阶梯 */}
 			<SectionCover kicker="CHAPTER 2 · 演示落差" title="同一句话，我跑给你看" titleAccent="5 个段位" sub="AI Marketing 不是「用 AI」，是搭一条会自己跑的 pipeline" bg={colors.dark} />
 			<S11 /><S12 /><S12b /><S13 /><S13b /><S13c /><S14 /><S14b /><S15 /><S16 />
+			{/* 广告位 · CH2 热度顶点插播 OPC（重点推广） */}
+			<S16b />
 
 			{/* CH 3 · 核心 · 维护一份真相 */}
 			<S17 /><S18 /><S18b /><S19b /><S20 /><S21 />
@@ -88,6 +92,8 @@ export default function App() {
 
 			{/* CH 5 · 落地 */}
 			<S27 /><S28 /><S29 /><S30 /><S31 />
+			{/* 广告位 · Q&A 挂屏：OPC 大二维码 + AI Coding 小入口 */}
+			<S31b />
 
 			{/* 合作伙伴 · 收尾 */}
 			<S32 />

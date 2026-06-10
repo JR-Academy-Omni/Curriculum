@@ -5,7 +5,7 @@ owner: @lightman
 priority: high
 ---
 
-> ⚙️ **v0.3 build（已部署）**：deck 工程已建在本目录（React 19 + Vite + SlideEngine，主题色 `#E63977`）。当前 **44 页**：双 Poll 开场（P50/P95 立论，克隆 `ai-engineer-resume-interview` S02–S05）+ 5 转变 + 5 级阶梯 + Master/SoT + 一人公司/AI Coding 必会 + 双轴自检导流 + 合作伙伴收尾。`bun run build` 通过（tsc 0 / vite 463 模块）。本地讲：`cd curriculum/lessons/ai-marketing-talk && bun run dev`。**deploy.yml 已注册 + lessons.html 已加卡片**，线上地址 `jiangren.com.au/curriculum/lessons/ai-marketing-talk/`。待办：两课二维码图、CH2 现场 demo 接真实 case 素材。
+> ⚙️ **v0.4 build（已部署 + 广告位）**：deck 工程已建在本目录（React 19 + Vite + SlideEngine，主题色 `#E63977`）。当前 **46 页**：双 Poll 开场（P50/P95 立论，克隆 `ai-engineer-resume-interview` S02–S05）+ 5 转变 + 5 级阶梯 + Master/SoT + 一人公司/AI Coding 必会 + 双轴自检导流 + 合作伙伴收尾。**广告位 ×3（重点推 OPC 一人创业营）**：S16b CH2 热度顶点插播广告（OPC 钩子 + 二维码）、S29 价格卡加二维码、S31b Q&A 挂屏大广告（OPC 大码 + AI Coding 小码）。两课二维码已生成（`public/qr/{opc,coding}.png`，指向 `/program-course/` 落地页，curl 实测 200）。`bun run build` 通过（tsc 0 / vite 465 模块）。本地讲：`cd curriculum/lessons/ai-marketing-talk && bun run dev`。**deploy.yml 已注册 + lessons.html 已加卡片**，线上地址 `jiangren.com.au/curriculum/lessons/ai-marketing-talk/`。待办：CH2 现场 demo 接真实 case 素材。
 
 # PRD · 网页版讲座《新时代的 AI Marketing》
 

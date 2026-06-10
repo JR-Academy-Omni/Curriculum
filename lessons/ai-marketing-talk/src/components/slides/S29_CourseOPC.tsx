@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, colors, fonts, border, shadow } from '../ui';
+import { Slide, colors, fonts, border, assetPath } from '../ui';
 
 const points = ['OPC 一人公司主轴：把会 AI 转成自己的生意', '拿澳洲 Grant 补助 + 本地会计落地', '墨 / 悉 / 布三城线下 networking', '给已有积累、想自己干的那批人'];
 
@@ -34,8 +34,11 @@ export default function S29_CourseOPC() {
 						</motion.div>
 						<div style={{ fontFamily: fonts.mono, fontSize: 15.5, fontWeight: 700, color: colors.rose, marginBottom: 10 }}>首期席位 · 限量 · AUD</div>
 						<div style={{ fontFamily: fonts.heading, fontSize: 42.5, fontWeight: 900, letterSpacing: -1, lineHeight: 1.1 }}>$2,400<span style={{ fontSize: 21, color: '#999' }}> 预售</span></div>
-						<div style={{ fontFamily: fonts.body, fontSize: 16.5, color: '#666', marginBottom: 18 }}>首期早鸟 $2,800 · 第二期 $3,800</div>
-						<div style={{ fontFamily: fonts.body, fontSize: 15.5, color: '#666' }}>只讲能力与机会，不承诺收入</div>
+						<div style={{ fontFamily: fonts.body, fontSize: 16.5, color: '#666', marginBottom: 14 }}>首期早鸟 $2,800 · 第二期 $3,800</div>
+						<div>
+							<img src={assetPath('qr/opc.png')} alt="AI 一人创业营详情页二维码" style={{ width: 150, height: 150, border: `1px solid #e5e5e5` }} />
+						</div>
+						<div style={{ fontFamily: fonts.body, fontSize: 15.5, color: '#666', marginTop: 10 }}>扫码看详情 · 只讲能力与机会，不承诺收入</div>
 					</motion.div>
 				</div>
 			</div>
