@@ -69,6 +69,14 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/ai-marketing-talk (~2h 公开讲座 · 44 张 slide · 新时代的 AI Marketing — 一个人 = 一支营销队伍)
+      # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 导流 ai-programming + ai-solo-founder-bootcamp
+      - name: Build lessons/ai-marketing-talk
+        working-directory: lessons/ai-marketing-talk
+        run: |
+          bun install
+          bun run build
+
       # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
       # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
       # base 已写进 package.json: --base /curriculum/lessons/vibe-coding/
@@ -304,6 +312,13 @@ jobs:
           if [ -d lessons/ai-new-jobs-talk/xhs ]; then
             mkdir -p _site/lessons/ai-new-jobs-talk/xhs
             cp -r lessons/ai-new-jobs-talk/xhs/* _site/lessons/ai-new-jobs-talk/xhs/
+          fi
+
+          # lessons/ai-marketing-talk: ~2h 公开讲座 slide deck (React + Vite · 44 张 slide)
+          # 跨课复用 lesson · 主题色 #E63977 · 导流 ai-programming + ai-solo-founder-bootcamp
+          if [ -d lessons/ai-marketing-talk/dist ]; then
+            mkdir -p _site/lessons/ai-marketing-talk
+            cp -r lessons/ai-marketing-talk/dist/* _site/lessons/ai-marketing-talk/
           fi
 
           # ai-engineer-resume-interview · 3h 内部学员讲座（slide deck + public/ zip 下载）
