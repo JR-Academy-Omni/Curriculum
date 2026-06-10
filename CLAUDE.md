@@ -89,6 +89,56 @@ Step 5: 确认无误 → Sync 同步到 production
 
 ---
 
+## 🚨 Marketing 内容文件结构（被 Marketing Dashboard 实时拉取）
+
+每门课的 marketing planning / runtime output **都直接落盘**到 `curriculum/{slug}/`，admin.jiangren.com.au/marketing-dashboard 通过 GitHub raw API 实时读 main 分支。**没 commit + push 的修改 prod 看不见。**
+
+### 12 个核心 md（被 dashboard 12 个静态 tab 渲染）
+
+```
+curriculum/{slug}/
+├── DESIGN.md                            # 课程设计 / 卖点
+├── PERSONAS.md                          # 目标用户画像（target-user-persona-mapper 产出）
+├── PERSONAS-INIT-REPORT.md              # persona 首次生成的 audit 报告
+├── FUNNEL_PLAN.md                       # 付费漏斗（course-funnel-architect 产出）
+├── PROMOTION_PLAN.md                    # 推广计划（course-promotion-architect 产出）
+├── MARKETING_WORKFLOW_MASTER.md         # marketing 总编排
+├── EXECUTION_TIMELINE.md                # T-30 → D+30 执行时间轴
+├── MARKETING_WORKFLOW_GAP_AUDIT.md      # 缺口审计
+├── AUDIT_LOG.md                         # 课程体检日志
+└── sops/
+    ├── STUDENT_OUTPUT_COLLECTION_SOP.md
+    ├── COHORT_GROUP_OPERATIONS_SOP.md
+    └── ALUMNI_NURTURE_LOOP.md
+```
+
+### Agent outputs（动态 tab — `🤖 AGENT·XXX`）
+
+```
+curriculum/{slug}/agent-outputs/
+├── AGENT_PERSONA_VALIDATE.md            # 由 marketing-agents-runtime/{slug}/run.sh sync 过来
+├── AGENT_XHS_TOPICS.md
+├── AGENT_XHS_03_REVIEW.md
+└── AGENT_XHS_04_DISPATCHED.md
+```
+
+源在父 monorepo `marketing-agents-runtime/{slug}/outputs/`，`run.sh sync_to_dashboard()` 复制过来落 curriculum git。
+
+### 不在 curriculum/ 里的 marketing 数据
+
+| 数据 | 位置 | 为什么 |
+|------|------|--------|
+| `STATE.json`（agent runtime 状态） | 父 monorepo `marketing-agents-runtime/{slug}/STATE.json` | Bitbucket private，**只 local dev 可见**，prod dashboard 显示"未生成" |
+| 提示词 prompts | 各 skill 自己的 `.claude/skills/{name}/SKILL.md` | skill 系统管，不在课程目录 |
+
+### 一致性铁律
+
+- 当前完整度对照：dashboard sidebar 4 状态点 = `PERSONAS / FUNNEL_PLAN / PROMOTION_PLAN / AUDIT_LOG`
+- 32 课目前只有 **ai-programming** 4/4 完整，其它课多数只有 `DESIGN.md`
+- 加新 marketing skill 时，输出 md 文件名要么进 12 静态列表（要更新 `jr-academy-admin/src/pages/MarketingDashboard/data/courseNames.ts` 的 `STATIC_DOCS`），要么落 `agent-outputs/`（自动作为动态 tab 出现，文件名 `AGENT_*.md`）
+
+---
+
 ## 🚨 Lesson 两个内容字段的区别
 
 后端 Lesson Schema (`jr-academy/src/models/lesson.schema.ts`) 有两个容易混淆的内容字段：

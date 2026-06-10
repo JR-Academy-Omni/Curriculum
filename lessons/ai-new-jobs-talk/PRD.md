@@ -1,9 +1,48 @@
+---
+title: 网页版讲座《AI 催生了哪些新岗位？》PRD
+status: ship
+owner: @lightman
+priority: high
+---
+
 # PRD · 网页版讲座《AI 催生了哪些新岗位？》
 
 > 文档类型：产品需求文档 (PRD)
-> 版本：v0.1（待 sign-off）
+> 版本：**v0.2（已上线 · 持续迭代）** — v0.1 是 38 页计划稿，本版同步到实际上线的 63 页结构
 > 项目代号：`ai-new-jobs-talk`
+> 线上地址：`jiangren.com.au/curriculum/lessons/ai-new-jobs-talk/`（已部署，已现场讲过，反馈好）
 > 数据来源：`jiangren.com.au/ai-new-jobs`（23 个新岗位）+ `jiangren.com.au/career-impact-map`（78 个传统岗位 AI 风险地图）
+
+---
+
+## 0.0 v0.2 演进说明 — 实际上线 vs v0.1 计划
+
+> v0.1 是 38 页的纸面计划。真正构建并上线的 deck 是 **63 页**，结构有重大演进。本节记录差异，下面 §1 大纲已按实际结构更新。
+
+**实际上线结构（63 页 / `src/App.tsx` 装配顺序）**：
+
+| Block | 章节 | 页数 | 关键变化 vs v0.1 |
+|---|---|---|---|
+| CH 0 | 开场 + 立论 | 4 | 基本保留 |
+| CH 1 | **消失的岗位**（C01–C05） | 6 | 🆕 新增整章 — 先讲"谁在消失"立张力，再讲"谁在出现" |
+| CH 2 | 技术岗（含 4 个漏网之鱼并入） | 18 | Vibe Coder / 具身智能 / 合成数据 / AI Sales Eng 不再单设 CH4，**并入对应章节深讲** |
+| CH 3 | 治理管理岗 | 10 | 基本保留；CAIO 移到附录 |
+| CH 4 | 行业垂直岗 | 9 | GEO / Healthcare / Finance Compliance |
+| **CH 5** | **🔥 AI Adoption 案例 — 营销 pipeline 5 级阶梯（Z01–Z07）** | **9** | 🆕🆕 **v0.1 完全没有。这是现场反馈最好的一章**，详见 §1.6 |
+| 收尾 | 自检 + 三路径 + 入口（S35–S38） | 5 | 加 S35a 互动诊断角色 |
+| 附录 | CAIO（niche 角色后置） | 2 | 从 CH2 移出 |
+
+**v0.2 新增的战略定位（本次更新的重点）**：
+
+这套 deck 不再只是"岗位盘点科普"，**CH 5 的营销 pipeline 阶梯让它具备了独立做一场「AI Marketing 讲座」的能力**，并天然导流到两门课：
+
+- **CH 5 的「你卡在哪一层」自检 = 天然 CTA**。观众看完 5 级阶梯（朴素 ChatGPT → 模板化 → 多平台 Master/Variant → 反馈闭环 → 企业记忆）会自检"我一直在 Step 1"。
+- **导流分叉**：
+  - 卡在低层、想往上爬但缺"搭 pipeline / 接 skill+API"的能力 → **『人人都能学的 AI Coding 实战课』**（`ai-programming`，零基础 Cursor 从想法到上线）
+  - 想要 Step 5 那个终态（一个人 + 一套有记忆的 AI 系统，把营销+产品+运营全转起来变成自己的公司）→ **『AI 一人创业营』**（`ai-solo-founder-bootcamp`，OPC + 澳洲 Grant + 三城线下）
+- 守红线：只承诺能力/作品/pipeline，**禁说月入/副业/接单/包就业**（见 §2.2）。
+
+**配套营销资产（已存在）**：`xhs/` 目录 = 把本讲座改编成小红书的成品（6 张 poster N1–N6 + case-T01 四步 pipeline 实操材料），本身就是 CH 5 "搭 pipeline" 思路的现身说法。
 
 ---
 
@@ -13,7 +52,7 @@
 - **页面已存在但分散**：JR Academy 已有两个数据完整的产品页 — `/ai-new-jobs`（23 个 AI-native 岗位）和 `/career-impact-map`（78 个传统岗位 + AI 风险评级），但都是**让用户自己点**，缺一个**把数据串成故事**的对外触达载体
 - **市场需求清晰**：2024-2026 年公众讨论从"AI 会取代谁"转向"AI 催生了什么"，但中文世界缺少基于真实薪资和雇主数据的盘点；社交媒体上充斥模版化"10 大未来职业"清单
 - **JR 资产优势**：23 个岗位每个都已绑定 `jrCourses[]`（指向 production 上能买的 bootcamp / workshop），讲座可直接把听众导流到具体课程
-- **讲座形态**：60 分钟公开讲座（混合背景听众：留学生 / 求职 active / 在职转型），中性科普为主，结尾收口到 JR 学习路径
+- **讲座形态**：公开讲座（弹性 75–100 分钟，混合背景听众：留学生 / 求职 active / 在职转型），中性科普为主，**CH 5 营销 pipeline 阶梯收口到 JR 学习路径 + 两门课导流**
 
 ### 0.2 学习目标（Learning Outcomes）
 
@@ -25,29 +64,34 @@
 4. **看见盘点的缺失** — 知道 ai-new-jobs 页面**没有覆盖**但 2025-2026 已经成型的 4 个新工种（Vibe Coder / 具身智能 / 合成数据 / AI Sales Engineer）
 5. **拿到下一步行动** — 留下 1 个可立刻做的动作（去 `/career-impact-map` 自检 / 报名某个 bootcamp / 加群跟进）
 
-### 0.3 项目交付物
-- 一份 35-40 页网页版 slides（中文为主，公司名/职位名保英文）
-- 部署到 `jiangren.com.au/curriculum/ai-new-jobs-talk/`
-- 现场展示用 + 录播后做引流素材
+### 0.3 项目交付物（v0.2 实际）
+- ✅ 一份 **63 页** 网页版 slides（中文为主，公司名/职位名保英文）— React 19 + framer-motion，已构建
+- ✅ 已部署到 `jiangren.com.au/curriculum/lessons/ai-new-jobs-talk/`，已现场讲过（反馈好）
+- ✅ 配套小红书引流资产 `xhs/`（6 张 poster + case-T01 四步 pipeline 实操材料）
+- 🔄 **重用方向**：以 CH 5 为主体裁出独立「AI Marketing 讲座」，导流 `ai-programming` + `ai-solo-founder-bootcamp`
 
 ---
 
-## 1. 讲座内容大纲（60 分钟）
+## 1. 讲座内容大纲（实际 63 页 · 弹性 75–100 分钟）
 
-### 1.1 整体节奏
+### 1.1 整体节奏（v0.2 实际结构）
 
-| 时间 | 章节 | 时长 | 页数 | 交付什么 |
-|---|---|---|---|---|
-| 0:00-0:08 | Chapter 0 · 开场 + 立论 | 8 min | 4 | 听众理解"为什么这个话题不是又一个清单文" |
-| 0:08-0:20 | Chapter 1 · 技术岗（13 个） | 12 min | 9 | 4 个深讲 + 9 个一句话带过 |
-| 0:20-0:32 | Chapter 2 · 治理管理岗（5 个） | 12 min | 7 | 3 个深讲 + 2 个一句话带过 |
-| 0:32-0:44 | Chapter 3 · 行业垂直岗（5 个） | 12 min | 7 | 3 个深讲 + 2 个一句话带过 |
-| 0:44-0:54 | Chapter 4 · 盘点的漏网之鱼（4 个） | 10 min | 7 | 4 个完整新工种，每个 2.5 min |
-| 0:54-1:00 | Chapter 5 · 自检 + 转型路径 + Q&A | 6 min | 4 | 听众拿走一个行动 |
+| 章节 | 页数 | 建议时长 | 交付什么 |
+|---|---|---|---|
+| CH 0 · 开场 + 立论（S01/S02/S04/S04b） | 4 | 8 min | 听众理解"为什么这不是又一个清单文" |
+| CH 1 · 消失的岗位（C01–C05） | 6 | 10 min | 🆕 先立张力："谁在消失" → 引出"谁在出现" |
+| CH 2 · 技术岗 + 4 漏网之鱼（S05–S13 / S29–S32 并入） | 18 | 20 min | AI Engineer / FDE / Agent Dev / Adoption Specialist 深讲 + Vibe Coder / 具身 / 合成数据 / AI Sales Eng |
+| CH 3 · 治理管理岗（S14/S09/S16/S17/S18–S20） | 10 | 14 min | CAIO（→附录）/ AI PM / AI Ethics 深讲 |
+| CH 4 · 行业垂直岗（S21/S22/S24/S32/S25/S26） | 9 | 12 min | GEO / Healthcare AI / Finance Compliance |
+| **CH 5 · 🔥 AI Adoption 营销 pipeline 阶梯（Z01–Z07）** | **9** | **18 min** | **同一选题跑 5 级，让观众肉眼看到落差 — 见 §1.6** |
+| 收尾 · 自检 + 三路径 + 入口（S35/S35a/S36/S37/S38） | 5 | 8 min | 「你卡在哪一层」诊断 → 导流两门课 |
+| 附录 · CAIO（S15/S15b） | 2 | 按需 | niche 角色，时间够才讲 |
 
-**页数预算**：~38 页（含封面、章节封面、转场页）
+**总计**：63 页。**作为「AI Marketing 专题讲座」重用时**：可裁掉 CH1–CH4 的岗位盘点，以 CH 0 立论 + **CH 5 阶梯为主体** + 收尾导流，压成一场聚焦 marketing 的 2 小时讲座（配现场 demo）。
 
-### 1.2 每页内容拆解（38 页 Slide-by-Slide Spec）
+### 1.2 每页内容拆解（岗位章节 · 内容口径不变）
+
+> ⚠️ 下面 §1.2 的 P05–P34 是 v0.1 的岗位内容规格，**岗位事实/薪资/数据口径仍然准确并已上线**，仅章节归属按 §0.0 表重排（漏网之鱼并入 CH2、CAIO 移附录）。**CH 5 营销阶梯是 v0.2 新增，规格见 §1.6。**
 
 #### **Chapter 0 · 开场 + 立论**（4 页 / 8 min）
 
@@ -115,6 +159,36 @@
     - 完整 23 岗位详情 → `jiangren.com.au/ai-new-jobs`
     - 自检你现在的岗位 → `jiangren.com.au/career-impact-map`
     - 加微信社群 / 1 对 1 咨询入口
+
+---
+
+### 1.6 🔥 Chapter 5 · AI Adoption 营销 pipeline 阶梯（v0.2 新增 · 现场反馈最好的一章）
+
+> **slides**：`Z01–Z07`（线上 page 48–56）
+> **配套实操材料**：`xhs/case-T01/`（同一选题 T01 跑完每一级的真实成品 + prompt）
+> **核心设计**：用**同一个选题（T01 · 2026 AI 新岗位地图）跑 5 个进化等级**，让观众肉眼看到自己用的 AI 和真正的 AI pipeline 差多远。它不讲道理，它**演示落差** —— 这是整章最值钱的设计，不要改成抽象讲解。
+> **一句话立论**（封面 Z01）：**「AI Adoption 不是『用 AI』，是『搭 pipeline』。」**
+
+| Page | Slide | 等级 | 内容 | 杀伤点 / 金句 |
+|---|---|---|---|---|
+| 48 | Z01 | 封面 | 立靶子：AI Adoption = 搭 pipeline | — |
+| 49 | Z02 | **Step 1 · 朴素版** | ChatGPT 一句话 → "宝子们👋" 模板垃圾，2 分钟发布 | **"99% 的人停在这里 —— 这就是大多数人以为的『用 AI』"** |
+| 50 | Z03 | **Step 2 · 模板化** | 5 阶段 cron pipeline（TRIGGER→GENERATE→VISUAL→REVIEW→SCHEDULE），每周自动跑 | 角色：你写你发你重复 → **AI 执行，你只决策** |
+| 51 | Z04 | **Step 3 · 自动选题+多平台** | 5 层 pipeline：数据采集（Reddit/X/Trends）→AI 选题→4 平台生成→配图→发布追踪 | Built with Claude Skills × 5 |
+| 52 | Z04b | **Step 3.5 · 匠人 Master/Variant** | 1 份 Master（单一真相）→ per-platform variant transformers 并行 → publisher → feedback loop | **改 1 处，5 个平台同步生效**；你升级为「内容架构师」 |
+| 53 | Z05 | **Step 4 · 完整闭环** | 互动数据回流，AI 自动分析 hook 转化 / 时段表现 → 自动调权重 | AI-native，飞轮自己转 |
+| 54 | Z05b | **Step 5 · 企业级记忆** | 3 层记忆（员工 / 公司知识库 / 业务状态）→ AI BRAIN → 主动安排/调整/生成/提醒 | **"没有记忆的 AI = 工具，有记忆的 AI = 同事"** |
+| 55 | Z06 | 概念收口 | L1（用 AI）→ L2（搭 pipeline）→ L3（设计+落地能力） | **L1→L3 · ×100 价值跃迁** |
+| 56 | Z07 | **自检 = CTA** | "现在轮到你 —— 你卡在哪一层？" | 天然导流分叉点（见下） |
+
+**Z07 自检 → 两门课导流话术（守红线，只说能力不说钱）**：
+
+> "看完这 5 级，问自己卡在哪 ——
+> - 想往上爬却发现 Step 2–4 全要你能**把 skill、API、自动化接成一条 pipeline** → 这是『**做得出**』的能力，零基础也能学 → **『人人都能学的 AI Coding 实战课』**。
+> - 你已经能搭单条 pipeline，但想要的是 **Step 5 那个终态：一个人 + 一套有记忆的 AI 系统，把营销+产品+运营全转起来，变成自己的公司** → **『AI 一人创业营』**（OPC + 澳洲 Grant + 三城线下）。
+> - 而今晚这场讲座本身，**就是一次 AI Marketing 的演示** —— 选题、内容、把你引到这里，全是你刚看到的那套 pipeline。"
+
+**现场 demo 建议**：讲 Z02 vs Z05 时，当场把同一句"写条 AI 岗位的小红书"分别用朴素 prompt 和 pipeline 跑一遍，对照成品落差最有冲击力。素材直接取 `xhs/case-T01/STEP1_CHATGPT_NAIVE.md` vs `STEP4_PIPELINE_FINAL.md`。
 
 ---
 
@@ -189,25 +263,21 @@ ai-new-jobs-talk/
 
 ## 4. 时间表与下一步
 
-### 4.1 阶段拆解
+### 4.1 阶段拆解（v0.1 计划 → 已完成）
 
-| 阶段 | 内容 | 预计工时 |
+| 阶段 | 内容 | 状态 |
 |---|---|---|
-| **当前** | PRD v0.1 → 用户 review | — |
-| **Phase 1** | PRD sign-off + 大纲细调 | 30 min |
-| **Phase 2** | 创建 Vite 工程脚手架 + 38 张 slide 框架（仅标题 + 占位） | 1-2 hr |
-| **Phase 3** | 逐张填实质内容（含 4 个漏网之鱼的外部数据拉取） | 4-6 hr |
-| **Phase 4** | 内部预览 + 文字校对 + 部署 | 1 hr |
+| Phase 1 | PRD sign-off + 大纲细调 | ✅ 完成 |
+| Phase 2 | Vite 工程脚手架 + slide 框架 | ✅ 完成 |
+| Phase 3 | 逐张填实质内容 + 加 CH1 消失的岗位 + CH5 营销阶梯 | ✅ 完成（最终 63 页） |
+| Phase 4 | 内部预览 + 部署 + 现场讲 | ✅ 完成（已上线 + 已讲，反馈好） |
 
-### 4.2 待 sign-off 的关键点
+### 4.2 下一步（v0.2 迭代方向）
 
-请用户在 review 时明确以下：
-
-1. **深讲岗位选择**：技术岗选了 AI Engineer / FDE / AI Agent Developer / AI Adoption Specialist；治理岗选了 CAIO / AI PM / AI Ethics Officer；行业岗选了 GEO / Healthcare AI Integrator / AI Compliance (Finance)。要不要换？
-2. **漏网之鱼 4 个**：Vibe Coder / 具身智能 / 合成数据 / AI Sales Engineer — 顺序和详略要不要调？
-3. **JR 课程绑定**：每个深讲岗位推荐绑哪些课程，要不要按"销售优先级"重排？
-4. **现场互动**：60 min 时长够紧，要不要加举手投票 / 二维码即时填表？目前 PRD 没设计互动，纯讲。
-5. **录播用途**：讲完之后这套 slides 是否需要做成可以独立看的"网页版盘点报告"（额外加叙事文字，不只是讲师 talking points）？
+1. **裁出独立 AI Marketing 讲座**：以 CH 5（Z01–Z07）为主体 + 现场 demo，导流 `ai-programming` + `ai-solo-founder-bootcamp`（收尾按 §1.6 话术，守 §2.2 红线）。
+2. **CH 5 收尾页加两门课入口卡**：在 Z07 自检后补 2–3 页把两门课作为"下一台阶"接上（复用本 deck 的 `theme.ts`，不破坏原岗位 deck）。
+3. **数据 refresh**：薪资/增长数据底部统一署"数据截至 2026-05"，半年后做 v3 刷新。
+4. **小红书延展**：`xhs/` 已有 6 poster，可按 `talk-to-xhs-posters` skill 把 CH5 阶梯扩成系列稿。
 
 ### 4.3 风险
 
@@ -242,6 +312,7 @@ ai-new-jobs-talk/
 
 ---
 
-**END · PRD v0.1**
+**END · PRD v0.2（已上线 · 持续迭代）**
 
-> 下一步：请用户 review 大纲 + Section 4.2 的 5 个 sign-off 点。确认后进入 Phase 2 工程脚手架。
+> 本版同步实际上线的 63 页结构，补全 CH 5 营销 pipeline 阶梯规格（§1.6）+ 导流两门课定位（§0.0）。
+> 下一步见 §4.2：裁出独立 AI Marketing 讲座 + CH5 收尾加两门课入口卡。
