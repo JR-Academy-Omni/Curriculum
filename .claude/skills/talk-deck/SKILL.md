@@ -83,7 +83,7 @@ lessons/{slug}/
 核心契约，改的时候别破坏：
 - `DESIGN_WIDTH=1600 / DESIGN_HEIGHT=900`，`useSlideScale()` 取 `min(vw/W, vh/H)` 整体缩放，画布居中黑底。
 - `children` 是 slide 数组，`current` 受控；切页 `AnimatePresence mode="wait"`，进/出 `x: ±80 + opacity`。
-- 导航：← → ↑ ↓ Space 翻页，`F` 全屏，`C` 开关演讲者摄像头（见下）；触摸横扫 >50px；滚轮带 700ms 节流。
+- 导航：← → ↑ ↓ Space 翻页，`F` 全屏，`V` 开关演讲者摄像头（见下；用 `V` 而非 `C`，避开 ⌘C/Ctrl+C 复制冲突，且监听已排除修饰键）；触摸横扫 >50px；滚轮带 700ms 节流。
 - URL 同步 `?page=N`（1-based），`replaceState` + `popstate`，方便直接跳页 / 录播定位。
 - 顶部进度条 + 右下 `NN / NN`（Space Mono, `mixBlendMode:difference`）+ 底部圆点导航 + 左右箭头按钮。
 - 右上固定半透明品牌 logo（跟随画布一起 scale，`pointerEvents:none`）。
@@ -91,7 +91,7 @@ lessons/{slug}/
 ## 演讲者摄像头圆圈（录播露脸 · `CameraBubble.tsx`）
 
 录播引流场景常要右下角露脸（对标 Slidev 的 Camera View）。React deck 自带组件，比 Slidev 更可控：
-- `src/components/CameraBubble.tsx` —— `getUserMedia` → 圆形 `<video>` 浮层，**按 `C` 开关**、可拖动、镜像、JR Neo-Brutalism 粗黑边 + 偏移硬阴影。
+- `src/components/CameraBubble.tsx` —— `getUserMedia` → 圆形 `<video>` 浮层，**按 `V` 开关**（监听排除 ⌘/Ctrl/Alt，不抢复制粘贴）、可拖动、镜像、JR Neo-Brutalism 粗黑边 + 偏移硬阴影。
 - 已在 `SlideEngine` 顶层 `<CameraBubble />` 渲染；它 `position: fixed` 固定在视口，**不跟 1600×900 画布一起 scale**（像 OBS 摄像头），开关/拖动不影响翻页。
 - 摄像头流在关闭 / 组件卸载时会 `stop()`，无权限时红色提示一闪而过。
 

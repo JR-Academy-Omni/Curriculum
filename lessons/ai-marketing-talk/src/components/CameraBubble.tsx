@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback, type PointerEvent as ReactPoi
 import { colors } from '../styles/theme';
 
 // 演讲者摄像头圆圈浮层 —— 录播时右下角露脸用，对标 Slidev 的 Camera View
-// 按 C 开关；可拖动；固定在视口（不跟 slide 画布一起 scale，像 OBS 摄像头）
+// 按 V 开关；可拖动；固定在视口（不跟 slide 画布一起 scale，像 OBS 摄像头）
 // 设计语言沿用 JR Neo-Brutalism：粗黑边 + 偏移硬阴影
 
 const SIZE = 200; // 圆圈直径 px
@@ -15,10 +15,11 @@ export default function CameraBubble() {
 	const streamRef = useRef<MediaStream | null>(null);
 	const dragOffset = useRef<{ x: number; y: number } | null>(null);
 
-	// 按 C 开关摄像头
+	// 按 V 开关摄像头（避开 ⌘C / Ctrl+C 复制冲突）
 	useEffect(() => {
 		const onKey = (e: KeyboardEvent) => {
-			if (e.key === 'c' || e.key === 'C') { e.preventDefault(); setOn((v) => !v); }
+			if (e.metaKey || e.ctrlKey || e.altKey) return; // 别抢复制/粘贴等系统快捷键
+			if (e.key === 'v' || e.key === 'V') { e.preventDefault(); setOn((v) => !v); }
 		};
 		window.addEventListener('keydown', onKey);
 		return () => window.removeEventListener('keydown', onKey);

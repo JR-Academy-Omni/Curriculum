@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Slide, Inner, Title, colors, fonts, border, shadow } from '../ui';
 
+// 封面 —— Claude Code 大师课
 export default function S01_Cover() {
 	return (
 		<Slide bg={colors.warmBg}>
@@ -12,56 +13,56 @@ export default function S01_Cover() {
 						transition={{ duration: 0.4 }}
 						style={{
 							display: 'inline-block', padding: '8px 20px',
-							background: colors.black, color: colors.rose,
-							fontFamily: fonts.mono, fontSize: 16.5, fontWeight: 700,
-							letterSpacing: 3, marginBottom: 32,
+							background: colors.black, color: colors.yellow,
+							fontFamily: fonts.mono, fontSize: 14, fontWeight: 700,
+							letterSpacing: 3, marginBottom: 30,
 						}}>
-						JR ACADEMY · 公开讲座
+						JR ACADEMY · 大师课
 					</motion.div>
 
-					<Title size="92px" style={{ lineHeight: 1.05, marginBottom: 28 }}>
+					<Title size="110px" style={{ lineHeight: 1.0, marginBottom: 18 }}>
 						<motion.span
 							initial={{ opacity: 0, y: 24 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.15 }}
 							style={{ display: 'block' }}
 						>
-							新时代的{' '}
+							Claude Code{' '}
 							<motion.span
 								initial={{ opacity: 0, scale: 0.9 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ duration: 0.4, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-								style={{ display: 'inline-block', background: colors.rose, color: colors.white, padding: '0 24px', transform: 'rotate(-1.5deg)', border, boxShadow: shadow }}
-							>AI Marketing</motion.span>
+								style={{ display: 'inline-block', background: colors.red, color: colors.white, padding: '0 24px' }}
+							>大师课</motion.span>
 						</motion.span>
 					</Title>
 
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
+					<motion.p
+						initial={{ opacity: 0, y: 16 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5, delay: 0.7 }}
-						style={{ fontFamily: fonts.heading, fontSize: 36, fontWeight: 800, color: colors.black, marginBottom: 8 }}>
-						一个人 <span style={{ color: colors.rose }}>=</span> 一支营销队伍
-					</motion.div>
+						transition={{ duration: 0.5, delay: 0.6 }}
+						style={{ fontSize: 25, color: '#444', fontWeight: 600, marginBottom: 6, lineHeight: 1.4 }}>
+						从「会用」到「会建」—— 先有 Source of Truth，AI 才真正替你干活
+					</motion.p>
 
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5, delay: 0.95 }}
+						transition={{ duration: 0.5, delay: 0.85 }}
 						style={{
 							display: 'inline-flex', gap: 16, alignItems: 'center',
-							padding: '16px 28px', marginTop: 24,
+							padding: '16px 28px', marginTop: 26,
 							background: colors.white, border, boxShadow: shadow,
 						}}>
-						<span style={{ fontFamily: fonts.mono, fontSize: 15.5, color: '#666', letterSpacing: 2 }}>JR ACADEMY</span>
-						<span style={{ fontSize: 20, fontWeight: 700 }}>做得出 × 卖得动 = 一人公司</span>
+						<span style={{ fontFamily: fonts.mono, fontSize: 14, color: '#666', letterSpacing: 2 }}>JIANGREN.COM.AU</span>
+						<span style={{ fontSize: 18, fontWeight: 700 }}>全球华人学习 AI 第一站</span>
 					</motion.div>
 
 					<motion.p
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
-						transition={{ duration: 0.5, delay: 1.2 }}
-						style={{ marginTop: 26, fontSize: 15.5, color: '#999', fontFamily: fonts.mono, letterSpacing: 1 }}>
+						transition={{ duration: 0.5, delay: 1.1 }}
+						style={{ marginTop: 24, fontSize: 14, color: '#999', fontFamily: fonts.mono, letterSpacing: 1 }}>
 						← → 翻页 · F 全屏 · V 开摄像头
 					</motion.p>
 				</div>

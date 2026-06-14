@@ -55,7 +55,7 @@ export default function S01_Cover() {
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.5, delay: 1.1 }}
 						style={{ marginTop: 28, fontSize: 14, color: '#999', fontFamily: fonts.mono, letterSpacing: 1 }}>
-						← → 翻页 · F 全屏 · C 开摄像头
+						← → 翻页 · F 全屏 · V 开摄像头
 					</motion.p>
 				</div>
 			</Inner>
