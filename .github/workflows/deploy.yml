@@ -77,6 +77,13 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/claude-code-master (3h 现场带做 · 61 张 slide · Claude Code 大师课 — SoT/记忆系统/AI OS/ADLC/Skills/动手 Lab)
+      - name: Build lessons/claude-code-master
+        working-directory: lessons/claude-code-master
+        run: |
+          bun install
+          bun run build
+
       # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
       # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
       # base 已写进 package.json: --base /curriculum/lessons/vibe-coding/
@@ -319,6 +326,12 @@ jobs:
           if [ -d lessons/ai-marketing-talk/dist ]; then
             mkdir -p _site/lessons/ai-marketing-talk
             cp -r lessons/ai-marketing-talk/dist/* _site/lessons/ai-marketing-talk/
+          fi
+
+          # lessons/claude-code-master: 3h 现场带做 slide deck (React + Vite · 61 张 slide · Claude Code 大师课)
+          if [ -d lessons/claude-code-master/dist ]; then
+            mkdir -p _site/lessons/claude-code-master
+            cp -r lessons/claude-code-master/dist/* _site/lessons/claude-code-master/
           fi
 
           # ai-engineer-resume-interview · 3h 内部学员讲座（slide deck + public/ zip 下载）
