@@ -22,32 +22,37 @@ export default function S10c_ContextRot() {
 					</p>
 				</motion.div>
 
-				{/* 质量随填充度下降的曲线图 */}
+				{/* 质量随填充度下降的曲线图（SVG 画形 + HTML 叠字，不变形） */}
 				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}
-					style={{ marginTop: 14, background: '#fff', border, boxShadow: shadow, padding: '12px 16px 6px' }}>
-					<svg viewBox="0 0 700 190" width="100%" height="150" preserveAspectRatio="none" style={{ display: 'block' }}>
-						{/* 塌方区底色 */}
-						<rect x="470" y="20" width="200" height="130" fill="#ff5757" opacity="0.08" />
+					style={{ position: 'relative', marginTop: 14, height: 172, background: '#fff', border, boxShadow: shadow }}>
+					<svg viewBox="0 0 700 200" width="100%" height="100%" preserveAspectRatio="none" style={{ display: 'block', position: 'absolute', inset: 0 }}>
+						<defs>
+							<linearGradient id="rotFill" x1="0" y1="0" x2="1" y2="0">
+								<stop offset="0%" stopColor="#7ED957" stopOpacity="0.55" />
+								<stop offset="55%" stopColor="#FFDE59" stopOpacity="0.5" />
+								<stop offset="100%" stopColor="#ff5757" stopOpacity="0.55" />
+							</linearGradient>
+						</defs>
+						{/* 80% 后塌方区底色 */}
+						<rect x="555" y="0" width="145" height="178" fill="#ff5757" opacity="0.1" />
+						<line x1="555" y1="0" x2="555" y2="178" stroke="#ff5757" strokeWidth="2.5" strokeDasharray="6 5" opacity="0.7" />
 						{/* 网格 */}
-						{[20, 53, 86, 119, 150].map((y) => <line key={y} x1="48" y1={y} x2="670" y2={y} stroke="#eee" strokeWidth="1" />)}
-						{/* 轴 */}
-						<line x1="48" y1="20" x2="48" y2="150" stroke="#999" strokeWidth="2" />
-						<line x1="48" y1="150" x2="670" y2="150" stroke="#999" strokeWidth="2" />
-						{/* 质量曲线（高 → 塌） */}
-						<motion.path d="M 48 34 C 200 38, 320 48, 430 78 S 600 142, 670 150" fill="none" stroke="#ff5757" strokeWidth="4"
+						{[26, 64, 102, 140, 178].map((y) => <line key={y} x1="0" y1={y} x2="700" y2={y} stroke="#eee" strokeWidth="1.5" />)}
+						{/* 面积填充：前 80% 平缓，80% 后断崖 */}
+						<path d="M 8 30 C 230 33, 420 40, 555 48 C 600 54, 628 150, 692 192 L 692 178 L 8 178 Z" fill="url(#rotFill)" />
+						{/* 质量曲线：0→80% 微降，~80% 断崖跳水 */}
+						<motion.path d="M 8 30 C 230 33, 420 40, 555 48 C 600 54, 628 150, 692 192" fill="none" stroke="#ff3b3b" strokeWidth="7"
 							strokeLinecap="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.1, ease: 'easeInOut', delay: 0.3 }} />
-						{/* 甜区点 */}
-						<circle cx="150" cy="37" r="5" fill="#7ED957" stroke="#000" strokeWidth="1.5" />
-						{/* 塌方点 */}
-						<circle cx="560" cy="120" r="5" fill="#ff5757" stroke="#000" strokeWidth="1.5" />
-						{/* 标注 */}
-						<text x="90" y="28" fontFamily="'Space Mono', monospace" fontSize="13" fontWeight="800" fill="#0a8a3a">甜区 · 又快又准</text>
-						<text x="490" y="44" fontFamily="'Space Mono', monospace" fontSize="13" fontWeight="800" fill="#ff5757">塌方区 · 慢 + 漂 + 漏</text>
-						{/* 轴标签 */}
-						<text x="6" y="30" fontFamily="'Space Mono', monospace" fontSize="11" fill="#888">质量</text>
-						<text x="6" y="148" fontFamily="'Space Mono', monospace" fontSize="11" fill="#888">低</text>
-						<text x="300" y="175" fontFamily="'Space Mono', monospace" fontSize="12" fontWeight="700" fill="#666">context 占用：空 ————————→ 塞满</text>
+						{/* 甜区点（平缓段）/ 断崖点 */}
+						<circle cx="260" cy="36" r="8" fill="#7ED957" stroke="#000" strokeWidth="2.5" />
+						<circle cx="640" cy="172" r="8" fill="#ff3b3b" stroke="#000" strokeWidth="2.5" />
 					</svg>
+					{/* HTML 叠字（不被 SVG 拉伸） */}
+					<div style={{ position: 'absolute', left: 12, top: 8, fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, color: '#0a8a3a' }}>🟢 前 80% · 又快又准（几乎不掉）</div>
+					<div style={{ position: 'absolute', right: 14, top: 8, fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, color: colors.red }}>🔴 过 ~80% · 断崖跳水</div>
+					<div style={{ position: 'absolute', left: '79%', top: 30, fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, color: colors.red }}>~80%</div>
+					<div style={{ position: 'absolute', left: 10, top: 30, fontFamily: fonts.mono, fontSize: 11, color: '#aaa', writingMode: 'vertical-rl' }}>质量 高→低</div>
+					<div style={{ position: 'absolute', left: '46%', bottom: 6, transform: 'translateX(-50%)', fontFamily: fonts.mono, fontSize: 12, fontWeight: 700, color: '#666' }}>context 占用：空 ——————→ 塞满</div>
 				</motion.div>
 
 				<div style={{ display: 'flex', gap: 16, marginTop: 18 }}>

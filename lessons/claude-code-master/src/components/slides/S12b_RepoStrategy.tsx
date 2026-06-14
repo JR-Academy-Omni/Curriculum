@@ -3,18 +3,18 @@ import { motion } from 'framer-motion';
 
 const cols = [
 	{
-		name: 'Monorepo', zh: '一个仓装多项目', color: '#7ED957', verdict: '主力',
-		good: '一次 clone 拿全部 · CI/CD 统一好规划 · AI 跨项目改一气呵成 · 共享规范一处生效',
+		name: 'Monorepo', zh: '一个仓装多项目', color: '#7ED957', verdict: '统一管理好',
+		good: '一次 clone 拿全部 · 共享规范一处生效 · AI 跨项目改一气呵成',
 		bad: '仓会变大 · 权限较粗 · 单仓 CI 全量触发要靠 path filter 裁剪',
 	},
 	{
-		name: 'Git Submodule', zh: '仓里嵌仓', color: '#ff5757', verdict: '避免使用',
-		good: '理论上能锁版本（但收益远小于代价）',
-		bad: 'detached HEAD 坑多 · 更新繁琐 · 容易忘 push · 对 AI agent 极不友好',
+		name: 'Git Submodule', zh: '仓里嵌仓 · 聚合多 repo', color: '#FF914D', verdict: '匠人在用',
+		good: '聚合多个独立 repo · 每个各自 CI/CD 独立部署 · 版本可锁定',
+		bad: '更新要手动同步 · 对 AI agent 要额外说明结构',
 	},
 	{
 		name: '独立 Sibling Repo', zh: '兄弟目录 + gitignore', color: '#38B6FF', verdict: '敏感/共享用',
-		good: '权限独立 · agent 直接 Read 全文 · 没有 submodule 的同步地狱',
+		good: '权限独立 · agent 直接 Read 全文',
 		bad: '要各自 clone',
 	},
 ];
@@ -54,16 +54,16 @@ export default function S12b_RepoStrategy() {
 				<motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
 					style={{ marginTop: 20, background: colors.dark, color: colors.white, border, boxShadow: shadow, padding: '14px 22px' }}>
 					<span style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.yellow, fontWeight: 800 }}>匠人的真实选择 →</span>
-					<span style={{ fontSize: 17, marginLeft: 10, lineHeight: 1.5 }}>
-						平台主项目走 <b style={{ color: colors.green }}>monorepo</b>（前端/后端/admin/课程一个仓）；
-						敏感+共享的 <code style={{ color: colors.yellow }}>jr-academy-memory</code> 用 <b style={{ color: '#38B6FF' }}>独立 sibling repo</b>、
-						<b style={{ color: colors.red }}>刻意不用 submodule</b>（.gitignore 忽略，agent 直接读全文）。
+					<span style={{ fontSize: 16, marginLeft: 10, lineHeight: 1.5 }}>
+						用 <b style={{ color: '#FF914D' }}>git submodule</b> 聚合多个独立 repo，<b>各自独立部署 / 独立 CI-CD</b>；
+						需要「一处管全部、共享规范」时 <b style={{ color: colors.green }}>monorepo</b> 更省心；
+						敏感+共享的 <code style={{ color: colors.yellow }}>jr-academy-memory</code> 用 <b style={{ color: '#38B6FF' }}>sibling repo</b>（agent 直接读全文）。
 					</span>
 				</motion.div>
 
 				<motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}
 					style={{ marginTop: 12, fontSize: 16, color: '#666', fontFamily: fonts.mono }}>
-					// 决策原则：默认 monorepo；只有「权限要隔离」或「独立部署」才拆仓（如 pbl-service 因类型爆炸独立）。
+					// 没有银弹：要「独立部署」选 submodule，要「统一管理」选 monorepo —— 按部署边界来拆。
 				</motion.p>
 			</Inner>
 		</Slide>

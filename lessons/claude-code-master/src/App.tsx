@@ -30,6 +30,7 @@ import S07 from './components/slides/S07_ContextVsMemory';
 import S08 from './components/slides/S08_JRMemoryMap';
 import S09 from './components/slides/S09_ClaudeMd';
 import S09b from './components/slides/S09b_RulesFirst';
+import S09c from './components/slides/S09c_ClaudeMdTiers';
 import S10 from './components/slides/S10_OptimizeClaudeMd';
 import L01 from './components/slides/L01_FirstClaudeMd';
 import S10b from './components/slides/S10b_ContextWindow';
@@ -56,6 +57,7 @@ import BR2 from './components/slides/BR2_Break';
 // CH 3 · ADLC
 import S15 from './components/slides/S15_ADLCCover';
 import S16 from './components/slides/S16_ADLCStages';
+import S16b from './components/slides/S16b_AgileVsADLC';
 import S17 from './components/slides/S17_PRD';
 import L04 from './components/slides/L04_PRD_ADLC';
 import S18 from './components/slides/S18_Workflow';
@@ -103,6 +105,7 @@ export default function App() {
 			<S07 />
 			<S08 />
 			<S09 />
+			<S09c />{/* 📐 CLAUDE.md = 说明书+路线 · 多份分层 per component · 为什么高效 */}
 			<S09b />{/* 🎯 第一要务·构建 rules（狭义/广义）+ 只写 LLM 基线之上的 delta */}
 			<S10 />
 			<L01 />{/* 🔨 动手① 写 CLAUDE.md */}
@@ -130,6 +133,7 @@ export default function App() {
 			{/* ===== PART 3 · 2:05–2:45 · ADLC + 编排 ===== */}
 			<S15 />
 			<S16 />
+			<S16b />{/* ⚖️ Agile vs ADLC · ADLC 是 Agile 的 AI 原生版 */}
 			<S17 />
 			<L04 />{/* 🔨 动手④ PRD + ADLC */}
 			<S18 />
