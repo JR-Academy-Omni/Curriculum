@@ -22,14 +22,33 @@ export default function S10c_ContextRot() {
 					</p>
 				</motion.div>
 
-				{/* 越满 → 质量下降 示意 */}
-				<div style={{ marginTop: 16, display: 'flex', alignItems: 'center', gap: 14 }}>
-					<span style={{ fontFamily: fonts.mono, fontSize: 13, color: '#888', fontWeight: 800, flexShrink: 0 }}>空 · 准</span>
-					<div style={{ flex: 1, height: 22, border, background: 'linear-gradient(90deg, #7ED957 0%, #FFDE59 45%, #FF914D 72%, #ff5757 100%)', position: 'relative' }}>
-						<div style={{ position: 'absolute', right: 8, top: 2, fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, color: '#fff' }}>塞满 → 慢 + 漂</div>
-					</div>
-					<span style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.red, fontWeight: 800, flexShrink: 0 }}>满 · 糟</span>
-				</div>
+				{/* 质量随填充度下降的曲线图 */}
+				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}
+					style={{ marginTop: 14, background: '#fff', border, boxShadow: shadow, padding: '12px 16px 6px' }}>
+					<svg viewBox="0 0 700 190" width="100%" height="150" preserveAspectRatio="none" style={{ display: 'block' }}>
+						{/* 塌方区底色 */}
+						<rect x="470" y="20" width="200" height="130" fill="#ff5757" opacity="0.08" />
+						{/* 网格 */}
+						{[20, 53, 86, 119, 150].map((y) => <line key={y} x1="48" y1={y} x2="670" y2={y} stroke="#eee" strokeWidth="1" />)}
+						{/* 轴 */}
+						<line x1="48" y1="20" x2="48" y2="150" stroke="#999" strokeWidth="2" />
+						<line x1="48" y1="150" x2="670" y2="150" stroke="#999" strokeWidth="2" />
+						{/* 质量曲线（高 → 塌） */}
+						<motion.path d="M 48 34 C 200 38, 320 48, 430 78 S 600 142, 670 150" fill="none" stroke="#ff5757" strokeWidth="4"
+							strokeLinecap="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.1, ease: 'easeInOut', delay: 0.3 }} />
+						{/* 甜区点 */}
+						<circle cx="150" cy="37" r="5" fill="#7ED957" stroke="#000" strokeWidth="1.5" />
+						{/* 塌方点 */}
+						<circle cx="560" cy="120" r="5" fill="#ff5757" stroke="#000" strokeWidth="1.5" />
+						{/* 标注 */}
+						<text x="90" y="28" fontFamily="'Space Mono', monospace" fontSize="13" fontWeight="800" fill="#0a8a3a">甜区 · 又快又准</text>
+						<text x="490" y="44" fontFamily="'Space Mono', monospace" fontSize="13" fontWeight="800" fill="#ff5757">塌方区 · 慢 + 漂 + 漏</text>
+						{/* 轴标签 */}
+						<text x="6" y="30" fontFamily="'Space Mono', monospace" fontSize="11" fill="#888">质量</text>
+						<text x="6" y="148" fontFamily="'Space Mono', monospace" fontSize="11" fill="#888">低</text>
+						<text x="300" y="175" fontFamily="'Space Mono', monospace" fontSize="12" fontWeight="700" fill="#666">context 占用：空 ————————→ 塞满</text>
+					</svg>
+				</motion.div>
 
 				<div style={{ display: 'flex', gap: 16, marginTop: 18 }}>
 					{effects.map((e, i) => (
