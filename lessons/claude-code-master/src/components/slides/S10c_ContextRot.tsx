@@ -24,7 +24,7 @@ export default function S10c_ContextRot() {
 
 				{/* 质量随填充度下降的曲线图（SVG 画形 + HTML 叠字，不变形） */}
 				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}
-					style={{ position: 'relative', marginTop: 14, height: 172, background: '#fff', border, boxShadow: shadow }}>
+					style={{ position: 'relative', marginTop: 14, alignSelf: 'center', width: '74%', height: 178, background: '#fff', border, boxShadow: shadow }}>
 					<svg viewBox="0 0 700 200" width="100%" height="100%" preserveAspectRatio="none" style={{ display: 'block', position: 'absolute', inset: 0 }}>
 						<defs>
 							<linearGradient id="rotFill" x1="0" y1="0" x2="1" y2="0">
