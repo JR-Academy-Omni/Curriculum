@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 漫剧实战营 · 12 节直播做出第一部成片 · 朱依晨主讲</title>
+  <meta name="description" content="AI 漫剧实战营 — 朱依晨老师（小红书『千立AI艺术教室』3.6 万粉）12 节直播实战课。从拆爆款定题材，到 MJ 出角色、LiblibAI 炼 LoRA 锁角色一致性、越轴分镜、即梦图生视频、剪映配音剪辑成片、分发变现。每节都有产出，结营手里有一部完整 AI 漫剧。">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#1a0a1a 0%,#FF4D8D 100%);padding:56px 24px 48px}
+    .header h1{font-size:clamp(28px,5vw,46px);line-height:1.15;max-width:1000px;margin:0 auto;font-family:'Bricolage Grotesque',sans-serif}
+    .header .sub{font-size:clamp(14px,1.6vw,18px);max-width:840px;margin:14px auto 0;opacity:0.9;line-height:1.6}
+    .header .meta-bar{display:flex;gap:18px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+    .header .meta-bar span{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;padding:4px 12px;border:2px solid rgba(255,255,255,0.4);background:rgba(0,0,0,0.18)}
+    .stats{background:#1a0a1a;color:#fff;padding:28px 24px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;border-bottom:4px solid #000}
+    .stats .s{text-align:center}
+    .stats .n{font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:900;color:#FF4D8D;line-height:1}
+    .stats .l{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:#aaa;margin-top:6px}
+    .sec{max-width:1200px;margin:56px auto 0;padding:0 24px}
+    .sec h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:900;color:#1a0a1a;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:16px}
+    .sec h2::before,.sec h2::after{content:"";flex:0 0 32px;height:5px;background:#FF4D8D}
+    .sec .sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
+    .sec:nth-of-type(2n) h2::before,.sec:nth-of-type(2n) h2::after{background:#CB6CE6}
+    .sec:nth-of-type(3n) h2::before,.sec:nth-of-type(3n) h2::after{background:#38B6FF}
+    .sec:nth-of-type(4n) h2::before,.sec:nth-of-type(4n) h2::after{background:#FF914D}
+    .ph-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .ph-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:24px;transition:all 0.15s;display:block;text-decoration:none;color:#1a0a1a}
+    .ph-card:hover{box-shadow:none;transform:translate(4px,4px);text-decoration:none}
+    .ph-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;margin-bottom:12px;color:#fff}
+    .ph-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;margin-bottom:8px;line-height:1.3}
+    .ph-card .ph-sum{font-size:13px;color:#444;line-height:1.65;margin-bottom:12px}
+    .ph-card .ph-bullets{font-size:13px;color:#444;padding-left:18px;line-height:1.85;margin-top:10px}
+    .ph-card .ph-bullets li{margin-bottom:2px}
+    .ph-card .ph-foot{margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;color:#999;display:flex;justify-content:space-between;align-items:center}
+    .ph-card .ph-foot a{font-weight:700;color:#FF4D8D}
+    @media(max-width:760px){.ph-grid{grid-template-columns:1fr}}
+    .in-card{border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #FF4D8D;display:grid;grid-template-columns:280px 1fr;gap:0}
+    .in-left{background:linear-gradient(135deg,#1a0a1a 0%,#FF4D8D 100%);color:#fff;padding:32px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;border-right:3px solid #000}
+    .in-avatar{width:110px;height:110px;border:3px solid #fff;background:#fff;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:5px 5px 0 rgba(0,0,0,0.35)}
+    .in-name{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:900;letter-spacing:0.5px;margin-top:6px}
+    .in-role{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.85}
+    .in-right{padding:28px 30px}
+    .in-tagline{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;color:#1a0a1a;line-height:1.4;margin-bottom:14px}
+    .in-right p{font-size:14px;line-height:1.75;color:#333;margin-bottom:10px}
+    .in-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .in-chips .pc{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:#f3f4f6;border:2px solid #000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+    .in-chips .pc.p{background:#fce7f3;color:#9d174d}
+    .in-chips .pc.o{background:#fff7ed;color:#9a3412}
+    .in-chips .pc.b{background:#dbeafe;color:#1e40af}
+    .in-chips .pc.g{background:#d1fae5;color:#065f46}
+    @media(max-width:820px){.in-card{grid-template-columns:1fr}.in-left{border-right:none;border-bottom:3px solid #000;padding:28px 20px}}
+    .ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid #000;background:#fff}
+    .ts-col{padding:22px;border-right:3px solid #000;border-bottom:3px solid #000}
+    .ts-col:nth-child(3n){border-right:none}
+    .ts-logo{font-size:30px;margin-bottom:8px}
+    .ts-name{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:900;color:#1a0a1a}
+    .ts-vendor{font-family:'Space Mono',monospace;font-size:11px;color:#888;margin-top:2px}
+    .ts-role{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#FF4D8D;font-weight:700;margin-top:10px;margin-bottom:8px}
+    @media(max-width:900px){.ts-grid{grid-template-columns:1fr 1fr}.ts-col{border-right:none !important;border-bottom:3px solid #000 !important}.ts-col:last-child{border-bottom:none !important}}
+    @media(max-width:540px){.ts-grid{grid-template-columns:1fr}}
+    .au-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .au-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:18px 20px;transition:all 0.15s}
+    .au-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .au-emoji{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
+    .au-body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#1a0a1a;margin-bottom:6px;line-height:1.35}
+    .au-body p{font-size:13px;line-height:1.65;color:#555}
+    @media(max-width:900px){.au-grid{grid-template-columns:1fr}}
+    .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .hl-card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:20px;transition:all 0.15s}
+    .hl-card:hover{box-shadow:none;transform:translate(4px,4px)}
+    .hl-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 8px;margin-bottom:10px;color:#fff;background:#FF4D8D}
+    .hl-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;line-height:1.4;color:#1a0a1a;margin-bottom:8px}
+    .hl-card p{font-size:13px;line-height:1.65;color:#444}
+    @media(max-width:900px){.hl-grid{grid-template-columns:1fr}}
+    .fq-list{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;max-width:1000px;margin:0 auto}
+    .fq-item{border-bottom:2px solid #000}
+    .fq-item:last-child{border-bottom:none}
+    .fq-item summary{padding:16px 22px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:16px;color:#1a0a1a;cursor:pointer;list-style:none}
+    .fq-item summary::-webkit-details-marker{display:none}
+    .fq-item summary::before{content:"+";display:inline-block;margin-right:12px;font-family:'Space Mono',monospace;color:#FF4D8D;font-weight:900}
+    .fq-item[open] summary::before{content:"−"}
+    .fq-item .ans{padding:0 22px 18px 40px;font-size:14px;line-height:1.75;color:#444}
+    .outcome-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:1000px;margin:0 auto}
+    .oc-card{display:flex;gap:14px;align-items:flex-start;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #CB6CE6;padding:18px 20px}
+    .oc-emoji{font-size:30px;line-height:1;flex-shrink:0}
+    .oc-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;color:#1a0a1a;margin-bottom:5px}
+    .oc-card p{font-size:13px;line-height:1.65;color:#555}
+    @media(max-width:760px){.outcome-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="header halftone speedlines" style="position:relative;overflow:hidden">
+    <div class="sfx" style="position:absolute;top:18px;left:6%;z-index:3;color:#FFDE59">开播！</div>
+    <div class="sfx pink" style="position:absolute;top:30%;right:5%;z-index:3;transform:rotate(8deg)">出片！</div>
+    <div class="sfx blue" style="position:absolute;bottom:18px;left:8%;z-index:3;transform:rotate(-4deg);font-size:clamp(22px,3vw,38px)">咻——</div>
+    <div class="pow-burst pink" style="position:absolute;bottom:24px;right:8%;z-index:3">12<br>节<br>实战</div>
+    <div style="position:relative;z-index:4">
+      <h1>AI 漫剧实战营 · 12 节直播做出第一部成片</h1>
+      <p class="sub">朱依晨主讲 · 小红书『千立AI艺术教室』3.6 万粉。<strong>12 节直播实战</strong>，从拆爆款定题材 → MJ 出角色 → <strong>LiblibAI 炼 LoRA 锁角色一致性</strong> → 越轴分镜 → 即梦图生视频 → 剪映配音剪辑成片 → 分发变现。每节都有产出，结营手里有<strong>一部完整 AI 漫剧</strong>。</p>
+      <div class="meta-bar">
+        <span>🎬 12 节直播实战</span>
+        <span>⏱ 约 23 小时</span>
+        <span>🧬 角色一致性 LoRA 重点课</span>
+        <span>🎯 越轴分镜重点课</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats halftone" style="position:relative">
+    <div class="s"><div class="n">12</div><div class="l">节 · 直播实战</div></div>
+    <div class="s"><div class="n">23<small style="font-size:18px">h</small></div><div class="l">总时长</div></div>
+    <div class="s"><div class="n">4</div><div class="l">PHASE</div></div>
+    <div class="s"><div class="n">5</div><div class="l">AI 工具</div></div>
+    <div class="s"><div class="n">12</div><div class="l">个产出</div></div>
+  </div>
+
+  <!-- 学完能做到什么 -->
+  <div class="sec">
+    <h2>这门课结营你手里有什么</h2>
+    <p class="sub">12 节每节都有产出 · 串成一部完整 AI 漫剧 + 一条变现路径</p>
+    <div class="outcome-grid">
+      <div class="oc-card"><div class="oc-emoji">🎬</div><div><h4>一部完整 AI 漫剧成片</h4><p>从定位到发布走完一遍 —— 手里有第 1 集完整成片，作品集的第一部，能直接发平台。</p></div></div>
+      <div class="oc-card"><div class="oc-emoji">🧬</div><div><h4>角色专属 LoRA + 一致性资产</h4><p>炼好自己角色的 LoRA，多人同框 / 换装 / 换景脸不崩 —— 这是最拉差距的硬本事。</p></div></div>
+      <div class="oc-card"><div class="oc-emoji">🎯</div><div><h4>会标轴线的分镜故事板</h4><p>掌握越轴 / 轴线规则，分镜阶段就锁好机位方向，避开 AI 漫剧最容易翻车的坑。</p></div></div>
+      <div class="oc-card"><div class="oc-emoji">💰</div><div><h4>发布计划 + 变现路径</h4><p>起号 / 标签 / 封面 / 标题 + 五条变现路径拆解（接广 / 短剧分账 / 接单 / IP / 带学）。</p></div></div>
+    </div>
+  </div>
+
+  <!-- 4 Phase 大纲 -->
+  <div class="sec">
+    <h2>课程大纲 · 4 个 Phase · 12 节</h2>
+    <p class="sub">点开每个 Phase 看完整课时和每节产出 · 以『做出第 1 集成片』为主线</p>
+    <div class="ph-grid">
+      <a class="ph-card panel-shadow-pink tilt-l" href="./phase1.html">
+        <span class="ph-tag" style="background:#FF4D8D">🎯 Phase 1 · L01-L02</span>
+        <h3>定位 & 工具地基</h3>
+        <p class="ph-sum">先拆爆款定题材，再把六个工具跑通 —— 这是后面所有课的地基。</p>
+        <ul class="ph-bullets">
+          <li>L01 剧本定位 + 拆爆款（90 min）</li>
+          <li>L02 AI 工具操作基础：出图 + 出视频（120 min）</li>
+        </ul>
+        <div class="ph-foot"><span>2 节 · 210 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card panel-shadow-purple tilt-r" href="./phase2.html">
+        <span class="ph-tag" style="background:#CB6CE6">🎨 Phase 2 · L03-L07</span>
+        <h3>内容创作 & 视觉资产</h3>
+        <p class="ph-sum">剧本 → 画风 → 角色三视图 → <strong>★ 角色一致性 LoRA</strong> → 场景。含本课最值钱的一节。</p>
+        <ul class="ph-bullets">
+          <li>L03 剧本创作 · L04 画风 + 色调</li>
+          <li>L05 角色设定 + 三视图</li>
+          <li>★ L06 角色一致性（150 min · 重点）</li>
+          <li>L07 场景设定</li>
+        </ul>
+        <div class="ph-foot"><span>5 节 · 570 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card panel-shadow-blue tilt-l" href="./phase3.html">
+        <span class="ph-tag" style="background:#38B6FF">🎞 Phase 3 · L08-L11</span>
+        <h3>镜头 · 生成 · 成片</h3>
+        <p class="ph-sum"><strong>★ 越轴分镜</strong> → <strong>★ 图生视频</strong> → 配音音效 → 剪辑质检，做出第 1 集完整成片。</p>
+        <ul class="ph-bullets">
+          <li>★ L08 视听语言 + 分镜 / 故事板（150 min · 重点）</li>
+          <li>★ L09 图生视频 + 运镜动态（120 min · 重点）</li>
+          <li>L10 配音 + 音效 + BGM</li>
+          <li>L11 剪辑合成 + 字幕 + 成片质检</li>
+        </ul>
+        <div class="ph-foot"><span>4 节 · 510 min</span><span>查看详情 →</span></div>
+      </a>
+      <a class="ph-card panel-shadow-orange tilt-r" href="./phase4.html">
+        <span class="ph-tag" style="background:#FF914D">💰 Phase 4 · L12</span>
+        <h3>分发 & 变现</h3>
+        <p class="ph-sum">各平台规格玩法、起号数据复盘，以及接广 / 短剧分账 / 接单 / IP / 带学五条变现路径。</p>
+        <ul class="ph-bullets">
+          <li>L12 分发运营 + 变现落地（90 min）</li>
+        </ul>
+        <div class="ph-foot"><span>1 节 · 90 min</span><span>查看详情 →</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 两节重点课 -->
+  <div class="sec">
+    <div style="max-width:1100px;margin:0 auto;border:3px solid #000;background:linear-gradient(135deg,#FF4D8D 0%,#CB6CE6 100%);box-shadow:8px 8px 0 #000;padding:30px 28px;position:relative;overflow:hidden">
+      <span class="sfx" style="position:absolute;top:-8px;right:24px;font-size:clamp(28px,4vw,52px);color:#fff;-webkit-text-stroke:3px #000;text-shadow:5px 5px 0 #000;transform:rotate(-8deg);opacity:0.95">重点！</span>
+      <div style="display:inline-block;background:#1a0a1a;color:#FFDE59;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:1.5px;padding:5px 14px;margin-bottom:12px;border:2px solid #000">★ 2 节加长重点课 · 各 150 MIN</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3.2vw,30px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px;display:block;justify-content:flex-start">这门课最拉差距的两个难关，单独加足时间</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" class="hl-grid">
+        <div style="background:#fff;border:3px solid #000;padding:18px 20px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:26px;margin-bottom:6px">🧬</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:800;color:#1a0a1a;margin-bottom:8px">L06 · 角色一致性（LiblibAI LoRA）</h4>
+          <p style="font-size:13px;line-height:1.7;color:#444">为什么脸总崩 → 三套方案对比（LoRA / 参考图 / 锁种子）→ MJ / 即梦生多角度图喂 LiblibAI 炼专属 LoRA → 多人同框 / 换装 / 换景保持一致。<strong>这门课最值钱、最拉差距的一节。</strong></p>
+        </div>
+        <div style="background:#fff;border:3px solid #000;padding:18px 20px;box-shadow:4px 4px 0 #000">
+          <div style="font-size:26px;margin-bottom:6px">🎯</div>
+          <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:800;color:#1a0a1a;margin-bottom:8px">L08 · 视听语言 + 越轴分镜</h4>
+          <p style="font-size:13px;line-height:1.7;color:#444">景别 / 运镜 / 构图服务情绪 → 什么是越轴、为什么 AI 漫剧因镜头单独生成特别容易翻车 → 标注轴线 / 锁机位方向 / 垫图锁方向 / 视线匹配 + 25 宫格分镜法。<strong>把『越轴 / 不统一』集中解决。</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <div class="sec">
+    <h2>这门课和别的 AI 视频课的差别</h2>
+    <p class="sub">不是工具体验课 · 是一条从定位到变现的完整生产线</p>
+    <div class="hl-grid">
+      <div class="hl-card panel-shadow-pink tilt-l">
+        <span class="hl-tag">DELIVERABLE</span>
+        <h4>每节都有产出</h4>
+        <p>12 节每节都交一个产出 —— 定位卡、剧本、风格板、角色库、LoRA、故事板、视频片段、成片、变现路径，串成一部完整漫剧。</p>
+      </div>
+      <div class="hl-card panel-shadow-purple tilt-r">
+        <span class="hl-tag" style="background:#CB6CE6">CONSISTENCY</span>
+        <h4>角色一致性讲到底</h4>
+        <p>别的课点到为止，这门课单拎 150 分钟一节，带你炼出自己角色的 LoRA，多人同框 / 换装 / 换景都不崩脸。</p>
+      </div>
+      <div class="hl-card panel-shadow-blue tilt-l">
+        <span class="hl-tag" style="background:#38B6FF">CINEMATIC</span>
+        <h4>越轴 / 轴线规则专攻</h4>
+        <p>AI 漫剧因为镜头单独生成特别容易越轴翻车。这门课在分镜阶段就教你标轴线、锁机位方向、保视线匹配。</p>
+      </div>
+      <div class="hl-card panel-shadow-orange tilt-r">
+        <span class="hl-tag" style="background:#FF914D">PRACTITIONER</span>
+        <h4>一线博主的日常工艺</h4>
+        <p>朱依晨老师每天在做 AI 漫剧 / AI 绘画内容，3.6 万粉。课里讲的是她日常打开电脑就在用的工艺，不是 PPT 念稿。</p>
+      </div>
+      <div class="hl-card panel-shadow-green tilt-l">
+        <span class="hl-tag" style="background:#10b981">HONEST</span>
+        <h4>局限也讲清楚</h4>
+        <p>复杂武打易崩、口型同步偏弱 —— 课里不回避工具局限，教你怎么用分镜规避、怎么管理预期，少踩坑。</p>
+      </div>
+      <div class="hl-card panel-shadow-yellow tilt-r">
+        <span class="hl-tag" style="background:#FFDE59;color:#1a0a1a">MONETIZE</span>
+        <h4>落到变现</h4>
+        <p>最后一节不是收尾，是把接广 / 小程序短剧分账 / 代做接单 / IP 衍生 / 带学五条变现路径摊开讲。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audience -->
+  <div class="sec">
+    <h2>这门课适合谁</h2>
+    <p class="sub">4 类人 · 看下你在哪一类</p>
+    <div class="au-grid">
+      <div class="au-card"><div class="au-emoji">📱</div><div class="au-body"><h4>想起号的短视频创作者</h4><p>看到别人 AI 漫剧爆了心痒 —— 跟着 12 节自己做一部出来，手里有作品才好起号。</p></div></div>
+      <div class="au-card"><div class="au-emoji">✍️</div><div class="au-body"><h4>有故事但不会做视频的作者</h4><p>网文作者 / 编剧 / 业余写手，手里有故事想拍成漫剧但不会工具。</p></div></div>
+      <div class="au-card"><div class="au-emoji">🎨</div><div class="au-body"><h4>设计 / 美术 / 剪辑转型</h4><p>已经懂画面 / 剪辑，缺一份『AI 工具怎么换掉前期大半工作量』的完整方案。</p></div></div>
+      <div class="au-card"><div class="au-emoji">🧑‍💻</div><div class="au-body"><h4>想做 AI 副业的上班族</h4><p>晚上 + 周末做漫剧账号，先把一条完整生产线跑通再谈变现。</p></div></div>
+      <div class="au-card"><div class="au-emoji">🆕</div><div class="au-body"><h4>完全零基础的新手</h4><p>不会画画 / 编剧 / 剪辑也能学，工具基础节支持课前自学 + 课上答疑留缓冲。</p></div></div>
+      <div class="au-card"><div class="au-emoji">🏢</div><div class="au-body"><h4>内容工作室 / MCN</h4><p>想试 AI 漫剧赛道，需要把工艺标准化、能复用、能交接的团队。</p></div></div>
+    </div>
+  </div>
+
+  <!-- Instructor -->
+  <div class="sec">
+    <h2>讲师 · 朱依晨</h2>
+    <p class="sub">小红书『千立AI艺术教室』· 3.6 万粉 AI 艺术教学博主</p>
+    <div class="in-card">
+      <div class="in-left">
+        <div class="in-avatar">🎨</div>
+        <div class="in-name">朱依晨</div>
+        <div class="in-role">AI Comic Drama · Creator</div>
+      </div>
+      <div class="in-right">
+        <div class="in-tagline">小红书『千立AI艺术教室』主理人，3.6 万粉 AI 艺术教学博主，一线做 AI 漫剧 / AI 绘画。</div>
+        <p>朱依晨老师长期在小红书做 AI 艺术教学，账号『千立AI艺术教室』积累 3.6 万粉丝。她每天在一线做 AI 漫剧 / AI 绘画内容，把整套日常工艺 —— 从拆爆款定题材、MJ 出画风和角色、LiblibAI 炼 LoRA 锁角色一致性、即梦图生视频、到剪映配音剪辑成片发布 —— 全部搬进这门 12 节实战营。</p>
+        <p>这门课不是工具演示课，而是带着学员从 0 做出第一部能发布的漫剧 —— 每节都有产出，结营手里有一部完整成片。</p>
+        <div class="in-chips">
+          <span class="pc p">📕 小红书『千立AI艺术教室』</span>
+          <span class="pc b">👥 3.6 万粉丝</span>
+          <span class="pc o">🎨 AI 漫剧 / AI 绘画</span>
+          <span class="pc g">🧬 LoRA 一致性教学</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tool Stack -->
+  <div class="sec">
+    <h2>课程会用到的 AI 工具</h2>
+    <p class="sub">六大工具分工明确 · 课里会讲哪道工序用哪家</p>
+    <div class="ts-grid">
+      <div class="ts-col"><div class="ts-logo">💬</div><div class="ts-name">豆包 / GPT</div><div class="ts-vendor">ByteDance / OpenAI</div><div class="ts-role">剧本 / 文案 / 改编</div><p style="font-size:13px;line-height:1.65;color:#444">写剧本、改小说、调爽点节奏，还教你怎么改掉 AI 腔。</p></div>
+      <div class="ts-col"><div class="ts-logo">🎨</div><div class="ts-name">Midjourney (MJ)</div><div class="ts-vendor">Midjourney</div><div class="ts-role">画风 / 角色三视图</div><p style="font-size:13px;line-height:1.65;color:#444">定画风色调、出角色三视图和表情服装变体，出图主力。</p></div>
+      <div class="ts-col"><div class="ts-logo">🧬</div><div class="ts-name">LiblibAI</div><div class="ts-vendor">LiblibAI</div><div class="ts-role">角色一致性 LoRA</div><p style="font-size:13px;line-height:1.65;color:#444">炼角色专属 LoRA，锁住脸 —— 这门课最值钱的一节就用它。</p></div>
+      <div class="ts-col"><div class="ts-logo">🎞</div><div class="ts-name">即梦</div><div class="ts-vendor">ByteDance</div><div class="ts-role">图生视频 / 运镜 / 配音</div><p style="font-size:13px;line-height:1.65;color:#444">把分镜图喂进去生成视频，控运镜 / 时长，还能 AI 配音。</p></div>
+      <div class="ts-col"><div class="ts-logo">✂️</div><div class="ts-name">剪映</div><div class="ts-vendor">ByteDance · CapCut</div><div class="ts-role">剪辑 / 字幕 / 音效 / 成片</div><p style="font-size:13px;line-height:1.65;color:#444">剪辑卡点转场、自动字幕、音效 BGM，导出最终成片。</p></div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sec">
+    <h2>常见问题</h2>
+    <p class="sub">报名前最关心的几个问题</p>
+    <div class="fq-list">
+      <details class="fq-item" open><summary>完全零基础能学吗？</summary><div class="ans">能。课程不假设你会画画 / 编剧 / 视频剪辑，工具操作从头带。<strong>L02 工具操作基础</strong>专门给零基础留了缓冲 —— 可以拆成『课前自学 + 课上答疑』，先把六个工具的手练熟再往后走。会用电脑、能注册 AI 工具账号就能学。</div></details>
+      <details class="fq-item"><summary>这门课是直播还是录播？</summary><div class="ans">12 节<strong>全程直播实战</strong>，实战营节奏，每节当场出产出。课程页只展示大纲，开课时间和上课入口走报名后的渠道通知。</div></details>
+      <details class="fq-item"><summary>学完能做到什么？</summary><div class="ans">能独立把一个题材从 0 做成一部可发布的 AI 漫剧 —— 定位 → 剧本 → 画风 → 角色三视图 → <strong>角色一致性 LoRA</strong> → 场景 → <strong>越轴分镜故事板</strong> → 图生视频 → 配音音效 → 剪辑质检 → 分发变现。结营手里有第 1 集完整成片，是你作品集的第一部。</div></details>
+      <details class="fq-item"><summary>为什么角色一致性和越轴要单独加长到 150 分钟？</summary><div class="ans">因为这俩是 AI 漫剧<strong>最拉差距、最容易翻车</strong>的两关。角色一致性（L06）决定你的片看起来是不是『同一个人』，用 LiblibAI 炼 LoRA 是最值钱的硬本事；越轴（L08）因为 AI 镜头单独生成特别容易出错，观众一看就懵。这两节时间加足，单独攻。</div></details>
+      <details class="fq-item"><summary>工具账号要花钱吗？</summary><div class="ans">课程不强制买任何工具。豆包 / 剪映国内免费档够用；MJ / LiblibAI / 即梦走订阅或积分制，真要稳定产片建议至少备 MJ + LiblibAI + 即梦。课里讲方法不绑死工具，重点是工艺。</div></details>
+      <details class="fq-item"><summary>AI 漫剧现在有哪些局限？</summary><div class="ans">课里如实讲：<strong>复杂武打动作易崩</strong> —— 教你用分镜规避大动作；<strong>口型同步偏弱</strong> —— 教你管理预期、用景别和节奏绕开。不回避局限，少走弯路。</div></details>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>AI 漫剧实战营 · 朱依晨 · JR Academy 2026</p>
+    <p style="margin-top:6px;font-size:12px;opacity:0.7">大纲会随一线工艺迭代调整 · 已报名学员获得后续更新</p>
+  </div>
+</body>
+</html>

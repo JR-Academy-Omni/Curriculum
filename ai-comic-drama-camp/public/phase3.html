@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phase 3 · 镜头 · 生成 · 成片 · AI 漫剧实战营</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .header{background:linear-gradient(135deg,#1a0a1a 0%,#38B6FF 100%);padding:48px 24px 36px;color:#fff}
+    .header .crumb{font-family:'Space Mono',monospace;font-size:12px;opacity:0.75;text-align:center;margin-bottom:10px}
+    .header .crumb a{color:inherit;opacity:0.9}
+    .header h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,4.5vw,40px);font-weight:900;text-align:center;line-height:1.2;max-width:1000px;margin:0 auto}
+    .header .sub{text-align:center;font-size:14px;opacity:0.9;max-width:800px;margin:12px auto 0;line-height:1.65}
+    .header .meta{display:flex;gap:14px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .header .meta span{font-family:'Space Mono',monospace;font-size:11px;padding:4px 10px;border:2px solid rgba(0,0,0,0.18);background:rgba(255,255,255,0.18)}
+    .ph-wrap{max-width:1100px;margin:32px auto;padding:0 24px}
+    .less{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #38B6FF;margin-bottom:22px;transition:all 0.15s}
+    .less:hover{box-shadow:none;transform:translate(4px,4px)}
+    .less-head{padding:16px 22px;display:flex;align-items:center;gap:14px;background:#fafafa;border-bottom:2px solid #000;flex-wrap:wrap}
+    .less-code{font-family:'Space Mono',monospace;font-size:14px;font-weight:900;color:#38B6FF;padding:4px 10px;background:rgba(0,0,0,0.05);border:2px solid #38B6FF;flex-shrink:0}
+    .less-title{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:900;color:#1a0a1a;flex:1;min-width:200px}
+    .less-meta{font-family:'Space Mono',monospace;font-size:11px;color:#888;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .less-meta .pill{padding:2px 8px;background:#1a0a1a;color:#fff;font-weight:700}
+    .less-body{padding:18px 22px}
+    .less-desc{font-size:14px;line-height:1.7;color:#333;margin-bottom:14px}
+    .less-steps{border-top:1px dashed #ddd;padding-top:12px}
+    .less-steps h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#999;margin-bottom:10px}
+    .step{display:grid;grid-template-columns:32px 1fr auto;gap:12px;padding:8px 0;border-bottom:1px solid #f3f3f3;align-items:start}
+    .step:last-child{border-bottom:none}
+    .step-num{width:28px;height:28px;border:2px solid #000;background:#38B6FF;color:#fff;font-family:'Space Mono',monospace;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center}
+    .step-body h6{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;color:#1a0a1a;margin-bottom:3px}
+    .step-body p{font-size:13px;line-height:1.6;color:#555}
+    .step-time{font-family:'Space Mono',monospace;font-size:11px;color:#888;white-space:nowrap}
+    .nav-bar{max-width:1100px;margin:32px auto 0;padding:0 24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .nav-btn{padding:10px 18px;border:3px solid #000;background:#fff;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-decoration:none;color:#1a0a1a;transition:all 0.15s}
+    .nav-btn:hover{box-shadow:none;transform:translate(2px,2px);text-decoration:none}
+    .nav-btn.next{background:#38B6FF;color:#fff}
+    .less:nth-child(odd){transform:rotate(-0.3deg)}
+    .less:nth-child(even){transform:rotate(0.3deg)}
+    .less:hover{transform:translate(4px,4px) !important}
+  </style>
+</head>
+<body>
+  <div class="header halftone speedlines" style="position:relative;overflow:hidden">
+    <div class="sfx" style="position:absolute;top:14px;left:5%;z-index:3;color:#FFDE59;font-size:clamp(22px,3vw,40px)">🎞</div>
+    <div class="pow-burst pink" style="position:absolute;top:28px;right:6%;z-index:3;width:74px;height:74px;font-size:13px;line-height:1.15">L08-L11</div>
+    <div class="crumb"><a href="./curriculum.html">课程大纲</a> · Phase 3</div>
+    <h1>Phase 3 — 镜头 · 生成 · 成片</h1>
+    <p class="sub">视听语言越轴★ + 图生视频★ + 配音音效 + 剪辑质检（4 节 · 540 min）</p>
+    <div class="meta"><span>📚 4 节</span><span>⏱ 510 min</span><span>🎬 每节有产出</span></div>
+  </div>
+
+  <div class="ph-wrap">
+    <div class="less">
+      <div class="less-head"><span class="less-code">L08</span><span class="less-title">★ 视听语言 + 分镜 / 故事板（重点）</span><span class="less-meta"><span class="pill">直播</span><span class="pill" style="background:#FFDE59;color:#1a0a1a">★ 重点</span><span>150 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">把『越轴 / 不统一』集中在这节解决 · 视听语言基础（景别 / 运镜 / 构图服务情绪）· 越轴 / 轴线规则、为什么 AI 漫剧因镜头单独生成特别容易翻车 · 怎么解决越轴（标注轴线 / 描述机位方向 / 垫图锁方向 / 视线匹配）· 跨镜头连贯性 · 25 宫格分镜法 · 产出第 1 集完整故事板（标好轴线 + 机位方向）。</p>
+        <div class="less-steps"><h5>STEPS · 课时内容 + 产出</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>视听语言基础</h6><p>景别、运镜、构图怎么服务情绪。</p></div><div class="step-time">30 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>越轴 / 轴线规则</h6><p>什么是越轴、为什么观众会懵；AI 漫剧因镜头单独生成特别容易翻车。</p></div><div class="step-time">30 min</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><h6>怎么解决越轴</h6><p>分镜阶段标注轴线、明确描述机位方向和角色左右位置、用垫图锁方向、保持视线匹配（A 看右 B 就看左）。</p></div><div class="step-time">30 min</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><h6>跨镜头连贯 + 25 宫格分镜法</h6><p>场景方向 / 光源方向 / 角色站位不跳；25 宫格分镜法等省积分技巧（1 分钟 ≈ 25 个 2-3 秒镜头）。</p></div><div class="step-time">30 min</div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-body"><h6>产出 · 第 1 集完整故事板</h6><p>产出第 1 集完整故事板，标好轴线 + 机位方向。</p></div><div class="step-time">30 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L09</span><span class="less-title">★ 图生视频 + 运镜动态（重点）</span><span class="less-meta"><span class="pill">直播</span><span class="pill" style="background:#FFDE59;color:#1a0a1a">★ 重点</span><span>120 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">即梦图生视频实操、运镜、动作流畅度、prompt 控动态 / 时长 · 局限说明：复杂武打易崩，讲怎么用分镜规避大动作 · 产出第 1 集全部镜头视频片段。工具：即梦。</p>
+        <div class="less-steps"><h5>STEPS · 课时内容 + 产出</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>即梦图生视频实操</h6><p>把分镜图喂进即梦生成视频的完整实操。</p></div><div class="step-time">35 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>运镜 / 动作流畅度 / 控动态时长</h6><p>运镜、动作流畅度，用 prompt 控动态和时长。</p></div><div class="step-time">35 min</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><h6>局限说明 · 规避大动作</h6><p>复杂武打易崩，讲怎么用分镜规避大动作。</p></div><div class="step-time">20 min</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><h6>产出 · 全部镜头视频片段</h6><p>产出第 1 集全部镜头视频片段。</p></div><div class="step-time">30 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L10</span><span class="less-title">配音 + 音效 + BGM</span><span class="less-meta"><span class="pill">直播</span><span>120 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">AI 配音、音效铺垫、BGM 选曲与情绪节奏 · 局限说明：口型同步偏弱，管理好预期 · 产出配好音的镜头素材。工具：即梦 + 剪映。</p>
+        <div class="less-steps"><h5>STEPS · 课时内容 + 产出</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>AI 配音</h6><p>用即梦 / 剪映做角色 AI 配音。</p></div><div class="step-time">35 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>音效铺垫</h6><p>脚步 / 风声 / 转场等音效怎么铺。</p></div><div class="step-time">25 min</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><h6>BGM 选曲 &amp; 情绪节奏</h6><p>BGM 选曲与情绪节奏的把控。</p></div><div class="step-time">30 min</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><h6>局限说明 · 口型同步</h6><p>口型同步偏弱，管理好预期。</p></div><div class="step-time">10 min</div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-body"><h6>产出 · 配好音的镜头素材</h6><p>产出配好音的镜头素材。</p></div><div class="step-time">20 min</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="less">
+      <div class="less-head"><span class="less-code">L11</span><span class="less-title">剪辑合成 + 字幕 + 成片质检</span><span class="less-meta"><span class="pill">直播</span><span>120 min</span></span></div>
+      <div class="less-body">
+        <p class="less-desc">剪辑、卡点、转场、自动字幕、导出规格 · 避坑质检清单：回看全片复查——脸崩没 / 场景跳没 / 越轴没 / 视线接不接 · 废片筛选 / 重生成工作流（10 选 1、哪里该返工）· 产出第 1 集完整成片（作品集第一部）。工具：剪映。</p>
+        <div class="less-steps"><h5>STEPS · 课时内容 + 产出</h5>
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h6>剪辑 / 卡点 / 转场 / 字幕 / 导出</h6><p>剪辑、卡点、转场、自动字幕、导出规格。</p></div><div class="step-time">40 min</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h6>避坑质检清单</h6><p>回看全片复查 —— 脸崩没？场景跳没？越轴没？视线接不接？</p></div><div class="step-time">30 min</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><h6>废片筛选 / 重生成工作流</h6><p>10 选 1、哪里该返工的筛选与重生成工作流。</p></div><div class="step-time">20 min</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><h6>产出 · 第 1 集完整成片</h6><p>产出第 1 集完整成片 —— 你作品集的第一部。</p></div><div class="step-time">30 min</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <a class="nav-btn" href="./phase2.html">← Phase 2</a>
+    <a class="nav-btn next" href="./phase4.html">Phase 4 · 分发 &amp; 变现 →</a>
+  </div>
+
+  <div class="footer" style="margin-top:48px">
+    <p>AI 漫剧实战营 · Phase 3 · 朱依晨</p>
+  </div>
+</body>
+</html>

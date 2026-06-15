@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 漫剧实战营 · 小红书素材集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --theme-primary: #FF4D8D;
+    --theme-on-primary: #ffffff;
+    --brand-red: var(--theme-primary);
+    --brand-dark: #10162f;
+    --brand-yellow: #ffce44;
+    --brand-blue: #3b82f6;
+    --brand-green: #10b981;
+    --bg-light: #fff5f9;
+    --text-main: #10162f;
+    --text-gray: #64748b;
+    --border-color: #e2e8f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0eef2; color: var(--text-main); font-family: 'Noto Sans SC', system-ui, sans-serif; padding: 40px 20px 120px 150px; line-height: 1.5; }
+  .page-wrap { max-width: 1400px; margin: 0 auto; }
+  .page-head { background: #fff; border: 2px solid var(--brand-dark); border-radius: 20px; padding: 32px 40px; margin-bottom: 32px; box-shadow: 8px 8px 0 var(--brand-dark); position: relative; }
+  .page-head h1 { font-size: 30px; font-weight: 900; }
+  .page-head h1 span { color: var(--theme-primary); }
+  .page-head p { font-size: 15px; color: var(--text-gray); margin-top: 10px; max-width: 900px; }
+  .page-head .btn { position: absolute; top: 28px; right: 32px; background: var(--theme-primary); color: var(--theme-on-primary); border: 2px solid var(--brand-dark); border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 900; cursor: pointer; box-shadow: 4px 4px 0 var(--brand-dark); }
+
+  .thumb-nav { display: flex; flex-direction: column; gap: 8px; background: #fff; border: 1.5px solid var(--brand-dark); border-radius: 14px; padding: 12px; position: fixed; top: 20px; left: 16px; width: 120px; max-height: calc(100vh - 40px); overflow-y: auto; z-index: 100; }
+  .thumb { aspect-ratio: 3/4; background: var(--bg-light); border: 1.5px solid var(--brand-dark); border-radius: 8px; font-weight: 900; color: var(--brand-dark); text-align: center; display: flex; align-items: center; justify-content: center; text-decoration: none; flex-direction: column; gap: 2px; padding: 4px; transition: all 0.1s; }
+  .thumb .num { font-size: 16px; }
+  .thumb .lbl { font-size: 11px; font-weight: 700; }
+  .thumb:hover { background: var(--theme-primary); color: #fff; transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--brand-dark); }
+
+  .poster-frame { display: grid; grid-template-columns: auto 460px; gap: 28px; align-items: start; justify-content: center; margin-bottom: 60px; }
+  .poster-main { display: flex; flex-direction: column; align-items: center; }
+  .label { font-size: 14px; font-weight: 800; color: var(--text-gray); margin-bottom: 12px; align-self: flex-start; }
+  .poster-scaler { width: 435px; height: 581px; position: relative; border: 2px solid var(--brand-dark); border-radius: 12px; box-shadow: 8px 8px 0 var(--brand-dark); overflow: hidden; }
+  .poster { width: 1242px; height: 1660px; transform: scale(0.35); transform-origin: top left; position: absolute; top: 0; left: 0; background: var(--bg-light); overflow: hidden; padding: 32px; }
+  .p-inner { position: relative; width: 100%; height: 100%; padding: 80px 72px; display: flex; flex-direction: column; background: #fff; border: 5px solid var(--brand-dark); border-radius: 36px; box-sizing: border-box; overflow: hidden; }
+  .p-inner.dark, .poster.dark .p-inner { background: var(--brand-dark); color: #fff; }
+
+  .dl-btn { display: block; margin: 20px auto 0; background: var(--theme-primary); color: var(--theme-on-primary); border: 3px solid var(--brand-dark); box-shadow: 6px 6px 0 var(--brand-dark); padding: 14px 32px; font-size: 14px; font-weight: 900; cursor: pointer; border-radius: 10px; transition: all 0.15s; }
+  .dl-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--brand-dark); }
+
+  /* ---- shared tokens ---- */
+  .hl { position: relative; display: inline-block; z-index: 1; }
+  .hl::after { content: ''; position: absolute; bottom: 12px; left: -4px; right: -4px; height: 30px; background: var(--theme-primary); opacity: 0.32; z-index: -1; }
+  .spacer { flex: 1; }
+  .eyebrow { display: flex; align-items: center; gap: 24px; margin-bottom: 30px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 34px; letter-spacing: 4px; color: var(--theme-primary); text-transform: uppercase; }
+  .eyebrow .line { flex: 1; height: 0; border-top: 3px dashed rgba(16,22,47,0.2); }
+  .eyebrow.light { color: var(--brand-yellow); }
+  .eyebrow.light .line { border-top-color: rgba(255,255,255,0.25); }
+  .p-inner h2 { font-size: 100px; font-weight: 900; line-height: 1.08; letter-spacing: -2px; }
+  .lead { font-size: 52px; color: var(--text-gray); margin-top: 28px; line-height: 1.45; font-weight: 600; }
+  .lead.light { color: rgba(255,255,255,0.82); }
+  .hook { font-size: 150px; font-weight: 900; line-height: 1.05; letter-spacing: -4px; }
+  .sub2 { font-size: 54px; color: var(--text-gray); margin-top: 40px; font-weight: 600; line-height: 1.4; }
+
+  .kpill-row { display: flex; gap: 24px; margin: 48px 0 30px; flex-wrap: wrap; }
+  .kpill { background: var(--theme-primary); color: var(--theme-on-primary); border: 3px solid var(--brand-dark); border-radius: 100px; padding: 18px 34px; font-size: 44px; font-weight: 800; }
+  .teacher-line { font-size: 46px; color: var(--text-gray); font-weight: 700; margin-bottom: 36px; }
+
+  /* cards grid */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+  .card { border: 4px solid var(--brand-dark); border-radius: 28px; padding: 44px 40px; box-shadow: 12px 12px 0 rgba(16,22,47,0.06); background: #fff; }
+  .card .ic { font-size: 76px; line-height: 1; }
+  .card .ct { font-size: 56px; font-weight: 900; margin-top: 18px; line-height: 1.15; }
+  .card .cd { font-size: 48px; color: var(--text-gray); margin-top: 14px; line-height: 1.4; font-weight: 600; }
+
+  /* list rows */
+  .lrow { display: flex; align-items: center; gap: 28px; padding: 30px 40px; border: 4px solid var(--brand-dark); border-radius: 24px; margin-top: 24px; box-shadow: 8px 8px 0 rgba(16,22,47,0.06); background: #fff; }
+  .lrow .ln { font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 52px; color: var(--theme-primary); min-width: 150px; }
+  .lrow .lt { font-size: 54px; font-weight: 800; }
+  .lrow .lz { margin-left: auto; background: var(--brand-dark); color: #fff; padding: 12px 28px; border-radius: 14px; font-size: 40px; font-weight: 700; white-space: nowrap; }
+  .lrow.hot { background: var(--theme-primary); border-color: var(--brand-dark); box-shadow: 8px 8px 0 var(--brand-dark); }
+  .lrow.hot .ln { color: var(--theme-on-primary); }
+  .lrow.hot .lt { color: var(--theme-on-primary); }
+
+  /* P1B bigcard */
+  .bigcard { border: 5px solid var(--brand-dark); border-radius: 32px; background: var(--brand-dark); color: #fff; padding: 56px 50px; box-shadow: 16px 16px 0 var(--theme-primary); }
+  .bigcard .bc-top { font-size: 60px; font-weight: 900; color: var(--brand-yellow); margin-bottom: 30px; }
+  .bigcard .bc-list div { font-size: 50px; font-weight: 600; line-height: 1.5; padding-left: 56px; position: relative; margin-top: 18px; }
+  .bigcard .bc-list div::before { content: '✓'; position: absolute; left: 0; color: var(--theme-primary); font-weight: 900; }
+
+  /* P1C stage */
+  .stage-row { display: flex; align-items: center; gap: 30px; margin-top: 70px; }
+  .stage { flex: 1; border: 4px solid var(--brand-dark); border-radius: 28px; padding: 50px 36px; text-align: center; }
+  .stage.from { background: #f1f5f9; }
+  .stage.to { background: var(--theme-primary); color: var(--theme-on-primary); box-shadow: 12px 12px 0 var(--brand-dark); }
+  .stage .st-t { font-size: 46px; font-weight: 900; margin-bottom: 18px; }
+  .stage .st-d { font-size: 50px; font-weight: 700; line-height: 1.35; }
+  .arrow { font-size: 90px; font-weight: 900; color: var(--theme-primary); }
+
+  /* P1D sticker */
+  .sticker-grid { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; transform: rotate(-1.5deg); }
+  .sticker { background: #fff; border: 4px solid var(--brand-dark); border-radius: 22px; padding: 44px 22px; font-size: 56px; font-weight: 900; text-align: center; box-shadow: 12px 12px 0 var(--brand-yellow); display: flex; align-items: center; justify-content: center; }
+  .sticker:nth-child(even) { transform: rotate(3deg); background: var(--theme-primary); color: var(--theme-on-primary); box-shadow: 12px 12px 0 var(--brand-dark); }
+
+  /* P2 pit */
+  .pit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 50px; }
+  .pit { display: flex; align-items: center; gap: 24px; border: 4px solid var(--brand-dark); border-radius: 22px; padding: 36px 34px; font-size: 48px; font-weight: 700; box-shadow: 8px 8px 0 rgba(16,22,47,0.05); }
+  .pit .x { color: var(--theme-primary); font-weight: 900; font-size: 56px; }
+
+  /* P3 chat */
+  .chat { display: flex; flex-direction: column; gap: 30px; margin-top: 56px; }
+  .msg { background: #f1f5f9; border: 4px solid var(--brand-dark); border-radius: 26px; border-bottom-left-radius: 6px; padding: 38px 44px; font-size: 52px; font-weight: 600; max-width: 88%; box-shadow: 6px 6px 0 rgba(16,22,47,0.05); }
+  .msg:nth-child(even) { align-self: flex-end; background: var(--theme-primary); color: var(--theme-on-primary); border-bottom-left-radius: 26px; border-bottom-right-radius: 6px; }
+
+  /* P6 tool list */
+  .tool-list { margin-top: 50px; display: flex; flex-direction: column; gap: 24px; }
+  .trow { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.06); border: 3px solid rgba(255,255,255,0.2); border-radius: 22px; padding: 32px 40px; }
+  .trow .te { font-size: 66px; }
+  .trow .tn { font-size: 58px; font-weight: 900; }
+  .trow .tr { margin-left: auto; font-size: 44px; color: var(--brand-yellow); font-weight: 700; }
+
+  /* P7 quotes */
+  .q-list { display: flex; flex-direction: column; gap: 34px; margin-top: 56px; }
+  .quote { font-size: 56px; font-weight: 700; line-height: 1.4; border-left: 12px solid var(--theme-primary); padding: 14px 0 14px 40px; }
+
+  /* P8 numbers */
+  .num-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
+  .ncell { border: 4px solid var(--brand-dark); border-radius: 28px; padding: 50px; text-align: center; box-shadow: 12px 12px 0 var(--theme-primary); }
+  .num { font-size: 120px; font-weight: 900; color: var(--theme-primary); line-height: 1; }
+  .nl { font-size: 48px; font-weight: 700; margin-top: 16px; }
+  .note-bar { margin-top: 48px; background: var(--brand-yellow); border: 4px solid var(--brand-dark); border-radius: 22px; padding: 36px 40px; font-size: 46px; font-weight: 800; line-height: 1.4; }
+  .note-bar.light { background: var(--theme-primary); color: var(--theme-on-primary); }
+
+  /* P9 cta */
+  .cta-list { margin-top: 56px; display: flex; flex-direction: column; gap: 26px; }
+  .cta-list div { font-size: 54px; font-weight: 700; padding-left: 60px; position: relative; }
+  .cta-list div::before { content: '›'; position: absolute; left: 8px; color: var(--theme-primary); font-weight: 900; }
+
+  /* P10 explainer */
+  .def-bar { background: var(--brand-dark); color: #fff; border-radius: 28px; padding: 52px 48px; font-size: 60px; font-weight: 900; line-height: 1.35; }
+  .def-bar .hl-d { color: var(--brand-yellow); }
+  .flow { display: flex; flex-direction: column; gap: 22px; }
+  .frow { display: flex; align-items: center; gap: 30px; border: 4px solid var(--brand-dark); border-radius: 22px; padding: 30px 38px; font-size: 50px; font-weight: 700; box-shadow: 6px 6px 0 rgba(16,22,47,0.05); }
+  .frow .fn { font-size: 60px; }
+
+  /* P13 options */
+  .opt-list { margin-top: 50px; display: flex; flex-direction: column; gap: 28px; }
+  .opt { display: flex; align-items: center; gap: 32px; background: rgba(255,255,255,0.06); border: 3px solid rgba(255,255,255,0.2); border-radius: 24px; padding: 38px 44px; }
+  .opt.best { background: var(--theme-primary); border-color: var(--brand-dark); }
+  .opt .oi { font-size: 72px; font-weight: 900; color: var(--brand-yellow); }
+  .opt.best .oi { color: var(--theme-on-primary); }
+  .opt .on { font-size: 56px; font-weight: 900; }
+  .opt .od { font-size: 46px; font-weight: 600; opacity: 0.85; margin-top: 8px; }
+
+  /* P16 timeline */
+  .tl { margin-top: 44px; display: flex; flex-direction: column; gap: 20px; }
+  .ti { display: flex; align-items: center; gap: 30px; border: 4px solid var(--brand-dark); border-radius: 20px; padding: 26px 36px; font-size: 50px; font-weight: 700; box-shadow: 6px 6px 0 rgba(16,22,47,0.05); }
+  .ti .tn { font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 44px; color: var(--theme-primary); min-width: 150px; }
+  .ti.hot { background: var(--theme-primary); color: var(--theme-on-primary); }
+  .ti.hot .tn { color: var(--theme-on-primary); }
+
+  /* P22 solve */
+  .solve { margin-top: 46px; display: flex; flex-direction: column; gap: 24px; }
+  .srow { display: flex; align-items: center; gap: 28px; border: 4px solid var(--brand-dark); border-radius: 22px; padding: 32px 38px; font-size: 48px; font-weight: 700; box-shadow: 6px 6px 0 rgba(16,22,47,0.05); }
+  .srow .sk { color: var(--brand-green); font-weight: 900; font-size: 58px; }
+
+  /* P23 spotlight */
+  .spot { margin-top: 50px; display: flex; flex-direction: column; gap: 32px; }
+  .sp-card { background: rgba(255,255,255,0.06); border: 3px solid rgba(255,255,255,0.2); border-radius: 26px; padding: 46px 44px; position: relative; }
+  .sp-card .sp-t { font-size: 60px; font-weight: 900; }
+  .sp-card .sp-m { position: absolute; top: 46px; right: 44px; background: var(--brand-yellow); color: var(--brand-dark); padding: 10px 26px; border-radius: 14px; font-size: 40px; font-weight: 900; }
+  .sp-card .sp-d { font-size: 48px; font-weight: 600; opacity: 0.85; margin-top: 20px; line-height: 1.4; }
+
+  /* P24 money */
+  .money { margin-top: 50px; display: flex; flex-direction: column; gap: 24px; }
+  .mrow { display: flex; align-items: center; gap: 30px; border: 4px solid var(--brand-dark); border-radius: 22px; padding: 32px 40px; box-shadow: 6px 6px 0 rgba(16,22,47,0.05); }
+  .mrow .me { font-size: 64px; }
+  .mrow .mt { font-size: 56px; font-weight: 900; min-width: 280px; }
+  .mrow .md { font-size: 46px; color: var(--text-gray); font-weight: 600; margin-left: auto; }
+
+  /* course chip */
+  .course-chip { margin-top: auto; background: var(--brand-dark); color: #fff; padding: 36px 48px; border-radius: 28px; display: flex; justify-content: space-between; align-items: center; }
+  .course-chip .name { font-size: 50px; font-weight: 900; }
+  .course-chip .meta { font-size: 36px; color: var(--theme-primary); font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+  .dark .course-chip { background: rgba(255,255,255,0.08); border: 3px solid rgba(255,255,255,0.2); }
+
+  /* single-image course bar (auto-injected) */
+  .p-course-bar { position: absolute; left: 50%; top: 30px; transform: translateX(-50%); background: var(--theme-primary); color: var(--theme-on-primary); border: 2px solid var(--brand-dark); border-radius: 100px; padding: 12px 32px; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; letter-spacing: 1px; box-shadow: 4px 4px 0 var(--brand-dark); white-space: nowrap; z-index: 10; }
+  .dark .p-course-bar { background: var(--brand-yellow); color: var(--brand-dark); }
+  .p1 .p-course-bar, .p1b .p-course-bar, .p1c .p-course-bar, .p1d .p-course-bar, .p9 .p-course-bar { display: none; }
+
+  /* copy panel */
+  .copy-panel { background: #fff; border: 2px solid var(--brand-dark); border-radius: 16px; padding: 18px 20px; box-shadow: 6px 6px 0 rgba(16,22,47,0.08); display: flex; flex-direction: column; gap: 14px; width: 460px; }
+  .cp-title { font-size: 13px; font-weight: 900; color: var(--theme-primary); letter-spacing: 1px; border-bottom: 1.5px dashed var(--border-color); padding-bottom: 10px; }
+  .cp-tabs { display: flex; gap: 4px; background: #f3f4f6; padding: 4px; border-radius: 10px; }
+  .cp-tab { flex: 1; background: transparent; border: none; padding: 8px 6px; font-size: 12px; font-weight: 700; color: var(--text-gray); cursor: pointer; border-radius: 8px; }
+  .cp-tab.active { background: #fff; color: var(--brand-dark); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 900; }
+  .cp-pane { display: flex; flex-direction: column; gap: 14px; }
+  .cp-pane.hidden { display: none; }
+  .cp-section { display: flex; flex-direction: column; gap: 6px; }
+  .cp-label { font-size: 11px; font-weight: 900; color: var(--text-gray); text-transform: uppercase; }
+  .cp-box { background: #fafbfc; border: 1.5px solid var(--border-color); border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; position: relative; min-height: 40px; }
+  .cp-btn { align-self: flex-end; background: var(--brand-dark); color: #fff; border: none; padding: 5px 14px; font-size: 11px; font-weight: 700; border-radius: 6px; cursor: pointer; }
+  .cp-btn:hover { background: var(--theme-primary); }
+
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <header class="page-head">
+    <h1>AI 漫剧实战营 · <span>小红书素材集</span></h1>
+    <p>朱依晨主讲（小红书「千立AI艺术教室」3.6 万粉）· 20 张 1242×1660 竖版 · 聚光投流标准 · 真 Chrome 预渲染 · 1:1 PNG</p>
+    <button class="btn" id="push-xhs" title="推送到 JR Social Publisher 插件">📤 推送到小红书（插件）</button>
+  </header>
+
+  <nav class="thumb-nav">
+    <a href="#p1" class="thumb"><span class="num">1</span><span class="lbl">封面</span></a>
+    <a href="#p1b" class="thumb"><span class="num">1B</span><span class="lbl">脸崩</span></a>
+    <a href="#p1c" class="thumb"><span class="num">1C</span><span class="lbl">有故事</span></a>
+    <a href="#p1d" class="thumb"><span class="num">1D</span><span class="lbl">工具</span></a>
+    <a href="#p2" class="thumb"><span class="num">2</span><span class="lbl">痛点</span></a>
+    <a href="#p3" class="thumb"><span class="num">3</span><span class="lbl">对话</span></a>
+    <a href="#p4" class="thumb"><span class="num">4</span><span class="lbl">产出</span></a>
+    <a href="#p5" class="thumb"><span class="num">5</span><span class="lbl">大纲</span></a>
+    <a href="#p6" class="thumb"><span class="num">6</span><span class="lbl">工具栈</span></a>
+    <a href="#p7" class="thumb"><span class="num">7</span><span class="lbl">反馈</span></a>
+    <a href="#p8" class="thumb"><span class="num">8</span><span class="lbl">配置</span></a>
+    <a href="#p9" class="thumb"><span class="num">9</span><span class="lbl">CTA</span></a>
+    <a href="#p10" class="thumb"><span class="num">10</span><span class="lbl">是什么</span></a>
+    <a href="#p12" class="thumb"><span class="num">12</span><span class="lbl">P2深潜</span></a>
+    <a href="#p13" class="thumb"><span class="num">13</span><span class="lbl">一致性</span></a>
+    <a href="#p14" class="thumb"><span class="num">14</span><span class="lbl">适合谁</span></a>
+    <a href="#p16" class="thumb"><span class="num">16</span><span class="lbl">路线</span></a>
+    <a href="#p22" class="thumb"><span class="num">22</span><span class="lbl">越轴</span></a>
+    <a href="#p23" class="thumb"><span class="num">23</span><span class="lbl">重点课</span></a>
+    <a href="#p24" class="thumb"><span class="num">24</span><span class="lbl">变现</span></a>
+  </nav>
+
+  <div class="poster-frame" id="p1">
+    <div class="poster-main">
+      <div class="label">P1 封面 · 课程主图</div>
+      <div class="poster-scaler">
+        <div class="poster p1 cover" id="poster-1">
+          <div class="p-inner">
+<div class="hook">AI 漫剧<br><span class="hl">实战营</span></div>
+<div class="sub2">12 节直播 · 做出你的<br>第一部能发布的成片</div>
+<div class="spacer"></div>
+<div class="kpill-row"><span class="kpill">★ 角色一致性 LoRA</span><span class="kpill">★ 越轴分镜</span></div>
+<div class="teacher-line">朱依晨主讲 · 小红书「千立AI艺术教室」3.6 万粉</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-1" data-slug="p1-cover">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p1"></div>
+  </div>
+
+  <div class="poster-frame" id="p1b">
+    <div class="poster-main">
+      <div class="label">P1B 共鸣 · 角色脸崩</div>
+      <div class="poster-scaler">
+        <div class="poster p1b" id="poster-1b">
+          <div class="p-inner">
+<div class="eyebrow"><span>PAIN</span><span class="line"></span></div>
+<h2>同一个角色<br>下个镜头就<span class="hl">换了脸</span>？</h2>
+<div class="lead">这是 AI 漫剧最劝退的一步。本课单拎 150 分钟专攻。</div>
+<div class="spacer"></div>
+<div class="bigcard">
+  <div class="bc-top">🧬 L06 角色一致性 · 150 min</div>
+  <div class="bc-list">
+    <div>用 LiblibAI 炼专属 LoRA，稳定出脸</div>
+    <div>多人同框 / 换装 / 换景都是同一个人</div>
+    <div>三套方案对比：LoRA / 参考图 / 锁种子</div>
+  </div>
+</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-1b" data-slug="p1b-consistency">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p1b"></div>
+  </div>
+
+  <div class="poster-frame" id="p1c">
+    <div class="poster-main">
+      <div class="label">P1C 共鸣 · 有故事不会做</div>
+      <div class="poster-scaler">
+        <div class="poster p1c" id="poster-1c">
+          <div class="p-inner">
+<div class="eyebrow"><span>FOR YOU</span><span class="line"></span></div>
+<h2>有故事<br>但<span class="hl">不会做视频</span>？</h2>
+<div class="lead">网文 / 编剧 / 业余写手 —— 12 节把脑洞变成成片。</div>
+<div class="stage-row">
+  <div class="stage from"><div class="st-t">你现在</div><div class="st-d">脑子里有故事<br>不会画 / 不会剪</div></div>
+  <div class="arrow">→</div>
+  <div class="stage to"><div class="st-t">结营后</div><div class="st-d">一部完整 AI<br>漫剧成片</div></div>
+</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-1c" data-slug="p1c-story">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p1c"></div>
+  </div>
+
+  <div class="poster-frame" id="p1d">
+    <div class="poster-main">
+      <div class="label">P1D 角色 · 六工具一条龙</div>
+      <div class="poster-scaler">
+        <div class="poster p1d" id="poster-1d">
+          <div class="p-inner">
+<div class="hook" style="font-size:120px">不是一个工具<br><span class="hl">是一条龙</span></div>
+<div class="sticker-grid">
+  <div class="sticker">💬 豆包 / GPT</div>
+  <div class="sticker">🎨 Midjourney</div>
+  <div class="sticker">🧬 LiblibAI</div>
+  <div class="sticker">🎞 即梦</div>
+  <div class="sticker">✂️ 剪映</div>
+  <div class="sticker">🎬 一部成片</div>
+</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-1d" data-slug="p1d-tools">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p1d"></div>
+  </div>
+
+  <div class="poster-frame" id="p2">
+    <div class="poster-main">
+      <div class="label">P2 痛点 · AI 漫剧的 6 个坑</div>
+      <div class="poster-scaler">
+        <div class="poster p2" id="poster-2">
+          <div class="p-inner">
+<div class="eyebrow"><span>REAL DIFFICULTY</span><span class="line"></span></div>
+<h2>以为会出图<br>就能做漫剧？</h2>
+<div class="lead">真正难的是这 6 件事 —— 这门课逐个攻破。</div>
+<div class="pit-grid">
+  <div class="pit"><span class="x">✕</span>角色下个镜头就换脸</div>
+  <div class="pit"><span class="x">✕</span>镜头一切就越轴，看懵</div>
+  <div class="pit"><span class="x">✕</span>复杂动作一动就崩</div>
+  <div class="pit"><span class="x">✕</span>配音口型对不上</div>
+  <div class="pit"><span class="x">✕</span>场景前后不连贯</div>
+  <div class="pit"><span class="x">✕</span>做完没人看、不会变现</div>
+</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-2" data-slug="p2-pitfalls">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p2"></div>
+  </div>
+
+  <div class="poster-frame" id="p3">
+    <div class="poster-main">
+      <div class="label">P3 对话 · 评论区天天问</div>
+      <div class="poster-scaler">
+        <div class="poster p3" id="poster-3">
+          <div class="p-inner">
+<div class="eyebrow"><span>评论区</span><span class="line"></span></div>
+<h2>“姐妹这漫剧<br>怎么做的？”</h2>
+<div class="chat">
+  <div class="msg">这是 AI 做的？太像了吧</div>
+  <div class="msg">同一个角色你怎么不换脸的</div>
+  <div class="msg">求教程！我做出来全是崩的</div>
+  <div class="msg">用什么工具啊姐妹</div>
+</div>
+<div class="lead" style="margin-top:auto">这门课让你也能做出被追着问的片。</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-3" data-slug="p3-comments">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p3"></div>
+  </div>
+
+  <div class="poster-frame" id="p4">
+    <div class="poster-main">
+      <div class="label">P4 产出 · 结营手里有什么</div>
+      <div class="poster-scaler">
+        <div class="poster p4" id="poster-4">
+          <div class="p-inner">
+<div class="eyebrow"><span>DELIVERABLES</span><span class="line"></span></div>
+<h2>结营你手里<br>有 <span class="hl">4 样东西</span></h2>
+<div class="grid2">
+  <div class="card"><div class="ic">🎬</div><div class="ct">一部完整成片</div><div class="cd">作品集第一部，能直接发</div></div>
+  <div class="card"><div class="ic">🧬</div><div class="ct">角色专属 LoRA</div><div class="cd">一致性资产，随时复用</div></div>
+  <div class="card"><div class="ic">🎯</div><div class="ct">会标轴线的故事板</div><div class="cd">分镜阶段就避开越轴</div></div>
+  <div class="card"><div class="ic">💰</div><div class="ct">发布 + 变现路径</div><div class="cd">起号计划 + 5 条变现</div></div>
+</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-4" data-slug="p4-outcomes">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p4"></div>
+  </div>
+
+  <div class="poster-frame" id="p5">
+    <div class="poster-main">
+      <div class="label">P5 地图 · 4 Phase 12 节</div>
+      <div class="poster-scaler">
+        <div class="poster p5" id="poster-5">
+          <div class="p-inner">
+<div class="eyebrow"><span>CURRICULUM</span><span class="line"></span></div>
+<h2>4 个 Phase<br>12 节大纲</h2>
+<div class="lrow"><span class="ln">P1</span><span class="lt">定位 &amp; 工具地基</span><span class="lz">2 节</span></div>
+<div class="lrow"><span class="ln">P2</span><span class="lt">内容创作 &amp; 视觉资产 ★</span><span class="lz">5 节</span></div>
+<div class="lrow"><span class="ln">P3</span><span class="lt">镜头 · 生成 · 成片 ★</span><span class="lz">4 节</span></div>
+<div class="lrow"><span class="ln">P4</span><span class="lt">分发 &amp; 变现</span><span class="lz">1 节</span></div>
+<div class="lead" style="margin-top:36px">12 节 · 约 23 小时 · 全程直播实战</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-5" data-slug="p5-phasemap">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p5"></div>
+  </div>
+
+  <div class="poster-frame" id="p6">
+    <div class="poster-main">
+      <div class="label">P6 工具栈 · 五件套</div>
+      <div class="poster-scaler">
+        <div class="poster p6 dark" id="poster-6">
+          <div class="p-inner">
+<div class="eyebrow light"><span>TOOL STACK</span><span class="line"></span></div>
+<h2>AI 漫剧<br>五件套</h2>
+<div class="lead light">分工明确，课里讲哪道工序用哪家。</div>
+<div class="tool-list">
+  <div class="trow"><span class="te">💬</span><span class="tn">豆包 / GPT</span><span class="tr">剧本 · 改编</span></div>
+  <div class="trow"><span class="te">🎨</span><span class="tn">Midjourney</span><span class="tr">画风 · 三视图</span></div>
+  <div class="trow"><span class="te">🧬</span><span class="tn">LiblibAI</span><span class="tr">角色一致性 LoRA</span></div>
+  <div class="trow"><span class="te">🎞</span><span class="tn">即梦</span><span class="tr">图生视频 · 配音</span></div>
+  <div class="trow"><span class="te">✂️</span><span class="tn">剪映</span><span class="tr">剪辑 · 字幕 · 成片</span></div>
+</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-6" data-slug="p6-toolstack">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p6"></div>
+  </div>
+
+  <div class="poster-frame" id="p7">
+    <div class="poster-main">
+      <div class="label">P7 反馈 · 软性参考</div>
+      <div class="poster-scaler">
+        <div class="poster p7" id="poster-7">
+          <div class="p-inner">
+<div class="eyebrow"><span>VOICES</span><span class="line"></span></div>
+<h2>跟着做完<br>能说出这几句</h2>
+<div class="q-list">
+  <div class="quote">第一次把同一个角色做到不换脸，太爽了</div>
+  <div class="quote">越轴那节真救命，之前根本不知道为啥看着乱</div>
+  <div class="quote">做完手里真有一条能发的片，有人来问教程了</div>
+</div>
+<div class="lead" style="margin-top:auto">这门课唯一目标：让你也能这么说。</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-7" data-slug="p7-voices">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p7"></div>
+  </div>
+
+  <div class="poster-frame" id="p8">
+    <div class="poster-main">
+      <div class="label">P8 配置 · 数字一览</div>
+      <div class="poster-scaler">
+        <div class="poster p8" id="poster-8">
+          <div class="p-inner">
+<div class="eyebrow"><span>WHAT YOU GET</span><span class="line"></span></div>
+<h2>课程配置<br>一览</h2>
+<div class="num-grid">
+  <div class="ncell"><div class="num">12</div><div class="nl">节直播实战</div></div>
+  <div class="ncell"><div class="num">23h</div><div class="nl">总时长</div></div>
+  <div class="ncell"><div class="num">5</div><div class="nl">大 AI 工具</div></div>
+  <div class="ncell"><div class="num">12</div><div class="nl">个产出</div></div>
+</div>
+<div class="note-bar">★ 含 2 节 150 分钟加长重点课：角色一致性 LoRA + 越轴分镜</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-8" data-slug="p8-config">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p8"></div>
+  </div>
+
+  <div class="poster-frame" id="p9">
+    <div class="poster-main">
+      <div class="label">P9 软性 CTA</div>
+      <div class="poster-scaler">
+        <div class="poster p9 cta" id="poster-9">
+          <div class="p-inner">
+<div class="eyebrow"><span>READY?</span><span class="line"></span></div>
+<div class="hook" style="font-size:104px">想做 AI 漫剧的<br><span class="hl">来上车 🚀</span></div>
+<div class="cta-list">
+  <div>想做 AI 漫剧 / 短剧起号</div>
+  <div>有故事但不会做视频</div>
+  <div>想转 AI 视频赛道 / 搞 AI 副业</div>
+</div>
+<div class="lead" style="margin-top:auto">主页看课程大纲，细节都在里面 👀</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-9" data-slug="p9-cta">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p9"></div>
+  </div>
+
+  <div class="poster-frame" id="p10">
+    <div class="poster-main">
+      <div class="label">P10 科普 · AI 漫剧是什么</div>
+      <div class="poster-scaler">
+        <div class="poster p10" id="poster-10">
+          <div class="p-inner">
+<div class="def-bar">AI 漫剧 = 用 AI 把一个故事做成<span class="hl-d">动态分镜短剧</span></div>
+<div class="eyebrow" style="margin-top:48px"><span>一条 1 分钟怎么来的</span><span class="line"></span></div>
+<div class="flow">
+  <div class="frow"><span class="fn">📖</span>剧本拆成 ≈ 25 个 2-3 秒镜头</div>
+  <div class="frow"><span class="fn">🎨</span>每个镜头出分镜图（角色 + 场景）</div>
+  <div class="frow"><span class="fn">🎞</span>图生视频让它动起来 + 运镜</div>
+  <div class="frow"><span class="fn">🎙</span>配音 + 音效 + BGM</div>
+  <div class="frow"><span class="fn">✂️</span>剪映拼起来 + 字幕导出</div>
+</div>
+<div class="lead" style="margin-top:36px">这门课带你把这条流水线亲手跑一遍。</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-10" data-slug="p10-whatis">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p10"></div>
+  </div>
+
+  <div class="poster-frame" id="p12">
+    <div class="poster-main">
+      <div class="label">P12 深潜 · Phase 2 视觉资产</div>
+      <div class="poster-scaler">
+        <div class="poster p12" id="poster-12">
+          <div class="p-inner">
+<div class="eyebrow"><span>最重的一块</span><span class="line"></span></div>
+<h2>Phase 2<br>5 节搞定<span class="hl">视觉资产</span></h2>
+<div class="lead">漫剧 70% 功夫在这 —— 角色场景立住，片就稳了。</div>
+<div class="lrow"><span class="ln">L03</span><span class="lt">剧本创作</span></div>
+<div class="lrow"><span class="ln">L04</span><span class="lt">画风 + 色调</span></div>
+<div class="lrow"><span class="ln">L05</span><span class="lt">角色设定 + 三视图</span></div>
+<div class="lrow hot"><span class="ln">L06</span><span class="lt">★ 角色一致性 LoRA</span><span class="lz">150min</span></div>
+<div class="lrow"><span class="ln">L07</span><span class="lt">场景设定</span></div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-12" data-slug="p12-phase2">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p12"></div>
+  </div>
+
+  <div class="poster-frame" id="p13">
+    <div class="poster-main">
+      <div class="label">P13 方法 · 一致性三方案</div>
+      <div class="poster-scaler">
+        <div class="poster p13 dark" id="poster-13">
+          <div class="p-inner">
+<div class="eyebrow light"><span>CHARACTER CONSISTENCY</span><span class="line"></span></div>
+<h2>脸总崩？<br>三套方案对比</h2>
+<div class="opt-list">
+  <div class="opt"><span class="oi">①</span><div><div class="on">锁种子</div><div class="od">最轻 · 换景换姿势就漂</div></div></div>
+  <div class="opt"><span class="oi">②</span><div><div class="on">参考图</div><div class="od">中等 · 多角度有限</div></div></div>
+  <div class="opt best"><span class="oi">③</span><div><div class="on">炼 LoRA（本课核心）</div><div class="od">最稳 · 专属角色随便摆</div></div></div>
+</div>
+<div class="note-bar light">MJ / 即梦生多角度图 → 喂 LiblibAI 炼专属 LoRA → 稳定出脸</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-13" data-slug="p13-consistency">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p13"></div>
+  </div>
+
+  <div class="poster-frame" id="p14">
+    <div class="poster-main">
+      <div class="label">P14 人群 · 适合谁学</div>
+      <div class="poster-scaler">
+        <div class="poster p14" id="poster-14">
+          <div class="p-inner">
+<div class="eyebrow"><span>WHO IS IT FOR</span><span class="line"></span></div>
+<h2>这门课<br>适合谁？</h2>
+<div class="grid2">
+  <div class="card"><div class="ic">📱</div><div class="ct">想起号的创作者</div><div class="cd">看到别人爆了想自己做</div></div>
+  <div class="card"><div class="ic">✍️</div><div class="ct">有故事的作者</div><div class="cd">网文 / 编剧 / 业余写手</div></div>
+  <div class="card"><div class="ic">🎨</div><div class="ct">设计 / 剪辑转型</div><div class="cd">把前期工作量交给 AI</div></div>
+  <div class="card"><div class="ic">🧑‍💻</div><div class="ct">做副业的上班族</div><div class="cd">晚上周末做漫剧账号</div></div>
+</div>
+<div class="lead" style="margin-top:32px">零基础友好 · 工具节支持课前自学 + 课上答疑</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-14" data-slug="p14-audience">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p14"></div>
+  </div>
+
+  <div class="poster-frame" id="p16">
+    <div class="poster-main">
+      <div class="label">P16 路线 · 12 节时间线</div>
+      <div class="poster-scaler">
+        <div class="poster p16" id="poster-16">
+          <div class="p-inner">
+<div class="eyebrow"><span>ROADMAP</span><span class="line"></span></div>
+<h2>12 节路线图</h2>
+<div class="tl">
+  <div class="ti"><span class="tn">01</span>剧本定位 + 拆爆款</div>
+  <div class="ti"><span class="tn">02</span>工具上手（出图 + 出视频）</div>
+  <div class="ti"><span class="tn">03-05</span>剧本 · 画风 · 角色三视图</div>
+  <div class="ti hot"><span class="tn">06</span>★ 角色一致性 LoRA</div>
+  <div class="ti"><span class="tn">07</span>场景设定</div>
+  <div class="ti hot"><span class="tn">08-09</span>★ 越轴分镜 · 图生视频</div>
+  <div class="ti"><span class="tn">10-11</span>配音音效 · 剪辑成片</div>
+  <div class="ti"><span class="tn">12</span>分发 + 变现</div>
+</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-16" data-slug="p16-roadmap">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p16"></div>
+  </div>
+
+  <div class="poster-frame" id="p22">
+    <div class="poster-main">
+      <div class="label">P22 专题 · 越轴怎么解</div>
+      <div class="poster-scaler">
+        <div class="poster p22" id="poster-22">
+          <div class="p-inner">
+<div class="eyebrow"><span>180° RULE</span><span class="line"></span></div>
+<h2>为什么 AI 漫剧<br>特别容易<span class="hl">越轴</span>？</h2>
+<div class="lead">每个镜头单独生成 → 方向乱 → 观众觉得「乱」却说不清。</div>
+<div class="solve">
+  <div class="srow"><span class="sk">✓</span>分镜阶段标注轴线 + 机位方向</div>
+  <div class="srow"><span class="sk">✓</span>明确角色左右位置，用垫图锁方向</div>
+  <div class="srow"><span class="sk">✓</span>视线匹配（A 看右，B 就看左）</div>
+  <div class="srow"><span class="sk">✓</span>场景 / 光源 / 站位跨镜头不跳</div>
+</div>
+<div class="note-bar">L08 · 150 min · 配 25 宫格分镜法省积分</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-22" data-slug="p22-axis">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p22"></div>
+  </div>
+
+  <div class="poster-frame" id="p23">
+    <div class="poster-main">
+      <div class="label">P23 重点 · 两节 150min</div>
+      <div class="poster-scaler">
+        <div class="poster p23 dark" id="poster-23">
+          <div class="p-inner">
+<div class="eyebrow light"><span>★ SPOTLIGHT</span><span class="line"></span></div>
+<h2>两节加长<br>重点课</h2>
+<div class="spot">
+  <div class="sp-card"><div class="sp-t">🧬 L06 角色一致性</div><div class="sp-m">150 min</div><div class="sp-d">LiblibAI 炼专属 LoRA，多人同框 / 换装 / 换景不崩脸</div></div>
+  <div class="sp-card"><div class="sp-t">🎯 L08 越轴分镜</div><div class="sp-m">150 min</div><div class="sp-d">从分镜阶段锁轴线、机位、视线，解决「看着乱」</div></div>
+</div>
+<div class="note-bar light">过了这两关，和「一眼 AI 废片」拉开差距</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-23" data-slug="p23-spotlight">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p23"></div>
+  </div>
+
+  <div class="poster-frame" id="p24">
+    <div class="poster-main">
+      <div class="label">P24 变现 · 5 条路径</div>
+      <div class="poster-scaler">
+        <div class="poster p24" id="poster-24">
+          <div class="p-inner">
+<div class="eyebrow"><span>MONETIZE</span><span class="line"></span></div>
+<h2>做出来<br>怎么<span class="hl">变现</span>？</h2>
+<div class="money">
+  <div class="mrow"><span class="me">💵</span><span class="mt">接广</span><span class="md">帮品牌做定制漫剧</span></div>
+  <div class="mrow"><span class="me">📺</span><span class="mt">短剧分账</span><span class="md">小程序按播放分成</span></div>
+  <div class="mrow"><span class="me">🛠</span><span class="mt">代做接单</span><span class="md">帮别人做片收费</span></div>
+  <div class="mrow"><span class="me">🎭</span><span class="mt">IP 衍生</span><span class="md">角色做成系列 / 周边</span></div>
+  <div class="mrow"><span class="me">🎓</span><span class="mt">带学</span><span class="md">教别人做 / 付费内容</span></div>
+</div>
+<div class="course-chip"><div class="name">AI 漫剧实战营</div><div class="meta">12 节 · 朱依晨</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="dl-btn" data-target="poster-24" data-slug="p24-monetize">⬇ 下载 PNG</button>
+    </div>
+    <div id="copy-p24"></div>
+  </div>
+
+</div>
+
+<script src="./xhs-copy.js"></script>
+<script>
+  // ---- 注入三通道文案面板 ----
+  if (typeof XHS_COPY !== 'undefined') {
+    Object.keys(XHS_COPY).forEach(key => {
+      const container = document.getElementById('copy-' + key);
+      if (!container) return;
+      const data = XHS_COPY[key];
+      const pyq = (data.wechat || []).map(t => `<div class="cp-section"><div class="cp-label">文案</div><div class="cp-box">${t}</div><button class="cp-btn">复制</button></div>`).join('');
+      const grp = (data.community || []).map(t => `<div class="cp-section"><div class="cp-label">社群</div><div class="cp-box">${t}</div><button class="cp-btn">复制</button></div>`).join('');
+      const panel = document.createElement('div');
+      panel.className = 'copy-panel';
+      panel.innerHTML = `
+        <div class="cp-title">XHS COPY · ${key.toUpperCase()}</div>
+        <div class="cp-tabs">
+          <button class="cp-tab active" data-type="xhs">📕 小红书</button>
+          <button class="cp-tab" data-type="pyq">💬 朋友圈</button>
+          <button class="cp-tab" data-type="grp">👥 社群</button>
+        </div>
+        <div class="cp-pane" id="pane-${key}-xhs">
+          <div class="cp-section"><div class="cp-label">标题</div><div class="cp-box">${data.title}</div><button class="cp-btn">复制</button></div>
+          <div class="cp-section"><div class="cp-label">正文</div><div class="cp-box">${data.body}</div><button class="cp-btn">复制</button></div>
+          <div class="cp-section"><div class="cp-label">标签</div><div class="cp-box" style="color:var(--theme-primary);font-weight:600;">${data.tags}</div><button class="cp-btn">复制</button></div>
+        </div>
+        <div class="cp-pane hidden" id="pane-${key}-pyq">${pyq}</div>
+        <div class="cp-pane hidden" id="pane-${key}-grp">${grp}</div>
+      `;
+      panel.querySelectorAll('.cp-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          panel.querySelectorAll('.cp-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          panel.querySelectorAll('.cp-pane').forEach(p => p.classList.add('hidden'));
+          panel.querySelector(`#pane-${key}-${tab.dataset.type}`).classList.remove('hidden');
+        });
+      });
+      panel.querySelectorAll('.cp-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(btn.previousElementSibling.innerText);
+          const old = btn.innerText; btn.innerText = '已复制';
+          setTimeout(() => btn.innerText = old, 2000);
+        });
+      });
+      container.appendChild(panel);
+    });
+  }
+
+  // ---- 单图课程标识 bar（每张海报顶部自动插入）----
+  document.querySelectorAll('.p-inner').forEach(inner => {
+    if (inner.querySelector('.p-course-bar')) return;
+    const bar = document.createElement('div');
+    bar.className = 'p-course-bar';
+    bar.textContent = 'AI 漫剧实战营 · 12 节做出第一部成片 · 朱依晨';
+    inner.appendChild(bar);
+  });
+
+  // ---- 下载预渲染 PNG（puppeteer + 真 Chrome，禁用 html2canvas）----
+  // 重新生成： cd curriculum && bun run render:mp-posters ai-comic-drama-camp
+  document.querySelectorAll('.dl-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const target = btn.dataset.target, slug = btn.dataset.slug;
+      const oldLabel = btn.textContent;
+      btn.textContent = '下载中...'; btn.disabled = true;
+      try {
+        const res = await fetch(`./images/${target}.png`, { cache: 'no-cache' });
+        if (!res.ok) throw new Error('PNG 未生成。请运行 cd curriculum && bun run render:mp-posters ai-comic-drama-camp');
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = `xhs-ai-comic-drama-camp-${slug}-${Date.now()}.png`;
+        a.click(); URL.revokeObjectURL(url);
+      } catch (e) { alert('下载失败：' + e.message); }
+      finally { btn.textContent = oldLabel; btn.disabled = false; }
+    });
+  });
+
+  // ---- 推送到 JR Social Publisher 插件 ----
+  async function pushXhsToExtension() {
+    const btn = document.getElementById('push-xhs');
+    if (!btn) return;
+    const oldText = btn.textContent; btn.disabled = true; btn.textContent = '准备中...';
+    try {
+      const posterIds = ['poster-1', 'poster-2', 'poster-3', 'poster-4', 'poster-5', 'poster-6'];
+      const images = [];
+      for (let i = 0; i < posterIds.length; i++) {
+        btn.textContent = `传图 ${i + 1}/${posterIds.length}`;
+        try {
+          const blob = await fetch(`./images/${posterIds[i]}.png`).then(r => r.blob());
+          const dataUrl = await new Promise(res => { const r = new FileReader(); r.onloadend = () => res(r.result); r.readAsDataURL(blob); });
+          images.push(dataUrl);
+        } catch {}
+      }
+      const c = (typeof XHS_COPY !== 'undefined' && XHS_COPY.p1) || {};
+      const payload = {
+        source: 'xhs-poster', date: new Date().toISOString().slice(0, 10),
+        title: c.title || document.title, summary: (c.body || '').slice(0, 120),
+        xiaohongshu: { shortTitle: (c.title || document.title).slice(0, 20), shortBody: c.body || '', images, tags: ['AI漫剧', 'AIGC', 'AI绘画', 'JR Academy'] }
+      };
+      window.postMessage({ type: 'JR_PUBLISH_PAYLOAD', version: 1, target: 'xiaohongshu', payload }, '*');
+      btn.textContent = '✅ 已推送';
+      setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 2500);
+    } catch (e) { btn.textContent = '❌ ' + (e.message || '失败'); setTimeout(() => { btn.textContent = oldText; btn.disabled = false; }, 3000); }
+  }
+  document.getElementById('push-xhs')?.addEventListener('click', pushXhsToExtension);
+
+</script>
+</body>
+</html>
