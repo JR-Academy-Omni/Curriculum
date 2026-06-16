@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Slide, Inner, Title, colors, fonts, border, shadow } from '../ui';
 
-// 封面 —— Claude Code 大师课
+// 封面 —— Claude Code 入门（给每个人）
 export default function S01_Cover() {
 	return (
 		<Slide bg={colors.warmBg}>
@@ -17,7 +17,7 @@ export default function S01_Cover() {
 							fontFamily: fonts.mono, fontSize: 14, fontWeight: 700,
 							letterSpacing: 3, marginBottom: 30,
 						}}>
-						JR ACADEMY · 大师课
+						JR ACADEMY · 全员必修
 					</motion.div>
 
 					<Title size="110px" style={{ lineHeight: 1.0, marginBottom: 18 }}>
@@ -33,7 +33,7 @@ export default function S01_Cover() {
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ duration: 0.4, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
 								style={{ display: 'inline-block', background: colors.red, color: colors.white, padding: '0 24px' }}
-							>大师课</motion.span>
+							>入门</motion.span>
 						</motion.span>
 					</Title>
 
