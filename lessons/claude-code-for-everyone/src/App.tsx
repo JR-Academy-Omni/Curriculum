@@ -23,6 +23,11 @@ import S09b from './components/slides/S09b_RulesFirst';
 import S11 from './components/slides/S11_AutoMemory';
 import S12 from './components/slides/S12_TeamMemory';
 
+// 真实案例（参考自 AI Marketing 课）
+import M01 from './components/slides/M01_WhatsInMaster';
+import M02 from './components/slides/M02_OfflineWorkflow';
+import M03 from './components/slides/M03_RoleAmplifier';
+
 // 心法 + 收尾
 import S25 from './components/slides/S25_Principles';
 import S26 from './components/slides/S26_NoHallucination';
@@ -54,6 +59,11 @@ export default function App() {
 			<S09b />{/* 第一层记忆：规则 rules（CLAUDE.md 概念） */}
 			<S11 />{/* 第二层记忆：边干边记 auto-memory */}
 			<S12 />{/* 第三层记忆：从「我的记忆」到「团队共享记忆」 */}
+
+			{/* ===== 📎 真实案例 · AI 在你工作里能干什么（参考自 AI Marketing 课） ===== */}
+			<M01 />{/* 一份真相 = 7 样东西（SoT 落地清单） */}
+			<M02 />{/* 匠人线下活动 workflow：7 个 skill 接力 */}
+			<M03 />{/* AI 是放大器：真相对了放大 100 倍，空了放大混乱 */}
 
 			{/* ===== 心法 + 收尾 ===== */}
 			<S25 />{/* 三条心法 */}
