@@ -19,11 +19,14 @@ import S10c from './components/slides/S10c_ContextRot';
 
 // 第三块 · 怎么给 AI 做记忆
 import S05 from './components/slides/S05_AIOS';
+import S08 from './components/slides/S08_JRMemoryMap';
 import S09b from './components/slides/S09b_RulesFirst';
 import S11 from './components/slides/S11_AutoMemory';
 import S12 from './components/slides/S12_TeamMemory';
+import M04 from './components/slides/M04_EnterpriseMemory';
 
-// 真实案例（参考自 AI Marketing 课）
+// 真实案例 + 能力进阶（参考自 AI Marketing 课）
+import M05 from './components/slides/M05_Ladder';
 import M01 from './components/slides/M01_WhatsInMaster';
 import M02 from './components/slides/M02_OfflineWorkflow';
 import M03 from './components/slides/M03_RoleAmplifier';
@@ -54,13 +57,16 @@ export default function App() {
 			<S07 />{/* Context ≠ Memory：工作记忆 vs 长期记忆 */}
 			<S10c />{/* 🧠 对话越长越笨：80% 甜区，别把窗口塞满 */}
 
-			{/* ===== 第三块 · 怎么给 AI 做记忆 ===== */}
+			{/* ===== 第三块 · 怎么给 AI 做记忆（含全景图 + 企业级） ===== */}
 			<S05 />{/* AI OS：模型是 CPU，你缺一套记忆 + 操作系统 */}
-			<S09b />{/* 第一层记忆：规则 rules（CLAUDE.md 概念） */}
-			<S11 />{/* 第二层记忆：边干边记 auto-memory */}
-			<S12 />{/* 第三层记忆：从「我的记忆」到「团队共享记忆」 */}
+			<S08 />{/* 🗺 记忆系统四层全景：规则 / 自动记忆 / 团队记忆 / 知识库 RAG */}
+			<S09b />{/* 第一层：规则 rules（CLAUDE.md 概念） */}
+			<S11 />{/* 第二层：边干边记 auto-memory */}
+			<S12 />{/* 第三层：从「我的记忆」到「团队共享记忆」 */}
+			<M04 />{/* 🏢 企业级长期记忆系统：员工 / 公司 / 业务 三层 + AI 主动行动 */}
 
-			{/* ===== 📎 真实案例 · AI 在你工作里能干什么（参考自 AI Marketing 课） ===== */}
+			{/* ===== 📎 真实案例 + 能力进阶（参考自 AI Marketing 课） ===== */}
+			<M05 />{/* 📈 逐步提升：用 AI ×1 → 搭 pipeline ×10 → 会设计 ×100 */}
 			<M01 />{/* 一份真相 = 7 样东西（SoT 落地清单） */}
 			<M02 />{/* 匠人线下活动 workflow：7 个 skill 接力 */}
 			<M03 />{/* AI 是放大器：真相对了放大 100 倍，空了放大混乱 */}

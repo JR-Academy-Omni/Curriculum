@@ -2,6 +2,7 @@ export const colors = {
 	// 品牌基色（与 ai-engineer-bootcamp / xhs-posters 对齐）
 	red: '#ff5757',
 	rose: '#E63977', // ai-marketing 营销课线主题色（用于从 ai-marketing-talk 借入的参考 slide）
+	warm: '#FFF7EC', // 暖底色（借入 slide 的浅色背景用）
 	dark: '#10162f',
 	yellow: '#FFDE59',
 	green: '#7ED957',
