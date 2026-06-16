@@ -84,6 +84,13 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/claude-code-for-everyone (非技术员工精简版 · 20 张 slide · 什么是 SoT / 怎么跟 AI 交流 / 怎么做记忆)
+      - name: Build lessons/claude-code-for-everyone
+        working-directory: lessons/claude-code-for-everyone
+        run: |
+          bun install
+          bun run build
+
       # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
       # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
       # base 已写进 package.json: --base /curriculum/lessons/vibe-coding/
@@ -338,6 +345,12 @@ jobs:
           if [ -d lessons/claude-code-master/dist ]; then
             mkdir -p _site/lessons/claude-code-master
             cp -r lessons/claude-code-master/dist/* _site/lessons/claude-code-master/
+          fi
+
+          # lessons/claude-code-for-everyone: 非技术员工精简版 slide deck (React + Vite · 20 张 slide · SoT/交流/记忆)
+          if [ -d lessons/claude-code-for-everyone/dist ]; then
+            mkdir -p _site/lessons/claude-code-for-everyone
+            cp -r lessons/claude-code-for-everyone/dist/* _site/lessons/claude-code-for-everyone/
           fi
 
           # ai-engineer-resume-interview · 3h 内部学员讲座（slide deck + public/ zip 下载）
