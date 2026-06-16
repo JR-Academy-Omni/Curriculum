@@ -2,7 +2,6 @@ import SlideEngine from './components/SlideEngine';
 
 // 开场
 import S01 from './components/slides/S01_Cover';
-import P01 from './components/slides/P01_Poll';
 import S01b from './components/slides/S01b_ForEverything';
 
 // 第一块 · 什么是 Source of Truth（唯一真相源）
@@ -35,7 +34,6 @@ export default function App() {
 		<SlideEngine>
 			{/* ===== 开场 ===== */}
 			<S01 />
-			<P01 />{/* 🗳️ 开场互动 */}
 			<S01b />{/* 🌍 AI Coding for Everyone — 非技术也能用 */}
 
 			{/* ===== 第一块 · 什么是 Source of Truth ===== */}
