@@ -62,4 +62,40 @@ section{margin-top:44px}
 .qbox .qr{font-size:13.5px;margin-bottom:5px}.qbox .qr b{color:#6d28d9}
 .lab-ref{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;background:#ecfdf5;border:2px solid #10B981;color:#065f46;padding:2px 8px;margin-top:8px}
 footer{margin-top:60px;text-align:center;font-family:'Space Mono',monospace;font-size:12px;color:#9ca3af}
-@media(max-width:640px){.tbl{font-size:12.5px}.cta{font-size:14px;padding:13px 18px}}
+/* 适合人群 */
+.who2{display:grid;grid-template-columns:1.7fr 1fr;gap:16px}
+.who-col{border:3px solid var(--line);box-shadow:var(--shadow);border-radius:6px;padding:22px 24px}
+.who-col.fit{background:#fff}.who-col.nofit{background:#fff7f7}
+.who-col h4{font-size:18px;font-weight:900;margin-bottom:14px}
+.who-col .wrow{display:flex;gap:12px;padding:10px 0;border-top:1px solid #eef0f4;font-size:15px;font-weight:500}
+.who-col .wrow:first-of-type{border-top:none}
+.who-col .ic{font-weight:900;flex-shrink:0}
+.fit .ic{color:var(--blue)}.nofit .ic{color:#ef4444}
+/* 课程亮点 */
+.hl-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hl-list li{position:relative;padding:16px 18px 16px 48px;border:3px solid var(--line);background:#fff;box-shadow:5px 5px 0 var(--line);font-weight:600;font-size:15px}
+.hl-list li::before{content:'★';position:absolute;left:18px;top:16px;color:var(--blue);font-weight:900}
+/* JD 技能覆盖 */
+.cov{width:100%;border-collapse:collapse;border:3px solid var(--line);background:#fff;box-shadow:var(--shadow);font-size:14px}
+.cov th,.cov td{border:1.5px solid var(--line);padding:9px 12px;text-align:left}
+.cov th{background:var(--ink);color:#fff;font-family:'Space Mono',monospace;font-size:12px}
+.cov .skill{font-weight:700}
+.cov .hot{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;padding:1px 8px;border:2px solid var(--line);background:#FFE45C}
+.cov .hot.new{background:var(--blue);color:#fff}
+.cov .wk{font-family:'Space Mono',monospace;font-weight:700;color:var(--blue);white-space:nowrap}
+.cov .ck{color:#10b981;font-weight:900;text-align:center;font-size:18px}
+.cov tr:nth-child(even) td{background:#f3f4f8}
+/* 工具栈分组 */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.stk{border:3px solid var(--line);background:#fff;box-shadow:5px 5px 0 var(--line);padding:18px}
+.stk h4{font-size:13px;font-family:'Space Mono',monospace;color:#64748b;margin-bottom:12px;letter-spacing:.05em}
+.stk .pills{display:flex;flex-wrap:wrap;gap:8px}
+.stk .pill{font-size:14px;font-weight:700;border:2px solid var(--line);border-radius:100px;padding:6px 14px;background:#f6f7fb}
+/* 薪资 */
+.sal-row{display:flex;justify-content:space-between;align-items:center;gap:14px;border:3px solid var(--line);background:#fff;box-shadow:5px 5px 0 var(--line);padding:18px 22px;margin-bottom:12px}
+.sal-row .role{font-weight:700;font-size:16px}
+.sal-row .amt{font-family:'Bricolage Grotesque';font-weight:900;font-size:28px;color:var(--blue);white-space:nowrap}
+.cos{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.cos span{font-size:15px;font-weight:700;border:2px solid var(--line);border-radius:8px;padding:7px 15px;background:#fff}
+.src-note{font-size:12px;color:#94a3b8;margin-top:14px;font-family:'Space Mono',monospace;line-height:1.6}
+@media(max-width:640px){.tbl,.cov{font-size:12.5px}.cta{font-size:14px;padding:13px 18px}.who2,.hl-list{grid-template-columns:1fr}}

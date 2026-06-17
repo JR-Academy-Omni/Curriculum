@@ -88,7 +88,43 @@ section{margin-top:44px}
 .qbox .qr{font-size:13.5px;margin-bottom:5px}.qbox .qr b{color:#6d28d9}
 .lab-ref{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;background:#ecfdf5;border:2px solid #10B981;color:#065f46;padding:2px 8px;margin-top:8px}
 footer{margin-top:60px;text-align:center;font-family:'Space Mono',monospace;font-size:12px;color:#9ca3af}
-@media(max-width:640px){.tbl{font-size:12.5px}.cta{font-size:14px;padding:13px 18px}}
+/* 适合人群 */
+.who2{display:grid;grid-template-columns:1.7fr 1fr;gap:16px}
+.who-col{border:3px solid var(--line);box-shadow:var(--shadow);border-radius:6px;padding:22px 24px}
+.who-col.fit{background:#fff}.who-col.nofit{background:#fff7f7}
+.who-col h4{font-size:18px;font-weight:900;margin-bottom:14px}
+.who-col .wrow{display:flex;gap:12px;padding:10px 0;border-top:1px solid #eef0f4;font-size:15px;font-weight:500}
+.who-col .wrow:first-of-type{border-top:none}
+.who-col .ic{font-weight:900;flex-shrink:0}
+.fit .ic{color:var(--blue)}.nofit .ic{color:#ef4444}
+/* 课程亮点 */
+.hl-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hl-list li{position:relative;padding:16px 18px 16px 48px;border:3px solid var(--line);background:#fff;box-shadow:5px 5px 0 var(--line);font-weight:600;font-size:15px}
+.hl-list li::before{content:'★';position:absolute;left:18px;top:16px;color:var(--blue);font-weight:900}
+/* JD 技能覆盖 */
+.cov{width:100%;border-collapse:collapse;border:3px solid var(--line);background:#fff;box-shadow:var(--shadow);font-size:14px}
+.cov th,.cov td{border:1.5px solid var(--line);padding:9px 12px;text-align:left}
+.cov th{background:var(--ink);color:#fff;font-family:'Space Mono',monospace;font-size:12px}
+.cov .skill{font-weight:700}
+.cov .hot{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;padding:1px 8px;border:2px solid var(--line);background:#FFE45C}
+.cov .hot.new{background:var(--blue);color:#fff}
+.cov .wk{font-family:'Space Mono',monospace;font-weight:700;color:var(--blue);white-space:nowrap}
+.cov .ck{color:#10b981;font-weight:900;text-align:center;font-size:18px}
+.cov tr:nth-child(even) td{background:#f3f4f8}
+/* 工具栈分组 */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.stk{border:3px solid var(--line);background:#fff;box-shadow:5px 5px 0 var(--line);padding:18px}
+.stk h4{font-size:13px;font-family:'Space Mono',monospace;color:#64748b;margin-bottom:12px;letter-spacing:.05em}
+.stk .pills{display:flex;flex-wrap:wrap;gap:8px}
+.stk .pill{font-size:14px;font-weight:700;border:2px solid var(--line);border-radius:100px;padding:6px 14px;background:#f6f7fb}
+/* 薪资 */
+.sal-row{display:flex;justify-content:space-between;align-items:center;gap:14px;border:3px solid var(--line);background:#fff;box-shadow:5px 5px 0 var(--line);padding:18px 22px;margin-bottom:12px}
+.sal-row .role{font-weight:700;font-size:16px}
+.sal-row .amt{font-family:'Bricolage Grotesque';font-weight:900;font-size:28px;color:var(--blue);white-space:nowrap}
+.cos{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.cos span{font-size:15px;font-weight:700;border:2px solid var(--line);border-radius:8px;padding:7px 15px;background:#fff}
+.src-note{font-size:12px;color:#94a3b8;margin-top:14px;font-family:'Space Mono',monospace;line-height:1.6}
+@media(max-width:640px){.tbl,.cov{font-size:12.5px}.cta{font-size:14px;padding:13px 18px}.who2,.hl-list{grid-template-columns:1fr}}
 '@
 [IO.File]::WriteAllText((Join-Path $pub 'styles.css'), $css, $utf8)
 
@@ -103,6 +139,7 @@ $questCount = (@($d.phases | % { $_.lessons } | ? { $_.type -eq 'Quest' })).Coun
 $ov = Head("AI Engineer 训练营 · 课程介绍")
 $ov += "<nav class=""topnav""><a href=""./curriculum.html"" class=""active"">课程介绍</a><a href=""./outline.html"">完整课程大纲</a></nav>"
 $pos = (Esc $d.description).Replace('25-40K','<b>25-40K</b>').Replace('Dispatch AI','<b>Dispatch AI</b>')
+$hlHtml = (($d.highlights | ForEach-Object { "<li>$(Esc $_)</li>" }) -join '')
 $ov += @"
 <div class="hero">
 <div class="pretitle">JR ACADEMY · 国内大模型应用开发岗 · 第一期招生中</div>
@@ -115,11 +152,57 @@ $ov += @"
 <div class="stat alt2"><span class="n">$questCount</span><span class="l">个项目里程碑</span></div>
 <div class="stat"><span class="n">$($d.totalLessons)</span><span class="l">节课</span></div>
 </div></div>
+<section><div class="sec-h">适合谁学 / 不适合谁</div>
+<div class="who2">
+<div class="who-col fit"><h4>✅ 适合</h4>
+<div class="wrow"><span class="ic">›</span><span>后端 / 全栈工程师（2-5 年），想转大模型应用开发</span></div>
+<div class="wrow"><span class="ic">›</span><span>应届 CS / 计算机相关，想拼 AI 校招、要能聊的真项目</span></div>
+<div class="wrow"><span class="ic">›</span><span>传统算法 / 数据岗，想补 LLM 工程化能力</span></div>
+<div class="wrow"><span class="ic">›</span><span>创业者 / 独立开发，想做能上线的 AI 产品</span></div>
+</div>
+<div class="who-col nofit"><h4>❌ 不适合</h4>
+<div class="wrow"><span class="ic">✕</span><span>零编程基础（建议先学 Python）</span></div>
+<div class="wrow"><span class="ic">✕</span><span>只想拿证书 / 速成不动手</span></div>
+<div class="wrow"><span class="ic">✕</span><span>想做大模型预训练算法（那是硕博算法岗）</span></div>
+</div>
+</div>
+<div class="note"><b>先修要求：</b>会 Python、用过命令行、懂 Git 基本操作。这不是从零教 Python 的课。</div>
+</section>
 <section><div class="sec-h">为什么和别的训练营不一样</div><div class="grid">
 <div class="card"><span class="tag">真项目</span><h3>边学边做 Dispatch AI</h3><p>全程在匠人真实在跑的 AI 调度系统上做，不是教程级 demo。每周学完新技能当周就接进项目——毕业作品能上线、能讲清楚、扛得住面试追问。</p></div>
 <div class="card"><span class="tag">押新技能</span><h3>RAG 评测 · MCP · 私有化部署</h3><p>押注 2025-26 国内 JD 新高频词：Function Calling + MCP、RAG 工程化与评测、vLLM 私有化部署——老课程更新慢、覆盖薄的地方。</p></div>
 <div class="card"><span class="tag">全国产栈</span><h3>Qwen / DeepSeek / GLM + 国内云</h3><p>国产大模型 + 阿里云百炼/华为云 + Coze/Dify。私有化部署是国内合规刚需，连国际课程都缺这一块。</p></div>
 <div class="card"><span class="tag">诚实定位</span><h3>对齐真实 JD，瞄准 25-40K</h3><p>逐节对齐 BOSS 直聘真实 JD，瞄准招得最多、转型能拿到的大模型应用开发岗，不卖 50K 算法岗幻觉。</p></div>
+</div></section>
+<section><div class="sec-h">课程亮点</div><ul class="hl-list">$hlHtml</ul></section>
+<section><div class="sec-h">JD 技能覆盖图：招聘要什么，我们就练什么</div>
+<table class="cov"><thead><tr><th>国内 JD 高频技能</th><th>重要度</th><th>覆盖周次</th><th>覆盖</th></tr></thead><tbody>
+<tr><td class="skill">Python 工程化 / FastAPI / Docker</td><td><span class="hot">高频</span></td><td class="wk">W1</td><td class="ck">✓</td></tr>
+<tr><td class="skill">国产大模型 API（Qwen/DeepSeek）+ 兼容层</td><td><span class="hot">高频</span></td><td class="wk">W2</td><td class="ck">✓</td></tr>
+<tr><td class="skill">Prompt Engineering / 结构化输出</td><td><span class="hot">高频</span></td><td class="wk">W2</td><td class="ck">✓</td></tr>
+<tr><td class="skill">Function Calling</td><td><span class="hot new">新高频</span></td><td class="wk">W2</td><td class="ck">✓</td></tr>
+<tr><td class="skill">向量库 / Embedding / 检索</td><td><span class="hot">高频</span></td><td class="wk">W3</td><td class="ck">✓</td></tr>
+<tr><td class="skill">RAG Pipeline / 混合检索 / Rerank</td><td><span class="hot">高频</span></td><td class="wk">W4</td><td class="ck">✓</td></tr>
+<tr><td class="skill">RAG 评测（RAGAS / Langfuse）</td><td><span class="hot new">新高频</span></td><td class="wk">W5</td><td class="ck">✓</td></tr>
+<tr><td class="skill">Agent / ReAct / 设计模式</td><td><span class="hot">高频</span></td><td class="wk">W6</td><td class="ck">✓</td></tr>
+<tr><td class="skill">MCP（Model Context Protocol）</td><td><span class="hot new">新高频</span></td><td class="wk">W7</td><td class="ck">✓</td></tr>
+<tr><td class="skill">Multi-Agent / 工作流编排</td><td><span class="hot">进阶</span></td><td class="wk">W8</td><td class="ck">✓</td></tr>
+<tr><td class="skill">微调 LoRA / QLoRA / Llama Factory</td><td><span class="hot">高频</span></td><td class="wk">W9</td><td class="ck">✓</td></tr>
+<tr><td class="skill">私有化部署 vLLM / SGLang / 量化</td><td><span class="hot new">新高频</span></td><td class="wk">W10</td><td class="ck">✓</td></tr>
+<tr><td class="skill">AI 评测 / 防注入 / 护栏 / 可观测</td><td><span class="hot">进阶</span></td><td class="wk">W11</td><td class="ck">✓</td></tr>
+<tr><td class="skill">Dify / Coze 低代码编排</td><td><span class="hot">加分</span></td><td class="wk">W2</td><td class="ck">✓</td></tr>
+</tbody></table>
+<div class="note">技能项来自国内大模型应用开发岗 JD 高频提取；<span class="hot new" style="border:2px solid #10162f">新高频</span> = 2025-26 才进入 JD 的技能，正是多数老课程覆盖薄、却最能拉开差距的地方。<b>14 项核心技能全覆盖。</b></div>
+</section>
+<section><div class="sec-h">技术工具栈（全国产、可落地）</div><div class="stack">
+<div class="stk"><h4>大模型</h4><div class="pills"><span class="pill">Qwen</span><span class="pill">DeepSeek</span><span class="pill">GLM</span><span class="pill">Kimi</span><span class="pill">豆包</span></div></div>
+<div class="stk"><h4>应用框架</h4><div class="pills"><span class="pill">LangChain</span><span class="pill">LlamaIndex</span><span class="pill">FastAPI</span></div></div>
+<div class="stk"><h4>向量库 / 检索</h4><div class="pills"><span class="pill">Milvus</span><span class="pill">Chroma</span><span class="pill">pgvector</span><span class="pill">Rerank</span></div></div>
+<div class="stk"><h4>Agent / 工具</h4><div class="pills"><span class="pill">ReAct</span><span class="pill">Function Calling</span><span class="pill">MCP</span><span class="pill">Multi-Agent</span></div></div>
+<div class="stk"><h4>微调 / 训练</h4><div class="pills"><span class="pill">LoRA</span><span class="pill">QLoRA</span><span class="pill">Llama Factory</span><span class="pill">Hugging Face</span></div></div>
+<div class="stk"><h4>部署 / 推理</h4><div class="pills"><span class="pill">vLLM</span><span class="pill">SGLang</span><span class="pill">Docker</span><span class="pill">量化</span></div></div>
+<div class="stk"><h4>评测 / 可观测</h4><div class="pills"><span class="pill">RAGAS</span><span class="pill">Langfuse</span><span class="pill">LLM-as-judge</span></div></div>
+<div class="stk"><h4>低代码 / 云</h4><div class="pills"><span class="pill">Dify</span><span class="pill">Coze</span><span class="pill">阿里云百炼</span><span class="pill">华为云 ModelArts</span></div></div>
 </div></section>
 <section id="spine"><div class="sec-h">12 周主线：学一节，就在 Dispatch AI 上做一节</div>
 <table class="tbl"><thead><tr><th>周</th><th>学什么</th><th>当周在 Dispatch AI 上做什么</th></tr></thead><tbody>
@@ -137,6 +220,15 @@ $ov += @"
 <tr><td class="wk">W12</td><td>个性化 + Demo + 面试叙事</td><td class="ms">每人加自选领域调度场景 + 独创功能，端到端 Demo ★毕业作品</td></tr>
 </tbody></table>
 <div class="note"><b>防简历同质化：</b>W1–W11 全班在同一个 Dispatch AI 上做同样架构（好教好批），W12 强制每人加专属扩展，简历各不相同、抗追问。每周 <b>2 节直播（每节 ≤3 小时）</b>，其余录播 / Lab / Quest 自主节奏。</div>
+</section>
+<section><div class="sec-h">毕业能冲什么岗 · 谁在招</div>
+<div class="sal-row"><span class="role">大模型应用开发工程师（2-5 年）</span><span class="amt">25–40K / 月</span></div>
+<div class="sal-row"><span class="role">资深 / 带队 / 架构</span><span class="amt">40K+ / 月</span></div>
+<div class="cos">
+<span>阿里</span><span>字节</span><span>腾讯</span><span>百度</span><span>美团</span><span>京东</span>
+<span>智谱</span><span>月之暗面</span><span>MiniMax</span><span>小红书</span><span>商汤</span>
+</div>
+<div class="src-note">薪资为公开招聘市场参考区间（来源 BOSS 直聘 / 投中网等公开报告），实际以面试谈定为准。本课定位<b>应用开发岗</b>，不含需硕博背景的算法岗薪资。</div>
 </section>
 <div class="cta-row">
 <a class="cta b1" href="#spine">课程架构全景图</a>
