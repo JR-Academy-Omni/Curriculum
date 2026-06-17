@@ -1,5 +1,12 @@
 # Changelog — AI Engineer Bootcamp
 
+## 2026-06-16
+
+- 新增整套推广三件套（PERSONAS / FUNNEL_PLAN / PROMOTION_PLAN）
+  - PERSONAS.md：3 个核心买家画像（在职转 AI 开发者 / 留学转行求 offer / 资深工程师补 LLM 工程）+ 2 个不会买的人（纯小白 / 白嫖型），全部为 🚧 AI 推断版（GT 0.15，待真实访谈+评论+客服校准）
+  - FUNNEL_PLAN.md：完整四档漏斗 + 单引流课形态，三档承诺按结果分级（自学/教学/陪跑），定价为 AI 推断占位待 curl 销售页核实
+  - PROMOTION_PLAN.md：识别为 Type 1 求职转型 bootcamp，按 T-30→D+30 8 周时间轴排 task 矩阵，主推校友转岗案例 + 7 项目对得上 JD + Faculty 实名，红线不承诺包就业/offer
+
 ## 2026-04-21
 
 - 新增 88 节「自学」Information lesson，绑定 ai-engineer / prompt-master / vibe-coding / openclaw 4 个 Learn 方向的章节
