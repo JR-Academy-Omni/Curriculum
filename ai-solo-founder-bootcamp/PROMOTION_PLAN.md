@@ -102,6 +102,7 @@
 | 8 | **小红书少量种草**（仅「非技术也能 ship / 澳洲副业退税」两切角）| Summer / Lily / KIKI | `/xhs-topic-picker` → `/xhs-draft` → `/xhs-poster` → `/xhs-review` | 3 篇/周 × 20 周 = ~60 篇（轻量，曝光为主）| B/C（A 几乎打不到）| 🔴 PERSONAS §3 注明对本课是**次要渠道**，不当主力 |
 | 9 | **SEO 长尾**（「澳洲一人公司」「RDTI 退税 自己申请」「澳洲华人 AI 创业」）| Dev | `/seo-optimizer` + `/eeat-optimizer` | 一次性投入 + 月度迭代 | A/B/C | 长期资产，起效 30-90 天 |
 | 10 | 海报（朋友圈 + 小红书 + 视频号配套）| Designer | `/poster-user-test`（ChatGPT 侧 6 选 3 测）| 2-3 套总周期 | — | 主打 Faculty 阵容 + 三城线下，不主打「快速变现」（A 黑名单）|
+| 11 | **OPC 公开机会雷达 → 官网周报（引流层）**（一人公司能申请的全类型「搞钱机会」：全球 + 澳洲 hackathon / AI 比赛奖金 / 加速器·孵化器 / **政府补贴·创业资助·RDTI 等 grant** / startup credits，每条带 deadline + 官方链接）。**免费公开**，引人进漏斗；报名后的申请陪跑/补贴日历等会员专属服务见 [FUNNEL_PLAN.md](./FUNNEL_PLAN.md) §11| 自动（2 个 schedule cloud routine）+ Beta 周校对 | **已上线 schedule routine**：① `Hackathon & AI 比赛雷达 — 隔天 (OPC 创业营视角)`（`trig_0189qzNAfH7dKW8TJysPTPXY`，隔天写 `omni-report/hackathon-radar/{date}.md`）② `OPC 比赛雷达 · 每周官网周报`（`trig_01RDCxuVDhjGHkuJZko5yNt1`，周日重写 jr-wiki 文章 + 海报）| 隔天采集 + 每周一发布 | A/B/C（C 尤其看重 Grant/RDTI）| **常青 SEO + nurture 活资产**，已上线 `https://jiangren.com.au/blog/ai-hackathon-weekly`。是本课 Grant/RDTI + Demo Day 卖点的「活内容证明」。**双向链**：周报底部已链向课程；课程销售页 §C 加反向链回（OPC↔雷达）。**这是已存在的自动化引擎，promotion 直接消费、不另造** |
 
 **不跑的渠道**（Type 3 红线 + PERSONAS §4）：
 - ❌ EOI 群发式跟进（创业者反感模板话术 — 用 `/eoi-followup` 但走高质 1v1，不群发）
