@@ -1,0 +1,513 @@
+<!-- generated-from: outline.json · do not edit by hand -->
+
+# AI Engineer 全栈项目班 Code Bootcamp | Learn to Code
+
+> 🤖 本文件由 `lineage/build_lineage.py` 从同目录 `outline.json` 自动生成 —— **勿手改**。要改大纲改 `outline.json`，再重跑 `python3 lineage/build_lineage.py`。
+> （`outline.json` 是生产管线吃的机器权威；这份 `.md` 是给人读、给谱系当真相文档的统一格式。）
+
+全栈班+DevOps班流程图 整个流程分为五个大阶段：计划、开发、构建、测试、发布。 从全栈班到DevOps班学员共同奋斗完成这五个阶段内容，这一流程为开发团队提供了完整的解决方案，帮助学员全面掌握全栈开发DevOps的核心技能。我们独有的P3商业项目同时贯穿了整个栈，全面提升了实战能力流程和对抗！ 澳洲的IT工作环境如何？ 在澳洲做会计师是怎样的一种体验？没有996，没有35岁，不歧视女性，不内卷，工作和生活平衡等等。 工作生活平衡 ：澳大利亚职场文化强调合理的工作时间和灵活的工作安排，支持工作与生活的平衡。 信念和约束性 ：澳洲致力于营造一个多元和约束性的工作环境，不严格年龄限制，同时积极推动性别平等。 职业发展机会 ：IT行业的快速发展带来了广泛的职业机会，公司通常提供培训和发展课程以支持员工技能提升。 有相对的薪酬和福利 ：IT专业人士可以享受到具有相对价格和全面的福利套餐。 优质的工作和生活环境 ：现代化的办公设施和优美的自然环境，使得工作和生活质量都相当重要。 澳洲IT行业翟先生 ？ 在澳大利亚，IT行业的薪资水平因地区、公司规模和职位的不同而存在显着差异。根据2023年的数据，澳大利亚各州的平均薪资之间也有所不同，新南威尔士州平均薪资最高，达到约80,000澳元，而塔斯马尼亚州的薪资最低，约65,000澳元。此外，随着技能的持续，几乎九成的雇主都面临人才难题，这导致许多雇主提高薪资以奖励和留住员工。 全栈开发者职业发展 下图展示了全栈工程师在IT公司的职位和不同的工作职位 从需求部署的各个阶段中涉及不同的角色和技术，对IT开发流程有以下关键项目参与者和参与者： Stakeholder : 明确项目的需求和目标。 Business Analyst : 分析业务需求，确定项目范围。 Product Owner : 确保产品符合业务需求和用户需求。 UI Designer : 设计产品的用户界面，提高用户体验。 QA &amp; Tester : 负责软件的质量控制和bug测试。 Full-stack Developer : 负责开发和项目落地。 DevOps &amp; SRE &amp; Cloud Engineer : 优化项目的开发运营流程，管理云基础设施。 Data Engineer : 处理和管理数据流，设计数据存储解决方案。 Data Analyst : 分析数据，提供决策支持。 Data Warehouse/Lake/Tools : 管理和分析大量数据。 UAT, Staging, Production (用户验收测试、预生产、生产环境) : 分阶段部署和测试软件，确保产品质量。 针对 Agile (敏捷) 方法论的应用，这是一种迭代和以人为核心的开发流程，可以快速响应项目需求的变化，增强团队协作和项目透明度。整个图示反映了现代软件开发中多学科团队的协作和技术的综合应用，突出了全栈开发者在整个开发周期内的关键作用，以及他们如何与其他专业领域的专家一起工作，共同推进项目的成功。 Developer职业成长 Web全栈班是为了帮助IT/CS毕业生，以及想转行做IT，成长成为一位合格 (Qualified) 的Full-stack Developer/ Front-end Developer/Back-end Developer/ Software Engineer，在澳洲和中国找到一份全职工作。 如何在澳洲找到第一份工作? 什么是Web开发全栈项目班? 2017年， 匠人学院 在澳洲 首次独创 Web全栈班模式， 完全自主研发 课程，课件，内容，以及 关联项目 和 澳洲本地合作公司 ，每一期都不断地询问学员意见进行修改和升级， Web全栈班 会根据一线老师，以及公司需求变化而变化。匠人也跟Deloitte, Servian等公司合作，定向向公司提供优秀学员。 Web全栈班根据澳洲 Job Market 的需求变化而变化，完全面向企业需求进行课程设置。Web全栈班已经培养了 4000 多位学员，帮助 4000 多位学员在澳洲、中国、美国就业。 &rdquo;帮助大家能更好地在本地就业&ldquo; --- 这也是匠人学院始终如一的目标。 精彩的Web全栈学习之旅- 掌握从前端开发到后端、云端部署及CI/CD的全方位技能 从基础到精通，我们的课程覆盖了 JavaScript ， HTML5 ， CSS3 ， ES6 ，程序员必备版本控制能力 Git ，澳洲市场占有率最高的前端框架 React.js 、以及三大高需求后端技术： Node.js 、 Java 、 .NET ，还有 Amazon Web Service(AWS) ， OpenAI 等企业需求的技术。 不仅仅是基础开发工作，更多会涉及到云端架构， Serverless ， Microservice 等架构，经历目前企业需要的必备 CI/CD 部署经验等。从 开发 到 部署 ，全链路学习。 通过实战项目，您不仅能掌握编程知识，还会获得实际开发经验。我们提供2个个人项目和1个商业项目，让您能在真实场景中应用所学，准备好步入职场。同时，我们的职业辅导和简历内推服务，将助您顺利找到理想的工作。 Offer收割机 已经帮助4000多位学生就业。 Web全栈班的团队大项目+简历内推，让学生通过Web全栈班就能拿到至少2个优质的工作经验。整个的Agile工作模式体系，跟中等规模的公司相似。拿到工作经验=拿到Offer，可以拿到相当于6个月的工作经验，不愁在澳洲找不到工作。每期全栈班都是全新的团队项目，每个团队都是不同的项目，每个团队有项目Tutor带领。让上课学到的知识也可以直接实践利用，并且很多更难的技术也可以在项目学习和应用。 Web全栈班课程安排（Timeline） Web全栈班6.0 开始，有14周的教课内容。整个Bootcamp持续24周 Web 全栈班课程大纲 6.0 新的 Web 全栈班课程大纲，新增Nextjs、AWS、Lambda和AI App课程内容。 Web全栈班核心解决的问题 团队合作能力欠缺，缺乏团队合作意识 刚毕业或在校学生的团队合作能力普遍比较欠缺，不知道如何跟团队里其他的Developer沟通和合作，缺乏团队合作的经验和意识。遇到代码问题常常不知道如何解决，也找不到有效的沟通方式和解决办法，通常都是一个人蒙头写代码，但结果却不尽人意，既浪费了时间也还影响了团队的工作效率。 缺乏工程化思维 工程思维是指在解决问题和设计解决方案时，能够综合考虑项目的全局性、系统性和实用性，以及可持续发展和风险管理等方面的思考模式。在软件开发领域，这意味着开发人员不仅需要关注代码的编写，还需要从更广阔的视角考虑软件的设计、架构、用户体验、性能、安全、维护和可扩展性等各个方面。 简单来说，就是在开发的过程中需要把复杂问题简单化，知道妥协、知道循序渐进。不仅要考虑代码的质量问题，还要考虑业务需求、项目工期、开发成本等各种因素之间的相互影响。 学校所学技能不符合澳洲公司主流技术栈要求 许多学员在学习学习的技术多为基础理论，缺乏实际项目的练习和实践。而且学校目前教授的HTML，CSS等课程都是开发中较为基础的技术栈，与澳洲企业要求的主流技术栈存在明显的gap，学生毕业后无法直接达到企业招聘的要求和满足实际需求。 代码质量达不到澳洲IT公司标准 在学校学习或自学编程的过程中常常缺乏code review 环节，难以达到商业级工程代码质量。我们的课程中会提供专业导师点评，帮助学员快速提升。学习并实践符合澳洲企业编制的代码规范，提高代码质量，以达到澳洲公司要求。 缺乏云端项目经验 学校的作业或个人项目缺乏云端部署的经验，匠人提供Production Grade的云端项目实战经验，帮助学员熟悉从开发到部署的完整流程。 简历总是石沉大海，缺乏竞争力 澳洲留学生找工作难的原因之一就是简历不过关或简历缺乏竞争力，投递的简历总是石沉大海。匠人Web全栈班能够帮助学员补充商业级项目经验、实习经验，提升简历含金量，让HR更愿意给出面试机会。 缺少工作机会和职业资源支持 澳洲的留学生或毕业生求职往往都是孤军奋战，只能仅通过常规的招聘网站来找工作，缺少工作机会和职业资源支持。但匠人的学员能够借助匠人学院庞大的校友网络，获得工作内推机会。也可以通过建立Networking扩大自己的人脉资源，从前辈和行业大神那里收获行业资讯和经验分享。匠人可以为学员求职提供强有力的支持。 Web 全栈班学习内容 多元化职业道路，一次报名，三重选择 选择我们的课程，您将开启 Node.js 、 .Net 、 Java 三大热门后端技术的学习之旅。我们的资源共享机制，跨课程、跨城市的学习环境，助您拓宽职业视野，增加获取理想工作Offer的可能性。无论您在澳洲还是中国，这门课程都将为您的Web开发和编程事业铺设坚实的基石。通过实战项目经验积累，提升您在职场的竞争力，我们的课程适合想在商业项目中增加实战经验的您。 &nbsp; 前端培训: 企业级前端技术精讲 深入解析前端技术的企业应用，如 React 、 Redux Saga 、 ES6 等，帮助学员紧跟行业最新需求，编写出高质量的代码。课程内容随市场需求定期更新，确保学员学到最实用、最前沿的技能。 Web 培训: Web 标准化与响应式设计 系统讲解 HTML5 、 CSS3 、 Sass 等前端基础，重点训练标准化编程和响应式网页设计，让学员能编写出符合行业标准的Web项目。 React 培训: 系统掌握 React 开发 摆脱自学困境，通过项目实战和企业案例，深入学习 React 的语法、结构和组件设计，帮助学员理解企业级代码质量要求，提升React开发能力。 后端培训: 可选三语言后端开发精英培养 澳洲唯一涵盖 Nodejs， .NET , Java 的三语言后端培训，深入讲解后端架构、微服务、 RESTful API 等核心知识，拓宽学员的职业发展路径。 Node.js 方向&nbsp; Node.js采用 线上直播课 的模式学习。在Node.js方向的学习中，你将深入了解Node.js的核心原理、模块系统以及事件驱动模型。我们将从基础开始，带你逐步掌握 Node.js 的基本语法、 API 调用以及 Express.js 等常用框架的使用。 .NET 方向 .NET方向采用 线下 教学的模式，悉尼、墨尔本、布里斯班三个城市开班。在.NET方向的学习中，你将领略到.NET框架的强大功能与灵活性。我们将从 .NET 框架的基础知识讲起，涵盖 C#语言基础 、 ASP.NET Web开发 、 WCF服务开发 等多个方面。通过学习，你将掌握如何使用.NET框架构建高效、安全的Web应用程序，提升你的开发能力和项目实战水平。 Java 方向 Java方向采用 Self-Paced Learning 的学习模式。在Java方向的学习中，你将体验到Java作为企业级开发语言的魅力。我们将从Java语言基础入手，讲解面向对象编程思想、JVM原理、常用设计模式等核心知识，还会学习Spring Boot。 AI方向内容介绍&nbsp; &nbsp;Speech sample app&nbsp; 功能亮点 全面的AI应用 ：AI课程涵盖语音识别、文本转换、翻译及生成式AI应用，全面提升学员的AI技术能力。 实用工具开发 ：通过开发实际应用（如语音转文字、文本翻译），学员能够将所学知识应用于实际课程中。 热门技术栈 ：使用业界流行的工具和技术（如Python、Azure AI、OpenAI），紧跟技术前沿。 企业应用案例 ：学习和实践澳洲企业中实际应用AI技术的案例，提升职业竞争力。 AI内容介绍 AI文字语音转换翻译课程旨在通过开发一个功能全面的Web应用，帮助用户进行语音到文字、文字到语音及翻译的转换。该课程结合了AI技术与实际应用，帮助学员掌握AI技术在编程中的具体应用。将通过Azure AI和OpenAI的API，实现语音识别、文字生成和翻译功能，并通过React构建用户界面。 主要功能包括： 语音识别 ：将用户的语音输入转换为文本。 文本到语音 ：将文本转换为语音进行播放。 文本翻译 ：将文本翻译成多种语言。 AI生成 ：通过生成式AI技术，生成符合上下文的文本回答。 提升能力 通过完成AI文字语音转换翻译，学员将提升以下技能： AI技术应用 ： 学习如何使用Azure AI进行语音识别和文本转换。 掌握使用OpenAI进行文本生成和翻译。 职业发展能力 ： 通过项目实践，提升解决实际问题的能力。 积累项目开发经验，为职业发展打下坚实基础。 通过这些内容学习，学员不仅能掌握AI技术在语音识别、文本生成和翻译中的应用，还能通过实践提升综合开发能力，为进一步的职业发展和实际项目开发打下坚实基础。 全栈班+DevOps班流程图 整个过程分为五大阶段：Plan、Development、Build、Test、Release。 从全栈班到DevOps班学员共同配合完成这五个阶段内容，这一流程为开发团队提供了完整的解决方案，帮助学员全面掌握全栈开发DevOps的核心技能。我们独特的P3商业项目同时贯穿整个流程，全面提升学员的实战能力和竞争力！ Web 全栈班阶段 Web 全栈班分五个阶段：Web 基础技能提升，Web Application Delivery，Agile Team Project Delivery，Career Coaching Self-paced Learning面试准备与技能提升，简历内推库 阶段 1：Web 基本技能提升 熟练掌握 Web 开发三剑客 HTML 、 CSS 、 JavaScript 的企业级开发习惯和常用模块，并通过个人网站的开发夯实基础。项目本身也可以作为简历中的项目经历、或者求职过程中展示自己的一份作品。 Web 基础技能提升阶段，主要学习 HTML，CSS，JavaScript，Sass，Flexbox，Responsive Web Design，以及 Version Control -- Git 工具 第一阶段需要完成的项目- 商业级个人/公司Landing Page 阶段 2：Web App Delivery 学习三大前端框架之一的 React.js 以及相关工具，大幅提升你的前端开发能力以及小型网页应用项目的独立开发能力。该阶段需要完成一个常见 MongoDB 面试项目题&mdash;&mdash;Weather Application 的开发，完成后你就可以 handle 常见的面试项目题 第二阶段的学习内容围绕 React 展开，通过 ES6 (ECMAScript 2015)，提升 JavaScript 的使用，学习 Linter 规范代码格式，以及学习 SOLID，思维范式等等，提升工程师能力 第二阶段的项目需要完成 Weather App 的开发，从 2017 年沿用到现在，是重要的提升 Code Challenge 的项目 阶段 3：商业项目 Delivery 学习 后端框架 、 数据库 ， 基本的架构 、 云服务 等知识，并通过参与团队大项目，亲身体验互联网产品主流项目开发流程&mdash;&mdash;Agile 敏捷开发流程，获得职场中不可或缺的多角色团队配合能力。 到了第三阶段整体技术学习难度和广度都有提升 什么是 Web 全栈班 P3 项目 -- 项目实战 由 8-10 位 Full stack Developers，6-8 位 DevOps Enginners，1 位 Business Analyst 和 1 位 UI Designer 组队，共同完成一个商业级项目。项目通过团队协作，获得澳洲真实的开发工作流程。 Web 全栈班项目与其他匠人培训班（Bootcamp）高度搭配融合 Web 全栈班最著名的 P3 项目，不再仅仅是 Web 全栈班的单一项目，而是由 Web 全栈班为核心，与其他班级搭配形成一个完整的大团队，这个在其他任何培训机构从未出现过，P3 项目组会包含 8-10 个 Full-stack Developers 来自 Web 全栈班，1 位 Business Analyst 来自 BA 产品经理班，6-8 位 DevOps Engineers 来自 DevOps 项目班，以及 1 位 UI Designer 来自 UI 项目班。学生将会有 两次 做团队项目的权益，增加简历筹码。 &nbsp;第三个项目为匠人学院独创, 提供多个 Projects 选择, 每个班分成不同 Team, 通过 Agile, 花三个月时间, Deliver 一个完整的全栈项目, 最后项目结束会有 Presentation 以及来自现场导师的反馈。 多种不同级别的商业项目可以选。可以选择适合转行转专业的同学的 Level 1 级别的项目，Level 1 的项目除了可以自己做之外，还提供其他真实企业的项目经验，进入合作公司去做 Level 1。如果进入合作公司的 Level 1 的项目，需要经过面试，公司满意后，可以进入做项目。 P3 项目亮点 每个小组配有项目 Tutor 全程为组员项目答疑 产品经理协助项目管理，保障项目顺利落地 班主任督促检查每周项目进度 项目直接对接企业方 Employer 每个小组不同主题，组间 Battle 团队协作，模拟澳洲真实职场项目 写进简历提升 Offer 筹码 对外商业 Showcase 项目成果对外展示，与雇主面对面交流，增加项目商业化。通过参加 Showcase，招聘官可以直接了解学员的背景和优势，得到与各大行业领头公司 decision maker 的直接对话机会，大大提升求职成功率，更有可能现场获得 Offer 哦。 &nbsp; &nbsp; 阶段 4：IT Career Coaching Self-paced Learning 100+Career Coaching的视频资料可供大家Self-paced Learning，从职业规划，简历，面试，谈薪水等多方面提升。 阶段 5：简历内推库 &amp; 工作实习内推 让学员&ldquo;不仅仅是获得实习，更成为工作 Offer 收割机&rdquo; 简历内推库是一个特设的、专为我们的学员打造的数字化简历存储平台。在这里，每位学员的简历都经过专业导师的审核与优化，确保其准确、专业且符合行业标准。 匠人毕业学员的简历，有权优先录入简历内推库。依托匠人长久积累的的企业伙伴和毕业校友、导师的长久合作，这些简历会被优先推荐和匹配合适的岗位，有效缩短求职路径。 面向&ldquo;转码&rdquo;同学的帮助 从 Web 入门班晋升过来的同学，为了能够让转码的同学更友好的拿到 Offer。我们为转码的同学单独开设以下举措： 1. 提供适合转码同学的单独 Tutorial 进度，针对性答疑 2. 设立转码互助学习小组，转码同学互相取暖，互相帮助 3. 可以选择性参加转码补习小组，小班制，最多五人。 4. 多种不同难度级别的项目可供选择，不同级别项目也有对应的公司，提供难度较低的工作机会，扩充简历内容 &nbsp; Web全栈班如何保障&ldquo;IT&rdquo;专业学生获得Offer 没有经验缺乏工作？ 全栈班核心问题就是去解决，企业需要相关工作经验，但自己没有相关经验问题。 对于全栈班，提供了多种级别涉猎的项目可以做，不同的项目，同样对应，不同的利益相关者（公司、老师等），为学员提供更多的项目经验需求，来满足企业对工作经验的要求。 每年3次的内推会，可以近距离接触位置内推官，直接面向企业需求。 网络开发全栈班导师介绍 一线大厂老师，多年面试经验，辅导以及教学经验。多种不同，针对不同阶段教学 授课老师 课程导师 项目导师 项目带队导师 全班导师协议 &nbsp; 为什么选择Web开发全栈项目班？ 帮助数千名同学，找到了澳洲和中国的工作，获得了Offer。 阿富汗大学课程与企业需求的鸿沟(Gap) 超强导师团队 一线大厂老师授课，并同时有课程辅导导师+项目辅导导师，陪伴你的学习之路。 独创3+3+12模式 独创3+3+12模式，通过3个月课程+3个项目+12个月简历内推库，填写简历空白，求职有表格！ 面向职场的开发人员培训 锻炼只学习开发技术，还对接真实的互联网工作环境，带你熟悉开发团队中BA、UI设计师、DevOps等其他岗位的工作内容和涉及技术，帮助你未来更快的巴基斯坦工作团队。 指导 针对前面、工作室、全栈等不同开发岗位提供专业的求职辅导，资深导师教你如何写简历、写Linkedin、应对面试。 超越开发者团队合作 参与团队大型项目，与来自匠人学院其他培训项目的BA、UI设计师、DevOps组队完成商业级别的互联网项目开发，提前体验互联网项目开发团队配合。 學 Web全栈班會議員: 课程全程导师全程答疑 所有项目团队配备项目导师 1 年项目经验 期往及课程全程录音 三个项目经验丰富你的简历 模拟面试与HR面试 简历指导与简历修改 背景调查证明 匠人庞大工作内推网络 庞大的大师学员及导师资源 学员，大师导师直接优秀挖人 与匠人合作企业的内推及实习与全职工作机会 我们的学员工作 自Web全栈班开班以来，已有超过3000+同学成功就业，也有学生进入澳洲各大公司如德勤，Servian等知名公司工作。以下为往届学生的部分作品展示。 为什么Web全栈训练营受到大企业认可 项目技术面向企业人才需求 项目流程与公司工作流程一样 开发人员与 DevOps 一起工作与真实公司工作一致 3 个月项目经验 = 3 个月工作经验 进行项目魔鬼训练，修炼IT专业性符合公司需求 学员具有初步的系统设计能力 禅师权益大盘点，属于禅师学员的独特礼遇 概念界定 大师学员：凡报名过大师学员Web开发栈项目班的学员 新学员：报名Web开发全栈项目班后，第一次参与全栈课程期间，统称为新学员 学员：报名Web开发全栈项目班后，第一次参与的课程结课后，统称为老学员（这里主要指enroll老学员课程期间内） ⚠️以下权益仅限购买课程本人使用，禁止售卖和转让，一经发现封号处理 &nbsp;
+
+**级别** 中级 · **类型** bootcamp · **时长** 共16周 · **总课时** 485 · **步骤** 0 · **直播** 20 · **预计学时** 853
+
+**适合**：IT、CS 专业在校生和毕业生
+IS毕业生
+国内有IT工作经验, 无本地工作经验的新移民
+Job Changer
+
+**目标**：学习RAG，React.js，Node.js，.Net Core，Spring Boot，Redux，AWS，Agile项目实践，获得2个个人项目经验和1个商业项目经验+80多节Career Coaching Self-paced Learning课程+12月简历内推
+
+---
+
+## AI Web全栈班26期.NET方向
+
+- **课前须知** — 60 分钟
+- **课程准备** — 60 分钟
+- **Introduction & Career** — 180 分钟
+- **【课后阅读】“计算机专业要学哪些？"10 分钟带你白嫖完三年科班程序员的必修课** — 60 分钟
+- **开课讲解会** — 60 分钟
+- **HTML & CSS 的奥秘** — 180 分钟
+- **HTML & CSS的奥秘: Assignment** — 60 分钟
+- **Lab(1)：使用Chrome Debugger和实现Responsive List** — 60 分钟
+- **HTML&CSS (Part 2)** — 180 分钟
+- **HTML&CSS (Part 2): Assignment** — 60 分钟
+- **Tutorial 01 (HTML)** — 120 分钟
+- **CSS & Sass** — 180 分钟
+- **Lab(2)：使用Grid和Flexbox实现卡片布局** — 60 分钟
+- **JavaScript ** — 180 分钟
+- **JavaScript Assignment** — 60 分钟
+- **Tutorial 02 (CSS)** — 120 分钟
+- **Git Introduction** — 180 分钟
+- **Git Introduction Assignment** — 60 分钟
+- **Lab(3)：创建Responsive定价卡片** — 60 分钟
+- **Lab(4)：Git实践练习** — 60 分钟
+- **探索现代 JavaScript —— ES6 (ECMAScript 2015) 之魅力** — 180 分钟
+- **ES6 Assignment** — 60 分钟
+- **Tutorial 03 (JavaScript, Git)** — 120 分钟
+- **ES6 进阶技巧与实践** — 180 分钟
+- **ES6 (Part2) & TypeScript Assignment** — 60 分钟
+- **Lab(5)：构建一个JavaScript天气应用** — 60 分钟
+- **Lab(6)：使用Promise和ES6创建进度条** — 60 分钟
+- **Technical SEO 基础知识** — 60 分钟
+- **Project 1 介绍** — 60 分钟
+- **Project 1 Tutorial** — 120 分钟
+- **Node.js 如何安装** — 60 分钟
+- **React Install** — 60 分钟
+- **React项目快速上手** — 60 分钟
+- **React组件基础** — 60 分钟
+- **React Router** — 60 分钟
+- **React表单处理** — 60 分钟
+- **React服务端交互** — 60 分钟
+- **React Hooks** — 60 分钟
+- **REACT(1): React with Modern JavaScript** — 180 分钟
+- **React (1): Assignment** — 60 分钟
+- **Tutorial 04 (ES6)** — 120 分钟
+- **REACT(2): Make it stateful** — 180 分钟
+- **React (2): Assignment** — 60 分钟
+- **REACT(3): Make it interactive** — 180 分钟
+- **React(3): Assignment** — 60 分钟
+- **Lab(7)：使用React和Hooks创建分页应用** — 60 分钟
+- **Tutorial 05 (React) ** — 120 分钟
+- **REACT(4): Talk to remote** — 180 分钟
+- **React (4): Assignment** — 60 分钟
+- **REACT(5) : Thinking in React** — 180 分钟
+- **React (5): Assignment** — 60 分钟
+- **Lab(8)：使用React和localStorage构建笔记卡片应用** — 60 分钟
+- **Lab(9)：使用React构建收支管理应用** — 60 分钟
+- **Tutorial 06 (React)** — 120 分钟
+- **Project 2 介绍** — 60 分钟
+- **Project 2 Tutorial 01** — 120 分钟
+- **利用AWS部署前端spa项目** — 120 分钟
+- **Tutorial 07 (C#开发环境设置)** — 120 分钟
+- **Project 2 Tutorial 02** — 120 分钟
+- **.NET(1):C#编程语言基础** — 180 分钟
+- **.NET(1): Assignment** — 60 分钟
+- **Project 2 Tutorial 03** — 120 分钟
+- **.NET(2): Basic OOP Fundamental** — 180 分钟
+- **.NET(2): Assignment** — 60 分钟
+- **Tutorial 08** — 120 分钟
+- **Tutorial 10（Web API环境配置）** — 120 分钟
+- **.NET(3): 高级面向对象** — 180 分钟
+- **.NET(3): Assignment** — 60 分钟
+- **.NET(4): C# 常用集合类型详解** — 180 分钟
+- **.NET(4): Assignment** — 60 分钟
+- **Tutorial 09** — 120 分钟
+- **.NET(5): 构建WEB API项目以及相关技术-概念介绍,管道 中间件,MVC** — 180 分钟
+- **.NET(5): Assignment** — 60 分钟
+- **Tutorial 11** — 120 分钟
+- **.NET(6)：构建WEB API项目相关技术 - 特性，模型验证，自定义模型验证，切面编程，过滤器，自定义中间件** — 180 分钟
+- **.NET(6): Assignment** — 60 分钟
+- **.NET(7)：构建WEB API项目相关技术 - 泛型，依赖注入声明周期，异步编程，扩展方法** — 180 分钟
+- **.NET(7): Assignment** — 60 分钟
+- **REACT(6): Redux & Redux Thunk** — 180 分钟
+- **React (6): Assignment** — 60 分钟
+- **Tutorial 12** — 120 分钟
+- **Lab(10)：使用React, Hooks和Redux Toolkit构建图书馆应用** — 60 分钟
+- **Lab(11)：使用React和Express构建图像上传应用** — 60 分钟
+- **.NET(8): 构建WEB API项目相关技术 - 数据库，SQL Script，ADO.NET** — 180 分钟
+- **.NET(8): Assignment** — 60 分钟
+- **Project 3介绍** — 60 分钟
+- **Project 3 Bootstrap** — 120 分钟
+- **AWS 基础** — 60 分钟
+- **Workshop: AWS IAM 的基本用法和高级使用** — 60 分钟 · 🔴直播
+- **什么是Agile SDLC, Waterfall, Agile介绍** — 60 分钟
+- **Agile Methodologies** — 60 分钟
+- **Agile Case研究：微软Microsoft Case Study** — 60 分钟
+- **Tutorial 14** — 120 分钟
+- **Agile 方法论: 解锁团队的协作潜力** — 180 分钟
+- **REACT(7): Unit Test** — 180 分钟
+- **React (7): Assignment** — 60 分钟
+- **.NET(12): Unit Test** — 180 分钟
+- **.NET(12): Assignment** — 60 分钟
+- **Tutorial 16** — 120 分钟
+- **.NET(11): C# 事件与委托** — 180 分钟
+- **.NET(11): Assignment** — 60 分钟
+- **REACT(8): Iteration 0, CI/CD, ESLint 和 Commit Hook** — 180 分钟
+- **React (8): Assignment** — 60 分钟
+- **Tutorial 17** — 120 分钟
+- **React(9): Authentication Lab** — 180 分钟
+- **React (9): Assignment** — 60 分钟
+- **Next.js 和不同的渲染模式** — 180 分钟
+- **课后补充知识：什么是SSR，CSR，SSG** — 60 分钟
+- **Tutorial 18** — 120 分钟
+- **Tutorial 19 (Azure AI Preparation)** — 120 分钟
+- **Azure AI Service和TTS** — 180 分钟
+- **Integrate Azure AI Service and Streaming** — 180 分钟
+- **如何撰写IT专业简历** — 120 分钟
+- **Project Management Workshop** — 60 分钟 · 🔴直播
+- **5分钟手动部署Web Application 到 AWS S3 静态网站** — 60 分钟
+- **GraphQL 101: 剥离RESTful的银行系统开发实践—Gary Sun** — 60 分钟
+- **AWS Lambda 基础知识** — 60 分钟 · 🔴直播
+- **Docker  Introduction** — 60 分钟
+- **SpringBoot的Production部署到AWS ECS Fargate，如何使用Microservice with docker** — 60 分钟
+- **Workshop: 持续集成(CI)/持续部署(CD)的概念以及Jenkins的使用** — 60 分钟
+- **CI CD基础 使用Jenkins和AWS CodePipeline 手把手部署一个Web App** — 60 分钟
+- **Open AI Huggingface讲解 - Guang** — 60 分钟
+- **用 Kafka 实践 Event First 设计思维—虎头锤** — 60 分钟
+- **如何准备澳洲大厂开发类岗位面试** — 60 分钟
+- **求职国内秋招大厂前端开发岗，需要做哪些准备** — 60 分钟
+- **如何准备国内秋招，才能获得大厂 Offer?** — 60 分钟
+- **在澳洲如何找到一份Java Developer的工作 -- 虎头锤** — 60 分钟
+- **澳洲程序员找工作必备哪些后端知识** — 60 分钟
+- **在澳洲，IT学生如何准备System Design面试-----Ben** — 60 分钟
+- **从0到1打造React/Node 全栈IoT实时应用——Bryan** — 60 分钟
+- **Google大佬教你，如何突破年薪20w澳币天花板 -- 韭天** — 60 分钟
+- **Elastic Search基础知识分享Workshop** — 60 分钟
+- **关于如何解决Error Messages，几个步骤** — 60 分钟
+- **澳洲工作职场介绍** — 60 分钟
+- **澳洲企业招聘流程** — 60 分钟
+- **招聘官挑选简历的标准** — 60 分钟
+- **简历常见问题** — 60 分钟
+- **如何利用 ChatGPT 写简历** — 60 分钟
+- **手把手带着运营 LinkedIn** — 60 分钟
+- **如何利用 LinkedIn 准备面试** — 60 分钟
+- **Next.js** — 180 分钟
+- **The Four Prototyping Patterns: Prompting, Fine-Tuning, RAG, Agents** — 60 分钟
+- **Introduction to Embeddings** — 30 分钟
+- **Introduction to Retrieval Augmented Generation (RAG)** — 30 分钟
+- **Building RAG from Scratch in JavaScript** — 120 分钟
+- **Integrate Azure AI and OpenAI** — 180 分钟
+- **Student Showcase: Stripe Integration in Practice** — 60 分钟 · 🔴直播
+- **学会撰写IT专业简历** — 120 分钟
+- **LinkedIn & CV** — 60 分钟
+- **手把手教你运营LinkedIn** — 180 分钟
+- **Workshop: Agile Project Management** — 60 分钟 · 🔴直播
+- **React基础(1) - 代码质量** — 60 分钟
+- **React基础(2) - 为什么需要 React** — 60 分钟
+- **开发环境与工具** — 60 分钟
+- **React基础(3) - 开发环境与工具** — 60 分钟
+- **React基础(4) - 组件 & JSX 语法** — 60 分钟
+- **React基础(5) - 条件渲染 & 列表渲染** — 60 分钟
+- **React基础(6) - 组件的状态** — 60 分钟
+- **React基础(7) - React 组件生命周期 & 使用 API 获取数据** — 60 分钟
+- **React 进阶(1) - Thinking in React** — 60 分钟
+- **React 进阶(2) - 测试和 a11y** — 60 分钟
+- **Workshop：前端技术干货分享** — 60 分钟 · 🔴直播
+- **Workshop：如何使用最新AI工具高效编程** — 60 分钟 · 🔴直播
+- **Tutorial 13** — 120 分钟
+- **.NET(9): 构建WEB API项目相关技术 - Entity Framework Core，Linq，Sweager，nlog** — 180 分钟
+- **.NET(10): 构建WEB API项目相关技术 - Web API认证与授权（JWT Authentication & RBAC Authorization）** — 180 分钟
+- **Tutorial 15** — 120 分钟
+- **Scrum User Story: 实现标准化用户管理 API 与全局过滤器** — 60 分钟
+- **AI Coding & Vibe Coding Workshop** — 60 分钟 · 🔴直播
+- **Project 2 Tutorial 01（全栈25期）** — 60 分钟
+- **Project 2 Tutorial 02（全栈25期）** — 60 分钟
+- **Project 2 Tutorial 03（全栈25期）** — 60 分钟
+- **AI in Programming Workshop** — 180 分钟
+- **如何撰写IT专业简历** — 120 分钟
+- **Lab(9)：使用React构建收支管理应用** — 60 分钟
+- **Vibe Coding** — 120 分钟
+
+## AI Web全栈班27期.NET寒假班
+
+- **课前须知** — 60 分钟
+- **课程准备** — 60 分钟
+- **Introduction & Career** — 180 分钟
+- **【课后阅读】“计算机专业要学哪些？"10 分钟带你白嫖完三年科班程序员的必修课** — 60 分钟
+- **开课讲解会** — 60 分钟
+- **HTML & CSS 的奥秘** — 180 分钟
+- **HTML & CSS的奥秘: Assignment** — 60 分钟
+- **Lab(1)：使用Chrome Debugger和实现Responsive List** — 60 分钟
+- **HTML&CSS (Part 2)** — 180 分钟
+- **HTML&CSS (Part 2): Assignment** — 60 分钟
+- **Tutorial 01 (HTML)** — 120 分钟
+- **CSS & Sass** — 180 分钟
+- **Lab(2)：使用Grid和Flexbox实现卡片布局** — 60 分钟
+- **JavaScript ** — 180 分钟
+- **JavaScript Assignment** — 60 分钟
+- **Tutorial 02 (CSS)** — 120 分钟
+- **Git Introduction** — 180 分钟
+- **Git Introduction Assignment** — 60 分钟
+- **Lab(3)：创建Responsive定价卡片** — 60 分钟
+- **Lab(4)：Git实践练习** — 60 分钟
+- **探索现代 JavaScript —— ES6 (ECMAScript 2015) 之魅力** — 180 分钟
+- **ES6 Assignment** — 60 分钟
+- **Tutorial 03 (JavaScript, Git)** — 120 分钟
+- **ES6 进阶技巧与实践** — 180 分钟
+- **ES6 (Part2) & TypeScript Assignment** — 60 分钟
+- **Lab(5)：构建一个JavaScript天气应用** — 60 分钟
+- **Lab(6)：使用Promise和ES6创建进度条** — 60 分钟
+- **Technical SEO 基础知识** — 60 分钟
+- **Project 1 介绍** — 60 分钟
+- **Project 1 Tutorial** — 120 分钟
+- **Node.js 如何安装** — 60 分钟
+- **React 如何安装** — 60 分钟
+- **React项目快速上手** — 60 分钟
+- **React组件基础** — 60 分钟
+- **React Router** — 60 分钟
+- **React表单处理** — 60 分钟
+- **React服务端交互** — 60 分钟
+- **React Hooks** — 60 分钟
+- **React基础(1) - 代码质量** — 180 分钟
+- **Tutorial 04 (ES6)** — 120 分钟
+- **React基础(2) - 为什么需要 React** — 180 分钟
+- **开发环境与工具** — 180 分钟
+- **Lab(7)：使用React和Hooks创建分页应用** — 60 分钟
+- **Tutorial 05 (React) ** — 120 分钟
+- **React基础(3) - 开发环境与工具** — 180 分钟
+- **React基础(4) - 组件 & JSX 语法** — 180 分钟
+- **Lab(8)：使用React和localStorage构建笔记卡片应用** — 60 分钟
+- **Lab(9)：使用React构建收支管理应用** — 60 分钟
+- **Tutorial 08 (React)** — 120 分钟
+- **Project 2 介绍** — 60 分钟
+- **Project 2 Tutorial 01** — 120 分钟
+- **利用AWS部署前端spa项目** — 120 分钟
+- **Tutorial 06 (C#开发环境设置)** — 120 分钟
+- **Project 2 Tutorial 02** — 120 分钟
+- **.NET(1):C#编程语言基础** — 180 分钟
+- **.NET(1): Assignment** — 60 分钟
+- **Project 2 Tutorial 03** — 120 分钟
+- **.NET(2): Basic OOP Fundamental** — 180 分钟
+- **.NET(2): Assignment** — 60 分钟
+- **Tutorial 07 (.NET)** — 120 分钟
+- **Tutorial 11（Web API环境配置）** — 120 分钟
+- **.NET(3): 高级面向对象** — 180 分钟
+- **.NET(3): Assignment** — 60 分钟
+- **.NET(4): C# 常用集合类型详解** — 180 分钟
+- **.NET(4): Assignment** — 60 分钟
+- **Tutorial 09（.NET）** — 120 分钟
+- **.NET(5): 构建WEB API项目以及相关技术-概念介绍，管道，中间件，MVC** — 180 分钟
+- **.NET(5): Assignment** — 60 分钟
+- **Tutorial 10（.NET）** — 120 分钟
+- **.NET(6)：构建WEB API项目相关技术 - 特性，模型验证，自定义模型验证，切面编程，过滤器，自定义中间件** — 180 分钟
+- **.NET(6): Assignment** — 60 分钟
+- **.NET(7)：构建WEB API项目相关技术 - 泛型，依赖注入声明周期，异步编程，扩展方法** — 180 分钟
+- **.NET(7): Assignment** — 60 分钟
+- **React基础(5) - 条件渲染 & 列表渲染** — 180 分钟
+- **Tutorial 13（.NET）** — 120 分钟
+- **Lab(10)：使用React, Hooks和Redux Toolkit构建图书馆应用** — 60 分钟
+- **Lab(11)：使用React和Express构建图像上传应用** — 60 分钟
+- **.NET(8): 构建WEB API项目相关技术 - 数据库，SQL Script，ADO.NET** — 180 分钟
+- **.NET(8): Assignment** — 60 分钟
+- **Project 3介绍** — 60 分钟
+- **Project 3 Bootstrap** — 120 分钟
+- **AWS 基础** — 60 分钟
+- **Workshop: AWS IAM 的基本用法和高级使用** — 60 分钟 · 🔴直播
+- **什么是Agile SDLC, Waterfall, Agile介绍** — 60 分钟
+- **Agile Methodologies** — 60 分钟
+- **Agile Case研究：微软Microsoft Case Study** — 60 分钟
+- **Workshop: Agile Project Management** — 60 分钟 · 🔴直播
+- **Tutorial 15（.NET）** — 120 分钟
+- **Agile 方法论: 解锁团队的协作潜力** — 180 分钟
+- **React基础(6) - 组件的状态** — 180 分钟
+- **.NET(12): Unit Test** — 180 分钟
+- **.NET(12): Assignment** — 60 分钟
+- **Tutorial 12 (React, Context API)** — 120 分钟
+- **.NET(11): C# 事件与委托** — 180 分钟
+- **.NET(11): Assignment** — 60 分钟
+- **React基础(7) - React 组件生命周期 & 使用 API 获取数据** — 180 分钟
+- **Tutorial 18 (.NET)** — 120 分钟
+- **React 进阶(1) - Thinking in React** — 180 分钟
+- **Tutorial 14（SCRUM）** — 120 分钟
+- **React 进阶(2) - 测试和 a11y** — 180 分钟
+- **课后补充知识：什么是SSR，CSR，SSG** — 60 分钟
+- **Next.js** — 180 分钟
+- **The Four Prototyping Patterns: Prompting, Fine-Tuning, RAG, Agents** — 60 分钟
+- **Introduction to Embeddings** — 30 分钟
+- **Introduction to Retrieval Augmented Generation (RAG)** — 30 分钟
+- **Building RAG from Scratch in JavaScript** — 120 分钟
+- **Tutorial 19 (Azure AI Preparation)** — 120 分钟
+- **Azure AI Service和TTS** — 180 分钟
+- **Integrate Azure AI Service and Streaming** — 180 分钟
+- **Integrate Azure AI and OpenAI** — 180 分钟
+- **Project Management Workshop** — 60 分钟 · 🔴直播
+- **Workshop：前端技术干货分享** — 60 分钟 · 🔴直播
+- **Workshop：如何使用最新AI工具高效编程** — 60 分钟 · 🔴直播
+- **5分钟手动部署Web Application 到 AWS S3 静态网站** — 60 分钟
+- **GraphQL 101: 剥离RESTful的银行系统开发实践—Gary Sun** — 60 分钟
+- **AWS Lambda 基础知识** — 60 分钟 · 🔴直播
+- **Docker  Introduction** — 60 分钟
+- **SpringBoot的Production部署到AWS ECS Fargate，如何使用Microservice with docker** — 60 分钟
+- **Workshop: 持续集成(CI)/持续部署(CD)的概念以及Jenkins的使用** — 60 分钟
+- **CI CD基础 使用Jenkins和AWS CodePipeline 手把手部署一个Web App** — 60 分钟
+- **Open AI Huggingface讲解 - Guang** — 60 分钟
+- **用 Kafka 实践 Event First 设计思维—虎头锤** — 60 分钟
+- **如何准备澳洲大厂开发类岗位面试** — 60 分钟
+- **求职国内秋招大厂前端开发岗，需要做哪些准备** — 60 分钟
+- **如何准备国内秋招，才能获得大厂 Offer?** — 60 分钟
+- **在澳洲如何找到一份Java Developer的工作 -- 虎头锤** — 60 分钟
+- **澳洲程序员找工作必备哪些后端知识** — 60 分钟
+- **在澳洲，IT学生如何准备System Design面试-----Ben** — 60 分钟
+- **从0到1打造React/Node 全栈IoT实时应用——Bryan** — 60 分钟
+- **Google大佬教你，如何突破年薪20w澳币天花板 -- 韭天** — 60 分钟
+- **Elastic Search基础知识分享Workshop** — 60 分钟
+- **LinkedIn & CV** — 60 分钟
+- **Student Showcase: Stripe Integration in Practice** — 60 分钟 · 🔴直播
+- **关于如何解决Error Messages，几个步骤** — 60 分钟
+- **澳洲工作职场介绍** — 60 分钟
+- **澳洲企业招聘流程** — 60 分钟
+- **招聘官挑选简历的标准** — 60 分钟
+- **学会撰写IT专业简历** — 120 分钟
+- **简历常见问题** — 60 分钟
+- **如何利用 ChatGPT 写简历** — 60 分钟
+- **手把手带着运营 LinkedIn** — 60 分钟
+- **如何利用 LinkedIn 准备面试** — 60 分钟
+- **Tutorial 16（React Auth, Next.js）** — 180 分钟
+- **.NET(9): 构建WEB API项目相关技术 - Entity Framework Core，Linq，Sweager，nlog** — 180 分钟
+- **.NET(10): 构建WEB API项目相关技术 - Web API认证与授权（JWT Authentication & RBAC Authorization）** — 180 分钟
+- **Tutorial 17（.NET）** — 120 分钟
+- **手把手教你运营 LinkedIn** — 120 分钟
+- **AI in Programming Workshop** — 150 分钟
+- **AI in Programming Workshop** — 180 分钟
+- **如何撰写IT专业简历** — 120 分钟
+- **Vibe Coding** — 120 分钟
+
+## AI Web全栈班28期Node.js方向
+
+- **课前须知** — 60 分钟
+- **课前准备** — 120 分钟
+- **开营仪式 & 职业路线图：从AI学习者到AI工程师** — 180 分钟
+- **学习平台使用指南** — 60 分钟
+- **HTML&CSS的奥秘** — 180 分钟
+- **HTML&CSS的奥秘: Assignment 01** — 60 分钟
+- **HTML&CSS (Part 2)** — 180 分钟
+- **HTML&CSS (Part 2): Assignment 02** — 60 分钟
+- **Lab(1)：使用Chrome Debugger和实现Responsive List** — 120 分钟
+- **CSS & Sass** — 180 分钟
+- **Lab(2):使用Grid和Flexbox实现卡片布局** — 60 分钟
+- **JavaScript 入门** — 180 分钟
+- **JavaScript Assignment 03** — 60 分钟
+- **Lab(3):创建Responsive定价卡片** — 60 分钟
+- **Git Introduction** — 180 分钟
+- **Git Introduction Assignment 04** — 60 分钟
+- **Lab(4): Git实践练习** — 120 分钟
+- **探索现代JavaScript —— ES6 (ECMAScript 2015)之魅力** — 180 分钟
+- **ES6 Assignment** — 60 分钟
+- **ES6进阶技巧与实践** — 180 分钟
+- **ES6 (Part2) & TypeScript Assignment** — 60 分钟
+- **Lab(5):构建一个JavaScript天气应用** — 120 分钟
+- **Lab(6):使用Promise和ES6创建进度条** — 60 分钟
+- **Technical SEO基础知识** — 60 分钟
+- **Node.js如何安装** — 60 分钟
+- **React如何安装** — 60 分钟
+- **React项目快速上手** — 60 分钟
+- **React组件基础** — 60 分钟
+- **React Router** — 60 分钟
+- **React表单处理** — 60 分钟
+- **React服务端交互** — 60 分钟
+- **React Hooks** — 60 分钟
+- **React基础(1) - 代码质量** — 180 分钟
+- **React基础(2) - 为什么需要 React** — 180 分钟
+- **利用AWS部署前端spa项目** — 120 分钟
+- **开发环境与工具** — 180 分钟
+- **Lab(7):使用React和Hooks创建分页应用** — 60 分钟
+- **React基础(3) - 开发环境与工具** — 180 分钟
+- **React基础(4) - 组件 & JSX 语法** — 180 分钟
+- **Lab(8):使用React和localStorage构建笔记卡片应用** — 120 分钟
+- **Node.js (1): 引领现代后端的黑马** — 180 分钟
+- **MongoDB面试真题: Weather App项目介绍** — 60 分钟
+- **Node.js (2) : API和RESTful API** — 180 分钟
+- **Working with API** — 60 分钟
+- **Lab(9):使用React构建收支管理应用** — 60 分钟
+- **Node.js (3) : NPM and Express.js** — 180 分钟
+- **Express和RESTful API实践** — 180 分钟
+- **Lab(10):使用Node.js和Express构建天气查询后端服务器** — 60 分钟
+- **Node.js (4) :  Build express server with industry standard** — 180 分钟
+- **Node.js (5): MongoDB** — 180 分钟
+- **Node.js (6) : Mongoose & Authorization and Authentication** — 180 分钟
+- **React基础(5) - 条件渲染 & 列表渲染** — 180 分钟
+- **课后补充知识：什么是SSR，CSR，SSG** — 60 分钟
+- **Lab(11):使用React, Hooks和Redux Toolkit构建图书馆应用** — 60 分钟
+- **Agile方法论: 解锁团队的协作潜力** — 180 分钟
+- **Workshop: Agile Project Management** — 120 分钟 · 🔴直播
+- **什么是Agile SDLC, Waterfall, Agile介绍** — 120 分钟
+- **Agile Methodologies** — 120 分钟
+- **Agile Case研究：微软Microsoft Case Study** — 120 分钟
+- **P3职业孵化器介绍** — 120 分钟
+- **P3职业孵化器 Bootstrap** — 120 分钟
+- **React基础(6) - 组件的状态** — 180 分钟
+- **Lab(12):使用React和Express构建图像上传应用** — 60 分钟
+- **Node.js (7): Build a CRUD server (1)** — 180 分钟
+- **Node.js (8): Build a CRUD server (2)** — 180 分钟
+- **Node.js (9): Build a CRUD server (3)** — 180 分钟
+- **Node.js (10) : Testing and Deploy** — 180 分钟
+- **React基础(7) - React 组件生命周期 & 使用 API 获取数据** — 180 分钟
+- **React 进阶(1) - Thinking in React** — 180 分钟
+- **React 进阶(2) - 测试和 a11y** — 180 分钟
+- **Next.js** — 180 分钟
+- **The Four Prototyping Patterns: Prompting, Fine-Tuning, RAG, Agents** — 60 分钟
+- **Introduction to Embeddings** — 30 分钟
+- **Introduction to Retrieval Augmented Generation (RAG)** — 30 分钟
+- **Building RAG from Scratch in JavaScript** — 120 分钟
+- **Tutorial (Azure AI Preparation)** — 120 分钟
+- **Azure AI Service和TTS** — 180 分钟
+- **Integrate Azure AI Service and Streaming** — 180 分钟
+- **Integrate Azure AI and OpenAI** — 180 分钟
+- **Docker  Introduction** — 60 分钟
+- **AWS基础** — 60 分钟
+- **Workshop: AWS IAM的基本用法和高级使用** — 120 分钟 · 🔴直播
+- **AWS Lambda基础知识** — 120 分钟 · 🔴直播
+- **Workshop：如何利用mediasoup实现多人视频会议** — 120 分钟 · 🔴直播
+- **5分钟手动部署Web Application到AWS S3静态网站** — 60 分钟
+- **GraphQL101: 剥离RESTful的银行系统开发实践—Gary Sun** — 60 分钟
+- **SpringBoot的Production部署到AWS ECS Fargate，如何使用Microservice with docker** — 60 分钟
+- **Workshop: 持续集成(CI)/持续部署(CD)的概念以及Jenkins的使用** — 60 分钟
+- **CI/CD基础:使用Jenkins和AWS CodePipeline手把手部署一个Web App** — 60 分钟
+- **Open AI Huggingface讲解 - Guang** — 60 分钟
+- **用Kafka实践Event First设计思维—虎头锤** — 60 分钟
+- **手把手带你打造高质量IT人的LinkedIn主页** — 60 分钟
+- **LinkedIn & CV** — 60 分钟
+- **澳洲工作职场介绍** — 30 分钟
+- **澳洲企业招聘流程** — 30 分钟
+- **招聘官挑选简历的标准** — 60 分钟
+- **如何撰写 IT 专业简历** — 60 分钟
+- **简历常见问题** — 60 分钟
+- **如何利用 ChatGPT 写简历** — 60 分钟
+- **手把手带着运营 LinkedIn** — 60 分钟
+- **如何利用 LinkedIn 准备面试** — 60 分钟
+- **如何准备澳洲大厂开发类岗位面试** — 60 分钟
+- **求职国内秋招大厂前端开发岗，需要做哪些准备** — 60 分钟
+- **如何准备国内秋招，才能获得大厂Offer?** — 60 分钟
+- **在澳洲如何找到一份Java Developer的工作 -- 虎头锤** — 60 分钟
+- **澳洲程序员找工作必备哪些后端知识** — 60 分钟
+- **在澳洲，IT学生如何准备System Design面试-----Ben** — 60 分钟
+- **从0到1打造React/Node 全栈IoT实时应用——Bryan** — 60 分钟
+- **Google大佬教你，如何突破年薪20w澳币天花板 -- 韭天** — 60 分钟
+- **Elastic Search基础知识分享Workshop** — 60 分钟
+- **关于如何解决Error Messages，几个步骤** — 120 分钟
+- **Student Showcase: Stripe Integration in Practice** — 120 分钟 · 🔴直播
+- **HTML入门实战：从空白到CareerMate网页框架** — 180 分钟
+- **CSS基础与产品风格打造：让页面“有感觉”** — 180 分钟
+- **JavaScript交互入门：让网页“动起来** — 180 分钟
+- **Git 版本管理的第一步：掌握Git并上传你的项目** — 180 分钟
+- **GitHub Action + CICD自动部署上线：让你的CareerMate网页全球可见** — 180 分钟
+- **网页布局与响应式：Flex + Grid 打造专业结构** — 180 分钟
+- **React起步：从零创建你的第一个前端应用&SOLID** — 180 分钟
+- **登录界面开发：打造你的第一个可交互前端系统** — 180 分钟
+- **注册界面开发：组件切换与复用逻辑** — 180 分钟
+- **表单验证与用户体验优化** — 180 分钟
+- **前端生产部署：S3 + CloudFront 静态托管** — 180 分钟
+- **初识后端世界：Express 与 RESTful API 概念** — 180 分钟
+- **连接数据库：让CareerMate的数据真正存起来** — 180 分钟
+- **注册API开发：从前端输入到数据库存储,登录API开发：实现可验证的用户身份系统** — 180 分钟
+- **用户认证与权限保护：安全地管理用户状态** — 180 分钟
+- **用户Dashboard设计与信息展示** — 180 分钟
+- **用户信息编辑与更新API** — 180 分钟
+- **删除与安全：实现账号删除功能** — 180 分钟
+- **文件上传与头像管理功能** — 180 分钟
+- **AWS入门：从本地到云端的后端部署** — 180 分钟
+- **全栈项目云端整合与测试** — 180 分钟
+- **AI模块导入与OpenAI API初体验 & Prompt Engineering：让AI更懂你** — 180 分钟
+- **前端聊天UI设计与Streaming显示** — 180 分钟
+- **引入记忆与上下文：打造有思考的AI** — 180 分钟
+- **Vector Database与RAG检索增强** — 180 分钟
+- **从项目到产品：生产思维与上线规划** — 120 分钟
+- **安全与稳定性：保护你的AI服务** — 150 分钟
+- **性能与体验：优化AI响应速度** — 150 分钟
+- **项目回顾与上线验收** — 120 分钟
+- **Tutorial (Git)** — 120 分钟
+- **HTML基础测试** — 60 分钟
+- **Build Weather App** — 60 分钟
+- **Tutorial (html, css, js)** — 120 分钟
+- **Github Page: Static Website Deployment** — 120 分钟
+- **Vibe Coding** — 120 分钟
+- **AI 模型对比参考** — 120 分钟
+- **Tutorial (React)** — 120 分钟
+- **Tutorial (Node)** — 120 分钟
+- **Tutorial (React & Node)** — 120 分钟
+- **页面路由和 React Context** — 180 分钟
+- **用户注册和登陆，调用后端 API 并保存状态** — 180 分钟
+- **CI/CD, 静态代码检查和单元测试** — 180 分钟
+- **用户 Dashboard 页面开发: React 哲学训练** — 180 分钟
+- **用户 Dashboard 页面开发: useEffect 获取 API 数据** — 180 分钟
+- **前端产品上线，控制环境变量** — 180 分钟
+- **Tutorial (React & Node)** — 120 分钟
