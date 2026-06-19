@@ -1,5 +1,13 @@
 # Changelog — AI 工作流提效营 (AI Workflow Bootcamp) · 原 AI Adoption Specialist Bootcamp
 
+## 2026-06-16 — 建立目标用户画像 v1（PERSONAS.md + PERSONAS.en.md）
+
+- 启动完整推广方案链路（PERSONAS → FUNNEL → PROMOTION），第一步建用户画像
+- 中文站 4 persona（2 核心在职买家 + 1 求职错配分流 + 1 技术人排除），英文站 3 AU persona（在岗提效 + 资深咨询 + 求职错配）
+- 中英为不同人群（reality check 证明 AU/CN 相反市场），非翻译
+- 买家原话类字段标 ⚠️ 待补，ground truth 覆盖率 <50%，待导入：第一期学员/咨询记录 + 销售口播 + 小红书评论
+- 下次 refresh：2026-12-16
+
 ## 2026-05-25 — 重定位 · 旧名 "AI Adoption Specialist Bootcamp" → 新名 "AI 工作流提效营 / AI Workflow Bootcamp"
 
 依据 `REALITY_CHECK_2026-05-24.md` 选项 A（在岗提效型）落地。**slug `ai-adoption-bootcamp` 永久冻结**，只换显示层；如未来跑数据发现新定位不 work，可低成本回退（slug 没动 = SEO / 反向链接 / 后台数据全程不断）。

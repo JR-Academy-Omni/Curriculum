@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineer Bootcamp · 美国班 — 朋友圈封面 1080×1260</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{
+    --red:#FF5757;        /* JR 品牌主色 / 旗舰课主色 */
+    --ink:#10162F;        /* JR 深色 */
+    --cream:#fff1e7;      /* 暖底 */
+    --yellow:#FFDE59;     /* 数据高亮 */
+    --black:#000;
+    --white:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+  body{background:#d9dde3;font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;align-items:center;padding:32px 16px 80px;}
+
+  /* ---- 工具条（不进海报） ---- */
+  .toolbar{display:flex;gap:12px;align-items:center;margin-bottom:24px;background:#fff;border:3px solid #000;
+    box-shadow:6px 6px 0 #000;padding:12px 18px;}
+  .toolbar b{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.5px;}
+  .dl{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;cursor:pointer;background:var(--red);color:#fff;
+    border:3px solid #000;box-shadow:4px 4px 0 #000;padding:10px 18px;}
+  .dl:active{transform:translate(4px,4px);box-shadow:none;}
+
+  /* ---- 海报 1080×1260 朋友圈封面 ---- */
+  #poster{
+    width:1080px;height:1260px;background:var(--cream);position:relative;overflow:hidden;
+    border:3px solid #000;
+    background-image:radial-gradient(#00000010 1.5px,transparent 1.5px);
+    background-size:26px 26px;
+    display:flex;flex-direction:column;padding:64px 64px 56px;
+  }
+  /* 顶 eyebrow */
+  .top{display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;}
+  .pill{background:#000;color:#fff;font-size:20px;font-weight:700;letter-spacing:1px;padding:8px 18px;}
+  .top .ed{font-size:18px;font-weight:700;color:var(--ink);}
+
+  /* 旗舰徽章 */
+  .flag{display:inline-flex;align-items:center;gap:10px;margin-top:54px;background:var(--red);color:#fff;
+    border:3px solid #000;box-shadow:6px 6px 0 #000;padding:10px 20px;font-family:'Space Mono',monospace;
+    font-weight:700;font-size:22px;letter-spacing:1px;width:max-content;}
+
+  /* 大标题 */
+  .h-en{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;font-weight:800;color:var(--ink);
+    font-size:128px;line-height:.92;letter-spacing:-2px;margin-top:26px;}
+  .usbox{display:flex;align-items:flex-end;gap:24px;margin-top:14px;}
+  .us{font-family:'Noto Sans SC',sans-serif;font-weight:900;font-size:150px;line-height:.9;color:#fff;
+    background:var(--red);border:3px solid #000;box-shadow:8px 8px 0 #000;padding:6px 30px 16px;letter-spacing:4px;}
+  .us-en{font-family:'Space Mono',monospace;font-weight:700;font-size:26px;color:var(--ink);padding-bottom:14px;line-height:1.3;}
+
+  /* 黄色 marker 副标 */
+  .lede{margin-top:40px;font-weight:900;font-size:40px;color:var(--ink);line-height:1.35;}
+  .mk{background:var(--yellow);box-shadow:3px 3px 0 #000;padding:2px 12px;border:2px solid #000;}
+
+  /* 数据条 */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px;}
+  .stat{background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:22px 18px;text-align:center;}
+  .stat .n{font-family:'Space Mono',monospace;font-weight:700;font-size:62px;color:var(--red);line-height:1;}
+  .stat .l{font-weight:700;font-size:22px;color:var(--ink);margin-top:10px;}
+
+  /* 适合人群 tags */
+  .who{margin-top:40px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .who .lab{font-family:'Space Mono',monospace;font-weight:700;font-size:22px;background:#000;color:#fff;padding:6px 14px;}
+  .tag{font-weight:700;font-size:26px;color:var(--ink);border:2px solid #000;background:#fff;padding:8px 18px;box-shadow:3px 3px 0 #000;}
+
+  /* 底部 CTA */
+  .cta{margin-top:auto;display:flex;align-items:center;gap:26px;}
+  .qr{width:170px;height:170px;flex:none;background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;
+    display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Space Mono',monospace;
+    font-size:15px;font-weight:700;color:#888;line-height:1.4;}
+  .cta-r{flex:1;}
+  .cta-r .small{font-family:'Space Mono',monospace;font-weight:700;font-size:22px;color:var(--ink);margin-bottom:10px;}
+  .cta-bar{background:var(--ink);color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;
+    font-weight:900;font-size:40px;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;}
+  .cta-bar .arr{color:var(--yellow);}
+  .cta-r .note{font-size:19px;color:#555;margin-top:12px;}
+
+  /* footer 文字 tag（不画 logo，按 spec） */
+  .foot{margin-top:30px;display:flex;justify-content:space-between;align-items:center;
+    font-family:'Space Mono',monospace;font-size:18px;color:var(--ink);border-top:3px solid #000;padding-top:16px;}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <b>1080 × 1260 · 朋友圈封面</b>
+  <button class="dl" onclick="dl()">⬇ 下载 PNG</button>
+</div>
+
+<div id="poster">
+  <div class="top">
+    <div class="pill">JR ACADEMY</div>
+    <div class="ed">AI ENGINEER BOOTCAMP</div>
+  </div>
+
+  <div class="flag">★ 旗舰课 · FLAGSHIP</div>
+
+  <div class="h-en">AI ENGINEER</div>
+  <div class="usbox">
+    <div class="us">美国班</div>
+    <div class="us-en">U.S.<br>COHORT</div>
+  </div>
+
+  <div class="lede"><span class="mk">12 周技术</span> + <span class="mk">12 周职业孵化</span>，从写代码到拿面试</div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">286</div><div class="l">节课</div></div>
+    <div class="stat"><div class="n">68</div><div class="l">互动 Lab</div></div>
+    <div class="stat"><div class="n">24</div><div class="l">周</div></div>
+  </div>
+
+  <div class="who">
+    <div class="lab">适合人群 / FOR WHO</div>
+    <div class="tag">在美华人</div>
+    <div class="tag">留学生转码</div>
+    <div class="tag">在职跳槽</div>
+  </div>
+
+  <div class="cta">
+    <div class="qr">课程二维码<br>替换这里</div>
+    <div class="cta-r">
+      <div class="small">// 美西时区直播 · 对标美国 AI 岗位</div>
+      <div class="cta-bar"><span>扫码了解课程大纲</span><span class="arr">→</span></div>
+      <div class="note">开课日期 / 时区 / 期数请按本期信息替换</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>JR Academy · AI Engineer Bootcamp · 美国班</span>
+    <span>#US-01</span>
+  </div>
+</div>
+
+<script>
+function dl(){
+  const p=document.getElementById('poster');
+  html2canvas(p,{scale:2,backgroundColor:null,useCORS:true,width:1080,height:1260}).then(c=>{
+    const a=document.createElement('a');
+    a.download='ai-engineer-bootcamp-us-cohort-moments-1080x1260.png';
+    a.href=c.toDataURL('image/png');a.click();
+  });
+}
+</script>
+</body>
+</html>

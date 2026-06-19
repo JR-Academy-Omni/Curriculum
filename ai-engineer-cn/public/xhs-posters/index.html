@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineer 训练营（国内版）· 小红书素材集（聚光投流）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --theme-primary:#2F6BFF;      /* 本课主题色（覆盖 brand-red 槽位）*/
+    --theme-on-primary:#ffffff;
+    --brand-red:var(--theme-primary);
+    --brand-dark:#10162f;
+    --brand-yellow:#ffce44;
+    --brand-blue:#3b82f6;
+    --brand-violet:#8b5cf6;
+    --brand-green:#10b981;
+    --bg-light:#f8f9fb;
+    --bg-cream:#fff8ee;
+    --text-main:#10162f;
+    --text-gray:#64748b;
+    --border-color:#e2e8f0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#eef0f4;color:var(--text-main);font-family:'Noto Sans SC',system-ui,sans-serif;padding:40px 20px 120px 150px;line-height:1.5}
+  .page-wrap{max-width:1400px;margin:0 auto}
+  .page-head{background:#fff;border:2px solid var(--brand-dark);border-radius:20px;padding:30px 38px;margin-bottom:28px;box-shadow:8px 8px 0 var(--brand-dark)}
+  .page-head h1{font-size:30px;font-weight:900;letter-spacing:-.5px}
+  .page-head h1 span{color:var(--theme-primary)}
+  .page-head p{font-size:15px;color:var(--text-gray);margin-top:10px;max-width:920px}
+  .actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+  .btn{font-size:13px;font-weight:700;padding:8px 16px;background:var(--brand-dark);color:#fff;border:2px solid var(--brand-dark);border-radius:100px;cursor:pointer}
+  .spec-pill{font-size:12px;font-weight:700;padding:7px 14px;background:var(--bg-light);border:1.5px solid var(--brand-dark);border-radius:100px}
+  .spec-pill.on{background:var(--theme-primary);color:#fff}
+  .guide{background:#fffbe7;border:1.5px dashed var(--brand-dark);border-radius:14px;padding:14px 18px;margin-top:18px;font-size:13px;line-height:1.7}
+  .guide b{color:var(--theme-primary)}
+  /* 左侧导航 */
+  .thumb-nav{display:flex;flex-direction:column;gap:8px;background:#fff;border:1.5px solid var(--brand-dark);border-radius:14px;padding:12px;position:fixed;top:20px;left:16px;width:118px;max-height:calc(100vh - 40px);overflow-y:auto;z-index:100;box-shadow:4px 4px 0 rgba(16,22,47,.1)}
+  .thumb{aspect-ratio:3/4;background:var(--bg-light);border:1.5px solid var(--brand-dark);border-radius:8px;font-weight:900;color:var(--brand-dark);text-align:center;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .15s;flex-direction:column;gap:2px;padding:4px}
+  .thumb .num{font-size:18px;line-height:1}.thumb .lbl{font-size:9px;color:var(--text-gray);font-weight:700}
+  .thumb:hover{background:var(--brand-yellow);transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--brand-dark)}
+  /* 海报容器 */
+  .poster-frame{margin-bottom:40px}
+  .poster-frame .label{font-size:14px;font-weight:700;color:var(--brand-dark);margin-bottom:8px}
+  .poster-frame .label em{color:var(--text-gray);font-style:normal;font-weight:500}
+  .poster-scaler{width:435px;height:581px}
+  .poster{width:1242px;height:1660px;overflow:hidden;background:var(--bg-light);padding:32px;transform:scale(.35);transform-origin:top left;position:relative}
+  .p-inner{position:relative;width:100%;height:100%;background:#fff;border:5px solid var(--brand-dark);border-radius:36px;padding:80px 72px;overflow:hidden}
+  .p-inner::after{content:'';position:absolute;inset:0;background-image:radial-gradient(var(--brand-dark) 1.5px,transparent 1.5px);background-size:28px 28px;opacity:.06;pointer-events:none}
+  .dl-btn{display:block;margin:14px 0 0;background:var(--theme-primary);color:var(--theme-on-primary);border:2px solid var(--brand-dark);border-radius:100px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:4px 4px 0 var(--brand-dark)}
+  /* 课程标识 bar */
+  .p-course-bar{position:absolute;left:50%;top:30px;transform:translateX(-50%);background:var(--brand-violet);color:#fff;border:2px solid var(--brand-dark);border-radius:100px;padding:10px 26px;font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;letter-spacing:1px;box-shadow:4px 4px 0 var(--brand-dark);white-space:nowrap;z-index:10}
+  .p6 .p-course-bar,.p10 .p-course-bar{background:var(--brand-yellow);color:var(--brand-dark)}
+  .p1 .p-course-bar,.p1b .p-course-bar,.p9 .p-course-bar{display:none}
+  /* 通用排版块 */
+  .chip{display:inline-block;background:var(--theme-primary);color:#fff;border:2px solid var(--brand-dark);border-radius:100px;padding:14px 30px;font-size:36px;font-weight:900;margin-bottom:30px}
+  .eyebrow{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+  .eyebrow .line{height:4px;width:70px;background:var(--brand-dark)}
+  .eyebrow .txt{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;letter-spacing:2px;color:var(--text-gray)}
+  .hl{position:relative}
+  .hl::after{content:'';position:absolute;left:-4px;right:-4px;bottom:14px;height:30px;background:var(--brand-yellow);opacity:.75;z-index:-1}
+  .lead{font-size:48px;color:var(--text-gray);font-weight:600;margin:24px 0 36px;line-height:1.4}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .col{border:3px solid var(--brand-dark);border-radius:24px;padding:34px 30px}
+  .col.bad{background:#fff5f5}.col.good{background:#f0fff7}
+  .col h3{font-size:60px;font-weight:900;margin-bottom:22px}
+  .col li{list-style:none;font-size:48px;font-weight:600;line-height:1.4;padding:14px 0 14px 56px;position:relative}
+  .col.bad li::before{content:'✕';position:absolute;left:0;top:14px;color:#ef4444;font-weight:900}
+  .col.good li::before{content:'✓';position:absolute;left:0;top:14px;color:var(--brand-green);font-weight:900}
+  .cards4{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px}
+  .cap{border:3px solid var(--brand-dark);border-radius:24px;padding:34px 30px;box-shadow:10px 10px 0 rgba(16,22,47,.05)}
+  .cap .ic{font-size:70px;line-height:1}
+  .cap h4{font-size:60px;font-weight:900;margin:14px 0 12px}
+  .cap p{font-size:48px;font-weight:600;color:var(--text-gray);line-height:1.4}
+  .wmap{display:flex;flex-direction:column;gap:18px;margin-top:16px}
+  .wrow{display:flex;align-items:center;gap:24px;border:3px solid var(--brand-dark);border-radius:18px;padding:22px 28px}
+  .wrow .wk{font-family:'JetBrains Mono',monospace;font-size:54px;font-weight:700;color:var(--theme-primary);min-width:150px}
+  .wrow .wt{font-size:48px;font-weight:700;line-height:1.3}
+  .wrow.ms{background:var(--brand-yellow)}
+  .tools{display:flex;flex-wrap:wrap;gap:22px;margin-top:20px}
+  .tool{font-size:48px;font-weight:700;border:3px solid #fff;border-radius:100px;padding:16px 34px;color:#fff}
+  .kpis{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:24px}
+  .kpi{border:3px solid var(--brand-dark);border-radius:24px;padding:34px;text-align:center}
+  .kpi .num{font-size:120px;font-weight:900;line-height:1;color:var(--theme-primary)}
+  .kpi .lbl{font-size:48px;font-weight:600;color:var(--text-gray);margin-top:10px}
+  .def{background:var(--brand-dark);color:#fff;border-radius:20px;padding:34px;font-size:60px;font-weight:900;line-height:1.3;margin:10px 0 30px}
+  .def em{color:var(--brand-yellow);font-style:normal}
+  .day{list-style:none}
+  .day li{font-size:48px;font-weight:600;line-height:1.4;padding:16px 0 16px 64px;position:relative;border-bottom:2px dashed var(--border-color)}
+  .day li::before{content:'▸';position:absolute;left:10px;color:var(--theme-primary);font-weight:900}
+  .meta3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:28px}
+  .meta3 .m{border:3px solid var(--brand-dark);border-radius:18px;padding:24px;text-align:center}
+  .meta3 .m .v{font-size:56px;font-weight:900;color:var(--theme-primary)}
+  .meta3 .m .k{font-size:40px;font-weight:600;color:var(--text-gray);margin-top:6px}
+  .companies{display:flex;flex-wrap:wrap;gap:20px;margin-top:24px}
+  .companies span{font-size:48px;font-weight:700;border:3px solid var(--brand-dark);border-radius:14px;padding:14px 26px;background:#fff}
+  .salbar{border:3px solid var(--brand-dark);border-radius:18px;padding:28px 30px;margin-top:20px;display:flex;justify-content:space-between;align-items:center}
+  .salbar .role{font-size:52px;font-weight:700}
+  .salbar .sal{font-size:64px;font-weight:900;color:var(--theme-primary)}
+  .giant{font-size:160px;font-weight:900;line-height:.95;letter-spacing:-4px}
+  .cta-sub{font-size:56px;font-weight:600;color:var(--text-gray);margin-top:30px;line-height:1.4}
+  .src{font-size:34px;color:var(--text-gray);margin-top:30px}
+  h1.hook{font-size:150px;font-weight:900;line-height:1.02;letter-spacing:-4px}
+  h2{font-size:100px;font-weight:900;line-height:1.1;letter-spacing:-2px;margin-bottom:10px}
+  .dark{background:var(--brand-dark)!important}
+  .dark h2,.dark h1{color:#fff}.dark .eyebrow .txt{color:#cbd5e1}
+  .bottom-note{margin-top:32px;background:#fff;border:3px solid var(--brand-dark);border-radius:18px;padding:26px 30px;font-size:46px;font-weight:600;line-height:1.4;box-shadow:10px 10px 0 var(--brand-yellow)}
+  /* 🔴 字号铁律兜底 */
+  .poster p,.poster li{line-height:1.4}
+  .poster h2{font-size:100px!important}
+  .p1 .hook{font-size:150px!important}
+  .p9 .giant{font-size:160px!important}
+</style>
+</head>
+<body>
+
+<nav class="thumb-nav">
+  <a class="thumb" href="#p1"><span class="num">1</span><span class="lbl">封面</span></a>
+  <a class="thumb" href="#p1b"><span class="num">1B</span><span class="lbl">共鸣</span></a>
+  <a class="thumb" href="#p2"><span class="num">2</span><span class="lbl">痛点</span></a>
+  <a class="thumb" href="#p4"><span class="num">4</span><span class="lbl">能力</span></a>
+  <a class="thumb" href="#p5"><span class="num">5</span><span class="lbl">12周</span></a>
+  <a class="thumb" href="#p6"><span class="num">6</span><span class="lbl">工具栈</span></a>
+  <a class="thumb" href="#p10"><span class="num">10</span><span class="lbl">岗位</span></a>
+  <a class="thumb" href="#p12"><span class="num">12</span><span class="lbl">RAG</span></a>
+  <a class="thumb" href="#p24"><span class="num">24</span><span class="lbl">JD薪资</span></a>
+  <a class="thumb" href="#p9"><span class="num">9</span><span class="lbl">CTA</span></a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-head">
+    <h1><span>AI Engineer 训练营（国内版）</span> · 小红书素材集</h1>
+    <p>边学边做匠人真实项目 Dispatch AI · 对齐国内大模型应用开发岗真实 JD · RAG + Agent + MCP + vLLM 私有化部署 · 全国产栈。10 张核心投流素材，可扩展至 25 张。</p>
+    <div class="actions">
+      <button class="btn" id="push-xhs" title="推送到 JR Social Publisher 插件">📤 推送到小红书（插件）</button>
+      <span class="spec-pill on">1242×1660 · 3:4</span>
+      <span class="spec-pill">真 Chrome 预渲染 · 1:1 PNG</span>
+      <span class="spec-pill">主题色 #2F6BFF</span>
+    </div>
+    <div class="guide">
+      <b>导出：</b>先 <code>cd curriculum && bun run render:mp-posters ai-engineer-cn</code> 生成 PNG，再点每张图下方「⬇ 下载 PNG」。<b>投聚光前自查：</b>无二维码 / 无绝对化用语 / 无具体薪资承诺。
+    </div>
+  </div>
+
+  <!-- P1 封面 -->
+  <div class="poster-frame" id="p1">
+    <div class="label">P1 封面 <em>· 直接痛点 hook</em></div>
+    <div class="poster-scaler"><div class="poster p1"><div class="p-inner">
+      <div class="chip">大模型应用开发 · 12 周训练营</div>
+      <h1 class="hook">AI 都卷成<br>这样了<br>你还在只会<br><span class="hl">调 API？</span></h1>
+      <p class="lead" style="margin-top:50px">国内大模型应用开发岗要的是 RAG 工程化、Agent、MCP、私有化部署——在一个<b style="color:var(--theme-primary)">真实在跑的项目</b>上做出来，不是教程 demo。</p>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-1" data-slug="p1-cover">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P1B 共鸣封面 -->
+  <div class="poster-frame" id="p1b">
+    <div class="label">P1B 共鸣版封面 <em>· 简历翻车视角</em></div>
+    <div class="poster-scaler"><div class="poster p1b"><div class="p-inner">
+      <div class="chip">AI Engineer 训练营 · 国内版</div>
+      <h2 style="font-size:108px">面试官一问<br><span class="hl">RAG 怎么调的</span><br>就答不上来？</h2>
+      <p class="lead">培训班的项目千人一面，一追问就露馅。这门课让你在真实项目 Dispatch AI 上自己做，<b style="color:var(--theme-primary)">每一行都能讲清楚</b>。</p>
+      <div class="bottom-note">毕业作品 = 一个能上线、能追问、能写进简历的真东西。</div>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-1b" data-slug="p1b-cover">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P2 痛点对比 -->
+  <div class="poster-frame" id="p2">
+    <div class="label">P2 痛点对比 <em>· 还停在这 vs 该会的</em></div>
+    <div class="poster-scaler"><div class="poster p2"><div class="p-inner">
+      <div class="eyebrow"><span class="line"></span><span class="txt">REALITY CHECK</span></div>
+      <h2>2026 的 JD<br>已经变了</h2>
+      <p class="lead">只会 Prompt + 调 API 早就卷不动了。</p>
+      <div class="two">
+        <div class="col bad"><h3>还停在这</h3><ul>
+          <li>只会调 OpenAI/通义 API</li><li>Prompt 靠手感试</li><li>RAG 只会跑通 demo</li><li>没碰过 Agent / MCP</li><li>不会私有化部署</li></ul></div>
+        <div class="col good"><h3>JD 要的</h3><ul>
+          <li>RAG 工程化 + 评测</li><li>Agent 编排 + ReAct</li><li>Function Calling + MCP</li><li>LoRA 微调 + vLLM 部署</li><li>能上线、能压测</li></ul></div>
+      </div>
+      <div class="bottom-note">这门课把右边这一列，逐节做进真实项目 Dispatch AI。</div>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-2" data-slug="p2-pain">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P4 四大能力 -->
+  <div class="poster-frame" id="p4">
+    <div class="label">P4 四大能力 <em>· 毕业你会什么</em></div>
+    <div class="poster-scaler"><div class="poster p4"><div class="p-inner">
+      <div class="eyebrow"><span class="line"></span><span class="txt">WHAT YOU GET</span></div>
+      <h2>毕业你能<br>独立做这些</h2>
+      <div class="cards4">
+        <div class="cap"><div class="ic">🔎</div><h4>RAG 工程化</h4><p>向量库 + 混合检索 + 重写压缩 + 评测面板</p></div>
+        <div class="cap"><div class="ic">🤖</div><h4>Agent + MCP</h4><p>ReAct 分诊 Agent，用 MCP 接真实后端工具</p></div>
+        <div class="cap"><div class="ic">🎯</div><h4>微调 + 部署</h4><p>LoRA 微调 + vLLM 私有化部署 + 压测</p></div>
+        <div class="cap"><div class="ic">🛡️</div><h4>评测 + 安全</h4><p>决策质量评测 + 防注入 + 护栏 + 可观测</p></div>
+      </div>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-4" data-slug="p4-skills">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P5 12周地图 -->
+  <div class="poster-frame" id="p5">
+    <div class="label">P5 12 周主线 <em>· 学一节做一节</em></div>
+    <div class="poster-scaler"><div class="poster p5"><div class="p-inner">
+      <div class="eyebrow"><span class="line"></span><span class="txt">12 WEEKS</span></div>
+      <h2>每周学完<br>当周就接进项目</h2>
+      <div class="wmap">
+        <div class="wrow"><span class="wk">W1-2</span><span class="wt">工程地基 + 国产模型 API + Function Calling</span></div>
+        <div class="wrow"><span class="wk">W3-5</span><span class="wt">RAG 工程化：向量库 → 混合检索 → 评测</span></div>
+        <div class="wrow"><span class="wk">W6-8</span><span class="wt">Agent + MCP + Multi-Agent 调度大脑</span></div>
+        <div class="wrow"><span class="wk">W9-10</span><span class="wt">微调 + vLLM 私有化部署</span></div>
+        <div class="wrow ms"><span class="wk">W11-12</span><span class="wt">评测 + 安全 + 个性化毕业作品 ★</span></div>
+      </div>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-5" data-slug="p5-weeks">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P6 工具栈 -->
+  <div class="poster-frame" id="p6">
+    <div class="label">P6 工具栈 <em>· 全国产栈</em></div>
+    <div class="poster-scaler"><div class="poster p6"><div class="p-inner dark">
+      <div class="eyebrow"><span class="line" style="background:#fff"></span><span class="txt">TECH STACK</span></div>
+      <h2>全是国内<br>能落地的栈</h2>
+      <div class="tools">
+        <span class="tool" style="background:#2F6BFF">Qwen</span><span class="tool" style="background:#2F6BFF">DeepSeek</span>
+        <span class="tool" style="background:#2F6BFF">GLM</span><span class="tool" style="background:#2F6BFF">Kimi</span>
+        <span class="tool" style="background:#8b5cf6">LangChain</span><span class="tool" style="background:#8b5cf6">LlamaIndex</span>
+        <span class="tool" style="background:#8b5cf6">Milvus</span><span class="tool" style="background:#8b5cf6">pgvector</span>
+        <span class="tool" style="background:#10b981">RAGAS</span><span class="tool" style="background:#10b981">Langfuse</span>
+        <span class="tool" style="background:#f59e0b">MCP</span><span class="tool" style="background:#f59e0b">vLLM</span>
+        <span class="tool" style="background:#f59e0b">SGLang</span><span class="tool" style="background:#f59e0b">Llama Factory</span>
+        <span class="tool" style="background:#ef4444">Dify</span><span class="tool" style="background:#ef4444">Coze</span>
+      </div>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-6" data-slug="p6-stack">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P10 岗位 explainer -->
+  <div class="poster-frame" id="p10">
+    <div class="label">P10 岗位定位 <em>· 这岗位到底干嘛</em></div>
+    <div class="poster-scaler"><div class="poster p10"><div class="p-inner">
+      <div class="eyebrow"><span class="line"></span><span class="txt">THE ROLE</span></div>
+      <h2>大模型应用<br>开发工程师</h2>
+      <div class="def">= 把大模型<em>接进真实业务系统</em>、让它能用、能上线的人</div>
+      <ul class="day">
+        <li>给业务系统接 RAG，让它能查私有知识答问题</li>
+        <li>写 Agent + 工具调用，让系统自己完成多步任务</li>
+        <li>微调小模型 + 私有化部署，控成本、保合规</li>
+        <li>做评测和护栏，保证线上输出稳定可靠</li>
+      </ul>
+      <div class="meta3">
+        <div class="m"><div class="v">应用层</div><div class="k">非算法岗</div></div>
+        <div class="m"><div class="v">25-40K</div><div class="k">主流月薪</div></div>
+        <div class="m"><div class="v">本科+</div><div class="k">有编程基础</div></div>
+      </div>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-10" data-slug="p10-role">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P12 RAG 深潜 -->
+  <div class="poster-frame" id="p12">
+    <div class="label">P12 最大模块深潜 <em>· RAG 工程化</em></div>
+    <div class="poster-scaler"><div class="poster p12"><div class="p-inner">
+      <div class="eyebrow"><span class="line"></span><span class="txt">DEEP DIVE · 最厚的一章</span></div>
+      <h2>RAG 不止<br>「跑通 demo」</h2>
+      <div class="wmap">
+        <div class="wrow"><span class="wt">① Embedding + 向量库选型（Milvus/Chroma/pgvector）</span></div>
+        <div class="wrow"><span class="wt">② 混合检索 + Rerank 重排</span></div>
+        <div class="wrow"><span class="wt">③ 查询重写 + 上下文压缩降成本</span></div>
+        <div class="wrow ms"><span class="wt">④ RAG 评测：召回 / 忠实度（RAGAS/Langfuse）★</span></div>
+      </div>
+      <div class="bottom-note">RAG 评测是竞品几乎不教、面试官最爱追问的能力——这门课花整 3 周做透。</div>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-12" data-slug="p12-rag">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P24 JD + 薪资 -->
+  <div class="poster-frame" id="p24">
+    <div class="label">P24 谁在招 + 薪资 <em>· 国内市场</em></div>
+    <div class="poster-scaler"><div class="poster p24"><div class="p-inner">
+      <div class="eyebrow"><span class="line"></span><span class="txt">WHO HIRES · 国内</span></div>
+      <h2>谁在招<br>大模型应用开发</h2>
+      <div class="companies">
+        <span>阿里</span><span>字节</span><span>腾讯</span><span>百度</span><span>美团</span>
+        <span>智谱</span><span>月之暗面</span><span>MiniMax</span><span>小红书</span><span>京东</span>
+      </div>
+      <div class="salbar"><span class="role">应用开发（2-5年）</span><span class="sal">25-40K/月</span></div>
+      <div class="salbar"><span class="role">资深 / 带队</span><span class="sal">40K+/月</span></div>
+      <p class="src">薪资为公开招聘市场参考区间（BOSS 直聘等），实际以面试谈定为准。</p>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-24" data-slug="p24-jd-salary">⬇ 下载 PNG</button>
+  </div>
+
+  <!-- P9 软性 CTA -->
+  <div class="poster-frame" id="p9">
+    <div class="label">P9 软性 CTA <em>· 无二维码</em></div>
+    <div class="poster-scaler"><div class="poster p9"><div class="p-inner dark" style="display:flex;flex-direction:column;justify-content:center">
+      <div class="giant" style="color:#fff">边学<br><span style="color:var(--brand-yellow)">边做</span><br>真项目</div>
+      <p class="cta-sub">12 周，在匠人真实项目 Dispatch AI 上，把 RAG / Agent / MCP / 私有化部署一路做出来。</p>
+      <p class="cta-sub" style="color:#fff;font-weight:700;margin-top:20px">JR Academy · AI Engineer 训练营 · 想了解可以评论区聊聊～</p>
+    </div></div></div>
+    <button class="dl-btn" data-target="poster-9" data-slug="p9-cta">⬇ 下载 PNG</button>
+  </div>
+
+</div>
+
+<script>
+// 自动注入课程标识 bar
+document.querySelectorAll('.p-inner').forEach(inner=>{
+  if(inner.querySelector('.p-course-bar')) return;
+  const bar=document.createElement('div');
+  bar.className='p-course-bar';
+  bar.textContent='AI ENGINEER · 大模型应用开发 · 匠人 AI 12 周课';
+  inner.appendChild(bar);
+});
+// 给每个 .poster 加 id（poster-N）供截图脚本识别
+document.querySelectorAll('.dl-btn').forEach(btn=>{
+  const t=btn.dataset.target;
+  const poster=btn.closest('.poster-frame').querySelector('.poster');
+  if(poster && !poster.id) poster.id=t;
+});
+// 下载：fetch 预渲染 PNG
+document.querySelectorAll('.dl-btn').forEach(btn=>{
+  btn.addEventListener('click', async ()=>{
+    const target=btn.dataset.target, slug=btn.dataset.slug, old=btn.textContent;
+    btn.textContent='下载中...'; btn.disabled=true;
+    try{
+      const res=await fetch(`./images/${target}.png`,{cache:'no-cache'});
+      if(!res.ok) throw new Error('PNG 未生成。请运行 cd curriculum && bun run render:mp-posters ai-engineer-cn');
+      const blob=await res.blob(); const url=URL.createObjectURL(blob);
+      const a=document.createElement('a'); a.href=url; a.download=`xhs-ai-engineer-cn-${slug}-${Date.now()}.png`; a.click();
+      URL.revokeObjectURL(url);
+    }catch(e){ alert('下载失败：'+e.message); }
+    finally{ btn.textContent=old; btn.disabled=false; }
+  });
+});
+// 推送到小红书插件
+async function pushXhsToExtension(){
+  const btn=document.getElementById('push-xhs'); if(!btn) return;
+  const old=btn.textContent; btn.disabled=true; btn.textContent='准备中...';
+  try{
+    let caption=null;
+    try{ const r=await fetch('./xhs-caption.json'); if(r.ok) caption=await r.json(); }catch{}
+    const ids=['poster-1','poster-2','poster-4','poster-5','poster-6','poster-10'];
+    const images=[];
+    for(let i=0;i<ids.length;i++){
+      btn.textContent=`传图 ${i+1}/${ids.length}`;
+      try{
+        const blob=await fetch(`./images/${ids[i]}.png`).then(r=>r.blob());
+        const durl=await new Promise(res=>{const fr=new FileReader();fr.onloadend=()=>res(fr.result);fr.readAsDataURL(blob);});
+        images.push(durl);
+      }catch{}
+    }
+    const payload={source:'xhs-poster',date:new Date().toISOString().slice(0,10),
+      title:caption?.shortTitle||document.title,
+      summary:(caption?.shortBody||'').slice(0,120),
+      xiaohongshu:{shortTitle:caption?.shortTitle||'AI Engineer 训练营',shortBody:caption?.shortBody||'',images,tags:caption?.tags||['AI学习','大模型','AIGC','JRAcademy']}};
+    window.postMessage({type:'JR_PUBLISH_PAYLOAD',version:1,target:'xiaohongshu',payload},'*');
+    btn.textContent='✅ 已推送'; setTimeout(()=>{btn.textContent=old;btn.disabled=false;},2500);
+  }catch(e){ btn.textContent='❌ '+(e.message||'失败'); setTimeout(()=>{btn.textContent=old;btn.disabled=false;},3000); }
+}
+document.getElementById('push-xhs')?.addEventListener('click',pushXhsToExtension);
+</script>
+</body>
+</html>
