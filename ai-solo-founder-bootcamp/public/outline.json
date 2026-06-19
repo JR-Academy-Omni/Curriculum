@@ -8,7 +8,7 @@
   "type": "training",
   "targetAudience": "澳洲华人专业人士（35-50 岁、150-250k+ 工资、有 5-15 年职业积累）—— senior 程序员、PM、设计师、咨询、律师、会计、医生、小公司老板/1-5 人团队创始人、准备申请 YC/Antler/Startmate 的 founder。想用 AI 做一人公司收第一笔钱、拿澳洲 Grant 退税、建立第二条收入腿、把现有业务 AI 化、或为 accelerator 申请攒 traction。",
   "totalLessons": 59,
-  "totalSteps": 0,
+  "totalSteps": 180,
   "liveClasses": 35,
   "estimatedHours": 92,
   "totalInteractiveLabs": 8,
@@ -219,7 +219,43 @@
           "type": "Information",
           "isLive": false,
           "duration": 45,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "为什么 ABN / Stripe / Xero 要 W0 先开",
+              "description": "这门课跟 OpenClaw Bootcamp 不同：装 AI 工具是 5 分钟的事，但 ABN 申请走 ATO 流程要等几天、Stripe 澳洲账号要 ABN + 银行验证、首次提现卡 7 天。把这些慢节奏行政动作 W0 排进队列，W3 真要收钱时才不会卡在等待里。",
+              "duration": 8
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "LLM API Key 注册 + 充值 $50 AUD",
+              "description": "Claude / OpenAI / Gemini 任选一家开 API key，绑卡充 $50 AUD。课程 11 周 + W2 起的秘书自动化任务月烧 $30-100。把 key 存进密码管理器，别硬编码到代码里。",
+              "duration": 10
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "装 Cursor / Claude Code + 跑通第一条命令",
+              "description": "macOS 直装 / Windows 走 WSL2。装完让 Cursor 生成一个 hello world 验证环境通。已上过 AI Engineer Bootcamp 的跳过这一步。",
+              "duration": 7
+            },
+            {
+              "order": 4,
+              "type": "LAB",
+              "title": "ABN 申请预备：myGov + TFN + 实体名",
+              "description": "登录 myGov 确认能进 ABR、准备好 TFN、想 2-3 个商业实体名备选。实际注册留到 W8 跟会计模块一起做，W0 只把前置材料备齐，不要现在就提交。",
+              "duration": 10
+            },
+            {
+              "order": 5,
+              "type": "SCENARIO",
+              "title": "写一份「想用 AI 替代/服务的 5 件事」",
+              "description": "结合你的职业积累(senior 工程师/PM/律师/会计/医生),写 5 件想用 AI 替代或变现的具体事(例:律师写「合同条款风险初筛」)。这是 L01 现场开课和 W1 选品的原料,不要写空泛的「提效」。",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L01",
@@ -322,7 +358,36 @@
           "type": "Information",
           "isLive": false,
           "duration": 60,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "选品决策矩阵 5 维度怎么打分",
+              "description": "用课上发的矩阵:市场规模 / 付费意愿 / AI 可行性 / 你的不公平优势 / 6 个月内能否做出 $1k MRR。每维 1-5 分加权,重点解释「不公平优势」——你 5-15 年职业积累在哪个 idea 上别人抄不走。",
+              "duration": 12
+            },
+            {
+              "order": 2,
+              "type": "SCENARIO",
+              "title": "把 L02 挖到的 50 痛点筛到 5 个 idea",
+              "description": "用 Claude 把 L02 聚类出的痛点按出现频次 + 付费信号排序,砍掉「真实但没人付费」和「付费但 AI 做不了」的,留 5 个进下一轮。每个 idea 写 100 字 PRD(解决谁的什么问题 / 怎么收钱)。",
+              "duration": 25
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "AI 模拟用户访谈砍到 1 个",
+              "description": "给 Claude 5 个 idea 各喂一段目标用户画像,让它扮演用户用 Mom Test 口吻反推哪个 idea 用户「上个月真的遇到过这个问题」。模拟不能代替真人(那是 L05),但能先帮你淘汰明显站不住的。",
+              "duration": 13
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "选定 1 个 idea + 写为什么是它",
+              "description": "W1 末 deliverable:5 个 idea 各一份 5 维度评分表,最后锁 1 个写清楚「为什么是它」。这个 idea 就是 W2 MVP 周要 ship 的产品,选错了后面三周白做,这一步慢一点没关系。",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L05",
@@ -331,7 +396,36 @@
           "type": "Information",
           "isLive": false,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Mom Test:别问「你愿意付费吗」",
+              "description": "indie hacker 最常踩的坑——用户嘴上说愿意,掏钱时全跑。正确问法是问过去的行为不是未来的意愿:「你过去一个月遇到这个问题几次」「上次遇到时你怎么解决的」「你为这个问题花过多少钱」。讲 5 个反例(诱导性问题)和它们的正确改写。",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "SCENARIO",
+              "title": "用 AI 先做一遍模拟面试 + 列问题清单",
+              "description": "让 Claude 扮演你的目标用户,你先用 Mom Test 问法跑一遍,练手感 + 让 AI 挑出你问题里的诱导成分。产出一份 8-10 题的真实访谈提纲,真人面试照着问。",
+              "duration": 20
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "约到并完成 5 个真实潜在用户访谈",
+              "description": "从你的 LinkedIn 一度人脉 / 行业微信群 / 小红书私信里约 5 个真实潜在用户,每个 30min。录音(征得同意),不要边聊边卖产品——这一轮只挖事实,不推销。",
+              "duration": 40
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "AI 聚类访谈记录 → 验证或推翻 idea",
+              "description": "把 5 段访谈转录喂 Claude,聚类出真实痛点 + 用户已经在花的钱 + 现有替代方案。如果 5 个人里没人「上个月真遇到 + 真花过钱」,这个 idea 要回 L04 换。把结论写进 idea PRD。",
+              "duration": 15
+            }
+          ]
         },
         {
           "code": "L05a",
@@ -340,7 +434,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "5 大定价模型 + 各自适用场景",
+              "description": "一次性买断(Gumroad/Notion 模板)/ 订阅(Cursor/Linear 月付 $9-99)/ Freemium(转化率 1-5%)/ B2B per-seat($500-50k+/年)/ 服务+软件混合(productized service)。逐个讲优缺点 + 真实例子,重点点出混合模型是 OPC 一个人最适合的之一。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "3 维决策框架:客户类型 / 频次 / 创始人时间",
+              "description": "C 端 vs B 端、每天用 vs 一次性、纯 SaaS vs 吃创始人时间的服务。这三维决定你该选哪个定价模型——例如低频 + B 端 + 高创始人投入,大概率走混合模型而非订阅。",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "现场用 3 维表评估自己的 idea",
+              "description": "每个学员把 L04 选定的 idea 填进 3 维表,得出推荐定价模型。讲师 + AI Tutor 现场挑战:你选订阅但你的产品用户一年用 2 次,churn 必死,要不要改一次性?",
+              "duration": 25
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "定价格 anchor + 接通 W3 L13 接入方式",
+              "description": "用课上发的定价计算器:竞品调研 5+ 家 + 价值锚(替代方案多少钱)+ case study 早鸟 30-50% off + 年付折扣。最后明确这个模型对应 W3 L13 哪种接入:一次性=Stripe Checkout / 订阅=Subscriptions / B2B=Custom invoicing / 混合=多产品组合。",
+              "duration": 25
+            }
+          ]
         },
         {
           "code": "L06",
@@ -472,7 +595,29 @@
           "type": "Information",
           "isLive": false,
           "duration": 180,
-          "steps": [],
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Vibe Coding Hub Phase 2 章节地图",
+              "description": "复用 jiangren.com.au /learn/vibe-coding/hub Phase 2 约 12 章(AI 编码进阶)。先过一遍章节地图,标出跟你 MVP 技术栈直接相关的章节优先看,无关的略读。建议 W2 末完成至少 8 章。",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "SCENARIO",
+              "title": "对照你的 MVP 选 8 章重点啃",
+              "description": "你在做 Next.js SaaS 就重点看部署/状态管理/API 章节,在做 Lovable 无代码就跳过纯代码章。每章看完立刻回到自己 MVP 里用一次,不要纯读不练。",
+              "duration": 120
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "把章节技巧落进 MVP 并记录卡点",
+              "description": "边学边改你的 MVP,把跑不通的地方记成清单带到 W2 的项目陪跑 Office Hour。自学不是终点,是给现场答疑攒具体问题。",
+              "duration": 40
+            }
+          ],
           "learns": [
             {
               "direction": "vibe-coding",
@@ -487,7 +632,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Source of Truth 模式:为什么不能在 asset 里手改文案",
+              "description": "OPC 最大时间黑洞是反复写产品文案——网站/deck/brochure/公众号每份都从头写,改一处要改十处。正解:先写 1 份 markdown source(定位/USP/pricing/受众/FAQ/5 个 use case/竞品对比),所有 asset 从它生成。source 改一个字,所有 asset 重新生成,绝不在某份 asset 里手改。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "SCENARIO",
+              "title": "现场写你产品的 markdown source of truth",
+              "description": "每个学员用模板填:产品定位 / USP / pricing(承接 L05a 定的模型)/ target audience(承接 L05 访谈)/ FAQ / 5 个 use case / 跟同类产品对比。这一份写扎实,后面 6 个工具全靠它。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "同一份 source 跑 6 个工具出全套 asset",
+              "description": "讲师现场演示:Lovable/v0 出 landing page → Gamma/Pitch.com 出投 VC + 找客户两版 deck → Canva AI 出 A4 brochure + 一页纸 PDF → Notion AI 出客户 onboarding 文档 → 公众号长文 + 小红书标题 3 套 → X/LinkedIn bio。",
+              "duration": 35
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员产出自己的全套 asset + 验证一致性",
+              "description": "每人用自己的 source 跑出至少 3 个 asset(landing + deck + 一页纸)。验收:故意改 source 里的 pricing 一个数字,重新生成,确认所有 asset 同步变了——证明你真在用单一真相文档而不是各写各的。",
+              "duration": 25
+            }
+          ]
         },
         {
           "code": "L11b",
@@ -496,7 +670,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "5 个 AI 秘书方案全景对比",
+              "description": "Claude Cowork(桌面 App / GUI / 1 小时上手 / 数据走 Anthropic 云)、OpenClaw(开源 CLI / 本地 markdown memory / 支持非 Claude LLM)、Hermes(跨平台 / 手机 IM 对话 / 跨设备 memory)、Lindy.ai(零代码 SaaS / $50-300 月 / 数据上云)、自建(Crew AI/LangGraph + pgvector / 写 200-500 行 Python)。逐个讲强项弱项,不教装机。",
+              "duration": 35
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "决策树:按你的行业 + 技术能力选一条路",
+              "description": "想 1 小时上手 + 已订 Claude Pro + 桌面重度(PPT/Excel)→ Cowork;律师/会计/医疗合规岗数据不能上云 → OpenClaw;团队已在用 WhatsApp/飞书/Slack 想 IM 派活 → Hermes;完全零代码 + 预算 OK → Lindy;写代码洁癖型 → 自建(OPC 阶段不推荐)。",
+              "duration": 30
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "每个学员现场选定主线方案",
+              "description": "对照决策树当场拍板走哪条,L11c-e 四节课都按你选的方案配。讲师挑战合规敏感行业还想选 Cowork 的学员:你的客户邮件正文走 Anthropic 云能接受吗?",
+              "duration": 30
+            },
+            {
+              "order": 4,
+              "type": "CONCEPT",
+              "title": "推荐路径:先走通一个,L11f 再讲补第二个",
+              "description": "大多数 OPC 学员最终是 Cowork + OpenClaw 配合(Cowork 干桌面 GUI 活、OpenClaw 干合规 + IM 协作)。但 W2 时间有限,这节先选主线一个走通,什么时候补第二个留到 L11f 进阶课。",
+              "duration": 25
+            }
+          ]
         },
         {
           "code": "L11c",
@@ -523,7 +726,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "不接数据 = 秘书只能聊天:5 个核心数据源",
+              "description": "Gmail/Outlook 邮件、Calendar、Drive/OneDrive 文档、Notion/Confluence、Slack/Discord/Telegram 群消息。接进来 agent 才有上下文回答 OPC 真实问题。讲清每个 agent 路径接入方式不同(Cowork 内置 Connector OAuth / OpenClaw 写 skill 调 API)。",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "现场接 Gmail + Calendar + Drive",
+              "description": "Gmail(30min):Cowork Connector 一键 OAuth / OpenClaw 写 skill 调 API,敏感行业本地索引优先。Calendar(15min):读未来 30 天 + 历史 1 年做画像。Drive(25min):选择性接 Working/Customer/财务文件夹,敏感文件夹排除。",
+              "duration": 45
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "接 Notion/Confluence + Slack/群消息 + 隐私 4 档决策",
+              "description": "Notion API token 或 Confluence PAT 全 workspace 索引;Slack/Telegram 群消息走 Hermes gateway 或 Cowork Slack Connector。同时讲隐私 4 档:本地 only(邮件正文/微信必须)/ 自建云 pgvector / 云端 zero-retention / 完全云端,发数据源 × 隐私级别决策表。",
+              "duration": 40
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "验收:跑通 3 个跨数据源问答",
+              "description": "现场问 agent:①「客户 X 最近一次邮件提到什么 + 上周 standup 在 Notion 里更新了什么」(邮件+Notion)②「上次跟客户聊到的折扣」③「我 Drive 里关于 Y 项目的所有文档」。agent 能同时调多个源回答才算接通。",
+              "duration": 20
+            }
+          ]
         },
         {
           "code": "L11e",
@@ -532,7 +764,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "LIVE",
+              "title": "Demo:收件箱总结(每天 8:00 push Telegram)",
+              "description": "用 OpenClaw skill + cron + Hermes Telegram gateway:每天 8 点把邮件分重要/待回/噪音三档,重要邮件草拟回复 draft 推到手机。这是最容易出 WOW 效果的,先跑这个。",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "Demo:财务月报(每月 1 日 push)",
+              "description": "Stripe API + Xero API 拉数据,agent 出 MRR / churn / GST 准备金 / 现金流月报推 Telegram。OPC 学员最爽的一个,现场跑一遍看真实数字出来。",
+              "duration": 20
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "现场配 2 个学员选的任务",
+              "description": "从会议笔记整理(Otter/Granola → 抽决策清单 + action items)、日程协调(Cal.com 自动回时段)、客户跟进队列(每周一 push 7 天没回的客户 + 上次上下文)、周报生成(git commit+邮件+日历 → 本周/下周/风险)里,学员选 2 个感兴趣的当场配通。",
+              "duration": 50
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "验收:W2 末至少跑通 4 个秘书任务",
+              "description": "每个学员至少跑通 4 个任务,每个交一周的 push 输出截图。合同审查(第 5 个任务)留到 W3 L16 当 AI 律师课的实操联动。这一刻学员从「聊天玩具」真切感觉到「我有秘书」。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L11f",
@@ -541,7 +802,36 @@
           "type": "Information",
           "isLive": false,
           "duration": 60,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "切换主线 agent 的迁移路径",
+              "description": "用了 Cowork 半年觉得隐私顶不住 → 切 OpenClaw;用了 OpenClaw 觉得 CLI 累 → 切 Cowork。迁移=导出 system prompt + memory + skill 列表 → 在新 agent 重新喂入。Cowork ↔ OpenClaw 的 USER.md / system prompt 格式 80% 兼容,手工调一下即可。",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "双 agent 配合 SOP(80% 学员最终走这条)",
+              "description": "实战中大多数 OPC 最后是 Cowork + OpenClaw 配合:Cowork 干桌面 GUI 活(出 PPT/改 Excel/写 deck/跑 Connectors),OpenClaw 干合规敏感 + IM 协作 + 跨平台 daemon。两套都装各管一边,memory 不互通但任务清单分明。读「双 agent 分工 SOP」。",
+              "duration": 20
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "自建路径:跑通 Python boilerplate",
+              "description": "给会写代码 + 隐私洁癖的学员:课程发完整 Python boilerplate(system prompt + Supabase pgvector memory store + 一个 tool 模板),Cursor 一晚跑通。可选给已有 OpenClaw 加 Mem0 向量插件做向量检索。月成本 $0-30。",
+              "duration": 15
+            },
+            {
+              "order": 4,
+              "type": "CONCEPT",
+              "title": "团队 Brain + 何时切/补决策表",
+              "description": "长到 2-5 人时把 Hermes 跑公司 VPS 做 shared memory(参考 docs/HERMES_TEAM_BRAIN_PRD.md),OPC 一个人阶段先不动。读「何时切/补」决策矩阵:数据隐私升级 → 切 OpenClaw;想手机 IM 派活 → 补 Hermes;团队化 → Hermes shared daemon;想完全控制成本模型 → 自建。配 5 个真实学员演化案例。",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L11g",
@@ -550,7 +840,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Agent Schedule 跨平台机制对照",
+              "description": "Cowork /schedule(5 种 cadence / UI 最简单 / 但要 Mac awake + App 开着)、Claude Code cron skill(写 wrapper + launchd)、Codex CLI 定时、OpenClaw cron(daemon 常驻不依赖 Mac)、n8n/Zapier scheduled trigger、系统 cron/launchd/GitHub Actions cron(兜底)。讲清再选,别用了 Cowork 才发现关机就不跑。",
+              "duration": 30
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "工作坊:案例①②竞品监控 + SEO 周报",
+              "description": "①每天 7:00 scrape 竞品 pricing page → AI 总结变化 → 邮件「今天 X 涨了 $5、Y 推了新 plan」(daily 7am)。②每周一 9:00 调 GSC API 拉上周数据 → AI 找流量掉的 query / 排名突变 → 出 200 字周报(weekly Mon 9am)。TA 1:8 陪跑每人现场配通。",
+              "duration": 36
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "工作坊:案例③④⑤财务月报 + 周报 + git 日报",
+              "description": "③每月 1 号 8:00 Stripe+Xero → MRR/churn/GST 月报 push Telegram + 存 Drive。④每周日 18:00 git log+邮件+日历+memory → 周报存档。⑤每天 22:00 git log + 关闭的 issue → AI 总结 → 早上邮件「昨日做了 X/Y/Z」。每人配完 5 个 schedule。",
+              "duration": 44
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "验收 + 失败模式排错",
+              "description": "每人展示 5 个 schedule 的 cron 表达式 + 第一次跑的输出截图,W2 末 deliverable 至少 3 个跑过一次成功。讲 5 个失败模式:Mac 睡眠没跑(caffeinate/Power Nap 兜底)、API rate limit(retry + 错峰)、输出爆 token(摘要前置)、没人看 push(改卡片 dashboard)、AI 答错(加 sanity check + alert)。",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L12",
@@ -559,7 +878,36 @@
           "type": "Information",
           "isLive": false,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "买域名 + 选部署平台",
+              "description": "Namecheap 买个 .com 约 $10/年。Vercel / Cloudflare Pages / Railway 三选一:Next.js/Remix 走 Vercel 最顺、纯静态 Astro 走 Cloudflare Pages(免费额度大)、要跑后端/数据库走 Railway。讲清各自免费额度边界,OPC 阶段月成本控制在 $0-15。",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "选模板跟着部署到公网",
+              "description": "课程发 Next.js / Remix / Astro 三套部署模板,选一套跟你 MVP 技术栈匹配的。git push → 平台自动 build → 拿到 *.vercel.app 临时域名,先确认公网能访问。",
+              "duration": 40
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "绑自定义域名 + HTTPS",
+              "description": "在平台后台加 custom domain,去 Namecheap / Cloudflare 改 DNS(A 或 CNAME 记录),等生效后平台自动签 SSL。验收:浏览器开你的 .com 看到产品 + 锁图标。",
+              "duration": 20
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "W2 末交一个公网 URL(不是 localhost 截图)",
+              "description": "deliverable 是一个真实可点开的 .com,不接受 localhost 截图。把 URL 贴进班级看板,同学和讲师能直接访问你的 MVP——这也是 L15 收第一笔钱的落点。",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L13",
@@ -606,7 +954,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "OPC 最小运维栈:域名 + DNS + SSL",
+              "description": "不是教你成为 DevOps,是教一个人公司必须的最小栈。Cloudflare 托管 DNS(免费 + 快 + 带基础 DDoS 防护)、Let's Encrypt 自动 SSL(部署平台一般已内置)。讲清 A 记录 vs CNAME、根域名 vs 子域名怎么配。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "接 Sentry 错误监控",
+              "description": "free tier 够 OPC 用。现场往学员产品里装 Sentry SDK,故意抛一个错,看 Sentry 抓到 stack trace + 邮件告警。OPC 一个人没法盯日志,产品挂了要让监控先告诉你而不是用户。",
+              "duration": 30
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "接 Plausible / PostHog 流量分析",
+              "description": "GDPR/澳洲隐私友好选 Plausible(无 cookie banner 负担),要做产品行为分析/漏斗选 PostHog。现场装好 + 验证能看到访问数据。这套加上前面 Sentry,整套运维月成本 $0-15。",
+              "duration": 25
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "现场验收:制造错误 + 制造访问",
+              "description": "每个学员现场触发一个错误确认 Sentry 收到告警,再开几个浏览器访问确认 Plausible/PostHog 看到流量。监控装了不验证等于没装,OPC 阶段宁可花 20 分钟当场跑通。",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L15",
@@ -615,7 +992,15 @@
           "type": "Information",
           "isLive": false,
           "duration": 0,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "SCENARIO",
+              "title": "$1 真实付费挑战:拿到第一笔真金白银",
+              "description": "W3 末核心 deliverable。$1 也算(很多 indie hacker 第一笔就是陌生人 PayPal 转的 $5),目的不是钱,是验证「你做的东西有人愿意为它付一次费」。从 0 到 1 比从 1 到 100 难。验收:Stripe/Lemonsqueezy/PayPal 后台截图,含交易时间、金额、买家——必须是不认识你的人,不接受亲友友情付费。",
+              "duration": 0
+            }
+          ]
         },
         {
           "code": "L16",
@@ -624,7 +1009,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "OPC 不雇律师:必挂的 5 份文件 + AI 双层流程",
+              "description": "第一笔付费前必须挂:Privacy Policy(澳洲 APP + GDPR 双合规)、Terms of Service、Refund Policy、Cookie Policy、Disclaimer。雇澳洲律师起草这套 $3-8k,AI 生成 + AI 律师审核 = $0 + 2 小时。讲清两层流程:先生成、再用 AI 律师角色 review。",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "第一层:AI 生成 5 份文件初稿",
+              "description": "Termly / iubenda 模板 + Claude/GPT 个性化填充(产品类型、收款方式、数据处理位置、用户地区)。课上发现成的「澳洲科技产品 5 文件 prompt 包」,学员现场跑出自己产品的 5 份初稿。",
+              "duration": 30
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "第二层:AI 律师角色审核 + 三档风险清单",
+              "description": "把生成的文件喂回 Claude/GPT,用「澳洲科技律师」角色 prompt review:检查 ACL 条款、ATO 税务表述、GDPR 跨境数据传输、消费者保障漏洞、SaaS 退款合规。AI 律师列「高/中/低风险」三档清单,学员逐条修。这一步直接联动 L11e 第 5 个秘书任务(合同审查)。",
+              "duration": 45
+            },
+            {
+              "order": 4,
+              "type": "CONCEPT",
+              "title": "什么时候必须找真人律师 + 毕业 deliverable",
+              "description": "5 个 AI 顶不住的场景:①投资协议/SAFE/股权 ②首位员工劳动合同(澳洲 Fair Work 极复杂)③重大客户合同(B2B 单笔 $20k+)④跨境(美国 Delaware C-corp/中国数据出境)⑤被人 sue。发「澳洲华人科技律师推荐名单」(3 位 fixed-fee)。deliverable:5 份文件挂产品 footer + AI 律师审核报告作附件。",
+              "duration": 30
+            }
+          ]
         }
       ]
     },
@@ -678,7 +1092,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "视频号 / 公众号 / 私域 三阵地分工",
+              "description": "视频号吃算法推荐拉新客、公众号做深度长文沉淀搜索流量、WeChat 群做高频互动逼单。讲清三者用户重叠度、为什么转化一定落在私域、流量从公开域往私域导的三个钩子（公众号文末留群二维码、视频号挂企微、小红书私信引到微信）。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "1 个选题拆成 4 平台素材现场演示",
+              "description": "拿学员一个产品卖点，用 Claude 一次喂出：视频号 60s 口播脚本 + 公众号 2000 字长文 + 小红书 3 条钩子标题 + WeChat 群里一句话讨论引子。源稿改一处全平台重出，演示『单一真相文档』喂全套的做法。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "私域闭环：从公众号 / 视频号导流到企微成交",
+              "description": "现场搭一条转化链：公众号软文文末挂群活码 → 进群发欢迎语 + 产品落地页 → 7 天群内容节奏（干货 / 案例 / 限时）。讲澳洲华人私域的合规边界（不能频繁群发、企微 vs 个人号风控），用 AI 排一周群内容日历。",
+              "duration": 35
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员现场画自己的 3+1 闭环图",
+              "description": "每个学员标出自己产品的视频号 / 公众号 / 私域分工 + 一个本周能发的选题怎么拆 4 平台 + 导流到微信的具体钩子。TA 1:8 现场过图找断点。",
+              "duration": 25
+            }
+          ]
         },
         {
           "code": "L19",
@@ -705,7 +1148,36 @@
           "type": "Information",
           "isLive": false,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "内容工厂 4 个工位拆解",
+              "description": "把 W4 学的内容动作排成流水线：周一选题（GPT 看你历史互动 + 当前热点）→ 周三写稿（Claude 出原稿 / GPT 改语调）→ 周四出图（Midjourney 批量）→ 周五人工 review + 多平台分发。讲清哪步必须人工卡关、哪步可以全自动。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "搭选题 + 写稿工作流",
+              "description": "用 OpenClaw（上过 OpenClaw Bootcamp 的学员）或 n8n / Zapier，建一条每周一定时跑的 flow：读飞书表里的历史数据 → GPT 产 10 个选题 → 你勾 3 个 → Claude 各写一稿。跑通后截图本周产出的 3 篇初稿。",
+              "duration": 40
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "接出图 + 多平台分发",
+              "description": "在工作流末端接 Midjourney 批量出封面 + 用飞书表 / Buffer 把成稿排到小红书 / 视频号 / 公众号。验收：本周内容产出从 1 篇变 5 篇，交一张工作流图 + 一周排期截图。",
+              "duration": 35
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "工厂稳定性自检",
+              "description": "对照清单查自己的工厂会不会塌：API key 月预算、风控限流应对、人工 review 卡点有没有漏、选题数据源会不会断。列出本周要补的 3 个洞。",
+              "duration": 20
+            }
+          ]
         },
         {
           "code": "L20a",
@@ -714,7 +1186,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "AI 视频工具栈选型：文生视频 / 数字人 / 配音剪辑三层",
+              "description": "把 Sora 2 / Veo 3 / Runway Gen-4 / Kling 2.0 / Pika 2.0 / Luma 按『真实感 / 运镜 / 中文生态 / 出片速度』分场景，讲清产品 demo 用哪个、founder story 用哪个；数字人层 Heygen / D-ID 一个形象多语言对口型；配音剪辑层 ElevenLabs + Suno + CapCut。给一张『场景 → 工具』决策表。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "30 分钟出一条 60s 成片全流程演示",
+              "description": "现场跑『脚本 → 画面 → ElevenLabs 配音 → Heygen 数字人对口型 → CapCut 自动剪 + 智能竖屏裁剪』，一条片同时导出视频号 9:16 / X 16:9 / 小红书 3:4 三个尺寸，中英文双版。",
+              "duration": 40
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "学员现场产 4 类视频中的 2 类",
+              "description": "每人挑 2 类做：30s 产品 demo（配 Stripe checkout）/ 60s founder story（build in public）/ 15s hook（小红书 / 视频号）/ 数字人讲解（cold outreach）。现场出片，TA 1:8 过画面节奏 + 字幕 + 平台尺寸。",
+              "duration": 35
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "成本与产能账 + 本周视频排期",
+              "description": "算一条片的 API / 工具月成本，对比外包剪辑工时，定一个每周能稳定产几条的产能。每个学员排出本周要发的视频 + 投到哪个平台。",
+              "duration": 20
+            }
+          ]
         },
         {
           "code": "L20b",
@@ -723,7 +1224,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "AI 海报 / 产品图工具栈选型",
+              "description": "Nano Banana（多图融合 + 中英文字渲染）/ Recraft（brand 一致 + 矢量导出）/ Ideogram 3（文字最准）/ Midjourney v7（艺术风）/ Canva AI（非设计学员最快）/ Photoroom（产品去背换景）/ Magnific（低分辨率提升到能投流）。按『海报 / 产品图 / 改图』分清各用谁。",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "5 类静态素材现场出图演示",
+              "description": "现场用 Nano Banana + Canva AI 出：小红书 3:4 竖封面、公众号 16:9 头图、投流海报 1242×1660（对照 JR xhs-poster skill 输出标准）、产品 landing hero + 5 张 feature 图、Stripe checkout 截图美化版。讲品牌一致性怎么用 prompt 锁住。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "学员产一套 launch 视觉资产",
+              "description": "每人为自己产品出 1 张小红书封面 + 1 张投流海报 + 1 张 hero 图，中英文双版。和 L20a 视频拼成 launch 标配（1 条 60s 视频 + 5 张海报 + 3 张产品图 + 1 张 hero）。",
+              "duration": 25
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "视觉产线收口：30 分钟出全套",
+              "description": "把 L20 内容工厂 + L20a 视频 + L20b 海报串成一条视觉 / 内容产线，演示一次 launch 怎么 30 分钟出全套。学员对照清单确认自己的产线缺哪一环。",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L21",
@@ -732,7 +1262,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Build in Public 的杠杆逻辑",
+              "description": "讲清为什么 Pieter Levels / Marc Lou / Tony Dinh 靠每天晒 MRR / 用户数 / 踩坑能把 1k follower 滚到 50k，再转成产品流量。拆这套打法对澳洲华人 OPC 的适配点（英文圈 + 时差 + 真实数据透明）和不适配点（不爱抛头露面的怎么办）。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "逆向 5 个英文 indie hacker 的 X 账号",
+              "description": "现场拆 5 个账号从 1k → 50k 的内容公式：什么帖型涨粉（milestone / 教训 / 数据截图 / build log）、发帖频率、thread 结构、怎么用一条 hook 推开评论区。提炼成一张可套用的帖型模板表。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "用 AI 批量出 30 天 X 内容日历",
+              "description": "用 Claude 把学员产品的进展拆成 30 天发帖计划，套 build-in-public 帖型模板，配 Hypefury / Typefully 排程。演示怎么把一条 60s 视频（L20a）和一张数据海报（L20b）嵌进帖子提互动。",
+              "duration": 30
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员发出第一条 build in public",
+              "description": "每个学员现场写并真发一条 X 帖（晒自己 W1-W3 做的产品 / 第一笔付费 / 一个教训），TA 1:8 过 hook 第一句 + 配图 + CTA。定下未来 30 天发帖节奏。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L22",
@@ -741,7 +1300,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "LinkedIn outreach 高转化公式",
+              "description": "拆『个人化第一句（提对方近期发帖 / 公司 / 文章）+ 你能给的具体价值（不是索取）+ 低门槛 ask（看 30 秒 demo，不约会议）』三段式。讲为什么直接 spam 必死、连接请求和私信的话术差异、一天发多少不触发风控。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "Claude 批量生成 100 条个人化 outreach",
+              "description": "现场跑：导一批目标 LinkedIn URL → AI 抓取对方近期动态 → Claude 按三段式各生成个人化开场白 → 人工抽审。讲怎么避免 AI 写出一眼假的模板腔，留人工卡点。",
+              "duration": 30
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "ProductHunt 冷启动作战图",
+              "description": "讲发布日前 24h 决定 90% 排名的机制：墨尔本时间凌晨 6 点 launch（对应 PT 12:01 AM）、提前一周预热 hunter / 朋友名单、动员 5-10 人首小时 upvote + 评论、首图 / tagline / 首条 maker comment 怎么写。给一张 launch 倒计时 checklist。",
+              "duration": 35
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员定 outreach 名单 + PH launch 日期",
+              "description": "每人列 20 个真实 LinkedIn outreach 目标 + 写出 3 条个人化开场白，并排出自己产品的 ProductHunt launch 日期 + 动员名单。TA 1:8 审话术是否过线。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L23",
@@ -768,7 +1356,29 @@
           "type": "Information",
           "isLive": false,
           "duration": 60,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "社区规则：90% 价值 + 10% 软提",
+              "description": "讲清 Reddit / IndieHackers 对 self-promotion 的敏感度（硬广一发被删 + ban），以及『我用 X 解决了 Y』价值帖为什么受欢迎。拆 subreddit 选择、karma 门槛、发帖时段、软提产品的合规位置（评论区 / 文末一句 / profile）。",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "SCENARIO",
+              "title": "拆 20 个『价值帖 → 100+ 用户』案例",
+              "description": "过 20 个真实案例，标出每篇的钩子、价值密度、软提手法、引流路径。归纳成 4 类可复制的价值帖型（教程 / 数据复盘 / 工具对比 / 踩坑总结）。",
+              "duration": 20
+            },
+            {
+              "order": 3,
+              "type": "LAB",
+              "title": "用 AI 写一篇社区价值帖并自检",
+              "description": "用 Claude 把自己产品的一个真实使用场景写成 Reddit / IndieHackers 价值帖（90% 干货 + 10% 软提），对照 community 规则自检会不会被删，定好要发的 2 个目标 subreddit。",
+              "duration": 20
+            }
+          ]
         },
         {
           "code": "L24a",
@@ -777,7 +1387,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "6 大线下渠道地图（中文圈 3 + 英文圈 3）",
+              "description": "中文圈：华人 tech meetup（墨 / 悉 / 布）/ 微信群裂变 / 华人媒体 PR（澳洲日报 / 微悉尼 / 今日墨尔本）。英文圈：本地 tech meetup（Melbourne SaaStr / Sydney Tech Pub / Brisbane Indie Founders）/ Podcast pitching / Founder feature（The Hustle / BetaList）。讲澳洲华人 OPC 既能蹭中文圈又能蹭本地 tech 圈的非对称优势。",
+              "duration": 30
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "AI 跑线下营销的 6 个动作演示",
+              "description": "现场演示一套 AI 打 6 渠道：①AI 抓 meetup / podcast / 记者列表 + 匹配度排序 ②AI 写个人化 pitch / 演讲提案 / 投稿稿 ③AI 模拟主持人 30min Q&A 训练 ④AI 出海报 + 朋友圈文案 + 引流落地页 ⑤AI 写活动后 follow-up + 加好友话术 ⑥AI 把一次活动反哺成线上多平台内容。",
+              "duration": 40
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "一次活动反哺 5 篇线上内容现场拆",
+              "description": "拿一个假设的 meetup lightning talk，用 AI 现场拆成 5 篇小红书 + 1 篇公众号 + 5 条 X + 1 篇 LinkedIn 长帖 + 1 篇 SEO 博客。讲线下 → 线上的内容复用率怎么最大化。",
+              "duration": 25
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员选 1 个线下渠道排 30 天计划",
+              "description": "每人从 6 渠道里挑 1 个最适合自己产品的，用 AI 排出找渠道 → pitch → 准备 → 执行 → 反哺的 30 天 task 清单，落到墨 / 悉 / 布具体活动或媒体。TA 1:8 审落地性。",
+              "duration": 25
+            }
+          ]
         },
         {
           "code": "L25",
@@ -786,7 +1425,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "传统 SEO vs GEO 两套逻辑",
+              "description": "讲清 ChatGPT search / Perplexity / Claude search 已分走 15-20% 搜索流量，所以要双线：传统 SEO 强 long-tail keyword + technical SEO + backlink；GEO 强 cite-worthy 内容 + 结构化数据 + entity authority。讲两套的内容写法差异（GEO 要被 AI 整段引用）。",
+              "duration": 30
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "拆 jiangren.com.au 真实 GSC 数据",
+              "description": "用 jiangren.com.au 真实 Search Console 数据现场演示：怎么找 long-tail 机会词、看哪些页有曝光没点击、哪些 query 已被 AI 搜索引用。讲一个产品页同时做 SEO + GEO 的落地步骤。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "用 AI 产 long-tail 内容矩阵",
+              "description": "用 Claude 把学员产品拆成一组 long-tail 关键词 + 对应内容主题（每个对应一个真实搜索意图），生成内容矩阵表，标出哪些优先写、哪些适合做成 GEO 引用源。",
+              "duration": 30
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员定自己产品的 SEO + GEO 清单",
+              "description": "每人产出 10 个 long-tail 目标词 + 3 篇优先内容主题 + 1 个 GEO 优化点，TA 1:8 审关键词搜索意图是否真实、是否够细到能排上。",
+              "duration": 25
+            }
+          ]
         },
         {
           "code": "L26",
@@ -795,7 +1463,29 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "E-E-A-T 四要素落到产品页",
+              "description": "把 Experience / Expertise / Authoritativeness / Trustworthiness 翻译成产品页可执行项：Author 框带 LinkedIn、真实 case study、外部引用 / 媒体提及、联系方式 / 公司信息。讲为什么 AI 搜索时代 E-E-A-T 权重更高（AI 只引可信源）。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "给产品页加 Schema.org JSON-LD 现场实操",
+              "description": "现场给学员产品页加 FAQPage / SoftwareApplication / Person 三种 JSON-LD，用 Cursor 直接写进页面，过一遍必填字段。讲 GEO 视角下结构化数据怎么帮 AI 准确理解你是谁、做什么。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "提交 GSC 验证 + 学员自查清单",
+              "description": "现场把改好的页提交 Google Search Console 的 Rich Results 测试 + URL 检查，确认 schema 通过。每人对照 E-E-A-T 清单查自己产品页还缺哪几项，列本周要补的。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L27",
@@ -804,7 +1494,29 @@
           "type": "Information",
           "isLive": false,
           "duration": 240,
-          "steps": [],
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "跟读 /learn/seo-master：技术 SEO + 内容 SEO",
+              "description": "系统过 jiangren.com.au /learn/seo-master 前半部分章节：站点结构 / 索引 / 速度 / 移动端等 technical SEO + 关键词研究 / 内容结构 / 内链等 content SEO。对照自己产品站逐章勾出待办。",
+              "duration": 90
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "跟读 /learn/seo-master：backlink + GEO 进阶",
+              "description": "过后半部分章节：backlink 策略 / E-E-A-T / 结构化数据 / AI 搜索 GEO。和 L25 / L26 直播内容互相印证，补齐直播没展开的长期工程细节。",
+              "duration": 90
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "产出自己产品站的 SEO 季度路线图",
+              "description": "把自学章节里的待办收敛成一张季度路线图：本月做 technical 修复、下月铺 long-tail 内容、季末做 backlink + GEO。标清每项的预期排名 / 流量影响，作为自学交付。",
+              "duration": 60
+            }
+          ],
           "learns": [
             {
               "direction": "seo-master",
@@ -819,7 +1531,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "10+ 渠道串成一台机器的总图",
+              "description": "回看 W4-W6 学的小红书 / 视频号 / 公众号 / 私域 / 华人 meetup / 微信群 / 华人媒体 / X / LinkedIn / ProductHunt / Reddit / 本地 tech meetup / Podcast / SEO / GEO，画出『一个 launch 怎么同时点燃 10 渠道』的总图，定义什么算一次 launch（功能更新 / 新版本 / milestone）。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "选 1 个 launch 现场拆全套 asset",
+              "description": "选一个学员真实产品 launch，现场用 AI 拆出：1 篇 SEO 长文 + 10 条多平台短文 + 5 张海报 + 3 条短视频 + 1 套邮件序列 + 100 条个人化私信。演示同一份 source 喂全套、改一处全重出。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "n8n / OpenClaw 营销 OS 闭环演示",
+              "description": "现场跑全自动闭环：选题（GPT 看历史 + 趋势）→ 写稿（Claude 一稿 / GPT 改语调）→ 出图（Midjourney 批量）→ 排程（Buffer / Hypefury / 微信号矩阵）→ outreach（AI 抓取 + 个人化私信）→ 数据回收（GSC / 小红书 / X 数据 → AI 找模式 → 反哺下周选题）。",
+              "duration": 35
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员产出自己的 launch checklist + 工作流图",
+              "description": "每个学员现场做出自己产品的 launch checklist + AI 营销操作系统工作流图，作为 Phase 2 毕业 deliverable。TA 1:8 审渠道覆盖 + 自动化断点 + 数据回收回路是否闭环。",
+              "duration": 25
+            }
+          ]
         }
       ]
     },
@@ -835,7 +1576,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "OPC 运营复杂度 ≠ 企业，别上 Salesforce/HubSpot",
+              "description": "一人公司日常 = 5-10 个客户 + 10-20 个任务 + 1 个产品，装一个 Notion workspace 就够。讲清四个 database 的边界：CRM（客户）/ Revenue（收入）/ Tasks（看板）/ Docs（PRD·营销素材），以及为什么 CRM 和 Revenue 要拆两张表（一个跟人、一个跟钱）。",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "现场搭 CRM database：客户/阶段/金额(AUD)/下次跟进",
+              "description": "讲师在 Notion 现场建 CRM 表，字段：客户名 / 公司 / 阶段(Lead→Trial→Paid→Churned 单选) / 金额(AUD Number) / 来源 / 下次跟进日(Date)。用 rollup + formula 自动算 pipeline 总额，再建一个 filter 视图『本周要跟进』(下次跟进日 ≤ today)。",
+              "duration": 30
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "收入库同步 Stripe + 任务看板",
+              "description": "建 Revenue database（订单 / 客户 relation / 金额 AUD / GST 是否含 / 日期），讲怎么从 Stripe 手动/半自动灌数据（完整自动同步 L30 接 Xero 再讲）。再建 Tasks 看板（Backlog/Doing/Done），关联到对应客户和产品。",
+              "duration": 35
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "复制官方模板 + 填入你自己的真实数据",
+              "description": "学员当场复制讲师发的 Notion 模板（已过 5+ indie hacker 实测），把 W1-W6 攒的真实客户、第一笔付费、在做的任务填进去。验收：pipeline 总额公式能跑出一个真实 AUD 数字，『本周跟进』视图至少 1 条。",
+              "duration": 35
+            }
+          ]
         },
         {
           "code": "L29",
@@ -844,7 +1614,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "三方案选型：OpenClaw / n8n / Zapier 怎么选",
+              "description": "按隐私 × 技术能力 × 成本三轴对比：OpenClaw=本地+隐私强+要会终端；n8n=self-host/云均可+灵活+中等门槛；Zapier=纯云+最简单+贵($20-100/月起)。给一张决策表：律师/会计/医疗这类敏感数据走 OpenClaw 本地；不想 self-host 又预算 OK 走 Zapier；想灵活省钱走 n8n。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "现场搭一条客服邮件分流自动化",
+              "description": "演示一条完整 flow：新邮件进来 → AI 分三类(技术问题/退款/销售咨询) → 技术问题草拟回复 draft 进草稿箱、退款转人工标记、销售咨询写进 Notion CRM。n8n 用可视化节点连，Zapier 用 Zap，OpenClaw 用 skill+cron，三种各演示关键差异。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "接知识库：让 AI 客服答得准（联动 L31 prompt）",
+              "description": "光分流不够，得让 AI 用你的产品 FAQ / 退款政策 / 定价回答。演示把这些喂给 agent（OpenClaw 读本地 markdown / n8n 接 vector store / Zapier 接 OpenAI assistant），并接 L31 设计的客服 prompt，避免 AI 瞎编没有的功能或乱承诺退款。",
+              "duration": 30
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员按自己方案 ship 第一条客服 flow",
+              "description": "学员按选定方案现场跑通『邮件进来→AI 分类→草拟回复』最小闭环，用一封自己真实收到的客户邮件测。验收：能看到 AI 生成的回复 draft，且分类正确。剩余高级 flow 作为 W7 末 deliverable。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L30",
@@ -853,7 +1652,29 @@
           "type": "Information",
           "isLive": false,
           "duration": 60,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "为什么澳洲是 Xero 不是 QuickBooks",
+              "description": "Xero 澳洲市占 60%+，几乎所有澳洲会计师默认用它，月底直接出 BAS。讲清记账链路：Stripe(收款) → Xero(bookkeeping) → 季度 BAS。先把 Stripe 的 GST 设置讲对——澳洲 GST 一般是 10%，但你卖给海外客户的收入多为 GST-free，不要一刀切按 10% 记，具体怎么标按你客户构成由 CPA 核。",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "开启 Stripe ↔ Xero 集成 + 设置对账规则",
+              "description": "跟着模板操作：Stripe Dashboard → Apps → 装 Xero 集成 → 授权 → 设置每笔交易自动同步到 Xero。配 Stripe Fees 记为支出科目、payout 自动对账银行流水。设好后做一笔 $1 测试交易，确认它自动出现在 Xero 的 invoice/payment 里。",
+              "duration": 30
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "跑一次月度对账 + 导出 BAS 草稿给 CPA",
+              "description": "用模板里的清单走一遍月底动作：核对 Stripe payout 与 Xero 银行流水一致、检查 GST 科目分类、导出当月 P&L 和 BAS 草稿。强调这一步只是『准备和整理』，正式 BAS 申报与 GST 金额仍按你的情况由 CPA 复核，不要自己拍板提交。",
+              "duration": 15
+            }
+          ]
         },
         {
           "code": "L31",
@@ -918,7 +1739,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "ABN / TFN / GST / BAS 四个东西分别是什么",
+              "description": "嘉宾(持牌 CPA)先把四个常被混淆的概念讲清：ABN=澳洲商业号码(免费线上申请)、TFN=税号(个人已有，公司另有)、GST=消费税(年营收达 $75k 强制注册，未达可自愿注册以 claim 进项 GST)、BAS=季度活动报告。讲清 sole trader 用个人 TFN+ABN，Pty Ltd 要单独 TFN+ABN 的区别。",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "嘉宾陪学员在 ABR 网站现场注册 ABN",
+              "description": "持牌 CPA 嘉宾带学员打开 abr.gov.au 一步步填：实体类型、business activity 描述(ANZSIC code)、开始日期、联系方式。讲常见卡点：activity 描述写太泛会被退、Pty Ltd 要先有 ACN 才能拿 ABN。目标：W8 末每个学员都有自己的 ABN。",
+              "duration": 30
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "GST 自愿注册的取舍 + Q&A",
+              "description": "嘉宾讲一个真实判断题：营收还没到 $75k 要不要现在就注册 GST？注册后能 claim 工具/API/广告的进项 GST，但也要每季报 BAS、给客户开价含 GST。嘉宾现场答学员个人化问题——你的客户是 B 端还是 C 端、海外占比多少，会改变这个决定。",
+              "duration": 25
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员定下自己的注册清单 + 时间表",
+              "description": "学员当场写下：ABN 已拿/待补什么资料、要不要自愿注册 GST、第一个 BAS 季度是哪个、TFN 状态。形成一张可执行的『本月行政待办』，缺的信息标注『待 CPA 确认』，不自行假设税务细节。",
+              "duration": 15
+            }
+          ]
         },
         {
           "code": "L34",
@@ -927,7 +1777,36 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "PSI 规则：为什么你的公司结构可能白搭",
+              "description": "嘉宾(持牌 CPA)讲 PSI(Personal Services Income)杀招：若你 80%+ 收入来自单一客户、且卖的是你个人劳务而非产品，ATO 会把公司收入『穿透』按个人税率(最高 47%)计，Pty Ltd 的低税率白用。讲清 PSI 四道测试(results test / 80% rule / unrelated clients / employment / business premises)的判断逻辑。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "嘉宾真实案例：没注意 PSI 多交 $40k 税",
+              "description": "嘉宾拆一个真实学员级案例：做技术咨询、90% 收入来自一家公司、以为开了 Pty Ltd 就低税，结果触发 PSI 被穿透补税约 $40k。讲怎么提前规避：多客户化(凑够 unrelated clients)、产品化(从卖工时转向卖 SaaS/订阅)、做好 80/20 测试记录。",
+              "duration": 30
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "CGT 与卖产品/公司时的资本利得规划 + Q&A",
+              "description": "嘉宾讲 CGT(Capital Gains Tax)：未来卖掉产品或退出公司时的资本利得税，持有 >12 个月个人可享 50% 折扣，small business CGT concessions 在符合条件时还能进一步减免。用一个提前规划省 $80k 的案例说明为什么现在就要把结构理顺。现场答学员个人化税务问题。",
+              "duration": 25
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "学员做自己的 PSI 80/20 自测",
+              "description": "学员对照 PSI 测试给自己打分：当前最大客户占收入百分比、是否有 ≥2 个 unrelated clients、卖的是劳务还是产品。结论分三档(明确安全/边界模糊/高风险需调整)，高风险的列出 W9 要做的『去 PSI』动作，具体税额标注由 CPA 核。",
+              "duration": 10
+            }
+          ]
         },
         {
           "code": "L35",
@@ -936,7 +1815,29 @@
           "type": "Information",
           "isLive": false,
           "duration": 60,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "一年财务路线图要算哪几笔钱",
+              "description": "讲模板(已过澳洲 CPA review)的六个板块：12 个月月度收入预测、GST 预提、季度 BAS 准备金、个人 vs 公司税对比、Super 自缴、应急储备。重点讲 OPC 最容易踩的坑——把收到的钱全当利润花掉，没给 GST 和年底税留出准备金，到 BAS 季度现金流爆掉。",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LAB",
+              "title": "填月度收入预测 + GST/BAS 准备金计算",
+              "description": "学员把自己 W1-W6 真实数据填进 Excel 模板：每月预测收入、按客户构成估 GST 预提(海外 GST-free 部分单列，不全按 10%)、每季度该预留多少 BAS 准备金。模板用公式自动汇总出『每月要存进准备金账户多少 AUD』。",
+              "duration": 30
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "整理疑问清单，约嘉宾会计师邮件 review",
+              "description": "学员对照模板列出自己拿不准的项(个人 vs 公司税哪个更省、Super 自缴比例、应急储备月数)，整理成一封结构化的问题邮件，在 W8-W9 之间发给嘉宾 CPA 做一次 review。强调税务比例与具体数额最终以 CPA 回复为准。",
+              "duration": 15
+            }
+          ]
         },
         {
           "code": "L36",
@@ -983,7 +1884,22 @@
           "type": "Information",
           "isLive": false,
           "duration": 45,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "VIDEO",
+              "title": "嘉宾录播：EMDG / 各州 / 联邦大额 三类 Grant 拆解",
+              "description": "30min 嘉宾录播：EMDG(海外营收 ≥20% 时最高 $80k 市场推广补贴)、各州 Grant(NSW MVP $25k 最易拿是 OPC 首选 / LaunchVic VIC AI 最高 $250k / Advance Queensland $150k / WA Innovation Voucher $20k)、联邦大额(Accelerating Commercialisation 最高 $1M 但通过率 <15% / Industry Growth Program)。每类讲资格、金额、窗口、偏好领域。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "SCENARIO",
+              "title": "用 Grant 全景对照表 + 决策流程图定你的目标",
+              "description": "学员按 wiki 对照表(条件/金额/窗口/偏好领域/申请难度 5 维)和决策流程图,判断自己当前阶段适合哪个 Grant。OPC 早期通常先锁 NSW MVP 这类易拿的,海外营收起来再考虑 EMDG。读 5 个真实成功/失败案例(含申请书结构 + 审委反馈),把『要不要申请、何时申请』写进自己的 Grant 路线。措辞用『如何准备和提交申请』,不假设一定拿到或拿多少。",
+              "duration": 20
+            }
+          ]
         },
         {
           "code": "L40",
@@ -1017,7 +1933,29 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "为什么 OPC 默认不融资：拿钱的隐性代价",
+              "description": "融资换的不是钱，是控制权 + 增长义务。拿了 VC 钱你就从『$10k MRR 的自由』变成『追 $1B 估值的雇主』——要雇人、设 board、每季度向投资人汇报、被逼着烧钱抢市场。先把这个交换关系讲透，再谈该不该融。",
+              "duration": 40
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "5 个『该融』判断点 + 反向 5 个『不该融』信号",
+              "description": "该融的 3 个硬条件同时满足才成立：①已有 PMF（留存 + 复购真实）②市场窗口期短、先发优势值钱 ③资金能直接换增长速度。不该融信号：还在找 PMF / 靠融资续命 / 为估值虚荣 / 不想管人却要拿钱。逐条对照学员自己的产品现状。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "学员现场自评：我现在该不该融",
+              "description": "每个学员用 5 个判断点给自己的产品打勾，得出结论。设计预期：大多数人勾不满 3 个硬条件 → 答案是『继续 OPC』，这是好结果不是失败。只有真满足的少数人进入 L42 term sheet 学习。",
+              "duration": 35
+            }
+          ]
         },
         {
           "code": "L42",
@@ -1026,7 +1964,29 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "SAFE vs priced round：早期为什么用 SAFE",
+              "description": "SAFE（Simple Agreement for Future Equity）= 先拿钱、估值留到下一轮再定，不立即稀释、不设利息、法律文件薄。比 priced round（正式定估值 + 股权交割）省时省律师费，是 YC 标准早期工具。讲清楚 SAFE 到底把你卖了什么。",
+              "duration": 25
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "拆 3 份真实 SAFE：valuation cap / discount / MFN 三个坑",
+              "description": "讲师现场过 3 份 SAFE term sheet，标出三个最容易被坑的条款：valuation cap（估值上限决定你被稀释多少）、discount（折扣率）、MFN（最惠条款）。演示同一笔钱不同 cap 下你最终丢多少股权的算账过程。",
+              "duration": 35
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "估值是博弈不是科学：现场谈一轮",
+              "description": "早期估值没有公式，是供需博弈。学员两两配对，一方扮 founder 一方扮投资人，就一份给定的 SAFE 谈 cap 和 discount，体会『不准备就被宰』。结论：哪怕只融一次，也要先看懂条款再签字。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L43",
@@ -1035,7 +1995,29 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "听 fireside 前先搞懂：澳洲早期 VC 怎么看 deal",
+              "description": "进场前 10 分钟铺背景：澳洲一线 VC（投过 Canva / SafetyCulture 等的本地基金）的投资逻辑、early stage 看团队还是看数据、AI 时代他们的判断标准变了什么。让学员带着具体问题去听，而不是泛泛听故事。",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "嘉宾 fireside：一线 VC 投资人对谈",
+              "description": "已退出 founder / 投资人嘉宾分享：他们看什么、不看什么、华人 founder 在澳洲 raise 的真实经验、被拒最常见的原因。主讲老师主持对谈，控节奏挖具体案例，不让它变成宣传。",
+              "duration": 45
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "学员 Q&A + 加联系方式",
+              "description": "学员现场提问（每人限 1 个具体问题，禁止『请问您怎么看 AI』这种空问题）。这场的核心价值是 networking——留 LinkedIn、加微信，未来真要融资时有人对接。当场收集嘉宾联系方式发到班级群。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L44",
@@ -1044,7 +2026,29 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 90,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Accelerator 模式拆解：和这门 bootcamp 像在哪、差在哪",
+              "description": "澳洲两大 accelerator 的『6-12 周项目 + 一笔投资 + alumni network』和本课的『群体加速』性质重叠，但关键差异是 accelerator 拿 7-10% equity 而 bootcamp 不拿股权。先讲清这个区别，学员才知道毕业后申请 accelerator 是『再卖一道股权』。",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "嘉宾 fireside：accelerator 合伙人讲申请标准",
+              "description": "投资人 / accelerator 嘉宾分享：他们的录取标准、什么样的 founder 能进、申请材料怎么准备、拿到投资后这 6-12 周到底给什么、华人 founder 进 accelerator 的真实体验。主讲老师主持。",
+              "duration": 45
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "判断：你的 OPC 适不适合毕业后申 accelerator",
+              "description": "学员对照嘉宾给的标准自评：你的产品 + traction 够申请门槛吗、你愿意为加速让出 equity 吗、accelerator 的全职 commitment 你能给吗。多数 OPC 学员的答案仍是『不申，继续单干』——讲清楚这没问题。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L45",
@@ -1053,7 +2057,22 @@
           "type": "Information",
           "isLive": false,
           "duration": 60,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "OPC vs VC 决策表 10 维度怎么填",
+              "description": "逐条解释决策表 10 个维度：控制权偏好 / 增长速度需求 / 抗稀释意愿 / 市场窗口 / PMF 现状 / 团队意愿 / 财务跑道 / 生活方式诉求 / 抗汇报压力 / 退出预期。每个维度给 OPC 端和 VC 端的典型画像，学员对号入座。",
+              "duration": 30
+            },
+            {
+              "order": 2,
+              "type": "SCENARIO",
+              "title": "填表 + 写 200 字『我接下来 12 个月走哪条』",
+              "description": "学员独立完成 10 维度打分，算出倾向值，再写 200 字决策说明（不是哪条更高级，是哪条更适合你此刻的产品和生活）。大多数人最终落在 OPC——这正是他们当初来上课的理由；少数选 VC 的学员，课程帮做 intro 到 L43/L44 嘉宾。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L46",
@@ -1100,7 +2119,29 @@
           "type": "Lesson",
           "isLive": true,
           "duration": 180,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "互为客户日机制 + 进场卡片怎么填",
+              "description": "晚宴前 15 分钟说明玩法：每人胸前贴 2 张卡片——『我能给的』（产品 / 服务 / 能力 / 客户引荐）+『我要的』（早期客户 / 投资 / 合伙人 / 服务采购）。卡片写具体不写虚的（不是『我会做 marketing』而是『我能帮你 2 周内做出小红书内容机器』），这是当晚撮合的索引。",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "三城本地圆桌 mingling + 老师/嘉宾在场撮合",
+              "description": "每城 8-15 人小圆桌，30 分钟自由 mingling。同桌 = 本城同期同学 + 历届 JR 校友 + 嘉宾 + 本地 VC / 会计师 / migration agent。老师和嘉宾巡场，看到双方卡片契合主动 intro。5 类商业角色（互为早期客户 / 服务采购 / 合伙人 / 天使 / 引荐源）在这一晚直接落地——当晚成交 / 握手定合伙 / angel check 是常态。",
+              "duration": 130
+            },
+            {
+              "order": 3,
+              "type": "SCENARIO",
+              "title": "收尾：记录今晚的 3 个 follow-up + 进校友群",
+              "description": "晚宴尾声每人写下今晚要跟进的 3 个具体动作（给谁发产品试用 / 跟谁约下周聊合伙 / 帮谁引荐客户），交换联系方式落到班级群。当场拉进 JR Solo Founder 校友群，接续毕业后 6 个月 Office Hour。",
+              "duration": 30
+            }
+          ]
         },
         {
           "code": "L48",
@@ -1109,7 +2150,22 @@
           "type": "Information",
           "isLive": false,
           "duration": 0,
-          "steps": []
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "校友群 + 6 个月 Office Hour 怎么用",
+              "description": "毕业即进 JR Solo Founder 校友群（首期与后续期合并），每月一次线上 Office Hour（90min，主讲老师 + 1-2 嘉宾轮流主持，话题学员投票）。讲清这 6 个月的用法：遇到具体卡点（Grant 被拒 / 第一次招外包 / 考虑融资）来问,不是闲聊群。",
+              "duration": 15
+            },
+            {
+              "order": 2,
+              "type": "SCENARIO",
+              "title": "结营仪式：复盘 W1 vs W11 你自己的数据",
+              "description": "拿出开课时填的起点（0 收入 / 无 ABN / 0 内容）对照毕业六项硬指标（$1+ 真实付费 / ABN / Grant 提交 / 10+ 内容 / 产品 URL / Demo Day），写一句话给 12 周后的自己。把这份复盘留在校友群，下次晚宴你作为校友被邀请回来当嘉宾。",
+              "duration": 15
+            }
+          ]
         }
       ]
     }
