@@ -1,5 +1,10 @@
 # 混沌澳洲渠道上线 · Admin 配置清单
 
+> **混沌合作模式 = 联合推广 + 联合销售（分销返佣）**（对齐 PARTNERSHIP_PROGRAM_PLAN §2 三大类）：
+> - **联合推广**：混沌用自己渠道（公众号 / 群 / EDM）把联名 landing `hundun-au/` 推给会员，素材我们供。
+> - **联合销售 / 分销**：会员专属折扣码 `HUNDUN-OPC` + **成交返佣**（`commissionRate` [商务确认]，按 TrackingLink attribution 结算，不签独家）。
+> - 可叠加：联名 workshop / fireside / 冠名「混沌澳洲奖学金」（见下及 FUNNEL §10）。
+>
 > Workstream B 的 prod 写入部分。代码侧（hundun-au 落地页 CTA、`?coupon=` 自动套用、归因捕获）已做好；下面 3 个对象要在 **admin 后台手动创建**（prod 写入，按边界由你/授权方点）。
 > 依赖：课程已 SDM Sync 到 prod（拿到 `trainingId` / `programId`）。
 
