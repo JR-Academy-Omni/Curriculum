@@ -148,7 +148,7 @@ AI 让一个人 ≈ 一个团队
 - 痛点 2: 不知道做什么 → 课程解：W1 选品 + 用户验证 framework
 - 痛点 3: 不会找客户 → 课程解：W4-W6 AI Marketing OS + Cohort 同学互相 ship 第一笔付费
 - 痛点 4: 不会合规收钱 → 课程解：W3 Stripe + W8 ABN + 5 份法律文件
-- 痛点 5: 怕踩坑 → 课程解：24 个同期同学 + 11 类 Faculty (含麦肯锡 / 微软 / VC)
+- 痛点 5: 怕踩坑 → 课程解：50 个同期同学 + 11 类 Faculty (含麦肯锡 / 微软 / VC)
 
 **结果承诺**：11 周后 → 第一笔副业真实付费 + 合规 ABN 公司 + 持续运转的 AI system
 
@@ -163,7 +163,7 @@ AI 让一个人 ≈ 一个团队
 - 痛点 2: 想 productize 服务但没 system → 课程解：W2 + W3 把咨询变 AI 出初稿 + 你审 30min 套餐
 - 痛点 3: 不会用 AI 营销 → 课程解：W4-W6 Marketing OS · 1 人 × 30min/天 = 4 平台 × 12 篇
 - 痛点 4: 想拿 Grant 退税 → 课程解：W7-W9 持牌 CPA + Grant consultant 现场陪写 RDTI
-- 痛点 5: 没同行可商业互通 → 课程解：cohort 24 同学之间互为客户 / 服务采购 / 合伙人
+- 痛点 5: 没同行可商业互通 → 课程解：cohort 50 同学之间互为客户 / 服务采购 / 合伙人
 
 **结果承诺**：11 周后 → AI 替代 1-2 员工工作 + RDTI 申请提交（43.5% 退税）+ 毛利 / 现金流双升
 
@@ -216,7 +216,7 @@ AI 让一个人 ≈ 一个团队
 **内容** 3 张独家卡：
 - 🇦🇺 **Phase 3 RDTI 退税实战**：全球独家 · Reforge / On Deck / 生财有术 / Antler 都没
 - 🏗 **Enterprise-grade AI System**：Claude Cowork（Anthropic 桌面 App · GUI 配置）+ Memory + Marketing OS · 不是教 ChatGPT
-- 🤝 **W11 互为客户日**：cohort 24 同学之间 ship 第一笔付费 · 5 年澳洲华人 AI 圈核心节点
+- 🤝 **W11 互为客户日**：cohort 50 同学之间 ship 第一笔付费 · 5 年澳洲华人 AI 圈核心节点
 
 **避免**：don't 放 Faculty 11 类 / 校友 2000+ 这些 trust anchor — 留到 page 8
 
@@ -228,7 +228,7 @@ AI 让一个人 ≈ 一个团队
 
 **内容**：
 - **11 类 Faculty**（compact grid · 不展开）：麦肯锡 + 微软 + AI Engineer + SEO + Growth + CPA + Grant consultant + 投资人 VC + 已退出 founder + PM Coach + Senior eng
-- **24 同学 cohort 网络** 5 年潜在 $240k-1.9M 交易额
+- **50 同学 cohort 网络** 5 年潜在 $500k-4M 交易额
 - **匠人 dogfood data**: 1 人 × 30min/天 = 4 平台 × 12 篇
 - **2,000+ 校友** 分布 Atlassian / Canva / 4 大行 / 4 大律所
 
@@ -277,7 +277,7 @@ AI 让一个人 ≈ 一个团队
 重要 → 不重要：
 1. 钱 (副业现金流 / 主业增收 / RDTI 退税具体金额)
 2. 时间 (11 周 / W0-W11 路径 / 多久能 ship)
-3. 同伴 (24 同学 / Faculty / 校友)
+3. 同伴 (50 同学 / Faculty / 校友)
 4. 结果 (能晒什么截图)
 5. Process (Phase / 工具 / 议程)
 ```
@@ -293,7 +293,7 @@ AI 让一个人 ≈ 一个团队
 | "Enterprise-grade leverage triple" | "AI 让一个人做一个团队的事" |
 | "走出打工天花板" | "起一条副业现金流 / 主业同样人手赚更多" |
 | "Cohort 同学互相做生意" | "同学之间互为第一笔付费 (Stripe 真付)" |
-| "$240k-1.9M 网络潜在交易" | "5 年内你互相付钱给的人 / 给你付钱的人" |
+| "$500k-4M 网络潜在交易" | "5 年内你互相付钱给的人 / 给你付钱的人" |
 
 ### 5.3 视觉
 

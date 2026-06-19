@@ -71,7 +71,7 @@ Above the map: floating UI elements suggesting Stripe payment screens, Notion
 docs, AI chat bubbles — all minimalist and abstract.
 
 Text overlay (Chinese, modern sans-serif):
-- "三城线下 · 11 周 · 18-25 人 cohort"
+- "三城线下 · 11 周 · 50 人 cohort"
 - Bottom right corner: "ONE PERSON COMPANY · M01 · JUN 2026"
 
 Style references: The Economist illustration, Stripe brand assets, Antler
@@ -379,7 +379,7 @@ landing page mockup showing real Stripe transaction data + traction metrics
 (MRR growth chart, user count, etc.).
 
 In the front row: a panel of 4-5 judges visible — a senior CPA, a VC partner,
-the main instructor — taking notes. Audience: 18-25 fellow founders + some
+the main instructor — taking notes. Audience: 50 fellow founders + some
 alumni + guests.
 
 Mood: high-energy but not pep-rally — "I built this and I'm proud" energy.
@@ -391,7 +391,7 @@ Style: Y Combinator Demo Day photography aesthetic.
 
 ## 📊 8. 5 KILL POINTS 配图（如果要做大图版）
 
-### 8.1 KILL 02 · Cohort 经济 $240k-1.9M 网络图
+### 8.1 KILL 02 · Cohort 经济 $500k-4M 网络图
 
 **平台**: ChatGPT gpt-image-2（数据图最强）
 **尺寸**: 1200×1200
@@ -399,7 +399,7 @@ Style: Y Combinator Demo Day photography aesthetic.
 
 ```
 Editorial data visualization in dark navy + cream + orange palette. A central
-node labeled "YOU" (你) surrounded by 24 smaller nodes labeled with archetype
+node labeled "YOU" (你) surrounded by 50 smaller nodes labeled with archetype
 icons (senior eng / PM / lawyer / accountant / founder). Lines connecting
 all nodes form a dense network web in orange and yellow.
 
@@ -409,7 +409,7 @@ Around the edges: floating callout cards in Chinese:
 - "互为天使投资 · $5-50k angel check"
 - "互为客户引荐 · 每次 $5-50k value"
 
-Bottom right large stat: "$240k-1.9M 网络潜在交易额"
+Bottom right large stat: "$500k-4M 网络潜在交易额"
 
 Style: The Economist data viz + Stripe annual report. Clean lines, not crowded.
 NO clip-art people icons. NO crypto/Web3 aesthetic. Minimal and dense.
