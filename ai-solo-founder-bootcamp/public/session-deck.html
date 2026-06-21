@@ -8,32 +8,65 @@
 <style>
   .plogos{display:flex;align-items:center;gap:1.4vw;margin-top:1.4vh;background:#fff;border:2px solid #000;box-shadow:var(--shadow-sm);padding:1vh 1.4vw;flex-wrap:wrap}
   .plogos img{height:3.4vh;width:auto;object-fit:contain;display:block}
-  /* ===== 搞钱地图 · 工作台(点节点→右面板铺开资源) ===== */
-  #moneymap{background:#0a0d1a;color:#fff;padding:3.8vh 4.5vw}
-  #moneymap h2{color:#fff;font-size:3.4vh}
+  /* ===== 搞钱地图 · 展开树(点一级节点→下方放射出它的资源子节点+连线) ===== */
+  #moneymap{background:#0a0d1a;color:#fff;padding:3.2vh 3.8vw}
+  #moneymap h2{color:#fff;font-size:2.9vh}
   #moneymap .eyebrow{background:var(--yellow);color:#000}
-  #moneymap .sub{margin-top:.8vh;font-size:1.5vh;color:#9aa3c0}
-  .wb{display:grid;grid-template-columns:.82fr 1.18fr;gap:1.3vw;margin-top:1.4vh;height:67vh}
-  .wb-nodes{display:flex;flex-direction:column;gap:.7vh;overflow:hidden}
-  .wb-glabel{font-family:var(--m);font-size:1.05vh;font-weight:700;letter-spacing:1.5px;color:#7e88a8;margin:.7vh 0 .2vh}
-  .wb-glabel:first-child{margin-top:0}
-  .wb-node{display:flex;align-items:center;gap:.7vh;width:100%;text-align:left;background:#141829;border:1px solid rgba(255,255,255,.1);border-left:3px solid var(--cat,#888);border-radius:9px;padding:.72vh 1vh;color:#cdd3e6;font-family:var(--b);font-weight:700;font-size:1.4vh;cursor:pointer;transition:transform .13s,border-color .13s,background .13s}
-  .wb-node:hover{border-color:rgba(255,255,255,.4);transform:translateX(3px)}
-  .wb-node .ndico{font-size:1.7vh}
-  .wb-node .nden{margin-left:auto;font-family:var(--m);font-size:.92vh;font-weight:700;color:#69728f;letter-spacing:.5px}
-  .wb-node.on{background:linear-gradient(90deg,#1e2440,#171c30);color:#fff;border-color:var(--cat);box-shadow:0 0 0 1px var(--cat),0 6px 16px rgba(0,0,0,.45)}
-  .wb-panel{position:relative;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2vh 1.8vw;overflow:hidden}
-  .wb-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--cat,#888)}
-  .wb-phd{display:flex;align-items:center;gap:1.1vh;padding-bottom:1.3vh;margin-bottom:1.4vh;border-bottom:1px dashed rgba(255,255,255,.18)}
-  .wb-pico{font-size:3.6vh;line-height:1}
-  .wb-pnm{font-family:var(--h);font-weight:900;font-size:2.5vh;color:#fff;line-height:1}
-  .wb-pen{font-family:var(--m);font-size:1.15vh;font-weight:700;color:var(--cat,#888);margin-left:.7vh;letter-spacing:1px}
-  .wb-pcat{font-family:var(--b);font-size:1.4vh;color:#9aa3c0;margin-top:.5vh}
-  .wb-pres{display:grid;grid-template-columns:1fr 1fr;gap:1vh 1.2vw}
-  .wb-res{display:flex;gap:.7vh;align-items:flex-start;font-size:1.42vh;line-height:1.32;color:#e3e7f3;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.95vh 1.1vh;animation:rise .4s both}
-  .wb-res .ri{font-size:1.6vh;line-height:1.2}
-  .wb-tag{position:absolute;right:1.6vw;bottom:1.6vh;font-family:var(--m);font-size:1.05vh;font-weight:700;color:#69728f}
-  .wb-tag b{color:var(--yellow)}
+  #moneymap .sub{margin-top:.5vh;font-size:1.35vh;color:#9aa3c0}
+  .mn-head{position:relative;margin-top:-.4vh;padding:1.45vh 1.5vw 1.25vh;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.018));border:1px solid rgba(255,255,255,.14);box-shadow:0 18px 46px rgba(0,0,0,.34);overflow:hidden}
+  .mn-head::before{content:'';position:absolute;left:0;top:0;bottom:0;width:.38vw;background:linear-gradient(180deg,var(--blue),var(--orange) 58%,var(--teal))}
+  .mn-head::after{content:'MONEY MAP / RESOURCE GRAPH';position:absolute;right:1.2vw;top:.95vh;font-family:var(--m);font-size:.86vh;font-weight:700;letter-spacing:1.7px;color:rgba(255,255,255,.18)}
+  .mn-head h2{max-width:25ch;letter-spacing:0}
+  .mn-head h2 .o{display:inline-block;position:relative;color:var(--yellow);text-shadow:0 0 18px rgba(255,222,89,.28)}
+  .mn-head h2 .o::after{content:'';position:absolute;left:0;right:0;bottom:.15vh;height:.45vh;background:var(--orange);border:1px solid #000;z-index:-1;transform:skewX(-12deg)}
+  .mn-head-copy{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:1.4vw}
+  .mn-guide{position:relative;margin:0;max-width:68ch;color:#dfe5ff!important;font-size:1.36vh!important;line-height:1.5!important;padding:.78vh 1vw .78vh 3.3vw;background:rgba(10,13,26,.72);border:1px solid rgba(255,255,255,.13)}
+  .mn-guide::before{content:'CLICK';position:absolute;left:.85vw;top:50%;transform:translateY(-50%);font-family:var(--m);font-size:.9vh;font-weight:700;letter-spacing:1.4px;color:#000;background:var(--yellow);border:1px solid #000;padding:.22vh .42vw}
+  .mn-guide b{color:var(--yellow)}
+  .mn-head-stats{display:flex;gap:.5vw;align-items:center;justify-content:flex-end}
+  .mn-chip{min-width:4.8vw;padding:.62vh .7vw;background:#fff;color:#0a0d1a;border:2px solid #000;box-shadow:3px 3px 0 #000;text-align:center}
+  .mn-chip b{display:block;font-family:var(--h);font-size:2.05vh;line-height:.95;color:#0a0d1a}
+  .mn-chip span{display:block;margin-top:.28vh;font-family:var(--m);font-size:.76vh;font-weight:700;letter-spacing:.8px;color:#4b5563;white-space:nowrap}
+  .mn-flowcue{display:flex;align-items:center;gap:.72vw;margin:.75vh auto .55vh;width:min(58vw,760px);color:#8d98b8;font-family:var(--m);font-size:.95vh;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  .mn-flowcue .step{display:flex;align-items:center;gap:.42vw;background:#101527;border:1px solid rgba(255,255,255,.14);padding:.48vh .7vw;box-shadow:0 0 0 1px rgba(0,0,0,.45)}
+  .mn-flowcue b{color:var(--yellow)}
+  .mn-flowcue .dot{width:.52vh;height:.52vh;background:var(--blue);box-shadow:0 0 12px var(--blue)}
+  .mn-flowline{position:relative;flex:1;height:1px;background:repeating-linear-gradient(90deg,rgba(56,182,255,.25) 0 10px,transparent 10px 18px);overflow:hidden}
+  .mn-flowline::after{content:'';position:absolute;top:-.45vh;left:-10%;width:1.1vh;height:1.1vh;border-top:2px solid var(--blue);border-right:2px solid var(--blue);transform:rotate(45deg);filter:drop-shadow(0 0 8px var(--blue));animation:mnArrow 1.35s linear infinite}
+  @keyframes mnArrow{to{left:105%}}
+  .mn-wrap{position:relative;margin-top:.5vh;height:70vh}
+  .mn-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible}
+  .mn-svg path{stroke-width:2.4;stroke-linecap:round;fill:none;filter:drop-shadow(0 0 6px currentColor);opacity:.96;stroke-dasharray:10 13;animation:mnDash 1.25s linear infinite}
+  @keyframes mnDash{to{stroke-dashoffset:-46}}
+  /* 上方一级节点(精简成图标+名) */
+  .mn-top{position:relative;z-index:2;display:flex;flex-direction:column;gap:.65vh}
+  .mn-group{border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(255,255,255,.02);padding:.8vh 1vh}
+  .mn-glabel{display:flex;align-items:center;gap:.7vw;font-family:var(--h);font-weight:900;font-size:1.38vh;margin-bottom:.6vh;color:#fff}
+  .mn-glabel .s{font-family:var(--m);font-size:.9vh;color:#7e88a8;font-weight:700;letter-spacing:1px}
+  .mn-glabel .ln{flex:1;height:0;border-top:1px dashed rgba(255,255,255,.13)}
+  .mn-row{display:grid;grid-template-columns:repeat(5,1fr);gap:.8vw}
+  .mn{position:relative;display:flex;align-items:center;gap:.55vh;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:#141829;padding:.9vh 1vh;cursor:pointer;transition:transform .14s,border-color .14s,opacity .2s,box-shadow .2s}
+  .mn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.42)}
+  .mn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:10px 0 0 10px;background:var(--cat,#888)}
+  .mn-ico{font-size:1.65vh;line-height:1;margin-left:.3vh}
+  .mn-nm{font-family:var(--h);font-weight:900;font-size:1.38vh;color:#fff;line-height:1.05}
+  .mn-en{font-family:var(--m);font-size:.76vh;font-weight:700;color:#69728f;margin-left:auto;letter-spacing:.5px}
+  .mn.sel{border-color:#fff;box-shadow:0 0 0 2px #fff,0 0 22px -2px var(--cat);transform:translateY(-2px)}
+  .mn.sel::after{content:'';position:absolute;left:50%;bottom:-1.15vh;width:.75vh;height:.75vh;border-right:2px solid var(--cat);border-bottom:2px solid var(--cat);transform:translateX(-50%) rotate(45deg);filter:drop-shadow(0 0 8px var(--cat));animation:mnPulse 1s ease-in-out infinite}
+  @keyframes mnPulse{50%{bottom:-1.55vh;opacity:.45}}
+  .mn.dim{opacity:.26}
+  /* 下方资源展开区(二级节点) */
+  .mn-stage{position:absolute;left:0;right:0;bottom:0;height:38%;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1vh;text-align:center}
+  .mn-hint{font-size:1.35vh;color:#7e88a8;line-height:1.5;max-width:60%}
+  .mn-hint b{color:var(--yellow)}
+  .mn-shead{font-family:var(--h);font-weight:900;font-size:1.7vh;color:#fff}
+  .mn-shead .c{color:var(--cat,#fff)}
+  .mn-shead .s{font-family:var(--b);font-weight:400;font-size:1.25vh;color:#9aa3c0;margin-left:.6vh}
+  .mn-res-row{display:flex;gap:.9vw;justify-content:center;flex-wrap:wrap;max-width:94%}
+  .mn-res{display:flex;gap:.55vh;align-items:center;font-size:1.28vh;line-height:1.22;color:#e8ebf5;background:#171c2e;border:1px solid rgba(255,255,255,.14);border-top:2px solid var(--cat,#888);border-radius:9px;padding:.85vh 1vh;box-shadow:0 6px 18px rgba(0,0,0,.45)}
+  .mn-res .ri{font-size:1.45vh}
+  .mn-stag{font-family:var(--m);font-size:1.05vh;font-weight:700;color:#69728f}
+  .mn-stag b{color:var(--yellow)}
   :root{
     --navy:#10162f; --orange:#FF914D; --yellow:#FFDE59; --canvas:#fff1e7;
     --ink:#1a1a1a; --teal:#10B981; --blue:#38B6FF; --purple:#CB6CE6;
@@ -115,6 +148,43 @@
     color:#fff;background:var(--navy);border:2px solid #000;padding:.5vh 1.2vh;z-index:50}
   .progress{position:fixed;top:0;left:0;height:.7vh;background:var(--orange);z-index:50;transition:width .25s}
   .brandmark{position:fixed;top:2vh;left:2.4vw;height:2.8vh;z-index:50;pointer-events:none}
+  /* 首页背景光晕动画 */
+  .coverglow{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .coverglow::before,.coverglow::after{content:'';position:absolute;width:62vw;height:62vw;border-radius:50%;filter:blur(80px);opacity:.32}
+  .coverglow::before{background:radial-gradient(circle,#FF914D,transparent 68%);top:-16vw;left:-12vw;animation:drift1 15s ease-in-out infinite alternate}
+  .coverglow::after{background:radial-gradient(circle,#CB6CE6,transparent 68%);bottom:-20vw;right:-12vw;animation:drift2 19s ease-in-out infinite alternate}
+  @keyframes drift1{from{transform:translate(0,0)}to{transform:translate(13vw,9vh)}}
+  @keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-11vw,-8vh)}}
+  .slide.hasglow>*:not(.coverglow):not(.foot){position:relative;z-index:2}
+  .slide.hasglow>.foot{z-index:2}
+  .slide.hasglow>.coverglow{z-index:0}
+  @media(prefers-reduced-motion:reduce){.coverglow::before,.coverglow::after{animation:none}}
+  @media print{.coverglow{display:none}}
+  .particles{position:absolute;inset:0;pointer-events:none}
+  .slide.hasglow>.particles{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+  @media print{.particles{display:none}}
+  .aispine{width:23vw;flex-shrink:0;background:linear-gradient(155deg,#141a35,#0c1024);border:3px solid #000;box-shadow:6px 6px 0 #CB6CE6;padding:2vh 1.3vw;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .aispine::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 82% 8%,rgba(203,108,230,.28),transparent 60%);pointer-events:none}
+  .aispine>*{position:relative;z-index:1}
+  .ai-live{font-family:var(--m);font-size:1.2vh;font-weight:700;letter-spacing:1.5px;color:#38B6FF;display:flex;align-items:center;gap:.5vw;margin-bottom:1vh}
+  .ai-live .dot{width:.9vh;height:.9vh;border-radius:50%;background:#38B6FF;box-shadow:0 0 8px #38B6FF;animation:aipulse 1.4s ease-in-out infinite}
+  @keyframes aipulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+  .cover-slide{justify-content:flex-start;padding:14vh 6vw 10vh;background:#090d1d;overflow:hidden}
+  .cover-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,13,29,.7) 0%,rgba(9,13,29,.35) 45%,rgba(9,13,29,.06) 100%);z-index:1;pointer-events:none}
+  .coverhero{display:contents}
+  .covercopy{display:contents}
+  .covercopy .eyebrow{margin-bottom:2.1vh}
+  .cover-slide>.eyebrow,.cover-slide>h1,.cover-slide>.lead,.cover-slide>.sub{position:relative;z-index:20}
+  .cover-slide h1{font-size:5.9vh;line-height:.98;max-width:15ch;text-wrap:balance}
+  .cover-slide h1 .cover-en{display:block;color:var(--orange);font-size:5.05vh;line-height:.94;margin-top:.7vh;white-space:normal}
+  .cover-slide .lead{font-size:2.25vh;margin-top:2.2vh;max-width:42ch}
+  .cover-slide .sub{font-size:1.85vh;max-width:50ch;color:#cdd2e2}
+  .covermeta{position:absolute;right:6vw;top:24vh;z-index:20;width:25vw;background:#fff;color:#0a0d1a;border:3px solid #000;box-shadow:8px 8px 0 #000;padding:2vh 1.6vw}
+  .covermeta .mtag{font-family:var(--m);font-size:1vh;font-weight:700;letter-spacing:1.5px;color:var(--orange);margin-bottom:1.1vh}
+  .covermeta h3{font-family:var(--h);font-size:2.1vh;line-height:1.1;color:#0a0d1a;margin-bottom:1.2vh}
+  .covermeta .mrow{display:flex;align-items:center;justify-content:space-between;border-top:2px solid #000;padding:1vh 0;font-family:var(--m);font-size:1.05vh;font-weight:700;color:#4b5563}
+  .covermeta .mrow b{font-family:var(--h);font-size:2.5vh;color:#0a0d1a;line-height:1}
+  .covermeta .mrow:last-child{padding-bottom:0}
   .deckimg{width:100%;max-height:62vh;object-fit:contain;background:#fff;border:3px solid #000;box-shadow:var(--shadow);display:block}
   .logostrip{display:flex;gap:1.4vh;align-items:center;flex-wrap:wrap;margin-top:1.8vh}
   .logostrip img{height:5.2vh;background:#fff;border:2px solid #000;box-shadow:var(--shadow-sm);padding:.5vh 1vh;object-fit:contain}
@@ -148,6 +218,14 @@
   .card,.path{transition:transform .12s,box-shadow .12s}
   .card:hover,.path:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 #000}
   @media(prefers-reduced-motion:reduce){.slide.active *{animation:none!important}}
+  /* 背景视频 */
+  .bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .bgveil{position:absolute;inset:0;background:rgba(8,10,22,.72)}
+  .slide.hasvid>*:not(.bgvid):not(.bgveil):not(.foot){position:relative;z-index:2}
+  .slide.hasvid>.bgvid{z-index:0}
+  .slide.hasvid>.bgveil{z-index:1}
+  .slide.hasvid>.foot{z-index:2}
+  @media print{.bgvid{display:none}}
   @media print{
     html,body{background:#fff} .nav,.counter,.progress{display:none}
     .slide{display:flex!important;position:relative;page-break-after:always;width:100%;height:100vh}
@@ -162,11 +240,20 @@
 <div class="deck" id="deck">
 
   <!-- 1 COVER -->
-  <section class="slide dark active">
+  <section class="slide dark active hasglow cover-slide">
+    <div class="coverglow"></div>
+    <canvas class="particles" id="particles"></canvas>
     <span class="eyebrow">JR ACADEMY · 课程解读会</span>
-    <h1>AI 一人创业营<br><span style="color:var(--orange)">AI Solo Founder Bootcamp</span></h1>
-    <p class="lead" style="color:#fff;max-width:46ch">AI 让一个人 ≈ 一个团队 · 副业从 0 起 · 主业 1 到 10</p>
+    <h1>AI 一人创业营<span class="cover-en">AI Solo Founder Bootcamp</span></h1>
+    <p class="lead" style="color:#fff">AI 让一个人 ≈ 一个团队 · 副业从 0 起 · 主业 1 到 10</p>
     <p class="sub" style="margin-top:1.4vh">11 周澳洲华人一人创业实战营 · 三城线下 · 申请制限额</p>
+    <div class="covermeta">
+      <div class="mtag">BOOTCAMP SNAPSHOT</div>
+      <h3>不是工具课，是把项目做出来、拿到第一笔真实反馈的实战营。</h3>
+      <div class="mrow"><span>训练周期</span><b>11 周</b></div>
+      <div class="mrow"><span>线下城市</span><b>3 城</b></div>
+      <div class="mrow"><span>入营方式</span><b>申请制</b></div>
+    </div>
     <div class="foot">
       <span>今晚解读会 · 讲清「课程大纲」+「我们给你什么」</span>
       <img src="jr-logo-zh-white.png" class="logo" alt="JR Academy">
@@ -322,48 +409,60 @@
     <div class="foot"><span>对象处理 · 姚明与他的教练</span><span>09</span></div>
   </section>
 
-  <!-- 8b 互动搞钱地图 · dev-console 风格 -->
+  <!-- 8b 互动搞钱地图 · 展开树(点一级→下方放射资源+连线) -->
   <section class="slide dark" id="moneymap" style="justify-content:flex-start">
-    <span class="eyebrow">PART 1 · 搞钱地图（点卡片解锁资源）</span>
-    <h2>一个人能碰到的钱，拆成 <span class="o">10 类</span> · 你现在只看得到一半</h2>
-    <div class="dc-legend">
-      <span><i style="background:var(--blue)"></i>找钱</span>
-      <span><i style="background:var(--orange)"></i>搞钱</span>
-      <span><i style="background:var(--teal)"></i>不踩坑</span>
-      <span class="dc-ct">👆 点卡片解锁专属 · 已解锁 <span id="mapct">0</span>/11</span>
+    <span class="eyebrow">PART 1 · 搞钱地图 · 点一个看它给你什么</span>
+    <div class="mn-head">
+      <div class="mn-head-copy">
+        <div>
+          <h2>一个人能碰到的钱，拆成 <span class="o">10 类</span> · 每一类都给你一整套</h2>
+          <p class="sub mn-guide">点上面任意一格，它下面会放射出我们为这类准备的资源。这里先给地图，真东西在创业营里。</p>
+        </div>
+        <div class="mn-head-stats" aria-label="搞钱地图概览">
+          <div class="mn-chip"><b>10</b><span>机会类型</span></div>
+          <div class="mn-chip"><b>6</b><span>资源节点</span></div>
+          <div class="mn-chip"><b>3</b><span>路径分组</span></div>
+        </div>
+      </div>
     </div>
-    <div class="dc-groups">
-
-      <div class="dc-group" data-a="找钱">
-        <div class="dc-ghead">💰 找钱 <span class="sub">拿外部的钱 · 给创业补弹药</span><span class="ln"></span></div>
-        <div class="dc-row">
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">🏆</span><span class="dc-nm">黑客松</span></div><div class="dc-role">HACKATHON</div><div class="dc-free">公开：名单+奖金+官方链接</div><div class="dc-pro">选题·组队·48h demo 打法 + 往届拆解</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">🥇</span><span class="dc-nm">奖金赛</span></div><div class="dc-role">COMPETITION</div><div class="dc-free">公开：榜单+官方链接</div><div class="dc-pro">刷榜策略 + 算力 credits 对接</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">⚡</span><span class="dc-nm">免费 credits·算力</span></div><div class="dc-role">CREDITS</div><div class="dc-free">公开：清单+官方申请链接</div><div class="dc-pro">资格自检 + 申请话术 + 1v1 陪申</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">🚀</span><span class="dc-nm">加速器</span></div><div class="dc-role">ACCELERATOR</div><div class="dc-free">公开：是什么+换不换股权</div><div class="dc-pro">申请材料 + 该不该进的判断</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">🏛️</span><span class="dc-nm">政府 Grant</span></div><div class="dc-role">GRANT</div><div class="dc-free">公开：能不能申+官方链接</div><div class="dc-pro">RDTI/EMDG 清单 + 申请日历 + proposal 1v1 过稿</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
+    <div class="mn-flowcue" aria-hidden="true">
+      <span class="step"><span class="dot"></span><b>01</b> 点击一级机会</span>
+      <span class="mn-flowline"></span>
+      <span class="step"><span class="dot"></span><b>02</b> 资源树向下展开</span>
+    </div>
+    <div class="mn-wrap" id="mnwrap">
+      <svg class="mn-svg" id="mnsvg"></svg>
+      <div class="mn-top">
+        <div class="mn-group">
+          <div class="mn-glabel">💰 找钱 <span class="s">拿外部的钱 · 给创业补弹药</span><span class="ln"></span></div>
+          <div class="mn-row">
+            <div class="mn" style="--cat:#38B6FF" data-k="hack" onclick="mapLink('hack')"><span class="mn-ico">🏆</span><span class="mn-nm">黑客松</span><span class="mn-en">HACKATHON</span></div>
+            <div class="mn" style="--cat:#38B6FF" data-k="comp" onclick="mapLink('comp')"><span class="mn-ico">🥇</span><span class="mn-nm">奖金赛</span><span class="mn-en">COMPETITION</span></div>
+            <div class="mn" style="--cat:#38B6FF" data-k="credits" onclick="mapLink('credits')"><span class="mn-ico">⚡</span><span class="mn-nm">免费 credits·算力</span><span class="mn-en">CREDITS</span></div>
+            <div class="mn" style="--cat:#38B6FF" data-k="accel" onclick="mapLink('accel')"><span class="mn-ico">🚀</span><span class="mn-nm">加速器</span><span class="mn-en">ACCELERATOR</span></div>
+            <div class="mn" style="--cat:#38B6FF" data-k="grant" onclick="mapLink('grant')"><span class="mn-ico">🏛️</span><span class="mn-nm">政府 Grant</span><span class="mn-en">GRANT</span></div>
+          </div>
+        </div>
+        <div class="mn-group">
+          <div class="mn-glabel">🤝 搞钱 <span class="s">把钱真赚进来 · 可持续现金流</span><span class="ln"></span></div>
+          <div class="mn-row">
+            <div class="mn" style="--cat:#FF914D" data-k="free" onclick="mapLink('free')"><span class="mn-ico">🧑‍💻</span><span class="mn-nm">接单·外包</span><span class="mn-en">FREELANCE</span></div>
+            <div class="mn" style="--cat:#FF914D" data-k="bounty" onclick="mapLink('bounty')"><span class="mn-ico">🐛</span><span class="mn-nm">开源 Bounty</span><span class="mn-en">BOUNTY</span></div>
+            <div class="mn" style="--cat:#FF914D" data-k="rev" onclick="mapLink('rev')"><span class="mn-ico">🏪</span><span class="mn-nm">平台分成·基金</span><span class="mn-en">REV-SHARE</span></div>
+            <div class="mn" style="--cat:#FF914D" data-k="aff" onclick="mapLink('aff')"><span class="mn-ico">🔗</span><span class="mn-nm">Affiliate 佣金</span><span class="mn-en">AFFILIATE</span></div>
+            <div class="mn" style="--cat:#FF914D" data-k="mrr" onclick="mapLink('mrr')"><span class="mn-ico">📈</span><span class="mn-nm">自有产品 MRR</span><span class="mn-en">PRODUCT</span></div>
+          </div>
+        </div>
+        <div class="mn-group">
+          <div class="mn-glabel">🛡️ 不踩坑 <span class="s">别栽跟头 · 活过第 6 个月</span><span class="ln"></span></div>
+          <div class="mn-row">
+            <div class="mn" style="--cat:#10B981" data-k="comp2" onclick="mapLink('comp2')"><span class="mn-ico">🛡️</span><span class="mn-nm">澳洲合规</span><span class="mn-en">COMPLIANCE</span></div>
+          </div>
         </div>
       </div>
-
-      <div class="dc-group" data-a="搞钱">
-        <div class="dc-ghead">🤝 搞钱 <span class="sub">把钱真赚进来 · 可持续现金流</span><span class="ln"></span></div>
-        <div class="dc-row">
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">🧑‍💻</span><span class="dc-nm">接单·外包</span></div><div class="dc-role">FREELANCE</div><div class="dc-free">公开：仅提"有这条路"</div><div class="dc-pro">渠道 + 定价 + 第一单怎么拿</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">🐛</span><span class="dc-nm">开源 Bounty</span></div><div class="dc-role">BOUNTY</div><div class="dc-free">公开：仅提</div><div class="dc-pro">平台 + 怎么挑高 ROI bounty</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">🏪</span><span class="dc-nm">平台分成·基金</span></div><div class="dc-role">REV-SHARE</div><div class="dc-free">公开：仅提</div><div class="dc-pro">GPT Store · Poe 上架 + 被动收</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">🔗</span><span class="dc-nm">Affiliate 佣金</span></div><div class="dc-role">AFFILIATE</div><div class="dc-free">公开：仅提</div><div class="dc-pro">高佣工具清单 + 内容矩阵打法</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">📈</span><span class="dc-nm">自有产品 MRR</span></div><div class="dc-role">PRODUCT</div><div class="dc-free">公开：终局·前 9 种是燃料</div><div class="dc-pro">比赛·服务 → 产品化收费的转化打法</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-        </div>
+      <div class="mn-stage" id="mnstage">
+        <div class="mn-hint">👆 点上面任意一格 —— 它的资源会从下方<b>放射展开 + 连线连过来</b>。点不同的类，看我们各给了什么。</div>
       </div>
-
-      <div class="dc-group" data-a="不踩坑">
-        <div class="dc-ghead">🛡️ 不踩坑 <span class="sub">别栽跟头 · 活过第 6 个月</span><span class="ln"></span></div>
-        <div class="dc-row">
-          <div class="dc-card" onclick="mapOpen(this)"><span class="dc-bar"></span><div class="dc-hd"><span class="dc-ico">🛡️</span><span class="dc-nm">澳洲合规</span></div><div class="dc-role">COMPLIANCE</div><div class="dc-free">公开：ABN·GST·结构通用指南</div><div class="dc-pro">持牌律师过的合同·隐私模板 + 1v1</div><div class="dc-act"><span class="pre">🔓 点击解锁</span></div></div>
-          <div class="dc-note">免费雷达只给「有哪些 + 官方链接」；<b>专属层帮你"申得上 / 做得成 / 不踩坑"</b> —— 资格自检 · 申请话术 / proposal 模板 · 每 2 天活更新 · 一对一答疑。地图上每点亮一格，就是创业营比免费版多给你的东西。</div>
-        </div>
-      </div>
-
     </div>
     <div class="foot"><span>FUNNEL_PLAN §11.0 · 搞钱机会全类型地图</span><span>MAP</span></div>
   </section>
@@ -390,10 +489,21 @@
   <section class="slide">
     <span class="eyebrow">PART 2 · 4 个 Phase 全景</span>
     <h2>从 0 到 Demo Day · <span class="o">每个 Phase 一个里程碑</span></h2>
+    <div style="display:flex;gap:1.4vw;margin-top:1.4vh;align-items:stretch">
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
     <div class="phaserow"><div class="pnum">1</div><div class="pbody"><span class="wk">W0–W3</span><h3>Build &amp; Sell — 搭好 AI 大脑,做出来 + 收到钱</h3><p>先打造你的 <b>AI 第二大脑(超级记忆系统 + AI 秘书,把 Gmail / Notion / Drive 全喂进去)</b> → 选品验证 → 一周 ship 出 MVP → 接 Stripe 收第一笔真实付费。</p></div></div>
     <div class="phaserow"><div class="pnum">2</div><div class="pbody"><span class="wk">W4–W6</span><h3>Marketing Campaign — 一个人 = 一个营销团队</h3><p>搭 AI 内容工厂,把小红书 / 视频号 / X / LinkedIn / SEO·AEO 全串起来 —— <b>一个 launch 跑通 10 个渠道</b>。</p></div></div>
     <div class="phaserow"><div class="pnum">3</div><div class="pbody"><span class="wk">W7–W9</span><h3>Australia Operations — 让公司自己转 + 拿退税</h3><p>Notion 个人 ERP + AI 客服 / 财务自动化,再由<b>持牌会计师带你拿 RDTI 43.5% 退税(全球独家)</b>。</p></div></div>
     <div class="phaserow"><div class="pnum">4</div><div class="pbody"><span class="wk">W10–W11</span><h3>Scale &amp; Demo — 被看见,接进 Networking</h3><p>顶级 VC fireside(Blackbird / Square Peg 等)+ 三城联合 Demo Day + <b>VIP 晚宴</b>,把你接进澳洲华人 AI founder Networking。</p></div></div>
+      </div>
+      <div class="aispine">
+        <div class="ai-live"><span class="dot"></span>LIVE · 跟着 AI 进化</div>
+        <div style="font-size:3.4vh">🤖</div>
+        <h3 style="font-family:var(--h);font-size:2.3vh;font-weight:900;color:#fff;line-height:1.25;margin:.6vh 0 .8vh">4 个阶段<br>都随 AI 实时更新</h3>
+        <p style="font-family:var(--b);font-size:1.5vh;color:#cdd2e2;line-height:1.5">大纲不刻死 —— <b style="color:var(--yellow)">Fable 5 上周刚发布</b>,整个 AI 又往前跳一大步,工具栈 / 打法即时跟进。你学到的永远是此刻最前沿,不是过时录播。</p>
+        <div style="margin-top:auto;font-family:var(--m);font-size:1.15vh;color:#7c83a8;letter-spacing:1px">// content auto-syncs with AI frontier</div>
+      </div>
+    </div>
     <div class="foot"><span>outline.json · phases</span><span>12</span></div>
   </section>
 
@@ -441,6 +551,121 @@
     <div class="foot"><span>里程碑：10+ 篇中英文内容产出 + 营销自动化跑通</span><span>15</span></div>
   </section>
 
+  <!-- AIMKT STEP 1 -->
+  <section class="slide">
+    <span class="eyebrow">STEP 1 · 大家都知道的</span>
+    <h2>用 ChatGPT 写一条小红书</h2>
+    <p class="sub">这是 99% 的人对「用 AI 做营销」的理解 —— <b>一次性、手工、单平台</b>。</p>
+    <div style="display:flex;align-items:stretch;gap:.5vw;margin-top:2.4vh">
+      <div style="flex:1;display:flex;align-items:center;gap:.4vw">
+        <div style="flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;padding:1.6vh .8vw;text-align:center;min-height:17vh;display:flex;flex-direction:column;justify-content:center"><div style="font-size:4.2vh;margin-bottom:.6vh">🧑‍💻</div><div style="font-family:var(--h);font-size:2.1vh;font-weight:900;margin-bottom:.5vh">你</div><div style="font-family:var(--b);font-size:1.5vh;color:#555;line-height:1.4">打开浏览器</div></div>
+        <div style="font-family:var(--m);font-size:3vh;font-weight:700;color:#ff5757;flex-shrink:0">→</div>
+      </div>
+      <div style="flex:1;display:flex;align-items:center;gap:.4vw">
+        <div style="flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;padding:1.6vh .8vw;text-align:center;min-height:17vh;display:flex;flex-direction:column;justify-content:center"><div style="font-size:4.2vh;margin-bottom:.6vh">💬</div><div style="font-family:var(--h);font-size:2.1vh;font-weight:900;margin-bottom:.5vh">ChatGPT</div><div style="font-family:var(--b);font-size:1.5vh;color:#555;line-height:1.4">输入 prompt：<br>"写一条关于 X 产品的小红书"</div></div>
+        <div style="font-family:var(--m);font-size:3vh;font-weight:700;color:#ff5757;flex-shrink:0">→</div>
+      </div>
+      <div style="flex:1;display:flex;align-items:center;gap:.4vw">
+        <div style="flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;padding:1.6vh .8vw;text-align:center;min-height:17vh;display:flex;flex-direction:column;justify-content:center"><div style="font-size:4.2vh;margin-bottom:.6vh">📋</div><div style="font-family:var(--h);font-size:2.1vh;font-weight:900;margin-bottom:.5vh">复制</div><div style="font-family:var(--b);font-size:1.5vh;color:#555;line-height:1.4">粘贴到<br>小红书 App</div></div>
+        <div style="font-family:var(--m);font-size:3vh;font-weight:700;color:#ff5757;flex-shrink:0">→</div>
+      </div>
+      <div style="flex:1;display:flex;align-items:center">
+        <div style="flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;padding:1.6vh .8vw;text-align:center;min-height:17vh;display:flex;flex-direction:column;justify-content:center"><div style="font-size:4.2vh;margin-bottom:.6vh">📱</div><div style="font-family:var(--h);font-size:2.1vh;font-weight:900;margin-bottom:.5vh">发布</div><div style="font-family:var(--b);font-size:1.5vh;color:#555;line-height:1.4">手动选话题<br>+ 配 1 张图</div></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:1vw;margin-top:1.8vh">
+      <div style="flex:1;background:#fff;border:2px solid #000;padding:1.1vh 1vw"><div style="font-family:var(--m);font-size:1.25vh;color:#666;letter-spacing:1.5px;margin-bottom:.4vh">耗时</div><div style="font-family:var(--h);font-size:2vh;font-weight:900;color:#000">2 分钟 / 条</div></div>
+      <div style="flex:1;background:#fff;border:2px solid #000;padding:1.1vh 1vw"><div style="font-family:var(--m);font-size:1.25vh;color:#666;letter-spacing:1.5px;margin-bottom:.4vh">产出</div><div style="font-family:var(--h);font-size:2vh;font-weight:900;color:#000">1 平台 · 1 条</div></div>
+      <div style="flex:1;background:#fff;border:2px solid #000;padding:1.1vh 1vw"><div style="font-family:var(--m);font-size:1.25vh;color:#666;letter-spacing:1.5px;margin-bottom:.4vh">自动化程度</div><div style="font-family:var(--h);font-size:2vh;font-weight:900;color:#ff5757">0%</div></div>
+      <div style="flex:1;background:#fff;border:2px solid #000;padding:1.1vh 1vw"><div style="font-family:var(--m);font-size:1.25vh;color:#666;letter-spacing:1.5px;margin-bottom:.4vh">可扩展性</div><div style="font-family:var(--h);font-size:2vh;font-weight:900;color:#000">无 · 完全手工</div></div>
+    </div>
+    <div style="margin-top:1.8vh;padding:1.8vh 2vw;background:var(--navy);border:3px solid #000;box-shadow:6px 6px 0 #ff5757;display:flex;align-items:center;justify-content:space-between">
+      <div style="font-family:var(--h);font-size:3vh;font-weight:900;color:#fff">你以为<span style="color:var(--yellow)"> 这就是 AI Marketing</span>？</div>
+      <div style="font-family:var(--m);font-size:1.5vh;color:var(--yellow);letter-spacing:2px">↓ 看下一页</div>
+    </div>
+    <div class="foot"><span>AI Marketing 成熟度阶梯 · STEP 1</span><span>16</span></div>
+  </section>
+
+  <!-- AIMKT STEP 2 -->
+  <section class="slide">
+    <span class="eyebrow">STEP 2 · 模板化自动化</span>
+    <h2>AI 帮你<span class="o">执行</span>，你只做<span class="o">决策</span></h2>
+    <p class="sub">一次配置，每周自动跑。你的工作从「写文案」变成「审文案」。</p>
+    <div style="display:flex;align-items:stretch;gap:.4vw;margin-top:2.2vh">
+      <div style="flex:1;display:flex;align-items:center;gap:.3vw"><div style="flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;padding:1.4vh .7vw;text-align:center;min-height:22vh;display:flex;flex-direction:column"><div style="align-self:center;padding:.4vh .8vw;background:#38B6FF;color:#fff;font-family:var(--m);font-size:1.25vh;font-weight:700;letter-spacing:1.5px;margin-bottom:1vh">TRIGGER</div><div style="font-family:var(--h);font-size:2vh;font-weight:900;margin-bottom:.8vh">Cron Job</div><div style="font-family:var(--m);font-size:1.45vh;color:#444;line-height:1.5">每周一 9:00<br>自动触发</div><div style="margin-top:auto;font-family:var(--m);font-size:2.4vh;font-weight:700;color:#38B6FF">01</div></div><div style="font-family:var(--m);font-size:2.6vh;font-weight:700;color:#000;flex-shrink:0">→</div></div>
+      <div style="flex:1;display:flex;align-items:center;gap:.3vw"><div style="flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;padding:1.4vh .7vw;text-align:center;min-height:22vh;display:flex;flex-direction:column"><div style="align-self:center;padding:.4vh .8vw;background:#CB6CE6;color:#fff;font-family:var(--m);font-size:1.25vh;font-weight:700;letter-spacing:1.5px;margin-bottom:1vh">GENERATE</div><div style="font-family:var(--h);font-size:2vh;font-weight:900;margin-bottom:.8vh">AI 写文案</div><div style="font-family:var(--m);font-size:1.45vh;color:#444;line-height:1.5">按模板（hook +<br>痛点 + CTA）<br>一次出 5 条</div><div style="margin-top:auto;font-family:var(--m);font-size:2.4vh;font-weight:700;color:#CB6CE6">02</div></div><div style="font-family:var(--m);font-size:2.6vh;font-weight:700;color:#000;flex-shrink:0">→</div></div>
+      <div style="flex:1;display:flex;align-items:center;gap:.3vw"><div style="flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;padding:1.4vh .7vw;text-align:center;min-height:22vh;display:flex;flex-direction:column"><div style="align-self:center;padding:.4vh .8vw;background:#ff5757;color:#fff;font-family:var(--m);font-size:1.25vh;font-weight:700;letter-spacing:1.5px;margin-bottom:1vh">VISUAL</div><div style="font-family:var(--h);font-size:2vh;font-weight:900;margin-bottom:.8vh">AI 配图</div><div style="font-family:var(--m);font-size:1.45vh;color:#444;line-height:1.5">gpt-image /<br>Midjourney<br>按品牌色出图</div><div style="margin-top:auto;font-family:var(--m);font-size:2.4vh;font-weight:700;color:#ff5757">03</div></div><div style="font-family:var(--m);font-size:2.6vh;font-weight:700;color:#000;flex-shrink:0">→</div></div>
+      <div style="flex:1;display:flex;align-items:center;gap:.3vw"><div style="flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;padding:1.4vh .7vw;text-align:center;min-height:22vh;display:flex;flex-direction:column"><div style="align-self:center;padding:.4vh .8vw;background:#FF914D;color:#fff;font-family:var(--m);font-size:1.25vh;font-weight:700;letter-spacing:1.5px;margin-bottom:1vh">REVIEW</div><div style="font-family:var(--h);font-size:2vh;font-weight:900;margin-bottom:.8vh">推给你审</div><div style="font-family:var(--m);font-size:1.45vh;color:#444;line-height:1.5">Notion / 飞书<br>卡片 · 你点<br>"确认 ✓"</div><div style="margin-top:auto;font-family:var(--m);font-size:2.4vh;font-weight:700;color:#FF914D">04</div></div><div style="font-family:var(--m);font-size:2.6vh;font-weight:700;color:#000;flex-shrink:0">→</div></div>
+      <div style="flex:1;display:flex;align-items:center"><div style="flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;padding:1.4vh .7vw;text-align:center;min-height:22vh;display:flex;flex-direction:column"><div style="align-self:center;padding:.4vh .8vw;background:#10B981;color:#fff;font-family:var(--m);font-size:1.25vh;font-weight:700;letter-spacing:1.5px;margin-bottom:1vh">SCHEDULE</div><div style="font-family:var(--h);font-size:2vh;font-weight:900;margin-bottom:.8vh">自动排期</div><div style="font-family:var(--m);font-size:1.45vh;color:#444;line-height:1.5">Buffer 按最佳<br>时段发到<br>小红书 / X</div><div style="margin-top:auto;font-family:var(--m);font-size:2.4vh;font-weight:700;color:#10B981">05</div></div></div>
+    </div>
+    <div style="display:flex;border:3px solid #000;box-shadow:6px 6px 0 #000;margin-top:2vh">
+      <div style="flex:1;padding:1.6vh 1.4vw;background:#fff0f0;border-right:3px solid #000"><div style="font-family:var(--m);font-size:1.4vh;color:#c0392b;letter-spacing:2px;margin-bottom:.5vh;font-weight:700">BEFORE · Step 1</div><div style="font-family:var(--h);font-size:2.4vh;font-weight:900;color:#000">2 分钟 × 5 条 = 10 分钟<span style="font-size:1.5vh;color:#666;font-weight:500"> · 你写、你发、你重复</span></div></div>
+      <div style="flex:1;padding:1.6vh 1.4vw;background:#f0fdf4"><div style="font-family:var(--m);font-size:1.4vh;color:#16a34a;letter-spacing:2px;margin-bottom:.5vh;font-weight:700">NOW · Step 2</div><div style="font-family:var(--h);font-size:2.4vh;font-weight:900;color:#000">0 写作 + 5 分钟审稿<span style="font-size:1.5vh;color:#666;font-weight:500"> · AI 执行 · 你决策</span></div></div>
+    </div>
+    <div class="foot"><span>AI Marketing 成熟度阶梯 · STEP 2</span><span>17</span></div>
+  </section>
+
+  <!-- AIMKT STEP 3 -->
+  <section class="slide">
+    <div style="display:flex;align-items:center;gap:.8vw;flex-wrap:wrap;margin-bottom:1vh">
+      <span class="eyebrow" style="margin-bottom:0">STEP 3 · 自动选题 + 多平台</span>
+      <span style="padding:.7vh 1.2vw;background:#ff5757;color:#fff;font-family:var(--m);font-size:1.15vh;font-weight:700;letter-spacing:1.5px;border:2px solid #000;box-shadow:4px 4px 0 #000">BUILT WITH · 我们真实在用的 Skills</span>
+    </div>
+    <h2 style="font-size:3.6vh">从 <span class="o">内容生产者</span> 升级为 <span style="color:var(--navy)">内容架构师</span></h2>
+    <div style="display:flex;flex-direction:column;gap:.9vh;margin-top:1.6vh">
+      <div style="display:flex;align-items:stretch;border:3px solid #000;background:#eef2ff;box-shadow:4px 4px 0 #000;min-height:8.6vh"><div style="flex-shrink:0;width:13vw;background:#38B6FF;color:#fff;padding:.8vh .8vw;display:flex;flex-direction:column;justify-content:center;border-right:3px solid #000"><div style="font-family:var(--m);font-size:1.2vh;font-weight:700;letter-spacing:2px;opacity:.85">LAYER 01</div><div style="font-family:var(--h);font-size:1.85vh;font-weight:900;margin:.2vh 0">数据采集 <span style="font-size:1.3vh;opacity:.8">（信号源）</span></div></div><div style="flex:1;display:flex;align-items:center;gap:.5vw;padding:.7vh 1vw"><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">Reddit</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">r/Marketing 热帖</div></div><span style="color:#38B6FF;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">小红书 / 抖音</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">当日热点</div></div><span style="color:#38B6FF;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">Google Trends</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">关键词曲线</div></div><span style="color:#38B6FF;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">评论区情绪</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">近 7 天评论</div></div></div></div>
+      <div style="display:flex;align-items:stretch;border:3px solid #000;background:#faf5ff;box-shadow:4px 4px 0 #000;min-height:8.6vh"><div style="flex-shrink:0;width:13vw;background:#CB6CE6;color:#fff;padding:.8vh .8vw;display:flex;flex-direction:column;justify-content:center;border-right:3px solid #000"><div style="font-family:var(--m);font-size:1.2vh;font-weight:700;letter-spacing:2px;opacity:.85">LAYER 02</div><div style="font-family:var(--h);font-size:1.85vh;font-weight:900;margin:.2vh 0">选题决策</div><div style="font-family:var(--m);font-size:1.15vh;font-weight:700;background:rgba(0,0,0,.25);padding:.2vh .5vw;align-self:flex-start">/xhs-topic-picker</div></div><div style="flex:1;display:flex;align-items:center;gap:.5vw;padding:.7vh 1vw"><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">每天扫所有信号源</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">聚合 + 去重</div></div><span style="color:#CB6CE6;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">按热度 / 相关度打分</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">LLM scoring</div></div><span style="color:#CB6CE6;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">输出 Top 3 + hook</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">当日发布池</div></div></div></div>
+      <div style="display:flex;align-items:stretch;border:3px solid #000;background:#fff7ed;box-shadow:4px 4px 0 #000;min-height:8.6vh"><div style="flex-shrink:0;width:13vw;background:#FF914D;color:#fff;padding:.8vh .8vw;display:flex;flex-direction:column;justify-content:center;border-right:3px solid #000"><div style="font-family:var(--m);font-size:1.2vh;font-weight:700;letter-spacing:2px;opacity:.85">LAYER 03</div><div style="font-family:var(--h);font-size:1.85vh;font-weight:900;margin:.2vh 0">多平台生成</div><div style="font-family:var(--m);font-size:1.05vh;font-weight:700;background:rgba(0,0,0,.25);padding:.2vh .5vw;align-self:flex-start">/xhs-draft · /blog-longform-writer</div></div><div style="flex:1;display:flex;align-items:center;gap:.5vw;padding:.7vh 1vw"><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">小红书</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">400 字 · 三切角</div></div><span style="color:#FF914D;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">公众号</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">1500 字 · 排版</div></div><span style="color:#FF914D;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">LinkedIn</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">专业长文</div></div><span style="color:#FF914D;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">X</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">280 字 · 钩子</div></div></div></div>
+      <div style="display:flex;align-items:stretch;border:3px solid #000;background:#fff0f6;box-shadow:4px 4px 0 #000;min-height:8.6vh"><div style="flex-shrink:0;width:13vw;background:#ff5757;color:#fff;padding:.8vh .8vw;display:flex;flex-direction:column;justify-content:center;border-right:3px solid #000"><div style="font-family:var(--m);font-size:1.2vh;font-weight:700;letter-spacing:2px;opacity:.85">LAYER 04</div><div style="font-family:var(--h);font-size:1.85vh;font-weight:900;margin:.2vh 0">配图</div><div style="font-family:var(--m);font-size:1.15vh;font-weight:700;background:rgba(0,0,0,.25);padding:.2vh .5vw;align-self:flex-start">/xhs-poster</div></div><div style="flex:1;display:flex;align-items:center;gap:.5vw;padding:.7vh 1vw"><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">gpt-image 出图</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">各平台尺寸</div></div><span style="color:#ff5757;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">品牌色校验</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">DESIGN.md 兜底</div></div><span style="color:#ff5757;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">水印 + alt 文案</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">SEO + 版权</div></div></div></div>
+      <div style="display:flex;align-items:stretch;border:3px solid #000;background:#f0fdf4;box-shadow:4px 4px 0 #000;min-height:8.6vh"><div style="flex-shrink:0;width:13vw;background:#10B981;color:#fff;padding:.8vh .8vw;display:flex;flex-direction:column;justify-content:center;border-right:3px solid #000"><div style="font-family:var(--m);font-size:1.2vh;font-weight:700;letter-spacing:2px;opacity:.85">LAYER 05</div><div style="font-family:var(--h);font-size:1.85vh;font-weight:900;margin:.2vh 0">发布 + 追踪</div><div style="font-family:var(--m);font-size:1.15vh;font-weight:700;background:rgba(0,0,0,.25);padding:.2vh .5vw;align-self:flex-start">metrics-agent</div></div><div style="flex:1;display:flex;align-items:center;gap:.5vw;padding:.7vh 1vw"><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">4 平台自动发</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">Buffer / webhook</div></div><span style="color:#10B981;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">6h/24h/7d 取数据</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">API 回流</div></div><span style="color:#10B981;font-weight:700;font-family:var(--m)">+</span><div style="flex:1;background:#fff;border:2px solid #000;padding:.7vh .7vw"><div style="font-family:var(--b);font-size:1.55vh;font-weight:900">写入 dashboard</div><div style="font-family:var(--m);font-size:1.25vh;color:#666">Notion / admin</div></div></div></div>
+    </div>
+    <div style="margin-top:1.4vh;padding:1.2vh 1.6vw;background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;border:3px solid #000;box-shadow:6px 6px 0 #ff5757"><div style="font-family:var(--h);font-size:2.3vh;font-weight:900">你从 <span style="color:var(--yellow)">内容生产者</span>，变成 <span style="color:#10B981">内容架构师</span></div><div style="font-family:var(--m);font-size:1.45vh;color:#aaa;letter-spacing:2px">1 PIPELINE · 4 PLATFORM</div></div>
+    <div class="foot"><span>AI Marketing 成熟度阶梯 · STEP 3</span><span>18</span></div>
+  </section>
+
+  <!-- AIMKT STEP 3.5 · MASTER -->
+  <section class="slide">
+    <div style="display:flex;align-items:center;gap:.8vw;flex-wrap:wrap;margin-bottom:1vh">
+      <span class="eyebrow" style="margin-bottom:0">STEP 3.5 · 匠人做法</span>
+      <span style="padding:.7vh 1.2vw;background:#ff5757;color:#fff;font-family:var(--m);font-size:1.15vh;font-weight:700;letter-spacing:1.5px;border:2px solid #000;box-shadow:4px 4px 0 #000">1 份 Master · 全平台同步</span>
+    </div>
+    <h2 style="font-size:3.1vh"><span class="o">1 份 Master</span> 自动 fan-out 到 <span style="color:var(--navy)">N 个平台</span> · 改 1 处 = 全平台同步生效</h2>
+    <div style="display:flex;gap:1vw;align-items:stretch;margin-top:1.6vh">
+      <div style="width:15vw;flex-shrink:0;background:var(--navy);color:#fff;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:1.4vh 1vw;display:flex;flex-direction:column"><div style="font-family:var(--m);font-size:1.2vh;letter-spacing:2px;color:var(--yellow);font-weight:700;margin-bottom:.5vh">LAYER 01 · SOURCE</div><div style="font-size:3.2vh;margin-bottom:.3vh">📄</div><div style="font-family:var(--h);font-size:2.4vh;font-weight:900;margin-bottom:.6vh">MASTER</div><div style="font-family:var(--b);font-size:1.4vh;color:#ccc;line-height:1.55;margin-bottom:1vh">你是谁 / 卖给谁 / 痛点<br>· 真实数据 + 案例<br>· 品牌语气 / 红线<br>· 1 套基础高清图</div><div style="background:rgba(255,255,255,.08);padding:.6vh .7vw;margin-bottom:.8vh;border-left:3px solid var(--yellow)"><div style="font-family:var(--m);font-size:1.1vh;color:var(--yellow);letter-spacing:1.2px;font-weight:700;margin-bottom:.2vh">真实文件</div><div style="font-family:var(--m);font-size:1.4vh;color:#fff;font-weight:700">PERSONAS.md</div></div><div style="margin-top:auto;padding:.6vh .7vw;background:#ff5757;font-family:var(--m);font-size:1.25vh;font-weight:700;letter-spacing:1px">SINGLE SOURCE OF TRUTH</div></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:.7vh;min-width:0"><div style="font-family:var(--m);font-size:1.25vh;color:#666;letter-spacing:1.5px;font-weight:700">LAYER 02 · VARIANT TRANSFORMERS（per-platform skill · 并行）</div>
+        <div style="display:flex;align-items:stretch;flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000"><div style="flex-shrink:0;width:2vw;background:#ff5757;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.8vh;font-weight:900;border-right:3px solid #000">→</div><div style="flex-shrink:0;width:9vw;padding:.5vh .7vw;display:flex;flex-direction:column;justify-content:center;border-right:2px solid #000;background:#fafafa"><div style="font-size:2.1vh;line-height:1">📕</div><div style="font-family:var(--h);font-size:1.6vh;font-weight:900;color:var(--navy)">小红书</div><div style="margin-top:.2vh;font-family:var(--m);font-size:1.1vh;font-weight:700;color:#ff5757;border:1.5px solid #ff5757;padding:.1vh .4vw;align-self:flex-start">/xhs-draft</div></div><div style="flex:1;padding:.5vh .8vw;display:flex;flex-direction:column;justify-content:center;border-right:1px dashed #ddd;min-width:0"><div style="font-family:var(--m);font-size:1.1vh;color:#888;letter-spacing:1px;font-weight:700">TEXT</div><div style="font-family:var(--b);font-size:1.45vh;color:var(--navy);line-height:1.35;font-weight:600">400-600 字 · emoji + 话题 + 痛点</div></div><div style="flex:1;padding:.5vh .8vw;display:flex;flex-direction:column;justify-content:center;min-width:0"><div style="font-family:var(--m);font-size:1.1vh;color:#888;letter-spacing:1px;font-weight:700">IMAGE · /xhs-poster</div><div style="font-family:var(--b);font-size:1.45vh;color:var(--navy);line-height:1.35;font-weight:600">3:4 竖版 · 9 图集 · 标题大字</div></div></div>
+        <div style="display:flex;align-items:stretch;flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000"><div style="flex-shrink:0;width:2vw;background:#07c160;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.8vh;font-weight:900;border-right:3px solid #000">→</div><div style="flex-shrink:0;width:9vw;padding:.5vh .7vw;display:flex;flex-direction:column;justify-content:center;border-right:2px solid #000;background:#fafafa"><div style="font-size:2.1vh;line-height:1">📰</div><div style="font-family:var(--h);font-size:1.6vh;font-weight:900;color:var(--navy)">公众号</div><div style="margin-top:.2vh;font-family:var(--m);font-size:1.0vh;font-weight:700;color:#07c160;border:1.5px solid #07c160;padding:.1vh .4vw;align-self:flex-start">/blog-longform-writer</div></div><div style="flex:1;padding:.5vh .8vw;display:flex;flex-direction:column;justify-content:center;border-right:1px dashed #ddd;min-width:0"><div style="font-family:var(--m);font-size:1.1vh;color:#888;letter-spacing:1px;font-weight:700">TEXT</div><div style="font-family:var(--b);font-size:1.45vh;color:var(--navy);line-height:1.35;font-weight:600">1500-2500 字 · 排版 + 引用 + CTA</div></div><div style="flex:1;padding:.5vh .8vw;display:flex;flex-direction:column;justify-content:center;min-width:0"><div style="font-family:var(--m);font-size:1.1vh;color:#888;letter-spacing:1px;font-weight:700">IMAGE · /xhs-poster</div><div style="font-family:var(--b);font-size:1.45vh;color:var(--navy);line-height:1.35;font-weight:600">900×500 header + 内文配图</div></div></div>
+        <div style="display:flex;align-items:stretch;flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000"><div style="flex-shrink:0;width:2vw;background:#0a66c2;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.8vh;font-weight:900;border-right:3px solid #000">→</div><div style="flex-shrink:0;width:9vw;padding:.5vh .7vw;display:flex;flex-direction:column;justify-content:center;border-right:2px solid #000;background:#fafafa"><div style="font-size:2.1vh;line-height:1">💼</div><div style="font-family:var(--h);font-size:1.6vh;font-weight:900;color:var(--navy)">LinkedIn</div><div style="margin-top:.2vh;font-family:var(--m);font-size:1.1vh;font-weight:700;color:#0a66c2;border:1.5px solid #0a66c2;padding:.1vh .4vw;align-self:flex-start">linkedin-agent</div></div><div style="flex:1;padding:.5vh .8vw;display:flex;flex-direction:column;justify-content:center;border-right:1px dashed #ddd;min-width:0"><div style="font-family:var(--m);font-size:1.1vh;color:#888;letter-spacing:1px;font-weight:700">TEXT</div><div style="font-family:var(--b);font-size:1.45vh;color:var(--navy);line-height:1.35;font-weight:600">专业语气 · 长文 · 行业 hashtag</div></div><div style="flex:1;padding:.5vh .8vw;display:flex;flex-direction:column;justify-content:center;min-width:0"><div style="font-family:var(--m);font-size:1.1vh;color:#888;letter-spacing:1px;font-weight:700">IMAGE · /xhs-poster</div><div style="font-family:var(--b);font-size:1.45vh;color:var(--navy);line-height:1.35;font-weight:600">1200×627 banner · 干净排版</div></div></div>
+        <div style="display:flex;align-items:stretch;flex:1;background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000"><div style="flex-shrink:0;width:2vw;background:#38B6FF;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.8vh;font-weight:900;border-right:3px solid #000">→</div><div style="flex-shrink:0;width:9vw;padding:.5vh .7vw;display:flex;flex-direction:column;justify-content:center;border-right:2px solid #000;background:#fafafa"><div style="font-size:2.1vh;line-height:1">🔍</div><div style="font-family:var(--h);font-size:1.6vh;font-weight:900;color:var(--navy)">SEO / GEO</div><div style="margin-top:.2vh;font-family:var(--m);font-size:1.1vh;font-weight:700;color:#38B6FF;border:1.5px solid #38B6FF;padding:.1vh .4vw;align-self:flex-start">/seo-optimizer</div></div><div style="flex:1;padding:.5vh .8vw;display:flex;flex-direction:column;justify-content:center;border-right:1px dashed #ddd;min-width:0"><div style="font-family:var(--m);font-size:1.1vh;color:#888;letter-spacing:1px;font-weight:700">TEXT</div><div style="font-family:var(--b);font-size:1.45vh;color:var(--navy);line-height:1.35;font-weight:600">长尾词页 + FAQ schema</div></div><div style="flex:1;padding:.5vh .8vw;display:flex;flex-direction:column;justify-content:center;min-width:0"><div style="font-family:var(--m);font-size:1.1vh;color:#888;letter-spacing:1px;font-weight:700">IMAGE · /xhs-poster</div><div style="font-family:var(--b);font-size:1.45vh;color:var(--navy);line-height:1.35;font-weight:600">OG 图 + alt 文案</div></div></div>
+      </div>
+      <div style="width:8vw;flex-shrink:0;background:#10B981;color:var(--navy);border:3px solid #000;box-shadow:6px 6px 0 #000;padding:1vh .7vw;display:flex;flex-direction:column;justify-content:space-between"><div><div style="font-family:var(--m);font-size:1.15vh;letter-spacing:1.5px;font-weight:700;margin-bottom:.5vh;opacity:.7">LAYER 03</div><div style="font-size:2.3vh;margin-bottom:.3vh">🚀</div><div style="font-family:var(--h);font-size:1.7vh;font-weight:900;margin-bottom:.7vh;line-height:1.1">Parallel<br>Publish</div><div style="font-family:var(--b);font-size:1.25vh;line-height:1.5;opacity:.85">全平台同时发<br>错峰 schedule<br>数据回流</div></div><div style="margin-top:.7vh;padding:.3vh .5vw;background:var(--navy);color:var(--yellow);font-family:var(--m);font-size:1.1vh;font-weight:700">orchestra</div></div>
+    </div>
+    <div style="display:flex;gap:.9vw;margin-top:1.4vh">
+      <div style="flex:1;background:#000;color:#fff;padding:1vh 1.1vw;display:flex;align-items:center;gap:.8vw"><span style="background:var(--yellow);color:#000;padding:.3vh .6vw;font-family:var(--m);font-size:1.25vh;font-weight:800;letter-spacing:1.2px;white-space:nowrap">FEEDBACK</span><span style="font-family:var(--b);font-size:1.45vh;line-height:1.5">各平台互动数据 → 回流 Master → AI 学「哪类 hook / 配图在哪个平台转化好」→ 下一篇由数据驱动</span></div>
+      <div style="flex:1;background:#ff5757;color:#fff;padding:1vh 1.1vw;display:flex;align-items:center;gap:.8vw"><span style="background:#fff;color:#ff5757;padding:.3vh .6vw;font-family:var(--m);font-size:1.25vh;font-weight:800;letter-spacing:1.2px;white-space:nowrap">VS STEP 3</span><span style="font-family:var(--b);font-size:1.45vh;line-height:1.5;font-weight:600">改 1 个数据点 / hook = <b>全平台同步生效</b>，不用各平台分别改。这是<b>团队级</b> pipeline。</span></div>
+    </div>
+    <div class="foot"><span>AI Marketing 成熟度阶梯 · STEP 3.5 匠人做法</span><span>19</span></div>
+  </section>
+
+
+  <!-- 11b BOSS VIEW · AI OS MANAGER LAYER (flow) -->
+  <section class="slide dark">
+    <span class="eyebrow">老板视角 · 往下想一步(思考题)</span>
+    <h2>当真相都进了 AI OS —— 它会不会变成<span class="y">「manager 层」</span>？</h2>
+    <div style="display:flex;align-items:center;gap:1vw;margin-top:3vh">
+      <div style="flex:1;background:#16203a;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:2.2vh 1vw;text-align:center"><div style="font-size:3.4vh">🧑‍💻🧑‍🎨🧑‍🔧</div><div style="font-size:2vh;font-weight:900;color:#fff;margin-top:.8vh;font-family:var(--h)">人类员工</div><div style="font-size:1.45vh;color:#8890b0;margin-top:.3vh">汇报进度 / 提问 / 交付</div></div>
+      <div style="flex-shrink:0;text-align:center;color:var(--yellow);font-family:var(--m);font-size:1.4vh;font-weight:800">汇报 →<br><span style="color:#8890b0">← 派活</span></div>
+      <div style="flex:1.25;background:#fff;border:3px solid #000;box-shadow:6px 6px 0 #CB6CE6;padding:2.2vh 1.2vw;text-align:center"><div style="font-size:3.4vh">🧠</div><div style="font-size:2.2vh;font-weight:900;margin-top:.5vh;font-family:var(--h);color:var(--navy)">AI OS = 企业记忆 + 决策逻辑</div><div style="font-size:1.5vh;color:#666;margin-top:.5vh;line-height:1.4">读全局真相 → 对齐目标 → 拆解 + 分配 + 追踪状态</div></div>
+      <div style="flex-shrink:0;font-size:2.8vh;color:#CB6CE6;font-weight:900">→</div>
+      <div style="flex:1;background:#16203a;border:3px solid #000;box-shadow:6px 6px 0 #000;padding:2.2vh 1vw;text-align:center"><div style="font-size:3.4vh">📋</div><div style="font-size:2vh;font-weight:900;color:#fff;margin-top:.8vh;font-family:var(--h)">任务回到人 / 子 agent</div><div style="font-size:1.45vh;color:#8890b0;margin-top:.3vh">谁擅长什么，派给谁</div></div>
+    </div>
+    <div style="display:flex;gap:1.4vw;margin-top:2.6vh">
+      <div style="flex:1;background:#1a2440;border:3px solid #000;box-shadow:5px 5px 0 #CB6CE6;padding:1.6vh 1.4vw"><div style="font-family:var(--m);font-size:1.3vh;color:#CB6CE6;font-weight:800">正在发生的</div><div style="font-size:1.6vh;color:#dfe3f0;margin-top:.6vh;line-height:1.5">「协调 + 分配 + 状态追踪」这层，AI 确实在往里渗 —— 看板、派单、进度回收已经能自动跑。</div></div>
+      <div style="flex:1;background:#1a2440;border:3px solid #000;box-shadow:5px 5px 0 #ff5757;padding:1.6vh 1.4vw"><div style="font-family:var(--m);font-size:1.3vh;color:#ff5757;font-weight:800">人还守着的</div><div style="font-size:1.6vh;color:#dfe3f0;margin-top:.6vh;line-height:1.5">拍板、担责、对人的判断与信任 —— 这些 AI 接不了。manager 的「人味」部分还在人手里。</div></div>
+    </div>
+    <p style="margin-top:2vh;font-size:1.7vh;color:var(--yellow);font-weight:800;text-align:center;font-family:var(--m)">// 开放题，没标准答案 —— 但前提都一样：先有那份可信的企业 SoT</p>
+    <div class="foot"><span>来源：claude-code-master · 企业 AI OS / manager 层</span><span>20</span></div>
+  </section>
   <!-- 10 PHASE 3 -->
   <section class="slide">
     <span class="eyebrow">PHASE 3 · W7–W9 · 11 节 · 全球独家</span>
@@ -451,7 +676,7 @@
       <div class="card orange"><div class="ico">💰</div><h3>③ 拿退税 + Grant(全球独家)</h3><p>RDTI 43.5% 退税实战 + 各州 / 联邦 Grant 全景 + AI 起草 Grant 申请书。</p></div>
     </div>
     <p class="sub" style="margin-top:1.6vh"><b>这一段全世界独一份</b> —— 嘉宾是帮 5+ 客户拿过 RDTI 的持牌会计师 / Grant consultant,Reforge / On Deck 这些都没有澳洲 Grant 实战。</p>
-    <div class="foot"><span>里程碑：ABN 注册 + 提交 1 个 Grant（硬指标 #2 #3）</span><span>16</span></div>
+    <div class="foot"><span>里程碑：ABN 注册 + 提交 1 个 Grant（硬指标 #2 #3）</span><span>21</span></div>
   </section>
 
   <!-- 11 PHASE 4 -->
@@ -464,8 +689,10 @@
       <div class="card"><div class="ico">🎤</div><h3>③ 三城路演 Demo Day</h3><p>三城联合直播,每人 5min pitch;当晚 VIP 晚宴 invite-only 现场撮合成交。</p></div>
       <div class="card orange"><div class="ico">🤝</div><h3>④ 投资人对接 + 校友</h3><p>达标项目由主理人提交给对接投资机构(本地 VC / 美元·人民币基金 / MVC)+ 校友群 + 6 个月 Office Hour。</p></div>
     </div>
-    <div class="foot"><span>里程碑：路演 Demo Day 展示 + 项目提交投资机构</span><span>17</span></div>
+    <div class="foot"><span>里程碑：路演 Demo Day 展示 + 项目提交投资机构</span><span>22</span></div>
   </section>
+
+
 
   <!-- 12b SUPPORT OVERVIEW · NOT TRADITIONAL TRAINING -->
   <section class="slide dark">
@@ -480,7 +707,7 @@
       <div class="card orange"><div class="ico">💼</div><h3>外圈资源 + 投资对接</h3><p>混沌 / 极客公园 Founder Park / VC —— 帮你对接投资机构 + 提交项目。</p></div>
       <div class="card"><div class="ico">🚀</div><h3>平台 + P3 + 奖学金 + 机会雷达</h3><p>Prompt Lab / Vibe Coding + P3 学生帮你实现 + 一人奖学金 + 免费机会雷达。</p></div>
     </div>
-    <div class="foot"><span>课程之外的支持系统总览 · 一半培训一半创业</span><span>18</span></div>
+    <div class="foot"><span>课程之外的支持系统总览 · 一半培训一半创业</span><span>23</span></div>
   </section>
 
   <!-- 13 WE HAVE 1: offline -->
@@ -496,7 +723,7 @@
       </div>
     </div>
     <p class="sub" style="margin-top:1.6vh">课只排在周末,每次约 2–4h(时间不固定),其余按自己节奏自学,走完三城 cohort。</p>
-    <div class="foot"><span>outline.json · timeLength / highlights</span><span>19</span></div>
+    <div class="foot"><span>outline.json · timeLength / highlights</span><span>24</span></div>
   </section>
 
   <!-- 14 WE HAVE 2: faculty -->
@@ -519,7 +746,7 @@
       <div class="card navy"><div class="tag">嘉宾 2</div><h3>Grant consultant</h3><p>RDTI / EMDG 申请实战陪写。</p></div>
       <div class="card navy"><div class="tag">嘉宾 3</div><h3>本地 VC × 2</h3><p>Blackbird / Antler / Startmate fireside。</p></div>
     </div>
-    <div class="foot"><span>outline.json highlights · guests</span><span>20</span></div>
+    <div class="foot"><span>outline.json highlights · guests</span><span>25</span></div>
   </section>
 
   <!-- 15 WE HAVE 3: network -->
@@ -538,7 +765,7 @@
       <div class="card yellow"><div class="ico">🎖️</div><h3>AI 创业的「黄埔军校」</h3><p>一期一期毕业、校友粘性极强,期数越早越值钱 —— 首期 = 黄埔一期。毕业后校友群 + 6 个月 Office Hour 把人留在 Networking 里:「5 年后澳洲华人 AI 圈的核心节点,就是这批同学」。</p></div>
     </div>
     <p class="sub" style="color:#fff;margin-top:2vh">⚠️ Networking 是机会不是保证，潜在交易额为测算口径，不构成收入承诺。</p>
-    <div class="foot"><span>VISION · landing highlights</span><span>21</span></div>
+    <div class="foot"><span>VISION · landing highlights</span><span>26</span></div>
   </section>
 
   <!-- 16 WE HAVE 6: external network -->
@@ -572,7 +799,7 @@
       <img src="partner-afn.webp" alt="AFN">
     </div>
     <p class="sub" style="margin-top:1.4vh">⚠️ 这些是<b>资源对接 + 早期 deal flow + 项目推送,不等于保证融资</b>。外圈合作以联名 / 邀约对接推进中,不是已签约保证。</p>
-    <div class="foot"><span>PARTNERSHIP_PROGRAM_PLAN · VISION §3 三层同心圆 · investor-invite</span><span>22</span></div>
+    <div class="foot"><span>PARTNERSHIP_PROGRAM_PLAN · VISION §3 三层同心圆 · investor-invite</span><span>27</span></div>
   </section>
 
   <!-- 17 WE HAVE 4: membership -->
@@ -586,8 +813,7 @@
       <div class="card"><div class="tag">不踩坑</div><h3>澳洲合规包</h3><p>ABN / GST / structure 决策指南 + 持牌律师过的合同 / 隐私模板。</p></div>
     </div>
     <p class="sub" style="margin-top:2.4vh">三档分级：自学给清单/模板 · 标准给日历/审核 · 陪跑给 1v1。全部对齐毕业 6 项硬指标，<b>不承诺金钱</b>。</p>
-    <p class="sub">另设：公开机会雷达（<span class="mono" style="font-size:1.4vh">/blog/ai-hackathon-weekly</span>）—— 免费、全员可看的引流层。</p>
-    <div class="foot"><span>FUNNEL_PLAN §11</span><span>23</span></div>
+    <div class="foot"><span>FUNNEL_PLAN §11</span><span>28</span></div>
   </section>
 
   <!-- 17 WE HAVE 5: platform -->
@@ -603,7 +829,7 @@
       <div class="card"><div class="ico">🏆</div><h3>一人奖学金</h3><p>每期评选 1 名，学完达标 6 硬指标全额返学费。</p></div>
       <div class="card"><div class="ico">🌏</div><h3>全球可复制架构</h3><p>80% 通用核心 + 20% 澳洲本地化，未来复制到加/英/新。</p></div>
     </div>
-    <div class="foot"><span>curriculum CLAUDE.md · FUNNEL_PLAN §10 · VISION §4</span><span>24</span></div>
+    <div class="foot"><span>curriculum CLAUDE.md · FUNNEL_PLAN §10 · VISION §4</span><span>29</span></div>
   </section>
 
   <!-- 18 PRICING -->
@@ -617,7 +843,7 @@
       <div class="card yellow"><div class="tag">陪跑版 · 含 1:1</div><h3 style="font-size:4vh;color:#000">$6,800</h3><p>+ 每周 30min 1:1 教练（共 12 次）+ Grant 申请书 1v1 过稿 + Demo Day pitch 打磨。</p></div>
     </div>
     <p class="sub" style="color:#cdd2e2;margin-top:2vh">首期低开是 case study 价：用价格换飞轮初始动能（最早一批高质量节点 + 真实毕业 case）。<b style="color:var(--yellow)">现在预售 $2,400 起、定金即可锁席</b>,二期整体升价。</p>
-    <div class="foot"><span>FUNNEL_PLAN §3</span><span>25</span></div>
+    <div class="foot"><span>FUNNEL_PLAN §3</span><span>30</span></div>
   </section>
 
   <!-- 18b URGENCY · PRICE LADDER -->
@@ -630,11 +856,12 @@
       <div class="card navy"><div class="tag">二期</div><h3 style="font-size:5vh;color:#aab1c8">$3,800</h3><p>晚一期 = 多掏 $1,000+,还错过黄埔一期。</p></div>
     </div>
     <div class="card orange" style="margin-top:2.2vh"><h3>🔥 今晚交定金,锁住 $2,400 首期席位</h3><p style="font-size:1.7vh">首期 = 黄埔一期,越早进圈越值钱;三城预售只 15 席,满了只能等二期。<b>别想着「以后再说」—— 以后更贵、也挤不进首期。</b>(以上为自学陪练档;标准 / 陪跑档同步水涨船高)</p></div>
-    <div class="foot"><span>预售 $2,400 → 首期 $2,800 → 二期 $3,800 · FUNNEL_PLAN §3</span><span>26</span></div>
+    <div class="foot"><span>预售 $2,400 → 首期 $2,800 → 二期 $3,800 · FUNNEL_PLAN §3</span><span>31</span></div>
   </section>
 
   <!-- 19 JOIN / Q&A -->
-  <section class="slide dark">
+  <section class="slide dark hasvid">
+    <video class="bgvid" autoplay muted loop playsinline><source src="bg-hf.mp4" type="video/mp4"></video><div class="bgveil"></div>
     <span class="eyebrow">怎么加入</span>
     <h1>申请制 · <span style="color:var(--orange)">LinkedIn 必填</span></h1>
     <div class="grid g3" style="margin-top:2.8vh">
@@ -682,12 +909,71 @@
   render();
 </script>
 <script>
-  // 互动搞钱地图：点卡片解锁专属层 + 更新已解锁计数
-  function mapOpen(el){
-    el.classList.toggle('opened');
-    var n=document.querySelectorAll('.dc-card.opened').length;
-    var c=document.getElementById('mapct'); if(c) c.textContent=n;
+  // 互动搞钱地图 · 展开树：点一级节点 → 下方放射出它的资源子节点 + 连线
+  var MN_COL={hack:'#38B6FF',comp:'#38B6FF',credits:'#38B6FF',accel:'#38B6FF',grant:'#38B6FF',free:'#FF914D',bounty:'#FF914D',rev:'#FF914D',aff:'#FF914D',mrr:'#FF914D',comp2:'#10B981'};
+  var MN_NODE={
+    hack:{nm:'黑客松',en:'HACKATHON',tag:'找钱 · 短周期交 demo 拿现金 + 大厂算力',res:['📡 一手机会库·每2天更新','🎯 选题模板·5个agent方向','👥 cohort内部组队找队友','⏱️ 48h demo SOP+提交清单','🏆 往届获奖项目逐个拆解','📊 评审打分维度对照']},
+    comp:{nm:'奖金赛',en:'COMPETITION',tag:'找钱 · 刷一个指标 / 榜单名次',res:['🏅 在办奖金赛+榜单清单','🧮 里程碑 vs 大奖 ROI 算法','💻 刷榜 baseline 起步代码','⚡ 配套算力 credits 对接','📤 Kaggle/ARC 提交指引','🔁 一套技术两条腿打']},
+    credits:{nm:'免费 credits·算力',en:'CREDITS',tag:'找钱(省钱) · 启动期最该先薅',res:['🔗 10+家官方申请直链','✅ 资格自检表','📝 各家申请话术模板','🖥️ HF/Founders Hub 上手','🧭 1v1 帮判断申哪几家','⚠️ 哪些是坑(实测)']},
+    accel:{nm:'加速器',en:'ACCELERATOR',tag:'找钱 · 换股权换钱 + 网络 + 背书',res:['📄 YC/Antler 申请书拆解','⚖️ 该不该换股权框架','🎤 投资人 fireside 嘉宾','🗣️ Demo Day pitch 1v1','🤝 scout/投资人对接','📋 申请时间线+材料清单']},
+    grant:{nm:'政府 Grant',en:'GRANT',tag:'找钱 · 不稀释股权的政府资金',res:['🇦🇺 RDTI/EMDG/州 grant 清单','✅ 资格硬条件自检','📝 proposal 模板+研究问题写法','👩‍💼 持牌 CPA 1v1 过稿','📅 申请日历+截止提醒','💡 RDTI 43.5% 退税怎么算']},
+    free:{nm:'接单·外包',en:'FREELANCE',tag:'搞钱 · 最快的现金流',res:['🌐 Upwork/合同制渠道清单','💲 AI 服务定价模型','🗣️ 第一单 outreach 话术','📦 服务 productize 成套餐','🤝 cohort 内部需求池','📈 接单→复购→涨价路径']},
+    bounty:{nm:'开源 Bounty',en:'BOUNTY',tag:'搞钱 · 用代码直接换钱',res:['🧩 Algora/Gitcoin 平台清单','🎯 怎么挑高 ROI bounty','🔧 PR 提交+领赏流程','💰 一人接单真实案例','🏷️ 适合一人接的类型','⏱️ 时间 vs 赏金取舍']},
+    rev:{nm:'平台分成·基金',en:'REV-SHARE',tag:'搞钱 · 挂大厂市场被动收',res:['🏪 GPT Store/Poe/基金清单','📤 上架 SOP','💵 被动收入案例拆解','🔁 一个产品挂多平台','📊 哪个平台真给钱','🎁 创作者基金申请要点']},
+    aff:{nm:'Affiliate 佣金',en:'AFFILIATE',tag:'搞钱 · 零成本被动收入',res:['🔗 高佣 AI 工具返佣清单','✍️ 内容矩阵·一篇带多链','📄 落地页/追踪链路','💸 零成本起步路径','📈 转化率优化要点','🤖 用 AI 批量产内容']},
+    mrr:{nm:'自有产品 MRR',en:'PRODUCT',tag:'搞钱 · 终局，前 9 种都是燃料',res:['🗺️ 比赛/服务→产品化路线','💳 定价+订阅模型','🚀 AI Marketing OS·10渠道','👥 0→首批付费用户打法','🔄 留存/churn 把控','📊 W1 vs W11 数据看板']},
+    comp2:{nm:'澳洲合规',en:'COMPLIANCE',tag:'不踩坑 · 一个人最容易栽的地方',res:['🏢 ABN/GST/structure 决策','📜 持牌律师过的合同模板','👩‍⚖️ 税务+Grant 嘉宾把关','💬 1v1 合规答疑','⚠️ 最常踩的坑清单','🧾 发票/记账起步工具']}
+  };
+  var mnSel=null;
+  function cRect(el,base){var r=el.getBoundingClientRect(),b=base.getBoundingClientRect();return {l:r.left-b.left,t:r.top-b.top,w:r.width,h:r.height,cx:r.left-b.left+r.width/2,cy:r.top-b.top+r.height/2};}
+  function mapClear(){
+    mnSel=null;
+    document.querySelectorAll('#moneymap .mn').forEach(function(n){n.classList.remove('sel','dim');});
+    var svg=document.getElementById('mnsvg');if(svg)svg.innerHTML='';
+    var st=document.getElementById('mnstage');if(st)st.innerHTML='<div class="mn-hint">👆 点上面任意一格 —— 它的资源会从下方<b>放射展开 + 连线连过来</b>。点不同的类，看我们各给了什么。</div>';
   }
+  function mapLink(k){
+    if(mnSel===k){mapClear();return;}
+    mnSel=k;var d=MN_NODE[k];if(!d)return;var col=MN_COL[k];
+    document.querySelectorAll('#moneymap .mn').forEach(function(n){var key=n.dataset.k;n.classList.toggle('sel',key===k);n.classList.toggle('dim',key!==k);});
+    var st=document.getElementById('mnstage');
+    var cards=d.res.map(function(r){var s=r.indexOf(' ');return '<div class="mn-res" style="--cat:'+col+'"><span class="ri">'+r.slice(0,s)+'</span><span>'+r.slice(s+1)+'</span></div>';}).join('');
+    st.innerHTML='<div class="mn-shead"><span class="c" style="--cat:'+col+'">'+d.nm+'</span> · 创业营给你这些<span class="s">'+d.tag+'</span></div><div class="mn-res-row" id="mnresrow">'+cards+'</div><div class="mn-stag">这一类 · <b>'+d.res.length+'</b> 项资源 —— 点别的类看更多</div>';
+    requestAnimationFrame(function(){mapDraw(k,col);});
+  }
+  function mapDraw(k,col){
+    var wrap=document.getElementById('mnwrap'),svg=document.getElementById('mnsvg'),pn=document.querySelector('#moneymap .mn[data-k="'+k+'"]'),row=document.getElementById('mnresrow');
+    if(!wrap||!svg||!pn||!row)return;
+    svg.setAttribute('viewBox','0 0 '+wrap.clientWidth+' '+wrap.clientHeight);
+    var p=cRect(pn,wrap),px=p.cx,py=p.t+p.h,h='';
+    h='<defs><marker id="mnArrowHead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="'+col+'"/></marker></defs>';
+    [].forEach.call(row.children,function(c){var r=cRect(c,wrap),x2=r.cx,y2=r.t,
+      dy=(y2-py)*0.55, c1y=py+dy, c2y=y2-dy;  // 竖直切入切出的三次贝塞尔，平滑下垂
+      h+='<path d="M'+px.toFixed(1)+' '+py.toFixed(1)+' C'+px.toFixed(1)+' '+c1y.toFixed(1)+' '+x2.toFixed(1)+' '+c2y.toFixed(1)+' '+x2.toFixed(1)+' '+y2.toFixed(1)+'" fill="none" stroke="'+col+'" marker-end="url(#mnArrowHead)" style="color:'+col+'"/>';
+    });
+    svg.innerHTML=h;
+  }
+  mapLink('hack'); // 默认展开黑客松
+</script>
+<script>
+(function(){
+  var c=document.getElementById('particles'); if(!c)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var ctx=c.getContext('2d'),W,H,pts;
+  var N=Math.min(64,Math.round(window.innerWidth/22));
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  function init(){pts=[];for(var i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.8+.6});}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var k=0;k<pts.length;k++){var p=pts[k];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;}
+    for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,dd=Math.sqrt(dx*dx+dy*dy);if(dd<140){ctx.strokeStyle='rgba(255,145,77,'+(0.16*(1-dd/140))+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+    for(var m=0;m<pts.length;m++){var q=pts[m];ctx.fillStyle='rgba(255,255,255,.6)';ctx.beginPath();ctx.arc(q.x,q.y,q.r,0,6.3);ctx.fill();}
+  }
+  var cleared=false;
+  function frame(){var cv=c.closest('.slide'),on=cv&&cv.classList.contains('active');if(on){draw();cleared=false;}else if(!cleared){ctx.clearRect(0,0,W,H);cleared=true;}requestAnimationFrame(frame);}
+  window.addEventListener('resize',function(){resize();init();});
+  resize();init();frame();
+})();
 </script>
 </body>
 </html>
