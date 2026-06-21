@@ -7,9 +7,9 @@
   "level": "高级",
   "type": "training",
   "targetAudience": "澳洲华人专业人士（35-50 岁、150-250k+ 工资、有 5-15 年职业积累）—— senior 程序员、PM、设计师、咨询、律师、会计、医生、小公司老板/1-5 人团队创始人、准备申请 YC/Antler/Startmate 的 founder。想用 AI 做一人公司收第一笔钱、拿澳洲 Grant 退税、建立第二条收入腿、把现有业务 AI 化、或为 accelerator 申请攒 traction。",
-  "totalLessons": 59,
-  "totalSteps": 180,
-  "liveClasses": 35,
+  "totalLessons": 60,
+  "totalSteps": 182,
+  "liveClasses": 36,
   "estimatedHours": 92,
   "totalInteractiveLabs": 8,
   "timeLength": "11 周（W0 Pre-work 自学 + W1-W11 三城线下 hub-and-spoke 模式：墨尔本主场 + 悉尼/布里斯班卫星教室。每周 4h 现场 + 4-8h 自学。不录播。）",
@@ -665,7 +665,7 @@
         },
         {
           "code": "L11b",
-          "title": "[Live] 选你的 AI 秘书 — 5 方案深度对比 + 选型决策",
+          "title": "[Live] 打造 AI 第二大脑 ① 选型 — 你的 AI 秘书 5 方案深度对比",
           "description": "<h3>🎯 Agent OS 第一节：从 5 个方案里选定你接下来 4 节课要装的那个</h3><p>OPC 学员配置 AI 秘书有 5 个主流方案，定位重叠（都是个人 AI assistant），各有偏向。这节课不教装机——先选好走哪条路，后面 4 节课都按你选的方案配。</p><h4>📋 5 方案介绍</h4><ul><li><strong>① Claude Cowork（推荐 default）</strong> — Anthropic 2026 GA 的桌面 App 产品，在 Claude Desktop 里跟 Chat / Code 并列的第三个 tab。给它一个目标，它在你桌面上跑：开你的 Excel / 读本地文件 / 调 Connectors（Gmail/Drive/Notion/Slack 等）/ 按 <code>/schedule</code> 每天自动跑 / 手机 Dispatch 远程派活。<strong>不用终端、不用 npm、不用写命令，全是说人话</strong> —— 1 小时内能上手。强项：图形界面 + 非技术友好 + 已订 Claude Pro 直接用。弱项：数据走 Anthropic 云（合规敏感岗位避开）。参考 JR 自家 <code>curriculum/claude-cowork-workshop/</code> 工作坊。</li><li><strong>② OpenClaw</strong>（NousResearch 开源 CLI agent，前身 Moltbot / ClawdBot）— 类 Claude Code 的 CLI 形态，memory 用本地 markdown（<code>MEMORY.md</code> + <code>USER.md</code>）+ 可选 Mem0 向量插件。强项：本地优先 + 开源可改 + 支持 Claude 以外的 LLM（GPT / Gemini / 本地 Ollama）；弱项：要会一点终端。<strong>JR 的 4 周 OpenClaw Bootcamp 专门教这个</strong>。</li><li><strong>③ Hermes Agent</strong>（NousResearch 开源跨平台 agent）— 跟 OpenClaw 同组织出的另一款产品。文件在 <code>~/.hermes/</code>：FTS5 索引的对话 memory（STM Ring Buffer + LTM）+ 自动生成的 skills + Slack/Telegram/Discord/WhatsApp/Signal/CLI gateway。强项：手机 IM 直接对话 + 跨设备 memory 同步；弱项：编码任务不如 OpenClaw 利落。</li><li><strong>④ Lindy.ai</strong>（第三方 SaaS workflow agent）— 不开源，UI 漂亮，集成 100+ 工具（Gmail / Calendar / Slack / Salesforce / HubSpot 等开箱即用）。强项：零代码 + 集成多；弱项：$50-300/月 + 数据上他们云。</li><li><strong>⑤ 自建</strong>（Crew AI / LangGraph + Pinecone / Weaviate / Supabase pgvector）— 给会写代码 + 隐私洁癖 + 想完全控制的学员。月成本 $0-30 但要写 200-500 行 Python。</li></ul><h4>📊 决策树（直接选）</h4><ul><li><strong>选 ① Cowork 如果</strong>：① 想 1 小时内上手 + 喜欢 GUI；② 已订 Claude Pro；③ 工作在 PowerPoint / Excel / 浏览器（桌面重度用户）；④ 销售/市场/内容/HR/普通办公（不在意数据上云）；⑤ 想手机通勤路上派活</li><li><strong>选 ② OpenClaw 如果</strong>：① 律师 / 会计 / 医疗 / 合规岗（数据不能上云）；② 想用 Claude 以外的 LLM；③ 已经会一点终端 + 想完全开源可改</li><li><strong>选 ③ Hermes 如果</strong>：团队已经在用 WhatsApp / 飞书 / Slack 沟通，想直接 IM 派任务 + 跨设备同步</li><li><strong>选 ④ Lindy 如果</strong>：完全零代码 + 不想 self-host + $50-300/月预算 OK</li><li><strong>选 ⑤ 自建如果</strong>：写代码的洁癖型 + 想完全控制（OPC 阶段不推荐，做大了再说）</li></ul><h4>🎯 推荐路径</h4><p><strong>大多数 OPC 学员选 ① Claude Cowork</strong> —— 1 小时上手、GUI 操作、生态完整。隐私敏感行业（律师/会计/医疗）走 ② OpenClaw。需要团队 IM 协作走 ③ Hermes。其实大多数实战场景是 Cowork + OpenClaw 配合用 — Cowork 干桌面 GUI 活（出 PPT / 改 Excel / 写 deck），OpenClaw 干合规敏感 + IM 协作活，这节课先选主线一个走通，<strong>L11f 进阶课讲什么时候补第二个</strong>。</p>",
           "type": "Lesson",
           "isLive": true,
@@ -703,7 +703,7 @@
         },
         {
           "code": "L11c",
-          "title": "[Lab] 装机 + 基础配置 + 第一次对话验收（按你 L11b 选的方案分组）",
+          "title": "[Lab] 打造 AI 第二大脑 ② 装机 — 基础配置 + 第一次对话验收（按 L11b 选的方案分组）",
           "description": "<h3>🎯 把 L11b 选的 AI 秘书装好 + 跟它建立第一次有上下文的对话</h3><p>Lab 分 4 站点（自建路径学员自学，不在 lab），按 L11b 选的方案进对应站点，TA 1:8 陪跑。已上过 Claude Cowork Workshop 或 OpenClaw Bootcamp 的学员可以兼任 peer mentor。</p><h4>站点 ① Claude Cowork 路径（推荐 default，最快）</h4><ol><li>装 Claude Desktop App（macOS / Win）+ 登录已订的 Claude Pro</li><li>启用 Cowork tab + 配 4 个 Connectors（Gmail / Calendar / Drive / Notion 任选）</li><li>配人设：在 Cowork 系统提示里写『你是谁、写作语调、决策风格、行业术语』</li><li>第一次对话：让 Cowork 把你的产品 idea 用你语调写一篇小红书笔记 + 直接保存到 Drive 里</li><li>装第一个 Plugin（PowerPoint Plugin / Skill Marketplace 选一个）</li><li>验收：Cowork 自动出一份 5 页 PPT 的产品 demo，直接打开 PPT 文件验证</li></ol><h4>站点 ② OpenClaw 路径（OpenClaw Bootcamp 同款流程）</h4><ol><li>装 OpenClaw CLI（macOS 直装 / Win 走 WSL2）+ bun + LLM API key</li><li>配 <code>USER.md</code>（你的人设、行业、写作语调、决策风格）</li><li>配 <code>MEMORY.md</code>（W1 选好的 idea + W2 在做的 MVP）</li><li>验收：让 OpenClaw 用你的语调写一篇小红书笔记，盲测达 70% 像</li></ol><h4>站点 ③ Hermes Agent 路径</h4><ol><li>装 Hermes（pip / docker 任一）+ LLM API key</li><li>配人设到 <code>~/.hermes/</code>（同样写『你是谁』、写作语调）</li><li>启 Hermes daemon + 第一次对话（CLI 模式）</li><li>启用 Telegram gateway，手机 Telegram 跟 agent 对话，验证跨设备 memory</li><li>验收：在手机问 agent『我刚才在 CLI 里跟你说的产品 idea 是什么』，agent 答出来</li></ol><h4>站点 ④ Lindy.ai 路径</h4><ol><li>注册 Lindy.ai 账号 + 选 starter 模板</li><li>配人设到 Lindy 的 system prompt</li><li>接 Gmail / Calendar 第一个集成跑通</li><li>验收：Lindy 帮你处理一封测试邮件 → 草拟回复 draft</li></ol><h4>自建路径（自学，不在 lab）</h4><p>装 Crew AI / LangGraph + Supabase pgvector + 写 200 行最小 agent，跨进程 memory 持久化。L11f 自学课会发完整 boilerplate。</p><p><strong>关键约束</strong>：每个学员只装一个主线，别装多个浪费 W2 时间。L11f 进阶课会讲『以后想补第二个 agent 怎么办』。</p>",
           "type": "InteractiveLab",
           "isLive": false,
@@ -721,7 +721,7 @@
         },
         {
           "code": "L11d",
-          "title": "[Live] 接通公司核心数据：Gmail / Calendar / Drive / Notion / Slack 全部喂进 agent",
+          "title": "[Live] 打造 AI 第二大脑 ③ 超级记忆 — Gmail / Calendar / Drive / Notion / Slack 全部喂进 agent",
           "description": "<h3>🎯 让你的 agent 真正『知道你的公司在发生什么』</h3><p>L11b 选好方案、L11c 装机完成。这节课把<strong>公司核心数据源</strong>全部接进来 — agent 才有上下文回答 OPC 的真实问题（不接数据 = agent 只能聊天，没法干活）。</p><p><strong>5 个数据源 + 接入方式（每个 agent 路径不同，课上分别演示）</strong>：</p><ol><li><strong>Gmail / Outlook 邮件</strong>（30min） — Cowork：内置 Gmail Connector OAuth 一键 / OpenClaw：写 skill 调 Gmail API / Hermes：邮件 connector 包 / Lindy：原生集成。本地索引优先（敏感行业），邮件正文按隐私级别决策</li><li><strong>Google Calendar / Outlook Calendar</strong>（15min） — Cowork Calendar Connector / OpenClaw Calendar skill — 读未来 30 天事件 + 历史 1 年事件做画像</li><li><strong>Google Drive / OneDrive 文档</strong>（25min） — 选择性接：Working Docs / Customer 文件夹 / 财务文件夹分别接，敏感文件夹排除</li><li><strong>Notion / Confluence</strong>（20min） — Notion API integration token 或 Confluence PAT，全 workspace 索引</li><li><strong>Slack / Discord / Telegram 群消息</strong>（20min） — Hermes gateway 直接接 / Cowork 的 Slack Connector / OpenClaw 写 Slack bot skill</li><li><strong>整合验证（10min）</strong>：现场问『客户 X 最近一次邮件提到什么 + 跟我们 standup 决定了什么』，agent 同时用邮件 + Slack + Notion 回答</li></ol><p><strong>隐私 4 档决策</strong>：① 本地 only（Gmail 邮件正文 / 微信 / WhatsApp 必须）② 自建云（Supabase pgvector）③ 云端但 zero-retention（Anthropic / OpenAI zero-retention 端点）④ 完全云端（仅公开内容）。课上发数据源 × 隐私级别决策表 + 每种 agent 的隐私默认值（Cowork 默认走 Anthropic 云、OpenClaw 默认本地、Hermes 可配）。</p><p><strong>验收</strong>：现场跑通 3 个跨数据源问答 — ①『上次跟客户 X 邮件聊到的折扣』②『上周 standup 后 Notion 里更新了什么』③『我 Drive 里关于 Y 项目的所有文档』。</p>",
           "type": "Lesson",
           "isLive": true,
@@ -759,7 +759,7 @@
         },
         {
           "code": "L11e",
-          "title": "[Live] 7 个秘书任务现场 ship — 让你有『企业秘书 / 大脑』的真实感觉",
+          "title": "[Live] 打造 AI 第二大脑 ④ 干活 — 7 个秘书任务现场 ship（企业秘书 / 大脑）",
           "description": "<h3>🎯 W2 Agent OS 总收官 — 让 agent 真正接管 OPC 的日常工作</h3><p>前面 L11b/c/d 把 OpenClaw + Hermes + 数据源都装好了。这节课现场把 agent 配成『真的秘书』 —— 不是聊天玩具，是每天 8 点 push 总结、自动跟进客户、出月报的执行机器。</p><p><strong>7 个秘书任务现场配（120min，至少现场跑通 4 个，剩下 3 个作为 W2 末 deliverable）</strong>：</p><ol><li><strong>① 收件箱总结</strong>（每天 8:00 push 到 Telegram）— 重要 / 待回 / 噪音三档分类，重要邮件草拟回复 draft；用 OpenClaw skill + cron + Hermes Telegram gateway 实现</li><li><strong>② 会议笔记自动整理</strong>（Otter.ai / Granola 录音 → Hermes 入库 → AI 抽取决策清单 + action items + owner）</li><li><strong>③ 日程协调 + 客户预约</strong>（Cal.com / Calendly 接 OpenClaw skill，agent 看你日历给客户回时段，不用人工排）</li><li><strong>④ 客户跟进队列</strong>（每周一 7:00 push：最近 7 天没回的客户名单 + 上次对话上下文 + AI 草拟跟进文案）</li><li><strong>⑤ 合同审查</strong>（联动 W3 L16 AI 律师角色 — agent 看到合同 PDF 自动 review 风险点 + 生成红线清单）</li><li><strong>⑥ 财务月报</strong>（每月 1 日 8:00 push — Stripe API + Xero API 拉数据，agent 出 MRR / churn / GST 准备金 / 现金流月报）</li><li><strong>⑦ 周报生成</strong>（每周日 18:00 — agent 看本周 git commit + 邮件 + 日历 + Hermes memory，自动出『本周做了什么 / 下周要做什么 / 风险』周报）</li></ol><p><strong>课上 demo 顺序</strong>：先 ① 收件箱总结（最容易出效果），再 ⑥ 财务月报（OPC 学员最爽的），剩下当场配 1-2 个学员选感兴趣的。⑤ 合同审查留到 W3 L16 当 AI 律师课的实操联动。</p><p><strong>验收</strong>：W2 末 deliverable — 每个学员至少跑通 4 个秘书任务（每个任务交一周的 push 输出截图）。这是 Phase 1 最有『WOW』感觉的成果，学员从这一刻开始真的相信『我有秘书』。</p>",
           "type": "Lesson",
           "isLive": true,
@@ -797,7 +797,7 @@
         },
         {
           "code": "L11f",
-          "title": "[Self] 进阶 — 切换 / 双 agent 配合 / 自建 / 团队 Brain",
+          "title": "[Self] 打造 AI 第二大脑 ⑤ 进阶 — 切换 / 双 agent 配合 / 自建 / 团队 Brain",
           "description": "<h3>🎯 L11b 选了主线 agent 跑通后，这节课讲『下一步怎么演化』</h3><p>L11b-e 让你装好了一个主线 AI 秘书。这节自学课讲 4 种进阶场景：</p><h4>① 切换主线 agent（用了一段时间想换）</h4><p>用了 Cowork 半年觉得隐私顶不住 → 切 OpenClaw；用了 OpenClaw 觉得 CLI 累 → 切 Cowork。每对组合的迁移路径：导出 system prompt + memory + skill 列表 → 在新 agent 重新喂入。Cowork ↔ OpenClaw 的 USER.md / system prompt 格式有 80% 兼容（手工调一下即可）。</p><h4>② 双 agent 配合（80% 学员最终走这条）</h4><p>实战中大多数 OPC 学员最后是 <strong>Cowork + OpenClaw 配合用</strong>：Cowork 干桌面 GUI 活（出 PPT / 改 Excel / 写 deck / 跑 Connectors），OpenClaw 干合规敏感 + IM 协作 + 跨平台 daemon 任务。两套都装、各管一边，memory 不互通但任务清单分明。这节课发『双 agent 分工 SOP』：哪些任务给 Cowork、哪些给 OpenClaw、什么时候用 Hermes 跨设备同步上下文。</p><h4>③ 自建路径（Crew AI / LangGraph + Pinecone / Weaviate / Supabase pgvector）</h4><p>给会写代码 + 隐私洁癖 + 想完全控制的学员。月成本 $0-30，但要写 200-500 行 Python。课程发完整 Python boilerplate（system prompt + Supabase pgvector memory store + 一个 tool 模板），Cursor 一晚跑通。可选：Mem0 向量插件给已有 OpenClaw 加向量检索能力。</p><h4>④ 团队 Brain（Hermes 共享 daemon）</h4><p>当 OPC 长大到 2-5 人小团队时，把 Hermes 跑在公司 VPS 上做 shared memory，所有人共享一个『公司大脑』。参考 JR 内部 <code>docs/HERMES_TEAM_BRAIN_PRD.md</code>。<strong>OPC 一个人阶段先不动</strong>，团队化后再升级。</p><h4>📊 切换决策表</h4><p>课程发『何时该切 / 该补』决策矩阵：① 数据隐私升级 → 切 Cowork → OpenClaw；② 想要手机 IM 派活 → 补 Hermes；③ 团队化 → Hermes shared daemon；④ 想完全控制成本和模型 → 自建。配 5 个 OPC 真实学员演化案例（从主线一个 agent 走到多 agent / 团队 Brain 的路径）。</p>",
           "type": "Information",
           "isLive": false,
@@ -835,7 +835,7 @@
         },
         {
           "code": "L11g",
-          "title": "[Live] Agent Schedule 工作坊：5 个真实案例一起做（Claude Code / Codex / Cowork / OpenClaw 跨平台）",
+          "title": "[Live] 打造 AI 第二大脑 ⑥ 自动化 — Agent Schedule 工作坊（5 案例 · 跨平台）",
           "description": "<h3>🎯 把 agent 从『交互工具』变成『后台 worker』— 设定一次，每天自动跑</h3><p>L11e 现场配过 7 个秘书任务，那是『示范』；这节课是<strong>工作坊形式</strong>：现场每个学员配 5 个真实 schedule，跑完离场，每个都在你日历上明天起每天自动触发。</p><h4>📐 Agent Schedule 跨平台对照（30min 概念 + 配置）</h4><p>不同 agent 的 schedule 机制不一样，先讲清楚再选：</p><ul><li><strong>Claude Cowork <code>/schedule</code></strong>：内置 5 种 cadence（hourly / daily / weekly / monthly / custom），UI 配置最简单。<strong>限制：必须 Mac awake + Claude Desktop App 开着</strong>，不适合关机的人。</li><li><strong>Claude Code cron skill</strong>：通过自定义 skill + 系统 cron / launchd 调度，要写一个 wrapper script，灵活但要会一点 shell。</li><li><strong>Codex CLI 定时任务</strong>：通过系统 cron 或 OpenAI Scheduled Tasks（账号支持的话），跟 Claude Code 思路类似。</li><li><strong>OpenClaw cron</strong>：自由配 cron 表达式，可后台 daemon 常驻不依赖 Mac awake。</li><li><strong>n8n / Zapier scheduled trigger</strong>：可视化工作流编排，免装机直接 SaaS 跑（n8n self-host 月 $5-20，Zapier $20-50/月）。</li><li><strong>系统 cron / launchd / GitHub Actions cron</strong>：最底层，跑任意脚本（包括调任意 agent CLI），永远兜底方案。</li></ul><p><strong>选型决策</strong>：① Cowork 学员用 <code>/schedule</code> 直接配；② OpenClaw 学员用 cron + daemon；③ 想完全脱离本机依赖 → n8n self-host on VPS / GitHub Actions cron + 调 Claude API 直跑。</p><h4>🛠 现场工作坊：5 个案例一起配（90min · 每个 18min · TA 1:8 陪跑）</h4><ol><li><strong>案例 ① 每天 7:00 拉竞品价格 + push 邮件</strong>（适合 SaaS / 电商 OPC）— scrape 竞品 pricing page → AI 总结变化 → 给你邮箱发『今天 X 涨了 $5、Y 推了新 plan』。schedule daily 7am。</li><li><strong>案例 ② 每周一 9:00 GSC 数据 + AI SEO 周报</strong>（所有 OPC）— 调 GSC API 拉上周数据 → AI 找异常（流量掉了哪些 query / 排名突变）→ 出 200 字 weekly report。schedule weekly Mon 9am。</li><li><strong>案例 ③ 每月 1 号 8:00 财务月报</strong>（所有 OPC）— Stripe API + Xero API 拉数据 → AI 出 MRR / churn / GST 准备金 / 现金流月报 → push Telegram + 存 Drive。schedule monthly 1st 8am。</li><li><strong>案例 ④ 每周日 18:00 周报自动生成</strong>（all OPC）— git log + 邮件 + 日历 + agent memory → AI 综合『本周做了什么 / 下周要做什么 / 风险』→ Drive 存档 + Telegram push。schedule weekly Sun 6pm。</li><li><strong>案例 ⑤ 每天 22:00 git commit 总结 + daily review email</strong>（写代码的 OPC）— 看今天 git log + 关闭的 issue → AI 总结 → 早上邮件给自己『昨日做了 X / Y / Z，今天该继续 …』。schedule daily 10pm。</li></ol><h4>🎓 工作坊收尾（10min）</h4><p>每个学员展示自己 5 个 schedule 的 Cron 表达式 + 第一次跑的输出截图。<strong>验收</strong>：W2 末 deliverable — 至少 3 个 schedule 已设置好且跑过一次成功。</p><p><strong>失败模式 + 排错</strong>：① Mac 睡眠 → schedule 没跑（Cowork 学员必踩，怎么用 caffeinate / Power Nap 兜底）；② API rate limit → 加 retry + 错峰；③ 输出爆 token → 截断 / 摘要前置；④ 没人看 push → 改成卡片 dashboard / 摘要置顶；⑤ AI 答错 → 加 sanity check + alert。</p>",
           "type": "Lesson",
           "isLive": true,
@@ -2021,7 +2021,7 @@
         },
         {
           "code": "L44",
-          "title": "[Live · 嘉宾] Fireside chat 2：Antler 墨尔本 / Startmate 悉尼",
+          "title": "[Live · 嘉宾] Fireside chat 2：头部加速器创始人 / 早期投资人",
           "description": "<h3>🎯 W11 嘉宾 fireside 2：澳洲 accelerator</h3><p>Antler 和 Startmate 是澳洲最大的两个 accelerator，他们的『6-12 周项目 + $X 投资 + alumni network』模式跟这门 bootcamp 性质有重叠（都是『群体加速』），但也有差异（accelerator 拿 7-10% equity）。嘉宾讲 accelerator 的标准 + 怎么申请 + 拿到了之后怎么用、什么样的 OPC 学员适合 graduate 后申请 accelerator。</p>",
           "type": "Lesson",
           "isLive": true,
@@ -2052,8 +2052,8 @@
         },
         {
           "code": "L45",
-          "title": "[Self] OPC vs VC 路线决策表",
-          "description": "<h3>🎯 W11 末 deliverable：你最终选哪条路</h3><p>课程发『OPC vs VC 决策表』（10 维度自评），学员填完后写 200 字『我接下来 12 个月走哪条』。这一步不是强制——大多数学员的答案就是 OPC（他们最初为这个来的）。少数走向 VC 的学员，课程会帮做 intro 到 W11 嘉宾。</p>",
+          "title": "[Self] business vs VC 路线决策表",
+          "description": "<h3>🎯 W11 末 deliverable：你最终选哪条路</h3><p>课程发『business vs VC 决策表』（10 维度自评），学员填完后写 200 字『我接下来 12 个月走哪条』。这一步不是强制——大多数学员的答案就是 OPC（他们最初为这个来的）。少数走向 VC 的学员，课程会帮做 intro 到 W11 嘉宾。</p>",
           "type": "Information",
           "isLive": false,
           "duration": 60,
@@ -2061,7 +2061,7 @@
             {
               "order": 1,
               "type": "CONCEPT",
-              "title": "OPC vs VC 决策表 10 维度怎么填",
+              "title": "business vs VC 决策表 10 维度怎么填",
               "description": "逐条解释决策表 10 个维度：控制权偏好 / 增长速度需求 / 抗稀释意愿 / 市场窗口 / PMF 现状 / 团队意愿 / 财务跑道 / 生活方式诉求 / 抗汇报压力 / 退出预期。每个维度给 OPC 端和 VC 端的典型画像，学员对号入座。",
               "duration": 30
             },
@@ -2076,7 +2076,7 @@
         },
         {
           "code": "L46",
-          "title": "[Live] Demo Day Day 1 — 三城联合直播 + 每人 5min Demo",
+          "title": "[Live] Demo Day Day 1 — 三城联合路演(Roadshow)直播 + 每人 5min pitch",
           "description": "<h3>🎉 W11 Demo Day：11 周课程的高潮</h3><p>三城联合直播。每个学员 5 分钟现场展示：产品 URL（live）、当前 MRR（截图）、用户数、最有效的获客渠道、6 个月 roadmap。评审团：课程主讲老师 + W8 会计师 + W9 Grant consultant + W10/W11 两位 VC。每个学员有 2 分钟 Q&A。</p>",
           "type": "Lesson",
           "isLive": true,
@@ -2140,6 +2140,30 @@
               "title": "收尾：记录今晚的 3 个 follow-up + 进校友群",
               "description": "晚宴尾声每人写下今晚要跟进的 3 个具体动作（给谁发产品试用 / 跟谁约下周聊合伙 / 帮谁引荐客户），交换联系方式落到班级群。当场拉进 JR Solo Founder 校友群，接续毕业后 6 个月 Office Hour。",
               "duration": 30
+            }
+          ]
+        },
+        {
+          "code": "L47a",
+          "title": "[Live] 投资人对接 + 项目提交 — 把达标项目推送给对接投资机构",
+          "description": "<h3>🎯 Demo Day 之后：不止上台路演，我们主动把你的项目对接给投资人</h3><p>Demo Day（L46 路演 + L47 互为客户日）是『被看见』；这节是『被推送』——对于完成毕业硬指标、且有融资/对接意向的学员，我们把项目主动提交给网络里的投资人和投资机构。</p><p><strong>对接通道（资源对接，不保证融资）</strong>：</p><ul><li><strong>本地 VC / 天使</strong> — Demo Day 评审席的 Blackbird / Square Peg / AfterWork 等，会后由主理人定向 intro。</li><li><strong>美元 / 人民币基金</strong> — 通过极客公园 · Founder Park 等创投平台,把优质项目推送给知名基金。</li><li><strong>Melbourne Venture Club</strong> — 向本地投资机构推送项目。</li></ul><p><strong>我们帮你做的</strong>：整理一页 pitch + 数据包（traction / MRR / 用户验证）→ 匹配合适的投资机构 → 由主理人代为提交 / 引荐 → 跟进反馈。</p><p>🚨 红线：这是资源对接 + 项目推送，<strong>不承诺一定拿到投资</strong>；是否投资由投资方独立决定。</p>",
+          "type": "Lesson",
+          "isLive": true,
+          "duration": 90,
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "整理可提交的项目材料：一页 pitch + 数据包",
+              "description": "把项目整理成投资人能 30 秒看懂的一页 pitch（问题 / 方案 / traction / 团队 / ask）+ 数据包（MRR / 增长 / 用户验证证据）。没有真实 traction 不强推——先有 $1 真实付费 + 增长信号，对接才有意义。",
+              "duration": 30
+            },
+            {
+              "order": 2,
+              "type": "LIVE",
+              "title": "匹配投资机构 + 主理人定向提交 / 引荐",
+              "description": "按项目阶段 / 赛道匹配合适通道：本地 VC（Demo Day 评审席会后 intro）/ 美元·人民币基金（极客公园 Founder Park 推送）/ Melbourne Venture Club。由主理人代为提交或定向引荐，并跟进反馈。资源对接，不保证融资。",
+              "duration": 60
             }
           ]
         },

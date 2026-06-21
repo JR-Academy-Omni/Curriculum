@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 一人创业营 · 解读会</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  .plogos{display:flex;align-items:center;gap:1.4vw;margin-top:1.4vh;background:#fff;border:2px solid #000;box-shadow:var(--shadow-sm);padding:1vh 1.4vw;flex-wrap:wrap}
+  .plogos img{height:3.4vh;width:auto;object-fit:contain;display:block}
+  :root{
+    --navy:#10162f; --orange:#FF914D; --yellow:#FFDE59; --canvas:#fff1e7;
+    --ink:#1a1a1a; --teal:#10B981; --blue:#38B6FF; --purple:#CB6CE6;
+    --shadow:6px 6px 0 #000; --shadow-sm:4px 4px 0 #000;
+    --h:'Bricolage Grotesque','Noto Sans SC',sans-serif;
+    --b:'DM Sans','Noto Sans SC',sans-serif;
+    --m:'Space Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:#0a0d1a;font-family:var(--b);color:var(--ink)}
+  .deck{width:100vw;height:100vh;overflow:hidden}
+  .slide{
+    position:absolute;inset:0;width:100%;height:100%;display:none;
+    flex-direction:column;justify-content:center;
+    padding:5.2vh 6vw;background:var(--canvas);
+  }
+  .slide.active{display:flex}
+  .slide.dark{background:var(--navy);color:#fff}
+  /* typography */
+  .eyebrow{display:inline-block;font-family:var(--m);font-size:1.15vh;font-weight:700;
+    letter-spacing:2px;padding:.7vh 1.6vh;background:var(--navy);color:var(--yellow);
+    border:2px solid #000;box-shadow:var(--shadow-sm);margin-bottom:2.4vh;align-self:flex-start}
+  .dark .eyebrow{background:var(--yellow);color:#000;border-color:#000}
+  h1{font-family:var(--h);font-weight:900;font-size:6.6vh;line-height:1.04;letter-spacing:-.02em}
+  h2{font-family:var(--h);font-weight:900;font-size:4.4vh;line-height:1.1;letter-spacing:-.01em;color:var(--navy)}
+  .dark h2{color:#fff}
+  h2 .o{color:var(--orange)} h2 .y{color:var(--yellow)}
+  .sub{font-size:2.1vh;line-height:1.55;margin-top:1.8vh;max-width:62ch;color:#444}
+  .dark .sub{color:#d7dbe8}
+  .lead{font-size:2.5vh;line-height:1.5;font-weight:600;margin-top:2vh;max-width:60ch}
+  .mono{font-family:var(--m);font-size:1.4vh;letter-spacing:1.5px;color:var(--orange);font-weight:700}
+  /* grids & cards */
+  .grid{display:grid;gap:2vh;margin-top:3vh}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+  .g6{grid-template-columns:repeat(6,1fr)}
+  .card{background:#fff;border:3px solid #000;box-shadow:var(--shadow);padding:2.4vh 2.2vh}
+  .card.sm{padding:1.8vh 1.8vh;box-shadow:var(--shadow-sm)}
+  .card .ico{font-size:3.4vh;line-height:1;margin-bottom:1vh}
+  .card .tag{font-family:var(--m);font-size:1.15vh;font-weight:700;letter-spacing:1.5px;color:var(--orange)}
+  .card h3{font-family:var(--h);font-size:2.2vh;font-weight:900;color:var(--navy);margin:.6vh 0 .9vh;line-height:1.25}
+  .card p{font-size:1.55vh;line-height:1.5;color:#444}
+  .card.navy{background:var(--navy);color:#fff} .card.navy h3{color:#fff} .card.navy p{color:#cdd2e2}
+  .card.orange{background:var(--orange);color:#fff} .card.orange h3{color:#fff} .card.orange p{color:#fff8f1}
+  .card.yellow{background:var(--yellow)} .card.yellow h3{color:#000}
+  /* stat numbers */
+  .stat .num{font-family:var(--h);font-size:6.4vh;font-weight:900;color:var(--orange);line-height:1}
+  .stat .lbl{font-family:var(--b);font-size:1.55vh;font-weight:600;color:var(--navy);margin-top:.6vh}
+  .dark .stat .lbl{color:#cdd2e2}
+  /* phase rows */
+  .phaserow{display:flex;align-items:stretch;gap:1.6vh;margin-top:1.4vh}
+  .phaserow .pnum{font-family:var(--h);font-weight:900;font-size:3.2vh;color:#fff;background:var(--navy);
+    border:3px solid #000;box-shadow:var(--shadow-sm);min-width:7.5vh;display:flex;align-items:center;justify-content:center}
+  .phaserow .pbody{background:#fff;border:3px solid #000;box-shadow:var(--shadow-sm);padding:1.4vh 1.8vh;flex:1}
+  .phaserow .pbody h3{font-family:var(--h);font-size:2.1vh;font-weight:900;color:var(--navy)}
+  .phaserow .pbody .wk{font-family:var(--m);font-size:1.2vh;color:var(--orange);font-weight:700;letter-spacing:1px}
+  .phaserow .pbody p{font-size:1.45vh;color:#555;margin-top:.4vh;line-height:1.4}
+  /* lesson list */
+  .lessons{list-style:none;margin-top:1.6vh;display:grid;grid-template-columns:1fr 1fr;gap:1vh 2.4vh}
+  .lessons li{font-size:1.6vh;line-height:1.4;padding-left:0;display:flex;gap:1vh;align-items:baseline}
+  .lessons .c{font-family:var(--m);font-size:1.15vh;font-weight:700;color:#fff;background:var(--orange);
+    padding:.2vh .7vh;border:2px solid #000;white-space:nowrap}
+  .lessons.dark-list li{color:#e6e9f2}
+  .pill{display:inline-block;font-family:var(--m);font-size:1.2vh;font-weight:700;letter-spacing:1px;
+    padding:.4vh 1vh;border:2px solid #000;margin-right:.8vh;background:#fff}
+  /* big quote */
+  .quote{font-family:var(--h);font-weight:900;font-size:4.8vh;line-height:1.18;letter-spacing:-.01em;max-width:24ch}
+  .quote .hl{color:var(--orange)}
+  /* footer / nav */
+  .foot{position:absolute;bottom:2.4vh;left:6vw;right:6vw;display:flex;justify-content:space-between;
+    align-items:center;font-family:var(--m);font-size:1.15vh;letter-spacing:1px;color:#999}
+  .dark .foot{color:#6b7390}
+  .foot .logo{height:2.6vh}
+  .nav{position:fixed;bottom:2vh;left:50%;transform:translateX(-50%);display:flex;gap:1vh;z-index:50}
+  .nav button{font-family:var(--m);font-size:1.3vh;font-weight:700;background:#fff;border:2px solid #000;
+    box-shadow:3px 3px 0 #000;padding:.6vh 1.4vh;cursor:pointer}
+  .nav button:active{box-shadow:none;transform:translate(3px,3px)}
+  .counter{position:fixed;top:2.2vh;right:2.4vw;font-family:var(--m);font-size:1.3vh;font-weight:700;
+    color:#fff;background:var(--navy);border:2px solid #000;padding:.5vh 1.2vh;z-index:50}
+  .progress{position:fixed;top:0;left:0;height:.7vh;background:var(--orange);z-index:50;transition:width .25s}
+  .brandmark{position:fixed;top:2vh;left:2.4vw;height:2.8vh;z-index:50;pointer-events:none}
+  .deckimg{width:100%;max-height:62vh;object-fit:contain;background:#fff;border:3px solid #000;box-shadow:var(--shadow);display:block}
+  .logostrip{display:flex;gap:1.4vh;align-items:center;flex-wrap:wrap;margin-top:1.8vh}
+  .logostrip img{height:5.2vh;background:#fff;border:2px solid #000;box-shadow:var(--shadow-sm);padding:.5vh 1vh;object-fit:contain}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:3vh;margin-top:2.4vh}
+  .path{border:3px solid #000;box-shadow:var(--shadow);padding:2.4vh}
+  .path.side{background:var(--blue);color:#fff} .path.main{background:var(--orange);color:#fff}
+  .path h3{font-family:var(--h);font-size:2.6vh;font-weight:900;margin-bottom:1vh}
+  .path ul{list-style:none;margin-top:1vh} .path li{font-size:1.7vh;line-height:1.7;padding-left:2.4vh;position:relative}
+  .path li::before{content:'▸';position:absolute;left:0;font-weight:900}
+  /* ===== 入场动画 ===== */
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .slide.active .eyebrow{animation:rise .45s both}
+  .slide.active h1,.slide.active h2{animation:rise .5s .07s both}
+  .slide.active>.sub,.slide.active>.lead,.slide.active>.quote{animation:rise .5s .14s both}
+  .slide.active>.card{animation:rise .5s .30s both}
+  .slide.active>.lessons{animation:rise .5s .18s both}
+  .slide.active .grid>*,.slide.active .twocol>*{animation:rise .5s both}
+  .slide.active .grid>*:nth-child(1),.slide.active .twocol>*:nth-child(1){animation-delay:.16s}
+  .slide.active .grid>*:nth-child(2),.slide.active .twocol>*:nth-child(2){animation-delay:.22s}
+  .slide.active .grid>*:nth-child(3){animation-delay:.28s}
+  .slide.active .grid>*:nth-child(4){animation-delay:.34s}
+  .slide.active .grid>*:nth-child(5){animation-delay:.40s}
+  .slide.active .grid>*:nth-child(6){animation-delay:.46s}
+  .slide.active .phaserow{animation:rise .5s both}
+  .slide.active .phaserow:nth-of-type(1){animation-delay:.16s}
+  .slide.active .phaserow:nth-of-type(2){animation-delay:.26s}
+  .slide.active .phaserow:nth-of-type(3){animation-delay:.36s}
+  .slide.active .phaserow:nth-of-type(4){animation-delay:.46s}
+  .slide.active .foot{animation:rise .6s .32s both}
+  /* 卡片 hover 微动(neo-brutalism:阴影归零 + 位移) */
+  .card,.path{transition:transform .12s,box-shadow .12s}
+  .card:hover,.path:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 #000}
+  @media(prefers-reduced-motion:reduce){.slide.active *{animation:none!important}}
+  @media print{
+    html,body{background:#fff} .nav,.counter,.progress{display:none}
+    .slide{display:flex!important;position:relative;page-break-after:always;width:100%;height:100vh}
+    .slide *{animation:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="counter" id="counter">1 / 19</div>
+<img class="brandmark" id="brandmark" src="jr-logo-zh.svg" alt="JR Academy">
+<div class="deck" id="deck">
+
+  <!-- 1 COVER -->
+  <section class="slide dark active">
+    <span class="eyebrow">JR ACADEMY · 课程解读会</span>
+    <h1>AI 一人创业营<br><span style="color:var(--orange)">AI Solo Founder Bootcamp</span></h1>
+    <p class="lead" style="color:#fff;max-width:46ch">AI 让一个人 ≈ 一个团队 · 副业从 0 起 · 主业 1 到 10</p>
+    <p class="sub" style="margin-top:1.4vh">11 周澳洲华人一人创业实战营 · 三城线下 · 申请制限额</p>
+    <div class="foot">
+      <span>今晚解读会 · 讲清「课程大纲」+「我们给你什么」</span>
+      <img src="jr-logo-zh-white.png" class="logo" alt="JR Academy">
+    </div>
+  </section>
+
+  <!-- 2 AGENDA -->
+  <section class="slide">
+    <span class="eyebrow">今晚 30 分钟讲三件事</span>
+    <h2>解读会 <span class="o">Agenda</span></h2>
+    <div class="grid g3">
+      <div class="card navy"><div class="ico">🧭</div><div class="tag">PART 1</div><h3>这门课到底是什么</h3><p>不是 AI 工具课、不是 mindset 课 —— 是用 AI 创业、收到第一笔钱的实战创业营。</p></div>
+      <div class="card orange"><div class="ico">🗺️</div><div class="tag">PART 2</div><h3>11 周大纲怎么走</h3><p>4 个 Phase × 59 节课，从选品到 ship、从营销到澳洲合规、到 Demo Day。</p></div>
+      <div class="card yellow"><div class="ico">🎁</div><div class="tag">PART 3</div><h3>我们给你什么</h3><p>三城线下 + Faculty + 50 人 cohort Networking + 会员专属服务包 + 平台资源。</p></div>
+    </div>
+    <p class="sub">用 ← → 方向键翻页（空格下一页）。</p>
+    <div class="foot"><span>AI 一人创业营 · 解读会</span><span>PART 1 · 2 · 3</span></div>
+  </section>
+
+  <!-- 3 WHY NOW · MACRO -->
+  <section class="slide">
+    <span class="eyebrow">开场 · 我们所处的大环境</span>
+    <h2>为什么是<span class="o">现在</span> · 四个正在发生的变化</h2>
+    <div class="grid g2">
+      <div class="card"><div class="ico">🧠</div><h3>① AI 把创业门槛打到地板</h3><p>过去要一个团队、几个月、几十万才能做出的产品,现在一个人 + AI 几天就能 ship。等于身边随时有个全球最强大脑帮你写代码、做设计、写文案、跑分析 —— 历史上第一次,一个人真的能 ≈ 一个团队。</p></div>
+      <div class="card"><div class="ico">📉</div><h3>② 打工不再是安全牌</h3><p>全球一轮轮大裁员,打工得不停往上卷才不掉队,还要天天问自己「这个岗位会不会被 AI 取代」。给自己留一条不依赖单一雇主的现金流,正从「加分项」变成「刚需」。</p></div>
+      <div class="card"><div class="ico">🎓</div><h3>③ 毕业即难就业</h3><p>入门级岗位被 AI + 缩招双重挤压,应届找工作越来越难、对年轻人越来越不友好。与其投上百份简历石沉大海,不如早点学会为自己造机会。</p></div>
+      <div class="card"><div class="ico">🏢</div><h3>④ 老板知道该用 AI,却不会用</h3><p>都说 AI 能极大提效,但作为小公司老板:不知道自己公司具体哪里能用、怎么落地,生意 scale 不上去,还总在单打独斗。缺的不是工具,是一套落地打法 + 一圈同路人。</p></div>
+    </div>
+    <div class="foot"><span>开场 · 为什么是现在</span><span>03</span></div>
+  </section>
+
+  <!-- 4 NORTH STAR -->
+  <section class="slide dark">
+    <span class="eyebrow">PART 1 · 一句话定位</span>
+    <div class="twocol" style="align-items:center;margin-top:1vh">
+      <div>
+        <p class="quote">我们不是在卖一门 11 周的课，<br>是在建<span class="hl">「全球华人 AI 创业者的 Networking 入口」</span>。</p>
+        <p class="sub" style="margin-top:2.4vh;color:#fff">课程是入口 · cohort 是种子 · <b style="color:var(--yellow)">Networking 才是终局</b>。知识会贬值，Networking 会增值。</p>
+      </div>
+      <img class="deckimg" src="ai-solo-founder-opc-ecosystem.png" alt="一人创业营 Networking 生态">
+    </div>
+    <div class="foot"><span>VISION · 北极星</span><span>04</span></div>
+  </section>
+
+  <!-- 5 FOUNDER STORY · ACTION -->
+  <section class="slide">
+    <span class="eyebrow">PART 1 · 创始人的一个观察</span>
+    <h2>做匠人之前,我办过一个 <span class="o">100+ 人的创业者俱乐部</span></h2>
+    <p class="sub">刚开始创业时,我在布里斯班谁也不认识 —— 干脆自己拉了个创业者聚会,100 多人,每月聚一次。「身边没有同路人,那就自己造一个圈子」,就是从那时候开始的。这也正是今天创业营想给你的。</p>
+    <div class="grid g2" style="margin-top:2.2vh">
+      <div class="card orange">
+        <div class="ico">⚡</div>
+        <h3>办下来最大的感受,就两个字:ACTION</h3>
+        <p style="font-size:1.7vh">太多人逢人就说「我的创业 idea 是……」,一讲好几年,就是不动手。这样的人,能占 <b>90%</b>。</p>
+      </div>
+      <div class="card navy">
+        <div class="ico">🎯</div>
+        <h3>所以创业营不奖励「想得好」,只认「做出来」</h3>
+        <p style="font-size:1.7vh">11 周 + 6 项毕业硬指标,逼你真的 ship、真的收到第一笔钱。能走完的,就是那行动的 10%。</p>
+      </div>
+    </div>
+    <div class="foot"><span>创始人故事 · 行动哲学</span><span>05</span></div>
+  </section>
+
+  <!-- 6 YAO MING · COACH OBJECTION -->
+  <section class="slide dark">
+    <span class="eyebrow">PART 1 · 你可能会问</span>
+    <h2>「你们创业很厉害,才<span class="y">有资格教</span>?」</h2>
+    <p class="sub" style="color:#fff">姚明的教练,篮球打得没有姚明好 —— 但正是<b>教练 + 体系 + 球队</b>,把姚明练成了姚明。我们的价值不是「最牛的 founder 上台讲他多牛」,而是让 <b>你</b> 变强的那套东西:</p>
+    <div class="grid g3">
+      <div class="card"><div class="ico">🎯</div><h3>教练</h3><p>Faculty + 嘉宾 + 本地 Tutor 把你卡住的点逐个练掉,陪你练,不是听讲。</p></div>
+      <div class="card"><div class="ico">📐</div><h3>体系</h3><p>11 周经过验证的打法 + 工具栈 + 模板,照着走,不靠你一个人摸黑试错。</p></div>
+      <div class="card"><div class="ico">🤝</div><h3>球队 + 球场</h3><p>50 人 cohort + 校友 + 投资人 Networking —— 一个人练不出来,一群人能。</p></div>
+    </div>
+    <div class="card orange" style="margin-top:2vh"><h3>我们不卖「大神光环」,卖能让你变强的教练 + 体系 + Networking</h3></div>
+    <div class="foot"><span>对象处理 · 姚明与他的教练</span><span>06</span></div>
+  </section>
+
+  <!-- 7 TWO KINDS OF STARTUP -->
+  <section class="slide">
+    <span class="eyebrow">PART 1 · 一个重要区分</span>
+    <h2>创业,先分清你做的是 <span class="o">哪一种</span></h2>
+    <div class="twocol">
+      <div class="path side">
+        <h3>🦄 面向投资人的创业</h3>
+        <p style="font-size:1.6vh;margin-bottom:.6vh">VC 路线 · 融资换增长</p>
+        <ul>
+          <li>讲一个能 scale 到很大的故事,拿 VC 的钱冲增长</li>
+          <li>天花板高,有机会做成独角兽</li>
+          <li>⚠️ 但大部分死得很快 —— 商业模式没被验证,很多是「伪需求」,钱烧完就归零</li>
+        </ul>
+      </div>
+      <div class="path main">
+        <h3>💵 做 business(赚钱导向)</h3>
+        <p style="font-size:1.6vh;margin-bottom:.6vh">先有现金流 · 自己说了算</p>
+        <ul>
+          <li>做一门真能赚到钱的生意,用真实付费验证真需求</li>
+          <li>活得久、不看投资人脸色</li>
+          <li>取舍:scale 速度可能不如 startup,但稳</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card yellow" style="margin-top:1.8vh">
+      <h3>创业营先让你跑通「真有人付钱」这一步</h3>
+      <p style="font-size:1.6vh">毕业硬指标 #1 = $1 真实付费 = 先证明你做的不是伪需求。站稳了再决定要不要走 VC 放大(课里 L45「business vs VC 决策表」专门讲)。<b>两条路都给你,但绝不让你拿没验证的点子去烧钱。</b></p>
+    </div>
+    <div class="foot"><span>两种创业的区分 · L45 business vs VC 决策表</span><span>07</span></div>
+  </section>
+
+  <!-- 4 WHO -->
+  <section class="slide">
+    <span class="eyebrow">PART 1 · 这门课为谁</span>
+    <h2>你在澳洲打拼多年 · <span class="o">现在想为自己做点事</span></h2>
+    <p class="sub">你在澳洲已经干了 5–15 年，手上有份不错的专业工作 —— 也许是工程师、产品、设计，也许是律师、会计、医生、咨询顾问，或者自己开了家一两个人的小公司。年纪大概在 35–50 岁之间，到了想用 AI 给自己再开一条路的阶段。你会走下面两条路径之一：</p>
+    <div class="twocol">
+      <div class="path side">
+        <h3>🚀 副业型</h3>
+        <p style="font-size:1.6vh;margin-bottom:.6vh">在职打工的 senior</p>
+        <ul>
+          <li>不辞职 / 不雇人 / 不影响主业</li>
+          <li>用 AI 起一条副业现金流</li>
+          <li>11 周 ship 出能跑能卖的产品 / 服务</li>
+        </ul>
+      </div>
+      <div class="path main">
+        <h3>📈 主业型</h3>
+        <p style="font-size:1.6vh;margin-bottom:.6vh">已有公司 / 服务业老板</p>
+        <ul>
+          <li>用 AI 把服务 productize、同样人手赚更多</li>
+          <li>AI 接管运营琐事、释放时间</li>
+          <li>拿 RDTI 43.5% 退税 + Grant 回血</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card yellow" style="margin-top:1.8vh">
+      <h3>📚 也欢迎:想直接创业的年轻人 / 应届毕业生</h3>
+      <p style="font-size:1.6vh">就业市场难、不想先打几年工,手里有一定启动准备、想直接 all-in —— 应届直接创业坑最多,但在这里你不是一个人摸索:跟有经验的前辈同期一起做,把别人交过的学费省下来,少走两三年弯路。</p>
+    </div>
+    <div class="foot"><span>targetAudience · outline.json</span><span>08</span></div>
+  </section>
+
+  <!-- 5 THREE THINGS -->
+  <section class="slide">
+    <span class="eyebrow">PART 1 · 创业者真正缺什么</span>
+    <h2>创业路上过不去的 <span class="o">3 件事</span></h2>
+    <p class="sub">知识不缺（网上、AI 里都有，还越来越便宜）。缺的是这 3 件落地 —— 整门课就是围着它们设计的。</p>
+    <div class="grid g3">
+      <div class="card"><div class="ico">💰</div><h3>找钱</h3><p>给创业补弹药的几条路:<br><b>① 不稀释股权的钱</b> —— 澳洲 Grant / 补贴(RDTI 43.5% 退税)+ Startup credits(AWS / Anthropic / OpenAI / Google / MS,省算力工具钱)。<br><b>② 外部资本</b> —— 对接天使投资人 / 孵化器 / VC 做 fireside、Demo Day 评审、scout(资源对接,不保证融资)。</p></div>
+      <div class="card"><div class="ico">🤝</div><h3>搞钱</h3><p>真正把钱赚进来的两条路:<br><b>① 身边先成交</b> —— 同学内部需求池互相接单,第一笔 $1 真实付费常来自同侪 + VIP 晚宴现场撮合。<br><b>② 对外获客</b> —— AI Marketing OS 一个 launch 跑通 10 渠道,把服务 productize 成可复用套餐,持续拿单。</p></div>
+      <div class="card"><div class="ico">🛡️</div><h3>不踩坑 + 不孤单</h3><p>一个人最容易栽的两件事:<br><b>① 不踩坑</b> —— 澳洲合规包(ABN / GST / structure 决策 + 持牌律师过的合同 / 隐私模板)+ 税务·Grant 嘉宾把关。<br><b>② 不孤单</b> —— 50 个同阶段同路人 + Faculty + 校友,孤独期有人接得住,这条决定谁能活过第 6 个月。</p></div>
+    </div>
+    <div class="foot"><span>FUNNEL_PLAN §11 · VISION</span><span>09</span></div>
+  </section>
+
+  <!-- 6 NUMBERS -->
+  <section class="slide dark">
+    <span class="eyebrow">PART 2 · 课程总览</span>
+    <h2>11 周 · 一套完整的 <span class="y">创业操作系统</span></h2>
+    <div class="grid g4" style="margin-top:3.2vh">
+      <div class="card navy stat"><div class="num">11</div><div class="lbl">周 · 4 个 Phase</div></div>
+      <div class="card navy stat"><div class="num">60</div><div class="lbl">节课</div></div>
+      <div class="card navy stat"><div class="num">36</div><div class="lbl">场现场直播</div></div>
+      <div class="card navy stat"><div class="num">8</div><div class="lbl">个互动 Lab</div></div>
+    </div>
+    <div class="grid g3" style="margin-top:2vh">
+      <div class="card orange stat"><div class="num" style="color:#fff">3</div><div class="lbl" style="color:#fff8f1">城线下 · 墨/悉/布 hub-and-spoke</div></div>
+      <div class="card yellow stat"><div class="num" style="color:#000">92h</div><div class="lbl" style="color:#000">总学时（每周 4h 现场 + 4–8h 自学）</div></div>
+      <div class="card navy stat"><div class="num">1:8</div><div class="lbl">本地 Tutor 陪跑</div></div>
+    </div>
+    <div class="foot"><span>outline.json · timeLength / totalLessons</span><span>10</span></div>
+  </section>
+
+  <!-- 7 PHASE OVERVIEW -->
+  <section class="slide">
+    <span class="eyebrow">PART 2 · 4 个 Phase 全景</span>
+    <h2>从 0 到 Demo Day · <span class="o">每个 Phase 一个里程碑</span></h2>
+    <div class="phaserow"><div class="pnum">1</div><div class="pbody"><span class="wk">W0–W3</span><h3>Build &amp; Sell — 搭好 AI 大脑,做出来 + 收到钱</h3><p>先打造你的 <b>AI 第二大脑(超级记忆系统 + AI 秘书,把 Gmail / Notion / Drive 全喂进去)</b> → 选品验证 → 一周 ship 出 MVP → 接 Stripe 收第一笔真实付费。</p></div></div>
+    <div class="phaserow"><div class="pnum">2</div><div class="pbody"><span class="wk">W4–W6</span><h3>Marketing Campaign — 一个人 = 一个营销团队</h3><p>搭 AI 内容工厂,把小红书 / 视频号 / X / LinkedIn / SEO·AEO 全串起来 —— <b>一个 launch 跑通 10 个渠道</b>。</p></div></div>
+    <div class="phaserow"><div class="pnum">3</div><div class="pbody"><span class="wk">W7–W9</span><h3>Australia Operations — 让公司自己转 + 拿退税</h3><p>Notion 个人 ERP + AI 客服 / 财务自动化,再由<b>持牌会计师带你拿 RDTI 43.5% 退税(全球独家)</b>。</p></div></div>
+    <div class="phaserow"><div class="pnum">4</div><div class="pbody"><span class="wk">W10–W11</span><h3>Scale &amp; Demo — 被看见,接进 Networking</h3><p>顶级 VC fireside(Blackbird / Square Peg 等)+ 三城联合 Demo Day + <b>VIP 晚宴</b>,把你接进澳洲华人 AI founder Networking。</p></div></div>
+    <div class="foot"><span>outline.json · phases</span><span>11</span></div>
+  </section>
+
+  <!-- 7b NOT IT-ONLY · COMPLEMENTARY -->
+  <section class="slide dark">
+    <span class="eyebrow">PART 2 · 一个关键理解</span>
+    <h2>这门课<span class="y">不挑背景</span> · 不用你会写代码</h2>
+    <p class="sub" style="color:#fff">AI 已经把最难的部分(写代码、做设计、做分析)包了 —— 你不需要科班出身、不需要是技术人。整个大纲分 <b style="color:var(--orange)">4 大块</b> = 一家公司必须会的 4 件事,<b>没有人天生 4 块全会</b>:你强的那块去帮别人,你弱的那块别人来帮你。</p>
+    <div class="grid g4">
+      <div class="card"><div class="ico">🛠</div><h3>① 做产品</h3><p><b>工程 / 技术背景</b>强。不懂代码的人,向你买「帮我把 MVP 做出来」。</p></div>
+      <div class="card"><div class="ico">📣</div><h3>② 做营销</h3><p><b>运营 / 内容 / marketing</b>强。技术型同学,向你买「帮我把产品卖出去」。</p></div>
+      <div class="card"><div class="ico">🇦🇺</div><h3>③ 合规 + 财务</h3><p><b>会计 / 律师 / 财务背景</b>强。所有人,向你买「ABN / 退税 / 合同搞定」。</p></div>
+      <div class="card"><div class="ico">📈</div><h3>④ 业务 + 资源</h3><p><b>老板 / BD / 咨询背景</b>强。想接单的同学,向你买「帮我对接客户 / 渠道」。</p></div>
+    </div>
+    <div class="card orange" style="margin-top:2.2vh">
+      <h3>一个人的短板 = 另一个人的生意</h3>
+      <p style="font-size:1.7vh">这就是为什么 cohort 是<b>你的客户 / 合伙人 / 服务方</b>:你不需要 4 块全会,你只要在<b>一块够强</b>,再用这 50 个人补齐其余三块。</p>
+    </div>
+    <div class="foot"><span>VISION · 三层同心圆 · 互补 Networking</span><span>12</span></div>
+  </section>
+
+  <!-- 8 PHASE 1 -->
+  <section class="slide">
+    <span class="eyebrow">PHASE 1 · W0–W3 · 25 节</span>
+    <h2>Build &amp; Sell <span class="o">— 做出来 + 收到钱</span></h2>
+    <div class="grid g2">
+      <div class="card"><div class="ico">🔍</div><h3>① 选品 + 验证真需求</h3><p>用 AI 调研 Reddit / X / 小红书挖痛点,5 选 1 决策矩阵 + 定价模型 —— 先确认「真有人愿意付钱」,不做伪需求。</p></div>
+      <div class="card"><div class="ico">⌨️</div><h3>② AI Coding · 一周 ship 出 MVP</h3><p>主打 <b>Claude Code</b>(+ Cursor)实操。不用科班、不会写代码,也能做出能跑、能上线的产品。</p></div>
+      <div class="card orange"><div class="ico">🧠</div><h3>③ 打造你的 AI 第二大脑(AI 记忆系统 / AI OS)</h3><p>选 AI 秘书 → 把 Gmail / Notion / Drive / Slack 全喂进去 = <b>超级记忆系统</b> → 配 7 个秘书任务 + 定时自动跑,<b>让 AI 帮你管理、自动运行公司</b>。</p></div>
+      <div class="card"><div class="ico">💳</div><h3>④ 收第一笔真钱 + 合规</h3><p>Stripe 澳洲版接入,完成 $1 真实付费;AI 一键生成 + 律师审澳洲法律文件(隐私 / 条款 / 退款)。</p></div>
+    </div>
+    <div class="foot"><span>里程碑：AI 第二大脑跑起来 + MVP Live + 收到第一笔钱</span><span>13</span></div>
+  </section>
+
+  <!-- 9 PHASE 2 -->
+  <section class="slide">
+    <span class="eyebrow">PHASE 2 · W4–W6 · 15 节</span>
+    <h2>Marketing Campaign <span class="o">— AI 把所有渠道串起来</span></h2>
+    <div class="grid g2">
+      <div class="card"><div class="ico">🏭</div><h3>① AI 内容工厂</h3><p>选题 → 写稿 → 改稿 → 出图 → 出短视频 / 海报。一个人,产出一个团队的内容量。</p></div>
+      <div class="card"><div class="ico">📱</div><h3>② 全渠道获客</h3><p>小红书 / 视频号 / 公众号 + X / LinkedIn / ProductHunt + 中英文圈 6 大线下渠道,一节通吃。</p></div>
+      <div class="card"><div class="ico">🔎</div><h3>③ AI 时代的 SEO</h3><p>Google long-tail + AEO / GEO + E-E-A-T 结构化数据 —— 让 AI 搜索时代也能搜到你。</p></div>
+      <div class="card orange"><div class="ico">🚀</div><h3>④ AI 营销操作系统(收官)</h3><p>把上面全串起来:<b>一个 launch 自动跑通 10 个渠道</b>,营销不再靠你天天手动发。</p></div>
+    </div>
+    <div class="foot"><span>里程碑：10+ 篇中英文内容产出 + 营销自动化跑通</span><span>14</span></div>
+  </section>
+
+  <!-- 10 PHASE 3 -->
+  <section class="slide">
+    <span class="eyebrow">PHASE 3 · W7–W9 · 11 节 · 全球独家</span>
+    <h2>Australia Operations <span class="o">— 合规 + 退税</span></h2>
+    <div class="grid g3">
+      <div class="card"><div class="ico">🤖</div><h3>① 让公司自己转</h3><p>Notion 个人 ERP(CRM / 收入 / 任务一体)+ AI 客服 / 邮件自动化(OpenClaw / n8n / Zapier)+ Stripe → Xero 自动对账。</p></div>
+      <div class="card"><div class="ico">🏛</div><h3>② 公司基础财税(会计师带)</h3><p>持牌会计师手把手:公司基础会计 + GST + PAYG + BAS 申报 + 年度报税;Sole trader vs Pty Ltd 结构怎么选。</p></div>
+      <div class="card orange"><div class="ico">💰</div><h3>③ 拿退税 + Grant(全球独家)</h3><p>RDTI 43.5% 退税实战 + 各州 / 联邦 Grant 全景 + AI 起草 Grant 申请书。</p></div>
+    </div>
+    <p class="sub" style="margin-top:1.6vh"><b>这一段全世界独一份</b> —— 嘉宾是帮 5+ 客户拿过 RDTI 的持牌会计师 / Grant consultant,Reforge / On Deck 这些都没有澳洲 Grant 实战。</p>
+    <div class="foot"><span>里程碑：ABN 注册 + 提交 1 个 Grant（硬指标 #2 #3）</span><span>15</span></div>
+  </section>
+
+  <!-- 11 PHASE 4 -->
+  <section class="slide dark">
+    <span class="eyebrow">PHASE 4 · W10–W11 · 9 节</span>
+    <h2>Scale &amp; Demo <span class="y">— 融资认知 + 三城 Demo Day</span></h2>
+    <div class="grid g2">
+      <div class="card"><div class="ico">💼</div><h3>① 融资认知(选修)</h3><p>VC 入门(什么时候该融 / 不该)+ Term sheet / SAFE / 估值 + business vs VC 路线决策表 —— 想清楚要不要走融资。</p></div>
+      <div class="card"><div class="ico">🔥</div><h3>② VC Fireside + 过来人</h3><p>Blackbird / Square Peg 等顶级 VC + 头部加速器创始人 + 连续创业者,现场分享 + 看人。</p></div>
+      <div class="card"><div class="ico">🎤</div><h3>③ 三城路演 Demo Day</h3><p>三城联合直播,每人 5min pitch;当晚 VIP 晚宴 invite-only 现场撮合成交。</p></div>
+      <div class="card orange"><div class="ico">🤝</div><h3>④ 投资人对接 + 校友</h3><p>达标项目由主理人提交给对接投资机构(本地 VC / 美元·人民币基金 / MVC)+ 校友群 + 6 个月 Office Hour。</p></div>
+    </div>
+    <div class="foot"><span>里程碑：路演 Demo Day 展示 + 项目提交投资机构</span><span>16</span></div>
+  </section>
+
+  <!-- 12b SUPPORT OVERVIEW · NOT TRADITIONAL TRAINING -->
+  <section class="slide dark">
+    <span class="eyebrow">PART 3 · 除了课程,你还得到什么</span>
+    <h2>创业营不是传统培训 · <span class="y">一半培训,一半创业</span></h2>
+    <p class="sub" style="color:#fff">前一半(11 周大纲)教你「怎么做」;<b style="color:var(--yellow)">另一半是真正的创业孵化</b> —— 课程之外这一整套人 + 资源 + 网络 + 投资对接,才是你一个人能真做成的原因。</p>
+    <div class="grid g3">
+      <div class="card"><div class="ico">🏛</div><h3>三城线下 + 1:8 Tutor</h3><p>墨 / 悉 / 布现场陪跑,本地 Tutor 一对八盯你卡点。</p></div>
+      <div class="card"><div class="ico">🎓</div><h3>Faculty + 嘉宾 + 连续创业者</h3><p>11 类讲师 + 持牌会计师 / Grant consultant / VC + 过来人。</p></div>
+      <div class="card"><div class="ico">🤝</div><h3>Cohort Networking(黄埔军校)</h3><p>50 人同期 + VIP 晚宴 + 校友群 + 6 个月 Office Hour。</p></div>
+      <div class="card"><div class="ico">💎</div><h3>会员专属服务包</h3><p>找钱 / 搞钱 / 不踩坑,三档分级陪跑。</p></div>
+      <div class="card orange"><div class="ico">💼</div><h3>外圈资源 + 投资对接</h3><p>混沌 / 极客公园 Founder Park / VC —— 帮你对接投资机构 + 提交项目。</p></div>
+      <div class="card"><div class="ico">🚀</div><h3>平台 + P3 + 奖学金 + 机会雷达</h3><p>Prompt Lab / Vibe Coding + P3 学生帮你实现 + 一人奖学金 + 免费机会雷达。</p></div>
+    </div>
+    <div class="foot"><span>课程之外的支持系统总览 · 一半培训一半创业</span><span>17</span></div>
+  </section>
+
+  <!-- 13 WE HAVE 1: offline -->
+  <section class="slide">
+    <span class="eyebrow">PART 3 · 我们给你什么 ①</span>
+    <h2>三城线下 <span class="o">hub-and-spoke</span> + 本地陪跑</h2>
+    <div class="twocol" style="align-items:center">
+      <img class="deckimg" src="ai-solo-founder-three-cities.png" alt="墨尔本 / 悉尼 / 布里斯班 三城分布">
+      <div>
+        <div class="card navy sm" style="margin-bottom:1.4vh"><h3>🏙️ 墨尔本主场</h3><p>主讲现场 + 三城联合直播中心节点。</p></div>
+        <div class="card sm" style="margin-bottom:1.4vh"><h3>🛰️ 悉尼 / 布里斯班卫星教室</h3><p>本地同步上课、面对面。不录播 —— 逼你到场、逼你产出。</p></div>
+        <div class="card orange sm"><h3>🧑‍🏫 1:8 本地 Tutor</h3><p>每 8 人配一名本地 Tutor 陪跑卡点(继承 OpenClaw Bootcamp 模式)。</p></div>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:1.6vh">每周 4h 现场 + 4–8h 自主学习，学员按自己节奏走完三城 cohort。</p>
+    <div class="foot"><span>outline.json · timeLength / highlights</span><span>18</span></div>
+  </section>
+
+  <!-- 14 WE HAVE 2: faculty -->
+  <section class="slide">
+    <span class="eyebrow">PART 3 · 我们给你什么 ②</span>
+    <h2>Faculty 11 类讲师 + <span class="o">3 类真实嘉宾</span></h2>
+    <p class="sub">单独找这些人 1 年要 A$43–176k。这里打包给你。</p>
+    <div class="grid g4">
+      <div class="card sm"><h3>麦肯锡 / 战略</h3></div>
+      <div class="card sm"><h3>微软资深工程师</h3></div>
+      <div class="card sm"><h3>AI Engineer</h3></div>
+      <div class="card sm"><h3>SEO 专家</h3></div>
+      <div class="card sm"><h3>Growth consultant</h3></div>
+      <div class="card sm"><h3>Senior eng</h3></div>
+      <div class="card sm"><h3>PM / Agile 教练</h3></div>
+      <div class="card sm"><h3>连续创业者</h3></div>
+    </div>
+    <div class="grid g3" style="margin-top:1.6vh">
+      <div class="card navy"><div class="tag">嘉宾 1</div><h3>持牌会计师 / CPA</h3><p>ABN / GST / 税 · 帮 5+ 客户拿过 RDTI。</p></div>
+      <div class="card navy"><div class="tag">嘉宾 2</div><h3>Grant consultant</h3><p>RDTI / EMDG 申请实战陪写。</p></div>
+      <div class="card navy"><div class="tag">嘉宾 3</div><h3>本地 VC × 2</h3><p>Blackbird / Antler / Startmate fireside。</p></div>
+    </div>
+    <div class="foot"><span>outline.json highlights · guests</span><span>19</span></div>
+  </section>
+
+  <!-- 15 WE HAVE 3: network -->
+  <section class="slide dark">
+    <span class="eyebrow">PART 3 · 我们给你什么 ③ · 这是本体</span>
+    <h2>50 人 cohort = <span class="y">你的 5 类商业角色池</span></h2>
+    <div class="grid g5">
+      <div class="card navy sm"><div class="ico">🤝</div><h3>互相成交</h3></div>
+      <div class="card navy sm"><div class="ico">👯</div><h3>合伙人</h3></div>
+      <div class="card navy sm"><div class="ico">😇</div><h3>天使</h3></div>
+      <div class="card navy sm"><div class="ico">🛠️</div><h3>服务采购</h3></div>
+      <div class="card navy sm"><div class="ico">📢</div><h3>推荐源</h3></div>
+    </div>
+    <div class="grid g2" style="margin-top:2.4vh">
+      <div class="card orange"><div class="ico">🍷</div><h3>W11 VIP 晚宴（invite-only）</h3><p>完成 6 项硬指标的学员自动获邀，混子 / ghost 进不来。卡片撮合 + 老师/嘉宾在场 intro。</p></div>
+      <div class="card yellow"><div class="ico">🎖️</div><h3>AI 创业的「黄埔军校」</h3><p>一期一期毕业、校友粘性极强,期数越早越值钱 —— 首期 = 黄埔一期。毕业后校友群 + 6 个月 Office Hour 把人留在 Networking 里:「5 年后澳洲华人 AI 圈的核心节点,就是这批同学」。</p></div>
+    </div>
+    <p class="sub" style="color:#fff;margin-top:2vh">⚠️ Networking 是机会不是保证，潜在交易额为测算口径，不构成收入承诺。</p>
+    <div class="foot"><span>VISION · landing highlights</span><span>20</span></div>
+  </section>
+
+  <!-- 16 WE HAVE 6: external network -->
+  <section class="slide">
+    <span class="eyebrow">PART 3 · 我们给你什么 ⑥ · 外圈资源</span>
+    <h2>把你接到 <span class="o">更大的人群池 + 投资人圈</span></h2>
+    <p class="sub">课程是内圈、Faculty 是中圈,外圈是我们正在对接的合作机构和投资人 —— 让你这一个人,接入一整套 Networking。</p>
+    <div class="grid g2">
+      <div class="card">
+        <div class="tag">社区 · 创投平台 · 接到精准人群 + 资本</div>
+        <h3>🤝 社区 &amp; 创投平台</h3>
+        <p style="margin-top:.6vh"><b>混沌澳洲</b> — 创新教育社区,联名首发,会员专属价 + 联名 workshop。<br>
+        <b>极客公园 · Founder Park</b> — 中国创投圈最有影响力的创业者社区之一,能把优质项目推送给知名美元 / 人民币基金 —— 不只是媒体曝光。</p>
+        <div class="plogos">
+          <img src="partner-geekpark.svg" alt="极客公园 GeekPark" />
+          <img src="partner-founder-park.svg" alt="Founder Park · Powered by GeekPark" />
+        </div>
+      </div>
+      <div class="card navy">
+        <div class="tag">资本对接 · 把你的项目推给投资人</div>
+        <h3>💼 投资人 + 连续创业者</h3>
+        <p style="margin-top:.6vh"><b>VC / 天使</b>(Blackbird · Square Peg · AfterWork · Airtree)— fireside、Demo Day 评审、scout。<br>
+        <b>Melbourne Venture Club</b> — 向本地投资机构推送项目。<br>
+        <b>连续创业者</b> — 分享从 0 到卖掉公司踩过的坑。</p>
+      </div>
+    </div>
+    <div class="logostrip">
+      <img src="partner-hundun.jpg" alt="混沌澳洲">
+      <img src="partner-melbourne-venture-club.jpg" alt="Melbourne Venture Club">
+      <img src="partner-metatree.png" alt="Metatree">
+      <img src="partner-afn.webp" alt="AFN">
+    </div>
+    <p class="sub" style="margin-top:1.4vh">⚠️ 这些是<b>资源对接 + 早期 deal flow + 项目推送,不等于保证融资</b>。外圈合作以联名 / 邀约对接推进中,不是已签约保证。</p>
+    <div class="foot"><span>PARTNERSHIP_PROGRAM_PLAN · VISION §3 三层同心圆 · investor-invite</span><span>21</span></div>
+  </section>
+
+  <!-- 17 WE HAVE 4: membership -->
+  <section class="slide">
+    <span class="eyebrow">PART 3 · 我们给你什么 ④ · 会员专属服务包</span>
+    <h2>报名后才有 · <span class="o">按「找钱 / 搞钱 / 不踩坑」分级</span></h2>
+    <div class="grid g4">
+      <div class="card"><div class="tag">找钱</div><h3>Grant 申请陪跑</h3><p>RDTI / EMDG / 州 grant 清单 + 模板 → 截止提醒 → 1v1 过稿（持牌 CPA）。</p></div>
+      <div class="card"><div class="tag">找钱（省钱）</div><h3>Startup credits 陪申</h3><p>AWS / Anthropic / OpenAI / Google / MS credits，省 $5–50k 算力工具钱。</p></div>
+      <div class="card"><div class="tag">搞钱</div><h3>同学需求池</h3><p>进群可发可接需求 + VIP 晚宴现场撮合 + 主理人定向撮合。</p></div>
+      <div class="card"><div class="tag">不踩坑</div><h3>澳洲合规包</h3><p>ABN / GST / structure 决策指南 + 持牌律师过的合同 / 隐私模板。</p></div>
+    </div>
+    <p class="sub" style="margin-top:2.4vh">三档分级：自学给清单/模板 · 标准给日历/审核 · 陪跑给 1v1。全部对齐毕业 6 项硬指标，<b>不承诺金钱</b>。</p>
+    <p class="sub">另设：公开机会雷达（<span class="mono" style="font-size:1.4vh">/blog/ai-hackathon-weekly</span>）—— 免费、全员可看的引流层。</p>
+    <div class="foot"><span>FUNNEL_PLAN §11</span><span>22</span></div>
+  </section>
+
+  <!-- 17 WE HAVE 5: platform -->
+  <section class="slide">
+    <span class="eyebrow">PART 3 · 我们给你什么 ⑤ · 平台资源</span>
+    <h2>JR Academy 平台 <span class="o">现成资源全打通</span></h2>
+    <div class="grid g3">
+      <div class="card orange"><div class="ico">🚀</div><h3>P3 职业孵化器 · 学生帮你实现想法</h3><p>匠人有一大池优秀学生。你有点子但缺手?通过 P3 项目孵化器把需求发出去,让学生跟你一起把它做出来 —— 你拿到产出,他们拿到真实项目经验。</p></div>
+      <div class="card"><div class="ico">🧪</div><h3>Prompt Lab</h3><p>22+ 个互动练习，课内 8 个 Lab 直接接入。</p></div>
+      <div class="card"><div class="ico">💻</div><h3>Vibe Coding Hub</h3><p>AI 编程学习中心 + Claude Code / Cursor 实操。</p></div>
+      <div class="card"><div class="ico">📚</div><h3>Learn 学习方向</h3><p>SEO Master 等方向自学章节嵌进大纲。</p></div>
+      <div class="card"><div class="ico">📊</div><h3>W1 vs W11 数据看板</h3><p>学员 MRR / 流量 / 内容产出公开追踪。</p></div>
+      <div class="card"><div class="ico">🏆</div><h3>一人奖学金</h3><p>每期评选 1 名，学完达标 6 硬指标全额返学费。</p></div>
+      <div class="card"><div class="ico">🌏</div><h3>全球可复制架构</h3><p>80% 通用核心 + 20% 澳洲本地化，未来复制到加/英/新。</p></div>
+    </div>
+    <div class="foot"><span>curriculum CLAUDE.md · FUNNEL_PLAN §10 · VISION §4</span><span>23</span></div>
+  </section>
+
+  <!-- 18 PRICING -->
+  <section class="slide dark">
+    <span class="eyebrow">怎么选 · 首期 case study 价（AUD）</span>
+    <h2>同一套课 · <span class="y">差在结果保障的深度</span></h2>
+    <p class="sub" style="color:#fff">三档学的是<b>同一套 59 节课、同一批 Faculty、同一个三城 cohort</b> —— 差的是 1v1 资源密度。</p>
+    <div class="grid g3" style="margin-top:2.4vh">
+      <div class="card navy"><div class="tag">自学陪练版</div><h3 style="font-size:4vh;color:var(--orange)">$2,800</h3><p>59 节课 + 三城线下 + 1:8 Tutor + 校友群。靠 cohort 同侪 + Tutor 托底。</p></div>
+      <div class="card orange"><div class="tag">标准版 · 主推</div><h3 style="font-size:4vh;color:#fff">$3,800</h3><p>+ 嘉宾作业级 review + Demo Day 主舞台 + VIP 晚宴（达标自动获邀）。</p></div>
+      <div class="card yellow"><div class="tag">陪跑版 · 含 1:1</div><h3 style="font-size:4vh;color:#000">$6,800</h3><p>+ 每周 30min 1:1 教练（共 12 次）+ Grant 申请书 1v1 过稿 + Demo Day pitch 打磨。</p></div>
+    </div>
+    <p class="sub" style="color:#cdd2e2;margin-top:2vh">首期低开是 case study 价：用价格换飞轮初始动能（最早一批高质量节点 + 真实毕业 case）。<b style="color:var(--yellow)">现在预售 $2,400 起、定金即可锁席</b>,二期整体升价。</p>
+    <div class="foot"><span>FUNNEL_PLAN §3</span><span>24</span></div>
+  </section>
+
+  <!-- 18b URGENCY · PRICE LADDER -->
+  <section class="slide dark">
+    <span class="eyebrow">现在 · 别等下一期</span>
+    <h2>今晚就<span class="y">锁定首期席位</span> · 价格只会往上走</h2>
+    <div class="grid g3" style="margin-top:2.4vh">
+      <div class="card orange"><div class="tag">现在 · 预售</div><h3 style="font-size:5vh;color:#fff">$2,400</h3><p>限 15 席 · 定金即锁席 —— 今晚能拿到的最低价。</p></div>
+      <div class="card"><div class="tag">首期早鸟</div><h3 style="font-size:5vh;color:var(--navy)">$2,800</h3><p>首期 cohort 正式价。</p></div>
+      <div class="card navy"><div class="tag">二期</div><h3 style="font-size:5vh;color:#aab1c8">$3,800</h3><p>晚一期 = 多掏 $1,000+,还错过黄埔一期。</p></div>
+    </div>
+    <div class="card orange" style="margin-top:2.2vh"><h3>🔥 今晚交定金,锁住 $2,400 首期席位</h3><p style="font-size:1.7vh">首期 = 黄埔一期,越早进圈越值钱;三城预售只 15 席,满了只能等二期。<b>别想着「以后再说」—— 以后更贵、也挤不进首期。</b>(以上为自学陪练档;标准 / 陪跑档同步水涨船高)</p></div>
+    <div class="foot"><span>预售 $2,400 → 首期 $2,800 → 二期 $3,800 · FUNNEL_PLAN §3</span><span>25</span></div>
+  </section>
+
+  <!-- 19 JOIN / Q&A -->
+  <section class="slide dark">
+    <span class="eyebrow">怎么加入</span>
+    <h1>申请制 · <span style="color:var(--orange)">LinkedIn 必填</span></h1>
+    <div class="grid g3" style="margin-top:2.8vh">
+      <div class="card navy"><div class="tag">STEP 1</div><h3>3 分钟申请单</h3><p>提交申请 + LinkedIn（唯一硬门槛）。</p></div>
+      <div class="card navy"><div class="tag">STEP 2</div><h3>24–48h 后台审核</h3><p>心智匹配优先，挡掉割韭菜 / 纯打工心态。</p></div>
+      <div class="card navy"><div class="tag">STEP 3</div><h3>定金锁席 + 入群</h3><p>交定金锁住 $2,400 首期席位,进三城 cohort,11 周开跑。</p></div>
+    </div>
+    <p class="lead" style="color:#fff;margin-top:3vh">现在 → <span style="color:var(--yellow)">Q &amp; A</span> · 会后即可交定金锁首期席位</p>
+    <div class="foot"><span>首期 case study cohort · 心智匹配优先</span><img src="jr-logo-zh-white.png" class="logo" alt="JR Academy"></div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button onclick="go(-1)">← 上一页</button>
+  <button onclick="go(1)">下一页 →</button>
+</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0;const N=slides.length;
+  const counter=document.getElementById('counter');
+  const prog=document.getElementById('prog');
+  const brand=document.getElementById('brandmark');
+  function render(){
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    counter.textContent=(i+1)+' / '+N;
+    prog.style.width=((i+1)/N*100)+'%';
+    // 角标 logo 按深/浅底自动换:深底白版、浅底深版
+    brand.src=slides[i].classList.contains('dark')?'jr-logo-zh-white.png':'jr-logo-zh.svg';
+    // 每页独立 URL：session-deck.html#<页码>，可直接分享/深链
+    if(location.hash!=='#'+(i+1)) history.replaceState(null,'','#'+(i+1));
+  }
+  function go(d){i=Math.max(0,Math.min(N-1,i+d));render();}
+  function fromHash(){const n=parseInt((location.hash||'').slice(1),10);
+    if(n>=1&&n<=N){i=n-1;return true;} return false;}
+  window.addEventListener('hashchange',()=>{ if(fromHash())render(); });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(1);}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(-1);}
+    if(e.key==='Home'){i=0;render();} if(e.key==='End'){i=N-1;render();}
+  });
+  // 翻页只走 方向键 / 空格 / 底部按钮 —— 不再「点哪都翻页」，方便选中复制文字
+  fromHash();   // 打开时若带 #页码 直接跳到该页
+  render();
+</script>
+</body>
+</html>
