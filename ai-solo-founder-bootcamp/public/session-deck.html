@@ -155,7 +155,18 @@
   .coverglow::after{background:radial-gradient(circle,#CB6CE6,transparent 68%);bottom:-20vw;right:-12vw;animation:drift2 19s ease-in-out infinite alternate}
   @keyframes drift1{from{transform:translate(0,0)}to{transform:translate(13vw,9vh)}}
   @keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-11vw,-8vh)}}
-  .slide.hasglow>*:not(.coverglow):not(.foot){position:relative;z-index:2}
+  .covergrid{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.78}
+  .covergrid::before{content:'';position:absolute;right:-4vw;top:12vh;width:55vw;height:62vh;background:
+    linear-gradient(90deg,rgba(56,182,255,.1) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(56,182,255,.08) 1px,transparent 1px);
+    background-size:4.2vw 4.2vw;transform:perspective(800px) rotateY(-28deg) rotateX(58deg);transform-origin:center;filter:drop-shadow(0 0 18px rgba(56,182,255,.16));mask-image:linear-gradient(90deg,transparent 0%,#000 22%,#000 72%,transparent 100%)}
+  .covergrid::after{content:'';position:absolute;right:8vw;top:17vh;width:33vw;height:33vw;border:1px solid rgba(255,222,89,.16);background:radial-gradient(circle at 50% 50%,rgba(255,145,77,.18),transparent 58%);clip-path:polygon(50% 0,95% 24%,95% 76%,50% 100%,5% 76%,5% 24%);filter:drop-shadow(0 0 32px rgba(255,145,77,.18))}
+  .coverbeam{display:none}
+  .coverbeam svg{width:100%;height:100%;overflow:visible}
+  .coverbeam path{fill:none;stroke:rgba(56,182,255,.75);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:10 14;filter:drop-shadow(0 0 7px rgba(56,182,255,.75));animation:mnDash 1.6s linear infinite}
+  .coverbeam .p2{stroke:rgba(255,145,77,.62);stroke-dasharray:3 12;animation-duration:2.2s}
+  .coverbeam .node{fill:#fff;filter:drop-shadow(0 0 8px rgba(255,255,255,.85))}
+  .slide.hasglow:not(.cover-slide)>*:not(.coverglow):not(.covergrid):not(.coverbeam):not(.particles):not(.foot){position:relative;z-index:2}
   .slide.hasglow>.foot{z-index:2}
   .slide.hasglow>.coverglow{z-index:0}
   @media(prefers-reduced-motion:reduce){.coverglow::before,.coverglow::after{animation:none}}
@@ -174,17 +185,30 @@
   .coverhero{display:contents}
   .covercopy{display:contents}
   .covercopy .eyebrow{margin-bottom:2.1vh}
-  .cover-slide>.eyebrow,.cover-slide>h1,.cover-slide>.lead,.cover-slide>.sub{position:relative;z-index:20}
-  .cover-slide h1{font-size:5.9vh;line-height:.98;max-width:15ch;text-wrap:balance}
+  .cover-slide>.eyebrow,.cover-slide>h1,.cover-slide>.lead,.cover-slide>.sub{position:fixed!important;left:6vw;z-index:30}
+  .cover-slide>.eyebrow{top:15vh}
+  .cover-slide>h1{top:22vh}
+  .cover-slide>.lead{top:50vh}
+  .cover-slide>.sub{top:56vh}
+  .cover-slide h1{font-size:5.9vh;line-height:.98;max-width:15ch;text-wrap:balance;text-shadow:4px 4px 0 rgba(0,0,0,.55)}
+  .cover-slide h1::after{content:'';display:block;width:13.5vw;height:.8vh;background:linear-gradient(90deg,var(--orange),var(--yellow));border:2px solid #000;box-shadow:4px 4px 0 #000;margin-top:1.6vh}
   .cover-slide h1 .cover-en{display:block;color:var(--orange);font-size:5.05vh;line-height:.94;margin-top:.7vh;white-space:normal}
   .cover-slide .lead{font-size:2.25vh;margin-top:2.2vh;max-width:42ch}
   .cover-slide .sub{font-size:1.85vh;max-width:50ch;color:#cdd2e2}
-  .covermeta{position:absolute;right:6vw;top:24vh;z-index:20;width:25vw;background:#fff;color:#0a0d1a;border:3px solid #000;box-shadow:8px 8px 0 #000;padding:2vh 1.6vw}
-  .covermeta .mtag{font-family:var(--m);font-size:1vh;font-weight:700;letter-spacing:1.5px;color:var(--orange);margin-bottom:1.1vh}
-  .covermeta h3{font-family:var(--h);font-size:2.1vh;line-height:1.1;color:#0a0d1a;margin-bottom:1.2vh}
-  .covermeta .mrow{display:flex;align-items:center;justify-content:space-between;border-top:2px solid #000;padding:1vh 0;font-family:var(--m);font-size:1.05vh;font-weight:700;color:#4b5563}
-  .covermeta .mrow b{font-family:var(--h);font-size:2.5vh;color:#0a0d1a;line-height:1}
-  .covermeta .mrow:last-child{padding-bottom:0}
+  .covermeta{position:fixed!important;right:6vw;top:25vh;z-index:30;width:30vw;background:#11172d;color:#fff;border:3px solid #000;box-shadow:8px 8px 0 #000;padding:1.6vh 1.35vw;overflow:hidden}
+  .covermeta::before{content:'';position:absolute;left:0;top:0;right:0;height:.75vh;background:linear-gradient(90deg,var(--blue),var(--orange),var(--yellow))}
+  .covermeta .mtag{position:relative;z-index:1;font-family:var(--m);font-size:.96vh;font-weight:700;letter-spacing:1.7px;color:var(--yellow);margin:1vh 0 1vh}
+  .covermeta h3{position:relative;z-index:1;font-family:var(--h);font-size:2.35vh;line-height:1.1;color:#fff;margin-bottom:1.2vh;max-width:20ch}
+  .covermeta .mrow{display:none}
+  .osflow{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:.7vw;margin-top:1.3vh}
+  .osstep{background:#fff;color:#0a0d1a;border:2px solid #000;box-shadow:4px 4px 0 #000;padding:1vh .75vw;min-height:11vh}
+  .osstep b{display:inline-block;font-family:var(--m);font-size:.9vh;letter-spacing:1px;background:var(--yellow);border:2px solid #000;padding:.15vh .35vw;margin-bottom:.7vh}
+  .osstep strong{display:block;font-family:var(--h);font-size:1.65vh;line-height:1.05;color:#0a0d1a;margin-bottom:.45vh}
+  .osstep span{display:block;font-family:var(--b);font-size:1.15vh;line-height:1.35;color:#4b5563}
+  .osstats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:.7vw;margin-top:1.2vh}
+  .osstat{background:#0a0d1a;border:1px solid rgba(255,255,255,.2);padding:.8vh .6vw}
+  .osstat b{display:block;font-family:var(--h);font-size:2.35vh;line-height:1;color:var(--orange)}
+  .osstat span{display:block;margin-top:.35vh;font-family:var(--m);font-size:.8vh;font-weight:700;letter-spacing:.7px;color:#aeb6d6}
   .deckimg{width:100%;max-height:62vh;object-fit:contain;background:#fff;border:3px solid #000;box-shadow:var(--shadow);display:block}
   .logostrip{display:flex;gap:1.4vh;align-items:center;flex-wrap:wrap;margin-top:1.8vh}
   .logostrip img{height:5.2vh;background:#fff;border:2px solid #000;box-shadow:var(--shadow-sm);padding:.5vh 1vh;object-fit:contain}
@@ -243,16 +267,40 @@
   <section class="slide dark active hasglow cover-slide">
     <div class="coverglow"></div>
     <canvas class="particles" id="particles"></canvas>
+    <div class="covergrid"></div>
+    <div class="coverbeam" aria-hidden="true">
+      <svg viewBox="0 0 520 360">
+        <path d="M22 288 C116 254 162 192 226 202 C306 214 312 86 488 54"/>
+        <path class="p2" d="M58 102 C142 128 166 66 238 96 C324 132 366 176 470 144"/>
+        <path class="p2" d="M128 320 C206 286 226 250 296 266 C374 284 404 226 500 238"/>
+        <circle class="node" cx="22" cy="288" r="4"/>
+        <circle class="node" cx="226" cy="202" r="4"/>
+        <circle class="node" cx="488" cy="54" r="5"/>
+        <circle class="node" cx="58" cy="102" r="3.5"/>
+        <circle class="node" cx="238" cy="96" r="4"/>
+        <circle class="node" cx="470" cy="144" r="4"/>
+        <circle class="node" cx="128" cy="320" r="3.5"/>
+        <circle class="node" cx="296" cy="266" r="4"/>
+        <circle class="node" cx="500" cy="238" r="4"/>
+      </svg>
+    </div>
     <span class="eyebrow">JR ACADEMY · 课程解读会</span>
     <h1>AI 一人创业营<span class="cover-en">AI Solo Founder Bootcamp</span></h1>
     <p class="lead" style="color:#fff">AI 让一个人 ≈ 一个团队 · 副业从 0 起 · 主业 1 到 10</p>
     <p class="sub" style="margin-top:1.4vh">11 周澳洲华人一人创业实战营 · 三城线下 · 申请制限额</p>
     <div class="covermeta">
-      <div class="mtag">BOOTCAMP SNAPSHOT</div>
-      <h3>不是工具课，是把项目做出来、拿到第一笔真实反馈的实战营。</h3>
-      <div class="mrow"><span>训练周期</span><b>11 周</b></div>
-      <div class="mrow"><span>线下城市</span><b>3 城</b></div>
-      <div class="mrow"><span>入营方式</span><b>申请制</b></div>
+      <div class="mtag">AI SOLO FOUNDER OS</div>
+      <h3>一个人从想法到现金流的 11 周作战台</h3>
+      <div class="osflow">
+        <div class="osstep"><b>01</b><strong>找需求</strong><span>痛点 · 人群 · offer 一页纸</span></div>
+        <div class="osstep"><b>02</b><strong>Ship</strong><span>AI 原型 · 自动化 · 上线</span></div>
+        <div class="osstep"><b>03</b><strong>收反馈</strong><span>首批用户 · 内容获客 · 现金流</span></div>
+      </div>
+      <div class="osstats">
+        <div class="osstat"><b>11</b><span>WEEKS</span></div>
+        <div class="osstat"><b>3</b><span>CITIES</span></div>
+        <div class="osstat"><b>1</b><span>FOUNDER</span></div>
+      </div>
     </div>
     <div class="foot">
       <span>今晚解读会 · 讲清「课程大纲」+「我们给你什么」</span>
@@ -903,6 +951,7 @@
     if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(1);}
     if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(-1);}
     if(e.key==='Home'){i=0;render();} if(e.key==='End'){i=N-1;render();}
+    if(e.key==='f'||e.key==='F'){e.preventDefault();var el=document.documentElement;if(!document.fullscreenElement&&!document.webkitFullscreenElement){(el.requestFullscreen||el.webkitRequestFullscreen).call(el);}else{(document.exitFullscreen||document.webkitExitFullscreen).call(document);}}
   });
   // 翻页只走 方向键 / 空格 / 底部按钮 —— 不再「点哪都翻页」，方便选中复制文字
   fromHash();   // 打开时若带 #页码 直接跳到该页
@@ -959,20 +1008,57 @@
 (function(){
   var c=document.getElementById('particles'); if(!c)return;
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  var ctx=c.getContext('2d'),W,H,pts;
-  var N=Math.min(64,Math.round(window.innerWidth/22));
+  var ctx=c.getContext('2d'),W,H,start=Date.now();
   function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
-  function init(){pts=[];for(var i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.8+.6});}
+  function bez(a,b,c,d,t){var mt=1-t;return mt*mt*mt*a+3*mt*mt*t*b+3*mt*t*t*c+t*t*t*d;}
+  function pt(curve,t){return {x:bez(curve[0],curve[2],curve[4],curve[6],t),y:bez(curve[1],curve[3],curve[5],curve[7],t)};}
+  function lanePath(curve){
+    ctx.beginPath();
+    ctx.moveTo(curve[0],curve[1]);
+    ctx.bezierCurveTo(curve[2],curve[3],curve[4],curve[5],curve[6],curve[7]);
+  }
   function draw(){
     ctx.clearRect(0,0,W,H);
-    for(var k=0;k<pts.length;k++){var p=pts[k];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;}
-    for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,dd=Math.sqrt(dx*dx+dy*dy);if(dd<140){ctx.strokeStyle='rgba(255,145,77,'+(0.16*(1-dd/140))+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
-    for(var m=0;m<pts.length;m++){var q=pts[m];ctx.fillStyle='rgba(255,255,255,.6)';ctx.beginPath();ctx.arc(q.x,q.y,q.r,0,6.3);ctx.fill();}
+    var now=(Date.now()-start)/1000;
+    var lanes=[
+      [W*.39,H*.33,W*.49,H*.20,W*.57,H*.27,W*.70,H*.19,'#38B6FF'],
+      [W*.36,H*.49,W*.48,H*.44,W*.55,H*.31,W*.69,H*.39,'#FF914D'],
+      [W*.44,H*.58,W*.55,H*.47,W*.62,H*.58,W*.77,H*.51,'#38B6FF'],
+      [W*.52,H*.75,W*.60,H*.66,W*.73,H*.72,W*.86,H*.62,'#FFDE59']
+    ];
+    ctx.save();
+    ctx.lineCap='round';
+    for(var i=0;i<lanes.length;i++){
+      var l=lanes[i],col=l[8],curve=l.slice(0,8);
+      ctx.setLineDash([14,18]);
+      ctx.lineDashOffset=-(now*42+i*17);
+      lanePath(curve);
+      ctx.strokeStyle=col;
+      ctx.globalAlpha=.58;
+      ctx.lineWidth=2.2;
+      ctx.shadowColor=col;ctx.shadowBlur=12;
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.globalAlpha=.12;
+      ctx.lineWidth=8;
+      lanePath(curve);
+      ctx.stroke();
+      for(var j=0;j<3;j++){
+        var t=(now*.18+j*.33+i*.07)%1;
+        var p=pt(curve,t),p0=pt(curve,Math.max(0,t-.035));
+        ctx.globalAlpha=.95;
+        ctx.strokeStyle=col;ctx.lineWidth=3;ctx.shadowBlur=16;
+        ctx.beginPath();ctx.moveTo(p0.x,p0.y);ctx.lineTo(p.x,p.y);ctx.stroke();
+        ctx.fillStyle='#fff';ctx.shadowColor=col;ctx.shadowBlur=18;
+        ctx.beginPath();ctx.arc(p.x,p.y,3.4+(j===0?1.2:0),0,6.3);ctx.fill();
+      }
+    }
+    ctx.restore();
   }
   var cleared=false;
   function frame(){var cv=c.closest('.slide'),on=cv&&cv.classList.contains('active');if(on){draw();cleared=false;}else if(!cleared){ctx.clearRect(0,0,W,H);cleared=true;}requestAnimationFrame(frame);}
-  window.addEventListener('resize',function(){resize();init();});
-  resize();init();frame();
+  window.addEventListener('resize',resize);
+  resize();frame();
 })();
 </script>
 </body>
