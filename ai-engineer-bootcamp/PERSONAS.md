@@ -1,5 +1,7 @@
 # AI Engineer Bootcamp 目标用户画像 PERSONAS.md
 
+> 🌐 **市场范围：本文档 = 中国 / 澳洲市场（中文站）。** 美国市场（在美华人）的画像是平行文档 [`PERSONAS.us.md`](./PERSONAS.us.md)，渠道/签证/薪酬/决策完全不同，**不要互相套用**（如美区不用脉脉/Boss/抖音，改用一亩三分地/Blind/小红书北美）。
+>
 > 课程：AI Engineer Bootcamp（12 周技术 + 12 周 P3 职业孵化，从 Context Engineering → RAG → Agent → Fine-Tuning → Eval 全栈）
 > 由 `/target-user-persona-mapper init` 生成 · 2026-06-16
 > 课程类型：Type 1 求职转型 bootcamp（客单价区间 ¥2980-9800 档，⚠️ 真实定价需 curl 销售页核实）
