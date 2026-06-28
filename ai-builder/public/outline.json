@@ -1,20 +1,20 @@
 {
   "themeColor": "#6366F1",
   "slug": "ai-builder",
-  "name": "Vibe Coding 提升班",
-  "name_en": "Vibe Coding 提升班",
+  "name": "Vibe Coding 大师课",
+  "name_en": "Vibe Coding Masterclass",
   "description": "用 Claude Code、Cursor、Codex 做全栈开发。从 PRD 到 Skills/MCP/Agent 到部署上线，面向有编程基础的开发者",
   "level": "中级",
   "type": "training",
   "targetAudience": "有编程基础的开发者、全栈工程师、DevOps、想用 AI 提升开发效率的技术人员",
-  "totalLessons": 113,
-  "totalSteps": 124,
+  "totalLessons": 108,
+  "totalSteps": 120,
   "liveClasses": 22,
-  "estimatedHours": 63,
-  "totalInteractiveLabs": 39,
-  "title_en": "Vibe Coding 提升班",
+  "estimatedHours": 101.3,
+  "totalInteractiveLabs": 34,
+  "title_en": "Vibe Coding Masterclass",
   "description_en": "Build full-stack apps with Claude Code, Cursor, and Codex. From PRD to Skills/MCP/Agent to deployment. For developers with programming experience.",
-  "timeLength": "8 周（42 节课）",
+  "timeLength": "8 周（108 节课）",
   "courseObjective": "掌握 Claude Code Skills、MCP Server 搭建、Agent 架构、多模型协作，用 AI 完成从 PRD 到部署的全栈项目",
   "courseObjective_en": "Master Claude Code Skills, MCP Server building, Agent architecture, and multi-model collaboration. Ship a full-stack project from PRD to deployment with AI.",
   "suitable": "有 Python/JS 基础的软件工程师\n全栈开发者想用 AI 10x 开发效率\nDevOps 工程师想了解 AI 开发工具\n技术创业者想快速出产品",
@@ -25,14 +25,14 @@
   "highlights": [
     "Claude Code Skills + MCP Server + Agent 架构三大核心模块",
     "Claude / Cursor / Codex / Gemini 四大工具深度对比实操",
-    "42 节课从 PRD → Skills → MCP → Agent → 全栈项目 → 部署",
+    "108 节课从 PRD → Skills → MCP → Agent → 全栈项目 → 部署",
     "Context Engineering 实战 — 不只是 Prompt，是整个上下文设计",
     "毕业产出一个可上线的 AI 全栈项目 + Demo"
   ],
   "highlights_en": [
     "Three core modules: Claude Code Skills + MCP Server + Agent Architecture",
     "Deep comparison of Claude / Cursor / Codex / Gemini",
-    "42 lessons from PRD to Skills to MCP to Agent to full-stack deployment",
+    "108 lessons from PRD to Skills to MCP to Agent to full-stack deployment",
     "Context Engineering in practice — beyond prompts, designing the entire context",
     "Graduate with a deployable AI full-stack project + Demo"
   ],
@@ -1058,7 +1058,7 @@
         },
         {
           "code": "L30",
-          "title": "Lab: 约束与负面 Prompt — 告诉 AI ",
+          "title": "Lab: 约束与负面 Prompt — 告诉 AI 不该做什么",
           "description": "学会使用约束来精确控制 AI 输出：长度限制、格式要求、内容边界、风格规定和禁止事项。",
           "type": "InteractiveLab",
           "isLive": false,
@@ -1426,42 +1426,6 @@
           "_id": "69dc41a276e3e0c1b3c53ecf"
         },
         {
-          "code": "L43",
-          "title": "Lab: Claude Code Skills 和 Agent Teams — AI 能力复用",
-          "description": "掌握 Claude Code 的 Skills 框架和 Agent Teams 协作模式。学会把反复使用的 AI 能力封装成可复用的 Skill，以及如何用多个 Agent 协同完成复杂任务。",
-          "type": "InteractiveLab",
-          "isLive": false,
-          "duration": 60,
-          "steps": [
-            {
-              "order": 1,
-              "type": "LAB",
-              "title": "Vibe Coding Lab: Skills & Agents",
-              "description": "互动练习检验 Skills 理解",
-              "duration": 30,
-              "labSlug": "vibe-claude-code-skills-agents"
-            },
-            {
-              "order": 2,
-              "type": "MCQ",
-              "title": "Skills 场景应用",
-              "description": "给场景选 Skill 实现方案",
-              "duration": 15
-            }
-          ],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "vibe-claude-code-skills-agents"
-            }
-          ],
-          "learns": [],
-          "isInteractiveLab": true,
-          "interactiveLabSlug": "vibe-claude-code-skills-agents",
-          "learningMaterial": "<h2>学习目标</h2><ul><li>通过互动练习巩固 Claude Code Skills 的理解</li><li>练习根据场景设计 Skill：选择 Hook 还是 Command、写 agent.md</li><li>验证自己对 Skills 架构的掌握程度</li></ul><h2>核心概念</h2><h3>Skills Lab 练习结构</h3><p>这节课是互动练习课。Vibe Coding Lab 会给你一系列场景，你需要设计对应的 Skill 方案。每个场景包含：</p><pre><code># 场景示例 1：每次 commit 前自动跑 lint\n问题：用 Hook 还是 Command 实现？\n答案：Hook（preToolExecution）\n配置：\n{\n  \"hooks\": {\n    \"preToolExecution\": [{\n      \"matcher\": \"Bash(git commit*)\",\n      \"command\": \"npx eslint . --max-warnings 0\"\n    }]\n  }\n}\n\n# 场景示例 2：一键生成组件模板\n问题：用 Hook 还是 Command？\n答案：Command（/component）\n实现：.claude/commands/component.md\n内容：按项目规范生成 React 组件文件</code></pre><h3>Hook vs Command 决策</h3><p>Hook：自动触发，不需要你主动调用。适合「每次做 X 时都要做 Y」的场景。Command：手动触发，你输入 /xxx 才执行。适合「偶尔需要做」的场景。</p><h3>常见 Lab 场景</h3><ul><li>写文件后自动格式化 → Hook</li><li>分析 PR 并生成 Review → Command</li><li>修改 API 后自动更新文档 → Hook</li><li>一键初始化新模块 → Command</li><li>测试失败后自动分析原因 → Hook</li></ul><h3>综合场景练习</h3><p>Lab 中会有组合场景：「设计一个 Skill，每次创建新文件时自动添加文件头注释（包含作者、日期、描述），并且如果文件是 .ts 类型，自动添加严格模式声明。」这个场景需要用 Hook（postToolExecution + matcher: write_file），不是 Command。Hook 的 command 脚本需要判断文件类型、读取 git 用户名、写入文件头。这类综合场景考验你对 Skills 各组件的理解深度。</p><h3>Lab 评分标准</h3><p>每个场景按 3 个维度评分：1）方案正确性（Hook/Command 选对了吗）；2）定义完整性（有没有遗漏约束和错误处理）；3）实现可行性（配置代码能跑通吗）。</p><h2>动手练习</h2><ol><li>完成 Vibe Coding Lab 中的 Skills & Agents 练习</li><li>针对你自己项目的 3 个场景，分别设计 Hook 或 Command 方案</li><li>实际在项目中实现并测试至少 1 个新的 Skill</li></ol><h2>小结</h2><p>Lab 练习的目标是把 Skills 知识从「理解」变成「会用」。Hook 适合自动化的质量保障（lint、test、format），Command 适合手动触发的工作流（review、deploy、generate）。</p>",
-          "_id": "69db3dc576e3e0c1b3b66d7b"
-        },
-        {
           "code": "L44",
           "title": "用 AI 搭建 MCP Server（Model Context Protocol）",
           "description": "MCP 是 Model Context Protocol——让 AI 调用外部工具和服务的标准协议。Claude 要查数据库、读文件系统、调第三方 API，都通过 MCP。这节课讲 MCP 的 Client-Server 架构：Client（AI 工具端）发起请求 → Server（你写的服务端）执行操作 → 返回结果。Tool 和 Resource 的区别、Transport 层怎么工作。",
@@ -1744,48 +1708,12 @@
           "_id": "69db3dc676e3e0c1b3b66d9b"
         },
         {
-          "code": "L53",
-          "title": "Lab: MCP 入门 — 让 AI 连接整个世界",
-          "description": "理解 MCP（Model Context Protocol）的核心概念，掌握如何在 Claude Code 中配置 MCP Server，让 AI 不再局限于读写本地文件，而是能访问 GitHub、数据库、API 等外部服务。",
-          "type": "InteractiveLab",
-          "isLive": false,
-          "duration": 60,
-          "steps": [
-            {
-              "order": 1,
-              "type": "LAB",
-              "title": "Vibe Coding Lab: MCP",
-              "description": "设计 MCP Server Schema、写 Handler、验证",
-              "duration": 30,
-              "labSlug": "vibe-claude-code-mcp"
-            },
-            {
-              "order": 2,
-              "type": "MCQ",
-              "title": "MCP 场景应用",
-              "description": "给需求设计 MCP 方案",
-              "duration": 15
-            }
-          ],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "vibe-claude-code-mcp"
-            }
-          ],
-          "learns": [],
-          "isInteractiveLab": true,
-          "interactiveLabSlug": "vibe-claude-code-mcp",
-          "learningMaterial": "<h2>学习目标</h2><ul><li>通过互动练习检验对 MCP 架构的理解</li><li>练习设计 MCP Server 的 Tool Schema 和 Handler</li><li>验证 Schema 定义和 Handler 返回格式的规范性</li></ul><h2>核心概念</h2><h3>MCP Lab 练习结构</h3><p>Vibe Coding Lab 给你一系列需求场景，你需要设计对应的 MCP Server 方案。包括：</p><pre><code># 场景 1：让 Claude 能查天气\n你需要设计：\n1. Tool Schema（name, description, inputSchema）\n2. Handler 实现（调用天气 API，返回格式化数据）\n3. 错误处理（城市名不合法、API 超时）\n\n# 参考答案\nTool Schema:\n{\n  \"name\": \"get_weather\",\n  \"description\": \"查询城市天气。输入城市名，返回温度和天气状况\",\n  \"inputSchema\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"city\": {\n        \"type\": \"string\",\n        \"description\": \"城市名称，如 '北京'、'Shanghai'\"\n      }\n    },\n    \"required\": [\"city\"]\n  }\n}</code></pre><h3>常见错误</h3><pre><code># 错误 1：description 太模糊\n❌ \"查东西\"  →  Claude 不知道什么时候该调用\n✅ \"查询指定城市的实时天气，返回温度和天气状况\"\n\n# 错误 2：inputSchema 缺少 description\n❌ { \"city\": { \"type\": \"string\" } }\n✅ { \"city\": { \"type\": \"string\", \"description\": \"城市名称\" } }\n# 字段 description 帮助 Claude 理解该传什么值\n\n# 错误 3：Handler 返回格式不对\n❌ return { data: \"22°C\" }  // 不符合 MCP 规范\n✅ return { content: [{ type: \"text\", text: \"22°C\" }] }</code></pre><h3>进阶场景</h3><ul><li>设计一个多 Tool 的 MCP Server（查询 + 写入）</li><li>设计带 Resource 的 Server（提供配置信息供 Claude 读取）</li><li>处理需要认证的外部 API 调用（API Key 通过环境变量传入）</li></ul><h2>动手练习</h2><ol><li>完成 Vibe Coding Lab 中的 MCP 互动练习</li><li>选一个你项目中实际需要的外部工具（如查数据库、调用第三方 API），设计完整的 Tool Schema</li><li>实现 Handler 并在 MCP Inspector 中测试</li></ol><h2>小结</h2><p>MCP Lab 的目标是把协议知识变成实操能力。Tool Schema 的 description 决定 Claude 何时调用、inputSchema 决定怎么调用、Handler 决定执行什么。三者缺一不可。</p>",
-          "_id": "69db3dc676e3e0c1b3b66da5"
-        },
-        {
           "code": "Q03",
           "title": "Quest 实战：从零搭建你自己的 MCP Server",
           "type": "Quest",
           "duration": 50,
           "isLive": false,
-          "description": "<h3>🎯 这节课解决什么问题</h3><p>L44-L53 讲了 MCP 是什么、怎么调外部工具、Anthropic 的官方协议长什么样。但所有人都看完文档还不敢自己写一个 MCP Server——怕协议复杂、怕调不通、怕不知道从哪开始。这节 Quest 由小花老师带你用 TypeScript 从零搭一个最小可用的 MCP Server（一个能查天气或者搜本地文件的工具），然后接到 Claude Code 里实际调用一次。做完你就真正理解 MCP 不是黑盒。</p><h3>📖 你将学到</h3><ul><li><strong>从零写一个 MCP Server</strong> — TypeScript + @modelcontextprotocol/sdk，不到 100 行代码</li><li><strong>定义一个 Tool 让 AI 能调用</strong> — 输入参数、输出结构、错误处理</li><li><strong>把 Server 接到 Claude Code 实际跑</strong> — 在 Claude 对话里看到你的 tool 被调用</li></ul><h3>💡 适合谁</h3><p>已经看完 MCP 模块所有 Lab 但还没自己写过 Server 的工程师。这一节让你从「会用 MCP」毕业到「能造 MCP」。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：初始化项目 → 装 SDK → 写 Tool → 配 Claude → 实际调用）</li><li>约 50 分钟</li><li>完成后你 GitHub 上有一个能跑的 MCP Server</li></ul><h3>✅ 学完能做什么</h3><p>你能给任何业务系统包装一个 MCP Server，让 Claude / Cursor 直接调用。这是把 AI 接入企业工作流的关键能力——不是聊天，是动手干活。</p>",
+          "description": "<h3>🎯 这节课解决什么问题</h3><p>L44-L52 讲了 MCP 是什么、怎么调外部工具、Anthropic 的官方协议长什么样。但所有人都看完文档还不敢自己写一个 MCP Server——怕协议复杂、怕调不通、怕不知道从哪开始。这节 Quest 由小花老师带你用 TypeScript 从零搭一个最小可用的 MCP Server（一个能查天气或者搜本地文件的工具），然后接到 Claude Code 里实际调用一次。做完你就真正理解 MCP 不是黑盒。</p><h3>📖 你将学到</h3><ul><li><strong>从零写一个 MCP Server</strong> — TypeScript + @modelcontextprotocol/sdk，不到 100 行代码</li><li><strong>定义一个 Tool 让 AI 能调用</strong> — 输入参数、输出结构、错误处理</li><li><strong>把 Server 接到 Claude Code 实际跑</strong> — 在 Claude 对话里看到你的 tool 被调用</li></ul><h3>💡 适合谁</h3><p>已经看完 MCP 模块所有 Lab 但还没自己写过 Server 的工程师。这一节让你从「会用 MCP」毕业到「能造 MCP」。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：初始化项目 → 装 SDK → 写 Tool → 配 Claude → 实际调用）</li><li>约 50 分钟</li><li>完成后你 GitHub 上有一个能跑的 MCP Server</li></ul><h3>✅ 学完能做什么</h3><p>你能给任何业务系统包装一个 MCP Server，让 Claude / Cursor 直接调用。这是把 AI 接入企业工作流的关键能力——不是聊天，是动手干活。</p>",
           "quest": {
             "title": "用 TypeScript 写一个能跑的 MCP Server 并接到 Claude",
             "description": "初始化项目 → 写 Tool → 配 Claude Code → 真实调用验证",
@@ -2164,8 +2092,8 @@
         },
         {
           "code": "L64",
-          "title": "Lab: Context Engineering 入门 — 让 AI 不再",
-          "description": "理解为什么 AI 编程工具总是",
+          "title": "Lab: Context Engineering 入门 — 让 AI 不再丢上下文",
+          "description": "理解为什么 AI 编程工具会丢上下文、误解需求或反复犯同一个错。通过互动练习设计上下文结构、规则文件和任务边界，让 Agent 输出更稳定。",
           "type": "InteractiveLab",
           "isLive": false,
           "duration": 60,
@@ -2199,32 +2127,12 @@
           "_id": "69db3dc776e3e0c1b3b66ddb"
         },
         {
-          "code": "L65",
-          "title": "Lab: Context Engineering 入门 — 让 AI 不再",
-          "description": "理解为什么 AI 编程工具总是",
-          "type": "InteractiveLab",
-          "isLive": false,
-          "isInteractiveLab": true,
-          "interactiveLabType": "prompt",
-          "interactiveLabSlug": "vibe-context-engineering-intro",
-          "duration": 30,
-          "steps": [],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "vibe-context-engineering-intro"
-            }
-          ],
-          "learns": [],
-          "_id": "69dc41a576e3e0c1b3c53f5f"
-        },
-        {
           "code": "Q04",
           "title": "Quest 实战：搭建一个能跑的 Claude Code Sub-agents 工作流",
           "type": "Quest",
           "duration": 45,
           "isLive": false,
-          "description": "<h3>🎯 这节课解决什么问题</h3><p>L54-L65 讲了 Agentic Workflow、Multi-agent、Sub-agent 这些概念。但「概念懂了」≠「能搭一个真在干活的 Agent 团队」。这节 Quest 由小花老师带你用 Claude Code 的 Sub-agents 机制，搭一个 3 个 agent 协作的真实工作流——比如：Researcher 负责查资料、Writer 负责起草、Reviewer 负责质检。做完你就有一个能反复调用、专门干这件事的 Agent 团队。</p><h3>📖 你将学到</h3><ul><li><strong>Claude Code Sub-agents 怎么定义</strong> — .claude/agents/*.md 文件结构、frontmatter、prompt</li><li><strong>三个 Agent 怎么分工</strong> — 各自的 description、tools、prompt 不一样</li><li><strong>主对话怎么调用 Sub-agent</strong> — Task tool 触发 + 看输出</li></ul><h3>💡 适合谁</h3><p>已经做完 Q03 会写 MCP 的工程师，想再进一步搭 Multi-agent 系统。这一节让你的 AI 协作从「单聊」升级到「团队」。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：定义任务 → 设计 3 个 Agent → 写 .md 文件 → 主对话里触发 → 验证产出）</li><li>约 45 分钟</li><li>完成后你的项目里有 3 个可复用的 Sub-agent 配置</li></ul><h3>✅ 学完能做什么</h3><p>你能给任何复杂任务设计 Agent 团队——研究 + 起草 + 审查、需求 + 实现 + 测试、UI + 后端 + 部署。这是 Agentic Workflow 真正落地的方式。</p>",
+          "description": "<h3>🎯 这节课解决什么问题</h3><p>L54-L64 讲了 Agentic Workflow、Multi-agent、Sub-agent 这些概念。但「概念懂了」≠「能搭一个真在干活的 Agent 团队」。这节 Quest 由小花老师带你用 Claude Code 的 Sub-agents 机制，搭一个 3 个 agent 协作的真实工作流——比如：Researcher 负责查资料、Writer 负责起草、Reviewer 负责质检。做完你就有一个能反复调用、专门干这件事的 Agent 团队。</p><h3>📖 你将学到</h3><ul><li><strong>Claude Code Sub-agents 怎么定义</strong> — .claude/agents/*.md 文件结构、frontmatter、prompt</li><li><strong>三个 Agent 怎么分工</strong> — 各自的 description、tools、prompt 不一样</li><li><strong>主对话怎么调用 Sub-agent</strong> — Task tool 触发 + 看输出</li></ul><h3>💡 适合谁</h3><p>已经做完 Q03 会写 MCP 的工程师，想再进一步搭 Multi-agent 系统。这一节让你的 AI 协作从「单聊」升级到「团队」。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：定义任务 → 设计 3 个 Agent → 写 .md 文件 → 主对话里触发 → 验证产出）</li><li>约 45 分钟</li><li>完成后你的项目里有 3 个可复用的 Sub-agent 配置</li></ul><h3>✅ 学完能做什么</h3><p>你能给任何复杂任务设计 Agent 团队——研究 + 起草 + 审查、需求 + 实现 + 测试、UI + 后端 + 部署。这是 Agentic Workflow 真正落地的方式。</p>",
           "quest": {
             "title": "搭一个 3 Agent 协作的 Claude Code Sub-agent 团队",
             "description": "定义任务 → 设计角色 → 写配置 → 主对话触发 → 验证团队产出",
@@ -2511,26 +2419,6 @@
           "interactiveLabSlug": "vibe-tool-selection",
           "learningMaterial": "<h2>学习目标</h2><ul><li>根据具体开发场景选择最合适的 AI 模型</li><li>针对选定模型编写优化过的 Prompt</li><li>在实际练习中验证模型选择策略</li></ul><h2>核心概念</h2><h3>场景决策矩阵</h3><p>选择模型不是凭感觉，而是按任务特征匹配：</p><table><tr><th>场景特征</th><th>推荐模型</th><th>原因</th></tr><tr><td>需要分析整个项目架构</td><td>Claude</td><td>200K 长上下文 + 强推理</td></tr><tr><td>快速原型 / UI 生成</td><td>Gemini 2.5 Flash</td><td>速度快、多模态支持</td></tr><tr><td>在已有代码库做小修改</td><td>Codex</td><td>贴合现有代码风格</td></tr><tr><td>截图还原为代码</td><td>Gemini 2.5 Pro</td><td>多模态理解能力强</td></tr><tr><td>复杂调试 / 根因分析</td><td>Claude</td><td>推理链条深</td></tr><tr><td>批量生成测试用例</td><td>Gemini Flash</td><td>速度快、成本低</td></tr></table><h3>Lab 练习结构</h3><p>每道题给出一个开发场景描述，你需要：(1) 选择模型并说明理由 (2) 编写该模型偏好格式的 Prompt (3) 预测输出质量。</p><h3>示例场景</h3><p>场景：\"团队接手了一个 3 万行的 Express 项目，没有文档，需要理解整体架构并写出 API 文档。\"</p><p>参考答案：选 Claude — 需要长上下文处理大量代码文件，需要强推理能力梳理模块依赖关系。Prompt 用 XML 标签分别传入各模块的入口文件。</p><h2>动手练习</h2><ol><li>完成 5 个场景的模型选择判断</li><li>为其中 2 个场景编写完整的模型特化 Prompt</li><li>实际调用验证，记录是否符合预期</li></ol><h2>小结</h2><p>模型选择是 Vibe Coding 的核心技能之一。通过反复练习场景判断，你会逐渐形成直觉——看到任务就知道该用哪个模型、怎么写 Prompt。这种直觉比记住任何规则都有用。</p>",
           "_id": "69db3dc776e3e0c1b3b66dfe"
-        },
-        {
-          "code": "L71",
-          "title": "Lab: 工具选型实战 — 没有绝对的最好，只有最适合",
-          "description": "建立一套系统的工具选型框架。通过 5 个真实场景练习，学会根据技术水平、项目规模、团队情况和预算，做出合理的工具选择。",
-          "type": "InteractiveLab",
-          "isLive": false,
-          "isInteractiveLab": true,
-          "interactiveLabType": "prompt",
-          "interactiveLabSlug": "vibe-tool-selection",
-          "duration": 30,
-          "steps": [],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "vibe-tool-selection"
-            }
-          ],
-          "learns": [],
-          "_id": "69dc41a576e3e0c1b3c53f69"
         },
         {
           "code": "L72",
@@ -2853,26 +2741,6 @@
           "interactiveLabSlug": "vibe-prompt-iteration",
           "learningMaterial": "<h2>学习目标</h2><ul><li>在实际场景中运用 Codex CLI 完成编码任务</li><li>练习编写高质量的 Codex Prompt</li><li>体验 Prompt 优化前后的输出质量差异</li></ul><h2>核心概念</h2><h3>Lab 练习结构</h3><p>本节是动手练习课，包含 4 个递进难度的 Codex 实战场景。每个场景提供基础代码和需求描述，你需要编写 Prompt 让 Codex 完成任务。</p><h3>场景 1：Bug 修复</h3><p>给定一个有 3 个 bug 的 Express 路由文件（未 await 异步调用、缺少错误处理、SQL 注入风险），用 Codex 一次性找出并修复。</p><p>关键：Prompt 中要求 Codex \"列出所有问题，然后逐个修复，保留注释说明修复了什么\"。</p><h3>场景 2：功能生成</h3><p>从零生成一个文件上传中间件：支持多文件、限制大小和类型、返回上传结果数组。Prompt 要指定所有边界条件。</p><h3>场景 3：重构挑战</h3><p>给一个 200 行的\"上帝函数\"（同时做验证、数据库操作、发邮件、日志），让 Codex 拆分成 4 个独立函数。Prompt 要说清楚拆分策略。</p><h3>场景 4：测试生成</h3><p>给定一个 Service 文件，让 Codex 生成完整的单元测试，覆盖正常路径、边界场景、错误处理。用 Few-shot 模板给一个测试示例。</p><h3>评估标准</h3><p>每个场景从四个角度自评：(1) Codex 输出是否直接可用 (2) 需要人工修改多少 (3) Prompt 写了几次才拿到满意结果 (4) 总耗时 vs 纯手写耗时。</p><h2>动手练习</h2><ol><li>完成上述 4 个场景，记录每个场景的 Prompt 和输出</li><li>对比你的第一版 Prompt 和优化后的版本</li><li>选一个场景用 Claude Code 重做，对比工具差异</li></ol><h2>小结</h2><p>Prompt Lab 的目的不是\"做完题\"，而是建立写 Prompt 的肌肉记忆。你会发现：需求描述越具体、边界条件越明确、输出格式越清楚，Codex 的输出就越接近直接可用。这个规律适用于所有 AI 编码工具。</p>",
           "_id": "69db3dc876e3e0c1b3b66e7f"
-        },
-        {
-          "code": "L83",
-          "title": "Lab: Prompt 迭代与追问 — 第一次一定不够好",
-          "description": "学会用迭代心态和追问技巧，把 AI 生成的半成品代码一步步改到能用的状态。",
-          "type": "InteractiveLab",
-          "isLive": false,
-          "isInteractiveLab": true,
-          "interactiveLabType": "prompt",
-          "interactiveLabSlug": "vibe-prompt-iteration",
-          "duration": 30,
-          "steps": [],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "vibe-prompt-iteration"
-            }
-          ],
-          "learns": [],
-          "_id": "69dc41a776e3e0c1b3c53f9d"
         }
       ]
     },
@@ -3498,7 +3366,7 @@
             }
           ],
           "learningMaterial": "<h2>学习目标</h2><ul><li>完成项目的最终 Code Review 并修复所有遗留问题</li><li>录制高质量的项目 Demo 视频</li><li>把项目代码和文档上传到 GitHub</li></ul><h2>核心概念</h2><h3>最终 Review 检查清单</h3><p>上线前的最后一遍检查，用 Claude 逐项确认：</p><pre><code>对我的项目做上线前最终检查：\n\n1. 安全：.env 是否在 .gitignore？有无硬编码密钥？API 有无认证？\n2. 功能：所有 CRUD 是否正常？错误处理是否覆盖？边界场景？\n3. 文档：README 是否完整？API 文档是否和代码一致？\n4. 部署：环境变量是否配置？构建是否通过？域名是否可访问？\n5. 代码质量：TypeScript 严格模式？ESLint 通过？无 console.log？</code></pre><h3>Demo 视频录制要点</h3><ul><li><strong>工具选择</strong>：macOS 用 QuickTime 或 OBS，Windows 用 OBS</li><li><strong>分辨率</strong>：1920x1080，字体不要太小（浏览器缩放 125%）</li><li><strong>时长控制</strong>：3-5 分钟最佳，不超过 8 分钟</li><li><strong>录制前</strong>：清空浏览器标签、关闭通知、准备好测试数据</li><li><strong>录制中</strong>：操作慢一点、鼠标移动平稳、每个功能停顿 2 秒</li></ul><h3>GitHub 上传规范</h3><pre><code># 初始化仓库\ngit init\ngit remote add origin git@github.com:username/project.git\n\n# 确保 .gitignore 包含\nnode_modules/\n.env\n.env.local\ndist/\n.DS_Store\n\n# 提交并推送\ngit add .\ngit commit -m \"feat: initial project upload\"\ngit push -u origin main</code></pre><h3>GitHub 仓库美化</h3><ul><li>在 Settings 里添加 About 描述和话题标签</li><li>上传项目截图或 Demo GIF 到 README</li><li>添加 License（MIT 最通用）</li><li>在 Releases 里创建 v1.0.0</li></ul><h2>动手练习</h2><ol><li>运行最终 Review 检查清单，修复所有问题</li><li>按照要点录制 Demo 视频</li><li>把代码推到 GitHub，完善仓库信息</li></ol><h2>小结</h2><p>最终交付是整个项目课程的收尾。Review 不是走过场，上线前发现的 bug 修复成本最低。Demo 视频是你作品集里最直观的展示材料，值得花时间录好。GitHub 仓库就是你的技术名片，README 和仓库描述直接影响面试官的第一印象。</p>",
-          "_id": "69db3dca76e3e0c1b3b66edd"
+          "_id": "6a409ddb942e9d8f32c7fca9"
         },
         {
           "code": "L105",
@@ -3606,7 +3474,7 @@
           "type": "Quest",
           "duration": 60,
           "isLive": false,
-          "description": "<h3>🎯 这节课解决什么问题</h3><p>L84-L108 讲了 Claude 写前端、写后端、连数据库、部署到 Cloudflare/Vercel 的全流程。但听完 25 节课不等于能自己跑通一遍。这节 Quest 是整门课的毕业项目——由小花老师带你用 Claude Code 从 PRD 出发，一步步完成前端 UI、后端 API、数据库、部署上线，最后拿到一个真实可访问的 URL。这是 Vibe Coding 提升班的「真实战」时刻。</p><h3>📖 你将学到</h3><ul><li><strong>从 PRD 到部署的完整 Vibe Coding 流程</strong> — 不是片段练习，是端到端实战</li><li><strong>用 Sub-agents / MCP / Cursor Rules 协作</strong> — 把前面学的工具组合用</li><li><strong>真实部署到 Cloudflare Workers 或 Vercel</strong> — 拿到 URL，能发给别人</li></ul><h3>💡 适合谁</h3><p>所有完成 Q01-Q04 + Phase 4 学习的学员。这是检验你「学会了 Vibe Coding 提升班」的唯一标准——能不能自己端到端做一个产品。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（6 步：写 PRD → 前端 → 后端 → 数据库 → 部署 → 拿到 URL）</li><li>约 60 分钟（取决于项目复杂度）</li><li>完成后你的 GitHub 上有一个可上线的全栈项目，并有真实访问 URL</li></ul><h3>✅ 学完能做什么</h3><p>你能独立用 Claude Code 完成一个生产级别的全栈小项目。这是 Vibe Coding 提升班的毕业证——能上线的产品 = 你真的学会了。</p>",
+          "description": "<h3>🎯 这节课解决什么问题</h3><p>L84-Q05 讲了 Claude 写前端、写后端、连数据库、部署到 Cloudflare/Vercel 的全流程。但听完 25 节课不等于能自己跑通一遍。这节 Quest 是整门课的毕业项目——由小花老师带你用 Claude Code 从 PRD 出发，一步步完成前端 UI、后端 API、数据库、部署上线，最后拿到一个真实可访问的 URL。这是 Vibe Coding 大师课的「真实战」时刻。</p><h3>📖 你将学到</h3><ul><li><strong>从 PRD 到部署的完整 Vibe Coding 流程</strong> — 不是片段练习，是端到端实战</li><li><strong>用 Sub-agents / MCP / Cursor Rules 协作</strong> — 把前面学的工具组合用</li><li><strong>真实部署到 Cloudflare Workers 或 Vercel</strong> — 拿到 URL，能发给别人</li></ul><h3>💡 适合谁</h3><p>所有完成 Q01-Q04 + Phase 4 学习的学员。这是检验你「学会了 Vibe Coding 大师课」的唯一标准——能不能自己端到端做一个产品。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（6 步：写 PRD → 前端 → 后端 → 数据库 → 部署 → 拿到 URL）</li><li>约 60 分钟（取决于项目复杂度）</li><li>完成后你的 GitHub 上有一个可上线的全栈项目，并有真实访问 URL</li></ul><h3>✅ 学完能做什么</h3><p>你能独立用 Claude Code 完成一个生产级别的全栈小项目。这是 Vibe Coding 大师课的毕业证——能上线的产品 = 你真的学会了。</p>",
           "quest": {
             "title": "用 Claude Code 完成全栈毕业项目从 PRD 到上线",
             "description": "一节课走完 PRD → 前端 → 后端 → 数据库 → 部署 → 真实 URL 的全流程",

@@ -3,23 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phase 2 — Skills, MCP &amp; Agent 架构 — Vibe Coding 提升班</title>
+<title>Phase 2 — Skills, MCP &amp; Agent 架构 — Vibe Coding 大师课</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="header">
   <h1>Phase 2 — Skills, MCP &amp; Agent 架构</h1>
-  <div class="sub">Week 3-5，15 节课 · 35 节课</div>
-  <div class="nav"><a href="phase1.html">← 上一阶段</a> | <a href="curriculum.html">← 返回课程总览</a> | <a href="phase3.html">下一阶段 →</a></div>
+  <div class="sub">Week 3-5，15 节课</div>
+  <div class="nav"><a href="phase1.html">← 上一阶段</a> | <a href="curriculum.html">课程总览</a> | <a href="phase3.html">下一阶段 →</a></div>
 </div>
-
 <div class="c">
-
 <div class="box">
   <div class="box-h" style="background:#f59e0b">
     <span style="font-size:18px;font-weight:900">Phase 2 — Skills, MCP &amp; Agent 架构</span>
-    <span style="float:right;opacity:0.7" class="mono">35 节课</span>
+    <span style="float:right;opacity:0.75" class="mono">34 节 · 6 直播 · 8 Lab</span>
   </div>
   <div class="lesson">
     <div class="lesson-head">
@@ -62,7 +60,7 @@
       <span class="pill" style="background:#6366f1;color:#fff">L35</span>
       <h4>Skill 与 agent.md 模板标准化实战</h4>
       <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h30min</span>
+      <span class="mono" style="font-size:12px;opacity:0.5">1h 30min</span>
     </div>
     <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7">上节课讲了 Skills 概念，这节课写一个真实的 Skill。从 agent.md 模板开始（Skill 的说明书），定义 Skill 的名称、描述、触发条件、可用工具、执行步骤。然后写实现代码，注册到 Claude Code。课后你有一个能用的自定义 Skill——比如自动跑测试并生成报告的 Skill。</div>
   </div>
@@ -128,15 +126,6 @@
       <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
     </div>
     <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7">阅读「Claude Code 全面拆解」章节。自主节奏完成，巩固本节课的知识点。</div>
-  </div>
-  <div class="lesson">
-    <div class="lesson-head">
-      <span class="pill" style="background:#10b981;color:#fff">L43</span>
-      <h4>Lab: Claude Code Skills 和 Agent Teams — AI 能力复用</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
-    </div>
-    <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7">掌握 Claude Code 的 Skills 框架和 Agent Teams 协作模式。学会把反复使用的 AI 能力封装成可复用的 Skill，以及如何用多个 Agent 协同完成复杂任务。</div>
   </div>
   <div class="lesson">
     <div class="lesson-head">
@@ -221,12 +210,12 @@
   </div>
   <div class="lesson">
     <div class="lesson-head">
-      <span class="pill" style="background:#10b981;color:#fff">L53</span>
-      <h4>Lab: MCP 入门 — 让 AI 连接整个世界</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
+      <span class="pill" style="background:#ff5757;color:#fff">Q03</span>
+      <h4>Quest 实战：从零搭建你自己的 MCP Server</h4>
+      <span class="pill" style="background:#ff5757;color:#fff">QUEST</span>
+      <span class="mono" style="font-size:12px;opacity:0.5">50min</span>
     </div>
-    <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7">理解 MCP（Model Context Protocol）的核心概念，掌握如何在 Claude Code 中配置 MCP Server，让 AI 不再局限于读写本地文件，而是能访问 GitHub、数据库、API 等外部服务。</div>
+    <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7"><h3>🎯 这节课解决什么问题</h3><p>L44-L52 讲了 MCP 是什么、怎么调外部工具、Anthropic 的官方协议长什么样。但所有人都看完文档还不敢自己写一个 MCP Server——怕协议复杂、怕调不通、怕不知道从哪开始。这节 Quest 由小花老师带你用 TypeScript 从零搭一个最小可用的 MCP Server（一个能查天气或者搜本地文件的工具），然后接到 Claude Code 里实际调用一次。做完你就真正理解 MCP 不是黑盒。</p><h3>📖 你将学到</h3><ul><li><strong>从零写一个 MCP Server</strong> — TypeScript + @modelcontextprotocol/sdk，不到 100 行代码</li><li><strong>定义一个 Tool 让 AI 能调用</strong> — 输入参数、输出结构、错误处理</li><li><strong>把 Server 接到 Claude Code 实际跑</strong> — 在 Claude 对话里看到你的 tool 被调用</li></ul><h3>💡 适合谁</h3><p>已经看完 MCP 模块所有 Lab 但还没自己写过 Server 的工程师。这一节让你从「会用 MCP」毕业到「能造 MCP」。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：初始化项目 → 装 SDK → 写 Tool → 配 Claude → 实际调用）</li><li>约 50 分钟</li><li>完成后你 GitHub 上有一个能跑的 MCP Server</li></ul><h3>✅ 学完能做什么</h3><p>你能给任何业务系统包装一个 MCP Server，让 Claude / Cursor 直接调用。这是把 AI 接入企业工作流的关键能力——不是聊天，是动手干活。</p></div>
   </div>
   <div class="lesson">
     <div class="lesson-head">
@@ -260,7 +249,7 @@
       <span class="pill" style="background:#6366f1;color:#fff">L57</span>
       <h4>Claude 多步骤 Agent 架构与工具编排实战</h4>
       <span class="pill" style="background:#6366f1;color:#fff">LIVE</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">1h30min</span>
+      <span class="mono" style="font-size:12px;opacity:0.5">1h 30min</span>
     </div>
     <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7">Claude Code 本身就是一个 Agent——它能自己决定读哪个文件、改哪段代码、跑什么命令。这节课讲怎么编排复杂的 Agent 工作流：多个 Tool 串联执行、条件分支（如果测试通过就部署，否则修 bug）、Sub-agent 并行（一个 Agent 写前端，另一个同时写后端）。实操配置一个多步骤自动化工作流。</div>
   </div>
@@ -321,23 +310,22 @@
   <div class="lesson">
     <div class="lesson-head">
       <span class="pill" style="background:#10b981;color:#fff">L64</span>
-      <h4>Lab: Context Engineering 入门 — 让 AI 不再</h4>
+      <h4>Lab: Context Engineering 入门 — 让 AI 不再丢上下文</h4>
       <span class="pill" style="background:#10b981;color:#fff">LAB</span>
       <span class="mono" style="font-size:12px;opacity:0.5">1h</span>
     </div>
-    <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7">理解为什么 AI 编程工具总是</div>
+    <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7">理解为什么 AI 编程工具会丢上下文、误解需求或反复犯同一个错。通过互动练习设计上下文结构、规则文件和任务边界，让 Agent 输出更稳定。</div>
   </div>
   <div class="lesson">
     <div class="lesson-head">
-      <span class="pill" style="background:#10b981;color:#fff">L65</span>
-      <h4>Lab: Context Engineering 入门 — 让 AI 不再</h4>
-      <span class="pill" style="background:#10b981;color:#fff">LAB</span>
-      <span class="mono" style="font-size:12px;opacity:0.5">30min</span>
+      <span class="pill" style="background:#ff5757;color:#fff">Q04</span>
+      <h4>Quest 实战：搭建一个能跑的 Claude Code Sub-agents 工作流</h4>
+      <span class="pill" style="background:#ff5757;color:#fff">QUEST</span>
+      <span class="mono" style="font-size:12px;opacity:0.5">45min</span>
     </div>
-    <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7">理解为什么 AI 编程工具总是</div>
+    <div style="padding:8px 16px 12px;color:#444;font-size:13px;line-height:1.7"><h3>🎯 这节课解决什么问题</h3><p>L54-L64 讲了 Agentic Workflow、Multi-agent、Sub-agent 这些概念。但「概念懂了」≠「能搭一个真在干活的 Agent 团队」。这节 Quest 由小花老师带你用 Claude Code 的 Sub-agents 机制，搭一个 3 个 agent 协作的真实工作流——比如：Researcher 负责查资料、Writer 负责起草、Reviewer 负责质检。做完你就有一个能反复调用、专门干这件事的 Agent 团队。</p><h3>📖 你将学到</h3><ul><li><strong>Claude Code Sub-agents 怎么定义</strong> — .claude/agents/*.md 文件结构、frontmatter、prompt</li><li><strong>三个 Agent 怎么分工</strong> — 各自的 description、tools、prompt 不一样</li><li><strong>主对话怎么调用 Sub-agent</strong> — Task tool 触发 + 看输出</li></ul><h3>💡 适合谁</h3><p>已经做完 Q03 会写 MCP 的工程师，想再进一步搭 Multi-agent 系统。这一节让你的 AI 协作从「单聊」升级到「团队」。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（5 步：定义任务 → 设计 3 个 Agent → 写 .md 文件 → 主对话里触发 → 验证产出）</li><li>约 45 分钟</li><li>完成后你的项目里有 3 个可复用的 Sub-agent 配置</li></ul><h3>✅ 学完能做什么</h3><p>你能给任何复杂任务设计 Agent 团队——研究 + 起草 + 审查、需求 + 实现 + 测试、UI + 后端 + 部署。这是 Agentic Workflow 真正落地的方式。</p></div>
   </div>
 </div>
-
 </div>
 <div class="footer">JR Academy · AI-Driven Education</div>
 </body>
