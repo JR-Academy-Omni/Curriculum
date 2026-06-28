@@ -69,6 +69,7 @@ _Week 3-5，15 节课_
 - **Claude Skills 目录结构与 Anthropic 参考资料** — 120 分钟
 - **自学：Claude Code 全面拆解** — 30 分钟
 - **Claude Workflow：从一次性 Prompt 到可复现编排** — 60 分钟
+- **Claude Schedule：把重复开发任务交给定时 Agent** — 60 分钟
 - **用 AI 搭建 MCP Server（Model Context Protocol）** — 30 分钟
 - **Lab: MCP 入门 — 让 AI 连接整个世界** — 30 分钟
 - **自学：MCP 服务器配置** — 30 分钟
@@ -78,7 +79,6 @@ _Week 3-5，15 节课_
 - **用 AI 搭建 MCP Server** — 120 分钟 · 🔴直播
 - **自学：MCP 配置同步** — 30 分钟
 - **MCP 协议与 Claude 工具调用机制参考** — 120 分钟
-- **Claude Schedule：把重复开发任务交给定时 Agent** — 60 分钟
 - **Quest 实战：从零搭建你自己的 MCP Server** — 50 分钟
 - **Agentic Workflow：从单 Agent 到多 Agent 执行图** — 30 分钟
 - **自学：AI Agents 与工具调用** — 30 分钟

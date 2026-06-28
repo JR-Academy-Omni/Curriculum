@@ -1466,6 +1466,46 @@
           "_id": "6a40cbfd942e9d8f32d03712"
         },
         {
+          "code": "L53",
+          "title": "Claude Schedule：把重复开发任务交给定时 Agent",
+          "description": "学习 Claude Schedule 的使用边界：让 Agent 定时检查、生成报告、提出 PR 或草稿，但不把高风险生产操作自动化。课程覆盖 schedule 任务设计、权限边界、输出报告和失败处理。",
+          "type": "Information",
+          "isLive": false,
+          "duration": 60,
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Schedule 适用场景",
+              "description": "内容巡检、差异报告、依赖检查、课程同步提醒",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "EXERCISE",
+              "title": "设计一个定时 Agent",
+              "description": "定义输入、权限、验证方式和通知产物",
+              "duration": 25
+            },
+            {
+              "order": 3,
+              "type": "CHECKLIST",
+              "title": "上线前安全检查",
+              "description": "区分只读、可写、可提交、可部署任务",
+              "duration": 15
+            }
+          ],
+          "labs": [],
+          "learns": [
+            {
+              "direction": "vibe-coding",
+              "slug": "claude-schedule"
+            }
+          ],
+          "learningMaterial": "<h2>学习目标</h2><ul><li>理解 Claude Schedule 适合处理哪些重复开发任务</li><li>设计无人值守任务的输入、权限、产物和通知</li><li>避免把高风险生产操作交给定时 Agent 自动执行</li></ul><h2>Claude Schedule 能做什么</h2><p>Claude Schedule 的价值不是「定时聊天」，而是让 Agent 在固定时间带着上下文跑一段可验证的工作流。典型任务包括内容巡检、数据差异报告、依赖更新检查、课程大纲对比、失败任务复盘。</p><pre><code># 示例任务\n每天 09:00 检查课程 production 与本地 outline 差异\n每周一生成学习资源薄弱页面报告\n每晚扫描新 job 并输出 AI 分析草稿\n每周检查依赖安全更新，但只出 PR，不自动部署</code></pre><h2>设计一个可上线的 Schedule</h2><ul><li>任务目标：一句话说清它应该完成什么</li><li>执行边界：只读、可写、可提交、可部署要分开</li><li>输入来源：repo、API、S3、Google Sheet、数据库</li><li>验证方式：diff、测试、截图、计数、schema 校验</li><li>输出方式：报告、PR、Slack/Email 通知、admin dashboard</li></ul><h2>课堂练习</h2><ol><li>为「Vibe Coding 大纲 prod drift 检查」写一个 schedule 任务说明</li><li>定义它可以自动做什么、必须人工确认什么</li><li>设计失败报告格式：失败命令、错误原因、下一步建议</li></ol><h2>小结</h2><p>Schedule 适合自动发现问题和生成可审核产物，不适合自动做不可逆生产修改。好的定时 Agent 默认保守：先报告、先 diff、先让人确认。</p>",
+          "_id": "6a40cbfe942e9d8f32d03727"
+        },
+        {
           "code": "L44",
           "title": "用 AI 搭建 MCP Server（Model Context Protocol）",
           "description": "MCP 是 Model Context Protocol——让 AI 调用外部工具和服务的标准协议。Claude 要查数据库、读文件系统、调第三方 API，都通过 MCP。这节课讲 MCP 的 Client-Server 架构：Client（AI 工具端）发起请求 → Server（你写的服务端）执行操作 → 返回结果。Tool 和 Resource 的区别、Transport 层怎么工作。",
@@ -1746,46 +1786,6 @@
           ],
           "learningMaterial": "<h2>学习目标</h2><ul><li>掌握 MCP 协议的详细规范：JSON-RPC 2.0 消息格式、Tool Definition Schema</li><li>了解 Resource URI 格式、Error Code 定义、Auth 机制</li><li>收藏 Anthropic 官方 MCP 参考资料和社区 MCP Server 列表</li></ul><h2>核心概念</h2><h3>JSON-RPC 2.0 消息格式</h3><pre><code># 请求消息（Client → Server）\n{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"query_database\",\n    \"arguments\": {\n      \"sql\": \"SELECT * FROM users LIMIT 10\"\n    }\n  },\n  \"id\": 1\n}\n\n# 响应消息（Server → Client）\n{\n  \"jsonrpc\": \"2.0\",\n  \"result\": {\n    \"content\": [{\n      \"type\": \"text\",\n      \"text\": \"[{\\\"id\\\": 1, \\\"name\\\": \\\"Alice\\\"}]\"\n    }]\n  },\n  \"id\": 1\n}\n\n# 错误响应\n{\n  \"jsonrpc\": \"2.0\",\n  \"error\": {\n    \"code\": -32602,\n    \"message\": \"Invalid params: sql field is required\"\n  },\n  \"id\": 1\n}</code></pre><h3>Tool Definition Schema</h3><pre><code>{\n  \"name\": \"send_email\",\n  \"description\": \"发送邮件到指定地址\",\n  \"inputSchema\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"to\": {\n        \"type\": \"string\",\n        \"description\": \"收件人邮箱\"\n      },\n      \"subject\": { \"type\": \"string\" },\n      \"body\": { \"type\": \"string\" }\n    },\n    \"required\": [\"to\", \"subject\", \"body\"]\n  }\n}</code></pre><h3>MCP Error Codes</h3><p>MCP 使用 JSON-RPC 2.0 标准错误码：-32700 Parse Error、-32600 Invalid Request、-32601 Method Not Found、-32602 Invalid Params、-32603 Internal Error。自定义错误码从 -32000 到 -32099。</p><h3>Auth 机制</h3><p>本地 stdio Transport 不需要 Auth（进程间通信天然可信）。远程 SSE Transport 需要 Auth：通常用 Bearer Token 或 OAuth 2.0。在 settings.json 的 mcpServers 配置中通过 env 传递 Token。</p><h3>参考资料</h3><ul><li>MCP 官方规范：<code>spec.modelcontextprotocol.io</code></li><li>MCP TypeScript SDK：<code>github.com/modelcontextprotocol/typescript-sdk</code></li><li>社区 MCP Server 列表：<code>github.com/modelcontextprotocol/servers</code></li><li>MCP Inspector：<code>npx @modelcontextprotocol/inspector</code></li></ul><h2>操作步骤</h2><ol><li>阅读一个社区 MCP Server 的源码（推荐 filesystem server），理解 Tool 和 Resource 的定义方式</li><li>收藏上面的参考链接，配置 MCP Server 时随时查阅</li><li>尝试安装一个社区 MCP Server 到你的 Claude Code 环境中</li></ol><h2>小结</h2><p>这节课是 MCP 协议的参考手册。JSON-RPC 2.0 消息格式、Tool Schema 定义、Error Code、Auth 机制——开发 MCP Server 时随时回来查。重点收藏官方规范文档和社区 Server 列表。</p>",
           "_id": "69db3dc676e3e0c1b3b66d9b"
-        },
-        {
-          "code": "L53",
-          "title": "Claude Schedule：把重复开发任务交给定时 Agent",
-          "description": "学习 Claude Schedule 的使用边界：让 Agent 定时检查、生成报告、提出 PR 或草稿，但不把高风险生产操作自动化。课程覆盖 schedule 任务设计、权限边界、输出报告和失败处理。",
-          "type": "Information",
-          "isLive": false,
-          "duration": 60,
-          "steps": [
-            {
-              "order": 1,
-              "type": "CONCEPT",
-              "title": "Schedule 适用场景",
-              "description": "内容巡检、差异报告、依赖检查、课程同步提醒",
-              "duration": 20
-            },
-            {
-              "order": 2,
-              "type": "EXERCISE",
-              "title": "设计一个定时 Agent",
-              "description": "定义输入、权限、验证方式和通知产物",
-              "duration": 25
-            },
-            {
-              "order": 3,
-              "type": "CHECKLIST",
-              "title": "上线前安全检查",
-              "description": "区分只读、可写、可提交、可部署任务",
-              "duration": 15
-            }
-          ],
-          "labs": [],
-          "learns": [
-            {
-              "direction": "vibe-coding",
-              "slug": "claude-schedule"
-            }
-          ],
-          "learningMaterial": "<h2>学习目标</h2><ul><li>理解 Claude Schedule 适合处理哪些重复开发任务</li><li>设计无人值守任务的输入、权限、产物和通知</li><li>避免把高风险生产操作交给定时 Agent 自动执行</li></ul><h2>Claude Schedule 能做什么</h2><p>Claude Schedule 的价值不是「定时聊天」，而是让 Agent 在固定时间带着上下文跑一段可验证的工作流。典型任务包括内容巡检、数据差异报告、依赖更新检查、课程大纲对比、失败任务复盘。</p><pre><code># 示例任务\n每天 09:00 检查课程 production 与本地 outline 差异\n每周一生成学习资源薄弱页面报告\n每晚扫描新 job 并输出 AI 分析草稿\n每周检查依赖安全更新，但只出 PR，不自动部署</code></pre><h2>设计一个可上线的 Schedule</h2><ul><li>任务目标：一句话说清它应该完成什么</li><li>执行边界：只读、可写、可提交、可部署要分开</li><li>输入来源：repo、API、S3、Google Sheet、数据库</li><li>验证方式：diff、测试、截图、计数、schema 校验</li><li>输出方式：报告、PR、Slack/Email 通知、admin dashboard</li></ul><h2>课堂练习</h2><ol><li>为「Vibe Coding 大纲 prod drift 检查」写一个 schedule 任务说明</li><li>定义它可以自动做什么、必须人工确认什么</li><li>设计失败报告格式：失败命令、错误原因、下一步建议</li></ol><h2>小结</h2><p>Schedule 适合自动发现问题和生成可审核产物，不适合自动做不可逆生产修改。好的定时 Agent 默认保守：先报告、先 diff、先让人确认。</p>",
-          "_id": "6a40cbfe942e9d8f32d03727"
         },
         {
           "code": "Q03",
