@@ -1,4 +1,4 @@
-# Vibe Coding 提升班 · 海报 Prompt 矩阵
+# Vibe Coding 大师课 · 海报 Prompt 矩阵
 
 > 4 Phases / 113 lessons / 5 实战项目 / 主打 Claude Code · Cursor · Codex CLI · Skills · MCP · Sub-agent · agent.md
 > **核心定位：有编程基础的开发者用 AI 把自己的产能放大 5 倍**（不是入门、不是转码、不是深度 AI 工程）
@@ -38,10 +38,10 @@ ai-builder 这个课最容易跟 **ai-engineer-bootcamp** 和 **web-code-bootcam
 
 **ai-builder 专属锚点（每张至少出现 1 个）：**
 - ✅ **113 lessons / 4 phases / 5 实战项目**（深度 marker）
-- ✅ **Claude Code · Cursor · Codex CLI**（三工具同框，提升班招牌）
+- ✅ **Claude Code · Cursor · Codex CLI**（三工具同框，大师课招牌）
 - ✅ **Skills · MCP · Sub-agent · agent.md**（架构层四件套）
 - ✅ **PRD → Skill → Agent → Test → Ship**（5-step pipeline）
-- ✅ **"提升班"** 不是 "入门班" / 不是 "转码班"（受众已会写代码）
+- ✅ **"大师课"** 不是 "入门班" / 不是 "转码班"（受众已会写代码）
 - ✅ **orchestration / 编排** 而不是 "学会用 ChatGPT"（关键词差）
 
 ---
@@ -55,7 +55,7 @@ ai-builder 这个课最容易跟 **ai-engineer-bootcamp** 和 **web-code-bootcam
 | **113 lessons / 4 phases** | outline.json 总数 | 几乎所有 |
 | **5 实战项目** | Phase 4 毕业项目 + 各 Phase 项目 | xhs + hero |
 | **Claude Code · Cursor · Codex CLI** | Phase 1 工具教学 | 三工具同框 |
-| **Skills · MCP · Sub-agent** | Phase 2 架构内容 | 提升班招牌 |
+| **Skills · MCP · Sub-agent** | Phase 2 架构内容 | 大师课招牌 |
 | **agent.md** | Phase 2 模板标准化 | 35 岁 + senior orchestration |
 | **多模型 Prompt 精调** | Phase 3 内容 | side-hustle + senior |
 | **PRD → 上线** | Phase 1-4 完整链路 | hero pipeline |
@@ -123,7 +123,7 @@ ai-builder 这个课最容易跟 **ai-engineer-bootcamp** 和 **web-code-bootcam
 每张 prompt 文件末尾的 frontmatter 都标注了：
 
 - `bootcamp: ai-builder` —— 用于 image-prompts 索引
-- `bootcampName: Vibe Coding 提升班` —— 用于角标 "JR Academy · Vibe Coding 提升班"
+- `bootcampName: Vibe Coding 大师课` —— 用于角标 "JR Academy · Vibe Coding 大师课"
 - `mode: Thinking` (xhs) / `Instant` (wechat-cover, hero)
 - `lang: zh` / `lang: en`
 - 完整 `tags` 用于检索

@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: Developers / Engineers
 painPoint: side-hustle
@@ -26,7 +26,7 @@ tags: [developer, side-hustle, LinkedIn, cover, Claude-Code]
   - One weekend
   - One SaaS
 - **Subheadline**: Claude Code · Skills · MCP · agent.md
-- **Brand tag**: JR Academy · Vibe Coding 提升班
+- **Brand tag**: JR Academy · Vibe Coding 大师课
 
 ## Full Prompt
 
@@ -49,7 +49,7 @@ Lower portion, smaller medium-bold sans-serif (DM Sans Medium / Inter Medium sty
 "Claude Code · Skills · MCP · agent.md"
 
 Bottom-right corner, tiny flat single-line text, color #FFF1E7:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. No stroke, no outline, no shadow on text.
 The technical terms "Claude Code", "Skills", "MCP", "agent.md" must render exactly with correct capitalization and lowercase as written. The middle-dot characters "·" must be Unicode U+00B7, not periods.

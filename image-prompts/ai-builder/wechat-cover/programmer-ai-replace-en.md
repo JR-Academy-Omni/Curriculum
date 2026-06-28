@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: Developers / Engineers
 painPoint: ai-replace
@@ -26,7 +26,7 @@ tags: [developer, ai-replace, LinkedIn, cover, orchestration]
   - Type less.
   - Orchestrate more.
 - **Subheadline**: Skills · MCP · Sub-agents · agent.md
-- **Brand tag**: JR Academy · Vibe Coding 提升班
+- **Brand tag**: JR Academy · Vibe Coding 大师课
 
 ## Full Prompt
 
@@ -49,7 +49,7 @@ Lower portion, smaller medium-bold sans-serif (DM Sans Medium / Inter Medium sty
 "Skills · MCP · Sub-agents · agent.md"
 
 Bottom-right corner, tiny flat single-line text, color #FFF1E7:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. No stroke, no outline, no shadow on text.
 The word "Orchestrate" must spell exactly as O-R-C-H-E-S-T-R-A-T-E. The technical terms "Skills", "MCP", "Sub-agents", "agent.md" must render exactly with correct capitalization. The middle-dots "·" must be Unicode U+00B7.

@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: career-changer
 roleName: Career changers / Job seekers
 painPoint: ai-fomo
@@ -26,7 +26,7 @@ tags: [career-changer, ai-fomo, LinkedIn, cover, junior-dev]
   - Ship something.
   - Then apply.
 - **Subheadline**: Claude Code · Cursor · Codex · agent.md
-- **Brand tag**: JR Academy · Vibe Coding 提升班
+- **Brand tag**: JR Academy · Vibe Coding 大师课
 
 ## Full Prompt
 
@@ -49,7 +49,7 @@ Lower portion, smaller medium-bold sans-serif (DM Sans Medium / Inter Medium sty
 "Claude Code · Cursor · Codex · agent.md"
 
 Bottom-right corner, tiny flat single-line text, color #FFF1E7:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. No stroke, no outline, no shadow on text.
 The technical terms "Claude Code", "Cursor", "Codex", "agent.md" must render exactly with correct capitalization. The middle-dots "·" must be Unicode U+00B7. Both Line 1 and Line 2 must end with a period.

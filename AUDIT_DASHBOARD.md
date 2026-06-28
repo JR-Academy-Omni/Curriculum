@@ -18,7 +18,7 @@
 | AI 工程师入门 / RAG 班 / RAG 入门 | `ai-engineer-rag` | AI Engineer 入门（self-paced，**不分期**，是工程师班的入门版） |
 | **⚠️ 全栈班** / 全栈项目班 / Code Bootcamp / Learn to Code | `web-code-bootcamp-or-learn-to-code-1` | AI Engineer 全栈项目班 Code Bootcamp / Learn to Code |
 | **⚠️ 全栈面试班** / 面试班 / 手撕全栈 / 手撕面试 | `full-stack-developer-interview` | 手撕全栈面试题班（**这是面试题班，不是全栈班！**） |
-| **Vibe Coding** / Vibe / Vibe 提升 / 提升班 / AI Builder | `ai-builder` | Vibe Coding 提升班 |
+| **Vibe Coding** / Vibe / Vibe 提升 / 大师课 / AI Builder | `ai-builder` | Vibe Coding 大师课 |
 | **AI 营销** / 营销班 / 营销 4 周 / 全链路营销 | `ai-marketing` | AI 营销全链路实战 4 周 |
 | **AI 必修课** / 必修课 / Essentials / 入门必修 | `ai-essentials-bootcamp` | AI 必修课 |
 | **AI Coding 实战** / Coding 实战 / Programming / 人人都能学的 AI Coding | `ai-programming` | 人人都能学的 AI Coding 实战课 |
@@ -69,7 +69,7 @@
 | 课程 | 规模 | 最近 audit | 状态 | 一句话备注 | 详情 |
 |------|------|-----------|------|------------|------|
 | [ai-engineer-bootcamp](ai-engineer-bootcamp/) | 10p / 286l | 2026-05-04 | 🟡 partial | 本地干净；prod diff 未验证（ADMIN_TOKEN 过期） | [log](ai-engineer-bootcamp/AUDIT_LOG.md) |
-| [ai-builder](ai-builder/) — Vibe Coding 提升班 | 4p / 113l | — | ⚪ 未检 | — | — |
+| [ai-builder](ai-builder/) — Vibe Coding 大师课 | 4p / 113l | — | ⚪ 未检 | — | — |
 | [ai-marketing](ai-marketing/) — AI 营销全链路 4 周 | 4p / 64l | — | ⚪ 未检 | — | — |
 | [ai-essentials-bootcamp](ai-essentials-bootcamp/) — AI 必修课 | 4p / 33l | — | ⚪ 未检 | — | — |
 | [ai-programming](ai-programming/) — AI Coding 实战课 | 4p / 108l | 2026-05-12 | 🟡 partial | 45 个 _id 已对齐第 1 期 prod；内容重构待用户启动；sync 待跑 | [log](ai-programming/AUDIT_LOG.md) |

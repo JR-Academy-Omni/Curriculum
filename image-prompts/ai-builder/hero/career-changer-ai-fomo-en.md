@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: career-changer
 roleName: Career changers / Job seekers
 painPoint: ai-fomo
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: en
 version: 1
-title: Vibe Coding 提升班 (modern junior toolkit hero, EN)
+title: Vibe Coding 大师课 (modern junior toolkit hero, EN)
 ctaText: ""
 tags: [hero, junior-dev, toolkit, EN]
 ---
@@ -52,7 +52,7 @@ Bottom-left text overlay, 60px from canvas edge, geometric heavy bold sans-serif
 "The modern junior toolkit. Ship before you apply."
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color.
 ```

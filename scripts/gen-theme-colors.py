@@ -114,7 +114,7 @@ COURSES = {
         ],
     },
     "ai-builder": {
-        "name_zh": "Vibe Coding 提升班",
+        "name_zh": "Vibe Coding 大师课",
         "tagline": "Claude Code + Cursor + Codex·全栈 + Skills/MCP/Agent",
         "track": "工程 / 技术线",
         "primary_hex": "#6366F1",

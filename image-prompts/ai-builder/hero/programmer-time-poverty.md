@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: 程序员/工程师
 painPoint: time-poverty
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: zh
 version: 1
-title: Vibe Coding 提升班（PRD 到上线 hero · 5-step pipeline）
+title: Vibe Coding 大师课（PRD 到上线 hero · 5-step pipeline）
 ctaText: ""
 tags: [hero, 详情页, 极简, pipeline]
 ---
@@ -53,7 +53,7 @@ Bottom-left text overlay, 60px from canvas edge, heavy bold Chinese sans-serif (
 "从 PRD 到上线 · 113 节课 · 5 个项目"
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. Numbers "113" and "5" must be Arabic numerals.
 ```

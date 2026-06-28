@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: pm-manager
 roleName: 产品/技术经理
 painPoint: ai-fomo
@@ -15,7 +15,7 @@ lang: zh
 version: 1
 title: 团队用 Cursor 干活，你还在写需求 PPT
 ctaText: 评论区扣"管理"领大纲
-tags: [PM, 技术经理, AI FOMO, Cursor, MCP, 提升班]
+tags: [PM, 技术经理, AI FOMO, Cursor, MCP, 大师课]
 ---
 
 # 技术 Manager / PM × AI FOMO × 小红书种草
@@ -36,7 +36,7 @@ tags: [PM, 技术经理, AI FOMO, Cursor, MCP, 提升班]
   - ✓ Sub-agent 替你审 PR · 跑测试
   - ✓ 4 个月补完工程一线手感
 - **CTA**：评论区扣 "管理" 领大纲
-- **角标**：JR Academy · Vibe Coding 提升班
+- **角标**：JR Academy · Vibe Coding 大师课
 
 ## 完整 Prompt
 
@@ -76,7 +76,7 @@ Bottom CTA strip, solid #FF5757 background, white bold Chinese sans-serif, readi
 "评论区扣 管理 领大纲"
 
 Bottom-right corner, tiny flat single-line text, color #10162F, reading:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Text must be sharp and beautifully composed. Simplified Chinese only for headline and bullets.
 All text in flat solid color. No stroke, no outline, no shadow on text.

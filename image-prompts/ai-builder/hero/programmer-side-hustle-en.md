@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: Developers / Engineers
 painPoint: side-hustle
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: en
 version: 1
-title: Vibe Coding 提升班 (5-project ship hero, EN)
+title: Vibe Coding 大师课 (5-project ship hero, EN)
 ctaText: ""
 tags: [hero, side-hustle, 5-projects, EN]
 ---
@@ -47,7 +47,7 @@ Bottom-left text overlay, 60px from canvas edge, geometric heavy bold sans-serif
 "5 ship-ready stacks. Fork them into your own SaaS."
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. The number "5" must be an Arabic numeral.
 ```

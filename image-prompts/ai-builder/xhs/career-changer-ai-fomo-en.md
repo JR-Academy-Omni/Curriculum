@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: career-changer
 roleName: Career changers / Job seekers
 painPoint: ai-fomo
@@ -35,7 +35,7 @@ Different from career-changer × ai-fomo on web-code-bootcamp ("AI didn't kill c
   - ✓ Skills · MCP · Sub-agents · 5 ship-able portfolio projects
   - ✓ 113 lessons · 4 months · ship before you apply
 - **CTA**: Comment "BUILD" for the syllabus
-- **Brand tag**: JR Academy · Vibe Coding 提升班
+- **Brand tag**: JR Academy · Vibe Coding 大师课
 
 ## Full Prompt
 
@@ -70,7 +70,7 @@ Bottom CTA strip, solid #FF5757 background, white bold sans-serif, reading:
 "Comment BUILD for the syllabus"
 
 Bottom-right corner, tiny flat single-line text, color #10162F, reading:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Text must be sharp and beautifully composed.
 All text in flat solid color. No stroke, no outline, no shadow on text. Consistent font size for all bullet lines.

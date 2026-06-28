@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: 程序员/工程师
 painPoint: time-poverty
@@ -26,7 +26,7 @@ tags: [程序员, 提速, Claude Code, 朋友圈]
   - 一晚上
   - 干完一周
 - **副标题**：Claude Code · Cursor · Codex · MCP · Sub-agent
-- **角标**：JR Academy · Vibe Coding 提升班
+- **角标**：JR Academy · Vibe Coding 大师课
 
 ## 完整 Prompt
 
@@ -49,7 +49,7 @@ Lower portion, smaller medium-bold sans-serif (Inter Medium / 思源黑体 Bold 
 "Claude Code · Cursor · Codex · MCP · Sub-agent"
 
 Bottom-right corner, tiny flat single-line text, color #FFF1E7:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. No stroke, no outline, no shadow on text. Simplified Chinese only for headline. The English tool names "Claude Code", "Cursor", "Codex", "MCP", "Sub-agent" must render exactly with correct capitalization.
 

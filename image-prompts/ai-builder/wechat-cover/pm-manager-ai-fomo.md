@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: pm-manager
 roleName: 产品/技术经理
 painPoint: ai-fomo
@@ -26,7 +26,7 @@ tags: [PM, 技术经理, AI FOMO, 朋友圈]
   - 你审的 PR
   - 你看不懂
 - **副标题**：组员靠 Claude Code · 你靠 Google
-- **角标**：JR Academy · Vibe Coding 提升班
+- **角标**：JR Academy · Vibe Coding 大师课
 
 ## 完整 Prompt
 
@@ -49,7 +49,7 @@ Lower portion, smaller medium-bold Chinese sans-serif (思源黑体 Bold style),
 "组员靠 Claude Code · 你靠 Google"
 
 Bottom-right corner, tiny flat single-line text, color #FFF1E7:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. No stroke, no outline, no shadow on text.
 The letters "PR" must be two uppercase English letters. "Claude Code" and "Google" must render exactly with correct capitalization.

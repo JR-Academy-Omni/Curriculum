@@ -1,4 +1,4 @@
-# Vibe Coding 提升班 — Design Spec
+# Vibe Coding 大师课 — Design Spec
 
 > Claude Code + Cursor + Codex·全栈 + Skills/MCP/Agent
 > 视觉系统所属：**工程 / 技术线**
@@ -12,7 +12,7 @@
 把下面这一整段粘贴给 Claude / GPT / Midjourney / DALL-E / Nano Banana 等任何 AI 模型，它就会按本课主题色出图。也可以在 `curriculum/theme-colors.html` 总览页一键复制。
 
 ```
-设计任务：为「Vibe Coding 提升班」做配图 / 海报 / banner / 封面图。
+设计任务：为「Vibe Coding 大师课」做配图 / 海报 / banner / 封面图。
 课程定位：Claude Code + Cursor + Codex·全栈 + Skills/MCP/Agent（工程 / 技术线）
 
 ═══ 主题色（必须严格执行）═══

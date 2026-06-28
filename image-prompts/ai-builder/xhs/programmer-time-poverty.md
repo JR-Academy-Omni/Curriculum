@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: 程序员/工程师
 painPoint: time-poverty
@@ -25,7 +25,7 @@ tags: [程序员, 提速, Claude Code, Cursor, Codex, MCP]
 ## 这张想表达什么
 
 不是"35 岁焦虑"，不是"AI 替代"，是**老程序员每天被重复活儿吃掉一半时间**这件事。
-角色：在职 5-8 年的工程师，写惯了 boilerplate / CRUD / 单测 / PR 描述，第一次发现 Claude Code + agent.md 让自己一晚上把"一周的活"做完。卖的是"提升班"——你已经会写代码，缺的是把 AI 用成第二双手的方法。
+角色：在职 5-8 年的工程师，写惯了 boilerplate / CRUD / 单测 / PR 描述，第一次发现 Claude Code + agent.md 让自己一晚上把"一周的活"做完。卖的是"大师课"——你已经会写代码，缺的是把 AI 用成第二双手的方法。
 
 ## 海报上的中文文字
 
@@ -36,7 +36,7 @@ tags: [程序员, 提速, Claude Code, Cursor, Codex, MCP]
   - ✓ Skills · MCP · Sub-agent 全套架构
   - ✓ PRD 到上线 · 113 节课 · 5 实战项目
 - **CTA**：评论区扣 "提速" 领大纲
-- **角标**：JR Academy · Vibe Coding 提升班
+- **角标**：JR Academy · Vibe Coding 大师课
 
 ## 完整 Prompt
 
@@ -73,7 +73,7 @@ Bottom CTA strip, solid #FF5757 background, white bold Chinese sans-serif, readi
 "评论区扣 提速 领大纲"
 
 Bottom-right corner, tiny flat single-line text, color #10162F, reading:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Text must be sharp and beautifully composed. Simplified Chinese only.
 All text in flat solid color. No stroke, no outline, no shadow on text.

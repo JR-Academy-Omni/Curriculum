@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: Developers / Engineers
 painPoint: ai-replace
@@ -35,7 +35,7 @@ The "AI will replace devs" panic is everywhere on LinkedIn. The real signal is s
   - ✓ Sub-agents review PRs · run tests · ship features
   - ✓ 113 lessons · 5 production projects · 4 month upgrade
 - **CTA**: Comment "ORCHESTRATE" for the syllabus
-- **Brand tag**: JR Academy · Vibe Coding 提升班
+- **Brand tag**: JR Academy · Vibe Coding 大师课
 
 ## Full Prompt
 
@@ -70,7 +70,7 @@ Bottom CTA strip, solid #FF5757 background, white bold sans-serif, reading:
 "Comment ORCHESTRATE for the syllabus"
 
 Bottom-right corner, tiny flat single-line text, color #10162F, reading:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Text must be sharp and beautifully composed. Use straight ASCII apostrophes (U+0027), not smart quotes.
 All text in flat solid color. No stroke, no outline, no shadow on text. Consistent font size for all bullet lines.

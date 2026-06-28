@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: general
 format: recruitment-poster
 formatName: 招生海报 / 全景图
@@ -11,12 +11,12 @@ mode: Thinking
 lang: zh
 version: 1
 styleName: Cursor IDE Splashscreen
-title: Vibe Coding 提升班 · Cursor IDE Splashscreen
+title: Vibe Coding 大师课 · Cursor IDE Splashscreen
 ctaText: 扫码看大纲 + 第三期日程
 tags: [招生海报, Cursor IDE Splashscreen, ai-builder]
 ---
 
-# Vibe Coding 提升班 · 招生海报（Cursor IDE Splashscreen）
+# Vibe Coding 大师课 · 招生海报（Cursor IDE Splashscreen）
 
 > 模型：`gpt-image-2` · 模式：**Thinking** · 比例 2:3 · 1024×1536
 

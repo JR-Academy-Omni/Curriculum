@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: 程序员/工程师
 painPoint: age-35
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: zh
 version: 1
-title: Vibe Coding 提升班（agent.md 抽象 hero · 老兵层级）
+title: Vibe Coding 大师课（agent.md 抽象 hero · 老兵层级）
 ctaText: ""
 tags: [hero, 详情页, agent.md, 极简]
 ---
@@ -49,7 +49,7 @@ Bottom-left text overlay, 60px from canvas edge, heavy bold Chinese sans-serif (
 "老兵的下一站 · 不写更多代码 · 写更好的 agent.md"
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. "agent.md" must render exactly.
 ```

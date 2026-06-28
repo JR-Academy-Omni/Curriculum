@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: 程序员/工程师
 painPoint: age-35
@@ -15,7 +15,7 @@ lang: zh
 version: 1
 title: 35 岁不卷代码量，卷的是 AI 协作能力
 ctaText: 评论区扣"提升"领大纲
-tags: [程序员, 35岁, AI协作, Claude Code, Skills, 提升班]
+tags: [程序员, 35岁, AI协作, Claude Code, Skills, 大师课]
 ---
 
 # 程序员 × 35 岁焦虑 × 小红书种草
@@ -36,7 +36,7 @@ tags: [程序员, 35岁, AI协作, Claude Code, Skills, 提升班]
   - ✓ Skills 让你的工程方法论可复用
   - ✓ Sub-agent orchestration · 老兵专属手艺
 - **CTA**：评论区扣 "提升" 领大纲
-- **角标**：JR Academy · Vibe Coding 提升班
+- **角标**：JR Academy · Vibe Coding 大师课
 
 ## 完整 Prompt
 
@@ -74,7 +74,7 @@ Bottom CTA strip, solid #FF5757 background, white bold Chinese sans-serif, readi
 "评论区扣 提升 领大纲"
 
 Bottom-right corner, tiny flat single-line text, color #10162F, reading:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Text must be sharp and beautifully composed. Simplified Chinese only for headline and bullets.
 All text in flat solid color. No stroke, no outline, no shadow on text.

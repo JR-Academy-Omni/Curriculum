@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: Developers / Engineers
 painPoint: side-hustle
@@ -35,7 +35,7 @@ tags: [developer, side-hustle, build-in-public, Claude-Code, MCP, Skills]
   - ✓ Skills · MCP · Sub-agents · agent.md templates
   - ✓ 113 lessons · ship in week 4, polish in week 12
 - **CTA**: Comment "BUILD" for the syllabus
-- **Brand tag**: JR Academy · Vibe Coding 提升班
+- **Brand tag**: JR Academy · Vibe Coding 大师课
 
 ## Full Prompt
 
@@ -69,7 +69,7 @@ Bottom CTA strip, solid #FF5757 background, white bold sans-serif, reading:
 "Comment BUILD for the syllabus"
 
 Bottom-right corner, tiny flat single-line text, color #10162F, reading:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Text must be sharp and beautifully composed.
 All text in flat solid color. No stroke, no outline, no shadow on text.

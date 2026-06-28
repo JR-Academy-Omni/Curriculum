@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: programmer
 roleName: 程序员/工程师
 painPoint: age-35
@@ -26,7 +26,7 @@ tags: [程序员, 35岁, AI协作, 朋友圈]
   - 经验 × AI
   - = 代差
 - **副标题**：8 年架构经验，装进一份 agent.md
-- **角标**：JR Academy · Vibe Coding 提升班
+- **角标**：JR Academy · Vibe Coding 大师课
 
 ## 完整 Prompt
 
@@ -49,7 +49,7 @@ Lower portion, smaller medium-bold Chinese sans-serif (思源黑体 Bold style),
 "8 年架构经验 · 装进一份 agent.md"
 
 Bottom-right corner, tiny flat single-line text, color #FFF1E7:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. No stroke, no outline, no shadow on text.
 The number "8" must be an Arabic numeral. The "×" must be a multiplication sign (×, U+00D7), not the letter X.

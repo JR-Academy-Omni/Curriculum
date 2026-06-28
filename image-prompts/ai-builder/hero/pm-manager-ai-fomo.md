@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-builder
-bootcampName: Vibe Coding 提升班
+bootcampName: Vibe Coding 大师课
 role: pm-manager
 roleName: 产品/技术经理
 painPoint: ai-fomo
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: zh
 version: 1
-title: Vibe Coding 提升班（MCP 串联 hero · 工具链汇流）
+title: Vibe Coding 大师课（MCP 串联 hero · 工具链汇流）
 ctaText: ""
 tags: [hero, 详情页, MCP, 工具链]
 ---
@@ -52,7 +52,7 @@ Bottom-left text overlay, 60px from canvas edge, heavy bold Chinese sans-serif (
 "MCP 把工具串成一条流水线"
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · Vibe Coding 提升班"
+"JR Academy · Vibe Coding 大师课"
 
 Sharp text. Flat solid color. "MCP" must be three uppercase English letters.
 ```
