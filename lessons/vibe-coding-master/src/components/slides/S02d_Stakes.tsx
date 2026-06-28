@@ -1,6 +1,4 @@
 import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../ui';
-import { slideFromLeft } from '../ui';
-import { motion } from 'framer-motion';
 
 const steps = [
 	{ label: '被替代', sub: '同样的活，别人用 AI 半天干完' },
@@ -13,20 +11,17 @@ export default function S02d_Stakes() {
 	return (
 		<Slide bg={colors.darkBg}>
 			<Inner style={{ flexDirection: 'column', justifyContent: 'center' }}>
-				<motion.div {...slideFromLeft}>
+				<div>
 					<Tag bg={colors.red}>第 0 章 · 代价</Tag>
 					<Title size="56px" white style={{ marginTop: 14 }}>
 						不会 AI coding 的<span style={{ color: colors.red }}>下场</span>
 					</Title>
-				</motion.div>
+				</div>
 
 				<div style={{ display: 'flex', gap: 20, marginTop: 40, alignItems: 'stretch' }}>
 					{steps.map((s, i) => (
 						<div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 20, flex: 1 }}>
-							<motion.div
-								initial={{ opacity: 0, scale: 0.5, y: 30 }}
-								animate={{ opacity: 1, scale: 1, y: 0 }}
-								transition={{ type: 'spring', stiffness: 200, damping: 14, delay: 0.3 + i * 0.35 }}
+							<div
 								style={{ flex: 1, background: i === 2 ? colors.red : colors.white, border, boxShadow: shadow, padding: '26px 22px', textAlign: 'center' }}>
 								<div style={{ fontFamily: fonts.mono, fontSize: 13, color: i === 2 ? '#ffffffcc' : '#999', marginBottom: 8 }}>
 									0{i + 1}
@@ -37,25 +32,28 @@ export default function S02d_Stakes() {
 								<div style={{ fontSize: 15, color: i === 2 ? '#ffffffdd' : '#666', marginTop: 10, lineHeight: 1.45 }}>
 									{s.sub}
 								</div>
-							</motion.div>
+							</div>
 							{i < steps.length - 1 && (
-								<motion.div
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									transition={{ delay: 0.5 + i * 0.35 }}
+								<div
 									style={{ fontFamily: fonts.heading, fontSize: 40, fontWeight: 900, color: colors.yellow }}>
 									→
-								</motion.div>
+								</div>
 							)}
 						</div>
 					))}
 				</div>
 
-				<motion.div
-					initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5, duration: 0.5 }}
-					style={{ marginTop: 44, alignSelf: 'flex-start', fontSize: 18, color: '#ffffffaa', fontStyle: 'italic' }}>
-					不是吓你 —— 这是我这一年带 300 个人，亲眼看到的趋势。
-				</motion.div>
+				<div
+					style={{ marginTop: 34, alignSelf: 'stretch', background: colors.white, color: colors.black, border, boxShadow: shadow, padding: '18px 22px', display: 'grid', gridTemplateColumns: '260px 1fr', gap: 20, alignItems: 'center' }}>
+					<div style={{ background: colors.red, color: colors.white, border, padding: '12px 14px', fontFamily: fonts.heading, fontSize: 24, fontWeight: 900, textAlign: 'center' }}>
+						不要等公司<br />发 Claude 权限
+					</div>
+					<div style={{ fontSize: 20, fontWeight: 900, lineHeight: 1.45 }}>
+						等公司正式说“大家可以用 Claude / Codex”时，通常不是学习起点，
+						而是<span style={{ background: colors.yellow, padding: '0 8px' }}>筛选开始</span>：
+						谁能带着 AI 交付，谁留下；谁还在学怎么开对话，谁先被边缘化。
+					</div>
+				</div>
 			</Inner>
 		</Slide>
 	);

@@ -14,11 +14,13 @@ import S02 from './components/slides/S02_Hook';                 // 金鱼钩子
 import S02b from './components/slides/S02b_Reality';            // 300 人真实数据
 import S02c from './components/slides/S02c_Benchmark';          // SSO 一小时标尺
 import S02d from './components/slides/S02d_Stakes';             // 不会的代价
+import S02e from './components/slides/S02e_ProjectPermission';  // 真实项目 + 高权限训练
 
 // 课程安排：先解释开发流程为什么变了（SDLC→ADLC）→ 总览 → 4 Phase 详细 → 大纲是活的
 import S00b from './components/slides/S00b_Roadmap';            // 8 周路线图总览
 import S16c from './components/slides/S16c_SDLCFlow';           // 传统 SDLC 三栏流程图
 import S16d from './components/slides/S16d_ADLCFlow';           // ADLC：Agent Development Lifecycle 闭环
+import S16e from './components/slides/S16e_MultiAgentWorktree'; // 多 worktree + 多 Agent 并行
 import ARR1 from './components/slides/ARR1_Phase1';            // Phase 1 详细
 import ARR2 from './components/slides/ARR2_Phase2';            // Phase 2 详细
 import ARR3 from './components/slides/ARR3_Phase3';            // Phase 3 详细
@@ -67,10 +69,12 @@ export default function App() {
 			<S02b />{/* 300 人数据 */}
 			<S02c />{/* SSO 标尺 */}
 			<S02d />{/* 不会的代价 */}
+			<S02e />{/* 真正提高：参与真实项目，经历高权限时刻 */}
 
 			{/* ② 为什么开发流程变了：传统 SDLC → ADLC */}
 			<S16c />{/* 传统 SDLC：一支团队 */}
 			<S16d />{/* ADLC：一个 Agent 端到端闭环 */}
+			<S16e />{/* 真实工作方式：多个 worktree + 多个 agent 并行 */}
 
 			{/* ③ 课程安排：总览 → 4 Phase 详细 → 大纲是活的 */}
 			<S00b />{/* 8 周总览 */}
