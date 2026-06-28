@@ -10,41 +10,42 @@ const stages = [
 ];
 
 const positions = [
-	{ left: 512, top: 54 },
-	{ left: 858, top: 158 },
-	{ left: 790, top: 408 },
-	{ left: 232, top: 408 },
-	{ left: 166, top: 158 },
+	{ left: 400, top: 10 },
+	{ left: 780, top: 112 },
+	{ left: 705, top: 306 },
+	{ left: 105, top: 306 },
+	{ left: 30, top: 112 },
 ];
 
 const loopSegments = [
-	'M 640 88 C 730 94 805 118 910 186',
-	'M 930 245 C 930 320 880 378 806 430',
-	'M 676 474 C 560 528 448 528 334 474',
-	'M 218 430 C 144 376 92 314 96 245',
-	'M 116 186 C 220 118 292 94 384 88',
+	'M 530 62 C 690 64 796 104 880 168',
+	'M 918 218 C 902 282 842 326 744 354',
+	'M 650 390 C 552 416 402 416 304 390',
+	'M 216 354 C 118 326 58 282 42 218',
+	'M 78 168 C 162 104 268 64 428 62',
 ];
 
 function StageCard({ stage, i }: { stage: typeof stages[number]; i: number }) {
 	const pos = positions[i];
 	const darkText = stage.color === colors.yellow || stage.color === colors.green;
 	return (
-		<motion.div
-			initial={{ opacity: 0, scale: 0.92, y: 10 }}
-			animate={{ opacity: 1, scale: 1, y: 0 }}
-			transition={{ delay: 0.2 + i * 0.08, duration: 0.3 }}
+		<div
 			style={{
 				position: 'absolute',
 				left: pos.left,
 				top: pos.top,
 				width: 250,
-				transform: 'translate(-50%, -50%)',
+				zIndex: 3,
+			}}
+		>
+			<div
+				style={{
 				background: colors.white,
 				border,
 				boxShadow: shadowSm,
 				padding: '14px 16px',
-			}}
-		>
+				}}
+			>
 			<div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
 				<div
 					style={{
@@ -73,7 +74,8 @@ function StageCard({ stage, i }: { stage: typeof stages[number]; i: number }) {
 			<div style={{ marginTop: 10, fontSize: 15, fontWeight: 800, color: '#475467', lineHeight: 1.35 }}>
 				{stage.sub}
 			</div>
-		</motion.div>
+			</div>
+		</div>
 	);
 }
 
@@ -82,12 +84,12 @@ function ConnectedLoop() {
 		<svg
 			width="100%"
 			height="100%"
-			viewBox="0 0 1024 535"
+			viewBox="0 0 1060 430"
 			style={{ position: 'absolute', inset: 0, overflow: 'visible', zIndex: 0 }}
 		>
 			<defs>
-				<marker id="adlc-arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="strokeWidth">
-					<path d="M 0 0 L 14 7 L 0 14 z" fill={colors.red} stroke={colors.black} strokeWidth="1.5" />
+				<marker id="adlc-arrow" markerWidth="18" markerHeight="16" refX="16" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+					<path d="M 2 2 L 17 8 L 2 14 z" fill={colors.red} stroke={colors.black} strokeWidth="1.5" />
 				</marker>
 				<filter id="adlc-shadow" x="-20%" y="-20%" width="140%" height="140%">
 					<feDropShadow dx="3" dy="3" stdDeviation="0" floodColor="#000" floodOpacity="1" />
@@ -99,16 +101,13 @@ function ConnectedLoop() {
 					d={d}
 					fill="none"
 					stroke={colors.red}
-					strokeWidth={6}
+					strokeWidth={5}
 					strokeLinecap="round"
-					strokeDasharray="14 12"
+					strokeDasharray="13 11"
 					markerEnd="url(#adlc-arrow)"
 					filter="url(#adlc-shadow)"
-					initial={{ pathLength: 0, opacity: 0 }}
-					animate={{ pathLength: 1, opacity: 1, strokeDashoffset: [0, -52] }}
+					animate={{ strokeDashoffset: [0, -52] }}
 					transition={{
-						pathLength: { delay: 0.2 + i * 0.08, duration: 0.45 },
-						opacity: { delay: 0.2 + i * 0.08, duration: 0.2 },
 						strokeDashoffset: { repeat: Infinity, duration: 1.2, ease: 'linear' },
 					}}
 				/>
@@ -120,7 +119,7 @@ function ConnectedLoop() {
 export default function S16d_ADLCFlow() {
 	return (
 		<Slide bg={colors.warmBg}>
-			<Inner style={{ flexDirection: 'column', gap: 16, padding: '34px 38px' }}>
+			<Inner style={{ flexDirection: 'column', gap: 13, padding: '30px 38px' }}>
 				<div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20 }}>
 					<div>
 						<Tag bg={colors.purple}>ADLC</Tag>
@@ -137,15 +136,14 @@ export default function S16d_ADLCFlow() {
 					</div>
 				</div>
 
-				<div style={{ flex: 1, position: 'relative', minHeight: 535 }}>
+				<div style={{ flex: '0 0 auto', position: 'relative', height: 430, width: 1060, maxWidth: '100%', alignSelf: 'center' }}>
 					<ConnectedLoop />
 					<div
 						style={{
 							position: 'absolute',
-							left: '50%',
-							top: '50%',
-							width: 330,
-							transform: 'translate(-50%, -50%)',
+							left: 390,
+							top: 148,
+							width: 280,
 							background: colors.dark,
 							color: colors.white,
 							border,
@@ -176,16 +174,13 @@ export default function S16d_ADLCFlow() {
 
 					{stages.map((s, i) => <StageCard key={s.n} stage={s} i={i} />)}
 
-					<div style={{ position: 'absolute', left: 280, top: 32, background: colors.yellow, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '7px 12px', fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, zIndex: 3 }}>
+					<div style={{ position: 'absolute', left: 190, top: 76, background: colors.yellow, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '7px 12px', fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, zIndex: 4 }}>
 						↻ 回到起点 · 再迭代
 					</div>
 				</div>
 
-				<motion.div
-					initial={{ opacity: 0, y: 12 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 0.55 }}
-					style={{ alignSelf: 'stretch', background: colors.dark, color: colors.white, border, boxShadow: shadow, padding: '13px 22px', fontSize: 17, lineHeight: 1.48 }}
+				<div
+					style={{ alignSelf: 'stretch', background: colors.dark, color: colors.white, border, boxShadow: shadow, padding: '12px 20px', fontSize: 16, lineHeight: 1.42 }}
 				>
 					<span style={{ color: colors.yellow, fontFamily: fonts.mono, fontWeight: 900 }}>本质区别 = 开发流程不一样：</span>{' '}
 					传统 SDLC / Agile = PRD 拆成 user story，分给一堆人做；ADLC ={' '}
@@ -193,7 +188,7 @@ export default function S16d_ADLCFlow() {
 						整份 PRD 直接交给一个 Agent
 					</span>{' '}
 					端到端跑完开发、测试、部署。
-				</motion.div>
+				</div>
 			</Inner>
 		</Slide>
 	);

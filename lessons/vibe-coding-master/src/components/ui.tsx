@@ -81,8 +81,10 @@ export function GrowBar({
 
 export function Slide({ bg = colors.warmBg, children, style }: { bg?: string; children: ReactNode; style?: CSSProperties }) {
 	return (
-		<div style={{ width: '100%', height: '100%', background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', ...style }}>
-			{children}
+		<div style={{ width: '100%', height: '100%', background: bg, overflowY: 'auto', overflowX: 'hidden', ...style }}>
+			<div style={{ minHeight: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+				{children}
+			</div>
 		</div>
 	);
 }

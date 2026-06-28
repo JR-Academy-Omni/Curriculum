@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { Slide, Inner, Title, Tag } from '../ui';
 import { colors, fonts, border, shadow, shadowSm } from '../../styles/theme';
 
-// 对照 ai-builder/public/outline.json · phases[0]（32 节：6 直播 Lesson + 12 互动 Lab + 12 自学 Info + 2 Quest）
-// 按主题归成 5 簇，N 节加总 = 11 + 6 + 3 + 6 + 6 = 32
+// 对照 ai-builder/public/outline.json · phases[0]（35 节：6 直播 Lesson + 13 互动 Lab + 14 自学 Info + 2 Quest）
+// 按主题归成 6 簇，N 节加总 = 11 + 6 + 3 + 6 + 3 + 6 = 35
 const clusters = [
 	{
 		num: '01',
@@ -38,6 +38,13 @@ const clusters = [
 	},
 	{
 		num: '05',
+		name: 'Design System · 视觉的 SoT',
+		learn: '用 DESIGN.md + design tokens 当视觉真相源，让 AI 出的页面/组件/海报风格统一，不再每次瞎配色、风格漂移',
+		rep: 'L23 写 DESIGN.md 与 design tokens（色彩/字体/间距/组件规范）· Lab 让 AI 按统一设计语言出 UI 和图',
+		count: 3,
+	},
+	{
+		num: '06',
 		name: 'Debug 调试',
 		learn: '从报错到修复全流程：读错误日志、AI 辅助修 Bug、正确的代码生成姿势',
 		rep: 'L25 Claude 协助 Debug · L26 调试 AI 代码 · L30 约束与负面 Prompt',
@@ -45,7 +52,7 @@ const clusters = [
 	},
 ];
 
-// Phase 1 详细课程安排 —— 32 节按 5 个主题簇展开，红系配色对齐 Roadmap 的 Phase1
+// Phase 1 详细课程安排 —— 35 节按 6 个主题簇展开，红系配色对齐 Roadmap 的 Phase1
 export default function ARR1_Phase1() {
 	return (
 		<Slide bg={colors.warmBg}>
@@ -53,7 +60,7 @@ export default function ARR1_Phase1() {
 				<motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 					<Tag bg={colors.red}>Vibe Coding 大师课 · Phase 1 / 4 · 8 周里的第一周</Tag>
 					<Title size="42px" style={{ marginTop: 10 }}>
-						Phase 1 · 入门 & PRD（<span style={{ background: colors.yellow, padding: '0 8px' }}>约 32 节</span>）
+						Phase 1 · 入门 & PRD（<span style={{ background: colors.yellow, padding: '0 8px' }}>约 35 节</span>）
 					</Title>
 				</motion.div>
 
@@ -117,7 +124,7 @@ export default function ARR1_Phase1() {
 						display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap',
 					}}>
 					<span style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, color: colors.black }}>
-						本 Phase 含 <span style={{ background: colors.dark, color: colors.white, padding: '2px 8px' }}>12 个互动 Lab</span>
+						本 Phase 含 <span style={{ background: colors.dark, color: colors.white, padding: '2px 8px' }}>13 个互动 Lab</span>
 						{' '}+ <span style={{ background: colors.red, color: colors.white, padding: '2px 8px' }}>2 个 Quest 实战</span>
 					</span>
 					<span style={{ fontSize: 14, color: '#333', fontWeight: 600 }}>

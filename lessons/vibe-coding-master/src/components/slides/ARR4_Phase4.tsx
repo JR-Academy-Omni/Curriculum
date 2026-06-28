@@ -38,6 +38,14 @@ const clusters = [
 		lab: '1 Lab',
 	},
 	{
+		t: '云端部署 Agent · 让它 24/7 自己跑',
+		color: colors.teal,
+		learn: '把 agent / 自动化任务部署到云端，不再只在本地跑——定时触发、常驻运行，你关机它也在干活，拿到一个一直在线的服务',
+		rep: 'Serverless / Workers / 容器 · cron 定时调度 · 密钥与环境管理 · 日志监控 · 成本控制',
+		count: '3 节',
+		lab: '1 Lab',
+	},
+	{
 		t: 'Code Review · Git 工作流',
 		color: colors.red,
 		learn: 'AI 写的代码怎么审、写 Commit / PR、团队协作、记忆变更可追溯与质量保障',
@@ -63,7 +71,7 @@ export default function ARR4_Phase4() {
 				<motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 					<Tag bg={colors.purple}>Phase 4 · Week 7-8 · 毕业项目</Tag>
 					<Title size="38px" style={{ marginTop: 10 }}>
-						Phase 4 · 毕业项目：做一个 AI-native 企业记忆系统（<span style={{ background: colors.yellow, padding: '0 8px' }}>约 26 节</span>）
+						Phase 4 · 毕业项目：做一个 AI-native 企业记忆系统（<span style={{ background: colors.yellow, padding: '0 8px' }}>约 29 节</span>）
 					</Title>
 					<p style={{ fontSize: 16, color: '#555', marginTop: 10, lineHeight: 1.5 }}>
 						<b style={{ color: colors.black }}>不分前后端的老架构</b> —— AI-native = <b style={{ color: colors.purple }}>Agent + 记忆(SoT) + 工具(MCP)</b>，搭一套企业能用、AI 能直接读写和操作的记忆系统并<b style={{ color: colors.red }}>上线</b>。
@@ -92,9 +100,9 @@ export default function ARR4_Phase4() {
 
 				<motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
 					style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 16, background: colors.dark, border, boxShadow: shadow, padding: '14px 22px' }}>
-					<div style={{ flexShrink: 0, fontFamily: fonts.mono, fontWeight: 900, fontSize: 26, color: colors.yellow }}>8</div>
+					<div style={{ flexShrink: 0, fontFamily: fonts.mono, fontWeight: 900, fontSize: 26, color: colors.yellow }}>9</div>
 					<div style={{ flex: 1, color: colors.white, fontSize: 15, lineHeight: 1.45 }}>
-						<b>8 个互动 Lab</b> 贯穿结构设计 / AI 读写记忆 / MCP 工具 / 部署 / Code Review / Git —— 真实参照物 <b style={{ color: colors.yellow }}>jr-academy-memory</b>（团队共享记忆库，真实在用）。
+						<b>9 个互动 Lab</b> 贯穿结构设计 / AI 读写记忆 / MCP 工具 / 部署 / 云端跑 Agent / Code Review / Git —— 真实参照物 <b style={{ color: colors.yellow }}>jr-academy-memory</b>（团队共享记忆库，真实在用）。
 					</div>
 					<div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 10, background: colors.purple, color: colors.white, border: '3px solid #000', boxShadow: `4px 4px 0 ${colors.red}`, padding: '8px 16px' }}>
 						<span style={{ fontFamily: fonts.mono, fontWeight: 900, fontSize: 16 }}>Q05</span>

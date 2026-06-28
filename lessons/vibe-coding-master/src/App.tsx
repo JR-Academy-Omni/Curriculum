@@ -8,6 +8,7 @@ import SlideEngine from './components/SlideEngine';
 import S01 from './components/slides/S01_Cover';
 import A00 from './components/slides/A00_L1Agenda';             // 今晚内容总览
 import A03 from './components/slides/A03_SelfIntro';            // 学生自我介绍（提前）
+import S01a from './components/slides/S01a_WhyVibeCoding';      // Vibe Coding 定义与必要性
 import S01b from './components/slides/S01b_ForEverything';      // 🔴 全课主线 AI coding for everything
 import S02 from './components/slides/S02_Hook';                 // 金鱼钩子
 import S02b from './components/slides/S02b_Reality';            // 300 人真实数据
@@ -60,6 +61,7 @@ export default function App() {
 			<S01 />
 			<A00 />{/* 今晚内容总览 */}
 			<A03 />{/* 自我介绍（提前） */}
+			<S01a />{/* 先定义：什么是 Vibe Coding，为什么必须学 */}
 			<S01b />{/* 🔴 全课主线：AI coding for everything */}
 			<S02 />
 			<S02b />{/* 300 人数据 */}
@@ -77,7 +79,6 @@ export default function App() {
 			<ARR3 />
 			<ARR4 />{/* Phase 4：AI-native 企业记忆系统 */}
 			<S00c />{/* 大纲随 Claude/Codex 迭代 */}
-			<S00d />{/* 毕业北极星：同时指挥 10 个 agent */}
 
 			{/* ④ SoT 核心概念 */}
 			<S03 />
@@ -104,6 +105,7 @@ export default function App() {
 
 			{/* ⑦ 理解检查 + 收尾钩子 */}
 			<Q01 />
+			<S00d />{/* 毕业北极星：8 周后同时指挥 10 个 agent（压轴） */}
 			<S28b />
 			<S28 />
 		</SlideEngine>
