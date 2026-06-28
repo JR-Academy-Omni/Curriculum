@@ -5,7 +5,6 @@ import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } fro
 const TOOLS = [
 	{ name: 'Claude', note: '新模型 / Skills / Agent 能力', c: colors.orange },
 	{ name: 'Codex', note: 'CLI / 精调 / 准确率', c: colors.teal },
-	{ name: 'Cursor', note: 'Rules / 编辑器能力', c: colors.blue },
 ];
 
 export default function S00c_LivingSyllabus() {

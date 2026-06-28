@@ -14,7 +14,7 @@ import S02b from './components/slides/S02b_Reality';            // 300 人真实
 import S02c from './components/slides/S02c_Benchmark';          // SSO 一小时标尺
 import S02d from './components/slides/S02d_Stakes';             // 不会的代价
 
-// 课程安排：总览 → SDLC/ADLC（新开发流程）→ 4 Phase 详细 → 大纲是活的
+// 课程安排：先解释开发流程为什么变了（SDLC→ADLC）→ 总览 → 4 Phase 详细 → 大纲是活的
 import S00b from './components/slides/S00b_Roadmap';            // 8 周路线图总览
 import S16c from './components/slides/S16c_SDLCFlow';           // 传统 SDLC 三栏流程图
 import S16d from './components/slides/S16d_ADLCFlow';           // ADLC：Agent Development Lifecycle 闭环
@@ -23,6 +23,7 @@ import ARR2 from './components/slides/ARR2_Phase2';            // Phase 2 详细
 import ARR3 from './components/slides/ARR3_Phase3';            // Phase 3 详细
 import ARR4 from './components/slides/ARR4_Phase4';            // Phase 4：AI-native 企业记忆系统
 import S00c from './components/slides/S00c_LivingSyllabus';     // 大纲随 Claude/Codex 迭代
+import S00d from './components/slides/S00d_TenAgents';          // 毕业北极星：同时跑 10 个 agent
 
 // SoT 核心概念
 import S03 from './components/slides/S03_SourceOfTruth';
@@ -38,6 +39,7 @@ import S05 from './components/slides/S05_AIOS';
 import S05a from './components/slides/S05a_TwoLayers';
 import S05b from './components/slides/S05b_FourC';
 import S05c from './components/slides/S05c_MemorySystem';       // raw→结构化 数据流
+import S05f from './components/slides/S05f_MdNotJson';          // LLM 擅长 md/yaml，不擅长 json
 import S05d from './components/slides/S05d_MyAIOS';             // 真实例子：讲师个人 ai-os 文件树
 import S05e from './components/slides/S05e_CompanyOS';          // 联想到企业：公司 AI OS 层级
 
@@ -64,17 +66,20 @@ export default function App() {
 			<S02c />{/* SSO 标尺 */}
 			<S02d />{/* 不会的代价 */}
 
-			{/* ② 课程安排：总览 → 新开发流程(SDLC→ADLC) → 4 Phase 详细 → 大纲是活的 */}
-			<S00b />{/* 8 周总览 */}
+			{/* ② 为什么开发流程变了：传统 SDLC → ADLC */}
 			<S16c />{/* 传统 SDLC：一支团队 */}
 			<S16d />{/* ADLC：一个 Agent 端到端闭环 */}
+
+			{/* ③ 课程安排：总览 → 4 Phase 详细 → 大纲是活的 */}
+			<S00b />{/* 8 周总览 */}
 			<ARR1 />
 			<ARR2 />
 			<ARR3 />
 			<ARR4 />{/* Phase 4：AI-native 企业记忆系统 */}
 			<S00c />{/* 大纲随 Claude/Codex 迭代 */}
+			<S00d />{/* 毕业北极星：同时指挥 10 个 agent */}
 
-			{/* ③ SoT 核心概念 */}
+			{/* ④ SoT 核心概念 */}
 			<S03 />
 			<S04 />
 			<S04c />
@@ -83,20 +88,21 @@ export default function App() {
 			<S04d2 />
 			<S04e />{/* 一份 SoT 长出多产物 */}
 
-			{/* ④ AI OS / 记忆系统（个人 → 公司） */}
+			{/* ⑤ AI OS / 记忆系统（个人 → 公司） */}
 			<S05 />
 			<S05a />
 			<S05b />
 			<S05c />
+			<S05f />{/* LLM 擅长读 md/yaml，不擅长 json */}
 			<S05d />{/* 真实例子：个人 ai-os 文件树 */}
 			<S05e />{/* 联想到企业：公司 AI OS */}
 
-			{/* ⑤ 现场 Demo + 学员动手 + 作业 */}
+			{/* ⑥ 现场 Demo + 学员动手 + 作业 */}
 			<D01 />
 			<H01 />
 			<HW01 />{/* 作业：想清楚你要做什么 AI 产品 */}
 
-			{/* ⑥ 理解检查 + 收尾钩子 */}
+			{/* ⑦ 理解检查 + 收尾钩子 */}
 			<Q01 />
 			<S28b />
 			<S28 />

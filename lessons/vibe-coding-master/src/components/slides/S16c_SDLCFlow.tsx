@@ -46,17 +46,17 @@ function FlowNode({ node, i }: { node: Node; i: number }) {
 				background: node.hot ? colors.yellow : colors.white,
 				border,
 				boxShadow: shadowSm,
-				padding: '12px 14px',
-				minHeight: 86,
+				padding: '10px 12px',
+				minHeight: 72,
 				display: 'flex',
 				alignItems: 'center',
-				gap: 12,
+				gap: 10,
 			}}
 		>
-			<div style={{ fontSize: 32, lineHeight: 1, width: 40, textAlign: 'center' }}>{node.icon}</div>
+			<div style={{ fontSize: 29, lineHeight: 1, width: 36, textAlign: 'center' }}>{node.icon}</div>
 			<div>
-				<div style={{ fontSize: 20, fontWeight: 900, lineHeight: 1.12, color: colors.dark }}>{node.title}</div>
-				<div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, color: '#667085', marginTop: 5 }}>
+				<div style={{ fontSize: 19, fontWeight: 900, lineHeight: 1.08, color: colors.dark }}>{node.title}</div>
+				<div style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, color: '#667085', marginTop: 4 }}>
 					{node.sub}
 				</div>
 			</div>
@@ -92,7 +92,7 @@ function Section({
 				boxShadow: shadow,
 				padding: 22,
 				position: 'relative',
-				minHeight: 520,
+				height: 488,
 				overflow: 'hidden',
 			}}
 		>
@@ -121,7 +121,7 @@ function Section({
 					</div>
 				</div>
 			</div>
-			<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+			<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
 				{nodes.map((node, i) => <FlowNode key={`${title}-${node.title}`} node={node} i={i} />)}
 			</div>
 			{children}
@@ -133,7 +133,16 @@ function BetweenArrow({ top, bottom }: { top: string; bottom: string }) {
 	return (
 		<div style={{ width: 82, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 18 }}>
 			<div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-				<div style={{ flex: 1, borderTop: `4px dashed ${colors.red}` }} />
+				<motion.div
+					animate={{ backgroundPositionX: ['0px', '18px'] }}
+					transition={{ repeat: Infinity, duration: 0.9, ease: 'linear' }}
+					style={{
+						flex: 1,
+						height: 4,
+						backgroundImage: `repeating-linear-gradient(90deg, ${colors.red} 0 10px, transparent 10px 18px)`,
+						backgroundSize: '18px 4px',
+					}}
+				/>
 				<div style={{ width: 0, height: 0, borderTop: '9px solid transparent', borderBottom: '9px solid transparent', borderLeft: `14px solid ${colors.red}` }} />
 			</div>
 			<div style={{ background: colors.white, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '7px 8px', textAlign: 'center', fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, lineHeight: 1.25 }}>
@@ -141,7 +150,16 @@ function BetweenArrow({ top, bottom }: { top: string; bottom: string }) {
 			</div>
 			<div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
 				<div style={{ width: 0, height: 0, borderTop: '9px solid transparent', borderBottom: '9px solid transparent', borderRight: `14px solid ${colors.blue}` }} />
-				<div style={{ flex: 1, borderTop: `4px dashed ${colors.blue}` }} />
+				<motion.div
+					animate={{ backgroundPositionX: ['18px', '0px'] }}
+					transition={{ repeat: Infinity, duration: 0.9, ease: 'linear' }}
+					style={{
+						flex: 1,
+						height: 4,
+						backgroundImage: `repeating-linear-gradient(90deg, ${colors.blue} 0 10px, transparent 10px 18px)`,
+						backgroundSize: '18px 4px',
+					}}
+				/>
 			</div>
 		</div>
 	);
@@ -162,7 +180,7 @@ function MiniArrow({ label }: { label: string }) {
 export default function S16c_SDLCFlow() {
 	return (
 		<Slide bg={colors.warmBg}>
-			<Inner style={{ flexDirection: 'column', gap: 18, padding: '34px 36px' }}>
+			<Inner style={{ flexDirection: 'column', gap: 14, padding: '30px 36px' }}>
 				<div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20 }}>
 					<div>
 						<Tag bg={colors.dark}>传统流程</Tag>
@@ -176,7 +194,7 @@ export default function S16c_SDLCFlow() {
 					</div>
 				</div>
 
-				<div style={{ display: 'flex', alignItems: 'stretch', gap: 14, flex: 1, minHeight: 0 }}>
+				<div style={{ display: 'flex', alignItems: 'stretch', gap: 14, flex: '0 0 auto', minHeight: 0 }}>
 					<Section index="①" title="需求 / 设计端" subtitle="需求层层传递" bg="#BFE8FF" nodes={demandNodes}>
 						<MiniArrow label="Requirements ⇄ 反复对齐" />
 					</Section>
@@ -197,7 +215,7 @@ export default function S16c_SDLCFlow() {
 					initial={{ opacity: 0, y: 12 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.55 }}
-					style={{ alignSelf: 'stretch', background: colors.dark, color: colors.white, padding: '13px 22px', border, boxShadow: shadow, fontSize: 19, fontWeight: 900, lineHeight: 1.35 }}
+					style={{ alignSelf: 'stretch', background: colors.dark, color: colors.white, padding: '12px 22px', border, boxShadow: shadow, fontSize: 18, fontWeight: 900, lineHeight: 1.35 }}
 				>
 					<span style={{ background: colors.red, padding: '0 8px' }}>8+ 种角色</span>、层层交接、需求层层失真 —— 一个功能上线，要走完整条链。
 				</motion.div>
