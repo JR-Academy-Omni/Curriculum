@@ -7,14 +7,14 @@
   "level": "中级",
   "type": "training",
   "targetAudience": "有编程基础的开发者、全栈工程师、DevOps、想用 AI 提升开发效率的技术人员",
-  "totalLessons": 111,
-  "totalSteps": 130,
-  "liveClasses": 22,
-  "estimatedHours": 104.8,
+  "totalLessons": 110,
+  "totalSteps": 133,
+  "liveClasses": 20,
+  "estimatedHours": 105.8,
   "totalInteractiveLabs": 34,
   "title_en": "Vibe Coding Masterclass",
   "description_en": "Build full-stack apps with Claude Code, Cursor, and Codex. From PRD to Skills/MCP/Agent to deployment. For developers with programming experience.",
-  "timeLength": "8 周（111 节课）",
+  "timeLength": "8 周（110 节课）",
   "courseObjective": "掌握 Claude Code Skills、MCP Server 搭建、Agent 架构、多模型协作，用 AI 完成从 PRD 到部署的全栈项目",
   "courseObjective_en": "Master Claude Code Skills, MCP Server building, Agent architecture, and multi-model collaboration. Ship a full-stack project from PRD to deployment with AI.",
   "suitable": "有 Python/JS 基础的软件工程师\n全栈开发者想用 AI 10x 开发效率\nDevOps 工程师想了解 AI 开发工具\n技术创业者想快速出产品",
@@ -23,11 +23,11 @@
   "promoDescription": "不是教你用 ChatGPT 写代码片段。这门课教你用 Claude Code 的 Skills、MCP、Agent 做真正的全栈开发——从 PRD 到数据库到部署，全程 AI 驱动。",
   "prerequisiteknowledge": "需要有基本的编程经验（Python 或 JavaScript），了解 Git 基本操作。",
   "highlights": [
-    "111 节课：直播课 + 自学材料 + Lab + Quest 组合",
-    "22 次直播：Prompt、Claude Code、Agent、MCP、项目实战",
+    "110 节课：直播课 + 自学材料 + Lab + Quest 组合",
+    "20 次直播 / 38 小时课堂：Skills、Workflow、MCP、Agent、Codex、项目交付按大模块讲透",
     "34 个互动 Lab：覆盖 Prompt、Claude Code、MCP、Agent、前后端开发",
-    "4 个 Quest：每阶段一个可交付作品",
-    "新增 Claude Workflow、Claude Schedule 与 AI Coding 优化闭环，补齐团队级 AI Coding 能力"
+    "4 个阶段 Quest + 1 个毕业项目 Quest：每阶段一个可交付作品",
+    "自学课保留为课前/课后材料，核心概念并入大 lecture，课程主线聚焦 Claude Code、Codex 与真实项目交付"
   ],
   "highlights_en": [
     "Three core modules: Claude Code Skills + MCP Server + Agent Architecture",
@@ -1085,8 +1085,8 @@
       "lessons": [
         {
           "code": "L31",
-          "title": "Skills 架构简介：Claude/Codex 插件机制",
-          "description": "Claude Code Skills 是插件机制——给 Claude 装上特定能力。比如一个 「code-review」 Skill 让 Claude 按你公司的代码规范审查代码，一个「deploy」 Skill 让 Claude 自动部署到 Vercel。这节课讲 Skills 的架构：怎么定义、怎么注册、怎么被 Claude 调用、和 MCP 的关系。",
+          "title": "自学：Skills 架构速览 — Claude/Codex 插件机制",
+          "description": "课前先理解 Claude Code Skills 的基本结构：Skill 如何声明能力、如何被 Claude 触发、和 MCP / ToolUse 的边界在哪里。课堂会在这个基础上直接写可复用 Skill。",
           "type": "Information",
           "isLive": false,
           "duration": 30,
@@ -1192,32 +1192,39 @@
         },
         {
           "code": "L35",
-          "title": "Skill 与 agent.md 模板标准化实战",
-          "description": "上节课讲了 Skills 概念，这节课写一个真实的 Skill。从 agent.md 模板开始（Skill 的说明书），定义 Skill 的名称、描述、触发条件、可用工具、执行步骤。然后写实现代码，注册到 Claude Code。课后你有一个能用的自定义 Skill——比如自动跑测试并生成报告的 Skill。",
+          "title": "Skills 架构与 agent.md 模板标准化实战",
+          "description": "这节直播把 Skills 架构和 agent.md 标准化放在一起讲透：先拆 Claude/Codex 插件机制，再写一个真实 Skill。你会定义 Skill 名称、触发条件、可用工具、执行步骤、失败处理和团队复用规范，最后注册到 Claude Code 并在真实项目里跑通。",
           "type": "Lesson",
           "isLive": true,
-          "duration": 90,
+          "duration": 120,
           "steps": [
             {
               "order": 1,
               "type": "LIVE",
-              "title": "写一个 Skill",
-              "description": "agent.md 模板 → 实现代码 → 注册 → 测试",
-              "duration": 40
+              "title": "Skills 架构拆解",
+              "description": "能力声明、触发条件、工具权限、和 MCP / ToolUse 的边界",
+              "duration": 35
             },
             {
               "order": 2,
-              "type": "LAB",
-              "title": "Prompt Lab: System Prompt 设计",
-              "description": "设计 Skill 的说明书",
-              "duration": 15,
-              "labSlug": "system-prompt-design"
+              "type": "LIVE",
+              "title": "agent.md 模板标准化",
+              "description": "名称、描述、输入输出、执行步骤、失败处理和团队规范",
+              "duration": 30
             },
             {
               "order": 3,
+              "type": "LAB",
+              "title": "Prompt Lab: System Prompt 设计",
+              "description": "设计 Skill 的说明书和行为边界",
+              "duration": 20,
+              "labSlug": "system-prompt-design"
+            },
+            {
+              "order": 4,
               "type": "PROJECT",
               "title": "自定义 Skill 完成",
-              "description": "一个可用的 Claude Code Skill",
+              "description": "一个可复用的 Claude Code Skill 注册并跑通",
               "duration": 35
             }
           ],
@@ -1299,40 +1306,46 @@
         },
         {
           "code": "L39",
-          "title": "Claude Code 的 Skills 实践",
-          "description": "Claude Code 的 Skills 不只是概念——Anthropic 已经内置了很多实用 Skills。这节课深入 Claude Code 的 Skills 实践：/commit Skill 自动生成 commit message、自定义 Slash Command、Sub-agents（把任务分配给子 Agent 并行执行）、Hooks（在工具调用前后自动执行脚本）。实操配置 3-5 个 Skills 到你的项目。",
+          "title": "Claude Code Skills、Workflow 与 Schedule 实践",
+          "description": "这节直播把 Claude Code 的 Skills 实践扩成完整团队工作流：内置 Skills、自定义 Slash Command、Hooks、Sub-agents、可复现 Workflow，以及 Claude Schedule 定时 Agent。课堂重点不是“知道有这些功能”，而是把代码提交、测试报告、课程 diff、依赖检查这类高频任务沉淀成可复用、可审计、可定时运行的 AI Coding 流程。",
           "type": "Lesson",
           "isLive": true,
-          "duration": 120,
+          "duration": 180,
           "steps": [
             {
               "order": 1,
               "type": "LIVE",
               "title": "Claude Code Skills 实操",
-              "description": "/commit Skill、自定义 Command、Sub-agents、Hooks",
+              "description": "/commit、自定义 Command、Hooks、Sub-agents 的真实项目配置",
               "duration": 40
             },
             {
               "order": 2,
-              "type": "SCENARIO",
-              "title": "配置 3-5 个 Skills",
-              "description": "在你的项目中实操配置",
-              "duration": 30
+              "type": "LIVE",
+              "title": "Workflow 三层结构",
+              "description": "一次性 Prompt、静态 Workflow、动态 Agent Workflow 的边界",
+              "duration": 35
             },
             {
               "order": 3,
-              "type": "LAB",
-              "title": "Prompt Lab: Tool Use",
-              "description": "理解工具调用链",
-              "duration": 15,
-              "labSlug": "tool-use"
+              "type": "LIVE",
+              "title": "Claude Schedule 任务设计",
+              "description": "定时 Agent 的输入、权限、产物、通知和失败处理",
+              "duration": 35
             },
             {
               "order": 4,
+              "type": "SCENARIO",
+              "title": "配置 3-5 个团队 Skills",
+              "description": "把代码提交、测试报告、内容巡检做成可复用流程",
+              "duration": 35
+            },
+            {
+              "order": 5,
               "type": "PROJECT",
-              "title": "Skills 配置完成",
-              "description": "项目有 3+ 个可用 Skills",
-              "duration": 15
+              "title": "Skills + Workflow 交付",
+              "description": "项目里有 3+ 个可用 Skills 和 1 个可复现 Workflow",
+              "duration": 35
             }
           ],
           "labs": [
@@ -1427,8 +1440,8 @@
         },
         {
           "code": "L43",
-          "title": "Claude Workflow：从一次性 Prompt 到可复现编排",
-          "description": "把 Claude Code 从一次性问答升级成可复现的执行流程：明确输入、上下文、工具调用、检查点和输出标准。重点讲静态 Workflow、动态 Workflow，以及如何把团队里的高频 AI Coding 任务沉淀成可复用流程。",
+          "title": "自学：Claude Workflow 模板与执行清单",
+          "description": "课后整理 Claude Workflow 的固定模板：任务入口、上下文、工具调用、检查点、验证命令、交付摘要。重点是把课堂里的 Workflow 改成自己团队能复用的清单。",
           "type": "Information",
           "isLive": false,
           "duration": 60,
@@ -1467,8 +1480,8 @@
         },
         {
           "code": "L53",
-          "title": "Claude Schedule：把重复开发任务交给定时 Agent",
-          "description": "学习 Claude Schedule 的使用边界：让 Agent 定时检查、生成报告、提出 PR 或草稿，但不把高风险生产操作自动化。课程覆盖 schedule 任务设计、权限边界、输出报告和失败处理。",
+          "title": "自学：Claude Schedule 任务设计与安全边界",
+          "description": "课后补充 Claude Schedule 的安全边界：哪些任务只读、哪些可以生成 PR、哪些必须人工确认。用课程 diff、依赖检查、内容巡检三个场景练习定时 Agent 说明书。",
           "type": "Information",
           "isLive": false,
           "duration": 60,
@@ -1507,8 +1520,8 @@
         },
         {
           "code": "L44",
-          "title": "用 AI 搭建 MCP Server（Model Context Protocol）",
-          "description": "MCP 是 Model Context Protocol——让 AI 调用外部工具和服务的标准协议。Claude 要查数据库、读文件系统、调第三方 API，都通过 MCP。这节课讲 MCP 的 Client-Server 架构：Client（AI 工具端）发起请求 → Server（你写的服务端）执行操作 → 返回结果。Tool 和 Resource 的区别、Transport 层怎么工作。",
+          "title": "自学：MCP 概念速览 — Model Context Protocol",
+          "description": "课前先理解 MCP 的 Client / Server / Tool / Resource / Transport 五个概念。直播课会直接进入 ToolUse 与 MCP 调用链，不再花大量时间讲名词。",
           "type": "Information",
           "isLive": false,
           "duration": 30,
@@ -1594,33 +1607,40 @@
         },
         {
           "code": "L47",
-          "title": "Claude Skills 与 ToolUse 工具调用机制详解",
-          "description": "Claude Code 调用外部工具的底层机制：Claude Skills 定义「能做什么」，ToolUse（Function Calling）定义「怎么调用」，MCP 定义「通过什么协议调用」。这三层怎么串起来？这节课用一个完整案例拆解：Claude 收到任务 → 选择 Tool → 通过 MCP 调用 Server → Server 执行 → 返回结果 → Claude 继续处理。",
+          "title": "ToolUse 与 MCP 接入机制详解",
+          "description": "这节直播把 MCP 概念和 Claude ToolUse 调用链合并讲透：Claude 如何选择工具、Function Calling 如何表达参数、MCP Server 如何执行外部操作、Resource 与 Tool 怎么建模、错误如何返回给 Agent 继续处理。课堂用一个完整案例追踪 Claude → ToolUse → MCP → Server → Result → 下一步决策。",
           "type": "Lesson",
           "isLive": true,
-          "duration": 120,
+          "duration": 150,
           "steps": [
             {
               "order": 1,
               "type": "LIVE",
-              "title": "Skills + ToolUse + MCP 串联",
-              "description": "三层怎么配合：定义能力 → 调用协议 → 执行操作",
+              "title": "MCP 架构与 ToolUse 边界",
+              "description": "Client / Server / Tool / Resource / Transport 与 Function Calling 的关系",
               "duration": 40
             },
             {
               "order": 2,
-              "type": "LAB",
-              "title": "Prompt Lab: ReAct Agent",
-              "description": "理解推理-行动循环",
-              "duration": 15,
-              "labSlug": "react-agent"
+              "type": "LIVE",
+              "title": "完整调用链追踪",
+              "description": "Claude 选择 Tool → MCP Server 执行 → 返回结果 → Agent 继续处理",
+              "duration": 45
             },
             {
               "order": 3,
+              "type": "LAB",
+              "title": "Prompt Lab: ReAct Agent",
+              "description": "用推理-行动循环理解工具调用",
+              "duration": 20,
+              "labSlug": "react-agent"
+            },
+            {
+              "order": 4,
               "type": "SCENARIO",
-              "title": "追踪一次完整调用链",
-              "description": "Claude → Tool → MCP → Server → 返回的全流程",
-              "duration": 35
+              "title": "调试一次 MCP 调用失败",
+              "description": "参数错误、权限错误、超时和空结果的处理方式",
+              "duration": 45
             }
           ],
           "labs": [
@@ -1871,8 +1891,8 @@
         },
         {
           "code": "L54",
-          "title": "Agentic Workflow：从单 Agent 到多 Agent 执行图",
-          "description": "在 Claude Workflow 和 Schedule 的基础上，进一步理解 Agentic Workflow：让单 Agent 或多 Agent 根据观察结果选择下一步，而不是机械执行固定脚本。重点讲 ReAct 循环、工具编排、多 Agent 分工，以及哪些任务不该 Agent 化。",
+          "title": "自学：Agentic Workflow 执行图",
+          "description": "课前阅读 Agentic Workflow 的执行图：ReAct 循环、条件分支、多 Agent 分工、工具编排和停止条件。直播课会直接进入多步骤 Agent 架构实战。",
           "type": "Information",
           "isLive": false,
           "duration": 30,
@@ -1955,33 +1975,40 @@
         },
         {
           "code": "L57",
-          "title": "Claude 多步骤 Agent 架构与工具编排实战",
-          "description": "Claude Code 本身就是一个 Agent——它能自己决定读哪个文件、改哪段代码、跑什么命令。这节课讲怎么编排复杂的 Agent 工作流：多个 Tool 串联执行、条件分支（如果测试通过就部署，否则修 bug）、Sub-agent 并行（一个 Agent 写前端，另一个同时写后端）。实操配置一个多步骤自动化工作流。",
+          "title": "Agentic Workflow 与 Claude 多步骤工具编排实战",
+          "description": "这节直播把 Agentic Workflow 和 Claude 多步骤工具编排合并成一个完整模块：单 Agent 的 ReAct 循环、多 Tool 串联、条件分支、Sub-agent 并行，以及什么任务不该 Agent 化。课堂会配置一个从读需求、改代码、跑测试到失败回退的多步骤自动化工作流。",
           "type": "Lesson",
           "isLive": true,
-          "duration": 90,
+          "duration": 120,
           "steps": [
             {
               "order": 1,
               "type": "LIVE",
-              "title": "多步骤 Agent 编排",
-              "description": "多 Tool 串联、条件分支、Sub-agent 并行",
-              "duration": 40
+              "title": "Agentic Workflow 执行图",
+              "description": "ReAct 循环、工具编排、条件分支和停止条件",
+              "duration": 35
             },
             {
               "order": 2,
-              "type": "LAB",
-              "title": "Prompt Lab: 多 Agent 协作",
-              "description": "多个 Agent 分工合作",
-              "duration": 15,
-              "labSlug": "multi-agent"
+              "type": "LIVE",
+              "title": "多步骤 Agent 编排",
+              "description": "多 Tool 串联、Sub-agent 并行、失败回退",
+              "duration": 35
             },
             {
               "order": 3,
+              "type": "LAB",
+              "title": "Prompt Lab: 多 Agent 协作",
+              "description": "多个 Agent 分工合作",
+              "duration": 20,
+              "labSlug": "multi-agent"
+            },
+            {
+              "order": 4,
               "type": "PROJECT",
               "title": "自动化工作流配置",
               "description": "一个多步骤自动化工作流跑通",
-              "duration": 35
+              "duration": 30
             }
           ],
           "labs": [
@@ -2296,102 +2323,50 @@
       "summary": "Week 5-7，9 节课",
       "lessons": [
         {
-          "code": "L66",
-          "title": "Gemini 2.5 编码与调试最佳实践",
-          "description": "Claude 不是唯一选择。Gemini 2.5 Pro 在代码生成的某些场景（特别是 Google 技术栈和多模态输入）表现很强。这节课用 Gemini 做编码和调试：Gemini Code Assist 在 VS Code 中的使用、Gemini API 直接调用、用图片/截图描述 UI 让 Gemini 生成代码。和 Claude 对比同样的任务。",
-          "type": "Lesson",
-          "isLive": true,
-          "duration": 120,
-          "steps": [
-            {
-              "order": 1,
-              "type": "LIVE",
-              "title": "Gemini 2.5 编码实操",
-              "description": "Code Assist + API 调用 + 截图生成代码",
-              "duration": 40
-            },
-            {
-              "order": 2,
-              "type": "LAB",
-              "title": "Prompt Lab: 模型参数",
-              "description": "Gemini 参数调优",
-              "duration": 15,
-              "labSlug": "model-parameters"
-            },
-            {
-              "order": 3,
-              "type": "SCENARIO",
-              "title": "Claude vs Gemini 对比",
-              "description": "同一个 UI 组件两个模型写",
-              "duration": 35
-            }
-          ],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "model-parameters"
-            }
-          ],
-          "learns": [
-            {
-              "direction": "vibe-coding",
-              "slug": "tooling-updates"
-            }
-          ],
-          "learningMaterial": "<h2>学习目标</h2><ul><li>在 VS Code 中配置并使用 Gemini Code Assist 进行代码补全和重构</li><li>通过 Gemini API 直接调用实现自动化编码任务</li><li>利用 Gemini 2.5 的多模态能力，输入截图生成对应前端代码</li><li>掌握 Gemini 在调试场景下的 Prompt 写法</li></ul><h2>核心概念</h2><h3>Gemini Code Assist 配置</h3><p>安装 Gemini Code Assist 扩展后，在 VS Code Settings 中绑定 Google Cloud 项目。开启后 Gemini 会在编辑器内提供 inline suggestion，类似 Copilot 但背后跑的是 Gemini 2.5 Pro。</p><p>快捷键：<code>Tab</code> 接受建议，<code>Esc</code> 拒绝，<code>Ctrl+Enter</code> 打开 Chat 面板直接提问。</p><h3>Gemini API 直接调用</h3><pre><code>import google.generativeai as genai\n\ngenai.configure(api_key=\"YOUR_KEY\")\nmodel = genai.GenerativeModel(\"gemini-2.5-pro\")\n\nresponse = model.generate_content(\n    \"写一个 Express middleware，记录请求耗时并在超过 2s 时输出 warning\"\n)\nprint(response.text)</code></pre><p>API 调用适合批量生成、CI/CD 集成、自动化测试生成等场景。</p><h3>截图转代码（多模态）</h3><p>Gemini 2.5 支持图片输入。把设计稿截图和文字描述一起发送：</p><pre><code>image = genai.upload_file(\"design-mockup.png\")\nresponse = model.generate_content([\n    image,\n    \"根据这个设计稿生成 React + Tailwind 组件，保持像素级还原\"\n])</code></pre><p>实测对简单 UI（卡片、表单、导航栏）还原度较高，复杂布局需要分区域截图逐步生成。</p><h3>调试场景 Prompt</h3><p>调试时把报错信息、相关代码、期望行为三者一起给 Gemini，比单独丢报错信息效果好很多。格式：\"代码：[粘贴]\\n报错：[粘贴]\\n期望：[描述]\"。</p><h2>动手练习</h2><ol><li>安装 Gemini Code Assist，用它补全一个 Express CRUD 路由</li><li>用 Gemini API 传入一张登录页截图，生成 React 组件</li><li>故意写一个有 bug 的异步函数，把代码和报错一起发给 Gemini，观察修复建议质量</li></ol><h2>小结</h2><p>Gemini 2.5 在 VS Code 集成和多模态（截图转代码）方面有独特优势。API 直接调用适合自动化流水线。调试时提供完整上下文（代码+报错+期望）是拿到高质量回复的关键。</p>",
-          "_id": "69db3dc776e3e0c1b3b66de2"
-        },
-        {
           "code": "L67",
-          "title": "多模型对比实验：Claude / Gemini / Codex 输出差异",
-          "description": "同一个任务——比如「根据这个设计稿实现 React 组件」——分别用 Claude、Gemini、Codex 做，结果会不同。这节课做系统的多模型对比实验：代码质量、推理能力、长上下文处理、速度、成本。每个模型的强项和弱项用数据说话，不是主观感觉。帮你建立「什么任务用什么模型」的决策框架。",
-          "type": "Lesson",
-          "isLive": true,
+          "title": "自学：最新 AI Coding 模型选型参考（Claude / Codex / GPT-5.5）",
+          "description": "截至 2026-06-28，AI Coding 的主线已经不是“多模型猎奇对比”，而是根据任务风险和交付方式选择工具：Claude Fable 5 / Opus 4.8 适合复杂推理、长上下文和高自治 agentic coding；Codex 适合本地仓库里的小步修改、运行命令、调试和 PR 级交付；GPT-5.5 适合复杂 reasoning + coding 的 API 工作流，GPT-5.4 mini/nano 更适合低延迟、低成本批量任务。Gemini 只保留为可选参考，不作为本课主线。",
+          "type": "Information",
+          "isLive": false,
           "duration": 120,
           "steps": [
             {
               "order": 1,
-              "type": "LIVE",
-              "title": "三模型系统对比",
-              "description": "Claude/Gemini/Codex: 质量、推理、长上下文、速度、成本",
-              "duration": 40
+              "type": "READING",
+              "title": "2026 模型格局速览",
+              "description": "Claude Fable 5 / Opus 4.8、GPT-5.5、GPT-5.4 mini/nano、Codex 的定位",
+              "duration": 35
             },
             {
               "order": 2,
-              "type": "SCENARIO",
-              "title": "决策框架建立",
-              "description": "什么任务用什么模型",
-              "duration": 20
+              "type": "EXERCISE",
+              "title": "按任务选模型",
+              "description": "把架构设计、代码修改、调试、Review、批量生成分别匹配到合适工具",
+              "duration": 35
             },
             {
               "order": 3,
-              "type": "LAB",
-              "title": "Prompt Lab: 模型参数",
-              "description": "对比不同参数设置的影响",
-              "duration": 15,
-              "labSlug": "model-parameters"
+              "type": "CHECKLIST",
+              "title": "团队模型路由清单",
+              "description": "沉淀“什么时候用 Claude，什么时候用 Codex，什么时候用 GPT-5.5 / mini”的规则",
+              "duration": 30
             },
             {
               "order": 4,
-              "type": "PROJECT",
-              "title": "工具选型文档",
-              "description": "你的项目用哪个模型做什么",
-              "duration": 15
+              "type": "RETRO",
+              "title": "成本与返工率复盘",
+              "description": "用一次真实 AI Coding 任务记录输出质量、验证成本和返工次数",
+              "duration": 20
             }
           ],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "model-parameters"
-            }
-          ],
+          "labs": [],
           "learns": [
             {
-              "direction": "ai-engineer",
-              "slug": "ai-model-comparison"
+              "direction": "vibe-coding",
+              "slug": "model-routing-2026"
             }
           ],
-          "learningMaterial": "<h2>学习目标</h2><ul><li>用同一个任务分别测试 Claude、Gemini、Codex 三个模型的输出</li><li>从代码质量、推理深度、长上下文处理、速度、成本五个维度对比</li><li>建立根据任务类型选择模型的判断框架</li></ul><h2>核心概念</h2><h3>实验设计</h3><p>选一个中等复杂度任务：\"根据 Figma 设计稿描述，实现一个带搜索、分页、排序的 React 用户列表组件\"。分别用三个模型生成，同一个 Prompt，不做模型特化调整。</p><h3>五维对比框架</h3><table><tr><th>维度</th><th>Claude</th><th>Gemini 2.5</th><th>Codex</th></tr><tr><td>代码质量</td><td>结构清晰，类型完整，边界处理好</td><td>实用导向，生成快，偶尔类型不严格</td><td>紧贴上下文风格，与现有代码一致性高</td></tr><tr><td>推理深度</td><td>会主动分析设计意图和边界场景</td><td>直接给方案，解释偏简短</td><td>专注当前任务，较少发散</td></tr><tr><td>长上下文</td><td>200K token，适合大项目分析</td><td>1M token，适合超长文档</td><td>受限于配置，适合单文件级别</td></tr><tr><td>速度</td><td>中等</td><td>Flash 版极快，Pro 版中等</td><td>本地推理，取决于网络和模型</td></tr><tr><td>成本</td><td>API 按 token 计费，较高</td><td>Flash 便宜，Pro 中等</td><td>OpenAI API 计费</td></tr></table><h3>关键发现</h3><p>没有\"最好\"的模型，只有最适合当前任务的模型。架构设计和复杂重构选 Claude；快速原型和多模态选 Gemini；已有代码库的小范围修改选 Codex。</p><h2>动手练习</h2><ol><li>用同一个 Prompt 分别调用三个模型，把输出粘贴到三个文件中对比</li><li>用评分表（1-5 分）对每个维度打分，记录你的观察</li><li>换一个不同类型的任务（比如写测试），重复实验看结论是否变化</li></ol><h2>小结</h2><p>多模型对比实验的价值不是得出一个排名，而是建立你自己的选择直觉。不同任务类型、不同代码库规模、不同时间预算下，最优选择不同。定期重复实验，因为模型能力在快速迭代。</p>",
+          "learningMaterial": "<h2>学习目标</h2><ul><li>用 2026 年的新模型格局重新理解 AI Coding 选型</li><li>区分 Claude、Codex、GPT-5.5、GPT-5.4 mini/nano 在真实开发任务里的分工</li><li>把“模型对比”落成团队可执行的模型路由规则，而不是停留在榜单排名</li></ul><h2>截至 2026-06-28 的选型判断</h2><p>AI Coding 选型先看任务形态，不先看模型名字。复杂判断、长上下文、跨模块规划，优先 Claude；本地仓库修改、跑命令、修测试，优先 Codex；API 工作流里的复杂 reasoning + coding，优先 GPT-5.5；大批量低风险任务，用 GPT-5.4 mini/nano 控制成本。Gemini 可作为多模态或 Google 生态补充，但不作为这门课的主线工具。</p><h3>模型路由表</h3><table><tr><th>任务</th><th>优先工具</th><th>原因</th></tr><tr><td>复杂架构拆解、PRD 到模块设计</td><td>Claude Fable 5 / Claude Opus 4.8</td><td>适合复杂推理、长上下文和高自治 agentic coding</td></tr><tr><td>在现有 repo 里改代码、跑测试、迭代到通过</td><td>Codex</td><td>贴近本地工作区，适合小步 diff、命令执行和 PR 级交付</td></tr><tr><td>API 自动化生成、结构化 coding 工作流</td><td>GPT-5.5</td><td>适合复杂 reasoning + coding，并能接函数、文件搜索、web search、computer use 等工具</td></tr><tr><td>批量生成测试、文档草稿、低风险重写</td><td>GPT-5.4 mini / nano</td><td>延迟和成本更适合批量任务</td></tr><tr><td>Google 生态或特定多模态实验</td><td>Gemini（可选）</td><td>只作为补充工具，不进入课程主线</td></tr></table><h2>练习</h2><ol><li>列出你项目里的 10 类 AI Coding 任务：需求分析、接口开发、测试补齐、Bug 修复、Code Review、文档生成等。</li><li>给每类任务标注首选工具、备用工具、不能自动执行的边界。</li><li>选一个真实任务分别用 Claude 和 Codex 执行，记录：上下文准备时间、改动大小、测试结果、返工次数。</li><li>把结论整理成团队模型路由清单，后续写进 CLAUDE.md / AGENTS.md / Codex instructions。</li></ol><h2>小结</h2><p>新模型发布后，课程不应该教固定榜单，而应该教模型路由。强模型负责高风险判断，执行型工具负责本地验证，便宜模型负责低风险批量工作。选型清楚，比盲目追最新模型更能降低返工率。</p>",
           "_id": "69db3dc776e3e0c1b3b66dea"
         },
         {
@@ -2502,8 +2477,8 @@
         },
         {
           "code": "L72",
-          "title": "Prompt 精调结构与四种模板技巧",
-          "description": "四种经过验证的 Prompt 精调模板：1）Step-by-step（分步指令，复杂任务拆解）；2）Few-shot（给 2-3 个示例让 AI 模仿）；3）Chain of Thought（让 AI 展示推理过程）；4）Constrained Generation（用 Schema 约束输出格式）。每种模板有具体的代码开发场景示例和对比效果。",
+          "title": "自学：Prompt 精调结构与四种模板技巧",
+          "description": "课前复习四种 Prompt 精调模板：Step-by-step、Few-shot、Chain of Thought、Constrained Generation。直播会重点做准确率、成本和返工率对比实验。",
           "type": "Information",
           "isLive": false,
           "duration": 30,
@@ -2677,33 +2652,47 @@
         },
         {
           "code": "L78",
-          "title": "Codex 提升准确率秘籍：精调与 Skills 加载",
-          "description": "Codex 生成的代码准确率怎么提升？三个方法：1）精调 Prompt 结构（给更多上下文和约束）；2）加载 Skills/配置文件（让 Codex 知道你的项目规范）；3）多次生成取最优（Self-Consistency）。实操演示每种方法的准确率提升幅度。",
+          "title": "Codex 准确率、Prompt 精调与 AI Coding 优化闭环",
+          "description": "这节直播把 Codex 准确率提升、Prompt 精调模板和 AI Coding 优化闭环合并讲透。你会用 Step-by-step、Few-shot、CoT、Schema 约束、Skills 加载和 Self-Consistency 做对比实验，并把结果落到质量、速度、成本三个指标上：少返工、少等待、少无效调用。",
           "type": "Lesson",
           "isLive": true,
-          "duration": 120,
+          "duration": 150,
           "steps": [
             {
               "order": 1,
               "type": "LIVE",
-              "title": "Codex 准确率提升",
-              "description": "精调 Prompt + 加载 Skills + Self-Consistency",
-              "duration": 40
+              "title": "Prompt 精调四种模板",
+              "description": "Step-by-step、Few-shot、CoT、Constrained Generation 的代码场景",
+              "duration": 35
             },
             {
               "order": 2,
-              "type": "LAB",
-              "title": "Prompt Lab: Prompt 评估",
-              "description": "量化 Prompt 质量",
-              "duration": 15,
-              "labSlug": "prompt-evaluation"
+              "type": "LIVE",
+              "title": "Codex 准确率提升",
+              "description": "上下文约束、Skills 加载、Self-Consistency 和验证信号",
+              "duration": 40
             },
             {
               "order": 3,
+              "type": "LAB",
+              "title": "Prompt Lab: Prompt 评估",
+              "description": "量化 Prompt 质量",
+              "duration": 20,
+              "labSlug": "prompt-evaluation"
+            },
+            {
+              "order": 4,
               "type": "SCENARIO",
-              "title": "准确率对比实验",
-              "description": "优化前后的准确率对比",
+              "title": "准确率与成本对比实验",
+              "description": "优化前后的返工率、等待时间和调用成本对比",
               "duration": 35
+            },
+            {
+              "order": 5,
+              "type": "RETRO",
+              "title": "AI Coding 优化闭环",
+              "description": "把失败归因到上下文、任务边界、模型选择或验证缺失",
+              "duration": 20
             }
           ],
           "labs": [

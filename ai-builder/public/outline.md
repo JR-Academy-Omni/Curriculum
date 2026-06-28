@@ -7,7 +7,7 @@
 
 用 Claude Code、Cursor、Codex 做全栈开发。从 PRD 到 Skills/MCP/Agent 到部署上线，面向有编程基础的开发者
 
-**级别** 中级 · **类型** training · **时长** 8 周（111 节课） · **总课时** 111 · **步骤** 130 · **直播** 22 · **互动 Lab** 34 · **预计学时** 104.8
+**级别** 中级 · **类型** training · **时长** 8 周（110 节课） · **总课时** 110 · **步骤** 133 · **直播** 20 · **互动 Lab** 34 · **预计学时** 105.8
 
 **适合**：有编程基础的开发者、全栈工程师、DevOps、想用 AI 提升开发效率的技术人员
 
@@ -56,34 +56,34 @@ _Week 1-2，9 节课_
 
 _Week 3-5，15 节课_
 
-- **Skills 架构简介：Claude/Codex 插件机制** — 30 分钟
+- **自学：Skills 架构速览 — Claude/Codex 插件机制** — 30 分钟
 - **Lab: Tool Use — Function Calling 实战** — 30 分钟
 - **Lab: Claude Code 入门 — 终端里的 AI 程序员** — 30 分钟
 - **自学：Claude Code Skills 进阶** — 30 分钟
-- **Skill 与 agent.md 模板标准化实战** — 90 分钟 · 🔴直播
+- **Skills 架构与 agent.md 模板标准化实战** — 120 分钟 · 🔴直播
 - **Lab: Claude Code Skills 和 Agent Teams — AI 能力复用** — 30 分钟
 - **Lab: System Prompt 设计 — 产品级 AI 人格构建** — 30 分钟
 - **自学：Claude Skill Codebook 简明教程** — 30 分钟
-- **Claude Code 的 Skills 实践** — 120 分钟 · 🔴直播
+- **Claude Code Skills、Workflow 与 Schedule 实践** — 180 分钟 · 🔴直播
 - **自学：Claude Code 自定义命令** — 30 分钟
 - **Claude Skills 目录结构与 Anthropic 参考资料** — 120 分钟
 - **自学：Claude Code 全面拆解** — 30 分钟
-- **Claude Workflow：从一次性 Prompt 到可复现编排** — 60 分钟
-- **Claude Schedule：把重复开发任务交给定时 Agent** — 60 分钟
-- **用 AI 搭建 MCP Server（Model Context Protocol）** — 30 分钟
+- **自学：Claude Workflow 模板与执行清单** — 60 分钟
+- **自学：Claude Schedule 任务设计与安全边界** — 60 分钟
+- **自学：MCP 概念速览 — Model Context Protocol** — 30 分钟
 - **Lab: MCP 入门 — 让 AI 连接整个世界** — 30 分钟
 - **自学：MCP 服务器配置** — 30 分钟
-- **Claude Skills 与 ToolUse 工具调用机制详解** — 120 分钟 · 🔴直播
+- **ToolUse 与 MCP 接入机制详解** — 150 分钟 · 🔴直播
 - **Lab: ReAct Agent — 推理与行动循环** — 30 分钟
 - **自学：Mcp Tool Integration** — 30 分钟
 - **用 AI 搭建 MCP Server** — 120 分钟 · 🔴直播
 - **自学：MCP 配置同步** — 30 分钟
 - **MCP 协议与 Claude 工具调用机制参考** — 120 分钟
 - **Quest 实战：从零搭建你自己的 MCP Server** — 50 分钟
-- **Agentic Workflow：从单 Agent 到多 Agent 执行图** — 30 分钟
+- **自学：Agentic Workflow 执行图** — 30 分钟
 - **自学：AI Agents 与工具调用** — 30 分钟
 - **自学：Agent Fundamentals** — 30 分钟
-- **Claude 多步骤 Agent 架构与工具编排实战** — 90 分钟 · 🔴直播
+- **Agentic Workflow 与 Claude 多步骤工具编排实战** — 120 分钟 · 🔴直播
 - **Lab: 多 Agent 协作 — 让 AI 团队分工合作** — 30 分钟
 - **自学：Claude Code 子代理配置** — 30 分钟
 - **搭建 AI Agent：Claude Agent 架构实战** — 120 分钟 · 🔴直播
@@ -97,18 +97,17 @@ _Week 3-5，15 节课_
 
 _Week 5-7，9 节课_
 
-- **Gemini 2.5 编码与调试最佳实践** — 120 分钟 · 🔴直播
-- **多模型对比实验：Claude / Gemini / Codex 输出差异** — 120 分钟 · 🔴直播
+- **自学：最新 AI Coding 模型选型参考（Claude / Codex / GPT-5.5）** — 120 分钟
 - **多模型 Prompt Engineering 模板参考** — 120 分钟
 - **Lab: Zero-shot — 零示例直接提问** — 30 分钟
 - **Lab: 工具选型实战 — 没有绝对的最好，只有最适合** — 60 分钟
-- **Prompt 精调结构与四种模板技巧** — 30 分钟
+- **自学：Prompt 精调结构与四种模板技巧** — 30 分钟
 - **Lab: Chain of Thought — 让 AI 展示思考过程** — 30 分钟
 - **Lab: Self-Consistency — 多路推理投票** — 30 分钟
 - **自学：Chain-of-Thought (CoT)** — 30 分钟
 - **自学：Prompt Chaining** — 30 分钟
 - **Codex CLI 与高效调试技巧全解析** — 90 分钟 · 🔴直播
-- **Codex 提升准确率秘籍：精调与 Skills 加载** — 120 分钟 · 🔴直播
+- **Codex 准确率、Prompt 精调与 AI Coding 优化闭环** — 150 分钟 · 🔴直播
 - **Lab: Prompt 评估 — 量化你的 Prompt 质量** — 30 分钟
 - **自学：性能与成本优化** — 30 分钟
 - **Codex CLI 安装指南与 config.toml 配置样例** — 120 分钟
