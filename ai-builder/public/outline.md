@@ -7,7 +7,7 @@
 
 用 Claude Code、Cursor、Codex 做全栈开发。从 PRD 到 Skills/MCP/Agent 到部署上线，面向有编程基础的开发者
 
-**级别** 中级 · **类型** training · **时长** 8 周（108 节课） · **总课时** 108 · **步骤** 120 · **直播** 22 · **互动 Lab** 34 · **预计学时** 101.3
+**级别** 中级 · **类型** training · **时长** 8 周（111 节课） · **总课时** 111 · **步骤** 130 · **直播** 22 · **互动 Lab** 34 · **预计学时** 104.8
 
 **适合**：有编程基础的开发者、全栈工程师、DevOps、想用 AI 提升开发效率的技术人员
 
@@ -68,6 +68,7 @@ _Week 3-5，15 节课_
 - **自学：Claude Code 自定义命令** — 30 分钟
 - **Claude Skills 目录结构与 Anthropic 参考资料** — 120 分钟
 - **自学：Claude Code 全面拆解** — 30 分钟
+- **Claude Workflow：从一次性 Prompt 到可复现编排** — 60 分钟
 - **用 AI 搭建 MCP Server（Model Context Protocol）** — 30 分钟
 - **Lab: MCP 入门 — 让 AI 连接整个世界** — 30 分钟
 - **自学：MCP 服务器配置** — 30 分钟
@@ -77,8 +78,9 @@ _Week 3-5，15 节课_
 - **用 AI 搭建 MCP Server** — 120 分钟 · 🔴直播
 - **自学：MCP 配置同步** — 30 分钟
 - **MCP 协议与 Claude 工具调用机制参考** — 120 分钟
+- **Claude Schedule：把重复开发任务交给定时 Agent** — 60 分钟
 - **Quest 实战：从零搭建你自己的 MCP Server** — 50 分钟
-- **什么是 Agentic Workflow** — 30 分钟
+- **Agentic Workflow：从单 Agent 到多 Agent 执行图** — 30 分钟
 - **自学：AI Agents 与工具调用** — 30 分钟
 - **自学：Agent Fundamentals** — 30 分钟
 - **Claude 多步骤 Agent 架构与工具编排实战** — 90 分钟 · 🔴直播
@@ -111,6 +113,7 @@ _Week 5-7，9 节课_
 - **自学：性能与成本优化** — 30 分钟
 - **Codex CLI 安装指南与 config.toml 配置样例** — 120 分钟
 - **Lab: Prompt 迭代与追问 — 第一次一定不够好** — 60 分钟
+- **AI Coding 优化闭环：质量、速度、成本一起调** — 90 分钟
 
 ## Phase 4 — 全栈项目 & 交付
 

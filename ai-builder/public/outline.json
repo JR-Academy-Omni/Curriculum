@@ -7,14 +7,14 @@
   "level": "中级",
   "type": "training",
   "targetAudience": "有编程基础的开发者、全栈工程师、DevOps、想用 AI 提升开发效率的技术人员",
-  "totalLessons": 108,
-  "totalSteps": 120,
+  "totalLessons": 111,
+  "totalSteps": 130,
   "liveClasses": 22,
-  "estimatedHours": 101.3,
+  "estimatedHours": 104.8,
   "totalInteractiveLabs": 34,
   "title_en": "Vibe Coding Masterclass",
   "description_en": "Build full-stack apps with Claude Code, Cursor, and Codex. From PRD to Skills/MCP/Agent to deployment. For developers with programming experience.",
-  "timeLength": "8 周（108 节课）",
+  "timeLength": "8 周（111 节课）",
   "courseObjective": "掌握 Claude Code Skills、MCP Server 搭建、Agent 架构、多模型协作，用 AI 完成从 PRD 到部署的全栈项目",
   "courseObjective_en": "Master Claude Code Skills, MCP Server building, Agent architecture, and multi-model collaboration. Ship a full-stack project from PRD to deployment with AI.",
   "suitable": "有 Python/JS 基础的软件工程师\n全栈开发者想用 AI 10x 开发效率\nDevOps 工程师想了解 AI 开发工具\n技术创业者想快速出产品",
@@ -23,11 +23,11 @@
   "promoDescription": "不是教你用 ChatGPT 写代码片段。这门课教你用 Claude Code 的 Skills、MCP、Agent 做真正的全栈开发——从 PRD 到数据库到部署，全程 AI 驱动。",
   "prerequisiteknowledge": "需要有基本的编程经验（Python 或 JavaScript），了解 Git 基本操作。",
   "highlights": [
-    "Claude Code Skills + MCP Server + Agent 架构三大核心模块",
-    "Claude / Cursor / Codex / Gemini 四大工具深度对比实操",
-    "108 节课从 PRD → Skills → MCP → Agent → 全栈项目 → 部署",
-    "Context Engineering 实战 — 不只是 Prompt，是整个上下文设计",
-    "毕业产出一个可上线的 AI 全栈项目 + Demo"
+    "111 节课：直播课 + 自学材料 + Lab + Quest 组合",
+    "22 次直播：Prompt、Claude Code、Agent、MCP、项目实战",
+    "34 个互动 Lab：覆盖 Prompt、Claude Code、MCP、Agent、前后端开发",
+    "4 个 Quest：每阶段一个可交付作品",
+    "新增 Claude Workflow、Claude Schedule 与 AI Coding 优化闭环，补齐团队级 AI Coding 能力"
   ],
   "highlights_en": [
     "Three core modules: Claude Code Skills + MCP Server + Agent Architecture",
@@ -1426,6 +1426,46 @@
           "_id": "69dc41a276e3e0c1b3c53ecf"
         },
         {
+          "code": "L43",
+          "title": "Claude Workflow：从一次性 Prompt 到可复现编排",
+          "description": "把 Claude Code 从一次性问答升级成可复现的执行流程：明确输入、上下文、工具调用、检查点和输出标准。重点讲静态 Workflow、动态 Workflow，以及如何把团队里的高频 AI Coding 任务沉淀成可复用流程。",
+          "type": "Information",
+          "isLive": false,
+          "duration": 60,
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Workflow 三层结构",
+              "description": "一次性 Prompt、静态 Workflow、动态 Agent Workflow 的区别",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "EXERCISE",
+              "title": "拆解一个开发任务",
+              "description": "把需求拆成 Claude Code 可执行的步骤、检查点和输出",
+              "duration": 25
+            },
+            {
+              "order": 3,
+              "type": "CHECKLIST",
+              "title": "团队 Workflow 模板",
+              "description": "沉淀入口、上下文、执行、验证、交付五段模板",
+              "duration": 15
+            }
+          ],
+          "labs": [],
+          "learns": [
+            {
+              "direction": "vibe-coding",
+              "slug": "claude-code-workflow"
+            }
+          ],
+          "learningMaterial": "<h2>学习目标</h2><ul><li>区分一次性 Prompt、静态 Workflow、动态 Agent Workflow</li><li>把常见开发任务拆成可复现的 Claude Code 执行链路</li><li>为 Workflow 设计输入、输出、检查点和失败回退</li></ul><h2>核心概念</h2><h3>三层 Workflow</h3><pre><code>Level 1: One-shot Prompt\n你把需求一次性丢给 AI，结果不可控，复现困难。\n\nLevel 2: Static Workflow\n固定步骤：读需求 -> 改代码 -> 跑测试 -> 总结 diff。\n适合重复任务，例如新增 CRUD、修复 lint、补测试。\n\nLevel 3: Dynamic Workflow\nAI 根据中间结果选择下一步：失败时查日志，缺上下文时读文件，需要验证时跑命令。\n适合 bugfix、迁移、跨模块改造。</code></pre><h3>Workflow 的四个固定件</h3><ul><li>入口：任务目标、范围、禁止事项、成功标准</li><li>上下文：相关文件、约束、历史决策、业务术语</li><li>执行：计划、工具调用、代码修改、验证命令</li><li>出口：diff 摘要、测试结果、剩余风险、下一步</li></ul><h2>课堂练习</h2><ol><li>把「新增一个课程详情字段」拆成 Claude Code Workflow</li><li>为每一步写清输入、输出和失败处理</li><li>把 Workflow 固化成团队可复用的命令或 skill</li></ol><h2>小结</h2><p>Workflow 不是把 Prompt 写长，而是让 AI 的执行路径可复现、可检查、可交接。团队真正能规模化使用 AI Coding，靠的是稳定 Workflow，而不是某个人的临场发挥。</p>",
+          "_id": "6a40cbfd942e9d8f32d03712"
+        },
+        {
           "code": "L44",
           "title": "用 AI 搭建 MCP Server（Model Context Protocol）",
           "description": "MCP 是 Model Context Protocol——让 AI 调用外部工具和服务的标准协议。Claude 要查数据库、读文件系统、调第三方 API，都通过 MCP。这节课讲 MCP 的 Client-Server 架构：Client（AI 工具端）发起请求 → Server（你写的服务端）执行操作 → 返回结果。Tool 和 Resource 的区别、Transport 层怎么工作。",
@@ -1708,6 +1748,46 @@
           "_id": "69db3dc676e3e0c1b3b66d9b"
         },
         {
+          "code": "L53",
+          "title": "Claude Schedule：把重复开发任务交给定时 Agent",
+          "description": "学习 Claude Schedule 的使用边界：让 Agent 定时检查、生成报告、提出 PR 或草稿，但不把高风险生产操作自动化。课程覆盖 schedule 任务设计、权限边界、输出报告和失败处理。",
+          "type": "Information",
+          "isLive": false,
+          "duration": 60,
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Schedule 适用场景",
+              "description": "内容巡检、差异报告、依赖检查、课程同步提醒",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "EXERCISE",
+              "title": "设计一个定时 Agent",
+              "description": "定义输入、权限、验证方式和通知产物",
+              "duration": 25
+            },
+            {
+              "order": 3,
+              "type": "CHECKLIST",
+              "title": "上线前安全检查",
+              "description": "区分只读、可写、可提交、可部署任务",
+              "duration": 15
+            }
+          ],
+          "labs": [],
+          "learns": [
+            {
+              "direction": "vibe-coding",
+              "slug": "claude-schedule"
+            }
+          ],
+          "learningMaterial": "<h2>学习目标</h2><ul><li>理解 Claude Schedule 适合处理哪些重复开发任务</li><li>设计无人值守任务的输入、权限、产物和通知</li><li>避免把高风险生产操作交给定时 Agent 自动执行</li></ul><h2>Claude Schedule 能做什么</h2><p>Claude Schedule 的价值不是「定时聊天」，而是让 Agent 在固定时间带着上下文跑一段可验证的工作流。典型任务包括内容巡检、数据差异报告、依赖更新检查、课程大纲对比、失败任务复盘。</p><pre><code># 示例任务\n每天 09:00 检查课程 production 与本地 outline 差异\n每周一生成学习资源薄弱页面报告\n每晚扫描新 job 并输出 AI 分析草稿\n每周检查依赖安全更新，但只出 PR，不自动部署</code></pre><h2>设计一个可上线的 Schedule</h2><ul><li>任务目标：一句话说清它应该完成什么</li><li>执行边界：只读、可写、可提交、可部署要分开</li><li>输入来源：repo、API、S3、Google Sheet、数据库</li><li>验证方式：diff、测试、截图、计数、schema 校验</li><li>输出方式：报告、PR、Slack/Email 通知、admin dashboard</li></ul><h2>课堂练习</h2><ol><li>为「Vibe Coding 大纲 prod drift 检查」写一个 schedule 任务说明</li><li>定义它可以自动做什么、必须人工确认什么</li><li>设计失败报告格式：失败命令、错误原因、下一步建议</li></ol><h2>小结</h2><p>Schedule 适合自动发现问题和生成可审核产物，不适合自动做不可逆生产修改。好的定时 Agent 默认保守：先报告、先 diff、先让人确认。</p>",
+          "_id": "6a40cbfe942e9d8f32d03727"
+        },
+        {
           "code": "Q03",
           "title": "Quest 实战：从零搭建你自己的 MCP Server",
           "type": "Quest",
@@ -1791,8 +1871,8 @@
         },
         {
           "code": "L54",
-          "title": "什么是 Agentic Workflow",
-          "description": "Agentic Workflow 就是让 AI 自主规划和执行多步任务，而不是你一步步指挥。传统方式：你写 Prompt → AI 回答 → 你再写 Prompt → AI 再回答。Agentic 方式：你给一个目标 → AI 自己规划步骤 → 调工具执行 → 检查结果 → 决定下一步 → 直到完成。这节课讲 ReAct 模式、Tool Use 循环、以及什么任务适合 Agentic 什么不适合。",
+          "title": "Agentic Workflow：从单 Agent 到多 Agent 执行图",
+          "description": "在 Claude Workflow 和 Schedule 的基础上，进一步理解 Agentic Workflow：让单 Agent 或多 Agent 根据观察结果选择下一步，而不是机械执行固定脚本。重点讲 ReAct 循环、工具编排、多 Agent 分工，以及哪些任务不该 Agent 化。",
           "type": "Information",
           "isLive": false,
           "duration": 30,
@@ -1800,8 +1880,8 @@
             {
               "order": 1,
               "type": "CONCEPT",
-              "title": "Agentic Workflow",
-              "description": "ReAct 模式、Tool Use 循环、什么任务适合/不适合",
+              "title": "Agentic Workflow 执行图",
+              "description": "ReAct 循环、工具编排、多 Agent 分工、任务边界",
               "duration": 30
             },
             {
@@ -1836,7 +1916,7 @@
               "slug": "agent-fundamentals"
             }
           ],
-          "learningMaterial": "<h2>学习目标</h2><ul><li>理解 Agentic Workflow：AI 自主规划和执行多步任务，而不是你一步步指挥</li><li>掌握 ReAct 模式（Reasoning + Acting）的工作原理</li><li>判断什么任务适合 Agentic Workflow、什么不适合</li></ul><h2>核心概念</h2><h3>传统方式 vs Agentic 方式</h3><pre><code># 传统方式（你指挥每一步）\n你: \"读一下 src/user.ts\"\nAI: [显示文件内容]\n你: \"找到 validateEmail 函数\"\nAI: [显示函数]\n你: \"给它添加手机号验证\"\nAI: [修改代码]\n你: \"跑一下测试\"\nAI: [执行测试]\n\n# Agentic 方式（你给目标，AI 自主执行）\n你: \"给 User 模块添加手机号验证功能，要有测试\"\nAI Agent 自主执行：\n→ 读取 user.ts 理解现有结构\n→ 读取 user.test.ts 了解测试风格\n→ 修改 user.ts 添加验证函数\n→ 更新 user.interface.ts 添加类型\n→ 写测试用例\n→ 跑测试验证通过\n→ 报告完成</code></pre><h3>ReAct 模式</h3><p>ReAct = Reasoning（思考）+ Acting（行动）。Agent 在每一步先思考（\"我需要什么信息？下一步该做什么？\"），再行动（调用 Tool），然后观察结果，再思考下一步。</p><pre><code># ReAct 循环\nThought: 我需要先了解 user.ts 的结构\nAction: Read file src/user.ts\nObservation: [文件内容，已有 validateEmail]\nThought: 已有邮箱验证，我应该用类似模式写手机号验证\nAction: Edit file src/user.ts（添加 validatePhone）\nObservation: 文件已修改\nThought: 需要更新类型定义\nAction: Edit file src/user.interface.ts\n...\nThought: 所有修改完成，跑测试验证\nAction: Run \"npm test\"\nObservation: All tests passed\n→ 任务完成</code></pre><h3>什么适合 / 不适合 Agentic</h3><p>适合 Agentic：多步骤的明确任务（添加功能、重构模块、修复 bug + 测试）、有清晰的完成标准（测试通过、lint 通过）。</p><p>不适合 Agentic：需要创意决策的任务（产品方向选择）、涉及人际沟通的任务（和客户确认需求）、风险高且不可逆的操作（删除生产数据）。</p><h2>动手练习</h2><ol><li>在 Claude Code 中给一个多步任务（如「给项目添加一个新的 API 接口，包含路由、service、测试」），观察 Agent 的执行过程</li><li>记录 Agent 的每一步：思考了什么、调用了什么工具、结果是什么</li><li>列出你工作中 5 个任务，标记适合/不适合 Agentic</li></ol><h2>小结</h2><p>Agentic Workflow 的核心是 ReAct 循环：思考 → 行动 → 观察 → 再思考。Claude Code 本身就是一个 Agent。适合 Agentic 的任务需要有明确目标和可验证的完成标准。</p>",
+          "learningMaterial": "<h2>学习目标</h2><ul><li>理解 Agentic Workflow：AI 根据观察结果选择下一步，而不是机械执行固定脚本</li><li>掌握 ReAct 模式（Reasoning + Acting）的工作原理</li><li>判断什么任务适合 Agentic Workflow、什么不适合</li></ul><h2>核心概念</h2><h3>传统方式 vs Agentic 方式</h3><pre><code># 传统方式（你指挥每一步）\n你: \"读一下 src/user.ts\"\nAI: [显示文件内容]\n你: \"找到 validateEmail 函数\"\nAI: [显示函数]\n你: \"给它添加手机号验证\"\nAI: [修改代码]\n你: \"跑一下测试\"\nAI: [执行测试]\n\n# Agentic 方式（你给目标，AI 自主执行）\n你: \"给 User 模块添加手机号验证功能，要有测试\"\nAI Agent 自主执行：\n→ 读取 user.ts 理解现有结构\n→ 读取 user.test.ts 了解测试风格\n→ 修改 user.ts 添加验证函数\n→ 更新 user.interface.ts 添加类型\n→ 写测试用例\n→ 跑测试验证通过\n→ 报告完成</code></pre><h3>ReAct 模式</h3><p>ReAct = Reasoning（思考）+ Acting（行动）。Agent 在每一步先思考（\"我需要什么信息？下一步该做什么？\"），再行动（调用 Tool），然后观察结果，再思考下一步。</p><pre><code># ReAct 循环\nThought: 我需要先了解 user.ts 的结构\nAction: Read file src/user.ts\nObservation: [文件内容，已有 validateEmail]\nThought: 已有邮箱验证，我应该用类似模式写手机号验证\nAction: Edit file src/user.ts（添加 validatePhone）\nObservation: 文件已修改\nThought: 需要更新类型定义\nAction: Edit file src/user.interface.ts\n...\nThought: 所有修改完成，跑测试验证\nAction: Run \"npm test\"\nObservation: All tests passed\n→ 任务完成</code></pre><h3>什么适合 / 不适合 Agentic</h3><p>适合 Agentic：多步骤的明确任务（添加功能、重构模块、修复 bug + 测试）、有清晰的完成标准（测试通过、lint 通过）。</p><p>不适合 Agentic：需要创意决策的任务（产品方向选择）、涉及人际沟通的任务（和客户确认需求）、风险高且不可逆的操作（删除生产数据）。</p><h2>动手练习</h2><ol><li>在 Claude Code 中给一个多步任务（如「给项目添加一个新的 API 接口，包含路由、service、测试」），观察 Agent 的执行过程</li><li>记录 Agent 的每一步：思考了什么、调用了什么工具、结果是什么</li><li>列出你工作中 5 个任务，标记适合/不适合 Agentic</li></ol><h2>小结</h2><p>Agentic Workflow 的核心是 ReAct 循环：思考 → 行动 → 观察 → 再思考。Claude Code 本身就是一个 Agent。适合 Agentic 的任务需要有明确目标和可验证的完成标准。</p>",
           "_id": "69db3dc676e3e0c1b3b66dad"
         },
         {
@@ -2741,6 +2821,53 @@
           "interactiveLabSlug": "vibe-prompt-iteration",
           "learningMaterial": "<h2>学习目标</h2><ul><li>在实际场景中运用 Codex CLI 完成编码任务</li><li>练习编写高质量的 Codex Prompt</li><li>体验 Prompt 优化前后的输出质量差异</li></ul><h2>核心概念</h2><h3>Lab 练习结构</h3><p>本节是动手练习课，包含 4 个递进难度的 Codex 实战场景。每个场景提供基础代码和需求描述，你需要编写 Prompt 让 Codex 完成任务。</p><h3>场景 1：Bug 修复</h3><p>给定一个有 3 个 bug 的 Express 路由文件（未 await 异步调用、缺少错误处理、SQL 注入风险），用 Codex 一次性找出并修复。</p><p>关键：Prompt 中要求 Codex \"列出所有问题，然后逐个修复，保留注释说明修复了什么\"。</p><h3>场景 2：功能生成</h3><p>从零生成一个文件上传中间件：支持多文件、限制大小和类型、返回上传结果数组。Prompt 要指定所有边界条件。</p><h3>场景 3：重构挑战</h3><p>给一个 200 行的\"上帝函数\"（同时做验证、数据库操作、发邮件、日志），让 Codex 拆分成 4 个独立函数。Prompt 要说清楚拆分策略。</p><h3>场景 4：测试生成</h3><p>给定一个 Service 文件，让 Codex 生成完整的单元测试，覆盖正常路径、边界场景、错误处理。用 Few-shot 模板给一个测试示例。</p><h3>评估标准</h3><p>每个场景从四个角度自评：(1) Codex 输出是否直接可用 (2) 需要人工修改多少 (3) Prompt 写了几次才拿到满意结果 (4) 总耗时 vs 纯手写耗时。</p><h2>动手练习</h2><ol><li>完成上述 4 个场景，记录每个场景的 Prompt 和输出</li><li>对比你的第一版 Prompt 和优化后的版本</li><li>选一个场景用 Claude Code 重做，对比工具差异</li></ol><h2>小结</h2><p>Prompt Lab 的目的不是\"做完题\"，而是建立写 Prompt 的肌肉记忆。你会发现：需求描述越具体、边界条件越明确、输出格式越清楚，Codex 的输出就越接近直接可用。这个规律适用于所有 AI 编码工具。</p>",
           "_id": "69db3dc876e3e0c1b3b66e7f"
+        },
+        {
+          "code": "L83",
+          "title": "AI Coding 优化闭环：质量、速度、成本一起调",
+          "description": "把 AI Coding 从“能生成代码”推进到“稳定交付”：用任务边界、上下文管理、验证命令、模型分层和复盘记录，持续降低返工率、等待时间和调用成本。",
+          "type": "Information",
+          "isLive": false,
+          "duration": 90,
+          "steps": [
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "AI Coding 三维指标",
+              "description": "质量、速度、成本分别怎么定义和量化",
+              "duration": 20
+            },
+            {
+              "order": 2,
+              "type": "EXERCISE",
+              "title": "重写一个低质量任务说明",
+              "description": "补齐范围、文件、成功标准、验证命令",
+              "duration": 25
+            },
+            {
+              "order": 3,
+              "type": "PRACTICE",
+              "title": "验证驱动的 AI Coding",
+              "description": "用测试、lint、截图、schema 校验约束 AI 输出",
+              "duration": 30
+            },
+            {
+              "order": 4,
+              "type": "RETRO",
+              "title": "复盘返工原因",
+              "description": "把失败归因到上下文、任务边界、模型选择或验证缺失",
+              "duration": 15
+            }
+          ],
+          "labs": [],
+          "learns": [
+            {
+              "direction": "vibe-coding",
+              "slug": "performance-cost"
+            }
+          ],
+          "learningMaterial": "<h2>学习目标</h2><ul><li>建立 AI Coding 的质量、速度、成本三维优化框架</li><li>用测试、lint、截图和数据校验约束 AI 输出</li><li>减少无效上下文、重复返工和模型调用浪费</li></ul><h2>优化不是只换更强模型</h2><p>AI Coding 的瓶颈通常不是模型不够聪明，而是任务边界不清、上下文噪音太多、验证信号太弱。先把工作流变清楚，再决定是否升级模型。</p><h3>质量优化</h3><ul><li>给出成功标准：测试通过、页面无重叠、API response shape 不变</li><li>要求先读现有模式：组件风格、service 分层、schema 约束</li><li>让 AI 自己跑验证，并在结果里报告失败项</li></ul><h3>速度优化</h3><ul><li>把大任务切成可独立验证的小 slice</li><li>用固定 prompt 模板处理重复任务，例如补测试、改文案、同步 JSON</li><li>缓存稳定上下文：AGENTS、README、业务规则、常用命令</li></ul><h3>成本优化</h3><ul><li>低风险读取和整理用便宜模型，高风险改代码用强模型</li><li>减少整仓粘贴，用文件引用和搜索结果提供上下文</li><li>失败时先缩小问题，不要连续重试同一个大 prompt</li></ul><h2>课堂练习</h2><ol><li>拿一个失败的 AI Coding 对话，标出失败原因属于质量、速度还是成本</li><li>重写任务说明：范围、文件、成功标准、验证命令</li><li>对比两次执行结果，记录节省了哪些返工</li></ol><h2>小结</h2><p>AI Coding 优化的目标是减少返工。清晰的任务边界、可执行的验证命令、稳定的团队 Workflow，比单纯追求更长 Prompt 更有效。</p>",
+          "_id": "6a40cbff942e9d8f32d03785"
         }
       ]
     },
