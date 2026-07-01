@@ -9,9 +9,9 @@
 
 **级别** 零基础 · **类型** bootcamp · **时长** 4 - 6个月 · **总课时** 94 · **步骤** 0 · **直播** 5 · **预计学时** 116
 
-**适合**：Information System 专业学生想从事 BA 行业，产品方向
-想从事 Business Analyst/产品行业
-学习 Business Analyst
+**适合**：Information System 专业学生想从事 BA 行业，产品方向
+想从事 Business Analyst/产品行业
+学习 Business Analyst
 想成为产品经理，回国/澳洲求职产品经理岗位
 
 **目标**：BA 训练营针对想成为 ICT Business Analyst 或者 产品经理的职位。目前分成大的 6个学习阶段。 获得至少 3 份简历经历，不愁找一份全职工作！

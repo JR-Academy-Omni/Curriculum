@@ -9,9 +9,9 @@
 
 **级别** 中级 · **类型** bootcamp · **时长** 共16周 · **总课时** 485 · **步骤** 0 · **直播** 20 · **预计学时** 853
 
-**适合**：IT、CS 专业在校生和毕业生
-IS毕业生
-国内有IT工作经验, 无本地工作经验的新移民
+**适合**：IT、CS 专业在校生和毕业生
+IS毕业生
+国内有IT工作经验, 无本地工作经验的新移民
 Job Changer
 
 **目标**：学习RAG，React.js，Node.js，.Net Core，Spring Boot，Redux，AWS，Agile项目实践，获得2个个人项目经验和1个商业项目经验+80多节Career Coaching Self-paced Learning课程+12月简历内推
