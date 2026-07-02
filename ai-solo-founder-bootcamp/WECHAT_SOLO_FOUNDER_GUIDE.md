@@ -1,12 +1,15 @@
 ---
 sot: curriculum/ai-solo-founder-bootcamp
 channel: wechat
-status: draft
-title: 别人做一人公司愁获客，澳洲华人手里多一张牌
+status: published
+title: 在澳洲做一人公司，这张牌很多人不知道
+title_draft: 别人做一人公司愁获客，澳洲华人手里多一张牌
 type: 公众号创业干货长文（原创）
 owner: Simone
 draft_date: 2026-07-01
 publish_target: 2026-07-02（周四）
+published_date: 2026-07-02
+published_url: https://mp.weixin.qq.com/s/-I8nKr1SI7kpXQ2QtLo1RQ
 note: 创业干货为主，报税季+RDTI 作为澳洲独有一块融入，末尾引一人创业营。合规：无保证赚钱/保证退税/包就业；RDTI 讲方法不承诺金额，保留"以ATO/会计师为准"。
 ---
 
