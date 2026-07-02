@@ -8,7 +8,7 @@
   "type": "training",
   "targetAudience": "有编程基础的开发者、全栈工程师、DevOps、想用 AI 提升开发效率的技术人员",
   "totalLessons": 110,
-  "totalSteps": 133,
+  "totalSteps": 145,
   "liveClasses": 20,
   "estimatedHours": 105.8,
   "totalInteractiveLabs": 34,
@@ -1469,12 +1469,7 @@
             }
           ],
           "labs": [],
-          "learns": [
-            {
-              "direction": "vibe-coding",
-              "slug": "claude-code-workflow"
-            }
-          ],
+          "learns": [],
           "learningMaterial": "<h2>学习目标</h2><ul><li>区分一次性 Prompt、静态 Workflow、动态 Agent Workflow</li><li>把常见开发任务拆成可复现的 Claude Code 执行链路</li><li>为 Workflow 设计输入、输出、检查点和失败回退</li></ul><h2>核心概念</h2><h3>三层 Workflow</h3><pre><code>Level 1: One-shot Prompt\n你把需求一次性丢给 AI，结果不可控，复现困难。\n\nLevel 2: Static Workflow\n固定步骤：读需求 -> 改代码 -> 跑测试 -> 总结 diff。\n适合重复任务，例如新增 CRUD、修复 lint、补测试。\n\nLevel 3: Dynamic Workflow\nAI 根据中间结果选择下一步：失败时查日志，缺上下文时读文件，需要验证时跑命令。\n适合 bugfix、迁移、跨模块改造。</code></pre><h3>Workflow 的四个固定件</h3><ul><li>入口：任务目标、范围、禁止事项、成功标准</li><li>上下文：相关文件、约束、历史决策、业务术语</li><li>执行：计划、工具调用、代码修改、验证命令</li><li>出口：diff 摘要、测试结果、剩余风险、下一步</li></ul><h2>课堂练习</h2><ol><li>把「新增一个课程详情字段」拆成 Claude Code Workflow</li><li>为每一步写清输入、输出和失败处理</li><li>把 Workflow 固化成团队可复用的命令或 skill</li></ol><h2>小结</h2><p>Workflow 不是把 Prompt 写长，而是让 AI 的执行路径可复现、可检查、可交接。团队真正能规模化使用 AI Coding，靠的是稳定 Workflow，而不是某个人的临场发挥。</p>",
           "_id": "6a40cbfd942e9d8f32d03712"
         },
@@ -1509,12 +1504,7 @@
             }
           ],
           "labs": [],
-          "learns": [
-            {
-              "direction": "vibe-coding",
-              "slug": "claude-schedule"
-            }
-          ],
+          "learns": [],
           "learningMaterial": "<h2>学习目标</h2><ul><li>理解 Claude Schedule 适合处理哪些重复开发任务</li><li>设计无人值守任务的输入、权限、产物和通知</li><li>避免把高风险生产操作交给定时 Agent 自动执行</li></ul><h2>Claude Schedule 能做什么</h2><p>Claude Schedule 的价值不是「定时聊天」，而是让 Agent 在固定时间带着上下文跑一段可验证的工作流。典型任务包括内容巡检、数据差异报告、依赖更新检查、课程大纲对比、失败任务复盘。</p><pre><code># 示例任务\n每天 09:00 检查课程 production 与本地 outline 差异\n每周一生成学习资源薄弱页面报告\n每晚扫描新 job 并输出 AI 分析草稿\n每周检查依赖安全更新，但只出 PR，不自动部署</code></pre><h2>设计一个可上线的 Schedule</h2><ul><li>任务目标：一句话说清它应该完成什么</li><li>执行边界：只读、可写、可提交、可部署要分开</li><li>输入来源：repo、API、S3、Google Sheet、数据库</li><li>验证方式：diff、测试、截图、计数、schema 校验</li><li>输出方式：报告、PR、Slack/Email 通知、admin dashboard</li></ul><h2>课堂练习</h2><ol><li>为「Vibe Coding 大纲 prod drift 检查」写一个 schedule 任务说明</li><li>定义它可以自动做什么、必须人工确认什么</li><li>设计失败报告格式：失败命令、错误原因、下一步建议</li></ol><h2>小结</h2><p>Schedule 适合自动发现问题和生成可审核产物，不适合自动做不可逆生产修改。好的定时 Agent 默认保守：先报告、先 diff、先让人确认。</p>",
           "_id": "6a40cbfe942e9d8f32d03727"
         },
@@ -1657,10 +1647,6 @@
             {
               "direction": "vibe-coding",
               "slug": "mcp-setup"
-            },
-            {
-              "direction": "ai-engineer",
-              "slug": "mcp-tool-integration"
             }
           ],
           "learningMaterial": "<h2>学习目标</h2><ul><li>理解 AI 工具调用的三层架构：Skills（能做什么）→ ToolUse / Function Calling（怎么调用）→ MCP（协议）</li><li>用一个完整案例追踪从 Claude 收到任务到 MCP Server 返回结果的全流程</li><li>区分 Skills、ToolUse、MCP 各自的职责边界</li></ul><h2>核心概念</h2><h3>三层架构</h3><pre><code># 层次关系\n┌─────────────────────────────┐\n│  Skills 层                   │  定义「Claude 能做什么」\n│  .claude/commands/review.md  │  角色、步骤、约束\n├─────────────────────────────┤\n│  ToolUse 层 (Function Call)  │  定义「怎么调用工具」\n│  Tool name + input schema    │  参数格式、返回格式\n├─────────────────────────────┤\n│  MCP 层 (Protocol)           │  定义「通过什么协议通信」\n│  JSON-RPC 2.0 + Transport    │  消息格式、传输方式\n└─────────────────────────────┘</code></pre><h3>完整调用链追踪</h3><p>场景：用户说「帮我查一下数据库里有多少活跃用户」。</p><pre><code># Step 1: Skills 层\nClaude 判断这个任务需要调用数据库查询工具\n→ 根据已注册的 Tool 列表，选择 \"query_database\" Tool\n\n# Step 2: ToolUse 层 (Function Calling)\nClaude 构造 Tool 调用：\n{\n  \"type\": \"tool_use\",\n  \"name\": \"query_database\",\n  \"input\": {\n    \"query\": \"SELECT COUNT(*) FROM users WHERE active = true\"\n  }\n}\n\n# Step 3: MCP 层\nClaude Code 把 Tool 调用转成 MCP 消息：\n{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"query_database\",\n    \"arguments\": { \"query\": \"...\" }\n  },\n  \"id\": 1\n}\n→ 通过 stdio/SSE 发送给 MCP Server\n\n# Step 4: MCP Server 执行\nServer 收到请求 → 执行 SQL → 返回结果\n{\n  \"jsonrpc\": \"2.0\",\n  \"result\": { \"count\": 1523 },\n  \"id\": 1\n}\n\n# Step 5: Claude 处理结果\n\"数据库中有 1523 个活跃用户。\"</code></pre><h3>三层各自的职责边界</h3><p>Skills：决策层。「我应该做什么」——选择正确的 Tool、按什么顺序调用。ToolUse：接口层。「怎么调用」——参数是什么类型、返回什么格式。MCP：传输层。「消息怎么送达」——用什么协议、什么传输方式。修改 Skills 不影响 MCP，修改 MCP 不影响 Skills。三层解耦。</p><h2>动手练习</h2><ol><li>选你项目中的一个操作（如「查询订单详情」），画出完整的三层调用链</li><li>在 Claude Code 执行一个任务时，观察它的 Tool 调用日志（Claude Code 会显示调用了哪些工具）</li><li>思考：如果 MCP Server 返回错误，三层分别怎么处理？</li></ol><h2>小结</h2><p>Skills → ToolUse → MCP 是三层解耦的架构。Skills 管决策（做什么），ToolUse 管接口（怎么调用），MCP 管传输（消息格式和通信方式）。理解这三层是搭建 MCP Server 和编排 Agent 的基础。</p>",
@@ -1693,15 +1679,33 @@
           "type": "Information",
           "isLive": false,
           "duration": 30,
-          "steps": [],
-          "labs": [],
-          "learns": [
+          "steps": [
             {
-              "direction": "ai-engineer",
-              "slug": "mcp-tool-integration"
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "MCP 工具调用链路",
+              "description": "发现 → 选择 → 调用 → 回填结果四个环节",
+              "duration": 12
+            },
+            {
+              "order": 2,
+              "type": "EXERCISE",
+              "title": "给内部 API 写 tool 定义",
+              "description": "为一个真实接口写 name / description / inputSchema",
+              "duration": 12
+            },
+            {
+              "order": 3,
+              "type": "CHECKLIST",
+              "title": "集成前检查",
+              "description": "description 是否清晰、权限只读还是可写、失败返回是否可自愈",
+              "duration": 6
             }
           ],
-          "_id": "69dc41a376e3e0c1b3c53ee0"
+          "labs": [],
+          "learns": [],
+          "_id": "69dc41a376e3e0c1b3c53ee0",
+          "learningMaterial": "<h2>学习目标</h2><ul><li>理解 MCP Server 如何把工具（tool）和资源（resource）暴露给 Claude / Cursor</li><li>掌握模型调用 MCP 工具的完整链路：发现 → 选择 → 调用 → 回填结果</li><li>为一个真实 MCP 工具设计 schema、错误处理和权限边界</li></ul><h2>核心概念</h2><h3>MCP 集成的四个环节</h3><pre><code>1. 发现 Discovery：Client 启动时请求 tools/list，拿到可用工具清单\n2. 选择 Selection：模型根据用户意图和工具 description 决定调用哪个\n3. 调用 Invocation：Client 发送 tools/call（名称 + 参数），Server 执行\n4. 回填 Result：Server 返回结构化结果，模型据此继续推理或再次调用</code></pre><h3>Tool vs Resource</h3><ul><li><strong>Tool</strong>：模型主动调用的动作（查数据库、发请求、跑命令），有副作用</li><li><strong>Resource</strong>：模型按需读取的只读上下文（文件、文档、schema），无副作用</li></ul><h3>一个 tool 定义长什么样</h3><pre><code>{\n  \"name\": \"query_orders\",\n  \"description\": \"按用户 ID 查询最近订单，只读\",\n  \"inputSchema\": {\n    \"type\": \"object\",\n    \"properties\": { \"userId\": { \"type\": \"string\" } },\n    \"required\": [\"userId\"]\n  }\n}</code></pre><h2>课堂练习</h2><ol><li>给你项目里的一个内部 API 写一个 MCP tool 定义（name + description + inputSchema）</li><li>把 description 写清楚——这是模型判断“要不要用它”的唯一依据</li><li>设计失败返回：参数错误、无权限、超时分别返回什么，让模型能自我修正</li></ol><h2>小结</h2><p>MCP 集成的难点不在协议本身，而在工具的 description 和 schema 写得够不够清楚。写得含糊，模型就选错工具、传错参数。把工具当成给模型看的 API 文档来写。</p>"
         },
         {
           "code": "L50",
@@ -1798,12 +1802,7 @@
             }
           ],
           "labs": [],
-          "learns": [
-            {
-              "direction": "ai-engineer",
-              "slug": "mcp-tool-integration"
-            }
-          ],
+          "learns": [],
           "learningMaterial": "<h2>学习目标</h2><ul><li>掌握 MCP 协议的详细规范：JSON-RPC 2.0 消息格式、Tool Definition Schema</li><li>了解 Resource URI 格式、Error Code 定义、Auth 机制</li><li>收藏 Anthropic 官方 MCP 参考资料和社区 MCP Server 列表</li></ul><h2>核心概念</h2><h3>JSON-RPC 2.0 消息格式</h3><pre><code># 请求消息（Client → Server）\n{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"query_database\",\n    \"arguments\": {\n      \"sql\": \"SELECT * FROM users LIMIT 10\"\n    }\n  },\n  \"id\": 1\n}\n\n# 响应消息（Server → Client）\n{\n  \"jsonrpc\": \"2.0\",\n  \"result\": {\n    \"content\": [{\n      \"type\": \"text\",\n      \"text\": \"[{\\\"id\\\": 1, \\\"name\\\": \\\"Alice\\\"}]\"\n    }]\n  },\n  \"id\": 1\n}\n\n# 错误响应\n{\n  \"jsonrpc\": \"2.0\",\n  \"error\": {\n    \"code\": -32602,\n    \"message\": \"Invalid params: sql field is required\"\n  },\n  \"id\": 1\n}</code></pre><h3>Tool Definition Schema</h3><pre><code>{\n  \"name\": \"send_email\",\n  \"description\": \"发送邮件到指定地址\",\n  \"inputSchema\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"to\": {\n        \"type\": \"string\",\n        \"description\": \"收件人邮箱\"\n      },\n      \"subject\": { \"type\": \"string\" },\n      \"body\": { \"type\": \"string\" }\n    },\n    \"required\": [\"to\", \"subject\", \"body\"]\n  }\n}</code></pre><h3>MCP Error Codes</h3><p>MCP 使用 JSON-RPC 2.0 标准错误码：-32700 Parse Error、-32600 Invalid Request、-32601 Method Not Found、-32602 Invalid Params、-32603 Internal Error。自定义错误码从 -32000 到 -32099。</p><h3>Auth 机制</h3><p>本地 stdio Transport 不需要 Auth（进程间通信天然可信）。远程 SSE Transport 需要 Auth：通常用 Bearer Token 或 OAuth 2.0。在 settings.json 的 mcpServers 配置中通过 env 传递 Token。</p><h3>参考资料</h3><ul><li>MCP 官方规范：<code>spec.modelcontextprotocol.io</code></li><li>MCP TypeScript SDK：<code>github.com/modelcontextprotocol/typescript-sdk</code></li><li>社区 MCP Server 列表：<code>github.com/modelcontextprotocol/servers</code></li><li>MCP Inspector：<code>npx @modelcontextprotocol/inspector</code></li></ul><h2>操作步骤</h2><ol><li>阅读一个社区 MCP Server 的源码（推荐 filesystem server），理解 Tool 和 Resource 的定义方式</li><li>收藏上面的参考链接，配置 MCP Server 时随时查阅</li><li>尝试安装一个社区 MCP Server 到你的 Claude Code 环境中</li></ol><h2>小结</h2><p>这节课是 MCP 协议的参考手册。JSON-RPC 2.0 消息格式、Tool Schema 定义、Error Code、Auth 机制——开发 MCP Server 时随时回来查。重点收藏官方规范文档和社区 Server 列表。</p>",
           "_id": "69db3dc676e3e0c1b3b66d9b"
         },
@@ -1930,10 +1929,6 @@
             {
               "direction": "vibe-coding",
               "slug": "ai-agents-tools"
-            },
-            {
-              "direction": "ai-engineer",
-              "slug": "agent-fundamentals"
             }
           ],
           "learningMaterial": "<h2>学习目标</h2><ul><li>理解 Agentic Workflow：AI 根据观察结果选择下一步，而不是机械执行固定脚本</li><li>掌握 ReAct 模式（Reasoning + Acting）的工作原理</li><li>判断什么任务适合 Agentic Workflow、什么不适合</li></ul><h2>核心概念</h2><h3>传统方式 vs Agentic 方式</h3><pre><code># 传统方式（你指挥每一步）\n你: \"读一下 src/user.ts\"\nAI: [显示文件内容]\n你: \"找到 validateEmail 函数\"\nAI: [显示函数]\n你: \"给它添加手机号验证\"\nAI: [修改代码]\n你: \"跑一下测试\"\nAI: [执行测试]\n\n# Agentic 方式（你给目标，AI 自主执行）\n你: \"给 User 模块添加手机号验证功能，要有测试\"\nAI Agent 自主执行：\n→ 读取 user.ts 理解现有结构\n→ 读取 user.test.ts 了解测试风格\n→ 修改 user.ts 添加验证函数\n→ 更新 user.interface.ts 添加类型\n→ 写测试用例\n→ 跑测试验证通过\n→ 报告完成</code></pre><h3>ReAct 模式</h3><p>ReAct = Reasoning（思考）+ Acting（行动）。Agent 在每一步先思考（\"我需要什么信息？下一步该做什么？\"），再行动（调用 Tool），然后观察结果，再思考下一步。</p><pre><code># ReAct 循环\nThought: 我需要先了解 user.ts 的结构\nAction: Read file src/user.ts\nObservation: [文件内容，已有 validateEmail]\nThought: 已有邮箱验证，我应该用类似模式写手机号验证\nAction: Edit file src/user.ts（添加 validatePhone）\nObservation: 文件已修改\nThought: 需要更新类型定义\nAction: Edit file src/user.interface.ts\n...\nThought: 所有修改完成，跑测试验证\nAction: Run \"npm test\"\nObservation: All tests passed\n→ 任务完成</code></pre><h3>什么适合 / 不适合 Agentic</h3><p>适合 Agentic：多步骤的明确任务（添加功能、重构模块、修复 bug + 测试）、有清晰的完成标准（测试通过、lint 通过）。</p><p>不适合 Agentic：需要创意决策的任务（产品方向选择）、涉及人际沟通的任务（和客户确认需求）、风险高且不可逆的操作（删除生产数据）。</p><h2>动手练习</h2><ol><li>在 Claude Code 中给一个多步任务（如「给项目添加一个新的 API 接口，包含路由、service、测试」），观察 Agent 的执行过程</li><li>记录 Agent 的每一步：思考了什么、调用了什么工具、结果是什么</li><li>列出你工作中 5 个任务，标记适合/不适合 Agentic</li></ol><h2>小结</h2><p>Agentic Workflow 的核心是 ReAct 循环：思考 → 行动 → 观察 → 再思考。Claude Code 本身就是一个 Agent。适合 Agentic 的任务需要有明确目标和可验证的完成标准。</p>",
@@ -1963,15 +1958,33 @@
           "type": "Information",
           "isLive": false,
           "duration": 30,
-          "steps": [],
-          "labs": [],
-          "learns": [
+          "steps": [
             {
-              "direction": "ai-engineer",
-              "slug": "agent-fundamentals"
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "Agent 的核心循环",
+              "description": "感知 → 推理 → 行动 → 观察，直到完成或触发停止",
+              "duration": 12
+            },
+            {
+              "order": 2,
+              "type": "EXERCISE",
+              "title": "判断 Agent 还是 Workflow",
+              "description": "拿一个真实任务判断该用哪种，并写出理由",
+              "duration": 12
+            },
+            {
+              "order": 3,
+              "type": "CHECKLIST",
+              "title": "上 Agent 前自查",
+              "description": "路径是否不可预测、完成/停止条件是否清晰、工具是否齐全",
+              "duration": 6
             }
           ],
-          "_id": "69dc41a476e3e0c1b3c53eec"
+          "labs": [],
+          "learns": [],
+          "_id": "69dc41a476e3e0c1b3c53eec",
+          "learningMaterial": "<h2>学习目标</h2><ul><li>说清楚“Agent”和一次性 Prompt、固定 Workflow 的区别</li><li>理解 Agent 的核心循环：感知 → 推理 → 行动 → 观察</li><li>判断一个任务该用 Agent 还是更简单的方案</li></ul><h2>核心概念</h2><h3>Agent = LLM + 工具 + 循环 + 记忆</h3><p>Agent 不是更聪明的聊天，而是让模型在一个循环里自己决定下一步：读取当前状态 → 决定调用哪个工具 → 执行 → 看结果 → 再决定，直到任务完成或触发停止条件。</p><pre><code>while 未完成 and 未超预算:\n    观察 = 收集当前上下文（文件、报错、上一步结果）\n    计划 = 模型根据观察决定下一个动作\n    结果 = 执行动作（调用工具 / 改代码 / 跑命令）\n    if 满足完成条件: break</code></pre><h3>Agent vs Workflow</h3><ul><li><strong>Workflow</strong>：步骤固定、路径可预测，适合重复任务（补测试、跑 lint）</li><li><strong>Agent</strong>：步骤由模型动态决定，适合路径不确定的任务（debug、迁移、跨模块改造）</li></ul><h3>什么时候不该用 Agent</h3><p>任务步骤固定、可以一次说清、不需要中途看结果再决定——用 Workflow 或单次 Prompt 更快更省更可控。Agent 的自治是有成本的：更慢、更贵、更难复现。</p><h2>课堂练习</h2><ol><li>挑一个你最近做的开发任务，判断它更适合 Agent 还是 Workflow，并说明理由</li><li>为一个 Agent 任务写清“完成条件”和“停止条件”（避免死循环）</li><li>列出这个 Agent 需要哪几个工具，各自负责什么</li></ol><h2>小结</h2><p>Agent 的价值来自“动态决定下一步”，代价是可控性。先问“这个任务的路径可预测吗”——可预测就别上 Agent。用对场景，Agent 才是加速器而不是不可控的黑盒。</p>"
         },
         {
           "code": "L57",
@@ -2108,10 +2121,6 @@
             {
               "direction": "vibe-coding",
               "slug": "claude-code-agents"
-            },
-            {
-              "direction": "ai-engineer",
-              "slug": "agent-tool-use"
             }
           ],
           "learningMaterial": "<h2>学习目标</h2><ul><li>从零搭建一个 AI Agent：定义 System Prompt → 配置 Tools → 设置执行策略 → 端到端测试</li><li>不依赖框架（LangChain/CrewAI），用 Claude Code 原生能力构建 Agent</li><li>完成一个能自主完成端到端任务的 Agent</li></ul><h2>核心概念</h2><h3>Agent 四要素</h3><p>一个完整的 Agent 需要：1）System Prompt（角色和约束）、2）Tools（可以调用的工具）、3）执行策略（最大步数、错误处理）、4）退出条件（什么时候算完成）。</p><h3>用 Claude Code 原生能力构建 Agent</h3><pre><code># .claude/commands/pr-reviewer.md\n\n# System Prompt（角色）\n你是一个高级代码审查员。你的任务是分析 PR 的改动并写出审查意见。\n\n# 可用 Tools（Claude Code 内置）\n- Read: 读取文件\n- Bash: 执行 git diff、git log 等命令\n- Write: 写审查报告\n\n# 执行步骤\n1. 执行 `git diff main...HEAD` 获取所有改动\n2. 按文件逐个分析改动：\n   - 读取被修改的文件完整内容（需要上下文）\n   - 检查：Bug 风险、性能问题、安全隐患、代码风格\n3. 汇总所有问题，按严重程度分类：\n   - 🔴 Must Fix（必须修复）\n   - 🟡 Should Fix（建议修复）\n   - 🟢 Nice to Have（可选优化）\n4. 生成 Markdown 格式的审查报告\n\n# 约束\n- 不要自动修改代码，只审查和建议\n- 每个问题必须指出具体文件和行号\n- 总结部分不超过 500 字\n- 如果改动超过 20 个文件，只审查核心业务逻辑文件</code></pre><h3>执行策略设计</h3><pre><code># 关键决策点：\n\n# 1. 最大步数限制\n# 防止 Agent 无限循环。一般设 20-50 步\n\"如果执行超过 30 步仍未完成，输出中间结果并停止\"\n\n# 2. 错误处理\n\"如果某个文件读取失败，跳过该文件继续其他文件\"\n\"如果 git 命令执行失败，先检查是否在 git 仓库中\"\n\n# 3. 退出条件\n\"当所有被修改的文件都审查完毕，且审查报告已生成，任务完成\"</code></pre><h3>为什么不用框架</h3><p>LangChain/CrewAI 适合构建独立的 Agent 应用。但在 Vibe Coding 场景下，Claude Code 本身就是 Agent 运行时——你只需要定义 Skill（角色 + 步骤 + 工具），Claude Code 负责 ReAct 循环、Tool 调用、错误恢复。额外引入框架反而增加复杂度。</p><h2>操作步骤</h2><ol><li>设计一个 Agent 的完整定义（推荐 PR Reviewer 或 Test Generator）</li><li>在 .claude/commands/ 中实现</li><li>在真实项目中测试：给 Agent 一个端到端任务</li><li>根据执行结果迭代优化 Agent 定义（调整步骤、增加约束）</li></ol><h2>小结</h2><p>Agent = System Prompt + Tools + 执行策略 + 退出条件。Claude Code 已经提供了 Agent 运行时，你只需要定义 Skill。从简单 Agent 开始（如 PR Reviewer），逐步增加复杂度。</p>",
@@ -2124,15 +2133,33 @@
           "type": "Information",
           "isLive": false,
           "duration": 30,
-          "steps": [],
-          "labs": [],
-          "learns": [
+          "steps": [
             {
-              "direction": "ai-engineer",
-              "slug": "agent-tool-use"
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "function calling 闭环",
+              "description": "模型选工具 → 运行时执行 → 结果回填 → 继续推理",
+              "duration": 12
+            },
+            {
+              "order": 2,
+              "type": "EXERCISE",
+              "title": "设计 3 个工具",
+              "description": "写清 description、参数 schema 和危险操作的确认边界",
+              "duration": 12
+            },
+            {
+              "order": 3,
+              "type": "CHECKLIST",
+              "title": "工具健壮性检查",
+              "description": "幂等、可行动错误、危险操作人工确认",
+              "duration": 6
             }
           ],
-          "_id": "69dc41a476e3e0c1b3c53ef8"
+          "labs": [],
+          "learns": [],
+          "_id": "69dc41a476e3e0c1b3c53ef8",
+          "learningMaterial": "<h2>学习目标</h2><ul><li>理解 Agent 是怎么“决定用哪个工具、传什么参数”的</li><li>掌握 function calling 的请求-执行-回填闭环</li><li>为工具设计防错边界，避免 Agent 乱调用或失败后卡死</li></ul><h2>核心概念</h2><h3>工具调用的一个回合</h3><pre><code>1. 模型输出：我要调用 search_docs，参数 {\"q\": \"退款政策\"}\n2. 运行时执行该函数，拿到真实结果\n3. 把结果作为 tool 消息回填给模型\n4. 模型基于结果继续：再调用别的工具，或给出最终答案</code></pre><h3>模型靠什么选工具</h3><ul><li><strong>工具名 + description</strong>：写得越准选得越对；含糊 description 是选错工具的头号原因</li><li><strong>参数 schema</strong>：约束模型只能传合法参数，required 字段一定要标</li><li><strong>数量控制</strong>：工具太多会稀释判断，按场景只给相关工具</li></ul><h3>常见坑</h3><ul><li>工具没做幂等，模型重试时产生重复副作用</li><li>失败只返回 “error”，模型不知道怎么改——要返回可行动的错误信息</li><li>把高风险操作（删除、支付、部署）设成模型可直接调用，缺人工确认</li></ul><h2>课堂练习</h2><ol><li>为一个 Agent 设计 3 个工具，写清各自 description 和参数 schema</li><li>给其中的写操作加一道“执行前确认”边界</li><li>模拟一次工具调用失败，设计让模型能自我修正的错误返回</li></ol><h2>小结</h2><p>Agent 用得好不好，一半在工具设计。把工具当成给模型用的 API：description 清楚、schema 严格、错误可行动、危险操作留人工确认。工具设计到位，Agent 才稳。</p>"
         },
         {
           "code": "L62",
@@ -2171,12 +2198,7 @@
               "slug": "multi-agent"
             }
           ],
-          "learns": [
-            {
-              "direction": "ai-engineer",
-              "slug": "multi-agent-orchestration"
-            }
-          ],
+          "learns": [],
           "learningMaterial": "<h2>学习目标</h2><ul><li>分析 5-10 个 Tool 场景下 Agent 的执行结构</li><li>理解 Tool 调用的顺序依赖、并行 vs 串行、错误恢复策略</li><li>掌握 Token 消耗控制——避免 Agent 因上下文过长而性能下降</li></ul><h2>核心概念</h2><h3>多 Tool 场景的执行结构</h3><p>当 Agent 需要调用 5-10 个 Tool 时，执行结构设计直接影响效率和准确率。</p><pre><code># 场景：从零创建一个 NestJS 模块\n# Agent 需要调用的 Tools：\n\n# Phase 1（串行 — 有依赖）\nTool 1: Read package.json        → 确认技术栈和依赖\nTool 2: Read 已有模块目录结构     → 了解代码规范\n\n# Phase 2（并行 — 无依赖）\nTool 3: Write module.ts          → 模块定义\nTool 4: Write dto/               → DTO 定义\nTool 5: Write interface/         → 接口定义\n\n# Phase 3（串行 — 依赖 Phase 2 结果）\nTool 6: Write service.ts         → 依赖 DTO 和 interface\nTool 7: Write controller.ts      → 依赖 service 和 DTO\n\n# Phase 4（串行 — 依赖 Phase 3 结果）\nTool 8: Write test file           → 依赖 service 和 controller\nTool 9: Run tests                 → 验证代码正确性\nTool 10: Run lint                 → 验证代码风格</code></pre><h3>顺序依赖分析</h3><p>在编排多 Tool 执行前，先画依赖图：</p><pre><code># 依赖图\nread(pkg.json) ──► read(existing module)\n                        │\n              ┌─────────┼──────────┐\n              ▼         ▼          ▼\n          module.ts   dto/     interface/\n              │         │          │\n              └─────────┼──────────┘\n                        ▼\n                   service.ts\n                        │\n                        ▼\n                  controller.ts\n                        │\n                        ▼\n                   test + lint</code></pre><h3>错误恢复策略</h3><pre><code># 策略 1: 重试（适合临时性错误）\n# 如 Bash 命令因网络超时失败 → 重试 2 次\n\n# 策略 2: 回退（适合逻辑错误）\n# 如生成的代码 lint 不通过 → 读取 lint 报告 → 修复 → 重新 lint\n\n# 策略 3: 跳过（适合非关键步骤）\n# 如文档生成失败 → 跳过，不影响核心功能\n\n# 策略 4: 停止并报告（适合严重错误）\n# 如测试失败超过 3 次 → 停止，输出失败分析</code></pre><h3>Token 消耗控制</h3><p>每次 Tool 调用的结果都会进入上下文窗口。10 个 Tool 调用，每个返回 1000 tokens，就占了 10K tokens。控制策略：1）Tool 结果只保留关键信息（「测试全部通过」而不是「完整测试输出」）；2）分阶段清理上下文（Phase 完成后总结结果，丢弃中间细节）；3）限制单次 Tool 输出长度。</p><h2>动手练习</h2><ol><li>选一个需要多个 Tool 的任务，画出 Tool 依赖图，标注哪些可以并行</li><li>在 Claude Code 中执行这个任务，观察 Agent 的实际执行顺序和你画的依赖图是否一致</li><li>故意制造一个中间步骤的错误，观察 Agent 的恢复行为</li></ol><h2>小结</h2><p>多 Tool 编排的关键：画依赖图确定串行/并行、每个失败点设计恢复策略、控制 Token 消耗避免上下文膨胀。Agent 效率 = 正确的执行顺序 + 高效的错误恢复 + 精简的上下文管理。</p>",
           "_id": "69db3dc776e3e0c1b3b66dd0"
         },
@@ -2187,15 +2209,33 @@
           "type": "Information",
           "isLive": false,
           "duration": 30,
-          "steps": [],
-          "labs": [],
-          "learns": [
+          "steps": [
             {
-              "direction": "ai-engineer",
-              "slug": "multi-agent-orchestration"
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "编排者 + 工作者模式",
+              "description": "Orchestrator 拆分分派汇总，Workers 专职执行",
+              "duration": 12
+            },
+            {
+              "order": 2,
+              "type": "EXERCISE",
+              "title": "给复杂任务做分工",
+              "description": "画出 Agent 分工、标出并行/串行、设计汇总",
+              "duration": 12
+            },
+            {
+              "order": 3,
+              "type": "CHECKLIST",
+              "title": "该不该上多 Agent",
+              "description": "子任务能否独立、是否需并行、成本是否划算",
+              "duration": 6
             }
           ],
-          "_id": "69dc41a576e3e0c1b3c53efc"
+          "labs": [],
+          "learns": [],
+          "_id": "69dc41a576e3e0c1b3c53efc",
+          "learningMaterial": "<h2>学习目标</h2><ul><li>理解 Orchestrator + Workers（编排者 + 工作者）这种多 Agent 模式</li><li>判断什么任务值得上多 Agent，什么时候单 Agent 更好</li><li>设计 Agent 之间的分工、交接和结果汇总</li></ul><h2>核心概念</h2><h3>编排者 + 工作者</h3><pre><code>用户任务\n   ↓\n编排者 Orchestrator（拆任务、分派、汇总）\n   ├── 工作者 A：检索资料\n   ├── 工作者 B：写代码 / 生成内容\n   └── 工作者 C：审查 / 事实核查\n   ↓\n编排者整合各工作者产出 → 交付</code></pre><h3>为什么要拆成多个 Agent</h3><ul><li><strong>上下文隔离</strong>：每个工作者只带自己那块上下文，不互相污染</li><li><strong>专职专用</strong>：写代码的 Agent 和审查的 Agent 用不同 system prompt、不同工具</li><li><strong>可并行</strong>：互不依赖的子任务同时跑，缩短总时长</li></ul><h3>代价与取舍</h3><p>多 Agent 不是越多越好。每多一个 Agent 就多一份 token 成本、一层协调复杂度和一个出错点。子任务耦合紧、必须共享大量上下文时，单 Agent 反而更快更省。先问：这些子任务能独立完成吗？</p><h2>课堂练习</h2><ol><li>挑一个复杂任务（如“调研+写方案+审校”），画出编排者和工作者的分工</li><li>标出哪些工作者可以并行、哪些必须串行</li><li>设计编排者如何汇总产出、如何处理某个工作者失败</li></ol><h2>小结</h2><p>多 Agent 的价值是上下文隔离 + 专职分工 + 并行，代价是成本和协调复杂度。任务能干净拆分、子任务相对独立时才划算。拆不干净，就别硬拆。</p>"
         },
         {
           "code": "L64",
@@ -2360,12 +2400,7 @@
             }
           ],
           "labs": [],
-          "learns": [
-            {
-              "direction": "vibe-coding",
-              "slug": "model-routing-2026"
-            }
-          ],
+          "learns": [],
           "learningMaterial": "<h2>学习目标</h2><ul><li>用 2026 年的新模型格局重新理解 AI Coding 选型</li><li>区分 Claude、Codex、GPT-5.5、GPT-5.4 mini/nano 在真实开发任务里的分工</li><li>把“模型对比”落成团队可执行的模型路由规则，而不是停留在榜单排名</li></ul><h2>截至 2026-06-28 的选型判断</h2><p>AI Coding 选型先看任务形态，不先看模型名字。复杂判断、长上下文、跨模块规划，优先 Claude；本地仓库修改、跑命令、修测试，优先 Codex；API 工作流里的复杂 reasoning + coding，优先 GPT-5.5；大批量低风险任务，用 GPT-5.4 mini/nano 控制成本。Gemini 可作为多模态或 Google 生态补充，但不作为这门课的主线工具。</p><h3>模型路由表</h3><table><tr><th>任务</th><th>优先工具</th><th>原因</th></tr><tr><td>复杂架构拆解、PRD 到模块设计</td><td>Claude Fable 5 / Claude Opus 4.8</td><td>适合复杂推理、长上下文和高自治 agentic coding</td></tr><tr><td>在现有 repo 里改代码、跑测试、迭代到通过</td><td>Codex</td><td>贴近本地工作区，适合小步 diff、命令执行和 PR 级交付</td></tr><tr><td>API 自动化生成、结构化 coding 工作流</td><td>GPT-5.5</td><td>适合复杂 reasoning + coding，并能接函数、文件搜索、web search、computer use 等工具</td></tr><tr><td>批量生成测试、文档草稿、低风险重写</td><td>GPT-5.4 mini / nano</td><td>延迟和成本更适合批量任务</td></tr><tr><td>Google 生态或特定多模态实验</td><td>Gemini（可选）</td><td>只作为补充工具，不进入课程主线</td></tr></table><h2>练习</h2><ol><li>列出你项目里的 10 类 AI Coding 任务：需求分析、接口开发、测试补齐、Bug 修复、Code Review、文档生成等。</li><li>给每类任务标注首选工具、备用工具、不能自动执行的边界。</li><li>选一个真实任务分别用 Claude 和 Codex 执行，记录：上下文准备时间、改动大小、测试结果、返工次数。</li><li>把结论整理成团队模型路由清单，后续写进 CLAUDE.md / AGENTS.md / Codex instructions。</li></ol><h2>小结</h2><p>新模型发布后，课程不应该教固定榜单，而应该教模型路由。强模型负责高风险判断，执行型工具负责本地验证，便宜模型负责低风险批量工作。选型清楚，比盲目追最新模型更能降低返工率。</p>",
           "_id": "69db3dc776e3e0c1b3b66dea"
         },
