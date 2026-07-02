@@ -1,6 +1,6 @@
 ---
 title: OPC 企业席位（第二位员工 8 折）对外落地 Rollout PRD
-status: spec
+status: build
 owner: @lightman
 priority: medium
 ---
@@ -37,6 +37,8 @@ priority: medium
 ## 3. 分期方案（先文案后逻辑，别一上来啃后端）
 
 把「能不能自助下单第二席」和「对外讲不讲这个政策」解耦。**先让政策可见、靠运营兜底成交；再上自助。**
+
+> **P0 进度（2026-07-02）**：✅ 已完成 — #1 landing.html（pricing 区企业席位块 + FAQ teaser + 修正 FAQ 计数 19→15）、curriculum.html（完整 FAQ 第 15 条）、#2 content.ts（FAQ 第 6 条）、#3 zh/en i18n（`pricing.enterprise*` 6 keys + faq[5]）、销售页渲染块（`PriceEnterprise` styled comps，PricingGrid 与 PriceAnchor 之间）。type-check 我改文件 0 错（172 个存量错误与本次无关，stash 前后对比验证）。#6 hundun 未动（等渠道确认要不要主打）。**待部署**：curriculum push 即自动部署；web-zh 需触发 Deploy Production workflow。P1/P2 未动。
 
 ### P0 · 文案先行（无需改后端，1 天内可上）
 
