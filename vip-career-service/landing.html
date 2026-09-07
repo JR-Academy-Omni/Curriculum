@@ -4,154 +4,301 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>VIP就业陪跑服务｜匠人学院</title>
-  <meta name="description" content="固定12个月，覆盖系统学习、真实项目、工作经验背书、求职内推与入职辅导的VIP就业陪跑服务。">
+  <title>VIP全栈工程师培养与就业陪跑｜匠人学院</title>
+  <meta name="description" content="12个月VIP全栈工程师培养与就业陪跑：9个月产品工程实践，3个月求职冲刺，由Tech Lead持续指导。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#10162f; --paper:#fff8f2; --white:#fff; --red:#ff5757; --yellow:#ffde59; --violet:#6d5ef7; --muted:#606579; }
+    :root {
+      --ink:#17182f;
+      --paper:#fffcf6;
+      --white:#fff;
+      --coral:#fb6a4a;
+      --orange:#ff7a4d;
+      --pink:#ff4f8f;
+      --violet:#9b6bff;
+      --purple:#7b61e8;
+      --green:#34a878;
+      --blue:#3e8ee0;
+      --amber:#eaa52d;
+      --muted:#626579;
+      --border:#f1e8d8;
+      --peach:#fff3eb;
+      --lav:#f4f0fc;
+      --sky:#edf4fa;
+      --mint:#edf7f0;
+      --shadow:0 2px 6px rgba(28,27,34,.05),0 16px 38px rgba(28,27,34,.09);
+      --shadow-hover:0 5px 12px rgba(28,27,34,.08),0 24px 52px rgba(28,27,34,.13);
+    }
     * { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
     body { font-family:"DM Sans","Noto Sans SC",sans-serif; background:var(--paper); color:var(--ink); line-height:1.7; }
     a { color:inherit; }
-    .container { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
-    .nav { padding:22px 0; display:flex; justify-content:space-between; align-items:center; gap:20px; }
-    .brand { font-family:"Bricolage Grotesque","Noto Sans SC",sans-serif; font-weight:900; font-size:20px; text-decoration:none; }
-    .back { font-family:"Space Mono",monospace; font-size:12px; font-weight:700; text-underline-offset:4px; }
-    .hero { padding:72px 0 88px; position:relative; overflow:hidden; border-top:3px solid var(--ink); border-bottom:3px solid var(--ink); background:linear-gradient(135deg,#10162f 0%,#24205e 58%,#6d3154 100%); color:white; }
-    .hero:after { content:"12"; position:absolute; right:-30px; bottom:-150px; font:900 420px/1 "Bricolage Grotesque",sans-serif; color:rgba(255,255,255,.045); }
-    .eyebrow { display:inline-block; padding:7px 12px; background:var(--yellow); color:var(--ink); border:2px solid var(--ink); font:700 12px/1.2 "Space Mono",monospace; letter-spacing:1px; margin-bottom:28px; }
-    h1,h2,h3 { font-family:"Bricolage Grotesque","Noto Sans SC",sans-serif; line-height:1.12; }
-    h1 { font-size:clamp(48px,8vw,88px); letter-spacing:-3px; max-width:850px; }
-    .hero-lead { font-size:clamp(18px,2.5vw,24px); max-width:760px; margin:26px 0 34px; color:#e9e8f2; }
-    .hero-pills { display:flex; flex-wrap:wrap; gap:10px; position:relative; z-index:1; }
-    .hero-pills span { border:1px solid rgba(255,255,255,.35); padding:8px 12px; font-size:13px; background:rgba(255,255,255,.08); }
-    .hero-cta { display:inline-block; margin-top:36px; background:var(--red); color:white; border:3px solid white; box-shadow:6px 6px 0 white; padding:14px 22px; font-weight:900; text-decoration:none; position:relative; z-index:1; }
-    .outcome-bar { display:grid; grid-template-columns:repeat(3,1fr); background:white; color:var(--ink); border:3px solid var(--ink); box-shadow:10px 10px 0 var(--red); margin-top:-34px; position:relative; z-index:2; }
+    .container { width:min(1200px,calc(100% - 48px)); margin:0 auto; }
+    .nav { min-height:72px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .brand { font-weight:900; font-size:20px; text-decoration:none; }
+    .back { font-size:13px; font-weight:700; text-decoration:none; color:var(--muted); }
+    .back:hover { color:var(--coral); }
+    h1,h2,h3 { font-family:"Noto Sans SC","DM Sans",sans-serif; line-height:1.16; }
+    h2 { font-size:clamp(32px,4.5vw,50px); letter-spacing:-1.2px; max-width:850px; margin-bottom:20px; }
+    .hero { padding:72px 0 82px; position:relative; overflow:hidden; background:linear-gradient(145deg,#fff8ef 0%,#fffdf8 52%,#f5efff 100%); }
+    .hero:before,.hero:after { content:""; position:absolute; border-radius:50%; filter:blur(3px); pointer-events:none; }
+    .hero:before { width:520px; height:520px; right:-130px; top:-210px; background:radial-gradient(circle,rgba(155,107,255,.3),rgba(255,79,143,.16) 46%,transparent 70%); }
+    .hero:after { width:380px; height:380px; right:18%; bottom:-250px; background:radial-gradient(circle,rgba(255,122,77,.2),transparent 68%); }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1.22fr) minmax(300px,.78fr); gap:52px; align-items:center; position:relative; z-index:1; }
+    .eyebrow,.section-label { display:inline-flex; align-items:center; gap:8px; font:700 12px/1.2 "Space Mono",monospace; letter-spacing:1.2px; color:var(--purple); }
+    .eyebrow { padding:9px 14px; border:1px solid rgba(123,97,232,.18); border-radius:999px; background:rgba(255,255,255,.8); box-shadow:0 8px 26px rgba(123,97,232,.1); margin-bottom:25px; }
+    .eyebrow:before,.section-label:before { content:""; width:8px; height:8px; border-radius:50%; background:linear-gradient(135deg,var(--orange),var(--pink),var(--violet)); }
+    h1 { font-size:clamp(46px,6.6vw,78px); letter-spacing:-3px; max-width:860px; }
+    .gradient-text { background:linear-gradient(100deg,var(--orange),var(--pink),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero-lead { font-size:clamp(18px,2vw,22px); max-width:770px; margin:25px 0 28px; color:#45475c; }
+    .hero-pills { display:flex; flex-wrap:wrap; gap:10px; }
+    .hero-pills span { border:1px solid var(--border); border-radius:999px; padding:8px 12px; font-size:13px; font-weight:700; background:rgba(255,255,255,.88); }
+    .button-row { display:flex; flex-wrap:wrap; gap:13px; margin-top:31px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 20px; border-radius:999px; font-weight:800; text-decoration:none; transition:transform .2s ease,box-shadow .2s ease; }
+    .btn:hover { transform:translateY(-3px); }
+    .btn-primary { background:linear-gradient(100deg,var(--orange),#f2542e 60%,var(--pink)); color:white; box-shadow:0 10px 28px rgba(242,84,46,.26); }
+    .btn-secondary { background:white; border:1px solid var(--border); box-shadow:var(--shadow); }
+    .hero-panel { padding:28px; border:1px solid rgba(255,255,255,.75); border-radius:28px; background:rgba(255,255,255,.76); backdrop-filter:blur(14px); box-shadow:var(--shadow); }
+    .hero-panel-label { font:700 11px/1.2 "Space Mono",monospace; letter-spacing:1px; color:var(--coral); }
+    .route-step { display:grid; grid-template-columns:48px 1fr; gap:14px; padding:18px 0; border-bottom:1px solid var(--border); }
+    .route-step:last-child { border-bottom:0; padding-bottom:0; }
+    .route-num { width:48px; height:48px; display:grid; place-items:center; border-radius:16px; color:white; font:800 14px/1 "Inter",sans-serif; }
+    .route-step:nth-child(2) .route-num { background:linear-gradient(135deg,var(--orange),var(--pink)); }
+    .route-step:nth-child(3) .route-num { background:linear-gradient(135deg,var(--pink),var(--violet)); }
+    .route-step:nth-child(4) .route-num { background:linear-gradient(135deg,var(--violet),var(--blue)); }
+    .route-step strong { display:block; font-size:17px; margin-bottom:2px; }
+    .route-step p { color:var(--muted); font-size:13px; line-height:1.5; }
+    .outcome-wrap { position:relative; z-index:2; margin-top:-28px; }
+    .outcome-bar { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); border-radius:24px; background:white; box-shadow:var(--shadow); overflow:hidden; }
     .outcome { padding:25px 28px; }
-    .outcome + .outcome { border-left:2px solid var(--ink); }
-    .outcome small { font:700 11px/1 "Space Mono",monospace; letter-spacing:1px; color:var(--red); }
-    .outcome h3 { font-size:22px; margin:8px 0 5px; }
+    .outcome + .outcome { border-left:1px solid var(--border); }
+    .outcome small { font:700 11px/1 "Space Mono",monospace; letter-spacing:1px; color:var(--coral); }
+    .outcome h3 { font-size:21px; margin:8px 0 5px; }
     .outcome p { color:var(--muted); font-size:13px; }
-    section { padding:82px 0; }
-    .section-label { font:700 12px/1 "Space Mono",monospace; letter-spacing:2px; color:var(--red); margin-bottom:14px; }
-    h2 { font-size:clamp(34px,5vw,54px); letter-spacing:-1.5px; max-width:800px; margin-bottom:22px; }
-    .intro { color:var(--muted); max-width:760px; font-size:17px; }
-    .promise-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:42px; }
-    .promise { background:white; border:3px solid var(--ink); box-shadow:6px 6px 0 var(--ink); padding:24px; }
-    .promise b { display:block; font:900 34px/1 "Bricolage Grotesque",sans-serif; color:var(--violet); margin-bottom:12px; }
-    .promise p { font-size:14px; color:var(--muted); }
-    .dark { background:var(--ink); color:white; }
-    .timeline { display:grid; grid-template-columns:repeat(12,1fr); gap:8px; margin-top:42px; }
-    .month { grid-column:span 6; border:2px solid white; padding:28px; min-height:210px; }
-    .month:first-child { background:var(--violet); }
-    .month:nth-child(2) { background:var(--red); }
-    .month small { font:700 12px/1 "Space Mono",monospace; letter-spacing:1px; }
-    .month h3 { font-size:30px; margin:14px 0 12px; }
-    .month ul { padding-left:18px; color:#f4f2ff; font-size:14px; }
-    .overlap { grid-column:span 12; display:grid; grid-template-columns:1fr 1fr; border:2px solid white; }
-    .overlap > div { padding:26px; }
-    .overlap > div + div { border-left:2px solid white; }
-    .overlap strong { display:block; font-size:18px; margin-bottom:7px; }
-    .overlap p { font-size:14px; color:#d9dbea; }
-    .owner { display:grid; grid-template-columns:.85fr 1.15fr; gap:48px; align-items:start; }
-    .owner-card { background:var(--yellow); border:3px solid var(--ink); box-shadow:10px 10px 0 var(--ink); padding:34px; }
-    .owner-card .name { font-size:38px; font-weight:900; margin-bottom:10px; }
-    .credential { display:flex; align-items:flex-start; gap:16px; padding:18px 0; border-bottom:2px solid var(--ink); }
-    .credential:last-child { border-bottom:0; }
-    .credential b { flex:0 0 80px; font:900 24px/1 "Bricolage Grotesque",sans-serif; }
-    .credential span { font-size:14px; font-weight:700; line-height:1.45; }
-    .owner-list { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .owner-list div { background:white; border:2px solid var(--ink); padding:16px; font-weight:700; font-size:14px; }
-    .proof { background:#edeaff; }
-    .proof-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:30px; margin-top:36px; }
-    .proof-box { background:white; border:3px solid var(--ink); padding:30px; }
-    .proof-box h3 { font-size:25px; margin-bottom:18px; }
+    section { padding:88px 0; position:relative; }
+    .section-label { margin-bottom:16px; }
+    .intro { color:var(--muted); max-width:780px; font-size:17px; }
+    .problem { background:linear-gradient(180deg,var(--paper),var(--peach)); }
+    .problem-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:38px; }
+    .problem-card,.compare-card,.phase,.flow-step,.asset-card { border:1px solid var(--border); background:white; box-shadow:var(--shadow); transition:transform .22s ease,box-shadow .22s ease; }
+    .problem-card:hover,.phase:hover,.asset-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-hover); }
+    .problem-card { border-radius:22px; padding:24px; }
+    .problem-card b { display:grid; place-items:center; width:38px; height:38px; border-radius:13px; background:var(--peach); color:var(--coral); font:800 13px/1 "Inter",sans-serif; margin-bottom:17px; }
+    .problem-card h3 { font-size:19px; margin-bottom:8px; }
+    .problem-card p { color:var(--muted); font-size:14px; }
+    .section-callout { margin-top:25px; padding:18px 22px; border-left:4px solid var(--coral); border-radius:0 18px 18px 0; background:white; color:#404257; font-weight:700; }
+    .compare { background:var(--lav); }
+    .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:38px; }
+    .compare-card { border-radius:26px; padding:30px; }
+    .compare-card.featured { border-color:rgba(123,97,232,.25); background:linear-gradient(145deg,#fff,#fbf8ff); }
+    .compare-card h3 { font-size:24px; margin-bottom:20px; }
+    .compare-list { display:grid; gap:12px; }
+    .compare-row { display:grid; grid-template-columns:30px 1fr; gap:11px; align-items:start; padding-bottom:12px; border-bottom:1px solid var(--border); }
+    .compare-row:last-child { border-bottom:0; padding-bottom:0; }
+    .compare-mark { width:26px; height:26px; display:grid; place-items:center; border-radius:9px; background:#f1f2f5; color:#777a88; font-weight:900; }
+    .featured .compare-mark { background:var(--mint); color:var(--green); }
+    .compare-row strong { display:block; margin-bottom:2px; }
+    .compare-row span { color:var(--muted); font-size:13px; }
+    .roadmap { background:var(--ink); color:white; overflow:hidden; }
+    .roadmap:after { content:""; position:absolute; width:500px; height:500px; right:-250px; top:110px; border-radius:50%; background:radial-gradient(circle,rgba(155,107,255,.2),transparent 67%); }
+    .roadmap .intro { color:#c9cad5; }
+    .phase-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:40px; position:relative; z-index:1; }
+    .phase { border-color:rgba(255,255,255,.12); border-radius:22px; padding:25px; color:var(--ink); }
+    .phase:nth-child(1),.phase:nth-child(4) { background:#fff5ed; }
+    .phase:nth-child(2),.phase:nth-child(5) { background:#f5f1ff; }
+    .phase:nth-child(3),.phase:nth-child(6) { background:#edf5fb; }
+    .phase small { font:700 11px/1.2 "Space Mono",monospace; color:var(--purple); letter-spacing:.8px; }
+    .phase h3 { font-size:21px; margin:11px 0 12px; }
+    .phase ul { padding-left:18px; color:#4e5061; font-size:14px; }
+    .phase li + li { margin-top:5px; }
+    .roadmap-note { margin-top:22px; color:#c9cad5; font-size:13px; position:relative; z-index:1; }
+    .workflow { background:var(--sky); }
+    .flow { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:42px; }
+    .flow-step { position:relative; border-radius:20px; padding:22px 18px; min-height:152px; }
+    .flow-step:not(:last-child):after { content:"→"; position:absolute; right:-19px; top:54px; z-index:2; width:26px; height:26px; display:grid; place-items:center; border-radius:50%; background:var(--ink); color:white; font-weight:800; }
+    .flow-step small { font:700 11px/1 "Space Mono",monospace; color:var(--coral); }
+    .flow-step h3 { font-size:18px; margin:12px 0 8px; }
+    .flow-step p { color:var(--muted); font-size:13px; line-height:1.55; }
+    .owner { display:grid; grid-template-columns:.9fr 1.1fr; gap:48px; align-items:start; }
+    .owner-card { border:1px solid rgba(123,97,232,.18); border-radius:28px; background:linear-gradient(145deg,#fff,var(--lav)); box-shadow:var(--shadow); padding:34px; }
+    .owner-card .name { font-size:30px; font-weight:900; margin-bottom:10px; }
+    .credential { display:flex; align-items:flex-start; gap:16px; padding:17px 0; border-bottom:1px solid var(--border); }
+    .credential:last-of-type { border-bottom:0; }
+    .credential b { flex:0 0 74px; font:800 20px/1.2 "Inter",sans-serif; color:var(--purple); }
+    .credential span { font-size:14px; font-weight:700; line-height:1.5; }
+    .lead-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px; }
+    .lead-actions div { border:1px solid var(--border); border-radius:14px; background:white; padding:13px; font-weight:700; font-size:13px; }
+    .assets { background:var(--mint); }
+    .asset-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:38px; }
+    .asset-card { border-radius:20px; padding:21px; }
+    .asset-card b { display:block; color:var(--green); font:800 12px/1 "Space Mono",monospace; margin-bottom:12px; }
+    .asset-card h3 { font-size:17px; margin-bottom:7px; }
+    .asset-card p { color:var(--muted); font-size:13px; }
+    .proof-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:22px; margin-top:36px; }
+    .proof-box { background:white; border:1px solid var(--border); border-radius:24px; box-shadow:var(--shadow); padding:30px; }
+    .proof-box h3 { font-size:23px; margin-bottom:18px; }
     .proof-box ul { padding-left:20px; }
-    .proof-box li { margin:9px 0; }
-    .proof-box.caution { background:#fff5d1; }
+    .proof-box li { margin:8px 0; }
+    .proof-box.caution { background:#fff9e8; }
     .fit-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:38px; }
-    .fit { border:3px solid var(--ink); padding:30px; background:white; }
-    .fit.no { background:#f1f2f6; }
-    .fit h3 { font-size:25px; margin-bottom:16px; }
+    .fit { border:1px solid var(--border); border-radius:24px; padding:30px; background:white; box-shadow:var(--shadow); }
+    .fit.no { background:#f6f6f8; }
+    .fit h3 { font-size:23px; margin-bottom:16px; }
     .fit ul { padding-left:20px; }
-    .boundary { border:3px solid var(--ink); background:white; padding:34px; margin-top:42px; box-shadow:8px 8px 0 var(--red); }
-    .boundary h3 { font-size:27px; margin-bottom:12px; }
-    .apply { text-align:center; background:var(--yellow); border-top:3px solid var(--ink); }
-    .apply h2 { margin-left:auto; margin-right:auto; }
-    .apply p { max-width:660px; margin:0 auto 28px; }
-    .apply-note { display:inline-block; background:var(--ink); color:white; padding:13px 18px; font-weight:700; }
-    footer { background:var(--ink); color:#bfc3d4; padding:28px 0; font-size:12px; }
-    @media (max-width:800px) {
-      .promise-grid { grid-template-columns:1fr 1fr; }
-      .outcome-bar { grid-template-columns:1fr; }
-      .outcome + .outcome { border-left:0; border-top:2px solid var(--ink); }
-      .owner,.proof-grid { grid-template-columns:1fr; }
-      .owner-list { grid-template-columns:1fr; }
-      .hero { padding:54px 0 68px; }
-      h1 { letter-spacing:-1.5px; }
+    .boundary { border:1px solid #f2dccf; border-radius:22px; background:var(--peach); padding:28px; margin-top:28px; }
+    .boundary h3 { font-size:22px; margin-bottom:9px; }
+    .apply { background:linear-gradient(125deg,#fff1e7,#f8efff); text-align:center; }
+    .apply h2,.apply .intro { margin-left:auto; margin-right:auto; }
+    .apply .intro { margin-bottom:30px; }
+    .apply-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:980px; margin:0 auto 30px; text-align:left; }
+    .apply-step { border:1px solid rgba(123,97,232,.16); border-radius:20px; padding:20px; background:rgba(255,255,255,.86); box-shadow:var(--shadow); }
+    .apply-step b { display:block; color:var(--purple); font:800 12px/1 "Inter",sans-serif; margin-bottom:9px; }
+    .apply-step strong { display:block; margin-bottom:5px; }
+    .apply-step p { color:var(--muted); font-size:13px; }
+    .apply .button-row { justify-content:center; }
+    .apply-note { margin-top:18px; color:var(--muted); font-size:13px; }
+    footer { background:var(--ink); color:#c9cad5; padding:30px 0; font-size:12px; }
+    footer a { color:white; }
+    @media (max-width:980px) {
+      .hero-grid { grid-template-columns:1fr; }
+      .hero-panel { max-width:720px; }
+      .problem-grid { grid-template-columns:1fr 1fr; }
+      .phase-grid { grid-template-columns:1fr 1fr; }
+      .flow { grid-template-columns:1fr 1fr; }
+      .flow-step:not(:last-child):after { display:none; }
+      .asset-grid { grid-template-columns:repeat(2,1fr); }
+      .apply-steps { grid-template-columns:1fr 1fr; }
     }
-    @media (max-width:560px) {
-      .container { width:min(100% - 28px,1120px); }
-      section { padding:60px 0; }
-      .promise-grid,.fit-grid { grid-template-columns:1fr; }
-      .month { grid-column:span 12; }
-      .overlap { grid-template-columns:1fr; }
-      .overlap > div + div { border-left:0; border-top:2px solid white; }
-      .hero:after { display:none; }
+    @media (max-width:760px) {
+      .container { width:min(100% - 32px,1200px); }
+      .nav { min-height:62px; }
+      .hero { padding:48px 0 68px; }
+      .hero-panel { display:none; }
+      h1 { letter-spacing:-1.8px; }
+      section { padding:66px 0; }
+      .outcome-bar,.compare-grid,.owner,.proof-grid,.fit-grid { grid-template-columns:1fr; }
+      .outcome + .outcome { border-left:0; border-top:1px solid var(--border); }
+      .phase-grid,.problem-grid,.flow,.asset-grid,.apply-steps { grid-template-columns:1fr; }
+      .flow-step { min-height:auto; }
+      .lead-actions { grid-template-columns:1fr; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *,*:before,*:after { transition:none!important; }
     }
   </style>
 </head>
 <body>
+  <!-- surface: course-recruitment-landing · brand: jr-academy · register: A · facts: teacher P3 12-month framework -->
   <nav class="container nav">
     <a class="brand" href="../posters.html">匠人学院</a>
-    <a class="back" href="../posters.html">← 返回课程中心</a>
+    <a class="back" href="../posters.html">返回课程中心 →</a>
   </nav>
 
   <header class="hero">
-    <div class="container">
-      <div class="eyebrow">VIP CAREER SERVICE · 申请制 · 限额招生</div>
-      <h1>VIP就业<br>陪跑服务</h1>
-      <p class="hero-lead">用12个月补齐能力、项目经验和求职竞争力。你不只是在学一套课程，还将完成真实项目实践，获得12个月工作经验背书，并由老师亲自陪你走过求职与入职的关键阶段。</p>
-      <div class="hero-pills">
-        <span>前6个月 · 系统学习</span><span>后6个月 · 求职内推</span><span>服务期内 · 最多3个月入职辅导</span><span>12个月工作经验背书</span>
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">VIP CAREER SERVICE · 申请制 · 限额培养</div>
+        <h1>VIP全栈工程师<br><span class="gradient-text">培养与就业陪跑</span></h1>
+        <p class="hero-lead">用9个月参与产品工程实践，再用3个月把项目经历转化为简历、面试和求职竞争力。你不只学习技术，还会经历Sprint、Pull Request、Code Review、CI/CD与生产部署。</p>
+        <div class="hero-pills">
+          <span>12个月固定周期</span><span>9个月产品工程实践</span><span>3个月求职冲刺</span><span>Tech Lead持续指导</span>
+        </div>
+        <div class="button-row">
+          <a class="btn btn-primary" href="#apply">申请1对1路线评估 →</a>
+          <a class="btn btn-secondary" href="#roadmap">查看12个月路线</a>
+        </div>
       </div>
-      <a class="hero-cta" href="#apply">了解申请方式 ↓</a>
+      <aside class="hero-panel" aria-label="12个月培养路径概览">
+        <div class="hero-panel-label">YOUR 12-MONTH ROUTE</div>
+        <div class="route-step"><span class="route-num">01</span><div><strong>进入工程工作流</strong><p>从产品问题、开发管道到第一个上线闭环</p></div></div>
+        <div class="route-step"><span class="route-num">02</span><div><strong>参与产品0→1与迭代</strong><p>在Sprint中交付功能，沉淀工程记录</p></div></div>
+        <div class="route-step"><span class="route-num">03</span><div><strong>转化为求职竞争力</strong><p>简历、面试、系统设计与Offer决策支持</p></div></div>
+      </aside>
     </div>
   </header>
 
-  <div class="container outcome-bar">
-    <div class="outcome"><small>01 · 能力</small><h3>达到岗位要求</h3><p>围绕目标岗位制定学习路线，把知识真正变成可以交付的能力。</p></div>
-    <div class="outcome"><small>02 · 经验</small><h3>12个月工作经验背书</h3><p>通过真实项目积累可展示、可讲述、可核验的工作成果与经历。</p></div>
-    <div class="outcome"><small>03 · 就业</small><h3>从投递陪到入职</h3><p>覆盖简历、岗位、内推、面试复盘，以及服务期内的入职适应。</p></div>
+  <div class="container outcome-wrap">
+    <div class="outcome-bar">
+      <div class="outcome"><small>01 · 能力</small><h3>从会写代码到能交付</h3><p>围绕产品目标拆任务、开发、验证并完成上线闭环。</p></div>
+      <div class="outcome"><small>02 · 记录</small><h3>留下可追溯的工程资产</h3><p>持续积累PR、Review、部署、技术决策和项目成果。</p></div>
+      <div class="outcome"><small>03 · 求职</small><h3>让经历变成面试弹药</h3><p>从真实工程记录中提炼简历项目和面试案例。</p></div>
+    </div>
   </div>
 
-  <section>
+  <section class="problem">
     <div class="container">
-      <div class="section-label">01 · 这是什么</div>
-      <h2>不是多位老师接力，<br>而是一个人对结果全程负责</h2>
-      <p class="intro">从能力判断、学习路线和项目任务，到简历、岗位、面试与入职后的实际问题，始终由同一位老师持续跟进。老师了解你的目标、优势和短板，每一次调整都建立在此前的真实进展之上。</p>
-      <div class="promise-grid">
-        <div class="promise"><b>12</b><h3>个月固定周期</h3><p>全部服务在约定周期内完成，届满结束，不自动延期。</p></div>
-        <div class="promise"><b>6+6</b><h3>学习 × 求职</h3><p>先建立可就业能力，再进入集中求职与内推阶段。</p></div>
-        <div class="promise"><b>1</b><h3>位老师全程负责</h3><p>老师本人负责规划、指导、复盘与每个阶段的关键决策。</p></div>
-        <div class="promise"><b>限额</b><h3>申请制招生</h3><p>控制服务人数，让每位学员得到持续而完整的关注。</p></div>
+      <div class="section-label">01 · 为什么需要这12个月</div>
+      <h2>真正的差距，通常不是少学了一个框架</h2>
+      <p class="intro">很多人会写页面、会调用API，却没有经历过一个功能如何在团队中被拆解、Review、上线和验证。面试时，技术栈列了很多，真正属于自己的工程故事却很少。</p>
+      <div class="problem-grid">
+        <article class="problem-card"><b>01</b><h3>项目停在本地</h3><p>做过课程作业，却没有完整走过测试、部署和生产验证。</p></article>
+        <article class="problem-card"><b>02</b><h3>缺少团队协作</h3><p>代码自己写、自己看，不熟悉PR、Review和分支协作。</p></article>
+        <article class="problem-card"><b>03</b><h3>说不清为什么</h3><p>知道怎么实现，却难以解释技术选择、取舍和风险。</p></article>
+        <article class="problem-card"><b>04</b><h3>面试没有素材</h3><p>背过STAR模板，却缺少真实问题、决策和结果作支撑。</p></article>
+      </div>
+      <div class="section-callout">P3不以“听完多少课”判断进度，而是看你在每个Sprint交付了什么、如何验证，以及为什么这样做。</div>
+    </div>
+  </section>
+
+  <section class="compare">
+    <div class="container">
+      <div class="section-label">02 · P3有什么不同</div>
+      <h2>不是把作业交给老师，而是把功能交付给产品</h2>
+      <p class="intro">产品目标决定任务，工程标准决定是否完成。导师以Tech Lead的方式参与关键节点，让学习发生在真实的工程动作里。</p>
+      <div class="compare-grid">
+        <article class="compare-card">
+          <h3>普通项目课</h3>
+          <div class="compare-list">
+            <div class="compare-row"><span class="compare-mark">–</span><div><strong>按课程表学习</strong><span>知识点决定下一步做什么</span></div></div>
+            <div class="compare-row"><span class="compare-mark">–</span><div><strong>提交统一作业</strong><span>本地运行通常就是完成</span></div></div>
+            <div class="compare-row"><span class="compare-mark">–</span><div><strong>老师给出答案</strong><span>重点是功能有没有写出来</span></div></div>
+            <div class="compare-row"><span class="compare-mark">–</span><div><strong>求职前再包装</strong><span>临近面试才整理项目故事</span></div></div>
+          </div>
+        </article>
+        <article class="compare-card featured">
+          <h3>P3产品工程实践</h3>
+          <div class="compare-list">
+            <div class="compare-row"><span class="compare-mark">✓</span><div><strong>跟随产品Roadmap</strong><span>真实产品目标驱动Sprint任务</span></div></div>
+            <div class="compare-row"><span class="compare-mark">✓</span><div><strong>走完整工程闭环</strong><span>PR、CI、Preview、Review与部署</span></div></div>
+            <div class="compare-row"><span class="compare-mark">✓</span><div><strong>Tech Lead持续追问</strong><span>不仅看结果，也看选择依据和trade-off</span></div></div>
+            <div class="compare-row"><span class="compare-mark">✓</span><div><strong>全程沉淀求职素材</strong><span>从工程记录里提炼简历与面试案例</span></div></div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="dark">
+  <section class="roadmap" id="roadmap">
     <div class="container">
-      <div class="section-label">02 · 12个月路线</div>
-      <h2>一条连续的成长与就业路径</h2>
-      <div class="timeline">
-        <div class="month"><small>MONTH 01—06</small><h3>系统学习与项目实践</h3><ul><li>入学评估与个人路线</li><li>目标岗位核心能力训练</li><li>真实项目任务与成果验收</li><li>作品集、简历与求职准备</li></ul></div>
-        <div class="month"><small>MONTH 07—12</small><h3>求职内推与面试辅导</h3><ul><li>求职方向与岗位筛选</li><li>根据实际机会提供内推</li><li>面试准备、复盘与策略调整</li><li>Offer分析与入职建议</li></ul></div>
-        <div class="overlap">
-          <div><strong>入职后辅导</strong><p>学员在服务期内入职，可在剩余期限内获得最多3个月的工作适应、沟通汇报、试用期与转正辅导，不突破12个月总周期。</p></div>
-          <div><strong>动态调整</strong><p>6+6是主要节奏，实际学习、项目和求职动作可根据个人进展交叉开展，由老师判断并安排。</p></div>
-        </div>
+      <div class="section-label">03 · 12个月成长路线</div>
+      <h2>9个月产品工程实践，3个月求职冲刺</h2>
+      <p class="intro">具体Sprint任务会根据产品Roadmap动态生成；以下路线固定阶段目标、核心能力和通关方向，不用一张僵化课表假装真实开发。</p>
+      <div class="phase-grid">
+        <article class="phase"><small>MONTH 01</small><h3>进入工程工作流</h3><ul><li>开发环境、规范与分支门禁</li><li>CI、Preview与自动部署</li><li>Product Discovery与MVP</li><li>完成第一个上线PR</li></ul></article>
+        <article class="phase"><small>MONTH 02—03</small><h3>0→1构建核心功能</h3><ul><li>用户、数据与权限系统</li><li>两周一个Sprint</li><li>持续交付可演示功能</li><li>解释技术方案和取舍</li></ul></article>
+        <article class="phase"><small>MONTH 04—05</small><h3>MVP交付上线</h3><ul><li>测试、监控与日志</li><li>性能、安全与回滚</li><li>核心用户旅程验证</li><li>收集外部用户反馈</li></ul></article>
+        <article class="phase"><small>MONTH 06—07</small><h3>PMF迭代</h3><ul><li>分析用户行为与漏斗</li><li>用数据支持技术决策</li><li>识别架构瓶颈</li><li>管理技术债</li></ul></article>
+        <article class="phase"><small>MONTH 08—09</small><h3>工程资产与求职过渡</h3><ul><li>Growth功能与技术债Sprint</li><li>ADR、README与模块文档</li><li>GitHub Portfolio</li><li>简历与工程故事整理</li></ul></article>
+        <article class="phase"><small>MONTH 10—12</small><h3>求职辅导冲刺</h3><ul><li>面试语言转换</li><li>定向算法与系统设计</li><li>Mock Interview与复盘</li><li>Offer评估与入职建议</li></ul></article>
+      </div>
+      <p class="roadmap-note">说明：阶段节奏会根据个人基础、项目进展和求职窗口交叉调整；完成结果取决于实际参与和任务质量。</p>
+    </div>
+  </section>
+
+  <section class="workflow">
+    <div class="container">
+      <div class="section-label">04 · 一次真实交付</div>
+      <h2>一个功能，如何从产品问题走到生产环境</h2>
+      <p class="intro">你会反复经历同一套工程闭环。不是看导师演示，而是在每个节点留下自己的任务、代码、Review和验证记录。</p>
+      <div class="flow">
+        <article class="flow-step"><small>STEP 01</small><h3>明确产品问题</h3><p>理解用户、痛点、成功指标与MVP范围。</p></article>
+        <article class="flow-step"><small>STEP 02</small><h3>Sprint拆解</h3><p>把目标拆成范围清楚、可以验收的工程任务。</p></article>
+        <article class="flow-step"><small>STEP 03</small><h3>开发与PR</h3><p>在feature branch开发，提交说明完整的Pull Request。</p></article>
+        <article class="flow-step"><small>STEP 04</small><h3>CI与Review</h3><p>自动检查、Preview验证，再根据Code Review修改。</p></article>
+        <article class="flow-step"><small>STEP 05</small><h3>上线与反馈</h3><p>合并部署到生产环境，用数据和反馈进入下一轮。</p></article>
       </div>
     </div>
   </section>
@@ -159,30 +306,44 @@
   <section>
     <div class="container owner">
       <div>
-        <div class="section-label">03 · 全权负责机制</div>
-        <h2>真正做过，<br>才能真正带你做</h2>
-        <p class="intro">老师拥有澳洲科技行业9年以上一线经验，走过高级工程师、全栈开发与工程团队管理路径。不是只讲面试技巧，而是用真实招聘标准和工程经验判断你离岗位还有多远。</p>
+        <div class="section-label">05 · Tech Lead持续指导</div>
+        <h2>导师不只讲课，而是带你完成交付</h2>
+        <p class="intro">老师拥有澳洲科技行业9年以上一线经验，走过高级工程师、全栈开发与工程团队管理路径。指导不止发生在课堂，而是在任务拆解、技术阻塞、Pull Request和Sprint复盘的关键节点。</p>
       </div>
       <div class="owner-card">
-        <div class="name">老师履历</div>
+        <div class="name">老师履历与指导动作</div>
         <div class="credential"><b>9+年</b><span>澳洲科技行业软件工程与产品交付经验</span></div>
         <div class="credential"><b>现任</b><span>Easygo Senior Software Engineer</span></div>
-        <div class="credential"><b>近5年</b><span>曾任 Qantas Engineering Lead，负责工程团队与大型平台交付</span></div>
-        <div class="credential"><b>全栈</b><span>长期深耕 React、Next.js、Node.js、GraphQL、云平台与AI集成</span></div>
-        <div class="owner-list" style="margin-top:24px;">
-          <div>亲自制定路线</div><div>亲自指导项目</div><div>亲自判断能力</div><div>亲自辅导求职</div>
+        <div class="credential"><b>近5年</b><span>曾任Qantas Engineering Lead，负责工程团队与大型平台交付</span></div>
+        <div class="lead-actions">
+          <div>把产品需求拆成工程任务</div><div>Review PR并说明修改原因</div><div>定位阻塞并提供Unblock</div><div>复盘技术选择与trade-off</div><div>检查Sprint交付质量</div><div>转化简历和面试表达</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="proof">
+  <section class="assets">
     <div class="container">
-      <div class="section-label">04 · 经验背书</div>
-      <h2>毕业时，不再只有<br>“我学过”，而是“我做过”</h2>
-      <p class="intro">12个月工作经验背书贯穿整个服务周期。你将参与与目标岗位相关的真实项目，持续积累任务、过程与成果记录，最终形成在简历上能写、面试中能讲、背景核验时有依据的完整经历。</p>
+      <div class="section-label">06 · 可以沉淀什么</div>
+      <h2>12个月持续积累的，不只是一张结课证书</h2>
+      <p class="intro">每一项资产都来自你实际参与的任务和项目。能否形成以及形成多少，取决于参与时间、任务完成情况、项目安排和质量验收。</p>
+      <div class="asset-grid">
+        <article class="asset-card"><b>CODE</b><h3>PR与贡献记录</h3><p>可追溯的功能开发、修改过程和代码贡献。</p></article>
+        <article class="asset-card"><b>QUALITY</b><h3>Review与测试记录</h3><p>代码审查、自动检查、测试与问题修复过程。</p></article>
+        <article class="asset-card"><b>DELIVERY</b><h3>部署与产品成果</h3><p>按项目实际情况形成上线功能和可演示成果。</p></article>
+        <article class="asset-card"><b>DECISION</b><h3>技术决策文档</h3><p>ADR、架构取舍、性能优化和技术债记录。</p></article>
+        <article class="asset-card"><b>CAREER</b><h3>求职表达素材</h3><p>GitHub Portfolio、简历项目和面试案例库。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">07 · 经验记录与边界</div>
+      <h2>从“我学过”，走向有记录支撑的“我做过”</h2>
+      <p class="intro">项目经历和相关证明必须建立在实际参与之上。页面不会把课程参与包装成虚构雇佣，也不会承诺所有人获得相同数量的任务、项目成果或求职结果。</p>
       <div class="proof-grid">
-        <div class="proof-box"><h3>可以形成的真实记录</h3><ul><li>实际参与的项目及承担职责</li><li>任务过程、工作产出与验收结果</li><li>岗位能力与阶段表现评价</li><li>项目经历证明及背景核验支持</li><li>完成满12个月且记录完整，可按实际情况提供12个月工作经验背书</li></ul></div>
+        <div class="proof-box"><h3>可以形成的真实记录</h3><ul><li>实际参与的项目及承担职责</li><li>任务过程、工作产出与验收结果</li><li>岗位能力与阶段表现评价</li><li>项目经历证明及背景核验支持</li><li>完成满12个月且记录完整，可按实际情况提供相应项目经历背书</li></ul></div>
         <div class="proof-box caution"><h3>背书原则</h3><ul><li>以实际参与时间为准</li><li>以真实项目和职责为准</li><li>未完成满12个月，不写满12个月</li><li>不虚构任职单位、劳动关系、岗位内容或项目成果</li></ul></div>
       </div>
     </div>
@@ -190,11 +351,11 @@
 
   <section>
     <div class="container">
-      <div class="section-label">05 · 适合谁</div>
-      <h2>高投入服务，也需要高配合度</h2>
+      <div class="section-label">08 · 适合谁</div>
+      <h2>高投入服务，也需要稳定参与</h2>
       <div class="fit-grid">
-        <div class="fit"><h3>更适合</h3><ul><li>目标进入IT或相关专业岗位</li><li>愿意持续投入时间完成学习和项目</li><li>需要有人长期了解自己并做关键判断</li><li>愿意根据反馈调整求职策略</li></ul></div>
-        <div class="fit no"><h3>不适合</h3><ul><li>希望付费后直接获得Offer</li><li>无法稳定投入学习与项目时间</li><li>只需要一次简历修改或单次内推</li><li>要求虚构工作经历或保证特定结果</li></ul></div>
+        <div class="fit"><h3>更适合</h3><ul><li>已经学过前端或后端，但缺少团队工程经验</li><li>能写功能，希望补齐工程化、系统设计与产品判断</li><li>愿意持续投入时间完成Sprint任务与修改</li><li>需要长期指导，把项目记录转化为求职表达</li></ul></div>
+        <div class="fit no"><h3>不适合</h3><ul><li>希望付费后直接获得Offer</li><li>无法稳定投入学习和项目时间</li><li>只需要一次简历修改或单次内推</li><li>要求虚构工作经历或保证特定结果</li></ul></div>
       </div>
       <div class="boundary"><h3>服务结果说明</h3><p>本服务提供学习培养、项目指导、求职内推、面试辅导与入职适应支持。招聘结果受个人能力、投入程度、岗位供给、面试表现、城市与薪资选择等因素影响，因此不承诺推荐次数、岗位数量、面试次数、录用结果、指定企业或具体薪资。</p></div>
     </div>
@@ -202,13 +363,23 @@
 
   <section class="apply" id="apply">
     <div class="container">
-      <div class="section-label">06 · 申请方式</div>
-      <h2>限额不是营销话术，<br>而是服务方式本身</h2>
-      <p>申请人需要先完成基础情况与目标岗位评估。老师确认双方目标、投入与服务方式匹配后，再进入正式服务。</p>
-      <div class="apply-note">申请制 · 具体名额与费用请联系课程顾问</div>
+      <div class="section-label">09 · 申请方式</div>
+      <h2>先评估是否匹配，再决定是否进入</h2>
+      <p class="intro">请准备当前简历、GitHub或项目链接、目标岗位与每周可投入时间。老师会结合基础、目标和当前产品Sprint判断这项长期服务是否适合你。</p>
+      <div class="apply-steps">
+        <article class="apply-step"><b>STEP 01</b><strong>提交背景</strong><p>简历、项目、目标岗位和可投入时间。</p></article>
+        <article class="apply-step"><b>STEP 02</b><strong>老师评估</strong><p>判断当前能力差距与培养可行性。</p></article>
+        <article class="apply-step"><b>STEP 03</b><strong>沟通路线</strong><p>确认阶段目标、参与方式与服务边界。</p></article>
+        <article class="apply-step"><b>STEP 04</b><strong>确认进入</strong><p>双方匹配后，再确认名额与正式安排。</p></article>
+      </div>
+      <div class="button-row">
+        <a class="btn btn-primary" href="mailto:hello@jiangren.com.au?subject=VIP全栈工程师培养与就业陪跑｜申请评估&body=你好，我想申请VIP全栈工程师培养与就业陪跑。%0A%0A我的当前背景：%0A目标岗位/城市：%0A每周可投入时间：%0AGitHub或项目链接：%0A希望重点解决的问题：">邮件申请1对1路线评估 →</a>
+        <a class="btn btn-secondary" href="mailto:hello@jiangren.com.au?subject=VIP就业陪跑｜课程咨询">先咨询课程顾问</a>
+      </div>
+      <p class="apply-note">申请制 · 具体名额与费用请联系课程顾问 · 联系邮箱：hello@jiangren.com.au</p>
     </div>
   </section>
 
-  <footer><div class="container">匠人学院 · VIP就业陪跑服务｜本页为服务方案说明，最终内容以正式服务协议为准。</div></footer>
+  <footer><div class="container">匠人学院 · VIP全栈工程师培养与就业陪跑｜最终服务范围以正式服务协议为准 · <a href="mailto:hello@jiangren.com.au">hello@jiangren.com.au</a></div></footer>
 </body>
 </html>
