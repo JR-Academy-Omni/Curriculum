@@ -2,6 +2,8 @@
 
 ## 2026-09-08
 
+- 审核并修正第七期历史录像相关性：删除重复 GenAI 录像、断线 Embeddings 片段和名不副实的 LCEL 映射；将 Agent 入门录像移至 W7 Agents/ReAct，将 ADLC/PRD 工作流录像移至 W1 AI Coding/ADLC；历史视频引用由 51 个收敛为 48 个。
+
 - 修复第七期视频继承：将旧 syllabus 的 15 个有效 S3 录播按稳定课程编号显式映射到当前 138 条大纲；合并课程的视频挂到最接近的保留课程，避免改标题或换绑 syllabus 后再次丢失。
 
 - 固定第七期 138 条 `cohort7LessonOrder`：技术 Phase 继续表达 10-layer 归属，Study Center 数据库顺序独立按已审核周序发布，防止 Practice 课因模块归类错位。
