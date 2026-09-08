@@ -1,6 +1,20 @@
 # Changelog — AI Engineer Bootcamp
 
+## 2026-09-08
+
+- 完成 138 条有效课程的全量内容、顺序、重复与范围审核；集中重写第 67–138 条中的薄 Lab、自学入口和重复专题，保持 25 场 Live（本地）。
+
+- 完成 138 条有效课程全量内容、顺序、重复与范围审核；重写剩余薄 Lab/自学内容并固定 Theory、Practice、Advanced/Optional 边界，保留 25 场 Live（本地）。
+
+- 提升数据库顺序第 59–66 条：去重 Tracing/RAGAS/Langfuse，修复 GraphPrompts 失效入口，完善 OpenSearch、RAG Diagnosis、GraphRAG、AWS Mapping 与 Safe Tool Execution（本地）。
+
+- 提升数据库顺序第 59–66 条：去重 Tracing/RAG Metrics，补齐 OpenSearch、Langfuse、GraphRAG、AWS RAG Mapping 与 Function Calling 的工程边界，并移除失效 GraphPrompts 依赖（本地）。
+
+- 提升数据库顺序第 51–58 条：完善 LLM Cost Engineering、Rate Limit、RAGAS、W5 RAG 质量判断、AI-Native Workspace、Skills 与 Typed Prompt Pipeline，并固定 W5 指标理解、W6 Pipeline、W7 RAG 实现的教学边界（本地）。
+
 ## 2026-09-07
+
+- 按用户要求移除4个失效OpenClaw参考及L60a，从141条调整为138条，25场Live不变；SDM生产同步及回读通过，保留历史文档和视频。
 
 - 修正六条显式前置倒序，产品体验资料提前W2；收拢Proposal与RAG导览，修正AWS资料类型及运维固定阈值，保留141条（本地）。
 

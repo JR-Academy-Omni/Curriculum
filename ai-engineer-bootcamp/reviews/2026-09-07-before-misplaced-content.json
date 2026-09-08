@@ -1,0 +1,881 @@
+{
+  "status": "HISTORICAL_REFERENCE_NOT_CURRENT_REQUIREMENTS",
+  "lessons": [
+    {
+      "code": "L34",
+      "title": "The Four Prototyping Patterns",
+      "description": "Prompt / RAG / Agent / Fine-tuning 选错一个，项目多做三周还不一定能交付。这节直播课把四种 AI 原型模式用决策矩阵摊开，现场用同一个真实需求跑四套方案给你看差距——以后接到 AI 需求你能 10 分钟决定走哪条路，而不是上来就 RAG 或者一听到“学习”就去 Fine-tune。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 60,
+      "steps": [
+        {
+          "order": 1,
+          "type": "LEARN",
+          "title": "Prompt Master: zero-shot",
+          "description": "Prompt Master: zero-shot",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "LEARN",
+          "title": "Prompt Master: few-shot",
+          "description": "Prompt Master: few-shot",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "LEARN",
+          "title": "Prompt Master: prompt-chaining",
+          "description": "Prompt Master: prompt-chaining",
+          "duration": 5
+        },
+        {
+          "order": 4,
+          "type": "LAB",
+          "title": "Prompt Lab: zero-shot",
+          "description": "Prompt Lab: zero-shot",
+          "duration": 5,
+          "labSlug": "zero-shot"
+        },
+        {
+          "order": 5,
+          "type": "LAB",
+          "title": "Prompt Lab: few-shot",
+          "description": "Prompt Lab: few-shot",
+          "duration": 5,
+          "labSlug": "few-shot"
+        },
+        {
+          "order": 6,
+          "type": "CONCEPT",
+          "title": "四大模式决策矩阵",
+          "description": "四大模式决策矩阵",
+          "duration": 3
+        },
+        {
+          "order": 7,
+          "type": "LIVE",
+          "title": "同一任务用 4 种模式实现对比",
+          "description": "同一任务用 4 种模式实现对比",
+          "duration": 15
+        },
+        {
+          "order": 8,
+          "type": "LEARN",
+          "title": "Define Your Success Criteria",
+          "description": "Define Your Success Criteria",
+          "duration": 5
+        },
+        {
+          "order": 9,
+          "type": "MCQ",
+          "title": "模式选择检查",
+          "description": "模式选择检查",
+          "duration": 2
+        },
+        {
+          "order": 10,
+          "type": "PROJECT",
+          "title": "ISA 技术选型文档",
+          "description": "ISA 技术选型文档",
+          "duration": 10
+        }
+      ],
+      "labs": [],
+      "learns": [
+        {
+          "direction": "prompt-master",
+          "slug": "zero-shot"
+        },
+        {
+          "direction": "prompt-master",
+          "slug": "few-shot"
+        },
+        {
+          "direction": "prompt-master",
+          "slug": "prompt-chaining"
+        }
+      ],
+      "learningMaterial": "<h1>课程：Agents</h1><p><strong>适合程度</strong>：零基础 · 面向 AI Engineer 训练营学员<br><strong>目标</strong>：理解什么是 Agent，掌握 Agent 的核心构件（Tool、Planner、Executor、Memory 等），学会用 Agent 解决需要调用外部工具或执行多步骤任务的场景，并能用 LangChain / 简单 Python 示例搭建、调试与工程化 Agent。</p><hr><h2>1. 引言（Introduction）</h2><p>“Agent”是能<strong>自主决定使用哪个工具、何时使用并如何组合工具以完成复杂任务</strong>的软件实体。与单次调用 LLM（“问一句，得一句”）不同，Agent 可以在运行时基于模型的判断去调用搜索、计算器、数据库、API、甚至本地脚本等工具，并把各步结果组合为最终输出。掌握 Agent 能让你把 LLM 的能力扩展到实际工程场景：自动化任务、链式推理、跨系统整合与动态决策。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 Agent 的组成</h3><ul><li><p><strong>LLM（决策器 / 思考器）</strong>：用来决定下一步做什么（调用哪个 tool、生成要下发给 tool 的输入、判断停止条件）。</p></li><li><p><strong>Tool（工具）</strong>：Agent 可调用的外部能力单元，例如：检索 (Search)、计算 (Calculator)、文件读取 (FileSystem)、HTTP API、数据库查询、RAG 问答等。每个 tool 有 <code>name</code>、<code>func</code>、<code>description</code> 三要素。</p></li><li><p><strong>Planner / Executor</strong>：Planner 负责基于当前上下文规划步骤（由 LLM 作为“控制器”）；Executor 负责执行工具并把结果回传给 Planner/LLM。传统实现就是 LLM 产生“行动指令”，框架执行并把输出反馈。</p></li><li><p><strong>Memory（记忆）</strong>：用于保持会话上下文或中间状态，支持多步骤任务中信息传递与长期记忆。</p></li><li><p><strong>Observation（观测）</strong>：工具执行后的输出，作为 LLM 下一步决策的输入。</p></li><li><p><strong>Stop Criteria（停止条件）</strong>：Agent 何时结束（例如达到目标、超过步数、模型返回“完成”标志）。</p></li></ul><h3>2.2 Tool 的设计原则</h3><ul><li><p><strong>单一职责</strong>：一个 tool 做一件事（搜索、计算、写表格）。</p></li><li><p><strong>契约明确</strong>：明确输入/输出格式，避免歧义（例如返回 JSON、status/error 字段）。</p></li><li><p><strong>幂等与可重试</strong>：工具最好幂等，易于重试与并行。</p></li><li><p><strong>边界与权限</strong>：对外部资源做权限与速率控制，谨防滥用（Agent 自动调用外网 API 需慎重）。</p></li></ul><h3>2.3 Agent 类型（常见）</h3><ul><li><p><strong>Reactive Agent（反应式）</strong>：基于当前输入立即决定下一步，适合简单工具调用。</p></li><li><p><strong>Planner-Agent（有规划能力）</strong>：先制定中长期步骤计划，再逐步执行，适合复杂任务。</p></li><li><p><strong>Tool-using Agent（工具驱动）</strong>：Agent 的核心是调用并组合工具能力（常见于 LangChain 的 Agents）。</p></li><li><p><strong>Memory-enabled Conversational Agent</strong>：带会话记忆的 agent，适合多轮交互。</p></li></ul><h3>2.4 设计 Agent 时的安全与可控性</h3><ul><li><p><strong>限制工具范围</strong>：只暴露必要工具，避免不受控访问（例如任意 shell）。</p></li><li><p><strong>输入/输出校验</strong>：工具输入与 LLM 输出都需校验（避免注入或格式错）。</p></li><li><p><strong>速率与成本控制</strong>：限制调用频率、并发、单次最大 tokens。</p></li><li><p><strong>日志与可观测</strong>：记录每一步决策、工具调用与返回，便于审计与调试。</p></li><li><p><strong>降级策略</strong>：若关键工具不可用，Agent 应有安全降级（返回失败信息或替代方案）。</p></li></ul><hr><h2>3. 实战示例（Practical Examples）</h2><p>下面给出面向学生、可运行的示例（伪代码/真实代码风格），以 <strong>LangChain</strong> 的 Agent 为例。示例把常见用例拆成可理解的步骤。</p><blockquote><p>说明：示例为教学简化版，实际使用时按你项目的 LangChain 版本调整 API。</p></blockquote><hr><h3>3.1 最小 Agent：把工具封装为 Tool，然后初始化 Agent（同步示例）</h3><pre><code># minimal_agent.py\nfrom langchain import OpenAI\nfrom langchain.agents import Tool, initialize_agent\n\n# 假设你已设置 OPENAI_API_KEY\nllm = OpenAI(temperature=0)\n\n# 定义两个简单工具：计算与搜索（伪实现）\ndef calculator_tool(input_str: str) -&gt; str:\n    # 这里可以用 python eval（注意安全）或调用专门的计算器服务\n    try:\n        result = eval(input_str)\n        return str(result)\n    except Exception as e:\n        return \"Error: \" + str(e)\n\ndef search_tool(query: str) -&gt; str:\n    # 伪实现：实际应调用搜索服务或 RAG retriever\n    return f\"Search results for '{query}': ... (模拟返回)\"\n\ntools = [\n    Tool(name=\"Calculator\", func=calculator_tool, description=\"Performs arithmetic expressions\"),\n    Tool(name=\"Search\", func=search_tool, description=\"Searches documents for query\")\n]\n\nagent = initialize_agent(tools, llm, agent=\"zero-shot-react-description\", verbose=True)\n\n# 使用 agent\nprint(agent.run(\"Find the population of Australia and then add 1000.\"))\n</code></pre><p><strong>解释</strong>：Agent 在运行时会把用户输入交给 LLM，LLM 会决定先用 Search 还是 Calculator 或两者结合，并把结果整合成最终回答。</p><hr><h3>3.2 把 RAG QA 封装成 Tool 给 Agent（示例）</h3><pre><code># agent_with_docqa.py\n# 假设已有一个 function rag_qa(question) -&gt; answer_with_sources\nfrom langchain.agents import Tool, initialize_agent\nfrom langchain.chat_models import ChatOpenAI\n\nllm = ChatOpenAI(temperature=0)\n\ndef doc_qa_tool(query: str) -&gt; str:\n    return rag_qa(query)  # rag_qa 是你已有的 RAG pipeline\n\ntool = Tool(name=\"DocumentQA\", func=doc_qa_tool, description=\"Answer questions using uploaded documents.\")\nagent = initialize_agent([tool], llm, agent=\"zero-shot-react-description\", verbose=True)\n\nprint(agent.run(\"Summarize the section about 'data ingestion' and list the source pages.\"))\n</code></pre><p><strong>优点</strong>：把复杂的 RAG 流程封装为单个 Tool，让 Agent 可以把文档问答能力直接作为工具使用，便于组合成复杂任务（例如先查文档再生成 ppt 提纲）。</p><hr><h3>3.3 Agent 与 Memory（多步任务保持上下文）</h3><pre><code>from langchain.memory import ConversationBufferMemory\nfrom langchain.agents import initialize_agent\n\nmemory = ConversationBufferMemory(memory_key=\"chat_history\", return_messages=True)\nagent = initialize_agent(tools, llm, agent=\"zero-shot-react-description\", memory=memory)\n\nprint(agent.run(\"Find the latest sales number for product X.\"))\nprint(agent.run(\"Now compare that with last month and explain the trend.\"))  # Agent 能利用 memory 中的上下文\n</code></pre><p><strong>提示</strong>：Memory 会保存对话历史，适合多轮任务。注意记忆会占 token，应做摘要或裁剪策略。</p><hr><h3>3.4 自定义 Agent 逻辑：Planner + Executor（伪代码）</h3><pre><code># 伪代码：先让 LLM 生成计划，再顺序执行工具\nplan_prompt = \"You are a planner. Given goal: {goal}, output a numbered plan of steps.\"\n\nplan = llm.generate(plan_prompt.format(goal=\"Write a 3-slide summary of document about X\"))\n# parse plan (e.g., 1. search; 2. extract; 3. summarize)\nfor step in parsed_plan:\n    if step.type == \"search\":\n        obs = search_tool(step.input)\n    elif step.type == \"summarize\":\n        obs = summarizer_tool(step.input)\n    # 将 obs 反馈给 planner 或直接拼接给 llm 做下一步\nfinal = llm.generate(\"Assemble slides from the results: ...\")\n</code></pre><p><strong>场景</strong>：对复杂任务（多步、需决策和条件分支）时，显式的规划器 + 执行器设计更可控，便于监控与断点重试。</p><hr><h2>4. 最佳实践 / 常见陷阱（Best Practices / Common Pitfalls）</h2><h3>最佳实践</h3><ol><li><p><strong>限制工具权限与可见性</strong>：只暴露必要工具，避免 Agent 无节制访问敏感资源。</p></li><li><p><strong>为每个 Tool 明确定义输入/输出格式</strong>：返回结构化 JSON 能减少 LLM 解析错误。</p></li><li><p><strong>把工具做幂等与错误返回规范</strong>：便于重试与异常处理。</p></li><li><p><strong>设置最大步数与成本预算</strong>：防止 Agent 因无限循环或频繁调用导致高额费用。</p></li><li><p><strong>可观测性</strong>：记录 Agent 的每个思考步骤、工具调用与返回（trace），便于调试与审计。</p></li><li><p><strong>Prompt Engineering for Control</strong>：给决策 LLM 明确的工具清单、工具描述、失败处理方式与格式化输出要求。</p></li><li><p><strong>加抖动与退避策略</strong>：对外部服务调用实现重试与退避，避免雪崩。</p></li><li><p><strong>先做小规模测试（sandbox）</strong>：在封闭环境验证工具调用路径与安全性，再放到生产。</p></li><li><p><strong>为 memory 做生命周期管理</strong>：使用 summary、裁剪、或只记关键信息避免 token 爆炸。</p></li><li><p><strong>模拟攻击/滥用测试</strong>：验证 Agent 在异常输入或恶意指令下的行为，做好防御策略。</p></li></ol><h3>常见陷阱</h3><ul><li><p><strong>把任意 shell / 网络访问直接暴露给 Agent</strong>：危险且不可控。</p></li><li><p><strong>工具描述模糊导致 LLM 误用</strong>：要详细说明工具能做什么与不能做什么。</p></li><li><p><strong>不做停止条件/步数限制</strong>：可能导致循环调用、费用暴增。</p></li><li><p><strong>忽视日志与可回放</strong>：出现问题时难以复现 Agent 的决策路径。</p></li><li><p><strong>过度自动化没有人工回退</strong>：在高风险场景保留人工审核或批准流程。</p></li><li><p><strong>忽略成本</strong>：频繁调用大模型或高并发工具会迅速消耗预算。</p></li></ul><hr><h2>5. 小结（Summary）</h2><ul><li><p><strong>Agents = LLM + Tools + Planner/Executor (+ Memory)</strong>：它们把人类的“选择使用工具”能力赋给程序，使得 LLM 能跨系统自动化并完成复杂任务。</p></li><li><p><strong>设计要点</strong>：工具单一职责、契约明确、权限受限、输入输出结构化、步数与成本控制、详尽日志与可观测性。</p></li><li><p><strong>工程化</strong>：把 Agent 的决策与工具调用做成可追踪、可回放、可校验的流水线，并在上线前做降级/安全/成本等策略设计。</p></li><li><p><strong>练习建议</strong>：先实现一个小 Agent（Calculator + Search），再把 RAG QA 封装成工具交给 Agent，实现“查证→生成→校验”的完整流程；最后加入 memory 与监控。</p></li></ul>",
+      "title_en": "The Four Prototyping Patterns",
+      "description_en": "Pick the wrong prototyping pattern and you'll burn three extra weeks with nothing to ship. This live session lays out Prompt vs RAG vs Agent vs Fine-tuning as a decision matrix, then implements the same requirement four ways on stage so you can see the real cost-quality trade-offs. Walk out able to route any new AI request in under 10 minutes.",
+      "index": 34,
+      "_id": "69e71122b636532acae3b3cb"
+    },
+    {
+      "code": "L48",
+      "title": "Context Engineering Playbook",
+      "description": "Context Window 塞爆了、对话越长 Claude 越健忘、GPT-4 到第 20 轮开始胡说八道——这些不是模型 bug，是上下文降级模式。这节课把业内总结的 Context 设计模式（Compression、Summarization、Sliding Window 等）全部过一遍，附一个自检清单：下次 Agent 效果掉链子，你能对着清单定位是哪一层的上下文出了问题。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 33,
+      "steps": [
+        {
+          "order": 1,
+          "type": "LEARN",
+          "title": "AI Engineer: context-compression-optimization",
+          "description": "AI Engineer: context-compression-optimization",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "LEARN",
+          "title": "AI Engineer: context-degradation-patterns",
+          "description": "AI Engineer: context-degradation-patterns",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "LEARN",
+          "title": "Prompt Master: cot",
+          "description": "Prompt Master: cot",
+          "duration": 5
+        },
+        {
+          "order": 4,
+          "type": "CONCEPT",
+          "title": "上下文设计模式全集",
+          "description": "上下文设计模式全集",
+          "duration": 3
+        },
+        {
+          "order": 5,
+          "type": "CONCEPT",
+          "title": "Context Window 管理策略",
+          "description": "Context Window 管理策略",
+          "duration": 3
+        },
+        {
+          "order": 6,
+          "type": "LAB",
+          "title": "Prompt Lab: prompt-evaluation",
+          "description": "Prompt Lab: prompt-evaluation",
+          "duration": 5,
+          "labSlug": "prompt-evaluation"
+        },
+        {
+          "order": 7,
+          "type": "LAB",
+          "title": "Prompt Lab: self-consistency",
+          "description": "Prompt Lab: self-consistency",
+          "duration": 5,
+          "labSlug": "self-consistency"
+        },
+        {
+          "order": 8,
+          "type": "MCQ",
+          "title": "Context Engineering 进阶检查",
+          "description": "Context Engineering 进阶检查",
+          "duration": 2
+        }
+      ],
+      "labs": [],
+      "learns": [
+        {
+          "direction": "ai-engineer",
+          "slug": "context-compression-optimization"
+        },
+        {
+          "direction": "ai-engineer",
+          "slug": "context-degradation-patterns"
+        },
+        {
+          "direction": "prompt-master",
+          "slug": "cot"
+        }
+      ],
+      "learningMaterial": "<h1>Prompt Engineering：最佳实践</h1><h2>1. 简介（Introduction）</h2><p><strong>本课覆盖什么</strong><br>本课讲解如何设计、测试与维护高质量的 prompt（提示），以稳定、可控且高效地驱动大型语言模型（LLM）完成指定任务。内容包括 prompt 的结构、few-shot / zero-shot / CoT（Chain-of-Thought）技法、输出约束、调参（temperature/top_p 等）、自动化测试与版本管理等。</p><p><strong>为什么重要</strong><br>prompt 是连接人类意图与 LLM 行为的桥梁。一个写得好的 prompt 能显著提升模型准确性、减少幻觉（hallucination）、保证输出格式一致性并降低成本。对于 IT 教育和工程原型，掌握 prompt engineering 能让学员在不必大量微调模型的情况下快速交付可用产品。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 Prompt 的基本结构</h3><ul><li><p><strong>System（角色/规则）</strong>：设定模型的长期行为或约束（例如“你是一个面向大学生的助教，回答要简洁并举例”）。</p></li><li><p><strong>Instruction（任务说明）</strong>：明确要完成的任务（“把下列句子改写为更学术的表述”）。</p></li><li><p><strong>Context（背景/知识）</strong>：提供需要用到的资料或检索到的文档（在 RAG 场景下常见）。</p></li><li><p><strong>Examples（few-shot）</strong>：几个示例输入→输出，帮助模型模仿期望风格/格式。</p></li><li><p><strong>Constraints / Output Schema（输出约束）</strong>：指定输出格式（JSON, CSV, markdown），以及长度、语言等限制。</p></li></ul><h3>2.2 Prompting 类型</h3><ul><li><p><strong>Zero-shot</strong>：直接给指令，无示例。适合简单指令或模型能力很强的场景。</p></li><li><p><strong>Few-shot</strong>：在 prompt 中加入 2-8 个示例，提高格式与质量一致性。</p></li><li><p><strong>Chain-of-Thought (CoT)</strong>：在示例中展现推理步骤，引导模型在复杂推理题上生成中间思路（注意：CoT 会泄露模型“思路”，在某些产品场景需谨慎）。</p></li><li><p><strong>Role / Persona Prompting</strong>：通过 system message 设定角色与风格（teacher/assistant/expert），有助于风格统一。</p></li></ul><h3>2.3 控制输出行为的超参</h3><ul><li><p><strong>temperature</strong>（决定随机性）：0（最确定）–1（更随机）。</p></li><li><p><strong>top_k / top_p（nucleus sampling）</strong>：控制采样多样性与概率质量。</p></li><li><p><strong>max_tokens / stop tokens</strong>：限制生成长度或在特定字符/字符串处停止。</p></li><li><p><strong>presence_penalty / frequency_penalty</strong>：抑制重复或鼓励新内容（部分 API 支持）。</p></li></ul><h3>2.4 输出约束与结构化</h3><ul><li><p><strong>强制格式</strong>：让模型返回 JSON、表格或标记化结构，便于自动解析与后处理。</p></li><li><p><strong>校验与恢复</strong>：对模型返回做 schema 校验（JSON schema），若解析失败，重试或用“修正 prompt”引导模型修正格式。</p></li><li><p><strong>分步提示（prompt chaining）</strong>：把复杂任务拆成多个 prompt（例如先检索、再摘要、最后生成）。</p></li></ul><h3>2.5 测试与评估</h3><ul><li><p><strong>自动化测试</strong>：用一套测试输入集对 prompt 做回归测试（检查输出是否满足格式、准确率是否下降）。</p></li><li><p><strong>A/B 测试</strong>：比较不同 prompt 的性能（人工或自动指标）。</p></li><li><p><strong>监控</strong>：记录 prompt、模型版本、输出、成本与失败率，便于回溯与优化。</p></li></ul><hr><h2>3. 实践示例（Practical Examples）</h2><p>下面示例以对话式 Chat API 为主（可适配 OpenAI / Anthropic / 本地 LLM）。</p><h3>3.1 基本 Prompt（few-shot + JSON 输出）</h3><pre><code># 示例：要求模型生成 JSON 格式的笔记要点\nfrom openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_KEY\")\n\nsystem = \"你是面向大学生的助教，回答简洁、结构化。\"\nfew_shot = \"\"\"\n示例:\nQ: 解释梯度下降，并给 2 个记忆要点。\nA: {\"explanation\": \"梯度下降是一种基于导数的优化方法...\", \"key_points\": [\"1. 更新方向由负梯度决定\", \"2. 学习率影响收敛速度\"]}\n\"\"\"\n\nuser = \"请解释什么是正则化，并给两个记忆要点。\"\n\nresp = client.chat.completions.create(\n    model=\"gpt-4o-mini\",\n    messages=[\n        {\"role\":\"system\", \"content\": system},\n        {\"role\":\"user\", \"content\": few_shot},\n        {\"role\":\"user\", \"content\": user}\n    ],\n    temperature=0.0,\n    max_tokens=200\n)\nprint(resp.choices[0].message.content)\n</code></pre><p><strong>要点</strong>：把示例的输出用 JSON 展示，以示范期望格式。把 temperature 设为 0.0 提高确定性。</p><h3>3.2 Chain-of-Thought（CoT）示例：数学题推理</h3><pre><code>System: 你是细致的数学助教，显示推理步骤并给出结论。\nUser: 下面示例展示如何做推理：\nExample:\nQ: 如果 f(x)=x^2，求 f'(3)。\nA: (step1) 求导 f'(x)=2x; (step2) 代入 x=3 得 f'(3)=6. Conclusion: 6\nNow solve: Q: 计算 7 的阶乘的最后两位数。\n</code></pre><p><strong>注意</strong>：CoT 非常适合教学，但在生产性问答需注意敏感信息或调试推理“错误”的风险。</p><h3>3.3 强制 JSON + 校验与重试（伪码）</h3><pre><code># 伪码：如果模型未返回合法 JSON，重新提示模型修正\nprompt = \"请按以下 JSON 格式返回：{ 'title':..., 'summary':... }。现在输入：...\"\nresp = call_model(prompt)\ntry:\n    data = json.loads(resp)\nexcept JSONDecodeError:\n    # 修正提示\n    fix_prompt = f\"上次结果无法解析为 JSON，请只返回合法 JSON，不要多余说明。上次结果：{resp}\"\n    resp2 = call_model(fix_prompt)\n    data = json.loads(resp2)\n</code></pre><h3>3.4 温度与采样的可视化实验（课堂练习）</h3><ul><li><p>给同一 prompt 分别用 temperature=0.0、0.5、1.0 生成多次输出，观察创意性与稳定性的变化。总结哪类任务适合低温（事实性任务）或高温（创意写作）。</p></li></ul><hr><h2>4. 最佳实践 / 常见陷阱（Best Practices / Common Pitfalls）</h2><h3>最佳实践（Practical Rules）</h3><ol><li><p><strong>清晰 &amp; 具体</strong>：用具体示例、明确约束（语言、长度、格式）。</p></li><li><p><strong>Prefer few-shot for format-sensitive tasks</strong>：给 2–5 个高质量示例来规范输出格式与内容。</p></li><li><p><strong>Use system messages to set role/persona</strong>：在对话模型中把长期约束放在 system，短期指令放在 user。</p></li><li><p><strong>Low temperature for deterministic tasks</strong>：事实问答、代码生成或表格输出使用低 temperature（0–0.2）。</p></li><li><p><strong>Validate outputs and apply reparative prompts</strong>：对 JSON/表格输出做 schema 校验，失败时用修正 prompt 自动修复。</p></li><li><p><strong>Limit prompt length &amp; use RAG when needed</strong>：避免把大量文本直接放入 prompt；先检索并摘要后再把关键信息加入 prompt。</p></li><li><p><strong>Version control &amp; prompt catalog</strong>：用 Git 或 prompt store 管理 prompt 模板与实验结果（记录模型版本和超参）。</p></li><li><p><strong>Automated regression tests</strong>：对关键 prompt 建立测试集并定期跑回归测试。</p></li><li><p><strong>Prompt templates &amp; parameterization</strong>：把可变部分抽成模板（template+variables），便于重复使用与 A/B 测试。</p></li><li><p><strong>安全与隐私设计</strong>：避免在 prompt 中直接传入敏感数据；对模型调用做审计与权限控制。</p></li></ol><h3>常见陷阱（与应对策略）</h3><ol><li><p><strong>模糊指令导致歧义</strong></p><ul><li><p>问题：模型输出多种不确定结果。</p></li><li><p>解决：补充明确约束 + 示例；要求“必须包含 X，不能包含 Y”。</p></li></ul></li><li><p><strong>输出格式不一致（无法自动解析）</strong></p><ul><li><p>解决：few-shot JSON 示例 + 校验循环（失败则修正 prompt）。</p></li></ul></li><li><p><strong>Hallucination（虚构事实）</strong></p><ul><li><p>解决：结合 RAG（检索证据并要求标注来源）、降低温度、在 prompt 中强制“如无证据则说明无法回答”。</p></li></ul></li><li><p><strong>Prompt 注入 / 安全问题</strong></p><ul><li><p>问题：用户输入包含恶意指令，影响 system 指令优先级。</p></li><li><p>解决：在系统端严格隔离 system message，不把用户输入拼接到 system 中；对用户内容做净化/白名单。</p></li></ul></li><li><p><strong>成本与上下文截断</strong></p><ul><li><p>问题：超长 prompt 导致 tokens 成本高或超出模型上下文窗口。</p></li><li><p>解决：摘要/分段/滑动窗口检索；使用适配的模型规模。</p></li></ul></li><li><p><strong>Overfitting to examples</strong></p><ul><li><p>问题：few-shot 示例偏小样本导致模型只学会示例风格而非泛化。</p></li><li><p>解决：多样化示例、在示例中覆盖边界情况。</p></li></ul></li><li><p><strong>忽视评估与监控</strong></p><ul><li><p>问题：上线后无法追踪 prompt 退化或质量问题。</p></li><li><p>解决：记录每次调用（prompt、model、response、cost），定期分析失败模式。</p></li></ul></li></ol><hr><h2>5. 评估与课堂实践建议（Testing &amp; Exercises）</h2><ul><li><p><strong>自动化指标</strong>：格式合规率（JSON parse success）、准确率/精确召回（针对 Q&amp;A）、BLEU/ROUGE（生成相似度）、端到端任务成功率（如信息抽取准确性）。</p></li><li><p><strong>人工评估</strong>：可用 5–10 人标注一小批输出（评分维度：正确性、清晰度、有用性、合规性）。</p></li><li><p><strong>课堂练习</strong>：</p><ol><li><p>设计一个 few-shot prompt，把技术定义转换为“高中生能懂”的三句解释，比较 zero-shot / few-shot 效果并写 200 字结论。</p></li><li><p>编写一个 JSON 校验脚本，自动检测模型输出是否合格并在失败时触发“格式修正” prompt。</p></li><li><p>做温度对比实验（temperature=0 / 0.5 / 1.0），记录每组 10 次输出并评估稳定性与创造性。</p></li></ol></li></ul><hr><h2>6. 快速检查表（Prompt Checklist）</h2><ul><li><p>System message 是否设定角色/约束？</p></li><li><p>Instruction 是否明确简洁（任务 + 约束 + 输出格式）？</p></li><li><p>是否包含合适数量且高质量的示例（few-shot）？</p></li><li><p>是否指定语言、长度、禁止内容？</p></li><li><p>是否设置 temperature / top_p / max_tokens 合理？</p></li><li><p>是否需要 RAG、CoT 或拆分成多个 prompt？</p></li><li><p>输出是否要求结构化（JSON/CSV），是否准备好校验逻辑？</p></li><li><p>是否记录 prompt、模型版本与超参供回溯？</p></li><li><p>是否考虑安全（注入、隐私）与成本？</p></li></ul><hr><h2>7. 小结（Summary）</h2><ul><li><p>Prompt engineering 是以最少改动、最快速产生高质量输出的关键技能。</p></li><li><p>好的 prompt 满足：<strong>明确（clear）→ 具体（specific）→ 可测（testable）→ 可控（constrained）</strong>。</p></li><li><p>常用工具与策略：few-shot、CoT、输出 schema、prompt chaining、RAG 结合与自动化校验。</p></li><li><p>以工程化思维管理 prompt（版本、测试、监控、安全）才能把 prompt engineering 从实验室变为可靠的产品能力。</p></li></ul>",
+      "title_en": "Context Engineering Playbook",
+      "description_en": "Context windows blow up, Claude forgets what you said 20 turns ago, GPT-4 starts hallucinating mid-conversation — these aren't model bugs, they're context degradation patterns. This lesson walks through the full playbook (Compression, Summarization, Sliding Window, etc.) and gives you a diagnostic checklist you can run the next time an Agent goes off the rails in production.",
+      "index": 47,
+      "_id": "69e71125b636532acae3b42c"
+    },
+    {
+      "code": "L49",
+      "title": "Lab: Prompt 评估",
+      "description": "Prompt 互动实验：Prompt 评估。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabSlug": "prompt-evaluation",
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Prompt 评估",
+          "description": "Prompt 评估",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "Prompt Lab: prompt-evaluation",
+          "description": "Prompt Lab: prompt-evaluation",
+          "duration": 25,
+          "labSlug": "prompt-evaluation"
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "Prompt 评估 理解检查",
+          "description": "Prompt 评估 理解检查",
+          "duration": 2
+        }
+      ],
+      "labs": [
+        {
+          "source": "prompt-lab",
+          "slug": "prompt-evaluation"
+        }
+      ],
+      "learns": [],
+      "learningMaterial": "<h2>实验目标</h2>\n<p>练习评估 Prompt 的效果：用测试集衡量 Prompt 的准确率、一致性和鲁棒性。</p>\n<h3>你会练习</h3>\n<ul>\n<li>准备 10 条测试用例（input + expected output）</li>\n<li>跑同一个 Prompt 对所有测试用例，统计通过率</li>\n<li>修改 Prompt 后重新测试，对比改进效果</li>\n</ul>",
+      "title_en": "Lab: Prompt 评估",
+      "description_en": "Prompt interactive lab: Prompt 评估. Hands-on practice in browser with instant validation.",
+      "index": 48,
+      "interactiveLabType": "prompt",
+      "_id": "69e71125b636532acae3b433"
+    },
+    {
+      "code": "L86",
+      "title": "Lab: LLM 评估",
+      "description": "LLM 工程实验：LLM 评估。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabSlug": "llm-evaluation",
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "LLM 评估",
+          "description": "LLM 评估",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "LLM Lab: llm-evaluation",
+          "description": "LLM Lab: llm-evaluation",
+          "duration": 25,
+          "labSlug": "llm-evaluation"
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "LLM 评估 理解检查",
+          "description": "LLM 评估 理解检查",
+          "duration": 2
+        }
+      ],
+      "labs": [
+        {
+          "source": "llm-lab",
+          "slug": "llm-evaluation"
+        }
+      ],
+      "learns": [],
+      "learningMaterial": "<h2>实验目标</h2>\n<p>在 LLM Lab 中实操 LLM 评估：用自动化指标衡量 LLM 输出质量。</p>\n<h3>你会练习</h3>\n<ul>\n<li>用 LLM-as-Judge：让 GPT-4o 给另一个模型的回答打分</li>\n<li>实现基本的 Faithfulness 检查：回答是否基于给定 context</li>\n<li>计算 Hit Rate：检索结果中包含正确答案的比例</li>\n</ul>",
+      "title_en": "Lab: LLM 评估",
+      "description_en": "LLM engineering lab: LLM 评估. Hands-on practice in browser with instant validation.",
+      "index": 85,
+      "interactiveLabType": "llm",
+      "_id": "69e7112db636532acae3b507"
+    },
+    {
+      "code": "L88",
+      "title": "Lab: Prompt 评估",
+      "description": "Prompt 互动实验：Prompt 评估。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabSlug": "prompt-evaluation",
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Prompt 评估",
+          "description": "Prompt 评估",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "Prompt Lab: prompt-evaluation",
+          "description": "Prompt Lab: prompt-evaluation",
+          "duration": 25,
+          "labSlug": "prompt-evaluation"
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "Prompt 评估 理解检查",
+          "description": "Prompt 评估 理解检查",
+          "duration": 2
+        }
+      ],
+      "labs": [
+        {
+          "source": "prompt-lab",
+          "slug": "prompt-evaluation"
+        }
+      ],
+      "learns": [],
+      "learningMaterial": "<h2>实验目标</h2>\n<p>在 Prompt Lab 中练习评估 Prompt 的效果。</p>\n<h3>你会练习</h3>\n<ul>\n<li>用测试集评估 RAG 系统的 Prompt：准确率、拒答率</li>\n<li>A/B 对比两个不同 System Prompt 的效果</li>\n<li>用 LLM-as-Judge 自动打分</li>\n</ul>",
+      "title_en": "Lab: Prompt 评估",
+      "description_en": "Prompt interactive lab: Prompt 评估. Hands-on practice in browser with instant validation.",
+      "index": 87,
+      "interactiveLabType": "prompt",
+      "_id": "69e7112eb636532acae3b515"
+    },
+    {
+      "code": "L101",
+      "title": "Tool Calling, MCP & CLI Integration",
+      "description": "第七期 W6 理论课。先学习确定性的 function/tool calling 与 MCP protocol contract，再用 FastMCP 快速实现 typed Python server，并建立 server/client、tools/resources/prompts 与 CLI integration 心智模型；Pi Agent Harness 用于比较统一模型接口、Agent runtime 与 coding CLI 的边界，不把 Pi core 误写为 MCP SDK。覆盖 command、args、env、working directory、stdio、tool discovery、权限和常见启动错误。Remote MCP、OAuth、云部署与集中式 observability 留到后续 production 阶段。",
+      "type": "Lesson",
+      "isLive": true,
+      "duration": 90,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Function/tool calling：schema、arguments 与 structured result",
+          "description": "Function/tool calling：schema、arguments 与 structured result",
+          "duration": 15
+        },
+        {
+          "order": 2,
+          "type": "SYSTEM_DESIGN",
+          "title": "MCP protocol contract：server、client、tools、resources 与 prompts",
+          "description": "MCP protocol contract：server、client、tools、resources 与 prompts",
+          "duration": 15
+        },
+        {
+          "order": 3,
+          "type": "CONCEPT",
+          "title": "MCP 与普通 API、tool calling、Agent 的边界",
+          "description": "MCP 与普通 API、tool calling、Agent 的边界",
+          "duration": 10
+        },
+        {
+          "order": 4,
+          "type": "DEMO",
+          "title": "FastMCP typed server + CLI integration：command、args、env 与 working directory",
+          "description": "FastMCP typed server + CLI integration：command、args、env 与 working directory",
+          "duration": 15
+        },
+        {
+          "order": 5,
+          "type": "DEMO",
+          "title": "stdio lifecycle、stdout protocol 与 stderr logging",
+          "description": "stdio lifecycle、stdout protocol 与 stderr logging",
+          "duration": 10
+        },
+        {
+          "order": 6,
+          "type": "DEMO",
+          "title": "Tool discovery、manual call；比较 Pi Agent Harness 的 CLI/runtime 边界",
+          "description": "Tool discovery、manual call；比较 Pi Agent Harness 的 CLI/runtime 边界",
+          "duration": 10
+        },
+        {
+          "order": 7,
+          "type": "SECURITY",
+          "title": "Secrets、permission、tool allowlist 与 human confirmation",
+          "description": "Secrets、permission、tool allowlist 与 human confirmation",
+          "duration": 10
+        },
+        {
+          "order": 8,
+          "type": "TROUBLESHOOTING",
+          "title": "路径、环境变量、启动和协议输出故障",
+          "description": "路径、环境变量、启动和协议输出故障",
+          "duration": 5
+        }
+      ],
+      "learns": [
+        "Function/tool calling：schema、arguments 与 structured result",
+        "MCP protocol contract：server、client、tools、resources 与 prompts",
+        "MCP 与普通 API、tool calling、Agent 的边界",
+        "FastMCP typed server + CLI integration：command、args、env 与 working directory",
+        "stdio lifecycle、stdout protocol 与 stderr logging",
+        "Tool discovery、manual call；比较 Pi Agent Harness 的 CLI/runtime 边界",
+        "Secrets、permission、tool allowlist 与 human confirmation",
+        "路径、环境变量、启动和协议输出故障"
+      ],
+      "learningMaterial": "<h2>Build MCP Server</h2>\n<pre><code>from mcp.server import Server\napp = Server(\"my-tools\")\n\n@app.tool()\nasync def query_db(sql: str) -> str:\n    return json.dumps(db.execute(sql))\n\n@app.tool()\nasync def send_email(to: str, subject: str, body: str) -> str:\n    return f\"Sent to {to}\"</code></pre>\n<p>docstring 成为 Agent 描述，type hint 自动生成 Schema。</p>",
+      "title_en": "Tool Calling, MCP & CLI Integration",
+      "description_en": "Cohort 7 Week 6 theory. Start with deterministic function and tool calling and the MCP protocol contract, then use FastMCP to implement a typed Python server quickly. Build a clear model of servers, clients, tools, resources, prompts, and CLI integration. Use Pi Agent Harness to compare a unified model API, agent runtime, and coding CLI without misrepresenting Pi core as an MCP SDK. Cover commands, arguments, environment variables, working directories, stdio, tool discovery, permissions, and common startup failures. Remote MCP, OAuth, cloud deployment, and centralised observability are deferred.",
+      "index": 119,
+      "_id": "69e71131b636532acae3b55d",
+      "cohort7Status": "CONFIRMED_THEORY",
+      "cohort7Week": 6,
+      "cohort7Track": "theory",
+      "cohort7SessionOrder": 11,
+      "level": "中级",
+      "cohort7Libraries": {
+        "core": [
+          {
+            "name": "MCP TypeScript SDK",
+            "type": "oss",
+            "role": "Build typed MCP clients and servers with Zod schemas.",
+            "url": "https://ts.sdk.modelcontextprotocol.io/v2/"
+          },
+          {
+            "name": "MCP Python SDK",
+            "type": "oss",
+            "role": "Build the same protocol boundary in Python with typed tools and resources.",
+            "url": "https://py.sdk.modelcontextprotocol.io/"
+          },
+          {
+            "name": "FastMCP",
+            "type": "oss",
+            "role": "Implement a typed Python MCP server quickly after the underlying protocol contract is clear.",
+            "url": "https://gofastmcp.com/"
+          },
+          {
+            "name": "MCP Inspector",
+            "type": "oss",
+            "role": "Inspect schemas, capabilities, tool results, and protocol errors interactively.",
+            "url": "https://github.com/modelcontextprotocol/inspector"
+          }
+        ],
+        "ecosystem": [
+          {
+            "name": "Pi Agent Harness (pi-mono)",
+            "type": "oss",
+            "role": "Recognise a popular unified LLM API, agent runtime, and coding-agent CLI; do not misrepresent Pi core as a native MCP SDK.",
+            "url": "https://github.com/earendil-works/pi"
+          }
+        ]
+      }
+    },
+    {
+      "title": "MCP 实战项目 01",
+      "description": "实战项目 Part 1：从一个真实需求出发——比如「给公司 Sales 团队做一个能自动查 CRM + 生成 Proposal + 发邮件的 AI 助手」——完整走一遍需求拆解、MCP 架构选型、Server 端开发。这是 Bootcamp 里最接近真实工作的一节课，写出来的代码直接能放进 Portfolio。",
+      "type": "Lesson",
+      "isLive": false,
+      "duration": 120,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "项目需求与架构设计",
+          "description": "项目需求与架构设计",
+          "duration": 30
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "实操：MCP Server 开发",
+          "description": "实操：MCP Server 开发",
+          "duration": 45
+        },
+        {
+          "order": 3,
+          "type": "LAB",
+          "title": "实操：Client 集成",
+          "description": "实操：Client 集成",
+          "duration": 45
+        }
+      ],
+      "code": "L105",
+      "index": 122,
+      "description_en": "Project Part 1: starting from a real brief — e.g. 'build an AI assistant that queries the CRM, drafts a proposal, and emails the client' for a sales team — walk the full loop of requirements breakdown, MCP architecture decisions, and Server-side implementation. The closest session in the bootcamp to actual on-the-job work; the code ships straight into your portfolio.",
+      "learningMaterial": "<h2>这节直播课解决什么问题</h2><p>你会照着文档写一个返回 <code>hello world</code> 的 MCP Server，但真正工程化时立刻卡住：Notion API token 怎么安全注入？Slack 的 <code>chat.postMessage</code> 错了要不要抛异常？文件系统 tool 怎么防止越权读 <code>/etc/passwd</code>？这节课从零敲一个集成<strong>本地文件 + Notion + Slack</strong>的 MCP Server，120 分钟内从 <code>bun init</code> 到能在 Claude Desktop 里说「把我今天的 git commit 记录发到 Notion 日报页，然后在 #daily Slack 频道通知一声」。每一行代码你都会写到，包括 <code>package.json</code>、<code>tsconfig.json</code>、打包脚本。</p><h2>课前你要会什么</h2><ul><li>TypeScript 基础（<code>interface</code> / <code>async/await</code> / generics）</li><li>Notion Integration 创建流程：<a href=\"https://www.notion.so/my-integrations\">notion.so/my-integrations</a> → 创建内部集成 → 拿到 <code>secret_xxx</code> → 把目标页面 Share → Connect to integration</li><li>Slack Bot 创建：api.slack.com/apps → Create New App → OAuth Scopes 加 <code>chat:write</code> → Install to Workspace → 拿到 <code>xoxb-</code> token</li><li>懂 zod 的基础用法（<code>z.object</code> / <code>z.string</code> / <code>.parse()</code>）</li></ul><h2>项目目录结构</h2><pre><code>mcp-devtools/\n├── src/\n│   ├── index.ts             # 入口，创建 Server 实例\n│   ├── tools/\n│   │   ├── filesystem.ts    # read_file / list_dir / write_file\n│   │   ├── notion.ts        # create_page / append_block\n│   │   └── slack.ts         # send_message\n│   ├── schemas.ts           # zod schema 集中定义\n│   └── utils/sandbox.ts     # 路径白名单校验\n├── dist/                    # 构建产物\n├── package.json\n├── tsconfig.json\n└── README.md</code></pre><h2>package.json 关键字段</h2><pre><code>{\n  \"name\": \"mcp-devtools\",\n  \"version\": \"0.1.0\",\n  \"type\": \"module\",\n  \"bin\": { \"mcp-devtools\": \"dist/index.js\" },\n  \"scripts\": {\n    \"build\": \"tsc && chmod +x dist/index.js\",\n    \"dev\": \"tsc --watch\",\n    \"inspect\": \"npx @modelcontextprotocol/inspector node dist/index.js\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.0.4\",\n    \"@notionhq/client\": \"^2.2.15\",\n    \"@slack/web-api\": \"^7.8.0\",\n    \"zod\": \"^3.23.8\",\n    \"zod-to-json-schema\": \"^3.23.5\"\n  },\n  \"devDependencies\": { \"typescript\": \"^5.6.3\", \"@types/node\": \"^22.9.0\" }\n}</code></pre><p><strong>重点</strong>：<code>type: \"module\"</code> + <code>bin</code> + 构建后 <code>chmod +x</code>，这样宿主能直接当可执行文件 spawn。<code>tsconfig.json</code> 用 <code>\"module\": \"NodeNext\"</code>，<code>\"outDir\": \"dist\"</code>，首行要是 <code>#!/usr/bin/env node</code>（打包后手动加到 dist/index.js 开头）。</p><h2>核心代码：Tool 注册</h2><pre><code>import { Server } from \"@modelcontextprotocol/sdk/server/index.js\";\nimport { StdioServerTransport } from \"@modelcontextprotocol/sdk/server/stdio.js\";\nimport {\n  CallToolRequestSchema,\n  ListToolsRequestSchema,\n} from \"@modelcontextprotocol/sdk/types.js\";\nimport { z } from \"zod\";\nimport zodToJsonSchema from \"zod-to-json-schema\";\n\nconst server = new Server(\n  { name: \"mcp-devtools\", version: \"0.1.0\" },\n  { capabilities: { tools: {} } },\n);\n\nconst ReadFileArgs = z.object({ path: z.string().describe(\"absolute path\") });\nconst CreateNotionPageArgs = z.object({\n  parentPageId: z.string(),\n  title: z.string().min(1).max(200),\n  content: z.string(),\n});\n\nserver.setRequestHandler(ListToolsRequestSchema, async () => ({\n  tools: [\n    {\n      name: \"read_file\",\n      description: \"Read a file inside the allowed sandbox directories\",\n      inputSchema: zodToJsonSchema(ReadFileArgs),\n    },\n    {\n      name: \"create_notion_page\",\n      description: \"Create a sub-page under a Notion parent page\",\n      inputSchema: zodToJsonSchema(CreateNotionPageArgs),\n    },\n    // ...send_slack_message 同理\n  ],\n}));\n\nserver.setRequestHandler(CallToolRequestSchema, async (req) =&gt; {\n  try {\n    switch (req.params.name) {\n      case \"read_file\": {\n        const args = ReadFileArgs.parse(req.params.arguments);\n        const text = await readSandboxed(args.path);\n        return { content: [{ type: \"text\", text }] };\n      }\n      case \"create_notion_page\": {\n        const args = CreateNotionPageArgs.parse(req.params.arguments);\n        const page = await createNotionPage(args);\n        return { content: [{ type: \"text\", text: `Created: ${page.url}` }] };\n      }\n      default:\n        throw new Error(`Unknown tool: ${req.params.name}`);\n    }\n  } catch (err) {\n    return {\n      isError: true,\n      content: [{ type: \"text\", text: `Error: ${(err as Error).message}` }],\n    };\n  }\n});\n\nawait server.connect(new StdioServerTransport());</code></pre><h2>错误处理：isError 而不是 throw</h2><p>MCP 规范里，业务错误（文件不存在、API 返回 4xx）应该返回 <code>{ isError: true, content: [...] }</code>，让 LLM 看到错误文本后自己决定重试还是换方案。只有协议级错误（参数缺失、tool 不存在）才抛 JSON-RPC Error。上面代码的 <code>try/catch</code> 把所有错都转成 isError 响应，是最省心的做法。</p><h2>直播课现场会做什么 demo</h2><ol><li><strong>15 分钟</strong> — <code>bun init</code> → 安装依赖 → 写 <code>package.json</code> / <code>tsconfig.json</code> → 第一次跑 <code>npm run inspect</code> 看到空 tool 列表</li><li><strong>25 分钟</strong> — 实现 <code>read_file</code> / <code>list_dir</code>，加路径白名单（只允许 <code>~/mcp-sandbox</code> 下），用 Inspector 测越权请求被拒</li><li><strong>30 分钟</strong> — 接 Notion：用 <code>@notionhq/client</code> 的 <code>pages.create</code> 建子页，直播处理 <code>object_not_found</code>（因为 parent page 没 share 给集成）</li><li><strong>20 分钟</strong> — 接 Slack <code>chat.postMessage</code>，处理 <code>not_in_channel</code>（bot 没被邀请）</li><li><strong>30 分钟</strong> — 接到 Claude Desktop，完整演示「读本地 TODO.md → 转成 Notion 日报 → Slack 通知」一条链，全程 5 个 tool call，大约 8k token 消耗</li></ol><h2>课后作业</h2><p>把这套 Server 扩展成<strong>个人 Daily Report Agent</strong>：</p><ul><li>加 <code>list_git_commits</code> tool（读 <code>~/repos</code> 下任意仓库的今日 commit）</li><li>加 <code>read_calendar_ics</code> tool（读本地 <code>.ics</code> 文件的今日事件）</li><li>加 <code>generate_daily_markdown</code> tool（把前两个的输出拼成 Markdown）</li><li>在 Claude Desktop 里输入「生成今天的日报并发 Slack」，LLM 自己编排 4 次 tool call 完成</li></ul><p><strong>验收标准</strong>：README 里写清每个 tool 的 input schema；<code>npm run inspect</code> 能看到全部 tool；Notion 页的 block 至少用到 <code>heading_2</code> 和 <code>bulleted_list_item</code> 两种 block type；Slack 消息带 <code>blocks</code>（不是纯 text）；全链路一次跑完不报错，Claude Desktop 里 token 消耗 &lt; 15k。</p><h2>踩坑警告</h2><table><thead><tr><th>错误</th><th>真因</th><th>修法</th></tr></thead><tbody><tr><td>Notion API 返回 <code>object_not_found</code>，但页面明明存在</td><td>Integration 没被 Share 到那个 parent page</td><td>Notion 里打开 parent → 右上 Share → Connect to → 选你的集成</td></tr><tr><td>Slack <code>chat.postMessage</code> 返回 <code>not_in_channel</code></td><td>Bot 没被 <code>/invite</code> 进频道</td><td>在目标频道输 <code>/invite @your-bot</code></td></tr><tr><td>zod 校验失败但错误消息对 LLM 不友好</td><td>直接把 ZodError 原文丢出去了</td><td>catch 住 ZodError，用 <code>err.flatten().fieldErrors</code> 转成可读文本</td></tr><tr><td>读大文件（&gt; 1MB）把 Claude 塞爆 context</td><td>没做大小限制</td><td>read_file 里加 <code>statSync(path).size &gt; 500_000</code> 就拒；或返回前 200 行 + 提示</td></tr><tr><td>宿主里改一次代码就得重启一次很痛苦</td><td>stdio server 是常驻进程</td><td>开发期用 MCP Inspector（自带热重载入口），跑通再接宿主</td></tr></tbody></table><h2>完成这节你能</h2><ul><li>从零打包一个发布级 MCP Server（<code>package.json</code> + <code>bin</code> + shebang + chmod）</li><li>用 zod + <code>zod-to-json-schema</code> 同时管住运行时校验和 LLM 看到的 schema</li><li>把 Notion / Slack 这种 SaaS SDK 稳定接到 MCP，处理好 token、权限、错误语义</li><li>用 <code>isError: true</code> 让 LLM 自己恢复，而不是让 Server 崩掉</li></ul>",
+      "_id": "69e71132b636532acae3b577"
+    },
+    {
+      "title": "MCP 实战项目 02",
+      "description": "实战项目 Part 2：把 Part 1 的 Server 从“能跑”做到“能上线”——多个 Tool 协同调用顺序、不同用户看不同数据的权限控制、出错了怎么告警、客户演示的时候怎么在 Claude Desktop 里跑得顺。课堂最后现场 Demo + Code Review，讲师一条条给你挑问题。",
+      "type": "Lesson",
+      "isLive": false,
+      "duration": 120,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "多 Tool 协同与权限",
+          "description": "多 Tool 协同与权限",
+          "duration": 30
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "实操：测试与部署",
+          "description": "实操：测试与部署",
+          "duration": 45
+        },
+        {
+          "order": 3,
+          "type": "LAB",
+          "title": "Demo & Review",
+          "description": "项目展示与代码审查",
+          "duration": 45
+        }
+      ],
+      "code": "L106",
+      "index": 123,
+      "description_en": "Project Part 2: promote the Server from Part 1 from 'it runs' to 'it ships' — orchestrating multiple Tool calls, per-user permission scoping, failure alerting, and making the Claude Desktop demo flow smoothly for real stakeholders. Ends with live demo and code review where the instructor critiques every submission line by line.",
+      "learningMaterial": "<h2>这节直播课解决什么问题</h2><p>上节课接的是公网 SaaS，token 泄漏最多赔个额度；这节课要接<strong>企业 PostgreSQL 主库</strong>——DDL 权限、客户手机号、员工薪资都在里面。一旦 LLM 被 prompt injection 骗出一条 <code>DROP TABLE users</code>，人就废了。这节课把生产 MCP 的三个硬要求讲透：tool 参数强校验、SQL 白名单 + 只读连接池、sensitive 字段脱敏，外加 Redis 做 rate limit 和审计日志。最后部署到内网 Docker，Cursor 通过 Streamable HTTP 接入。</p><h2>课前你要会什么</h2><ul><li>PostgreSQL 基础：role / grant / <code>pg_hba.conf</code>、连接池概念</li><li>Redis 基础：<code>INCR</code> + <code>EXPIRE</code> 做限流、<code>XADD</code> 做审计流</li><li>Docker Compose 能起 <code>postgres:16</code> + <code>redis:7</code> + 自建 MCP Server 三个容器</li><li>上节课的项目结构你得能独立写出</li></ul><h2>安全架构</h2><table><thead><tr><th>层</th><th>控制手段</th><th>具体做法</th></tr></thead><tbody><tr><td>网络</td><td>只在内网暴露</td><td>Docker bridge network，不 <code>expose</code> 到宿主 <code>0.0.0.0</code>；VPN 内才能访问</td></tr><tr><td>认证</td><td>Bearer token</td><td>Streamable HTTP 的 <code>Authorization</code> header，MCP Server 校验后才处理 RPC</td></tr><tr><td>数据库账号</td><td>最小权限</td><td>专用 role <code>mcp_reader</code>，<code>GRANT SELECT ON SELECTED TABLES</code>，不给写权限和系统表</td></tr><tr><td>SQL</td><td>AST 白名单</td><td>用 <code>pg-query-parser</code> 解析 SQL，只放行 <code>SELECT</code>，拒 <code>INSERT/UPDATE/DELETE/DROP/TRUNCATE/CREATE/ALTER</code></td></tr><tr><td>参数</td><td>zod schema</td><td>每个 tool 都有强类型 schema，LLM 传错参数直接 isError</td></tr><tr><td>脱敏</td><td>字段级 mask</td><td>配置 <code>sensitiveColumns: [\"phone\", \"email\", \"salary\"]</code>，查询结果 <code>phone</code> 变 <code>138****1234</code></td></tr><tr><td>限流</td><td>Redis 计数</td><td>每 user + 每 tool 每分钟最多 20 次调用，超了返回 <code>rate_limited</code></td></tr><tr><td>审计</td><td>Redis Stream</td><td>每次 tool 调用写 <code>audit:stream</code>，运维侧用 <code>XREAD</code> 消费</td></tr></tbody></table><h2>Tool 参数校验（zod 版）</h2><pre><code>import { z } from \"zod\";\n\nconst QueryCustomerArgs = z.object({\n  customerId: z.string().uuid(),                     // 必须是 UUID\n  fields: z.array(z.enum([\n    \"id\", \"name\", \"phone\", \"email\", \"created_at\",\n  ])).min(1).max(5),                                 // 字段白名单\n  includeSensitive: z.boolean().default(false),      // 默认脱敏\n});\n\nconst SearchOrdersArgs = z.object({\n  startDate: z.string().regex(/^\\d{4}-\\d{2}-\\d{2}$/),\n  endDate: z.string().regex(/^\\d{4}-\\d{2}-\\d{2}$/),\n  status: z.enum([\"pending\", \"paid\", \"refunded\"]).optional(),\n  limit: z.number().int().min(1).max(100).default(20),\n});</code></pre><p>关键在 <code>z.enum</code> 锁字段名——LLM 再怎么 hallucination，也查不到 <code>password_hash</code>。</p><h2>只读连接池 + 读写分离</h2><pre><code>import pg from \"pg\";\n\nconst readOnlyPool = new pg.Pool({\n  host: process.env.PG_RO_HOST,            // 只读副本\n  user: \"mcp_reader\",\n  password: process.env.PG_RO_PASSWORD,\n  database: \"app\",\n  max: 10,                                  // 池子最多 10 连\n  idleTimeoutMillis: 30_000,\n  statement_timeout: 5000,                  // 单条 SQL 最多跑 5s\n});\n\n// DDL 上先跑：\n// CREATE ROLE mcp_reader LOGIN PASSWORD 'xxx';\n// GRANT CONNECT ON DATABASE app TO mcp_reader;\n// GRANT USAGE ON SCHEMA public TO mcp_reader;\n// GRANT SELECT ON customers, orders, products TO mcp_reader;\n// REVOKE SELECT ON employee_salaries FROM mcp_reader;</code></pre><p>直播会现场故意用写账号跑 <code>UPDATE</code>，演示被 <code>permission denied for table</code> 拒——哪怕 SQL 白名单漏了，数据库这一层还能兜住。</p><h2>脱敏函数</h2><pre><code>const SENSITIVE = new Set([\"phone\", \"email\", \"id_number\", \"bank_account\"]);\n\nfunction maskRow(row: Record&lt;string, unknown&gt;, showSensitive: boolean) {\n  if (showSensitive) return row;\n  const out: Record&lt;string, unknown&gt; = {};\n  for (const [k, v] of Object.entries(row)) {\n    if (SENSITIVE.has(k) &amp;&amp; typeof v === \"string\") {\n      if (k === \"phone\" &amp;&amp; v.length === 11) {\n        out[k] = v.slice(0, 3) + \"****\" + v.slice(-4);\n      } else if (k === \"email\") {\n        const [user, domain] = v.split(\"@\");\n        out[k] = user.slice(0, 2) + \"***@\" + domain;\n      } else {\n        out[k] = \"***\";\n      }\n    } else {\n      out[k] = v;\n    }\n  }\n  return out;\n}</code></pre><h2>Redis 限流 + 审计</h2><pre><code>import Redis from \"ioredis\";\nconst redis = new Redis(process.env.REDIS_URL!);\n\nasync function checkRateLimit(userId: string, toolName: string) {\n  const key = `rl:${userId}:${toolName}:${Math.floor(Date.now() / 60_000)}`;\n  const count = await redis.incr(key);\n  if (count === 1) await redis.expire(key, 70);\n  if (count &gt; 20) throw new Error(\"rate_limited: 20/min\");\n}\n\nasync function audit(userId: string, toolName: string, args: unknown) {\n  await redis.xadd(\n    \"audit:stream\", \"*\",\n    \"user\", userId,\n    \"tool\", toolName,\n    \"args\", JSON.stringify(args),\n    \"ts\", String(Date.now()),\n  );\n}</code></pre><h2>直播课现场会做什么 demo</h2><ol><li><strong>20 分钟</strong> — 起 <code>docker compose up</code>：postgres（预灌 1 万条假 customer 数据）+ redis + mcp-server 三个容器</li><li><strong>30 分钟</strong> — 实现 <code>query_customer</code> / <code>search_orders</code> 两个 tool，带 zod 校验和脱敏，Inspector 里跑 <code>includeSensitive: true</code> 看到明文、<code>false</code> 看到 <code>138****5678</code></li><li><strong>20 分钟</strong> — 故意传 <code>fields: [\"password_hash\"]</code>，演示 zod 直接拒；再传一个非 UUID 的 customerId，看到 <code>ZodError</code> 友好输出</li><li><strong>20 分钟</strong> — 现场试图让 LLM 注入 <code>1' OR '1'='1</code>——因为全部走参数化查询 + 字段白名单，攻击失效</li><li><strong>20 分钟</strong> — 把 MCP Server 切到 Streamable HTTP 模式，配 nginx 加 Bearer token，Cursor 远程连入，从浏览器调用到数据库查询全链路</li><li><strong>10 分钟</strong> — <code>redis-cli XREAD</code> 看审计流，每次调用都有一条，带 userId / toolName / args / 时间戳</li></ol><h2>课后作业</h2><p>基于今天的骨架，做一个<strong>客服 Agent 后台 MCP Server</strong>：</p><ul><li><code>find_customer_by_phone(phone)</code>—— 传入手机号（脱敏匹配：允许 <code>138****1234</code> 形式），返回客户基础信息</li><li><code>get_recent_orders(customerId, limit)</code>—— 返回最近订单，金额大于 1 万的自动标 <code>high_value</code></li><li><code>search_refund_cases(customerId)</code>—— 用 Redis 缓存 5 分钟（<code>SET key value EX 300</code>）</li><li>所有 tool 都写审计，超速限流</li></ul><p><strong>验收标准</strong>：有 <code>docker-compose.yml</code> 一键起；DB 初始化脚本自动创建 <code>mcp_reader</code> role 并赋权；Cursor 通过 Streamable HTTP 能调用；写一个 10 条真实客服问题的自测脚本（如「查一下 13812345678 最近 3 个月的订单」），全链路跑通；审计流里能看到每次调用。</p><h2>踩坑警告</h2><table><thead><tr><th>现象</th><th>真因</th><th>修法</th></tr></thead><tbody><tr><td>Docker 容器内 <code>pg</code> 连接超时</td><td>Compose 服务名写错，或没用 bridge 网络</td><td>用 <code>service_name</code> 作为 host（<code>host: \"postgres\"</code>）；检查 <code>networks</code> 段</td></tr><tr><td>LLM 能问出脱敏前的原始数据</td><td>日志里 console.log 了 row 明文</td><td>生产关掉所有 row-level 日志；要调试用 <code>NODE_ENV=dev</code> gate 住</td></tr><tr><td><code>statement_timeout</code> 没生效，慢查询把池子打爆</td><td>设在了 pool 选项但版本不支持</td><td>改用连接初始化：<code>pool.on('connect', c =&gt; c.query(\"SET statement_timeout = 5000\"))</code></td></tr><tr><td>Redis 限流 key 永远不过期</td><td>第一次 INCR 后忘了 EXPIRE</td><td>判断 <code>count === 1</code> 时再 EXPIRE；或用 <code>SET key 0 EX 60 NX</code> + <code>INCR</code> 两步组合</td></tr><tr><td>审计流膨胀到几个 G</td><td><code>XADD</code> 没设上限</td><td>用 <code>XADD audit:stream MAXLEN ~ 100000 ...</code>，保留最近 10 万条</td></tr></tbody></table><h2>完成这节你能</h2><ul><li>设计并实现一个生产级 MCP Server，不会被 prompt injection 拖进数据库</li><li>用 zod + SQL 白名单 + DB role 三层防线，任何一层挡住都不会出事</li><li>接通企业内部 PostgreSQL / Redis，带限流和审计，可以过内网安全评审</li><li>用 Streamable HTTP + Bearer token 把 MCP Server 部署成团队共享服务</li></ul>",
+      "_id": "69e71132b636532acae3b57c"
+    },
+    {
+      "code": "L119",
+      "title": "Build a Bounded CareKind Agent",
+      "description": "第七期 W9 实践课。使用 W8 MCP tools 构建受控单 Agent，完成 task state、Action/Observation schema、最小 tool loop、allowlist、maximum steps、termination、timeout/retry/fallback、human-review gate、trace 与失败测试。本周不做长期 resident memory、Multi-Agent、自动 Confirm 或真实系统写回。",
+      "type": "Lesson",
+      "isLive": true,
+      "duration": 120,
+      "steps": [
+        {
+          "order": 1,
+          "type": "REVIEW",
+          "title": "验证 W8 MCP tools 与权限边界",
+          "description": "验证 W8 MCP tools 与权限边界",
+          "duration": 10
+        },
+        {
+          "order": 2,
+          "type": "WORKSHOP",
+          "title": "定义 Agent State、Action 与 Observation schema",
+          "description": "定义 Agent State、Action 与 Observation schema",
+          "duration": 15
+        },
+        {
+          "order": 3,
+          "type": "LAB",
+          "title": "实现最小 ReAct/tool loop",
+          "description": "实现最小 ReAct/tool loop",
+          "duration": 25
+        },
+        {
+          "order": 4,
+          "type": "SECURITY",
+          "title": "加入 tool allowlist 与参数 validation",
+          "description": "加入 tool allowlist 与参数 validation",
+          "duration": 10
+        },
+        {
+          "order": 5,
+          "type": "RELIABILITY",
+          "title": "加入 maximum steps、termination 与循环检测",
+          "description": "加入 maximum steps、termination 与循环检测",
+          "duration": 15
+        },
+        {
+          "order": 6,
+          "type": "RELIABILITY",
+          "title": "加入 timeout、retry 与 fallback",
+          "description": "加入 timeout、retry 与 fallback",
+          "duration": 15
+        },
+        {
+          "order": 7,
+          "type": "GOVERNANCE",
+          "title": "接入 Human Review 与副作用边界",
+          "description": "接入 Human Review 与副作用边界",
+          "duration": 15
+        },
+        {
+          "order": 8,
+          "type": "EVALUATION",
+          "title": "测试失败路径并检查完整 trace",
+          "description": "测试失败路径并检查完整 trace",
+          "duration": 15
+        }
+      ],
+      "learningMaterial": "<h1>课程：Agent 详解 — 构建第一个 Agent</h1><p><strong>适合程度</strong>：零基础 · 面向 AI Engineer 训练营学员<br><strong>目标</strong>：带你从理论到实践，理解 Agent 的核心构件（LLM、工具、规划/执行、记忆、观测等），并手把手构建第一个可运行的 Agent 原型，学会在工程中安全、可控地把工具能力交给模型调用。</p><hr><h2>1. 引言（Introduction）</h2><p>在单次问答之外，“Agent” 能让模型<strong>自主决定何时调用外部能力（工具）、如何组合多步操作、以及何时停止并给出答案</strong>。这把 LLM 从“回答机”升级为“会做事的助手”：它可以检索文档、运行计算、调用 API、查询数据库并把结果整合。学习构建 Agent 是把 LLM 工程化、用于真实产品与自动化任务的关键一步。本课既讲概念，也提供可运行的入门代码，让你能快速把 Agent 用到教学项目或 Demo 中。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 什么是 Agent？</h3><p><strong>Agent = LLM（决策器） + Tools（工具） + Planner/Executor（规划与执行） + Memory（记忆） + Trace（观测/日志）</strong>。<br>Agent 的运行模式通常是循环的：模型产生 <strong>Thought（思路）</strong> → 决定发出 <strong>Action（调用某个工具）</strong> → 工具执行并返回 <strong>Observation（观测）</strong> → 模型根据观测继续思考或最终输出 <strong>Final Answer</strong>。</p><h3>2.2 Agent 的主要构件</h3><ul><li><p><strong>LLM（决策器）</strong>：负责思考与决策（是否调用工具、调用哪个工具、如何构造工具参数）。</p></li><li><p><strong>Tool（工具）</strong>：封装外部能力（检索、计算、HTTP API、文件读写、RAG QA 等）。工具应有 <code>name</code>、<code>func</code>、<code>description</code>。</p></li><li><p><strong>Planner / Executor</strong>：Planner（或 LLM 本身）生成步骤，Executor 执行工具并把结果反馈。</p></li><li><p><strong>Memory（记忆）</strong>：会话历史或中间状态（便于多步骤任务保持上下文）。</p></li><li><p><strong>Trace / Logging</strong>：记录每轮 <code>Thought/Action/Observation</code>，便于调试、复现与审计。</p></li><li><p><strong>Stop Criteria（停止条件）</strong>：最大步数、模型输出 <code>Final Answer</code>、超时或成本阈值，必须明确。</p></li></ul><h3>2.3 Tool 设计要点</h3><ul><li><p><strong>单一职责</strong>：每个工具尽量只做一件事，便于测试与重试。</p></li><li><p><strong>结构化 IO</strong>：工具输入与输出用 JSON/结构化格式，避免解析脆弱。</p></li><li><p><strong>幂等性</strong>：工具最好幂等，便于重试。</p></li><li><p><strong>权限与安全</strong>：严格控制工具权限（尤其是写操作、shell 执行或网络访问）。</p></li><li><p><strong>错误规范</strong>：标准化错误返回，便于 Agent 判断与重试策略。</p></li></ul><h3>2.4 常见 Agent 类型与范式</h3><ul><li><p><strong>ReAct（Reasoning + Action）</strong>：交替输出 <code>Thought</code> 与 <code>Action</code>，Action 调用工具并且把 <code>Observation</code> 回填，直到模型给出 <code>Final Answer</code>。</p></li><li><p><strong>Planner-Executor</strong>：先由模型或 Planner 生成完整步骤计划，再逐步执行并允许 Planner 调整计划。</p></li><li><p><strong>Tool-using Agent</strong>：把复杂能力（例如 RAG QA）封装为单个工具，Agent 把它作为一个能力来使用。</p></li></ul><h3>2.5 安全、可控与可观测性</h3><ul><li><p><strong>限制工具范围</strong>、给每个工具最小权限。</p></li><li><p><strong>记录每次工具调用与参数</strong>（不可记录敏感信息或要做脱敏）。</p></li><li><p><strong>对模型生成参数做校验</strong>（类型、范围、白名单）。</p></li><li><p><strong>设置步数与成本上限</strong>，并实现降级策略（例如用缓存或返回检索片段）。</p></li></ul><hr><h2>3. 实践示例（Practical Examples）</h2><p>下面给出几个从最简单到稍复杂的示例（均为教学级别，生产需做安全/稳定性增强）。</p><blockquote><p>说明：示例使用 Python，LangChain 和 OpenAI 的思想，运行前请安装对应依赖并配置 API Key。</p></blockquote><hr><h3>3.1 示例 1：最小 Agent（Calculator + Search，LangChain 风格）</h3><pre><code># minimal_agent.py\nfrom langchain import OpenAI\nfrom langchain.agents import Tool, initialize_agent\n\n# LLM（决策器）\nllm = OpenAI(temperature=0)\n\n# 定义两个工具（教学示例）\ndef calculator(input_str: str) -&gt; str:\n    try:\n        # 教学用 eval，生产禁止直接 eval\n        return str(eval(input_str))\n    except Exception as e:\n        return f\"Error: {e}\"\n\ndef search_docs(query: str) -&gt; str:\n    # 这里用伪实现：实际应调用检索或 RAG pipeline\n    return f\"Found docs for '{query}': [doc1, doc2]\"\n\ntools = [\n    Tool(name=\"Calculator\", func=calculator, description=\"Performs arithmetic expressions.\"),\n    Tool(name=\"SearchDocs\", func=search_docs, description=\"Searches documents and returns matches.\")\n]\n\n# 初始化 Agent\nagent = initialize_agent(tools, llm, agent=\"zero-shot-react-description\", verbose=True)\n\n# 使用 Agent\nprint(agent.run(\"Find the population of country X and compute 10% of it.\"))\n</code></pre><p><strong>要点</strong>：LangChain 的 <code>initialize_agent(..., agent=\"zero-shot-react-description\")</code> 内部已实现 ReAct 风格的交互，<code>verbose=True</code> 会输出模型的 <code>Thought/Action/Observation</code>。</p><hr><h3>3.2 示例 2：把 RAG QA 封装为 Tool（让 Agent 能直接“查文档”）</h3><pre><code># agent_with_rag_tool.py\nfrom langchain.agents import Tool, initialize_agent\nfrom langchain.chat_models import ChatOpenAI\n\n# 假设已有 rag_qa(question) -&gt; \"answer with sources\"\ndef rag_qa(question: str) -&gt; str:\n    # 调用你自己的 RAG pipeline 并返回带来源的答案\n    return \"Answer: ... \\nSources: [file.pdf#p3#c2]\"\n\ntool = Tool(name=\"DocumentQA\", func=rag_qa, description=\"Answer questions using uploaded documents.\")\n\nllm = ChatOpenAI(temperature=0)\nagent = initialize_agent([tool], llm, agent=\"zero-shot-react-description\", verbose=True)\n\nprint(agent.run(\"Summarize the key points about project scheduling.\"))\n</code></pre><p><strong>优点</strong>：把复杂的检索+生成拆成单个工具，Agent 可把文档问答作为“能力”调用，便于组合复杂任务（例如先查证再生成幻灯检测报告）。</p><hr><h3>3.3 示例 3：带 Memory 的多步 Agent（LangChain）</h3><pre><code>from langchain.memory import ConversationBufferMemory\nfrom langchain.agents import initialize_agent\n\nmemory = ConversationBufferMemory(memory_key=\"chat_history\", return_messages=True)\nagent = initialize_agent(tools, llm, agent=\"zero-shot-react-description\", memory=memory, verbose=True)\n\nprint(agent.run(\"Find sales data for product A.\"))\nprint(agent.run(\"Compare that to last month's numbers.\"))  # 利用 memory 保持上下文\n</code></pre><p><strong>注意</strong>：Memory 会占用 token，生产中需做摘要或裁剪控制。</p><hr><h3>3.4 示例 4：自实现简化 ReAct Loop（对底层机制有帮助）</h3><pre><code># simple_react.py (伪代码)\nimport re, openai\nopenai.api_key = \"...\"\n\nTOOLS = {\n    \"Search\": lambda q: f\"search results for {q}\",\n    \"Calculator\": lambda expr: str(eval(expr))\n}\n\nPROMPT_HEADER = \"\"\"You are an agent. Use format:\nThought: ...\nAction: ToolName[args]\nObservation: ...\nWhen done: Final Answer: ...\n\"\"\"\n\ndef call_llm(prompt):\n    r = openai.ChatCompletion.create(model=\"gpt-4o\", messages=[{\"role\":\"user\",\"content\":prompt}], temperature=0)\n    return r['choices'][0]['message']['content']\n\ndef parse_action(output):\n    m = re.search(r\"Action:\\s*([A-Za-z_][A-Za-z0-9_]*)\\[(.*)\\]\", output)\n    if m:\n        return (\"action\", m.group(1), m.group(2).strip())\n    m2 = re.search(r\"Final Answer:\\s*(.*)\", output, re.S)\n    if m2:\n        return (\"final\", m2.group(1).strip(), None)\n    return (None,None,None)\n\ndef react_loop(question, max_steps=6):\n    history = PROMPT_HEADER + \"\\nQuestion: \" + question + \"\\n\"\n    for _ in range(max_steps):\n        out = call_llm(history)\n        typ, tool, arg = parse_action(out)\n        if typ == \"final\":\n            return tool\n        if typ == \"action\":\n            obs = TOOLS.get(tool, lambda x: f\"Unknown tool {tool}\")(arg)\n            history += out + \"\\nObservation: \" + obs + \"\\n\"\n        else:\n            return out\n    return \"Stopped: reached max steps\"\n</code></pre><p><strong>优点</strong>：透明、易于调试，但需处理解析脆弱性与安全问题（例如不要在生产上用 <code>eval</code>）。</p><hr><h2>4. 最佳实践 / 常见陷阱（Best Practices / Common Pitfalls）</h2><h3>最佳实践</h3><ol><li><p><strong>工具应单一职责且有清晰 contract（schema）</strong>，输入/输出用 JSON。</p></li><li><p><strong>限制 Agent 权限，并对工具调用做严格校验与白名单</strong>（避免任意执行）。</p></li><li><p><strong>记录完整 Trace（Thought/Action/Observation）</strong>，便于复现与审计。</p></li><li><p><strong>设置停止条件（最大步数、超时、成本阈值）</strong> 防止无限循环或费用暴涨。</p></li><li><p><strong>工具设计为幂等与可重试</strong>，实现合理的错误返回与退避重试策略。</p></li><li><p><strong>在高风险场景加入 verifier/审批环节</strong>：在最终输出前用另一个模型或规则校验关键断言。</p></li><li><p><strong>用 Memory 谨慎</strong>：记忆会消耗 tokens，需摘要/裁剪策略。</p></li><li><p><strong>做沙箱测试与攻击模拟</strong>：模拟恶意或畸形输入，确保工具与校验能安全应对。</p></li><li><p><strong>监控工具调用频率与成本</strong>：记录每次调用，做成本限额与告警。</p></li><li><p><strong>逐步放开权限</strong>：先在本地/受控环境试验 Agent，再逐步放到生产。</p></li></ol><h3>常见陷阱</h3><ul><li><p><strong>直接暴露 Shell/数据库写入等危险能力给 Agent</strong>（极易被滥用）。</p></li><li><p><strong>不做输入校验就执行模型生成的参数</strong>，容易注入或异常。</p></li><li><p><strong>没有明确停止条件</strong>，导致无限调用工具。</p></li><li><p><strong>忽略日志</strong>，发生问题后无法追踪 Agent 决策流程。</p></li><li><p><strong>把所有逻辑塞在单个工具里</strong>，造成难以测试与复用。</p></li><li><p><strong>过度依赖自动化</strong>：在高风险场景保留人工复核。</p></li></ul><hr><h2>5. 总结（Summary）</h2><ul><li><p><strong>Agent 把“会思考的 LLM”扩展为“会做事的系统”</strong>：模型负责决策，工具负责可靠执行。</p></li><li><p><strong>构建 Agent 的关键</strong>：定义可调用的工具（单一职责、结构化 IO、幂等）、设计清晰的交互格式（Thought/Action/Observation）、设置停止与安全策略，并对每次调用做日志与校验。</p></li><li><p><strong>从小做起</strong>：先实现 Calculator+Search 的小 Agent，再把 RAG QA 封装为工具交给 Agent，最后加入 memory、verifier 与监控。</p></li><li><p><strong>工程要点</strong>：安全、可重试、可追溯、成本控制与严格测试是 Agent 能投入生产的前提。</p></li></ul><hr><h3>练习建议（Homework）</h3><ol><li><p>用 LangChain 实现一个最小 Agent（Calculator + Search），并演示一个多步问题（搜索→计算→汇报）。</p></li><li><p>把你已有的 RAG pipeline 封为 <code>DocumentQA</code> 工具，让 Agent 调用并生成“查证后给出答案”的流程。</p></li><li><p>为 Agent 加入 Trace 记录（JSON），并写一个脚本把 trace 可视化成步骤列表（用于课堂讲解）。</p></li><li><p>做安全测试：让模型尝试调用不存在的工具或传入恶意参数，观察你的输入校验与日志是否能捕获并拒绝。</p></li></ol>",
+      "title_en": "Build a Bounded CareKind Agent",
+      "description_en": "Cohort 7 Week 9 practice. Build a bounded single agent over the Week 8 MCP tools with task state, action and observation schemas, a minimal tool loop, allowlists, stopping conditions, reliability controls, human review, traces, and failure tests. Do not add long-term resident memory, multi-agent behaviour, automatic confirmation, or real system write-back.",
+      "index": 107,
+      "_id": "69e71135b636532acae3b672",
+      "cohort7Status": "CONFIRMED_PRACTICE",
+      "cohort7Week": 9,
+      "cohort7Track": "practice",
+      "cohort7SessionOrder": 18,
+      "level": "高级",
+      "learns": [
+        "验证 W8 MCP tools 与权限边界",
+        "定义 Agent State、Action 与 Observation schema",
+        "实现最小 ReAct/tool loop",
+        "加入 tool allowlist 与参数 validation",
+        "加入 maximum steps、termination 与循环检测",
+        "加入 timeout、retry 与 fallback",
+        "接入 Human Review 与副作用边界",
+        "测试失败路径并检查完整 trace"
+      ],
+      "cohort7Libraries": {
+        "core": [
+          {
+            "name": "Zod / Pydantic",
+            "type": "oss",
+            "role": "Keep agent state, tool contracts, and stop conditions explicit.",
+            "url": "https://zod.dev/"
+          },
+          {
+            "name": "OpenTelemetry",
+            "type": "oss",
+            "role": "Trace each bounded loop step, tool call, latency, and failure.",
+            "url": "https://opentelemetry.io/docs/languages/js/"
+          }
+        ],
+        "ecosystem": [
+          {
+            "name": "LangGraph",
+            "type": "oss",
+            "role": "Compare the hand-built bounded loop with a graph runtime.",
+            "url": "https://langchain-ai.github.io/langgraph/"
+          },
+          {
+            "name": "PydanticAI",
+            "type": "oss",
+            "role": "Compare the same contracts in a typed agent framework.",
+            "url": "https://ai.pydantic.dev/"
+          }
+        ]
+      }
+    },
+    {
+      "code": "L127",
+      "title": "A2A Protocol 入门",
+      "description": "A2A 是 Google 2025 年 4 月推的 Agent-to-Agent 通信协议，现在已经有 Salesforce、SAP、ServiceNow 等 50+ 厂商加入。这篇快速过一遍 Agent Card 能力发现、Task 生命周期、streaming 消息格式——为什么 Google 要推这个协议、它和 Anthropic MCP 是什么关系，读完五分钟心里有数。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 5,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "A2A 协议详解",
+          "description": "A2A 协议详解",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "检查",
+          "description": "检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>Agent SDK 实战对比</h2>\n<p>同一任务三框架实现。</p>\n<h3>对比维度</h3>\n<ul><li>代码量 — OpenAI 最少，LangGraph 最多</li><li>可控性 — LangGraph 最高，OpenAI 最低</li><li>调试 — LangGraph + LangSmith 可视化</li></ul>",
+      "title_en": "A2A Protocol Introduction",
+      "description_en": "A2A is the Agent-to-Agent protocol Google launched in April 2025, now backed by 50+ vendors including Salesforce, SAP, and ServiceNow. A quick tour of Agent Cards for capability discovery, task lifecycles, and streaming message formats — plus why Google pushed this and how it relates to Anthropic's MCP.",
+      "index": 113,
+      "_id": "69e71137b636532acae3b6a7"
+    },
+    {
+      "title": "从零构建 AI Coding Agent Harness",
+      "description": "120 分钟直播，从空文件写一个能读代码、改代码、跑测试的 mini Claude Code。用 Anthropic SDK + 100 行 Python 实现 Tool 注册、message loop、context truncation、流式输出。结课时你手里有一个能跑通真实 bugfix 流程的 Agent，也明白了那些商业 Agent 产品背后其实没有魔法——只是写对了 loop。",
+      "type": "Lesson",
+      "isLive": false,
+      "duration": 120,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "项目初始化",
+          "description": "Python 项目结构、Anthropic SDK 安装、基础配置。定义 3 个核心 Tool：read_file、write_file、run_command。",
+          "duration": 15
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "实操：Tool 定义与注册",
+          "description": "用 Anthropic tool_use API 格式定义 Tool JSON Schema。每个 Tool 对应一个 Python 函数。注册到 tools 参数。",
+          "duration": 25
+        },
+        {
+          "order": 3,
+          "type": "LAB",
+          "title": "实操：Message Loop 实现",
+          "description": "核心循环：发送消息 → 检查 stop_reason → 如果是 tool_use 则执行 → 把结果注入 → 继续循环。处理 end_turn vs tool_use。",
+          "duration": 30
+        },
+        {
+          "order": 4,
+          "type": "LAB",
+          "title": "实操：Context Management",
+          "description": "实现 token 计数、对话截断（保留 system + 最近 N 条）、Tool Result 大小限制。",
+          "duration": 25
+        },
+        {
+          "order": 5,
+          "type": "LAB",
+          "title": "实操：跑通一个自动 Bugfix",
+          "description": "给 agent 一个有 bug 的 Python 文件，让它自动读文件→定位问题→修改→跑测试→确认修复。",
+          "duration": 25
+        }
+      ],
+      "code": "L140",
+      "index": 134,
+      "description_en": "120 minutes, live, from empty file to a mini Claude Code that reads code, edits it, and runs tests. Anthropic SDK plus ~100 lines of Python: tool registration, message loop, context truncation, streaming. By the end you have a working agent that completes real bugfixes—and you'll realize commercial agent products aren't magic, they just wrote the loop correctly.",
+      "learningMaterial": "<h2>这节直播课解决什么问题</h2><p>180 分钟之后你的终端里能跑 <code>mycode \"修复 src/parser.ts 第 42 行的 off-by-one 错误\"</code>，它会读文件、定位问题、改代码、跑测试，全程你不需要点击任何东西。这不是视频演示——是你自己敲出来的代码。课程覆盖四个难点：<strong>tool loop</strong>（while 循环怎么写不死锁）、<strong>context window 管理</strong>（超过 150k token 时怎么智能截断）、<strong>session persistence</strong>（崩了能恢复）、<strong>安全 exec</strong>（<code>bash</code> tool 怎么不被 prompt injection 删你的 <code>~</code>）。</p><h2>课前你要会什么</h2><ul><li>上一节 Harness 基础的内容</li><li>Python 3.11+ 或 Node 20+，直播统一用 Python（更短、概念更清晰）</li><li>有 Anthropic API key 和 $20 充值（跑一次完整 demo 大约消耗 200k token，成本约 $3-4）</li><li>基础 Linux shell（<code>subprocess</code>、<code>signal</code>、文件 IO）</li></ul><h2>项目结构</h2><pre><code>mycode/\n├── mycode/\n│   ├── __init__.py\n│   ├── __main__.py          # CLI 入口，python -m mycode\n│   ├── agent.py             # 核心 tool loop\n│   ├── tools/\n│   │   ├── bash.py\n│   │   ├── read_file.py\n│   │   ├── write_file.py\n│   │   └── edit.py          # string_replace 式编辑\n│   ├── context.py           # token 估算 + 截断\n│   ├── session.py           # JSONL 持久化\n│   └── prompts.py\n├── pyproject.toml\n└── README.md</code></pre><h2>核心 1：Tool Loop</h2><pre><code>from anthropic import Anthropic\nfrom mycode.tools import TOOLS, run_tool\nfrom mycode.context import trim_messages\nfrom mycode.session import Session\n\nclient = Anthropic()\n\ndef run_task(session: Session, user_msg: str):\n    session.append({\"role\": \"user\", \"content\": user_msg})\n\n    while True:\n        messages = trim_messages(session.messages, max_tokens=150_000)\n        resp = client.messages.create(\n            model=\"claude-opus-4-5\",\n            system=SYSTEM_PROMPT,\n            tools=TOOLS,\n            messages=messages,\n            max_tokens=8192,\n        )\n        session.append({\"role\": \"assistant\", \"content\": resp.content})\n\n        if resp.stop_reason == \"end_turn\":\n            for blk in resp.content:\n                if blk.type == \"text\":\n                    print(blk.text)\n            return\n\n        if resp.stop_reason == \"tool_use\":\n            results = []\n            for blk in resp.content:\n                if blk.type != \"tool_use\":\n                    continue\n                try:\n                    out = run_tool(blk.name, blk.input)\n                    results.append({\n                        \"type\": \"tool_result\",\n                        \"tool_use_id\": blk.id,\n                        \"content\": out[:20000],   # 单个 tool 输出限长\n                    })\n                except Exception as e:\n                    results.append({\n                        \"type\": \"tool_result\",\n                        \"tool_use_id\": blk.id,\n                        \"content\": f\"Error: {e}\",\n                        \"is_error\": True,\n                    })\n            session.append({\"role\": \"user\", \"content\": results})</code></pre><p>三个关键细节：(1) tool_use 块即使只有一个，也得全部收集完再一次性 append user 消息，不能逐个发；(2) 单个 tool 返回值要截断（20k char 对应约 5k token），不然 ripgrep 一个大目录就把 context 撑爆；(3) <code>is_error: true</code> 让 LLM 知道这个 tool 失败了，而不是假装成功。</p><h2>核心 2：Context Window 管理</h2><pre><code>def estimate_tokens(text: str) -&gt; int:\n    # 粗估：英文 4 char/token，中文 1.5 char/token\n    # 生产用 tiktoken 或 anthropic.count_tokens\n    ascii_chars = sum(1 for c in text if ord(c) &lt; 128)\n    other = len(text) - ascii_chars\n    return ascii_chars // 4 + int(other / 1.5)\n\ndef trim_messages(messages: list, max_tokens: int) -&gt; list:\n    # 保留 system（外部传）+ 最近 N 轮 + 最早的 user 任务描述\n    total = sum(estimate_tokens(serialize(m)) for m in messages)\n    if total &lt;= max_tokens:\n        return messages\n    # 保留第一条 user（原始任务）+ 最近 20 轮\n    kept = [messages[0]] + messages[-40:]  # 40 条消息约 20 轮 assistant/user 对\n    # 再不够就把中间的 tool_result 压缩成 \"&lt;tool output omitted&gt;\"\n    ...</code></pre><p>直播时会展示一个 30 轮对话的真实 session：原始 180k token，trim 后 120k token，保留率 66%。注意：<strong>第一条 user 消息（原始任务）必须保留</strong>，否则 agent 跑着跑着会忘了自己在干啥。</p><h2>核心 3：Session 持久化</h2><pre><code>import json, uuid, pathlib\n\nclass Session:\n    def __init__(self, sid: str | None = None):\n        self.sid = sid or uuid.uuid4().hex[:8]\n        self.path = pathlib.Path.home() / \".mycode\" / f\"{self.sid}.jsonl\"\n        self.path.parent.mkdir(parents=True, exist_ok=True)\n        self.messages = self._load()\n\n    def _load(self):\n        if not self.path.exists(): return []\n        return [json.loads(l) for l in self.path.read_text().splitlines() if l.strip()]\n\n    def append(self, msg: dict):\n        self.messages.append(msg)\n        with self.path.open(\"a\") as f:\n            f.write(json.dumps(msg, default=str) + \"\\n\")</code></pre><p>JSONL 的好处：崩了不丢数据（每条消息落盘独立一行），<code>tail -f</code> 能实时看 agent 在做啥，<code>mycode --resume &lt;sid&gt;</code> 就能恢复。</p><h2>核心 4：安全 bash tool</h2><pre><code>BLOCKED = [\"rm -rf /\", \"rm -rf ~\", \":(){:|:&amp;};:\", \"mkfs\", \"dd if=/dev/zero\"]\nALLOWED_ROOT = pathlib.Path.home() / \"mycode-workspace\"\n\ndef run_bash(cmd: str, timeout: int = 30) -&gt; str:\n    for bad in BLOCKED:\n        if bad in cmd:\n            raise PermissionError(f\"Blocked pattern: {bad}\")\n    proc = subprocess.run(\n        [\"bash\", \"-c\", cmd],\n        cwd=ALLOWED_ROOT,                  # 锁在 sandbox 里\n        capture_output=True, text=True,\n        timeout=timeout,\n        env={**os.environ, \"HOME\": str(ALLOWED_ROOT)},  # HOME 也改掉\n    )\n    return f\"exit={proc.returncode}\\nstdout:\\n{proc.stdout}\\nstderr:\\n{proc.stderr}\"</code></pre><p>黑名单只是兜底，真正靠谱的是 <code>cwd</code> + <code>HOME</code> 锁沙箱。直播时会演示：让 agent 尝试 <code>rm -rf ~</code>，被拦下；尝试 <code>cd ..</code>（能 cd 但 <code>rm</code> 的路径解析还是基于当前进程，已锁）。</p><h2>edit tool（string_replace 式）</h2><p>抄 Claude Code 的成熟做法：不用行号，用<strong>旧字符串完全匹配替换</strong>。优点：LLM 不会数错行号；缺点：要求 old_str 在文件里唯一。</p><pre><code>def edit_file(path: str, old_str: str, new_str: str) -&gt; str:\n    p = pathlib.Path(path)\n    text = p.read_text()\n    count = text.count(old_str)\n    if count == 0:\n        raise ValueError(f\"old_str not found in {path}\")\n    if count &gt; 1:\n        raise ValueError(f\"old_str appears {count} times in {path}, must be unique\")\n    p.write_text(text.replace(old_str, new_str, 1))\n    return f\"Edited {path}\"</code></pre><h2>直播课现场会做什么 demo（180 分钟）</h2><ol><li><strong>20 分钟</strong> — 搭骨架，<code>pyproject.toml</code> + CLI 入口 + 空 agent，能接受 <code>mycode \"hi\"</code> 打印一句话</li><li><strong>30 分钟</strong> — 加 4 个 tool（bash / read / write / edit），逐个写 + Inspector 测，stop_reason 分支写完</li><li><strong>30 分钟</strong> — 跑第一个任务：「在 workspace 里写一个 fibonacci.py 并测试」，走完 5 次 tool call 全链路</li><li><strong>30 分钟</strong> — 塞进 context 管理：灌 30 轮对话进去，看 trim 前后 token 数，验证原始任务没丢</li><li><strong>20 分钟</strong> — 加 session 持久化：中途 <code>Ctrl+C</code>，<code>mycode --resume</code> 回来继续</li><li><strong>30 分钟</strong> — 最终压测：跑「修复 requests 库一个真实的 GitHub issue」，对比同一个任务在真 Claude Code 里的表现</li><li><strong>20 分钟</strong> — 答疑 + 加 bonus：怎么接 <code>Ctrl+C</code> 优雅退出（signal handler）</li></ol><h2>课后作业</h2><p>在今天的 Harness 上加两个能力：</p><ol><li><strong>Streaming 模式</strong>：用 <code>client.messages.stream()</code> 实时打印 assistant 的 text，边输出边显示，体验接近真 Claude Code</li><li><strong>TODO list tool</strong>：加 <code>update_todos(todos: list)</code> tool，让 agent 自己拆任务、标记完成，每次更新都打到屏幕上</li></ol><p><strong>验收标准</strong>：<code>mycode \"用 Flask 写一个 URL 缩短服务，包含测试，跑通所有测试\"</code> 能在 5 分钟内自主完成；中途 Ctrl+C 后 resume 能继续；token 总消耗 &lt; 80k；代码 push 到 GitHub，README 里 gif 演示全程。</p><h2>踩坑警告</h2><table><thead><tr><th>错误</th><th>真因</th><th>修法</th></tr></thead><tbody><tr><td>Tool loop 死循环（agent 一直调用同一个 tool）</td><td>tool 返回空字符串或错误没传回去</td><td>永远返回非空 content；错误用 <code>is_error: true</code> 明示</td></tr><tr><td>Context 塞爆（API 返 <code>prompt is too long</code>）</td><td>大文件 read_file / 大目录 ls 没截断</td><td>每个 tool 返回值硬上限（20k char）；超了提示 LLM 用 <code>head -100</code> 或 <code>grep</code></td></tr><tr><td><code>stop_reason</code> 有时是 <code>max_tokens</code> 不是 <code>end_turn</code></td><td>assistant 写长了被 max_tokens 截断</td><td>检测到 <code>max_tokens</code>，把这条消息加进 history 然后继续 loop（不发新 user）</td></tr><tr><td>Session JSONL 文件越来越大</td><td>每次 loop 都写全量</td><td>只 append 新消息（不 rewrite）；定期 compact（把老 tool_result 换成占位）</td></tr><tr><td>edit tool 替换错地方</td><td>old_str 在文件里出现多次</td><td>明确抛 <code>ValueError(\"appears N times, must be unique\")</code>，让 LLM 自己加上下文再试</td></tr><tr><td>Ctrl+C 后进程僵死</td><td>没处理 KeyboardInterrupt，subprocess 没 kill</td><td>注册 signal handler；subprocess 用 <code>subprocess.run(..., timeout=)</code></td></tr></tbody></table><h2>完成这节你能</h2><ul><li>从零实现一个能跑真实 coding 任务的 mini Claude Code，总代码量不超过 800 行</li><li>讲清 tool loop 里每个 stop_reason 分支的处理逻辑，遇到异常能自己修</li><li>做出工业级的 context 截断策略，30 轮对话不崩</li><li>读 Claude Code / Codex CLI 源码时不再需要逐行查 API 文档，能直接看懂架构</li></ul>",
+      "_id": "69e7113ab636532acae3b6ed"
+    },
+    {
+      "code": "L169",
+      "title": "Lab: LLM 评估",
+      "description": "LLM 工程实验：LLM 评估。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabSlug": "llm-evaluation",
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "LLM 评估",
+          "description": "LLM 评估",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "LLM Lab: llm-evaluation",
+          "description": "LLM Lab: llm-evaluation",
+          "duration": 25,
+          "labSlug": "llm-evaluation"
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "LLM 评估 理解检查",
+          "description": "LLM 评估 理解检查",
+          "duration": 2
+        }
+      ],
+      "labs": [
+        {
+          "source": "llm-lab",
+          "slug": "llm-evaluation"
+        }
+      ],
+      "learns": [],
+      "learningMaterial": "<h2>实验目标</h2>\n<p>LLM 评估实操。</p>\n<ul><li>用 LLM-as-Judge 给回答打分</li><li>实现 Rubric-based 评估</li><li>对比不同模型在同一测试集上的表现</li></ul>",
+      "title_en": "Lab: LLM 评估",
+      "description_en": "LLM engineering lab: LLM 评估. Hands-on practice in browser with instant validation.",
+      "index": 159,
+      "interactiveLabType": "llm",
+      "_id": "69e71141b636532acae3b7af"
+    },
+    {
+      "code": "L170",
+      "title": "Lab: Prompt 评估",
+      "description": "Prompt 互动实验：Prompt 评估。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabSlug": "prompt-evaluation",
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Prompt 评估",
+          "description": "Prompt 评估",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "Prompt Lab: prompt-evaluation",
+          "description": "Prompt Lab: prompt-evaluation",
+          "duration": 25,
+          "labSlug": "prompt-evaluation"
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "Prompt 评估 理解检查",
+          "description": "Prompt 评估 理解检查",
+          "duration": 2
+        }
+      ],
+      "labs": [
+        {
+          "source": "prompt-lab",
+          "slug": "prompt-evaluation"
+        }
+      ],
+      "learns": [],
+      "learningMaterial": "<h2>实验目标</h2>\n<p>Prompt 评估实操。</p>\n<ul><li>设计评估测试集（30+ 条）</li><li>A/B 测试两个 Prompt 版本</li><li>统计准确率、一致性、拒答率</li></ul>",
+      "title_en": "Lab: Prompt 评估",
+      "description_en": "Prompt interactive lab: Prompt 评估. Hands-on practice in browser with instant validation.",
+      "index": 160,
+      "interactiveLabType": "prompt",
+      "_id": "69e71141b636532acae3b7b9"
+    },
+    {
+      "code": "L178",
+      "title": "Red-teaming Playbook",
+      "description": "面试官最爱问的安全题：「如果有人在你的 Agent 里触发 SQL 注入式的 prompt，你怎么防？」这节给一份可直接用的 Red-teaming 清单：DAN 越狱、系统提示词泄漏、多轮记忆污染、工具滥用、角色扮演绕过——每一类都配真实 payload 和缓解方案，下次做 AI 项目交付前自己先跑一遍，比上线后被用户捅出来强得多。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 5,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "常见 LLM 攻击手法和防御策略",
+          "description": "常见 LLM 攻击手法和防御策略",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "Red-teaming 检查",
+          "description": "Red-teaming 检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>Capstone Project 展示</h2>\n<p>ISA（Industry Solution Assignment）最终版 Demo Day——展示你为自己行业做的主线项目（例如教育行业可以做成 Intelligent Study Assistant，这只是其中一种实现）。</p>\n<h3>Demo 要求</h3>\n<ol><li>展示 RAG 问答能力（基于你领域的私有文档，示例：课程文档）</li><li>展示 Agent 工具调用（搜索、计算）</li><li>展示评估指标（Faithfulness、延迟、成本）</li><li>说明技术选型理由</li></ol>",
+      "title_en": "Red-teaming Playbook",
+      "description_en": "Interviewers love to ask: 'someone injects a SQL-style prompt into your agent—how do you defend?' This lesson hands you a red-team checklist you can run before every AI project ships: DAN jailbreaks, system prompt leaks, multi-turn context poisoning, tool misuse, role-play bypasses. Each with real payloads and mitigations.",
+      "index": 166,
+      "_id": "69e71143b636532acae3b7f3"
+    },
+    {
+      "code": "L182",
+      "title": "往期 P3 项目案例",
+      "description": "第四期 P3 孵化器的 20 个学员，12 个拿到了 AI 相关 offer——但他们选的项目方向分布很不平均：做「内部工具型」AI（给律所/会计/医院 用的 RAG）最容易拿到面试，做「通用聊天机器人」基本没人要。这节把往期所有项目案例摊开讲：什么主题容易落地、什么主题看起来炫但招聘方不买账、项目卡在中期怎么救。第五期的选题决策就看这节了。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 15,
+      "steps": [
+        {
+          "order": 1,
+          "type": "VIDEO",
+          "title": "往期优秀 P3 职业孵化项目案例分享",
+          "description": "往期优秀 P3 职业孵化项目案例分享",
+          "duration": 10
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "P3 项目选题方向：RAG 系统 / Agent 应用 / AI SaaS / 内部工具",
+          "description": "P3 项目选题方向：RAG 系统 / Agent 应用 / AI SaaS / 内部工具",
+          "duration": 3
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "P3 项目规划检查",
+          "description": "P3 项目规划检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>AI Engineer 职业路径</h2>\n<h3>角色发展</h3>\n<ul><li><strong>Junior AI Engineer</strong> — 实现 RAG/Agent，调 Prompt</li><li><strong>Senior AI Engineer</strong> — 设计 AI 架构，选型，评估体系</li><li><strong>Staff/Lead</strong> — AI 战略，团队建设，跨团队协作</li></ul>\n<h3>薪资参考（澳洲 2025）</h3>\n<table><tr><th>级别</th><th>薪资范围</th></tr><tr><td>Junior</td><td>$80K-$110K</td></tr><tr><td>Mid</td><td>$120K-$160K</td></tr><tr><td>Senior</td><td>$160K-$220K+</td></tr></table>",
+      "title_en": "往期 P3 项目案例",
+      "description_en": "Out of 20 students in the last P3 cohort, 12 landed AI offers—but the project themes that worked were not evenly distributed. Internal-tool AI (RAG for law firms, accountants, hospitals) landed the most interviews, while generic chatbots landed none. This session breaks down every past project: what themes convert, what looks flashy but recruiters ignore, and how to rescue a project that stalls mid-cohort.",
+      "index": 170,
+      "_id": "69e71144b636532acae3b808"
+    }
+  ]
+}
