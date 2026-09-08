@@ -208,6 +208,28 @@ const cohort7LessonOrder = [
   "L171",
 ];
 
+// Video inheritance is keyed by stable lesson code, never by mutable title.
+// These are the 15 usable S3 recordings found in the pre-Cohort-7 syllabus.
+// Removed/merged lesson videos are attached to the closest retained lesson so
+// students can still watch them without restoring obsolete syllabus entries.
+const cohort7InheritedVideos = {
+  L22: ["67b58a11a344e7de0e5c2b39"],
+  L23: ["67b58a11a344e7de0e5c2b40"],
+  L24: ["67b58a11a344e7de0e5c2b47"],
+  L25: ["67b58a11a344e7de0e5c2b6f"],
+  L29: ["678077891a34b016b187998f"],
+  L34: ["685a8ce76aa070c1cd358cb0"], // merged GPT Store recording
+  L68: ["67b58a12a344e7de0e5c2bb8"],
+  L75: ["67b58a12a344e7de0e5c2bb1"], // merged Introduction to LangChain
+  L16: ["6783a87eb7cbe38fcc4c0b73"], // merged LLMs Overview
+  L95: ["688b4941e4dde04ef9a70320"],
+  L102: ["69c7caccd3a18e68bc2b289d"], // Build MCP Server
+  L104: ["69ccff66d3a18e68bc810e2b"], // MCP engineering integration
+  L105: ["69d6478ffeadc80f02f8b61b"],
+  L106: ["69da3bc176e3e0c1b3a31a7c"],
+  L161: ["6a81abf927fe430dd9fd3dee"],
+};
+
 const library = (name, type, role, url) => ({ name, type, role, url });
 
 // Core Stack is used or demonstrated in the lesson. Popular Ecosystem is for
@@ -4852,6 +4874,17 @@ if (
 cohort7LessonOrder.forEach((code, index) => {
   byCode.get(code).cohort7LessonOrder = index + 1;
 });
+for (const [code, s3VideoIds] of Object.entries(cohort7InheritedVideos)) {
+  const item = byCode.get(code);
+  if (!item || item.cohort7Included === false) {
+    throw new Error(`Inherited video target must be active: ${code}`);
+  }
+  item.cohort7InheritedMedia = {
+    s3VideoIds,
+    source: "pre-cohort-7-syllabus",
+    verifiedAt: "2026-09-08",
+  };
+}
 
 const lessons = outline.phases.flatMap((phase) => phase.lessons);
 outline.totalLessons = lessons.length;
