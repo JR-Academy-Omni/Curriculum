@@ -209,24 +209,40 @@ const cohort7LessonOrder = [
 ];
 
 // Video inheritance is keyed by stable lesson code, never by mutable title.
-// These are the usable S3 recordings inherited from Cohorts 1-5. Removed or
-// merged lesson videos are attached to the closest retained Cohort 7 lesson so
-// students can still watch the recordings without restoring obsolete entries.
-// Only the transcoded master is retained when an old lesson points at both a
-// playable recording and a duplicate transcoding-queue record.
+// These are reviewed, playable S3 recordings inherited from Cohorts 1-5.
+// Every recording is mapped by its actual teaching content, not only by the
+// historical lesson title. Obsolete kickoff, Python UI, old P3 and GPT Store
+// recordings are intentionally excluded from the Cohort 7 learning path.
 const cohort7InheritedVideos = {
+  L16: [
+    "6783a87eb7cbe38fcc4c0b73", // LLMs Overview
+    "69eca4adb3806ceb61850996", // Cohort 5 GenAI Overview + Ops
+    "69ef46a78787692c36eb6018", // Cohort 5 GenAI Overview workshop recording
+  ],
   L22: ["67b58a11a344e7de0e5c2b39"],
   L23: ["67b58a11a344e7de0e5c2b40"],
   L24: ["67b58a11a344e7de0e5c2b47"],
   L25: ["67b58a11a344e7de0e5c2b6f"],
+  L28: ["69f5e67c1fcb00d9b9ce41fe"], // Transformer Architecture + API
   L29: ["678077891a34b016b187998f"],
-  L34: ["685a8ce76aa070c1cd358cb0"], // merged GPT Store recording
+  L30: ["67b58a11a344e7de0e5c2baa"], // Input Embeddings
+  L34: ["6a02bd269b6d6dd7a68c439d"], // Four Prototyping Patterns
+  L44: ["6a02be5b9b6d6dd7a68d3d78"], // AI-assisted development
+  L54: [
+    "6a0464b8eea6b4ceee4e8b6e", // Introduction to Embeddings
+    "6a052b71c80ff4c7712e684c", // Cohort 5 embeddings workshop
+    "6a054d67c80ff4c7713e5451", // Cohort 5 embeddings follow-up clip
+  ],
+  L60: [
+    "6a1545a37104b32aec20822f", // Cohort 5 RAG from Scratch workshop
+    "68e63839ee3331485fb54613", // Cohort 3 RAG from Scratch project
+  ],
   L68: ["67b58a12a344e7de0e5c2bb8"],
   L75: [
     "67b58a12a344e7de0e5c2bb1", // Introduction to LangChain
     "6a37c0c8252726820c5daca3", // RAG QA Application with LangChain
+    "6a1adc06d374933f2cb5c98c", // LangChain Expression Language
   ],
-  L16: ["6783a87eb7cbe38fcc4c0b73"], // merged LLMs Overview
   L95: ["688b4941e4dde04ef9a70320"],
   L102: ["69c7caccd3a18e68bc2b289d"], // Build MCP Server
   L103: ["6884ce8e5a6a2578189ef0ab"], // MCP source walkthrough
@@ -238,6 +254,7 @@ const cohort7InheritedVideos = {
   L112: ["6a44771c2f662a5f6da0a09a"], // Agents foundations
   L119: ["6a48f2d49d050b759be5ccea"], // Build the first Agent
   L120: ["6a4e31ada77d455038c92152"], // Production-grade Agentic RAG
+  L121: ["6a16d5de7104b32aec75b85d"], // Production RAG operations
   L122: ["6a522ff414304f16523b3113"], // Multi-Agent architectures
   L124: ["6a577c37a82b85aa904e4995"], // Multi-Agent RAG with LangGraph
   L133: ["6a5b7436105173f15c1036e4"], // Agent Memory + Mem0
@@ -258,6 +275,7 @@ const cohort7InheritedVideos = {
   L161: ["6a81abf927fe430dd9fd3dee"],
   L165: ["6a858efc27fe430dd9ef8a76"], // PEFT + QLoRA + Unsloth
   L168: ["6a8ad3ae36b871cf8ac53908"], // AI Evaluation Engineering
+  L179: ["6a1ce75713d85a7757fa1477"], // AI Engineer CV + interview workshop
   L183: ["6a7317aecf9597585bcce06d"], // playable Model Routing master
 };
 
@@ -4912,7 +4930,7 @@ for (const [code, s3VideoIds] of Object.entries(cohort7InheritedVideos)) {
   }
   item.cohort7InheritedMedia = {
     s3VideoIds,
-    source: "pre-cohort-7-syllabus",
+    source: "cohorts-1-5-reviewed",
     verifiedAt: "2026-09-08",
   };
 }

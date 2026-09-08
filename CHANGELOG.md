@@ -2,6 +2,8 @@
 
 ## 2026-09-08
 
+- 完成第五期到第七期的逐条视频继承复核：第七期现保留 51 个可播放历史录像，补齐前半段 GenAI、Transformer、Embeddings、AI Coding、RAG、LCEL、Production RAG 与求职内容，修正 Prototype 错挂 GPT Store，并排除标题与实际录像不符的旧 RAG 条目（`ai-engineer-bootcamp`）
+
 - 修复第七期往期录播继承范围，将第五期后半段 23 个已转码的 RAG、MCP、Agent、Memory、Harness、Model Routing、Fine-Tuning 与 Evaluation 视频映射到当前课程，并排除一个不可播放的重复转码队列记录（`ai-engineer-bootcamp`）
 
 ## 2026-08-31
