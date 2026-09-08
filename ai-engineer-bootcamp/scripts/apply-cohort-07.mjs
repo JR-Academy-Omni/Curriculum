@@ -217,7 +217,6 @@ const cohort7InheritedVideos = {
   L16: [
     "6783a87eb7cbe38fcc4c0b73", // LLMs Overview
     "69eca4adb3806ceb61850996", // Cohort 5 GenAI Overview + Ops
-    "69ef46a78787692c36eb6018", // Cohort 5 GenAI Overview workshop recording
   ],
   L22: ["67b58a11a344e7de0e5c2b39"],
   L23: ["67b58a11a344e7de0e5c2b40"],
@@ -226,12 +225,11 @@ const cohort7InheritedVideos = {
   L28: ["69f5e67c1fcb00d9b9ce41fe"], // Transformer Architecture + API
   L29: ["678077891a34b016b187998f"],
   L30: ["67b58a11a344e7de0e5c2baa"], // Input Embeddings
-  L34: ["6a02bd269b6d6dd7a68c439d"], // Four Prototyping Patterns
+  C7P01: ["6a649952850325ba16c508d7"], // ADLC, PRD and AI Coding workflow
   L44: ["6a02be5b9b6d6dd7a68d3d78"], // AI-assisted development
   L54: [
     "6a0464b8eea6b4ceee4e8b6e", // Introduction to Embeddings
     "6a052b71c80ff4c7712e684c", // Cohort 5 embeddings workshop
-    "6a054d67c80ff4c7713e5451", // Cohort 5 embeddings follow-up clip
   ],
   L60: [
     "6a1545a37104b32aec20822f", // Cohort 5 RAG from Scratch workshop
@@ -241,7 +239,6 @@ const cohort7InheritedVideos = {
   L75: [
     "67b58a12a344e7de0e5c2bb1", // Introduction to LangChain
     "6a37c0c8252726820c5daca3", // RAG QA Application with LangChain
-    "6a1adc06d374933f2cb5c98c", // LangChain Expression Language
   ],
   L95: ["688b4941e4dde04ef9a70320"],
   L102: ["69c7caccd3a18e68bc2b289d"], // Build MCP Server
@@ -251,14 +248,16 @@ const cohort7InheritedVideos = {
   L106: ["69da3bc176e3e0c1b3a31a7c"],
   L98: ["6a3c8cfe3febbe587d7d4cea"], // Function Calling + Tool Use
   L109: ["6a40a390942e9d8f32c91f41"], // Computer Use + Agent Ops
-  L112: ["6a44771c2f662a5f6da0a09a"], // Agents foundations
+  L112: [
+    "6a44771c2f662a5f6da0a09a", // Agents foundations
+    "6a02bd269b6d6dd7a68c439d", // Agent introduction and architecture
+  ],
   L119: ["6a48f2d49d050b759be5ccea"], // Build the first Agent
   L120: ["6a4e31ada77d455038c92152"], // Production-grade Agentic RAG
   L121: ["6a16d5de7104b32aec75b85d"], // Production RAG operations
   L122: ["6a522ff414304f16523b3113"], // Multi-Agent architectures
   L124: ["6a577c37a82b85aa904e4995"], // Multi-Agent RAG with LangGraph
   L133: ["6a5b7436105173f15c1036e4"], // Agent Memory + Mem0
-  L138: ["6a649952850325ba16c508d7"], // Harness engineering
   L140: ["6a60aef2bbc08a65e106d03b"], // Build an AI Coding Agent Harness
   L146: [
     "6a2e5bb60e22c9645a314089", // Claude Code Skills best practices
@@ -4923,6 +4922,16 @@ if (
 cohort7LessonOrder.forEach((code, index) => {
   byCode.get(code).cohort7LessonOrder = index + 1;
 });
+// Treat this reviewed map as an exact allowlist. Give every active lesson an
+// explicit (possibly empty) S3 list so releaseDto cannot inherit a removed
+// recording from the current production lesson.
+for (const item of activeLessons) {
+  item.cohort7InheritedMedia = {
+    s3VideoIds: [],
+    source: "cohorts-1-5-reviewed",
+    verifiedAt: "2026-09-08",
+  };
+}
 for (const [code, s3VideoIds] of Object.entries(cohort7InheritedVideos)) {
   const item = byCode.get(code);
   if (!item || item.cohort7Included === false) {
