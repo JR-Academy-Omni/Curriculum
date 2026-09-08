@@ -63,6 +63,151 @@ const cohort7Schedule = [
   ["L171", 13, "practice"],
 ];
 
+// Canonical Study Center order. Phase membership describes the 10-layer
+// architecture; this sequence describes the learner-facing database order.
+// Keep these concerns separate so moving a Practice lesson to its correct
+// architecture layer cannot silently move it to the wrong teaching week.
+const cohort7LessonOrder = [
+  "L16",
+  "L144a",
+  "L142b",
+  "L142a",
+  "C7P01",
+  "L44",
+  "L22",
+  "L23",
+  "L24",
+  "L25",
+  "L27",
+  "L28",
+  "L179a",
+  "C7P02",
+  "L15",
+  "L19",
+  "L29",
+  "L30",
+  "L18",
+  "L31",
+  "L32",
+  "L33a",
+  "L34",
+  "L34a",
+  "L37",
+  "C7P03",
+  "L37a",
+  "L37b",
+  "L38",
+  "L40",
+  "L41",
+  "L41a",
+  "L41b",
+  "L43",
+  "L47a",
+  "L47b",
+  "L48",
+  "L50",
+  "L52",
+  "L52a",
+  "L52b",
+  "L54",
+  "L55",
+  "L56",
+  "L57",
+  "L58",
+  "C7P04",
+  "L59",
+  "L61",
+  "L64",
+  "L65",
+  "L66",
+  "L68",
+  "L90",
+  "C7T05",
+  "C7P05",
+  "L146",
+  "L76",
+  "L79",
+  "L81a",
+  "L84",
+  "L87",
+  "L91",
+  "L93",
+  "L95",
+  "L98",
+  "L99",
+  "L100",
+  "L100a",
+  "L101",
+  "L156",
+  "C7P07",
+  "L102",
+  "L103",
+  "L107",
+  "L108",
+  "L109",
+  "L111",
+  "L112",
+  "L60",
+  "L75",
+  "L96",
+  "L113",
+  "L114",
+  "L115",
+  "L117",
+  "L118",
+  "L118b",
+  "L121",
+  "L122",
+  "L104",
+  "L105",
+  "L106",
+  "L123",
+  "L124",
+  "L127a",
+  "L132",
+  "L133",
+  "L119",
+  "L120",
+  "L110",
+  "L135",
+  "L135a",
+  "L136",
+  "L138",
+  "C7P10",
+  "L134",
+  "L141",
+  "L142",
+  "L143",
+  "L145",
+  "L149",
+  "L150",
+  "L151",
+  "L152",
+  "L154",
+  "L160",
+  "L161",
+  "L162",
+  "L165",
+  "L166",
+  "L168",
+  "L171a",
+  "C7P11",
+  "L125",
+  "L140",
+  "L183",
+  "C7P12",
+  "L126",
+  "L128",
+  "L171b",
+  "L172",
+  "L173",
+  "L176",
+  "L177",
+  "L178",
+  "L179",
+  "L171",
+];
+
 const library = (name, type, role, url) => ({ name, type, role, url });
 
 // Core Stack is used or demonstrated in the lesson. Popular Ecosystem is for
@@ -4690,6 +4835,23 @@ for (const [code, week, track] of cohort7Schedule) {
       track === "theory" ? "CONFIRMED_THEORY" : "CONFIRMED_PRACTICE";
   }
 }
+
+const activeLessons = outline.phases
+  .flatMap((phase) => phase.lessons)
+  .filter((item) => item.cohort7Included !== false);
+const activeCodes = new Set(activeLessons.map((item) => item.code));
+if (
+  cohort7LessonOrder.length !== activeLessons.length ||
+  new Set(cohort7LessonOrder).size !== cohort7LessonOrder.length ||
+  cohort7LessonOrder.some((code) => !activeCodes.has(code))
+) {
+  throw new Error(
+    "Cohort 7 database order must contain every active lesson exactly once",
+  );
+}
+cohort7LessonOrder.forEach((code, index) => {
+  byCode.get(code).cohort7LessonOrder = index + 1;
+});
 
 const lessons = outline.phases.flatMap((phase) => phase.lessons);
 outline.totalLessons = lessons.length;

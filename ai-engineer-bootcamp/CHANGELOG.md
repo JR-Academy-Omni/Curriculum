@@ -2,6 +2,8 @@
 
 ## 2026-09-08
 
+- 固定第七期 138 条 `cohort7LessonOrder`：技术 Phase 继续表达 10-layer 归属，Study Center 数据库顺序独立按已审核周序发布，防止 Practice 课因模块归类错位。
+
 - 完成 138 条有效课程的全量内容、顺序、重复与范围审核；集中重写第 67–138 条中的薄 Lab、自学入口和重复专题，保持 25 场 Live（本地）。
 
 - 完成 138 条有效课程全量内容、顺序、重复与范围审核；重写剩余薄 Lab/自学内容并固定 Theory、Practice、Advanced/Optional 边界，保留 25 场 Live（本地）。
