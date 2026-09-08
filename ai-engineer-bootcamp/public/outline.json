@@ -4949,7 +4949,15 @@
             ]
           },
           "level": "中级",
-          "cohort7LessonOrder": 55
+          "cohort7LessonOrder": 55,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a2553994c97e3de4c6c7e3b",
+              "6a294e9703015f5c157c0c6f"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "C7T07",
@@ -5205,7 +5213,14 @@
               "https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_precision/"
             ]
           },
-          "cohort7LessonOrder": 54
+          "cohort7LessonOrder": 54,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a3284b808cb2e6d653ee4a6"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "title": "Skills Engineering：可复用、可测试的 AI Coding Workflow",
@@ -5324,7 +5339,15 @@
             "C7P01",
             "C7P03"
           ],
-          "cohort7LessonOrder": 57
+          "cohort7LessonOrder": 57,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a2e5bb60e22c9645a314089",
+              "6a69dd18ddc7d8769d7b5cbe"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L138a",
@@ -7101,7 +7124,14 @@
             "recording": "selection-and-review-pending",
             "productionSync": "not-synced"
           },
-          "cohort7LessonOrder": 64
+          "cohort7LessonOrder": 64,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a2009c274c52108ffe06839"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L93a",
@@ -7522,7 +7552,14 @@
               "https://www.anthropic.com/claude/fable"
             ]
           },
-          "cohort7LessonOrder": 66
+          "cohort7LessonOrder": 66,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a3c8cfe3febbe587d7d4cea"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L99",
@@ -8067,7 +8104,14 @@
           "description_en": "A line-by-line walkthrough of the official MCP SDK source — how JSON-RPC messages flow between Server and Client, how Tools get registered and invoked, what the Transport layer actually wraps. Enough detail to answer 'have you read the MCP internals?' in an interview, and enough to debug handshake failures yourself. Replay from the most-liked session of cohort 4.",
           "learningMaterial": "<h2>这节视频要解决的问题</h2><p>Model Context Protocol（MCP）是 Anthropic 2024 年 11 月开源的协议，让 Claude、Cursor、Claude Code 等客户端可以统一地接入外部工具（Git、Postgres、Slack、文件系统、自研 API）。协议本质是 <strong>JSON-RPC 2.0 over stdio/SSE</strong>，但 SDK 封装了一层面向 Tool/Resource/Prompt 三大能力的抽象。这节录播带你打开 <code>@modelcontextprotocol/sdk</code>（TypeScript 官方实现）的源码，把 transport 和 handler 的调用链走一遍。</p><h2>项目结构快速扫</h2><pre><code># 克隆仓库\ngit clone https://github.com/modelcontextprotocol/typescript-sdk\ncd typescript-sdk\ntree src -L 2\n\nsrc/\n├── client/          # Client 端实现\n│   ├── index.ts\n│   ├── stdio.ts\n│   └── sse.ts\n├── server/          # Server 端实现\n│   ├── index.ts\n│   ├── stdio.ts     # StdioServerTransport\n│   └── sse.ts       # SSEServerTransport\n├── shared/          # Transport 抽象 + JSON-RPC\n│   ├── transport.ts\n│   └── protocol.ts\n└── types.ts         # 协议 schema (zod)\n</code></pre><p>核心就四层：<strong>types</strong>（协议定义）→ <strong>transport</strong>（传输层）→ <strong>protocol</strong>（消息循环）→ <strong>server/client</strong>（用户 API）。</p><h2>Transport：stdio vs SSE 的本质区别</h2><table><tr><th>维度</th><th>StdioServerTransport</th><th>SSEServerTransport</th></tr><tr><td>通信媒介</td><td>子进程的 stdin/stdout</td><td>HTTP + Server-Sent Events</td></tr><tr><td>启动方式</td><td>Claude Desktop 用 <code>spawn</code> 拉起本地进程</td><td>长驻 HTTP 服务，客户端 <code>POST /sse</code></td></tr><tr><td>适用场景</td><td>本地工具（文件系统、Git、Docker）</td><td>远程 SaaS（Notion、Slack、GitHub API）</td></tr><tr><td>认证</td><td>无（本地信任）</td><td>OAuth / API key</td></tr><tr><td>消息格式</td><td>每行一个 JSON（newline-delimited）</td><td><code>data: {json}\\n\\n</code> SSE 格式</td></tr></table><p>看 <code>StdioServerTransport</code> 的核心逻辑（简化版）：</p><pre><code>// src/server/stdio.ts\nexport class StdioServerTransport implements Transport {\n  private _readBuffer = new ReadBuffer();\n\n  async start() {\n    process.stdin.on(\"data\", (chunk) => {\n      this._readBuffer.append(chunk);\n      this.processReadBuffer();\n    });\n  }\n\n  private processReadBuffer() {\n    while (true) {\n      const message = this._readBuffer.readMessage();\n      if (!message) return;\n      this.onmessage?.(message);  // 触发上层 Protocol\n    }\n  }\n\n  async send(message: JSONRPCMessage) {\n    const json = JSON.stringify(message) + \"\\n\";\n    process.stdout.write(json);\n  }\n}\n</code></pre><p>关键点：<code>\\n</code> 分隔消息，<code>stdout</code> 必须绝对干净（不能有 console.log 污染，否则客户端解析失败）。这就是为什么所有 MCP 日志都要写 <code>stderr</code> 而不是 <code>stdout</code>。</p><p>SSE transport 则是这样：</p><pre><code>// src/server/sse.ts (简化)\nexport class SSEServerTransport implements Transport {\n  constructor(private _endpoint: string, private res: ServerResponse) {\n    res.writeHead(200, {\n      \"Content-Type\": \"text/event-stream\",\n      \"Cache-Control\": \"no-cache\",\n      \"Connection\": \"keep-alive\",\n    });\n  }\n\n  async send(message: JSONRPCMessage) {\n    this.res.write(`data: ${JSON.stringify(message)}\\n\\n`);\n  }\n}\n</code></pre><h2>Protocol 层：消息循环和 Handler 派发</h2><p>所有 transport 的数据最终会喂到 <code>Protocol</code>：</p><pre><code>// src/shared/protocol.ts (简化)\nexport class Protocol {\n  private _requestHandlers = new Map&lt;string, Handler&gt;();\n\n  setRequestHandler&lt;T&gt;(\n    schema: ZodType&lt;T&gt;,\n    handler: (request: T) =&gt; Promise&lt;Result&gt;\n  ) {\n    const method = schema.shape.method.value;  // e.g. \"tools/list\"\n    this._requestHandlers.set(method, async (req) =&gt; {\n      const parsed = schema.parse(req);\n      return handler(parsed);\n    });\n  }\n\n  private async _onrequest(request: JSONRPCRequest) {\n    const handler = this._requestHandlers.get(request.method);\n    if (!handler) {\n      return this._sendError(request.id, -32601, \"Method not found\");\n    }\n    try {\n      const result = await handler(request);\n      this._sendResult(request.id, result);\n    } catch (err) {\n      this._sendError(request.id, -32603, err.message);\n    }\n  }\n}\n</code></pre><h2>Tool / Resource / Prompt 三大能力</h2><p>MCP 协议里，Server 只要实现这三类请求的 handler：</p><table><tr><th>能力</th><th>用途</th><th>典型例子</th><th>关键请求</th></tr><tr><td><strong>Tools</strong></td><td>让 LLM 调用函数</td><td><code>run_sql</code>、<code>send_slack</code>、<code>git_commit</code></td><td><code>tools/list</code>、<code>tools/call</code></td></tr><tr><td><strong>Resources</strong></td><td>让 LLM 读取内容</td><td>文件、数据库表、API 响应</td><td><code>resources/list</code>、<code>resources/read</code></td></tr><tr><td><strong>Prompts</strong></td><td>预置对话模板</td><td><code>explain_code</code>、<code>summarize_pr</code></td><td><code>prompts/list</code>、<code>prompts/get</code></td></tr></table><p>从 <code>server.setRequestHandler(ListToolsRequestSchema, ...)</code> 这一行入手最能看清协议规范：</p><pre><code>// 你的 server 代码\nimport { Server } from \"@modelcontextprotocol/sdk/server/index.js\";\nimport { StdioServerTransport } from \"@modelcontextprotocol/sdk/server/stdio.js\";\nimport {\n  ListToolsRequestSchema,\n  CallToolRequestSchema,\n} from \"@modelcontextprotocol/sdk/types.js\";\n\nconst server = new Server(\n  { name: \"jr-academy-mcp\", version: \"0.1.0\" },\n  { capabilities: { tools: {} } }\n);\n\nserver.setRequestHandler(ListToolsRequestSchema, async () =&gt; ({\n  tools: [{\n    name: \"search_courses\",\n    description: \"搜索 JR Academy 课程\",\n    inputSchema: {\n      type: \"object\",\n      properties: { query: { type: \"string\" } },\n      required: [\"query\"],\n    },\n  }],\n}));\n\nserver.setRequestHandler(CallToolRequestSchema, async (req) =&gt; {\n  if (req.params.name === \"search_courses\") {\n    const results = await searchCourses(req.params.arguments.query);\n    return { content: [{ type: \"text\", text: JSON.stringify(results) }] };\n  }\n  throw new Error(`Unknown tool: ${req.params.name}`);\n});\n\nconst transport = new StdioServerTransport();\nawait server.connect(transport);\n</code></pre><p>打开 <code>src/types.ts</code> 能看到 <code>ListToolsRequestSchema</code> 是用 zod 定义的：</p><pre><code>export const ListToolsRequestSchema = RequestSchema.extend({\n  method: z.literal(\"tools/list\"),\n  params: z.optional(z.object({ cursor: z.optional(z.string()) })),\n});\n</code></pre><p>也就是说协议要求的 JSON-RPC 消息是：</p><pre><code>{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/list\",\"params\":{}}\n</code></pre><h2>完整消息流（客户端 ↔ 服务端）</h2><pre><code>Client                                    Server\n  │                                          │\n  │  1. initialize (version, capabilities)   │\n  ├─────────────────────────────────────────►│\n  │                                          │\n  │          initializeResult                │\n  │◄─────────────────────────────────────────┤\n  │                                          │\n  │  2. tools/list                           │\n  ├─────────────────────────────────────────►│\n  │          { tools: [...] }                │\n  │◄─────────────────────────────────────────┤\n  │                                          │\n  │  3. tools/call                           │\n  │     { name: \"search_courses\",            │\n  │       arguments: { query: \"ai\" } }       │\n  ├─────────────────────────────────────────►│\n  │          { content: [...] }              │\n  │◄─────────────────────────────────────────┤\n</code></pre><h2>常见误区</h2><table><tr><th>误区</th><th>事实</th></tr><tr><td>\"MCP = Function Calling\"</td><td>是 Function Calling 的 <strong>协议化 + 工具发现</strong>，核心价值是客户端 Tool 市场</td></tr><tr><td>\"stdio 更慢\"</td><td>本地 stdio 比 HTTP 快 10 倍，spawn 一次的开销只在启动</td></tr><tr><td>\"console.log 调试\"</td><td>会污染 stdout 让协议崩溃，必须用 <code>console.error</code> 或 <code>process.stderr.write</code></td></tr><tr><td>\"SSE 一定要 Node\"</td><td>Python SDK 也支持，FastMCP / mcp Python 库几行代码就能起 SSE server</td></tr><tr><td>\"MCP 只 Claude 能用\"</td><td>Cursor 0.40+、Continue、Cline 都支持，OpenAI 在 2025 年也加入了</td></tr></table><h2>视频里你会看到什么</h2><ul><li>打开 <code>typescript-sdk</code> 源码，用 VS Code Go-to-Definition 跟着调用链走：<code>Server.connect()</code> → <code>transport.start()</code> → <code>_onmessage</code> → <code>_onrequest</code> → 你注册的 handler</li><li>现场写一个最小 MCP server（20 行），注册 <code>echo</code> 工具，用 <code>npx @modelcontextprotocol/inspector</code> 调试</li><li>对比 stdio 版和 SSE 版在 Claude Desktop 配置里的区别（<code>claude_desktop_config.json</code> 里 <code>command</code> vs <code>url</code>）</li><li>用 <code>tee</code> 抓包看真实 JSON-RPC 消息流，一行一行解释</li><li>演示当你的 tool 抛异常时，客户端看到的错误长啥样，以及怎么用 <code>-32603</code> 标准错误码</li></ul><h2>学完之后你能</h2><ul><li>自己写一个 MCP server 把公司内部 API（JIRA、Confluence、内部 CRM）接入 Claude Code</li><li>读懂 <code>typescript-sdk</code> 和 <code>python-sdk</code> 源码，必要时提 PR 修 bug</li><li>选对 transport：本地工具用 stdio，团队共享的 SaaS 工具用 SSE</li><li>排查 MCP 连接问题：客户端看不到工具 → 查 <code>tools/list</code> 是否返回 / stdout 是否被污染 / initialize 是否成功</li><li>给团队做 MCP 技术选型报告，解释清楚 MCP vs LangChain Tool vs OpenAI Assistants API 的 tradeoff</li></ul>",
           "_id": "69e71131b636532acae3b56c",
-          "cohort7LessonOrder": 74
+          "cohort7LessonOrder": 74,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6884ce8e5a6a2578189ef0ab"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L103a",
@@ -8467,7 +8511,14 @@
           "index": 127,
           "_id": "69e71133b636532acae3b59a",
           "cohort7ContentRevision": "2026-09-08-final-content-audit",
-          "cohort7LessonOrder": 77
+          "cohort7LessonOrder": 77,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a40a390942e9d8f32c91f41"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L109a",
@@ -8848,7 +8899,14 @@
           },
           "cohort7ContentRevision": "2026-09-07-content-followup",
           "cohort7MaterialStatus": "OUTLINE_REVISED_ASSET_REVIEW_PENDING",
-          "cohort7LessonOrder": 79
+          "cohort7LessonOrder": 79,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a44771c2f662a5f6da0a09a"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L60",
@@ -9050,7 +9108,8 @@
           "cohort7LessonOrder": 81,
           "cohort7InheritedMedia": {
             "s3VideoIds": [
-              "67b58a12a344e7de0e5c2bb1"
+              "67b58a12a344e7de0e5c2bb1",
+              "6a37c0c8252726820c5daca3"
             ],
             "source": "pre-cohort-7-syllabus",
             "verifiedAt": "2026-09-08"
@@ -10098,7 +10157,14 @@
               }
             ]
           },
-          "cohort7LessonOrder": 90
+          "cohort7LessonOrder": 90,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a522ff414304f16523b3113"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "title": "Extract the Data Layer, then Connect MCP & CLI",
@@ -10452,7 +10518,14 @@
           "cohort7ContentRevision": "2026-09-08-final-content-audit",
           "cohort7MaterialStatus": "OUTLINE_REVISED_ASSET_REVIEW_PENDING",
           "cohort7Placement": "advanced-pool",
-          "cohort7LessonOrder": 95
+          "cohort7LessonOrder": 95,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a577c37a82b85aa904e4995"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L125a",
@@ -11169,7 +11242,14 @@
               }
             ]
           },
-          "cohort7LessonOrder": 98
+          "cohort7LessonOrder": 98,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a5b7436105173f15c1036e4"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "C7P10",
@@ -11412,7 +11492,14 @@
             "L104",
             "L112"
           ],
-          "cohort7LessonOrder": 99
+          "cohort7LessonOrder": 99,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a48f2d49d050b759be5ccea"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L120",
@@ -11458,7 +11545,14 @@
           ],
           "cohort7RequiresSubmission": false,
           "learns": [],
-          "cohort7LessonOrder": 100
+          "cohort7LessonOrder": 100,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a4e31ada77d455038c92152"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L110",
@@ -12615,7 +12709,14 @@
               }
             ]
           },
-          "cohort7LessonOrder": 105
+          "cohort7LessonOrder": 105,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a649952850325ba16c508d7"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "C7P11",
@@ -14191,7 +14292,14 @@
               "https://www.anthropic.com/claude/fable"
             ]
           },
-          "cohort7LessonOrder": 116
+          "cohort7LessonOrder": 116,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a7869f4e1fc05ab85810667"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L155",
@@ -14455,7 +14563,14 @@
             "recording": "selection-and-review-pending",
             "productionSync": "not-synced"
           },
-          "cohort7LessonOrder": 117
+          "cohort7LessonOrder": 117,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a7c566f3f0d014d6ffa47ac"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L161",
@@ -14876,7 +14991,14 @@
             "learningMaterial": "<h2>PEFT + QLoRA + Unsloth</h2>\n<p>在消费级 GPU 上微调大模型的完整流程。</p>\n<h3>QLoRA = Quantization + LoRA</h3>\n<p>先把模型量化到 4bit（省显存），再用 LoRA 做参数高效微调。8B 模型只需一张 16GB GPU。</p>\n<h3>完整流程</h3>\n<pre><code>from unsloth import FastLanguageModel\nfrom trl import SFTTrainer\n\nmodel, tokenizer = FastLanguageModel.from_pretrained(\"Llama-3.1-8B-Instruct\", load_in_4bit=True)\nmodel = FastLanguageModel.get_peft_model(model, r=16, lora_alpha=16)\n\ntrainer = SFTTrainer(model=model, tokenizer=tokenizer, train_dataset=dataset, max_seq_length=2048)\ntrainer.train()\nmodel.save_pretrained(\"my-finetuned-model\")</code></pre>"
           },
           "cohort7ContentRevision": "2026-09-07-followup-audit",
-          "cohort7LessonOrder": 120
+          "cohort7LessonOrder": 120,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a858efc27fe430dd9ef8a76"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L166",
@@ -15216,7 +15338,14 @@
           "_id": "69e71140b636532acae3b7a1",
           "cohort7ContentRevision": "2026-09-07-scope-review",
           "cohort7MaterialStatus": "OUTLINE_REVISED_ASSET_REVIEW_PENDING",
-          "cohort7LessonOrder": 122
+          "cohort7LessonOrder": 122,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a8ad3ae36b871cf8ac53908"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L168a",
@@ -15654,7 +15783,14 @@
             "C7P11"
           ],
           "cohort7RequiresSubmission": false,
-          "cohort7LessonOrder": 126
+          "cohort7LessonOrder": 126,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a60aef2bbc08a65e106d03b"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L183",
@@ -15771,7 +15907,14 @@
               }
             ]
           },
-          "cohort7LessonOrder": 127
+          "cohort7LessonOrder": 127,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a7317aecf9597585bcce06d"
+            ],
+            "source": "pre-cohort-7-syllabus",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L126",

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-08
+
+- 修复第七期往期录播继承范围，将第五期后半段 23 个已转码的 RAG、MCP、Agent、Memory、Harness、Model Routing、Fine-Tuning 与 Evaluation 视频映射到当前课程，并排除一个不可播放的重复转码队列记录（`ai-engineer-bootcamp`）
+
 ## 2026-08-31
 
 - 将逐周技术栈从 Practice 工具表升级为 Theory + Practice 的完整 AI Engineering Stack，增加模型机制、Token/Context/Cache、AI OSS、RAG/Eval/Agent/Memory/Governance，并降低通用全栈技术的视觉权重（`ai-engineer-bootcamp`）
