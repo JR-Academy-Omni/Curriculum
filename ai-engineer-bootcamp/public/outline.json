@@ -912,9 +912,11 @@
           "cohort7LessonOrder": 1,
           "cohort7InheritedMedia": {
             "s3VideoIds": [
-              "6783a87eb7cbe38fcc4c0b73"
+              "6783a87eb7cbe38fcc4c0b73",
+              "69eca4adb3806ceb61850996",
+              "69ef46a78787692c36eb6018"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -1078,7 +1080,14 @@
           "cohort7Week": 1,
           "cohort7SequenceDecision": "2026-09-07 按用户要求实际前移至 W1 对应前期课堂附近；不再把 AI Coding 入门或早期实践排在 Harness 阶段。",
           "cohort7Track": "supplement",
-          "cohort7LessonOrder": 6
+          "cohort7LessonOrder": 6,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a02be5b9b6d6dd7a68d3d78"
+            ],
+            "source": "cohorts-1-5-reviewed",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L16a",
@@ -1340,7 +1349,7 @@
             "s3VideoIds": [
               "67b58a11a344e7de0e5c2b39"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -1381,7 +1390,7 @@
             "s3VideoIds": [
               "67b58a11a344e7de0e5c2b40"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -1422,7 +1431,7 @@
             "s3VideoIds": [
               "67b58a11a344e7de0e5c2b47"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -1464,7 +1473,7 @@
             "s3VideoIds": [
               "67b58a11a344e7de0e5c2b6f"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -1702,7 +1711,14 @@
           },
           "cohort7ContentRevision": "2026-09-07-scope-review",
           "cohort7MaterialStatus": "OUTLINE_REVISED_ASSET_REVIEW_PENDING",
-          "cohort7LessonOrder": 12
+          "cohort7LessonOrder": 12,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "69f5e67c1fcb00d9b9ce41fe"
+            ],
+            "source": "cohorts-1-5-reviewed",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L179a",
@@ -1910,7 +1926,7 @@
             "s3VideoIds": [
               "678077891a34b016b187998f"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -1978,7 +1994,14 @@
           "_id": "69e71121b636532acae3b3ae",
           "cohort7ContentRevision": "2026-09-07-scope-review",
           "cohort7MaterialStatus": "OUTLINE_REVISED_ASSET_REVIEW_PENDING",
-          "cohort7LessonOrder": 18
+          "cohort7LessonOrder": 18,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "67b58a11a344e7de0e5c2baa"
+            ],
+            "source": "cohorts-1-5-reviewed",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L18",
@@ -2278,9 +2301,9 @@
           "cohort7LessonOrder": 23,
           "cohort7InheritedMedia": {
             "s3VideoIds": [
-              "685a8ce76aa070c1cd358cb0"
+              "6a02bd269b6d6dd7a68c439d"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -3801,7 +3824,16 @@
             "learningMaterial": "<h1>Input embeddings</h1><h2>1. 简介（Introduction）</h2><p><strong>本课覆盖什么 &amp; 为什么重要</strong><br>本节课讲解 Transformer 和现代 NLP 模型的第一步：<strong>输入嵌入（input embeddings）</strong>。我们把原始文本转换为数值向量，使模型能“理解”语义与上下文。输入嵌入包含：<strong>标记化（tokenization）</strong>、<strong>词/子词嵌入（embeddings）</strong>、<strong>位置编码（positional encoding）</strong>，以及<strong>填充/截断</strong>的处理。掌握这些内容，学员才能正确构造模型输入、避免常见错误，并在后续模型（如 Transformer、BERT、GPT）训练与推理中获得稳定结果。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 标记化（Tokenization）</h3><ul><li><p><strong>目的</strong>：把文本拆分为可以索引的最小单元（token），并映射到整数 ID（token id）。</p></li><li><p><strong>类型</strong>：</p><ul><li><p><strong>基于单词（word-level）</strong>：直接以空格为界（简单但词表巨大、对未登录词敏感）。</p></li><li><p><strong>子词（subword）</strong>：如 <strong>BPE（Byte-Pair Encoding）/ WordPiece / SentencePiece</strong>，把词拆成常见子词，兼顾词表大小与 OOV（未登录词）问题。</p></li><li><p><strong>字符级（character）</strong>：粒度最小，能处理任意词形变化，但序列更长。</p></li></ul></li><li><p><strong>Special tokens</strong>：模型常用特殊 token（例如 <code>[CLS]</code>, <code>[SEP]</code>, <code>[PAD]</code>, <code>[UNK]</code>, <code>[MASK]</code>），必须统一管理。</p></li></ul><h3>2.2 词/子词嵌入（Embeddings）</h3><ul><li><p><strong>嵌入矩阵</strong>：大小通常为 <code>(vocab_size, d_model)</code>，将 token id 映射为向量。</p></li><li><p><strong>学习型 vs 预训练型</strong>：</p><ul><li><p><strong>学习型（learned embeddings）</strong>：在下游模型训练时从零学得（如 Transformer 的 token embedding）。</p></li><li><p><strong>预训练词向量</strong>：如 <strong>Word2Vec / GloVe / FastText</strong>，可以作为初始化或固定（freeze）使用。</p></li></ul></li><li><p><strong>上下文无关 vs 上下文相关</strong>：</p><ul><li><p>传统词向量（Word2Vec/GloVe）是<strong>上下文无关</strong>的；相同 token 在不同句子里向量相同。</p></li><li><p>BERT/GPT 提供<strong>上下文相关</strong>的 embedding（token embedding + Transformer 产生的 contextualized embedding）。</p></li></ul></li></ul><h3>2.3 位置编码（Positional Encoding）</h3><ul><li><p><strong>原因</strong>：Transformer 无循环结构，必须显式编码序列顺序。</p></li><li><p><strong>做法</strong>：</p><ul><li><p><strong>固定 sin/cos 编码</strong>（Vaswani et al.）：可用公式生成，常见且高效。</p></li><li><p><strong>可学习位置嵌入</strong>：把位置也作为可训练向量（和 token embedding 类似）。</p></li></ul></li><li><p><strong>在输入中的组合</strong>：常把 <code>token_embedding + positional_encoding</code> 作为Transformer的输入（论文中还将结果乘以 <code>sqrt(d_model)</code>）。</p></li></ul><h3>2.4 填充（Padding）与截断（Truncation）</h3><ul><li><p><strong>Padding</strong>：把短序列填成相同长度（加入 <code>PAD</code> token）以便 batching；需要相应生成 <code>attention_mask</code>（或 padding_mask），指示模型忽略填充。</p></li><li><p><strong>Truncation（截断）</strong>：对超长序列截断，策略可为从头截断（head）、从尾截断（tail）、或保留头尾合并（head+tail），或先做摘要再输入。</p></li><li><p><strong>动态/静态填充</strong>：</p><ul><li><p><strong>静态（fixed max_len）</strong>：所有样本同一长度，简单但浪费。</p></li><li><p><strong>动态（batch padding）</strong>：按 batch 内最大长度进行填充，节省内存但实现稍复杂。</p></li></ul></li></ul><h3>2.5 输入组合（Token embedding + Positional + Segment）</h3><ul><li><p>在许多 Transformer 模型（如 BERT）中，最终输入是多个 embedding 的相加：</p><pre><code>InputEmbedding = TokenEmbedding + PositionalEmbedding + SegmentEmbedding（可选）\n</code></pre><p>其中 <code>SegmentEmbedding</code>（或 token_type_ids）用于区分句子 A/B（例如双句任务）。</p></li></ul><hr><h2>3. 实践示例（Practical Examples）</h2><p>以下示例从 tokenization 到把 embeddings 喂入 Transformer 的最小流程，包含 Hugging Face、Keras、PyTorch 示例，适合课堂演示或 lab starter。</p><h3>3.1 使用 Hugging Face Tokenizer（推荐，用于真实模型）</h3><pre><code># 安装：pip install transformers\nfrom transformers import AutoTokenizer\n\ntokenizer = AutoTokenizer.from_pretrained(\"bert-base-uncased\")\n\ntexts = [\"Hello world!\", \"Transformer models are powerful.\"]\n# 批量编码：返回 token ids 和 attention mask（以及 token_type_ids 如需要）\nenc = tokenizer(texts, padding='longest', truncation=True, max_length=32, return_tensors='pt')\nprint(enc.keys())           # dict_keys(['input_ids','token_type_ids','attention_mask'])\nprint(enc['input_ids'].shape)  # (batch_size, seq_len)\n</code></pre><p><strong>要点</strong>：<code>attention_mask</code> 中 <code>1</code> 表示有效 token，<code>0</code> 表示 padding。</p><hr><h3>3.2 Keras：从 token ids 到 Embedding + PositionalEncoding</h3><pre><code>import tensorflow as tf\nimport numpy as np\n\n# 假设我们已有 token ids 矩阵 input_ids: (batch, seq_len)\nvocab_size = 5000\nd_model = 128\nseq_len = 32\n\n# 1. Token Embedding 层\nembed_layer = tf.keras.layers.Embedding(input_dim=vocab_size, output_dim=d_model)\n\n# 2. 位置编码（简单可学习版本）\npos_embedding = tf.keras.layers.Embedding(input_dim=seq_len, output_dim=d_model)\n\n# 示例 input\ninput_ids = tf.constant([[1,2,3,0,0],[4,5,0,0,0]])  # (2,5)\npositions = tf.range(start=0, limit=tf.shape(input_ids)[1], delta=1)[tf.newaxis, :]\n\nx = embed_layer(input_ids)          # (batch, seq_len, d_model)\np = pos_embedding(positions)        # (1, seq_len, d_model)\nx = x + p                           # 合并后输入 Transformer\n</code></pre><p><strong>说明</strong>：若使用 Vaswani 的 sin/cos 编码，也可用前文的 PositionalEncoding 实现。</p><hr><h3>3.3 PyTorch：完整小流程（Embedding + Sin/Cos Positional + Attention Mask）</h3><pre><code>import torch\nimport torch.nn as nn\nimport math\n\n# Positional Encoding (sin/cos)\nclass PositionalEncoding(nn.Module):\n    def __init__(self, d_model, max_len=5000):\n        super().__init__()\n        pe = torch.zeros(max_len, d_model)\n        pos = torch.arange(0, max_len).unsqueeze(1).float()\n        div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / d_model))\n        pe[:, 0::2] = torch.sin(pos * div_term)\n        pe[:, 1::2] = torch.cos(pos * div_term)\n        self.register_buffer('pe', pe.unsqueeze(0))  # (1, max_len, d_model)\n\n    def forward(self, x):\n        x = x + self.pe[:, :x.size(1), :].to(x.device)\n        return x\n\n# Embedding + positional\nvocab_size = 10000\nd_model = 64\nembed = nn.Embedding(vocab_size, d_model)\npos_enc = PositionalEncoding(d_model)\n\n# 假数据：batch of token ids\ninput_ids = torch.tensor([[101, 2054, 2003, 0, 0], [101, 2129, 2024, 2017, 102]])  # (2,5)\nattention_mask = (input_ids != 0).long()  # 1 for real tokens, 0 for PAD\n\nx = embed(input_ids) * math.sqrt(d_model)  # 按论文乘 sqrt(d_model)\nx = pos_enc(x)  # 位置编码\n\n# attention_mask -&gt; 用于 Transformer (seq_len, seq_len) mask 需要进一步转换\n# 例如 torch.nn.TransformerEncoder 在 PyTorch 中期望 src_key_padding_mask: (batch, seq_len) 布尔值\nsrc_key_padding_mask = (attention_mask == 0)  # True for padding positions\n</code></pre><p><strong>注意</strong>：<code>embed * sqrt(d_model)</code> 是论文中用于缩放 token embedding 的技巧，能稳定训练。</p><hr><h3>3.4 加载预训练词向量（GloVe 示例）</h3><pre><code># 伪码：构建 embedding_matrix 从 glove.txt\nimport numpy as np\n\n# 假设 word_index 是词-&gt;id 的字典\nvocab_size = len(word_index) + 1\nd = 300\nembedding_matrix = np.zeros((vocab_size, d))\nwith open('glove.6B.300d.txt','r',encoding='utf8') as f:\n    for line in f:\n        vals = line.rstrip().split(' ')\n        word = vals[0]\n        vec = np.asarray(vals[1:], dtype='float32')\n        if word in word_index:\n            idx = word_index[word]\n            embedding_matrix[idx] = vec\n\n# 在 Keras 中加载到 Embedding 层作为初始化\nfrom tensorflow.keras.layers import Embedding\nembed_layer = Embedding(input_dim=vocab_size, output_dim=d, weights=[embedding_matrix], trainable=False)\n</code></pre><p><strong>建议</strong>：若语料与通用语料相近，可把预训练向量作为初始化并允许微调（trainable=True）。</p><hr><h2>4. 最佳实践 / 常见陷阱（Best Practices / Common Pitfalls）</h2><h3>最佳实践</h3><ol><li><p><strong>一致性</strong>：<strong>模型必须和 tokenizer 匹配</strong>（使用与模型预训练时相同的 tokenizer 和 vocab）。</p></li><li><p><strong>管理 special tokens</strong>：统一管理 <code>[PAD]</code>, <code>[CLS]</code>, <code>[SEP]</code>, <code>[UNK]</code> 等 ID 与用途。</p></li><li><p><strong>使用 attention_mask</strong>：训练/推理时一定提供 <code>attention_mask</code> 来屏蔽 padding。</p></li><li><p><strong>合适的 embedding 维度</strong>：<code>d_model</code> 不宜过小（信息受限），也不宜过大（计算/内存开销）。典型值 128/256/512。</p></li><li><p><strong>tokenizer 采用 subword</strong>：对英语和多语言任务，BPE/WordPiece/SentencePiece 能有效处理 OOV 与词形变体。</p></li><li><p><strong>对长文本采取截断/摘要/分块</strong>：避免直接把超长文本全部塞入模型，先摘要或滑动窗口检索。</p></li><li><p><strong>可视化</strong>：用 PCA/t-SNE 可视化 embedding 看相似词是否靠近（帮助调试）。</p></li><li><p><strong>避免重复训练 tokenizer/vocab</strong>：当使用预训练模型时尽量用预训练的 tokenizer，除非需要特定领域重建 vocab。</p></li></ol><h3>常见陷阱 &amp; 如何避免</h3><ol><li><p><strong>Tokenizer 与模型不匹配</strong> → 导致 embedding lookup 错误或模型性能异常。<strong>解决</strong>：始终用模型对应的 tokenizer。</p></li><li><p><strong>忘记 attention_mask</strong> → 模型会把 PAD 当作有效 token，影响表现。<strong>解决</strong>：生成并传入 mask。</p></li><li><p><strong>错误的 mask 形状/类型</strong> → 不同框架期待不同 mask 格式（bool/long，(batch, seq_len) vs (seq_len, seq_len)）。<strong>解决</strong>：阅读 API 文档并写测试。</p></li><li><p><strong>把 raw text 直接当输入</strong> → 忽略 tokenization 和 id 映射。<strong>解决</strong>：始终 pipeline：text → token ids → embedding → model。</p></li><li><p><strong>截断导致丢关键信息</strong> → 直接截断句子尾部可能丢重要信息。<strong>解决</strong>：使用 head+tail 或先摘要再输入。</p></li><li><p><strong>混淆 token id 与 embedding 向量</strong>：在调参时可能误用。<strong>解决</strong>：保持清晰命名并断言形状。</p></li><li><p><strong>未处理字节/unicode 问题</strong>：不同语言/字符集需要统一 normalize（NFC/NFKC）。<strong>解决</strong>：在 tokenization 前做文本标准化。</p></li></ol><hr><h2>5. 课堂练习（Practice）</h2><ol><li><p><strong>实验 1（入门）</strong>：用 Hugging Face <code>AutoTokenizer</code> 对 10 条句子做 tokenization，打印 <code>input_ids</code>, <code>attention_mask</code>, <code>token_type_ids</code>。理解每个字段的含义。</p></li><li><p><strong>实验 2（可视化）</strong>：用小词表训练一个 <code>Embedding</code> 层（比如 d=50），使用 PCA/t-SNE 可视化同义词是否靠近。</p></li><li><p><strong>实验 3（mask 测试）</strong>：手动创建包含 PAD 的 batch，比较传入/不传入 <code>attention_mask</code> 时模型输出差异（可用随机权重的小 Transformer）。</p></li><li><p><strong>练习题</strong>：说明为何要在 embedding 上乘以 <code>sqrt(d_model)</code>？（提示：数值稳定性与 scale matching）</p></li></ol><hr><h2>6. 小结（Summary）</h2><ul><li><p><strong>输入嵌入</strong>是 NLP 模型的第一步：必须先把文本转换为 token ids，再映射为向量，并注入位置信息与其他辅助 embedding（如 segment）。</p></li><li><p><strong>Tokenization（尤其 subword）</strong> 与 <strong>attention_mask</strong> 的正确使用是确保模型性能与稳定性的关键。</p></li><li><p><strong>位置编码</strong> 能让非序列模型（Transformer）感知顺序信息；<strong>填充/截断</strong> 要与 mask 配合使用，以便批处理与提高效率。</p></li><li><p>实战要点：<strong>使用与模型匹配的 tokenizer</strong>、给出正确的 mask、谨慎处理长文本与特殊 token、在必要时使用预训练 embedding 做初始化或使用上下文嵌入（BERT/GPT）。</p></li></ul>"
           },
           "cohort7MaterialStatus": "CONTENT_REVISED_RECORDING_AND_EXAMPLE_REVIEW_PENDING",
-          "cohort7LessonOrder": 42
+          "cohort7LessonOrder": 42,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a0464b8eea6b4ceee4e8b6e",
+              "6a052b71c80ff4c7712e684c",
+              "6a054d67c80ff4c7713e5451"
+            ],
+            "source": "cohorts-1-5-reviewed",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L55",
@@ -4698,7 +4730,7 @@
             "s3VideoIds": [
               "67b58a12a344e7de0e5c2bb8"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -4955,7 +4987,7 @@
               "6a2553994c97e3de4c6c7e3b",
               "6a294e9703015f5c157c0c6f"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -5218,7 +5250,7 @@
             "s3VideoIds": [
               "6a3284b808cb2e6d653ee4a6"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -5345,7 +5377,7 @@
               "6a2e5bb60e22c9645a314089",
               "6a69dd18ddc7d8769d7b5cbe"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -7129,7 +7161,7 @@
             "s3VideoIds": [
               "6a2009c274c52108ffe06839"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -7330,7 +7362,7 @@
             "s3VideoIds": [
               "688b4941e4dde04ef9a70320"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -7557,7 +7589,7 @@
             "s3VideoIds": [
               "6a3c8cfe3febbe587d7d4cea"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -7985,7 +8017,7 @@
             "s3VideoIds": [
               "69c7caccd3a18e68bc2b289d"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -8109,7 +8141,7 @@
             "s3VideoIds": [
               "6884ce8e5a6a2578189ef0ab"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -8516,7 +8548,7 @@
             "s3VideoIds": [
               "6a40a390942e9d8f32c91f41"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -8904,7 +8936,7 @@
             "s3VideoIds": [
               "6a44771c2f662a5f6da0a09a"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -9028,7 +9060,15 @@
           },
           "cohort7ContentRevision": "2026-09-07-scope-review",
           "cohort7MaterialStatus": "OUTLINE_REVISED_ASSET_REVIEW_PENDING",
-          "cohort7LessonOrder": 80
+          "cohort7LessonOrder": 80,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a1545a37104b32aec20822f",
+              "68e63839ee3331485fb54613"
+            ],
+            "source": "cohorts-1-5-reviewed",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L75",
@@ -9109,9 +9149,10 @@
           "cohort7InheritedMedia": {
             "s3VideoIds": [
               "67b58a12a344e7de0e5c2bb1",
-              "6a37c0c8252726820c5daca3"
+              "6a37c0c8252726820c5daca3",
+              "6a1adc06d374933f2cb5c98c"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -9963,7 +10004,14 @@
             "learningMaterial": "<h2>Production RAG 部署运维</h2>\n<h3>运维清单</h3>\n<ul><li>监控：延迟 P99 &lt; 5s、错误率 &lt; 1%</li><li>缓存：Redis 缓存相同问题</li><li>重试：API 429/500 指数退避</li><li>Fallback：主模型切备用</li><li>增量索引：定时检查新文档</li></ul>"
           },
           "cohort7ContentRevision": "2026-09-08-final-content-audit",
-          "cohort7LessonOrder": 89
+          "cohort7LessonOrder": 89,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a16d5de7104b32aec75b85d"
+            ],
+            "source": "cohorts-1-5-reviewed",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L121a",
@@ -10162,7 +10210,7 @@
             "s3VideoIds": [
               "6a522ff414304f16523b3113"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -10292,7 +10340,7 @@
             "s3VideoIds": [
               "69ccff66d3a18e68bc810e2b"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -10350,7 +10398,7 @@
             "s3VideoIds": [
               "69d6478ffeadc80f02f8b61b"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -10408,7 +10456,7 @@
             "s3VideoIds": [
               "69da3bc176e3e0c1b3a31a7c"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -10523,7 +10571,7 @@
             "s3VideoIds": [
               "6a577c37a82b85aa904e4995"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -11247,7 +11295,7 @@
             "s3VideoIds": [
               "6a5b7436105173f15c1036e4"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -11497,7 +11545,7 @@
             "s3VideoIds": [
               "6a48f2d49d050b759be5ccea"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -11550,7 +11598,7 @@
             "s3VideoIds": [
               "6a4e31ada77d455038c92152"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -12714,7 +12762,7 @@
             "s3VideoIds": [
               "6a649952850325ba16c508d7"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -14297,7 +14345,7 @@
             "s3VideoIds": [
               "6a7869f4e1fc05ab85810667"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -14568,7 +14616,7 @@
             "s3VideoIds": [
               "6a7c566f3f0d014d6ffa47ac"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -14673,7 +14721,7 @@
             "s3VideoIds": [
               "6a81abf927fe430dd9fd3dee"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -14996,7 +15044,7 @@
             "s3VideoIds": [
               "6a858efc27fe430dd9ef8a76"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -15343,7 +15391,7 @@
             "s3VideoIds": [
               "6a8ad3ae36b871cf8ac53908"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -15788,7 +15836,7 @@
             "s3VideoIds": [
               "6a60aef2bbc08a65e106d03b"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -15912,7 +15960,7 @@
             "s3VideoIds": [
               "6a7317aecf9597585bcce06d"
             ],
-            "source": "pre-cohort-7-syllabus",
+            "source": "cohorts-1-5-reviewed",
             "verifiedAt": "2026-09-08"
           }
         },
@@ -16738,7 +16786,14 @@
           "_id": "69e71143b636532acae3b7f8",
           "cohort7ContentRevision": "2026-09-07-teaching-corrections",
           "cohort7MaterialStatus": "OUTLINE_REVISED_ASSET_REVIEW_PENDING",
-          "cohort7LessonOrder": 137
+          "cohort7LessonOrder": 137,
+          "cohort7InheritedMedia": {
+            "s3VideoIds": [
+              "6a1ce75713d85a7757fa1477"
+            ],
+            "source": "cohorts-1-5-reviewed",
+            "verifiedAt": "2026-09-08"
+          }
         },
         {
           "code": "L171",
