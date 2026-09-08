@@ -1,0 +1,736 @@
+{
+  "status": "HISTORICAL_REFERENCE_NOT_CURRENT_TEACHING_REQUIREMENTS",
+  "note": "保留调整前正文、公式及代码，供进阶资料提取与选片复核；旧说法不视为已验证教材。",
+  "lessons": [
+    {
+      "code": "L28",
+      "title": "Tokens, Context Windows & Cache Efficiency",
+      "description": "第七期 W2 理论课。Transformer Architecture 与 Input Embeddings 放在课前录播和互动 Lab；Live 聚焦 Token Budget、Context Window 内容治理、Prefill/Decode、KV Cache、Prompt/Prefix Cache、Response/Semantic Cache，以及 TTFT、cache hit rate、tokens saved、成本和安全边界。W2 建立“模型看到什么、哪些计算可以复用”的判断，W3 再进入完整 Context Engineering assembly。",
+      "type": "Lesson",
+      "isLive": true,
+      "duration": 90,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Token Budget：tokenizer、input/output tokens、输出预留与成本",
+          "description": "Token Budget：tokenizer、input/output tokens、输出预留与成本",
+          "duration": 15
+        },
+        {
+          "order": 2,
+          "type": "SYSTEM_DESIGN",
+          "title": "Context Window Governance：Instructions、History、Examples、RAG、Tools 的 Selection/Exclusion",
+          "description": "Context Window Governance：Instructions、History、Examples、RAG、Tools 的 Selection/Exclusion",
+          "duration": 15
+        },
+        {
+          "order": 3,
+          "type": "CONCEPT",
+          "title": "Prefill 与 Decode：TTFT、TPOT，以及长 Prompt 为什么更慢",
+          "description": "Prefill 与 Decode：TTFT、TPOT，以及长 Prompt 为什么更慢",
+          "duration": 10
+        },
+        {
+          "order": 4,
+          "type": "SYSTEM_DESIGN",
+          "title": "KV Cache：生成过程中的 Key/Value 复用与显存 trade-off",
+          "description": "KV Cache：生成过程中的 Key/Value 复用与显存 trade-off",
+          "duration": 15
+        },
+        {
+          "order": 5,
+          "type": "SYSTEM_DESIGN",
+          "title": "Prompt/Prefix Cache：稳定前缀复用与 prompt ordering",
+          "description": "Prompt/Prefix Cache：稳定前缀复用与 prompt ordering",
+          "duration": 15
+        },
+        {
+          "order": 6,
+          "type": "SECURITY",
+          "title": "Response/Semantic Cache：cache key、TTL、invalidation、tenant、permission 与 PII",
+          "description": "Response/Semantic Cache：cache key、TTL、invalidation、tenant、permission 与 PII",
+          "duration": 10
+        },
+        {
+          "order": 7,
+          "type": "DEMO",
+          "title": "Cache hit/miss：Tokens Saved、延迟、成本、lost-in-the-middle 与 stale cache",
+          "description": "Cache hit/miss：Tokens Saved、延迟、成本、lost-in-the-middle 与 stale cache",
+          "duration": 10
+        }
+      ],
+      "labs": [],
+      "learns": [
+        "Token Budget：tokenizer、input/output tokens、输出预留与成本",
+        "Context Window Governance：Instructions、History、Examples、RAG、Tools 的 Selection/Exclusion",
+        "Prefill 与 Decode：TTFT、TPOT，以及长 Prompt 为什么更慢",
+        "KV Cache：生成过程中的 Key/Value 复用与显存 trade-off",
+        "Prompt/Prefix Cache：稳定前缀复用与 prompt ordering",
+        "Response/Semantic Cache：cache key、TTL、invalidation、tenant、permission 与 PII",
+        "Cache hit/miss：Tokens Saved、延迟、成本、lost-in-the-middle 与 stale cache"
+      ],
+      "learningMaterial": "<h2>Tokens, Context Windows & Cache Efficiency</h2><p>W2 回答两个问题：<strong>这次模型调用看到了什么？哪些计算没有必要重复做？</strong>课前完成 Transformer Architecture 与 Input Embeddings 录播；Live 把原理转换成 Token Budget、Context Governance 和 Cache Strategy。</p><h3>Token、Context Window 与推理阶段</h3><p>一次请求需要同时容纳 system/developer instructions、user input、conversation history、few-shot examples、retrieved documents、tool results、多模态表示和 reserved output tokens。模型先在 <strong>Prefill</strong> 阶段处理输入，再在 <strong>Decode</strong> 阶段逐 token 生成输出。长输入主要推高 prefill 与 TTFT；输出长度影响 decode、TPOT 和总成本。</p><h3>KV Cache 是什么</h3><p>自回归生成每增加一个 token，如果重新计算此前所有 token 的 attention 会非常浪费。<strong>KV Cache</strong> 保存既有 token 在每层 attention 中的 Key/Value，使下一步只计算新 token。它主要优化同一次生成和连续上下文的重复计算，但会占用 GPU memory；更长 context、更大 batch 和更多并发都会增加 KV memory pressure。KV Cache 不会让错误 Context 变正确，也不等于长期 Memory。</p><h3>三类缓存不要混淆</h3><ul><li><strong>KV Cache</strong>：模型推理内部复用既有 token 的 attention state。</li><li><strong>Prompt/Prefix Cache</strong>：跨请求复用相同或可缓存的稳定前缀，减少重复 prefill。System Policy、Tool Definitions、Output Schema 和稳定 Few-shot Examples 放前面，动态用户输入与 RAG 结果放后面。</li><li><strong>Response/Semantic Cache</strong>：应用层复用完整答案或语义相近问题的答案，速度最快，但必须处理 freshness、permission、PII 和错误结果扩散。</li><li><strong>Memory</strong>：经过规则选择、允许跨 session 再读取的信息，不是缓存命中机制。</li></ul><h3>Production Cache Strategy</h3><p>Cache key 至少考虑 model/version、prompt/template version、tool/schema version、tenant、role/permission、language 与关键参数。任何数据、政策、权限或 prompt 版本改变都可能触发 invalidation；TTL 必须由业务 freshness 决定。不得跨 tenant 或跨权限复用敏感结果，也不能缓存 Secrets 或不必要的 PII。</p><h3>如何证明真的提效</h3><p>比较 cold/warm request 的 <strong>TTFT、TPOT、cache hit rate、cache read/write tokens、tokens saved、latency、cost 与 memory usage</strong>。同时检查 stale cache、cache poisoning、错误响应复用、低命中率和 cache stampede。Context 仍按 relevance、recency、authority、permission、provenance 与 information density 选择，避免 lost-in-the-middle 和 attention dilution。</p><h3>课堂边界与面试标准</h3><p>W2 使用最小实验比较 cache hit/miss 和 stable-prefix ordering；W3 再完成 Context Builder、trust boundary 与 structured output assembly。学生应能区分 KV Cache、Prefix Cache、Response Cache 与 Memory，解释各自优化哪段延迟、引入什么代价，以及如何安全失效。</p>",
+      "title_en": "Tokens, Context Windows & Cache Efficiency",
+      "description_en": "Cohort 7 Week 2 theory. Transformer architecture and embeddings move to pre-class recordings and interactive labs. The live session focuses on token budgets, context-window governance, prefill and decode, KV cache, prompt and prefix caching, response and semantic caching, TTFT, cache hit rate, tokens saved, cost, and security boundaries.",
+      "index": 28,
+      "_id": "69e71120b636532acae3b3a4",
+      "cohort7Week": 2,
+      "cohort7Track": "theory",
+      "cohort7SessionOrder": 3,
+      "level": "初级",
+      "cohort7Status": "CONFIRMED_THEORY",
+      "cohort7Libraries": {
+        "core": [
+          {
+            "name": "tiktoken",
+            "type": "oss",
+            "role": "Measure tokens, context-window pressure, and cacheable prompt prefixes.",
+            "url": "https://github.com/openai/tiktoken"
+          },
+          {
+            "name": "Hugging Face Transformers",
+            "type": "oss",
+            "role": "Inspect tokenizers, attention inputs, generation parameters, and KV-cache behaviour.",
+            "url": "https://huggingface.co/docs/transformers/"
+          }
+        ],
+        "ecosystem": [
+          {
+            "name": "vLLM",
+            "type": "oss",
+            "role": "Connect PagedAttention, continuous batching, and production inference efficiency.",
+            "url": "https://github.com/vllm-project/vllm"
+          },
+          {
+            "name": "llama.cpp",
+            "type": "oss",
+            "role": "Understand local inference, quantisation, and constrained-device trade-offs.",
+            "url": "https://github.com/ggml-org/llama.cpp"
+          }
+        ]
+      }
+    },
+    {
+      "title": "The Transformer Architecture",
+      "description": "30 分钟录播，第四期课上的原班内容。把 Self-Attention、Multi-Head、Positional Encoding 三件事讲透——Q/K/V 到底怎么算、为什么要多头、为什么位置编码非加不可。想深挖 Transformer 内部机制的同学必看，之后读 GPT / Llama 源码不再是黑盒。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Self-Attention 机制",
+          "description": "Self-Attention 机制",
+          "duration": 10
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "Multi-Head Attention",
+          "description": "Multi-Head Attention",
+          "duration": 10
+        },
+        {
+          "order": 3,
+          "type": "CONCEPT",
+          "title": "Positional Encoding",
+          "description": "位置编码",
+          "duration": 10
+        }
+      ],
+      "code": "L29",
+      "index": 29,
+      "description_en": "A 30-minute recording carried over from Cohort 4 - the original class content. It digs into Self-Attention, Multi-Head, and Positional Encoding: how Q/K/V is actually computed, why we need multiple heads, and why positional encoding isn't optional. If you want the Transformer internals demystified, this is the one - GPT and Llama source code stops being a black box afterwards.",
+      "learningMaterial": "<h2>这节视频要解决的问题</h2><p>2017 年之前，序列建模主要靠 RNN/LSTM。训练一个句子要 token-by-token 前向传播，无法并行，长序列梯度容易消失。Vaswani 等人 2017 年的《Attention Is All You Need》把 RNN 全部砍掉，只留 attention，一举让模型可以在整句并行计算，为 GPT、BERT、Claude 这一整代 LLM 打下地基。录播视频会带你把这篇 8 页论文的核心 30 行公式拆开看。</p><h2>Self-Attention：把 QKV 矩阵算一遍</h2><p>Self-Attention 的输入是一串 token embeddings（shape <code>[seq_len, d_model]</code>），每个 token 会被投影成三份：Query、Key、Value。计算分三步：</p><pre><code>import torch, math\nimport torch.nn.functional as F\n\n# 假设 seq_len=4, d_model=512, d_k=64\nx = torch.randn(4, 512)\nW_q = torch.randn(512, 64); W_k = torch.randn(512, 64); W_v = torch.randn(512, 64)\n\nQ = x @ W_q     # [4, 64]\nK = x @ W_k     # [4, 64]\nV = x @ W_v     # [4, 64]\n\nscores = Q @ K.T / math.sqrt(64)   # [4, 4]\nattn   = F.softmax(scores, dim=-1) # 每行加起来 = 1\nout    = attn @ V                  # [4, 64]\n</code></pre><p>直观理解：<code>Q @ K.T</code> 得到的是 <strong>每个 token 对其他所有 token 的相关度</strong>。比如句子 \"The cat sat on the mat because it was tired\"，<code>it</code> 这个 token 的 Q 会和 <code>cat</code> 的 K 算出很高的分数，softmax 后 <code>it</code> 的输出就主要由 <code>cat</code> 的 V 决定 —— 这就是机器学会了共指消解。</p><p>除以 <code>sqrt(d_k)</code> 不是随便加的：如果 d_k=64，内积方差会放大到 64，softmax 进入饱和区梯度消失，除一下把方差压回 1。</p><h2>Multi-Head：为什么要 8 个头</h2><p>单头 attention 只能学一种 \"关注模式\"。Multi-Head 的做法是把 d_model=512 拆成 8 份，每份 64 维，独立做 attention，最后 concat 回来。不同头会自发学到不同语言学结构：</p><table><tr><th>头 (head)</th><th>论文里观察到的行为</th></tr><tr><td>Head 1</td><td>关注相邻 token（类似 bigram）</td></tr><tr><td>Head 3</td><td>关注句法依赖（主谓宾关系）</td></tr><tr><td>Head 5</td><td>关注共指（代词 → 名词）</td></tr><tr><td>Head 7</td><td>关注句尾标点 / 句子边界</td></tr></table><p>这也是后来 Anthropic、OpenAI 做 <strong>mechanistic interpretability</strong>（机制可解释性）的入口：通过可视化每个头的 attention 权重，能看出模型在做什么推理。</p><h2>Positional Encoding：attention 本身不知道顺序</h2><p>纯 attention 是 <strong>置换不变</strong> 的 —— 把 \"狗咬人\" 的 token 顺序打乱成 \"人咬狗\"，输出完全一样。所以必须注入位置信息。Vaswani 用的是固定 sinusoid：</p><pre><code>PE(pos, 2i)   = sin(pos / 10000^(2i/d_model))\nPE(pos, 2i+1) = cos(pos / 10000^(2i/d_model))\n</code></pre><p>两个好处：1) 不同频率的 sin/cos 让模型能区分绝对位置，2) <code>PE(pos+k) = f(PE(pos))</code> 的线性关系让模型能学相对位置。后来 GPT-Neo、LLaMA 改用 RoPE（旋转位置编码），直接作用在 Q、K 上，外推性更好，但基本思想一脉相承。</p><h2>Attention 权重长什么样（ASCII 示意）</h2><pre><code>句子: The  cat  sat  on   the  mat\n\nQuery=\"cat\" 的 attention 权重行:\nThe  cat  sat  on   the  mat\n0.05 0.60 0.15 0.05 0.05 0.10\n       ^ 自己\n                              ^ mat 也被关注（主语-宾语场景）\n</code></pre><p>把 6×6 权重矩阵画成热力图，对角线最亮（每个 token 看自己），加上几条副对角线（看邻居、看主语）就是典型的 attention pattern。</p><h2>真实应用场景</h2><ul><li><strong>GPT-4 / Claude 3.5 / LLaMA 3</strong> 都是 decoder-only transformer（只保留 masked self-attention）。masked 的意思是 <code>scores</code> 里把未来位置填 -inf，保证第 t 个 token 看不到第 t+1 个 token，这样才能自回归生成。</li><li><strong>BERT</strong> 是 encoder-only，双向 attention，适合做分类、NER、检索。Google 搜索从 2019 年用 BERT 理解查询意图。</li><li><strong>Vision Transformer (ViT)</strong> 把 224×224 图片切成 16×16 patches，每个 patch 当一个 token，直接喂 transformer。2021 年以后计算机视觉几乎被 ViT 统治。</li></ul><h2>常见误区</h2><table><tr><th>误区</th><th>事实</th></tr><tr><td>\"attention 就是权重平均\"</td><td>权重来自内容本身（content-based），不是固定位置权重，这才是关键。</td></tr><tr><td>\"头数越多越好\"</td><td>论文测试 8 头最优，16 头反而略降，因为每头维度太小信息量不够。</td></tr><tr><td>\"LSTM 过时了\"</td><td>长序列（>10k tokens）场景 LSTM/SSM/Mamba 仍有优势，transformer O(n²) 扛不住。</td></tr><tr><td>\"Positional Encoding 加的是常量\"</td><td>是加到 embedding 上的，每个位置不同，且对梯度有贡献。</td></tr><tr><td>\"Q=K=V 就是 self-attention\"</td><td>Q=K=V 的输入来自同一个 x，但投影矩阵 W_q, W_k, W_v 不同，所以 Q、K、V 是三个不同的向量。</td></tr></table><h2>视频里你会看到什么</h2><ul><li>用 PyTorch 手写 30 行实现 Scaled Dot-Product Attention，跑一个 toy 例子看 softmax 输出</li><li>BertViz 工具可视化真实 BERT 模型第 3 层 Head 5 的 attention 图，看它怎么把 <code>it</code> 指向 <code>cat</code></li><li>对比纯 self-attention vs LSTM 在长序列任务上的训练速度（A100 上 10x 差距）</li><li>讲师现场拆 Vaswani 论文 Figure 1 架构图：Encoder 6 层、Decoder 6 层、Add &amp; Norm 的顺序</li></ul><h2>学完之后你能</h2><ul><li>看懂任何 LLM 论文里的 attention 公式，不再被 Q/K/V 吓到</li><li>用 PyTorch 或 JAX 手写一个 transformer block，跑通一个小数据集（比如字符级语言模型）</li><li>给别人讲清楚 GPT 为什么比 LSTM 快、为什么能并行训练</li><li>读 <code>transformers</code> 库（HuggingFace）源码里 <code>BertSelfAttention</code>、<code>LlamaAttention</code> 这些类时知道每行在干嘛</li><li>排查 LLM 推理问题时，能从 attention 角度猜假设（比如长上下文为什么开始丢信息 —— 因为注意力被稀释了）</li></ul>",
+      "_id": "69e71120b636532acae3b3a9"
+    },
+    {
+      "title": "Input Embeddings",
+      "description": "15 分钟看完 Token / Positional / Segment 三种 Embedding 到底在模型里干什么。多数教程讲到 \"word2vec\" 就停了，但现代 LLM 的输入层比那复杂得多——Segment Embedding 为什么能让 BERT 分清楚两句话、Positional Embedding 没有的话 Transformer 会瞎到什么程度，这节给你答案。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 15,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Token Embedding",
+          "description": "Token Embedding",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "Positional & Segment Embedding",
+          "description": "Positional & Segment Embedding",
+          "duration": 10
+        }
+      ],
+      "code": "L30",
+      "index": 30,
+      "description_en": "Fifteen minutes on what Token / Positional / Segment embeddings actually do inside the model. Most tutorials stop at \"word2vec\" - but modern LLM input layers are a lot more involved. Why does Segment Embedding let BERT tell two sentences apart, and how blind would Transformer be without Positional Embedding? This video shows you.",
+      "learningMaterial": "<h2>这节视频要解决的问题</h2><p>LLM 不认识字符，它只认识数字向量。从 <code>\"Hello\"</code> 这个字符串到一个 1536 维向量，中间要经过 <strong>tokenization</strong>（分词）+ <strong>embedding lookup</strong>（向量查表）两步。这节录播带你把这两步拆开，然后看 OpenAI <code>text-embedding-3-small</code> 实际返回的数字长什么样，以及为什么同一个词在不同句子里 embedding 会变（contextual embedding）。</p><h2>从 one-hot 到 Word2Vec：embedding 的 30 年简史</h2><table><tr><th>方法</th><th>年代</th><th>维度</th><th>问题</th></tr><tr><td>One-hot</td><td>1950s</td><td>=词表大小（~50万）</td><td>维度爆炸，相似词距离相等（\"猫\"和\"狗\"的余弦=0）</td></tr><tr><td>TF-IDF</td><td>1970s</td><td>稀疏</td><td>仍然没有语义，只是词频</td></tr><tr><td>Word2Vec (Mikolov 2013)</td><td>2013</td><td>300</td><td><strong>首次</strong> 让 vec(king) - vec(man) + vec(woman) ≈ vec(queen)</td></tr><tr><td>GloVe (Stanford)</td><td>2014</td><td>300</td><td>基于共现矩阵分解，训练比 Word2Vec 快</td></tr><tr><td>BERT embeddings</td><td>2018</td><td>768</td><td>上下文相关（\"bank\" 在银行和河岸不同）</td></tr><tr><td>OpenAI text-embedding-3-small</td><td>2024</td><td>1536（可缩到 256）</td><td>多语言 + 长文本 + 支持 Matryoshka 降维</td></tr></table><p>Word2Vec 那句经典的 <code>king - man + woman = queen</code> 几乎是所有 NLP 课都会讲的例子。它揭示的是：<strong>语义关系可以被编码成向量的几何关系</strong>，这是整个现代 embedding 体系的哲学根基。</p><h2>BPE Tokenizer：为什么不直接按空格切</h2><p>按空格切遇到 <code>tokenization</code>、<code>running</code>、<code>unbelievable</code> 就麻烦了 —— 每个变形都是新词，词表会爆炸。Byte-Pair Encoding (BPE) 的做法是：从字节级别开始，合并最常见的字节对。GPT-4o 用的 <code>o200k_base</code> 有 200k tokens。</p><pre><code>pip install tiktoken\n</code></pre><pre><code>import tiktoken\n\nenc = tiktoken.encoding_for_model(\"gpt-4o\")\nprint(enc.encode(\"Hello, world!\"))\n# [13225, 11, 2375, 0]\nprint(enc.encode(\"tokenization\"))\n# [3575, 2065] 被切成 \"token\" + \"ization\"\nprint(enc.encode(\"你好，世界\"))\n# [177519, 3922, 99489] 中文是一到两个字节一个 token\n\n# 反向解码\nprint(enc.decode([13225]))\n# 'Hello'\n</code></pre><p>几个踩坑点：</p><ul><li><code>\"Hello\"</code> 和 <code>\" Hello\"</code>（前面带空格）是 <strong>不同</strong> 的 token，编号不一样。所以写 prompt 时不要随便在句首加空格，会让 tokenizer 混淆。</li><li>中文一个字通常 2-3 个 token，英文平均 1.3 个单词 = 1 token。调用 API 按 token 计费时，中文比英文贵大约 2 倍。</li><li>代码里的 <code>    </code>（4 空格）在 Python 代码场景被压成 1 个 token，这是 GPT 能理解缩进的原因。</li></ul><h2>OpenAI text-embedding-3-small 实战</h2><pre><code>from openai import OpenAI\nclient = OpenAI()\n\nresp = client.embeddings.create(\n    model=\"text-embedding-3-small\",\n    input=[\"我想学 AI 工程师\", \"I want to learn AI engineering\"],\n    dimensions=512,  # 默认 1536，可降维到 256/512 节省存储\n)\n\nvec_zh = resp.data[0].embedding\nvec_en = resp.data[1].embedding\nprint(len(vec_zh))  # 512\nprint(vec_zh[:5])\n# [-0.0123, 0.0456, -0.0789, 0.0234, -0.0567]\n\n# 余弦相似度\nimport numpy as np\ncos = np.dot(vec_zh, vec_en) / (np.linalg.norm(vec_zh) * np.linalg.norm(vec_en))\nprint(f\"中英文语义相似度: {cos:.4f}\")\n# 大约 0.75-0.85，说明是跨语言对齐的\n</code></pre><p>价格：<code>text-embedding-3-small</code> 是 $0.02 / 1M tokens，处理 10 万篇 500 字文章大约 $1。<code>text-embedding-3-large</code>（3072 维）是 $0.13 / 1M tokens。</p><p><strong>Matryoshka embedding</strong> 是 3 代的亮点：你可以把 1536 维截断成前 512 维，精度只掉 2-3%。这让 Pinecone / Chroma 这些向量数据库的存储成本直接砍一半。</p><h2>Contextual Embedding：为什么同一个词向量会变</h2><p>Word2Vec 是 <strong>静态</strong> 的 —— \"bank\" 只有一个向量，无法区分 \"river bank\"（河岸）和 \"bank account\"（银行账户）。BERT/GPT 输出的是 <strong>contextual</strong> embedding：</p><pre><code>from transformers import AutoTokenizer, AutoModel\nimport torch\n\ntok = AutoTokenizer.from_pretrained(\"bert-base-uncased\")\nmodel = AutoModel.from_pretrained(\"bert-base-uncased\")\n\ns1 = \"I deposited money at the bank\"\ns2 = \"The boat is near the river bank\"\n\nfor s in [s1, s2]:\n    inputs = tok(s, return_tensors=\"pt\")\n    out = model(**inputs).last_hidden_state\n    bank_idx = tok.tokenize(s).index(\"bank\") + 1  # +1 for [CLS]\n    print(s, \"->\", out[0, bank_idx, :5].tolist())\n\n# 两个 bank 的前 5 维完全不同，余弦相似度大约 0.6\n</code></pre><p>机制原因：BERT 每一层都做 self-attention，\"bank\" 的输出取决于它周围的词。第一层和 Word2Vec 差不多，越往上越依赖上下文。这也是 RAG 系统里为什么选 BERT/OpenAI embedding 而不是 Word2Vec —— 上下文感知能显著提升检索准确率。</p><h2>真实应用场景</h2><ul><li><strong>RAG 检索</strong>：把 1000 篇文档 chunk 成 5000 段，每段调 embedding API 存 Pinecone，查询时把问题也 embed 成向量做 cosine top-k。JR Academy 的 jobpin-ai 就是这么做简历匹配的。</li><li><strong>语义搜索</strong>：Notion、Slack 的搜索框背后都是 embedding + 向量库。关键词搜不到的 \"怎么配置 SSO 到 Okta\" → embedding 能匹配到标题是 \"SAML integration guide\" 的文档。</li><li><strong>聚类 / 去重</strong>：把 100 万条客服工单 embed 后做 K-means 聚类，发现 30% 工单是同一类问题 —— 这是产品团队做 backlog 优先级的常规操作。</li><li><strong>分类</strong>：垃圾邮件分类、情感分析，直接在 embedding 上接一个 logistic regression，效果不比 fine-tune BERT 差。</li></ul><h2>常见误区</h2><table><tr><th>误区</th><th>事实</th></tr><tr><td>\"token 就是单词\"</td><td>是子词片段，<code>unbelievable</code> = <code>un</code> + <code>believ</code> + <code>able</code></td></tr><tr><td>\"1 个汉字 = 1 token\"</td><td>GPT-4o 下一个中文字平均 1.5-2 个 token</td></tr><tr><td>\"embedding 维度越高越好\"</td><td>3-large（3072）比 3-small（1536）在 MTEB 上只高 1-2 分，但贵 6 倍</td></tr><tr><td>\"embedding 模型和 LLM 是一个\"</td><td>是两个独立模型，embedding 模型不生成文本只输出向量</td></tr><tr><td>\"向量存数据库就能直接用\"</td><td>必须归一化（L2 norm = 1）才能用内积代替余弦相似度</td></tr></table><h2>视频里你会看到什么</h2><ul><li>讲师在 Jupyter Notebook 里现场跑 <code>tiktoken</code> 和 OpenAI embedding API，对比中英文 token 数和向量</li><li>用 t-SNE 把 100 个词（国家、水果、动物）的 embedding 降到 2D，肉眼看出三类分开</li><li>演示 <code>king - man + woman ≈ queen</code> 的代数实验，余弦相似度实测</li><li>对比 Word2Vec（静态）和 BERT（动态）在处理多义词 \"bank\" 时的差异</li><li>实战：用 OpenAI embedding + sklearn 做一个 50 行代码的简易搜索引擎</li></ul><h2>学完之后你能</h2><ul><li>给任何文本算 token 数、估算 OpenAI API 调用成本</li><li>调 embedding API、存向量库、做 top-k 语义检索（RAG 的核心一步）</li><li>看懂 <code>text-embedding-3-small</code> vs <code>bge-large-zh</code> vs <code>voyage-2</code> 的 benchmark 对比，选对模型</li><li>排查 RAG 召回差的问题：是 chunk 切得不好、还是 embedding 模型不行、还是 query 表达问题</li><li>读懂 HuggingFace MTEB leaderboard，知道 top-10 模型的区别</li></ul>",
+      "_id": "69e71121b636532acae3b3ae"
+    },
+    {
+      "code": "L60",
+      "title": "Build and Prove Policy RAG from Scratch",
+      "description": "第七期 W7 实践课。按照 W6 已冻结的 evaluation contract，不使用 RAG framework，从 synthetic policy corpus 实现 chunking、metadata、embedding、local vector index、top-k retrieval、retrieved context、grounded Draft、programmatic citation 与 no-answer fallback。每完成一个关键能力就运行同一条 eval pipeline，与 naive baseline 比较，最后接入 W3 workflow 与 W4 human-confirmed transcript并完成可测量的 MVP。",
+      "type": "Lesson",
+      "isLive": true,
+      "duration": 120,
+      "steps": [
+        {
+          "order": 1,
+          "type": "WORKSHOP",
+          "title": "准备 synthetic CareKind policy corpus 与数据边界",
+          "description": "准备 synthetic CareKind policy corpus 与数据边界",
+          "duration": 10
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "实现 chunking 与 metadata schema",
+          "description": "实现 chunking 与 metadata schema",
+          "duration": 20
+        },
+        {
+          "order": 3,
+          "type": "LAB",
+          "title": "生成 embeddings 并建立 local vector index",
+          "description": "生成 embeddings 并建立 local vector index",
+          "duration": 20
+        },
+        {
+          "order": 4,
+          "type": "LAB",
+          "title": "实现 top-k similarity retrieval",
+          "description": "实现 top-k similarity retrieval",
+          "duration": 20
+        },
+        {
+          "order": 5,
+          "type": "LAB",
+          "title": "组装 W3 workflow data、W4 confirmed transcript 与 retrieved chunks",
+          "description": "组装 W3 workflow data、W4 confirmed transcript 与 retrieved chunks",
+          "duration": 15
+        },
+        {
+          "order": 6,
+          "type": "LAB",
+          "title": "生成 grounded answer 并绑定 document/chunk citation",
+          "description": "生成 grounded answer 并绑定 document/chunk citation",
+          "duration": 15
+        },
+        {
+          "order": 7,
+          "type": "LAB",
+          "title": "实现 no-answer fallback 与 retrieval failure log",
+          "description": "实现 no-answer fallback 与 retrieval failure log",
+          "duration": 10
+        },
+        {
+          "order": 8,
+          "type": "EVALUATION",
+          "title": "运行 W6 eval pipeline，对比 naive baseline 并提交 MVP evidence",
+          "description": "运行 W6 eval pipeline，对比 naive baseline 并提交 MVP evidence",
+          "duration": 10
+        }
+      ],
+      "learningMaterial": "<h2>Build and Prove Policy RAG from Scratch</h2><p>本实践不使用 LangChain 等 RAG framework。学生要亲手实现每个接口，理解 policy document 如何成为可检索、可引用的 context，并从第一步开始连接 W6 已冻结的 evaluation pipeline。</p><h3>实现范围</h3><ol><li>准备 synthetic policy corpus。</li><li>切分文本并保存 document ID、chunk ID、section 与版本 metadata。</li><li>生成 embeddings 并建立 local vector index。</li><li>实现 top-k retrieval。</li><li>把 retrieved chunks 与 W3 workflow data、W4 human-confirmed transcript 组装为 task context。</li><li>生成 grounded Draft，并由程序绑定 citation。</li><li>没有足够证据时走 no-answer fallback。</li></ol><h3>Eval-driven implementation</h3><p>每完成 chunking/index、retrieval、grounding/citation 和 no-answer 中一个阶段，就运行同一个 versioned dataset 与 eval command，保存 candidate version、指标、失败案例、latency 和 cost，并与 W6 naive baseline 比较。课程不预设提升百分比，只报告实际结果。</p><h3>禁止范围</h3><p>Vector store 不保存 personal data；不做真实 production write-back；不自动作诊断、用药或 SIRS 决策。</p>",
+      "title_en": "Build and Prove Policy RAG from Scratch",
+      "description_en": "Cohort 7 Week 7 practice. Against the frozen Week 6 evaluation contract and without a RAG framework, implement chunking, metadata, embeddings, a local vector index, top-k retrieval, retrieved context, grounded drafts, programmatic citations, and no-answer fallbacks over a synthetic policy corpus. Run the same evaluation pipeline after each major capability, compare against the naive baseline, and then connect the system to the Week 3 workflow and Week 4 human-confirmed transcript to complete a measurable MVP.",
+      "index": 59,
+      "_id": "69e71127b636532acae3b46a",
+      "cohort7Week": 7,
+      "cohort7Track": "practice",
+      "cohort7SessionOrder": 14,
+      "level": "中级",
+      "learns": [
+        "准备 synthetic CareKind policy corpus 与数据边界",
+        "实现 chunking 与 metadata schema",
+        "生成 embeddings 并建立 local vector index",
+        "实现 top-k similarity retrieval",
+        "组装 W3 workflow data、W4 confirmed transcript 与 retrieved chunks",
+        "生成 grounded answer 并绑定 document/chunk citation",
+        "实现 no-answer fallback 与 retrieval failure log",
+        "运行 W6 eval pipeline，对比 naive baseline 并提交 MVP evidence"
+      ],
+      "cohort7Status": "CONFIRMED_PRACTICE",
+      "cohort7Libraries": {
+        "core": [
+          {
+            "name": "Sentence Transformers",
+            "type": "oss",
+            "role": "Embed the policy corpus with an explicit, inspectable pipeline.",
+            "url": "https://www.sbert.net/"
+          },
+          {
+            "name": "FAISS",
+            "type": "oss",
+            "role": "Implement local retrieval, metadata mapping, and evidence inspection from scratch.",
+            "url": "https://github.com/facebookresearch/faiss"
+          }
+        ],
+        "ecosystem": [
+          {
+            "name": "Qdrant",
+            "type": "oss",
+            "role": "Plan the evolution from a local index to a production vector service.",
+            "url": "https://qdrant.tech/"
+          },
+          {
+            "name": "pgvector",
+            "type": "oss",
+            "role": "Plan the alternative evolution inside PostgreSQL.",
+            "url": "https://github.com/pgvector/pgvector"
+          }
+        ]
+      }
+    },
+    {
+      "code": "L115",
+      "title": "Agent SDK 对比: OpenAI / Claude / Google ADK",
+      "description": "OpenAI Agent SDK、Claude Agent SDK、Google ADK——三家 2024-2025 年推的官方 SDK 各有各的坑：OpenAI 生态最大但 vendor lock-in 严重，Claude SDK 流式体验最丝滑但社区还小，Google ADK 原生集成 Gemini 但中文文档几乎为零。这节课把同一个任务用三个 SDK 各写一遍，当场对比代码量、延迟、可控性，最后给你一份能直接丢给技术总监的选型报告。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 90,
+      "steps": [
+        {
+          "order": 1,
+          "type": "LEARN",
+          "title": "AI Engineer: agent-frameworks",
+          "description": "AI Engineer: agent-frameworks",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "LEARN",
+          "title": "AI Engineer: agent-frameworks-compare",
+          "description": "AI Engineer: agent-frameworks-compare",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "LAB",
+          "title": "Prompt Lab: multi-agent",
+          "description": "Prompt Lab: multi-agent",
+          "duration": 5,
+          "labSlug": "multi-agent"
+        },
+        {
+          "order": 4,
+          "type": "CONCEPT",
+          "title": "三大 SDK 对比维度：API / 工具集成 / 多 Agent / 可观测 / 生态",
+          "description": "三大 SDK 对比维度：API / 工具集成 / 多 Agent / 可观测 / 生态",
+          "duration": 3
+        },
+        {
+          "order": 5,
+          "type": "LIVE",
+          "title": "同一任务用 3 个 SDK 实现 + DevX 对比",
+          "description": "同一任务用 3 个 SDK 实现 + DevX 对比",
+          "duration": 15
+        },
+        {
+          "order": 6,
+          "type": "SCENARIO",
+          "title": "代码量/延迟/可控性对比报告",
+          "description": "代码量/延迟/可控性对比报告",
+          "duration": 5
+        },
+        {
+          "order": 7,
+          "type": "MCQ",
+          "title": "Agent SDK 检查",
+          "description": "Agent SDK 检查",
+          "duration": 2
+        },
+        {
+          "order": 8,
+          "type": "PROJECT",
+          "title": "ISA Agent SDK 选型文档",
+          "description": "ISA Agent SDK 选型文档",
+          "duration": 10
+        },
+        {
+          "order": 9,
+          "type": "AI_TUTOR",
+          "title": "AI 扮演面试官，问你 Agent SDK 选型 trade-off — 为什么选 Claude SDK 不选 OpenAI？",
+          "description": "AI 扮演面试官，问你 Agent SDK 选型 trade-off — 为什么选 Claude SDK 不选 OpenAI？",
+          "duration": 5
+        }
+      ],
+      "labs": [],
+      "learns": [
+        {
+          "direction": "ai-engineer",
+          "slug": "agent-frameworks"
+        },
+        {
+          "direction": "ai-engineer",
+          "slug": "agent-frameworks-compare"
+        }
+      ],
+      "learningMaterial": "<h2>Agent SDK 对比</h2>\n<p>OpenAI、Claude、Google ADK 选型。</p>\n<h3>选型建议</h3>\n<table><tr><th>维度</th><th>OpenAI</th><th>Claude</th><th>Google ADK</th></tr><tr><td>成熟度</td><td>最高</td><td>高</td><td>新</td></tr><tr><td>Agent 抽象</td><td>低（DIY）</td><td>中</td><td>高</td></tr><tr><td>推荐场景</td><td>灵活性</td><td>安全敏感</td><td>Google Cloud</td></tr></table>",
+      "title_en": "Agent SDK Comparison: OpenAI / Claude / Google ADK",
+      "description_en": "OpenAI Agent SDK, Claude Agent SDK, and Google ADK each come with their own trade-offs — ecosystem lock-in, streaming quality, tooling maturity. We implement the same task three times, benchmark code size, latency, and control, and leave you with a selection memo you can drop straight into a tech-lead's inbox.",
+      "index": 103,
+      "_id": "69e71134b636532acae3b5fc"
+    },
+    {
+      "code": "L117",
+      "title": "Lab: Agent SDK 对比实操",
+      "description": "AI Agent 实验：同一个任务分别用 OpenAI Agents SDK、Claude Agent SDK、Google ADK 实现，对比 API 风格和工具集成方式。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabType": "llm",
+      "interactiveLabSlug": "agent-sdk-comparison",
+      "duration": 45,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "三大 SDK 核心差异",
+          "description": "OpenAI handoff 模式 vs Claude tool_use 原生 vs Google ADK sequential_agent",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "OpenAI Agents SDK",
+          "description": "用 OpenAI Agents SDK 构建一个带搜索工具的 Agent",
+          "duration": 10,
+          "labSlug": "agent-sdk-comparison"
+        },
+        {
+          "order": 3,
+          "type": "LAB",
+          "title": "Claude Agent SDK",
+          "description": "同一任务用 Claude Agent SDK + MCP 工具实现",
+          "duration": 10,
+          "labSlug": "agent-sdk-comparison"
+        },
+        {
+          "order": 4,
+          "type": "LAB",
+          "title": "Google ADK",
+          "description": "同一任务用 Google ADK 实现，体验 A2A 原生支持",
+          "duration": 10,
+          "labSlug": "agent-sdk-comparison"
+        },
+        {
+          "order": 5,
+          "type": "MCQ",
+          "title": "SDK 选型",
+          "description": "给定场景选择最合适的 Agent SDK，理解各自的 trade-off",
+          "duration": 5
+        }
+      ],
+      "labs": [
+        {
+          "source": "llm-lab",
+          "slug": "agent-sdk-comparison"
+        }
+      ],
+      "_id": "69e71134b636532acae3b619"
+    },
+    {
+      "code": "L149",
+      "cohort7BundleTitle": "Model Selection, Open-Weight Models & Fine-Tuning Decisions",
+      "cohort7BundleScope": "保留模型选择与 Fine-Tuning go/no-go，吸收 L164 的用途和边界；W12 课前。",
+      "cohort7MergedFrom": [
+        "L164"
+      ],
+      "cohort7BundleStatus": "CONTENT_ASSEMBLY_PENDING",
+      "cohort7BundlePolicy": "专题设计已确认，源内容需整理、选片与版本核验；不得将标记合并视为成片或资料已完成。",
+      "title": "Model Selection, Open-Weight Models & Fine-Tuning Decisions",
+      "description": "第七期 W10 必修录播。建立 Prompt、RAG、tool use、model routing、open-weight model 与 Fine-Tuning 的决策边界；深度 LoRA/QLoRA 工具实操保留为选修。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 60,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Prompt、RAG、tool use 与 Fine-Tuning 的边界",
+          "description": "Prompt、RAG、tool use 与 Fine-Tuning 的边界",
+          "duration": 15
+        },
+        {
+          "order": 2,
+          "type": "SYSTEM_DESIGN",
+          "title": "Closed、open-weight 与 provider model 的选择约束",
+          "description": "Closed、open-weight 与 provider model 的选择约束",
+          "duration": 10
+        },
+        {
+          "order": 3,
+          "type": "SYSTEM_DESIGN",
+          "title": "Model routing 的任务、质量、成本、延迟与数据约束",
+          "description": "Model routing 的任务、质量、成本、延迟与数据约束",
+          "duration": 15
+        },
+        {
+          "order": 4,
+          "type": "DECISION",
+          "title": "数据质量、隐私、维护成本与 Fine-Tuning go/no-go",
+          "description": "数据质量、隐私、维护成本与 Fine-Tuning go/no-go",
+          "duration": 10
+        },
+        {
+          "order": 5,
+          "type": "EVALUATION",
+          "title": "用 baseline 与 eval 证明模型选择或 Fine-Tuning 是否值得",
+          "description": "用 baseline 与 eval 证明模型选择或 Fine-Tuning 是否值得",
+          "duration": 10
+        }
+      ],
+      "labs": [],
+      "learns": [
+        {
+          "direction": "ai-engineer",
+          "slug": "deployment-cost-optimization"
+        },
+        {
+          "direction": "vibe-coding",
+          "slug": "performance-cost"
+        }
+      ],
+      "learningMaterial": "<h2>Model Selection, Open-Weight Models & Fine-Tuning Decisions</h2><p>先判断问题是否可以通过 context、RAG 或 tools 解决，再判断是否需要 model routing、open-weight deployment 或 Fine-Tuning。任何选择都必须以任务数据、质量门槛、延迟、成本、隐私与维护能力为依据。</p><p>本节是 W10 必修录播。Model Routing 仍是 Applied AI Engineer 的面试重点和后续实践候选；LoRA、QLoRA 与具体训练工具放入选修 Lab，不占正式 Live。</p>",
+      "title_en": "Model Selection, Open-Weight Models & Fine-Tuning Decisions",
+      "description_en": "Required Cohort 7 Week 10 recording. Decide among prompting, RAG, tool use, model routing, open-weight models, and fine-tuning; deep LoRA and QLoRA tooling remains optional.",
+      "index": 140,
+      "_id": "69e7113cb636532acae3b71a",
+      "cohort7Status": "REQUIRED_RECORDING"
+    },
+    {
+      "code": "L93",
+      "cohort7BundleTitle": "GraphRAG: Concepts, Trade-offs & Worked Example",
+      "cohort7BundleScope": "合并入门、技术全景与原有案例为进阶专题；不增加必修项目或 Live。",
+      "cohort7MergedFrom": [
+        "L81",
+        "L83"
+      ],
+      "cohort7BundleStatus": "CONTENT_ASSEMBLY_PENDING",
+      "cohort7BundlePolicy": "专题设计已确认，源内容需整理、选片与版本核验；不得将标记合并视为成片或资料已完成。",
+      "title": "GraphRAG 技术全景",
+      "description": "GraphRAG 只是一个流派。RAPTOR 通过递归聚类做层级摘要，适合超长文档；HippoRAG 模仿人脑海马体做持续记忆，适合对话 agent——2024 下半年 arXiv 上这类路线一波接一波。这节课把三条路线摆在一起比，再过一遍 Knowledge Graph 的构建工具链（Neo4j / LlamaIndex KG / Microsoft GraphRAG），让你遇到新论文不再一脸懵。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 8,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "GraphRAG vs RAPTOR vs HippoRAG 对比",
+          "description": "GraphRAG vs RAPTOR vs HippoRAG 对比",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "Knowledge Graph 构建工具链",
+          "description": "Knowledge Graph 构建工具链",
+          "duration": 3
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "GraphRAG 工具选型",
+          "description": "GraphRAG 工具选型",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>GraphRAG 技术全景</h2>\n<p>GraphRAG 的进阶技术：从基本实体提取到复杂的图推理。</p>\n\n<h3>技术栈</h3>\n<ol>\n<li><strong>NER + Relation Extraction</strong> — 用 LLM 从文档中提取 (Entity, Relation, Entity) 三元组</li>\n<li><strong>Graph Storage</strong> — Neo4j（最流行）、Amazon Neptune（AWS 托管）</li>\n<li><strong>Graph Query</strong> — Cypher（Neo4j 查询语言）、SPARQL</li>\n<li><strong>混合检索</strong> — Graph Traversal + Vector Search + BM25 三路合并</li>\n</ol>\n\n<h3>适用场景</h3>\n<p>企业知识图谱、多跳推理（\"A 的经理的部门在哪个城市？\"）、复杂关系查询。如果你的数据没有明显的实体-关系结构，用普通 RAG 就够了。</p>",
+      "title_en": "GraphRAG Technology Overview",
+      "description_en": "GraphRAG is just one lineage. RAPTOR does hierarchical summarization via recursive clustering—great for long documents. HippoRAG mimics the hippocampus for persistent memory—great for conversational agents. These architectures kept dropping on arXiv through late 2024. This lesson puts all three side-by-side and walks the Knowledge Graph tool chain (Neo4j / LlamaIndex KG / Microsoft GraphRAG), so the next new paper doesn't blindside you.",
+      "index": 92,
+      "_id": "69e7112fb636532acae3b530"
+    },
+    {
+      "code": "L168",
+      "title": "AI Evaluation Engineering",
+      "description": "模型在测试集上跑出 85% 准确率，一上线用户投诉就来了——这是做 LLM 最扎心的一课。传统软件有单元测试，LLM 应用用什么？这节把 Offline Eval（测试集 + LLM-as-Judge）、Online Eval（用户真实反馈）、Human Eval（专家标注）三层体系讲清楚，现场用 LangSmith 和 Braintrust 搭一条完整的 Eval Pipeline，跑出基线分数并对比优化后的 delta，这是 AI Engineer 和 Prompt Engineer 最本质的分界线。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 90,
+      "steps": [
+        {
+          "order": 1,
+          "type": "LEARN",
+          "title": "AI Engineer: eval-quality-monitoring",
+          "description": "AI Engineer: eval-quality-monitoring",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "LEARN",
+          "title": "AI Engineer: llm-judge-evaluation",
+          "description": "AI Engineer: llm-judge-evaluation",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "LEARN",
+          "title": "AI Engineer: synthetic-data-augmentation",
+          "description": "AI Engineer: synthetic-data-augmentation",
+          "duration": 5
+        },
+        {
+          "order": 4,
+          "type": "LEARN",
+          "title": "Prompt Master: self-consistency",
+          "description": "Prompt Master: self-consistency",
+          "duration": 5
+        },
+        {
+          "order": 5,
+          "type": "LAB",
+          "title": "LLM Lab: llm-evaluation",
+          "description": "LLM Lab: llm-evaluation",
+          "duration": 5,
+          "labSlug": "llm-evaluation"
+        },
+        {
+          "order": 6,
+          "type": "LAB",
+          "title": "Prompt Lab: prompt-evaluation",
+          "description": "Prompt Lab: prompt-evaluation",
+          "duration": 5,
+          "labSlug": "prompt-evaluation"
+        },
+        {
+          "order": 7,
+          "type": "CONCEPT",
+          "title": "Offline/Online/Human Eval + 幻觉检测 + 自动化 Pipeline",
+          "description": "Offline/Online/Human Eval + 幻觉检测 + 自动化 Pipeline",
+          "duration": 3
+        },
+        {
+          "order": 8,
+          "type": "LIVE",
+          "title": "Eval Pipeline 构建 + LangSmith vs Braintrust",
+          "description": "Eval Pipeline 构建 + LangSmith vs Braintrust",
+          "duration": 15
+        },
+        {
+          "order": 9,
+          "type": "MCQ",
+          "title": "Eval 检查",
+          "description": "Eval 检查",
+          "duration": 2
+        },
+        {
+          "order": 10,
+          "type": "PROJECT",
+          "title": "ISA Eval Pipeline + 基线/优化分数",
+          "description": "ISA Eval Pipeline + 基线/优化分数",
+          "duration": 10
+        }
+      ],
+      "labs": [],
+      "learns": [
+        {
+          "direction": "ai-engineer",
+          "slug": "eval-quality-monitoring"
+        },
+        {
+          "direction": "ai-engineer",
+          "slug": "llm-judge-evaluation"
+        },
+        {
+          "direction": "ai-engineer",
+          "slug": "synthetic-data-augmentation"
+        },
+        {
+          "direction": "prompt-master",
+          "slug": "self-consistency"
+        }
+      ],
+      "learningMaterial": "<h2>AI Eval Engineering</h2>\n<p>系统化评估 AI 应用质量的工程方法。</p>\n<h3>评估金字塔</h3>\n<ol><li><strong>单元评估</strong> — 单个 LLM 调用的输出质量</li><li><strong>Pipeline 评估</strong> — RAG/Agent 端到端效果</li><li><strong>系统评估</strong> — 延迟、成本、稳定性、安全性</li></ol>\n<h3>自动化评估</h3>\n<ul><li>LLM-as-Judge — 用强模型评估弱模型</li><li>Reference-based — 与标准答案对比（BLEU、ROUGE）</li><li>Rubric-based — 按评分标准逐项打分</li></ul>",
+      "title_en": "AI Evaluation Engineering",
+      "description_en": "Your model hit 85% on the test set, but users started complaining the moment it went live. This session covers the three-layer Eval stack that separates AI Engineers from prompt tinkerers: offline with LLM-as-Judge, online with user feedback, and human expert labeling. Live build of an Eval pipeline in LangSmith vs Braintrust, running baseline and post-optimization scores on a real ISA assistant.",
+      "index": 158,
+      "_id": "69e71140b636532acae3b7a1"
+    },
+    {
+      "code": "L177",
+      "title": "AI Eval Tools 全景",
+      "description": "LangSmith 要付费、Langfuse 开源但要自己部署、RAGAS 只管 RAG 指标、DeepEval 像 pytest 一样本地跑——Eval 工具生态 2026 年已经长出一整片森林，选错就是团队时间的浪费。这节把主流四家的定位、价格、适用场景拉成一张表格：什么项目用 LangSmith、什么团队必须自托管 Langfuse、什么场景 RAGAS 的四个指标够用，让你技术选型不再靠感觉。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 5,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "LangSmith vs Braintrust vs RAGAS vs DeepEval 对比",
+          "description": "LangSmith vs Braintrust vs RAGAS vs DeepEval 对比",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "Eval 工具选型",
+          "description": "Eval 工具选型",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>Red Teaming 实战</h2>\n<p>系统化测试 AI 应用的安全边界。</p>\n<h3>Red Team 清单</h3>\n<ul><li>Prompt Injection — 尝试覆盖 System Prompt</li><li>Role Play 绕过 — 让模型扮演\"没有限制的 AI\"</li><li>编码绕过 — 用 Base64、URL 编码隐藏恶意内容</li><li>多语言绕过 — 用其他语言提问避开英文过滤</li><li>数据泄露 — 尝试提取 System Prompt 内容</li></ul>",
+      "title_en": "AI Eval Tools Landscape",
+      "description_en": "LangSmith is SaaS and paid, Langfuse is open-source but you self-host, RAGAS covers only RAG metrics, DeepEval runs locally like pytest. The Eval tooling forest in 2026 is dense, and picking wrong wastes weeks. This breakdown maps positioning, pricing, and fit so you can answer 'which eval tool' in a design doc without guessing.",
+      "index": 165,
+      "_id": "69e71143b636532acae3b7ee"
+    },
+    {
+      "code": "L95",
+      "title": "用 AWS 构建 RAG 应用",
+      "description": "面试 AI Engineer 一半公司要求会 AWS——Bedrock 托管 Claude / Llama 不用管 GPU，Lambda 跑 retrieval 函数按请求付费，S3 + OpenSearch 当 Vector Store，全 serverless 架构无运维。这节视频课带你用 Bedrock Knowledge Bases 10 分钟搭一个 RAG，再串进 Lambda 和 API Gateway——学完你简历上能写 'Built serverless RAG on AWS Bedrock'，这是澳洲 / 美国岗位的硬加分项。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 22,
+      "steps": [
+        {
+          "order": 1,
+          "type": "VIDEO",
+          "title": "AWS Bedrock + Lambda + S3 构建 Serverless RAG",
+          "description": "AWS Bedrock + Lambda + S3 构建 Serverless RAG",
+          "duration": 10
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "AWS Lab: bedrock-foundation-models",
+          "description": "AWS Lab: bedrock-foundation-models",
+          "duration": 5,
+          "labSlug": "bedrock-foundation-models"
+        },
+        {
+          "order": 3,
+          "type": "LAB",
+          "title": "AWS Lab: bedrock-rag-knowledge-bases",
+          "description": "AWS Lab: bedrock-rag-knowledge-bases",
+          "duration": 5,
+          "labSlug": "bedrock-rag-knowledge-bases"
+        },
+        {
+          "order": 4,
+          "type": "MCQ",
+          "title": "AWS RAG 检查",
+          "description": "AWS RAG 检查",
+          "duration": 2
+        }
+      ],
+      "labs": [],
+      "learningMaterial": "<h1>课程：用 AWS 构建 RAG 应用</h1><p><strong>授课老师</strong>：Peiyao<br><strong>适合程度</strong>：零基础 · 面向 AI Engineer 训练营学员<br><strong>目标</strong>：教会你在 AWS 上从零构建一个可靠的 RAG（Retrieval-Augmented Generation）问答应用：包含 PDF 上传与解析、向量化（embeddings）、向量索引（检索）、LLM 生成、工程化部署与监控。课程兼顾可运行的示例、生产级架构与常见坑。</p><hr><h2>1. 引言（Introduction）</h2><p>RAG 把<strong>检索（Retrieval）和生成（Generation）结合：先把外部文档检索回相关证据，再把证据拼进 prompt 让 LLM 基于真实证据回答问题。AWS 提供成熟云基础设施（S3、Textract、OpenSearch、SageMaker、Lambda、ECS、Step Functions、CloudWatch 等），能把 RAG 做成可扩展、可监控、可分享的产品。本课以工程化</strong>为出发点，手把手把一个可上传 PDF 并问答的 RAG 应用从设计、实现到部署讲清楚。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 推荐的高层架构（参考）</h3><pre><code>User (Browser) \n  └─&gt; Frontend (React / Streamlit / Next.js)\n       ├─&gt; Upload PDF -&gt; S3 (presigned URL)\n       └─&gt; Query -&gt; API Gateway -&gt; Backend (ECS / Fargate / Lambda)\nBackend Workflow:\n  S3 (upload) -&gt; S3 Event -&gt; SQS / Lambda -&gt; Worker (ECS / Fargate) -&gt; \n    PDF parsing (Textract / pdfplumber) -&gt; chunk -&gt; embeddings (SageMaker / local) -&gt; index to OpenSearch / Qdrant\nQuery Flow:\n  API -&gt; retrieve top-k from OpenSearch -&gt; build prompt -&gt; call LLM (SageMaker endpoint / Bedrock / OpenAI) -&gt; return answer with sources\nObservability: CloudWatch + X-Ray + Langfuse/LangSmith\nStorage: S3 (PDFs), DynamoDB (metadata), Redis (cache)\n</code></pre><h3>2.2 AWS 主要服务与作用</h3><ul><li><p><strong>S3</strong>：持久化文件（PDF）、索引快照、模型 artifacts。</p></li><li><p><strong>Amazon Textract</strong>：高质量 OCR 与表格抽取（适合扫描件 / 图片 PDF）。</p></li><li><p><strong>AWS Lambda / SQS / Step Functions</strong>：事件驱动与任务编排（异步解析/索引）。</p></li><li><p><strong>ECS / Fargate 或 EKS</strong>：运行长时间任务 / worker 与 API 服务（生产推荐）。</p></li><li><p><strong>Amazon OpenSearch Service</strong>（或托管的 Pinecone/Qdrant）：向量检索与混合检索（OpenSearch 支持 k-NN）。</p></li><li><p><strong>Amazon SageMaker / Bedrock</strong>：托管模型或调用基础模型（生成与 embedding 服务）。</p></li><li><p><strong>Elasticache (Redis)</strong>：缓存常见回答、共享令牌桶的速率控制。</p></li><li><p><strong>CloudWatch / X-Ray</strong>：日志、指标、Tracing 与告警。</p></li><li><p><strong>IAM、KMS、VPC</strong>：安全（最小权限、加密、网络隔离）。</p></li></ul><h3>2.3 核心工程点</h3><ul><li><p><strong>PDF 解析</strong>：优先用 Textract 或 pdfplumber；保留 <code>file#page#chunk</code> 元数据。</p></li><li><p><strong>切分策略</strong>：200–500 tokens，overlap 50–100 tokens（根据模型 context 调整）。</p></li><li><p><strong>Embedding 一致性</strong>：索引与查询必须使用相同 embedding 模型和归一化流程。</p></li><li><p><strong>索引类型</strong>：小数据 FAISS（本地），生产用 OpenSearch kNN 或 Qdrant/Pinecone；保存元数据用于溯源。</p></li><li><p><strong>生成策略</strong>：拼接 top-k 并强制“只基于下面证据回答、列出来源”的 prompt；对超长上下文做摘要或 map-reduce。</p></li><li><p><strong>Rate-Unlimited UX</strong>：队列、限流、降级（本地小模型 / 直接返回检索片段）给用户“无感”体验。</p></li></ul><hr><h2>3. 实操示例（Practical Examples）</h2><p>下面是教学级的关键代码片段与部署建议，能把概念变为可运行的最小可用原型（MVP）。示例使用 Python，偏好清晰易懂的实现，生产时可替换为 SageMaker/Bedrock 等托管服务。</p><blockquote><p>说明：示例依赖 <code>boto3</code>, <code>pdfplumber</code>, <code>sentence-transformers</code>, <code>opensearch-py</code>, <code>fastapi</code> 等。</p></blockquote><hr><h3>3.1 上传 PDF 到 S3（前端拿 presigned URL；后端示例）</h3><pre><code># presign.py\nimport boto3\ns3 = boto3.client('s3')\n\ndef create_presigned_upload(bucket, key, expires=3600):\n    return s3.generate_presigned_url(\n        'put_object',\n        Params={'Bucket': bucket, 'Key': key},\n        ExpiresIn=expires\n    )\n# 前端用 PUT 把文件上传到该 URL\n</code></pre><hr><h3>3.2 使用 Textract 异步解析（适合大 PDF / 表格）</h3><pre><code># textract_job.py\nimport boto3, time\ntextract = boto3.client('textract')\n\ndef start_textract_job(bucket, key):\n    resp = textract.start_document_text_detection(\n        DocumentLocation={'S3Object': {'Bucket': bucket, 'Name': key}}\n    )\n    return resp['JobId']\n\ndef get_textract_results(job_id):\n    while True:\n        res = textract.get_document_text_detection(JobId=job_id)\n        status = res['JobStatus']\n        if status == 'SUCCEEDED':\n            return res\n        elif status == 'FAILED':\n            raise Exception(\"Textract failed\")\n        time.sleep(5)\n</code></pre><blockquote><p>Textract 会返回按页的块（blocks），可以提取文字、表格和表单内容。</p></blockquote><hr><h3>3.3 本地/Worker 端 PDF 切分与 metadata（pdfplumber 退路）</h3><pre><code># pdf_utils.py (教学)\nimport pdfplumber, re\n\ndef clean_text(text):\n    text = re.sub(r'-\\n', '', text)\n    text = re.sub(r'\\n{2,}', '\\n\\n', text)\n    return text.strip()\n\ndef chunk_text(text, max_chars=800, overlap=200):\n    paras = text.split('\\n\\n')\n    chunks, cur = [], ''\n    for p in paras:\n        if len(cur) + len(p) &lt;= max_chars:\n            cur += p + '\\n\\n'\n        else:\n            chunks.append(cur.strip())\n            cur = cur[-overlap:] + p + '\\n\\n'\n    if cur.strip():\n        chunks.append(cur.strip())\n    return chunks\n\ndef parse_pdf_local(path):\n    docs=[]\n    with pdfplumber.open(path) as pdf:\n        for i,page in enumerate(pdf.pages, start=1):\n            txt = page.extract_text() or ''\n            txt = clean_text(txt)\n            for idx, c in enumerate(chunk_text(txt)):\n                docs.append({'source': path, 'page': i, 'chunk_id': idx, 'text':c})\n    return docs\n</code></pre><hr><h3>3.4 生成 embeddings（本地示例）并写入 OpenSearch（向量索引）</h3><pre><code># embed_and_index.py\nfrom sentence_transformers import SentenceTransformer\nfrom opensearchpy import OpenSearch\nimport numpy as np, json\n\nmodel = SentenceTransformer('all-MiniLM-L6-v2')\nos_client = OpenSearch(hosts=[{'host':'your-opensearch-host','port':443}], http_auth=('user','pass'), use_ssl=True)\n\n# 1. 创建索引 mapping（一次性）\nindex_name = 'rag-docs'\nmapping = {\n  \"mappings\": {\n    \"properties\": {\n      \"text\": {\"type\":\"text\"},\n      \"source\": {\"type\":\"keyword\"},\n      \"page\": {\"type\":\"integer\"},\n      \"chunk_id\": {\"type\":\"integer\"},\n      \"vector\": {\"type\":\"knn_vector\",\"dims\":384}\n    }\n  }\n}\nos_client.indices.create(index=index_name, body=mapping, ignore=400)\n\n# 2. 批量索引\ndef index_docs(docs):\n    texts = [d['text'] for d in docs]\n    embs = model.encode(texts, convert_to_numpy=True)\n    embs = embs / np.linalg.norm(embs, axis=1, keepdims=True)\n    for d, v in zip(docs, embs):\n        body = {\n          \"text\": d['text'],\n          \"source\": d['source'],\n          \"page\": d['page'],\n          \"chunk_id\": d['chunk_id'],\n          \"vector\": v.tolist()\n        }\n        os_client.index(index=index_name, body=body)\n</code></pre><blockquote><p>注意：OpenSearch 的 <code>knn_vector</code> dims 需与 embedding 向量维度一致。生产用 bulk 批量写入与异步 worker。</p></blockquote><hr><h3>3.5 向量检索查询示例（OpenSearch k-NN）</h3><pre><code># query_opensearch.py\nimport numpy as np\ndef retrieve(question, top_k=5):\n    qv = model.encode([question])\n    qv = qv / np.linalg.norm(qv, axis=1, keepdims=True)\n    query = {\n        \"size\": top_k,\n        \"query\": {\n            \"knn\": {\n                \"vector\": {\"vector\": qv[0].tolist(), \"k\": top_k}\n            }\n        }\n    }\n    res = os_client.search(index=index_name, body=query)\n    hits = res['hits']['hits']\n    return [{'score': h['_score'], 'source': h['_source']['source'], 'page': h['_source']['page'], 'chunk_id': h['_source']['chunk_id'], 'text': h['_source']['text']} for h in hits]\n</code></pre><hr><h3>3.6 RAG 拼接与 LLM 调用（示例：使用 OpenAI / SageMaker / Bedrock）</h3><pre><code># rag_query.py\ndef build_prompt(question, retrieved):\n    context = \"\\n\\n---\\n\\n\".join([f\"[{r['source']}#p{r['page']}#{r['chunk_id']}]\\n{r['text']}\" for r in retrieved])\n    return f\"只使用下面证据回答问题，若证据不足请说明。证据:\\n{context}\\n\\n问题: {question}\\n\\n回答并列出来源：\"\n\ndef call_llm(prompt):\n    # 示例：OpenAI\n    import openai\n    openai.api_key = '...'\n    r = openai.ChatCompletion.create(model='gpt-4o', messages=[{\"role\":\"user\",\"content\":prompt}], temperature=0)\n    return r['choices'][0]['message']['content']\n\ndef answer_question(question):\n    retrieved = retrieve(question, top_k=5)\n    prompt = build_prompt(question, retrieved)\n    ans = call_llm(prompt)\n    return {'answer': ans, 'retrieved': retrieved}\n</code></pre><blockquote><p>生产：可把 LLM 放到 SageMaker endpoint 或 Bedrock 做低延迟私有调用，同时注意调用费用与速率。</p></blockquote><hr><h2>4. 部署、扩展与监控</h2><h3>4.1 异步任务与 Rate-Unlimited UX</h3><ul><li><p>用 <strong>S3 Event -&gt; SQS -&gt; ECS worker</strong> 处理上传后解析与索引，避免阻塞用户请求。</p></li><li><p>对外部 LLM 调用用 <strong>令牌桶（Redis）或队列 + worker</strong> 平滑请求、避免突发超限。</p></li><li><p><strong>降级</strong>：若 LLM 不可用，返回 top-1 段落并提示“已降级到抽取式回答”。</p></li></ul><h3>4.2 性能扩展</h3><ul><li><p><strong>索引</strong>：使用 OpenSearch 的节点扩容或用托管 Qdrant/Pinecone。</p></li><li><p><strong>Worker 自动伸缩</strong>：ECS Fargate / EKS HPA 根据 SQS 队列长度自动扩容。</p></li><li><p><strong>缓存</strong>：Redis 缓存 embedding 结果、热门问答、presigned URLs。</p></li></ul><h3>4.3 监控与告警（CloudWatch + X-Ray）</h3><ul><li><p>关键指标：<code>p50/p95/p99 latency</code>, <code>LLM error rate</code>, <code>SQS queue length</code>, <code>OpenSearch query latency</code>, <code>daily token usage</code>, <code>cost per day</code>。</p></li><li><p>在 CloudWatch 建告警：队列长度 &gt; threshold、LLM 429 上升、p95 latency &gt; threshold。</p></li><li><p>用 X-Ray 串接请求链路（ingest→parse→embed→retrieve→generate）做性能剖析。</p></li></ul><h3>4.4 安全与治理</h3><ul><li><p><strong>IAM 最小权限</strong>：为每个组件（Lambda、ECS、SageMaker）配置最小权限角色。</p></li><li><p><strong>加密</strong>：S3 SSE、OpenSearch TLS、在 Transit 使用 HTTPS、使用 KMS 加密敏感元数据。</p></li><li><p><strong>认证与授权</strong>：API Gateway + Cognito (或自建 Auth) 控制谁能上传/访问文档。</p></li><li><p><strong>数据合规</strong>：对敏感信息脱敏（PII），制定数据保留/删除策略。</p></li></ul><hr><h2>5. 最佳实践 / 常见陷阱（Best Practices / Common Pitfalls）</h2><h3>最佳实践</h3><ol><li><p><strong>保留并展示来源</strong>：在结果中把 <code>file#page#chunk</code> 明确展示以增强可信度。</p></li><li><p><strong>保证 embedding 一致性</strong>：索引与查询必须使用同一模型与归一化方案。</p></li><li><p><strong>批量与并行</strong>：批量做 embeddings、批量写索引提升效率；分批并发控制成本。</p></li><li><p><strong>异步处理耗时任务</strong>：解析/embedding/indexing 用后台 worker，前端只返回 job id。</p></li><li><p><strong>缓存常见 query</strong>：使用 Redis 缓存并记录命中率以节省调用成本。</p></li><li><p><strong>监控 + 自动告警</strong>：监控成本、错误率与延时，建立预算告警。</p></li><li><p><strong>可回放的 Artifact</strong>：记录 prompt、retrieved 文本、LLM 输出以便调试与评估。</p></li><li><p><strong>准备降级方案</strong>：返回检索片段或本地小模型作为后备。</p></li><li><p><strong>成本评估</strong>：事先估算最多并发与模型调用成本并加预算限制。</p></li><li><p><strong>隐私/合规</strong>：对上传数据做审查与脱敏，保存最小必要数据。</p></li></ol><h3>常见坑</h3><ul><li><p>把整篇文档直接送给 LLM → token 超限 / 高成本。</p></li><li><p>不做列检测（两栏 PDF） → 文本错位、检索混乱。</p></li><li><p>索引与查询 embedding 不一致 → 检索无效。</p></li><li><p>漏掉安全/加密配置 → 数据泄露风险。</p></li><li><p>没有降级导致单点依赖崩溃 → 服务不可用。</p></li><li><p>忽略成本或没有告警 → 账单突增。</p></li></ul><hr><h2>6. 课堂练习（Practice / Homework）</h2><p><strong>练习任务（MVP）</strong></p><ol><li><p>实现一个本地 MVP：上传 PDF → 后台解析/切分 → 用 <code>sentence-transformers</code> 生成 embeddings → 在 OpenSearch（或 FAISS）建立索引 → 提供 <code>/query</code> API 返回带来源的答案。</p></li><li><p>为 upload 实现 S3 presigned URL；用 SQS+worker 做异步处理并在前端实现 Job 状态查询。</p></li><li><p>加入缓存（Redis），统计 cache hit rate 并写入日志。</p></li><li><p>准备部署脚本（Dockerfile + docker-compose）并在本地用 1 台机器运行完整 stack。</p></li><li><p>写一页部署说明：含 costs 估算、security checklist、scaling plan。</p></li></ol><hr><h2>7. 小结（Summary）</h2><ul><li><p>在 AWS 上构建 RAG 应用的核心工作流：<strong>上传 → 解析 → 切分 → embedding → 索引 → 检索 → 生成 → 展示</strong>。</p></li><li><p>AWS 提供 Textract / SageMaker / OpenSearch 等可组成稳健生产链路的服务；同时要做好<strong>异步、降级、监控、成本与安全</strong>。</p></li><li><p>建议先做本地 MVP（FAISS + sentence-transformers），最终迁移或混合使用 AWS 托管服务（OpenSearch、SageMaker、Bedrock）以实现生产级可扩展性。</p></li><li><p>课堂练习可帮助你把理论变为可运行的实际项目，并学会部署与运营。</p></li></ul>",
+      "title_en": "Building RAG Applications with AWS",
+      "description_en": "Half of AI Engineer interviews list AWS as required—Bedrock hosts Claude / Llama without touching GPUs, Lambda runs retrieval functions on pay-per-request, and S3 + OpenSearch serves as your Vector Store. Fully serverless, zero ops. This lesson uses Bedrock Knowledge Bases to stand up a RAG in 10 minutes, then wires it through Lambda and API Gateway. 'Built serverless RAG on AWS Bedrock' on your resume is a hard plus for Australian and US roles.",
+      "index": 94,
+      "_id": "69e7112fb636532acae3b53a"
+    }
+  ]
+}

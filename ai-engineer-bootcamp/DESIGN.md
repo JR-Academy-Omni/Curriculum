@@ -2,14 +2,14 @@
 
 > Cohort 7 · 2026-08-25
 > 课程结构：理论 12 周 + 实践 13 周；CareKind production Agent 贯穿项目
-> 参考母版：`JR Academy AI Engineer Bootcamp - 10层AI工程技术栈海报 A3 V5 官方Logo.png`
-> 参考文件 SHA256：`e93fddd51ff41c1fb30f65895cef23936e8ace88423e8a892abc446505e8b0f7`
+> 当前主视觉：`public/posters/assets/cohort-7-production-system-v3.png`
+> 主视觉 SHA256：`39279a1aa670af6e70a118f47e9d50f424bf7ff5334af8a1ac3d5aaa3b1033fe`
 
 ## 1. 核心视觉概念
 
-**Editorial Premium · Soft Technical Stack**
+**Editorial Systems Maquette · Production Architecture**
 
-画面不是“黑框技术海报”，而是一套有空气感、可信、精致的 AI 工程系统：奶油白承载信息，淡紫表现 AI，珊瑚承担行动与能量，半透明 3D 分层结构表现从 Foundation 到 Production 的能力累积。
+画面不是“AI 光球”或紫色玻璃塔，而是一座可读的工程建筑模型：暖白工作室承载信息，石墨黑金属表现系统边界，半透明外壳展示内部结构，珊瑚机械闸门对应控制与人工确认。五层实体模块表现从 Foundation 到 Production 的能力累积。
 
 视觉必须支持本期核心叙事：**从第一周开始，在同一个 CareKind repository 中逐层搭建 production Agent。**
 
@@ -41,11 +41,11 @@ JR 红 `#FF5757` 仍是品牌资产色，但在 Cohort 7 页面中不做 30% 大
 ## 4. 构图与组件
 
 - 官方 Logo：只使用 `public/posters/assets/jr-academy-logo-zh.svg`，不得用文字模拟 Logo。
-- Hero：左侧价值主张，右侧或满幅使用 `cohort-7-stack-hero-v2.png`。
+- Hero：左侧价值主张，右侧或满幅使用 `cohort-7-production-system-v3.png`。
 - 卡片：18–28px 圆角、1px 低对比边、柔和阴影；hover 最多上移 3px。
 - 标签：pill 形；理论用 Violet，实践用 Coral。
 - 背景：允许低透明网格、柔光与玻璃层；禁止赛博黑底和高饱和霓虹堆叠。
-- 3D 主图：必须无错误文字；所有课程文字由 HTML/CSS 排版覆盖。
+- 3D 主图：必须无文字、无 Logo、无人物；所有课程文字由 HTML/CSS 排版覆盖。禁止通用机器人、AI 大脑、发光球体、紫色玻璃托盘塔和赛博朋克霓虹。
 
 ## 5. 排版
 
@@ -64,14 +64,13 @@ JR 红 `#FF5757` 仍是品牌资产色，但在 Cohort 7 页面中不做 30% 大
 ## 7. AI 出图 Prompt
 
 ```text
-Create a premium editorial 3D visual for JR Academy AI Engineer Bootcamp.
-Show one vertically layered production AI system: product foundation, UI and workflow,
-voice and structured data, RAG, MCP tools, bounded agent, memory, agent harness,
-model routing, governance/evaluation/observability. Use translucent glass platforms,
-soft lavender and violet AI light, warm coral energy, cream-white background, subtle grid,
-high-end product visualization, calm and trustworthy, no text, no logos, no people,
-no black brutalist borders, no cyberpunk dark background. Portrait 3:4 composition with
-clean negative space on the left for HTML typography.
+Create a sophisticated editorial key visual showing one production-grade AI agent system
+as a precise five-layer architectural cutaway model. Use matte warm-white ceramic,
+graphite anodized metal, smoked acrylic, visible conduits, checkpoints and small coral
+mechanical approval gates. Place the model on the right of a warm ivory studio backdrop,
+leaving the left 48 percent quiet for HTML typography. Calm directional daylight,
+Swiss editorial restraint, tactile and credible. Portrait 3:4. No text, logos, people,
+robots, brains, glowing orbs, circular glass trays, neon cyberpunk or purple fantasy tower.
 ```
 
 ## 8. 验收清单

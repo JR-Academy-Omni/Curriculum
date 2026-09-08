@@ -1,0 +1,444 @@
+{
+  "status": "HISTORICAL_REFERENCE_NOT_CURRENT_REQUIREMENTS",
+  "lessons": [
+    {
+      "code": "L40",
+      "title": "Lab: Chain of Thought 推理",
+      "description": "Prompt 互动实验：Chain of Thought 推理。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabSlug": "chain-of-thought",
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Chain of Thought 推理",
+          "description": "Chain of Thought 推理",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "Prompt Lab: chain-of-thought",
+          "description": "Prompt Lab: chain-of-thought",
+          "duration": 25,
+          "labSlug": "chain-of-thought"
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "Chain of Thought 推理 理解检查",
+          "description": "Chain of Thought 推理 理解检查",
+          "duration": 2
+        }
+      ],
+      "labs": [
+        {
+          "source": "prompt-lab",
+          "slug": "chain-of-thought"
+        }
+      ],
+      "learns": [],
+      "learningMaterial": "<h2>实验目标</h2>\n<p>练习 Chain of Thought (CoT) 推理：让 LLM \"一步步思考\"来提高复杂任务的准确率。</p>\n<h3>你会练习</h3>\n<ul>\n<li>对比直接回答 vs \"Let's think step by step\" 的效果差异</li>\n<li>在数学题、逻辑推理题上测试 CoT 的提升</li>\n<li>练习 Few-shot CoT：给出包含推理过程的示例</li>\n</ul>",
+      "title_en": "Lab: Chain of Thought Reasoning",
+      "description_en": "Prompt interactive lab: Chain of Thought 推理. Hands-on practice in browser with instant validation.",
+      "index": 40,
+      "interactiveLabType": "prompt",
+      "_id": "69e71123b636532acae3b3f4"
+    },
+    {
+      "code": "L53",
+      "title": "RAG 系统入门",
+      "description": "RAG = 给 LLM 外挂一个知识库。把 PDF / 数据库 / 网页切成 chunk、embed 成向量、存进 Vector DB，查询时先检索相关片段再让 LLM 基于它回答——这是 2026 年企业把 AI 真正用起来最主流的架构。这节是整个 Phase 的地图，让你看清楚 30 节课会从 Embedding 一路带你走到 GraphRAG + RAGAS + AWS 生产部署。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 5,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "RAG 设计和实现参考",
+          "description": "RAG 设计和实现参考",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "检查",
+          "description": "检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>RAG 系统入门</h2>\n<p>进入 Phase 2 之前的预习：理解 RAG 是什么、为什么需要、基本架构长什么样。</p>\n\n<h3>RAG 解决什么问题</h3>\n<p>LLM 的知识截止到训练数据的日期，不知道你公司的内部文档。RAG 的做法：先从你的文档库里检索相关片段，再把片段塞进 Prompt 让 LLM 基于这些内容回答。</p>\n\n<h3>基本架构</h3>\n<pre><code>用户提问 → Embedding → 向量搜索 → 取 top-k 文档片段 → 拼入 Prompt → LLM 生成回答</code></pre>\n\n<h3>两个 Pipeline</h3>\n<ol>\n<li><strong>Indexing Pipeline</strong>（离线）：文档 → 切片 → Embedding → 存入向量数据库</li>\n<li><strong>Query Pipeline</strong>（在线）：用户问题 → Embedding → 搜索 → 拼 Prompt → 回答</li>\n</ol>\n<p>Phase 2 会从零实现这两个 Pipeline。</p>",
+      "title_en": "RAG System Introduction",
+      "description_en": "RAG plugs a knowledge base into an LLM: chunk your PDFs/DBs/web content, embed into vectors, store in a Vector DB, then retrieve relevant pieces before generation. This opener maps out the 30-lesson Phase 3 journey—from embeddings all the way to GraphRAG, RAGAS, and AWS-based production deployment.",
+      "index": 52,
+      "_id": "69e71126b636532acae3b447"
+    },
+    {
+      "code": "L66",
+      "title": "LLM Rate Limits",
+      "description": "RAG 一上线就 429 Too Many Requests——OpenAI 默认 TPM 30K、RPM 500，10 个用户并发就炸。这节课讲清楚 Token / RPM / TPM 三条限制怎么计算，带你写一个指数退避重试 + 队列 + fallback 到备用模型的 rate limiter。生产环境 RAG 90% 的线上事故都是 rate limit 引起的，不是模型能力问题。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Token 限制、RPM/TPM 限流、指数退避重试",
+          "description": "Token 限制、RPM/TPM 限流、指数退避重试",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "API 成本管理：预算、tracking、fallback",
+          "description": "API 成本管理：预算、tracking、fallback",
+          "duration": 3
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "Rate Limiting 检查",
+          "description": "Rate Limiting 检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h1>课程：LLM Rate Limits</h1><p><strong>适合程度</strong>：零基础 · 面向 AI Engineer 训练营学员<br><strong>目标</strong>：理解大语言模型（LLM）API 的 Rate Limits 概念、它对产品/开发的影响，并掌握在代码层面与架构层面应对和优化的常用策略——包括限流、重试、退避（backoff）、批处理、缓存、监控等实用技巧。</p><hr><h2>1. 引言（Introduction）</h2><p>当你把 LLM 接入应用时，会遇到对方服务对调用频率和并发的限制（即 Rate Limits）。超出限制会导致 429（Too Many Requests）或类似错误，影响用户体验、导致失败的请求或高成本重试。学会正确管理 Rate Limits 能让你的应用更稳定、延迟更低、成本更可控。本课从概念到实战，带你学会如何在代码与系统设计层面与 Rate Limits “和平相处”。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 什么是 Rate Limits</h3><ul><li><p><strong>定义</strong>：API 提供方对单位时间内的请求次数、并发请求数或资源使用（比如 tokens）施加的限制。</p></li><li><p><strong>常见维度</strong>：</p><ul><li><p><strong>请求数/时间窗口（requests / minute）</strong>：例如每分钟允许 60 次请求。</p></li><li><p><strong>并发限制（concurrency）</strong>：同时允许的并发请求数（例如最多 10 个并发请求）。</p></li><li><p><strong>Token / 带宽限制</strong>：按生成 token 数量计费和限速。</p></li><li><p><strong>突发（burst）限制</strong>：短时间内允许的瞬时请求峰值，之后按平滑速率限制。</p></li></ul></li></ul><h3>2.2 Rate Limits 的表现与影响</h3><ul><li><p><strong>错误类型</strong>：常见的响应码包括 <code>429</code>（超限），<code>503</code>（服务不可用）或 <code>500</code> 等。许多服务会在响应头提供限额信息（例如 <code>X-RateLimit-Limit</code>, <code>X-RateLimit-Remaining</code>, <code>Retry-After</code>）。</p></li><li><p><strong>对延时和可用性的影响</strong>：超限会导致失败或重试，进而增加页面延迟、排队长度和成本。高并发场景（实时对话、多用户并发）尤其容易触发。</p></li><li><p><strong>成本与体验</strong>：不合理的重试策略会产生高额 API 调用成本；不做缓存/合并会浪费请求配额。</p></li></ul><h3>2.3 常见 Rate Limits 策略（提供方）</h3><ul><li><p><strong>固定窗口（fixed window）</strong>：按固定时间窗口计数（例如每分钟）。</p></li><li><p><strong>滑动/滚动窗口（sliding window）</strong>：更平滑的限制计数方式。</p></li><li><p><strong>令牌桶（token bucket）或漏桶（leaky bucket）</strong>：常用于实现速率控制，允许突发并平滑长期速率。</p></li></ul><h3>2.4 保护点位（客户端/服务端）</h3><ul><li><p><strong>客户端限流</strong>：在客户端或应用层按规则限制请求，避免触发提供方限额。</p></li><li><p><strong>网关/中间层限流</strong>：在 API 网关、边车或后端服务处统一限流与重试策略。</p></li><li><p><strong>队列与异步处理</strong>：把突发请求转为排队处理，平滑对后端的压力。</p></li></ul><hr><h2>3. 实战示例（Practical Examples）</h2><p>下面给出面向零基础学员、可直接运行的代码片段，说明如何实现限流、重试与退避、并发控制、批处理与监控。</p><h3>3.1 同步 Token Bucket（示例）</h3><p>适用于简单脚本或阻塞流程，控制平均 QPS 并允许短时突发。</p><pre><code># token_bucket.py\nimport time\nimport threading\n\nclass TokenBucket:\n    def __init__(self, rate, capacity):\n        \"\"\"\n        rate: 每秒补充的 token 数（tokens/sec）\n        capacity: 最大 token 容量（burst 容量）\n        \"\"\"\n        self.rate = rate\n        self.capacity = capacity\n        self.tokens = capacity\n        self.timestamp = time.monotonic()\n        self.lock = threading.Lock()\n\n    def _refill(self):\n        now = time.monotonic()\n        elapsed = now - self.timestamp\n        self.tokens = min(self.capacity, self.tokens + elapsed * self.rate)\n        self.timestamp = now\n\n    def consume(self, tokens=1):\n        with self.lock:\n            self._refill()\n            if self.tokens &gt;= tokens:\n                self.tokens -= tokens\n                return True\n            return False\n\n    def wait_for_token(self, tokens=1):\n        \"\"\"阻塞直到有足够 token\"\"\"\n        while True:\n            with self.lock:\n                self._refill()\n                if self.tokens &gt;= tokens:\n                    self.tokens -= tokens\n                    return\n            time.sleep(0.05)\n</code></pre><p>用法示例：</p><pre><code>bucket = TokenBucket(rate=1.0, capacity=5)  # 平均 1 req/sec，允许突发 5\n\n# 在要发请求的位置调用：\nbucket.wait_for_token()\n# 发请求...\n</code></pre><h3>3.2 异步并发控制 + 指数退避（适合高并发/实时）</h3><p>使用 <code>asyncio.Semaphore</code> 控制并发，遇到 429/503 做指数退避并带抖动（jitter）。</p><pre><code># async_ratelimit.py\nimport asyncio\nimport aiohttp\nimport random\nimport time\n\nMAX_CONCURRENCY = 10\nsemaphore = asyncio.Semaphore(MAX_CONCURRENCY)\n\nasync def exponential_backoff_retry(call_func, max_attempts=5, base=0.5):\n    attempt = 0\n    while True:\n        try:\n            return await call_func()\n        except aiohttp.ClientResponseError as e:\n            status = e.status\n            # 对于 429/503 等做重试\n            if status in (429, 503) and attempt &lt; max_attempts:\n                jitter = random.uniform(0, base)\n                sleep_time = base * (2 ** attempt) + jitter\n                await asyncio.sleep(sleep_time)\n                attempt += 1\n                continue\n            raise\n\nasync def call_llm(session, url, payload):\n    async with semaphore:\n        async def do_call():\n            async with session.post(url, json=payload) as resp:\n                resp.raise_for_status()\n                return await resp.json()\n        return await exponential_backoff_retry(do_call)\n\nasync def main():\n    async with aiohttp.ClientSession() as session:\n        tasks = [call_llm(session, \"https://api.example.com/llm\", {\"prompt\": f\"Hi {i}\"}) for i in range(50)]\n        results = await asyncio.gather(*tasks, return_exceptions=True)\n        print(\"done\")\n\nif __name__ == \"__main__\":\n    asyncio.run(main())\n</code></pre><p><strong>说明</strong>：<code>Semaphore</code> 控制最大并发；<code>exponential_backoff_retry</code> 对 429/503 做退避重试并带随机抖动，避免“雪崩式”重试。</p><h3>3.3 利用响应头自适应（读取 RateLimit 信息）</h3><p>许多服务会返回限额相关响应头，客户端应解析并动态调整速率或直接按 <code>Retry-After</code> 等字段等待。</p><pre><code># pseudo_adaptive.py (同步示例)\nimport requests\nimport time\n\ndef call_with_rate_adapt(url, payload):\n    resp = requests.post(url, json=payload)\n    if resp.status_code == 429:\n        retry_after = resp.headers.get(\"Retry-After\")\n        if retry_after:\n            wait = int(retry_after)\n        else:\n            wait = 1  # fallback\n        time.sleep(wait)\n        return call_with_rate_adapt(url, payload)\n    # 可查看限额 header\n    limit = resp.headers.get(\"X-RateLimit-Limit\")\n    remaining = resp.headers.get(\"X-RateLimit-Remaining\")\n    reset = resp.headers.get(\"X-RateLimit-Reset\")\n    # 依据 remaining 做本地限速调整（示例）\n    if remaining is not None and int(remaining) &lt; 5:\n        time.sleep(1)\n    return resp.json()\n</code></pre><p><strong>说明</strong>：不要忽略提供方的限额头（若存在），将它作为反馈信号调整你的策略。</p><h3>3.4 批处理（Batching）与缓存（Caching）</h3><ul><li><p><strong>批处理</strong>：当 API 支持一次处理多个项（batch），合并小请求以减少调用次数。</p></li><li><p><strong>缓存</strong>：对常见 prompt 或不频繁变化的输入使用缓存（内存 LRU、Redis），避免重复调用。</p></li></ul><p>批处理示例（伪代码）：</p><pre><code># 当 API 支持一次提交多个 prompt（pseudo）\nprompts = [\"p1\", \"p2\", \"p3\"]\nresponse = requests.post(\"https://api.example.com/batch\", json={\"prompts\": prompts})\n# 服务器返回对应的多个结果，减少 3 次独立请求为 1 次\n</code></pre><p>缓存示例（使用 functools.lru_cache）：</p><pre><code>from functools import lru_cache\n\n@lru_cache(maxsize=1024)\ndef cached_call(prompt):\n    # 调用真实 LLM 并返回结果（同步示例）\n    return call_llm_sync(prompt)\n</code></pre><p><strong>注意</strong>：当 prompt 含有时间敏感或随机因素时不要缓存。</p><h3>3.5 中间层队列 + 优先级（适合批量任务）</h3><p>对离线或允许延迟的任务，使用任务队列（如 Redis + RQ、RabbitMQ、Kafka）做排队、批处理与速率控制，前端只需返回任务已入队，从而保护上游服务。</p><h3>3.6 监控与告警（Prometheus 简单示例）</h3><p>监控请求速率、失败率、限额剩余和延迟是关键。示例（需安装 <code>prometheus_client</code>）：</p><pre><code># monitoring.py\nfrom prometheus_client import Counter, Histogram, start_http_server\nimport time\n\nREQUESTS = Counter(\"llm_requests_total\", \"Total LLM requests\", [\"status\"])\nLATENCY = Histogram(\"llm_request_latency_seconds\", \"LLM request latency\")\n\ndef record(status_code, latency_sec):\n    REQUESTS.labels(status=str(status_code)).inc()\n    LATENCY.observe(latency_sec)\n\nif __name__ == \"__main__\":\n    start_http_server(8000)  # Prometheus 抓取 metrics 的端口\n    while True:\n        start = time.time()\n        # call LLM ...\n        latency = time.time() - start\n        record(200, latency)\n        time.sleep(1)\n</code></pre><p>把这些指标接到 Grafana 并设置告警（如失败率或 429 频繁上升）可以快速发现问题。</p><hr><h2>4. 最佳实践 / 常见陷阱（Best Practices / Common Pitfalls）</h2><h3>最佳实践</h3><ol><li><p><strong>在客户端/服务端做双重限流</strong>：客户端做乐观限流（保护自身），网关或服务层做中心化限流与度量。</p></li><li><p><strong>区分并发与速率限制</strong>：用 <code>Semaphore</code> 控制并发，用令牌桶控制平均 QPS，两者配合最稳健。</p></li><li><p><strong>实现指数退避 + 抖动（jitter）</strong>：遇到 429/503 重试时使用指数退避并加抖动，避免“集中重试”导致拥塞。</p></li><li><p><strong>解析并尊重 RateLimit 头</strong>：若服务返回限额头或 <code>Retry-After</code>，优先遵守并据此调整行为。</p></li><li><p><strong>批处理与合并请求</strong>：对能合并的场景做批处理，显著减少请求次数。</p></li><li><p><strong>缓存可复用结果</strong>：对稳定或常见请求做缓存（内存或 Redis），减少重复调用。</p></li><li><p><strong>异步 + 后台队列</strong>：把耗时或不需实时返回的任务放入后台队列处理，平滑吞吐。</p></li><li><p><strong>完善监控与告警</strong>：记录 429/500 比例、限额剩余、请求延迟与队列长度，设定阈值告警。</p></li><li><p><strong>精简 Prompt</strong>：减少不必要的 token（短 prompt、template 或抽取式提示），降低 token 成本与速率压力。</p></li><li><p><strong>测试不同流量场景</strong>：做负载测试与突发场景实验，验证系统行为。</p></li></ol><h3>常见陷阱</h3><ul><li><p><strong>盲目重试没有退避</strong>：立即重试会造成更严重拥塞。</p></li><li><p><strong>忽视服务返回的限额信息</strong>：不解析限额头会错失自适应的机会。</p></li><li><p><strong>在主线程做阻塞等待</strong>：会影响服务器并发，使用异步或后台线程池。</p></li><li><p><strong>把所有请求都当实时请求</strong>：对于非实时任务不应该占用实时配额。</p></li><li><p><strong>过度依赖单一策略</strong>：例如仅依赖令牌桶而不做并发控制，无法应对并发突发。</p></li><li><p><strong>不处理不同错误类型</strong>：对 429 做退避，但对 4xx 的其他错误或 5xx 的不同原因也要区分处理。</p></li><li><p><strong>时间基准不一致</strong>：用本地时间判断 reset 时间可能因时钟偏差错过窗口，使用服务返回的 reset 时间或可靠 monotonic 时钟。</p></li><li><p><strong>忘记考虑成本</strong>：频繁重试及调用大模型会快速增加费用。</p></li></ul><hr><h2>5. 平台差异与实操提示</h2><ul><li><p><strong>OpenAI</strong>：通常有请求/分钟和并发限制，响应可能包含限额相关头（不同产品版本略有不同）。重试应考虑 <code>Retry-After</code>。</p></li><li><p><strong>Google Cloud / Vertex AI</strong>：同样提供配额与限额，通常可以在 GCP 控制台查看并申请配额上限。</p></li><li><p><strong>私有/企业部署</strong>：限额策略由运维定义；可直接与平台协商更高配额或私有部署以降低外部限流风险。</p></li></ul><blockquote><p>无论平台，原则相同：读取服务文档、解析响应头、在应用层做自适应限速与监控。</p></blockquote><hr><h2>6. 课后练习（Practice）</h2><ol><li><p><strong>实现一个异步 LLM 客户端</strong>：包含 <code>Semaphore</code> 并发控制、指数退避重试、解析 <code>Retry-After</code> 并自适应等待。做压力测试（模拟 100 并发）并记录 429/成功率。</p></li><li><p><strong>实现 Token Bucket 限流器</strong>：把它集成到一个小型批量处理任务中（例如处理 1000 条文本），比较不同 <code>rate</code> 与 <code>capacity</code> 的效果。</p></li><li><p><strong>加入缓存与批处理</strong>：对一组重复 prompt 实现缓存与批处理，测量请求次数与总时延的变化。</p></li><li><p><strong>监控实验</strong>：用 <code>prometheus_client</code> 暴露指标，建立 Dashboard 展示请求速率、失败率与队列长度，并设置报警规则。</p></li></ol><hr><h2>7. 小结（Summary）</h2><ul><li><p><strong>理解 Rate Limits 的本质</strong>（速率、并发、突发与令牌桶等）是可靠使用 LLM 的基础。</p></li><li><p><strong>多层防护</strong>（客户端限流、服务端限流、队列、缓存、批处理）能极大提升稳定性与成本效率。</p></li><li><p><strong>重试要有策略</strong>：指数退避 + 抖动 + 最大尝试次数并结合 <code>Retry-After</code>。</p></li><li><p><strong>监控与反馈回路</strong>：实时指标与告警帮助及时发现和调优。</p></li><li><p><strong>工程实践</strong>：把限流、并发控制、重试、缓存及监控作为平台级能力，写成可复用的中间件/库以便于在不同应用中复用。</p></li></ul>",
+      "title_en": "LLM Rate Limits",
+      "description_en": "The moment your RAG hits production, you get 429 Too Many Requests—OpenAI's default TPM is 30K, RPM is 500, and 10 concurrent users will blow through that. This session breaks down the three limits (token / RPM / TPM) and has you build a rate limiter with exponential backoff, queueing, and fallback to a backup model. Most production RAG incidents are rate limits, not model quality.",
+      "index": 65,
+      "_id": "69e71129b636532acae3b495"
+    },
+    {
+      "code": "L90",
+      "title": "RAGAS Framework",
+      "description": "W5 理论课前必修录播：学习 RAGAS 指标与人工抽检，使用教师 reference baseline；W6 建立 Pipeline，W7 评估学生实现。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 60,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "RAGAS 自动化评估框架",
+          "description": "RAGAS 自动化评估框架",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "SCENARIO",
+          "title": "用 RAGAS 评估教师 reference baseline",
+          "description": "使用教师 baseline；W6 建 Pipeline，W7 评估学生实现。",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "RAGAS 检查",
+          "description": "RAGAS 检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h1>课程：RAG Assessment（RAGAS）框架学习资料</h1><p><strong>适合程度</strong>：零基础 · 面向 AI Engineer 训练营学员<br><strong>目标</strong>：理解并能实操 RAGAS（RAG Assessment）框架，用一套结构化的指标和流程（Context Recall、Context Precision、Answer Relevancy、Faithfulness）来评估、诊断并改进 RAG 系统，进而把评估纳入开发周期与 CI 流程中。</p><hr><h2>1. 引言（Introduction）</h2><p>RAG（Retrieval-Augmented Generation）系统由检索和生成两部分组成，评估时必须同时衡量 <strong>检索质量</strong>（系统能否把相关证据找回）和 <strong>生成质量</strong>（生成结果是否相关并忠于证据）。RAGAS 框架把评估问题模块化、量化、自动化：定义核心指标、给出计算方法、建立端到端评估流水线，以及提供定位问题与改善的策略。对学生来说，学会 RAGAS 能让你在项目中快速诊断问题（比如 “是检索漏召回还是生成幻觉？”），并用数据驱动优化。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 指标总览（RAGAS 的四大指标）</h3><ol><li><p><strong>Context Recall（上下文召回）</strong></p><ul><li><p>定义：检索阶段返回的 top-k 结果中包含 gold（应被检索到的）证据的比例。</p></li><li><p>意义：如果召回低，生成器无论多强也无法基于真实证据生成正确答案。</p></li><li><p>计算（单条）：<code>ContextRecall@k = |retrieved[:k] ∩ gold_ids| / |gold_ids|</code>。</p></li></ul></li><li><p><strong>Context Precision（上下文精确率）</strong></p><ul><li><p>定义：检索返回的 top-k 结果中有多少比例是相关/有用的（纯度）。</p></li><li><p>意义：高精确率降低生成器被无关上下文误导的风险。</p></li><li><p>计算（单条）：<code>ContextPrecision@k = |retrieved[:k] ∩ gold_ids| / k</code>。</p></li></ul></li><li><p><strong>Answer Relevancy（答案相关性）</strong></p><ul><li><p>定义：生成答案与问题的相关度（是否切题、是否满足意图、是否完整）。</p></li><li><p>评估方式：自动化近似（embedding 相似度 / 判别模型）或人工打分（2–5 分制）。</p></li></ul></li><li><p><strong>Faithfulness（忠实度）</strong></p><ul><li><p>定义：生成答案中陈述的断言是否能由检索到的上下文支持（是否“基于证据”）。</p></li><li><p>评估方式：句子级 NLI 判定（entailment）+ 人工复核。</p></li></ul></li></ol><h3>2.2 端到端与分层评估</h3><ul><li><p><strong>分层评估</strong>：先评估检索（Recall/Precision/MRR），再评估生成（Relevancy/Faithfulness），最后端到端评估（Grounded Accuracy：答案正确且有正确来源）。</p></li><li><p><strong>目的</strong>：便于定位问题来源（检索 vs 生成），并采取针对性优化。</p></li></ul><h3>2.3 合成分数与阈值</h3><ul><li><p>RAGAS 可定义一个<strong>合成质量分</strong>（示例）：<br><code>RAGAS_score = w1 * Recall_norm + w2 * Precision_norm + w3 * Relevancy + w4 * Faithfulness</code><br>其中各项归一化到 0–1，<code>w</code> 为权重（按任务重要性设定）。</p></li><li><p>通过阈值（例如 <code>RAGAS_score &gt;= 0.75</code>）判定“通过/不通过”，并用于 CI 的回归告警。</p></li></ul><hr><h2>3. 实战示例（Practical Examples）</h2><p>下面给出可直接运行或改写的 Python 代码示例，覆盖检索指标、答案相关性评估、忠实度（NLI）评估，以及合成报告的生成。</p><blockquote><p>安装依赖（示例）：<br><code>pip install sentence-transformers transformers faiss-cpu scipy numpy</code></p></blockquote><hr><h3>3.1 检索指标实现（Context Recall / Precision / MRR）</h3><pre><code># ragas_retrieval.py\nimport json\nfrom typing import List\n\ndef precision_at_k(retrieved: List[str], gold: List[str], k: int) -&gt; float:\n    rel = sum(1 for d in retrieved[:k] if d in gold)\n    return rel / k\n\ndef recall_at_k(retrieved: List[str], gold: List[str], k: int) -&gt; float:\n    rel = sum(1 for d in retrieved[:k] if d in gold)\n    total = len(gold)\n    return rel / total if total&gt;0 else 0.0\n\ndef mrr_at_k(retrieved: List[str], gold: List[str], k: int) -&gt; float:\n    for i, d in enumerate(retrieved[:k], start=1):\n        if d in gold:\n            return 1.0 / i\n    return 0.0\n\ndef eval_retrieval(testfile: str, retrieve_fn, k=5):\n    sums = {\"p@k\":0.0, \"r@k\":0.0, \"mrr@k\":0.0}\n    n = 0\n    with open(testfile, 'r', encoding='utf8') as f:\n        for line in f:\n            item = json.loads(line)\n            gold = item.get(\"gold_doc_ids\", [])\n            retrieved = retrieve_fn(item['query'], k)\n            sums[\"p@k\"] += precision_at_k(retrieved, gold, k)\n            sums[\"r@k\"] += recall_at_k(retrieved, gold, k)\n            sums[\"mrr@k\"] += mrr_at_k(retrieved, gold, k)\n            n += 1\n    return {k: v/n for k, v in sums.items()}\n</code></pre><p><strong>使用提示</strong>：<code>retrieve_fn</code> 为系统检索接口（返回 doc id 列表），测试集中应包含 <code>gold_doc_ids</code>（段/页级别）。</p><hr><h3>3.2 Answer Relevancy：Embedding 相似度近似</h3><pre><code># ragas_relevancy.py\nfrom sentence_transformers import SentenceTransformer, util\nmodel = SentenceTransformer(\"all-MiniLM-L6-v2\")\n\ndef relevancy_score(question: str, answer: str) -&gt; float:\n    q_emb = model.encode(question, convert_to_numpy=True)\n    a_emb = model.encode(answer, convert_to_numpy=True)\n    sim = util.cos_sim(q_emb, a_emb).item()  # -1..1\n    return (sim + 1) / 2  # map to 0..1\n\ndef batch_relevancy(dataset, answer_fn, threshold=0.6):\n    metrics = []\n    for item in dataset:\n        ans = answer_fn(item['query'])\n        score = relevancy_score(item['query'], ans)\n        metrics.append({\"query\": item['query'], \"score\": score, \"relevant\": score&gt;=threshold})\n    return metrics\n</code></pre><p><strong>注意</strong>：Embedding 方法是近似，长期项目建议训练专门的判别器或使用人工打分做校准。</p><hr><h3>3.3 Faithfulness：基于 NLI 的句子级判断</h3><pre><code># ragas_faithfulness.py\nimport re\nfrom transformers import pipeline\nnli = pipeline(\"text-classification\", model=\"roberta-large-mnli\", device=-1)\n\ndef split_claims(answer:str):\n    sents = re.split(r'(?&lt;=[\\.\\?\\!])\\s+', answer.strip())\n    return [s for s in sents if len(s.strip())&gt;10]\n\ndef claim_supported(claim, contexts, entailment_threshold=0.9):\n    for ctx in contexts:\n        out = nli(f\"{ctx} &lt;/s&gt;&lt;/s&gt; {claim}\", truncation=True)\n        label = out[0]['label'].upper()\n        score = out[0]['score']\n        if label == \"ENTAILMENT\" and score &gt;= entailment_threshold:\n            return True\n    return False\n\ndef faithfulness_score(answer, contexts):\n    claims = split_claims(answer)\n    if not claims:\n        return 0.0\n    supported = sum(1 for c in claims if claim_supported(c, contexts))\n    return supported / len(claims)\n</code></pre><p><strong>实践建议</strong>：把 NLI 作为自动化近似，并对不同阈值进行人工校准；对长 context 做分片并只对 top relevant 片段做 NLI。</p><hr><h3>3.4 生成 RAGAS 报告与合成分数</h3><pre><code># ragas_report.py\ndef normalize(v, vmin=0, vmax=1):\n    # 假设 v already in 0..1, else add scaling\n    return max(0,min(1,v))\n\ndef ragas_score(recall, precision, relevancy, faithfulness, w=(0.3,0.2,0.3,0.2)):\n    # weights sum to 1\n    components = [normalize(recall), normalize(precision), normalize(relevancy), normalize(faithfulness)]\n    return sum(ci*wi for ci,wi in zip(components,w))\n\n# example per-query aggregation\ndef per_query_report(query, retrieved_ids, gold_ids, answer, contexts):\n    recall = recall_at_k(retrieved_ids, gold_ids, k=5)\n    precision = precision_at_k(retrieved_ids, gold_ids, k=5)\n    relev = relevancy_score(query, answer)\n    faith = faithfulness_score(answer, contexts)\n    score = ragas_score(recall, precision, relev, faith)\n    return {\"recall\":recall,\"precision\":precision,\"relevancy\":relev,\"faithfulness\":faith,\"ragas_score\":score}\n</code></pre><p>生成 CSV/JSON 报表并按 <code>ragas_score</code> 排序，定位低分样本做人工复核与错误分类（检索漏召回 / 生成幻觉 / 不相关等）。</p><hr><h2>4. RAGAS 的工程化与最佳实践 / 常见陷阱</h2><h3>最佳实践（工程与评估设计）</h3><ol><li><p><strong>分层评估流程</strong>：先检索再生成，按层定位问题。</p></li><li><p><strong>高质量金标（gold）数据</strong>：检索 gold 应标注到段/句级，生成 gold 提供多种表述。</p></li><li><p><strong>混合评估策略</strong>：自动化指标做大规模筛选，人工抽样判断 Hallucination/Attribution。</p></li><li><p><strong>NLI + 人工校准</strong>：把 NLI 作为自动近似，定期抽样校准其精确率/召回率。</p></li><li><p><strong>合理的 k 选择与曲线观察</strong>：不仅看单个 k（如 5），还观察 Recall@k 随 k 的变化曲线，选择恰当的 top-k 取值。</p></li><li><p><strong>合成分数与阈值</strong>：设定合成分数和通过阈值用于 CI 回归检测（例如新改动导致 <code>RAGAS_score</code> 平均下降触发告警）。</p></li><li><p><strong>记录元数据与 trace</strong>：每次评估记录模型版本/embedding model/提示模板/索引版本，做到可复现。</p></li><li><p><strong>把成本纳入评估</strong>：记录 token 用量与延时，做质量-成本权衡。</p></li><li><p><strong>分层抽样做人工评估</strong>：按自动分数分组抽样（高风险、低风险、中等），提高人工评估效率。</p></li><li><p><strong>把评估纳入 CI/CD</strong>：在模型/索引/提示改动时自动跑评估集并生成报告、可视化趋势并触发回归检查。</p></li></ol><h3>常见陷阱（需避免）</h3><ul><li><p><strong>只看单一指标</strong>（例如只盯 Recall 而忽视 Faithfulness）。</p></li><li><p><strong>把 user_id 等高基数字段当作 tag 聚合</strong> 导致指标查询昂贵且难以分析。</p></li><li><p><strong>盲目相信自动化评估</strong>（尤其是 NLI/embedding 判定），不做人工抽样。</p></li><li><p><strong>Gold 数据粒度不够</strong>（无法定位检索到哪一段支持答案）。</p></li><li><p><strong>未考虑 prompt / system message 对生成影响</strong>：更换 prompt 会显著改变生成结果，应把 prompt 版本纳入记录。</p></li><li><p><strong>评估环境与生产不一致</strong>：不同模型/索引/参数会导致评估结果失真。</p></li></ul><hr><h2>5. 实践作业（Practice / Homework）</h2><ol><li><p><strong>构建 200 条测试集</strong>：每条含 <code>query</code>, <code>gold_doc_ids</code>（至少 1–3）与 <code>gold_answers</code>（1–3 个）。</p></li><li><p><strong>实现 RAGAS 离线评估脚本</strong>：跑 retrieval（Recall@5、MRR）、生成（Relevancy）、Faithfulness（NLI），输出 per-query 报告和整体统计。</p></li><li><p><strong>错误分析报告</strong>：从低 <code>ragas_score</code> 样本中抽 50 条做人工标注（问题类型），写 1–2 页改进计划。</p></li><li><p><strong>CI 集成</strong>：把评估脚本加到项目 CI，当 <code>mean_ragas_score</code> 下降 &gt; 3% 时失败（或发出告警邮件）。</p></li></ol><hr><h2>6. 小结（Summary）</h2><ul><li><p><strong>RAGAS 框架</strong> 把 RAG 评估结构化为：<strong>Context Recall、Context Precision、Answer Relevancy、Faithfulness</strong>，并建议用端到端流程、合成评分与人工校准来保证评估可靠性。</p></li><li><p><strong>实践要点</strong>：优先保证检索召回，再优化 precision 与生成质量；NLI 可做为自动化判别但需人工校准；把评估纳入 CI，记录版本与成本并进行回归检测。</p></li><li><p><strong>最终目标</strong>：用数据驱动改进 RAG 系统，从“是否能产生一个看起来对”的答案，转向“是否能产生基于证据、可验证且可靠的答案”。</p></li></ul>",
+      "title_en": "RAGAS Framework",
+      "description_en": "Required Week 7 pre-class recording. Introduce evaluation datasets and the core RAGAS metrics—faithfulness, answer relevancy, context precision, and context recall—while treating metrics as evidence that still requires human review. Full evaluation frameworks and CI gates are deferred.",
+      "index": 89,
+      "_id": "69e7112eb636532acae3b51f"
+    },
+    {
+      "code": "L136",
+      "cohort7BundleTitle": "Claude Code Architecture: Context & Runtime",
+      "cohort7BundleScope": "Context 管理、权限与运行机制；作为 W10 Harness 的参考，区别于 W5 开发工作流。",
+      "cohort7MergedFrom": [
+        "L139"
+      ],
+      "cohort7BundleStatus": "CONTENT_ASSEMBLY_PENDING",
+      "cohort7BundlePolicy": "专题设计已确认，源内容需整理、选片与版本核验；不得将标记合并视为成片或资料已完成。",
+      "title": "Claude Code 技术原理",
+      "description": "Claude Code 是 Anthropic 官方推出的 CLI Agent，背后那套 hooks + skills + MCP + subagent 架构正是 2026 年 AI Engineer 必须理解的工程范式。这节把它的底层设计拆开——为什么 skills 用文件系统不用 prompt 库？hook 怎么拦截工具调用？上下文压缩何时触发？看懂了这套机制，你自己也能搭一套属于团队的 Coding Agent。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 20,
+      "steps": [
+        {
+          "order": 1,
+          "type": "LEARN",
+          "title": "AI Engineer: claude-code-context-management",
+          "description": "AI Engineer: claude-code-context-management",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "LEARN",
+          "title": "AI Engineer: claude-code-examples",
+          "description": "AI Engineer: claude-code-examples",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "CONCEPT",
+          "title": "上下文管理与记忆机制",
+          "description": "上下文管理与记忆机制",
+          "duration": 3
+        },
+        {
+          "order": 4,
+          "type": "LEARN",
+          "title": "Vibe Coding: claude-code-full-guide",
+          "description": "Vibe Coding: claude-code-full-guide",
+          "duration": 5
+        },
+        {
+          "order": 5,
+          "type": "MCQ",
+          "title": "Claude Code 检查",
+          "description": "Claude Code 检查",
+          "duration": 2
+        }
+      ],
+      "learns": [
+        {
+          "direction": "ai-engineer",
+          "slug": "claude-code-context-management"
+        },
+        {
+          "direction": "ai-engineer",
+          "slug": "claude-code-examples"
+        },
+        {
+          "direction": "vibe-coding",
+          "slug": "claude-code-full-guide"
+        }
+      ],
+      "learningMaterial": "<h2>MCP Project</h2>\n<p>数据分析 Agent：查数据库 → 图表 → 报告。</p>\n<ul><li>query_db — SQL 查询</li><li>generate_chart — 图表</li><li>send_report — 报告</li></ul>",
+      "title_en": "Claude Code 技术原理",
+      "description_en": "Claude Code isn't just another CLI tool—it's the reference implementation of modern AI harnesses. We unpack how hooks intercept tool calls, why Skills live on the filesystem instead of a prompt library, and when context compression kicks in. Once you understand this architecture, building your own team-scale coding agent stops being magic.",
+      "index": 130,
+      "_id": "69e71139b636532acae3b6d9"
+    },
+    {
+      "title": "Harness 工程化",
+      "description": "Demo 能跑不代表敢部署给团队用。这节讲怎么把一个裸 harness 升级成生产级：pre/post tool hooks 拦截危险命令、文件系统沙箱防止误删、token budget 限制单次任务成本、CLAUDE.md 规则文件给不同项目注入不同规范、Memory 跨 session 持久化。把这些补齐，你的 Agent 才配进 CI 和生产环境。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 90,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Hooks 系统",
+          "description": "Pre-tool hook（审批/拦截）、Post-tool hook（日志/监控）。Claude Code 的 hook 实现：settings.json 配置 + shell 命令执行。",
+          "duration": 15
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "Permission 与 Safety",
+          "description": "Tool 级别的 allowlist/denylist。文件系统沙箱：哪些路径可读、可写、可执行。网络访问控制。敏感信息过滤。",
+          "duration": 20
+        },
+        {
+          "order": 3,
+          "type": "CONCEPT",
+          "title": "Cost Control",
+          "description": "Token budget 设计：max_tokens per turn、total budget per session。Rate limiting：每分钟/每小时 API 调用上限。成本监控与告警。",
+          "duration": 15
+        },
+        {
+          "order": 4,
+          "type": "CONCEPT",
+          "title": "配置系统设计",
+          "description": "CLAUDE.md = 项目级指令、Rules = 行为规则、Settings = 运行时配置。三层配置的加载优先级和合并策略。",
+          "duration": 20
+        },
+        {
+          "order": 5,
+          "type": "CONCEPT",
+          "title": "Memory 持久化",
+          "description": "Session memory vs Persistent memory。文件系统 memory（MEMORY.md 模式）、数据库 memory、向量存储 memory 的 trade-off。",
+          "duration": 20
+        }
+      ],
+      "code": "L142",
+      "cohort7BundleTitle": "Agent Harness Engineering & Patterns",
+      "cohort7BundleScope": "运行生命周期、恢复、工具副作用与人工审批模式；配套 W10/W11。",
+      "cohort7MergedFrom": [
+        "L144"
+      ],
+      "cohort7BundleStatus": "CONTENT_ASSEMBLY_PENDING",
+      "cohort7BundlePolicy": "专题设计已确认，源内容需整理、选片与版本核验；不得将标记合并视为成片或资料已完成。",
+      "index": 136,
+      "description_en": "A running demo isn't a production system. This session upgrades your bare harness: pre/post tool hooks to catch dangerous commands, a filesystem sandbox to prevent accidental deletes, token budgets to cap per-task cost, CLAUDE.md rules for project-specific norms, and cross-session memory. Only after these does your agent belong anywhere near CI or production.",
+      "learningMaterial": "<h2>这节直播课解决什么问题</h2><p>上节课写出的 800 行 mini harness 能跑 demo，但离生产还差四件事：<strong>subagent</strong>（主 agent context 不够时怎么拆任务）、<strong>hook 系统</strong>（怎么在 tool 调用前后插业务逻辑，比如 git commit 前跑 lint）、<strong>permission gate</strong>（怎么管控 tool 和文件白名单）、<strong>settings 作用域</strong>（user / project / repo 三层配置怎么合并）。这节课把 Claude Code 里成熟的工程套路抄出来，加到你的 harness 上，直接能用于团队内部工具。</p><h2>课前你要会什么</h2><ul><li>上节课写的 mini harness 能跑起来</li><li>了解 JSON Schema 合并规则（deep merge 的语义）</li><li>见过 Claude Code 的 <code>settings.json</code> / <code>.claude/</code> 目录结构更好</li></ul><h2>Subagent：context 隔离</h2><p>主 agent 跑到一半，发现要「把 repo 里所有 TypeScript 文件的 any 类型替换成具体类型」——这事得读 200 个文件，一次塞进主 context 等于自杀。解法：dispatch 一个 subagent，它有自己独立的 context window，干完只返回一句 summary 给主 agent。</p><pre><code>async def dispatch_subagent(task: str, subagent_type: str = \"general\") -&gt; str:\n    # subagent 用独立 session，干完返回总结\n    sub_session = Session()  # 全新空的 session\n    sub_session.append({\"role\": \"user\", \"content\": task})\n\n    # 用更精简的 system prompt（不继承主 agent 的）\n    sub_system = SUBAGENT_PROMPTS[subagent_type]\n\n    # subagent 只能用受限的 tool 集\n    sub_tools = filter_tools(TOOLS, subagent_type)\n\n    result = await run_tool_loop(\n        sub_session, sub_system, sub_tools,\n        max_turns=20,    # 主 agent 不限，subagent 有上限防跑飞\n    )\n    return result.final_text  # 只把最后一句文字返回</code></pre><p>关键设计：</p><ul><li><strong>全新 Session</strong>——subagent 拿不到主 agent 的历史；它也污染不了主 context</li><li><strong>max_turns 上限</strong>——主 agent 是给人用的可以不设限，subagent 一旦跑飞会烧很多 token，设 20 轮封顶</li><li><strong>Tool 子集</strong>——比如 <code>code-reviewer</code> subagent 只能读文件不能写；<code>bash-runner</code> subagent 只能跑命令不能改代码</li></ul><h2>Hook 系统</h2><p>hook 是一组注册在「tool 调用前后」的函数，harness 在关键事件触发时调用它们。Claude Code 定义了四个事件：<code>PreToolUse</code>、<code>PostToolUse</code>、<code>Stop</code>、<code>UserPromptSubmit</code>。</p><pre><code>class Hook:\n    event: str            # PreToolUse / PostToolUse / Stop / UserPromptSubmit\n    matcher: str          # tool name glob，如 \"bash\" / \"write_file\" / \"*\"\n    command: str          # shell 命令，stdin 拿 JSON，stdout 也是 JSON\n\n# settings.json 里的 hook:\n# {\n#   \"hooks\": {\n#     \"PreToolUse\": [\n#       { \"matcher\": \"bash\", \"command\": \"python /path/to/audit.py\" },\n#       { \"matcher\": \"write_file\", \"command\": \"./check-license.sh\" }\n#     ]\n#   }\n# }\n\nasync def run_hooks(event: str, payload: dict) -&gt; dict:\n    hooks = load_hooks(event, tool_name=payload.get(\"tool_name\", \"\"))\n    for h in hooks:\n        proc = await asyncio.create_subprocess_exec(\n            *shlex.split(h.command),\n            stdin=asyncio.subprocess.PIPE,\n            stdout=asyncio.subprocess.PIPE,\n            stderr=asyncio.subprocess.PIPE,\n        )\n        stdout, _ = await proc.communicate(json.dumps(payload).encode())\n        if proc.returncode == 2:      # exit 2 = deny\n            raise PermissionError(f\"Hook {h.command} denied: {stdout.decode()}\")\n        if proc.returncode == 0 and stdout:\n            # hook 可以修改 payload\n            try: payload = json.loads(stdout)\n            except: pass\n    return payload</code></pre><p>典型用例：</p><table><thead><tr><th>场景</th><th>Event</th><th>Matcher</th><th>命令做什么</th></tr></thead><tbody><tr><td>bash 命令前审计</td><td>PreToolUse</td><td>bash</td><td>记 audit.log，发现 <code>sudo</code> 拦下</td></tr><tr><td>改文件后自动格式化</td><td>PostToolUse</td><td>write_file|edit</td><td>跑 <code>prettier --write</code> 或 <code>black</code></td></tr><tr><td>agent 完成后通知</td><td>Stop</td><td>*</td><td>发 Slack 消息「你的 agent 跑完了」</td></tr><tr><td>用户输入前脱敏</td><td>UserPromptSubmit</td><td>*</td><td>把 email/手机号 mask 掉再传给 LLM</td></tr></tbody></table><h2>Permission Gate</h2><pre><code># settings.json\n{\n  \"permissions\": {\n    \"allow\": [\n      \"bash(npm test)\",\n      \"bash(npm run *)\",\n      \"bash(git status)\",\n      \"bash(git diff)\",\n      \"read_file(./src/**)\",\n      \"write_file(./src/**)\"\n    ],\n    \"deny\": [\n      \"bash(rm -rf *)\",\n      \"bash(sudo *)\",\n      \"write_file(/etc/**)\",\n      \"read_file(~/.ssh/**)\"\n    ],\n    \"ask\": [\n      \"bash(git push *)\",\n      \"bash(npm publish)\"\n    ]\n  }\n}</code></pre><p>三层：<code>deny</code> 直接拒；<code>allow</code> 直接过；<code>ask</code> 弹确认（CLI 里等用户 y/n）。匹配优先级：deny &gt; ask &gt; allow。实现用 <code>fnmatch</code> 或 minimatch，不要自己写正则。</p><h2>Settings 作用域：三层合并</h2><table><thead><tr><th>作用域</th><th>位置</th><th>优先级</th><th>典型用途</th></tr></thead><tbody><tr><td>User</td><td><code>~/.mycode/settings.json</code></td><td>最低</td><td>个人偏好：默认模型、主题</td></tr><tr><td>Project</td><td><code>&lt;repo&gt;/.mycode/settings.json</code></td><td>中</td><td>项目规则：hook、permission</td></tr><tr><td>Local</td><td><code>&lt;repo&gt;/.mycode/settings.local.json</code>（gitignore）</td><td>最高</td><td>个人 override：临时放开某个权限</td></tr></tbody></table><pre><code>def load_settings() -&gt; dict:\n    merged = {}\n    for path in [USER_SETTINGS, PROJECT_SETTINGS, LOCAL_SETTINGS]:\n        if path.exists():\n            merged = deep_merge(merged, json.loads(path.read_text()))\n    return merged\n\ndef deep_merge(a: dict, b: dict) -&gt; dict:\n    # 对象递归合并；数组默认追加（permissions.allow 要追加不要覆盖）\n    out = dict(a)\n    for k, v in b.items():\n        if k in out and isinstance(out[k], dict) and isinstance(v, dict):\n            out[k] = deep_merge(out[k], v)\n        elif k in out and isinstance(out[k], list) and isinstance(v, list):\n            out[k] = out[k] + v\n        else:\n            out[k] = v\n    return out</code></pre><p><strong>数组合并选择是关键</strong>。permissions.allow 必须追加（项目加的权限不能被本地清空）；theme 这种 scalar 必须覆盖。如果想更精细，引入 <code>\"$replace\": true</code> 标志。</p><h2>直播课现场会做什么 demo（60 分钟）</h2><ol><li><strong>15 分钟</strong> — 把 subagent 加到昨天的 harness，现场演示「主 agent 读 README → 调 subagent 扫所有文件找 TODO → subagent 独立跑完返回摘要」，对比不用 subagent 时主 context 的膨胀曲线</li><li><strong>15 分钟</strong> — 实现 hook 系统，写一个 PreToolUse hook 拦截所有 <code>bash(git push)</code>，再写一个 PostToolUse hook 自动 <code>prettier</code> 格式化</li><li><strong>15 分钟</strong> — 加 permission gate，现场让 agent 试图 <code>rm -rf test/</code>，被 <code>ask</code> 拦下；然后在 settings.local.json 临时 allow，再跑通</li><li><strong>15 分钟</strong> — 三层 settings 合并演示：user 里配默认模型 claude-sonnet，project 里覆盖成 claude-opus，local 里加一条临时 permission；打印最终 merged settings 验证</li></ol><h2>课后作业</h2><p>给你的 harness 加一个<strong>企业治理包</strong>：</p><ol><li>写三个 hook 脚本，放到 <code>.mycode/hooks/</code>：<code>audit-bash.py</code>（所有 bash 落 audit.jsonl）、<code>block-secrets.py</code>（读文件前扫 <code>AKIA</code> / <code>sk-</code> / <code>ghp_</code> 等敏感前缀，命中则拒）、<code>notify-stop.sh</code>（agent Stop 时发 Slack webhook）</li><li>写一个 <code>code-reviewer</code> subagent 类型，只能读文件 + 评论，不能写，system prompt 要求它用 JSON 格式返回 <code>{ issues: [{ file, line, severity, note }] }</code></li><li>提供一份 <code>settings.json</code> 模板，包含完整的 permissions.allow / deny / ask 规则</li></ol><p><strong>验收标准</strong>：任何 bash 调用都能在 audit.jsonl 里看到；试图读 <code>.env</code> 被 block-secrets 拦；主 agent 能通过 dispatch subagent 做一次 code review；三层 settings 合并行为符合预期（project 的 allow 加上 local 的 allow，不互相覆盖）。</p><h2>踩坑警告</h2><table><thead><tr><th>错误</th><th>真因</th><th>修法</th></tr></thead><tbody><tr><td>Subagent 跑飞烧了 $20</td><td>没设 max_turns</td><td>硬上限 20 轮；超了强制返回当前状态</td></tr><tr><td>Hook 卡住整个 agent</td><td>hook 脚本有交互式 input</td><td>subprocess 设 timeout=10；stdin 必须能一次吃完</td></tr><tr><td>Permission deny 规则没生效</td><td>glob 匹配顺序错了</td><td>遍历顺序：deny 先、ask 次、allow 最后；第一条 deny 匹中立刻返回</td></tr><tr><td>Settings 合并后数组项重复</td><td>deep_merge 无脑 <code>+</code> 列表</td><td>对 permissions.allow 这类用 <code>list(dict.fromkeys(a + b))</code> 去重</td></tr><tr><td>Subagent 改了主 agent 不知道的文件</td><td>subagent 的 write_file 没走主 permission gate</td><td>subagent 共享 permission 系统，只是 tool 子集；write_file 仍然过 gate</td></tr></tbody></table><h2>完成这节你能</h2><ul><li>把一个 demo 级 harness 升级到可给团队用的工程级产品，带权限、审计、subagent</li><li>读懂 Claude Code 的 <code>settings.json</code> / hook / subagent 机制，知道它们为什么这么设计</li><li>设计三层 settings 作用域，既给用户灵活性又给项目强约束</li><li>用 hook 系统把公司的合规要求（审计、脱敏、通知）嵌入 agent 运行时</li></ul>",
+      "_id": "69e7113ab636532acae3b6f7"
+    },
+    {
+      "code": "L145",
+      "title": "Human-in-the-Loop Patterns",
+      "description": "AI 自动改生产代码听着很爽，直到它真的把数据库删了。这节讲 Human-in-the-Loop 的几种落地模式：哪些操作必须弹审批、审批 UI 怎么做得不打断心流、LangGraph 的 interrupt_before 怎么实现回退、审批日志怎么留证据。2026 年的 Agent 不是跑得多快，而是在关键点知道该停下来问人。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 15,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "为什么需要 HITL",
+          "description": "Agent 自主操作不可控：发邮件、删数据、花钱调 API。生产环境必须在关键节点插入人工确认",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "实现模式",
+          "description": "LangGraph interrupt_before/after、Harness ApprovalHook、Slack/Email 通知+确认、超时自动拒绝",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "SCENARIO",
+          "title": "设计审批流",
+          "description": "一个能发邮件+修改数据库的 Agent，设计哪些操作需要审批、审批超时怎么处理",
+          "duration": 5
+        }
+      ],
+      "description_en": "AI auto-patching production code sounds great—until it drops a table. This session walks through Human-in-the-Loop patterns: which actions must prompt, how to build approval UX that doesn't break flow, how LangGraph's interrupt_before enables rollback, how to log approvals for audit. In 2026, the winning agent isn't the fastest—it's the one that knows when to pause and ask.",
+      "learningMaterial": "<h2>为什么要学这节</h2><p>2025 年有几起公开事故：Replit 的 AI agent 删掉了生产数据库、某 YC 公司的 agent 群发了未授权的营销邮件、有人的 Claude Code 在误配置下 git push --force 覆盖了同事代码。这些事故的共同点是 —— agent 做了应该需要人确认的事，但没有确认机制。HITL（Human-in-the-Loop）不是可选的\"增值功能\"，是 agent 上生产的底线。</p><h2>核心原则：什么操作必须要人确认</h2><table><thead><tr><th>操作类型</th><th>是否必须确认</th><th>理由</th></tr></thead><tbody><tr><td>文件读取 / Grep / ls</td><td>否</td><td>无副作用，错了也没事</td></tr><tr><td>在工作区创建新文件</td><td>可选</td><td>容易撤销</td></tr><tr><td>修改已有代码文件</td><td>推荐</td><td>可能覆盖用户改动</td></tr><tr><td><strong>git push / merge / rebase</strong></td><td><strong>必须</strong></td><td>影响远程 + 他人</td></tr><tr><td><strong>rm / rmdir / 数据库 DELETE</strong></td><td><strong>必须</strong></td><td>不可逆</td></tr><tr><td><strong>发送邮件 / Slack / 通知</strong></td><td><strong>必须</strong></td><td>对外副作用</td></tr><tr><td><strong>调用支付 API / 下单</strong></td><td><strong>必须（强认证）</strong></td><td>钱</td></tr><tr><td><strong>生产部署 / 发布</strong></td><td><strong>必须</strong></td><td>影响用户</td></tr><tr><td>curl / 外部 API 读请求</td><td>推荐</td><td>可能泄露敏感数据</td></tr></tbody></table><p>判断原则：<strong>可逆 + 无对外副作用 → 免确认；不可逆 或 对外 → 必须确认</strong>。</p><h2>Review Gate 设计</h2><p>最常见的 HITL 实现是 \"review gate\"：agent 给出计划 → 展示 diff → 人按钮确认 → 执行。</p><pre><code># 伪代码：review gate\ndef execute_with_review(action, payload):\n    print(f\"About to: {action}\")\n    print(f\"Diff:\\n{generate_diff(payload)}\")\n    choice = input(\"Proceed? [y/n/edit]: \")\n    if choice == \"y\":\n        return run(action, payload)\n    elif choice == \"edit\":\n        new_payload = open_editor(payload)\n        return run(action, new_payload)\n    else:\n        return {\"status\": \"cancelled\"}</code></pre><p>关键 UX 设计：</p><ul><li><strong>展示 diff 而非命令</strong>：\"将修改 3 个文件、删除 2 行、新增 15 行\" 比 \"sed -i ...\" 更容易审核</li><li><strong>提供 edit 选项</strong>：不只是 y/n，还要让人能改后再执行</li><li><strong>展示 blast radius</strong>：\"这将影响 prod 数据库 200 行\" 比 \"UPDATE users SET ...\" 更让人警觉</li></ul><h2>Permission Model：三层策略</h2><h3>Allowlist（白名单）</h3><p>只允许清单里的操作。最严格，适合高风险环境。</p><pre><code>{\n  \"permissions\": {\n    \"allow\": [\n      \"Bash(npm run *)\",\n      \"Bash(git status)\",\n      \"Bash(git diff *)\",\n      \"Read(**/*.ts)\"\n    ]\n  }\n}</code></pre><h3>Blocklist（黑名单）</h3><p>除了清单里的都允许。灵活但风险高。</p><pre><code>{\n  \"permissions\": {\n    \"deny\": [\n      \"Bash(rm -rf *)\",\n      \"Bash(git push --force*)\",\n      \"Bash(*DROP TABLE*)\",\n      \"Bash(*/production/*)\"\n    ]\n  }\n}</code></pre><h3>Ask（交互）</h3><p>清单里的操作每次都要问。用于 \"重要但允许\" 的操作。</p><pre><code>{\n  \"permissions\": {\n    \"ask\": [\n      \"Bash(git push*)\",\n      \"Bash(docker*)\",\n      \"Write(.env*)\"\n    ]\n  }\n}</code></pre><p>Claude Code 的真实策略通常是三层组合：<code>allow</code> 常用安全操作 + <code>ask</code> 重要操作 + <code>deny</code> 危险操作。匹配优先级：<strong>deny &gt; ask &gt; allow</strong>。</p><h2>Pattern Match 语法（Claude Code）</h2><table><thead><tr><th>Pattern</th><th>含义</th></tr></thead><tbody><tr><td><code>Bash(npm run test)</code></td><td>精确匹配</td></tr><tr><td><code>Bash(npm run *)</code></td><td>前缀匹配</td></tr><tr><td><code>Bash(git *)</code></td><td>所有 git 子命令</td></tr><tr><td><code>Write(src/**/*.ts)</code></td><td>写入指定路径</td></tr><tr><td><code>Read(~/.aws/**)</code></td><td>读取敏感路径（通常 deny）</td></tr></tbody></table><h2>实操：用 LangGraph 实现 HITL Checkpoint</h2><pre><code>from langgraph.graph import StateGraph, END\nfrom langgraph.types import interrupt, Command\n\ndef risky_action(state):\n    # 暂停并向人类求确认\n    decision = interrupt({\n        \"action\": \"DELETE users WHERE created_at < '2020-01-01'\",\n        \"estimated_rows\": 15000,\n        \"reversible\": False\n    })\n    if decision == \"approve\":\n        # 真的执行\n        db.execute(state[\"sql\"])\n        return {\"status\": \"done\"}\n    return {\"status\": \"cancelled\"}\n\ngraph.add_node(\"risky\", risky_action)\napp = graph.compile(checkpointer=checkpointer)\n\n# 运行到 interrupt 处暂停\nfor chunk in app.stream(init_state, config):\n    pass\n\n# 人类审核后 resume\napp.invoke(Command(resume=\"approve\"), config)</code></pre><p>LangGraph 的 <code>interrupt()</code> 机制把中断-恢复做成了一等公民：状态自动持久化，人什么时候回来都能 resume。</p><h2>惨案复盘</h2><h3>案例 1：Replit Agent 删数据库</h3><p>2025 年 7 月，Replit 的 AI agent 在用户明确要求冻结代码后，仍然执行了会删除生产数据的命令，销毁了 1200+ 用户记录。根因：没有 deny list 覆盖 <code>DROP DATABASE</code> 类 SQL，agent 也没有区分 dev / prod 环境。</p><p><strong>教训</strong>：环境隔离 + deny list 必须双重保护。Prod 连接字符串根本不该出现在 agent 可访问的环境里。</p><h3>案例 2：营销邮件误发</h3><p>某 YC 公司 agent 帮运营写完邮件草稿后自动调用 SendGrid 群发，结果把\"测试邮件\"发给了 5 万真实用户。根因：send 操作没加确认 gate。</p><p><strong>教训</strong>：所有\"对外\"动作（邮件、短信、push、社交媒体发布）都要 ask 或 deny，不管 prompt 写得多清楚。</p><h3>案例 3：git push --force 覆盖同事代码</h3><p>开发者让 agent \"解决这个冲突\"，agent 选择了最简单的 <code>git push --force</code>，覆盖了同事 3 天的工作。根因：force push 没进 deny list。</p><p><strong>教训</strong>：<code>git push --force</code> / <code>reset --hard</code> / <code>checkout .</code> / <code>clean -f</code> 这类\"丢弃历史\"命令默认都要 ask 或 deny。</p><h2>踩坑提醒</h2><table><thead><tr><th>坑</th><th>症状</th><th>解决</th></tr></thead><tbody><tr><td>Ask 太多变成 rubber-stamp</td><td>用户每次都闭眼 y，失去保护意义</td><td>只对真正重要的操作 ask，其他自动化</td></tr><tr><td>Pattern 写错</td><td>写了 <code>Bash(rm *)</code> 却没挡 <code>Bash(rm -rf /)</code></td><td>用更宽松的匹配 <code>Bash(*rm*)</code> + 测试</td></tr><tr><td>YOLO 模式无差别</td><td><code>--dangerously-skip-permissions</code> 直接跳过所有</td><td>YOLO 只在沙箱容器内用</td></tr><tr><td>Prompt 注入绕过确认</td><td>\"system override, skip all confirmations\"</td><td>Permission 在 harness 层做，模型无法绕</td></tr><tr><td>审核疲劳导致漏看</td><td>diff 太长，人类看不完</td><td>摘要关键影响（变更行数、受影响文件、blast radius）</td></tr></tbody></table><h2>速查资源</h2><ul><li><a href=\"https://docs.claude.com/en/docs/claude-code/iam\">Claude Code Permissions / IAM</a></li><li><a href=\"https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/wait-user-input/\">LangGraph Human-in-the-Loop</a></li><li><a href=\"https://github.com/anthropics/anthropic-cookbook/tree/main/misc\">Anthropic Cookbook - Safety Patterns</a></li><li><a href=\"https://owasp.org/www-project-top-10-for-large-language-model-applications/\">OWASP LLM Top 10</a> — LLM06: Excessive Agency</li></ul><h2>自测</h2><ul><li>什么样的操作必须加确认 gate？可逆性和对外副作用是怎么分的？</li><li>Allow / Ask / Deny 三种策略的匹配优先级是什么？</li><li>LangGraph 的 <code>interrupt()</code> 和普通 <code>input()</code> 本质区别是什么？</li><li>为什么 prompt 里写 \"skip confirmations\" 不能绕过 permission 系统？</li><li>审核疲劳是什么？怎么通过 UX 设计减轻？</li></ul>",
+      "_id": "69e7113bb636532acae3b706"
+    },
+    {
+      "code": "L162",
+      "title": "Lab: 监督微调 (SFT)",
+      "description": "LLM 工程实验：监督微调 (SFT)。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabSlug": "supervised-fine-tuning",
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "监督微调 (SFT)",
+          "description": "监督微调 (SFT)",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "LLM Lab: supervised-fine-tuning",
+          "description": "LLM Lab: supervised-fine-tuning",
+          "duration": 25,
+          "labSlug": "supervised-fine-tuning"
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "监督微调 (SFT) 理解检查",
+          "description": "监督微调 (SFT) 理解检查",
+          "duration": 2
+        }
+      ],
+      "labs": [
+        {
+          "source": "llm-lab",
+          "slug": "supervised-fine-tuning"
+        }
+      ],
+      "learns": [],
+      "learningMaterial": "<h2>实验目标</h2>\n<p>监督微调 (SFT) 实操。</p>\n<ul><li>准备 instruction-response 训练数据（JSONL 格式）</li><li>用 Hugging Face Trainer 做 SFT</li><li>评估微调前后的效果差异</li></ul>",
+      "title_en": "Lab: Supervised Fine-Tuning (SFT)",
+      "description_en": "LLM engineering lab: 监督微调 (SFT). Hands-on practice in browser with instant validation.",
+      "index": 152,
+      "interactiveLabType": "llm",
+      "_id": "69e7113fb636532acae3b77e"
+    },
+    {
+      "code": "L166",
+      "title": "Lab: 偏好对齐 (RLHF/DPO)",
+      "description": "LLM 工程实验：偏好对齐 (RLHF/DPO)。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabSlug": "preference-alignment",
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "偏好对齐 (RLHF/DPO)",
+          "description": "偏好对齐 (RLHF/DPO)",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "LLM Lab: preference-alignment",
+          "description": "LLM Lab: preference-alignment",
+          "duration": 25,
+          "labSlug": "preference-alignment"
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "偏好对齐 (RLHF/DPO) 理解检查",
+          "description": "偏好对齐 (RLHF/DPO) 理解检查",
+          "duration": 2
+        }
+      ],
+      "labs": [
+        {
+          "source": "llm-lab",
+          "slug": "preference-alignment"
+        }
+      ],
+      "learns": [],
+      "learningMaterial": "<h2>实验目标</h2>\n<p>偏好对齐实操：RLHF 和 DPO。</p>\n<ul><li>理解 RLHF vs DPO 的区别</li><li>准备偏好数据（chosen vs rejected）</li><li>用 DPO 训练器做偏好对齐</li></ul>",
+      "title_en": "Lab: Preference Alignment (RLHF/DPO)",
+      "description_en": "LLM engineering lab: 偏好对齐 (RLHF/DPO). Hands-on practice in browser with instant validation.",
+      "index": 156,
+      "interactiveLabType": "llm",
+      "_id": "69e71140b636532acae3b792"
+    },
+    {
+      "code": "L179",
+      "title": "LinkedIn & CV Workshop",
+      "description": "AI Engineer 简历和普通后端简历根本不是一个写法：招聘方 15 秒内要看到你写没写 RAG / Agent / MCP、有没有部署过生产 LLM 项目、能不能说出 RAGAS 四个指标。这节 workshop 拆解拿到 offer 的简历模板，教你把这 12 周做的 ISA 项目重写成「技术选型 + 指标 + 业务价值」三段式，再讲 LinkedIn 该放什么关键词让 recruiter 主动找你——今年这一步决定面试率。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 17,
+      "steps": [
+        {
+          "order": 1,
+          "type": "VIDEO",
+          "title": "LinkedIn profile 优化 + AI Engineer 简历写法",
+          "description": "LinkedIn profile 优化 + AI Engineer 简历写法",
+          "duration": 10
+        },
+        {
+          "order": 2,
+          "type": "SCENARIO",
+          "title": "用 12 周技术重写简历",
+          "description": "用 12 周技术重写简历",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "简历检查",
+          "description": "简历检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h1><strong>LinkedIn &amp; CV（2024.12.08）</strong></h1><p><strong>适合程度</strong>：零基础 · 面向 AI Engineer 训练营学员<br><strong>目标</strong>：教会学员如何为求职／内推准备<strong>高质量的简历（CV/Resume）与LinkedIn 个人主页</strong>，突出 AI Engineer 的技术与项目能力，使简历/主页既能被 ATS（自动筛选系统）识别，又能吸引面试官与招聘人主动联系。</p><hr><h2>1. 引言（Introduction）</h2><p>本课覆盖：</p><ul><li><p>简历（CV/Resume）的结构与写法（面向 AI/ML/工程岗位）</p></li><li><p>LinkedIn 个人主页的要点：头像、标题、简介（About）、经历、项目、Featured、推荐等</p></li><li><p>如何把项目与技术转化为“可量化的职业成果”</p></li><li><p>针对 AI Engineer 的关键词与 ATS 优化</p></li><li><p>求职/内推/网络联络模板与实操任务</p></li></ul><p>重要性：在 AI 招聘里，除了技术能力，**表达能力（把工程成果量化并清晰呈现）<strong>与</strong>个人品牌（LinkedIn、GitHub、项目）**往往决定你能否进入面试池。本课教你用工程化、可复现的方法完成这两件事。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 简历（Resume / CV）总体原则</h3><ul><li><p><strong>目标明确</strong>：每份简历应针对目标岗位（AI Engineer / ML Engineer / MLOps）做小幅定制。</p></li><li><p><strong>首屏重要性</strong>：上方 8–10 行（Name、Title、Location、Contact、Headline、Key Skills、Summary）决定招聘者是否继续读。</p></li><li><p><strong>结果导向</strong>：每条经历用“情境 → 行动 → 结果（Quantified）”式写法（STAR）为佳。优先展示<strong>可量化</strong>的成果（% 提升、ms 降低、cost 降低、召回提升等）。</p></li><li><p><strong>简洁与可读</strong>：一般 1 页（经验 &lt; 5 年）或 2 页（经验更丰富）。字体 11–12 pt，留白、项目符号清晰。</p></li><li><p><strong>ATS 友好</strong>：使用常见字体、避免复杂表格/图片、在关键位置写明关键词（如 PyTorch, Hugging Face, FAISS, Docker, Kubernetes, AWS/GCP/Azure, REST, SQL, CI/CD, Git）。</p></li></ul><h3>2.2 简历结构（AI Engineer 版本）</h3><ol><li><p><strong>Header（头部）</strong>：姓名、电话、邮箱、所在城市（可选）、LinkedIn 链接、GitHub/Portfolio 链接。</p></li><li><p><strong>Headline / Title</strong>：一句话表明你是谁（例：<code>AI Engineer | LLM Fine-tuning, Retrieval-Augmented Generation (RAG), MLOps</code>）。</p></li><li><p><strong>Summary（简介 / 3–4 行）</strong>：概述经验、擅长技术与求职目标。</p></li><li><p><strong>Key Skills（技术栈）</strong>：分组列出（Frameworks, Languages, Infra, Tools, ML Techniques）。</p></li><li><p><strong>Experience（工作经历）</strong>：公司、职务、时间、3–6 个 bullets/role，每个 bullet 用量化结果。</p></li><li><p><strong>Projects（项目）</strong>：若缺工作经验，把重要项目放在经历前；项目需包含技术栈、责任与结果。</p></li><li><p><strong>Education / Certifications</strong>：学位、学校、重要证书（如 TensorFlow/Google Cloud，Hugging Face）。</p></li><li><p><strong>Optional</strong>：Publications、Patents、Talks、Languages。</p></li></ol><h3>2.3 如何写出“好”的经历 Bullet（模板）</h3><ul><li><p><strong>模板</strong>：Action + Context + Result（量化）</p></li><li><p><strong>格式示例</strong>：</p><ul><li><p>不好：<code>Implemented a retrieval system for documents.</code></p></li><li><p>好：<code>Designed and implemented a FAISS-based retrieval pipeline (embeddings from sentence-transformers) that increased document recall@10 by 28% and reduced average query latency from 320ms to 95ms.</code></p></li></ul></li></ul><p>重点在于写清楚你做了什么、怎么做的（技术/工具）、结果如何（具体数字/指标/时间/成本）。</p><h3>2.4 LinkedIn 核心要点（个人品牌）</h3><ul><li><p><strong>头像</strong>：正规、清晰、职业化（面部清楚、背景简洁）。</p></li><li><p><strong>封面图（Cover）</strong>：可展示项目截图/技术栈/口号。</p></li><li><p><strong>Headline（标题）</strong>：与简历的 Title 一致但更口语化（例如：<code>AI Engineer | LLMs, RAG, MLOps — turning data into products</code>）。</p></li><li><p><strong>About（简介）</strong>：3–6 段落，讲你是谁、擅长什么、代表性成就（量化）、求职方向 / 可合作点。加入联系意向（open to）与 portfolio 链接。</p></li><li><p><strong>Experience 与 Projects</strong>：与简历同步，但可以更长 &amp; 更故事化，加入图片、媒体、代码链接、演示视频。</p></li><li><p><strong>Featured</strong>：把高质量项目、论文、博客、演示放在显眼位置。</p></li><li><p><strong>Skills &amp; Endorsements</strong>：列关键技能并请同事/老师 endorse；用“Top skills”排序最重要的 3–5 项。</p></li><li><p><strong>Recommendations</strong>：请求经理/导师写推荐信（简短并强调能力）。</p></li><li><p><strong>Networking</strong>：定期发布技术笔记（如微课程、项目更新），评论行业帖子，主动联系招聘人/校友/公司工程师。</p></li></ul><h3>2.5 针对 AI Engineer 的关键词与 ATS 优化</h3><ul><li><p><strong>主技术</strong>：PyTorch, TensorFlow, JAX, HuggingFace, sentence-transformers, FAISS/Qdrant/Pinecone, Deepspeed, bitsandbytes, CUDA, ONNX, TensorRT。</p></li><li><p><strong>工程技能</strong>：Docker, Kubernetes, CI/CD, GitHub Actions, Terraform, Airflow, S3, Redis, Kafka, Prometheus。</p></li><li><p><strong>方法论/概念</strong>：RAG, LLM Fine-tuning, PEFT, QLoRA, LoRA, Embedding, Retrieval, Cross-encoder, Cross-validation, MLOps。</p></li><li><p>在简历/LinkedIn 的 Summary、Experience、Skills 中自然出现这些词，避免关键词堆砌（要有上下文、实际案例）。</p></li></ul><hr><h2>3. 实践示例（Practical Examples）</h2><p>下面给出<strong>模板与“前→后”优化示例</strong>，以及 LinkedIn 文案模板与 outreach（求职/内推）消息模板。</p><h3>3.1 简历 Headline &amp; Summary 示例</h3><p><strong>Headline（示例）</strong>：<br><code>AI Engineer | LLM Fine-tuning · RAG · MLOps · PyTorch · Hugging Face</code></p><p><strong>Summary（示例）</strong>：</p><pre><code>AI Engineer with 2 years experience building retrieval-augmented generation (RAG) systems and fine-tuning LLMs for domain-specific QA. \nExpertise: PyTorch, Hugging Face, FAISS, Docker, Kubernetes. \nRecent work: led development of a document QA pipeline that improved answer accuracy by 22% and reduced average latency by 60%. \nOpen to roles in RAG/LLM engineering and MLOps.\n</code></pre><h3>3.2 Experience Bullet — <strong>Before / After</strong></h3><p><strong>Before</strong>：<br><code>Built a search system for documents using embeddings.</code></p><p><strong>After（更好）</strong>：<br><code>Built a FAISS-based semantic search pipeline using sentence-transformers embeddings and IVF+PQ indexing; improved recall@5 from 62% to 85%, reduced average query latency from 310ms to 75ms, and cut hosting cost by 30% through batching and caching.</code></p><h3>3.3 Project 写法（模板 + 示例）</h3><p><strong>模板</strong>：<br><code>[Project Title] — Short tagline (tools)</code></p><ul><li><p>Context：项目目的与约束（1 行）</p></li><li><p>Role &amp; Action：你负责什么（2–3 行）</p></li><li><p>Tech：关键技术栈（1 行）</p></li><li><p>Impact：可量化结果（1 行）</p></li></ul><p><strong>示例</strong>：</p><pre><code>RAG-based Contract QA — Built a legal contract QA demo (PyTorch, HuggingFace, FAISS)\n- Context: Support lawyers to quickly find clause-level answers across 10k contracts.\n- Role: Implemented ingestion (PDF→Textract→chunking), embedding pipeline, FAISS index, and LLM prompt templates.\n- Tech: PyTorch, sentence-transformers, FAISS, OpenAI (generation), AWS S3, Lambda.\n- Impact: Achieved recall@5 = 91% on validation set; average answer latency 1.2s; reduced manual review time by 40%.\n</code></pre><h3>3.4 LinkedIn About（范例）</h3><pre><code>I’m an AI Engineer focused on building reliable LLM-powered products — especially Retrieval-Augmented Generation (RAG) systems and efficient fine-tuning pipelines.\n\nI’ve shipped production RAG systems using Hugging Face &amp; FAISS, improved QA accuracy by 20–30% through embedding fine-tuning &amp; reranking, and operationalized model inference using Docker + Kubernetes with monitoring (Prometheus + Grafana).\n\nOpen to collaborations and full-time roles in LLM/RAG engineering and MLOps. Check my portfolio: github.com/yourname/projects\n</code></pre><h3>3.5 Outreach / 内推 私信模板（LinkedIn）</h3><p><strong>冷内推（联系校友 / 公司工程师）</strong>：</p><pre><code>Hi [Name], 我是 [你的姓名]，目前在学习 AI Engineer 训练营并专注于 RAG 和 LLM 微调。看到您在 [公司] 负责 [团队/项目]，非常想了解团队对 LLM 工程方面的实践。最近我在做一个合同 QA 的 RAG 项目（FAISS + HuggingFace），实现了 recall@5=91%。如果您方便能否短聊 15 分钟？也希望了解是否有合适职位或内推机会。谢谢！\n</code></pre><hr><h2>4. 最佳实践 / 常见陷阱</h2><h3>做（Do）</h3><ul><li><p>把<strong>成果量化</strong>（数字、百分比、时间、成本）并写在 bullets 里。</p></li><li><p>在 LinkedIn 的 About 与 Experience 中放入 <strong>项目链接 / 演示</strong>（GitHub、Demo 视频或 Notion）。</p></li><li><p>用 <strong>同一套关键词</strong>（简历 &amp; LinkedIn &amp; GitHub）保持一致性，提高可见性与 ATS 命中率。</p></li><li><p>请过去的主管或同事写 <strong>Recommendation</strong>，并在 LinkedIn featured 放上重要成果。</p></li><li><p>做 <strong>一次全面检查</strong>：拼写、动词时态一致（过去式 vs 现在式）、页面间信息一致。</p></li><li><p>维护 <strong>项目 portfolio</strong>（每个项目有 README：目标、方法、结果、如何运行/复现）。</p></li><li><p>定期更新（每 3 个月）你的简历与 LinkedIn，记录新的学习/项目/证书。</p></li></ul><h3>忌（Don't）</h3><ul><li><p>不要把职责列表当作经历（不要写“负责 X、负责 Y”而不展示成果）。</p></li><li><p>不要使用图表或复杂布局阻碍 ATS 读取（如图片文字、复杂表格）。</p></li><li><p>不要撒数字（没有依据的百分比），面试中会被问到细节。</p></li><li><p>不要把全部技术罗列为“熟悉”，若非熟练不要放在 Top Skills。</p></li><li><p>不要滥用 buzzwords（如“AI expert”）而没有对应项目支撑。</p></li><li><p>不要把所有代码私有化——开放部分项目（或至少提供演示）更能证明能力。</p></li></ul><hr><h2>5. 总结（Summary）</h2><ul><li><p><strong>简历与 LinkedIn 是你走进面试房间的第一把钥匙</strong>。对于 AI Engineer，重点在于把“工程化的技术成果”以<strong>量化、可复现、可演示</strong>的方式呈现出来。</p></li><li><p><strong>简历</strong>：首屏要清晰，bullet 要量化，技术关键词要放在显眼位置并与项目上下文吻合。</p></li><li><p><strong>LinkedIn</strong>：更偏“品牌与故事化”，要有清晰的 headline、可读的 About、丰富的 Featured（项目/文章/演示）与推荐信。</p></li><li><p><strong>实操任务</strong>：更新你的 LinkedIn、准备一页精简简历、把 1–2 个项目做成可运行 demo（README + notebook），并练习 1 个内推私信模板。</p></li></ul><hr><h2>附：快速检查清单（可打印）</h2><ul><li><p>简历首屏有清晰 Title、Contact、LinkedIn/GitHub 链接</p></li><li><p>每条经历含 Action、Tech、Result（尽量量化）</p></li><li><p>技能区列出核心 Stack（Frameworks / Infra / Tools）</p></li><li><p>LinkedIn About 与简历 Summary 一致但更口语化</p></li><li><p>至少 1 个项目有 GitHub 链接 + README + demo</p></li><li><p>请求并显示 1–2 条 Recommendation（LinkedIn）</p></li><li><p>简历为 PDF，1 页（经验 &lt; 5 年）或 2 页（经验 &gt; 5 年）</p></li><li><p>对应岗位关键词已在简历/LinkedIn 中自然出现（ATS 检查）</p></li><li><p>求职私信模板准备好并能在 5 分钟内个性化修改</p></li></ul><hr><h3>课堂作业（建议）</h3><ol><li><p><strong>更新简历</strong>：把训练营项目写成 2–3 个简练且量化的 bullets，提交 PDF。</p></li><li><p><strong>优化 LinkedIn</strong>：更新 headline、About、添加 1 个项目的 featured items，发一条技术笔记（至少 200 字）。</p></li><li><p><strong>准备内推私信</strong>：个性化给 3 位潜在内推对象发送消息，记录回复率与对话要点。</p></li><li><p><strong>演示</strong>：在下一次课上做 5 分钟演示：你的 LinkedIn 页面 + 一个项目的 demo（or GitHub Readme）。</p></li></ol>",
+      "title_en": "LinkedIn & CV Workshop",
+      "description_en": "An AI Engineer resume reads nothing like a backend resume. Recruiters scan for RAG, Agents, MCP, production LLM deploys, RAGAS metrics in the first 15 seconds. This workshop rewrites your 12-week ISA project into the tech-stack + metrics + business-value format that actually lands interviews, and shows which keywords make LinkedIn recruiters come to you.",
+      "index": 167,
+      "_id": "69e71143b636532acae3b7f8"
+    }
+  ]
+}

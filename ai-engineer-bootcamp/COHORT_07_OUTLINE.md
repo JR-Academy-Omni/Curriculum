@@ -1,5 +1,7 @@
 # AI Engineer Bootcamp 第七期正式大纲
 
+> 最新决定（2026-09-07）：按用户要求删除4个失效OpenClaw参考入口及L60a。L100b、L127b、L60a移出第七期；L146移除两个已合并的失效参考。当前138条、25场Live；已通过SDM更新生产并回读验收，历史文档和视频保留。
+
 > 版本：Cohort 7 · 2026-08-25
 > 学制：理论 12 周 + 实践 13 周
 > 正式直播：25 场（12 场理论 Live + 13 场实践 Live）
@@ -7,6 +9,195 @@
 > 课程内容唯一数据源：[`public/outline.json`](public/outline.json)
 
 ## 1. 第七期课程结构
+
+### 逐条审核确认记录 · 2026-09-07
+
+以下决定覆盖旧条目的作业安排；只处理已确认项目，其他审核建议仍待逐项讨论。
+
+- 2026-09-07：落实六条显式前置倒序修复：L96 移至 L60a 后；L105/L106 移至 L104 后；L120 移至 L119 后；L134 移至 C7P10 后；L140 移至 L125 后（均晚于 C7P11）。L179a 提前至 W2 C7P02 前。
+- 同轮 L67 合入 L33a，保留 P3、历史材料，不沿用未核验服务承诺；L53 转 RAG 阶段说明，不独立占课。L95 明确为架构资料，移除录播口径及被移出课程的要求；L121/L132 运维指标改为按任务和负载设定，去除固定阈值、面试结果承诺。当前141条、168条排除、25场Live，未同步生产。
+
+- 2026-09-07：落实六项审核：L54 改为检索 Embedding、与 L30 Input Embedding 分工，取消固定维度和额外 ISA 项目；L146 改为 W5 Skills 配套，前置仅 W1 AI Coding 与 W3 MVP；L111 补执行、状态、权限和停止边界。三条录播旧正文归档，保留视频并标选片/示例待复核。
+- 同轮调整底层 lesson 顺序，25场Live按 cohort7SessionOrder 1–25 连续呈现；课时周次不变，随课移动 W6/W7 对照资料及浏览器选修。L125 移至 C7P11 后；L62 移为课程级参考区，不独立占课。当前143条、166条排除、309条历史、25场Live，未同步生产。Phase仍用于知识归类，跨线实践随理论排入，并非宣称同周理论实践同题。
+
+- 2026-09-07：继续修正前置顺序：L19 API 实操移至 L15 后，L18 Token/Context 概念实验移至 L30 后；L90 RAGAS 配套移至 C7T05 前；L60 W7 RAG 实践移至 C7P07 W6 Pipeline 后，随后 L75 LangChain 录播、L60a 对照 Lab；L110 受控浏览器选修移至 L119 Agent 实践后。保留源数据顺序，不以只改周次标签替代。
+- 同轮收拢8条仅阅读入口的内容：L138a/L140b/L146c→L146，L119c/L119d→L111，L178a/L178b/L178c→L178；资料作为主课配套保留。当前144条、165条排除、25场Live，未同步生产。阶段仍是知识分类，不宣称全页已经是跨阶段逐周课表。
+
+- 2026-09-07：继续审核落实 A2A 收拢：L127/L131 并入 L126；L126 录播与 L128 选修 Lab 实际移到 Phase 10 的 L171a 后。L128 不重复入门概念，改为授权委派、结果与故障验证计划，并明确现有入口尚非可执行双 Agent 实验。Governance Live 保留整体治理教学。
+- 同轮取消 L167a 独立 QLoRA Quest；既有录播与历史资源保留，训练实作复用 L162。重写 L161/L165 范围与步骤，清除错挂的生成 SFT/DPO Lab、额外 ISA 要求和固定性能承诺；历史正文存入条目旧内容记录。L183 系统设计理论移至 C7P12 路由实践前，L171 发布评审移至全大纲最后一条保留内容。当前152条、157条排除、25场Live，未同步生产。
+
+- 2026-09-07：按用户授权筛除过基础或非 AI 工程核心的独立课程。移出 L01/L11 环境与先修导览、L08/L09/L10/L14 通用 AWS 入门、L17 首次对话、L20 AI 概念测验、L153 SageMaker 平台体验。Python、Git、终端与基本环境管理仍是入学前置；项目中的凭证保护、权限、部署验收要求不删除。历史内容和资源保留。
+- 同轮合并 L35/L36→L38、L42→L43、L70→L75、L80→L91、L155→L162，基础练习保留为主课配套，不独立占课。L156 录播移至 W6 Pipeline 之前，移除文案固定准确率暗示；不删除视频、不宣称已重拍。当前155条、154条排除、25场Live，未同步生产。
+
+- 2026-09-07：修复“W1 开始 AI Coding，但实践条目仍放在后期 Harness”的真实 lesson 顺序。L16 后按 L144a → L142b → L142a → C7P01 → L44 展示 W1 配套和首次实践；C7P02 移至 L28 后，C7P03 移至 L37 后，C7P04 移至 L58 后，C7P05 移至 C7T05 后。Skills 录播 L146 及 L138a/L140b/L146c 资料随 W5 工程工作流前移；不提前 L143 运行时 Harness Hooks 与 L145 人工审批。修改源数据所属 Phase 与数组顺序，不只是展示排序或周次标签。170条候选、25场Live、309条历史记录均保持不变；未同步生产。
+
+- 2026-09-07：用户明确要求移出 L181「学员小组项目展示」录播条目；覆盖此前保留为待核验录播的安排，历史记录及可能已有的视频资源保留，不影响 P3。本轮后保留170条、排除139条，25场Live不变，未同步生产。
+
+- 2026-09-07：L144a 从后期 Harness 阶段移至 L16 后，作为 W1 AI Coding + ADLC 实践课前阅读（非新增 Live）；移出 L144b 高质量 Prompt 模板与 L174 CloudWatch Lab。历史资源保留，171条当前候选、138条排除、25场Live不变，未同步生产。
+
+- 2026-09-07：落实剩余全部已列重复修复：L82/L27a→L27，L89→L60 后置优化配套，L86→C7P07 配套（人工校准 Judge 的进阶讲授仍属 L168），L95a→L171 部署配套，L110a→L110；移出 L21 独立导览。L110 重写为受控浏览器 Agent 后置选修计划，明确可执行环境和 Starter 尚未制作，不声称已能实操。历史资源保留，173条当前候选、136条排除、25场Live。
+- 统一 HTML 合并资料展示按阅读路径与实验入口去重；无正文、无新增资源的重复自学卡不再显示。原始顺序渲染及主课内阅读引用唯一性检查通过；不代表全部剩余讲义与实验已验收，未同步生产。
+
+- 2026-09-07：按用户要求移除 L109a「自学：AI Agent 开发基础」，同时取消 L111 下的该合并卡片；历史记录和原阅读资源保留。该条此前已排除，当前计数仍为180条、25场Live，未同步生产。
+
+- 2026-09-07：按用户要求将 L106a、L107、L107a 统一为 L107「MCP 发布指南」，相同 mcp-releasing 阅读资源只登记一次；两条自学记录保留为历史，不再独立占课。当前保留180条、排除129条，25场Live不变，未同步生产。
+
+- 2026-09-07：按用户要求将 L96、L97、L97a 合为 L96「AWS Bedrock RAG — 模型接入、知识库与评估」一个后置选修 Lab；前置为 W6 Pipeline 与 W7 RAG，不另交作业。原模型与知识库入口保留；统一教程、评估适配及清理流程待验收。当前保留181条、排除128条，25场Live不变，未同步生产。
+
+- 2026-09-07：按用户要求移出 L78「Lab: QA 系统设计」，保留历史实验与资源。当前保留183条、排除126条，25场Live不变；尚未同步生产。
+
+- 2026-09-07：按用户要求移出 L72「Lab: Serverless API」，保留历史实验与资源，不扩大到其他 AWS 条目。当前保留184条、排除125条，25场Live不变；尚未同步生产。
+
+- 2026-09-07：按用户要求移出 L71「Lab: Lambda Serverless」，保留历史实验与资源，不扩大到其他 AWS 条目。当前保留185条、排除124条，25场Live不变；尚未同步生产。
+
+- 2026-09-07：按用户指定，将 L60b、L61a 统一归入 L61「RAG 学习与构建工具指南」，覆盖此前分别挂入 L64/L54 的安排；原有 L73 配套保留。两条已在前轮排除，本轮只更改归属，保留计数仍为186，未同步生产。
+
+- 2026-09-07：用户授权落实重复审核。移出 L49、L51；合并 L39→L38、L116→L115、L73→L61、L92→L177、L85/L175→L168，并收拢重复自学入口。合计本轮减少40条独立条目，当前保留186条、排除123条；历史309条与25场Live保持不变。合并来源通过 cohort7SupplementaryLessons 保留并在统一 HTML 中显示。已有录播不删除。
+- 本轮修正 L38 的标题、范围与步骤，明确统一实验和验收资料待整理。HTML 不再把内部资源标识当课堂步骤，不重复显示相同标题和描述；仍缺具体操作的步骤标为待补。此为目录与呈现清理，不代表全部讲义、Lab 实现或既有视频已更新；未同步生产。
+
+- 2026-09-07：按用户最新明确要求移出 L46「Building Your First GPT in GPT Store」与 L47「Vision & Multimodal AI」；覆盖此前 GPT Store 保留决定，历史正文和资源保留。不删除其他 Computer Use、多模态配套或语音实践条目。当前保留226条、排除83条，25场Live不变；尚未同步生产。
+
+- 2026-09-07：按用户要求移出 L45「Lab: 代码生成」，保留历史实验和资源。当前保留228条、排除81条，25场Live不变；尚未同步生产。其余重复项仍处于审核，不在本次批量移除。
+
+- 2026-09-07：按用户明确要求移出 L33「第七期项目路线与交付标准」，说明性内容不独立占课；保留历史记录，不影响实际实践课、L33a 或 P3。当前保留229条、排除80条，25场Live不变，尚未同步生产。
+
+- 2026-09-07：将 L15a、L29a 两条重复的 llm-api-basics 阅读入口并入 L15，阅读资源保留，不再独立占课。本决定覆盖此前 L15a 紧随 L15 的安排；当前保留230条、排除79条，25场Live不变，尚未同步生产。
+
+- 2026-09-07：用户确认移出 L26「Lab: AI/ML 基础」，不改写为新实验；保留历史 Lab、正文和资源。当前保留232条，排除77条，25场Live不变；尚未同步生产。
+
+- 2026-09-07：用户确认将 L16a「Quest: 装好你的 AI Engineer 工作台」移出第七期；历史任务和资源保留。当前保留233条，排除76条，25场Live不变；尚未同步生产。
+
+- 2026-09-07：用户确认将 L12「Lab: Python OpenAI API」移出第七期；历史 Lab、正文和资源保留。当前保留 234 条，排除 75 条，25 场 Live 不变；尚未同步生产。
+
+- 2026-09-07：按用户确认，将 L15「LLM API 入门」和 L15a 配套自学从 L16 前移至 L28 模型原理课之后；原始 lesson 顺序为 L28 → L15 → L15a → L29。本次只调整位置，保留正文与资源，不包含合并或内容重写。
+
+#### 模型版本更新（2026-09-07 官方核验）
+
+- 当前旗舰参考更新为 GPT-6 Astra（gpt-6-astra）与 Claude Fable 5.1（claude-fable-5-1）；模型已发布不等于所有学生账户已获API权限，课堂按可用性、预算和任务能力选用。
+- L15/L27/L47/L52/L68/L73/L82/L86/L98/L118/L154/L176 共12条更新正文、步骤及中英文说明，移除旧型号默认榜单、固定成本/速度断言；旧正文保存在 `reviews/2026-09-07-before-model-refresh.json`。
+- Astra 的工具调用须使用 Responses API，不靠替换旧 Chat Completions 的 model 字段迁移；不传不支持的自定义 temperature、top_p、logprobs。W2参数实验也须先核验该模型支持项，不能强行通用化。
+- 新模型不等于新的 embedding 模型；RAG检索索引与生成器分开选型，Fine-Tuning目标也不自动使用同一旗舰。
+- 已有录播保留原型号和结果，配新版迁移说明，不删除视频、不将旧成片冒充新模型实操。历史模型、开源权重教学例子不机械替换；运行环境、成本与访问仍需逐例实测。
+- 这轮只修本地大纲：接口示例/平台Lab仍待真实运行验证，PDF和官网未刷新，未同步Prod。候选235条、25场Live不变。
+
+- 最新确认：L13 Python JSON 处理移出第七期，作为入学前置；历史正文及已有视频资产保留。当前候选235条、排除74条、25场Live，未同步Prod。本决定不删除AI Structured Output/Schema Validation的教学内容。
+
+#### L63 与已有视频保留规则（最新确认）
+
+- L63 Streamlit/Gradio UI 按用户确认移出第七期；仅标记本期排除，不删除历史条目、正文或已有视频资产。
+- 其他上一轮建议尚未授权批量删除。有已制作视频的内容优先保留为录播或参考；后续清理须先核验真实视频绑定、可播放资产与内容适用性。outline 未列视频字段不等于没有视频。
+- 本次没有对课程库、视频存储或 Prod 执行删除。当前候选236条、25场Live，历史309条保留。
+
+#### 入学前置与 P3 案例清理（最新确认）
+
+- L182 往期 P3 项目案例移出第七期，不再作为待制作课程；历史条目保留，P3 项目本身不受影响。本决定覆盖此前案例材料待核验的安排。
+- L02–L07 Python Hello World、变量类型、函数、基础 API、Git 提交及分支移出本期，作为入学前置；不具备基础的学生先学习其他基础课程，不在第七期补教。
+- 环境检查与 AI 专项 API 内容不因本决定一并删除。历史309条，排除72条，当前候选237条，25场Live不变；本地修改，未同步Prod。
+
+#### 全字段一致性收尾（已执行）
+
+- 同步所有已修订条目的字符串型 learns 与教学步骤，包括 W2、W5、W7；保留真实资源引用对象，不将资源链接当学习目标改写。
+- 重写21条英文说明为各课实际内容，移除通用范围/制作状态模板句。
+- 顶层历史记录、步骤及 InteractiveLab 总数按当前数据重算；新增 cohort7Inventory 明确历史309条、排除65条、候选244条、25场Live。必修非Live数量尚未完成分类核验，记为 null，不把候选数当必修数。
+- 删除顶层同一个 repository 的宣传承诺，改为围绕同一项目逐步升级；Multi-Agent 理论保留Live，实践为进阶选修，不承诺人人交付Multi-Agent系统。
+- 9个合并专题分别记录大纲、讲义/实验资料、录播及生产同步状态；已修订正文不等于全部素材已制作。W13 Starter Pack及班级Demo rubric仍未交付，不将本次数据修复视为完成。
+- 本次仍仅本地SoT更新，未提交代码或同步Prod；外部PDF、网页和旧历史讨论段落未整体重生成。
+
+#### 错放正文与重复 Lab 修复（已执行）
+
+- L101 对齐 W6 Tool Calling/MCP/CLI：讲工具契约、FastMCP、进程生命周期、权限与失败；不执行任意 SQL，不把 simulated send 当真实成功。
+- L119 对齐 W9 bounded Agent：复用 W8 tools，记录可见 Action/Observation，明确运行预算、审批及失败验证，不要求隐藏 Thought。
+- L178 替换误放的 Demo Day 正文为受控红队流程；L127 替换 SDK 排名为 A2A 基础并放 W11 Governance 配套。
+- L34 改为方案对照，不要求四套实现或另交 ISA；L48 改为真正的 Context Selection/Assembly/Compression/Lifecycle 排错资料。
+- L105/L106/L140 明确为进阶录播对照，复用既有 tools/harness，不要求额外 SaaS、生产数据库或 Coding Agent 项目；固定成本和无人干预承诺移除。
+- L182 保留 P3 案例位置但标记材料待核验；找到的 P3_US_PROJECT_BRIEFS.md 仅是选题/作品集简报，不作为学员交付证明。真实资产、链接及展示授权待补。
+- L88/L170 并入 L49，L169 并入 L86：相同 Lab 类型、入口和步骤跨周复用，不重复计算课程或要求完成。
+- 本批重写10条正文并同步其字符串型学习目标；原内容见 `reviews/2026-09-07-before-misplaced-content.json`。309条历史保留，累计排除65条，候选244条，25场Live不变。
+- 仅本地 SoT；完整实验、录播选片、案例授权和其他条目的全字段一致性仍待验收，未同步 Prod。Computer Use/GPT Store 不变。
+
+#### 教学正文第三轮修复（已执行）
+
+- L136 替换误放的 MCP 数据库报表正文，解释 Claude Code 的公开 Context/Runtime 边界、指令与权限、Hooks 时序，不推测内部源码实现。
+- L142 复用 W9 Agent/W11 Harness，取消另一套800行 mini harness 前置；主/子 Agent 均有预算与停止条件，补充共享预算、幂等性及 replay 副作用检查。
+- L90 中英文统一为 W5 配套录播，区分 ID-based/LLM-based Recall、Precision@k 与具体 Context Precision 实现；明确输入字段、缺失数据、版本和人工抽检。W6 建 Pipeline，W7 测学生实现。
+- L145 区分数据授权、审批、暂停恢复与补偿；敏感读取也需权限，审批绑定具体参数与资源，恢复不能重复执行副作用，暂停不等于回滚。
+- L66 移除固定配额、并发人数及事故比例断言，改为真实限额、错误分类、有界重试、队列与已授权 fallback；用 mock 故障测试而非冲击真实服务。
+- L53 对齐 RAG 理论/实践顺序，不再承诺30节必修；L179 改为真实贡献、测量证据与项目状态表达，不沿用旧 ISA 或保证职业结果。
+- L162/L166 扩展为 SFT/DPO 进阶实验设计：数据分割、基线、batch/smoke test、受限训练、独立评估与故障资料要求。固定环境、命令、starter、数据和参考运行结果仍待制作验收；现有 Lab 地址保留，不宣称新版已上线。
+- L40 保留为可选 Reasoning Prompt/CoT 对照实验，不要求隐藏推理、不预设效果提升、不恢复为核心必修。
+- 调整前10条正文保存在 `reviews/2026-09-07-before-teaching-corrections.json`，只用于历史追溯与素材提取，不作当前教材。
+- 本轮不增删课程条目：历史309条、排除62条、候选247条、25场 Live。Computer Use/GPT Store 未改；仅本地 SoT，未同步 Prod 或重新生成 PDF。
+
+#### 内容审核第二轮修复（已执行）
+
+- L21/L33 改成第七期双线学习与项目交付说明；L33a 改为独立项目/P3 可选 Proposal 指南，不再是主线必交 Quest，不要求另建公开 repository。
+- W7 L112 聚焦 Agent Loop、停止条件、工具失败与人工审批；完整 SDK 接口进入配套参考，框架比较交给 L115。
+- L120 改为现有 RAG 的 Agentic Retrieval 进阶录播，不再强制另建 ISA、多库路由或监控项目，也不把 Agentic RAG 等同于生产标准。
+- L124 为 LangGraph 状态图配套录播；L129 合并归档到 L125。L125 为复用现有工具与状态的 Multi-Agent 进阶 Lab，前置为 W9 Agent 与 W11 Harness。
+- L134 为 Mem0 基础接入 + 隔离、更正删除及写入审核的分层 Lab；L134a 合并归档到 L134。既有 Lab 地址不变，新版详细资料待制作验收。
+- L69 旧候选归档，失败分类复用到 W5 理论，实践由 W7 L60 复用 W6 dataset 承接。
+- W5 以 Confirmed Transcript → Structured Draft → Validation → Human Review 作为一个最小 feature spec，贯穿代码、测试、Wiki/diagram/ADR、Hooks 与 Skills；老师提供 schema、adapter 与 UI/API 外壳，不把所有内容叠成额外完整项目。
+- L57 修正 embedding 默认维度；L91 修正供应商部署说法；L131 区分 MCP/A2A 与商业场景 UCP，未核实缩写不作必修标准；L135 去掉热度排名，改按 Memory Contract 比较。官方依据保存在对应 outline 条目。
+- 309 条历史记录保留；累计排除62条，当前候选247条（含进阶/参考/可选，并非必修数量）；正式 Live 仍为25场。Computer Use / GPT Store 未修改。
+- 调整前正文保存在 `reviews/2026-09-07-before-content-followup.json`。仅更新本地 SoT，未同步 Prod；录播、完整 Lab 资料和宣传产物需后续刷新。
+
+#### 正文范围收紧（已确认）
+
+- **Computer Use / GPT Store 全部保留**：本轮不删除、不归档、不下调现有安排。
+- W2 聚焦 Token Budget、Context Window、Attention 信息流、KV Cache 与 Prompt/Prefix Cache；L29/L30 不再以公式推导为必修前置。Response/Semantic Cache 实现及失效、安全细节进入 Harness/Governance 进阶资料。
+- W7 L60 由 starter 提供 UI、API scaffold、合成语料及 W6 eval runner；学生实现 Chunking、Index/Retrieval、Grounding/Citations 与 No-answer，不重写整个应用。
+- L115 为 SDK 选型对照，L117 任选一个替代 SDK 做最小适配，不要求同一项目做三遍。
+- L149 修正为 W12 配套模型选择与 Fine-Tuning go/no-go；训练工具、Embedding tuning、GPU 和 SageMaker 为进阶，不是项目必修前置。
+- GraphRAG L93 保留适用性判断和一个进阶完整示例；AWS L95 为可选架构对照，不将每个云服务各做一次。
+- L168 复用 W6/W7 Pipeline，后续扩展 Agent checks；L177 为工具参考。L52/L61/L73/L92 按工具手册分类查阅，无独立完成要求。
+- 本轮重写11条 description、教学步骤及正文，另修正9条资料范围说明；调整前正文见 `reviews/2026-09-07-before-content-scope-review.json`，仅供历史追溯与进阶资料提取。
+- 新版录播选片、starter、详细 Lab 指引及进阶资料仍需组装验收；未同步 Prod，保持12场理论与13场实践 Live。
+
+### 第二批专题合并（最新统计）
+
+本批减少25个独立排课条目。原始库存309条，累计排除/合并归档59条，剩余候选250条（25场 Live + 225条非 Live）。本节统计覆盖下文旧统计；候选包含补基础、选修和 Pool，不等于必修数。
+
+| 专题入口 | 收拢内容 | 原条目处理 |
+|---|---|---|
+| L146 Skills Development & AI Coding Workflow | Skills 原理、开发、Rules/Commands/开发 Hooks 与复用，W5 配套选修 | L137、L147 并入 |
+| L136 Claude Code Architecture: Context & Runtime | Context 与 runtime 原理，区别于开发工作流 | L139 并入 |
+| L142 Agent Harness Engineering & Patterns | 生命周期、恢复、工具副作用与审批模式 | L144 并入 |
+| L149 模型选择与 Fine-Tuning 决策 | 用途、边界、go/no-go，W12 配套 | L164 并入 |
+| L160 Open-Weight Models: Weights, Loading & GPU Memory | 权重获取、加载与显存检查，进阶选修 | L159 并入 |
+| L165 Fine-Tuning with PEFT, QLoRA & Unsloth | 工具准备、原理与示范，进阶选修 | L167、L163 并入 |
+| L161 Embedding Fine-Tuning & MTEB Evaluation | Embedding 训练与评估，进阶选修 | L158 并入 |
+| L154 Synthetic Training Data: Design & Tooling | 训练数据设计与工具 | L157 并入；L156 RAG 测试数据仍独立 |
+| L93 GraphRAG: Concepts, Trade-offs & Worked Example | 入门、技术全景与原有示例，进阶选修 | L81、L83 并入；不增加必修项目 |
+
+同资源阅读去重：L146a→L138a、L139b→L138b、L145a→L144a、L157a→L156a、L93a→L81a；部署/成本阅读 L68a/L121b/L176a→L66a，性能成本 L68b/L176b→L66b，生产部署 L120a/L121a/L150a→L95a。EC2、IAM、S3、Bedrock、OpenSearch 等不同目标的 Lab 保留，不当成重复课删除。
+
+状态：专题范围和替代关系已写入 outline（cohort7BundleTitle/Scope/MergedFrom）。源内容、录像选片及版本核验尚待整理，以 CONTENT_ASSEMBLY_PENDING 标记；旧标题和原资料保留追溯。生产投影需使用专题设计并排除归档条目，本次不执行 Prod 同步。
+
+评估与观测合并确认：保留 RAGAS、Langfuse 主路径；L130 Agent Ops with LangSmith 并入 L79 作为选修对照录像，待选片合并。相同 Learn 资源按真实 direction/slug 去重：eval-quality-monitoring 八条留 L79a；observability-guardrails 四条留 L79b；llm-judge-evaluation 两条留 L85c。其余十一条重复阅读标记合并归档，各周复用同一参考，不重复要求完成。
+
+当前统计（本轮修改后）：原始 309 条保留历史数据，34 条标记本期排除，未排除候选 275 条。其中正式 Live 25 条，非 Live 250 条；按类型为 Information 129、InteractiveLab 72（含4个待实现选修 Lab）、Lesson 38（含25场 Live）、Quest 4、Video 32。275 是含补基础/选修/Pool 的候选库存，不是必修课数量；尚未完成完整必修清单筛选，不能用275对外宣传必修规模。
+
+LangChain 专题合并确认：W7 从零 RAG 完成 → L75 `LangChain Foundations & RAG Composition` 选修入门录播 → L60a `RAG with LangChain + Chroma` 选修对照 Lab。L74/L77 的概念与组合内容并入 L75；L94 不再要求独立 QA/GraphRAG/前端/部署项目，实验目标收束到 L60a。L74a/L77a/L94a 引用的同一 `ai-engineer/langchain-framework` 章节只保留为专题参考阅读。上述六个旧条目标为合并归档，不单独排课；相关历史内容保留。合并录像待 Ada 选片、版本核对、剪辑与绑定，Lab 资料与入口待制作。其余工具专题尚未批量合并。
+
+本轮确认：L183a/L102a 移出独立作业，验收并入 W13/W8；L97a/L110a 转进阶选修 Lab，复用现有语料或测试环境，提供完整教程、Starter、排错、测试和参考实现，不单独交作业；L171b 转 W11–W13 现有项目的 Governance 模板与实践资料。资料和实验入口待制作验收。L90 改 W5 课前，用教师 baseline；L147 明确录播并去除固定省时承诺。旧占位 C7T07/C7T08/C7P08/C7T03/C7T04/C7T09/C7P09 和旧 Demo Day L180 排除出本期。
+
+重复资源规则：同一 Lab slug 或 Learn 资源只要求一次基础完成；后续复用检查新增场景证据。L49/L88/L170 分别用于基础 Prompt 评估、RAG 场景和最终 regression；L86/L169 用于基础评估与 production review。同名资料仍需核对资源标识，不能仅凭同名删除。同步器和学生端尚未落实此规则。
+
+补充确认：L125a（LangGraph 多 Agent 作业）、L149a（Ollama 本地模型作业）、L168a（LangSmith Eval 作业）均移出第七期独立作业清单，不转 Lab。此前转换建议不再执行；相关理论及已确认实践课保留，历史内容与提交记录保留，Prod 同步时需显式排除这三项。
+
+补充确认：L148「在你电脑上构建个人 Harness」先移出第七期清单，不转为 Lab；历史内容保留。Prod 尚未执行移除，后续同步必须显式排除该条目。
+
+补充确认：L134a 改为 `Lab: Implement and Validate Agent Memory with Mem0`，W10 后选修。复用 L119 / C7P10 的 Agent 与 Memory Contract，验证跨 Session Recall、用户隔离、更正删除和未确认 AI Draft 写入拦截；不另起项目、不单独交作业，不再依赖归档 L119a。
+
+Lab 详细资料标准（L60a、L134a 及后续确认转换的 Lab）：目标与前置；版本、安装命令、配置和 Starter；分步代码与解释、预期输出和检查点；常见报错及修复；测试数据、命令、参考结果与参考实现讲解；延伸实验。上述两项实验的资料与入口仍待制作验收，不能仅凭类型修改宣称已可用。
+
+| 条目 | 已确认决定 | 学习位置与边界 |
+|---|---|---|
+| L60a | 改为 `Lab: RAG with LangChain + Chroma`，选修对照实验 | W7 实践后，复用 W7 policy corpus、W6 evaluation dataset 与 candidate interface；比较代码量、可控性及实际评估结果，不另起 PDF 项目、不单独提交作业。实验入口待实现与验收。 |
+| L85a | 移出第七期独立作业清单 | RAG 评估验收并入 W7 L60，使用 W6 dataset，只报告真实结果；旧作业归档。 |
+| L119a | 移出第七期独立作业清单 | Agent 验收并入 W9 L119，使用 W8 tools，检查终止、失败处理与人工审批；旧作业归档。 |
+
+状态：已更新本地 outline；未同步 Prod，未修改第五期课程或历史提交。归档/选修元数据在生产同步前需要由同步清单显式落实，不能假定现有导入器会自动过滤。
 
 第七期保留现有 10 个 Phase 的知识体系，但改变交付方式：阶段入口、架构判断和现场反馈放在 Live；稳定知识转为课前录播；代码练习保留为 Lab；阶段作业保留为 Quest。
 
@@ -443,7 +634,7 @@ W4 不使用 LangChain，不预设“准确率提升”百分比。W5 只通过 
 
 ### W5 · RAG Quality Theory + AI-Native Engineering Workspace Practice
 
-W5 的 Theory 与 Practice 是两条独立课堂。Theory 使用老师提供的 reference RAG 讲解 quality、testing 与 improvement；Practice 不假装学生已经完成 RAG，而是把 W1–W4 项目升级成可持续交付的 AI-Native Engineering Workspace。学生自己的 Policy RAG 在 W6 搭建，W7 再运行 RAGAS。
+W5 的 Theory 与 Practice 是两条独立课堂。Theory 使用老师提供的 reference RAG 讲解 quality、testing 与 improvement；Practice 用一个 Structured Draft 小功能串联 AI-Native Engineering Workspace，不假装学生已经完成 RAG。W6 先建立 Evaluation Pipeline，W7 再实现 Policy RAG 并运行同一评估。
 
 课前必修：
 
@@ -459,19 +650,18 @@ W5 的 Theory 与 Practice 是两条独立课堂。Theory 使用老师提供的 
 - Hybrid Retrieval、Reranking 与 production evaluation 预告（10 分钟）
 - RAG 测试与优化的面试表达（5 分钟）
 
-实践 Live（120 分钟）：
+实践 Live：
 
-- 盘点 PRD、DESIGN.md、README、API contract、tests 与 knowledge gaps（10 分钟）
-- 把一个 feature spec 转成 scope、non-goals、acceptance criteria 与 dependency-aware work plan（20 分钟）
-- 建立 docs-as-code Wiki：docs index、feature specs、runbook、decision log 与 ownership（20 分钟）
-- 用 Mermaid/C4 绘制 System Context、Container 与 AI request/data flow diagram（20 分钟）
-- 创建 ADR，记录关键架构选择、trade-off、status 与 superseded 关系（15 分钟）
-- 配置 PostToolUse/Stop Hooks，检查格式、链接、diagram 与 documentation drift（20 分钟）
-- 创建并测试 `/spec-to-work` 与 `/update-docs` Skills，提交一次从 spec 到 reviewed docs patch 的证据（15 分钟）
+- 用 `/spec-to-work` 为 Confirmed Transcript → Structured Draft → Human Review 定义范围、schema 与验收条件。
+- 基于老师提供的 provider adapter、schema 与 UI/API 外壳，接通一次生成和 validation；缺失事实标为待确认，不编造内容。
+- 测试类型、必填字段、坏格式与 provider failure，复用现有 Review/Confirm；生成结果不能自动成为已确认记录。
+- 只为该变更新增一页 Wiki、一张 Mermaid AI request/data flow 图、一条 ADR；复用现有 docs index。
+- 用 Hooks 做格式、链接和 docs-drift 确定性检查，完成 `/update-docs` Skill，文档变更由人审核。
+- 展示 spec → 实现/测试 → 草稿审核 → 文档 diff 的闭环，不新增独立作业。
 
 Hook 的职责是执行确定性检查、产生 drift report 或阻止错误的“完成”声明。它不无监督改写 Architecture SoT；`/update-docs` 只根据 verified diff、tests 和已确认决策提出变更，由人 Review 后落盘。
 
-W5 延后内容：LLM-as-a-Judge 深入、完整 evaluation framework、dataset versioning、CI regression gate、GraphRAG、Langfuse 与 AWS/OpenSearch 部署。它们在后续 AI Evaluation、Production Integration 或进阶录播/Lab 中处理，不增加第三个 RAG Live 周。
+W5 延后内容：W6 建立 versioned dataset 与 Evaluation Pipeline；深入 Judge、生产 regression gate 和 Langfuse 在后续评估/Harness 阶段展开；GraphRAG、AWS/OpenSearch 为进阶资料，不增加第三个 RAG Live 周。
 
 ### W6 · Tool Calling, MCP & CLI Integration
 

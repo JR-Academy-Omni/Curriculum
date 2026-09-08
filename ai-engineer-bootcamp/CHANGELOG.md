@@ -1,5 +1,111 @@
 # Changelog — AI Engineer Bootcamp
 
+## 2026-09-08
+
+- 完成 138 条有效课程的全量内容、顺序、重复与范围审核；集中重写第 67–138 条中的薄 Lab、自学入口和重复专题，保持 25 场 Live（本地）。
+
+- 完成 138 条有效课程全量内容、顺序、重复与范围审核；重写剩余薄 Lab/自学内容并固定 Theory、Practice、Advanced/Optional 边界，保留 25 场 Live（本地）。
+
+- 提升数据库顺序第 59–66 条：去重 Tracing/RAGAS/Langfuse，修复 GraphPrompts 失效入口，完善 OpenSearch、RAG Diagnosis、GraphRAG、AWS Mapping 与 Safe Tool Execution（本地）。
+
+- 提升数据库顺序第 59–66 条：去重 Tracing/RAG Metrics，补齐 OpenSearch、Langfuse、GraphRAG、AWS RAG Mapping 与 Function Calling 的工程边界，并移除失效 GraphPrompts 依赖（本地）。
+
+- 提升数据库顺序第 51–58 条：完善 LLM Cost Engineering、Rate Limit、RAGAS、W5 RAG 质量判断、AI-Native Workspace、Skills 与 Typed Prompt Pipeline，并固定 W5 指标理解、W6 Pipeline、W7 RAG 实现的教学边界（本地）。
+
+## 2026-09-07
+
+- 按用户要求移除4个失效OpenClaw参考及L60a，从141条调整为138条，25场Live不变；SDM生产同步及回读通过，保留历史文档和视频。
+
+- 修正六条显式前置倒序，产品体验资料提前W2；收拢Proposal与RAG导览，修正AWS资料类型及运维固定阈值，保留141条（本地）。
+
+- 修正三条录播正文与前置，统一25场Live顺序、后移L125，L62转课程资源区；保留143条及历史资源（本地）。
+
+- 修正 API、评估/RAG、浏览器 Agent 实验前置顺序，收拢8条纯阅读入口至主课，保留144条与25场Live（本地）。
+
+- 收拢 A2A 至 Governance，取消重复 QLoRA Quest，修正 Embedding/QLoRA 错挂 Lab 与过时承诺；系统设计先于路由实践、发布评审最后，保留152条与25场Live（本地）。
+
+- 按 AI Engineer 入学基础收拢15条独立内容（9条移出、6条并入），保留关键AI实验与录播；L156移至W6评估前，当前155条（本地）。
+
+- 实际前移 W1–W5 实践课及 AI Coding/Rules/Commands/Skills 配套到对应前期课堂，修正源数据 Phase 与 lesson 顺序，保留170条与25场Live（本地）。
+
+- 按确认移出 L181 学员小组项目展示录播条目，保留历史记录与视频资源，不影响 P3；当前170条（本地）。
+
+- 提前 L144a 至 W1 L16 后作为 AI Coding 课前资料，移出 L144b/L174，保留历史资源；当前171条（本地）。
+
+- 落实剩余七项已列重复/导览清理，重写受控浏览器 Lab 范围与材料状态；合并资料去重，验证173条原序卡片和25场Live（本地）。
+
+- 按确认移除 L109a 并取消 L111 下该合并卡片，保留历史资源，独立条目仍为180条（本地）。
+
+- 将 L106a/L107a 统一并入 L107 MCP 发布指南，保留一个阅读入口，当前保留180条（本地）。
+
+- 合并 L96/L97/L97a 为单个 Bedrock RAG 选修 Lab，细化模型访问、知识库、评估与清理步骤，保留历史资源及材料待验收状态；当前保留181条（本地）。
+
+- 按确认移出 L78 QA 系统设计 Lab，保留历史资源，当前保留183条（本地）。
+
+- 按确认移出 L72 Serverless API Lab，保留历史资源，当前保留184条（本地）。
+
+- 按确认移出 L71 Lambda Serverless Lab，保留历史资源，当前保留185条（本地）。
+
+- 统一 L60b、L61a 至 L61 RAG 学习与构建工具指南，移除原主课下重复挂载，保留186条（本地）。
+
+- 落实重复审核并移出 L49/L51，收拢40条独立条目，保留历史资料和25场Live；统一 HTML 展示合并配套、消除重复步骤文案并标记待补资料，修正 L38 范围（本地）。
+
+- 按最新确认移出 L46 GPT Store 与 L47 Vision/Multimodal 条目，保留历史资源；当前保留226条，25场Live不变（本地）。
+
+- 按确认移出 L45 代码生成 Lab，保留历史资源，当前保留228条；开展剩余条目重复审核（本地）。
+
+- 按确认移出 L33 项目路线说明条目，保留历史记录与实践/P3安排；当前保留229条（本地）。
+
+- 合并 L15a、L29a 重复阅读入口至 L15，保留资源与历史记录，当前保留230条（本地）。
+
+- 按确认将 L26 AI/ML 基础 Lab 移出第七期，不改写为新实验；保留历史资源，当前保留232条（本地）。
+
+- 按确认将 L16a 工作台环境配置 Quest 移出第七期，保留历史任务和资源；当前保留233条，Live25场，未同步生产。
+
+- 按确认将 L12 Python OpenAI API Lab 移出第七期，保留历史资源；当前保留234条，Live25场，未同步生产。
+
+- 将 L15 / L15a API 入门资料移至 L28 模型原理之后，保留内容和全部历史记录，统一 HTML 随 SoT 顺序更新（本地）。
+
+- 修正完整大纲为 syllabus 同步使用的 Phase → lesson 原始顺序，取消按周次重排与末尾资料池，逐条展开全部保留内容（本地）。
+
+- 更新统一 outline.html 为完整顺序大纲，直接读取 SoT，展开 W1–W13 的25场 Live、已定周次配套及全部待排条目，保留完整正文与材料状态。
+
+- 新增直接读取outline.json的本地审核页，支持周次、类型、正文搜索和历史排除筛选；浏览器核验235条候选、25场Live及W5新步骤。
+
+- 按官方资料更新12条模型/API/多模态/成本/评估/性能课程，纳入GPT-6 Astra与Claude Fable 5.1及接口迁移边界，保留旧视频与历史示例，运行验证待完成。
+
+- 按确认移出L13 Python JSON基础Lab，保留历史资源及AI结构化输出内容；候选235条，未同步生产。
+
+- 按确认移出第七期L63 Streamlit/Gradio UI，保留历史与视频资产，记录后续清理前先核验既有视频的规则；候选236条。
+
+- 按确认将往期P3案例及6条Python/Git基础课移出第七期，基础能力转入学前置；候选237条，P3项目与25场Live保留。
+
+- 同步已修订课程学习目标、重写21条英文说明、重算历史统计并新增候选计数边界，移除单仓库宣传承诺，拆分专题内容与材料就绪状态。
+
+- 重写10条错放或范围失配正文，同步学习目标；合并3条重复评估Lab，明确额外MCP/Coding项目为进阶与P3案例待核验，候选244条，未同步生产。
+
+- 修复10条教学正文：Claude Code错文、Harness预算与恢复、RAGAS指标口径、HITL授权及限流断言；补充SFT/DPO实验设计，调整CoT对照与项目展示边界，保留历史正文和待制作状态，未同步生产。
+
+- 修正项目/Proposal 旧口径，收紧 Agents 理论并合并 Multi-Agent/Memory 重复 Lab；把 Structured Draft 接回 W5 工程闭环，核实并修正技术事实，候选247条、Live25场，未同步生产。
+
+- 保留 Computer Use/GPT Store，重写11条课程正文与步骤，收紧 W2/W7、SDK/评估重复实现及云平台范围；修正9条资料范围说明，保存历史正文，未同步生产。
+
+- 收拢 Skills/Claude Code、Fine-Tuning、GraphRAG 与部署参考为专题，新增25条合并排除；候选由275减至250，累计排除59条，保留25场Live及不同目标的Lab。
+
+- 合并十一条同资源评估/观测阅读及一条 LangSmith 录像，保留 RAGAS/Langfuse 主路径和 LangSmith 对照；候选库存由287降至275，累计排除34条，Live维持25场。
+
+- 将 LangChain 专题收束为 L75 入门录播与 L60a 对照 Lab，六个旧课程/重复阅读标记合并归档；保留历史内容并记录选片与制作待办。
+
+- 落实剩余作业审核：排除 L183a/L102a 及旧占位，转换 L97a/L110a 为选修 Lab、L171b 为资料，修正 L90/L147 并记录重复资源规则。
+
+- 按确认将 L125a、L149a、L168a 移出第七期独立作业清单，不转 Lab，保留相关理论实践及历史记录。
+
+- 按逐项确认将 L148 移出第七期清单，不转 Lab，保留历史条目并记录生产同步时需排除。
+
+- 将 L134a 转为 W10 后 Mem0 选修 Lab，复用现有 Agent 并验证记忆隔离、更正删除与写入审核；记录 Lab 详细资料标准及待制作状态。
+
+- 将 L60a 改为 W7 后 LangChain + Chroma 选修 Lab，复用语料与评估契约，标记实验入口待实现；记录 L85a/L119a 移出第七期独立作业清单并归档，验收并入 W7/W9 实践，未同步生产。
+
 ## 2026-08-31
 
 - 把每周 Tag 面板改成 Theory + Practice 合并的完整 AI Engineering Stack：以 AI Mechanisms、AI Libraries & OSS 为主，W2 展开 Tokenization、Context Window、KV Cache、Token Budget、Prefill/Decode、vLLM、llama.cpp、FlashAttention、PagedAttention 与多类 Cache，通用全栈工具降级为 Build 辅助

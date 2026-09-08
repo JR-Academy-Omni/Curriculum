@@ -1,0 +1,483 @@
+{
+  "status": "HISTORICAL_MODEL_EXAMPLES_NOT_CURRENT_DEFAULTS",
+  "lessons": [
+    {
+      "code": "L15",
+      "title": "LLM API 入门",
+      "description": "GPT-4o、Claude、Gemini、DeepSeek、Qwen 的 API 入口都在哪里？谁家 endpoint 兼容 OpenAI SDK、谁家要自己写 client？这页速查给你一张决策图——以后项目选型、成本对比、备选方案切换，不用每次都翻官方文档。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 5,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "各家 LLM API 快速入门",
+          "description": "各家 LLM API 快速入门",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "检查",
+          "description": "检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>LLM API 入门</h2>\n<p>理解 LLM API 的核心概念，为后续所有 AI 工程实践打基础。</p>\n\n<h3>API 请求结构</h3>\n<p>所有主流 LLM（GPT-4o、Claude、Gemini）都遵循相似的 API 模式：</p>\n<pre><code># OpenAI 格式（已成为事实标准）\nresponse = client.chat.completions.create(\n    model=\"gpt-4o\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n        {\"role\": \"user\", \"content\": \"Explain RAG in 3 sentences.\"}\n    ],\n    temperature=0.7,\n    max_tokens=500\n)</code></pre>\n\n<h3>关键参数</h3>\n<table>\n<tr><th>参数</th><th>作用</th><th>常用值</th></tr>\n<tr><td><code>model</code></td><td>选择模型</td><td>gpt-4o, claude-sonnet-4-20250514, gemini-2.0-flash</td></tr>\n<tr><td><code>temperature</code></td><td>控制随机性</td><td>0（确定性）~ 1（创造性）</td></tr>\n<tr><td><code>max_tokens</code></td><td>最大输出长度</td><td>500-4000</td></tr>\n<tr><td><code>messages</code></td><td>对话上下文</td><td>system + user + assistant 消息数组</td></tr>\n</table>\n\n<h3>Token 和计费</h3>\n<p>LLM 按 token 计费，不按字数。英文大约 1 token ≈ 4 字符，中文大约 1 token ≈ 1.5 字符。GPT-4o 输入 $2.50/M tokens，输出 $10/M tokens。一次典型调用（500 token 输入 + 500 token 输出）约 $0.006。</p>",
+      "title_en": "LLM API Introduction",
+      "description_en": "Where are the API endpoints for GPT-4o, Claude, Gemini, DeepSeek, and Qwen? Which ones are OpenAI-SDK compatible, and which need their own client? One quick reference page so you can pick a model, compare cost, or swap a fallback without re-reading five sets of docs every time.",
+      "index": 15,
+      "_id": "69e7111db636532acae3b330"
+    },
+    {
+      "code": "L27",
+      "title": "AI 模型对比参考",
+      "description": "GPT-4o、Claude 4、Gemini 2.5、Llama 4、DeepSeek、Qwen 现在到底谁强？长文本、推理、代码、中文、成本——不同场景冠军不一样。这张对比速查给你一份可以存下来的决策辅助，老板问你 \"为什么选这个模型\" 的时候，你有数据可以甩。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 5,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "GPT-4o vs Claude vs Gemini vs Llama 4 vs DeepSeek vs Qwen 对比",
+          "description": "GPT-4o vs Claude vs Gemini vs Llama 4 vs DeepSeek vs Qwen 对比",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "模型对比检查",
+          "description": "模型对比检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>AI 模型对比参考</h2>\n<p>主流 LLM 模型的能力、价格、适用场景速查。</p>\n\n<h3>2025 年主流模型</h3>\n<table>\n<tr><th>模型</th><th>厂商</th><th>输入价格</th><th>输出价格</th><th>Context</th><th>适合场景</th></tr>\n<tr><td>GPT-4o</td><td>OpenAI</td><td>$2.5/M</td><td>$10/M</td><td>128K</td><td>通用、代码、多模态</td></tr>\n<tr><td>Claude Sonnet</td><td>Anthropic</td><td>$3/M</td><td>$15/M</td><td>200K</td><td>长文本、分析、安全</td></tr>\n<tr><td>Gemini 2.0 Flash</td><td>Google</td><td>$0.075/M</td><td>$0.3/M</td><td>1M</td><td>高性价比、长 context</td></tr>\n<tr><td>DeepSeek V3</td><td>DeepSeek</td><td>$0.27/M</td><td>$1.1/M</td><td>128K</td><td>高性价比、中文优化</td></tr>\n<tr><td>Llama 4 Scout</td><td>Meta</td><td>自部署</td><td>自部署</td><td>10M</td><td>开源、私有化部署</td></tr>\n</table>\n<p>选模型的原则：先用最便宜的（Gemini Flash / DeepSeek），效果不够再换更强的。生产环境建议准备 fallback：主模型挂了自动切备选模型。</p>",
+      "title_en": "AI 模型Comparison Reference",
+      "description_en": "GPT-4o, Claude 4, Gemini 2.5, Llama 4, DeepSeek, Qwen - who's actually ahead right now? The winner depends on long context, reasoning, code, Chinese, or cost. A one-page comparison you can keep around, so when your manager asks \"why this model?\" you have numbers to point at.",
+      "index": 27,
+      "_id": "69e71120b636532acae3b39f"
+    },
+    {
+      "code": "L47",
+      "title": "Vision & Multimodal AI",
+      "description": "2025 年开始，面试官很爱问“你会不会用 GPT-4V 做 OCR 和图表分析”。多模态不是给图片加个 caption 那么简单——怎么让模型稳定输出 JSON、怎么处理一张复杂的 dashboard 截图、怎么用 Claude Vision 做票据识别，这里一次讲透。顺带给你一份多模态 Prompt 的模板库。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Multimodal 输入",
+          "description": "图片作为 Context 的一部分传入 LLM：base64 编码、URL 引用、分辨率限制（GPT-4V low/high detail）",
+          "duration": 10
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "典型用例",
+          "description": "OCR 发票识别、UI 截图→代码、图表数据提取、医学影像初筛",
+          "duration": 10
+        },
+        {
+          "order": 3,
+          "type": "SCENARIO",
+          "title": "Multimodal Prompt 设计",
+          "description": "给定一张电商产品图 + 用户评论截图，设计 Prompt 提取结构化信息",
+          "duration": 10
+        }
+      ],
+      "description_en": "Since 2025, interviewers routinely ask about using GPT-4V for OCR and chart analysis. Multimodal is more than captioning an image — this lesson covers reliably structured JSON output, parsing complex dashboard screenshots, and invoice extraction with Claude Vision, plus a reusable multimodal prompt template library.",
+      "learningMaterial": "<h2>为什么要学这节</h2><p>2025 年面试里几乎每家做企业 AI 的公司都会问：\"你能让模型处理图片 / PDF / 截图吗？\"。银行让 AI 看发票自动入账、保险让 AI 读理赔照片识别损伤、客服让 AI 看用户截图判断 bug，这些场景都绕不开多模态。把多模态当\"纯文字 LLM 的加法\"做不出来——图片 token 计费逻辑、图像分辨率选择、prompt 写法和纯文本完全不一样，踩坑过的同学都知道账单能比预期多 3-5 倍。</p><h2>核心概念：三家主流模型对比</h2><p>2026 年 4 月的现状：OpenAI、Anthropic、Google 三家都在 chat completions 层原生支持图片输入，不再需要专门的 Vision API。</p><table><thead><tr><th>模型</th><th>最大图片数</th><th>单张上限</th><th>图片 token 计算</th><th>长处</th></tr></thead><tbody><tr><td>GPT-4o / GPT-4.1</td><td>100 张 / 请求</td><td>20 MB</td><td>low: 85 tok；high: 170 tok × tiles</td><td>OCR、表格结构化</td></tr><tr><td>Claude 3.5 / 3.7 Sonnet</td><td>100 张 / 请求</td><td>5 MB（base64）/ 10 MB（URL）</td><td>约 (width × height) / 750 tokens</td><td>图表理解、跨页 PDF 推理</td></tr><tr><td>Gemini 1.5 / 2.0</td><td>3000+（长上下文）</td><td>20 MB</td><td>固定 258 tok / 张（小图）</td><td>视频帧采样、超长文档</td></tr></tbody></table><p>\"图片多 = 贵\" 是常见误解。GPT-4o 的 <code>detail: \"low\"</code> 模式无论图多大都是 85 tokens，适合做封面缩略图这种不需要看细节的任务；<code>high</code> 模式会把图切成 512×512 的 tile，每 tile 170 tokens，4K 图能飙到 2000+ tokens。</p><h2>实操示例：Python 调 OpenAI 传 base64 图片</h2><pre><code>from openai import OpenAI\nimport base64\n\nclient = OpenAI()\n\nwith open(\"invoice.jpg\", \"rb\") as f:\n    b64 = base64.b64encode(f.read()).decode()\n\nresp = client.chat.completions.create(\n    model=\"gpt-4o\",\n    messages=[{\n        \"role\": \"user\",\n        \"content\": [\n            {\"type\": \"text\", \"text\": \"Extract invoice_number, date, total_amount, gst_amount as JSON.\"},\n            {\"type\": \"image_url\", \"image_url\": {\n                \"url\": f\"data:image/jpeg;base64,{b64}\",\n                \"detail\": \"high\"\n            }}\n        ]\n    }],\n    response_format={\"type\": \"json_object\"}\n)\nprint(resp.choices[0].message.content)</code></pre><p>Claude 的写法结构基本一致，只是 <code>type</code> 用 <code>image</code>，并且要单独声明 <code>source.media_type</code>：</p><pre><code>import anthropic\n\nclient = anthropic.Anthropic()\nresp = client.messages.create(\n    model=\"claude-3-7-sonnet-20250219\",\n    max_tokens=1024,\n    messages=[{\n        \"role\": \"user\",\n        \"content\": [\n            {\"type\": \"image\", \"source\": {\n                \"type\": \"base64\",\n                \"media_type\": \"image/jpeg\",\n                \"data\": b64\n            }},\n            {\"type\": \"text\", \"text\": \"Return the y-axis label and max value of the bar chart.\"}\n        ]\n    }]\n)</code></pre><h2>Prompt 写法：模糊 vs 具体</h2><p>这是多模态最反直觉的部分：写法和纯文本完全不同。</p><table><thead><tr><th>失败写法</th><th>成功写法</th></tr></thead><tbody><tr><td>\"Describe this chart\"</td><td>\"Extract the x-axis label, y-axis label, and the top 3 data points as (label, value) tuples.\"</td></tr><tr><td>\"What's in this image?\"</td><td>\"List every piece of text visible in the image, ordered top to bottom, left to right.\"</td></tr><tr><td>\"Is this invoice correct?\"</td><td>\"Read the invoice. Return JSON: {invoice_no, date, supplier_abn, line_items:[{desc, qty, unit_price, gst}], total}.\"</td></tr></tbody></table><p>规律：<strong>告诉模型\"要从图里提取什么\"，不要让它自由发挥</strong>。自由描述的结果通常很泛，具体提取能力都是顶级的。</p><h2>常见场景分析</h2><h3>场景 1：企业收票入账（澳洲 GST 场景）</h3><p>商家把客户拍的发票丢给 AI → 提取 ABN、发票号、各行 GST → 写到 Xero / MYOB。关键踩坑：澳洲超市小票是 Mixed GST（鲜食 0%、加工食品 10%），不能用 Total/11 推算。Prompt 必须要求模型读\"实际打印的 GST 金额\"，同时给每个 line item 标记 GST-free / Taxable。</p><h3>场景 2：保险理赔照片损伤识别</h3><p>用户上传车辆损伤照片 → AI 判断受损部位（保险杠 / 引擎盖 / 挡风玻璃）+ 严重程度（轻微划痕 / 凹陷 / 破损）。实践中 Claude 3.5 在损伤分类上比 GPT-4o 略好，但都需要后端再跑一层规则引擎，<strong>不能直接让模型给赔付金额</strong>。</p><h3>场景 3：客服截图识别 bug</h3><p>用户贴一张错误截图 → AI 读取报错文字 + UI 元素 → 在知识库做 RAG 检索。用 <code>detail: \"low\"</code> 就够了，因为只要读错误信息，不需要分辨像素级细节，成本低 5 倍。</p><h2>踩坑提醒</h2><table><thead><tr><th>坑</th><th>症状</th><th>解决</th></tr></thead><tbody><tr><td>没设 detail 级别</td><td>账单爆炸，4K 截图一张 2000+ tokens</td><td>OCR 场景强制 <code>detail: \"low\"</code>，除非确实需要细节</td></tr><tr><td>base64 图片超过 5MB（Claude）</td><td>400 error，请求直接拒绝</td><td>先用 Pillow resize 到 1568px 长边再编码</td></tr><tr><td>让模型\"自己看图\"做数学</td><td>价格汇总错误率 20%+</td><td>模型只提取数字，后端做加总 + GST 校验</td></tr><tr><td>PDF 直接传</td><td>大多数 Vision API 不吃 PDF</td><td>用 pdf2image / PyMuPDF 先转 PNG 再传</td></tr><tr><td>CAPTCHA / 手写签名识别</td><td>效果时好时坏，法律风险</td><td>这类业务用专用 OCR（AWS Textract / Azure Document Intelligence）</td></tr></tbody></table><h2>速查资源</h2><ul><li><a href=\"https://platform.openai.com/docs/guides/vision\">OpenAI Vision Guide</a> — detail level、token 计算器</li><li><a href=\"https://docs.anthropic.com/en/docs/build-with-claude/vision\">Anthropic Vision Docs</a> — Claude 多图输入限制</li><li><a href=\"https://ai.google.dev/gemini-api/docs/vision\">Gemini Vision API</a> — 视频帧采样、长上下文图片</li><li><a href=\"https://aws.amazon.com/textract/\">AWS Textract</a> — 结构化表单 / 表格专用 OCR</li><li><a href=\"https://github.com/ocrmypdf/OCRmyPDF\">OCRmyPDF</a> — 开源 PDF OCR 前置处理</li></ul><h2>自测</h2><ul><li>我能说出 GPT-4o 的 <code>detail: low</code> 和 <code>high</code> 模式 token 差几倍吗？</li><li>给一张澳洲超市小票让 AI 入账，我该怎么写 prompt 才不会把 GST 算错？</li><li>Claude 3.5 base64 图片上限是多少？超过该怎么处理？</li><li>什么场景下我应该用 AWS Textract 而不是通用 Vision 模型？</li><li>让模型从图表里读数据，\"describe this chart\" 为什么不如 \"extract x-axis label\"？</li></ul>",
+      "_id": "69e71125b636532acae3b427"
+    },
+    {
+      "code": "L52",
+      "title": "GenAI Toolbox",
+      "description": "工具手册分类参考，按当前项目需要查阅，不设独立完成要求，不要求全部工具各做一次。 GenAI Toolbox",
+      "type": "Information",
+      "isLive": false,
+      "duration": 5,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "AI 工具全景图：写作、代码、设计、数据分析",
+          "description": "AI 工具全景图：写作、代码、设计、数据分析",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "工具选择检查",
+          "description": "工具选择检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>GenAI 工具箱</h2>\n<p>AI Engineer 常用的工具和平台速查。</p>\n\n<h3>LLM 提供商</h3>\n<p>OpenAI (GPT-4o)、Anthropic (Claude)、Google (Gemini)、DeepSeek、Meta (Llama)</p>\n\n<h3>开发框架</h3>\n<p>LangChain（最流行）、LlamaIndex（RAG 专精）、Haystack（企业级）、Semantic Kernel（微软）</p>\n\n<h3>向量数据库</h3>\n<p>Pinecone（托管）、Weaviate（开源）、Chroma（轻量）、pgvector（PostgreSQL 插件）、OpenSearch（AWS）</p>\n\n<h3>评估和监控</h3>\n<p>LangSmith（LangChain 配套）、Langfuse（开源）、RAGAS（RAG 评估框架）、Weights & Biases</p>\n\n<h3>部署</h3>\n<p>AWS Bedrock、Azure OpenAI、Google Vertex AI、vLLM（自部署推理）、SageMaker</p>",
+      "title_en": "GenAI Toolbox",
+      "description_en": "ChatGPT / Claude / Gemini / Perplexity / NotebookLM / v0 / Cursor / Sora / ElevenLabs / Suno — the useful-AI-tools list changes weekly. This is a scenario-indexed cheat sheet: which tool for PRDs, which for short-form video, which for code review, which for meeting minutes. Pick from the map instead of burning an afternoon comparing websites.",
+      "index": 51,
+      "_id": "69e71126b636532acae3b442"
+    },
+    {
+      "code": "L68",
+      "title": "Budgeting and API Costs",
+      "description": "一个 RAG query 要跑 embedding + retrieval + generation 三步，平均 $0.02——听起来不多，直到你看到月底账单 $3000。这节课把 LLM API 的计费逻辑扒干净：input/output token 不同价、cached token 打折、Claude 比 GPT-4o 贵还是便宜。再教你怎么设 budget 告警、tracking 到 user 粒度、fallback 到便宜模型，避免老板看账单时当场叫停项目。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 12,
+      "steps": [
+        {
+          "order": 1,
+          "type": "VIDEO",
+          "title": "LLM API 成本估算、预算控制、fallback 策略",
+          "description": "LLM API 成本估算、预算控制、fallback 策略",
+          "duration": 10
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "成本管理检查",
+          "description": "成本管理检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h2>LLM 预算和 API 成本</h2>\n<p>在生产环境中，LLM 的成本是核心工程约束。</p>\n\n<h3>成本估算公式</h3>\n<pre><code>月成本 = 日均请求数 × 平均 token 数 × 单价 × 30\n例：1000 次/天 × 2000 tokens × $10/M × 30 = $600/月</code></pre>\n\n<h3>降成本策略</h3>\n<ol>\n<li><strong>用便宜模型</strong> — 简单任务用 GPT-4o-mini 或 DeepSeek，复杂任务才用 GPT-4o</li>\n<li><strong>缓存</strong> — 相同问题直接返回缓存答案，省 100% 成本</li>\n<li><strong>Prompt 压缩</strong> — 减少 System Prompt 和 context 的 token 数</li>\n<li><strong>Batch API</strong> — OpenAI Batch API 半价，适合非实时场景</li>\n</ol>",
+      "title_en": "Budgeting and API Costs",
+      "description_en": "A single RAG query runs embedding + retrieval + generation—roughly $0.02 each. Sounds tiny until the end-of-month bill reads $3000. This lesson breaks down LLM API pricing: input vs output token rates, cached-token discounts, Claude vs GPT-4o cost trade-offs. Then you'll wire up budget alerts, per-user tracking, and cheap-model fallbacks—so the CFO doesn't kill the project on invoice day.",
+      "index": 67,
+      "_id": "69e71129b636532acae3b49f"
+    },
+    {
+      "code": "L73",
+      "title": "End-to-End RAG Toolbox",
+      "description": "工具手册分类参考，按当前项目需要查阅，不设独立完成要求，不要求全部工具各做一次。 End-to-End RAG Toolbox",
+      "type": "Information",
+      "isLive": false,
+      "duration": 5,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "完整 RAG 技术栈：Parser → Chunker → Embedder → Store → Retriever",
+          "description": "完整 RAG 技术栈：Parser → Chunker → Embedder → Store → Retriever",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "技术栈选型",
+          "description": "技术栈选型",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h1>课程：End-to-End RAG Toolbox</h1><p><strong>适合程度</strong>：零基础 · 面向 AI Engineer 训练营学员<br><strong>目标</strong>：掌握使用一个端到端 RAG（Retrieval-Augmented Generation）工具箱搭建完整的检索增强生成系统。学会文档加载、Embedding 生成、索引、检索、重排、生成与调优，并能在不同场景（如 Elasticsearch/FAISS + OpenAI/本地模型）下组合模块完成可用系统。</p><hr><h2>1. 引言（Introduction）</h2><p>RAG 是把检索（Retrieval）与生成（Generation）结合起来的实用模式：先检索相关证据，再把证据拼入 prompt 让生成模型输出基于证据的答案。一个 <strong>End-to-End RAG Toolbox</strong>，就是把常见模块（Document Loader、Embedder、Vector Index、Retriever、Reranker、Generator、Pipeline）包装成可复用工具，帮助你快速搭建、调试与部署 RAG 系统。本课目标是让零基础学员了解工具箱的模块化设计、如何选择技术栈并动手跑通一个最小可用系统（MVP），同时学会常见的调优思路与扩展策略。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 RAG Toolbox 概览（模块划分）</h3><p>一个标准的工具箱包含以下模块，每个模块可替换实现：</p><ul><li><p><strong>Document Loader</strong>：从 PDF、Markdown、数据库或网页读取文档并做初步清洗。</p></li><li><p><strong>Text Cleaner &amp; Chunker</strong>：修复断行、去页眉页脚、按 token/字符切分并添加 overlap。</p></li><li><p><strong>Embedder（Embedding Generator）</strong>：把 chunk 转为向量（sentence-transformers、OpenAI embeddings 等）。</p></li><li><p><strong>Vector Index / DB</strong>：FAISS、Qdrant、Pinecone、Elasticsearch（dense_vector）存储与检索向量。</p></li><li><p><strong>Retriever（初检）</strong>：ANN/精确检索获取 top-k 候选片段。</p></li><li><p><strong>Reranker（精排）</strong>：cross-encoder 或 BM25+cross-encoder 对初检结果重排以提高精度。</p></li><li><p><strong>Generator（LLM）</strong>：把检索到的上下文与问题拼接 prompt，调用 LLM（OpenAI、TGI、Llama2 等）生成答案。</p></li><li><p><strong>Pipeline Orchestrator</strong>：把上述步骤串起来，处理缓存、并发、降级与监控。</p></li></ul><h3>2.2 文档检索模块细化</h3><ul><li><p><strong>加载</strong>：区分可选文本 PDF 与扫描件（OCR），保留 <code>source</code>, <code>page</code>, <code>bbox</code> 等元数据。</p></li><li><p><strong>切分</strong>：推荐 200–500 tokens，overlap 50–100，以保证信息完整性。</p></li><li><p><strong>元数据</strong>：保留 <code>file#page#chunk_id</code>、语言、文档类型，便于溯源与过滤。</p></li></ul><h3>2.3 Embeddings 生成与优化</h3><ul><li><p><strong>模型选择</strong>：小模型（all-MiniLM）用于速度与成本；大模型（sentence-bert large / OpenAI）用于质量。</p></li><li><p><strong>归一化</strong>：若使用内积索引（IndexFlatIP）需先 L2 归一化向量以实现 cosine 相似度。</p></li><li><p><strong>批量嵌入</strong>：批处理能提升吞吐并节省请求次数（注意 API 的最大批量限制）。</p></li></ul><h3>2.4 生成模型集成与 Prompt Engineering</h3><ul><li><p><strong>拼接模板</strong>：只把检索到的 top-k 最相关片段拼入 prompt，按 token 限制截断并优先保留高置信度句子。</p></li><li><p><strong>格式化答案</strong>：要求 LLM 在答案末注明来源（例如 <code>[file.pdf#p3#c2]</code>）。</p></li><li><p><strong>抽取式 vs 生成式</strong>：当可靠性要求高时，先尝试抽取式生成（直接返回高置信检索段并标注），再做生成式润色。</p></li></ul><hr><h2>3. 实战示例（Practical Examples）</h2><p>下面给出两个常见组合的最小可运行代码示例：<strong>FAISS + sentence-transformers + OpenAI</strong>（本地版）与 <strong>Elasticsearch（dense_vector）+ OpenAI</strong>（企业/生产常见）。</p><blockquote><p><strong>准备</strong>：先在虚拟环境安装依赖：<code>pip install sentence-transformers faiss-cpu openai elasticsearch pdfplumber tiktoken</code>（视示例需要安装）。</p></blockquote><hr><h3>3.1 Minimal RAG：FAISS + sentence-transformers + OpenAI（Python）</h3><pre><code># simplified_rag.py\nfrom sentence_transformers import SentenceTransformer\nimport faiss, numpy as np, pickle\nimport openai, tiktoken\n\n# 1. parse &amp; chunk (略，假设有 docs = [{\"id\":..., \"text\":...}, ...])\n\n# 2. embed\nembed_model = SentenceTransformer(\"all-MiniLM-L6-v2\")\ntexts = [d[\"text\"] for d in docs]\nemb = embed_model.encode(texts, convert_to_numpy=True)\n# normalize\nemb = emb / (np.linalg.norm(emb, axis=1, keepdims=True)+1e-10).astype(\"float32\")\n\n# 3. build index\nd = emb.shape[1]\nindex = faiss.IndexFlatIP(d)\nindex.add(emb)\npickle.dump(docs, open(\"meta.pkl\",\"wb\"))\nfaiss.write_index(index, \"faiss.index\")\n\n# 4. query\ndef retrieve(query, top_k=5):\n    qv = embed_model.encode([query])\n    qv = qv / (np.linalg.norm(qv, axis=1, keepdims=True)+1e-10).astype(\"float32\")\n    D,I = index.search(qv, top_k)\n    return [docs[i] for i in I[0]]\n\ndef build_prompt(question, candidates):\n    ctx = \"\\n\\n\".join([f\"[{c['id']}]\\n{c['text']}\" for c in candidates])\n    return f\"Use the following context to answer the question. If not found, say 'Insufficient info'.\\n\\n{ctx}\\n\\nQ: {question}\\nA:\"\n\n# 5. call OpenAI (示例)\nopenai.api_key = \"YOUR_KEY\"\ndef call_llm(prompt):\n    resp = openai.ChatCompletion.create(\n        model=\"gpt-4o\", messages=[{\"role\":\"user\",\"content\":prompt}], temperature=0.0\n    )\n    return resp.choices[0].message.content\n</code></pre><p><strong>教学提示</strong>：真实系统要注意 token 计数（<code>tiktoken</code>）以避免超限，并把 metadata 一并返回供 UI 显示来源。</p><hr><h3>3.2 Elasticsearch dense_vector 示例（索引与检索）</h3><pre><code># Elasticsearch mapping (简化)\nPUT /docs\n{\n  \"mappings\": {\n    \"properties\": {\n      \"text\": {\"type\":\"text\"},\n      \"vector\": {\"type\":\"dense_vector\",\"dims\":384},\n      \"source\": {\"type\":\"keyword\"}\n    }\n  }\n}\n\n# Python: index document\nfrom elasticsearch import Elasticsearch\nes = Elasticsearch()\nes.index(index=\"docs\", body={\"text\":\"...\", \"vector\":embedding.tolist(), \"source\":\"file#p1#c2\"})\n# vector search (script_score)\nquery = {\n  \"size\":5,\n  \"query\": {\n    \"script_score\":{\n      \"query\":{\"match_all\":{}},\n      \"script\":{\n        \"source\":\"cosineSimilarity(params.query_vector, 'vector') + 1.0\",\n        \"params\":{\"query_vector\": q_vec.tolist()}\n      }\n    }\n  }\n}\nres = es.search(index=\"docs\", body=query)\n</code></pre><p><strong>教学提示</strong>：Elasticsearch 适合把检索与全文检索混合使用（BM25 + vector hybrid），并且便于做过滤（按 metadata）。</p><hr><h2>4. 最佳实践 / 常见陷阱（Best Practices / Common Pitfalls）</h2><h3>最佳实践</h3><ol><li><p><strong>模块化设计</strong>：写清楚接口（embed(texts) → vectors；retrieve(query, k) → candidates；generate(prompt) → answer），便于替换实现。</p></li><li><p><strong>统一 embedding 流程</strong>：索引和查询必须使用相同模型与预处理。</p></li><li><p><strong>合理 chunk 与 overlap</strong>：200–500 tokens，overlap 保证不丢句意。</p></li><li><p><strong>重排（Rerank）</strong>：初检后用 cross-encoder 精排 top-k 可以显著提升质量。</p></li><li><p><strong>缓存与降级</strong>：对重复 query 做缓存，失败时使用抽取式或本地小模型降级。</p></li><li><p><strong>监控/指标</strong>：记录召回（Recall@k）、nDCG、生成准确率、延迟与成本。</p></li><li><p><strong>安全与溯源</strong>：答案必须带来源，长文本做隐私过滤与脱敏。</p></li><li><p><strong>测试与回归集</strong>：准备典型问答集用于调参与回归测试。</p></li></ol><h3>常见陷阱</h3><ul><li><p><strong>索引与查询 embedding 不一致</strong>（模型/归一化不同）→ 检索失效。</p></li><li><p><strong>忽视 token 限制</strong> → prompt 超限或费用暴涨。</p></li><li><p><strong>把所有信息都放进 prompt</strong> → 并不总是更好，优先使用最相关的上下文。</p></li><li><p><strong>丢失元数据</strong> → 无法展示来源或追溯答案。</p></li><li><p><strong>没有降级策略</strong> → 外部 LLM 不可用时系统不可用。</p></li></ul><hr><h2>5. 小结（Summary）</h2><ul><li><p>一个 End-to-End RAG Toolbox 的价值在于 <strong>模块化、可替换与可调优</strong>，便于从文档导入到最终生成整个链路的工程化构建。</p></li><li><p>核心模块：Document Loader → Chunker → Embedder → Vector DB → Retriever → Reranker → Generator → Pipeline。</p></li><li><p>实战要点：统一 embedding、合理切分、重排提升精度、缓存与降级保障可用性、监控指标引导优化。</p></li><li><p>建议练习：实现一个 FAISS+sentence-transformers 的本地 RAG，加入 cross-encoder 重排并对比效果，最后把生成答案做来源标注与自动化评估（Recall@k、Answer Accuracy）。</p></li></ul><hr><h2>练习（Homework）</h2><ol><li><p><strong>实现工具箱接口</strong>：实现 <code>Loader/Chunker/Embedder/Index/Retriever/Generator</code> 的最小接口并运行端到端 Flow。</p></li><li><p><strong>比较 Embedding</strong>：用小模型 vs 大模型做检索对比（Precision@5 / Recall@5）。</p></li><li><p><strong>加入 Reranker</strong>：实现 cross-encoder（可用 <code>sentence-transformers</code> 的 cross-encoder 模型）并观察提升。</p></li><li><p><strong>部署实验</strong>：用 Docker Compose 把服务（api/worker/index）部署并做并发压力测试。</p></li></ol>",
+      "title_en": "End-to-End RAG Toolbox",
+      "description_en": "RAG isn't one component—it's a 5-stage pipeline: Parser (Unstructured / LlamaParse) → Chunker (Recursive / Semantic) → Embedder (OpenAI / BGE) → Store (Chroma / Pinecone) → Retriever (Vector / BM25 / Hybrid). Each stage has 3-5 viable options. This lesson draws the full decision tree so your next project is pick-and-go.",
+      "index": 72,
+      "_id": "69e7112ab636532acae3b4ba"
+    },
+    {
+      "code": "L82",
+      "title": "LLMs Overview",
+      "description": "选 LLM 的人都在搜同一批问题：GPT-4o 和 Claude Sonnet 4 谁写代码更好？Gemini 2.5 的 2M context 真的能用吗？Llama 4 够不够 production？DeepSeek / Qwen 在哪些场景能打过 OpenAI？这节把 2026 主流 6 家模型的 benchmark、价格、context window、多模态能力拍成一张表——下次有人问你用什么模型，直接把链接甩过去。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 12,
+      "steps": [
+        {
+          "order": 1,
+          "type": "VIDEO",
+          "title": "主流 LLM 对比：GPT-4o, Claude, Gemini, Llama 4, DeepSeek, Qwen",
+          "description": "主流 LLM 对比：GPT-4o, Claude, Gemini, Llama 4, DeepSeek, Qwen",
+          "duration": 10
+        },
+        {
+          "order": 2,
+          "type": "MCQ",
+          "title": "模型对比检查",
+          "description": "模型对比检查",
+          "duration": 2
+        }
+      ],
+      "learningMaterial": "<h1>LLMs Overview</h1><h1>1. 引言</h1><p>本课介绍大语言模型 LLM 的基本概念、能做什么、内部工作要点以及如何与它高效交互。掌握这些内容能够为后续的 Prompt 工程、检索增强生成 RAG、代理与模型微调等实战能力打好基础。</p><h2>2. 核心概念</h2><h3>什么是 LLM</h3><p>大语言模型是一类通过大量文本训练出来的神经网络模型。它通过学习文本之间的统计规律来预测下一个语言单位，从而生成连贯自然的文本。常见应用包括对话机器人、文本生成、代码补全、摘要与翻译。</p><h3>Token 和编码</h3><p>文本在模型内部以 token 为单位处理。一个 token 可能是一个完整词、词的子片段或一个字符。token 数量影响模型成本和上下文可用长度。理解 token 有助于控制输入长度与生成质量。</p><h3>上下文窗口</h3><p>上下文窗口表示模型一次能“看到”的最大 token 数量。超过窗口的内容会被截断。处理长文档时要采用分段、摘要或检索增强方法。</p><h3>Prompt 与 Prompt Engineering</h3><p>Prompt 是与模型沟通的指令或上下文。通过明确角色、指定输出格式和提供示例，可以显著提升模型输出的准确性与可控性。Prompt Engineering 是设计和优化 prompt 的方法论。</p><h3>概率生成与输出性质</h3><p>模型通过计算下一个 token 的概率分布进行生成。模型并不“理解”意义，它给出概率最高的输出。因此可能输出流畅但不准确的内容。</p><h3>温度、Top-k 与 Top-p</h3><p>温度控制生成的随机性，数值越大输出越多样。Top-k 与 Top-p 控制从概率分布中采样的范围，帮助在多样性和合理性之间取得平衡。</p><h3>幻觉与局限性</h3><p>模型偶尔会生成虚构或不准确的信息，称为幻觉。模型对实时性和事实性敏感，需要通过检索或校验机制来降低错误概率。</p><h3>微调与指令调优</h3><p>微调是在原始模型基础上用特定数据继续训练以改善特定任务表现。指令调优是让模型更善于遵循人类指令的技术路径。</p><h3>检索增强生成 RAG</h3><p>RAG 将检索系统与 LLM 结合。先检索与用户查询相关的文档片段，再将检索到的内容与 prompt 一并发给模型，从而提高事实性和覆盖长文档的能力。</p><h2>3. 实践示例</h2><h3>简单 Prompt 示例</h3><p>示例一</p><pre><code>请用通俗的语言解释什么是大语言模型，控制在两句话内。\n</code></pre><p>示例二</p><pre><code>你是一位大学老师，用要点形式解释 token 是什么，并给出一个简短例子。\n</code></pre><h3>角色化 Prompt 示例</h3><pre><code>你是一名资深 AI 工程师，请为零基础学生解释上下文窗口，并给出两条注意事项。\n</code></pre><h3>Python 调用示例</h3><pre><code>from openai import OpenAI\n\nclient = OpenAI(api_key=\"YOUR_API_KEY\")\n\nresponse = client.chat.completions.create(\n    model=\"gpt-4o-mini\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You are a helpful AI tutor.\"},\n        {\"role\": \"user\", \"content\": \"Explain what an LLM is in simple terms.\"}\n    ],\n    temperature=0.2,\n    max_tokens=150\n)\n\nprint(response.choices[0].message.content)\n</code></pre><h3>Token 计数练习</h3><p>将一句话分成 token 并观察不同模型下的 token 数量差别。通过线上 token 计数工具或模型 SDK 进行统计，练习控制输入长度。</p><h3>RAG 简要实现思路</h3><ol><li><p>将文档分段并为每段生成向量嵌入，存入向量数据库。</p></li><li><p>用户提问时，先在向量数据库中检索与问题最相关的若干段落。</p></li><li><p>将检索到的段落与问题拼接成 prompt，交给 LLM 生成答案。</p></li><li><p>对生成结果进行来源标注与二次校验。</p></li></ol><p>示例伪代码</p><pre><code># 检索部分伪代码\nquery_vec = embed(query)\ncandidates = vector_db.search(query_vec, top_k=5)\nprompt = build_prompt(candidates, query)\nanswer = llm.generate(prompt)\n</code></pre><h2>4. 最佳实践与常见坑</h2><h3>最佳实践</h3><ul><li><p>明确任务与输出格式，要求模型按指定格式返回结果。</p></li><li><p>提供必要背景与示例，增加上下文信息。</p></li><li><p>在事实性任务中降低温度，使输出更稳定。</p></li><li><p>使用 RAG 或检索策略处理长文本与事实性查询。</p></li><li><p>保存并迭代优秀的 prompt 模板，形成复用库。</p></li><li><p>对关键输出进行检索或人工校验，确保准确性。</p></li></ul><h3>常见坑</h3><ul><li><p>盲目信任模型输出，忽略验证。</p></li><li><p>Prompt 表述含糊，导致输出无关或跑题。</p></li><li><p>忽视 token 限制导致回应截断。</p></li><li><p>在敏感或私有数据上直接进行不当训练或开放式生成。</p></li><li><p>期望模型具有人类般的理解能力，误判其推理边界。</p></li></ul><h2>5. 总结</h2><p>本课介绍了 LLM 的基本定义、token 概念、上下文窗口、prompt 工程、生成机制与常见超参数。理解这些基础可以帮助你更好地与模型交互并设计可靠的 AI 应用。掌握 RAG、温度控制与验证流程能够显著降低生成错误并提升系统稳定性。</p>",
+      "title_en": "LLMs Overview",
+      "description_en": "Everyone picking an LLM searches the same things: Is GPT-4o or Claude Sonnet 4 better at code? Is Gemini 2.5's 2M context actually usable? Is Llama 4 production-ready? Where can DeepSeek / Qwen beat OpenAI? This lesson condenses 2026's top 6 models—benchmarks, price, context window, multimodal—into one reference table. Next time someone asks 'which model should I use?', just send the link.",
+      "index": 81,
+      "_id": "69e7112cb636532acae3b4ea"
+    },
+    {
+      "code": "L86",
+      "title": "Lab: LLM 评估",
+      "description": "LLM 工程实验：LLM 评估。在浏览器内完成实操练习，即时验证结果。",
+      "type": "InteractiveLab",
+      "isLive": false,
+      "isInteractiveLab": true,
+      "interactiveLabSlug": "llm-evaluation",
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "LLM 评估",
+          "description": "LLM 评估",
+          "duration": 3
+        },
+        {
+          "order": 2,
+          "type": "LAB",
+          "title": "LLM Lab: llm-evaluation",
+          "description": "LLM Lab: llm-evaluation",
+          "duration": 25,
+          "labSlug": "llm-evaluation"
+        },
+        {
+          "order": 3,
+          "type": "MCQ",
+          "title": "LLM 评估 理解检查",
+          "description": "LLM 评估 理解检查",
+          "duration": 2
+        }
+      ],
+      "labs": [
+        {
+          "source": "llm-lab",
+          "slug": "llm-evaluation"
+        }
+      ],
+      "learns": [],
+      "learningMaterial": "<h2>实验目标</h2>\n<p>在 LLM Lab 中实操 LLM 评估：用自动化指标衡量 LLM 输出质量。</p>\n<h3>你会练习</h3>\n<ul>\n<li>用 LLM-as-Judge：让 GPT-4o 给另一个模型的回答打分</li>\n<li>实现基本的 Faithfulness 检查：回答是否基于给定 context</li>\n<li>计算 Hit Rate：检索结果中包含正确答案的比例</li>\n</ul>",
+      "title_en": "Lab: LLM 评估",
+      "description_en": "LLM engineering lab: LLM 评估. Hands-on practice in browser with instant validation.",
+      "index": 85,
+      "interactiveLabType": "llm",
+      "_id": "69e7112db636532acae3b507",
+      "cohort7ReusePolicy": "跨阶段按需要重跑同一 Lab，保留单一学习入口，不作为重复课程要求。",
+      "cohort7MergedFrom": [
+        "L169"
+      ]
+    },
+    {
+      "code": "L98",
+      "title": "Function Calling + Tool Use",
+      "description": "光会调 ChatGPT 聊天的 Agent 不值钱——能接 Search + RAG + Calculator 三种工具，帮老板查完数据再算出 ROI 的 Agent 才值钱。这节直播课用 OpenAI Function Calling API 现场给一个普通 Chatbot 接上三个工具，讲清楚 Tool Schema 怎么设计才不会让模型乱调、怎么处理工具调用失败的 fallback。",
+      "type": "Video",
+      "isLive": false,
+      "duration": 30,
+      "steps": [
+        {
+          "order": 1,
+          "type": "LEARN",
+          "title": "AI Engineer: function-calling-tool-use",
+          "description": "AI Engineer: function-calling-tool-use",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "LEARN",
+          "title": "AI Engineer: tool-design-principles",
+          "description": "AI Engineer: tool-design-principles",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "LAB",
+          "title": "LLM Lab: ai-agent-patterns",
+          "description": "LLM Lab: ai-agent-patterns",
+          "duration": 5,
+          "labSlug": "ai-agent-patterns"
+        },
+        {
+          "order": 4,
+          "type": "CONCEPT",
+          "title": "OpenAI Function Calling API + Tool Schema 定义",
+          "description": "OpenAI Function Calling API + Tool Schema 定义",
+          "duration": 3
+        },
+        {
+          "order": 5,
+          "type": "SCENARIO",
+          "title": "给 Agent 加 3 工具：Search + RAG + Calculator",
+          "description": "给 Agent 加 3 工具：Search + RAG + Calculator",
+          "duration": 5
+        },
+        {
+          "order": 6,
+          "type": "MCQ",
+          "title": "Function Calling 检查",
+          "description": "Function Calling 检查",
+          "duration": 2
+        }
+      ],
+      "labs": [],
+      "learns": [
+        {
+          "direction": "ai-engineer",
+          "slug": "function-calling-tool-use"
+        },
+        {
+          "direction": "ai-engineer",
+          "slug": "tool-design-principles"
+        }
+      ],
+      "learningMaterial": "<h2>Function Calling + Tool Use</h2>\n<p>Function Calling 是让 LLM 调用外部函数的标准机制。</p>\n<h3>OpenAI Function Calling</h3>\n<pre><code>tools = [{\"type\": \"function\", \"function\": {\n    \"name\": \"get_weather\",\n    \"description\": \"Get weather for a city\",\n    \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}\n}}]\nr = client.chat.completions.create(model=\"gpt-4o\", messages=[...], tools=tools)\nif r.choices[0].message.tool_calls:\n    call = r.choices[0].message.tool_calls[0]\n    args = json.loads(call.function.arguments)</code></pre>\n<h3>三大 SDK 对比</h3>\n<table><tr><th></th><th>OpenAI</th><th>Anthropic</th><th>Google</th></tr><tr><td>Schema</td><td>JSON Schema</td><td>JSON Schema</td><td>OpenAPI</td></tr><tr><td>并行调用</td><td>✅</td><td>✅</td><td>✅</td></tr></table>",
+      "title_en": "Function Calling + Tool Use",
+      "description_en": "A chat-only Agent is a commodity — one that wires up Search + RAG + Calculator to pull live data and compute ROI is what companies actually pay for. This live session uses OpenAI's Function Calling API to bolt three tools onto a basic chatbot on stage, and covers Tool Schema design patterns that stop the model from calling tools at the wrong time, plus fallback handling when calls fail.",
+      "index": 101,
+      "_id": "69e71130b636532acae3b54e"
+    },
+    {
+      "code": "L118",
+      "title": "Agent Planning & Reflection Patterns",
+      "description": "简单的 ReAct Agent 遇到'规划一趟三天两夜的东京行程'这种任务就会崩——它会一步错步步错，越跑越乱。Plan-and-Execute 让 Agent 先拆成子任务再逐个执行，Reflection 让它跑完回头批判自己的输出。这两个模式在 LangGraph 里各自怎么实现、什么时候该用哪个、组合使用会不会把 token 预算烧光，这节讲清楚。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 15,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "Plan-and-Execute",
+          "description": "Planner Agent 生成步骤列表 → Executor Agent 逐步执行 → 动态 re-plan。跟 ReAct 的区别：ReAct 是 step-by-step，PaE 是先全局规划",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "Reflection / Self-Critique",
+          "description": "Agent 生成输出 → Critic Agent 评估质量 → 不满意则重新生成。LangGraph 中用 conditional edge 实现反馈循环",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "SCENARIO",
+          "title": "选择 Agent 模式",
+          "description": "给定 3 个场景（简单查询 / 多步研究 / 代码生成+审查），判断用 ReAct、PaE 还是 Reflection",
+          "duration": 5
+        }
+      ],
+      "description_en": "A vanilla ReAct Agent falls apart on tasks like 'plan a three-day Tokyo itinerary' — one bad step cascades into chaos. Plan-and-Execute decomposes first and acts second; Reflection critiques its own output. We cover the LangGraph implementation of both, when to pick which, and how to combine them without blowing your token budget.",
+      "learningMaterial": "<h2>为什么要学这节</h2><p>Agent 写到第三个版本你就会遇到这个问题：一个需要 8 步才能完成的任务，模型在第 4 步走岔了，后面全崩。单纯加 prompt \"请仔细思考\" 并不能解决——它需要的是结构化的规划和反思机制。ReAct 这种\"想一下 → 做一步\"的循环在简单任务上够用，但做多步骤任务（比如\"帮我整理这个 repo 的所有 TODO 并生成 Jira ticket\"）就会陷入短视决策。这节讲清楚 4 种主流 Planning 范式的适用边界和代码怎么写。</p><h2>核心概念：4 种范式对比</h2><table><thead><tr><th>范式</th><th>核心思路</th><th>适合任务</th><th>Token 开销</th></tr></thead><tbody><tr><td><strong>ReAct</strong></td><td>Thought → Action → Observation 循环</td><td>2-5 步的简单工具调用</td><td>低，但重复 context</td></tr><tr><td><strong>Plan-and-Execute</strong></td><td>先出完整 plan（list），再依次执行</td><td>步骤线性、步骤间依赖明确</td><td>中，plan 一次生成</td></tr><tr><td><strong>ReWOO</strong></td><td>Plan 阶段用占位符 <code>#E1</code> <code>#E2</code> 引用未执行结果</td><td>多步且步骤间可并行</td><td>最低，一次规划一次求解</td></tr><tr><td><strong>Reflexion</strong></td><td>执行失败 → 反思失败原因 → 写入 memory → 重试</td><td>带评估信号的任务（代码能不能跑、测试能不能过）</td><td>高，需要多轮</td></tr><tr><td><strong>Self-Critique</strong></td><td>生成答案 → 自己审一遍 → 修正</td><td>单 shot 输出质量敏感场景</td><td>中等，通常 2x</td></tr></tbody></table><p>实际选型：<strong>简单工具调用用 ReAct，多步骤并行用 ReWOO，需要试错的代码生成用 Reflexion，单次生成质量用 Self-Critique。</strong></p><h2>实操：LangGraph 实现 Planner + Executor</h2><p>2026 年主流做法是用 LangGraph（或 OpenAI Agent SDK）把 plan 和 execute 拆成两个 node，在中间加 checkpoint。</p><pre><code>from langgraph.graph import StateGraph, END\nfrom langgraph.checkpoint.memory import MemorySaver\nfrom typing import TypedDict, List\nfrom langchain_openai import ChatOpenAI\n\nclass AgentState(TypedDict):\n    task: str\n    plan: List[str]\n    past_steps: List[tuple]\n    response: str\n\nplanner_llm = ChatOpenAI(model=\"gpt-4o\", temperature=0)\nexecutor_llm = ChatOpenAI(model=\"gpt-4o-mini\", temperature=0)\n\ndef plan_step(state: AgentState):\n    prompt = f\"Break this task into 3-6 concrete steps: {state['task']}\"\n    result = planner_llm.invoke(prompt)\n    steps = [s.strip(\"- \") for s in result.content.split(\"\\n\") if s.strip()]\n    return {\"plan\": steps}\n\ndef execute_step(state: AgentState):\n    if not state[\"plan\"]:\n        return {\"response\": \"done\"}\n    current = state[\"plan\"][0]\n    result = executor_llm.invoke(f\"Execute: {current}\")\n    return {\n        \"plan\": state[\"plan\"][1:],\n        \"past_steps\": state.get(\"past_steps\", []) + [(current, result.content)]\n    }\n\ndef should_continue(state: AgentState):\n    return \"execute\" if state[\"plan\"] else END\n\ngraph = StateGraph(AgentState)\ngraph.add_node(\"plan\", plan_step)\ngraph.add_node(\"execute\", execute_step)\ngraph.set_entry_point(\"plan\")\ngraph.add_edge(\"plan\", \"execute\")\ngraph.add_conditional_edges(\"execute\", should_continue)\n\napp = graph.compile(checkpointer=MemorySaver())\nconfig = {\"configurable\": {\"thread_id\": \"run-1\"}}\nfor event in app.stream({\"task\": \"Generate a blog post about vector DB pricing\"}, config):\n    print(event)</code></pre><p>关键点：<code>MemorySaver</code> 在每次 node 执行后自动 snapshot state，意味着你可以从任意中间 step 恢复——这就是 human-in-the-loop 的基础。</p><h2>Reflexion 示例：自动修代码</h2><pre><code># 简化版 Reflexion loop\ndef reflexion_loop(task, max_iter=3):\n    memory = []\n    for i in range(max_iter):\n        code = llm.invoke(f\"Task: {task}\\nPast failures: {memory}\\nWrite Python code.\")\n        try:\n            exec(code.content)\n            return code.content  # 成功\n        except Exception as e:\n            reflection = llm.invoke(f\"Code failed with {e}. Why? What to fix next iteration?\")\n            memory.append(reflection.content)\n    return None  # 所有 iter 都失败</code></pre><p>Reflexion 的精髓是 <strong>memory 不存代码，存\"为什么失败\"的反思</strong>。SWE-bench 上这种模式比单次生成 pass@1 能高 15-20 个百分点。</p><h2>常见场景分析</h2><h3>场景 1：写 research report（多步调研）</h3><p>任务：\"对比 Pinecone / Weaviate / Qdrant 的价格、性能、开源情况\"。步骤间独立 → ReWOO 最佳。Plan 一次出完 3 个子查询 + 1 个对比汇总，然后 3 个子查询可以并行（asyncio.gather）。相比 ReAct 能省 40% token。</p><h3>场景 2：写脚本 + 跑测试（带评估信号）</h3><p>任务：\"写个脚本把 CSV 转 JSON 然后 unittest 通过\"。有明确的成败信号（测试过不过），用 Reflexion：失败就让模型读 traceback 写反思再试。</p><h3>场景 3：客户问题排查（开放式对话）</h3><p>任务：\"用户说登录失败，帮他定位\"。每一步依赖上一步结果（先查日志 → 根据错误码决定下一步），用 ReAct 就够了，Plan-and-Execute 反而因为提前 plan 死了失去灵活性。</p><h2>踩坑提醒</h2><table><thead><tr><th>坑</th><th>症状</th><th>解决</th></tr></thead><tbody><tr><td>Plan 过细（20+ 步）</td><td>Token 爆炸，后面几步 plan 已失焦</td><td>Plan 限制 3-7 步，允许 re-plan</td></tr><tr><td>Plan 过粗（1-2 步）</td><td>Executor 被迫\"凭空做复杂事\"，失败率高</td><td>强制 plan 至少包含 tool 调用名</td></tr><tr><td>Reflexion 没有 memory 上限</td><td>第 10 轮 context 2 万 token 全是反思历史</td><td>只保留最近 3 次反思 + 摘要历史</td></tr><tr><td>Self-Critique 自我欺骗</td><td>模型说\"已审核没问题\"但答案仍然错</td><td>用不同 model / 更高 temperature 做 critic</td></tr><tr><td>Checkpoint 没持久化</td><td>crash 后从头跑一遍，贵</td><td>MemorySaver 换成 PostgresSaver / Redis</td></tr></tbody></table><h2>速查资源</h2><ul><li><a href=\"https://langchain-ai.github.io/langgraph/tutorials/plan-and-execute/plan-and-execute/\">LangGraph Plan-and-Execute Tutorial</a></li><li><a href=\"https://arxiv.org/abs/2305.18323\">ReWOO Paper</a></li><li><a href=\"https://arxiv.org/abs/2303.11366\">Reflexion Paper</a></li><li><a href=\"https://platform.openai.com/docs/guides/agents\">OpenAI Agents SDK</a> — 2026 原生 planner 支持</li><li><a href=\"https://langchain-ai.github.io/langgraph/concepts/persistence/\">LangGraph Persistence / Human-in-the-Loop</a></li></ul><h2>自测</h2><ul><li>ReAct 和 Plan-and-Execute 的核心区别是什么？什么时候我该选哪个？</li><li>ReWOO 怎么省 token？它的占位符机制是什么？</li><li>Reflexion 的 memory 里应该存什么？只存失败代码够吗？</li><li>LangGraph 的 checkpoint 有什么用？怎么持久化到 Postgres？</li><li>如果 critic 和 actor 用同一个模型，Self-Critique 会有什么问题？</li></ul>",
+      "_id": "69e71135b636532acae3b66d"
+    },
+    {
+      "code": "L154",
+      "cohort7BundleTitle": "Synthetic Training Data: Design & Tooling",
+      "cohort7BundleScope": "合并训练数据设计与工具参考；保留 L156 独立讲 RAG 测试数据，避免训练集和测试集混用。",
+      "cohort7MergedFrom": [
+        "L157"
+      ],
+      "cohort7BundleStatus": "CONTENT_ASSEMBLY_PENDING",
+      "cohort7BundlePolicy": "专题设计已确认，源内容需整理、选片与版本核验；不得将标记合并视为成片或资料已完成。",
+      "title": "SDG for Fine-Tuning",
+      "description": "进阶选修资料，不是完成第七期 Agent 项目的前置；沿用专题合并范围，不新增必修训练或部署项目。 SDG for Fine-Tuning",
+      "type": "Video",
+      "isLive": false,
+      "duration": 60,
+      "steps": [
+        {
+          "order": 1,
+          "type": "LEARN",
+          "title": "Prompt Master: pal",
+          "description": "Prompt Master: pal",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "LEARN",
+          "title": "Prompt Master: generated-knowledge",
+          "description": "Prompt Master: generated-knowledge",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "CONCEPT",
+          "title": "Prompt-Based Data Generation + Self-Instruct / Evol-Instruct",
+          "description": "Prompt-Based Data Generation + Self-Instruct / Evol-Instruct",
+          "duration": 3
+        },
+        {
+          "order": 4,
+          "type": "LAB",
+          "title": "LLM Lab: data-engineering",
+          "description": "LLM Lab: data-engineering",
+          "duration": 5,
+          "labSlug": "data-engineering"
+        },
+        {
+          "order": 5,
+          "type": "SCENARIO",
+          "title": "用 GPT-4o 生成 500 条训练数据 + 质量过滤",
+          "description": "用 GPT-4o 生成 500 条训练数据 + 质量过滤",
+          "duration": 5
+        },
+        {
+          "order": 6,
+          "type": "MCQ",
+          "title": "SDG 检查",
+          "description": "SDG 检查",
+          "duration": 2
+        }
+      ],
+      "labs": [],
+      "learns": [
+        {
+          "direction": "prompt-master",
+          "slug": "pal"
+        },
+        {
+          "direction": "prompt-master",
+          "slug": "generated-knowledge"
+        }
+      ],
+      "learningMaterial": "<h1>课程：SDG for Fine-Tuning &amp; Prompt-Based Data Generation for Fine-Tuning &amp; Alignment</h1><p><strong>适合程度</strong>：零基础 · 面向 AI Engineer 训练营学员<br><strong>目标</strong>：理解与实践用<strong>合成数据生成（SDG, Synthetic Data Generation）和基于 prompt 的数据生成</strong>来做微调与对齐（alignment）的完整流程。学会设计生成式 prompt、自动化合成训练/偏好数据、做质量过滤与人机校验、把数据用于微调与偏好学习，并掌握评估与常见陷阱。</p><hr><h2>1. 引言（Introduction）</h2><p>在工业与研究实践中，<strong>高质量的数据</strong>是把大模型变成可靠产品的关键。真实标注数据昂贵且往往不足以覆盖实际业务场景。<strong>合成数据生成（SDG）与prompt-based 数据生成</strong>提供了一条高效路径：利用强大的 LLM 生成训练样本（指令-响应对、对比偏好、断言/反例等），然后把这些样本用于<strong>微调</strong>（fine-tuning）或<strong>对齐</strong>（例如偏好学习 / RLHF）。本课带你从概念到代码，完整覆盖生成、过滤、微调、验证与治理流程，帮助你把“少量人力+LLM生成”变成可复用的训练管线。</p><hr><h2>2. 核心概念（Core Concepts）</h2><h3>2.1 什么是 SDG / Prompt-Based Data Generation？</h3><ul><li><p><strong>SDG（Synthetic Data Generation）</strong>：用程序或模型自动生成训练/验证数据。可为分类、问答、摘要、指令追随、偏好比较等任务生成样本。</p></li><li><p><strong>Prompt-Based Data Generation</strong>：通过有设计的 prompt 指示 LLM 生成目标格式的数据（例如“给出 5 个问题及答案”“把这段话改写为更正式的风格”）。<br>用途：扩充数据、覆盖长尾场景、制作偏好对、生成对抗性样本、模拟用户交互。</p></li></ul><h3>2.2 用途：微调 vs 对齐</h3><ul><li><p><strong>微调（Fine-Tuning）</strong>：把模型在特定任务或领域上做参数更新（监督学习），提高性能或习得新能力。需要成对的 <code>(input, output)</code>。</p></li><li><p><strong>对齐（Alignment）</strong>：使模型在价值/偏好/安全方面表现与人类一致。通常需要偏好数据（pairwise comparisons）、反例/约束、或 RLHF 流程（用偏好模型作为奖励、用 RL fine-tune 模型）。</p></li></ul><h3>2.3 常见合成数据类型</h3><ul><li><p><strong>Instruction / Response（指令-回复）</strong>：适合指令式微调（Instruction Tuning）。格式示例：<code>{\"instruction\": \"...\", \"input\": \"...\", \"output\": \"...\"}</code>。</p></li><li><p><strong>Question-Answer</strong>：问答对，适合 QA 微调与 RAG。</p></li><li><p><strong>Summaries / Paraphrases</strong>：摘要和改写用于摘要/风格迁移任务。</p></li><li><p><strong>Pairwise Preference</strong>：同一问题下的 A/B 两个答案，标注哪一个更好，用于训练偏好判别器或 RLHF。</p></li><li><p><strong>Chain-of-Thought（CoT）示例</strong>：生成带推理步骤的示例，用于训练模型逐步推理能力。</p></li><li><p><strong>Adversarial / Hard Negatives</strong>：用于提升鲁棒性的反例或困惑样本。</p></li></ul><h3>2.4 质量控制与过滤（关键）</h3><p>自动生成的数据必须<strong>被过滤与校验</strong>，常见方法：</p><ul><li><p><strong>自动过滤</strong>：用置信度、perplexity、不一致性检测、重复率或 embedding-based 去重。</p></li><li><p><strong>模型自检</strong>：让另一个模型（或同个模型不同 prompt）对生成文本做校验（NLI / 验证器）。</p></li><li><p><strong>人类抽样审阅（HITL）</strong>：对低置信或关键样本做人工校验并作为 gold。</p></li><li><p><strong>分布校对</strong>：检查合成数据与真实数据的分布差异（词表、长度、实体覆盖）。</p></li></ul><h3>2.5 偏好数据与对齐（Preference Data）</h3><ul><li><p>用 prompt 生成两个不同回复，然后要求人或模型标注“更优”者。</p></li><li><p>生成策略包括：样式 A vs 风格 B / 有用性 vs 并非有用 / 事实性或安全性比较。</p></li><li><p>这些偏好对用于训练 reward 模型或直接做对比学习。</p></li></ul><h3>2.6 评估指标</h3><ul><li><p>对分类/QA：准确率（Accuracy）、F1、EM（Exact Match）</p></li><li><p>对摘要/生成：ROUGE、BLEU、METEOR（仅参考）</p></li><li><p>对事实性与溯源：Faithfulness、Attribution Accuracy、Hallucination Rate</p></li><li><p>对对齐：偏好一致率（preference accuracy）、reward 模型 ROC 与人工评估</p></li><li><p>线上指标：用户满意度、错误率、成本/延迟</p></li></ul><hr><h2>3. 实践示例（Practical Examples）</h2><p>下面给出从“生成训练数据”到“微调与对齐”的端到端教学示例。示例以 Python 为主，使用 OpenAI（或本地 LLM）生成合成数据，并用 Hugging Face Transformers 做小规模微调。<strong>注意</strong>：生产使用私钥/KMS 管理 API keys，课堂示例只做演示。</p><hr><h3>3.1 生成 Instruction-Tuning 数据（用 LLM 生成 JSONL）</h3><p>先准备 prompt template，让模型为特定任务生成 <code>(instruction, input, output)</code>。</p><pre><code># gen_instruct_data.py\nimport openai, json, time\nopenai.api_key = \"YOUR_OPENAI_KEY\"\n\ndef make_prompt(task_desc, example_count=5, style=\"concise, helpful\"):\n    return f\"\"\"\nYou are a data generator. Generate {example_count} examples for the following instruction task.\nTask: {task_desc}\nEach example must be a JSON object with fields: \"instruction\", \"input\" (may be \"\"), \"output\".\nStyle: {style}\nReturn only a JSON array of examples.\n\"\"\"\n\ndef gen_examples(task_desc, n=100):\n    examples=[]\n    batch_size=10\n    for i in range(n//batch_size):\n        prompt = make_prompt(task_desc, example_count=batch_size)\n        resp = openai.ChatCompletion.create(model=\"gpt-4o\", messages=[{\"role\":\"user\",\"content\":prompt}], temperature=0.8)\n        text = resp.choices[0].message.content\n        arr = json.loads(text)\n        examples.extend(arr)\n        time.sleep(0.5)  # rate limit / cost control\n    return examples\n\nif __name__ == \"__main__\":\n    task = \"Given a short product description, write a friendly one-sentence marketing tagline.\"\n    data = gen_examples(task, n=50)\n    with open(\"instruct_data.jsonl\", \"w\", encoding=\"utf-8\") as f:\n        for ex in data:\n            f.write(json.dumps(ex, ensure_ascii=False) + \"\\n\")\n</code></pre><p><strong>提示</strong>：用多种 prompt 模板（temperature、few-shot examples）来增加多样性。</p><hr><h3>3.2 生成 Pairwise Preference 数据（用于对齐）</h3><pre><code># gen_pref.py\ndef gen_pair_and_judge(question, model=\"gpt-4o\"):\n    # 生成 A、B 两个回答（用不同温度或 prompt）\n    a = openai.ChatCompletion.create(model=model, messages=[{\"role\":\"user\",\"content\":f\"Answer succinctly: {question}\"}], temperature=0.2)\n    b = openai.ChatCompletion.create(model=model, messages=[{\"role\":\"user\",\"content\":f\"Answer in detail: {question}\"}], temperature=0.8)\n    # 让另一个模型判断哪个更 helpful (可替换为人类)\n    judge_prompt = f\"Given question: {question}\\nAnswer A: {a.choices[0].message.content}\\nAnswer B: {b.choices[0].message.content}\\nWhich answer is better for helpfulness and correctness? Reply 'A' or 'B' and a short reason.\"\n    judge = openai.ChatCompletion.create(model=model, messages=[{\"role\":\"user\",\"content\":judge_prompt}], temperature=0)\n    verdict = judge.choices[0].message.content\n    return {\"question\":question, \"a\":a.choices[0].message.content, \"b\":b.choices[0].message.content, \"judge\":verdict}\n</code></pre><blockquote><p>说明：最终偏好数据需要人工校准或多轮判定以降低自动评分偏差。</p></blockquote><hr><h3>3.3 过滤与打分：自动化质量检测</h3><p>示例展示用 embeddings 去重与用一个 verifier 模型做事实性检测。</p><pre><code># filter_and_verify.py\nfrom sentence_transformers import SentenceTransformer, util\nfrom transformers import pipeline\nembed = SentenceTransformer(\"all-MiniLM-L6-v2\")\nnli = pipeline(\"text-classification\", model=\"roberta-large-mnli\")\n\ndef dedupe_examples(examples, threshold=0.9):\n    # examples: list of dicts with 'output'\n    embs = embed.encode([e['output'] for e in examples], convert_to_tensor=True)\n    keep=[]\n    for i,e in enumerate(examples):\n        sim = False\n        for j in keep:\n            s = util.cos_sim(embs[i], embs[j]).item()\n            if s&gt;threshold:\n                sim=True; break\n        if not sim: keep.append(i)\n    return [examples[i] for i in keep]\n\ndef nli_filter(example, context=\"\"):\n    # check if output is entailed by context (useful for RAG)\n    # for general tasks, can check consistency\n    out = example['output']\n    res = nli(f\"{context} &lt;/s&gt;&lt;/s&gt; {out}\", truncation=True)\n    label = res[0]['label']; score = res[0]['score']\n    return label==\"ENTAILMENT\" and score&gt;0.9\n</code></pre><hr><h3>3.4 小规模微调（Hugging Face Transformers 教学示例）</h3><p>把合成数据转成 <code>datasets</code> 格式并微调小模型（GPT-2/LLAMA 小模型替换为合法模型）。</p><pre><code># finetune.py (教学版)\nfrom datasets import load_dataset\nfrom transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments, Trainer\nimport json\n\n# 1. 读取 JSONL\nds = load_dataset('json', data_files='instruct_data.jsonl', split='train')\n\n# 2. 构造训练文本（例如 SFT）\ndef to_prompt(example):\n    return f\"### Instruction:\\n{example['instruction']}\\n### Input:\\n{example.get('input','')}\\n### Response:\\n{example['output']}\\n\"\n\nds = ds.map(lambda x: {\"text\": to_prompt(x)}, remove_columns=ds.column_names)\ntokenizer = AutoTokenizer.from_pretrained(\"gpt2\")\nmodel = AutoModelForCausalLM.from_pretrained(\"gpt2\")\n\ndef tokenize_fn(examples):\n    return tokenizer(examples['text'], truncation=True, max_length=512)\n\ntok = ds.map(tokenize_fn, batched=True)\ntok.set_format(type='torch', columns=['input_ids','attention_mask'])\n\ntraining_args = TrainingArguments(\n    output_dir=\"./ft_output\", per_device_train_batch_size=2, num_train_epochs=1, logging_steps=10\n)\n\ntrainer = Trainer(model=model, args=training_args, train_dataset=tok)\ntrainer.train()\ntrainer.save_model(\"./ft_output\")\n</code></pre><blockquote><p>警告：GPT-2 仅用于教学；真实场景选合适开源模型或云托管微调服务。</p></blockquote><hr><h3>3.5 用偏好数据做 Reward Model（简要说明）</h3><ul><li><p>用 pairwise 对训练一个小的 reward 模型（回归或分类），用以估计回答的好坏。</p></li><li><p>在 RLHF 流程中：用 reward 模型代替人工来给 RL 算法（PPO）打分并更新策略模型。<br>（课堂只讲原理或用现成库如 TRL/trlx 做演示）</p></li></ul><hr><h2>4. 最佳实践 / 常见陷阱（Best Practices / Common Pitfalls）</h2><h3>最佳实践</h3><ol><li><p><strong>从小规模开始</strong>：先生成并验证 1k–5k 样本，做人工抽样与自动检测，确认质量后再扩发。</p></li><li><p><strong>多 prompt / 多策略生成</strong>：用多种 prompt 模板、temperature、few-shot examples 以提升多样性。</p></li><li><p><strong>统一数据 schema</strong>：用 JSONL 格式并写 README 说明字段（instruction/input/output/metadata/provenance）。</p></li><li><p><strong>自动 + 人工混合质检</strong>：自动过滤后抽样人工检查（按置信分层抽样）。</p></li><li><p><strong>保存 provenance 与 MCP</strong>：每个合成样本都带生成者/模型信息与 prompt，便于追踪问题。</p></li><li><p><strong>去重与多样性控制</strong>：embedding 去重、控制实体/时间/长度分布。</p></li><li><p><strong>敏感与隐私检查</strong>：过滤或脱敏任何含 PII 的合成样本。</p></li><li><p><strong>成本估算与预算</strong>：估算生成与微调成本，并做预算告警。</p></li><li><p><strong>逐步上线与回归检测</strong>：在 CI 中加入评估基线（RAGAS/F1/ROUGE/Preference accuracy）避免质量退化。</p></li><li><p><strong>人工反馈闭环</strong>：把用户/审核员的反馈收回训练集做迭代改进。</p></li></ol><h3>常见陷阱</h3><ul><li><p><strong>大量合成但质量低</strong>：会导致微调后模型学到生成器的偏差或错误。</p></li><li><p><strong>过拟合合成模式</strong>：模型学会“合成风格”而不是真实任务分布。</p></li><li><p><strong>自动评估误导</strong>：ROUGE/ BLEU 对生成任务并非完美代理，需人工验证事实性/可用性。</p></li><li><p><strong>忽略分布漂移</strong>：合成数据与真实用户数据分布不一致，会导致线上性能下降。</p></li><li><p><strong>隐私泄露</strong>：生成包含敏感信息或把 private data 作为 prompt 导致泄露。</p></li><li><p><strong>成本与速率控制失当</strong>：大量调用 LLM 可能产生巨额账单或速率限制问题。</p></li></ul><hr><h2>5. 总结（Summary）</h2><ul><li><p><strong>SDG / Prompt-based data generation</strong> 是把大模型能力用于<strong>生成训练/偏好数据</strong>，能快速扩展数据量、覆盖业务长尾并支持微调与对齐。</p></li><li><p><strong>关键流程</strong>：设计 prompt → 自动生成 → 自动/人工过滤 → 构造训练集 → 微调/训练 reward model → 评估 &amp; 人机闭环 → 部署与监控。</p></li><li><p><strong>质量控制</strong> 是核心：去重、NLI／Verifier、人工抽样与 provenance（MCP）缺一不可。</p></li><li><p><strong>对齐</strong> 需高质量偏好数据与稳定的评估回路（且最好结合 RLHF 方式）。</p></li><li><p><strong>实践建议</strong>：从小做起、严格采样与验证、把合成数据的 provenance 写好并纳入 CI/ops，逐步把人工标签和合成样本结合形成高质量训练池。</p></li></ul><hr><h3>课堂练习（Homework / Lab）</h3><ol><li><p><strong>生成 500 条 Instruction-Response 样本</strong>：用至少两种 prompt 模板生成并去重，保存 <code>instruct_data.jsonl</code>。</p></li><li><p><strong>自动过滤与人工抽样</strong>：用 NLI 做初筛，随机抽取 50 条人工复审并记录通过率。</p></li><li><p><strong>微调小模型</strong>：用上面合成数据微调一个小模型（如 GPT-2），并对 50 条 held-out 人工标注样本做评估。</p></li><li><p><strong>生成偏好对并训练一个小 reward model（optional）</strong>：生成 200 对 A/B，人工或模型标注偏好，训练一个简单分类器评估。</p></li><li><p><strong>报告</strong>：提交一份 1–2 页报告包含数据生成策略、过滤方法、训练设置、评估结果与改进计划。</p></li></ol>",
+      "title_en": "SDG for Fine-Tuning",
+      "description_en": "Stuck on fine-tuning because you have no data? Let GPT-4o make it. Live, we use Self-Instruct plus Evol-Instruct to generate 500 high-quality training samples—the real work is filtering: dedup, diversity sampling, toxicity, format validation, each stage dropping noise. You leave with data and a reusable synthetic-data pipeline for the next project.",
+      "index": 144,
+      "_id": "69e7113db636532acae3b74b",
+      "cohort7DeliveryStatus": {
+        "outline": "assembly-pending",
+        "teachingMaterials": "assembly-and-verification-pending",
+        "recording": "selection-and-review-pending",
+        "productionSync": "not-synced"
+      }
+    },
+    {
+      "code": "L176",
+      "title": "Latency & Performance Optimization",
+      "description": "用户点发送等了 6 秒才看到第一个字，这体验在 2026 年已经没人接受了。TTFT（首 Token 延迟）才是 LLM 产品体验的命根子，不是整体生成时间。这节拆解从网络、模型到 prompt 的延迟来源，把 Anthropic Prompt Caching（命中缓存省 90% 成本 + 85% 延迟）、OpenAI 并行 Tool Calling、KV Cache 复用、Speculative Decoding 一个个讲清楚，最后给你一个性能诊断场景实战。",
+      "type": "Information",
+      "isLive": false,
+      "duration": 15,
+      "steps": [
+        {
+          "order": 1,
+          "type": "CONCEPT",
+          "title": "延迟拆解",
+          "description": "TTFT（首 Token）+ TPOT（每 Token）= 总延迟。影响因素：模型大小、Context 长度、KV Cache 命中率",
+          "duration": 5
+        },
+        {
+          "order": 2,
+          "type": "CONCEPT",
+          "title": "优化手段",
+          "description": "Prompt Caching（重复前缀免重算）、Speculative Decoding（小模型预测+大模型验证）、并行 Tool 调用、Streaming",
+          "duration": 5
+        },
+        {
+          "order": 3,
+          "type": "SCENARIO",
+          "title": "性能诊断",
+          "description": "一个 RAG Agent 响应需要 8 秒，拆解瓶颈在哪里（检索/LLM/Tool 调用）并给出优化方案",
+          "duration": 5
+        }
+      ],
+      "description_en": "Six seconds to see the first token is a deal-breaker in 2026. Time-to-First-Token, not total generation time, is what actually kills LLM UX. This session breaks down latency from network to model to prompt, then walks through Anthropic Prompt Caching (90% cost + 85% latency savings on hits), OpenAI parallel tool calls, KV cache reuse, and speculative decoding, ending in a hands-on performance diagnosis.",
+      "learningMaterial": "<h2>为什么要学这节</h2><p>用户体感好不好只看一个指标：<strong>Time to First Token (TTFT)</strong>。TTFT &gt; 3 秒，用户就觉得卡。GPT-4o 直连 TTFT 约 500ms，Claude Sonnet 4.5 约 800ms，Llama 3.3 70B 自托管到 1.5-3 秒。不会优化 TTFT、不会做 prompt caching 的 AI Engineer，做出来的产品在生产上一定会被用户骂慢。这节讲清楚 6 种主流优化手段，每个都有真实数据。</p><h2>核心概念：延迟四段论</h2><pre>用户按 Enter ──[1 网络]──► API Gateway ──[2 排队]──► LLM Worker\n                                                       │\n                                                    [3 Prefill]\n                                                       │\n                                                    [4 Decode] ──[生成 token]──► 流回用户\n</pre><table><thead><tr><th>阶段</th><th>主要延迟</th><th>优化手段</th></tr></thead><tbody><tr><td>网络</td><td>跨区请求 100-300ms</td><td>API region 对齐 / CDN</td></tr><tr><td>排队</td><td>高峰 500-2000ms</td><td>Batching / provisioned throughput</td></tr><tr><td>Prefill（读 prompt）</td><td>和 input token 数成正比</td><td><strong>Prompt Caching</strong></td></tr><tr><td>Decode（吐 token）</td><td>约 50-100 token/s</td><td>小模型 / 流式输出 / Speculative decoding</td></tr></tbody></table><p>关键结论：<strong>长 prompt 应用里 Prefill 通常占 TTFT 的 70%+，优化这里收益最大。</strong></p><h2>手段 1：流式响应（SSE）</h2><p>流式不减少总耗时，但让用户\"感觉快\"——1 秒内看到第一个 token 比等 10 秒看到全文好太多。</p><pre><code># FastAPI + Anthropic 流式\nfrom fastapi import FastAPI\nfrom fastapi.responses import StreamingResponse\nimport anthropic\n\napp = FastAPI()\nclient = anthropic.Anthropic()\n\n@app.post(\"/chat\")\nasync def chat(body: dict):\n    async def generate():\n        with client.messages.stream(\n            model=\"claude-sonnet-4-5\",\n            max_tokens=1024,\n            messages=[{\"role\": \"user\", \"content\": body[\"message\"]}]\n        ) as stream:\n            for text in stream.text_stream:\n                yield f\"data: {text}\\n\\n\"\n        yield \"data: [DONE]\\n\\n\"\n    return StreamingResponse(generate(), media_type=\"text/event-stream\")</code></pre><p>前端对应：</p><pre><code>const resp = await fetch(\"/chat\", { method: \"POST\", body: JSON.stringify({message: q}) });\nconst reader = resp.body.getReader();\nconst decoder = new TextDecoder();\nwhile (true) {\n  const { done, value } = await reader.read();\n  if (done) break;\n  appendToUI(decoder.decode(value));\n}</code></pre><h2>手段 2：Anthropic Prompt Caching（杀手锏）</h2><p>Claude 从 2024 年 8 月开始支持 prompt caching，<strong>长 system prompt 场景能省 90% cost + 85% latency</strong>。2025 年 OpenAI 也跟进（自动缓存，无需标记），但 Anthropic 的显式控制更灵活。</p><p>原理：把\"反复使用的前缀\"存进 GPU 显存附近的缓存，后续请求命中就跳过 prefill。</p><pre><code>resp = client.messages.create(\n    model=\"claude-sonnet-4-5\",\n    max_tokens=1024,\n    system=[\n        {\n            \"type\": \"text\",\n            \"text\": SYSTEM_INSTRUCTIONS  # 固定不变\n        },\n        {\n            \"type\": \"text\",\n            \"text\": KNOWLEDGE_BASE,  # 10k tokens 的文档\n            \"cache_control\": {\"type\": \"ephemeral\"}  # ← 标记缓存\n        }\n    ],\n    messages=[{\"role\": \"user\", \"content\": user_question}]\n)\n\n# 查看缓存命中情况\nprint(resp.usage.cache_creation_input_tokens)  # 第一次写入\nprint(resp.usage.cache_read_input_tokens)      # 后续命中</code></pre><p><strong>真实计费数据（Claude Sonnet 4.5, 2026-04）</strong>：</p><table><thead><tr><th>类型</th><th>价格 (per 1M tokens)</th></tr></thead><tbody><tr><td>普通 input</td><td>$3.00</td></tr><tr><td>Cache write（5 min TTL）</td><td>$3.75（1.25x）</td></tr><tr><td>Cache write（1 hour TTL）</td><td>$6.00（2x）</td></tr><tr><td><strong>Cache hit</strong></td><td><strong>$0.30（0.1x）</strong></td></tr></tbody></table><p>算一笔账：一个 RAG 应用，system + 20k token 知识库，每天 10 万请求：</p><ul><li>没有 caching：20k × 100k × $3/M = <strong>$6000/天</strong></li><li>有 caching（5 min TTL）：写入 ~$75（~20 次重写）+ 命中 $600 = <strong>$675/天</strong></li></ul><p>省了 89%。这就是为什么大厂都在迁移到 Anthropic。</p><h2>手段 3：Prefix Caching 原理</h2><p>Cache 的 key 是 prompt 前缀的 hash。只要前缀完全一样（哪怕一个空格不同就 miss），就命中。</p><p>这意味着 <strong>prompt 结构必须固定，动态内容放最后</strong>：</p><pre><code>❌ BAD: 用户问题在系统指令前\nmessages = [\n  {\"role\": \"user\", \"content\": f\"{user_question}\\n\\nContext: {knowledge}\"}\n]\n\n✅ GOOD: 固定 system 在前，动态 user 在后\nsystem = [{\"type\": \"text\", \"text\": knowledge, \"cache_control\": {\"type\": \"ephemeral\"}}]\nmessages = [{\"role\": \"user\", \"content\": user_question}]</code></pre><p>Cache TTL：Anthropic 默认 5 分钟（续期式），1 小时版要多付钱。如果你的流量稀疏，选 1 小时更划算。</p><h2>手段 4：Batching（异步场景）</h2><p>如果任务不需要立即返回（比如批量处理 100 万条评论做情感分析），用 <a href=\"https://docs.anthropic.com/en/docs/build-with-claude/batch-processing\">Anthropic Message Batches API</a>：</p><pre><code>import anthropic\nclient = anthropic.Anthropic()\n\nbatch = client.messages.batches.create(\n    requests=[\n        {\n            \"custom_id\": f\"review-{i}\",\n            \"params\": {\n                \"model\": \"claude-haiku-4-5\",\n                \"max_tokens\": 100,\n                \"messages\": [{\"role\": \"user\", \"content\": f\"Sentiment: {text}\"}]\n            }\n        } for i, text in enumerate(reviews)\n    ]\n)\n\n# 24 小时内完成，50% 折扣\nprint(batch.processing_status)</code></pre><p>OpenAI 也有一样的 API（同样 50% off）。场景：embedding 建索引、文档总结、数据清洗——只要不需要实时都该上 batch。</p><h2>手段 5：CDN + Edge Cache（公开 prompt）</h2><p>如果你的应用有\"大家问同一个问题\"的场景（比如文档 Q&amp;A 的 FAQ），在 CDN 层直接缓存完整响应。</p><pre><code># Cloudflare Worker 伪代码\naddEventListener(\"fetch\", event => {\n  const url = new URL(event.request.url);\n  const question = url.searchParams.get(\"q\");\n  const cacheKey = `llm:${hash(question)}`;\n  event.respondWith(handleCached(event.request, cacheKey));\n});\n\nasync function handleCached(req, key) {\n  const cached = await caches.default.match(key);\n  if (cached) return cached;  // 完全跳过 LLM\n  const resp = await fetch(\"https://api.anthropic.com/v1/messages\", { ... });\n  await caches.default.put(key, resp.clone());\n  return resp;\n}</code></pre><p>TTL 设 1 小时-1 天，视业务容忍度。</p><h2>手段 6：模型降级</h2><p>同一任务用更小模型能大幅降低 TTFT：</p><table><thead><tr><th>模型</th><th>TTFT</th><th>Tokens/s</th><th>单次 output 成本</th></tr></thead><tbody><tr><td>Claude Opus 4.5</td><td>~1.2s</td><td>~50</td><td>$15/1M</td></tr><tr><td>Claude Sonnet 4.5</td><td>~800ms</td><td>~70</td><td>$15/1M</td></tr><tr><td>Claude Haiku 4.5</td><td>~350ms</td><td>~130</td><td>$4/1M</td></tr><tr><td>GPT-4o</td><td>~500ms</td><td>~90</td><td>$10/1M</td></tr><tr><td>GPT-4o mini</td><td>~250ms</td><td>~120</td><td>$0.6/1M</td></tr></tbody></table><p>实操：分类、提取、简单改写用 Haiku / 4o-mini；复杂推理用 Sonnet / 4o；真正难的交给 Opus。用 router 模式自动路由能把平均成本打到原来的 1/5。</p><h2>常见场景分析</h2><h3>场景 1：RAG 聊天（长 system + 动态用户问题）</h3><p>Prompt Caching 是首选。System prompt + 检索结果放在前面标 cache_control，用户问题放最后。命中率 &gt; 70% 时 TTFT 能从 3s 降到 500ms。</p><h3>场景 2：文档批量分类（10 万篇）</h3><p>Message Batches API + Haiku。50% 折扣 + 小模型 = 原方案 1/20 成本。</p><h3>场景 3：AI 搜索（首屏必须快）</h3><p>流式 + Haiku + CDN 缓存热门 query。首屏 TTFT &lt; 300ms 是可能的。</p><h2>踩坑提醒</h2><table><thead><tr><th>坑</th><th>症状</th><th>解决</th></tr></thead><tbody><tr><td>Cache miss 不自知</td><td>账单和没 caching 一样</td><td>打印 <code>cache_read_input_tokens</code> 监控命中率</td></tr><tr><td>Prompt 末尾加时间戳破坏前缀</td><td>命中率 0%</td><td>动态内容永远在 messages 尾部</td></tr><tr><td>最小 cache 单位不够</td><td>&lt; 1024 tokens 不生效</td><td>短 prompt 不适合 caching</td></tr><tr><td>Batch API 等不及 24h</td><td>业务需要 1 小时内完成</td><td>只能走实时 API，但可用 Haiku 省钱</td></tr><tr><td>流式没处理断连</td><td>网络闪断整个请求失败</td><td>前端加重连逻辑 + <code>Last-Event-ID</code></td></tr></tbody></table><h2>速查资源</h2><ul><li><a href=\"https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching\">Anthropic Prompt Caching 文档</a></li><li><a href=\"https://platform.openai.com/docs/guides/prompt-caching\">OpenAI Automatic Prompt Caching</a></li><li><a href=\"https://docs.anthropic.com/en/docs/build-with-claude/batch-processing\">Anthropic Message Batches API</a></li><li><a href=\"https://platform.openai.com/docs/guides/batch\">OpenAI Batch API</a></li><li><a href=\"https://artificialanalysis.ai/\">artificialanalysis.ai</a> — 各家模型 TTFT / throughput 对比</li><li><a href=\"https://github.com/vllm-project/vllm\">vLLM</a> — 自托管时的高吞吐方案</li></ul><h2>自测</h2><ul><li>TTFT 的四个阶段里，长 prompt RAG 应用哪一段占比最高？怎么优化？</li><li>Anthropic Prompt Caching 命中价是普通价的几分之一？写入价呢？</li><li>为什么动态内容必须放 messages 尾部？Cache key 是怎么算的？</li><li>什么情况下该用 Batch API？能省多少？</li><li>一个分类任务用 Sonnet 和 Haiku 成本差多少？什么时候该降级？</li></ul>",
+      "_id": "69e71142b636532acae3b7e9"
+    }
+  ]
+}
