@@ -209,9 +209,11 @@ const cohort7LessonOrder = [
 ];
 
 // Video inheritance is keyed by stable lesson code, never by mutable title.
-// These are the 15 usable S3 recordings found in the pre-Cohort-7 syllabus.
-// Removed/merged lesson videos are attached to the closest retained lesson so
-// students can still watch them without restoring obsolete syllabus entries.
+// These are the usable S3 recordings inherited from Cohorts 1-5. Removed or
+// merged lesson videos are attached to the closest retained Cohort 7 lesson so
+// students can still watch the recordings without restoring obsolete entries.
+// Only the transcoded master is retained when an old lesson points at both a
+// playable recording and a duplicate transcoding-queue record.
 const cohort7InheritedVideos = {
   L22: ["67b58a11a344e7de0e5c2b39"],
   L23: ["67b58a11a344e7de0e5c2b40"],
@@ -220,14 +222,43 @@ const cohort7InheritedVideos = {
   L29: ["678077891a34b016b187998f"],
   L34: ["685a8ce76aa070c1cd358cb0"], // merged GPT Store recording
   L68: ["67b58a12a344e7de0e5c2bb8"],
-  L75: ["67b58a12a344e7de0e5c2bb1"], // merged Introduction to LangChain
+  L75: [
+    "67b58a12a344e7de0e5c2bb1", // Introduction to LangChain
+    "6a37c0c8252726820c5daca3", // RAG QA Application with LangChain
+  ],
   L16: ["6783a87eb7cbe38fcc4c0b73"], // merged LLMs Overview
   L95: ["688b4941e4dde04ef9a70320"],
   L102: ["69c7caccd3a18e68bc2b289d"], // Build MCP Server
+  L103: ["6884ce8e5a6a2578189ef0ab"], // MCP source walkthrough
   L104: ["69ccff66d3a18e68bc810e2b"], // MCP engineering integration
   L105: ["69d6478ffeadc80f02f8b61b"],
   L106: ["69da3bc176e3e0c1b3a31a7c"],
+  L98: ["6a3c8cfe3febbe587d7d4cea"], // Function Calling + Tool Use
+  L109: ["6a40a390942e9d8f32c91f41"], // Computer Use + Agent Ops
+  L112: ["6a44771c2f662a5f6da0a09a"], // Agents foundations
+  L119: ["6a48f2d49d050b759be5ccea"], // Build the first Agent
+  L120: ["6a4e31ada77d455038c92152"], // Production-grade Agentic RAG
+  L122: ["6a522ff414304f16523b3113"], // Multi-Agent architectures
+  L124: ["6a577c37a82b85aa904e4995"], // Multi-Agent RAG with LangGraph
+  L133: ["6a5b7436105173f15c1036e4"], // Agent Memory + Mem0
+  L138: ["6a649952850325ba16c508d7"], // Harness engineering
+  L140: ["6a60aef2bbc08a65e106d03b"], // Build an AI Coding Agent Harness
+  L146: [
+    "6a2e5bb60e22c9645a314089", // Claude Code Skills best practices
+    "6a69dd18ddc7d8769d7b5cbe", // reusable Agent Skills
+  ],
+  C7T05: [
+    "6a2553994c97e3de4c6c7e3b", // RAG Evaluation
+    "6a294e9703015f5c157c0c6f", // AI-assisted RAG optimization
+  ],
+  L90: ["6a3284b808cb2e6d653ee4a6"], // RAGAS Framework
+  L93: ["6a2009c274c52108ffe06839"], // GraphRAG + hybrid retrieval
+  L154: ["6a7869f4e1fc05ab85810667"], // SDG for Fine-Tuning
+  L160: ["6a7c566f3f0d014d6ffa47ac"], // open-weight model loading
   L161: ["6a81abf927fe430dd9fd3dee"],
+  L165: ["6a858efc27fe430dd9ef8a76"], // PEFT + QLoRA + Unsloth
+  L168: ["6a8ad3ae36b871cf8ac53908"], // AI Evaluation Engineering
+  L183: ["6a7317aecf9597585bcce06d"], // playable Model Routing master
 };
 
 const library = (name, type, role, url) => ({ name, type, role, url });

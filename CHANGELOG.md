@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-08
+
+- 修复第七期往期录播继承范围，将第五期后半段 23 个已转码的 RAG、MCP、Agent、Memory、Harness、Model Routing、Fine-Tuning 与 Evaluation 视频映射到当前课程，并排除一个不可播放的重复转码队列记录（`ai-engineer-bootcamp`）
+
 ## 2026-08-31
 
 - 更新课程中心 9 门已匹配销售课程的缩略图，为 AI Engineer 主课与美国班共 10 张课程卡接入同课程视觉资产，并将图片目录纳入 production 部署产物校验（`posters.html`、`assets/course-thumbnails`、`.github/workflows/deploy.yml`）
