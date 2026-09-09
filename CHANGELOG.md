@@ -2,6 +2,8 @@
 
 ## 2026-09-09
 
+- 修复 Curriculum 部署边界：停止公开发布 Marketing Dashboard、课程设计与人群等内部 Markdown，部署时清理服务器遗留文件，并增加公开产物门禁（`.github/workflows/deploy.yml`）
+
 - 新增 AI Engineer 第五期结课总结课件的正式构建与云端发布路径，并更新 `talk-deck` Skill 及 React Deck 模板的圆角视觉规则（`lessons/ai-engineer-cohort-05-final`、`.claude/skills/talk-deck`、`lessons/_template`）
 
 ## 2026-09-08
