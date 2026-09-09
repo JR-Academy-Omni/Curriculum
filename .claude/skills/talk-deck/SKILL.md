@@ -1,7 +1,6 @@
 ---
 name: talk-deck
-description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jiangren.com.au/curriculum/lessons/{slug}/）。沿用 lessons/ai-new-jobs-talk 范式：1600×900 固定画布 SlideEngine + 一文件一页 slide 组件 + theme.ts 设计令牌 + data/*.ts 真实数据（绝不编造）+ JR Neo-Brutalism 设计语言。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic — NOT for static lesson HTML (use lesson-design) or xiaohongshu posters (use xhs-poster)."
-argument-hint: "[slug] [讲座标题] [可选：时长/页数预算]"
+description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jiangren.com.au/curriculum/lessons/{slug}/）。沿用 1600×900 SlideEngine、一文件一页、真实数据与 JR Register B 圆角课程视觉。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic — NOT for static lesson HTML (use lesson-design) or xiaohongshu posters (use xhs-poster)."
 ---
 
 # /talk-deck — 网页版讲座 PPT 生成器
@@ -27,10 +26,11 @@ argument-hint: "[slug] [讲座标题] [可选：时长/页数预算]"
 
 1. **先写 PRD，再写代码**。`PRD.md` 必须含「整体节奏表（时间/章节/页数）」+「逐页 slide-by-slide spec」，让 Lightman sign-off 后才开 src。（项目级 PRD-first 规则）
 2. **数据零编造**。所有薪资/增长率/雇主/案例必须来自 `research/*.md` 或可引用源。缺字段就 **omit / 显示「数据不足」**，绝不用别国数据或估算补位。野生数据点必标 `sourceUrl`。
-3. **设计语言锁死 JR Neo-Brutalism**（黑 3px 边框 + 偏移硬阴影 + 品牌四色），不混入 Anthropic 暖色系或别的体系。一个 deck 一套体系。
-4. **一文件一页**。每页一个 `src/components/slides/Xnn_Name.tsx`，禁止把多页塞进一个文件。
-5. **设计画布固定 1600×900**，所有尺寸写绝对 px（由 SlideEngine 整体 scale 适配视口），不要写响应式断点。
-6. **引擎文件只拷贝、不重写**。`SlideEngine.tsx` / `ui.tsx` / `CameraBubble.tsx` / `theme.ts` / `main.tsx` 是测过的运行时代码（含摄像头权限、流释放、键盘/触摸/滚轮、缩放等浏览器坑），**逐字从 `_template` 拷过去**，绝不"照描述重新实现"。要改引擎 → 改 `_template` 再同步。每次新写的只有内容层：`App.tsx` / `slides/*` / `data/*` / `PRD.md` / `research/*`。
+3. **设计语言锁死 JR Register B 课程视觉**：暖色网格纸、品牌四色、少量结构边框与无模糊偏移阴影。不要退回满屏方盒子的旧 Neo-Brutalism，也不混入 Anthropic 暖色系或通用 SaaS 卡片风。一个 deck 一套体系。
+4. **禁止直角 UI 容器**。主面板、信息卡、流程节点、标签、按钮、引用框统一使用圆角；默认主面板 `22–24px`、卡片 `16–20px`、标签 `7–10px`、胶囊 `999px`。坐标轴、连接线、表格分隔线、代码字符边界等技术表达可以是直线，但承载内容的闭合容器不能是直角矩形。
+5. **一文件一页**。每页一个 `src/components/slides/Xnn_Name.tsx`，禁止把多页塞进一个文件。
+6. **设计画布固定 1600×900**，所有尺寸写绝对 px（由 SlideEngine 整体 scale 适配视口），不要写响应式断点。
+7. **引擎文件只拷贝、不重写**。`SlideEngine.tsx` / `ui.tsx` / `CameraBubble.tsx` / `theme.ts` / `main.tsx` 是测过的运行时代码（含摄像头权限、流释放、键盘/触摸/滚轮、缩放等浏览器坑），**逐字从 `_template` 拷过去**，绝不"照描述重新实现"。要改引擎 → 改 `_template` 再同步。每次新写的只有内容层：`App.tsx` / `slides/*` / `data/*` / `PRD.md` / `research/*`。
 
 ---
 
@@ -124,9 +124,12 @@ export const fonts = {
 export const border   = `3px solid ${colors.black}`;
 export const shadow   = `6px 6px 0px ${colors.black}`;
 export const shadowSm = `4px 4px 0px ${colors.black}`;
+export const radii = { panel: 24, card: 18, label: 8, pill: 999 } as const;
 ```
 
-设计要点：黑 3px 边框 + 偏移硬阴影（无模糊）、品牌饱和色块、`warmBg` 暖底（不要纯白）、巨字标题、英文职位/公司名保留 + 正文地道中文。重点用 `Highlight` 色块或 `Tag` 标，不用渐变、不用柔和 SaaS 风。
+设计要点：浅色页优先使用暖色网格纸背景、黄色 marker underline、圆角白色主面板与品牌色偏移阴影。黑色结构线控制在 `2–3px`，一屏只强调少量主教学对象；不要让每个小元素都变成粗黑框。品牌饱和色用于信息分组，`warmBg` 暖底不要改成纯白。重点用 `Highlight` 或圆角 `Tag`，不用渐变、不用柔和 SaaS 风。
+
+视觉验收时搜索所有闭合内容容器的 `border`：只要它承担卡片、节点、按钮、标签或面板职责，就必须同时有合适的 `borderRadius`。不得只修改共享 `Card`，却在 slide 内继续手写无圆角的 `div` 卡片。
 
 ---
 

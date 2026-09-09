@@ -1,0 +1,2 @@
+import { RoleFocusSlide, colors } from '../deck';
+export default function S13_MLEngineer(){return <RoleFocusSlide index="05" title="ML Engineer / Research Engineer" problem="训练、优化或服务模型本身，是相邻路径，但不是本课程的主要交付方向。" capabilities={['Training Data','Model Training','Inference','Experimentation','GPU Serving','ML Fundamentals']} interview={['训练目标与数据如何设计？','怎样证明模型性能真的提高？','推理成本与基础设施如何取舍？']} accent={colors.purple}/>}

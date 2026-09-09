@@ -32,7 +32,7 @@ export default function S01_Cover() {
 								initial={{ opacity: 0, scale: 0.9 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ duration: 0.4, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-								style={{ display: 'inline-block', background: colors.red, color: colors.white, padding: '0 24px' }}
+								style={{ display: 'inline-block', background: colors.red, color: colors.white, padding: '0 24px', borderRadius: 8 }}
 							>关键词</motion.span>
 						</motion.span>
 					</Title>
@@ -44,7 +44,7 @@ export default function S01_Cover() {
 						style={{
 							display: 'inline-flex', gap: 16, alignItems: 'center',
 							padding: '20px 32px', marginTop: 32,
-							background: colors.white, border, boxShadow: shadow,
+							background: colors.white, border, borderRadius: 18, boxShadow: shadow,
 						}}>
 						<span style={{ fontFamily: fonts.mono, fontSize: 14, color: '#666', letterSpacing: 2 }}>JR ACADEMY</span>
 						<span style={{ fontSize: 18, fontWeight: 700 }}>副标题 / 日期</span>

@@ -1,0 +1,5 @@
+import { DeckFrame, AnimatedGroup, colors, fonts } from '../deck';
+const checks=[['Product','哪些高风险动作必须人工确认？'],['Context','关键约束是否被污染或挤出？'],['RAG','旧政策来自 corpus 还是 retrieval？'],['Agent','为什么选择了写入工具？'],['Memory','谁允许写入，能否删除？'],['Harness','budget、retry、timeout 是否存在？'],['Evaluation','trace 显示哪一层失败？'],['Governance','谁负责阻止发布和 rollback？'],['Model','证据指向模型后才换模型。']];
+export default function S19_Diagnosis(){return <DeckFrame tag="INCIDENT DIAGNOSIS" title="先沿证据逐层定位，最后才讨论换模型" accent={colors.green}>
+	<div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:15,height:'100%',alignContent:'center'}}>{checks.map((x,i)=><AnimatedGroup key={x[0]} delay={.05+i*.045}><div style={{height:143,border:'3px solid #000',background:i===8?colors.green:'#fff',padding:17,boxShadow:'4px 4px 0 #000'}}><div style={{fontFamily:fonts.mono,fontWeight:800,fontSize:16,color:i===8?'#000':'#6b1f86'}}>{String(i+1).padStart(2,'0')} · {x[0]}</div><div style={{fontSize:21,fontWeight:750,lineHeight:1.28,marginTop:12}}>{x[1]}</div></div></AnimatedGroup>)}</div>
+</DeckFrame>}

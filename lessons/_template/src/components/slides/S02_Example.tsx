@@ -28,7 +28,7 @@ export default function S02_Example() {
 							transition={{ duration: 0.4, delay: 0.2 + i * 0.12 }}
 							style={{
 								padding: '18px 22px', marginBottom: 14,
-								background: colors.warmBg, border, boxShadow: shadowSm,
+								background: colors.warmBg, border, borderRadius: 18, boxShadow: shadowSm,
 								fontSize: 20, fontWeight: 700,
 							}}>
 							{t}

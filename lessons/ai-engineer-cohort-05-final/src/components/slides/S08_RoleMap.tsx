@@ -1,0 +1,5 @@
+import { DeckFrame, Panel, AnimatedGroup, colors, fonts } from '../deck';
+const roles=[['Applied AI','产品交付',colors.blue],['Agent Engineer','执行系统',colors.red],['FDE / Solutions','客户落地',colors.orange],['Platform / Eval','共享能力',colors.green],['ML Engineer','模型本身',colors.purple]] as const;
+export default function S08_RoleMap(){return <DeckFrame tag="23–42 MIN · ROLE MAP" title="岗位不是一条梯子，而是五种工作重心" subtitle="先看企业让你解决什么问题，再看 title。" accent={colors.orange}>
+	<div style={{display:'grid',gridTemplateColumns:'repeat(5,1fr)',gap:18,height:'100%',alignItems:'center'}}>{roles.map((r,i)=><AnimatedGroup key={r[0]} delay={.12+i*.08}><Panel bg={i===0?colors.dark:colors.white} style={{height:280,color:i===0?'#fff':'#000',borderTop:`14px solid ${r[2]}`,display:'flex',flexDirection:'column',justifyContent:'space-between'}}><div style={{fontFamily:fonts.mono,fontSize:16,fontWeight:800}}>0{i+1}</div><div style={{fontSize:28,fontWeight:900,lineHeight:1.12}}>{r[0]}</div><div style={{fontSize:21,fontWeight:700,color:i===0?'#ddd':'#5b5750'}}>{r[1]}</div></Panel></AnimatedGroup>)}</div>
+</DeckFrame>}
