@@ -1,0 +1,5 @@
+import { DeckFrame, AnimatedGroup, Label, colors, fonts } from '../deck';
+const levels=[['01','Demo Builder','功能能跑，主要验证 happy path',colors.yellow,210],['02','System Builder','连接 Product、API、Context、RAG、Tools 与 Agent',colors.blue,310],['03','Production AI Engineer','用 eval、trace、permission、governance 与 release gate 管理系统',colors.green,410]] as const;
+export default function S17_Maturity(){return <DeckFrame tag="ENGINEERING MATURITY" title="能力升级不是多学工具，而是扩大责任范围" accent={colors.green}>
+	<div style={{display:'flex',alignItems:'flex-end',justifyContent:'center',gap:34,height:'100%',paddingBottom:10}}>{levels.map((l,i)=><AnimatedGroup key={l[0]} delay={.12+i*.14}><div style={{width:390,height:l[4],background:l[3],border:`2px solid ${colors.dark}`,borderRadius:22,boxShadow:`10px 10px 0 ${i===2?colors.yellow:'rgba(16,22,47,.22)'}`,padding:26,display:'flex',flexDirection:'column',justifyContent:'space-between'}}><Label>{l[0]}</Label><div><div style={{fontFamily:fonts.heading,fontSize:34,fontWeight:900,marginBottom:14}}>{l[1]}</div><div style={{fontSize:22,lineHeight:1.4,fontWeight:650}}>{l[2]}</div></div></div></AnimatedGroup>)}</div>
+</DeckFrame>}

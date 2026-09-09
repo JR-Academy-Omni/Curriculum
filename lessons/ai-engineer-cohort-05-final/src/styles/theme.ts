@@ -38,10 +38,3 @@ export const fonts = {
 export const border = `3px solid ${colors.black}`;
 export const shadow = `6px 6px 0px ${colors.black}`;
 export const shadowSm = `4px 4px 0px ${colors.black}`;
-
-export const radii = {
-	panel: 24,
-	card: 18,
-	label: 8,
-	pill: 999,
-} as const;

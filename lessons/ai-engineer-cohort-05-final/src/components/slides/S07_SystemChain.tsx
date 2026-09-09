@@ -1,0 +1,5 @@
+import { DeckFrame, AnimatedGroup, colors, fonts } from '../deck';
+const chain=[['01','业务问题'],['02','Product Workflow'],['03','AI Capability'],['04','System Control'],['05','Evaluation Evidence'],['06','Release Decision']];
+export default function S07_SystemChain(){return <DeckFrame tag="ENGINEERING CHAIN" title="课程内容不是知识点清单，而是一条系统链" accent={colors.green}>
+	<div style={{display:'flex',alignItems:'center',height:'100%',position:'relative'}}>{chain.map((x,i)=><AnimatedGroup key={x[0]} delay={.1+i*.09} style={{display:'flex',alignItems:'center',flex:1}}><div style={{height:226,flex:1,background:[colors.yellow,colors.blue,colors.purple,colors.orange,colors.green,colors.red][i],border:`2px solid ${colors.dark}`,borderRadius:18,boxShadow:'7px 7px 0 rgba(16,22,47,.22)',padding:20,display:'flex',flexDirection:'column',justifyContent:'space-between'}}><span style={{fontFamily:fonts.mono,fontWeight:800}}>{x[0]}</span><span style={{fontSize:24,fontWeight:900,lineHeight:1.15}}>{x[1]}</span></div>{i<chain.length-1&&<div style={{fontSize:30,fontWeight:900,padding:'0 8px',color:colors.dark}}>→</div>}</AnimatedGroup>)}</div>
+</DeckFrame>}
