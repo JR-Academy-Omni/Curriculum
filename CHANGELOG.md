@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-10
+
+- 新增 AI Engineer 第七期 48 页招生公开课与 MiniClaw Live Coding：覆盖课程安排、全球学员、校友证据、Product Thinking、OpenClaw / MiniClaw 架构、TUI、Harness、Memory、Skills、Provider Router、Trace 与人工审批，并接入 curriculum 生产部署工作流（`lessons/ai-engineer-cohort-07-miniclaw`）。
+
 ## 2026-09-09
 
 - 修复 Curriculum 部署边界：停止公开发布 Marketing Dashboard、课程设计与人群等内部 Markdown，部署时清理服务器遗留文件，并增加公开产物门禁（`.github/workflows/deploy.yml`）
