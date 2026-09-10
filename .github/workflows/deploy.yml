@@ -84,6 +84,13 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/ai-engineer-cohort-07-miniclaw (90-min public class · 48 slides + MiniClaw live coding)
+      - name: Build lessons/ai-engineer-cohort-07-miniclaw
+        working-directory: lessons/ai-engineer-cohort-07-miniclaw
+        run: |
+          bun install
+          bun run build
+
       # Build lessons/ai-solo-founder-w1 (AI 一人创业营 · W1 · 45 张创业 / SoT / Founder OS 讲课 deck)
       - name: Build lessons/ai-solo-founder-w1
         working-directory: lessons/ai-solo-founder-w1
@@ -478,6 +485,17 @@ jobs:
           if [ -d lessons/ai-engineer-cohort-05-final/dist ]; then
             mkdir -p _site/lessons/ai-engineer-cohort-05-final
             cp -r lessons/ai-engineer-cohort-05-final/dist/* _site/lessons/ai-engineer-cohort-05-final/
+          fi
+
+          # AI Engineer Cohort 07 · public class and MiniClaw live coding
+          if [ -d lessons/ai-engineer-cohort-07-miniclaw/dist ]; then
+            mkdir -p _site/lessons/ai-engineer-cohort-07-miniclaw/demo/miniclaw
+            cp -r lessons/ai-engineer-cohort-07-miniclaw/dist/* _site/lessons/ai-engineer-cohort-07-miniclaw/
+            cp lessons/ai-engineer-cohort-07-miniclaw/README.md _site/lessons/ai-engineer-cohort-07-miniclaw/
+            cp lessons/ai-engineer-cohort-07-miniclaw/RUNSHEET.md _site/lessons/ai-engineer-cohort-07-miniclaw/
+            cp lessons/ai-engineer-cohort-07-miniclaw/LIVE_CODING.md _site/lessons/ai-engineer-cohort-07-miniclaw/
+            cp lessons/ai-engineer-cohort-07-miniclaw/SOURCE_NOTES.md _site/lessons/ai-engineer-cohort-07-miniclaw/
+            cp lessons/ai-engineer-cohort-07-miniclaw/demo/miniclaw/README.md _site/lessons/ai-engineer-cohort-07-miniclaw/demo/miniclaw/
           fi
 
           # AI 一人创业营 W1 · 搭起你的 CEO AI OS

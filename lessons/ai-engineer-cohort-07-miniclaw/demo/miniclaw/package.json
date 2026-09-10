@@ -1,0 +1,16 @@
+{
+  "name": "@jr-academy/miniclaw",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": { "miniclaw": "dist/cli.js" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "bun test",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "start": "bun src/cli.ts",
+    "link:global": "bun link"
+  },
+  "dependencies": { "commander": "^14.0.1" },
+  "devDependencies": { "@types/node": "^24.3.0", "typescript": "~5.9.3" }
+}
