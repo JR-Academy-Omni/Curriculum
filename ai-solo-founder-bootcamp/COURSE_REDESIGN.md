@@ -13,6 +13,7 @@
 
 ## 结构铁律
 - **每周日 3h = 一节线下现场课**(线下 office + 同步直播),周内环节放这节课的 steps,**不拆成多个 lesson**。
+- **周中独立授课**：SEO & GEO 保留 3h，具体时段待定；不占周日 W10。
 - **周中自学 / Lab 各自独立成课**(Lab 独立是平台铁律)。
 - 每节固定节奏:开场 15min review AI OS 跑了啥 → 中段 30min「1-2 人上台讲进展 + networking」→ 下课给 OS 派下周的活。
 
@@ -40,9 +41,10 @@
 # Phase 2 · Go To Market(W8–W11)
 > 把刷脸首单变成一台不靠刷脸、会自己复利的获客机器。
 
-- **W8 · AI 内容工厂|Content Factory** — 小红书爆款+私信转化 / 视频号+公众号+私域 / AI 视频·海报·漫剧 / X build in public。**产出**:一条能持续出货的内容流水线 + 首波真实流量。
-- **W9 · 主动敲开客户的门|Outbound** — LinkedIn 个性化 outreach + ProductHunt 冷启动 + 中英文圈 6 大线下渠道。**产出**:发出的 outreach + 收回的真实线索。
-- **W10 · 让人和 AI 都搜到你|SEO & GEO** — Google long-tail SEO + AEO/GEO + E-E-A-T / Schema.org。**产出**:上线 SEO 页 + 第一次被搜到/被 AI 引用。
+- **W8 · 中文媒体的 AI 自动化** — 小红书、公众号、视频号的选题、文案、图文与短视频工作流，人工审核与发布交接。**产出**：中文内容包 + 自动化工作流 + 一周排期。
+- **W9 · 英文媒体的自动化** — LinkedIn、X 与英文媒体的选题、内容与素材工作流，媒体 / Podcast 外联辅助、审核与发布交接。**产出**：英文内容包 + 自动化工作流 + 一周排期。
+- **W10 · AI 内容工厂|实现 AI 自动化发布** — 承接 W8–W9 中英文内容资产，搭建选题 → 生成 → 人工审核 → 排程 → 发布 → 状态回读，配置去重与失败转人工。**产出**：可重复运行的发布流程 + 一周排期 + 授权发布记录。
+- **周中独立课 · 让人和 AI 都搜到你|SEO & GEO** — 原 W10 内容迁入，保留 3 小时；具体日期、时间与授课方式待定。Google long-tail SEO + AEO/GEO + E-E-A-T / Schema.org；配套 SEO 自学随课安排。
 - **W11 · 用户增长|Growth Hacking** — AARRR 漏斗诊断 + 推荐机制与病毒循环 + 一个 launch 跑通 10 渠道。**产出**:上线的增长循环 + 实验数据。
 
 # Phase 3 · Australia Operations(W12–W13)
@@ -70,7 +72,7 @@
 | Phase | 周 | 主题 | 出关物 |
 |---|---|---|---|
 | 1 · AI Enable Business | W1–W7 | AI OS / agent 上岗 / 商业验证 / 产品 / 品牌 / PM / 首单 | 被付过一次钱的 AI 化产品 + 品牌官网 |
-| 2 · Go To Market | W8–W11 | 内容工厂 / Outbound / SEO·GEO / 用户增长 | 会复利的获客机器 |
+| 2 · Go To Market | W8–W11 | 中文媒体 AI 自动化 / 英文媒体自动化 / AI 自动化发布 / 用户增长；另设周中 SEO & GEO | 会复利的获客机器 |
 | 3 · Australia Operations | W12–W13 | 自动运转 + 数据分析 / 合规 + RDTI | 合法·财务自动·能退税 |
 | 4 · Founder Club | W14–W15+ | Pitch/BP/融资 + Demo Day + 持续社群 | 毕业入会,进入创业者网络 |
 

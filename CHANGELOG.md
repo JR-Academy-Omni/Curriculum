@@ -2,6 +2,8 @@
 
 ## 2026-09-10
 
+- 调整 OPC 营销三节课为 W8 中文媒体 AI 自动化、W9 英文媒体自动化、W10 AI 内容工厂自动发布；原 SEO & GEO 改为 3 小时周中独立课（时间待定），并同步课程大纲、教学计划与静态课程页（`ai-solo-founder-bootcamp`）。
+
 - 新增 AI Engineer 第七期 48 页招生公开课与 MiniClaw Live Coding：覆盖课程安排、全球学员、校友证据、Product Thinking、OpenClaw / MiniClaw 架构、TUI、Harness、Memory、Skills、Provider Router、Trace 与人工审批，并接入 curriculum 生产部署工作流（`lessons/ai-engineer-cohort-07-miniclaw`）。
 
 ## 2026-09-09
