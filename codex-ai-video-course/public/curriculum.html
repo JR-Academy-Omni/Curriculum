@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07130f">
+  <title>Codex AI视频创作实战：从创意到成片｜匠人学院</title>
+  <meta name="description" content="6小时掌握AI生成、Remotion自动剪辑与成片精修。用自然语言指挥Codex，完成一条可发布的AI视频。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #07130f;
+      --paper: #f4f1e8;
+      --cream: #fffdf6;
+      --acid: #c9ff48;
+      --mint: #77f2c0;
+      --coral: #ff765c;
+      --line: rgba(7, 19, 15, .18);
+      --muted: #5b655f;
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .mono { font-family: "Space Mono", monospace; }
+
+    .topbar {
+      background: var(--ink);
+      color: var(--cream);
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-align: center;
+      padding: 9px 16px;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(244, 241, 232, .88);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 900; letter-spacing: -.03em; }
+    .brand-mark {
+      width: 34px; height: 34px; border-radius: 10px; background: var(--ink); color: var(--acid);
+      display: grid; place-items: center; font-family: "Space Mono", monospace; font-size: 13px;
+      transform: rotate(-3deg);
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 600; }
+    .nav-links a:not(.nav-cta):hover { opacity: .58; }
+    .nav-cta, .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--acid); color: var(--ink); border: 2px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink); font-weight: 800; border-radius: 12px;
+      padding: 11px 18px; transition: transform .18s, box-shadow .18s;
+    }
+    .nav-cta:hover, .btn-primary:hover { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+
+    .hero { position: relative; padding: 88px 0 70px; border-bottom: 1px solid var(--line); overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; width: 680px; height: 680px; border-radius: 50%;
+      right: -310px; top: -300px; background: var(--acid); opacity: .5; filter: blur(2px);
+    }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; gap: 72px; align-items: center; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--ink);
+      border-radius: 999px; padding: 7px 13px; font-size: 12px; font-weight: 700; margin-bottom: 24px;
+      background: rgba(255,255,255,.52);
+    }
+    .pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 4px rgba(255,118,92,.18); }
+    h1 { font-size: clamp(50px, 6.2vw, 86px); letter-spacing: -.065em; line-height: .98; font-weight: 900; max-width: 800px; }
+    h1 .accent { display: block; color: transparent; -webkit-text-stroke: 2px var(--ink); }
+    .hero-copy { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 640px; margin: 28px 0 30px; }
+    .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .btn-primary { padding: 15px 24px; }
+    .btn-secondary { font-weight: 700; padding: 14px 18px; border-bottom: 2px solid var(--ink); }
+    .hero-note { margin-top: 25px; display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+    .hero-note span::before { content: "✓"; font-weight: 900; color: #15825c; margin-right: 6px; }
+
+    .video-stage {
+      min-height: 520px; background: var(--ink); border: 2px solid var(--ink); border-radius: 28px;
+      box-shadow: 14px 14px 0 var(--acid); padding: 22px; color: white; transform: rotate(1.2deg);
+      display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;
+    }
+    .video-stage::after {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 25%, rgba(119,242,192,.28), transparent 32%), linear-gradient(130deg, transparent 42%, rgba(201,255,72,.1));
+    }
+    .window-bar { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #aeb9b3; }
+    .dots { display: flex; gap: 6px; }
+    .dots i { display: block; width: 8px; height: 8px; border-radius: 50%; background: #607068; }
+    .screen { position: relative; z-index: 1; padding: 26px 10px; }
+    .screen-label { color: var(--mint); font-size: 11px; letter-spacing: .18em; margin-bottom: 16px; }
+    .prompt { font-size: clamp(24px, 3vw, 38px); font-weight: 700; line-height: 1.25; letter-spacing: -.035em; }
+    .cursor { display: inline-block; width: 3px; height: .95em; background: var(--acid); vertical-align: -.08em; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .timeline { position: relative; z-index: 1; }
+    .timeline-row { display: grid; grid-template-columns: 44px 1fr; gap: 10px; margin-top: 7px; align-items: center; }
+    .timeline-row small { color: #8fa097; font-size: 9px; }
+    .track { height: 30px; display: flex; gap: 4px; }
+    .clip { border-radius: 5px; background: #26362f; border: 1px solid #40534a; }
+    .clip.c1 { width: 22%; background: var(--mint); }
+    .clip.c2 { width: 34%; background: #6c71df; }
+    .clip.c3 { width: 17%; background: var(--coral); }
+    .clip.c4 { flex: 1; background: var(--acid); }
+    .track.audio { height: 20px; background: repeating-linear-gradient(90deg, #2b6f58 0 2px, transparent 2px 7px); opacity: .85; }
+
+    .stat-strip { background: var(--cream); border-bottom: 1px solid var(--line); }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat { padding: 26px 24px; border-right: 1px solid var(--line); }
+    .stat:first-child { border-left: 1px solid var(--line); }
+    .stat b { display: block; font-size: 28px; letter-spacing: -.04em; }
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    section { padding: 100px 0; }
+    .section-kicker { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 14px; color: #38765e; }
+    h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -.055em; font-weight: 900; }
+    .section-lead { color: var(--muted); font-size: 18px; max-width: 650px; margin-top: 20px; }
+    .center { text-align: center; }
+    .center .section-lead { margin-left: auto; margin-right: auto; }
+
+    .shift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+    .shift-card { padding: 32px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.46); }
+    .shift-card.old { opacity: .76; }
+    .shift-card.new { background: var(--ink); color: white; transform: translateY(18px); }
+    .shift-card .num { font-size: 11px; margin-bottom: 44px; color: var(--muted); }
+    .shift-card.new .num { color: var(--mint); }
+    .shift-card h3 { font-size: 26px; line-height: 1.2; margin-bottom: 16px; letter-spacing: -.03em; }
+    .shift-card p { color: var(--muted); }
+    .shift-card.new p { color: #b7c4bd; }
+
+    .workflow-section { background: var(--ink); color: var(--cream); }
+    .workflow-section .section-kicker { color: var(--acid); }
+    .workflow-section .section-lead { color: #aab8b0; }
+    .workflow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 54px; }
+    .flow-step { min-height: 230px; border: 1px solid #35433c; border-radius: 18px; padding: 22px; position: relative; transition: background .2s, transform .2s; }
+    .flow-step:hover { background: #10271e; transform: translateY(-6px); }
+    .flow-step::after { content: "→"; position: absolute; top: 48%; right: -13px; color: var(--acid); z-index: 2; }
+    .flow-step:last-child::after { display: none; }
+    .flow-step .icon { font-size: 27px; margin-bottom: 52px; }
+    .flow-step small { color: var(--mint); }
+    .flow-step h3 { font-size: 18px; margin: 6px 0 8px; }
+    .flow-step p { font-size: 13px; color: #9eaca4; }
+
+    .ratio-wrap { display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; align-items: center; }
+    .ratio-graphic { aspect-ratio: 1; border-radius: 50%; background: conic-gradient(var(--acid) 0 80%, var(--coral) 80% 100%); position: relative; box-shadow: inset 0 0 0 2px var(--ink); }
+    .ratio-graphic::after { content: ""; position: absolute; inset: 24%; background: var(--paper); border: 2px solid var(--ink); border-radius: 50%; }
+    .ratio-label { position: absolute; z-index: 1; font-size: 13px; font-weight: 900; }
+    .ratio-label.ai { top: 22%; left: 10%; transform: rotate(-35deg); }
+    .ratio-label.human { bottom: 14%; right: 5%; transform: rotate(30deg); }
+    .division-list { margin-top: 35px; display: grid; gap: 10px; }
+    .division-item { display: grid; grid-template-columns: 42px 1fr; gap: 14px; align-items: start; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .division-item b { font-size: 13px; }
+    .division-item p { color: var(--muted); font-size: 14px; }
+    .check { width: 30px; height: 30px; border: 1px solid var(--ink); border-radius: 8px; display: grid; place-items: center; background: var(--acid); font-weight: 900; }
+
+    .syllabus { background: #e7eadf; }
+    .class-list { margin-top: 54px; display: grid; gap: 18px; }
+    .class-card { background: var(--cream); border: 2px solid var(--ink); border-radius: 20px; overflow: hidden; box-shadow: 6px 6px 0 var(--ink); }
+    .class-head { display: grid; grid-template-columns: 120px 1fr auto; gap: 24px; align-items: center; padding: 25px 28px; cursor: pointer; list-style: none; }
+    .class-head::-webkit-details-marker { display: none; }
+    .class-index { font-size: 12px; color: var(--muted); }
+    .class-head h3 { font-size: clamp(21px, 3vw, 30px); letter-spacing: -.035em; }
+    .class-time { padding: 7px 12px; background: var(--acid); border-radius: 999px; font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .toggle { font-size: 24px; font-weight: 300; transition: transform .2s; }
+    details[open] .toggle { transform: rotate(45deg); }
+    .class-body { border-top: 1px solid var(--line); padding: 30px 28px 32px 172px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .lesson-list { list-style: none; display: grid; gap: 12px; }
+    .lesson-list li { display: grid; grid-template-columns: 24px 1fr; gap: 9px; font-size: 14px; }
+    .lesson-list li::before { content: "↳"; color: #308565; font-weight: 900; }
+    .deliverable { background: var(--ink); color: white; border-radius: 16px; padding: 22px; align-self: start; }
+    .deliverable small { color: var(--mint); letter-spacing: .1em; }
+    .deliverable h4 { margin: 12px 0 6px; font-size: 20px; }
+    .deliverable p { font-size: 13px; color: #afbbb5; }
+
+    .outcome-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 50px; }
+    .outcome { min-height: 260px; padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.48); }
+    .outcome:nth-child(2) { background: var(--mint); }
+    .outcome:nth-child(5) { background: var(--acid); }
+    .outcome .n { font-family: "Space Mono", monospace; font-size: 11px; margin-bottom: 54px; }
+    .outcome h3 { font-size: 21px; line-height: 1.2; margin-bottom: 10px; }
+    .outcome p { color: #47524c; font-size: 14px; }
+
+    .audience-section { background: var(--coral); border-block: 2px solid var(--ink); }
+    .audience-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); border: 2px solid var(--ink); background: var(--ink); gap: 2px; }
+    .audience-item { background: var(--paper); padding: 26px; display: flex; gap: 16px; align-items: flex-start; }
+    .audience-item span { width: 34px; height: 34px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--acid); font-weight: 900; }
+    .audience-item h3 { font-size: 18px; margin-bottom: 5px; }
+    .audience-item p { color: var(--muted); font-size: 13px; }
+
+    .faq { max-width: 850px; margin: 48px auto 0; }
+    .faq details { border-top: 1px solid var(--line); }
+    .faq details:last-child { border-bottom: 1px solid var(--line); }
+    .faq summary { padding: 22px 0; font-weight: 800; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+    .faq summary::after { content: "+"; font-size: 22px; }
+    .faq details[open] summary::after { content: "−"; }
+    .faq p { color: var(--muted); padding: 0 40px 22px 0; }
+
+    .closing { padding-top: 40px; }
+    .closing-card { background: var(--ink); color: white; border-radius: 32px; padding: clamp(38px, 7vw, 78px); position: relative; overflow: hidden; }
+    .closing-card::after { content: "AI VIDEO"; position: absolute; right: -20px; bottom: -46px; font-size: clamp(70px, 13vw, 180px); font-weight: 900; letter-spacing: -.08em; color: rgba(255,255,255,.035); white-space: nowrap; }
+    .closing-card h2 { max-width: 760px; position: relative; z-index: 1; }
+    .closing-card p { max-width: 600px; color: #afbbb5; font-size: 18px; margin: 22px 0 30px; position: relative; z-index: 1; }
+    .closing-card .btn-primary { position: relative; z-index: 1; }
+    footer { padding: 38px 0 48px; display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .ratio-wrap { grid-template-columns: 1fr; }
+      .hero { padding-top: 60px; }
+      .video-stage { min-height: 430px; max-width: 620px; transform: none; }
+      .workflow { grid-template-columns: 1fr 1fr; }
+      .flow-step::after { display: none; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .outcome-grid { grid-template-columns: 1fr 1fr; }
+      .class-body { padding-left: 28px; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .topbar { font-size: 10px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-inner { min-height: 64px; }
+      .nav-cta { padding: 9px 12px; font-size: 12px; }
+      .hero { padding: 48px 0 52px; }
+      h1 { font-size: 48px; }
+      h1 .accent { -webkit-text-stroke-width: 1.4px; }
+      .video-stage { min-height: 360px; padding: 17px; box-shadow: 8px 8px 0 var(--acid); }
+      .prompt { font-size: 25px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat { padding: 18px 14px; }
+      .stat b { font-size: 22px; }
+      section { padding: 72px 0; }
+      .shift-grid, .outcome-grid, .audience-grid, .class-body { grid-template-columns: 1fr; }
+      .shift-card.new { transform: none; }
+      .workflow { grid-template-columns: 1fr; }
+      .flow-step { min-height: auto; }
+      .flow-step .icon { margin-bottom: 25px; }
+      .ratio-graphic { max-width: 330px; margin: 0 auto; }
+      .class-head { grid-template-columns: 1fr auto; gap: 8px 14px; padding: 20px; }
+      .class-index { grid-column: 1 / -1; }
+      .class-time { grid-column: 1; grid-row: 3; justify-self: start; }
+      .toggle { grid-column: 2; grid-row: 2 / 4; }
+      .class-body { padding: 24px 20px; }
+      .audience-grid { gap: 2px; }
+      footer { flex-direction: column; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar mono">3 次直播课 · 6 小时实战 · 完成 1 条可发布 AI 视频</div>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="匠人学院首页"><span class="brand-mark">JR</span><span>匠人学院</span></a>
+      <div class="nav-links">
+        <a href="#workflow">工作流</a>
+        <a href="#syllabus">课程大纲</a>
+        <a href="#outcomes">学习收获</a>
+        <a class="nav-cta" href="#syllabus">查看课程 ↓</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill mono"><span class="pill-dot"></span>AI VIDEO · PROJECT-BASED COURSE</div>
+          <h1>Codex AI视频<span class="accent">创作实战</span></h1>
+          <p class="hero-copy">从创意到成片。用自然语言指挥 Codex，让 AI 生成素材、让 Remotion 自动剪辑，再用少量人工精修完成可发布作品。</p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#syllabus">查看完整大纲 <span>↘</span></a>
+            <a class="btn-secondary" href="#workflow">先看怎么学</a>
+          </div>
+          <div class="hero-note"><span>零基础可学</span><span>以作品为结果</span><span>附可复用模板</span></div>
+        </div>
+        <div class="video-stage" aria-label="Codex AI视频工作台视觉演示">
+          <div class="window-bar mono"><span>CODEX / VIDEO STUDIO</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="screen">
+            <div class="screen-label mono">YOUR PROMPT</div>
+            <div class="prompt">“为我的产品制作一条<br>30 秒科技感宣传片。”<span class="cursor"></span></div>
+          </div>
+          <div class="timeline">
+            <div class="timeline-row"><small class="mono">VIDEO</small><div class="track"><i class="clip c1"></i><i class="clip c2"></i><i class="clip c3"></i><i class="clip c4"></i></div></div>
+            <div class="timeline-row"><small class="mono">AUDIO</small><div class="track audio"></div></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="stat-strip">
+      <div class="container stats">
+        <div class="stat"><b>6h</b><span>高密度项目实战</span></div>
+        <div class="stat"><b>3次</b><span>分阶段直播学习</span></div>
+        <div class="stat"><b>80%</b><span>Codex + AI + Remotion</span></div>
+        <div class="stat"><b>1条</b><span>可正式发布的成片</span></div>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="section-kicker mono">THE NEW WAY TO EDIT</div>
+        <h2>你不需要成为剪辑师，<br>先学会成为 AI 的导演。</h2>
+        <p class="section-lead">传统剪辑从软件按钮开始；AI视频创作从意图、判断和反馈开始。把重复劳动交给系统，把注意力留给作品。</p>
+        <div class="shift-grid reveal">
+          <article class="shift-card old">
+            <div class="num mono">01 / TRADITIONAL</div>
+            <h3>自己拖时间轴、做字幕、调关键帧</h3>
+            <p>花大量时间记界面和快捷键。每换一个比例、文案或素材，就重新调整一遍。</p>
+          </article>
+          <article class="shift-card new">
+            <div class="num mono">02 / AI-NATIVE</div>
+            <h3>描述结果，让 Codex 构建并迭代</h3>
+            <p>用语言表达节奏、情绪和修改意见，由 Remotion 把创意变成可复用、可批量的代码视频。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow-section" id="workflow">
+      <div class="container">
+        <div class="section-kicker mono">ONE END-TO-END WORKFLOW</div>
+        <h2>一句需求，跑通完整<br>AI 视频生产线。</h2>
+        <p class="section-lead">不是工具拼盘。三次课始终围绕同一个项目推进，每一步都为最终成片服务。</p>
+        <div class="workflow reveal">
+          <article class="flow-step"><div class="icon">✦</div><small class="mono">STEP 01</small><h3>Codex 策划</h3><p>定位受众、提炼卖点、写脚本与结构化分镜。</p></article>
+          <article class="flow-step"><div class="icon">◉</div><small class="mono">STEP 02</small><h3>AI 生成</h3><p>生成关键帧、动态镜头、配音与视觉素材。</p></article>
+          <article class="flow-step"><div class="icon">⌁</div><small class="mono">STEP 03</small><h3>Remotion 剪辑</h3><p>镜头编排、字幕、转场、运镜、音乐与卡点。</p></article>
+          <article class="flow-step"><div class="icon">↻</div><small class="mono">STEP 04</small><h3>自然语言修改</h3><p>把“再快一点”等反馈变成精确的视频参数。</p></article>
+          <article class="flow-step"><div class="icon">↗</div><small class="mono">STEP 05</small><h3>精修交付</h3><p>处理最后细节，导出横屏、竖屏和发布版本。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container ratio-wrap">
+        <div class="ratio-graphic reveal">
+          <span class="ratio-label ai mono">80% AI WORKFLOW</span>
+          <span class="ratio-label human mono">20% FINE-TUNE</span>
+        </div>
+        <div>
+          <div class="section-kicker mono">THE 80 / 20 METHOD</div>
+          <h2>AI 完成主体，<br>人工守住质量。</h2>
+          <p class="section-lead">我们不承诺“一键完美”，而是教你用最少的人力，把 AI 初稿推进到真正可发布的作品。</p>
+          <div class="division-list">
+            <div class="division-item"><span class="check">✓</span><div><b>80% Codex + AI + Remotion</b><p>策划、素材生成、镜头编排、字幕动画、音画同步、比例适配与批量渲染。</p></div></div>
+            <div class="division-item"><span class="check" style="background:var(--coral)">✓</span><div><b>20% 传统剪辑精修</b><p>处理多余帧、局部变速、音频降噪、遮罩、字幕断句与最后的观感检查。</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="syllabus" id="syllabus">
+      <div class="container">
+        <div class="center">
+          <div class="section-kicker mono">3 CLASSES · 6 HOURS</div>
+          <h2>三次课，从零走到成片。</h2>
+          <p class="section-lead">每次课都有明确产出。不是听完“知道了”，而是下课时项目真的向前一步。</p>
+        </div>
+        <div class="class-list">
+          <details class="class-card reveal" open>
+            <summary class="class-head"><span class="class-index mono">CLASS 01</span><h3>AI 策划与素材生成</h3><span class="class-time">120 MIN</span><span class="toggle">＋</span></summary>
+            <div class="class-body">
+              <ul class="lesson-list">
+                <li>看懂 Codex、视频模型与 Remotion 的协作关系</li>
+                <li>从真实需求生成定位、钩子、文案和结构化分镜</li>
+                <li>文生图、图生视频与首尾帧的核心方法</li>
+                <li>控制产品、人物和视觉风格的一致性</li>
+                <li>让 Codex 批量整理素材并检查缺失镜头</li>
+              </ul>
+              <aside class="deliverable"><small class="mono">本节产出</small><h4>脚本 + 分镜 + 6–10 个镜头</h4><p>建立完整项目目录，获得可以进入剪辑阶段的第一批素材。</p></aside>
+            </div>
+          </details>
+          <details class="class-card reveal" open>
+            <summary class="class-head"><span class="class-index mono">CLASS 02</span><h3>Codex + Remotion 自动剪辑</h3><span class="class-time">120 MIN</span><span class="toggle">＋</span></summary>
+            <div class="class-body">
+              <ul class="lesson-list">
+                <li>使用 video-shotcraft 镜头配方与动态效果库</li>
+                <li>让 Codex 创建项目、导入素材并设置画面规格</li>
+                <li>自动完成镜头排序、字幕、转场与品牌包装</li>
+                <li>加入配音、音乐、音效并完成节奏卡点</li>
+                <li>用自然语言调整时长、运镜、节奏和视觉风格</li>
+              </ul>
+              <aside class="deliverable"><small class="mono">本节产出</small><h4>可播放的第一版完整视频</h4><p>获得 Remotion 源工程，并形成针对第一版成片的修改清单。</p></aside>
+            </div>
+          </details>
+          <details class="class-card reveal" open>
+            <summary class="class-head"><span class="class-index mono">CLASS 03</span><h3>成片精修与多平台交付</h3><span class="class-time">120 MIN</span><span class="toggle">＋</span></summary>
+            <div class="class-body">
+              <ul class="lesson-list">
+                <li>先用 Codex 修正镜头、动画、字幕与音画同步</li>
+                <li>用剪映或 Premiere 完成必要的局部精修</li>
+                <li>掌握成片的信息、节奏、视觉和声音验收标准</li>
+                <li>生成 16:9、9:16、1:1 与无字幕多版本</li>
+                <li>沉淀 Remotion 模板、提示词和个人工作流</li>
+              </ul>
+              <aside class="deliverable"><small class="mono">结课产出</small><h4>1 条正式成片 + 可复用模板</h4><p>同时获得横竖屏交付版本、源工程与以后继续出片的工作流。</p></aside>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="outcomes">
+      <div class="container">
+        <div class="section-kicker mono">WHAT YOU TAKE AWAY</div>
+        <h2>带走的不只是一条视频，<br>而是一套生产能力。</h2>
+        <div class="outcome-grid reveal">
+          <article class="outcome"><div class="n">01</div><h3>完整 AI 视频作品</h3><p>一条30–60秒、具有完整音画包装、能够公开发布的成片。</p></article>
+          <article class="outcome"><div class="n">02</div><h3>Codex任务指令模板</h3><p>覆盖策划、分镜、生成、剪辑、修改和质量检查的提示词。</p></article>
+          <article class="outcome"><div class="n">03</div><h3>Remotion基础工程</h3><p>可替换品牌、文案和素材的程序化视频项目，不用每次重做。</p></article>
+          <article class="outcome"><div class="n">04</div><h3>Shotcraft镜头方法</h3><p>学会根据叙事目的选择镜头，而不是随意堆叠热门特效。</p></article>
+          <article class="outcome"><div class="n">05</div><h3>多平台交付能力</h3><p>快速生成横屏、竖屏、方形、字幕版与干净版。</p></article>
+          <article class="outcome"><div class="n">06</div><h3>人工精修判断力</h3><p>知道哪些应该继续交给AI，哪些值得用传统剪辑快速修正。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="audience-section">
+      <div class="container">
+        <div class="section-kicker mono" style="color:var(--ink)">WHO IT IS FOR</div>
+        <h2>这门课，适合想真正<br>把 AI 用进工作的人。</h2>
+        <div class="audience-grid reveal">
+          <article class="audience-item"><span>1</span><div><h3>内容创作者</h3><p>想提升视频产能，不想把大量时间耗在重复剪辑上。</p></div></article>
+          <article class="audience-item"><span>2</span><div><h3>市场与品牌团队</h3><p>需要更快制作产品宣传片、活动视频和社交媒体素材。</p></div></article>
+          <article class="audience-item"><span>3</span><div><h3>产品经理与创业者</h3><p>想亲自完成产品演示和发布视频，减少外包沟通成本。</p></div></article>
+          <article class="audience-item"><span>4</span><div><h3>AI工具实践者</h3><p>已经会使用AI对话，但希望产出更复杂、更完整的作品。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="center"><div class="section-kicker mono">FAQ</div><h2>你可能还想知道</h2></div>
+        <div class="faq">
+          <details><summary>完全不会剪辑或写代码，可以参加吗？</summary><p>可以。课程重点是如何描述需求、判断作品并指导 Codex 修改。我们会解释必要的时间轴和 Remotion 概念，但不会要求你先掌握编程。</p></details>
+          <details><summary>课程是不是全部由 AI 自动完成？</summary><p>主体流程由 Codex、AI工具和 Remotion 完成，约占80%。最后约20%用于人工审片和必要的传统剪辑精修，确保结果达到发布标准。</p></details>
+          <details><summary>为什么还要学习 Remotion？</summary><p>Remotion让视频中的镜头、字幕和动画变成可精确控制的组件。相比每次手工拖动时间轴，它更适合让 Codex 修改、复用和批量生成。</p></details>
+          <details><summary>上完课可以独立做什么类型的视频？</summary><p>主案例为30–60秒产品或品牌宣传片。掌握流程后，可迁移到功能演示、活动预告、社交媒体短片等场景。</p></details>
+          <details><summary>需要准备哪些工具？</summary><p>建议准备可运行 Codex 和 Remotion 的电脑、可用的AI图片/视频生成服务，以及剪映或 Premiere 中的任意一种作为精修工具。具体清单会在开课前提供。</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container">
+        <div class="closing-card">
+          <div class="section-kicker mono" style="color:var(--acid)">FROM IDEA TO FINAL CUT</div>
+          <h2>下一条视频，<br>让你和 AI 一起完成。</h2>
+          <p>6小时建立完整工作流。从一个想法开始，以一条真正能发布的视频结束。</p>
+          <a class="btn-primary" href="#syllabus">查看三次课安排 <span>↑</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container"><span>© 匠人学院 · JIANGREN ACADEMY</span><span class="mono">CODEX AI VIDEO CREATION</span></footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
