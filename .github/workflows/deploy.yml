@@ -691,6 +691,12 @@ jobs:
             fi
           done
 
+          # AI Marketing & Agile Business（纯静态课程页 + 详细教学大纲）
+          if [ -d ai-marketing-agile-business/public ]; then
+            mkdir -p _site/ai-marketing-agile-business
+            cp -r ai-marketing-agile-business/public/* _site/ai-marketing-agile-business/
+          fi
+
           # Top-level posters aggregate page (internal marketing asset index)
           [ -f posters.html ] && cp posters.html _site/posters.html || true
           [ -f quest-posters.html ] && cp quest-posters.html _site/quest-posters.html || true
@@ -823,6 +829,22 @@ jobs:
                     <span class="tag" style="background:#e65100">早鸟 $59</span>
                     <div class="title">澳洲 IT 薪资谈判与晋升营</div>
                     <div class="desc">14 节 · 13 视频 · 1 Lab — 把 offer 谈到市场上限，再规划升职与跳槽的收益最大化路径</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">AI Marketing &amp; Agile Business · 4 周 · 每周 2 次课</div>
+                <div class="cards">
+                  <a href="./ai-marketing-agile-business/curriculum.html">
+                    <span class="tag" style="background:#19C37D;color:#10162f">NEW COURSE</span>
+                    <div class="title">AI Marketing &amp; Agile Business</div>
+                    <div class="desc">8 次课 · 20 小时 · 4 个 AI Lab — 客户证据、SEO/GEO、敏捷 Campaign 与数据复盘</div>
+                  </a>
+                  <a href="./ai-marketing-agile-business/detailed-outline.html">
+                    <span class="tag" style="background:#10162f">DETAILED OUTLINE</span>
+                    <div class="title">完整教学大纲</div>
+                    <div class="desc">每次课的学习目标、操作步骤、Lab 输入、交付物和验收标准</div>
                   </a>
                 </div>
               </div>
