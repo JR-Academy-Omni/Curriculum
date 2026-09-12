@@ -1,31 +1,37 @@
-# AI Marketing & Agile Business
+# 小企业 AI 内容营销实战
+
+**English title**: AI Content Marketing for Small Business
 
 > 数据源：`outline.json`。本文件用于快速评审，课程发布与同步以 JSON 为准。
 
-用 AI 与敏捷方法，把客户洞察、内容与搜索、Campaign 执行和数据复盘组成可持续迭代的增长系统。
+前三小时用 AI 完成业务与客户 Brief、Brand Kit、视觉模板、海报和基础周边，再制作 Social Media 内容与短视频，最后建立 AI 项目与公司任务管理系统。
 
-**规格**：初级进阶 · 4 周 · 每周 2 次课 · 每次 2.5 小时 · 共 8 次课 / 20 小时 · 4 个课堂 Lab · 4 个 Sprint 交付
+**形式**：13 个独立的 60 分钟成果单元，可按 3 / 5 / 6 / 8 / 13 小时组合，适合两天交付。
 
-**适合**：有基础 AI 使用经验的 Marketing 初级从业者、已有产品/服务的创业者，以及亲自负责 Marketing 的中小企业主。
+**适合**：亲自负责获客和内容的小企业主、创业者、个人品牌经营者，以及需要独立完成 Social Media 与 Design 的 Marketing 从业者。
 
-**毕业成果**：Customer Evidence Pack、Search & Content Engine、Agile Campaign Board、Growth Review System，以及整合后的 AI Marketing Growth Playbook。
+**课程铁律**：每个模块必须完成一个能打开、能检查、能发布、能打印、能交付或能继续复用的成品。只有聊天记录、概念报告或未经核验的 AI 输出不算完成。
 
-## Sprint 1 — Customer Evidence & Positioning
+## Stage 1 — Business, Audience & Brand
 
-- S01 增长问题定义＋客户证据 Lab（150 分钟）
-- S02 价值主张 Workshop＋Customer Evidence Pack（150 分钟）
+- M01 读懂业务、客户与现有品牌：完成 Business & Audience Brief、Audience Signal Sheet 和 Brand Audit
+- M02 建立 AI Brand Kit 与视觉模板：完成 Design Source of Truth、Brand Kit 和社媒模板
+- M03 做出海报、印刷品与基础周边：完成 Key Visual、数字海报和一项实体延展
 
-## Sprint 2 — AI Content, SEO & GEO
+## Stage 2 — Social Media Production System
 
-- S03 内容策略＋SEO/GEO Research Lab（150 分钟）
-- S04 多渠道内容 Workshop＋Search & Content Engine（150 分钟）
+- M04 做出 30 天 Social Media 内容系统：完成内容支柱、30 天日历、12 条文案和发布状态表
+- M05 一次制作，多平台原生发布：完成平台文案包、Carousel、单图、Story 和统一封面
 
-## Sprint 3 — Agile Campaign Delivery
+## Stage 3 — Short Video
 
-- S05 Marketing Agile＋Campaign Backlog Lab（150 分钟）
-- S06 Campaign Planning Workshop＋Agile Campaign Board（150 分钟）
+- M06 用 AI 做出可发布的短视频：完成 3 套脚本与分镜、3 条竖版成片、字幕和封面
 
-## Sprint 4 — Measurement, Optimisation & Scale
+## Stage 4 — AI Project & Business Management
 
-- S07 营销指标体系＋AI Growth Analyst Lab（150 分钟）
-- S08 Growth Review＋AI Marketing Growth Playbook（150 分钟）
+- M07 用 AI 建立项目与公司任务系统：完成 Project Brief、优先级 Backlog、Company Task Board、负责人和完成标准
+- M08 用 AI 推动执行、会议跟进与复盘：完成 Action Tracker、项目周报、Review、下一轮任务和可复用管理 Workflow
+
+## 暂停内容
+
+- 完整 Campaign Kit 暂不进入主课，包括 Campaign Brief、Campaign Master、邮件、落地页和完整渠道资产包；未来如有需求可单独开设专题。

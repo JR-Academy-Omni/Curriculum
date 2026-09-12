@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Detailed Practical Outline | AI Content Marketing for Small Business</title>
+  <meta name="description" content="Inputs, practical steps, deliverables and acceptance criteria for thirteen hours and eight outcome modules.">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="language.css">
+  <style>
+    .top{padding:32px 0 58px;background:#10162f;color:#fff;border-bottom:4px solid #000}.top h1{font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:-.045em;margin:14px 0}.top p{font-size:19px;color:#dfe4ee;max-width:880px}.top .button{color:#10162f}.nav{position:sticky;top:0;z-index:5;background:#ffde59;border-bottom:3px solid #10162f;padding:10px 0}.nav .wrap{display:flex;gap:8px;overflow:auto}.nav a{white-space:nowrap;color:#10162f;text-decoration:none;font-weight:850;background:#fff;border:2px solid #10162f;padding:6px 10px}.prep{padding:55px 0;border-bottom:3px solid #10162f}.stage{padding:62px 0;border-bottom:3px solid #10162f}.stage-title{display:grid;grid-template-columns:135px 1fr;gap:28px;margin-bottom:30px}.stage-no{background:var(--stage);border:3px solid #10162f;box-shadow:7px 7px 0 #10162f;padding:18px;text-align:center;font-weight:900}.stage-no b{display:block;font-size:50px;line-height:1}.stage-title h2{margin:0 0 10px}.modules{display:grid;gap:22px}.module{background:#fff;border:3px solid #10162f;box-shadow:7px 7px 0 #10162f}.module-head{display:grid;grid-template-columns:90px 1fr auto;gap:15px;align-items:center;padding:18px 20px;border-bottom:3px solid #10162f}.code{font:900 24px ui-monospace,monospace;color:#19c37d}.module h3{font-size:22px;line-height:1.2;margin:0}.badge{border:2px solid #10162f;background:#ffde59;padding:5px 8px;font-size:12px;font-weight:900}.body{padding:22px}.cols{display:grid;grid-template-columns:1fr 1fr;gap:26px}.body h4{font-size:14px;text-transform:uppercase;letter-spacing:.04em;margin:0 0 8px}.body ul,.body ol{margin:0;padding-left:21px}.body li{margin:7px 0}.run{margin-top:20px;padding-top:18px;border-top:2px solid #d9dde5}.run li{margin:10px 0}.deliver{margin-top:18px;padding:16px;border-left:6px solid #6c63ff;background:#f4f2ff}.error{margin:40px auto;padding:20px;max-width:900px;background:#fee;border:3px solid #900}@media(max-width:760px){.stage-title,.module-head,.cols{grid-template-columns:1fr}.badge{width:max-content}.nav{position:static}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap"><nav class="language-switch" aria-label="Language"><a href="detailed-outline.html" lang="zh-CN">中文</a><a href="detailed-outline-en.html" aria-current="page">English</a></nav><div class="eyebrow">Inputs → Build → Check → Deliver</div><h1>Detailed practical outline</h1><p>Thirteen one-hour units and eight outcome modules. Finish the brand, social and video assets first, then use AI to manage projects and company execution.</p><a class="button" href="curriculum-en.html">← Back to course overview</a></div></header>
+  <nav class="nav"><div class="wrap" id="stage-nav"><a href="#prep">Preparation</a></div></nav>
+  <section class="prep" id="prep"><div class="wrap"><div class="kicker">Bring your real business</div><h2>Before the course</h2><div class="grid"><article class="card"><h3>A real business</h3><p>Choose a product, service, event, store or personal brand. All content and design work will support it.</p></article><article class="card"><h3>Real inputs</h3><p>Bring pricing, FAQs, proof, existing content, logos, images and customer feedback that is public or de-identified.</p></article><article class="card"><h3>One real goal</h3><p>Choose a current problem such as a launch, event registrations, local demand, inconsistent publishing or fragmented brand design.</p></article></div></div></section>
+  <main id="course"><div class="wrap"><p>Loading the detailed outline…</p></div></main>
+  <section class="section assessment"><div class="wrap"><div class="kicker">Definition of Done</div><h2>Every module is assessed through the finished work</h2><table class="assessment-table"><thead><tr><th>Check</th><th>Pass condition</th></tr></thead><tbody><tr><td>The file exists</td><td>It opens, can be inspected and can be edited or handed off. A chat transcript is not a deliverable.</td></tr><tr><td>The business is real</td><td>Offers, prices, proof and customer language come from real inputs; unknowns remain clearly marked.</td></tr><tr><td>The specification is correct</td><td>Dimensions, mobile-safe areas, print settings, links, QR codes and file names have been checked.</td></tr><tr><td>The brand is consistent</td><td>Logo, colour, typography, image language, offer and CTA match the Source of Truth.</td></tr><tr><td>The state is truthful</td><td>Created, reviewed, scheduled, publicly published and measured are reported as different states.</td></tr></tbody></table></div></section>
+  <footer class="footer"><div class="wrap">JR Academy · AI Content Marketing for Small Business · Detailed Outline</div></footer>
+  <script>
+    const esc = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+    const list = items => `<ul>${(items || []).map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
+    fetch('outline.en.json')
+      .then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
+      .then(data => {
+        document.querySelector('#stage-nav').innerHTML += data.phases.map((stage, index) => `<a href="#stage-${index + 1}">Stage ${index + 1}</a>`).join('');
+        document.querySelector('#course').innerHTML = data.phases.map((stage, stageIndex) => `
+          <section class="stage" id="stage-${stageIndex + 1}" style="--stage:${esc(stage.color)}"><div class="wrap">
+            <div class="stage-title"><div class="stage-no">STAGE<b>${String(stageIndex + 1).padStart(2,'0')}</b></div><div><h2>${esc(stage.name.split('—').slice(1).join('—').trim())}</h2><p class="lead">${esc(stage.summary)}</p></div></div>
+            <div class="modules">${stage.lessons.map(module => `
+              <article class="module"><div class="module-head"><div class="code">${esc(module.code)}</div><h3>${esc(module.title)}</h3><span class="badge">${esc(module.type)} · ${esc(module.duration)} min</span></div>
+              <div class="body"><p>${esc(module.description)}</p><div class="cols"><div><h4>You will be able to</h4>${list(module.knowledge)}</div><div><h4>Direct deliverables</h4>${list(module.deliverables)}</div></div>
+              <div class="run"><h4>Live production steps</h4><ol>${module.steps.map(step => `<li><strong>${esc(step.title)} · ${esc(step.duration)} min</strong><br>${esc(step.description)}</li>`).join('')}</ol></div>
+              <div class="deliver"><strong>Definition of Done:</strong> the file opens and passes the real business specification. Ideas, chat history and unchecked AI output do not count.</div></div></article>`).join('')}</div>
+          </div></section>`).join('');
+      })
+      .catch(error => { document.querySelector('#course').innerHTML = `<div class="error"><strong>Could not load the outline:</strong> ${esc(error.message)}. Open this page through a local server or the published site.</div>`; });
+  </script>
+</body></html>

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-12
+
+- 将《小企业 AI 内容营销实战》最终压缩为适合两天交付的 13 小时，并把最后两小时从泛 Agile 内容执行改为 AI 项目与公司管理：覆盖项目拆解、优先级、Company Task Board、负责人、会议行动项、阻塞、周报与复盘；同步中英文销售页、详细大纲、逐小时安排、课程索引和推广方案（`ai-marketing-agile-business`）。
+- 精简《小企业 AI 内容营销实战》以控制交付成本：从 22 小时缩减为 15 小时，将 Brand Kit、视觉模板、海报、印刷品与基础周边合并到前三小时，暂停完整 Campaign Kit，并将 Agile Business 改为直接管理真实内容批次；同步中英文销售页、详细大纲和逐小时安排（`ai-marketing-agile-business`）。
+- 将《小企业 AI 内容营销实战》重排为 22 个可组合的 60 分钟成果单元，补充中英双语逐小时 Run Sheet、单元依赖和 3 / 6 / 7 / 8 / 10 / 22 小时推荐组合，并同步中英文大纲的模块与步骤时长（`ai-marketing-agile-business`）。
+- 重构《小企业 AI 内容营销实战》成果型大纲：明确课程只覆盖内容营销方向且不绑定具体 AI 工具，以 Social Media 为主线，新增品牌一致性、海报与周边、短视频、完整 Campaign Kit 和 Agile Business 执行闭环，并同步课程页、详细大纲、设计说明及课程索引（`ai-marketing-agile-business`、`posters.html`、`.github/workflows/deploy.yml`）。
+- 新增《小企业 AI 内容营销实战》课程级推广系统：建立零编造的目标用户取证草案、六方向 Campaign 消息架构、渠道边界、相对推广时间轴、素材清单、Measurement Plan、RACI、风险日志与子 Skill 调度索引（`ai-marketing-agile-business/PERSONAS.md`、`ai-marketing-agile-business/PROMOTION_PLAN.md`、`ai-marketing-agile-business/README.md`）。
+- 新增《小企业 AI 内容营销实战》英文销售页、英文详细大纲、英文结构化大纲、英文 Persona 取证草案和英文推广方案，并在中英文页面加入双向语言切换；英文市场内容独立表达且保持 10 个模块、40 个步骤和课程承诺边界一致（`ai-marketing-agile-business/public/*-en.html`、`outline.en.json`、`PERSONAS.en.md`、`PROMOTION_PLAN.en.md`）。
+
 ## 2026-09-11
 
 - 新增面向潜在学员的独立《AI 全自动内容工厂》六页课程大纲 HTML 与 PDF，说明一个资料源如何生成并发布到八大中英文媒体平台，并覆盖 AI 互动、自动化边界与付费投放优化（`ai-marketing-automation-course`）。
