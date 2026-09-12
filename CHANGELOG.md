@@ -3,6 +3,7 @@
 ## 2026-09-12
 
 - 新增《小企业 AI 内容营销实战》4:5 中英双语宣传海报，以品牌视觉、海报周边、Social Media、短视频和 AI 项目管理成品为主画面，并输出可直接使用的 PNG（`ai-marketing-agile-business/public/marketing-assets`）。
+- 完成《Codex AI 视频创作实战》的课程源文件、公开大纲、HyperFrames starter、3 次课 Lab、提示词、发布手册与评分标准，并接入 Curriculum 生产部署（`codex-ai-video-course`、`.github/workflows/deploy.yml`）。
 - 补齐《小企业 AI 内容营销实战》的招生漏斗、Marketing Workflow Master、T-30 至 D+30 执行时间轴、缺口审计、销售配置、审计日志及三份课程运营 SOP；修正 production 不支持的课程等级，把八个 Workshop 描述增强为真实输入、现场动作、成品与验收条件，并完成 75/100 GOOD 的大纲质量审计（`ai-marketing-agile-business`）。
 - 完成《小企业 AI 内容营销实战》的 Skills Data Manager production read-back，确认 Training 尚不存在；记录首次创建所需的 Program 讲师、交付城市/线上、日期、价格、名额和报名链路阻塞，未使用占位数据执行生产写入（`ai-marketing-agile-business/PRODUCTION_SYNC_STATUS.md`）。
 - 新增《小企业 AI 内容营销实战》非 PPTX 教学交付包：13 小时逐分钟 Runbook、AI Prompt Library、12 份可复制学员模板、教学资产 Manifest 与开课前交付清单（`ai-marketing-agile-business/teaching`）。
