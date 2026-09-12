@@ -2,6 +2,7 @@
 
 ## 2026-09-13
 
+- 新增《AI Content Marketing for Small Business》13 小时英文课程安排海报，按 Day 1 品牌与 Social Media、Day 2 短视频与 AI 公司执行展示 H01–H13，并输出 4:5 公开 PNG（`ai-marketing-agile-business/public/marketing-assets`）。
 - 新增《AI Content Marketing for Small Business》纯英文 4:5 宣传海报，保留品牌视觉、海报周边、Social Media、短视频和项目运营的成果导向画面，并输出公开 PNG（`ai-marketing-agile-business/public/marketing-assets`）。
 
 ## 2026-09-12
