@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-13
+
+- 新增《AI Content Marketing for Small Business》纯英文 4:5 宣传海报，保留品牌视觉、海报周边、Social Media、短视频和项目运营的成果导向画面，并输出公开 PNG（`ai-marketing-agile-business/public/marketing-assets`）。
+
 ## 2026-09-12
 
 - 新增《小企业 AI 内容营销实战》4:5 中英双语宣传海报，以品牌视觉、海报周边、Social Media、短视频和 AI 项目管理成品为主画面，并输出可直接使用的 PNG（`ai-marketing-agile-business/public/marketing-assets`）。
