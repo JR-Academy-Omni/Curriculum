@@ -2,6 +2,8 @@
 
 ## 2026-09-12
 
+- 补齐《小企业 AI 内容营销实战》的招生漏斗、Marketing Workflow Master、T-30 至 D+30 执行时间轴、缺口审计、销售配置、审计日志及三份课程运营 SOP；修正 production 不支持的课程等级，把八个 Workshop 描述增强为真实输入、现场动作、成品与验收条件，并完成 75/100 GOOD 的大纲质量审计（`ai-marketing-agile-business`）。
+- 新增《小企业 AI 内容营销实战》非 PPTX 教学交付包：13 小时逐分钟 Runbook、AI Prompt Library、12 份可复制学员模板、教学资产 Manifest 与开课前交付清单（`ai-marketing-agile-business/teaching`）。
 - 将《小企业 AI 内容营销实战》最终压缩为适合两天交付的 13 小时，并把最后两小时从泛 Agile 内容执行改为 AI 项目与公司管理：覆盖项目拆解、优先级、Company Task Board、负责人、会议行动项、阻塞、周报与复盘；同步中英文销售页、详细大纲、逐小时安排、课程索引和推广方案（`ai-marketing-agile-business`）。
 - 精简《小企业 AI 内容营销实战》以控制交付成本：从 22 小时缩减为 15 小时，将 Brand Kit、视觉模板、海报、印刷品与基础周边合并到前三小时，暂停完整 Campaign Kit，并将 Agile Business 改为直接管理真实内容批次；同步中英文销售页、详细大纲和逐小时安排（`ai-marketing-agile-business`）。
 - 将《小企业 AI 内容营销实战》重排为 22 个可组合的 60 分钟成果单元，补充中英双语逐小时 Run Sheet、单元依赖和 3 / 6 / 7 / 8 / 10 / 22 小时推荐组合，并同步中英文大纲的模块与步骤时长（`ai-marketing-agile-business`）。
