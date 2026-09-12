@@ -15,7 +15,7 @@
 
 ## Open audit items
 
-- Production Training/Program/Lesson read-back is pending.
+- Skills Data Manager 已完成 production read-back：Training `exists: false`；因 Program 必填业务信息缺失，未执行 production mutation。
 - Persona ground truth coverage is 0%.
 - Price, dates, instructor, delivery mode and enrolment URL are not supplied.
 - No social asset is approved, scheduled or published.

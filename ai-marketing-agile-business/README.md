@@ -14,6 +14,7 @@
 - [Marketing 缺口审计](./MARKETING_WORKFLOW_GAP_AUDIT.md)
 - [审计日志](./AUDIT_LOG.md)
 - [课程大纲质量报告](./OUTLINE_QUALITY_REPORT.md)
+- [Production 同步状态](./PRODUCTION_SYNC_STATUS.md)
 - [招生配置表](./SALES_CONFIGURATION.md)
 - [学员成果收集 SOP](./sops/STUDENT_OUTPUT_COLLECTION_SOP.md)
 - [班级群运营 SOP](./sops/COHORT_GROUP_OPERATIONS_SOP.md)
@@ -49,4 +50,4 @@
 - 社媒内容：尚未进入账号级 SOURCE / variant / 审批流程
 - 排程与发布：未执行
 - 教学包：讲师 Runbook、Prompt Library 与 12 份双语学员模板已完成；不生成 PPTX
-- 课程系统：等待 Skills Data Manager production diff；未创建或同步 Program
+- 课程系统：Skills Data Manager 已确认 production Training 不存在；等待 Program 必填业务信息后首次创建

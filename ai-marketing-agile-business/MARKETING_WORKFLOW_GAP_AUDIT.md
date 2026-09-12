@@ -16,13 +16,13 @@
 | 中英文渠道资产 | Not started | 无已批准 Master | 完成平台原生版本和视觉 QA |
 | 发布与排程 | Not authorised | 无账号/平台/时间批准 | 明确品牌和平台后执行 |
 | Measurement baseline | Unavailable | 无历史数据 | 首轮发布后建立基线 |
-| 课程系统 Training/Program | Pending diff | 无 production read-back | 运行 SDM production diff |
+| 课程系统 Training/Program | Blocked create | SDM read-back: Training `exists: false` | 提供 Program 必填信息后首次创建 |
 
 ## P0
 
 1. 合并不含 PPTX 的课程与教学文件。
-2. 运行 Skills Data Manager production diff，确认 Training 是否存在。
-3. 收集 Program 必填项：讲师、城市/线上、日期、价格、名额和条款。
+2. 收集 Program 必填项：讲师、城市/线上、日期、价格、名额和条款。
+3. 重新运行 Skills Data Manager diff 并执行首次创建。
 4. 获取 Persona ground truth 后再生产招生资产。
 
 ## English handoff
