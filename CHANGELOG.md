@@ -2,6 +2,8 @@
 
 ## 2026-09-12
 
+- 完成《Codex AI 视频创作实战》的课程源文件、公开大纲、HyperFrames starter、3 次课 Lab、提示词、发布手册与评分标准，并接入 Curriculum 生产部署（`codex-ai-video-course`、`.github/workflows/deploy.yml`）。
+
 - 将《小企业 AI 内容营销实战》最终压缩为适合两天交付的 13 小时，并把最后两小时从泛 Agile 内容执行改为 AI 项目与公司管理：覆盖项目拆解、优先级、Company Task Board、负责人、会议行动项、阻塞、周报与复盘；同步中英文销售页、详细大纲、逐小时安排、课程索引和推广方案（`ai-marketing-agile-business`）。
 - 精简《小企业 AI 内容营销实战》以控制交付成本：从 22 小时缩减为 15 小时，将 Brand Kit、视觉模板、海报、印刷品与基础周边合并到前三小时，暂停完整 Campaign Kit，并将 Agile Business 改为直接管理真实内容批次；同步中英文销售页、详细大纲和逐小时安排（`ai-marketing-agile-business`）。
 - 将《小企业 AI 内容营销实战》重排为 22 个可组合的 60 分钟成果单元，补充中英双语逐小时 Run Sheet、单元依赖和 3 / 6 / 7 / 8 / 10 / 22 小时推荐组合，并同步中英文大纲的模块与步骤时长（`ai-marketing-agile-business`）。

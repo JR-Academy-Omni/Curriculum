@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07130f">
-  <title>AI视频创作实战：从产品卖点到广告成片｜匠人学院</title>
-  <meta name="description" content="面向小企业老板的6小时AI视频实战课。用Seedance生成广告镜头，结合AI视频特效、Codex与Remotion完成剪辑包装，做出可发布的产品宣传片。">
+  <title>Codex AI 视频创作实战：HyperFrames、Seedance 与自动发布｜匠人学院</title>
+  <meta name="description" content="3次课、6小时：先用Codex与HyperFrames完成程序化剪辑，再用Seedance补齐生成镜头，最后通过人工审核发布TikTok与YouTube Shorts。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;family=Noto+Sans+SC:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --ink: #07130f;
@@ -80,6 +80,7 @@
       right: -310px; top: -300px; background: var(--acid); opacity: .5; filter: blur(2px);
     }
     .hero-grid { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; gap: 72px; align-items: center; }
+    .hero-grid > * { min-width: 0; }
     .pill {
       display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--ink);
       border-radius: 999px; padding: 7px 13px; font-size: 12px; font-weight: 700; margin-bottom: 24px;
@@ -88,7 +89,7 @@
     .pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 4px rgba(255,118,92,.18); }
     h1 { font-size: clamp(50px, 6.2vw, 86px); letter-spacing: -.065em; line-height: .98; font-weight: 900; max-width: 800px; }
     h1 .accent { display: block; color: transparent; -webkit-text-stroke: 2px var(--ink); }
-    .hero-copy { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 640px; margin: 28px 0 30px; }
+    .hero-copy { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 640px; margin: 28px 0 30px; overflow-wrap: anywhere; }
     .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
     .btn-primary { padding: 15px 24px; }
     .btn-secondary { font-weight: 700; padding: 14px 18px; border-bottom: 2px solid var(--ink); }
@@ -161,7 +162,14 @@
     .flow-step p { font-size: 13px; color: #9eaca4; }
 
     .ratio-wrap { display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; align-items: center; }
-    .ratio-graphic { aspect-ratio: 1; border-radius: 50%; background: conic-gradient(var(--acid) 0 80%, var(--coral) 80% 100%); position: relative; box-shadow: inset 0 0 0 2px var(--ink); }
+    .ratio-graphic { aspect-ratio: 1; border-radius: 50%; background: conic-gradient(var(--acid) 0 92%, var(--coral) 92% 100%); position: relative; box-shadow: inset 0 0 0 2px var(--ink); }
+    .example-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-top:42px; }
+    .example-card { background:var(--cream); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 18px 50px rgba(7,19,15,.08); }
+    .example-card video { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; background:var(--ink); }
+    .example-copy { padding:22px 24px 26px; }
+    .example-copy small { color:var(--muted); }
+    .example-copy h3 { margin-top:6px; font-size:22px; }
+    .example-copy p { margin-top:8px; color:var(--muted); }
     .ratio-graphic::after { content: ""; position: absolute; inset: 24%; background: var(--paper); border: 2px solid var(--ink); border-radius: 50%; }
     .ratio-label { position: absolute; z-index: 1; font-size: 13px; font-weight: 900; }
     .ratio-label.ai { top: 22%; left: 10%; transform: rotate(-35deg); }
@@ -171,6 +179,7 @@
     .division-item b { font-size: 13px; }
     .division-item p { color: var(--muted); font-size: 14px; }
     .check { width: 30px; height: 30px; border: 1px solid var(--ink); border-radius: 8px; display: grid; place-items: center; background: var(--acid); font-weight: 900; }
+    .check.review { background: var(--coral); }
 
     .syllabus { background: #e7eadf; }
     .class-list { margin-top: 54px; display: grid; gap: 18px; }
@@ -200,6 +209,7 @@
     .outcome p { color: #47524c; font-size: 14px; }
 
     .audience-section { background: var(--coral); border-block: 2px solid var(--ink); }
+    .audience-section .section-kicker { color: var(--ink); }
     .audience-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); border: 2px solid var(--ink); background: var(--ink); gap: 2px; }
     .audience-item { background: var(--paper); padding: 26px; display: flex; gap: 16px; align-items: flex-start; }
     .audience-item span { width: 34px; height: 34px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--acid); font-weight: 900; }
@@ -220,6 +230,7 @@
     .closing-card h2 { max-width: 760px; position: relative; z-index: 1; }
     .closing-card p { max-width: 600px; color: #afbbb5; font-size: 18px; margin: 22px 0 30px; position: relative; z-index: 1; }
     .closing-card .btn-primary { position: relative; z-index: 1; }
+    .closing-card .section-kicker { color: var(--acid); }
     footer { padding: 38px 0 48px; display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
 
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
@@ -233,6 +244,7 @@
       .flow-step::after { display: none; }
       .stats { grid-template-columns: 1fr 1fr; }
       .outcome-grid { grid-template-columns: 1fr 1fr; }
+      .example-grid { grid-template-columns: 1fr; }
       .class-body { padding-left: 28px; }
     }
     @media (max-width: 640px) {
@@ -243,6 +255,7 @@
       .nav-cta { padding: 9px 12px; font-size: 12px; }
       .hero { padding: 48px 0 52px; }
       h1 { font-size: 48px; }
+      .hero-copy { max-width: 100%; }
       h1 .accent { -webkit-text-stroke-width: 1.4px; }
       .video-stage { min-height: 360px; padding: 17px; box-shadow: 8px 8px 0 var(--acid); }
       .prompt { font-size: 25px; }
@@ -272,7 +285,7 @@
   </style>
 </head>
 <body>
-  <div class="topbar mono">3 次直播课 · 6 小时实战 · 做出 1 条可投放的产品广告片</div>
+  <div class="topbar mono">3 次直播课 · 6 小时实战 · CODEX + HYPERFRAMES + SEEDANCE</div>
   <nav>
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="匠人学院首页"><span class="brand-mark">JR</span><span>匠人学院</span></a>
@@ -290,19 +303,19 @@
       <div class="container hero-grid">
         <div>
           <div class="pill mono"><span class="pill-dot"></span>AI VIDEO · PROJECT-BASED COURSE</div>
-          <h1>AI视频<span class="accent">创作实战</span></h1>
-          <p class="hero-copy">没有拍摄团队，也能把产品图、门店素材和卖点做成一条像样的广告片。用 Seedance 生成镜头，用 AI 完成特效与剪辑包装，自己掌握产品宣发。</p>
+          <h1>Codex AI<span class="accent">视频创作</span></h1>
+          <p class="hero-copy">从已有素材开始，让 Codex 直接管理 HyperFrames 时间线；缺镜头再交给 Seedance；最后生成 TikTok 与 YouTube Shorts 发布包，经人工确认后上线。</p>
           <div class="hero-actions">
             <a class="btn-primary" href="#syllabus">查看完整大纲 <span>↘</span></a>
             <a class="btn-secondary" href="#workflow">先看怎么学</a>
           </div>
           <div class="hero-note"><span>零基础可学</span><span>以作品为结果</span><span>附可复用模板</span></div>
         </div>
-        <div class="video-stage" aria-label="AI产品广告视频工作台视觉演示">
+        <div class="video-stage" role="img" aria-label="AI产品广告视频工作台视觉演示">
           <div class="window-bar mono"><span>AI / AD VIDEO STUDIO</span><span class="dots"><i></i><i></i><i></i></span></div>
           <div class="screen">
             <div class="screen-label mono">YOUR PROMPT</div>
-            <div class="prompt">“把这组产品素材做成<br>30 秒广告宣传片。”<span class="cursor"></span></div>
+            <div class="prompt">“先读取素材，再写镜头表，<br>通过检查后生成竖版成片。”<span class="cursor"></span></div>
           </div>
           <div class="timeline">
             <div class="timeline-row"><small class="mono">VIDEO</small><div class="track"><i class="clip c1"></i><i class="clip c2"></i><i class="clip c3"></i><i class="clip c4"></i></div></div>
@@ -316,7 +329,7 @@
       <div class="container stats">
         <div class="stat"><b>6h</b><span>高密度项目实战</span></div>
         <div class="stat"><b>3次</b><span>分阶段直播学习</span></div>
-        <div class="stat"><b>80%</b><span>Seedance + AI 自动制作</span></div>
+        <div class="stat"><b>100%</b><span>AI-native 视频生产</span></div>
         <div class="stat"><b>1条</b><span>可正式发布的成片</span></div>
       </div>
     </div>
@@ -335,7 +348,7 @@
           <article class="shift-card new">
             <div class="num mono">02 / AI-NATIVE</div>
             <h3>一组产品素材，快速生成多条宣传内容</h3>
-            <p>用 Seedance 生成广告镜头，以 AI 特效强化卖点，再通过 Codex 和 Remotion 快速修改与复用。</p>
+            <p>Codex 先做素材体检和镜头表，再直接修改 HyperFrames 工程；Seedance 只补缺失镜头，整条链路可检查、可复用。</p>
           </article>
         </div>
       </div>
@@ -347,11 +360,11 @@
         <h2>从一个产品卖点，跑通完整<br>AI 广告生产线。</h2>
         <p class="section-lead">不是只看工具演示。三次课围绕你的产品宣传项目推进，从“卖什么”一直做到“可以发”。</p>
         <div class="workflow reveal">
-          <article class="flow-step"><div class="icon">✦</div><small class="mono">STEP 01</small><h3>广告策划</h3><p>用 Codex 找受众、提炼卖点，写钩子、脚本和分镜。</p></article>
-          <article class="flow-step"><div class="icon">◉</div><small class="mono">STEP 02</small><h3>Seedance 生成</h3><p>把产品图变成动态展示，生成使用场景、运镜和广告镜头。</p></article>
-          <article class="flow-step"><div class="icon">⚡</div><small class="mono">STEP 03</small><h3>AI 视频特效</h3><p>制作产品出场、光影扫过、画面延展、变形转场与视觉冲击。</p></article>
-          <article class="flow-step"><div class="icon">⌁</div><small class="mono">STEP 04</small><h3>自动剪辑包装</h3><p>用 Remotion 完成字幕、转场、音乐卡点、价格和行动号召。</p></article>
-          <article class="flow-step"><div class="icon">↗</div><small class="mono">STEP 05</small><h3>多平台发布</h3><p>人工检查细节，导出小红书、视频号、抖音和官网版本。</p></article>
+          <article class="flow-step"><div class="icon">⌘</div><small class="mono">STEP 01</small><h3>素材体检</h3><p>Codex 读取真实媒体参数，先找损坏、比例、声音与版权问题。</p></article>
+          <article class="flow-step"><div class="icon">⌁</div><small class="mono">STEP 02</small><h3>HyperFrames 剪辑</h3><p>先写镜头表，再实现裁切、排序、字幕、安全区和可复用变体。</p></article>
+          <article class="flow-step"><div class="icon">◉</div><small class="mono">STEP 03</small><h3>Seedance 补镜头</h3><p>用参考图或首尾帧生成缺失镜头，逐项诊断失败原因。</p></article>
+          <article class="flow-step"><div class="icon">✓</div><small class="mono">STEP 04</small><h3>自动质检</h3><p>检查时间线、比例、黑帧、字幕、音轨和最终文件 hash。</p></article>
+          <article class="flow-step"><div class="icon">↗</div><small class="mono">STEP 05</small><h3>审核后发布</h3><p>真人确认账号、版权与文案，再发布 TikTok 和 YouTube Shorts 并回读。</p></article>
         </div>
       </div>
     </section>
@@ -359,16 +372,16 @@
     <section>
       <div class="container ratio-wrap">
         <div class="ratio-graphic reveal">
-          <span class="ratio-label ai mono">80% AI WORKFLOW</span>
-          <span class="ratio-label human mono">20% FINE-TUNE</span>
+          <span class="ratio-label ai mono">100% AI PRODUCTION</span>
+          <span class="ratio-label human mono">HUMAN RELEASE GATE</span>
         </div>
         <div>
-          <div class="section-kicker mono">THE 80 / 20 METHOD</div>
-          <h2>AI 提高产量，<br>老板把握卖点。</h2>
-          <p class="section-lead">AI负责生成和制作，你负责判断产品有没有讲清楚、广告有没有吸引力。用更少预算持续产出，而不是追求“一键完美”。</p>
+          <div class="section-kicker mono">AI MAKES · HUMAN APPROVES</div>
+          <h2>制作全部交给 AI，<br>责任不能交给 AI。</h2>
+          <p class="section-lead">Codex、HyperFrames 与 Seedance 完成工程和内容生产；人只保留关键审核权：事实是否准确、素材是否有权使用、账号与公开设置是否正确。</p>
           <div class="division-list">
-            <div class="division-item"><span class="check">✓</span><div><b>80% Seedance + Codex + Remotion</b><p>广告策划、镜头生成、视频特效、字幕动画、音画同步、比例适配与批量渲染。</p></div></div>
-            <div class="division-item"><span class="check" style="background:var(--coral)">✓</span><div><b>20% 传统剪辑精修</b><p>处理多余帧、局部变速、音频降噪、遮罩、字幕断句与最后的观感检查。</p></div></div>
+            <div class="division-item"><span class="check">✓</span><div><b>100% Codex + HyperFrames + Seedance</b><p>素材分析、生成镜头、程序化剪辑、字幕、安全区、检查、变体与渲染都在 AI-native 流程内完成。</p></div></div>
+            <div class="division-item"><span class="check review">✓</span><div><b>真人审核是发布闸门</b><p>确认事实、版权、目标账号、文案与最终画面；排队或处理中不能写成已经公开发布。</p></div></div>
           </div>
         </div>
       </div>
@@ -383,42 +396,42 @@
         </div>
         <div class="class-list">
           <details class="class-card reveal" open>
-            <summary class="class-head"><span class="class-index mono">CLASS 01</span><h3>产品卖点与 Seedance 广告镜头</h3><span class="class-time">120 MIN</span><span class="toggle">＋</span></summary>
+            <summary class="class-head"><span class="class-index mono">CLASS 01</span><h3>Codex + HyperFrames 自动剪辑</h3><span class="class-time">120 MIN</span><span class="toggle">＋</span></summary>
             <div class="class-body">
               <ul class="lesson-list">
-                <li>从客户、卖点、优惠和渠道出发，确定一条广告要说什么</li>
-                <li>用 Codex 生成前三秒钩子、广告文案和结构化分镜</li>
-                <li>Seedance 文生视频、图生视频与首尾帧生成实操</li>
-                <li>组合文字、产品图、参考视频和音频，控制主体、动作与风格</li>
-                <li>把静态产品图变成展示镜头，并生成真实使用场景与运镜</li>
+                <li>用 ffprobe 读取文件名、时长、画幅、帧率、音轨与编码</li>
+                <li>让 Codex 先写 SHOTLIST，再决定保留、裁切、排序和画幅</li>
+                <li>在 HyperFrames 中实现竖版时间线、字幕安全区与 CTA</li>
+                <li>检查确定性、布局、对比度、黑帧和素材时间范围</li>
+                <li>把同一工程改成可替换产品、文案和素材的 starter</li>
               </ul>
-              <aside class="deliverable"><small class="mono">本节产出</small><h4>广告脚本 + 分镜 + Seedance 镜头</h4><p>获得产品特写、动态展示和使用场景等可以进入剪辑的核心素材。</p></aside>
+              <aside class="deliverable" aria-label="第一节课产出"><small class="mono">本节产出</small><h4>可验证的 HyperFrames 工程</h4><p>提交镜头表、composition、完整 check 输出，以及 0 秒、6 秒、11 秒三张 snapshot。</p></aside>
             </div>
           </details>
           <details class="class-card reveal" open>
-            <summary class="class-head"><span class="class-index mono">CLASS 02</span><h3>AI视频特效与自动剪辑包装</h3><span class="class-time">120 MIN</span><span class="toggle">＋</span></summary>
+            <summary class="class-head"><span class="class-index mono">CLASS 02</span><h3>Seedance 生成缺失镜头</h3><span class="class-time">120 MIN</span><span class="toggle">＋</span></summary>
             <div class="class-body">
               <ul class="lesson-list">
-                <li>使用 video-shotcraft 镜头配方，为广告选择正确的视觉节奏</li>
-                <li>制作产品出场、局部放大、2.5D运镜、粒子、光效与画面延展</li>
-                <li>用AI完成转场、背景替换、素材融合和有冲击力的视觉变化</li>
-                <li>让 Codex 创建 Remotion 项目，自动完成镜头、字幕与品牌包装</li>
-                <li>加入配音、音乐、音效、价格卖点与“立即咨询”等行动号召</li>
+                <li>把现有镜头分成可用、可修复、必须重生三类</li>
+                <li>用主体、动作、摄影机、环境、节奏与禁用项写镜头提示词</li>
+                <li>根据目标选择参考图、首尾帧或图生视频路径</li>
+                <li>逐帧检查主体、手脸、文字、物理、运动方向与连续性</li>
+                <li>失败后只改一个变量，保留 prompt、参数和淘汰理由</li>
               </ul>
-              <aside class="deliverable"><small class="mono">本节产出</small><h4>有特效、有卖点的第一版广告</h4><p>完成音画包装、品牌信息和行动号召，获得可继续修改的 Remotion 工程。</p></aside>
+              <aside class="deliverable" aria-label="第二节课产出"><small class="mono">本节产出</small><h4>合格镜头 + 失败诊断记录</h4><p>至少一个可进入时间线的生成镜头，以及一个失败案例从 v1 到 v2 的修复证据。</p></aside>
             </div>
           </details>
           <details class="class-card reveal" open>
-            <summary class="class-head"><span class="class-index mono">CLASS 03</span><h3>广告精修、改版与多平台发布</h3><span class="class-time">120 MIN</span><span class="toggle">＋</span></summary>
+            <summary class="class-head"><span class="class-index mono">CLASS 03</span><h3>组合、人工审核与自动发布</h3><span class="class-time">120 MIN</span><span class="toggle">＋</span></summary>
             <div class="class-body">
               <ul class="lesson-list">
-                <li>用自然语言修正镜头、特效、字幕、价格和音画同步</li>
-                <li>用剪映或 Premiere 完成必要的局部精修</li>
-                <li>掌握成片的信息、节奏、视觉和声音验收标准</li>
-                <li>生成小红书、视频号、抖音、官网所需的横竖屏版本</li>
-                <li>一套模板快速更换产品、价格、活动和行动号召</li>
+                <li>把通过审核的 Seedance 镜头加入 HyperFrames 时间线</li>
+                <li>用 Codex 完成节奏、字幕、音量、首帧钩子与末帧 CTA 精修</li>
+                <li>分别生成 TikTok 与 YouTube Shorts 的平台文案和媒体包</li>
+                <li>执行技术、内容、版权、账号四层检查与 Human review gate</li>
+                <li>保存 provider id、公开 URL，并从公开环境回读画面、声音和可见性</li>
               </ul>
-              <aside class="deliverable"><small class="mono">结课产出</small><h4>1 条可发布广告 + 可复用模板</h4><p>获得横竖屏版本、源工程与以后为新品和活动继续出片的工作流。</p></aside>
+              <aside class="deliverable" aria-label="第三节课结课产出"><small class="mono">结课产出</small><h4>1 条成片 + 双平台发布闭环</h4><p>获得最终文件 hash、双平台文案、审核记录；账号已授权时再提交平台回执和公开 URL。</p></aside>
             </div>
           </details>
         </div>
@@ -432,17 +445,31 @@
         <div class="outcome-grid reveal">
           <article class="outcome"><div class="n">01</div><h3>完整产品广告片</h3><p>一条30–60秒、有卖点、有品牌信息、有行动号召的正式成片。</p></article>
           <article class="outcome"><div class="n">02</div><h3>Seedance生成工作流</h3><p>掌握产品图转动态镜头、多模态参考、场景生成与运镜控制。</p></article>
-          <article class="outcome"><div class="n">03</div><h3>Remotion基础工程</h3><p>可替换品牌、文案和素材的程序化视频项目，不用每次重做。</p></article>
+          <article class="outcome"><div class="n">03</div><h3>HyperFrames 基础工程</h3><p>可替换品牌、文案和素材的程序化视频项目，不用每次重做。</p></article>
           <article class="outcome"><div class="n">04</div><h3>AI视频特效方法</h3><p>掌握产品出场、光效、粒子、2.5D运镜、画面延展与创意转场。</p></article>
           <article class="outcome"><div class="n">05</div><h3>多平台交付能力</h3><p>快速生成横屏、竖屏、方形、字幕版与干净版。</p></article>
-          <article class="outcome"><div class="n">06</div><h3>人工精修判断力</h3><p>知道哪些应该继续交给AI，哪些值得用传统剪辑快速修正。</p></article>
+          <article class="outcome"><div class="n">06</div><h3>发布证据链</h3><p>区分草稿、排队、处理中与公开发布，并保留平台回执和回读结果。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-kicker mono">REAL VIDEO REFERENCES</div>
+        <h2>课堂会拆真实案例，<br>不只看静态大纲。</h2>
+        <p class="section-lead">下面素材来自 JR Academy 现有项目，只用于解释镜头选择、节奏、品牌一致性和生成素材如何进入时间线。</p>
+        <div class="example-grid reveal">
+          <article class="example-card"><video controls preload="metadata" playsinline src="https://huiguoya.jracademy.ai/brand/home-journey/return-path-1080p.mp4"></video><div class="example-copy"><small class="mono">回国鸭 · HERO JOURNEY</small><h3>连续叙事与品牌节奏</h3><p>观察镜头进入、情绪转折和 Hero 视频如何为页面服务。</p></div></article>
+          <article class="example-card"><video controls preload="metadata" playsinline src="https://airbotix.ai/media/hero-journey-web/01-inspiration-spark.mp4"></video><div class="example-copy"><small class="mono">AIRBOTIX · HERO</small><h3>首镜钩子与产品氛围</h3><p>拆解第一秒的信息密度、运动方向和视觉焦点。</p></div></article>
+          <article class="example-card"><video controls preload="metadata" playsinline src="https://airbotix.ai/media/creative-lab/magic-story.mp4"></video><div class="example-copy"><small class="mono">AIRBOTIX · CREATIVE LAB</small><h3>生成镜头进入成片</h3><p>识别哪些画面适合生成，哪些节奏应留给程序化剪辑。</p></div></article>
+          <article class="example-card"><video controls preload="metadata" playsinline src="https://airbotix.ai/media/courses/family-ai-movie-example.mp4"></video><div class="example-copy"><small class="mono">AIRBOTIX · COURSE EXAMPLE</small><h3>教学示例与验收标准</h3><p>从成片倒推素材、提示词、时间线和最后的人工审核。</p></div></article>
         </div>
       </div>
     </section>
 
     <section class="audience-section">
       <div class="container">
-        <div class="section-kicker mono" style="color:var(--ink)">WHO IT IS FOR</div>
+        <div class="section-kicker mono">WHO IT IS FOR</div>
         <h2>这门课，适合想自己掌握<br>产品宣发的小生意老板。</h2>
         <div class="audience-grid reveal">
           <article class="audience-item"><span>1</span><div><h3>零售与电商品牌</h3><p>需要为新品、促销和节日活动持续制作产品视频。</p></div></article>
@@ -459,10 +486,10 @@
         <div class="faq">
           <details><summary>完全不会剪辑或写代码，可以参加吗？</summary><p>可以。课程重点是做出广告并学会判断效果，Codex只是帮助你执行的工具。我们会解释必要概念，但不会要求你先掌握编程。</p></details>
           <details><summary>Seedance在课程里具体做什么？</summary><p>它负责把文字、产品图、参考视频和音频变成广告镜头：让静态产品动起来、生成使用场景、控制镜头运动，并为后续特效和剪辑提供动态素材。</p></details>
-          <details><summary>课程是不是全部由 AI 自动完成？</summary><p>主体流程由 Seedance、Codex、AI工具和 Remotion 完成，约占80%。最后约20%用于人工审片和必要的传统剪辑精修，确保广告真正清楚、可信、能发布。</p></details>
-          <details><summary>为什么还要学习 Remotion？</summary><p>Remotion让视频中的镜头、字幕和动画变成可精确控制的组件。相比每次手工拖动时间轴，它更适合让 Codex 修改、复用和批量生成。</p></details>
+          <details><summary>课程是不是全部由 AI 自动完成？</summary><p>制作环节全部由 Codex、HyperFrames 与 Seedance 完成，不使用传统剪辑软件。公开发布仍由真人审核事实、版权、账号和最终画面。</p></details>
+          <details><summary>为什么学习 HyperFrames？</summary><p>HyperFrames 把镜头、字幕、动画和时间变成 Codex 可直接修改、检查、复用和批量渲染的 HTML 工程。</p></details>
           <details><summary>上完课可以独立做什么类型的视频？</summary><p>可以制作产品广告、上新介绍、促销活动、门店展示、服务说明和社交媒体短片，并把同一内容快速改成多个平台版本。</p></details>
-          <details><summary>需要准备哪些工具？</summary><p>建议准备可运行 Codex 和 Remotion 的电脑、Seedance可用账号，以及剪映或 Premiere 中的任意一种作为精修工具。具体版本与费用清单会在开课前提供。</p></details>
+          <details><summary>需要准备哪些工具？</summary><p>需要可运行 Codex 与 HyperFrames 的电脑、Seedance 可用账号，以及自己有权使用的练习素材。发布实操需要目标平台账号授权。</p></details>
         </div>
       </div>
     </section>
@@ -470,7 +497,7 @@
     <section class="closing">
       <div class="container">
         <div class="closing-card">
-          <div class="section-kicker mono" style="color:var(--acid)">FROM IDEA TO FINAL CUT</div>
+          <div class="section-kicker mono">FROM IDEA TO FINAL CUT</div>
           <h2>下一条产品广告，<br>不用再等别人来做。</h2>
           <p>6小时建立自己的AI视频工作流。从一个产品卖点开始，以一条真正能发布的广告片结束。</p>
           <a class="btn-primary" href="#syllabus">查看三次课安排 <span>↑</span></a>
