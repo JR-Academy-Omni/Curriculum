@@ -13,7 +13,7 @@
 - 所有模板已复制到学员自己的工作目录。
 - 讲师明确区分 Draft、Reviewed、Scheduled、Published 和 Verified Result。
 
-## H01 读懂业务、客户与现有品牌
+## H01 AI 业务、客户与品牌诊断
 
 **Outcome:** Business & Audience Brief、Audience Signal Sheet、Brand Audit
 
@@ -28,7 +28,7 @@
 
 **验收:** 至少包含一个明确产品、真实价格或询价方式、三个客户问题、三个购买顾虑，以及一份品牌问题清单。
 
-## H02 建立 AI Brand Kit 与视觉模板
+## H02 AI Brand Kit 与视觉模板
 
 **Outcome:** Brand Source of Truth、AI Brand Kit、Social Templates
 
@@ -42,7 +42,7 @@
 
 **验收:** 色值和字体写明；Logo 有正确与禁用规则；至少完成两种比例的可编辑模板。
 
-## H03 做出海报、印刷品与基础周边
+## H03 AI 海报、印刷品与周边设计
 
 **Outcome:** Key Visual、Poster、One Print or Merchandise Asset、Handoff Pack
 
@@ -168,7 +168,7 @@
 
 **验收:** 三条视频均能播放；字幕不被界面遮挡；事实和素材权利通过检查；文件命名清楚。
 
-## H12 用 AI 建立项目与公司任务系统
+## H12 AI 项目与公司任务管理
 
 **Outcome:** AI Project Brief、Prioritised Backlog、Company Task Board
 
@@ -182,7 +182,7 @@
 
 **验收:** 每个进行中任务只有一个负责人；完成标准可检查；依赖和截止时间真实。
 
-## H13 用 AI 推动执行、会议跟进与复盘
+## H13 AI 执行、跟进与复盘
 
 **Outcome:** Action Tracker、Weekly Review、Next-cycle Plan、Reusable Workflow
 

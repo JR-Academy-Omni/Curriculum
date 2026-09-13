@@ -14,23 +14,23 @@
 
 ## Stage 1 — Business, Audience & Brand
 
-- M01 读懂业务、客户与现有品牌：完成 Business & Audience Brief、Audience Signal Sheet 和 Brand Audit
-- M02 建立 AI Brand Kit 与视觉模板：完成 Design Source of Truth、Brand Kit 和社媒模板
-- M03 做出海报、印刷品与基础周边：完成 Key Visual、数字海报和一项实体延展
+- M01 AI 业务、客户与品牌诊断：完成 Business & Audience Brief、Audience Signal Sheet 和 Brand Audit
+- M02 AI Brand Kit 与视觉模板：完成 Design Source of Truth、Brand Kit 和社媒模板
+- M03 AI 海报、印刷品与周边设计：完成 Key Visual、数字海报和一项实体延展
 
 ## Stage 2 — Social Media Production System
 
-- M04 做出 30 天 Social Media 内容系统：完成内容支柱、30 天日历、12 条文案和发布状态表
-- M05 一次制作，多平台原生发布：完成平台文案包、Carousel、单图、Story 和统一封面
+- M04 AI 30 天 Social Media 内容系统：完成内容支柱、30 天日历、12 条文案和发布状态表
+- M05 AI 多平台原生内容生产：完成平台文案包、Carousel、单图、Story 和统一封面
 
 ## Stage 3 — Short Video
 
-- M06 用 AI 做出可发布的短视频：完成 3 套脚本与分镜、3 条竖版成片、字幕和封面
+- M06 AI 可发布短视频制作：完成 3 套脚本与分镜、3 条竖版成片、字幕和封面
 
 ## Stage 4 — AI Project & Business Management
 
-- M07 用 AI 建立项目与公司任务系统：完成 Project Brief、优先级 Backlog、Company Task Board、负责人和完成标准
-- M08 用 AI 推动执行、会议跟进与复盘：完成 Action Tracker、项目周报、Review、下一轮任务和可复用管理 Workflow
+- M07 AI 项目与公司任务管理：完成 Project Brief、优先级 Backlog、Company Task Board、负责人和完成标准
+- M08 AI 执行、跟进与复盘：完成 Action Tracker、项目周报、Review、下一轮任务和可复用管理 Workflow
 
 ## 暂停内容
 
