@@ -33,14 +33,15 @@ height: 1660
 
 1. JR Academy 官方 Logo 与 8 AI Modules 识别。
 2. AI Content Marketing for Small Business。
-3. 官方牛小匠教学视觉与四类真实学习产物标签。
-4. M01–M08 两栏确定性文字。
+3. Brand → Content → Video → Operations 的工作流和四条阶段轨道。
+4. M01–M08 确定性文字。
 5. 九个关键媒体渠道。
 6. Build real assets. Run real work. 与课程大纲 CTA。
 
 ## 4. 资产和图层
 
-- JR 官方资产：`logo-official-black.svg`、`05-teaching-data.png`。
+- JR 官方资产：`logo-official-black.svg`；不使用 mascot 或人物。
+- Airbotix 风格借鉴：Plus Jakarta Sans、暖白画布、五色 wash、32px 圆角、重点彩色阴影、一个贴纸和一个手绘下划线。
 - 所有文字、编号、模块卡、渠道和 CTA 均由 HTML/CSS 确定性渲染。
 - 不使用图片模型生成 Logo、长文本、平台标识或伪 UI。
 
@@ -50,6 +51,6 @@ height: 1660
 - [x] 原尺寸与手机缩略图均可读
 - [x] 八个模块按 01–08 顺序且各出现一次
 - [x] 九个关键渠道拼写正确
-- [x] 官方 Logo 与牛小匠比例正确
+- [x] 官方 Logo 比例正确，且画面没有 mascot 或人物
 - [x] 无时长、日期、价格、伪 Logo、二维码、水印、PPT 或 PPTX
 - [x] HTML 源和最终 PNG 同时保存

@@ -16,6 +16,7 @@ facts:
   - ai-marketing-agile-business/public/outline.json
 overrides:
   - 课程视觉母题为小企业内容工作室，从品牌系统贯穿社媒、短视频和任务管理
+  - 英文模块海报可借鉴 Airbotix Bright but Smart 构图：Plus Jakarta Sans、暖白画布、五色 wash、32px 圆角、重点彩色阴影，以及最多一个贴纸和一个手绘下划线；不使用 mascot 或人物插画
 ```
 
 ## 定位
@@ -59,7 +60,7 @@ overrides:
 | 班型 | 12–24 人，适合企业 Training Budget |
 | 难度 | 初级进阶；无需编程 |
 | 推荐先修 | 有基础 AI 使用经验；自带产品/服务与一项真实营销目标 |
-| 视觉系统 | JR Academy Register A / A-editorial：暖奶油底、深墨、珊瑚主色、珊瑚至品红至紫色 AI 标志渐变、官方牛小匠与柔多层阴影 |
+| 视觉系统 | 官网与课程页遵循 JR Academy Register A / A-editorial；英文模块海报使用有界的 Airbotix Bright but Smart 版式借鉴，不使用 mascot、人物或图片模型生成的长文本 |
 
 ## 与现有课程的边界
 
