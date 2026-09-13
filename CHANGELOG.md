@@ -2,7 +2,7 @@
 
 ## 2026-09-13
 
-- 新增《AI Content Marketing for Small Business》第二套高对比 AI 运营控制台 / 科技杂志风英文 8 模块海报，保留关键媒体渠道并与正式 M01–M08 命名一致（`ai-marketing-agile-business/public/marketing-assets`）。
+- 新增《AI Content Marketing for Small Business》第二套明亮高级编辑设计风英文 8 模块海报，以强留白、品牌色块和清晰网格呈现关键媒体渠道及正式 M01–M08 命名（`ai-marketing-agile-business/public/marketing-assets`）。
 - 更新《AI Content Marketing for Small Business》中英文课程大纲、销售页、逐小时数据和英文 Roadmap 海报，使 M01–M08 每个模块名称都直接突出 AI 的实际用途，并保持关键媒体渠道与成果导向一致（`ai-marketing-agile-business`）。
 - 将《AI Content Marketing for Small Business》英文课程安排海报改为不绑定天数与时长的 8 模块 Roadmap，按 Foundation & Design、Social Media、Short Video、AI Business Operations 展示 M01–M08；补充 Instagram、Facebook、TikTok、YouTube、LinkedIn、WeChat、视频号、小红书和 Google Business Profile 等关键渠道，并移除旧时间版公开资产（`ai-marketing-agile-business/public/marketing-assets`）。
 - 新增《AI Content Marketing for Small Business》纯英文 4:5 宣传海报，保留品牌视觉、海报周边、Social Media、短视频和项目运营的成果导向画面，并输出公开 PNG（`ai-marketing-agile-business/public/marketing-assets`）。
