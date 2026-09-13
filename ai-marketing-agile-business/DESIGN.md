@@ -1,5 +1,23 @@
 # 小企业 AI 内容营销实战 — 课程设计
 
+```yaml
+surface_family: course
+course_slug: ai-marketing-agile-business
+extends:
+  - jr-academy-brand/DESIGN.md
+  - jr-academy-brand/APPLICATIONS.md
+  - jr-academy-brand/COURSE_DESIGN.md
+  - jr-academy-brand/POSTER_DESIGN.md
+registers:
+  product_page: A
+  campaign_poster: A-editorial
+facts:
+  - ai-marketing-agile-business/public/outline.en.json
+  - ai-marketing-agile-business/public/outline.json
+overrides:
+  - 课程视觉母题为小企业内容工作室，从品牌系统贯穿社媒、短视频和任务管理
+```
+
 ## 定位
 
 一门面向小企业主、创业者、个人品牌经营者和 Marketing 从业者的成果型实战课。AI 工具贯穿课程执行；前三小时完成品牌设计、海报与基础周边，随后完成 Social Media 和短视频，最后两小时建立 AI 项目与公司任务管理系统。
@@ -41,7 +59,7 @@
 | 班型 | 12–24 人，适合企业 Training Budget |
 | 难度 | 初级进阶；无需编程 |
 | 推荐先修 | 有基础 AI 使用经验；自带产品/服务与一项真实营销目标 |
-| 主题色 | `#19C37D`（增长绿）+ `#10162F` + `#FFDE59` |
+| 视觉系统 | JR Academy Register A / A-editorial：暖奶油底、深墨、珊瑚主色、珊瑚至品红至紫色 AI 标志渐变、官方牛小匠与柔多层阴影 |
 
 ## 与现有课程的边界
 
