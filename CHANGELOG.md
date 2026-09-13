@@ -2,7 +2,7 @@
 
 ## 2026-09-13
 
-- 将《AI Content Marketing for Small Business》英文课程安排海报改为不绑定天数与时长的 8 模块 Roadmap，按 Foundation & Design、Social Media、Short Video、AI Business Operations 展示 M01–M08，并移除旧时间版公开资产（`ai-marketing-agile-business/public/marketing-assets`）。
+- 将《AI Content Marketing for Small Business》英文课程安排海报改为不绑定天数与时长的 8 模块 Roadmap，按 Foundation & Design、Social Media、Short Video、AI Business Operations 展示 M01–M08；补充 Instagram、Facebook、TikTok、YouTube、LinkedIn、WeChat、视频号、小红书和 Google Business Profile 等关键渠道，并移除旧时间版公开资产（`ai-marketing-agile-business/public/marketing-assets`）。
 - 新增《AI Content Marketing for Small Business》纯英文 4:5 宣传海报，保留品牌视觉、海报周边、Social Media、短视频和项目运营的成果导向画面，并输出公开 PNG（`ai-marketing-agile-business/public/marketing-assets`）。
 
 ## 2026-09-12
