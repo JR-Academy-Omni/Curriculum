@@ -1,263 +1,256 @@
-# 小企业 AI 内容营销实战 — 推广方案
+# 小企业 AI 内容营销实战 — 推广计划
 
-> 目标用户画像见 [PERSONAS.md](./PERSONAS.md)。当前真实证据覆盖率为 0%，本方案是可执行结构，不是已批准排期。课程日期、价格、目标、报名链接和账号归属确认前，不进入社媒 SOURCE、平台 variant、Metricool 或付费投放。
+> 英文执行版见 [PROMOTION_PLAN.en.md](./PROMOTION_PLAN.en.md)。用户画像证据见 [PERSONAS.md](./PERSONAS.md)。本文件是课程推广唯一策略 SoT；平台正文、审批、排程和发布状态仍进入 `jr-omni/new-media/`。当前只完成推广策略与素材任务，不代表任何帖子已经批准、排程或发布。
 
-## 0. Meta
+## 0. 当前状态
 
-| Field | Value |
+| 项目 | 当前值 |
 |---|---|
-| Course Slug | `ai-marketing-agile-business` |
-| Course 中文名 | 小企业 AI 内容营销实战 |
-| Campaign 主标题 | 一个人的 AI 营销团队 |
-| Course Type | **暂定 Type 2 · 在职提效类** |
-| 识别理由 | 课程已精简为 13 小时成果型训练，重点是营销生产与 AI 项目和公司管理；价格和交付形态未确认，因此类型尚未锁定 |
-| Persona 状态 | `blocked_ground_truth` · 0% |
-| Launch Date | ⚠️ 待确认 |
-| Delivery Format | ⚠️ 待确认：集中 Workshop / 分阶段项目制 |
-| Price | ⚠️ 待确认 |
-| Target Enrollment | ⚠️ 待确认 |
-| Registration URL | ⚠️ 待确认并完成端到端测试 |
-| Campaign Owner | ⚠️ 待指派 |
-| Status | `blocked_pre_launch_inputs` |
-| Created / Updated | 2026-09-12 |
+| 课程 | 小企业 AI 内容营销实战 |
+| English | AI Content Marketing for Small Business |
+| 核心 Campaign | **一个人的 AI 营销团队** |
+| 核心解释 | AI 负责研究、内容、设计、视频和自动化；清晰的项目系统负责优先级、负责人、交付与复盘 |
+| Persona | 工作假设可用于内容测试；真实访谈覆盖率仍为 0%，不可写成已验证结论 |
+| 已有公开证明 | 中英文课程页、详细大纲、英文 8 模块 Roadmap 海报 |
+| 仍缺商业事实 | 开课日期、形式、城市/线上、价格、名额、讲师、退款规则、报名 URL |
+| 策略状态 | `strategy_ready` |
+| 招生执行状态 | `blocked_pre_launch_inputs` |
+| 更新日期 | 2026-09-13 |
 
-### 解锁执行所需的最少输入
+### 本计划现在可以做什么
 
-1. 开课日期、形式、城市或线上模式。
-2. 最终售价、优惠规则与退款政策。
-3. 报名人数目标和班级容量。
-4. 可公开报名链接及表单、付款、确认邮件的端到端结果。
-5. 至少 10 次用户访谈与 20 段匿名咨询记录。
-6. 课程主理人、Marketing Owner、内容、设计、销售和 Dev 的实际负责人。
+- 制作 evergreen 教育内容、成果样例和课程解释素材。
+- 测试哪个痛点与主标题更容易让目标用户停留、保存或咨询。
+- 把每件素材准备为平台独立 Brief。
 
-## 1. 产品定位与消息架构
+### 现在不能做什么
 
-### 一句话定位
+- 日期、价格、名额和报名入口未确认前，不发布“立即报名”“最后名额”等招生 CTA。
+- 本计划不自动创建 `SOURCE.md`、平台 variant、Metricool 排程或付费广告。
+- 不承诺涨粉、获客数、收入、ROI、节省工时或“无人值守自动营销”。
 
-给亲自负责内容和获客的小团队：前三小时用 AI 做好品牌视觉、模板、海报与基础周边，再完成社媒和短视频，最后用 AI 管理项目、公司任务、会议行动项与复盘。
+## 1. 谁最应该买
 
-### 品牌层与 Campaign 层分开
+| 优先级 | 人群 | 现在的真实问题 | 课程给出的可见结果 | 推广时不要说 |
+|---|---|---|---|---|
+| P1 | 亲自负责内容与获客的小企业主 | 每天临时想内容，设计风格漂移，发完没人跟进 | Brand Kit、30 天内容系统、可发布短视频、Company Task Board | “AI 替你全自动获客” |
+| P2 | 小团队里的 Marketing Generalist | 一个人同时写文案、出图、剪视频、协调审批 | 一套从 Brief 到发布 QA 的可复用工作流 | “不需要人工审核” |
+| P3 | 门店、服务业、顾问与个人品牌 | 有产品和客户问题，但缺稳定的内容节奏 | 把真实 FAQ、评论和咨询转成平台原生内容 | “适合所有行业” |
+| P4 | 需要统一营销执行的 2–10 人团队 | 任务散在聊天里，负责人和完成标准不清楚 | Project Brief、任务板、会议行动项、周报和复盘 | “上完课团队自然会执行” |
 
-- **正式课程名**：小企业 AI 内容营销实战
-- **Campaign 主标题**：一个人的 AI 营销团队
-- **销售副标题**：自动化内容生产 × 品牌设计 × 敏捷经营
-- **English**：AI Content Marketing for Small Business
-- **核心解释**：AI 负责生产和自动化，Agile 负责优先级、执行和持续改进。
+推广内容始终先说具体处境，再展示一个真实文件或工作流。删除无法验证、不能对应具体成果的抽象承诺。
+
+## 2. 对外消息架构
+
+### 固定层级
+
+1. **课程名**：小企业 AI 内容营销实战
+2. **Campaign 主标题**：一个人的 AI 营销团队
+3. **销售副标题**：内容自动化 × 品牌设计 × AI 项目管理
+4. **一句解释**：从客户画像、Brand Kit、海报和 30 天内容，到短视频与公司任务板，把 AI 变成一套能继续运行的营销系统。
+5. **证明**：直接展示模板、日历、视觉成品、视频文件和任务板，不用工具 Logo 墙代替成果。
+6. **行动**：先查看课程模块或领取诊断清单；商业信息确认后再切换为报名/咨询。
 
 ### 六个可轮换推广方向
 
-| 方向 | Headline | 适合阶段 | 必须展示的证据 |
+| 方向 | 中文 Hook | English Hook | 最适合的证据 |
 |---|---|---|---|
-| 一人团队 | **一个人的 AI 营销团队** | 首波认知 | 内容、设计、视频与 Company Task Board 同屏成品 |
-| 自动化 | **让营销内容自己跑起来** | 教育与 Demo | 从 Business Brief 到多平台内容的完整工作流 |
-| 成果 | **做完再下课** | 转化 | 13 个一小时单元、8 个成果模块和逐项交付清单 |
-| Social Media | **30 天内容，不再每天临时想** | 种草 | 30 天日历与 12 条完成内容的真实样例 |
-| 品牌一致性 | **每次出图，都像同一个品牌** | 视觉渠道 | Brand Kit、Master Template 与跨媒介对照 |
-| AI 公司管理 | **AI 不只做内容，也管项目执行** | 深度解释 / 答疑 | Project Brief、Company Task Board、会议行动项、周报与下一轮决策 |
+| 一人团队 | 一个人，也能建立一套 AI 营销系统 | Build your one-person AI marketing system | 全流程总览 |
+| 内容系统 | 你不是缺创意，你是每天都在从零开始 | You do not need more random ideas. You need a content system. | 30 天日历 |
+| 品牌一致性 | AI 出图最大的问题，不是不好看，是每张都不像同一个品牌 | The problem is not ugly AI design. It is brand drift. | Brand Kit before/after |
+| 平台原生 | 同一段文案复制到九个平台，不叫自动化 | Copying one post everywhere is not automation. | 多平台对照 |
+| 可发布视频 | 生成完不等于能发布 | Generated is not publishable. | 脚本、字幕、封面与 QA |
+| 公司执行 | AI 不只做内容，也要把任务真正推进 | AI should move the work, not just make more drafts. | Company Task Board |
 
-### 承诺边界
+## 3. 课程卖点必须落到这 8 个 AI 模块
 
-- 可以承诺：完成哪些文件、工作流和复盘方法。
-- 不承诺：获客数量、收入、节省小时数、ROI 或平台增长，除非有本课程真实测量证据。
-- 不使用：全自动获客、躺赚、一键爆款、保证增长、零人工审核。
-- 所有展示案例必须标明真实业务、课堂样例或演示数据；三者不能混写。
+| 模块 | 推广时展示什么 | 最清楚的结果 |
+|---|---|---|
+| M01 AI 业务、客户与品牌诊断 | 从真实 FAQ、评论和咨询中提取客户语言 | Business & Audience Brief、Audience Signal Sheet、Brand Audit |
+| M02 AI Brand Kit 与视觉模板 | Logo、色板、字体、图片与 CTA 规则 | Brand Source of Truth、社媒模板 |
+| M03 AI 海报、印刷品与周边设计 | 同一 Key Visual 如何跨数字和实体物料延展 | 海报 + 一项印刷品/周边 |
+| M04 AI 30 天 Social Media 内容系统 | 五类内容支柱如何进入日历 | 30 天日历 + 12 条完成文案 |
+| M05 AI 多平台原生内容生产 | 同一事实如何为不同平台重新表达 | Copy Pack、Carousel、单图、Story 与封面 |
+| M06 AI 可发布短视频制作 | Hook、分镜、字幕、封面与发布检查 | 3 条不同任务的短视频与 QA |
+| M07 AI 项目与公司任务管理 | 从目标到负责人、依赖与 Done | Project Brief、Company Task Board |
+| M08 AI 执行、跟进与复盘 | 会议行动项、周报、阻塞和下一轮 | Action Tracker、Weekly Review、下一轮计划 |
 
-## 2. Offer 与漏斗
+## 4. 12 件内容 Campaign Pack
 
-### 当前漏斗状态
+> 结构：7 件教育内容 + 3 件成果证明 + 2 件直接转化。直接促销占 2/12（16.7%），不超过官方有机内容 25% 上限。
+
+| ID | 类型 | 内容任务 | 推荐形式 | 主 CTA | 必须准备的证明 |
+|---|---|---|---|---|---|
+| C01 | 教育 | 为什么小企业每天发内容仍然很累 | 单图 / 短帖 | 保存“内容系统”框架 | 每天从零 → Brief → Calendar → Batch 的流程 |
+| C02 | 教育 | 从真实客户问题建立 Audience Signal Sheet | Carousel / 长帖 | 用三条真实咨询做一次提取 | 脱敏输入与提取结果 |
+| C03 | 证明 | 同一个品牌出图前后对比 | Before/after Carousel | 检查自己的品牌漂移 | 同一业务、同一内容、同一尺寸 |
+| C04 | 教育 | 一项产品如何拆成 30 天内容 | Calendar visual | 下载/查看日历结构 | 五类支柱、证据、CTA、负责人 |
+| C05 | 教育 | 为什么不能把一段文案复制到所有平台 | Platform comparison | 选出自己的主平台 | 同一事实的三种原生表达 |
+| C06 | 证明 | 从 Brand Kit 到海报、菜单和周边 | Process Carousel | 查看完整设计链路 | Brief、Key Visual、延展、交付检查 |
+| C07 | 教育 | 生成完为什么还不能发布 | Checklist single image | 保存发布 QA | 事实、Logo、版权、尺寸、字幕、链接 |
+| C08 | 教育 | 一条短视频需要哪些真实文件 | Short video / Carousel | 对照自己的视频文件夹 | Hook、脚本、分镜、字幕、封面、manifest |
+| C09 | 教育 | Backlog 如何决定本周先做什么 | Workflow diagram | 用价值/紧急/工作量排一次序 | 真实任务与排序理由 |
+| C10 | 证明 | Company Task Board 从 Brief 到 Done | Product walkthrough | 查看一项任务如何闭环 | Owner、依赖、状态、Review、证据链接 |
+| C11 | 转化 | 8 个 AI 模块，一张图看懂 | 课程 Roadmap 海报 | 查看完整课程大纲 | 已上线英文 Roadmap + 中英文大纲 |
+| C12 | 转化 | 这门课适合谁、不适合谁 | FAQ / single image | 商业信息确认前：登记兴趣；确认后：咨询/报名 | Persona、先修要求、承诺边界、真实 CTA |
+
+## 5. 三波发布顺序
+
+不绑定具体日期。开课信息确认后，把三波映射到实际日历与 Brisbane 时区。
+
+### Wave A · 先让用户认出自己的问题
+
+顺序：C01 → C02 → C04 → C05
+
+- 目标：让用户意识到问题不是“不会用 AI”，而是缺输入、品牌规则和可重复系统。
+- CTA：保存、评论自己的最大阻塞、查看免费框架。
+- 不出现：价格、倒计时、名额、夸张结果。
+
+### Wave B · 用成品证明课程不是理论
+
+顺序：C03 → C06 → C07 → C08 → C10
+
+- 目标：连续展示 Brand Kit、视觉延展、短视频 QA 和任务板。
+- CTA：查看完整案例或课程模块。
+- 每件内容只证明一件事，不把所有交付物塞进同一张图。
+
+### Wave C · 解释课程并完成转化
+
+顺序：C09 → C11 → C12
+
+- 目标：把前面的教育内容与 8 个模块连接起来，回答“适不适合我”。
+- 商业信息未确认：CTA 只能是查看大纲或登记兴趣。
+- 商业信息确认并完成 E2E：才允许写日期、价格、地点和报名入口。
+
+## 6. 关键媒体怎么用
+
+| 媒体 | 语言与内容 | 推荐使用 C-ID | 当前执行边界 |
+|---|---|---|---|
+| 官网课程页 | 中英文；课程定位、模块、交付物与 FAQ | C11、C12 | 核心承接页；报名链路未完成前只做查看大纲/咨询 |
+| Facebook · JR Academy | 中文实用短帖、Checklist、成果 Demo | C01、C02、C04、C07、C10、C11 | 进入发布前建立中文 SOURCE variant、媒体清单与人工批准 |
+| Instagram · `@jracademyau` | 英文可收藏的系统图或 Carousel | C04、C05、C07、C09 | 当前账号以 AI Engineering/system-design 为主；课程促销需单独 Campaign 批准，不占日更位 |
+| LinkedIn Company Page | 英文流程/Operating Model 单图 | C05、C09、C10 | 当前只允许 AI Engineering architecture 单图；本课程默认暂停，除非账号定位另行批准 |
+| TikTok · JR Academy | 英文短视频：问题 → 操作 → 结果 → CTA | C01、C05、C08 | 必须走独立 TikTok pipeline；需英文口播、字幕、配乐、封面和 9:16 QA |
+| YouTube · 匠人学院 | 中文 3–8 分钟工作流 Demo；必要时 Shorts | C06、C08、C10 | 需要成片、字幕、合法配乐、thumbnail、playlist 和发布字段；不是静态海报转视频 |
+| WeChat 公众号 | 中文完整案例与课程解释 | C02、C03、C06、C12 | 账号、作者和 CTA 确认后人工审核；不把短帖机械扩成长文 |
+| WeChat Channels 视频号 | 中文真人/讲解型短视频 | C06、C08、C10 | 当前无自动发布连接时交付员工手动包；不宣称已发布 |
+| 小红书 | 中文 before/after、日历、Checklist | C03、C04、C05、C07 | 先确认适配账号；走选题→草稿→海报→敏感词/AI 味审核→人工发布 |
+| Google Business Profile | 本地开课、真实地点与当前 intake 更新 | C11、C12 | 日期、地点、链接和本地相关性缺一则跳过 |
+
+### 渠道选择原则
+
+- 一份事实母稿可以跨平台，但每个平台重新写 Hook、长度、CTA 和视觉，不复制粘贴。
+- 课程促销不挤占与账号定位冲突的日更栏目。
+- 视频必须有讲解声轨、合法配乐、字幕、封面和完整 QA；非 YouTube 视频画面不得带 URL 或二维码。
+- Google Ads 保持 `manual_only`；预算、落地页和转化基线需要独立批准。
+
+## 7. 可直接使用的首批文案 Brief
+
+### P01 · 内容系统
+
+**中文 Hook**：你不是缺内容，你是每天都在从零开始。
+
+**正文结构**：
+
+1. 每天临时选题，团队只能追着截止时间跑。
+2. 先把客户问题整理成五类内容支柱。
+3. 每条内容提前绑定证据、形式、CTA、素材和负责人。
+4. AI 才能在同一套规则里批量协作，而不是批量制造废稿。
+
+**CTA**：查看 8 模块 Roadmap，先找到你现在缺的那一环。
+
+### P02 · 品牌一致性
+
+**中文 Hook**：AI 出图最大的问题，不是不好看，是每张都不像同一个品牌。
+
+**正文结构**：展示同一业务在没有 Brand Source of Truth 与有 Brand Kit 后的差异；检查 Logo、色板、字体、图片风格、CTA 和禁用项。
+
+**CTA**：拿最近三张海报并排放，先检查它们是否像同一个品牌。
+
+### P03 · 多平台原生
+
+**中文 Hook**：同一段文案复制到九个平台，不叫自动化。
+
+**正文结构**：事实和证据可以复用；Hook、阅读节奏、尺寸、CTA 和互动方式必须按平台重做。
+
+**CTA**：选一条旧内容，分别重写成朋友圈、小红书和短视频开场。
+
+### P04 · AI 公司执行
+
+**中文 Hook**：AI 做出了内容，但谁负责审核、什么时候交付、卡在哪里？
+
+**正文结构**：用 Project Brief、Company Task Board、会议行动项与 Weekly Review 把草稿推进到 Done。
+
+**CTA**：把一个停滞任务补齐 Owner、Deadline、Definition of Done 和下一步。
+
+## 8. 转化路径
 
 ```text
-教学型内容 / 成果 Demo
-  → 课程销售页
-  → 查看完整交付物与适合人群
-  → 报名 / 咨询 CTA
-  → 人工确认需求与课程适配
-  → 支付与确认
+教育内容 / 成果 Demo
+  → 中英文课程页或 8 模块 Roadmap
+  → 查看适合人群、交付物和完整大纲
+  → 商业信息未确认：登记兴趣 / 人工咨询
+  → 商业信息已确认且 E2E 通过：报名与付款
   → 课前 Business & Brand Intake
 ```
 
-### 待确认的 Funnel Ground Truth
+一个页面只保留一个主要 CTA。不要同时要求扫码、私信、评论、填写表单和付款。
 
-| 层级 | 需要记录的真实指标 | 当前值 |
+## 9. 素材清单与当前状态
+
+| 素材 | 状态 | 下一步 |
 |---|---|---|
-| Reach | 各渠道可见人数 | unavailable |
-| Visit | 带 UTM 的销售页 sessions | unavailable |
-| Intent | 查看详细大纲、点击咨询或报名 | unavailable |
-| Lead | 成功提交且可联系的 lead | unavailable |
-| Qualified Lead | 确有业务场景且课程适配 | unavailable |
-| Enrollment | 完成付款并收到确认 | unavailable |
-| Attendance | 实际到课 | unavailable |
-| Completion | 完成规定交付物 | unavailable |
+| 中英文课程页 | 已有 | 检查最终 CTA 与移动端 |
+| 中英文详细大纲 | 已有 | 保持 M01–M08 与课程页一致 |
+| 英文 8 模块 Roadmap 海报 | 已有、已公开 | 可作为 C11 proof asset；平台版仍需独立尺寸和审核 |
+| 真实业务端到端 Demo | 待做 | 选择一个获授权的小企业案例，保留输入→审核→成品证据 |
+| Brand before/after | 待做 | 使用同一业务、同一事实和同一尺寸 |
+| 30 天 Content Calendar 样例 | 模板已有，公开样例待做 | 明确标注“课堂样例”或真实案例 |
+| 三平台原生内容对照 | 待做 | 一份事实，三种原生表达 |
+| 短视频 Demo | 待做 | 先写 Brief、脚本、shot list 和 QA manifest |
+| Company Task Board walkthrough | 模板已有，演示待做 | 录制一项真实任务如何从 Brief 到 Done |
+| FAQ / Objection Sheet | blocked | 等真实咨询和访谈证据，不编顾虑 |
+| 招生卡、价格卡、倒计时 | blocked | 等日期、价格、名额和报名 URL 批准 |
 
-报名目标、转化率和渠道分摊在真实目标与历史数据补齐前不反推，避免用行业数字冒充本课程基线。
+## 10. Measurement Plan
 
-## 3. 渠道策略
+### 漏斗指标
 
-### P0 · 上线前必须完成
-
-| 渠道 / 资产 | 作用 | Owner | Skill / 流程 | 完成判据 |
-|---|---|---|---|---|
-| 课程销售页 | 承接全部流量 | 待指派·Dev | 销售页 QA | 桌面与手机可读；CTA、表单、支付和确认链路实测通过 |
-| 成果 Demo | 证明不是理论课 | 待指派·课程主理人 | 课程资产制作 | 至少展示 1 套真实且获授权的 Business Brief → Content → Design → Sprint 成品 |
-| Persona 取证 | 决定渠道与文案 | 待指派·Research | `target-user-persona-mapper` | 覆盖率 ≥ 80% |
-| Tracking | 判断渠道是否有效 | 待指派·Dev | GA4 / UTM / CRM | 每条来源可追溯到 lead 与 enrollment |
-
-### P1 · 待 Persona 验证后启动
-
-| 渠道 | 推荐内容 | 当前约束 |
+| 层级 | 记录什么 | 决策用途 |
 |---|---|---|
-| 小红书 | Quick win、品牌 before/after、30 天内容系统 | 必须先锁定适配账号；现有账号人群不能凭名称猜测 |
-| 微信公众号 / 社群 | 完整案例拆解、Workshop 说明、主理人真名观点 | 官方公众号账号资料仍待补；真名发声必须人工执行 |
-| Facebook JR Academy | 中文 checklist、课堂证据、活动或 intake 更新 | 进入官方 queue 前建立 SOURCE、中文 variant、审批和媒体清单 |
-| YouTube | 3–8 分钟真实工作流 Demo 或课程解读 | 需要视频、字幕、合规配乐、封面、playlist 与发布字段完整 |
-| Google Business Profile | 有真实地点或本地开课信息时使用 | 日期、地点、官方链接和本地相关性缺一则跳过 |
-| Webinar | 现场完成一个真实小企业 Campaign Slice | Topic 必须先评估；讲后 lead 进入 24h / 72h / 7d 跟进 |
-| SEO | 围绕小企业 AI 内容工作流、品牌一致性和敏捷营销建立长尾 | 需要关键词证据、FAQ 与真实示例；不写模板化长文 |
+| Attention | Reach、3 秒视频观看、有效停留 | Hook 是否让目标用户停下 |
+| Value | Saves、Carousel 完读、50% 视频观看 | 内容是否值得保留 |
+| Intent | 课程页访问、Roadmap/大纲查看、咨询点击 | 哪个主题产生真实兴趣 |
+| Lead | 可联系且同意后续沟通的 enquiry | 判断渠道质量，不只看数量 |
+| Qualified | 有真实业务场景、课程适配、可参加 | 判断 Persona 与 Offer 是否匹配 |
+| Enrollment | 付款成功并收到确认 | 只在报名链路上线后记录 |
+| Delivery | 到课、模块完成、D+7 Review | 证明推广承诺与实际交付一致 |
 
-### 当前不启用
+没有历史基线前不编转化率目标。每周只与该账号自身过去可比内容比较，并记录 Stop / Change / Continue / Scale。
 
-| 渠道 | 原因 |
-|---|---|
-| LinkedIn Company Page | 当前账号只允许英文 AI Engineering architecture 单图，课程推广不符合账号定位 |
-| Instagram 日常位 | 当前账号以英文 system-design 视觉内容为主，课程促销不能挤占或伪装成日更 |
-| TikTok | 新内容必须走独立 TikTok pipeline；未生成独立英文脚本、成片和验收包前不进入 |
-| Google Ads / 付费社媒 | 没有预算批准、转化基线和已验证报名链路；保持 `manual_only` |
-| 私域批量群发 | 没有已授权名单与频控规则；员工真名消息不能由 AI 代发 |
+### UTM
 
-## 4. 相对时间轴 Task 矩阵
+`utm_campaign=ai-marketing-agile-business-{intake}`；`utm_source` 使用真实平台；`utm_medium` 只使用 `organic-social`、`community`、`email`、`webinar` 或 `referral`。`{intake}` 在批次确认前保持占位符。
 
-> 日期未知，先使用相对节点。确认 Launch Date 后再换成具体日期和时区；任何“已完成”都需要文件、截图、系统回读或公开 URL 证据。
+## 11. 上线与发布闸门
 
-### T-21 · 地基与取证
+### Evergreen 内容可进入制作前
 
-| Time | Task | R | 分工 | Skill / 流程 | 耗时 | 优先级 | 状态 |
-|---|---|---|---|---|---:|---|---|
-| Mon 09:00 | 锁定开课日期、形式、价格、容量和退款政策 | 待指派·课程 Owner | ✏️ | 产品决策 | 60m | P0 | blocked |
-| Mon 11:00 | 测试报名、支付、确认邮件与 lead 回写 | 待指派·Dev | ✏️ | E2E QA | 120m | P0 | blocked |
-| Tue 09:00 | 完成 5 名近期咨询者访谈 | 待指派·Research | ✏️ | Persona interview | 180m | P0 | ⬜ |
-| Wed 09:00 | 匿名整理至少 20 段历史咨询 | 待指派·Sales Ops | ✏️ | Ground truth collection | 180m | P0 | ⬜ |
-| Thu 10:00 | 更新 PERSONAS 并计算真实渠道 Top 5 | 待指派·Research | 🤖→✏️ | `target-user-persona-mapper validate` | 120m | P0 | blocked |
-| Fri 14:00 | 选定 Campaign 主标题与 3 个副方向 | 待指派·Campaign Owner | ✏️ | 本文 §1 | 45m | P1 | ⬜ |
+- 内容事实能回到课程大纲或获授权案例。
+- 图片/视频有尺寸、版权、拼写和移动端 QA。
+- 每个平台有独立 variant，不把候选写成已批准。
 
-### T-14 · 证明价值
+### 招生 CTA 可发布前
 
-| Time | Task | R | 分工 | Skill / 流程 | 耗时 | 优先级 | 状态 |
-|---|---|---|---|---|---:|---|---|
-| Mon 09:00 | 制作 1 套真实业务端到端 Demo | 待指派·课程 Owner | 🤖→✏️ | 课程工作流 | 1d | P0 | ⬜ |
-| Tue 09:00 | 用已验证 Persona 产出 9 个选题候选并人工选 3 个 | 待指派·New Media | 🤖→✏️ | `xhs-topic-picker` | 90m | P1 | blocked |
-| Wed 10:00 | 生成 3 个平台适配内容任务与媒体 Brief | 待指派·New Media | 🤖→✏️ | 对应平台内容 Skill | 180m | P1 | blocked |
-| Thu 10:00 | 完成海报方向测试并保留选择证据 | 待指派·Designer | 🤖→✏️ | `poster-user-test` | 120m | P1 | blocked |
-| Fri 14:00 | 复核销售页标题、成果、边界、FAQ 与 CTA | 待指派·Course + Dev | ✏️ | Landing QA | 120m | P0 | ⬜ |
+- Program 日期、形式、地点、价格、优惠、名额和退款规则已批准。
+- 报名、付款、发票、确认邮件和课前材料提交完成端到端测试。
+- 讲师、助教、线上会议或场地已锁定。
+- 对应账号、语言、媒体、人工审批和查重全部通过。
 
-### T-7 · 集中转化
+## 12. 下一步执行顺序
 
-| Time | Task | R | 分工 | Skill / 流程 | 耗时 | 优先级 | 状态 |
-|---|---|---|---|---|---:|---|---|
-| Mon 09:00 | 回读渠道数据并决定保留、调整或停止 | 待指派·Campaign Owner | ✏️ | `course-promotion-architect audit` | 60m | P0 | blocked |
-| Tue 19:30 | 直播演示从业务资料到 Campaign Sprint | 待指派·课程 Owner | ✏️ | Webinar | 90m | P1 | blocked |
-| Wed 09:00 | 对 Webinar EOI 完成派单 | 待指派·Sales Ops | ✏️ | `eoi-followup dispatch` | 30m | P0 | blocked |
-| Wed–Fri | 完成 24h / 72h 个性化跟进并记录结果 | 待指派·Course Adviser | ✏️ | `eoi-followup` | 按 lead | P0 | blocked |
-| Fri 16:00 | 审核开课条件，决定继续、rescue 或延期 | Lightman + 待指派 Owner | ✏️ | 人工决策 | 45m | P0 | blocked |
-
-### T-3 / T-1 / D0 · 最终检查与开课
-
-| Node | Task | R | 完成判据 |
-|---|---|---|---|
-| T-3 | 只向已授权名单发送最终提醒 | 待指派·Course Ops | 名单、内容、频控与退订路径均已检查 |
-| T-1 | 确认学员入群、课前资料与 Business Intake | 待指派·Course Ops | 每位学员状态可回读；敏感业务资料有处理规则 |
-| D0 | 开课并记录实际出席 | 待指派·Course Owner | 实际 attendance，不用报名数代替 |
-
-### D+3 / D+7 / D+30 · 证据与复盘
-
-| Node | Task | R | 完成判据 |
-|---|---|---|---|
-| D+3 | 收集难度、进度和第一批交付物反馈 | 待指派·Course Ops | 原始问卷与匿名汇总均保存 |
-| D+7 | 征得许可后整理真实作品与学员反馈 | 待指派·Marketing | 有明确授权；不改写为效果承诺 |
-| D+30 | 对照渠道、lead、报名、到课和完成数据做复盘 | Lightman + 待指派 Owner | 真实数据回填；形成 Stop / Change / Continue / Scale |
-
-## 5. 素材生产清单
-
-| Asset | Purpose | Required proof | Status |
-|---|---|---|---|
-| 销售页 Hero | 3 秒看懂课程 | 标题、对象、成果、CTA | local draft |
-| 课程成果总览图 | 展示 13 小时核心交付 | 与 `outline.json` 自动/人工核对 | todo |
-| 真实业务 Demo | 证明工作流可运行 | 输入来源、生成过程、人工审核、最终文件 | todo |
-| Brand before/after | 证明一致性 | 同一业务、同一事实、前后版本 | todo |
-| 30 天 Content Calendar 样例 | 证明可持续生产 | 真实或明确标注为课堂样例 | todo |
-| 三平台内容对照 | 证明不是复制粘贴 | 每个平台独立表达与尺寸 | todo |
-| 15–45 秒课程短视频 | 建立认知 | 讲解声轨、配乐、字幕、封面、完整 QA | todo |
-| Webinar Deck | 现场转化 | 一个端到端 Demo，不做工具大全 | todo |
-| FAQ / Objection Sheet | 回应真实顾虑 | 必须来自 PERSONAS 用户原话 | blocked |
-| UTM / Tracking Map | 数据归因 | source、medium、campaign 命名与 CRM 字段一致 | todo |
-
-## 6. 内容任务包
-
-课程推广架构只定义任务，不在这里冒充已批准的平台正文。
-
-### 第一批 9 个选题 Brief
-
-1. 一个产品如何拆成 30 天社媒内容。
-2. 同一条内容为什么不能直接复制到所有平台。
-3. AI 出图最常见的品牌不一致问题。
-4. 从 Brand Kit 到海报、菜单和周边的延展过程。
-5. 一条短视频从 Hook、分镜到字幕和封面的完整文件。
-6. 为什么“生成完”不等于“可以发布”。
-7. 小团队如何用 Backlog 决定这周先做什么。
-8. 一批 Social Media 内容的 Definition of Done 应该包含什么。
-9. 发布后如何决定 Stop、Change、Continue 或 Scale。
-
-每个选题进入平台前必须：绑定 Persona 痛点证据 → 建 SOURCE → 选账号 → 读 PROFILE / CLAUDE → 生成独立 variant → 媒体 QA → 人工批准 → 查重 → 排程。
-
-## 7. Measurement Plan
-
-### UTM 规则
-
-`utm_campaign=ai-marketing-agile-business-{intake}`；`utm_source` 使用实际平台；`utm_medium` 使用 `organic-social`、`email`、`webinar`、`community` 或 `referral`。`{intake}` 在开课批次确定前不得猜写。
-
-### Review 节奏
-
-- 每周：检查内容状态、渠道访问、CTA、lead 和阻塞，不用点赞替代报名意向。
-- T-7：只根据真实数据决定继续、调整或停止；付费投放必须单独审批。
-- D+7：检查到课、第一批交付和授权反馈。
-- D+30：完成 Campaign Review 与 Retro，并把有效流程沉淀为下一期模板。
-
-## 8. RACI 与人工闸门
-
-| Decision / Work | Responsible | Approver | 当前状态 |
-|---|---|---|---|
-| 课程定位与承诺 | 待指派·Course Owner | Lightman | 待指派 |
-| Persona 取证 | 待指派·Research / Sales Ops | Campaign Owner | 待指派 |
-| 销售页与报名链路 | 待指派·Dev | Course Owner | 待指派 |
-| 内容与媒体 | 待指派·New Media / Designer | Campaign Owner | 待指派 |
-| EOI 跟进 | 待指派·Sales Ops / Adviser | Course Owner | 待指派 |
-| 预算与付费投放 | 待指派·Marketing | **Lightman** | 未批准 |
-| 平台发布 | 对应账号 Owner | Campaign Owner | 未批准 |
-
-## 9. 风险与决策日志
-
-| Date | Risk / Decision | Impact | Next action |
-|---|---|---|---|
-| 2026-09-12 | Persona Ground truth 为 0% | 渠道和文案不能正式锁定 | 完成 PERSONAS §6 取证 |
-| 2026-09-12 | 课程日期、形式、价格和目标未知 | 时间轴只能使用相对节点 | Course Owner 补齐 Meta |
-| 2026-09-12 | 未确认适合本课程的官方社媒账号 | 不建立账号 variant，不排程 | 完成账号 fit review |
-| 2026-09-12 | 当前课程标题偏产品名，Campaign headline 尚未批准 | 页面可用但主传播语未锁定 | 在 6 个方向中 user-test 后选择 |
-
-## 10. 子 Skill 调度索引
-
-| Skill / Workflow | 用途 | 触发条件 |
-|---|---|---|
-| `target-user-persona-mapper` | 建立真实用户画像与渠道权重 | 立即执行取证；覆盖率 ≥ 80% 才解锁文案 |
-| `course-promotion-architect` | 维护本方案与阶段审计 | 输入补齐后转 `planning` |
-| `xhs-topic-picker` → `xhs-draft` → `xhs-poster` → `xhs-review` | 小红书内容生产 | 明确适配账号、Persona 和发布时间后 |
-| `blog-longform-writer` + `wechat-article-quality` | 公众号深度案例 | 官方账号、CTA 与真实案例确定后 |
-| `poster-user-test` | 六个传播方向与海报选择 | PERSONAS 有真实原话后 |
-| `webinar-topic-feasibility` | Webinar 主题筛选 | 开课日期与主理人确定后 |
-| `eoi-followup` | 讲座后 24h / 72h / 7d 跟进 | 合法收集 lead 且 Owner 已指派 |
-| `seo-optimizer` + `eeat-optimizer` | 销售页和长尾资产 | 最终标题、FAQ 和作者信息确定后 |
-| `new-media-manager` | SOURCE、账号 variant、审批、排程与状态回读 | 明确要求进入官方发布流程后 |
-
-## 11. 本周三件 P0
-
-1. 确认课程日期、形式、价格、容量、报名目标和报名链接 Owner。
-2. 完成至少 10 次访谈与 20 段匿名咨询记录整理，把 PERSONAS 从 0% 提升到 80%。
-3. 制作一套真实业务端到端 Demo，作为销售页、Webinar 和后续内容的共同 proof asset。
+1. 选择一个可公开、获授权的小企业作为 Campaign proof business。
+2. 先完成 C03、C04、C05、C08、C10 五件可见 Demo。
+3. 用同一批 Demo 组装 C01–C12，不重复制造不同事实版本。
+4. 确认日期、价格、名额、讲师与报名链路后，更新 C12 和转化 CTA。
+5. 用户明确要求发布时，再进入 `new-media-manager`：建立 SOURCE、平台 variant、media manifest、人工批准、Metricool 查重与状态回读。

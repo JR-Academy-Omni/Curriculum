@@ -2,6 +2,7 @@
 
 ## 2026-09-13
 
+- 重写《AI Content Marketing for Small Business》中英文推广计划，以 12 件内容 Campaign Pack、三波发布顺序、主要媒体渠道边界、可直接执行的双语文案 Brief、转化路径与真实复盘指标替换旧版阻塞清单；直接促销控制为 2/12，且未创建排程或发布状态（`ai-marketing-agile-business/PROMOTION_PLAN*.md`）。
 - 新增《AI Content Marketing for Small Business》第二套 Airbotix Bright but Smart 版式英文 8 模块海报，以暖白画布、Plus Jakarta Sans、五色阶段轨道、柔和圆角与确定性 HTML 排版呈现关键媒体渠道及正式 M01–M08 命名，并明确不使用 mascot 或人物（`ai-marketing-agile-business/public/marketing-assets`）。
 - 更新《AI Content Marketing for Small Business》中英文课程大纲、销售页、逐小时数据和英文 Roadmap 海报，使 M01–M08 每个模块名称都直接突出 AI 的实际用途，并保持关键媒体渠道与成果导向一致（`ai-marketing-agile-business`）。
 - 将《AI Content Marketing for Small Business》英文课程安排海报改为不绑定天数与时长的 8 模块 Roadmap，按 Foundation & Design、Social Media、Short Video、AI Business Operations 展示 M01–M08；补充 Instagram、Facebook、TikTok、YouTube、LinkedIn、WeChat、视频号、小红书和 Google Business Profile 等关键渠道，并移除旧时间版公开资产（`ai-marketing-agile-business/public/marketing-assets`）。
