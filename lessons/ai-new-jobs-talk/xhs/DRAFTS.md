@@ -327,7 +327,7 @@ Reddit / X / Google Trends → AI Agent 排 Top3 选题 → 4 个平台同时生
 
 **这不是 demo。**
 
-你现在打开 jiangren.com.au/curriculum/ 能看到 8 个 bootcamp 课程页，全是这套系统生成的。
+你现在打开 jracademy.ai/curriculum/ 能看到 8 个 bootcamp 课程页，全是这套系统生成的。
 这条小红书笔记本身，也是这套系统跑出来的。
 
 —

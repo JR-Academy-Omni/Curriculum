@@ -76,7 +76,7 @@
 
 Production
 ├── api.jiangren.com.au           # 数据库 (Training/Modules/Programs/Lessons)
-├── jiangren.com.au/curriculum/   # 静态 HTML (curriculum.html)
+├── jracademy.ai/curriculum/   # 静态 HTML (curriculum.html)
 └── jiangren.com.au/program-course/training/full-stack-developer-interview  # 课程详情页
 ```
 

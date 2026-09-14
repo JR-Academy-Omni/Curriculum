@@ -218,7 +218,7 @@ PHASE 4 · AI Demo Day（W10-W11）
 
 ## 申请通道
 
-👉 **完整销售页 + 申请入口**：[jiangren.com.au/curriculum/ai-solo-founder-bootcamp/landing.html](https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/landing.html)
+👉 **完整销售页 + 申请入口**：[jracademy.ai/curriculum/ai-solo-founder-bootcamp/landing.html](https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/landing.html)
 
 👉 **课程介绍 10 页 deck**：[partnerships/course-intro/01.html](https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/partnerships/course-intro/01.html)
 

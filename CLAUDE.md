@@ -189,7 +189,7 @@ curriculum/{slug}/agent-outputs/
 
 ## What This Repo Is
 
-Static curriculum site for JR Academy bootcamps. Each bootcamp is a standalone Vite + React 19 + TypeScript app that builds to static HTML. The site is served at `jiangren.com.au/curriculum/`.
+Static curriculum site for JR Academy bootcamps. Each bootcamp is a standalone Vite + React 19 + TypeScript app that builds to static HTML. The site is served at `jracademy.ai/curriculum/`.
 
 Currently contains:
 - **ai-adoption-bootcamp/** — AI Adoption Specialist Bootcamp (8-week, for business professionals)

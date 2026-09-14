@@ -1,6 +1,6 @@
 ---
 name: talk-deck
-description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jiangren.com.au/curriculum/lessons/{slug}/）。沿用 1600×900 SlideEngine、一文件一页、真实数据与 JR Register B 圆角课程视觉。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic — NOT for static lesson HTML (use lesson-design) or xiaohongshu posters (use xhs-poster)."
+description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jracademy.ai/curriculum/lessons/{slug}/）。沿用 1600×900 SlideEngine、一文件一页、真实数据与 JR Register B 圆角课程视觉。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic — NOT for static lesson HTML (use lesson-design) or xiaohongshu posters (use xhs-poster)."
 ---
 
 # /talk-deck — 网页版讲座 PPT 生成器
@@ -161,7 +161,7 @@ export const radii = { panel: 24, card: 18, label: 8, pill: 999 } as const;
 5. **slides**：逐页写 `slides/Xnn_*.tsx`，同构页用模板组件。
 6. **register**：在 `App.tsx` 按章节 import + 排列。
 7. **verify**：`bun run dev` 走查每页（键盘翻页 + `?page=N`）→ `bun run build` 确认 tsc 通过。
-8. **deploy**：build 出 `dist/`，部署到 `jiangren.com.au/curriculum/lessons/{slug}/`（检查 base 子路径资源 404）。
+8. **deploy**：build 出 `dist/`，部署到 `jracademy.ai/curriculum/lessons/{slug}/`（检查 base 子路径资源 404）。
 
 ---
 

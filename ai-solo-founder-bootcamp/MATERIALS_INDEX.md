@@ -31,7 +31,7 @@
 | [`SESSION_DECK_NOTES.md`](./SESSION_DECK_NOTES.md) | 课堂 deck 讲者备注 |
 | [`W1_RUNSHEET.md`](./W1_RUNSHEET.md) | **W1 运营执行单（⚠️ W2 起无同类文件，见缺口 G1）** |
 | [`TEACHERS.md`](./TEACHERS.md) | **师资与三城线下 Tutor 名单**（2026-08-13 新增，填补原 G2 缺口） |
-| [`../lessons/ai-solo-founder-w1/`](../lessons/ai-solo-founder-w1/) ／ [`../lessons/ai-solo-founder-w2/`](../lessons/ai-solo-founder-w2/) | **W1 / W2 网页版课件 deck**（本仓库 `lessons/` 下，线上 `jiangren.com.au/curriculum/lessons/{slug}/`） |
+| [`../lessons/ai-solo-founder-w1/`](../lessons/ai-solo-founder-w1/) ／ [`../lessons/ai-solo-founder-w2/`](../lessons/ai-solo-founder-w2/) | **W1 / W2 网页版课件 deck**（本仓库 `lessons/` 下，线上 `jracademy.ai/curriculum/lessons/{slug}/`） |
 | [`public/outline.json`](./public/outline.json) ＋ [`outline.md`](./public/outline.md) | 🔑 课程大纲唯一数据源（改大纲改 json，再跑 lineage 重建） |
 | `public/curriculum.html`、`phase1–4.html`、`session-deck.html` | 大纲页 / 各 Phase 页 / 课堂 deck |
 

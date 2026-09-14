@@ -18,7 +18,7 @@ If you score <40, you shouldn't.
 
 Try it 👇
 
-🔗 jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
+🔗 jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
 
 ---
 
@@ -144,7 +144,7 @@ Two more free tools we just released alongside the rubric:
 
 Free. Use even if you don't apply.
 
-🔗 jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets.html
+🔗 jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets.html
 
 ---
 

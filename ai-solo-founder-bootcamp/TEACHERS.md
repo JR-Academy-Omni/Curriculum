@@ -118,7 +118,7 @@ TAE40122 持牌导师，10 年 + 澳洲企业运营与营销经验，专注于�
 
 | 周次 | 目录 | 线上地址 |
 |---|---|---|
-| W1 | [`../lessons/ai-solo-founder-w1/`](../lessons/ai-solo-founder-w1/) | `jiangren.com.au/curriculum/lessons/ai-solo-founder-w1/` |
+| W1 | [`../lessons/ai-solo-founder-w1/`](../lessons/ai-solo-founder-w1/) | `jracademy.ai/curriculum/lessons/ai-solo-founder-w1/` |
 | **W2** | [`../lessons/ai-solo-founder-w2/`](../lessons/ai-solo-founder-w2/) | <https://jracademy.ai/curriculum/lessons/ai-solo-founder-w2/?page=1> |
 
 > 📌 W2 课后有学员反馈与内部复盘（课堂主线被个案答疑打断、整体架构讲错），**改这两套 deck 前先读** `jr-omni:mentor-archives/jr-lecturers/teaching-reviews/2026-08-09-solo-founder-W2-internal-review.md`。

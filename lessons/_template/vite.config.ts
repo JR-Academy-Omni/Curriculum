@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
 	plugins: [react()],
-	// 部署到 jiangren.com.au/curriculum/lessons/{{SLUG}}/ —— 把 {{SLUG}} 换成本 deck 的 slug
+	// 部署到 jracademy.ai/curriculum/lessons/{{SLUG}}/ —— 把 {{SLUG}} 换成本 deck 的 slug
 	base: process.env.NODE_ENV === 'production' ? '/curriculum/lessons/{{SLUG}}/' : '/',
 });

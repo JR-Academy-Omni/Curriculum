@@ -90,7 +90,7 @@ bun run dev
 
 ## 部署
 
-Push to `main` → GitHub Actions build → SCP to nginx → `jiangren.com.au/curriculum/`
+Push to `main` → GitHub Actions build → SCP to nginx → `jracademy.ai/curriculum/`
 
 ### 需要的 GitHub Secrets
 

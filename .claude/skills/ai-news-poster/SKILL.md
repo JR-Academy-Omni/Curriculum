@@ -354,4 +354,4 @@ cd curriculum && python3 -m http.server 8090
 每天 9:15  /deploy
 ```
 
-产出当天自动到 `jiangren.com.au/curriculum/ai-news-posters/{YYYY-MM-DD}/`，运营直接拿图。
+产出当天自动到 `jracademy.ai/curriculum/ai-news-posters/{YYYY-MM-DD}/`，运营直接拿图。
