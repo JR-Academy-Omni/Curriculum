@@ -8,14 +8,14 @@
 
 | 页面 | URL |
 |------|-----|
-| 课程索引 | https://jiangren.com.au/curriculum/ |
-| AI Adoption — 课程总览 | https://jiangren.com.au/curriculum/ai-adoption-bootcamp/curriculum.html |
-| AI Adoption — Slide Deck | https://jiangren.com.au/curriculum/ai-adoption-bootcamp/ |
-| AI Adoption — Phase 1 详情 | https://jiangren.com.au/curriculum/ai-adoption-bootcamp/phase1.html |
-| AI Adoption — Phase 2 详情 | https://jiangren.com.au/curriculum/ai-adoption-bootcamp/phase2.html |
-| AI Adoption — Phase 3 详情 | https://jiangren.com.au/curriculum/ai-adoption-bootcamp/phase3.html |
-| AI Adoption — Phase 4 详情 | https://jiangren.com.au/curriculum/ai-adoption-bootcamp/phase4.html |
-| AI Adoption — 内部资料 | https://jiangren.com.au/curriculum/ai-adoption-bootcamp/internal.html |
+| 课程索引 | https://jracademy.ai/curriculum/ |
+| AI Adoption — 课程总览 | https://jracademy.ai/curriculum/ai-adoption-bootcamp/curriculum.html |
+| AI Adoption — Slide Deck | https://jracademy.ai/curriculum/ai-adoption-bootcamp/ |
+| AI Adoption — Phase 1 详情 | https://jracademy.ai/curriculum/ai-adoption-bootcamp/phase1.html |
+| AI Adoption — Phase 2 详情 | https://jracademy.ai/curriculum/ai-adoption-bootcamp/phase2.html |
+| AI Adoption — Phase 3 详情 | https://jracademy.ai/curriculum/ai-adoption-bootcamp/phase3.html |
+| AI Adoption — Phase 4 详情 | https://jracademy.ai/curriculum/ai-adoption-bootcamp/phase4.html |
+| AI Adoption — 内部资料 | https://jracademy.ai/curriculum/ai-adoption-bootcamp/internal.html |
 
 ## 项目结构
 
@@ -116,3 +116,7 @@ location /curriculum/ {
 3. 在 `deploy.yml` 中添加 build 和 copy 步骤
 4. 遵循 `DESIGN.md` 设计规范
 5. 使用 `bootcamp-curriculum-creator` skill 自动化流程
+
+## 对外链接域名
+
+课程资料统一发布 `https://jracademy.ai/curriculum/` 下的链接。保留现有路径、查询参数和锚点；旧域名仅作兼容入口，不再作为新资料的分享地址。邮箱、API 和官网其他路径不在本次替换范围内。CI 在上传前检查产物，发现旧 curriculum 绝对链接即停止发布。

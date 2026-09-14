@@ -3,7 +3,7 @@
 > **Status**: ✅ Shipped (2026-04-11)
 > **Owner**: Stan Luo (CTO, Jobpin AI)
 > **Production URL**: https://jiangren.com.au/program-course/training/full-stack-developer-interview
-> **Curriculum URL**: https://jiangren.com.au/curriculum/full-stack-developer-interview/curriculum.html
+> **Curriculum URL**: https://jracademy.ai/curriculum/full-stack-developer-interview/curriculum.html
 
 ---
 
@@ -202,7 +202,7 @@ Production
 
 | 坑 | 原因 | 修复 |
 |----|-----|------|
-| `localhost:8000` 看不到 curriculum iframe | CurriculumEmbed fetch `https://jiangren.com.au/curriculum/.../pages.json` 触发 CORS | next.config.js 加 dev rewrite，组件改用相对路径 `/curriculum` |
+| `localhost:8000` 看不到 curriculum iframe | CurriculumEmbed fetch `https://jracademy.ai/curriculum/.../pages.json` 触发 CORS | next.config.js 加 dev rewrite，组件改用相对路径 `/curriculum` |
 | Phase HTML 内容泄露 | `curriculumPages` 列出 phase0-phase8.html，公开可访问 | 只保留 `curriculum.html`，删除 phase HTML 文件 |
 | description_en 脏数据 | production 上有 `<p><br data-mce-bogus="1"></p>` | 直接调 admin-cms API 清空 |
 
@@ -328,7 +328,7 @@ syllabusDoc.lesson.forEach((item: any) => {
 ### 修改的核心代码
 
 - `jr-academy-web-zh/src/components/Pages/BootcampDetailPage/components/BootcampDetailPageIntroduce/IntroduceSyllabus.tsx` — CurriculumEmbed 改用相对路径 + 补全 PAGE_LABELS
-- `jr-academy-web-zh/next.config.js` — 加 dev rewrite `/curriculum/* → https://jiangren.com.au/curriculum/*`
+- `jr-academy-web-zh/next.config.js` — 加 dev rewrite `/curriculum/* → https://jracademy.ai/curriculum/*`
 - `curriculum/.github/workflows/deploy.yml` — wire `full-stack-developer-interview` 到部署流水线
 
 ### Production IDs

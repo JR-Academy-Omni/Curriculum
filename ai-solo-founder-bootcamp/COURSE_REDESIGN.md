@@ -36,7 +36,7 @@
 - **W4 · 做出能卖的东西|Make It Real** — 不会 code 的人把专长+AI 做成生产化服务/信息产品(交付物 + SOP);会 code 的定 MVP 范围。周中:MVP coding 全自学 + 三个 Vibe Lab。**产出**:能演示、能交付的最小版本。
 - **W5 · 立起你的品牌门面|Brand & Website** — 大家一起做**官网 + design system + 品牌**(Source of Truth 一稿出全套:官网/Pitch Deck/一页纸/公众号)。**产出**:上线的官网 + 一套 design system。
 - **W6 · 别让项目烂尾|Keep Shipping** ⭐Ray(微软) — 大厂 PM 落到一人公司(任务拆解/优先级/在职版可持续节奏)+ AI OS 当 PM 维护 backlog、追进度。**产出**:OS 维护的 backlog + 一周执行计划。
-- **W7 · 创业者的互联网产品 | Product Operations** — 产品结构与权限、GA / GSC 等分析工具、收费与支付商、常用法律文件、Sales Pipeline / Leads / CRM、经营成本与免费资源。现场演示付款交付并完成经营地图，选择一个缺口实操。**产出**：经营地图、销售跟进记录、验证证据；课后推进真实首单。[51 页课件](https://jiangren.com.au/curriculum/lessons/ai-solo-founder-w7/)。
+- **W7 · 创业者的互联网产品 | Product Operations** — 产品结构与权限、GA / GSC 等分析工具、收费与支付商、常用法律文件、Sales Pipeline / Leads / CRM、经营成本与免费资源。现场演示付款交付并完成经营地图，选择一个缺口实操。**产出**：经营地图、销售跟进记录、验证证据；课后推进真实首单。[51 页课件](https://jracademy.ai/curriculum/lessons/ai-solo-founder-w7/)。
 
 # Phase 2 · Go To Market(W8–W11)
 > 把刷脸首单变成一台不靠刷脸、会自己复利的获客机器。

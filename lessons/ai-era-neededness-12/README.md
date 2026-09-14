@@ -18,4 +18,4 @@ bun run dev
 
 ## 线上地址
 
-https://jiangren.com.au/curriculum/lessons/ai-era-neededness-12/
+https://jracademy.ai/curriculum/lessons/ai-era-neededness-12/

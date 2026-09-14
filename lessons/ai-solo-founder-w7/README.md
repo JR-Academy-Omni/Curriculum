@@ -122,7 +122,7 @@ W7 首单证据沿用 `../../ai-solo-founder-bootcamp/skills/opc-first-dollar/SK
 
 ## 静态发布入口
 
-https://jiangren.com.au/curriculum/lessons/ai-solo-founder-w7/
+https://jracademy.ai/curriculum/lessons/ai-solo-founder-w7/
 
 由 Curriculum main 的 Deploy Curriculum to Server 工作流发布；不涉及生产课程数据库关联。
 

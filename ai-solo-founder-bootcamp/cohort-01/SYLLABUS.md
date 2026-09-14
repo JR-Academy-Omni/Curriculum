@@ -98,7 +98,7 @@
 
 课堂产出：经营地图、一条销售跟进记录、一个改善的验证证据或明确阻断。保留课后真实首单目标，模拟或自付测试不能作为真实成交证据。
 
-[W7 课件（51 页）](https://jiangren.com.au/curriculum/lessons/ai-solo-founder-w7/)
+[W7 课件（51 页）](https://jracademy.ai/curriculum/lessons/ai-solo-founder-w7/)
 
 ---
 

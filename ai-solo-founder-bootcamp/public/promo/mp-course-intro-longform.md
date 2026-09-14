@@ -205,7 +205,7 @@ PHASE 4 · AI Demo Day（W10-W11）
 
 所以**首期是给真正想做这件事的人留的**。如果你只是看到 AI 热想跟一下、想多个证书、想"了解一下"，请把这个位置让给真正在准备辞职 / 已经在 ship 的人。
 
-**如果你符合下面任意一条**，我建议你今晚就去 [https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/landing.html](https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/landing.html) 看完整内容然后申请：
+**如果你符合下面任意一条**，我建议你今晚就去 [https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/landing.html](https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/landing.html) 看完整内容然后申请：
 
 - ✓ 你在大厂 / 咨询 / 律所 / 会计师事务所工作 5 年以上，已经拿到 senior 或 principal level
 - ✓ 你过去 6 个月想过"自己做点什么"但每次卡在第一步
@@ -218,11 +218,11 @@ PHASE 4 · AI Demo Day（W10-W11）
 
 ## 申请通道
 
-👉 **完整销售页 + 申请入口**：[jiangren.com.au/curriculum/ai-solo-founder-bootcamp/landing.html](https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/landing.html)
+👉 **完整销售页 + 申请入口**：[jiangren.com.au/curriculum/ai-solo-founder-bootcamp/landing.html](https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/landing.html)
 
-👉 **课程介绍 10 页 deck**：[partnerships/course-intro/01.html](https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/partnerships/course-intro/01.html)
+👉 **课程介绍 10 页 deck**：[partnerships/course-intro/01.html](https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/partnerships/course-intro/01.html)
 
-👉 **完整课程大纲**：[curriculum.html](https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/curriculum.html)
+👉 **完整课程大纲**：[curriculum.html](https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/curriculum.html)
 
 👉 **公众号后台留言**：留下"OPC 申请"+ 你的 LinkedIn，我们 24 小时内回 1:1 面试时间。
 

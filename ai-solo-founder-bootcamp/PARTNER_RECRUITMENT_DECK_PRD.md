@@ -226,7 +226,7 @@ purpose: 规范一份可复用的 B2B 合作方招募 deck —— 用于拉机�
   - 3 步合作路径：① 15min 视频聊（了解你会员 + 选合作档）→ ② 收一份课程一页纸 + 合作方案 → ③ 排一场联名 workshop / 签 MOU（MOU 是意向书，正式签字走 Mason + 法务）。
   - 主 CTA：`约 15 分钟视频 —— 看看 [合作方名] 的会员适不适合`（结尾问 yes/no，不 open-ended，outreach 铁律）。
   - 联系方式：`[BD 姓名 / 职位 / 邮箱 / LinkedIn · 占位]`，签名带 LinkedIn（outreach 铁律 5）。
-  - 课程一页纸链接：`https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/curriculum.html`（已上线，outreach 模板 1 用的链接）。
+  - 课程一页纸链接：`https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/curriculum.html`（已上线，outreach 模板 1 用的链接）。
 - **数据来源**：outreach 模板 1/3、MOU 签字流程（§"BD 不能自己签"）。
 - **⚠️**：不用"今晚截止 / 名额快没了"高压话术（outreach 禁止项 + course-intro Non-goal）。
 

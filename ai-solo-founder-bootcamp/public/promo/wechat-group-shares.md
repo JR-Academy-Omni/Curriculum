@@ -48,7 +48,7 @@ jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/rdti-prompt-tem
 测完立刻出得分
 不要邮箱、不发广告
 
-🔗 https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
+🔗 https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
 
 我自己测了 87 分（行业洞察那一项扣分，需要补）
 你们测完留得分看看，咱们看看哪一项最多人卡

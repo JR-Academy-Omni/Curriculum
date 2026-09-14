@@ -18,7 +18,7 @@
 
 ### 1.1 课程内容 / 设计
 
-- [W7 创业者的互联网产品课件](../lessons/ai-solo-founder-w7/index.html)：51 页 Static HTML，180 分钟，含互动模拟、逐页讲师提示及[可填写经营地图](../lessons/ai-solo-founder-w7/OPC创业营%20W7%20-%20我的产品经营地图.html)。[讲师 Runsheet](../lessons/ai-solo-founder-w7/README.md)。2026-09-06 发布版；[线上入口](https://jiangren.com.au/curriculum/lessons/ai-solo-founder-w7/)。未同步生产课程关联。
+- [W7 创业者的互联网产品课件](../lessons/ai-solo-founder-w7/index.html)：51 页 Static HTML，180 分钟，含互动模拟、逐页讲师提示及[可填写经营地图](../lessons/ai-solo-founder-w7/OPC创业营%20W7%20-%20我的产品经营地图.html)。[讲师 Runsheet](../lessons/ai-solo-founder-w7/README.md)。2026-09-06 发布版；[线上入口](https://jracademy.ai/curriculum/lessons/ai-solo-founder-w7/)。未同步生产课程关联。
 
 
 | 文件 | 是什么 |

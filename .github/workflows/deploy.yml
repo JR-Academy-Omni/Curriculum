@@ -1473,6 +1473,9 @@ jobs:
             # 列一下当前 curriculum 下还剩什么（方便日志核对）
             ls /var/www/static/curriculum/
 
+      - name: Reject old curriculum URLs in publication output
+        run: node scripts/check-curriculum-domain.mjs _site
+
       # Deploy to server via SCP
       - name: Deploy to server
         uses: appleboy/scp-action@v0.1.7
