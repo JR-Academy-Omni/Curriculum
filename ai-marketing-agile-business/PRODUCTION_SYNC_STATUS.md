@@ -16,6 +16,8 @@
 - Every lesson has four learning outcomes and the correct Module binding.
 - Final production diff: 0 changes; 8 unchanged lessons.
 - Snapshot health: 8 matched, 0 orphan, 0 unbound, 0 duplicate.
+- Training enquiry form: enabled (`openLeadsForm: true`).
+- All 8 Lessons now include English titles, English descriptions and published learning materials linked to the learner toolkit.
 
 ## 已完成的发布范围
 

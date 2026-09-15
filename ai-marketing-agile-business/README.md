@@ -23,6 +23,9 @@
 - [完整课程大纲](./public/detailed-outline.html)
 - [13 小时课程安排](./public/hourly-schedule.html)
 - [结构化大纲](./public/outline.json)
+- [公开学员工具包](./public/resources/index.html)
+- [AI 内容系统公开示例](./public/examples/content-system-demo.html)
+- [30 天内容日历示例](./public/examples/30-day-content-calendar-sample.csv)
 
 ## English documents
 
@@ -44,10 +47,10 @@
 
 ## 当前状态
 
-- 课程内容：本地完成并通过结构检查；已修正 production level 枚举并增强 Lesson 描述
+- 课程内容：已发布；8 个 Production Lesson 均有中英文标题、说明、学习结果与学习资料，最终同步 diff 为 0
 - 用户画像：`blocked_ground_truth`，真实证据覆盖率 0%
 - 推广方案：`blocked_pre_launch_inputs`
-- 社媒内容：尚未进入账号级 SOURCE / variant / 审批流程
+- 社媒内容：中英文账号级 SOURCE / variant 已建为待审批草稿，未创建 provider 排程
 - 排程与发布：未执行
 - 教学包：讲师 Runbook、Prompt Library 与 12 份双语学员模板已完成；不生成 PPTX
-- 课程系统：Skills Data Manager 已确认 production Training 不存在；等待 Program 必填业务信息后首次创建
+- 课程系统：Production Training 已创建并开启咨询入口；Program 日期、价格、名额和付款路径仍待业务确认，因此未绑定为可报名班次

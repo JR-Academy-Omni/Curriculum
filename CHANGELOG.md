@@ -2,6 +2,8 @@
 
 ## 2026-09-15
 
+- 更新《小企业 AI 内容营销实战》为可咨询课程：为 8 个 Production Lesson 补齐英文标题、英文说明、具体学习资料与模板入口，新增 13 件公开学员工具包、透明工作流示例、30 天内容日历样本及 48 秒 AI 自动化课程短视频；成片使用 ElevenLabs Amy `eleven_v3`、合法 BGM、字幕和封面，通过公开上传与视频中心 `verified_internal` 登记，全程未生成 PPTX（`ai-marketing-agile-business`）。
+
 - 发布《小企业 AI 内容营销实战》到 Production Training 数据模型，创建并回读 1 个 Training、4 个 Module、1 个线上 Program、1 个 Syllabus 和 8 个 Workshop；写回生产 ID 与 `prod-state.json`，最终同步 diff 为 0（`ai-marketing-agile-business`）。
 
 ## 2026-09-13

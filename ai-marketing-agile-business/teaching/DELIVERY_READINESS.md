@@ -8,6 +8,7 @@
 - 13 小时逐分钟讲师 Runbook，包含每小时产出和验收标准。
 - 双语 Prompt Library，所有提示均要求基于真实输入，缺失信息必须标记待确认。
 - 12 份双语学员模板，覆盖受众与品牌、设计、社媒、短视频及公司任务管理。
+- 13 件学员资源已经复制到公开 Toolkit，并由每个 Production Lesson 的学习资料直接链接。
 - 交付形式为课程网页、Runbook、Prompt Library 和可复制模板；不生成 PPTX。
 
 ## 开课前必须由业务确认 / Business inputs required before launch
