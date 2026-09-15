@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-15
+
+- 发布《小企业 AI 内容营销实战》到 Production Training 数据模型，创建并回读 1 个 Training、4 个 Module、1 个线上 Program、1 个 Syllabus 和 8 个 Workshop；写回生产 ID 与 `prod-state.json`，最终同步 diff 为 0（`ai-marketing-agile-business`）。
+
 ## 2026-09-13
 
 - 重写《AI Content Marketing for Small Business》中英文推广计划，以 12 件内容 Campaign Pack、三波发布顺序、主要媒体渠道边界、可直接执行的双语文案 Brief、转化路径与真实复盘指标替换旧版阻塞清单；直接促销控制为 2/12，且未创建排程或发布状态（`ai-marketing-agile-business/PROMOTION_PLAN*.md`）。
