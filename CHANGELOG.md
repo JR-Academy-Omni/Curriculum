@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-16
+
+- 强化新版课程首屏销售表达：正式定名《AI 自动化办公实战课》，以“每周解决一个你不想再手动做的工作”为核心主张，统一 8 周、每周 2 小时、8 套可复用工作流口径，并把首周营销项目改为即时成果证明（`ai-adoption-bootcamp/public/curriculum.html`、`styles.css`）
+- 重制《AI 自动办公实战营》课程介绍页：由旧版 8 周 AI Adoption Specialist 理论与组织采纳路径，调整为 8 节、每节 2 小时的岗位工作流实战；以 Marketing 首课建立即时成果，覆盖求职、会议行政、运营、HR、财务对账、Sales 与数据汇报，并为每节统一加入输入模板、操作流程、AI 指令、输出格式与人工审核清单五项可复用交付标准（`ai-adoption-bootcamp/public/curriculum.html`、`styles.css`）
+
 ## 2026-09-15
 
 - 更新《小企业 AI 内容营销实战》为可咨询课程：为 8 个 Production Lesson 补齐英文标题、英文说明、具体学习资料与模板入口，新增 13 件公开学员工具包、透明工作流示例、30 天内容日历样本及 48 秒 AI 自动化课程短视频；成片使用 ElevenLabs Amy `eleven_v3`、合法 BGM、字幕和封面，通过公开上传与视频中心 `verified_internal` 登记，全程未生成 PPTX（`ai-marketing-agile-business`）。
