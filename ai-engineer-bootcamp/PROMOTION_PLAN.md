@@ -638,7 +638,7 @@ CareKind 只能作为案例名出现。必须同时说明它是用于覆盖复�
 - `measured`：到达观察窗口并回填真实表现。
 - `blocked`：缺素材、语言、权限、证据或平台能力；不得自动降级或盲目重试。
 
-Campaign 文件只负责策略，不形成第二套发布状态。正式社媒内容必须进入 `jr-omni/new-media/publishing/` 的 SOURCE、平台 variant、Metricool 和公开回读流程。
+Campaign 文件只负责策略，不形成第二套发布状态。正式社媒内容必须进入 `jr-omni/new-media/publishing/` 的 SOURCE、平台 variant、Social Hub / Buffer operation 和公开回读流程。
 
 ## 20. Owner 分工
 

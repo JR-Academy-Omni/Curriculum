@@ -44,8 +44,8 @@ overrides:
 | 57–70 | 背景与工程成熟度 | 2 |
 | 70–91 | Policy Assistant Incident | 2 |
 | 91–101 | Claude 认证路径 | 1 |
-| 101–114 | 第五期到第七期的教学重构 | 2 |
-| 114–120 | 个人升级主线与结课 | 2 |
+| 101–117 | 第五期复盘与第七期实践路线 | 5 |
+| 117–120 | 个人升级主线与结课 | 2 |
 
 ## 逐页规格
 
@@ -71,8 +71,11 @@ overrides:
 20. Claude 认证路径：CCAO-F、CCDV-F、CCAR-F、CCAR-P。
 21. 第五期复盘：知识覆盖已经足够，交付连续性仍有缺口。
 22. 第七期重构：以 Lightman + Jason 共同带领的 13 场 Production 实践路线为主视觉；Theory Live、录播与 Lab 作为支撑系统。
-23. 下一条能力升级主线：Product、AI、Production 或 Domain depth。
-24. 结课：重新回答“投什么岗位”和“用什么证据证明”。
+23. W1–W3：ADLC 证据链、Product UI / Design System 与可运行 Application MVP。
+24. W4–W7：Confirmed Transcript、AI-Native Engineering Workspace、Evaluation Pipeline 与 Policy RAG。
+25. W8–W13：Data Layer / MCP、Bounded Agent、Memory、Harness、Model Router 与 Production Readiness Review。
+26. 下一条能力升级主线：Product、AI、Production 或 Domain depth。
+27. 结课：重新回答“投什么岗位”和“用什么证据证明”。
 
 ## 内容红线
 
@@ -85,7 +88,7 @@ overrides:
 
 ## 验收
 
-- 24 页，一页一个教学任务。
+- 27 页，一页一个教学任务。
 - 1600×900 固定画布；1366×768、1440×900、1920×1080 无溢出。
 - 正文不低于 21px；标题不低于 52px。
 - 课程入口支持方向键、空格、触摸、全屏与摄像头。

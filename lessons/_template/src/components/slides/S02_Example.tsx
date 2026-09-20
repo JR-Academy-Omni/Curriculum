@@ -1,41 +1,20 @@
-import { motion } from 'framer-motion';
-import { Slide, Inner, Half, Title, Subtitle, colors, fonts, border, shadowSm } from '../ui';
+import { DeckFrame, AnimatedGroup, Label, Panel, colors, fonts } from '../deck';
 
 // 示例内容页 —— 演示 split 布局 + 复用基元 + 错峰入场动画
 export default function S02_Example() {
 	return (
-		<Slide bg={colors.white}>
-			<Inner split>
-				<Half>
-					<motion.div {...{ initial: { opacity: 0, x: -40 }, animate: { opacity: 1, x: 0 }, transition: { duration: 0.5 } }}>
-						<div style={{
-							display: 'inline-block', padding: '4px 12px', marginBottom: 20,
-							background: colors.yellow, fontFamily: fonts.mono, fontSize: 13,
-							fontWeight: 700, letterSpacing: 2, border,
-						}}>
-							01 · 章节
-						</div>
-						<Title size="56px" style={{ marginBottom: 16 }}>一个论点标题</Title>
-						<Subtitle>把内容写在 data/*.ts，缺数据就 omit，绝不编造。</Subtitle>
-					</motion.div>
-				</Half>
-				<Half>
-					{['真实数据点 A', '真实数据点 B', '真实数据点 C'].map((t, i) => (
-						<motion.div
-							key={t}
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.4, delay: 0.2 + i * 0.12 }}
-							style={{
-								padding: '18px 22px', marginBottom: 14,
-								background: colors.warmBg, border, borderRadius: 18, boxShadow: shadowSm,
-								fontSize: 20, fontWeight: 700,
-							}}>
-							{t}
-						</motion.div>
-					))}
-				</Half>
-			</Inner>
-		</Slide>
+		<DeckFrame tag="01 · CHAPTER" title="一个清楚的教学命题" subtitle="标题先说清主题，正文解释关系，主视觉只强调真正重要的对象。" accent={colors.blue}>
+			<div style={{ display: 'grid', gridTemplateColumns: '1.05fr .95fr', gap: 28, height: '100%' }}>
+				<AnimatedGroup delay={.16} style={{ display: 'flex' }}><Panel style={{ flex: 1, borderTop: `12px solid ${colors.blue}` }}>
+					<Label bg={colors.blue}>课堂内容</Label>
+					<div style={{ fontFamily: fonts.heading, fontSize: 34, lineHeight: 1.18, fontWeight: 900, marginTop: 28 }}>一个主面板承载本页最重要的关系</div>
+					<div style={{ fontSize: 23, lineHeight: 1.5, marginTop: 18, color: '#514c48' }}>卡片、标签和颜色用于建立层级，不用来填满画布。</div>
+				</Panel></AnimatedGroup>
+				<AnimatedGroup delay={.28} style={{ display: 'flex' }}><Panel bg={colors.dark} style={{ flex: 1, color: colors.white }}>
+					<Label bg={colors.yellow} color={colors.dark}>EVIDENCE</Label>
+					<div style={{ display: 'grid', gap: 20, marginTop: 28 }}>{['具体例子','可验证结果','仍然存在的限制'].map((item,i)=><div key={item} style={{ fontSize: 25, fontWeight: 800, paddingBottom: 15, borderBottom: `4px solid ${[colors.red,colors.blue,colors.green][i]}` }}>{item}</div>)}</div>
+				</Panel></AnimatedGroup>
+			</div>
+		</DeckFrame>
 	);
 }

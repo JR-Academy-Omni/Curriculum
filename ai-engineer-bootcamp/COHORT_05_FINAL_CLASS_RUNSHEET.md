@@ -233,7 +233,7 @@ JR Academy 当前提供四条 Claude 认证学习与备考路径。不要把它�
 
 如学生愿意留下，再做开放问答。技术路径问题按学生背景、目标岗位、现有系统能力和最大缺口回答；认证问题按四条独立路径回答，不把官方考试费、Offer 或未确认服务加入承诺。
 
-## 建议的 24 页 Slide 结构
+## 建议的 27 页 Slide 结构
 
 1. 封面：AI Engineer 第五期结课总结
 2. 今晚结束前，你应该看清四件事
@@ -257,8 +257,11 @@ JR Academy 当前提供四条 Claude 认证学习与备考路径。不要把它�
 20. 四条 Claude 认证路径
 21. 第五期完成了什么，也暴露了什么
 22. 第七期为什么改成 Theory + Practice 双线
-23. 你的下一条能力升级主线
-24. 第五期结束：你用什么证据证明能力
+23. W1–W3：ADLC、Design System 与 Application MVP
+24. W4–W7：Confirmed Transcript、AI-Native Workspace、Evaluation Pipeline 与 Policy RAG
+25. W8–W13：Data Layer、MCP、Agent、Memory、Harness、Model Router 与 Production Readiness
+26. 你的下一条能力升级主线
+27. 第五期结束：你用什么证据证明能力
 
 ## 今晚不要讲的内容
 

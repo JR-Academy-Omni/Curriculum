@@ -1,5 +1,7 @@
 # AI 一人创业营 第1期 · 完整课程大纲（生产导出版）
 
+> **本地排课修订**：2026-09-11，W8/W9 改为中英文平台特点与运营策略，W10 改为全自动内容工厂搭建；SEO & GEO 保留为周中独立课（时间待定）。尚未同步生产排课。
+
 > **留存日期**：2026-08-13 · 来源：Ada 提供的生产环境 syllabus 导出（`syllabus-AI 一人创业营-1786610948392.csv`）
 > **这是当前实际在跑的大纲**，共 **15 周（W0 Pre-work + W1–W15）· 50 节 lesson · 4 个 Phase**。
 > ⚠️ **与本地 `../public/outline.json` 严重不一致**，见文末「口径冲突」一节。**做任何对外物料前先确认以哪份为准。**
@@ -9,11 +11,11 @@
 | Phase | 周次 | 主题 |
 |---|---|---|
 | **Phase 1** | W1–W7 | **AI Enable Business** — 从搭 AI OS 到收到第一笔钱 |
-| **Phase 2** | W8–W11 | **Go To Market** — 内容工厂 / Outbound / SEO&GEO / 增长 |
+| **Phase 2** | W8–W11 | **Go To Market** — 中文媒体运营 / TikTok + Meta 为主的英文媒体运营 / 全自动内容工厂 / 增长；另设周中 SEO & GEO |
 | **Phase 3** | W12–W13 | **Australia Operations** — 自动化运营 / 合规 & RDTI |
 | **Phase 4** | W14–W15 | **Founder Club** — Pitch & BP / Demo Day |
 
-**正课**：15 节 × 180 分钟（周日 14:00–17:00 悉尼时间）｜**自学 / Lab**：35 节
+**正课**：15 节 × 180 分钟（周日 14:00–17:00 悉尼时间）｜**周中独立课**：SEO & GEO 1 节 × 180 分钟（时间待定）｜**自学 / Lab**：以当前 outline.json 为准（原生产导出计 35 节）
 
 ---
 
@@ -84,45 +86,57 @@
 
 正课知识点：大厂项目管理落到一人公司 · OPC 简化 agile（1 周 1 sprint + DoD）· 把零散待办倒进 backlog 让 AI OS 排优先级 · **在职版可持续节奏：碎片时间 vs 深工作块（Ray 实战）** · 让 AI OS 当 PM · 产出下周 5 项执行计划
 
-### W7 · 2026-09-13 · 收到第一笔钱｜👤 未指定
+### W7 · 2026-09-13 · 创业者的互联网产品｜👤 未指定
 | 类型 | 标题 | 时长 |
 |---|---|---|
-| **Lesson** | [W7] 收到第一笔钱 · First Dollar | 180 |
-| Information | [W7·自学] 收款与合规收尾：Stripe / Lemonsqueezy 深度配置 + 5 份法律文件挂上线 | 120 |
-| Information | **[W7·自学] $1 真实付费挑战（毕业硬指标 #1）** | 30 |
+| **Lesson** | [W7] 创业者的互联网产品 · Product Operations | 180 |
+| Information | [W7·自学] 补齐产品经营闭环：数据、收款交付与客户跟进 | 120 |
+| Information | [W7·自学] $1 真实付费挑战（毕业硬指标 #1） | 课后真实动作 |
 
-正课知识点：为什么第一单必须靠刷脸不靠系统 · AI 盘点人脉 → 30-50 人排序名单 · 一对一 pitch 三句话结构 + 三种拒绝的应对 · **现场真发 10 条一对一消息** · Stripe / Lemonsqueezy 澳洲版接入 · AI 生成 5 份法律文件 + AI 律师角色审核（澳洲版）
+正课知识点：产品结构与权限 · GA / GSC 与分析工具 · 收费模式、支付商、手续费与 payout · 常用法律文件 · Leads / Sales Pipeline / CRM · 成本、公司资产与 Free Tier。
 
-> 🔴 **毕业硬指标 #1「$1 真实付费」落在 W7**，不是结营周。按 `COHORT_PROFILE.md`，**15/21 学员拿不出付费证据**——这一周是本期最大的风险点，需提前介入。
+课堂产出：经营地图、一条销售跟进记录、一个改善的验证证据或明确阻断。保留课后真实首单目标，模拟或自付测试不能作为真实成交证据。
+
+[W7 课件（51 页）](https://jracademy.ai/curriculum/lessons/ai-solo-founder-w7/)
 
 ---
 
 ## Phase 2 — Go To Market（W8–W11）🎯 全部为「用 AI 做 marketing」
 
-### W8 · 2026-09-20 · AI 内容工厂
+### W8 · 2026-09-20 · 中文媒体平台特点与 AI 运营｜👤 Michael Nie
 | 类型 | 标题 | 时长 |
 |---|---|---|
-| **Lesson** | [W8] AI 内容工厂 · Content Factory | 180 |
-| Information | [W8·自学] AI 内容工厂搭建：选题 → 写稿 → 改稿 → 出图 | 120 |
-| **InteractiveLab** | [W8·Lab] 小红书爆款标题生成器（Prompt Lab） | 30 |
+| Lesson | [W8] 中文媒体平台特点与 AI 运营 | 180 |
+| Information | [W8·自学] 中文媒体运营拆解：内容、互动与自动化边界 | 120 |
+| InteractiveLab | [W8·Lab] 小红书爆款标题生成器（Prompt Lab） | 30 |
 | Information | [W8·自学] AI 视频 · 海报 · 漫剧工具栈与产线（选型 / 角色一致性 / 成本产能） | 150 |
-| Information | [W8·自学] X Build in Public：30 天内容日历与帖型模板 | 90 |
 
-正课知识点：小红书爆款笔记结构 + 私信转化 · 视频号 + 公众号 + 私域三阵地闭环 · AI 视频·海报·漫剧一条产线现场出片 · X Build in Public 现场发第一条 · 本周内容排期 + 30 分钟出全套的产线清单
+正课知识点：公众号、小红书、抖音的用户与分发特点 · 公众号文章 · 小红书图文/视频与评论运营 · 抖音短视频 · AI 评论/私信分流与回复 · 平台自动化边界。产出：中文媒体策略地图、三平台样例、AI 回复规则和 W10 输入包。
 
-### W9 · 2026-09-27 · 主动敲开客户的门
+### W9 · 2026-09-27 · TikTok + Meta 英文媒体运营｜👤 Michael Nie
 | 类型 | 标题 | 时长 |
 |---|---|---|
-| **Lesson** | [W9] 主动敲开客户的门 · Outbound | 180 |
+| Lesson | [W9] TikTok + Meta 英文媒体运营 | 180 |
+| Information | [W9·自学] TikTok + Meta：30 天英文内容系统 | 90 |
+| Information | [W9·实操] 英文媒体评论与私信工作台 | 60 |
 | Information | [W9·自学] Reddit / IndieHackers 社区策略 | 60 |
 
-正课知识点：LinkedIn outreach 高转化三段式公式 · Claude 批量生成 100 条个人化 outreach + 人工卡点 · ProductHunt 冷启动作战图 · **中英文圈 6 大线下渠道地图** · AI 跑线下营销 6 个动作 + 一次活动反哺 5 篇内容
+正课知识点：TikTok 原生短视频策略 · Meta 的 Instagram Reels / Feed / Stories 与 Facebook 分工 · LinkedIn、X、社区、Newsletter、Podcast/媒体的适用策略 · AI 评论/私信回复 · 平台自动化边界。产出：英文媒体策略地图、TikTok/Meta 原生样例、AI 回复规则和 W10 输入包。
 
-### W10 · 2026-10-04 · 让人和 AI 都搜到你
+### W10 · 2026-10-04 · 全自动 AI 内容工厂：从一个资料源到自动发送｜👤 Michael Nie
 | 类型 | 标题 | 时长 |
 |---|---|---|
-| **Lesson** | [W10] 让人和 AI 都搜到你 · SEO & GEO | 180 |
-| Information | [W10·自学] 自学：JR /learn/seo-master 全部章节 | 240 |
+| **Lesson** | [W10] 全自动 AI 内容工厂 · 从一个资料源到自动发送 | 180 |
+
+正课知识点：唯一资料源 · 定时读取资料变化与互动信号 · AI 自动发现和筛选选题 · 生成平台原生版本与媒体任务 · 规则审核与长期授权 · 自动排程发送 · 状态/公开链接回读 · 去重、失败和敏感内容转人工 · 表现反馈下一轮。产出：能真实运行的一周无人值守内容工厂及发布/异常记录。
+
+### 周中独立课 · 日期与时间待定 · 让人和 AI 都搜到你
+
+原 W10 迁至周中，保留 3 小时，授课方式待定。
+| 类型 | 标题 | 时长 |
+|---|---|---|
+| **Lesson** | [周中独立课] 让人和 AI 都搜到你 · SEO & GEO | 180 |
+| Information | [周中独立课·配套自学] 自学：JR /learn/seo-master 全部章节 | 240 |
 
 正课知识点：传统 SEO vs GEO 两套逻辑 · 拆真实 GSC 数据找 long-tail 机会 · 用 AI 产 long-tail 内容矩阵 · E-E-A-T 四要素落到产品页 · Schema.org JSON-LD 现场实操 · 提交 GSC 验证
 
@@ -220,13 +234,13 @@
 ⬜ **W4（8/16，已上）实际由谁授课仍需补记。**
 
 ### ⑤ 大量周次未指定授课老师
-W4、W5、W7、W8、W9、W10、W11、W12、W15 在导出里**老师字段为空**；W13 只写了「⭐嘉宾 持牌 CPA / Grant consultant」未指名。
+原生产导出中 W4、W5、W7、W8、W9、W10、W11、W12、W15 的老师字段为空；本地现已确认 W8-W10 由 **Michael Nie** 主讲。W4、W5、W7、W11、W12、W15 及 W13 嘉宾仍待确认。
 → 直接影响 `TEACHING_QUALITY_SOP.md` 的 **T-7 课前沟通**：不知道找谁要内容。
 
 ---
 
 ## 与既有记录的对应关系
 
-- ✅ **证实了「W8–W11 全是用 AI 做 marketing」**（Ada 2026-08-13）—— 即 Phase 2 Go To Market：内容工厂 / Outbound / SEO&GEO / 增长。**可据此在群里预告**（见 `STATE.md` A14）。
+- ✅ **证实了「W8–W11 全是用 AI 做 marketing」**（Ada 2026-08-13）—— 即 Phase 2 Go To Market：中文媒体特点与运营 / TikTok + Meta 为主的英文媒体运营 / 全自动内容工厂 / 增长；另设周中 SEO & GEO。**可据此在群里预告**（见 `STATE.md` A14）。
 - ✅ 学员反馈里要的「大家可以一起上的 AI marketing 内容」= Phase 2 整个阶段（见 [`FEEDBACK.md`](./FEEDBACK.md) B2）。
 - ⚠️ 学员说「后面 set up business、找投资人这些我不感兴趣」→ 对应 **W14 Pitch & BP**（含投资人 fireside）与 **W13 实体结构**，确实存在；分轨讨论（A13）需把这两周考虑进去。

@@ -1,6 +1,6 @@
 ---
 name: talk-deck
-description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jiangren.com.au/curriculum/lessons/{slug}/）。沿用 1600×900 SlideEngine、一文件一页、真实数据与 JR Register B 圆角课程视觉。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic — NOT for static lesson HTML (use lesson-design) or xiaohongshu posters (use xhs-poster)."
+description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jracademy.ai/curriculum/lessons/{slug}/）。沿用 1600×900 SlideEngine、一文件一页、真实数据与 JR Register B 圆角课程视觉。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic — NOT for static lesson HTML (use lesson-design) or xiaohongshu posters (use xhs-poster)."
 ---
 
 # /talk-deck — 网页版讲座 PPT 生成器
@@ -11,6 +11,7 @@ description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite 
 - **`curriculum/lessons/_template/`** — 内部脚手架（引擎单一来源 + 占位骨架）。**AI 在 monorepo 内起新 deck 一律从这里拷**（见「标准工作流」第 3 步，离线、含 `{{SLUG}}` 占位符），不要从某个具体 deck 拷，避免引擎 bug 漂移。
 - **公开模板 repo `JR-Academy-AI/talk-deck`**（github.com/JR-Academy-AI/talk-deck，MIT，2026-05-29 上线）— 给**老师**用的对外版（同一套引擎 + 摄像头 + 匠人 logo，base 改相对路径、占位符填好可直接 build）。老师 `npx degit JR-Academy-AI/talk-deck my-talk` 或 GitHub "Use this template"，配 Claude Code/Cursor 照仓库内 `CLAUDE.md` 改内容。引擎与 `_template` 保持一致，改引擎两边同步。
 - `curriculum/lessons/ai-new-jobs-talk/` — 38 页完整黄金范本，要看"成品长啥样 / 数据驱动页怎么写"时读它。
+- `curriculum/lessons/ai-engineer-cohort-05-final/` — 当前课程视觉黄金范本。优先参考其 `DeckFrame`、网格纸画布、marker underline、圆角主面板、克制描边、品牌色偏移阴影与高密度中文排版；岗位页、系统图、事故诊断和逐周路线均已做多视口 QA。
 - `curriculum/lessons/vibe-coding/` — Slidev (slides.md) 轻量替代范式（见文末「何时用 Slidev」）。
 
 ## 使用方法
@@ -99,10 +100,19 @@ lessons/{slug}/
 
 ## ui.tsx（复用基元，新页优先用这些而不是裸 div）
 
-布局：`Slide`（整页底色容器，默认 `colors.warmBg`）、`Inner`（90% 宽 maxWidth 1400，`center`/`split` 变体）、`Half`。
+布局：`Slide`（整页底色容器，默认 `colors.warmBg`）、`Inner`（90% 宽 maxWidth 1400，`center`/`split` 变体）、`Half`。标准课程内容页优先使用模板内的 `DeckFrame`，它已经统一章节标识、标题层级、marker underline、网格纸背景和画布装饰。
 排版：`Title`（Bricolage 900，默认 64px）、`Subtitle`、`Highlight`（色块底标重点）、`Tag`。
 动画/数据可视化：`CountUp`（rAF easeOutCubic 数字滚动）、`GrowBar`（条形图增长）、variants `springIn` / `slideFromLeft` / `slideFromRight`。
 资源：`assetPath('jr-logo.png')` —— 用 `import.meta.env.BASE_URL` 拼 public 路径，dev/prod 都对。
+
+`components/deck.tsx` 提供课程页视觉组合：
+- `DeckFrame`：标准页头与统一画布。
+- `Panel`：主教学对象，默认 22px 圆角和品牌色偏移阴影。
+- `Label` / `NumberBadge`：章节标签与步骤编号。
+- `AnimatedGroup`：统一入场节奏。
+- `RoleFocusSlide`：岗位职责与面试追问的双栏版式。
+
+优先复用这些组合，不要每页重新手写标题、背景、卡片和动画。只有内容关系确实不同才新增页面级布局。
 
 > 新页里反复出现 ≥3 次的视觉模式 → 抽进 `ui.tsx` 或做成数据驱动模板组件（参考 `DeepJobSlide.tsx`），不要复制粘贴 style 链。
 
@@ -127,7 +137,13 @@ export const shadowSm = `4px 4px 0px ${colors.black}`;
 export const radii = { panel: 24, card: 18, label: 8, pill: 999 } as const;
 ```
 
-设计要点：浅色页优先使用暖色网格纸背景、黄色 marker underline、圆角白色主面板与品牌色偏移阴影。黑色结构线控制在 `2–3px`，一屏只强调少量主教学对象；不要让每个小元素都变成粗黑框。品牌饱和色用于信息分组，`warmBg` 暖底不要改成纯白。重点用 `Highlight` 或圆角 `Tag`，不用渐变、不用柔和 SaaS 风。
+设计要点：浅色页优先使用暖色网格纸背景、黄色 marker underline、圆角白色主面板与品牌色偏移阴影。黑色结构线控制在 `2px` 为主，少数主视觉可用 `3px`；一屏只强调少量主教学对象，不让每个小元素都变成粗黑框。标题建议 48–62px，正文 20–27px，高密度页最低 17px；先拆页或改布局，再缩字。品牌饱和色用于信息分组，`warmBg` 暖底不要改成纯白。重点用 marker underline、圆角 `Label` 或少量色块，不用渐变、不用柔和 SaaS 风。
+
+课程页的典型构图：
+- 概念页：一个主命题配一张系统关系图或一个主面板。
+- 岗位页：左侧职责和交付，右侧真实面试追问；正文要解释具体工作，不只堆英文能力词。
+- 路线页：总览一页，详细内容按 3–6 个阶段拆页；每阶段写“课堂做什么”和“交付证据”。
+- 高密度页：用颜色、字号和留白建立层级，卡片数量本身不能成为视觉结构。
 
 视觉验收时搜索所有闭合内容容器的 `border`：只要它承担卡片、节点、按钮、标签或面板职责，就必须同时有合适的 `borderRadius`。不得只修改共享 `Card`，却在 slide 内继续手写无圆角的 `div` 卡片。
 
@@ -161,7 +177,7 @@ export const radii = { panel: 24, card: 18, label: 8, pill: 999 } as const;
 5. **slides**：逐页写 `slides/Xnn_*.tsx`，同构页用模板组件。
 6. **register**：在 `App.tsx` 按章节 import + 排列。
 7. **verify**：`bun run dev` 走查每页（键盘翻页 + `?page=N`）→ `bun run build` 确认 tsc 通过。
-8. **deploy**：build 出 `dist/`，部署到 `jiangren.com.au/curriculum/lessons/{slug}/`（检查 base 子路径资源 404）。
+8. **deploy**：build 出 `dist/`，部署到 `jracademy.ai/curriculum/lessons/{slug}/`（检查 base 子路径资源 404）。
 
 ---
 

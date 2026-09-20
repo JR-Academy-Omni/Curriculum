@@ -21,8 +21,11 @@ import S19 from './components/slides/S19_Diagnosis';
 import S20 from './components/slides/S20_ClaudeCerts';
 import S21 from './components/slides/S21_CohortFive';
 import S22 from './components/slides/S22_CohortSeven';
-import S23 from './components/slides/S23_UpgradePath';
-import S24 from './components/slides/S24_Close';
+import S23 from './components/slides/S23_PracticeFoundation';
+import S24 from './components/slides/S24_PracticeAIData';
+import S25 from './components/slides/S25_PracticeAgentProduction';
+import S26 from './components/slides/S23_UpgradePath';
+import S27 from './components/slides/S24_Close';
 
 export default function App() {
 	return (
@@ -57,6 +60,9 @@ export default function App() {
 			<S22 />
 			<S23 />
 			<S24 />
+			<S25 />
+			<S26 />
+			<S27 />
 		</SlideEngine>
 	);
 }

@@ -21,7 +21,7 @@
 |------|------|----|
 | `instructor.name_zh` | ✅ | **Aurora Zhou** (Teacher ObjectId `67ff45ff14983a0080ae88e4`) |
 | `instructor.linkedin` / `avatar` / `bio` | ✅ | 全部从本地 sdm teacher 数据填实 |
-| `enrollment.enrollment_url` | ✅ | `https://jiangren.com.au/curriculum/gp-program-workshop/`（学员经此进平台报名按钮） |
+| `enrollment.enrollment_url` | ✅ | `https://jracademy.ai/curriculum/gp-program-workshop/`（学员经此进平台报名按钮） |
 | `enrollment.enrollment_mode` | ✅ | `rolling-intake` — 报名后助教邮件告知最近一场 |
 | `enrollment.next_session_at` | ✅ | `null` + Rolling 模式 — 待 admin 在 Program 配具体 cohort |
 | Teacher ObjectId | ✅ | `67ff45ff14983a0080ae88e4` (Aurora) — 已存入 `_admin_sync_hints` |
@@ -94,7 +94,7 @@ open http://localhost:5188/bootcamp
 
 Sync 完成 + admin 配置完，验收：
 
-- [ ] `https://jiangren.com.au/curriculum/gp-program-workshop/curriculum.html` 200（已通过）
+- [ ] `https://jracademy.ai/curriculum/gp-program-workshop/curriculum.html` 200（已通过）
 - [ ] `https://jiangren.com.au/program-course/gp-program-workshop` 显示销售页（admin 配 publishStatus=APPROVED 后生效）
 - [ ] 课程出现在用户『我的课程』 / 课程列表里（Sync 写入后端 Training 即生效）
 - [ ] 支付链接能跳到 29 AUD 收款

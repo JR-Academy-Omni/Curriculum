@@ -20,7 +20,7 @@
 | 4 | **跑了 20+ 场的线下活动实战 + 完整 SOP** | `marketing-campaign/events/` 下 20 个活动目录；`ai-networking-monthly/EXECUTION_SOP.md`、`SYDNEY_EVENT_PLAYBOOK.md`、`_TEMPLATE` | 澳洲五城 | **成都不用从零设计活动，抄这套** |
 | 5 | **"新城从 0 启动"的标准动作清单** | `AI_CIRCLE_7_CITY_HANDOVER.md` —— 吉隆坡/新加坡正在用：①招 1 名主理人 + 1 名备选 ②建城市群 ③整理 3 个候选场地 ④定首场日期 | 东南亚扩城 | **成都直接套这四步**，且成都比吉隆坡/新加坡容易（有主体、有人、有语言） |
 | 6 | **招商 / 赞助方案** | `AI_CIRCLE_SPONSORSHIP_PROPOSAL.md`、`澳洲AI圈招商手册.md`、`AI圈招商方案.pdf` | 澳洲拉赞助 | 谈园区 / 云厂商合作的**现成材料骨架**，改本地化即可 |
-| 7 | **活动团队与 owner** | Simone（JR-011，AI 圈 SOP owner）、Jonathan（JR-012，AI 圈产品负责人）、市场中心新媒体 3 人 | 澳洲 | 成都首场可以由他们远程带教流程，本地只出执行 |
+| 7 | **活动团队与 owner** | Beta（AI 圈总负责人、整体运营）、Simone（主题、形式与商业化）、Kiki / Summer / Amelia / Beta（城市内部运营） | 澳洲及启动验证城市 | 成都首场由 Simone 推进；各城市仍须另行确认当地主理人 |
 | 8 | **全套活动 skill** | `offline-event-sop`、`offline-event-content-design`、`design-review`（活动海报 9 项必备信息）、`publish-event`、xhs 系列 | 澳洲 | 直接复用 |
 | 9 | **课程内容** | `ai-engineer-cn` 12 周设计（61 节 / 24 直播 / 18 Lab / 6 Quest，国产栈）+ **Dispatch AI 真实系统** + JR 平台 Lab / AI Tutor | 已设计未开卖 | 这是产品本身 |
 

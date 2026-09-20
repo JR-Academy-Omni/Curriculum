@@ -1,6 +1,6 @@
 # AI Engineer 第五期结课总结
 
-JR Academy 120 分钟 React 网页课堂 Deck，共 24 页。
+JR Academy 120 分钟 React 网页课堂 Deck，共 27 页。
 
 ## 内容入口
 

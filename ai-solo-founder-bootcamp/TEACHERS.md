@@ -87,6 +87,8 @@ Ray holds a combined master's degree in IT and IT Management from the University
 
 TAE40122 持牌导师，10 年 + 澳洲企业运营与营销经验，专注于电商技术、数字营销与本地职场跨界转型辅导。
 
+**授课安排**：W8「中文媒体平台特点与 AI 运营」、W9「TikTok + Meta 英文媒体运营」、W10「全自动 AI 内容工厂」。
+
 1. **正规教学资质 (Pedagogical Standards)**：持有澳洲 Certificate IV in Training and Assessment (TAE40122)，精通成人学习理论与实操评估，能将复杂的商业与技术概念转化为易学的模块化课程。
 2. **实战商业与数字技术 (Real-world Business & Tech)**：具备电子商务与数字营销背景，精通主流数字广告平台、数据分析及线上运营，拥有从 0 到 1 打造百万级线上平台的创业经验。
 3. **澳洲本土职场与合规 (Australian Market Insight)**：深度理解澳洲本地营销模式、合规文化（WHS/Licensing）及双语（中英）社群沟通，致力于帮助学员弥合理论与本土实操的差距。
@@ -118,8 +120,8 @@ TAE40122 持牌导师，10 年 + 澳洲企业运营与营销经验，专注于�
 
 | 周次 | 目录 | 线上地址 |
 |---|---|---|
-| W1 | [`../lessons/ai-solo-founder-w1/`](../lessons/ai-solo-founder-w1/) | `jiangren.com.au/curriculum/lessons/ai-solo-founder-w1/` |
-| **W2** | [`../lessons/ai-solo-founder-w2/`](../lessons/ai-solo-founder-w2/) | <https://jiangren.com.au/curriculum/lessons/ai-solo-founder-w2/?page=1> |
+| W1 | [`../lessons/ai-solo-founder-w1/`](../lessons/ai-solo-founder-w1/) | `jracademy.ai/curriculum/lessons/ai-solo-founder-w1/` |
+| **W2** | [`../lessons/ai-solo-founder-w2/`](../lessons/ai-solo-founder-w2/) | <https://jracademy.ai/curriculum/lessons/ai-solo-founder-w2/?page=1> |
 
 > 📌 W2 课后有学员反馈与内部复盘（课堂主线被个案答疑打断、整体架构讲错），**改这两套 deck 前先读** `jr-omni:mentor-archives/jr-lecturers/teaching-reviews/2026-08-09-solo-founder-W2-internal-review.md`。
 > 📌 课前 / 课中 / 课后的协作要求见 `jr-omni:mentor-archives/jr-lecturers/TEACHING_QUALITY_SOP.md`。

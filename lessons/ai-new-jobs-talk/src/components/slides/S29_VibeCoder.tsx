@@ -3,7 +3,7 @@ import DeepJobSlide from '../DeepJobSlide';
 import { MISSING_JOBS } from '../../data/jobs';
 import { colors, fonts, border, shadow } from '../ui';
 
-const SOLO_FOUNDER_URL = 'https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/';
+const SOLO_FOUNDER_URL = 'https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/';
 
 function SoloFounderPromo() {
 	return (

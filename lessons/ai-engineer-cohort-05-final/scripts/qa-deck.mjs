@@ -12,14 +12,14 @@ const viewports = [
 	{ name: '1440x900', width: 1440, height: 900 },
 	{ name: '1920x1080', width: 1920, height: 1080 },
 ];
-const keySlides = new Set([1, 5, 8, 15, 18, 20, 22, 24]);
+const keySlides = new Set([1, 5, 8, 11, 15, 18, 20, 22, 23, 24, 25, 27]);
 await fs.mkdir(outDir, { recursive: true });
 
 const browser = await chromium.launch({ headless: true });
 const results = [];
 for (const viewport of viewports) {
 	const page = await browser.newPage({ viewport });
-	for (let slide = 1; slide <= 24; slide += 1) {
+	for (let slide = 1; slide <= 27; slide += 1) {
 		await page.goto(`${baseUrl}?page=${slide}`, { waitUntil: 'networkidle' });
 		await page.waitForTimeout(900);
 		const audit = await page.evaluate(() => {

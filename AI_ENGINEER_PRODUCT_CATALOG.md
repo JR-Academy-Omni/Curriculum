@@ -25,7 +25,7 @@
 | 10 | AI Engineer 高薪 Offer VIP 预备计划（Jobpin AI 8 周企业项目） | $5500 | 项目 | 🔴 **无链接**，只和 sales 同步过 | ❌ 无 |
 | 11 | AI Engineer 全栈项目班 | $3599+GST | 全栈视频课 + 老师 AI Coding 项目陪跑 | [/program-course/web-code-bootcamp-or-learn-to-code-1](https://jiangren.com.au/program-course/web-code-bootcamp-or-learn-to-code-1) | `web-code-bootcamp-or-learn-to-code-1/` |
 | 12 | 数据工程 AI 项目陪跑 | $3999+GST | 数据工程视频课 + 项目陪跑 | [/program-course/data-engineer-data-analyst](https://jiangren.com.au/program-course/data-engineer-data-analyst) | `data-engineer-data-analyst/` |
-| 13 | DevOps AI 项目陪跑（Dispatch AI） | 纯视频 $999 / 视频+陪跑 $3550+GST | DevOps 视频课 + 项目陪跑 | 🟠 官网未更新（课件：[/curriculum/techscrum-devops/curriculum.html](https://jiangren.com.au/curriculum/techscrum-devops/curriculum.html)） | `techscrum-devops/` |
+| 13 | DevOps AI 项目陪跑（Dispatch AI） | 纯视频 $999 / 视频+陪跑 $3550+GST | DevOps 视频课 + 项目陪跑 | 🟠 官网未更新（课件：[/curriculum/techscrum-devops/curriculum.html](https://jracademy.ai/curriculum/techscrum-devops/curriculum.html)） | `techscrum-devops/` |
 | 14 | AI Agent & MCP 项目实战营 | $465+GST | 视频课 | [/program-course/mcp](https://jiangren.com.au/program-course/mcp) ✅活 | ❌ 无 |
 | 15 | 职场 AI 产出力实战营 | $960+GST（基础班 8 周）/ $2280+GST（进阶班 12 周） | 直播课 | [/program-course/ai-programming](https://jiangren.com.au/program-course/ai-programming) | `ai-programming/` |
 | 16 | Vibe Coding 提升班（for tech） | $770+GST | 直播课 | [/program-course/ai-builder](https://jiangren.com.au/program-course/ai-builder) | `ai-builder/` |
@@ -72,7 +72,7 @@
 
 ### 4. AI Engineer 简历 + 面试 — $39 · 视频课 · 随时开课
 🔗 https://jiangren.com.au/program-course/ai-e ✅ 已验证在售（官网名「AI Engineer简历+面试视频课」）
-📎 配套讲座课件（**非商品页，不要当购买链接发给客户**）：https://www.jiangren.com.au/curriculum/ai-engineer-resume-interview/?page=1
+📎 配套讲座课件（**非商品页，不要当购买链接发给客户**）：https://jracademy.ai/curriculum/ai-engineer-resume-interview/?page=1
 > ✅ **2026-08-19 上线**。此前因后台「新增课程保存不了」长期未上线（Ada 8/12 记录），已由 Ada 于 8/19 解决并上架。
 
 **卖点**：专为 AI Engineer 求职者打造的简历与面试专项视频课。从 ATS 简历结构、AI 技术栈分类、项目量化改写，到 RAG、Agent、MCP 高频面试题、项目 Deep Dive 及 AI System Design，帮助你把真正做过的 AI 项目写清楚、讲专业，并经得住面试官连续追问。
@@ -165,7 +165,7 @@
 
 ### 11. AI Engineer 全栈项目班 — $3599+GST
 🔗 https://jiangren.com.au/program-course/web-code-bootcamp-or-learn-to-code-1
-　 Curriculum：https://jiangren.com.au/curriculum/web-code-bootcamp-or-learn-to-code-1/curriculum.html（**还没更新到官网**）
+　 Curriculum：https://jracademy.ai/curriculum/web-code-bootcamp-or-learn-to-code-1/curriculum.html（**还没更新到官网**）
 👤 **老师**：悉尼 winston ／ 墨尔本 Peter ／ 布里斯班 Joe ／ 阿德莱德 Paco
 📅 **31 期开始改版成为线下项目小班课，3-5 人开班，招满即开**
 类型：全栈视频课程 + 老师 AI Coding 项目陪跑
@@ -188,7 +188,7 @@
 ---
 
 ### 13. DevOps AI 项目陪跑（Dispatch AI） — 纯视频 $999 / 视频 + 项目陪跑 $3550+GST
-🔗 Curriculum：https://jiangren.com.au/curriculum/techscrum-devops/curriculum.html（**还没更新到官网**）
+🔗 Curriculum：https://jracademy.ai/curriculum/techscrum-devops/curriculum.html（**还没更新到官网**）
 👤 **老师：William Dong**
 📅 **3-5 人开班，招满即开**
 

@@ -18,6 +18,9 @@
 
 ### 1.1 课程内容 / 设计
 
+- [W7 创业者的互联网产品课件](../lessons/ai-solo-founder-w7/index.html)：51 页 Static HTML，180 分钟，含互动模拟、逐页讲师提示及[可填写经营地图](../lessons/ai-solo-founder-w7/OPC创业营%20W7%20-%20我的产品经营地图.html)。[讲师 Runsheet](../lessons/ai-solo-founder-w7/README.md)。2026-09-06 静态课件已部署，未同步生产课程关联。
+
+
 | 文件 | 是什么 |
 |---|---|
 | [`PRD.md`](./PRD.md) | 产品需求 |
@@ -28,7 +31,7 @@
 | [`SESSION_DECK_NOTES.md`](./SESSION_DECK_NOTES.md) | 课堂 deck 讲者备注 |
 | [`W1_RUNSHEET.md`](./W1_RUNSHEET.md) | **W1 运营执行单（⚠️ W2 起无同类文件，见缺口 G1）** |
 | [`TEACHERS.md`](./TEACHERS.md) | **师资与三城线下 Tutor 名单**（2026-08-13 新增，填补原 G2 缺口） |
-| [`../lessons/ai-solo-founder-w1/`](../lessons/ai-solo-founder-w1/) ／ [`../lessons/ai-solo-founder-w2/`](../lessons/ai-solo-founder-w2/) | **W1 / W2 网页版课件 deck**（本仓库 `lessons/` 下，线上 `jiangren.com.au/curriculum/lessons/{slug}/`） |
+| [`../lessons/ai-solo-founder-w1/`](../lessons/ai-solo-founder-w1/) ／ [`../lessons/ai-solo-founder-w2/`](../lessons/ai-solo-founder-w2/) | **W1 / W2 网页版课件 deck**（本仓库 `lessons/` 下，线上 `jracademy.ai/curriculum/lessons/{slug}/`） |
 | [`public/outline.json`](./public/outline.json) ＋ [`outline.md`](./public/outline.md) | 🔑 课程大纲唯一数据源（改大纲改 json，再跑 lineage 重建） |
 | `public/curriculum.html`、`phase1–4.html`、`session-deck.html` | 大纲页 / 各 Phase 页 / 课堂 deck |
 

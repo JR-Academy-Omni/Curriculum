@@ -31,7 +31,7 @@ tags: [招生海报, Browser DevTools Inspector, web-code-bootcamp]
 - ① 顶栏左：`JR ACADEMY · COURSE 011`
 - ① 顶栏中：`AI ENGINEER FULL-STACK`
 - ① 顶栏右：`COHORT 26 / 27 / 28`
-- ② 面包屑（DevTools URL bar）：`▶ jiangren.com.au/curriculum/web-code-bootcamp`
+- ② 面包屑（DevTools URL bar）：`▶ jracademy.ai/curriculum/web-code-bootcamp`
 - ② 状态徽章：`★ 三方向同时招生` + `OFFER MAKER`
 - ③ Hero EN：`FULL-STACK` / `BOOTCAMP`
 - ③ 中文副标：`从前端到后端到云端，3+3+12 模式打造 Offer 收割机`（"Offer 收割机" 用 #FFB800）
@@ -91,7 +91,7 @@ LAYOUT — 9 blocks top to bottom (mimics DevTools panel stack)
    - Right: mono "COHORT 26 / 27 / 28" + small reload-arrow icon
 
 2. URL BAR ROW (looks like browser address bar)
-   - Left: monospace "▶ jiangren.com.au/curriculum/web-code-bootcamp"
+   - Left: monospace "▶ jracademy.ai/curriculum/web-code-bootcamp"
      inside a rounded grey input field
    - Right: thin navy-bordered box "★ 三方向同时招生" + red "OFFER MAKER" text
 

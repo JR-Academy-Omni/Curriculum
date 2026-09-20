@@ -504,6 +504,13 @@ jobs:
             cp -r lessons/ai-solo-founder-w1/dist/* _site/lessons/ai-solo-founder-w1/
           fi
 
+          # OPC W7 · standalone HTML teaching deck and worksheet
+          if [ -f lessons/ai-solo-founder-w7/index.html ]; then
+            mkdir -p _site/lessons/ai-solo-founder-w7
+            cp lessons/ai-solo-founder-w7/*.html _site/lessons/ai-solo-founder-w7/
+            cp lessons/ai-solo-founder-w7/README.md _site/lessons/ai-solo-founder-w7/
+          fi
+
           # AI 一人创业营 W2 · 你的 AI 员工上岗 Agents at Work
           if [ -d lessons/ai-solo-founder-w2/dist ]; then
             mkdir -p _site/lessons/ai-solo-founder-w2
@@ -1284,6 +1291,9 @@ jobs:
                        /var/www/static/curriculum/ai-programming/phase_12.html
             # 列一下当前 curriculum 下还剩什么（方便日志核对）
             ls /var/www/static/curriculum/
+
+      - name: Reject old curriculum URLs in publication output
+        run: node scripts/check-curriculum-domain.mjs _site
 
       # Deploy to server via SCP
       - name: Deploy to server

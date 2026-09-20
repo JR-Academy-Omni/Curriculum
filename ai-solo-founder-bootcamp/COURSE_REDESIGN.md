@@ -13,6 +13,7 @@
 
 ## 结构铁律
 - **每周日 3h = 一节线下现场课**(线下 office + 同步直播),周内环节放这节课的 steps,**不拆成多个 lesson**。
+- **周中独立授课**：SEO & GEO 保留 3h，具体时段待定；不占周日 W10。
 - **周中自学 / Lab 各自独立成课**(Lab 独立是平台铁律)。
 - 每节固定节奏:开场 15min review AI OS 跑了啥 → 中段 30min「1-2 人上台讲进展 + networking」→ 下课给 OS 派下周的活。
 
@@ -35,14 +36,15 @@
 - **W4 · 做出能卖的东西|Make It Real** — 不会 code 的人把专长+AI 做成生产化服务/信息产品(交付物 + SOP);会 code 的定 MVP 范围。周中:MVP coding 全自学 + 三个 Vibe Lab。**产出**:能演示、能交付的最小版本。
 - **W5 · 立起你的品牌门面|Brand & Website** — 大家一起做**官网 + design system + 品牌**(Source of Truth 一稿出全套:官网/Pitch Deck/一页纸/公众号)。**产出**:上线的官网 + 一套 design system。
 - **W6 · 别让项目烂尾|Keep Shipping** ⭐Ray(微软) — 大厂 PM 落到一人公司(任务拆解/优先级/在职版可持续节奏)+ AI OS 当 PM 维护 backlog、追进度。**产出**:OS 维护的 backlog + 一周执行计划。
-- **W7 · 收到第一笔钱|First Dollar** — 人脉盘点 + 一对一 pitch(不建系统,就是去卖)+ Stripe/Lemonsqueezy 澳洲版 + AI 生成法律文件由 AI 律师审。**产出**:第一笔真实付款到账。
+- **W7 · 创业者的互联网产品 | Product Operations** — 产品结构与权限、GA / GSC 等分析工具、收费与支付商、常用法律文件、Sales Pipeline / Leads / CRM、经营成本与免费资源。现场演示付款交付并完成经营地图，选择一个缺口实操。**产出**：经营地图、销售跟进记录、验证证据；课后推进真实首单。[51 页课件](https://jracademy.ai/curriculum/lessons/ai-solo-founder-w7/)。
 
 # Phase 2 · Go To Market(W8–W11)
 > 把刷脸首单变成一台不靠刷脸、会自己复利的获客机器。
 
-- **W8 · AI 内容工厂|Content Factory** — 小红书爆款+私信转化 / 视频号+公众号+私域 / AI 视频·海报·漫剧 / X build in public。**产出**:一条能持续出货的内容流水线 + 首波真实流量。
-- **W9 · 主动敲开客户的门|Outbound** — LinkedIn 个性化 outreach + ProductHunt 冷启动 + 中英文圈 6 大线下渠道。**产出**:发出的 outreach + 收回的真实线索。
-- **W10 · 让人和 AI 都搜到你|SEO & GEO** — Google long-tail SEO + AEO/GEO + E-E-A-T / Schema.org。**产出**:上线 SEO 页 + 第一次被搜到/被 AI 引用。
+- **W8 · 中文媒体平台特点与 AI 运营**（主讲：Michael Nie）— 先看懂公众号文章、小红书运营内容与抖音短视频各自的用户、分发逻辑、内容形态、运营节奏和转化方式，再练 AI 评论 / 私信分流与回复。**产出**：中文媒体策略地图 + 三平台内容样例 + AI 回复规则 + 自动化能力清单。
+- **W9 · TikTok + Meta 英文媒体运营**（主讲：Michael Nie）— 以 TikTok 和 Meta（Instagram / Facebook）为主阵地，讲清原生短视频、Reels / Feed / Stories；同时覆盖 LinkedIn、X、社区、Newsletter 与 Podcast / 媒体的适用策略，以及 AI 评论 / 私信回复。**产出**：英文媒体策略地图 + TikTok / Meta 原生内容样例 + AI 回复规则 + 自动化能力清单。
+- **W10 · 全自动 AI 内容工厂|从一个资料源到自动发送**（主讲：Michael Nie）— 学员搭建一条定时运行的系统：读取唯一资料源 → 自动发现并筛选选题 → 生成平台原生内容与媒体任务 → 规则审核 / 长期授权 → 排程发送 → provider 状态与公开链接回读 → 表现反馈；异常自动转人工。**产出**：能真实运行的一周无人值守内容工厂 + 发布与异常记录。
+- **周中独立课 · 让人和 AI 都搜到你|SEO & GEO** — 原 W10 内容迁入，保留 3 小时；具体日期、时间与授课方式待定。Google long-tail SEO + AEO/GEO + E-E-A-T / Schema.org；配套 SEO 自学随课安排。
 - **W11 · 用户增长|Growth Hacking** — AARRR 漏斗诊断 + 推荐机制与病毒循环 + 一个 launch 跑通 10 渠道。**产出**:上线的增长循环 + 实验数据。
 
 # Phase 3 · Australia Operations(W12–W13)
@@ -70,7 +72,7 @@
 | Phase | 周 | 主题 | 出关物 |
 |---|---|---|---|
 | 1 · AI Enable Business | W1–W7 | AI OS / agent 上岗 / 商业验证 / 产品 / 品牌 / PM / 首单 | 被付过一次钱的 AI 化产品 + 品牌官网 |
-| 2 · Go To Market | W8–W11 | 内容工厂 / Outbound / SEO·GEO / 用户增长 | 会复利的获客机器 |
+| 2 · Go To Market | W8–W11 | 中文媒体特点与运营 / TikTok + Meta 为主的英文媒体运营 / 全自动内容工厂 / 用户增长；另设周中 SEO & GEO | 会复利的获客机器 |
 | 3 · Australia Operations | W12–W13 | 自动运转 + 数据分析 / 合规 + RDTI | 合法·财务自动·能退税 |
 | 4 · Founder Club | W14–W15+ | Pitch/BP/融资 + Demo Day + 持续社群 | 毕业入会,进入创业者网络 |
 

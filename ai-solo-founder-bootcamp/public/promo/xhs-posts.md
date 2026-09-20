@@ -41,7 +41,7 @@
 #AI创业 #一人公司 #自由职业 #墨尔本华人 #悉尼华人 #布里斯班华人 #AI工具 #Cursor #ClaudeCode #MicroSaaS
 
 ### 评论区第 1 条
-🔗 5 维度 OPC 自评：jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
+🔗 5 维度 OPC 自评：jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
 
 测完留言你的分数，咱们一起看看哪一块薄弱～
 
@@ -89,7 +89,7 @@
 #AICoding #Lovable #Stripe #Vercel #SaaS #AI产品 #一人公司 #墨尔本程序员 #VibeCoding
 
 ### 评论区第 1 条
-🔗 30 分钟完整教程：jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/30min-ship.html
+🔗 30 分钟完整教程：jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/30min-ship.html
 
 跑完留言你做的什么产品～
 
@@ -132,7 +132,7 @@ AI / 软件研发明确算 R&D activity
 #澳洲创业 #墨尔本 #悉尼 #布里斯班 #RDTI #研发退税 #AI创业 #Grant申请 #小公司老板
 
 ### 评论区第 1 条
-🔗 RDTI Prompt 模板：jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/rdti-prompt-template.html
+🔗 RDTI Prompt 模板：jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/rdti-prompt-template.html
 
 ⚠️ 提交前必须找有牌照的 R&D 顾问 / 税务师 review
 

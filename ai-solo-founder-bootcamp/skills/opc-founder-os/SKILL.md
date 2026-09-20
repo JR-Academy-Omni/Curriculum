@@ -38,9 +38,30 @@ Never use an AI role-play, generated screenshot, test-mode payment or unexecuted
 
 ## Routing
 
+Only select a skill present in the installed package. Weekly packs intentionally contain a subset; if a capability is absent, report its name and prepare the inputs instead of claiming to have run it.
+
 - Offer and minimum delivery: `$opc-offer-mvp`
 - Weekly delivery and review: `$opc-shipping-review`
 - First real payment: `$opc-first-dollar`
 - Repeatable outbound test: `$opc-customer-acquisition`
+
+- 创始人适配度与开营准备: `$opc-founder-fit`
+- CEO AI OS 装机与验收: `$opc-ceo-ai-os`
+- 创业机会与 Business SoT: `$opc-business-sot`
+- AI 员工与排程设计: `$opc-ai-team`
+- 真实客户访谈: `$opc-customer-discovery`
+- 商业验证与定价: `$opc-idea-validator`
+- 品牌与落地页交付: `$opc-brand-launch`
+- MVP 构建、部署与验收: `$opc-mvp-ship`
+- 产品经营与支付权益验收: `$opc-product-operations`
+- 中文媒体内容与互动: `$opc-chinese-media`
+- 英文媒体原生创作: `$opc-english-media`
+- 受控 AI 内容工厂: `$opc-content-factory`
+- SEO 与 GEO 可信内容: `$opc-search-content`
+- 增长漏斗与单变量实验: `$opc-growth-experiment`
+- 交付流程与经营账表: `$opc-business-operations`
+- 澳洲经营与 R&D 证据准备: `$opc-australia-readiness`
+- Pitch 与资金准备: `$opc-funding-readiness`
+- Demo Day 与 90 天行动: `$opc-demo-day`
 
 If the required real-world action has not happened, stop with the artifact in its honest current state and specify the exact evidence needed next.

@@ -44,7 +44,7 @@ Agent Engineer 不等于会调用 Agent Framework。重点是执行边界、状�
 
 ## S11 · FDE / AI Solutions Engineer
 
-FDE 同时需要 discovery、system design、build、integration 和 adoption。它适合愿意进入客户现场并处理模糊问题的工程师。
+FDE 不是只做售前演示。先进入客户团队，访谈实际使用者并拆解现有流程；再把“想做 AI”收敛为第一阶段可以交付的范围。随后需要亲手做原型、接数据和 API、处理权限与失败路径，并推动客户真正上线使用。面试时要能讲出一个模糊需求怎样变成系统、怎样处理客户环境限制，以及用什么证据判断采用是否成功。
 
 ## S12 · AI Platform / Eval Engineer
 
@@ -94,10 +94,28 @@ ML Engineer 关注训练、推理和模型性能。本课程提供相邻知识�
 
 Practice 从 W1 启动同一条 Enterprise AI 产品交付路线，但可以按工程边界使用多个 repository。
 
-## S23 · 下一条升级主线
+## S23 · W1–W3：ADLC、Design System 与 Application MVP
+
+先讲 W1 的 ADLC 证据链：Problem、Spec、Work Plan、Code Change、Test、Review、Evidence。AI Coding 提升的是实现速度，但课程要求每一步都留下可复核证据。W1 先形成 Task Brief、范围边界、Acceptance Criteria、项目规则和一次受控修改；不要求一周生成整个产品。
+
+W2 把需求转成 Design Brief、Design Tokens、组件规则、完整关键页面和各种业务状态。W3 基于 Starter 串起用户操作、API、数据、权限、版本和审计，交付可运行 Vertical Slice。W3 仍然不接 AI，目的是先让后续 AI 能进入真实 Workflow。
+
+## S24 · W4–W7：首次 AI、工程工作区、Evaluation 与 RAG
+
+W4 只做 Voice 到 Human Confirmed Transcript，包含编辑、失败恢复和 manual fallback，不提前生成 Progress Note。W5 把整个项目改造成 AI-Native Engineering Workspace，建立 Spec-to-Work、Living Docs、C4/Mermaid、ADR、Hooks 和 Skills。
+
+W6 先定义评估契约、版本化 dataset、deterministic checks、RAGAS、人工 rubric 和 baseline。W7 才从零实现 chunking、metadata、embedding、retrieval、citations 与 no-answer fallback，并且每一步都运行 W6 的同一套评估。
+
+## S25 · W8–W13：Data Layer、Agent、Memory 与 Production
+
+W8 先抽取 Repository 和 Domain Service，再接 MCP 和 CLI，避免把数据库查询和业务规则塞进 tool handler。W9 用这些工具实现有步数上限、停止条件、失败恢复和人工确认的 Bounded Agent。
+
+W10 加入只保存人工确认事实的 Long-Term Memory。W11 把 Agent 重构为 Production Harness，支持 hooks、budget、checkpoint、resume、replay、idempotency 和 approval。W12 在 Harness 内加入 Model Router，并针对任务、质量、成本、延迟、隐私与 data residency 做 routing decision。W13 用 production eval、LLM-as-a-Judge 校准、安全红队、故障演练、release decision、rollback 和 System Design Defense 完成验收。
+
+## S26 · 下一条升级主线
 
 让每个人只选 Product、AI、Production 或 Domain depth 中的一条。要求说明现有项目、目标能力、验收证据和暂时不做的内容。
 
-## S24 · 结课
+## S27 · 结课
 
 重新回答开场的两个问题。结束时不要求所有人选择同一岗位，而是要求岗位、项目和证据能够对应。

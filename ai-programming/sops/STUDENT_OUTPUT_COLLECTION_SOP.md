@@ -249,7 +249,7 @@ ai-programming 基础班 6 周（42 天）、进阶班 8 周（56 天）。本 S
 2. 学员在 `curriculum/ai-programming/student-portfolio/cohort-02/student-{anon-id}/` 创建文件夹
 3. 按 §5 模板填 README.md + 4 个 URL txt
 4. 提 PR，Beta review，merge
-5. 推到 jiangren.com.au/curriculum/ 自动部署
+5. 推到 jracademy.ai/curriculum/ 自动部署
 
 **ROI 评估**：02 期 37 学员中预计 2-3 人走这条通道（Persona C 学生中懂 git 的）。值得做的原因：这部分学员同时是 alumni 推荐人 + git PR 本身是社群参与度信号。
 
