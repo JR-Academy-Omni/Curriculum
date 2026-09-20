@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: career-changer
 roleName: 转行/求职者
 painPoint: ai-fomo
@@ -33,7 +33,7 @@ tags: [转码, 零基础, 朋友圈, 视频号]
   - 学不动 Python
   - 但能 ship
 - **副标题**：Cursor + 中文 = 你的第一个网站
-- **角标**：JR Academy · 职场 AI 产出力实战营
+- **角标**：JR Academy · 职场 AI 提效实战营
 
 > ⚠️ 朋友圈封面**禁止 bullet 和 CTA**。
 
@@ -58,7 +58,7 @@ Lower portion, smaller medium-bold Chinese sans-serif (思源黑体 Bold style),
 "Cursor + 中文 = 你的第一个网站"
 
 Bottom-right corner, tiny flat single-line text, color #FFF1E7:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Simplified Chinese except English terms "Python", "ship", "Cursor" which must spell exactly with correct capitalization (Python with capital P, ship lowercase, Cursor with capital C).
 

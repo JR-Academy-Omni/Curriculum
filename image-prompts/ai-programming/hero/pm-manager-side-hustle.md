@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: pm-manager
 roleName: 产品/运营/管理岗
 painPoint: side-hustle
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: zh
 version: 1
-title: 职场 AI 产出力实战营（PM 副业 hero · MVP stack badges）
+title: 职场 AI 提效实战营（PM 副业 hero · MVP stack badges）
 ctaText: ""
 tags: [hero, 详情页, PM, MVP-stack]
 ---
@@ -64,7 +64,7 @@ Bottom-left text overlay, 60px from canvas edge, heavy bold Chinese sans-serif (
 "PM 自己 ship · 5 周交付完整产品"
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Simplified Chinese only. Flat solid color.
 ```

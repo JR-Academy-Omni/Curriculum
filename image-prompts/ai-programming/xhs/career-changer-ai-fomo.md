@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: career-changer
 roleName: 转行/求职者
 painPoint: ai-fomo
@@ -37,7 +37,7 @@ career-changer 看 AI 浪潮的真实焦虑：想转码，但被各种"先学 Py
   - ✓ Phase 0 从打开浏览器开始
   - ✓ 5 周建站 / 8 周加 AI 功能
 - **CTA**：评论区扣 "零基础" 领大纲
-- **角标**：JR Academy · 职场 AI 产出力实战营
+- **角标**：JR Academy · 职场 AI 提效实战营
 
 ## 完整 Prompt
 
@@ -62,7 +62,7 @@ Three checkmarks "✓" in #FF5757 followed by Chinese text in #10162F:
 Red CTA strip #FF5757 with white text:
 "评论区扣 零基础 领大纲"
 
-Small text bottom-right #10162F: "JR Academy · 职场 AI 产出力实战营"
+Small text bottom-right #10162F: "JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Simplified Chinese only except English terms "AI", "Cursor", "Phase 0" which must spell exactly. Numbers "0", "5", "8" must be Arabic numerals.
 

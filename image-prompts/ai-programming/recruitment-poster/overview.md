@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: general
 format: recruitment-poster
 formatName: 招生海报 / 全景图
@@ -11,12 +11,12 @@ mode: Thinking
 lang: zh
 version: 1
 styleName: 80s Computer Manual
-title: 职场 AI 产出力实战营 · 80s Computer Manual
+title: 职场 AI 提效实战营 · 80s Computer Manual
 ctaText: 扫码报名零基础建站班
 tags: [招生海报, 80s Computer Manual, ai-programming]
 ---
 
-# 职场 AI 产出力实战营 · 招生海报（80s Computer Manual）
+# 职场 AI 提效实战营 · 招生海报（80s Computer Manual）
 
 > 模型：`gpt-image-2` · 模式：**Thinking** · 比例 2:3 · 1024×1536
 

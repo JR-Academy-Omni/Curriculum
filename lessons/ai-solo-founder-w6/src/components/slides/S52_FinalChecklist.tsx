@@ -1,0 +1,5 @@
+import { Slide, Inner, Title, Grid, Card, Tag, colors } from '../ui';
+
+export default function S52_FinalChecklist() {
+	return <Slide bg={colors.darkBg}><Inner style={{ flexDirection: 'column', justifyContent: 'center' }}><Tag bg={colors.green} color={colors.black}>EXIT CHECK</Tag><Title white size="58px" style={{ margin: '18px 0 28px' }}>清晰项目的七个信号</Title><Grid cols={3} gap={18}><Card bg={colors.yellow}><h3 style={{ fontSize: 24 }}>目标与边界</h3><p style={{ fontSize: 18, marginTop: 14 }}>知道为什么做，也知道本轮不做什么</p></Card><Card bg={colors.blue}><h3 style={{ fontSize: 24 }}>粒度与负责人</h3><p style={{ fontSize: 18, marginTop: 14 }}>任务够小，每项只有一个 Owner</p></Card><Card bg={colors.green}><h3 style={{ fontSize: 24 }}>依赖与验收</h3><p style={{ fontSize: 18, marginTop: 14 }}>阻塞可见，完成有证据</p></Card></Grid><p style={{ color: colors.white, fontSize: 22, marginTop: 30 }}>最后一个信号：已经约好下一次 Review，反馈会进入下一轮。</p></Inner></Slide>;
+}

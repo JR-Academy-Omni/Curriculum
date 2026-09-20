@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: office-worker
 roleName: Office workers (HR / Finance / Sales / Teachers / Ops)
 painPoint: side-hustle
@@ -36,7 +36,7 @@ Office worker first-person voice: I have a 9-5 job, I've never written code, but
   - ✓ 5-week basic build / 8-week add AI features
   - ✓ Frontend · CMS · users · database · deploy
 - **CTA**: Comment "AI" for the syllabus
-- **Brand tag**: JR Academy · 职场 AI 产出力实战营
+- **Brand tag**: JR Academy · 职场 AI 提效实战营
 
 ## Full Prompt
 
@@ -62,7 +62,7 @@ Three checkmarks "✓" in #FF5757 followed by text in #10162F:
 Red CTA strip #FF5757 with white text:
 "Comment AI for the syllabus"
 
-Small text bottom-right #10162F: "JR Academy · 职场 AI 产出力实战营"
+Small text bottom-right #10162F: "JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Numbers "9", "5", "46", "8" must be Arabic numerals. Use straight ASCII apostrophes in "don't". The "9-5" labels must use a hyphen between the digits.
 

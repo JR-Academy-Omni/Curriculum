@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: career-changer
 roleName: Career changers / Job seekers
 painPoint: ai-fomo
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: en
 version: 1
-title: 职场 AI 产出力实战营 (engineer-vs-creator track hero, EN)
+title: 职场 AI 提效实战营 (engineer-vs-creator track hero, EN)
 ctaText: ""
 tags: [hero, career-changer, ai-fomo, two-track, EN]
 ---
@@ -55,7 +55,7 @@ Bottom-left text overlay, 60px from canvas edge, geometric bold sans-serif (Bric
 "Two tracks. One ships in 5 weeks."
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color.
 ```

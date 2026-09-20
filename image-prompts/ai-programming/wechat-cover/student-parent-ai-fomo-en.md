@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: student-parent
 roleName: Students / Parents
 painPoint: ai-fomo
@@ -30,7 +30,7 @@ Single hard line. Stop telling kids to memorize for-loops. By 2026 the actual sk
   - Stop teaching kids syntax.
   - Teach them to ship.
 - **Subheadline**: AI Coding · 5-week build · 46 lessons · ages 12+
-- **Brand tag**: JR Academy · 职场 AI 产出力实战营
+- **Brand tag**: JR Academy · 职场 AI 提效实战营
 
 > Cover format = headline only, no bullets, no CTA.
 
@@ -55,7 +55,7 @@ Lower portion, smaller medium-bold sans-serif (Inter SemiBold style), color #FFF
 "AI Coding · 5-week build · 46 lessons · ages 12+"
 
 Bottom-right corner, tiny flat single-line text, color #FFF1E7:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Use straight ASCII apostrophes if needed. Numbers "5", "46", "12" must be Arabic numerals. The "+" sign after "12" must render as a plus character.
 

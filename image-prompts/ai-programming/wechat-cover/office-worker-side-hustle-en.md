@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: office-worker
 roleName: Office workers (HR / Finance / Sales / Teachers / Ops)
 painPoint: side-hustle
@@ -30,7 +30,7 @@ Direct anti-quit-your-job message. Aimed at the LinkedIn / Instagram audience te
   - Don't quit your job.
   - Ship a product on the side.
 - **Subheadline**: 5-week build · Cursor + AI · zero syntax
-- **Brand tag**: JR Academy · 职场 AI 产出力实战营
+- **Brand tag**: JR Academy · 职场 AI 提效实战营
 
 > Cover format = headline only, no bullets, no CTA.
 
@@ -55,7 +55,7 @@ Lower portion, smaller medium-bold sans-serif (Inter SemiBold style), color #101
 "5-week build · Cursor + AI · zero syntax"
 
 Bottom-right corner, tiny flat single-line text, color #10162F:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Use straight ASCII apostrophes in "Don't". Numbers "5" must be Arabic. The "+" in "Cursor + AI" must render as a plus character.
 

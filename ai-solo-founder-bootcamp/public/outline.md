@@ -5,91 +5,83 @@
 > 🤖 本文件由 `lineage/build_lineage.py` 从同目录 `outline.json` 自动生成 —— **勿手改**。要改大纲改 `outline.json`，再重跑 `python3 lineage/build_lineage.py`。
 > （`outline.json` 是生产管线吃的机器权威；这份 `.md` 是给人读、给谱系当真相文档的统一格式。）
 
-**级别** 高级 · **类型** training · **时长** 11 周（W0 Pre-work 自学 + W1-W11 三城线下 hub-and-spoke 模式：墨尔本主场 + 悉尼/布里斯班卫星教室。每周 4h 现场 + 4-8h 自学。不录播。） · **总课时** 61 · **步骤** 182 · **直播** 36 · **互动 Lab** 8 · **预计学时** 92
+**级别** 高级 · **类型** training · **时长** 15 周（W0 Pre-work 自学 + W1-W15 三城线下 hub-and-spoke：墨尔本主场 + 悉尼 / 布里斯班卫星教室）。固定节奏：每周日 3h 线下 office + 同步直播 = 一节现场课（15 周 = 15 节现场课）—— 开场 15min 看 AI OS 这周替你跑了什么 → 中段 30min 1-2 人上台讲进展 + networking → 下课给 OS 派下周的活并定「下周你要撞的真实动作」。另每周 5-8h 自学与项目实操（MVP coding 全部自学）。不录播。 · **总课时** 53 · **步骤** 188 · **直播** 15 · **互动 Lab** 9 · **预计学时** 94
 
 **适合**：澳洲华人专业人士（35-50 岁、150-250k+ 工资、有 5-15 年职业积累）—— senior 程序员、PM、设计师、咨询、律师、会计、医生、小公司老板/1-5 人团队创始人、准备申请 YC/Antler/Startmate 的 founder。想用 AI 做一人公司收第一笔钱、拿澳洲 Grant 退税、建立第二条收入腿、把现有业务 AI 化、或为 accelerator 申请攒 traction。
 
-**目标**：11 周内从 0 做到第一笔真实付费、ABN 注册完成、提交至少 1 个澳洲 Grant 申请、产出 10+ 篇中英文内容、Demo Day 现场展示自己的产品。毕业时拿到一个能跑、能卖、能合规的 AI 一人创业的完整框架。
+**目标**：15 周里把 AI 部署进创业的每一个环节，每周日一节 3 小时线下现场课，周中自学与真实动作：W1-W7 搭 CEO AI OS、让 agent 上岗干活、锁死方向、做完商业验证、做出能卖的东西、立起品牌门面、用项目管理防烂尾，并靠人脉刷脸收到第一笔钱；W8-W11 把这一单变成不靠刷脸的获客机器（内容工厂 / 主动获客 / SEO+GEO / 增长循环）；W12-W13 财务与客服自动流转 + AI 读经营数据 + 澳洲公司结构、税务合规与 RDTI 43.5% 退税；W14-W15 把 13 周真实产出做成 pitch deck + BP + 一页纸，Demo Day 三城联合路演上台，毕业加入 Founder Club。毕业硬指标不变：$1+ 真实付费、ABN 注册、Grant 申请提交、10+ 内容产出、产品 URL Live、Demo Day 出席。
 
 ---
 
-## Phase 1 — Build & Sell (W0-W3)
+## Phase 1 — AI Enable Business (W1-W7)
 
-_选品 + MVP + 上线 + 收第一笔钱。这是整门课最硬的核心 phase，4 周后你必须有一个能跑能卖的产品和 Stripe 后台真实交易。_
+_W1 搭起你的 CEO AI OS · W2 你的 AI 员工上岗 · W3 这是不是一门好生意（⭐Stan 麦肯锡）· W4 做出能卖的东西 · W5 立起你的品牌门面 · W6 别让项目烂尾（⭐Ray 微软）· W7 收到第一笔钱。固定节奏：每周日 3h 线下 office + 同步直播 = 一节现场课 —— 开场 15min 看 AI OS 这周替你跑了什么 → 中段 30min 1-2 人上台讲进展 + networking（翻创业身份找队友 / 客户）→ 下课给 OS 派下周的活并定「下周你要撞的真实动作」。MVP coding 全部走自学线（材料 + 3 个 Vibe Coding Lab）。出关物：一个验证过、AI 化、有品牌门面、被真人付过一次钱的产品。_
 
-- **Pre-work · 装机 + LLM Key + ABN 预备** — 45 分钟
-- **[Live] OPC 心智 + 澳洲华人 indie 案例 3-5 个** — 120 分钟 · 🔴直播
-- **[Live] AI 用户调研：从 Reddit / X / 小红书 / 牛客挖痛点** — 120 分钟 · 🔴直播
-- **Lab: AI 用户调研模板（Prompt Lab）** — 30 分钟
-- **[Self] 5 个 idea → 1 个：选品决策矩阵** — 60 分钟
-- **[Self] 跟 5 个目标用户做 30min interview** — 90 分钟
-- **[Live] 定价模型选型：一次性 / 订阅 / Freemium / B2B / 服务+软件混合** — 90 分钟 · 🔴直播
-- **[Live] Cursor / Claude Code / Lovable / v0 工具地图** — 120 分钟 · 🔴直播
-- **[Live] 一周做一个 SaaS 的 PRD → MVP playbook** — 120 分钟 · 🔴直播
-- **Lab: Vibe Coding — Cursor 入门** — 30 分钟
-- **Lab: Vibe Coding — Claude Code agentic 工作流** — 45 分钟
-- **Lab: Lovable — 无代码 ship 第一个 SaaS** — 45 分钟
-- **[Self] 自学：Vibe Coding Hub Phase 2 全部章节** — 180 分钟
-- **[Live] Source of Truth + AI 一稿出全套（Website / Pitch Deck / Brochure / 一页纸 / 公众号）** — 120 分钟 · 🔴直播
-- **[Live] 打造 AI 第二大脑 ① 选型 — 你的 AI 秘书 5 方案深度对比** — 120 分钟 · 🔴直播
-- **[Lab] 打造 AI 第二大脑 ② 装机 — 基础配置 + 第一次对话验收（按 L11b 选的方案分组）** — 90 分钟
-- **[Live] 打造 AI 第二大脑 ③ 超级记忆 — Gmail / Calendar / Drive / Notion / Slack 全部喂进 agent** — 120 分钟 · 🔴直播
-- **[Live] 打造 AI 第二大脑 ④ 干活 — 7 个秘书任务现场 ship（企业秘书 / 大脑）** — 120 分钟 · 🔴直播
-- **[Self] 打造 AI 第二大脑 ⑤ 进阶 — 切换 / 双 agent 配合 / 自建 / 团队 Brain** — 60 分钟
-- **[Live] 打造 AI 第二大脑 ⑥ 自动化 — Agent Schedule 工作坊（5 案例 · 跨平台）** — 120 分钟 · 🔴直播
-- **[Self] 部署到 Vercel / Cloudflare / Railway** — 90 分钟
-- **[Live] Stripe / Lemonsqueezy 接入实战（澳洲版）** — 120 分钟 · 🔴直播
-- **[Live] 域名 + 部署 + 监控基础** — 90 分钟 · 🔴直播
-- **[Self] $1 真实付费挑战（毕业硬指标 #1）**
-- **[Live] AI 生成法律文件 + AI 律师审核（Privacy / TOS / Disclaimer / Refund / Cookie · 澳洲版）** — 120 分钟 · 🔴直播
+- **[W0·Pre-work] 装机 + AI 订阅（Codex / DeepRouter / 双开）+ LLM Key + ABN 预备 + 创业身份采集 A/B/C** — 70 分钟
+- **[W1] 搭起你的 CEO AI OS · Your CEO AI OS** — 180 分钟 · 🔴直播
+- **[W1·Lab] CEO AI OS 装机 — 基础配置 + 第一次对话验收** — 90 分钟
+- **[W1·自学] 7 个秘书任务跑满一周 + AI OS 验收** — 90 分钟
+- **[W2] 你的 AI 员工上岗 · Agents at Work** — 180 分钟 · 🔴直播
+- **[W2·自学] 让 agent 替你跑第一批调研：竞品 / 市场 / 用户痛点** — 120 分钟
+- **[W2·Lab] AI 用户调研模板（Prompt Lab）** — 30 分钟
+- **[W2·自学] 跟 5 个目标用户做 30min interview** — 90 分钟
+- **[W3] 这是不是一门好生意 · Prove the Business ⭐嘉宾 Stan（麦肯锡）** — 180 分钟 · 🔴直播
+- **[W3·自学] 5 个 idea → 1 个：选品决策矩阵** — 60 分钟
+- **[W3·自学] 一页商业验证报告（W3 过关物）** — 60 分钟
+- **[W4] 做出能卖的东西 · Make It Real** — 180 分钟 · 🔴直播
+- **[W4·自学] Cursor / Claude Code / Lovable / v0 工具地图** — 120 分钟
+- **[W4·自学] 一周做一个 SaaS 的 PRD → MVP playbook** — 120 分钟
+- **[W4·Lab] Vibe Coding — Cursor 入门** — 30 分钟
+- **[W4·Lab] Vibe Coding — Claude Code agentic 工作流** — 45 分钟
+- **[W4·Lab] Lovable — 无代码 ship 第一个 SaaS** — 45 分钟
+- **[W4·自学] 自学：Vibe Coding Hub Phase 2 全部章节** — 180 分钟
+- **[W4·自学] 部署到 Vercel / Cloudflare / Railway** — 90 分钟
+- **[W4·自学] 域名 + 部署 + 监控基础** — 90 分钟
+- **[W5] 立起你的品牌门面 · Brand & Website** — 180 分钟 · 🔴直播
+- **[W5·自学] 品牌物料补齐：从 SoT 一次生成剩下的对外资产** — 90 分钟
+- **[W6] 别让项目烂尾 · Keep Shipping ⭐嘉宾 Ray（微软）** — 180 分钟 · 🔴直播
+- **[W6·自学] 在职版一周 sprint 模板 + 给 OS 派活清单** — 60 分钟
+- **[W6·自学] CEO AI OS 进阶 — 切换 / 双 agent 配合 / 自建 / 团队 Brain** — 60 分钟
+- **[W7] 收到第一笔钱 · First Dollar** — 180 分钟 · 🔴直播
+- **[W7·自学] 收款与合规收尾：Stripe / Lemonsqueezy 深度配置 + 5 份法律文件挂上线** — 120 分钟
+- **[W7·自学] $1 真实付费挑战（毕业硬指标 #1）**
 
-## Phase 2 — Marketing Campaign · 线上 + 线下 · AI 串起来 (W4-W6)
+## Phase 2 — Go To Market (W8-W11)
 
-_按渠道类型切分（不按语言圈，未来加任何新市场都能套）：W4 Social Media + Content Engine + AI 视频（短内容平台 + 长内容 + 私域 + AI 视频制作）；W5 Outreach + Community + Events（主动获客 + 社区潜伏 + 线下/PR/Podcast）；W6 Search（SEO + GEO）+ 总收官 AI 营销操作系统。Phase 1 做出能卖的产品，Phase 2 解决『如何让人发现 + AI 帮你跑完整套获客战役』，AI 把所有渠道串成一台机器。_
+_W8 AI 内容工厂 · W9 主动敲开客户的门 · W10 让人和 AI 都搜到你（SEO + GEO）· W11 用户增长 Growth Hacking。把 W7 那笔靠刷脸拿到的首单，变成一台不靠刷脸、会自己复利的获客机器。边界很清楚：W8-W10 把人弄进来，W11 让人留下来 + 带人来。出关物：三路获客（内容 / 主动 / 被动）+ 一个复利循环。_
 
-- **[Live] 小红书爆款笔记结构 + 私信转化** — 120 分钟 · 🔴直播
-- **[Live] 视频号 + 公众号 + 私域闭环** — 120 分钟 · 🔴直播
-- **Lab: 小红书爆款标题生成器（Prompt Lab）** — 30 分钟
-- **[Self] AI 内容工厂搭建：选题 → 写稿 → 改稿 → 出图** — 120 分钟
-- **[Live] AI 视频制作：从脚本到成片，一键生成中英文短视频** — 120 分钟 · 🔴直播
-- **[Live] AI 海报 + 产品图制作（与 AI 视频配套）** — 90 分钟 · 🔴直播
-- **[Live] AI 漫剧 / 短剧：用 AI 做连续动画短剧获客（与真人短视频互补）** — 120 分钟 · 🔴直播
-- **[Live] X / Twitter Build in Public 打法** — 120 分钟 · 🔴直播
-- **[Live] LinkedIn outreach + ProductHunt 冷启动** — 120 分钟 · 🔴直播
-- **Lab: LinkedIn 个人化 outreach 生成器（Prompt Lab）** — 30 分钟
-- **[Self] Reddit / IndieHackers 社区策略** — 60 分钟
-- **[Live] 线下战役合集：中英文圈 6 大线下渠道一节通吃** — 120 分钟 · 🔴直播
-- **[Live] Google SEO long-tail + AEO/GEO（AI 搜索时代）** — 120 分钟 · 🔴直播
-- **[Live] E-E-A-T + Schema.org 结构化数据实操** — 90 分钟 · 🔴直播
-- **[Self] 自学：JR /learn/seo-master 全部章节** — 240 分钟
-- **[Live] AI 营销操作系统：1 个 launch 跑通 10 渠道（Phase 2 总收官）** — 120 分钟 · 🔴直播
+- **[W8] AI 内容工厂 · Content Factory** — 180 分钟 · 🔴直播
+- **[W8·自学] AI 内容工厂搭建：选题 → 写稿 → 改稿 → 出图** — 120 分钟
+- **[W8·Lab] 小红书爆款标题生成器（Prompt Lab）** — 30 分钟
+- **[W8·自学] AI 视频 · 海报 · 漫剧工具栈与产线（选型 / 角色一致性 / 成本产能）** — 150 分钟
+- **[W8·自学] X Build in Public：30 天内容日历与帖型模板** — 90 分钟
+- **[W9] 主动敲开客户的门 · Outbound** — 180 分钟 · 🔴直播
+- **[W9·Lab] LinkedIn 个人化 outreach 生成器（Prompt Lab）** — 30 分钟
+- **[W9·自学] Reddit / IndieHackers 社区策略** — 60 分钟
+- **[W10] 让人和 AI 都搜到你 · SEO & GEO** — 180 分钟 · 🔴直播
+- **[W10·自学] 自学：JR /learn/seo-master 全部章节** — 240 分钟
+- **[W11] 用户增长 · Growth Hacking** — 180 分钟 · 🔴直播
+- **[W11·自学] 付费投放最小实验：Meta / Google / 小红书三选一，$200 试出答案** — 90 分钟
+- **[W11·自学] 增长实验系统：一周一个实验，让增长可累积** — 60 分钟
 
-## Phase 3 — Australia Operations (W7-W9)
+## Phase 3 — Australia Operations (W12-W13)
 
-_财务自动化 + 澳洲会计 + Grant 实战（精简版）。这是这门课在全球独家的 3 周——澳洲华人专属本地化模块，没有第二门课同时教这 3 件事。Grant 部分只重点讲 RDTI（OPC 最值钱的退税），其他 Grant 一图概览即可，不展开浪费课时。_
+_W12 让生意自己运转（Notion ERP + AI 客服 + AI 数据分析）· W13 把钱从税务局拿回来（结构 + 税务 + RDTI，⭐澳洲持牌 CPA / Grant consultant）。全球独家护城河：AI 一人创业 × 澳洲税务 / Grant，没有第二门课同时教这两件事。W13 现场只讲结构、税务、RDTI 三块重头戏；ABN / BAS 填报和 Grant 申请细节下沉自学 + AI 起草 Lab，卡点走周中邮件问嘉宾 CPA。出关物：一门在澳洲合法、财务自动、还能退税的一人生意。_
 
-- **[Live] Notion 个人 ERP — CRM/收入/任务一体化** — 120 分钟 · 🔴直播
-- **[Live] AI 客服 + 邮件自动化（OpenClaw / n8n / Zapier）** — 120 分钟 · 🔴直播
-- **[Self] Stripe → Xero 自动同步** — 60 分钟
-- **Lab: AI 客服 prompt 设计（Prompt Lab）** — 30 分钟
-- **[Live · 嘉宾] Sole trader vs Pty Ltd 决策树（澳洲会计师）** — 120 分钟 · 🔴直播
-- **[Live · 嘉宾] ABN / TFN / GST / BAS 实操** — 90 分钟 · 🔴直播
-- **[Live · 嘉宾] PSI rules / 个人 vs 公司税分水岭 / CGT** — 90 分钟 · 🔴直播
-- **[Self] 一年期财务规划模板（澳洲版）** — 60 分钟
-- **[Live · 嘉宾] R&D Tax Incentive (RDTI) 43.5% 退税** — 120 分钟 · 🔴直播
-- **[Video / Wiki] 其他 Grant 全景对照（EMDG / 各州 / 联邦大额）** — 45 分钟
-- **Lab: Grant 申请书 AI 起草（Prompt Lab）** — 45 分钟
+- **[W12] 让生意自己运转 · Autopilot** — 180 分钟 · 🔴直播
+- **[W12·Lab] AI 客服 prompt 设计（Prompt Lab）** — 30 分钟
+- **[W12·自学] Stripe → Xero 自动同步** — 60 分钟
+- **[W13] 把钱从税务局拿回来 · Compliance & RDTI ⭐嘉宾 持牌 CPA / Grant consultant** — 180 分钟 · 🔴直播
+- **[W13·自学] ABN / TFN / GST / BAS 实操** — 90 分钟
+- **[W13·自学] 一年期财务规划模板（澳洲版）** — 60 分钟
+- **[W13·自学] 其他 Grant 全景对照（EMDG / 各州 / 联邦大额）** — 45 分钟
+- **[W13·Lab] Grant 申请书 AI 起草（Prompt Lab）** — 45 分钟
 
-## Phase 4 — Scale & Demo (W10-W11)
+## Phase 4 — Founder Club (W14-W15)
 
-_VC 选修（拿钱加速？）+ 三城联合 Demo Day。课程的最后两周，把前面 10 周的产出公开展示，建立校友网络。_
+_W14 把生意讲成故事（Pitch + BP + 融资，⭐Stan 麦肯锡书挡回归）· W15 登台 Demo Day = Founder Club 入会。三城联合路演（每人真上台 5min pitch）+ 投资人对接 + 三城本地互为客户日晚宴。毕业 = 加入持续的 AI 一人创业者社群：校友网络 · mastermind · 6 个月+ Office Hour · 互为客户市场 · 老带新。本 phase 后续继续加内容（谈判成交 / 媒体 PR / 投资人关系）。_
 
-- **[Live · 选修] VC 入门：什么时候该融钱、什么时候不该** — 120 分钟 · 🔴直播
-- **[Live · 选修] Term sheet 入门 / SAFE notes / 估值** — 90 分钟 · 🔴直播
-- **[Live · 嘉宾] Fireside chat 1：Blackbird / Square Peg / AfterWork Ventures** — 90 分钟 · 🔴直播
-- **[Live · 嘉宾] Fireside chat 2：头部加速器创始人 / 早期投资人** — 90 分钟 · 🔴直播
-- **[Self] business vs VC 路线决策表** — 60 分钟
-- **[Live] Demo Day Day 1 — 三城联合路演(Roadshow)直播 + 每人 5min pitch** — 240 分钟 · 🔴直播
-- **[Live] Demo Day Day 2 — 三城本地『互为客户日』Invite-only Networking 晚宴** — 180 分钟 · 🔴直播
-- **[Live] 投资人对接 + 项目提交 — 把达标项目推送给对接投资机构** — 90 分钟 · 🔴直播
-- **[Self] 校友群 + 6 个月持续 Office Hour**
+- **[W14] 把生意讲成故事 · Pitch & BP ⭐嘉宾 Stan（麦肯锡，书挡回归）** — 180 分钟 · 🔴直播
+- **[W14·自学] business vs VC 路线决策表** — 60 分钟
+- **[W15] 登台 · Demo Day · 入会 Founder Club** — 180 分钟 · 🔴直播
+- **[W15·自学] Founder Club 入会：校友网络 · mastermind · 6 个月 Office Hour · 互为客户市场**

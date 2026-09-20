@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: office-worker
 roleName: 普通职场人（HR/财务/销售/教师/运营）
 painPoint: side-hustle
@@ -33,7 +33,7 @@ tags: [副业, AI Coding, 朋友圈, 视频号]
   - 想法值钱
   - AI 帮你 ship
 - **副标题**：5 周从零做出第一个能上线的网站
-- **角标**：JR Academy · 职场 AI 产出力实战营
+- **角标**：JR Academy · 职场 AI 提效实战营
 
 > ⚠️ 朋友圈封面**禁止 bullet 和 CTA**。
 
@@ -58,7 +58,7 @@ Lower portion, smaller medium-bold Chinese sans-serif (思源黑体 Bold style),
 "5 周从零做出第一个能上线的网站"
 
 Bottom-right corner, tiny flat single-line text, color #10162F:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Simplified Chinese except the English word "ship" and "AI" which must spell exactly. Numbers "5", "1" must be Arabic numerals.
 

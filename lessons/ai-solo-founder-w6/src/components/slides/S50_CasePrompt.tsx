@@ -1,0 +1,5 @@
+import { Slide, Inner, Title, Card, Tag, colors, fonts } from '../ui';
+
+export default function S50_CasePrompt() {
+	return <Slide bg={colors.white}><Inner style={{ flexDirection: 'column', justifyContent: 'center' }}><Tag bg={colors.blue}>COPY · PASTE · EDIT</Tag><Title size="48px" style={{ margin: '14px 0 20px' }}>最终实操 Prompt</Title><Card bg={colors.warmBg} style={{ padding: 22 }}><p style={{ fontFamily: fonts.mono, fontSize: 15, lineHeight: 1.58 }}>你是我的 Agile 项目澄清助手。先问最多 3 个问题，再帮助团队：<br />1. 把模糊目标改写成指定期限内可观察的结果；<br />2. 判断它是单项任务、团队项目还是公司级项目，并解释依据；<br />3. 按 Epic → Feature → Story → Task 生成拆解草案；<br />4. 为每项 Task 补齐动词、唯一 Owner、产出、截止、依赖和验收条件；<br />5. 用目标、风险、价值/投入、真实容量四道门挑战优先级；<br />6. 给出本轮 Sprint Goal、看板初始状态和 Review 问题。<br /><br />不得编造期限、工作量、负责人或用户数据；未知项标记“待确认”；所有承诺与验收由团队确认。</p></Card></Inner></Slide>;
+}

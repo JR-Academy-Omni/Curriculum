@@ -22,7 +22,7 @@ _Week 1-2_
 - **什么是 Vibe Coding + 个人 AI OS：用你的简历搭第二大脑（公开试听）** — 60 分钟 · 🔴直播
 - **自学：AI 基础概念 — 5 分钟搞懂大模型** — 30 分钟
 - **自学：Vibe Coding 是什么** — 30 分钟
-- **安装与配置 Claude、Codex CLI** — 120 分钟 · 🔴直播
+- **安装与配置 Claude、Codex CLI** — 120 分钟
 - **Quest 实战：装好 Claude Code + Codex 完整工具链** — 35 分钟
 - **Lab: Claude Code 入门 — 终端里的 AI 程序员** — 30 分钟
 - **Claude、Codex、Gemini 对比指南** — 120 分钟

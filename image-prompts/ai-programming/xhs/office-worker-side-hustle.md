@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: office-worker
 roleName: 普通职场人（HR/财务/销售/教师/运营）
 painPoint: side-hustle
@@ -37,7 +37,7 @@ ai-programming 受众的真实场景：上班族，不是程序员，但有想�
   - ✓ 5 周建站 · 8 周加 AI 功能
   - ✓ 46 节课 · 29 个互动 Lab
 - **CTA**：评论区扣 "AI做" 领大纲
-- **角标**：JR Academy · 职场 AI 产出力实战营
+- **角标**：JR Academy · 职场 AI 提效实战营
 
 ## 完整 Prompt
 
@@ -62,7 +62,7 @@ Three checkmarks "✓" in #FF5757 followed by Chinese text in #10162F:
 Red CTA strip #FF5757 with white text:
 "评论区扣 AI做 领大纲"
 
-Small text bottom-right #10162F: "JR Academy · 职场 AI 产出力实战营"
+Small text bottom-right #10162F: "JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Simplified Chinese only. Numbers "1", "5", "8", "46", "29" must be Arabic numerals. English "Cursor", "AI", "Lab" must spell exactly.
 

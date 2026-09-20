@@ -27,7 +27,7 @@
 | 12 | 数据工程 AI 项目陪跑 | $3999+GST | 数据工程视频课 + 项目陪跑 | [/program-course/data-engineer-data-analyst](https://jiangren.com.au/program-course/data-engineer-data-analyst) | `data-engineer-data-analyst/` |
 | 13 | DevOps AI 项目陪跑（Dispatch AI） | 纯视频 $999 / 视频+陪跑 $3550+GST | DevOps 视频课 + 项目陪跑 | 🟠 官网未更新（课件：[/curriculum/techscrum-devops/curriculum.html](https://jracademy.ai/curriculum/techscrum-devops/curriculum.html)） | `techscrum-devops/` |
 | 14 | AI Agent & MCP 项目实战营 | $465+GST | 视频课 | [/program-course/mcp](https://jiangren.com.au/program-course/mcp) ✅活 | ❌ 无 |
-| 15 | 职场 AI 产出力实战营 | $960+GST（基础班 8 周）/ $2280+GST（进阶班 12 周） | 直播课 | [/program-course/ai-programming](https://jiangren.com.au/program-course/ai-programming) | `ai-programming/` |
+| 15 | 职场 AI 提效实战营 | $960+GST（基础班 8 周）/ $2280+GST（进阶班 12 周） | 直播课 | [/program-course/ai-programming](https://jiangren.com.au/program-course/ai-programming) | `ai-programming/` |
 | 16 | Vibe Coding 提升班（for tech） | $770+GST | 直播课 | [/program-course/ai-builder](https://jiangren.com.au/program-course/ai-builder) | `ai-builder/` |
 | 17 | AI 产品经理 | $4000+GST | 视频课 + 直播课 | [/program-course/business-analyst](https://jiangren.com.au/program-course/business-analyst) | `business-analyst/` |
 | 18 | AI 一人创业营 | $2800+GST（一期）/ $3800+GST（二期起） | 线下直播课 | [/program-course/ai-solo-founder-bootcamp](https://jiangren.com.au/program-course/ai-solo-founder-bootcamp) | `ai-solo-founder-bootcamp/` |
@@ -207,7 +207,7 @@
 
 ---
 
-### 15. 职场 AI 产出力实战营 — $960+GST（基础班 8 周）/ $2280+GST（进阶班 12 周）· 直播课
+### 15. 职场 AI 提效实战营 — $960+GST（基础班 8 周）/ $2280+GST（进阶班 12 周）· 直播课
 🔗 https://jiangren.com.au/program-course/ai-programming
 👤 **老师：待定**（Hyna 可以上基础班）
 📅 **开课：待定**

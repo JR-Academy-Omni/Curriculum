@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: office-worker
 roleName: 普通职场人（HR/财务/销售/教师/运营）
 painPoint: side-hustle
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: zh
 version: 1
-title: 职场 AI 产出力实战营（5 周建站 hero · 想法→产品时间轴）
+title: 职场 AI 提效实战营（5 周建站 hero · 想法→产品时间轴）
 ctaText: ""
 tags: [hero, 详情页, 5周, 想法-产品]
 ---
@@ -58,7 +58,7 @@ Bottom-left text overlay, 60px from canvas edge, heavy bold Chinese sans-serif (
 "5 周 · 从想法到能访问的产品"
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Simplified Chinese only. Flat solid color.
 ```

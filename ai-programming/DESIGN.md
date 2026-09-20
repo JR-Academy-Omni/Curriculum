@@ -1,6 +1,6 @@
-# 职场 AI 产出力实战营 — Design Spec
+# 职场 AI 提效实战营 — Design Spec
 
-> 🔤 **2026-08-20 课程改名**：「人人都能学的 AI Coding 实战课」→ **「职场 AI 产出力实战营」**（副标：5 周把你的工作流程整段砍掉）。
+> 🔤 **2026-08-24 课程改名**：「人人都能学的 AI Coding 实战课」→ **「职场 AI 提效实战营」**（副标：5 周把你的工作流程整段砍掉）。
 > 原因：旧名里的 *AI Coding* 听着像编程，与课程「不学语法」的定位自相矛盾；「人人都能学」是门槛描述、不是价值描述。
 > **URL slug `ai-programming` 保持不变**（改了会丢已发出去的链接与 SEO 积累）。
 > PERSONAS / FUNNEL_PLAN / PROMOTION_PLAN / AUDIT_LOG / EXECUTION_TIMELINE 等历史规划与审计文档**正文保留旧名不改写**——那是当时的记录，以本条为准。
@@ -18,7 +18,7 @@
 把下面这一整段粘贴给 Claude / GPT / Midjourney / DALL-E / Nano Banana 等任何 AI 模型，它就会按本课主题色出图。也可以在 `curriculum/theme-colors.html` 总览页一键复制。
 
 ```
-设计任务：为「职场 AI 产出力实战营」做配图 / 海报 / banner / 封面图。
+设计任务：为「职场 AI 提效实战营」做配图 / 海报 / banner / 封面图。
 课程定位：零基础·Cursor + AI·从想法到产品上线（入门 / 大众线）
 
 ═══ 主题色（必须严格执行）═══

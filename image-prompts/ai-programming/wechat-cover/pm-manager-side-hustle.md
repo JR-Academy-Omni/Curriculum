@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: pm-manager
 roleName: 产品/运营/管理岗
 painPoint: side-hustle
@@ -33,7 +33,7 @@ tags: [PM, 副业, ship, 朋友圈, 视频号]
   - 写 PRD
   - 不如 ship 产品
 - **副标题**：5 周 · 46 节课 · 你的第一个 MVP 上线
-- **角标**：JR Academy · 职场 AI 产出力实战营
+- **角标**：JR Academy · 职场 AI 提效实战营
 
 > ⚠️ 朋友圈封面**禁止 bullet 和 CTA**。
 
@@ -58,7 +58,7 @@ Lower portion, smaller medium-bold Chinese sans-serif (思源黑体 Bold style),
 "5 周 · 46 节课 · 你的第一个 MVP 上线"
 
 Bottom-right corner, tiny flat single-line text, color #10162F:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Simplified Chinese except English terms "PRD", "ship", "MVP" which must spell exactly with PRD all uppercase, ship lowercase, MVP all uppercase. Numbers "5", "46", "1" must be Arabic numerals.
 

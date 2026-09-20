@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: pm-manager
 roleName: 产品/运营/管理岗
 painPoint: side-hustle
@@ -38,7 +38,7 @@ PM 真实的痛：写完 PRD 排期等 3 个月、需求改了开发不爽、上
   - ✓ 46 节课 · 17 直播 · 29 个 Lab
   - ✓ 上线 · 数据库 · 用户系统全套
 - **CTA**：评论区扣 "自己做" 领大纲
-- **角标**：JR Academy · 职场 AI 产出力实战营
+- **角标**：JR Academy · 职场 AI 提效实战营
 
 ## 完整 Prompt
 
@@ -71,7 +71,7 @@ Three checkmarks "✓" in #FF5757 followed by Chinese text in #10162F:
 Red CTA strip #FF5757 with white text:
 "评论区扣 自己做 领大纲"
 
-Small text bottom-right #10162F: "JR Academy · 职场 AI 产出力实战营"
+Small text bottom-right #10162F: "JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Simplified Chinese except English terms "PM", "ship", "MVP", "AI Coding", "Cursor", "Live", "Lab", "Week" which must spell exactly. Numbers "5", "46", "17", "29", "1", "12" must be Arabic numerals.
 

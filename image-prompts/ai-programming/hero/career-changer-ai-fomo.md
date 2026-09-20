@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: career-changer
 roleName: 转行/求职者
 painPoint: ai-fomo
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: zh
 version: 1
-title: 职场 AI 产出力实战营（4-Phase 进度环 hero · 零基础到上线）
+title: 职场 AI 提效实战营（4-Phase 进度环 hero · 零基础到上线）
 ctaText: ""
 tags: [hero, 详情页, 4-Phase, 零基础]
 ---
@@ -66,7 +66,7 @@ Bottom-left text overlay, 60px from canvas edge, heavy bold Chinese sans-serif (
 "零基础 · 4 个 Phase · 一个能上线的产品"
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Simplified Chinese only. Flat solid color.
 ```

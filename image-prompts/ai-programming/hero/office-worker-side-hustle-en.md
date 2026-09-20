@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: office-worker
 roleName: Office workers (HR / Finance / Sales / Teachers / Ops)
 painPoint: side-hustle
@@ -13,7 +13,7 @@ model: gpt-image-2
 mode: Instant
 lang: en
 version: 1
-title: 职场 AI 产出力实战营 (lunch-break ship hero, EN)
+title: 职场 AI 提效实战营 (lunch-break ship hero, EN)
 ctaText: ""
 tags: [hero, office-worker, side-hustle, EN]
 ---
@@ -49,7 +49,7 @@ Bottom-left text overlay, 60px from canvas edge, geometric bold sans-serif (Bric
 "5 weeks. Lunch breaks only. One live product."
 
 Bottom-right corner, 40px from edge, tiny text in #444:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color.
 ```

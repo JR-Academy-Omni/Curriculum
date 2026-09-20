@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI 求职自动化实战 Workshop · 海报</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#dcd9ec;font-family:Inter,"Noto Sans SC","Microsoft YaHei",sans-serif;color:#151426;display:flex;justify-content:center;padding:30px}
+    #poster{width:1242px;height:1660px;background:#f8f7ff;position:relative;overflow:hidden;box-shadow:0 20px 60px #17152c33;padding:78px 84px}
+    #poster:before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;background:#a29bfe;right:-250px;top:-250px;opacity:.65}#poster:after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:#55efc4;left:-170px;bottom:130px;opacity:.65}
+    .top,.content,.footer{position:relative;z-index:1}.badge{display:inline-block;background:#55efc4;border:3px solid #151426;border-radius:999px;padding:12px 22px;font-weight:900;font-size:24px;letter-spacing:.04em}
+    h1{font-size:102px;line-height:.98;letter-spacing:-6px;margin:38px 0 25px;max-width:1000px}.sub{font-size:33px;line-height:1.45;color:#514b69;max-width:950px}.sub b{color:#6c5ce7}
+    .flow{display:flex;align-items:center;gap:11px;margin:45px 0 38px;flex-wrap:wrap}.flow span{background:#fff;border:3px solid #151426;border-radius:12px;padding:11px 14px;font-size:21px;font-weight:900}.flow i{font-style:normal;font-size:26px;color:#6c5ce7;font-weight:900}
+    .outbox{background:#17152c;color:#fff;border-radius:28px;padding:34px 38px}.outbox h2{font-size:34px;margin:0 0 25px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.item{display:flex;gap:14px;align-items:center;font-size:25px;font-weight:750}.n{flex:0 0 38px;height:38px;border-radius:10px;background:#6c5ce7;display:grid;place-items:center;font-size:20px;font-weight:900}.item:last-child .n{background:#55efc4;color:#151426}
+    .promise{margin-top:34px;border:4px solid #151426;border-radius:24px;padding:26px 30px;background:#ffe66d;box-shadow:10px 10px 0 #151426}.promise strong{display:block;font-size:34px;margin-bottom:5px}.promise p{font-size:24px;margin:0;font-weight:700}
+    .footer{position:absolute;left:84px;right:84px;bottom:66px;display:flex;align-items:end;justify-content:space-between;border-top:3px solid #151426;padding-top:25px}.for{font-size:25px;line-height:1.5;font-weight:800}.for small{display:block;color:#6c5ce7;font-size:18px;letter-spacing:.1em}.time{font-size:42px;font-weight:950;text-align:right}.time small{display:block;font-size:19px;color:#514b69;letter-spacing:.06em}
+    #download{position:fixed;right:24px;bottom:24px;border:0;border-radius:999px;background:#151426;color:#fff;padding:15px 22px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 8px 24px #0004}
+    @media(max-width:900px){body{padding:0;display:block}#poster{transform-origin:top left;transform:scale(calc(100vw / 1242));margin-bottom:calc((1660px * (100vw / 1242)) - 1660px)}#download{z-index:3}}
+  </style>
+</head>
+<body>
+  <div id="poster">
+    <div class="top">
+      <span class="badge">LIVE WORKSHOP · 150 分钟</span>
+      <h1>AI 求职<br>自动化实战</h1>
+      <div class="sub">带着一个真实岗位来，现场搭好一套从 <b>岗位分析</b> 到 <b>投递追踪</b> 的完整求职流程。</div>
+      <div class="flow"><span>定方向</span><i>→</i><span>拆 JD</span><i>→</i><span>改简历</span><i>→</i><span>备面试</span><i>→</i><span>追投递</span></div>
+    </div>
+    <div class="content">
+      <section class="outbox"><h2>下课时，你已经完成：</h2><div class="grid">
+        <div class="item"><span class="n">1</span>目标岗位卡</div><div class="item"><span class="n">2</span>JD 分析报告</div>
+        <div class="item"><span class="n">3</span>岗位定制简历</div><div class="item"><span class="n">4</span>对应求职信</div>
+        <div class="item"><span class="n">5</span>60 秒自我介绍</div><div class="item"><span class="n">6</span>面试题库与提纲</div>
+        <div class="item"><span class="n">7</span>投递追踪表</div><div class="item"><span class="n">+</span>可复用 AI Prompt</div>
+      </div></section>
+      <section class="promise"><strong>不是听 AI 概念，而是现场做完。</strong><p>讲解 20% · 演示 30% · 实操 50% · 一个真实 JD 贯穿全程</p></section>
+    </div>
+    <footer class="footer"><div class="for"><small>适合人群</small>应届生 · 转行者<br>正在求职的人</div><div class="time"><small>零 AI 基础可参加</small>150 MIN</div></footer>
+  </div>
+  <button id="download">⬇ 下载 PNG</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>document.getElementById('download').onclick=async()=>{const b=document.getElementById('download');b.disabled=true;b.textContent='生成中…';const c=await html2canvas(document.getElementById('poster'),{scale:2,useCORS:true,backgroundColor:'#f8f7ff'});const a=document.createElement('a');a.download='ai-job-search-workshop-poster.png';a.href=c.toDataURL('image/png');a.click();b.disabled=false;b.textContent='⬇ 下载 PNG'};</script>
+</body>
+</html>

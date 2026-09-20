@@ -94,6 +94,15 @@ HEAD_STYLES = """
   .hl-t { font-weight: 800; font-size: 14px; }
   .hl-d { font-size: 12.5px; color: #444; line-height: 1.7; margin-top: 3px; }
   .no-fit { border-left: 4px solid #dc2626; background: #fff1f2; padding: 9px 12px; margin-bottom: 8px; font-size: 12.5px; line-height: 1.7; }
+  .reuse-t { width:100%; border-collapse:collapse; margin-top:12px; font-size:13px; }
+  .reuse-t th { background:#10162f; color:#fef08a; padding:7px 9px; text-align:left; }
+  .reuse-t td { padding:9px; border-bottom:1px solid #ddd; vertical-align:top; }
+  .reuse-t .made { font-weight:800; white-space:nowrap; }
+  .reuse-t .how { color:#666; font-size:12px; }
+  .gl { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:10px; margin-top:12px; }
+  .gl-i { border:2px solid #10162f; background:#fff; padding:10px 12px; }
+  .gl-i b { display:block; font-size:13.5px; margin-bottom:3px; }
+  .gl-i span { font-size:12.5px; color:#444; line-height:1.65; }
   .footer { font-size: 11px; color: #888; font-family: 'Space Mono', monospace; margin-top: 36px; padding-top: 14px; border-top: 1px dashed #ccc; }
 </style>
 """
@@ -212,9 +221,9 @@ def render_curriculum() -> str:
 <div class="card" style="background:#10162f;color:#fef08a;border-color:#10162f;box-shadow:6px 6px 0 #dc2626">
   <h3 style="color:#fef08a;margin-bottom:10px">💼 你要的不是「会用 AI」，是同事做不出来的产出</h3>
   <div style="font-size:14px;line-height:1.9;color:#fff">
-    5 周之后，你手里有 <strong style="color:#fef08a">5 件能直接拿去用的东西</strong>：
+    {launch_p['weeks']} 周之后，你手里有 <strong style="color:#fef08a">5 件能直接带回工位用的东西</strong>：
     给客户的提案 PPT、能发出去的 PDF、别人能打开的网站、每天自己跑的数据报表、一条 60 秒视频。<br>
-    <em style="color:#fed7aa">同一件事，你 40 分钟做完，同事还在找模板。</em>
+    <em style="color:#fed7aa">换掉内容就是下一份 —— 同一件事，你 40 分钟做完，同事还在找模板。</em>
   </div>
 </div>
 
@@ -266,6 +275,22 @@ def render_curriculum() -> str:
     <strong>工作里用：</strong>客户提案 · 报价单 · 周报自动化 · 简历 · 部门官网 · 数据看板<br>
     <strong>生活里用：</strong>家庭旅行手册 · 个人作品集网站 · 给孩子做的绘本 · 装修比价自动汇总
   </div>
+</div>
+
+<h2>🔁 学完直接照搬：这 5 件回工位就能接着用</h2>
+<div class="card">
+  <div style="font-size:13px;line-height:1.9">
+    <strong>这不是练习作业。</strong>5 周做的每一件都按「能照搬」设计 ——
+    换掉里面的内容，就是你下一份提案、下一个报价单、下一个部门页面。
+  </div>
+  <table class="reuse-t">
+    <tr><th>你做出来的</th><th>回公司直接当</th><th>怎么复用</th></tr>
+    {''.join(
+      f'<tr><td class="made">{html.escape(r["made"])}</td>'
+      f'<td>{html.escape(r["reuse"])}</td>'
+      f'<td class="how">{html.escape(r["how"])}</td></tr>'
+      for r in OUTLINE['reuseAtWork'])}
+  </table>
 </div>
 
 <h2>👥 这门课适合谁</h2>
@@ -326,6 +351,18 @@ def render_curriculum() -> str:
   </div>
 </div>
 
+<h2>📖 几个词先说清楚（零基础不用怕）</h2>
+<div class="card">
+  <div style="font-size:13px;line-height:1.9">
+    下面排课表里会出现几个词。<strong>不用提前学，这里先用人话说一遍</strong>，看排课的时候就不会卡住。
+  </div>
+  <div class="gl">
+    {''.join(
+      f'<div class="gl-i"><b>{html.escape(g["t"])}</b><span>{html.escape(g["p"])}</span></div>'
+      for g in OUTLINE['glossary'])}
+  </div>
+</div>
+
 <h2>📅 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 场直播排课</h2>
 <div class="card">
   <table style="width:100%;border-collapse:collapse;font-size:13px">
@@ -349,7 +386,7 @@ def render_curriculum() -> str:
 <h2>📖 这两块不排直播（学得会的不占你时间）</h2>
 <div class="card">
   <div style="font-size:13px;line-height:1.9;margin-bottom:10px">
-    排课原则：<strong>会卡住的才排直播</strong>——装工具、报错、部署、定时任务跑不起来，这些必须有人看着。
+    排课原则：<strong>会卡住的才排直播</strong>——装工具、报错、让东西真的上线、定时任务跑不起来，这些必须有人看着。
     不会卡住的就别占你晚上，配齐 Lab 和 Quest 你自己走更快。
   </div>
   {''.join(

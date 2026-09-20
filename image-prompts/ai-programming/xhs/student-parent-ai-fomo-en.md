@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: student-parent
 roleName: Students / Parents
 painPoint: ai-fomo
@@ -35,7 +35,7 @@ Parents are pushing kids into Python summer camps and "kids who code" classes �
   - ✓ 46 lessons · 29 hands-on labs · ages 12+
   - ✓ Ships a real, accessible product (not a hello-world)
 - **CTA**: Comment "AI" for the syllabus
-- **Brand tag**: JR Academy · 职场 AI 产出力实战营
+- **Brand tag**: JR Academy · 职场 AI 提效实战营
 
 ## Full Prompt
 
@@ -69,7 +69,7 @@ Three checkmarks "✓" in #FF5757 followed by text in #10162F:
 Red CTA strip #FF5757 with white text:
 "Comment AI for the syllabus"
 
-Small text bottom-right #10162F: "JR Academy · 职场 AI 产出力实战营"
+Small text bottom-right #10162F: "JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Numbers "2020", "2026", "5", "46", "29", "12" must be Arabic numerals. Use straight ASCII apostrophes in "doesn't".
 

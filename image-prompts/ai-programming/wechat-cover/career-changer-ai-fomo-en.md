@@ -1,6 +1,6 @@
 ---
 bootcamp: ai-programming
-bootcampName: 职场 AI 产出力实战营
+bootcampName: 职场 AI 提效实战营
 role: career-changer
 roleName: Career changers / Job seekers
 painPoint: ai-fomo
@@ -30,7 +30,7 @@ One reframe. "Learn to code" was sold as a degree-equivalent for a decade. AI Co
   - AI Coding is the new literacy.
   - Not the new degree.
 - **Subheadline**: 5-week build · 46 lessons · zero syntax · ages 14 to 60
-- **Brand tag**: JR Academy · 职场 AI 产出力实战营
+- **Brand tag**: JR Academy · 职场 AI 提效实战营
 
 > Cover format = headline only, no bullets, no CTA.
 
@@ -55,7 +55,7 @@ Lower portion, smaller medium-bold sans-serif (Inter SemiBold style), color #FFF
 "5-week build · 46 lessons · zero syntax · ages 14 to 60"
 
 Bottom-right corner, tiny flat single-line text, color #FFF1E7:
-"JR Academy · 职场 AI 产出力实战营"
+"JR Academy · 职场 AI 提效实战营"
 
 Text must be sharp and beautifully composed. Flat solid color. Numbers "5", "46", "14", "60" must be Arabic numerals.
 
