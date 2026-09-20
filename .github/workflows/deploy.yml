@@ -84,6 +84,13 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/ai-engineer-landscape-talk (公开讲座 · 19 slides · GenAI Foundations & AI Engineer Landscape)
+      - name: Build lessons/ai-engineer-landscape-talk
+        working-directory: lessons/ai-engineer-landscape-talk
+        run: |
+          bun install
+          bun run build
+
       # Build lessons/ai-engineer-cohort-07-miniclaw (90-min public class · 48 slides + MiniClaw live coding)
       - name: Build lessons/ai-engineer-cohort-07-miniclaw
         working-directory: lessons/ai-engineer-cohort-07-miniclaw
@@ -485,6 +492,12 @@ jobs:
           if [ -d lessons/ai-engineer-cohort-05-final/dist ]; then
             mkdir -p _site/lessons/ai-engineer-cohort-05-final
             cp -r lessons/ai-engineer-cohort-05-final/dist/* _site/lessons/ai-engineer-cohort-05-final/
+          fi
+
+          # AI Engineer · GenAI Foundations & AI Engineer Landscape public talk
+          if [ -d lessons/ai-engineer-landscape-talk/dist ]; then
+            mkdir -p _site/lessons/ai-engineer-landscape-talk
+            cp -r lessons/ai-engineer-landscape-talk/dist/* _site/lessons/ai-engineer-landscape-talk/
           fi
 
           # AI Engineer Cohort 07 · public class and MiniClaw live coding
