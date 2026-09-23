@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23 — WorkBuddy AI 智能办公实战课程方案
+
+- 新增 `WORKBUDDY_COURSE_PLAN.md`，提供面向澳洲华人职场人士的 4 小时 WorkBuddy 实操工作坊设计。
+- 课程覆盖安装与安全配置、办公任务、个人 AI 专家、远程工作，并将微信群记录与 Blender 3D 项目划为独立进阶模块。
+- 新增 `workbuddy-workshop` 线上直播课程页面、结构化大纲与 1242×1660 可下载海报，并接入课程海报中心和静态部署流程。
+- 根据课程原始选题重新定位为《WorkBuddy AI 智能办公全能实战课》：安装缩短为 25 分钟，主体明确覆盖技能应用、AI员工、AI专家和远程操作四大主题；“别再只问 AI，让它开始交付”保留为宣传口号。
+
 ## 2026-09-11
 
 - 新增三张可独立售卖的 AI 自动化课程竖版海报，分别聚焦中文媒体 AI 自动化、TikTok + Meta AI 自动化和 AI 全自动内容工厂；对外版本移除 W8-W10、OPC 与创业营内部上下文，仅保留课程价值、Michael Nie、日期与报名信息（`ai-solo-founder-bootcamp/public/promo/ai-automation-standalone`；本地）。

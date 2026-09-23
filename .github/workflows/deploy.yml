@@ -287,6 +287,12 @@ jobs:
           fi
 
           # openclaw-workshop: static HTML only (4-hour offline workshop, no React build)
+          # workbuddy-workshop: static HTML only (4-hour Chinese online live workshop)
+          if [ -d workbuddy-workshop/public ]; then
+            mkdir -p _site/workbuddy-workshop
+            cp -r workbuddy-workshop/public/* _site/workbuddy-workshop/
+          fi
+
           if [ -d openclaw-workshop/public ]; then
             mkdir -p _site/openclaw-workshop
             cp -r openclaw-workshop/public/* _site/openclaw-workshop/
@@ -1154,6 +1160,22 @@ jobs:
                     <span class="tag" style="background:#dc2626">INTERNAL</span>
                     <div class="title">敏捷反思 Workshop · 主讲手册</div>
                     <div class="desc">节奏图 · 投票 SOP · 5 反思问题精准版 · 高转化金句 · 销售跟进话术（不冷推）· 风险应急</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">WorkBuddy AI 智能办公全能实战课 · 4 小时中文线上直播</div>
+                <div class="cards">
+                  <a href="./workbuddy-workshop/curriculum.html">
+                    <span class="tag" style="background:#5B5FEF">CURRICULUM · 4h</span>
+                    <div class="title">WorkBuddy AI 智能办公全能实战课</div>
+                    <div class="desc">安装配置只是开场 · 四大主题：技能应用 + AI员工 + AI专家 + 远程操作 · 从会用工具到搭好自己的AI工作系统</div>
+                  </a>
+                  <a href="./workbuddy-workshop/poster.html">
+                    <span class="tag" style="background:#121327">POSTER</span>
+                    <div class="title">WorkBuddy 课程海报</div>
+                    <div class="desc">1242×1660 竖版海报 · 支持一键下载 PNG</div>
                   </a>
                 </div>
               </div>
