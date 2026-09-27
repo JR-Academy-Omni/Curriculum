@@ -31,6 +31,7 @@ export interface LinkItem {
 	label: string;
 	url: string;
 	meta: string;
+	qr: string;
 }
 
 export interface DeckSlideContent {
@@ -193,8 +194,9 @@ export const deck: DeckSlideContent[] = [
 		note: '真正有价值的人，会带着 AI 进入真实问题：会判断、会行动、会承担责任。',
 		quote: '不要努力证明自己会完成任务。努力证明自己值得被需要。',
 		links: [
-			{ label: 'FUTURE LAB · AI 时代的人类价值研究', url: 'https://scopedar.com', meta: 'Scopedar.com' },
-			{ label: 'AI 求职工具', url: 'https://vdar.ai', meta: 'Vdar.ai' },
+			{ label: 'FUTURE LAB', url: 'https://www.scopedar.com/', meta: 'Scopedar.com', qr: 'scopedar-qr.png' },
+			{ label: 'AI JOB SEARCH', url: 'https://vdar.ai/', meta: 'Vdar.ai', qr: 'vdar-qr.png' },
+			{ label: 'CONNECT', url: 'https://www.linkedin.com/in/jason-bi-373621266/', meta: 'Jason Bi · LinkedIn', qr: 'jason-bi-linkedin-qr.png' },
 		],
 	},
 ];

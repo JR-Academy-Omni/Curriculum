@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JR Academy AI Engineer Bootcamp 第七期：原有两场 Live 重组为理论与独立实践，沿标准 AI 产品路径从零搭建 Enterprise Production Agent。">
+  <meta property="og:title" content="AI Engineer Bootcamp 第七期｜从 0 搭建 Production Agent">
+  <meta property="og:description" content="原有两场 Live 重组为理论 + 独立实践，同一 Enterprise Agent 项目主线贯穿 13 周。">
+  <meta property="og:image" content="https://jracademy.ai/curriculum/ai-engineer-bootcamp/posters/assets/ai-engineer-cohort-7-poster.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:,">
+  <title>AI Engineer Bootcamp 第七期课程大纲 | JR Academy</title>
+  <style>
+    :root {
+      --red: #ff5757;
+      --ink: #000;
+      --cream: #fff1e7;
+      --white: #fff;
+      --navy: #10162f;
+      --yellow: #ffde59;
+      --blue: #38b6ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Inter, "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .page-shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 3px solid var(--ink);
+      background: rgba(255, 241, 231, .96);
+      backdrop-filter: blur(12px);
+    }
+    .topbar-inner {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { font-weight: 950; letter-spacing: -.03em; text-decoration: none; }
+    .brand span { color: var(--red); }
+    .top-actions { display: flex; gap: 10px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 8px 15px;
+      border: 3px solid var(--ink);
+      background: var(--white);
+      box-shadow: 4px 4px 0 var(--ink);
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button:hover { transform: translate(4px, 4px); box-shadow: none; }
+    .button.primary { background: var(--red); color: var(--white); }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 30px;
+      align-items: stretch;
+      padding: 56px 0 36px;
+    }
+    .hero-copy, .hero-art {
+      border: 3px solid var(--ink);
+      box-shadow: 8px 8px 0 var(--ink);
+    }
+    .hero-copy { padding: clamp(26px, 5vw, 56px); background: var(--red); color: var(--white); }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 24px;
+      padding: 7px 11px;
+      border: 3px solid var(--ink);
+      background: var(--yellow);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: .08em;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    h1 { margin: 0; font-size: clamp(48px, 7.2vw, 88px); line-height: .97; letter-spacing: -.07em; }
+    h1 small { display: block; margin-bottom: 10px; font-size: .3em; letter-spacing: .02em; }
+    .hero-lead { max-width: 680px; margin: 28px 0 0; font-size: clamp(19px, 2.1vw, 27px); font-weight: 820; line-height: 1.35; }
+    .hero-sub { margin: 18px 0 0; font-size: 15px; font-weight: 650; }
+    .hero-art { min-height: 580px; overflow: hidden; background: var(--white); }
+    .hero-art img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 58% center; }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 4px 0 72px;
+    }
+    .metric {
+      padding: 21px;
+      border: 3px solid var(--ink);
+      background: var(--white);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+    .metric strong { display: block; font-size: clamp(28px, 4vw, 46px); line-height: 1; letter-spacing: -.04em; }
+    .metric span { display: block; margin-top: 8px; font-size: 13px; font-weight: 800; }
+    .section { margin: 0 0 84px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+    h2 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1; letter-spacing: -.055em; }
+    .section-note { max-width: 520px; margin: 0; font-weight: 650; }
+    .path {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+    .path-step {
+      position: relative;
+      min-height: 118px;
+      padding: 17px 13px;
+      border: 3px solid var(--ink);
+      background: var(--white);
+      box-shadow: 4px 4px 0 var(--ink);
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .path-step:nth-child(3n + 1) { background: var(--yellow); }
+    .path-step:nth-child(3n + 2) { background: var(--blue); }
+    .path-step:nth-child(3n) { background: var(--red); color: var(--white); }
+    .path-step small { display: block; margin-bottom: 14px; font-family: ui-monospace, monospace; color: var(--ink); }
+    .path-step:nth-child(3n) small { color: var(--white); }
+    .weeks { display: grid; gap: 22px; }
+    .week {
+      display: grid;
+      grid-template-columns: 126px 1fr;
+      border: 3px solid var(--ink);
+      background: var(--white);
+      box-shadow: 7px 7px 0 var(--ink);
+    }
+    .week-number {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border-right: 3px solid var(--ink);
+      background: var(--navy);
+      color: var(--white);
+    }
+    .week-number span { font-family: ui-monospace, monospace; font-size: 13px; font-weight: 900; }
+    .week-number strong { font-size: 50px; line-height: 1; }
+    .sessions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .session { padding: 24px; }
+    .session + .session { border-left: 3px solid var(--ink); }
+    .session-label { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 13px; }
+    .track {
+      display: inline-flex;
+      padding: 5px 9px;
+      border: 2px solid var(--ink);
+      font-size: 12px;
+      font-weight: 950;
+    }
+    .track.theory { background: var(--yellow); }
+    .track.practice { background: var(--red); color: var(--white); }
+    .duration { font-family: ui-monospace, monospace; font-size: 12px; font-weight: 850; }
+    .session h3 { margin: 0; font-size: 20px; line-height: 1.22; }
+    .session-code { margin: 8px 0 0; color: #555; font-family: ui-monospace, monospace; font-size: 12px; font-weight: 800; }
+    .session p { margin: 14px 0 0; color: #343434; font-size: 14px; }
+    .week.final .week-number { background: var(--red); }
+    .week.final .sessions { grid-template-columns: 1fr; }
+    .week.final .session { background: #fff8d6; }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .principle { padding: 24px; border: 3px solid var(--ink); background: var(--white); box-shadow: 5px 5px 0 var(--ink); }
+    .principle b { display: block; margin-bottom: 10px; font-size: 18px; }
+    .final-cta { margin-bottom: 70px; padding: 34px; border: 3px solid var(--ink); background: var(--navy); box-shadow: 8px 8px 0 var(--red); color: var(--white); }
+    .final-cta h2 { max-width: 850px; }
+    .final-cta p { max-width: 720px; font-size: 17px; }
+    .status { min-height: 120px; display: grid; place-items: center; border: 3px dashed var(--ink); font-weight: 850; }
+    footer { padding: 28px 0 46px; border-top: 3px solid var(--ink); font-size: 13px; font-weight: 700; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-art { min-height: 450px; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .path { grid-template-columns: repeat(3, 1fr); }
+      .section-head { display: block; }
+      .section-note { margin-top: 16px; }
+      .week { grid-template-columns: 86px 1fr; }
+      .sessions { grid-template-columns: 1fr; }
+      .session + .session { border-top: 3px solid var(--ink); border-left: 0; }
+      .principles { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .page-shell { width: min(100% - 20px, 1180px); }
+      .top-actions .button:first-child { display: none; }
+      .hero { padding-top: 24px; }
+      .hero-copy { padding: 26px 20px; }
+      .hero-art { min-height: 360px; }
+      .metrics { gap: 10px; }
+      .metric { padding: 16px 12px; }
+      .path { grid-template-columns: repeat(2, 1fr); }
+      .week { grid-template-columns: 1fr; }
+      .week-number { min-height: 80px; flex-direction: row; gap: 8px; border-right: 0; border-bottom: 3px solid var(--ink); }
+      .week-number strong { font-size: 36px; }
+      .session { padding: 20px 17px; }
+    }
+    @media print {
+      .topbar, .top-actions { display: none; }
+      body { background: #fff; }
+      .hero, .week, .metric, .principle { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="./cohort-7-overview.css">
+</head>
+<body>
+  <nav class="topbar" aria-label="页面导航">
+    <div class="page-shell topbar-inner">
+      <a class="brand" href="./curriculum.html" aria-label="匠人学院 AI Engineer Bootcamp">
+        <img src="./posters/assets/jr-academy-logo-zh.svg" alt="匠人学院 JR Academy">
+      </a>
+      <div class="top-actions">
+        <a class="button" href="#schedule">查看排课</a>
+        <a class="button" href="./posters/poster-cohort-7.html">宣传海报</a>
+        <button class="button primary" id="share-button" type="button">复制页面链接</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">COHORT 07 · NEW FORMAT</span>
+        <h1><small>AI Engineer Bootcamp</small>理论 + 实践<br>双线 Live</h1>
+        <p class="hero-lead">从第一周启动同一项目主线，围绕一套系统从产品底座一路搭到 production Agent；代码库按系统边界合理拆分。</p>
+        <p class="hero-sub">理论负责建立工程判断；实践负责把判断变成能运行、能评估、能治理的系统。</p>
+      </div>
+      <div class="hero-art" aria-label="CareKind production Agent 工程系统插画">
+        <img src="./posters/assets/cohort-7-stack-hero-v2.png" alt="由 UI、Voice、RAG、MCP、Agent、Memory、Harness、Routing 和评估模块组成的 production AI 系统">
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="课程数据">
+      <div class="metric"><strong id="metric-live">25</strong><span>场正式 Live</span></div>
+      <div class="metric"><strong id="metric-hours">45h</strong><span>Live 总时长</span></div>
+      <div class="metric"><strong>13</strong><span>周连续实践</span></div>
+      <div class="metric"><strong>1</strong><span>个贯穿项目</span></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>不是 13 个 Demo。<br>是一个产品持续生长。</h2>
+        <p class="section-note">CareKind 采用 Australian aged care 合规场景。AI 生成 Draft，关键事实由人确认，权限、版本、引用和 audit trail 从业务底座一路保留到最终发布门槛。</p>
+      </div>
+      <div class="path" aria-label="CareKind 项目演进路径">
+        <div class="path-step"><small>W1–W3</small>ADLC · UI · Care Workflow</div>
+        <div class="path-step"><small>W4–W5</small>Voice AI · Structured Draft</div>
+        <div class="path-step"><small>W6–W7</small>Policy RAG · RAGAS · MVP</div>
+        <div class="path-step"><small>W8–W9</small>MCP Tools · Bounded Agent</div>
+        <div class="path-step"><small>W10–W12</small>Memory · Harness · Routing</div>
+        <div class="path-step"><small>W13</small>Evals · Red Team · Demo Day</div>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <div class="section-head">
+        <h2>W1–W13<br>正式排课</h2>
+        <p class="section-note">W1–W12 每周一场 90 分钟理论 Live + 一场 120 分钟独立实践 Live。理论 W12 结束，W13 只保留 180 分钟 Production Readiness Review & Demo Day。</p>
+      </div>
+      <div class="weeks" id="weeks"><div class="status">正在读取第七期大纲…</div></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>课程边界</h2></div>
+      <div class="principles">
+        <div class="principle"><b>Human confirmation</b>AI 只产出 Draft、引用和风险提示；关键写回必须经过角色适当的人工确认。</div>
+        <div class="principle"><b>Compliance-aware engineering</b>只使用 synthetic 或 de-identified data，训练 permission、provenance、retention、correction 和 audit。</div>
+        <div class="principle"><b>Production evidence</b>最终以 eval、trace、red-team、release decision 和 system design defense 判断完成度，而不是只看 happy-path Demo。</div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>最终作品不是聊天机器人，<br>而是一套可解释的 Applied AI 系统。</h2>
+      <p>学生需要讲清楚：为什么此处用 RAG、为什么工具权限这样切、哪些信息允许进入 Memory、Harness 如何恢复失败、Router 如何做质量/成本/隐私取舍，以及什么证据支持 release go / no-go。</p>
+    </section>
+  </main>
+
+  <footer><div class="page-shell">JR Academy · AI Engineer Bootcamp 第七期 · 页面课程数据来自 <code>outline.json</code></div></footer>
+
+  <script>
+    const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (char) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+    })[char]);
+
+    const cleanTitle = (title = '') => title.replace(/^AI Coding \+ ADLC：/, '').replace(/^CareKind /, 'CareKind ');
+
+    const sessionCard = (session) => {
+      const theory = session.cohort7Track === 'theory';
+      return `
+        <article class="session">
+          <div class="session-label">
+            <span class="track ${theory ? 'theory' : 'practice'}">${theory ? '理论 LIVE' : '实践 LIVE'}</span>
+            <span class="duration">${escapeHtml(session.duration)} MIN</span>
+          </div>
+          <h3>${escapeHtml(cleanTitle(session.title))}</h3>
+          <div class="session-code">${escapeHtml(session.code)}</div>
+          <p>${escapeHtml(session.description)}</p>
+        </article>`;
+    };
+
+    fetch('./outline.json')
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then((outline) => {
+        const sessions = outline.phases
+          .flatMap((phase) => phase.lessons || [])
+          .filter((lesson) => Number.isInteger(lesson.cohort7Week))
+          .sort((a, b) => a.cohort7SessionOrder - b.cohort7SessionOrder);
+        const byWeek = sessions.reduce((groups, session) => {
+          const items = groups.get(session.cohort7Week) || [];
+          items.push(session);
+          groups.set(session.cohort7Week, items);
+          return groups;
+        }, new Map());
+        document.querySelector('#metric-live').textContent = outline.liveClasses;
+        document.querySelector('#metric-hours').textContent = `${outline.estimatedHours}h`;
+        document.querySelector('#weeks').innerHTML = [...byWeek.entries()].map(([week, items]) => `
+          <section class="week ${week === 13 ? 'final' : ''}">
+            <div class="week-number"><span>WEEK</span><strong>${String(week).padStart(2, '0')}</strong></div>
+            <div class="sessions">${items.map(sessionCard).join('')}</div>
+          </section>`).join('');
+      })
+      .catch((error) => {
+        document.querySelector('#weeks').innerHTML = `<div class="status">大纲读取失败：${escapeHtml(error.message)}。请通过本地或线上 Web Server 打开本页。</div>`;
+      });
+
+    document.querySelector('#share-button').addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      try {
+        await navigator.clipboard.writeText(location.href);
+        button.textContent = '链接已复制';
+      } catch {
+        button.textContent = '请复制地址栏链接';
+      }
+      setTimeout(() => { button.textContent = '复制页面链接'; }, 1800);
+    });
+  </script>
+</body>
+</html>

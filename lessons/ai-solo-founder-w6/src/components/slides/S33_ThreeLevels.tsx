@@ -1,0 +1,10 @@
+import { motion } from 'framer-motion';
+import { Slide, Inner, Title, Tag, colors, border, shadowSm } from '../ui';
+
+const outer = [['试点场景', colors.red], ['受控发布', colors.yellow], ['用户使用', colors.green], ['收集反馈', colors.blue], ['调整范围', colors.purple]];
+const inner = [['Planning', colors.yellow], ['Build + Test', colors.green], ['Daily', colors.blue], ['Review', colors.red], ['Retro', colors.purple]];
+
+export default function S33_ThreeLevels() {
+	const Loop = ({ label, items, delay }: { label: string; items: string[][]; delay: number }) => <div style={{ width: '100%', border, background: colors.warmBg, padding: '14px 18px 20px' }}><strong style={{ display: 'block', marginBottom: 13 }}>{label}</strong><div style={{ display: 'flex', alignItems: 'center' }}>{items.map(([title, color], index) => <div key={title} style={{ display: 'flex', alignItems: 'center', flex: 1 }}><motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: delay + index * 0.1 }} style={{ flex: 1, minHeight: 65, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', background: color, border, boxShadow: shadowSm, padding: 9, fontSize: 17, fontWeight: 900 }}>{title}</motion.div>{index < items.length - 1 && <span style={{ padding: '0 7px', fontSize: 24, fontWeight: 900 }}>→</span>}</div>)}</div><div style={{ textAlign: 'center', marginTop: 14, fontWeight: 900 }}>↖ 反馈回到起点，改变下一轮</div></div>;
+	return <Slide bg={colors.white}><Inner style={{ flexDirection: 'column', justifyContent: 'center' }}><Tag bg={colors.dark}>微软产品组 · 双反馈循环</Tag><Title size="48px" style={{ margin: '13px 0 18px' }}>外环验证产品，内环改进交付</Title><Loop label="外环 · 试点用户反馈" items={outer} delay={0.1} /><div style={{ height: 14 }} /><Loop label="内环 · 产品组每周节奏" items={inner} delay={0.5} /></Inner></Slide>;
+}

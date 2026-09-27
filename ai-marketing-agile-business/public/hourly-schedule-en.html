@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>13-Hour Course Schedule | AI Content Marketing for Small Business</title>
+  <meta name="description" content="Thirteen independent 60-minute units. Finish the marketing assets first, then use AI to manage projects, company tasks and execution.">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="language.css">
+  <style>
+    .schedule-hero{padding:32px 0 58px;background:#19c37d;border-bottom:4px solid #10162f}.schedule-hero h1{font-size:clamp(42px,7vw,82px);line-height:.95;letter-spacing:-.05em;margin:16px 0}.schedule-hero p{font-size:20px;max-width:820px}.bundle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.bundle{background:#fff;border:3px solid #10162f;box-shadow:6px 6px 0 #10162f;padding:20px}.bundle b{font-size:34px;color:#19c37d}.hours{display:grid;gap:14px}.hour{display:grid;grid-template-columns:105px 1fr 280px;background:#fff;border:3px solid #10162f}.hour-no{background:var(--accent,#ffde59);padding:18px;border-right:3px solid #10162f}.hour-no b{display:block;font-size:34px;line-height:1}.hour-main,.hour-output{padding:18px}.hour-main h3{margin:0 0 6px;font-size:20px}.hour-main p,.hour-output p{margin:0;color:#5b6476}.hour-output{border-left:2px solid #d9dde5}.hour-output strong{display:block;margin-bottom:6px}.deps{font-size:12px;margin-top:8px;color:#5b6476}@media(max-width:850px){.bundle-grid{grid-template-columns:1fr 1fr}.hour{grid-template-columns:86px 1fr}.hour-output{grid-column:1/-1;border-left:0;border-top:2px solid #d9dde5}.hour-no{border-right:3px solid #10162f}}@media(max-width:560px){.bundle-grid{grid-template-columns:1fr}.hour{grid-template-columns:1fr}.hour-no{border-right:0;border-bottom:3px solid #10162f}}
+  </style>
+</head>
+<body>
+  <header class="schedule-hero"><div class="wrap"><nav class="language-switch" aria-label="Language"><a href="hourly-schedule.html" lang="zh-CN">中文</a><a href="hourly-schedule-en.html" aria-current="page">English</a></nav><div class="eyebrow">13 × 60 MINUTES</div><h1>Build the marketing assets.<br>Then run the work with AI.</h1><p>The full course is 13 hours. Finish the business and audience brief, Brand Kit, designs, social content and short video first, then use the final two hours to build an AI project and company task-management system.</p><a class="button" href="curriculum-en.html">← Back to course overview</a></div></header>
+  <section class="section"><div class="wrap"><div class="kicker">Mix and match</div><h2>Recommended bundles</h2><div class="bundle-grid" id="bundles"></div></div></section>
+  <main class="section"><div class="wrap"><div class="kicker">Hourly run sheet</div><h2>Thirteen 60-minute units</h2><div class="hours" id="hours"><p>Loading the schedule…</p></div></div></main>
+  <footer class="footer"><div class="wrap">JR Academy · AI Content Marketing for Small Business · 13 × 60 minutes</div></footer>
+  <script>
+    const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+    const colors={'Foundation & Brand':'#8df0c6','Social Media':'#aaa5ff','Short Video':'#ffde59','AI Project Management':'#ff8fa3','AI Business Operations':'#91d7ff'};
+    fetch('hourly-schedule.json').then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}).then(data=>{
+      document.querySelector('#bundles').innerHTML=data.bundles.map(b=>`<article class="bundle"><b>${b.durationHours}h</b><h3>${esc(b.nameEn)}</h3><p>Units ${esc(b.hours.join(', '))}</p></article>`).join('');
+      document.querySelector('#hours').innerHTML=data.blocks.map(b=>`<article class="hour" style="--accent:${colors[b.track]||'#ffde59'}"><div class="hour-no"><span>${esc(b.module)}</span><b>H${String(b.hour).padStart(2,'0')}</b><small>${esc(b.track)}</small></div><div class="hour-main"><h3>${esc(b.titleEn)}</h3><p>${esc(b.focusEn)}</p><div class="deps">${b.dependsOn.length?`Prerequisites: H${b.dependsOn.map(n=>String(n).padStart(2,'0')).join(', H')}`:'Can be used as the starting unit'}</div></div><div class="hour-output"><strong>Output from this hour</strong><p>${esc(b.outputEn)}</p></div></article>`).join('');
+    }).catch(e=>{document.querySelector('#hours').innerHTML=`<div class="card">Could not load the schedule: ${esc(e.message)}</div>`});
+  </script>
+</body></html>

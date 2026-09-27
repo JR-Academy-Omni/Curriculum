@@ -20,7 +20,7 @@
 4. **告知用户**：
    - 代码已推送，GitHub Actions 会自动构建和部署
    - 大约 2-3 分钟后线上会更新
-   - 线上地址：`https://jiangren.com.au/curriculum/`
+   - 线上地址：`https://jracademy.ai/curriculum/`
 
 ## 注意
 - 如果没有任何改动，告诉用户"没有需要发布的内容"

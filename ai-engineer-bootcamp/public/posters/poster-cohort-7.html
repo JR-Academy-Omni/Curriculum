@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eeeae3">
+  <link rel="icon" href="data:,">
+  <title>AI Engineer Bootcamp 第七期宣传海报</title>
+  <link rel="stylesheet" href="./poster-cohort-7-premium.css">
+</head>
+<body>
+  <nav class="controls" aria-label="海报操作">
+    <a href="../cohort-7.html">完整课程大纲</a>
+    <a class="download" href="./assets/ai-engineer-cohort-7-poster.png" download="JR Academy - AI Engineer Bootcamp Cohort 07.png">下载高清 PNG</a>
+  </nav>
+
+  <main class="poster-stage">
+    <article id="poster">
+      <img class="system-visual" src="./assets/cohort-7-production-system-v3.png" alt="" crossorigin="anonymous">
+      <div class="visual-wash" aria-hidden="true"></div>
+      <div class="draft-grid" aria-hidden="true"></div>
+
+      <header class="poster-header">
+        <div class="brand"><img src="./assets/jr-academy-logo-zh.svg" alt="匠人学院 JR Academy" crossorigin="anonymous"></div>
+        <div class="cohort"><small>AI ENGINEER</small><strong>COHORT 07</strong></div>
+      </header>
+
+      <section class="hero-copy">
+        <div class="eyebrow">THEORY × PRACTICE</div>
+        <h1>从 0 搭建<br><em>Production</em><br>Agent</h1>
+        <p>13 周 · 同一个 CareKind AI 项目<br>从产品底座做到可评估的生产系统</p>
+      </section>
+
+      <div class="live-card">
+        <div><span>理论 Live</span><b>架构判断与技术边界</b></div>
+        <i>＋</i>
+        <div><span>实践 Live</span><b>现场搭建、调试与验收</b></div>
+      </div>
+
+      <section class="numbers" aria-label="课程数据">
+        <div><strong>25</strong><span>场正式直播</span></div>
+        <div><strong>45h</strong><span>Live 总时长</span></div>
+        <div><strong>1</strong><span>条项目主线</span></div>
+      </section>
+
+      <section class="deliverables" aria-label="结课交付">
+        <div class="deliverables-title"><span>结课不是听完课</span><b>YOU WILL SHIP</b></div>
+        <div class="deliverables-grid">
+          <div><small>01</small><strong>可运行的 CareKind AI 产品</strong><span>完整 workflow 与 human confirmation</span></div>
+          <div><small>02</small><strong>Production Agent 工程系统</strong><span>RAG · MCP · Memory · Harness · Router</span></div>
+          <div><small>03</small><strong>可证明的上线证据</strong><span>Evals · Trace · Red Team · Release Decision</span></div>
+        </div>
+      </section>
+
+      <section class="build-path" aria-label="CareKind 项目构建路径">
+        <div class="path-label"><span>CAREKIND BUILD PATH</span><b>W01—W13</b></div>
+        <div class="path-steps">
+          <span>ADLC</span><i>→</i><span>UI</span><i>→</i><span>Voice</span><i>→</i><span>RAG</span><i>→</i><span>MCP</span><i>→</i><span>Agent</span><i>→</i><span>Memory</span><i>→</i><span>Harness</span><i>→</i><span>Routing</span><i>→</i><span>Evals</span>
+        </div>
+      </section>
+
+      <footer class="poster-footer">
+        <span>AI ENGINEER BOOTCAMP · 第七期</span>
+        <span>JR ACADEMY · 2026</span>
+      </footer>
+    </article>
+  </main>
+
+  <script>
+    const stage = document.querySelector('.poster-stage');
+    const poster = document.querySelector('#poster');
+    const fitPoster = () => {
+      const scale = stage.clientWidth / 1242;
+      poster.style.transform = `scale(${scale})`;
+      stage.style.height = `${1660 * scale}px`;
+    };
+    if (new URLSearchParams(location.search).has('export')) {
+      document.documentElement.classList.add('export-mode');
+      poster.style.transform = 'none';
+    } else if ('ResizeObserver' in window) {
+      new ResizeObserver(fitPoster).observe(stage);
+      fitPoster();
+    } else {
+      addEventListener('resize', fitPoster);
+      fitPoster();
+    }
+  </script>
+</body>
+</html>

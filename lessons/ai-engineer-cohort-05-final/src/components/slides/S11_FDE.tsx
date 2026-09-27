@@ -1,0 +1,2 @@
+import { RoleFocusSlide, colors } from '../deck';
+export default function S11_FDE(){return <RoleFocusSlide index="03" title="FDE / AI Solutions Engineer" problem="和客户团队一起工作：识别真正卡住业务的流程，把需求收敛为可交付范围，接入客户现有数据与系统，再推动上线和实际使用。" capabilities={['客户访谈与流程拆解','需求收敛与方案边界','现场原型与系统设计','数据、API 与权限集成','效果验证与风险处理','上线交接与用户采用']} interview={['客户说“想做一个 AI Agent”，你怎样找出真正要解决的业务问题？','客户数据不完整、系统老旧、权限复杂时，你怎样缩小范围并交付第一个可用版本？','上线后怎样证明有人使用、结果可靠，并把系统交给客户团队继续运行？']} accent={colors.orange}/>}

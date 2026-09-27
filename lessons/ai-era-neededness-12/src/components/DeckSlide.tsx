@@ -1035,42 +1035,43 @@ function Verdict({ s }: { s: DeckSlideContent }) {
 }
 
 function Closing({ s }: { s: DeckSlideContent }) {
+	const linkPalette = [colors.white, colors.dark, colors.yellow];
 	return (
 		<Slide bg={colors.red}>
-			<div style={{ width: '100%', height: '100%', padding: '70px 104px 64px', position: 'relative', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-				<div style={{ position: 'absolute', right: -130, top: -180, width: 500, height: 500, background: colors.yellow, borderRadius: '50%', border: '5px solid #000' }} />
+			<div style={{ width: '100%', height: '100%', padding: '48px 104px 54px', position: 'relative', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+				<div style={{ position: 'absolute', right: -105, top: -170, width: 430, height: 430, background: colors.yellow, borderRadius: '50%', border: '5px solid #000' }} />
 				<motion.div {...fadeUp(0)} style={{ alignSelf: 'flex-start', background: colors.dark, color: colors.white, border, padding: '8px 16px', fontFamily: fonts.mono, fontWeight: 700, letterSpacing: 2, zIndex: 2 }}>
 					{s.eyebrow}
 				</motion.div>
 				<motion.h2 {...fadeUp(.12)} style={{
 					fontFamily: fonts.heading,
-					fontSize: 62,
+					fontSize: 50,
 					lineHeight: 1.08,
 					letterSpacing: -1.8,
 					fontWeight: 900,
 					maxWidth: 1180,
-					marginTop: 32,
+					marginTop: 20,
 					zIndex: 2,
 				}}>
 					{s.title}
 				</motion.h2>
-				<motion.p {...fadeUp(.2)} style={{ fontSize: 30, fontWeight: 900, marginTop: 14, maxWidth: 1180 }}>{s.subtitle}</motion.p>
-				<motion.p {...fadeUp(.28)} style={{ fontSize: 22, fontWeight: 750, marginTop: 16, maxWidth: 1180, lineHeight: 1.45 }}>{s.note}</motion.p>
+				<motion.p {...fadeUp(.2)} style={{ fontSize: 25, fontWeight: 900, marginTop: 9, maxWidth: 1180 }}>{s.subtitle}</motion.p>
+				<motion.p {...fadeUp(.28)} style={{ fontSize: 18, fontWeight: 750, marginTop: 10, maxWidth: 1180, lineHeight: 1.4 }}>{s.note}</motion.p>
 				<motion.div {...fadeUp(.35)} style={{
-					marginTop: 20,
+					marginTop: 12,
 					alignSelf: 'flex-start',
 					background: colors.yellow,
 					border,
 					boxShadow: shadow,
-					padding: '17px 24px',
+					padding: '11px 18px',
 					fontFamily: fonts.heading,
-					fontSize: 27,
+					fontSize: 21,
 					fontWeight: 900,
 					zIndex: 2,
 				}}>
 					{s.quote}
 				</motion.div>
-				<div style={{ marginTop: 'auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 30, zIndex: 2 }}>
+				<div style={{ flex: 1, minHeight: 0, marginTop: 24, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 26, alignItems: 'center', zIndex: 2 }}>
 					{(s.links ?? []).map((link, i) => (
 						<motion.a
 							key={link.url}
@@ -1080,21 +1081,25 @@ function Closing({ s }: { s: DeckSlideContent }) {
 							rel="noreferrer"
 							style={{
 								display: 'flex',
+								flexDirection: 'column',
 								alignItems: 'center',
-								justifyContent: 'space-between',
-								background: i === 0 ? colors.white : colors.dark,
-								color: i === 0 ? colors.black : colors.white,
+								justifyContent: 'center',
+								background: linkPalette[i],
+								color: i === 1 ? colors.white : colors.black,
 								border,
 								boxShadow: shadow,
-								padding: '20px 26px',
+								padding: '16px 18px 15px',
 								textDecoration: 'none',
+								textAlign: 'center',
 							}}
 						>
-							<div>
-								<div style={{ fontFamily: fonts.mono, fontSize: 13, fontWeight: 700, opacity: .65 }}>{link.label}</div>
-								<div style={{ fontFamily: fonts.heading, fontSize: 31, fontWeight: 900, marginTop: 5 }}>{link.meta}</div>
-							</div>
-							<span style={{ fontSize: 42, fontWeight: 900, color: i === 0 ? colors.red : colors.yellow }}>↗</span>
+							<img
+								src={assetPath(link.qr)}
+								alt={`${link.meta} QR code`}
+								style={{ width: 220, height: 220, objectFit: 'contain', display: 'block', background: colors.white, border }}
+							/>
+							<div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 700, letterSpacing: 1.6, opacity: .62, marginTop: 12 }}>{link.label}</div>
+							<div style={{ fontFamily: fonts.heading, fontSize: 27, fontWeight: 900, marginTop: 2 }}>{link.meta}</div>
 						</motion.a>
 					))}
 				</div>
