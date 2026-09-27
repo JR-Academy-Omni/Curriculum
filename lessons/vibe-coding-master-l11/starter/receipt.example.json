@@ -1,0 +1,30 @@
+{
+  "status": "needs-human",
+
+  "task": "weekly-report",
+  "started_at": "2026-08-30T03:00:12+10:00",
+  "ended_at":   "2026-08-30T03:06:41+10:00",
+
+  "progress": { "done": 4, "total": 7, "last_step": "生成周报草稿" },
+  "stopped_at":  "第 5 步 · 给改动分类",
+  "exit_reason": "任务书里没写机器人 PR 算不算，按出口规则停下，没有猜",
+
+  "files_changed": [
+    { "path": "reports/weekly-2026-35.md", "action": "created",  "lines": "+142 -0" },
+    { "path": "reports/_index.md",          "action": "modified", "lines": "+1 -1"   }
+  ],
+
+  "errors": [
+    { "where": "第 3 步 · 拉取 PR 列表", "what": "接口返回 403", "recovered": true, "how": "退避 30s 后重试成功" }
+  ],
+
+  "decisions": [
+    { "what": "把 #482 归到「内部重构」", "why": "它只改了目录结构，没有行为变化", "confidence": "high" },
+    { "what": "跳过 #491（依赖升级机器人）", "why": "任务书没说机器人 PR 算不算，我不猜", "confidence": "low", "needs_human": true }
+  ],
+
+  "tests": { "ran": true, "command": "npm test", "passed": 12, "failed": 0 },
+
+  "evidence": "上周 git log 计数 14；周报中列出 12 条，差的 2 条见 decisions",
+  "report": "reports/_run-report.md"
+}
