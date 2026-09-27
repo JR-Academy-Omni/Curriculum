@@ -7,7 +7,7 @@
 
 <h2>会 AI chat ≠ 会 AI coding</h2><p>过去一年我带了 300 多名同学做 AI coding，统计下来：能正确做 AI coding 的不足 10%，能高效用的不足 3%，绝大多数人只停在「会跟 AI 聊天」。衡量标准很简单——一个 LinkedIn / Google / GitHub 的 SSO 登录功能，你能不能一小时内从零做完上线。做不到，就还没入门。</p><h2>这门课教你把 AI coding 用到 everything</h2><p>不是教你写 prompt，是教你建一套属于你自己、再放大到企业的 AI 操作系统：个人 AI OS（你的第二大脑）→ 用 ADLC（Agent Development Lifecycle）把整份 PRD 交给一个 Agent 端到端开发 → 让 Agent 自动替你和企业干活 → 沉淀成 AI-native 企业记忆系统。毕业那天的北极星：你能同时指挥多个独立 Agent 并行替你工作。</p><h2>8 周 4 个阶段</h2><p>Phase 1 入门 & 个人 AI OS（产品思维 + PRD + ADLC + 老项目改造 + Design System）；Phase 2 Skills / MCP / Agent 架构；Phase 3 AI 自动化（让 Agent 定时自动干活）；Phase 4 AI-native 企业记忆系统 + 云端 Agent 部署 + 全栈毕业项目。
 
-**级别** 中级 · **类型** training · **时长** 8 周（111 节课） · **总课时** 111 · **步骤** 137 · **直播** 20 · **互动 Lab** 32 · **预计学时** 107.3
+**级别** 中级 · **类型** training · **时长** 8 周（108 节课） · **总课时** 108 · **步骤** 126 · **直播** 17 · **互动 Lab** 32 · **预计学时** 101.3
 
 **适合**：有编程基础的开发者、全栈工程师、DevOps、想用 AI 提升开发效率的技术人员
 
@@ -109,7 +109,6 @@ _Week 6_
 - **多模型 Prompt Engineering 模板参考** — 120 分钟
 - **自学：Prompt 精调结构与四种模板技巧** — 30 分钟
 - **AI 自动化工作流：让 Agent 定时 / 自动替你干活（Schedule / Workflow / Cron）** — 90 分钟 · 🔴直播
-- **企业自动化落地：把重复业务流程交给 Agent 跑通闭环** — 150 分钟 · 🔴直播
 - **Lab: Prompt 评估 — 量化你的 Prompt 质量** — 30 分钟
 - **自学：性能与成本优化** — 30 分钟
 - **Lab: Prompt 迭代与追问 — 第一次一定不够好** — 60 分钟
@@ -119,10 +118,8 @@ _Week 6_
 
 _Week 7-8_
 
-- **Claude 自动生成 UI 布局与样式系统** — 90 分钟 · 🔴直播
 - **Lab: AI 前端开发 — 从截图到 React 代码** — 30 分钟
 - **自学：与 AI 结对编程** — 30 分钟
-- **Claude 实现后端 API 与前端联调** — 120 分钟 · 🔴直播
 - **Lab: AI 后端开发 — 从 API 设计到实现** — 30 分钟
 - **Lab: JSON 结构化输出 — 让 AI 返回可解析的数据** — 30 分钟
 - **自学：前后端协同与 API 生成** — 30 分钟
