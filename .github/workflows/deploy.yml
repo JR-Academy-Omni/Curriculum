@@ -195,6 +195,12 @@ jobs:
         run: |
           bun install
           bun run build
+      # Build lessons/vibe-coding-master-l11 (Vibe Coding 大师课 · 第十一节课 · 让 Agent 定时替你干活 — 判断闸 + 无人值守任务书)
+      - name: Build lessons/vibe-coding-master-l11
+        working-directory: lessons/vibe-coding-master-l11
+        run: |
+          bun install
+          bun run build
 
       # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
       # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
@@ -606,6 +612,11 @@ jobs:
           if [ -d lessons/ai-solo-founder-w3/dist ]; then
             mkdir -p _site/lessons/ai-solo-founder-w3
             cp -r lessons/ai-solo-founder-w3/dist/* _site/lessons/ai-solo-founder-w3/
+          fi
+          # lessons/vibe-coding-master-l11: Vibe Coding 大师课 · 第十一节课 · 无人值守（React + Vite）
+          if [ -d lessons/vibe-coding-master-l11/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l11
+            cp -r lessons/vibe-coding-master-l11/dist/* _site/lessons/vibe-coding-master-l11/
           fi
 
           # ai-engineer-resume-interview · 3h 内部学员讲座（slide deck + public/ zip 下载）

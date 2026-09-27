@@ -444,6 +444,45 @@
         </div>
       </div>
 
+      <!-- ========== Vibe Coding Master L11 ========== -->
+      <div class="card">
+        <div class="card-head">
+          <span class="badge badge-react">React SlideEngine</span>
+          <span class="badge badge-status-local">⚙ 蓝图 v1.0 + deck 30 页（29 正课 + 1 附录）+ 讲稿 + 讲义 + starter kit 五件套齐（本地）· 待部署</span>
+        </div>
+        <h2>Vibe Coding 大师课 · 第十一节课 — 让 Agent 定时替你干活：你不在场的时候，它凭什么做对</h2>
+        <p class="desc">
+          <strong>90 分钟框架课</strong>（前 22 分钟学员在写、在被打回；22–36 分钟看老师现场翻两次车）。<strong>课堂硬产物：一份学员自己的「无人值守任务书」，七段两块，可复用、可做成 Skill。</strong><br><br>
+          <strong>🕳 全节承接的是一个前十节从没说出口的前提：你在旁边看着。</strong> L6 的打断信号要人看 · L7 的汇总是你的活 · L8 的 Lead 验收要你在 · L10 的开场四问是你开工前自己过一遍 —— <strong>全都假设你在场</strong>。L11 第一次把这个前提抽掉：任务在凌晨三点跑，你在睡觉，它遇到需要拍板的地方没人拍。所以这节课不是「教一个工具怎么点」（设置本身十分钟讲完，写进 §4 非目标第一条），而是<strong>一件事在没人看着的时候交出去，你要提前把什么补上</strong>。收口立论：<strong>「你消灭的不是那个问题，是那次提问。」</strong> 提问被取消了，那个决定并没有消失 —— 它被交给 Agent 自己做了，而那笔债只能靠任务书提前还。<br><br>
+          <strong>🚪 教学决定一：先让学员交一件不合格的任务。</strong> 讲「哪些适合、哪些不适合，来我给你四条判据」一定失败 —— 学员会点头、会记下，然后回去把一件不该自动化的事自动化了，因为他不觉得那四条说的是他。所以顺序是反的：先写下「我想让它每天替我做的那件事」（不给任何判据），再用四个问题逐个打回来，<strong>判断闸到第 36 分钟才出现</strong>（沿用 L10「图不许提前上屏」的铁律形态，deck 上锁死：P10 之前不许出现任何闸门图、四步图或「判断线」三个字，连封面标题和浏览器标签都不许出现「定时 / Schedule / Cron / 自动化」）。全课支点是<strong>第二问「它做错了，你多久会知道？」</strong>——多数人答不出，因为手工做的时候那一眼检查是<strong>免费且隐形</strong>的，自动化把它拿掉了；追问三句写死，至少 60 秒沉默不救场。<br><br>
+          <strong>🎬 教学决定二：演示必须翻车两次，翻法不同。</strong> 学员进教室时只怕「它停下来等你批」，真正会伤人的是<strong>「它没停，它绕过去了，然后报告说做完了」</strong>——演示 A <strong>现场跑</strong>（只给读权限做一件必须写文件的事，跑完当场打开文件让全场看见它没变，不许用截图），演示 B <strong>展示一个前一天就挂住的会话</strong>（不是现场建，因为「它等了一夜也没人理」这件事在五分钟里物理上演不出来）。<br><br>
+          <strong>⚙️ 第四幕把「卡住」和「断掉」明确切开</strong>——混着讲学员回去只会加超时、不会加契约。<strong>卡住</strong>（它还活着但不往前走）：卡权限 / 卡问题 / 卡等待 → 提前批 / 提前答 / 给边界，三条做法<strong>连代价一起讲</strong>（deck 上代价列的视觉权重高于做法列）。<strong>断掉</strong>（它没活到最后）五种：网络断 / <strong>凭证过期</strong>（无人值守头号杀手，从某天起再也没跑成过而它不会尖叫）/ 环境没准备好 / 限流超时 / <strong>额度用完</strong>（性质不同 —— 前四种是跑了没成，这种是压根没跑）。前四种的共同点是<strong>全都会给你一个「跑完了」的外观</strong>，第五种连外观都没有。<br><br>
+          <strong>🔒 铁律（反转页）：宁可交回一句「我没做，因为 X」，也不要交回一个它猜着做完的结果。</strong> 机制是默认情况下 Agent 把「完成任务」排在「保护你的意图」前面，这句话是<strong>给它一个比完成任务优先级更高的合法退出</strong>——没有这个出口，它只剩绕道一条路。由此推出<strong>结果契约</strong>：绿灯只代表进程正常退出，不代表任务做成了，所以你需要一个你自己定的信号，状态写死成 <code>done / skipped / needs-human</code> 三档 + 一条来自它之外的证据 + 不是 done 时的原因，<strong>什么都没交回来 = 报警</strong>。第三档是关键 —— 只有成功 / 失败两档时它会把「我没做」也塞进成功里（它确实正常结束了），<code>needs-human</code> 是那条铁律的机器形态，也是给它说实话的余地。最后是<strong>重试与幂等</strong>（先契约后重试，顺序不能颠倒）：「重试不是勇气问题，是幂等问题」，判「不安全 → 第一版只提议不生效」在评分表里是<strong>满分答案</strong>。<br><br>
+          <strong>📋 硬产物是七段两块，这是无人值守的真实架构：前五段写给它看（目标 / 判据 / 边界 / 预答 / 出口），后两段写给盯着它的那个脚本看（回执契约 / 重跑规则）</strong>——「无人值守从来不是一个 Agent 自己跑，是一个 Agent 加一个盯着它的东西」。每一段都能追溯到课上某个环节：目标←闸① · 判据←闸②+L6 铁律 · 边界←闸③ · 预答←闸④+<strong>L10 隐藏区</strong>（本节和上节的结构性接口：<strong>隐藏区就是它会来问你的地方，而定时任务不给它问的机会</strong>）· 出口←铁律 · 回执契约←绿灯不等于成功 · 重跑规则←幂等。<br><br>
+          <strong>🌏 受限 / 国内环境不许砍</strong>：给了退让阶梯（云端托管 → 本机调度器 → CI 定时 → 只写任务书人工执行）并逐级标明<strong>失去哪一项能力维度</strong>，只讲能力维度不排名不点评产品；收口是「通道会变，会被墙，会改名，会涨价，<strong>任务书不会</strong>」。另配<strong>课前 72 小时通道自查</strong>（敲一次 <code>/schedule</code> → 有无桌面端 → 能否写系统调度），课堂按结果分流，<strong>硬产物与通道解耦</strong>，一条通道都用不了的人照样交得出任务书。<br><br>
+          <strong>📐 数据纪律</strong>：机制层按官方文档当天版本核实过，但 deck 只写<strong>能力描述</strong>、不写死参数名 / 版本号 / 数值（这块产品行为变化快、部分仍在预览），蓝图 §19.3 列了 9 条<strong>必须开课当天重新核对</strong>的项；结果契约的三个状态在 deck 上写明是<strong>本课的教学约定，不是任何工具的内置功能</strong>；「三条通道」也写明是本课教学分类，不是官方分法。27 页，deck 里<strong>不留任何待填空白页</strong>——讲师个人素材只进讲稿。
+        </p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">96 min</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">30</div></div>
+          <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+        </div>
+        <div class="reuse-label">跨课复用</div>
+        <div class="reuse-chips">
+          <span class="chip locked">对应 ai-builder 课程第十一节；尚未接入 outline.json（待 bootcamp-sync）</span>
+          <span class="chip locked">（可复用：任何需要讲「无人值守 / 定时任务 / Agent 自动化交付」的 Bootcamp 单元）</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="./lessons/vibe-coding-master-l11/" target="_blank" rel="noopener">▶ 打开 Slides（30 页）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L11_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图（内容 SoT）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l11/RUNSHEET.md" target="_blank" rel="noopener">🎙 讲稿（27 页逐页口播 + §C 60 秒沉默执法脚本 + §D 演示五种走向 + §E 三个埋点台账 + §H 四个砍法判断点 + 附录 K 讲师五个空）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l11/HANDOUT.md" target="_blank" rel="noopener">📖 学员讲义（§4 填好的任务书范例 · §5.4 回执六项 · §7 看门狗脚本与八条写法 · §9 反面案例 · 附录 A 全部源码）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l11/starter" target="_blank" rel="noopener">🧰 starter kit（改一个 config.env 就能跑 · 自检 20 项）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l11/src/components/slides" target="_blank" rel="noopener">📁 slides 源码</a>
+        </div>
+      </div>
+
       <!-- ========== Legacy L1: Vibe Coding ========== -->
       <div class="card">
         <div class="card-head">
