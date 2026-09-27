@@ -217,6 +217,13 @@ jobs:
         with:
           node-version: '20'
 
+      # Build lessons/vibe-coding-master-l7 (Vibe Coding 大师课 · 第七节课 · 多 Agent 协作 — Subagent 与 Agent Team)
+      - name: Build lessons/vibe-coding-master-l7
+        working-directory: lessons/vibe-coding-master-l7
+        run: |
+          bun install
+          bun run build
+
       - name: Build lessons/vibe-coding (Slidev)
         working-directory: lessons/vibe-coding
         run: |
@@ -626,6 +633,10 @@ jobs:
             cp -r lessons/ai-solo-founder-w3/dist/* _site/lessons/ai-solo-founder-w3/
           fi
 
+          # lessons/vibe-coding-master-l7: Vibe Coding 大师课 · 第七节课 · 多 Agent 协作（React + Vite）
+          if [ -d lessons/vibe-coding-master-l7/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l7
+            cp -r lessons/vibe-coding-master-l7/dist/* _site/lessons/vibe-coding-master-l7/
           # lessons/vibe-coding-master-l12: Vibe Coding 大师课 · 第十二节课《Claude Hook》（React + Vite）
           if [ -d lessons/vibe-coding-master-l12/dist ]; then
             mkdir -p _site/lessons/vibe-coding-master-l12

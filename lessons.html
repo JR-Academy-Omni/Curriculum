@@ -268,7 +268,7 @@
     </header>
 
     <div class="section-title">已制作的 Lesson Deck</div>
-    <p class="section-intro">下面的 deck 已经做出实际 slide，覆盖正式 lesson、课程解读与公开课。每张卡包含：deck 形态 / 时长 / Slide 数 / 跨课复用映射 / 入口链接。</p>
+    <p class="section-intro">下面的 deck 已经做出实际 slide，覆盖正式 lesson、课程解读与公开课；<strong>蓝图已定但 deck 未开工</strong>的课标 🚧。每张卡包含：deck 形态 / 时长 / Slide 数 / 跨课复用映射 / 入口链接。</p>
 
     <div class="grid">
 
@@ -371,7 +371,7 @@
         <div class="meta-row">
           <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
           <div class="meta-item"><div class="k">时长</div><div class="v">130 min+（登录/历史占位可回 120）</div></div>
-          <div class="meta-item"><div class="k">Slide 数</div><div class="v">24</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">20</div></div>
           <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
         </div>
         <div class="reuse-label">跨课复用 · 在以下 Bootcamp 出现</div>
@@ -444,6 +444,59 @@
         </div>
       </div>
 
+      <!-- ========== Vibe Coding Master L7 ========== -->
+      <div class="card">
+        <div class="card-head">
+          <span class="badge badge-react">React SlideEngine</span>
+          <span class="badge badge-status-local">⚙ 本地已构建 · 待部署</span>
+        </div>
+        <h2>Vibe Coding 大师课 · 第七节课 — Subagent：给 context 分家</h2>
+        <p class="desc">
+          <strong>120 分钟动手工作坊</strong>（两次实验：一次正收益，一次红灯；全程只读、不改真实代码）。承接 L6：上节课诊断出「探索噪音挤满一个 context」，L7 给出那个病的<strong>结构性解法</strong>——别把所有事塞进一个 context 里。全节立论只有一句：<strong>子 Agent 不是多一个人手，是多一个独立的 context</strong>；立住之后收益（脏活不污染主 context）、代价（冷启动 / 报告开销 / 它看不见你的对话）、铁律（不假设继承 / 不重叠所有权 / 不拿自述验收）全是它的推论。判断线是<strong>两层门</strong>：三项强收益（隔离噪音 / 并行分支 / 独立视角）至少命中一项，四条就绪条件必须全过——而且「<strong>独立视角</strong>」是唯一一个 <strong>1 个子 Agent 就能拿满</strong>的，这直接推出最小配置：<strong>1 个 verifier</strong>。课堂做两次实验且<strong>顺序不可调</strong>：动手 A 派三路只读调查、收口是一张证据可追溯、缺口已标记的<strong>汇总矩阵</strong>（不许把三份报告拼起来）；动手 B 是<strong>红灯——故意派一个两三步就能做完的小活并真的计时</strong>，让学员亲手测到冷启动 + 重新摸索 + 写回执 + 你再读回执比自己顺手做完慢得多。<strong>判断线放在两次实验之后</strong>，从学员自己的数据里长出来——延续 L4 CI 红灯 / L5 description 翻车 / L6 裸交跑偏一贯的「先撞墙，再给尺子」。操作层同样落地：六格 brief + 坏 brief 现场改写、<strong>三档调用的强制力差别</strong>（「我说了」不等于「它照做了」）、好指令逐句拆解（边界用否定句显式收窄、证据格式前置、以及最容易漏的「<strong>给『不知道』一个出口，不给出口它就编</strong>」）、按<strong>判断密度</strong>而非重要性选模型档（verifier 判断密集不能省，调查员执行密集便宜档够用；先调思考力度再动档）。收尾是三条底线：<strong>context 隔离 ≠ workspace 隔离</strong>、完成回执、以及「<strong>再找一个 Agent 看看不是 verifier</strong>」。全课收口：<strong>分派改变的是信息怎样流动，不会转移最终验收责任。</strong><br><br>⚠️ <strong>2026-08-02 拆课</strong>：原「双结构版」同时讲 Subagent 和 Agent Team，做 deck 时发现 120 分钟装不下两次实验 + 两套开课门槛，且 Team 侧页数天然多于 Subagent 侧、视觉上暗示 Team 更重要（<strong>与本节核心判断相反</strong>）。现 <strong>Agent Team 整体移到 L8</strong>，本节收敛为 Subagent 单线，红灯实验从纸面判断恢复为动手实测。另有一页 <strong>「一个子 Agent 由什么构成」</strong>——最小定义只有 name + description 两项必填，剩下全是运行时自动组装（项目规则和 git 快照自动到位，<strong>你的对话历史拿不到</strong>），而它只还回来最终那段文字，中间读的每个文件都留在自己的 transcript 文件里（<code>subagents/agent-{id}.jsonl</code>，一个子 Agent 一个文件，主对话压缩都动不了它）——这一页让下一页的六格 brief 从「规矩」变成「必然」。选档页扩成<strong>一张表两个旋钮</strong>：模型档 + 思考力度，同一条判断密度线（力度控制的是「愿意花多少步」不是「有多聪明」，而低力度会「想当然」，所以那几路的 brief 里「附文件:行号」更不能省）。另加一页 <strong>「把它落盘：怎么建一个子 Agent」</strong>——三种建法、项目级 vs 个人级放哪决定谁能用、三档调用语法，以及那个会浪费十分钟的坑（<code>/agents</code> 已经不是创建向导了）。这是<strong>全课唯一一页出现具体路径和命令</strong>，页面底部明确标注了这一点——理由是不知道文件放哪、不知道怎么触发，学员回去就落不了地，判断线再对也没用。<strong>deck 已按新蓝图重新组装完成（22 页，连续编号无 b/c 后缀）</strong>：5 页直接复用、9 页改写、3 页新写、1 页拆成两页；原 25 页仍全部保留在 <code>slides/_archive/</code>，Team 线 9 页等 L8 迁移。
+        </p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">120 min</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">24</div></div>
+          <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+        </div>
+        <div class="reuse-label">跨课复用</div>
+        <div class="reuse-chips">
+          <span class="chip locked">对应 ai-builder 课程第七节；尚未接入 outline.json（待 bootcamp-sync）</span>
+          <span class="chip locked">（可复用：任何需要讲「任务分派 / context 隔离 / 并行安全 / 独立验收」的 Bootcamp 单元）</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="./lessons/vibe-coding-master-l7/" target="_blank" rel="noopener">▶ 打开 Slides</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L7_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图（内容 SoT · 含 §18 设置与生成方法附录）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l7/RUNSHEET.md" target="_blank" rel="noopener">🎬 Runsheet / 带课手册</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l7/src/components/slides" target="_blank" rel="noopener">📁 slides 源码</a>
+        </div>
+      </div>
+
+      <!-- ========== Vibe Coding Master L8 ========== -->
+      <div class="card">
+        <div class="card-head">
+          <span class="badge badge-react">React SlideEngine</span>
+          <span class="badge badge-status-local">🚧 蓝图已定 · deck 未开工</span>
+        </div>
+        <h2>Vibe Coding 大师课 · 第八节课 — Agent Team：从分派到协作</h2>
+        <p class="desc">
+          <strong>120 分钟动手工作坊</strong>（一次协作实验 + 老师投屏演示，全程只读）。承接 L7：学员已经会把活分出去、收回来自己汇总，但那个结构有一条 L7 只埋了一句没展开的硬边界——<strong>子 Agent 之间没有连线</strong>。开场就把它变成痛点：按 L7 的方法派三路查登录偶发 401，三份报告回来每份都说「我这边看起来没问题，但不排除是别处」，<strong>你还是不知道根因</strong>——因为没有人去挑战别人的结论。本节因此只回答<strong>第二问</strong>：这些 context 之间需不需要持续通信？判断线是「只需分头做、回来报用 Subagent；需要边做边互通、共同收敛才用 Agent Team」，并反复强调 <strong>Team 的门槛必须比 Subagent 高</strong>（本节最需要防的偏差是「学完什么都组队」，正如 L7 要防「学完什么都派」）。立论页是<strong>对抗辩论</strong>：它治的是一种具体的病——<strong>锚定</strong>，单个 Agent 找到一个说得通的解释就停下来了，而顺序调查中第一个说得通的解释会污染后面所有判断。随之点破本节最容易做错的一步：<strong>对抗 ≠ 分工</strong>——「A 查前端 / B 查后端 / C 查配置」拿到的是三份互不冲突的报告（覆盖），而「A、B 各认领一个假设 + C 专职找反例」拿到的才是一个被证伪不掉的结论（收敛）；<strong>没人有动机推翻别人的「团队」其实是 Subagent，只是更贵</strong>。还给出门槛的操作化版本：<strong>当这件事没有廉价判据时，辩论才值</strong>——跑个测试就能证伪的假设，直接跑测试。实操落到 <strong>Team charter</strong> 六项（共同目标 / 成员与所有权 / 任务与依赖 / 通信规则 / 写入边界 / 收敛条件，其中「冲突附双方证据、不靠投票」和「没有广播，证据要抄送谁必须写死」是两条硬规则），实验跑三个竞争假设并强制制造 discovery → conflict → decision 三类关键消息，讲评只问一句「<strong>如果禁止成员互相通信，这个任务会在哪一步变慢或变差</strong>」——答不出来说明它本就不该用 Team，配一句诊断「<strong>一条 CONFLICT 都没有的 Team，大概率是三个不说话的 Subagent</strong>」。收口是 Lead 的验收责任：<strong>任务板完成 ≠ 外部验收完成，成员「已经达成一致」不是外部判据</strong>。最后回收 L7 埋的那句：<strong>异构只能进 Subagent，进不了 Agent Team</strong>——成员资格靠共享任务板 + 信箱，外部进程收不到消息也不出现在任务板，永远只能是一根 spoke。蓝图 §18 附录含完整开课门槛（协作开关默认关闭且静默无效、成员默认不跟随 Lead 的档且 spawn 后改不了、权限弹窗全部冒到 Lead、显示模式决定投屏看不看得见消息、以及头号坑「工具会用 Subagent 冒充 Team 而面板上看不出来」），§15 给国内学员的<strong>人肉信使方案</strong>（这不是降级，是主路径）。18 页逐页表已定。
+        </p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">120 min</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">18（蓝图）</div></div>
+          <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+        </div>
+        <div class="reuse-label">跨课复用</div>
+        <div class="reuse-chips">
+          <span class="chip locked">对应 ai-builder 课程第八节；尚未接入 outline.json（待 bootcamp-sync）</span>
+          <span class="chip locked">（可复用：任何需要讲「多 Agent 协作 / 对抗验证 / 竞争假设排查」的 Bootcamp 单元）</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L8_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图（内容 SoT · 含 §18 设置与生成方法附录）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l7/src/components/slides/_archive" target="_blank" rel="noopener">📁 可复用 slides（归档在 L7）</a>
       <!-- ========== Vibe Coding Master L10 ========== -->
       <div class="card">
         <div class="card-head">
