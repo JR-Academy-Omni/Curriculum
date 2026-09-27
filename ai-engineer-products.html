@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AI Engineer 系列产品 · 员工内部培训</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#10162f; --black:#000; --red:#ff5757; --yellow:#FFDE59; --green:#7ED957;
+  --blue:#38B6FF; --purple:#CB6CE6; --orange:#FF914D;
+  --canvas:#fff1e7; --panel:#fff; --panel-alt:#FFF8F2;
+  --line:rgba(16,22,47,.16); --line-strong:rgba(16,22,47,.32);
+  --muted:#5c6079;
+  --font-h:'Bricolage Grotesque','Noto Sans SC',system-ui,sans-serif;
+  --font-b:'DM Sans','Noto Sans SC',system-ui,sans-serif;
+  --font-m:'Space Mono','Noto Sans SC',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--font-b);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---- header: 少量强对比（Register B 主卡）---- */
+header{background:var(--ink);color:#fff;padding:44px 0 38px;margin-bottom:0;border-bottom:3px solid var(--black)}
+header .wrap{padding-bottom:0}
+.eyebrow{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px}
+h1{font-family:var(--font-h);font-weight:800;font-size:clamp(28px,4.4vw,46px);line-height:1.12;margin:0 0 14px}
+.sub{font-size:clamp(15px,1.6vw,17px);color:rgba(255,255,255,.82);max-width:62ch;margin:0 0 20px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.meta span{font-family:var(--font-m);font-size:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24);padding:5px 10px;border-radius:2px}
+.meta a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+
+/* ---- sections ---- */
+section{margin-top:44px;scroll-margin-top:76px}
+h2{font-family:var(--font-h);font-weight:800;font-size:clamp(20px,2.6vw,27px);margin:0 0 6px;display:flex;align-items:center;gap:10px}
+h2 .n{font-family:var(--font-m);font-size:13px;font-weight:700;background:var(--ink);color:#fff;width:26px;height:26px;display:grid;place-items:center;flex:none;border-radius:2px}
+.lede{color:var(--muted);margin:0 0 18px;max-width:74ch;font-size:15px}
+
+/* ---- nav ---- */
+nav{position:sticky;top:0;z-index:60;background:rgba(255,241,231,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-strong);padding:9px 0}
+nav .wrap{padding-bottom:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{font-family:var(--font-m);font-size:12px;color:var(--ink);text-decoration:none;padding:6px 11px;border:1px solid var(--line-strong);border-radius:2px;white-space:nowrap;background:var(--panel)}
+nav a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ---- 速记卡 ---- */
+.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.brief div{background:var(--panel);border:1px solid var(--line-strong);border-left:4px solid var(--red);padding:15px 17px;border-radius:2px}
+.brief h3{font-family:var(--font-h);font-weight:700;font-size:15px;margin:0 0 6px}
+.brief p{margin:0;font-size:14px;color:var(--muted)}
+
+/* ---- 阶梯图 ---- */
+.ladder{background:var(--ink);color:#fff;border:3px solid var(--black);box-shadow:6px 6px 0 var(--black);padding:22px;border-radius:2px;overflow-x:auto}
+.ladder pre{font-family:var(--font-m);font-size:13px;line-height:1.95;margin:0;white-space:pre;color:#fff}
+.ladder .hi{color:var(--yellow);font-weight:700}
+.ladder .warn{color:var(--red)}
+.ladder .dim{color:rgba(255,255,255,.5)}
+
+/* ---- 工具条 ---- */
+.tools{position:sticky;top:41px;z-index:50;background:rgba(255,241,231,.96);backdrop-filter:blur(8px);padding:12px 0 12px;border-bottom:1px solid var(--line-strong);margin-bottom:18px}
+.tools-in{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#q{flex:1;min-width:210px;font-family:var(--font-b);font-size:14px;padding:9px 13px;border:2px solid var(--ink);border-radius:2px;background:var(--panel);color:var(--ink)}
+#q:focus{outline:3px solid var(--blue);outline-offset:1px}
+.chip{font-family:var(--font-m);font-size:12px;padding:8px 12px;border:1px solid var(--line-strong);background:var(--panel);color:var(--ink);border-radius:2px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:700}
+.count{font-family:var(--font-m);font-size:12px;color:var(--muted);margin-left:auto}
+
+/* ---- 产品卡 ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line-strong);border-radius:2px;padding:16px 17px;display:flex;flex-direction:column;gap:9px}
+.card.flag{border-left:4px solid var(--red)}
+.card-top{display:flex;align-items:flex-start;gap:9px}
+.num{font-family:var(--font-m);font-size:11px;font-weight:700;background:var(--ink);color:#fff;padding:3px 7px;border-radius:2px;flex:none}
+.card h3{font-family:var(--font-h);font-weight:700;font-size:16px;margin:0;line-height:1.3;flex:1}
+.price{font-family:var(--font-m);font-size:15px;font-weight:700;color:var(--ink);background:var(--yellow);padding:3px 8px;border-radius:2px;display:inline-block;align-self:flex-start}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-family:var(--font-m);font-size:11px;padding:3px 8px;border-radius:2px;border:1px solid var(--line-strong);background:var(--panel-alt)}
+.tag.live{background:#eafbe4;border-color:#94d97a}
+.tag.warn{background:#fff2e2;border-color:var(--orange)}
+.tag.bad{background:#ffe9e9;border-color:var(--red);font-weight:700}
+.who{font-size:13px;color:var(--muted)}
+.who b{color:var(--ink);font-weight:500}
+.sell{margin:0;padding-left:17px;font-size:13.5px;color:var(--ink)}
+.sell li{margin-bottom:4px}
+.note{font-size:12.5px;background:var(--panel-alt);border-left:3px solid var(--orange);padding:8px 11px;color:var(--muted);border-radius:2px}
+.card a.go{font-family:var(--font-m);font-size:12px;color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--blue);align-self:flex-start;word-break:break-all}
+.card a.go:hover{background:var(--blue)}
+.none{display:none}
+#empty{display:none;padding:32px;text-align:center;color:var(--muted);font-family:var(--font-m);font-size:13px;border:1px dashed var(--line-strong);border-radius:2px}
+
+/* ---- 表格 ---- */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line-strong);border-radius:2px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{background:var(--ink);color:#fff;font-family:var(--font-m);font-size:11.5px;letter-spacing:.04em;position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--panel-alt)}
+
+/* ---- 红线（唯一另一处强对比）---- */
+.redline{background:var(--red);border:3px solid var(--black);box-shadow:6px 6px 0 var(--black);padding:22px 24px;border-radius:2px}
+.redline h2{color:#fff}
+.redline h2 .n{background:#fff;color:var(--red)}
+.redline ul{margin:12px 0 0;padding-left:20px}
+.redline li{color:#fff;margin-bottom:9px;font-size:14.5px}
+.redline li b{background:#fff;color:var(--ink);padding:1px 5px;border-radius:2px}
+
+/* ---- 待办 ---- */
+.todo{background:var(--panel);border:1px solid var(--line-strong);border-radius:2px;padding:16px 20px}
+.todo li{margin-bottom:8px;font-size:14px}
+.locked{background:var(--panel-alt);border-left:4px solid var(--green);padding:14px 18px;margin-top:16px;border-radius:2px}
+.locked li{margin-bottom:6px;font-size:13.5px;color:var(--muted)}
+.locked li b{color:var(--ink)}
+
+footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line-strong);font-size:13px;color:var(--muted)}
+footer code{font-family:var(--font-m);background:var(--panel);padding:2px 6px;border:1px solid var(--line);border-radius:2px}
+
+@media print{
+  nav,.tools{display:none}
+  body{background:#fff}
+  .card,.tbl-wrap,.todo{break-inside:avoid}
+  .ladder,.redline{box-shadow:none}
+}
+@media (max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .tools{top:39px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">内部培训资料 · 请勿外发</div>
+    <h1>AI Engineer 系列产品</h1>
+    <p class="sub">20 个产品，卖什么、多少钱、谁教、在哪买、哪些还不能对外说。销售 / 运营 / 客服上岗前先过一遍这页。</p>
+    <div class="meta">
+      <span>数据源：Ada《AI Engineer系列产品.xlsx》</span>
+      <span>整理 2026-08-12</span>
+      <span>真相源：<a href="https://github.com/JR-Academy-Omni/Curriculum/blob/main/AI_ENGINEER_PRODUCT_CATALOG.md">AI_ENGINEER_PRODUCT_CATALOG.md</a></span>
+      <span>维护人：Ada</span>
+    </div>
+  </div>
+</header>
+
+<nav><div class="wrap">
+  <a href="#brief">① 一分钟速记</a>
+  <a href="#ladder">② 阶梯怎么卖</a>
+  <a href="#products">③ 20 个产品</a>
+  <a href="#teachers">④ 师资</a>
+  <a href="#redline">⑤ 对外红线</a>
+  <a href="#status">⑥ 当前状态</a>
+</div></nav>
+
+<div class="wrap">
+
+<section id="brief">
+  <h2><span class="n">1</span>一分钟速记</h2>
+  <p class="lede">被客户问住的时候，先想清楚这四件事。</p>
+  <div class="brief">
+    <div>
+      <h3>这条线不是一门课</h3>
+      <p>是 <b>10 个 AI Engineer 本线产品</b>（$39 → $5500+7%），加 4 个相邻技术岗方向、6 个其它 AI 方向。客户问「你们 AI Engineer 多少钱」，先问他现在什么水平、想要什么结果。</p>
+    </div>
+    <div>
+      <h3>三个价格带</h3>
+      <p><b>自学</b> $299–2180 纯视频 · <b>带教</b> $3500–3599 直播/小班 + 项目 · <b>陪跑求职</b> $5500 起 1-on-1。中间不要跳级推。</p>
+    </div>
+    <div>
+      <h3>视频课默认推合集</h3>
+      <p>入门 $299 / 进阶 $1999 / 合集 $2180。合集只比进阶贵 $181 就多一门课，<b>默认推合集</b>。定价暂不调整。</p>
+    </div>
+    <div>
+      <h3>有 4 个还不能正常卖</h3>
+      <p>$39 简历面试课未上线、$5000 组合包和 $5500 VIP 预备计划没有官网页面、DevOps 陪跑官网未更新。<b>报价前先看卡片状态标签。</b></p>
+    </div>
+  </div>
+</section>
+
+<section id="ladder">
+  <h2><span class="n">2</span>阶梯怎么卖</h2>
+  <p class="lede">从免费内容到 1-on-1 陪跑，一个人应该按什么顺序买。红色是目前有状态问题的。</p>
+  <div class="ladder"><pre>免费   /learn/ai-engineer/hub  <span class="dim">免费 + 会员混合内容</span>
+  │
+自学   <span class="hi">AI Engineer 入门 $299</span>  ─┐
+       AI Engineer 进阶 $1999 ─┤→  <span class="hi">合集 $2180  ← 默认推这个</span>
+  │
+带教   ├─ <span class="hi">AI Engineer 训练营 $3500</span>   <span class="dim">直播 + P3 职业孵化器（主课）</span>
+       └─ <span class="hi">AI Engineer 全栈项目班 $3599</span> <span class="dim">线下 3-5 人小班 + AI Coding 陪跑</span>
+  │                                      <span class="dim">↑ 二选一，不是阶梯</span>
+加项   ├─ AI Engineer 项目 · 单报 $1980 <span class="dim">学员</span> / $2600 <span class="dim">非学员</span>
+       ├─ AI Agent &amp; MCP 项目实战营 $465
+       └─ + DevOps 视频课组合包 $5000        <span class="warn">← 官网无页面</span>
+  │
+求职   ├─ AI Engineer 简历 + 面试 $39        <span class="warn">← 未上线</span>
+       ├─ VIP 预备计划 · Jobpin AI 8 周 $5500 <span class="warn">← 无链接</span>
+       └─ <span class="hi">VIP 高薪 Offer 计划 $5500 + Offer Package 7%</span></pre></div>
+  <div class="brief" style="margin-top:14px">
+    <div><h3>买了入门还该买主课吗</h3><p><b>该买。</b>入门是纯录播，不含直播答疑和 P3 项目，定位就是前置课。</p></div>
+    <div><h3>买了主课还要买视频课吗</h3><p><b>不要。</b>内容被覆盖，别重复卖。</p></div>
+    <div><h3>训练营和全栈项目班选哪个</h3><p><b>二选一。</b>训练营 = 线上直播转 AI 工程岗；全栈项目班 = 线下小班全栈就业。价差只有 $99。</p></div>
+    <div><h3>VIP 预备和 VIP 是什么关系</h3><p><b>面试复评晋级，不是自选。</b>预备计划是给暂未达到 VIP 入选标准的人补项目经验用的。</p></div>
+  </div>
+</section>
+
+<section id="products">
+  <h2><span class="n">3</span>20 个产品</h2>
+  <p class="lede">搜产品名、价格、老师都行。点分类只看某一组。</p>
+  <div class="tools"><div class="wrap" style="padding:0"><div class="tools-in">
+    <input id="q" type="search" placeholder="搜索：产品名 / 价格 / 老师 / 技术栈…" aria-label="搜索产品">
+    <button class="chip" data-f="all" aria-pressed="true">全部 20</button>
+    <button class="chip" data-f="core" aria-pressed="false">AI Engineer 本线 10</button>
+    <button class="chip" data-f="adj" aria-pressed="false">相邻技术岗 4</button>
+    <button class="chip" data-f="other" aria-pressed="false">其它 AI 方向 6</button>
+    <button class="chip" data-f="issue" aria-pressed="false">⚠️ 不能正常卖 4</button>
+    <span class="count" id="count"></span>
+  </div></div></div>
+  <div class="grid" id="grid"></div>
+  <div id="empty">没有匹配的产品，换个词试试</div>
+</section>
+
+<section id="teachers">
+  <h2><span class="n">4</span>AI Engineer 训练营师资</h2>
+  <p class="lede">对外引用讲师背景前，必须核对 <code>ai-engineer-bootcamp/TEACHERS.md</code> —— 部分老师的公司不对外披露。已确认：<b>Jason Li 即 Tianyi Li</b>（同一人）。</p>
+  <h3 style="font-family:var(--font-h);font-size:16px;margin:16px 0 8px">正在上课</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>老师</th><th>公司</th><th>职位</th></tr></thead><tbody>
+    <tr><td>Xiaoxiao Ma</td><td><b>公司保密 · 不对外写</b></td><td>Senior Applied Scientist</td></tr>
+    <tr><td>Liangjun Song</td><td>WiseTech Global</td><td>Machine Learning Engineer</td></tr>
+    <tr><td>Lightman Wang</td><td>JR Academy</td><td>Co-founder &amp; CEO</td></tr>
+    <tr><td>Tianyi Li<span style="color:var(--muted)"> （= Jason Li）</span></td><td>V2 AI</td><td>Lead AI Engineer</td></tr>
+    <tr><td>Huansong (Winston) Zeng</td><td>Canva</td><td>Senior Software Engineer</td></tr>
+    <tr><td>Samuel Shaw</td><td>CSIRO</td><td>Research Scientist</td></tr>
+  </tbody></table></div>
+  <h3 style="font-family:var(--font-h);font-size:16px;margin:22px 0 8px">储备池（可以上课，23 位）</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>老师</th><th>公司</th><th>职位</th></tr></thead><tbody>
+    <tr><td>Leon（美国）</td><td>Google</td><td>AI Engineer</td></tr>
+    <tr><td>Notail</td><td>Smokeball</td><td>Senior AI Engineer</td></tr>
+    <tr><td>Sheldon Lin</td><td>Optus</td><td>—</td></tr>
+    <tr><td>许光</td><td>New Aim</td><td>Tech Lead</td></tr>
+    <tr><td>Albert Zhou（西雅图）</td><td>Amazon</td><td>Software Engineer</td></tr>
+    <tr><td>Hao Luo（国内）</td><td>千锋教育</td><td>技术总监</td></tr>
+    <tr><td>Jenny Lin</td><td>RACV</td><td>Tech Lead</td></tr>
+    <tr><td>Joey Yang（瑞典）</td><td>Ericsson</td><td>AI Engineer</td></tr>
+    <tr><td>Larry Jiang</td><td>AWS</td><td>AI Technical Architect</td></tr>
+    <tr><td>Peiyao Li</td><td>AWS</td><td>Sr. Specialist SA GenAI</td></tr>
+    <tr><td>Selina Li</td><td>Microsoft</td><td>Senior Data &amp; AI Architect</td></tr>
+    <tr><td>王刚（国内）</td><td>CENTFOR</td><td>Senior Data Scientist</td></tr>
+    <tr><td>黄靖锋</td><td>华为</td><td>—</td></tr>
+    <tr><td>SengYongOng Justieens（马来西亚）</td><td>OSY Marketing Solution</td><td>Digital Marketing Director</td></tr>
+    <tr><td>岑玲（新加坡）</td><td>Neurospark Lab</td><td>首席数据科学家 &amp; 技术负责人</td></tr>
+    <tr><td>孙玉昌（国内）</td><td>青软创新科技集团</td><td>大数据讲师</td></tr>
+    <tr><td>Eyvonne Tan（马来西亚）</td><td>KumHoi Engineering s/b</td><td>—</td></tr>
+    <tr><td>Wanqi Oh（马来西亚）</td><td>Hitachi eBworx</td><td>—</td></tr>
+    <tr><td>庞莹 Julie（国内）</td><td>思科</td><td>软件工程师</td></tr>
+    <tr><td>刘雨杭（国内）</td><td>星凡星启（成都）科技</td><td>算法工程师</td></tr>
+    <tr><td>闫俊杰（国内）</td><td>湖州云梯科技</td><td>AI 专家</td></tr>
+    <tr><td>Celine Tay（马来西亚）</td><td>—</td><td>Practitioner-Led Trainer｜Agile Coach</td></tr>
+    <tr><td>Yee YonYeong（马来西亚）</td><td>—</td><td>Senior Python Developer &amp; AI Engineer</td></tr>
+  </tbody></table></div>
+</section>
+
+<section id="redline" class="redline">
+  <h2><span class="n">5</span>对外红线 · 本系列全部产品通用</h2>
+  <ul>
+    <li><b>不承诺包就业 / 保 offer / 保录取 / 必进大厂 / 保证薪资。</b>VIP 计划的「12 个月无 offer 退 50% 服务费」是<b>退款条款</b>，不是就业承诺 —— 引用时必须说清是退款政策，绝不能讲成「保证拿到 offer」。</li>
+    <li>学员薪资案例（如「120k → 200k+」）<b>不能说成普遍结果</b>，必须标注为个案，且不可承诺复制。</li>
+    <li>不使用<b>「副业」</b>一词；不承诺具体收入 / 订单数金额。</li>
+    <li>引用岗位数量、薪资中位数等市场数据，必须标注<b>来源 + 时间</b>。</li>
+    <li>讲师背景按 <b>TEACHERS.md</b> 口径 —— 公司保密的不写公司（如 Xiaoxiao Ma）。</li>
+  </ul>
+</section>
+
+<section id="status">
+  <h2><span class="n">6</span>当前状态 · 还没弄好的</h2>
+  <p class="lede">这些是已知问题，客户问到时按实话说，不要现编。</p>
+  <div class="todo"><ul>
+    <li><b>$39 简历 + 面试视频课上不了线</b> —— 后台保存不了（技术侧排查中）。目前只有讲座课件页可看。</li>
+    <li><b>$5000 组合包、$5500 VIP 预备计划官网没有页面</b> —— 只和 sales 沟通过可以这样卖，要不要补页面待拍板。</li>
+    <li><b>全栈项目班、DevOps 陪跑的 Curriculum 页还没更新到官网。</b></li>
+    <li><b>国内版训练营</b>：授课老师待定、开课时间待定、价格暂定 8999。</li>
+    <li><b>AI Coding 实战课</b>要改名做 900 人民币促销（Ada 备注）。</li>
+    <li><b>AI 一人创业营</b>师资描述原表在「Grant」处截断，待 Ada 补完整。</li>
+  </ul></div>
+  <div class="locked">
+    <div style="font-family:var(--font-h);font-weight:700;font-size:15px;margin-bottom:8px">🔒 已定，不用再问</div>
+    <ul style="margin:0;padding-left:20px">
+      <li><b>价格</b>一律以真相源文件为准，Ada 手动处理，不自动改 <code>outline.json</code>（2026-08-12）</li>
+      <li><b>视频课三件套定价</b>（$299 / $1999 / $2180）暂时不动，除非 Lightman 提出修改（2026-08-12）</li>
+      <li><b>「匠答 AI」= Dispatch AI</b>，同一个项目的两种叫法，不是换了项目（2026-08-12）</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  内部培训资料，请勿外发。内容有变动改真相源 <code>curriculum/AI_ENGINEER_PRODUCT_CATALOG.md</code>，本页随之更新 —— 不要只改这一页。<br>
+  设计遵循 <code>jr-academy-brand</code> · surface: internal-training-page · register: B（高密度降级黑边硬阴影）。
+</footer>
+
+</div>
+
+<script>
+const P=[
+ {n:1,c:"core",t:"AI Engineer 入门",p:"$299+GST",ty:"视频课",st:[["live","在售"]],sc:"随时开课",
+  u:"https://jiangren.com.au/program-course/ai-engineer-rag",
+  s:["理解 AI 工程思维：从 AI 工具使用者 → AI 工程思维，讲清 LLM 在系统中的角色、Prompt/RAG/Agent 的工程区别","深度聚焦 RAG（企业 AI 的主流架构）","系统掌握 AI 工程核心组件：LLM / Prompt / Embedding / Vector DB","建立 AI Engineer 技术地图，知道完整学习路径"],
+  nt:"原价 $399，现 $299。37 节视频 + 25 个 Lab + 5 节 AI Tutor Quest。"},
+ {n:2,c:"core",t:"AI Engineer 进阶：从 RAG 到 Agent 与模型调优",p:"$1999+GST",ty:"视频课",st:[["live","在售"],["warn","仓库无目录"]],sc:"随时开课",
+  u:"https://jiangren.com.au/program-course/ai-engineer-rag-agent",
+  s:["从 RAG Demo → Production AI System：真正 AI 工程能力","Agent 与 Multi-Agent 架构设计：AI 自动化系统","RAG Evaluation 工程能力：企业 AI 必须能力","LangChain / LangGraph / MCP 技术栈","模型调优与 Embedding Fine-tuning"],
+  nt:"原价 $2099，现 $1999 · 16 个 Phase。销售提醒：只贵 $181 就能升合集，默认推合集。"},
+ {n:3,c:"core",t:"AI Engineer 核心技术实战课（入门 + 进阶合集）",p:"$2180+GST",ty:"视频课",st:[["live","在售"],["warn","仓库无目录"]],sc:"随时开课",
+  u:"https://jiangren.com.au/program-course/ai-engineer",
+  s:["产品 1 与产品 2 的全部卖点合集","官网名「AI Engineer 视频自学班」","22 个 module · 140+ 节视频"],
+  nt:"原价 $3299，现 $2180。⭐ 视频课默认推荐款。"},
+ {n:4,c:"core",t:"AI Engineer 简历 + 面试",p:"$39",ty:"视频课",st:[["live","在售"]],sc:"随时开课",
+  u:"https://jiangren.com.au/program-course/ai-e",
+  s:["ATS 简历结构、AI 技术栈分类、项目量化改写","RAG、Agent、MCP 高频面试题","项目 Deep Dive 及 AI System Design","把真正做过的 AI 项目写清楚、讲专业，经得住面试官连续追问"],
+  nt:"Ada 备注「新增课程保存不了」（后台问题，待技术侧解决）。链接目前是讲座课件页，不是商品页 —— 不要当商品链接发给客户。"},
+ {n:5,c:"core",t:"AI Engineer 训练营（课程 + P3 职业孵化器）",p:"$3500+GST",ty:"直播课",st:[["live","在售"]],sc:"06 期美国班 / 07 期澳洲班",
+  u:"https://jiangren.com.au/program-course/ai-engineer-bootcamp",
+  s:["AI Full-Stack 开发能力：从 LLM 到 AI 应用开发","当前最热门 AI 技术栈：RAG + Llama 3 + MCP + Embeddings","P3 职业孵化器用真实 AI 项目提升简历竞争力","AI 应用部署能力：Cloud / Local production deployment","适合转型 AI Engineer"],
+  nt:"官网含 GST 显示 $3,850。这是本线主课。师资见第四节。"},
+ {n:6,c:"core",t:"大模型应用开发 · 真项目训练营",p:"暂定 8999",ty:"直播课",st:[["warn","老师待定"],["warn","开课待定"]],sc:"待定",
+  u:"https://jiangren.com.au/program-course/ai-engineer-cn",
+  s:["12 周从零做出「匠答 AI」电商智能客服工单系统，毕业带着扛得住面试追问的真项目","逐项对齐国内真实招聘 JD，在匠人实际运行的系统中边学边做","覆盖大模型调用、RAG、Agent、MCP 到模型微调和私有化部署","不是算法研究课，也不是只做聊天机器人的工具体验课；完成 6 个项目里程碑"],
+  nt:"授课老师待定（国内老师都说可以上，要看时间）。「匠答 AI」= Dispatch AI，同一个项目两种叫法。"},
+ {n:7,x:1,c:"core",t:"AI Engineer 训练营 + DevOps 视频课（组合包）",p:"$5000+GST",ty:"直播 + 视频",st:[["bad","🔴 官网无页面"]],sc:"—",
+  u:"",
+  s:["AI Engineer 直播课 + DevOps self-paced 视频课的搭配包"],
+  nt:"官网没有上线相关页面，只和 sales 沟通过可以这样搭配卖。没有落地页可以发给客户。"},
+ {n:8,c:"core",t:"AI Engineer 项目（单独报名 Dispatch AI 项目）",p:"$1980+GST 学员 / $2600+GST 非学员",ty:"项目",st:[["live","在售"],["warn","仓库无目录"]],sc:"每期课程结束开始做项目",
+  u:"https://jiangren.com.au/program-course/ai-agent",
+  s:["8 周掌握 LangGraph + MCP + RAG 技术栈","构建可部署的企业级多智能体 AI 系统","具备独立开发 AI Agent 产品的核心能力"],
+  nt:"官网名「AI Engineer 项目实习 02 期」。老师：Lance。注意有学员价 / 非学员价两档。"},
+ {n:9,c:"core",t:"AI Engineer 高薪 Offer VIP 计划",p:"$5500 服务费 + Offer Package 的 7%",ty:"1-on-1",st:[["live","在线"],["warn","仓库无目录"]],sc:"随时",
+  u:"https://jiangren.com.au/ai-engineer-vip",
+  s:["独家内推与岗位匹配：对接匠人体系内合作公司与校友网络，帮你判断投递价值而非海投","补齐大厂所需的 AI 技术栈：RAG、Agent、LLM 系统设计","项目润色：把现有项目润色成能进面试的「工程级」AI 项目，而不只是 Demo","AI Engineer 专属简历：ATS + Recruiter 双向优化，支持多轮修改","简历修改 + 面试冲刺 + offer 谈判技巧"],
+  nt:"⚠️ 官网页面上有「12 个月内无 offer 退 50% 服务费」和学员薪资案例 —— 引用前必读第五节红线。主导师：Jason（= Tianyi Li）。"},
+ {n:10,x:1,c:"core",t:"AI Engineer 高薪 Offer VIP 预备计划｜Jobpin AI 8 周企业项目",p:"$5500",ty:"项目",st:[["bad","🔴 无链接"]],sc:"随时",
+  u:"",
+  s:["真实企业级 AI 项目：参与 Jobpin AI 产品研发，真实需求 / 真实数据 / 真实交付","8 周技术强化：把已有知识转化为能落地、展示和讲解的项目成果","行业导师带队：Lightman、Stan 及项目 Tutor 共同指导","每周 3 次项目辅导，按企业级标准完成交付","打造可用于求职的项目经历：项目架构、技术难点、解决方案及个人贡献","VIP 计划晋级通道：8 周内可参加面试复评，达标后转入 Jason 老师的 VIP 求职辅导计划"],
+  nt:"专为暂未达到 VIP 入选标准、但具备发展潜力的学员设置。无链接，只和 sales 同步过。导师：Lightman、Stan、Rick。"},
+ {n:11,c:"adj",t:"AI Engineer 全栈项目班",p:"$3599+GST",ty:"全栈视频课 + AI Coding 项目陪跑",st:[["warn","Curriculum 页未更新官网"]],sc:"31 期改版为线下项目小班，3-5 人开班，招满即开",
+  u:"https://jiangren.com.au/program-course/web-code-bootcamp-or-learn-to-code-1",
+  s:["Junior AI Engineer 入门首选：从全栈基础到 AI 产品集成，系统掌握 RAG、OpenAI API","行业大咖指导：FLAG 及澳洲大厂资深专家授课","2 个实战项目丰富简历，含完整 AI 商业项目 P3 职业孵化器-商业团队项目经验","技术栈紧跟 AI 前沿，与澳洲招聘市场需求同步"],
+  nt:"老师：悉尼 winston / 墨尔本 Peter / 布里斯班 Joe / 阿德莱德 Paco。⚠️ 这门课有三个名字（目录 web-code-*、后台「AI Engineer 全栈项目班30期」、outline「AI 全栈产品班·线下小班」），对客户只用一个。"},
+ {n:12,c:"adj",t:"数据工程 AI 项目陪跑",p:"$3999+GST",ty:"数据工程视频课 + 项目陪跑",st:[],sc:"3-5 人开班，招满即开",
+  u:"https://jiangren.com.au/program-course/data-engineer-data-analyst",
+  s:["真实企业级项目：数据采集、ETL、AWS 云端数据管道","RAG、Embedding、Vector Database 等 AI 数据工程技术","导师全程陪跑答疑","完成可写入简历、可用于面试讲解的项目成果"],
+  nt:"老师：Jevy。面向 Data Engineer 与 AI Data Engineer 岗位。"},
+ {n:13,x:1,c:"adj",t:"DevOps AI 项目陪跑（Dispatch AI）",p:"纯视频 $999 / 视频 + 陪跑 $3550+GST",ty:"DevOps 视频课 + 项目陪跑",st:[["warn","官网未更新"]],sc:"3-5 人开班，招满即开",
+  u:"https://jracademy.ai/curriculum/techscrum-devops/curriculum.html",
+  s:["8 周真实项目实战：云基础设施搭建、Terraform IaC、CI/CD、Kubernetes","监控告警及故障恢复","导师全程陪跑答疑","获得可写入简历、可用于面试讲解的 DevOps 企业项目经验"],
+  nt:"老师：William Dong。链接是课件页，官网商品页还没更新。"},
+ {n:14,c:"adj",t:"AI Agent & MCP 项目实战营",p:"$465+GST",ty:"视频课",st:[["live","在售"],["warn","仓库无目录"]],sc:"随时开课",
+  u:"https://jiangren.com.au/program-course/mcp",
+  s:["从 0 搭建 MCP Server，掌握智能体核心协议","构建一个真正能「干活」的 AI 应用系统，而不是只能对话的机器人","教你亲自构建 MCP Server","掌握 AI 架构师的底层必备能力"],
+  nt:"官网显示讲师 Tianyi Li · 15.5 小时。适合当低价加项搭着卖。"},
+ {n:15,c:"other",t:"职场 AI 提效实战营",p:"$960+GST 基础班 8 周 / $2280+GST 进阶班 12 周",ty:"直播课",st:[["warn","老师待定"],["warn","开课待定"]],sc:"待定",
+  u:"https://jiangren.com.au/program-course/ai-programming",
+  s:["零编程基础也能做产品：不用学编程语法，用 AI 写代码做产品","文档 / 视觉 / 音频 / 视频 / 网页 / 自动化 / 数据 / 分发 —— 33 个 AI 工具组合打通完整生产链","从想法到上线产品，两种学习路径，项目驱动学习","基础班做出能上线的网站 + 4 大交付物；进阶班加 Admin CMS + 内容自动化 Agent + 数据 Dashboard + 视频进阶"],
+  nt:"Hyna 可以上基础班。Ada 备注：需要改个名字做 900 人民币促销，增加销量。"},
+ {n:16,c:"other",t:"Vibe Coding 提升班（for tech）",p:"$770+GST",ty:"直播课",st:[],sc:"第二期已经开课",
+  u:"https://jiangren.com.au/program-course/ai-builder",
+  s:["学会「指挥 AI 写代码」的能力","学会 AI Coding 的核心工具链","掌握完整开发流：PRD → 系统架构 → AI 写代码 → 调试 → 部署上线","AI Coding 工程方法（SOP）：需求拆解 + Prompt + Debug","用 AI 做出完整产品：Web / SaaS / 自动化工具"],
+  nt:"老师：Lightman、Rick。面向已有技术背景的人。"},
+ {n:17,c:"other",t:"AI 产品经理",p:"$4000+GST",ty:"视频课 + 直播课",st:[],sc:"随时开课",
+  u:"https://jiangren.com.au/program-course/business-analyst",
+  s:["从零系统学习 BA 职业知识体系","学习真实 BA 工作方法（Agile / Scrum）","项目实战训练（经典 BA 项目）","适合澳洲就业的产品经理训练营","参与 P3 职业孵化器，获得真实项目经验写进简历"],
+  nt:""},
+ {n:18,c:"other",t:"AI 一人创业营",p:"$2800+GST 一期 / $3800+GST 二期起",ty:"线下直播课",st:[["warn","师资描述待补"]],sc:"第一期已开班",
+  u:"https://jiangren.com.au/program-course/ai-solo-founder-bootcamp",
+  s:["面向澳洲华人专业人士、创业者及中小企业主的 15 周 AI 创业实战课程","从商业方向验证开始，完成 AI 产品搭建、市场获客、澳洲公司运营、Grant 申请及融资路演","最终打造一家能真实运营、合规收款的「一人公司」","15 周三城线下授课：墨尔本主场 + SYD / BNE 卫星教室同步开课，每周日 3 小时，提供直播及回放"],
+  nt:"老师：Lightman、Ray、Stan、Michael（AI Marketing）、朱依晨（AI 视频）。师资覆盖前 McKinsey 战略顾问、GitHub/Microsoft 资深专家、Canva 工程师、WiseTech AI/ML Engineer、SEO 与 GEO 专家、澳洲持牌 CPA、Grant… —— 原表此处截断，待 Ada 补完整，暂不要对外引用这一句。"},
+ {n:19,c:"other",t:"AI 工作流提效营 · AI Workflow Bootcamp",p:"$1599+GST",ty:"直播课",st:[["warn","开课待定"]],sc:"待定",
+  u:"https://jiangren.com.au/program-course/ai-adoption-bootcamp",
+  s:["面向在职人士的 8 周 AI 落地实战课程","不要求转行，直接围绕现有岗位完成 AI 提效；不要求编程基础，主要用 No-code / Low-code","不是单纯学 Prompt，而是交付完整的部门 AI 工作流","真实工作任务贯穿课程，边学边应用到当前岗位","直播授课、互动 Lab、AI Tutor 答疑与班主任 1 对 1 进度跟进","最终交付 5 套 SOP、1 份 ROI 报告及可写入简历的 AI 落地项目"],
+  nt:"老师：Vanessa、Lightman、Patrick。⚠️ 这不是 AI Engineer 转职课 —— 客户想转行别推这个。"},
+ {n:20,c:"other",t:"AI 漫剧实战营",p:"$699+GST",ty:"直播课",st:[["warn","开课待定"]],sc:"待定",
+  u:"https://jiangren.com.au/program-course/ai-comic-drama-camp",
+  s:["从内容定位、剧本创作到视频制作、账号运营与商业变现的完整实战课程","不是简单介绍 AI 工具，而是由导师带领跑通一条完整的 AI 漫剧生产线","12 节直播课中完成自己的第一部可直接发布的 AI 漫剧成片"],
+  nt:"老师：朱依晨。面向内容创作者，和 AI Engineer 完全不同的人群。"}
+];
+
+const CN={core:"AI Engineer 本线",adj:"相邻技术岗",other:"其它 AI 方向"};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hasIssue=p=>p.x===1;  // 没有可直接发给客户的商品链接
+
+const grid=document.getElementById("grid"),empty=document.getElementById("empty"),cnt=document.getElementById("count");
+
+grid.innerHTML=P.map(p=>{
+  const tags=[`<span class="tag">${CN[p.c]}</span>`,`<span class="tag">${esc(p.ty)}</span>`]
+    .concat(p.st.map(x=>`<span class="tag ${x[0]}">${esc(x[1])}</span>`)).join("");
+  const link=p.u?`<a class="go" href="${esc(p.u)}" target="_blank" rel="noopener">${esc(p.u.replace("https://",""))} ↗</a>`
+                :`<span class="tag bad">没有可发给客户的链接</span>`;
+  return `<article class="card${p.st.some(x=>x[0]==="bad")?" flag":""}" data-c="${p.c}" data-i="${hasIssue(p)?1:0}">
+    <div class="card-top"><span class="num">${p.n}</span><h3>${esc(p.t)}</h3></div>
+    <span class="price">${esc(p.p)}</span>
+    <div class="tags">${tags}</div>
+    <div class="who"><b>开课：</b>${esc(p.sc||"—")}</div>
+    <ul class="sell">${p.s.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+    ${p.nt?`<div class="note">${esc(p.nt)}</div>`:""}
+    ${link}
+  </article>`;
+}).join("");
+
+let filter="all",query="";
+function apply(){
+  let shown=0;
+  document.querySelectorAll(".card").forEach(el=>{
+    const okF = filter==="all" || (filter==="issue" ? el.dataset.i==="1" : el.dataset.c===filter);
+    const okQ = !query || el.textContent.toLowerCase().includes(query);
+    const ok = okF&&okQ;
+    el.classList.toggle("none",!ok);
+    if(ok)shown++;
+  });
+  empty.style.display=shown?"none":"block";
+  cnt.textContent=`显示 ${shown} / 20`;
+}
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
+  filter=b.dataset.f;
+  document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+  apply();
+}));
+document.getElementById("q").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();apply();});
+apply();
+</script>
+</body>
+</html>

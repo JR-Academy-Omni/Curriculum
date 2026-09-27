@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>13 小时课程安排 | 小企业 AI 内容营销实战</title>
+  <meta name="description" content="13 个独立的 60 分钟实战单元，前三小时完成品牌与设计，最后用 AI 建立项目与公司任务管理系统。">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="language.css">
+  <style>
+    .schedule-hero{padding:32px 0 58px;background:#19c37d;border-bottom:4px solid #10162f}.schedule-hero h1{font-size:clamp(42px,7vw,82px);line-height:.95;letter-spacing:-.05em;margin:16px 0}.schedule-hero p{font-size:20px;max-width:820px}.bundle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.bundle{background:#fff;border:3px solid #10162f;box-shadow:6px 6px 0 #10162f;padding:20px}.bundle b{font-size:34px;color:#19c37d}.hours{display:grid;gap:14px}.hour{display:grid;grid-template-columns:105px 1fr 280px;background:#fff;border:3px solid #10162f}.hour-no{background:var(--accent,#ffde59);padding:18px;border-right:3px solid #10162f}.hour-no b{display:block;font-size:34px;line-height:1}.hour-main,.hour-output{padding:18px}.hour-main h3{margin:0 0 6px;font-size:20px}.hour-main p,.hour-output p{margin:0;color:#5b6476}.hour-output{border-left:2px solid #d9dde5}.hour-output strong{display:block;margin-bottom:6px}.deps{font-size:12px;margin-top:8px;color:#5b6476}@media(max-width:850px){.bundle-grid{grid-template-columns:1fr 1fr}.hour{grid-template-columns:86px 1fr}.hour-output{grid-column:1/-1;border-left:0;border-top:2px solid #d9dde5}.hour-no{border-right:3px solid #10162f}}@media(max-width:560px){.bundle-grid{grid-template-columns:1fr}.hour{grid-template-columns:1fr}.hour-no{border-right:0;border-bottom:3px solid #10162f}}
+  </style>
+</head>
+<body>
+  <header class="schedule-hero"><div class="wrap"><nav class="language-switch" aria-label="语言选择"><a href="hourly-schedule.html" aria-current="page">中文</a><a href="hourly-schedule-en.html" lang="en">English</a></nav><div class="eyebrow">13 × 60 MINUTES</div><h1>先做营销成品，<br>再用 AI 管公司执行。</h1><p>完整课程共 13 小时。前三小时完成业务与客户 Brief、Brand Kit、视觉模板、海报和一项印刷品或周边；中段完成 Social Media 与短视频；最后两小时建立 AI 项目与公司任务管理系统。</p><a class="button" href="curriculum.html">← 返回课程介绍</a></div></header>
+  <section class="section"><div class="wrap"><div class="kicker">Mix and match</div><h2>推荐组合</h2><div class="bundle-grid" id="bundles"></div></div></section>
+  <main class="section"><div class="wrap"><div class="kicker">Hourly run sheet</div><h2>13 个一小时单元</h2><div class="hours" id="hours"><p>正在载入课程安排…</p></div></div></main>
+  <footer class="footer"><div class="wrap">JR Academy · 小企业 AI 内容营销实战 · 13 × 60 分钟</div></footer>
+  <script>
+    const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+    const colors={'Foundation & Brand':'#8df0c6','Social Media':'#aaa5ff','Short Video':'#ffde59','AI Project Management':'#ff8fa3','AI Business Operations':'#91d7ff'};
+    fetch('hourly-schedule.json').then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}).then(data=>{
+      document.querySelector('#bundles').innerHTML=data.bundles.map(b=>`<article class="bundle"><b>${b.durationHours}h</b><h3>${esc(b.name)}</h3><p>单元 ${esc(b.hours.join(', '))}</p></article>`).join('');
+      document.querySelector('#hours').innerHTML=data.blocks.map(b=>`<article class="hour" style="--accent:${colors[b.track]||'#ffde59'}"><div class="hour-no"><span>${esc(b.module)}</span><b>H${String(b.hour).padStart(2,'0')}</b><small>${esc(b.track)}</small></div><div class="hour-main"><h3>${esc(b.title)}</h3><p>${esc(b.focus)}</p>${b.dependsOn.length?`<div class="deps">前置：H${b.dependsOn.map(n=>String(n).padStart(2,'0')).join('、H')}</div>`:'<div class="deps">可作为起点</div>'}</div><div class="hour-output"><strong>这一小时带走</strong><p>${esc(b.output)}</p></div></article>`).join('');
+    }).catch(e=>{document.querySelector('#hours').innerHTML=`<div class="card">课程安排载入失败：${esc(e.message)}</div>`});
+  </script>
+</body></html>

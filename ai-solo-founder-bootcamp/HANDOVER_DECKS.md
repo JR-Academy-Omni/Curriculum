@@ -111,7 +111,7 @@ bun run build    # 上线前必须过
 |---|---|
 | **`curriculum/ai-solo-founder-bootcamp/W{n}_RUNSHEET.md`** | **主来源**。W1–W7 各一份完整教案,含逐环节详案、时间表、台词、坑位 |
 | **`W8-W15_RUNSHEETS.md`** | W8–W15 的精简教案(一个文件装 8 周) |
-| **`public/outline.json`** | 机器大纲。每周现场课的 lesson code:W2=`L05` W3=`L09` W4=`L12` W5=`L21` W6=`L23` W7=`L26` W8=`L29` W9=`L34` W10=`L37` W11=`L39` W12=`L42` W13=`L45` W14=`L50` W15=`L52`。**每节现场课的 6 个 steps 里有真实的环节标题+时长+内容,照它做,别自己编环节** |
+| **`public/outline.json`** | 机器大纲。每周现场课的 lesson code:W2=`L05` W3=`L09` W4=`L12` W5=`L21` W6=`L23` W7=`L26` W8=`L29` W9=`L34` W10=`L54` W11=`L39` W12=`L42` W13=`L45` W14=`L50` W15=`L52`；周中 SEO & GEO=`L37`。**每节现场课的 steps 里有真实的环节标题+时长+内容,照它做,别自己编环节** |
 | **`COURSE_REDESIGN.md`** | 整门课 15 周单一真相(周名/Phase/产出/嘉宾) |
 | **`W1_CASE_STUDIES.md`** | 案例库(1534 行,含 10 个澳洲案例),**每个案例都标了来源和可信度**,用之前先读它的红线 |
 | **`W2_AGENT_ROUTES.md`** | W2 专用:四条 agent 路线(Claude Code / OpenClaw / Hermes / Codex)的真实定价与系统要求 |

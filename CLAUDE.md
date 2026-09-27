@@ -189,7 +189,7 @@ curriculum/{slug}/agent-outputs/
 
 ## What This Repo Is
 
-Static curriculum site for JR Academy bootcamps. Each bootcamp is a standalone Vite + React 19 + TypeScript app that builds to static HTML. The site is served at `jiangren.com.au/curriculum/`.
+Static curriculum site for JR Academy bootcamps. Each bootcamp is a standalone Vite + React 19 + TypeScript app that builds to static HTML. The site is served at `jracademy.ai/curriculum/`.
 
 Currently contains:
 - **ai-adoption-bootcamp/** — AI Adoption Specialist Bootcamp (8-week, for business professionals)
@@ -299,7 +299,7 @@ To control which pages appear: edit `curriculumPages` in `outline.json`, not `pa
 - `outline.json` 改了也不会生效，因为根本没部署到服务器
 - 后面的人需要靠翻历史工单才能发现这个坑
 
-**验收标准**: 新增课程的 PR 必须同时修改 `deploy.yml`，且部署成功后 `curl https://jiangren.com.au/curriculum/<slug>/` 能拿到正确响应。
+**验收标准**: 新增课程的 PR 必须同时修改 `deploy.yml`，且部署成功后 `curl https://jracademy.ai/curriculum/<slug>/` 能拿到正确响应。
 
 ### 🔴 强制规则 2: 新课必须注册到 `curriculum/posters.html`
 
@@ -309,7 +309,7 @@ To control which pages appear: edit `curriculumPages` in `outline.json`, not `pa
 - **必须** 在 `curriculum/posters.html` 的 "Bootcamp 课程海报" section 加入新卡片，链接到该课程的海报页/集
 - 海报本身必须包含 `<div id="poster">` + 「⬇ 下载 PNG」浮动按钮（html2canvas）—— 参考 `ai-programming/public/poster-v3.html` 或 `ai-engineer-bootcamp/public/posters/poster-v1.html`
 
-**没在 posters.html 注册 = 课程未完成**。线上 https://jiangren.com.au/curriculum/posters.html 看不到 = Marketing 找不到 = 不存在。
+**没在 posters.html 注册 = 课程未完成**。线上 https://jracademy.ai/curriculum/posters.html 看不到 = Marketing 找不到 = 不存在。
 
 ### 步骤
 

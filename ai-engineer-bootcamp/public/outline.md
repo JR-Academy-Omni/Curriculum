@@ -5,13 +5,13 @@
 > 🤖 本文件由 `lineage/build_lineage.py` 从同目录 `outline.json` 自动生成 —— **勿手改**。要改大纲改 `outline.json`，再重跑 `python3 lineage/build_lineage.py`。
 > （`outline.json` 是生产管线吃的机器权威；这份 `.md` 是给人读、给谱系当真相文档的统一格式。）
 
-12 周技术课程 + 12 周 P3 职业孵化 — 从学会到就业的完整闭环
+第七期理论线在 W12 结束，实践线延长至 W13：前 12 周每周一场理论 Live 和一场实践 Live，W13 增加 180 分钟 Production Readiness Review & Demo Day。CareKind AI 贯穿 AI Coding、RAG、Agents、Memory、Harness、Model Routing、Evals 与 Governance。
 
-**级别** 中级进阶 · **类型** training · **时长** 12 周（96 节课，直播 + 录播 + 自学） · **总课时** 290 · **步骤** 873 · **直播** 59 · **互动 Lab** 68 · **预计学时** 82
+**级别** 中级进阶 · **类型** training · **时长** 理论 12 周 + 实践 13 周（25 场正式直播：12 场理论 + 13 场实践；共 45 小时） · **总课时** 309 · **步骤** 967 · **直播** 25 · **互动 Lab** 68 · **预计学时** 45
 
 **适合**：有编程基础的开发者、数据科学家、ML 工程师、DevOps 工程师
 
-**目标**：掌握 Context Engineering、RAG、GraphRAG、Agent SDK、Multi-Agent、Fine-Tuning、AI Evals 全栈 AI 工程能力
+**目标**：独立设计、实现、评估并治理一个 production-ready Applied AI 产品；能在面试中解释 RAG、Agents、MCP、Model Routing、Fine-Tuning 决策和 AI Governance 的工程取舍。
 
 ---
 
@@ -35,13 +35,13 @@ _GenAI 全景 · LLM API · Transformer Architecture · ML/DL 基础 · AI 模�
 - **Lab: S3 存储** — 30 分钟
 - **LLM API 入门** — 5 分钟
 - **自学：LLM API 入门** — 20 分钟
-- **GenAI Overview + Ops** — 120 分钟 · 🔴直播
+- **GenAI Foundations & AI Engineer Landscape** — 90 分钟 · 🔴直播
 - **Quest: 装好你的 AI Engineer 工作台** — 30 分钟
 - **Lab: 第一次 LLM 体验** — 30 分钟
 - **Lab: LLM 核心概念** — 30 分钟
 - **Lab: LLM API 实操** — 30 分钟
 - **Lab: AI 基础概念** — 30 分钟
-- **开课讲解会** — 30 分钟 · 🔴直播
+- **开课讲解会** — 30 分钟
 - **Structured Data vs Unstructured Data** — 15 分钟
 - **Introduction to Machine Learning** — 15 分钟
 - **Supervised, Unsupervised & Reinforcement Learning** — 15 分钟
@@ -49,7 +49,7 @@ _GenAI 全景 · LLM API · Transformer Architecture · ML/DL 基础 · AI 模�
 - **Lab: AI/ML 基础** — 30 分钟
 - **AI 模型对比参考** — 5 分钟
 - **自学：AI 模型对比参考** — 20 分钟
-- **Transformer Architecture + API** — 120 分钟 · 🔴直播
+- **How LLMs Work: Transformer, Tokens & API Behaviour** — 90 分钟 · 🔴直播
 - **The Transformer Architecture** — 30 分钟
 - **自学：LLM API 入门** — 20 分钟
 - **Input Embeddings** — 15 分钟
@@ -62,12 +62,12 @@ _GenAI 全景 · LLM API · Transformer Architecture · ML/DL 基础 · AI 模�
 
 _Prompt Engineering · Context 系统设计 · 结构化输出 · Vibe Coding · GPT Store_
 
-- **The Four Prototyping Patterns** — 60 分钟 · 🔴直播
+- **The Four Prototyping Patterns** — 60 分钟
 - **自学：Prompt Engineering 系统方法** — 20 分钟
 - **Lab: Zero-shot 零示例** — 30 分钟
 - **Lab: Few-shot 示例学习** — 30 分钟
-- **Context Engineering: From Prompts to Systems** — 90 分钟 · 🔴直播
-- **Quest: 为你的 ISA 写第一版四层 Context** — 45 分钟
+- **Context Engineering & Reasoning Patterns** — 90 分钟 · 🔴直播
+- **Quest: CareKind Context Blueprint** — 45 分钟
 - **自学：Context Engineering 基础** — 20 分钟
 - **Lab: Context Engineering** — 30 分钟
 - **Lab: 上下文管理** — 30 分钟
@@ -77,7 +77,7 @@ _Prompt Engineering · Context 系统设计 · 结构化输出 · Vibe Coding ·
 - **自学：System Prompt 案例库** — 20 分钟
 - **Lab: 输出格式控制** — 30 分钟
 - **Lab: JSON Schema 结构化输出** — 30 分钟
-- **Vibe Coding: AI-Assisted Development** — 120 分钟 · 🔴直播
+- **Vibe Coding: AI-Assisted Development** — 120 分钟
 - **Lab: 代码生成** — 30 分钟
 - **Building Your First GPT in GPT Store** — 120 分钟
 - **Vision & Multimodal AI** — 30 分钟
@@ -98,13 +98,13 @@ _Embedding · 向量数据库 · RAG Pipeline · GraphRAG · LangChain · RAG Ev
 - **RAG 系统入门** — 5 分钟
 - **自学：RAG 系统入门** — 20 分钟
 - **自学：Techniques · RAG** — 20 分钟
-- **Introduction to Embeddings** — 30 分钟 · 🔴直播
+- **Introduction to Embeddings** — 30 分钟
 - **Lab: RAG 基础** — 30 分钟
 - **Lab: RAG Feature Pipeline** — 30 分钟
-- **Embedding Models vs LLM Chat Models** — 90 分钟 · 🔴直播
-- **Introduction to RAG** — 30 分钟 · 🔴直播
+- **Embedding Models vs LLM Chat Models** — 90 分钟
+- **RAG Fundamentals: Embeddings, Retrieval & Grounding** — 90 分钟 · 🔴直播
 - **Lab: RAG Inference Pipeline** — 30 分钟
-- **RAG from Scratch in Python** — 120 分钟 · 🔴直播
+- **CareKind Policy RAG from Scratch** — 120 分钟 · 🔴直播
 - **Quest: 本机跑通你的第一个 RAG** — 45 分钟
 - **自学：数据与知识库协作** — 20 分钟
 - **RAG Builder Toolbox** — 5 分钟
@@ -113,52 +113,55 @@ _Embedding · 向量数据库 · RAG Pipeline · GraphRAG · LangChain · RAG Ev
 - **Building Simple User Interfaces in Python** — 30 分钟
 - **PDF Parsing 101** — 90 分钟
 - **Lab: 成本优化** — 30 分钟
-- **LLM Rate Limits** — 30 分钟 · 🔴直播
+- **LLM Rate Limits** — 30 分钟
 - **自学：部署与成本优化** — 20 分钟
 - **自学：性能与成本优化** — 20 分钟
-- **P3 职业孵化器 Proposal** — 120 分钟 · 🔴直播
+- **P3 职业孵化器 Proposal** — 120 分钟
 - **Budgeting and API Costs** — 12 分钟
 - **自学：部署与成本优化** — 20 分钟
 - **自学：性能与成本优化** — 20 分钟
-- **Production RAG Application** — 90 分钟 · 🔴直播
+- **CareKind RAG Testing with RAGAS（旧提案候选）** — 120 分钟
+- **RAG Quality, Testing & Improvement** — 90 分钟 · 🔴直播
+- **Legacy Duplicate：RAG Testing（已由 C7T05 替代）** — 90 分钟
+- **RAG Testing & CareKind MVP Completion** — 120 分钟 · 🔴直播
 - **Lab: LLM 工具链** — 30 分钟
 - **Lab: Lambda Serverless** — 30 分钟
 - **Lab: Serverless API** — 30 分钟
 - **End-to-End RAG Toolbox** — 5 分钟
 - **Introduction to LangChain** — 20 分钟
 - **自学：LangChain 框架** — 20 分钟
-- **LangChain Core Constructs** — 30 分钟 · 🔴直播
+- **LangChain Core Constructs** — 30 分钟
 - **Lab: Prompt 链式调用** — 30 分钟
-- **LangChain Expression Language** — 60 分钟 · 🔴直播
+- **LangChain Expression Language** — 60 分钟
 - **自学：LangChain 框架** — 20 分钟
 - **Lab: QA 系统设计** — 30 分钟
-- **Monitoring and Visibility with LangSmith** — 60 分钟 · 🔴直播
+- **Monitoring and Visibility with LangSmith** — 60 分钟
 - **自学：Evaluation & Quality Monitoring** — 20 分钟
 - **自学：可观测性与 Guardrails** — 20 分钟
 - **Lab: MLOps/LLMOps** — 30 分钟
 - **GraphRAG 入门** — 5 分钟
 - **自学：Techniques · GraphPrompts** — 20 分钟
 - **LLMs Overview** — 12 分钟
-- **GraphRAG + 混合检索** — 90 分钟 · 🔴直播
+- **GraphRAG + RAG Evaluation（进阶候选）** — 90 分钟
 - **Lab: OpenSearch 向量搜索** — 30 分钟
-- **RAG Evaluation** — 60 分钟 · 🔴直播
+- **CareKind RAG Eval Harness（后续候选）** — 120 分钟
 - **Quest: 给你的 RAG 跑一次完整 RAGAS 评估** — 45 分钟
 - **自学：Evaluation & Quality Monitoring** — 20 分钟
 - **自学：LLM-as-a-Judge 评测** — 20 分钟
 - **Lab: LLM 评估** — 30 分钟
-- **RAG Metrics 详解** — 120 分钟 · 🔴直播
+- **RAG Metrics 详解** — 120 分钟
 - **自学：Evaluation & Quality Monitoring** — 20 分钟
 - **Lab: Prompt 评估** — 30 分钟
-- **Vibe Coding for RAG Optimization** — 120 分钟 · 🔴直播
-- **RAGAS Framework** — 60 分钟 · 🔴直播
+- **Vibe Coding for RAG Optimization** — 120 分钟
+- **RAGAS Framework** — 60 分钟
 - **自学：Evaluation & Quality Monitoring** — 20 分钟
-- **Langfuse** — 60 分钟 · 🔴直播
+- **Langfuse** — 60 分钟
 - **自学：Evaluation & Quality Monitoring** — 20 分钟
 - **自学：可观测性与 Guardrails** — 20 分钟
 - **RAG Evaluation Toolbox** — 5 分钟
 - **GraphRAG 技术全景** — 8 分钟
 - **自学：Techniques · GraphPrompts** — 20 分钟
-- **RAG QA Application with LangChain** — 120 分钟 · 🔴直播
+- **RAG QA Application with LangChain** — 120 分钟
 - **自学：LangChain 框架** — 20 分钟
 - **用 AWS 构建 RAG 应用** — 22 分钟
 - **自学：生产环境部署** — 20 分钟
@@ -170,26 +173,26 @@ _Embedding · 向量数据库 · RAG Pipeline · GraphRAG · LangChain · RAG Ev
 
 _Function Calling · Tool Use · MCP Server · Browser Use · Computer Use · Code Interpreter_
 
-- **Function Calling + Tool Use** — 30 分钟 · 🔴直播
+- **Function Calling + Tool Use** — 30 分钟
 - **Lab: Tool Use 工具调用** — 30 分钟
 - **Introducing MCP** — 180 分钟
 - **自学：MCP 开发最佳实践** — 20 分钟
 - **自学：MCP 集成** — 20 分钟
-- **MCP Server 构建 + Production 集成** — 180 分钟 · 🔴直播
+- **Tool Calling, MCP & CLI Integration** — 90 分钟 · 🔴直播
 - **Lab: MCP Server 构建** — 30 分钟
 - **Quest: 发布你的第一个 MCP Server** — 45 分钟
 - **MCP 源码解读** — 60 分钟
 - **自学：MCP 开发最佳实践** — 20 分钟
-- **MCP 工程集成实战** — 120 分钟 · 🔴直播
+- **Build and Connect a CareKind MCP Server** — 120 分钟 · 🔴直播
 - **自学：MCP 开发最佳实践** — 20 分钟
 - **自学：MCP 集成** — 20 分钟
-- **MCP 实战项目 01** — 120 分钟 · 🔴直播
+- **MCP 实战项目 01** — 120 分钟
 - **自学：MCP 开发最佳实践** — 20 分钟
-- **MCP 实战项目 02** — 120 分钟 · 🔴直播
+- **MCP 实战项目 02** — 120 分钟
 - **自学：MCP 发布指南** — 20 分钟
 - **MCP 发布指南** — 5 分钟
 - **自学：MCP 发布指南** — 20 分钟
-- **Production Agents: Computer Use + Agent Ops** — 120 分钟 · 🔴直播
+- **Production Agents: Computer Use + Agent Ops** — 120 分钟
 - **Computer Use 技术全景** — 5 分钟
 - **自学：AI Agent 开发基础** — 20 分钟
 - **Lab: Browser Use 自动化** — 30 分钟
@@ -199,11 +202,11 @@ _Function Calling · Tool Use · MCP Server · Browser Use · Computer Use · Co
 
 _Agent 基础 · ReAct Framework · Agent SDK 对比 · 构建第一个 Agent · Agentic RAG_
 
-- **Agents 基础** — 30 分钟 · 🔴直播
-- **The ReAct Framework** — 30 分钟 · 🔴直播
+- **Agents 基础** — 30 分钟
+- **Agents 基础 + The ReAct Framework** — 90 分钟 · 🔴直播
 - **Lab: ReAct Agent** — 30 分钟
 - **Lab: AI Agent 设计模式** — 30 分钟
-- **Agent SDK 对比: OpenAI / Claude / Google ADK** — 90 分钟 · 🔴直播
+- **Agent SDK 对比: OpenAI / Claude / Google ADK** — 90 分钟
 - **Agent SDK 对比参考** — 5 分钟
 - **自学：Agent 框架速览** — 20 分钟
 - **自学：Agent 框架横向对比** — 20 分钟
@@ -211,12 +214,14 @@ _Agent 基础 · ReAct Framework · Agent SDK 对比 · 构建第一个 Agent ·
 - **Agent Planning & Reflection Patterns** — 15 分钟
 - **自学：Techniques · Reflexion** — 20 分钟
 - **自学：Agents · Deep Agents** — 20 分钟
-- **Agent 详解：构建第一个 Agent** — 60 分钟 · 🔴直播
+- **Build a Bounded CareKind Agent** — 120 分钟 · 🔴直播
+- **Legacy Placeholder：W8 Theory（已由 L122 替代）** — 90 分钟
+- **Legacy Placeholder：W8 Practice（已由 L104 替代）** — 120 分钟
 - **Quest: 跑通你的第一个工具调用 Agent** — 45 分钟
 - **自学：AI Agent 开发基础** — 20 分钟
 - **自学：Agents · Introduction** — 20 分钟
 - **自学：Agents · Components** — 20 分钟
-- **Production-grade Agentic RAG** — 120 分钟 · 🔴直播
+- **Production-grade Agentic RAG** — 120 分钟
 - **自学：生产环境部署** — 20 分钟
 - **Deploying and Operating RAG in Production** — 5 分钟
 - **自学：生产环境部署** — 20 分钟
@@ -226,20 +231,20 @@ _Agent 基础 · ReAct Framework · Agent SDK 对比 · 构建第一个 Agent ·
 
 _Multi-Agent 架构 · LangGraph · A2A Protocol · Agent Ops · Claude Code 原理_
 
-- **Multi-Agent Architectures** — 60 分钟 · 🔴直播
+- **Multi-Agent Architectures** — 90 分钟 · 🔴直播
 - **Lab: 多 Agent 系统** — 30 分钟
-- **Multi-Agent + LangGraph** — 60 分钟 · 🔴直播
+- **Multi-Agent + LangGraph** — 60 分钟
 - **Lab: LangGraph 多 Agent 编排** — 30 分钟
 - **Quest: 用 LangGraph 编排你的 ISA 多 Agent 系统** — 60 分钟
-- **A2A Protocol + Agent 互操作** — 60 分钟 · 🔴直播
+- **A2A Protocol + Agent 互操作** — 60 分钟
 - **A2A Protocol 入门** — 5 分钟
 - **自学：Multi-Agent Patterns** — 20 分钟
 - **自学：多 Agent 路由** — 20 分钟
 - **Lab: A2A Protocol 通信** — 30 分钟
-- **Multi-Agent RAG with LangGraph** — 60 分钟 · 🔴直播
+- **Multi-Agent Care Workflow with LangGraph** — 120 分钟
 - **自学：Multi-Agent Patterns** — 20 分钟
 - **自学：工作流与自动化** — 20 分钟
-- **Agent Ops with LangSmith** — 30 分钟 · 🔴直播
+- **Agent Ops with LangSmith** — 30 分钟
 - **自学：Evaluation & Quality Monitoring** — 20 分钟
 - **自学：可观测性与 Guardrails** — 20 分钟
 - **Multi-Agent + Protocol Ecosystem Map** — 5 分钟
@@ -252,7 +257,8 @@ _Multi-Agent 架构 · LangGraph · A2A Protocol · Agent Ops · Claude Code 原
 
 _Agent Memory · STM/LTM · Mem0 · Session 管理 · Memory 技术全景_
 
-- **Agent Memory + Mem0** — 60 分钟 · 🔴直播
+- **Agent Memory & State Management** — 90 分钟 · 🔴直播
+- **Build Safe Long-Term Memory for the CareKind Agent** — 120 分钟 · 🔴直播
 - **Lab: Agent Memory (Mem0)** — 30 分钟
 - **Quest: 给你的 Agent 装上 Mem0 长期记忆** — 30 分钟
 - **Agent Memory 技术全景** — 8 分钟
@@ -264,19 +270,27 @@ _Agent Memory · STM/LTM · Mem0 · Session 管理 · Memory 技术全景_
 
 _Harness 架构 · Hook System · Tool Loop · Skills 范式 · ADLC · 个人 Harness 构建_
 
+- **AI Coding + ADLC：CareKind 项目启动** — 120 分钟 · 🔴直播
+- **CareKind Product UI & Design System** — 120 分钟 · 🔴直播
+- **CareKind Application & Care Workflow Foundation** — 120 分钟 · 🔴直播
+- **Legacy Placeholder：W3 Theory（已由 L37 替代）** — 90 分钟
+- **Legacy Placeholder：W4 Theory（已由 L58 替代）** — 90 分钟
+- **CareKind Voice AI：Speech-to-Text** — 120 分钟 · 🔴直播
+- **CareKind Structured Care Documentation** — 120 分钟 · 🔴直播
 - **Claude Code 技术原理** — 20 分钟
 - **Skills 范式** — 15 分钟
-- **Harness Engineering 基础** — 90 分钟 · 🔴直播
+- **Harness Engineering for Production AI Agents** — 90 分钟 · 🔴直播
+- **Build the CareKind Production Agent Harness** — 120 分钟 · 🔴直播
 - **自学：Skills 范式：从 Agent 到技能库** — 20 分钟
 - **自学：Claude Code 全面拆解** — 20 分钟
 - **Harness 架构剖析：以 Claude Code 为例** — 30 分钟
 - **自学：Claude Code 技术原理：上下文与记忆管理** — 20 分钟
 - **自学：Claude Code 全面拆解** — 20 分钟
-- **从零构建 AI Coding Agent Harness** — 120 分钟 · 🔴直播
+- **从零构建 AI Coding Agent Harness** — 120 分钟
 - **自学：Claude Code 子代理配置** — 20 分钟
 - **自学：Skill 开发入门** — 20 分钟
 - **Lab: Tool Loop 实现** — 30 分钟
-- **Harness 工程化** — 90 分钟 · 🔴直播
+- **Harness 工程化** — 90 分钟
 - **自学：Claude Code 自定义命令** — 20 分钟
 - **自学：AI Rules 配置实战** — 20 分钟
 - **Lab: Harness Hooks 实现** — 30 分钟
@@ -286,52 +300,57 @@ _Harness 架构 · Hook System · Tool Loop · Skills 范式 · ADLC · 个人 H
 - **Human-in-the-Loop Patterns** — 15 分钟
 - **自学：AI Coding 工作流** — 20 分钟
 - **自学：与 AI 结对编程** — 20 分钟
-- **Skills 范式：可复用 Agent 能力单元** — 60 分钟 · 🔴直播
+- **Skills 范式：可复用 Agent 能力单元** — 60 分钟
 - **自学：Skills 范式：从 Agent 到技能库** — 20 分钟
 - **自学：Claude Code Skills 进阶** — 20 分钟
 - **自学：开发你的第一个 Skill** — 20 分钟
-- **Claude Code Skills 最佳实践** — 180 分钟 · 🔴直播
+- **Claude Code Skills 最佳实践** — 180 分钟
 - **Quest: 在你电脑上构建个人 Harness** — 30 分钟
 
 ## PHASE 9: Model Layer
 
 _Open-Weight Models · Fine-Tuning · QLoRA · Unsloth · PEFT · SDG · Sentence Transformers_
 
-- **Open-Weight Models + Model Routing** — 90 分钟 · 🔴直播
+- **Model Selection, Open-Weight Models & Fine-Tuning Decisions** — 60 分钟
+- **Build the CareKind Model Router inside the Agent Harness** — 120 分钟 · 🔴直播
 - **Quest: 本机 Ollama 跑 Qwen 3.5** — 45 分钟
 - **Docker for AI Engineers** — 20 分钟
 - **自学：生产环境部署** — 20 分钟
 - **Lab: 模型部署** — 30 分钟
 - **Lab: 推理优化** — 30 分钟
 - **Lab: SageMaker ML 平台** — 30 分钟
-- **SDG for Fine-Tuning** — 60 分钟 · 🔴直播
+- **SDG for Fine-Tuning** — 60 分钟
 - **Lab: 数据工程** — 30 分钟
-- **Test Data Generation for RAG** — 60 分钟 · 🔴直播
+- **Test Data Generation for RAG** — 60 分钟
 - **自学：Synthetic Data & Augmentation** — 20 分钟
 - **SDG Toolkit** — 5 分钟
 - **自学：Synthetic Data & Augmentation** — 20 分钟
-- **Fine-Tuning & MTEB** — 60 分钟 · 🔴直播
-- **Downloading Open-Source Model Weights** — 60 分钟 · 🔴直播
-- **Loading LMs on GPU** — 60 分钟 · 🔴直播
-- **Sentence Transformers & Fine-Tuning Embeddings** — 120 分钟 · 🔴直播
+- **Fine-Tuning & MTEB** — 60 分钟
+- **Downloading Open-Source Model Weights** — 60 分钟
+- **Loading LMs on GPU** — 60 分钟
+- **Sentence Transformers & Fine-Tuning Embeddings** — 120 分钟
 - **自学：RAG 系统入门** — 20 分钟
 - **Lab: 监督微调 (SFT)** — 30 分钟
 - **Fine-Tuning Toolkit** — 5 分钟
-- **The Primary Roles of Fine-Tuning** — 30 分钟 · 🔴直播
-- **PEFT + QLoRA + Unsloth** — 60 分钟 · 🔴直播
+- **The Primary Roles of Fine-Tuning** — 30 分钟
+- **PEFT + QLoRA + Unsloth** — 60 分钟
 - **Lab: 偏好对齐 (RLHF/DPO)** — 30 分钟
-- **Fine-Tuning Llama with PEFT-QLoRA** — 60 分钟 · 🔴直播
+- **Fine-Tuning Llama with PEFT-QLoRA** — 60 分钟
 - **Quest: 你的第一次 QLoRA 微调** — 60 分钟
 
-## PHASE 10: Observability & Evals
+## PHASE 10: AI Governance, Safety, Observability & Evals
 
-_AI Evaluation · Safety · Guardrails · Red-teaming · 监控 · 毕业 · 职业路径_
+_AI Governance · Risk Classification · Accountability · AI Evaluation · Safety · Guardrails · Red-teaming · 监控 · Incident Response · 毕业_
 
-- **AI Evaluation Engineering** — 90 分钟 · 🔴直播
+- **Legacy Placeholder：W9 Theory（已由 L133 替代）** — 90 分钟
+- **Legacy Placeholder：W9 Practice（已由 L119 替代）** — 120 分钟
+- **AI Evaluation Engineering** — 90 分钟
 - **Quest: 给你的 ISA 接 LangSmith Eval Pipeline** — 60 分钟
 - **Lab: LLM 评估** — 30 分钟
 - **Lab: Prompt 评估** — 30 分钟
-- **Safety, Guardrails + Red-teaming** — 90 分钟 · 🔴直播
+- **CareKind Production Readiness Review & Demo Day** — 180 分钟 · 🔴直播
+- **AI Governance, Evals & Risk Management** — 90 分钟 · 🔴直播
+- **Quest: 为你的 ISA 建立 AI Governance Pack** — 75 分钟
 - **Lab: Prompt 注入防御** — 30 分钟
 - **Lab: 幻觉检测与防护** — 30 分钟
 - **Lab: CloudWatch 监控** — 30 分钟
@@ -349,8 +368,8 @@ _AI Evaluation · Safety · Guardrails · Red-teaming · 监控 · 毕业 · 职
 - **自学：安全与威胁建模** — 20 分钟
 - **LinkedIn & CV Workshop** — 17 分钟
 - **自学：AI 产品与体验** — 20 分钟
-- **P3 职业孵化器 Demo Day** — 120 分钟 · 🔴直播
+- **CareKind Production Demo Day & System Design Defense** — 120 分钟
 - **学员小组项目展示** — 60 分钟
 - **往期 P3 项目案例** — 15 分钟
-- **AI Engineer 职业路径** — 90 分钟 · 🔴直播
+- **Production AI System Design & Model Routing** — 90 分钟 · 🔴直播
 - **Quest: 把你的 ISA 部署上生产（毕业 Quest）** — 60 分钟

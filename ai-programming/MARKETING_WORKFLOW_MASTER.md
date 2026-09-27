@@ -618,3 +618,6 @@ A: GAP_AUDIT = 诊断报告（哪里漏多少）；本 MASTER = 执行调度（�
 > 维护人：Aurora（每周一晨会 update §1.4 / §6 KPI / §8 进度）
 > review 人：Lightman + Beta
 > 下次大版本 v2：03 期 launch + target 拍板后 / GT 升 0.75 后 / 数据系统 2 collection ship 后（任一触发就 v2）
+
+
+> ⚠️ **2026-08-24 更正**：poster-v1 ~ v6 六张海报已下线删除（课程名/周数/班型过期，V1、V6 含「年薪 $120K」触红线）。现仅保留一张课程主海报 `public/poster.html`（1242×1660，从 outline.json 生成）。本节其余内容为当时记录，未改写。

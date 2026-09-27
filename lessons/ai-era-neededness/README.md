@@ -18,4 +18,4 @@ pnpm dev
 
 ## 线上地址
 
-https://jiangren.com.au/curriculum/lessons/ai-era-neededness/
+https://jracademy.ai/curriculum/lessons/ai-era-neededness/

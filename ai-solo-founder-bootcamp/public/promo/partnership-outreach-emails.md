@@ -36,7 +36,7 @@
 [职位] · 匠人学院
 [电话] · [邮箱] · [LinkedIn]
 
-📎 课程一页纸：https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/curriculum.html
+📎 课程一页纸：https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/curriculum.html
 ```
 
 **注意事项**：
@@ -60,13 +60,13 @@
 如果你最近忙，没关系。我先发 3 个我们正在 launch 的免费工具链接，你可以分享给 [协会名] 任何感兴趣的会员，不影响后续是否合作：
 
 ① OPC 一人公司适配度 5 维度自评（12 道题 · 5 分钟 · 不要邮箱）
-   https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
+   https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
 
 ② 30 分钟 ship 一个 AI 产品（完整 demo + 工具清单）
-   https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/30min-ship.html
+   https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/30min-ship.html
 
 ③ 澳洲 RDTI 申请书 AI Prompt 模板（R&D 退税 43.5% · 复制粘贴）
-   https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/rdti-prompt-template.html
+   https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/rdti-prompt-template.html
 
 会员用了如果觉得有价值再聊合作。如果你觉得 [协会名] 暂时不合适，也帮我说一声，我就不再打扰。
 
@@ -114,7 +114,7 @@
 哪个方案最贴近你们设想？我可以根据你的反馈调整数字 / 时间安排。如果觉得三个都不太对，我们再聊。
 
 附上 3 个材料：
-📎 课程完整大纲：https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/curriculum.html
+📎 课程完整大纲：https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/curriculum.html
 📎 一页纸 PDF：[BD 自己生成的精简 PDF 链接 — Gamma / Canva 出 1 页]
 📎 上一期 case study：[首期跑完后填，目前留空或说"首期 case study 价正是因为还在累积"]
 

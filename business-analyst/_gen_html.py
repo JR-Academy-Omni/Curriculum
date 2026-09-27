@@ -181,7 +181,8 @@ def gen_curriculum(data: dict) -> str:
     name = html.escape(data.get("name", "AI 产品经理(BA)训练营"))
     phases = data.get("phases", [])
     total_lessons = sum(len(p.get("lessons", [])) for p in phases)
-    total_live = sum(1 for p in phases for l in p.get("lessons", []) if l.get("type") in ("Lesson", "Workshop", "Tutorial") or l.get("isLive"))
+    one_to_one_minutes = sum(int(l.get("duration", 0)) for p in phases for l in p.get("lessons", []) if l.get("type") == "Tutorial")
+    one_to_one_hours = one_to_one_minutes // 60
     total_labs = sum(1 for p in phases for l in p.get("lessons", []) if l.get("type") == "InteractiveLab")
     total_quizzes = sum(1 for p in phases for l in p.get("lessons", []) if l.get("type") == "Quiz")
     hours = int(data.get("estimatedHours", 116))
@@ -206,7 +207,7 @@ def gen_curriculum(data: dict) -> str:
   <div class="tags">
     <span class="tag a">Week 0–6 · {hours}h</span>
     <span class="tag">{total_lessons} 节课</span>
-    <span class="tag">{total_live} 节直播 / Workshop</span>
+    <span class="tag">{one_to_one_hours} 小时 1V1 辅导</span>
     <span class="tag">{total_labs} 个 Lab</span>
     <span class="tag">2025-12 开课</span>
   </div>
@@ -220,7 +221,7 @@ def gen_curriculum(data: dict) -> str:
 <div class="bar">
   <div class="s"><div class="n">{len(phases)}</div><div class="l">PHASES</div></div>
   <div class="s"><div class="n">{total_lessons}</div><div class="l">总课时</div></div>
-  <div class="s"><div class="n">{total_live}</div><div class="l">直播 / Workshop</div></div>
+  <div class="s"><div class="n">{one_to_one_hours}h</div><div class="l">1V1 辅导</div></div>
   <div class="s"><div class="n">{total_labs}</div><div class="l">互动 Lab</div></div>
   <div class="s"><div class="n">{total_quizzes}</div><div class="l">章节 Quiz</div></div>
   <div class="s"><div class="n">~{hours}h</div><div class="l">总时长</div></div>
@@ -291,7 +292,7 @@ def gen_phase_page(data: dict, idx: int) -> str:
 
 
 def main():
-    with OUTLINE.open() as f:
+    with OUTLINE.open(encoding="utf-8") as f:
         data = json.load(f)
 
     # curriculum.html

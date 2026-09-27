@@ -40,7 +40,7 @@
 1. Marketing 决定排课日期 + 早鸟截止 → 在 admin 后台 Program `第1期` 设 `commenceCourseDate` / `cohortStatus`
 2. 课程主理人审 5 节 lesson description（首次 AI 生成）是否能直接对外发，重点查 L03（最长 60min 的 sub-agent 并行那节）
 3. 决定是否给「墨/悉线下全天小班 A$299」单独开 Program 第2期 — 或者就一直挂在 outline 描述里走线上为主
-4. push curriculum submodule → GitHub Actions deploy → 验 `https://jiangren.com.au/curriculum/claude-code-workshop/curriculum.html` 200
+4. push curriculum submodule → GitHub Actions deploy → 验 `https://jracademy.ai/curriculum/claude-code-workshop/curriculum.html` 200
 
 ---
 

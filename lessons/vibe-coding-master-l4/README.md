@@ -20,4 +20,4 @@ bun run build    # tsc -b && vite build → dist/
 - `src/components/slides/L4P00..L4P19_*.tsx` — 一文件一页
 - 引擎文件（`SlideEngine` / `CameraBubble` / `ui` / `theme` / `main`）与 `_template` 逐字一致，**只拷不改**
 
-线上：https://jiangren.com.au/curriculum/lessons/vibe-coding-master-l4/
+线上：https://jracademy.ai/curriculum/lessons/vibe-coding-master-l4/

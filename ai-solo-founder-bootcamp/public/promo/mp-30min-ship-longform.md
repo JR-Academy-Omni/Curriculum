@@ -147,7 +147,7 @@ K 跟着教程做完了 demo，但她的产品 idea 不是"AI 写小红书标题
 
 整套 30 分钟教程 + 工具清单 + 准备 checklist + 5 个常见踩坑都整理在这里：
 
-**🔗 jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/30min-ship.html**
+**🔗 jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/30min-ship.html**
 
 完全免费，不要邮箱，不发广告。
 
@@ -168,9 +168,9 @@ K 跟着教程做完了 demo，但她的产品 idea 不是"AI 写小红书标题
 
 申请制 30-50% 录取率（不是所有人都该报）。**首期 case study 价 $3,800**（标准价 $5,800，前 10 名享受）。
 
-完整大纲：jiangren.com.au/curriculum/ai-solo-founder-bootcamp/
+完整大纲：jracademy.ai/curriculum/ai-solo-founder-bootcamp/
 
-但报名之前，**强烈建议先做 5 维度 OPC 适配自评**：jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
+但报名之前，**强烈建议先做 5 维度 OPC 适配自评**：jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
 
 12 道题 5 分钟，立刻看你的得分。如果 < 60 分，说明你某个 dimension 不到位，建议先补再申请。
 
