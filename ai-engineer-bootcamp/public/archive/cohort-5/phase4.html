@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 4: 模型优化 + AI Evals + 毕业 — AI Engineer Bootcamp</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>Phase 4: 模型优化 + AI Evals + 毕业</h1>
+  <div class="sub">Week 10-12 · 直播 + 项目 · Open-Weight Models + Fine-Tuning + Eval + 毕业展示</div>
+  <div class="nav"><a href="phase3.html">← Phase 3</a> | <a href="curriculum.html">课程总览</a></div>
+</div>
+
+<div class="c">
+
+<!-- ===== Week 10 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--red)">
+    <span style="font-size:18px;font-weight:900">Week 10 · Open-Weight Models + Fine-Tuning</span>
+    <span style="float:right;opacity:0.7" class="mono">直播</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--red);color:#fff">10.1</span>
+      <h4>Open-Weight Models + Model Routing</h4>
+      <span class="pill" style="background:var(--red);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>2026 Open-Weight 模型格局</strong>：<br>
+        - DeepSeek：1M context window，$0.14/M tokens，性价比碾压闭源<br>
+        - Qwen 3.5：397B MoE 架构，支持 201 种语言，中文任务最强<br>
+        - Llama 4：89% GPT-4.5 性能，Meta 生态加持<br>
+        - 企业 Open-Weight 采用率从 2024 年的 23% 飙升到 67%<br><br>
+        <strong>Model Routing 策略</strong>：<br>
+        - 核心思路：80% 简单请求走便宜的 Open-Weight 模型，20% 复杂任务走 GPT-4o/Claude<br>
+        - Router 实现：根据 query 复杂度、token 长度、任务类型自动分流<br>
+        - 成本计算：自建推理服务 vs API 调用的 break-even point<br><br>
+        <strong>本地部署选项</strong>：<br>
+        - vLLM：生产级推理服务器，支持 continuous batching<br>
+        - Ollama：本地开发测试，一行命令跑模型<br>
+        - Together AI：托管推理服务，免运维</p>
+        <div class="tools"><span class="tool">vLLM</span><span class="tool">Ollama</span><span class="tool">Together AI</span><span class="tool">HuggingFace Hub</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 下载 DeepSeek/Qwen 模型，用 vLLM 部署本地推理服务<br>
+        2. 实现 Model Router：根据 query 复杂度自动选择模型<br>
+        3. 对比：Open-Weight 本地推理 vs API 调用的延迟和成本<br>
+        4. 压测：不同并发量下 vLLM 的吞吐和延迟表现</p>
+        <span class="review ai">🤖 Router 分流准确率验证</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 实现 Model Routing：<br>
+        - 简单问题（FAQ、闲聊）走 DeepSeek<br>
+        - 复杂问题（多步推理、代码生成）走 Claude<br>
+        - 提交成本分析报告：对比纯 API vs Routing 方案的月度成本</p>
+        <span class="review teacher">👨‍🏫 架构 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--red);color:#fff">10.2</span>
+      <h4>Fine-Tuning: QLoRA + Unsloth</h4>
+      <span class="pill" style="background:var(--red);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>何时 Fine-Tuning vs RAG vs Prompt</strong>：<br>
+        - RAG：知识更新频繁、需要引用来源、数据量大<br>
+        - Fine-Tuning：固定输出模式、低延迟要求、特定风格/格式<br>
+        - Prompt Engineering：快速迭代、不需要训练资源<br>
+        - 组合拳：Fine-Tuned Model + RAG 是生产环境常见方案<br><br>
+        <strong>PEFT + QLoRA 原理</strong>：<br>
+        - LoRA：低秩分解，只训练 A×B 矩阵，参数量减少 99%+<br>
+        - QLoRA = 4-bit 量化 + LoRA，消费级 GPU 可用<br>
+        - rank、alpha、target_modules 参数怎么选<br><br>
+        <strong>2026 微调加速工具</strong>：<br>
+        - Unsloth：2x 训练速度、60% 更少显存，社区最流行的微调加速库<br>
+        - LLaMA-Factory：Web GUI 微调，不写代码也能 Fine-Tune<br><br>
+        <strong>SDG (Synthetic Data Generation)</strong>：<br>
+        - 用 GPT-4o 生成训练数据 + 质量过滤 pipeline<br>
+        - 微调全流程：数据准备 → QLoRA 配置 → 训练 → 评估 → 合并导出 → HuggingFace 发布</p>
+        <div class="tools"><span class="tool">Unsloth</span><span class="tool">QLoRA</span><span class="tool">LLaMA-Factory</span><span class="tool">HuggingFace</span><span class="tool">Google Colab</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 用 Unsloth + QLoRA 在 Colab 上微调 Llama 4 / Qwen 3.5<br>
+        2. 对比 Unsloth vs 标准 PEFT 的训练速度和显存占用<br>
+        3. 用 SDG 生成 500 条训练数据 + 质量过滤 pipeline<br>
+        4. 评估微调前后的效果：perplexity、task-specific metrics</p>
+        <span class="review ai">🤖 训练指标验证</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>提交 Fine-Tuning 完整报告：<br>
+        - 训练配置（hyperparameters）<br>
+        - Loss 曲线截图<br>
+        - 微调前后的对比评测<br>
+        - 上传模型到 HuggingFace Hub</p>
+        <span class="review teacher">👨‍🏫 Fine-Tuning 结果 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 10 自学内容</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Open-Weight Model Landscape 2026</div>
+        <div class="lab-desc">DeepSeek vs Qwen vs Llama vs Mistral — 性能、成本、License 对比</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Fine-Tuning Toolkit 对比</div>
+        <div class="lab-desc">Unsloth vs LLaMA-Factory vs Axolotl — 哪个适合你的场景</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Model Routing 最佳实践</div>
+        <div class="lab-desc">按复杂度分流请求，用 20% 的成本覆盖 80% 的场景</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Week 11 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--red)">
+    <span style="font-size:18px;font-weight:900">Week 11 · AI Evaluation Engineering + Safety</span>
+    <span style="float:right;opacity:0.7" class="mono">直播</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--red);color:#fff">11.1</span>
+      <h4>AI Evaluation Engineering</h4>
+      <span class="pill" style="background:var(--red);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>"AI Eval Engineer" 已经是独立岗位</strong>，评估能力和开发能力同等重要。你写的 Agent 好不好，不是靠感觉，是靠数据。<br><br>
+        <strong>三层评估框架</strong>：<br>
+        1. <strong>Offline Evals</strong> — 用测试集跑批量评估（Accuracy, F1, BLEU, BERTScore）<br>
+        2. <strong>Online Evals</strong> — 生产环境实时质量监控，catch regression<br>
+        3. <strong>Human Evals</strong> — 人工抽检 + 标注，校准自动评估的偏差<br><br>
+        <strong>幻觉检测</strong>：<br>
+        - Faithfulness 评分：LLM 输出和 Context 的一致性<br>
+        - Cross-reference 验证：多源交叉检查<br>
+        - Source attribution：输出能否追溯到原始文档<br><br>
+        <strong>自动化 Eval Pipeline</strong>：<br>
+        - CI/CD 集成：每次 Prompt/Model 变更自动跑评估<br>
+        - 基线管理：跟踪分数趋势，防止质量退化</p>
+        <div class="tools"><span class="tool">LangSmith</span><span class="tool">Braintrust</span><span class="tool">RAGAS</span><span class="tool">DeepEval</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 构建完整 Eval Pipeline：100 条测试用例 → 自动评估 → 生成报告<br>
+        2. 实现幻觉检测器：检查 LLM 输出是否忠实于 Context<br>
+        3. 对比 LangSmith vs Braintrust 的评估体验和易用性<br>
+        4. 将 Eval 集成到 CI — Prompt 变更自动触发评估</p>
+        <span class="review ai">🤖 Eval 分数验证</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 项目构建自动化 Eval Pipeline：<br>
+        - Eval 配置文件 + 100 条测试用例<br>
+        - 基线分数记录<br>
+        - 至少一轮优化后的分数<br>
+        - 改进分析报告：哪些 case 提升了、为什么</p>
+        <span class="review teacher">👨‍🏫 Eval Pipeline Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--red);color:#fff">11.2</span>
+      <h4>Safety, Guardrails + Red-teaming</h4>
+      <span class="pill" style="background:var(--red);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>AI Safety 不是学术话题，是生产必需品</strong>。你的 Agent 上线后，用户会用你想不到的方式使用它。<br><br>
+        <strong>Input Guardrails</strong>：<br>
+        - Prompt Injection 检测：识别恶意指令注入<br>
+        - PII 过滤：自动检测并脱敏个人信息<br>
+        - Topic 限制：让 Agent 只回答业务范围内的问题<br><br>
+        <strong>Output Guardrails</strong>：<br>
+        - 内容过滤：阻止有害、偏见内容输出<br>
+        - 格式验证：确保输出符合预期 schema<br>
+        - Confidence 阈值：低置信度时主动说"我不确定"<br><br>
+        <strong>Red-teaming 实战</strong>：<br>
+        - 系统性攻击你自己的 AI 系统<br>
+        - Jailbreak 测试、边界情况枚举、对抗性输入生成<br>
+        - 目标：上线前发现问题，而不是让用户帮你发现<br><br>
+        <strong>合规要求</strong>：<br>
+        - EU AI Act、NIST AI RMF — 对你的系统意味着什么<br>
+        - 不是"要不要合规"，是"客户会问你合不合规"</p>
+        <div class="tools"><span class="tool">Guardrails AI</span><span class="tool">NeMo Guardrails</span><span class="tool">LangSmith</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 为 ISA 添加 Input/Output Guardrails<br>
+        2. Red-team 你自己的 Agent：用 10 种攻击手法测试，记录成功/失败<br>
+        3. 实现 PII 检测 + 自动脱敏 pipeline<br>
+        4. 写 Guardrails 配置文件 + 对应测试用例</p>
+        <span class="review ai">🤖 攻击测试通过率</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>提交 Safety 报告：<br>
+        - 10 种攻击手法 + 每种的防御措施<br>
+        - 攻击通过率（目标 < 10%）<br>
+        - Guardrails 配置文件 + 测试用例<br>
+        - PII 脱敏 demo</p>
+        <span class="review teacher">👨‍🏫 Safety Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 11 自学内容</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">AI Eval Tools 全景 2026</div>
+        <div class="lab-desc">LangSmith vs Braintrust vs RAGAS vs DeepEval vs Maxim — 选型指南</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Red-teaming Playbook</div>
+        <div class="lab-desc">常见 LLM 攻击手法和防御策略，含 10+ 实战案例</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">EU AI Act 开发者指南</div>
+        <div class="lab-desc">AI 合规要求速查：哪些条款影响你的系统设计</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Week 12 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--red)">
+    <span style="font-size:18px;font-weight:900">Week 12 · P3 Demo Day + 职业发展</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 · Demo Day</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--red);color:#fff">12.1</span>
+      <h4>P3 职业孵化器 Demo Day</h4>
+      <span class="pill" style="background:var(--red);color:#fff">直播 · Demo Day</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 展示内容</h5>
+        <p>每组 15-20 分钟展示：<br><br>
+        1. <strong>问题定义</strong> — 解决什么问题、为什么重要<br>
+        2. <strong>技术架构</strong> — 用了哪些技术、为什么这么选<br>
+        3. <strong>Live Demo</strong> — 现场演示核心功能<br>
+        4. <strong>技术亮点</strong> — 最有技术含量的部分<br>
+        5. <strong>反思</strong> — 踩了什么坑、如何改进</p>
+      </div>
+      <div>
+        <h5>🔬 评审标准</h5>
+        <p><strong>技术 (40%)</strong>：架构设计、代码质量、工程化程度<br><br>
+        <strong>产品 (30%)</strong>：解决真实问题、用户体验<br><br>
+        <strong>展示 (20%)</strong>：清晰表达、Demo 流畅度<br><br>
+        <strong>创新 (10%)</strong>：有没有做出竞品没有的东西<br><br>
+        <strong>2026 加分项</strong>：用了 Agent SDK + GraphRAG + Eval Pipeline + Agent Memory</p>
+        <span class="review teacher">👨‍🏫 老师 + 嘉宾评审</span>
+      </div>
+      <div>
+        <h5>📋 提交</h5>
+        <p>- GitHub 仓库（含 README）<br>
+        - Demo URL 或视频<br>
+        - 技术文档<br>
+        - 演示 PPT<br><br>
+        优秀项目有机会作为 JR Academy showcase 展示</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--red);color:#fff">12.2</span>
+      <h4>AI Engineer 职业路径 + 简历 Workshop</h4>
+      <span class="pill" style="background:var(--red);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>2026 AI Engineer 岗位图谱</strong>：<br>
+        - AI Engineer — 全栈 AI 应用开发<br>
+        - AI Agent Developer — 专注 Agent 系统设计<br>
+        - AI Eval Engineer — 评估、质量保障、Red-teaming<br>
+        - AI Platform Engineer — 基础设施、MLOps、模型部署<br><br>
+        <strong>薪资数据（澳洲市场）</strong>：<br>
+        - Junior: $100-150K<br>
+        - Mid: $150-220K<br>
+        - Senior: $220-350K+<br><br>
+        <strong>面试准备</strong>：<br>
+        - System Design for AI：设计一个 RAG 系统、设计一个 Agent<br>
+        - 技术深度题：RAG 优化策略、Agent 架构设计、Eval 方法论<br>
+        - 行为面试：如何处理 AI 幻觉问题、如何选择模型</p>
+      </div>
+      <div>
+        <h5>🔬 互动环节</h5>
+        <p><strong>LinkedIn & CV Workshop</strong>：<br>
+        - 用 12 周学到的技术栈重写简历<br>
+        - LinkedIn profile 优化：突出 AI Engineer 关键词<br>
+        - 项目描述怎么写才有说服力<br><br>
+        1v1 简历点评（时间允许的情况下）</p>
+        <span class="review teacher">👨‍🏫 简历 Review</span>
+      </div>
+      <div>
+        <h5>📋 毕业产出</h5>
+        <p>完成 12 周后，你拥有：<br>
+        - 7 个 GitHub 实战项目<br>
+        - ISA 全栈 AI 应用（Context Engineering + RAG + GraphRAG + Agent + Memory + Eval）<br>
+        - P3 职业孵化项目作品<br>
+        - 更新后的技术简历</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 补充学习材料</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">LinkedIn & CV</div>
+        <div class="lab-desc">LinkedIn profile 优化和 AI Engineer 简历写法</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">往期 P3 项目案例</div>
+        <div class="lab-desc">往期优秀 P3 职业孵化项目案例分享</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">AI 模型对比参考</div>
+        <div class="lab-desc">GPT-4o vs Claude 4 vs Gemini 2.5 vs DeepSeek — 2026 性能对比</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">LLM API 入门</div>
+        <div class="lab-desc">各家 LLM API 快速入门指南</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Context Engineering Playbook</div>
+        <div class="lab-desc">从 Prompt Engineering 到 Context Engineering 的方法论升级</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">RAG 系统入门</div>
+        <div class="lab-desc">RAG 系统设计和实现参考</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Agent SDK 对比参考</div>
+        <div class="lab-desc">OpenAI Agents SDK vs LangGraph vs CrewAI vs Mastra — 选型指南</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Evaluation & Quality Monitoring</div>
+        <div class="lab-desc">LLM 应用评估和质量监控体系</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="phase3.html">← Phase 3: Agents + MCP</a> &nbsp;|&nbsp; <a href="curriculum.html">课程总览</a>
+</div>
+
+</div>
+</body>
+</html>

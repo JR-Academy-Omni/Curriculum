@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&amp;family=Noto+Sans+SC:wght@400;700;900&amp;display=swap" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #fff8f0;
+      }
+      body { font-family: "Noto Sans SC", sans-serif; color: #241c18; }
+      code, pre, .monospace { font-family: "JetBrains Mono", monospace; }
+      #root { position: relative; overflow: hidden; background: #fff8f0; }
+      .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: rgba(115,87,255,.14); right: -260px; top: -240px; }
+      .rule { position: absolute; left: 88px; right: 88px; top: 124px; height: 4px; background: #ff6b57; transform-origin: left center; }
+      .eyebrow { position: absolute; left: 88px; top: 64px; font-size: 28px; font-weight: 700; letter-spacing: .08em; color: #7357ff; }
+      .title { position: absolute; left: 88px; top: 210px; width: 900px; font-size: 104px; line-height: 1.05; font-weight: 900; letter-spacing: -.055em; }
+      .title em { color: #d94734; font-style: normal; }
+      .pipeline { position: absolute; left: 88px; right: 88px; bottom: 180px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+      .stage { min-height: 330px; padding: 42px; border: 3px solid #d8cdc4; border-radius: 34px; background: rgba(255,255,255,.84); box-shadow: 0 24px 70px rgba(76,46,31,.13); }
+      .stage b { display: block; width: 62px; height: 62px; border-radius: 18px; border: 3px solid #241c18; background-color: #f3e8df; color: #241c18; text-align: center; line-height: 56px; font-size: 26px; }
+      .stage h2 { margin-top: 70px; font-size: 50px; line-height: 1.08; }
+      .stage p { margin-top: 22px; font-size: 28px; color: #6f625b; }
+      .status { position: absolute; right: 88px; top: 64px; padding: 14px 24px; border-radius: 999px; background: #dff8ee; color: #147654; font-size: 24px; font-weight: 800; }
+      .footer { position: absolute; left: 88px; bottom: 80px; font-size: 24px; color: #6f625b; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="12"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="starter-bg" class="clip glow" data-start="0" data-duration="12" data-track-index="0" data-layout-allow-overflow></div>
+      <div id="starter-rule" class="clip rule" data-start="0" data-duration="12" data-track-index="1"></div>
+      <div id="starter-eyebrow" class="clip eyebrow monospace" data-start="0" data-duration="12" data-track-index="2">CODEX AI VIDEO / STARTER</div>
+      <div id="starter-status" class="clip status" data-start="0" data-duration="12" data-track-index="2">CHECK → REVIEW → SHIP</div>
+      <div id="starter-title" class="clip title" data-start="0" data-duration="12" data-track-index="3">素材先体检，<br><em>再写时间线。</em></div>
+      <div class="pipeline">
+        <article id="starter-stage-1" class="clip stage" data-start="1.5" data-duration="10.5" data-track-index="4"><b>01</b><h2>Inventory</h2><p>读取真实媒体参数</p></article>
+        <article id="starter-stage-2" class="clip stage" data-start="3.5" data-duration="8.5" data-track-index="4"><b>02</b><h2>Shotlist</h2><p>记录每个剪辑决定</p></article>
+        <article id="starter-stage-3" class="clip stage" data-start="5.5" data-duration="6.5" data-track-index="4"><b>03</b><h2>Timeline</h2><p>检查后才允许渲染</p></article>
+      </div>
+      <div id="starter-footer" class="clip footer monospace" data-start="0" data-duration="12" data-track-index="5">1080 × 1920 · 12 SEC · HUMAN REVIEW REQUIRED</div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#starter-rule", { scaleX: 0 }, { scaleX: 1, duration: .8, ease: "power3.out" }, 0.1);
+      tl.fromTo("#starter-eyebrow", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: .55, ease: "power2.out" }, 0.2);
+      tl.fromTo("#starter-status", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: .6, ease: "back.out(1.4)" }, 0.35);
+      tl.fromTo("#starter-title", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: .8, ease: "power4.out" }, 0.55);
+      tl.fromTo("#starter-stage-1", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: .65, ease: "power3.out" }, 1.5);
+      tl.fromTo("#starter-stage-2", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: .65, ease: "back.out(1.25)" }, 3.5);
+      tl.fromTo("#starter-stage-3", { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: .65, ease: "power2.out" }, 5.5);
+      tl.fromTo("#starter-footer", { opacity: 0 }, { opacity: 1, duration: .5, ease: "none" }, 6.2);
+      tl.to("#starter-bg", { scale: 1.08, x: -30, y: 38, duration: 12, ease: "sine.inOut" }, 0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

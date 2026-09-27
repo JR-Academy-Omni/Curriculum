@@ -10,7 +10,7 @@ priority: high
 > 文档类型：产品需求文档 (PRD)
 > 版本：**v0.2（已上线 · 持续迭代）** — v0.1 是 38 页计划稿，本版同步到实际上线的 63 页结构
 > 项目代号：`ai-new-jobs-talk`
-> 线上地址：`jiangren.com.au/curriculum/lessons/ai-new-jobs-talk/`（已部署，已现场讲过，反馈好）
+> 线上地址：`jracademy.ai/curriculum/lessons/ai-new-jobs-talk/`（已部署，已现场讲过，反馈好）
 > 数据来源：`jiangren.com.au/ai-new-jobs`（23 个新岗位）+ `jiangren.com.au/career-impact-map`（78 个传统岗位 AI 风险地图）
 
 ---
@@ -66,7 +66,7 @@ priority: high
 
 ### 0.3 项目交付物（v0.2 实际）
 - ✅ 一份 **63 页** 网页版 slides（中文为主，公司名/职位名保英文）— React 19 + framer-motion，已构建
-- ✅ 已部署到 `jiangren.com.au/curriculum/lessons/ai-new-jobs-talk/`，已现场讲过（反馈好）
+- ✅ 已部署到 `jracademy.ai/curriculum/lessons/ai-new-jobs-talk/`，已现场讲过（反馈好）
 - ✅ 配套小红书引流资产 `xhs/`（6 张 poster + case-T01 四步 pipeline 实操材料）
 - 🔄 **重用方向**：以 CH 5 为主体裁出独立「AI Marketing 讲座」，导流 `ai-programming` + `ai-solo-founder-bootcamp`
 
@@ -253,7 +253,7 @@ ai-new-jobs-talk/
 ### 3.3 部署
 - push 到 `main` → GitHub Actions deploy.yml 自动构建
 - 必须改 `deploy.yml` 的 Assemble 步骤加入 `ai-new-jobs-talk` slug（参照 CLAUDE.md 强制规则 1）
-- 上线地址：`jiangren.com.au/curriculum/ai-new-jobs-talk/`
+- 上线地址：`jracademy.ai/curriculum/ai-new-jobs-talk/`
 
 ### 3.4 海报（可选，二期）
 - 如果做营销海报，必须加入 `curriculum/posters.html` 的"Workshop 海报"section（参照 CLAUDE.md 强制规则 2）

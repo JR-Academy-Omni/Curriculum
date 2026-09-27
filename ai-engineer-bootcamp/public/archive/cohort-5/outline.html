@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legacy | AI Engineer Bootcamp 第五期课程快照</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --indigo: #6366f1;
+  --teal: #10b981;
+  --red: #ff5757;
+  --orange: #FF914D;
+  --dark: #10162f;
+  --purple: #CB6CE6;
+  --green: #7ED957;
+  --blue: #38B6FF;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans SC', 'DM Sans', sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  line-height: 1.5;
+  padding: 24px;
+}
+.container { max-width: 960px; margin: 0 auto; }
+h1 {
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dark);
+  text-align: center;
+  margin-bottom: 6px;
+}
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.stat {
+  background: #fff;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+}
+.stat strong { font-size: 20px; display: block; text-align: center; }
+.legend-section { margin-bottom: 24px; }
+.legend-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.legend-item {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  border-radius: 2px;
+}
+.phase-box {
+  border: 3px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  margin-bottom: 32px;
+  background: #fff;
+}
+.phase-header {
+  padding: 16px 20px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 3px solid #000;
+}
+.phase-summary {
+  padding: 10px 20px;
+  font-size: 12px;
+  color: #555;
+  background: #fafafa;
+  border-bottom: 1px solid #eee;
+}
+.week-divider {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  color: #fff;
+  background: var(--dark);
+  letter-spacing: 1px;
+}
+.lesson-card { margin: 0; border-bottom: 1px solid #e5e5e5; }
+.lesson-card:last-child { border-bottom: none; }
+.lesson-header {
+  padding: 8px 16px;
+  background: #fafafa;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lesson-num {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  color: #fff;
+  border-radius: 2px;
+  min-width: 32px;
+  text-align: center;
+}
+.lesson-title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.new-badge {
+  display: inline-block;
+  padding: 1px 5px;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  background: #ff5757;
+  color: #fff;
+  border-radius: 2px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.type-pill {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.lesson-steps { padding: 6px 16px 10px 16px; }
+.step-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+  font-size: 12px;
+  color: #555;
+}
+.step-tag {
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  min-width: 58px;
+  text-align: center;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+.tag-concept { background: #e0e7ff; color: var(--indigo); }
+.tag-lab { background: #d1fae5; color: #065f46; }
+.tag-mcq { background: #fef3c7; color: #92400e; }
+.tag-scenario { background: #fce7f3; color: #9d174d; }
+.tag-video { background: #dbeafe; color: #1e40af; }
+.tag-live { background: #ff5757; color: #fff; }
+.tag-project { background: #7c3aed; color: #fff; }
+.tag-learn { background: #f3e8ff; color: #7c3aed; }
+.type-lesson { background: var(--indigo); color: #fff; }
+.type-video { background: var(--blue); color: #fff; }
+.type-info { background: #e5e7eb; color: #333; }
+.type-assignment { background: #ff5757; color: #fff; }
+.meta { color: #888; font-weight: 400; font-size: 12px; }
+@media (max-width: 600px) {
+  body { padding: 12px; }
+  h1 { font-size: 20px; }
+  .stats-bar { gap: 6px; }
+  .stat { padding: 6px 10px; font-size: 11px; }
+  .stat strong { font-size: 16px; }
+  .lesson-header { flex-wrap: wrap; }
+  .step-tag { min-width: 50px; font-size: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Legacy · AI Engineer Bootcamp 第五期课程快照</h1>
+<p class="subtitle">本页仅作历史参考，不代表第七期。<a href="outline.md">打开由 outline.json 生成的第七期完整 lesson 大纲 →</a></p>
+
+<div class="stats-bar">
+  <div class="stat"><strong>99</strong>Lessons</div>
+  <div class="stat"><strong>437</strong>Steps</div>
+  <div class="stat"><strong>52</strong>Labs</div>
+  <div class="stat"><strong>72</strong>Learn 章节</div>
+  <div class="stat"><strong>24</strong>Projects</div>
+</div>
+
+<div class="legend-section">
+  <div class="legend-title">Step Types</div>
+  <div class="legend">
+    <span class="legend-item tag-concept">CONCEPT</span>
+    <span class="legend-item tag-lab">LAB</span>
+    <span class="legend-item tag-mcq">MCQ</span>
+    <span class="legend-item tag-scenario">SCENARIO</span>
+    <span class="legend-item tag-video">VIDEO</span>
+    <span class="legend-item tag-live">LIVE</span>
+    <span class="legend-item tag-project">PROJECT</span>
+    <span class="legend-item tag-learn">LEARN</span>
+    <span class="legend-item" style="background:#fbbf24;color:#000">AI TUTOR</span>
+  </div>
+  <div class="legend-title">Lesson Types</div>
+  <div class="legend">
+    <span class="legend-item type-lesson">直播课</span>
+    <span class="legend-item type-video">录播</span>
+    <span class="legend-item type-info">自学资料</span>
+    <span class="legend-item type-assignment">大作业</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PHASE 1: GenAI 基础 + Context Engineering (Week 1-3) -->
+<!-- ============================================================ -->
+<div class="phase-box">
+  <div class="phase-header" style="background:var(--indigo)">PHASE 1: GenAI 基础 + Context Engineering (Week 1-3)</div>
+  <div class="phase-summary">GenAI 全景 · LLM API · Transformer · Prompt Engineering · Context Engineering · Vibe Coding · GPT Store</div>
+
+  <div class="week-divider">PRE-WORK</div>
+
+  <!-- L1 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L1</span>
+      <span class="lesson-title">Pre-work：必要知识储备</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>先修要求</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Python Lab: python-hello</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Python Lab: python-variables</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Python Lab: python-functions</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Python Lab: python-api-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Git Lab: git-first-commit</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Git Lab: git-branch-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: ec2-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: iam-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: secrets-manager</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>先修自测</span></div>
+    </div>
+  </div>
+
+  <!-- L2 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L2</span>
+      <span class="lesson-title">Preparation：开发环境配置</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>IDE + venv + API Key 配置</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Python Lab: python-openai-api</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Python Lab: python-json</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: s3-storage</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>OpenAI API 连通性验证</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>环境检查</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider" style="background:#92400e;color:#fff">PRE-WORK 先修测试 · 通过后解锁 Phase 1</div>
+  <div class="lesson-card" style="border:2px solid #92400e;background:#fffbeb">
+    <div class="lesson-header" style="background:#fef3c7">
+      <span class="lesson-num" style="background:#92400e">TEST</span>
+      <span class="lesson-title">先修测试：Python + API + Git 基础 <span class="new-badge">NEW</span></span>
+      <span class="type-pill" style="background:#92400e;color:#fff">先修测试</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>测试说明：20 题，通过线 70%，不通过需补习后重考</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Python：变量、函数、列表、字典、API 调用 (8 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>RESTful API：HTTP 方法、Status Code、JSON 处理 (6 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Git：branch、merge、conflict、PR 工作流 (6 题)</span></div>
+      <div class="step-row" style="color:#92400e;font-weight:700"><span class="step-tag" style="background:#92400e;color:#fff;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">UNLOCK</span><span>通过后解锁 Phase 1: GenAI 基础 + Context Engineering</span></div>
+    </div>
+  </div>
+
+    <!-- L96 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L96</span>
+      <span class="lesson-title">LLM API 入门</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>各家 LLM API 快速入门</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>检查</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider">WEEK 1</div>
+
+  <!-- L3 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L3</span>
+      <span class="lesson-title">GenAI Overview + Ops <span class="meta">120min · Xia Zhou</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: llm-api-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: ai-model-comparison</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: first-llm-experience</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: llm-concepts</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>GenAI 全景图 + AI Engineer 角色定位 + LLM Ops</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: llm-api-hands-on</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: ai-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>调用 GPT-4o / Claude / DeepSeek API 对比</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>GenAI 基础检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA Proposal</span></div>
+    </div>
+  </div>
+
+  <!-- L4 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L4</span>
+      <span class="lesson-title">开课讲解会 <span class="meta">30min</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>课程结构 4 Phase + 7 Project + 评估方式</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>学员介绍 + 分组 + ISA 方向确认</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>12 周学习计划</span></div>
+    </div>
+  </div>
+
+  <!-- L5 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L5</span>
+      <span class="lesson-title">Structured Data vs Unstructured Data</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>结构化 vs 非结构化数据</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>LLM 处理非结构化数据的优势</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>数据类型检查</span></div>
+    </div>
+  </div>
+
+  <!-- L6 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L6</span>
+      <span class="lesson-title">Introduction to Machine Learning</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>ML 核心概念</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>特征工程、训练/验证/测试集、过拟合</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>ML 基础检查</span></div>
+    </div>
+  </div>
+
+  <!-- L7 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L7</span>
+      <span class="lesson-title">Supervised, Unsupervised &amp; Reinforcement Learning</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>三大学习范式</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>RLHF 在 LLM 中的应用</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>学习范式检查</span></div>
+    </div>
+  </div>
+
+  <!-- L8 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L8</span>
+      <span class="lesson-title">Introduction to Deep Learning</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>神经网络基础</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>CNN/RNN 到 Transformer 的演进</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: ai-ml-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>DL 基础检查</span></div>
+    </div>
+  </div>
+
+    <!-- L90 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L90</span>
+      <span class="lesson-title">AI 模型对比参考</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>GPT-4o vs Claude vs Gemini vs Llama 4 vs DeepSeek vs Qwen 对比</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>模型对比检查</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider">WEEK 2</div>
+
+  <!-- L9 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L9</span>
+      <span class="lesson-title">Transformer Architecture + API <span class="meta">120min · Xiaoxiao Ma</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: basics</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: elements</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: settings</span></div>
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>The Transformer Architecture</span></div>
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>Input Embeddings</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: transformer-attention</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Attention 可视化 + API 参数调优 (temperature 0→2)</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: model-parameters</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>Token 计数和成本估算</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Transformer 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>LLM API 封装类</span></div>
+    </div>
+  </div>
+
+  <!-- L10 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L10</span>
+      <span class="lesson-title">GenAI Capstone Project: ISA</span>
+      <span class="type-pill type-assignment">大作业</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>ISA 项目说明 + 评分标准</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>每 Phase 的 ISA 升级路径</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA Proposal 提交</span></div>
+    </div>
+  </div>
+
+  <!-- L11 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L11</span>
+      <span class="lesson-title">The Four Prototyping Patterns <span class="meta">60min · Liangjun Song</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: zero-shot</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: few-shot</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: prompt-chaining</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: zero-shot</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: few-shot</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>四大模式决策矩阵</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>同一任务用 4 种模式实现对比</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Define Your Success Criteria</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>模式选择检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA 技术选型文档</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider">WEEK 3</div>
+
+  <!-- L12 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L12</span>
+      <span class="lesson-title">Context Engineering: From Prompts to Systems <span class="meta">90min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: context-fundamentals</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: context-engineering-memory</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Context Engineering 定义 + Gartner 2026 (57% Agent 失败是上下文失败)</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: context-engineering</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: context-management</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>四层上下文：System / Retrieved / Memory / Task</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: chain-of-thought</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: system-prompt-design</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: output-format</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: json-schema</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>纯 Prompt vs 完整 Context Engineering 量化对比</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>设计 4 层上下文架构 + 量化效果差异</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Context Engineering 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA Context Engineering 方案（3 版本迭代）</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 扮演 Senior AI Engineer，Review 你的 Context 架构设计并给出改进建议</span></div>
+    </div>
+  </div>
+
+  <!-- L13 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L13</span>
+      <span class="lesson-title">Vibe Coding: AI-Assisted Development <span class="meta">120min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: what-is-vibe-coding</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: install-cursor</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: first-prompt</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: vibe-mindset</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: code-generation</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Cursor vs Claude Code 现场对比 + .cursorrules / CLAUDE.md</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: debug-with-ai</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: pair-programming</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: cursor-rules</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>Cursor + Claude Code 分别完成同一项目</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>Context-Driven App</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 扮演 Tech Lead，引导你用 Cursor + Claude Code 完成一个完整 feature 开发</span></div>
+    </div>
+  </div>
+
+  <!-- L14 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L14</span>
+      <span class="lesson-title">Building Your First GPT in GPT Store <span class="meta">120min</span></span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>从创建到发布 Custom GPT 完整流程</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>构建一个有明确场景的 Custom GPT</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>GPT Store 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L15 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L15</span>
+      <span class="lesson-title">Context Engineering Playbook <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: context-compression-optimization</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: context-degradation-patterns</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: cot</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>上下文设计模式全集</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Context Window 管理策略</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: prompt-evaluation</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: self-consistency</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Context Engineering 进阶检查</span></div>
+    </div>
+  </div>
+
+  <!-- L16 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L16</span>
+      <span class="lesson-title">Vibe Coding 工具对比 <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: security-privacy</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Cursor vs Claude Code vs Copilot 详细对比</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: prompt-patterns</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: understand-ai</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Vibe Coding 工具选择</span></div>
+    </div>
+  </div>
+
+  <!-- L17 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--indigo)">L17</span>
+      <span class="lesson-title">GenAI Toolbox</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>AI 工具全景图：写作、代码、设计、数据分析</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>工具选择检查</span></div>
+    </div>
+  </div>
+
+    <!-- L97 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L97</span>
+      <span class="lesson-title">RAG 系统入门</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>RAG 设计和实现参考</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>检查</span></div>
+    </div>
+  </div>
+
+  <!-- Phase 1 章节测试 -->
+  <div class="week-divider" style="background:#4338ca;color:#fff">PHASE 1 章节测试 · 通过后解锁 Phase 2</div>
+  <div class="lesson-card" style="border:2px solid var(--indigo);background:#f0f4ff">
+    <div class="lesson-header" style="background:#e0e7ff">
+      <span class="lesson-num" style="background:var(--indigo)">TEST</span>
+      <span class="lesson-title">Phase 1 章节测试：GenAI 基础 + Context Engineering <span class="new-badge">NEW</span></span>
+      <span class="type-pill" style="background:var(--indigo);color:#fff">章节测试</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>测试说明：30 题，通过线 70%，不通过可重考（间隔 24h）</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>GenAI 概念：LLM 生态、AI Engineer 角色、LLM Ops 生命周期 (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Transformer：Self-Attention、Positional Encoding、API 参数 (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>四大模式：Prompting / RAG / Fine-Tuning / Agents 选型决策 (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Context Engineering：四层上下文、Context Window 管理、Structured Output (10 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Vibe Coding：Cursor vs Claude Code、项目配置、AI 辅助开发 (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>实操验证：提交 ISA Context Engineering 方案（3 版本）</span></div>
+      <div class="step-row" style="color:var(--indigo);font-weight:700"><span class="step-tag" style="background:var(--indigo);color:#fff">UNLOCK</span><span>通过后解锁 Phase 2: RAG 系统全栈开发</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- PHASE 2: RAG 系统全栈开发 (Week 4-6) -->
+<!-- ============================================================ -->
+<div class="phase-box">
+  <div class="phase-header" style="background:var(--teal)">PHASE 2: RAG 系统全栈开发 (Week 4-6)</div>
+  <div class="phase-summary">Embeddings · RAG 架构 · LangChain · LangSmith · GraphRAG · RAG 评估 · AWS Bedrock</div>
+
+  <div class="week-divider">WEEK 4</div>
+
+  <!-- L18 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L18</span>
+      <span class="lesson-title">Introduction to Embeddings <span class="meta">30min · Joey Yang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: rag-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: rag</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: rag-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: rag-feature-pipeline</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Embedding Models vs LLM Chat Models + 相似度计算</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Embedding API + Cosine Similarity + t-SNE 可视化</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Embedding 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA 知识库（50+ 文档 + Chunking）</span></div>
+    </div>
+  </div>
+
+  <!-- L19 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L19</span>
+      <span class="lesson-title">Embedding Models vs LLM Chat Models <span class="meta">90min · Joey Yang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: rag-basics</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>用途、API、成本、维度差异</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>主流模型对比：OpenAI text-embedding-3, Cohere, BGE</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>对比不同 Embedding Model 效果</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Embedding 模型检查</span></div>
+    </div>
+  </div>
+
+  <!-- L20 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L20</span>
+      <span class="lesson-title">Introduction to RAG <span class="meta">30min · Joey Yang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: langchain-framework</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: rag-inference-pipeline</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>RAG 架构 + Naive vs Advanced RAG + Vector Store 选型</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>RAG 概念检查</span></div>
+    </div>
+  </div>
+
+  <!-- L21 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L21</span>
+      <span class="lesson-title">RAG from Scratch in Python <span class="meta">120min · Joey Yang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>纯 Python + FAISS 全流程 coding</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>Query Rewriting + Re-ranking + Citation 优化</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>RAG 实现检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>RAG from Scratch 代码 + 优化对比</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 扮演用户不断提问，测试你的 RAG 系统回答质量并指出检索失败的 case</span></div>
+    </div>
+  </div>
+
+  <!-- L22 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L22</span>
+      <span class="lesson-title">RAG Builder Toolbox</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>RAG 构建工具全景：Vector DB、Chunking 库、Embedding 服务</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>工具选型检查</span></div>
+    </div>
+  </div>
+
+  <!-- L23 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L23</span>
+      <span class="lesson-title">AI Resource Hub</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>AI 学习资源合集：论文、博客、开源项目</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider">WEEK 5</div>
+
+  <!-- L24 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L24</span>
+      <span class="lesson-title">Building Simple User Interfaces in Python <span class="meta">30min · Joey Yang</span></span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>Streamlit / Gradio 快速搭建前端</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Streamlit vs Gradio 选型：适用场景 + API 对比</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>用 Streamlit 搭建简单聊天界面</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>UI 框架检查</span></div>
+    </div>
+  </div>
+
+  <!-- L25 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L25</span>
+      <span class="lesson-title">PDF Parsing 101 <span class="meta">90min · Joey Yang</span></span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: data-rag</span></div>
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>PyPDF2, pdfplumber, Unstructured — 表格和图片处理</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>非结构化数据处理：表格提取、图片 OCR、多格式兼容</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: cost-optimization</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>解析一个多格式 PDF 并提取结构化数据</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>PDF 解析检查</span></div>
+    </div>
+  </div>
+
+  <!-- L26 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L26</span>
+      <span class="lesson-title">LLM Rate Limits <span class="meta">30min · Joey Yang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Token 限制、RPM/TPM 限流、指数退避重试</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>API 成本管理：预算、tracking、fallback</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Rate Limiting 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L27 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L27</span>
+      <span class="lesson-title">P3 职业孵化器 Proposal <span class="meta">120min</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>P3 职业孵化器介绍：12 周 Sprint 节奏 + Demo Day + 求职闭环</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>P3 项目方向讨论 + 组队 + 角色分工（AI Dev / DevOps / PM / QA / Data）</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>P3 Proposal（问题定义 + 技术选型 + 团队分工 + Sprint 计划）</span></div>
+    </div>
+  </div>
+
+  <!-- L28 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L28</span>
+      <span class="lesson-title">Budgeting and API Costs</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>LLM API 成本估算、预算控制、fallback 策略</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>成本管理检查</span></div>
+    </div>
+  </div>
+
+  <!-- L29 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L29</span>
+      <span class="lesson-title">Production RAG Application <span class="meta">90min · Weixuan Jiang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: ship-a-feature</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: llm-tooling</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Streamlit + PDF + Rate Limiting 完整应用搭建</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: lambda-serverless</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: serverless-api</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Production RAG 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>Production RAG 部署</span></div>
+    </div>
+  </div>
+
+  <!-- L30 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L30</span>
+      <span class="lesson-title">End-to-End RAG Toolbox</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>完整 RAG 技术栈：Parser → Chunker → Embedder → Store → Retriever</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>技术栈选型</span></div>
+    </div>
+  </div>
+
+  <!-- L31 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L31</span>
+      <span class="lesson-title">Introduction to LangChain</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: prompt-chaining</span></div>
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>LangChain 设计哲学和模块总览</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>LCEL pipe 语法概述</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>LangChain 基础检查</span></div>
+    </div>
+  </div>
+
+  <!-- L32 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L32</span>
+      <span class="lesson-title">LangChain Core Constructs <span class="meta">30min · Samuel Shaw</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: api-fullstack</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: prompt-chaining</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>LLMs, Prompts, Chains, Memory, Retrievers</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>LCEL 3-step Chain + Memory 多轮对话</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>LangChain 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L33 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L33</span>
+      <span class="lesson-title">LangChain Expression Language <span class="meta">60min · Samuel Shaw</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: qa-system-design</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Chains and Runnables 声明式组合</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>自定义 Runnable + 日志和错误处理</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>用 LangChain 重写 RAG + 对比报告</span></div>
+    </div>
+  </div>
+
+  <!-- L34 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L34</span>
+      <span class="lesson-title">Monitoring and Visibility with LangSmith <span class="meta">60min · Samuel Shaw</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: mlops-llmops</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>LangSmith Trace + Debugging + Dataset Testing</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>LangSmith 接入 + bottleneck 定位 + 10 条测试评测</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>LangSmith 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA 接入 LangSmith + 3 个 Trace 分析</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider">WEEK 6</div>
+
+    <!-- L94 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L94</span>
+      <span class="lesson-title">GraphRAG 入门 <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>GraphRAG 原理和应用场景</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>检查</span></div>
+    </div>
+  </div>
+
+  <!-- L35 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L35</span>
+      <span class="lesson-title">LLMs Overview</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>主流 LLM 对比：GPT-4o, Claude, Gemini, Llama 4, DeepSeek, Qwen</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>模型对比检查</span></div>
+    </div>
+  </div>
+
+  <!-- L36 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L36</span>
+      <span class="lesson-title">GraphRAG + 混合检索 <span class="meta">90min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: graph-prompts</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: data-rag</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>纯向量检索局限 + Knowledge Graph 构建</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>混合检索：Vector + BM25 + Graph 三路 + RRF</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: opensearch-vector-search</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Neo4j + LangChain GraphRAG 现场构建</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>向量 RAG vs GraphRAG 多跳问题对比</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 引导你在本地搭建 Neo4j + GraphRAG pipeline，逐步排查连接和查询问题</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>GraphRAG 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA 添加 GraphRAG + 对比评测</span></div>
+    </div>
+  </div>
+
+  <!-- L37 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L37</span>
+      <span class="lesson-title">RAG Evaluation <span class="meta">60min · Joey Yang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: llm-evaluation</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>四指标：Context Recall, Precision, Relevancy, Faithfulness</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>RAG Eval 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L38 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L38</span>
+      <span class="lesson-title">RAG Metrics 详解 <span class="meta">120min · Joey Yang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: prompt-evaluation</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>每个指标的计算方式和优化策略</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>根据评估结果优化 RAG（调 Chunking / Retrieval / Prompt）</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Metrics 检查</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 扮演 ML Engineer 挑战你的评估方法论 — 为什么选这个指标？阈值怎么定的？</span></div>
+    </div>
+  </div>
+
+  <!-- L39 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L39</span>
+      <span class="lesson-title">Vibe Coding for RAG Optimization <span class="meta">120min</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: ship-a-feature</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: multi-file</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: ai-testing-quality</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>用 AI 辅助快速迭代优化 RAG 代码</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>用 Cursor/Claude Code 做 RAG 优化</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Vibe Coding 实操检查</span></div>
+    </div>
+  </div>
+
+  <!-- L40 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L40</span>
+      <span class="lesson-title">RAGAS Framework <span class="meta">60min · Joey Yang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>RAGAS 自动化评估框架</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>用 RAGAS 评估 W4-W6 所有 RAG 应用</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>RAGAS 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L41 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L41</span>
+      <span class="lesson-title">Langfuse <span class="meta">60min · Joey Yang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Langfuse 开源 LLM 可观测平台</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>接入 Langfuse + 对比 LangSmith vs Langfuse</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Langfuse 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L42 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L42</span>
+      <span class="lesson-title">RAG Evaluation Toolbox</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>RAG 评估工具全景：RAGAS, Langfuse, TruLens, DeepEval</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>工具对比</span></div>
+    </div>
+  </div>
+
+  <!-- L43 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L43</span>
+      <span class="lesson-title">GraphRAG 技术全景 <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>GraphRAG vs RAPTOR vs HippoRAG 对比</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Knowledge Graph 构建工具链</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>GraphRAG 工具选型</span></div>
+    </div>
+  </div>
+
+  <!-- L44 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L44</span>
+      <span class="lesson-title">RAG QA Application with LangChain <span class="meta">120min · Liangjun Song</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>综合架构：LangChain + ChromaDB/Neo4j + LangSmith + Streamlit</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>综合项目 coding</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>部署 + README + RAGAS 报告</span></div>
+    </div>
+  </div>
+
+  <!-- L45 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--teal)">L45</span>
+      <span class="lesson-title">用 AWS 构建 RAG 应用</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>AWS Bedrock + Lambda + S3 构建 Serverless RAG</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: bedrock-foundation-models</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: bedrock-rag-knowledge-bases</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>AWS RAG 检查</span></div>
+    </div>
+  </div>
+
+  <!-- Phase 2 章节测试 -->
+  <div class="week-divider" style="background:#047857;color:#fff">PHASE 2 章节测试 · 通过后解锁 Phase 3</div>
+  <div class="lesson-card" style="border:2px solid var(--teal);background:#ecfdf5">
+    <div class="lesson-header" style="background:#d1fae5">
+      <span class="lesson-num" style="background:var(--teal)">TEST</span>
+      <span class="lesson-title">Phase 2 章节测试：RAG 系统全栈开发 <span class="new-badge">NEW</span></span>
+      <span class="type-pill" style="background:var(--teal);color:#fff">章节测试</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>测试说明：35 题，通过线 70%，不通过可重考（间隔 24h）</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Embedding：向量相似度、模型选型、Chunking 策略 (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>RAG 架构：Naive vs Advanced、Vector Store 选型、Hybrid Search (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Production RAG：PDF Parsing、Rate Limiting、Cost Management (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>LangChain：LCEL、Memory、Runnables、LangSmith Tracing (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>GraphRAG：Knowledge Graph、三路召回、RRF 融合 (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>RAG 评估：RAGAS 四指标、Langfuse、优化策略 (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>实操验证：提交 RAG QA Application（可运行 + RAGAS 报告）</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>实操验证：GraphRAG vs Naive RAG 对比评测报告</span></div>
+      <div class="step-row" style="color:var(--teal);font-weight:700"><span class="step-tag" style="background:var(--teal);color:#fff">UNLOCK</span><span>通过后解锁 Phase 3: AI Agents 工程化</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- PHASE 3: AI Agents 工程化 (Week 7-9) -->
+<!-- ============================================================ -->
+<div class="phase-box">
+  <div class="phase-header" style="background:var(--orange)">PHASE 3: AI Agents 工程化 (Week 7-9)</div>
+  <div class="phase-summary">ReAct · Function Calling · Agent SDK · Multi-Agent · LangGraph · MCP · A2A · Memory · Computer Use</div>
+
+  <div class="week-divider">WEEK 7</div>
+
+  <!-- L46 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L46</span>
+      <span class="lesson-title">Agents 基础 <span class="meta">30min · Weixuan Jiang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: ai-agent</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: react</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: reflexion</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: react-agent</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Agent = LLM + 推理 + 工具 + 记忆</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Agent 基础检查</span></div>
+    </div>
+  </div>
+
+  <!-- L47 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L47</span>
+      <span class="lesson-title">The ReAct Framework <span class="meta">30min · Weixuan Jiang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: react</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: tool-use</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Thought → Action → Observation 循环</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>手写 ReAct 循环（纯 Python）</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>ReAct 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L48 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L48</span>
+      <span class="lesson-title">Function Calling + Tool Use <span class="meta">30min · Weixuan Jiang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: function-calling-tool-use</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: tool-design-principles</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: ai-agent-patterns</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>OpenAI Function Calling API + Tool Schema 定义</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>给 Agent 加 3 工具：Search + RAG + Calculator</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Function Calling 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L49 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L49</span>
+      <span class="lesson-title">Agent SDK 对比: OpenAI / Claude / Google ADK <span class="meta">90min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: agent-frameworks</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: agent-frameworks-compare</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: multi-agent</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>三大 SDK 对比维度：API / 工具集成 / 多 Agent / 可观测 / 生态</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>同一任务用 3 个 SDK 实现 + DevX 对比</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>代码量/延迟/可控性对比报告</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Agent SDK 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA Agent SDK 选型文档</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 扮演面试官，问你 Agent SDK 选型 trade-off — 为什么选 Claude SDK 不选 OpenAI？</span></div>
+    </div>
+  </div>
+
+    <!-- L92 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L92</span>
+      <span class="lesson-title">Agent SDK 对比参考 <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>OpenAI vs Claude vs Google ADK vs LangGraph 详细对比</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>SDK 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L50 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L50</span>
+      <span class="lesson-title">Deploying and Operating RAG in Production</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>RAG 生产部署：缓存、并发、监控、failover</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Production 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L51 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L51</span>
+      <span class="lesson-title">Agent 详解：构建第一个 Agent <span class="meta">60min · Jenny LIN</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Agent 架构详解</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>用 Agent SDK + 3 工具构建综合 Agent</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>综合 Agent 应用</span></div>
+    </div>
+  </div>
+
+  <!-- L52 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L52</span>
+      <span class="lesson-title">Production-grade Agentic RAG <span class="meta">120min · Weixuan Jiang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Agentic RAG vs Naive RAG + 路由决策 + 错误恢复</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Agent 层 + 多工具路由 + LangSmith 监控</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA Agent 升级 + LangSmith Trace</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider">WEEK 8</div>
+
+  <!-- L53 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L53</span>
+      <span class="lesson-title">Multi-Agent Architectures <span class="meta">60min · Liangjun Song</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: multi-agent-patterns</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: tot</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: graph-prompts</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>三种架构：Hierarchical / Collaborative / Supervised</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Multi-Agent 架构检查</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 模拟多个 Agent 的对话，你判断路由决策是否正确</span></div>
+    </div>
+  </div>
+
+  <!-- L54 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L54</span>
+      <span class="lesson-title">Multi-Agent + LangGraph <span class="meta">60min · Liangjun Song</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: workflow-automation</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: ai-agents-tools</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>LangGraph StateGraph + Nodes + Edges + Checkpointing</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>LangGraph 4-Agent 系统构建 + 状态图可视化</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 模拟 4 个 Agent 的对话日志，你判断路由决策是否正确并修复错误路由</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>LangGraph 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L55 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L55</span>
+      <span class="lesson-title">Agent Memory + Mem0 <span class="meta">60min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: context-engineering-memory</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: agent-advanced</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>三层记忆：Episodic / Semantic / State + Graph Memory</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Mem0 集成 + 有/无记忆对比</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>10 轮对话测试</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 引导你在本地集成 Mem0，逐步 Debug 记忆存储和检索问题</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Memory 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA 记忆升级</span></div>
+    </div>
+  </div>
+
+  <!-- L56 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L56</span>
+      <span class="lesson-title">A2A Protocol + Agent 互操作 <span class="meta">60min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: art</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>MCP (工具) vs A2A (Agent 通信) vs ACP</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>A2A 双 Agent 通信 + Agent Card + MCP 组合</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>MCP + A2A 架构设计</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>协议检查</span></div>
+    </div>
+  </div>
+
+    <!-- L95 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L95</span>
+      <span class="lesson-title">A2A Protocol 入门 <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>A2A 协议详解</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>检查</span></div>
+    </div>
+  </div>
+
+  <!-- L57 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L57</span>
+      <span class="lesson-title">Agent Ops with LangSmith <span class="meta">30min · Liangjun Song</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Observability + Evaluation + Guardrails 三支柱</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>LangSmith Multi-Agent Trace</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Agent Ops 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L58 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L58</span>
+      <span class="lesson-title">Multi-Agent RAG with LangGraph <span class="meta">60min · Liangjun Song</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Multi-Agent RAG 综合项目</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>部署 + LangGraph 状态图 + LangSmith Trace + Demo URL</span></div>
+    </div>
+  </div>
+
+  <!-- L59 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L59</span>
+      <span class="lesson-title">Multi-Agent + Protocol Ecosystem Map <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>MCP / A2A / ACP / UCP 协议全景</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>协议生态检查</span></div>
+    </div>
+  </div>
+
+  <!-- L60 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L60</span>
+      <span class="lesson-title">Agent Memory 技术全景 <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Mem0 vs Zep vs LangMem 对比</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Graph Memory 实现方式</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Memory 框架选型</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider">WEEK 9</div>
+
+  <!-- L61 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L61</span>
+      <span class="lesson-title">Introducing MCP <span class="meta">180min · Tianyi Li</span></span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>MCP 协议概览</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>为什么需要标准化 AI 工具连接</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>MCP 概念检查</span></div>
+    </div>
+  </div>
+
+  <!-- L62 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L62</span>
+      <span class="lesson-title">MCP Server 构建 + Production 集成 <span class="meta">180min · Tianyi Li</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: mcp-best-practices</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: mcp-releasing</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: mcp-setup</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: mcp-sync</span></div>
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>解读 MCP 源码</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>MCP 架构 + TypeScript SDK</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>MCP Server 构建 + Claude Code 集成 + OAuth</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 引导你在本地构建 TypeScript MCP Server，逐步完成 Tools 暴露 + Claude Code 集成测试</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>MCP 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA MCP Server (3 Tools)</span></div>
+    </div>
+  </div>
+
+  <!-- L63 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L63</span>
+      <span class="lesson-title">Production Agents: Computer Use + Agent Ops <span class="meta">120min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: debugging-incident-playbook</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: claude-code-skills</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: claude-code-agents</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: observability-guardrails</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: security-privacy</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: hallucination-defense</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Computer Use + Agent Ops + Production Checklist</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Claude Computer Use Demo + Guardrails 实操</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: cloudwatch-monitoring</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Production Agent 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>Production Agent 部署方案</span></div>
+    </div>
+  </div>
+
+  <!-- L64 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L64</span>
+      <span class="lesson-title">Computer Use 技术全景 <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Claude Computer Use vs ChatGPT Operator vs agent-browser</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Computer Use 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L65 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L65</span>
+      <span class="lesson-title">Agent Ops 最佳实践 <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Tracing + Eval + Guardrails 最佳实践</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Agent Ops 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L66 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L66</span>
+      <span class="lesson-title">MCP 发布指南</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>如何发布 MCP Server 到 npm/PyPI</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>MCP 发布检查</span></div>
+    </div>
+  </div>
+
+  <!-- L67 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L67</span>
+      <span class="lesson-title">Claude Code 技术原理</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: claude-code-context-management</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: claude-code-examples</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>上下文管理与记忆机制</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: claude-code-full-guide</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Claude Code 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L68 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--orange)">L68</span>
+      <span class="lesson-title">Skills 范式</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: agent-skills-paradigm</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>从 Agent 到技能库的组织模式</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: claude-skill-codebook</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Skills 检查</span></div>
+    </div>
+  </div>
+
+  <!-- Phase 3 章节测试 -->
+  <div class="week-divider" style="background:#c2410c;color:#fff">PHASE 3 章节测试 · 通过后解锁 Phase 4</div>
+  <div class="lesson-card" style="border:2px solid var(--orange);background:#fff7ed">
+    <div class="lesson-header" style="background:#ffedd5">
+      <span class="lesson-num" style="background:var(--orange)">TEST</span>
+      <span class="lesson-title">Phase 3 章节测试：AI Agents 工程化 <span class="new-badge">NEW</span></span>
+      <span class="type-pill" style="background:var(--orange);color:#fff">章节测试</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>测试说明：35 题，通过线 70%，不通过可重考（间隔 24h）</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Agent 基础：ReAct、Function Calling、Tool Schema (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Agent SDK：OpenAI vs Claude vs Google ADK 对比和选型 (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Multi-Agent：LangGraph StateGraph、条件路由、Checkpointing (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Agent Memory：Episodic / Semantic / State、Mem0、Graph Memory (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>协议：MCP 架构 + A2A Agent Card + 互操作模式 (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Production：Computer Use、Agent Ops、Guardrails、HITL (5 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>实操验证：提交 Multi-Agent RAG 应用（可运行 + LangSmith Trace）</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>实操验证：MCP Server + Agent Memory 集成（ISA v2）</span></div>
+      <div class="step-row" style="color:var(--orange);font-weight:700"><span class="step-tag" style="background:var(--orange);color:#fff">UNLOCK</span><span>通过后解锁 Phase 4: 模型优化 + AI Evals + 毕业</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- PHASE 4: 模型优化 + AI Evals + 毕业 (Week 10-12) -->
+<!-- ============================================================ -->
+<div class="phase-box">
+  <div class="phase-header" style="background:var(--red)">PHASE 4: 模型优化 + AI Evals + 毕业 (Week 10-12)</div>
+  <div class="phase-summary">Open-Weight Models · Fine-Tuning · SDG · PEFT/QLoRA · AI Evaluation · Safety &amp; Guardrails · 毕业展示</div>
+
+  <div class="week-divider">WEEK 10</div>
+
+  <!-- L69 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L69</span>
+      <span class="lesson-title">Open-Weight Models + Model Routing <span class="meta">90min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: deployment-cost-optimization</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: performance-cost</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: model-deployment</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: inference-optimization</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>AWS Lab: sagemaker-ml-platform</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>DeepSeek / Qwen 3.5 / Llama 4 格局 + Routing 策略</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>vLLM 部署 + Model Router + 成本计算</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 引导你用 vLLM 在本地部署 Open-Weight 模型，排查 GPU 内存和推理性能问题</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Open-Weight 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA Model Routing + 成本报告</span></div>
+    </div>
+  </div>
+
+  <!-- L70 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L70</span>
+      <span class="lesson-title">SDG for Fine-Tuning <span class="meta">60min · Samuel Shaw</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: pal</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: generated-knowledge</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Prompt-Based Data Generation + Self-Instruct / Evol-Instruct</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: data-engineering</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>用 GPT-4o 生成 500 条训练数据 + 质量过滤</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>SDG 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L71 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L71</span>
+      <span class="lesson-title">Test Data Generation for RAG <span class="meta">60min · Samuel Shaw</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>In-Depth Evolution + Custom Synthetic Test Data</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>为 RAG 系统生成不同难度评估数据</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>数据生成检查</span></div>
+    </div>
+  </div>
+
+  <!-- L72 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L72</span>
+      <span class="lesson-title">SDG Toolkit <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>SDG 工具全景 + Open-Weight Model Landscape 2026</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>工具选型</span></div>
+    </div>
+  </div>
+
+  <!-- L73 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L73</span>
+      <span class="lesson-title">Fine-Tuning &amp; MTEB <span class="meta">60min · Zhuohang Li</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>为什么微调 Embedding + MTEB 评估基准</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>MTEB 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L74 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L74</span>
+      <span class="lesson-title">Downloading Open-Source Model Weights <span class="meta">60min · Zhuohang Li</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>HuggingFace Hub 模型下载 + Model Card + License</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>下载并加载一个 Open-Weight 模型</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>模型管理检查</span></div>
+    </div>
+  </div>
+
+  <!-- L75 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L75</span>
+      <span class="lesson-title">Loading LMs on GPU <span class="meta">60min · Zhuohang Li</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>GPU 显存计算 + FP32/FP16/BF16/INT8/INT4</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>在 Colab T4 上加载 INT4 量化模型</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>GPU 加载检查</span></div>
+    </div>
+  </div>
+
+  <!-- L76 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L76</span>
+      <span class="lesson-title">Sentence Transformers &amp; Fine-Tuning Embeddings <span class="meta">120min</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: supervised-fine-tuning</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Sentence Transformers + Contrastive/Triplet Loss</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>微调 Embedding + RAG 检索质量对比</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Embedding Fine-Tuning 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA Embedding 微调 + MTEB 评测</span></div>
+    </div>
+  </div>
+
+  <!-- L77 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L77</span>
+      <span class="lesson-title">Fine-Tuning Toolkit <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Unsloth vs LLaMA-Factory vs Axolotl 对比</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>工具选型</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider">WEEK 11</div>
+
+  <!-- L78 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L78</span>
+      <span class="lesson-title">The Primary Roles of Fine-Tuning <span class="meta">30min · Weixuan Jiang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: prompt-coding</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Style/Format + Knowledge + Capability 三角色</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>何时 Fine-Tuning vs RAG vs Prompt 决策矩阵</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Fine-Tuning 决策检查</span></div>
+    </div>
+  </div>
+
+  <!-- L79 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L79</span>
+      <span class="lesson-title">PEFT + QLoRA + Unsloth <span class="meta">60min · Weixuan Jiang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: preference-alignment</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>LoRA 原理 + QLoRA = Quantization + LoRA</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Unsloth: 2x 速度, 60% 省显存</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Unsloth + QLoRA 在 Colab 微调全流程</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 扮演 Data Scientist，Review 你的训练配置 — batch size、learning rate、数据质量</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>PEFT 检查</span></div>
+    </div>
+  </div>
+
+  <!-- L80 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L80</span>
+      <span class="lesson-title">Fine-Tuning Llama with PEFT-QLoRA <span class="meta">60min · Weixuan Jiang</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>训练 3 epochs + 评估 + 合并导出</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>Fine-Tuning 报告 + HuggingFace 发布</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 扮演 Data Scientist，Review 你的训练配置 — batch size、learning rate、数据质量</span></div>
+    </div>
+  </div>
+
+  <!-- L81 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L81</span>
+      <span class="lesson-title">AI Evaluation Engineering <span class="meta">90min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: eval-quality-monitoring</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: llm-judge-evaluation</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: synthetic-data-augmentation</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: self-consistency</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>LLM Lab: llm-evaluation</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: prompt-evaluation</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Offline/Online/Human Eval + 幻觉检测 + 自动化 Pipeline</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>Eval Pipeline 构建 + LangSmith vs Braintrust</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Eval 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>ISA Eval Pipeline + 基线/优化分数</span></div>
+    </div>
+  </div>
+
+  <!-- L82 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L82</span>
+      <span class="lesson-title">Safety, Guardrails + Red-teaming <span class="meta">90min</span> <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: security-threat-modeling</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: data-governance-privacy</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: jailbreaking</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: prompt-adversarial</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Prompt Master: prompt-leaking</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: prompt-injection-defense</span></div>
+      <div class="step-row"><span class="step-tag tag-lab">LAB</span><span>Prompt Lab: hallucination-defense</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Input/Output Guardrails + PII + EU AI Act</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>10 种攻击 Red-team + Guardrails AI + NeMo</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Safety 检查</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>Safety 报告 + Guardrails 配置</span></div>
+      <div class="step-row"><span class="step-tag" style="background:#fbbf24;color:#000;display:inline-block;padding:1px 6px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;min-width:58px;text-align:center">AI TUTOR</span><span>AI 尝试 10 种手法 Jailbreak 你的系统，你来实时防御并修补 Guardrails 配置</span></div>
+    </div>
+  </div>
+
+    <!-- L98 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L98</span>
+      <span class="lesson-title">Evaluation &amp; Quality Monitoring</span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>LLM 应用评估和质量监控体系</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>检查</span></div>
+    </div>
+  </div>
+
+  <!-- L83 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L83</span>
+      <span class="lesson-title">AI Eval Tools 全景 <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>LangSmith vs Braintrust vs RAGAS vs DeepEval 对比</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Eval 工具选型</span></div>
+    </div>
+  </div>
+
+  <!-- L84 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L84</span>
+      <span class="lesson-title">Red-teaming Playbook <span class="new-badge">NEW</span></span>
+      <span class="type-pill type-info">自学资料</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>常见 LLM 攻击手法和防御策略</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Red-teaming 检查</span></div>
+    </div>
+  </div>
+
+  <div class="week-divider">WEEK 12</div>
+
+  <!-- L85 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L85</span>
+      <span class="lesson-title">LinkedIn &amp; CV Workshop</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>LinkedIn profile 优化 + AI Engineer 简历写法</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>用 12 周技术重写简历</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>简历检查</span></div>
+    </div>
+  </div>
+
+  <!-- L86 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L86</span>
+      <span class="lesson-title">P3 职业孵化器 Demo Day <span class="meta">120min</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>P3 Demo Day 说明：面向企业展示 P3 项目成果，10 分钟 Live Demo + 5 分钟 Q&amp;A</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>评审标准：技术架构 40% · 产品完成度 30% · 展示表达 20% · 创新性 10%</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>每组 10+5 分钟：P3 项目 Live Demo + 招聘合作企业 Q&amp;A</span></div>
+      <div class="step-row"><span class="step-tag tag-project">PROJECT</span><span>P3 项目交付物：GitHub 仓库 + Demo URL + 技术文档 + Case Study</span></div>
+    </div>
+  </div>
+
+  <!-- L87 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L87</span>
+      <span class="lesson-title">往期 P3 项目案例</span>
+      <span class="type-pill type-video">录播</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-video">VIDEO</span><span>往期优秀 P3 职业孵化项目案例分享</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>P3 项目选题方向：RAG 系统 / Agent 应用 / AI SaaS / 内部工具</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>P3 项目规划检查</span></div>
+    </div>
+  </div>
+
+  <!-- L88 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L88</span>
+      <span class="lesson-title">AI Engineer 职业路径 <span class="meta">90min</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: ai-product-ux</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: production-deployment</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: continuous-improvement</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: team-workflow</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>AI Engineer / Agent Developer / Eval Engineer / Platform Engineer</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Junior $100-150K → Mid $150-220K → Senior $220-350K+</span></div>
+      <div class="step-row"><span class="step-tag tag-live">LIVE</span><span>面试常见题 + 简历 1v1 点评</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>毕业产出清单</span></div>
+    </div>
+  </div>
+
+  <!-- L89 -->
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <span class="lesson-num" style="background:var(--red)">L89</span>
+      <span class="lesson-title">Claude Code Skills 最佳实践 <span class="meta">180min</span></span>
+      <span class="type-pill type-lesson">直播课</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: ai-coding-workflow</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: ai-rules-config</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>AI Engineer: agent-skills-paradigm</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: claude-code-commands</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: claude-code-agents</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: vibe-coding-sop</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: api-fullstack</span></div>
+      <div class="step-row"><span class="step-tag tag-learn">LEARN</span><span>Vibe Coding: automation-cli</span></div>
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>Skills 模式组织可复用 Agent 能力</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>建立个人 AI 开发技能库</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Skills 检查</span></div>
+    </div>
+  </div>
+
+  <!-- Phase 4 毕业测试 -->
+  <div class="week-divider" style="background:#991b1b;color:#fff">PHASE 4 毕业测试 · 通过后获得 AI Engineer 证书</div>
+  <div class="lesson-card" style="border:2px solid var(--red);background:#fef2f2">
+    <div class="lesson-header" style="background:#fecaca">
+      <span class="lesson-num" style="background:var(--red)">FINAL</span>
+      <span class="lesson-title">毕业测试：AI Engineer 综合能力评估 <span class="new-badge">NEW</span></span>
+      <span class="type-pill" style="background:var(--red);color:#fff">毕业测试</span>
+    </div>
+    <div class="lesson-steps">
+      <div class="step-row"><span class="step-tag tag-concept">CONCEPT</span><span>测试说明：50 题综合，通过线 70%，覆盖全部 4 个 Phase</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Open-Weight Models：DeepSeek / Qwen / Llama 4、Model Routing、vLLM (8 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Fine-Tuning：PEFT / QLoRA / Unsloth、SDG 数据生成、Embedding 微调 (8 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>AI Eval：Offline / Online / Human Eval、幻觉检测、Eval Pipeline (8 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>Safety：Guardrails、Red-teaming、Prompt Injection 防御、PII、EU AI Act (8 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>综合：跨 Phase 知识串联 — 从 Context Engineering 到 Production 全链路 (8 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-mcq">MCQ</span><span>架构设计：给定场景选择技术方案（RAG vs Agent vs Fine-Tuning vs 组合）(10 题)</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>实操验证：ISA v3 完整展示（Context + RAG + GraphRAG + Agent + Memory + Eval）</span></div>
+      <div class="step-row"><span class="step-tag tag-scenario">SCENARIO</span><span>实操验证：P3 职业孵化项目 Demo + 技术文档 + GitHub</span></div>
+      <div class="step-row" style="color:var(--red);font-weight:700"><span class="step-tag" style="background:linear-gradient(135deg,#FFDE59,#FF914D);color:#000">CERT</span><span>通过后获得 JR Academy AI Engineer 证书 + 解锁 P3 职业孵化器</span></div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineer Bootcamp — JD 需求 vs 课程内容对照</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--indigo:#6366f1;--teal:#10b981;--red:#ff5757;--orange:#FF914D;--yellow:#FFDE59;--green:#7ED957;--blue:#38B6FF;--purple:#CB6CE6;--dark:#10162f;--bg:#fafafa;--border:#000}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:var(--bg);color:#1a1a1a;line-height:1.6}
+.mono{font-family:'Space Mono',monospace}
+.header{background:var(--dark);color:#fff;padding:40px 0;text-align:center;border-bottom:4px solid var(--border)}
+.header h1{font-size:36px;font-weight:900;letter-spacing:-1px}
+.header .sub{font-size:16px;opacity:0.7;margin-top:8px}
+.header .nav{margin-top:16px;font-size:14px}
+.header .nav a{color:#fff;opacity:0.7;margin:0 8px;text-decoration:underline}
+.header .nav a:hover{opacity:1}
+.c{max-width:1400px;margin:0 auto;padding:32px 24px}
+.footer{margin-top:40px;padding:24px;text-align:center;border-top:3px solid var(--border);color:#888;font-size:13px}
+
+/* Skill row — the core component */
+.skill-row{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden;margin-bottom:24px}
+.skill-header{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:3px solid #000;color:#fff}
+.skill-header h2{font-size:20px;font-weight:900}
+.skill-freq{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;padding:4px 14px;background:rgba(0,0,0,0.25);border:2px solid rgba(255,255,255,0.4)}
+.skill-body{display:grid;grid-template-columns:1fr 1fr;min-height:200px}
+.skill-left{padding:20px 24px;border-right:3px solid #000;background:#fff}
+.skill-right{padding:20px 24px;background:#f0fdf4}
+.skill-left h3,.skill-right h3{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px}
+.skill-left h3{color:#dc2626}
+.skill-right h3{color:#16a34a}
+
+/* JD requirement items */
+.jd-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;font-size:13px;line-height:1.6}
+.jd-item::before{content:'→';color:#dc2626;font-weight:700;flex-shrink:0;margin-top:1px}
+.jd-item strong{color:#000}
+
+/* Course coverage items */
+.course-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;font-size:13px;line-height:1.6}
+.course-item::before{content:'✓';color:#16a34a;font-weight:900;flex-shrink:0;margin-top:1px}
+.course-tag{display:inline-block;padding:1px 8px;font-size:10px;font-weight:700;font-family:'Space Mono',monospace;margin-right:4px;color:#fff}
+
+/* Coverage badge */
+.coverage{display:flex;align-items:center;justify-content:center;padding:12px 24px;border-top:2px solid #eee;background:#fafafa;gap:16px}
+.coverage-bar{flex:1;height:12px;background:#e5e7eb;border:2px solid #000;position:relative;overflow:hidden}
+.coverage-fill{height:100%;transition:width 0.5s}
+.coverage-label{font-family:'Space Mono',monospace;font-size:14px;font-weight:900;white-space:nowrap}
+
+/* Summary stats */
+.stats-bar{display:flex;justify-content:center;gap:32px;padding:16px 0;background:#fff;border-bottom:3px solid var(--border);flex-wrap:wrap}
+.stat{text-align:center}
+.stat .n{font-size:28px;font-weight:900}
+.stat .l{font-size:11px;color:#888;font-family:'Space Mono',monospace}
+
+/* JD source cards */
+.jd-sources{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
+.jd-src{padding:10px 12px;background:#f5f5f5;border:2px solid #ddd;font-size:12px}
+.jd-src strong{font-size:13px}
+.jd-src .salary{color:var(--teal);font-weight:700;font-family:'Space Mono',monospace}
+
+/* Gap section */
+.gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gap-card{padding:14px;border:2px solid #000;box-shadow:3px 3px 0 #000}
+.gap-card h4{font-size:14px;font-weight:900;margin-bottom:8px}
+.gap-item{font-size:12px;padding:4px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between}
+.gap-item:last-child{border:none}
+.gap-status{font-weight:700;font-size:11px;font-family:'Space Mono',monospace}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>JD 需求 vs 课程内容 — 逐项对照</h1>
+  <div class="sub">基于 15 份 2026 真实 AI Engineer JD · 左边是市场要的 · 右边是我们教的</div>
+  <div class="nav"><a href="curriculum.html">← 课程总览</a> | <a href="internal.html">内部资料</a></div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="n" style="color:var(--red)">15</div><div class="l">JD 样本</div></div>
+  <div class="stat"><div class="n" style="color:var(--indigo)">6</div><div class="l">核心能力</div></div>
+  <div class="stat"><div class="n" style="color:var(--teal)">92%</div><div class="l">平均覆盖率</div></div>
+  <div class="stat"><div class="n" style="color:var(--orange)">12</div><div class="l">周</div></div>
+  <div class="stat"><div class="n" style="color:var(--purple)">$150K+</div><div class="l">目标年薪</div></div>
+</div>
+
+<div class="c">
+
+<!-- ===== SKILL 1: Agent Development ===== -->
+<div class="skill-row">
+  <div class="skill-header" style="background:var(--red)">
+    <h2>#1 AI Agent 系统构建</h2>
+    <div class="skill-freq">出现频率 9/10 JD</div>
+  </div>
+  <div class="skill-body">
+    <div class="skill-left">
+      <h3>JD 要求</h3>
+      <div class="jd-item"><span>构建 <strong>multi-step, tool-using agents</strong>，能自主完成复杂任务</span></div>
+      <div class="jd-item"><span>熟悉 <strong>ReAct / Function Calling / Tool Use</strong> 架构模式</span></div>
+      <div class="jd-item"><span>掌握至少一个 <strong>Agent SDK</strong>（OpenAI Agents SDK / Claude Agent SDK / Google ADK）</span></div>
+      <div class="jd-item"><span>构建 <strong>Multi-Agent 系统</strong> — 分层架构、监督模式、Handoff</span></div>
+      <div class="jd-item"><span>实现 <strong>Agent Memory</strong> — 跨会话记忆、用户偏好保持</span></div>
+      <div class="jd-item"><span>了解 <strong>A2A / MCP</strong> 协议，实现 Agent 工具集成和互操作</span></div>
+      <div class="jd-item"><span><strong>Agent Ops</strong>：Tracing、Evaluation、Guardrails、Human-in-the-loop</span></div>
+    </div>
+    <div class="skill-right">
+      <h3>我们教的</h3>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--orange)">W7.1</span> ReAct 框架 + Function Calling — 手写 Agent 循环，不依赖框架</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--orange)">W7.2</span> <strong>3 大 Agent SDK 对比</strong> — 同一任务分别用 OpenAI / Claude / Google ADK 实现</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--orange)">W8.1</span> Multi-Agent + LangGraph — StateGraph、条件路由、Checkpointing</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--orange)">W8.2</span> <strong>Agent Memory (Mem0)</strong> — 三层记忆架构 + Graph Memory</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--orange)">W8.3</span> <strong>A2A Protocol</strong> — Agent Card + Task 委托 + MCP 组合使用</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--orange)">W9.1</span> MCP Server 构建 — TypeScript SDK + OAuth + 生产部署</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--orange)">W9.2</span> Agent Ops + Computer Use — Tracing + Eval + Guardrails + Claude Computer Use</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--purple)">P5-P6</span> 2 个完整 Agent 项目可部署到生产</span></div>
+    </div>
+  </div>
+  <div class="coverage">
+    <div class="coverage-label">覆盖度</div>
+    <div class="coverage-bar"><div class="coverage-fill" style="width:95%;background:var(--teal)"></div></div>
+    <div class="coverage-label" style="color:var(--teal)">95%</div>
+  </div>
+</div>
+
+<!-- ===== SKILL 2: Context Engineering ===== -->
+<div class="skill-row">
+  <div class="skill-header" style="background:var(--indigo)">
+    <h2>#2 Context Engineering</h2>
+    <div class="skill-freq">出现频率 8/10 JD</div>
+  </div>
+  <div class="skill-body">
+    <div class="skill-left">
+      <h3>JD 要求</h3>
+      <div class="jd-item"><span>设计 <strong>LLM 信息输入架构</strong> — 不只是写 Prompt，而是整个上下文系统</span></div>
+      <div class="jd-item"><span><strong>四层上下文</strong>：System Context / Retrieved Context / Memory Context / Task Context</span></div>
+      <div class="jd-item"><span><strong>Context Window 管理</strong> — 1M+ token 时代的信息筛选和优先级策略</span></div>
+      <div class="jd-item"><span>Prompt 版本管理、<strong>A/B 测试</strong>、迭代优化流程</span></div>
+      <div class="jd-item"><span><strong>Structured Output</strong> — JSON Mode、Function Calling 格式控制</span></div>
+    </div>
+    <div class="skill-right">
+      <h3>我们教的</h3>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--indigo)">W3.1</span> <strong>Context Engineering 专课</strong> — 四层上下文设计 + 量化对比实验</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--indigo)">W3.1</span> Context Window 管理策略 + 信息优先级设计</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--indigo)">W3.2</span> <strong>Vibe Coding</strong> — Context Engineering 在 AI 编程工具中的应用</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--indigo)">W2.1</span> API 参数调优 — temperature / top_p / max_tokens 实验</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--indigo)">ISA</span> 每个 Phase 提交 Context 版本历史 + 改进原因</span></div>
+    </div>
+  </div>
+  <div class="coverage">
+    <div class="coverage-label">覆盖度</div>
+    <div class="coverage-bar"><div class="coverage-fill" style="width:90%;background:var(--teal)"></div></div>
+    <div class="coverage-label" style="color:var(--teal)">90%</div>
+  </div>
+</div>
+
+<!-- ===== SKILL 3: RAG + GraphRAG ===== -->
+<div class="skill-row">
+  <div class="skill-header" style="background:var(--teal)">
+    <h2>#3 RAG 系统架构 (含 GraphRAG)</h2>
+    <div class="skill-freq">出现频率 9/10 JD</div>
+  </div>
+  <div class="skill-body">
+    <div class="skill-left">
+      <h3>JD 要求</h3>
+      <div class="jd-item"><span>构建 <strong>端到端 RAG pipeline</strong> — 从文档解析到生成回答</span></div>
+      <div class="jd-item"><span><strong>Vector DB</strong> 选型和优化（Pinecone / Chroma / Weaviate / pgvector）</span></div>
+      <div class="jd-item"><span><strong>Chunking 策略</strong>、Re-ranking、Hybrid Search（语义 + 关键词）</span></div>
+      <div class="jd-item"><span><strong>GraphRAG</strong> — 知识图谱 + RAG，处理多跳推理和实体关系</span></div>
+      <div class="jd-item"><span><strong>RAG 评估</strong>：Context Recall / Precision / Faithfulness / Relevancy</span></div>
+      <div class="jd-item"><span>处理 <strong>PDF / 表格 / 图片</strong> 等非结构化数据</span></div>
+    </div>
+    <div class="skill-right">
+      <h3>我们教的</h3>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--teal)">W4.2</span> <strong>RAG from Scratch</strong> — 纯 Python + FAISS，每步手写，理解原理</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--teal)">W4.1</span> Embedding 模型对比 + Cosine Similarity + t-SNE 可视化</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--teal)">W5.1</span> <strong>Production RAG</strong> — PDF 解析 + Streamlit UI + Rate Limiting + Cost Tracking</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--teal)">W5.2</span> LangChain LCEL + Memory — 框架化 RAG 开发</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--teal)">W6.1</span> <strong>GraphRAG + 混合检索</strong> — Neo4j + Vector + BM25 三路召回 + RRF 融合</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--teal)">W6.2</span> <strong>RAGAS 四指标评估</strong> + Langfuse 可观测平台</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--purple)">P3-P5</span> 3 个递进 RAG 项目：Scratch → Production → GraphRAG</span></div>
+    </div>
+  </div>
+  <div class="coverage">
+    <div class="coverage-label">覆盖度</div>
+    <div class="coverage-bar"><div class="coverage-fill" style="width:95%;background:var(--teal)"></div></div>
+    <div class="coverage-label" style="color:var(--teal)">95%</div>
+  </div>
+</div>
+
+<!-- ===== SKILL 4: LLM Ops ===== -->
+<div class="skill-row">
+  <div class="skill-header" style="background:#7c3aed">
+    <h2>#4 LLM Ops 可观测性与监控</h2>
+    <div class="skill-freq">出现频率 7/10 JD</div>
+  </div>
+  <div class="skill-body">
+    <div class="skill-left">
+      <h3>JD 要求</h3>
+      <div class="jd-item"><span><strong>LLM Tracing</strong> — 每次调用的 Input / Output / Latency / Cost 全链路追踪</span></div>
+      <div class="jd-item"><span><strong>Evaluation</strong> — Offline / Online / Human Eval 三种评估模式</span></div>
+      <div class="jd-item"><span>Prompt <strong>A/B 测试</strong> — 不同版本的效果量化对比</span></div>
+      <div class="jd-item"><span><strong>Cost 监控</strong> — Token 用量追踪、预算告警、Model Fallback</span></div>
+      <div class="jd-item"><span>Hallucination 检测 + <strong>质量 Metrics Dashboard</strong></span></div>
+    </div>
+    <div class="skill-right">
+      <h3>我们教的</h3>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--teal)">W5.3</span> <strong>LangSmith Tracing</strong> — 接入 + Debugging + 定位 bottleneck</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--teal)">W6.2</span> <strong>RAGAS + Langfuse</strong> — 自动化评估 + 开源监控</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--orange)">W9.2</span> Agent Ops 三大支柱：Observability + Evaluation + Guardrails</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W11.1</span> <strong>AI Eval Engineering</strong> — 完整 Eval Pipeline + Braintrust + DeepEval</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--teal)">W5.1</span> Cost Tracking — Token 计数 + 预算管理 + Rate Limiting</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--indigo)">贯穿</span> 每个项目都要求接入 LangSmith 监控</span></div>
+    </div>
+  </div>
+  <div class="coverage">
+    <div class="coverage-label">覆盖度</div>
+    <div class="coverage-bar"><div class="coverage-fill" style="width:90%;background:var(--teal)"></div></div>
+    <div class="coverage-label" style="color:var(--teal)">90%</div>
+  </div>
+</div>
+
+<!-- ===== SKILL 5: AI Eval & Safety ===== -->
+<div class="skill-row">
+  <div class="skill-header" style="background:#dc2626">
+    <h2>#5 AI Evaluation & Safety</h2>
+    <div class="skill-freq">出现频率 8/10 JD</div>
+  </div>
+  <div class="skill-body">
+    <div class="skill-left">
+      <h3>JD 要求</h3>
+      <div class="jd-item"><span>构建 <strong>Eval Pipeline</strong> — 自动化评估，集成到 CI/CD</span></div>
+      <div class="jd-item"><span><strong>Hallucination 检测</strong> — Faithfulness 评分、Cross-reference 验证</span></div>
+      <div class="jd-item"><span><strong>Red-teaming</strong> — Jailbreak 测试、边界枚举、对抗性输入</span></div>
+      <div class="jd-item"><span><strong>Input/Output Guardrails</strong> — Prompt Injection 防御、PII 过滤、内容审核</span></div>
+      <div class="jd-item"><span>合规意识：<strong>EU AI Act / NIST AI RMF</strong> 基本了解</span></div>
+    </div>
+    <div class="skill-right">
+      <h3>我们教的</h3>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W11.1</span> <strong>AI Eval Engineering 专课</strong> — Offline/Online/Human Eval 框架设计</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W11.1</span> 幻觉检测器实现 — 检查输出是否忠实于 Context</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W11.2</span> <strong>Safety + Red-teaming 专课</strong> — 10 种攻击手法测试 + 防御</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W11.2</span> Guardrails 实操 — Guardrails AI + NeMo + PII 检测</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W11.2</span> EU AI Act 开发者指南 — 对你的系统意味着什么</span></div>
+    </div>
+  </div>
+  <div class="coverage">
+    <div class="coverage-label">覆盖度</div>
+    <div class="coverage-bar"><div class="coverage-fill" style="width:90%;background:var(--teal)"></div></div>
+    <div class="coverage-label" style="color:var(--teal)">90%</div>
+  </div>
+</div>
+
+<!-- ===== SKILL 6: Fine-Tuning & Open-Weight ===== -->
+<div class="skill-row">
+  <div class="skill-header" style="background:var(--orange)">
+    <h2>#6 Open-Weight 模型 + Fine-Tuning</h2>
+    <div class="skill-freq">出现频率 6/10 JD</div>
+  </div>
+  <div class="skill-body">
+    <div class="skill-left">
+      <h3>JD 要求</h3>
+      <div class="jd-item"><span><strong>LoRA / QLoRA / PEFT</strong> 微调开源模型</span></div>
+      <div class="jd-item"><span>训练数据准备 + <strong>质量控制 pipeline</strong></span></div>
+      <div class="jd-item"><span><strong>Model Routing</strong> — 按任务复杂度分发到不同模型（降本增效）</span></div>
+      <div class="jd-item"><span>本地部署 <strong>Open-Weight 模型</strong>（vLLM / Ollama / TGI）</span></div>
+      <div class="jd-item"><span>了解 <strong>DeepSeek / Qwen / Llama 4</strong> 等主流开源模型的适用场景</span></div>
+    </div>
+    <div class="skill-right">
+      <h3>我们教的</h3>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W10.1</span> <strong>Open-Weight 模型格局</strong> — DeepSeek / Qwen 3.5 / Llama 4 对比</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W10.1</span> <strong>Model Routing</strong> — 简单走 DeepSeek，复杂走 Claude，自动切换</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W10.1</span> vLLM 部署 + Ollama 本地推理 + 成本 break-even 计算</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W10.2</span> <strong>QLoRA + Unsloth</strong> 微调 — 2x 速度、60% 省显存</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--red)">W10.2</span> SDG 数据生成 + 质量过滤 + LLaMA-Factory GUI 微调</span></div>
+      <div class="course-item"><span><span class="course-tag" style="background:var(--purple)">FT</span> 完整微调项目 — 数据 → 训练 → 评估 → HuggingFace 发布</span></div>
+    </div>
+  </div>
+  <div class="coverage">
+    <div class="coverage-label">覆盖度</div>
+    <div class="coverage-bar"><div class="coverage-fill" style="width:90%;background:var(--teal)"></div></div>
+    <div class="coverage-label" style="color:var(--teal)">90%</div>
+  </div>
+</div>
+
+<!-- ===== GAP ANALYSIS ===== -->
+<div style="border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden;margin-bottom:24px">
+  <div style="padding:14px 24px;background:var(--dark);color:#fff;border-bottom:3px solid #000">
+    <h2 style="font-size:20px;font-weight:900">我们没覆盖的 — Nice-to-Have（不影响核心竞争力）</h2>
+  </div>
+  <div style="padding:20px 24px">
+    <div class="gap-grid">
+      <div class="gap-card">
+        <h4 style="color:#16a34a">通过互动 Lab / Learn 覆盖（非直播）</h4>
+        <div class="gap-item"><span>GCP Vertex AI / Azure OpenAI</span><span class="gap-status" style="color:#16a34a">Azure Lab + AWS Lab 提供</span></div>
+        <div class="gap-item"><span>Multimodal AI (Vision + Audio)</span><span class="gap-status" style="color:#16a34a">Prompt Lab: multimodal-prompting</span></div>
+        <div class="gap-item"><span>System Design for AI</span><span class="gap-status" style="color:#16a34a">Learn 章节 + 项目实战</span></div>
+        <div class="gap-item"><span>Voice Agent (ElevenLabs / Vapi)</span><span class="gap-status" style="color:#d97706">Learn 章节介绍</span></div>
+        <div class="gap-item"><span>AWS AI Practitioner 认证</span><span class="gap-status" style="color:#16a34a">可搭配 JR 认证课</span></div>
+      </div>
+      <div class="gap-card">
+        <h4 style="color:#92400e">不覆盖（不属于 AI Engineer 核心）</h4>
+        <div class="gap-item"><span>Kubernetes / Docker Compose</span><span class="gap-status" style="color:#dc2626">DevOps 范畴</span></div>
+        <div class="gap-item"><span>Data Engineering (Spark / Kafka)</span><span class="gap-status" style="color:#dc2626">DE 岗位</span></div>
+        <div class="gap-item"><span>传统 ML (XGBoost / Scikit-learn)</span><span class="gap-status" style="color:#dc2626">DS 岗位</span></div>
+        <div class="gap-item"><span>ML 论文阅读</span><span class="gap-status" style="color:#dc2626">Research 岗位</span></div>
+        <div class="gap-item"><span>Agile / Scrum 项目管理</span><span class="gap-status" style="color:#d97706">P3 中实践</span></div>
+      </div>
+    </div>
+    <div style="margin-top:16px;padding:12px 16px;background:#f0fdf4;border:2px solid var(--teal);font-size:14px;line-height:1.8;text-align:center">
+      <strong>结论：</strong>6 大核心能力直播覆盖 90%+，GCP/Multimodal/System Design 通过互动 Lab 和 Learn 章节补充。<br>真正不覆盖的只有 K8s、Data Engineering、传统 ML — 这些属于 DevOps / DE / DS 岗位范畴，不是 AI Engineer 核心要求。
+    </div>
+  </div>
+</div>
+
+<!-- ===== JD SOURCES ===== -->
+<div style="border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;overflow:hidden;margin-bottom:24px">
+  <div style="padding:14px 24px;background:#555;color:#fff;border-bottom:3px solid #000">
+    <h2 style="font-size:20px;font-weight:900">JD 样本来源 (15 份)</h2>
+  </div>
+  <div style="padding:20px 24px">
+    <div class="jd-sources">
+      <div class="jd-src"><strong>OpenAI</strong><br>AI Engineer<br><span class="salary">$200K-$350K</span></div>
+      <div class="jd-src"><strong>Anthropic</strong><br>AI Engineer<br><span class="salary">$180K-$320K</span></div>
+      <div class="jd-src"><strong>Google</strong><br>AI Platform Engineer<br><span class="salary">$170K-$300K</span></div>
+      <div class="jd-src"><strong>Meta</strong><br>AI Infra Engineer<br><span class="salary">$180K-$330K</span></div>
+      <div class="jd-src"><strong>Amazon</strong><br>AI/ML Engineer<br><span class="salary">$150K-$280K</span></div>
+      <div class="jd-src"><strong>Databricks</strong><br>LLM Engineer<br><span class="salary">$160K-$290K</span></div>
+      <div class="jd-src"><strong>Scale AI</strong><br>AI Engineer<br><span class="salary">$150K-$250K</span></div>
+      <div class="jd-src"><strong>Stripe</strong><br>AI Product Engineer<br><span class="salary">$160K-$280K</span></div>
+      <div class="jd-src"><strong>Notion</strong><br>AI Engineer<br><span class="salary">$140K-$250K</span></div>
+      <div class="jd-src"><strong>Vercel</strong><br>AI SDK Engineer<br><span class="salary">$150K-$260K</span></div>
+      <div class="jd-src"><strong>Cursor</strong><br>AI Engineer<br><span class="salary">$180K-$320K</span></div>
+      <div class="jd-src"><strong>Startup (YC)</strong><br>Founding AI Eng<br><span class="salary">$130K-$200K+</span></div>
+      <div class="jd-src"><strong>Startup (Series B)</strong><br>Senior AI Eng<br><span class="salary">$160K-$250K</span></div>
+      <div class="jd-src"><strong>Enterprise</strong><br>AI Solutions Eng<br><span class="salary">$130K-$200K</span></div>
+      <div class="jd-src"><strong>Consulting</strong><br>AI Consultant<br><span class="salary">$120K-$180K</span></div>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:24px;font-size:14px;justify-content:center;flex-wrap:wrap">
+      <div><strong>Junior (0-2年):</strong> $100K-$150K</div>
+      <div><strong>Mid (2-5年):</strong> $150K-$220K</div>
+      <div><strong>Senior (5+年):</strong> $220K-$350K+</div>
+      <div style="color:#888">来源: levels.fyi, Glassdoor, LinkedIn 2026</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="curriculum.html">← 课程总览</a> &nbsp;|&nbsp; <a href="internal.html">内部资料</a> &nbsp;|&nbsp; <a href="outline.html">完整大纲</a>
+</div>
+
+</div>
+</body>
+</html>

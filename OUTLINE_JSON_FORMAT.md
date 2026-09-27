@@ -409,7 +409,7 @@ const CURRICULUM_SLUGS = {
 };
 ```
 
-**添加新课程：** 在 `CURRICULUM_SLUGS` 里加一行，确保对应的 HTML 文件已部署到 `jiangren.com.au/curriculum/{slug}/`。
+**添加新课程：** 在 `CURRICULUM_SLUGS` 里加一行，确保对应的 HTML 文件已部署到 `jracademy.ai/curriculum/{slug}/`。
 
 **页面分类：**
 - **学生端页面**（加到 `pages` 数组）：outline.html, curriculum.html, phase*.html, learning-plan.html

@@ -7,57 +7,76 @@ interface Teacher {
 	title: string;
 	company: string;
 	companyColor: string; // 公司品牌色
-	bio: string;
+	bio?: string;         // 没有确认过的 bio 就留空，不要编
 	accentColor: string;  // 头像色
 }
 
-// 数据源：2026 AI Engineer Bootcamp 导师阵容（jiangren.com.au 公开介绍）
+interface PoolTeacher {
+	name: string;
+	company: string;
+	region?: string;
+}
+
+// 🔑 数据源：curriculum/ai-engineer-bootcamp/TEACHERS.md（导师名单唯一真相源）
+// 改导师先改 TEACHERS.md，再同步这里。不要在这里编公司 / 头衔 / bio。
+
+// 本期正在带课的导师
 const teachers: Teacher[] = [
 	{
-		initials: 'PL', name: 'Peiyao Li', title: 'Sr. Specialist SA GenAI', company: 'AWS',
-		companyColor: '#FF9900', accentColor: colors.p3,
-		bio: '亚马逊 AWS GenAI Sr. Specialist · 10+ 年数据科学、机器学习、AI 工程经验 · 领导澳新地区云平台的 AI 战略与大客户落地',
-	},
-	{
-		initials: 'LJ', name: 'Larry Jiang', title: 'AI Architect', company: 'AWS',
-		companyColor: '#FF9900', accentColor: colors.p4,
-		bio: 'Generative AI 技术专家 · 在 AWS、Azure 等多个云平台设计并实现先进 AI 解决方案 · 擅长 AI 驱动的生产落地与预测准确率/运营效率提升',
-	},
-	{
-		initials: 'JL', name: 'Jason Li', title: 'Lead Engineer-Gen AI', company: 'Future Secure AI',
-		companyColor: '#0ea5e9', accentColor: colors.p5,
-		bio: '4 年参与 15+ 商业 GenAI 项目 · 精通后端/云原生/DevOps · LangChainJS · Prompt Engineering · Tool Calling · RAG · 多模态',
-	},
-	{
-		initials: 'SL', name: 'Selina Li', title: 'Senior Data & AI Architect', company: 'Microsoft',
-		companyColor: '#0078D4', accentColor: colors.p2,
-		bio: '微软亚太区 Office of the CTO · 专注 ANZ 战略级数据与 AI 项目 · 10+ 年技术与管理经验 · CBA / Officeworks / 德勤核心岗位',
-	},
-	{
-		initials: 'G', name: 'Guang', title: 'Tech Lead', company: 'New Aim',
-		companyColor: '#00aaff', accentColor: colors.p6,
-		bio: '莫纳什大学博士 · 专攻空间大数据 · Google Scholar H-Index 21 · Kaggle Competition Expert 全球 4% · 领导 B2B 电商 AI 平台',
-	},
-	{
-		initials: 'JY', name: 'Joey Yang', title: 'AI Full-stack Engineer', company: 'Ericsson',
-		companyColor: '#0082F0', accentColor: colors.p1,
-		bio: '10 年软件开发 · 先后服务 Ericsson / 平安 / 顺丰 · 精通 Java · Python · 微服务 · 熟悉前后端框架 · 深度参与 AI Playground + 企业云平台',
-	},
-	{
-		initials: 'JL', name: 'Jenny Lin', title: 'Lead AI Innovation', company: 'RACV',
-		companyColor: '#ef4444', accentColor: colors.p7,
-		bio: 'RACV Team Leader · Data Engineering · 熟练运用 Microsoft Azure AI + BI 技术栈 · 擅长 Data Modelling / Warehouse / GenAI / RAG / ETL 管道',
-	},
-	{
-		initials: 'XM', name: 'Xiaoxiao Ma', title: 'Applied Scientist', company: '头部 AI 公司',
+		// ⚠️ 公司保密 —— 对外只写「头部 AI 公司」，不要填具体公司名
+		initials: 'XM', name: 'Xiaoxiao Ma', title: 'Senior Applied Scientist', company: '头部 AI 公司',
 		companyColor: '#64748b', accentColor: colors.p8,
 		bio: 'IT 领域 8+ 年 · 当前在头部公司做 LLM / GenAI research · PhD 期间发表 Core Ranked A* 顶会/顶刊 9 篇，其中 CCF-A 类 6 篇',
 	},
 	{
-		initials: 'SL', name: 'Sheldon Lin', title: 'AI Integration Architect', company: 'Optus',
-		companyColor: '#fbbf24', accentColor: colors.p9,
-		bio: 'AI 集成架构师 · 专长数据科学、数据工程、ML Ops · 关注 GenAI + LLM 企业级落地 · 精通 Python / R / SQL + Azure / AWS / GCP 多云栈',
+		initials: 'LS', name: 'Liangjun Song', title: 'Machine Learning Engineer', company: 'WiseTech Global',
+		companyColor: '#0b5cab', accentColor: colors.p3,
 	},
+	{
+		initials: 'LW', name: 'Lightman Wang', title: 'Co-founder & CEO', company: 'JR Academy',
+		companyColor: colors.red, accentColor: colors.p7,
+	},
+	{
+		// 曾用署名 Jason Li（Future Secure AI）—— 同一人，现行署名统一用 Tianyi Li @ V2 AI
+		initials: 'TL', name: 'Tianyi Li', title: 'Lead AI Engineer', company: 'V2 AI',
+		companyColor: '#111827', accentColor: colors.p1,
+		bio: '4 年参与 15+ 商业 GenAI 项目 · 精通后端/云原生/DevOps · LangChainJS · Prompt Engineering · Tool Calling · RAG · 多模态',
+	},
+	{
+		initials: 'HZ', name: 'Huansong（Winston） Zeng', title: 'Senior Software Engineer', company: 'Canva',
+		companyColor: '#00C4CC', accentColor: colors.p4,
+	},
+	{
+		initials: 'SS', name: 'Samuel Shaw', title: 'Research Scientist', company: 'CSIRO',
+		companyColor: '#00843D', accentColor: colors.p5,
+	},
+];
+
+// 可排课导师池 — 按主题 / 期次组合排课
+const pool: PoolTeacher[] = [
+	{ name: 'Leon', company: 'Google', region: '美国' },
+	{ name: 'Albert Zhou', company: 'Amazon', region: '西雅图' },
+	{ name: 'Larry Jiang', company: 'AWS' },
+	{ name: 'Peiyao Li', company: 'AWS' },
+	{ name: 'Selina Li', company: 'Microsoft' },
+	{ name: 'Joey Yang', company: 'Ericsson', region: '瑞典' },
+	{ name: 'Sheldon Lin', company: 'Optus' },
+	{ name: 'Jenny Lin', company: 'RACV' },
+	{ name: '许光', company: 'New Aim' },
+	{ name: 'Notail', company: 'Smokeball' },
+	{ name: '黄靖锋', company: '华为' },
+	{ name: '庞莹 Julie', company: '思科' },
+	{ name: '王刚', company: 'CENTFOR' },
+	{ name: 'Hao Luo', company: '千锋教育' },
+	{ name: '孙玉昌', company: '青软创新' },
+	{ name: '刘雨杭', company: '星凡星启' },
+	{ name: '闫俊杰', company: '湖州云梯科技' },
+	{ name: '岑玲', company: 'Neurospark Lab', region: '新加坡' },
+	{ name: 'Seng Yong Ong', company: 'OSY Marketing', region: '马来西亚' },
+	{ name: 'Wanqi Oh', company: 'Hitachi eBworx', region: '马来西亚' },
+	{ name: 'Eyvonne Tan', company: 'KumHoi Engineering', region: '马来西亚' },
+	{ name: 'Celine Tay', company: 'Agile Coach', region: '马来西亚' },
+	{ name: 'Yee Yon Yeong', company: 'Senior Python / AI Engineer', region: '马来西亚' },
 ];
 
 export default function S24_Teachers() {
@@ -69,18 +88,18 @@ export default function S24_Teachers() {
 				backgroundImage: `repeating-linear-gradient(-45deg, rgba(0,0,0,0.02) 0 1px, transparent 1px 18px)`,
 			}} />
 
-			<div style={{ position: 'relative', zIndex: 1, width: '95%', maxWidth: 1440, padding: '22px 28px' }}>
+			<div style={{ position: 'relative', zIndex: 1, width: '95%', maxWidth: 1440, padding: '18px 28px' }}>
 				{/* 顶部标题 */}
 				<motion.div
 					initial={{ opacity: 0, y: -10 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.4 }}
-					style={{ marginBottom: 14 }}
+					style={{ marginBottom: 12 }}
 				>
 					<div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 4 }}>
 						<h2 style={{
 							fontFamily: fonts.heading,
-							fontSize: '42px',
+							fontSize: '40px',
 							fontWeight: 900,
 							lineHeight: 1.1,
 							letterSpacing: -1,
@@ -110,20 +129,21 @@ export default function S24_Teachers() {
 							boxShadow: shadowSm,
 							letterSpacing: 0.5,
 						}}>
-							9 位真人带课
+							本期 {teachers.length} 位带课 · 池子 {pool.length} 位
 						</span>
 					</div>
 					<p style={{
-						fontSize: '14px',
+						fontSize: '13px',
 						color: '#444',
 						fontWeight: 600,
 						marginTop: 4,
 					}}>
-						全部来自 AWS / Microsoft / Optus / Ericsson / RACV 等一线公司在职工程师 · 不是兼职讲师
+						全部来自 Canva / CSIRO / WiseTech Global / V2 AI / AWS / Microsoft 等一线公司在职工程师与科学家 · 不是兼职讲师
 					</p>
 				</motion.div>
 
-				{/* 9 位导师 3x3 */}
+				{/* 本期带课导师 3x2 */}
+				<SectionLabel text="本期带课导师" color={colors.red} />
 				<div style={{
 					display: 'grid',
 					gridTemplateColumns: 'repeat(3, 1fr)',
@@ -169,7 +189,7 @@ export default function S24_Teachers() {
 								<div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 3 }}>
 									<span style={{
 										fontFamily: fonts.heading,
-										fontSize: '16px',
+										fontSize: '15px',
 										fontWeight: 900,
 										color: colors.black,
 										letterSpacing: -0.3,
@@ -206,19 +226,64 @@ export default function S24_Teachers() {
 									</span>
 								</div>
 
-								{/* Bio */}
+								{/* Bio — 没确认的不编，直接标待补 */}
 								<div style={{
 									fontSize: 11,
-									color: '#333',
+									color: t.bio ? '#333' : '#999',
 									lineHeight: 1.4,
 									fontWeight: 500,
+									fontStyle: t.bio ? 'normal' : 'italic',
 								}}>
-									{t.bio}
+									{t.bio ?? 'bio 待补 — 见 TEACHERS.md'}
 								</div>
 							</div>
 						</motion.div>
 					))}
 				</div>
+
+				{/* 可排课导师池 */}
+				<div style={{ marginTop: 12 }}>
+					<SectionLabel text="可排课导师池 · 按主题与期次组合" color={colors.dark} />
+				</div>
+				<motion.div
+					initial={{ opacity: 0, y: 12 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ delay: 0.5 }}
+					style={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						gap: 6,
+					}}
+				>
+					{pool.map((p) => (
+						<span
+							key={p.name}
+							style={{
+								display: 'inline-flex',
+								alignItems: 'center',
+								gap: 5,
+								padding: '3px 8px',
+								background: colors.white,
+								border: `2px solid ${colors.black}`,
+								boxShadow: `2px 2px 0 ${colors.black}`,
+								fontSize: 11,
+								fontWeight: 800,
+								color: colors.black,
+								whiteSpace: 'nowrap',
+							}}
+						>
+							{p.name}
+							<span style={{
+								fontFamily: fonts.mono,
+								fontSize: 9,
+								fontWeight: 700,
+								color: '#666',
+							}}>
+								@{p.company}{p.region ? ` · ${p.region}` : ''}
+							</span>
+						</span>
+					))}
+				</motion.div>
 
 				{/* 底部标语 */}
 				<motion.div
@@ -255,10 +320,30 @@ export default function S24_Teachers() {
 						color: 'rgba(255,255,255,0.7)',
 						fontWeight: 700,
 					}}>
-						📝 头像待补 · 每期按主题组合排课
+						📝 头像待补 · 名单以 TEACHERS.md 为准
 					</div>
 				</motion.div>
 			</div>
 		</Slide>
+	);
+}
+
+function SectionLabel({ text, color }: { text: string; color: string }) {
+	return (
+		<div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 7 }}>
+			<span style={{
+				padding: '2px 9px',
+				background: color,
+				color: colors.white,
+				fontFamily: fonts.mono,
+				fontSize: 10,
+				fontWeight: 900,
+				border: `2px solid ${colors.black}`,
+				letterSpacing: 0.5,
+			}}>
+				{text}
+			</span>
+			<div style={{ flex: 1, height: 2, background: colors.black, opacity: 0.15 }} />
+		</div>
 	);
 }

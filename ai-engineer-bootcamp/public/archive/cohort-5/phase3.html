@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 3: AI Agents 工程化 — AI Engineer Bootcamp</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>Phase 3: AI Agents 工程化</h1>
+  <div class="sub">Week 7-9 · 直播 + 项目 · Agent SDK + Multi-Agent + MCP + Production</div>
+  <div class="nav"><a href="phase2.html">← Phase 2</a> | <a href="curriculum.html">课程总览</a> | <a href="phase4.html">Phase 4 →</a></div>
+</div>
+
+<div class="c">
+
+<!-- ===== Week 7 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--orange)">
+    <span style="font-size:18px;font-weight:900">Week 7 · Agent 基础 + Agent SDK 对比</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 + 项目</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--orange);color:#fff">7.1</span>
+      <h4>Agent 基础 + ReAct + Function Calling</h4>
+      <span class="pill" style="background:var(--orange);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>Agent = LLM + 推理 + 工具调用 + 记忆</strong> — 不是聊天机器人，是能自主完成任务的系统<br><br>
+        <strong>ReAct Framework</strong>：Reasoning + Action 交替执行<br>
+        - Thought → Action → Observation → Thought → ...<br>
+        - 比纯 Prompt 更可靠，因为 Agent 每步都在"想"下一步该干什么<br><br>
+        <strong>Function Calling / Tool Use</strong>：<br>
+        - OpenAI function calling API<br>
+        - Claude tool use API<br>
+        - 定义 Tool Schema，让 LLM 知道有哪些工具可用<br><br>
+        <strong>从零写一个 ReAct Agent</strong>：纯 Python，不依赖任何框架，理解 Agent 本质</p>
+        <div class="tools"><span class="tool">OpenAI Functions</span><span class="tool">Claude Tool Use</span><span class="tool">Python</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 实现 ReAct Agent — 手写 Thought/Action/Observation 循环<br>
+        2. 给 Agent 加 3 个工具：<br>
+        &nbsp;&nbsp;- Web Search（Tavily/SerpAPI）<br>
+        &nbsp;&nbsp;- RAG Retriever（Phase 2 的成果）<br>
+        &nbsp;&nbsp;- Calculator<br>
+        3. 给一个复杂问题，观察 Agent 如何拆解 → 调用工具 → 组合结果</p>
+        <span class="review ai">🤖 Agent 任务完成率评测</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>用纯 Python Agent + 至少 3 个工具，构建综合 Agent 应用：<br>
+        1. 搜索网络获取实时信息<br>
+        2. 检索本地知识库<br>
+        3. 做数据计算<br><br>
+        不允许用 LangChain，目的是理解 Agent 底层机制</p>
+        <span class="review teacher">👨‍🏫 Agent 设计 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--orange);color:#fff">7.2</span>
+      <h4>Agent SDK 对比: OpenAI / Claude / Google ADK</h4>
+      <span class="pill" style="background:var(--orange);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>为什么 2026 年有 3 个主流 Agent SDK</strong> — LangChain 不再是唯一选择<br><br>
+        <strong>OpenAI Agents SDK</strong>：<br>
+        - Handoff 模式，API 最简洁，适合快速原型<br>
+        - 多 Agent 通过 handoff 传递控制权<br><br>
+        <strong>Claude Agent SDK</strong>：<br>
+        - MCP 原生集成，工具集成最深<br>
+        - 沙盒执行环境，安全性高<br><br>
+        <strong>Google ADK (Agent Development Kit)</strong>：<br>
+        - A2A 协议原生支持，企业级多 Agent 编排<br>
+        - 与 Google Cloud 深度集成<br><br>
+        <strong>三者对比维度</strong>：API 设计 / 工具集成 / 多 Agent 支持 / 可观测性 / 生态<br>
+        <strong>决策矩阵</strong>：什么场景选哪个 SDK</p>
+        <div class="tools"><span class="tool">OpenAI Agents SDK</span><span class="tool">Claude Agent SDK</span><span class="tool">Google ADK</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p><strong>同一个任务，3 个 SDK 分别实现</strong>：<br>
+        任务：Research Agent — 搜索 → 分析 → 生成报告<br><br>
+        1. 用 OpenAI Agents SDK 实现<br>
+        2. 用 Claude Agent SDK 实现<br>
+        3. 用 Google ADK 实现<br>
+        4. 对比：代码量、开发体验、延迟、可控性<br>
+        5. 记录对比报告</p>
+        <span class="review ai">🤖 SDK 对比报告生成</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 项目选择 Agent SDK，写技术选型文档：<br><br>
+        包含：<br>
+        - 为什么选这个 SDK<br>
+        - 替代方案的 trade-off 分析<br>
+        - 代码示例对比<br>
+        - 成本和性能预估</p>
+        <span class="review teacher">👨‍🏫 老师点评技术选型</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 7 录播/自学</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Agent SDK 对比全景 — OpenAI vs Claude vs Google ADK vs LangGraph</div>
+        <div class="lab-desc">四大 Agent SDK 的架构设计、API 风格、适用场景完整对比</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Deploying and Operating RAG in Production</div>
+        <div class="lab-desc">RAG 生产化：缓存策略、监控指标、错误恢复、成本控制</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Week 8 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--orange)">
+    <span style="font-size:18px;font-weight:900">Week 8 · Multi-Agent + Agent Memory + A2A</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 + 项目</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--orange);color:#fff">8.1</span>
+      <h4>Multi-Agent Architectures + LangGraph</h4>
+      <span class="pill" style="background:var(--orange);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>三种多 Agent 架构</strong>：<br>
+        1. <strong>Hierarchical</strong> — Boss Agent 分配任务给 Worker Agents<br>
+        2. <strong>Collaborative</strong> — Agent 之间平等协作，共享上下文<br>
+        3. <strong>Supervised</strong> — Supervisor 监控 Agent 行为，可以打断和修正<br><br>
+        <strong>LangGraph 深度实操</strong>：<br>
+        - StateGraph — 定义 Agent 状态和转换<br>
+        - Nodes — 每个 Agent 是一个 Node<br>
+        - Edges — 条件路由（conditional edges）<br>
+        - Checkpointing — 长时间运行的 Agent 状态保存<br><br>
+        <strong>何时用 Multi-Agent</strong>：任务复杂度决策矩阵<br>
+        <strong>状态管理</strong>：Agent 之间如何传递上下文和中间结果</p>
+        <div class="tools"><span class="tool">LangGraph</span><span class="tool">LangSmith</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>用 LangGraph 构建 4-Agent 系统：<br>
+        1. Query Router — 判断问题类型<br>
+        2. Retrieval Agent — 多源检索<br>
+        3. Generation Agent — 综合回答<br>
+        4. Evaluation Agent — 自动评估答案质量<br><br>
+        5. 状态图可视化 — 观察 Agent 之间的消息传递<br>
+        6. LangSmith 全链路监控</p>
+        <span class="review teacher">👨‍🏫 项目 Demo Day</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>部署 Multi-Agent RAG 到云端<br><br>
+        提交：<br>
+        - LangGraph 状态图可视化<br>
+        - LangSmith Trace 分析报告<br>
+        - Demo URL</p>
+        <span class="review teacher">👨‍🏫 部署验证</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--orange);color:#fff">8.2</span>
+      <h4>Agent Memory Architecture</h4>
+      <span class="pill" style="background:var(--orange);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>记忆是 Demo 和 Production Agent 的分水岭</strong> — 没有记忆的 Agent 每次对话都是失忆状态<br><br>
+        <strong>三层记忆架构</strong>：<br>
+        1. <strong>Episodic Memory</strong> — 原始交互历史（对话记录）<br>
+        2. <strong>Semantic Memory</strong> — 从交互中提取的知识（Embedding 存储）<br>
+        3. <strong>State Memory</strong> — 当前任务的运行状态<br><br>
+        <strong>Mem0 框架</strong>：自动记忆提取 + 图记忆 (Graph Memory)<br>
+        - 自动从对话中抽取关键信息存储<br>
+        - 用知识图谱存储实体关系，Agent 可以跨会话关联信息<br><br>
+        <strong>对比</strong>：ConversationBufferMemory (LangChain) vs Mem0 vs 自建记忆系统</p>
+        <div class="tools"><span class="tool">Mem0</span><span class="tool">LangChain Memory</span><span class="tool">Neo4j</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 给 Week 7 的 Agent 加 Mem0 记忆层<br>
+        2. 对比测试：有记忆 vs 无记忆 Agent 在多轮对话中的表现<br>
+        3. 实现 Graph Memory：Agent 自动提取实体关系并存储到 Neo4j<br>
+        4. 跨会话测试：关掉对话再开，Agent 是否还记得你</p>
+        <span class="review ai">🤖 记忆能力评测</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 升级记忆能力：<br><br>
+        测试标准：<br>
+        - 10 轮对话后，Agent 是否记住用户偏好<br>
+        - 跨会话是否保留历史上下文<br>
+        - Graph Memory 是否正确提取实体关系<br><br>
+        提交测试报告 + 记忆架构图</p>
+        <span class="review teacher">👨‍🏫 Memory 架构 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--orange);color:#fff">8.3</span>
+      <h4>A2A Protocol + Agent 互操作</h4>
+      <span class="pill" style="background:var(--orange);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>Agent 协议生态 2026</strong>：<br>
+        - <strong>MCP</strong> (Model Context Protocol) — Agent 连接工具<br>
+        - <strong>A2A</strong> (Agent-to-Agent) — Agent 之间通信<br>
+        - <strong>ACP</strong> (Agent Communication Protocol) — Agent 协作<br><br>
+        <strong>A2A 协议</strong>：Google 发起，50+ 合作伙伴<br>
+        - Agent Card — 能力声明（"我能做什么"）<br>
+        - Task — 任务委托（"帮我做这件事"）<br>
+        - Channel — 通信通道（streaming/polling）<br><br>
+        <strong>MCP + A2A 组合使用</strong>：MCP 连接工具，A2A 连接其他 Agent<br>
+        实际场景：你的 Agent 调用公司内部另一个团队的 Agent</p>
+        <div class="tools"><span class="tool">A2A SDK</span><span class="tool">MCP SDK</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 用 A2A 协议让 2 个 Agent 互相通信：<br>
+        &nbsp;&nbsp;- Agent A (研究) 委托 Agent B (分析) 处理数据<br>
+        &nbsp;&nbsp;- 通过 A2A Task 传递结果<br>
+        2. 编写 Agent Card 声明 Agent 能力<br>
+        3. 测试 Agent 发现 → 委托 → 结果返回的完整流程</p>
+        <span class="review ai">🤖 A2A 通信验证</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>设计一个 MCP + A2A 组合架构：<br><br>
+        1. 画出架构图：哪些用 MCP，哪些用 A2A<br>
+        2. 实现 Agent Card 声明你的 Agent 能力<br>
+        3. 写一份协议选型文档：什么场景用 MCP，什么场景用 A2A</p>
+        <span class="review teacher">👨‍🏫 协议架构 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 8 录播/自学</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Multi-Agent + Protocol Ecosystem Map 2026</div>
+        <div class="lab-desc">MCP / A2A / ACP 协议关系图 + LangGraph / OpenAI / Claude / ADK 框架对比</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Agent Memory 技术全景：Mem0 vs Zep vs LangMem</div>
+        <div class="lab-desc">三大记忆框架对比：存储机制、Graph Memory 支持、生产可用性</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Week 9 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--orange)">
+    <span style="font-size:18px;font-weight:900">Week 9 · MCP + Production Agents + Agent Ops</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 + 项目</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--orange);color:#fff">9.1</span>
+      <h4>MCP Server 构建 + Production 集成</h4>
+      <span class="pill" style="background:var(--orange);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>MCP 快速回顾</strong>：Client (Claude/Cursor) → Server (你的工具) → Resources/Tools/Prompts<br><br>
+        <strong>用 TypeScript 构建 MCP Server</strong>：<br>
+        - 暴露 Resources（数据源）和 Tools（操作）<br>
+        - 定义 Prompts（预设交互模式）<br><br>
+        <strong>MCP 生产化</strong>：<br>
+        - OAuth 认证 — 不是所有人都能调你的 MCP Server<br>
+        - API Key 管理 — 多租户场景<br>
+        - 审计日志 — 谁在什么时候调了什么工具<br><br>
+        在 Claude Code / Cursor 中集成测试</p>
+        <div class="tools"><span class="tool">MCP SDK</span><span class="tool">TypeScript</span><span class="tool">Claude Code</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 用 TypeScript 构建一个连接真实数据源的 MCP Server<br>
+        2. 暴露至少 3 个 Tools（CRUD + 查询 + 分析）<br>
+        3. 在 Claude Code 中连接并测试<br>
+        4. 添加 OAuth 认证层</p>
+        <span class="review teacher">👨‍🏫 MCP Server Review</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 构建专属 MCP Server：<br><br>
+        - 连接 ISA 的知识库和工具<br>
+        - 在 Claude Code 中通过 MCP 调用 ISA<br>
+        - 部署并分享给同学测试</p>
+        <span class="review teacher">👨‍🏫 MCP 项目 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--orange);color:#fff">9.2</span>
+      <h4>Production Agents: Computer Use + Agent Ops</h4>
+      <span class="pill" style="background:var(--orange);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>Computer Use / Browser Automation</strong> — Agent 操作真实软件，不只是调 API<br>
+        - Claude Computer Use API — 截屏 → 识别 → 点击 → 验证<br>
+        - ChatGPT Operator — OpenAI 的浏览器自动化方案<br>
+        - Vercel agent-browser — 开源浏览器 Agent<br><br>
+        <strong>Agent Ops 三大支柱</strong>：<br>
+        1. <strong>Observability</strong> — Trace 每个 Agent 推理过程 (LangSmith)<br>
+        2. <strong>Evaluation</strong> — task completion rate, hallucination rate<br>
+        3. <strong>Guardrails</strong> — 限制 Agent 行为边界、防止 prompt injection、input/output 过滤<br><br>
+        <strong>生产部署 Checklist</strong>：Rate limiting, Caching, Error handling, Cost monitoring, Human-in-the-loop</p>
+        <div class="tools"><span class="tool">LangSmith</span><span class="tool">Claude Computer Use</span><span class="tool">Guardrails</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 用 Claude Computer Use API 让 Agent 操作浏览器完成任务<br>
+        &nbsp;&nbsp;（例：自动填表、自动测试网页）<br>
+        2. 为 Multi-Agent 系统添加完整 Agent Ops：<br>
+        &nbsp;&nbsp;- LangSmith tracing — 跨 Agent 的完整调用链<br>
+        &nbsp;&nbsp;- 自动化评估 pipeline<br>
+        &nbsp;&nbsp;- Input/Output guardrails</p>
+        <span class="review teacher">👨‍🏫 Production Review</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>提交 Production Agent 部署方案：<br><br>
+        包含：<br>
+        - 监控策略（用什么指标判断 Agent 健康）<br>
+        - Guardrails 配置（哪些行为要拦截）<br>
+        - Cost 预算（每月预估 Token 消耗和费用）<br>
+        - Human-in-the-loop 触发条件（什么时候需要人介入）</p>
+        <span class="review teacher">👨‍🏫 Production Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 9 录播/自学</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">Introducing the Model Context Protocol (MCP)</div>
+        <div class="lab-desc">MCP 协议概览：为什么需要标准化 AI 工具连接</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">解读 MCP 源码</div>
+        <div class="lab-desc">TypeScript SDK 核心实现分析</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Computer Use 技术全景 — Claude vs Operator vs agent-browser</div>
+        <div class="lab-desc">三种 Browser Agent 方案对比：能力边界、安全模型、适用场景</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Agent Ops 最佳实践</div>
+        <div class="lab-desc">Observability + Evaluation + Guardrails 生产落地指南</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">MCP 发布指南</div>
+        <div class="lab-desc">如何发布你的 MCP Server 到 npm/PyPI</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Claude Code 技术原理</div>
+        <div class="lab-desc">上下文管理与记忆机制深度解析</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="phase2.html">← Phase 2: RAG 系统</a> &nbsp;|&nbsp; <a href="curriculum.html">课程总览</a> &nbsp;|&nbsp; <a href="phase4.html">Phase 4: Fine-Tuning + 毕业 →</a>
+</div>
+
+</div>
+</body>
+</html>

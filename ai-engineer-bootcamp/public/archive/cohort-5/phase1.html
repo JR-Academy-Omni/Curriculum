@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 1: GenAI 基础 + Context Engineering — AI Engineer Bootcamp</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>Phase 1: GenAI 基础 + Context Engineering</h1>
+  <div class="sub">Week 1-3 · 直播 + 录播 · 奠定 AI 工程理论基础</div>
+  <div class="nav"><a href="curriculum.html">← 返回课程总览</a> | <a href="phase2.html">Phase 2 →</a></div>
+</div>
+
+<div class="c">
+
+<!-- ===== Pre-work ===== -->
+<div class="box">
+  <div class="box-h" style="background:#92400e">
+    <span style="font-size:18px;font-weight:900">Pre-work · 课前准备</span>
+    <span style="float:right;opacity:0.7" class="mono">开课前完成</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:#92400e;color:#fff">0.1</span>
+      <h4>Pre-work：必要知识储备</h4>
+      <span class="pill" style="background:#666;color:#fff">自学</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 准备内容</h5>
+        <p><strong>Python 编程基础</strong> — 基本语法、数据操作、脚本调试<br><br>
+        <strong>RESTful API</strong> — CRUD API 搭建（Python / JS / .NET 均可）<br><br>
+        <strong>Git 版本控制</strong> — branch、Pull Request、rebase 解决 conflicts</p>
+      </div>
+      <div>
+        <h5>🔬 推荐预习</h5>
+        <p><strong>AWS EC2 & Bedrock</strong> — 了解 EC2 配置和 Bedrock 模型推理<br><br>
+        <strong>Azure ML</strong> — 了解 Azure AI 服务基础操作<br><br>
+        <strong>Google Colab</strong> — 代码运行和环境配置</p>
+      </div>
+      <div>
+        <h5>📋 环境搭建</h5>
+        <p>Python 3.10+ 环境<br>
+        OpenAI API Key<br>
+        AWS / Azure 账号<br>
+        Google Colab 访问<br>
+        Git + GitHub 账号</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:#92400e;color:#fff">0.2</span>
+      <h4>Preparation：开发环境配置</h4>
+      <span class="pill" style="background:#666;color:#fff">自学</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>IDE 配置（VS Code + Python 插件）<br>
+        虚拟环境管理（venv / conda）<br>
+        API Key 安全管理（.env 文件）</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>配置本地开发环境<br>
+        测试 OpenAI API 连通性<br>
+        运行第一个 LLM 调用脚本</p>
+        <span class="review ai">🤖 环境检查脚本自动验证</span>
+      </div>
+      <div>
+        <h5>📋 产出</h5>
+        <p>本地环境可正常调用 OpenAI API<br>
+        GitHub 仓库已创建并推送初始代码</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Week 1 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--indigo)">
+    <span style="font-size:18px;font-weight:900">Week 1 · GenAI 概览 + AI/ML 基础</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 + 录播</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--indigo);color:#fff">1.1</span>
+      <h4>GenAI Overview + Ops</h4>
+      <span class="pill" style="background:var(--indigo);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>GenAI 全景图：LLM 产业链、API Provider 生态、开源 vs 闭源模型对比<br><br>
+        AI Engineer vs ML Engineer vs Data Scientist — 角色区分和技术栈差异<br><br>
+        LLM Ops 概念：模型选择 → 部署 → 监控 → 评估 → 优化的完整生命周期</p>
+        <div class="tools"><span class="tool">OpenAI</span><span class="tool">Claude</span><span class="tool">DeepSeek</span><span class="tool">Qwen</span><span class="tool">AWS Bedrock</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>动手调用 3 个不同 LLM Provider 的 API<br>
+        对比同一个 Prompt 在 GPT-4o / Claude / DeepSeek / Qwen / Bedrock 上的输出差异<br>
+        记录 latency、token 用量、cost 对比</p>
+        <span class="review ai">🤖 API 调用验证</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p><strong>GenAI Capstone Project 启动：</strong>定义你的 Intelligent Study Assistant (ISA) 项目<br><br>
+        写 ISA 项目 proposal：目标用户、核心功能、选用的 LLM、预期 Phase 1 产出</p>
+        <span class="review teacher">👨‍🏫 老师点评 proposal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--indigo);color:#fff">1.2</span>
+      <h4>开课讲解会</h4>
+      <span class="pill" style="background:var(--indigo);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>课程结构详解：4 Phase、7 Project、评估方式<br><br>
+        学习方法论：直播 + 录播 + Lab 自学 + P3 项目的节奏<br><br>
+        ISA Capstone Project 详细说明和评分标准</p>
+      </div>
+      <div>
+        <h5>🔬 互动环节</h5>
+        <p>学员自我介绍和背景分享<br>
+        分组：按技术背景分配 P3 团队<br>
+        确认每组的 ISA 方向</p>
+      </div>
+      <div>
+        <h5>📋 产出</h5>
+        <p>明确 12 周学习计划<br>
+        加入 P3 团队<br>
+        ISA 项目 GitHub 仓库创建</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 录播 AI/ML fundamentals -->
+  <div class="ai-self">
+    <strong>📹 Week 1 录播自学内容</strong> — AI/ML 理论基础（开课前或 Week 1 完成）
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">Structured Data vs Unstructured Data</div>
+        <div class="lab-desc">结构化 vs 非结构化数据，LLM 处理非结构化数据的优势</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">Introduction to Machine Learning</div>
+        <div class="lab-desc">ML 核心概念：特征工程、训练/验证/测试集、过拟合</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">Supervised, Unsupervised & Reinforcement Learning</div>
+        <div class="lab-desc">三大学习范式 + RLHF 在 LLM 中的应用</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">Introduction to Deep Learning</div>
+        <div class="lab-desc">神经网络基础、CNN/RNN 到 Transformer 的演进</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Week 2 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--indigo)">
+    <span style="font-size:18px;font-weight:900">Week 2 · Transformer + 四大原型模式</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 + 录播</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--indigo);color:#fff">2.1</span>
+      <h4>Transformer Architecture + API</h4>
+      <span class="pill" style="background:var(--indigo);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>Transformer 架构</strong>：Self-Attention、Multi-Head Attention、Positional Encoding<br><br>
+        <strong>Input Embeddings</strong>：Token → Vector 的过程、词向量空间可视化<br><br>
+        <strong>API 实操</strong>：OpenAI Chat Completions API 参数详解 — temperature、top_p、max_tokens、stop sequences</p>
+        <div class="tools"><span class="tool">OpenAI API</span><span class="tool">Python</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>可视化 Attention Matrix — 输入一段文本，观察 token 间的注意力分布<br><br>
+        API 参数调优实验：固定 Prompt，调整 temperature (0 → 2.0)，对比输出差异<br><br>
+        Token 计数和成本估算脚本</p>
+        <span class="review ai">🤖 代码自动评测</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>用 Python 实现一个简单的 LLM API 封装类<br>
+        支持：模型切换、重试逻辑、Token 计数、Cost tracking<br><br>
+        这个封装类会在后续项目中复用</p>
+        <span class="review teacher">👨‍🏫 代码 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--indigo);color:#fff">2.2</span>
+      <h4>The Four Prototyping Patterns</h4>
+      <span class="pill" style="background:var(--indigo);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>AI 应用的四大构建模式：<br><br>
+        <strong>1. Prompting</strong> — 直接提示词工程<br>
+        <strong>2. RAG</strong> — 检索增强生成<br>
+        <strong>3. Fine-Tuning</strong> — 模型微调<br>
+        <strong>4. Agents</strong> — 自主决策<br><br>
+        何时用哪种？决策矩阵：数据量 × 任务复杂度 × 成本 × 延迟</p>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>同一个任务（客服 Q&A），分别用四种模式的最简版本实现<br><br>
+        对比：准确率、延迟、成本、开发时间<br><br>
+        <strong>Define Success Criteria</strong> — 设定 AI 应用的评估指标</p>
+        <span class="review ai">🤖 对比报告自动生成</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 项目选择最合适的构建模式，写出技术选型文档<br><br>
+        包含：为什么选这个模式、替代方案的 trade-off、预期 metrics</p>
+        <span class="review teacher">👨‍🏫 老师点评技术选型</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 2 录播自学</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">The Transformer Architecture</div>
+        <div class="lab-desc">Encoder-Decoder 架构详解，GPT (Decoder-only) vs BERT (Encoder-only)</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">Input Embeddings</div>
+        <div class="lab-desc">Tokenization → Embedding → Position Encoding 的完整流程</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Define Your Success Criteria</div>
+        <div class="lab-desc">如何为 AI 应用设定可量化的成功指标</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Week 3 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--indigo)">
+    <span style="font-size:18px;font-weight:900">Week 3 · Context Engineering + Vibe Coding</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 + 项目</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--indigo);color:#fff">3.1</span>
+      <h4>Context Engineering: From Prompts to Systems</h4>
+      <span class="pill" style="background:var(--indigo);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>Context Engineering 定义</strong>：不只是写 Prompt，而是设计整个 LLM 信息输入架构。Gartner 2026 数据显示 57% 的 Agent 失败源于上下文设计失败<br><br>
+        <strong>四层上下文设计</strong>：System Context（角色/规则）→ Retrieved Context（RAG/搜索结果）→ Memory Context（对话历史/长期记忆）→ Task Context（当前任务指令）<br><br>
+        <strong>Prompt Engineering 作为子集</strong>：Clear instructions、Structured output、Few-shot examples、Chain-of-Thought — 这些技术在四层架构中各归其位<br><br>
+        <strong>Context Window 管理</strong>：1M+ token 时代的信息筛选和优先级策略，什么该放、什么该丢、什么动态加载</p>
+        <div class="tools"><span class="tool">OpenAI Playground</span><span class="tool">Claude</span><span class="tool">Cursor</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p><strong>4 层上下文架构设计实验：</strong><br>
+        给同一个任务，对比纯 Prompt vs 完整 Context Engineering 的效果差异<br><br>
+        量化对比：准确率、一致性、幻觉率<br><br>
+        记录每一层上下文的具体内容和设计决策</p>
+        <span class="review ai">🤖 Context 效果对比评测</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 项目设计完整的 Context Engineering 方案：System Prompt + 检索策略 + 记忆管理 + 输出控制<br><br>
+        提交 Context 版本历史（至少 3 个版本 + 改进原因和量化效果）</p>
+        <span class="review teacher">👨‍🏫 老师点评 Context 设计</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--indigo);color:#fff">3.2</span>
+      <h4>Vibe Coding: AI-Assisted Development</h4>
+      <span class="pill" style="background:var(--indigo);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>Vibe Coding 工作流</strong>：用 AI 编程工具加速开发，不是替代编程能力<br><br>
+        <strong>三大工具对比</strong>：Cursor（inline edit + composer）vs Claude Code（terminal agent + MCP）vs GitHub Copilot（autocomplete + chat）<br><br>
+        <strong>项目级 AI 配置</strong>：CLAUDE.md / .cursorrules / Copilot instructions — 告诉 AI 你的项目规范和约束<br><br>
+        <strong>Context Engineering 在 Vibe Coding 中的应用</strong>：怎么给 AI 编程工具提供最优上下文<br><br>
+        <strong>常见陷阱</strong>：过度依赖 AI 生成、不 review 代码、忽略测试</p>
+        <div class="tools"><span class="tool">Cursor</span><span class="tool">Claude Code</span><span class="tool">GitHub Copilot</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>用 Cursor + Claude Code 分别完成同一个 Python 项目搭建<br><br>
+        配置项目级 AI 指令文件（.cursorrules / CLAUDE.md）<br><br>
+        对比两个工具的开发效率和代码质量</p>
+        <span class="review ai">🤖 代码质量自动评测</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p><strong>Project: Context-Driven App</strong><br>
+        用 Vibe Coding 构建一个 Context Engineering 驱动的 AI 应用<br><br>
+        要求：有 System Context 设计、Few-shot examples、输出格式控制<br>
+        用 Cursor 或 Claude Code 开发，提交 AI 交互记录</p>
+        <span class="review teacher">👨‍🏫 老师评审 App 设计 + Vibe Coding 工作流</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 3 录播/自学内容</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">Building Your First GPT in GPT Store</div>
+        <div class="lab-desc">从创建到发布 Custom GPT 的完整流程</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Context Engineering Playbook</div>
+        <div class="lab-desc">上下文设计模式全集：四层架构、信息筛选策略、版本迭代方法论</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Vibe Coding 工具对比</div>
+        <div class="lab-desc">Cursor vs Claude Code vs Copilot — 功能、场景、配置详细对比</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">GenAI Toolbox</div>
+        <div class="lab-desc">AI 工具全景图：写作、代码、设计、数据分析</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="curriculum.html">← 课程总览</a> &nbsp;|&nbsp; <a href="phase2.html">Phase 2: RAG 系统全栈开发 →</a>
+</div>
+
+</div>
+</body>
+</html>

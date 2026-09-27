@@ -1,5 +1,124 @@
 # Changelog
 
+## 2026-09-27
+
+- 更新 AI 一人创业营 W10 为「AI 内容工厂与智能投流实操」：使用 Codex + Buffer MCP、JSON Schema、HITL 与异步状态回读，并补入 Little Henri、Google / Meta / LinkedIn / TikTok Ads、通用 Landing Page 和 5 层 AI 营销 OS（`ai-solo-founder-bootcamp`；本地与 production W10 课时）。
+
+## 2026-09-23 — WorkBuddy AI 智能办公实战课程方案
+
+- 新增 `WORKBUDDY_COURSE_PLAN.md`，提供面向澳洲华人职场人士的 4 小时 WorkBuddy 实操工作坊设计。
+- 课程覆盖安装与安全配置、办公任务、个人 AI 专家、远程工作，并将微信群记录与 Blender 3D 项目划为独立进阶模块。
+- 新增 `workbuddy-workshop` 线上直播课程页面、结构化大纲与 1242×1660 可下载海报，并接入课程海报中心和静态部署流程。
+- 根据课程原始选题重新定位为《WorkBuddy AI 智能办公全能实战课》：安装缩短为 25 分钟，主体明确覆盖技能应用、AI员工、AI专家和远程操作四大主题；“别再只问 AI，让它开始交付”保留为宣传口号。
+
+## 2026-09-11
+
+- 新增三张可独立售卖的 AI 自动化课程竖版海报，分别聚焦中文媒体 AI 自动化、TikTok + Meta AI 自动化和 AI 全自动内容工厂；对外版本移除 W8-W10、OPC 与创业营内部上下文，仅保留课程价值、Michael Nie、日期与报名信息（`ai-solo-founder-bootcamp/public/promo/ai-automation-standalone`；本地）。
+
+- 重构 OPC 创业营 W8-W10：W8/W9 分别讲清公众号、小红书、抖音与 TikTok、Meta 系平台的特色、内容形态、运营方法和 AI 私信边界；W10 改为现场搭建从单一资料源、自动选题到原生内容生成、自动发送、状态回读与反馈学习的全自动内容工厂；三周主讲统一确认为 Michael Nie，并同步静态课程页与师资排课（`ai-solo-founder-bootcamp`；本地）。
+
+## 2026-09-10
+
+- 新增 AI Engineer 第七期 48 页招生公开课与 MiniClaw Live Coding：覆盖课程安排、全球学员、校友证据、Product Thinking、OpenClaw / MiniClaw 架构、TUI、Harness、Memory、Skills、Provider Router、Trace 与人工审批，并接入 curriculum 生产部署工作流（`lessons/ai-engineer-cohort-07-miniclaw`）。
+
+- 调整 OPC 营销三节课为 W8 中文媒体 AI 自动化、W9 英文媒体自动化、W10 内容工厂自动发布，将 X 配套自学迁至 W9，并同步教学计划与课程页面（`curriculum/ai-solo-founder-bootcamp`；本地）。
+
+- 调整 OPC 创业营 W10 为 AI 内容工厂：实现 AI 自动化发布，将原 SEO & GEO 保留为 3 小时周中独立课（时间待定），同步课程大纲、教学计划与静态课程页（`curriculum/ai-solo-founder-bootcamp`；本地）。
+
+## 2026-09-09
+
+- 更新 `talk-deck` Skill 与 React Deck 模板，将第五期结课 PPT 的网格纸、marker underline、圆角主面板、克制描边和高密度课程排版设为新的视觉黄金范本，并新增可复用 `DeckFrame` / `Panel` / `RoleFocusSlide` 组件（`.claude/skills/talk-deck`、`lessons/_template`）
+
+- 扩展 AI Engineer 第五期结课 deck 的第七期实践路线：新增 W1 ADLC 证据链并逐周展开 W1–W13 的 Design System、MVP、Voice AI、Evaluation、RAG、MCP、Agent、Memory、Harness、Model Routing 与 Production Readiness，同时重写 FDE 职责说明（`lessons/ai-engineer-cohort-05-final`、`ai-engineer-bootcamp`、`lessons.html`）
+
+- 新增 AI Engineer 第五期结课总结课件的正式构建与云端发布路径，并更新 `talk-deck` Skill 及 React Deck 模板的圆角视觉规则（`lessons/ai-engineer-cohort-05-final`、`.claude/skills/talk-deck`、`lessons/_template`）
+
+## 2026-09-08
+
+- 完成第五期到第七期的逐条视频继承复核：第七期现保留 51 个可播放历史录像，补齐前半段 GenAI、Transformer、Embeddings、AI Coding、RAG、LCEL、Production RAG 与求职内容，修正 Prototype 错挂 GPT Store，并排除标题与实际录像不符的旧 RAG 条目（`ai-engineer-bootcamp`）
+
+- 修复第七期往期录播继承范围，将第五期后半段 23 个已转码的 RAG、MCP、Agent、Memory、Harness、Model Routing、Fine-Tuning 与 Evaluation 视频映射到当前课程，并排除一个不可播放的重复转码队列记录（`ai-engineer-bootcamp`）
+
+## 2026-08-31
+
+- 将逐周技术栈从 Practice 工具表升级为 Theory + Practice 的完整 AI Engineering Stack，增加模型机制、Token/Context/Cache、AI OSS、RAG/Eval/Agent/Memory/Governance，并降低通用全栈技术的视觉权重（`ai-engineer-bootcamp`）
+
+- 将 13 场 Practice 的“本周实践工具”扩展为 20–25 个独立技术 Tag，区分课堂实作、AI-native 新能力与 Platform/Cloud，并将 Langfuse 和各项 AWS 服务分别列出（`ai-engineer-bootcamp`）
+
+- 优化 10-Layer Skills Tower 的技术栈视觉：全部技术点改为胶囊 Tag，有正式 Logo 的品牌或工具在 Tag 左侧显示 Logo，概念类能力保持纯文字（`ai-engineer-bootcamp`）
+
+- 将详细大纲 10-Layer Stack 重做为官网 Skills Tower 的 PDF 静态版：英文层名为主、中文为副，并展开 10 层的 50+ 具体技术标签（`ai-engineer-bootcamp`）
+
+- 将第七期全部 Practice 页面改为中文优先的“实践课 Live”，强调老师现场带做、调试和验收，并逐周增加四节点 System Design 关系图与实践技术栈（`ai-engineer-bootcamp`）
+
+- 将 W03 Context Engineering Theory 从一页拆为两页，分别呈现 Context 选择与组装、Lifecycle 与 Trust/Observability/Blueprint，避免压缩字号；详细大纲调整为 32 页（`ai-engineer-bootcamp`）
+
+- 将 AI Engineer 第七期每场课的技术视觉扩展为 8 个 Core + Popular OSS 标识，实践周页改成两排大型 Logo 卡，覆盖模型、AI Coding、UI、RAG、MCP、Agent、Memory、Observability 与 Production 生态（`ai-engineer-bootcamp`）
+
+- 优化 AI Engineer 第七期详细大纲营销版：隐藏内部 Lesson Code，逐周展示真实技术 Logo 与实践 Build Stack，并重新生成可点击、Mac 兼容的电子书 PDF（`ai-engineer-bootcamp`）
+
+## 2026-08-29
+
+- 扩展 AI Engineer 第七期推广计划为全球分区执行体系，加入澳洲、中国大陆、港澳台/新加坡、北美、英国/欧洲的时区与本地化策略，以及短期冲刺、长期品牌、五类增长、实验矩阵和衡量框架（`ai-engineer-bootcamp`）
+- 新增 AI Engineer 第七期 Seedance 短视频 Campaign：用 12 个连续机制与事故叙事覆盖教学方式、13 周 Build、RAG、Memory、Harness、A2A Governance、Model Routing 与面试证据（`ai-engineer-bootcamp`）
+- 明确 Seedance 短视频矩阵是可协商候选池，不锁制作数量、顺序、语言、片长、视觉隐喻或 CTA（`ai-engineer-bootcamp`）
+
+## 2026-08-27
+
+- 调整第七期 A2A 排课，从 W8 编排内容移到 W11 Governance，补齐身份、信任、授权委派、数据共享、审计、撤销和责任边界（`ai-engineer-bootcamp`）
+- 重构第七期 W8 Practice 为 Data Sources → Repository/Data Layer → Domain Services → Permission/Audit → MCP Adapter → CLI，禁止在 MCP handler 内堆 ORM 与业务规则（`ai-engineer-bootcamp`）
+- 增强第七期 W8 Multi-Agent Theory，对齐 CCAR-F orchestration domain，并加入 Claude Agent SDK 与 Managed Agents 架构模式、隔离、委派、失败和成本判断（`ai-engineer-bootcamp`）
+- 调换第七期 W6/W7 Practice，改为 Evaluation Pipeline First → Build and Prove Policy RAG 的市场主流 Eval-Driven Development 顺序（`ai-engineer-bootcamp`）
+- 增强第七期 W7 Agents/ReAct Theory Live，加入 Claude Agent SDK 的 sessions、tools/MCP、permissions、hooks、streaming、interrupt 与跨框架选型（`ai-engineer-bootcamp`）
+- 新增 AI Engineer 第七期 25 场 Live 的 Core Stack / Popular OSS Ecosystem 选型表，W6 Core 加入 FastMCP 并补充 Pi Agent Harness 的 CLI/runtime 定位，覆盖 AI Coding、UI、RAG、MCP、Agent、Memory、Harness、Governance、Routing 与 Evals（`ai-engineer-bootcamp`）
+- 重构 AI Engineer 第七期 W5 Practice 为 Spec-to-Work 与 Living Documentation 工程工作区，加入 Wiki、Architecture Diagram、ADR、Hooks 和 Project Skills 交付（`ai-engineer-bootcamp`）
+- 重写 AI Engineer 第七期 W3 Context Architecture Blueprint，删除把 Context Engineering 等同于固定 Prompt Template 与 CareKind 字段的旧定义（`ai-engineer-bootcamp`）
+- 修正 AI Engineer 第七期 W3 Practice 为 Claude Code Rapid MVP Build，删除 W3 实践接入模型的旧口径，明确 W4 才第一次接入 Voice AI（`ai-engineer-bootcamp`）
+- 加入 AI Engineer 第七期 W2 Claude Code frontend design workflow、Design Brief、方向比较、截图反馈和人工 Product Design Review（`ai-engineer-bootcamp`）
+- 补强 AI Engineer 第七期 W2 的 LLM Efficiency 内容，加入 KV Cache、Prefix Cache、Response Cache、安全失效策略及 TTFT/命中率/Tokens Saved 验证（`ai-engineer-bootcamp`）
+- 重构 AI Engineer 第七期 W2 理论侧重点：以 Token Budget 与 Context Window 工程判断为主线，补齐可进入/应排除的上下文内容及长上下文质量、延迟、成本边界（`ai-engineer-bootcamp`）
+- 修正 AI Engineer 第七期 A4 大纲 W1 的课程定位，由“AI 产品”改为“AI 系统”，并补齐系统组成表达（`ai-engineer-bootcamp`）
+- 新增 AI Engineer 第七期 A4 大纲的 macOS Preview 兼容渲染流程，从已验证 HTML/PDF 生成高清扁平版，规避 Type 3 中文字体显示差异（`ai-engineer-bootcamp`）
+- 扩展 AI Engineer 第七期 W1 岗位地图，加入 Applied AI Engineer、FDE、AI Builder、AI Solutions Engineer 等 title 变体及与 ML/Data/Software 岗位的职责边界（`ai-engineer-bootcamp`）
+
+## 2026-08-25
+
+- 统一 AI Engineer 第七期总览页、主海报、设计规范与推广计划为 Editorial Premium 柔和技术栈风格，重制 1242×1660 主海报 PNG，并以 6 个宣传点、5 个内容方向、30 天节奏和渠道原生格式替换第五期旧口径（`ai-engineer-bootcamp`）
+- 恢复 AI Engineer 页面原定 Editorial Premium 视觉：以已确认的 A3 V5 十层技术栈海报为风格基准，加入无文字紫橙玻璃 3D Stack Hero、官方 Logo、奶油渐变、圆角卡片与柔阴影，移除误用的 Neo-Brutalism（`ai-engineer-bootcamp/public`）
+- 统一 AI Engineer 第七期全部当前课程 HTML：课程总览、系统架构、四个交付阶段、学习方式与面试能力均读取同一份第七期排课口径；旧版长页面、Review 与美国第六期 Landing 原样归档并保留兼容 URL（`ai-engineer-bootcamp/public`）
+
+- 新增第七期数据驱动大纲网页、主宣传海报与无字 Agent 系统主视觉，登记第七期入口并保留第五/第六期历史资产（`ai-engineer-bootcamp`、`posters.html`）
+- 强化第七期定位为“每周理论 + 独立实践双 Live”，明确实践从 W1 在同一 CareKind repository 从 0 搭建完整 production Agent 产品，而非理论课附属 Lab（`ai-engineer-bootcamp`）
+- 保存第七期最终总结与质量审计，记录 78.1/100 GOOD、10 项亮点、P0/P1 缺口、Advanced Track 和外部依据，并补齐正式 Live 的 week/track/order/level/knowledge/status（`ai-engineer-bootcamp`）
+- 合并第七期延长实践为 W13 一场 180 分钟 Production Readiness Review & Demo Day，标准 Remote MCP/Auth/部署/CI/CD 由学生课前完成，正式排课更新为 25 场 Live、45 小时（`ai-engineer-bootcamp`）
+- 确认第七期 W12 Production AI System Design/Model Routing 理论与 CareKind Model Router 实践，旧 Demo Day 移为延长实践线最终候选（`ai-engineer-bootcamp`）
+- 修正第七期 W11 实践为 `Build the CareKind Production Agent Harness`，将原 8 项 production evaluation/safety 内容完整移动为 W13 延长实践候选（`ai-engineer-bootcamp`）
+- 确认第七期 W11 `Productionize the CareKind Agent` 实践，记录 8 项 production eval、tracing、red-team、threshold 与 release hardening 内容（`ai-engineer-bootcamp`）
+- 更新第七期 W10 为 production Agent Harness 理论与 CareKind 安全长期 Memory 实践，加入 write gate、scope、lifecycle、permission、audit 和 poisoning 测试；Model Routing 实践回到待排池（`ai-engineer-bootcamp`）
+- 确认第七期 W9 Agent Memory/State 理论与 bounded CareKind Agent 实践，补齐 tool loop、termination、fallback、human review 和 trace（`ai-engineer-bootcamp`）
+- 确认第七期 W8 Multi-Agent 理论与 CareKind MCP/CLI 实践，补齐 tools、权限、audit 和故障排查边界（`ai-engineer-bootcamp`）
+- 恢复第七期 W3–W7 已确认理论线，明确理论与实践独立排课，修正 W3/W4 被误标为待讨论的问题（`ai-engineer-bootcamp`）
+- 重排 AI Engineer 第七期 W1–W7 实践节奏：W3 非 AI 业务底座、W4 Voice STT 首次 AI、W5 Structured Documentation、W6 Policy RAG、W7 RAGAS 与 MVP 验收；W8 以后重新待排（`ai-engineer-bootcamp`）
+
+## 2026-08-24
+
+- 更新 AI Engineer 第七期 W5–W7：RAG 主线锁定为 W4–W5 两周，W5 必修 RAGAS 基础测试，W6 改为 Tool Calling/MCP/CLI，W7 只锁定 Agents/ReAct 理论课并保留实践课待讨论（`ai-engineer-bootcamp`）
+- 升级 AI Engineer 第七期 Phase 10，新增 AI Governance & Risk Management 直播课与 ISA Governance Pack Quest，同步课程大纲、介绍 Deck、概览页和架构页（`ai-engineer-bootcamp`）
+- 落地 AI Engineer 第七期正式大纲与 `outline.json`：12 周每周理论/实践双 Live，新增 CareKind 连续项目、Production RAG、Compliance-aware Model Routing，收束为 24 场正式直播并保留旧内容为录播/Lab/Quest/选修（`ai-engineer-bootcamp`）
+- 更新 AI Engineer 第七期 W1 理论课，聚焦 GenAI 基础、Applied AI 系统全景与 AI Engineer 岗位边界，Ops 降为生产意识预告（`ai-engineer-bootcamp`）
+- 更新 AI Engineer 第七期 W2 理论与实践排课，建立 Transformer 课前录播 + Live 工程理解，并将 CareKind Care Note Drafting 的 Design System、角色权限、业务状态与 UI 验收写入课程 SoT（`ai-engineer-bootcamp`）
+- 更新 AI Engineer 第七期 W3/W4 为 Context single-model baseline → CareKind Policy RAG 的连续递进，保留 Chain of Thought，记录 Memory/Tool Calling/完整 Prompt Injection 的后续排课边界，并移除无证据的效果百分比（`ai-engineer-bootcamp`）
+- 建立 AI Engineer 第七期 W0–W4 Required/Conditional/Pool 学习顺序，将 94 个候选条目收束为 29 个固定主线、14 个诊断补齐和 51 个待排 Pool，明确每周前置、后置、Quest 与学习时长（`ai-engineer-bootcamp`）
+
+## 2026-08-21
+
+- 新增 `opc-offer-mvp`、`opc-shipping-review`、`opc-first-dollar`、`opc-customer-acquisition` 四个学生 Skill 与共享 Founder OS，生成中文安装包并绑定生产课程附件（`ai-solo-founder-bootcamp`）
+
+## 2026-08-19
+
+- 新增 AI 一人创业营 W3《这是不是一门好生意 · Prove the Business》网页版讲课 deck：32 张 React SlideEngine slide，讲师 Stan Luo（Ex-McKinsey），对应 `outline.json` 的 `L09`（2026-08-23 周日 14:00–17:00）。主题是「算账」不是「做东西」——全程不产出对外物料，只产出判断。六个环节照 outline L09 逐条做、不自创：顾问看生意的三个动作（拆成可算的部件 → 找结构性约束 → 看约束解不解得开）+ indie hacker 三种自我欺骗 + 证据梯度 L0–L4（把 W2 那 5 场访谈摆上尺子，「0 就写 0」）；七条变现路径全景 + 赚钱算式（客单价 × 目标单量 − 可变成本 = 月毛利）+ $1k / $10k 反推表 + 单量四来源产能上限；麦肯锡四把尺子（市场规模自下而上算不甩 TAM / 竞争看「钱现在正付给谁」并把 Excel 与实习生算进替代方案 / 单位经济算两套贡献并把创始人时间折成钱 / 一人公司只有行业积累·分发渠道·数据流程沉淀三种现实护城河）+ 现场四维打分；中段 30 分钟 Founder Exchange；Stan 主刀现场拆 3–4 个学员 idea（赚钱算式 / 形态 / 结构性风险三层追问，台下同步做十问答题卡）+ 想改方向就改 W1 那份 SoT 原件、不新建文档（六个业务字段取自 `W1_RUNSHEET.md` §1.2）；形态四选一 + 定价五选一 + 三维决策框架 + 价格 anchor 四步 + 组合挑错（订阅 × 一年用两次 = churn 必死）并映射到 W7 的收款方式；最后现场 20 分钟写一页裁决书，继续 / 调整 / 换三选一并明写「允许写换」。数据纪律从严执行 `HANDOVER_DECKS.md` §2.3：deck 内不出现任何具体金额、转化率、市场规模或案例收入，需要数字处一律留白由学员现场填，反推表明标「这是算术，不是承诺」，outline 里的 Freemium 转化率 1–5% 与早鸟 30–50% 只标注为课程大纲经验区间而不印成结论，L10 的「6 个月做出 $1k MRR」按不承诺金钱结果改述为「半年内第一个收入目标」，一个案例都不写（`W1_CASE_STUDIES.md` 不在本仓库、来源无从核对），22 页带 `SourceNote` 出处条。引擎 `SlideEngine.tsx` / `ui.tsx` / `CameraBubble.tsx` / `theme.ts` / `main.tsx` 逐字从 `lessons/_template` 拷贝未改动，`DeckTable.tsx`（含 `FitBox` / `SlideHead` / `Punchline` / `SourceNote`）复用 W4 版本，新写的只有内容层。按 `HANDOVER_DECKS.md` §4.1 把中段 30 分钟交流排进时间表（outline 六个 step 一个不删，按比例压到 140 分钟，step ⑥ 现场只写 20 分钟、余下落到课后 L11 自学）。配 `PRD.md`（180 分钟节奏表、逐页 spec、数据纪律说明与 4 条上台前未决项）与 `README.md`（上台前四件事：讲师署名待本人确认 Principal 拼写与能否实名、课前指定上台被拆的学员、补主场城市、落实混合班 Tutor 排班）。32 页逐页实测 FitBox scale 全为 1、无内容裁切、无元素超出 1600×900 画布。已登记 `lessons.html` 并接入 `deploy.yml` 的 Build 与 Assemble 两处（`lessons/ai-solo-founder-w3`、`lessons.html`、`.github/workflows/deploy.yml`）
+- 本期 W3 / W4 排期对调留痕：W4「把想法做出来」已于 08-16 先上，W3 排在其后（08-23）。W3 deck 的 15 周路线页、定调页与下周预告均按对调后的顺序写；`outline.json` 未改动（沿用既定处理：只换排期、不动大纲）。同时修正路线页中 W3 那格的文案——W4 deck 写的是「访谈真实客户」，那其实是 W2 自学 `L08` 的动作，本 deck 改为与 `L09` 一致的「算清楚它到底赚不赚钱，写下继续、调整还是换」（`lessons/ai-solo-founder-w3`）
+
 ## 2026-08-09
 
 - **L8 蓝图从零重写为 v1.0《Agent Team —— 从「多开 context」到「共同完成任务」》，并据此重建 deck 与讲稿。** 蓝图抬头写死：Deck、`RUNSHEET.md` 与 `HANDOUT.md` 必须以它为唯一事实源重新生成，**旧版拍次、旧版双实验与旧版角色编号全部作废**。
@@ -15,6 +134,10 @@
   - **附录 H 改写为「用 Agent Team 开发一个新功能」的完整走查**（原为通用创建流程）：以本地 `star-mansions` 为对象，从建 teammate → 建 Team → 到交付，做一个**塔罗牌占卜**功能（78 张牌打乱，用户输入三个 1–78 的数字抽三张并给分析）。这个例子不是硬凑的——摸完仓库发现 `types/contract.ts` **前后端各一份且必须逐字段一致**，后端定的字段形状直接决定前端能不能渲染，**契约就是那条把两个人绑在一起的中途依赖**，正是蓝图 §11.3 第 3 张任务卡「前后端持续协商接口并分别实现 → Team」的真实版本。编队用蓝图 §7.2 标准单位 Lead + 3（`tarot-backend` / `tarot-web` / `tarot-verify`），并对齐该项目自己 `CLAUDE.md §9` 的纪律（Lead 是编排者不写产品代码、dev→test 最小编队、走 PR 不自合并）。三处做重：**① H.4 文件所有权表**——这是写入任务与课堂只读题最大的区别（蓝图 §6.3），并点出唯一高危点「两份 contract.ts 不是同一个文件所以不会触发写冲突，但会静默不一致」，处理办法写进 charter；**② H.11 契约协商**——B 的 CONFLICT 不是「我觉得不好」而是「我照这份写会渲染不出来」+ 三条具体证据，Lead 的裁决判据是「哪一侧持有能避免两份数据漂移」，且 `unchecked_scope` 里留了一条没定的事并指定后续谁定；**③ H.12 那条 seed 消息**——后端发现 serverless 存不住洗好的牌、seed 随响应返回，**这直接改变前端「再抽一次」按钮的做法**，是本节立论「一名成员的新证据改变另一名成员的下一步」的实物。另补 **H.12.1「成员可以自己创建和调用 subagent」**——teammate 本身是独立会话，L7 那套委派在成员内部原样成立（配两层结构图：L8 的成员互通 + 每个成员内部各自 hub-and-spoke），但三条边界要讲死：**teammate 可以开 subagent、不能再开 teammate（加成员只能 Lead 做，这是「角色不漂移」的另一面）、而且 subagent 的产出只回给它的父 teammate —— 不进共享任务板，也不会自动传给别的成员**，所以跨边界的证据仍要成员自己点名发 `[DISCOVERY]`（**subagent 帮成员省力，但不替成员承担通信责任**）。判断线不新增，就是 L7 第一问换个主语。本例两处真实用法正好对齐项目 `CLAUDE.md §9.2`：`tarot-backend` → `research-agent` 查证 78 张牌释义出处（项目规则要求「释义出处先 research-agent 出带出处的结论」，而且取证噪音留在成员主线里会挤坏后面写代码那几轮——L7 的隔离收益）；`tarot-verify` → `test-agent` + `codex-test-agent` 并行双验（API 契约属项目定义的高风险区，且**不互相传阅结果**，传阅了两个验收就退化成一个）。**并把这条能力接回创建口径**（Rick 指出的缺口：H.12.1 说了成员能开 subagent，但 H.6/H.8 的创建 prompt 一个字没提）——委派能力**不是默认送的**：自然语言直接建的成员通常继承默认工具集能委派，但**用 `.claude/agents/` 角色定义建的成员，其 `tools` 会生效（蓝图 §6.4），窄 `tools`（如只有 `Read, Grep, Glob`）会把委派能力一起切掉**。因此三处同时改：① H.6 创建 prompt 显式写死「可以调用 subagent、不得再创建 teammate」并把「有没有委派能力」加进必须报告的第 4 项（逐句表补两行说明：两个方向都要写，不写前半句成员会把大活硬扛在自己 context 里，不写后半句它可能自己扩编、Lead 失去编制控制）；② H.8 明确 **verifier 的委派能力是硬需求不是可选项**——项目 §9.2 的高风险区双验就是靠它开两个 subagent 实现的，没有这项 H.13 的验收直接降级成单验；③ charter §2 补一行成员可调用 subagent、不得创建 teammate、subagent 产出只回父成员。另在 H.12.1 顶部加**能力自检**（20 秒的一条 prompt + 判定表），并点明这是「**L7 那句『不假设继承，先做 capability check』在 L8 里要再做一次，只是检查对象从子 Agent 变成队友**」。**H.9 补「有 PRD 了 charter 还要写吗」**（Rick 的问题）：答案是要、但会短很多，而短掉的恰好不是重要的那几项 —— 两者**正交**：**PRD = 做什么（产品真相源）／charter = 这几个 agent 怎么协作（编队协议）**。配覆盖表：第 1 项 Outcome ✅ 被完全覆盖（改成**指向 PRD 路径**）、第 5 项 Done 🔶 覆盖一半（PRD 的验收 = 产品对不对；charter 还要问冲突裁决了吗 / 外部验收执行了吗 / 未检查范围标了吗），而**第 2、3、4 项 ❌ 一条都不覆盖**，其中**第 4 项通信触发器正是 charter 存在的全部理由**。并标一条硬警告：**绝不要把 PRD 抄进 charter** —— 项目 `CLAUDE.md` 写死「产品的 SoT = PRD.md」，复制一份就制造了第二份产品真相源必然漂移；项目 §9.3-2 的做法才对（**派活带的是需求 SoT 的路径，不是内容**）。charter 示例随之改成「PRD 已存在」的版本：第 1 项只留 PRD 路径 + 歧义时停下来问 Lead，第 5 项明确只写 PRD 管不到的「协作完成没完成」。**新增 H.1.5「顺序与职责分界：谁决定什么」**（Rick 的问题：是不是建完 Team、出了 PRD 就让主 agent 自己分配）—— **分配确实该让 Lead 做，原附录把 Lead 的活替它干了**（蓝图 §8.6 Lead 四项责任第一项就是「结构」，而 H.3 编队、H.4 所有权、H.10 拆任务全是预先写死的，学员照抄学不会拆）。但前面两步不能交给 Lead：**① 写 PRD 用单 Agent 不用 Team**（过一遍三问就知道：需求澄清是你和一个 agent 来回对话，没有跨成员中途依赖，用 Team 是过度组队），**② 三问判断必须人做**——**不能问 Team「你需不需要存在」，那是循环论证**。正确顺序：PRD（人拍板/单 Agent 起草）→ 三问（人）→ 建最小 Team + smoke test（固定起点，不需要方案）→ **编队/所有权/任务拆分（Lead 起草 → 人批）** → 契约裁决与验收（Lead 执行，人收口）。配职责分界表、PRD 起草 prompt、**让 Lead 出编队方案的 prompt**（五问，第 5 问是「你预判最可能出现的一次跨成员依赖是什么」——**让 Lead 自己给出「为什么要用 Team」的证据，答不出来就说明这题可能根本不需要 Team**）、以及人只验三件事的清单（重叠 / 缺口 / 第 5 问答不答得出来）。H.3 / H.4 / H.10 相应改标为**参考答案而非模板**，并加「文档顺序 ≠ 执行顺序」说明。演示脚本加一条（8 → 12 分钟）：**展示 Lead 出的编队方案原文 + 人批的意见**，说「编队不是我规定的，是 Lead 读完 PRD 自己提的，我只批了有没有重叠、有没有缺口」。另加 H.15 演示脚本（8 分钟，重点不是塔罗牌是协作过程：功能 → 名单 → 所有权表 → CONFLICT/DECISION → seed 消息 → verifier 独立输出 → 未合并的 PR）与 H.16 彩排清单（顶一条警告：**不要在课堂现场跑这整套**，它是课前做好的成品）。附录 I 相应改名为「课堂 Lab 完整实例」并在抬头写明与 H 的分工（H 写入 / I 只读）。**附录 H 引用的 11 个文件路径与 4 条 npm 命令均已对照 `star-mansions` 实际结构核过。**
   - 同步更新 `lessons.html` L8 卡片（v1.0 全新描述 / 20 页 / 先讲后做 / 须锁 commit / 三个入口文案）（`lessons/VIBE_CODING_MASTER_L8_BLUEPRINT.md`、`lessons/vibe-coding-master-l8/`、`lessons.html`）
   - ⚠️ **已知缺口**：`HANDOUT.md` 仍是旧版内容，与 v1.0 不一致，待按蓝图 §18 的 12 项重写；正式 Lab 的 `文件:行号` 待锁定 commit 后填入（蓝图 §13.2 不允许凭旧行号上课）。
+
+## 2026-08-08
+
+- 新增 AI 一人创业营 W2《你的 AI 员工上岗 · Agents at Work》网页版讲课 deck：35 张 React SlideEngine slide，沿用 W1 的引擎与 Register B 视觉。主线是把 W1 的「懂你的秘书」升级成「替你干活的员工」——四条 agent 路线现场选型（Hermes / 龙虾 OpenClaw / Codex / Claude Code，只对照定位与适用场景，价格与系统要求标注以官方页面为准）、装机四检查点、五类权限的授权边界与审计要求、敏感行业本地路径与数据红线、agent 工作说明书（JD）五段写法与合成示范、JD 与 SoT 的分工（agent 读 SoT 不改 SoT）、中段 30 分钟 Founder Exchange 与 W2 首次组队及半页组内契约、Agent Schedule 五段结构与五个案例（竞品监控 `0 7 * * *` / SEO 周报 `0 9 * * 1` / 财务月报 `0 8 1 * *` / 周报 `0 18 * * 0` / git 日报 `0 22 * * *`）、cron 速查、跨平台定时机制「关机还跑不跑」对照、五个失败模式兜底、责任边界、agent 产出不等于市场证据、Mom Test 访谈口径与本周作业。新增 `ScheduleCase.tsx` 模板 + `data/schedules.ts` 承载五个同构案例页；配 `PRD.md`（含 180 分钟节奏表、逐页 spec、红线自查与 5 条上台前未决项）与 `README.md`。按 `HANDOVER_DECKS.md` §4.1 把中段 30 分钟交流排进时间表（outline 六个 step 一个不删，各压缩 5–10 分钟腾出）。已登记进 `lessons.html` 并接入 `deploy.yml` 的独立构建与 Assemble 路径（`lessons/ai-solo-founder-w2`、`lessons.html`、`.github/workflows/deploy.yml`）
 
 ## 2026-08-06
 
@@ -66,11 +189,11 @@
 - 重写 **L7 蓝图 v1.0（Subagent 单线版）**：主题从「多 Agent 协作」收回「**Subagent — 给 context 分家**」。立论恢复为 v0.2 那句「**子 Agent 不是多一个人手，是多一个独立的 context**」（双结构版把它稀释了），收益/代价/铁律/冲突全部作为它的推论展开；决策卡从两问收回一问，第二问移交 L8；**红灯实验从纸面判断恢复为 12 分钟动手实测**，判断线回到两次实验之后由学员自己的数据长出来；新增 §6.7 最小配置阶梯（1 verifier → 2 → 3，并说清为什么最小那个是 verifier——三项强收益里「独立视角」是唯一一个 1 个成员就能拿满的）、§6.9 按判断密度选模型档、§6.10 异构埋点；120 分钟流程重排（两次实验相邻、判断线后置）；§11 逐页表收敛到 20 页并标注可复用的归档页；§18 附录只留 Subagent 部分并补「模型与力度五个技巧 + 三个坑」（换档不炸缓存 / 别让 model 空着 / 先调力度后调档 / 给搜索型角色设天花板 / 环境变量统一压档；最便宜的档 context 最小、组织 allowlist 静默降级、fork 不是省钱工具）（`lessons/VIBE_CODING_MASTER_L7_BLUEPRINT.md`）
 - 新建 **L8 蓝图 v0.1《Agent Team — 从分派到协作》**：开场把 L7 埋的那句「子 Agent 之间没有连线」变成痛点（三份「我这边看起来没问题」= 还是不知道根因）；核心是**对抗辩论**——它治的是**锚定**（单个 Agent 找到一个说得通的解释就停），并点破最容易做错的一步「**对抗 ≠ 分工**」（按模块切拿到的是覆盖，认领假设 + 专职反例拿到的才是收敛；没人有动机推翻别人的团队其实是 Subagent 只是更贵），配门槛的操作化版本「**没有廉价判据时辩论才值**」；含 Team charter 六项、三类关键消息（DISCOVERY/CONFLICT/DECISION）、Lead 收敛责任（任务板完成 ≠ 外部验收完成）、异构只能进 Subagent 的回收；§3.1 预检卡比 L7 多三行**开课门槛**（协作开关 / 怎么确认成型 / 消息看不看得见）；§12 硬要求含三条 🔴（先跑通、定投屏显示模式、课前预批权限）；§15 国内环境的**人肉信使方案**明确标为主路径而非降级；§18 附录含完整设置与生成方法及头号坑「工具会用 Subagent 冒充 Team 而面板上看不出来」。18 页逐页表已定，复用列指向 L7 的 `_archive/`（`lessons/VIBE_CODING_MASTER_L8_BLUEPRINT.md`、`lessons.html`）
 - 修正 L6 蓝图 §15 待确认项 7 的下节预告：原写「L7 = Agent Team」是拆课前口径，改为「L7 = Subagent · 给 context 分家；Agent Team 拆到 L8」并注明变更缘由（`lessons/VIBE_CODING_MASTER_L6_BLUEPRINT.md`）
-
 - 新增 Vibe Coding 大师课第七节《多 Agent 协作：Subagent 与 Agent Team 两种结构》网页版讲座 deck：20 张 React SlideEngine slide（P00–P19），按蓝图 v0.4 §11 逐页实现。新增 `TopoDiagram.tsx` 作为全课视觉主角——两张 SVG 通信拓扑图（Hub-and-spoke：成员之间没有连线，分工/补 context/冲突处理全经过主 Agent；Team：成员互通的紫色 mesh + 共享任务板与信箱），P03 两张同屏对比、P04/P05 各自放大讲。主干四段：① 两种结构总览（拓扑图 → 七维并排对照表 → 两问决策树）② 结构 A · Subagent（六格 brief + 坏 brief 现场改写 → Lab A 三路只读调查 → Hub 汇总矩阵 + 四个必答问题）③ 结构 B · Agent Team（Team charter 六项 → Lab B 三个竞争假设 → DISCOVERY/CONFLICT/DECISION 三类关键消息 → 任务板全绿 ≠ 外部验收完成）④ 共同底线（红灯：微任务三结构成本对照 / context 隔离 ≠ workspace 隔离五层矩阵 / 完成回执 + verifier）；P08 能力预检卡单独成页，9 项当天实测 + 三条必须当场明示的产品事实。遵守蓝图 §16.3 数据纪律：deck 上不出现任何参数名、开关字面量、版本号或并发上限，那些留在蓝图 §18 附录 A 的老师备课材料里。P19 按「L7 不是系列收尾」处理，下节预告用 `NEXT_LESSON` 常量控制，主题定了改一行即可（`lessons/vibe-coding-master-l7`、`lessons.html`、`.github/workflows/deploy.yml`）
 - 给 Vibe Coding 大师课第七节 deck 补四页操作层（20 页 → 24 页），补上原版只讲判断、不讲「实际要打什么字」的缺口：`L7P08b_ModelChoice`（谁用什么模型——三个默认值陷阱：Subagent 默认跟随主对话 / Teammate 默认**不**跟随 Lead / Teammate 的档在 spawn 时就定死改不了；选档跟「判断密度」走不跟「重要性」走，Verifier 与 Team Lead 判断密集不能省、调查员执行密集便宜档够用；先扫思考力度再动模型档）、`L7P09b_HowToSpawn`（派一个 Subagent——三档调用强制力递增，①点名与②@提及的差别本身就是「我说了 ≠ 它照做了」的教学点；一次性委派 prompt 逐句拆解：边界用否定句显式收窄、证据格式前置否则只能拿到自然语言总结、以及最容易漏的「给『不知道』一个出口，不给出口它就编」）、`L7P12b_HowToSpawnTeam`（开一个 Team——spawn prompt 只有自然语言没有命令；「让它们互相对话、试图推翻彼此的理论」这半句就是 Team 的全部意义，去掉它拿到的是三份互不相干的报告即 Subagent 只是更贵；配开完必验的两个动作防「Subagent 冒充 Team」）、`L7P15b_Heterogeneous`（异构混用——成员只能是同一家的会话，想混只有「包成工具」和「只给 Bash 的包装层」两条路；结构性结论 **异构只能进 Subagent、进不了 Agent Team**，因为成员资格靠共享任务板 + 信箱，外部进程收不到消息也不出现在任务板，永远只能是一根 spoke；真该混的只有 verifier，换模型家族的独立性比换 context 硬；最小成员阶梯 1 verifier → 2 调查+验证 → 3 并行分支，最小那个是 verifier 因为四项强收益里「独立视角」是唯一一个 1 个成员就能拿满的）。四页均遵守蓝图 §16.3 数据纪律：只讲档位与判断线，不出现模型名、价格、版本号或开关字面量。同步更新蓝图 §11 逐页表与 `lessons.html` 卡片（`lessons/vibe-coding-master-l7`、`lessons/VIBE_CODING_MASTER_L7_BLUEPRINT.md`、`lessons.html`）
 - 修 Vibe Coding 大师课第七节 deck 的静默裁切：`L7P01` 右栏写死 `height: 400` + 外层 `overflow: hidden`，12 行内容实际需要约 490px，底部被无声裁掉（不报错也不出滚动条）。改为按内容撑开并收紧行距；同时把共享 `ui.tsx` 的 `Inner` 从固定 `height: 85%` 改为 `minHeight: 85% / maxHeight: 94%`，把这类溢出从「静默裁切」变成「向下生长」（`lessons/vibe-coding-master-l7`）
 - 给 Vibe Coding 大师课第七节蓝图补 **§18 附录 A：两种结构的设置与生成方法**（v0.3 → v0.4）：§18.1 Subagent 的四种生成方式与优先级、文件格式与教学要用的字段、三档调用方式、启动时 context 里有什么；§18.2 Agent Team 的 12 条（开关是前提、自然语言生成、复用 subagent 定义当 teammate 角色、计划审批、显示模式、任务认领、落盘位置与「怎么证明 team 真成型」、权限弹窗全部冒到 Lead、规模建议、已知限制、以及头号坑「Claude 会用 Subagent 冒充 Team 且面板看不出来」）；§18.3 学员课后自查清单、§18.4 老师开课前必跑的五条验收、§18.5 国内环境没有 Team 结构时的人肉信使降级方案。同步回填：§2 对照表补「写入隔离」「嵌套」两行，§3.1 能力预检卡补两行开课前提，§5 非目标为「默认关闭的结构开关」开唯一例外，§12.1 补三条 🔴 硬要求，§16.2 记入三条产品事实，§17 增补两条待确认项（`lessons/VIBE_CODING_MASTER_L7_BLUEPRINT.md`）
+
 - 扩展 AI 一人创业营 W1 的 Founder Club 前置说明：在 15 周路线页直接列出 W14 融资准备、W15 Traction / Investor 双 Track、毕业后 Intro Desk 与 30 / 60 / 90 天持续运营；新增学院与 Founder Club 分工、双 Track 进入条件、Intro Desk 六步流程及边界页，以及 Salon、Mastermind、Office Hour、互为客户市场和毕业后行动表页，deck 更新为 45 页（`lessons/ai-solo-founder-w1` / `ai-solo-founder-bootcamp`）
 - 统一 AI 一人创业营 W1 课程全景中的 W11 正式名称为“Growth Hacking · 增长黑客”，并按 PR #64 补清 AARRR 最大漏水环、推荐循环与一次 10 渠道 launch 的 Phase 2 收官动作（`lessons/ai-solo-founder-w1`）
 - 重做 AI 一人创业营 W1 的 Sponsorship SoT 案例左侧：用拟真 Google Drive 路径、搜索框、Word 文档、Excel 表格与图表、PPT 图表缩略图和六份互相冲突的 final 版本，替代纯文件名列表，让版本灾难与右侧唯一当前 SoT 的对比一眼可见（`lessons/ai-solo-founder-w1`）
@@ -157,3 +280,7 @@
 ## 2026-07-17
 
 - 更新 CCDV-F 第一张 Classroom Deck 的 UAT 音频地址、发布工作流和 Release Candidate 登记（`lessons/ccdv-f-exam-overview-pilot`）
+
+## 2026-09-14 · Curriculum domain
+
+- 更新课程资料、索引和发布模板的 curriculum 绝对链接为 jracademy.ai，增加上传前域名检查；保留原路径和非 curriculum 服务地址。

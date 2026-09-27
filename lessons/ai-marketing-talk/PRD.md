@@ -5,7 +5,7 @@ owner: @lightman
 priority: high
 ---
 
-> ⚙️ **v0.4 build（已部署 + 广告位）**：deck 工程已建在本目录（React 19 + Vite + SlideEngine，主题色 `#E63977`）。当前 **46 页**：双 Poll 开场（P50/P95 立论，克隆 `ai-engineer-resume-interview` S02–S05）+ 5 转变 + 5 级阶梯 + Master/SoT + 一人公司/AI Coding 必会 + 双轴自检导流 + 合作伙伴收尾。**广告位 ×3（重点推 OPC 一人创业营）**：S16b CH2 热度顶点插播广告（OPC 钩子 + 二维码）、S29 价格卡加二维码、S31b Q&A 挂屏大广告（OPC 大码 + AI Coding 小码）。两课二维码已生成（`public/qr/{opc,coding}.png`，指向 `/program-course/` 落地页，curl 实测 200）。`bun run build` 通过（tsc 0 / vite 465 模块）。本地讲：`cd curriculum/lessons/ai-marketing-talk && bun run dev`。**deploy.yml 已注册 + lessons.html 已加卡片**，线上地址 `jiangren.com.au/curriculum/lessons/ai-marketing-talk/`。待办：CH2 现场 demo 接真实 case 素材。
+> ⚙️ **v0.4 build（已部署 + 广告位）**：deck 工程已建在本目录（React 19 + Vite + SlideEngine，主题色 `#E63977`）。当前 **46 页**：双 Poll 开场（P50/P95 立论，克隆 `ai-engineer-resume-interview` S02–S05）+ 5 转变 + 5 级阶梯 + Master/SoT + 一人公司/AI Coding 必会 + 双轴自检导流 + 合作伙伴收尾。**广告位 ×3（重点推 OPC 一人创业营）**：S16b CH2 热度顶点插播广告（OPC 钩子 + 二维码）、S29 价格卡加二维码、S31b Q&A 挂屏大广告（OPC 大码 + AI Coding 小码）。两课二维码已生成（`public/qr/{opc,coding}.png`，指向 `/program-course/` 落地页，curl 实测 200）。`bun run build` 通过（tsc 0 / vite 465 模块）。本地讲：`cd curriculum/lessons/ai-marketing-talk && bun run dev`。**deploy.yml 已注册 + lessons.html 已加卡片**，线上地址 `jracademy.ai/curriculum/lessons/ai-marketing-talk/`。待办：CH2 现场 demo 接真实 case 素材。
 
 # PRD · 网页版讲座《新时代的 AI Marketing》
 
@@ -13,7 +13,7 @@ priority: high
 > 版本：v0.1（待 sign-off → 今晚要讲，按 §4 快通道走）
 > 项目代号：`ai-marketing-talk`
 > Lesson 目录：`curriculum/lessons/ai-marketing-talk/`
-> 线上地址（部署后）：`jiangren.com.au/curriculum/lessons/ai-marketing-talk/`
+> 线上地址（部署后）：`jracademy.ai/curriculum/lessons/ai-marketing-talk/`
 > 主题色：`#E63977`（玫红 · 与 `curriculum/ai-marketing/` 营销课线品牌对齐）
 
 ---
@@ -50,7 +50,7 @@ priority: high
 ### 0.4 交付物
 
 - 一份 **~48 页网页版 slides**（React 19 + framer-motion + inline styles，Neo-Brutalism，主题色 `#E63977`）
-- 部署到 `jiangren.com.au/curriculum/lessons/ai-marketing-talk/`
+- 部署到 `jracademy.ai/curriculum/lessons/ai-marketing-talk/`
 - 现场讲 + 录播后做引流素材；后续可按 `talk-to-xhs-posters` 扩成小红书系列
 - 配套：结尾两门课入口卡 + EOI 留资二维码
 
@@ -201,7 +201,7 @@ priority: high
 
 - push 到 `main` → GitHub Actions `deploy.yml` 自动构建
 - **🔴 必做**：改 `.github/workflows/deploy.yml` 的 Assemble 步骤加入 `ai-marketing-talk` slug（参照 `curriculum/CLAUDE.md` 强制规则 1，否则线上 404）
-- 上线地址：`jiangren.com.au/curriculum/lessons/ai-marketing-talk/`
+- 上线地址：`jracademy.ai/curriculum/lessons/ai-marketing-talk/`
 
 ### 3.4 海报（可选 · 二期）
 

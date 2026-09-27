@@ -98,7 +98,7 @@ const CURRICULUM_SLUGS = {
 };
 ```
 
-添加新课程：在此对象加一行 + 确保 HTML 已部署到 `jiangren.com.au/curriculum/{slug}/`。
+添加新课程：在此对象加一行 + 确保 HTML 已部署到 `jracademy.ai/curriculum/{slug}/`。
 
 ---
 

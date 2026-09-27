@@ -15,4 +15,4 @@
    - 部署时间
    - 提交内容
 3. 如果失败，查看 `gh run view [run-id] --log-failed` 获取错误信息，用通俗语言解释问题
-4. 如果成功，告诉用户线上已更新，可以访问 `https://jiangren.com.au/curriculum/` 查看
+4. 如果成功，告诉用户线上已更新，可以访问 `https://jracademy.ai/curriculum/` 查看

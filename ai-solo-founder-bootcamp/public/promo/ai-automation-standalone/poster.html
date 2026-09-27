@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JR Academy · AI 自动化独立课程海报</title>
+    <style>
+      :root {
+        --ink: #17182f;
+        --cream: #fffcf6;
+        --coral: #fb6a4a;
+        --pink: #ff4f8f;
+        --violet: #9b6bff;
+        --blue: #3e8ee0;
+        --warm-border: #eadfce;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1242px; height: 1660px; overflow: hidden; }
+      body {
+        color: var(--ink);
+        background: var(--cream);
+        font-family: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      .poster {
+        position: relative;
+        width: 1242px;
+        height: 1660px;
+        overflow: hidden;
+        isolation: isolate;
+        background: var(--cream);
+      }
+      .poster::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -3;
+        background: var(--background) center / cover no-repeat;
+      }
+      .poster::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(90deg, rgba(255,252,246,.98) 0%, rgba(255,252,246,.94) 42%, rgba(255,252,246,.3) 69%, rgba(255,252,246,0) 100%),
+          linear-gradient(180deg, rgba(255,252,246,.2) 0%, rgba(255,252,246,0) 62%, rgba(23,24,47,.2) 100%);
+      }
+      .header {
+        position: absolute;
+        top: 70px;
+        left: 76px;
+        right: 76px;
+        height: 88px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo { display: block; width: 300px; height: auto; }
+      .solo {
+        padding: 15px 25px 16px;
+        border: 1px solid rgba(23,24,47,.13);
+        border-radius: 999px;
+        background: rgba(255,255,255,.76);
+        box-shadow: 0 2px 8px rgba(28,27,34,.05), 0 14px 34px rgba(28,27,34,.08);
+        color: var(--ink);
+        font-size: 27px;
+        font-weight: 750;
+        letter-spacing: .08em;
+      }
+      .eyebrow {
+        position: absolute;
+        left: 78px;
+        top: 232px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        color: white;
+        background: linear-gradient(100deg, var(--coral), var(--pink), var(--violet));
+        box-shadow: 0 12px 30px rgba(155,107,255,.22);
+        font-size: 23px;
+        font-weight: 800;
+        letter-spacing: .12em;
+      }
+      .eyebrow::before { content: "✦"; font-size: 20px; }
+      .content {
+        position: absolute;
+        left: 78px;
+        top: 332px;
+        width: 715px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 105px;
+        line-height: 1.07;
+        letter-spacing: -.045em;
+        font-weight: 900;
+        text-wrap: balance;
+      }
+      h1 .gradient {
+        display: block;
+        color: transparent;
+        background: linear-gradient(100deg, var(--coral) 0%, var(--pink) 52%, var(--violet) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
+      .platforms {
+        margin-top: 54px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px;
+        max-width: 690px;
+      }
+      .platform {
+        padding: 13px 20px 14px;
+        border: 1px solid rgba(23,24,47,.13);
+        border-radius: 999px;
+        background: rgba(255,255,255,.9);
+        box-shadow: 0 2px 7px rgba(28,27,34,.05), 0 14px 32px rgba(28,27,34,.08);
+        font-size: 25px;
+        line-height: 1;
+        font-weight: 760;
+        white-space: nowrap;
+      }
+      .value {
+        margin-top: 34px;
+        width: 650px;
+        padding: 26px 28px 28px;
+        border: 1px solid rgba(23,24,47,.12);
+        border-radius: 24px;
+        background: rgba(255,255,255,.86);
+        box-shadow: 0 2px 7px rgba(28,27,34,.05), 0 18px 40px rgba(28,27,34,.1);
+        font-size: 32px;
+        line-height: 1.55;
+        font-weight: 720;
+      }
+      .value strong { color: var(--coral); font-weight: 900; }
+      .paid {
+        margin-top: 18px;
+        width: 650px;
+        padding: 20px 25px;
+        border: 1px solid rgba(155,107,255,.24);
+        border-radius: 20px;
+        background: linear-gradient(110deg, rgba(255,255,255,.9), rgba(244,240,252,.88));
+        box-shadow: 0 12px 32px rgba(80,54,140,.1);
+        font-size: 25px;
+        line-height: 1.52;
+        font-weight: 700;
+      }
+      .paid b { color: #7753d8; }
+      .footer {
+        position: absolute;
+        left: 78px;
+        right: 78px;
+        bottom: 72px;
+        height: 112px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+      .teacher {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 23px;
+        border-radius: 20px;
+        color: white;
+        background: rgba(23,24,47,.94);
+        box-shadow: 0 18px 38px rgba(13,18,43,.24);
+        font-size: 28px;
+        font-weight: 780;
+      }
+      .teacher::before {
+        content: "M";
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--coral), var(--pink), var(--violet));
+        font-family: Inter, Arial, sans-serif;
+        font-size: 24px;
+        font-weight: 900;
+      }
+      .series-mark { display: flex; gap: 10px; align-items: center; }
+      .series-mark i { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,.36); }
+      .series-mark i.active { width: 44px; border-radius: 999px; background: linear-gradient(90deg, var(--coral), var(--pink), var(--violet)); }
+      .global { --background: url("background-global.png"); --coral: #3e8ee0; }
+      .global::after { background: linear-gradient(90deg, rgba(255,252,246,.99) 0%, rgba(255,252,246,.95) 44%, rgba(255,252,246,.25) 72%, rgba(255,252,246,0) 100%); }
+      .factory { --background: url("background-factory.png"); }
+      .factory .content { width: 780px; top: 292px; }
+      .factory h1 { font-size: 96px; }
+      .factory .platforms { margin-top: 36px; max-width: 690px; }
+      .factory .platform { padding: 11px 17px 12px; font-size: 22px; }
+      .factory .value { margin-top: 28px; font-size: 29px; line-height: 1.5; }
+      .cn { --background: url("background-cn.png"); }
+      .global h1 { font-size: 98px; }
+    </style>
+  </head>
+  <body>
+    <main id="poster" class="poster cn">
+      <header class="header">
+        <img class="logo" src="jr-academy-logo.svg" alt="匠人学院 JR Academy" />
+        <div class="solo">可单独报名</div>
+      </header>
+      <div class="eyebrow">AI MARKETING 自动化实战课</div>
+      <section class="content" id="content"></section>
+      <footer class="footer">
+        <div class="teacher">Michael Nie 主讲</div>
+        <div class="series-mark"><i class="active"></i><i></i><i></i></div>
+      </footer>
+    </main>
+    <script>
+      const variants = {
+        cn: {
+          title: '中文媒体', accent: 'AI 自动化',
+          platforms: ['微信公众号', '小红书', '抖音'],
+          value: '<strong>AI 内容生成</strong> · 自动发布<br>评论与私信回复'
+        },
+        global: {
+          title: '海外媒体', accent: 'AI 自动化',
+          platforms: ['TikTok', 'Instagram', 'Facebook', 'LinkedIn', 'X'],
+          value: '<strong>AI 原生内容</strong> · 自动发布<br>评论与私信回复'
+        },
+        factory: {
+          title: 'AI 全自动', accent: '内容工厂',
+          platforms: ['微信公众号', '小红书', '抖音', 'TikTok', 'Instagram', 'Facebook', 'LinkedIn', 'X'],
+          value: '<strong>一个资料源</strong>，自动完成选题、内容生成、多平台发布与效果复盘',
+          paid: '<b>加学：</b>AI 优化 Google Ads · Meta Ads · TikTok Ads'
+        }
+      };
+      const key = new URLSearchParams(location.search).get('variant') || 'cn';
+      const data = variants[key] || variants.cn;
+      const poster = document.getElementById('poster');
+      poster.className = `poster ${key}`;
+      document.getElementById('content').innerHTML = `
+        <h1>${data.title}<span class="gradient">${data.accent}</span></h1>
+        <div class="platforms">${data.platforms.map((p) => `<span class="platform">${p}</span>`).join('')}</div>
+        <div class="value">${data.value}</div>
+        ${data.paid ? `<div class="paid">${data.paid}</div>` : ''}
+      `;
+      document.querySelectorAll('.series-mark i').forEach((dot, index) => {
+        dot.classList.toggle('active', index === ['cn', 'global', 'factory'].indexOf(key));
+      });
+    </script>
+  </body>
+</html>
