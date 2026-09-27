@@ -216,6 +216,20 @@ jobs:
         with:
           node-version: '20'
 
+      # Build lessons/vibe-coding-master-l7 (Vibe Coding 大师课 · 第七节课 · 多 Agent 协作 — Subagent 与 Agent Team)
+      - name: Build lessons/vibe-coding-master-l7
+        working-directory: lessons/vibe-coding-master-l7
+        run: |
+          bun install
+          bun run build
+
+      # Build lessons/vibe-coding-master-l8 (Vibe Coding 大师课 · 第八节课 · Agent Team — 12 拍做/讲交替)
+      - name: Build lessons/vibe-coding-master-l8
+        working-directory: lessons/vibe-coding-master-l8
+        run: |
+          bun install
+          bun run build
+
       - name: Build lessons/vibe-coding (Slidev)
         working-directory: lessons/vibe-coding
         run: |
@@ -628,6 +642,18 @@ jobs:
           if [ -d lessons/vibe-coding-master-l11/dist ]; then
             mkdir -p _site/lessons/vibe-coding-master-l11
             cp -r lessons/vibe-coding-master-l11/dist/* _site/lessons/vibe-coding-master-l11/
+          fi
+
+          # lessons/vibe-coding-master-l7: Vibe Coding 大师课 · 第七节课 · 多 Agent 协作（React + Vite）
+          if [ -d lessons/vibe-coding-master-l7/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l7
+            cp -r lessons/vibe-coding-master-l7/dist/* _site/lessons/vibe-coding-master-l7/
+          fi
+
+          # lessons/vibe-coding-master-l8: Vibe Coding 大师课 · 第八节课 · Agent Team（React + Vite）
+          if [ -d lessons/vibe-coding-master-l8/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l8
+            cp -r lessons/vibe-coding-master-l8/dist/* _site/lessons/vibe-coding-master-l8/
           fi
 
           # ai-engineer-resume-interview · 3h 内部学员讲座（slide deck + public/ zip 下载）
