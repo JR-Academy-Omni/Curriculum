@@ -181,6 +181,12 @@ jobs:
         run: |
           bun install
           bun run build
+      # Build lessons/vibe-coding-master-l10 (Vibe Coding 大师课 · 第十节课 · 四象限 AI 协作协议 — 四格 + 四条搬运动作)
+      - name: Build lessons/vibe-coding-master-l10
+        working-directory: lessons/vibe-coding-master-l10
+        run: |
+          bun install
+          bun run build
 
       # Build lessons/ai-solo-founder-w4 (AI 一人创业营 · W4 · 把想法做出来 — 现场跑 Codex)
       - name: Build lessons/ai-solo-founder-w4
@@ -594,6 +600,11 @@ jobs:
           if [ -d lessons/vibe-coding-master-l6/dist ]; then
             mkdir -p _site/lessons/vibe-coding-master-l6
             cp -r lessons/vibe-coding-master-l6/dist/* _site/lessons/vibe-coding-master-l6/
+          fi
+          # lessons/vibe-coding-master-l10: Vibe Coding 大师课 · 第十节课 · 四象限 AI 协作协议（React + Vite）
+          if [ -d lessons/vibe-coding-master-l10/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l10
+            cp -r lessons/vibe-coding-master-l10/dist/* _site/lessons/vibe-coding-master-l10/
           fi
 
           # lessons/ai-solo-founder-w4: AI 一人创业营 · W4 · 把想法做出来（React + Vite）
