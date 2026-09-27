@@ -25,7 +25,7 @@
 能省下找 consultant 起步的 $3-5k 费用
 
 模板我整理了完整版（含 ATO 6 section 框架 + 常见拒理由）：
-jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/rdti-prompt-template.html
+jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/rdti-prompt-template.html
 
 ⚠️ 提交前必须找有牌照的 R&D 顾问 review
 但起草第一稿用 AI 完全够
@@ -48,7 +48,7 @@ jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/rdti-prompt-tem
 测完立刻出得分
 不要邮箱、不发广告
 
-🔗 https://jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
+🔗 https://jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/opc-assessment.html
 
 我自己测了 87 分（行业洞察那一项扣分，需要补）
 你们测完留得分看看，咱们看看哪一项最多人卡
@@ -67,7 +67,7 @@ Lovable + GitHub + Vercel + Stripe（test mode）
 全部免费档跑通
 
 完整录屏 + 工具清单：
-jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/30min-ship.html
+jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets/30min-ship.html
 
 我以前以为做 SaaS 要懂前后端 + DevOps + 法律
 这次跑下来发现 2026 年根本不需要
@@ -93,7 +93,7 @@ jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets/30min-ship.html
 
 "不报名也能用"是设计原则
 1 分钟看 hub：
-jiangren.com.au/curriculum/ai-solo-founder-bootcamp/lead-magnets.html
+jracademy.ai/curriculum/ai-solo-founder-bootcamp/lead-magnets.html
 
 ---
 

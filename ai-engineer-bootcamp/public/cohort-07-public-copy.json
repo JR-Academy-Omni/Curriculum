@@ -1,0 +1,438 @@
+{
+  "weekMeta": {
+    "1": {
+      "outcome": "先看懂 AI Engineer 真正在做什么，再学会让 AI Coding 可靠地参与开发，而不是让模型随便生成代码。",
+      "delivery": "一份团队可以直接执行的项目说明、验收标准、开发规则和任务清单",
+      "boundary": "第一周先把目标和规则定清楚，暂时不追求完成整套产品功能。",
+      "interview": "能讲清楚你如何检查 AI 生成的代码，证明它可测试、可维护，而不是“能跑就算”。",
+      "dependency": "本周先确定做什么、怎么验收；下周据此设计完整产品界面。"
+    },
+    "2": {
+      "outcome": "先弄清一次模型调用到底能看到什么，再把产品想法变成完整界面：理论建立 Token 与 Context Window 判断，实践完成用户流程和关键状态。",
+      "delivery": "完整页面结构、视觉规范和成功、失败、等待、人工审核等关键界面状态",
+      "boundary": "本周专注产品设计，不急着连接数据库或大模型。先把体验设计对，后面开发才不会返工。",
+      "interview": "能画出 Input/Output Token Budget，区分 KV Cache、Prefix Cache、Response Cache 与 Memory，并解释 cache key、TTL、invalidation、权限隔离和命中率指标。",
+      "dependency": "本周确定模型能看到什么并把产品界面画完整；W3 Theory 学习 Context Engineering，Practice 用 Claude Code 快速做完可运行 MVP。"
+    },
+    "3": {
+      "outcome": "理论学习 Context Engineering；实践使用 Claude Code 快速完成第一个可运行 MVP，把 W2 的界面真正连接到业务流程、权限、数据库和测试。",
+      "delivery": "一个可以现场演示的端到端 MVP：创建任务、记录工作、生成草稿、审核确认，并保留权限、版本和操作记录",
+      "boundary": "Claude Code 用来加速开发，但 MVP 本身暂不调用模型。W4 才第一次把 Voice AI 接进产品。",
+      "interview": "能展示如何从 Design System 快速交付可运行 MVP，并解释 scope、vertical slice、权限、audit trail、测试和已知限制。",
+      "dependency": "本周做完软件 MVP；下周在这个稳定流程上第一次接入 Voice AI。"
+    },
+    "4": {
+      "outcome": "第一次把 AI 接进产品：用户说话，系统转成文字，但必须由用户修改和确认后才能继续。",
+      "delivery": "可录音、可转写、可编辑、可确认的语音输入功能，并提供失败时的手动输入方案",
+      "boundary": "本周只解决“语音可靠变成文字”，暂时不让 AI 自动生成正式文档。",
+      "interview": "能解释麦克风权限、转写错误或服务超时时，产品如何保证用户仍然完成工作。",
+      "dependency": "本周得到可信的确认文字；下周先把项目的 spec、任务、架构和文档工作流固定下来，再继续增加 RAG 能力。"
+    },
+    "5": {
+      "outcome": "把 AI Coding 从一次性写代码升级成可持续交付系统：需求能拆成工作，代码变化会触发文档检查，架构决策和项目知识可以持续维护。",
+      "delivery": "Feature Spec、可执行 Work Plan、项目 Wiki、Architecture Diagrams、ADR、Docs Drift Hooks，以及两个可复用 Project Skills",
+      "boundary": "Hooks 自动检查和发现文档漂移，但不无监督改写 Architecture SoT；所有文档更新必须基于 verified diff 并经过人工确认。",
+      "interview": "能展示如何把模糊需求变成 spec、task、acceptance evidence 和 living documentation，并解释 CLAUDE.md、Skills、Hooks 与普通脚本各自解决什么问题。",
+      "dependency": "本周建立工程工作区和文档治理；W6 先把 AI 质量标准写成可运行的 Evaluation Pipeline，W7 再按这套标准搭建并证明 Policy RAG。"
+    },
+    "6": {
+      "outcome": "让 AI 不再只靠模型记忆回答，而是先查指定资料，再给出可以追溯到原文的答案。",
+      "delivery": "一套从资料整理、搜索、引用到“找不到就不回答”的完整 RAG 功能",
+      "boundary": "本周先把 RAG 基础链路做对，不急着上复杂框架、云部署或高级搜索。",
+      "interview": "能用人话解释 RAG、长期记忆和模型微调的区别，并说明如何防止 AI 编造引用。",
+      "dependency": "本周做出有依据的回答；下周用真实测试证明它到底准不准。"
+    },
+    "7": {
+      "outcome": "用一组标准问题测试 RAG，找出失败原因，只改一个变量，再证明质量真的提升。",
+      "delivery": "测试结果、失败案例、改进前后对比，以及从语音输入到政策引用文档的第一个可用版本",
+      "boundary": "本周完成第一个可靠版本，不一次塞入所有高级评测、监控和部署工具。",
+      "interview": "能展示你如何用数据和人工检查判断质量，而不是只说“我感觉效果不错”。",
+      "dependency": "本周完成可演示的 AI 产品；下周把这些能力变成 Agent 可以安全调用的工具。"
+    },
+    "8": {
+      "outcome": "把搜索资料、读取任务、生成草稿等功能包装成标准工具，让不同 AI 客户端都能调用。",
+      "delivery": "一个可运行的 MCP 工具服务、权限表、调用示例和常见故障排查记录",
+      "boundary": "本周先确保每个工具单独安全可用，还不让 Agent 自己连续做决定。",
+      "interview": "能解释 MCP、普通 API、Tool Calling 和 Agent 各自解决什么问题，以及为什么 CLI 排错很重要。",
+      "dependency": "本周先准备可靠工具；下周再让 Agent 在明确边界内选择和调用它们。"
+    },
+    "9": {
+      "outcome": "做出一个有明确权限、步数上限、失败恢复和人工确认的 Agent，避免它无限循环或乱操作。",
+      "delivery": "一个能选择工具、记录过程、遇到失败会停下来或降级、重要操作会等待人工批准的 Agent",
+      "boundary": "本周不加入长期记忆，也不让 Agent 自动确认或直接修改真实业务数据。",
+      "interview": "能说明怎样限制 Agent 的工具、步骤和副作用，避免重复调用、死循环和越权操作。",
+      "dependency": "本周先让 Agent 安全执行任务；下周再决定哪些信息值得长期记住。"
+    },
+    "10": {
+      "outcome": "让 Agent 跨会话记住经过确认的事实，同时支持权限隔离、过期、更正和删除。",
+      "delivery": "一套可追溯、可更正、可删除、不会把 AI 猜测当事实的长期记忆系统",
+      "boundary": "原始录音、AI 草稿和模型推测不能直接写入记忆；向量数据库本身也不等于记忆系统。",
+      "interview": "能解释谁拥有记忆、谁能读取、保存多久、信息冲突怎么办，以及如何防止记忆被污染。",
+      "dependency": "本周完成安全记忆；下周把 Agent 和记忆放进可稳定运行、可恢复的生产框架。"
+    },
+    "11": {
+      "outcome": "把能运行的 Agent 升级成能暂停、恢复、追踪、限额和人工接管的生产级系统。",
+      "delivery": "统一运行框架、权限检查、成本与步骤限制、断点恢复、重复操作保护和完整运行记录",
+      "boundary": "本周先解决 Agent 如何稳定运行；模型自动选择和最终上线验收放在后面。",
+      "interview": "能解释普通 Agent 框架与生产 Harness 的区别，并证明系统重试后不会重复执行重要操作。",
+      "dependency": "本周建立稳定的 Agent 运行底座；下周在这个位置加入模型自动选择。"
+    },
+    "12": {
+      "outcome": "让系统根据任务难度、成本、速度、隐私和风险，自动选择合适模型，并在失败时切换方案。",
+      "delivery": "统一模型接口、选择规则、备用模型、人工升级机制，以及每次选择的原因和结果报告",
+      "boundary": "本周专注模型选择，不把 Remote MCP、云部署和日常运维挤进同一堂课。",
+      "interview": "能用实际数据解释为什么某类任务用便宜模型、某类任务必须用更强或更安全的模型。",
+      "dependency": "本周完成最后一项核心能力；下周用评测、安全演练和发布判断做总验收。"
+    },
+    "13": {
+      "outcome": "像真实团队上线前一样，对完整系统做质量、安全、故障和回滚检查，并完成最终答辩。",
+      "delivery": "可演示系统、评测结果、安全测试、运行记录、发布决定、回滚方案和架构说明",
+      "boundary": "常规部署和 CI/CD 由学生课前完成；Live 时间集中检查最有价值的 AI 风险和上线证据。",
+      "interview": "能面对面回答：系统达到什么标准才能上线，未达标时为什么必须阻止发布，以及怎么修复。",
+      "dependency": "把前 12 周的产品、RAG、Agent、记忆、治理和评测，收口成一套可证明的作品。"
+    }
+  },
+  "lessons": {
+    "L16": {
+      "title": "AI Engineer 全景：一套 AI 系统到底由什么组成",
+      "description": "先建立全局地图：大模型只是其中一层，真正的 AI 系统还包括数据与知识、工具、Agent、评测、可观测性和安全治理。你还会认识 Applied AI Engineer、FDE、AI Builder、AI Solutions Engineer 等市场 title，并与 ML Engineer、Data Scientist 和 Software Engineer 比较职责。"
+    },
+    "C7P01": {
+      "title": "用 AI Coding 启动第一个真实工程项目",
+      "description": "不是让 AI 随便写代码。你会先说清用户、目标和风险，再用验收标准、测试与代码评审约束 AI，建立团队真正能复用的开发方式。"
+    },
+    "L28": {
+      "title": "大模型看到了什么，又如何避免重复计算",
+      "description": "从 Token 与 Context Window 继续深入到 Prefill、Decode、KV Cache、Prompt/Prefix Cache 和 Response Cache。你会判断什么内容该进入模型、哪些前缀可以复用、缓存何时失效，并用 TTFT、Cache Hit Rate、Tokens Saved、成本和权限边界证明优化有效。"
+    },
+    "C7P02": {
+      "title": "把产品想法变成一套完整、可开发的界面",
+      "description": "先把 PRD、用户流程、参考风格和限制写成 Claude 能执行的 Design Brief，再使用 Claude Code + frontend design workflow 比较设计方向、建立 Design System 并实现关键页面。你还要用截图评审、响应式、无障碍和业务状态检查修正 AI 结果。"
+    },
+    "L37": {
+      "title": "Context Engineering：决定 AI 每一次到底能看到什么",
+      "description": "这不是写一份更长的 Prompt。你会设计 Context 从来源盘点、选择与排除、权限和时效检查，到排序、预算、验证、追踪、压缩与清除的完整生命周期，并能解释每条信息为什么进入或没有进入模型。"
+    },
+    "C7P03": {
+      "title": "用 Claude Code 快速做完第一个可运行 MVP",
+      "description": "基于老师提供的 Auth、Database、API、Routing 和 Test starter，把 W2 的完整 UI 连接成端到端产品。Claude Code 帮你规划、编码、调试和测试，但产品中的 Voice、RAG 与 Agent 从后续周才逐步接入。"
+    },
+    "L58": {
+      "title": "RAG 系统：从资料进入知识库，到回答能回到原文",
+      "description": "你会看懂资料解析、切分、向量索引、权限过滤、检索、答案生成和引用验证如何组成一套完整系统，并能判断错误发生在资料处理、搜索还是回答阶段。"
+    },
+    "C7P04": {
+      "title": "第一次接入 AI：完成可修改、可确认的语音转写流程",
+      "description": "接入 Speech-to-Text，但不会把模型第一次听到的内容直接当事实。用户可以播放、修改、确认和重新提交；权限、噪声、超时或服务失败时仍有手动输入。"
+    },
+    "C7T05": {
+      "title": "RAG 怎么测：不是“感觉不错”，而是有数据证明",
+      "description": "用一组标准问题建立基准，分别检查有没有找到正确资料、回答是否准确、引用是否可信。每次只改一个变量，才能知道优化为什么有效。"
+    },
+    "C7P05": {
+      "title": "搭建 AI-Native Engineering Workspace",
+      "description": "把需求写成可执行 Spec 和 Work Plan，建立项目 Wiki、Architecture Diagram 与 ADR，再用 Hooks 发现文档漂移，并把高频工作封装成团队可以复用的 Skills。"
+    },
+    "L101": {
+      "title": "Tool Calling 与 MCP：让 AI 安全调用外部工具",
+      "description": "模型不只回答问题，还可以读取资料、查询任务或创建草稿。你会理解 Tool Calling 与 MCP 如何规定工具能做什么、需要哪些参数、谁有权限调用。"
+    },
+    "L60": {
+      "title": "按评估标准搭建 Policy RAG：每个改动都能证明",
+      "description": "不用现成 RAG 框架，亲手完成资料切分、向量搜索、引用和拒答。每实现一个阶段就运行 W6 的固定 Evaluation Pipeline，证明新版本相对 baseline 的质量变化。"
+    },
+    "L112": {
+      "title": "Agent 与 ReAct：让 AI 判断下一步该做什么",
+      "description": "普通工作流按固定步骤执行，Agent 会根据结果决定下一步。课堂用 Claude Agent SDK 看懂 tools/MCP、session、permissions、hooks、streaming 和 interrupt，再比较不同 Agent framework 的工程边界。"
+    },
+    "C7P07": {
+      "title": "先搭 Evaluation Pipeline，再开始写 RAG",
+      "description": "先把产品要求变成 versioned golden dataset、deterministic checks、RAGAS metrics、人工评分 rubric 和验收 threshold，并用老师提供的 naive baseline 验证整条管线可以重复运行。"
+    },
+    "L122": {
+      "title": "Claude Agent Orchestration：什么时候值得让多个 Agent 协作",
+      "description": "对齐 CCAR-F 的 Agentic Architecture & Orchestration。用 Claude Agent SDK 和 Managed Agents 理解 coordinator、独立 context、并行分工、advisor、handoff 与失败恢复，同时证明 Multi-Agent 是否真的优于 single-agent baseline。"
+    },
+    "L104": {
+      "title": "先拆出 Data Layer，再连接 MCP 与 CLI",
+      "description": "先把数据库、向量索引和文档存储整理成可测试的 Repository 与 Domain Service，再用一层很薄的 MCP Adapter 对外提供工具。这样未来换成 REST、GraphQL、Agent SDK 或后台任务，也不需要重写业务逻辑。"
+    },
+    "L133": {
+      "title": "Agent Memory：哪些信息该记住，哪些必须忘掉",
+      "description": "长期记忆不是把所有对话丢进向量数据库。你会学习什么可以保存、谁能读取、多久过期、如何更正删除，以及怎样防止错误信息污染未来结果。"
+    },
+    "L119": {
+      "title": "做一个不会失控、不会无限循环的 Agent",
+      "description": "Agent 可以自己选择工具，但必须有工具白名单、步数上限、超时处理和人工批准。你会做出一个能执行任务，也知道什么时候应该停下来的 Agent。"
+    },
+    "L138": {
+      "title": "Agent Harness：给 Agent 加上生产级运行框架",
+      "description": "Harness 就像 Agent 的运行控制中心：统一管理工具、权限、预算、暂停恢复、失败重试和运行记录。它把“能演示的 Agent”变成“能长期运行的系统”。"
+    },
+    "C7P10": {
+      "title": "给 Agent 加入安全、可更正的长期记忆",
+      "description": "只有人工确认过的事实才能写入记忆，并按用户、团队和角色隔离。系统支持过期、更正和删除，也会测试越权读取与记忆污染。"
+    },
+    "L171a": {
+      "title": "AI Governance：谁负责、什么能上线、出事怎么办",
+      "description": "Governance 不是写一份合规文档，而是明确风险等级、负责人、上线标准和事故处理方式。还会处理两个独立 Agent 协作时的身份、信任、授权委派、数据共享、审计与责任边界。"
+    },
+    "C7P11": {
+      "title": "把 Agent 升级为可暂停、可恢复、可追踪的系统",
+      "description": "把前面的 Agent 和记忆接入统一 Harness。即使运行中断，系统也能从断点恢复；即使重试，也不会重复执行付款、写入等重要操作。"
+    },
+    "L183": {
+      "title": "Production AI 架构：不同任务该怎么选模型",
+      "description": "最强模型不一定最适合所有任务。你会学习如何在准确度、速度、成本、隐私和数据所在地之间做选择，并设计备用模型与人工接管。"
+    },
+    "C7P12": {
+      "title": "让系统按任务自动选择最合适的模型",
+      "description": "实现一个 Model Router：简单任务走更快更便宜的模型，高风险任务使用更可靠的模型；失败时自动切换，并记录每次选择的原因。"
+    },
+    "L171": {
+      "title": "上线前总验收：证明系统真的可靠、可治理",
+      "description": "像真实团队发布前一样，集中测试质量、安全、权限、成本和故障恢复。最后基于证据决定是否上线，并现场完成产品演示与系统设计答辩。"
+    }
+  },
+  "stepCopy": {
+    "L16": [
+      "先看懂 AI、机器学习、深度学习和大模型是什么关系",
+      "大模型基础：它怎样学习、怎样回答、为什么会“编答案”",
+      "一套 AI 系统还需要数据与知识、工具、Agent、评测和治理",
+      "认识 Applied AI Engineer、FDE、AI Builder、AI Solutions Engineer 等变体，再与 ML Engineer、Data Scientist 比较职责",
+      "现场比较不同模型处理同一任务的真实差异",
+      "从第一天就考虑成本、速度、隐私和稳定性"
+    ],
+    "C7P01": [
+      "先说清楚：给谁用、解决什么、哪些事情暂时不做",
+      "把需求写成可以验收和测试的具体标准",
+      "让 AI 先读懂项目代码、开发规则和数据边界",
+      "用 AI Coding 阅读现有项目，并完成一次受控修改",
+      "人工评审代码、检查测试，并提前发现风险",
+      "留下项目流程、任务清单和可追溯的开发证据"
+    ],
+    "L28": [
+      "Token Budget：计算 Input/Output Tokens，为回答预留空间并控制成本",
+      "Context Window 内容治理：选择 Instructions、History、Examples、RAG、Tools，并排除无关、过期或越权内容",
+      "Prefill 与 Decode：用 TTFT、TPOT 看懂长 Prompt 为什么更慢",
+      "KV Cache：复用当前生成过程已经计算过的 Key/Value，减少逐 Token 重算，并理解显存代价",
+      "Prompt/Prefix Cache：复用跨请求的稳定前缀，把动态用户内容和检索结果放在后面",
+      "Response/Semantic Cache：设计 cache key、TTL、invalidation，以及 tenant、permission 和 PII 边界",
+      "比较 hit/miss、Tokens Saved、延迟和成本，并识别 lost-in-the-middle 与 stale cache"
+    ],
+    "C7P02": [
+      "把 W1 PRD、用户流程、角色和 non-goals 整理成 Claude 可执行的 Design Brief",
+      "规划关键页面的信息架构，并明确参考风格、视觉约束和不做什么",
+      "使用 Claude Code + frontend design workflow 生成并比较方向，建立 DESIGN.md、design tokens 和组件规则",
+      "让 Claude 分页面实现组件、导航和 responsive layout，再通过截图反馈逐轮修正",
+      "设计草稿、审核、确认、失败和人工处理状态",
+      "加入录音与转写状态、动画和无障碍体验",
+      "完成人工 Product Design Review，不把 Claude 的第一次输出当成最终设计"
+    ],
+    "L37": [
+      "分清 Prompt Engineering 与 Context Engineering：指令只是完整 Context 的一部分",
+      "建立 Context Inventory：盘点 Instructions、用户输入、状态、历史、知识、Examples、Tools 与 Output Contract",
+      "定义 Selection Policy：按相关性、权威性、时效、权限和来源决定 include 或 exclude",
+      "设计 Assembly Plan：优先级、结构、顺序、Token Allocation、冲突处理与 Validation",
+      "管理 Context Lifecycle：Just-in-time Loading、Progressive Disclosure、Compaction、Refresh 与 Eviction",
+      "建立 Trust Boundary 与 Observability，记录 Context Version、来源和选择证据",
+      "完成可跨 Structured Documentation、RAG 和 Agent 场景复用的 Context Architecture Blueprint"
+    ],
+    "C7P03": [
+      "锁定 MVP scope，只选择一条能够端到端演示的 vertical slice",
+      "让 Claude Code 读懂 starter、数据模型和 W2 UI，再生成可审核的实施计划",
+      "连接用户、班次、任务和工作记录，并跑通任务状态流",
+      "实现文档草稿、审核、确认，以及不同角色的操作权限",
+      "补齐版本、审核人、操作记录、失败状态和人工恢复路径",
+      "让 Claude 协助定位 integration issues，跑通 UI、API 和 Database",
+      "完成端到端测试、MVP Demo 和已知限制清单"
+    ],
+    "L58": [
+      "RAG 在完整 AI 系统里的位置，以及它与 Prompt、Memory、Tools 和 Fine-Tuning 的区别",
+      "资料怎样经过解析、切分、来源标记、向量化和版本化索引进入知识库",
+      "Query 与 Document Embedding、相似度排序、Top-k 和难负样本分别代表什么",
+      "在搜索前执行用户、角色和租户权限过滤，避免模型看到越权资料",
+      "把搜索结果组装成 Context，让每条事实都能回到原文位置",
+      "资料不足、过期或互相冲突时，系统怎样拒答或交给人工检查",
+      "区分资料解析、检索、Context 组装、回答和权限五类失败",
+      "用系统设计面试的方式解释组件、指标、更新删除和技术取舍"
+    ],
+    "C7P04": [
+      "先定义录音、转写任务、文字版本和人工确认分别保存什么状态",
+      "实现麦克风授权、录音停止、文件格式与大小检查，以及安全上传",
+      "通过 Speech-to-Text Adapter 接入一个真实服务，并记录实际模型与调用状态",
+      "设计处理中、失败、可修改和已确认等用户能看懂的产品状态",
+      "让用户播放原音、修改转写、确认内容，并保留版本和操作记录",
+      "测试拒绝麦克风权限、空音频、噪声、超时和格式不支持等失败情况",
+      "用合成音频检查姓名、数字、隐私日志和手动输入回退"
+    ],
+    "C7T05": [
+      "先保存当前 RAG 表现，作为后续比较基准",
+      "把失败分成没找到资料、回答错误、引用错误和该拒答却回答",
+      "用标准问题和 RAGAS（RAG 常用评测工具）建立质量报告",
+      "指标也会误判，因此必须配合人工抽查",
+      "每次只改资料切分、搜索数量或过滤条件中的一个",
+      "了解混合搜索和重排序如何进一步提升结果",
+      "把优化过程整理成面试可展示的证据"
+    ],
+    "C7P05": [
+      "盘点 PRD、DESIGN.md、README、API contract、tests 与 knowledge gaps",
+      "Spec-to-Work：把 scope、non-goals 和 acceptance criteria 拆成 dependency-aware work plan",
+      "Docs-as-Code Wiki：建立 docs index、feature specs、runbook、decision log 与 ownership",
+      "Architecture Diagram：用 Mermaid/C4 表达 System Context、Container 和 AI request/data flow",
+      "ADR：记录关键架构决策、trade-off、status 与 superseded 关系",
+      "Hooks：自动检查格式、链接、diagram syntax 与 documentation drift",
+      "Project Skills：创建并测试 /spec-to-work 与 /update-docs"
+    ],
+    "L101": [
+      "Tool Calling：用明确参数让模型调用一个功能",
+      "MCP：让不同 AI 客户端用统一方式发现和调用工具",
+      "分清普通 API、Tool Calling、MCP 和 Agent 的作用",
+      "看懂命令、参数、环境变量和运行目录",
+      "理解本地 MCP 服务怎样启动、通信和记录错误",
+      "先手动调用工具，检查输入和返回结果",
+      "给工具加密钥保护、权限白名单和人工确认",
+      "现场排查路径错误、环境变量缺失和启动失败"
+    ],
+    "L60": [
+      "准备一套不含真实隐私信息的政策资料",
+      "把长文档切成适合搜索的小段，并保留来源信息",
+      "生成向量表示，建立可以在本地搜索的资料库",
+      "根据问题找出最相关的政策段落",
+      "把找到的政策内容交给前面完成的 Context Builder",
+      "生成有依据的答案，并绑定到具体文档和段落",
+      "找不到资料时拒绝编造，并记录失败原因",
+      "持续运行 W6 Evaluation Pipeline，对比 baseline 并提交 MVP 证据"
+    ],
+    "L112": [
+      "分清固定流程、会调用工具的应用和 Agent",
+      "ReAct：执行一个动作、观察结果，再决定下一步",
+      "用 Claude Agent SDK 观察 query/client、tools/MCP、session、permissions、hooks 和 streaming",
+      "记录 Agent 当前任务、工具结果和 session resume 状态",
+      "设置最大步骤和停止条件，避免无限循环",
+      "处理 timeout、retry、fallback、interrupt 和部分失败",
+      "用 permission mode、human approval 和 hooks 限制副作用",
+      "比较 Claude Agent SDK、OpenAI Agents SDK、PydanticAI 和 LangGraph"
+    ],
+    "C7P07": [
+      "先定义成功标准、失败类型和不可接受行为",
+      "建立 10–15 条带预期来源与行为的 versioned golden cases",
+      "规定任何 RAG 实现都必须遵守的 candidate interface",
+      "加入 schema、citation、no-answer 和 permission deterministic checks",
+      "接入 RAGAS，并建立人工评分 rubric 与抽检规则",
+      "运行老师提供的 naive baseline，保存指标、失败样本和 trace",
+      "设定最低 threshold、known gaps 与 stop/go 判定",
+      "冻结 eval command、dataset version 和 W7 implementation contract"
+    ],
+    "L122": [
+      "从 CCAR-F 架构题判断 Agentic、single-shot 和 deterministic workflow",
+      "比较 Single Agent 与 Multi-Agent 的复杂度、并行性和专业化收益",
+      "设计 sequential、parallel fan-out、specialization 和 advisor escalation",
+      "用 Claude Agent SDK / Managed Agents 看 coordinator、roster、threads 和 version pinning",
+      "隔离每个 Agent 的 model、instructions、tools、MCP、skills 和权限",
+      "定义 delegation contract、thread message、artifact、handoff 和 synthesis",
+      "控制 termination、并发、预算、partial failure、retry 和人工升级",
+      "用 single-agent baseline 比较质量、延迟、成本与失败率"
+    ],
+    "L104": [
+      "盘点数据来源、负责人、格式、敏感等级、新鲜度和 system-of-record 边界",
+      "把用户、任务、政策和文档存储提取成 Repository/Data Layer",
+      "建立不依赖 MCP、REST 或前端的 Domain Services 和统一 schema",
+      "在 Service 边界加入角色权限、校验、人工确认规则和 audit event",
+      "不经过 MCP，先直接测试 Repository contracts 和 Service integration",
+      "建立 thin MCP Adapter，只负责协议转换、调用 Service 和错误映射",
+      "通过 CLI/stdio 完成工具发现、手动调用和 structured error 检查",
+      "提交 Data/Service/MCP 架构图、测试、权限表和 CLI 运行证据"
+    ],
+    "L133": [
+      "分清 Agent 当前运行状态与跨会话长期记忆",
+      "区分当前任务信息、临时工作记忆和本次会话记录",
+      "理解事件记忆、事实记忆和用户偏好分别是什么",
+      "规定什么可以写入记忆、什么时候可以读取",
+      "按用户、对象、团队和机构隔离信息权限",
+      "规定保存多久，以及如何更新、删除和取得同意",
+      "处理冲突、过期、信息来源和恶意记忆污染",
+      "画出一套能在面试中讲清楚的安全记忆架构"
+    ],
+    "L119": [
+      "先确认上一周的工具和权限边界都正确",
+      "定义 Agent 需要记录的任务、动作和结果",
+      "实现最小循环：选择工具、执行、观察、再决定",
+      "限制 Agent 只能使用批准过的工具和参数",
+      "加入最大步数、停止条件和死循环检测",
+      "加入超时、重试和备用方案",
+      "高风险操作必须暂停并等待人工审核",
+      "主动制造失败，检查整条运行记录是否完整"
+    ],
+    "L138": [
+      "分清 Agent SDK、开发框架和生产 Harness",
+      "设计模型与工具循环从开始到结束的完整生命周期",
+      "控制上下文过长，并把工具结果安全放回模型",
+      "统一管理工具、参数检查和运行前后控制点",
+      "控制权限、运行环境和高风险操作的人工批准",
+      "限制模型用量、成本、运行时间和最大步骤",
+      "支持断点保存、重试、恢复和重放",
+      "记录完整运行轨迹，并预留评测与模型选择接口",
+      "评审一套真正能进入生产环境的 Agent 架构"
+    ],
+    "C7P10": [
+      "检查现有 Agent 信息，决定哪些值得跨会话保存",
+      "为每条记忆定义类型、来源、所有者、范围和有效期",
+      "只保存人工确认事实，拒绝原始录音、AI 草稿和模型猜测",
+      "按用户、对象、团队和角色隔离记忆查询",
+      "支持过期、冲突、更正和删除，禁止静默覆盖",
+      "加入权限、用户同意、操作记录和污染防护",
+      "测试跨会话记忆、越权读取、过期和冲突场景"
+    ],
+    "L171a": [
+      "分清治理、AI 安全和法规合规之间的关系",
+      "列出所有 AI 功能，完成影响评估并按风险分类",
+      "明确系统负责人、上线审批人和剩余风险承担者",
+      "管理数据、模型、隐私、保留期限和第三方供应商风险",
+      "治理 Agent-to-Agent 的身份、信任、授权委派、数据共享与责任",
+      "把评测门槛、政策证据和上线标准做成发布闸门",
+      "规定事故、重大变更、权限撤销和系统下线如何处理",
+      "为真实 AI 系统建立治理运行机制，并检查关键决策"
+    ],
+    "C7P11": [
+      "把现有 Agent 重构成开始、运行、结束都清楚的流程",
+      "把模型、工具、记忆和安全规则拆成可替换模块",
+      "在调用模型、工具和输出前后加入控制点",
+      "限制步骤、用量、成本和运行时间，并允许取消",
+      "运行中断时保存进度，并支持恢复和重放",
+      "重试也不会重复付款、发送或写入重要数据",
+      "加入权限规则、人工批准和人工接管",
+      "输出完整运行记录，并测试崩溃和重复调用"
+    ],
+    "L183": [
+      "把模型、资料、工具、Agent、记忆和治理画成完整架构",
+      "找到 Model Router 在 Agent 运行框架中的位置",
+      "先按任务类型分类，再判断每类任务需要什么模型能力",
+      "在准确度、成本、速度、隐私和数据所在地之间取舍",
+      "设计超时、拒答、供应商故障和人工接管方案",
+      "用评测证明路由是否选对，并保存选择依据",
+      "判断一个问题应使用 Prompt、RAG、工具、记忆、路由还是微调",
+      "完成 Production AI 系统设计答辩"
+    ],
+    "C7P12": [
+      "把系统任务分类，并列出不同模型的能力和限制",
+      "规定高风险、隐私数据和特定地区可使用哪些模型",
+      "建立统一接口，让不同模型可以被安全替换",
+      "实现一套可解释的模型选择规则",
+      "加入超时、备用模型、拒答和人工接管",
+      "把模型选择接入 Harness 的权限、预算和运行记录",
+      "用标准案例测试选错模型和供应商故障",
+      "输出准确度、成本、速度和每次选择原因的报告"
+    ],
+    "L171": [
+      "检查部署、登录、自动发布流程和系统健康证明",
+      "运行正式质量测试，并校准 AI 评分与人工判断",
+      "检查回归测试、运行追踪、速度、成本和工具失败标准",
+      "测试恶意指令、记忆污染、越权访问和隐私泄露",
+      "演练模型、供应商、工具和记忆故障，以及紧急停止",
+      "根据证据决定是否上线，并演练回滚和事故响应",
+      "完成完整产品演示和系统设计答辩",
+      "提交质量、安全、运行、发布和架构证据包"
+    ]
+  }
+}

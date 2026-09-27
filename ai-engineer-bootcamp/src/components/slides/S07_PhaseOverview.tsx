@@ -22,14 +22,14 @@ export default function S07_PhaseOverview() {
 							fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, letterSpacing: 2,
 							border, boxShadow: shadowSm,
 						}}>
-							V5 · COHORT {courseMeta.cohort}
+							V7 · COHORT {courseMeta.cohort}
 						</span>
 					</div>
 					<h2 style={{
 						fontFamily: fonts.heading, fontSize: '52px', fontWeight: 900,
 						lineHeight: 1.1, letterSpacing: -1, margin: 0,
 					}}>
-						第五期 · <span style={{
+						第七期 · <span style={{
 							display: 'inline-block', padding: '0 14px', background: colors.yellow,
 							border, boxShadow: shadowSm, transform: 'rotate(-1deg)',
 						}}>10 Phase</span> 全栈架构
@@ -74,7 +74,7 @@ export default function S07_PhaseOverview() {
 								position: 'relative',
 							}}
 						>
-							{/* V5 NEW 角标 */}
+							{/* 第五期新增架构标记，作为历史沿革保留 */}
 							{p.isV5New && (
 								<div style={{
 									position: 'absolute', top: 6, right: -2,

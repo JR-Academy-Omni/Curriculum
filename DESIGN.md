@@ -230,7 +230,7 @@ bun run build 每个 bootcamp
   ↓
 SCP 到 nginx 服务器
   ↓
-线上 https://jiangren.com.au/curriculum/<bootcamp>/
+线上 https://jracademy.ai/curriculum/<bootcamp>/
 ```
 
 **部署前必做**：在 `deploy.yml` 加 `Build your-bootcamp` 步骤 + `Assemble output` 加 `cp -r your-bootcamp/dist/* _site/your-bootcamp/`，否则线上 404。

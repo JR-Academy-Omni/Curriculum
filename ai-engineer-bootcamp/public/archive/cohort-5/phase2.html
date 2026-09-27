@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 2: RAG 系统全栈开发 — AI Engineer Bootcamp</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>Phase 2: RAG 系统全栈开发</h1>
+  <div class="sub">Week 4-6 · 直播 + 项目 · 从 Embedding 到 GraphRAG</div>
+  <div class="nav"><a href="phase1.html">← Phase 1</a> | <a href="curriculum.html">课程总览</a> | <a href="phase3.html">Phase 3 →</a></div>
+</div>
+
+<div class="c">
+
+<!-- ===== Week 4 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--teal)">
+    <span style="font-size:18px;font-weight:900">Week 4 · Embeddings + RAG from Scratch</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 + 项目</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--teal);color:#fff">4.1</span>
+      <h4>Introduction to Embeddings</h4>
+      <span class="pill" style="background:var(--teal);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>什么是 Embedding</strong> — 文本 → 高维向量空间的映射<br><br>
+        <strong>Embedding Models vs LLM Chat Models</strong> — 用途、API、成本、维度差异<br><br>
+        向量相似度计算：Cosine Similarity、Euclidean Distance、Dot Product<br><br>
+        主流 Embedding 模型对比：OpenAI text-embedding-3、Cohere embed、BGE</p>
+        <div class="tools"><span class="tool">OpenAI Embeddings API</span><span class="tool">NumPy</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 调用 Embedding API 将 100 段文本转为向量<br>
+        2. 实现 Cosine Similarity 搜索 — 输入 query，返回最相关的 5 段文本<br>
+        3. 可视化 Embedding 空间（用 t-SNE 降维）<br><br>
+        对比不同 Embedding Model 的效果差异</p>
+        <span class="review ai">🤖 搜索准确率自动评测</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 项目准备知识库：<br>
+        1. 收集 50+ 相关文档<br>
+        2. 文本切分（Chunking）实验<br>
+        3. Embedding 并存储为本地向量库</p>
+        <span class="review teacher">👨‍🏫 Chunking 策略 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--teal);color:#fff">4.2</span>
+      <h4>Introduction to RAG</h4>
+      <span class="pill" style="background:var(--teal);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>RAG 架构</strong>：Query → Retrieve → Augment → Generate<br><br>
+        <strong>Naive RAG vs Advanced RAG</strong>：Pre-retrieval (query rewriting)、Retrieval (hybrid search)、Post-retrieval (re-ranking)<br><br>
+        <strong>Vector Store 选型</strong>：Chroma、Pinecone、Weaviate、FAISS — 对比 hosted vs self-hosted</p>
+        <div class="tools"><span class="tool">ChromaDB</span><span class="tool">FAISS</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p><strong>Project: Building RAG from Scratch in Python</strong><br><br>
+        纯 Python（无框架）实现完整 RAG 管线：<br>
+        1. 文档加载 + Chunking<br>
+        2. Embedding + 向量存储 (FAISS)<br>
+        3. 相似度检索<br>
+        4. Context 拼接 + LLM 生成<br><br>
+        这是理解 RAG 原理最好的方式 — 不用框架，每一步自己写</p>
+        <span class="review teacher">👨‍🏫 代码 Review + 架构点评</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>在 RAG from Scratch 基础上，实现 3 个优化：<br>
+        1. Query Rewriting — 重写用户问题提高检索质量<br>
+        2. Re-ranking — 对检索结果重新排序<br>
+        3. Citation — 答案中标注来源段落编号<br><br>
+        提交代码 + 优化前后的对比评测</p>
+        <span class="review teacher">👨‍🏫 老师点评优化效果</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 4 自学内容</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">RAG Builder Toolbox</div>
+        <div class="lab-desc">RAG 构建工具全景：Vector DB、Chunking 库、Embedding 服务</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">AI Resource Hub</div>
+        <div class="lab-desc">AI 学习资源合集：论文、博客、开源项目</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Week 5 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--teal)">
+    <span style="font-size:18px;font-weight:900">Week 5 · Production RAG + LangChain</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 + 项目</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--teal);color:#fff">5.1</span>
+      <h4>Building Production-Ready RAG</h4>
+      <span class="pill" style="background:var(--teal);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>UI 构建</strong>：用 Streamlit / Gradio 快速搭建 RAG 前端<br><br>
+        <strong>PDF Parsing 101</strong>：PyPDF2、pdfplumber、Unstructured — 表格和图片怎么处理<br><br>
+        <strong>LLM Rate Limits</strong>：Token 限制、RPM/TPM 限流、指数退避重试、并发控制<br><br>
+        <strong>API 成本管理</strong>：预算设置、cost tracking、model fallback 策略</p>
+        <div class="tools"><span class="tool">Streamlit</span><span class="tool">pdfplumber</span><span class="tool">tiktoken</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p><strong>Project: Production RAG Application</strong><br><br>
+        搭建支持 PDF 上传的 RAG 应用：<br>
+        1. Streamlit UI — 文件上传 + 聊天界面<br>
+        2. PDF 解析 + 自动 Chunking<br>
+        3. Rate Limiting 中间件<br>
+        4. Cost tracking dashboard<br><br>
+        可分享给其他人使用的完整应用</p>
+        <span class="review teacher">👨‍🏫 项目 Demo + Review</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>P3 职业孵化器 Proposal：<br>
+        每组选定一个 P3 项目方向<br>
+        写 proposal：问题定义、技术选型、分工、时间线<br><br>
+        P3 项目在 Demo Day 面向企业展示</p>
+        <span class="review teacher">👨‍🏫 Proposal 反馈</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--teal);color:#fff">5.2</span>
+      <h4>LangChain Core Constructs</h4>
+      <span class="pill" style="background:var(--teal);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>LangChain 核心概念</strong>：LLMs、Prompts、Chains、Memory、Retrievers<br><br>
+        <strong>LCEL (LangChain Expression Language)</strong>：Chains 和 Runnables 的声明式组合<br><br>
+        chain = prompt | llm | output_parser — Pipe 语法详解<br><br>
+        <strong>Memory 实现</strong>：ConversationBufferMemory、ConversationSummaryMemory — 多轮对话</p>
+        <div class="tools"><span class="tool">LangChain</span><span class="tool">LCEL</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 用 LCEL 构建一个 3 步 Chain：分析问题 → 检索文档 → 生成答案<br>
+        2. 添加 Memory — 实现多轮对话上下文保持<br>
+        3. 自定义 Runnable — 添加日志和错误处理</p>
+        <span class="review ai">🤖 Chain 运行验证</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>把 Week 4 的 RAG from Scratch 用 LangChain 重写<br>
+        对比：代码量、可维护性、扩展性<br><br>
+        形成"自建 vs 框架"的理解</p>
+        <span class="review teacher">👨‍🏫 对比分析 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--teal);color:#fff">5.3</span>
+      <h4>Monitoring and Visibility with LangSmith</h4>
+      <span class="pill" style="background:var(--teal);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>LangSmith</strong>：Trace 每一次 LLM 调用 — Input/Output/Latency/Cost 全部可观测<br><br>
+        <strong>Debugging</strong>：通过 Trace 定位 RAG 管线中的问题（检索失败 vs 生成偏差）<br><br>
+        <strong>Dataset & Testing</strong>：用 LangSmith 构建测试集，跑回归测试</p>
+        <div class="tools"><span class="tool">LangSmith</span><span class="tool">LangChain</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 接入 LangSmith — 在 RAG 应用中添加 tracing<br>
+        2. 分析 Trace — 找出 latency bottleneck<br>
+        3. 构建 10 个测试用例，用 LangSmith Evaluate 跑评测</p>
+        <span class="review ai">🤖 Tracing 接入验证</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 项目接入 LangSmith monitoring<br>
+        提交：3 个有代表性的 Trace 截图 + 分析报告</p>
+        <span class="review teacher">👨‍🏫 老师点评</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 5 录播/自学</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">Introduction to LangChain</div>
+        <div class="lab-desc">LangChain 设计哲学和模块总览</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">Budgeting and API Costs</div>
+        <div class="lab-desc">LLM API 成本估算、预算控制、fallback 策略</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">LLMs Overview</div>
+        <div class="lab-desc">主流 LLM 对比：GPT-4.1、Claude 4、Gemini 2.5、Llama 4、Mistral Large</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">End-to-End RAG Toolbox</div>
+        <div class="lab-desc">完整 RAG 技术栈参考：Parser → Chunker → Embedder → Store → Retriever</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Week 6 ===== -->
+<div class="box">
+  <div class="box-h" style="background:var(--teal)">
+    <span style="font-size:18px;font-weight:900">Week 6 · GraphRAG + RAG 评估 + 综合项目</span>
+    <span style="float:right;opacity:0.7" class="mono">直播 + 项目</span>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--teal);color:#fff">6.1</span>
+      <h4>GraphRAG + 混合检索</h4>
+      <span class="pill" style="background:var(--teal);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>为什么需要 GraphRAG</strong> — 纯向量检索的局限：无法捕捉实体关系、无法做多跳推理。比如问"张三的老板的老板是谁"，纯 Embedding 检索根本搞不定<br><br>
+        <strong>Knowledge Graph 构建</strong>：从非结构化文本自动提取实体和关系，用 LLM 做 NER + Relation Extraction<br><br>
+        <strong>GraphRAG 架构</strong>：Query → Graph Traversal + Vector Search → 融合排序 → LLM 生成<br><br>
+        <strong>混合检索策略</strong>：Vector Search (语义) + BM25 (关键词) + Graph Traversal (关系) — 三路召回，用 RRF (Reciprocal Rank Fusion) 融合排序<br><br>
+        <strong>工具选型</strong>：Neo4j / Nebula Graph（生产级图数据库） vs 纯 Python networkx（原型验证）</p>
+        <div class="tools"><span class="tool">Neo4j</span><span class="tool">LangChain</span><span class="tool">networkx</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 用 LangChain + Neo4j 构建 GraphRAG pipeline — 文档 → 实体抽取 → 图存储 → 图检索<br>
+        2. 对比纯向量 RAG vs GraphRAG 在多跳问题上的表现（准备 10 个多跳测试问题）<br>
+        3. 实现混合检索：三路召回 + RRF 融合 — Vector + BM25 + Graph 结果合并排序</p>
+        <span class="review teacher">👨‍🏫 架构设计 Review</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>为 ISA 项目添加 GraphRAG 能力：<br>
+        1. 对项目知识库做实体关系抽取，构建 Knowledge Graph<br>
+        2. 实现 Graph + Vector 混合检索<br><br>
+        提交：GraphRAG vs Vector RAG 对比评测报告 — 在多跳问题和单跳问题上分别跑 10 个 case</p>
+        <span class="review teacher">👨‍🏫 架构设计 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--teal);color:#fff">6.2</span>
+      <h4>RAG Evaluation</h4>
+      <span class="pill" style="background:var(--teal);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p><strong>四大评估指标</strong>：<br>
+        - Context Recall — 检索到了多少相关内容<br>
+        - Context Precision — 检索结果中有多少是相关的<br>
+        - Answer Relevancy — 答案和问题的相关性<br>
+        - Faithfulness — 答案是否忠实于检索到的上下文<br><br>
+        <strong>RAGAS Framework</strong> — 自动化 RAG 评估<br>
+        <strong>Langfuse</strong> — 开源 LLM 可观测平台，和 LangSmith 互补</p>
+        <div class="tools"><span class="tool">RAGAS</span><span class="tool">Langfuse</span><span class="tool">LangSmith Eval</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p>1. 用 RAGAS 评估 Week 4-6 的 RAG 应用（包括 GraphRAG）<br>
+        2. 接入 Langfuse — 对比 LangSmith vs Langfuse<br>
+        3. 根据评估结果优化 RAG 管线（调 Chunking / Retrieval / Prompt）</p>
+        <span class="review ai">🤖 RAGAS 分数自动评测</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>提交 RAG 评估报告：<br>
+        - GraphRAG vs Naive RAG 的 4 个指标对比<br>
+        - 每个优化步骤的 diff + 效果<br>
+        - 最终 RAGAS 综合得分</p>
+        <span class="review teacher">👨‍🏫 评估报告 Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-head">
+      <span class="pill" style="background:var(--teal);color:#fff">6.3</span>
+      <h4>Project: LangChain RAG QA Application</h4>
+      <span class="pill" style="background:var(--teal);color:#fff">直播</span>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <h5>📖 教学内容</h5>
+        <p>综合 Phase 2 所有知识，用 LangChain 构建完整 RAG QA 系统：<br><br>
+        <strong>架构</strong>：LangChain + ChromaDB/Neo4j + LangSmith + Streamlit<br>
+        <strong>功能</strong>：多文档上传、GraphRAG 支持、对话式 QA、来源引用、历史记录<br>
+        <strong>监控</strong>：LangSmith tracing + Langfuse metrics<br>
+        <strong>评估</strong>：RAGAS 自动评测 + 人工抽检</p>
+        <div class="tools"><span class="tool">LangChain</span><span class="tool">ChromaDB</span><span class="tool">Neo4j</span><span class="tool">Streamlit</span><span class="tool">LangSmith</span></div>
+      </div>
+      <div>
+        <h5>🔬 Lab 实操</h5>
+        <p><strong>Project: Building your First RAG QA Application with LangChain</strong><br><br>
+        从零到一完成完整应用：<br>
+        1. 项目结构搭建<br>
+        2. 文档 ingestion 管线（支持 Vector + Graph 双路索引）<br>
+        3. Retrieval + Generation chain<br>
+        4. Streamlit UI<br>
+        5. Monitoring 接入<br>
+        6. 评估 + 优化</p>
+        <span class="review teacher">👨‍🏫 项目 Demo Day</span>
+      </div>
+      <div>
+        <h5>📋 作业</h5>
+        <p>部署 RAG QA 应用到云端（Streamlit Cloud 或 AWS）<br><br>
+        提交：<br>
+        - GitHub 仓库链接<br>
+        - 线上 Demo URL<br>
+        - RAGAS 评测报告<br>
+        - README 使用说明</p>
+        <span class="review teacher">👨‍🏫 部署验证 + Demo Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-self">
+    <strong>📹 Week 6 录播/自学</strong>
+    <div class="ai-self-grid">
+      <div class="ai-self-card">
+        <span class="lab-tag">VIDEO</span>
+        <div class="lab-name">用 AWS 构建 RAG 应用</div>
+        <div class="lab-desc">AWS Bedrock + Lambda + S3 构建 Serverless RAG</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">RAG Evaluation Toolbox</div>
+        <div class="lab-desc">RAG 评估工具全景：RAGAS、Langfuse、TruLens、DeepEval</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">GraphRAG 技术全景</div>
+        <div class="lab-desc">GraphRAG vs RAPTOR vs HippoRAG — 三种图增强 RAG 方案的架构差异和适用场景</div>
+      </div>
+      <div class="ai-self-card">
+        <span class="lab-tag">INFO</span>
+        <div class="lab-name">Deploying RAG in Production</div>
+        <div class="lab-desc">RAG 生产部署：缓存、并发、监控、failover 策略</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="phase1.html">← Phase 1: GenAI 基础</a> &nbsp;|&nbsp; <a href="curriculum.html">课程总览</a> &nbsp;|&nbsp; <a href="phase3.html">Phase 3: Agents + MCP →</a>
+</div>
+
+</div>
+</body>
+</html>

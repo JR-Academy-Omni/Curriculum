@@ -376,7 +376,7 @@ Path 2 · 业务/产品背景 → AI PM / AI Adoption Specialist / CAIO
 Path 3 · 非技术背景 → AI Ethics / GEO / Finance Compliance
 
 每条路径的详细 6 个月学习计划，见 JR Academy 60 分钟讲座完整版
-（jiangren.com.au/curriculum/lessons/ai-new-jobs-talk/）。
+（jracademy.ai/curriculum/lessons/ai-new-jobs-talk/）。
 
 【结语】
 

@@ -4,11 +4,12 @@
 - curriculum.html  课程总览（hero + stats + 13 phase 卡片 + 双 tier 对比 + 定价）
 - outline.html     详细 lesson 列表（按 phase 分组，所有 lesson 平铺）
 - phase_N.html × N 每个 phase 的详情页（含 lesson 列表 + 学习目标）
-- learning-plan.html 周日历（basic 8 周 / advanced 12 周）
+- learning-plan.html 周日历（首发共创班，周数取 programPricing.launch.weeks）
 
 运行：python3 scripts/generate-html.py
 输出：public/*.html
 """
+import io
 import json
 import os
 import html
@@ -16,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 PUBLIC = ROOT / 'public'
-OUTLINE = json.load(open(PUBLIC / 'outline.json'))
+OUTLINE = json.load(io.open(PUBLIC / 'outline.json', encoding='utf-8'))
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 通用样式 + 组件
@@ -78,34 +79,75 @@ HEAD_STYLES = """
   .price-card .tag { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 800; letter-spacing: 1px; }
   .price-card .price { font-family: 'Space Mono', monospace; font-size: 42px; font-weight: 900; margin: 8px 0; }
   .price-card ul { margin-top: 10px; padding-left: 20px; font-size: 12px; line-height: 1.8; }
+  .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0; }
+  .who-card { border: 3px solid #10162f; box-shadow: 5px 5px 0 #10162f; padding: 14px; background: #fff; }
+  .who-card .ico { font-size: 26px; line-height: 1; }
+  .who-card .who { font-weight: 900; font-size: 15px; margin-top: 6px; }
+  .who-card .sub { font-size: 11px; color: #666; font-family: 'Space Mono', monospace; margin-top: 2px; }
+  .who-card .row { font-size: 12.5px; line-height: 1.7; margin-top: 9px; }
+  .who-card .row b { display: inline-block; min-width: 46px; }
+  .who-card .now { color: #7c2d12; }
+  .who-card .aft { color: #10162f; background: #fef08a; padding: 1px 3px; }
+  .hl-item { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px dashed #ccc; }
+  .hl-item:last-child { border-bottom: none; }
+  .hl-n { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 20px; color: #dc2626; min-width: 34px; }
+  .hl-t { font-weight: 800; font-size: 14px; }
+  .hl-d { font-size: 12.5px; color: #444; line-height: 1.7; margin-top: 3px; }
+  .no-fit { border-left: 4px solid #dc2626; background: #fff1f2; padding: 9px 12px; margin-bottom: 8px; font-size: 12.5px; line-height: 1.7; }
+  .reuse-t { width:100%; border-collapse:collapse; margin-top:12px; font-size:13px; }
+  .reuse-t th { background:#10162f; color:#fef08a; padding:7px 9px; text-align:left; }
+  .reuse-t td { padding:9px; border-bottom:1px solid #ddd; vertical-align:top; }
+  .reuse-t .made { font-weight:800; white-space:nowrap; }
+  .reuse-t .how { color:#666; font-size:12px; }
+  .gl { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:10px; margin-top:12px; }
+  .gl-i { border:2px solid #10162f; background:#fff; padding:10px 12px; }
+  .gl-i b { display:block; font-size:13.5px; margin-bottom:3px; }
+  .gl-i span { font-size:12.5px; color:#444; line-height:1.65; }
   .footer { font-size: 11px; color: #888; font-family: 'Space Mono', monospace; margin-top: 36px; padding-top: 14px; border-top: 1px dashed #ccc; }
 </style>
 """
 
 
+# 🔒 内部页：仍然生成，但绝不进对外 curriculumPages，也不出现在对外页面的 nav 上。
+# （marketing.html 含合规红线提示 / AI 出图 prompt / 销售话术；outline-preview.html 是草稿预览）
+INTERNAL_PAGES = {'marketing.html', 'outline-preview.html'}
+
+NAV_ITEMS = [
+    ('curriculum.html', '🏠 课程总览'),
+    ('outline.html', '📋 详细大纲'),
+    ('outline-preview.html', '🔍 实时预览'),
+    ('learning-plan.html', '📅 学习计划'),
+    ('tools.html', '🛠️ AI 工具大全'),
+    ('poster.html', '🎨 营销海报'),
+    ('marketing.html', '📣 营销文案库'),
+]
+
+
 def nav(active: str) -> str:
-    items = [
-        ('curriculum.html', '🏠 课程总览'),
-        ('outline.html', '📋 详细大纲'),
-        ('outline-preview.html', '🔍 实时预览'),
-        ('learning-plan.html', '📅 学习计划'),
-        ('tools.html', '🛠️ AI 工具大全'),
-        ('poster.html', '🎨 营销海报'),
-        ('marketing.html', '📣 营销文案库'),
-    ]
+    # 内部页之间可以互相跳；对外页只看得到对外页
+    internal_view = active in INTERNAL_PAGES
     html_parts = []
-    for href, label in items:
+    for href, label in NAV_ITEMS:
+        if href in INTERNAL_PAGES and not internal_view:
+            continue
         cls = ' class="active"' if href == active else ''
         html_parts.append(f'<a href="./{href}"{cls}>{label}</a>')
     return f'<nav class="nav">{"".join(html_parts)}</nav>'
 
 
 def tier_pill(programs: list) -> str:
-    if 'basic' in programs and 'advanced' in programs:
-        return '<span class="tier both">🟦 基础+进阶</span>'
-    if 'basic' in programs:
-        return '<span class="tier basic">🟪 仅基础班</span>'
-    return '<span class="tier advanced">🟨 仅进阶班</span>'
+    if 'launch' in programs:
+        return '<span class="tier basic">🔥 首发共创班</span>'
+    return '<span class="tier both">🟦 完整版</span>'
+
+
+
+def md_bold(t: str) -> str:
+    out, i = [], 0
+    parts = t.split('**')
+    for n, seg in enumerate(parts):
+        out.append(f'<strong>{html.escape(seg)}</strong>' if n % 2 else html.escape(seg))
+    return ''.join(out)
 
 
 def stat(n, label, sub: str = '') -> str:
@@ -124,16 +166,21 @@ def write(name: str, content: str) -> None:
 
 all_lessons = [l for p in OUTLINE['phases'] for l in p['lessons']]
 basic_lessons = [l for p in OUTLINE['phases'] for l in p['lessons'] if 'basic' in p['programs']]
-adv_lessons = [l for p in OUTLINE['phases'] for l in p['lessons'] if 'advanced' in p['programs']]
 total = len(all_lessons)
-live_count = sum(1 for l in all_lessons if l.get('isLive'))
+live_count = sum(1 for l in all_lessons if l.get('launchRole') == 'live')
 lab_count = sum(1 for l in all_lessons if l['type'] == 'InteractiveLab')
 quest_count = sum(1 for l in all_lessons if l['type'] == 'Quest')
 video_count = sum(1 for l in all_lessons if l['type'] == 'Video')
 info_count = sum(1 for l in all_lessons if l['type'] == 'Information')
 
 basic_p = OUTLINE['programPricing']['basic']
-adv_p = OUTLINE['programPricing']['advanced']
+launch_p = OUTLINE['programPricing']['launch']
+
+launch_lessons = [l for p in OUTLINE['phases'] for l in p['lessons'] if 'launch' in l.get('programs', [])]
+launch_live = sorted((l for l in launch_lessons if l.get('launchRole') == 'live'), key=lambda x: x['launchSession'])
+launch_merged = [l for l in launch_lessons if l.get('launchRole') == 'merged']
+launch_lab = sum(1 for l in launch_lessons if l['type'] == 'InteractiveLab')
+launch_quest = sum(1 for l in launch_lessons if l['type'] == 'Quest')
 
 # ─────────────────────────────────────────────────────────────────────────────
 # curriculum.html  课程总览
@@ -143,7 +190,7 @@ def render_curriculum() -> str:
     # Phase cards
     phase_cards = []
     for idx, p in enumerate(OUTLINE['phases']):
-        live_n = sum(1 for l in p['lessons'] if l.get('isLive'))
+        live_n = sum(1 for l in p['lessons'] if l.get('launchRole') == 'live')
         lab_n = sum(1 for l in p['lessons'] if l['type'] == 'InteractiveLab')
         quest_n = sum(1 for l in p['lessons'] if l['type'] == 'Quest')
         phase_cards.append(f'''
@@ -167,21 +214,16 @@ def render_curriculum() -> str:
 <body>
 
 <h1>{html.escape(OUTLINE['name'])}</h1>
-<div class="sub">{html.escape(OUTLINE['cardDescription'])} · 第 2 期 · 基础班 {basic_p['weeks']} 周 / 进阶班 {adv_p['weeks']} 周</div>
+<div class="sub">{html.escape(OUTLINE['cardDescription'])} · 🔥 首发共创班 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 场全直播 · 限 {launch_p['seatCap']} 人</div>
 
 {nav('curriculum.html')}
 
 <div class="card" style="background:#10162f;color:#fef08a;border-color:#10162f;box-shadow:6px 6px 0 #dc2626">
-  <h3 style="color:#fef08a;margin-bottom:10px">🎨 一门课，8 种 AI 产出能力</h3>
-  <div style="font-size:13px;line-height:1.9;color:#fff">
-    📊 <strong style="color:#fef08a">文档型</strong>：PPT / BP / 简历 / 提案 / 白皮书 ·
-    🎨 <strong style="color:#fef08a">视觉型</strong>：海报 / 配图 / 印刷品（含动漫风格） ·
-    🎵 <strong style="color:#fef08a">音频型</strong>：TTS 配音 / BGM 音乐<br>
-    🎬 <strong style="color:#fef08a">视频型</strong>：60s 科普视频 / B-roll ·
-    🌐 <strong style="color:#fef08a">网页型</strong>：Landing Page / Admin CMS ·
-    🤖 <strong style="color:#fef08a">自动化</strong>：AI Agent / 定时任务<br>
-    📊 <strong style="color:#fef08a">数据型</strong>：Dashboard / Excel 加速 ·
-    📣 <strong style="color:#fef08a">分发型</strong>：5 平台同步 · <em style="color:#fed7aa">33 个 AI 工具组成完整工作流</em>
+  <h3 style="color:#fef08a;margin-bottom:10px">💼 你要的不是「会用 AI」，是同事做不出来的产出</h3>
+  <div style="font-size:14px;line-height:1.9;color:#fff">
+    {launch_p['weeks']} 周之后，你手里有 <strong style="color:#fef08a">5 件能直接带回工位用的东西</strong>：
+    给客户的提案 PPT、能发出去的 PDF、别人能打开的网站、每天自己跑的数据报表、一条 60 秒视频。<br>
+    <em style="color:#fed7aa">换掉内容就是下一份 —— 同一件事，你 40 分钟做完，同事还在找模板。</em>
   </div>
 </div>
 
@@ -192,35 +234,170 @@ def render_curriculum() -> str:
 
 <h2>📊 课程数字</h2>
 <div class="stats">
-  {stat(total, '总课时', '13 phase')}
-  {stat(live_count, '直播课', 'Lesson type')}
-  {stat(lab_count, 'InteractiveLab', '互动练习')}
-  {stat(quest_count, 'Quest', 'AI Tutor 带练')}
-  {stat(video_count, '5min 短视频', '概念速通')}
-  {stat(info_count, '自学 / Info', '可单独打卡')}
+  {stat(launch_p['liveSessions'], '场直播', f"每场 {launch_p['sessionLength']} 分钟")}
+  {stat(launch_p['liveHours'], '小时直播', '会卡住的才直播')}
+  {stat(launch_p['lessonsCount'], '节课', f"{len(OUTLINE['phases'])} 个 Phase")}
+  {stat(launch_lab, 'Lab', '互动练习')}
+  {stat(launch_quest, 'Quest', 'AI Tutor 带练')}
+  {stat(5, '件交付物', '都能拿去用')}
 </div>
 
-<h2>💰 班型与定价</h2>
+<h2>💼 职场新竞争力：同一件事，你和同事的差距</h2>
+<div class="card" style="background:#fef08a;border-color:#ca8a04;box-shadow:6px 6px 0 #ca8a04">
+  <div style="font-size:13px;line-height:1.9">
+    这门课不是教你「会用 AI 聊天」——那个谁都会。它教你<strong>把工作流程整段砍掉</strong>。
+    开营第一节课不讲工具，先算这笔账：
+  </div>
+  <table style="width:100%;border-collapse:collapse;margin-top:12px;font-size:13px">
+    <tr style="background:#10162f;color:#fef08a">
+      <th style="padding:7px 8px;text-align:left">一件事</th>
+      <th style="padding:7px 8px;text-align:left">同事怎么做</th>
+      <th style="padding:7px 8px;text-align:left">你学完怎么做</th>
+      <th style="padding:7px 8px;text-align:left">差距</th></tr>
+    {''.join(
+      f'<tr><td style="padding:7px 8px;border-bottom:1px solid #ca8a04">{a}</td>'
+      f'<td style="padding:7px 8px;border-bottom:1px solid #ca8a04;color:#7c2d12">{b}</td>'
+      f'<td style="padding:7px 8px;border-bottom:1px solid #ca8a04"><strong>{c}</strong></td>'
+      f'<td style="padding:7px 8px;border-bottom:1px solid #ca8a04;font-weight:700;color:#dc2626">{e}</td></tr>'
+      for a, b, c, e in [
+        ('给客户做提案 PPT', '找模板、抠排版、来回改 4 小时', '讲清需求 40 分钟出稿', '省 3 小时'),
+        ('每周部门周报', '手工汇总 2 小时 × 4 周', '每天早 8 点自己跑出来', '搭一次，之后归零'),
+        ('要一个展示页面', '提需求给 IT，排期两周', '自己一个下午上线', '不用等别人'),
+        ('一份内容发 5 个平台', '手改 5 遍约 2 小时', '15 分钟全出', '省 1.7 小时'),
+        ('一条科普视频', '外包，或者从头学剪辑', 'PPT 直接变 MP4', '别人接不了的活你能接'),
+      ])}
+  </table>
+  <div style="font-size:13px;margin-top:14px;padding:10px;background:#10162f;color:#fef08a;line-height:1.8">
+    💡 <strong>这就是「新竞争力」的具体样子</strong>：不是你多学了一个工具，是<strong>同一份时间里你交出去的东西，别人交不出来</strong>。
+    在部门里慢慢变成那个「这个能不能找他做」的人。
+  </div>
+  <div style="font-size:12px;margin-top:12px;line-height:1.8">
+    <strong>工作里用：</strong>客户提案 · 报价单 · 周报自动化 · 简历 · 部门官网 · 数据看板<br>
+    <strong>生活里用：</strong>家庭旅行手册 · 个人作品集网站 · 给孩子做的绘本 · 装修比价自动汇总
+  </div>
+</div>
+
+<h2>🔁 学完直接照搬：这 5 件回工位就能接着用</h2>
+<div class="card">
+  <div style="font-size:13px;line-height:1.9">
+    <strong>这不是练习作业。</strong>5 周做的每一件都按「能照搬」设计 ——
+    换掉里面的内容，就是你下一份提案、下一个报价单、下一个部门页面。
+  </div>
+  <table class="reuse-t">
+    <tr><th>你做出来的</th><th>回公司直接当</th><th>怎么复用</th></tr>
+    {''.join(
+      f'<tr><td class="made">{html.escape(r["made"])}</td>'
+      f'<td>{html.escape(r["reuse"])}</td>'
+      f'<td class="how">{html.escape(r["how"])}</td></tr>'
+      for r in OUTLINE['reuseAtWork'])}
+  </table>
+</div>
+
+<h2>👥 这门课适合谁</h2>
+<div class="who-grid">
+  {''.join(
+    f'<div class="who-card"><div class="ico">{w["icon"]}</div>'
+    f'<div class="who">{html.escape(w["who"])}</div>'
+    f'<div class="sub">{html.escape(w["sub"])}</div>'
+    f'<div class="row now"><b>你现在</b>{html.escape(w["now"])}</div>'
+    f'<div class="row"><b>学完后</b><span class="aft">{html.escape(w["after"])}</span></div></div>'
+    for w in OUTLINE['suitableFor'])}
+</div>
+
+<h2>🚫 这门课不适合谁（先说清楚，省得双方浪费时间）</h2>
+<div class="card">
+  {''.join(f'<div class="no-fit">{md_bold(x)}</div>' for x in OUTLINE['notSuitableFor'])}
+</div>
+
+<h2>✨ 课程亮点</h2>
+<div class="card">
+  {''.join(
+    f'<div class="hl-item"><div class="hl-n">{h["n"]}</div><div>'
+    f'<div class="hl-t">{html.escape(h["t"])}</div>'
+    f'<div class="hl-d">{html.escape(h["d"])}</div></div></div>'
+    for h in OUTLINE['courseHighlights'])}
+</div>
+
+<h2>📝 开营第一节：现场定下你自己的项目</h2>
+<div class="card">
+  <div style="font-size:13px;line-height:1.9">
+    第一节课现场填《我的项目单》六个问题，讲师逐个过 —— 把太大的砍小、把太虚的问实。
+    <strong>后面 {launch_p['weeks']} 周所有作品都做你自己的题目</strong>，不做房地产楼盘演示案例（那只是讲师 demo）。
+  </div>
+  <ol style="padding-left:24px;line-height:1.9;font-size:13px;margin-top:10px">
+    <li>你想做出个什么东西？（一句话，具体到能被看见）</li>
+    <li>这东西给谁看 / 给谁用？（老板 / 客户 / 同事 / 招聘方 / 家人 / 自己）</li>
+    <li>你现在做这件事要花多久？<strong>← 效果基线，结营对照这一条</strong></li>
+    <li>你最想要的效果是？（提升上班效率 / 有个能拿出去看的作品 / 让想法落地 / 搞清楚 AI 能干什么）</li>
+    <li>你手上有什么真实材料能拿来练？（工作 PPT / 报价单 / 客户资料 / 简历 / 产品图）</li>
+    <li>学完你打算用在哪个具体场合？（下个月的哪次汇报 / 哪个客户 / 哪次求职）</li>
+  </ol>
+  <div style="font-size:12px;color:#666;margin-top:10px">
+    结营答辩（S{launch_p['liveSessions']:02d}）你会拿着这份单子上台，逐条对照第 3 题的基线 —— 这不是考试，是让你看见这 {launch_p['weeks']} 周换到了什么。
+  </div>
+</div>
+
+<h2>🎁 你会带走的 5 件作品</h2>
 <div class="price-cards">
-  <div class="price-card">
-    <div class="tag" style="color:#9d174d">🟪 基础班</div>
-    <div style="font-size:13px;margin-top:4px">{html.escape(basic_p['name'])}</div>
-    <div class="price">${basic_p['tuition']}<span style="font-size:14px;font-weight:700;color:#666"> {basic_p['currency']}</span></div>
-    <div class="mono" style="font-size:11px;color:#666">{basic_p['weeks']} 周 · {basic_p['lessonsCount']} 节课 · 单课均价 ${basic_p['tuition']/basic_p['lessonsCount']:.1f}</div>
-    <div style="font-size:12px;color:#888;margin-top:4px">第 1 期 ${basic_p['tuitionPrevCohort']} → 第 2 期 ${basic_p['tuition']}（{"价格不变" if basic_p['tuition'] == basic_p['tuitionPrevCohort'] else f"+{(basic_p['tuition']-basic_p['tuitionPrevCohort'])/basic_p['tuitionPrevCohort']*100:.0f}%"}）</div>
-    <ul>{''.join(f'<li>{html.escape(d)}</li>' for d in basic_p['deliverables'])}</ul>
-  </div>
-  <div class="price-card">
-    <div class="tag" style="color:#ca8a04">🟨 进阶班</div>
-    <div style="font-size:13px;margin-top:4px">{html.escape(adv_p['name'])}</div>
-    <div class="price">${adv_p['tuition']}<span style="font-size:14px;font-weight:700;color:#666"> {adv_p['currency']}</span></div>
-    <div class="mono" style="font-size:11px;color:#666">{adv_p['weeks']} 周 · {adv_p['lessonsCount']} 节课 · 单课均价 ${adv_p['tuition']/adv_p['lessonsCount']:.1f}</div>
-    <div style="font-size:12px;color:#888;margin-top:4px">第 1 期 ${adv_p['tuitionPrevCohort']} → 第 2 期 ${adv_p['tuition']}（+{(adv_p['tuition']-adv_p['tuitionPrevCohort'])/adv_p['tuitionPrevCohort']*100:.0f}%）</div>
-    <ul>{''.join(f'<li>{html.escape(d)}</li>' for d in adv_p['deliverables'])}</ul>
+  <div class="price-card" style="background:#fef08a;border-color:#dc2626;box-shadow:6px 6px 0 #dc2626">
+    <div class="tag" style="color:#dc2626">🔥 {html.escape(launch_p['cohortType'])} · 限 {launch_p['seatCap']} 人</div>
+    <div style="font-size:13px;margin-top:4px">{html.escape(launch_p['name'])}</div>
+    <div class="mono" style="font-size:12px;color:#666;margin-top:8px">{launch_p['weeks']} 周 · {launch_p['liveSessions']} 场全直播（{launch_p['liveHours']} 小时）· {launch_p['lessonsCount']} 节课</div>
+    <div style="font-size:12px;color:#7c2d12;margin-top:4px">{html.escape(launch_p['note'])}</div>
+    <ul>{''.join(f'<li>{html.escape(x)}</li>' for x in launch_p['deliverables'])}</ul>
+    <div style="font-size:12px;color:#666;margin-top:10px;padding-top:8px;border-top:1px dashed #ca8a04">
+      💬 学费与开课时间请咨询课程顾问
+    </div>
   </div>
 </div>
 
-<h2>🗂 13 个 Phase</h2>
+<h2>📖 几个词先说清楚（零基础不用怕）</h2>
+<div class="card">
+  <div style="font-size:13px;line-height:1.9">
+    下面排课表里会出现几个词。<strong>不用提前学，这里先用人话说一遍</strong>，看排课的时候就不会卡住。
+  </div>
+  <div class="gl">
+    {''.join(
+      f'<div class="gl-i"><b>{html.escape(g["t"])}</b><span>{html.escape(g["p"])}</span></div>'
+      for g in OUTLINE['glossary'])}
+  </div>
+</div>
+
+<h2>📅 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 场直播排课</h2>
+<div class="card">
+  <table style="width:100%;border-collapse:collapse;font-size:13px">
+    <tr style="background:#10162f;color:#fef08a">
+      <th style="padding:6px 8px;text-align:left">周</th><th style="padding:6px 8px;text-align:left">场次</th>
+      <th style="padding:6px 8px;text-align:left">内容</th><th style="padding:6px 8px;text-align:left">交付物</th></tr>
+    {''.join(
+      f'<tr><td style="padding:6px 8px;border-bottom:1px solid #ddd">W{l["launchWeek"]}</td>'
+      f'<td style="padding:6px 8px;border-bottom:1px solid #ddd" class="mono">S{l["launchSession"]:02d}</td>'
+      f'<td style="padding:6px 8px;border-bottom:1px solid #ddd">{html.escape(l["launchSessionTitle"])}</td>'
+      f'<td style="padding:6px 8px;border-bottom:1px solid #ddd">'
+      f'{("<strong>" + html.escape(l["launchDeliverable"]) + "</strong>") if l.get("launchDeliverable") else "—"}</td></tr>'
+      for l in launch_live)}
+  </table>
+  <div style="font-size:12px;color:#666;margin-top:10px">
+    每周 2 场 · <strong>每场 90 分钟</strong>（20 分钟演示 + 60 分钟现场做 + 10 分钟收口）· 全程直播无录播<br>
+    另配 {launch_lab} 个互动 Lab + {launch_quest} 个 Quest + {len(launch_merged)} 节并入直播的配套内容，供自主安排
+  </div>
+</div>
+
+<h2>📖 这两块不排直播（学得会的不占你时间）</h2>
+<div class="card">
+  <div style="font-size:13px;line-height:1.9;margin-bottom:10px">
+    排课原则：<strong>会卡住的才排直播</strong>——装工具、报错、让东西真的上线、定时任务跑不起来，这些必须有人看着。
+    不会卡住的就别占你晚上，配齐 Lab 和 Quest 你自己走更快。
+  </div>
+  {''.join(
+    f'<div style="border-left:4px solid #ca8a04;padding:8px 12px;margin-bottom:10px;background:#fffbeb">'
+    f'<div style="font-weight:700;font-size:13px">{html.escape(b["title"])}</div>'
+    f'<div style="font-size:12px;color:#7c2d12;margin-top:3px">为什么不直播：{html.escape(b["why"])}</div>'
+    f'<div style="font-size:12px;color:#666;margin-top:3px" class="mono">{html.escape(b["path"])}</div></div>'
+    for b in OUTLINE['launchSelfStudyBlocks'])}
+</div>
+
+<h2>🗂 {len(OUTLINE['phases'])} 个 Phase</h2>
 <div class="phase-grid">
   {''.join(phase_cards)}
 </div>
@@ -380,7 +557,7 @@ def render_learning_plan() -> str:
 <head>{HEAD_STYLES}<title>{html.escape(OUTLINE['name'])} — 学习计划</title></head>
 <body>
 <h1>📅 学习计划</h1>
-<div class="sub">基础班 {basic_p['weeks']} 周（{basic_p['lessonsCount']} 节）· 进阶班 {adv_p['weeks']} 周（{adv_p['lessonsCount']} 节）</div>
+<div class="sub">🔥 首发共创班 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 场全直播 · {launch_p['lessonsCount']} 节课</div>
 {nav('learning-plan.html')}
 
 <div class="card tight">
@@ -402,188 +579,155 @@ def render_learning_plan() -> str:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def render_poster() -> str:
-    quest_titles = [l['title'].replace('Quest 实战：', '') for l in all_lessons if l['type'] == 'Quest']
+    """课程主海报 · 1242×1660 (3:4)
+    surface: course-recruitment-poster | brand: jr-academy | register: B
+    extends: jr-academy-brand/DESIGN.md + POSTER_DESIGN.md
+    facts:   public/outline.json（唯一事实源，改课程数据海报自动跟着变）
+    单一主卖点：时间账。5 件交付物只做次要信息，不在一张海报同时卖 5 件事。
+    无价格（价格不上课程页，由顾问口径给出）· 无二维码（用文字入口，见 POSTER_DESIGN §7）
+    """
+    lp = OUTLINE['programPricing']['launch']
+    rows = [
+        ('给客户做提案 PPT', '找模板、抠排版 4 小时', '40 分钟'),
+        ('每周部门周报', '手工汇总 2 小时 × 4 周', '每天自己跑'),
+        ('要一个展示页面', '提需求给 IT，排期两周', '一个下午上线'),
+        ('一条科普视频', '外包，或从头学剪辑', 'PPT 直接变 MP4'),
+    ]
+    row_html = ''.join(
+        f'<tr><td class="pt-a">{a}</td><td class="pt-b">{b}</td><td class="pt-c">{c}</td></tr>'
+        for a, b, c in rows)
+    deliv = ''.join(f'<span class="pd">{html.escape(x)}</span>' for x in lp['deliverables'])
+    who = ' · '.join(html.escape(w['who']) for w in OUTLINE['suitableFor'])
 
-    return f'''<!doctype html>
+    return f"""<!DOCTYPE html>
 <html lang="zh-CN">
-<head>{HEAD_STYLES}<title>{html.escape(OUTLINE['name'])} — 营销海报</title>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{html.escape(OUTLINE['name'])} — 课程主海报</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;900&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  body {{ background: linear-gradient(135deg, #faf9f5 0%, #fef08a 100%); }}
-  .hero {{ background: #10162f; color: #fef08a; padding: 40px 32px; border: 3px solid #10162f; box-shadow: 12px 12px 0 #dc2626; margin-bottom: 32px; }}
-  .hero h1 {{ color: #fef08a; font-size: clamp(32px, 5vw, 56px); }}
-  .hero .super {{ font-size: 18px; color: #fff; margin-top: 16px; line-height: 1.6; }}
-  .hero .sub-hook {{ font-size: 14px; color: #fed7aa; margin-top: 8px; font-style: italic; }}
-  .badge-row {{ display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }}
-  .badge {{ background: #fef08a; color: #10162f; padding: 4px 12px; border: 2px solid #10162f; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 800; }}
-  .pain-card {{ background: #fff; border-left: 5px solid #dc2626; padding: 14px 18px; margin-bottom: 12px; }}
-  .pain-card .who {{ font-size: 11px; color: #dc2626; font-family: 'Space Mono', monospace; font-weight: 800; letter-spacing: 1px; }}
-  .pain-card .pain {{ font-size: 14px; margin-top: 4px; font-weight: 600; }}
-  .pain-card .arrow {{ font-size: 18px; color: #10b981; margin: 4px 0; }}
-  .pain-card .solve {{ font-size: 13px; color: #10162f; }}
-  .deliverable {{ background: #fff; border: 2px solid #10162f; box-shadow: 4px 4px 0 #10162f; padding: 14px 16px; }}
-  .deliverable .num {{ font-family: 'Space Mono', monospace; font-size: 12px; color: #dc2626; font-weight: 800; }}
-  .deliverable .title {{ font-size: 14px; font-weight: 800; margin: 4px 0; }}
-  .deliverable .desc {{ font-size: 11px; color: #666; }}
-  .deliverable .use {{ font-size: 11px; color: #10b981; margin-top: 6px; font-weight: 600; }}
-  .deliverable.adv {{ border-color: #ca8a04; box-shadow: 4px 4px 0 #ca8a04; }}
-  .deliverable.adv .num {{ color: #ca8a04; }}
+  * {{ margin:0; padding:0; box-sizing:border-box; }}
+  body {{ background:#e8e6e0; display:flex; justify-content:center; padding:40px 20px 120px;
+         font-family:'DM Sans','Noto Sans SC',sans-serif; }}
+  /* 朋友圈 / 小红书 / campaign 课程主海报统一规格 1242×1660 (3:4) */
+  #poster {{ width:1242px; height:1660px; background:#faf9f5; border:6px solid #10162f;
+            padding:64px 60px 52px; display:flex; flex-direction:column; flex-shrink:0;
+            transform-origin:top center; }}
+  .ident {{ display:flex; align-items:center; gap:14px; font-family:'Space Mono',monospace;
+           font-size:24px; font-weight:700; letter-spacing:2px; color:#10162f; }}
+  .ident .dot {{ width:16px; height:16px; background:#dc2626; border:3px solid #10162f; }}
+  .ident .cohort {{ margin-left:auto; background:#fef08a; border:3px solid #10162f;
+                   padding:6px 14px; font-size:22px; }}
+  h1 {{ font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif; font-weight:900;
+       font-size:104px; line-height:1.04; color:#10162f; margin-top:34px; letter-spacing:-2px; }}
+  .hook {{ font-size:46px; font-weight:700; line-height:1.35; color:#10162f; margin-top:26px; }}
+  .hook em {{ font-style:normal; background:#fef08a; box-shadow:0 -2px 0 #fef08a inset;
+             border-bottom:5px solid #dc2626; padding:0 6px; }}
+  .ptable {{ margin-top:38px; border:4px solid #10162f; box-shadow:10px 10px 0 #10162f; background:#fff; }}
+  .ptable .cap {{ background:#10162f; color:#fef08a; font-family:'Space Mono',monospace;
+                 font-size:24px; font-weight:700; letter-spacing:1px; padding:12px 20px; }}
+  table {{ width:100%; border-collapse:collapse; }}
+  td {{ padding:16px 20px; font-size:29px; border-bottom:2px solid #e5e3dc; vertical-align:middle; }}
+  tr:last-child td {{ border-bottom:none; }}
+  .pt-a {{ font-weight:700; color:#10162f; width:37%; }}
+  .pt-b {{ color:#9a6b52; width:34%; font-size:26px; }}
+  .pt-c {{ font-weight:900; color:#dc2626; text-align:right; }}
+  .pt-c::before {{ content:'→ '; color:#10162f; }}
+  .specs {{ display:flex; gap:12px; margin-top:34px; }}
+  .spec {{ flex:1; border:4px solid #10162f; background:#10162f; color:#faf9f5;
+          padding:16px 10px; text-align:center; }}
+  .spec b {{ display:block; font-family:'Space Mono',monospace; font-size:46px;
+            font-weight:700; color:#fef08a; line-height:1; }}
+  .spec span {{ display:block; font-size:22px; margin-top:8px; letter-spacing:1px; }}
+  .deliv {{ margin-top:32px; }}
+  .deliv .lab {{ font-family:'Space Mono',monospace; font-size:24px; font-weight:700;
+                color:#10162f; letter-spacing:1px; margin-bottom:12px; }}
+  .pd {{ display:inline-block; border:3px solid #10162f; background:#fff; padding:9px 16px;
+        font-size:25px; font-weight:500; margin:0 8px 10px 0; box-shadow:4px 4px 0 #10162f; }}
+  .who {{ margin-top:28px; font-size:25px; line-height:1.6; color:#10162f;
+         border-left:8px solid #fef08a; padding-left:16px; }}
+  .who b {{ font-weight:700; }}
+  .foot {{ margin-top:auto; padding-top:30px; border-top:4px dashed #10162f; }}
+  .cta {{ display:flex; align-items:center; gap:18px; }}
+  .cta .go {{ background:#dc2626; color:#fff; border:4px solid #10162f; box-shadow:8px 8px 0 #10162f;
+             padding:18px 28px; font-size:34px; font-weight:900; }}
+  .cta .alt {{ font-size:25px; line-height:1.5; color:#10162f; }}
+  .cta .alt b {{ font-family:'Space Mono',monospace; font-size:22px; word-break:break-all; }}
+  .legal {{ margin-top:20px; font-size:21px; color:#6b6a63; line-height:1.5; }}
+  .brand {{ margin-top:16px; font-family:'Space Mono',monospace; font-size:22px;
+           font-weight:700; letter-spacing:2px; color:#10162f; }}
+  @media (max-width:1340px) {{ #poster {{ transform:scale(.62); margin-bottom:-620px; }} }}
+  @media (max-width:820px)  {{ #poster {{ transform:scale(.42); margin-bottom:-960px; }} }}
 </style>
 </head>
 <body>
+<div id="poster">
+  <div class="ident"><span class="dot"></span>匠人学院 JR ACADEMY
+    <span class="cohort">🔥 {html.escape(lp['cohortType'])} · 限 {lp['seatCap']} 人</span></div>
 
-<div class="hero">
-  <div class="mono" style="font-size:12px;color:#fed7aa;letter-spacing:2px">{html.escape(OUTLINE['name_en'])} · 2026 Q2 · 第 2 期</div>
   <h1>{html.escape(OUTLINE['name'])}</h1>
-  <div class="super">一门课学会做 <strong style="color:#fef08a">8 种 AI 产出</strong>：PPT · 海报 · 音乐 · 配音 · 视频 · 网站 · 数据 Dashboard · 自动化 Agent ✋</div>
-  <div class="sub-hook">市面上 99% 的 AI 课只教 1 个工具或 1 类产出。这门让你在 8-12 周里掌握 33 个工具 + 8 类创作能力，每周 2 节直播，全程不写代码。</div>
-  <div class="badge-row">
-    <span class="badge">{total} 节课</span>
-    <span class="badge">{quest_count} 个 Quest 实战</span>
-    <span class="badge">{lab_count} 个互动 Lab</span>
-    <span class="badge">{live_count} 节直播</span>
-    <span class="badge">13 个 Phase</span>
-    <span class="badge" style="background:#dc2626;color:#fef08a">非技术友好</span>
+  <div class="hook">{lp['weeks']} 周，把你最费时间的那件事<br><em>整段砍掉</em>。</div>
+
+  <div class="ptable">
+    <div class="cap">同一件事 · 同事怎么做 vs 你学完怎么做</div>
+    <table>{row_html}</table>
+  </div>
+
+  <div class="specs">
+    <div class="spec"><b>{lp['weeks']}</b><span>周</span></div>
+    <div class="spec"><b>{lp['liveSessions']}</b><span>场全直播</span></div>
+    <div class="spec"><b>{lp['sessionLength']}</b><span>分钟 / 场</span></div>
+    <div class="spec"><b>5</b><span>件交付物</span></div>
+  </div>
+
+  <div class="deliv">
+    <div class="lab">▍{lp['weeks']} 周后你手里会多出这 5 样</div>
+    {deliv}
+  </div>
+
+  <div class="who"><b>适合：</b>{who}<br>
+    <b>不适合：</b>已经天天用 Cursor 的工程师 · 想学编程语法转码的</div>
+
+  <div class="foot">
+    <div class="cta">
+      <div class="go">咨询课程顾问</div>
+      <div class="alt">开课时间 / 学费请咨询顾问<br>完整大纲：<b>jracademy.ai/curriculum/ai-programming/</b></div>
+    </div>
+    <div class="legal">零基础 · 全程线上直播 · 不教编程语法。本课不承诺就业结果、不承诺任何收入结果。</div>
+    <div class="brand">JIANGREN.COM.AU</div>
   </div>
 </div>
 
-{nav('poster.html')}
-
-<h2>🎯 这门课解决谁的什么痛点</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:18px 0">
-  <div class="pain-card">
-    <div class="who">在职白领 · 5+ 年经验</div>
-    <div class="pain">做了 100 份 PPT、写了 50 篇报告，但回头看一年没做出过一个"真东西"</div>
-    <div class="arrow">↓</div>
-    <div class="solve">基础班 8 周做出 5 件能放进作品集的真实产品</div>
-  </div>
-  <div class="pain-card">
-    <div class="who">大学生 · 在读 / 应届</div>
-    <div class="pain">简历空，没项目；JD 都要"AI 项目经验"但学校没教</div>
-    <div class="arrow">↓</div>
-    <div class="solve">作品集多 5-8 个 AI 项目，求职面试有料聊</div>
-  </div>
-  <div class="pain-card">
-    <div class="who">创业者 · 想做 MVP</div>
-    <div class="pain">有想法但请不起开发团队，做 BP 给投资人都没产品 demo</div>
-    <div class="arrow">↓</div>
-    <div class="solve">自己用 Cowork 做出可演示的 MVP + BP + Landing Page</div>
-  </div>
-  <div class="pain-card">
-    <div class="who">想转型者 · 不知道方向</div>
-    <div class="pain">AI 时代该学什么？编程太难、读完书也不会做东西</div>
-    <div class="arrow">↓</div>
-    <div class="solve">系统化"AI 主导产品制作"能力，8 周建立完整闭环</div>
-  </div>
-</div>
-
-<h2>📦 你学完能拿到手的"实物"（基础班 5 件 + 进阶班 +3 件）</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0">
-  <div class="deliverable">
-    <div class="num">交付 01 · 基础班</div>
-    <div class="title">📊 在线 HTML PPT</div>
-    <div class="desc">不是 .pptx — 是可分享 URL 的 HTML PPT（Slidev/reveal.js），能嵌入网站</div>
-    <div class="use">→ 用在产品介绍、招生宣传、培训演示</div>
-  </div>
-  <div class="deliverable">
-    <div class="num">交付 02 · 基础班</div>
-    <div class="title">📄 A4 PDF 全家桶</div>
-    <div class="desc">海报 / BP / 简历 / 提案 / 白皮书 任选其一完整产出</div>
-    <div class="use">→ 求职简历 / 创业 BP / 客户提案立刻用</div>
-  </div>
-  <div class="deliverable">
-    <div class="num">交付 03 · 基础班</div>
-    <div class="title">🌐 Landing Page 网站</div>
-    <div class="desc">真实部署到 Vercel 的网站，带域名 + SEO 优化</div>
-    <div class="use">→ 个人 IP / 项目展示 / 产品官网立刻可访问</div>
-  </div>
-  <div class="deliverable">
-    <div class="num">交付 04 · 基础班</div>
-    <div class="title">🎬 60s 知识科普视频</div>
-    <div class="desc">PPT 即视频（HyperFrames 自动出片），含 AI 配音 + 字幕</div>
-    <div class="use">→ B 站 / YouTube / 视频号 / 抖音内容</div>
-  </div>
-  <div class="deliverable">
-    <div class="num">交付 05 · 基础班</div>
-    <div class="title">📣 多平台分发能力</div>
-    <div class="desc">一份内容自动改成 5 平台风格（小红书 / 公众号 / 朋友圈 / LinkedIn / Twitter）</div>
-    <div class="use">→ 自媒体 / 个人品牌运营立刻应用</div>
-  </div>
-  <div class="deliverable adv">
-    <div class="num">交付 06 · 仅进阶班 🟨</div>
-    <div class="title">🤖 内容自动化 Agent</div>
-    <div class="desc">每天自动抓数据 + AI 整理 + 自动部署到你网站</div>
-    <div class="use">→ 内容站无人值守每天自动更新</div>
-  </div>
-  <div class="deliverable adv">
-    <div class="num">交付 07 · 仅进阶班 🟨</div>
-    <div class="title">📊 数据 Dashboard</div>
-    <div class="desc">抓数据 → 存数据库 → 可视化 → 阈值告警闭环</div>
-    <div class="use">→ 房产 / 加密币 / 求职岗位等数据监控</div>
-  </div>
-  <div class="deliverable adv">
-    <div class="num">交付 08 · 仅进阶班 🟨</div>
-    <div class="title">📈 AI Excel/Sheets 加速能力</div>
-    <div class="desc">AI 写公式 / VBA / Apps Script — 表格自动跑</div>
-    <div class="use">→ 日常工作 Excel 速度翻倍</div>
-  </div>
-</div>
-
-<h2>💰 班型与定价</h2>
-<div class="price-cards">
-  <div class="price-card">
-    <div class="tag" style="color:#9d174d">🟪 基础班</div>
-    <div style="font-size:13px;margin-top:4px">{html.escape(basic_p['name'])}</div>
-    <div class="price">${basic_p['tuition']}<span style="font-size:14px;font-weight:700;color:#666"> {basic_p['currency']}</span></div>
-    <div class="mono" style="font-size:11px;color:#666">{basic_p['weeks']} 周 · {basic_p['lessonsCount']} 节课</div>
-    <div style="font-size:12px;color:#888;margin-top:4px">第 1 期 ${basic_p['tuitionPrevCohort']} → {"价格不变（升级内容免费送）" if basic_p['tuition'] == basic_p['tuitionPrevCohort'] else f"${basic_p['tuition']}"}</div>
-    <ul>{''.join(f'<li>{html.escape(d)}</li>' for d in basic_p['deliverables'])}</ul>
-  </div>
-  <div class="price-card">
-    <div class="tag" style="color:#ca8a04">🟨 进阶班</div>
-    <div style="font-size:13px;margin-top:4px">{html.escape(adv_p['name'])}</div>
-    <div class="price">${adv_p['tuition']}<span style="font-size:14px;font-weight:700;color:#666"> {adv_p['currency']}</span></div>
-    <div class="mono" style="font-size:11px;color:#666">{adv_p['weeks']} 周 · {adv_p['lessonsCount']} 节课</div>
-    <div style="font-size:12px;color:#888;margin-top:4px">单课均价 ${adv_p['tuition']/adv_p['lessonsCount']:.0f}（市场 AI 课普遍 ${{30-50}}/课）</div>
-    <ul>{''.join(f'<li>{html.escape(d)}</li>' for d in adv_p['deliverables'])}</ul>
-  </div>
-</div>
-
-<h2>🏆 {quest_count} 个 Quest 实战（AI Tutor 一对一带练）</h2>
-<div class="card">
-  <div style="font-size:12px;color:#666;margin-bottom:10px">每个 Quest 是一次"真实产出"的实战：AI Tutor 主动引导你完成，最后你提交真实作品 — 不是看视频不是做题。</div>
-  <ol style="padding-left:24px;line-height:1.9;font-size:13px">
-    {''.join(f'<li>{html.escape(t)}</li>' for t in quest_titles)}
-  </ol>
-</div>
-
-<h2>📣 营销文案库</h2>
-<div class="card" style="background:#fef08a;border-color:#ca8a04;box-shadow:6px 6px 0 #ca8a04">
-  <div style="font-size:14px;font-weight:700">运营/小编可以从 <a href="./marketing.html">📣 营销文案库</a> 直接复制：</div>
-  <ul style="margin-top:10px;padding-left:20px;font-size:13px;line-height:1.9">
-    <li>5 个角度的核心 hook（痛点 / 时间 / 方法 / 趋势 / 对比）</li>
-    <li>5 套小红书图文（标题 + 正文 + 配图建议 + 话题）</li>
-    <li>1 篇微信公众号长文大纲（3000 字）+ 5 个标题候选</li>
-    <li>6 条朋友圈文案（不同时间段 + 不同主题）</li>
-    <li>2 条 LinkedIn 专业 post</li>
-    <li>30 秒视频脚本（B 站/抖音/视频号通用）</li>
-    <li>3 个私信冷启动话术（在职 / 应届 / 自由职业）</li>
-  </ul>
-</div>
-
-<div class="footer">
-  📄 数据源：<code>public/outline.json</code> · 本页由 <code>scripts/generate-html.py</code> 自动生成
-</div>
+<button id="jr-download-btn" type="button" style="position:fixed;right:24px;bottom:24px;z-index:99999;background:#dc2626;color:#fff;border:3px solid #10162f;box-shadow:6px 6px 0 #10162f;padding:14px 22px;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:1.5px;cursor:pointer;transition:transform .15s,box-shadow .15s;">⬇ 下载 PNG</button>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+(function(){{
+  var btn = document.getElementById('jr-download-btn');
+  btn.addEventListener('mouseenter', function(){{ btn.style.transform='translate(3px,3px)'; btn.style.boxShadow='3px 3px 0 #10162f'; }});
+  btn.addEventListener('mouseleave', function(){{ btn.style.transform=''; btn.style.boxShadow='6px 6px 0 #10162f'; }});
+  btn.addEventListener('click', async function(){{
+    var target = document.getElementById('poster');
+    if (!target) {{ alert('未找到海报元素 #poster'); return; }}
+    var original = btn.textContent, prev = target.style.transform, prevMb = target.style.marginBottom;
+    btn.textContent = '渲染中…'; btn.disabled = true; btn.style.opacity = '0.7';
+    target.style.transform = 'none'; target.style.marginBottom = '0';   // 导出恒定 1242×1660
+    try {{
+      var canvas = await html2canvas(target, {{ backgroundColor:'#faf9f5', scale:2, useCORS:true, allowTaint:true, logging:false, width:1242, height:1660 }});
+      var link = document.createElement('a');
+      link.download = 'ai-programming-poster-1242x1660.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }} catch (err) {{ console.error(err); alert('导出失败：' + (err && err.message ? err.message : err)); }}
+    finally {{ target.style.transform = prev; target.style.marginBottom = prevMb;
+              btn.textContent = original; btn.disabled = false; btn.style.opacity = ''; }}
+  }});
+}})();
+</script>
 </body>
-</html>
-'''
+</html>"""
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# tools.html  AI 工具大全（课程涉及的 33 个工具，分 12 类）
-# ─────────────────────────────────────────────────────────────────────────────
 
-# 严格按 outline.json 实际出现的工具构建（不虚标，不吹）
-# 每个工具 outline.json 至少有 1 次描述提及；课程没教的工具直接放替代品字段而非主条目
 TOOLS_DATA = [
     {'cat': '🧠 AI 编程助手', 'color': '#6366f1', 'phase': 'P0 / P4', 'tools': [
         {'name': 'Claude Cowork', 'desc': '不写代码、对话做产品（课程贯穿主工具，P0 起 30+ 节）', 'tier': 'both', 'price': '订阅制', 'difficulty': '★', 'alt': 'ChatGPT / Gemini'},
@@ -808,7 +952,7 @@ Each hexagon has 3px black border, offset 6px black drop shadow.
 Connecting lines: hand-drawn dashed style, NOT clean tech lines.
 
 【底部 CTA】
-- "匠人学院《人人都能学的 AI Coding 实战课》第 2 期"
+- "匠人学院《职场 AI 产出力实战营》第 2 期"
 - QR code placeholder bottom-right
 - Course URL
 
@@ -1193,7 +1337,7 @@ Style: per-tool brand color accent (Suno = violet / HyperFrames = cyan etc.), Ne
 📊 数据：Dashboard / Excel 加速
 📣 分发：5 平台同步 / 一稿多发
 
-匠人学院《人人都能学的 AI Coding 实战课》，基础班 $960 / 进阶班 $2280 AUD。
+匠人学院《职场 AI 产出力实战营》，基础班 $960 / 进阶班 $2280 AUD。
 全程不写代码，8-12 周做出 5-8 件能放进作品集的真东西。</div>
 </div>
 
@@ -1323,7 +1467,7 @@ Style: per-tool brand color accent (Suno = violet / HyperFrames = cyan etc.), Ne
 📋 Excel → VBA / Apps Script
 
 ▼ 底部 ▼
-"匠人学院《人人都能学的 AI Coding 实战课》第 2 期"
+"匠人学院《职场 AI 产出力实战营》第 2 期"
 课程链接 + 二维码
 
 正文配文：
@@ -1350,7 +1494,7 @@ Style: per-tool brand color accent (Suno = violet / HyperFrames = cyan etc.), Ne
 
 ═══ 镜头 4 · 25-30 秒 ═══
 画面：最终产出截图 + "课程链接评论区"
-旁白：这是我在《人人都能学的 AI Coding 实战课》第 X 节学的。
+旁白：这是我在《职场 AI 产出力实战营》第 X 节学的。
 连发 30 个，从 Cowork 一路讲到 Apps Script。每天 1 个，30 天形成内容矩阵。</div>
 </div>
 
@@ -1404,7 +1548,7 @@ CTA："如果你想系统学这 33 个工具，匠人学院第 2 期招生中。
 
 PPT、报告、活动 — 这些都是工作"流程"，不是"成果"。
 
-直到我跟了一门叫《人人都能学的 AI Coding 实战课》的课程，8 周做出 5 个真实产品：
+直到我跟了一门叫《职场 AI 产出力实战营》的课程，8 周做出 5 个真实产品：
 
 1️⃣ 一个可在线分享的 HTML PPT（不是 .pptx）
 2️⃣ 一份印刷级 A4 PDF（BP / 简历 / 提案任选）
@@ -1449,7 +1593,7 @@ PPT、报告、活动 — 这些都是工作"流程"，不是"成果"。
 
 最 surprising 的：8 周下来我开始用 Cowork 处理工作里的 PPT、文档、邮件 — 一周省下 10 小时。
 
-是匠人学院出的，叫《人人都能学的 AI Coding 实战课》。
+是匠人学院出的，叫《职场 AI 产出力实战营》。
 基础班 $960 / 8 周；进阶班 $2280 / 12 周（多 admin CMS + 数据 dashboard + 视频升级）。
 
 链接评论里取🔗</div>
@@ -1486,7 +1630,7 @@ Cowork 就帮你做出来。
 ❌ 旧方法：学语法 → 学库 → 学框架 → 学部署 → 终于做出第一个网页（半年）
 ✅ 新方法：描述需求 → Cowork 做 → 你检查 → 调整 → 上线（一节课）
 
-这门课叫《人人都能学的 AI Coding 实战课》，8-12 周让零基础非技术人员做出 5-8 个真产品。
+这门课叫《职场 AI 产出力实战营》，8-12 周让零基础非技术人员做出 5-8 个真产品。
 
 我已经报名了，留言一起？</div>
 
@@ -1523,7 +1667,7 @@ Cowork 就帮你做出来。
 
 这门课 ROI 算法都成立。
 
-匠人学院《人人都能学的 AI Coding 实战课》第 2 期，链接在评论。</div>
+匠人学院《职场 AI 产出力实战营》第 2 期，链接在评论。</div>
 
     <div class="hashtags">#AI课程 #报名前必看 #课程选择 #ROI #数字技能 #转型 #求职准备</div>
   </div>
@@ -1559,7 +1703,7 @@ Cowork 就帮你做出来。
 如果你想"会用 AI" → 报 🟥🟧 类（甚至免费教程都够）
 如果你想"用 AI 做出东西" → 必须 🟩 类
 
-匠人学院《人人都能学的 AI Coding 实战课》第 2 期招生中，链接评论🔗</div>
+匠人学院《职场 AI 产出力实战营》第 2 期招生中，链接评论🔗</div>
 
     <div class="hashtags">#AI课程横评 #AI做产品 #AI入门 #AI编程 #课程对比 #买课指南</div>
   </div>
@@ -1696,7 +1840,7 @@ Cowork（写需求 + 想思路）
 
 零基础 → 8 周做出能用的产品。
 
-这门课叫《人人都能学的 AI Coding 实战课》，匠人学院出的。
+这门课叫《职场 AI 产出力实战营》，匠人学院出的。
 
 适合：在职白领、应届生、创业者、自由职业。
 不适合：想速成的、想躺学的、想免费白嫖的（哈哈）。</div>
@@ -1714,7 +1858,7 @@ Cowork（写需求 + 想思路）
 下周开始做数据自动化 + 进阶班内容。
 
 如果你也在找"能真做出东西"的 AI 课，可以了解下：
-《人人都能学的 AI Coding 实战课》第 2 期招生中。</div>
+《职场 AI 产出力实战营》第 2 期招生中。</div>
   </div>
 </div>
 
@@ -1736,7 +1880,7 @@ Cowork（写需求 + 想思路）
 
 我学的不是编程，是 — 怎么把想法"描述清楚"让 AI 做。
 
-这门课叫《人人都能学的 AI Coding 实战课》（People-First AI Coding），由匠人学院（jiangren.com.au）出品。
+这门课叫《职场 AI 产出力实战营》（People-First AI Coding），由匠人学院（jiangren.com.au）出品。
 
 推荐给在职做产品 / 想转型 / 想做 MVP 的 connections。
 
@@ -1795,7 +1939,7 @@ Cowork（写需求 + 想思路）
 - "13 个 Phase"
 - "14 个 Quest 实战"
 - "全程不写代码"
-旁白：（介绍）"《人人都能学的 AI Coding 实战课》— 13 个 Phase、14 个 Quest 实战、零基础非技术友好。"
+旁白：（介绍）"《职场 AI 产出力实战营》— 13 个 Phase、14 个 Quest 实战、零基础非技术友好。"
 
 ═══ 镜头 5 · 25-30 秒（CTA）═══
 画面：报名 QR 码 / 链接 / 公众号
@@ -1834,7 +1978,7 @@ Cowork（写需求 + 想思路）
 最近的招聘 JD 普遍要求"AI 项目经验"——
 但学校没教你怎么做 AI 项目（也没人教）。
 
-我们最近一门课叫《人人都能学的 AI Coding 实战课》，8 周帮零基础学员做出 5 个 AI 项目（可直接放进作品集）。
+我们最近一门课叫《职场 AI 产出力实战营》，8 周帮零基础学员做出 5 个 AI 项目（可直接放进作品集）。
 
 学员说找完这门课的工作面试中，被问"做过什么 AI 项目"时不再尴尬了。
 
@@ -2070,14 +2214,14 @@ P4 教 "用 Cursor + Claude Code"：
 
   <div class="copy-block">
     <div class="label">30 秒 · 朋友群 / 一句话推荐</div>
-    <div class="content">"匠人学院新出的《人人都能学的 AI Coding 实战课》第 2 期 —— 8 周做出 5 个真产品（PPT / PDF / 网站 / 视频 / 自动化），全程用 Cowork 对话，不写代码。基础班 $960 AUD，进阶班 $2280 多 Admin CMS + 数据 Dashboard。我学过他们家课，质量稳。链接私我。"</div>
+    <div class="content">"匠人学院新出的《职场 AI 产出力实战营》第 2 期 —— 8 周做出 5 个真产品（PPT / PDF / 网站 / 视频 / 自动化），全程用 Cowork 对话，不写代码。基础班 $960 AUD，进阶班 $2280 多 Admin CMS + 数据 Dashboard。我学过他们家课，质量稳。链接私我。"</div>
   </div>
 
   <div class="copy-block">
     <div class="label">1 分钟 · 直播开场 / 短视频</div>
     <div class="content">"我想推荐一门 AI 课，不是教你用 ChatGPT 聊天，而是教你做出能用的产品。
 
-匠人学院《人人都能学的 AI Coding 实战课》第 2 期，8-12 周时间。
+匠人学院《职场 AI 产出力实战营》第 2 期，8-12 周时间。
 
 学完你电脑上 / 网上有 5-8 个东西：一份在线 HTML PPT、一份 A4 PDF 全家桶（BP/简历/提案）、一个上线的 landing page 网站、一支 60 秒科普视频，进阶班还有 Admin CMS、内容自动化 Agent、数据 Dashboard。
 
@@ -2120,7 +2264,7 @@ P7 一稿多发 5 大平台。
 "AI 时代过去 3 年了，你做出过什么产品？不是 PPT、不是报告、不是邮件 — 是用户能用的产品。今天聊一门刚出的课，让零基础非技术人员 8 周做出 5 个真产品。"
 
 ═══ 30s-1:30 · 测评背景 ═══
-"我看过 50+ AI 课、买过 12 门（花了 $6000+）、跟了 5 门到底。其中 4 门浪费时间。1 门真有用 — 让我做出了能上线的产品。这门就是匠人学院《人人都能学的 AI Coding 实战课》。"
+"我看过 50+ AI 课、买过 12 门（花了 $6000+）、跟了 5 门到底。其中 4 门浪费时间。1 门真有用 — 让我做出了能上线的产品。这门就是匠人学院《职场 AI 产出力实战营》。"
 
 ═══ 1:30-3:00 · 课程结构 ═══
 "13 个 Phase 我快速过一遍 [同 3 分钟版 P0-P11]"
@@ -2246,9 +2390,13 @@ for idx, p in enumerate(OUTLINE['phases']):
     write(f'phase_{idx}.html', render_phase(idx, p))
 
 # Update outline.json's curriculumPages to match new files
-new_pages = ['curriculum.html', 'outline.html', 'outline-preview.html', 'learning-plan.html', 'tools.html', 'poster.html', 'marketing.html']
+new_pages = [h for h, _ in NAV_ITEMS if h not in INTERNAL_PAGES]
 new_pages += [f'phase_{i}.html' for i in range(len(OUTLINE['phases']))]
-OUTLINE['curriculumPages'] = {'pages': new_pages, 'defaultPage': 'curriculum.html'}
+OUTLINE['curriculumPages'] = {
+    'pages': new_pages,
+    'defaultPage': 'curriculum.html',
+    'internalOnly': sorted(INTERNAL_PAGES),
+}
 with open(PUBLIC / 'outline.json', 'w', encoding='utf-8') as f:
     json.dump(OUTLINE, f, ensure_ascii=False, indent=2)
     f.write('\n')
