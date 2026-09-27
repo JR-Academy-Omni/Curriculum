@@ -208,6 +208,13 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/vibe-coding-master-l12 (Vibe Coding 大师课 · 第十二节课《Claude Hook》— 判断线 + 时点二维图 + 当堂拦截)
+      - name: Build lessons/vibe-coding-master-l12
+        working-directory: lessons/vibe-coding-master-l12
+        run: |
+          bun install
+          bun run build
+
       # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
       # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
       # base 已写进 package.json: --base /curriculum/lessons/vibe-coding/
@@ -648,6 +655,10 @@ jobs:
           if [ -d lessons/vibe-coding-master-l7/dist ]; then
             mkdir -p _site/lessons/vibe-coding-master-l7
             cp -r lessons/vibe-coding-master-l7/dist/* _site/lessons/vibe-coding-master-l7/
+          # lessons/vibe-coding-master-l12: Vibe Coding 大师课 · 第十二节课《Claude Hook》（React + Vite）
+          if [ -d lessons/vibe-coding-master-l12/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l12
+            cp -r lessons/vibe-coding-master-l12/dist/* _site/lessons/vibe-coding-master-l12/
           fi
 
           # lessons/vibe-coding-master-l8: Vibe Coding 大师课 · 第八节课 · Agent Team（React + Vite）
