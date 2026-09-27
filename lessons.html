@@ -473,21 +473,32 @@
         </div>
       </div>
 
+      
       <!-- ========== Vibe Coding Master L8 ========== -->
       <div class="card">
         <div class="card-head">
           <span class="badge badge-react">React SlideEngine</span>
-          <span class="badge badge-status-local">🚧 蓝图已定 · deck 未开工</span>
+          <span class="badge badge-status-local">✅ 蓝图 v1.0 + deck 20 页 + 讲稿已重建（本地）· ⚠️ HANDOUT 待重写</span>
         </div>
-        <h2>Vibe Coding 大师课 · 第八节课 — Agent Team：从分派到协作</h2>
+        <h2>Vibe Coding 大师课 · 第八节课 — Agent Team：从「多开 context」到「共同完成任务」</h2>
         <p class="desc">
-          <strong>120 分钟动手工作坊</strong>（一次协作实验 + 老师投屏演示，全程只读）。承接 L7：学员已经会把活分出去、收回来自己汇总，但那个结构有一条 L7 只埋了一句没展开的硬边界——<strong>子 Agent 之间没有连线</strong>。开场就把它变成痛点：按 L7 的方法派三路查登录偶发 401，三份报告回来每份都说「我这边看起来没问题，但不排除是别处」，<strong>你还是不知道根因</strong>——因为没有人去挑战别人的结论。本节因此只回答<strong>第二问</strong>：这些 context 之间需不需要持续通信？判断线是「只需分头做、回来报用 Subagent；需要边做边互通、共同收敛才用 Agent Team」，并反复强调 <strong>Team 的门槛必须比 Subagent 高</strong>（本节最需要防的偏差是「学完什么都组队」，正如 L7 要防「学完什么都派」）。立论页是<strong>对抗辩论</strong>：它治的是一种具体的病——<strong>锚定</strong>，单个 Agent 找到一个说得通的解释就停下来了，而顺序调查中第一个说得通的解释会污染后面所有判断。随之点破本节最容易做错的一步：<strong>对抗 ≠ 分工</strong>——「A 查前端 / B 查后端 / C 查配置」拿到的是三份互不冲突的报告（覆盖），而「A、B 各认领一个假设 + C 专职找反例」拿到的才是一个被证伪不掉的结论（收敛）；<strong>没人有动机推翻别人的「团队」其实是 Subagent，只是更贵</strong>。还给出门槛的操作化版本：<strong>当这件事没有廉价判据时，辩论才值</strong>——跑个测试就能证伪的假设，直接跑测试。实操落到 <strong>Team charter</strong> 六项（共同目标 / 成员与所有权 / 任务与依赖 / 通信规则 / 写入边界 / 收敛条件，其中「冲突附双方证据、不靠投票」和「没有广播，证据要抄送谁必须写死」是两条硬规则），实验跑三个竞争假设并强制制造 discovery → conflict → decision 三类关键消息，讲评只问一句「<strong>如果禁止成员互相通信，这个任务会在哪一步变慢或变差</strong>」——答不出来说明它本就不该用 Team，配一句诊断「<strong>一条 CONFLICT 都没有的 Team，大概率是三个不说话的 Subagent</strong>」。收口是 Lead 的验收责任：<strong>任务板完成 ≠ 外部验收完成，成员「已经达成一致」不是外部判据</strong>。最后回收 L7 埋的那句：<strong>异构只能进 Subagent，进不了 Agent Team</strong>——成员资格靠共享任务板 + 信箱，外部进程收不到消息也不出现在任务板，永远只能是一根 spoke。蓝图 §18 附录含完整开课门槛（协作开关默认关闭且静默无效、成员默认不跟随 Lead 的档且 spawn 后改不了、权限弹窗全部冒到 Lead、显示模式决定投屏看不看得见消息、以及头号坑「工具会用 Subagent 冒充 Team 而面板上看不出来」），§15 给国内学员的<strong>人肉信使方案</strong>（这不是降级，是主路径）。18 页逐页表已定。
+          <strong>120 分钟「先讲后做」工作坊</strong>（全程只读，不改课堂仓库任何代码）。课堂硬产物：<strong>每位学员亲手创建并验证一个真正的 Agent Team</strong>。课堂仓库 <code>star-mansions</code>，<strong>必须锁 commit</strong>。<br><br>
+          <strong>🔁 2026-08-09 从零重写为 v1.0，旧版整体作废。</strong> 旧蓝图用「先撞墙、再解释」+ 浅题/深题双线，造成四个问题：学员还没建立 Team 心智就要同时管角色文件、三个会话、任务板、消息协议和两条根因线；角色 <code>C</code> 在 config 与唱反调之间换身份，任务板和讲稿对不上号；课堂把「发现某个预设答案」当成功，反而弱化了真正该学的结构与设置；大量概念靠课后解释，学员做的时候不知道自己在观察什么。<strong>新版不靠隐藏答案制造戏剧性——先把尺子讲清楚，再要求学员用尺子做出一个可验收的 Team。</strong><br><br>
+          <strong>🎬 两幕结构</strong>：第一幕<strong>先讲</strong>（0–50：定义 → 判断 → 最小单位 → 必要设置 → 角色与任务 → 通信 → Lead 验收）→ 过渡（50–60：老师 smoke test + 休息）→ 第二幕<strong>后做</strong>（60–113：环境预检 → 建最小 Team → 验证 → 扩成标准组合 → 跑案例 → Lead 收口）→ 结尾（113–120：组合选择 + Exit + 作业）。<strong>节奏铁律：0–55 分钟不让学员创建 Team；60 分钟后不再插入新概念；最小 Team 验证不过，不进正式 Lab。</strong><br><br>
+          <strong>🎯 全节立论</strong>：<strong>Agent Team 的价值，不是多开几个 Agent；是让一名成员的新证据，在任务结束前改变另一名成员的下一步。</strong> 配一条<strong>必须讲清的诚实边界</strong>——Team 并不会让某个结论「在结构上只有 Team 才能发现」，一个优秀的 Lead 也可以手动收集并转发证据；Team 真正提供的是独立 context、成员直接互发消息、共享任务状态、过程中处理发现与阻塞、<strong>Lead 不必充当每一条信息的人工中转站</strong>。<strong>所以选 Team 是收益与协调成本的比较，不是能力等级判断。</strong><br><br>
+          <strong>📐 选择 Team 的三问</strong>：① 值得开多个 context 吗（L7 的门）② <strong>成员的中途信息会改变别人的下一步吗</strong>（本节核心）③ 协调收益大于协调成本吗。第三问的标准判断句：<strong>「如果我删掉成员间消息，任务会在哪一步变慢、变差或失去可验证性？」答不出来，不开 Team。</strong><br><br>
+          <strong>🧱 最小可用单位 = Lead + 2</strong>（不是 Lead + 1——只有一名 teammate，谁和谁直接协作？）。五条缺一不可：1 Lead、2 teammates、1 个共享任务、<strong>1 次 teammate → teammate 直接消息</strong>、1 次 Lead 决定与外部验收。<strong>成员名单和共享任务不是充分证据</strong>；只有 Lead ↔ 成员的往返，按 Subagent 处理，不算过关。正式 Lab 用 <strong>Lead + 3</strong>（两个边界调查员 + 一个 verifier），扩展顺序固定<strong>不得倒着来</strong>：最小 Team → 稳定角色 → 依赖与任务状态 → challenger → 写入所有权 → 模型档位 → plan approval → Hooks/MCP/Skills。<br><br>
+          <strong>⚙️ 必须设置极少</strong>：功能已启用且账号可用、项目目录可读、至少 in-process 显示模式、权限模式明确、课堂只读。<strong>tmux、分屏、角色文件、skills、MCP、Hooks、不同模型一个都不是前提。</strong> 另标清一条易错边界：<code>tools</code> 是<strong>工具 allowlist，不是目录沙箱</strong>——「只读 frontend/」是角色指令，不是物理路径限制。<strong>四步 smoke test</strong>（成员名单 / 共享任务 / <strong>A→B 直接消息</strong> / Lead 视角）中前三条全过才进正式 Lab。<br><br>
+          <strong>🧪 正式 Lab（只有一个案例）</strong>：学员先建最小 Team、跑 smoke test、再新增 verifier 扩成标准组合，完成一次跨前后端的只读调查。<strong>角色从创建到结束不更名、不换身份</strong>（角色漂移是高频失败）。课堂<strong>不修代码</strong>；<strong>「找到根因」不替代「证明 Team 真实协作」</strong>，<strong>成员共识不替代 Lead 外部验收</strong>；成员回答「这条证据没有改变我的下一步」也算合格——<strong>真实协作记录比强行制造翻转更重要</strong>。<br><br>
+          <strong>🖥 deck 20 页 P00–P19（React 19 + Vite + framer-motion · 1600×900 SlideEngine）</strong>，严格按蓝图 §12 实现：每页只承担一个教学任务；完整配置/charter/prompt/消息模板<strong>放 HANDOUT，deck 只显示必要片段</strong>；讲授页可以完整呈现结论（本节明确先讲后做）；<strong>实践页 P14–P18 只显示「现在做什么 / 完成判据 / 硬停时间」，不出现标准答案</strong>；<strong>禁止按时间自动出现答案</strong>（需要分步时用拆页，不用 delay 揭晓）；<strong>字号下限：主正文 26px / 代码与证据 22px / 辅助脚注 16px</strong>；不在一页同时放完整代码、解释表、prompt 和警告。<em>（旧的 21 页拍次版 deck 已整体删除重建。）</em><br><br>
+          <strong>🎙 讲稿（<code>RUNSHEET.md</code>，1300 行）</strong>按蓝图 §19 九项生成：逐分钟口播与硬停、smoke-test 正常/异常画面对照、环境路由表、助教巡场检查顺序、正式 Lab 标准证据链、<strong>不透露根因的 0–4 级提示阶梯</strong>、学员提前找到答案时的追问方式、三类故障恢复步骤、评分与收作业。另含两个附录：<strong>附录 H「创建 Agent Team 的完整流程与全部 Prompt」</strong>（9 步端到端，每步标明<strong>在哪个会话敲</strong>——PING 和 DISCOVERY 必须在成员会话里发，敲进 Lead 会话就变成转述、整节白跑，附老师彩排掐表清单）；<strong>附录 I「完整使用实例」</strong>（一个组 53 分钟的实录 + 三条关键消息填好的样子 + <strong>一份「做砸了」的对照</strong>：同一道题、也找到了正确答案，但所有消息都是成员→Lead、Lead 自己拼根因——<strong>这是一支长得像 Team 的 Subagent，花了 Team 的钱拿到 Subagent 的结构</strong>）。
         </p>
         <div class="meta-row">
           <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
-          <div class="meta-item"><div class="k">时长</div><div class="v">120 min</div></div>
-          <div class="meta-item"><div class="k">Slide 数</div><div class="v">18（蓝图）</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">120 min（先讲后做）</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">20（P00–P19）</div></div>
           <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+          <div class="meta-item"><div class="k">课堂仓库</div><div class="v">star-mansions（须锁 commit）</div></div>
         </div>
         <div class="reuse-label">跨课复用</div>
         <div class="reuse-chips">
@@ -495,7 +506,11 @@
           <span class="chip locked">（可复用：任何需要讲「多 Agent 协作 / 对抗验证 / 竞争假设排查」的 Bootcamp 单元）</span>
         </div>
         <div class="actions">
-          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L8_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图（内容 SoT · 含 §18 设置与生成方法附录）</a>
+          <a class="btn" href="/curriculum/lessons/vibe-coding-master-l8/" target="_blank" rel="noopener">▶ 打开 Slides（21 页）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L8_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图 v1.0（唯一事实源 · 三问 / 最小单位 / 操作协议 / 正式 Lab）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l8/RUNSHEET.md" target="_blank" rel="noopener">🎙 讲稿（逐分钟口播 + 附录 H 全部 prompt + 附录 I 实例）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l8/HANDOUT.md" target="_blank" rel="noopener">📖 学员讲义 ⚠️ 仍是旧版，待按蓝图 §18 重写</a>
+          <a class="btn" href="https://github.com/Ruixiaoke/star-mansions" target="_blank" rel="noopener">🗂 课堂仓库 star-mansions</a>
           <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l7/src/components/slides/_archive" target="_blank" rel="noopener">📁 可复用 slides（归档在 L7）</a>
       <!-- ========== Vibe Coding Master L10 ========== -->
       <div class="card">
