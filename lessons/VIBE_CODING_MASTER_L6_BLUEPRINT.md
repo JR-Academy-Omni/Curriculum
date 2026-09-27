@@ -386,4 +386,5 @@ v0.2 对老师素材的要求**比 v0.1 更高**——学员不动手了，所�
 4. A/B 预录对照放在定位演示里（现方案），还是移到处方段当「交付单有效」的证据？
 5. 地基段（P03–P09，7 页 14 分钟）会不会还是偏长？可压缩项：P05（它什么时候停）可并入 P04。
 6. 是否点一句 context 三类手段与后续 MCP / Subagent 的分界，像 L5 对 Skill 那样做边界声明。
-7. ~~下节预告~~ **已定**：L7 = **Agent Team**（见 `VIBE_CODING_MASTER_L7_BLUEPRINT.md`）。预告埋法：五条病里稀释 / 压缩 / 累积三条同源——都堆在一个 context 里，下节给 context 分家。
+7. ~~下节预告~~ **已定（2026-08-02 更新）**：L7 = **Subagent · 给 context 分家**（见 `VIBE_CODING_MASTER_L7_BLUEPRINT.md`）；Agent Team 拆到 **L8**（见 `VIBE_CODING_MASTER_L8_BLUEPRINT.md`）。预告埋法不变：五条病里稀释 / 压缩 / 累积三条同源——都堆在一个 context 里，下节给 context 分家。
+   > 早先版本写的是「L7 = Agent Team」，那是拆课前的口径。L7 双结构版做 deck 时发现 120 分钟装不下两次实验 + 两套开课门槛，遂拆成两节（拆分理由见 L7 蓝图 §0.1）。
