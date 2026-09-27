@@ -63,6 +63,10 @@
 - 新增 AI Engineer 第七期 Seedance 短视频 Campaign：用 12 个连续机制与事故叙事覆盖教学方式、13 周 Build、RAG、Memory、Harness、A2A Governance、Model Routing 与面试证据（`ai-engineer-bootcamp`）
 - 明确 Seedance 短视频矩阵是可协商候选池，不锁制作数量、顺序、语言、片长、视觉隐喻或 CTA（`ai-engineer-bootcamp`）
 
+## 2026-08-28
+
+- Vibe Coding 大师课（`ai-builder`）删课 3 节：Phase 3 的 L78《企业自动化落地：把重复业务流程交给 Agent 跑通闭环》、Phase 4 的 L84《Claude 自动生成 UI 布局与样式系统》和 L87《Claude 实现后端 API 与前端联调》。L84 的内容已被 Phase 1 的 L110《用 AI 生成 Design System：UI 布局与统一样式语言》覆盖，L87 的前后端内容保留在 L85 / L88 / L91 三个 Lab 与自学材料里；L78 删除后把 L77 结尾指向下一节的那句话改写成自足结论，Q05 毕业项目描述里的课程区间由 `L84-Q05` 改为 `L85-Q05`。其余 lesson 的 `code` 保持原编号不重排，避免打乱 production 已同步的映射。同步更新统计口径：总课时 111 → 108、步骤 137 → 126、直播 20 → 17、预计学时 107.3 → 101.3、`timeLength` 改为「8 周（108 节课）」，互动 Lab 仍为 32；`outline.md` 与 5 个静态页（`curriculum.html` / `outline.html` / `phase1-4.html` / `learning-plan.html`）的头部统计条、课程亮点和 Phase 4 计数（26 节 · 6 直播 → 24 节 · 4 直播）一并对齐（`ai-builder/public`）
+
 ## 2026-08-27
 
 - 调整第七期 A2A 排课，从 W8 编排内容移到 W11 Governance，补齐身份、信任、授权委派、数据共享、审计、撤销和责任边界（`ai-engineer-bootcamp`）
