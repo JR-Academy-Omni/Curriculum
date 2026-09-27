@@ -56,7 +56,7 @@
 | **W7** | 09-13 | **收到第一笔钱**（毕业硬指标 #1） | ⬜ 未上 | ⚠️ 未指定 | — |
 | **W8** | 09-20 | 中文媒体平台特点与 AI 运营 | ⬜ 未上 | **Michael Nie** | 🎯 marketing |
 | **W9** | 09-27 | TikTok + Meta 英文媒体运营 | ⬜ 未上 | **Michael Nie** | 🎯 marketing |
-| **W10** | 10-04 | 全自动 AI 内容工厂：从一个资料源到自动发送 | ⬜ 未上 | **Michael Nie** | 🎯 marketing |
+| **W10** | 10-04 | AI 内容工厂与智能投流实操（Codex + Buffer MCP） | ⬜ 未上 | **Michael Nie** | 🎯 marketing |
 | **周中独立课** | 待定 | 让人和 AI 都搜到你 SEO & GEO（3h） | ⬜ 未上 | ⚠️ 未指定 | 原 W10 迁入；具体时段待定 |
 | **W11** | 10-11 | 用户增长 Growth Hacking | ⬜ 未上 | ⚠️ 未指定 | 🎯 marketing |
 | W12 | **10-18** | 让生意自己运转 Autopilot | ⬜ 未上 | ⚠️ 未指定 | — |

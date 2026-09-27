@@ -43,7 +43,7 @@
 
 - **W8 · 中文媒体平台特点与 AI 运营**（主讲：Michael Nie）— 先看懂公众号文章、小红书运营内容与抖音短视频各自的用户、分发逻辑、内容形态、运营节奏和转化方式，再练 AI 评论 / 私信分流与回复。**产出**：中文媒体策略地图 + 三平台内容样例 + AI 回复规则 + 自动化能力清单。
 - **W9 · TikTok + Meta 英文媒体运营**（主讲：Michael Nie）— 以 TikTok 和 Meta（Instagram / Facebook）为主阵地，讲清原生短视频、Reels / Feed / Stories；同时覆盖 LinkedIn、X、社区、Newsletter 与 Podcast / 媒体的适用策略，以及 AI 评论 / 私信回复。**产出**：英文媒体策略地图 + TikTok / Meta 原生内容样例 + AI 回复规则 + 自动化能力清单。
-- **W10 · 全自动 AI 内容工厂|从一个资料源到自动发送**（主讲：Michael Nie）— 学员搭建一条定时运行的系统：读取唯一资料源 → 自动发现并筛选选题 → 生成平台原生内容与媒体任务 → 规则审核 / 长期授权 → 排程发送 → provider 状态与公开链接回读 → 表现反馈；异常自动转人工。**产出**：能真实运行的一周无人值守内容工厂 + 发布与异常记录。
+- **W10 · AI 内容工厂与智能投流实操**（主讲：Michael Nie）— 直接用 Codex + Buffer MCP、JSON Schema、HITL 与异步状态回读跑通内容生产和发布；以 Little Henri 为案例实操 Google / Meta / LinkedIn / TikTok Ads、通用 Landing Page、统一埋点，并把 W8-W9 频道资产收束成数据收集 → 决策 → 单源多分发 → 渲染 → 数据反馈闭环的 5 层 AI 营销 OS。**产出**：带人工审核的内容流程 + 四平台投流决策卡 + Message Match Landing Page + AI 营销 OS 架构图与验收记录。
 - **周中独立课 · 让人和 AI 都搜到你|SEO & GEO** — 原 W10 内容迁入，保留 3 小时；具体日期、时间与授课方式待定。Google long-tail SEO + AEO/GEO + E-E-A-T / Schema.org；配套 SEO 自学随课安排。
 - **W11 · 用户增长|Growth Hacking** — AARRR 漏斗诊断 + 推荐机制与病毒循环 + 一个 launch 跑通 10 渠道。**产出**:上线的增长循环 + 实验数据。
 
@@ -72,7 +72,7 @@
 | Phase | 周 | 主题 | 出关物 |
 |---|---|---|---|
 | 1 · AI Enable Business | W1–W7 | AI OS / agent 上岗 / 商业验证 / 产品 / 品牌 / PM / 首单 | 被付过一次钱的 AI 化产品 + 品牌官网 |
-| 2 · Go To Market | W8–W11 | 中文媒体特点与运营 / TikTok + Meta 为主的英文媒体运营 / 全自动内容工厂 / 用户增长；另设周中 SEO & GEO | 会复利的获客机器 |
+| 2 · Go To Market | W8–W11 | 中文媒体特点与运营 / TikTok + Meta 为主的英文媒体运营 / Codex + Buffer MCP 内容工厂、智能投流、Landing Page 与 AI 营销 OS / 用户增长；另设周中 SEO & GEO | 会复利的获客机器 |
 | 3 · Australia Operations | W12–W13 | 自动运转 + 数据分析 / 合规 + RDTI | 合法·财务自动·能退税 |
 | 4 · Founder Club | W14–W15+ | Pitch/BP/融资 + Demo Day + 持续社群 | 毕业入会,进入创业者网络 |
 
