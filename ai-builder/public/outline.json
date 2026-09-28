@@ -7,14 +7,14 @@
   "level": "中级",
   "type": "training",
   "targetAudience": "有编程基础的开发者、全栈工程师、DevOps、想用 AI 提升开发效率的技术人员",
-  "totalLessons": 111,
-  "totalSteps": 137,
-  "liveClasses": 20,
-  "estimatedHours": 107.3,
+  "totalLessons": 108,
+  "totalSteps": 126,
+  "liveClasses": 17,
+  "estimatedHours": 101.3,
   "totalInteractiveLabs": 32,
   "title_en": "Vibe Coding Masterclass",
   "description_en": "Build full-stack apps with Claude Code and Codex. From PRD to Skills/MCP/Agent to deployment. For developers with programming experience.",
-  "timeLength": "8 周（111 节课）",
+  "timeLength": "8 周（108 节课）",
   "courseObjective": "建立从个人到企业的 AI 操作系统：用 Source of Truth 把你的经验/规范结构化成 AI 可读的第二大脑，用 ADLC 把整份 PRD 交给 Agent 端到端开发并部署，把重复流程交给 Agent 自动跑，最终能同时指挥多个 Agent 并行工作。",
   "courseObjective_en": "Master Claude Code Skills, MCP Server building, Agent architecture, and multi-model collaboration. Ship a full-stack project from PRD to deployment with AI.",
   "suitable": "有 Python/JS 基础的软件工程师\n全栈开发者想用 AI 10x 开发效率\nDevOps 工程师想了解 AI 开发工具\n技术创业者想快速出产品",
@@ -2583,68 +2583,8 @@
               "slug": "debug-with-ai"
             }
           ],
-          "learningMaterial": "<h2>学习目标</h2><ul><li>分清「手动调一次 AI」和「让 AI 定时自动跑」的区别，知道什么任务值得自动化</li><li>用 cron 表达式描述一个定时任务的触发时间</li><li>把多步骤串成一条 workflow（输入 → 处理 → 产出），让 agent 一次跑完不用盯着</li><li>给自动化加上安全边界：kill-switch、人审批节点、禁止擅自对外发布</li></ul><h2>核心概念</h2><h3>从「叫一次」到「自动跑」</h3><p>到目前为止你用 AI 的方式是：打开终端 → 敲 prompt → 等结果。问题是只要你不敲，它就不动。很多活是<strong>重复且有固定节奏</strong>的——每天早上看一眼网站有没有挂、每周一汇总上周数据、每晚把当天的客服问题归类。这些事手动做，你要么忘、要么烦。自动化的核心思想就一句话：<strong>把「我去叫 AI」换成「时间到了 AI 自己醒来干」。</strong></p><h3>cron：用一行字描述「什么时候跑」</h3><p>定时任务的通用语言是 cron 表达式，5 个字段分别是「分 时 日 月 周」：</p><pre><code># 字段顺序： 分钟(0-59) 小时(0-23) 日(1-31) 月(1-12) 星期(0-6,0=周日)\n\n0 9 * * *        # 每天早上 9:00\n30 8 * * 1-5     # 周一到周五 早上 8:30\n0 23 * * 0       # 每周日 23:00（适合跑周报）\n0 */2 * * *      # 每隔 2 小时\n0 0 1 * *        # 每月 1 号 凌晨</code></pre><p>记不住没关系，把表达式贴给 AI 让它翻译成人话，或者直接说「每个工作日早上九点」让它给你写 cron。重点是理解：<strong>一行 cron = 一个触发时刻</strong>。</p><h3>Claude Code 的 scheduled agent（routine）</h3><p>Claude Code 支持把一个 agent 任务挂到 cron 上，变成<strong>定时自动运行的 routine</strong>：你写好一段「该干什么」的指令 + 一个 cron 时间，到点它就自己起一个 agent 会话把活干完，不需要你在场。心智模型是这样：</p><pre><code>routine = 一段任务指令（prompt / 要跑的命令）\n         + 一个 cron 时间（什么时候触发）\n         + 产出落到哪里（写文件 / 提交 git / 发通知）</code></pre><p>比如配一个 routine：「每天早上 8 点，抓一次官网 sitemap，检查有没有 404，把结果写成 markdown 报告」。配好之后你什么都不用管，每天 8 点报告就自己生成好了。这就是从「工具」到「自动替你干活的同事」的跨越。</p><h3>workflow：把多步骤串成一条流水线</h3><p>单个定时触发只是起点。真正干活的任务通常是<strong>多步骤</strong>的，把它们串起来一次跑完就是 workflow 编排。一份真实的数据周报流水线长这样（分阶段，每阶段做完立刻存盘，防止中途挂掉前功尽弃）：</p><pre><code>Phase 1  拉数据      → 调 API 把本周原始数据抓下来\nPhase 2  清洗 + 对比  → 和上周比，算出涨跌、找异常\nPhase 3  排序        → 按重要性 / ROI 把发现项排序\nPhase 4  渲染报告    → 生成人能读的 markdown（带图表）\nPhase 5  存档        → 写文件 + git commit + 发通知\n\n# 关键工程习惯：每个 Phase 做完立即 commit / 存盘\n# 否则跑到 Phase 4 网络断了，前面 3 步白做</code></pre><p>workflow 的价值是：你只触发一次，agent 自己按顺序走完 5 步，中间不用你介入。把「分步存盘 / 失败能续跑」当成默认习惯——自动化任务没人盯着，必须自己扛得住中途出错。</p><h3>真实例子：每天定时出一份报告</h3><p>我们团队就跑着一批这样的 routine：每周一早上自动拉搜索数据出 SEO 周报、每周日扫一遍竞品出情报简报、每天把这些报告切成每个人的待办。它们全是 cron 定时触发 + 多阶段 workflow + 每阶段 git push 存档。没有人手动去「叫」它们，报告每天 / 每周自己出现在仓库里。你这节课要做的，就是这套东西的最小版本：<strong>一个 cron + 一段抓数据出报告的指令</strong>。</p><h3>安全边界：自动化最容易翻车的地方</h3><p>让 agent 自动跑，最大的风险是<strong>它在没人看的时候做了不该做的事</strong>。四条必须设的边界：</p><table><tr><th>边界</th><th>怎么做</th><th>为什么</th></tr><tr><td>Kill-switch</td><td>留一个能立刻停掉所有 routine 的开关（删 cron / 改一个 enabled=false 的配置）</td><td>发现它在批量干蠢事，得能一秒拔电</td></tr><tr><td>人审批节点</td><td>对外发布、花钱、删数据这类动作，agent 只能「生成草稿 + 等人点确认」，不能自己执行</td><td>自动化错了可以重跑，但发出去 / 钱花了收不回</td></tr><tr><td>禁止擅自对外发声</td><td>agent 默认只写到内部文件 / 草稿箱，绝不直接发公众号 / 发邮件 / 发群</td><td>AI 用员工身份对外发垃圾内容，砸的是品牌</td></tr><tr><td>限定权限范围</td><td>只给它这个任务需要的最小权限（能读数据但不能删库）</td><td>权限越小，跑飞了损失越小</td></tr></table><p>一句话原则：<strong>能自动跑的是「干活和产出草稿」，不能自动跑的是「对外 / 花钱 / 不可逆」。</strong>后者一律插一个人审批节点。</p><h2>动手练习</h2><ol><li>写出下面 3 个时间的 cron 表达式，再贴给 AI 让它验证：「每天中午 12 点」「每周五下午 6 点」「每隔 30 分钟」。</li><li>设计一个你自己的定时任务（一句话指令 + cron 时间 + 产出去哪），比如「每天早上 9 点抓某个网页的标题列表，写成 markdown」。</li><li>把这个任务拆成 3-4 个 Phase 的 workflow，标注每个 Phase 做完要不要存盘。</li><li>给你的任务列出至少 2 个安全边界：哪一步必须人审批？kill-switch 怎么按？</li></ol><h2>小结</h2><p>自动化不是更高级的 prompt，而是换一种用 AI 的姿势：从「我叫它干一次」变成「它按 cron 定时自己干」。cron 决定什么时候触发，workflow 把多步骤串成一次跑完的流水线，分阶段存盘让它扛得住中途出错。但自动化的真正门槛不在技术，在<strong>纪律</strong>——凡是对外、花钱、不可逆的动作,都得留人审批节点和 kill-switch。下一节我们把这套机制放进企业,把一整条重复业务流程交给 agent 跑通闭环。</p>",
+          "learningMaterial": "<h2>学习目标</h2><ul><li>分清「手动调一次 AI」和「让 AI 定时自动跑」的区别，知道什么任务值得自动化</li><li>用 cron 表达式描述一个定时任务的触发时间</li><li>把多步骤串成一条 workflow（输入 → 处理 → 产出），让 agent 一次跑完不用盯着</li><li>给自动化加上安全边界：kill-switch、人审批节点、禁止擅自对外发布</li></ul><h2>核心概念</h2><h3>从「叫一次」到「自动跑」</h3><p>到目前为止你用 AI 的方式是：打开终端 → 敲 prompt → 等结果。问题是只要你不敲，它就不动。很多活是<strong>重复且有固定节奏</strong>的——每天早上看一眼网站有没有挂、每周一汇总上周数据、每晚把当天的客服问题归类。这些事手动做，你要么忘、要么烦。自动化的核心思想就一句话：<strong>把「我去叫 AI」换成「时间到了 AI 自己醒来干」。</strong></p><h3>cron：用一行字描述「什么时候跑」</h3><p>定时任务的通用语言是 cron 表达式，5 个字段分别是「分 时 日 月 周」：</p><pre><code># 字段顺序： 分钟(0-59) 小时(0-23) 日(1-31) 月(1-12) 星期(0-6,0=周日)\n\n0 9 * * *        # 每天早上 9:00\n30 8 * * 1-5     # 周一到周五 早上 8:30\n0 23 * * 0       # 每周日 23:00（适合跑周报）\n0 */2 * * *      # 每隔 2 小时\n0 0 1 * *        # 每月 1 号 凌晨</code></pre><p>记不住没关系，把表达式贴给 AI 让它翻译成人话，或者直接说「每个工作日早上九点」让它给你写 cron。重点是理解：<strong>一行 cron = 一个触发时刻</strong>。</p><h3>Claude Code 的 scheduled agent（routine）</h3><p>Claude Code 支持把一个 agent 任务挂到 cron 上，变成<strong>定时自动运行的 routine</strong>：你写好一段「该干什么」的指令 + 一个 cron 时间，到点它就自己起一个 agent 会话把活干完，不需要你在场。心智模型是这样：</p><pre><code>routine = 一段任务指令（prompt / 要跑的命令）\n         + 一个 cron 时间（什么时候触发）\n         + 产出落到哪里（写文件 / 提交 git / 发通知）</code></pre><p>比如配一个 routine：「每天早上 8 点，抓一次官网 sitemap，检查有没有 404，把结果写成 markdown 报告」。配好之后你什么都不用管，每天 8 点报告就自己生成好了。这就是从「工具」到「自动替你干活的同事」的跨越。</p><h3>workflow：把多步骤串成一条流水线</h3><p>单个定时触发只是起点。真正干活的任务通常是<strong>多步骤</strong>的，把它们串起来一次跑完就是 workflow 编排。一份真实的数据周报流水线长这样（分阶段，每阶段做完立刻存盘，防止中途挂掉前功尽弃）：</p><pre><code>Phase 1  拉数据      → 调 API 把本周原始数据抓下来\nPhase 2  清洗 + 对比  → 和上周比，算出涨跌、找异常\nPhase 3  排序        → 按重要性 / ROI 把发现项排序\nPhase 4  渲染报告    → 生成人能读的 markdown（带图表）\nPhase 5  存档        → 写文件 + git commit + 发通知\n\n# 关键工程习惯：每个 Phase 做完立即 commit / 存盘\n# 否则跑到 Phase 4 网络断了，前面 3 步白做</code></pre><p>workflow 的价值是：你只触发一次，agent 自己按顺序走完 5 步，中间不用你介入。把「分步存盘 / 失败能续跑」当成默认习惯——自动化任务没人盯着，必须自己扛得住中途出错。</p><h3>真实例子：每天定时出一份报告</h3><p>我们团队就跑着一批这样的 routine：每周一早上自动拉搜索数据出 SEO 周报、每周日扫一遍竞品出情报简报、每天把这些报告切成每个人的待办。它们全是 cron 定时触发 + 多阶段 workflow + 每阶段 git push 存档。没有人手动去「叫」它们，报告每天 / 每周自己出现在仓库里。你这节课要做的，就是这套东西的最小版本：<strong>一个 cron + 一段抓数据出报告的指令</strong>。</p><h3>安全边界：自动化最容易翻车的地方</h3><p>让 agent 自动跑，最大的风险是<strong>它在没人看的时候做了不该做的事</strong>。四条必须设的边界：</p><table><tr><th>边界</th><th>怎么做</th><th>为什么</th></tr><tr><td>Kill-switch</td><td>留一个能立刻停掉所有 routine 的开关（删 cron / 改一个 enabled=false 的配置）</td><td>发现它在批量干蠢事，得能一秒拔电</td></tr><tr><td>人审批节点</td><td>对外发布、花钱、删数据这类动作，agent 只能「生成草稿 + 等人点确认」，不能自己执行</td><td>自动化错了可以重跑，但发出去 / 钱花了收不回</td></tr><tr><td>禁止擅自对外发声</td><td>agent 默认只写到内部文件 / 草稿箱，绝不直接发公众号 / 发邮件 / 发群</td><td>AI 用员工身份对外发垃圾内容，砸的是品牌</td></tr><tr><td>限定权限范围</td><td>只给它这个任务需要的最小权限（能读数据但不能删库）</td><td>权限越小，跑飞了损失越小</td></tr></table><p>一句话原则：<strong>能自动跑的是「干活和产出草稿」，不能自动跑的是「对外 / 花钱 / 不可逆」。</strong>后者一律插一个人审批节点。</p><h2>动手练习</h2><ol><li>写出下面 3 个时间的 cron 表达式，再贴给 AI 让它验证：「每天中午 12 点」「每周五下午 6 点」「每隔 30 分钟」。</li><li>设计一个你自己的定时任务（一句话指令 + cron 时间 + 产出去哪），比如「每天早上 9 点抓某个网页的标题列表，写成 markdown」。</li><li>把这个任务拆成 3-4 个 Phase 的 workflow，标注每个 Phase 做完要不要存盘。</li><li>给你的任务列出至少 2 个安全边界：哪一步必须人审批？kill-switch 怎么按？</li></ol><h2>小结</h2><p>自动化不是更高级的 prompt，而是换一种用 AI 的姿势：从「我叫它干一次」变成「它按 cron 定时自己干」。cron 决定什么时候触发，workflow 把多步骤串成一次跑完的流水线，分阶段存盘让它扛得住中途出错。但自动化的真正门槛不在技术，在<strong>纪律</strong>——凡是对外、花钱、不可逆的动作,都得留人审批节点和 kill-switch。把这套机制放进企业,同一条 cron + workflow + 人审批的组合,就能让一整条重复业务流程自己跑通闭环。</p>",
           "_id": "69db3dc876e3e0c1b3b66e1d"
-        },
-        {
-          "code": "L78",
-          "title": "企业自动化落地：把重复业务流程交给 Agent 跑通闭环",
-          "description": "上一节你会让单个 agent 定时干活了，这节把它放进真实企业：怎么从一堆业务里挑出「能安全托管给 agent」的流程，怎么把一个流程拆成 agent 跑得通的闭环（输入→处理→输出→反馈回收），怎么让多个 agent 分工（一个抓数据、一个处理、一个汇报），哪些步骤必须人在环（human-in-the-loop）审批、哪些可以全自动，最后用一笔时间账算清楚这套自动化到底替你省了多少。",
-          "type": "Lesson",
-          "isLive": true,
-          "duration": 150,
-          "steps": [
-            {
-              "order": 1,
-              "type": "LIVE",
-              "title": "Prompt 精调四种模板",
-              "description": "Step-by-step、Few-shot、CoT、Constrained Generation 的代码场景",
-              "duration": 35
-            },
-            {
-              "order": 2,
-              "type": "LIVE",
-              "title": "Codex 准确率提升",
-              "description": "上下文约束、Skills 加载、Self-Consistency 和验证信号",
-              "duration": 40
-            },
-            {
-              "order": 3,
-              "type": "LAB",
-              "title": "Prompt Lab: Prompt 评估",
-              "description": "量化 Prompt 质量",
-              "duration": 20,
-              "labSlug": "prompt-evaluation"
-            },
-            {
-              "order": 4,
-              "type": "SCENARIO",
-              "title": "准确率与成本对比实验",
-              "description": "优化前后的返工率、等待时间和调用成本对比",
-              "duration": 35
-            },
-            {
-              "order": 5,
-              "type": "RETRO",
-              "title": "AI Coding 优化闭环",
-              "description": "把失败归因到上下文、任务边界、模型选择或验证缺失",
-              "duration": 20
-            }
-          ],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "prompt-evaluation"
-            }
-          ],
-          "learns": [
-            {
-              "direction": "vibe-coding",
-              "slug": "performance-cost"
-            }
-          ],
-          "learningMaterial": "<h2>学习目标</h2><ul><li>用 4 个判据筛出企业里「适合交给 agent」的流程，避开不该自动化的坑</li><li>把一个业务流程拆成可托管的闭环：输入 → 处理 → 输出 → 反馈回收</li><li>设计多 agent 分工（抓数据 / 处理 / 汇报），用一份共享状态文件当唯一真相</li><li>分清哪些步骤必须人审批、哪些可全自动，并用时间账度量自动化的真实收益</li></ul><h2>核心概念</h2><h3>先筛选：哪些流程值得交给 agent</h3><p>不是所有活都该自动化。一个流程同时满足下面 4 条，才适合托管给 agent，否则自动化的维护成本比省下的人力还高：</p><table><tr><th>判据</th><th>含义</th><th>反例（别自动化）</th></tr><tr><td>重复</td><td>每天 / 每周都要做，不是一次性</td><td>一年改一次的合同模板</td></tr><tr><td>规则清晰</td><td>判断标准能说清楚，不靠「老员工的感觉」</td><td>「凭经验判断这个客户值不值得跟」</td></tr><tr><td>输入结构化</td><td>输入是文字 / 表格 / 数据,不是模糊的口头沟通</td><td>需要打电话现场谈的事</td></tr><tr><td>错了能补救</td><td>出错可以重跑 / 人工兜底，不是不可逆</td><td>直接给客户退款打款</td></tr></table><p>对照下来，企业里典型的好候选是：<strong>客服工单分类、数据录入与整理、周报 / 日报汇总、内容初稿生成、把报告切成每个人的待办</strong>。这些都是「重复 + 规则清晰 + 输入是文字 + 错了能改」。</p><h3>把流程拆成 agent 能跑的闭环</h3><p>「闭环」的意思是：不只是把活干完（输出），还要<strong>把结果的反馈收回来</strong>，让下一轮跑得更准。四段式：</p><pre><code>输入  →  处理  →  输出  →  反馈回收\n ↑                              │\n └──────────────────────────────┘  （反馈喂回，下轮更准）\n\n以「客服工单自动分类」为例：\n输入   = 当天新进的工单文本\n处理   = agent 按规则打标签（退款 / bug / 咨询 / 投诉）+ 定优先级\n输出   = 写一张分好类的工单表 + 高优先级的单独提醒\n反馈   = 人工纠正了哪些标错的分类 → 收集起来，下轮补进规则</code></pre><p>没有反馈回收的不叫闭环，叫「一次性脚本」。闭环的价值是<strong>越跑越准</strong>——人每次纠错都在喂养它。</p><h3>多 agent 分工：一个 agent 别什么都干</h3><p>复杂流程让一个 agent 从头干到尾，既慢又难排错。拆成几个各管一段的 agent，像流水线工位：</p><pre><code>抓取 agent   →  处理 agent   →  汇报 agent\n(只负责拉数据)   (只负责清洗+分析)   (只负责生成报告+通知)\n\n它们之间不直接互相调用，而是通过一份共享状态文件传递：\nSTATE.json  {\n  \"fetch\":   { \"status\": \"done\", \"lastRun\": \"...\", \"output\": \"raw.json\" },\n  \"process\": { \"status\": \"running\" },\n  \"report\":  { \"status\": \"pending\" }\n}</code></pre><p>关键设计：<strong>用一份 STATE 文件当唯一真相</strong>。抓取 agent 干完把状态改成 done，处理 agent 看到 done 才开工。好处是任何一个 agent 挂了，看一眼 STATE 就知道卡在哪、从哪续跑，不用整条重来。我们内部跑的多 agent marketing 流水线就是这套：一个抓数据、一个处理、一个汇报，全靠一份 STATE.json 协调，谁也不直接调谁。</p><h3>Human-in-the-loop：哪些步骤必须留人</h3><p>企业自动化翻车，几乎都翻在「该让人看一眼的地方让 agent 自己拍板了」。划一条清晰的线：</p><table><tr><th>可以全自动</th><th>必须人审批（human-in-the-loop）</th></tr><tr><td>抓数据、清洗、分类、打标签</td><td>把内容真发到对外渠道（公众号 / 邮件 / 客户群）</td></tr><tr><td>生成报告草稿、生成内容初稿</td><td>花钱（投广告 / 下单 / 退款）</td></tr><tr><td>内部归档、写文件、发内部通知</td><td>删除 / 覆盖生产数据</td></tr><tr><td>把任务切成待办分给团队</td><td>任何不可逆 + 对外代表公司发声的动作</td></tr></table><p>落地办法：在 workflow 里那一步设成<strong>「agent 生成草稿 → 停下 → 等人点确认 → 才执行」</strong>。比如内容 agent 写完公众号初稿，不是直接发，而是放进待审队列，人改完点发布。这一个审批节点，挡掉的是 99% 的对外事故。</p><h3>度量：自动化到底省了多少</h3><p>没度量的自动化是自嗨。用一笔简单的时间账证明它值得：</p><pre><code>单次人工耗时 × 每月次数 = 月度人力成本\n减去 agent 跑 + 人审批的耗时 = 净省时间\n\n例：客服工单分类\n  人工：每单 2 分钟 × 每天 80 单 × 22 工作日 = 约 59 小时/月\n  自动后：agent 全自动分类 + 人每天花 10 分钟纠错复核\n         = 10 分钟 × 22 = 约 3.7 小时/月\n  净省 ≈ 55 小时/月\n\n（数字按你自己流程实测填，别照抄）</code></pre><p>除了省时间，还要盯两个质量指标：<strong>准确率</strong>（agent 分对了多少，靠人纠错统计）和<strong>人审批通过率</strong>（草稿一次过的比例，太低说明 agent 还不靠谱、得继续调规则）。这两个数还能反过来告诉你：哪些步骤已经稳到可以撤掉人审批了。</p><h2>动手练习</h2><ol><li>列出你工作里 3 个流程，用上面 4 个判据各打勾，选出 1 个最适合自动化的。</li><li>把选中的流程画成「输入 → 处理 → 输出 → 反馈回收」四段，写清每段具体是什么。</li><li>如果拆成多 agent，设计 2-3 个 agent 的分工，并写出它们共享的 STATE 文件里要记哪些字段。</li><li>标出这条流程里哪一步必须人审批，并算一笔时间账：自动化前后每月各花多少小时、净省多少。</li></ol><h2>小结</h2><p>企业自动化不是「把所有事丢给 AI」，而是<strong>挑对流程 + 拆对闭环 + 留对审批节点</strong>。先用 4 个判据筛出重复、规则清晰、输入结构化、可补救的流程；把它拆成输入→处理→输出→反馈回收的闭环，让它越跑越准；复杂的拆成多 agent，用一份 STATE 文件当唯一真相协调；凡是对外 / 花钱 / 不可逆的步骤一律插人审批节点；最后用时间账和准确率证明它真的省了人、且没出事。这就是 Vibe Coding 的终点——不是你更会使唤 AI，而是你搭出了一套 AI 自己替你和企业把活干完的系统。</p>",
-          "_id": "69db3dc876e3e0c1b3b66e25"
         },
         {
           "code": "L79",
@@ -2775,56 +2715,6 @@
       "summary": "Week 7-8",
       "lessons": [
         {
-          "code": "L84",
-          "title": "Claude 自动生成 UI 布局与样式系统",
-          "description": "用 Claude 生成前端 UI 不是让它随便画——你需要给它设计系统。这节课讲怎么让 Claude 按照统一的样式系统生成 UI：定义色板、字体、间距、组件风格，写进 CLAUDE.md 或 System Prompt，然后让 Claude 按这套规范生成所有页面。产出一致、专业，不是每个页面风格不同。",
-          "type": "Lesson",
-          "isLive": true,
-          "duration": 90,
-          "steps": [
-            {
-              "order": 1,
-              "type": "LIVE",
-              "title": "AI 生成 UI 系统",
-              "description": "定义色板/字体/间距 → Claude 按规范生成所有页面",
-              "duration": 40
-            },
-            {
-              "order": 2,
-              "type": "LAB",
-              "title": "Prompt Lab: 代码生成",
-              "description": "生成一致风格的 UI 组件",
-              "duration": 15,
-              "labSlug": "code-generation"
-            },
-            {
-              "order": 3,
-              "type": "PROJECT",
-              "title": "UI 框架完成",
-              "description": "设计系统 + 3 个核心页面",
-              "duration": 35
-            }
-          ],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "vibe-ai-frontend"
-            },
-            {
-              "source": "prompt-lab",
-              "slug": "code-generation"
-            }
-          ],
-          "learns": [
-            {
-              "direction": "vibe-coding",
-              "slug": "pair-programming"
-            }
-          ],
-          "learningMaterial": "<h2>学习目标</h2><ul><li>在 CLAUDE.md 或 System Prompt 中定义完整的设计系统</li><li>让 Claude 按照统一风格自动生成多个页面的 UI 布局</li><li>掌握从色彩、字体、间距到组件风格的设计系统定义方法</li></ul><h2>核心概念</h2><h3>设计系统定义</h3><p>在项目根目录的 <code>CLAUDE.md</code> 中写入设计规范，Claude 会在每次对话中自动读取：</p><pre><code># Design System\n\n## Colors\nprimary: #6366f1 (Indigo)\nsecondary: #ec4899 (Pink)\nbackground: #0f172a (Dark Slate)\nsurface: #1e293b\ntext-primary: #f8fafc\ntext-secondary: #94a3b8\n\n## Typography\nfont-family: Inter, system-ui, sans-serif\nh1: 2.5rem/700 | h2: 2rem/600 | h3: 1.5rem/600\nbody: 1rem/400 | small: 0.875rem/400\n\n## Spacing\npage-padding: 24px (mobile) / 48px (desktop)\ncard-padding: 20px\ngap-sm: 8px | gap-md: 16px | gap-lg: 24px\n\n## Components\n- Cards: rounded-xl, border 1px solid rgba(255,255,255,0.1), hover:shadow-lg\n- Buttons: rounded-lg, font-weight 600, transition 150ms\n- Inputs: rounded-lg, bg surface, border on focus</code></pre><h3>生成页面的 Prompt 模式</h3><p>定义好设计系统后，生成页面只需描述内容结构：</p><pre><code>按照 CLAUDE.md 中的设计系统，生成 Dashboard 页面：\n- 顶部：欢迎语 + 今日统计（4 个数字卡片横排）\n- 中部：左侧活动列表，右侧图表占位区\n- 底部：最近操作记录表格\n- 响应式：移动端卡片竖排，表格横向滚动</code></pre><p>Claude 会自动应用你定义的颜色、字体、间距，所有页面风格一致。</p><h3>组件复用策略</h3><p>先让 Claude 生成基础组件（Button、Card、Input、Table），后续页面引用这些组件。这样改一处设计全局生效。</p><h2>动手练习</h2><ol><li>在你的项目中创建 CLAUDE.md，定义完整的设计系统</li><li>让 Claude 生成 3 个页面（首页、列表页、详情页），检查风格一致性</li><li>修改设计系统中的主色调，让 Claude 重新生成，验证全局变化</li></ol><h2>小结</h2><p>设计系统写在 CLAUDE.md 里是 Vibe Coding 实现风格一致性的关键技巧。前期花 10 分钟定义好规范，后续每个页面都能保持统一风格，比每次手动调整 CSS 高效得多。</p>",
-          "_id": "69db3dc976e3e0c1b3b66e8b"
-        },
-        {
           "code": "L85",
           "title": "Lab: AI 前端开发 — 从截图到 React 代码",
           "description": "学习如何把设计稿或截图交给 AI，让它生成符合你项目规范的前端代码。掌握指定 UI 框架、约束组件结构、控制响应式行为的指令技巧。",
@@ -2860,56 +2750,6 @@
             }
           ],
           "_id": "69dc41a876e3e0c1b3c53fad"
-        },
-        {
-          "code": "L87",
-          "title": "Claude 实现后端 API 与前端联调",
-          "description": "前端 UI 做好了，后端 API 怎么接？这节课用 Claude 实现前后端联调：定义 API Endpoint（路径、方法、参数、返回值）→ Claude 生成后端 API 代码 → Claude 生成前端调用代码 → 联调测试 → 处理跨域和错误。你描述数据流向，Claude 两端的代码都帮你写。",
-          "type": "Lesson",
-          "isLive": true,
-          "duration": 120,
-          "steps": [
-            {
-              "order": 1,
-              "type": "LIVE",
-              "title": "前后端联调",
-              "description": "定义 API → Claude 写后端 → Claude 写前端调用 → 联调",
-              "duration": 40
-            },
-            {
-              "order": 2,
-              "type": "LAB",
-              "title": "Prompt Lab: JSON Schema",
-              "description": "定义 API 数据结构",
-              "duration": 15,
-              "labSlug": "json-schema"
-            },
-            {
-              "order": 3,
-              "type": "PROJECT",
-              "title": "API 联调完成",
-              "description": "前后端数据流跑通",
-              "duration": 35
-            }
-          ],
-          "labs": [
-            {
-              "source": "prompt-lab",
-              "slug": "vibe-ai-backend"
-            },
-            {
-              "source": "prompt-lab",
-              "slug": "json-schema"
-            }
-          ],
-          "learns": [
-            {
-              "direction": "vibe-coding",
-              "slug": "api-fullstack"
-            }
-          ],
-          "learningMaterial": "<h2>学习目标</h2><ul><li>用 Claude 定义并生成完整的后端 API 接口</li><li>用 Claude 生成前端调用代码并完成联调</li><li>处理联调中的常见问题：CORS、类型不一致、错误处理</li></ul><h2>核心概念</h2><h3>第一步：定义 API 契约</h3><p>先定义清楚接口规范，再让 Claude 生成代码：</p><pre><code>请生成以下 API：\n\nPOST /api/tasks\n  Body: { title: string, description?: string, priority: 'low'|'medium'|'high' }\n  Response: { id: string, title: string, ... , createdAt: string }\n\nGET /api/tasks\n  Query: { page?: number, limit?: number, priority?: string }\n  Response: { data: Task[], total: number, page: number }\n\n技术栈：Express + TypeScript + Prisma + PostgreSQL</code></pre><h3>第二步：生成后端</h3><p>Claude 会生成路由、Controller、Service、DTO/类型定义、数据库 Schema。检查要点：错误处理是否完整、分页逻辑是否正确、输入校验是否存在。</p><h3>第三步：生成前端调用</h3><pre><code>根据上面的 API 定义，生成前端 Service 层：\n- 用 fetch 封装（不用 axios）\n- 统一错误处理\n- TypeScript 类型与后端一致\n- 返回类型明确，不用 any</code></pre><h3>第四步：CORS 和联调问题</h3><p>本地联调必遇 CORS，提前在后端配置：</p><pre><code>import cors from 'cors';\napp.use(cors({\n  origin: 'http://localhost:3000',\n  credentials: true\n}));</code></pre><p>常见联调问题清单：</p><ul><li>前后端字段名不一致（<code>createdAt</code> vs <code>created_at</code>）— 在 Prompt 中统一要求 camelCase</li><li>日期格式不一致 — 统一用 ISO 8601</li><li>错误响应格式不统一 — 定义标准 <code>{ error: string, code: number }</code></li></ul><h2>动手练习</h2><ol><li>定义一个 3 接口的 API 契约（增、查、删）</li><li>让 Claude 分别生成后端和前端代码</li><li>本地跑起来联调，解决遇到的所有问题</li></ol><h2>小结</h2><p>API 契约先行是前后端联调成功的关键。用 Claude 同时生成前后端代码时，在 Prompt 中统一类型定义和响应格式，可以把联调时间从几小时缩短到十几分钟。CORS 和错误处理要提前配好，不要等出了问题再补。</p>",
-          "_id": "69db3dc976e3e0c1b3b66ea1"
         },
         {
           "code": "L88",
@@ -3499,7 +3339,7 @@
           "type": "Quest",
           "duration": 60,
           "isLive": false,
-          "description": "<h3>🎯 这节课解决什么问题</h3><p>L84-Q05 讲了 Claude 写前端、写后端、连数据库、部署到 Cloudflare/Vercel 的全流程。但听完 25 节课不等于能自己跑通一遍。这节 Quest 是整门课的毕业项目——由小花老师带你用 Claude Code 从 PRD 出发，一步步完成前端 UI、后端 API、数据库、部署上线，最后拿到一个真实可访问的 URL。这是 Vibe Coding 大师课的「真实战」时刻。</p><h3>📖 你将学到</h3><ul><li><strong>从 PRD 到部署的完整 Vibe Coding 流程</strong> — 不是片段练习，是端到端实战</li><li><strong>用 Sub-agents / MCP 协作</strong> — 把前面学的工具组合用</li><li><strong>真实部署到 Cloudflare Workers 或 Vercel</strong> — 拿到 URL，能发给别人</li></ul><h3>💡 适合谁</h3><p>所有完成 Q01-Q04 + Phase 4 学习的学员。这是检验你「学会了 Vibe Coding 大师课」的唯一标准——能不能自己端到端做一个产品。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（6 步：写 PRD → 前端 → 后端 → 数据库 → 部署 → 拿到 URL）</li><li>约 60 分钟（取决于项目复杂度）</li><li>完成后你的 GitHub 上有一个可上线的全栈项目，并有真实访问 URL</li></ul><h3>✅ 学完能做什么</h3><p>你能独立用 Claude Code 完成一个生产级别的全栈小项目。这是 Vibe Coding 大师课的毕业证——能上线的产品 = 你真的学会了。</p>",
+          "description": "<h3>🎯 这节课解决什么问题</h3><p>L85-Q05 讲了 Claude 写前端、写后端、连数据库、部署到 Cloudflare/Vercel 的全流程。但听完 25 节课不等于能自己跑通一遍。这节 Quest 是整门课的毕业项目——由小花老师带你用 Claude Code 从 PRD 出发，一步步完成前端 UI、后端 API、数据库、部署上线，最后拿到一个真实可访问的 URL。这是 Vibe Coding 大师课的「真实战」时刻。</p><h3>📖 你将学到</h3><ul><li><strong>从 PRD 到部署的完整 Vibe Coding 流程</strong> — 不是片段练习，是端到端实战</li><li><strong>用 Sub-agents / MCP 协作</strong> — 把前面学的工具组合用</li><li><strong>真实部署到 Cloudflare Workers 或 Vercel</strong> — 拿到 URL，能发给别人</li></ul><h3>💡 适合谁</h3><p>所有完成 Q01-Q04 + Phase 4 学习的学员。这是检验你「学会了 Vibe Coding 大师课」的唯一标准——能不能自己端到端做一个产品。</p><h3>📦 课程包含</h3><ul><li>1 个 AI Tutor Quest（6 步：写 PRD → 前端 → 后端 → 数据库 → 部署 → 拿到 URL）</li><li>约 60 分钟（取决于项目复杂度）</li><li>完成后你的 GitHub 上有一个可上线的全栈项目，并有真实访问 URL</li></ul><h3>✅ 学完能做什么</h3><p>你能独立用 Claude Code 完成一个生产级别的全栈小项目。这是 Vibe Coding 大师课的毕业证——能上线的产品 = 你真的学会了。</p>",
           "quest": {
             "title": "用 Claude Code 完成全栈毕业项目从 PRD 到上线",
             "description": "一节课走完 PRD → 前端 → 后端 → 数据库 → 部署 → 真实 URL 的全流程",

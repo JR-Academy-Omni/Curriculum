@@ -268,7 +268,7 @@
     </header>
 
     <div class="section-title">已制作的 Lesson Deck</div>
-    <p class="section-intro">下面的 deck 已经做出实际 slide，覆盖正式 lesson、课程解读与公开课。每张卡包含：deck 形态 / 时长 / Slide 数 / 跨课复用映射 / 入口链接。</p>
+    <p class="section-intro">下面的 deck 已经做出实际 slide，覆盖正式 lesson、课程解读与公开课；<strong>蓝图已定但 deck 未开工</strong>的课标 🚧。每张卡包含：deck 形态 / 时长 / Slide 数 / 跨课复用映射 / 入口链接。</p>
 
     <div class="grid">
 
@@ -371,7 +371,7 @@
         <div class="meta-row">
           <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
           <div class="meta-item"><div class="k">时长</div><div class="v">130 min+（登录/历史占位可回 120）</div></div>
-          <div class="meta-item"><div class="k">Slide 数</div><div class="v">24</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">20</div></div>
           <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
         </div>
         <div class="reuse-label">跨课复用 · 在以下 Bootcamp 出现</div>
@@ -441,6 +441,235 @@
           <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L6_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图（内容 SoT）</a>
           <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l6/RUNSHEET.md" target="_blank" rel="noopener">🎬 Runsheet / 带课手册</a>
           <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l6/src/components/slides" target="_blank" rel="noopener">📁 slides 源码</a>
+        </div>
+      </div>
+
+      <!-- ========== Vibe Coding Master L7 ========== -->
+      <div class="card">
+        <div class="card-head">
+          <span class="badge badge-react">React SlideEngine</span>
+          <span class="badge badge-status-local">⚙ 本地已构建 · 待部署</span>
+        </div>
+        <h2>Vibe Coding 大师课 · 第七节课 — Subagent：给 context 分家</h2>
+        <p class="desc">
+          <strong>120 分钟动手工作坊</strong>（两次实验：一次正收益，一次红灯；全程只读、不改真实代码）。承接 L6：上节课诊断出「探索噪音挤满一个 context」，L7 给出那个病的<strong>结构性解法</strong>——别把所有事塞进一个 context 里。全节立论只有一句：<strong>子 Agent 不是多一个人手，是多一个独立的 context</strong>；立住之后收益（脏活不污染主 context）、代价（冷启动 / 报告开销 / 它看不见你的对话）、铁律（不假设继承 / 不重叠所有权 / 不拿自述验收）全是它的推论。判断线是<strong>两层门</strong>：三项强收益（隔离噪音 / 并行分支 / 独立视角）至少命中一项，四条就绪条件必须全过——而且「<strong>独立视角</strong>」是唯一一个 <strong>1 个子 Agent 就能拿满</strong>的，这直接推出最小配置：<strong>1 个 verifier</strong>。课堂做两次实验且<strong>顺序不可调</strong>：动手 A 派三路只读调查、收口是一张证据可追溯、缺口已标记的<strong>汇总矩阵</strong>（不许把三份报告拼起来）；动手 B 是<strong>红灯——故意派一个两三步就能做完的小活并真的计时</strong>，让学员亲手测到冷启动 + 重新摸索 + 写回执 + 你再读回执比自己顺手做完慢得多。<strong>判断线放在两次实验之后</strong>，从学员自己的数据里长出来——延续 L4 CI 红灯 / L5 description 翻车 / L6 裸交跑偏一贯的「先撞墙，再给尺子」。操作层同样落地：六格 brief + 坏 brief 现场改写、<strong>三档调用的强制力差别</strong>（「我说了」不等于「它照做了」）、好指令逐句拆解（边界用否定句显式收窄、证据格式前置、以及最容易漏的「<strong>给『不知道』一个出口，不给出口它就编</strong>」）、按<strong>判断密度</strong>而非重要性选模型档（verifier 判断密集不能省，调查员执行密集便宜档够用；先调思考力度再动档）。收尾是三条底线：<strong>context 隔离 ≠ workspace 隔离</strong>、完成回执、以及「<strong>再找一个 Agent 看看不是 verifier</strong>」。全课收口：<strong>分派改变的是信息怎样流动，不会转移最终验收责任。</strong><br><br>⚠️ <strong>2026-08-02 拆课</strong>：原「双结构版」同时讲 Subagent 和 Agent Team，做 deck 时发现 120 分钟装不下两次实验 + 两套开课门槛，且 Team 侧页数天然多于 Subagent 侧、视觉上暗示 Team 更重要（<strong>与本节核心判断相反</strong>）。现 <strong>Agent Team 整体移到 L8</strong>，本节收敛为 Subagent 单线，红灯实验从纸面判断恢复为动手实测。另有一页 <strong>「一个子 Agent 由什么构成」</strong>——最小定义只有 name + description 两项必填，剩下全是运行时自动组装（项目规则和 git 快照自动到位，<strong>你的对话历史拿不到</strong>），而它只还回来最终那段文字，中间读的每个文件都留在自己的 transcript 文件里（<code>subagents/agent-{id}.jsonl</code>，一个子 Agent 一个文件，主对话压缩都动不了它）——这一页让下一页的六格 brief 从「规矩」变成「必然」。选档页扩成<strong>一张表两个旋钮</strong>：模型档 + 思考力度，同一条判断密度线（力度控制的是「愿意花多少步」不是「有多聪明」，而低力度会「想当然」，所以那几路的 brief 里「附文件:行号」更不能省）。另加一页 <strong>「把它落盘：怎么建一个子 Agent」</strong>——三种建法、项目级 vs 个人级放哪决定谁能用、三档调用语法，以及那个会浪费十分钟的坑（<code>/agents</code> 已经不是创建向导了）。这是<strong>全课唯一一页出现具体路径和命令</strong>，页面底部明确标注了这一点——理由是不知道文件放哪、不知道怎么触发，学员回去就落不了地，判断线再对也没用。<strong>deck 已按新蓝图重新组装完成（22 页，连续编号无 b/c 后缀）</strong>：5 页直接复用、9 页改写、3 页新写、1 页拆成两页；原 25 页仍全部保留在 <code>slides/_archive/</code>，Team 线 9 页等 L8 迁移。
+        </p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">120 min</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">24</div></div>
+          <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+        </div>
+        <div class="reuse-label">跨课复用</div>
+        <div class="reuse-chips">
+          <span class="chip locked">对应 ai-builder 课程第七节；尚未接入 outline.json（待 bootcamp-sync）</span>
+          <span class="chip locked">（可复用：任何需要讲「任务分派 / context 隔离 / 并行安全 / 独立验收」的 Bootcamp 单元）</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="./lessons/vibe-coding-master-l7/" target="_blank" rel="noopener">▶ 打开 Slides</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L7_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图（内容 SoT · 含 §18 设置与生成方法附录）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l7/RUNSHEET.md" target="_blank" rel="noopener">🎬 Runsheet / 带课手册</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l7/src/components/slides" target="_blank" rel="noopener">📁 slides 源码</a>
+        </div>
+      </div>
+
+      
+      <!-- ========== Vibe Coding Master L8 ========== -->
+      <div class="card">
+        <div class="card-head">
+          <span class="badge badge-react">React SlideEngine</span>
+          <span class="badge badge-status-local">✅ 蓝图 v1.0 + deck 20 页 + 讲稿已重建（本地）· ⚠️ HANDOUT 待重写</span>
+        </div>
+        <h2>Vibe Coding 大师课 · 第八节课 — Agent Team：从「多开 context」到「共同完成任务」</h2>
+        <p class="desc">
+          <strong>120 分钟「先讲后做」工作坊</strong>（全程只读，不改课堂仓库任何代码）。课堂硬产物：<strong>每位学员亲手创建并验证一个真正的 Agent Team</strong>。课堂仓库 <code>star-mansions</code>，<strong>必须锁 commit</strong>。<br><br>
+          <strong>🔁 2026-08-09 从零重写为 v1.0，旧版整体作废。</strong> 旧蓝图用「先撞墙、再解释」+ 浅题/深题双线，造成四个问题：学员还没建立 Team 心智就要同时管角色文件、三个会话、任务板、消息协议和两条根因线；角色 <code>C</code> 在 config 与唱反调之间换身份，任务板和讲稿对不上号；课堂把「发现某个预设答案」当成功，反而弱化了真正该学的结构与设置；大量概念靠课后解释，学员做的时候不知道自己在观察什么。<strong>新版不靠隐藏答案制造戏剧性——先把尺子讲清楚，再要求学员用尺子做出一个可验收的 Team。</strong><br><br>
+          <strong>🎬 两幕结构</strong>：第一幕<strong>先讲</strong>（0–50：定义 → 判断 → 最小单位 → 必要设置 → 角色与任务 → 通信 → Lead 验收）→ 过渡（50–60：老师 smoke test + 休息）→ 第二幕<strong>后做</strong>（60–113：环境预检 → 建最小 Team → 验证 → 扩成标准组合 → 跑案例 → Lead 收口）→ 结尾（113–120：组合选择 + Exit + 作业）。<strong>节奏铁律：0–55 分钟不让学员创建 Team；60 分钟后不再插入新概念；最小 Team 验证不过，不进正式 Lab。</strong><br><br>
+          <strong>🎯 全节立论</strong>：<strong>Agent Team 的价值，不是多开几个 Agent；是让一名成员的新证据，在任务结束前改变另一名成员的下一步。</strong> 配一条<strong>必须讲清的诚实边界</strong>——Team 并不会让某个结论「在结构上只有 Team 才能发现」，一个优秀的 Lead 也可以手动收集并转发证据；Team 真正提供的是独立 context、成员直接互发消息、共享任务状态、过程中处理发现与阻塞、<strong>Lead 不必充当每一条信息的人工中转站</strong>。<strong>所以选 Team 是收益与协调成本的比较，不是能力等级判断。</strong><br><br>
+          <strong>📐 选择 Team 的三问</strong>：① 值得开多个 context 吗（L7 的门）② <strong>成员的中途信息会改变别人的下一步吗</strong>（本节核心）③ 协调收益大于协调成本吗。第三问的标准判断句：<strong>「如果我删掉成员间消息，任务会在哪一步变慢、变差或失去可验证性？」答不出来，不开 Team。</strong><br><br>
+          <strong>🧱 最小可用单位 = Lead + 2</strong>（不是 Lead + 1——只有一名 teammate，谁和谁直接协作？）。五条缺一不可：1 Lead、2 teammates、1 个共享任务、<strong>1 次 teammate → teammate 直接消息</strong>、1 次 Lead 决定与外部验收。<strong>成员名单和共享任务不是充分证据</strong>；只有 Lead ↔ 成员的往返，按 Subagent 处理，不算过关。正式 Lab 用 <strong>Lead + 3</strong>（两个边界调查员 + 一个 verifier），扩展顺序固定<strong>不得倒着来</strong>：最小 Team → 稳定角色 → 依赖与任务状态 → challenger → 写入所有权 → 模型档位 → plan approval → Hooks/MCP/Skills。<br><br>
+          <strong>⚙️ 必须设置极少</strong>：功能已启用且账号可用、项目目录可读、至少 in-process 显示模式、权限模式明确、课堂只读。<strong>tmux、分屏、角色文件、skills、MCP、Hooks、不同模型一个都不是前提。</strong> 另标清一条易错边界：<code>tools</code> 是<strong>工具 allowlist，不是目录沙箱</strong>——「只读 frontend/」是角色指令，不是物理路径限制。<strong>四步 smoke test</strong>（成员名单 / 共享任务 / <strong>A→B 直接消息</strong> / Lead 视角）中前三条全过才进正式 Lab。<br><br>
+          <strong>🧪 正式 Lab（只有一个案例）</strong>：学员先建最小 Team、跑 smoke test、再新增 verifier 扩成标准组合，完成一次跨前后端的只读调查。<strong>角色从创建到结束不更名、不换身份</strong>（角色漂移是高频失败）。课堂<strong>不修代码</strong>；<strong>「找到根因」不替代「证明 Team 真实协作」</strong>，<strong>成员共识不替代 Lead 外部验收</strong>；成员回答「这条证据没有改变我的下一步」也算合格——<strong>真实协作记录比强行制造翻转更重要</strong>。<br><br>
+          <strong>🖥 deck 20 页 P00–P19（React 19 + Vite + framer-motion · 1600×900 SlideEngine）</strong>，严格按蓝图 §12 实现：每页只承担一个教学任务；完整配置/charter/prompt/消息模板<strong>放 HANDOUT，deck 只显示必要片段</strong>；讲授页可以完整呈现结论（本节明确先讲后做）；<strong>实践页 P14–P18 只显示「现在做什么 / 完成判据 / 硬停时间」，不出现标准答案</strong>；<strong>禁止按时间自动出现答案</strong>（需要分步时用拆页，不用 delay 揭晓）；<strong>字号下限：主正文 26px / 代码与证据 22px / 辅助脚注 16px</strong>；不在一页同时放完整代码、解释表、prompt 和警告。<em>（旧的 21 页拍次版 deck 已整体删除重建。）</em><br><br>
+          <strong>🎙 讲稿（<code>RUNSHEET.md</code>，1300 行）</strong>按蓝图 §19 九项生成：逐分钟口播与硬停、smoke-test 正常/异常画面对照、环境路由表、助教巡场检查顺序、正式 Lab 标准证据链、<strong>不透露根因的 0–4 级提示阶梯</strong>、学员提前找到答案时的追问方式、三类故障恢复步骤、评分与收作业。另含两个附录：<strong>附录 H「创建 Agent Team 的完整流程与全部 Prompt」</strong>（9 步端到端，每步标明<strong>在哪个会话敲</strong>——PING 和 DISCOVERY 必须在成员会话里发，敲进 Lead 会话就变成转述、整节白跑，附老师彩排掐表清单）；<strong>附录 I「完整使用实例」</strong>（一个组 53 分钟的实录 + 三条关键消息填好的样子 + <strong>一份「做砸了」的对照</strong>：同一道题、也找到了正确答案，但所有消息都是成员→Lead、Lead 自己拼根因——<strong>这是一支长得像 Team 的 Subagent，花了 Team 的钱拿到 Subagent 的结构</strong>）。
+        </p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">120 min（先讲后做）</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">20（P00–P19）</div></div>
+          <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+          <div class="meta-item"><div class="k">课堂仓库</div><div class="v">star-mansions（须锁 commit）</div></div>
+        </div>
+        <div class="reuse-label">跨课复用</div>
+        <div class="reuse-chips">
+          <span class="chip locked">对应 ai-builder 课程第八节；尚未接入 outline.json（待 bootcamp-sync）</span>
+          <span class="chip locked">（可复用：任何需要讲「多 Agent 协作 / 对抗验证 / 竞争假设排查」的 Bootcamp 单元）</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="/curriculum/lessons/vibe-coding-master-l8/" target="_blank" rel="noopener">▶ 打开 Slides（21 页）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L8_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图 v1.0（唯一事实源 · 三问 / 最小单位 / 操作协议 / 正式 Lab）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l8/RUNSHEET.md" target="_blank" rel="noopener">🎙 讲稿（逐分钟口播 + 附录 H 全部 prompt + 附录 I 实例）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l8/HANDOUT.md" target="_blank" rel="noopener">📖 学员讲义 ⚠️ 仍是旧版，待按蓝图 §18 重写</a>
+          <a class="btn" href="https://github.com/Ruixiaoke/star-mansions" target="_blank" rel="noopener">🗂 课堂仓库 star-mansions</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l7/src/components/slides/_archive" target="_blank" rel="noopener">📁 可复用 slides（归档在 L7）</a>
+      <!-- ========== Vibe Coding Master L10 ========== -->
+      <div class="card">
+        <div class="card-head">
+          <span class="badge badge-react">React SlideEngine</span>
+          <span class="badge badge-status-local">⚙ 蓝图 v1.0 + deck 28 页 + 讲稿 已就绪（本地）· HANDOUT 待写 · 待部署</span>
+        </div>
+        <h2>Vibe Coding 大师课 · 第十节课 — 四象限 AI 协作协议：信息在谁那里，决定谁该说什么</h2>
+        <p class="desc">
+          <strong>90 分钟框架课</strong>（不是讲座 —— 前 32 分钟学员在写、在卡住、在看老师翻车）。<strong>课堂硬产物：一段学员自己的「开场四问」，可复用、可做成 Skill。</strong><br><br>
+          <strong>🔀 系列首次从机制层转向理论层。</strong> L1 到 L9 全是机制（SoT / 交付链路 / Skills / 诊断 / Subagent / Team / 老项目），九节课给了几十条规则，而<strong>规则只在教过的场景里有效</strong>。L10 换的是层次不是话题：<strong>前九节给你动作，第十节给你一张能自己推出动作的图。</strong> 蓝图 §0.1 把这个转向的代价写在了明面上，防止后面自我欺骗：<strong>这节课不会让学员多一项能力</strong>（四格里三格对应的动作学员已经会做），它唯一的价值是<strong>让学员在没教过的第十种情况下做对</strong>。所以全节只有一条成败判据：「<strong>一个学完的人，回去做下一个真实任务时，动作和没学的人不一样吗</strong>」。<strong>离场状态是「思路更清楚了」= 这节课失败。</strong><br><br>
+          <strong>🧱 核心不是四个格子，是四条搬运动作。</strong> 四格（<strong>开放区</strong>你和它都清楚 / <strong>隐藏区</strong>你清楚它不知道 / <strong>盲区</strong>它清楚你不知道 / <strong>未知区</strong>都不知道）本身是一页纸，讲完加举例 30 到 35 分钟就见底，90 分钟必然注水。撑住时长的是格子之间的搬运：<strong>隐藏 → 开放 = 落盘</strong>（L1–L3 全部 SoT）· <strong>盲区 → 开放 = 先让它说、你别先下结论</strong>（L6 诊断 / L9 Discovery 前九步不改文件）· <strong>未知 → 盲/隐 = 设计实验，不是设计 prompt</strong>（L7 只读调查）· <strong>开放 → 隐藏 = 退化</strong>。第四条是最值钱也最原创的一页：<strong>开放区不是你达成的状态，是你维护的状态</strong>，而且<strong>它退化的时候没有报错</strong>。Johari 原型里没有这条（人际关系里信息不会自己过期，代码库里会），所以它也是唯一一条学员在别处学不到的。<br><br>
+          <strong>🔴 最重要的教学决定：四格图必须到第 32 分钟才第一次出现。</strong> 理论课只有一种死法 —— 图在第 8 分钟上屏，之后 80 分钟都在解释一张已经在屏幕上的图，学员从「我在想」变成「我在听」再也回不来。所以顺序是反的：<strong>0–20 学员回答四个并列问题（不给任何框架）→ 20–32 老师用自己那个无文档老项目现场暴露一次盲区 → 32 分钟图出现，台词固定「你们刚才填的东西有名字」</strong>。连带铁律写进 deck 检查：<strong>P00 到 P07 不许出现任何 2×2 布局、四格配色或「象限」二字</strong>，四问不许排成方阵，<strong>封面标题是「你以为它知道」而不是课名</strong>（真名首现在 P08，和图同时上屏）。<br><br>
+          <strong>🤐 第三问（盲区）学员会卡住，卡住就是教学内容。</strong> 硬性要求 <strong>90 秒沉默、不举例、不换说法再问一遍</strong>（举例等于把答案给了），然后立刻切老师演示。<strong>老师承认的是「无知」，比 L9 承认「遗忘」更重一档</strong>，而且蓝图明写 <strong>那次调用不许提前跑</strong>（排练过的惊讶是假的）。但「不许排练」只约束当天那个模块，<strong>不豁免运维兜底</strong>：三级降级 = 换备用模块重跑 → 投<em>第三个模块</em>的预录并<strong>必须明说是预录、不许假装现场</strong> → 只讲不演，<strong>用第三问填不出来的举手数当替代证据</strong>。<br><br>
+          <strong>🩹 隐藏区不教「要落盘」，教「你以为你落盘了」。</strong> 学员学过三节 SoT，这一格最容易被敷衍过去。破法三步：用他们自己第二问的答案当反例（<strong>真正的隐藏区是理由和约束，不是事实</strong> —— 事实它能读，理由只在你脑子里，直接接 L9 的 <code>status == 7</code>）→ <strong>现场打开自己的 CLAUDE.md 数过期条目</strong>（这是退化反转页的引信，先埋不点；上限 15 条；学员只报数字，<strong>不许要求投屏或上交内容</strong>）→ 粒度问题（意图 / 规格 / 判据 / 实现，<strong>只给 L11 埋点，不展开</strong>）。另有独立一页 <strong>数据边界</strong>：隐藏区搬不过去时<strong>搬它的形状，不搬它的内容</strong>（「有一类客户走特殊结算路径，标记在 X 字段」而不是真实客户名）；四问不依赖任何特定工具，<strong>国内环境的能力差距只出现在盲区和未知区两格，只影响搬运效率，不改变协议</strong>。<br><br>
+          <strong>🎯 收口是一个动作，不是一句总结。</strong> 硬产物是「一段你回去真会粘贴的话」，deck <strong>只给骨架不给范文</strong>（给了范文四格就变成填空题），并配一页「为什么这么组词」原理层（四段分开写 / 有冲突以这里为准 / 先说结论不要直接改 / 提最小实验先别做 / <strong>明确说不知道不要猜</strong>）。收口接 L5 那条判断线：<strong>同一段话说到第三次，它就该是个 Skill</strong> —— 第五节教的判断线，用来固化第十节自己。课堂规则两条也写进 deck：讲评<strong>只问「你这一条属于哪一格、依据是什么」，不判对错</strong>（一判对错学员就转向猜老师想要的答案，框架当场退化成考试题；而且<strong>学员的任务在他自己的隐藏区里，老师本来就没有判对错的信息</strong>）；边界争议一句话止住 —— <strong>格子的边界不重要，搬运动作才重要；分不清就当隐藏区处理</strong>，因为四种错判代价不对称（错当开放区它会编且你不知道，错当盲区白问一轮，错当未知区白做一个实验，<strong>错当隐藏区只是啰嗦</strong>）。<strong>出处（Johari Window, Luft &amp; Ingham 1955）放到第 87 分钟才说</strong> —— 一开场说是 1955 年的模型，学员立刻归档成旧东西，注意力当场掉一半。<br><br>
+          <strong>🖥 deck 28 页 P00–P27（React 19 + Vite + framer-motion · 1600×900 SlideEngine）</strong>，严格按蓝图 §11 实现。<strong>退化循环图的纵向落差按原稿保留</strong>，不改写成横向图。<strong>28 页已用 headless Chrome 在 1600×900 下逐页做过裁切 / 出界 / flex 压盖检测</strong>，修掉两处真实溢出（P27 Exit ticket 八行装不下、P12 两个白卡第四条被裁），并用脚本验过第一幕八页的渲染内容里没有「象限」二字、没有四格组件、没有任何 grid 布局。<br><br>
+          <strong>🎙 讲稿 1213 行 / 54 节</strong>：28 页逐页口播（可直接念），并且<strong>第一幕每页都标了「闭嘴点」—— 精确到念完哪句话之后不许再出声</strong>（这节课讲得越少越成立，讲师的本能是全课最大的风险）。另有五节专门的执法手册：<strong>§C 第三问的 90 秒秒级脚本</strong>（0–20s 不看学员屏幕 / 20–45s 只点头 / 45–60s 让笑声发生 / 60–80s 只重复原问题一字不改，以及三句追问的逐字答案 —— 问「能举个例子吗」只答「<strong>不能。举了例子这一问就没了</strong>」）· <strong>§D P07 的五种走向</strong>（抓到了 / 三条全中 / <strong>它说错了</strong>（这个走向讲好了比抓到更深：它说错说明这段代码会让认真读它的人产生这个误解，那是缺一条注释的信号）/ 断网投预录 / 连预录都放不出来）· <strong>§E 埋点与回收台账</strong>（三个「先埋不点」的东西，埋了不回收等于白埋）· <strong>§F 止争句的使用时机</strong>（争议不会等到 P21 才发生，命中四条触发条件就当场翻页念）· <strong>§G 讲评四种典型回答的追问方式</strong>（对「四段语气一样」只问「AI 读完会做四件不同性质的事吗」，对「抽象复读」只问「<strong>这段话你明天真会粘贴吗</strong>」）。<br><br>
+          <strong>📋 蓝图已过 Codex 无头 review</strong>，修掉 9 处（封面破铁律 / 退化箭头画反 / 两处 § 引用指错 / 数据边界无考核 / 70–72 两分钟装不下退化+止争 / 88–90 装不下 Exit ticket / 断网无兜底 / 第一幕规则与流程表自相矛盾 / CLAUDE.md 审计无规模上限）。<strong>命名口径（叫四条还是五条搬运、Johari 算一处还是两处扩展）与不排中场休息两项按讲师意见保留原样</strong> —— 不排休息是本系列的明确例外（L5 到 L9 每节都排了，L6 同样 90 分钟也排了），理由是保护第 32 分钟那次揭示。
+        </p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">90 min（无中场休息 · 系列例外）</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">28（P00–P27）</div></div>
+          <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+          <div class="meta-item"><div class="k">课堂材料</div><div class="v">学员自带一个真实待做任务 + 自己的 CLAUDE.md</div></div>
+        </div>
+        <div class="reuse-label">跨课复用</div>
+        <div class="reuse-chips">
+          <span class="chip locked">对应 ai-builder 课程第十节；尚未接入 outline.json（待 bootcamp-sync）</span>
+          <span class="chip locked">（可复用：任何需要讲「人机协作心智模型 / 上下文工程为什么有效 / AI 时代的沟通框架」的 Bootcamp 或对外讲座单元）</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="./lessons/vibe-coding-master-l10/" target="_blank" rel="noopener">▶ 打开 Slides（28 页）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L10_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图 v1.0（唯一事实源 · 四格 / 四条搬运 / 附录 A 讲师必填）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l10/src/components/slides" target="_blank" rel="noopener">📁 slides 源码</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l10/RUNSHEET.md" target="_blank" rel="noopener">🎙 讲稿（28 页逐页口播 + 每页「闭嘴点」+ §C 90 秒执法脚本 + §D P07 五种走向 + 附录 A 五个空 + 附录 B 做砸了对照）</a>
+          <span class="chip locked">📖 HANDOUT 待写（蓝图 §17 已列出必含 10 项）</span>
+      <!-- ========== Vibe Coding Master L11 ========== -->
+      <div class="card">
+        <div class="card-head">
+          <span class="badge badge-react">React SlideEngine</span>
+          <span class="badge badge-status-local">⚙ 蓝图 v1.0 + deck 30 页（29 正课 + 1 附录）+ 讲稿 + 讲义 + starter kit 五件套齐（本地）· 待部署</span>
+        </div>
+        <h2>Vibe Coding 大师课 · 第十一节课 — 让 Agent 定时替你干活：你不在场的时候，它凭什么做对</h2>
+        <p class="desc">
+          <strong>90 分钟框架课</strong>（前 22 分钟学员在写、在被打回；22–36 分钟看老师现场翻两次车）。<strong>课堂硬产物：一份学员自己的「无人值守任务书」，七段两块，可复用、可做成 Skill。</strong><br><br>
+          <strong>🕳 全节承接的是一个前十节从没说出口的前提：你在旁边看着。</strong> L6 的打断信号要人看 · L7 的汇总是你的活 · L8 的 Lead 验收要你在 · L10 的开场四问是你开工前自己过一遍 —— <strong>全都假设你在场</strong>。L11 第一次把这个前提抽掉：任务在凌晨三点跑，你在睡觉，它遇到需要拍板的地方没人拍。所以这节课不是「教一个工具怎么点」（设置本身十分钟讲完，写进 §4 非目标第一条），而是<strong>一件事在没人看着的时候交出去，你要提前把什么补上</strong>。收口立论：<strong>「你消灭的不是那个问题，是那次提问。」</strong> 提问被取消了，那个决定并没有消失 —— 它被交给 Agent 自己做了，而那笔债只能靠任务书提前还。<br><br>
+          <strong>🚪 教学决定一：先让学员交一件不合格的任务。</strong> 讲「哪些适合、哪些不适合，来我给你四条判据」一定失败 —— 学员会点头、会记下，然后回去把一件不该自动化的事自动化了，因为他不觉得那四条说的是他。所以顺序是反的：先写下「我想让它每天替我做的那件事」（不给任何判据），再用四个问题逐个打回来，<strong>判断闸到第 36 分钟才出现</strong>（沿用 L10「图不许提前上屏」的铁律形态，deck 上锁死：P10 之前不许出现任何闸门图、四步图或「判断线」三个字，连封面标题和浏览器标签都不许出现「定时 / Schedule / Cron / 自动化」）。全课支点是<strong>第二问「它做错了，你多久会知道？」</strong>——多数人答不出，因为手工做的时候那一眼检查是<strong>免费且隐形</strong>的，自动化把它拿掉了；追问三句写死，至少 60 秒沉默不救场。<br><br>
+          <strong>🎬 教学决定二：演示必须翻车两次，翻法不同。</strong> 学员进教室时只怕「它停下来等你批」，真正会伤人的是<strong>「它没停，它绕过去了，然后报告说做完了」</strong>——演示 A <strong>现场跑</strong>（只给读权限做一件必须写文件的事，跑完当场打开文件让全场看见它没变，不许用截图），演示 B <strong>展示一个前一天就挂住的会话</strong>（不是现场建，因为「它等了一夜也没人理」这件事在五分钟里物理上演不出来）。<br><br>
+          <strong>⚙️ 第四幕把「卡住」和「断掉」明确切开</strong>——混着讲学员回去只会加超时、不会加契约。<strong>卡住</strong>（它还活着但不往前走）：卡权限 / 卡问题 / 卡等待 → 提前批 / 提前答 / 给边界，三条做法<strong>连代价一起讲</strong>（deck 上代价列的视觉权重高于做法列）。<strong>断掉</strong>（它没活到最后）五种：网络断 / <strong>凭证过期</strong>（无人值守头号杀手，从某天起再也没跑成过而它不会尖叫）/ 环境没准备好 / 限流超时 / <strong>额度用完</strong>（性质不同 —— 前四种是跑了没成，这种是压根没跑）。前四种的共同点是<strong>全都会给你一个「跑完了」的外观</strong>，第五种连外观都没有。<br><br>
+          <strong>🔒 铁律（反转页）：宁可交回一句「我没做，因为 X」，也不要交回一个它猜着做完的结果。</strong> 机制是默认情况下 Agent 把「完成任务」排在「保护你的意图」前面，这句话是<strong>给它一个比完成任务优先级更高的合法退出</strong>——没有这个出口，它只剩绕道一条路。由此推出<strong>结果契约</strong>：绿灯只代表进程正常退出，不代表任务做成了，所以你需要一个你自己定的信号，状态写死成 <code>done / skipped / needs-human</code> 三档 + 一条来自它之外的证据 + 不是 done 时的原因，<strong>什么都没交回来 = 报警</strong>。第三档是关键 —— 只有成功 / 失败两档时它会把「我没做」也塞进成功里（它确实正常结束了），<code>needs-human</code> 是那条铁律的机器形态，也是给它说实话的余地。最后是<strong>重试与幂等</strong>（先契约后重试，顺序不能颠倒）：「重试不是勇气问题，是幂等问题」，判「不安全 → 第一版只提议不生效」在评分表里是<strong>满分答案</strong>。<br><br>
+          <strong>📋 硬产物是七段两块，这是无人值守的真实架构：前五段写给它看（目标 / 判据 / 边界 / 预答 / 出口），后两段写给盯着它的那个脚本看（回执契约 / 重跑规则）</strong>——「无人值守从来不是一个 Agent 自己跑，是一个 Agent 加一个盯着它的东西」。每一段都能追溯到课上某个环节：目标←闸① · 判据←闸②+L6 铁律 · 边界←闸③ · 预答←闸④+<strong>L10 隐藏区</strong>（本节和上节的结构性接口：<strong>隐藏区就是它会来问你的地方，而定时任务不给它问的机会</strong>）· 出口←铁律 · 回执契约←绿灯不等于成功 · 重跑规则←幂等。<br><br>
+          <strong>🌏 受限 / 国内环境不许砍</strong>：给了退让阶梯（云端托管 → 本机调度器 → CI 定时 → 只写任务书人工执行）并逐级标明<strong>失去哪一项能力维度</strong>，只讲能力维度不排名不点评产品；收口是「通道会变，会被墙，会改名，会涨价，<strong>任务书不会</strong>」。另配<strong>课前 72 小时通道自查</strong>（敲一次 <code>/schedule</code> → 有无桌面端 → 能否写系统调度），课堂按结果分流，<strong>硬产物与通道解耦</strong>，一条通道都用不了的人照样交得出任务书。<br><br>
+          <strong>📐 数据纪律</strong>：机制层按官方文档当天版本核实过，但 deck 只写<strong>能力描述</strong>、不写死参数名 / 版本号 / 数值（这块产品行为变化快、部分仍在预览），蓝图 §19.3 列了 9 条<strong>必须开课当天重新核对</strong>的项；结果契约的三个状态在 deck 上写明是<strong>本课的教学约定，不是任何工具的内置功能</strong>；「三条通道」也写明是本课教学分类，不是官方分法。27 页，deck 里<strong>不留任何待填空白页</strong>——讲师个人素材只进讲稿。
+        </p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">96 min</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">30</div></div>
+          <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+        </div>
+        <div class="reuse-label">跨课复用</div>
+        <div class="reuse-chips">
+          <span class="chip locked">对应 ai-builder 课程第十一节；尚未接入 outline.json（待 bootcamp-sync）</span>
+          <span class="chip locked">（可复用：任何需要讲「无人值守 / 定时任务 / Agent 自动化交付」的 Bootcamp 单元）</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="./lessons/vibe-coding-master-l11/" target="_blank" rel="noopener">▶ 打开 Slides（30 页）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L11_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图（内容 SoT）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l11/RUNSHEET.md" target="_blank" rel="noopener">🎙 讲稿（27 页逐页口播 + §C 60 秒沉默执法脚本 + §D 演示五种走向 + §E 三个埋点台账 + §H 四个砍法判断点 + 附录 K 讲师五个空）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l11/HANDOUT.md" target="_blank" rel="noopener">📖 学员讲义（§4 填好的任务书范例 · §5.4 回执六项 · §7 看门狗脚本与八条写法 · §9 反面案例 · 附录 A 全部源码）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l11/starter" target="_blank" rel="noopener">🧰 starter kit（改一个 config.env 就能跑 · 自检 20 项）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l11/src/components/slides" target="_blank" rel="noopener">📁 slides 源码</a>
+        </div>
+      </div>
+
+      <!-- ========== Vibe Coding Master L12 ========== -->
+      <div class="card">
+        <div class="card-head">
+          <span class="badge badge-react">React SlideEngine</span>
+          <span class="badge badge-status-local">⚙ 蓝图 v1.0 + deck 26 页（23 正课 + 3 附录）+ 讲稿（代码内嵌）+ 讲义 四件套齐（本地）· 待部署</span>
+        </div>
+        <h2>Vibe Coding 大师课 · 第十二节课《Claude Hook》— 把「我跟它说过」变成「它绕不过去」</h2>
+        <p class="desc">
+          <strong>96 分钟动手课</strong>（第 20 分钟学员就亲手挂上第一个 hook 并当场验证；40–58 分钟看着自己挂的东西咬自己三次）。<strong>课堂硬产物：一个学员自己写的、当堂拦截成功过一次的 hook</strong>——Exit ticket 现场只收拦截证据，<strong>没跑通的不算数</strong>。<br><br>
+          <strong>🧾 这节课还的是系列自己写下的欠条。</strong> L5 蓝图 §64 和 L6 蓝图 §82 的非目标里写着「不讲 MCP / <strong>Hooks</strong> / Schedule / Subagent（放后续）」——Subagent 由 L7 兑现、Schedule 由 L11 兑现，<strong>Hooks 欠了六节课</strong>（MCP 仍欠着，且 L9 蓝图有三处误写「学员已学过 MCP」，需另开票修）。<br><br>
+          <strong>🔑 全节承接一个前十一节没说破的性质：交给学员的东西全都是「说给它听」的。</strong> L1 的 PRD · L2 的 CLAUDE.md · L5 的 Skill · L7 的 brief · L11 的七段任务书 —— 它可以不读，读了可以不照做，这次照做了下次可以不照做。L12 第一次给一个<strong>它不能不照做</strong>的东西。支点是官方原文（逐字引用、标明出处）：<em>「deterministic control: certain actions <strong>always</strong> happen rather than relying on the LLM to choose to run them.」</em> 收口立论：<strong>「hook 挡得住的，只有你说得清的那部分。」</strong>说不清的那部分还在——而且现在你以为它被挡住了（与 L11「绿灯不等于成功」同构：一个让你安心的信号，和它实际保证了什么，中间有个缺口）。<br><br>
+          <strong>🎯 教学决定一：先让它成功，再让它咬人 —— 不再用第三遍「先撞墙再给尺子」。</strong> L10 图在第 32 分钟、L11 闸在第 36 分钟都用了这个形态，第三次学员会认出套路、戏剧性归零。而 <strong>hook 是这个系列里第一个能在 90 秒内跑给人看的东西</strong>，不用它是浪费。所以顺序是：数一数你说过几遍 → 演示「CLAUDE.md 里写着它照样犯」→ <strong>全班一起挂上第一个，当场故意违反，看它被拦</strong>（全节高光，学员第一次看到「它绕不过去」）→ <strong>然后那个东西开始咬他</strong> → 判断线到第 58 分钟才出现。学员对 hook 的第一印象必须先是「太爽了」，否则后面的告诫他听不进去。<br><br>
+          <strong>🩸 教学决定二：三次翻车形态不同，全部由学员改自己的 hook 触发（老师不演）。</strong> ① 把 <code>PROTECTED_PATTERNS</code> 改成 <code>"."</code> → 它什么都干不了了（你回去三天内会关掉它，<strong>而一个被关掉的 hook 和没挂过是一回事</strong>）；② <strong>把 <code>PreToolUse</code> 改成 <code>PostToolUse</code> ⭐⭐ 本幕支点</strong>——脚本跑了、判据判对了、它也收到了 <code>Blocked</code>，<strong>而那一行已经在文件里了</strong>（现场必须打开 <code>.env</code> 让全班看见）。官方依据：<em>PostToolUse hooks can't undo actions since the tool has already executed</em>，<code>Can block? = No</code>。<strong>这一次失败是没有声音的</strong>：红字照出、日志照写、监控正常，只有文件变了；③ <code>exit 2</code> 改 <code>exit 1</code> → 冒红字然后照做（<strong>hook 挂上 ≠ 生效，你得看见它拦成功过一次</strong>）。<br><br>
+          <strong>🧭 全 deck 视觉重心是时点二维图</strong>（拦得住 / 拦不住 × 它还没动手 / 已经动手了，右上角是个明确的大叉）：<strong>怕「它做了不该做的」→ 事前拦 <code>PreToolUse</code>；怕「它漏了该做的」→ 事后补 <code>PostToolUse</code> / <code>Stop</code></strong>——挂反了都会失败，而第一种挂反了你还看不出来。第四格 <code>Stop</code> 单独讲，因为它<strong>结清了 L6 那笔账</strong>：<em>Stop | Yes | Prevents Claude from stopping</em>——「它说完成了不算完成」一直是一条<strong>原则</strong>，<strong>今天它有执行机构了</strong>（另一笔：<code>SessionStart</code> + <code>compact</code> 兑现 L6「压缩会丢东西」）。<br><br>
+          <strong>🔐 接 L11 的接口是一整页：hook 压得过 <code>--dangerously-skip-permissions</code>。</strong> L11 §8.2 那三条让它不卡住的做法，最大代价是「你放开的时候把该拦的也一起放开了」；官方两句原文各落一个「所以」——<em>PreToolUse hooks fire <strong>before any permission-mode check</strong>… blocks the tool <strong>even in bypassPermissions mode</strong></em>（所以你可以放开权限跑得飞快，同时保证有三件事它永远碰不到）· <em><strong>Hooks can tighten restrictions but not loosen them</strong></em>（所以 hook 不是后门——<strong>这是设计，不是限制</strong>：一个能放宽的 hook 等于把安全边界交给每个能改配置文件的人）。<br><br>
+          <strong>🏢 最值钱的一格是「挂在哪个文件 = 谁受它管」。</strong> 项目级 <code>.claude/settings.json</code> <strong>能提交进仓库，克隆的人自动受管、不需要读 CLAUDE.md、也不需要同意</strong>——这是前十一节唯一一次<strong>跨过「你自己」</strong>。反面同样讲透：<strong>你克隆一个仓库，就接受了它每一条会在你机器上自动执行的 shell</strong>，于是送学员一个新习惯：<strong>克隆陌生仓库先敲 <code>/hooks</code> 看一眼</strong>。<br><br>
+          <strong>💻 代码是本 deck 的一等公民</strong>（与 L10 / L11 不同）：25 个代码样例集中在 <code>src/data/code.ts</code> 作唯一事实源，<strong>每条都标「官方」还是「本课写法」</strong>（混着给，学员分不清哪些有权威背书）。附录三页（课上不讲、不带阶段徽章、投屏留最后拍照）：<strong>用法样例库</strong>（拦 / 补 / 灌上下文 / 验收 / 提醒 / 审计 / 团队 八类，含 L5·L6·L11 的回收点）· <strong>脚本解剖与字段速查</strong>（六步骨架 · stdin 字段 · 三条输出路 · <code>Can block?</code> 全表 · 五种 type · 配置两层数组结构 · matcher 全表）· <strong>排错八条</strong>（含「先把输入存进 <code>/tmp/hook-input.jsonl</code> 再触发一次，比查表快十倍」）。<br><br>
+          <strong>🌏 受限 / 国内环境不许砍</strong>：先讲清 hook 依赖的<strong>能力维度</strong>——「宿主愿意在生命周期固定时点执行你的命令并听你的返回值」，再给退让阶梯（Claude Code hook → git pre-commit/pre-push → CI → CLAUDE.md + 人工 review）并<strong>逐级标明失去什么</strong>（拦得越晚，它已经做错的越多、返工越贵）；<strong>只用 git hook / CI 这类通用机制，不依赖也不点评任何具体产品的功能宣称</strong>。收口：「工具会变，会被墙，会改名，会涨价，<strong>『这条规矩机器判不判得出来』这个问题不会</strong>。」<br><br>
+          <strong>📐 纪律</strong>：判断线四道（说过几遍 / 漏做还是做错 / 不动脑的脚本判不判得出来 / 拦错了还干不干得了活）与<strong>时点二维图、三行机制、六步骨架，deck 与讲义都写明是本课的教学设计，不是官方文档的分法</strong>；蓝图 §21.3 列了 <strong>9 条必须开课当天重新核对</strong>的项（含 <code>PostToolUse</code> 是否仍 <code>Can block? = No</code>——变了半节课要改）；讲稿附录 K 六个空里 <strong>K.6 要求讲师亲手试出 <code>disableAllHooks</code> 的实际行为</strong>，不许凭文档字面推断。deck 里<strong>不留任何待填空白、不出现绝对分钟数、任何一页都没有填好的样例 hook</strong>（给了范文，收上来全是它的变体）；<strong>不用本仓库自己的 <code>.claude</code> / Skill / hook 当例子</strong>。26 页全部经 1600×900 实机截图核对，无溢出、无裁字。
+        </p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">96 min</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">26</div></div>
+          <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+        </div>
+        <div class="reuse-label">跨课复用</div>
+        <div class="reuse-chips">
+          <span class="chip locked">对应 ai-builder 课程第十二节；尚未接入 outline.json（待 bootcamp-sync）</span>
+          <span class="chip locked">（可复用：任何需要讲「把团队约定变成强制 / Claude Code hooks / 质量门」的 Bootcamp 单元）</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="./lessons/vibe-coding-master-l12/" target="_blank" rel="noopener">▶ 打开 Slides（26 页）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L12_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图（内容 SoT · §12 用法样例库 · §13 代码结构解剖）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l12/RUNSHEET.md" target="_blank" rel="noopener">🎙 讲稿（23 页逐页口播 · <strong>代码全部内嵌到对应页</strong> · §A2 全场同步表 · §C 同步口令 · §E 三次翻车对照 · §F 三个埋点台账 · §J 五个砍法判断点 · 附录 K 讲师六个空）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l12/HANDOUT.md" target="_blank" rel="noopener">📖 学员讲义（§4 <strong>一份填好的完整示例</strong>「别直接推 main」· §5 用法样例库八类 · §6 脚本解剖与字段速查 · §7 <strong>反面案例</strong>：一份写得很像但会出事的 hook，标出三处问题 + 交作业前自查清单 · §9 安全单独成章 · §11 原理八条）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l12/src/data/code.ts" target="_blank" rel="noopener">🧩 代码样例 SoT（25 块 · 标注官方 / 本课）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l12/src/components/slides" target="_blank" rel="noopener">📁 slides 源码</a>
+        </div>
+      </div>
+
+      <!-- ========== Vibe Coding Master L13 ========== -->
+      <div class="card">
+        <div class="card-head">
+          <span class="badge badge-react">React SlideEngine</span>
+          <span class="badge badge-status-local">⚙ 蓝图 v3.2 + deck 37 页（封面 + 28 正课 + 9 附录）+ 讲稿 v3.2 + 课前包（骨架 + 六个救生艇）齐（本地）· 讲义待做 · 待部署</span>
+        </div>
+        <h2>Vibe Coding 大师课 · 第十三节课《造一套让规矩成立的系统》— 把一条没人执行的规矩，变成一个会自己拦人的仓库</h2>
+        <p class="desc">
+          <strong>135 分钟线上直播动手课（无助教）</strong>。学员第 8 分钟开始敲，敲到第 130 分钟，<strong>仓库当堂从空目录长出来</strong>（不发 starter kit，只发 <code>check.mjs</code> 骨架 + 六个救生艇目录 —— <strong>已做好并通过双向验收</strong>：六个原样跑全绿，六个被故意弄坏必须变红，<em>只验绿等于没验，一个永远不会红的检查和一个不存在的检查是同一个东西</em>）。<strong>课堂硬产物：一个规则仓库 + 6 条检查 + 4 次他自己造出来的红 + 1 个被 CI 挡住的 PR + 一段「拒绝编造」的生成器约束。</strong><br><br>
+          <strong>🔗 承接 L12：让一个 agent 绕不过去 → 让一整个团队绕不过去。</strong> 同一个立论，对象从一个 context 换成一群人。而「一群人」的最小单位比公司小得多 —— 一个项目组、一个三人小队，<strong>甚至只有你和你那几个 agent</strong>。判据只有一条：<strong>有没有超过一个动作者，会碰同一批东西。</strong><br><br>
+          <strong>🎯 教学决定一：脊椎是「造这套东西要依次回答的八个问题」，不是强制力阶梯。</strong> 阶梯在这条决定链里是第 6 个决定，把它提到第一位，学员学会的是「怎么给一条规则加强制点」，<strong>学不会「该有哪些规则、按什么顺序建」</strong>。八步：疼在哪 → 什么该进这个仓库 → 文件打架时谁赢 → 谁答应什么 → 我不知道的怎么办 → 该查什么不该查什么 → 怎么让它绕不过去 → 回去怎么复制这一套。<strong>每一步产出一个文件，每一步结束跑一次检查</strong>（这是把课从管理研讨拉回动手课的唯一手段）。<br><br>
+          <strong>🩸 教学决定二（v3.2 讲师翻面）：正面给规矩，不赌学员会犯错。</strong> 早期版本是「这条检查我不解释，你先跑」—— 全部押在<strong>它会咬到学员自己刚写的名字</strong>上。<strong>讲师否掉了，理由是事实层面的：每个人的仓库不一样，这一下不一定咬得到。</strong>学员课堂上只写两个角色，角色模板那三段又不天然招人名，<strong>很多人跑出来就是绿的，那一格对他们完全是空的</strong> —— <strong>一个只在学员恰好犯过错时才成立的教学点，不是教学点，是抽奖。</strong>现在改成四层：<strong>正面给规矩</strong>（角色文件里只出现角色，人名只活在花名册里）→ <strong>给理由</strong>（那个人离职的那天，你要改的应该只有一份文件；名字散进角色文件，离职就变成一次全仓搜索，而搜索总会漏）→ <strong>才跑去验证</strong>，而且<strong>抓到和没抓到都有话说</strong>（「没抓到」那句是新增的那一半：<em>两种可能，别急着高兴，你确实写对了，或者你今天只写了两个角色还没碰到 —— 回去写第十个的时候会碰到</em>）→ <strong>讲师投屏自己的例子，「检查从哪来」压在这一层</strong>（学员中没中是随机的，<strong>讲师中过是确定的</strong>）。<strong>连带拆掉了「本 deck 最大的自毁按钮」，同时消掉一条严重度「高」的结构性风险。</strong> 检测用<strong>花名册精确匹配而不是人名正则</strong>：正则版实测在中文最自然的写法上（「由某某审批」后面紧跟汉字）<strong>全部漏掉</strong>，还会把普通词误判成人名；花名册版中英文通吃、零误报，<strong>而且「先建花名册再写角色」这个动作本身就在教「人和角色是两张表」</strong>。<br><br>
+          <strong>🔥 四次红，前三次必然发生、全部由学员自己造（第四次是条件红，见教学决定二）：</strong> ① 加了角色忘了登记；② <strong>把一份文件标成 <code>Status: approved</code>，它红了，它说「你还没写完」⭐ 这是收口的地基</strong>（早期版本没有这一步，导致全节最重要的那条检查在课堂上从来没红过，学员只听过没见过）；③ 满屏红；④ 抓到自己的名字（<strong>⚠️ 条件红：取决于学员自己写了什么，不保证发生，所以 P18 已改成不依赖它</strong>）。<br><br>
+          <strong>🦷 三次翻车形态不同，第二次最重要：</strong> ① <strong>它给了你一段跑得通的代码</strong>（学员自选一条最该查的说给 agent 听，一大半说的是判断题；<strong>agent 不会拒绝，它给你一段跑得通、但查的不是那回事的代码，而你以为成了</strong> —— 这一类失败<strong>没有声音</strong>，而且它在第三幕就埋下了 L14 的收口。这条边界要明着承认，<em>一个声称能查判断题的检查器，只会在你最需要它的时候给你一个错误的绿灯</em>）；② <strong>全设成失败 ⭐⭐ 本幕支点</strong> —— 索引里加三个还没建的角色，满屏红，而且<strong>红得有道理</strong>。三句一句都不能省：「这是错吗？（不是）/ 那你明天还会跑它吗？（不会）/ <strong>一个天天红的检查，和一个不存在的检查，是同一个东西</strong>」，解药是一个词：<code>bad</code> 改 <code>note</code>；③ <strong>全绿却早就违反了</strong>。<br><br>
+          <strong>📐 三句话（v3 全部换过，因为全课主链从「勤勉」换成了「信任」）：</strong> 立论（阶梯页，全节唯一一次点明）<strong>「规矩的力量，不在它写了什么，在谁改得了它。」</strong>· 反转（第三幕末，<strong>不是第五幕</strong> —— 前移是为了避免两个反转互相稀释）<strong>「检查挡得住的，只有你说得清的那部分。」</strong>说不清的能转化掉一部分，<strong>剩下的必须承认它只能靠人记得，不许假装它被守住了</strong>；生成器那句「看它留了多少空」降级成第五幕的<strong>回声</strong>，不再当新东西讲 · 收口（全程不许提前说）<strong>「留白在等的那个人，就是你该去谈的那场话。」</strong>链条：有强制点 → 强制点只挡得住你说得清的 → 说不清的必须留白 → 留白在等谁 → <strong>那个人就是你一直没去谈的那个人</strong>。<br><br>
+          <strong>📏 按规模选形态（附录 A0，一定会有人问「我们就三个人要不要做」）：</strong> <strong>不要答「那你可以简化一下」，那等于说他不配做这套东西。</strong> 正确答案是<strong>「规模决定形态，不决定要不要做」</strong>，而且三个人的组<strong>收益最快</strong> —— 小组最吃亏的是「只有一个人知道那件事怎么做」，那人请假整摊就停了，而规则文件正是这件事最直接的解药。<strong>课堂八步走的就是三人形态，所以那句「你不是做了个简版，你做完了」必须说出口。</strong><br><br>
+          <strong>💻 线上无助教是本节的结构性约束</strong>：所有信号走聊天框数字（翻车③ 改成「抓到打 1、没抓到打 0」，<strong>反而给了讲师一个精确的命中率读数</strong>）；每个动手点配一个<strong>救生艇</strong>目录，学员自己覆盖就能跟上；<strong>学员只贴终端输出，不贴文件内容</strong>（他们写的是自己那儿的真实情况，终端输出天然脱敏）；每个等待点讲稿都写好了话术，<strong>直播最致命的是空等</strong>。<br><br>
+          <strong>🔒 脱敏纪律（约束的是讲师，不是学员）</strong>：讲师投屏、演示仓库、预录、deck 全部脱敏 —— 不能把自己那儿的信息泄露给一屋子人；<strong>学员没有这条约束，写真名真金额真客户全都是对的</strong>，因为系统在他们自己电脑上。<strong>而且让学员写真的是教学必需</strong>：编的公司永远答得上「这个数谁定的」，也永远不疼。deck 因此<strong>不出现任何产品名</strong>（顺带让国内班海外班共用一份课件）、<strong>不出现精确计数</strong>（文件数 / 提交数 / 缺口数组合起来是可反查的指纹）、<strong>不出现任何「原话」式引用</strong>（所有观点用本课自己的话说）。<br><br>
+          <strong>📚 核心资产是检查样例库</strong>（七类十五条可跑的 Node 检查，每条标了能不能在课堂那个仓库上直接跑）。其中三条值得单说：<strong>C-1 派生值不许被手写第二遍</strong> —— 它查的是<em>动作</em>不是值，那个值可能碰巧是对的，手写这个动作仍然是错的；<strong>E-1 标了生效的文件不许残留留白</strong> —— 全节收口所依赖的那一条，它的作用不是找错，<strong>是堵住你</strong>；<strong>F 组八条不需要身份就能查的漂移不变式</strong> —— 因为账号映射不入库、不能按人查，<strong>限制反而逼出了更强的检查</strong>（「一个不是组织成员的协作者」，不需要知道那是谁就能抓到离职残留）。另有 <strong>G 组「明确不该查的」</strong>，<em>不假装，是这套东西能被信任的原因</em>。<br><br>
+          <strong>🧱 与 L14 的接口写死在倒数第二页</strong>（全景三仓图，一分钟，不展开）：今天造的是中间那块，上面还有一层 —— 谁给它权限、它接哪些系统、它会哪些技能、谁来维护，<strong>那一层下节课讲</strong>。<strong>「今天先把地基打对，因为地基错了，上面那层越强越危险」</strong> —— 一个规则写得糊涂的仓库配上一个有写权限的 agent，比没有 agent 糟得多。<strong>学员一定会追问权限怎么给，一律答「下节课」，一开口讲权限模型收口就没时间了。</strong>
+        </p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">135 min</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">37</div></div>
+          <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
+        </div>
+        <div class="reuse-label">跨课复用</div>
+        <div class="reuse-chips">
+          <span class="chip locked">对应 ai-builder 课程第十三节；尚未接入 outline.json（待 bootcamp-sync）</span>
+          <span class="chip locked">（可复用：任何需要讲「团队规则怎么写 / 质量门 / CI 当关卡 / 分支保护 / 小团队治理」的 Bootcamp 单元）</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="./lessons/vibe-coding-master-l13/" target="_blank" rel="noopener">▶ 打开 Slides（37 页）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L13_BLUEPRINT.md" target="_blank" rel="noopener">📐 课程蓝图 v3.2（内容 SoT · §0.3 全课主链 · §0.7 正面给规矩 · §1.2 八步脊椎 · §1.3 六层图与 L0 为什么排最后 · §1.5 四道判断线 + 兜底三级 · §1.6 记录放哪 · §11.1 逐页表）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/vibe-coding-master-l13/RUNSHEET.md" target="_blank" rel="noopener">🎙 讲稿 v3.2（<strong>28 页逐页口播 · 每页带硬停分钟</strong> · §A 十个讲飞点 · §A2 线上同步表（八个同步点） · §A3 无助教五条纪律 · §A4 救生艇 · §A5「我们就三个人」怎么答 · <strong>§A6 七条埋点与回收</strong> · §C 完整 check.mjs 终态 · §D 四次红清单 · §E 三次翻车对照 · §J 三级砍法 · 附录 K 讲师六个空）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L13_SOURCE_ANALYSIS.md" target="_blank" rel="noopener">🔬 参考系统解剖（脱敏 · 七层架构 · 优点 14 条 / 缺点 12 条）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L13_RULES_REPO_DESIGN.md" target="_blank" rel="noopener">🏗 规则仓库设计（怎么写 / 怎么分 / 权限怎么隔离 / 强制力阶梯六级）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/blob/main/lessons/VIBE_CODING_MASTER_L13_OUTCOME_SPEC.md" target="_blank" rel="noopener">🎓 出课能力规格（14 条可验收项 + 课后四周养成路径）</a>
+          <a class="btn" href="https://github.com/JR-Academy-AI/curriculum/tree/main/lessons/vibe-coding-master-l13/src/components/slides" target="_blank" rel="noopener">📁 slides 源码（37 页）</a>
+          <span class="chip locked">🛟 课前包（check.mjs 骨架 + 六个救生艇 step-1…6 + verify.mjs 双向验收）<strong>不在本仓库</strong> —— 在讲师本机 <code>~/Desktop/team-ops/</code>，需要请直接找讲师要</span>
         </div>
       </div>
 

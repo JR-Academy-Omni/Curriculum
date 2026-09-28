@@ -181,6 +181,12 @@ jobs:
         run: |
           bun install
           bun run build
+      # Build lessons/vibe-coding-master-l10 (Vibe Coding 大师课 · 第十节课 · 四象限 AI 协作协议 — 四格 + 四条搬运动作)
+      - name: Build lessons/vibe-coding-master-l10
+        working-directory: lessons/vibe-coding-master-l10
+        run: |
+          bun install
+          bun run build
 
       # Build lessons/ai-solo-founder-w4 (AI 一人创业营 · W4 · 把想法做出来 — 现场跑 Codex)
       - name: Build lessons/ai-solo-founder-w4
@@ -195,6 +201,19 @@ jobs:
         run: |
           bun install
           bun run build
+      # Build lessons/vibe-coding-master-l11 (Vibe Coding 大师课 · 第十一节课 · 让 Agent 定时替你干活 — 判断闸 + 无人值守任务书)
+      - name: Build lessons/vibe-coding-master-l11
+        working-directory: lessons/vibe-coding-master-l11
+        run: |
+          bun install
+          bun run build
+
+      # Build lessons/vibe-coding-master-l12 (Vibe Coding 大师课 · 第十二节课《Claude Hook》— 判断线 + 时点二维图 + 当堂拦截)
+      - name: Build lessons/vibe-coding-master-l12
+        working-directory: lessons/vibe-coding-master-l12
+        run: |
+          bun install
+          bun run build
 
       # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
       # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
@@ -203,6 +222,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      # Build lessons/vibe-coding-master-l7 (Vibe Coding 大师课 · 第七节课 · 多 Agent 协作 — Subagent 与 Agent Team)
+      - name: Build lessons/vibe-coding-master-l7
+        working-directory: lessons/vibe-coding-master-l7
+        run: |
+          bun install
+          bun run build
+
+      # Build lessons/vibe-coding-master-l8 (Vibe Coding 大师课 · 第八节课 · Agent Team — 12 拍做/讲交替)
+      - name: Build lessons/vibe-coding-master-l8
+        working-directory: lessons/vibe-coding-master-l8
+        run: |
+          bun install
+          bun run build
 
       - name: Build lessons/vibe-coding (Slidev)
         working-directory: lessons/vibe-coding
@@ -595,6 +628,11 @@ jobs:
             mkdir -p _site/lessons/vibe-coding-master-l6
             cp -r lessons/vibe-coding-master-l6/dist/* _site/lessons/vibe-coding-master-l6/
           fi
+          # lessons/vibe-coding-master-l10: Vibe Coding 大师课 · 第十节课 · 四象限 AI 协作协议（React + Vite）
+          if [ -d lessons/vibe-coding-master-l10/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l10
+            cp -r lessons/vibe-coding-master-l10/dist/* _site/lessons/vibe-coding-master-l10/
+          fi
 
           # lessons/ai-solo-founder-w4: AI 一人创业营 · W4 · 把想法做出来（React + Vite）
           if [ -d lessons/ai-solo-founder-w4/dist ]; then
@@ -606,6 +644,28 @@ jobs:
           if [ -d lessons/ai-solo-founder-w3/dist ]; then
             mkdir -p _site/lessons/ai-solo-founder-w3
             cp -r lessons/ai-solo-founder-w3/dist/* _site/lessons/ai-solo-founder-w3/
+          fi
+          # lessons/vibe-coding-master-l11: Vibe Coding 大师课 · 第十一节课 · 无人值守（React + Vite）
+          if [ -d lessons/vibe-coding-master-l11/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l11
+            cp -r lessons/vibe-coding-master-l11/dist/* _site/lessons/vibe-coding-master-l11/
+          fi
+
+          # lessons/vibe-coding-master-l7: Vibe Coding 大师课 · 第七节课 · 多 Agent 协作（React + Vite）
+          if [ -d lessons/vibe-coding-master-l7/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l7
+            cp -r lessons/vibe-coding-master-l7/dist/* _site/lessons/vibe-coding-master-l7/
+          fi
+          # lessons/vibe-coding-master-l12: Vibe Coding 大师课 · 第十二节课《Claude Hook》（React + Vite）
+          if [ -d lessons/vibe-coding-master-l12/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l12
+            cp -r lessons/vibe-coding-master-l12/dist/* _site/lessons/vibe-coding-master-l12/
+          fi
+
+          # lessons/vibe-coding-master-l8: Vibe Coding 大师课 · 第八节课 · Agent Team（React + Vite）
+          if [ -d lessons/vibe-coding-master-l8/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l8
+            cp -r lessons/vibe-coding-master-l8/dist/* _site/lessons/vibe-coding-master-l8/
           fi
 
           # ai-engineer-resume-interview · 3h 内部学员讲座（slide deck + public/ zip 下载）
