@@ -1,0 +1,164 @@
+{
+  "themeColor": "#0E9F9A",
+  "slug": "data-engineer-ai-foundations",
+  "name": "数据工程师 × AI 实战课 · 入门：把视频和网页变成可分析的数据",
+  "name_en": "Data Engineer × AI · Foundations: Turn Video and Web Pages into Analysable Data",
+  "title_en": "Data Engineer × AI · Foundations",
+  "description": "给在职数据工程师的 10 小时直播带做课。从头到尾搭一条交通数据 pipeline：路口视频用 AI 识别成车流数据，网页用 AI 抽成活动、施工、天气数据，最后回答「哪里堵、为什么堵」。AI 干粗活，你用数据工程的判断把关。",
+  "description_en": "A 10-hour live, hands-on course for working data engineers. Build one traffic data pipeline end to end: AI turns intersection video into vehicle flow data and web pages into event, roadwork and weather data, so the business can see where traffic jams happen and why. AI does the grind; your data engineering judgement keeps it correct.",
+  "level": "中级",
+  "type": "training",
+  "targetAudience": "在职数据工程师、ETL / BI 开发，以及有数据工程基础、想继续做这一行的求职者",
+  "totalLessons": 6,
+  "totalSteps": 31,
+  "liveClasses": 5,
+  "estimatedHours": 10.5,
+  "totalInteractiveLabs": 0,
+  "timeLength": "10 小时直播带做（5 节 × 2 小时）+ 30 分钟课前环境检查",
+  "courseObjective": "用 AI 把一条数据 pipeline 的交付时间从一周缩到一天，而且不出错：会给 AI 派数据工程任务，会用检查清单审出 AI 在粒度、去重、时间、回填上犯的错，会估算视频与网页数据的处理规模和成本。",
+  "courseObjective_en": "Cut delivery of a data pipeline from a week to a day with AI, without shipping mistakes: delegate data engineering tasks to AI, review its output for grain, dedup, time and backfill errors, and estimate the volume and cost of processing video and web data.",
+  "suitable": "已经在做数据工程、平时 AI 用得不多，想继续留在这一行、用 AI 把活干快的人。不适合零基础学员，也不适合想转 AI Engineer 的人。",
+  "suitable_en": "Data engineers who already do the job, use AI only occasionally, and want to stay in data engineering while working faster with AI. Not for complete beginners or people switching to AI Engineer roles.",
+  "cardDescription": "10 小时直播带做：用 AI 把路口视频和网页变成车流与事件数据，搭完一条能跑的 pipeline。",
+  "promoDescription": "你不用转 AI Engineer。这门课只做一件事：让懂数据工程的你，学会用 AI 干本行的活。课上从一段路口视频和几个网页开始，AI 帮你抽帧、识别车辆、写爬虫、写 dbt model、写 Spark 作业、写 Airflow DAG；你负责审它的产出。每节课我们都在 starter repo 里埋了 AI 大概率会踩的坑，比如同一辆车被数 30 次、网页上没有的字段被编出来、回填写出重复数据，看你能不能当场审出来。",
+  "prerequisiteknowledge": "会写 SQL（join、group by、窗口函数），能读懂 Python 脚本，会用 Git 的基本命令。没用过 Spark 和 Airflow 也可以，课上会带着用。",
+  "highlights": [
+    "全程直播带做，5 节课产出 5 次提交，最后得到一条完整的交通数据 pipeline",
+    "路口视频 → YOLO 识别和轨迹跟踪 → 路口车流汇总表，把「不能查询的视频」变成能写 SQL 的数据",
+    "AI 写爬虫 + 大模型按 schema 抽取网页字段，用活动、施工、天气数据解释拥堵原因",
+    "每节课都有预先埋好的 AI 坑，练的是审 AI 产出的数据工程判断，不是背 prompt",
+    "第 1 节就算规模：10 个摄像头每秒抽 1 帧，每天 86.4 万帧，识别成本怎么选"
+  ],
+  "highlights_en": [
+    "Fully live and hands-on: five sessions, five commits, one complete traffic data pipeline",
+    "Intersection video → YOLO detection and tracking → per-intersection flow table you can query with SQL",
+    "AI-written scrapers plus schema-based LLM extraction to explain congestion with events, roadworks and weather",
+    "Every session hides AI mistakes in the starter repo, so you practise reviewing AI output with data engineering judgement",
+    "Sizing from session one: 10 cameras at 1 frame per second is 864,000 frames a day — pick the detection cost you can afford"
+  ],
+  "features": [
+    "统一 starter repo + 每节课 checkpoint 分支，跟丢了一条命令追上",
+    "课前 24 小时环境检查，助教单独处理没跑通的同学",
+    "主工具 Claude Code，同时演示公司只允许用 Copilot / Bedrock 时怎么做",
+    "课后带走一份「审 AI 数据工程产出」检查清单"
+  ],
+  "program": {
+    "name": "数据工程师 × AI 实战课 · 入门 第一期",
+    "programPhase": 1,
+    "tuition": 599
+  },
+  "phases": [
+    {
+      "name": "开工准备",
+      "color": "#64748b",
+      "summary": "课前环境检查",
+      "lessons": [
+        {
+          "code": "L00",
+          "title": "课前环境检查：跑通 starter repo",
+          "description": "开课前 24 小时完成。装好 Python、Docker 和 Claude Code，跑通一条命令的环境检查脚本。卡住的同学由助教单独约时间处理，不占直播时间。",
+          "type": "Information",
+          "isLive": false,
+          "duration": 30,
+          "steps": [
+            { "order": 1, "type": "PROJECT", "title": "克隆 starter repo", "description": "拿到课程仓库，切到 session-1-start 分支", "duration": 5 },
+            { "order": 2, "type": "PROJECT", "title": "跑环境检查脚本", "description": "一条命令检查 Python、Docker、ffmpeg、Claude Code 是否可用，输出通过或具体缺什么", "duration": 15 },
+            { "order": 3, "type": "PROJECT", "title": "提交检查结果", "description": "把检查脚本的输出贴到课程群，助教确认后才算准备完成", "duration": 10 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "把视频和网页变成数据",
+      "color": "#0E9F9A",
+      "summary": "3 节直播带做：设计与规模、接入、AI 结构化",
+      "lessons": [
+        {
+          "code": "L01",
+          "title": "接手项目：设计三层数据，算清楚规模和成本",
+          "description": "拿到 10 个路口摄像头的视频和几个活动、施工网页，让 AI 自己读元数据、提出数据结构。你来定每张表一行代表什么：一次识别、一辆车，还是一个路口 15 分钟的车流。然后当场算账：每秒抽 1 帧一天 86.4 万帧，识别成本按什么方案才做得下去。",
+          "type": "Lesson",
+          "isLive": true,
+          "duration": 120,
+          "steps": [
+            { "order": 1, "type": "CONCEPT", "title": "在公司用 AI 的边界", "description": "哪些数据不能交给 AI（生产数据、密钥、个人信息），怎么脱敏；公司只允许 Copilot / Bedrock 时，课上的流程怎么换过去", "duration": 20 },
+            { "order": 2, "type": "CONCEPT", "title": "设计难在哪：粒度清单", "description": "识别层、轨迹层、汇总层各自一行代表什么；主键；时间用哪个时区", "duration": 10 },
+            { "order": 3, "type": "LIVE", "title": "AI 探索数据源", "description": "让 Claude Code 用 ffprobe 读视频元数据、抓取目标网页结构，输出数据源说明", "duration": 25 },
+            { "order": 4, "type": "LIVE", "title": "AI 提出三层数据结构，你来审", "description": "按粒度清单审 AI 给的 schema，揭晓埋雷：AI 把识别次数当成车辆数的粒度设计", "duration": 25 },
+            { "order": 5, "type": "SCENARIO", "title": "规模与成本计算", "description": "摄像头数 × 抽帧频率 × 时长算出每日帧数和页面数，对比多模态大模型逐帧调用和本地 YOLO 的成本，选定抽帧频率", "duration": 30 },
+            { "order": 6, "type": "PROJECT", "title": "提交设计文档", "description": "三层 schema、数据流图和规模测算表提交到仓库", "duration": 10 }
+          ]
+        },
+        {
+          "code": "L02",
+          "title": "接入：视频抽帧，AI 写爬虫",
+          "description": "视频入库、用 ffmpeg 按设计好的频率抽帧，摄像头编号和时间戳一个不能错。网页这边先查有没有官方 API，没有再让 AI 写爬虫，做增量爬取。重点是重跑：同一段视频跑两次，数据会不会翻倍。",
+          "type": "Lesson",
+          "isLive": true,
+          "duration": 120,
+          "steps": [
+            { "order": 1, "type": "CONCEPT", "title": "接入难在哪：幂等清单", "description": "时间戳从哪来、时区、重跑会不会重复、缺失片段怎么处理；爬虫的 robots.txt、使用条款和限速", "duration": 10 },
+            { "order": 2, "type": "LIVE", "title": "AI 写视频接入和抽帧脚本", "description": "按 L01 定的频率抽帧，帧文件和元数据落进 raw 层", "duration": 35 },
+            { "order": 3, "type": "LIVE", "title": "先找 API，再写爬虫", "description": "让 AI 先判断数据源有没有开放接口；没有的由 AI 生成爬虫，做增量爬取", "duration": 35 },
+            { "order": 4, "type": "SCENARIO", "title": "重跑测试和揭晓埋雷", "description": "把同一批视频和页面再跑一次，揭晓埋雷：AI 写的脚本用了追加写入，重跑后数据翻倍", "duration": 30 },
+            { "order": 5, "type": "PROJECT", "title": "提交接入代码", "description": "可重复运行的抽帧脚本和爬虫提交到仓库", "duration": 10 }
+          ]
+        },
+        {
+          "code": "L03",
+          "title": "AI 结构化：识别车辆，抽取网页字段",
+          "description": "用 YOLO 识别每一帧里的车辆并做轨迹跟踪，再用多模态大模型标出事故、违停这类场景。网页交给大模型按固定 schema 抽成活动、施工、天气表。两个坑等你审：同一辆车被数了 30 次，网页上根本没有的字段被编了出来。",
+          "type": "Lesson",
+          "isLive": true,
+          "duration": 120,
+          "steps": [
+            { "order": 1, "type": "CONCEPT", "title": "结构化难在哪：准确率清单", "description": "识别次数 vs 车辆数、置信度阈值、抽样人工核对；大模型抽取的字段校验", "duration": 10 },
+            { "order": 2, "type": "LIVE", "title": "AI 写识别和轨迹跟踪", "description": "YOLO 识别车辆，按轨迹编号生成单辆车记录，落进识别层和轨迹层", "duration": 30 },
+            { "order": 3, "type": "LIVE", "title": "多模态大模型识别场景", "description": "对抽样帧标注事故、违停等场景，写提示词和结果解析", "duration": 15 },
+            { "order": 4, "type": "LIVE", "title": "大模型按 schema 抽取网页", "description": "活动日程、施工公告、天气抽成结构化表，带来源 URL 和抓取时间", "duration": 25 },
+            { "order": 5, "type": "SCENARIO", "title": "审产出和揭晓埋雷", "description": "揭晓两个埋雷：按识别次数统计车流导致数量虚高；大模型给页面上不存在的字段编了值。抽 20 帧人工核对准确率", "duration": 30 },
+            { "order": 6, "type": "PROJECT", "title": "提交结构化数据", "description": "识别层、轨迹层和网页事件表提交到仓库，附准确率核对结果", "duration": 10 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "上规模并交付",
+      "color": "#155e75",
+      "summary": "2 节直播带做：规模与维护、融合与交付",
+      "lessons": [
+        {
+          "code": "L04",
+          "title": "上规模：几十小时视频，网站改版了怎么办",
+          "description": "从几分钟的片段扩到几十小时、多个摄像头的数据。让 AI 写并行处理和 Spark 作业，读执行计划找瓶颈，按摄像头和日期分区。换了更好的识别模型，历史数据怎么回填才不出错。网站改版爬虫挂了，让 AI 自己发现、自己修。",
+          "type": "Lesson",
+          "isLive": true,
+          "duration": 120,
+          "steps": [
+            { "order": 1, "type": "CONCEPT", "title": "规模难在哪：性能与回填清单", "description": "分区键、数据倾斜、小文件、文件格式；模型换版本后的回填范围和覆盖方式", "duration": 10 },
+            { "order": 2, "type": "LIVE", "title": "AI 写 Spark 作业并诊断瓶颈", "description": "在预先跑好的全量识别结果上做轨迹汇总，AI 读执行计划指出慢在哪，改完对比运行时间", "duration": 40 },
+            { "order": 3, "type": "SCENARIO", "title": "换模型后的回填", "description": "识别模型升级后回填历史数据，揭晓埋雷：AI 的回填脚本没有先删旧版本数据，新旧结果叠在一起", "duration": 25 },
+            { "order": 4, "type": "LIVE", "title": "爬虫自动修复与混合抽取", "description": "模拟网站改版，AI 发现选择器失效并修复；平时用选择器跑量，失败才回退大模型，算清楚省了多少钱", "duration": 35 },
+            { "order": 5, "type": "PROJECT", "title": "提交规模化代码", "description": "Spark 作业、回填脚本和爬虫修复记录提交到仓库，附运行时间对比", "duration": 10 }
+          ]
+        },
+        {
+          "code": "L05",
+          "title": "融合与交付：回答哪里堵、为什么堵",
+          "description": "把车流数据和活动、施工、天气数据按时间和地点对齐，做成路口车流汇总表。用 Airflow 让整条 pipeline 每天自动跑，失败会告警。最后让业务方用中文提问：周六下午体育场旁边的路口为什么堵。你再拿同一个任务手写一遍、用 AI 做一遍，测出自己的提效数据。",
+          "type": "Lesson",
+          "isLive": true,
+          "duration": 120,
+          "steps": [
+            { "order": 1, "type": "CONCEPT", "title": "交付难在哪：口径与调度清单", "description": "时间窗口和地点怎么对齐；汇总口径和轨迹层对不对得上；任务依赖、失败重跑", "duration": 10 },
+            { "order": 2, "type": "LIVE", "title": "AI 写融合模型", "description": "dbt 写路口 × 15 分钟车流汇总，并关联活动、施工、天气", "duration": 30 },
+            { "order": 3, "type": "LIVE", "title": "AI 写 Airflow DAG", "description": "编排抽帧、识别、爬取、汇总，配置失败告警；AI 分析一次失败任务的原因", "duration": 25 },
+            { "order": 4, "type": "SCENARIO", "title": "业务方中文查数和揭晓埋雷", "description": "用中文问「哪个路口几点最堵、为什么」；揭晓埋雷：汇总表按 UTC 分桶，和本地时间的高峰对不上", "duration": 25 },
+            { "order": 5, "type": "SCENARIO", "title": "以前 vs 现在计时", "description": "同一个小任务手写一遍、用 AI 做一遍，记录各自用时，得到自己的提效数据", "duration": 20 },
+            { "order": 6, "type": "PROJECT", "title": "提交完整 pipeline 和检查清单", "description": "完整 pipeline 跑通提交；整理个人版「审 AI 数据工程产出」检查清单", "duration": 10 }
+          ]
+        }
+      ]
+    }
+  ]
+}
