@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-30 · 墨尔本展示交流预告页简化
+
+- 10 月及 11 月预告页将月份纳入大标题；删除顶部「提前报名」小字及底部项目 Demo 描述。时间、地址和报名二维码保留。
+
 ## 2026-09-30 · 墨尔本 AI 创业项目展示交流 9月场现场放映版
 
 - 新增 `lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/` 的 22 页 React Talk Deck，供 9 月 30 日 17:30–20:30 活动现场通过浏览器放映。

@@ -23,8 +23,7 @@ for month, day, event_id, slide_id in [
     subtle = '#c6c9d4' if dark else '#68666a'
     url = f'https://jiangren.com.au/events/{event_id}'
     elements = [
-        txt(120,80,1300,54,f'{month} 月场 · 提前报名',32,accent,True),
-        txt(120,165,920,180,'墨尔本 AI 创业项目\n展示交流',68,ink,True),
+        txt(120,165,920,180,f'{month}月场｜墨尔本 AI\n创业项目展示交流',68,ink,True),
         txt(120,367,920,61,'AI Startup Showcase & Networking',33,ink),
         txt(120,468,890,65,f'2026 年 {month} 月 {day} 日 · 星期三',38,ink,True),
         txt(120,542,880,72,'5:30 PM–8:30 PM',48,ink,True),
@@ -35,7 +34,6 @@ for month, day, event_id, slide_id in [
         dict(type='image',x=1065,y=314,w=360,h=360,src=f'promotions/2026-{month:02}/registration-qr.png',fit='contain'),
         txt(1020,720,450,56,f'扫码报名 {month} 月场',33,accent,True,align='center',url=url),
         txt(1040,783,400,38,'免费参加，需提前报名',25,ink,align='center'),
-        txt(120,840,1320,42,'5 个 AI 项目 Demo，现场问答与自由交流',25,accent,True),
     ]
     notes = (f'报名与信息来源：{url}\n活动页正文：2026年{month}月{day}日（星期三），'
              '5:30 PM–8:30 PM，ANNG Gallery，Level 17, 60 Albert Road, South Melbourne VIC 3205。'
