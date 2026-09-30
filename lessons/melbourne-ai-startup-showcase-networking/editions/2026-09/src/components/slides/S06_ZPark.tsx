@@ -41,26 +41,26 @@ export default function S06_ZPark() {
             <Label bg={colors.blue}>PARTNER</Label>
             <p
               style={{
-                fontSize: 34,
+                fontSize: 30,
                 lineHeight: 1.5,
-                margin: "14px 0",
+                margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
-              {"服务科技企业与创业者的行业协会。"}
+              {"服务科技企业与创业者的行业协会。"}<br /><span style={{display:"block",fontSize:20,fontWeight:400,lineHeight:1.35,marginTop:7}}>An industry association supporting technology companies and founders.</span>
             </p>
             <p
               style={{
-                fontSize: 29,
+                fontSize: 25,
                 lineHeight: 1.5,
-                margin: "14px 0",
+                margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
               {
                 "围绕科技成果转化、创业辅导与资源对接，\n促进企业交流与创新合作。"
               }
-            </p>
+            <span style={{display:"block",fontSize:20,lineHeight:1.35,marginTop:7}}>Connecting innovation, startup mentoring and industry resources.</span></p>
           </Panel>
         </div>
       </DeckFrame>

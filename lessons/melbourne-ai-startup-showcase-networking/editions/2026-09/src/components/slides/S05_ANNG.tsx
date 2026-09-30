@@ -41,26 +41,26 @@ export default function S05_ANNG() {
             <Label bg={colors.red}>PARTNER</Label>
             <p
               style={{
-                fontSize: 34,
+                fontSize: 30,
                 lineHeight: 1.5,
-                margin: "14px 0",
+                margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
-              {"位于 South Melbourne 的\n艺术与科技交流空间。"}
+              {"位于 South Melbourne 的\n艺术与科技交流空间。"}<br /><span style={{display:"block",fontSize:20,fontWeight:400,lineHeight:1.35,marginTop:7}}>An arts and technology space in South Melbourne.</span>
             </p>
             <p
               style={{
-                fontSize: 29,
+                fontSize: 25,
                 lineHeight: 1.5,
-                margin: "14px 0",
+                margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
               {
                 "结合数字、互动与传统艺术，\n为展览、分享与社区活动创造相遇的场所。"
               }
-            </p>
+            <span style={{display:"block",fontSize:20,lineHeight:1.35,marginTop:7}}>Digital, interactive and traditional art, exhibitions and community events.</span></p>
           </Panel>
         </div>
       </DeckFrame>

@@ -43,26 +43,26 @@ export default function S09_CloudTech() {
             <Label bg={colors.red}>PARTNER</Label>
             <p
               style={{
-                fontSize: 34,
+                fontSize: 30,
                 lineHeight: 1.5,
-                margin: "14px 0",
+                margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
-              {"位于墨尔本，关注区块链与数字金融技术\n的企业集团。"}
+              {"位于墨尔本，关注区块链与数字金融技术\n的企业集团。"}<br /><span style={{display:"block",fontSize:20,fontWeight:400,lineHeight:1.35,marginTop:7}}>A Melbourne group focused on blockchain and digital finance technology.</span>
             </p>
             <p
               style={{
-                fontSize: 29,
+                fontSize: 25,
                 lineHeight: 1.5,
-                margin: "14px 0",
+                margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
               {
                 "通过 Innovation Hub 支持创新与社区交流，\n为本次活动提供场地支持。"
               }
-            </p>
+            <span style={{display:"block",fontSize:20,lineHeight:1.35,marginTop:7}}>Supporting innovation and community through its Innovation Hub. Venue support for tonight.</span></p>
           </Panel>
         </div>
       </DeckFrame>

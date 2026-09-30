@@ -7,7 +7,7 @@ export default function S04_JRAcademy() {
       style={{ width: "100%", height: "100%" }}
     >
       <DeckFrame
-        tag={"联合发起 / 合作伙伴"}
+        tag={"联合发起 / 合作伙伴 · CO-HOST / PARTNER"}
         title={"JR Academy 匠人学院"}
         subtitle={""}
         accent={colors.yellow}
@@ -51,6 +51,7 @@ export default function S04_JRAcademy() {
               }}
             >
               {"面向华人学习者与科技从业者的\nIT 与 AI 教育平台。"}
+              <span style={{ display: "block", fontSize: 22, lineHeight: 1.45, marginTop: 10, color: "#514c48" }}>IT and AI education for Chinese-speaking learners and tech professionals.</span>
             </p>
             <p
               style={{
@@ -61,6 +62,7 @@ export default function S04_JRAcademy() {
               }}
             >
               {"通过课程、项目实践与职业支持，\n帮助学习者提升技能、连接行业。"}
+              <span style={{ display: "block", fontSize: 21, lineHeight: 1.45, marginTop: 10, color: "#514c48" }}>Courses, hands-on projects and career support to build skills and industry connections.</span>
             </p>
           </Panel>
         </div>

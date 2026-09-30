@@ -6,7 +6,7 @@ export default function S20_Join() {
       <DeckFrame
         tag={"STAY CONNECTED"}
         title={"扫码加入澳洲 AI圈"}
-        subtitle={"今晚见面，之后常联系"}
+        subtitle={"今晚见面，之后常联系 · Meet tonight. Stay connected."}
         accent={colors.yellow}
         titleSize={58}
       >
@@ -28,23 +28,23 @@ export default function S20_Join() {
             <Label bg={colors.blue}>AI CIRCLE · MELBOURNE</Label>
             <p
               style={{
-                fontSize: 37,
+                fontSize: 32,
                 lineHeight: 1.5,
                 margin: "14px 0",
                 whiteSpace: "pre-line",
               }}
             >
-              {"墨尔本 2 群\n继续聊产品、分享经验、认识同行"}
+              {"墨尔本 2 群 / Melbourne Group 2\n继续聊产品、分享经验、认识同行\nTalk products, share experience, meet peers."}
             </p>
             <p
               style={{
-                fontSize: 23,
+                fontSize: 20,
                 lineHeight: 1.5,
                 margin: "14px 0",
                 whiteSpace: "pre-line",
               }}
             >
-              {"非正式项目交流 · 认识创业者、投资人与潜在客户\n每项最多15分钟：展示10分钟 + 答疑5分钟\n到时主持人停止展示；最后自由交流"}
+              {"非正式项目交流 · 认识创业者、投资人与潜在客户\n每项最多15分钟：展示10分钟 + 答疑5分钟\n到时主持人停止展示；最后自由交流\nInformal networking with founders, investors and potential clients.\n15 min total: 10 min demo + 5 min Q&A.\nHost stops at 15 min. Open networking follows."}
             </p>
           </Panel>
           <Panel
@@ -68,7 +68,7 @@ export default function S20_Join() {
                 whiteSpace: "pre-line",
               }}
             >
-              {"微信扫码加入社群"}
+              {"微信扫码加入社群 / Scan to join on WeChat"}
             </p>
           </Panel>
         </div>

@@ -2,6 +2,10 @@
 
 ## 2026-09-30 · 墨尔本展示交流 talk-deck 视觉重做
 
+- 补充伙伴与七个项目介绍的简明英文，AI圈介绍保持中文（`lessons/melbourne-ai-startup-showcase-networking`）
+
+- 更新开场、扫码、流程、匠人学院与AI圈介绍为中英双语（`lessons/melbourne-ai-startup-showcase-networking`）
+
 - 修复墨尔本展示课件右上角Logo白底，直接替换为官方透明黑色SVG（`curriculum/lessons/melbourne-ai-startup-showcase-networking`）
 
 - 重做22页React课件，采用当前talk-deck暖色网格纸、marker下划线、圆角语义面板及品牌偏移阴影；同步打印视图、登记卡片和编辑说明，保留活动事实与URL。

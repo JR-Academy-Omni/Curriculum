@@ -16,13 +16,13 @@ export default function S01_Cover() {
           <div style={{ flex: 1, display: "grid", gridTemplateColumns: "870px 430px", gap: 100, alignItems: "center" }}>
             <AnimatedGroup delay={0.1}>
               <p style={{ margin: "0 0 20px", fontSize: 28, fontWeight: 700 }}>墨尔本 AI 创业项目展示交流</p>
-              <h1 style={{ fontFamily: fonts.heading, fontSize: 91, fontWeight: 900, letterSpacing: -3, lineHeight: 1.22, margin: 0 }}>
+              <h1 style={{ fontFamily: fonts.heading, fontSize: 83, fontWeight: 900, letterSpacing: -3, lineHeight: 1.22, margin: 0 }}>
                 让真实项目<br />
                 <span style={{ backgroundImage: `linear-gradient(transparent 73%, ${colors.yellow} 73%, ${colors.yellow} 94%, transparent 94%)` }}>遇见新的可能。</span>
               </h1>
-              <p style={{ fontSize: 27, fontWeight: 600, margin: "28px 0 34px", color: "#514c48" }}>看产品 · 聊想法 · 认识下一位合作伙伴</p>
-              <div style={{ display: "flex", gap: 22, alignItems: "center", fontSize: 26, fontWeight: 800 }}>
-                <span>9 月 30 日 · 星期三</span>
+              <p style={{ fontSize: 27, fontWeight: 600, margin: "28px 0 34px", color: "#514c48" }}>看产品 · 聊想法 · 认识下一位合作伙伴<br /><span style={{fontSize:20,fontWeight:400}}>Real projects. New connections. Meet your next collaborator.</span></p>
+              <div style={{ display: "flex", gap: 22, alignItems: "center", fontSize: 22, fontWeight: 800 }}>
+                <span>9 月 30 日 · 星期三 / Wed, 30 Sep</span>
                 <span style={{ width: 2, height: 27, background: colors.dark }} />
                 <span>5:30 PM–8:30 PM</span>
               </div>
@@ -33,9 +33,9 @@ export default function S01_Cover() {
                 <Label bg={colors.green}>LIVE DEMO · 现场交流</Label>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 13, marginTop: 20 }}>
                   <span style={{ fontFamily: fonts.heading, fontSize: 160, fontWeight: 900, lineHeight: 1, letterSpacing: -8, color: colors.yellow }}>07</span>
-                  <span style={{ fontSize: 26, fontWeight: 700 }}>个项目</span>
+                  <span style={{ fontSize: 26, fontWeight: 700 }}>个项目 / projects</span>
                 </div>
-                <div style={{ fontSize: 28, fontWeight: 800, marginTop: 14 }}>产品展示 × 人与人的连接</div>
+                <div style={{ fontSize: 28, fontWeight: 800, marginTop: 14 }}>产品展示 × 人与人的连接<div style={{fontSize:19,fontWeight:400,marginTop:8}}>Product demos × Human connections</div></div>
                 <div style={{ width: 70, height: 5, borderRadius: 3, background: colors.blue, margin: "25px 0 18px" }} />
                 <p style={{ fontSize: 22, lineHeight: 1.5, margin: 0, color: "#efebe6" }}>创业者、开发者、行业伙伴<br />从一个对话开始。</p>
               </Panel>

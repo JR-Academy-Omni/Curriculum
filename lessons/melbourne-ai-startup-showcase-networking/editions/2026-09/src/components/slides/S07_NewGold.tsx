@@ -41,23 +41,23 @@ export default function S07_NewGold() {
             <Label bg={colors.green}>PARTNER</Label>
             <p
               style={{
-                fontSize: 34,
+                fontSize: 30,
                 lineHeight: 1.5,
                 margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
-              {"连接澳洲创投圈的华人创始人、\n投资人与创业从业者。"}
+              {"连接澳洲创投圈的华人创始人、\n投资人与创业从业者。"}<br /><span style={{display:"block",fontSize:20,fontWeight:400,lineHeight:1.35,marginTop:7}}>Connecting Chinese-speaking founders, investors and startup professionals in Australia.</span>
             </p>
             <p
               style={{
-                fontSize: 29,
+                fontSize: 25,
                 lineHeight: 1.5,
                 margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
-              {"通过创始人沙龙、资源对接与创业营，\n促进本地交流与中澳连接。"}
+              {"通过创始人沙龙、资源对接与创业营，\n促进本地交流与中澳连接。"}<br /><span style={{display:"block",fontSize:20,fontWeight:400,lineHeight:1.35,marginTop:7}}>Founder salons, resource connections and startup programs across Australia and China.</span>
             </p>
             <div
               style={{

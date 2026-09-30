@@ -41,26 +41,26 @@ export default function S08_KSUG() {
             <Label bg={colors.yellow}>PARTNER</Label>
             <p
               style={{
-                fontSize: 34,
+                fontSize: 30,
                 lineHeight: 1.5,
-                margin: "14px 0",
+                margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
-              {"聚焦 Kubernetes、云原生与 AI\n的技术社区。"}
+              {"聚焦 Kubernetes、云原生与 AI\n的技术社区。"}<br /><span style={{display:"block",fontSize:20,fontWeight:400,lineHeight:1.35,marginTop:7}}>A technical community focused on Kubernetes, cloud native and AI.</span>
             </p>
             <p
               style={{
-                fontSize: 29,
+                fontSize: 25,
                 lineHeight: 1.5,
-                margin: "14px 0",
+                margin: "8px 0",
                 whiteSpace: "pre-line",
               }}
             >
               {
                 "通过线上与线下活动，连接开发者、\n工程师和技术爱好者，分享实践经验。"
               }
-            </p>
+            <span style={{display:"block",fontSize:20,lineHeight:1.35,marginTop:7}}>Connecting developers and engineers through practical online and in-person exchanges.</span></p>
           </Panel>
         </div>
       </DeckFrame>
