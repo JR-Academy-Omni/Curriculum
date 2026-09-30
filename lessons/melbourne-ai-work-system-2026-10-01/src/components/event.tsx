@@ -23,7 +23,7 @@ export function CoHosts({ compact = false }: { compact?: boolean }) {
 export function PresentationLink({ speaker }: { speaker: Speaker }) {
   if (!speaker.href) return <span data-presentation-status={speaker.id} style={{ fontSize: 19, color: '#71635d', padding: '14px 0' }}>演讲资料待补充</span>;
   return <a data-presentation-link={speaker.id} href={speaker.href} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', gap: 20, alignItems: 'center', background: colors.yellow, color: colors.dark, border: `2px solid ${colors.dark}`, borderRadius: 18, boxShadow: `5px 5px 0 ${colors.dark}`, padding: '14px 23px', fontSize: 20, fontWeight: 800, textDecoration: 'none' }}>
-    {`在线查看${speaker.name}的 PPT`} <span aria-hidden>↗</span>
+    查看分享ppt <span aria-hidden>↗</span>
   </a>;
 }
 
