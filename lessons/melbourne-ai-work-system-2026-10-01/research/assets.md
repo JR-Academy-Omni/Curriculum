@@ -15,3 +15,14 @@
 | `qa.png` | Canva MAGiIpv4Kwc | `f8b26bc84cc7d2a5f45b206b67258dbcf072a9783c1967873f91c4c39a1ace3b` |
 | `event-group.png` | Canva MAHWjkFhzeg | `2057ed0f54cea0193e9932547fe6653647fdd6bbdc28171d9534fe84e371055f` |
 | `community.jpg` | Canva MAGiDO2jmRM | `bf3141953b2fd83c8df5adb18969b4a71b70d78396af92b348376662190f273c` |
+
+## 2026-09-30 · 用户提供的嘉宾原始照片
+
+嘉宾页与封面改用以下独立照片。文件逐字节复制，不修饰人物；通过CSS等比展示。Michael Yang 使用960px圆窗去除原图外围黑边。上述Canva原图保留为来源档案，不再用于嘉宾人像。
+
+| 文件 | 来源 | SHA-256 |
+|---|---|---|
+| `lightman-portrait.jpg` | 用户本轮提供的原始 JPG | `ae2e5060df7d47ecc60e37b237750bfee03858912d0d78a6b138af24ebe4a2a8` |
+| `michael-portrait.jpg` | 用户本轮提供的原始 JPG | `315e88d0033909ed81974dfcdef150cde701c9eff67e83754424b5f4cfab3e49` |
+| `li-min-portrait.jpg` | 用户本轮提供的原始 JPG | `de9a9aa18a19b1365607fa42c1faee0231929eca703f25fa5a5080810fe49d57` |
+| `michael-yang-portrait.jpg` | 用户本轮提供的原始 JPG | `a0e158e2e5121837bf85434615471dccd1447e19c30b13f1cd856c7522e0fc7a` |

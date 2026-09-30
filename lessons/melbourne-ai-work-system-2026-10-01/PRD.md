@@ -20,10 +20,10 @@
 
 | 页 | 内容 | 版式和必要信息 |
 |---:|---|---|
-| 1 | 企业 AI 实战分享 | 暖色网格封面、大标题 marker、AI自动化×Marketing×税务会计×房产金融、日期地点与原始活动海报 |
+| 1 | 企业 AI 实战分享 | 暖色网格封面、大标题 marker、AI自动化×Marketing×税务会计×房产金融、日期地点与用户提供的四位嘉宾原图 |
 | 2 | 联合主办 Co-hosted by | 官方黑色JR、原ANZ/Bupa logo等比；保留原稿JR机构介绍链接 |
 | 3 | 主题分享 | 更正原英文拼字为 Theme Sharing；显示原稿四位嘉宾顺序 |
-| 4 | Michael · AI Marketing 自动化运营 | 澳洲 VET 持证培训师；内容生产、线索管理、转化优化；肖像来自原始嘉宾海报，右下角PPT入口 |
+| 4 | Michael · AI Marketing 自动化运营 | 澳洲 VET 持证培训师；内容生产、线索管理、转化优化；肖像使用用户最新提供的原始照片，右下角PPT入口 |
 | 5 | Lightman · 企业如何实现 AI 自动化？ | 匠人学院创始人/CEO；管理协调、业务流程、人机分工；右下角PPT入口 |
 | 6 | 李敏 · AI对会计行业的影响 | 资深注册会计师、李敏税务会计事务所创始人、Bupa私人医疗保险公司代表；提升效率、识别风险、专业升级；右下角链接独立15页JR演讲 |
 | 7 | Michael Yang · 从AI到金融智能 | 探索未来置业之路；Lending Area Manager, Melbourne CBD；市场洞察、财务评估、规划决策；右下角PPT入口 |
@@ -33,7 +33,7 @@
 
 ## 视觉与技术
 
-遵守当前 talk-deck skill，参考 ai-engineer-cohort-05-final：1600×900、#fff1e7暖色48px网格、黄色marker下划线、24px主面板、18px卡片、8px标签、2px深色边框、品牌色硬偏移阴影。避免满屏粗框。原图为扁平素材时只使用完整原图或CSS视窗展示肖像，源图保留，不生成或改变人物。
+遵守当前 talk-deck skill，参考 ai-engineer-cohort-05-final：1600×900、#fff1e7暖色48px网格、黄色marker下划线、24px主面板、18px卡片、8px标签、2px深色边框、品牌色硬偏移阴影。避免满屏粗框。嘉宾肖像采用用户2026-09-30提供的独立JPG原图，源文件字节保留，不生成或改变人物；Michael Yang的原圆头像通过CSS圆窗去除外围黑边。
 
 从 lessons/_template 拷贝；SlideEngine/ui/CameraBubble/theme/main 五个文件逐字不改。一页一个 src/components/slides/SlideNN.tsx；内容基元可新增。右下角资料链接在画布内，离导航和页码保持安全间距。链接使用 data文件维护。
 

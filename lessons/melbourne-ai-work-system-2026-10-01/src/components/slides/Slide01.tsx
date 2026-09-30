@@ -1,6 +1,6 @@
 import { AnimatedGroup, DeckFrame, Label, Panel, colors, fonts } from '../deck';
-import { CoHosts, Marker } from '../event';
-import { assetPath } from '../ui';
+import { CoHosts, Marker, SpeakerPortrait } from '../event';
+import { speakers } from '../../data/speakers';
 
 export default function Slide01() {
   return <DeckFrame tag="MELBOURNE · AI & BUSINESS" title="企业 AI 实战分享" titleSize={74}>
@@ -16,10 +16,15 @@ export default function Slide01() {
         <div style={{ marginTop: 24 }}><CoHosts compact /></div>
       </AnimatedGroup>
       <AnimatedGroup delay={.25}>
-        <Panel style={{ padding: 16, transform: 'rotate(-1deg)' }}>
-          <img src={assetPath('cover.jpg')} alt="企业 AI 实战分享活动海报，嘉宾 Lightman、Michael、李敏及 Michael Yang" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16 }} />
+        <Panel style={{ padding: 22 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px 24px' }}>
+            {speakers.map(speaker => <div key={speaker.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+              <SpeakerPortrait speaker={speaker} width={190} height={190} />
+              <p style={{ fontSize: 22, fontWeight: 800 }}>{speaker.name}</p>
+            </div>)}
+          </div>
+          <p style={{ marginTop: 16, fontFamily: fonts.mono, fontSize: 15, fontWeight: 700, color: '#61524b', textAlign: 'center', letterSpacing: 1 }}>A BRIGHTER BUSINESS TOMORROW TOGETHER</p>
         </Panel>
-        <p style={{ marginTop: 30, fontFamily: fonts.mono, fontSize: 18, fontWeight: 700, color: '#61524b', textAlign: 'center', letterSpacing: 1.2 }}>A BRIGHTER BUSINESS TOMORROW TOGETHER</p>
       </AnimatedGroup>
     </div>
   </DeckFrame>;

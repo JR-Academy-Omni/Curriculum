@@ -27,10 +27,15 @@ export function PresentationLink({ speaker }: { speaker: Speaker }) {
   </a>;
 }
 
-export function SpeakerPortrait({ speaker, width = 382 }: { speaker: Speaker; width?: number }) {
-  const scale = width / speaker.crop.width;
-  return <div style={{ width, height: speaker.crop.height * scale, position: 'relative', overflow: 'hidden', borderRadius: 18, background: '#fff' }}>
-    <img src={assetPath(speaker.image)} alt={speaker.name} style={{ position: 'absolute', width: 1672 * scale, maxWidth: 'none', height: 'auto', left: -speaker.crop.x * scale, top: -speaker.crop.y * scale }} />
+export function SpeakerPortrait({ speaker, width = 382, height = width * 579 / 500 }: { speaker: Speaker; width?: number; height?: number }) {
+  const diameter = Math.min(width, height);
+  const scale = diameter / 960;
+  return <div data-speaker-portrait={speaker.id} style={{ width, height, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', borderRadius: 18, background: '#fffdf9' }}>
+    {speaker.circularPortrait
+      ? <div style={{ position: 'relative', width: diameter, height: diameter, borderRadius: '50%', overflow: 'hidden' }}>
+          <img src={assetPath(speaker.image)} alt={speaker.name} style={{ position: 'absolute', width: 1320 * scale, maxWidth: 'none', height: 'auto', left: -180 * scale, top: -134 * scale }} />
+        </div>
+      : <img src={assetPath(speaker.image)} alt={speaker.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: speaker.portraitPosition ?? '50% 0%', display: 'block' }} />}
   </div>;
 }
 

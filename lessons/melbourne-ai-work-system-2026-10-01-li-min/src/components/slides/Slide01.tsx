@@ -12,7 +12,7 @@ export default function Slide01() {
         <div><Label bg={colors.yellow} color={colors.dark}>老板 / 高管专场</Label><p style={{ marginTop: 20, fontSize: 28, lineHeight: 1.4 }}>从数据整理、风险识别<br />到专业判断</p></div>
       </div>
       <Panel style={{ height: '100%', minHeight: 0, padding: 12, display: 'flex', justifyContent: 'center' }}>
-        <img src={assetPath('li-min-event-poster.jpg')} alt="李敏《AI 对会计行业的影响》活动海报，2026年10月1日，Bupa Melbourne" style={{ width: '100%', height: '100%', minHeight: 0, objectFit: 'contain', borderRadius: 14 }} />
+        <img src={assetPath('li-min-portrait.jpg')} alt="李敏" style={{ width: '100%', height: '100%', minHeight: 0, objectFit: 'cover', objectPosition: '50% 0%', borderRadius: 14 }} />
       </Panel>
     </BodyGrid>
   </Frame>;
