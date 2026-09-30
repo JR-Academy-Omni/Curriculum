@@ -26,3 +26,12 @@
 | `michael-portrait.jpg` | 用户本轮提供的原始 JPG | `315e88d0033909ed81974dfcdef150cde701c9eff67e83754424b5f4cfab3e49` |
 | `li-min-portrait.jpg` | 用户本轮提供的原始 JPG | `de9a9aa18a19b1365607fa42c1faee0231929eca703f25fa5a5080810fe49d57` |
 | `michael-yang-portrait.jpg` | 用户本轮提供的原始 JPG | `a0e158e2e5121837bf85434615471dccd1447e19c30b13f1cd856c7522e0fc7a` |
+
+## 2026-09-30 · 嘉宾公司logo
+
+用户本轮提供ML Tax Solution和ANZ原图，分别用于李敏和Michael Yang的姓名介绍区。文件逐字节复制，白色主面板中等比显示，不裁切或重绘。
+
+| 文件 | 原尺寸 | 显示尺寸 | SHA-256 |
+|---|---|---|---|
+| `ml-tax-solution-logo.png` | 1254×1254，透明PNG | 220×220 | `24ce3836a748a247b1b1b94c17496662b3faa2c5b8a935da3482aa1c14e5c554` |
+| `anz-speaker-logo.png` | 300×168，白底PNG | 200×112 | `6f8ee53998c1c9f1a52a4247c57214ed91ef03d761a3aab8dc29ed9e540979e8` |

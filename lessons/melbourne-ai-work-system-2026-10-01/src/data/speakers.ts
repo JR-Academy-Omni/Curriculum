@@ -14,6 +14,7 @@ export interface Speaker {
   accent: string;
   portraitPosition?: string;
   circularPortrait?: boolean;
+  companyLogo?: { src: string; alt: string; width: number; height: number };
   topics: { title: string; description?: string }[];
   href?: string;
 }
@@ -40,6 +41,7 @@ export const speakers: Speaker[] = [
     id: 'li-min', name: '李敏', role: '资深注册会计师',
     affiliation: '李敏税务会计事务所创始人 · Bupa 私人医疗保险公司代表',
     title: 'AI 对会计行业的影响', image: 'li-min-portrait.jpg', accent: '#7ED957',
+    companyLogo: { src: 'ml-tax-solution-logo.png', alt: 'ML Tax Solution 李敏税务会计事务所', width: 220, height: 220 },
     portraitPosition: '50% 0%',
     topics: [
       { title: '提升效率', description: '数据整理与报表' },
@@ -51,6 +53,7 @@ export const speakers: Speaker[] = [
   {
     id: 'michael-yang', name: 'Michael Yang', role: 'Lending Area Manager, Melbourne CBD',
     title: '从 AI 到金融智能', subtitle: '探索未来置业之路', image: 'michael-yang-portrait.jpg', accent: '#ff5757',
+    companyLogo: { src: 'anz-speaker-logo.png', alt: 'ANZ', width: 200, height: 112 },
     circularPortrait: true,
     topics: [
       { title: '市场洞察', description: '房价、租金与利率' },

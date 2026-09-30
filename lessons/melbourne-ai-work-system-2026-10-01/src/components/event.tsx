@@ -44,12 +44,15 @@ export function SpeakerSlide({ speaker, index }: { speaker: Speaker; index: numb
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 500px', gap: 30, height: '100%', minHeight: 0 }}>
       <AnimatedGroup delay={.16} style={{ minHeight: 0 }}>
         <Panel style={{ padding: 28, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <div>
-            <Label bg={speaker.accent} color={colors.dark}>分享嘉宾</Label>
-            <h2 style={{ marginTop: 14, fontFamily: fonts.heading, fontSize: 44, lineHeight: 1.1, color: colors.dark }}>{speaker.name}</h2>
-            <p style={{ marginTop: 8, fontSize: 24, fontWeight: 700, lineHeight: 1.35 }}>{speaker.role}</p>
-            {speaker.affiliation && <p style={{ marginTop: 6, fontSize: 19, color: '#514c48', lineHeight: 1.5 }}>{speaker.affiliation}</p>}
-            {speaker.subtitle && <p style={{ marginTop: 12, fontSize: 23, color: '#514c48', lineHeight: 1.45 }}>{speaker.subtitle}</p>}
+          <div data-speaker-intro={speaker.id} style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <Label bg={speaker.accent} color={colors.dark}>分享嘉宾</Label>
+              <h2 style={{ marginTop: 14, fontFamily: fonts.heading, fontSize: 44, lineHeight: 1.1, color: colors.dark }}>{speaker.name}</h2>
+              <p style={{ marginTop: 8, fontSize: 24, fontWeight: 700, lineHeight: 1.35 }}>{speaker.role}</p>
+              {speaker.affiliation && <p style={{ marginTop: 6, fontSize: 19, color: '#514c48', lineHeight: 1.5 }}>{speaker.affiliation}</p>}
+              {speaker.subtitle && <p style={{ marginTop: 12, fontSize: 23, color: '#514c48', lineHeight: 1.45 }}>{speaker.subtitle}</p>}
+            </div>
+            {speaker.companyLogo && <img data-speaker-company-logo={speaker.id} src={assetPath(speaker.companyLogo.src)} alt={speaker.companyLogo.alt} width={speaker.companyLogo.width} height={speaker.companyLogo.height} style={{ display: 'block', flexShrink: 0, objectFit: 'contain' }} />}
           </div>
           <div style={{ marginTop: 22, display: 'grid', gap: 14 }}>
             {speaker.topics.map((topic, i) => <div key={topic.title} style={{ display: 'grid', gridTemplateColumns: '45px 1fr', gap: 14 }}>
