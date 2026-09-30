@@ -32,7 +32,6 @@ e=slide('S03_Agenda','今晚的流程');heading(e,'今晚的流程','5:30 PM–8
 agenda=[('5:30–6:00 PM','签到、餐食与自由交流'),('6:00–6:10 PM','开场及活动介绍'),('6:10–7:55 PM','7 个项目展示、Demo 与问答'),('7:55–8:10 PM','开放讨论及现场反馈'),('8:10–8:30 PM','自由交流与行业连接')]
 for i,(time,body) in enumerate(agenda):
     y=300+i*84;e += [text(120,y,355,60,time,33,RED,True),text(510,y,980,60,body,36,DARK,True)]
-e += [text(120,746,1360,75,'ANNG Gallery · Level 17, 60 Albert Road, South Melbourne VIC 3205\n中文交流   /   免费，需提前报名   /   现场提供餐食和饮品',24)]
 
 partners=[
 ('S04_JRAcademy','JR Academy 匠人学院','jr-logo.png','面向华人学习者与科技从业者的\nIT 与 AI 教育平台。','通过课程、项目实践与职业支持，\n帮助学习者提升技能、连接行业。','https://jiangren.com.au/about'),
@@ -62,15 +61,14 @@ order=['Furday','Deerbit AI','AirBotix','Olav OS','Vela','留小伴','Ponyknows'
 for i,name in enumerate(order):
     col=0 if i<4 else 1;row=i if i<4 else i-4;x=120 if col==0 else 850;y=301+row*105
     e += [text(x,y,94,73,f'{i+1:02}',46,RED,True),text(x+120,y,560,73,name,48,WHITE,True)]
-e += [text(850,652,620,86,'Olav OS 与 Vela 来自同一位 Builder',26,YELLOW)]
-footer(e,'每个项目约 15 分钟，包含产品 Demo 与互动问答',True)
+footer(e,'每个项目约 15 分钟',True)
 
 projects=[
 dict(id='S11_Furday',name='Furday',tagline='宠物健康与生活记录 App',desc='为多宠物家庭整合健康管理、日常记录\n与成长回忆。通过打卡获得成就与贴纸，\n再制作可导出的宠物电子手帐。',features='宠物档案、体重与健康日历、疫苗 / 体检 / 驱虫提醒\n日记相册、每日打卡、成就系统、电子手帐',audience='多宠物家庭',logo='furday-logo.png'),
 dict(id='S12_Deerbit',name='Deerbit AI',tagline='非托管 AI 交易工具',desc='用自然语言表达交易想法，由 AI 协助\n研究、生成策略、回测和模拟交易。\n用户确认后，再执行并持续监控。',features='AI 交易助手、市场研究、策略生成、历史回测\n模拟交易、多平台连接、止盈止损与风险监控',audience='资金保留在用户自己的\n交易所、钱包或券商账户',logo='deerbit-logo.png'),
 dict(id='S13_AirBotix',name='AirBotix',tagline='青少年 AI 编程教育平台',desc='面向 5–17 岁青少年，用适龄工具创作\n故事、游戏、动画、网站与代码项目。\n孩子主导创作，AI 辅助，教师指导。',features='Story Blocks、Creative Code Studio、Kids OpenCode\n每周小班课、Holiday Camps、一对一辅导、学校合作',audience='5–17 岁青少年\n家庭与学校',logo='airbotix-logo.png'),
-dict(id='S14_Olav',name='Olav OS',tagline='企业级 AI Agent 操作系统',desc='服务流程复杂、单据密集的专业企业。\n事件溯源记录操作，状态机管理权限，\n业务规则与人工审批决定流程能否推进。',features='企业级 AI Agent、自动化业务流程、状态机\n人工审批、合规审计、行业适配器',audience='移民留学、法律、财税审计\n猎头招聘等专业服务',logo='olav-os-logo.svg',note='Olav OS 与下一项 Vela 来自同一位 Builder'),
-dict(id='S15_Vela',name='Vela',tagline='“过程透明”的 AI 占星解读产品',desc='面向海外华人，提供免费排盘与付费\n专业解读报告。展示选盘、交叉验证\n及分析依据，让用户看见解读过程。',features='免费 AI 排盘、专业解读报告、透明分析过程\n持续积累的用户档案、个性化解读',audience='面向海外华人的\n消费端 AI 产品',logo='vela-logo.png',note='与 Olav OS 同一位 Builder，展示另一种 AI 落地方式'),
+dict(id='S14_Olav',name='Olav OS',tagline='企业级 AI Agent 操作系统',desc='服务流程复杂、单据密集的专业企业。\n事件溯源记录操作，状态机管理权限，\n业务规则与人工审批决定流程能否推进。',features='企业级 AI Agent、自动化业务流程、状态机\n人工审批、合规审计、行业适配器',audience='移民留学、法律、财税审计\n猎头招聘等专业服务',logo='olav-os-logo.svg',note=''),
+dict(id='S15_Vela',name='Vela',tagline='“过程透明”的 AI 占星解读产品',desc='面向海外华人，提供免费排盘与付费\n专业解读报告。展示选盘、交叉验证\n及分析依据，让用户看见解读过程。',features='免费 AI 排盘、专业解读报告、透明分析过程\n持续积累的用户档案、个性化解读',audience='面向海外华人的\n消费端 AI 产品',logo='vela-logo.png',note=''),
 dict(id='S16_LiuXiaoBan',name='留小伴',tagline='留学生 AI 陪伴与生活社交应用',desc='围绕初到异国的孤独感、社交与生活需求，\n提供有个性、会主动互动的 AI 小伴。\n结合真实社交，帮助留学生找到同伴。',features='个性化 AI 小伴、主动互动与关系养成\n班级、广场、漂流瓶、留学生生活服务',audience='全球留学生',logo='liuxiaoban-logo.png'),
 dict(id='S17_Ponyknows',name='Ponyknows',tagline='AI 多智能体精准教学平台',desc='连接教学助手、辅学系统与纸笔交互。\n借助智慧打印终端与智慧笔，协同课堂、\n练习与反馈，探索更完整的教学闭环。',features='AI 多智能体教学协同、教学助手、辅学系统\n智慧打印终端、智慧笔、精准教学闭环',audience='教师与学习者\n真实课堂与纸笔练习',logo='ponyknows-logo.png')
 ]
@@ -84,7 +82,8 @@ for i,p in enumerate(projects):
         e += [rect(1110,409,350,205,WHITE,BLACK,'6px 6px 0px #000'),image(1135,433,300,157,p['logo'])]
     else:e += [text(1130,390,330,218,f'{i+1:02}',158,RED,True)]
     e += [text(1080,655,415,115,p['audience'],27,DARK,True,align='center')]
-    footer(e,p.get('note','产品展示、Demo 与互动问答'))
+    label=p.get('note','产品展示、Demo 与互动问答')
+    if label:footer(e,label)
 
 e=slide('S18_Discussion','开放讨论与现场反馈',DARK)
 e += [text(120,372,1360,150,'开放讨论与现场反馈',100,WHITE,True,align='center')]
