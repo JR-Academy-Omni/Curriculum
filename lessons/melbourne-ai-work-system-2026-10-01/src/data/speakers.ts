@@ -13,7 +13,7 @@ export interface Speaker {
   image: string;
   accent: string;
   portraitPosition?: string;
-  circularPortrait?: boolean;
+  portraitCrop?: { x: number; y: number; width: number; sourceWidth: number };
   companyLogo?: { src: string; alt: string; width: number; height: number };
   topics: { title: string; description?: string }[];
   href?: string;
@@ -54,7 +54,7 @@ export const speakers: Speaker[] = [
     id: 'michael-yang', name: 'Michael Yang', role: 'Lending Area Manager, Melbourne CBD',
     title: '从 AI 到金融智能', subtitle: '探索未来置业之路', image: 'michael-yang-portrait.jpg', accent: '#ff5757',
     companyLogo: { src: 'anz-speaker-logo.png', alt: 'ANZ', width: 200, height: 112 },
-    circularPortrait: true,
+    portraitCrop: { x: 405, y: 200, width: 510, sourceWidth: 1320 },
     topics: [
       { title: '市场洞察', description: '房价、租金与利率' },
       { title: '财务评估', description: '贷款成本与现金流' },

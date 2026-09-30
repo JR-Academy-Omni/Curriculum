@@ -20,4 +20,6 @@ bun run build
 
 2026-09-30 照片修订：按用户最新提供原图更新嘉宾人像与封面，照片不做生成或修饰；通过CSS等比展示。
 
+Michael Yang在封面与第22页统一使用18px圆角矩形，与其他嘉宾一致；原图带有的圆形黑边通过CSS近景裁切移出画面。
+
 当前第3页为匠人学院介绍；第4–14页为指定参考稿的第7–17页；产品服务、ANZ、Bupa依次位于第15–17页。李敏原版在线入口移到第21页，Michael Yang在第22页；第25页为指定参考稿第24页。复制页码与资源对应见 `research/reference-page-import.md`，机构简介来源见 `research/cohost-profiles.md`。
