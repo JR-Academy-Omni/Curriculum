@@ -61,6 +61,13 @@ jobs:
           bun install
           bun run build
 
+      # Melbourne resume and career event · 2 October 2026 · 18 slides
+      - name: Build Melbourne Resume Career October 2026
+        working-directory: lessons/melbourne-resume-career-2026-10-02
+        run: |
+          bun install
+          bun run build
+
       # Melbourne enterprise AI event · 1 October 2026 · host and guest decks
       - name: Build melbourne-ai-work-system-2026-10-01
         working-directory: lessons/melbourne-ai-work-system-2026-10-01
@@ -526,6 +533,11 @@ jobs:
           fi
 
           # Melbourne enterprise AI event · host and Li Min guest slides
+          # Melbourne resume and career event · 2 October 2026
+          mkdir -p _site/lessons/melbourne-resume-career-2026-10-02
+          cp -r lessons/melbourne-resume-career-2026-10-02/dist/* _site/lessons/melbourne-resume-career-2026-10-02/
+
+          # Melbourne enterprise AI event · 1 October 2026
           mkdir -p _site/lessons/melbourne-ai-work-system-2026-10-01
           cp -r lessons/melbourne-ai-work-system-2026-10-01/dist/* _site/lessons/melbourne-ai-work-system-2026-10-01/
 

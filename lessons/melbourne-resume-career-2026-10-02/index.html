@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【墨尔本】简历 × 职场答疑分享会 — JR Academy 讲座</title>
+  <meta name="description" content="【墨尔本】简历 × 职场答疑分享会 · JR Academy 网页版讲座" />
+
+
+
+  <style>
+    @font-face { font-family:'Noto Sans SC'; src:url('%BASE_URL%fonts/noto-sans-sc.ttf') format('truetype'); font-style:normal; font-weight:100 900; font-display:block; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow: hidden; background: #000; }
+    body { font-family: 'DM Sans', 'Noto Sans SC', sans-serif; -webkit-font-smoothing: antialiased; }
+  </style>
+<style>
+.slide-logo, .slide-page-number { display:none; }
+.print-deck { width:1600px; }
+.print-slide { width:1600px; height:900px; position:relative; break-after:page; overflow:hidden; }
+.print-deck .slide-logo, .print-deck .slide-page-number { display:block; }
+.print-deck [data-text] { opacity:1 !important; transform:none !important; }
+body:has(.print-deck) { overflow:auto !important; background:#fff1e7 !important; }
+@page { size:1600px 900px; margin:0; }
+@media print { html,body,#root { width:1600px !important; height:auto !important; overflow:visible !important; margin:0 !important; } .print-slide:last-child { break-after:auto; } }
+</style></head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
