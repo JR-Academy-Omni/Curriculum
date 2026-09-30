@@ -56,8 +56,7 @@ e.extend([rect(1108,238,310,38,GREEN,6,None,False),
  rect(100,767,1400,2,'#d1c5bd',0,None,False),
  dict(**text(100,800,123,31,'主办方',18,700,line=1.4),role='cover-mono'),
  image(252,787,190,67,'logos/jr-logo.png'),
- image(513,789,62,66,'logos/umba.jpg'),
- text(598,802,650,37,'UoM Blockchain Association',24,650,line=1.3)])
+ image(513,789,62,66,'logos/umba.jpg')])
 
 e=new('JRAcademy','JR Academy 匠人学院','主办方  /  ORGANIZER')
 heading(e,'JR Academy 匠人学院',684)
