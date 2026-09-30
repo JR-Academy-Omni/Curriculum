@@ -1,3 +1,5 @@
+import S34_DevFest from "./components/slides/S34_DevFest";
+import S35_AIEngineering from "./components/slides/S35_AIEngineering";
 import S24_AICircleIntro from "./components/slides/S24_AICircleIntro";
 import S25_AICircleCities from "./components/slides/S25_AICircleCities";
 import S26_AICircleSydney from "./components/slides/S26_AICircleSydney";
@@ -67,6 +69,8 @@ const slides = [
   S20_Join,
   S21_October,
   S22_November,
+  S34_DevFest,
+  S35_AIEngineering,
 ];
 export default function App() {
   if (new URLSearchParams(location.search).has("print"))

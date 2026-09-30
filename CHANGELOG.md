@@ -2,6 +2,8 @@
 
 ## 2026-09-30 · 墨尔本展示交流 talk-deck 视觉重做
 
+- 追加用户提供的DevFest与AI Engineering原始活动海报为整份课件最后两页（`lessons/melbourne-ai-startup-showcase-networking`）
+
 - 补充伙伴与七个项目介绍的简明英文，AI圈介绍保持中文（`lessons/melbourne-ai-startup-showcase-networking`）
 
 - 更新开场、扫码、流程、匠人学院与AI圈介绍为中英双语（`lessons/melbourne-ai-startup-showcase-networking`）
