@@ -40,24 +40,36 @@ export function SpeakerPortrait({ speaker, width = 382, height = width * 579 / 5
 }
 
 export function SpeakerSlide({ speaker, index }: { speaker: Speaker; index: number }) {
-  return <DeckFrame tag={`GUEST ${String(index).padStart(2, '0')} / THEME SHARING`} title={speaker.title} subtitle={speaker.subtitle} accent={speaker.accent} footer={<PresentationLink speaker={speaker} />}>
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 438px', gap: 44, height: '100%', alignItems: 'center' }}>
-      <AnimatedGroup delay={.16} style={{ paddingRight: 10 }}>
-        <Label bg={speaker.accent} color={colors.dark}>主题分享</Label>
-        <h2 style={{ marginTop: 18, fontFamily: fonts.heading, fontSize: 52, lineHeight: 1.1, color: colors.dark }}>{speaker.name}</h2>
-        <p style={{ marginTop: 11, fontSize: 26, fontWeight: 700, lineHeight: 1.35 }}>{speaker.role}</p>
-        {speaker.affiliation && <p style={{ marginTop: 9, fontSize: 20, color: '#514c48', lineHeight: 1.5 }}>{speaker.affiliation}</p>}
-        <div style={{ marginTop: 32, display: 'grid', gap: 20 }}>
-          {speaker.topics.map((topic, i) => <div key={topic.title} style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-            <span style={{ fontFamily: fonts.mono, fontSize: 18, fontWeight: 800, width: 42, height: 42, borderRadius: 12, background: speaker.accent, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
-            <strong style={{ fontSize: 28, width: 132, flexShrink: 0 }}>{topic.title}</strong>
-            {topic.description && <span style={{ fontSize: 22, color: '#514c48' }}>{topic.description}</span>}
-          </div>)}
-        </div>
+  return <DeckFrame tag={`GUEST ${String(index).padStart(2, '0')} / THEME SHARING`} title={speaker.title} accent={speaker.accent}>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 500px', gap: 30, height: '100%', minHeight: 0 }}>
+      <AnimatedGroup delay={.16} style={{ minHeight: 0 }}>
+        <Panel style={{ padding: 28, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div>
+            <Label bg={speaker.accent} color={colors.dark}>分享嘉宾</Label>
+            <h2 style={{ marginTop: 14, fontFamily: fonts.heading, fontSize: 44, lineHeight: 1.1, color: colors.dark }}>{speaker.name}</h2>
+            <p style={{ marginTop: 8, fontSize: 24, fontWeight: 700, lineHeight: 1.35 }}>{speaker.role}</p>
+            {speaker.affiliation && <p style={{ marginTop: 6, fontSize: 19, color: '#514c48', lineHeight: 1.5 }}>{speaker.affiliation}</p>}
+            {speaker.subtitle && <p style={{ marginTop: 12, fontSize: 23, color: '#514c48', lineHeight: 1.45 }}>{speaker.subtitle}</p>}
+          </div>
+          <div style={{ marginTop: 22, display: 'grid', gap: 14 }}>
+            {speaker.topics.map((topic, i) => <div key={topic.title} style={{ display: 'grid', gridTemplateColumns: '45px 1fr', gap: 14 }}>
+              <span style={{ fontSize: 23, fontWeight: 900, color: colors.red }}>{String(i + 1).padStart(2, '0')}</span>
+              <div><h3 style={{ fontSize: 27, lineHeight: 1.2 }}>{topic.title}</h3>
+                {topic.description && <p style={{ marginTop: 5, fontSize: 22, lineHeight: 1.4 }}>{topic.description}</p>}
+              </div>
+            </div>)}
+          </div>
+        </Panel>
       </AnimatedGroup>
-      <AnimatedGroup delay={.25}>
-        <Panel style={{ padding: 24, background: '#fffdf9', boxShadow: `9px 9px 0 ${speaker.accent}` }}>
-          <SpeakerPortrait speaker={speaker} />
+      <AnimatedGroup delay={.25} style={{ minHeight: 0 }}>
+        <Panel style={{ padding: 0, overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ flex: 1, minHeight: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', background: '#fffdf9' }}>
+            <SpeakerPortrait speaker={speaker} width={496} height={380} />
+          </div>
+          <div style={{ padding: '18px 24px', background: colors.yellow, flexShrink: 0 }}>
+            <strong style={{ fontSize: 26 }}>{speaker.name}</strong>
+            <div style={{ marginTop: 12, display: 'flex', justifyContent: 'flex-end' }}><PresentationLink speaker={speaker} /></div>
+          </div>
         </Panel>
       </AnimatedGroup>
     </div>

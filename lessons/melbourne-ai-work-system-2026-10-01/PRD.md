@@ -33,9 +33,9 @@
 
 ## 视觉与技术
 
-遵守当前 talk-deck skill，参考 ai-engineer-cohort-05-final：1600×900、#fff1e7暖色48px网格、黄色marker下划线、24px主面板、18px卡片、8px标签、2px深色边框、品牌色硬偏移阴影。避免满屏粗框。嘉宾肖像采用用户2026-09-30提供的独立JPG原图，源文件字节保留，不生成或改变人物；Michael Yang的原圆头像通过CSS圆窗去除外围黑边。
+遵守当前 `.claude/skills/talk-deck/SKILL.md`；按用户最新指定，以9月老板稿 `lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/` 第8页 `S24_AICircleIntro.tsx` 为直接视觉范本，复用其 `deck.tsx`：1600×900、#fff1e7暖色48px网格、黄色marker下划线、24px主面板、18px卡片、8px标签、2px深色边框、品牌色硬偏移阴影。避免满屏粗框。嘉宾肖像采用用户2026-09-30提供的独立JPG原图，源文件字节保留，不生成或改变人物；Michael Yang的原圆头像通过CSS圆窗去除外围黑边。
 
-从 lessons/_template 拷贝；SlideEngine/ui/CameraBubble/theme/main 五个文件逐字不改。一页一个 src/components/slides/SlideNN.tsx；内容基元可新增。右下角资料链接在画布内，离导航和页码保持安全间距。链接使用 data文件维护。
+从 lessons/_template 拷贝；SlideEngine/ui/CameraBubble/theme/main 五个文件逐字不改。一页一个 src/components/slides/SlideNN.tsx；内容基元可新增。右下角资料链接放在嘉宾图片面板下方的黄色说明区内，离导航和页码保持安全间距。链接使用 data文件维护。
 
 正式路由： https://jracademy.ai/curriculum/lessons/melbourne-ai-work-system-2026-10-01/
 
@@ -44,3 +44,11 @@
 ## 验收
 
 本地build；逐页截图核对原文、嘉宾顺序、字号与溢出；检查1600×900、1440×900及横屏手机。链接点击验证；保留原始二维码完整图。写入lessons.html/CHANGELOG/现有deploy workflow，发布后核验正式HTML/JS/图片/李敏PPT下载，无404。不伪称未提供的嘉宾链接已接入。
+
+## 2026-09-30 · 用户指定的老板稿视觉
+
+- 参考在线第8页：https://jracademy.ai/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=8 。线上为39页版本。
+- skill仍是仓库 `.claude/skills/talk-deck/SKILL.md`，不使用浅层旧 `talk-deck.md` 描述代替实际范本。
+- 暖纸 `#fff1e7`、48px网格、网格线 `rgba(16,22,47,.055)`；参考标题58px/marker、正文23px、面板24px圆角/2px深色描边/9px黄色偏移阴影。
+- 常规页复用参考DeckFrame，内容左右边距140px；嘉宾页改为左白色信息主面板＋右原始照片面板，下方黄色说明区放原PPT入口。封面参考其大标题与深色重点面板。
+- 仅调整本10月1日活动主控10页视觉，使用已核验的原内容、真实照片与二维码。李敏原始PPTX字节及原版下载逻辑保持原样；9月活动文件仅作读取参考，不修改。
