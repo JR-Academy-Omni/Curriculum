@@ -22,8 +22,8 @@ export function CoHosts({ compact = false }: { compact?: boolean }) {
 
 export function PresentationLink({ speaker }: { speaker: Speaker }) {
   if (!speaker.href) return <span data-presentation-status={speaker.id} style={{ fontSize: 19, color: '#71635d', padding: '14px 0' }}>演讲资料待补充</span>;
-  return <a data-presentation-link={speaker.id} href={speaker.href} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', gap: 20, alignItems: 'center', background: colors.yellow, color: colors.dark, border: `2px solid ${colors.dark}`, borderRadius: 18, boxShadow: `5px 5px 0 ${colors.dark}`, padding: '14px 23px', fontSize: 20, fontWeight: 800, textDecoration: 'none' }}>
-    打开{speaker.name}的演讲 PPT <span aria-hidden>↗</span>
+  return <a data-presentation-link={speaker.id} href={speaker.href} download={speaker.downloadFilename} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', gap: 20, alignItems: 'center', background: colors.yellow, color: colors.dark, border: `2px solid ${colors.dark}`, borderRadius: 18, boxShadow: `5px 5px 0 ${colors.dark}`, padding: '14px 23px', fontSize: 20, fontWeight: 800, textDecoration: 'none' }}>
+    {speaker.downloadFilename ? `下载${speaker.name}的原版 PPT` : `打开${speaker.name}的演讲 PPT`} <span aria-hidden>{speaker.downloadFilename ? '↓' : '↗'}</span>
   </a>;
 }
 

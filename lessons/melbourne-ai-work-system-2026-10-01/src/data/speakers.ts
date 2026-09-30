@@ -16,6 +16,7 @@ export interface Speaker {
   circularPortrait?: boolean;
   topics: { title: string; description?: string }[];
   href?: string;
+  downloadFilename?: string;
 }
 
 export const speakers: Speaker[] = [
@@ -46,7 +47,8 @@ export const speakers: Speaker[] = [
       { title: '识别风险', description: '异常分析与合规问题' },
       { title: '专业升级', description: '判断、分析与咨询' },
     ],
-    href: '../melbourne-ai-work-system-2026-10-01-li-min/',
+    href: '../melbourne-ai-work-system-2026-10-01-li-min/speakers/li-min.pptx',
+    downloadFilename: 'AI_会计行业影响_15分钟演讲_李敏.pptx',
   },
   {
     id: 'michael-yang', name: 'Michael Yang', role: 'Lending Area Manager, Melbourne CBD',

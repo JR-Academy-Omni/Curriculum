@@ -4,7 +4,7 @@
 
 用户要求将 Canva 活动主控演示稿转成匠人风格网页 PPT，并提供匠人域名链接，在每个嘉宾页右下角放各自 PPT 链接。本次是已经指定的原稿转换，沿用 10 页内容结构与实际顺序，不另增活动议程。原稿：https://canva.link/5medn4sfe0328rm （design DAHWjbuzdZY，读取于 2026-09-30）。
 
-嘉宾稿：李敏由用户提供的15页PPTX转换为独立网页；其他三位链接尚未提供，资料中也没有。未提供链接的嘉宾仅预留右下角“演讲资料待补充”文字，不能使用猜测链接，也不能把无关课程绑定为其PPT。收到真实链接后更新 src/data/speakers.ts。
+嘉宾稿：按用户2026-09-30的明确纠正，李敏仅使用所附15页原始PPTX，文件字节、内容、版式及备注均不改。主控右下角直接下载原版；旧改版网页入口转为原版下载入口，不再展示重排内容。其他三位链接尚未提供，资料中也没有。未提供链接的嘉宾仅预留右下角“演讲资料待补充”文字，不能使用猜测链接，也不能把无关课程绑定为其PPT。收到真实链接后更新 src/data/speakers.ts。
 
 ## 整体节奏
 
@@ -25,7 +25,7 @@
 | 3 | 主题分享 | 更正原英文拼字为 Theme Sharing；显示原稿四位嘉宾顺序 |
 | 4 | Michael · AI Marketing 自动化运营 | 澳洲 VET 持证培训师；内容生产、线索管理、转化优化；肖像使用用户最新提供的原始照片，右下角PPT入口 |
 | 5 | Lightman · 企业如何实现 AI 自动化？ | 匠人学院创始人/CEO；管理协调、业务流程、人机分工；右下角PPT入口 |
-| 6 | 李敏 · AI对会计行业的影响 | 资深注册会计师、李敏税务会计事务所创始人、Bupa私人医疗保险公司代表；提升效率、识别风险、专业升级；右下角链接独立15页JR演讲 |
+| 6 | 李敏 · AI对会计行业的影响 | 资深注册会计师、李敏税务会计事务所创始人、Bupa私人医疗保险公司代表；提升效率、识别风险、专业升级；右下角直接下载用户提供的原版PPTX |
 | 7 | Michael Yang · 从AI到金融智能 | 探索未来置业之路；Lending Area Manager, Melbourne CBD；市场洞察、财务评估、规划决策；右下角PPT入口 |
 | 8 | Q&A | 大号标题与原稿交流图片 |
 | 9 | 后续活动 | Join us for more upcoming events；原稿活动群二维码整图完整保留，不重绘、不过度裁剪 |
@@ -39,7 +39,7 @@
 
 正式路由： https://jracademy.ai/curriculum/lessons/melbourne-ai-work-system-2026-10-01/
 
-李敏路由： https://jracademy.ai/curriculum/lessons/melbourne-ai-work-system-2026-10-01-li-min/
+李敏原版： https://jracademy.ai/curriculum/lessons/melbourne-ai-work-system-2026-10-01-li-min/speakers/li-min.pptx
 
 ## 验收
 
