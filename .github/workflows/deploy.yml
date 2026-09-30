@@ -61,6 +61,13 @@ jobs:
           bun install
           bun run build
 
+      # Melbourne AI Startup Showcase · September 2026 · 22 slides
+      - name: Build Melbourne AI Showcase September 2026
+        working-directory: lessons/melbourne-ai-startup-showcase-networking/editions/2026-09
+        run: |
+          bun install
+          bun run build
+
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
       - name: Build lessons/ai-new-jobs-talk
@@ -504,6 +511,10 @@ jobs:
             mkdir -p _site/cca-f-claude-code-bootcamp
             cp -r cca-f-claude-code-bootcamp/public/* _site/cca-f-claude-code-bootcamp/
           fi
+
+          # Melbourne AI Startup Showcase · September 2026
+          mkdir -p _site/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09
+          cp -r lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/dist/* _site/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/
 
           # lessons/ai-new-jobs-talk: 60-min 公开讲座 slide deck (React + Vite · 40 张 slide)
           # 跨课复用 lesson · 数据源 jiangren.com.au/ai-new-jobs + /career-impact-map

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-30 · 墨尔本 AI 创业项目展示交流 9月场现场放映版
+
+- 新增 `lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/` 的 22 页 React Talk Deck，供 9 月 30 日 17:30–20:30 活动现场通过浏览器放映。
+- 7 个项目严格按 Furday → Deerbit AI → AirBotix → Olav OS → Vela → 留小伴 → Ponyknows 排序；合作伙伴分别独立介绍，项目页包含最新提供的留小伴与 Ponyknows Logo，开放讨论页只保留大标题。
+- 保留 AI圈介绍与入群二维码、新金山加入链接与二维码；末尾加入 10 月 28 日和 11 月 25 日的活动宣传，两场时间均为墨尔本当地 17:30–20:30，并提供完整地点及各自报名二维码。
+- 在 `lessons.html` 登记活动定位、各项目 Builder、3 小时时长、22 页、月度系列复用映射、放映入口、PRD 和源码；将该期 deck 接入现有静态站发布流程，使用独立月份目录。
+
 ## 2026-09-27（续五）· L13 课前包移出课程仓库
 
 - **讲师要求把课前包放到 `~/Desktop/team-ops/`，不放在 `lessons/vibe-coding-master-l13/` 下。** 已移，44 个文件，**在新位置重跑验收通过**（六个原样全绿 + 六个弄坏全红）。
