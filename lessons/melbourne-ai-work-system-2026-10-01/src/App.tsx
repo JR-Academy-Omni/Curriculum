@@ -1,6 +1,10 @@
 import SlideEngine from './components/SlideEngine';
 import Slide01 from './components/slides/Slide01';
 import Slide02 from './components/slides/Slide02';
+import Slide02a_JRAcademy from './components/slides/Slide02a_JRAcademy';
+import Slide02b_JRProducts from './components/slides/Slide02b_JRProducts';
+import Slide02c_ANZ from './components/slides/Slide02c_ANZ';
+import Slide02d_Bupa from './components/slides/Slide02d_Bupa';
 import Slide03 from './components/slides/Slide03';
 import Slide04 from './components/slides/Slide04';
 import Slide05 from './components/slides/Slide05';
@@ -13,7 +17,10 @@ import Slide10 from './components/slides/Slide10';
 export default function App() {
   return <SlideEngine>
     {/* Opening */}
-    <Slide01 /><Slide02 /><Slide03 />
+    <Slide01 /><Slide02 />
+    {/* Co-host profiles and JR products, after the overview */}
+    <Slide02a_JRAcademy /><Slide02b_JRProducts /><Slide02c_ANZ /><Slide02d_Bupa />
+    <Slide03 />
     {/* Guests: original Canva order */}
     <Slide04 /><Slide05 /><Slide06 /><Slide07 />
     {/* Conversation and community */}
