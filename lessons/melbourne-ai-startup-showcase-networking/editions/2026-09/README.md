@@ -38,3 +38,6 @@
 
 ## 最后两页活动预告
 用户提供原始海报直接嵌入：第36页 DevFest Melbourne 2026，第37页 AI Engineering: Agents, Harness & Production。位于原10月/11月预告之后，为整份课件最后两页，保留原始二维码与活动信息。共37页。
+
+## 匠人产品与服务
+新增产品总览与MetaTree AI Consulting / FDE两页，位于匠人学院之后、AI圈之前。产品事实来自既有AirBotix介绍、metatreelab-ai/src/config/site.ts、apps/job-hunter-desktop/README.md、chrome-extension/README.md；FDE定位按用户指定。共39页，最后两页仍为DevFest与AI Engineering原始海报。

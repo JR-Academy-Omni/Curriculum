@@ -1,3 +1,5 @@
+import S36_JRProducts from "./components/slides/S36_JRProducts";
+import S37_MetaTree from "./components/slides/S37_MetaTree";
 import S34_DevFest from "./components/slides/S34_DevFest";
 import S35_AIEngineering from "./components/slides/S35_AIEngineering";
 import S24_AICircleIntro from "./components/slides/S24_AICircleIntro";
@@ -39,6 +41,8 @@ const slides = [
   S02_Tonight,
   S03_Agenda,
   S04_JRAcademy,
+  S36_JRProducts,
+  S37_MetaTree,
   S24_AICircleIntro,
   S25_AICircleCities,
   S26_AICircleSydney,
