@@ -184,6 +184,7 @@ function NavArrow({ direction, onClick, disabled }: { direction: 'prev' | 'next'
 				transform: `translateY(-50%) ${hover ? 'translate(3px,3px)' : ''}`,
 				width: 52, height: 52,
 				border: `3px solid ${colors.black}`,
+				borderRadius: 14,
 				background: colors.white,
 				fontSize: 22, fontWeight: 700, cursor: 'pointer',
 				zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center',

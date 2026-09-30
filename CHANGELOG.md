@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-30 · 墨尔本展示交流 talk-deck 视觉重做
+
+- 修复墨尔本展示课件右上角Logo白底，直接替换为官方透明黑色SVG（`curriculum/lessons/melbourne-ai-startup-showcase-networking`）
+
+- 重做22页React课件，采用当前talk-deck暖色网格纸、marker下划线、圆角语义面板及品牌偏移阴影；同步打印视图、登记卡片和编辑说明，保留活动事实与URL。
+
 ## 2026-09-30 · 墨尔本展示交流现场文案删减
 
 - 移除流程页底部地址、语言、报名及餐饮说明；分享顺序页保留每项约 15 分钟，删除附加 Demo / 问答说明；删除 Olav OS 与 Vela 的同一位 Builder 提示。
