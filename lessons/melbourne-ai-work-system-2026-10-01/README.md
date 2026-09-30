@@ -1,6 +1,6 @@
 # 企业 AI 实战分享 · 墨尔本 2026.10.01
 
-用户提供 Canva 主控稿的 JR 网页版本。按用户最新要求删除原第13页，在匠人学院介绍后插入9月参考稿第7–17页，并以参考稿第24页收尾，共25页。嘉宾出场：Michael → Lightman → 李敏 → Michael Yang。
+用户提供 Canva 主控稿的 JR 网页版本。已删除原第13页，匠人学院介绍后依次展示产品与服务、9月参考稿第7–17页，并以参考稿第24页收尾，共25页。嘉宾出场：Michael → Lightman → 李敏 → Michael Yang。
 
 - 正式地址：`https://jracademy.ai/curriculum/lessons/melbourne-ai-work-system-2026-10-01/`
 - 原稿： https://canva.link/5medn4sfe0328rm
@@ -22,4 +22,4 @@ bun run build
 
 Michael Yang在封面与第22页统一使用18px圆角矩形，与其他嘉宾一致；原图带有的圆形黑边通过CSS近景裁切移出画面。
 
-当前第3页为匠人学院介绍；第4–14页为指定参考稿的第7–17页；产品服务、ANZ、Bupa依次位于第15–17页。李敏原版在线入口移到第21页，Michael Yang在第22页；第25页为指定参考稿第24页。复制页码与资源对应见 `research/reference-page-import.md`，机构简介来源见 `research/cohost-profiles.md`。
+当前第3页为匠人学院介绍；第4页为匠人的产品与服务（从上一版本第15页移入）；第5–15页为指定参考稿的第7–17页；ANZ、Bupa依次位于第16–17页。李敏原版在线入口在第21页，Michael Yang在第22页；第25页为指定参考稿第24页。复制页码与资源对应见 `research/reference-page-import.md`，机构简介来源见 `research/cohost-profiles.md`。

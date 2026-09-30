@@ -2,21 +2,23 @@
 
 2026-09-30，用户明确要求：删除本活动原第13页，将9月参考稿实际第7–17页插在匠人学院介绍后，第24页放最后。复制时参考源版本为 `9779929865ea5863c97ccc3c94b09adb2533864e`；线上浏览核对为39页版本。9月目录不作修改。
 
+2026-09-30后续页序修订：用户将产品与服务从第15页移到第4页；以下目标页码已同步为最新版本，复制内容不变。
+
 来源：https://jracademy.ai/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=24
 
 | 源页码 | 目标页码 | 原组件（文件内容一致） |
 |---:|---:|---|
-| 7 | 4 | S37_MetaTree.tsx |
-| 8 | 5 | S24_AICircleIntro.tsx |
-| 9 | 6 | S25_AICircleCities.tsx |
-| 10 | 7 | S26_AICircleSydney.tsx |
-| 11 | 8 | S27_AICircleMelbourne.tsx |
-| 12 | 9 | S28_AICircleBrisbane.tsx |
-| 13 | 10 | S29_AICirclePerth.tsx |
-| 14 | 11 | S30_AICircleAdelaide.tsx |
-| 15 | 12 | S31_AICircleSingapore.tsx |
-| 16 | 13 | S32_AICircleKualaLumpur.tsx |
-| 17 | 14 | S33_AICircleChengdu.tsx |
+| 7 | 5 | S37_MetaTree.tsx |
+| 8 | 6 | S24_AICircleIntro.tsx |
+| 9 | 7 | S25_AICircleCities.tsx |
+| 10 | 8 | S26_AICircleSydney.tsx |
+| 11 | 9 | S27_AICircleMelbourne.tsx |
+| 12 | 10 | S28_AICircleBrisbane.tsx |
+| 13 | 11 | S29_AICirclePerth.tsx |
+| 14 | 12 | S30_AICircleAdelaide.tsx |
+| 15 | 13 | S31_AICircleSingapore.tsx |
+| 16 | 14 | S32_AICircleKualaLumpur.tsx |
+| 17 | 15 | S33_AICircleChengdu.tsx |
 | 24 | 25 | S20_Join.tsx |
 
 城市详情共享组件AICircleCitySlide.tsx同样原样复制；DeckFrame/deck.tsx与来源一致，五个锁定runtime不改。所有资源放在本活动public中，使用本活动BASE_URL，不依赖9月目录的线上资源。

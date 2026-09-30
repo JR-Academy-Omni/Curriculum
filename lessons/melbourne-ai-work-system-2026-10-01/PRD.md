@@ -4,7 +4,7 @@
 
 用户要求将 Canva 活动主控演示稿转成匠人风格网页 PPT，部署到匠人域名，并在嘉宾页右下角放演讲资料链接。原稿：https://canva.link/5medn4sfe0328rm （design DAHWjbuzdZY，读取于2026-09-30）。
 
-本轮明确修订：删除原14页版本的第13页“后续活动，我们群里见”；把用户指定9月参考稿的实际第7–17页，按原顺序插到第3页“JR Academy 匠人学院”后面；把参考稿实际第24页放到最后。按浏览器页码和App数组对应，不能把源文件的Sxx编号当页码。参考：https://jracademy.ai/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=24 。修订后共25页。
+当前页序：删除原14页版本的第13页“后续活动，我们群里见”；按用户最新要求，将25页版本中的第15页“匠人的产品与服务”移到第4页，紧接第3页“JR Academy 匠人学院”。用户指定9月参考稿的实际第7–17页顺延至本活动第5–15页，内部顺序不变；参考稿实际第24页继续放在最后。按浏览器页码和App数组对应，不能把源文件的Sxx编号当页码。参考：https://jracademy.ai/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=24 。总页数仍为25页，第16–25页不变。
 
 嘉宾出场顺序保留Michael → Lightman → 李敏 → Michael Yang。李敏仅使用用户提供的15页原始PPTX，文件字节、内容、版式及备注均不改；主控按钮使用用户指定文字“查看分享ppt”，打开原版在线预览。其他三位链接尚未提供，保持“演讲资料待补充”。李敏和Michael Yang介绍旁保留用户提供的ML Tax Solution与ANZ原logo。
 
@@ -14,9 +14,9 @@
 
 | 阶段 | 页数 | 用途 | 时长 |
 |---|---:|---|---|
-| 开场与匠人介绍 | 1–3 | 活动名称、联合主办、匠人学院 | 按现场进度 |
-| MetaTree与AI圈 | 4–14 | 参考稿第7–17页，原序复制 | 按现场进度 |
-| 产品与机构介绍 | 15–17 | 原产品服务、ANZ、Bupa | 按现场进度 |
+| 开场与匠人介绍 | 1–4 | 活动名称、联合主办、匠人学院、产品服务 | 按现场进度 |
+| MetaTree与AI圈 | 5–15 | 参考稿第7–17页，原序复制 | 按现场进度 |
+| 机构介绍 | 16–17 | ANZ、Bupa | 按现场进度 |
 | 主题分享 | 18–22 | 主题转场与四位嘉宾 | 按现场进度 |
 | 互动与结束 | 23–25 | Q&A、感谢、参考稿第24页社群入口 | 按现场进度 |
 
@@ -27,18 +27,18 @@
 | 1 | 企业 AI 实战分享 | 原第1页，日期、地点与用户四张嘉宾原照片 |
 | 2 | 联合主办 | 原第2页，JR / ANZ / Bupa官方或用户原logo |
 | 3 | JR Academy 匠人学院 | 原第3页，左logo右中英文介绍 |
-| 4 | 让 AI 进入真实业务流程 | 参考第7页，S37_MetaTree |
-| 5 | 把项目带出来，把连接带回去 | 参考第8页，S24_AICircleIntro |
-| 6 | 八座城市，同一份对 AI 的好奇 | 参考第9页，S25_AICircleCities |
-| 7 | 悉尼 AI圈 | 参考第10页，S26_AICircleSydney |
-| 8 | 墨尔本 AI圈 | 参考第11页，S27_AICircleMelbourne |
-| 9 | 布里斯班 AI圈 | 参考第12页，S28_AICircleBrisbane |
-| 10 | 珀斯 AI圈 | 参考第13页，S29_AICirclePerth |
-| 11 | 阿德莱德 AI圈 | 参考第14页，S30_AICircleAdelaide |
-| 12 | 新加坡 AI圈 | 参考第15页，S31_AICircleSingapore |
-| 13 | 吉隆坡 AI圈 | 参考第16页，S32_AICircleKualaLumpur |
-| 14 | 成都 AI圈 | 参考第17页，S33_AICircleChengdu |
-| 15 | 匠人的产品与服务 | 原第4页，四项产品服务及原logo |
+| 4 | 匠人的产品与服务 | 从上一版本第15页移入，四项产品服务及原logo |
+| 5 | 让 AI 进入真实业务流程 | 参考第7页，S37_MetaTree |
+| 6 | 把项目带出来，把连接带回去 | 参考第8页，S24_AICircleIntro |
+| 7 | 八座城市，同一份对 AI 的好奇 | 参考第9页，S25_AICircleCities |
+| 8 | 悉尼 AI圈 | 参考第10页，S26_AICircleSydney |
+| 9 | 墨尔本 AI圈 | 参考第11页，S27_AICircleMelbourne |
+| 10 | 布里斯班 AI圈 | 参考第12页，S28_AICircleBrisbane |
+| 11 | 珀斯 AI圈 | 参考第13页，S29_AICirclePerth |
+| 12 | 阿德莱德 AI圈 | 参考第14页，S30_AICircleAdelaide |
+| 13 | 新加坡 AI圈 | 参考第15页，S31_AICircleSingapore |
+| 14 | 吉隆坡 AI圈 | 参考第16页，S32_AICircleKualaLumpur |
+| 15 | 成都 AI圈 | 参考第17页，S33_AICircleChengdu |
 | 16 | ANZ | 原第5页，左logo右官网核验的中英简介 |
 | 17 | Bupa | 原第6页，左logo右官网核验的中英简介 |
 | 18 | 主题分享 | 原第7页，四位嘉宾顺序 |

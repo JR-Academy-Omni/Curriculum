@@ -2,6 +2,7 @@ import SlideEngine from './components/SlideEngine';
 import Slide01 from './components/slides/Slide01';
 import Slide02 from './components/slides/Slide02';
 import Slide02a_JRAcademy from './components/slides/Slide02a_JRAcademy';
+import Slide02b_JRProducts from './components/slides/Slide02b_JRProducts';
 import S37_MetaTree from './components/slides/S37_MetaTree';
 import S24_AICircleIntro from './components/slides/S24_AICircleIntro';
 import S25_AICircleCities from './components/slides/S25_AICircleCities';
@@ -13,7 +14,6 @@ import S30_AICircleAdelaide from './components/slides/S30_AICircleAdelaide';
 import S31_AICircleSingapore from './components/slides/S31_AICircleSingapore';
 import S32_AICircleKualaLumpur from './components/slides/S32_AICircleKualaLumpur';
 import S33_AICircleChengdu from './components/slides/S33_AICircleChengdu';
-import Slide02b_JRProducts from './components/slides/Slide02b_JRProducts';
 import Slide02c_ANZ from './components/slides/Slide02c_ANZ';
 import Slide02d_Bupa from './components/slides/Slide02d_Bupa';
 import Slide03 from './components/slides/Slide03';
@@ -28,14 +28,14 @@ import S20_Join from './components/slides/S20_Join';
 export default function App() {
   return <SlideEngine>
     {/* Opening */}
-    <Slide01 /><Slide02 /><Slide02a_JRAcademy />
-    {/* September reference pages 7–17, immediately after JR Academy */}
+    <Slide01 /><Slide02 /><Slide02a_JRAcademy /><Slide02b_JRProducts />
+    {/* September reference pages 7–17, after JR Academy and its products */}
     <S37_MetaTree /><S24_AICircleIntro /><S25_AICircleCities />
     <S26_AICircleSydney /><S27_AICircleMelbourne /><S28_AICircleBrisbane />
     <S29_AICirclePerth /><S30_AICircleAdelaide /><S31_AICircleSingapore />
     <S32_AICircleKualaLumpur /><S33_AICircleChengdu />
-    {/* Existing products and co-host profiles */}
-    <Slide02b_JRProducts /><Slide02c_ANZ /><Slide02d_Bupa />
+    {/* Co-host profiles */}
+    <Slide02c_ANZ /><Slide02d_Bupa />
     <Slide03 />
     {/* Guests: original Canva order */}
     <Slide04 /><Slide05 /><Slide06 /><Slide07 />
