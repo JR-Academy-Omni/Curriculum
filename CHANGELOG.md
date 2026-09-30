@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-30 · 10 月 1 日企业 AI 实战分享网页版
+
+- 根据用户 Canva 原稿新建独立 10 页活动主控 deck，保留 Michael → Lightman → 李敏 → Michael Yang 的嘉宾顺序，以及联合主办、Q&A、原始活动群二维码和收尾合影。
+- 新增李敏《AI 对会计行业的影响》15 页 JR 网页版；保持原稿案例与专业判断边界，保存原始 PPTX 和讲者备注，主控李敏页右下角可打开完整演讲。
+- 使用当前 talk-deck 视觉：暖色网格纸、marker 下划线、24px 圆角主面板和品牌色偏移阴影；五个运行时文件逐字来自 `_template`。
+- 嘉宾链接集中在数据文件维护；另外三位未提供 PPT 地址，页面保留明确的待补充状态，不绑定无关课程。
+- 将两个新路由注册到 `lessons.html` 与现有服务器部署流程；保持 9 月创业展示交流目录独立。
+
 ## 2026-09-30 · 墨尔本展示交流 talk-deck 视觉重做
 
 - 新增匠人产品与服务总览、MetaTree AI Consulting / FDE介绍，保留活动海报为最后两页（`curriculum/lessons/melbourne-ai-startup-showcase-networking`）
