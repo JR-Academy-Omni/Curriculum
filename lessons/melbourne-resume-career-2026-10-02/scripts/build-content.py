@@ -33,10 +33,31 @@ def organizers(e,y=672):
     e.extend([text(174,y+20,120,26,'主办方',18,650,color=MUTED),image(325,y+27,255,90,'logos/jr-logo.png'),image(807,y+20,100,107,'logos/umba.jpg'),text(935,y+45,480,50,'UoM Blockchain Association',26,650,line=1.2)])
 
 e=new('Cover','【墨尔本】简历 × 职场答疑分享会')
-e.extend([rect(138,146,184,50,YELLOW,10,None,False),text(161,153,150,40,'【墨尔本】',28,650,line=1.2)])
-e.extend([marker(138,297,810,23),text(138,219,1270,110,'简历 × 职场',86,750,line=1.15),marker(138,407,858,23),text(138,331,1270,110,'答疑分享会',86,750,line=1.15)])
-e.extend([text(142,492,1000,50,'2026 年 10 月 2 日',34,550),text(142,552,1000,48,'墨尔本大学',32,500)])
-organizers(e)
+# Cover typography and composition follow the live showcase cover: 83px / 900,
+# -3px tracking, 1.22 line-height, #10162f ink, and a single lower-line marker.
+e.extend([rect(100,76,238,40,YELLOW,8,DARK,False),
+ dict(**text(111,84,220,27,'MELBOURNE · 2026.10.02',16,700,line=1.4),role='cover-mono'),
+ dict(**text(351,84,626,29,'RESUME & CAREER SHARING',17,700,line=1.4),role='cover-mono',letterSpacing=1.6),
+ text(100,203,885,48,'【墨尔本】简历 × 职场答疑分享会',27,700,line=1.4),
+ dict(**text(100,254,920,103,'简历 × 职场',83,900,line=1.22),role='cover-title',letterSpacing=-3),
+ marker(100,438,400,21),
+ dict(**text(100,355,920,111,'答疑分享会',83,900,line=1.22),role='cover-title',letterSpacing=-3),
+ text(100,494,925,49,'从经历出发，找到下一步准备方向',27,700,color=MUTED,line=1.4),
+ text(100,603,924,47,'2026 年 10 月 2 日  ·  17:00–19:20',25,700,line=1.4),
+ text(100,650,924,43,'墨尔本大学',25,500,line=1.4)])
+# The emphasis panel uses existing event copy and no added claims.
+e.append({**rect(1070,198,430,514,DARK,24,None,False),'role':'cover-panel','shadow':f'12px 12px 0px {RED}'})
+e.extend([rect(1108,238,310,38,GREEN,6,None,False),
+ dict(**text(1118,245,293,30,'RESUME HOT SEAT · 现场改简历',15,700,line=1.4),role='cover-mono'),
+ text(1108,307,354,187,'现场简历\n诊断',66,900,color=YELLOW,line=1.23),
+ text(1108,500,354,42,'真实简历 + 目标岗位 JD',25,700,color='white',line=1.4),
+ rect(1108,556,70,5,BLUE,3,None,False),
+ text(1108,587,354,76,'结合目标岗位\n现场分析和修改',24,400,color='white',line=1.4),
+ rect(100,767,1400,2,'#d1c5bd',0,None,False),
+ dict(**text(100,800,123,31,'主办方',18,700,line=1.4),role='cover-mono'),
+ image(252,787,190,67,'logos/jr-logo.png'),
+ image(513,789,62,66,'logos/umba.jpg'),
+ text(598,802,650,37,'UoM Blockchain Association',24,650,line=1.3)])
 
 e=new('JRAcademy','JR Academy 匠人学院','主办方  /  ORGANIZER')
 heading(e,'JR Academy 匠人学院',684)
@@ -153,15 +174,16 @@ for i,slide in enumerate(slides):
     for el in slide['elements']:
         if el['type']=='text':
             el['fontFamily']='Noto Sans SC'
-            if el.get('color')==DARK:el['color']='#000000'
+            if i!=0 and el.get('color')==DARK:el['color']='#000000'
             if el.get('fontSize',0)>=40:el['fontWeight']=900
+            if el.get('role')=='cover-mono':el['fontFamily']='Menlo'
             if el['x']==199 and el['y']==113:
                 el.update(fontFamily='Menlo',fontSize=17,fontWeight=700,letterSpacing=1.8)
         if el['type']=='rect':
-            if el.get('shadow'):el['shadow']=f'9px 9px 0px {YELLOW}'
+            if el.get('shadow') and el.get('role')!='cover-panel':el['shadow']=f'9px 9px 0px {YELLOW}'
             if el.get('role')=='marker':el['borderRadius']=3
             if el['x']==138 and el['y']==124 and el['w']==46:el['fill']=accents[i]
-    slide['elements'].insert(0,dict(**image(0,0,1600,900,'register-b-decor.svg'),role='background-decoration'))
+    slide['elements'].insert(0,dict(**image(0,0,1600,900,'register-b-cover-decor.svg' if i==0 else 'register-b-decor.svg'),role='background-decoration'))
     if slide['id']=='S07_Ethan':slide['notes']+=' Ethan 的公司 Wobitech 由用户明确确认；官方 Logo 来源见 research/assets.md。'
 data=dict(title='【墨尔本】简历 × 职场答疑分享会',date='2026-10-02',width=1600,height=900,slides=slides)
 (ROOT/'src/data/deck.json').write_text(json.dumps(data,ensure_ascii=False,indent=2))

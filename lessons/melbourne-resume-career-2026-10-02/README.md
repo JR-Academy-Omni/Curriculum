@@ -9,7 +9,7 @@ https://jracademy.ai/curriculum/lessons/melbourne-resume-career-2026-10-02/?page
 ## 现场使用
 
 - `output/melbourne-resume-career-2026-10-02.html`：离线网页版，单个文件已包含图片和运行代码。用 Chrome / Edge 打开即可；方向键或空格翻页，F 全屏，V 切换摄像头（浏览器权限允许时）。
-- `output/melbourne-resume-career-2026-10-02-register-b.pptx`：可编辑 PowerPoint，文字与面板保留原生对象。设计中文字体为 Noto Sans SC，栏目标签为 Menlo 等宽字体；网页版已内置 Noto 字体。PowerPoint 使用原生文本，目标电脑未安装字体时请使用 PDF / HTML 保持版式。
+- `output/melbourne-resume-career-2026-10-02-cover-matched.pptx`：可编辑 PowerPoint，文字与面板保留原生对象。设计中文字体为 Noto Sans SC，网页版内置同参考稿的 Bricolage Grotesque、DM Sans 和 Space Mono；封面按 83px / 900 / -3px 字距与深蓝黑文字对齐。PPTX 中文为 Noto Sans SC，等宽栏目为 Menlo。PowerPoint 使用原生文本，目标电脑未安装字体时请使用 PDF / HTML 保持版式。
 - `output/melbourne-resume-career-2026-10-02.pdf`：18 页静态投屏备用。
 
 ## 内容和资产

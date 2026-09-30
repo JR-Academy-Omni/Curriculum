@@ -15,6 +15,7 @@ try {
    const t=s.elements[i+1];
    if(e.role!=='marker'||e.w<100||t?.type!=='text'||t.fontSize<40)return null;
    ctx.font=`${t.fontWeight||400} ${t.fontSize}px "Bricolage Grotesque","Noto Sans SC",sans-serif`;
+   ctx.letterSpacing=`${t.letterSpacing||0}px`;
    return Math.ceil(Math.min(t.w,ctx.measureText(t.text.split('\n')[0]).width+6));
   }));
  },deck.slides);
