@@ -34,6 +34,7 @@ export const speakers: Speaker[] = [
     id: 'lightman', name: 'Lightman', role: '匠人学院创始人 / CEO',
     title: '企业如何实现 AI 自动化？', subtitle: '分享匠人正在推进的 AI 工作系统实践',
     image: 'lightman-portrait.jpg', accent: '#FFDE59',
+    companyLogo: { src: 'jr-academy-logo.png', alt: '匠人学院 JR Academy', width: 220, height: 80 },
     portraitPosition: '50% 0%',
     topics: [{ title: '管理协调' }, { title: '业务流程' }, { title: '人机分工' }],
   },

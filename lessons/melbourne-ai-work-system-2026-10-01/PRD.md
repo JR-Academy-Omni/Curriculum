@@ -6,7 +6,7 @@
 
 当前页序：删除原14页版本的第13页“后续活动，我们群里见”；按用户最新要求，将25页版本中的第15页“匠人的产品与服务”移到第4页，紧接第3页“JR Academy 匠人学院”。用户指定9月参考稿的实际第7–17页顺延至本活动第5–15页，内部顺序不变；参考稿实际第24页继续放在最后。按浏览器页码和App数组对应，不能把源文件的Sxx编号当页码。参考：https://jracademy.ai/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=24 。总页数仍为25页，第16–25页不变。
 
-嘉宾出场顺序保留Michael → Lightman → 李敏 → Michael Yang。李敏仅使用用户提供的15页原始PPTX，文件字节、内容、版式及备注均不改；主控按钮使用用户指定文字“查看分享ppt”，打开原版在线预览。其他三位链接尚未提供，保持“演讲资料待补充”。李敏和Michael Yang介绍旁保留用户提供的ML Tax Solution与ANZ原logo。
+嘉宾出场顺序保留Michael → Lightman → 李敏 → Michael Yang。李敏仅使用用户提供的15页原始PPTX，文件字节、内容、版式及备注均不改；主控按钮使用用户指定文字“查看分享ppt”，打开原版在线预览。其他三位链接尚未提供，保持“演讲资料待补充”。Lightman在第20页的名字介绍旁使用官方黑色匠人学院logo，等比显示，沿用其他嘉宾公司logo布局。李敏和Michael Yang介绍旁保留用户提供的ML Tax Solution与ANZ原logo。
 
 ## 整体节奏
 
@@ -43,7 +43,7 @@
 | 17 | Bupa | 原第6页，左logo右官网核验的中英简介 |
 | 18 | 主题分享 | 原第7页，四位嘉宾顺序 |
 | 19 | Michael · AI Marketing 自动化运营 | 原第8页，真实照片与原信息 |
-| 20 | Lightman · 企业如何实现 AI 自动化？ | 原第9页，真实照片与原信息 |
+| 20 | Lightman · 企业如何实现 AI 自动化？ | 原第9页，名字介绍旁展示官方黑色匠人logo，真实照片与原信息 |
 | 21 | 李敏 · AI 对会计行业的影响 | 原第10页，ML Tax Solution logo、原版在线PPT入口 |
 | 22 | Michael Yang · 从 AI 到金融智能 | 原第11页，ANZ logo、真实照片与原信息 |
 | 23 | Q&A | 原第12页 |
