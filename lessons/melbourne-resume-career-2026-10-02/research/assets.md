@@ -34,3 +34,6 @@ All portraits and logos below are copied byte-for-byte from user attachments, ex
 | `public/logos/deloitte.png` | `/Users/shijie/Desktop/Simone/JR/jr-omni/curriculum/lessons/ai-engineer-landscape-talk/public/logos/deloitte.png` | `959a600a3273a78c51d41b0c2617cd84bd87338465f2478a403cde10b68d8b55` |
 | `public/logos/ey.png` | `/Users/shijie/Desktop/Simone/JR/jr-omni/curriculum/lessons/ai-engineer-landscape-talk/public/logos/ey.png` | `4b76fca08264f119be3fc38adab2124d86f46e490ddc8ecae9e4c9cf19a43241` |
 | `public/logos/wobitech.png` | `https://wobbitech.com/public/uploads/671363bd0bf22.png` | `17ecc1ccad259a936dc69a9265e2691f24573ab3b0093fed0eba3c2b56cd2604` |
+
+## Shirley 小红书账号（2026-10-01）
+用户提供账号主页截图 `codex-clipboard-3d1b4aaa-7f3e-4b69-88e2-632c484fdc85.png`，用于第 8 页。仅采用明确可见的昵称“尽我所汲（学习版）”和账号 `c1818811`；昵称末字为“汲”。

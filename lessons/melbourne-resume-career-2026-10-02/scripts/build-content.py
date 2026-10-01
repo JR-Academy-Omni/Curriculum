@@ -105,7 +105,12 @@ for slug,name,role,body,photo,tag,logos,label in guests:
     heading(e,name,{'Lightman':282,'Ethan Wang':402,'Shirley Chen':417,'Giovanni Chen':459}[name],58)
     panel(e,138,281,362,506);panel(e,538,281,924,506)
     e.append(image(178,324,282,282,'portraits/'+photo))
-    e.extend([text(168,646,302,48,name,29,700,align='center'),text(162,702,314,36,tag,19,550,color=MUTED,align='center')])
+    if slug=='Shirley':
+        e.extend([text(168,628,302,44,name,29,700,align='center',line=1.2),text(162,675,314,28,tag,19,550,color=MUTED,align='center',line=1.2),
+          text(171,717,62,26,'小红书',17,700,color=RED,line=1.3),text(240,716,230,29,'尽我所汲（学习版）',19,650,line=1.3),
+          text(171,748,300,27,'小红书号：c1818811',18,550,color=MUTED,line=1.3)])
+    else:
+        e.extend([text(168,646,302,48,name,29,700,align='center'),text(162,702,314,36,tag,19,550,color=MUTED,align='center')])
     size=28 if slug=='Shirley' else 31
     e.extend([text(580,316,838,75,role,27 if slug=='Shirley' else 30,650,line=1.4),text(580,405,836,269,body,size,line=1.48)])
     if label:e.append(text(580,704,210,30,label,19,550,color=MUTED))
