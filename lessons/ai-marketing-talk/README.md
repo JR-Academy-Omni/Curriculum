@@ -1,31 +1,42 @@
-# `_template` — 网页版讲座 deck 单一引擎来源
+# 从一篇内容，到公司协作
 
-这是所有 React deck(`talk-deck` skill）的**引擎单一来源**。新讲座从这里拷，不要再从某个具体 deck 拷（避免 bug 漂移）。
+当前31页线下Pitch版（2026-10-02 发布版），按用户批准的八段推导重排。当前内容顺序以 [PRD.md](./PRD.md) 最上方“当前整套重排”为准；历史页码不是当前规格。
 
-## 起一个新 deck
+## 讲述顺序
+
+| 页码 | 讲什么 |
+|---|---|
+| 1–3 | 开场、现在怎么用AI、一篇内容仍由人推动 |
+| 4–5 | 真实/xhs-draft Skill、多个步骤接成流程 |
+| 6–11 | 多平台、视频、检查、历史审核截图、反馈，最后展开五层30模块内容工厂 |
+| 12–15 | final版本、资料冲突、负责人批准的正式记录SoT、更新下游内容 |
+| 16–19 | 真实活动七步Skills接力、一次改期的四项并行工作、管理Agent协调、公司系统构成 |
+| 20–28 | 模拟中介公司、传统组织、24模块AI架构、管理记录、入口、汇报、派工、经营目标、结果闭环 |
+| 29–31 | 系统组件、谁接软件及接入顺序、员工汇报试运行与完成标准 |
+
+26分钟讲解 + 4分钟问答是计划，未现场计时。前半场采用同一体验课推广；P16是有本地真实Skill文件的活动流程案例，9个不同Skill、10处调用名称均保留，但本轮没有执行。P20进入模拟中介后不再跳回课程例子。其余架构是方案示意，未接通真实软件；报价、合同、付款、预算等决定由人负责。历史工具审核输出不保证平台通过。
+
+## 视觉与运行
+
+沿用talk-deck圆角Register B、暖色网格纸、品牌偏移阴影与marker标题。每页一个N/R组件，原引擎、Logo和URL形状不变。P1持续循环动画可暂停，减少动态时静态显示；循环是演示，不是业务连接。
+
+在本目录运行：
 
 ```bash
-cp -R lessons/_template lessons/{slug}
-cd lessons/{slug}
-# 1. 全局替换占位符 {{SLUG}} / {{TITLE}}（package.json / vite.config.ts / index.html）
-# 2. bun install
-# 3. bun run dev  → 浏览器走查（← → 翻页，F 全屏，C 摄像头）
+bun run dev --host 127.0.0.1 --port 5197
+bun run build
 ```
 
-## 🚨 两类文件，别搞混
+[本地首页](http://127.0.0.1:5197/?page=1) · [本地真实Skills](http://127.0.0.1:5197/?page=16) · [本地公司架构](http://127.0.0.1:5197/?page=22)
 
-| 类别 | 文件 | 规则 |
-|---|---|---|
-| **引擎 / 运行时**（测过、逻辑固定） | `src/components/SlideEngine.tsx` · `ui.tsx` · `CameraBubble.tsx` · `src/styles/theme.ts` · `src/main.tsx` | **逐字保留，禁止重写**。要改引擎 → 改这里的 `_template`，再同步到各 deck。出 bug 改一处。 |
-| **内容**（每个 deck 不同） | `App.tsx` · `src/components/slides/*` · `src/data/*` · `PRD.md` · `research/*` | 每个 deck 自由生成 / 重写。 |
+线上URL保持 https://jracademy.ai/curriculum/lessons/ai-marketing-talk/?page=1 ，由 Curriculum main 分支的 Deploy Curriculum to Server 工作流发布。左右箭头或Space翻页，F全屏，V开关摄像头，?page=N直达。固定1600×900画布等比缩放。
 
-> 摄像头、键盘/触摸/滚轮翻页、1600×900 缩放这些运行时逻辑有浏览器坑，**绝不靠"照描述重写"**——只拷贝。内容才是每次新写的部分。
+## 修改入口
 
-## 引擎能力速查
+- PRD.md：当前顺序、节奏、逐页任务与过渡；下方旧方案保留为历史。
+- DESIGN.md：当前视觉及架构层级规范。
+- src/App.tsx：31页装配顺序。
+- src/components/slides/N*.tsx、R*.tsx：当前内容。
+- src/components/slides/S*.tsx：Legacy参考源，不装配到当前入口。
 
-- `SlideEngine`：1600×900 固定画布整体 scale；← → ↑ ↓ Space 翻页；`F` 全屏；`C` 开关摄像头；`?page=N` URL 同步；进度条 + 页码 + 圆点导航。
-- `CameraBubble`：右下角圆形演讲者摄像头（`getUserMedia`，按 `C` 开关、可拖动、镜像、自动释放流），固定视口不随画布缩放。
-- `ui.tsx`：`Slide`/`Inner`/`Half`/`Title`/`Subtitle`/`Highlight`/`Tag` + `CountUp`/`GrowBar` + `springIn`/`slideFromLeft|Right` + `assetPath()`。
-- `theme.ts`：JR Neo-Brutalism 令牌（品牌色 / 字体 / `border` / `shadow`）。
-
-完整规范见 `curriculum/.claude/skills/talk-deck/SKILL.md`。
+真实活动Skill文件位于仓库根目录.claude/skills/；旧Marketing案例来源映射保留在PRD历史部分。

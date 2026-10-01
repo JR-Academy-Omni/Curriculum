@@ -1,139 +1,38 @@
-# 新时代的 AI Marketing 讲座 — Design Spec
+# 企业 AI 自动化讲座 — Design SoT
 
-> 网页版讲座 deck 的唯一视觉真相（Source of Truth）。
-> 视觉系统所属：**营销 / 创作线**（继承 `curriculum/ai-marketing/DESIGN.md` 的 `#E63977`）。
-> 🚨 改任何颜色 / 字号 / 阴影前先读本文件；**禁止凭记忆配色或自编 hex**。token 全在 `src/styles/theme.ts`，组件全在 `src/components/ui.tsx`。
+> 2026-10-01 · 用户明确指定 talk-deck Skill，当前采用圆角 Register B。此文件替代原直角营销视觉规格；不是另一套并行方案。
 
----
+## 1. 画布与语义
 
-## 1. 主题色
+1600×900固定投影画布，由现有SlideEngine缩放。内容区1380×768。当前31页按工作→流程→资料→业务→公司→搭建推导，不改引擎、路径、query参数。参考课程黄金范本 `ai-engineer-cohort-05-final/src/components/deck.tsx` 的DeckFrame、marker和圆角面板。
 
-| 属性 | 值 |
-|---|---|
-| **主色 (primary)** | `#E63977`（玫红 / `colors.rose`）|
-| **主色上文字色** | `#FFFFFF` |
-| **声明位置** | `src/styles/theme.ts` → `colors.rose` |
+## 2. 调色与字体
 
-### 选色理由
-营销「投放 / 转化 / 电商」语义的最强符号色，比 JR 旗舰红 `#ff5757` 深一档，避免和工程课撞色。本讲座是营销课线（`curriculum/ai-marketing/`）的引流物料，**必须**用同一主色保持品牌识别。
+所有彩色使用原 `src/styles/theme.ts` 中的colors，不新增主题彩色hex。rose为本讲座主色；warmBg为暖色纸；dark为墨色与少量强调面板；yellow为marker和品牌偏移阴影；orange、purple、green、blue用于不同生产支线/方法/状态。封面改为暖纸留白与开放式公司运营星图，rose强调AI标题和中心偏移阴影，不再要求大面积玫红面板。工程线red不作主题色。
 
-### 色卡
-```
-█████████████████████████  #E63977  玫红（rose · 主色）
-```
-主色应占封面 / 章节封面画面 ≥ 30%（大色块、标题底、强调框）。
+字体仍使用fonts.heading/body/mono。标题54px/900/1.2，封面主标题116px/900/1.08、副标题34px，主体22–29px，节点标题26–32px，次要标签18px。中国文字不得用代码字体作整段正文。细节太多应删减，不缩小成蚊子字。
 
----
+## 3. talk-deck当前圆角课程视觉
 
-## 2. 调色板与角色分工（来自 `theme.ts`，不要新增 hex）
+- 背景：48px低对比网格纸，网格是技术表达，不是渐变装饰。
+- 标题：黄色marker underline，章节短色条，少量边缘圆形装饰；不增加信息噪声。
+- 主面板22–24px、卡片/流程节点18px、标签8px、胶囊999px。内容闭合容器均圆角；图标线条、连接线、表格分隔线可以直线。
+- 主要结构线2px dark，减少黑色3px边框和黑色偏移阴影。白面板使用yellow偏移阴影，深面板使用rose偏移阴影；无模糊、无发光、无毛玻璃。
+- 色条与文件缩略图被圆角容器裁切；不把主面板、标签、按钮退回直角。
+- 动画仅轻量fade/y，按阅读顺序渐进；依赖连接与返工路径仍可见。
 
-| token | hex | 只用来做 |
-|---|---|---|
-| `rose` | `#E63977` | **主色** · 封面 / 章节封面 / 关键强调框 / CTA |
-| `dark` | `#10162f` | 深色背景页 / 主文字 / 结论卡 |
-| `yellow` | `#FFDE59` | 撞色高亮 · 金句重点字 · 深色页上的 accent |
-| `warmBg` | `#fff1e7` | 浅色页默认背景 |
-| `white` | `#ffffff` | 卡片底 / 深色页文字 |
-| `black` | `#000000` | 3px 描边 + 硬阴影（neo-brutalism 灵魂）|
-| `green` | `#7ED957` | Poll 选项 A · 「半对」标签 |
-| `orange` | `#FF914D` | Poll 选项 B · 「半对」标签 |
-| `blue` / `purple` | `#38B6FF` / `#CB6CE6` | skills 分组区分色（仅 S13 军火库）|
+## 4. 页型
 
-> ✅ **唯一允许的内联裸 hex 两类**：(1) 中性灰阶 `#333 / #444 / #555 / #666 / #888 / #999 / #aaa`——做次要文字 / 说明文字（模板 `ui.tsx` 本身就这么用）；(2) 极浅分区底纹 `#fff5f8 / #fff5f5 / #eee / #ccc`——只做卡片内浅色分块。
-> ❌ 除以上两类外，所有颜色走 `colors.*`。需要新彩色 → 先在 `theme.ts` 命名再用，禁止内联裸彩色 hex。
+P17–19连续沿用P16的活动背景：P17改期分叉到四项并行工作，P18正式记录→管理Agent→四组任务→结果汇总回路，P19四类系统职责，禁止再画营销到财务的虚假线性队列。P21收口明确人保留决定、AI接汇总派工追踪，再引出P22分层。P29–31分别讲组件、接入步骤、试运行完成标准。
 
----
+P16以“工作步骤 → 调用Skill → 具体产出”为主结构，7行各70px，中列650px；真实Skill标识使用18px等宽深底黄字徽标，中文职责另用正文字体。不删掉具体调用名称来换取视觉简洁。
 
-## 3. 视觉风格 — Neo-Brutalism（与 ai-marketing 课线一致）
+P11采用五块1180px宽层板，每层向右错位26px、向下间隔110px，使用深底、品牌色厚度阴影、白色圆角模块及多路传递线；右侧闭合反馈回路。五层30模块作为前面具体制作步骤的全貌汇总，不在步骤之前直接给结论。
 
-- 所有卡片 / 按钮 / 标签：**3px 纯黑描边** = `border`（`theme.ts` 导出）
-- 硬阴影：**`6px 6px 0 #000`** = `shadow`；小卡用 `shadowSm`（`4px 4px 0`）
-- 强调框可换硬阴影颜色制造层次：`6px 6px 0 ${rose}` / `${yellow}` / `${dark}`
-- **不要**渐变、发光、毛玻璃、拟物、3D；**内容卡片 / 按钮 / 标签圆角一律 0**
-  - 唯一例外是模板 chrome：摄像头气泡（`CameraBubble`，圆形）+ 底部翻页圆点（`SlideEngine`）—— 这两个不算内容，保持原样
-- 卡片 hover：位移 + 阴影收起（`Card` / `CardSm` 组件已内置，别自己写）
-- 倾斜强调：关键标题块用 `transform: rotate(-1deg ~ -1.5deg)` 制造手作感（克制使用，1 页 ≤ 1 处）
+封面是大字+系统插画；操作/接力页是大图标+编号；Master是曲线树图；版本冲突是文件浏览器；SoT是当前记录+三个承诺；反馈是环图+实验；Company OS是三层输入+编排+行动；落地是具体工作区。通用SystemDiagram只承担适合节点连接的页，不强制统一所有页面。
 
----
+## 5. 实现与验收
 
-## 4. 字体系统（来自 `fonts`，已在 `index.html` preload）
+内容层 `components/deck.tsx` 是当前共享设计组合，与此规范对齐；ReferenceFrame和SystemDiagram复用它。现有theme/ui/SlideEngine/CameraBubble保持不动。JR Logo由原引擎显示既有正式资产，不生成或重绘。
 
-| 角色 | 字体 | token |
-|---|---|---|
-| 标题 / 大字 / 数字锚点 | Bricolage Grotesque | `fonts.heading` |
-| 正文 / bullet | DM Sans | `fonts.body` |
-| 标签 / 数据 / kicker | Space Mono | `fonts.mono` |
-| 中文 | Noto Sans SC（fallback 内置在每个 family 里）| — |
-
-- 标题 `fontWeight: 900`、`letterSpacing: -1 ~ -2`
-- 封面巨字 78–96px；章节封面 ~78px；页内主标 40–62px；正文 16–20px
-- 字号最小 13px（mono 标签），正文不低于 15px
-
----
-
-## 5. 组件目录（`src/components/ui.tsx` — 复用，别重造）
-
-| 组件 | 用途 |
-|---|---|
-| `Slide` | 每页最外层（`bg` 控背景）|
-| `Inner` / `Half` | 居中 / 分栏容器 |
-| `Title` / `Subtitle` | 标准标题 / 副标 |
-| `Highlight` / `Tag` | 行内高亮块 / mono 标签 |
-| `Card` / `CardSm` | 带 hover 的 neo-brutalism 卡 |
-| `Grid` / `Stagger` / `StaggerItem` | 网格 / 入场错峰 |
-| `CountUp` / `GrowBar` | 数字滚动 / 条形增长 |
-| `springIn` / `slideFromLeft` / `slideFromRight` | framer-motion 入场预设 |
-| `SectionCover`（`components/SectionCover.tsx`）| 章节封面（kicker + title + accent + sub + bg）|
-
-动画统一缓动：`[0.16, 1, 0.3, 1]`（ease-out）；入场 `delay` 按阅读顺序 0.1–0.15 递增。
-
----
-
-## 6. Slide 布局 Pattern（本 deck 实际在用的 8 种）
-
-| Pattern | 出现页 | 结构 |
-|---|---|---|
-| **封面** | S01 / SectionCover | kicker 标签 + 巨字 + 倾斜强调块 |
-| **Poll 提问** | S02 / S04 | 大字问句 + 两张 A/B 卡（绿 / 橙，rotate ±2）+ 底部投票方式 |
-| **Reveal 揭晓** | S03 / S05 | 单大字翻转 OR 三栏（半对 / 半对 / 结论）+ 大字落点 |
-| **总览行表** | S08 / S13 / S27 | 多行，每行 旧→新 / 阶段→skill / 层级→下一步 |
-| **Before/After 双栏** | S09 / S14 / S21 | 灰旧 vs rose 新，硬阴影区分 |
-| **流程 / fan-out 图** | S12 / S15 / S19 | 节点 + 箭头，记忆系统 3 层 → BRAIN → 输出 |
-| **数据网格** | S18 | 7 项 + 1 收口，2×4 grid |
-| **课程卡 / 大金句** | S17 / S28 / S29 / S30 | 单一巨字主张 OR 左文案 + 右价格/QR 卡 |
-
----
-
-## 7. 🚫 严格避开的色（其他课线主色，混用会糊品牌）
-
-本讲座是营销线 `#E63977`。下列是别的课主色，**不可在本 deck 大面积使用**：
-- JR 旗舰红 `#FF5757`（工程线 / ai-engineer）—— 仅作 `theme.ts.red` 备用，不做本 deck 主色
-- 小红书粉 `#FF2E4D`、桃粉 `#FF6B9D`（其他营销子课）
-
----
-
-## 8. AI 出图 Prompt（海报 / banner / 封面图复用）
-
-做本讲座的海报 / 配图时，把以下整段粘贴给任意出图 AI（继承 `curriculum/ai-marketing/DESIGN.md`）：
-
-```
-设计任务：为「新时代的 AI Marketing」讲座做海报 / banner / 封面图。
-主色：#E63977（玫红），占画面 ≥ 30%，主色上文字 #FFFFFF。
-风格：Neo-Brutalism 极简扁平 —— 所有元素 3px 纯黑描边 + 6px×6px 黑色硬阴影；
-不要渐变 / 发光 / 拟物 / 3D / 圆角。对比强烈、留白干脆、转折硬朗。
-配色：黑 #000 / 白 #FFF / 暖背景 #fff1e7 / 深色 #10162f；CTA 撞色用黄 #FFDE59。
-字体：标题 Bricolage Grotesque / 思源黑体 Heavy（粗），数据 Space Mono，中文思源黑体；标题字号 ≥ 正文 3 倍。
-画幅：海报 3:4，banner 16:9。
-```
-
----
-
-## 9. Code-review 自检（改 deck 时）
-
-diff 里出现以下任一 → **停下，对照本文件**：
-- 内联裸**彩色** hex（灰阶 `#333–#999` / 浅底纹 `#eee`·`#ccc`·`#fff5xx` 除外）
-- 主色不是 `#E63977` / 用了 `#ff5757`·`#FF2E4D` 当大色块
-- 出现渐变 / blur / glow，或**内容卡片**带 `borderRadius`（摄像头气泡 + 翻页圆点除外）
-- 自己手写 hover 动画而不用 `Card` / `CardSm`
-- 字号 < 13px 或正文 < 15px
-- 新增彩色没先进 `theme.ts` 命名
+当前31页线下Pitch版以PRD顶部重排为准：P6多平台、P9历史审核图、P11五层内容工厂；P12–15连续推导final→冲突→SoT关系图→下游更新；P16真实活动Skills；P20–28公司案例。P14不再是三句原则，而是负责人批准→正式记录→内容Agent→具体产物。P22保留24模块分层架构；P26显式展示老板→管理Agent→岗位→回执。旧S系列源保留不改；封面持续循环不变。外部发布不在本轮范围；本地渲染不等于部署。
