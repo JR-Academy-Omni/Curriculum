@@ -6,7 +6,7 @@
 
 当前页序：删除原14页版本的第13页“后续活动，我们群里见”；按用户最新要求，将25页版本中的第15页“匠人的产品与服务”移到第4页，紧接第3页“JR Academy 匠人学院”。用户指定9月参考稿的实际第7–17页顺延至本活动第5–15页，内部顺序不变；参考稿实际第24页继续放在最后。按浏览器页码和App数组对应，不能把源文件的Sxx编号当页码。参考：https://jracademy.ai/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=24 。总页数仍为25页，第16–25页不变。
 
-嘉宾出场顺序保留Michael → Lightman → 李敏 → Michael Yang。李敏仅使用用户提供的15页原始PPTX，文件字节、内容、版式及备注均不改；主控按钮使用用户指定文字“查看分享ppt”，打开原版在线预览。其他三位链接尚未提供，保持“演讲资料待补充”。Lightman在第20页的名字介绍旁使用官方黑色匠人学院logo，等比显示，沿用其他嘉宾公司logo布局。李敏和Michael Yang介绍旁保留用户提供的ML Tax Solution与ANZ原logo。
+嘉宾出场顺序保留Michael → Lightman → 李敏 → Michael Yang。李敏仅使用用户提供的15页原始PPTX，文件字节、内容、版式及备注均不改；主控按钮使用用户指定文字“查看分享ppt”，打开原版在线预览。其他三位链接尚未提供，按用户要求留空，不显示占位文字或按钮。Lightman在第20页的名字介绍旁使用官方黑色匠人学院logo，等比显示，沿用其他嘉宾公司logo布局。李敏和Michael Yang介绍旁保留用户提供的ML Tax Solution与ANZ原logo。
 
 ## 整体节奏
 

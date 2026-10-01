@@ -1,7 +1,7 @@
 /** Source: research/canva-transcript.md, pages 4–7, read 2026-09-30.
  * Portraits: original photos supplied by the user on 2026-09-30; see research/assets.md.
  * Order follows the user-supplied Canva presentation. Missing presentation URLs
- * stay undefined; the content layer renders text, never an invented link.
+ * stay undefined; the content layer renders nothing, never an invented link.
  */
 export interface Speaker {
   id: string;
