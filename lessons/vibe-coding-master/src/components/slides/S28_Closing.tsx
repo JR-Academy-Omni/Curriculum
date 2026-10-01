@@ -1,4 +1,4 @@
-import { Slide, Inner, Title, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, colors, fonts, border, shadow } from '../courseUi';
 import { motion } from 'framer-motion';
 
 // 收尾
@@ -21,7 +21,7 @@ export default function S28_Closing() {
 				</Title>
 
 				<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-					style={{ display: 'inline-flex', gap: 16, alignItems: 'center', padding: '16px 30px', marginTop: 34, background: colors.white, border, boxShadow: shadow }}>
+					style={{ borderRadius: 18, display: 'inline-flex', gap: 16, alignItems: 'center', padding: '16px 30px', marginTop: 34, background: colors.white, border, boxShadow: shadow }}>
 					<span style={{ fontFamily: fonts.mono, fontSize: 14, color: '#666', letterSpacing: 2 }}>JR ACADEMY</span>
 					<span style={{ fontSize: 18, fontWeight: 700 }}>全球华人学习 AI 第一站 · jiangren.com.au</span>
 				</motion.div>

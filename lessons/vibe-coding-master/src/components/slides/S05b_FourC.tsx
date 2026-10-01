@@ -1,4 +1,4 @@
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
 import { motion } from 'framer-motion';
 
 const cs = [
@@ -43,8 +43,8 @@ export default function S05b_FourC() {
 					{cs.map((x, i) => (
 						<motion.div key={x.c}
 							initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.15 + i * 0.12, type: 'spring', stiffness: 180, damping: 16 }}
-							style={{ background: colors.white, border, boxShadow: shadow, padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 18 }}>
-							<div style={{ flexShrink: 0, width: 64, height: 64, background: x.color, border, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 38, fontWeight: 900, color: colors.white, fontFamily: fonts.heading }}>C</div>
+							style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadow, padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 18 }}>
+							<div style={{ borderRadius: 18, flexShrink: 0, width: 64, height: 64, background: x.color, border, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 38, fontWeight: 900, color: colors.white, fontFamily: fonts.heading }}>C</div>
 							<div style={{ flex: 1 }}>
 								<div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
 									<span style={{ fontSize: 24, fontWeight: 900, fontFamily: fonts.mono }}>{x.c}</span>

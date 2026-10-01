@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag } from '../ui';
-import { colors, fonts, border, shadow, shadowSm } from '../../styles/theme';
+import { Slide, Inner, Title, Tag } from '../courseUi';
+import { colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 // 对照 ai-builder/public/outline.json · phases[0]（35 节：6 直播 Lesson + 13 互动 Lab + 14 自学 Info + 2 Quest）
 // 按主题归成 6 簇，N 节加总 = 11 + 6 + 3 + 6 + 3 + 6 = 35
@@ -56,7 +56,7 @@ const clusters = [
 export default function ARR1_Phase1() {
 	return (
 		<Slide bg={colors.warmBg}>
-			<Inner style={{ flexDirection: 'column' }}>
+			<Inner style={{ flexDirection: 'column', gap: 10, height: '90%', padding: '30px 40px' }}>
 				<motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 					<Tag bg={colors.red}>Vibe Coding 大师课 · Phase 1 / 4 · 8 周里的第一周</Tag>
 					<Title size="42px" style={{ marginTop: 10 }}>
@@ -71,27 +71,27 @@ export default function ARR1_Phase1() {
 					{' '}就是这个 Phase 的起点。
 				</motion.p>
 
-				<div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16 }}>
+				<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginTop: 16 }}>
 					{clusters.map((c, i) => (
 						<motion.div key={c.num}
 							initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }}
 							transition={{ delay: 0.32 + i * 0.1, type: 'spring', stiffness: 160, damping: 18 }}
-							style={{
+							style={{ borderRadius: 18,
 								display: 'flex', alignItems: 'center', gap: 14, position: 'relative',
 								background: c.start ? colors.dark : colors.white,
 								border, boxShadow: c.start ? `6px 6px 0 ${colors.red}` : shadowSm,
 								padding: '10px 16px',
 							}}>
 							{c.start && (
-								<span style={{
+								<span style={{ borderRadius: 18,
 									position: 'absolute', top: -12, right: 14, padding: '3px 10px',
 									background: colors.red, color: colors.white, border: '2px solid #000',
 									fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, letterSpacing: 1,
 								}}>今晚从这开始</span>
 							)}
-							<div style={{
+							<div style={{ borderRadius: 18,
 								flexShrink: 0, width: 46, height: 46, display: 'flex', alignItems: 'center', justifyContent: 'center',
-								background: colors.red, color: colors.white, border: '3px solid #000',
+								background: colors.red, color: colors.white, border: '2px solid #000',
 								fontFamily: fonts.mono, fontSize: 20, fontWeight: 900,
 							}}>{c.num}</div>
 
@@ -99,7 +99,7 @@ export default function ARR1_Phase1() {
 								<div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
 									<span style={{ fontSize: 19, fontWeight: 900, color: c.start ? colors.white : colors.black }}>{c.name}</span>
 									{c.quest && (
-										<span style={{
+										<span style={{ borderRadius: 18,
 											padding: '1px 8px', background: colors.yellow, color: colors.black,
 											fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, border: '2px solid #000',
 										}}>🎯 {c.quest}</span>
@@ -109,7 +109,7 @@ export default function ARR1_Phase1() {
 								<div style={{ fontSize: 12, color: c.start ? '#9aa0c0' : '#999', marginTop: 4, fontFamily: fonts.mono }}>代表课：{c.rep}</div>
 							</div>
 
-							<div style={{
+							<div style={{ borderRadius: 18,
 								flexShrink: 0, padding: '6px 12px', background: c.start ? colors.red : colors.warmBg,
 								color: c.start ? colors.white : colors.black, border: '2px solid #000',
 								fontFamily: fonts.mono, fontSize: 15, fontWeight: 900, whiteSpace: 'nowrap',
@@ -119,7 +119,7 @@ export default function ARR1_Phase1() {
 				</div>
 
 				<motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}
-					style={{
+					style={{ borderRadius: 18,
 						marginTop: 16, padding: '12px 18px', background: colors.yellow, border, boxShadow: shadow,
 						display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap',
 					}}>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 // 对照 ai-builder/public/outline.json phases[2]（Phase 3 — 自动化 & Agent 运营，L67–L83，共 16 节 / 6 Lab）
 // 升维：从「你让 AI 写代码」→「AI 自动把活干了」。多模型选型 / Prompt 精调 / 性能成本降级为支撑技能。
@@ -51,7 +51,7 @@ const clusters = [
 export default function ARR3_Phase3() {
 	return (
 		<Slide bg={colors.warmBg}>
-			<Inner style={{ flexDirection: 'column' }}>
+			<Inner style={{ flexDirection: 'column', gap: 18 }}>
 				<motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 					<Tag bg={colors.blue} color={colors.black}>Phase 3 · Week 5-7 · 自动化 & Agent 运营</Tag>
 					<Title size="40px" style={{ marginTop: 10 }}>
@@ -66,7 +66,7 @@ export default function ARR3_Phase3() {
 					{clusters.map((c, i) => (
 						<motion.div key={i}
 							initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.1, type: 'spring', stiffness: 160, damping: 18 }}
-							style={{ display: 'flex', alignItems: 'center', gap: 16, background: colors.white, border, boxShadow: shadowSm, padding: '10px 16px' }}>
+							style={{ borderRadius: 18, display: 'flex', alignItems: 'center', gap: 16, background: colors.white, border, boxShadow: shadowSm, padding: '10px 16px' }}>
 							<div style={{ width: 42, flexShrink: 0, fontSize: 30, fontWeight: 900, lineHeight: 1, color: colors.blue, textAlign: 'center' }}>{c.num}</div>
 							<div style={{ width: 4, alignSelf: 'stretch', background: colors.blue, flexShrink: 0 }} />
 							<div style={{ flex: 1, minWidth: 0 }}>
@@ -87,7 +87,7 @@ export default function ARR3_Phase3() {
 				</div>
 
 				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
-					style={{ marginTop: 16, display: 'flex', alignItems: 'center', gap: 14, background: colors.dark, border, boxShadow: shadow, padding: '12px 20px' }}>
+					style={{ borderRadius: 18, marginTop: 16, display: 'flex', alignItems: 'center', gap: 14, background: colors.dark, border, boxShadow: shadow, padding: '12px 20px' }}>
 					<span style={{ fontSize: 15, fontWeight: 900, color: colors.white }}>从「被叫一次干一次」→「自己持续跑」</span>
 					<span style={{ fontFamily: fonts.mono, fontSize: 13, color: '#cfd3e6' }}>16 节 = 5 大主题 · 3 直播 · 7 自学/参考 · 6 互动 Lab</span>
 					<span style={{ marginLeft: 'auto', padding: '5px 14px', background: colors.yellow, color: colors.black, fontFamily: fonts.mono, fontSize: 13, fontWeight: 900 }}>

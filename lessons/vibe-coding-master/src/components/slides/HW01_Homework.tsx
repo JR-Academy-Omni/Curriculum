@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 // 第一节课作业：自己想清楚要做什么 AI 产品（下节课写它的 PRD，整门课把它做出来）
 const STEPS = [
@@ -25,8 +25,8 @@ export default function HW01_Homework() {
 					{STEPS.map((s, i) => (
 						<motion.div key={s.n}
 							initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 + i * 0.12 }}
-							style={{ flex: 1, background: colors.white, border, boxShadow: shadow, padding: '18px 18px' }}>
-							<div style={{ display: 'inline-block', fontFamily: fonts.mono, fontWeight: 800, fontSize: 20, background: s.c, color: colors.white, padding: '3px 12px', border }}>{s.n}</div>
+							style={{ borderRadius: 18, flex: 1, background: colors.white, border, boxShadow: shadow, padding: '18px 18px' }}>
+							<div style={{ borderRadius: 18, display: 'inline-block', fontFamily: fonts.mono, fontWeight: 800, fontSize: 20, background: s.c, color: colors.white, padding: '3px 12px', border }}>{s.n}</div>
 							<div style={{ fontFamily: fonts.heading, fontWeight: 800, fontSize: 20, marginTop: 12, lineHeight: 1.3 }}>{s.t}</div>
 							<div style={{ fontSize: 15, color: '#666', marginTop: 8, lineHeight: 1.4 }}>{s.d}</div>
 						</motion.div>
@@ -35,7 +35,7 @@ export default function HW01_Homework() {
 
 				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
 					style={{ marginTop: 22, display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-					<span style={{ background: colors.dark, color: colors.yellow, border, boxShadow: shadowSm, padding: '8px 14px', fontWeight: 800, fontSize: 15, fontFamily: fonts.mono }}>⚠ 别选太大的</span>
+					<span style={{ borderRadius: 18, background: colors.dark, color: colors.yellow, border, boxShadow: shadowSm, padding: '8px 14px', fontWeight: 800, fontSize: 15, fontFamily: fonts.mono }}>⚠ 别选太大的</span>
 					<span style={{ fontSize: 16, color: '#444' }}>选一个<b style={{ color: colors.black }}>你下周就想用</b>的小产品 —— 越具体越好做。</span>
 				</motion.div>
 			</Inner>

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-01
+
+- 按新版 Talk Deck 重做大师课第一课40页视觉，统一网格纸、圆角与品牌阴影，重排第6页并保留URL及Classroom契约（`lessons/vibe-coding-master`）
+
 ## 2026-09-30 · 墨尔本展示交流 talk-deck 视觉重做
 
 - 新增匠人产品与服务总览、MetaTree AI Consulting / FDE介绍，保留活动海报为最后两页（`curriculum/lessons/melbourne-ai-startup-showcase-networking`）

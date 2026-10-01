@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
 
 const questions = [
 	{
@@ -40,7 +40,7 @@ export default function Q01_Check() {
 					{questions.map((item, qi) => (
 						<motion.div key={qi}
 							initial={{ opacity: 0, y: 26 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + qi * 0.18, type: 'spring', stiffness: 150, damping: 16 }}
-							style={{ flex: 1, minWidth: 0, background: colors.white, border, boxShadow: shadow, padding: '22px 22px 20px' }}>
+							style={{ borderRadius: 18, flex: 1, minWidth: 0, background: colors.white, border, boxShadow: shadow, padding: '22px 22px 20px' }}>
 							<div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
 								<span style={{ width: 30, height: 30, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: colors.red, color: colors.white, fontFamily: fonts.mono, fontSize: 16, fontWeight: 800 }}>{qi + 1}</span>
 								<div style={{ fontSize: 17, fontWeight: 800, lineHeight: 1.35 }}>{item.q}</div>
@@ -49,7 +49,7 @@ export default function Q01_Check() {
 							<div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
 								{item.options.map((o) => (
 									<div key={o.key}
-										style={{
+										style={{ borderRadius: 18,
 											display: 'flex', alignItems: 'center', gap: 11, padding: '9px 12px',
 											border: `2px solid ${o.correct ? colors.green : '#ddd'}`,
 											background: o.correct ? '#effae6' : colors.white,

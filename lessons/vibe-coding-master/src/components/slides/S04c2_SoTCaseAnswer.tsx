@@ -1,5 +1,5 @@
-import { Slide, Inner, Half, Title, Tag, colors, fonts, border, shadow } from '../ui';
-import { slideFromLeft, slideFromRight } from '../ui';
+import { Slide, Inner, Half, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
+import { slideFromLeft, slideFromRight } from '../courseUi';
 import { motion } from 'framer-motion';
 
 // 互动判断 ②（答案页）—— 判据：谁说了算 + 改了会不会自动同步
@@ -22,7 +22,7 @@ export default function S04c2_SoTCaseAnswer() {
 
 				<motion.div {...slideFromRight} style={{ marginTop: 16, display: 'flex', gap: 18 }}>
 					<Half>
-						<div style={{ background: '#fff', border, boxShadow: `6px 6px 0 ${colors.red}`, padding: '16px 20px', height: '100%' }}>
+						<div style={{ borderRadius: 18, background: '#fff', border, boxShadow: `6px 6px 0 ${colors.red}`, padding: '16px 20px', height: '100%' }}>
 							<div style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.red, fontWeight: 800, marginBottom: 8 }}>❌ 两份各自能改 = 两个真相</div>
 							<ul style={{ listStyle: 'none', fontSize: 16, lineHeight: 1.8, color: '#444' }}>
 								<li>→ 没规定谁为准，两边各改各的</li>
@@ -32,7 +32,7 @@ export default function S04c2_SoTCaseAnswer() {
 						</div>
 					</Half>
 					<Half>
-						<div style={{ background: colors.dark, color: colors.white, border, boxShadow: `6px 6px 0 ${colors.green}`, padding: '16px 20px', height: '100%' }}>
+						<div style={{ borderRadius: 18, background: colors.dark, color: colors.white, border, boxShadow: `6px 6px 0 ${colors.green}`, padding: '16px 20px', height: '100%' }}>
 							<div style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.green, fontWeight: 800, marginBottom: 8 }}>✅ 一个真相 + 单向派生 = 没问题</div>
 							<ul style={{ listStyle: 'none', fontSize: 16, lineHeight: 1.8, color: '#dfe3f0' }}>
 								<li><span style={{ color: colors.green }}>→</span> 云端 = 业务真相（给人对齐）</li>
@@ -44,7 +44,7 @@ export default function S04c2_SoTCaseAnswer() {
 				</motion.div>
 
 				<motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-					style={{ marginTop: 14, alignSelf: 'flex-start', background: colors.green, color: colors.black, padding: '11px 22px', border, boxShadow: shadow, fontSize: 16, fontWeight: 800 }}>
+					style={{ borderRadius: 18, marginTop: 14, alignSelf: 'flex-start', background: colors.green, color: colors.black, padding: '11px 22px', border, boxShadow: shadow, fontSize: 16, fontWeight: 800 }}>
 					一种落地：PRD 直接进 git 和代码同仓，状态字段挂看板 → 人 + agent 读的永远是同一份；云端只放「不是 build 真相」的东西。
 				</motion.div>
 			</Inner>

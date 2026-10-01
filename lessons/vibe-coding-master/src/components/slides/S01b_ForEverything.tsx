@@ -1,5 +1,5 @@
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../ui';
-import { Stagger, StaggerItem } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
+import { Stagger, StaggerItem } from '../courseUi';
 import { motion } from 'framer-motion';
 
 const uses = [
@@ -31,7 +31,7 @@ export default function S01b_ForEverything() {
 					<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
 						{uses.map((u) => (
 							<StaggerItem key={u.t}>
-								<div style={{ background: colors.white, border, boxShadow: shadow, padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 14 }}>
+								<div style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadow, padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 14 }}>
 									<span style={{ fontSize: 30 }}>{u.icon}</span>
 									<div>
 										<div style={{ fontSize: 19, fontWeight: 900 }}>{u.t}</div>

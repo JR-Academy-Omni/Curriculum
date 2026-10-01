@@ -2,6 +2,10 @@
 
 40 页 React SlideEngine Deck，支持独立演示和 JR Classroom iframe 两种运行模式。
 
+## 2026-10-01 · 新版 Talk Deck 视觉（Local）
+
+40 页统一采用新版课程模板的网格纸、圆角面板、marker underline 与品牌色错位阴影，第 6 页重排为双栏记忆循环图解。内容与页序保持一致。模板视觉基元逐字同步，课件专用视觉组合在 `src/components/courseUi.tsx`；现有翻页、摄像头和 Classroom Bridge 保留。详见 `DESIGN.md`。本次视觉改版尚未部署。
+
 ## 本地演示
 
 ```bash

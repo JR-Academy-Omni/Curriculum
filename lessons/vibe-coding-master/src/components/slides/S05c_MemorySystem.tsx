@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 const inputs = [
 	{ k: '经历', v: '项目 / 工作 / 转专业故事' },
@@ -90,7 +90,7 @@ function Arrow({ label, delay = 0 }: { label: string; delay?: number }) {
 				/>
 			</div>
 			<div
-				style={{
+				style={{ borderRadius: 18,
 					marginTop: 14,
 					background: colors.white,
 					border: `2px solid ${colors.dark}`,
@@ -120,7 +120,7 @@ export default function S05c_MemorySystem() {
 						</Title>
 					</div>
 					<div
-						style={{
+						style={{ borderRadius: 18,
 							width: 330,
 							background: colors.white,
 							border,
@@ -146,7 +146,7 @@ export default function S05c_MemorySystem() {
 									initial={{ opacity: 0, x: -20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ delay: 0.1 + i * 0.08 }}
-									style={{ background: colors.white, border, boxShadow: shadowSm, padding: '13px 14px' }}
+									style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadowSm, padding: '13px 14px' }}
 								>
 									<div style={{ fontSize: 22, fontWeight: 900, color: colors.dark }}>{item.k}</div>
 									<div style={{ fontSize: 15, marginTop: 3, color: '#384152', lineHeight: 1.35 }}>{item.v}</div>
@@ -179,7 +179,7 @@ export default function S05c_MemorySystem() {
 									initial={{ opacity: 0, scale: 0.94 }}
 									animate={{ opacity: 1, scale: 1 }}
 									transition={{ delay: 0.25 + i * 0.08 }}
-									style={{ background: '#fbfbfb', border, boxShadow: shadowSm, padding: '10px 11px', minHeight: 92 }}
+									style={{ borderRadius: 18, background: '#fbfbfb', border, boxShadow: shadowSm, padding: '10px 11px', minHeight: 92 }}
 								>
 									<div style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, color: file.c }}>
 										{file.f}
@@ -216,7 +216,7 @@ export default function S05c_MemorySystem() {
 							{outputs.map((item) => (
 								<div
 									key={item.t}
-									style={{ background: colors.white, border, boxShadow: shadowSm, padding: '14px 13px', minHeight: 94 }}
+									style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadowSm, padding: '14px 13px', minHeight: 94 }}
 								>
 									<div style={{ fontSize: 23, fontWeight: 900, color: colors.dark }}>{item.t}</div>
 									<div style={{ fontSize: 14, lineHeight: 1.35, marginTop: 8, fontWeight: 700, color: '#4b5563' }}>
@@ -225,7 +225,7 @@ export default function S05c_MemorySystem() {
 								</div>
 							))}
 						</div>
-						<div style={{ position: 'absolute', bottom: 20, left: 24, right: 24, background: colors.yellow, border, boxShadow: shadowSm, padding: '10px 12px', fontSize: 15, fontWeight: 900 }}>
+						<div style={{ borderRadius: 18, position: 'absolute', bottom: 20, left: 24, right: 24, background: colors.yellow, border, boxShadow: shadowSm, padding: '10px 12px', fontSize: 15, fontWeight: 900 }}>
 							改一次事实，所有输出都能跟着更新。
 						</div>
 					</Panel>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type CSSProperties, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { colors, fonts, border, shadow, shadowSm } from '../styles/theme';
+import { colors, fonts, border, shadow, shadowSm, radii } from '../styles/theme';
 
 // 拿 Vite BASE_URL 拼出 public/ 下的资源路径（dev → /xxx，prod → /curriculum/ai-new-jobs-talk/xxx）
 export function assetPath(p: string): string {
@@ -81,10 +81,8 @@ export function GrowBar({
 
 export function Slide({ bg = colors.warmBg, children, style }: { bg?: string; children: ReactNode; style?: CSSProperties }) {
 	return (
-		<div style={{ width: '100%', height: '100%', background: bg, overflowY: 'auto', overflowX: 'hidden', ...style }}>
-			<div style={{ minHeight: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-				{children}
-			</div>
+		<div style={{ width: '100%', height: '100%', background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', ...style }}>
+			{children}
 		</div>
 	);
 }
@@ -123,7 +121,7 @@ export function Tag({ children, bg = colors.dark, color: c = colors.white }: { c
 	return (
 		<span style={{
 			display: 'inline-block', padding: '6px 16px', fontSize: 14, fontWeight: 700,
-			fontFamily: fonts.mono, border: `2px solid ${bg}`, background: bg, color: c,
+			fontFamily: fonts.mono, border: `2px solid ${bg}`, borderRadius: radii.label, background: bg, color: c,
 		}}>
 			{children}
 		</span>
@@ -142,7 +140,7 @@ export function Card({ children, bg = colors.white, style }: { children: ReactNo
 			onMouseLeave={() => setHover(false)}
 			animate={{ x: hover ? 4 : 0, y: hover ? 4 : 0, boxShadow: hover ? '0 0 0 #000' : shadow }}
 			transition={{ duration: 0.15 }}
-			style={{ border, background: bg, padding: '24px 20px', cursor: 'default', ...style }}
+			style={{ border, borderRadius: radii.card, background: bg, padding: '24px 20px', cursor: 'default', ...style }}
 		>
 			{children}
 		</motion.div>
@@ -157,7 +155,7 @@ export function CardSm({ children, bg = colors.white, style }: { children: React
 			onMouseLeave={() => setHover(false)}
 			animate={{ x: hover ? 3 : 0, y: hover ? 3 : 0, boxShadow: hover ? '0 0 0 #000' : shadowSm }}
 			transition={{ duration: 0.15 }}
-			style={{ border, background: bg, padding: '16px 14px', cursor: 'default', ...style }}
+			style={{ border, borderRadius: radii.card, background: bg, padding: '16px 14px', cursor: 'default', ...style }}
 		>
 			{children}
 		</motion.div>
@@ -207,4 +205,4 @@ export function Grid({ children, cols = 3, gap = 20, style }: { children: ReactN
 	);
 }
 
-export { colors, fonts, border, shadow, shadowSm };
+export { colors, fonts, border, shadow, shadowSm, radii };

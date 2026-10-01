@@ -1,5 +1,5 @@
-import { Slide, Inner, Half, Title, Tag, Card, CountUp, colors, fonts, border, shadow } from '../ui';
-import { slideFromLeft, slideFromRight } from '../ui';
+import { Slide, Inner, Half, Title, Tag, Card, CountUp, colors, fonts, border, shadow } from '../courseUi';
+import { slideFromLeft, slideFromRight } from '../courseUi';
 import { motion } from 'framer-motion';
 
 // 现实：绝大多数人不会 AI coding，只是会 AI chat
@@ -68,10 +68,10 @@ export default function S02b_Reality() {
 			<motion.div
 				initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.5 }}
 				style={{ position: 'absolute', bottom: 60, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 14, alignItems: 'stretch' }}>
-				<div style={{ background: '#fff', border, boxShadow: shadow, padding: '14px 22px', fontSize: 17, color: '#444' }}>
+				<div style={{ borderRadius: 18, background: '#fff', border, boxShadow: shadow, padding: '14px 22px', fontSize: 17, color: '#444' }}>
 					<b style={{ color: colors.red }}>AI chat</b> = 你问它答，把 AI 当聊天机器人
 				</div>
-				<div style={{ background: colors.yellow, border, boxShadow: shadow, padding: '14px 22px', fontSize: 17, fontWeight: 700 }}>
+				<div style={{ borderRadius: 18, background: colors.yellow, border, boxShadow: shadow, padding: '14px 22px', fontSize: 17, fontWeight: 700 }}>
 					<b>AI coding</b> = 用结构化的规则·流程·真相「指挥」AI 替你把事干成
 				</div>
 			</motion.div>

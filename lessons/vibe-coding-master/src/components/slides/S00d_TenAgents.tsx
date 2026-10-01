@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 // 毕业北极星：同时指挥 10 个 agent，每个跑一个【独立的 PRD / 不同的项目 / 不同的产品】，并行推进
 const PROJECTS = [
@@ -25,7 +25,7 @@ export default function S00d_TenAgents() {
 				<div style={{ display: 'flex', alignItems: 'center', gap: 22 }}>
 					{/* 你 = 指挥 */}
 					<motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: 'spring', stiffness: 170, damping: 14 }}
-						style={{ flexShrink: 0, background: colors.yellow, border, boxShadow: `6px 6px 0 ${colors.red}`, padding: '20px 22px', textAlign: 'center' }}>
+						style={{ borderRadius: 18, flexShrink: 0, background: colors.yellow, border, boxShadow: `6px 6px 0 ${colors.red}`, padding: '20px 22px', textAlign: 'center' }}>
 						<div style={{ fontFamily: fonts.heading, fontWeight: 900, fontSize: 28 }}>你</div>
 						<div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 700, marginTop: 4 }}>升维 · 在它们之上</div>
 					</motion.div>
@@ -37,7 +37,7 @@ export default function S00d_TenAgents() {
 						{PROJECTS.map((p, i) => (
 							<motion.div key={p.t}
 								initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.25 + i * 0.06 }}
-								style={{ background: colors.white, border, boxShadow: shadowSm, padding: '10px 8px', textAlign: 'center', borderTop: `5px solid ${p.c}` }}>
+								style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadowSm, padding: '10px 8px', textAlign: 'center', borderTop: `5px solid ${p.c}` }}>
 								<div style={{ fontFamily: fonts.mono, fontSize: 10, fontWeight: 700, color: p.c }}>agent {i + 1} · 独立 PRD</div>
 								<div style={{ fontWeight: 800, fontSize: 14, marginTop: 4, lineHeight: 1.2 }}>{p.t}</div>
 							</motion.div>

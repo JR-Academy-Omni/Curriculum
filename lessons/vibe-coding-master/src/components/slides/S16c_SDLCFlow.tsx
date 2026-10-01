@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 const handoff = '#2f3548';
 
@@ -41,7 +41,7 @@ function FlowNode({ node, i }: { node: Node; i: number }) {
 			initial={{ opacity: 0, y: 14 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: 0.16 + i * 0.045, duration: 0.3 }}
-			style={{
+			style={{ borderRadius: 18,
 				gridColumn: node.wide ? '1 / span 2' : undefined,
 				background: node.hot ? colors.yellow : colors.white,
 				border,
@@ -145,7 +145,7 @@ function BetweenArrow({ top, bottom }: { top: string; bottom: string }) {
 				/>
 				<div style={{ width: 0, height: 0, borderTop: '9px solid transparent', borderBottom: '9px solid transparent', borderLeft: `14px solid ${colors.red}` }} />
 			</div>
-			<div style={{ background: colors.white, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '7px 8px', textAlign: 'center', fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, lineHeight: 1.25 }}>
+			<div style={{ borderRadius: 18, background: colors.white, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '7px 8px', textAlign: 'center', fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, lineHeight: 1.25 }}>
 				{top}<br />{bottom}
 			</div>
 			<div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
@@ -169,7 +169,7 @@ function MiniArrow({ label }: { label: string }) {
 	return (
 		<div style={{ position: 'absolute', left: 24, right: 24, bottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
 			<div style={{ flex: 1, borderTop: `4px dashed ${handoff}` }} />
-			<div style={{ background: colors.white, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '6px 8px', fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, whiteSpace: 'nowrap' }}>
+			<div style={{ borderRadius: 18, background: colors.white, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '6px 8px', fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, whiteSpace: 'nowrap' }}>
 				{label}
 			</div>
 			<div style={{ flex: 1, borderTop: `4px dashed ${handoff}` }} />
@@ -188,7 +188,7 @@ export default function S16c_SDLCFlow() {
 							传统 SDLC：一个产品要 <span style={{ background: colors.red, color: colors.white, padding: '0 10px' }}>一整支团队</span>
 						</Title>
 					</div>
-					<div style={{ width: 330, background: colors.white, border, boxShadow: shadowSm, padding: '10px 12px', fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, lineHeight: 1.4 }}>
+					<div style={{ borderRadius: 18, width: 330, background: colors.white, border, boxShadow: shadowSm, padding: '10px 12px', fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, lineHeight: 1.4 }}>
 						需求 → 设计 → 开发 → 测试 → 上线 → 数据<br />
 						每一步都在交接
 					</div>
@@ -200,7 +200,7 @@ export default function S16c_SDLCFlow() {
 					</Section>
 					<BetweenArrow top="handoff" bottom="返工" />
 					<Section index="②" title="开发端 · Agile" subtitle="迭代循环" bg="#FFF0A8" nodes={devNodes}>
-						<div style={{ position: 'absolute', top: 76, right: 24, background: colors.white, border, boxShadow: shadowSm, padding: '8px 12px', fontFamily: fonts.mono, fontSize: 12, fontWeight: 900 }}>
+						<div style={{ borderRadius: 18, position: 'absolute', top: 14, right: 18, background: colors.white, border, boxShadow: shadowSm, padding: '8px 12px', fontFamily: fonts.mono, fontSize: 12, fontWeight: 900 }}>
 							🔄 Agile Sprint
 						</div>
 						<MiniArrow label="开发 ⇄ 测试 ⇄ 修 bug" />
@@ -210,7 +210,7 @@ export default function S16c_SDLCFlow() {
 				</div>
 
 				<div
-					style={{ alignSelf: 'stretch', background: colors.dark, color: colors.white, padding: '10px 20px', border, boxShadow: shadow, fontSize: 16, fontWeight: 900, lineHeight: 1.3 }}
+					style={{ borderRadius: 18, alignSelf: 'stretch', background: colors.dark, color: colors.white, padding: '10px 20px', border, boxShadow: shadow, fontSize: 16, fontWeight: 900, lineHeight: 1.3 }}
 				>
 					<span style={{ background: colors.red, padding: '0 8px' }}>8+ 种角色</span>、层层交接、需求层层失真 —— 一个功能上线，要走完整条链。
 				</div>

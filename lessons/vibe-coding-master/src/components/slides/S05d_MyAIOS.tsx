@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 // 真实例子：讲师本人在用的个人 AI OS 文件层级（/Users/lightman/Documents/sites/ai-os）
 // 三层信任级：结构化（可信可执行）/ 私密 / raw（原样存）
@@ -30,7 +30,7 @@ export default function S05d_MyAIOS() {
 
 				<div style={{ display: 'flex', gap: 24, alignItems: 'stretch' }}>
 					{/* 文件树 */}
-					<div style={{ flex: 1.6, background: colors.white, border, boxShadow: shadow, padding: '18px 22px' }}>
+					<div style={{ borderRadius: 18, flex: 1.6, background: colors.white, border, boxShadow: shadow, padding: '18px 22px' }}>
 						<div style={{ fontFamily: fonts.mono, fontSize: 15, fontWeight: 700, color: '#999', marginBottom: 10 }}>~/sites/ai-os/</div>
 						{TREE.map((t, i) => {
 							const tier = TIER[t.tier as 's' | 'p' | 'r'];
@@ -49,12 +49,12 @@ export default function S05d_MyAIOS() {
 					{/* 三层 + 数据流 */}
 					<div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12 }}>
 						{(['s', 'p', 'r'] as const).map((k) => (
-							<div key={k} style={{ background: colors.white, border, boxShadow: shadowSm, padding: '12px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
+							<div key={k} style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadowSm, padding: '12px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
 								<span style={{ width: 14, height: 14, borderRadius: 999, background: TIER[k].dot, border: '2px solid #000' }} />
 								<span style={{ fontWeight: 800, fontSize: 15, color: TIER[k].color }}>{TIER[k].label}</span>
 							</div>
 						))}
-						<div style={{ background: colors.dark, border, boxShadow: shadowSm, padding: '12px 14px', marginTop: 'auto' }}>
+						<div style={{ borderRadius: 18, background: colors.dark, border, boxShadow: shadowSm, padding: '12px 14px', marginTop: 'auto' }}>
 							<div style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.yellow, fontWeight: 700 }}>数据流</div>
 							<div style={{ color: colors.white, fontSize: 14, marginTop: 4, lineHeight: 1.45 }}>
 								Feedback / Reference（raw）<b style={{ color: colors.yellow }}> → AI 整理 → </b>Rules / Workflow / Projects（结构化）
@@ -65,7 +65,7 @@ export default function S05d_MyAIOS() {
 
 				<motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}
 					style={{ marginTop: 16, fontSize: 16, fontWeight: 600, color: '#444' }}>
-					今晚你写的简历 <span style={{ fontFamily: fonts.mono, background: colors.yellow, padding: '2px 8px', border: '2px solid #000' }}>experiences.md</span> ，就是往你自己这棵树里放下<b style={{ color: colors.black }}>第一个文件</b>。
+					今晚你写的简历 <span style={{ borderRadius: 18, fontFamily: fonts.mono, background: colors.yellow, padding: '2px 8px', border: '2px solid #000' }}>experiences.md</span> ，就是往你自己这棵树里放下<b style={{ color: colors.black }}>第一个文件</b>。
 				</motion.p>
 			</Inner>
 		</Slide>

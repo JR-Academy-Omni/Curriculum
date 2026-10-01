@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Half, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Half, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 // 为什么记忆系统用 Markdown / YAML，不用 JSON —— 大模型的特点
 const GOOD = ['结构清晰、像人话，模型一眼读懂', 'token 少，省上下文', '容错高：少个空格 / 缩进不崩', 'LLM 训练语料里见得最多'];
@@ -17,9 +17,9 @@ export default function S05f_MdNotJson() {
 				<div style={{ display: 'flex', gap: 22, marginTop: 20, alignItems: 'stretch' }}>
 					<Half>
 						<motion.div initial={{ opacity: 0, x: -36 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.45 }}
-							style={{ background: colors.white, border, boxShadow: shadow, padding: '18px 22px', height: '100%' }}>
+							style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadow, padding: '18px 22px', height: '100%' }}>
 							<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-								<span style={{ background: colors.green, border, padding: '3px 10px', fontWeight: 900, fontFamily: fonts.mono }}>✅ Markdown / YAML</span>
+								<span style={{ borderRadius: 18, background: colors.green, border, padding: '3px 10px', fontWeight: 900, fontFamily: fonts.mono }}>✅ Markdown / YAML</span>
 							</div>
 							{GOOD.map((g) => (
 								<div key={g} style={{ display: 'flex', gap: 8, marginTop: 12, fontSize: 16, lineHeight: 1.4 }}>
@@ -30,9 +30,9 @@ export default function S05f_MdNotJson() {
 					</Half>
 					<Half>
 						<motion.div initial={{ opacity: 0, x: 36 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.45, delay: 0.15 }}
-							style={{ background: '#f4f4f4', border, boxShadow: shadow, padding: '18px 22px', height: '100%' }}>
+							style={{ borderRadius: 18, background: '#f4f4f4', border, boxShadow: shadow, padding: '18px 22px', height: '100%' }}>
 							<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-								<span style={{ background: '#ddd', border, padding: '3px 10px', fontWeight: 900, fontFamily: fonts.mono }}>⚠️ JSON</span>
+								<span style={{ borderRadius: 18, background: '#ddd', border, padding: '3px 10px', fontWeight: 900, fontFamily: fonts.mono }}>⚠️ JSON</span>
 							</div>
 							{BAD.map((b) => (
 								<div key={b} style={{ display: 'flex', gap: 8, marginTop: 12, fontSize: 16, lineHeight: 1.4, color: '#555' }}>

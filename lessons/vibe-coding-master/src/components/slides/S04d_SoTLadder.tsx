@@ -1,4 +1,4 @@
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
 import { motion } from 'framer-motion';
 
 // SoT 往上走的阶梯 —— 个人 PRD → 企业 SoT → 文档群聚合成企业 AI OS
@@ -27,7 +27,7 @@ export default function S04d_SoTLadder() {
 					{rungs.map((r, i) => (
 						<motion.div key={r.scope}
 							initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + i * 0.18, type: 'spring', stiffness: 150, damping: 18 }}
-							style={{ display: 'flex', alignItems: 'stretch', width: `${r.w}%`, background: r.bg, color: r.fg, border, boxShadow: i === rungs.length - 1 ? `6px 6px 0 ${r.bar}` : shadow }}>
+							style={{ borderRadius: 18, display: 'flex', alignItems: 'stretch', width: `${r.w}%`, background: r.bg, color: r.fg, border, boxShadow: i === rungs.length - 1 ? `6px 6px 0 ${r.bar}` : shadow }}>
 							<div style={{ flexShrink: 0, width: 8, background: r.bar }} />
 							<div style={{ flexShrink: 0, width: 150, padding: '12px 14px', display: 'flex', alignItems: 'center', fontFamily: fonts.mono, fontSize: 15, fontWeight: 800, borderRight: `2px solid ${r.fg === colors.white ? '#444' : '#ddd'}` }}>
 								{r.scope}

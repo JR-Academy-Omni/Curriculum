@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 // 从个人联想到企业：公司 AI OS 层级（真实结构：jr-academy monorepo + jr-academy-memory）
 const TREE = [
@@ -20,7 +20,7 @@ export default function S05e_CompanyOS() {
 					<Title white size="40px">公司的 AI OS —— <span style={{ background: colors.yellow, color: colors.black, padding: '0 8px' }}>同一套模式，放大到公司</span></Title>
 				</div>
 
-				<div style={{ background: colors.white, border, boxShadow: shadow, padding: '18px 22px' }}>
+				<div style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadow, padding: '18px 22px' }}>
 					<div style={{ fontFamily: fonts.mono, fontSize: 15, fontWeight: 700, color: '#999', marginBottom: 10 }}>jr-academy/  （公司 AI OS · 真实在用）</div>
 					{TREE.map((t, i) => (
 						<motion.div key={t.name}
@@ -35,7 +35,7 @@ export default function S05e_CompanyOS() {
 
 				<motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
 					style={{ marginTop: 16, display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
-					<span style={{ background: colors.yellow, border, boxShadow: shadowSm, padding: '8px 14px', fontWeight: 800, fontSize: 16 }}>
+					<span style={{ borderRadius: 18, background: colors.yellow, border, boxShadow: shadowSm, padding: '8px 14px', fontWeight: 800, fontSize: 16 }}>
 						个人怎么搭，公司就怎么搭 —— 只是 PROFILE 变成 CLAUDE.md、经验变成团队记忆库
 					</span>
 					<span style={{ fontSize: 15, color: '#cfd3e6' }}>

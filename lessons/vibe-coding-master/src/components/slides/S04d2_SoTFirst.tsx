@@ -1,4 +1,4 @@
-import { Slide, Inner, Title, colors, fonts, border } from '../ui';
+import { Slide, Inner, Title, colors, fonts, border } from '../courseUi';
 import { motion } from 'framer-motion';
 
 const befores = [
@@ -33,7 +33,7 @@ export default function S04d2_SoTFirst() {
 				<motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
 					style={{ marginTop: 28, display: 'flex', gap: 16 }}>
 					{befores.map((b) => (
-						<div key={b.t} style={{ background: colors.white, color: colors.black, border, boxShadow: `5px 5px 0 ${colors.yellow}`, padding: '12px 20px', fontSize: 16, fontWeight: 800, display: 'flex', alignItems: 'center', gap: 8 }}>
+						<div key={b.t} style={{ borderRadius: 18, background: colors.white, color: colors.black, border, boxShadow: `5px 5px 0 ${colors.yellow}`, padding: '12px 20px', fontSize: 16, fontWeight: 800, display: 'flex', alignItems: 'center', gap: 8 }}>
 							<span style={{ fontSize: 22 }}>{b.icon}</span>{b.t} → 先问「SoT 在哪」
 						</div>
 					))}

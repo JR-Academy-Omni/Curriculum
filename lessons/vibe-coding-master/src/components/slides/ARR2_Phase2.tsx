@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 // 对照 ai-builder/public/outline.json phases[1]「Phase 2 — Skills, MCP & Agent 架构」(36 节)
 // 按主题归 6 簇，每节只归 1 簇：Tool Use(2) + Skills(9) + Workflow/Schedule(3) + MCP(9) + Agent(9) + 多Agent(4) = 36
@@ -60,13 +60,13 @@ function Pills({ lab, live, quest }: { lab: number; live: number; quest: string 
 	return (
 		<div style={{ display: 'flex', gap: 6, marginTop: 9, flexWrap: 'wrap' }}>
 			{lab > 0 && (
-				<span style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, padding: '2px 7px', background: colors.red, color: colors.white, border: '2px solid #000' }}>🔨 Lab ×{lab}</span>
+				<span style={{ borderRadius: 18, fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, padding: '2px 7px', background: colors.red, color: colors.white, border: '2px solid #000' }}>🔨 Lab ×{lab}</span>
 			)}
 			{live > 0 && (
-				<span style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, padding: '2px 7px', background: colors.dark, color: colors.white, border: '2px solid #000' }}>直播 ×{live}</span>
+				<span style={{ borderRadius: 18, fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, padding: '2px 7px', background: colors.dark, color: colors.white, border: '2px solid #000' }}>直播 ×{live}</span>
 			)}
 			{quest && (
-				<span style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, padding: '2px 7px', background: colors.purple, color: colors.white, border: '2px solid #000' }}>⚔ {quest}</span>
+				<span style={{ borderRadius: 18, fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, padding: '2px 7px', background: colors.purple, color: colors.white, border: '2px solid #000' }}>⚔ {quest}</span>
 			)}
 		</div>
 	);
@@ -86,7 +86,7 @@ export default function ARR2_Phase2() {
 
 				{/* 顶部定位条 */}
 				<motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}
-					style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 14, background: colors.dark, border, boxShadow: shadowSm, padding: '11px 18px' }}>
+					style={{ borderRadius: 18, display: 'flex', alignItems: 'center', gap: 14, marginTop: 14, background: colors.dark, border, boxShadow: shadowSm, padding: '11px 18px' }}>
 					<span style={{ fontSize: 18, fontWeight: 900, color: colors.orange, fontFamily: fonts.heading, flexShrink: 0 }}>造能力组件</span>
 					<span style={{ fontSize: 14, color: '#cfd3e6', lineHeight: 1.4 }}>
 						把单点能力一块块造出来 —— <b style={{ color: colors.white }}>Skills = 给 AI 装 app</b> · <b style={{ color: colors.white }}>MCP = 连外部世界</b> · <b style={{ color: colors.white }}>Agent = 后台进程</b>
@@ -98,13 +98,13 @@ export default function ARR2_Phase2() {
 					{clusters.map((c, i) => (
 						<motion.div key={c.n}
 							initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 + i * 0.08, type: 'spring', stiffness: 160, damping: 18 }}
-							style={{ background: colors.white, border, boxShadow: shadow, padding: '14px 15px', display: 'flex', flexDirection: 'column' }}>
+							style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadow, padding: '14px 15px', display: 'flex', flexDirection: 'column' }}>
 							<div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
 								<span style={{ fontSize: 24, fontWeight: 900, lineHeight: 1, color: colors.orange, fontFamily: fonts.heading }}>{c.n}</span>
-								<span style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, color: colors.black, background: colors.yellow, padding: '2px 8px', border: '2px solid #000' }}>{c.count} 节</span>
+								<span style={{ borderRadius: 18, fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, color: colors.black, background: colors.yellow, padding: '2px 8px', border: '2px solid #000' }}>{c.count} 节</span>
 							</div>
 							<div style={{ fontSize: 16, fontWeight: 900, marginTop: 9, lineHeight: 1.2 }}>{c.t}</div>
-							<div style={{ display: 'inline-block', alignSelf: 'flex-start', marginTop: 6, fontFamily: fonts.mono, fontSize: 11, fontWeight: 700, color: colors.orange, background: '#fff1e7', padding: '1px 6px', border: `1px solid ${colors.orange}` }}>{c.tag}</div>
+							<div style={{ borderRadius: 18, display: 'inline-block', alignSelf: 'flex-start', marginTop: 6, fontFamily: fonts.mono, fontSize: 11, fontWeight: 700, color: colors.orange, background: '#fff1e7', padding: '1px 6px', border: `1px solid ${colors.orange}` }}>{c.tag}</div>
 							<div style={{ fontSize: 12.5, color: '#555', marginTop: 8, lineHeight: 1.4 }}>{c.learn}</div>
 							<div style={{ fontSize: 12, color: colors.black, marginTop: 8, lineHeight: 1.35 }}>
 								<span style={{ color: colors.red, fontWeight: 800 }}>代表 · </span>
@@ -117,7 +117,7 @@ export default function ARR2_Phase2() {
 
 				{/* 底部小结 */}
 				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }}
-					style={{ display: 'flex', alignItems: 'center', gap: 18, marginTop: 16, background: colors.yellow, border, boxShadow: shadowSm, padding: '11px 18px' }}>
+					style={{ borderRadius: 18, display: 'flex', alignItems: 'center', gap: 18, marginTop: 16, background: colors.yellow, border, boxShadow: shadowSm, padding: '11px 18px' }}>
 					<span style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, color: colors.black }}>本阶段</span>
 					<span style={{ fontSize: 14, color: colors.black, lineHeight: 1.4 }}>
 						<b>8 个互动 Lab</b> · <b>6 节直播实战</b> · <b>2 个 Quest</b> —— <span style={{ background: colors.purple, color: colors.white, padding: '1px 6px', fontFamily: fonts.mono, fontSize: 12, fontWeight: 800 }}>Q03</span> 从零搭你自己的 MCP Server · <span style={{ background: colors.purple, color: colors.white, padding: '1px 6px', fontFamily: fonts.mono, fontSize: 12, fontWeight: 800 }}>Q04</span> 搭一个能跑的 Claude Code Sub-agents 工作流

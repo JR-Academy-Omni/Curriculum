@@ -1,12 +1,12 @@
-import { Slide, Inner, Half, Title, Tag, colors, fonts, border, shadow } from '../ui';
-import { slideFromLeft, slideFromRight } from '../ui';
+import { Slide, Inner, Half, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
+import { slideFromLeft, slideFromRight } from '../courseUi';
 import { motion } from 'framer-motion';
 
 function Row({ left, right }: { left: string; right: string }) {
 	return (
 		<div style={{ display: 'flex', gap: 12, alignItems: 'stretch', marginBottom: 12 }}>
-			<div style={{ flex: 1, background: '#fff', border, padding: '12px 16px', fontSize: 16, color: '#444' }}>{left}</div>
-			<div style={{ flex: 1, background: colors.yellow, border, padding: '12px 16px', fontSize: 16, fontWeight: 700 }}>{right}</div>
+			<div style={{ borderRadius: 18, flex: 1, background: '#fff', border, padding: '12px 16px', fontSize: 16, color: '#444' }}>{left}</div>
+			<div style={{ borderRadius: 18, flex: 1, background: colors.yellow, border, padding: '12px 16px', fontSize: 16, fontWeight: 700 }}>{right}</div>
 		</div>
 	);
 }
@@ -37,7 +37,7 @@ export default function S04_NoSoTChaos() {
 
 				<motion.div
 					initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.5 }}
-					style={{ marginTop: 26, alignSelf: 'flex-start', background: colors.dark, color: colors.white, padding: '16px 26px', border, boxShadow: shadow, fontSize: 20, fontWeight: 800 }}>
+					style={{ borderRadius: 18, marginTop: 26, alignSelf: 'flex-start', background: colors.dark, color: colors.white, padding: '16px 26px', border, boxShadow: shadow, fontSize: 20, fontWeight: 800 }}>
 					右边这一整套，就是这门课接下来要教你怎么建的「AI 记忆系统」。
 				</motion.div>
 			</Inner>

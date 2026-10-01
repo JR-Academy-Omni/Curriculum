@@ -1,4 +1,4 @@
-import { Slide, Inner, colors, fonts, border, shadow, springIn, slideFromLeft, slideFromRight } from '../ui';
+import { Slide, Inner, colors, fonts, border, shadow, springIn, slideFromLeft, slideFromRight } from '../courseUi';
 import { motion } from 'framer-motion';
 
 // 左侧 5 步 —— 现场带做
@@ -26,8 +26,8 @@ export default function H01_HandsOn() {
 			<Inner style={{ flexDirection: 'column', height: '88%' }}>
 				<motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}
 					style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-					<span style={{ fontSize: 15, fontWeight: 900, fontFamily: fonts.mono, color: colors.black, background: colors.yellow, padding: '8px 16px', border, letterSpacing: 1 }}>🔨 动手</span>
-					<span style={{ fontSize: 14, fontWeight: 800, fontFamily: fonts.mono, color: colors.dark, background: colors.green, padding: '8px 14px', border }}>⏱ ~14 min</span>
+					<span style={{ borderRadius: 18, fontSize: 15, fontWeight: 900, fontFamily: fonts.mono, color: colors.black, background: colors.yellow, padding: '8px 16px', border, letterSpacing: 1 }}>🔨 动手</span>
+					<span style={{ borderRadius: 18, fontSize: 14, fontWeight: 800, fontFamily: fonts.mono, color: colors.dark, background: colors.green, padding: '8px 14px', border }}>⏱ ~14 min</span>
 				</motion.div>
 				<motion.h2 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
 					style={{ fontFamily: fonts.heading, fontSize: 40, fontWeight: 900, color: colors.white, marginTop: 14, lineHeight: 1.1 }}>
@@ -35,17 +35,17 @@ export default function H01_HandsOn() {
 				</motion.h2>
 
 				{/* 顶部框定 */}
-				<motion.div {...springIn} style={{ marginTop: 14, background: '#0b0f1e', border: `2px solid ${colors.green}`, padding: '11px 18px', fontSize: 16.5, color: '#dfe3f0', lineHeight: 1.45 }}>
+				<motion.div {...springIn} style={{ borderRadius: 18, marginTop: 14, background: '#0b0f1e', border: `2px solid ${colors.green}`, padding: '11px 18px', fontSize: 16.5, color: '#dfe3f0', lineHeight: 1.45 }}>
 					<span style={{ color: colors.green, fontWeight: 800 }}>就用你刚才那句：</span>你刚自我介绍说的那件事，原样写进「输入」—— 你三十秒前已经说过一遍了，现在只是<span style={{ color: colors.yellow, fontWeight: 800 }}>落成字</span>。
 				</motion.div>
 
 				<div style={{ display: 'flex', gap: 18, marginTop: 16, flex: 1, minHeight: 0 }}>
 					{/* 左：Steps */}
-					<motion.div {...slideFromLeft} style={{ flex: 1.25, background: '#0b0f1e', border: `2px solid ${colors.green}`, padding: '16px 18px', overflow: 'hidden' }}>
+					<motion.div {...slideFromLeft} style={{ borderRadius: 18, flex: 1.25, background: '#0b0f1e', border: `2px solid ${colors.green}`, padding: '16px 18px', overflow: 'hidden' }}>
 						<div style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.green, fontWeight: 800, marginBottom: 12 }}>▸ 跟着这 5 步走</div>
 						{steps.map((s, i) => (
 							<div key={i} style={{ display: 'flex', gap: 11, marginBottom: 11, lineHeight: 1.4 }}>
-								<span style={{ flexShrink: 0, width: 24, height: 24, border: `2px solid ${colors.yellow}`, color: colors.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 900, fontFamily: fonts.mono }}>{i + 1}</span>
+								<span style={{ borderRadius: 18, flexShrink: 0, width: 24, height: 24, border: `2px solid ${colors.yellow}`, color: colors.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 900, fontFamily: fonts.mono }}>{i + 1}</span>
 								<div>
 									<div style={{ fontSize: 15.5, color: '#eef1fa', fontWeight: 600 }}>{s.t}</div>
 									{s.note && <div style={{ fontSize: 13.5, color: '#8890b0', fontFamily: fonts.mono, marginTop: 2, lineHeight: 1.4 }}>// {s.note}</div>}
@@ -55,12 +55,12 @@ export default function H01_HandsOn() {
 					</motion.div>
 
 					{/* 右：完成 Checklist */}
-					<motion.div {...slideFromRight} style={{ flex: 1, background: colors.white, border, boxShadow: shadow, padding: '16px 18px', display: 'flex', flexDirection: 'column' }}>
+					<motion.div {...slideFromRight} style={{ borderRadius: 18, flex: 1, background: colors.white, border, boxShadow: shadow, padding: '16px 18px', display: 'flex', flexDirection: 'column' }}>
 						<div style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.red, fontWeight: 800, marginBottom: 12 }}>☑ 完成 Checklist</div>
 						{checks.map((c, i) => (
 							<motion.div key={i} initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.5 + i * 0.1 }}
 								style={{ display: 'flex', gap: 11, alignItems: 'center', marginBottom: 13, fontSize: 15.5, lineHeight: 1.3 }}>
-								<span style={{ flexShrink: 0, width: 24, height: 24, border, background: colors.green, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 900, color: colors.black }}>✓</span>
+								<span style={{ borderRadius: 18, flexShrink: 0, width: 24, height: 24, border, background: colors.green, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 900, color: colors.black }}>✓</span>
 								<span style={{ color: '#222', fontWeight: 600 }}>{c}</span>
 							</motion.div>
 						))}

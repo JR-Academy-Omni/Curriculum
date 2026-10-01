@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 // 大纲是活的：随 Claude / Codex / Cursor 版本更新而迭代
 const TOOLS = [
@@ -22,7 +22,7 @@ export default function S00c_LivingSyllabus() {
 					{TOOLS.map((t, i) => (
 						<motion.div key={t.name}
 							initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: 'spring', stiffness: 180, damping: 15, delay: 0.2 + i * 0.12 }}
-							style={{ background: colors.white, border, boxShadow: shadow, padding: '16px 24px', minWidth: 200 }}>
+							style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadow, padding: '16px 24px', minWidth: 200 }}>
 							<div style={{ fontFamily: fonts.heading, fontWeight: 900, fontSize: 24, color: t.c }}>{t.name}</div>
 							<div style={{ fontSize: 14, color: '#666', marginTop: 6 }}>{t.note}</div>
 							<div style={{ marginTop: 10, fontFamily: fonts.mono, fontSize: 12, fontWeight: 700, color: '#999' }}>每隔几周就出新版本 →</div>

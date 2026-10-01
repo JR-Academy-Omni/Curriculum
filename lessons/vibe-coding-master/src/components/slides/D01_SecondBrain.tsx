@@ -1,4 +1,4 @@
-import { Slide, colors, fonts, border, shadow, shadowSm, slideFromLeft, slideFromRight } from '../ui';
+import { Slide, colors, fonts, border, shadow, shadowSm, slideFromLeft, slideFromRight } from '../courseUi';
 import { motion } from 'framer-motion';
 
 interface Brain { file: string; sub: string; color: string; }
@@ -34,7 +34,7 @@ export default function D01_SecondBrain() {
 					{/* 左：raw 简历 */}
 					<motion.div {...slideFromLeft} style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
 						<div style={{ fontFamily: fonts.mono, fontSize: 13, fontWeight: 800, letterSpacing: 1, color: '#888', marginBottom: 8 }}>① RAW · 一坨原始数据</div>
-						<div style={{ flex: 1, background: '#ececec', border, boxShadow: shadowSm, padding: '16px 16px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+						<div style={{ borderRadius: 18, flex: 1, background: '#ececec', border, boxShadow: shadowSm, padding: '16px 16px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 							<div style={{ fontFamily: fonts.mono, fontSize: 13, color: '#555', lineHeight: 1.7 }}>
 								<div>做过外卖平台后台…</div>
 								<div>会 Python / React…</div>
@@ -55,10 +55,10 @@ export default function D01_SecondBrain() {
 					{/* 中：第二大脑 = 3 个文件 */}
 					<motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.25 }} style={{ flex: 1.25, display: 'flex', flexDirection: 'column' }}>
 						<div style={{ fontFamily: fonts.mono, fontSize: 13, fontWeight: 800, letterSpacing: 1, color: colors.dark, marginBottom: 8 }}>② 这个人的「第二大脑」</div>
-						<div style={{ flex: 1, background: colors.dark, border, boxShadow: `6px 6px 0 ${colors.purple}`, padding: '14px 13px', display: 'flex', flexDirection: 'column', gap: 10, justifyContent: 'center' }}>
+						<div style={{ borderRadius: 18, flex: 1, background: colors.dark, border, boxShadow: `6px 6px 0 ${colors.purple}`, padding: '14px 13px', display: 'flex', flexDirection: 'column', gap: 10, justifyContent: 'center' }}>
 							{brain.map((b, i) => (
 								<motion.div key={b.file} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.45 + i * 0.12 }}
-									style={{ background: colors.white, border, boxShadow: shadowSm, padding: '9px 12px' }}>
+									style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadowSm, padding: '9px 12px' }}>
 									<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
 										<span style={{ width: 10, height: 10, borderRadius: 999, background: b.color, flexShrink: 0 }} />
 										<span style={{ fontFamily: fonts.mono, fontSize: 15, fontWeight: 800, color: colors.black }}>{b.file}</span>
@@ -81,7 +81,7 @@ export default function D01_SecondBrain() {
 						<div style={{ flex: 1, display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gap: 9 }}>
 							{prods.map((p, i) => (
 								<motion.div key={p.title} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.7 + i * 0.1 }}
-									style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '0 14px', border, background: p.you ? colors.red : colors.white, boxShadow: p.you ? shadow : shadowSm, opacity: p.you ? 1 : 0.55, position: 'relative' }}>
+									style={{ borderRadius: 18, display: 'flex', alignItems: 'center', gap: 10, padding: '0 14px', border, background: p.you ? colors.red : colors.white, boxShadow: p.you ? shadow : shadowSm, opacity: p.you ? 1 : 0.55, position: 'relative' }}>
 									<span style={{ fontSize: 22, lineHeight: 1 }}>{p.icon}</span>
 									<span style={{ fontFamily: fonts.heading, fontSize: 18, fontWeight: 900, color: p.you ? colors.white : colors.black }}>{p.title}</span>
 									{p.you && <span style={{ marginLeft: 'auto', fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, color: colors.white, background: colors.dark, padding: '2px 8px' }}>★ 今天做这个</span>}
@@ -92,7 +92,7 @@ export default function D01_SecondBrain() {
 				</div>
 
 				<motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 1.2 }} style={{ marginTop: 18, textAlign: 'center' }}>
-					<div style={{ display: 'inline-block', padding: '11px 26px', background: colors.dark, color: colors.white, border, boxShadow: `6px 6px 0 ${colors.red}`, fontFamily: fonts.heading, fontSize: 21, fontWeight: 900 }}>
+					<div style={{ borderRadius: 18, display: 'inline-block', padding: '11px 26px', background: colors.dark, color: colors.white, border, boxShadow: `6px 6px 0 ${colors.red}`, fontFamily: fonts.heading, fontSize: 21, fontWeight: 900 }}>
 						改一次 <span style={{ fontFamily: fonts.mono, color: colors.yellow }}>experiences</span>，所有产物一起更新 —— 你维护的永远是<span style={{ color: colors.yellow }}>那一份真相</span>
 					</div>
 				</motion.div>

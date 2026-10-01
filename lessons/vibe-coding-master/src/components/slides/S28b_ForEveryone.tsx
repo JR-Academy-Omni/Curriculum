@@ -1,4 +1,4 @@
-import { Slide, Inner, Title, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, colors, fonts, border, shadow } from '../courseUi';
 import { motion } from 'framer-motion';
 
 // 收尾 mic-drop —— AI Coding for Everyone
@@ -28,7 +28,7 @@ export default function S28b_ForEveryone() {
 				</motion.p>
 
 				<motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
-					style={{ marginTop: 26, background: colors.white, color: colors.black, border, boxShadow: `6px 6px 0 ${colors.red}`, padding: '14px 24px', fontSize: 18, fontWeight: 800 }}>
+					style={{ borderRadius: 18, marginTop: 26, background: colors.white, color: colors.black, border, boxShadow: `6px 6px 0 ${colors.red}`, padding: '14px 24px', fontSize: 18, fontWeight: 800 }}>
 见过运营、marketing 同事一行代码不写,照样天天用 Claude 建页面、发任务、跑数据 —— 今天的 6 个动手,你也已经做到了。
 				</motion.div>
 			</Inner>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, colors, fonts, border, shadow } from '../courseUi';
 
 // 封面 —— Vibe Coding 大师课 · 第一节课
 export default function S01_Cover() {
@@ -15,12 +15,12 @@ export default function S01_Cover() {
 							display: 'inline-block', padding: '8px 20px',
 							background: colors.black, color: colors.yellow,
 							fontFamily: fonts.mono, fontSize: 14, fontWeight: 700,
-							letterSpacing: 3, marginBottom: 30,
+							letterSpacing: 3, marginBottom: 30, borderRadius: 10,
 						}}>
 						JR ACADEMY · VIBE CODING 大师课 · 第一节课
 					</motion.div>
 
-					<Title size="110px" style={{ lineHeight: 1.0, marginBottom: 18 }}>
+					<Title size="96px" style={{ lineHeight: 1.0, marginBottom: 18 }}>
 						<motion.span
 							initial={{ opacity: 0, y: 24 }}
 							animate={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ export default function S01_Cover() {
 								initial={{ opacity: 0, scale: 0.9 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ duration: 0.4, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-								style={{ display: 'inline-block', background: colors.red, color: colors.white, padding: '0 24px' }}
+								style={{ display: 'inline-block', background: colors.red, color: colors.white, padding: '6px 24px', borderRadius: 18 }}
 							>大师课</motion.span>
 						</motion.span>
 					</Title>
@@ -49,7 +49,7 @@ export default function S01_Cover() {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: 0.85 }}
-						style={{
+						style={{ borderRadius: 18,
 							display: 'inline-flex', gap: 16, alignItems: 'center',
 							padding: '16px 28px', marginTop: 26,
 							background: colors.white, border, boxShadow: shadow,

@@ -1,4 +1,4 @@
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
 
 const steps = [
 	{ label: '被替代', sub: '同样的活，别人用 AI 半天干完' },
@@ -22,7 +22,7 @@ export default function S02d_Stakes() {
 					{steps.map((s, i) => (
 						<div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 20, flex: 1 }}>
 							<div
-								style={{ flex: 1, background: i === 2 ? colors.red : colors.white, border, boxShadow: shadow, padding: '26px 22px', textAlign: 'center' }}>
+								style={{ borderRadius: 18, flex: 1, background: i === 2 ? colors.red : colors.white, border, boxShadow: shadow, padding: '26px 22px', textAlign: 'center' }}>
 								<div style={{ fontFamily: fonts.mono, fontSize: 13, color: i === 2 ? '#ffffffcc' : '#999', marginBottom: 8 }}>
 									0{i + 1}
 								</div>
@@ -44,8 +44,8 @@ export default function S02d_Stakes() {
 				</div>
 
 				<div
-					style={{ marginTop: 34, alignSelf: 'stretch', background: colors.white, color: colors.black, border, boxShadow: shadow, padding: '18px 22px', display: 'grid', gridTemplateColumns: '260px 1fr', gap: 20, alignItems: 'center' }}>
-					<div style={{ background: colors.red, color: colors.white, border, padding: '12px 14px', fontFamily: fonts.heading, fontSize: 24, fontWeight: 900, textAlign: 'center' }}>
+					style={{ borderRadius: 18, marginTop: 34, alignSelf: 'stretch', background: colors.white, color: colors.black, border, boxShadow: shadow, padding: '18px 22px', display: 'grid', gridTemplateColumns: '260px 1fr', gap: 20, alignItems: 'center' }}>
+					<div style={{ borderRadius: 18, background: colors.red, color: colors.white, border, padding: '12px 14px', fontFamily: fonts.heading, fontSize: 24, fontWeight: 900, textAlign: 'center' }}>
 						不要等公司<br />发 Claude 权限
 					</div>
 					<div style={{ fontSize: 20, fontWeight: 900, lineHeight: 1.45 }}>

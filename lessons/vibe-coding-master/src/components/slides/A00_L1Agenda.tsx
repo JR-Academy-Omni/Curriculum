@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
 
 // 第一节课 · 今晚内容总览（避免和整门课混淆）
 const ITEMS = [
@@ -27,11 +27,11 @@ export default function A00_L1Agenda() {
 							initial={{ opacity: 0, x: -40 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.45, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-							style={{
+							style={{ borderRadius: 18,
 								display: 'flex', alignItems: 'flex-start', gap: 16,
 								background: colors.white, border, boxShadow: shadow, padding: '16px 20px',
 							}}>
-							<span style={{
+							<span style={{ borderRadius: 18,
 								flexShrink: 0, fontFamily: fonts.mono, fontWeight: 700, fontSize: 20,
 								background: it.c, color: colors.white, padding: '4px 10px', border,
 							}}>{it.n}</span>

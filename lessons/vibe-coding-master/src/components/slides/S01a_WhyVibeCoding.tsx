@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 const shifts = [
 	{ n: '01', t: '从 prompt 到 workflow', d: '不是问一句答一句，而是把需求、约束、验收标准交给 AI 跑流程。', c: colors.blue },
@@ -18,7 +18,7 @@ export default function S01a_WhyVibeCoding() {
 							什么是 <span style={{ background: colors.yellow, padding: '0 12px' }}>Vibe Coding</span>？
 						</Title>
 					</div>
-					<div style={{ width: 340, background: colors.white, border, boxShadow: shadowSm, padding: '14px 16px', fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, lineHeight: 1.45 }}>
+					<div style={{ borderRadius: 18, width: 340, background: colors.white, border, boxShadow: shadowSm, padding: '14px 16px', fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, lineHeight: 1.45 }}>
 						今天不是教你多背 prompt<br />
 						是教你怎么指挥 AI 交付结果
 					</div>
@@ -29,7 +29,7 @@ export default function S01a_WhyVibeCoding() {
 						initial={{ opacity: 0, x: -24 }}
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.4 }}
-						style={{
+						style={{ borderRadius: 18,
 							background: colors.dark,
 							color: colors.white,
 							border,
@@ -50,11 +50,11 @@ export default function S01a_WhyVibeCoding() {
 							</div>
 						</div>
 						<div style={{ marginTop: 28, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-							<div style={{ background: colors.white, color: colors.black, border, padding: '12px 14px' }}>
+							<div style={{ borderRadius: 18, background: colors.white, color: colors.black, border, padding: '12px 14px' }}>
 								<div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 900, color: '#667085' }}>以前</div>
 								<div style={{ fontSize: 20, fontWeight: 900, marginTop: 4 }}>人拆任务给人做</div>
 							</div>
-							<div style={{ background: colors.red, color: colors.white, border, padding: '12px 14px' }}>
+							<div style={{ borderRadius: 18, background: colors.red, color: colors.white, border, padding: '12px 14px' }}>
 								<div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 900 }}>现在</div>
 								<div style={{ fontSize: 20, fontWeight: 900, marginTop: 4 }}>人给方向，Agent 跑闭环</div>
 							</div>
@@ -70,9 +70,9 @@ export default function S01a_WhyVibeCoding() {
 									initial={{ opacity: 0, y: 16 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ delay: 0.15 + i * 0.08, duration: 0.35 }}
-									style={{ background: colors.white, border, boxShadow: shadowSm, padding: '18px 20px', display: 'flex', gap: 16, alignItems: 'flex-start' }}
+									style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadowSm, padding: '18px 20px', display: 'flex', gap: 16, alignItems: 'flex-start' }}
 								>
-									<div style={{ flexShrink: 0, width: 54, height: 54, background: x.c, color: darkText ? colors.black : colors.white, border, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: fonts.mono, fontSize: 18, fontWeight: 900 }}>
+									<div style={{ borderRadius: 18, flexShrink: 0, width: 54, height: 54, background: x.c, color: darkText ? colors.black : colors.white, border, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: fonts.mono, fontSize: 18, fontWeight: 900 }}>
 										{x.n}
 									</div>
 									<div>
@@ -87,7 +87,7 @@ export default function S01a_WhyVibeCoding() {
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							transition={{ delay: 0.55 }}
-							style={{ background: colors.yellow, border, boxShadow: shadowSm, padding: '14px 18px', fontSize: 18, fontWeight: 900, lineHeight: 1.42 }}
+							style={{ borderRadius: 18, background: colors.yellow, border, boxShadow: shadowSm, padding: '14px 18px', fontSize: 18, fontWeight: 900, lineHeight: 1.42 }}
 						>
 							所以这门课不会只讲“怎么让 AI 写代码”，而是讲：
 							<span style={{ background: colors.red, color: colors.white, padding: '0 8px', marginLeft: 6 }}>怎么让 AI 帮你交付任何可结构化的工作</span>

@@ -1,4 +1,4 @@
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
 import { motion } from 'framer-motion';
 
 const lines = [
@@ -38,14 +38,14 @@ export default function A03_SelfIntro() {
 					{lines.map((x, i) => (
 						<motion.div key={x.n}
 							initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.13, type: 'spring', stiffness: 180, damping: 18 }}
-							style={{ background: colors.white, border, boxShadow: shadow, padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 18 }}>
-							<div style={{ flexShrink: 0, width: 60, height: 60, background: x.color, border, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, fontWeight: 900, color: colors.white, fontFamily: fonts.heading }}>{x.n}</div>
+							style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadow, padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 18 }}>
+							<div style={{ borderRadius: 18, flexShrink: 0, width: 60, height: 60, background: x.color, border, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, fontWeight: 900, color: colors.white, fontFamily: fonts.heading }}>{x.n}</div>
 							<div style={{ flex: 1 }}>
 								<div style={{ fontSize: 23, fontWeight: 900, fontFamily: fonts.heading }}>{x.q}</div>
 								<div style={{ fontSize: 15.5, color: '#444', marginTop: 5, lineHeight: 1.4 }}>{x.d}</div>
 							</div>
 							{x.map && (
-								<div style={{ flexShrink: 0, padding: '8px 16px', background: x.map.color, border, fontSize: 16, fontWeight: 900, color: colors.white, fontFamily: fonts.mono }}>
+								<div style={{ borderRadius: 18, flexShrink: 0, padding: '8px 16px', background: x.map.color, border, fontSize: 16, fontWeight: 900, color: colors.white, fontFamily: fonts.mono }}>
 									{x.map.label}
 								</div>
 							)}
@@ -54,7 +54,7 @@ export default function A03_SelfIntro() {
 				</div>
 
 				<motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.85 }}
-					style={{ marginTop: 18, background: colors.dark, border, boxShadow: shadow, padding: '14px 24px', display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+					style={{ borderRadius: 18, marginTop: 18, background: colors.dark, border, boxShadow: shadow, padding: '14px 24px', display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
 					<span style={{ fontSize: 17, color: colors.white, fontWeight: 700, lineHeight: 1.4 }}>
 						第<span style={{ background: colors.blue, color: colors.white, padding: '0 8px', fontFamily: fonts.mono, fontWeight: 900 }}>②</span>句 = 你等会简历 PRD 的「<span style={{ color: colors.blue, fontWeight: 900 }}>输入</span>」；
 						第<span style={{ background: colors.purple, color: colors.white, padding: '0 8px', fontFamily: fonts.mono, fontWeight: 900 }}>③</span>句 = 你的「<span style={{ color: colors.purple, fontWeight: 900 }}>目标</span>」。

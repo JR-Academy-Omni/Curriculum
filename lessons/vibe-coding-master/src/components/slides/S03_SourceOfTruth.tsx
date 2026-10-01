@@ -1,5 +1,5 @@
-import { Slide, Inner, Title, Tag, Card, Grid, colors, fonts } from '../ui';
-import { Stagger, StaggerItem } from '../ui';
+import { Slide, Inner, Title, Tag, Card, Grid, colors, fonts } from '../courseUi';
+import { Stagger, StaggerItem } from '../courseUi';
 import { motion } from 'framer-motion';
 
 // Source of Truth 定义
@@ -45,7 +45,7 @@ export default function S03_SourceOfTruth() {
 				</Stagger>
 
 				<motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
-					style={{ marginTop: 30, background: '#16203a', border: `3px solid ${colors.yellow}`, padding: '14px 28px', textAlign: 'center' }}>
+					style={{ borderRadius: 18, marginTop: 30, background: '#16203a', border: `3px solid ${colors.yellow}`, padding: '14px 28px', textAlign: 'center' }}>
 					<div style={{ fontSize: 23, fontWeight: 900, color: colors.white, lineHeight: 1.35 }}>
 						AI coding 的本质 = 不断<span style={{ background: colors.yellow, color: colors.black, padding: '0 8px' }}>寻找 + 确认 source of truth</span>的过程
 					</div>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 
 const stages = [
 	{ n: '①', title: '拿到需求', en: 'Requirements', sub: '看见要解决的问题', color: colors.blue },
@@ -39,7 +39,7 @@ function StageCard({ stage, i }: { stage: typeof stages[number]; i: number }) {
 			}}
 		>
 			<div
-				style={{
+				style={{ borderRadius: 18,
 				background: colors.white,
 				border,
 				boxShadow: shadowSm,
@@ -130,7 +130,7 @@ export default function S16d_ADLCFlow() {
 							Agent Development Lifecycle · 智能体开发生命周期
 						</div>
 					</div>
-					<div style={{ width: 310, background: colors.white, border, boxShadow: shadowSm, padding: '12px 14px', fontSize: 16, fontWeight: 900, lineHeight: 1.45 }}>
+					<div style={{ borderRadius: 18, width: 310, background: colors.white, border, boxShadow: shadowSm, padding: '12px 14px', fontSize: 16, fontWeight: 900, lineHeight: 1.45 }}>
 						你给方向 + 把关<br />
 						Agent 端到端执行
 					</div>
@@ -139,7 +139,7 @@ export default function S16d_ADLCFlow() {
 				<div style={{ flex: '0 0 auto', position: 'relative', height: 430, width: 1060, maxWidth: '100%', alignSelf: 'center' }}>
 					<ConnectedLoop />
 					<div
-						style={{
+						style={{ borderRadius: 18,
 							position: 'absolute',
 							left: 390,
 							top: 148,
@@ -174,13 +174,13 @@ export default function S16d_ADLCFlow() {
 
 					{stages.map((s, i) => <StageCard key={s.n} stage={s} i={i} />)}
 
-					<div style={{ position: 'absolute', left: 190, top: 76, background: colors.yellow, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '7px 12px', fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, zIndex: 4 }}>
+					<div style={{ borderRadius: 18, position: 'absolute', left: 190, top: 76, background: colors.yellow, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '7px 12px', fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, zIndex: 4 }}>
 						↻ 回到起点 · 再迭代
 					</div>
 				</div>
 
 				<div
-					style={{ alignSelf: 'stretch', background: colors.dark, color: colors.white, border, boxShadow: shadow, padding: '12px 20px', fontSize: 16, lineHeight: 1.42 }}
+					style={{ borderRadius: 18, alignSelf: 'stretch', background: colors.dark, color: colors.white, border, boxShadow: shadow, padding: '12px 20px', fontSize: 16, lineHeight: 1.42 }}
 				>
 					<span style={{ color: colors.yellow, fontFamily: fonts.mono, fontWeight: 900 }}>本质区别 = 开发流程不一样：</span>{' '}
 					传统 SDLC / Agile = PRD 拆成 user story，分给一堆人做；ADLC ={' '}

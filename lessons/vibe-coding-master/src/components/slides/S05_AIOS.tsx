@@ -1,5 +1,5 @@
-import { Slide, Inner, Title, Tag, Card, Grid, colors, fonts } from '../ui';
-import { Stagger, StaggerItem } from '../ui';
+import { Slide, Inner, Title, Tag, Card, Grid, colors, fonts } from '../courseUi';
+import { Stagger, StaggerItem } from '../courseUi';
 import { motion } from 'framer-motion';
 
 // AI 需要一个操作系统 —— AI OS 概念

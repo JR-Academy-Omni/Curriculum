@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../ui';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
 
 // 对照 ai-builder/public/outline.json：Vibe Coding 大师课 · 8 周 · 110 节 · 4 Phase
 const stages = [
@@ -51,14 +51,14 @@ export default function S00b_Roadmap() {
 						<motion.div key={i}
 							initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.13, type: 'spring', stiffness: 150, damping: 17 }}
 							style={{ display: 'flex', alignItems: 'center', flex: 1, minWidth: 0 }}>
-							<div style={{
+							<div style={{ borderRadius: 18,
 								flex: 1, minWidth: 0, position: 'relative',
 								background: s.now ? colors.dark : colors.white,
 								border, boxShadow: s.now ? `6px 6px 0 ${colors.red}` : shadow,
 								padding: '22px 18px',
 							}}>
 								{s.now && (
-									<span style={{
+									<span style={{ borderRadius: 18,
 										position: 'absolute', top: -14, right: 14, padding: '4px 12px',
 										background: colors.red, color: colors.white, border: '2px solid #000',
 										fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, letterSpacing: 1,
