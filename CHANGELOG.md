@@ -2,6 +2,8 @@
 
 ## 2026-10-01
 
+- 优化墨尔本讲座四位嘉宾名片，统一居中圆形头像、主题色细环、姓名身份和演讲入口布局（`lessons/melbourne-ai-work-system-2026-10-01`）
+
 - 更新墨尔本10月1日讲座封面与四位嘉宾介绍页头像为圆形，保留原始照片与演讲入口（`lessons/melbourne-ai-work-system-2026-10-01`）
 
 - 按新版 Talk Deck 重做大师课第一课40页视觉，统一网格纸、圆角与品牌阴影，重排第6页并保留URL及Classroom契约（`lessons/vibe-coding-master`）

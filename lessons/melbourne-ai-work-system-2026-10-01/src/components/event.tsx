@@ -64,14 +64,15 @@ export function SpeakerSlide({ speaker, index }: { speaker: Speaker; index: numb
         </Panel>
       </AnimatedGroup>
       <AnimatedGroup delay={.25} style={{ minHeight: 0 }}>
-        <Panel style={{ padding: 0, overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
-          <div style={{ flex: 1, minHeight: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', background: '#fffdf9' }}>
-            <SpeakerPortrait speaker={speaker} width={496} height={380} />
+        <Panel style={{ padding: '22px 28px', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 14, background: '#fffdf9', boxShadow: `8px 8px 0 ${speaker.accent}` }}>
+          <div style={{ padding: 7, borderRadius: '50%', border: `2px solid ${speaker.accent}`, background: '#fff' }}>
+            <SpeakerPortrait speaker={speaker} width={300} />
           </div>
-          <div style={{ padding: '18px 24px', background: colors.yellow, flexShrink: 0 }}>
-            <strong style={{ fontSize: 26 }}>{speaker.name}</strong>
-            <div style={{ marginTop: 12, display: 'flex', justifyContent: 'flex-end' }}><PresentationLink speaker={speaker} /></div>
+          <div style={{ textAlign: 'center', width: '100%' }}>
+            <strong style={{ display: 'block', fontFamily: fonts.heading, fontSize: 34, lineHeight: 1.15, color: colors.dark }}>{speaker.name}</strong>
+            <p style={{ marginTop: 8, fontSize: 19, lineHeight: 1.35, color: '#514c48', fontWeight: 600 }}>{speaker.role}</p>
           </div>
+          {speaker.href && <div style={{ marginTop: 2 }}><PresentationLink speaker={speaker} /></div>}
         </Panel>
       </AnimatedGroup>
     </div>
