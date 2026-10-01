@@ -6,7 +6,7 @@
 
 来源：https://jracademy.ai/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=24
 
-| 源页码 | 目标页码 | 原组件（文件内容一致） |
+| 源页码 | 目标页码 | 复制来源组件 |
 |---:|---:|---|
 | 7 | 5 | S37_MetaTree.tsx |
 | 8 | 6 | S24_AICircleIntro.tsx |
@@ -23,7 +23,7 @@
 
 城市详情共享组件AICircleCitySlide.tsx同样原样复制；DeckFrame/deck.tsx与来源一致，五个锁定runtime不改。所有资源放在本活动public中，使用本活动BASE_URL，不依赖9月目录的线上资源。
 
-参考第7页的MetaTree白色logo在原白面板中本就不显眼，沿用用户指定页面，不擅自替换。第24页文案、群二维码与格式原样保留。
+参考第7页的MetaTree白色logo在原白面板中本就不显眼，沿用用户指定页面，不擅自替换。第24页群二维码与格式原样保留；2026-10-01按用户要求，目标尾页删除15分钟展示规则、主持人停止展示及自由交流的指定中英文说明，保留其余文字。其他复制组件内容不变，9月参考目录不修改。
 
 ## 资源校验
 

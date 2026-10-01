@@ -44,7 +44,7 @@ export default function S20_Join() {
                 whiteSpace: "pre-line",
               }}
             >
-              {"非正式项目交流 · 认识创业者、投资人与潜在客户\n每项最多15分钟：展示10分钟 + 答疑5分钟\n到时主持人停止展示；最后自由交流\nInformal networking with founders, investors and potential clients.\n15 min total: 10 min demo + 5 min Q&A.\nHost stops at 15 min. Open networking follows."}
+              {"非正式项目交流 · 认识创业者、投资人与潜在客户"}
             </p>
           </Panel>
           <Panel
