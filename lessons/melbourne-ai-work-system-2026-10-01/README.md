@@ -6,7 +6,7 @@
 - 原稿： https://canva.link/5medn4sfe0328rm
 - 内容核对：`research/canva-transcript.md` 与 `research/canva-page-map.json`。
 - 视觉基准：仓库 `.claude/skills/talk-deck/SKILL.md`，直接复用用户指定的老板9月稿 `editions/2026-09/src/components/deck.tsx`；具体第8页 `S24_AICircleIntro` 的双主面板与黄色图片说明区。见 `STYLE_REFERENCE.md`。
-- 维护嘉宾链接：`src/data/speakers.ts`。李敏通过匠人在线入口打开用户提供的原版 PPTX，使用 PowerPoint 在线预览，内容、版式和备注均不修改；无需下载；其他三位未提供演讲材料链接，页面留空，不显示占位文字或按钮，不使用猜测链接。
+- 维护嘉宾链接：`src/data/speakers.ts`。第19页Michael的“查看分享ppt”直接打开用户原版`AI-ROI.pdf`，由浏览器在线预览。李敏通过匠人在线入口打开用户提供的原版 PPTX，使用 PowerPoint 在线预览，内容、版式和备注均不修改；无需下载。Lightman和Michael Yang未提供演讲材料链接，页面留空，不显示占位文字或按钮，不使用猜测链接。
 - 尾页二维码：使用用户指定9月参考稿第24页的完整原二维码。原活动第13页已删除，旧二维码仅保留为来源档案。
 - JR 黑色 logo 为用户官方原始 PNG，SVG 为同一文件的无损嵌入；ANZ / Bupa 和人物图片来自用户 Canva。
 

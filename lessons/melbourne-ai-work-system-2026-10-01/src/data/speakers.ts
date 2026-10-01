@@ -23,6 +23,7 @@ export const speakers: Speaker[] = [
   {
     id: 'michael', name: 'Michael', role: '澳洲 VET 持证培训师',
     title: 'AI Marketing 自动化运营', image: 'michael-portrait.jpg', accent: '#38B6FF',
+    href: './speakers/michael-ai-roi.pdf#page=1&view=FitH',
     portraitPosition: '50% 0%',
     topics: [
       { title: '内容生产', description: '选题与多媒体创作' },
