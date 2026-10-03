@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S08_Lesson(){return <LessonPage {...{"tag": "W3 · 业务链 · 25 MIN", "title": "把活动放回正确的业务上下文", "subtitle": "从 Resident 到 Care Activity，关系必须一致。", "mode": "rows", "blocks": [["Resident", "操作针对哪一个对象，页面如何选择并保持它。"], ["Shift", "当前工作的上下文，读取实际模型的关联约束。"], ["Task", "当前动作属于哪个对象与哪次工作。"], ["Care Activity", "记录活动结果，并把结果接到 Progress Note。"]], "footer": "字段名和约束以实际 schema 为准；此页不定义虚构数据库表。"}}/>;}

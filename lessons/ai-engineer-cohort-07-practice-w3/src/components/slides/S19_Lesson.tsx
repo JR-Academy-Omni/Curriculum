@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S19_Lesson(){return <LessonPage {...{"tag": "W3 · E2E", "title": "把 MVP 主路径写成浏览器验收", "subtitle": "课程使用 Playwright 验证 non-AI vertical slice。", "mode": "rows", "blocks": [["前置", "明确环境、合成数据和测试角色。"], ["主路径", "Resident → Shift → Task → Activity → Note → Review → Confirm。"], ["断言", "状态、权限、重读结果和 audit 关联均符合契约。"], ["反例", "未授权操作或失败场景不留下错误确认记录。"]], "footer": "选择器、接口地址与测试命令从实际项目读取。"}}/>;}

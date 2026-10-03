@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S13_Lesson(){return <LessonPage {...{"tag": "W2 · LAB · 30 MIN", "title": "用 Claude 迭代核心页面", "subtitle": "一次只指出一个可核查的界面问题。", "mode": "exercise", "blocks": [["读取", "让 Claude 先读取 Brief、DESIGN.md 与已有组件。"], ["实现", "选一个页面，明确 allowed scope 与验收动作。"], ["检查", "检查导航、状态、手机布局与实际截图。"], ["迭代", "把截图中的具体差距写回任务，再复查。"]], "footer": "保留 prompt、diff 与 before/after，不用“更好看”替代标准。"}}/>;}

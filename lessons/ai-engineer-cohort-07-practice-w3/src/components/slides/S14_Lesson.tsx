@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S14_Lesson(){return <LessonPage {...{"tag": "W3 · VERSION", "title": "确认针对哪一个文档版本", "subtitle": "版本与 reviewer 是业务证据的一部分。", "mode": "rows", "blocks": [["文档身份", "每次编辑与确认针对哪一份 Progress Note。"], ["当前版本", "保存后显示实际版本与状态。"], ["Review 上下文", "审查者看到的内容与待确认版本一致。"], ["冲突候选", "确认前内容发生变化时，按产品契约处理并复核。"]], "footer": "实现方式取决于真实模型；不要只在 UI 加一个 version 标签。"}}/>;}

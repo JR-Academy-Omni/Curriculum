@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S02_Lesson(){return <LessonPage {...{"tag": "W3 · 目录 · 120 MIN", "title": "把 W2 UI 接成一条真实业务链", "subtitle": "七个环节，对应 C7P03。", "mode": "rows", "blocks": [["00–25", "锁定 scope 10 分钟；读取 starter 与实施计划 15 分钟。"], ["25–75", "连接活动链 25 分钟；文档流程与角色权限 25 分钟。"], ["75–105", "版本、audit 和 failure states 20 分钟；集成修复 10 分钟。"], ["105–120", "端到端测试、MVP demo 与限制清单 15 分钟。"]], "footer": "Claude 是开发工具；本周产品不调用 AI 模型。"}}/>;}

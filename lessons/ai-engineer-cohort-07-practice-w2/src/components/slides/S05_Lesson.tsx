@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S05_Lesson(){return <LessonPage {...{"tag": "W2 · WORKSHOP · 15 MIN", "title": "画页面地图，再安排导航", "subtitle": "按照 C7P02 的关键页面建立信息架构。", "mode": "rows", "blocks": [["主入口", "Dashboard：用户下一步要做什么？"], ["业务对象", "Resident、Shift/Task、Care Activity：从谁到哪次活动？"], ["文档操作", "Documentation：输入、草稿、复核与确认。"], ["追溯", "Review/Confirm 与 Audit：谁做了什么、当前状态是什么？"]], "footer": "这里列出课程页面范围；实际字段与权限仍以 W1 契约为准。"}}/>;}

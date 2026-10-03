@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S07_Lesson(){return <LessonPage {...{"tag": "W2 · EXPLORE", "title": "比较两个有差异的设计方向", "subtitle": "比较结构与成本，留下选择理由。", "mode": "grid", "blocks": [["方向 A · 信息密集", "更多列表和紧凑布局；检查是否便于扫描与批量工作。"], ["方向 B · 任务导向", "强调当前动作与分步填写；检查步骤是否过长。"], ["共同标准", "比较 hierarchy、interaction、状态可见性和 mobile layout。"], ["选择依据", "用同一任务评审；记录选型理由与实现成本。"]], "footer": "A/B 是课堂设计练习，不是对 CareKind 用户偏好的既定结论。"}}/>;}

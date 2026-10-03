@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S21_Lesson(){return <LessonPage {...{"tag": "W3 · 交付 · W3 → W4", "title": "把可运行 MVP 交给下一周", "subtitle": "Voice AI 的第一次接入安排在 W4。", "mode": "hero", "blocks": [["W3 证据包", "可运行 vertical slice · 权限与状态\n版本 · audit · 失败处理 · E2E"], ["运行材料", "真实启动步骤、测试结果、demo 与限制清单。"], ["下一周", "在已验证业务链上接 Voice AI；确认责任仍由人承担。"]], "footer": "本周不能把 Claude 帮忙写代码称作产品已经具备 AI 功能。"}}/>;}

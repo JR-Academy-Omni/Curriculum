@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S09_Lesson(){return <LessonPage {...{"tag": "W2 · SYSTEMIZE", "title": "DESIGN.md 记录设计决策", "subtitle": "把本次选择变成下一页也能复用的规则。", "mode": "rows", "blocks": [["结构", "导航、页面层级、主要与次要动作如何摆放。"], ["视觉", "颜色、字号、间距、容器和信息密度。"], ["组件", "button、form、table、dialog 的状态与 variants。"], ["行为", "响应式、键盘路径、错误反馈与 reduced motion。"]], "footer": "把实际选定值写进去；不要抄一套与页面不一致的规则。"}}/>;}

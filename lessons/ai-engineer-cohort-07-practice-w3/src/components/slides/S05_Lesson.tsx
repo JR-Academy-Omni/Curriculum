@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S05_Lesson(){return <LessonPage {...{"tag": "W3 · STARTER", "title": "先核查老师提供的底座", "subtitle": "大纲要求 auth、database、API、routing 和 test starter。", "mode": "rows", "blocks": [["身份", "核查认证入口、角色来源与权限判断位置。"], ["数据", "读取实际 schema、seed 与对象关系。"], ["页面 / API", "查找真实路由、调用位置与失败处理。"], ["测试", "读取启动说明与测试配置，验证可运行前置条件。"]], "footer": "文件路径、命令与已实现功能必须从真实 starter 取得。"}}/>;}

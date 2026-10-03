@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S14_Lesson(){return <LessonPage {...{"tag": "W2 · 业务状态 · 20 MIN", "title": "让状态决定可用动作", "subtitle": "课程要求包含 Draft、Review、Confirmed、Failed、Escalated。", "mode": "rows", "blocks": [["Draft", "显示可编辑草稿，以及送审动作的前置条件。"], ["Review", "说明等待谁处理；可用动作来自角色与业务契约。"], ["Confirmed", "显示确认者、版本和确认状态，不能只换一种颜色。"], ["Failed / Escalated", "说明失败原因、恢复入口，以及交给人的下一步。"]], "footer": "界面呈现规则；最终权限和状态转换必须在 W3 服务端落实。"}}/>;}

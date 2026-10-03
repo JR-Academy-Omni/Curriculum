@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-04
+
+- 拆分AI Engineer实践课为W1/W2/W3三个独立入口，新增W2与W3各21页课件、封面、工作单与讲师流程，登记课程映射和构建配置（`curriculum/lessons/ai-engineer-cohort-07-practice-w1~w3`）
+
+- 重做AI Engineer实践第一课为86页完整迁入版，补正式封面/目录/章节页，直接迁入63个旧教学页的图解、案例、模板与Lab，更新逐页来源、讲师流程和课件登记（`curriculum/lessons/ai-engineer-cohort-07-practice-w1`）
+
+## 2026-10-03
+
+- 新增 AI Engineer 第七期实践第一课24页组合课件、120分钟讲师流程与学员工作单，复用 SoT/PRD/Rules 并统一七步 ADLC，登记本地入口与构建部署配置（`curriculum/lessons/ai-engineer-cohort-07-practice-w1`）
+
 ## 2026-10-01
 
 - 按新版 Talk Deck 重做大师课第一课40页视觉，统一网格纸、圆角与品牌阴影，重排第6页并保留URL及Classroom契约（`lessons/vibe-coding-master`）

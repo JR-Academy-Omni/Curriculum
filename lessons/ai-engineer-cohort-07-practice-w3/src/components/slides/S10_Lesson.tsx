@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S10_Lesson(){return <LessonPage {...{"tag": "W3 · LAB · 25 MIN", "title": "连接 Resident 到 Care Activity", "subtitle": "分步实现后，用同一任务检查。", "mode": "exercise", "blocks": [["选择", "确定一个 synthetic Resident 与对应工作上下文。"], ["连接", "把 Shift、Task 和活动页面接到真实 API。"], ["验证", "检查关联、响应、持久化与失败恢复。"], ["交付", "Scoped diff、执行证据和仍未验证项。"]], "footer": "使用课程合成数据，不使用真实个人资料。"}}/>;}

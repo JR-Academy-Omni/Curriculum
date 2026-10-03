@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S04_Lesson(){return <LessonPage {...{"tag": "W2 · DESIGN BRIEF", "title": "给 Claude 一份能执行的设计任务", "subtitle": "参考风格与工程上下文要同时给。", "mode": "rows", "blocks": [["产品上下文", "提供用户、workflow、范围、非目标与 acceptance criteria。"], ["设计输入", "附现有页面、参考风格、密度要求与禁止事项。"], ["工程输入", "说明实际 repo、技术栈、已有组件和允许修改范围。"], ["完成定义", "关键页面、状态、手机布局、键盘路径和截图证据。"]], "footer": "Brief 是设计决策的依据，不能只写“做得高级一点”。"}}/>;}
