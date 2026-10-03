@@ -21,6 +21,7 @@
 4. **先做普通 DevOps 项目，后面再加 AI**：被否。前面太"过去"，不够 AI。
 5. **AI 全程驱动，一个 AWS 项目做到底**：被否。方向偏窄，看不到 agent、MCP、云端、扩展这些关键词。
 6. **确定：围绕 Claude Code 的扩展体系，给团队搭 AI 工具箱。** 每节课加一类扩展，项目只是被运维的对象。
+7. **LLMOps 只教 DevOps 的那一半，工具选 Langfuse，OpenTelemetry 为主线。** 评估集设计、提示词调优是 AI Engineer 的活，不教。选 Langfuse 不选 LangSmith：Langfuse 是 MIT 开源，可用 Terraform 部署在自己的 AWS（悉尼）里，运维它本身就是 DevOps 的活；LangSmith 云端是否有澳洲区域未确认，自托管要企业版。LangSmith 只在对比时提。入门课 L05 加 30 分钟；评估、提示词管理、完整追踪平台留给进阶课。
 
 ## JD 证据（调研日期 2026-09-29）
 
@@ -35,6 +36,7 @@
   5. AI 安全与治理：2 份。
 - **几乎没有需求**：GPU 和模型自托管（1 份 HPC 公司）；LLM 网关、token 成本管理、评估进 CI（澳洲 0 份，只在美国 JD 出现）。
 - **JD 里没有出现 hooks、subagents、插件体系。** 这些是本课的扩展，不是 JD 要求。销售页不能写成"JD 要求你会 hooks"，只能写成"JD 要求 AI 辅助 IaC 和流水线、MCP，这门课教你怎么安全地做到"。
+- **LLM 可观测工具（2026-10-03 补查，样本很小）**：Seek 澳洲提到 LangSmith 的只有 1 份（Culture Amp，AI Engineer 岗位，不是 DevOps），Langfuse 0 份。海外 2 份提到 Langfuse，其中「Observability Platform Engineer」岗位职责是管理自托管的 Langfuse 平台、了解 OpenTelemetry，最贴近本课学员，但只有 1 份。"LangSmith 越来越多人用"没有找到独立数据支持，只有厂商宣传。
 - **样本限制**：LinkedIn 没试；部分页面抓取失败。定稿前建议再做一轮不带 AI 关键词的抽样。
 
 ## 项目与环境
@@ -61,6 +63,9 @@
 | 故障注入脚本（数据库连接被占满，API 报 500） | L03 | 待开发 |
 | 一个没人用的高价资源（供成本 agent 发现） | L03 | 待开发 |
 | GitHub Actions 模板（PR 审查、CI 失败诊断） | L04 | 待开发 |
+| 一个调用 Bedrock 的示例应用（订单客服问答），带 OpenTelemetry 埋点 | L05 | 待开发 |
+| 自托管 Langfuse 的 Terraform（Postgres、ClickHouse、Redis、S3）；课上用老师预先部署的共享实例，每位学员一个项目 | L05 | 待开发，资源占用待测 |
+| OpenTelemetry Collector 配置（Claude Code 指标进 Grafana，应用追踪进 Langfuse） | L05 | 待开发 |
 | checkpoint 分支 `session-1-start` … `session-5-start` | 跟丢的学员一条命令追上 | 待开发 |
 
 ## 常见翻车点（课上让学员自己撞到）
@@ -71,7 +76,7 @@
 - L02：hook 只拦了 `terraform apply`，换成别的写法或拆成多步命令就绕过去了
 - L03：排障 agent 被报错最多的服务带偏，没找到上游的真根因
 - L04：云端 agent 用了长期密钥而不是 OIDC；没设单次运行成本上限
-- L05：团队插件里带了某个人的本地凭证；Bedrock 实际走了境外区域
+- L05：团队插件里带了某个人的本地凭证；Bedrock 实际走了境外区域；Langfuse 里存了完整提示词和用户隐私，项目权限没收紧、保留期没设
 
 ## 系列结构
 
@@ -101,6 +106,13 @@
 - [ ] **GitHub Actions 用 OIDC 访问 AWS**：报告引用的输入项（`anthropic_federation_rule_id` 等）看起来是 Anthropic API 的联合认证，不像 AWS OIDC，不能采信；要对照 action 的 README 实测。L04 的"不存长期密钥"依赖这一点
 - [ ] **无人值守**：官方有 GitHub Actions `schedule` 触发和 `/schedule` 云端任务（需要订阅）；`/loop` 要会话开着，不算。L04 "合上电脑也在跑"只能靠前两者；学员是否有订阅、费用谁出要定
 - [ ] **Bedrock 悉尼**：报告称较新的模型需用 `au.*` 跨区域推理配置，直接在悉尼区域只有较老的模型。**"推理是否全程留在澳洲"没有证据**（只引用了一篇 AWS 博客标题和一句"取决于你与云厂商的协议"）。在核实前，课程文案不写"数据不出境"，只写"选用澳洲区域的推理配置，并核对数据流向"
+
+LLMOps 部分待核实：
+- [ ] Claude Code 的 OpenTelemetry 导出：报告称有成本、token 等指标，需对照官方文档（code.claude.com 的 monitoring 页）实测指标名；提示词内容记录默认关闭，课上不要打开
+- [ ] Langfuse 自托管的资源需求和部署时间，决定是每人部署还是用共享实例；共享实例每期的费用
+- [ ] Langfuse 版本：OTel 接入要求较新版本（报告称本地部署需 v3.22.0 以上），建课时用当前版本重测
+- [ ] 示例应用调用 Bedrock 的真实费用
+- [ ] **L05 时间过密**：20+20+30+10+10+20+10 分钟，插件打包只给 20 分钟。若课前实测放不下，优先把"计时对比"移到 L04 或课后作业
 
 其他待核实：
 - [ ] 沙箱 AWS 账号每期的费用和预算上限
