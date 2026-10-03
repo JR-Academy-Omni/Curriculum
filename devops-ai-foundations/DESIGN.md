@@ -1,91 +1,116 @@
 # DevOps 工程师 × AI 实战课 · 入门 — 设计说明
 
-> **SoT**：课程内容（课时、步骤、文案、价格）只写在 `public/outline.json`。本文件只记录定位决策、课程应用规格、starter repo 需求、埋雷实现方式和待核实事项，不复述大纲。
+> **SoT**：课程内容（课时、步骤、文案、价格）只写在 `public/outline.json`。本文件只记录定位决策、JD 证据、环境与 starter repo 需求、常见翻车点和待核实事项，不复述大纲。
 
 ## 定位
 
 - **学员**：在职 DevOps / SRE / 平台工程师，以及有 DevOps 基础、想继续做这一行的求职者。
-- **核心**：公司的 AI 应用已经写好，它调用外部大模型 API（OpenAI / Anthropic / Bedrock 这类）。学员不写 AI 代码、**不部署模型**，只负责把应用部署上线，并让它稳定、安全、账单可控地运行。
-- **AI 的两层身份**：AI 应用是被部署的对象；Claude Code 是学员干活的工具。
-- **不是转职课**：不向 AI Engineer 产品线导流。
-- **与 `techscrum-devops`（DevOps AI 项目陪跑，$3550）的区别**：陪跑课是 8 周从零搭传统 DevOps 体系；本课只讲 AI 应用特有的部署运维问题，两门不重叠。
+- **一句话**：给自己的 DevOps 团队搭一套 AI 工具箱——MCP、skills、hooks、subagents、云端 agent，最后打包成团队插件，走 AWS Bedrock 落地。
+- **课后带走**：一个团队插件仓库，同事一条命令装上；一份给安全团队看的落地方案。
+- **不是转职课**：不向 AI Engineer 产品线导流；不写 AI 应用、不部署模型。
+- **与 `techscrum-devops`（DevOps AI 项目陪跑，$3550）的区别**：陪跑课从零学传统 DevOps 体系；本课假设学员已经会 DevOps，只教怎么用 agent 体系提升团队效率。
+- **与 Ada 9 月 24 日上架的「DevOps 低价课」的关系**：工作日志显示那门应是陪跑课前三节的拆分（传统 DevOps）。价格和内容未核实，需要对一次，确认两门不重叠。
 
 ## 决策记录
 
-- 最早的方案是"用 AI 做 DevOps"。后来定为 **AI 应用运维为主线，AI 工具为方法**，因为"公司上了 AI 应用要有人运维"是在职 DevOps 最现实的新需求。
-- **不做模型自托管**（显卡、显存、vLLM、Ollama 全部去掉）：成本高、运维重，学员和公司都受不了；现实中绝大多数公司直接调厂商 API。自托管最多留给进阶课作为选修话题。
-- 考虑过用 Dispatch AI 当项目底座，没有采用：源码不在手上，是否真的调用大模型也没确认。改为**课程专用的 AI 问答应用**，故障场景可以完全自己控制。
-- 设计原则沿用 `data-engineer-ai-foundations`：拿掉 AI 这节课要明显变慢；拿掉 DevOps 知识学员就做不对。每节课固定节奏：难点清单 → AI 干活 → 学员审 → 揭晓埋雷 → 提交。
+这门课的方向改了很多次，留下原因，避免回头路：
 
-## 系列结构
+1. **用 AI 做 DevOps 的 5 件日常活**：被否。销售上没有吸引力，说不出一个成果。
+2. **造一个 AI 值班助手**：被否。那是 AI Engineer 的活。
+3. **部署和运维 LLM（含自托管模型）**：被否。显卡和显存成本高，学员和公司都受不了；澳洲 JD 里自托管 GPU 几乎没有需求。
+4. **先做普通 DevOps 项目，后面再加 AI**：被否。前面太"过去"，不够 AI。
+5. **AI 全程驱动，一个 AWS 项目做到底**：被否。方向偏窄，看不到 agent、MCP、云端、扩展这些关键词。
+6. **确定：围绕 Claude Code 的扩展体系，给团队搭 AI 工具箱。** 每节课加一类扩展，项目只是被运维的对象。
 
-| 课 | slug | 定位 | 价格 |
-|---|---|---|---|
-| 入门（本课） | `devops-ai-foundations` | 单个 AI 应用：算账、部署、网关、带质量关卡的发布、可观测 | $599 |
-| 进阶（未建） | `devops-ai-advanced` | 多应用共用的企业级 AI 平台：统一网关、多租户和成本分摊、合规审计、大规模下的成本优化 | $788 |
+## JD 证据（调研日期 2026-09-29）
 
-价格是否含 GST 未定。
+> 来自调研子任务，我没有逐条二次核对原文。引用到销售页之前，要打开原链接核对。
 
-## 课程应用规格（starter repo 内置，学员不改应用代码）
+- **样本**：Seek 澳洲 29 份 DevOps / Platform / SRE / Cloud 岗位 JD，其中 19 份提到 AI；另看了 5 份海外 JD。**多数是用 AI 关键词搜出来的，比例偏高，不代表整个市场**；29 份里有 10 份完全没提 AI。
+- **最常见的 AI 要求**：
+  1. 用 AI 编码助手或 agent 干 DevOps 的活：8 份。Allianz「Senior AI DevOps Engineer」（Seek 94825104）：「AI-driven IaC generation, automated code/security review」「integrating AI/LLM tooling into DevOps workflows (e.g., MCP servers, AI-assisted pipelines)」；Culture Amp 的 Associate SRE 点名 Claude Code：「Partner with AI coding agents as part of your day-to-day workflow」；EML：「Basic AI or LLM knowledge is expected」。
+  2. MLOps / LLMOps：6 份，其中约 2 份是重复发布。
+  3. Amazon Bedrock：5 份。**没有 JD 要求用 Terraform 开通 Bedrock。**
+  4. MCP：3 份。
+  5. AI 安全与治理：2 份。
+- **几乎没有需求**：GPU 和模型自托管（1 份 HPC 公司）；LLM 网关、token 成本管理、评估进 CI（澳洲 0 份，只在美国 JD 出现）。
+- **JD 里没有出现 hooks、subagents、插件体系。** 这些是本课的扩展，不是 JD 要求。销售页不能写成"JD 要求你会 hooks"，只能写成"JD 要求 AI 辅助 IaC 和流水线、MCP，这门课教你怎么安全地做到"。
+- **样本限制**：LinkedIn 没试；部分页面抓取失败。定稿前建议再做一轮不带 AI 关键词的抽样。
 
-| 组件 | 选型 | 说明 |
+## 项目与环境
+
+被运维的对象：一个订单系统（前端 + API + Postgres），课程提供代码，学员不改应用。
+
+| 项 | 选型 | 状态 |
 |---|---|---|
-| 应用 | 简单的 RAG 问答 API，支持流式输出 | 课程自建，代码量尽量小 |
-| 模拟大模型 API | 课程自建的 mock 服务，兼容主流厂商接口格式 | 可配置延迟、每分钟配额（返回 429）、宕机；练习阶段不花钱 |
-| 真实大模型 API | 两家厂商 | L05 验收时使用，课程统一发受限额度的 key |
-| LLM 网关 | LiteLLM | 多厂商路由、备用切换、配额、缓存 |
-| 向量库 | Qdrant 或 pgvector | 二选一，看资源占用 |
-| 可观测 | Langfuse + Prometheus / Grafana | 调用链 + 指标 |
-| 运行环境 | kind 或 k3d + Terraform | 本地 K8s |
+| 云 | AWS | 已定 |
+| 运行环境 | ECS（Fargate），不用 EKS | 倾向 ECS：课上建 EKS 慢且贵；JD 里 K8s 出现多，若改 EKS 需重排 L04 |
+| 每位学员的 AWS | 预置沙箱账号，设预算上限，课后回收 | **待定**：每期的费用和管理方式 |
+| 初始状态 | L00 一条命令把订单系统部署进沙箱，L01 起直接运维 | 待开发 |
+| 通知 | Slack（免费工作区或课程统一工作区） | 待定 |
+| 代码托管 | GitHub（每位学员自己的仓库） | 已定 |
 
 ## Starter repo 需求
 
 | 内容 | 用途 | 状态 |
 |---|---|---|
-| 环境检查脚本（Docker / kind / kubectl / Terraform / Claude Code / 可用内存） | L00 | 待开发 |
-| AI 问答应用 + 一份示例文档库 | 全课 | 待开发 |
-| 模拟大模型 API（延迟、429、宕机可配置） | L01–L03 | 待开发 |
-| 压测脚本（可调并发，可发长问题） | L01、L02 | 待开发 |
-| 固定评估测试集 + 评估脚本 | L04 | 待开发 |
-| 两个 embedding 模型版本的配置 | L04 | 待开发 |
-| 构造的提示词注入 / 敏感信息请求 | L05 | 待开发 |
+| 订单系统应用 + Terraform（一条命令部署） | L00 | 待开发 |
+| 环境检查脚本（Claude Code / Terraform / AWS CLI / Docker） | L00 | 待开发 |
+| 沙箱账号开通和回收脚本，带预算告警 | L00、全课 | 待开发 |
+| 一个故意写有过宽权限和公网数据库的 Terraform PR | L02 审查练习 | 待开发 |
+| 故障注入脚本（数据库连接被占满，API 报 500） | L03 | 待开发 |
+| 一个没人用的高价资源（供成本 agent 发现） | L03 | 待开发 |
+| GitHub Actions 模板（PR 审查、CI 失败诊断） | L04 | 待开发 |
 | checkpoint 分支 `session-1-start` … `session-5-start` | 跟丢的学员一条命令追上 | 待开发 |
 
-## 埋雷清单（实现方式）
+## 常见翻车点（课上让学员自己撞到）
 
-学员看到的描述写在 `outline.json` 的 SCENARIO 步骤里。下面是给课程开发看的：怎么埋雷，以及验收标准。
+学员看到的描述在 `outline.json` 的 SCENARIO 步骤里。下面是给课程开发看的，每条都要在课前用 Claude Code 实跑验证：**AI 或配置确实会出这个问题**，才保留。
 
-| 课 | 雷 | 怎么埋 | 验收 |
+- L01：MCP 用了管理员凭证，AI 实际能改能删；社区来源的 MCP server 带来的供应链风险
+- L02：hook 只拦了 `terraform apply`，换成别的写法或拆成多步命令就绕过去了
+- L03：排障 agent 被报错最多的服务带偏，没找到上游的真根因
+- L04：云端 agent 用了长期密钥而不是 OIDC；没设单次运行成本上限
+- L05：团队插件里带了某个人的本地凭证；Bedrock 实际走了境外区域
+
+## 系列结构
+
+| 课 | slug | 定位 | 价格 |
 |---|---|---|---|
-| L01 | 按日均流量算配额，没算高峰和重试 | 只给日请求量和高峰时段分布，不提示高峰系数 | 按 AI 方案配额压测高峰流量，出现大量 429 |
-| L02 | Ingress 默认超时截断长回答 | 测试问题里包含需要长回答的问题 | 长回答在约 60 秒处中断 |
-| L02 | 代理响应缓冲导致流式失效 | Ingress 保持默认缓冲设置 | 浏览器端一次性收到完整回答，而不是逐字返回 |
-| L03 | 备用路由和主路由同一故障域 | 可选的备用路由里放一个同厂商同区域的选项 | 模拟主厂商故障时两条路由同时失败 |
-| L03 | 重试没有退避 | 网关默认重试配置 | 模拟 429 时上游请求量是原来的数倍 |
-| L04 | 换 embedding 模型没重建索引 | 只要求"升级 embedding 模型" | 检索相关度明显下降，接口仍返回 200 |
-| L05 | 日志记录完整提示词 | 要求"把调用记录下来方便排查" | 日志中出现测试用户的个人信息 |
+| 入门（本课） | `devops-ai-foundations` | 搭一套 AI 工具箱，装到团队里 | $599 |
+| 进阶（未建） | `devops-ai-advanced` | 企业级：统一 LLM 网关、多团队配额与成本分摊、评估进 CI、合规审计 | $788 |
 
-每个雷在课前要用 Claude Code 实跑验证：**AI 确实会踩**，雷才成立。AI 不踩的雷要换掉。L04 还要验证质量关卡本来能不能拦住这个问题：如果能拦住，就把讲法改成"质量关卡拦住了，说明它的价值"。L02 的默认超时要按选定的 Ingress 控制器核实具体数值。
-
-## 规模测算（L01 用）
-
-- 日 token 用量 = 日请求量 × 每次 token 数，例如 5 万次 × 3,000 token = **每天 1.5 亿 token**；输入和输出 token 分开计价
-- 高峰配额 = 高峰每分钟请求量 × 每次 token 数，对比厂商给的每分钟 token 配额
-- 重试风暴时实际用量是正常值的数倍
-- 单价和配额建课时按厂商官方页面填，**这里不写死数字**
+价格是否含 GST 未定。网关和成本管理在澳洲 JD 里目前没有需求，留给进阶课观察。
 
 ## 上线前待核实
 
-- [ ] LiteLLM、Langfuse、Qdrant 的开源协议和当前版本
-- [ ] 整套技术栈在 16GB 内存笔记本上能否跑起来；不行就把 Langfuse 等组件放到共享环境
-- [ ] 真实 API 的课程额度和 key 分发方式（按学员限额，课后吊销）
-- [ ] 选定 Ingress 控制器的默认超时和缓冲设置
+**这是最重要的一块**：下面的能力我是按已知功能写进大纲的，没有逐项对照官方文档确认。已派子任务核实，结果回来后在这里更新。
+
+- [ ] MCP：接入方式、能否限制成只读；官方或社区的 AWS、GitHub、Slack MCP server 是否存在、是否维护
+- [ ] Skills：存放位置和调用方式
+- [ ] Hooks：能否在命令执行前硬性拦截；配置位置；能否写审计日志
+- [ ] Subagents：定义文件、单个 agent 的工具限制、能否并行
+- [ ] 插件：能否把 MCP、skills、hooks、agents 打包，同事一条命令安装
+- [ ] GitHub Actions 集成：官方 action、触发方式、能否自动提修复 PR、能否用 OIDC 访问 AWS
+- [ ] 云端或无人值守 agent：官方支持什么（headless 模式、定时、告警触发）
+- [ ] Claude Code 走 Amazon Bedrock：配置方式；悉尼区域是否直接提供模型，还是走跨区域；**推理是否留在澳洲**（这决定 L05 能不能讲"数据不出境"）
+- [ ] 以上功能哪些仍是 beta 或预览
+- [ ] 沙箱 AWS 账号每期的费用和预算上限
 - [ ] 价格是否含 GST；开课日期
+- [ ] 与 Ada 上架的 DevOps 低价课的内容重叠
+
+## 新课上线必做（来自 curriculum/CLAUDE.md，目前都没做）
+
+- [ ] `.github/workflows/deploy.yml` 的 Assemble 步骤加上本课目录，否则线上 `/curriculum/devops-ai-foundations/` 永远 404，官网课程大纲 iframe 空白。**部署工作流近期出过事故，改动要单独评审**
+- [ ] `outline.json` 补 `curriculumPages` 字段，对应的 `public/curriculum.html` 等页面先要存在
+- [ ] 至少 1 张宣传海报，并在 `curriculum/posters.html` 登记；没登记等于课程未完成
+- [ ] `/curriculum-review` 过一遍大纲
 
 ## 下一步
 
-1. 用 `/curriculum-review` 过一遍大纲
-2. 核实上面的协议、资源和费用
-3. 开发课程 AI 应用、模拟 API 和 starter repo，逐个实跑验证埋雷
-4. `/target-user-persona-mapper devops-ai-foundations` 补学员画像
-5. 本地静态页面（`public/curriculum.html`）和官网销售页
+1. 等能力核实结果，按结论修订 `outline.json` 里的描述
+2. `/curriculum-review`
+3. 开发 starter repo，逐个验证翻车点
+4. `/target-user-persona-mapper devops-ai-foundations`
+5. 讲师：在职、有 AWS 经验，审大纲并核实上面的清单
+6. 销售页、海报、waitlist；凑够 15 人再开第一期
