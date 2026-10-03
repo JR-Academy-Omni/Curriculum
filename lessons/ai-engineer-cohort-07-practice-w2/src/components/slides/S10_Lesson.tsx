@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S10_Lesson(){return <LessonPage {...{"tag": "W2 · DESIGN TOKENS", "title": "相同意义使用相同 token", "subtitle": "先定义语义，再填入选定设计值。", "mode": "grid", "blocks": [["颜色", "text、surface、border、action、success、error。"], ["文字", "title、body、caption；记录层级与使用场景。"], ["空间", "间距、容器 padding、列表密度、触控目标。"], ["交互", "focus、disabled、loading、selected 的可辨识反馈。"]], "footer": "Token 是课程设计产物，不代表 starter 已经存在这些字段。"}}/>;}

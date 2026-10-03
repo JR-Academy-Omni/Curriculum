@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S12_Lesson(){return <LessonPage {...{"tag": "W2 · BUILD · 30 MIN", "title": "按页面实现，按任务验收", "subtitle": "复用已有组件，逐步接上导航和布局。", "mode": "rows", "blocks": [["第一组", "Dashboard + Resident：入口与对象选择。"], ["第二组", "Shift/Task + Care Activity：执行上下文与当前工作。"], ["第三组", "Documentation + Review/Confirm：编辑与确认。"], ["第四组", "Audit：检查历史动作、角色和版本的可见性。"]], "footer": "本周可以使用明确标记的 synthetic fixture；真实业务数据不进入演示。"}}/>;}

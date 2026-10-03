@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S06_Lesson(){return <LessonPage {...{"tag": "W3 · PLAN · 15 MIN", "title": "让 Claude 先给出可审查计划", "subtitle": "计划需要映射到实际文件与验收。", "mode": "rows", "blocks": [["读取依据", "W1 契约、W2 UI、schema、权限与 tests。"], ["实施顺序", "先确认对象关联，再连接活动与文档状态。"], ["范围", "列出真实文件、预期 diff、接口与迁移影响。"], ["检查", "每一步说明如何验证，未知项列出并交给 owner。"]], "footer": "计划未经确认不进入大范围修改。"}}/>;}

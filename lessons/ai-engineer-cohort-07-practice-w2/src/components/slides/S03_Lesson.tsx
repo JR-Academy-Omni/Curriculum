@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S03_Lesson(){return <LessonPage {...{"tag": "W2 · 输入 · W1 → W2", "title": "先接住 W1 的产品契约", "subtitle": "UI 的判断依据来自已确认需求。", "mode": "grid", "blocks": [["用户与角色", "谁录入、谁复核、谁确认？从 W1 契约读取。"], ["工作流", "正常、失败、拒绝与人工确认点都要映射到界面。"], ["验收标准", "把可观察行为转换成页面状态与操作反馈。"], ["Non-goals", "本周验证完整 UI；接口接通与持久化在 W3 展开。"]], "footer": "缺少业务事实时标记问题，不能通过画页面补造事实。"}}/>;}

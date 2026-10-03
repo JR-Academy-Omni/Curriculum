@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S16_Lesson(){return <LessonPage {...{"tag": "W2 · 输入状态 · 15 MIN", "title": "录音和转写是一组输入状态", "subtitle": "本周设计输入 UI；W4 才接入 Voice AI。", "mode": "grid", "blocks": [["Recording", "是否正在录制、如何停止、如何取消。"], ["Transcribing", "处理中的提示与等待期间可用动作。"], ["失败", "权限拒绝、输入无效、处理失败的解释和恢复。"], ["结果", "转写文本可检查、可修改，再进入文档工作流。"]], "footer": "W2 不把模拟输入状态声称为真实 Voice AI 集成。"}}/>;}

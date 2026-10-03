@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S02_Lesson(){return <LessonPage {...{"tag": "W2 · 目录 · 120 MIN", "title": "从产品契约到完整 UI", "subtitle": "七个环节，对应 C7P02。", "mode": "rows", "blocks": [["00–25", "复查 W1 10 分钟；定义信息架构与视觉约束 15 分钟。"], ["25–75", "比较设计方向与建立规则 20 分钟；实现页面 30 分钟。"], ["75–110", "业务状态 20 分钟；输入、动画和 accessibility 15 分钟。"], ["110–120", "Product Design Review，提交界面证据。"]], "footer": "本周交付：Design Brief、DESIGN.md、tokens、页面与视觉评审。"}}/>;}

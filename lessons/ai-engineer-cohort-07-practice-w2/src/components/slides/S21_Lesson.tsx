@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S21_Lesson(){return <LessonPage {...{"tag": "W2 · 交付证据", "title": "把设计选择与页面一起交付", "subtitle": "下一周使用这些材料完成真实业务链。", "mode": "hero", "blocks": [["W2 证据包", "Design Brief · DESIGN.md · tokens\n方向比较 · 关键页面 · 评审记录"], ["实现记录", "关键 prompt、iteration、before/after screenshots。"], ["下一步", "W3 接上实际 API、权限、版本、audit 与端到端测试。"]], "footer": "未接通的数据、输入与后端状态明确标记。"}}/>;}

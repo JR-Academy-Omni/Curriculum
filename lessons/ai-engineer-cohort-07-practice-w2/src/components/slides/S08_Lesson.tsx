@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S08_Lesson(){return <LessonPage {...{"tag": "W2 · LAB · 20 MIN", "title": "生成方向，选定后固化规则", "subtitle": "先看候选，再决定哪些内容进入 DESIGN.md。", "mode": "exercise", "blocks": [["生成", "提供同一 Brief，让 Claude 解释两个方向的差异。"], ["比较", "用同一角色、同一任务检查结构、密度与操作。"], ["选择", "说明舍弃与保留什么，记录具体理由。"], ["交付", "方向比较、选定截图与第一版 DESIGN.md。"]], "footer": "AI 提供候选；最终选择由人确认。"}}/>;}

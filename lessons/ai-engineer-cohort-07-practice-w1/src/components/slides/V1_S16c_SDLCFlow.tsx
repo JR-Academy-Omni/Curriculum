@@ -1,0 +1,180 @@
+// Migrated teaching page; original source: lessons/vibe-coding-master/src/components/slides/S16c_SDLCFlow.tsx
+import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
+const handoff = '#2f3548';
+type Node = {
+    icon: string;
+    title: string;
+    sub: string;
+    wide?: boolean;
+    hot?: boolean;
+};
+const demandNodes: Node[] = [
+    { icon: '🧑‍💼', title: '干系人', sub: 'Stakeholder · 提需求', wide: true },
+    { icon: '📋', title: '业务分析', sub: 'Business Analyst' },
+    { icon: '🎯', title: '产品负责人', sub: 'Product Owner' },
+    { icon: '🎨', title: 'UI 设计', sub: 'UI Designer', wide: true },
+];
+const devNodes: Node[] = [
+    { icon: '🖥️', title: '前端', sub: 'Front-end' },
+    { icon: '⚙️', title: '后端', sub: 'Back-end' },
+    { icon: '🧩', title: 'Full-stack 开发', sub: '一人顶前后端', wide: true, hot: true },
+    { icon: '🔍', title: '测试', sub: 'QA & Tester', wide: true },
+];
+const opsNodes: Node[] = [
+    { icon: '🛠️', title: 'DevOps & SRE', sub: '运维' },
+    { icon: '☁️', title: '云工程师', sub: 'Cloud Engineer' },
+    { icon: '🚀', title: '上线环境', sub: 'UAT / Staging / Prod', wide: true, hot: true },
+    { icon: '🔧', title: '数据工程', sub: 'Data Engineer' },
+    { icon: '🗄️', title: '数仓', sub: 'Warehouse / Lake / Tools' },
+    { icon: '📊', title: '数据分析', sub: 'Data Analyst', wide: true },
+];
+function FlowNode({ node, i }: {
+    node: Node;
+    i: number;
+}) {
+    return (<motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.16 + i * 0.045, duration: 0.3 }} style={{ borderRadius: 18,
+            gridColumn: node.wide ? '1 / span 2' : undefined,
+            background: node.hot ? colors.yellow : colors.white,
+            border,
+            boxShadow: shadowSm,
+            padding: '10px 12px',
+            minHeight: 62,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+        }}>
+			<div style={{ fontSize: 25, lineHeight: 1, width: 32, textAlign: 'center' }}>{node.icon}</div>
+			<div>
+				<div style={{ fontSize: 18, fontWeight: 900, lineHeight: 1.08, color: colors.dark }}>{node.title}</div>
+				<div style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 800, color: '#667085', marginTop: 4 }}>
+					{node.sub}
+				</div>
+			</div>
+		</motion.div>);
+}
+function Section({ index, title, subtitle, bg, nodes, children, }: {
+    index: string;
+    title: string;
+    subtitle: string;
+    bg: string;
+    nodes: Node[];
+    children?: ReactNode;
+}) {
+    return (<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{
+            flex: 1,
+            background: bg,
+            border,
+            borderRadius: 24,
+            boxShadow: shadow,
+            padding: 18,
+            position: 'relative',
+            height: 414,
+            overflow: 'hidden',
+        }}>
+			<div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+				<div style={{
+            width: 38,
+            height: 38,
+            borderRadius: '999px',
+            border: `3px solid ${colors.dark}`,
+            background: colors.white,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontWeight: 900,
+            fontSize: 18,
+            boxShadow: shadowSm,
+        }}>
+					{index}
+				</div>
+				<div>
+					<div style={{ fontSize: 22, fontWeight: 900, color: colors.dark, lineHeight: 1.1 }}>{title}</div>
+					<div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 800, color: '#667085', marginTop: 4 }}>
+						{subtitle}
+					</div>
+				</div>
+			</div>
+			<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+				{nodes.map((node, i) => <FlowNode key={`${title}-${node.title}`} node={node} i={i}/>)}
+			</div>
+			{children}
+		</motion.div>);
+}
+function BetweenArrow({ top, bottom }: {
+    top: string;
+    bottom: string;
+}) {
+    return (<div style={{ width: 82, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 18 }}>
+			<div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+				<motion.div animate={{ backgroundPositionX: ['0px', '18px'] }} transition={{ repeat: Infinity, duration: 0.9, ease: 'linear' }} style={{
+            flex: 1,
+            height: 4,
+            backgroundImage: `repeating-linear-gradient(90deg, ${colors.red} 0 10px, transparent 10px 18px)`,
+            backgroundSize: '18px 4px',
+        }}/>
+				<div style={{ width: 0, height: 0, borderTop: '9px solid transparent', borderBottom: '9px solid transparent', borderLeft: `14px solid ${colors.red}` }}/>
+			</div>
+			<div style={{ borderRadius: 18, background: colors.white, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '7px 8px', textAlign: 'center', fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, lineHeight: 1.25 }}>
+				{top}<br />{bottom}
+			</div>
+			<div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+				<div style={{ width: 0, height: 0, borderTop: '9px solid transparent', borderBottom: '9px solid transparent', borderRight: `14px solid ${colors.blue}` }}/>
+				<motion.div animate={{ backgroundPositionX: ['18px', '0px'] }} transition={{ repeat: Infinity, duration: 0.9, ease: 'linear' }} style={{
+            flex: 1,
+            height: 4,
+            backgroundImage: `repeating-linear-gradient(90deg, ${colors.blue} 0 10px, transparent 10px 18px)`,
+            backgroundSize: '18px 4px',
+        }}/>
+			</div>
+		</div>);
+}
+function MiniArrow({ label }: {
+    label: string;
+}) {
+    return (<div style={{ position: 'absolute', left: 24, right: 24, bottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+			<div style={{ flex: 1, borderTop: `4px dashed ${handoff}` }}/>
+			<div style={{ borderRadius: 18, background: colors.white, border: `2px solid ${colors.dark}`, boxShadow: shadowSm, padding: '6px 8px', fontFamily: fonts.mono, fontSize: 11, fontWeight: 900, whiteSpace: 'nowrap' }}>
+				{label}
+			</div>
+			<div style={{ flex: 1, borderTop: `4px dashed ${handoff}` }}/>
+		</div>);
+}
+export default function S16c_SDLCFlow() {
+    return (<Slide bg={colors.warmBg}>
+			<Inner style={{ flexDirection: 'column', gap: 10, padding: '26px 36px' }}>
+				<div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20 }}>
+					<div>
+						<Tag bg={colors.dark}>传统流程</Tag>
+						<Title size="42px" style={{ marginTop: 8, marginBottom: 0 }}>
+							传统 SDLC：一个产品要 <span style={{ background: colors.red, color: colors.white, padding: '0 10px' }}>一整支团队</span>
+						</Title>
+					</div>
+					<div style={{ borderRadius: 18, width: 330, background: colors.white, border, boxShadow: shadowSm, padding: '10px 12px', fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, lineHeight: 1.4 }}>
+						需求 → 设计 → 开发 → 测试 → 上线 → 数据<br />
+						每一步都在交接
+					</div>
+				</div>
+
+				<div style={{ display: 'flex', alignItems: 'stretch', gap: 12, flex: '0 0 auto', minHeight: 0 }}>
+					<Section index="①" title="需求 / 设计端" subtitle="需求层层传递" bg="#BFE8FF" nodes={demandNodes}>
+						<MiniArrow label="Requirements ⇄ 反复对齐"/>
+					</Section>
+					<BetweenArrow top="handoff" bottom="返工"/>
+					<Section index="②" title="开发端 · Agile" subtitle="迭代循环" bg="#FFF0A8" nodes={devNodes}>
+						<div style={{ borderRadius: 18, position: 'absolute', top: 14, right: 18, background: colors.white, border, boxShadow: shadowSm, padding: '8px 12px', fontFamily: fonts.mono, fontSize: 12, fontWeight: 900 }}>
+							🔄 Agile Sprint
+						</div>
+						<MiniArrow label="开发 ⇄ 测试 ⇄ 修 bug"/>
+					</Section>
+					<BetweenArrow top="release" bottom="回滚"/>
+					<Section index="③" title="运维 / 数据端" subtitle="上线 → 数据闭环" bg="#EBD9FF" nodes={opsNodes}/>
+				</div>
+
+				<div style={{ borderRadius: 18, alignSelf: 'stretch', background: colors.dark, color: colors.white, padding: '10px 20px', border, boxShadow: shadow, fontSize: 16, fontWeight: 900, lineHeight: 1.3 }}>
+					<span style={{ background: colors.red, padding: '0 8px' }}>8+ 种角色</span>、层层交接、需求层层失真 —— 一个功能上线，要走完整条链。
+				</div>
+			</Inner>
+		</Slide>);
+}

@@ -94,6 +94,24 @@ jobs:
           bun install
           bun run build
 
+      - name: Build AI Engineer Practice W1
+        working-directory: lessons/ai-engineer-cohort-07-practice-w1
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      - name: Build AI Engineer Practice W2
+        working-directory: lessons/ai-engineer-cohort-07-practice-w2
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      - name: Build AI Engineer Practice W3
+        working-directory: lessons/ai-engineer-cohort-07-practice-w3
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
       - name: Build lessons/ai-new-jobs-talk
@@ -285,6 +303,15 @@ jobs:
       # Assemble all courses into one output
       - name: Assemble output
         run: |
+          mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w1
+          cp -r lessons/ai-engineer-cohort-07-practice-w1/dist/* _site/lessons/ai-engineer-cohort-07-practice-w1/
+          cp lessons/ai-engineer-cohort-07-practice-w1/PRD.md lessons/ai-engineer-cohort-07-practice-w1/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w1/README.md lessons/ai-engineer-cohort-07-practice-w1/SOURCE_MAP.md _site/lessons/ai-engineer-cohort-07-practice-w1/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w2
+          cp -r lessons/ai-engineer-cohort-07-practice-w2/dist/* _site/lessons/ai-engineer-cohort-07-practice-w2/
+          cp lessons/ai-engineer-cohort-07-practice-w2/PRD.md lessons/ai-engineer-cohort-07-practice-w2/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w2/SOURCE_MAP.md _site/lessons/ai-engineer-cohort-07-practice-w2/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w3
+          cp -r lessons/ai-engineer-cohort-07-practice-w3/dist/* _site/lessons/ai-engineer-cohort-07-practice-w3/
+          cp lessons/ai-engineer-cohort-07-practice-w3/PRD.md lessons/ai-engineer-cohort-07-practice-w3/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w3/SOURCE_MAP.md _site/lessons/ai-engineer-cohort-07-practice-w3/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/
