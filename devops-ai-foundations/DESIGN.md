@@ -84,17 +84,25 @@
 
 ## 上线前待核实
 
-**这是最重要的一块**：下面的能力我是按已知功能写进大纲的，没有逐项对照官方文档确认。已派子任务核实，结果回来后在这里更新。
+**能力核实（2026-10-03）**：子任务对照官方文档（code.claude.com）核实了一轮。「文档确认」不等于实测过，每一项上课前都要在沙箱里实跑一遍。
 
-- [ ] MCP：接入方式、能否限制成只读；官方或社区的 AWS、GitHub、Slack MCP server 是否存在、是否维护
-- [ ] Skills：存放位置和调用方式
-- [ ] Hooks：能否在命令执行前硬性拦截；配置位置；能否写审计日志
-- [ ] Subagents：定义文件、单个 agent 的工具限制、能否并行
-- [ ] 插件：能否把 MCP、skills、hooks、agents 打包，同事一条命令安装
-- [ ] GitHub Actions 集成：官方 action、触发方式、能否自动提修复 PR、能否用 OIDC 访问 AWS
-- [ ] 云端或无人值守 agent：官方支持什么（headless 模式、定时、告警触发）
-- [ ] Claude Code 走 Amazon Bedrock：配置方式；悉尼区域是否直接提供模型，还是走跨区域；**推理是否留在澳洲**（这决定 L05 能不能讲"数据不出境"）
-- [ ] 以上功能哪些仍是 beta 或预览
+文档确认支持（均未见 beta 标记，但没有逐页贴原文，我也没有逐页核对）：
+- MCP：`claude mcp add`，项目级配置 `.mcp.json`
+- Skills：`.claude/skills/` 下的 `SKILL.md`
+- Hooks：`PreToolUse` 事件，在 settings 里配置
+- Subagents：`.claude/agents/` 下的定义文件，可限制工具
+- 插件：`claude plugin install 名称@市场名`，一个插件可打包 skills、agents、hooks、MCP
+- GitHub Actions：`anthropics/claude-code-action@v1`，可由 `pull_request`、`workflow_run` 触发
+
+**报告有疑点，必须实测或另查再写进课里：**
+- [ ] **hooks 拦截的退出码**：报告写"退出码非零即拦截"。我的理解是只有退出码 2 才拦截并把 stderr 反馈给 AI，其他非零只报错、不拦。L02 的红队测试依赖这一点
+- [ ] **AWS MCP**：报告列出的官方 AWS server（awsiac、awsknowledge、awspricing）分别是 IaC、文档、价格，**不能查询账号里的真实资源**。L01 需要能读 CloudWatch、ECS、IAM 的 AWS MCP，具体用哪个未确认
+- [ ] **Slack MCP**：需要注册 Slack 应用或用社区实现，社区实现有供应链风险，要定用哪个
+- [ ] **GitHub Actions 用 OIDC 访问 AWS**：报告引用的输入项（`anthropic_federation_rule_id` 等）看起来是 Anthropic API 的联合认证，不像 AWS OIDC，不能采信；要对照 action 的 README 实测。L04 的"不存长期密钥"依赖这一点
+- [ ] **无人值守**：官方有 GitHub Actions `schedule` 触发和 `/schedule` 云端任务（需要订阅）；`/loop` 要会话开着，不算。L04 "合上电脑也在跑"只能靠前两者；学员是否有订阅、费用谁出要定
+- [ ] **Bedrock 悉尼**：报告称较新的模型需用 `au.*` 跨区域推理配置，直接在悉尼区域只有较老的模型。**"推理是否全程留在澳洲"没有证据**（只引用了一篇 AWS 博客标题和一句"取决于你与云厂商的协议"）。在核实前，课程文案不写"数据不出境"，只写"选用澳洲区域的推理配置，并核对数据流向"
+
+其他待核实：
 - [ ] 沙箱 AWS 账号每期的费用和预算上限
 - [ ] 价格是否含 GST；开课日期
 - [ ] 与 Ada 上架的 DevOps 低价课的内容重叠
