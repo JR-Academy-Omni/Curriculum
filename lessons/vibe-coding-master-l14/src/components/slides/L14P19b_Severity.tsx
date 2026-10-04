@@ -15,10 +15,10 @@ import { Page, Head, ActBadge, SoBar, colors, fonts, radii } from '../deck';
  *      三个月后全是最高级 —— 跟「天天红就没人看」是同一个形状。
  */
 const LEVELS = [
-	{ k: '最高', cond: '对外可见的东西已经错了', eg: '客户看到了 / 钱动了 / 消息发出去了', who: '立刻叫到人', c: colors.red, top: true },
-	{ k: '高', cond: '它没跑，而且没有人知道', eg: '查询失败报成 0、连接过期没人发现', who: '当天有人看', c: colors.orange },
-	{ k: '中', cond: '它跑了，但没拿全', eg: '分页只拿到前两页', who: '下次有人来的时候告诉他', c: colors.yellow },
-	{ k: '低', cond: '只影响内部，且可以等', eg: '格式不统一、命名不规范', who: '攒着，每周一起看', c: colors.green },
+	{ k: 'P0', cond: '对外可见的东西已经错了', eg: '客户看到了 / 钱动了 / 消息发出去了', who: '立刻叫到人', c: colors.red, top: true },
+	{ k: 'P1', cond: '它没跑，而且没有人知道', eg: '查询失败报成 0、连接过期没人发现', who: '当天有人看', c: colors.orange },
+	{ k: 'P2', cond: '它跑了，但没拿全', eg: '分页只拿到前两页', who: '下次有人来的时候告诉他', c: colors.yellow },
+	{ k: 'P3', cond: '只影响内部，且可以等', eg: '格式不统一、命名不规范', who: '攒着，每周一起看', c: colors.green },
 ];
 
 export default function L14P19b_Severity() {
@@ -34,7 +34,7 @@ export default function L14P19b_Severity() {
 					display: 'grid', gridTemplateColumns: '92px 1.25fr 1.15fr 1fr', gap: 14, padding: '0 20px',
 					fontFamily: fonts.mono, fontSize: 14.5, fontWeight: 800, letterSpacing: 1, color: '#6f6760',
 				}}>
-					<div>多急</div><div>判据（可观察的现象）</div><div>例</div><div>谁动、多快</div>
+					<div>级别</div><div>判据（可观察的现象）</div><div>例</div><div>谁动、多快</div>
 				</div>
 				{LEVELS.map((l, i) => (
 					<motion.div
@@ -51,7 +51,7 @@ export default function L14P19b_Severity() {
 						}}
 					>
 						<span style={{
-							fontFamily: fonts.mono, fontSize: 16, fontWeight: 800, textAlign: 'center',
+							fontFamily: fonts.mono, fontSize: 19, fontWeight: 800, textAlign: 'center',
 							padding: '6px 0', borderRadius: radii.label, background: l.c,
 							color: l.c === colors.red ? colors.white : colors.black,
 						}}>{l.k}</span>
@@ -73,8 +73,8 @@ export default function L14P19b_Severity() {
 				}}>
 					<strong style={{ fontFamily: fonts.heading, fontSize: 27, color: colors.yellow }}>降级条件必须和升级条件一起写。</strong>
 					<br />
-					<strong>没有降级条件的分级，三个月后全是最高级</strong> ——
-					然后所有人对最高级脱敏，它就跟没分级一样了。
+					<strong>没有降级条件的分级，三个月后全是 P0</strong> ——
+					然后所有人对 P0 脱敏，它就跟没分级一样了。
 					<br />
 					这跟「全设成失败 = 天天红 = 没人再看」<strong>是同一个形状</strong>。
 				</div>
