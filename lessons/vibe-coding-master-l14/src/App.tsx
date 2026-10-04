@@ -85,6 +85,7 @@ import L14P19_Composition from './components/slides/L14P19_Composition';
 import L14P19a_ObjectModel from './components/slides/L14P19a_ObjectModel';
 import L14P19b_Severity from './components/slides/L14P19b_Severity';
 import L14P19c_Walkthrough from './components/slides/L14P19c_Walkthrough';
+import L14P19d_Escalation from './components/slides/L14P19d_Escalation';
 import L14P20_ThreeLayers from './components/slides/L14P20_ThreeLayers';
 import L14P21_Reversal from './components/slides/L14P21_Reversal';
 import L14P22_Drift from './components/slides/L14P22_Drift';
@@ -131,6 +132,7 @@ export default function App() {
 			<L14P19a_ObjectModel />
 			<L14P19b_Severity />
 			<L14P19c_Walkthrough />
+			<L14P19d_Escalation />
 			<L14P20_ThreeLayers />
 			<L14P21_Reversal />
 			<L14P22_Drift />

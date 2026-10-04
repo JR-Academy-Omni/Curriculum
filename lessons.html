@@ -677,11 +677,11 @@
       <div class="card">
         <div class="card-head">
           <span class="badge badge-react">React 19 · SlideEngine</span>
-          <span class="badge badge-status-local">⚙ 蓝图 v1.2 + 交底内容库 v1.1 + 清单 + <strong>deck 29 页</strong> + <strong>讲稿 1075 行</strong> + <strong>课前包（七个动手环节全覆盖，脚本已实测）</strong> 齐（本地）· 待部署</span>
+          <span class="badge badge-status-local">⚙ 蓝图 v1.2 + 交底内容库 v1.1 + 清单 + <strong>deck 34 页</strong> + <strong>讲稿 1091 行</strong> + <strong>课前包（七个动手环节全覆盖，九个脚本/模板全部实测）</strong> 齐（本地）· 待部署</span>
         </div>
         <h2>Vibe Coding 大师课 · 第十四节课《它能碰什么》— 给一个 agent 一套公司系统的权限、连接、技能与维护</h2>
         <p class="desc">
-          <strong>129 分钟线上直播动手课（无助教）</strong>。<strong>课堂硬产物：一张自己公司的写权限表（四列）+ 一个当堂跑出 <code>FAILED</code> 而不是 <code>0</code> 的脚本 + 一份按十节写完的技能规范。</strong><br><br>
+          <strong>135 分钟线上直播动手课（无助教）</strong>。<strong>课堂硬产物：一张自己公司的写权限表（四列）+ 一个当堂跑出 <code>FAILED</code> 而不是 <code>0</code> 的脚本 + 一份按十节写完的技能规范。</strong><br><br>
           <strong>🔗 承接 L13：那节造了一个会自己拦人的仓库，但它现在没有消费者。</strong> 学员回去第一天就会撞上同一个问题：「我建好了。<strong>然后呢？AI 在哪？它凭什么读我这些文件？它能改吗？谁拦着它？</strong>」顺序是故意的，而且是这两节之间最重要的一句话：<strong>地基错了，上面那层越强越危险。</strong>一个规则写得糊涂的仓库，配上一个有写权限的 agent，比没有 agent 糟得多。<br><br>
           <strong>🦴 脊椎是交底五问，有顺序不能打乱：</strong>有哪些仓（东西放哪）→ <strong>给它什么权限（谁能动）⭐ 核心产物在这</strong> → 接哪些外部系统（够不够得着外面）→ 它有哪些技能（会干什么活）→ 怎么维护（怎么不烂掉）。<br><br>
           <strong>📐 三句话：</strong>立论（第二幕，全节唯一一次点明）<strong>「权限不是一个开关，是一张一行一行批出来的表。」</strong>· 反转（第五幕，学员刚给自己的表加完审批人、最有安全感的时候翻）<strong>「你加的那个人工审批，多半不是保障，是失效模式。」</strong>· 收口（全程不许提前说）<strong>「它最危险的时候，不是它做错了事，是它什么都没做，而你以为它做了。」</strong><br><br>
@@ -689,12 +689,14 @@
           <strong>🦷 全课只有一次翻车（2026-10-04 讲师改版：「不要从反面来教」，原来三次取消了两次）：</strong><strong>造一次查询失败，看它报 <code>0</code></strong> —— 学员跑的是一段<strong>写得很正常</strong>的脚本，他没做错任何事，<em>只是观察到默认写法的真实行为</em>。三句一句都不能省：「它报了 0，这个 0 是什么意思 / 真的吗，它查到了吗 / <strong>那它凭什么报 0</strong>」，答案是<strong>「0」和「我不知道」被写成了同一个字</strong>。<strong>这是全课唯一一个学员看完会后背发凉的时刻，也是收口的地基。</strong>原来那两次（故意放宽白名单跑危险命令 / 故意挂一个会阻塞的钩子）都改成了<strong>正面给规矩</strong> —— 沿用第十三节那条「<em>只在你恰好犯过错时才成立的教学点，是抽奖不是教学</em>」。<br><br>
           <strong>🚦 派活的时候就定级（P19b–P19c，2026-10-04 补）：</strong><strong>不是出了事才评级，是每次派一件活、做一个决策，发出去的时候就带上 P0–P3。</strong>它是<strong>一份规则文档</strong>，目的是让 <strong>agent 和人用同一套判据，对同一件事得出同一个结论</strong> —— 不写下来，每件事都要重新吵一遍。判据全是「问一句就能判」的：<strong>有没有对外承诺挂在上面 / 点不点得出在等的人 / 有没有到期日</strong>，<em>一条都不是「这件事重不重要」</em>。写在 <code>rules/severity.md</code> 并登记进索引；<strong>派活的人定级</strong>，没带级别的活 agent 应该退回要。配套 <strong>P19c 走一遍「CEO 派的活超时没验收」</strong>，一次用上四格（四条禁令 / 草稿线 / 连接失败三件事 / 分级），落点是那句反模式：<strong>「超时自动降级」把「没人管」当成了「不要紧」的证据 —— 而没人管的那件事，经常正是最该管的</strong>，而且三条重量都在反直觉的地方：<strong>①判据必须是可观察的现象</strong>（「对外可见的东西已经错了」，不是「很严重」—— 判据写成判断题，等于每次都要重新吵一遍）· <strong>②降级条件必须和升级条件一起写</strong>（<em>没有降级条件的分级，三个月后全是 P0，然后所有人对 P0 脱敏，它就跟没分级一样了 —— 跟「全设成失败＝天天红＝没人再看」是同一个形状</em>）· <strong>③⛔ 定级权不给 agent</strong>（它只报事实，多急是规则说了算 —— <em>否则它会很合理地觉得什么都很急，而且每次都很有道理</em>）。<br><br><strong>⚠️ 这一节最大的风险是讲成管理课，比 L13 严重得多</strong> —— 权限表、连接器清单、技能规范、维护制度，<strong>四样里三样是在写表格</strong>。解药只有一条铁律：<strong>每一幕结束前，学员的终端必须有新输出。没有就是这一幕讲飞了。</strong><br><br>
           <strong>🔒 全程不出现学员公司那边的任何产品名</strong>（一律用「工单系统 / 聊天工具 / 邮箱 / 代码托管」）。这不只是脱敏，是三重收益：<strong>国内班海外班同一份课件</strong>（五问的结构对任何一套工具都成立，只换连接器清单）· <strong>学员能把自己代入</strong>（学员公司用的东西跟讲师不一样是常态，讲产品名会让一半人觉得「这跟我没关系」）。<strong>本节比别节更要紧，因为它通篇在讲外部系统。</strong><br><br>
-          <strong>🚧 还没定的四件事（PRD §6）：</strong>时长 120 还是 dry run 后收到 105 · 第一幕让学员跑自己的配置还是讲师投屏 · <strong>⚠️ 翻车② 用什么当查询目标（必须零依赖零网络、所有学员都能复现 —— 这一条不解决，全课高光那一页做不出来，而且要实测不能凭想象设计）</strong> · 入场券有人交不出来怎么办。
+          <strong>🧭 升级有三种，别混成一种（P19d，2026-10-04 对照真系统后补）：</strong>课上原来只讲了「超时了就提醒」，而那只是三类里的一类。三类必须按<strong>「决策动没动」</strong>分开：<strong>权限型</strong>（只有更高的帽子能决定 → 决策真的移动了；但<em>反复发生说明它本来就路由错了，修的是审批表那一格，不是每次升一遍</em>）· <strong>延迟型</strong>（有权限、没按时答 → <strong>决策不动</strong>，只是被捅一下 —— P19c 那件超时的活走的正是这一类，所以那四步里没有换人，<em>不是忘了，是这一类本来就不换人</em>）· <strong>阻塞型</strong>（有权限、但决定不了 → 看原因，<strong>最容易被滥用的一类</strong>）。第三类是落点，而且反直觉：<strong>「我决定不了」通常不是一个权限问题</strong> —— 它多半是缺一条信息、要等另一件事先落地、两个人意见对不上，或者他只是不想担这个责任，<em>这些里面没有一条是「他的帽子不够大」</em>；<strong>把它们全当成权限问题处理，等于在教团队：难的事往上推。</strong>而最常见的那条反而根本不算升级（<strong>缺一条他自己拿得到的信息</strong> —— 记下缺什么、谁去拿、新期限，完了）。<strong>最反直觉的一条：利益冲突横向走，不往上</strong> —— 审自己提的改动 / 替自己提的问题接受风险 / 验收自己的交付，三种都<strong>路由到一个具名的平级替补</strong>，<em>往上推只是让上面那个人替你做一个本该平级做的决定</em>。外加两条防同一件事的：<strong>升级不重置时钟</strong>（<em>否则升级就成了买时间的办法，而通往更晚截止日的最快路线，就是把决策传出去</em>）· <strong>升级记在同一条记录上，不开新的</strong>（谁决定不了、为什么 —— 这条链本身才是最有用的产物）。<br><br>
+          <strong>🧰 课前包的三层脚本都能当场跑，而且后两层各自把课上的一个论点变成可见的输出（<code>p20-three-layers/</code>）：</strong><code>check.sh</code> 查三条（角色有没有 charter / 有没有登记进索引 / 标了生效的文件还留没留待补项），<strong>前三条红了就拦，而「全仓还有 N 处待补」只提示不拦</strong> —— <em>「硬失败和提示必须分开」落到代码上，就是 <code>bad</code> 置 fail、<code>note</code> 不置这一行之差</em>；<code>access-drift.sh</code> 在查不到组织成员的时候报的是 <strong><code>FAILED</code> 而不是「发现 0 处漂移」</strong> —— <strong>第三幕那一格在第五幕又出现了一次</strong>。三个脚本已在真 ops 仓和一个故意做坏的仓上双向实测（通过 / 三条 FAIL + 退出码 1）。<br><br>
+          <strong>🚧 还没定的两件事（PRD §6）：</strong>第一幕让学员跑自己的配置还是讲师投屏 · 入场券有人交不出来怎么办。<em>（时长已拍板 135；翻车② 的查询目标已定并实测：学员自己那个产品仓的交付清单。）</em>
         </p>
         <div class="meta-row">
           <div class="meta-item"><div class="k">讲师</div><div class="v">Lightman</div></div>
-          <div class="meta-item"><div class="k">时长</div><div class="v">120 min</div></div>
-          <div class="meta-item"><div class="k">Slide 数</div><div class="v">30</div></div>
+          <div class="meta-item"><div class="k">时长</div><div class="v">135 min</div></div>
+          <div class="meta-item"><div class="k">Slide 数</div><div class="v">34</div></div>
           <div class="meta-item"><div class="k">技术栈</div><div class="v">React 19 + framer-motion</div></div>
         </div>
         <div class="reuse-label">跨课复用</div>
