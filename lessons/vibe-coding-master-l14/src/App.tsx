@@ -81,6 +81,7 @@ import L14P16_FourStates from './components/slides/L14P16_FourStates';
 import L14P17_TwoLayers from './components/slides/L14P17_TwoLayers';
 import L14P18_TenSections from './components/slides/L14P18_TenSections';
 import L14P19_Composition from './components/slides/L14P19_Composition';
+import L14P19b_Severity from './components/slides/L14P19b_Severity';
 import L14P20_ThreeLayers from './components/slides/L14P20_ThreeLayers';
 import L14P21_Reversal from './components/slides/L14P21_Reversal';
 import L14P22_Drift from './components/slides/L14P22_Drift';
@@ -124,6 +125,7 @@ export default function App() {
 			<L14P19_Composition />
 
 			{/* 幕五 · 谁来维护 */}
+			<L14P19b_Severity />
 			<L14P20_ThreeLayers />
 			<L14P21_Reversal />
 			<L14P22_Drift />
