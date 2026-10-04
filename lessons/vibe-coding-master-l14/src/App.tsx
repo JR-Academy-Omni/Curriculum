@@ -57,32 +57,78 @@ import SlideEngine from './components/SlideEngine';
 
 import L14P00_Cover from './components/slides/L14P00_Cover';
 import L14P01_FiveQuestions from './components/slides/L14P01_FiveQuestions';
+import L14P02_Handoff from './components/slides/L14P02_Handoff';
+import L14P03_RunYourConfig from './components/slides/L14P03_RunYourConfig';
 import L14P04_ThreeRepos from './components/slides/L14P04_ThreeRepos';
+import L14P05_WriteItDown from './components/slides/L14P05_WriteItDown';
+import L14P06_Allowlist from './components/slides/L14P06_Allowlist';
+import L14P07_Crash1 from './components/slides/L14P07_Crash1';
 import L14P08_WritePermTable from './components/slides/L14P08_WritePermTable';
+import L14P09_FillYourOwn from './components/slides/L14P09_FillYourOwn';
+import L14P10_FourBans from './components/slides/L14P10_FourBans';
+import L14P11_DraftVsSend from './components/slides/L14P11_DraftVsSend';
+import L14P12_Connectors from './components/slides/L14P12_Connectors';
+import L14P13_LoginExpires from './components/slides/L14P13_LoginExpires';
+import L14P14_Crash2 from './components/slides/L14P14_Crash2';
+import L14P15_ZeroOrUnknown from './components/slides/L14P15_ZeroOrUnknown';
 import L14P16_FourStates from './components/slides/L14P16_FourStates';
+import L14P17_TwoLayers from './components/slides/L14P17_TwoLayers';
+import L14P18_TenSections from './components/slides/L14P18_TenSections';
+import L14P19_Composition from './components/slides/L14P19_Composition';
+import L14P20_ThreeLayers from './components/slides/L14P20_ThreeLayers';
+import L14P21_Reversal from './components/slides/L14P21_Reversal';
+import L14P22_Drift from './components/slides/L14P22_Drift';
 import L14P23_Closing from './components/slides/L14P23_Closing';
+import L14A0_WhyThreeRepos from './components/slides/L14A0_WhyThreeRepos';
+import L14A1_TenSectionsFull from './components/slides/L14A1_TenSectionsFull';
+import L14A2_WhoCanChange from './components/slides/L14A2_WhoCanChange';
+import L14A3_Honesty from './components/slides/L14A3_Honesty';
+import L14A4_WhatsNext from './components/slides/L14A4_WhatsNext';
 
 export default function App() {
 	return (
 		<SlideEngine>
-			{/* 开场 */}
 			<L14P00_Cover />
 			<L14P01_FiveQuestions />
 
-			{/* 第一幕 · 它现在能碰什么（P02–P05，其余待写） */}
+			{/* 幕一 · 它现在能碰什么 */}
+			<L14P02_Handoff />
+			<L14P03_RunYourConfig />
 			<L14P04_ThreeRepos />
+			<L14P05_WriteItDown />
 
-			{/* 第二幕 · 给它钥匙（P06–P11，其余待写） */}
+			{/* 幕二 · 给它钥匙 —— 核心产物在这 */}
+			<L14P06_Allowlist />
+			<L14P07_Crash1 />
 			<L14P08_WritePermTable />
+			<L14P09_FillYourOwn />
+			<L14P10_FourBans />
+			<L14P11_DraftVsSend />
 
-			{/* 第三幕 · 它够得着外面吗（P12–P16，其余待写）
-			    ⚠️ P14 翻车② 要等「用什么当查询目标」拍板（PRD §6-3） */}
+			{/* 幕三 · 它够得着外面吗 —— 全节高光 */}
+			<L14P12_Connectors />
+			<L14P13_LoginExpires />
+			<L14P14_Crash2 />
+			<L14P15_ZeroOrUnknown />
 			<L14P16_FourStates />
 
-			{/* 第四幕 P17–P19 · 第五幕 P20–P22 待写 */}
+			{/* 幕四 · 它会干什么活 */}
+			<L14P17_TwoLayers />
+			<L14P18_TenSections />
+			<L14P19_Composition />
 
-			{/* 第五幕收口 */}
+			{/* 幕五 · 谁来维护 */}
+			<L14P20_ThreeLayers />
+			<L14P21_Reversal />
+			<L14P22_Drift />
 			<L14P23_Closing />
+
+			{/* 附录 · 课上不讲，答疑时翻 */}
+			<L14A0_WhyThreeRepos />
+			<L14A1_TenSectionsFull />
+			<L14A2_WhoCanChange />
+			<L14A3_Honesty />
+			<L14A4_WhatsNext />
 		</SlideEngine>
 	);
 }
