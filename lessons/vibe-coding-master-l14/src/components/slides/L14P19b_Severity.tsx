@@ -15,17 +15,17 @@ import { Page, Head, ActBadge, colors, fonts, radii } from '../deck';
  *   —— 不是「重不重要」。
  */
 const LEVELS = [
-	{ k: 'P0', cond: '有一个对外的承诺挂在它上面', eg: '答应过客户的日期 · 发出去的报价', when: '立刻打断你', c: colors.red, top: true },
-	{ k: 'P1', cond: '有具体的人在等它 —— 点得出名字', eg: '张三的活卡在这上面', when: '进当天汇总', c: colors.orange },
-	{ k: 'P2', cond: '没有人在等，但它有到期日', eg: '月底要交的那份', when: '到期前提一次', c: colors.yellow },
-	{ k: 'P3', cond: '没有人在等，也没有到期日', eg: '想做的改进', when: '攒着，不主动说', c: colors.green },
+	{ k: 'P0', cond: '公司暴露了', eg: '生产挂了没绕行 · 数据泄露 · 安全事件 · 客户要走 · 法规期限 · 发薪风险', when: '✅ 唯一能打断你的一级', c: colors.red, top: true },
+	{ k: 'P1', cond: '客户被卡住，或一个承诺要破', eg: '⚠️ 必须点名 —— 没有抽象的 P1', when: '当天安排，不打断', c: colors.orange },
+	{ k: 'P2', cond: '内部被卡，但有可接受的绕行', eg: '文档缺口 · 非客户侧缺陷 · 缺一条批准有人在等', when: '通知解决负责人', c: colors.yellow },
+	{ k: 'P3', cond: '没有人被卡的改进', eg: '质量 · 技术债 · 想做的改动', when: '每周复盘，但仍要有负责人和复审日期', c: colors.green },
 ];
 
 export default function L14P19b_Severity() {
 	return (
 		<Page>
 			<ActBadge act={5} mode="🎯 动手" />
-			<Head sub="它一天看见几十件事。哪件现在打断你，哪件攒着 —— 这个判断不能让它自己拍。">
+			<Head sub="判据是「谁受影响 + 有没有可接受的绕行」—— 两条都是可观察的事实，不是「这件事有多重要」。">
 				它凭什么决定现在打断你
 			</Head>
 
@@ -34,7 +34,7 @@ export default function L14P19b_Severity() {
 					display: 'grid', gridTemplateColumns: '78px 1.5fr 1.25fr 110px', gap: 14, padding: '0 20px',
 					fontFamily: fonts.mono, fontSize: 14.5, fontWeight: 800, letterSpacing: 1, color: '#6f6760',
 				}}>
-					<div>级别</div><div>判据（问一句就能判）</div><div>例</div><div>它该怎么对待</div>
+					<div>级别</div><div>判据（可观察的事实）</div><div>例</div><div>能不能打断</div>
 				</div>
 				{LEVELS.map((l, i) => (
 					<motion.div
@@ -71,14 +71,14 @@ export default function L14P19b_Severity() {
 					background: colors.dark, color: colors.white, boxShadow: `9px 9px 0 rgba(203,108,230,.6)`,
 					fontSize: 20.5, lineHeight: 1.55,
 				}}>
-					<strong style={{ fontFamily: fonts.heading, fontSize: 25, color: colors.yellow }}>它自己拍只有两种结局</strong>
+					<strong style={{ fontFamily: fonts.heading, fontSize: 25, color: colors.yellow }}>防的是同一种病：最后全变成 P1</strong>
 					<br />
-					<strong>什么都报</strong> —— 一天弹你二十次，两天之内你把它关掉，
-					<strong style={{ color: colors.yellow }}>然后连真要紧的那条也没了</strong>。
+					<strong>截止时间是推导出来的，不是挑的</strong> ——
+					写一个很早的日期不会让它变急，<strong style={{ color: colors.yellow }}>符合判据才会</strong>。
 					<br />
-					<strong>什么都不报</strong> —— 你以为一切正常。
-					<br /><br />
-					所以得有一份规则告诉它什么算急。<strong>因为 agent 读不到你心里。</strong>
+					<strong>级别不是提出者单方面定的</strong> —— 他提议，解决负责人按判据确认。
+					<br />
+					<strong>降级要被记录</strong> —— 为了让违约消失而偷偷改级，是让这个指标彻底没用的那个失败模式。
 				</div>
 				<div style={{
 					flex: 1, padding: '17px 21px', borderRadius: radii.panel,
@@ -89,11 +89,13 @@ export default function L14P19b_Severity() {
 					规则仓的 <code>rules/severity.md</code>，
 					<strong>并登记进 <code>rules/INDEX.md</code></strong>。
 					<br /><br />
-					<strong style={{ color: colors.red }}>级别由派活的人在派的时候定</strong>，
-					agent 不许自己改。
+					<strong style={{ color: colors.red }}>P3 是这类系统通常死掉的地方。</strong>
 					<br />
-					它只做两件事：<strong>按规则判断该不该现在说</strong>；
-					<strong>收到没带级别的活，退回去要。</strong>
+					「问题提了，但常常没人解决」—— 一个没有边界的 P3 桶就是这么来的，
+					<strong>而且流程看起来还很健康</strong>。
+					<br />
+					所以 <strong>P3 仍要有负责人和复审日期</strong>：四周没人接，
+					就必须明确处置 —— 延到某个具体日期，或带理由拒掉。<strong>它不能就那么待着。</strong>
 				</div>
 			</motion.div>
 
@@ -107,7 +109,7 @@ export default function L14P19b_Severity() {
 			>
 				⭐ <strong>降级条件要和判据写在一起</strong> ——
 				「那个对外承诺解除了」「等的那个人说不等了」「到期日取消了」。
-				<strong>没有降级条件的分级，三个月后全是 P0</strong> —— 然后它天天打断你，<strong>然后你把它关掉</strong>。
+				<strong>只有 P0 可以打断你。</strong> 这是整份规则里，对 agent 最直接的那一句。
 			</motion.div>
 		</Page>
 	);
