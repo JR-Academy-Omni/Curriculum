@@ -37,11 +37,17 @@ import SlideEngine from './components/SlideEngine';
 //   解药只有一个：**每一幕结束前，学员的终端必须有新输出。** 没有就是讲飞了。
 //   五处硬要求见 PRD §1 的 ✅。
 //
-// ── 🔴 教学决定二：三次翻车里第二次最重要，而且它就是收口的地基 ──
-//   ① 放宽白名单跑危险命令 —— 形态「认知错位」：以为白名单是安全边界
-//   ② **造一次查询失败，看它报 0** ⭐⭐ —— 形态「看不见」，全课唯一一个后背发凉的时刻
-//   ③ 挂一个会阻塞的钩子 —— 形态「烦」：阻塞式警告比它警告的问题更糟
-//   **②讲轻了，收口就没有地基，最后一句话落空。**
+// ── 🔴 教学决定二（2026-10-04 讲师改版）：全课只保留一次翻车 ──
+//   原来有三次。讲师取消了其中两次：「不要从反面来教。」
+//   · P07 原来让学员故意放宽白名单跑危险命令 → 改成正面讲它管什么、不管什么
+//   · P20 原来让学员故意挂一个会阻塞的钩子 → 改成正面给那条铁律（永远正常退出）
+//   沿用第十三节 v3.2 那条：**正面给规矩，不赌学员犯错** ——
+//   只在你恰好犯过错时才成立的教学点，是抽奖不是教学。
+//
+//   **留下的唯一一次是 P14，而且它其实不算「从反面教」：**
+//   学员跑的是一段**写得很正常**的脚本，他只是观察到它的真实行为 ——
+//   查询失败被默认写法吞掉，报成了 0。
+//   **这一次讲轻了，收口就没有地基，最后一句话落空。**
 //
 // ── 🔴 教学决定三：全程不出现学员公司那边的产品名 ──
 //   三重收益：脱敏 · 国内班海外班同一份课件 · 学员能把自己代入。
@@ -62,14 +68,14 @@ import L14P03_RunYourConfig from './components/slides/L14P03_RunYourConfig';
 import L14P04_ThreeRepos from './components/slides/L14P04_ThreeRepos';
 import L14P05_WriteItDown from './components/slides/L14P05_WriteItDown';
 import L14P06_Allowlist from './components/slides/L14P06_Allowlist';
-import L14P07_Crash1 from './components/slides/L14P07_Crash1';
+import L14P07_WhatAllowlistDoes from './components/slides/L14P07_WhatAllowlistDoes';
 import L14P08_WritePermTable from './components/slides/L14P08_WritePermTable';
 import L14P09_FillYourOwn from './components/slides/L14P09_FillYourOwn';
 import L14P10_FourBans from './components/slides/L14P10_FourBans';
 import L14P11_DraftVsSend from './components/slides/L14P11_DraftVsSend';
 import L14P12_Connectors from './components/slides/L14P12_Connectors';
 import L14P13_LoginExpires from './components/slides/L14P13_LoginExpires';
-import L14P14_Crash2 from './components/slides/L14P14_Crash2';
+import L14P14_MakeItFail from './components/slides/L14P14_MakeItFail';
 import L14P15_ZeroOrUnknown from './components/slides/L14P15_ZeroOrUnknown';
 import L14P16_FourStates from './components/slides/L14P16_FourStates';
 import L14P17_TwoLayers from './components/slides/L14P17_TwoLayers';
@@ -99,7 +105,7 @@ export default function App() {
 
 			{/* 幕二 · 给它钥匙 —— 核心产物在这 */}
 			<L14P06_Allowlist />
-			<L14P07_Crash1 />
+			<L14P07_WhatAllowlistDoes />
 			<L14P08_WritePermTable />
 			<L14P09_FillYourOwn />
 			<L14P10_FourBans />
@@ -108,7 +114,7 @@ export default function App() {
 			{/* 幕三 · 它够得着外面吗 —— 全节高光 */}
 			<L14P12_Connectors />
 			<L14P13_LoginExpires />
-			<L14P14_Crash2 />
+			<L14P14_MakeItFail />
 			<L14P15_ZeroOrUnknown />
 			<L14P16_FourStates />
 

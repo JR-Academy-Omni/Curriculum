@@ -2,9 +2,13 @@ import { motion } from 'framer-motion';
 import { Page, Head, ActBadge, colors, fonts, radii } from '../deck';
 
 /**
- * P20 · 三层自动化 + 翻车③
+ * P20 · 三层自动化
  * 🔴 中间那层要标「唯一真正的硬政策」—— 钩子是提醒，巡检是巡检，
  *   只有中间那层能让一个改动进不来。
+ *
+ * 🔴 2026-10-04 改版：原来这一页末尾有「翻车③」—— 让学员故意把钩子
+ *   改成阻塞的，自己感受一下有多烦。**讲师取消了：不要从反面教。**
+ *   现在改成正面给规矩（钩子永远正常退出）+ 给理由，不让学员先挂一个坏的。
  */
 const LAYERS = [
 	{ when: '每次开会话', what: '会话启动钩子', how: '只报告这份检出落后多少。永不自动拉取，永远正常退出。', note: '一个会阻塞会话的新鲜度警告，比它警告的陈旧本身更糟' },
@@ -57,13 +61,16 @@ export default function L14P20_ThreeLayers() {
 			<motion.div
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.5 }}
 				style={{
-					marginTop: 22, padding: '16px 22px', borderRadius: radii.card,
-					border: `2px dashed ${colors.red}`, background: 'rgba(255,87,87,.07)',
-					fontSize: 21, lineHeight: 1.55,
+					marginTop: 22, padding: '18px 24px', borderRadius: radii.panel,
+					border: `2px solid ${colors.dark}`, background: colors.yellow,
+					fontSize: 23, lineHeight: 1.6,
 				}}
 			>
-				🎬 <strong>现在试一下第一层：把你那个钩子改成「没通过就卡住，不让你继续」，然后开一个会话。</strong>
-				<br />跑完在聊天框打 <strong>1</strong>。然后问自己一句：<strong>这东西你能忍几天？</strong>
+				<strong style={{ fontFamily: fonts.heading, fontSize: 27 }}>第一层有一条铁律：它永远正常退出，永远不拦你。</strong>
+				<br />
+				因为<strong>一个会阻塞会话的新鲜度警告，比它警告的陈旧本身更糟</strong> ——
+				它每天拦你一次，拦的还都是你当下不打算处理的事。
+				<strong>两天之内你会亲手把它关掉，然后连提醒都没有了。</strong>
 			</motion.div>
 		</Page>
 	);
