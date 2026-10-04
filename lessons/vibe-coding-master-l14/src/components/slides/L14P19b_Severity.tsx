@@ -91,11 +91,23 @@ export default function L14P19b_Severity() {
 				</div>
 			</motion.div>
 
-			<div style={{ marginTop: 14 }}>
-				<SoBar color={colors.purple}>
-					判据那一列<strong>全是可观察的现象</strong>，不是「很严重」。
-					这是上节课那个动作的第三次出现：<strong>把判断题换成形状题。</strong>
-				</SoBar>
+			<div style={{ marginTop: 14, display: 'flex', gap: 16, alignItems: 'stretch' }}>
+				<div style={{
+					flex: 1, padding: '13px 18px', borderRadius: radii.card,
+					border: `2px solid ${colors.dark}`, background: 'rgba(56,182,255,.12)', fontSize: 19.5, lineHeight: 1.5,
+				}}>
+					<strong>写在哪：</strong>规则仓的 <code>rules/severity.md</code>，
+					<strong>而且要登记进 <code>rules/INDEX.md</code></strong> ——
+					不登记，上节课那条检查会咬你。
+				</div>
+				<div style={{
+					flex: 1, padding: '13px 18px', borderRadius: radii.card,
+					border: `2px solid ${colors.dark}`, background: 'rgba(203,108,230,.12)', fontSize: 19.5, lineHeight: 1.5,
+				}}>
+					<strong>为什么必须是规则，不是习惯：</strong>
+					<strong>它要被 agent 读，也要能被人翻出来吵。</strong>
+					放在群里说过，等于没定。
+				</div>
 			</div>
 		</Page>
 	);

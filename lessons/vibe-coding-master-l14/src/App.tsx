@@ -82,6 +82,7 @@ import L14P17_TwoLayers from './components/slides/L14P17_TwoLayers';
 import L14P18_TenSections from './components/slides/L14P18_TenSections';
 import L14P19_Composition from './components/slides/L14P19_Composition';
 import L14P19b_Severity from './components/slides/L14P19b_Severity';
+import L14P19c_Walkthrough from './components/slides/L14P19c_Walkthrough';
 import L14P20_ThreeLayers from './components/slides/L14P20_ThreeLayers';
 import L14P21_Reversal from './components/slides/L14P21_Reversal';
 import L14P22_Drift from './components/slides/L14P22_Drift';
@@ -122,10 +123,10 @@ export default function App() {
 			{/* 幕四 · 它会干什么活 */}
 			<L14P17_TwoLayers />
 			<L14P18_TenSections />
-			<L14P19_Composition />
 
 			{/* 幕五 · 谁来维护 */}
 			<L14P19b_Severity />
+			<L14P19c_Walkthrough />
 			<L14P20_ThreeLayers />
 			<L14P21_Reversal />
 			<L14P22_Drift />
@@ -136,6 +137,7 @@ export default function App() {
 			<L14A1_TenSectionsFull />
 			<L14A2_WhoCanChange />
 			<L14A3_Honesty />
+			<L14P19_Composition />
 			<L14A4_WhatsNext />
 		</SlideEngine>
 	);
