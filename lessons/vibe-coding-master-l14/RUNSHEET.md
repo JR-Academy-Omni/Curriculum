@@ -97,14 +97,14 @@ node check-delivery.mjs ~/Desktop/star-mansions/dco    # 应该报 0，并说「
 |---|---|
 | **P05** | `p05-指令文件-可追加片段.md` |
 | **P09** ⭐ | `p09-写权限表-空白模板.md`（四列空表 + 一份填好的样例） |
-| **P14** ⭐⭐ | `p14-zero-or-unknown/`（`broken.mjs` / `fixed.mjs` / `reports/`） |
+| **P14** ⭐⭐ | `p14-zero-or-unknown/`（`check-delivery.mjs` / `check-delivery-fixed.mjs` / `sample-delivery/`） |
 | **P18** ⭐ | `p18-技能十节-空白模板.md`（十节空表 + 一个贯穿示例） |
 | **P06** ⭐ | `p06-白名单怎么建.md`（配置长什么样 + 三件事 + 当堂建） |
 | **P19b** ⭐ | `p19b-任务分级-空白模板.md`（空表 + 三条填写规矩 + 填好的样例 + 一条反模式） |
 | **P20** | `p20-session-hook/`（**一个写对的会话启动钩子**，照着抄） |
 
 - [ ] 课前至少 24 小时发出去，并让学员跑一次 `README.md` 里那两条自检命令
-- [ ] **讲师自己也跑一遍**（尤其 `node broken.mjs repor7s` 必须输出 `0`）
+- [ ] **讲师自己也跑一遍**（尤其第二条必须输出 `0` 并说「全都交付完了」）
 
 ---
 
