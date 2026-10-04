@@ -50,32 +50,33 @@ export default function L14P07_WhatAllowlistDoes() {
 						display: 'flex', flexDirection: 'column', gap: 16,
 					}}
 				>
-					<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, color: colors.red }}><code>deny</code> —— 它真拦 ⛔</div>
+					<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, color: colors.red }}><code>deny</code> —— 挡手滑 ⛔</div>
 					<div style={{ fontSize: 22, lineHeight: 1.7 }}>
-						<strong style={{ color: colors.yellow }}>它是你今天就能加上的第一道真边界。</strong>
-						<br /><br />
 						列进 <code>deny</code> 的命令，它<strong>不会问你，直接不做</strong>。
 						<strong>deny 优先于 allow。</strong>
 						<br /><br />
-						但注意它的管辖范围：<strong style={{ color: colors.yellow }}>它只拦得住「命令」。</strong>
+						⚠️ <strong style={{ color: colors.yellow }}>但它是按命令文本匹配的，不是操作系统级的边界。</strong>
+						换个写法（套一层 shell、用全路径、把命令拼出来）就可能不匹配同一条规则。
+						<br /><br />
+						<strong>所以：它挡得住手滑和顺手，挡不住绕路。</strong>
 					</div>
 					<div style={{
 						marginTop: 'auto', padding: '14px 18px', borderRadius: radii.card,
-						background: 'rgba(255,222,89,.16)', fontSize: 21, lineHeight: 1.55, fontWeight: 800,
+						background: 'rgba(255,222,89,.16)', fontSize: 20, lineHeight: 1.5, fontWeight: 800,
 					}}>
-						它拦不住「<strong>发一封邮件</strong>」「<strong>改一条工单</strong>」——
-						那些<strong>不是命令</strong>。<span style={{ color: colors.yellow }}>下一页那张表管的就是那些。</span>
+						而且它管的是<strong>工具调用</strong>。「<strong>发一封邮件</strong>」「<strong>改一条工单</strong>」
+						走的是连接器，<span style={{ color: colors.yellow }}>归下一页那张表和它背后的凭据管。</span>
 					</div>
 				</motion.div>
 			</div>
 
 			<div style={{ marginTop: 22 }}>
 				<SoBar color={colors.blue}>
-					<strong>今天会出现四样东西，管的事都不一样，不要混：</strong>
-					　<code>allow</code> <strong>省事</strong>，不拦 ·
-					　<code>deny</code> <strong>拦</strong>，但只拦得住命令 ·
-					　<strong>下一页那张写权限表</strong> 管的是「对外做了什么」，它是政策记录，<strong>不拦</strong> ·
-					　<strong>第五幕那层自动检查</strong> 管的是「改动进不进得来」，<strong>它拦</strong>。
+					<strong>四样东西，管的事都不一样，不要混：</strong>
+					　<code>allow</code> / <code>deny</code> —— <strong>工具层</strong>。allow 省事，deny 挡手滑（<strong>不是 OS 边界</strong>）·
+					　<strong>写权限表</strong> —— <strong>政策记录</strong>，写下组织批准了什么，<strong>它不执行</strong> ·
+					　<strong>连接器凭据 / CI / 钩子</strong> —— <strong>真正限制得住对外动作的那层</strong> ·
+					　<strong>人</strong> —— 定规矩、改规矩，<strong>不是每次去点按钮</strong>。
 				</SoBar>
 			</div>
 		</Page>

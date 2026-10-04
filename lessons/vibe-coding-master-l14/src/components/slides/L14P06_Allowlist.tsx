@@ -75,8 +75,8 @@ export default function L14P06_Allowlist() {
 						<div style={{ marginTop: 10 }}>
 							<strong>① <code>allow</code> 只放不动你工作区的</strong><br />
 							<span style={{ opacity: .72 }}>看状态、看差异、看历史、取远端更新</span><br />
-							<strong>② <code>deny</code> 放真正危险的</strong> <span style={{ color: colors.red, fontWeight: 800 }}>← 这一条今天最值钱</span><br />
-							<span style={{ opacity: .72 }}>删除、强推、硬重置。<strong>deny 优先于 allow</strong></span><br />
+							<strong>② <code>deny</code> 放真正危险的</strong> <span style={{ color: colors.red, fontWeight: 800 }}>← 今天最值钱的一条</span><br />
+							<span style={{ opacity: .72 }}>删除、强推、硬重置。<strong>deny 优先于 allow</strong>，而且它不问你，直接不做</span><br />
 							<strong>③ 个人偏好放 <code>settings.local.json</code></strong><br />
 							<span style={{ opacity: .72 }}>并且 gitignore 掉 —— 别把你的习惯塞给全队</span>
 						</div>
@@ -95,8 +95,7 @@ export default function L14P06_Allowlist() {
 				🎯 <strong>现在建一个：给 <code>deny</code> 加三条你真的不想让它跑的命令，保存，重开会话。</strong>
 				<br />
 				<span style={{ fontSize: 19 }}>
-					<strong>注意 <code>allow</code> 和 <code>deny</code> 不是一回事</strong> ——
-					下一页说清楚它们各自管什么。
+					<strong>但别把它当护城河</strong> —— 下一页说清楚它挡得住什么、挡不住什么。
 				</span>
 			</motion.div>
 		</Page>
