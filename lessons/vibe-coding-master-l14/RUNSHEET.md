@@ -607,16 +607,29 @@ node check-delivery.mjs ~/Desktop/star-mansions/dco    # 应该报 0，并说「
 
 ## P14 ｜ 62 到 70 分钟 ｜ 跑一段很普通的代码 🎬 ⭐⭐ **全课唯一一次翻车 · 最重要的八分钟**
 
+> 🚨 **不要让学员自己发明脚本。** 正常写法多半直接抛异常，根本到不了那个 `0`。
+> 　 **所有人跑课前包里同一份，而且屏幕上就有代码，照着看。**
+>
+> 🚨 **不要指 `catch` 那一行。** 现在指等于提前把答案给了，这一格就废了。
+
+> 「打开课前包里的 `p14-zero-or-unknown/`。
+> 　里面有个 `check-delivery.mjs`，它回答一个 **CEO 真会问的问题**：
+> 　**『我们那个产品，交付清单里还有几项没完成？』**
+> 　它去扫交付文档，找三种还没完成的凭据：**要人拍板的 · 没签字的 · 没勾掉的**。
+> 　用的是**绝大多数人都会这么写**的默认写法。
+>
+> 　先跑路径对的那次：」
+
 ```bash
 cd p14-zero-or-unknown
-node broken.mjs reports
+node check-delivery.mjs ~/Desktop/star-mansions/doc
 ```
 
-> 「它说有 2 份。对的。
-> 　**现在把路径故意写错，再跑一次：**」
+> 「它说还有十几项没完成。**对的 —— 我们那个产品确实还没交付完。**
+> 　**现在把路径故意写错，`doc` 打成 `dco`，再跑一次：**」
 
 ```bash
-node broken.mjs repor7s
+node check-delivery.mjs ~/Desktop/star-mansions/dco
 ```
 
 > 「**把它的输出原样念出来。** 不用急着解释。」
