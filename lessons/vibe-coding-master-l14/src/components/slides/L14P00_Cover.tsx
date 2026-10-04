@@ -40,8 +40,8 @@ export default function L14P00_Cover() {
 				style={{ fontSize: 23, lineHeight: 1.75, color: 'rgba(255,255,255,.58)', marginTop: 26, maxWidth: 1040 }}
 			>
 				上节课你造了一个会自己拦人的仓库。<br />
-				<span style={{ color: colors.yellow, fontWeight: 700 }}>但它现在没有消费者</span> —— 没有任何 AI 在读它。<br />
-				今天我们把 AI 接进来。
+				<span style={{ color: colors.yellow, fontWeight: 700 }}>而 Claude Code 现在就在读它</span> —— 一打开就在读。<br />
+				问题是：它读的是你指定的那几份吗？它能改吗？谁拦着它？
 			</motion.p>
 
 			<motion.div
