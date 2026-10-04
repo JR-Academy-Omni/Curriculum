@@ -215,6 +215,28 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/vibe-coding-master-l13 (Vibe Coding 大师课 · 第十三节课《造一套让规矩成立的系统》— 规则仓 + 六条检查 + CI 当关卡)
+      # ⚠️ 这一节的 deck 早就做完了，但之前漏接 deploy.yml，线上一直是 404。2026-10-04 补。
+      - name: Build lessons/vibe-coding-master-l13
+        working-directory: lessons/vibe-coding-master-l13
+        run: |
+          bun install
+          bun run build
+
+      # Build lessons/vibe-coding-master-l14 (Vibe Coding 大师课 · 第十四节课《它能碰什么》— 写权限表 + 四态结果模型 + 技能十节)
+      - name: Build lessons/vibe-coding-master-l14
+        working-directory: lessons/vibe-coding-master-l14
+        run: |
+          bun install
+          bun run build
+
+      # Build lessons/vibe-coding-master-l15 (Vibe Coding 大师课 · 第十五节课《它碰过什么》— 不可逆清单 + 升级三道门 + 定时任务)
+      - name: Build lessons/vibe-coding-master-l15
+        working-directory: lessons/vibe-coding-master-l15
+        run: |
+          bun install
+          bun run build
+
       # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
       # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
       # base 已写进 package.json: --base /curriculum/lessons/vibe-coding/
@@ -660,6 +682,25 @@ jobs:
           if [ -d lessons/vibe-coding-master-l12/dist ]; then
             mkdir -p _site/lessons/vibe-coding-master-l12
             cp -r lessons/vibe-coding-master-l12/dist/* _site/lessons/vibe-coding-master-l12/
+          fi
+
+          # lessons/vibe-coding-master-l13: Vibe Coding 大师课 · 第十三节课《造一套让规矩成立的系统》（React + Vite）
+          # ⚠️ 之前漏接，线上一直 404。2026-10-04 补。
+          if [ -d lessons/vibe-coding-master-l13/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l13
+            cp -r lessons/vibe-coding-master-l13/dist/* _site/lessons/vibe-coding-master-l13/
+          fi
+
+          # lessons/vibe-coding-master-l14: Vibe Coding 大师课 · 第十四节课《它能碰什么》（React + Vite）
+          if [ -d lessons/vibe-coding-master-l14/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l14
+            cp -r lessons/vibe-coding-master-l14/dist/* _site/lessons/vibe-coding-master-l14/
+          fi
+
+          # lessons/vibe-coding-master-l15: Vibe Coding 大师课 · 第十五节课《它碰过什么》（React + Vite）
+          if [ -d lessons/vibe-coding-master-l15/dist ]; then
+            mkdir -p _site/lessons/vibe-coding-master-l15
+            cp -r lessons/vibe-coding-master-l15/dist/* _site/lessons/vibe-coding-master-l15/
           fi
 
           # lessons/vibe-coding-master-l8: Vibe Coding 大师课 · 第八节课 · Agent Team（React + Vite）
