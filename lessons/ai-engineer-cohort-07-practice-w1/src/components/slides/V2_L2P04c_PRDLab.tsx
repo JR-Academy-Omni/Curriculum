@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const steps = [
     { n: '01', t: '先写一句话需求', d: '为谁 / 解决什么痛 / 成功标准 / 不做什么', color: colors.red },
     { n: '02', t: '再填 PRD 六块', d: '目标&范围、页面&流程、数据&输入、模块拆解、红线验收、Action', color: colors.blue },
-    { n: '03', t: '同桌互审 2 分钟', d: '对方读完不用追问，才算能交给 agent', color: colors.green },
+    { n: '03', t: '独立自查 2 分钟', d: '检查 Agent 是否需要猜测；将一处疑问贴到聊天区', color: colors.green },
 ];
 const worksheet = `## Lab: 我的 PRD
 

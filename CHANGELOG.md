@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- 重组AI Engineer实践W1为60页项目管理主线，拆分CareKind商业模式、移除个人AI OS/重复Context/Mini CRM/Repo Map，补五步ADLC、多Agent与SDD，按PRD→Rules→CLAUDE.md整理执行顺序；将八页UI概念与整组18页进阶材料完整迁入W2（47页），同步来源、讲师资料与修订登记（`curriculum/lessons/ai-engineer-cohort-07-practice-w1~w2`）
+
 - 拆分AI Engineer实践课为W1/W2/W3三个独立入口，新增W2与W3各21页课件、封面、工作单与讲师流程，登记课程映射和构建配置（`curriculum/lessons/ai-engineer-cohort-07-practice-w1~w3`）
 
 - 重做AI Engineer实践第一课为86页完整迁入版，补正式封面/目录/章节页，直接迁入63个旧教学页的图解、案例、模板与Lab，更新逐页来源、讲师流程和课件登记（`curriculum/lessons/ai-engineer-cohort-07-practice-w1`）

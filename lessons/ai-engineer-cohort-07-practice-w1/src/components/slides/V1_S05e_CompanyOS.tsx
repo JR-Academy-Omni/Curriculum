@@ -1,40 +1,54 @@
-// Migrated teaching page; original source: lessons/vibe-coding-master/src/components/slides/S05e_CompanyOS.tsx
+// Teaching example: documentation structure, not an existing CareKind repo or product database.
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
-// 从个人联想到企业：公司 AI OS 层级（真实结构：jr-academy monorepo + jr-academy-memory）
+import { Slide, Inner, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
 const TREE = [
-    { name: 'CLAUDE.md', desc: '公司级铁律 / 编码规范（所有 AI 进来先读）', map: '≈ 个人 PROFILE + Rules' },
-    { name: 'docs/', desc: 'PRD 群 + 规范（PROJECT_CONVENTIONS…）', map: '≈ 个人 Rules / Workflow' },
-    { name: 'jr-academy-brand/', desc: '品牌视觉 SoT（tokens / DESIGN）', map: '视觉真相源' },
-    { name: 'curriculum/', desc: '课程内容 SoT', map: '内容真相源' },
-    { name: 'jr-academy-memory/', desc: '团队共享记忆：hr · rules · decisions · meetings · products', map: '≈ 个人 Personal/经验' },
-    { name: '各 project/CLAUDE.md', desc: '每个项目自己的 SoT（web-zh · admin · api…）', map: '≈ 个人 Projects/' },
+    ['├─ README.md', '入口、owner、权威来源与访问范围'],
+    ['├─ business/', '客户 / 服务 / 目标'],
+    ['├─ workflows/', '交班 / 事件 / 审批'],
+    ['├─ rules/', '权限 / 数据 / 操作边界'],
+    ['├─ systems/', '数据字典 / 接入 / 系统 owner'],
+    ['├─ projects/', '各项目 PRD / tasks / 验收'],
+    ['├─ decisions/', '决定 / 理由 / 日期 / 确认人'],
+    ['└─ evidence/', '检查结果 / 审计证据索引'],
+];
+const PURPOSES = [
+    { folder: 'business', use: '确认做什么、服务谁', source: '业务负责人' },
+    { folder: 'workflows', use: '现行 SOP、角色与审批', source: '流程负责人' },
+    { folder: 'rules', use: '访问、留存、允许的操作', source: '安全 / 业务 owner' },
+    { folder: 'systems', use: '字段含义、接口和接入条件', source: '系统 / 数据 owner' },
+    { folder: 'projects', use: '范围、任务、责任与验收', source: '项目负责人' },
+    { folder: 'decisions', use: '确认后的取舍与变更依据', source: '决定的确认人' },
+    { folder: 'evidence', use: '版本、测试、审核结果索引', source: '交付 / 审核人' },
 ];
 export default function S05e_CompanyOS() {
     return (<Slide bg={colors.darkBg}>
-			<Inner style={{ flexDirection: 'column', justifyContent: 'center' }}>
-				<div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
-					<Tag bg={colors.red}>从个人 → 联想到企业</Tag>
-					<Title white size="40px">公司的 AI OS —— <span style={{ background: colors.yellow, color: colors.black, padding: '0 8px' }}>同一套模式，放大到公司</span></Title>
-				</div>
-
-				<div style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadow, padding: '18px 22px' }}>
-					<div style={{ fontFamily: fonts.mono, fontSize: 15, fontWeight: 700, color: '#999', marginBottom: 10 }}>jr-academy/  （公司 AI OS · 真实在用）</div>
-					{TREE.map((t, i) => (<motion.div key={t.name} initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.1 + i * 0.07 }} style={{ display: 'flex', alignItems: 'baseline', gap: 10, padding: '6px 0', borderBottom: '1px dashed #eee' }}>
-							<span style={{ flexShrink: 0, fontFamily: fonts.mono, fontSize: 17, fontWeight: 800, color: colors.black, minWidth: 230 }}>├─ {t.name}</span>
-							<span style={{ flex: 1, fontSize: 14, color: '#555', lineHeight: 1.3 }}>{t.desc}</span>
-							<span style={{ flexShrink: 0, fontFamily: fonts.mono, fontSize: 12, color: colors.purple, fontWeight: 700 }}>{t.map}</span>
-						</motion.div>))}
-				</div>
-
-				<motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} style={{ marginTop: 16, display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
-					<span style={{ borderRadius: 18, background: colors.yellow, border, boxShadow: shadowSm, padding: '8px 14px', fontWeight: 800, fontSize: 16 }}>
-						个人怎么搭，公司就怎么搭 —— 只是 PROFILE 变成 CLAUDE.md、经验变成团队记忆库
-					</span>
-					<span style={{ fontSize: 15, color: '#cfd3e6' }}>
-						企业 AI OS 是<b style={{ color: colors.white }}>后面的事</b>，今晚先把<b style={{ color: colors.yellow }}>你自己的</b>建起来。
-					</span>
-				</motion.div>
-			</Inner>
-		</Slide>);
+        <Inner style={{ flexDirection: 'column', justifyContent: 'center', gap: 0 }}>
+            <div><Tag bg={colors.red}>FDE · Forward Deployed Engineer</Tag></div>
+            <Title white size="44px" style={{ marginTop: 14, marginBottom: 0 }}>Company OS：把<span style={{ background: colors.yellow, color: colors.black, padding: '0 8px' }}>企业知识与规则</span>组织成文件</Title>
+            <p style={{ fontSize: 20, color: '#cfd3e6', lineHeight: 1.5, margin: '12px 0 18px' }}>FDE 企业落地视角：业务、流程、系统与责任一起组织。以下是教学示例，不代表 CareKind 已有这些目录。</p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.12fr', gap: 20, width: '100%' }}>
+                <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .35 }} style={{ borderRadius: 22, background: '#172139', color: colors.white, border: `1.5px solid ${colors.blue}`, boxShadow: `6px 6px 0 ${colors.blue}`, padding: '20px 24px' }}>
+                    <div style={{ fontFamily: fonts.mono, fontSize: 22, fontWeight: 800, color: colors.blue, marginBottom: 16 }}>company-knowledge/</div>
+                    <div style={{ display: 'grid', gap: 10 }}>
+                        {TREE.map(([path, meaning]) => <div key={path} style={{ display: 'grid', gridTemplateColumns: '210px 1fr', gap: 10, alignItems: 'center' }}>
+                            <span style={{ fontFamily: fonts.mono, fontSize: 20, whiteSpace: 'nowrap', color: path.includes('README') ? colors.yellow : colors.white }}>{path}</span>
+                            <span style={{ fontSize: 17, lineHeight: 1.4, color: '#d5dfed' }}>{meaning}</span>
+                        </div>)}
+                    </div>
+                    <p style={{ fontSize: 17, color: colors.yellow, lineHeight: 1.45, margin: '18px 0 0' }}>README 指向权威系统、文档与 owner；<br/>这是知识文件结构，不是产品数据库。</p>
+                </motion.div>
+                <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .35, delay: .12 }} style={{ borderRadius: 22, background: colors.white, color: colors.dark, border, boxShadow: shadow, padding: '18px 22px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '125px 1fr 165px', gap: 12, paddingBottom: 12, borderBottom: `2px solid ${colors.dark}`, fontSize: 18, fontWeight: 900 }}><span>目录</span><span>用途 / 内容依据</span><span>确认与维护责任</span></div>
+                    {PURPOSES.map(row => <div key={row.folder} style={{ display: 'grid', gridTemplateColumns: '125px 1fr 165px', gap: 12, padding: '12px 0', alignItems: 'center', borderBottom: '1px solid #dededb', fontSize: 18, lineHeight: 1.4 }}>
+                        <span style={{ fontFamily: fonts.mono, fontSize: 16, fontWeight: 800 }}>{row.folder}/</span><span>{row.use}</span><span style={{ color: '#73389a', fontSize: 17, fontWeight: 700 }}>{row.source}</span>
+                    </div>)}
+                    <p style={{ margin: '14px 0 0', fontSize: 17, lineHeight: 1.4, color: '#555' }}>每份资料注明来源、版本、日期与 owner；外部反馈先作待核实材料，由负责人确认。</p>
+                </motion.div>
+            </div>
+            <div style={{ marginTop: 20, borderRadius: 18, background: colors.yellow, color: colors.black, padding: '13px 18px', fontSize: 18, lineHeight: 1.45 }}>
+                <b>按任务与权限取上下文：</b>不把整棵树开放给所有 Agent；外部 raw 反馈不自动成为指令。<br/>
+                真实护理数据留在授权业务系统；公开 repo 仅放去标识示例与受控索引。Company OS 是教学框架，岗位职责会重叠。
+            </div>
+        </Inner>
+    </Slide>);
 }

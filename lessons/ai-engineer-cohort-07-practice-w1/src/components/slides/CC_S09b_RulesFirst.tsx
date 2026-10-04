@@ -2,19 +2,19 @@
 import { Slide, Inner, Half, Title, Tag, colors, fonts, border, shadow } from '../courseUi';
 import { slideFromLeft, slideFromRight } from '../courseUi';
 import { motion } from 'framer-motion';
-// 第一要务 = 构建 rules，但只写 LLM 基线之上的增量
+// 编码前提 = 构建 rules，但只写 LLM 基线之上的增量
 const deltas = [
-    { t: '① 你们特有的', d: '公司记账政策 / 审批流 / 内部口径 —— LLM 不可能知道' },
-    { t: '② LLM 会搞错的', d: '本地最新特例，如「澳洲 GST 不要假设统一 10%」' },
+    { t: '① 你们特有的', d: '护理记录确认权 / 机构审批流 / 交班口径' },
+    { t: '② LLM 会搞错的', d: '不确定的对象归属待确认，不能写到别人的档案' },
     { t: '③ 你要的默认偏好', d: '输出格式 / 命名 / 它该默认遵守的规范' },
 ];
 export default function S09b_RulesFirst() {
     return (<Slide bg={colors.warmBg}>
 			<Inner style={{ flexDirection: 'column' }}>
 				<motion.div {...slideFromLeft}>
-					<Tag bg={colors.red}>第一要务</Tag>
+					<Tag bg={colors.red}>编码前提</Tag>
 					<Title size="46px" style={{ marginTop: 12, lineHeight: 1.16 }}>
-						做 AI coding / agent，第一件事永远是<span style={{ background: colors.yellow, padding: '0 8px' }}>构建 rules</span>
+						PRD 明确后，在编码前先<span style={{ background: colors.yellow, padding: '0 8px' }}>构建 rules</span>
 					</Title>
 				</motion.div>
 
@@ -43,7 +43,7 @@ export default function S09b_RulesFirst() {
 									<b style={{ color: colors.red }}>❌</b> 把整部澳洲会计法下载塞进 rules
 								</div>
 								<div style={{ borderRadius: 18, flex: 1, background: '#f0fdf4', border: `2px solid #0a8a3a`, padding: '9px 11px', fontSize: 14, lineHeight: 1.45 }}>
-									<b style={{ color: '#0a8a3a' }}>✅</b> 信任 LLM 已懂的会计 / GAAP 基线
+									<b style={{ color: '#0a8a3a' }}>✅</b> 行业规范与客户规则都要核对来源
 								</div>
 							</div>
 							<div style={{ fontFamily: fonts.mono, fontSize: 12.5, color: '#888', fontWeight: 700, marginTop: 12, marginBottom: 6 }}>rules 只写「基线之上的增量」三类 ↓</div>
@@ -56,7 +56,7 @@ export default function S09b_RulesFirst() {
 				</motion.div>
 
 				<motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} style={{ borderRadius: 18, marginTop: 16, alignSelf: 'flex-start', background: colors.green, color: colors.black, padding: '11px 22px', border, boxShadow: shadow, fontSize: 17, fontWeight: 800 }}>
-					判据：LLM 已经会的别写，它不知道 / 会搞错的才写 —— 预训练知识本身就是一份免费 SoT，你只在上面叠 delta。
+					通用知识可以作起点；行业规范、客户事实与项目规则须核对权威来源，再写进 Rules。
 				</motion.div>
 			</Inner>
 		</Slide>);
