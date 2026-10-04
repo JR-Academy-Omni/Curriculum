@@ -6,16 +6,16 @@ const repos = [
         t: 'Monorepo',
         sub: '所有模块代码在一个 repo 下',
         arch: '/frontend\n/backend\n/models\n/infra',
-        pros: ['全局统一依赖', 'AI 容易理解全局语义', '便于一次性部署'],
-        cons: ['repo 过大', '管理复杂', '权限不易控制'],
+        pros: ['便于共享代码与工具链', '便于跨模块修改与检查', '单团队或多团队均可用'],
+        cons: ['大仓需治理构建成本', '细粒度权限需额外设计', '共享改动需协调验证'],
         color: colors.blue,
     },
     {
-        t: 'Polyrepo + Submodules',
-        sub: '多个独立 repo，通过 submodule 组合',
+        t: 'Polyrepo · 可选 Submodules',
+        sub: '多个独立 repo；是否聚合由协作方式决定',
         arch: 'frontend repo\nbackend repo\ninfra repo\nshared models repo',
-        pros: ['各模块独立维护', '利于团队分工', '权限清晰', 'AI 可模块化理解'],
-        cons: ['跨模块重构不方便', '依赖更新需手动管理', 'AI 需要递归处理多个 repo'],
+        pros: ['按所有权独立维护', '按仓库划分访问权限', '便于独立版本与发布'],
+        cons: ['跨仓修改需协调版本', 'Agent需明确路径与权限', '子模块需同步CI与指针'],
         color: colors.red,
     },
 ];
@@ -34,7 +34,7 @@ export default function L2P04i_RepoStrategy() {
 							<div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
 								<div style={{ borderRadius: 18, width: 48, height: 48, background: repo.color, border }}/>
 								<div>
-									<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, color: colors.black }}>{repo.t}</div>
+									<div style={{ fontFamily: fonts.heading, fontSize: 28, fontWeight: 900, color: colors.black }}>{repo.t}</div>
 									<div style={{ fontSize: 15, fontWeight: 820, color: '#4b5563' }}>{repo.sub}</div>
 								</div>
 							</div>
@@ -45,7 +45,7 @@ export default function L2P04i_RepoStrategy() {
 
 							<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 16 }}>
 								<div style={{ borderRadius: 18, background: colors.warmBg, border, padding: '13px 14px' }}>
-									<div style={{ fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, color: colors.green }}>优点</div>
+									<div style={{ fontFamily: fonts.mono, fontSize: 13, fontWeight: 900, color: '#347221' }}>优点</div>
 									<ul style={{ margin: '8px 0 0 18px', padding: 0 }}>
 										{repo.pros.map((p) => <li key={p} style={{ fontSize: 14.5, fontWeight: 760, color: '#374151', lineHeight: 1.4 }}>{p}</li>)}
 									</ul>
@@ -60,8 +60,8 @@ export default function L2P04i_RepoStrategy() {
 						</motion.div>))}
 				</div>
 
-				<motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42 }} style={{ borderRadius: 18, background: colors.dark, color: colors.white, border, boxShadow: shadow, padding: '16px 22px', fontSize: 19, fontWeight: 900, lineHeight: 1.35 }}>
-					课堂建议：个人小项目先用 Monorepo；公司级项目 / 多团队协作再考虑 Polyrepo + submodules。选错 repo 结构，agent 的上下文会先乱。
+				<motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42 }} style={{ borderRadius: 18, background: colors.dark, color: colors.white, border, boxShadow: shadow, padding: '16px 22px', fontSize: 18, fontWeight: 900, lineHeight: 1.35 }}>
+					CareKind 先用简单 Monorepo。按代码所有权、权限、发布边界和协作成本选择；多团队也能共用一仓，多仓不必使用子模块。
 				</motion.div>
 			</Inner>
 		</Slide>);

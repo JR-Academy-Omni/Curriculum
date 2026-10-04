@@ -3,7 +3,7 @@ import { Slide, Inner, Half, Title, Tag, colors, fonts, border, shadow } from '.
 import { slideFromLeft, slideFromRight } from '../courseUi';
 import { motion } from 'framer-motion';
 const tiers = [
-    { scope: '全局 ~/.claude', what: '跨所有项目的「你」—— 语言、个人偏好、通用铁律', color: colors.dark, w: 60 },
+    { scope: '全局 ~/.claude', what: '跨所有项目的「你」—— 语言、工具约定、跨项目规则、通用铁律', color: colors.dark, w: 60 },
     { scope: '项目根 <repo>/CLAUDE.md', what: '这个项目 —— 架构、技术栈、部署链路、铁律', color: colors.red, w: 78 },
     { scope: '模块 <component>/CLAUDE.md', what: '这个 component 特有 —— 本地约定、该目录的坑', color: colors.orange, w: 96 },
 ];

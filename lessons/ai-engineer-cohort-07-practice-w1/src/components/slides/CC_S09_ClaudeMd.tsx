@@ -8,18 +8,18 @@ export default function S09_ClaudeMd() {
 			<Inner split>
 				<Half>
 					<motion.div {...slideFromLeft}>
-						<Tag bg={colors.red}>第 1 层 · 规则 SoT</Tag>
+						<Tag bg={colors.red}>PRD + Rules 之后 · 项目入口</Tag>
 						<Title size="50px" style={{ marginTop: 14, lineHeight: 1.12 }}>
-							CLAUDE.md<br />= AI 的<span style={{ background: colors.yellow, padding: '0 8px' }}>内核</span>
+							CLAUDE.md<br />= AI 的<span style={{ background: colors.yellow, padding: '0 8px' }}>项目规则入口</span>
 						</Title>
 						<p style={{ fontSize: 19, color: '#444', marginTop: 16, lineHeight: 1.6 }}>
 							每开一个会话，Claude Code <b>自动加载</b>这些文件。规则写一次，往后<b>作为执行依据，再用测试与 review 检查</b>，不用你重讲。
 						</p>
 						<p style={{ fontSize: 19, color: '#444', marginTop: 14, lineHeight: 1.6 }}>
-							匠人用<b>三级层级</b>：越靠近你干活的目录，规则越具体。
+							先有已确认的 PRD、规则和项目事实，再写入口索引；未知内容标待确认，不让 Agent 编造业务。
 						</p>
 						<div style={{ borderRadius: 18, marginTop: 16, background: colors.dark, color: colors.white, padding: '14px 18px', border, fontSize: 16, lineHeight: 1.5 }}>
-							真实铁律举例：<span style={{ color: colors.yellow }}>禁止瞎编</span> · <span style={{ color: colors.yellow }}>关系引用 ObjectId；已上线 URL 保持不变</span> · <span style={{ color: colors.yellow }}>禁止代码生成 pptx/docx</span>
+							真实铁律举例：<span style={{ color: colors.yellow }}>禁止瞎编</span> · <span style={{ color: colors.yellow }}>关系引用 ObjectId；已上线 URL 保持不变</span> · <span style={{ color: colors.yellow }}>禁止输出密钥或真实护理记录</span>
 						</div>
 					</motion.div>
 				</Half>
@@ -39,7 +39,7 @@ export default function S09_ClaudeMd() {
 								</div>
 							</motion.div>))}
 						<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }} style={{ fontSize: 14, color: '#888', fontFamily: fonts.mono, marginTop: 4 }}>
-							↑ 三层叠加，靠近 cwd 的越具体、优先级越高
+							↑ 按工作目录加载适用层级；规则冲突需核对具体指令
 						</motion.div>
 					</motion.div>
 				</Half>

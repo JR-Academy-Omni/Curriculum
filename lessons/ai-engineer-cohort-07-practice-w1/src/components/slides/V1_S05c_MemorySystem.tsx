@@ -2,21 +2,21 @@
 import { motion } from 'framer-motion';
 import { Slide, Inner, Title, Tag, colors, fonts, border, shadow, shadowSm } from '../courseUi';
 const inputs = [
-    { k: '经历', v: '项目 / 工作 / 转专业故事' },
-    { k: '证据', v: '数字 / 截图 / 作品链接' },
-    { k: '反馈', v: '导师意见 / 面试复盘 / 踩坑' },
+    { k: '需求', v: '护理记录与交班的实际流程' },
+    { k: '材料', v: '字段样例、现有表单、角色权限' },
+    { k: '决定', v: '范围取舍、验收约定、待确认项' },
 ];
 const memoryFiles = [
-    { f: 'PROFILE.md', d: '目标岗位、背景、约束', c: colors.blue },
-    { f: 'EXPERIENCE.md', d: '经历事实 + 可量化结果', c: colors.teal },
-    { f: 'RULES.md', d: '不编造、不夸大、不乱承诺', c: colors.red },
-    { f: 'WORKFLOW.md', d: '常用产出流程与检查清单', c: colors.purple },
+    { f: 'PRD.md', d: '用户、范围、流程与验收', c: colors.blue },
+    { f: 'DATA.md', d: '字段、关系、状态与权限', c: colors.teal },
+    { f: 'CLAUDE.md', d: '仓库约束、命令与检查', c: colors.red },
+    { f: 'TASKS.md', d: '责任人、依赖与完成证据', c: colors.purple },
 ];
 const outputs = [
-    { t: '简历', d: '按岗位重写 bullet' },
-    { t: 'PRD', d: '把想法拆成功能和边界' },
-    { t: 'Portfolio', d: '作品集、案例页、Demo 脚本' },
-    { t: 'Interview', d: '面试故事、STAR、追问准备' },
+    { t: 'UI / API', d: '按同一规格实现闭环' },
+    { t: 'Tests', d: '验证权限、状态与边界' },
+    { t: 'Demo', d: '按验收场景演示功能' },
+    { t: 'Handoff', d: '版本、命令、风险与回滚' },
 ];
 function Panel({ title, subtitle, bg, children, }: {
     title: string;
@@ -88,9 +88,9 @@ export default function S05c_MemorySystem() {
 			<Inner style={{ flexDirection: 'column', justifyContent: 'center', gap: 22, padding: '32px 38px' }}>
 				<div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24 }}>
 					<div>
-						<Tag bg={colors.dark} color={colors.yellow}>AI OS 记忆系统</Tag>
+						<Tag bg={colors.dark} color={colors.yellow}>AI ENGINEER · 项目事实源</Tag>
 						<Title size="48px" style={{ marginTop: 12, marginBottom: 0 }}>
-							不是再画一张流程图，是给 AI 一套<span style={{ background: colors.yellow, padding: '0 10px' }}>长期记忆</span>
+							把项目事实写进仓库，形成<span style={{ background: colors.yellow, padding: '0 10px' }}>可追溯的 SoT</span>
 						</Title>
 					</div>
 					<div style={{ borderRadius: 18,
@@ -104,27 +104,27 @@ export default function S05c_MemorySystem() {
             fontWeight: 800,
             color: colors.dark,
         }}>
-						今晚先做个人版：<br />
+						本课采用的文档示例：<br />
 						raw 资料 → 可信 SoT → 多个可交付产物
 					</div>
 				</div>
 
 				<div style={{ display: 'flex', alignItems: 'stretch', gap: 18 }}>
-					<Panel title="Raw 资料进来" subtitle="COLLECT" bg="#BFE8FF">
+					<Panel title="业务材料" subtitle="COLLECT" bg="#BFE8FF">
 						<div style={{ display: 'grid', gap: 14 }}>
 							{inputs.map((item, i) => (<motion.div key={item.k} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 + i * 0.08 }} style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadowSm, padding: '13px 14px' }}>
 									<div style={{ fontSize: 22, fontWeight: 900, color: colors.dark }}>{item.k}</div>
-									<div style={{ fontSize: 15, marginTop: 3, color: '#384152', lineHeight: 1.35 }}>{item.v}</div>
+									<div style={{ fontSize: 18, marginTop: 3, color: '#384152', lineHeight: 1.35 }}>{item.v}</div>
 								</motion.div>))}
 						</div>
 						<div style={{ position: 'absolute', bottom: 20, left: 24, right: 24, fontSize: 15, fontWeight: 800, color: '#344054' }}>
-							先原样保存，不急着美化；事实越完整，后面越省 prompt。
+							注明来源、负责人和日期；未知信息保留为待确认。
 						</div>
 					</Panel>
 
 					<Arrow label="审计 / 整理" delay={0.25}/>
 
-					<Panel title="AI OS 记忆层" subtitle="STRUCTURE" bg="#FFF0A8">
+					<Panel title="项目事实源" subtitle="STRUCTURE" bg="#FFF0A8">
 						<div style={{
             background: colors.white,
             border: `4px dashed ${colors.blue}`,
@@ -139,7 +139,7 @@ export default function S05c_MemorySystem() {
 									<div style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 900, color: file.c }}>
 										{file.f}
 									</div>
-									<div style={{ fontSize: 13, lineHeight: 1.28, marginTop: 6, color: '#374151', fontWeight: 700 }}>
+									<div style={{ fontSize: 17, lineHeight: 1.4, marginTop: 6, color: '#374151', fontWeight: 700 }}>
 										{file.d}
 									</div>
 								</motion.div>))}
@@ -163,17 +163,17 @@ export default function S05c_MemorySystem() {
 
 					<Arrow label="复用 / 生成" delay={0.45}/>
 
-					<Panel title="产物自动长出来" subtitle="DELIVER" bg="#EBD9FF">
+					<Panel title="交付与验收" subtitle="DELIVER" bg="#EBD9FF">
 						<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13 }}>
 							{outputs.map((item) => (<div key={item.t} style={{ borderRadius: 18, background: colors.white, border, boxShadow: shadowSm, padding: '14px 13px', minHeight: 94 }}>
 									<div style={{ fontSize: 23, fontWeight: 900, color: colors.dark }}>{item.t}</div>
-									<div style={{ fontSize: 14, lineHeight: 1.35, marginTop: 8, fontWeight: 700, color: '#4b5563' }}>
+									<div style={{ fontSize: 17, lineHeight: 1.4, marginTop: 8, fontWeight: 700, color: '#4b5563' }}>
 										{item.d}
 									</div>
 								</div>))}
 						</div>
 						<div style={{ borderRadius: 18, position: 'absolute', bottom: 20, left: 24, right: 24, background: colors.yellow, border, boxShadow: shadowSm, padding: '10px 12px', fontSize: 15, fontWeight: 900 }}>
-							改一次事实，所有输出都能跟着更新。
+							需求变更后，检查实现与测试，再更新交接记录。
 						</div>
 					</Panel>
 				</div>
