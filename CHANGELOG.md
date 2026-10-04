@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-04
+
+- 新增创业营AI视频47页Talk Deck，前置ElevenLabs配音，覆盖HyperFrames/Remotion动态PPT、Seedance/MiniMax、原创剧本、素材剪辑及video-shotcraft等Skills，登记课件与构建配置（`curriculum/lessons/ai-solo-founder-ai-video`）
+
 ## 2026-10-02
 
 - 更新企业 AI 自动化讲座为 31 页发布版，保留真实 Skills、管理 Agent 协调、人员职责及审批边界，同步课件源码、PRD 和 lessons.html（`lessons/ai-marketing-talk`）

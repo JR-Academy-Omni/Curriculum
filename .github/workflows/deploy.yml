@@ -61,6 +61,12 @@ jobs:
           bun install
           bun run build
 
+      - name: Build Founder AI Video Talk Deck
+        working-directory: lessons/ai-solo-founder-ai-video
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Melbourne resume and career event · 2 October 2026 · 18 slides
       - name: Build Melbourne Resume Career October 2026
         working-directory: lessons/melbourne-resume-career-2026-10-02
@@ -605,6 +611,11 @@ jobs:
             cp lessons/ai-solo-founder-w7/*.html _site/lessons/ai-solo-founder-w7/
             cp lessons/ai-solo-founder-w7/README.md _site/lessons/ai-solo-founder-w7/
           fi
+
+          # 创业营 AI视频 · Talk Deck React课件
+          mkdir -p _site/lessons/ai-solo-founder-ai-video
+          cp -r lessons/ai-solo-founder-ai-video/dist/* _site/lessons/ai-solo-founder-ai-video/
+          cp lessons/ai-solo-founder-ai-video/*.md _site/lessons/ai-solo-founder-ai-video/
 
           # AI 一人创业营 W2 · 你的 AI 员工上岗 Agents at Work
           if [ -d lessons/ai-solo-founder-w2/dist ]; then
