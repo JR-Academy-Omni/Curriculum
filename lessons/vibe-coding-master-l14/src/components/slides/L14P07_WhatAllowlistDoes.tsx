@@ -14,8 +14,8 @@ export default function L14P07_WhatAllowlistDoes() {
 	return (
 		<Page>
 			<ActBadge act={2} />
-			<Head sub="它确实有用 —— 但它解决的是另一个问题。把这两件事分清楚，后面那张表才站得住。">
-				白名单管什么，不管什么
+			<Head sub="allow 和 deny 不是一回事。把这两件事分清楚，后面那张表才站得住。">
+				<code style={{ fontSize: 44 }}>allow</code> 管什么，<code style={{ fontSize: 44 }}>deny</code> 管什么
 			</Head>
 
 			<div style={{ display: 'flex', gap: 22, flex: 1, minHeight: 0 }}>
@@ -27,15 +27,17 @@ export default function L14P07_WhatAllowlistDoes() {
 						display: 'flex', flexDirection: 'column', gap: 16,
 					}}
 				>
-					<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, color: colors.black }}>它管这个 ✓</div>
-					<div style={{ fontSize: 23, lineHeight: 1.75 }}>
-						<strong>少弹几次确认框。</strong><br /><br />
-						不用每跑一条只读命令都来问你一次 ——
-						一天下来省掉几十次打断。
+					<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, color: colors.black }}><code>allow</code> —— 省事 ✓</div>
+					<div style={{ fontSize: 22, lineHeight: 1.7 }}>
+						它决定的是<strong>「要不要问你一声」</strong>，
+						<strong style={{ color: colors.red }}>不是「能不能做」</strong>。
+						<br /><br />
+						不在 <code>allow</code> 里的命令，它<strong>照样会做</strong> —— 只是先问一句。
+						<br /><br />
+						<strong>所以 allow 是省事边界，不是安全边界。</strong>
 					</div>
-					<div style={{ marginTop: 'auto', fontSize: 20, lineHeight: 1.6, opacity: .72 }}>
-						所以它该放的是<strong>不动你工作区</strong>的那些：
-						看状态、看差异、看历史、取远端更新。
+					<div style={{ marginTop: 'auto', fontSize: 19, lineHeight: 1.6, opacity: .72 }}>
+						该放的是<strong>不动你工作区</strong>的那些：看状态、看差异、看历史、取远端更新。
 					</div>
 				</motion.div>
 
@@ -48,29 +50,32 @@ export default function L14P07_WhatAllowlistDoes() {
 						display: 'flex', flexDirection: 'column', gap: 16,
 					}}
 				>
-					<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, color: colors.red }}>它不管这个 ✕</div>
-					<div style={{ fontSize: 23, lineHeight: 1.75 }}>
-						<strong style={{ color: colors.yellow }}>它不阻止任何事。</strong><br /><br />
-						一条命令**在不在白名单里**，决定的是
-						「要不要问你一声」—— <strong>不是「能不能做」</strong>。
+					<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, color: colors.red }}><code>deny</code> —— 它真拦 ⛔</div>
+					<div style={{ fontSize: 22, lineHeight: 1.7 }}>
+						<strong style={{ color: colors.yellow }}>它是你今天就能加上的第一道真边界。</strong>
 						<br /><br />
-						白名单之外的命令，它还是会做，只是会先问一句。
+						列进 <code>deny</code> 的命令，它<strong>不会问你，直接不做</strong>。
+						<strong>deny 优先于 allow。</strong>
+						<br /><br />
+						但注意它的管辖范围：<strong style={{ color: colors.yellow }}>它只拦得住「命令」。</strong>
 					</div>
 					<div style={{
 						marginTop: 'auto', padding: '14px 18px', borderRadius: radii.card,
-						background: 'rgba(255,222,89,.16)', fontSize: 22, lineHeight: 1.55, fontWeight: 800,
+						background: 'rgba(255,222,89,.16)', fontSize: 21, lineHeight: 1.55, fontWeight: 800,
 					}}>
-						所以白名单是<span style={{ color: colors.yellow }}>省事边界</span>，
-						不是<span style={{ color: colors.yellow }}>安全边界</span>。
+						它拦不住「<strong>发一封邮件</strong>」「<strong>改一条工单</strong>」——
+						那些<strong>不是命令</strong>。<span style={{ color: colors.yellow }}>下一页那张表管的就是那些。</span>
 					</div>
 				</motion.div>
 			</div>
 
 			<div style={{ marginTop: 22 }}>
 				<SoBar color={colors.blue}>
-					真正的权限政策，记在<strong>下一页那张表</strong>上。
-					而真正<strong>能拦住人</strong>的，是第五幕那层自动检查 —— 今天最后会讲到。
-					<strong>这三样东西不要混。</strong>
+					<strong>今天会出现四样东西，管的事都不一样，不要混：</strong>
+					　<code>allow</code> <strong>省事</strong>，不拦 ·
+					　<code>deny</code> <strong>拦</strong>，但只拦得住命令 ·
+					　<strong>下一页那张写权限表</strong> 管的是「对外做了什么」，它是政策记录，<strong>不拦</strong> ·
+					　<strong>第五幕那层自动检查</strong> 管的是「改动进不进得来」，<strong>它拦</strong>。
 				</SoBar>
 			</div>
 		</Page>

@@ -1,59 +1,104 @@
 import { motion } from 'framer-motion';
-import { Page, Head, ActBadge, Code, colors, radii } from '../deck';
+import { Page, Head, ActBadge, Code, colors, fonts, radii } from '../deck';
 
 /**
- * P06 · 读权限白名单
- * 🔴 三条原则里第三条是伏笔：白名单不是安全边界，是省事边界 —— 下一页翻车①证明它。
- *   所以这一页【不要】把第三条讲透，留给翻车。
+ * P06 · 白名单长什么样、它是怎么来的、怎么正经建一个
+ *
+ * 🔴 2026-10-04 改版（讲师：「第八页白名单怎么建」）：
+ *   原来这一页只讲了「里面该放什么」，**从没教怎么建**。
+ *   而取消翻车① 之后，学员整节课根本没碰过白名单 —— 幕二也丢了终端输出。
+ *   现在改成：长什么样 → 它其实是怎么攒出来的 → 怎么正经建 → 当堂建一个。
+ *
+ * 🔴 顺带修掉一处讲得不准的地方：settings 里不只有 allow，**还有 deny**。
+ *   「白名单不是安全边界」只对 allow 成立。**deny 是真的拦得住的，而且是命令级的。**
  */
-const RULES = [
-	{ t: '只放不动你工作区的命令', s: '取远端更新的可以（它只写 .git 里的远端引用，不碰你的文件）；会把改动落到工作区的不行。' },
-	{ t: '共享的进仓库，个人的不进', s: '共享白名单提交上去，个人覆盖放本地并忽略提交。' },
-	{ t: '白名单不是安全边界', s: '它减少确认弹窗，不阻止任何事。', hint: true },
-];
-
 export default function L14P06_Allowlist() {
 	return (
 		<Page>
-			<ActBadge act={2} />
-			<Head sub="读权限好办：列一张白名单，里面全是只读检查类命令。">
-				先给它眼睛
+			<ActBadge act={2} mode="🎯 动手" />
+			<Head sub="先看它长什么样 —— 然后我们说一件让人不太舒服的事：你那份是怎么来的。">
+				白名单怎么建
 			</Head>
 
-			<div style={{ display: 'flex', gap: 28, flex: 1, minHeight: 0 }}>
+			<div style={{ display: 'flex', gap: 24, flex: 1, minHeight: 0 }}>
 				<Code
-					style={{ flex: '0 0 560px' }}
-					label="放行列表里只放这类"
-					code={`git status / diff / log / show / branch
-git fetch / rev-list
-
-ls / find / grep / wc / sort / head / tail
-
-你自己那两个检查脚本`}
+					style={{ flex: '0 0 620px' }}
+					label=".claude/settings.json（提交进仓库，团队共用）"
+					size={19}
+					hi={[9, 10, 11, 12]}
+					hiColor={colors.red}
+					code={`{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Read(**)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)"
+    ]
+  }
+}`}
 				/>
 
-				<div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 14 }}>
-					{RULES.map((r, i) => (
-						<motion.div
-							key={r.t}
-							initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
-							transition={{ delay: 0.2 + i * 0.14, duration: 0.4 }}
-							style={{
-								flex: 1, padding: '18px 22px', borderRadius: radii.card,
-								border: `2px solid ${colors.dark}`,
-								background: r.hint ? colors.dark : colors.white,
-								color: r.hint ? colors.white : colors.black,
-								boxShadow: r.hint ? `8px 8px 0 rgba(255,87,87,.55)` : `6px 6px 0 rgba(255,222,89,.9)`,
-								display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 8,
-							}}
-						>
-							<div style={{ fontSize: 26, fontWeight: 900, letterSpacing: -0.6 }}>{r.t}</div>
-							<div style={{ fontSize: 19, lineHeight: 1.5, opacity: .75 }}>{r.s}</div>
-							{r.hint && <div style={{ fontSize: 19, color: colors.yellow, fontWeight: 800 }}>那它是什么？下一页。</div>}
-						</motion.div>
-					))}
+				<div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 13 }}>
+					<motion.div
+						initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25, duration: 0.4 }}
+						style={{
+							padding: '18px 22px', borderRadius: radii.panel, background: colors.dark, color: colors.white,
+							boxShadow: `9px 9px 0 rgba(255,87,87,.55)`,
+						}}
+					>
+						<div style={{ fontFamily: fonts.heading, fontSize: 26, fontWeight: 900, color: colors.yellow, marginBottom: 8 }}>
+							先说一件不太舒服的事
+						</div>
+						<div style={{ fontSize: 21, lineHeight: 1.6 }}>
+							你现在那份 <code>allow</code>，**多半不是你设计出来的** ——
+							是你一路点<strong>「总是允许」</strong>，它自己攒出来的。
+							<br /><br />
+							<strong style={{ color: colors.yellow }}>所以它才不是安全边界：没有人设计过它。</strong>
+						</div>
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.45, duration: 0.4 }}
+						style={{
+							flex: 1, padding: '18px 22px', borderRadius: radii.panel,
+							border: `2px solid ${colors.dark}`, background: colors.white,
+							boxShadow: `6px 6px 0 rgba(255,222,89,.9)`, fontSize: 20, lineHeight: 1.65,
+						}}
+					>
+						<strong style={{ fontSize: 23 }}>正经建，三件事：</strong>
+						<div style={{ marginTop: 10 }}>
+							<strong>① <code>allow</code> 只放不动你工作区的</strong><br />
+							<span style={{ opacity: .72 }}>看状态、看差异、看历史、取远端更新</span><br />
+							<strong>② <code>deny</code> 放真正危险的</strong> <span style={{ color: colors.red, fontWeight: 800 }}>← 这一条今天最值钱</span><br />
+							<span style={{ opacity: .72 }}>删除、强推、硬重置。<strong>deny 优先于 allow</strong></span><br />
+							<strong>③ 个人偏好放 <code>settings.local.json</code></strong><br />
+							<span style={{ opacity: .72 }}>并且 gitignore 掉 —— 别把你的习惯塞给全队</span>
+						</div>
+					</motion.div>
 				</div>
 			</div>
+
+			<motion.div
+				initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75, duration: 0.4 }}
+				style={{
+					marginTop: 18, padding: '15px 22px', borderRadius: radii.card,
+					border: `2px solid ${colors.dark}`, background: colors.yellow,
+					fontSize: 22, lineHeight: 1.55,
+				}}
+			>
+				🎯 <strong>现在建一个：给 <code>deny</code> 加三条你真的不想让它跑的命令，保存，重开会话。</strong>
+				<br />
+				<span style={{ fontSize: 19 }}>
+					<strong>注意 <code>allow</code> 和 <code>deny</code> 不是一回事</strong> ——
+					下一页说清楚它们各自管什么。
+				</span>
+			</motion.div>
 		</Page>
 	);
 }
