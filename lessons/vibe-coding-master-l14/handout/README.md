@@ -19,10 +19,11 @@
 
 ```bash
 cd p14-zero-or-unknown
-node broken.mjs reports      # 应该输出：本期报告数：2
-node broken.mjs repor7s      # 应该输出：本期报告数：0   ← 看到这个就对了
+node check-delivery.mjs ~/Desktop/star-mansions/doc   # 应该报一个非零的数
+node check-delivery.mjs ~/Desktop/star-mansions/dco   # 应该报 0 ← 看到这个就对了
 ```
 
 **第二条看到 `0` 就说明你的环境是好的。** 课上我们会一起看那个 `0` 是怎么来的。
+> 手上没有那个产品仓的，把路径换成 `p14-zero-or-unknown/sample-delivery`。
 
 > 跑不出来、或者第二条直接报错崩掉了 —— **上课时告诉讲师，不要自己改。**

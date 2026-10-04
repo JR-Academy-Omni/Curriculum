@@ -9,6 +9,10 @@ import { Page, Code, colors, fonts, radii } from '../deck';
  *   学员跑的是一段【写得很正常】的脚本，他没做错任何事，
  *   只是观察到默认写法的真实行为。那不是反面教材，那是实验。
  *
+ * 🔴 查的是【真东西】：学员自己那个产品仓的交付清单。
+ *   原来数的是一个玩具 reports/ 目录 —— 讲师：「myops 里面一个 report 也没有，
+ *   当然是 0」「没有意义」。0 只有在它是一句【业务结论】的时候才吓人。
+ *
  * 🔴 2026-10-04 二改（讲师：「第15页是什么脚本，怎么写」）：
  *   原来这一页只有一句口头指令，**屏幕上什么代码都没有** ——
  *   学员不知道写什么、怎么写，而且正常写法多半直接抛异常，根本到不了那个 0。
@@ -37,23 +41,28 @@ export default function L14P14_MakeItFail() {
 			<div style={{ display: 'flex', gap: 26, flex: 1, minHeight: 0 }}>
 				<Code
 					style={{ flex: '0 0 700px' }}
-					label="课前包 p14-zero-or-unknown/broken.mjs —— 数一下有几份报告"
-					size={20}
-					code={`import { readdir } from 'node:fs/promises';
+					label="课前包 check-delivery.mjs —— 交付清单里还有几项没完成"
+					size={19}
+					code={`const PENDING = /needs-human|SIGNOFF[^=]*=\\s*false|^\\s*- \\[ \\]/;
 
-const dir = process.argv[2] ?? 'reports';
-
-async function countReports(path) {
+async function openItems(dir) {
   try {
-    const files = await readdir(path);
-    return files.filter(f => f.endsWith('.md'));
+    const files = await mdFiles(dir);
+    const hits = [];
+    for (const f of files) {
+      const text = await readFile(f, 'utf8');
+      for (const line of text.split('\\n'))
+        if (PENDING.test(line)) hits.push(line);
+    }
+    return hits;
   } catch {
     return [];
   }
 }
 
-const found = await countReports(dir);
-console.log(\`本期报告数：\${found.length}\`);`}
+const open = await openItems(process.argv[2]);
+console.log(\`交付清单里还没完成的：\${open.length} 项\`);
+if (open.length === 0) console.log(\`也就是说 —— 全都交付完了。\`);`}
 				/>
 
 				<div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -61,24 +70,25 @@ console.log(\`本期报告数：\${found.length}\`);`}
 						initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3, duration: 0.4 }}
 						style={{ fontSize: 22, lineHeight: 1.7, color: 'rgba(255,255,255,.8)' }}
 					>
-						它做的事很普通：<strong style={{ color: colors.white }}>数一下 <code>reports/</code> 里有几份报告。</strong>
+						它回答一个 <strong style={{ color: colors.white }}>CEO 真会问的问题</strong>：
+						<strong style={{ color: colors.white }}>我们那个产品，交付清单里还有几项没完成？</strong>
 						<br />
 						用的是<strong style={{ color: colors.yellow }}>绝大多数人都会这么写</strong>的写法。
 					</motion.div>
 
 					<Code
 						label="跑两次"
-						size={21}
+						size={18}
 						hi={[1]}
-						code={`node broken.mjs reports
-node broken.mjs repor7s`}
+						code={`node check-delivery.mjs ~/…/star-mansions/doc
+node check-delivery.mjs ~/…/star-mansions/dco`}
 					/>
 
 					<motion.div
 						initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.5 }}
 						style={{ fontSize: 20, lineHeight: 1.6, color: 'rgba(255,255,255,.62)' }}
 					>
-						第二条<strong style={{ color: colors.yellow }}>路径是故意写错的</strong>（少一个字母）。
+						第二条<strong style={{ color: colors.yellow }}>路径是故意写错的</strong> —— <code>doc</code> 打成了 <code>dco</code>。
 					</motion.div>
 
 					<motion.div
