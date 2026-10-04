@@ -69,6 +69,7 @@ import L14P04_ThreeRepos from './components/slides/L14P04_ThreeRepos';
 import L14P05_WriteItDown from './components/slides/L14P05_WriteItDown';
 import L14P06_Allowlist from './components/slides/L14P06_Allowlist';
 import L14P07_WhatAllowlistDoes from './components/slides/L14P07_WhatAllowlistDoes';
+import L14P07b_Governance from './components/slides/L14P07b_Governance';
 import L14P08_WritePermTable from './components/slides/L14P08_WritePermTable';
 import L14P09_FillYourOwn from './components/slides/L14P09_FillYourOwn';
 import L14P10_FourBans from './components/slides/L14P10_FourBans';
@@ -81,6 +82,7 @@ import L14P16_FourStates from './components/slides/L14P16_FourStates';
 import L14P17_TwoLayers from './components/slides/L14P17_TwoLayers';
 import L14P18_TenSections from './components/slides/L14P18_TenSections';
 import L14P19_Composition from './components/slides/L14P19_Composition';
+import L14P19a_ObjectModel from './components/slides/L14P19a_ObjectModel';
 import L14P19b_Severity from './components/slides/L14P19b_Severity';
 import L14P19c_Walkthrough from './components/slides/L14P19c_Walkthrough';
 import L14P20_ThreeLayers from './components/slides/L14P20_ThreeLayers';
@@ -108,6 +110,7 @@ export default function App() {
 			{/* 幕二 · 给它钥匙 —— 核心产物在这 */}
 			<L14P06_Allowlist />
 			<L14P07_WhatAllowlistDoes />
+			<L14P07b_Governance />
 			<L14P08_WritePermTable />
 			<L14P09_FillYourOwn />
 			<L14P10_FourBans />
@@ -125,6 +128,7 @@ export default function App() {
 			<L14P18_TenSections />
 
 			{/* 幕五 · 谁来维护 */}
+			<L14P19a_ObjectModel />
 			<L14P19b_Severity />
 			<L14P19c_Walkthrough />
 			<L14P20_ThreeLayers />
