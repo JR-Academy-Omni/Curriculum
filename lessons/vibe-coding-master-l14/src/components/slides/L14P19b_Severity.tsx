@@ -1,40 +1,40 @@
 import { motion } from 'framer-motion';
-import { Page, Head, ActBadge, SoBar, colors, fonts, radii } from '../deck';
+import { Page, Head, ActBadge, colors, fonts, radii } from '../deck';
 
 /**
- * P19b · 这事儿有多急 —— 分级，以及怎么降回去
+ * P19b · 派活的时候就定级
  *
- * 🔴 2026-10-04 新增（讲师指出缺口）：四态模型只教了「它该报什么」，
- *   没教「报了之后谁动、多快动」。而 L14 内容库 §6.1 规矩 2
- *   （硬失败和提示必须分开，全设成失败 = 天天红 = 没人再看）
- *   本来就是分级的种子，只是从没长成一条策略。
+ * 🔴 2026-10-04 二改（讲师：「第 20 页这个不对」）：
+ *   第一版做成了【事故分级】—— 出了问题才评它多急。**口径错了。**
+ *   讲师要的是：**每次做决策、或者发布一个任务的时候，就把这件事多急定清楚。**
+ *   它是【前置】的，不是事后的；而且它是**一份规则文档**，
+ *   目的是让 **agent 和人用同一套判据，对同一件事得出同一个结论。**
  *
- * 🔴 两条是这一页的全部重量：
- *   ① 分级判据必须是【可观察的现象】，不是「很严重」—— 沿用第十三节的转化表
- *   ② 【降级条件必须和升级条件一起写】。没有降级条件的分级，
- *      三个月后全是最高级 —— 跟「天天红就没人看」是同一个形状。
+ * 🔴 判据全部换成「这件事」的口径，而且全是形状题（可观察的现象）：
+ *   「有没有对外承诺挂在它上面」「点不点得出在等的人」「有没有到期日」
+ *   —— 不是「重不重要」。
  */
 const LEVELS = [
-	{ k: 'P0', cond: '对外可见的东西已经错了', eg: '客户看到了 / 钱动了 / 消息发出去了', who: '立刻叫到人', c: colors.red, top: true },
-	{ k: 'P1', cond: '它没跑，而且没有人知道', eg: '查询失败报成 0、连接过期没人发现', who: '当天有人看', c: colors.orange },
-	{ k: 'P2', cond: '它跑了，但没拿全', eg: '分页只拿到前两页', who: '下次有人来的时候告诉他', c: colors.yellow },
-	{ k: 'P3', cond: '只影响内部，且可以等', eg: '格式不统一、命名不规范', who: '攒着，每周一起看', c: colors.green },
+	{ k: 'P0', cond: '有一个对外的承诺挂在它上面', eg: '答应过客户的日期 · 已经发出去的报价', when: '当天', c: colors.red, top: true },
+	{ k: 'P1', cond: '有具体的人在等它 —— 点得出名字', eg: '张三的活卡在这上面', when: '本周', c: colors.orange },
+	{ k: 'P2', cond: '没有人在等，但它有到期日', eg: '月底要交的那份', when: '到期前', c: colors.yellow },
+	{ k: 'P3', cond: '没有人在等，也没有到期日', eg: '想做的改进', when: '有空再说', c: colors.green },
 ];
 
 export default function L14P19b_Severity() {
 	return (
 		<Page>
-			<ActBadge act={5} />
-			<Head sub="四态模型说的是「它该报什么」。这一页说的是：报了之后，谁动、多快动。">
-				这事儿有多急
+			<ActBadge act={5} mode="🎯 动手" />
+			<Head sub="不是出了事才评级。是每次派一件活、做一个决策，发出去的时候就带上它。">
+				派活的时候就定级
 			</Head>
 
 			<div style={{ display: 'flex', flexDirection: 'column', gap: 9, flex: 1, minHeight: 0 }}>
 				<div style={{
-					display: 'grid', gridTemplateColumns: '92px 1.25fr 1.15fr 1fr', gap: 14, padding: '0 20px',
+					display: 'grid', gridTemplateColumns: '78px 1.5fr 1.25fr 110px', gap: 14, padding: '0 20px',
 					fontFamily: fonts.mono, fontSize: 14.5, fontWeight: 800, letterSpacing: 1, color: '#6f6760',
 				}}>
-					<div>级别</div><div>判据（可观察的现象）</div><div>例</div><div>谁动、多快</div>
+					<div>级别</div><div>判据（问一句就能判）</div><div>例</div><div>什么时候做</div>
 				</div>
 				{LEVELS.map((l, i) => (
 					<motion.div
@@ -42,7 +42,7 @@ export default function L14P19b_Severity() {
 						initial={{ opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }}
 						transition={{ delay: 0.14 + i * 0.12, duration: 0.38 }}
 						style={{
-							flex: 1, display: 'grid', gridTemplateColumns: '92px 1.25fr 1.15fr 1fr', gap: 14,
+							flex: 1, display: 'grid', gridTemplateColumns: '78px 1.5fr 1.25fr 110px', gap: 14,
 							alignItems: 'center', padding: '0 20px',
 							background: l.top ? colors.dark : colors.white,
 							color: l.top ? colors.white : colors.black,
@@ -57,58 +57,56 @@ export default function L14P19b_Severity() {
 						}}>{l.k}</span>
 						<span style={{ fontSize: l.top ? 23 : 21, fontWeight: l.top ? 800 : 600, lineHeight: 1.35 }}>{l.cond}</span>
 						<span style={{ fontSize: 18, lineHeight: 1.4, opacity: .7 }}>{l.eg}</span>
-						<span style={{ fontSize: 19, lineHeight: 1.4, fontWeight: 700 }}>{l.who}</span>
+						<span style={{ fontSize: 19, fontWeight: 800 }}>{l.when}</span>
 					</motion.div>
 				))}
 			</div>
 
 			<motion.div
-				initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75, duration: 0.45 }}
-				style={{ display: 'flex', gap: 16, marginTop: 20 }}
+				initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.45 }}
+				style={{ display: 'flex', gap: 15, marginTop: 18 }}
 			>
 				<div style={{
-					flex: 1.3, padding: '18px 22px', borderRadius: radii.panel,
+					flex: 1.25, padding: '17px 21px', borderRadius: radii.panel,
 					background: colors.dark, color: colors.white, boxShadow: `9px 9px 0 rgba(203,108,230,.6)`,
-					fontSize: 22, lineHeight: 1.55,
+					fontSize: 20.5, lineHeight: 1.55,
 				}}>
-					<strong style={{ fontFamily: fonts.heading, fontSize: 27, color: colors.yellow }}>降级条件必须和升级条件一起写。</strong>
+					<strong style={{ fontFamily: fonts.heading, fontSize: 25, color: colors.yellow }}>为什么要写成一份规则</strong>
 					<br />
-					<strong>没有降级条件的分级，三个月后全是 P0</strong> ——
-					然后所有人对 P0 脱敏，它就跟没分级一样了。
+					因为它要被<strong>两种读者</strong>读：<strong>人</strong>要能按它判，
+					<strong style={{ color: colors.yellow }}>agent 也要能按同一套判</strong> ——
+					这样同一件事，两边得出的是同一个结论。
 					<br />
-					这跟「全设成失败 = 天天红 = 没人再看」<strong>是同一个形状</strong>。
+					不写下来，<strong>每件事都要重新吵一遍「这个急不急」。</strong>
 				</div>
 				<div style={{
-					flex: 1, padding: '18px 22px', borderRadius: radii.panel,
-					border: `2px solid ${colors.red}`, background: 'rgba(255,87,87,.09)',
-					fontSize: 21, lineHeight: 1.55,
+					flex: 1, padding: '17px 21px', borderRadius: radii.panel,
+					border: `2px solid ${colors.blue}`, background: 'rgba(56,182,255,.1)',
+					fontSize: 20, lineHeight: 1.55,
 				}}>
-					<strong style={{ fontSize: 25 }}>⛔ 定级权不给 agent。</strong>
+					<strong style={{ fontSize: 23 }}>写在哪</strong><br />
+					规则仓的 <code>rules/severity.md</code>，
+					<strong>并登记进 <code>rules/INDEX.md</code></strong>。
+					<br /><br />
+					<strong style={{ color: colors.red }}>派活的人定级</strong> ——
+					不是 agent 定，也不是干活的人定。
 					<br />
-					它只报<strong>事实</strong>（上一幕那四种状态）。
-					<strong>多急是规则说了算，不是它说了算</strong> ——
-					否则它会很合理地觉得什么都很急。
+					<strong>没带级别的活，agent 应该退回要。</strong>
 				</div>
 			</motion.div>
 
-			<div style={{ marginTop: 14, display: 'flex', gap: 16, alignItems: 'stretch' }}>
-				<div style={{
-					flex: 1, padding: '13px 18px', borderRadius: radii.card,
-					border: `2px solid ${colors.dark}`, background: 'rgba(56,182,255,.12)', fontSize: 19.5, lineHeight: 1.5,
-				}}>
-					<strong>写在哪：</strong>规则仓的 <code>rules/severity.md</code>，
-					<strong>而且要登记进 <code>rules/INDEX.md</code></strong> ——
-					不登记，上节课那条检查会咬你。
-				</div>
-				<div style={{
-					flex: 1, padding: '13px 18px', borderRadius: radii.card,
-					border: `2px solid ${colors.dark}`, background: 'rgba(203,108,230,.12)', fontSize: 19.5, lineHeight: 1.5,
-				}}>
-					<strong>为什么必须是规则，不是习惯：</strong>
-					<strong>它要被 agent 读，也要能被人翻出来吵。</strong>
-					放在群里说过，等于没定。
-				</div>
-			</div>
+			<motion.div
+				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.45 }}
+				style={{
+					marginTop: 13, padding: '13px 21px', borderRadius: radii.card,
+					border: `2px solid ${colors.dark}`, background: colors.yellow,
+					fontSize: 20.5, lineHeight: 1.5,
+				}}
+			>
+				⭐ <strong>降级条件要和判据写在一起</strong> ——
+				「那个对外承诺解除了」「等的那个人说不等了」「到期日取消了」。
+				<strong>没有降级条件的分级，三个月后全是 P0</strong>，然后所有人对 P0 脱敏。
+			</motion.div>
 		</Page>
 	);
 }
