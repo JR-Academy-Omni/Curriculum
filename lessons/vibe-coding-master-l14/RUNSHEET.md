@@ -79,11 +79,14 @@
 
 ```bash
 cd handout/p14-zero-or-unknown
-node check-delivery.mjs ~/Desktop/star-mansions/doc    # 应该报一个非零的数
-node check-delivery.mjs ~/Desktop/star-mansions/dco    # 应该报 0，并说「全都交付完了」
+node check-delivery.mjs ~/Desktop/star-mansions/doc    # 应该报 14 项
+node check-delivery.mjs ~/Desktop/star-mansions/dco    # 应该报 0 项，并说「全都交付完了」
 ```
 
-**两条都跑得出来，环境就是好的。** 已实测，Node 内置模块，零依赖零网络。
+**两条都跑得出来，环境就是好的。** 已在真仓上实测，Node 内置模块，零依赖零网络。
+
+> 🔴 **是 `doc`，不是 `docs`。** 那个仓里**两个目录都真实存在** ——
+> 打成 `docs` 会报 **126 项**，不报错，**只是你念的数字跟屏幕对不上**。
 
 > 🚨 **跑不出来就别硬上** —— 改成讲师投屏演一遍，让学员看。
 > 没有那个产品仓的学员，路径换成课前包里的 `sample-delivery`。

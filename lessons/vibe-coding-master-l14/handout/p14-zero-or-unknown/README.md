@@ -21,10 +21,20 @@ node check-delivery.mjs ~/Desktop/star-mansions/doc
 node check-delivery.mjs ~/Desktop/star-mansions/dco     # ← 路径故意写错，少一个字母
 ```
 
+> 🔴 **讲师注意：是 `doc`，不是 `docs`。**
+> 那个仓里 **`doc/` 和 `docs/` 两个目录都真实存在** —— 打成 `docs` 会报 **126 项**，
+> 不会报错，**只是你念的数字跟屏幕对不上**。第一条正确的输出是 **`14 项`**。
+
 > 手上没有那个产品仓的，把路径换成 `sample-delivery`（本目录下有一份样例）：
 > `node check-delivery.mjs sample-delivery` / `node check-delivery.mjs sample-deliverx`
 
 **把第二次的输出原样念出来。先别解释。**
+
+> **有人追问「那 14 项是哪 14 项」的话：** 它们全在 `doc/result.md` 一个文件里，
+> 是真的 `needs-human` 和 `GUA_READINGS_SIGNOFF = false`（Supabase 建表要人去跑、
+> 白话段落要人签字之类）。**其中有一两行是说明 `needs-human` 这个标记的注释行，
+> 不是条目本身** —— 脚本数的是「凭据出现了几处」，不是「条目有几条」。
+> **这个区别今天不用展开**，但别被问住了。
 
 ## 第二步（等课上讲到再跑）
 
@@ -38,7 +48,7 @@ node check-delivery-fixed.mjs ~/Desktop/star-mansions/dco
 
 ## 上课前自己跑一下，确认环境没问题
 
-第一条应该报一个**非零**的数字，第二条应该报 **0**。
+第一条应该报 **`14 项`**，第二条应该报 **`0 项`**。
 两条都跑得出来，你的环境就是好的。
 
 > 跑不出来、或者第二条直接崩掉了 —— **上课时告诉讲师，不要自己改。**
