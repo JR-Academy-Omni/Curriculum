@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-05
+
+- 新增 AI Engineer W2 Tokens, Context Windows & Cache Efficiency 37页课件（90分钟），用 Claude Code / Codex 跑真实实验，附大纲、学生实验手册，登记课件与构建配置（`curriculum/lessons/ai-engineer-cohort-07-w2-tokens-cache`）
+
 ## 2026-10-04
 
 - 重组AI Engineer实践W1为60页项目管理主线，拆分CareKind商业模式、移除个人AI OS/重复Context/Mini CRM/Repo Map，补五步ADLC、多Agent与SDD，按PRD→Rules→CLAUDE.md整理执行顺序；将八页UI概念与整组18页进阶材料完整迁入W2（47页），同步来源、讲师资料与修订登记（`curriculum/lessons/ai-engineer-cohort-07-practice-w1~w2`）
