@@ -30,8 +30,8 @@ export const colors = {
 } as const;
 
 export const fonts = {
-	heading: '"Bricolage Grotesque", "Noto Sans SC", sans-serif',
-	body: '"DM Sans", "Noto Sans SC", sans-serif',
+	heading: '"Bricolage Grotesque Variable", "Noto Sans SC Variable", sans-serif',
+	body: '"DM Sans Variable", "Noto Sans SC Variable", sans-serif',
 	mono: '"Space Mono", monospace',
 } as const;
 

@@ -1,5 +1,11 @@
 # Bootcamp Slide Design 规范（老师上手版）
 
+## 当前网页课件规范
+
+所有 PPT、讲座、课程课件和演示稿必须先制作 HTML 在线版，统一使用 Talk Deck；禁止生成或交付 `.pptx`，不得推荐或转交 Canva 作为替代。PDF 仅从已验证的同一 HTML 打印生成。
+
+单节课件以 [.claude/skills/talk-deck/SKILL.md](.claude/skills/talk-deck/SKILL.md) 和 `lessons/_template/` 为准。以下旧 Bootcamp 起步例子不用于创建新 lesson deck；发生视觉或引擎冲突时按 canonical Skill 和模板执行。
+
 这是 JR Academy 所有 Bootcamp Slide Deck 的统一设计规范。**复制 `ai-adoption-bootcamp/src/styles/theme.ts` 和 `ai-adoption-bootcamp/src/components/ui.tsx` 作为起点，不要从零造。**
 
 ---
@@ -53,7 +59,7 @@ inline style            # 所有样式
 bun                     # 包管理
 ```
 
-**禁止用**：Next.js、styled-components、Tailwind、CSS Modules、Material UI、Ant Design、Chakra、Redux/Zustand、React Router、Axios、任何 CSS-in-JS 库。**只引 5 个 npm 包**（react, react-dom, framer-motion + 2 个 devDep 类型包）。
+**禁止用**：Next.js、styled-components、Tailwind、CSS Modules、Material UI、Ant Design、Chakra、Redux/Zustand、React Router、Axios、任何 CSS-in-JS 库。课程 Deck 依赖以 `lessons/_template/package.json` 为准，包括 React、framer-motion、Vite、TypeScript 和本地 Fontsource 字体；QA 使用仓库根目录的 Playwright。
 
 ---
 

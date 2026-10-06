@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { flushSync } from 'react-dom';
 import { colors, assetPath } from './ui';
 import CameraBubble from './CameraBubble';
 
@@ -8,6 +9,7 @@ const DESIGN_HEIGHT = 900;
 
 interface SlideEngineProps {
 	children: ReactNode[];
+	notes?: string[];
 }
 
 function useSlideScale() {
@@ -38,13 +40,27 @@ function readPageFromUrl(total: number): number {
 	return Math.min(Math.max(0, Math.floor(raw) - 1), total - 1);
 }
 
-export default function SlideEngine({ children }: SlideEngineProps) {
+export default function SlideEngine({ children, notes = [] }: SlideEngineProps) {
 	const total = children.length;
+ const reducedMotion = useReducedMotion();
+ const [showNotes, setShowNotes] = useState(false);
+ const [printPreview, setPrintPreview] = useState(false);
 	const [current, setCurrent] = useState(() => readPageFromUrl(total));
 	const isAnimating = useRef(false);
 	const touchStart = useRef({ x: 0, y: 0 });
 	const wheelTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const scale = useSlideScale();
+ useEffect(() => {
+  const before = () => flushSync(() => setPrintPreview(true));
+  const after = () => setPrintPreview(false);
+  window.addEventListener('beforeprint', before);
+  window.addEventListener('afterprint', after);
+  return () => { window.removeEventListener('beforeprint', before); window.removeEventListener('afterprint', after); };
+ }, []);
+ useEffect(() => {
+  document.documentElement.classList.toggle('deck-print-active', printPreview);
+  return () => { document.documentElement.classList.remove('deck-print-active'); };
+ }, [printPreview]);
 
 	const go = useCallback((index: number) => {
 		if (isAnimating.current || index < 0 || index >= total || index === current) return;
@@ -70,6 +86,9 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 
 	useEffect(() => {
 		const handler = (e: KeyboardEvent) => {
+			if (e.metaKey || e.ctrlKey || e.altKey || (e.target instanceof HTMLElement && (e.target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)))) return;
+			if (e.key.toLowerCase() === 'n') { e.preventDefault(); setShowNotes(v => !v); return; }
+			if (e.key.toLowerCase() === 'p') { e.preventDefault(); setPrintPreview(v => !v); return; }
 			if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); next(); }
 			else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prev(); }
 			else if (e.key === 'f' || e.key === 'F') {
@@ -107,7 +126,11 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 	const pad = (n: number) => String(n).padStart(2, '0');
 
 	return (
-		<div style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}>
+  <>
+  <div className="deck-toolbar"><button onClick={() => setShowNotes(v => !v)} aria-pressed={showNotes}>讲师备注 · N</button><button onClick={() => setPrintPreview(true)}>打印讲义 · P</button></div>
+  {showNotes && !printPreview && <aside className="deck-notes" aria-label="当前页讲师备注">{notes[current] || '本页暂无讲师备注'}</aside>}
+  {printPreview && <div className="deck-print-preview"><div className="deck-print-return"><button onClick={() => setPrintPreview(false)}>返回课件</button><button onClick={() => window.print()}>打印 / 保存 PDF</button></div><div className="deck-print">{children.map((slide, i) => <section className="deck-print-page" key={i} data-print-page={i + 1}>{slide}</section>)}</div></div>}
+		<div className="deck-runtime" data-deck-total={total} style={{ display: printPreview ? 'none' : undefined, width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}>
 			{/* 演讲者摄像头圆圈（按 V 开关 · 录播露脸用） */}
 			<CameraBubble />
 			<div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: 4, background: 'rgba(255,255,255,0.1)', zIndex: 1000 }}>
@@ -132,7 +155,7 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 			<NavArrow direction="prev" onClick={prev} disabled={current === 0} />
 			<NavArrow direction="next" onClick={next} disabled={current === total - 1} />
 			<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000' }}>
-				<div style={{
+				<div data-slide-canvas style={{
 					width: DESIGN_WIDTH,
 					height: DESIGN_HEIGHT,
 					position: 'relative',
@@ -155,11 +178,12 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 					</div>
 					<AnimatePresence mode="wait">
 						<motion.div
+							data-slide-content
 							key={current}
-							initial={{ opacity: 0, x: 80 }}
+							initial={reducedMotion ? false : { opacity: 0, x: 80 }}
 							animate={{ opacity: 1, x: 0 }}
-							exit={{ opacity: 0, x: -80 }}
-							transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+							exit={reducedMotion ? undefined : { opacity: 0, x: -80 }}
+							transition={{ duration: reducedMotion ? 0 : 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
 							style={{ width: '100%', height: '100%' }}
 						>
 							{children[current]}
@@ -168,6 +192,7 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 				</div>
 			</div>
 		</div>
+  </>
 	);
 }
 

@@ -3,9 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "render:mp-posters": "bun run scripts/render-mp-posters.mjs"
+    "render:mp-posters": "bun run scripts/render-mp-posters.mjs",
+    "check:decks": "python3 scripts/check-talk-decks.py",
+    "test:decks": "python3 -m unittest discover -s scripts/tests -p \"test_*.py\"",
+    "qa:deck": "bun run scripts/qa-deck.mjs"
   },
   "devDependencies": {
+    "playwright": "^1.63.0",
     "puppeteer-core": "^24.41.0"
   }
 }

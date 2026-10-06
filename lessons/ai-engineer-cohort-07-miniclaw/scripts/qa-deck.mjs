@@ -1,9 +1,10 @@
+// Legacy content-specific checks. New decks use repository scripts/qa-deck.mjs.
 import { createRequire } from 'node:module';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const require = createRequire(import.meta.url);
-const { chromium } = require('/Users/lightman/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const require = createRequire(new URL('../../../package.json', import.meta.url));
+const { chromium } = require('playwright');
 const baseUrl = process.env.DECK_URL ?? 'http://127.0.0.1:5197/';
 const outDir = path.resolve('out/qa');
 const viewports = [{name:'1366x768',width:1366,height:768},{name:'1440x900',width:1440,height:900},{name:'1920x1080',width:1920,height:1080}];
@@ -13,7 +14,10 @@ const browser=await chromium.launch({headless:true});
 const results=[];
 for(const viewport of viewports){
 	const page=await browser.newPage({viewport});
-	for(let slide=1;slide<=48;slide+=1){
+ await page.goto(baseUrl,{waitUntil:'networkidle'});
+ const total=await page.evaluate(()=>{const explicit=document.querySelector('[data-deck-total]')?.getAttribute('data-deck-total');if(explicit)return Number(explicit);const counters=[...document.body.innerText.matchAll(/\b\d+\s*\/\s*(\d+)\b/g)];return Number(counters.at(-1)?.[1]);});
+ if(!Number.isInteger(total)||total<1)throw new Error('Cannot discover deck page count');
+	for(let slide=1;slide<=total;slide+=1){
 		await page.goto(`${baseUrl}?page=${slide}`,{waitUntil:'networkidle'});
 		await page.waitForTimeout(550);
 		const audit=await page.evaluate(()=>{

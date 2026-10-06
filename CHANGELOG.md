@@ -2,6 +2,8 @@
 
 ## 2026-10-06
 
+- 统一HTML在线Talk Deck与共享Skill，禁止PPTX和Canva替代；补课件登记、工作单、本地字体、备注打印与验收工具；合入main并跳过Actions，不部署（`talk-deck` / `lessons`）
+
 - 修复AI Engineer实践W1–W3课件目录的课次与已部署状态，统一线上入口文案，并补充Talk Deck列表登记、同步发布与线上回读规则（`lessons.html` / `.claude/skills/talk-deck`）
 
 ## 2026-10-05
