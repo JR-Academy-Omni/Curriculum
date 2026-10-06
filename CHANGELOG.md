@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-06
+
+- 修复AI Engineer实践W1–W3课件目录的课次与已部署状态，统一线上入口文案，并补充Talk Deck列表登记、同步发布与线上回读规则（`lessons.html` / `.claude/skills/talk-deck`）
+
 ## 2026-10-05
 
 - 新增 AI Engineer W2 Tokens, Context Windows & Cache Efficiency 37页课件（90分钟），用 Claude Code / Codex 跑真实实验，附大纲、学生实验手册，登记课件与构建配置（`curriculum/lessons/ai-engineer-cohort-07-w2-tokens-cache`）
