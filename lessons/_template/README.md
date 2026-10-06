@@ -9,7 +9,7 @@ cp -R lessons/_template lessons/{slug}
 cd lessons/{slug}
 # 1. 全局替换占位符 {{SLUG}} / {{TITLE}}（package.json / vite.config.ts / index.html）
 # 2. bun install
-# 3. bun run dev  → 浏览器走查（← → 翻页，F 全屏，C 摄像头）
+# 3. bun run dev  → 浏览器走查（← → 翻页，F 全屏，V 摄像头）
 ```
 
 ## 🚨 两类文件，别搞混
@@ -23,9 +23,15 @@ cd lessons/{slug}
 
 ## 引擎能力速查
 
-- `SlideEngine`：1600×900 固定画布整体 scale；← → ↑ ↓ Space 翻页；`F` 全屏；`C` 开关摄像头；`?page=N` URL 同步；进度条 + 页码 + 圆点导航。
-- `CameraBubble`：右下角圆形演讲者摄像头（`getUserMedia`，按 `C` 开关、可拖动、镜像、自动释放流），固定视口不随画布缩放。
+- `SlideEngine`：1600×900 固定画布整体 scale；← → ↑ ↓ Space 翻页；`F` 全屏；`V` 开关摄像头；`?page=N` URL 同步；进度条 + 页码 + 圆点导航。
+- `CameraBubble`：右下角圆形演讲者摄像头（`getUserMedia`，按 `V` 开关、可拖动、镜像、自动释放流），固定视口不随画布缩放。
 - `ui.tsx`：`Slide`/`Inner`/`Half`/`Title`/`Subtitle`/`Highlight`/`Tag` + `CountUp`/`GrowBar` + `springIn`/`slideFromLeft|Right` + `assetPath()`。
-- `theme.ts`：JR Neo-Brutalism 令牌（品牌色 / 字体 / `border` / `shadow`）。
+- `theme.ts`：JR Register B 令牌（品牌色 / 字体 / `border` / `shadow`）。
 
 完整规范见 `curriculum/.claude/skills/talk-deck/SKILL.md`。
+
+## 配套与验收
+
+使用仓库 `scripts/create-talk-deck.py` 初始化可同步写入 Local 目录登记。先完善 PRD、RUNSHEET、WORKSHEET、SOURCE_MAP、QA 与 `src/data/notes.ts`，再 build。运行仓库 `check:decks` 与 `qa:deck`。`engine-manifest.json` 记录版本和文件哈希；修改引擎后必须更新 manifest。
+
+字体随构建本地提供。N 显示当前页备注，P 显示同一内容的全页打印视图；浏览器打印可存 PDF，返回课件不改变当前页。禁止生成 `.pptx`，禁止转交 Canva。复制时排除 `node_modules`、`dist`、`out`。

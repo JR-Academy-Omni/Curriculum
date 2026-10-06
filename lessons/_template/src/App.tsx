@@ -1,4 +1,5 @@
 import SlideEngine from './components/SlideEngine';
+import { notes } from './data/notes';
 
 // 每页一个组件，按章节注释分块（前缀 S/C/Z + 两位序号 + PascalCase）
 import S01 from './components/slides/S01_Cover';
@@ -6,7 +7,7 @@ import S02 from './components/slides/S02_Example';
 
 export default function App() {
 	return (
-		<SlideEngine>
+		<SlideEngine notes={notes}>
 			{/* CH 0 · 开场 */}
 			<S01 />
 			<S02 />

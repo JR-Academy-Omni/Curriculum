@@ -8,7 +8,7 @@
 - 每份独立课件必须在同一次修改中登记 [lessons.html](lessons.html)，写清课次、标题、讲师、时长、页数、课程映射、入口和资料链接，同步 `CHANGELOG.md`。
 - 发布时同步课件与目录；发布后从 [线上 Lesson 列表](https://jracademy.ai/curriculum/lessons.html) 打开课件核验，再标记已部署。未发布修订写 Local / 待部署，旧版按实际状态保留。
 - 用户要求不部署时，只完成授权的更新、验证、commit / push；push 使用非 main 分支，因为 push main 会触发生产部署。不得自动合入 main 或调用发布。
-- 这里的 PPT 是网页课件，不生成 `.pptx`；完整 Bootcamp 的大纲管理另用课程管理 Skills。
+- 所有 PPT、讲座、课程课件和演示稿必须先制作 HTML 在线版，统一使用 Talk Deck；禁止生成或交付 `.pptx`，不得推荐或转交 Canva 作为替代。PDF 仅从已验证的同一 HTML 打印生成。完整 Bootcamp 的大纲管理另用课程管理 Skills。
 
 
 课程大纲、Slide Deck 与 Marketing 素材的静态站点。
@@ -131,3 +131,18 @@ location /curriculum/ {
 ## 对外链接域名
 
 课程资料统一发布 `https://jracademy.ai/curriculum/` 下的链接。保留现有路径、查询参数和锚点；旧域名仅作兼容入口，不再作为新资料的分享地址。邮箱、API 和官网其他路径不在本次替换范围内。CI 在上传前检查产物，发现旧 curriculum 绝对链接即停止发布。
+
+## HTML 在线课件制作与验收
+
+完整制作流程与配套工具随 [Talk Deck Skill](.claude/skills/talk-deck/SKILL.md) 提交在本仓库。
+
+```bash
+python3 scripts/create-talk-deck.py my-lesson --title "课件标题" --instructor "讲师" --minutes 120
+bun run check:decks
+bun run test:decks
+# 启动对应课件后检查全部页与三档视口
+bun run qa:deck -- --url http://127.0.0.1:5196/
+python3 scripts/check-talk-decks.py --engine-inventory
+```
+
+初始化只生成 Local 草稿与列表登记；还需填写教学资料、实际页数与课程映射，添加构建和配套资料复制步骤，再完成验收。新共享模板提供本地字体、讲师备注、同源 HTML 打印与减少动画设置。旧课件运行时保留独立实现，用版本清单识别差异，迁移时逐个核验。

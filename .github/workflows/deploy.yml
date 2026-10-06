@@ -9,6 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate HTML lesson catalog and changed decks
+        env:
+          DECK_BASE: ${{ github.event.before }}
+        run: |
+          if git cat-file -e "$DECK_BASE^{commit}" 2>/dev/null; then
+            python3 scripts/check-talk-decks.py --base "$DECK_BASE"
+          else
+            python3 scripts/check-talk-decks.py
+          fi
 
       - uses: oven-sh/setup-bun@v2
         with:
@@ -279,13 +291,13 @@ jobs:
         run: |
           mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w1
           cp -r lessons/ai-engineer-cohort-07-practice-w1/dist/* _site/lessons/ai-engineer-cohort-07-practice-w1/
-          cp lessons/ai-engineer-cohort-07-practice-w1/PRD.md lessons/ai-engineer-cohort-07-practice-w1/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w1/README.md lessons/ai-engineer-cohort-07-practice-w1/SOURCE_MAP.md _site/lessons/ai-engineer-cohort-07-practice-w1/
+          cp lessons/ai-engineer-cohort-07-practice-w1/PRD.md lessons/ai-engineer-cohort-07-practice-w1/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w1/README.md lessons/ai-engineer-cohort-07-practice-w1/SOURCE_MAP.md lessons/ai-engineer-cohort-07-practice-w1/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-practice-w1/
           mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w2
           cp -r lessons/ai-engineer-cohort-07-practice-w2/dist/* _site/lessons/ai-engineer-cohort-07-practice-w2/
-          cp lessons/ai-engineer-cohort-07-practice-w2/PRD.md lessons/ai-engineer-cohort-07-practice-w2/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w2/SOURCE_MAP.md _site/lessons/ai-engineer-cohort-07-practice-w2/
+          cp lessons/ai-engineer-cohort-07-practice-w2/PRD.md lessons/ai-engineer-cohort-07-practice-w2/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w2/SOURCE_MAP.md lessons/ai-engineer-cohort-07-practice-w2/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-practice-w2/
           mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w3
           cp -r lessons/ai-engineer-cohort-07-practice-w3/dist/* _site/lessons/ai-engineer-cohort-07-practice-w3/
-          cp lessons/ai-engineer-cohort-07-practice-w3/PRD.md lessons/ai-engineer-cohort-07-practice-w3/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w3/SOURCE_MAP.md _site/lessons/ai-engineer-cohort-07-practice-w3/
+          cp lessons/ai-engineer-cohort-07-practice-w3/PRD.md lessons/ai-engineer-cohort-07-practice-w3/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w3/SOURCE_MAP.md lessons/ai-engineer-cohort-07-practice-w3/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-practice-w3/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/

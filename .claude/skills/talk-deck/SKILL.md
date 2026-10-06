@@ -1,15 +1,17 @@
 ---
 name: talk-deck
-description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jracademy.ai/curriculum/lessons/{slug}/）。沿用 1600×900 SlideEngine、一文件一页、真实数据与 JR Register B 圆角课程视觉。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic — NOT for static lesson HTML (use lesson-design) or xiaohongshu posters (use xhs-poster)."
+description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jracademy.ai/curriculum/lessons/{slug}/）。沿用 1600×900 SlideEngine、一文件一页、真实数据与 JR Register B 圆角课程视觉。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic; all presentation requests use this HTML-first workflow."
 ---
 
 # /talk-deck — 网页版讲座 PPT 生成器
 
-把一个主题做成**可现场放映 + 可录播引流**的网页版 slides。技术栈与目录结构锁死，照抄 `curriculum/lessons/ai-new-jobs-talk` 这套范式即可，不要自创新框架。
+所有 PPT、讲座、课程课件和演示稿必须先制作 HTML 在线版，统一使用 Talk Deck；禁止生成或交付 `.pptx`，不得推荐或转交 Canva 作为替代。PDF 仅从已验证的同一 HTML 打印生成。
+
+本文 `curriculum/` 前缀表示 Curriculum 仓库根目录；单独 clone 本仓库时省略该前缀。新课件唯一脚手架是 `lessons/_template/`，参考课件仅用于观察内容构图。
 
 起点（按这个顺序）：
 - **`curriculum/lessons/_template/`** — 内部脚手架（引擎单一来源 + 占位骨架）。**AI 在 monorepo 内起新 deck 一律从这里拷**（见「标准工作流」第 3 步，离线、含 `{{SLUG}}` 占位符），不要从某个具体 deck 拷，避免引擎 bug 漂移。
-- **公开模板 repo `JR-Academy-AI/talk-deck`**（github.com/JR-Academy-AI/talk-deck，MIT，2026-05-29 上线）— 给**老师**用的对外版（同一套引擎 + 摄像头 + 匠人 logo，base 改相对路径、占位符填好可直接 build）。老师 `npx degit JR-Academy-AI/talk-deck my-talk` 或 GitHub "Use this template"，配 Claude Code/Cursor 照仓库内 `CLAUDE.md` 改内容。引擎与 `_template` 保持一致，改引擎两边同步。
+- **公开模板 repo `JR-Academy-AI/talk-deck`**（github.com/JR-Academy-AI/talk-deck，MIT，2026-05-29 上线）— 给**老师**用的对外版（同一套引擎 + 摄像头 + 匠人 logo，base 改相对路径、占位符填好可直接 build）。老师 `npx degit JR-Academy-AI/talk-deck my-talk` 或 GitHub "Use this template"，配 Claude Code/Cursor 照仓库内 `CLAUDE.md` 改内容。该外部模板是独立发布副本，当前版本一致性尚未验证；本仓库只以 `_template` 和 engine-manifest 为准，不从外部副本复制运行时。
 - `curriculum/lessons/ai-new-jobs-talk/` — 38 页完整黄金范本，要看"成品长啥样 / 数据驱动页怎么写"时读它。
 - `curriculum/lessons/ai-engineer-cohort-05-final/` — 当前课程视觉黄金范本。优先参考其 `DeckFrame`、网格纸画布、marker underline、圆角主面板、克制描边、品牌色偏移阴影与高密度中文排版；岗位页、系统图、事故诊断和逐周路线均已做多视口 QA。
 - `curriculum/lessons/vibe-coding/` — Slidev (slides.md) 轻量替代范式（见文末「何时用 Slidev」）。
@@ -25,7 +27,7 @@ description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite 
 
 ## 🚨 硬性规则（先读，违反就重做）
 
-1. **先写 PRD，再写代码**。`PRD.md` 必须含「整体节奏表（时间/章节/页数）」+「逐页 slide-by-slide spec」，让 Lightman sign-off 后才开 src。（项目级 PRD-first 规则）
+1. **先写 PRD，再写代码**。`PRD.md` 必须含「整体节奏表（时间/章节/页数）」+「逐页 slide-by-slide spec」，在当前任务确认 PRD；用户已授权明确方案或修订范围时继续执行，不重复索要确认。（项目级 PRD-first 规则）
 2. **数据零编造**。所有薪资/增长率/雇主/案例必须来自 `research/*.md` 或可引用源。缺字段就 **omit / 显示「数据不足」**，绝不用别国数据或估算补位。野生数据点必标 `sourceUrl`。
 3. **设计语言锁死 JR Register B 课程视觉**：暖色网格纸、品牌四色、少量结构边框与无模糊偏移阴影。不要退回满屏方盒子的旧 Neo-Brutalism，也不混入 Anthropic 暖色系或通用 SaaS 卡片风。一个 deck 一套体系。
 4. **禁止直角 UI 容器**。主面板、信息卡、流程节点、标签、按钮、引用框统一使用圆角；默认主面板 `22–24px`、卡片 `16–20px`、标签 `7–10px`、胶囊 `999px`。坐标轴、连接线、表格分隔线、代码字符边界等技术表达可以是直线，但承载内容的闭合容器不能是直角矩形。
@@ -43,7 +45,7 @@ description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite 
 | 构建 | Vite 8（`@vitejs/plugin-react`） |
 | 动画 | `framer-motion` ^12（唯一动画库） |
 | 样式 | **inline style + `theme.ts` 令牌**，无 Tailwind / 无 CSS 框架 |
-| 字体 | Google Fonts，`index.html` 里 `<link>` 引入 |
+| 字体 | 本地 Fontsource 字体包，经 Vite 打包；生产课件不依赖远程字体服务 |
 | 包管理 | bun（`bun.lock`） |
 | 部署 | build → `dist/`，`base` 指向子路径 |
 
@@ -62,7 +64,7 @@ base: process.env.NODE_ENV === 'production' ? '/curriculum/lessons/{slug}/' : '/
 lessons/{slug}/
 ├── PRD.md                      # 节奏表 + 逐页 spec（先于代码）
 ├── research/                   # {us,cn,au,sg}-*.md 等原始数据源
-├── index.html                  # Google Fonts <link> + #root + 全局 reset，body 黑底 overflow:hidden
+├── index.html                  # 本地字体由 main.tsx 引入 + #root + 全局 reset，body 黑底 overflow:hidden
 ├── vite.config.ts              # base = /curriculum/lessons/{slug}/
 ├── public/                     # jr-logo.png 等静态资源（用 assetPath() 引）
 └── src/
@@ -79,7 +81,7 @@ lessons/{slug}/
 
 ---
 
-## SlideEngine（直接复制 ai-new-jobs-talk 版，按需改 logo/品牌色）
+## SlideEngine（仅复制 lessons/_template 的版本）
 
 核心契约，改的时候别破坏：
 - `DESIGN_WIDTH=1600 / DESIGN_HEIGHT=900`，`useSlideScale()` 取 `min(vw/W, vh/H)` 整体缩放，画布居中黑底。
@@ -114,11 +116,11 @@ lessons/{slug}/
 
 优先复用这些组合，不要每页重新手写标题、背景、卡片和动画。只有内容关系确实不同才新增页面级布局。
 
-> 新页里反复出现 ≥3 次的视觉模式 → 抽进 `ui.tsx` 或做成数据驱动模板组件（参考 `DeepJobSlide.tsx`），不要复制粘贴 style 链。
+> 新页里反复出现 ≥3 次的视觉模式 → 抽进 `ui.tsx` 或做成数据驱动模板组件（参考 `lessons/ai-new-jobs-talk/src/components/DeepJobSlide.tsx`），不要复制粘贴 style 链。
 
 ---
 
-## theme.ts — JR Neo-Brutalism 设计令牌
+## theme.ts — JR Register B 课程设计令牌
 
 ```ts
 export const colors = {
@@ -170,7 +172,7 @@ export const radii = { panel: 24, card: 18, label: 8, pill: 999 } as const;
 
 ## 标准工作流
 
-1. **PRD**：写 `PRD.md`——业务背景 + 学习目标 + 节奏表（时间/章节/时长/页数）+ 逐页 spec。等 sign-off。
+1. **PRD**：写 `PRD.md`——业务背景 + 学习目标 + 节奏表（时间/章节/时长/页数）+ 逐页 spec。依据当前任务中已确认的方案执行。
 2. **research**：把每个数据点落到 `research/*.md`，标源。无源的论点删掉或降级为「观点」。
 3. **scaffold**：`cp -R lessons/_template lessons/{slug}` → 全局替换占位符 `{{SLUG}}` / `{{TITLE}}`（`package.json` / `vite.config.ts` / `index.html`）→ `bun install`。引擎文件已随模板拷好，**不要重写**（见硬规则 6）。
 4. **data**：把 research 提炼进 `data/*.ts`（带 interface + 缺失策略）。
@@ -189,3 +191,14 @@ export const radii = { panel: 24, card: 18, label: 8, pill: 999 } as const;
 
 纯文字/代码、不需要精细动画与定制视觉的内部分享，用 `lessons/vibe-coding` 那套：`slides.md` + `style.css`（Slidev / markdown 驱动），成本低。
 **对外讲座 / 引流素材 / 要数据可视化和品牌感的** → 一律用上面的 React deck 范式。
+
+## 制作与验收工具
+
+- 新课件用 `python3 scripts/create-talk-deck.py SLUG --title 标题 --instructor 讲师 --minutes 120`，只写新目录与 Local 登记，不发布；生成后完善 PRD、讲稿、工作单、来源表和 notes。
+- 配套模板随 `lessons/_template/` 提供：`PRD.md`、`RUNSHEET.md`、`WORKSHEET.md`、`SOURCE_MAP.md`、`QA.md`。教学信息未确定时标待确认，不伪造时间、来源或验收。
+- `bun run check:decks` 检查卡片结构；`python3 scripts/check-talk-decks.py --base REF` 检查该次变更的课件登记、入口、配套资料与部署配置。CI 对新增/修改课件强制执行。
+- `bun run qa:deck -- --url URL --output-dir ABS_PATH` 逐页、三档视口检查资源失败、控制台错误和文本裁切，生成截图与 JSON。页数从引擎 DOM 读取，不手填。机器检查后仍要目视核对文字、图表、顺序、Logo和内容来源。用户交付截图输出到 Downloads，内部报告放 `out/qa`。
+- 模板 `engine-manifest.json` 记录引擎文件哈希。更新模板后运行 `python3 scripts/check-talk-decks.py --write-template-manifest`；已有课件用 `--engine-inventory` 报告一致/历史版本/漂移/未登记，不批量覆盖它们。新课件必须携带相同 manifest；确有运行时扩展须在 QA 中记录，并更新其实际文件哈希，不能假称仍与模板一致。
+- 字体由本地 npm 包打包，授课前验证冷缓存断外网仍能加载课件；这不等于离线部署服务或缓存可供完全断网使用。
+- 模板提供 N 讲师备注、P 全页打印、V 摄像头；备注从 `src/data/notes.ts` 按页读取。打印使用同一 React/HTML 内容，一页一张1600×900，PDF由浏览器另存到 Downloads。配合 reduced-motion 不播放入场动画；互动演示的打印状态需逐页审核。
+- 登记结构与自动检查通过后仍按用户授权决定 commit、push、部署。main 会触发生产，要求不部署时只推非 main 分支。

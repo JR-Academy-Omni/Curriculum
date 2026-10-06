@@ -13,7 +13,7 @@ export default function S01_Cover() {
 						transition={{ duration: 0.4 }}
 						style={{
 							display: 'inline-block', padding: '8px 20px',
-							background: colors.black, color: colors.yellow,
+							background: colors.black, color: colors.yellow, borderRadius: 8,
 							fontFamily: fonts.mono, fontSize: 14, fontWeight: 700,
 							letterSpacing: 3, marginBottom: 32,
 						}}>

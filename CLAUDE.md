@@ -8,7 +8,7 @@
 - 每份独立课件必须在同一次修改中登记 [lessons.html](lessons.html)，写清课次、标题、讲师、时长、页数、课程映射、入口和资料链接，同步 `CHANGELOG.md`。
 - 发布时同步课件与目录；发布后从 [线上 Lesson 列表](https://jracademy.ai/curriculum/lessons.html) 打开课件核验，再标记已部署。未发布修订写 Local / 待部署，旧版按实际状态保留。
 - 用户要求不部署时，只完成授权的更新、验证、commit / push；push 使用非 main 分支，因为 push main 会触发生产部署。不得自动合入 main 或调用发布。
-- 这里的 PPT 是网页课件，不生成 `.pptx`；完整 Bootcamp 的大纲管理另用课程管理 Skills。
+- 所有 PPT、讲座、课程课件和演示稿必须先制作 HTML 在线版，统一使用 Talk Deck；禁止生成或交付 `.pptx`，不得推荐或转交 Canva 作为替代。PDF 仅从已验证的同一 HTML 打印生成。完整 Bootcamp 的大纲管理另用课程管理 Skills。
 
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.

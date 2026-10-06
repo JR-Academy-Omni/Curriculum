@@ -4,7 +4,7 @@
 
 ## 使用
 - 线上放映：https://jiangren.com.au/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=1
-- 本地 PowerPoint 交付：`output/melbourne-ai-startup-showcase-2026-09-30.pptx`，文字可编辑。
+- 历史 PPTX 仅为旧版存档，不再交付或重新生成；当前交付为 HTML 在线课件。
 - 本地 PDF 交付：`output/Melbourne-AI-Showcase-2026-09.pdf`，可离线投屏。
 - 网页：本目录运行 `npm run dev -- --host 127.0.0.1 --port 5197`，打开 http://127.0.0.1:5197/ 。首次使用需 `npm install`。PPTX/PDF 是本地导出，不随网页发布。
 - 方向键 / 空格翻页，F 全屏，`?page=11` 直接打开第一个项目，`?print=1` 显示打印视图。
@@ -16,7 +16,7 @@
 新金山加入入口为 https://newgoldmountain.io/join 。微信原始群码注明 10月7日前有效。
 
 ## 修改
-当前网页内容与构图在 `src/components/slides/` 的22个独立 React 页面中修改。`src/data/deck.json` 仅保留旧版历史文案，已不驱动网页。`scripts/build-content.py` 保存初始文案与版式生成逻辑。PPTX 可用 `scripts/export-pptx.mjs` 重新导出。机构来源见 `research/sources.md` 和 PPTX 每页备注。
+当前网页内容与构图在 `src/components/slides/` 的22个独立 React 页面中修改。`src/data/deck.json` 仅保留旧版历史文案，已不驱动网页。`scripts/build-content.py` 保存初始文案与版式生成逻辑。PPTX 导出已禁用。机构来源见 `research/sources.md`；PDF 只能从核验后的当前 HTML 打印。
 
 ## 下一期活动预告
 - 10月场：2026年10月28日（周三），墨尔本当地时间17:30–20:30。
@@ -25,7 +25,7 @@
 - 网站系统时间与正文存在一小时差异，用户已明确确认演示稿按正文17:30–20:30。
 
 ## 2026-09-30 视觉重做（本地）
-已按当前 talk-deck 采用暖色网格纸、marker下划线、圆角主面板与品牌偏移阴影。旧 `scripts/export-pptx.mjs` 基于历史坐标JSON，不代表新版网页，禁止将其输出当作新版交付。此次未重新生成PPTX/PDF，未部署。
+已按当前 talk-deck 采用暖色网格纸、marker下划线、圆角主面板与品牌偏移阴影。旧 `scripts/export-pptx.mjs` 已禁用。此次未重新生成PPTX/PDF，未部署。
 
 ## 入群二维码重复展示
 按用户要求在封面后、分享顺序后、开放讨论后重复同一入群页，并保留原入群页。共25页，扫码页为第2、12、21、23页，统一复用 S20_Join 与原始群二维码。
