@@ -1,6 +1,6 @@
 # W2 · Tokens, Context Windows & Cache Efficiency — 课程大纲（草案 v3）
 
-> 状态：课件已按本大纲做成，共 37 页（`src/App.tsx`）。讲课用中文，term 用英文；命令速查表在第 4–5 页，学生版在 `lab/README.md`。
+> 状态：课件已按本大纲做成，共 37 页（`src/App.tsx`）。讲课用中文，term 用英文；命令速查表在第 4–5 页，学生版在 `lab/GUIDE.md`。
 > v3 改动：不用 API key，全部用学生已有的 **Claude Code / Codex** 做实验；去掉中英文 token 对比；案例换成真实的生产系统；按澳洲 AI Engineer 求职的需要组织面试题。
 
 ---

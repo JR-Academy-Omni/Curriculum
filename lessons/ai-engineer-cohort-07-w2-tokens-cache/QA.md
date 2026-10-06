@@ -2,7 +2,7 @@
 
 ## 状态
 
-Local / Build 通过 / 未部署（2026-10-06，模板 2.0 迁移后）
+已部署 · 2026-10-06 线上核验（https://jracademy.ai/curriculum/lessons/ai-engineer-cohort-07-w2-tokens-cache/）
 
 ## 检查记录
 
@@ -15,7 +15,7 @@ Local / Build 通过 / 未部署（2026-10-06，模板 2.0 迁移后）
 - **讲师备注 / 打印**：N 显示当前页备注（第 9 页对应第 9 条）；P 打印视图 37 页，「返回课件」回到原页。浏览器另存 PDF 未实测。
 - **reduced-motion**：模板 `MotionConfig reducedMotion="user"`，未单独实测。
 - **控制台**：无错误。
-- **线上回读**：未部署。
+- **线上回读**（2026-10-06）：入口 200，标题正确，`data-deck-total` = 37，`?page=37` 落在「课后资料」；logo 加载，JS / CSS 200，无外网请求、无 4xx、无控制台错误；PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / `lab/ttft.py` 200。线上 `README.md` 一律被 CloudFront 返回 403（全站规则，其他课件相同），学员实验说明因此改名为 `lab/GUIDE.md`。
 
 ## 运行时偏离模板
 
@@ -27,8 +27,6 @@ Local / Build 通过 / 未部署（2026-10-06，模板 2.0 迁移后）
 
 | 缺口 | 负责人 |
 |---|---|
-| `.github/workflows/deploy.yml` 加入本课件 build / copy 步骤（作者账号无 `workflow` 权限） | Maintainer |
 | `bun run qa:deck` 三档视口截图 + 目视核验 | 有 Playwright 环境的同事 / Jessie |
 | 课前在讲师机完整跑一遍 Claude Code 命令，核对输出字段 | Jessie |
 | Codex 命令实测（讲师机未安装 Codex） | Jessie / 助教 |
-| 部署后线上回读，卡片改为「已部署」 | Maintainer + Jessie |

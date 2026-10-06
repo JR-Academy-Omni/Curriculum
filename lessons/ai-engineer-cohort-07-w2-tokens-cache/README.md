@@ -15,5 +15,5 @@ bun run build
 - `PRD.md`：学习目标、节奏表、37 页逐页规格（讲师 Jessie）。
 - `RUNSHEET.md` / `WORKSHEET.md` / `SOURCE_MAP.md` / `QA.md`：讲师流程、学员工作单、来源表、验收记录。
 - `OUTLINE.md`：课程大纲与课后资料清单。
-- `lab/README.md`：学生用的命令速查和实验步骤；`lab/ttft.py` 用来测 TTFT。
+- `lab/GUIDE.md`：学生用的命令速查和实验步骤；`lab/ttft.py` 用来测 TTFT。
 - `src/App.tsx`：页面顺序；`src/data/`：命令、前测、面试题、讲师备注（`notes.ts`）。

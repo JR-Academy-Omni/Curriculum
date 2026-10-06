@@ -6,7 +6,7 @@
 
 ## 输入资料
 
-- `lab/README.md`：全部命令和字段说明
+- `lab/GUIDE.md`：全部命令和字段说明
 - `lab/ttft.py`：TTFT 计时脚本（只用 Python 标准库）
 - 一个空文件夹 `w2-lab/` 和一个你自己的真实项目
 

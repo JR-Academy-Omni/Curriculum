@@ -2,6 +2,8 @@
 
 ## 2026-10-06
 
+- AI Engineer W2 Tokens & Cache课件已部署并线上回读（37页、资源与入口正常），目录卡片改为「已部署」；学员实验说明改名为`lab/GUIDE.md`（线上README.md被CloudFront统一返回403）（`curriculum/lessons/ai-engineer-cohort-07-w2-tokens-cache` / `lessons.html` / `deploy.yml`）
+
 - 将AI Engineer W2 Tokens & Cache课件迁移到Talk Deck模板2.0：引擎与engine-manifest与模板一致、改为Register B圆角课程视觉、本地字体、37条讲师备注与打印视图；补PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA，讲师登记为Jessie；不部署（`curriculum/lessons/ai-engineer-cohort-07-w2-tokens-cache`）
 
 - 补齐合并时main新增的5个旧课件运行时哈希基线，不修改课件内容、不运行CI、不部署（`lessons` / `talk-deck`）
