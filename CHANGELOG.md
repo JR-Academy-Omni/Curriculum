@@ -2,6 +2,8 @@
 
 ## 2026-10-06
 
+- 更新README、CLAUDE和AGENTS的网页PPT制作入口，明确Talk Deck、模板、Lesson列表登记与不部署时的分支push规则（`README.md` / `CLAUDE.md` / `AGENTS.md`）
+
 - 明确Talk Deck遵守用户「提交代码、不部署」范围，只做本地验证和提交，不push或触发生产发布（`.claude/skills/talk-deck`）
 
 - 修复AI Engineer实践W1–W3课件目录的课次与已部署状态，统一线上入口文案，并补充Talk Deck列表登记、同步发布与线上回读规则（`lessons.html` / `.claude/skills/talk-deck`）
