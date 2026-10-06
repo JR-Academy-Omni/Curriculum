@@ -8,7 +8,7 @@
 - 课前 10 分钟把第 4–5 页的 Claude Code 命令完整跑一遍，确认输出字段和课件一致（尤其 `usage.cache_creation` 和 `/usage` 的 Prompt cache 行）。
 - 准备两个文件夹：空的 `w2-lab/`（放好 `lab/ttft.py`）、一个自己的真实项目（M2 用）。
 - 课件入口：本地 `bun run dev`（或部署后的线上地址）；开 N 确认备注可见。
-- 提前一天把 `lab/README.md` 发给学员，要求装好 Claude Code 或 Codex、`jq`，并跑通 `claude --version`。
+- 提前一天把 `lab/GUIDE.md` 发给学员，要求装好 Claude Code 或 Codex、`jq`，并跑通 `claude --version`。
 - 备用方案：学员机器跑不通时，讲师共享屏幕跑，学员只记录数字；Codex 命令未在讲师机实测，Codex 学员出错先截图到对话框。
 
 ## 逐页讲师流程
