@@ -37,7 +37,7 @@ class InitializerTests(unittest.TestCase):
    result=subprocess.run(args,capture_output=True,text=True)
    if result.returncode:return result.returncode,result.stderr
    import json
-   d=r/'lessons'/slug;data=json.loads((d/'package.json').read_text());self.assertIn(title,data['description'])
+   d=r/'lessons'/slug;data=json.loads((d/'package.json').read_text());self.assertIn(title,data['description']);self.assertNotIn('{{SLUG}}',(d/'bun.lock').read_text())
    self.assertEqual(m.hashes(d),json.loads((d/'engine-manifest.json').read_text())['files'])
    self.assertEqual(m.parse_catalog((r/'lessons.html').read_text()).errors,[])
    before=(d/'PRD.md').read_text();retry=subprocess.run(args,capture_output=True,text=True)

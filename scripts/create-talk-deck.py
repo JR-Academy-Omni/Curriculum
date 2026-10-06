@@ -14,7 +14,7 @@ def main():
     if text.count(marker)!=1:p.error('catalog must have one grid')
     shutil.copytree(ROOT/'lessons/_template',target,ignore=shutil.ignore_patterns('node_modules','dist','out','*.tsbuildinfo'))
     for f in target.rglob('*'):
-        if f.is_file() and f.suffix in {'.md','.html','.json','.ts','.tsx'}:
+        if f.is_file() and f.suffix in {'.md','.html','.json','.ts','.tsx','.lock'}:
             s=f.read_text();s=s.replace('{{SLUG}}',a.slug).replace('{{TITLE}}',html.escape(a.title) if f.suffix=='.html' else a.title)
             if f.name=='package.json':
                 import json
