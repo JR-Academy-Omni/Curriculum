@@ -2,7 +2,9 @@
 
 ## 2026-10-06
 
-- 统一HTML在线课件与Talk Deck规则，禁止PPTX与Canva替代；修复目录结构，补W1–W3工作单、共享模板、字体、备注与打印，并加入登记、版本和浏览器验收工具（`talk-deck` / `lessons` / CI）
+- 按用户要求移除新增的课件CI及部署前自动检查，仅保留本地制作、登记和验收工具（`talk-deck` / workflows）
+
+- 统一HTML在线课件与Talk Deck规则，禁止PPTX与Canva替代；修复目录结构，补W1–W3工作单、共享模板、字体、备注与打印，并加入登记、版本和浏览器验收工具（`talk-deck` / `lessons` / 本地验收）
 
 - 补齐Curriculum Codex与主仓库共享Claude的Talk Deck入口，统一指向Curriculum canonical Skill和模板（`talk-deck`）
 

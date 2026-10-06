@@ -196,7 +196,7 @@ export const radii = { panel: 24, card: 18, label: 8, pill: 999 } as const;
 
 - 新课件用 `python3 scripts/create-talk-deck.py SLUG --title 标题 --instructor 讲师 --minutes 120`，只写新目录与 Local 登记，不发布；生成后完善 PRD、讲稿、工作单、来源表和 notes。
 - 配套模板随 `lessons/_template/` 提供：`PRD.md`、`RUNSHEET.md`、`WORKSHEET.md`、`SOURCE_MAP.md`、`QA.md`。教学信息未确定时标待确认，不伪造时间、来源或验收。
-- `bun run check:decks` 检查卡片结构；`python3 scripts/check-talk-decks.py --base REF` 检查该次变更的课件登记、入口、配套资料与部署配置。CI 对新增/修改课件强制执行。
+- `bun run check:decks` 检查卡片结构；`python3 scripts/check-talk-decks.py --base REF` 检查该次变更的课件登记、入口、配套资料与部署配置。按用户要求，仅本地执行，不配置或触发 CI。
 - `bun run qa:deck -- --url URL --output-dir ABS_PATH` 逐页、三档视口检查资源失败、控制台错误和文本裁切，生成截图与 JSON。页数从引擎 DOM 读取，不手填。机器检查后仍要目视核对文字、图表、顺序、Logo和内容来源。用户交付截图输出到 Downloads，内部报告放 `out/qa`。
 - 模板 `engine-manifest.json` 记录引擎文件哈希。更新模板后运行 `python3 scripts/check-talk-decks.py --write-template-manifest`；已有课件用 `--engine-inventory` 报告一致/历史版本/漂移/未登记，不批量覆盖它们。新课件必须携带相同 manifest；确有运行时扩展须在 QA 中记录，并更新其实际文件哈希，不能假称仍与模板一致。
 - 字体由本地 npm 包打包，授课前验证冷缓存断外网仍能加载课件；这不等于离线部署服务或缓存可供完全断网使用。

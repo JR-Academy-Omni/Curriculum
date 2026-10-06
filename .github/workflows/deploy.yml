@@ -9,18 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Validate HTML lesson catalog and changed decks
-        env:
-          DECK_BASE: ${{ github.event.before }}
-        run: |
-          if git cat-file -e "$DECK_BASE^{commit}" 2>/dev/null; then
-            python3 scripts/check-talk-decks.py --base "$DECK_BASE"
-          else
-            python3 scripts/check-talk-decks.py
-          fi
 
       - uses: oven-sh/setup-bun@v2
         with:
