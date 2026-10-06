@@ -2,6 +2,8 @@
 
 ## 2026-10-06
 
+- 补齐Curriculum Codex与主仓库共享Claude的Talk Deck入口，统一指向Curriculum canonical Skill和模板（`talk-deck`）
+
 - 更新README、CLAUDE和AGENTS的网页PPT制作入口，明确Talk Deck、模板、Lesson列表登记与不部署时的分支push规则（`README.md` / `CLAUDE.md` / `AGENTS.md`）
 
 - 明确Talk Deck遵守用户「提交代码、不部署」范围，只做本地验证和提交，不push或触发生产发布（`.claude/skills/talk-deck`）
