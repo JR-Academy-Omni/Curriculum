@@ -112,6 +112,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/ai-engineer-cohort-07-w2-tokens-cache (90-min · 37 slides · Tokens, Context Windows & Cache Efficiency)
+      - name: Build AI Engineer W2 Tokens & Cache
+        working-directory: lessons/ai-engineer-cohort-07-w2-tokens-cache
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
       - name: Build lessons/ai-new-jobs-talk
@@ -312,6 +319,10 @@ jobs:
           mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w3
           cp -r lessons/ai-engineer-cohort-07-practice-w3/dist/* _site/lessons/ai-engineer-cohort-07-practice-w3/
           cp lessons/ai-engineer-cohort-07-practice-w3/PRD.md lessons/ai-engineer-cohort-07-practice-w3/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w3/SOURCE_MAP.md lessons/ai-engineer-cohort-07-practice-w3/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-practice-w3/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/lab
+          cp -r lessons/ai-engineer-cohort-07-w2-tokens-cache/dist/* _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/
+          cp lessons/ai-engineer-cohort-07-w2-tokens-cache/PRD.md lessons/ai-engineer-cohort-07-w2-tokens-cache/RUNSHEET.md lessons/ai-engineer-cohort-07-w2-tokens-cache/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w2-tokens-cache/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/
+          cp lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/README.md lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/ttft.py _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/
