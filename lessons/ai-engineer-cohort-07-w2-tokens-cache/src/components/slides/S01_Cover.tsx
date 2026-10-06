@@ -39,7 +39,7 @@ export default function S01_Cover() {
 						<span style={{ fontSize: 22, fontWeight: 700 }}>90 分钟 · 边讲边跑</span>
 					</motion.div>
 
-					<p style={{ marginTop: 24, fontSize: 14, opacity: 0.5, fontFamily: fonts.mono, letterSpacing: 1 }}>← → 翻页 · F 全屏 · C 开摄像头</p>
+					<p style={{ marginTop: 24, fontSize: 14, opacity: 0.5, fontFamily: fonts.mono, letterSpacing: 1 }}>← → 翻页 · F 全屏 · V 开摄像头</p>
 				</div>
 			</Inner>
 		</Slide>

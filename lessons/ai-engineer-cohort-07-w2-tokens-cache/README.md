@@ -10,9 +10,8 @@ bun run dev
 bun run build
 ```
 
-方向键或空格翻页；F 全屏；C 开关摄像头。
+方向键或空格翻页；F 全屏；V 开关摄像头；`?page=N` 定位。
 
 - `OUTLINE.md`：课程大纲、每个模块的节奏、课后资料。
 - `lab/README.md`：学生用的命令速查和实验步骤；`lab/ttft.py` 用来测 TTFT。
 - `src/App.tsx`：页面顺序；`src/data/`：命令、前测、面试题。
-- `CLAUDE.md` + `.claude/skills/add-slide`：用 Claude Code 加页、改页的约定。

@@ -108,7 +108,7 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 
 	return (
 		<div style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}>
-			{/* 演讲者摄像头圆圈（按 C 开关 · 录播露脸用） */}
+			{/* 演讲者摄像头圆圈（按 V 开关 · 录播露脸用） */}
 			<CameraBubble />
 			<div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: 4, background: 'rgba(255,255,255,0.1)', zIndex: 1000 }}>
 				<motion.div animate={{ width: `${((current + 1) / total) * 100}%` }} transition={{ duration: 0.3 }} style={{ height: '100%', background: colors.indigo }} />
@@ -148,14 +148,10 @@ export default function SlideEngine({ children }: SlideEngineProps) {
 						pointerEvents: 'none', opacity: 0.7,
 					}}>
 						<img
-							src={assetPath('jr-logo.png')}
+							src={assetPath('logo-zh-full.svg')}
 							alt="JR Academy"
-							style={{ height: 28, width: 'auto', display: 'block' }}
+							style={{ height: 30, width: 'auto', display: 'block' }}
 						/>
-						<span style={{
-							fontFamily: '"Space Mono", monospace', fontSize: 10, fontWeight: 700,
-							color: '#555', letterSpacing: 2,
-						}}>JR ACADEMY</span>
 					</div>
 					<AnimatePresence mode="wait">
 						<motion.div
@@ -188,6 +184,7 @@ function NavArrow({ direction, onClick, disabled }: { direction: 'prev' | 'next'
 				transform: `translateY(-50%) ${hover ? 'translate(3px,3px)' : ''}`,
 				width: 52, height: 52,
 				border: `3px solid ${colors.black}`,
+				borderRadius: 14,
 				background: colors.white,
 				fontSize: 22, fontWeight: 700, cursor: 'pointer',
 				zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center',
