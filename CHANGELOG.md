@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-06
+
+- 修复AI Engineer实践W1–W3课件目录的课次与已部署状态，统一线上入口文案，并补充Talk Deck列表登记、同步发布与线上回读规则（`lessons.html` / `.claude/skills/talk-deck`）
+
 ## 2026-10-04
 
 - 重组AI Engineer实践W1为60页项目管理主线，拆分CareKind商业模式、移除个人AI OS/重复Context/Mini CRM/Repo Map，补五步ADLC、多Agent与SDD，按PRD→Rules→CLAUDE.md整理执行顺序；将八页UI概念与整组18页进阶材料完整迁入W2（47页），同步来源、讲师资料与修订登记（`curriculum/lessons/ai-engineer-cohort-07-practice-w1~w2`）
