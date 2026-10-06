@@ -177,9 +177,13 @@ export const radii = { panel: 24, card: 18, label: 8, pill: 999 } as const;
 5. **slides**：逐页写 `slides/Xnn_*.tsx`，同构页用模板组件。
 6. **register**：在 `App.tsx` 按章节 import + 排列。
 7. **verify**：`bun run dev` 走查每页（键盘翻页 + `?page=N`）→ `bun run build` 确认 tsc 通过。
-8. **deploy**：build 出 `dist/`，部署到 `jracademy.ai/curriculum/lessons/{slug}/`（检查 base 子路径资源 404）。
+8. **catalog**：新增、重做、迁移或显著更新 deck 时，必须在同一次修改中登记 `curriculum/lessons.html`，同步 `CHANGELOG.md`。每份独立 deck 一张卡，包含标题与课次（系列课明确写 W1 / W2 / W3 等）、形态/技术栈、讲师、时长、页数、跨课映射、线上入口和已有 PRD / runsheet / 源码链接；未部署也登记为 Local / Draft，替换的旧课件保留 Legacy。
+9. **deploy**：build 出 `dist/`，部署到 `jracademy.ai/curriculum/lessons/{slug}/`，同时发布更新后的 `lessons.html`；Vite / Slidev 项目核对 `.github/workflows/deploy.yml` 的 build 与产物复制步骤。
+10. **public read-back**：部署后在 `https://jracademy.ai/curriculum/lessons.html` 实际核对该卡片，从其线上入口打开课件，检查页数、封面和子路径资源。部署成功且线上课件核验后，将卡片状态改为「已部署」，发布并回读列表；清除「部署后 / 待部署」等过期文案。只部署 deck、只修改本地登记或只收到 HTTP 200 都不能声称线上列表已完成。
 
 ---
+
+**发布范围以用户指令为准**：用户要求「只更新 / 提交代码、不部署」时，只完成本地修改、验证、登记与 commit，不 push、不触发发布流水线、不上传生产。未发布的新修订标为 Local / 待部署，并保留已上线版本的真实状态；不得为满足上述 deploy / public read-back 步骤擅自发布。
 
 ## 何时用 Slidev 替代（slides.md）
 
