@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Slide, Inner, Title, colors, fonts, border } from '../ui';
-import { col, ModuleTag, Source } from './_shared';
+import { colors, fonts, radii } from '../ui';
+import { ModuleFrame, Source, line, softShadow } from './_shared';
 
 const rows = [
 	{ k: 'information density', cc: 'MCP tools 默认只列名字，用 tool search 按需加载完整定义', app: '只挂这次任务用得上的 tools' },
@@ -11,15 +11,13 @@ const rows = [
 	{ k: 'permission · provenance', cc: '—（应用层要自己做）', app: '进 context 之前先过滤：模型看到了，就别指望它「假装没看到」' },
 ];
 
-const cell = { border, padding: '10px 14px', fontSize: 20, fontWeight: 600, lineHeight: 1.4, verticalAlign: 'middle' } as const;
+const cell = { borderBottom: '1px solid rgba(16,22,47,.18)', padding: '10px 14px', fontSize: 19, fontWeight: 600, lineHeight: 1.4, verticalAlign: 'middle' } as const;
 
 // M2 讲：Claude Code 自己怎么做 context governance，对应到你的应用
 export default function S12_M2Teach() {
 	return (
-		<Slide bg={colors.white}>
-			<Inner style={col}>
-				<ModuleTag id="M2" phase="teach" />
-				<Title size="48px" style={{ marginBottom: 20 }}>看 Claude Code 怎么管自己的 context</Title>
+		<ModuleFrame id="M2" phase="teach" title="看 Claude Code 怎么管自己的 context">
+			<div style={{ border: line, borderRadius: radii.card, overflow: 'hidden', background: colors.white, boxShadow: softShadow }}>
 				<table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
 					<colgroup>
 						<col style={{ width: '22%' }} />
@@ -29,22 +27,22 @@ export default function S12_M2Teach() {
 					<thead>
 						<tr>
 							{['选择标准', 'Claude Code 怎么做', '放到你的应用里'].map((h, i) => (
-								<th key={h} style={{ ...cell, textAlign: 'left', fontSize: 18, fontFamily: fonts.mono, background: i === 1 ? colors.blue : i === 2 ? colors.yellow : colors.warmBg }}>{h}</th>
+								<th key={h} style={{ ...cell, textAlign: 'left', fontSize: 17, fontFamily: fonts.mono, background: i === 1 ? colors.blue : i === 2 ? colors.yellow : colors.warmBg }}>{h}</th>
 							))}
 						</tr>
 					</thead>
 					<tbody>
 						{rows.map((r, i) => (
 							<motion.tr key={r.k} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.15 + i * 0.1 }}>
-								<td style={{ ...cell, fontFamily: fonts.mono, fontSize: 17, fontWeight: 700, background: colors.warmBg }}>{r.k}</td>
+								<td style={{ ...cell, fontFamily: fonts.mono, fontSize: 16, fontWeight: 700, background: '#fff8f2' }}>{r.k}</td>
 								<td style={cell}>{r.cc}</td>
 								<td style={{ ...cell, fontWeight: 700 }}>{r.app}</td>
 							</motion.tr>
 						))}
 					</tbody>
 				</table>
-				<Source>Claude Code 的做法出自官方文档 Explore the context window 和 How Claude Code uses prompt caching。</Source>
-			</Inner>
-		</Slide>
+			</div>
+			<Source>Claude Code 的做法出自官方文档 Explore the context window 和 How Claude Code uses prompt caching。</Source>
+		</ModuleFrame>
 	);
 }

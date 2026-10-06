@@ -1,4 +1,5 @@
 import SlideEngine from './components/SlideEngine';
+import { notes } from './data/notes';
 
 // 第七期 W2 · Tokens, Context Windows & Cache Efficiency（90 分钟，模块划分见 data/modules.ts）
 // 每个模块按 Test → Teach → Test：前测页 → 讲 + 跑 → 后测页
@@ -42,7 +43,7 @@ import S37 from './components/slides/S37_Resources';
 
 export default function App() {
 	return (
-		<SlideEngine>
+		<SlideEngine notes={notes}>
 			{/* M0 · 开场 + 全课前测 */}
 			<S01 />
 			<S02 />

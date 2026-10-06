@@ -1,5 +1,6 @@
-import { Slide, Inner, Half, Title, colors, fonts, border } from '../ui';
-import { ModuleTag, Source } from './_shared';
+import { colors } from '../ui';
+import { Label } from '../deck';
+import { ModuleFrame, Source, card } from './_shared';
 
 const docs = [
 	{ t: 'How Claude Code uses prompt caching', s: 'Claude Code 官方文档', u: 'https://code.claude.com/docs/en/prompt-caching' },
@@ -19,40 +20,29 @@ const videos = [
 	{ t: 'Fast LLM Serving with vLLM and PagedAttention', s: 'MLSys Singapore', u: 'https://www.youtube.com/watch?v=Oq2SN7uutbQ' },
 ];
 
-function LinkList({ title, items }: { title: string; items: typeof docs }) {
+function LinkList({ title, items, bg }: { title: string; items: typeof docs; bg: string }) {
 	return (
-		<>
-			<p style={{ fontFamily: fonts.mono, fontSize: 17, fontWeight: 700, letterSpacing: 2, marginBottom: 10 }}>{title}</p>
+		<div>
+			<Label bg={bg} color={colors.black}>{title}</Label>
 			{items.map((d) => (
-				<a key={d.u} href={d.u} target="_blank" rel="noreferrer"
-					style={{ display: 'block', padding: '7px 14px', marginBottom: 7, background: colors.white, border, color: colors.black, textDecoration: 'none' }}>
-					<span style={{ display: 'block', fontSize: 19, fontWeight: 800, lineHeight: 1.35 }}>{d.t}</span>
-					<span style={{ display: 'block', fontSize: 15, fontWeight: 600, opacity: 0.65 }}>{d.s}</span>
+				<a key={d.u} href={d.u} target="_blank" rel="noreferrer" style={{ ...card, display: 'block', padding: '6px 14px', marginTop: 7, color: colors.black, textDecoration: 'none' }}>
+					<span style={{ display: 'block', fontSize: 18, fontWeight: 800, lineHeight: 1.35 }}>{d.t}</span>
+					<span style={{ display: 'block', fontSize: 14, fontWeight: 600, opacity: 0.65 }}>{d.s}</span>
 				</a>
 			))}
-		</>
+		</div>
 	);
 }
 
 // 课后资料：生产一手文档 + 视频（链接已核实存在）
 export default function S37_Resources() {
 	return (
-		<Slide bg={colors.warmBg}>
-			<Inner split style={{ alignItems: 'stretch', flexWrap: 'wrap', alignContent: 'center', rowGap: 12 }}>
-				<div style={{ width: '100%' }}>
-					<ModuleTag id="M7" />
-					<Title size="46px">课后资料</Title>
-				</div>
-				<Half style={{ justifyContent: 'flex-start' }}>
-					<LinkList title="生产一手资料（先读这些）" items={docs} />
-				</Half>
-				<Half style={{ justifyContent: 'flex-start' }}>
-					<LinkList title="视频（课后看）" items={videos} />
-				</Half>
-				<div style={{ width: '100%' }}>
-					<Source>链接都已核实存在；视频只核实了标题和频道。课后练习：用你自己的一个项目重跑 M5，把 runs.jsonl 的汇总结果写成三句英文发到群里。</Source>
-				</div>
-			</Inner>
-		</Slide>
+		<ModuleFrame id="M7" title="课后资料" titleSize={46}>
+			<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
+				<LinkList title="生产一手资料（先读这些）" items={docs} bg={colors.yellow} />
+				<LinkList title="视频（课后看）" items={videos} bg={colors.blue} />
+			</div>
+			<Source>链接都已核实存在；视频只核实了标题和频道。课后练习：用你自己的一个项目重跑 M5，把 runs.jsonl 的汇总结果写成三句英文发到群里。</Source>
+		</ModuleFrame>
 	);
 }

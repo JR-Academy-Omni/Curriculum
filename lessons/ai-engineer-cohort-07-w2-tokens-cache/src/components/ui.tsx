@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type CSSProperties, type ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { colors, fonts, border, shadow, shadowSm, radii } from '../styles/theme';
 
 // 拿 Vite BASE_URL 拼出 public/ 下的资源路径（dev → /xxx，prod → /curriculum/ai-new-jobs-talk/xxx）
@@ -21,9 +21,11 @@ export function CountUp({
 	style?: CSSProperties;
 }) {
 	const [n, setN] = useState(0);
+	const reducedMotion = useReducedMotion();
 	const rafRef = useRef<number | null>(null);
 
 	useEffect(() => {
+		if (reducedMotion || duration <= 0) { setN(value); return; }
 		const start = performance.now();
 		const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 		const step = (now: number) => {
@@ -33,7 +35,7 @@ export function CountUp({
 		};
 		rafRef.current = requestAnimationFrame(step);
 		return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
-	}, [value, duration]);
+	}, [value, duration, reducedMotion]);
 
 	return <span style={style}>{n}{suffix}</span>;
 }

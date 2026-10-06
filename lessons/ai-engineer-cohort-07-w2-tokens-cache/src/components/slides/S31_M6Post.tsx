@@ -1,5 +1,4 @@
-import { Slide, Inner, Title, colors } from '../ui';
-import { col, ModuleTag, Note, QuizCards, type QuizItem } from './_shared';
+import { ModuleFrame, QuizCards, type QuizItem } from './_shared';
 
 const items: QuizItem[] = [
 	{ q: '公司官网的退货政策 FAQ', ok: true, a: '可以 · key 带政策版本，政策一更新就失效' },
@@ -11,13 +10,8 @@ const items: QuizItem[] = [
 // M6 后测：这个能缓存吗？
 export default function S31_M6Post() {
 	return (
-		<Slide bg={colors.white}>
-			<Inner style={col}>
-				<ModuleTag id="M6" phase="post" />
-				<Title size="50px" style={{ marginBottom: 8 }}>这个能放进 Response Cache 吗？</Title>
-				<Note style={{ marginBottom: 20 }}>先举手投票，再点卡片看答案；能缓存的，说出 key 里必须带什么</Note>
-				<QuizCards items={items} cols={2} minHeight={150} />
-			</Inner>
-		</Slide>
+		<ModuleFrame id="M6" phase="post" title="这个能放进 Response Cache 吗？" subtitle="先举手投票，再点卡片看答案；能缓存的，说出 key 里必须带什么">
+			<QuizCards items={items} cols={2} minHeight={150} />
+		</ModuleFrame>
 	);
 }
