@@ -3,6 +3,10 @@
 > slug: `web-code-bootcamp-or-learn-to-code-1` · 维护：Beta
 > 2026-08-14 已迁入历史 Notion Offer 表；未确认 consent 的记录一律不可对外使用。
 
+## DevOps Offer 入口
+
+[DevOps 学员 Offer 资料](devops-offers.md) · 44 条原始记录，未去重，完整资料需内部权限。不计入下方全栈班 Offer。
+
 ## Offer
 
 | 学员 | 期数 | 公司 | 岗位 | 拿到时间 | 有无凭证 | 可对外渠道 | 档案 |
