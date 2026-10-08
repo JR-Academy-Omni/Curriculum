@@ -87,6 +87,6 @@ testimonials/
 └── _archived/         # 退费 / 学员撤回 / 信息作废（不对外用，保留备查）
 ```
 
-## DevOps Offer 入口
+## DevOps Offer 数据
 
-[DevOps 学员 Offer 资料](devops-offers.md)：按运营要求统一放置入口；所属课程为 DevOps，不并入全栈班成果统计。完整记录及截图通过私有归档链接访问。
+[DevOps 学员 Offer 追踪表](devops-offers.md)：44 条截图转录记录，直接保存表格数据，不保存截图；疑似重复未合并，不并入全栈班成果统计。
