@@ -1,0 +1,23 @@
+// One speaker note per slide (press N). Investor framing; only quote numbers that are sourced on the slide.
+export const notes: string[] = [
+	'One line: CareerOS turns real tasks that job seekers complete on their own computer, with their own agent, into career evidence employers can read and check.',
+	'After years of career training we are sure of one thing: learners want a career outcome, not a course. CareerOS turns that conviction into a product.',
+	'JSA and SEEK are both public 2026 data: fewer roles, more applicants, and employers struggling to tell who can really do the work. Our opportunity is the trusted match; pilot data will show the impact.',
+	'Three points: the agent is already on the learner\'s computer; evidence can come automatically from the real workspace; and as AI makes "did you do this?" harder to answer, evidence becomes more valuable.',
+	'The six stages sit permanently at the top of the app. It is a loop, not a course. Stress that every stage leaves a checkable result.',
+	'We build no model and host no cloud environment; compute runs on the learner\'s own computer and subscription. The value is in the Harness, and safety boundaries are enforced in code, which matters to schools, employers and parents.',
+	'These are real product screenshots. The demo profile is fictional and some AI replies are scripted for the demo; say so plainly if asked. The point: no forms, the AI proposes and the learner confirms.',
+	'Evidence has four tiers that never substitute for each other. Human review is the trust step coming in the next phase.',
+	'We extend with data, not code: the same resume analysis uses different criteria by role, level and market. 30 days is on sale now at A$69 + GST.',
+	'The core loop can be demonstrated live. Before the first paid cohort we complete signing, accounts and billing acceptance in the live environment. Real user data starts with the first pilot.',
+	'Models will keep getting stronger, but "who defines good enough, and who vouches" takes years of content, mentors and employer relationships.',
+	'30 days and membership already generate revenue; CareerOS subscription and services are priced in the pilot. We charge for process and review, and we never promise jobs.',
+	'Start with people who already trust us: current learners, members, 30 days buyers and our content channels. First cohort 20–30 learners, capacity first.',
+	'We don\'t compete with agents; we use them. The real risk is a platform building its own career agent; our moat is standards, evidence and people.',
+	'Funds are released by gate: pass a gate and we invest more; miss it and we narrow scope.',
+	'Four accountable leads plus the current operating team.',
+	'Every dollar maps to a gate we can verify.',
+	'Appendix: methodology and how the six stages map to it.',
+	'Appendix: key risks and responses; jump here to answer questions.',
+	'Appendix: public data sources; product acceptance records are available in due diligence.',
+];

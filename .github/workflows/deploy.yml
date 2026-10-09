@@ -106,6 +106,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # CareerOS investor pitch deck (English, noindex, not listed in lessons.html)
+      - name: Build CareerOS investor pitch deck
+        working-directory: pitch/careeros
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       - name: Build AI Engineer Practice W3
         working-directory: lessons/ai-engineer-cohort-07-practice-w3
         run: |
@@ -323,6 +330,8 @@ jobs:
           cp -r lessons/ai-engineer-cohort-07-w2-tokens-cache/dist/* _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/
           cp lessons/ai-engineer-cohort-07-w2-tokens-cache/PRD.md lessons/ai-engineer-cohort-07-w2-tokens-cache/RUNSHEET.md lessons/ai-engineer-cohort-07-w2-tokens-cache/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w2-tokens-cache/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/
           cp lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/GUIDE.md lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/ttft.py _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/
+          mkdir -p _site/pitch/careeros
+          cp -r pitch/careeros/dist/* _site/pitch/careeros/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/
