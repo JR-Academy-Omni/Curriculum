@@ -12,7 +12,7 @@ const guards = ['Read-only tasks stay read-only (exact tool grants)', 'File writ
 
 export default function S06_Architecture() {
 	return (
-		<Page tag="05 · Architecture" title="Desktop first: the value is in the Harness, not the model" subtitle="Evidence has to come from the learner's real workspace (diffs, tests, commits), which the web cannot see. So the desktop is the core product; the web handles only multi-party work." accent={colors.yellow} source="Product demo, Oct 2026">
+		<Page tag="06 · Architecture" title="Desktop first: the value is in the Harness, not the model" subtitle="Evidence has to come from the learner's real workspace (diffs, tests, commits), which the web cannot see. So the desktop is the core product; the web handles only multi-party work." accent={colors.yellow} source="Product demo, Oct 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: '1.3fr .7fr', gap: 26, height: '100%' }}>
 				<div style={{ display: 'grid', gap: 12, alignContent: 'start' }}>
 					{layers.map((l, i) => (

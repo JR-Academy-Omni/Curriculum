@@ -5,6 +5,7 @@ import S01 from './components/slides/S01_Cover';
 import S02 from './components/slides/S02_WhyJR';
 import S03 from './components/slides/S03_Problem';
 import S04 from './components/slides/S04_WhyNow';
+import S04b from './components/slides/S04b_ProblemAnswer';
 import S05 from './components/slides/S05_Loop';
 import S06 from './components/slides/S06_Architecture';
 import S07 from './components/slides/S07_DemoStages';
@@ -30,6 +31,7 @@ export default function App() {
 			<S02 />
 			<S03 />
 			<S04 />
+			<S04b />
 			{/* CH 1 · 产品与证明 */}
 			<S05 />
 			<S06 />

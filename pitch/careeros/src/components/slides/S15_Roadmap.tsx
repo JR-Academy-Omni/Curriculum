@@ -13,7 +13,7 @@ const gates = [['G-01 Feasibility', 'Can real candidate evidence form without re
 
 export default function S15_Roadmap() {
 	return (
-		<Page tag="14 · Roadmap" title="Driven by gates, not calendar promises" subtitle="Every phase has a gate we can verify: pass it and we invest more; miss it and we narrow scope. Funds are released gate by gate, which keeps risk contained." accent={colors.orange} source="Company plan, Oct 2026">
+		<Page tag="15 · Roadmap" title="Driven by gates, not calendar promises" subtitle="Every phase has a gate we can verify: pass it and we invest more; miss it and we narrow scope. Funds are released gate by gate, which keeps risk contained." accent={colors.orange} source="Company plan, Oct 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: '1.35fr .65fr', gap: 22, height: '100%' }}>
 				<div style={{ display: 'grid', gap: 9 }}>
 					{phases.map(([p, n, w, t, g, c], i) => (

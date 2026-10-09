@@ -13,7 +13,7 @@ const items: { h: string; t: string; kind: Kind; tag?: string; todo?: string; c:
 
 export default function S11_Moat() {
 	return (
-		<Page tag="10 · Why us" title="Vendors supply the agent. We supply the trust." subtitle="The stronger the models, the scarcer the answer to 'who defines good enough, and who vouches for it'. Standards, evidence and people come from years of teaching and employer relationships." accent={colors.yellow} source="Company data, as of Oct 2026">
+		<Page tag="11 · Why us" title="Vendors supply the agent. We supply the trust." subtitle="The stronger the models, the scarcer the answer to 'who defines good enough, and who vouches for it'. Standards, evidence and people come from years of teaching and employer relationships." accent={colors.yellow} source="Company data, as of Oct 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: '1fr 1fr', gap: 18, height: '100%' }}>
 				{items.map((it, i) => (
 					<AnimatedGroup key={it.h} delay={.1 + i * .06} style={{ display: 'flex' }}>

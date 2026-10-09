@@ -7,12 +7,12 @@ export default function S02_WhyJR() {
 			<div style={{ display: 'grid', gridTemplateColumns: '1.05fr .95fr', gap: 28, height: '100%' }}>
 				<AnimatedGroup delay={.15} style={{ display: 'flex' }}>
 					<Panel style={{ flex: 1, borderTop: `12px solid ${colors.red}` }}>
-						<Label bg={colors.red}>What we learned</Label>
-						<div style={{ fontFamily: fonts.heading, fontWeight: 800, fontSize: 30, lineHeight: 1.35, marginTop: 22 }}>Learners never wanted a course. They wanted a career outcome.</div>
+						<Label bg={colors.red}>What we ran into</Label>
+						<div style={{ fontFamily: fonts.heading, fontWeight: 800, fontSize: 30, lineHeight: 1.35, marginTop: 22 }}>AI made knowledge free. Learners still need a career outcome.</div>
 						<div style={{ display: 'grid', gap: 14, marginTop: 24 }}>
-							<P><b>The course model:</b> learn → build a project → graduate → job hunt alone. The relationship ends with the course.</P>
-							<P><b>What learners ask:</b> "How far am I from the role, what do I do this week, how do I prove it?" A course answers part of that.</P>
-							<P><b>Our shift:</b> start from the career goal; deliver courses, mentors, P3 projects and job tools along one evidence trail.</P>
+							<P><b>Courses sell knowledge:</b> AI now explains any topic for free, and our course sales are under pressure.</P>
+							<P><b>The course ends too early:</b> learn → project → graduate → job hunt alone. The relationship ends before the outcome learners paid for.</P>
+							<P><b>Mentor-heavy teaching doesn't scale:</b> AI can now handle most day-to-day guidance; people are best used for review.</P>
 						</div>
 					</Panel>
 				</AnimatedGroup>

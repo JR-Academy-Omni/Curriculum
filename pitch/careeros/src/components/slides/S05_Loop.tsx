@@ -12,7 +12,7 @@ const stages = [
 
 export default function S05_Loop() {
 	return (
-		<Page tag="04 · Product" title="A continuous career loop, not a course" subtitle="A Career Profile switcher and six stage tabs sit at the top of the app. Every stage leaves a result you can check; courses appear only when a gap calls for them." accent={colors.orange} source="Product demo, Oct 2026">
+		<Page tag="05 · Product" title="A continuous career loop, not a course" subtitle="A Career Profile switcher and six stage tabs sit at the top of the app. Every stage leaves a result you can check; courses appear only when a gap calls for them." accent={colors.orange} source="Product demo, Oct 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 14, height: '100%' }}>
 				{stages.map((s, i) => (
 					<AnimatedGroup key={s.en} delay={.1 + i * .07} style={{ display: 'flex' }}>

@@ -4,6 +4,7 @@ export const notes: string[] = [
 	'After years of career training we are sure of one thing: learners want a career outcome, not a course. CareerOS turns that conviction into a product.',
 	'JSA and SEEK are both public 2026 data: fewer roles, more applicants, and employers struggling to tell who can really do the work. Our opportunity is the trusted match; pilot data will show the impact.',
 	'Three points: the agent is already on the learner\'s computer; evidence can come automatically from the real workspace; and as AI makes "did you do this?" harder to answer, evidence becomes more valuable.',
+	'This is the core of the story. Three shifts: knowledge is free, signals are cheap, work means working with agents. Plus our own problem: one-off courses end before the outcome and course sales are under pressure. Each row points to the slide that shows our answer.',
 	'The six stages sit permanently at the top of the app. It is a loop, not a course. Stress that every stage leaves a checkable result.',
 	'We build no model and host no cloud environment; compute runs on the learner\'s own computer and subscription. The value is in the Harness, and safety boundaries are enforced in code, which matters to schools, employers and parents.',
 	'These are real product screenshots. The demo profile is fictional and some AI replies are scripted for the demo; say so plainly if asked. The point: no forms, the AI proposes and the learner confirms.',

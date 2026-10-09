@@ -14,7 +14,7 @@ const rows: { layer: string; what: string; price: string; kind: Kind }[] = [
 
 export default function S12_Business() {
 	return (
-		<Page tag="11 · Business model" title="Pay for the software, and for process and review" subtitle="30 days and membership already generate revenue; CareerOS subscription and service tiers will be priced in the pilot. We charge for process and review, never for job guarantees." accent={colors.green} source="Current prices from the JR Academy website and app, as of Oct 2026">
+		<Page tag="12 · Business model" title="Pay for the software, and for process and review" subtitle="30 days and membership already generate revenue; CareerOS subscription and service tiers will be priced in the pilot. We charge for process and review, never for job guarantees." accent={colors.green} source="Current prices from the JR Academy website and app, as of Oct 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: '1.45fr .55fr', gap: 22, height: '100%' }}>
 				<AnimatedGroup delay={.12}>
 					<div style={{ background: colors.white, border: `2px solid ${colors.dark}`, borderRadius: 20, overflow: 'hidden' }}>

@@ -11,7 +11,7 @@ const roles = [
 
 export default function S16_Team() {
 	return (
-		<Page tag="15 · Team" title="Team" subtitle="Led by founder Lightman Wang, backed by the JR Academy team that has operated in Australia and Chengdu for years." accent={colors.red} source="Company data; team size as of May 2026">
+		<Page tag="16 · Team" title="Team" subtitle="Led by founder Lightman Wang, backed by the JR Academy team that has operated in Australia and Chengdu for years." accent={colors.red} source="Company data; team size as of May 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: '1.3fr .7fr', gap: 22, height: '100%' }}>
 				<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
 					{roles.map(([h, t, todo, c], i) => (

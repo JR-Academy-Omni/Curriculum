@@ -25,7 +25,7 @@ const cols: { kind: Kind; tag?: string; h: string; c: string; items: string[] }[
 
 export default function S10_Status() {
 	return (
-		<Page tag="09 · Status" title="What is built, and what comes next" subtitle="The core product loop can be demonstrated end to end on a real local agent. It is not yet open to paying users; real user data starts with the first pilot." accent={colors.red} source="Product demo and acceptance records, as of Oct 2026">
+		<Page tag="10 · Status" title="What is built, and what comes next" subtitle="The core product loop can be demonstrated end to end on a real local agent. It is not yet open to paying users; real user data starts with the first pilot." accent={colors.red} source="Product demo and acceptance records, as of Oct 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr 1fr', gap: 20, height: '100%' }}>
 				{cols.map((col, i) => (
 					<AnimatedGroup key={col.h} delay={.12 + i * .12} style={{ display: 'flex' }}>

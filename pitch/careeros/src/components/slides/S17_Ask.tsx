@@ -11,7 +11,7 @@ const uses = [
 
 export default function S17_Ask() {
 	return (
-		<Page tag="16 · The ask" title="What we are raising, and the gates it pays for" subtitle="Every use of funds maps to a gate we can verify, not to a launch date." accent={colors.red} source="Company plan, Oct 2026">
+		<Page tag="17 · The ask" title="What we are raising, and the gates it pays for" subtitle="Every use of funds maps to a gate we can verify, not to a launch date." accent={colors.red} source="Company plan, Oct 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: '.7fr 1.3fr', gap: 24, height: '100%' }}>
 				<AnimatedGroup delay={.12} style={{ display: 'flex' }}>
 					<div style={{ flex: 1, background: colors.dark, color: colors.white, borderRadius: 22, padding: '22px 24px', boxShadow: '8px 8px 0 rgba(255,87,87,.6)', display: 'grid', gap: 14, alignContent: 'start' }}>

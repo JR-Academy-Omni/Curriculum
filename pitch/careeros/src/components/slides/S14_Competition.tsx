@@ -13,7 +13,7 @@ const rows: [string, string[]][] = [
 
 export default function S14_Competition() {
 	return (
-		<Page tag="13 · Competition" title="We don't compete with agents. We use them." subtitle="Typical capabilities by category. Others own either the learning end or the applying end; CareerOS puts learning, doing, proving and connecting on one evidence trail." accent={colors.purple} source="Team summary by product category, Oct 2026">
+		<Page tag="14 · Competition" title="We don't compete with agents. We use them." subtitle="Typical capabilities by category. Others own either the learning end or the applying end; CareerOS puts learning, doing, proving and connecting on one evidence trail." accent={colors.purple} source="Team summary by product category, Oct 2026">
 			<AnimatedGroup delay={.15}>
 				<div style={{ background: colors.white, border: `2px solid ${colors.dark}`, borderRadius: 20, overflow: 'hidden' }}>
 					<div style={{ display: 'grid', gridTemplateColumns: '300px repeat(4, 1fr) 1.25fr', background: colors.dark, color: colors.white }}>

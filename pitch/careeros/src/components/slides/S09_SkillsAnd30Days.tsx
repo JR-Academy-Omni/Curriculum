@@ -3,7 +3,7 @@ import { Page, Shot, KindTag, P, colors, fonts } from '../pitch';
 
 export default function S09_SkillsAnd30Days() {
 	return (
-		<Page tag="08 · Extensibility" title="Skills layer + 30 days series: add data, not code" subtitle="New capabilities, roles and markets are added as data. The same resume analysis uses different criteria for a graduate engineer and a senior analyst." accent={colors.purple} source="Real product screenshots, UI in Chinese · Oct 2026; 30 days price is the current price">
+		<Page tag="09 · Extensibility" title="Skills layer + 30 days series: add data, not code" subtitle="New capabilities, roles and markets are added as data. The same resume analysis uses different criteria for a graduate engineer and a senior analyst." accent={colors.purple} source="Real product screenshots, UI in Chinese · Oct 2026; 30 days price is the current price">
 			<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
 				<AnimatedGroup delay={.15}>
 					<Shot src="skills.png" width={600} caption={<><b>Skills:</b> capability × variant (role family × level × market) × knowledge pack. The router picks the most specific variant and says so in the chat when it falls back to the generic one.</>} />

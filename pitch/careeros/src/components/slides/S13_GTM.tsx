@@ -11,7 +11,7 @@ const channels = [
 
 export default function S13_GTM() {
 	return (
-		<Page tag="12 · Go-to-market" title="Start with people who already trust JR Academy" subtitle="The first track serves one group: learners with coding basics aiming for graduate or junior developer roles, many of them native Chinese speakers who interview in English. Start small with capacity first, then add tracks and markets." accent={colors.blue} source="Company data, as of Oct 2026">
+		<Page tag="13 · Go-to-market" title="Start with people who already trust JR Academy" subtitle="The first track serves one group: learners with coding basics aiming for graduate or junior developer roles, many of them native Chinese speakers who interview in English. Start small with capacity first, then add tracks and markets." accent={colors.blue} source="Company data, as of Oct 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: '1.2fr .8fr', gap: 24, height: '100%' }}>
 				<AnimatedGroup delay={.12}>
 					<div style={{ background: colors.white, border: `2px solid ${colors.dark}`, borderRadius: 20, overflow: 'hidden' }}>

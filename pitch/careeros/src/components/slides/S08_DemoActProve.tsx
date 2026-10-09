@@ -10,7 +10,7 @@ const tiers = [
 
 export default function S08_DemoActProve() {
 	return (
-		<Page tag="07 · DEMO ②" title="Real projects, checkable evidence" subtitle="Local Claude Code (read-only) in the centre; the AI tutor guides from real events and never does the work." accent={colors.green} source="Real product screenshots, UI in Chinese · demo profile (fictional person; some AI replies scripted for the demo) · Oct 2026">
+		<Page tag="08 · DEMO ②" title="Real projects, checkable evidence" subtitle="Local Claude Code (read-only) in the centre; the AI tutor guides from real events and never does the work." accent={colors.green} source="Real product screenshots, UI in Chinese · demo profile (fictional person; some AI replies scripted for the demo) · Oct 2026">
 			<div style={{ display: 'grid', gridTemplateColumns: '620px 1fr', gap: 30 }}>
 				<AnimatedGroup delay={.15}><Shot src="act-tutor.png" width={620} caption={<><b>Act:</b> Task 1 runs in local Claude Code; the tutor cites its basis ("last activity 9 Oct, 01:36"). Pinned versions v1 / v2 are append-only.</>} /></AnimatedGroup>
 				<AnimatedGroup delay={.3} style={{ display: 'grid', gap: 14, alignContent: 'start' }}>
