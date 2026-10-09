@@ -17,8 +17,12 @@ export default function S02_WhyJR() {
 					</Panel>
 				</AnimatedGroup>
 				<AnimatedGroup delay={.28} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+					<div style={{ background: colors.white, border: `2px solid ${colors.dark}`, borderRadius: 18, padding: '18px 22px', borderTop: `10px solid ${colors.green}` }}>
+						<H3 style={{ fontSize: 24 }}>Annual revenue</H3>
+						<div style={{ fontFamily: fonts.heading, fontWeight: 800, fontSize: 64, lineHeight: 1.1, marginTop: 8 }}>~A$1M</div>
+						<P style={{ fontSize: 17, marginTop: 4, color: '#7a716a' }}>Existing JR Academy training business, before CareerOS revenue</P>
+					</div>
 					{[
-						['Revenue, last 12 months', 'LTM revenue and YoY change'],
 						['Course business trend', 'YoY change in course revenue or enrolments'],
 						['Learners served', 'total learners / paying learners, last 12 months'],
 					].map(([h, t]) => (

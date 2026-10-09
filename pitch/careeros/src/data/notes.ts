@@ -15,7 +15,7 @@ export const notes: string[] = [
 	'Start with people who already trust us: current learners, members, 30 days buyers and our content channels. First cohort 20–30 learners, capacity first.',
 	'We don\'t compete with agents; we use them. The real risk is a platform building its own career agent; our moat is standards, evidence and people.',
 	'Funds are released by gate: pass a gate and we invest more; miss it and we narrow scope.',
-	'Four accountable leads plus the current operating team.',
+	'Founder Lightman Wang leads CareerOS, backed by the JR Academy operating team.',
 	'Every dollar maps to a gate we can verify.',
 	'Appendix: methodology and how the six stages map to it.',
 	'Appendix: key risks and responses; jump here to answer questions.',

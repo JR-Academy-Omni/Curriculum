@@ -15,7 +15,8 @@ export default function S17_Ask() {
 			<div style={{ display: 'grid', gridTemplateColumns: '.7fr 1.3fr', gap: 24, height: '100%' }}>
 				<AnimatedGroup delay={.12} style={{ display: 'flex' }}>
 					<div style={{ flex: 1, background: colors.dark, color: colors.white, borderRadius: 22, padding: '22px 24px', boxShadow: '8px 8px 0 rgba(255,87,87,.6)', display: 'grid', gap: 14, alignContent: 'start' }}>
-						{[['Raise', 'amount (A$)'], ['Round and valuation', 'round, valuation or terms'], ['Runway', 'months of runway after the raise'], ['18-month milestones', 'gates and metrics to reach']].map(([h, t]) => (
+						<div><div style={{ fontFamily: fonts.mono, fontSize: 15, fontWeight: 700, color: colors.yellow }}>Raise</div><div style={{ fontFamily: fonts.heading, fontWeight: 800, fontSize: 56, lineHeight: 1.1, marginTop: 4 }}>A$1M</div></div>
+						{[['Round and valuation', 'round, valuation or terms'], ['Runway', 'months of runway after the raise'], ['18-month milestones', 'gates and metrics to reach']].map(([h, t]) => (
 							<div key={h}><div style={{ fontFamily: fonts.mono, fontSize: 15, fontWeight: 700, color: colors.yellow }}>{h}</div><Todo style={{ marginTop: 6, fontSize: 17 }}>{t}</Todo></div>
 						))}
 					</div>
