@@ -163,6 +163,13 @@ jobs:
           bun install
           bun run build
 
+      # Build lessons/ai-solo-founder-w11 (90-min 用户增长的方法 · 47 slides)
+      - name: Build lessons/ai-solo-founder-w11
+        working-directory: lessons/ai-solo-founder-w11
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-solo-founder-w1 (AI 一人创业营 · W1 · 45 张创业 / SoT / Founder OS 讲课 deck)
       - name: Build lessons/ai-solo-founder-w1
         working-directory: lessons/ai-solo-founder-w1
@@ -739,6 +746,14 @@ jobs:
           if [ -d lessons/ai-solo-founder-w4/dist ]; then
             mkdir -p _site/lessons/ai-solo-founder-w4
             cp -r lessons/ai-solo-founder-w4/dist/* _site/lessons/ai-solo-founder-w4/
+          fi
+
+          # OPC W11 user growth methods: deck + teaching documents
+          if [ -d lessons/ai-solo-founder-w11/dist ]; then
+            mkdir -p _site/lessons/ai-solo-founder-w11
+            cp -r lessons/ai-solo-founder-w11/dist/* _site/lessons/ai-solo-founder-w11/
+            cp lessons/ai-solo-founder-w11/{PRD,RUNSHEET,WORKSHEET,SOURCE_MAP,QA,README}.md _site/lessons/ai-solo-founder-w11/
+            cp -r lessons/ai-solo-founder-w11/research _site/lessons/ai-solo-founder-w11/
           fi
 
           # lessons/ai-solo-founder-w3: AI 一人创业营 · W3 · 这是不是一门好生意（React + Vite）

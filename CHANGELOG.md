@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-11
+
+- 新增并接入部署 OPC W11「用户增长的方法」47页网页课件，包含36种方法、案例、讲师备注和练习单，同步课程目录与构建产物（`lessons/ai-solo-founder-w11`）。
+
 ## 2026-10-06
 
 - AI Engineer W2 Tokens & Cache课件已部署并线上回读（37页、资源与入口正常），目录卡片改为「已部署」；学员实验说明改名为`lab/GUIDE.md`（线上README.md被CloudFront统一返回403）（`curriculum/lessons/ai-engineer-cohort-07-w2-tokens-cache` / `lessons.html` / `deploy.yml`）
