@@ -1,6 +1,6 @@
 # OPC W11 · 用户增长的方法
 
-47页HTML Talk Deck，90分钟。36个方法各占一页，带具体步骤、适用条件、案例/教学情境、指标和成本。Register B，官方JR Logo，模板运行时、本地字体、逐页讲师备注。
+54页HTML Talk Deck，90分钟。先讲7页增长原理与飞轮，再讲36个方法单页，带具体步骤、适用条件、案例/教学情境、指标和成本。Register B，官方JR Logo，模板运行时、本地字体、逐页讲师备注。
 
 本地：bun install；bun run dev --host 127.0.0.1 --port 19111。
 构建：bun run build。

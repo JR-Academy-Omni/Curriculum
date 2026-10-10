@@ -49,10 +49,25 @@ import S45 from './components/slides/S45_Sources';
 import S46 from './components/slides/S46_Cases';
 import S47 from './components/slides/S47_Closing';
 
+import P01 from './components/slides/P01_Flywheel';
+import P02 from './components/slides/P02_Force';
+import P03 from './components/slides/P03_Loops';
+import P04 from './components/slides/P04_OPC';
+import P05 from './components/slides/P05_Value';
+import P06 from './components/slides/P06_Model';
+import P07 from './components/slides/P07_Diagnose';
+
 export default function App() { return <SlideEngine notes={notes}>
   <S01 />
   <S02 />
   <S03 />
+  <P01 />
+  <P02 />
+  <P03 />
+  <P04 />
+  <P05 />
+  <P06 />
+  <P07 />
   <S04 />
   <S05 />
   <S06 />

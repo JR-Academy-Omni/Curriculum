@@ -28,3 +28,7 @@
 - worksheet.html填写、保存与刷新恢复通过（仅浏览器本机模拟数据）。
 - PRD、RUNSHEET、WORKSHEET、SOURCE_MAP公开链接返回有效正文。
 - 证据：curriculum/out/qa/ai-solo-founder-w11/public-report.json及public-*.jpg。
+
+## 原理与飞轮修订 · 2026-10-11
+
+新增第4–10页，共54页，54条逐页备注。桌面162页/视口检查0失败；改动页手机横竖屏截图、循环和方法地图跳转、90/110/140模型交互、54页打印静态标题通过。54页离线HTML模型与工作单验证通过。截图和报告见out/qa/ai-solo-founder-w11-flywheel。公网回读在本次发布后执行。
