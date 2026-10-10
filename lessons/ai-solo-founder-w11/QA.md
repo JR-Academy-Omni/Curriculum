@@ -1,6 +1,6 @@
 # 用户增长的方法 · QA
 
-日期2026-10-10；Local / 未部署。
+本地验收：2026-10-10。公网验收：2026-10-11（Australia/Brisbane）；已部署。
 
 - bun run build：通过，TypeScript与Vite构建成功。
 - 47页从引擎data-deck-total读取；36个方法单页，47条notes。
@@ -12,10 +12,19 @@
 - 目视：47页总览，封面、地图、方法页、循环、实验、手机、notes、打印及工作单状态已查看。
 - 所有manifest中的共享运行时文件与模板哈希一致；官方SVG与品牌原文件字节一致。
 - 内容层mobile-controls.css调整窄屏翻页按钮/圆点栏，并让打印预览静态可见、返回/打印控制清楚；未修改模板运行时文件。
-- lessons.html Local卡片、教学资料与现有build/copy规则检查通过。没有触发发布。
+- lessons.html Local卡片、教学资料与现有build/copy规则检查通过。这是部署前的本地验收记录。
 
 手机建议横屏放映。竖屏保持16:9等比显示、上下留黑，按钮在画布下方，避免遮住文字。
 
 截图和机器报告：curriculum/out/qa/ai-solo-founder-w11/。用户预览截图复制到Downloads交付文件夹。数学/案例来源见SOURCE_MAP.md，教学模拟已标注。
 
 补充打印验收：47页标题在预览中全部静态可见；普通工具栏隐藏，打印媒体隐藏预览操作，返回课件通过。print-report.json保存实际校验。
+
+## 公网部署验收 · 2026-10-11
+
+- 发布提交：299b80a3；GitHub Actions 38058294261 成功。
+- 从线上lessons.html卡片打开真实课件，47页逐页渲染通过，0控制台错误、0资源失败。
+- 官方Logo、中文字体、翻页URL、讲师备注及844×390手机横屏通过。
+- worksheet.html填写、保存与刷新恢复通过（仅浏览器本机模拟数据）。
+- PRD、RUNSHEET、WORKSHEET、SOURCE_MAP公开链接返回有效正文。
+- 证据：curriculum/out/qa/ai-solo-founder-w11/public-report.json及public-*.jpg。
