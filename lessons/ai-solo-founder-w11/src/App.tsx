@@ -57,6 +57,15 @@ import P05 from './components/slides/P05_Value';
 import P06 from './components/slides/P06_Model';
 import P07 from './components/slides/P07_Diagnose';
 
+import C01 from './components/slides/C01_DropboxLoop';
+import C02 from './components/slides/C02_DropboxOPC';
+import C03 from './components/slides/C03_CanvaLoop';
+import C04 from './components/slides/C04_CanvaOPC';
+import C05 from './components/slides/C05_NotionLoop';
+import C06 from './components/slides/C06_NotionOPC';
+import C07 from './components/slides/C07_ZapierLoop';
+import C08 from './components/slides/C08_ZapierOPC';
+
 export default function App() { return <SlideEngine notes={notes}>
   <S01 />
   <S02 />
@@ -68,6 +77,14 @@ export default function App() { return <SlideEngine notes={notes}>
   <P05 />
   <P06 />
   <P07 />
+  <C01 />
+  <C02 />
+  <C03 />
+  <C04 />
+  <C05 />
+  <C06 />
+  <C07 />
+  <C08 />
   <S04 />
   <S05 />
   <S06 />
