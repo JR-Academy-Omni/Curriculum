@@ -73,4 +73,4 @@
 | P67 | `S20_Lesson.tsx` | 本课章节/实践页 | 今晚主线 |
 | P68 | `S21_Lesson.tsx` | 本课章节/实践页 | 今晚主线 |
 
-运行时legacy manifest保持未改；仅本地68页待部署，历史线上47页状态保留。资料页完整来源见research/public-sources-2026-10-11.md。
+运行时legacy manifest保持未改；68页版已于2026-10-11部署并完成公网核验，历史线上47页记录保留。资料页完整来源见research/public-sources-2026-10-11.md。

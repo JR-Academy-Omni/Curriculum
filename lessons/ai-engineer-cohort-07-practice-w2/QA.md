@@ -1,3 +1,17 @@
+# W2 68页线上发布验收 · 2026-10-11
+
+状态：Production public verified。沿用原线上地址，历史47页记录保留。
+
+- 发布源提交 `c390f9e716fd39524ad472678bdcec3d993876a1`；[Deploy Curriculum to Server 38126090365](https://github.com/JR-Academy-Omni/Curriculum/actions/runs/38126090365) 成功。
+- 从线上Lesson目录的W2卡片进入课件，封面实读01/68、最后页68/68；新增来源页P05/06/21/26/27/42和总图P07实读，来源、日期与改编边界可见。
+- 412个发布文件逐一HTTP读回并与同一提交的本地生产构建做SHA-256比对，全部一致；包含JS、字体、官方Logo、图片、HANDOUT与WORKSHEET。
+- 线上Skill第三层互动正常；CareKind空记录校验、未保存禁止送审、模拟保存、Review只读及护理人员不能确认、切换复核人员后Confirmed均通过；浏览器error日志为空。
+- 线上重点页桌面截图与CareKind桌面/390×844截图已检查。手机课件仍是16:9等比画布；不将其称为真实移动App验收。
+- 内部证据：`curriculum/out/qa/w2-deployed-2026-10-11/asset-readback.json`、`pages.json`、`interactions.json`、截图。
+- 发布对象是网页课件及课堂合成演示；没有真实API、持久化审计、模型调用、员工消息或实跑Agent Team/Skill。
+
+---
+
 # W2公开资源68页本地验收 · 2026-10-11
 
 状态：Local verified / 未部署、未push；本记录随本地代码提交。本轮在此前62页上新增6页，保留UI/Design System、CareKind模拟及课堂时长。
