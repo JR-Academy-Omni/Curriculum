@@ -5,133 +5,185 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI 数据工程实战课 · 高级班</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="10 小时直播带做：把合成的 PDF 和邮件变成可信、可追溯、可检索的数据表。">
+<meta name="description" content="10 小时直播带做：把一条团队数据工作流交给 Agent，在受控的前提下跑起来，用标准答案和你自己测出来的数字证明它。">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 <header class="hero">
   <p class="kicker">AI 数据工程实战课 · 高级班</p>
-  <h1>把 PDF 和邮件变成可信的数据</h1>
-  <p class="sub">一批合成的发票、合同和支持邮件，进来，抽取，过闸，入表，答出一个业务问题。AI 写一部分管线，也在管线里干活；你负责审它、卡住它，并讲清楚为什么。</p>
-  <div class="chips"><span class="chip y">10 小时直播带做</span><span class="chip">$599 含 GST</span><span class="chip">适合：已有 SQL、Python、dbt 基础的数据工程师</span></div>
+  <h1>把团队的数据活交给 Agent，<br>用标准答案证明它做对了</h1>
+  <p class="sub">上级要 AI 提效，安全团队担心它碰到 prod 和 PII，你用 AI 写 dbt，有时一次就对，有时把指标口径悄悄改错。这门课用 10 小时，把一条数据工作流改造成 Agent 执行、你负责外围，并且每节课都用同一组任务测一次：它到底做对了多少，你插手了几次。</p>
+  <p class="sub get">这不是一门「多学几个 AI 工具」的课。结课时你手上有三样东西：一个 Agent 读得懂、改错了会被闸门拦下的 dbt 项目；一组你自己测出来的成功率和干预率；一页拿着这些数字去找上级和安全团队的方案。</p>
+  <div class="chips"><span class="chip y">10 小时直播带做</span><span class="chip">$599 含 GST</span><span class="chip">给在职数据工程师、分析工程师</span></div>
 </header>
-<nav class="toc"><a href="#ai">和 AI 的关系</a><a href="#who">适合谁</a><a href="#build">做出什么</a><a href="#lessons">每节课</a><a href="#takeaway">带走清单</a><a href="#quiz">自测</a><a href="#nopromise">不承诺</a><a href="#price">价格</a><a href="#faq">FAQ</a></nav>
+<nav class="toc"><a href="#ai">和 AI 的关系</a><a href="#who">适合谁</a><a href="#build">搭出什么</a><a href="#lessons">每节课</a><a href="#takeaway">带走清单</a><a href="#quiz">自测</a><a href="#nopromise">不承诺</a><a href="#price">价格</a><a href="#faq">FAQ</a></nav>
 <main class="wrap">
 
 <section id="ai"><h2>这门课和 AI 的关系</h2>
-<p class="lead">AI 在这门课里有两个身份，课上每一节都会让你分清是哪一个。</p>
-<div class="three">
- <div class="box"><h4>身份一：写管线的队友</h4><p><b>AI 做</b>：按你写的需求起草建表语句、接入脚本、dbt 模型、质量测试。</p><p><b>你做</b>：先写清要什么，让它逐段解释，亲自跑，亲自找它的错。</p></div>
- <div class="box"><h4>身份二：管线里的抽取部件</h4><p><b>AI 做</b>：读发票、合同、邮件，输出字段、置信度和原文引用。</p><p><b>你做</b>：用脚本检查引用是否真在文档里，用手工核对的样本算准确率，决定哪些字段能进 mart。</p></div>
- <div class="box hl"><h4>你要能判断什么</h4><p>模型说它有 95% 把握，是不是真的有 95%？抽出的日期有原文引用，数字却错了，你在哪一层发现？换了模型版本，旧数据该不该被覆盖？课程的核心就是这些判断。</p></div>
-</div>
-<p class="lead small">每节课都有同一个动作：AI 做完，你审，最后用自己的话讲清楚。说不清的东西，不合并进仓库。</p>
+<p class="lead">AI-native 不是「干活时顺手开一个 AI」，就像 cloud-native 不是「把虚拟机搬上云」。它是把工作重新设计成由 Agent 执行，你负责 Agent 外围的五件事。这门课的每一节课，就是把其中一件做到能在你团队里用。</p>
+<ol class="things">
+  <li><b>意图</b><span>任务写成「要什么 + 怎么算做完」。比如：每个客户一行，主键唯一，首单净额总和要和标准答案查询一致。不再手写实现。</span></li>
+  <li><b>上下文</b><span>数据契约（列、粒度、键）、指标定义、命名和分层约定，写成 Agent 读得到的文件。没写下来的团队知识，对 Agent 来说不存在。</span></li>
+  <li><b>验证</b><span>生成很便宜，确认它对才是瓶颈。dbt 测试、契约检查、对账、标准答案、dev 对 prod 的数据差异，Agent 必须一直跑到全部通过。</span></li>
+  <li><b>身份与边界</b><span>Agent 是有身份的执行者：prod 只读，只写 dev，看不到 PII，合并要你批，每一步留审计，随时能停。</span></li>
+  <li><b>度量</b><span>成功率、人工干预率、每任务耗时和成本；每次失败写成复盘，改回上下文。</span></li>
+</ol>
+<p class="lead small">这五件事的分法是授课人自己的归纳，不是行业标准术语。工具（hook、子 Agent、云端 Agent、OpenTelemetry、Langfuse）只在能提高成功率或守住边界时出现，不做功能巡礼。</p>
 </section>
 
 <section id="who"><h2>适合谁与不适合</h2>
 <div class="two">
- <div class="box ok"><h4>适合</h4><ul><li>会写 SQL 和 Python，写过 dbt model，用过一个数仓</li><li>已经在用 AI 写代码，想知道它写的管线哪里不能信</li><li>工作里已经碰到文档抽取，或被要求为 AI 应用准备数据</li></ul></div>
- <div class="box no"><h4>不适合</h4><ul><li>没写过 SQL 或没用过命令行：请先上项目班，或先补基础</li><li>想系统学 Spark、Airflow 或云平台：本课不覆盖</li><li>想学如何训练或部署模型：本课不涉及</li></ul></div>
+ <div class="box ok"><h4>适合</h4><ul><li>在职数据工程师、分析工程师，会写 SQL 和 Python，写过 dbt model 并跑过 dbt test</li><li>团队已经在被要求用 AI 提效，你需要一个说得清、测得出的做法</li><li>你要在上级和安全团队面前，为「让 Agent 动数据」这件事给出依据</li></ul></div>
+ <div class="box no"><h4>不适合</h4><ul><li>还没有 SQL、dbt 或数仓的基本功：请先上同系列的项目班</li><li>想学模型训练、部署或 RAG：本课不涉及</li><li>想系统学 Spark、Airflow 或某个云平台：本课不覆盖</li></ul></div>
 </div></section>
 
-<section id="build"><h2>你会做出什么</h2>
-<p class="lead">一条本地可重跑的管线，输入是一叠合成的发票、合同和支持邮件。</p>
-<ol class="flow"><li><b>接入</b>同一份文档进来多少次，表里都只有一份，重复的被记下来而不是丢掉。</li><li><b>抽取</b>模型给每个字段输出值、置信度和原文引用，引用查不到就拒收。</li><li><b>过闸</b>低置信度和对不上的行进隔离表，mart 只有过闸的行。</li><li><b>脱敏切块</b>先遮掉 PII 再切块，每块带文档、页码和抽取版本。</li><li><b>回答问题</b>用 mart 答出：哪些发票金额超过对应合同约定的上限。</li></ol>
+<section id="build"><h2>你会搭出什么</h2>
+<p class="lead">一个本地合成电商数仓（DuckDB + dbt），prod 只读、dev 可写。Agent 是你自己的 Claude Code。整门课只改造一条工作流，由 5 个固定任务代表，每个都有藏起来的标准答案和一个只会说「过 / 不过」的验收脚本。</p>
+<ol class="flow">
+ <li><b>新增模型</b>按指定粒度加一个 dbt 模型：脚本查主键、契约和总量是否与标准答案一致。</li>
+ <li><b>修正指标</b>一个口径错误的指标：脚本逐月比对标准答案，并检查 Agent 没有改测试或标准答案。</li>
+ <li><b>回答业务问题</b>一个有标准答案查询的问题：脚本逐行比对结果，并检查口径说明。</li>
+ <li><b>补测试</b>给现有模型补测试：脚本注入已知坏行，每一种都必须让测试失败。</li>
+ <li><b>排查行数异常</b>沿血缘往上游查：脚本核对根因，并检查修复不是靠过滤数据换来的。</li>
+</ol>
+<p class="lead small">第一节课跑基线，之后每节课重跑一次。5 个任务并行在后台跑，每个都有时间上限，你不用盯着等。下表每一格都由你在课上实测填写，我们不预先给出任何数字。</p>
+<div class="tbl"><table class="measure">
+ <thead><tr><th>任务组运行</th><th>成功率</th><th>干预率</th><th>每任务耗时</th><th>每任务成本</th></tr></thead>
+ <tbody>
+  <tr><td>基线（L01，无团队上下文）</td><td>课上实测</td><td>课上实测</td><td>课上实测</td><td>课上实测</td></tr>
+  <tr><td>L01 加上下文</td><td>课上实测</td><td>课上实测</td><td>课上实测</td><td>课上实测</td></tr>
+  <tr><td>L02 加验证闸门</td><td>课上实测</td><td>课上实测</td><td>课上实测</td><td>课上实测</td></tr>
+  <tr><td>L03 加身份与边界</td><td>课上实测</td><td>课上实测</td><td>课上实测</td><td>课上实测</td></tr>
+  <tr><td>L04 异常任务走闭环</td><td>课上实测</td><td>课上实测</td><td>课上实测</td><td>课上实测</td></tr>
+  <tr><td>L05 复盘写回后最终一轮</td><td>课上实测</td><td>课上实测</td><td>课上实测</td><td>课上实测</td></tr>
+ </tbody></table></div>
+<p class="lead small">5 个任务的样本很小，测出来的是你团队内部的信号，不是统计结论；L05 的方案里要写明这一点。用任务组测成功率是本课自己的设计，不是招聘广告里的要求。</p>
 </section>
 
 <section id="lessons"><h2>每节课</h2>
-<div class="prep"><span class="code">L00</span><div><h3>课前准备：环境、样例文档和四条规矩</h3><p>30 分钟，不直播，装好环境，跑通一份样例发票的接入，读完审 AI 产出的四条规矩。AI 在这一步只帮你排查安装报错，你要能说清每个工具在管线里负责什么。</p></div></div>
+<div class="prep"><span class="code">L00</span><div><h3>课前准备：本地数仓、Claude Code 和你要改造的那条工作流</h3><p>30 分钟，不直播。跑通本地数仓和 dbt，确认 Claude Code 能在仓库里工作，读完 5 个任务，再用五句话写下你团队里一条想交给 Agent 的数据工作流（不写公司名和真实数据）。L05 会把整门课的做法映射到它上面。</p></div></div>
 
   <article class="lesson" id="L01">
-    <header class="lesson-h"><span class="code">L01</span><h3>先画图再动手：文档数据的 raw / staging / mart 与成本公式</h3><span class="dur">120 分钟</span></header>
-    <p class="lesson-d">AI 按你写的六句需求起草三层 schema；你逐表审它，找出它漏掉的东西，再用公式把体量和成本算清楚。结束时你要能讲清每张表为什么存在，以及 AI 起草的版本哪里不能直接用。</p>
+    <header class="lesson-h"><span class="code">L01</span><h3>意图与上下文：把任务写成可验收的意图，跑出第一条基线</h3><span class="dur">120 分钟</span></header>
+    <p class="lesson-d">先让 Agent 在没有团队上下文的情况下跑一遍，看它能做对多少；再把契约、指标定义和约定写成它读得到的文件，重跑。</p>
     <dl class="five">
-      <div class="f end"><dt>先看终点</dt><dd>一份发票 PDF 放进文件夹，mart 里多一行，低置信度字段被隔离，旁边能点回原文页码；同一个问题用 SQL 直接答出来。</dd></div>
-      <div class="f ai"><dt>AI 做</dt><dd>根据你的需求起草 raw / staging / mart 的建表语句和字段注释。</dd></div>
-      <div class="f you"><dt>你做</dt><dd>先写六句需求；逐表审；补上 AI 漏掉的字段和约束；填体量和成本公式。</dd></div>
-      <div class="f ex"><dt>你要能讲清</dt><dd>三层各存什么、为什么抽取结果要带版本；成本公式里哪个量最不准。</dd></div>
-      <div class="f take"><dt>带走</dt><dd>你自己审过的三层 schema（DDL 加字段说明）和一页体量与成本公式表。</dd></div>
+      <div class="f end"><dt>先看终点</dt><dd>Agent 无人值守跑一个任务，验收脚本判过或不过；再看授课人课前用同一组任务跑出的曲线。</dd></div>
+      <div class="f ai"><dt>AI 做</dt><dd>无人值守执行 5 个任务；根据现有 dbt 项目起草数据契约、指标定义和规则文件。</dd></div>
+      <div class="f you"><dt>你做</dt><dd>写 5 条意图，补完第一个验收脚本；逐条改 AI 起草的上下文；给每个失败的任务分类。</dd></div>
+      <div class="f ex"><dt>你要能判断</dt><dd>一个任务失败，是意图没写清、上下文缺了，还是缺一道闸门。</dd></div>
+      <div class="f rerun"><dt>本节重跑任务组</dt><dd>先跑基线，加上下文后再跑一次，逐个任务对比。</dd></div>
+      <div class="f take"><dt>带走</dt><dd>5 条意图和验收脚本、一套 Agent 可读的数据契约与指标定义、前两轮运行记录。</dd></div>
     </dl>
-    <details class="steps"><summary>本节 6 个步骤</summary><ol><li><b>LIVE</b> 先看终点：一份发票从进文件夹到答出业务问题 <span>10 分钟</span></li><li><b>CONCEPT</b> 文档数据分层清单 <span>8 分钟</span></li><li><b>LIVE</b> 先写六句需求，再让 AI 起草三层 schema <span>30 分钟</span></li><li><b>SCENARIO</b> 审 AI 的 schema，找缺口 <span>25 分钟</span></li><li><b>LIVE</b> 体量与成本公式 <span>27 分钟</span></li><li><b>PROJECT</b> 带走：三层 schema 和成本公式表 <span>20 分钟</span></li></ol></details>
+    <details class="steps"><summary>本节 8 个步骤</summary><ol><li><b>LIVE</b> 先看终点：一个任务从意图到验收脚本判通过 <span>10 分钟</span></li><li><b>CONCEPT</b> 意图与上下文清单 <span>8 分钟</span></li><li><b>LIVE</b> 把 5 个任务写成意图，并补完第一个验收脚本 <span>22 分钟</span></li><li><b>LIVE</b> 跑基线：没有团队上下文的 Agent <span>20 分钟</span></li><li><b>LIVE</b> 把团队知识写成 Agent 读得到的上下文 <span>25 分钟</span></li><li><b>SCENARIO</b> 给基线失败分类 <span>15 分钟</span></li><li><b>LIVE</b> 重跑任务组：加上上下文之后 <span>12 分钟</span></li><li><b>PROJECT</b> 带走：意图模板、上下文文件和第一组数据 <span>8 分钟</span></li></ol></details>
   </article>
 
   <article class="lesson" id="L02">
-    <header class="lesson-h"><span class="code">L02</span><h3>同一份文档进来两次：幂等接入与去重</h3><span class="dur">120 分钟</span></header>
-    <p class="lesson-d">AI 写接入脚本；你用真实的重复文档去打它：原样重投、改名副本、重新导出的同一张发票。结束时你要能讲清为什么哈希够不了，业务键去重又在什么情况下会误杀。</p>
+    <header class="lesson-h"><span class="code">L02</span><h3>验证：让 Agent 一直跑到闸门全部通过</h3><span class="dur">120 分钟</span></header>
+    <p class="lesson-d">把 dbt 测试、契约检查、对账、标准答案和 dev 对 prod 数据差异串成一条命令，Agent 声明完成前必须跑到全过；再埋坏数据，检验闸门本身。</p>
     <dl class="five">
-      <div class="f end"><dt>先看终点</dt><dd>同一个文件夹连投两遍，再加一份改了名的副本和一份重新导出的同一张发票，表里行数不变，接入日志逐个写明跳过的原因。</dd></div>
-      <div class="f ai"><dt>AI 做</dt><dd>按你的需求写接入脚本：算哈希、存原件、写元数据和接入日志。</dd></div>
-      <div class="f you"><dt>你做</dt><dd>设计去重键；造重复文档去测；把重跑不变写成自动化测试。</dd></div>
-      <div class="f ex"><dt>你要能讲清</dt><dd>内容哈希和业务键各自挡住什么、各自会漏什么；失败文档去了哪里。</dd></div>
-      <div class="f take"><dt>带走</dt><dd>一个能重跑的接入脚本、一组去重测试和一份接入日志。</dd></div>
+      <div class="f end"><dt>先看终点</dt><dd>Agent 交了一个看起来合理的指标修正，标准答案不一致被拦下，它读失败原因再改，直到全部通过。</dd></div>
+      <div class="f ai"><dt>AI 做</dt><dd>写契约检查、对账和数据差异查询；闸门失败后自己循环修改。</dd></div>
+      <div class="f you"><dt>你做</dt><dd>定阈值和容差；串成一条验证命令；埋坏数据看谁拦住；把测试和标准答案设为 Agent 不能改。</dd></div>
+      <div class="f ex"><dt>你要能判断</dt><dd>对账是不是在比两个独立算出来的数；Agent 是在修模型，还是在改测试让自己通过。</dd></div>
+      <div class="f rerun"><dt>本节重跑任务组</dt><dd>每个任务都必须过验证命令；对比通过数、干预次数和耗时。</dd></div>
+      <div class="f take"><dt>带走</dt><dd>一条验证命令、受保护的测试文件、一张「哪种坏数据被哪道闸拦住」的覆盖表。</dd></div>
     </dl>
-    <details class="steps"><summary>本节 6 个步骤</summary><ol><li><b>LIVE</b> 先看终点：连投两遍行数不变 <span>10 分钟</span></li><li><b>CONCEPT</b> 接入清单 <span>8 分钟</span></li><li><b>LIVE</b> 写需求，让 AI 写接入脚本并逐段解释 <span>30 分钟</span></li><li><b>SCENARIO</b> 同一份文档进来两次 <span>25 分钟</span></li><li><b>LIVE</b> 修复并写回归测试 <span>27 分钟</span></li><li><b>PROJECT</b> 带走：接入脚本、测试和接入日志 <span>20 分钟</span></li></ol></details>
+    <details class="steps"><summary>本节 8 个步骤</summary><ol><li><b>LIVE</b> 先看终点：指标改错了，闸门拦下，Agent 自己改到对 <span>10 分钟</span></li><li><b>CONCEPT</b> 验证闸门清单 <span>8 分钟</span></li><li><b>LIVE</b> 搭闸门并串成一条验证命令 <span>25 分钟</span></li><li><b>LIVE</b> 要求 Agent 跑到全部通过才算完成 <span>20 分钟</span></li><li><b>SCENARIO</b> 检验闸门本身：埋坏数据，看谁拦住 <span>20 分钟</span></li><li><b>LIVE</b> 重跑任务组：加上闸门之后 <span>15 分钟</span></li><li><b>SCENARIO</b> 读两轮差异 <span>12 分钟</span></li><li><b>PROJECT</b> 带走：一条验证命令和一份闸门覆盖表 <span>10 分钟</span></li></ol></details>
   </article>
 
   <article class="lesson" id="L03">
-    <header class="lesson-h"><span class="code">L03</span><h3>让模型抽字段，并拿原文引用和人工样本卡住它</h3><span class="dur">120 分钟</span></header>
-    <p class="lesson-d">这节课 AI 有两个身份：它帮你搭抽取步骤，抽取步骤本身又是调用模型的管线部件。你负责卡住它：每个字段必须带原文引用，引用找不到就拒收，再拿手工核对的样本算每个字段的准确率。</p>
+    <header class="lesson-h"><span class="code">L03</span><h3>身份与边界：Agent 只读 prod、看不见 PII、合并要你批</h3><span class="dur">120 分钟</span></header>
+    <p class="lesson-d">这节课回答的是安全团队会问的问题：它用什么身份、能碰什么、谁批、记在哪、怎么停。然后你自己当红队去攻它。</p>
     <dl class="five">
-      <div class="f end"><dt>先看终点</dt><dd>一份发票抽出来的每个字段都带值、置信度和原文引用；引用在文档里找不到的字段被标红；旁边是和手工核对样本对比的字段准确率表。</dd></div>
-      <div class="f ai"><dt>AI 做</dt><dd>帮你搭抽取步骤的代码；抽取步骤本身用模型读文档、输出字段、置信度和原文引用。</dd></div>
-      <div class="f you"><dt>你做</dt><dd>定输出 schema；写引用校验；手工核对样本；按字段定接受阈值。</dd></div>
-      <div class="f ex"><dt>你要能讲清</dt><dd>置信度为什么不等于准确率；模型编出一个文档里没有的字段，你的校验在哪一层拦住它。</dd></div>
-      <div class="f take"><dt>带走</dt><dd>一个带引用校验的抽取步骤和一份按字段的准确率报告。</dd></div>
+      <div class="f end"><dt>先看终点</dt><dd>Agent 做一个「顺手清理」的任务，尝试写 prod、查原始客户表，都被挡下，审计记录里看得到它试了什么；再按一次停止开关。</dd></div>
+      <div class="f ai"><dt>AI 做</dt><dd>在受限身份下执行任务；在红队环节里被你攻击。</dd></div>
+      <div class="f you"><dt>你做</dt><dd>prod 只读挂载、只写 dev、脱敏视图、Agent 权限规则、PR 审批、审计表、停止开关；每一项用一次失败的尝试证明它生效。</dd></div>
+      <div class="f ex"><dt>你要能判断</dt><dd>哪一层挡住了哪次越界；审批让干预次数上升，这个代价值不值。</dd></div>
+      <div class="f rerun"><dt>本节重跑任务组</dt><dd>在新权限下重跑，看通过数有没有掉、干预次数怎么变。</dd></div>
+      <div class="f take"><dt>带走</dt><dd>权限和连接配置、脱敏视图、审计表、停止开关步骤、一份红队记录。</dd></div>
     </dl>
-    <details class="steps"><summary>本节 6 个步骤</summary><ol><li><b>LIVE</b> 先看终点：每个字段带原文引用 <span>10 分钟</span></li><li><b>CONCEPT</b> 抽取清单 <span>8 分钟</span></li><li><b>LIVE</b> 让 AI 搭抽取步骤，你审 schema 校验和重试逻辑 <span>30 分钟</span></li><li><b>SCENARIO</b> 模型编出文档里没有的字段，扫描件的 OCR 也会错 <span>25 分钟</span></li><li><b>LIVE</b> 在手工核对的样本上算每个字段的准确率 <span>27 分钟</span></li><li><b>PROJECT</b> 带走：抽取步骤、引用校验和准确率报告 <span>20 分钟</span></li></ol></details>
+    <details class="steps"><summary>本节 8 个步骤</summary><ol><li><b>LIVE</b> 先看终点：Agent 想写 prod、想读 PII，都被挡下并留痕 <span>10 分钟</span></li><li><b>CONCEPT</b> 身份与边界清单 <span>8 分钟</span></li><li><b>LIVE</b> 落实最小权限 <span>25 分钟</span></li><li><b>LIVE</b> 审批与审计 <span>15 分钟</span></li><li><b>SCENARIO</b> 红队：你来攻你自己的 Agent <span>22 分钟</span></li><li><b>LIVE</b> 停止开关演练 <span>10 分钟</span></li><li><b>LIVE</b> 重跑任务组：加上边界之后 <span>15 分钟</span></li><li><b>PROJECT</b> 带走：权限配置、审计表和红队记录 <span>15 分钟</span></li></ol></details>
   </article>
 
   <article class="lesson" id="L04">
-    <header class="lesson-h"><span class="code">L04</span><h3>进 mart 之前：质量闸门、PII、权限、血缘和可检索的切块</h3><span class="dur">120 分钟</span></header>
-    <p class="lesson-d">AI 帮你写质量闸门和切块代码；你定闸门放在哪、阈值多少，并亲手看一次 PII 怎么漏进检索结果。结束时你要能讲清每个 chunk 怎么追回原文，以及脱敏为什么必须在切块之前。</p>
+    <header class="lesson-h"><span class="code">L04</span><h3>闭环：异常告警触发 Agent 排查、开修复 PR、等你批准</h3><span class="dur">120 分钟</span></header>
+    <p class="lesson-d">不再由你开口：行数异常告警触发 Agent 沿血缘往上游查，开一个带证据的修复 PR，CI 跑完闸门和 AI 审查，最后停在你的批准上。</p>
     <dl class="five">
-      <div class="f end"><dt>先看终点</dt><dd>低置信度的行落进隔离表，mart 只有过闸的行；检索一个问题，命中的文本块带着文档、页码和抽取版本，一路能追回原件，手机号和邮箱已经被遮掉。</dd></div>
-      <div class="f ai"><dt>AI 做</dt><dd>写质量测试、脱敏和切块代码，写血缘查询。</dd></div>
-      <div class="f you"><dt>你做</dt><dd>定闸门位置和阈值；定脱敏顺序；设计列级权限视图；验收血缘。</dd></div>
-      <div class="f ex"><dt>你要能讲清</dt><dd>闸门为什么放在 staging 到 mart 之间；脱敏先于切块的原因；权限视图到你自己的数仓怎么落地。</dd></div>
-      <div class="f take"><dt>带走</dt><dd>一套质量闸门、一份脱敏加切块的流程和一条血缘查询。</dd></div>
+      <div class="f end"><dt>先看终点</dt><dd>上游一次变更让订单事实表行数异常，告警触发，Agent 定位到出问题的模型和列，开 PR 附证据，CI 全绿，等你批准。</dd></div>
+      <div class="f ai"><dt>AI 做</dt><dd>被告警触发后沿 dbt 血缘逐层排查、在 dev 修复、开 PR；在 CI 里审查每个 dbt 改动。</dd></div>
+      <div class="f you"><dt>你做</dt><dd>定异常基线和阈值；定 Agent 能做到哪一步、何时必须停下；审它的证据链能否复现；为三种翻车各加一道拦截。</dd></div>
+      <div class="f ex"><dt>你要能判断</dt><dd>「行数恢复了」是真的修好了，还是有数据被过滤掉了。</dd></div>
+      <div class="f rerun"><dt>本节重跑任务组</dt><dd>行数异常任务改由告警触发，其余 4 个照常重跑。</dd></div>
+      <div class="f take"><dt>带走</dt><dd>异常检测脚本、触发配置、排查与开 PR 的运行说明、CI 闸门与 AI 审查配置、三条拦截规则。</dd></div>
     </dl>
-    <details class="steps"><summary>本节 6 个步骤</summary><ol><li><b>LIVE</b> 先看终点：过闸、脱敏、追回原文 <span>10 分钟</span></li><li><b>CONCEPT</b> 治理清单 <span>8 分钟</span></li><li><b>LIVE</b> 写质量闸门并让 AI 补测试 <span>27 分钟</span></li><li><b>SCENARIO</b> PII 漏进检索切块 <span>25 分钟</span></li><li><b>LIVE</b> 带元数据的切块、列级权限视图和血缘查询 <span>30 分钟</span></li><li><b>PROJECT</b> 带走：质量闸门、脱敏切块流程和血缘查询 <span>20 分钟</span></li></ol></details>
+    <details class="steps"><summary>本节 8 个步骤</summary><ol><li><b>LIVE</b> 先看终点：告警到修复 PR，中间没人插手 <span>10 分钟</span></li><li><b>CONCEPT</b> 闭环清单 <span>7 分钟</span></li><li><b>LIVE</b> 把异常检测做成触发器 <span>25 分钟</span></li><li><b>LIVE</b> Agent 沿血缘排查并开修复 PR <span>25 分钟</span></li><li><b>LIVE</b> CI 里的 AI 审查与无人值守运行 <span>20 分钟</span></li><li><b>SCENARIO</b> 闭环会怎么坏 <span>13 分钟</span></li><li><b>LIVE</b> 重跑任务组：行数异常任务改走闭环 <span>10 分钟</span></li><li><b>PROJECT</b> 带走：从异常到 PR 的闭环 <span>10 分钟</span></li></ol></details>
   </article>
 
   <article class="lesson" id="L05">
-    <header class="lesson-h"><span class="code">L05</span><h3>跑起来并交付：dbt、轻量调度、重抽取和业务问题</h3><span class="dur">120 分钟</span></header>
-    <p class="lesson-d">AI 写 dbt 模型和调度脚本；你在换模型版本重新抽取时拦住它覆盖好数据，用 mart 答出一个业务问题，并记录前后耗时。结束时你要能讲清为什么选最简单的调度，以及什么时候该换成更重的。</p>
+    <header class="lesson-h"><span class="code">L05</span><h3>度量与推广：用自己测出来的数字写一页方案</h3><span class="dur">120 分钟</span></header>
+    <p class="lesson-d">把 LLMOps 用在你自己团队的 Agent 上：运行记录建模成面板，失败写成复盘改回上下文，最后一次重跑，再写一页给上级和安全团队的方案。</p>
     <dl class="five">
-      <div class="f end"><dt>先看终点</dt><dd>一条命令从原始文件夹跑到 mart，运行日志逐步可查；用 mart 答出「哪些发票金额超过对应合同约定的上限」。</dd></div>
-      <div class="f ai"><dt>AI 做</dt><dd>写 dbt 模型、调度脚本和运行手册草稿。</dd></div>
-      <div class="f you"><dt>你做</dt><dd>审 dbt 模型；设计重抽取的晋升规则；答业务问题；记录前后耗时。</dd></div>
-      <div class="f ex"><dt>你要能讲清</dt><dd>重抽取为什么不能覆盖旧值；调度为什么先选最简单的；什么信号说明该换更重的编排。</dd></div>
-      <div class="f take"><dt>带走</dt><dd>一个完整可重跑的仓库、一份运行手册和一页讲清楚的说明。</dd></div>
+      <div class="f end"><dt>先看终点</dt><dd>一块从运行记录建模出来的面板，和一页方案：做了什么、测出什么、样本多小、边界怎么守、下一步申请什么。</dd></div>
+      <div class="f ai"><dt>AI 做</dt><dd>导出运行记录，起草复盘和方案初稿。</dd></div>
+      <div class="f you"><dt>你做</dt><dd>把运行记录建成 dbt 模型和面板；写两份复盘并改回上下文或闸门；把整门课的做法映射到你团队的那条工作流；定稿方案。</dd></div>
+      <div class="f ex"><dt>你要能判断</dt><dd>5 个任务的数据能支持方案里的哪句话、不能支持哪句话。</dd></div>
+      <div class="f rerun"><dt>本节重跑任务组</dt><dd>最终一轮，并把基线到这一轮画成一条曲线，标出每次变化来自哪一节的改动。</dd></div>
+      <div class="f take"><dt>带走</dt><dd>度量面板、复盘记录、一页方案，数字全部来自你自己的运行记录。</dd></div>
     </dl>
-    <details class="steps"><summary>本节 6 个步骤</summary><ol><li><b>LIVE</b> 先看终点：一条命令到答案 <span>10 分钟</span></li><li><b>CONCEPT</b> 交付清单 <span>8 分钟</span></li><li><b>LIVE</b> 让 AI 写 dbt 模型，你审 <span>27 分钟</span></li><li><b>SCENARIO</b> 换模型版本重抽取，覆盖了好数据 <span>25 分钟</span></li><li><b>LIVE</b> 轻量调度、业务问题和前后耗时 <span>30 分钟</span></li><li><b>PROJECT</b> 带走：完整仓库、运行手册和讲清楚的一页 <span>20 分钟</span></li></ol></details>
+    <details class="steps"><summary>本节 7 个步骤</summary><ol><li><b>LIVE</b> 先看终点：一块度量面板和一页方案 <span>10 分钟</span></li><li><b>CONCEPT</b> 度量清单 <span>8 分钟</span></li><li><b>LIVE</b> 给 Agent 装仪表并建模运行记录 <span>22 分钟</span></li><li><b>SCENARIO</b> 复盘并写回上下文 <span>15 分钟</span></li><li><b>LIVE</b> 最终重跑任务组 <span>15 分钟</span></li><li><b>LIVE</b> 映射到你团队的那条工作流 <span>25 分钟</span></li><li><b>PROJECT</b> 带走：度量面板和一页方案 <span>25 分钟</span></li></ol></details>
   </article>
 </section>
 
 <section id="takeaway"><h2>带走清单</h2>
-<ul class="take"><li>三层 schema（DDL 加字段说明）和体量成本公式表</li><li>能重跑的接入脚本、去重测试集和接入日志</li><li>带引用校验的抽取步骤和按字段准确率报告</li><li>质量闸门、脱敏加切块流程和血缘查询</li><li>完整仓库、运行手册和一页讲清楚的说明</li></ul></section>
+<ul class="take">
+ <li><b>一个 Agent 能读懂的数据项目</b>：数据契约、指标定义、规则文件、验证命令和受保护的测试。</li>
+ <li><b>一组带标准答案的任务</b>：5 条意图、5 个验收脚本、从基线到最后一轮的全部运行记录。</li>
+ <li><b>一套边界配置</b>：prod 只读、只写 dev、脱敏视图、审批、审计表、停止开关和红队记录。</li>
+ <li><b>一条从异常到 PR 的闭环</b>：异常检测、触发、排查、修复 PR、CI 闸门和 AI 审查。</li>
+ <li><b>一块度量面板</b>：成功率、干预率、每任务耗时和成本，从你自己的运行记录建模。</li>
+ <li><b>一页方案</b>：写给上级和安全团队，数字来自你自己测的结果，写明样本大小和局限。</li>
+</ul></section>
 
 <section id="quiz"><h2>前置要求与 5 题自测</h2>
-<p class="lead">前置：基础 SQL、Python、dbt 和一个数仓的使用经验。回答「是」或「否」。</p>
-<ol class="quiz"><li>不借助 AI，你能写出带窗口函数的 SQL（比如每个供应商取最新一张发票）吗？<span>是 / 否</span></li><li>你写过 dbt model，并跑过 dbt test 吗？<span>是 / 否</span></li><li>你能读懂 Python 的 traceback，并写脚本读写文件、处理 JSON 吗？<span>是 / 否</span></li><li>你在某个数仓（Snowflake、BigQuery、Redshift、Postgres 等）里建过表并加载过数据吗？<span>是 / 否</span></li><li>你能说出「幂等」的意思，并举一个不幂等的 ETL 步骤吗？<span>是 / 否</span></li></ol>
-<p class="route">前四题有任何一个答「否」，先补那一项，或等项目班开班。第五题答「否」，课前花一小时读一下幂等的资料再来。五题全是「是」，高级班适合你。</p></section>
+<p class="lead">需要能登录自己的 Claude Code，不需要云账号。报名前请如实回答：</p>
+<ol class="quiz">
+ <li>不借助 AI，你能写出带窗口函数的 SQL（比如每个客户取第一笔订单）吗？<span>是 / 否</span></li>
+ <li>你写过 dbt model，并跑过 dbt test 吗？<span>是 / 否</span></li>
+ <li>你能读懂 Python 的 traceback，并改一个读写文件的脚本吗？<span>是 / 否</span></li>
+ <li>你在某个数仓里建过表、加载过数据，并用 Git 分支提过 Pull Request 吗？<span>是 / 否</span></li>
+ <li>你能说出你团队里一条重复做的数据工作，以及它做完了怎么检查吗？<span>是 / 否</span></li>
+</ol>
+<div class="route">前四题任何一题是「否」：先上同系列的项目班，那里从数据工程的基本动作做起。第五题是「否」：可以报，L00 多花点时间想清楚要改造哪条工作流。五题全是「是」：这门课是为你设计的。</div>
+</section>
 
 <section id="nopromise"><h2>我们不承诺什么</h2>
-<ul class="no-list"><li>不承诺工作、晋升、薪资或签证结果。</li><li>不承诺 AI 的输出永远正确，这门课就是教你怎么发现它错了。</li><li>不承诺节省多少时间或成本，耗时由你在课上自己实测。</li><li>不使用真实公司文档，也不教你绕过任何数据权限。</li></ul></section>
+<ul class="no-list">
+ <li>不承诺任何成功率、节省的时间或成本。所有数字都由你在课上自己测出来，样本只有 5 个任务。</li>
+ <li>不承诺工作、薪资、升职、签证或收入。</li>
+ <li>不承诺你的公司会批准你的方案；我们只保证方案里的数字是你自己测的。</li>
+ <li>不承诺用的是你公司的真实环境：课上用的是合成数仓，迁到你的数仓需要你自己按 L05 的映射去做。</li>
+</ul></section>
 
 <section id="price"><h2>价格与开班</h2>
-<div class="price"><div class="amt">$599<small> 含 GST</small></div><ul><li>满 15 人开班，不满不开。</li><li>同一时间只开一个班。</li><li>开班日期：待定，满足人数后公布。</li><li>报名入口待开通。</li></ul></div></section>
+<div class="price">
+ <div class="amt">$599 <small>含 GST</small></div>
+ <ul>
+  <li>10.5 小时：课前准备 30 分钟 + 5 节 2 小时直播</li>
+  <li>Lightman 本人授课，满 15 人开班，同一时间只开一个班</li>
+  <li>报名入口待开通，开班日期随报名入口一起公布</li>
+ </ul>
+</div></section>
 
 <section id="faq"><h2>FAQ</h2>
-<details><summary>模型调用费用谁出？</summary><p>这一项还没定。方案是课上以预先抽好的结果为主，只有少量现场样本需要真实调用，由谁付费、用谁的账号，会在开班前写进报名页。确定之前我们不替你做决定。</p></details>
-<details><summary>为什么是 PDF 和邮件，不是视频和爬虫？</summary><p>我们抽样读了 43 条澳洲数据工程招聘广告，没有一条要求视频或爬虫；其中 6 条提到 AI 编码助手，3 条提到数据质量或 AI 治理，文档抽取只出现在 AI Engineer 广告里。所以第三课的抽取是拓展，不是说岗位都要求。样本小、关键词偏，只能当参考，不代表整个市场。</p></details>
-<details><summary>为什么不用 Spark 和 Airflow？</summary><p>课上调度只用 Makefile 加定时任务，够用就不加重。我们没有在抽样的初级广告里看到 Airflow 或 Spark 的要求，中高级广告没有统计，所以不拿它们当课程主线。你的团队用什么编排，课上会讲怎么把同样的步骤搬过去。</p></details>
-<details><summary>用真实公司文档吗？</summary><p>不用。所有发票、合同和邮件都是合成的，PII 也是合成的，可以放心在自己电脑上跑。</p></details>
-<details><summary>需要云账号吗？</summary><p>不需要。课上在本地用 DuckDB 跑。你自己数仓里的权限和调度，课上只讲怎么对应，不在课上操作。</p></details>
-<details><summary>课后能保证什么？</summary><p>不保证工作、薪资或面试结果。你能带走的是一个能跑的仓库，和对它每一步的解释。</p></details>
+<details><summary>和项目班有什么区别？</summary><p>项目班给还没有数据工程基本功的人，带你和 AI 一起做出一条管线。高级班假设你已经会做，要解决的是另一件事：把团队已有的数据工作交给 Agent，守住边界，并用数字证明它可靠。两门课同价，内容不重叠。</p></details>
+<details><summary>需要自己的 Claude Code 吗？费用谁出？</summary><p>需要，Agent 用的是你自己的 Claude Code。每节课重跑任务组会消耗订阅额度，具体需要哪一档订阅、费用怎么安排，会在报名入口开通时写明。</p></details>
+<details><summary>企业真的在要这个吗？</summary><p>我们读过一小批澳洲 Seek 上的数据工程招聘广告，其中已经有这样的写法：「Practical experience using Claude Code and AI tooling to accelerate data engineering workflows.」也有「Interest in applied AI over business data — connecting language models to governed datasets.」但样本小，而且不少中高级广告完全没提 AI，所以我们不说「岗位都要求」。用任务组测成功率的方法是本课自己的设计。</p></details>
+<details><summary>我们公司用 Snowflake、BigQuery 或 Databricks，学了能用吗？</summary><p>课上用本地 DuckDB 和 dbt，是为了每个人环境一致、不需要云账号。五件事（意图、上下文、验证、边界、度量）不依赖某个数仓；L03 会讲清只读挂载和脱敏视图在真实数仓里对应什么机制，L05 你会把做法映射到自己的环境。</p></details>
+<details><summary>不满 15 人或想退款怎么办？</summary><p>不满 15 人不开班。具体的退款和不开班处理方式，会和报名入口一起公布。</p></details>
 </section>
+
 </main>
-<footer class="foot">AI 数据工程实战课 · 高级班 · 预览页，内容以最终开班公告为准。</footer>
+<footer class="foot">AI 数据工程实战课 · 高级班 · JR Academy 匠人学院</footer>
 </body>
 </html>

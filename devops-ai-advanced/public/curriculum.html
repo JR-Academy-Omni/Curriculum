@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI DevOps 实战课 · 高级班：给团队搭一套 AI 工具箱</title>
-<meta name="description" content="给在职 DevOps / SRE / 平台工程师的 10 小时直播带做课：把 AI agent 当成团队成员来管，给它身份、权限和审计记录。课后带走团队插件仓库、两条 GitHub Actions 工作流和一页给安全团队的方案。$599 含 GST。">
+<title>AI DevOps 实战课 · 高级班</title>
+<meta name="description" content="给在职 DevOps / SRE / 平台工程师的 10 小时直播带做课：把团队的基础设施变更与排障流程交给 agent 执行，每节课重跑同一组任务，用你自己测出的成功率和介入率写一页给老板和安全团队的方案。$599 含 GST。">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 </head>
@@ -13,53 +13,52 @@
 
 <header class="header">
   <div class="series">AI DevOps 实战课 · 高级班</div>
-  <h1>AI DevOps 实战课 · 高级班：给团队搭一套 AI 工具箱</h1>
-  <p class="sub">如果你的团队里已经有人在用 AI 写 Terraform、排障，这门课教你把 AI agent 当成一个团队成员来管：给它身份、权限和审计记录，让它能干活，也能被查、被拦、被停掉。</p>
+  <h1>把团队的 DevOps 活交给 agent，<br>用你自己测的数说话</h1>
+  <p class="sub">老板要 AI 提效，安全团队不放心。AI 有时一次就把活干漂亮，有时把东西搞坏，团队里没人说得清它到底靠不靠谱。这门课用 10 小时，把你们的一条基础设施变更与排障流程交给 agent 执行，你管住它周围的五件事，每节课重跑同一组真实任务，成功率和人工介入率由你当场测出来。</p>
   <div class="chips">
     <span class="chip y">10 小时直播带做</span>
     <span class="chip g">$599 含 GST</span>
-    <span class="chip">适合谁：已有 AWS、Terraform、CI/CD 基础的在职 DevOps / SRE</span>
+    <span class="chip">给在职 DevOps / SRE / 平台工程师</span>
   </div>
+  <p class="hero-take">你带回公司的：一个团队 agent 套件仓库、一组带验收脚本的任务、两条闭环工作流、一块指标看板，和一页数字全部来自你自己实测的方案。</p>
 </header>
 
 <section class="sec">
   <span class="kicker">这门课和 AI 的关系</span>
-  <h2>AI 干活，你来管它，并且要能向别人讲清楚</h2>
-  <p class="lead">这不是教你怎么写提示词。每节课都分成三块：哪些部分交给 AI，哪些只有你能做，以及做完之后你必须能讲清什么。</p>
-  <div class="ai-split">
-    <div class="ai-col">
-      <div class="who">AI 做</div>
-      <h3>查、写初稿、并行排查、值守</h3>
-      <ul>
-        <li>通过 MCP 查 AWS、GitHub、Slack，回答「现在生产环境有什么不正常」</li>
-        <li>按团队 skill 审 Terraform PR，写事故复盘</li>
-        <li>三个 subagent 并行排查故障</li>
-        <li>在 GitHub Actions 和定时任务里无人值守：审 PR、诊断 CI、每天巡检、告警初查</li>
-      </ul>
-    </div>
-    <div class="ai-col">
-      <div class="who">你做</div>
-      <h3>给身份、定规矩、划权限、核对、写方案</h3>
-      <ul>
-        <li>建只读 IAM 角色，决定它用谁的身份、能碰什么</li>
-        <li>把团队做法写成 skill，用 hooks 在命令执行前拦截并记日志</li>
-        <li>定每个 agent 的职责和工具，验收它们的结论</li>
-        <li>决定谁触发、谁兜底、单次运行花多少封顶，写给安全团队的方案</li>
-      </ul>
-    </div>
-    <div class="ai-col">
-      <div class="who">你要能讲清</div>
-      <h3>身份、依据、记录、兜底</h3>
-      <ul>
-        <li>这个 AI 现在用的是谁的身份，能读什么，不能改什么</li>
-        <li>它凭什么得出这个结论，你怎么核对的</li>
-        <li>它做过的每一步留了什么记录，花费怎么封顶</li>
-        <li>它凌晨三点出错时，谁会先知道，怎么停掉它</li>
-      </ul>
-    </div>
+  <h2>AI-native 不是边干活边用 AI，是把活重做成 agent 来干</h2>
+  <p class="lead">cloud-native 不是把虚拟机搬上云；AI-native 也不是在 IDE 里多开一个聊天窗口。它是把工作重新设计成由 agent 执行，你负责 agent 周围的五件事。这门课每一节都在补其中一件，然后用数据看它有没有用。</p>
+  <div class="five">
+    <div class="f"><div class="fk">意图</div><h3>写要什么，和怎么算完成</h3><p>任务写成结果加验收检查，不手写实现。说不清怎么验收的任务，先别交出去。</p></div>
+    <div class="f"><div class="fk">上下文</div><h3>没写下来的，对 agent 不存在</h3><p>团队约定、架构、runbook 写成它读得到的规则文件和 skill。每次失败都可能是一条该写下来的知识。</p></div>
+    <div class="f"><div class="fk">验证</div><h3>生成便宜，确认对不对才贵</h3><p>测试、plan 断言、策略检查是闸门，agent 必须一直改到通过，而且改不动闸门本身。</p></div>
+    <div class="f"><div class="fk">身份与边界</div><h3>它是一个有权限的身份</h3><p>独立 IAM 角色、默认只读、改动只走 PR、人工批准、CloudTrail 可查、一键停掉。</p></div>
+    <div class="f"><div class="fk">度量</div><h3>用数说话</h3><p>成功率、介入率、每任务用量和用时。每次失败写成复盘，写回上下文。</p></div>
   </div>
-  <div class="principle"><strong>一句话：</strong>AI-native DevOps，就是把 agent 当成团队成员，给它身份、权限和审计记录。五节课各回答一个管理问题：L01 工具与身份，L02 上下文与护栏，L03 委派，L04 自主，L05 可观测与治理。<br><span style="opacity:.8">这是本课作者自己的提法，不是行业标准术语。</span></div>
-  <p class="note">招聘信息里的对应：我们看了 29 份澳洲基础设施类岗位，其中 19 份提到 AI，最常见的是在日常工作里用 AI 编码助手或 agent（8 份）、MLOps / LLMOps（6 份）、Amazon Bedrock（5 份）、MCP（3 份）、AI 安全与治理（2 份）。样本很小，按关键词搜出，偏向提到 AI 的岗位，不代表整个市场；每份岗位的核心仍然是 AWS、Terraform、Kubernetes、CI/CD 和可观测。例如 Allianz 的 Senior AI DevOps Engineer 写的是「integrating AI/LLM tooling into DevOps workflows (e.g., MCP servers, AI-assisted pipelines)」。本课教的是怎么安全地做到这些，不是说有岗位要求你会 hooks。</p>
+  <div class="principle"><strong>说明：</strong>这五件事的划分是本课作者自己的归纳，不是行业标准术语。工具（MCP、skills、hooks、云端 agent、OpenTelemetry、Langfuse）只在能提高你的成功率或守住边界时出现，这门课不带你逛工具。</div>
+
+  <div class="curve">
+    <div class="curve-text">
+      <h3>课上的高光时刻，是你自己的曲线</h3>
+      <p>同一组 5 个任务、同一套验收脚本：第一节跑出基线，之后每节改完一样东西就重跑。你会看到哪一处改动让哪个任务开始通过，也会看到哪些任务怎么改都过不了。</p>
+      <p class="muted">页面上没有任何成功率或省时数字。老师课前会用同一组任务实跑一遍，结果在第一节课上展示；你的数字只来自你自己的运行。</p>
+    </div>
+    <svg class="curve-svg" viewBox="0 0 420 220" role="img" aria-label="空白坐标：横轴是每一次重跑，纵轴是成功率和介入率，由学员自己的数据填上">
+      <line x1="48" y1="20" x2="48" y2="180" stroke="#10162f" stroke-width="3"/>
+      <line x1="48" y1="180" x2="404" y2="180" stroke="#10162f" stroke-width="3"/>
+      <g fill="#6D5BD0">
+        <circle cx="70" cy="180" r="6"/><circle cx="135" cy="180" r="6"/><circle cx="200" cy="180" r="6"/>
+        <circle cx="265" cy="180" r="6"/><circle cx="330" cy="180" r="6"/><circle cx="395" cy="180" r="6"/>
+      </g>
+      <g font-family="Noto Sans SC, sans-serif" font-size="12" fill="#10162f" text-anchor="middle">
+        <text x="70" y="202">基线</text><text x="135" y="202">L01</text><text x="200" y="202">L02</text>
+        <text x="265" y="202">L03</text><text x="330" y="202">L04</text><text x="395" y="202">L05</text>
+      </g>
+      <text x="40" y="100" font-family="Noto Sans SC, sans-serif" font-size="12" fill="#10162f" text-anchor="middle" transform="rotate(-90 40 100)">成功率 · 介入率</text>
+      <text x="226" y="96" font-family="Noto Sans SC, sans-serif" font-size="15" font-weight="700" fill="#6D5BD0" text-anchor="middle">这条线由你自己的数据画</text>
+    </svg>
+  </div>
+
+  <p class="note">招聘信息里的对应：我们抽看了 29 份澳洲 Seek 上的 DevOps / SRE / 平台类岗位，19 份提到 AI，最常见的是在日常工作里用 AI 编码助手或 agent。Allianz 的 Senior AI DevOps Engineer 写的是「AI-driven IaC generation, automated code/security review」，Culture Amp 写的是「Partner with AI coding agents as part of your day-to-day workflow」。样本很小，按关键词搜出，偏向提到 AI 的岗位，不代表整个市场；每份岗位的核心仍是 AWS、Terraform、Kubernetes、CI/CD 和可观测。用任务组测成功率是本课自己的方法，不是岗位要求。</p>
 </section>
 
 <section class="sec">
@@ -69,94 +68,104 @@
     <div class="yes">
       <h3>适合</h3>
       <ul>
-        <li>在职 DevOps / SRE / 平台工程师，日常在写 Terraform、改 GitHub Actions、看 CloudWatch</li>
-        <li>团队已经在零散地用 AI，想把它管起来，而不是各人各用各的</li>
-        <li>需要向老板或安全团队交代「AI 能碰什么、出事能不能查」的人</li>
+        <li>在职 DevOps / SRE / 平台工程师，日常写 Terraform、改 GitHub Actions、看 CloudWatch</li>
+        <li>老板在问"AI 能帮团队省多少"，你需要一个答得上来的办法，而不是一句感觉</li>
+        <li>要向安全团队说清 AI 能碰什么、谁批准、出事能不能查、怎么停的人</li>
+        <li>团队里已经有人零散地用 AI，结果时好时坏，想把它变成一条有检查、有记录的流程</li>
       </ul>
     </div>
     <div class="no">
       <h3>不适合</h3>
       <ul>
-        <li>没有 Terraform、AWS 或 CI 基础的人：请先上项目班</li>
-        <li>想转去做 AI Engineer：这里不写 AI 应用，也不部署模型</li>
-        <li>想要的是学会写提示词：这门课的重点是权限、拦截、审计和兜底</li>
+        <li>没有 Terraform、AWS 或 CI 基础的人：请先上同系列的项目班</li>
+        <li>想转去做 AI Engineer：这里不写 AI 应用、不做 RAG、不部署模型</li>
+        <li>想学提示词技巧或想看工具大全：这门课只用能提高成功率、守住边界的那几样</li>
       </ul>
     </div>
   </div>
 </section>
 
 <section class="sec">
-  <span class="kicker">你会做出什么</span>
-  <h2>一个能带回公司、同事能用一条命令装上的团队插件</h2>
-  <p class="lead">全课围绕一个已经部署在你自己 AWS 沙箱里的订单系统（前端、API、Postgres）。应用代码不用你改，它只是被运维的对象。五节课每节给团队插件加一块：</p>
-  <div class="card theme">
-    <p><strong>L01</strong> 加上 MCP 配置和只读身份，让 AI 能看见基础设施。<strong>L02</strong> 加上 3 个 skill 和 hooks 规则，规矩写进去，危险命令被拦、被记录。<strong>L03</strong> 加上 3 个分工明确的 agent。<strong>L04</strong> 在仓库里加上两条 GitHub Actions 工作流和定时任务，让 agent 不开电脑也在跑。<strong>L05</strong> 把前面所有东西打包成一个插件，接上可观测，走 AWS Bedrock，写成给安全团队的一页方案。</p>
-    <p>整套环境里 AWS 用 ECS，不涉及 GPU，也不需要你自己部署任何模型。</p>
+  <span class="kicker">你会搭出什么</span>
+  <h2>一条交给 agent 执行、由你掌控的团队流程</h2>
+  <p class="lead">每位学员一个预置的 AWS 沙箱，里面已经跑着一个小型订单系统，连同它的 Terraform 和 GitHub Actions 仓库。agent 就是你自己的 Claude Code。全课只改造一条流程：基础设施变更与排障。</p>
+  <div class="tasks">
+    <div class="t"><span class="tk">任务一</span><p>新建一个 S3 存储桶：不能公开，必须带成本标签</p></div>
+    <div class="t"><span class="tk">任务二</span><p>扩容订单 API，过程中健康检查不能掉</p></div>
+    <div class="t"><span class="tk">任务三</span><p>修好一次跑红的 CI，不准跳过测试</p></div>
+    <div class="t"><span class="tk">任务四</span><p>调查注入的 5xx 故障，提修复 PR</p></div>
+    <div class="t"><span class="tk">任务五</span><p>无停机轮换数据库密码</p></div>
   </div>
+  <p class="lead small">每个任务配一个验收脚本，退出码为 0 才算通过。比如任务一会读 plan JSON 检查公开访问和标签，部署后再用 AWS CLI 读回来核对；任务三会查 diff 里有没有删测试或加跳过标记。</p>
 </section>
 
 <section class="sec">
   <span class="kicker">每节课</span>
-  <h2>五节直播，每节 2 小时，最多 10 分钟概念，其余动手</h2>
-  <p class="lead">每节课第一件事是先看终点：老师演示这一节做完的东西怎么跑。最后一件事是带走：你交出一样能放进团队插件仓库的东西。</p>
+  <h2>五节直播，每节 2 小时，至少 100 分钟动手</h2>
+  <p class="lead">每节课第一件事是先看终点：老师演示这一节做完的东西怎么跑。概念每次不超过 10 分钟，写成当场就用的清单。每节都重跑一次任务组：它在后台跑，你接着动手，跑完的结果当场对比，没跑完的课后自动跑完、下节课一起读。最后交出一样能放进团队仓库的东西。</p>
 
   <div class="prep">
-    <h3><span class="code">L00</span>课前准备：拿到沙箱，一条命令部署订单系统</h3>
-    <p>30 分钟，不占直播时间，开课前 24 小时完成。装好 Claude Code、Terraform、AWS CLI 和 Docker，拿到沙箱账号，一条命令把订单系统部署进去，截图贴到课程群，通过检查才算准备完成。卡住的同学开课前单独约时间处理（具体安排开班前公布）。</p>
+    <h3><span class="code">L00</span>课前准备：拿到沙箱，部署订单系统，确认 agent 能无人值守跑任务</h3>
+    <p>30 分钟，不占直播时间。装好 Claude Code、Terraform、AWS CLI、Docker 和 GitHub CLI，拿到沙箱账号，一条命令部署订单系统，再让 Claude Code 无人值守地跑通一个演示任务，把检查结果贴到课程群。卡住的同学开课前单独约时间处理。</p>
   </div>
 
   <article class="lesson">
-    <div class="lesson-head"><span class="code">L01</span><h3>工具与身份：给 AI 一个只读身份，让它看见你的基础设施</h3><span class="theme-tag">管理问题：工具与身份</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-head"><span class="code">L01</span><h3>意图与上下文：把任务写成要什么和怎么验收，跑出你的基线</h3><span class="dur">120 分钟</span></div>
     <div class="lesson-grid">
-      <div class="cell start wide"><h5>先看终点</h5><p>老师对 AI 说「现在生产环境有什么不正常」，AI 通过 MCP 查完直接回答；再当场让它去改一个资源，被只读身份挡了回来。</p></div>
-      <div class="cell"><h5>AI 做</h5><p>通过 MCP 查 AWS、GitHub、Slack，回答生产环境现状，并帮你写一个最小的 MCP server，把订单系统的部署状态查询包成工具。</p></div>
-      <div class="cell"><h5>你做</h5><p>建只读 IAM 角色，按最小权限发放 GitHub 和 Slack 凭证，读它写的 MCP 代码，再用控制台逐条核对它的回答。</p></div>
-      <div class="cell"><h5>你要能讲清</h5><p>这个 AI 用的是谁的身份，能读什么、不能改什么；它的回答哪里可能错，比如只查了一个区域，或者把「没查到」当成「没问题」。</p></div>
-      <div class="cell end"><h5>带走</h5><p>团队插件的 MCP 配置、只读 IAM 角色的 Terraform 和自写的 MCP server。</p></div>
+      <div class="cell start wide"><h5>先看终点</h5><p>老师打开自己课前跑的记录：同一组任务从基线一路重跑到最后一节，每次失败记了什么，改了哪一样东西之后哪个任务开始通过。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>先拿团队平时那样写的原始工单，无人值守地跑完 5 个任务，得到基线；再按你写的意图和上下文包重跑一遍。</p></div>
+      <div class="cell"><h5>你做</h5><p>把 5 张原始工单改写成意图加验收，给一个验收脚本补一条断言；把团队约定、架构说明、部署与回滚 runbook 写成 CLAUDE.md、规则文件和 skill；给每次失败归类。</p></div>
+      <div class="cell"><h5>你要能判断</h5><p>一次失败是意图没写清、缺上下文、没有验证、越权，还是环境问题；验收脚本会不会被"结果对、做法错"骗过。</p></div>
+      <div class="cell rerun"><h5>本节重跑任务组</h5><p>基线一开课就在后台跑；改完意图和上下文包后再跑一遍，逐个任务对比：哪个变了，能不能对应到你写下的某一条。</p></div>
+      <div class="cell end wide"><h5>带走</h5><p>5 份任务意图、团队上下文包、基线和第一次重跑的运行记录与失败归类。</p></div>
     </div>
   </article>
 
   <article class="lesson">
-    <div class="lesson-head"><span class="code">L02</span><h3>上下文与护栏：把团队规矩交给 AI，并用 hooks 拦住它</h3><span class="theme-tag">管理问题：上下文与护栏</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-head"><span class="code">L02</span><h3>验证：搭起验收闸门，让 agent 一直改到通过</h3><span class="dur">120 分钟</span></div>
     <div class="lesson-grid">
-      <div class="cell start wide"><h5>先看终点</h5><p>老师对 AI 说「把生产环境的订单数据库删掉」。hook 在命令执行前拦下，审计日志里多出一行：谁、什么时间、想执行什么、为什么被拦。</p></div>
-      <div class="cell"><h5>AI 做</h5><p>按你写的 skill 审一个故意埋了过宽权限和公网数据库的 Terraform PR，写故障复盘。没有 hook 的地方，它会尽力完成你交代的任何事。</p></div>
-      <div class="cell"><h5>你做</h5><p>把团队做法写成 3 个 skill，写 hooks 拦截 terraform apply、kubectl delete 和读取生产密钥，最后扮红队，想办法绕过自己写的 hook。</p></div>
-      <div class="cell"><h5>你要能讲清</h5><p>哪些规矩写成 skill 只是建议，哪些必须写成 hook 才算硬性拦截；你的 hook 拦不住什么，这些写进方案里当作已知风险。</p></div>
-      <div class="cell end"><h5>带走</h5><p>3 个 skill、hooks 规则和审计日志格式，其中的故障复盘 skill 就是你的事故复盘模板。</p></div>
+      <div class="cell start wide"><h5>先看终点</h5><p>同一个任务跑两次：没有闸门时，agent 交了一个带 0.0.0.0/0 入站规则的改动并说完成；有闸门时，它被拦下，读报错自己改，直到通过才报完成。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>改 Terraform 和代码，读闸门的报错自己修，循环到检查全部通过。</p></div>
+      <div class="cell"><h5>你做</h5><p>搭四道闸：fmt 与 validate、plan JSON 断言（无公网入站、无公开存储桶、必须带标签）、policy-as-code、CI；再用 CODEOWNERS 和分支保护让 agent 改不动闸门。</p></div>
+      <div class="cell"><h5>你要能判断</h5><p>闸门挡住了哪类风险、漏了哪类；agent 让检查变绿，是修对了，还是删了测试、放宽了策略。</p></div>
+      <div class="cell rerun"><h5>本节重跑任务组</h5><p>带上闸门重跑：哪些任务从失败变成通过，哪些多跑了几轮才过，有没有任务因为闸门变严反而失败。</p></div>
+      <div class="cell end wide"><h5>带走</h5><p>make verify 入口、plan 断言、策略文件、CI 检查工作流和防止 agent 修改闸门的仓库保护设置。</p></div>
     </div>
   </article>
 
   <article class="lesson">
-    <div class="lesson-head"><span class="code">L03</span><h3>委派：让几个 AI 分工排障，你来验收结论</h3><span class="theme-tag">管理问题：委派</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-head"><span class="code">L03</span><h3>身份与边界：agent 是一个有最小权限、审批、审计和停止开关的身份</h3><span class="dur">120 分钟</span></div>
     <div class="lesson-grid">
-      <div class="cell start wide"><h5>先看终点</h5><p>在注入了故障的订单系统上，审查、排障、成本三个 agent 并行工作，汇总出一份带证据的根因报告；同时看其中一个 agent 是怎么被表面现象带偏的。</p></div>
-      <div class="cell"><h5>AI 做</h5><p>三个 subagent 各管一摊并行排查：数据库连接被占满、API 大量报 500；成本 agent 去找一笔没人用的高价资源。</p></div>
-      <div class="cell"><h5>你做</h5><p>给每个 agent 写清职责和只读工具，把它们串成一个排障流程，然后对比结论，判断哪个对、哪个被报错最多的服务带偏。</p></div>
-      <div class="cell"><h5>你要能讲清</h5><p>为什么这样拆，每个 agent 为什么只给这些权限，以及你凭什么相信最后那个根因。</p></div>
-      <div class="cell end"><h5>带走</h5><p>3 个 agent 的定义文件、排障流程和一次完整的排查记录。</p></div>
+      <div class="cell start wide"><h5>先看终点</h5><p>让 agent 直接改沙箱，CloudTrail 里出现它的角色收到的 AccessDenied，它转去提 PR；老师执行 kill switch，它当前会话的凭证马上失效。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>用自己的只读角色调查，所有改动只能推分支、提 PR，由 CI 部署角色在人工批准后执行。</p></div>
+      <div class="cell"><h5>你做</h5><p>用 Terraform 建 agent 的 IAM 角色；设 GitHub environment 人工批准；写 CloudTrail 审计查询和 kill switch 脚本；用 hooks 拦危险命令；在日志和 PR 评论里埋指令当一次红队。</p></div>
+      <div class="cell"><h5>你要能判断</h5><p>一个动作是被 IAM 挡住，还是只被 hook 挡住（hook 只是便利，不是边界）；出事时能不能还原它做过的每一步，多快能停掉它。</p></div>
+      <div class="cell rerun"><h5>本节重跑任务组</h5><p>换成 agent 自己的身份重跑，写操作走 PR 和批准。批准单独计数，不算介入；看收紧权限后哪些任务受了影响。</p></div>
+      <div class="cell end wide"><h5>带走</h5><p>agent 角色的 Terraform、审批与分支保护配置、审计查询、kill switch、hooks 规则、红队记录和一页 agent 身份说明。</p></div>
     </div>
   </article>
 
   <article class="lesson">
-    <div class="lesson-head"><span class="code">L04</span><h3>自主：不开电脑也在干活，谁触发、用什么身份、谁兜底</h3><span class="theme-tag">管理问题：自主</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-head"><span class="code">L04</span><h3>闭环：告警和 CI 失败自动叫醒 agent，调查、提修复、等你批准</h3><span class="dur">120 分钟</span></div>
     <div class="lesson-grid">
-      <div class="cell start wide"><h5>先看终点</h5><p>老师推一个会让 CI 失败的提交，然后不碰电脑：agent 在 GitHub Actions 里给出诊断、提出修复 PR，并把结果发到 Slack。</p></div>
-      <div class="cell"><h5>AI 做</h5><p>无人值守地审 PR、诊断 CI 失败、每天早上巡检 AWS 账号、每周出成本报告，告警一响先做一轮根因初查再通知人。</p></div>
-      <div class="cell"><h5>你做</h5><p>决定每个自动化由谁触发、用什么身份访问 AWS（用 OIDC，不存长期密钥）、能做什么，设计失败通知和单次运行的成本上限，最后故意弄坏一处，看有没有人收到通知。</p></div>
-      <div class="cell"><h5>你要能讲清</h5><p>这个 agent 凌晨三点出错或乱来时，谁会先知道，能查到什么，怎么停掉它；它提的修复 PR 是真的修了问题，还是改了测试让 CI 变绿。</p></div>
-      <div class="cell end"><h5>带走</h5><p>PR 审查和 CI 失败诊断两条 GitHub Actions 工作流，每日巡检和告警初查两套模板，以及权限设计。</p></div>
+      <div class="cell start wide"><h5>先看终点</h5><p>注入一次 5xx：CloudWatch 告警触发 GitHub Actions 里的 agent，它只读调查、写出调查记录、提修复 PR，检查通过后停下来等人。老师全程只点了一次批准。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>被告警或 CI 失败触发，无人值守地调查、提修复 PR、跑检查；定时巡检漂移、缺标签和公网暴露，发现问题开 issue。</p></div>
+      <div class="cell"><h5>你做</h5><p>搭 CI 失败诊断和告警调查两条工作流，加一个定时巡检；定触发方式、运行身份、轮次和花费上限、失败通知和停止方式；故意弄坏一次，看有没有人知道。</p></div>
+      <div class="cell"><h5>你要能判断</h5><p>它的修复 PR 修的是根因还是症状；夜里没人看着时它失败了，谁会知道，怎么停。</p></div>
+      <div class="cell rerun"><h5>本节重跑任务组</h5><p>修红 CI 和调查 5xx 两个任务改由事件触发、无人值守完成，看没人在场时结果有没有变。</p></div>
+      <div class="cell end wide"><h5>带走</h5><p>CI 失败诊断、告警调查、定时巡检三条工作流，以及它们的触发、身份、上限、通知和停止设置。</p></div>
     </div>
   </article>
 
   <article class="lesson">
-    <div class="lesson-head"><span class="code">L05</span><h3>可观测与治理：做成团队插件，看清 AI 花了什么，在公司里落地</h3><span class="theme-tag">管理问题：可观测与治理</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-head"><span class="code">L05</span><h3>度量与推广：给自己团队的 agent 装上仪表，用实测数字写方案</h3><span class="dur">120 分钟</span></div>
     <div class="lesson-grid">
-      <div class="cell start wide"><h5>先看终点</h5><p>在一台干净的环境里，一条命令装上整个团队插件，跑一次任务，然后打开 Langfuse，看到这次调用的链路、token 和成本。</p></div>
-      <div class="cell"><h5>AI 做</h5><p>打包进插件的整套 agent 走 AWS Bedrock 干活；它的调用链、token 和成本被 OpenTelemetry 和 Langfuse 记录下来。</p></div>
-      <div class="cell"><h5>你做</h5><p>打包插件，检查没带进任何人的本地凭证，配 Bedrock（选用澳洲区域的推理配置并核对数据流向），接上可观测并配成本告警，写一页给安全团队的方案。</p></div>
-      <div class="cell"><h5>你要能讲清</h5><p>AI 能做什么、不能做什么、留了什么记录、花费怎么封顶，以及提示词里的数据存在哪里、谁能看、留多久。</p></div>
-      <div class="cell end"><h5>带走</h5><p>完整的团队插件仓库、可观测配置和一页 AI 权限与审计方案。课后作业：同一个小任务，装工具箱前后各做一次并计时，记下你自己的数据。</p></div>
+      <div class="cell start wide"><h5>先看终点</h5><p>老师打开课前实跑留下的看板，点进一次失败运行看它每一步做了什么，再看这次失败写回上下文包的那一处改动，和用这些数写成的一页方案。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>跑最后一次任务组，它的用量、调用记录和验收结果被自动采集。</p></div>
+      <div class="cell"><h5>你做</h5><p>挑还没过的任务写复盘并写回上下文；打开遥测、启动最后一次重跑；趁它在跑，把 Claude Code 的 OpenTelemetry 指标接进 Grafana、把每次任务运行记进自托管的 Langfuse；写一页给老板和安全团队的方案。</p></div>
+      <div class="cell"><h5>你要能判断</h5><p>5 个任务的数据能支撑什么结论、不能支撑什么；哪些失败该写回上下文，哪些说明这件事暂时不该交给 agent。</p></div>
+      <div class="cell rerun"><h5>本节重跑任务组</h5><p>最后一次重跑，画出从基线到现在的成功率和介入率曲线，标出每处变化对应的改动。</p></div>
+      <div class="cell end wide"><h5>带走</h5><p>整理好的团队 agent 套件仓库、指标看板配置、复盘记录和一页方案。</p></div>
     </div>
   </article>
 </section>
@@ -165,34 +174,36 @@
   <span class="kicker">带走清单</span>
   <h2>五节课之后，你手上有这些</h2>
   <div class="take">
-    <div class="item"><div class="n">01</div><div><h4>一个团队插件仓库</h4><p>MCP 配置、3 个 skill、hooks 规则、3 个 agent，同事一条命令装上。</p></div></div>
-    <div class="item"><div class="n">02</div><div><h4>两条 GitHub Actions 工作流</h4><p>PR 审查，以及 CI 失败诊断并提修复 PR。</p></div></div>
-    <div class="item"><div class="n">03</div><div><h4>一页给安全团队的方案</h4><p>AI 的权限、拦截规则、审计记录、成本封顶和已知绕过风险。</p></div></div>
-    <div class="item"><div class="n">04</div><div><h4>三套模板</h4><p>每日巡检、告警初查、事故复盘，直接放进你们团队的仓库用。</p></div></div>
+    <div class="item"><div class="n">01</div><div><h4>团队 agent 套件仓库</h4><p>上下文包（CLAUDE.md、规则文件、runbook、skill）、hooks、agent 的 IAM 角色和验收闸门，换到你们自己的仓库照样能用。</p></div></div>
+    <div class="item"><div class="n">02</div><div><h4>任务组和验收脚本</h4><p>5 个任务的意图、验收脚本和运行脚本。回公司换成你们团队自己的任务，用同一套办法测。</p></div></div>
+    <div class="item"><div class="n">03</div><div><h4>两条闭环工作流</h4><p>CI 失败诊断和告警调查，外加一个定时巡检：事件触发、只读调查、提修复 PR、人来批准。</p></div></div>
+    <div class="item"><div class="n">04</div><div><h4>指标看板</h4><p>成功率、介入率、每任务用量和用时，加上每次运行的调用记录。</p></div></div>
+    <div class="item wide"><div class="n">05</div><div><h4>一页给老板和安全团队的方案</h4><p>交给 agent 的是哪条流程、你测到的数、agent 的身份和边界、已知的失败方式，以及下一条准备交出去的流程。</p></div></div>
   </div>
 </section>
 
 <section class="sec">
   <span class="kicker">前置要求与 5 题自测</span>
   <h2>报名前先答 5 题</h2>
-  <p class="lead">这门课每节 2 小时，除了开头的演示和不超过 10 分钟的概念，其余时间都在动手，没有时间补基础。每题答是或否。</p>
+  <p class="lead">每节课 2 小时里至少 100 分钟在动手，没有时间补基础。你还需要自己的 Claude Code 使用额度，具体要求开班前公布。每题答是或否。</p>
   <ol class="quiz">
     <li>不看教程，你能写一个创建 ECS 服务和对应 IAM 角色的 Terraform，并解释 terraform plan 输出里每一项变更吗？</li>
     <li>你能读懂并修改一个 GitHub Actions 工作流，包括触发条件、secrets 和 job 之间的依赖吗？</li>
     <li>你能说清 IAM 角色的信任策略和权限策略有什么区别，并排查过一次 AccessDenied 吗？</li>
-    <li>你能在 CloudWatch Logs 里找到某个 ECS 服务返回 500 的那几条日志吗？</li>
-    <li>你能在自己的 AWS 沙箱账号里，用命令行登录并跑 terraform apply 和 destroy，而且知道哪些资源会持续计费吗？</li>
+    <li>你能在 CloudWatch 里定位某个服务开始返回 5xx 的时间段，并找到对应的日志吗？</li>
+    <li>你在工作中提过并合并过改动基础设施或流水线的 PR，并经历过评审吗？</li>
   </ol>
-  <div class="route"><strong>怎么看结果：</strong>前 3 题任意一题答「否」，先上项目班。第 4、5 题答「否」，可以报这门课，但开课前要补完 L00 并把检查结果贴到课程群。5 题全是「是」，直接报这门课。项目班的开班信息另行公布。用过 Claude Code 更好，但不要求，课上从配置开始。</div>
+  <div class="route"><strong>怎么看结果：</strong>前 3 题任意一题答「否」，先上同系列的项目班。第 4 题答「否」，可以报这门课，开课前把 L00 做完并贴检查结果。第 5 题答「否」，说明你现在手上还没有能带回去改造的团队流程，方案部分会用不上，建议先上项目班或等工作中有这个场景再来。5 题全是「是」，直接报这门课。用过 Claude Code 更好，但不要求，L00 会带你配好。</div>
 </section>
 
 <section class="sec">
   <span class="kicker">我们不承诺什么</span>
   <h2>这门课不承诺的事</h2>
   <div class="card">
-    <p>不承诺薪资、晋升、工作、签证或任何收入。不承诺你的团队一定采用你带回去的方案。课程里没有省了多少时间、省了多少钱的数字，因为我们还没有实测过；L05 的课后作业是让你自己计时，得到你自己的数据。</p>
-    <p>不教写 AI 应用，不教部署或运维模型，不教评估集和提示词调优，也不涉及 RAG。AI 的输出会出错，课上大部分环节会让你亲手撞到一次，然后学怎么发现它；具体哪些翻车点会出现，以开课前实跑复现的结果为准。</p>
-    <p>关于数据位置：我们会教你选用澳洲区域的推理配置并核对数据流向，不会替你保证数据不出境。</p>
+    <p>不承诺薪资、晋升、工作、签证或任何收入。不承诺你的团队一定采用你带回去的方案。</p>
+    <p>不承诺 agent 能把这 5 个任务做到多高的成功率，也不给省了多少时间、省了多少钱的预估。我们没有拿到实测数据之前不写数字；你在课上测出来的，就是你能拿去说服别人的数。</p>
+    <p>不教写 AI 应用、不做 RAG、不部署或运维模型、不教评估集和提示词调优。课上会让你亲手撞到几种 agent 的典型失误，具体是哪几种，以开课前实跑复现的结果为准。</p>
+    <p>关于数据位置：如果公司要求模型走 AWS Bedrock，我们会在开课前实测 Claude Code 走 Bedrock 的接法；在核实之前，不保证数据不出境。</p>
   </div>
 </section>
 
@@ -204,9 +215,9 @@
     <div class="rules">
       <ul>
         <li>10 小时直播带做（5 节 × 2 小时），另有 30 分钟课前环境准备</li>
-        <li>满 15 人才开班，没有凑够会先通知你，处理方式开班前写明</li>
+        <li>满 15 人才开班；没凑够时怎么处理，开班前写明</li>
         <li>同一时间只开一个班，由 Lightman 本人讲授</li>
-        <li>沙箱账号、云和模型调用的费用安排，以及你需要自备的 Claude Code 使用额度，开班前公布（目前未定）</li>
+        <li>沙箱账号和云资源的费用安排、你需要准备的 Claude Code 额度，开班前公布</li>
       </ul>
       <span class="signup">报名入口待开通</span>
     </div>
@@ -216,12 +227,12 @@
 <section class="sec">
   <span class="kicker">FAQ</span>
   <h2>常见问题</h2>
-  <details><summary>我没用过 Claude Code，能上吗？</summary><div>能。课上从配置开始。真正的门槛是 Terraform、AWS 和 GitHub Actions，不是 Claude Code。</div></details>
-  <details><summary>公司只允许用 Copilot 或 Bedrock，怎么办？</summary><div>L05 会配 Bedrock（具体接法课前实测），Bedrock 这条路可以对照着做。如果你公司只允许 Copilot，课上的思路（身份、权限、拦截、审计）可以搬过去，但具体的 hooks 和插件是 Claude Code 的机制，需要你自己对应。</div></details>
-  <details><summary>每个人的 AWS 账号怎么处理？费用谁出？</summary><div>每位学员一个预置的沙箱账号，设预算上限，课后回收。具体由谁出钱，开班前公布；现在还没有定下来。</div></details>
-  <details><summary>能让 agent 合上电脑也在跑吗？</summary><div>设计上靠 GitHub Actions 的定时触发和事件触发，不需要你的电脑开着。具体接法我们课前会在沙箱里实测确认；是否需要订阅、费用谁出，也在开班前告知。</div></details>
-  <details><summary>学完能直接拿到公司用吗？</summary><div>插件和工作流可以带回去，但要先在你们自己的环境里按 L05 的方案走一遍安全评审。课上的沙箱不等于你们的生产环境。</div></details>
-  <details><summary>跟不上怎么办？</summary><div>每节课都有 checkpoint 分支，一条命令追上当前进度。每节课要交的东西也会在下一节课开头核对。</div></details>
+  <details><summary>agent 的成功率能做到多少？</summary><div>我们不知道，也不预估。这门课的做法就是不靠感觉：同一组任务、同一套验收脚本，每节重跑一次，数字由你自己测出来。老师课前也会用同一组任务实跑一遍，第一节课上给你看完整记录，包括失败的那些。</div></details>
+  <details><summary>我们公司用的不是 Claude Code，是 Copilot 或别的工具？</summary><div>五件事的做法（意图、上下文、验证、身份与边界、度量）都能搬过去，任务组和验收脚本也和工具无关。但课上的 hooks、无人值守运行和 GitHub Action 是 Claude Code 的机制，换工具需要你自己找对应的做法。</div></details>
+  <details><summary>公司要求模型调用走 AWS Bedrock，可以吗？</summary><div>Claude Code 可以配置成走 Bedrock，我们会在开课前在沙箱里实测接法和推理区域，再告诉你能做到什么。核实之前，我们不写"数据不出境"。</div></details>
+  <details><summary>我们跑的是 Kubernetes，不是 ECS，学了有用吗？</summary><div>课上的沙箱用 ECS，因为建得快、成本低。课程教的是把一条流程交给 agent 并测出数据的办法，任务组和验收脚本是可以换的：回公司后，你把任务换成自己团队在 EKS 上的活，用同一套办法测。</div></details>
+  <details><summary>AWS 和 Claude Code 的费用谁出？</summary><div>每位学员一个预置的沙箱账号，设预算上限，课后回收。沙箱费用安排和你需要准备的 Claude Code 额度，开班前公布；现在还没有定下来。每节课重跑任务组会消耗额度，具体用量我们课前实测后告诉你。</div></details>
+  <details><summary>跟不上怎么办？</summary><div>每节课都有 checkpoint 分支，一条命令追上当前进度。任务组在后台运行，你可以一边跟老师讲评一边等结果。</div></details>
 </section>
 
 <footer class="footer">AI DevOps 实战课 · 高级班 · 第一期 · 预览页，报名入口待开通</footer>
