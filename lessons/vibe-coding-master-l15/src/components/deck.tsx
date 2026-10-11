@@ -108,24 +108,24 @@ export const FS = {
 	note: 16,
 } as const;
 
-/** 第一幕：翻出来的是作文不是事实，中性色 */
+/** 第一幕：看见散落 —— 中性冷色 */
 export const ACT1 = colors.dark;
-/** 第二幕：证据没人读，秩序色 */
+/** 第二幕：别人的机制 —— 秩序色 */
 export const ACT2 = colors.blue;
-/** 第三幕：撤不回来，警告色 */
-export const ACT3 = colors.red;
-/** 第四幕：放手让它自己跑 —— 全课唯一往上走的一幕，用亮色 */
-export const ACT4 = colors.teal;
-/** 第五幕：回流与收口 */
+/** 第三幕：自己动手造 —— 全课唯一往上走的一幕，用亮色 */
+export const ACT3 = colors.teal;
+/** 第四幕：反转，你交的是默认值 —— 警告色 */
+export const ACT4 = colors.red;
+/** 第五幕：作者走了之后 —— 收口 */
 export const ACT5 = colors.purple;
 
 export type Act = 1 | 2 | 3 | 4 | 5;
 const ACT_META: Record<Act, { name: string; color: string }> = {
-	1: { name: '一 · 它刚才干了什么', color: ACT1 },
-	2: { name: '二 · 这条痕迹谁会读', color: ACT2 },
-	3: { name: '三 · 撤得回来吗', color: ACT3 },
-	4: { name: '四 · 凭什么让它自己跑', color: ACT4 },
-	5: { name: '五 · 这次错怎么变成下次的规矩', color: ACT5 },
+	1: { name: '一 · 它现在活在哪', color: ACT1 },
+	2: { name: '二 · 别人是怎么交的', color: ACT2 },
+	3: { name: '三 · 把自己的打成同样的形状', color: ACT3 },
+	4: { name: '四 · 你交出去的是默认值', color: ACT4 },
+	5: { name: '五 · 作者走了之后', color: ACT5 },
 };
 
 export function ActBadge({ act, mode }: { act: Act; mode?: string }) {

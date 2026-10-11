@@ -2,71 +2,58 @@ import { motion } from 'framer-motion';
 import { Page, colors, fonts, border, radii } from '../deck';
 
 /**
- * P02 · 终点宣告 ⭐⭐ 独占（蓝图 §0.2 / §0.3）
- * 🔴 整节课挂在这一页上。开场不宣布终点，后面四幕全是表格（蓝图 §0.9 两头压的第一头）。
- * 四个小格 = 四幕 = 开那个东西的四个条件。静态版用不同透明度暗示「会被逐幕点亮」。
- * ⚠️ 这一页不许写「分水岭」—— 那是讲师知识（§0.2b），不是学员这一刻需要的。
+ * P02 · 终点宣告（⭐⭐ 独占一屏）
+ * 整节课挂在这一页上。一句大字 + 下方三个小格（三幕=三个条件）。
+ * 三格后面会被逐幕点亮，静态版用透明度暗示。
  */
-const CONDITIONS = [
-	{ n: '一', t: '它得先留下痕迹', s: '没人在场的时候，痕迹是唯一存在的东西' },
-	{ n: '二', t: '痕迹得有人读', s: '没人在场的时候，没有人会主动去看' },
-	{ n: '三', t: '出事得撤得回来', s: '没人在场的时候，撤回窗口在你睡觉时关掉' },
-	{ n: '四', t: '你得攒够放手的证据', s: '这就是开关前面那把锁' },
+const GATES = [
+	{ k: '一', t: '先看见你造的东西散在哪', c: colors.blue },
+	{ k: '二', t: '再看别人是怎么交的', c: colors.teal },
+	{ k: '三', t: '然后把自己的打成同样的形状', c: colors.yellow },
 ];
 
 export default function L15P02_Destination() {
 	return (
-		<Page bg={colors.dark} style={{ justifyContent: 'center' }}>
-			<motion.div
-				initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-				style={{ textAlign: 'center' }}
-			>
-				<span style={{
-					fontFamily: fonts.mono, fontSize: 15, fontWeight: 800, letterSpacing: 3,
-					padding: '7px 16px', borderRadius: radii.label, background: colors.teal, color: colors.black, border,
-				}}>今天的终点</span>
-			</motion.div>
-
+		<Page bg={colors.dark} style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
 			<motion.h2
-				initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-				transition={{ delay: 0.2, type: 'spring', stiffness: 170, damping: 16 }}
+				initial={{ opacity: 0, y: 26 }} animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
 				style={{
-					fontFamily: fonts.heading, fontSize: 62, fontWeight: 900, lineHeight: 1.26, letterSpacing: -2,
-					color: colors.white, textAlign: 'center', margin: '26px auto 0', maxWidth: 1240,
+					fontFamily: fonts.heading, fontSize: 62, fontWeight: 900, lineHeight: 1.28,
+					letterSpacing: -2, color: colors.white, maxWidth: 1280,
 				}}
 			>
-				这节课结束的时候，你会<span style={{ color: colors.yellow }}>真的打开一个定时任务</span>
-				<br />,, 而且你会说得出凭什么
+				今天结束的时候，你会把这张表里<br />
+				至少<span style={{ color: colors.yellow }}>三样东西</span>，装到一台<span style={{
+					backgroundImage: `linear-gradient(transparent 60%, ${colors.red} 60%, ${colors.red} 92%, transparent 92%)`,
+				}}>不是你这台</span>的环境上，<br />
+				并且让它<span style={{ color: colors.yellow }}>真的生效</span>。
 			</motion.h2>
 
-			<motion.div
+			<motion.p
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.5 }}
-				style={{ textAlign: 'center', fontSize: 25, color: 'rgba(255,255,255,.56)', marginTop: 20 }}
+				style={{ fontSize: 25, color: 'rgba(255,255,255,.58)', marginTop: 26, lineHeight: 1.7 }}
 			>
-				前面四幕，全部是开它的条件
-			</motion.div>
+				不是拷过去。也不是写一份文档告诉别人该怎么拷。<strong style={{ color: colors.white }}>是装上去。</strong>
+			</motion.p>
 
-			<div style={{ display: 'flex', gap: 18, marginTop: 44 }}>
-				{CONDITIONS.map((c, i) => (
+			<div style={{ display: 'flex', gap: 22, marginTop: 52 }}>
+				{GATES.map((g, i) => (
 					<motion.div
-						key={c.n}
-						initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.75 + i * 0.12, duration: 0.4 }}
+						key={g.k}
+						initial={{ opacity: 0, y: 16 }} animate={{ opacity: 0.42, y: 0 }}
+						transition={{ delay: 0.9 + i * 0.16, duration: 0.5 }}
 						style={{
-							flex: 1, minWidth: 0, padding: '20px 18px',
-							background: 'rgba(255,255,255,.055)',
-							border: `2px solid rgba(255,255,255,.22)`, borderRadius: radii.card,
-							display: 'flex', flexDirection: 'column', gap: 10,
+							width: 328, padding: '20px 22px', textAlign: 'left',
+							background: 'rgba(255,255,255,.06)', border: `2px solid rgba(255,255,255,.26)`,
+							borderRadius: radii.card,
 						}}
 					>
 						<span style={{
-							width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
-							background: 'rgba(255,255,255,.1)', border: `2px solid rgba(255,255,255,.3)`,
-							display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-							fontFamily: fonts.mono, fontSize: 17, fontWeight: 800, color: 'rgba(255,255,255,.72)',
-						}}>{c.n}</span>
-						<div style={{ fontFamily: fonts.heading, fontSize: 25, fontWeight: 900, color: colors.white, lineHeight: 1.3 }}>{c.t}</div>
-						<div style={{ fontSize: 17, lineHeight: 1.5, color: 'rgba(255,255,255,.46)' }}>{c.s}</div>
+							display: 'inline-block', fontFamily: fonts.mono, fontSize: 14, fontWeight: 800,
+							padding: '3px 10px', borderRadius: radii.label, background: g.c, color: colors.black, border,
+						}}>{g.k}</span>
+						<div style={{ fontSize: 22, color: colors.white, marginTop: 13, lineHeight: 1.5 }}>{g.t}</div>
 					</motion.div>
 				))}
 			</div>
