@@ -3,6 +3,14 @@ import SlideEngine from './components/SlideEngine';
 // ===== Vibe Coding 大师课 · 第十五节《把你造的东西交出去》=====
 // 副标题：装不到第二台机器上的，不是系统，是习惯
 // 课型：135 分钟线上直播动手课（无助教）
+// 规模：40 页 = 封面 + 目录 + 终点 + 5 张幕封面 + 28 页正课 + 5 页附录
+//
+// ── 🔴 导航骨架（2026-10-11 补）──
+//   讲师原话：「没有目录，没有顺序，纯粹流水账。」原来三十四页全是内容页。补了两样：
+//   · P01b 目录页「今天回答五个问题」—— 五问即五幕（L14 开场第二页本来就有，L15 丢了）
+//   · C1–C5 幕封面 —— 幕次 + 这一幕回答哪个问题 + 这一幕结束时手上多了什么，
+//     外加一条五格进度轨，把整条论证链一直挂在眼前。
+//   左上角那个 ActBadge 在投屏上基本看不见，不能当导航用。
 //
 // 内容 SoT：PRD.md（蓝图体系已于 2026-10-11 废除，PRD 即唯一权威）
 // 讲稿：RUNSHEET.md（逐页口播，29 正课 + 5 附录）
@@ -53,7 +61,15 @@ import SlideEngine from './components/SlideEngine';
 // ── 开场 ──
 import L15P00_Cover from './components/slides/L15P00_Cover';
 import L15P01_Inventory from './components/slides/L15P01_Inventory';
+import L15P01b_FiveQuestions from './components/slides/L15P01b_FiveQuestions';
 import L15P02_Destination from './components/slides/L15P02_Destination';
+
+// ── 幕封面（C1–C5）· 讲师要求补的导航骨架 ──
+import L15C1_Act1 from './components/slides/L15C1_Act1';
+import L15C2_Act2 from './components/slides/L15C2_Act2';
+import L15C3_Act3 from './components/slides/L15C3_Act3';
+import L15C4_Act4 from './components/slides/L15C4_Act4';
+import L15C5_Act5 from './components/slides/L15C5_Act5';
 
 // ── 一 · 它现在活在哪 ──
 import L15P03_WhereItLives from './components/slides/L15P03_WhereItLives';
@@ -104,15 +120,18 @@ export default function App() {
 			{/* 开场 · 0–10 */}
 			<L15P00_Cover />
 			<L15P01_Inventory />
+			<L15P01b_FiveQuestions />
 			<L15P02_Destination />
 
 			{/* 一 · 它现在活在哪 · 10–32 */}
+			<L15C1_Act1 />
 			<L15P03_WhereItLives />
 			<L15P04_ThreeScopes />
 			<L15P05_HabitNotSystem />
 			<L15P06_TagYourAssets />
 
 			{/* 二 · 别人是怎么交的 · 32–65 */}
+			<L15C2_Act2 />
 			<L15P07_WhatIsAMarketplace />
 			<L15P08_InstallOne />
 			<L15P09_WhereItWent />
@@ -121,6 +140,7 @@ export default function App() {
 			<L15P12_VerifyIt />
 
 			{/* 三 · 把自己的打成同样的形状 · 65–105 */}
+			<L15C3_Act3 />
 			<L15P13_MinimalPlugin />
 			<L15P14_PutYourSkillIn />
 			<L15P15_PutYourHookIn />
@@ -129,6 +149,7 @@ export default function App() {
 			<L15P18_ThreeDeaths />
 
 			{/* 四 · 你交出去的是默认值 · 105–122 */}
+			<L15C4_Act4 />
 			<L15P19_CountYourDefaults />
 			<L15P20_YouShipDefaults />
 			<L15P21_FourThingsToSay />
@@ -136,6 +157,7 @@ export default function App() {
 			<L15P23_FillYourFour />
 
 			{/* 五 · 作者走了之后 · 122–135 */}
+			<L15C5_Act5 />
 			<L15P24_ItGetsOld />
 			<L15P25_TheEmptyOwner />
 			<L15P26_WhatYouLeaveBehind />

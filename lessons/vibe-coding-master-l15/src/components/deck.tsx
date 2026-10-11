@@ -143,6 +143,89 @@ export function ActBadge({ act, mode }: { act: Act; mode?: string }) {
 	);
 }
 
+/**
+ * 幕封面（C1–C5）。
+ * 🔴 本节新增：原来三十四页全是内容页，左上角那个小标签在投屏上基本看不见，
+ *    学员翻到第十七页不知道自己在第三幕 —— 讲师原话「没有目录，没有顺序，纯粹流水账」。
+ * 每一幕开始前插一页：幕次 + 这一幕回答哪个问题 + 这一幕结束时手上多了什么，
+ * 外加一条五格进度轨，把整条论证链一直挂在眼前。
+ */
+export function ActCover({ act, question, outcome }: { act: Act; question: string; outcome: string }) {
+	const m = ACT_META[act];
+	const light = m.color === colors.teal || m.color === colors.blue || m.color === colors.yellow;
+	return (
+		<div style={{
+			width: '100%', height: '100%', background: colors.dark, position: 'relative',
+			display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 92px',
+		}}>
+			{/* 进度轨：五格，当前这一幕点亮 —— 这是「我们走到哪了」的唯一视觉答案 */}
+			<div style={{ position: 'absolute', top: 64, left: 92, right: 92, display: 'flex', gap: 10 }}>
+				{([1, 2, 3, 4, 5] as Act[]).map(i => {
+					const done = i < act, now = i === act;
+					return (
+						<div key={i} style={{ flex: 1 }}>
+							<div style={{
+								height: 7, borderRadius: radii.pill,
+								background: now ? ACT_META[i].color : done ? 'rgba(255,255,255,.34)' : 'rgba(255,255,255,.12)',
+							}} />
+							<div style={{
+								fontFamily: fonts.mono, fontSize: 13, marginTop: 9, letterSpacing: 1,
+								color: now ? colors.white : done ? 'rgba(255,255,255,.4)' : 'rgba(255,255,255,.2)',
+								fontWeight: now ? 800 : 400,
+							}}>
+								{ACT_META[i].name}
+							</div>
+						</div>
+					);
+				})}
+			</div>
+
+			<motion.div
+				initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
+				style={{ display: 'flex', alignItems: 'center', gap: 20 }}
+			>
+				<span style={{
+					fontFamily: fonts.heading, fontSize: 130, fontWeight: 900, lineHeight: 1,
+					color: m.color, letterSpacing: -6,
+				}}>{['', '一', '二', '三', '四', '五'][act]}</span>
+				<span style={{
+					fontFamily: fonts.mono, fontSize: 15, fontWeight: 800, letterSpacing: 2,
+					padding: '6px 14px', borderRadius: radii.label, border: `2px solid ${m.color}`,
+					color: m.color,
+				}}>第 {act} 幕 / 共 5 幕</span>
+			</motion.div>
+
+			<motion.h2
+				initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22, duration: 0.5 }}
+				style={{
+					fontFamily: fonts.heading, fontSize: 62, fontWeight: 900, letterSpacing: -2,
+					color: colors.white, margin: '14px 0 0', lineHeight: 1.2,
+				}}
+			>
+				{question}
+			</motion.h2>
+
+			<motion.div
+				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.5 }}
+				style={{
+					marginTop: 34, display: 'inline-flex', alignSelf: 'flex-start', alignItems: 'center', gap: 14,
+					padding: '15px 24px', background: m.color, border, borderRadius: radii.panel,
+					boxShadow: `7px 7px 0 ${colors.black}`,
+				}}
+			>
+				<span style={{
+					fontFamily: fonts.mono, fontSize: 14, fontWeight: 800, letterSpacing: 2,
+					color: light ? '#4a4320' : 'rgba(255,255,255,.75)',
+				}}>这一幕结束时</span>
+				<span style={{
+					fontFamily: fonts.heading, fontSize: 28, fontWeight: 900,
+					color: light ? colors.black : colors.white,
+				}}>{outcome}</span>
+			</motion.div>
+		</div>
+	);
+}
+
 /** 附录徽章，课上不讲，投屏留最后给学员拍照 */
 export function AppendixBadge({ label }: { label: string }) {
 	const chip: CSSProperties = {
