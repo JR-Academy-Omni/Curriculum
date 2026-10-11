@@ -1,6 +1,6 @@
 # 用户增长的方法 · QA
 
-以下为历史版本验收记录。当前65页双语实战修订仅Local，尚未部署；线上仍62页旧版。最新验收见末尾。
+以下为历史版本验收记录。当前65页双语实战修订已部署，2026-10-11完成公网核验。最新验收见末尾。
 
 - bun run build：通过，TypeScript与Vite构建成功。
 - 47页从引擎data-deck-total读取；36个方法单页，47条notes。
@@ -78,3 +78,7 @@
 ### 箭头动效最终验收
 
 MotionArrow静态底箭头保留，亮段3轮后停；11个代表页normal中间/末状态和11页reduced motion通过。65页覆盖扫描；打印65页共有352条底箭头，0条可见动效亮段。无脚本/资源错误。p25卡片实际高度241.69px，footer有17.1px桌面间距，文字重叠已修复。截图/报告：out/qa/ai-solo-founder-w11-arrow-motion/report.json。离线65页及1/12/25/26/29/46/65七个代表页、概率与示范交互通过，0外部请求；离线report在bilingual-live。最终build/目录与Skill结构校验通过，7个运行时hash不变。仅Local，未部署。
+
+## 2026-10-11 65页生产发布
+
+课件源码提交111d8e7f；GitHub Actions 38108037242构建/上传成功。由线上Lesson列表进入课件确认65页；封面及9/12/13/19/25/26/29/46/65代表页、抽奖概率/电子券/薅羊毛/重复奖励互动、关键中英标签、手机版及动画方向通过。Skill ZIP与本地SHA256一致；LIVE_DEMO/PRD/RUNSHEET可读。0页面和资源错误。证据：out/qa/ai-solo-founder-w11-public-65/report.json。目录最终状态已部署。
