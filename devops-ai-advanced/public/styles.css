@@ -1,0 +1,109 @@
+/* AI DevOps 实战课 · 进阶 — Register B（课程物料）。themeColor #6D5BD0。自包含。 */
+:root{--theme:#6D5BD0;--theme-dark:#3F3A8C;--theme-soft:#efecfb;--ink:#10162f;--yellow:#FFDE59;--green:#10b981;--red:#e5484d;--bg:#fff8f0;--line:#000}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:var(--bg);color:#1a1a1a;line-height:1.7;font-size:15px}
+a{color:var(--theme-dark)}
+.mono{font-family:'Space Mono',monospace}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;color:var(--ink);line-height:1.25}
+
+/* Hero */
+.header{background:linear-gradient(135deg,#10162f 0%,#3F3A8C 55%,#6D5BD0 100%);padding:64px 24px 56px;text-align:center;border-bottom:4px solid var(--line);color:#fff}
+.header .series{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
+.header h1{font-size:clamp(28px,5vw,46px);color:#fff;max-width:980px;margin:0 auto;font-weight:900}
+.header .sub{font-size:clamp(14px,1.6vw,18px);max-width:820px;margin:16px auto 0;opacity:.94;line-height:1.7}
+.chips{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.chip{display:inline-block;padding:9px 16px;background:#fff;color:var(--ink);border:3px solid #000;box-shadow:4px 4px 0 #000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700}
+.chip.y{background:var(--yellow)}.chip.g{background:var(--green);color:#fff}
+
+/* Sections */
+.sec{max-width:1160px;margin:60px auto 0;padding:0 24px}
+.sec h2{font-size:clamp(22px,3vw,30px);font-weight:900;margin-bottom:8px}
+.sec .lead{color:#555;font-size:15px;max-width:780px;margin-bottom:24px}
+.kicker{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--yellow);margin-bottom:12px}
+.card{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;padding:22px 24px}
+.card.theme{box-shadow:8px 8px 0 var(--theme)}
+.card p+p{margin-top:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+/* AI relationship */
+.ai-split{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid #000;background:#fff;box-shadow:8px 8px 0 var(--yellow)}
+.ai-col{padding:22px 22px 24px;border-right:3px solid #000}
+.ai-col:last-child{border-right:none}
+.ai-col .who{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--theme-dark);margin-bottom:8px}
+.ai-col h3{font-size:19px;margin-bottom:10px}
+.ai-col ul{padding-left:18px;font-size:14px;color:#333}
+.ai-col li{margin-bottom:6px}
+.principle{margin-top:20px;padding:16px 20px;background:var(--ink);color:#fff;border:3px solid #000;box-shadow:5px 5px 0 var(--theme);font-size:14.5px}
+.principle strong{color:var(--yellow)}
+.note{margin-top:14px;font-size:12.5px;color:#666}
+
+/* Audience */
+.yes,.no{border:3px solid #000;background:#fff;padding:20px 22px}
+.yes{box-shadow:5px 5px 0 var(--green)}.no{box-shadow:5px 5px 0 var(--red)}
+.yes h3,.no h3{font-size:17px;margin-bottom:10px}
+.yes ul,.no ul{padding-left:18px;font-size:14px}
+.yes li,.no li{margin-bottom:6px}
+
+/* Lessons */
+.lesson{border:3px solid #000;background:#fff;box-shadow:6px 6px 0 #000;margin-bottom:26px;overflow:hidden}
+.lesson-head{padding:14px 22px;background:var(--theme);color:#fff;display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-bottom:3px solid #000}
+.lesson-head .code{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;background:#fff;color:var(--ink);padding:3px 9px;border:2px solid #000}
+.lesson-head h3{flex:1;color:#fff;font-size:18px;min-width:240px}
+.lesson-head .dur{font-family:'Space Mono',monospace;font-size:12px;opacity:.9}
+.lesson-head .theme-tag{font-family:'Space Mono',monospace;font-size:11px;padding:2px 8px;background:var(--yellow);color:var(--ink);font-weight:700;border:2px solid #000}
+.lesson-sub{padding:14px 22px 0;font-size:14.5px;color:#333}
+.lesson-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:14px}
+.cell{padding:14px 22px;border-top:2px solid #e5e5e5}
+.cell:nth-child(odd){border-right:2px solid #e5e5e5}
+.cell h5{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;margin-bottom:5px}
+.cell p{font-size:14px;color:#333}
+.cell.wide{grid-column:1 / -1;border-right:none !important}
+.cell.end{background:#f3fbf7}
+.cell.end h5{color:#047857}
+.cell.start{background:var(--theme-soft)}
+.cell.start h5{color:var(--theme-dark)}
+.prep{border:3px dashed #000;background:#fff;padding:18px 22px;margin-bottom:26px}
+.prep h3{font-size:17px;margin-bottom:6px}
+.prep .code{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;background:#e5e7eb;padding:2px 8px;margin-right:8px}
+
+/* Take-away list */
+.take{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.take .item{display:flex;gap:14px;border:3px solid #000;background:#fff;box-shadow:5px 5px 0 var(--green);padding:18px 20px}
+.take .n{font-family:'Space Mono',monospace;font-weight:700;font-size:20px;color:var(--theme);flex-shrink:0}
+.take h4{font-size:16px;margin-bottom:4px}
+.take p{font-size:13.5px;color:#444}
+
+/* Self test */
+.quiz{list-style:none;counter-reset:q}
+.quiz li{counter-increment:q;border:3px solid #000;background:#fff;padding:14px 18px 14px 56px;margin-bottom:10px;position:relative;font-size:14.5px}
+.quiz li::before{content:counter(q);position:absolute;left:14px;top:12px;width:28px;height:28px;background:var(--yellow);border:2px solid #000;font-family:'Space Mono',monospace;font-weight:700;display:flex;align-items:center;justify-content:center}
+.route{margin-top:16px;padding:16px 20px;background:var(--theme-soft);border:3px solid #000;font-size:14px}
+
+/* Price */
+.price{display:grid;grid-template-columns:1fr 1.2fr;gap:0;border:3px solid #000;background:#fff;box-shadow:8px 8px 0 var(--theme)}
+.price .amt{padding:26px;border-right:3px solid #000;background:var(--yellow);text-align:center}
+.price .amt .big{font-family:'Bricolage Grotesque',sans-serif;font-size:44px;font-weight:900;color:var(--ink)}
+.price .amt .small{font-family:'Space Mono',monospace;font-size:12px}
+.price .rules{padding:22px 26px;font-size:14.5px}
+.price .rules li{margin-bottom:8px;margin-left:18px}
+.signup{display:inline-block;margin-top:12px;padding:10px 18px;border:3px dashed #000;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;background:#fff}
+
+/* FAQ */
+details{border:3px solid #000;background:#fff;margin-bottom:10px}
+details summary{padding:12px 18px;font-weight:700;font-size:15px;cursor:pointer;background:#fafafa}
+details>div{padding:12px 18px;font-size:14px;border-top:2px solid #e5e5e5;line-height:1.8}
+
+.footer{margin-top:64px;padding:24px;text-align:center;border-top:3px solid #000;color:#777;font-size:13px}
+
+@media(max-width:900px){.ai-split{grid-template-columns:1fr}.ai-col{border-right:none;border-bottom:3px solid #000}.ai-col:last-child{border-bottom:none}.grid3{grid-template-columns:1fr}}
+@media(max-width:760px){
+  body{font-size:14px}
+  .sec{padding:0 14px;margin-top:44px}
+  .grid2,.take,.price{grid-template-columns:1fr}
+  .lesson-grid{grid-template-columns:1fr}
+  .cell:nth-child(odd){border-right:none}
+  .price .amt{border-right:none;border-bottom:3px solid #000}
+  .header{padding:44px 16px 40px}
+  .chip{font-size:12px;padding:7px 12px}
+}

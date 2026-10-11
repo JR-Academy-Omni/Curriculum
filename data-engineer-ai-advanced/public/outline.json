@@ -1,161 +1,366 @@
 {
   "themeColor": "#0E9F9A",
-  "slug": "data-engineer-ai-foundations",
-  "name": "数据工程师 × AI 实战课 · 入门：把视频和网页变成可分析的数据",
-  "name_en": "Data Engineer × AI · Foundations: Turn Video and Web Pages into Analysable Data",
-  "title_en": "Data Engineer × AI · Foundations",
-  "description": "给在职数据工程师的 10 小时直播带做课。从头到尾搭一条交通数据 pipeline：路口视频用 AI 识别成车流数据，网页用 AI 抽成活动、施工、天气数据，最后回答「哪里堵、为什么堵」。AI 干粗活，你用数据工程的判断把关。",
-  "description_en": "A 10-hour live, hands-on course for working data engineers. Build one traffic data pipeline end to end: AI turns intersection video into vehicle flow data and web pages into event, roadwork and weather data, so the business can see where traffic jams happen and why. AI does the grind; your data engineering judgement keeps it correct.",
+  "slug": "data-engineer-ai-advanced",
+  "name": "AI 数据工程实战课 · 进阶：把 PDF 和邮件变成可信的数据",
+  "name_en": "AI Data Engineering in Practice · Advanced: Turn PDFs and Emails into Trustworthy Data",
+  "description": "10 小时直播带做：把一批合成的发票、合同和支持邮件，做成有质量闸门、可追溯、可检索的数据表。AI 既帮你写管线，也作为管线里的抽取部件，你负责审它、卡住它。",
   "level": "中级",
   "type": "training",
-  "targetAudience": "在职数据工程师、ETL / BI 开发，以及有数据工程基础、想继续做这一行的求职者",
+  "targetAudience": "有 SQL、Python、dbt 基础和一个数仓使用经验的数据工程师、分析工程师",
   "totalLessons": 6,
-  "totalSteps": 31,
+  "totalSteps": 33,
   "liveClasses": 5,
   "estimatedHours": 10.5,
   "totalInteractiveLabs": 0,
-  "timeLength": "10 小时直播带做（5 节 × 2 小时）+ 30 分钟课前环境检查",
-  "courseObjective": "用 AI 把一条数据 pipeline 的交付时间从一周缩到一天，而且不出错：会给 AI 派数据工程任务，会用检查清单审出 AI 在粒度、去重、时间、回填上犯的错，会估算视频与网页数据的处理规模和成本。",
-  "courseObjective_en": "Cut delivery of a data pipeline from a week to a day with AI, without shipping mistakes: delegate data engineering tasks to AI, review its output for grain, dedup, time and backfill errors, and estimate the volume and cost of processing video and web data.",
-  "suitable": "已经在做数据工程、平时 AI 用得不多，想继续留在这一行、用 AI 把活干快的人。不适合零基础学员，也不适合想转 AI Engineer 的人。",
-  "suitable_en": "Data engineers who already do the job, use AI only occasionally, and want to stay in data engineering while working faster with AI. Not for complete beginners or people switching to AI Engineer roles.",
-  "cardDescription": "10 小时直播带做：用 AI 把路口视频和网页变成车流与事件数据，搭完一条能跑的 pipeline。",
-  "promoDescription": "你不用转 AI Engineer。这门课只做一件事：让懂数据工程的你，学会用 AI 干本行的活。课上从一段路口视频和几个网页开始，AI 帮你抽帧、识别车辆、写爬虫、写 dbt model、写 Spark 作业、写 Airflow DAG；你负责审它的产出。每节课我们都在 starter repo 里埋了 AI 大概率会踩的坑，比如同一辆车被数 30 次、网页上没有的字段被编出来、回填写出重复数据，看你能不能当场审出来。",
-  "prerequisiteknowledge": "会写 SQL（join、group by、窗口函数），能读懂 Python 脚本，会用 Git 的基本命令。没用过 Spark 和 Airflow 也可以，课上会带着用。",
+  "title_en": "AI Data Engineering in Practice · Advanced",
+  "description_en": "Ten live hours, hands-on: turn synthetic invoices, contracts and support emails into governed, traceable, queryable tables. AI builds part of the pipeline and also runs inside it as an extractor; you review it and gate its output.",
+  "timeLength": "10.5 小时（课前准备 30 分钟 + 5 节 2 小时直播）",
+  "courseObjective": "做出一条从合成文档到可信数据表的管线：幂等接入、模型抽取带原文引用、质量闸门、脱敏切块、dbt 模型和轻量调度。并能讲清 AI 在每一步做了什么、你卡住了什么。",
+  "courseObjective_en": "Build a pipeline from synthetic documents to trustworthy tables: idempotent ingestion, model extraction with source quotes, quality gates, redacted chunking, dbt models and a light scheduler, and explain what AI did and what you gated at each step.",
+  "suitable": "已经会写 SQL 和 Python、写过 dbt model、用过一个数仓的数据工程师和分析工程师，想把文档抽取和数据治理这类 AI 相关工作做扎实。",
+  "suitable_en": "Data and analytics engineers who already write SQL and Python, have written dbt models and used a warehouse, and want to do document extraction and AI-era data governance properly.",
+  "cardDescription": "5 节直播带做：合成发票、合同、邮件变成可信、可追溯、可检索的数据表。",
+  "promoDescription": "文档抽取不难，难的是抽出来的数据能不能信。这门课用五节动手课做一条完整管线：同一份文档进来两次怎么办，模型编了个字段怎么拦，PII 漏进检索怎么查，换模型版本怎么不覆盖好数据。全部用合成文档，不承诺任何结果，只交付一个能讲清楚的作品。",
+  "prerequisiteknowledge": "会写 SQL（窗口函数）、会写 Python 脚本并读懂报错、写过 dbt model、在一个数仓里建过表加载过数据。不需要 Spark、Airflow 或云账号。",
   "highlights": [
-    "全程直播带做，5 节课产出 5 次提交，最后得到一条完整的交通数据 pipeline",
-    "路口视频 → YOLO 识别和轨迹跟踪 → 路口车流汇总表，把「不能查询的视频」变成能写 SQL 的数据",
-    "AI 写爬虫 + 大模型按 schema 抽取网页字段，用活动、施工、天气数据解释拥堵原因",
-    "每节课都有预先埋好的 AI 坑，练的是审 AI 产出的数据工程判断，不是背 prompt",
-    "第 1 节就算规模：10 个摄像头每秒抽 1 帧，每天 86.4 万帧，识别成本怎么选"
+    "5 节直播至少 100 分钟动手",
+    "AI 的两个身份：写管线的队友，管线里的抽取部件",
+    "每个字段带原文引用，用脚本校验",
+    "全部使用合成文档，本地运行"
   ],
   "highlights_en": [
-    "Fully live and hands-on: five sessions, five commits, one complete traffic data pipeline",
-    "Intersection video → YOLO detection and tracking → per-intersection flow table you can query with SQL",
-    "AI-written scrapers plus schema-based LLM extraction to explain congestion with events, roadworks and weather",
-    "Every session hides AI mistakes in the starter repo, so you practise reviewing AI output with data engineering judgement",
-    "Sizing from session one: 10 cameras at 1 frame per second is 864,000 frames a day — pick the detection cost you can afford"
+    "At least 100 hands-on minutes in each of 5 live classes",
+    "AI in two roles: teammate writing the pipeline, and extractor inside it",
+    "Every field carries a source quote, checked by script",
+    "Synthetic documents only, runs locally"
   ],
   "features": [
-    "统一 starter repo + 每节课 checkpoint 分支，跟丢了一条命令追上",
-    "课前 24 小时环境检查，助教单独处理没跑通的同学",
-    "主工具 Claude Code，同时演示公司只允许用 Copilot / Bedrock 时怎么做",
-    "课后带走一份「审 AI 数据工程产出」检查清单"
+    "每节课先看终点，最后带走一件作品",
+    "先写需求再让 AI 写，逐段解释，自己验证",
+    "每节课以讲清楚收尾",
+    "跟丢可从检查点分支追上"
   ],
   "program": {
-    "name": "数据工程师 × AI 实战课 · 入门 第一期",
+    "name": "AI 数据工程实战课 · 进阶 第一期",
     "programPhase": 1,
+    "cohortStatus": "RECRUITING",
     "tuition": 599
+  },
+  "curriculumPages": {
+    "pages": [
+      "curriculum.html"
+    ],
+    "defaultPage": "curriculum.html"
   },
   "phases": [
     {
-      "name": "开工准备",
-      "color": "#64748b",
-      "summary": "课前环境检查",
+      "name": "设计与接入",
+      "color": "#0E9F9A",
+      "summary": "课前准备 + 2 节直播：分层设计、幂等接入",
       "lessons": [
         {
           "code": "L00",
-          "title": "课前环境检查：跑通 starter repo",
-          "description": "开课前 24 小时完成。装好 Python、Docker 和 Claude Code，跑通一条命令的环境检查脚本。卡住的同学由助教单独约时间处理，不占直播时间。",
+          "title": "课前准备：环境、样例文档和四条规矩",
+          "duration": 30,
           "type": "Information",
           "isLive": false,
-          "duration": 30,
+          "description": "开课前自己做完：装好环境，跑通一份样例发票的接入，读完审 AI 产出的四条规矩。AI 在这一步只帮你排查安装报错，你要能说清每个工具在管线里负责什么。",
           "steps": [
-            { "order": 1, "type": "PROJECT", "title": "克隆 starter repo", "description": "拿到课程仓库，切到 session-1-start 分支", "duration": 5 },
-            { "order": 2, "type": "PROJECT", "title": "跑环境检查脚本", "description": "一条命令检查 Python、Docker、ffmpeg、Claude Code 是否可用，输出通过或具体缺什么", "duration": 15 },
-            { "order": 3, "type": "PROJECT", "title": "提交检查结果", "description": "把检查脚本的输出贴到课程群，助教确认后才算准备完成", "duration": 10 }
+            {
+              "order": 1,
+              "type": "CONCEPT",
+              "title": "读四条规矩和项目全貌",
+              "description": "先说清要什么再让 AI 写；让 AI 逐段解释；自己跑一遍验证；说不清的不合并。再看一页项目图：合成文档进来，经 raw、staging、mart，最后回答一个业务问题。",
+              "duration": 5
+            },
+            {
+              "order": 2,
+              "type": "PROJECT",
+              "title": "跑环境检查脚本",
+              "description": "运行 starter repo 的检查脚本，确认 Python、DuckDB、dbt 和 Claude Code 或 Codex 都能用。装不上的项用 AI 排查，但把报错原文和最后的修法记在 notes 里。",
+              "duration": 15
+            },
+            {
+              "order": 3,
+              "type": "PROJECT",
+              "title": "把一份样例发票走完 raw 到终端打印",
+              "description": "用 starter repo 里写好的最小脚本读入一份合成发票 PDF，打印它的哈希、页数和文本。你要能回答：为什么先存原件再解析。",
+              "duration": 10
+            }
           ]
-        }
-      ]
-    },
-    {
-      "name": "把视频和网页变成数据",
-      "color": "#0E9F9A",
-      "summary": "3 节直播带做：设计与规模、接入、AI 结构化",
-      "lessons": [
+        },
         {
           "code": "L01",
-          "title": "接手项目：设计三层数据，算清楚规模和成本",
-          "description": "拿到 10 个路口摄像头的视频和几个活动、施工网页，让 AI 自己读元数据、提出数据结构。你来定每张表一行代表什么：一次识别、一辆车，还是一个路口 15 分钟的车流。然后当场算账：每秒抽 1 帧一天 86.4 万帧，识别成本按什么方案才做得下去。",
+          "title": "先画图再动手：文档数据的 raw / staging / mart 与成本公式",
+          "duration": 120,
           "type": "Lesson",
           "isLive": true,
-          "duration": 120,
+          "description": "AI 按你写的六句需求起草三层 schema；你逐表审它，找出它漏掉的东西，再用公式把体量和成本算清楚。结束时你要能讲清每张表为什么存在，以及 AI 起草的版本哪里不能直接用。",
           "steps": [
-            { "order": 1, "type": "CONCEPT", "title": "在公司用 AI 的边界", "description": "哪些数据不能交给 AI（生产数据、密钥、个人信息），怎么脱敏；公司只允许 Copilot / Bedrock 时，课上的流程怎么换过去", "duration": 20 },
-            { "order": 2, "type": "CONCEPT", "title": "设计难在哪：粒度清单", "description": "识别层、轨迹层、汇总层各自一行代表什么；主键；时间用哪个时区", "duration": 10 },
-            { "order": 3, "type": "LIVE", "title": "AI 探索数据源", "description": "让 Claude Code 用 ffprobe 读视频元数据、抓取目标网页结构，输出数据源说明", "duration": 25 },
-            { "order": 4, "type": "LIVE", "title": "AI 提出三层数据结构，你来审", "description": "按粒度清单审 AI 给的 schema，揭晓埋雷：AI 把识别次数当成车辆数的粒度设计", "duration": 25 },
-            { "order": 5, "type": "SCENARIO", "title": "规模与成本计算", "description": "摄像头数 × 抽帧频率 × 时长算出每日帧数和页面数，对比多模态大模型逐帧调用和本地 YOLO 的成本，选定抽帧频率", "duration": 30 },
-            { "order": 6, "type": "PROJECT", "title": "提交设计文档", "description": "三层 schema、数据流图和规模测算表提交到仓库", "duration": 10 }
+            {
+              "order": 1,
+              "type": "LIVE",
+              "title": "先看终点：一份发票从进文件夹到答出业务问题",
+              "description": "现场演示成品管线：放进一份合成发票，mart 出现一行，低置信度字段进隔离表，点回原文页码，再用一条 SQL 答出一个业务问题。",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "文档数据分层清单",
+              "description": "五个问题：原件有没有不可变地留着；抽取结果每个字段有没有值、置信度、原文引用；抽取有没有版本；进 mart 的门在哪；mart 的每一行能不能追回原件。",
+              "duration": 8
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "先写六句需求，再让 AI 起草三层 schema",
+              "description": "你先用六句话写清：有哪几类文档、要回答什么问题、哪些字段必须可信。再把这六句交给 AI，让它起草 DuckDB 建表语句，并让它逐表解释每个字段。",
+              "duration": 30
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "审 AI 的 schema，找缺口",
+              "description": "用默认提示词生成的 schema 常把抽取结果和文档放在同一张表、重抽时覆盖旧值、没有 extraction_run。拿审查清单逐表过，找出缺口，改成抽取结果按版本追加。",
+              "duration": 25
+            },
+            {
+              "order": 5,
+              "type": "LIVE",
+              "title": "体量与成本公式",
+              "description": "公式只列量，不填单价：月文档数 × 平均页数 × 每页文本量，换算成模型输入输出量，再加存储和重抽次数。用本地字符数估算并标出误差；单价让每位学员去查自己所用模型的官方价目。",
+              "duration": 27
+            },
+            {
+              "order": 6,
+              "type": "PROJECT",
+              "title": "带走：三层 schema 和成本公式表",
+              "description": "带走：你审过的三层 DDL、字段说明和一页体量成本公式表。收尾用自己的话讲三分钟：每张表为什么存在，以及你推翻了 AI 起草版本里的哪一处。",
+              "duration": 20
+            }
           ]
         },
         {
           "code": "L02",
-          "title": "接入：视频抽帧，AI 写爬虫",
-          "description": "视频入库、用 ffmpeg 按设计好的频率抽帧，摄像头编号和时间戳一个不能错。网页这边先查有没有官方 API，没有再让 AI 写爬虫，做增量爬取。重点是重跑：同一段视频跑两次，数据会不会翻倍。",
+          "title": "同一份文档进来两次：幂等接入与去重",
+          "duration": 120,
           "type": "Lesson",
           "isLive": true,
-          "duration": 120,
+          "description": "AI 写接入脚本；你用真实的重复文档去打它：原样重投、改名副本、重新导出的同一张发票。结束时你要能讲清为什么哈希够不了，业务键去重又在什么情况下会误杀。",
           "steps": [
-            { "order": 1, "type": "CONCEPT", "title": "接入难在哪：幂等清单", "description": "时间戳从哪来、时区、重跑会不会重复、缺失片段怎么处理；爬虫的 robots.txt、使用条款和限速", "duration": 10 },
-            { "order": 2, "type": "LIVE", "title": "AI 写视频接入和抽帧脚本", "description": "按 L01 定的频率抽帧，帧文件和元数据落进 raw 层", "duration": 35 },
-            { "order": 3, "type": "LIVE", "title": "先找 API，再写爬虫", "description": "让 AI 先判断数据源有没有开放接口；没有的由 AI 生成爬虫，做增量爬取", "duration": 35 },
-            { "order": 4, "type": "SCENARIO", "title": "重跑测试和揭晓埋雷", "description": "把同一批视频和页面再跑一次，揭晓埋雷：AI 写的脚本用了追加写入，重跑后数据翻倍", "duration": 30 },
-            { "order": 5, "type": "PROJECT", "title": "提交接入代码", "description": "可重复运行的抽帧脚本和爬虫提交到仓库", "duration": 10 }
-          ]
-        },
-        {
-          "code": "L03",
-          "title": "AI 结构化：识别车辆，抽取网页字段",
-          "description": "用 YOLO 识别每一帧里的车辆并做轨迹跟踪，再用多模态大模型标出事故、违停这类场景。网页交给大模型按固定 schema 抽成活动、施工、天气表。两个坑等你审：同一辆车被数了 30 次，网页上根本没有的字段被编了出来。",
-          "type": "Lesson",
-          "isLive": true,
-          "duration": 120,
-          "steps": [
-            { "order": 1, "type": "CONCEPT", "title": "结构化难在哪：准确率清单", "description": "识别次数 vs 车辆数、置信度阈值、抽样人工核对；大模型抽取的字段校验", "duration": 10 },
-            { "order": 2, "type": "LIVE", "title": "AI 写识别和轨迹跟踪", "description": "YOLO 识别车辆，按轨迹编号生成单辆车记录，落进识别层和轨迹层", "duration": 30 },
-            { "order": 3, "type": "LIVE", "title": "多模态大模型识别场景", "description": "对抽样帧标注事故、违停等场景，写提示词和结果解析", "duration": 15 },
-            { "order": 4, "type": "LIVE", "title": "大模型按 schema 抽取网页", "description": "活动日程、施工公告、天气抽成结构化表，带来源 URL 和抓取时间", "duration": 25 },
-            { "order": 5, "type": "SCENARIO", "title": "审产出和揭晓埋雷", "description": "揭晓两个埋雷：按识别次数统计车流导致数量虚高；大模型给页面上不存在的字段编了值。抽 20 帧人工核对准确率", "duration": 30 },
-            { "order": 6, "type": "PROJECT", "title": "提交结构化数据", "description": "识别层、轨迹层和网页事件表提交到仓库，附准确率核对结果", "duration": 10 }
+            {
+              "order": 1,
+              "type": "LIVE",
+              "title": "先看终点：连投两遍行数不变",
+              "description": "现场把同一批文档连投两遍，再混入改名副本和重新导出的同一张发票；表行数不变，接入日志逐条写明原因。",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "接入清单",
+              "description": "内容哈希当键而不是文件名；先写 raw 再解析；元数据含来源、到达时间、哈希、页数；失败进隔离区而不是吞掉；重跑不改已有结果。",
+              "duration": 8
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "写需求，让 AI 写接入脚本并逐段解释",
+              "description": "你写清输入目录、键、元数据字段、失败去向，交给 AI 写 Python 加 DuckDB 的接入脚本。让它逐段解释，你标出读不懂的部分追问。",
+              "duration": 30
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "同一份文档进来两次",
+              "description": "先跑 AI 版本，亲眼看行数翻倍或漏掉。再试三类重复：字节相同、仅改文件名、重新导出后字节不同的同一张发票。哈希挡得住前两类，第三类要业务键，比如供应商加发票号。",
+              "duration": 25
+            },
+            {
+              "order": 5,
+              "type": "LIVE",
+              "title": "修复并写回归测试",
+              "description": "加业务键二层去重，并留下被判为重复的记录而不是静默丢弃。写确定性测试：连跑两次行数相等；测试脚本不调用任何模型。",
+              "duration": 27
+            },
+            {
+              "order": 6,
+              "type": "PROJECT",
+              "title": "带走：接入脚本、测试和接入日志",
+              "description": "带走：能重跑的接入脚本、去重测试集、接入日志。收尾讲清：业务键在什么情况下会把两张不同的发票当成同一张。",
+              "duration": 20
+            }
           ]
         }
       ]
     },
     {
-      "name": "上规模并交付",
-      "color": "#155e75",
-      "summary": "2 节直播带做：规模与维护、融合与交付",
+      "name": "抽取与治理",
+      "color": "#0B7A76",
+      "summary": "2 节直播：模型抽取与卡住它、质量与治理",
       "lessons": [
         {
-          "code": "L04",
-          "title": "上规模：几十小时视频，网站改版了怎么办",
-          "description": "从几分钟的片段扩到几十小时、多个摄像头的数据。让 AI 写并行处理和 Spark 作业，读执行计划找瓶颈，按摄像头和日期分区。换了更好的识别模型，历史数据怎么回填才不出错。网站改版爬虫挂了，让 AI 自己发现、自己修。",
+          "code": "L03",
+          "title": "让模型抽字段，并拿原文引用和人工样本卡住它",
+          "duration": 120,
           "type": "Lesson",
           "isLive": true,
-          "duration": 120,
+          "description": "这节课 AI 有两个身份：它帮你搭抽取步骤，抽取步骤本身又是调用模型的管线部件。你负责卡住它：每个字段必须带原文引用，引用找不到就拒收，再拿手工核对的样本算每个字段的准确率。",
           "steps": [
-            { "order": 1, "type": "CONCEPT", "title": "规模难在哪：性能与回填清单", "description": "分区键、数据倾斜、小文件、文件格式；模型换版本后的回填范围和覆盖方式", "duration": 10 },
-            { "order": 2, "type": "LIVE", "title": "AI 写 Spark 作业并诊断瓶颈", "description": "在预先跑好的全量识别结果上做轨迹汇总，AI 读执行计划指出慢在哪，改完对比运行时间", "duration": 40 },
-            { "order": 3, "type": "SCENARIO", "title": "换模型后的回填", "description": "识别模型升级后回填历史数据，揭晓埋雷：AI 的回填脚本没有先删旧版本数据，新旧结果叠在一起", "duration": 25 },
-            { "order": 4, "type": "LIVE", "title": "爬虫自动修复与混合抽取", "description": "模拟网站改版，AI 发现选择器失效并修复；平时用选择器跑量，失败才回退大模型，算清楚省了多少钱", "duration": 35 },
-            { "order": 5, "type": "PROJECT", "title": "提交规模化代码", "description": "Spark 作业、回填脚本和爬虫修复记录提交到仓库，附运行时间对比", "duration": 10 }
+            {
+              "order": 1,
+              "type": "LIVE",
+              "title": "先看终点：每个字段带原文引用",
+              "description": "现场看一份发票的抽取结果：值、置信度、原文引用三列；引用查不到的字段被标红；再看和手工样本对比的准确率表。",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "抽取清单",
+              "description": "输出 schema 固定；缺失字段返回空值而不是猜；每个字段带原文引用；引用必须能在文档文本里逐字找到，这一步用脚本检查；模型自报的置信度要用人工样本校准。",
+              "duration": 8
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "让 AI 搭抽取步骤，你审 schema 校验和重试逻辑",
+              "description": "你先写字段清单和每个字段的缺失规则。AI 搭抽取代码，你审：输出怎么校验，格式错了怎么重试，重试几次后进隔离区。课上以预先抽好的结果为主，加少量现场样本。",
+              "duration": 30
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "模型编出文档里没有的字段，扫描件的 OCR 也会错",
+              "description": "一批合同没有终止日期，看模型是否编一个出来，再用引用校验拦截。另一批是扫描件，0 和 O、1 和 l 混淆：引用校验通过，金额却是错的，只有对照人工核对的样本才发现。",
+              "duration": 25
+            },
+            {
+              "order": 5,
+              "type": "LIVE",
+              "title": "在手工核对的样本上算每个字段的准确率",
+              "description": "你先手工核对一批样本，再用确定性脚本算每个字段的准确率，不调用模型。按字段定接受阈值：金额和日期要求高，备注字段可以低。",
+              "duration": 27
+            },
+            {
+              "order": 6,
+              "type": "PROJECT",
+              "title": "带走：抽取步骤、引用校验和准确率报告",
+              "description": "带走：带引用校验的抽取步骤和按字段的准确率报告。收尾讲清：哪个字段你不敢直接放进 mart，为什么。",
+              "duration": 20
+            }
           ]
         },
         {
-          "code": "L05",
-          "title": "融合与交付：回答哪里堵、为什么堵",
-          "description": "把车流数据和活动、施工、天气数据按时间和地点对齐，做成路口车流汇总表。用 Airflow 让整条 pipeline 每天自动跑，失败会告警。最后让业务方用中文提问：周六下午体育场旁边的路口为什么堵。你再拿同一个任务手写一遍、用 AI 做一遍，测出自己的提效数据。",
+          "code": "L04",
+          "title": "进 mart 之前：质量闸门、PII、权限、血缘和可检索的切块",
+          "duration": 120,
           "type": "Lesson",
           "isLive": true,
-          "duration": 120,
+          "description": "AI 帮你写质量闸门和切块代码；你定闸门放在哪、阈值多少，并亲手看一次 PII 怎么漏进检索结果。结束时你要能讲清每个 chunk 怎么追回原文，以及脱敏为什么必须在切块之前。",
           "steps": [
-            { "order": 1, "type": "CONCEPT", "title": "交付难在哪：口径与调度清单", "description": "时间窗口和地点怎么对齐；汇总口径和轨迹层对不对得上；任务依赖、失败重跑", "duration": 10 },
-            { "order": 2, "type": "LIVE", "title": "AI 写融合模型", "description": "dbt 写路口 × 15 分钟车流汇总，并关联活动、施工、天气", "duration": 30 },
-            { "order": 3, "type": "LIVE", "title": "AI 写 Airflow DAG", "description": "编排抽帧、识别、爬取、汇总，配置失败告警；AI 分析一次失败任务的原因", "duration": 25 },
-            { "order": 4, "type": "SCENARIO", "title": "业务方中文查数和揭晓埋雷", "description": "用中文问「哪个路口几点最堵、为什么」；揭晓埋雷：汇总表按 UTC 分桶，和本地时间的高峰对不上", "duration": 25 },
-            { "order": 5, "type": "SCENARIO", "title": "以前 vs 现在计时", "description": "同一个小任务手写一遍、用 AI 做一遍，记录各自用时，得到自己的提效数据", "duration": 20 },
-            { "order": 6, "type": "PROJECT", "title": "提交完整 pipeline 和检查清单", "description": "完整 pipeline 跑通提交；整理个人版「审 AI 数据工程产出」检查清单", "duration": 10 }
+            {
+              "order": 1,
+              "type": "LIVE",
+              "title": "先看终点：过闸、脱敏、追回原文",
+              "description": "现场看低置信度行进隔离表，mart 只留过闸的行；检索一个问题，命中的文本块带文档、页码、抽取版本，并能追回原件。",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "治理清单",
+              "description": "闸门放在 staging 到 mart 之间；PII 在切块之前脱敏；权限按表和列；血缘从 mart 行到抽取版本到原件哈希；文本块要带元数据才能追回来源。",
+              "duration": 8
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "写质量闸门并让 AI 补测试",
+              "description": "你定规则：置信度阈值、引用校验结果、金额合计、必填字段。AI 写成 dbt 测试和隔离表。你审它有没有把本该拦的行放过去。",
+              "duration": 27
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "PII 漏进检索切块",
+              "description": "用合成的支持邮件，里面有电话、邮箱和卡号尾数。先按 AI 的默认顺序切块再脱敏，检索时看它们怎么漏出来；再改成先脱敏再切块，并用确定性扫描脚本检查所有文本块。全部数据都是合成的。",
+              "duration": 25
+            },
+            {
+              "order": 5,
+              "type": "LIVE",
+              "title": "带元数据的切块、列级权限视图和血缘查询",
+              "description": "文本块带文档哈希、页码、字符偏移和抽取版本。用视图给分析师隐藏 PII 列，并写一条查询：任选一个文本块，追回原件。本课不搭向量库，检索用关键词匹配（如 DuckDB 全文检索），到可检索、可追溯为止。",
+              "duration": 30
+            },
+            {
+              "order": 6,
+              "type": "PROJECT",
+              "title": "带走：质量闸门、脱敏切块流程和血缘查询",
+              "description": "带走：一套质量闸门、脱敏加切块的流程、一条血缘查询。收尾讲清：你的权限视图在自己公司的数仓里要换成什么机制。",
+              "duration": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "集成与交付",
+      "color": "#064E4B",
+      "summary": "1 节直播：dbt、调度、重抽取、业务问题",
+      "lessons": [
+        {
+          "code": "L05",
+          "title": "跑起来并交付：dbt、轻量调度、重抽取和业务问题",
+          "duration": 120,
+          "type": "Lesson",
+          "isLive": true,
+          "description": "AI 写 dbt 模型和调度脚本；你在换模型版本重新抽取时拦住它覆盖好数据，用 mart 答出一个业务问题，并记录前后耗时。结束时你要能讲清为什么选最简单的调度，以及什么时候该换成更重的。",
+          "steps": [
+            {
+              "order": 1,
+              "type": "LIVE",
+              "title": "先看终点：一条命令到答案",
+              "description": "现场从原始文件夹一条命令跑到 mart，看运行日志，再用 mart 答出一个业务问题：哪些发票金额超过对应合同的上限。",
+              "duration": 10
+            },
+            {
+              "order": 2,
+              "type": "CONCEPT",
+              "title": "交付清单",
+              "description": "调度选最简单够用的；每一步幂等；失败在哪里被看见；换模型版本只追加新版本，不覆盖旧版本；运行手册写给接手的人。",
+              "duration": 8
+            },
+            {
+              "order": 3,
+              "type": "LIVE",
+              "title": "让 AI 写 dbt 模型，你审",
+              "description": "staging 到 mart 的 dbt 模型由 AI 起草。你审：join 键对不对，合同和发票的金额口径一致吗，dbt 测试覆盖了哪些风险。",
+              "duration": 27
+            },
+            {
+              "order": 4,
+              "type": "SCENARIO",
+              "title": "换模型版本重抽取，覆盖了好数据",
+              "description": "用第二版抽取结果重跑，AI 写的合并逻辑把已核对的好值覆盖成新值。改成按抽取版本追加；新版本只有在样本准确率不低于当前版本时才晋升。",
+              "duration": 25
+            },
+            {
+              "order": 5,
+              "type": "LIVE",
+              "title": "轻量调度、业务问题和前后耗时",
+              "description": "用 Makefile 加定时任务串起全链路，运行日志落表。答出业务问题。记录这件事以前手工做要多久、管线跑一遍要多久，数字自己测，不预设。",
+              "duration": 30
+            },
+            {
+              "order": 6,
+              "type": "PROJECT",
+              "title": "带走：完整仓库、运行手册和讲清楚的一页",
+              "description": "带走：完整可重跑的仓库、运行手册，以及一页纸：这条管线里 AI 做了什么、你卡住了什么、哪里仍需要人看。",
+              "duration": 20
+            }
           ]
         }
       ]

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI DevOps 实战课 · 进阶：给团队搭一套 AI 工具箱</title>
+<meta name="description" content="给在职 DevOps / SRE / 平台工程师的 10 小时直播带做课：把 AI agent 当成团队成员来管，给它身份、权限和审计记录。课后带走团队插件仓库、两条 GitHub Actions 工作流和一页给安全团队的方案。$599 含 GST。">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="series">AI DevOps 实战课 · 进阶</div>
+  <h1>AI DevOps 实战课 · 进阶：给团队搭一套 AI 工具箱</h1>
+  <p class="sub">如果你的团队里已经有人在用 AI 写 Terraform、排障，这门课教你把 AI agent 当成一个团队成员来管：给它身份、权限和审计记录，让它能干活，也能被查、被拦、被停掉。</p>
+  <div class="chips">
+    <span class="chip y">10 小时直播带做</span>
+    <span class="chip g">$599 含 GST</span>
+    <span class="chip">适合谁：已有 AWS、Terraform、CI/CD 基础的在职 DevOps / SRE</span>
+  </div>
+</header>
+
+<section class="sec">
+  <span class="kicker">这门课和 AI 的关系</span>
+  <h2>AI 干活，你来管它，并且要能向别人讲清楚</h2>
+  <p class="lead">这不是教你怎么写提示词。每节课都分成三块：哪些部分交给 AI，哪些只有你能做，以及做完之后你必须能讲清什么。</p>
+  <div class="ai-split">
+    <div class="ai-col">
+      <div class="who">AI 做</div>
+      <h3>查、写初稿、并行排查、值守</h3>
+      <ul>
+        <li>通过 MCP 查 AWS、GitHub、Slack，回答「现在生产环境有什么不正常」</li>
+        <li>按团队 skill 审 Terraform PR，写事故复盘</li>
+        <li>三个 subagent 并行排查故障</li>
+        <li>在 GitHub Actions 和定时任务里无人值守：审 PR、诊断 CI、每天巡检、告警初查</li>
+      </ul>
+    </div>
+    <div class="ai-col">
+      <div class="who">你做</div>
+      <h3>给身份、定规矩、划权限、核对、写方案</h3>
+      <ul>
+        <li>建只读 IAM 角色，决定它用谁的身份、能碰什么</li>
+        <li>把团队做法写成 skill，用 hooks 在命令执行前拦截并记日志</li>
+        <li>定每个 agent 的职责和工具，验收它们的结论</li>
+        <li>决定谁触发、谁兜底、单次运行花多少封顶，写给安全团队的方案</li>
+      </ul>
+    </div>
+    <div class="ai-col">
+      <div class="who">你要能讲清</div>
+      <h3>身份、依据、记录、兜底</h3>
+      <ul>
+        <li>这个 AI 现在用的是谁的身份，能读什么，不能改什么</li>
+        <li>它凭什么得出这个结论，你怎么核对的</li>
+        <li>它做过的每一步留了什么记录，花费怎么封顶</li>
+        <li>它凌晨三点出错时，谁会先知道，怎么停掉它</li>
+      </ul>
+    </div>
+  </div>
+  <div class="principle"><strong>一句话：</strong>AI-native DevOps，就是把 agent 当成团队成员，给它身份、权限和审计记录。五节课各回答一个管理问题：L01 工具与身份，L02 上下文与护栏，L03 委派，L04 自主，L05 可观测与治理。<br><span style="opacity:.8">这是本课作者自己的提法，不是行业标准术语。</span></div>
+  <p class="note">招聘信息里的对应：我们看了 29 份澳洲基础设施类岗位，其中 19 份提到 AI，最常见的是在日常工作里用 AI 编码助手或 agent（8 份）、MLOps / LLMOps（6 份）、Amazon Bedrock（5 份）、MCP（3 份）、AI 安全与治理（2 份）。样本很小，按关键词搜出，偏向提到 AI 的岗位，不代表整个市场；每份岗位的核心仍然是 AWS、Terraform、Kubernetes、CI/CD 和可观测。例如 Allianz 的 Senior AI DevOps Engineer 写的是「integrating AI/LLM tooling into DevOps workflows (e.g., MCP servers, AI-assisted pipelines)」。本课教的是怎么安全地做到这些，不是说有岗位要求你会 hooks。</p>
+</section>
+
+<section class="sec">
+  <span class="kicker">适合谁与不适合</span>
+  <h2>适合谁，不适合谁</h2>
+  <div class="grid2">
+    <div class="yes">
+      <h3>适合</h3>
+      <ul>
+        <li>在职 DevOps / SRE / 平台工程师，日常在写 Terraform、改 GitHub Actions、看 CloudWatch</li>
+        <li>团队已经在零散地用 AI，想把它管起来，而不是各人各用各的</li>
+        <li>需要向老板或安全团队交代「AI 能碰什么、出事能不能查」的人</li>
+      </ul>
+    </div>
+    <div class="no">
+      <h3>不适合</h3>
+      <ul>
+        <li>没有 Terraform、AWS 或 CI 基础的人：请先上入门课</li>
+        <li>想转去做 AI Engineer：这里不写 AI 应用，也不部署模型</li>
+        <li>想要的是学会写提示词：这门课的重点是权限、拦截、审计和兜底</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="kicker">你会做出什么</span>
+  <h2>一个能带回公司、同事能用一条命令装上的团队插件</h2>
+  <p class="lead">全课围绕一个已经部署在你自己 AWS 沙箱里的订单系统（前端、API、Postgres）。应用代码不用你改，它只是被运维的对象。五节课每节给团队插件加一块：</p>
+  <div class="card theme">
+    <p><strong>L01</strong> 加上 MCP 配置和只读身份，让 AI 能看见基础设施。<strong>L02</strong> 加上 3 个 skill 和 hooks 规则，规矩写进去，危险命令被拦、被记录。<strong>L03</strong> 加上 3 个分工明确的 agent。<strong>L04</strong> 在仓库里加上两条 GitHub Actions 工作流和定时任务，让 agent 不开电脑也在跑。<strong>L05</strong> 把前面所有东西打包成一个插件，接上可观测，走 AWS Bedrock，写成给安全团队的一页方案。</p>
+    <p>整套环境里 AWS 用 ECS，不涉及 GPU，也不需要你自己部署任何模型。</p>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="kicker">每节课</span>
+  <h2>五节直播，每节 2 小时，最多 10 分钟概念，其余动手</h2>
+  <p class="lead">每节课第一件事是先看终点：老师演示这一节做完的东西怎么跑。最后一件事是带走：你交出一样能放进团队插件仓库的东西。</p>
+
+  <div class="prep">
+    <h3><span class="code">L00</span>课前准备：拿到沙箱，一条命令部署订单系统</h3>
+    <p>30 分钟，不占直播时间，开课前 24 小时完成。装好 Claude Code、Terraform、AWS CLI 和 Docker，拿到沙箱账号，一条命令把订单系统部署进去，截图贴到课程群，助教确认后才算准备完成。卡住的同学由助教单独约时间处理。</p>
+  </div>
+
+  <article class="lesson">
+    <div class="lesson-head"><span class="code">L01</span><h3>工具与身份：给 AI 一个只读身份，让它看见你的基础设施</h3><span class="theme-tag">管理问题：工具与身份</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-grid">
+      <div class="cell start wide"><h5>先看终点</h5><p>老师对 AI 说「现在生产环境有什么不正常」，AI 通过 MCP 查完直接回答；再当场让它去改一个资源，被只读身份挡了回来。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>通过 MCP 查 AWS、GitHub、Slack，回答生产环境现状，并帮你写一个最小的 MCP server，把订单系统的部署状态查询包成工具。</p></div>
+      <div class="cell"><h5>你做</h5><p>建只读 IAM 角色，按最小权限发放 GitHub 和 Slack 凭证，读它写的 MCP 代码，再用控制台逐条核对它的回答。</p></div>
+      <div class="cell"><h5>你要能讲清</h5><p>这个 AI 用的是谁的身份，能读什么、不能改什么；它的回答哪里可能错，比如只查了一个区域，或者把「没查到」当成「没问题」。</p></div>
+      <div class="cell end"><h5>带走</h5><p>团队插件的 MCP 配置、只读 IAM 角色的 Terraform 和自写的 MCP server。</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="lesson-head"><span class="code">L02</span><h3>上下文与护栏：把团队规矩交给 AI，并用 hooks 拦住它</h3><span class="theme-tag">管理问题：上下文与护栏</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-grid">
+      <div class="cell start wide"><h5>先看终点</h5><p>老师对 AI 说「把生产环境的订单数据库删掉」。hook 在命令执行前拦下，审计日志里多出一行：谁、什么时间、想执行什么、为什么被拦。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>按你写的 skill 审一个故意埋了过宽权限和公网数据库的 Terraform PR，写故障复盘。没有 hook 的地方，它会尽力完成你交代的任何事。</p></div>
+      <div class="cell"><h5>你做</h5><p>把团队做法写成 3 个 skill，写 hooks 拦截 terraform apply、kubectl delete 和读取生产密钥，最后扮红队，想办法绕过自己写的 hook。</p></div>
+      <div class="cell"><h5>你要能讲清</h5><p>哪些规矩写成 skill 只是建议，哪些必须写成 hook 才算硬性拦截；你的 hook 拦不住什么，这些写进方案里当作已知风险。</p></div>
+      <div class="cell end"><h5>带走</h5><p>3 个 skill、hooks 规则和审计日志格式，其中的故障复盘 skill 就是你的事故复盘模板。</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="lesson-head"><span class="code">L03</span><h3>委派：让几个 AI 分工排障，你来验收结论</h3><span class="theme-tag">管理问题：委派</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-grid">
+      <div class="cell start wide"><h5>先看终点</h5><p>在注入了故障的订单系统上，审查、排障、成本三个 agent 并行工作，汇总出一份带证据的根因报告；同时看其中一个 agent 是怎么被表面现象带偏的。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>三个 subagent 各管一摊并行排查：数据库连接被占满、API 大量报 500；成本 agent 去找一笔没人用的高价资源。</p></div>
+      <div class="cell"><h5>你做</h5><p>给每个 agent 写清职责和只读工具，把它们串成一个排障流程，然后对比结论，判断哪个对、哪个被报错最多的服务带偏。</p></div>
+      <div class="cell"><h5>你要能讲清</h5><p>为什么这样拆，每个 agent 为什么只给这些权限，以及你凭什么相信最后那个根因。</p></div>
+      <div class="cell end"><h5>带走</h5><p>3 个 agent 的定义文件、排障流程和一次完整的排查记录。</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="lesson-head"><span class="code">L04</span><h3>自主：不开电脑也在干活，谁触发、用什么身份、谁兜底</h3><span class="theme-tag">管理问题：自主</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-grid">
+      <div class="cell start wide"><h5>先看终点</h5><p>老师推一个会让 CI 失败的提交，然后不碰电脑：agent 在 GitHub Actions 里给出诊断、提出修复 PR，并把结果发到 Slack。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>无人值守地审 PR、诊断 CI 失败、每天早上巡检 AWS 账号、每周出成本报告，告警一响先做一轮根因初查再通知人。</p></div>
+      <div class="cell"><h5>你做</h5><p>决定每个自动化由谁触发、用什么身份访问 AWS（用 OIDC，不存长期密钥）、能做什么，设计失败通知和单次运行的成本上限，最后故意弄坏一处，看有没有人收到通知。</p></div>
+      <div class="cell"><h5>你要能讲清</h5><p>这个 agent 凌晨三点出错或乱来时，谁会先知道，能查到什么，怎么停掉它；它提的修复 PR 是真的修了问题，还是改了测试让 CI 变绿。</p></div>
+      <div class="cell end"><h5>带走</h5><p>PR 审查和 CI 失败诊断两条 GitHub Actions 工作流，每日巡检和告警初查两套模板，以及权限设计。</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="lesson-head"><span class="code">L05</span><h3>可观测与治理：做成团队插件，看清 AI 花了什么，在公司里落地</h3><span class="theme-tag">管理问题：可观测与治理</span><span class="dur">120 分钟</span></div>
+    <div class="lesson-grid">
+      <div class="cell start wide"><h5>先看终点</h5><p>在一台干净的环境里，一条命令装上整个团队插件，跑一次任务，然后打开 Langfuse，看到这次调用的链路、token 和成本。</p></div>
+      <div class="cell"><h5>AI 做</h5><p>打包进插件的整套 agent 走 AWS Bedrock 干活；它的调用链、token 和成本被 OpenTelemetry 和 Langfuse 记录下来。</p></div>
+      <div class="cell"><h5>你做</h5><p>打包插件，检查没带进任何人的本地凭证，配 Bedrock（选用澳洲区域的推理配置并核对数据流向），接上可观测并配成本告警，写一页给安全团队的方案。</p></div>
+      <div class="cell"><h5>你要能讲清</h5><p>AI 能做什么、不能做什么、留了什么记录、花费怎么封顶，以及提示词里的数据存在哪里、谁能看、留多久。</p></div>
+      <div class="cell end"><h5>带走</h5><p>完整的团队插件仓库、可观测配置和一页 AI 权限与审计方案。课后作业：同一个小任务，装工具箱前后各做一次并计时，记下你自己的数据。</p></div>
+    </div>
+  </article>
+</section>
+
+<section class="sec">
+  <span class="kicker">带走清单</span>
+  <h2>五节课之后，你手上有这些</h2>
+  <div class="take">
+    <div class="item"><div class="n">01</div><div><h4>一个团队插件仓库</h4><p>MCP 配置、3 个 skill、hooks 规则、3 个 agent，同事一条命令装上。</p></div></div>
+    <div class="item"><div class="n">02</div><div><h4>两条 GitHub Actions 工作流</h4><p>PR 审查，以及 CI 失败诊断并提修复 PR。</p></div></div>
+    <div class="item"><div class="n">03</div><div><h4>一页给安全团队的方案</h4><p>AI 的权限、拦截规则、审计记录、成本封顶和已知绕过风险。</p></div></div>
+    <div class="item"><div class="n">04</div><div><h4>三套模板</h4><p>每日巡检、告警初查、事故复盘，直接放进你们团队的仓库用。</p></div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="kicker">前置要求与 5 题自测</span>
+  <h2>报名前先答 5 题</h2>
+  <p class="lead">这门课每节 2 小时，其中至少 100 分钟在动手，没有时间补基础。每题答是或否。</p>
+  <ol class="quiz">
+    <li>不看教程，你能写一个创建 ECS 服务和对应 IAM 角色的 Terraform，并解释 terraform plan 输出里每一项变更吗？</li>
+    <li>你能读懂并修改一个 GitHub Actions 工作流，包括触发条件、secrets 和 job 之间的依赖吗？</li>
+    <li>你能说清 IAM 角色的信任策略和权限策略有什么区别，并排查过一次 AccessDenied 吗？</li>
+    <li>你能在 CloudWatch Logs 里找到某个 ECS 服务返回 500 的那几条日志吗？</li>
+    <li>你能在自己的 AWS 沙箱账号里，用命令行登录并跑 terraform apply 和 destroy，而且知道哪些资源会持续计费吗？</li>
+  </ol>
+  <div class="route"><strong>怎么看结果：</strong>前 3 题任意一题答「否」，先上入门课。第 4、5 题答「否」，可以报这门课，但开课前要补完 L00 并让助教确认环境。5 题全是「是」，直接报这门课。入门课的开班信息另行公布。用过 Claude Code 更好，但不要求，课上从配置开始。</div>
+</section>
+
+<section class="sec">
+  <span class="kicker">我们不承诺什么</span>
+  <h2>这门课不承诺的事</h2>
+  <div class="card">
+    <p>不承诺薪资、晋升、工作、签证或任何收入。不承诺你的团队一定采用你带回去的方案。课程里没有省了多少时间、省了多少钱的数字，因为我们还没有实测过；L05 的课后作业是让你自己计时，得到你自己的数据。</p>
+    <p>不教写 AI 应用，不教部署或运维模型，不教评估集和提示词调优，也不涉及 RAG。AI 的输出会出错，课上大部分环节会让你亲手撞到一次，然后学怎么发现它；具体哪些翻车点会出现，以开课前实跑复现的结果为准。</p>
+    <p>关于数据位置：我们会教你选用澳洲区域的推理配置并核对数据流向，不会替你保证数据不出境。</p>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="kicker">价格与开班</span>
+  <h2>价格与开班规则</h2>
+  <div class="price">
+    <div class="amt"><div class="big">$599</div><div class="small">含 GST</div></div>
+    <div class="rules">
+      <ul>
+        <li>10 小时直播带做（5 节 × 2 小时），另有 30 分钟课前环境准备</li>
+        <li>满 15 人才开班，没有凑够会通知并退款安排</li>
+        <li>同一时间只开一个班，由 Lightman 本人讲授</li>
+        <li>沙箱账号、云和模型调用的费用安排，以及你需要自备的 Claude Code 使用额度，开班前公布（目前未定）</li>
+      </ul>
+      <span class="signup">报名入口待开通</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="kicker">FAQ</span>
+  <h2>常见问题</h2>
+  <details><summary>我没用过 Claude Code，能上吗？</summary><div>能。课上从配置开始。真正的门槛是 Terraform、AWS 和 GitHub Actions，不是 Claude Code。</div></details>
+  <details><summary>公司只允许用 Copilot 或 Bedrock，怎么办？</summary><div>L05 用 Bedrock，所以这条路是走得通的。如果你公司只允许 Copilot，课上的思路（身份、权限、拦截、审计）可以搬过去，但具体的 hooks 和插件是 Claude Code 的机制，需要你自己对应。</div></details>
+  <details><summary>每个人的 AWS 账号怎么处理？费用谁出？</summary><div>每位学员一个预置的沙箱账号，设预算上限，课后回收。具体由谁出钱，开班前公布；现在还没有定下来。</div></details>
+  <details><summary>能让 agent 合上电脑也在跑吗？</summary><div>设计上靠 GitHub Actions 的定时触发和事件触发，不需要你的电脑开着。具体接法我们课前会在沙箱里实测确认；是否需要订阅、费用谁出，也在开班前告知。</div></details>
+  <details><summary>学完能直接拿到公司用吗？</summary><div>插件和工作流可以带回去，但要先在你们自己的环境里按 L05 的方案走一遍安全评审。课上的沙箱不等于你们的生产环境。</div></details>
+  <details><summary>跟不上怎么办？</summary><div>每节课都有 checkpoint 分支，一条命令追上当前进度。每节课要交的东西也会在下一节课开头核对。</div></details>
+</section>
+
+<footer class="footer">AI DevOps 实战课 · 进阶 · 第一期 · 预览页，报名入口待开通</footer>
+
+</body>
+</html>

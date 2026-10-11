@@ -1,53 +1,57 @@
 {
   "themeColor": "#6D5BD0",
-  "slug": "devops-ai-foundations",
-  "name": "DevOps 工程师 × AI 实战课 · 入门：给团队搭一套 AI 工具箱",
-  "name_en": "DevOps Engineer × AI · Foundations: Build Your Team an AI Toolbox",
-  "title_en": "DevOps Engineer × AI · Foundations",
-  "description": "给在职 DevOps 的 10 小时直播带做课。用 Claude Code 的整套扩展体系，给团队搭一套 DevOps 专用的 AI 工具箱：MCP 接入 AWS 和 GitHub、skills 和 hooks 管住 AI、subagents 分工排障、云端 agent 自动巡检和审查、打包成团队插件并走 AWS Bedrock 落地，再用 OpenTelemetry 和 Langfuse 盯住调用链和 AI 花费。课后你带走一个团队插件仓库，同事一条命令就能装上。",
-  "description_en": "A 10-hour live, hands-on course for working DevOps engineers. Use the full Claude Code extension stack to build your team a DevOps-specific AI toolbox: MCP into AWS and GitHub, skills and hooks to keep the AI in bounds, subagents for divided troubleshooting, cloud agents for automated patrols and PR review, then package it as a team plugin and run it on AWS Bedrock, with OpenTelemetry and Langfuse tracking traces and AI spend. You leave with a team plugin repo your colleagues can install with one command.",
+  "slug": "devops-ai-advanced",
+  "name": "AI DevOps 实战课 · 进阶：给团队搭一套 AI 工具箱",
+  "name_en": "AI DevOps in Practice · Advanced: Build Your Team an AI Toolbox",
+  "title_en": "AI DevOps in Practice · Advanced",
+  "description": "给在职 DevOps / SRE / 平台工程师的 10 小时直播带做课。主线只有一句话：把 AI agent 当成团队成员来管，给它身份、权限和审计记录。五节课依次给 agent 接工具和身份（MCP）、定上下文和护栏（skills 与 hooks）、做分工委派（subagents）、放权到云端（GitHub Actions 与定时任务）、接上可观测和治理（Bedrock、OpenTelemetry、Langfuse）。课后你带走一个团队插件仓库、两条 GitHub Actions 工作流、一份给安全团队的权限与审计方案，以及巡检、告警初查、事故复盘三套模板。",
+  "description_en": "A 10-hour live, hands-on course for working DevOps, SRE and platform engineers. One idea runs through it: treat the AI agent as a team member with an identity, permissions and an audit trail. Five sessions cover tools and identity (MCP), context and guardrails (skills and hooks), delegation (subagents), autonomy (GitHub Actions and scheduled runs), and observability and governance (Bedrock, OpenTelemetry, Langfuse). You leave with a team plugin repo, two GitHub Actions workflows, a permissions-and-audit proposal for your security team, and templates for daily patrol, alert first-look and post-incident review.",
   "level": "中级",
   "type": "training",
-  "targetAudience": "在职 DevOps / SRE / 平台工程师，以及有 DevOps 基础、想继续做这一行的求职者",
+  "targetAudience": "已有 AWS、Terraform 和 CI/CD 基础的在职 DevOps / SRE / 平台工程师",
   "totalLessons": 6,
-  "totalSteps": 34,
+  "totalSteps": 38,
   "liveClasses": 5,
   "estimatedHours": 10.5,
   "totalInteractiveLabs": 0,
   "timeLength": "10 小时直播带做（5 节 × 2 小时）+ 30 分钟课前环境准备",
-  "courseObjective": "给自己的 DevOps 团队搭一套能长期用的 AI 工具箱：会用 MCP 让 AI 安全地查看基础设施，会用 skills 和 hooks 把团队规范变成 AI 的规矩并拦住危险操作，会拆分 subagents 并行排障，会把 agent 放到云端做自动审查、巡检和告警初查，并能打包成团队插件、经 AWS Bedrock 在公司合规落地，并用 OpenTelemetry 和 Langfuse 监控 AI 的调用链、token 和成本。",
-  "courseObjective_en": "Build an AI toolbox your DevOps team can keep using: connect AI to infrastructure safely through MCP, turn team standards into skills and block risky actions with hooks, split work across subagents, run agents in the cloud for PR review, patrols and first-look alert triage, then package it as a team plugin and roll it out compliantly through AWS Bedrock, monitoring AI traces, tokens and cost with OpenTelemetry and Langfuse.",
-  "suitable": "已经在做 DevOps / SRE，想用 agent、MCP 和 Claude Code 的扩展体系提升团队效率的人。不需要会写 AI 应用，不适合想转 AI Engineer 的人。",
-  "suitable_en": "DevOps and SRE engineers who want to raise team efficiency with agents, MCP and the Claude Code extension stack. No AI application development required; not for people switching to AI Engineer roles.",
-  "cardDescription": "10 小时直播带做：用 MCP、skills、hooks、subagents 和云端 agent，给你的 DevOps 团队搭一套 AI 工具箱。",
-  "promoDescription": "半夜告警响了，你合着电脑睡觉，早上 Slack 里已经有一份根因分析。这门课教你给自己的团队搭这样一套工具箱：MCP 让 AI 能看到 AWS 和 GitHub，hooks 拦住它去删生产环境，几个分工明确的 subagent 一起排查故障，云端 agent 每天早上自动巡检账号。最后打包成团队插件，同事一条命令装上，还能走 AWS Bedrock，用澳洲区域的推理配置落地；AI 花了多少钱、调用链长什么样，用 Langfuse 一眼看清。",
-  "prerequisiteknowledge": "会用 Terraform 和 AWS 的基本服务，了解 CI/CD（GitHub Actions）。用过 Claude Code 更好，但不要求，课上从配置开始。",
+  "courseObjective": "把 AI agent 当成团队成员来管：给它只读的身份和最小权限（L01），用 skills 和 hooks 交代规矩并在动手前拦截、留审计日志（L02），按职责拆成几个 subagent 并验收它们的结论（L03），把 agent 放到 GitHub Actions 和定时任务里无人值守地跑，并说清谁触发、用什么身份、谁兜底（L04），最后打包成团队插件，走 AWS Bedrock，用 OpenTelemetry 和 Langfuse 看清调用链、token 和成本，写出能交给安全团队的权限与审计方案（L05）。",
+  "courseObjective_en": "Manage AI agents like team members: give them a read-only identity and least privilege (L01), set rules with skills and block actions with hooks plus an audit log (L02), split work across subagents and verify their conclusions (L03), run agents unattended in GitHub Actions and scheduled jobs while stating who triggers them, under which identity and who catches failure (L04), then package everything as a team plugin on AWS Bedrock, trace calls, tokens and cost with OpenTelemetry and Langfuse, and write a permissions-and-audit proposal your security team can review (L05).",
+  "suitable": "已经在做 DevOps / SRE / 平台工程，会 AWS、Terraform 和 GitHub Actions，想把 AI agent 安全地引进团队日常工作的人。没有 Terraform、AWS 或 CI 基础的人请先上入门课。",
+  "suitable_en": "Working DevOps, SRE and platform engineers who already use AWS, Terraform and GitHub Actions and want to bring AI agents into team workflows safely. If you lack Terraform, AWS or CI basics, take the starter course first.",
+  "cardDescription": "10 小时直播带做：给 AI agent 身份、规矩和分工，给你的 DevOps 团队搭一套 AI 工具箱。$599 含 GST。",
+  "promoDescription": "如果团队里已经有人在用 AI 写 Terraform 和排障，常见的情况是没人说得清：它能碰哪些资源、用的是谁的凭证、出事后查不查得到它做过什么。这门课把 AI agent 当成团队新成员来管。L01 给它一个只读身份，L02 用 hooks 在它动手之前拦截并留日志，L03 把活按职责分给几个 subagent，L04 放到云端无人值守并想清楚谁兜底，L05 接上可观测，走 AWS Bedrock，写一份交给安全团队的方案。每节课先看到成品怎么跑，再自己带着做出来，课后带走整套团队插件仓库。",
+  "prerequisiteknowledge": "会写和读 Terraform，熟悉 AWS 的 IAM、ECS 或 EC2、CloudWatch，能看懂并改 GitHub Actions 工作流。用过 Claude Code 更好，但不要求，课上从配置开始。有 5 道自测题，见销售页。",
   "highlights": [
-    "整套 Claude Code 扩展体系用在 DevOps 上：MCP、skills、hooks、subagents、云端 agent、团队插件",
-    "课后带走一个团队插件仓库，同事一条命令装上整套 DevOps AI 工具箱",
-    "hooks 拦住 AI 的危险操作并留审计日志，让 AI 去删生产环境当场被拦下",
-    "云端 agent：PR 自动审查、CI 跑红自动诊断并提修复 PR、每天早上自动巡检 AWS 账号",
-    "走 AWS Bedrock，用澳洲区域的推理配置落地，并核对数据流向",
-    "用 OpenTelemetry 和自托管的 Langfuse 看清 AI 的调用链、token 和成本，提示词数据放在自己的 AWS 里"
+    "主线：把 AI agent 当团队成员管，给它身份、权限和审计记录（这是本课作者的提法，不是行业标准术语）",
+    "每节课先看终点：L02 一开场就让 AI 去删生产环境，看 hook 当场拦下并写日志",
+    "L01 到 L05 分别对应工具与身份、上下文与护栏、委派、自主、可观测与治理",
+    "课后带走一个团队插件仓库，含 MCP 配置、3 个 skill、hooks 规则、3 个 agent，一条命令装上",
+    "带走两条 GitHub Actions 工作流：PR 审查和 CI 失败诊断",
+    "带走一页给安全团队的 AI 权限与审计方案，以及巡检、告警初查、事故复盘三套模板"
   ],
   "highlights_en": [
-    "The full Claude Code extension stack applied to DevOps: MCP, skills, hooks, subagents, cloud agents, team plugin",
-    "Leave with a team plugin repo your colleagues install with one command",
-    "Hooks block risky AI actions and write an audit log — ask the AI to delete production and watch it get stopped",
-    "Cloud agents: automatic PR review, CI failure diagnosis with fix PRs, and a daily AWS account patrol",
-    "Roll it out on AWS Bedrock with an Australian-region inference setup and a checked data flow",
-    "See AI traces, tokens and cost through OpenTelemetry and self-hosted Langfuse, with prompt data kept in your own AWS"
+    "Core idea: manage the AI agent as a team member with identity, permissions and an audit trail (the author's own framing, not an industry-standard term)",
+    "Every session opens with the finished result: L02 starts by asking the AI to delete production and watching a hook stop it and log it",
+    "L01 to L05 map to tools and identity, context and guardrails, delegation, autonomy, observability and governance",
+    "Take away a team plugin repo: MCP config, 3 skills, hooks rules and 3 agents, installable with one command",
+    "Take away two GitHub Actions workflows: PR review and CI failure diagnosis",
+    "Take away a one-page AI permissions-and-audit proposal for your security team, plus templates for daily patrol, alert first-look and post-incident review"
   ],
   "features": [
     "每位学员一个预置好的 AWS 沙箱，里面已经部署好一个订单系统，作为被运维的对象",
     "统一 starter repo 加每节课 checkpoint 分支，跟丢了一条命令追上",
-    "贯穿全课的 AI 权限阶梯：只读 → 只能提 PR → 人工批准后才执行",
-    "课后带走一份「让 AI 参与 DevOps 工作」的规则、权限和落地方案"
+    "贯穿全课的 AI 权限阶梯：只读、只能提 PR、人工批准后才执行",
+    "每节课结尾必须交出一样能带回公司的东西，没有只听不做的环节"
   ],
   "program": {
-    "name": "DevOps 工程师 × AI 实战课 · 入门 第一期",
+    "name": "AI DevOps 实战课 · 进阶 第一期",
     "programPhase": 1,
     "tuition": 599
+  },
+  "curriculumPages": {
+    "pages": ["curriculum.html"],
+    "defaultPage": "curriculum.html"
   },
   "phases": [
     {
@@ -58,7 +62,7 @@
         {
           "code": "L00",
           "title": "课前准备：拿到沙箱，一条命令部署订单系统",
-          "description": "开课前 24 小时完成。装好 Claude Code、Terraform、AWS CLI 和 Docker，拿到自己的 AWS 沙箱账号，一条命令把订单系统部署进去。卡住的同学由助教单独约时间处理，不占直播时间。",
+          "description": "开课前 24 小时完成。装好 Claude Code、Terraform、AWS CLI 和 Docker，拿到自己的 AWS 沙箱账号，一条命令把订单系统部署进去。卡住的同学由助教单独约时间处理，不占直播时间。这一步不涉及 AI 判断，只是把被运维的对象准备好。",
           "type": "Information",
           "isLive": false,
           "duration": 30,
@@ -71,96 +75,100 @@
       ]
     },
     {
-      "name": "搭工具箱",
+      "name": "给 AI 身份、规矩和分工",
       "color": "#6D5BD0",
-      "summary": "3 节直播带做：MCP、skills 与 hooks、subagents",
+      "summary": "3 节直播带做：工具与身份、上下文与护栏、委派",
       "lessons": [
         {
           "code": "L01",
-          "title": "MCP：让 AI 看见你的基础设施",
-          "description": "先定规矩：公司环境里 AI 能拿多少权限。然后给 Claude Code 接上 AWS 和 GitHub、Slack 的 MCP，全部只读，再自己写一个最小的 MCP server，把你们内部的部署状态查询包成工具。最后对 AI 说一句「现在生产环境有什么不正常」，让它自己去查。",
+          "title": "工具与身份：给 AI 一个只读身份，让它看见你的基础设施",
+          "description": "AI 做：通过 MCP 查 AWS、GitHub 和 Slack，回答「现在生产环境有什么不正常」，并帮你写一个最小的 MCP server。你做：设计只读 IAM 角色和最小权限的凭证，核对 AI 的答案。你要能讲清：这个 AI 现在用的是谁的身份，能读什么、不能改什么，以及它的答案哪里可能是错的（比如查错区域、漏看某个服务）。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
           "steps": [
-            { "order": 1, "type": "CONCEPT", "title": "工具箱全景和 AI 权限阶梯", "description": "MCP、skills、hooks、subagents、云端 agent 各管什么；权限阶梯：只读、只能提 PR、人工批准后执行；公司只允许 Copilot 或 Bedrock 时怎么换", "duration": 15 },
-            { "order": 2, "type": "LIVE", "title": "接入 AWS MCP，设计只读权限", "description": "建一个只读的 IAM 角色，让 AWS MCP 用它，验证 AI 能查不能改", "duration": 25 },
-            { "order": 3, "type": "LIVE", "title": "接入 GitHub 和 Slack MCP", "description": "查 PR、查流水线运行记录、往 Slack 发通知，凭证按最小权限发放", "duration": 20 },
-            { "order": 4, "type": "LIVE", "title": "写一个最小的 MCP server", "description": "让 AI 帮你写，把订单系统的部署状态查询包成 MCP 工具，在 Claude Code 里调用", "duration": 30 },
-            { "order": 5, "type": "SCENARIO", "title": "自然语言巡检，并核对 AI 的答案", "description": "问「现在生产环境有什么不正常」，AI 自己查并回答；你用控制台核对它的答案对不对，并检查 MCP 用的是只读凭证而不是管理员凭证", "duration": 20 },
-            { "order": 6, "type": "PROJECT", "title": "提交 MCP 配置", "description": "MCP 配置、只读 IAM 角色的 Terraform 和自写 MCP server 提交到仓库", "duration": 10 }
+            { "order": 1, "type": "LIVE", "title": "先看终点：一句话问出生产环境现状", "description": "老师在已经配好的环境里对 AI 说「现在生产环境有什么不正常」，AI 通过 MCP 查完回答，再当场让它去改一个资源，被只读身份挡回来", "duration": 15 },
+            { "order": 2, "type": "CONCEPT", "title": "清单：给 AI 发身份之前问五个问题", "description": "它是谁（独立身份，不借用你的凭证）、能读什么、能写什么、凭证放哪、出事后能查到什么；配套的权限阶梯：只读、只能提 PR、人工批准后执行", "duration": 10 },
+            { "order": 3, "type": "LIVE", "title": "接入 AWS MCP，设计只读权限", "description": "建一个只读的 IAM 角色，让 AWS MCP 用它，验证 AI 能查不能改；具体用哪个能读真实账号状态的 AWS MCP，课前实测后定", "duration": 25 },
+            { "order": 4, "type": "LIVE", "title": "接入 GitHub 和 Slack MCP", "description": "查 PR、查流水线运行记录、往 Slack 发通知，凭证按最小权限发放；社区实现带来的供应链风险一并讨论", "duration": 15 },
+            { "order": 5, "type": "LIVE", "title": "写一个最小的 MCP server", "description": "让 AI 帮你写，把订单系统的部署状态查询包成 MCP 工具，在 Claude Code 里调用；你逐段读它写的代码并说出每段做什么", "duration": 25 },
+            { "order": 6, "type": "SCENARIO", "title": "核对 AI 的答案，检查它用的是什么身份", "description": "AI 回答完生产环境现状后，你用控制台逐条核对，找出它错在哪或漏了什么；再检查 MCP 用的是只读凭证还是管理员凭证", "duration": 15 },
+            { "order": 7, "type": "PROJECT", "title": "带走：团队插件的 MCP 配置和只读身份", "description": "带走：MCP 配置、只读 IAM 角色的 Terraform 和自写 MCP server，提交到团队插件仓库，是最终那个一条命令安装的插件的第一块", "duration": 15 }
           ]
         },
         {
           "code": "L02",
-          "title": "Skills 和 hooks：把团队规矩交给 AI，并管住它",
-          "description": "把团队的做法写成 skill：部署前检查清单、Terraform 审查规范、故障复盘模板。再用 hooks 拦住危险动作，比如 terraform apply、kubectl delete、动生产密钥，拦下来的每一次都记审计日志。最后做一轮红队测试，看能不能让 AI 绕过 hook。",
+          "title": "上下文与护栏：把团队规矩交给 AI，并用 hooks 拦住它",
+          "description": "AI 做：按 skill 里的团队规范审 Terraform PR、写复盘；在 hook 之外它会尽力完成你交代的任何事，包括危险的。你做：把团队做法写成 skill，用 hooks 在命令执行前拦截并记审计日志，再扮红队想办法绕过。你要能讲清：哪些规矩写成 skill 只是建议，哪些必须用 hook 才算硬性；hook 拦不住什么。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
           "steps": [
-            { "order": 1, "type": "CONCEPT", "title": "skills、hooks、规则文件分别管什么", "description": "规则文件管总原则，skill 管一件事怎么做，hook 在动手前硬性拦截；什么该写成 skill，什么必须用 hook", "duration": 10 },
-            { "order": 2, "type": "LIVE", "title": "把团队规范写成 3 个 skill", "description": "部署前检查清单、Terraform 审查规范、故障复盘模板；用 Claude Code 生成初稿，你按团队习惯改", "duration": 30 },
-            { "order": 3, "type": "LIVE", "title": "用 hooks 拦截危险命令并记审计日志", "description": "拦截 terraform apply、kubectl delete 和读取生产密钥，拦下的每次尝试写进审计日志", "duration": 30 },
-            { "order": 4, "type": "LIVE", "title": "用 skill 审一个有问题的 Terraform PR", "description": "拿一个故意写了过宽权限和公网数据库的 PR，让 AI 按审查规范审，看它能抓出几处", "duration": 20 },
-            { "order": 5, "type": "SCENARIO", "title": "红队测试：想办法绕过 hook", "description": "换一种写法、拆成多步命令，看 AI 能不能绕过你的 hook；绕过的就补洞", "duration": 20 },
-            { "order": 6, "type": "PROJECT", "title": "提交 skills 和 hooks", "description": "3 个 skill、hook 配置和审计日志格式提交到仓库", "duration": 10 }
+            { "order": 1, "type": "LIVE", "title": "先看终点：让 AI 去删生产环境，看 hook 拦下并留日志", "description": "老师对 AI 说「把生产环境的订单数据库删掉」，hook 在命令执行前拦下，审计日志里多出一行：谁、什么时间、想执行什么、为什么被拦", "duration": 10 },
+            { "order": 2, "type": "CONCEPT", "title": "清单：规矩写在哪一层", "description": "规则文件管总原则，skill 管一件事怎么做，hook 在动手前硬性拦截；判断标准：违反了只是质量问题写 skill，违反了会出事故写 hook", "duration": 10 },
+            { "order": 3, "type": "LIVE", "title": "把团队规范写成 3 个 skill", "description": "部署前检查清单、Terraform 审查规范、故障复盘模板；用 Claude Code 生成初稿，你按团队习惯改，并说出改了哪几处、为什么", "duration": 25 },
+            { "order": 4, "type": "LIVE", "title": "用 hooks 拦截危险命令并记审计日志", "description": "拦截 terraform apply、kubectl delete 和读取生产密钥，拦下的每次尝试写进审计日志；拦截用的退出码行为课前实测，不凭记忆写", "duration": 25 },
+            { "order": 5, "type": "LIVE", "title": "用 skill 审一个有问题的 Terraform PR", "description": "拿一个故意写了过宽权限和公网数据库的 PR，让 AI 按审查规范审，你对照答案看它抓出几处、漏了几处", "duration": 20 },
+            { "order": 6, "type": "SCENARIO", "title": "红队测试：想办法绕过 hook", "description": "换一种写法、拆成多步命令，看 AI 能不能绕过你的 hook；绕过的就补洞，补不了的写进方案里作为已知风险", "duration": 20 },
+            { "order": 7, "type": "PROJECT", "title": "带走：3 个 skill 和 hooks 规则", "description": "带走：3 个 skill、hook 配置和审计日志格式，提交到团队插件仓库；其中的故障复盘 skill 就是事故复盘模板", "duration": 10 }
           ]
         },
         {
           "code": "L03",
-          "title": "Subagents：让几个 AI 分工排障",
-          "description": "拆出几个各管一摊、权限互相隔离的 agent：审查 agent 只看 Terraform 改动，排障 agent 只读日志和指标，成本 agent 只看账单。然后老师往订单系统里注入一个故障，让它们并行排查，对比谁的结论对、谁被表面现象带偏了。",
+          "title": "委派：让几个 AI 分工排障，你来验收结论",
+          "description": "AI 做：几个 subagent 各管一摊并行排查故障，汇总结论。你做：定每个 agent 的职责和工具权限，对比它们的结论，判断哪个对、哪个被表面现象带偏。你要能讲清：为什么这样拆，每个 agent 为什么只给这些权限，以及你凭什么相信最后那个根因。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
           "steps": [
-            { "order": 1, "type": "CONCEPT", "title": "什么时候该拆 agent", "description": "单一职责、权限分开、上下文不互相污染；拆多了的代价", "duration": 10 },
-            { "order": 2, "type": "LIVE", "title": "建审查、排障、成本三个 agent", "description": "每个 agent 写清职责、能用的工具和只读权限", "duration": 30 },
-            { "order": 3, "type": "LIVE", "title": "把三个 agent 串成一个排障流程", "description": "一个入口把任务分给不同 agent，再汇总结果", "duration": 15 },
-            { "order": 4, "type": "SCENARIO", "title": "注入故障，并行排查", "description": "老师往订单系统注入故障（数据库连接被占满，API 大量报 500）；几个 agent 并行排查，你对比结论，找出哪个被表面现象带偏", "duration": 40 },
-            { "order": 5, "type": "SCENARIO", "title": "成本 agent 抓一笔异常账单", "description": "往账号里放一个没人用的高价资源，看成本 agent 能不能发现并说清楚是谁创建的", "duration": 15 },
-            { "order": 6, "type": "PROJECT", "title": "提交 agent 定义", "description": "三个 agent 的定义文件、排障流程和一次排查记录提交到仓库", "duration": 10 }
+            { "order": 1, "type": "LIVE", "title": "先看终点：三个 agent 并行找出一次故障的根因", "description": "老师在预先注入故障的订单系统上，让审查、排障、成本三个 agent 并行工作，汇总出一份带证据的根因报告，同时展示其中一个 agent 被带偏的结论", "duration": 10 },
+            { "order": 2, "type": "CONCEPT", "title": "清单：什么时候该拆 agent", "description": "单一职责、权限分开、上下文不互相污染；拆多了的代价是协调成本和相互矛盾的结论", "duration": 10 },
+            { "order": 3, "type": "LIVE", "title": "建审查、排障、成本三个 agent", "description": "每个 agent 写清职责、能用的工具和只读权限，用 AI 起草定义文件，你逐条核对工具权限有没有给多", "duration": 25 },
+            { "order": 4, "type": "LIVE", "title": "把三个 agent 串成一个排障流程", "description": "一个入口把任务分给不同 agent，再汇总结果", "duration": 15 },
+            { "order": 5, "type": "SCENARIO", "title": "注入故障，并行排查并验收结论", "description": "老师往订单系统注入故障（数据库连接被占满，API 大量报 500）；几个 agent 并行排查，你对比结论，找出哪个被报错最多的服务带偏，没找到上游的真根因", "duration": 35 },
+            { "order": 6, "type": "SCENARIO", "title": "成本 agent 抓一笔异常账单", "description": "往账号里放一个没人用的高价资源，看成本 agent 能不能发现并说清楚是谁创建的；它没说清的部分你自己查", "duration": 15 },
+            { "order": 7, "type": "PROJECT", "title": "带走：3 个 agent 和一次排查记录", "description": "带走：三个 agent 的定义文件、排障流程和一次完整排查记录，提交到团队插件仓库", "duration": 10 }
           ]
         }
       ]
     },
     {
-      "name": "放到云端，推到团队",
+      "name": "放权、观测和治理",
       "color": "#3F3A8C",
-      "summary": "2 节直播带做：云端 agent、团队插件与落地",
+      "summary": "2 节直播带做：自主、可观测与治理",
       "lessons": [
         {
           "code": "L04",
-          "title": "云端 agent：不开电脑也在干活",
-          "description": "把 Claude Code 接进 GitHub Actions：PR 自动审查，CI 跑红自动诊断并提修复 PR。再配定时任务，每天早上巡检 AWS 账号，每周出成本报告发到 Slack。最后让告警触发云端 agent，先查一轮根因再通知人。",
+          "title": "自主：不开电脑也在干活，谁触发、用什么身份、谁兜底",
+          "description": "AI 做：在 GitHub Actions 和定时任务里无人值守地审 PR、诊断 CI 失败、每天巡检账号、告警一响先做一轮初查。你做：决定每个自动化由谁触发、用什么身份、能做什么，并设计失败时谁被通知、单次运行的成本上限。你要能讲清：这个 agent 凌晨三点出错或乱来时，谁会先知道、能查到什么、怎么停掉它。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
           "steps": [
-            { "order": 1, "type": "CONCEPT", "title": "云端 agent 的边界", "description": "谁触发、用什么身份、能做什么、出错了谁兜底；为什么不能存长期密钥", "duration": 10 },
-            { "order": 2, "type": "LIVE", "title": "GitHub Actions：PR 审查和 CI 失败诊断", "description": "PR 自动审查；CI 跑红时自动诊断并提修复 PR；用 OIDC 访问 AWS，不存长期密钥", "duration": 35 },
-            { "order": 3, "type": "LIVE", "title": "定时巡检和成本周报", "description": "每天早上巡检 AWS 账号，每周出成本报告，结果发到 Slack", "duration": 30 },
-            { "order": 4, "type": "LIVE", "title": "告警触发云端 agent", "description": "告警一响，云端 agent 先查一轮根因，把结论发到 Slack 再通知值班的人", "duration": 25 },
-            { "order": 5, "type": "SCENARIO", "title": "检查云端 agent 的身份、成本和兜底", "description": "逐个检查：它用的是什么身份、权限是否过大、单次运行成本有没有上限、失败了谁知道", "duration": 10 },
-            { "order": 6, "type": "PROJECT", "title": "提交云端 agent 配置", "description": "工作流文件、定时任务配置和权限设计提交到仓库", "duration": 10 }
+            { "order": 1, "type": "LIVE", "title": "先看终点：CI 跑红，agent 自己诊断并提修复 PR", "description": "老师推一个会让 CI 失败的提交，不碰电脑，agent 在 GitHub Actions 里给出诊断、提出修复 PR，并把结果发到 Slack", "duration": 10 },
+            { "order": 2, "type": "CONCEPT", "title": "清单：放权前回答三件事", "description": "谁触发它、它用什么身份（不存长期密钥）、出错了谁兜底；配套检查项：单次运行成本上限、失败通知、一键停用", "duration": 10 },
+            { "order": 3, "type": "LIVE", "title": "GitHub Actions：PR 审查和 CI 失败诊断", "description": "PR 自动审查；CI 跑红时自动诊断并提修复 PR；用 OIDC 访问 AWS，不存长期密钥（具体接法课前对照 action 文档实测）", "duration": 30 },
+            { "order": 4, "type": "LIVE", "title": "定时巡检和成本周报", "description": "每天早上巡检 AWS 账号，每周出成本报告，结果发到 Slack；无人值守用 GitHub Actions 的定时触发，学员是否有订阅另行确认", "duration": 20 },
+            { "order": 5, "type": "LIVE", "title": "告警触发云端 agent 做第一轮初查", "description": "告警一响，云端 agent 先查一轮根因，把结论发到 Slack 再通知值班的人；初查模板同时存进仓库", "duration": 20 },
+            { "order": 6, "type": "SCENARIO", "title": "检查云端 agent 的身份、成本和兜底", "description": "逐个检查：它用的是什么身份、权限是否过大、单次运行成本有没有上限、失败了谁知道；故意弄坏一处，看有没有人收到通知", "duration": 15 },
+            { "order": 7, "type": "PROJECT", "title": "带走：两条工作流和三套模板", "description": "带走：PR 审查和 CI 失败诊断两条 GitHub Actions 工作流，加每日巡检和告警初查两套模板，连同权限设计一起提交到仓库", "duration": 15 }
           ]
         },
         {
           "code": "L05",
-          "title": "做成团队插件，接上可观测，在公司里落地",
-          "description": "把前面 4 节的 MCP、skills、hooks 和 agents 打包成一个团队插件，同事一条命令就能装上。再让 Claude Code 走 AWS Bedrock，并用 OpenTelemetry 和自托管的 Langfuse 看清 AI 的调用链、token 和成本。最后写一份落地方案，拿给老板和安全团队看。",
+          "title": "可观测与治理：做成团队插件，看清 AI 花了什么，在公司里落地",
+          "description": "AI 做：被打包进插件的整套 agent 走 AWS Bedrock 干活，它的调用链、token 和成本被记录下来。你做：打包插件让同事一条命令装上，接上 OpenTelemetry 和 Langfuse，写一份交给安全团队的权限与审计方案。你要能讲清：AI 能做什么、不能做什么、留了什么记录、花费怎么封顶、提示词里的数据存在哪里。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
           "steps": [
-            { "order": 1, "type": "LIVE", "title": "打包成团队插件", "description": "把 MCP 配置、skills、hooks、agents 放进一个插件，在另一台干净的环境里一条命令装上并验证", "duration": 20 },
-            { "order": 2, "type": "LIVE", "title": "让 Claude Code 走 AWS Bedrock", "description": "配置走 Bedrock、选澳洲区域的推理配置，验证模型可用，说明数据流向", "duration": 20 },
-            { "order": 3, "type": "LIVE", "title": "可观测：OpenTelemetry 加 Langfuse", "description": "Claude Code 的成本和 token 指标经 OpenTelemetry Collector 进 Grafana，看团队的 AI 花费；一个调用 Bedrock 的示例应用把调用链发给自托管的 Langfuse，看每次调用的 token、耗时和成本，并配成本告警", "duration": 30 },
-            { "order": 4, "type": "CONCEPT", "title": "数据放哪、谁能看、怎么封顶", "description": "提示词里的隐私数据存在哪里、谁有权限看、保留多久；AI 能做什么、不能做什么、留了什么记录、花费怎么封顶", "duration": 10 },
-            { "order": 5, "type": "SCENARIO", "title": "有工具箱 vs 没有工具箱计时", "description": "同一个小任务，装工具箱前后各做一次，记录各自用时，得到自己的提效数据", "duration": 10 },
-            { "order": 6, "type": "SCENARIO", "title": "写落地方案", "description": "用前面的数据、审计日志和 Langfuse 的数据流向，写一页给老板和安全团队看的落地方案", "duration": 20 },
-            { "order": 7, "type": "PROJECT", "title": "提交团队插件仓库", "description": "完整的团队插件仓库、可观测配置和落地方案提交，课后可以直接带回公司", "duration": 10 }
+            { "order": 1, "type": "LIVE", "title": "先看终点：同事一条命令装上整套工具箱，调用链一目了然", "description": "老师在一台干净的环境里一条命令装上团队插件，跑一次任务，随后打开 Langfuse 看到这次调用的链路、token 和成本", "duration": 10 },
+            { "order": 2, "type": "LIVE", "title": "打包成团队插件", "description": "把 MCP 配置、skills、hooks、agents 放进一个插件，在另一台干净的环境里一条命令装上并验证；检查插件里没有带进任何人的本地凭证", "duration": 20 },
+            { "order": 3, "type": "LIVE", "title": "让 Claude Code 走 AWS Bedrock", "description": "配置走 Bedrock、选用澳洲区域的推理配置并核对数据流向，验证模型可用；不假定数据全程留在澳洲，以实际核对结果为准", "duration": 15 },
+            { "order": 4, "type": "LIVE", "title": "可观测：OpenTelemetry 加 Langfuse", "description": "Claude Code 的成本和 token 指标经 OpenTelemetry Collector 进 Grafana；一个调用 Bedrock 的示例应用把调用链发给自托管的 Langfuse，看每次调用的 token、耗时和成本，并配成本告警", "duration": 30 },
+            { "order": 5, "type": "CONCEPT", "title": "清单：数据放哪、谁能看、怎么封顶", "description": "提示词里的隐私数据存在哪里、谁有权限看、保留多久；开不开提示词内容记录；花费怎么封顶", "duration": 10 },
+            { "order": 6, "type": "SCENARIO", "title": "写给安全团队的一页方案", "description": "用前面的审计日志、权限设计和 Langfuse 里的数据流向，写一页给安全团队看的方案：AI 能做什么、不能做什么、留了什么记录、花费怎么封顶、已知绕过风险", "duration": 20 },
+            { "order": 7, "type": "PROJECT", "title": "带走：团队插件仓库和权限与审计方案", "description": "带走：完整的团队插件仓库、可观测配置和那一页权限与审计方案，课后可以直接带回公司；课后作业：同一个小任务装工具箱前后各做一次并计时，记下自己的数据", "duration": 15 }
           ]
         }
       ]

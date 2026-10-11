@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI DevOps 实战课 · 入门 — 课程介绍</title>
+<meta name="description" content="10 小时直播带做：把一个现成的订单系统放上 AWS，配流水线和监控，演练故障，整理成作品集。AI 是结对搭档，你要能讲清每一部分。">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="hero">
+<h1>AI DevOps 实战课 · 入门<br>AI 陪你做出第一个 AWS 项目</h1>
+<p class="sub">一个现成的订单系统，从笔记本放上 AWS，配上流水线和监控，演练一次故障，最后整理成能放进作品集的项目。AI 坐在你旁边写代码，你负责看懂它写了什么。</p>
+<div class="chips"><span class="chip">10 小时直播带做</span><span class="chip y">$599 含 GST</span><span class="chip">适合想转进 DevOps 的人</span></div>
+</header>
+
+<section class="sec" id="ai"><h2>这门课和 AI 的关系</h2>
+<p class="lead">AI 能在几分钟里写出一份 Terraform 或流水线配置，而且写得很像样。风险在于：你读不懂它，却把它放进了自己的 AWS 账号。所以这门课不教你「怎么让 AI 写得更快」，教你怎么在 AI 写完之后判断它对不对。</p>
+<div class="three">
+<div class="tcard"><span class="tag">AI 做</span><p>起草基础设施代码和流水线，解释每一段，在只读权限里查日志、画架构图、整理复盘，还会扮演追问的面试官。</p></div>
+<div class="tcard"><span class="tag">你做</span><p>先把要什么写清楚；给 AI 立只读规则；自己运行；自己读 plan、日志和指标；每节课结束前用自己的话讲回。</p></div>
+<div class="tcard"><span class="tag">你要能讲清</span><p>每个 AWS 资源为什么在、谁能访问它；一次部署发生了什么；一条告警响了你做什么；一个故障的结论凭什么成立。</p></div>
+</div>
+<h3 class="sub3">从第一节课就执行的四条规则</h3>
+<ol class="rules"><li>先说清你要什么，再让 AI 写。</li><li>让 AI 解释每一段，听不懂就追问。</li><li>自己运行，自己核对输出。</li><li>你用自己的话解释不了的，不提交。</li></ol>
+<h3 class="sub3">每节课练一种读法</h3>
+<table class="tbl"><thead><tr><th>课</th><th>读什么</th><th>要练着抓的问题（以课前实跑为准）</th></tr></thead><tbody>
+<tr><td>L01</td><td>读 Terraform plan</td><td>安全组把数据库端口对 0.0.0.0/0 打开；健康检查路径写错导致任务反复重启；在 Apple 芯片上构建的镜像在 x86 的 Fargate 上起不来。</td></tr><tr><td>L02</td><td>读流水线日志</td><td>草稿把 AWS 长期密钥存进 secrets，而不是用 OIDC 临时角色；角色的信任条件和仓库名对不上导致无法扮演角色；忘记登录镜像仓库导致推送被拒。</td></tr><tr><td>L03</td><td>读指标</td><td>告警一直显示数据不足，因为没有流量或缺失数据的处理方式不对；把 CPU 平均值当成唯一指标；起草的四条告警里有的半夜会吵醒你却没有任何可做的动作。</td></tr><tr><td>L04</td><td>读事故时间线</td><td>把时间上靠得近的事当成原因；只看最近一次部署；日志被截断后仍给出确定的结论；没有证据却说得很肯定。</td></tr><tr><td>L05</td><td>读权限</td><td>架构图里画了仓库里并不存在的组件；README 里的命令没人试过；审查时漏掉对公网开放的端口和过宽的权限；NAT 网关或日志保留时间带来意外费用。</td></tr>
+</tbody></table>
+<p class="note">表中问题一部分由课程预先放进草稿，一部分是 AI 常见的写法，哪些在课上真实出现，以开课前在 starter 仓库的实跑为准。这门课不教部署模型，也不教做 AI 应用；MCP、子代理、云端代理这类扩展属于进阶课。</p>
+</section>
+
+<section class="sec" id="who"><h2>适合谁与不适合</h2>
+<div class="two">
+<div class="box good"><h3>适合</h3><ul>
+<li>想转进 DevOps 的技术支持、测试、系统管理员和其他 IT 岗位的人</li>
+<li>计算机相关专业的应届毕业生，想要一个能讲清楚的项目</li>
+<li>已经用 AI 写过代码，但不确定自己能不能放心把它的基础设施代码放上云的人</li>
+</ul></div>
+<div class="box bad"><h3>不适合</h3><ul>
+<li>已经在维护生产环境 AWS、Terraform 和流水线的人，请看进阶课</li>
+<li>没用过 Linux 命令行或 Git 的人，请先补前置</li>
+<li>想要的是学会 Kubernetes，或者想做 AI 应用、训练模型的人</li>
+</ul></div></div></section>
+
+<section class="sec" id="build"><h2>你会做出什么</h2>
+<p class="lead">一个订单系统：前端、API、Postgres 数据库。应用代码由课程提供，你不写应用，你做的是让它上线并保持健康。</p>
+<div class="flow"><span>本机 Docker 跑起来</span><i>→</i><span>Terraform 放上 AWS（ECS Fargate）</span><i>→</i><span>GitHub Actions 自动部署</span><i>→</i><span>CloudWatch 监控与告警</span><i>→</i><span>故障演练与复盘</span><i>→</i><span>作品集仓库</span></div>
+<p class="note">课程用 ECS Fargate，不用 Kubernetes。云资源跑在课程提供的沙箱账号里。</p></section>
+
+<section class="sec" id="lessons"><h2>每节课</h2>
+<div class="prep"><span class="code">L00</span><div><h3>课前准备：环境检查并登录沙箱 <small>30 分钟 · 自学，不直播</small></h3><p>开课前 24 小时完成：装好 Docker、Terraform、AWS 命令行、Git 和 AI 编程助手，登录沙箱账号并验证身份。卡住的同学由助教单独约时间处理，不占直播时间。</p></div></div>
+<p class="note">L01 到 L05 每节 120 分钟，概念讲解不超过 10 分钟，其余时间动手。每节开头先看终点，结尾带走一件具体的东西，并用自己的话讲回。</p>
+<article class="lcard"><header><span class="code">L01</span><h3>本机用 Docker 跑起订单系统，再用 Terraform 放上 AWS</h3><span class="dur">120 分钟 · 直播</span></header>
+<dl>
+<div class="row end"><dt>先看终点</dt><dd>浏览器打开 AWS 上正在运行的订单页；屏幕另一边是 terraform plan 的输出，每一行加号对应一个 AWS 资源；最后一条 terraform destroy 把它全部清掉。</dd></div>
+<div class="row"><dt>AI 做</dt><dd>起草 Dockerfile 的解释、起草 Terraform（ECS Fargate、负载均衡、Postgres、镜像仓库）；只在你立的只读规则内行动。</dd></div>
+<div class="row"><dt>你做</dt><dd>先写下一页需求，再给 AI 立规则；自己跑 docker compose；自己读 plan，决定能不能 apply。</dd></div>
+<div class="row"><dt>你要能讲清</dt><dd>plan 里每个资源是干什么的、谁能从公网访问它、删掉它会发生什么。</dd></div>
+<div class="row warn"><dt>要练着抓的问题</dt><dd>安全组把数据库端口对 0.0.0.0/0 打开；健康检查路径写错导致任务反复重启；在 Apple 芯片上构建的镜像在 x86 的 Fargate 上起不来。</dd></div>
+<div class="row take"><dt>带走</dt><dd>一个能 apply 也能 destroy 的订单系统基础设施仓库、一份你用自己的话写的「每个 AWS 资源是干什么的」表、一份写好的 AI 只读规则文件。</dd></div>
+</dl><p class="skill">这节练的读法：<b>读 Terraform plan</b></p></article>
+<article class="lcard"><header><span class="code">L02</span><h3>GitHub Actions 流水线：推一次代码，自动构建并部署到 ECS</h3><span class="dur">120 分钟 · 直播</span></header>
+<dl>
+<div class="row end"><dt>先看终点</dt><dd>改一行页面文字并 push，流水线自动构建镜像、推到镜像仓库、更新 ECS 服务，刷新页面文字变了；再推一个故意写坏的提交，流水线在测试阶段变红，线上页面没动。</dd></div>
+<div class="row"><dt>AI 做</dt><dd>起草 GitHub Actions 的工作流文件，并解释每一段；在你读完日志之后，给出它对失败原因的判断。</dd></div>
+<div class="row"><dt>你做</dt><dd>先写下流水线的阶段和触发条件；逐段解释草稿；自己读失败日志并写出原因，再去问 AI；自己执行一次回滚。</dd></div>
+<div class="row"><dt>你要能讲清</dt><dd>流水线的每个阶段在做什么；失败时去哪里看第一个红色步骤；部署用的凭据是长期密钥还是临时角色，为什么。</dd></div>
+<div class="row warn"><dt>要练着抓的问题</dt><dd>草稿把 AWS 长期密钥存进 secrets，而不是用 OIDC 临时角色；角色的信任条件和仓库名对不上导致无法扮演角色；忘记登录镜像仓库导致推送被拒。</dd></div>
+<div class="row take"><dt>带走</dt><dd>一个在你自己 GitHub 仓库里能跑通的部署工作流、一页你自己写的「读失败日志三步」笔记、一次完整的回滚记录。</dd></div>
+</dl><p class="skill">这节练的读法：<b>读流水线日志</b></p></article>
+<article class="lcard"><header><span class="code">L03</span><h3>监控与告警：CloudWatch 指标、日志和第一条告警</h3><span class="dur">120 分钟 · 直播</span></header>
+<dl>
+<div class="row end"><dt>先看终点</dt><dd>压测脚本往订单系统打流量，仪表盘上请求数和延迟曲线动起来，延迟告警触发，告警邮件到收件箱；老师指着曲线说出每一条在讲什么。</dd></div>
+<div class="row"><dt>AI 做</dt><dd>在你写完自己的关注清单之后，给出它认为该监控什么；起草 CloudWatch 仪表盘和告警的 Terraform。</dd></div>
+<div class="row"><dt>你做</dt><dd>先在纸上写下订单系统出什么事你必须知道；审 AI 起草的告警；跑压测，对着曲线说出含义；删掉没有动作可做的告警。</dd></div>
+<div class="row"><dt>你要能讲清</dt><dd>每条曲线的含义；为什么看 p99 而不是平均值；每条告警触发后你具体要做什么。</dd></div>
+<div class="row warn"><dt>要练着抓的问题</dt><dd>告警一直显示数据不足，因为没有流量或缺失数据的处理方式不对；把 CPU 平均值当成唯一指标；起草的四条告警里有的半夜会吵醒你却没有任何可做的动作。</dd></div>
+<div class="row take"><dt>带走</dt><dd>一个仪表盘加三条告警（Terraform 代码）、一页「告警对应动作」表、一份你用自己的话写的「该监控什么」清单。</dd></div>
+</dl><p class="skill">这节练的读法：<b>读指标</b></p></article>
+<article class="lcard"><header><span class="code">L04</span><h3>故障演练：先自己查，再让 AI 查，对比各找到了什么</h3><span class="dur">120 分钟 · 直播</span></header>
+<dl>
+<div class="row end"><dt>先看终点</dt><dd>老师在订单系统里注入一个故障，接口开始返回 500；从告警出现到找到根因，一条时间线讲完；最后并排放出人写的和 AI 写的两份报告，指出差别。</dd></div>
+<div class="row"><dt>AI 做</dt><dd>在只读权限内查日志和指标，给出时间线与根因判断；帮你整理复盘文档。</dd></div>
+<div class="row"><dt>你做</dt><dd>先不用 AI，自己写出时间线；再让 AI 查，记录它每个结论所依据的证据；逐条标注哪些是证据、哪些是猜测。</dd></div>
+<div class="row"><dt>你要能讲清</dt><dd>哪些结论有证据、哪些只是猜测；先止血还是先找根因；AI 的结论为什么可信或不可信。</dd></div>
+<div class="row warn"><dt>要练着抓的问题</dt><dd>把时间上靠得近的事当成原因；只看最近一次部署；日志被截断后仍给出确定的结论；没有证据却说得很肯定。</dd></div>
+<div class="row take"><dt>带走</dt><dd>一份你自己的事故复盘（时间线、根因、证据、你和 AI 各发现了什么、怎么预防）。</dd></div>
+</dl><p class="skill">这节练的读法：<b>读事故时间线</b></p></article>
+<article class="lcard"><header><span class="code">L05</span><h3>作品集：README、架构图、面试讲解和 AI 基础设施审查清单</h3><span class="dur">120 分钟 · 直播</span></header>
+<dl>
+<div class="row end"><dt>先看终点</dt><dd>一个完整的作品仓库：README 能让陌生人照着跑起来，架构图每个箭头都对应真实资源；然后现场做一次三分钟讲解，被追问三个问题。</dd></div>
+<div class="row"><dt>AI 做</dt><dd>起草 README 和 mermaid 架构图；用只读权限按清单审查你的仓库；扮演面试官追问。</dd></div>
+<div class="row"><dt>你做</dt><dd>核对架构图的每个箭头；自己按清单审查，再和 AI 的结果对比；用自己的话讲解，追问答不上来就回去改代码或改说明。</dd></div>
+<div class="row"><dt>你要能讲清</dt><dd>权限有没有过宽；有没有不该对公网暴露的东西；有没有会让账单意外变大的配置；自己的项目每一部分能不能讲清。</dd></div>
+<div class="row warn"><dt>要练着抓的问题</dt><dd>架构图里画了仓库里并不存在的组件；README 里的命令没人试过；审查时漏掉对公网开放的端口和过宽的权限；NAT 网关或日志保留时间带来意外费用。</dd></div>
+<div class="row take"><dt>带走</dt><dd>一个作品仓库（README 加架构图）、一页基础设施审查清单、一份你自己的话写的三分钟讲解稿。</dd></div>
+</dl><p class="skill">这节练的读法：<b>读权限</b></p></article>
+</section>
+
+<section class="sec" id="takeaway"><h2>带走清单</h2><ul class="take"><li><b>L01</b>一个能 apply 也能 destroy 的订单系统基础设施仓库、一份你用自己的话写的「每个 AWS 资源是干什么的」表、一份写好的 AI 只读规则文件</li><li><b>L02</b>一个在你自己 GitHub 仓库里能跑通的部署工作流、一页你自己写的「读失败日志三步」笔记、一次完整的回滚记录</li><li><b>L03</b>一个仪表盘加三条告警（Terraform 代码）、一页「告警对应动作」表、一份你用自己的话写的「该监控什么」清单</li><li><b>L04</b>一份你自己的事故复盘（时间线、根因、证据、你和 AI 各发现了什么、怎么预防）</li><li><b>L05</b>一个作品仓库（README 加架构图）、一页基础设施审查清单、一份你自己的话写的三分钟讲解稿</li></ul></section>
+
+<section class="sec" id="prereq"><h2>前置要求与 5 题自测</h2>
+<p class="lead">前置要求：会用 Linux 命令行，会用 Git，能读简单代码。AWS、Terraform、CI/CD 不需要提前学。</p>
+<ol class="quiz"><li><p>你能不看教程，在 Linux 终端里进入一个目录，找到一个日志文件，并看到它的最后 50 行吗？</p><p class="route">否：先补 Linux 命令行基础再报名。</p></li>
+<li><p>你用过 git clone、add、commit、push，并能说清分支是什么吗？</p><p class="route">否：先补 Git 基础再报名。</p></li>
+<li><p>给你一段 20 行左右的 Python 或 JavaScript，你能说出它大概在做什么吗？</p><p class="route">否：先补一门入门编程再报名。</p></li>
+<li><p>你有 GitHub 账号，并愿意把课上的代码放进自己的仓库吗？</p><p class="route">否：课前注册一个账号即可，不影响报名。</p></li>
+<li><p>你现在的工作里，是否已经在维护生产环境的 AWS、Terraform 或部署流水线？</p><p class="route">是：这门课对你偏浅，请看进阶课。</p></li></ol></section>
+
+<section class="sec" id="nopromise"><h2>我们不承诺什么</h2>
+<ul class="plain"><li>不承诺工作、面试、薪资、晋升或签证结果。你带走的是一个项目和一份自己的话写的讲解。</li>
+<li>不承诺 AI 每次都对。课上你会亲眼看到它出错，目的是让你练会发现。</li>
+<li>不承诺覆盖 DevOps 的全部。这门课只做一个项目，不教 Kubernetes。</li></ul></section>
+
+<section class="sec" id="price"><h2>价格与开班</h2>
+<div class="price"><div class="amt">$599<small> 含 GST</small></div>
+<ul><li>10.5 小时：1 节自学准备加 5 节 120 分钟直播</li><li>同一时间只开一个班；报名不少于 15 人才开班</li><li>AWS 沙箱账号由课程提供，费用安排报名前公布</li><li>开班时间：待确定，开班时通知报名者</li></ul>
+<p class="signup">报名入口待开通</p></div></section>
+
+<section class="sec" id="faq"><h2>常见问题</h2>
+<details><summary>课程用 ECS，不教 Kubernetes，这样行吗？</summary><div>不教。10 小时只够把一个项目从头做完，Kubernetes 和 EKS 放进来会把时间全占掉。这些思路多数可以迁移到 Kubernetes，但具体的 Kubernetes 对象和命令这门课不覆盖。</div></details>
+<details><summary>我没用过 AWS 和 Terraform，跟得上吗？</summary><div>课程前提是 Linux 命令行和 Git。AWS、Terraform、流水线都从零开始，在课上边做边学。课前准备那一节会先让你把环境和沙箱账号跑通。</div></details>
+<details><summary>我可以用别的 AI 工具吗？</summary><div>课上用 Claude Code 演示。你用同类的 AI 编程助手也行，但助教只排查课程用的那套环境里的问题。AI 工具订阅费用的安排，与沙箱费用一起在报名前公布。</div></details>
+<details><summary>AI 把一切都写好了，我还需要学什么？</summary><div>需要学的是判断。AI 写出的基础设施可能权限过宽、可能把数据库对公网打开、可能让账单意外变大，而且它说得很肯定。这门课每节练一种读法，目标是你自己能看出来。</div></details>
+<details><summary>学完会不会得到工作？</summary><div>不承诺。你会得到一个能展示的项目和一份用自己的话写的讲解，能不能拿到面试和录用取决于很多课程控制不了的因素。</div></details>
+<details><summary>云资源的费用谁出？</summary><div>AWS 沙箱账号由课程提供，费用与预算上限的具体安排在报名前公布。本课不要求使用你自己的 AWS 账号。</div></details></section>
+<footer class="foot">AI DevOps 实战课 · 入门 · 内部预览页</footer>
+</body>
+</html>
