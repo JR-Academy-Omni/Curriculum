@@ -2,6 +2,8 @@
 
 ## 2026-10-11
 
+- 修复 W2 生产课程目录入口：移除127.0.0.1本地预览按钮，明确指向68页线上课件的HTTPS地址（`lessons.html`）。
+
 - 发布 AI Engineer 第七期 W2 68页课件，核验线上页数、来源图解、412个构建文件和CareKind交互，并同步Lesson目录、发布状态与公开来源台账（`lessons/ai-engineer-cohort-07-practice-w2`）。
 
 - 补充 AI Engineer W2 六页公开图解与案例，重绘微软合作模式、团队实验、Anthropic委派、GitHub交付和Skills结构并逐页标来源/改编；本地68页，保留UI/Design System与CareKind实操（`curriculum/lessons/ai-engineer-cohort-07-practice-w2`）。
