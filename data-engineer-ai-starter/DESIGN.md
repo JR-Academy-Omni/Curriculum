@@ -1,8 +1,8 @@
-# AI 数据工程实战课 · 入门 设计说明
+# AI 数据工程实战课 · 项目班 设计说明
 
 > 本文件是该课的设计 SoT。课时、步骤、价格只写在 `public/outline.json`，本文件不复述大纲。销售预览在 `public/curriculum.html`，它的课时代码、标题、时长必须和 outline.json 一致。
 >
-> 取代旧目录 `data-engineer-ai-advanced/` 里早期的入门设计（交通视频加爬虫项目）。保留的决策：数据工程做骨架、AI 做方法；每节课带走一样东西；每个翻车点要实跑验证。放弃的：交通视频和爬虫项目、$788 进阶定价、Airflow 作为入门内容。
+> 取代旧目录 `data-engineer-ai-advanced/` 里早期的项目班设计（交通视频加爬虫项目）。保留的决策：数据工程做骨架、AI 做方法；每节课带走一样东西；每个翻车点要实跑验证。放弃的：交通视频和爬虫项目、$788 高级班定价、Airflow 作为项目班内容。
 
 ## 定位
 
@@ -13,17 +13,18 @@
 
 ## 与另一个级别的区别
 
-| | 入门（本课） | 进阶 |
+| | 项目班（本课） | 高级班 |
 |---|---|---|
 | 学员 | 转行者，没有数据工程基础 | 在职从业者，已有领域基础 |
 | AI 的角色 | 结对搭档和老师 | 团队成员或管线组件 |
 | 学员的工作 | 学会判断：粒度、主键、测试 | 用领域经验审查 AI 的产出 |
 | 每节结尾 | 讲解（explain-back） | 评审与上线检查 |
-| 交付 | 作品集项目加面试讲解 | 由进阶课自己定义 |
+| 交付 | 作品集项目加面试讲解 | 由高级班自己定义 |
 
 ## 决策记录
 
-- 2026-10-11 Lightman 定：入门与进阶各 $599 含 GST；满 15 人开班；同一时间只开一个班；全部由 Lightman 亲自授课。
+- 2026-10-11 Lightman 定：不再叫「入门」（没人愿意报），入门版改称「项目班」；进阶版改称「高级班」（可以叫）。目录名里的 starter 和 advanced 是内部标识，保持不变。
+- 2026-10-11 Lightman 定：项目班与高级班各 $599 含 GST；满 15 人开班；同一时间只开一个班；全部由 Lightman 亲自授课。
 - 项目换成电商模拟数据，本地 DuckDB 运行：没有云账单，没有真实客户数据，初学者环境最容易跑通。
 - 不教 Airflow 和 Spark：初级广告样本里这两项都是 0 次（见 JD 证据）。
 - 每节课固定节奏：先看终点（10 到 15 分钟演示），最多 10 分钟概念并做成清单，其余动手，最后一项是“带走：”。
@@ -52,14 +53,14 @@
 - 4 条真正的初级数据工程广告全部提到 AI，多数是 AI 辅助编码或兴趣。原文：EHP “Interest in applied AI over business data — connecting language models to governed datasets.”；MachShip “Comfortable using AI coding and analysis tools to work faster and catch more.”；BizCover（Seek 95069872）“Hands-on experience using AI-assisted development tools (e.g., SQL/dbt copilots, LLMs for documentation,”。
 - 中高级 29 条里有 16 条没有任何 AI 或 ML 提及。
 - 全样本：AI 编码助手 6 条（其中 4 条为必需）；ML/MLOps 管线 6；RAG/向量数据基础 2（Sense 94965657，列为加分项）；AI 相关的数据质量与治理 3；视频或网页抓取 0；MCP 0；text-to-SQL 0；文档抽取只出现在 AI 工程师广告（Global 360：“build structured extraction from PDFs, scans, photos and emails with per-field confidence”）。
-- 据此（样本小，只作设计参考）：入门课教 SQL、dbt、数据质量、AI 辅助编码；不教 Airflow、Spark、RAG、抽取。
+- 据此（样本小，只作设计参考）：项目班教 SQL、dbt、数据质量、AI 辅助编码；不教 Airflow、Spark、RAG、抽取。
 
 ## 项目与环境
 
 - **学员做的项目**：课程提供的电商模拟数据（orders、order_items、customers、products、payments 五个文件），本地 DuckDB，dbt 做 staging 和 marts，写测试与重跑脚本，回答三个业务问题，最后整理成作品集仓库。
 - **工具**：Python、DuckDB、dbt（DuckDB 适配器，是假设，见待核实）、Git、学员自带的 AI 编程助手。
 - **谁出钱**：云费用为零（本地运行）。AI 编程助手由学员自备，支持哪些工具和费用如何说明：待定，开班前写入报名页。课程方不在课上调用任何付费模型接口。
-- **和云仓库的对应**：DuckDB 里练到的是 SQL 建模、粒度、dbt 分层、测试、幂等，这些思路可以带到 Snowflake、Databricks、BigQuery。不等同：云仓库有自己的计费、权限、分区聚簇、性能调优和语法差异，这些入门课不教，也不声称学会了 DuckDB 就等于会了云仓库。
+- **和云仓库的对应**：DuckDB 里练到的是 SQL 建模、粒度、dbt 分层、测试、幂等，这些思路可以带到 Snowflake、Databricks、BigQuery。不等同：云仓库有自己的计费、权限、分区聚簇、性能调优和语法差异，这些项目班不教，也不声称学会了 DuckDB 就等于会了云仓库。
 
 ## starter repo 需求
 
@@ -96,7 +97,7 @@
 1. 你能不查资料写出一条 select + join + group by 的查询吗？否：先补 SQL 基础再报名。
 2. 给你一个 20 行左右的 Python 函数，你能说出它返回什么吗？否：先补 Python 读码再报名。
 3. 你会在终端里切换目录、运行 Python 脚本并用 Git 提交吗？否：先补命令行与 Git 再报名。
-4. 你已经写过 dbt 模型或维护过每天定时跑的管线吗？是：看进阶课，不报入门。
+4. 你已经写过 dbt 模型或维护过每天定时跑的管线吗？是：看高级班，不报项目班。
 5. 你愿意在课上解释 AI 写的每一段代码吗？否：这门课不适合你。
 
 ## 待核实

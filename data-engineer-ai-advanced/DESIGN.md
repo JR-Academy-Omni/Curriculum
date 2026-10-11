@@ -1,4 +1,4 @@
-# AI 数据工程实战课 · 进阶 — 设计说明
+# AI 数据工程实战课 · 高级班 — 设计说明
 
 > SoT：课时、步骤、时长、价格只写在 public/outline.json；销售预览是 public/curriculum.html。本文件只记录定位、决策、AI 关系、证据、环境、翻车点和待核实项，不复述大纲。slug 由旧的 data-engineer-ai-foundations 改名而来，内容大部分已替换。
 
@@ -12,17 +12,18 @@
 
 ## 与另一个级别的区别
 
-| | 入门（另一门课，尚未建） | 进阶（本课） |
+| | 项目班（另一门课，尚未建） | 高级班（本课） |
 |---|---|---|
 | 学员 | 转行者、新人，只会基础编程和命令行 | 已有 SQL、Python、dbt 和数仓经验的在职者 |
 | AI 的角色 | 结对编程的搭档和老师 | 团队成员和管线部件，输出由学员用领域判断审 |
 | 重点 | 学会这一行的基本动作，四条规矩从第一课起 | 抽取可信度、治理、重抽取，也就是 AI 数据真正出事的地方 |
 | 价格 | $599 含 GST | $599 含 GST |
 
-旧计划里进阶价 $788 已作废，2026-10-11 Lightman 定为两级都 $599。
+旧计划里高级班定价 $788 已作废，2026-10-11 Lightman 定为两级都 $599。
 
 ## 决策记录
 
+- 2026-10-11 Lightman 定：不再叫「入门」（没人愿意报），入门版改称「项目班」；进阶版改称「高级班」（可以叫）。目录名里的 starter 和 advanced 是内部标识，保持不变。
 1. **2026-10-11 项目由「交通视频加网页爬虫」换成「合成文档抽取」。** 原因：JD 抽样里视频和爬虫的数据工程广告为 0 条，文档抽取、AI 数据治理和 RAG 就绪的数据基础有出现。交通视频只保留为可能的免费公开课演示，不是课程项目。
 2. **删掉 Spark 和 YOLO。** 与岗位证据对不上，也会占掉动手时间。
 3. **编排选最简单的：Makefile 加定时任务，dbt 自己管模型依赖。** 理由：课时只有 120 分钟，Airflow 的搭建会吃掉整节课。证据说明：初级广告样本里 Airflow 和 Spark 都是 0 条；中高级广告里没有统计，所以不能说「市场不要 Airflow」，只能说「本课不以它为主线」。课上会讲同样的步骤怎么搬到别的编排器。
@@ -56,7 +57,7 @@
 - 全部：AI 编码助手 6 条（4 条是必须项）；ML 或 MLOps 管线 6 条；RAG 或向量数据基础 2 条（都是加分项，Sense 94965657）；数据质量或 AI 治理 3 条；视频或网页爬虫抽取 0 条；MCP 0 条；text-to-SQL 0 条；文档抽取只出现在 AI Engineer 广告里。
 - 原文摘录：EHP「Interest in applied AI over business data — connecting language models to governed datasets.」；MachShip「Comfortable using AI coding and analysis tools to work faster and catch more.」；BizCover 95069872「Hands-on experience using AI-assisted development tools (e.g., SQL/dbt copilots, LLMs for documentation,」；Global 360「build structured extraction from PDFs, scans, photos and emails with per-field confidence」。
 
-对课程的含义（只是推断，不是结论）：AI 辅助编码（6 条）和数据质量或治理（3 条）在样本里出现，所以 L01 L02 L04 L05 以「审 AI 写的管线」为主；文档抽取只在 AI Engineer 广告出现，所以 L03 是对进阶学员的拓展，不是岗位必备，销售页不能写成「岗位都要求」。
+对课程的含义（只是推断，不是结论）：AI 辅助编码（6 条）和数据质量或治理（3 条）在样本里出现，所以 L01 L02 L04 L05 以「审 AI 写的管线」为主；文档抽取只在 AI Engineer 广告出现，所以 L03 是对高级班学员的拓展，不是岗位必备，销售页不能写成「岗位都要求」。
 
 ## 项目与环境
 
@@ -109,7 +110,7 @@
 4. 你在某个数仓里建过表并加载过数据吗？
 5. 你能说出「幂等」的意思，并举一个不幂等的 ETL 步骤吗？
 
-分流：前四题任何一题是「否」，先补那一项或上入门级；第五题是「否」，课前读材料再来；五题全是「是」，报进阶。
+分流：前四题任何一题是「否」，先补那一项或上项目班；第五题是「否」，课前读材料再来；五题全是「是」，报高级班。
 
 ## 待核实
 
