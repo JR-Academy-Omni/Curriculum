@@ -74,7 +74,7 @@
   4. 支持 RAG：5 份
   5. MCP：3 份
   6. AI 安全与治理：2 份
-- **几乎没有需求**：GPU 和模型自托管 1 份；LLM 网关、token 成本管理、评估进 CI 在澳洲 JD 里 0 份（只在美国 JD 出现）。
+- **几乎没有需求**：GPU 和模型自托管 1 份；LLM 网关、token 成本管理、评估进 CI 在澳洲 JD 样本里 0 份。
 - **每份 JD 的核心仍然是** AWS、Terraform、Kubernetes / EKS、CI/CD、可观测。AI 是加在这些上面的要求，不是替代。
 - **引用**：Allianz「Senior AI DevOps Engineer」（Seek 94825104）：「AI-driven IaC generation, automated code/security review」「integrating AI/LLM tooling into DevOps workflows (e.g., MCP servers, AI-assisted pipelines)」。Culture Amp 的 Associate SRE：「Partner with AI coding agents as part of your day-to-day workflow」。EML 的 Lead DevOps：「Basic AI or LLM knowledge is expected, ideally with practical application in pipelines or operations.」
 - **没有 JD 要求用 Terraform 开通 Bedrock。** 也没有 JD 出现 hooks、subagents、插件体系。这些是本课的扩展，销售页不能写成"JD 要求你会 hooks"，只能写成"JD 要求 AI 辅助 IaC 和流水线、MCP，这门课教你怎么安全地做到"。
@@ -139,7 +139,7 @@
 4. 你能在 CloudWatch Logs 里找到某个 ECS 服务返回 500 的那几条日志吗？
 5. 你能在自己的 AWS 沙箱账号里，用命令行登录并跑 terraform apply 和 destroy，而且知道哪些资源会持续计费吗？
 
-**分流**：第 1、2、3 题任意一题答"否"，先上项目班。第 4、5 题答"否"，可以报本课，但开课前要补完课前准备 L00 并在助教那里确认环境。5 题全是"是"，报本课。项目班的开班信息另行公布，销售页不写具体日期。
+**分流**：第 1、2、3 题任意一题答"否"，先上项目班。第 4、5 题答"否"，可以报本课，但开课前要补完课前准备 L00 并把检查结果贴到课程群。是否配助教待定，目前只有 Lightman 一人授课。5 题全是"是"，报本课。项目班的开班信息另行公布，销售页不写具体日期。
 
 ## 上线前待核实
 

@@ -1,40 +1,42 @@
 {
   "themeColor": "#E07A1F",
   "slug": "data-engineer-ai-starter",
-  "name": "AI 数据工程实战课 · 项目班：AI 陪你做出第一条数据管线",
-  "name_en": "AI Data Engineering in Practice · Project Class: Build Your First Data Pipeline with AI",
-  "description": "10 小时直播带做：在课程提供的电商模拟数据上，用 DuckDB 和 dbt 做出第一条有测试、可重跑的数据管线。AI 当结对搭档，你负责说清粒度、主键和测试。",
-  "description_en": "10 hours of live, hands-on work: build a first data pipeline with tests and safe re-runs on synthetic e-commerce data, using DuckDB and dbt. AI is your pair-programming partner; you explain grain, keys and tests.",
+  "name": "AI 数据工程实战课 · 项目班：从第一分钟起，和 AI 一起做数据管线",
+  "name_en": "AI Data Engineering in Practice · Project Class: Build a Data Pipeline with an AI Agent from Minute One",
+  "description": "10 小时直播带做：第一节课先给 AI 立规矩（原始数据只读、只能写进项目目录），再让它在课程提供的电商模拟数据上建 DuckDB 和 dbt 管线，你负责审粒度、测试、扇出和时区。",
+  "description_en": "10 hours of live, hands-on work. Lesson one starts by setting rules for the AI (raw data read-only, writes only inside the project folders); then it builds a DuckDB and dbt pipeline on synthetic e-commerce data while you review grain, tests, join fan-out and time zones.",
   "level": "初级",
   "type": "training",
   "targetAudience": "转行进入数据工程的分析师、测试、客服、其他方向开发和应届毕业生",
   "totalLessons": 6,
-  "totalSteps": 33,
+  "totalSteps": 34,
   "liveClasses": 5,
   "estimatedHours": 10.5,
   "totalInteractiveLabs": 0,
   "title_en": "AI Data Engineering in Practice · Project Class",
   "timeLength": "10.5 小时（1 节准备课 + 5 节 2 小时直播）",
-  "courseObjective": "做出一条本地运行、有 dbt 测试、可以重复运行的数据管线，并能向面试官讲清每张表的粒度、每条测试在保护什么，以及你改过 AI 的哪几处。",
-  "courseObjective_en": "Build a local pipeline with dbt tests that can be re-run safely, and explain to an interviewer what one row of each table means, what each test protects, and what you corrected in the AI output.",
+  "courseObjective": "做出一条本地运行、有 dbt 测试、可以重复运行的数据管线，并带走一个可复用的 AI 项目技能；能向面试官讲清每张表的粒度、每条测试在保护什么、你给 AI 立了哪些规矩，以及你改过 AI 的哪几处。",
+  "courseObjective_en": "Build a local pipeline with dbt tests that can be re-run safely, keep a reusable project skill for working with an AI agent, and explain to an interviewer what one row of each table means, what each test protects, what rules you set for the AI, and what you corrected in its output.",
   "suitable": "想进入数据工程的分析师、测试、客服、其他方向的开发和应届毕业生。需要会基础 SQL（select、join、group by）并能读简单的 Python。",
   "suitable_en": "Analysts, QA, support staff, developers from other areas and new graduates moving into data engineering. Basic SQL (select, join, group by) and the ability to read simple Python are required.",
-  "cardDescription": "10 小时直播带做，用 AI 结对做出第一条有测试、可重跑的 dbt 数据管线。",
-  "promoDescription": "五节课各带走一样东西：数据字典、dbt 项目、测试与重跑对账、三个业务问题的审查记录、作品集仓库。AI 写初稿，你负责判断它对不对，并能当面讲清楚。",
+  "cardDescription": "10 小时直播带做：先给 AI 立规矩，再让它建 dbt 管线，你审粒度、测试和 SQL。",
+  "promoDescription": "五节课各带走一样东西：规则文件与数据字典、dbt 项目、测试与重跑对账、三个业务问题的审查记录、作品集仓库与可复用的项目技能。AI 动手最多，边界和判断归你。",
   "prerequisiteknowledge": "会写 select、join、group by；能读懂 20 行左右的 Python；会在终端里切换目录、运行脚本并用 Git 提交。dbt、数据仓库和数据质量测试在课上边做边学。",
   "highlights": [
+    "第一节课先给 AI 立规矩：原始数据只读，只能写进项目目录",
     "在课程提供的模拟电商数据上做，没有真实客户数据",
     "本地 DuckDB 运行，没有云账单",
     "每节课先看终点，最后一项是带走的成品",
     "每节课结尾做讲解：AI 写的，你得讲清楚",
-    "五条审查清单合成一页，带去以后的工作"
+    "规则做成可复用的项目技能，带去以后的工作"
   ],
   "highlights_en": [
+    "Lesson one sets rules for the AI first: raw data read-only, writes only inside the project folders",
     "Synthetic e-commerce data supplied by the course, no real customer data",
     "Runs locally on DuckDB, no cloud bill",
     "Each lesson opens with the finished result and ends with something you keep",
     "Each lesson ends with an explain-back: AI wrote it, you must explain it",
-    "Five review checklists merged into one page you reuse at work"
+    "Your rules become a reusable project skill you take to work"
   ],
   "features": [
     "10 小时直播带做，每节 120 分钟",
@@ -94,14 +96,14 @@
       ]
     },
     {
-      "name": "装载与建模",
+      "name": "工作台与建模",
       "color": "#E07A1F",
       "summary": "2 节直播",
       "lessons": [
         {
           "code": "L01",
-          "title": "读懂数据再装载：AI 提表和主键，你说清一行是什么",
-          "description": "AI 做：读 5 个原始文件（orders、order_items、customers、products、payments），提出表结构、主键和外键，并写装载脚本。你做：先自己写下每张表一行代表什么，再对照 AI 的提案；用 count(*) 和 count(distinct 主键) 验证它的主键；改正后装载进 DuckDB。你要能讲清：能用一句话说清每张表的粒度；能说出为什么 order_id 不能直接当 payments 的主键。",
+          "title": "搭好 AI 工作台：先立规矩，再让它读数据",
+          "description": "AI 做：读 5 个原始文件（orders、order_items、customers、products、payments），提出表结构、主键和外键，并写装载脚本。你做：在项目里写下规则文件：原始数据只读，只能写进 dbt 项目的几个文件夹，只允许运行测试命令；亲手试一次让 AI 改原始文件，看规则拦不拦得住；再自己先写下每张表一行代表什么，对照 AI 的提案，用 count(*) 和 count(distinct 主键) 验证。你要能讲清：拦得住或拦不住 AI 改原始数据，各是哪条权限设置的缘故，为什么不能靠它的承诺；每张表一行是什么；为什么 order_id 不能直接当 payments 的主键。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
@@ -109,51 +111,58 @@
             {
               "order": 1,
               "type": "LIVE",
-              "title": "先看终点：一条跑完的管线",
-              "description": "演示成品：5 个原始文件装载进 DuckDB，一条查询给出订单数；再演示一个没审过主键的版本多算了订单。",
+              "title": "先看终点：AI 在规则里干活，再试着让它改原始文件",
+              "description": "演示成品：规则文件到位，AI 把 5 个文件装进 DuckDB；再让它改原始文件，看权限设置拦不拦得住，原始数据有没有变。",
               "duration": 12
             },
             {
               "order": 2,
               "type": "CONCEPT",
-              "title": "一行是什么：粒度与主键清单",
-              "description": "只讲一张清单：这张表一行代表什么、哪一列能唯一标识它、怎么用 count(*) 对 count(distinct) 证明。学员拿到清单马上用。",
+              "title": "规则文件清单：读什么、写哪里、跑什么命令",
+              "description": "只讲一张清单：哪些目录只读、哪些目录可写、哪些命令允许；能拦住 AI 的是权限设置，写在提示里的“请不要”不算边界。",
               "duration": 8
             },
             {
               "order": 3,
-              "type": "LIVE",
-              "title": "让 AI 读文件提表和主键，你先写自己的版本",
-              "description": "学员先用 10 分钟手写每张表的粒度，再让 AI 给提案，两份并排对比，记录分歧。",
-              "duration": 25
+              "type": "PROJECT",
+              "title": "搭工作台：装 Claude Code，写规则文件",
+              "description": "装好 Claude Code，写规则文件，设置原始数据目录只读、只允许写进 dbt 项目目录、只允许运行测试命令。其他 AI 编程助手能否做同样设置，开班前核对。",
+              "duration": 20
             },
             {
               "order": 4,
+              "type": "SCENARIO",
+              "title": "试一试：让 AI 改原始文件",
+              "description": "故意让 AI 改写或删除一个原始文件，看权限设置怎么拦；再试一条规则以外的命令，记下哪些被拦、哪些没拦住。",
+              "duration": 15
+            },
+            {
+              "order": 5,
+              "type": "LIVE",
+              "title": "让 AI 读文件提表和主键，你先写自己的版本",
+              "description": "学员先用 8 分钟手写每张表一行代表什么，再让 AI 给提案，两份并排对比，记录分歧。",
+              "duration": 25
+            },
+            {
+              "order": 6,
               "type": "SCENARIO",
               "title": "找出 AI 的主键错在哪",
               "description": "订单导出文件里有同一 order_id 的重复行，付款表有一单多笔。用校验查询证明哪条主键假设不成立。",
               "duration": 20
             },
             {
-              "order": 5,
+              "order": 7,
               "type": "PROJECT",
-              "title": "用 DuckDB 装载并写校验查询",
-              "description": "把五个文件装载进 raw 层，每张表写一条行数与主键唯一性的校验查询，脚本重复运行结果一致。",
-              "duration": 35
-            },
-            {
-              "order": 6,
-              "type": "PROJECT",
-              "title": "带走：数据字典与装载脚本",
-              "description": "带走：一份写明每张表粒度、主键、已知问题的数据字典，加一个能重复运行的装载脚本。收尾 3 分钟讲解：这张表一行是什么。",
+              "title": "带走：规则文件、数据字典与装载脚本",
+              "description": "带走：一份规则文件，一份写明每张表粒度、主键、已知问题的数据字典，一个能重复运行的装载脚本。收尾 3 分钟讲解：这张表一行是什么，AI 为什么改不了原始数据。",
               "duration": 20
             }
           ]
         },
         {
           "code": "L02",
-          "title": "用 dbt 清洗建模：从 staging 到 marts",
-          "description": "AI 做：按数据字典写 staging 模型（改名、转类型、统一单位和状态值）和 marts 初稿。你做：拿数据字典逐行对照 AI 写的 SQL；在 staging 里修正金额单位和时间格式；给 fct_orders 写粒度注释。你要能讲清：能说清 staging 和 marts 各自该做什么、不该做什么；能说清 fct_orders 一行是什么。",
+          "title": "AI 建 dbt 模型，你拿粒度逐层验",
+          "description": "AI 做：按数据字典写 staging 模型（改名、转类型、统一单位和状态值）和 marts 初稿，并运行 dbt build。你做：先把每个模型的粒度写下来，再拿数据字典和粒度逐行审 AI 写的 SQL；在 staging 里修正金额单位和时间格式；给 fct_orders 写粒度注释。你要能讲清：staging 和 marts 各自该做什么、不该做什么；fct_orders 一行是什么；你怎么证明 AI 建出来的表是这个粒度。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
@@ -161,14 +170,14 @@
             {
               "order": 1,
               "type": "LIVE",
-              "title": "先看终点：dbt build 一次跑完",
-              "description": "演示 staging 到 marts 的 dbt build，打开 dbt docs 血缘图，点开 fct_orders 查看字段来源。",
+              "title": "先看终点：AI 一次建完，dbt build 全绿，仍有一处错",
+              "description": "演示 AI 建 staging 到 marts 的 dbt build 全绿，再对照写下的粒度，指出一处错误。",
               "duration": 12
             },
             {
               "order": 2,
               "type": "CONCEPT",
-              "title": "分层清单：staging 只整理，marts 才算业务",
+              "title": "分层与粒度清单：staging 只整理，marts 才算业务",
               "description": "一张清单：staging 只做改名、转类型、统一单位；join 和业务口径放 marts；每个模型第一行写粒度。",
               "duration": 8
             },
@@ -189,15 +198,15 @@
             {
               "order": 5,
               "type": "PROJECT",
-              "title": "建 fct_orders 和 dim_customers",
-              "description": "在 marts 层建订单事实表和客户维度表，各写一句粒度注释，dbt build 通过。",
+              "title": "让 AI 建 fct_orders 和 dim_customers，你按粒度验",
+              "description": "学员先写下两张表的粒度，AI 建表，学员用行数和主键唯一性证明粒度成立，写一句粒度注释，dbt build 通过。",
               "duration": 30
             },
             {
               "order": 6,
               "type": "PROJECT",
               "title": "带走：能通过 dbt build 的项目",
-              "description": "带走：一个 dbt build 通过的项目，staging 和 marts 齐全，每个模型都写明粒度。收尾 3 分钟讲解：fct_orders 一行是什么。",
+              "description": "带走：一个 dbt build 通过的项目，staging 和 marts 齐全，每个模型都写明粒度。收尾 3 分钟讲解：fct_orders 一行是什么，你改了 AI 的哪一处。",
               "duration": 20
             }
           ]
@@ -211,8 +220,8 @@
       "lessons": [
         {
           "code": "L03",
-          "title": "数据质量：测试、去重，跑两遍结果一样",
-          "description": "AI 做：为每个模型写 dbt 测试，提出去重和增量加载的写法。你做：判断 AI 的测试覆盖了什么、漏了什么，补上 relationships 测试和业务规则测试；复现重复加载并改成可重跑；写行数对账查询。你要能讲清：能说清每个测试在保护哪条假设；能说清幂等是什么、你怎么证明它成立。",
+          "title": "数据质量：AI 写测试，你找它漏了什么",
+          "description": "AI 做：为每个模型写 dbt 测试，提出去重和增量加载的写法。你做：列出 AI 的测试保护了哪些假设、漏了哪些，补上 relationships 测试和业务规则测试；复现重复加载并改成可重跑；写行数对账查询。你要能讲清：每个测试在保护哪条假设；幂等是什么，你怎么证明“跑两遍结果一样”。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
@@ -220,8 +229,8 @@
             {
               "order": 1,
               "type": "LIVE",
-              "title": "先看终点：跑两遍，行数不变",
-              "description": "演示连跑两遍后的行数对账，再演示未做幂等的版本第二遍后行数翻倍。",
+              "title": "先看终点：测试全绿，数据仍有错；跑两遍，行数不变",
+              "description": "演示 AI 写的测试全部通过但漏掉一条业务规则；再演示连跑两遍后的行数对账，以及未做幂等的版本第二遍后行数翻倍。",
               "duration": 12
             },
             {
@@ -234,7 +243,7 @@
             {
               "order": 3,
               "type": "LIVE",
-              "title": "让 AI 写测试，你判断测得够不够",
+              "title": "让 AI 写测试，你找出它没保护的假设",
               "description": "AI 为所有模型写测试；学员列出它没保护的假设，补上 relationships 和一条业务规则。",
               "duration": 25
             },
@@ -256,15 +265,15 @@
               "order": 6,
               "type": "PROJECT",
               "title": "带走：测试集与对账脚本",
-              "description": "带走：一套 dbt 测试加一条跑两遍并对账的脚本。收尾 3 分钟讲解：每个测试在保护哪条假设。",
+              "description": "带走：一套 dbt 测试加一条跑两遍并对账的脚本。收尾 3 分钟讲解：每个测试在保护哪条假设，你补了哪几条。",
               "duration": 20
             }
           ]
         },
         {
           "code": "L04",
-          "title": "三个业务问题：审 AI 写的 SQL",
-          "description": "AI 做：为三个业务问题写 SQL：悉尼时间的日销售额、首单月的复购率、品类退款率。你做：先用一句话写下答案的粒度，再审 AI 的 SQL：数 join 前后的行数，查 NULL 去了哪里，核对时区；改错并留下审查记录。你要能讲清：能说清为什么 join 之后求和会变大；能说清 where region <> 'AU' 会丢掉哪些行；能说清“一天”按哪个时区算。",
+          "title": "三个业务问题：AI 写 SQL，你抓扇出、NULL 和时区",
+          "description": "AI 做：为三个业务问题写 SQL：悉尼时间的日销售额、首单月的复购率、品类退款率。你做：先用一句话写下答案的粒度，再审 AI 的 SQL：数 join 前后的行数，查 NULL 去了哪里，核对时区；改错并留下审查记录。你要能讲清：为什么 join 之后求和会变大；where region <> 'AU' 会丢掉哪些行；“一天”按哪个时区算。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
@@ -273,7 +282,7 @@
               "order": 1,
               "type": "LIVE",
               "title": "先看终点：同一个问题，两个答案",
-              "description": "演示两版退款率 SQL 的结果差异，现场用 join 前后行数对比找出原因。",
+              "description": "演示 AI 的退款率 SQL 与对照结果的差异，现场用 join 前后行数对比找出原因。",
               "duration": 12
             },
             {
@@ -316,14 +325,14 @@
       ]
     },
     {
-      "name": "作品集与面试",
+      "name": "技能化与作品集",
       "color": "#10162f",
       "summary": "1 节直播",
       "lessons": [
         {
           "code": "L05",
-          "title": "作品集：README、血缘图、面试讲解和审查清单",
-          "description": "AI 做：起草 README 和血缘图说明，整理面试讲解提纲。你做：逐条核对 AI 写的内容和仓库实际是否一致，删掉做不到的声明；和同学互相模拟追问；写出自己的 AI 代码审查清单。你要能讲清：能不看稿讲清整条管线的粒度、测试、重跑，以及你改过 AI 的哪三处。",
+          "title": "把规则做成项目技能，再收成作品集和面试讲解",
+          "description": "AI 做：把前四节的规则整理成可复用的项目技能草稿，起草 README 和血缘图说明，整理面试讲解提纲。你做：把规则文件和四节课的审查清单收成一个项目技能，换一个小任务试它管不管用；逐条核对 AI 写的 README 和血缘图是否与仓库实际一致，删掉做不到的声明；和同学互相模拟追问。你要能讲清：整条管线的粒度、测试、重跑，你的规则管住了 AI 的哪些事、没管住哪些，以及你改过 AI 的哪三处。",
           "type": "Lesson",
           "isLive": true,
           "duration": 120,
@@ -339,35 +348,35 @@
               "order": 2,
               "type": "CONCEPT",
               "title": "审查 AI 数据工程代码的一页清单",
-              "description": "把前四节的检查合成一页：粒度、主键、单位与时区、测试覆盖、幂等、join 扇出、NULL。",
+              "description": "把前四节的检查合成一页：粒度、主键、单位与时区、测试覆盖、幂等、join 扇出、NULL、权限边界。",
               "duration": 8
             },
             {
               "order": 3,
               "type": "PROJECT",
-              "title": "写 README：AI 起草，你逐条核对",
-              "description": "每一条声明都要能在仓库里指出对应的文件或命令，指不出就删。",
+              "title": "把规则做成项目技能，换个小任务试一次",
+              "description": "把规则文件和审查清单整理成项目技能，换一个小任务让 AI 在里面干活，记下规则管住了什么、没管住什么。技能的具体格式因助手而异，开班前核对。",
               "duration": 25
             },
             {
               "order": 4,
               "type": "PROJECT",
-              "title": "画血缘图并和 dbt 实际一致",
-              "description": "用 dbt docs 生成血缘，对照 AI 画的图，把不一致处改成实际依赖。",
+              "title": "写 README 和画血缘图：AI 起草，你逐条核对",
+              "description": "每一条声明都要能在仓库里指出对应的文件或命令，指不出就删；用 dbt docs 生成血缘，对照 AI 画的图，改成实际依赖。",
               "duration": 25
             },
             {
               "order": 5,
               "type": "SCENARIO",
               "title": "模拟面试追问",
-              "description": "两人一组，互相问：这张表一行是什么、为什么这样选主键、跑两次会怎样、AI 写错了哪里。",
+              "description": "两人一组，互相问：这张表一行是什么、为什么这样选主键、跑两次会怎样、AI 写错了哪里、你的规则拦住了什么。",
               "duration": 30
             },
             {
               "order": 6,
               "type": "PROJECT",
-              "title": "带走：作品集仓库与审查清单",
-              "description": "带走：一个可公开展示的作品集仓库，加一页自己的 AI 数据工程代码审查清单。",
+              "title": "带走：作品集仓库、项目技能与审查清单",
+              "description": "带走：一个可公开展示的作品集仓库，一个项目技能，加一页自己的 AI 数据工程代码审查清单。",
               "duration": 20
             }
           ]

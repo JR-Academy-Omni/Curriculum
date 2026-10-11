@@ -2,6 +2,7 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI DevOps 实战课 · 高级班：给团队搭一套 AI 工具箱</title>
 <meta name="description" content="给在职 DevOps / SRE / 平台工程师的 10 小时直播带做课：把 AI agent 当成团队成员来管，给它身份、权限和审计记录。课后带走团队插件仓库、两条 GitHub Actions 工作流和一页给安全团队的方案。$599 含 GST。">
@@ -101,7 +102,7 @@
 
   <div class="prep">
     <h3><span class="code">L00</span>课前准备：拿到沙箱，一条命令部署订单系统</h3>
-    <p>30 分钟，不占直播时间，开课前 24 小时完成。装好 Claude Code、Terraform、AWS CLI 和 Docker，拿到沙箱账号，一条命令把订单系统部署进去，截图贴到课程群，助教确认后才算准备完成。卡住的同学由助教单独约时间处理。</p>
+    <p>30 分钟，不占直播时间，开课前 24 小时完成。装好 Claude Code、Terraform、AWS CLI 和 Docker，拿到沙箱账号，一条命令把订单系统部署进去，截图贴到课程群，通过检查才算准备完成。卡住的同学开课前单独约时间处理（具体安排开班前公布）。</p>
   </div>
 
   <article class="lesson">
@@ -174,7 +175,7 @@
 <section class="sec">
   <span class="kicker">前置要求与 5 题自测</span>
   <h2>报名前先答 5 题</h2>
-  <p class="lead">这门课每节 2 小时，其中至少 100 分钟在动手，没有时间补基础。每题答是或否。</p>
+  <p class="lead">这门课每节 2 小时，除了开头的演示和不超过 10 分钟的概念，其余时间都在动手，没有时间补基础。每题答是或否。</p>
   <ol class="quiz">
     <li>不看教程，你能写一个创建 ECS 服务和对应 IAM 角色的 Terraform，并解释 terraform plan 输出里每一项变更吗？</li>
     <li>你能读懂并修改一个 GitHub Actions 工作流，包括触发条件、secrets 和 job 之间的依赖吗？</li>
@@ -182,7 +183,7 @@
     <li>你能在 CloudWatch Logs 里找到某个 ECS 服务返回 500 的那几条日志吗？</li>
     <li>你能在自己的 AWS 沙箱账号里，用命令行登录并跑 terraform apply 和 destroy，而且知道哪些资源会持续计费吗？</li>
   </ol>
-  <div class="route"><strong>怎么看结果：</strong>前 3 题任意一题答「否」，先上项目班。第 4、5 题答「否」，可以报这门课，但开课前要补完 L00 并让助教确认环境。5 题全是「是」，直接报这门课。项目班的开班信息另行公布。用过 Claude Code 更好，但不要求，课上从配置开始。</div>
+  <div class="route"><strong>怎么看结果：</strong>前 3 题任意一题答「否」，先上项目班。第 4、5 题答「否」，可以报这门课，但开课前要补完 L00 并把检查结果贴到课程群。5 题全是「是」，直接报这门课。项目班的开班信息另行公布。用过 Claude Code 更好，但不要求，课上从配置开始。</div>
 </section>
 
 <section class="sec">
@@ -203,7 +204,7 @@
     <div class="rules">
       <ul>
         <li>10 小时直播带做（5 节 × 2 小时），另有 30 分钟课前环境准备</li>
-        <li>满 15 人才开班，没有凑够会通知并退款安排</li>
+        <li>满 15 人才开班，没有凑够会先通知你，处理方式开班前写明</li>
         <li>同一时间只开一个班，由 Lightman 本人讲授</li>
         <li>沙箱账号、云和模型调用的费用安排，以及你需要自备的 Claude Code 使用额度，开班前公布（目前未定）</li>
       </ul>
@@ -216,7 +217,7 @@
   <span class="kicker">FAQ</span>
   <h2>常见问题</h2>
   <details><summary>我没用过 Claude Code，能上吗？</summary><div>能。课上从配置开始。真正的门槛是 Terraform、AWS 和 GitHub Actions，不是 Claude Code。</div></details>
-  <details><summary>公司只允许用 Copilot 或 Bedrock，怎么办？</summary><div>L05 用 Bedrock，所以这条路是走得通的。如果你公司只允许 Copilot，课上的思路（身份、权限、拦截、审计）可以搬过去，但具体的 hooks 和插件是 Claude Code 的机制，需要你自己对应。</div></details>
+  <details><summary>公司只允许用 Copilot 或 Bedrock，怎么办？</summary><div>L05 会配 Bedrock（具体接法课前实测），Bedrock 这条路可以对照着做。如果你公司只允许 Copilot，课上的思路（身份、权限、拦截、审计）可以搬过去，但具体的 hooks 和插件是 Claude Code 的机制，需要你自己对应。</div></details>
   <details><summary>每个人的 AWS 账号怎么处理？费用谁出？</summary><div>每位学员一个预置的沙箱账号，设预算上限，课后回收。具体由谁出钱，开班前公布；现在还没有定下来。</div></details>
   <details><summary>能让 agent 合上电脑也在跑吗？</summary><div>设计上靠 GitHub Actions 的定时触发和事件触发，不需要你的电脑开着。具体接法我们课前会在沙箱里实测确认；是否需要订阅、费用谁出，也在开班前告知。</div></details>
   <details><summary>学完能直接拿到公司用吗？</summary><div>插件和工作流可以带回去，但要先在你们自己的环境里按 L05 的方案走一遍安全评审。课上的沙箱不等于你们的生产环境。</div></details>
