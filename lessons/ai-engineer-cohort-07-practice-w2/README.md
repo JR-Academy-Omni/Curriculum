@@ -1,17 +1,14 @@
-# W2 · CareKind Product UI & Design System
+# AI Engineer 第七期 W2 · 人与 Agent 协作交付 CareKind UI
 
-独立 Talk Deck，47 页，120分钟，来源 C7P02。有自己的封面、目录、课堂练习、收尾与工作单。
+2026-10-11本地68页组合修订，120分钟。旧47页内容保留；新增混合团队、任务拆解、Agent/员工协作、Skill、交接与集成。UI/Design System补实例和可操作合成演示。
 
-`bun install --frozen-lockfile` / `bun run build`
+- 本地预览：http://127.0.0.1:8032/?page=1
+- 总图：?page=7；任务：?page=18；Skill：?page=28；设计规范：?page=34；UI：?page=37；交接：?page=39；Lab：?page=40。
+- `bun run dev --host 127.0.0.1 --port 8032 --strictPort`；`bun run build`。
+- ← → / Space翻页，F全屏，V摄像头。表单输入不触发翻页；输入之外沿用旧引擎。
+- 本次尚未部署。历史线上47页记录保留；目录明确Local新版与线上旧版。
+- RUNSHEET、WORKSHEET、HANDOUT、SOURCE_MAP提供教学路径、模板与来源。
+- 所有CareKind对象/数据/权限为课堂合成候选；无真实后端、模型、员工派工/消息操作。
+- 字体本地npm打包，官方Logo原文件；旧引擎manifest保持不变。
 
-`bun run dev --host 127.0.0.1 --port 8032`
-
-方向键翻页，F全屏，V摄像头，`?page=N` 定位。
-
-新增 P04–P11 完整接收 W1 原 P26–P33 的产品需求、页面、CRUD、组件与流程图；原UI教学段P04–P19顺延至P12–P27，Review与交付位于P46–P47；第二组原W1进阶教学完整进入P28–P45。总时长仍为 120 分钟，概念采用课前回看与 12 分钟导读，保留页面实现 30 分钟与评审 10 分钟。
-
-本次47页版本构建通过；迁入18页的54次三视口检查与最终顺序/47页刷新导航通过。原29页已有三视口验收。实际证据及本次上线状态见QA.md。真实 starter 未验收。
-
-W2第2部分P28–P45为进阶练习：Context、Skills图解与Lab、产品验证、项目管理和部署。这里属于下一节W2的材料，W1不保留附录。课堂仍120分钟，讲师按阶段选讲/带练，不将全部旧Lab时间叠加；保留30分钟UI实现和10分钟评审。
-
-最终放映顺序：P01–P27 UI与设计主线 → P28–P45完整进阶教学 → P46 Product Design Review → P47交付。进阶材料不位于收尾之后，最后两页完成全课评审与交接。
+公开图解新增入口：P05微软合作模式、P06团队实验、P21研究架构、P26/27Skills机制与案例、P42GitHub交付。X06对照图在P20补官方出处。页内明确来源/日期/改编，完整台账见research/public-sources-2026-10-11.md。

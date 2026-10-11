@@ -1,28 +1,42 @@
-# W2 工作单 · CareKind Product UI & Design System
+# W2 工作单 · 人与 Agent 协作交付 CareKind UI
 
-所有字段用实际课程契约和 repo 证据填写。
+## 1. 同一个成果
+用户 / 任务路径：
+Design Brief（已知事实、候选规则、待确认）：
+本周non-goals：
 
-## 1. Design Brief
-用户：
-workflow：
-验收：
-non-goals：
-参考与工程上下文：
+## 2. 任务与协作
+| ID | 成果 | Owner | Agent/执行者 | 依赖 | 允许文件/范围 | 验收动作/证据 | Reviewer | 当前状态 |
+|---|---|---|---|---|---|---|---|---|
+| T0 | 候选契约确认 | | | | | | | |
+| T1 | 规范与组件 | | | T0 | | | | |
+| T2 | 记录与草稿UI | | | T0/T1 | | | | |
+| T3 | 复核UI与检查 | | | T0/T1/T2 | | | | |
+| T4 | 集成与评审 | | | T1/T2/T3 | | | | |
 
-## 2. 方向比較
-A / B 结构与操作差异：
-选择及理由：
+## 3. 共用上下文
+PRD / DESIGN.md / 状态契约 / 看板 / 决策的当前版本与位置：
+共享组件的Owner及接口：
+什么发现必须通知谁：
 
-## 3. 设计规则
-DESIGN.md 与 tokens 位置：
-组件 variants：
+## 4. Skill
+选择一个重复动作：任务拆解 / 汇报整理 / 交付检查。
+输入、步骤、输出、完成判据、停止与升级条件：
+首次试用证据与需要修订的规则：
 
-## 4. 页面与状态
-已实现关键页面：
-Draft / Review / Confirmed / Failed / Escalated：
-输入模拟状态：
+## 5. Design System 与 UI
+A/B方案及选择理由：
+DESIGN.md / tokens / 组件状态：
+对象→任务→记录→送审→复核路径：
+Draft / Review / Confirmed / Failed / Escalated检查：
+手机/窄布局、键盘、焦点、空/错/提交中/未保存/保存状态证据：
 
-## 5. Review
-手机、键盘、对比度、reduced motion 检查：
-before/after：
-结论与待办：
+## 6. 交接与Review
+一次真实协作记录（没有冲突可以记录依赖交接，不强造冲突）：
+发现 → 证据 → 决定 → 修改 → 复查：
+任务回执（已送达 / 已接单 / 待验收 / 已验收）：
+修改前后截图 / diff / 操作记录：
+Reviewer结论：通过 / 未通过 / 未验证。
+W3待接API、服务端权限、版本、audit和持久化：
+
+课堂数据必须synthetic/de-identified。W2模拟UI不能写成后台或真实AI功能已接通。资料填写后按学生项目规则保存；本课没有外部派工或消息发送功能。

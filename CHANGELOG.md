@@ -2,6 +2,10 @@
 
 ## 2026-10-11
 
+- 补充 AI Engineer W2 六页公开图解与案例，重绘微软合作模式、团队实验、Anthropic委派、GitHub交付和Skills结构并逐页标来源/改编；本地68页，保留UI/Design System与CareKind实操（`curriculum/lessons/ai-engineer-cohort-07-practice-w2`）。
+
+- 重组 AI Engineer 第七期 W2 网页课件为62页本地版，融入旧 ADLC、Agent/员工协作与 Skills，新增混合团队总图和 CareKind 可操作合成案例，保留 UI/Design System 并同步课堂地图、工作单与来源（`curriculum/lessons/ai-engineer-cohort-07-practice-w2`）。
+
 - 发布OPC W11用户增长65页双语图解：新生节三轮迭代、拼多多、薅羊毛App实战、增长基础设施、9组36动作Skill与方向箭头动画，同步目录和讲师资料（`lessons/ai-solo-founder-w11`）。
 
 - 新增Dropbox、Canva、Notion和Zapier四个真实增长案例各两页，拆解启动与回流并给出OPC实验、适用前提和指标成本；课件62页，同步一手来源、备注、地图及90分钟练习（`lessons/ai-solo-founder-w11`）。
