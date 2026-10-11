@@ -18,9 +18,7 @@ export default function L15P13_MinimalPlugin() {
 	return (
 		<Page>
 			<ActBadge act={3} />
-			<Head sub="做一个能被安装的东西，最少需要什么？答案可能比你想的少得多。">
-				那现在，做你自己的包
-			</Head>
+			<Head sub="做一个能被安装的东西，最少需要什么。">那现在，做你自己的包</Head>
 
 			<div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
 				<motion.div
@@ -37,7 +35,7 @@ export default function L15P13_MinimalPlugin() {
 }`}
 					/>
 					<p style={{ fontSize: 21, color: '#555', lineHeight: 1.7, marginTop: 14 }}>
-						名字，版本，一句话描述，作者。<strong>一个能被安装的包，它的全部身份信息就是这四行。</strong>
+						<strong>一个包的全部身份信息，就是这四行。</strong>
 					</p>
 				</motion.div>
 
@@ -63,8 +61,7 @@ export default function L15P13_MinimalPlugin() {
 							))}
 						</div>
 						<p style={{ fontSize: 19, color: '#666', lineHeight: 1.65, marginTop: 16 }}>
-							这些目录名是约定好的，你不能自己起。但你也不用写任何配置去声明它们 ——
-							<strong>放对位置，它们就会被认出来。</strong>
+							目录名是约定好的，不用写配置声明。<strong>放对位置就会被认出来。</strong>
 						</p>
 					</div>
 				</motion.div>
@@ -75,7 +72,7 @@ export default function L15P13_MinimalPlugin() {
 				style={{ marginTop: 'auto', fontSize: 23, color: '#555', lineHeight: 1.7 }}
 			>
 				课前包里那个 <code style={{ fontFamily: fonts.mono, background: colors.yellow, padding: '2px 8px', borderRadius: radii.label }}>p13-my-package</code> 目录，
-				就是这样一个已经搭好的空骨架。接下来两步，我们把它换成你自己的。
+				是一个搭好的空骨架。接下来两步，换成你自己的。
 			</motion.div>
 		</Page>
 	);

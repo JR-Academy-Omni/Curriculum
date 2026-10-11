@@ -8,9 +8,7 @@ export default function L15A2_Troubleshoot() {
 	return (
 		<Page>
 			<AppendixBadge label="A2 · 装不上怎么办" />
-			<Head sub="线上市场拉不到的时候，课前包里有一个本地市场可以直接顶替，流程完全一样。">
-				兜底
-			</Head>
+			<Head sub="线上市场拉不到时，用课前包里那个本地市场，流程一样。">装不上怎么办</Head>
 
 			<Code
 				size={20}
@@ -34,10 +32,10 @@ bash p17-clean-profile/clean-profile.sh verify handover-demo`}
 				border, borderRadius: radii.panel, boxShadow: `6px 6px 0 ${colors.green}`,
 			}}>
 				<div style={{ fontFamily: fonts.mono, fontSize: 15, fontWeight: 800, letterSpacing: 1, color: '#888' }}>
-					它删的是一个独立的沙箱目录
+					删的是独立沙箱目录
 				</div>
 				<div style={{ fontSize: 25, fontWeight: 800, marginTop: 8, lineHeight: 1.5 }}>
-					不碰你平时的配置。脚本里有一道硬拦截：沙箱路径一旦指向真实配置目录，直接拒绝执行。
+					不碰你平时的配置。沙箱路径指向真实配置目录时，脚本直接拒绝执行。
 				</div>
 			</div>
 		</Page>

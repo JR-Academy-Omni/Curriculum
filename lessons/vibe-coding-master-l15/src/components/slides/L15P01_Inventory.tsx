@@ -21,9 +21,7 @@ const TONE: Record<string, string> = { file: colors.green, dir: colors.blue, cfg
 export default function L15P01_Inventory() {
 	return (
 		<Page>
-			<Head sub="每一节你都造了一样真东西出来。不是笔记，是能跑起来的东西。">
-				你手上现在有什么
-			</Head>
+			<Head>你手上现在有什么</Head>
 
 			<div style={{
 				border, borderRadius: radii.card, background: colors.white,
@@ -70,7 +68,7 @@ export default function L15P01_Inventory() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1, duration: 0.6 }}
 				style={{ marginTop: 22, fontSize: FS.body, color: '#6b6b6b', lineHeight: 1.6 }}
 			>
-				左边这一列，是你造的东西。右边这一列，是这些东西现在活在哪。
+				每一节都造了一样真东西 —— 不是笔记，是能跑起来的。
 			</motion.p>
 		</Page>
 	);

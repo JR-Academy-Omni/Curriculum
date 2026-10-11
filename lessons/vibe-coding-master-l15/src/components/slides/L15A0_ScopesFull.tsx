@@ -21,8 +21,7 @@ export default function L15A0_ScopesFull() {
 				]}
 			/>
 			<p style={{ fontSize: 22, color: '#555', lineHeight: 1.75, marginTop: 24 }}>
-				三层都落在可读的纯文本里。装了什么、装在哪一层、哪个版本、什么时候装的，
-				都记在一份清单文件里，你随时可以打开核对。
+				三层都落在可读的纯文本里，随时可以打开核对。
 			</p>
 		</Page>
 	);

@@ -19,9 +19,7 @@ export default function L15P07_WhatIsAMarketplace() {
 	return (
 		<Page>
 			<ActBadge act={2} />
-			<Head sub="你一定装过别人做的插件。它是怎么跑到你机器上来的？答案比大多数人想的简单。">
-				别人做的东西，是怎么到你机器上的
-			</Head>
+			<Head>别人做的东西，是怎么到你机器上的</Head>
 
 			<motion.div
 				initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
@@ -46,8 +44,7 @@ export default function L15P07_WhatIsAMarketplace() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.5 }}
 				style={{ marginTop: 30, fontSize: 24, lineHeight: 1.75 }}
 			>
-				仓库里放着若干个目录，每个目录是一个插件。根目录有一份清单，写着这个市场叫什么、
-				里面有哪些插件、每个插件在哪个目录。
+				若干个目录 = 若干个插件。清单写明：哪些插件，各在哪个目录。
 			</motion.div>
 
 			<motion.div
@@ -59,7 +56,7 @@ export default function L15P07_WhatIsAMarketplace() {
 				}}
 			>
 				<div style={{ fontFamily: fonts.heading, fontSize: 34, fontWeight: 900, color: colors.white, lineHeight: 1.4 }}>
-					没有服务器，没有审核流程，没有商店。<span style={{ color: colors.yellow }}>它就是一个仓库。</span>
+					没有服务器，没有审核，没有商店。<span style={{ color: colors.yellow }}>就是一个仓库。</span>
 				</div>
 			</motion.div>
 		</Page>

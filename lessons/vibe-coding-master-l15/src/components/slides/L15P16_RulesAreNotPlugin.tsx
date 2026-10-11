@@ -42,9 +42,7 @@ export default function L15P16_RulesAreNotPlugin() {
 	return (
 		<Page>
 			<ActBadge act={3} />
-			<Head sub="包里能放什么讲完了。现在讲不该放进去的 —— 你第十三节课造的那个规则仓库，不进包。">
-				有些东西不该进包
-			</Head>
+			<Head sub="第十三节那个规则仓库，不进包。">有些东西不该进包</Head>
 
 			<div style={{ display: 'flex', gap: 22, flex: 1 }}>
 				{col('跟着人走', '这些是【你】的', LEFT, '进包', colors.teal, 0.18)}
@@ -60,9 +58,8 @@ export default function L15P16_RulesAreNotPlugin() {
 				}}
 			>
 				<div style={{ fontFamily: fonts.heading, fontSize: 31, fontWeight: 900, color: colors.white, lineHeight: 1.45 }}>
-					把项目的规则塞进你的个人包，等于把<span style={{ color: colors.yellow }}>团队的规矩</span>变成了
-					<span style={{ color: colors.yellow }}>你的个人习惯</span>。<br />
-					然后你走了，规矩跟着你一起走了。
+					把项目的规则塞进个人包，等于把<span style={{ color: colors.yellow }}>团队的规矩</span>变成<span style={{ color: colors.yellow }}>你的个人习惯</span>。<br />
+					你走了，规矩跟着走。
 				</div>
 			</motion.div>
 		</Page>

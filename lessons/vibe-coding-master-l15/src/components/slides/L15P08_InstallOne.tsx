@@ -12,7 +12,7 @@ export default function L15P08_InstallOne() {
 			<ActBadge act={2} mode="动手 ②" />
 			<Instruction
 				kicker="先装别人做好的"
-				sub="第一条把市场加进来，第二条装其中一个插件。最后那个参数，是装到刚才说的哪一层。"
+				sub="加市场 · 装插件 · 选哪一层"
 			>
 				把完整的过程<br />走一遍
 			</Instruction>

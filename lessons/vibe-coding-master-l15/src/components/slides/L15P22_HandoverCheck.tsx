@@ -11,7 +11,7 @@ import { Page, Head, ActBadge, colors, fonts, border, radii } from '../deck';
 const SEC = [
 	{ en: 'owner', zh: '负责人', d: '谁对这个包负责', dim: false },
 	{ en: 'trigger', zh: '触发', d: '这个包在什么时候会动', dim: false },
-	{ en: 'evidence', zh: '证据', d: '这个包干了什么，留在哪，能不能被重新打开来读', dim: true },
+	{ en: 'evidence', zh: '证据', d: '干了什么，留在哪，能不能重新打开来读', dim: true },
 	{ en: 'review date', zh: '复审日期', d: '下一次什么时候再看一眼', dim: true },
 ];
 
@@ -19,9 +19,7 @@ export default function L15P22_HandoverCheck() {
 	return (
 		<Page>
 			<ActBadge act={4} />
-			<Head sub="一份像样的交接是有固定的节的。今天只取其中四节 —— 因为这四节一旦空着，交接就不成立。">
-				一份交接要写清楚什么
-			</Head>
+			<Head sub="四节一旦空着，交接就不成立。">一份交接要写清楚什么</Head>
 
 			<div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
 				{SEC.map((s, i) => (
@@ -55,7 +53,7 @@ export default function L15P22_HandoverCheck() {
 				}}
 			>
 				<div style={{ fontFamily: fonts.heading, fontSize: 31, fontWeight: 900, color: colors.white, lineHeight: 1.45 }}>
-					后面这两节最常空。而它们恰恰是唯二能回答一个问题的：<br />
+					后两节最常空。而只有它们能回答：<br />
 					<span style={{ color: colors.yellow }}>这东西现在还算不算数。</span>
 				</div>
 			</motion.div>

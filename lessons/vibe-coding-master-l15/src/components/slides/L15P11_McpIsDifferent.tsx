@@ -33,9 +33,7 @@ export default function L15P11_McpIsDifferent() {
 	return (
 		<Page>
 			<ActBadge act={2} />
-			<Head sub="第十四节我们讲过连接器。那一节还讲过，点一下同意的那种授权，撑不过一个定时任务。">
-				第六类不一样
-			</Head>
+			<Head sub="第十四节讲过的连接器。">第六类不一样</Head>
 
 			<div style={{ display: 'flex', gap: 22 }}>
 				{card('怎么连到外面去', ['连到哪里去', '用什么方式连', '连不上的时候怎么办'], colors.teal, true)}
@@ -46,8 +44,7 @@ export default function L15P11_McpIsDifferent() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.5 }}
 				style={{ marginTop: 26, fontSize: 24, lineHeight: 1.75 }}
 			>
-				别人装上你的包，他拿到的是「这里要接一个外部系统」这个结构。
-				<strong>他必须用他自己的凭据去接。</strong>
+				别人拿到的是结构。<strong>钥匙他得自己准备。</strong>
 			</motion.div>
 
 			<motion.div
@@ -59,7 +56,7 @@ export default function L15P11_McpIsDifferent() {
 				}}
 			>
 				<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, lineHeight: 1.4 }}>
-					这是对的，不是缺陷 —— 一个能把钥匙一起交出去的包，<br />是一个你根本<span style={{ color: colors.red }}>不该</span>交出去的包。
+					一个能把钥匙一起交出去的包，<br />是你根本<span style={{ color: colors.red }}>不该</span>交出去的包。
 				</div>
 			</motion.div>
 		</Page>

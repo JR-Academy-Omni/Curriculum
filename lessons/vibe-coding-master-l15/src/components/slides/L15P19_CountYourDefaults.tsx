@@ -47,8 +47,7 @@ export default function L15P19_CountYourDefaults() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.95, duration: 0.5 }}
 				style={{ marginTop: 28, fontSize: 21, color: 'rgba(255,255,255,.55)', lineHeight: 1.8, maxWidth: 1180 }}
 			>
-				比如你那个钩子，你让它在会话开始的时候触发，而不是在别的时候 —— 你选了一个时机，但你没写为什么是这个。<br />
-				再比如你那个技能，它默认做什么、默认不做什么 —— 你定了，但你没写。
+				钩子挂在哪个时机 · 技能默认做什么、不做什么 —— <br />你都定了，但你没写为什么。
 			</motion.div>
 
 			<ChatSignal>

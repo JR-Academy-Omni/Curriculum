@@ -2,19 +2,19 @@ import { Page, AppendixBadge, Head, Code, colors, fonts, border, radii } from '.
 
 /** A1 · 一个包的完整解剖（课上不讲） */
 const DIRS = [
-	['.claude-plugin/plugin.json', '四个字段：name / version / description / author'],
-	['skills/', '一个技能一个目录，目录名即技能名，内含 SKILL.md'],
+	['.claude-plugin/plugin.json', 'name / version / description / author'],
+	['skills/', '一个目录一个技能，内含 SKILL.md'],
 	['agents/', '助手'],
 	['commands/', '斜杠命令'],
-	['hooks/hooks.json', '钩子：什么时机触发 + 触发后跑什么'],
-	['scripts/', '钩子要跑的脚本。路径一律用占位符引用，不写死'],
+	['hooks/hooks.json', '什么时机触发 + 跑什么'],
+	['scripts/', '钩子要跑的脚本 · 路径用占位符'],
 ];
 
 export default function L15A1_PluginAnatomy() {
 	return (
 		<Page>
 			<AppendixBadge label="A1 · 一个包的完整解剖" />
-			<Head sub="目录名是约定好的。放对位置就会被认出来，不需要额外声明。">包的结构</Head>
+			<Head sub="放对位置就会被认出来，不需要声明。">包的结构</Head>
 
 			<div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
 				<div style={{ flex: 1.1, display: 'flex', flexDirection: 'column', gap: 9 }}>
@@ -47,8 +47,7 @@ export default function L15A1_PluginAnatomy() {
 							脚本路径永远用占位符
 						</div>
 						<p style={{ fontSize: 19, lineHeight: 1.65, marginTop: 9, color: '#4a4320' }}>
-							写死的路径只在你这台机器上成立。别人装上之后钩子静默失败 ——
-							不报错、不提示，而他不会知道。
+							写死的路径在别人机器上让钩子静默失败 —— 不报错，他不会知道。
 						</p>
 					</div>
 				</div>

@@ -12,9 +12,7 @@ export default function L15P15_PutYourHookIn() {
 	return (
 		<Page>
 			<ActBadge act={3} mode="动手 ⑤" />
-			<Head sub="钩子跟技能不一样。技能是一个目录丢进去就行，钩子需要一份配置，说清楚它在什么时机触发、触发之后跑什么。">
-				再放一个钩子进去
-			</Head>
+			<Head sub="技能是一个目录丢进去就行。钩子还需要一份配置。">再放一个钩子进去</Head>
 
 			<div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
 				<motion.div
@@ -55,11 +53,9 @@ export default function L15P15_PutYourHookIn() {
 					<div style={{ fontSize: 27, fontWeight: 900, marginTop: 14, lineHeight: 1.4 }}>
 						脚本路径<span style={{ color: colors.red }}>绝对不能写死</span>
 					</div>
-					<p style={{ fontSize: 20, color: '#555', lineHeight: 1.72, marginTop: 14 }}>
-						你写死的路径，是<strong>你这台机器上</strong>的路径。别人装上你的包，那个路径在他机器上根本不存在。
-					</p>
-					<p style={{ fontSize: 20, color: '#555', lineHeight: 1.72, marginTop: 12 }}>
-						然后会发生什么？<strong>钩子静默失败。</strong>不报错，不提示，什么都不发生 —— 而他完全不会知道。
+					<p style={{ fontSize: 21, color: '#555', lineHeight: 1.75, marginTop: 14 }}>
+						那条路径在别人机器上不存在。<br />
+						<strong>钩子静默失败</strong> —— 不报错，不提示，他不会知道。
 					</p>
 				</motion.div>
 			</div>

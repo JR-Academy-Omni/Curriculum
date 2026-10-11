@@ -27,17 +27,9 @@ export default function L15P28_Closing() {
 				是它的<span style={{ color: colors.yellow }}>作者离开之后</span>它还在不在。
 			</motion.h2>
 
-			<motion.div
-				initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-				transition={{ delay: 2.4, duration: 1.2 }}
-				style={{ marginTop: 58, fontSize: 24, lineHeight: 1.9, color: 'rgba(255,255,255,.5)', maxWidth: 1060 }}
-			>
-				十五节课，我们一起造了很多东西。<br />
-				今天这一节，我们没有造任何新的 —— 我们只是把它们装到了一台不是你的机器上。<br />
-				<span style={{ color: 'rgba(255,255,255,.78)' }}>
-					因为前面十四节造的所有东西，只有在它离开你之后还能工作，才算真的造出来了。
-				</span>
-			</motion.div>
+			{/* 🔴 这一页只有那一句话。
+			    收口后面那段「十五节课我们造了很多东西……」是【讲师口播】，不上屏 ——
+			    见 RUNSHEET P28。印在屏幕上会把那句话稀释掉。 */}
 		</Page>
 	);
 }

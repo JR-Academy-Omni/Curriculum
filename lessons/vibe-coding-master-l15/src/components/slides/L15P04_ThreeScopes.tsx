@@ -7,18 +7,16 @@ import { Page, Head, ActBadge, colors, fonts, border, radii } from '../deck';
  * 但这一页【不解释为什么它最重】。这是埋点，P28 收口回收。
  */
 const LAYERS = [
-	{ k: 'user', zh: '第一层 · 装给你自己的', desc: '不属于任何一个项目。你在哪儿干活它都跟着你，换一个项目它还在。', git: false, c: colors.blue },
-	{ k: 'project', zh: '第二层 · 装给这个项目的', desc: '跟着项目走。换一个人来做这个项目，它不该变。', git: true, c: colors.teal },
-	{ k: 'local', zh: '第三层 · 只在这台机器的这个项目', desc: '你在这台机器上的临时偏好。别人拿不到，你换台机器也拿不到。', git: false, c: colors.orange },
+	{ k: 'user', zh: '第一层 · 装给你自己的', desc: '跟着你走，换项目还在', git: false, c: colors.blue },
+	{ k: 'project', zh: '第二层 · 装给这个项目的', desc: '跟着项目走，换人不变', git: true, c: colors.teal },
+	{ k: 'local', zh: '第三层 · 只在这台机器的这个项目', desc: '只在这台机器上', git: false, c: colors.orange },
 ];
 
 export default function L15P04_ThreeScopes() {
 	return (
 		<Page>
 			<ActBadge act={1} />
-			<Head sub="你刚才看到的三段，对应三层。这三层的区别有很多条 —— 今天我们只看一条。">
-				三层，不是一个文件
-			</Head>
+			<Head>三层，不是一个文件</Head>
 
 			<div style={{ display: 'flex', gap: 20, flex: 1 }}>
 				{LAYERS.map((l, i) => (
@@ -67,8 +65,7 @@ export default function L15P04_ThreeScopes() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.95, duration: 0.6 }}
 				style={{ marginTop: 22, fontSize: 24, lineHeight: 1.6 }}
 			>
-				进 git 的东西，别人把仓库 clone 下来就有了。
-				<strong>不进 git 的东西，只有你这台机器上有。</strong>
+				进 git 的，别人 clone 下来就有。<strong>不进的，只有你有。</strong>
 			</motion.p>
 		</Page>
 	);

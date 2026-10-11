@@ -8,9 +8,9 @@ import { Page, ActBadge, colors, fonts, border, radii } from '../deck';
  * 第四类回收第十一节的定时任务 —— 它不会停，而现在没有任何一张表上有它。
  */
 const KINDS = [
-	{ n: '一', t: '人', d: '这个简单，谁都知道要办，流程也是现成的。', c: colors.blue },
-	{ n: '二', t: '你的助手', d: '你配过的那些东西，还在你的账号下面跑着。', c: colors.teal },
-	{ n: '三', t: '服务凭据', d: '包交得出去，钥匙交不出去。所以钥匙还在你手上 —— 或者更糟，还在某个已经没人记得的地方继续生效着。', c: colors.orange },
+	{ n: '一', t: '人', d: '流程是现成的', c: colors.blue },
+	{ n: '二', t: '你的助手', d: '还在你的账号下面跑着', c: colors.teal },
+	{ n: '三', t: '服务凭据', d: '包交得出去，钥匙交不出去', c: colors.orange },
 ];
 
 export default function L15P26_WhatYouLeaveBehind() {
@@ -66,8 +66,8 @@ export default function L15P26_WhatYouLeaveBehind() {
 					还在跑的定时任务
 				</div>
 				<p style={{ fontSize: 23, color: 'rgba(255,255,255,.92)', lineHeight: 1.65, marginTop: 12 }}>
-					第十一节课，你让一个 agent 定时替你干活。那个东西现在还在跑。<br />
-					<strong>你走了，它不会停。</strong>它会继续按你几个月前定的规矩，以你的名义，在没有人看着的时候，继续做事。
+					<strong>你走了，它不会停。</strong><br />
+					它会继续按你几个月前定的规矩，以你的名义，继续做事。
 				</p>
 				<p style={{ fontFamily: fonts.heading, fontSize: 30, fontWeight: 900, color: colors.yellow, marginTop: 14 }}>
 					而现在，没有任何一张表上有它。

@@ -12,7 +12,7 @@ export default function L15P27_WriteTheRemoval() {
 			<ActBadge act={5} mode="动手 ⑧" />
 			<Instruction
 				kicker="最后一个动作 · 两分钟"
-				sub="不用写全。写一条就行 —— 写刚才那四类里，最扎到你的那一类。"
+				sub="写一条就行 —— 四类里最扎到你的那一类。"
 			>
 				在你那个包里加一条：<br />
 				我走了之后，<span style={{ color: colors.yellow }}>要收回什么</span>

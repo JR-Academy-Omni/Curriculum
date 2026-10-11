@@ -7,19 +7,17 @@ import { Page, Head, ActBadge, colors, fonts, border, radii } from '../deck';
  * 🔴 第四格停久一点。它空着的时候，答案默认是「你」。不要说破，P28 收口会收。
  */
 const FOUR = [
-	{ n: '一', t: '它会碰什么', from: '第十四节 · 写权限表', d: '别人装上你的包之前，得知道这东西能动哪些地方。', c: colors.blue },
-	{ n: '二', t: '它什么时候会自己跑', from: '第十四节 · 人触发 vs 自动跑', d: '一个会在别人不在场的时候自己动起来的东西，必须在装之前就说清楚。', c: colors.teal },
-	{ n: '三', t: '它依赖什么外部凭据', from: '第十四节 · 连接器', d: '包带不走钥匙。告诉别人：你要用这个，得自己准备哪几把钥匙。', c: colors.orange },
-	{ n: '四', t: '它坏了之后谁修', from: '第十四节 · 谁来维护', d: '这一格最容易空着。', c: colors.red, heavy: true },
+	{ n: '一', t: '它会碰什么', from: '第十四节 · 写权限表', d: '它能动哪些地方', c: colors.blue },
+	{ n: '二', t: '它什么时候会自己跑', from: '第十四节 · 人触发 vs 自动跑', d: '会不会在没人看着的时候自己动', c: colors.teal },
+	{ n: '三', t: '它依赖什么外部凭据', from: '第十四节 · 连接器', d: '对方要自己准备哪几把钥匙', c: colors.orange },
+	{ n: '四', t: '它坏了之后谁修', from: '第十四节 · 谁来维护', d: '最容易空着的一格', c: colors.red, heavy: true },
 ];
 
 export default function L15P21_FourThingsToSay() {
 	return (
 		<Page>
 			<ActBadge act={4} />
-			<Head sub="这四件不是我编出来的 —— 它们正好就是第十四节课那四幕。">
-				所以有四件事，必须说出口
-			</Head>
+			<Head>所以有四件事，必须说出口</Head>
 
 			<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
 				{FOUR.map((f, i) => (
@@ -48,7 +46,7 @@ export default function L15P21_FourThingsToSay() {
 						<p style={{ fontSize: 20, color: '#555', lineHeight: 1.65, marginTop: 11 }}>{f.d}</p>
 						{f.heavy && (
 							<p style={{ fontSize: 22, fontWeight: 800, marginTop: 8, color: colors.red }}>
-								而它空着的时候，答案默认是：你。永远是你。
+								空着的时候，答案默认是你。永远是你。
 							</p>
 						)}
 					</motion.div>

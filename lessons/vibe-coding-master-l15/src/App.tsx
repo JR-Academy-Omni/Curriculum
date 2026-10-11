@@ -111,7 +111,8 @@ import L15P28_Closing from './components/slides/L15P28_Closing';
 import L15A0_ScopesFull from './components/slides/L15A0_ScopesFull';
 import L15A1_PluginAnatomy from './components/slides/L15A1_PluginAnatomy';
 import L15A2_Troubleshoot from './components/slides/L15A2_Troubleshoot';
-import L15A3_PreflightChecklist from './components/slides/L15A3_PreflightChecklist';
+// 🔴 A3 讲师课前核对清单已从 deck 摘除 —— 那是讲师的东西，不该出现在投屏上。
+//    内容在 RUNSHEET §3。文件保留，不再排进放映序列。
 import L15A4_QA from './components/slides/L15A4_QA';
 
 export default function App() {
@@ -168,7 +169,6 @@ export default function App() {
 			<L15A0_ScopesFull />
 			<L15A1_PluginAnatomy />
 			<L15A2_Troubleshoot />
-			<L15A3_PreflightChecklist />
 			<L15A4_QA />
 		</SlideEngine>
 	);

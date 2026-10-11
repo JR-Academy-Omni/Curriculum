@@ -8,14 +8,14 @@ import { Page, Head, ActBadge, colors, fonts, border, radii } from '../deck';
 const DRIFT = [
 	{ t: '包依赖的东西会升级', c: colors.blue },
 	{ t: '包接的外部系统会改接口', c: colors.orange },
-	{ t: '你写下的那个默认，半年之后可能已经不对了', c: colors.purple },
+	{ t: '你写下的默认，半年后可能已经不对', c: colors.purple },
 ];
 
 export default function L15P24_ItGetsOld() {
 	return (
 		<Page>
 			<ActBadge act={5} />
-			<Head sub="你的包做好了，也交出去了。然后呢？">你的包会变旧</Head>
+			<Head>你的包会变旧</Head>
 
 			<div style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
 				{DRIFT.map((d, i) => (
@@ -39,7 +39,7 @@ export default function L15P24_ItGetsOld() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.5 }}
 				style={{ marginTop: 26, fontSize: 23, color: '#555', lineHeight: 1.7 }}
 			>
-				第十四节我们讲过漂移，讲过权限会漂、配置会漂。包也一样，<strong>而且更安静。</strong>
+				第十四节讲过漂移。包也一样，<strong>而且更安静。</strong>
 			</motion.div>
 
 			<motion.div
@@ -53,7 +53,7 @@ export default function L15P24_ItGetsOld() {
 				<div style={{ fontFamily: fonts.heading, fontSize: 34, fontWeight: 900, color: colors.white, lineHeight: 1.45 }}>
 					一个没有复审日期的包，等于一个<span style={{ color: colors.yellow }}>没有维护者</span>的包。<br />
 					<span style={{ fontSize: 28, color: 'rgba(255,255,255,.72)' }}>
-						它不会报错，它只会慢慢变得不对。而因为它不报错，所以没有人会去看它。
+						它不报错，只是慢慢变得不对 —— 所以没人会去看它。
 					</span>
 				</div>
 			</motion.div>

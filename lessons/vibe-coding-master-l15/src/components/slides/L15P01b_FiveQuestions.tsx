@@ -10,19 +10,17 @@ import { Page, Head, colors, fonts, border, radii } from '../deck';
  * 🔴 五问 = 五幕。幕封面（C1–C5）会逐幕回收这五行。
  */
 const QS = [
-	{ n: '一', q: '它现在活在哪？', a: '你会发现它散在三层里，而且大半没进 git', c: colors.dark },
-	{ n: '二', q: '别人是怎么交的？', a: '装一个现成的，看清楚一个包能带什么', c: colors.blue },
-	{ n: '三', q: '怎么把自己的打成同样的形状？', a: '做一个包，装到一台不是你这台的环境上', c: colors.teal },
-	{ n: '四', q: '你交出去的到底是什么？', a: '不是文件。是一组别人默认会接受的决定', c: colors.red },
+	{ n: '一', q: '它现在活在哪？', a: '它散在三层里，大半没进 git', c: colors.dark },
+	{ n: '二', q: '别人是怎么交的？', a: '装一个现成的，看它能带什么', c: colors.blue },
+	{ n: '三', q: '怎么把自己的打成同样的形状？', a: '做一个包，装到别的环境上', c: colors.teal },
+	{ n: '四', q: '你交出去的到底是什么？', a: '不是文件', c: colors.red },
 	{ n: '五', q: '你走了之后，它还在吗？', a: '把没人接的那几样写下来', c: colors.purple },
 ];
 
 export default function L15P01b_FiveQuestions() {
 	return (
 		<Page>
-			<Head sub="今天分五幕，一幕回答一个问题。这五个问题就是今天的全部。">
-				今天回答五个问题
-			</Head>
+			<Head sub="五幕，一幕一个问题。">今天回答五个问题</Head>
 
 			<div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
 				{QS.map((x, i) => (
@@ -52,7 +50,7 @@ export default function L15P01b_FiveQuestions() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.95, duration: 0.6 }}
 				style={{ marginTop: 'auto', fontSize: 23, color: '#6b6b6b', lineHeight: 1.6 }}
 			>
-				前三幕是动手，第四幕翻一次，第五幕收口。<strong>每一幕开始前我都会回到这张表，告诉你我们走到哪了。</strong>
+				<strong>每一幕开始前，回到这张表。</strong>
 			</motion.p>
 		</Page>
 	);

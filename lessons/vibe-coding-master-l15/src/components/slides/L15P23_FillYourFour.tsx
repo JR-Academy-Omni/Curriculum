@@ -20,7 +20,7 @@ export default function L15P23_FillYourFour() {
 				回到你的包，<span style={{ color: colors.yellow }}>把这四格补上去</span>
 			</h2>
 			<p style={{ fontSize: 22, color: 'rgba(255,255,255,.58)', marginTop: 14, lineHeight: 1.7 }}>
-				一格一句话就够。不要写长 —— 写长了没人读，那又回到说明文档那个问题了。
+				一格一句话。写长了没人读。
 			</p>
 
 			<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 26 }}>
@@ -53,8 +53,8 @@ export default function L15P23_FillYourFour() {
 				}}
 			>
 				<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, color: colors.white, lineHeight: 1.45 }}>
-					第四格有一个要求：<span style={{ background: colors.yellow, color: colors.black, padding: '0 8px', borderRadius: radii.label }}>不许写「我」</span><br />
-					写「暂时没人」是诚实的。写「我」是逃避的 —— 因为你总有一天不在。
+					第四格：<span style={{ background: colors.yellow, color: colors.black, padding: '0 8px', borderRadius: radii.label }}>不许写「我」</span><br />
+					写「暂时没人」是诚实的。写「我」是逃避的。
 				</div>
 			</motion.div>
 

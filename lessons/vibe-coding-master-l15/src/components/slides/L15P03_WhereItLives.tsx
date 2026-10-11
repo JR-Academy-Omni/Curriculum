@@ -11,7 +11,7 @@ export default function L15P03_WhereItLives() {
 			<ActBadge act={1} mode="动手 ①" />
 			<Instruction
 				kicker="只读 · 不改任何东西"
-				sub="跑完你会看到三段。先别急着理解它们是什么 —— 先确认你看到的是三段，不是一段。"
+				sub="你会看到三段，不是一段。"
 			>
 				去看一眼<br />你造的东西活在哪
 			</Instruction>

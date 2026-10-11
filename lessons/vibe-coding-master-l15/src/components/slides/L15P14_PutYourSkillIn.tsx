@@ -12,7 +12,7 @@ export default function L15P14_PutYourSkillIn() {
 			<ActBadge act={3} mode="动手 ④" />
 			<Instruction
 				kicker="第五节课那个"
-				sub="一个技能就是一个目录。目录名就是技能名，里面放一份 SKILL.md。没有别的要求。"
+				sub="一个目录就是一个技能。里面放一份 SKILL.md。"
 			>
 				把你自己的<br />一个技能放进去
 			</Instruction>

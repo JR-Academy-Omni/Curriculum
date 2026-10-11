@@ -11,8 +11,7 @@ export default function L15P20_YouShipDefaults() {
 			<BigLine
 				bg={colors.dark}
 				color={colors.white}
-				sub={<>你刚才数出来的那个数字，不是「你还没来得及写文档」。<br />
-					那是你替未来每一个用这个包的人，做了那么多个决定 —— 而他们不知道这些决定发生过。</>}
+				sub={<>你刚才数出来的那个数字，不是「还没写文档」。</>}
 			>
 				你交出去的不是文件，是<span style={{ color: colors.yellow }}>默认值</span>。<br />
 				别人<span style={{ color: colors.red }}>不会读</span>你的说明文档，<br />

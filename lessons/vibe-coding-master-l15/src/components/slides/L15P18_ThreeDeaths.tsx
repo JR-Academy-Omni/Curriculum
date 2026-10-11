@@ -10,18 +10,18 @@ import { Page, Head, ActBadge, Code, colors, fonts, border, radii } from '../dec
 const DEATHS = [
 	{
 		n: '一', t: '路径写死了', c: colors.red,
-		sym: '在你机器上好好的，到别人那儿什么都不发生，而且不报错。',
+		sym: '你这儿好好的，别人那儿什么都不发生，不报错',
 		fix: '用那个路径占位符。',
 	},
 	{
 		n: '二', t: '东西放错了目录', c: colors.orange,
-		sym: '装上了，但那个技能或者钩子像不存在一样。',
-		fix: '那几个目录名是约定好的，不能自己起。',
+		sym: '装上了，但像不存在一样',
+		fix: '目录名是约定好的，不能自己起',
 	},
 	{
 		n: '三', t: '依赖了只有你有的东西', c: colors.purple,
-		sym: '别人一装就报错，错误信息指向一个他没有的文件、命令、或者凭据。',
-		fix: '包只能依赖两样：它自己带着的，和那台机器上一定有的。',
+		sym: '别人一装就报错，指向他没有的东西',
+		fix: '只能依赖：自己带的，机器上一定有的',
 	},
 ];
 
@@ -29,7 +29,7 @@ export default function L15P18_ThreeDeaths() {
 	return (
 		<Page>
 			<ActBadge act={3} />
-			<Head sub="我正面讲一遍，你们不用自己去试。">装不上，通常是这三种</Head>
+			<Head>装不上，通常是这三种</Head>
 
 			<div style={{ display: 'flex', gap: 18 }}>
 				{DEATHS.map((d, i) => (
@@ -60,8 +60,7 @@ export default function L15P18_ThreeDeaths() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.75, duration: 0.5 }}
 				style={{ marginTop: 26, fontSize: 24, lineHeight: 1.7 }}
 			>
-				第三种还有后半句：除此之外的所有东西，<strong>都必须在交接说明里写出来</strong>。
-				而交接说明长什么样，就是下一幕的内容。
+				其余的，<strong>写进交接说明</strong>。
 			</motion.div>
 
 			<motion.div

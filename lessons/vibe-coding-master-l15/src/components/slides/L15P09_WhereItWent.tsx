@@ -6,16 +6,16 @@ import { Page, Head, ActBadge, colors, fonts, border, radii } from '../deck';
  * 三个落点横排。强调：三处都是【可读的纯文本】—— 没有黑盒。
  */
 const SPOTS = [
-	{ n: '一', t: '那个市场的仓库', d: '被整个克隆到你本地。它就躺在那儿，你现在就能打开看。', c: colors.blue },
-	{ n: '二', t: '插件本身', d: '被放进一个缓存目录，按市场、插件、版本分三层放好。', c: colors.teal },
-	{ n: '三', t: '一份记录文件', d: '记下你装了什么、装在哪一层、哪个版本、什么时候装的、对应哪一次提交。', c: colors.orange },
+	{ n: '一', t: '那个市场的仓库', d: '整个克隆到你本地', c: colors.blue },
+	{ n: '二', t: '插件本身', d: '缓存目录里，按市场 / 插件 / 版本分层', c: colors.teal },
+	{ n: '三', t: '一份记录文件', d: '装了什么、哪一层、哪个版本、哪次提交', c: colors.orange },
 ];
 
 export default function L15P09_WhereItWent() {
 	return (
 		<Page>
 			<ActBadge act={2} />
-			<Head sub="装完了。我们看看东西去哪了。">刚才那一下，东西去哪了</Head>
+			<Head>刚才那一下，东西去哪了</Head>
 
 			<div style={{ display: 'flex', gap: 20 }}>
 				{SPOTS.map((s, i) => (
@@ -43,7 +43,7 @@ export default function L15P09_WhereItWent() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.75, duration: 0.5 }}
 				style={{ marginTop: 28, fontSize: 25, lineHeight: 1.7 }}
 			>
-				这三处都是<strong>纯文本</strong>。你现在打开任何一个，都能看懂。
+				三处都是<strong>纯文本</strong>，现在就能打开看。
 			</motion.div>
 
 			<motion.div
@@ -55,8 +55,7 @@ export default function L15P09_WhereItWent() {
 				}}
 			>
 				<div style={{ fontFamily: fonts.heading, fontSize: 32, fontWeight: 900, color: colors.white, lineHeight: 1.45 }}>
-					这里<span style={{ color: colors.yellow }}>没有黑盒</span>。装一个插件，从头到尾就是三个动作：
-					把一个仓库拉下来，把一个目录放到约定好的位置，在一份清单上记一笔。
+					<span style={{ color: colors.yellow }}>没有黑盒。</span>拉一个仓库 · 放一个目录 · 记一笔。
 				</div>
 			</motion.div>
 		</Page>

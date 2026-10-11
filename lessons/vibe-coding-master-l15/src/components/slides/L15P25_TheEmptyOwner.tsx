@@ -30,7 +30,7 @@ export default function L15P25_TheEmptyOwner() {
 	return (
 		<Page>
 			<ActBadge act={5} />
-			<Head sub="我见过一套真实在运转的系统。它的流程文件写得相当完整，每一份都有负责人，每一份都写清楚了什么时候触发、谁来做、做完算什么。">
+			<Head sub="一套真实在运转的系统里，每一份流程文件都有负责人。只有一份例外。">
 				有一格，填不出来
 			</Head>
 
@@ -56,8 +56,7 @@ export default function L15P25_TheEmptyOwner() {
 				initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.75, duration: 0.5 }}
 				style={{ marginTop: 24, fontSize: 23, lineHeight: 1.75, maxWidth: 1160 }}
 			>
-				我一开始以为那是没写完。后来我看到了那一格旁边的注释：
-				<strong>负责回收权限的那顶帽子，本来就没有人戴。而这份文件存在的理由，就是把这件事摆到台面上。</strong>
+				<strong>那顶帽子本来就没有人戴。</strong>这份文件存在的理由，就是把这件事摆到台面上。
 			</motion.div>
 
 			<motion.div
@@ -69,8 +68,8 @@ export default function L15P25_TheEmptyOwner() {
 				}}
 			>
 				<div style={{ fontFamily: fonts.heading, fontSize: 33, fontWeight: 900, lineHeight: 1.45 }}>
-					你写到某一节写不下去了 —— 那不是你没写完。<br />
-					那是你刚刚找到了这个组织里<span style={{ color: colors.red }}>真正的那个洞</span>。
+					写不下去，不是你没写完。<br />
+					是你找到了这个组织里<span style={{ color: colors.red }}>真正的那个洞</span>。
 				</div>
 			</motion.div>
 		</Page>

@@ -9,16 +9,16 @@ import { Page, ActBadge, Code, ChatSignal, colors, fonts, border, radii } from '
  * 四条命令全部实测通过（2026-10-11 · Claude Code 2.1.296），清理后真实配置 md5 不变。
  */
 const STEPS = [
-	{ n: '1', t: '建一个干净的环境', d: '建完会告诉你里面装了什么 —— 答案是什么都没有。那就是干净的样子。' },
-	{ n: '2', t: '把你自己的包当市场加进来', d: '注意参数是一个本地路径，不是网址。市场不一定要在 GitHub 上。' },
-	{ n: '3', t: '装', d: '写法跟你刚才装别人东西的时候一模一样：插件名，at 符号，市场名。' },
-	{ n: '4', t: '验证', d: '用刚才那个办法 —— 不看提示，看清单。' },
+	{ n: '1', t: '建一个干净的环境', d: '里面什么都没有' },
+	{ n: '2', t: '把你的包当市场加进来', d: '参数是本地路径，不是网址' },
+	{ n: '3', t: '装', d: '写法跟刚才一模一样' },
+	{ n: '4', t: '验证', d: '不看提示，看清单' },
 ];
 
 export default function L15P17_CleanProfile() {
 	return (
 		<Page bg={colors.dark}>
-			<ActBadge act={3} mode="动手 ⑥ ⭐⭐" />
+			<ActBadge act={3} mode="动手 ⑥" />
 
 			<motion.div
 				initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}
@@ -28,7 +28,7 @@ export default function L15P17_CleanProfile() {
 				}}
 			>
 				<span style={{ fontFamily: fonts.mono, fontSize: 17, fontWeight: 800, letterSpacing: 1 }}>
-					隔离环境 · 不会动你平时的配置 · 清理后一模一样
+					隔离环境 · 不动你平时的配置
 				</span>
 			</motion.div>
 
