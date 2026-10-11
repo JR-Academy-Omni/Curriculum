@@ -11,10 +11,11 @@ export default function L15P05_HabitNotSystem() {
 			<BigLine
 				bg={colors.dark}
 				color={colors.white}
-				sub={<>第一节课我们讲 Source of Truth，讲一件事只应该有一处权威出处。<br />
-					十四节下来你确实做到了 —— 但那个出处，只存在于你这一台笔记本上。</>}
+				sub={<>分界线不在它跑在几台机器上 —— 一台服务器上的服务当然是系统，<br />
+					因为别人可以照着把它重建出来。<br />
+					在于：<strong style={{ color: colors.white }}>除了你，还有没有第二个人能把它立起来。</strong></>}
 			>
-				一套只在<span style={{ color: colors.yellow }}>你这台机器上</span>成立的系统，<br />
+				<span style={{ color: colors.yellow }}>装不到第二台机器上</span>的，<br />
 				不是系统，是<span style={{ color: colors.red }}>习惯</span>。
 			</BigLine>
 		</Page>

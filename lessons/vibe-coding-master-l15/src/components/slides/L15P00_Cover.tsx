@@ -3,7 +3,7 @@ import { Page, colors, fonts } from '../deck';
 
 /**
  * P00 · 封面
- * 课名《怎么把它交出去》+ 副标题「一套只在你这台机器上成立的系统，不是系统，是习惯」
+ * 课名《怎么把它交出去》+ 副标题「装不到第二台机器上的，不是系统，是习惯」
  * 视觉要点（PRD §4）：让「它」和「交出去」形成张力。
  * ⚠️ 纪律：封面不出现「最后一节」字样 —— 收口自己会说。
  */
@@ -35,9 +35,9 @@ export default function L15P00_Cover() {
 					color: colors.white, marginTop: 44, letterSpacing: -1, lineHeight: 1.4,
 				}}
 			>
-				一套只在<span style={{
+				<span style={{
 					backgroundImage: `linear-gradient(transparent 62%, ${colors.red} 62%, ${colors.red} 93%, transparent 93%)`,
-				}}>你这台机器上</span>成立的系统，<br />不是系统，是习惯。
+				}}>装不到第二台机器上</span>的，<br />不是系统，是习惯。
 			</motion.p>
 
 			<motion.p
