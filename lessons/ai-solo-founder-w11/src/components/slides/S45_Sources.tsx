@@ -2,6 +2,7 @@ import { Teaching } from '../Teaching';
 import { Panel, colors } from '../deck';
 export default function S45_Sources() {
   const items = [
+    ['Sean Ellis · Growth Hacker原始定义', '2010年角色定义：以增长为目标，排序、试验、分析和迭代。', 'https://www.startup-marketing.com/2010/07/'],
     ['Hacking Growth · Sean Ellis / Morgan Brown', '快速测试、跨获客/激活/留存/收入的整体方向。', 'https://www.penguinrandomhouse.com/books/545936/hacking-growth-by-sean-ellis-founder-of-growthhackerscom-and-morgan-brown/'],
     ['Traction · Gabriel Weinberg / Justin Mares', '渠道选择与 Bullseye 的方向，课堂用小范围验证来聚焦。', 'https://www.penguinrandomhouse.com/books/319121/traction-by-gabriel-weinberg-and-justin-mares/9781591848363/'],
     ['HubSpot · Flywheel', '客户体验形成回流；给关键环节加力、减少摩擦。', 'https://www.hubspot.com/flywheel?product=breeze'],

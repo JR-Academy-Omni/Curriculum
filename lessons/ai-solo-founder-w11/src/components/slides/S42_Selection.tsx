@@ -1,8 +1,5 @@
-import { Teaching, Three } from '../Teaching';
-export default function S42_Selection() {
-  return <Teaching tag="迁移 · 教学模拟" title="服务、SaaS、咨询，各自从哪里起手？" subtitle="按项目的客户任务与成本选一个动作，不必从同一个平台开始。"><Three items={[
-    { title: '装修跟进服务', text: '温暖介绍 → 脱敏交付样例 → 小范围付费试点', detail: '先别用：没有自然高频任务的连续打卡。' },
-    { title: '垂直文档 SaaS', text: '具体搜索问题 → 小检查器 → 第一任务模板', detail: '先检查：免费使用的边际成本与自然付费需求。' },
-    { title: '专业咨询', text: '行业合作方 → 小诊断或演示课 → 明确范围的试点', detail: '先别用：没有访客基础的再营销。' },
-  ]} /></Teaching>;
-}
+import { ChartFrame, ChartDefs, ChartNode, ChartArrow } from '../GrowthChart';
+import { colors } from '../deck';
+export default function S42_Selection(){const rows=[['服务','温暖介绍','脱敏交付样例','小范围付费试点'],['工具 / SaaS','具体搜索问题','小工具 + 模板','完成第一项任务'],['咨询','行业合作方','小诊断 / 演示','明确范围的试点']];return <ChartFrame tag="选择方法 · 教学示例" title="选一群种子用户，跑通一条价值路径" subtitle="网站 / App 承接任务；选择你能接触、能交付、能追踪的那一条。" footnote="三条路径均为教学建议。先看首次获值和真实付费，再测试内容或推荐回流；免费层、交付与渠道都需核算成本。">
+<svg viewBox="0 0 1400 530" role="img" aria-label="服务、工具和咨询三种业务分别从种子来源进入价值入口并完成任务" style={{width:1400,height:530}}><ChartDefs id="selection-short"/><text x="420" y="37" textAnchor="middle" fontSize="22" fontWeight="800" fill={colors.dark}>种子从哪里来</text><text x="840" y="37" textAnchor="middle" fontSize="22" fontWeight="800" fill={colors.dark}>价值入口</text><text x="1240" y="37" textAnchor="middle" fontSize="22" fontWeight="800" fill={colors.dark}>先完成什么</text>{rows.map(([type,source,entry,goal],i)=><g key={type}><text x="14" y={133+i*171} fontSize="26" fontWeight="800" fill={colors.dark}>{type}</text><ChartNode x={250} y={65+i*171} w={320} title={source} fill={colors.yellow}/><ChartArrow id="selection-short" d={`M 585 ${121+i*171} L 654 ${121+i*171}`}/><ChartNode x={670} y={65+i*171} w={320} title={entry}/><ChartArrow id="selection-short" d={`M 1005 ${121+i*171} L 1074 ${121+i*171}`}/><ChartNode x={1090} y={65+i*171} w={280} title={goal} fill={colors.green}/></g>)}</svg>
+</ChartFrame>;}

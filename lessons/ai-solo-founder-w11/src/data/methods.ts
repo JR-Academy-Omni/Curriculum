@@ -161,9 +161,8 @@ export const methods: GrowthMethod[] = [
     "avoid": "只有换地名/关键词，没有独特内容和维护能力。",
     "metric": "相关查询曝光→有效访问→价值动作。",
     "cost": "数据、工程、索引和内容维护，起步投入较大。",
-    "evidence": "Zapier 的应用和集成页；Google 政策说明不能靠规模化低价值内容。",
+    "evidence": "Google 政策说明不能靠规模化低价值内容；课堂示例要求每页有独特数据。",
     "sourceIds": [
-      "ZA",
       "GO"
     ],
     "steps": [
@@ -174,10 +173,6 @@ export const methods: GrowthMethod[] = [
     "principle": "每个场景都有独特答案，才值得扩展",
     "example": "只有真实不同的任务与数据，才做不同场景页。",
     "sources": [
-      {
-        "title": "Zapier 自身网站：programmatic SEO 与集成页",
-        "url": "https://zapier.com/blog/programmatic-seo/"
-      },
       {
         "title": "Google 官方：规模化内容滥用政策",
         "url": "https://developers.google.com/search/docs/essentials/spam-policies"

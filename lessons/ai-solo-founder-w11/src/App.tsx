@@ -2,10 +2,34 @@ import SlideEngine from './components/SlideEngine';
 import './styles/mobile-controls.css';
 import { notes } from './data/notes';
 import S01 from './components/slides/S01_Cover';
-import S02 from './components/slides/S02_Formula';
+import G01 from './components/slides/G01_Definition';
+import V01 from './components/slides/V01_Seeds';
+import V02 from './components/slides/V02_ContentLoop';
+import V03 from './components/slides/V03_TrackedJourney';
+import V04 from './components/slides/V04_ExperimentLoop';
 import S03 from './components/slides/S03_AARRR';
-import S04 from './components/slides/S04_Map';
+import P02 from './components/slides/P02_Force';
+import H01 from './components/slides/H01_FestivalEvolution';
+import H02 from './components/slides/H02_FirstTwo';
+import H03 from './components/slides/H03_TaskTickets';
+import H04 from './components/slides/H04_PaperFriction';
+import H05 from './components/slides/H05_DigitalTickets';
+import H06 from './components/slides/H06_WhatGrew';
+import F01 from './components/slides/F01_SeedToFestival';
+import F02 from './components/slides/F02_TeamReferral';
+import F03 from './components/slides/F03_ContentCompounds';
+import F04 from './components/slides/F04_Automation';
+import C09 from './components/slides/C09_PDDTeam';
+import C10 from './components/slides/C10_PDDSupply';
+import C11 from './components/slides/C11_PDDOPC';
+import C05 from './components/slides/C05_NotionLoop';
+import S42 from './components/slides/S42_Selection';
 import S05 from './components/slides/S05_Fit';
+import S44 from './components/slides/S44_Practice';
+import I01 from './components/slides/I01_GrowthInfrastructure';
+import S45 from './components/slides/S45_Sources';
+import S47 from './components/slides/S47_Closing';
+import S04 from './components/slides/S04_Map';
 import S06 from './components/slides/S06_Method01';
 import S07 from './components/slides/S07_Method02';
 import S08 from './components/slides/S08_Method03';
@@ -42,51 +66,37 @@ import S38 from './components/slides/S38_Method33';
 import S39 from './components/slides/S39_Method34';
 import S40 from './components/slides/S40_Method35';
 import S41 from './components/slides/S41_Method36';
-import S42 from './components/slides/S42_Selection';
-import S43 from './components/slides/S43_Experiment';
-import S44 from './components/slides/S44_Practice';
-import S45 from './components/slides/S45_Sources';
-import S46 from './components/slides/S46_Cases';
-import S47 from './components/slides/S47_Closing';
-
-import P01 from './components/slides/P01_Flywheel';
-import P02 from './components/slides/P02_Force';
-import P03 from './components/slides/P03_Loops';
-import P04 from './components/slides/P04_OPC';
-import P05 from './components/slides/P05_Value';
-import P06 from './components/slides/P06_Model';
-import P07 from './components/slides/P07_Diagnose';
-
-import C01 from './components/slides/C01_DropboxLoop';
-import C02 from './components/slides/C02_DropboxOPC';
-import C03 from './components/slides/C03_CanvaLoop';
-import C04 from './components/slides/C04_CanvaOPC';
-import C05 from './components/slides/C05_NotionLoop';
-import C06 from './components/slides/C06_NotionOPC';
-import C07 from './components/slides/C07_ZapierLoop';
-import C08 from './components/slides/C08_ZapierOPC';
 
 export default function App() { return <SlideEngine notes={notes}>
   <S01 />
-  <S02 />
+  <G01 />
+  <V01 />
+  <V02 />
+  <V03 />
+  <V04 />
   <S03 />
-  <P01 />
   <P02 />
-  <P03 />
-  <P04 />
-  <P05 />
-  <P06 />
-  <P07 />
-  <C01 />
-  <C02 />
-  <C03 />
-  <C04 />
+  <H01 />
+  <H02 />
+  <H03 />
+  <H04 />
+  <H05 />
+  <H06 />
+  <F01 />
+  <F02 />
+  <F03 />
+  <F04 />
+  <C09 />
+  <C10 />
+  <C11 />
   <C05 />
-  <C06 />
-  <C07 />
-  <C08 />
-  <S04 />
+  <S42 />
   <S05 />
+  <S44 />
+  <I01 />
+  <S45 />
+  <S47 />
+  <S04 />
   <S06 />
   <S07 />
   <S08 />
@@ -123,10 +133,4 @@ export default function App() { return <SlideEngine notes={notes}>
   <S39 />
   <S40 />
   <S41 />
-  <S42 />
-  <S43 />
-  <S44 />
-  <S45 />
-  <S46 />
-  <S47 />
 </SlideEngine>; }

@@ -1,0 +1,10 @@
+import { ChartFrame, ChartDefs, ChartNode, ChartArrow } from '../GrowthChart';
+import { colors } from '../deck';
+export default function C11_PDDOPC(){return <ChartFrame tag="OPC 借鉴 · website / app" title="OPC：让小拼团在网站上跑起来" subtitle="教学方案：一场可批次交付的小班工作坊；人数、时限、退款与交付规则写在同一页面" footnote={<>拼团灵感：<a href="https://www.sec.gov/Archives/edgar/data/1737806/000104746919000391/a2237673zf-1a.htm" target="_blank" rel="noreferrer">2019 F-1/A</a>；事件和自动化为教学设计，未接真实后台。平台外分享存在归因盲区。</>}>
+<svg viewBox="0 0 1400 530" style={{width:1400,height:530}} role="img" aria-label="工作坊页面创建拼团，专属链接邀请，支付加入，到人数条件确认或退款，参加完成交付，再自愿邀请下一轮">
+<ChartDefs id="pdd-opc"/>{[255,535,815,1095].map(x=><ChartArrow key={x} id="pdd-opc" d={`M ${x} 92 L ${x+23} 92`}/>)}
+<ChartNode x={5} y={35} w={240} h={115} title="创建拼团" detail="页面承诺 / 规则清楚" fill={colors.yellow}/><ChartNode x={285} y={35} w={240} h={115} title="专属链接邀请" detail="referrer + team_id"/><ChartNode x={565} y={35} w={240} h={115} title="新人支付加入" detail="去重身份 + 订单" fill={colors.blue}/><ChartNode x={845} y={35} w={240} h={115} title="确认或退款" detail="人数门槛 + 截止时间"/><ChartNode x={1125} y={35} w={240} h={115} title="真实交付" detail="参加并完成作品" fill={colors.green}/>
+<ChartArrow id="pdd-opc" dash d="M 1260 154 L 1260 203 L 135 203 L 135 158"/><text x="710" y="194" textAnchor="middle" fontSize="22" fontWeight="700" fill={colors.dark}>获值后，自愿邀请下一轮 ↺</text>
+<rect x="5" y="242" width="1380" height="100" rx="20" fill={colors.white} stroke={colors.dark} strokeWidth="2"/><text x="32" y="283" fontSize="28" fontWeight="800" fill={colors.dark}>追踪</text><text x="160" y="280" fontSize="23" fill={colors.dark}>创建 → 邀请访问 → 新客支付 → 成团 → 实际完成交付</text><text x="160" y="317" fontSize="22" fill={colors.dark}>同时看：退款、奖励成本、单位工时；点击数不等于新增客户</text>
+<rect x="5" y="365" width="1380" height="125" rx="20" fill={colors.yellow} stroke={colors.dark} strokeWidth="2"/><text x="32" y="410" fontSize="28" fontWeight="800" fill={colors.dark}>自动化</text><text x="190" y="410" fontSize="25" fill={colors.dark}>满足成团条件 → 确认与提醒 → 交付记录 → 获值后分享入口</text><text x="190" y="452" fontSize="22" fill={colors.dark}>到期未成团走退款；失败重试去重；退订、退款或异常后停止邀请提醒</text>
+</svg></ChartFrame>;}

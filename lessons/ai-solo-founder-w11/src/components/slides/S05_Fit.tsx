@@ -1,8 +1,5 @@
-import { Teaching, Three } from '../Teaching';
-export default function S05_Fit() {
-  return <Teaching tag="原理 03 · 适用条件" title="复制一个方法之前，先检查前提" subtitle="同一种玩法，可以在不同阶段产生完全不同的结果。"><Three items={[
-    { title: '客户与任务', text: '谁现在需要？能否接触？他为什么愿意迈出下一步？', detail: '没有明确买家，再多曝光也可能只增加围观。' },
-    { title: '价值与入口', text: '第一次得到什么？在哪个场景看见？有没有需要别人参与的真实任务？', detail: '单人任务，不需要硬塞协作邀请。' },
-    { title: '成本与证据', text: '现金、销售工时、交付成本能否承担？做完后怎样判断？', detail: '免费层也有成本；功能存在不等于增长已被证明。' },
-  ]} /></Teaching>;
-}
+import { ChartFrame, ChartDefs, ChartNode, ChartArrow } from '../GrowthChart';
+import { colors } from '../deck';
+export default function S05_Fit(){return <ChartFrame tag="适用条件 · 三道门" title="复制玩法之前，先过三道门" subtitle="一条不满足，就先修这一条，再启动小实验。" footnote="判断依据是实际访谈、任务观察和成本记录。免费使用有边际成本；功能存在不证明增长已经发生。">
+<svg viewBox="0 0 1400 530" role="img" aria-label="找得到客户、做得到价值、算得过成本三项前提满足后，才启动小实验" style={{width:1400,height:530}}><ChartDefs id="fit-short"/><ChartNode x={30} y={110} w={300} h={150} title="找得到客户" detail="明确人群 + 可触达来源" fill={colors.blue}/><ChartArrow id="fit-short" d="M 344 185 L 503 185"/><ChartNode x={520} y={110} w={320} h={150} title="做得到价值" detail="用户能完成真实任务" fill={colors.yellow}/><ChartArrow id="fit-short" d="M 855 185 L 1004 185"/><ChartNode x={1020} y={110} w={320} h={150} title="算得过成本" detail="现金 + 工时 + 履约" fill={colors.green}/><ChartArrow id="fit-short" d="M 1355 185 L 1380 185 L 1380 405 L 855 405"/><rect x="490" y="365" width="350" height="85" rx="24" fill={colors.dark}/><text x="665" y="419" textAnchor="middle" fontSize="31" fontWeight="800" fill={colors.white}>一条路径，一个小实验</text><text x="184" y="320" textAnchor="middle" fontSize="24" fill={colors.dark}>先锁定匹配人群</text><text x="680" y="320" textAnchor="middle" fontSize="24" fill={colors.dark}>观察关键任务完成</text><text x="1180" y="320" textAnchor="middle" fontSize="24" fill={colors.dark}>计入支持和维护</text></svg>
+</ChartFrame>;}

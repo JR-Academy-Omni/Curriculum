@@ -1,12 +1,5 @@
-import { Teaching } from '../Teaching';
-import { Panel, colors } from '../deck';
-export default function S03_AARRR() {
-  const rows = [
-    ['Acquisition · 获取', '谁来，怎样来？', '相关询问或可接触的目标对象'],
-    ['Activation · 激活', '第一次真的得到什么价值？', '完成一项关键任务 / 拿到可用交付'],
-    ['Retention · 留存', '为什么在自然周期内回来？', '再次使用 / 复购 / 合作延续'],
-    ['Revenue · 收入', '是否真实付费，成本能否承受？', '付款、履约、退款与贡献'],
-    ['Referral · 推荐', '本轮价值如何带来下一位？', '有效介绍 / 分享后真实使用'],
-  ];
-  return <Teaching tag="原理 02 · AARRR" title="增长方法，分别解决五个问题" subtitle="这是诊断视角，不是所有业务必须遵循的同一种先后顺序。"><Panel style={{ padding: 24 }}><div style={{ display: 'grid', gap: 12 }}>{rows.map(([title, question, metric]) => <div key={title} style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr 1.4fr', gap: 22, borderBottom: `1px solid ${colors.dark}`, padding: '14px 0', fontSize: 25, lineHeight: 1.4 }}><strong>{title}</strong><span>{question}</span><span>{metric}</span></div>)}</div></Panel><p style={{ fontSize: 23, marginTop: 20 }}>留存按自然使用或购买周期看；季度咨询不用每日登录衡量。</p></Teaching>;
-}
+import { ChartFrame, ChartDefs, ChartNode, ChartArrow } from '../GrowthChart';
+import { colors } from '../deck';
+export default function S03_AARRR(){const steps=[['进入','Acquisition','渠道 / 来源'],['首次获值','Activation','完成关键任务'],['自然回来','Retention','再次使用 / 复购'],['真实付费','Revenue','收款与交付'],['带来新人','Referral','新人实际获值']];return <ChartFrame tag="诊断 · AARRR" title="用户增长，要追踪五类真实行为" subtitle="点击、报名之后，用户有没有完成价值任务？" footnote="AARRR 是诊断框架；这张图是示例路径，业务可以先付费后使用。留存按自然周期衡量，推荐须去重并追踪新人获值。">
+<svg viewBox="0 0 1400 530" role="img" aria-label="进入、首次获值、自然回来、真实付费、带来新人五类行为，推荐回到获取" style={{width:1400,height:530}}><ChartDefs id="aarrr-chart"/>{steps.map(([title,,detail],i)=><g key={title}>{i<4&&<ChartArrow id="aarrr-chart" d={`M ${250+i*278} 178 L ${288+i*278} 178`}/>}<ChartNode x={28+i*278} y={120} w={220} title={title} detail={detail} fill={[colors.blue,colors.yellow,colors.green,colors.white,colors.red][i]}/></g>)}<ChartArrow id="aarrr-chart" d="M 1375 178 L 1390 178 L 1390 385 Q 1390 425 1350 425 L 50 425 Q 10 425 10 385 L 10 178 L 18 178"/><text x="700" y="399" textAnchor="middle" fontSize="29" fontWeight="800" fill={colors.dark}>老用户的价值，带回下一位匹配用户 ↺</text></svg>
+</ChartFrame>;}

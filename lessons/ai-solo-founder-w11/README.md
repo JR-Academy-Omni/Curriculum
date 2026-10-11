@@ -1,16 +1,23 @@
-# OPC W11 · 用户增长的方法
+# OPC 创业营 W11 · 用户增长
 
-62页HTML Talk Deck，90分钟。先讲7页增长原理与飞轮，接四个真实案例各2页，再讲36个方法单页，带具体步骤、适用条件、案例/教学情境、指标和成本。Register B，官方JR Logo，模板运行时、本地字体、逐页讲师备注。
+65页 HTML Talk Deck，90分钟含练习。29页主课 + 36页玩法图解查阅库。讲师署名待填。
 
-本地：bun install；bun run dev --host 127.0.0.1 --port 19111。
-构建：bun run build。
-状态：已部署并完成公网验收（2026-10-11，Australia/Brisbane）。
+主线：Growth Hacker → 种子用户队列 → 内容循环 → website/App追踪 → 实验循环 → AARRR/推力摩擦 → 新生节三轮迭代（10页） → 拼多多 → Notion模板 → 选择方法 → 15分钟练习。
 
-线上课件：https://jracademy.ai/curriculum/lessons/ai-solo-founder-w11/
-课程目录：https://jracademy.ai/curriculum/lessons.html
+本次删去可见Zapier案例，合并重复案例/原理页面。每个方法以五节点流程、网站/App事件、用户状态、自动化触发/动作/停止讲清怎么做。
 
-内容制作没有模型API、客户外联、投放或社媒调用。
+发布中（2026-10-11）：新版65页正在通过GitHub Actions部署，完成后核验线上课件与目录。
 
-详细内容：PRD.md；讲师节奏：RUNSHEET.md；练习：WORKSHEET.md或public/worksheet.html；来源：SOURCE_MAP.md与research/。
+- [本地课件](http://127.0.0.1:19111/?page=1)
+- [种子用户互动图](http://127.0.0.1:19111/?page=3)
+- [新生节](http://127.0.0.1:19111/?page=9)
+- [拼多多](http://127.0.0.1:19111/?page=19)
+- [方法地图](http://127.0.0.1:19111/?page=29)
 
-键盘：←/→翻页，F全屏，N备注，P打印预览，V摄像头。第4页方法地图可直达分组。
+运行：bun run dev --host 127.0.0.1 --port 19111；构建：bun run build。
+
+Register B、本地字体、官方Logo；保留模板引擎。逐页讲师备注按N，打印同一HTML按P。方法事件、自动化与互动数字均为教学方案/模拟；未接真实支付、奖励、消息或用户后台。
+
+来源和边界见SOURCE_MAP.md，90分钟节奏见RUNSHEET.md，验证见QA.md。旧research/QA保留历史记录，不代表最新课堂顺序。
+
+新版内容：第25页薅羊毛App邀请回流，第26页增长基础设施，第29页Skill下载；关键概念、图表和36方法补英文。现场流程见[LIVE_DEMO.md](LIVE_DEMO.md)。
