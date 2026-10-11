@@ -42,7 +42,7 @@ export default function S01_Cover() {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: 0.6 }}
 						style={{ fontSize: 25, color: '#444', fontWeight: 600, marginBottom: 6, lineHeight: 1.4 }}>
-						W2 · Product UI 与 Design System
+						人与 Agent 协作 · CareKind UI & Design System
 					</motion.p>
 
 					<motion.div

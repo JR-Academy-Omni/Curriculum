@@ -1,3 +1,10 @@
+import '@fontsource/bricolage-grotesque/latin-800.css';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-700.css';
+import '@fontsource/space-mono/latin-700.css';
+import '@fontsource/noto-sans-sc/400.css';
+import '@fontsource/noto-sans-sc/700.css';
+import { MotionConfig } from 'framer-motion';
 import SlideEngine from './components/SlideEngine';
 import S01_Cover from './components/slides/S01_Cover';
 import S02_Lesson from './components/slides/S02_Lesson';
@@ -46,10 +53,37 @@ import V2_L2P02g_ValidationPath from './components/slides/V2_L2P02g_ValidationPa
 import V2_L2P05a_ManageADLC from './components/slides/V2_L2P05a_ManageADLC';
 import V2_L2P06_Deploy from './components/slides/V2_L2P06_Deploy';
 import V1_S05f_MdNotJson from './components/slides/V1_S05f_MdNotJson';
-export default function App(){return <SlideEngine>
+import X01_CollaborationShift from './components/slides/X01_CollaborationShift';
+import X02_HybridMap from './components/slides/X02_HybridMap';
+import X03_ADLC from './components/slides/X03_ADLC';
+import X04_TaskTree from './components/slides/X04_TaskTree';
+import X05_TaskBrief from './components/slides/X05_TaskBrief';
+import X06_AgentTopologies from './components/slides/X06_AgentTopologies';
+import X07_Worktree from './components/slides/X07_Worktree';
+import X08_TeamCharter from './components/slides/X08_TeamCharter';
+import X09_SharedTruth from './components/slides/X09_SharedTruth';
+import X10_Dispatch from './components/slides/X10_Dispatch';
+import X11_SkillParts from './components/slides/X11_SkillParts';
+import X12_SkillDraft from './components/slides/X12_SkillDraft';
+import X13_HandoffConflict from './components/slides/X13_HandoffConflict';
+import X14_LabPlan from './components/slides/X14_LabPlan';
+import X15_IntegrationReview from './components/slides/X15_IntegrationReview';
+import R01_WorkModes from './components/slides/R01_WorkModes';
+import R02_TeamExperiment from './components/slides/R02_TeamExperiment';
+import R03_ResearchArchitecture from './components/slides/R03_ResearchArchitecture';
+import R04_IssueToReview from './components/slides/R04_IssueToReview';
+import R05_SkillLayers from './components/slides/R05_SkillLayers';
+import R06_SkillCaseBridge from './components/slides/R06_SkillCaseBridge';
+export default function App(){return <MotionConfig reducedMotion="user"><SlideEngine>
 <S01_Cover/>
 <S02_Lesson/>
 <S03_Lesson/>
+<X01_CollaborationShift/>
+<R01_WorkModes/>
+<R02_TeamExperiment/>
+<X02_HybridMap/>
+<X03_ADLC/>
+<X09_SharedTruth/>
 {/* W1 原 P26–P33：完整迁入产品与 UI 概念 */}
 <V2_L2P01_Ceiling/>
 <V2_L2P01b_IdeaVsNeed/>
@@ -59,6 +93,17 @@ export default function App(){return <SlideEngine>
 <V2_L2P01e_Components/>
 <V2_L2P01g_PageAnatomy/>
 <V2_L2P01f_Flows/>
+<X04_TaskTree/>
+<X05_TaskBrief/>
+<X06_AgentTopologies/>
+<R03_ResearchArchitecture/>
+<X07_Worktree/>
+<X08_TeamCharter/>
+<X10_Dispatch/>
+<X11_SkillParts/>
+<R05_SkillLayers/>
+<R06_SkillCaseBridge/>
+<X12_SkillDraft/>
 <S04_Lesson/>
 <S05_Lesson/>
 <S06_Lesson/>
@@ -69,6 +114,10 @@ export default function App(){return <SlideEngine>
 <S11_Lesson/>
 <S12_Lesson/>
 <S13_Lesson/>
+<X13_HandoffConflict/>
+<X14_LabPlan/>
+<X15_IntegrationReview/>
+<R04_IssueToReview/>
 <S14_Lesson/>
 <S15_Lesson/>
 <S16_Lesson/>
@@ -96,4 +145,4 @@ export default function App(){return <SlideEngine>
 <V1_S05f_MdNotJson/>
 <S20_Lesson/>
 <S21_Lesson/>
-</SlideEngine>;}
+</SlideEngine></MotionConfig>;}

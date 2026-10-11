@@ -1,87 +1,144 @@
-# W2 独立实践课 · CareKind Product UI & Design System
+# W2 · 人与 Agent 协作交付 CareKind UI
 
-用户明确要求 W1/W2/W3 全部单独。按已确认 C7P02 课程拆分创建，120分钟。每个课件有封面、目录、交付收尾、独立页码、工作单与入口；不共用 W1 的放映列表。
+2026-10-11 owner 已确认：组合已有 ADLC、Subagent、Agent Team、Company OS、Skills 教学；补混合团队总图与 CareKind 实操；保留 UI / Design System；交付本地预览。仅本地修订，不发布。
 
-来源：`../../ai-engineer-bootcamp/public/outline.json` C7P02。不声明 starter 已实现或已验收；具体路径、权限、字段与运行命令必须从实际 starter 读取。
+## 目标与边界
+- 学生能区分人和人、人和 Agent、Agent 和 Agent 三种协作，指定 accountable owner、执行者、reviewer、依赖与证据。
+- 同一合成 CareKind 案例串起需求→任务计划→分工→统一设计→执行→交接→集成验收。ADLC 仍为需求→PRD→开发→部署→反馈；SDD 为执行方法。
+- 管理 Agent 协助拆解、派工、汇报与协调；工具连接和授权才形成真实送达。Skill 是步骤与检查标准，不等于员工或消息系统。
+- 产品 UI 用合成 Resident / Shift / Progress Note 演示；字段、权限和状态为课堂候选契约，不声称真实 CareKind starter、API、数据库或 Voice AI 已实现。
+- 沿用 JR Register B / DeckFrame / 1600×900；不改运行时，不改 URL。原47页与上一轮15页保留注册；本轮新增6页公开图解/案例，总计68页。旧页重复概念按课堂地图选讲，非全部计时相加。
 
-## 2026-10-04 修订：迁入 W1 原 P26–P33
-
-用户要求把产品定义、页面拆解、CRUD、组件、页面结构与用户流程移到 W2。完整保留八页原有图解和互动，插在本周范围之后、设计 Brief 之前。W2 共 47 页；W1 原 P26–P33 对应 W2 新 P04–P11，后续原 P04–P21 顺延到 P12–P29。
-
-## 整体节奏
-
-| 时间 | 页码 | 课堂动作 |
+## 120分钟课堂路径
+| 时间 | 行动 | 内容 |
 |---|---|---|
-| 00–05 | P01–P03 | 封面、目录与 W1 契约复查 |
-| 05–17 | P04–P11 | 产品与 UI 概念导读；课前回看，现场只走关键图解 |
-| 17–25 | P12–P14 | Design Brief、页面地图与导航 |
-| 25–45 | P15–P19 | 比较方向、固化 DESIGN.md、tokens 与组件 |
-| 45–75 | P20–P21 | 实现核心页面与 Claude 迭代，保留 30 分钟动手 |
-| 75–95 | P22–P23 | 业务状态与恢复分支 |
-| 95–110 | P24–P27 | 输入状态、手机、键盘与截图证据 |
-| 110–120 | P46–P47 | Product Design Review 与交付 |
+| 00–15 | 讲图与复查 | 混合团队、五步ADLC、共享真相；旧需求页按需回看 |
+| 15–35 | 拆任务与分工 | 六格Brief、依赖、Subagent / Team、worktree、通信、派工 |
+| 35–50 | 固化做法 | Skill / Rules / Prompt、起草任务拆解Skill并核查 |
+| 50–70 | 设计与试操作 | CareKind Brief、A/B设计、DESIGN.md、tokens、组件状态 |
+| 70–100 | 30分钟分工Lab | 3人小组或独立+Agent替代路径；UI任务、交接冲突、证据回收 |
+| 100–115 | 集成与评审 | 业务状态、手机模拟布局、键盘、Review / 合并证据 |
+| 115–120 | 交付 | Owner、Skill、UI、状态矩阵、handoff与W3接口待办 |
 
-总时长仍为 120 分钟；合并原先重复的需求/页面/组件概念讲解，不延长课程，不挤掉页面动手和现场评审。八页可课前导读或课后回看。
+## 新增/改编页规格
+| 组件 | 教学任务与主视觉 | 来源 |
+|---|---|---|
+| X01_CollaborationShift | 三种协作；传统团队与混合团队对照 | 大师课S04b_TeamWork |
+| X02_HybridMap | 负责人→管理Agent→三名员工+各自Agent→验收；共享SoT与反馈回路 | Company OS N24/N16/N15，owner本次主线 |
+| X03_ADLC | 完整五步循环 | W1 V2_S16d_ADLCFlow完整迁入 |
+| X04_TaskTree | 同一成果→契约门→三条并行任务→集成门；依赖先于并行 | L8 Charter / Lead职责；CareKind教学适配 |
+| X05_TaskBrief | 六格任务卡，已填写的CareKind UI任务 | L7 六格Brief适配 |
+| X06_AgentTopologies | Subagent中心汇总 vs Team成员交换证据 | L7/L8拓扑适配 |
+| X07_Worktree | 完整repo/worktree/review图，任务换为CareKind | W1 worktree图迁入适配 |
+| X08_TeamCharter | Outcome、Owner、证据、消息触发、Done；含冲突消息 | L8 Charter与Messages适配 |
+| X09_SharedTruth | 人和每个人的Agent读同一份规则/状态/接口 | 大师课团队SoT适配 |
+| X10_Dispatch | 目标下发→接单→结果→证据→阻塞回流 | Company OS员工工作流适配 |
+| X11_SkillParts | Prompt / Rules / Skill / 管理Agent分工 | L5适配 |
+| X12_SkillDraft | 任务拆解SKILL.md关键片段+输入输出+实测任务卡 | L5起草/迭代流程适配 |
+| X13_HandoffConflict | 旧status/pending vs新state/Review；交接与裁决可切换 | L8 Conflict→Decision适配 |
+| X14_LabPlan | 30min任务、角色、输出、检查与独立替代路径 | 本课Lab |
+| X15_IntegrationReview | 分支/PR/Review/集成/证据/反馈 | W1 Review / TaskBoard、L8 Lead |
 
-## 逐页规格
+## 原有页显著补强
+- S04：填好的CareKind Design Brief，区分候选权限与业务事实。
+- S07：同一Documentation任务的两个可视化方向。
+- S09：DESIGN.md示例与可判定的规则。
+- S10：primitive→semantic→component与同一值影响两个组件。
+- S11：交互组件的默认、focus、disabled、loading、error状态。
+- S12：可操作CareKind合成UI（导航、草稿、保存、送审、角色确认、失败/升级/恢复、审计、窄布局）。
+- S14：完整候选状态/角色/动作矩阵。
+- S02、S20、S21：课堂路径与完整协作交付。
+- P10–P17需求图解、P49–P66旧进阶材料仍完整保留；更新最终页码与来源映射。
 
-P01：正式封面。
-P02：从产品契约到完整 UI · 先读需求、页面和流程图，再完成 C7P02 的设计与 UI 交付。 · 版式 rows。
-P03：先接住 W1 的产品契约 · UI 的判断依据来自已确认需求。 · 版式 grid。
-P04：会写代码是底牌，会定义需求是护城河 · W1 原 P26；完整图解。
-P05：想法不是需求 · W1 原 P27；想法/功能/需求/MVP 层次。
-P06：产品需求五问 · W1 原 P28；用户、痛点与成功标准。
-P07：拆解常见页面类型 · W1 原 P29；保留 PageMock 交互切换。
-P08：CRUD 的页面路径 · W1 原 P30；完整创建、读取、更新、删除流程。
-P09：从页面拆组件 · W1 原 P31；保留组件互动。
-P10：一个页面内部怎么叠出来 · W1 原 P32；完整页面结构图。
-P11：用户流程与业务流程 · W1 原 P33；完整流程图。
-P12：给 Claude 一份能执行的设计任务 · 参考风格与工程上下文要同时给。 · 版式 rows。
-P13：画页面地图，再安排导航 · 按照 C7P02 的关键页面建立信息架构。 · 版式 rows。
-P14：页面之间要有可解释的入口 · 从业务对象进入文档，再回到当前任务。 · 版式 flow。
-P15：比较两个有差异的设计方向 · 比较结构与成本，留下选择理由。 · 版式 grid。
-P16：生成方向，选定后固化规则 · 先看候选，再决定哪些内容进入 DESIGN.md。 · 版式 exercise。
-P17：DESIGN.md 记录设计决策 · 把本次选择变成下一页也能复用的规则。 · 版式 rows。
-P18：相同意义使用相同 token · 先定义语义，再填入选定设计值。 · 版式 grid。
-P19：一个组件，要展示它的状态 · 样例必须覆盖能被学生检查的差异。 · 版式 grid。
-P20：按页面实现，按任务验收 · 复用已有组件，逐步接上导航和布局。 · 版式 rows。
-P21：用 Claude 迭代核心页面 · 一次只指出一个可核查的界面问题。 · 版式 exercise。
-P22：让状态决定可用动作 · 课程要求包含 Draft、Review、Confirmed、Failed、Escalated。 · 版式 rows。
-P23：先讲清主路径，再画分支 · 这是 UI 评审用的状态候选，转换权限需确认。 · 版式 flow。
-P24：录音和转写是一组输入状态 · 本周设计输入 UI；W4 才接入 Voice AI。 · 版式 grid。
-P25：缩到手机后，还能完成任务吗 · 检查主路径，不只看页面有没有横向滚动。 · 版式 grid。
-P26：用键盘完成一次完整任务 · 视觉与操作检查一起进行。 · 版式 grid。
-P27：让截图说明具体问题 · 把感受改写成可执行的修改。 · 版式 rows。
-P46：现场 Product Design Review · 用任务、状态与证据讨论设计。 · 版式 exercise。
-P47：把设计选择与页面一起交付 · 下一周使用这些材料完成真实业务链。 · 版式 hero。
+## 配套与验收
+统一WORKSHEET/public副本；HANDOUT可复制Brief/Skill/冲突/验收模板；RUNSHEET逐阶段示例与失败兜底；SOURCE_MAP逐页追溯。
+构建、62页桌面和手机画布检查、重点互动/键盘/禁用/加载/空/错/未保存/保存/刷新/导航检查、官方Logo匹配。静态QA不等于真实产品/API或课堂演练验收。
 
-状态：原29页修订已通过构建与29页三视口浏览器验证；本次47页修订状态以QA.md为准，线上历史版本不代表本次修订已部署。
+## 2026-10-11 · 公开图解与案例组合（owner授权）
 
-## 新修订：整组18页迁入W2
+六页新增 + 既有X06官方来源补强；总计68页，保留既有62页、UI/Design System、合成实操和120分钟。
+页内统一写出处、文献日期/核查日期和改编范围。所有新图以可编辑React图层重绘，不复制来源图片、Logo或大段文章；课堂例子明确标记JR改编。
 
-用户要求W1的Context、Skills、产品验证、项目管理与部署整组教学页全部迁到下一节W2。18页完整保留图解、Lab与素材；W1不再注册，源码Legacy保留。W2在最终Review与交付前接“W2进阶练习”，共47页。本课持续120分钟，页面库用于教学选择与准备，不将全部原Lab时长叠加到课堂。当前页码和验证状态在迁移后按实际App重建。
+| 新页 | 教学对象 | 图解 / 互动 | 事实边界 |
+|---|---|---|---|
+| R01_WorkModes | 微软四种工作模式 | 四种模式卡片，选择后显示CareKind任务例子 | 按原文模式概念改编；不是原图矩阵、数据图或能力评级 |
+| R02_TeamExperiment | Cybernetic Teammate团队研究 | 实验四组条件图；研究结论与课堂迁移分区 | 用2026正式期刊版摘要，791名专业人员；不造数值柱图，不外推所有职业 |
+| R03_ResearchArchitecture | Anthropic研究系统 | 用户→Lead/Memory→Subagents/Tools→综合/Citation→补充研究回路 | 2025厂商工程案例简化重绘；CareKind检查是教学迁移，不是原文实测 |
+| R04_IssueToReview | GitHub Copilot任务交付 | 5步可切换Issue→Agent→PR→Review→复查/合并示意，真实反馈可读 | 官方操作流程 + 自拟CK-UI-02；不创建真实Issue/PR或触发模型 |
+| R05_SkillLayers | Anthropic/Agent Skills机制 | 元数据→指令→按需资料；卡片切换显示上下文内容 | 不声称每种会话加载机制相同；示意不是token测量 |
+| R06_SkillCaseBridge | 官方PDF Skill案例 | forms/reference按需资料树→CareKind任务拆解Skill目录 | 原文PDF案例为事实；CareKind目录是本课模板，不称已安装运行 |
+| X06补强 | Claude Code Subagent/Team | 原拓扑对照保留，添加当前官方来源与实验状态 | 核查日2026-10-11；具体产品能力与版本依官方文档 |
 
-## P28–P45进阶练习逐页规格
+节奏：六页嵌入已有讲授段，原概念页按需回看；不叠加课时，不减少30分钟Lab和10分钟集中评审。
+同步页码、目录、RUNSHEET、HANDOUT、逐页SOURCE_MAP和公开来源台账；核查新增页三尺寸、模式/流程/加载互动、原CareKind路径、实际导航与本地预览。
 
-- P28：C06_Appendix，完整保留原教学图解、Lab与步骤。
-- P29：CC_S10b_ContextWindow，完整保留原教学图解、Lab与步骤。
-- P30：CC_S10c_ContextRot，完整保留原教学图解、Lab与步骤。
-- P31：CC_S19_NotAutocomplete，完整保留原教学图解、Lab与步骤。
-- P32：CC_S20_ThreeWeapons，完整保留原教学图解、Lab与步骤。
-- P33：CC_S21_Skills，完整保留原教学图解、Lab与步骤。
-- P34：CC_S21b_ProgressiveDisclosure，完整保留原教学图解、Lab与步骤。
-- P35：CC_L03_Skill，完整保留原教学图解、Lab与步骤。
-- P36：V2_L2P02a_ProductCanvas，完整保留原教学图解、Lab与步骤。
-- P37：V2_L2P02b_MVPScope，完整保留原教学图解、Lab与步骤。
-- P38：V2_L2P02c_UserBehavior，完整保留原教学图解、Lab与步骤。
-- P39：V2_L2P02d_BusinessModel，完整保留原教学图解、Lab与步骤。
-- P40：V2_L2P02e_BusinessLogic，完整保留原教学图解、Lab与步骤。
-- P41：V2_L2P02f_ToPRD，完整保留原教学图解、Lab与步骤。
-- P42：V2_L2P02g_ValidationPath，完整保留原教学图解、Lab与步骤。
-- P43：V2_L2P05a_ManageADLC，完整保留原教学图解、Lab与步骤。
-- P44：V2_L2P06_Deploy，完整保留原教学图解、Lab与步骤。
-- P45：V1_S05f_MdNotJson，完整保留原教学图解、Lab与步骤。
+## 最终68页放映顺序
 
-P28章节文案为W2进阶练习；现有课时120分钟，按阶段选择讲授与带练，其他材料供本周回看，不把旧Lab时间全部叠加。Skills采用内联图解，_LabLayout与product-validation-path.png已核查并完整迁入。
-
-最终放映顺序：P01–P27 UI与设计主线 → P28–P45完整进阶教学 → P46 Product Design Review → P47交付。进阶材料不位于收尾之后，最后两页完成全课评审与交接。
+- P01：S01_Cover。
+- P02：S02_Lesson。
+- P03：S03_Lesson。
+- P04：X01_CollaborationShift。
+- P05：R01_WorkModes。
+- P06：R02_TeamExperiment。
+- P07：X02_HybridMap。
+- P08：X03_ADLC。
+- P09：X09_SharedTruth。
+- P10：V2_L2P01_Ceiling。
+- P11：V2_L2P01b_IdeaVsNeed。
+- P12：V2_L2P02_FiveQ。
+- P13：V2_L2P01c_PagesBreakdown。
+- P14：V2_L2P01d_CRUDPatterns。
+- P15：V2_L2P01e_Components。
+- P16：V2_L2P01g_PageAnatomy。
+- P17：V2_L2P01f_Flows。
+- P18：X04_TaskTree。
+- P19：X05_TaskBrief。
+- P20：X06_AgentTopologies。
+- P21：R03_ResearchArchitecture。
+- P22：X07_Worktree。
+- P23：X08_TeamCharter。
+- P24：X10_Dispatch。
+- P25：X11_SkillParts。
+- P26：R05_SkillLayers。
+- P27：R06_SkillCaseBridge。
+- P28：X12_SkillDraft。
+- P29：S04_Lesson。
+- P30：S05_Lesson。
+- P31：S06_Lesson。
+- P32：S07_Lesson。
+- P33：S08_Lesson。
+- P34：S09_Lesson。
+- P35：S10_Lesson。
+- P36：S11_Lesson。
+- P37：S12_Lesson。
+- P38：S13_Lesson。
+- P39：X13_HandoffConflict。
+- P40：X14_LabPlan。
+- P41：X15_IntegrationReview。
+- P42：R04_IssueToReview。
+- P43：S14_Lesson。
+- P44：S15_Lesson。
+- P45：S16_Lesson。
+- P46：S17_Lesson。
+- P47：S18_Lesson。
+- P48：S19_Lesson。
+- P49：C06_Appendix。
+- P50：CC_S10b_ContextWindow。
+- P51：CC_S10c_ContextRot。
+- P52：CC_S19_NotAutocomplete。
+- P53：CC_S20_ThreeWeapons。
+- P54：CC_S21_Skills。
+- P55：CC_S21b_ProgressiveDisclosure。
+- P56：CC_L03_Skill。
+- P57：V2_L2P02a_ProductCanvas。
+- P58：V2_L2P02b_MVPScope。
+- P59：V2_L2P02c_UserBehavior。
+- P60：V2_L2P02d_BusinessModel。
+- P61：V2_L2P02e_BusinessLogic。
+- P62：V2_L2P02f_ToPRD。
+- P63：V2_L2P02g_ValidationPath。
+- P64：V2_L2P05a_ManageADLC。
+- P65：V2_L2P06_Deploy。
+- P66：V1_S05f_MdNotJson。
+- P67：S20_Lesson。
+- P68：S21_Lesson。

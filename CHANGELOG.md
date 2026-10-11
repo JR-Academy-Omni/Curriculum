@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-11
+
+- 补充 AI Engineer W2 六页公开图解与案例，重绘微软合作模式、团队实验、Anthropic委派、GitHub交付和Skills结构并逐页标来源/改编；本地68页，保留UI/Design System与CareKind实操（`curriculum/lessons/ai-engineer-cohort-07-practice-w2`）。
+
+- 重组 AI Engineer 第七期 W2 网页课件为62页本地版，融入旧 ADLC、Agent/员工协作与 Skills，新增混合团队总图和 CareKind 可操作合成案例，保留 UI/Design System 并同步课堂地图、工作单与来源（`curriculum/lessons/ai-engineer-cohort-07-practice-w2`）。
+
 ## 2026-10-06
 
 - 按用户要求移除新增的课件CI及部署前自动检查，仅保留本地制作、登记和验收工具（`talk-deck` / workflows）

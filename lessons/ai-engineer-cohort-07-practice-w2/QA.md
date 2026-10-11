@@ -1,3 +1,39 @@
+# W2公开资源68页本地验收 · 2026-10-11
+
+状态：Local verified / 未部署、未push；本记录随本地代码提交。本轮在此前62页上新增6页，保留UI/Design System、CareKind模拟及课堂时长。
+
+- 最终TypeScript/Vite build通过；目录检查通过；本课legacy运行时manifest保持不变。
+- 新增6页、X06来源补强页、更新目录页，共8页 × 1600×900 / 1280×720 / 390×844 = 24项检查通过：文字画布边界、来源脚注重叠、缺图、真实总页数68。Skills目录页初查来源脚注重叠，调整间距后24项重跑通过。
+- 7张公开来源页的桌面截图逐页目视；包含数据分组而非捏造结果柱图、委派回路、任务交付步骤、分层加载与目录案例。新图全部React可编辑图层，未复制来源图片/Logo。
+- 17项互动/回归检查通过：四模式、三层加载、五步交付、Space/Enter切换不翻页、原CareKind保存/送审/确认、68页导航与刷新。浏览器error日志为空。
+- 来源链接、发布/核查日期、原文事实与JR教学改编范围在页内可见；正式期刊版791人不混用旧工作论文776人。
+- 可复制HANDOUT、讲师RUNSHEET、README、最终SOURCE_MAP/source-map和目录更新至68页。旧62页全面验收见下面的历史记录，本轮对未修改页面没有重复全量扫描。
+
+证据：`curriculum/out/qa/w2-public-sources-2026-10-11/layout.json`、`interactions.json`、三尺寸新增页截图、`github-review.jpg`、`skill-resources.jpg`。
+
+本地互动属于概念和合成案例；未执行Copilot/Agent Team或安装运行Skill，没有外部派工、Issue/PR创建、模型API或部署操作。
+
+---
+
+# W2混合协作62页本地验收 · 2026-10-11
+
+状态：Local verified / 未部署；本次没有commit或push。历史线上47页保留，不用其验收代表本次版本。
+
+- `bun run build`：TypeScript与Vite通过；bundle约517KB，有Vite体积提示，不影响构建成功。
+- `python3 scripts/check-talk-decks.py --slug ai-engineer-cohort-07-practice-w2`：通过；登记字段、模板manifest及本课legacy运行时manifest均核对。
+- CUA浏览器逐页：62页 × 1600×900 / 1280×720 / 390×844 = 186项检查，无文字超出画布、叶节点hidden裁切或缺图；没有浏览器error日志。入场动画完成后复查并保存全部62页桌面截图；手机保存关键页。旧P57图片另等图片动画完成再三尺寸复查。
+- 全62页桌面contact sheet已目视查看；P05总图、P32演示和P34交接重点查看。PPT手机为等比画布，演示额外提供450px窄布局样例，不称为真实移动App验收。
+- 35项交互检查通过：空校验、输入空格不翻页、未保存禁止送审、提交中防重、保存仍Draft、送审只读、角色限制、退回、确认、audit记录、窄布局、失败保留内容、升级/负责人恢复、重试、真实Tab焦点和Enter保存、对象/任务导航、交接三步、组件加载/错误、前后翻页与page刷新保留。
+- 官方logo与 `jr-academy-brand/assets/logo/logo-zh-full.svg` 字节一致；五个legacy运行时及deck组合文件manifest未改变。
+- 字体从本地npm内容层导入，移除远程Google Fonts链接；字体许可随public/licenses保存。未额外调用任何模型/TTS/图像provider。
+- WORKSHEET与public副本字节一致；HANDOUT可复制Brief、Skill模板与交接步骤；source-map最终页序为62项。
+
+证据：`curriculum/out/qa/w2-2026-10-11/layout.json`、`interactions.json`、`1600-page-01..62.jpg`、`390-page-*.jpg`、`demo-confirmed-narrow.jpg`、contact sheets。
+
+边界：可操作CareKind为合成候选教学UI，纯前端内存状态，刷新清空；没有真实API、服务端权限、持久化audit、Voice AI、员工消息发送或安装/实跑Skill的验收。学生真实项目和课堂协作成果仍由实际Lab产生。
+
+---
+
 # W2 47页完整迁移验收 · 2026-10-04
 
 本次47页重组：完整迁入原W1整组18页，在最终顺序P28–P45；P46 Review、P47交付。当前本地验证完成；本次上线状态见后续发布验收记录，不从线上历史版推断。
