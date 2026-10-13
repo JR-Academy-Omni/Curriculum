@@ -126,6 +126,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/ai-engineer-cohort-07-w3-context-engineering (90-min · 21 slides · Context Engineering: Selection, Assembly & Lifecycle)
+      - name: Build AI Engineer W3 Context Engineering
+        working-directory: lessons/ai-engineer-cohort-07-w3-context-engineering
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
       - name: Build lessons/ai-new-jobs-talk
@@ -342,6 +349,9 @@ jobs:
           cp lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/GUIDE.md lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/ttft.py _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/
           mkdir -p _site/pitch/careeros
           cp -r pitch/careeros/dist/* _site/pitch/careeros/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w3-context-engineering
+          cp -r lessons/ai-engineer-cohort-07-w3-context-engineering/dist/* _site/lessons/ai-engineer-cohort-07-w3-context-engineering/
+          cp lessons/ai-engineer-cohort-07-w3-context-engineering/PRD.md lessons/ai-engineer-cohort-07-w3-context-engineering/RUNSHEET.md lessons/ai-engineer-cohort-07-w3-context-engineering/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w3-context-engineering/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w3-context-engineering/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/
