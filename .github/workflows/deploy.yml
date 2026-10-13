@@ -411,6 +411,12 @@ jobs:
 
           # openclaw-workshop: static HTML only (4-hour offline workshop, no React build)
           # workbuddy-workshop: static HTML only (4-hour Chinese online live workshop)
+          # ai-audit-risk-bootcamp: static HTML only (4-week bilingual AI risk & audit course)
+          if [ -d ai-audit-risk-bootcamp/public ]; then
+            mkdir -p _site/ai-audit-risk-bootcamp
+            cp -r ai-audit-risk-bootcamp/public/* _site/ai-audit-risk-bootcamp/
+          fi
+
           if [ -d workbuddy-workshop/public ]; then
             mkdir -p _site/workbuddy-workshop
             cp -r workbuddy-workshop/public/* _site/workbuddy-workshop/
@@ -1357,6 +1363,22 @@ jobs:
                     <span class="tag" style="background:#dc2626">INTERNAL</span>
                     <div class="title">敏捷反思 Workshop · 主讲手册</div>
                     <div class="desc">节奏图 · 投票 SOP · 5 反思问题精准版 · 高转化金句 · 销售跟进话术（不冷推）· 风险应急</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">AI风险治理与AI审计实战课 · 4周双语课程</div>
+                <div class="cards">
+                  <a href="./ai-audit-risk-bootcamp/curriculum.html">
+                    <span class="tag" style="background:#18B7A0">CURRICULUM · 4 Weeks</span>
+                    <div class="title">AI风险治理与AI审计实战课</div>
+                    <div class="desc">AI基础 · 澳洲监管地图 · 风险控制测试 · 银行Capstone · 双语审计报告</div>
+                  </a>
+                  <a href="./ai-audit-risk-bootcamp/poster.html">
+                    <span class="tag" style="background:#07131c">POSTER</span>
+                    <div class="title">AI风险与审计课程海报</div>
+                    <div class="desc">1242×1660 竖版海报 · 支持一键下载 PNG</div>
                   </a>
                 </div>
               </div>
