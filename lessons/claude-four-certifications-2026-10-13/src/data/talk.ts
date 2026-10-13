@@ -1,0 +1,670 @@
+// Source: SOURCE_MAP.md; missing official requirements are omitted, never estimated.
+export interface TalkSlide { purchasedExam?: boolean; title: string; kicker: string; mode: string; items: string[]; codes?: string[]; sub: string; sourceKey: string; sourceLabel?: string; note: string; values?: number[]; options?: string[]; answer?: number; explanation?: string; link?: string; visual?: string; image?: string; image2?: string; imageCaption?: string; animated?: boolean; ambient?: boolean; learningUrl?: string; learningScreenshot?: string; certScreenshot?: string; certUrl?: string; examGuideUrl?: string; examDemoImage?: string; examDemoReviewImage?: string; examDemoUrl?: string; examPortalImage?: string; examPortalUrl?: string; outlineSub?: string; examDomains?: {english:string; chinese:string; weight:number}[] }
+export const sources: Record<string,string> = {
+  "program": "https://claude.com/resources/articles/four-role-based-claude-certifications",
+  "faq": "https://anthropic-partners.skilljar.com/page/faq-certifications",
+  "academy": "https://academy.claude.com/help/faq",
+  "associate": "https://anthropic-partners.skilljar.com/claude-certified-associate-foundations-certification",
+  "developer": "https://anthropic-partners.skilljar.com/path/claude-certified-developer-foundations",
+  "architect": "https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification",
+  "professional": "https://anthropic-partners.skilljar.com/path/claude-certified-architect-professional",
+  "partner": "https://www.anthropic.com/news/services-track-partner-hub",
+  "frontier": "https://www.anthropic.com/news/claude-frontier-academy",
+  "product": "https://cert.jracademy.ai/claude/",
+  "counts": "https://api.jiangren.com.au/certifications?page=1&pageSize=100&view=card&sortBy=sortOrder&sortOrder=asc",
+  "fdeRequirements": "https://claude.com/programs/frontier-academy",
+  "owner": "https://cert.jracademy.ai/claude/"
+};
+export const slides: TalkSlide[] = [
+  {
+    "title": "Claude 四证\n选对方向，练出能力",
+    "kicker": "01 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "hero",
+    "items": [
+      "可靠使用",
+      "开发应用",
+      "设计系统",
+      "企业治理"
+    ],
+    "sub": "今晚：内容 · 价值 · 难度 · 备考 · 未来",
+    "sourceKey": "program",
+    "note": "今晚先帮你选对证书，再讲拿证有什么用、考试难在哪里、怎么准备。四张证书分别面向日常业务使用、应用开发、系统设计和企业架构。后面会看官方学习材料、考证匠的练习和讲题服务，以及Anthropic新的人才培养计划。我们是Claude认证服务合作伙伴；个人报名资格还要按官方条件确认。"
+  },
+  {
+    "title": "Anthropic 今年在做什么？",
+    "kicker": "02 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "timeline",
+    "items": [
+      "2026.03｜推出 Claude Partner Network",
+      "2026.07｜公布面向不同工作角色的四项认证",
+      "2026.10｜推出 Frontier Academy 人才培养计划"
+    ],
+    "sub": "从推出伙伴认证，到培养能把 AI 用进公司的工程师",
+    "sourceKey": "frontier",
+    "note": "把今年的几件事连起来看：3月推出伙伴网络，7月把职业认证扩展到四种角色，10月推出Frontier Academy。Anthropic不只是卖模型，也在培养能帮企业把Claude用起来的人。对我们来说，选证时要先看自己想承担什么工作，后面的学习和作品才容易接上。",
+    "animated": true,
+    "ambient": true
+  },
+  {
+    "title": "学完课程，和考过认证，是两件事",
+    "kicker": "03 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "compare",
+    "items": [
+      "课程结业徽章｜怎么拿：学完官方课程，完成课程要求。\n\n证明什么：你完成了这门课。\n\n不等于通过四项职业认证考试。",
+      "职业认证徽章｜怎么拿：报名、核验身份，参加监考考试并通过。\n\n证明什么：你通过了对应认证考核。\n\n今晚讲的四张证书，属于这一种。"
+    ],
+    "sub": "今晚讲的是后者：要报名、核验身份、参加监考考试，通过后才拿到认证。",
+    "sourceKey": "academy",
+    "note": "这一页只要分清一个问题：你是学完了一门课，还是通过了一场认证考试？第一种是 Claude Academy 的课程结业徽章。你完成课程要求后获得，它记录的是这门课学完了。第二种才是今晚讲的四项职业认证。你需要先满足报名条件，再核验身份、参加 Pearson 监考考试；通过后在 Credly 领取认证数字徽章。两种都可能以数字徽章的形式展示，所以不能只看它叫徽章还是证书，要看它代表课程结业还是考试通过。公开课程可以用来准备考试，但拿到课程结业徽章，不等于自动拿到今晚讲的四项职业认证。",
+    "visual": "anthropic",
+    "sourceLabel": "官方课程与职业认证说明"
+  },
+  {
+    "title": "你在哪类岗位？看看哪张证书适合你",
+    "kicker": "04 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "compare",
+    "items": [
+      "Claude Certified Associate – Foundations｜业务分析师、市场运营、人力资源专员\n销售、客户成功经理",
+      "Claude Certified Developer – Foundations｜前端工程师、后端工程师\nPython 开发者、AI 应用工程师",
+      "Claude Certified Architect – Foundations｜解决方案架构师、AI 解决方案顾问\n技术负责人、智能体系统架构师",
+      "Claude Certified Architect – Professional｜企业架构师、资深解决方案架构师\n企业 AI 技术顾问、AI 平台负责人"
+    ],
+    "sub": "先看你现在做什么、接下来想做什么，再选认证方向",
+    "sourceKey": "program",
+    "note": "这页直接按职业选方向。业务分析师、市场运营、HR、销售和客户成功经理，经常要整理资料、写报告、做汇报，可以先看 Claude Certified Associate – Foundations。前端、后端、Python 开发者和 AI 应用工程师，要把 Claude 接进程序，适合看 Claude Certified Developer – Foundations。解决方案架构师、AI 方案顾问和技术负责人，要决定模型、数据、工具和人工审核怎么配合，可以看 Claude Certified Architect – Foundations。企业架构师、资深解决方案架构师、企业 AI 技术顾问和 AI 平台负责人，要把方案接进公司现有系统，处理权限、安全、验收和运营，可以看 Claude Certified Architect – Professional。同一个岗位名称在不同公司可能做不同的事，最终按你的实际职责选。这是按官方认证工作范围给出的选证建议，不代表这些岗位必须持证，也不代表拿证就能胜任岗位。 卡片上的四个代号依次为CCAO-F、CCDV-F、CCAR-F、CCAR-P，完整英文名称保留在每个代号下方。",
+    "animated": false,
+    "ambient": true,
+    "sourceLabel": "按官方角色范围列举职业 · 按实际职责选证",
+    "codes": [
+      "CCAO-F",
+      "CCDV-F",
+      "CCAR-F",
+      "CCAR-P"
+    ]
+  },
+  {
+    "title": "这四张证书，到底差在哪？",
+    "items": [
+      "Claude Certified Associate – Foundations｜怎么提要求？回答能不能信？流程怎么复用？",
+      "Claude Certified Developer – Foundations｜怎么接 API、调用工具、测试和处理错误？",
+      "Claude Certified Architect – Foundations｜系统怎么设计？组件怎么配合？失败怎么处理？",
+      "Claude Certified Architect – Professional｜公司系统怎么接？权限、安全和验收怎么管？"
+    ],
+    "sub": "开发者负责把东西做出来；架构师负责把整个系统想清楚",
+    "note": "四张证书的完整名称分别是：Claude Certified Associate – Foundations；Claude Certified Developer – Foundations；Claude Certified Architect – Foundations；Claude Certified Architect – Professional。第一张针对日常使用；第二张针对应用开发；第三张针对智能体系统的设计与构建；第四张针对企业集成、治理与评估。开发者要把功能实现并测试；架构师还要决定整个系统怎么配合、失败后怎么办。官方FAQ说明，后三项计入伙伴资格指标，Claude Certified Associate – Foundations目前不计入。",
+    "sourceKey": "program",
+    "mode": "rows",
+    "kicker": "05 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "visual": "anthropic",
+    "animated": true,
+    "ambient": true
+  },
+  {
+    "title": "官方考试费：四张证书分别多少钱？",
+    "kicker": "06 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "rows",
+    "items": [
+      "Claude Certified Associate – Foundations｜US$99",
+      "Claude Certified Developer – Foundations｜US$125",
+      "Claude Certified Architect – Foundations｜US$125",
+      "Claude Certified Architect – Professional｜US$175"
+    ],
+    "sub": "价格以美元计；伙伴优惠以官方结算页为准",
+    "sourceKey": "faq",
+    "note": "这里仅列官方考试报名费。Claude Certified Associate – Foundations为99美元；Claude Certified Developer – Foundations和Claude Certified Architect – Foundations各125美元；Claude Certified Architect – Professional为175美元。伙伴优惠取决于组织资格和官方账户，在结算页显示，不承诺固定折扣。通过官方认证页面报名并支付考试费后，再按收到的Pearson链接预约。",
+    "sourceLabel": "Anthropic 官方 Certification FAQ · 标准考试费（美元）"
+  },
+  {
+    "title": "Claude Certified Associate – Foundations",
+    "kicker": "07 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "learning",
+    "items": [
+      "业务岗位｜运营、市场、人力资源、销售、客户成功",
+      "分析与协作｜Business Analyst、项目协调、产品运营、业务顾问",
+      "平时做什么｜查资料、写报告、做汇报、整理客户反馈和重复流程",
+      "为什么选它｜学会给 Claude 提要求、检查答案，把工作步骤重复用起来"
+    ],
+    "sub": "适合日常使用 Claude 的业务岗位",
+    "sourceKey": "associate",
+    "note": "运营、市场、HR、销售、客户成功，或者Business Analyst，都可以从这项认证的内容入手。重点是把任务说清楚、判断回答是否可靠，并把有效步骤复用。比如客户反馈整理成一份周报：你要知道给什么材料、要求什么输出、哪些结论需要自己核对。“官方课程”按钮里是官方公开课程的真实截图，作为学习起点；它不是这项职业认证的考试页面。 右边默认显示我们考证匠这门课程的真实学习页面，能看目录和第一章。点击“官方课程”可以切换到Claude Academy资料；点击课程链接可以直接进入对应页面。 官方英文考试大纲如下（权重是计分题目的约占比，不是固定题数）：Prompting and Task Execution，14%，写清任务、拆分复杂要求，并迭代提示词。；Output Evaluation and Validation，21%，核对事实、完整性和偏见，判断何时需要人工验证。；Product and Model Selection，12%，按任务、质量、速度和成本选择产品功能与模型。；Workflow Integration and Solution Design，16%，把 Claude 接入业务流程，确定人和 AI 的分工。；Configuration and Knowledge Management，12%，配置 Projects 指令、知识源，并持续维护。；Governance, Risk, and Responsible Use，15%，判断数据敏感性、组织政策及负责任使用要求。；Troubleshooting and Optimization，10%，定位效果不佳的原因，改进提示词和工作流。。原始官方Exam Guide链接在本页底部；中文说明是对官方任务的简短解释。",
+    "visual": "anthropic",
+    "image": "images/work.png",
+    "imageCaption": "品牌插画 · 工作场景示意",
+    "learningUrl": "https://academy.claude.com/courses/claude-101",
+    "learningScreenshot": "images/learn-associate.png",
+    "certScreenshot": "images/cert-course-ccao-f.png",
+    "certUrl": "https://jiangren.com.au/certifications/exam/ccao-f/learn/exam-overview",
+    "examDomains": [
+      {
+        "english": "Prompting and Task Execution",
+        "chinese": "写清任务、拆分复杂要求，并迭代提示词。",
+        "weight": 14.0
+      },
+      {
+        "english": "Output Evaluation and Validation",
+        "chinese": "核对事实、完整性和偏见，判断何时需要人工验证。",
+        "weight": 21.0
+      },
+      {
+        "english": "Product and Model Selection",
+        "chinese": "按任务、质量、速度和成本选择产品功能与模型。",
+        "weight": 12.0
+      },
+      {
+        "english": "Workflow Integration and Solution Design",
+        "chinese": "把 Claude 接入业务流程，确定人和 AI 的分工。",
+        "weight": 16.0
+      },
+      {
+        "english": "Configuration and Knowledge Management",
+        "chinese": "配置 Projects 指令、知识源，并持续维护。",
+        "weight": 12.0
+      },
+      {
+        "english": "Governance, Risk, and Responsible Use",
+        "chinese": "判断数据敏感性、组织政策及负责任使用要求。",
+        "weight": 15.0
+      },
+      {
+        "english": "Troubleshooting and Optimization",
+        "chinese": "定位效果不佳的原因，改进提示词和工作流。",
+        "weight": 10.0
+      }
+    ],
+    "examGuideUrl": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6nizmqk8tpzpfjvt6qmmav7rh%2Fpublic%2F1783542847%2FClaude%20Certified%20Associate%20%E2%80%93%20Foundations%20Exam%20Guide.pdf"
+  },
+  {
+    "title": "周报、汇报、团队展示，都能让 Claude 帮忙",
+    "kicker": "08 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "showcase",
+    "visual": "anthropic",
+    "items": [
+      "整理工作流｜把每次都要做的事，写成一套步骤",
+      "做自动化｜接好工具、设好规则，让重复任务少一点",
+      "准备汇报｜整理材料、图表和故事，做成网页课件",
+      "做团队展示｜用带动画的 HTML，把进度和成果讲明白"
+    ],
+    "sub": "把业务经验用好，少花时间反复整理和排版",
+    "sourceKey": "associate",
+    "note": "对Business背景的人，最容易落地的是把常做的工作交给Claude帮忙。先把每一步写清楚，再逐步接工具和自动化；材料和结果仍然由你检查。汇报可以做成网页课件，团队展示可以带动画。右边是我们做的展示示意，你可以点击播放。它说明学到的东西怎么用，不是拿到证书后自动就会做这些。",
+    "ambient": true,
+    "sourceLabel": "讲师应用与备考建议 · 对照对应官方认证范围"
+  },
+  {
+    "title": "Claude Certified Developer – Foundations",
+    "kicker": "09 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "learning",
+    "items": [
+      "适合谁｜前后端工程师、Python 开发者、AI 应用开发者",
+      "平时做什么｜接 API、调用业务工具，做聊天助手或自动化应用",
+      "主要学什么｜工具调用、Agent、上下文、测试、评估和安全",
+      "准备一个作品｜做一个能运行的应用，说明错误怎么处理、质量怎么检查"
+    ],
+    "sub": "适合用 Claude 开发应用的软件工程师",
+    "sourceKey": "developer",
+    "note": "这项更适合已经写代码、想做AI应用的人。你要把Claude接到自己的程序里，让它能调用业务工具，处理上下文，检查输出质量，并在出错时给出合理反馈。建议准备一个能运行的应用，面试时把测试、失败处理和评估讲清楚。“官方课程”按钮里的公开API课程是学习资源；具体考试范围以该认证的最新考试指南为准。 右边默认显示我们考证匠这门课程的真实学习页面，能看目录和第一章。点击“官方课程”可以切换到Claude Academy资料；点击课程链接可以直接进入对应页面。 官方英文考试大纲如下（权重是计分题目的约占比，不是固定题数）：Agents and Workflows，14.7%，设计智能体循环、工具选择和多步工作流程。；Applications and Integration，33.1%，把 Claude API 接入应用，处理请求、响应及错误。；Claude Code，3.1%，使用 Claude Code 支持代码开发与工作流。；Eval, Testing, and Debugging，2.6%，测试应用表现、评估输出并排查错误。；Model Selection and Optimization，16.8%，按需求选择模型，优化质量、延迟和成本。；Prompt and Context Engineering，11%，设计提示词，组织和管理应用上下文。；Security and Safety，8.1%，控制权限、保护敏感数据并处理不安全输入。；Tools and MCPs，10.6%，设计工具接口，通过 MCP 连接外部能力。。原始官方Exam Guide链接在本页底部；中文说明是对官方任务的简短解释。",
+    "visual": "anthropic",
+    "image": "images/code.png",
+    "imageCaption": "品牌插画 · 工作场景示意",
+    "learningUrl": "https://academy.claude.com/courses/building-with-the-claude-api",
+    "learningScreenshot": "images/learn-developer.png",
+    "certScreenshot": "images/cert-course-ccdv-f.png",
+    "certUrl": "https://jiangren.com.au/certifications/exam/ccdv-f/learn/exam-overview",
+    "examDomains": [
+      {
+        "english": "Agents and Workflows",
+        "chinese": "设计智能体循环、工具选择和多步工作流程。",
+        "weight": 14.7
+      },
+      {
+        "english": "Applications and Integration",
+        "chinese": "把 Claude API 接入应用，处理请求、响应及错误。",
+        "weight": 33.1
+      },
+      {
+        "english": "Claude Code",
+        "chinese": "使用 Claude Code 支持代码开发与工作流。",
+        "weight": 3.1
+      },
+      {
+        "english": "Eval, Testing, and Debugging",
+        "chinese": "测试应用表现、评估输出并排查错误。",
+        "weight": 2.6
+      },
+      {
+        "english": "Model Selection and Optimization",
+        "chinese": "按需求选择模型，优化质量、延迟和成本。",
+        "weight": 16.8
+      },
+      {
+        "english": "Prompt and Context Engineering",
+        "chinese": "设计提示词，组织和管理应用上下文。",
+        "weight": 11.0
+      },
+      {
+        "english": "Security and Safety",
+        "chinese": "控制权限、保护敏感数据并处理不安全输入。",
+        "weight": 8.1
+      },
+      {
+        "english": "Tools and MCPs",
+        "chinese": "设计工具接口，通过 MCP 连接外部能力。",
+        "weight": 10.6
+      }
+    ],
+    "examGuideUrl": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6nizmqk8tpzpfjvt6qmmav7rh%2Fpublic%2F1783542875%2FClaude%20Certified%20Developer%20%E2%80%93%20Foundations%20Exam%20Guide.pdf"
+  },
+  {
+    "title": "Claude Certified Architect – Foundations",
+    "kicker": "10 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "learning",
+    "items": [
+      "适合谁｜解决方案架构师、技术负责人、负责 AI 方案的技术顾问",
+      "要学的工具与配置｜MCP 工具接口、CLAUDE.md 指令层级、Skills、JSON Schema 输出验证",
+      "要学的系统判断｜智能体怎么分工、何时结束；信息丢失、工具报错和歧义怎么处理",
+      "备考时怎么练｜读架构图与代码配置，比较方案，解释选项为何符合题里的限制条件"
+    ],
+    "sub": "适合设计 Claude 智能体系统的架构师",
+    "sourceKey": "architect",
+    "note": "Claude Certified Architect – Foundations看的是系统如何配合。模型什么时候调用工具，资料从哪里来，哪些操作必须人工确认，出错后怎么恢复，这些都需要设计。模型上下文协议的英文是Model Context Protocol，简称MCP，用来连接工具和资源。“官方课程”按钮里是这个协议的官方入门课程，只覆盖部分知识点，不代表完整考试大纲。 右边默认显示我们考证匠这门课程的真实学习页面，能看目录和第一章。点击“官方课程”可以切换到Claude Academy资料；点击课程链接可以直接进入对应页面。 官方英文考试大纲如下（权重是计分题目的约占比，不是固定题数）：Agentic Architecture & Orchestration，27%，智能体编排、任务拆分、多智能体协作与人工交接。；Tool Design & MCP Integration，18%，工具接口、错误处理、权限与 MCP 服务器集成。；Claude Code Configuration & Workflows，20%，CLAUDE.md、Skills、开发工作流及 CI/CD 配置。；Prompt Engineering & Structured Output，20%，提示词设计、示例、JSON 结构化输出和验证重试。；Context Management & Reliability，15%，长对话上下文、歧义处理、错误传递与人审。。原始官方Exam Guide链接在本页底部；中文说明是对官方任务的简短解释。 这里把学习内容再展开：智能体编排要弄懂循环、拆分和交接，练习判断何时继续调用工具、何时停止；工具与MCP要学描述、权限和错误，练习区分失败原因；Claude Code要学项目指令层级、Skills和开发流程，练习配置按目录生效的规则；结构化输出要学JSON约束、验证和重试，练习字段提取及不合规反馈；可靠性要学上下文保留、错误传递与人审，练习压缩对话后保留关键事实和来源。这些是按官方任务整理的备考练习建议，不是认证考试要求额外交一个项目，也不是拿证后就自动具备交付能力。",
+    "visual": "anthropic",
+    "image": "images/bridge.png",
+    "imageCaption": "品牌插画 · 工作场景示意",
+    "learningUrl": "https://academy.claude.com/courses/introduction-to-model-context-protocol",
+    "learningScreenshot": "images/learn-architect.png",
+    "certScreenshot": "images/cert-course-ccar-f.png",
+    "certUrl": "https://jiangren.com.au/certifications/exam/ccar-f/learn/exam-overview",
+    "examDomains": [
+      {
+        "english": "Agentic Architecture & Orchestration",
+        "chinese": "学：智能体循环、任务拆分与多智能体协调。\n练：按工具调用结果，判断循环应继续还是结束。",
+        "weight": 27.0
+      },
+      {
+        "english": "Tool Design & MCP Integration",
+        "chinese": "学：工具描述、错误返回、权限与 MCP 接入。\n练：接入工具，区分超时、输入错误和权限错误。",
+        "weight": 18.0
+      },
+      {
+        "english": "Claude Code Configuration & Workflows",
+        "chinese": "学：CLAUDE.md、Skills、规划模式与 CI/CD。\n练：配置不同目录的规则，检查指令如何生效。",
+        "weight": 20.0
+      },
+      {
+        "english": "Prompt Engineering & Structured Output",
+        "chinese": "学：示例提示、JSON 格式、验证与重试。\n练：提取文档字段，格式不合规时反馈并重试。",
+        "weight": 20.0
+      },
+      {
+        "english": "Context Management & Reliability",
+        "chinese": "学：长对话信息保留、错误传递与人工复核。\n练：压缩长对话，保留事实、来源和待确认项。",
+        "weight": 15.0
+      }
+    ],
+    "examGuideUrl": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor/6nizmqk8tpzpfjvt6qmmav7rh/public/1783542750/Claude+Certified+Architect+%E2%80%93+Foundations+Exam+Guide.pdf",
+    "outlineSub": "官方英文考纲 · 每个领域学什么，备考时练什么"
+  },
+  {
+    "title": "Claude Certified Architect – Professional",
+    "kicker": "11 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "learning",
+    "items": [
+      "适合谁｜企业架构师、资深方案负责人、负责企业 AI 的顾问",
+      "平时做什么｜接公司系统，协调业务、安全、IT 和运营团队",
+      "主要学什么｜集成、安全治理、评估验收、成本和交接",
+      "准备一份材料｜说明谁能做什么、怎么验收、上线后谁负责"
+    ],
+    "sub": "适合负责企业集成、安全与治理的架构师",
+    "sourceKey": "professional",
+    "note": "Claude Certified Architect – Professional面对公司里的真实部署：怎么接现有系统，哪些人有权限，谁负责安全审核，如何验收，成本和上线后的运营谁管。适合有这类工作经验的人。它与Claude Certified Architect – Foundations 是两项独立认证，官方没有强制先持有基础级；但没有相关经验，直接准备Claude Certified Architect – Professional通常需要补更多背景。“官方课程”按钮里是企业部署公开课程，完整考试范围仍看职业认证指南。 右边默认显示我们考证匠这门课程的真实学习页面，能看目录和第一章。点击“官方课程”可以切换到Claude Academy资料；点击课程链接可以直接进入对应页面。 官方英文考试大纲如下（权重是计分题目的约占比，不是固定题数）：Solution Design & Architecture，17%，把业务需求转成架构，选择方案并解释取舍。；Claude Models, Prompting & Context Engineering，13%，模型取舍、提示词、护栏、上下文与缓存。；Integration，19%，企业集成、身份权限、RAG 检索及协议选择。；Evaluation, Testing & Optimization，16%，评估准确率、延迟、成本与安全，测试和优化。；Governance, Safety & Risk Management，14%，安全护栏、人工验证、合规与风险管理。；Stakeholder Communication & Lifecycle Management，14%，需求沟通、架构文档、交付与生命周期管理。；Developer Productivity & Operational Enablement，7%，配置团队工具，改善开发流程并支持日常运行。。原始官方Exam Guide链接在本页底部；中文说明是对官方任务的简短解释。",
+    "visual": "anthropic",
+    "image": "images/map.png",
+    "imageCaption": "品牌插画 · 工作场景示意",
+    "learningUrl": "https://academy.claude.com/courses/deploying-claude-enterprise-with-confidence",
+    "learningScreenshot": "images/learn-professional.png",
+    "certScreenshot": "images/cert-course-ccar-p.png",
+    "certUrl": "https://jiangren.com.au/certifications/exam/ccar-p/learn/exam-overview",
+    "examDomains": [
+      {
+        "english": "Solution Design & Architecture",
+        "chinese": "把业务需求转成架构，选择方案并解释取舍。",
+        "weight": 17.0
+      },
+      {
+        "english": "Claude Models, Prompting & Context Engineering",
+        "chinese": "模型取舍、提示词、护栏、上下文与缓存。",
+        "weight": 13.0
+      },
+      {
+        "english": "Integration",
+        "chinese": "企业集成、身份权限、RAG 检索及协议选择。",
+        "weight": 19.0
+      },
+      {
+        "english": "Evaluation, Testing & Optimization",
+        "chinese": "评估准确率、延迟、成本与安全，测试和优化。",
+        "weight": 16.0
+      },
+      {
+        "english": "Governance, Safety & Risk Management",
+        "chinese": "安全护栏、人工验证、合规与风险管理。",
+        "weight": 14.0
+      },
+      {
+        "english": "Stakeholder Communication & Lifecycle Management",
+        "chinese": "需求沟通、架构文档、交付与生命周期管理。",
+        "weight": 14.0
+      },
+      {
+        "english": "Developer Productivity & Operational Enablement",
+        "chinese": "配置团队工具，改善开发流程并支持日常运行。",
+        "weight": 7.0
+      }
+    ],
+    "examGuideUrl": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor/6nizmqk8tpzpfjvt6qmmav7rh/public/1783542810/Claude+Certified+Architect+%E2%80%93+Professional+Exam+Guide.pdf"
+  },
+  {
+    "title": "这四张证书，对职业发展有什么帮助？",
+    "kicker": "12 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "rows",
+    "items": [
+      "Claude Certified Associate – Foundations｜业务岗位求职时，多一项经过考试验证的 Claude 应用能力。",
+      "Claude Certified Developer – Foundations｜申请 AI 应用开发岗位时，展示你通过了对应开发能力考核。",
+      "Claude Certified Architect – Foundations｜向 AI 解决方案或架构岗位发展时，展示对应的系统设计知识。",
+      "Claude Certified Architect – Professional｜面向企业 AI 咨询、资深架构岗位，展示集成、治理与评估方面的知识。"
+    ],
+    "sub": "让简历上的 Claude 能力多一个可验证的依据",
+    "sourceKey": "program",
+    "note": "这一页只讲证书在职业发展里有什么用。Claude Certified Associate – Foundations让业务岗位的简历多一项经过验证的Claude应用能力；Claude Certified Developer – Foundations可以在申请AI应用开发岗位时展示对应开发知识；Claude Certified Architect – Foundations帮助你向AI解决方案和架构方向定位；Claude Certified Architect – Professional对应企业集成、治理和评估，适合把职业定位放在企业AI咨询或资深架构方向。共同的作用是让招聘方知道你通过了哪类能力考核，有一个可核对的依据。它可以支持求职和转岗，但不能代替工作经验，也不保证录用或加薪。",
+    "animated": false,
+    "image": "images/bridge.png",
+    "imageCaption": "品牌插画 · 职业发展场景示意",
+    "visual": "anthropic",
+    "sourceLabel": "职业发展建议 · 依据官方认证角色定位"
+  },
+  {
+    "title": "Claude 考试，为什么不能只靠背题？",
+    "kicker": "13 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "dark",
+    "items": [
+      "场景随机抽取｜Claude Certified Architect – Foundations 的指南写明：6个场景随机抽4个。",
+      "存在不同试卷｜官方说明：试卷难度可能略有差异，用换算分作等值处理。",
+      "考试内容会调整｜官方保留更新或替换考试的权利，备考要看当前版本的指南。",
+      "每次都由 AI 出题？｜目前查到的官方指南没有这样说明，不能把它当成已确认的机制。"
+    ],
+    "sub": "先看官方考试机制：场景随机抽取，不同试卷可能有差异",
+    "sourceKey": "faq",
+    "note": "这页讲Claude职业认证自己的考试机制。第一，Claude Certified Architect – Foundations的官方指南第5节说明，考试会从6个场景中随机选4个。这里限定这项认证，不把6选4说成全部四证的统一规则，也不保证每次每道题都不同。第二，官方FAQ和该指南第10节都提到不同试卷可能略有难度差异，换算分用于等值处理，所以不是死记一份试卷，也不能把720分简单当成答对72%。第三，官方考试政策保留退役、更新或替换课程、考试和认证的权利。第四，我们查了官方指南和政策，没有找到“每次考试由AI现场生成题目”的公开说明；随机抽场景与AI实时生成是两回事，不把平台AI练习出题混成官方考试机制。准备时按英文考纲理解概念，练习说明每个选项为什么符合或违反题目条件，并跟着当前官方资料复习。",
+    "ambient": true,
+    "sourceLabel": "官方 Exam Guide、考试 FAQ 与 Exam Policy"
+  },
+  {
+    "title": "Claude 的 Pearson 考试入口与答题演示",
+    "kicker": "14 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "compare",
+    "items": [
+      "考试形式｜英文闭卷，120分钟\n单选和情境多选",
+      "考试地点｜Pearson 在线监考或考试中心",
+      "禁止事项｜禁止查阅笔记、文档\n禁用翻译工具和 AI 助手",
+      "及格分数｜换算分720及格，不等于答对72%"
+    ],
+    "sub": "官方报名与预约页面，和通用答题界面分别展示",
+    "sourceKey": "faq",
+    "note": "考试是英文闭卷，答题120分钟，算上签到、说明和问卷，官方建议预留约135分钟。题型有单选和情境多选。不能用笔记、文档、翻译工具或AI助手。可以参加在线监考或去考试中心，在线考试先跑Pearson设备测试。分数是100至1000的换算分，720及格，不等于简单答对72%。如果没通过，看成绩单里的分项反馈再复习；首次失败后等待14天，第二次30天，第三次90天，每项考试滚动12个月最多4次。 页面图片来自Pearson官方公开的通用Demo，演示答题与导航界面，不是Claude正式考试截图或真题。图片里的倒计时、题目数量及功能只用于界面说明，不用于推断Claude考试规则。点击图片可放大，点击官方Demo链接可以熟悉操作；正式考试仍按Claude通知和Pearson要求准备。 已找到Pearson官方Anthropic考试项目页面，公开显示四项Claude认证及报名预约流程。本页默认展示该入口真实截图，可切到通用答题Demo。公开入口不是正式Claude答题界面；实际考试通过OnVUE或考试中心交付，目前未获取Claude专用正式答题界面的可公开截图，不把通用Demo冒充真实Claude考试。",
+    "examDemoImage": "images/pearson-demo-question.png",
+    "examDemoUrl": "https://www.pearsonvue.com/us/en/test-takers/demo-test.html",
+    "examPortalImage": "images/pearson-anthropic-portal.png",
+    "examPortalUrl": "https://www.pearsonvue.com/us/en/anthropic.html"
+  },
+  {
+    "title": "想报名？先确认自己有没有资格",
+    "items": [
+      "组织条件｜属于 Claude Partner Network 组织",
+      "账号条件｜使用官方认可的伙伴公司邮箱",
+      "本人条件｜18岁以上，姓名与有效证件一致",
+      "先考哪张｜Claude Certified Architect – Professional 不强制先取得 Claude Certified Architect – Foundations"
+    ],
+    "sub": "有题库会员和能报名考试，是两件事",
+    "note": "先看自己有没有报名资格，再决定买什么备考服务。目前官方要求属于Claude Partner Network组织，并使用官方认可的伙伴公司邮箱，个人邮箱不能直接报名；至少18岁，报名姓名要和有效政府证件一致。我们是伙伴，不等于所有外部学员自动具备报名资格，具体路径需要确认。Claude Certified Architect – Professional没有强制要求先拿Claude Certified Architect – Foundations，也不会由 Claude Certified Architect – Foundations 自动升级。",
+    "sourceKey": "faq",
+    "mode": "role",
+    "kicker": "15 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "animated": false
+  },
+  {
+    "title": "官方考纲是英文，考证匠有中文资料",
+    "items": [
+      "先看官方英文考纲｜确认考试范围和权重，知道自己要准备什么。",
+      "用考证匠中文资料学习｜对应认证有中文章节和知识点讲解，不用只靠自己翻译英文文档。",
+      "用双语题目和解析复习｜保留英文题干，用中文理解场景条件、选项区别和解题思路。",
+      "我们自己也检查资料｜核对官方来源、答案和解析；有疑问的内容人工复核、修正。"
+    ],
+    "sub": "中文课程、知识点讲解和双语解析，帮你把英文考点看懂",
+    "note": "很多人不是学不会，是英文资料读起来慢。所以我们考证匠不只有题库，也有对应认证的中文学习章节、知识点讲解和双语题目解析。先看官方英文考试指南，确定范围和权重，再用中文资料把概念学明白；练题仍然保留英文题干，用中文解析解释限制条件、为什么选这个、其他选项差在哪里。这样学习更容易跟上，也能继续练英文读题。图里是我们实际公开课程页面，侧栏是章节目录，正文是中文学习内容。资料和题目我们也要核对官方来源，检查答案、选项与解释，有疑问的内容再人工复核和修正。正式考试仍是英文闭卷，中文资料是学习支持，不是考试时可以使用的翻译工具。平台材料不是官方真题，也不承诺每天自动同步全部考纲。",
+    "sourceKey": "faq",
+    "mode": "rows",
+    "kicker": "16 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "image": "images/cert-course-ccar-f.png",
+    "imageCaption": "考证匠中文学习内容 · 真实课程页面截图",
+    "sourceLabel": "官方考纲＋考证匠中文课程与题库审核记录"
+  },
+  {
+    "title": "证书怎么帮你求职？看看猎头的真实反馈",
+    "kicker": "17 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "roles",
+    "items": [
+      "证书有什么用｜让招聘方知道你通过了哪类能力考核，多一个可核对的依据。",
+      "我们收到的真实反馈｜讲师本人或学员拿证后，猎头联系变多了，有人开口就问有没有证书。",
+      "简历怎么写｜写完整认证名称、级别和有效期，附上验证链接，让对方能查到。",
+      "联系以后聊什么｜用项目和工作经历说明：你负责什么、做出了什么、解决了什么问题。"
+    ],
+    "sub": "有猎头第一句话就是：“有没有证书？”",
+    "sourceKey": "owner",
+    "note": "把证书的求职作用和猎头反馈放在一起说。证书让招聘方知道你通过了哪类能力考核，提供一个可以核对的依据。我们收到的真实反馈是：讲师本人或学员拿证后，猎头联系变多了；有猎头第一句话就是“有没有证书？”。所以拿证以后，把完整认证名称、级别、有效期和验证链接放进简历及个人资料。聊起来之后，用项目和工作经历说明你负责什么、做出了什么、解决了什么问题，让对方判断是否匹配岗位。这里的联系变化是讲师提供的个案反馈，没有量化次数和时间，不能把它归因于证书一个因素，也不承诺每个人拿证后都会获得更多联系、录用或加薪。",
+    "image": "images/work.png",
+    "imageCaption": "品牌插画 · 求职沟通场景示意",
+    "sourceLabel": "讲师真实经历反馈＋求职建议"
+  },
+  {
+    "title": "咨询公司已经在让员工考 Claude 证书",
+    "items": [
+      "哪些公司在做｜Accenture、Deloitte、PwC 等伙伴公司公布了员工认证计划",
+      "招聘时有什么用｜Anthropic 表示，网络内企业会优先考虑认证",
+      "对哪些工作更有帮助｜Claude 应用开发、AI 咨询、解决方案和企业架构",
+      "求职时怎么判断｜看具体职位要求，确认要求哪张证书、还需要什么经验"
+    ],
+    "sub": "咨询伙伴在大规模培训，也在招聘时重视认证",
+    "note": "这不是我们凭空猜的招聘趋势。Anthropic在7月23日的文章里说，网络内企业在大规模认证员工，并在招聘时优先考虑认证。文章列了Accenture、Deloitte、PwC等公司计划。这里说的是这些伙伴企业的方向，不是所有咨询公司的每个职位都统一要求Claude证书。想投具体职位，就把要求的证书、经验和交付能力一起看。",
+    "sourceKey": "program",
+    "mode": "rows",
+    "kicker": "18 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "image": "images/bridge.png",
+    "imageCaption": "品牌插画 · 工作场景示意"
+  },
+  {
+    "title": "求职路上，多一件“救生衣”",
+    "kicker": "19 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "dark",
+    "items": [
+      "简历多一个亮点｜写清你通过了哪项考试，并附上证书验证链接",
+      "证书有效一年｜从取得之日起12个月，及时查看官方续证说明",
+      "续证怎么做｜官方说明：按时完成更新学习和非监考测评可免费续证"
+    ],
+    "sub": "证书给你多一个被看见的理由，经验和项目还要继续积累",
+    "sourceKey": "faq",
+    "note": "“救生衣”是个比喻：找工作时多一个展示能力的依据，仍然要练项目、积累经验和准备面试。证书从取得之日起有效12个月。官方FAQ说明，按时续证是学习更新内容并完成免费的非监考测评；过期后需要重新参加完整考试并缴费。具体续证操作以官方到期前通知为准。",
+    "ambient": true
+  },
+  {
+    "title": "目标年薪15–20万澳元，怎么准备？",
+    "items": [
+      "先定方向｜你想做开发、方案，还是企业 AI 咨询？",
+      "准备项目｜拿出和目标工作相关的作品与结果",
+      "用好证书｜让简历和面试更容易讲清你的能力",
+      "看清报价｜确认是基本工资，还是含 super 和奖金的总包"
+    ],
+    "sub": "这是我们讨论的澳洲求职目标，具体薪资看岗位和经验",
+    "note": "15至20万澳元是你确认的目标薪资，不是拿证就能获得的报价。先确定想做开发、方案还是企业AI咨询，再对照岗位要求准备项目和工作证据。证书可以帮助讲清能力方向，最终还要看经验和岗位匹配。看到年薪时分清基本工资与总包，确认是否包含super和奖金。这里不把目标数字说成市场平均或已拿到的offer。",
+    "sourceKey": "owner",
+    "mode": "rows",
+    "kicker": "20 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "sourceLabel": "讲师应用与备考建议 · 对照对应官方认证范围"
+  },
+  {
+    "title": "冲高薪，找工作，证明你的 AI 能力",
+    "items": [
+      "冲高薪岗位｜瞄准 AI 开发、解决方案和企业 AI 咨询，让认证与岗位经验一起加分。",
+      "找工作更有依据｜把可验证的认证写进简历；Anthropic 披露，伙伴企业招聘时重视认证。",
+      "证明自己的 AI 能力｜通过身份核验和监考，证明你通过了对应角色的能力考核。",
+      "全球企业正在投入｜Accenture、Deloitte、PwC 等全球伙伴已公布员工认证计划。"
+    ],
+    "sub": "Claude 原厂职业认证，全球咨询伙伴把它用于人才培养与招聘",
+    "note": "这一页讲Claude职业认证的职业价值。第一，冲高薪岗位：如果目标是AI开发、解决方案、企业AI咨询，就把认证和相关岗位经验一起准备；认证为能力方向增加一个可验证的依据。第二，找工作：Anthropic在2026年7月23日的官方文章中明确说，网络内企业正在大规模培养认证人才，并在招聘时优先考虑认证；不是说所有公司所有岗位都必须持证。第三，证明AI能力：这是Claude原厂职业认证，需要核验身份和本人监考，说明你通过了对应角色的能力考核。第四，全球企业投入：官方文章列出Accenture、Deloitte、PwC等伙伴的员工认证计划。这些都是讲含金量时可以核对的依据。没有找到把它与全球所有AI证书比较、评为最高的统一排名，所以不使用“全球含金量最高”作为事实。也不承诺拿证后固定加薪、录用或国内所有雇主都认可；澳洲15至20万澳元仍是目标薪资，实际看岗位和经验。",
+    "sourceKey": "program",
+    "mode": "rows",
+    "kicker": "21 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "image": "images/bridge.png",
+    "imageCaption": "品牌插画 · 职业发展场景示意",
+    "sourceLabel": "Anthropic 官方认证机制与伙伴招聘计划",
+    "visual": "career-impact"
+  },
+  {
+    "title": "Claude 四证，有4,138道平台练习题",
+    "kicker": "22 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "bars",
+    "items": [
+      "Claude Certified Associate – Foundations｜1,220",
+      "Claude Certified Developer – Foundations｜961",
+      "Claude Certified Architect – Foundations｜978",
+      "Claude Certified Architect – Professional｜979"
+    ],
+    "sub": "截至2026年10月13日：全平台354门已发布认证，共78,337道题",
+    "sourceKey": "counts",
+    "note": "这次重新从生产API完整回读了所有分页：全平台354门已发布认证，对应78337道题。Claude四项合计4138道，分别是1220、961、978、979。统计的是各认证有效题池里的题目ID，不是官方考试原题，也不是正式考试一道题数；不同认证之间没有做内容语义去重。快照日期为2026年10月13日，数字以后可能变化。",
+    "values": [
+      1220,
+      961,
+      978,
+      979
+    ],
+    "animated": true,
+    "sourceLabel": "生产API回读 · 2026-10-13 · 平台练习题，并非官方真题",
+    "visual": "question-impact"
+  },
+  {
+    "title": "买完以后，怎么练、怎么看解析？",
+    "kicker": "23 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "timeline",
+    "items": [
+      "英文答题｜练习读懂题干、选项和限制条件",
+      "中文解析｜看知识点与解题思路，也可以继续追问",
+      "领域成绩｜看哪一块没掌握，点 Review Chapter 回去补",
+      "对应课程｜按考试大纲分章节，复习后再练一次"
+    ],
+    "sub": "考证匠模拟考试：英文题目练读题，中文解析帮你看懂，再按薄弱领域回去复习",
+    "sourceKey": "product",
+    "note": "配图来自讲师提供的购买后录屏。展示的是匠人网站 mock-exam 路径下的模拟考试，不是 Pearson 正式考试。录屏依次展示英文答题、中文 AI 解析、考后各考试领域成绩与 Review Chapter 入口，以及中文对应课程章节。截图已移除浏览器栏和学员身份。AI 解析可辅助理解，涉及考试规定或产品行为时仍与官方资料核对。正式考试中不可使用 AI Tutor。此页不宣称模拟题是官方真题或承诺通过率。",
+    "link": "https://cert.jracademy.ai/claude/",
+    "sourceLabel": "讲师提供的考证匠购买后实录 · 非 Pearson 正式考试",
+    "purchasedExam": true
+  },
+  {
+    "title": "从哪开始学？按这个顺序就行",
+    "kicker": "24 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "timeline",
+    "items": [
+      "选证与查资格｜按工作职责选择，确认自己能否报名",
+      "学官方内容｜先看最新考纲，再学对应课程",
+      "用题库复习｜把概念和选项差别弄懂，回头重做错题",
+      "做项目与约考｜用作品检查理解，准备好再预约考试"
+    ],
+    "sub": "先选方向、查资格，再学习和练习",
+    "sourceKey": "product",
+    "note": "顺序很简单：先选证和确认资格，再按最新指南学习官方课程与文档，然后用题库检查薄弱点，回头复习错题。技术方向再做一个能展示的项目或方案。准备好后通过官方认证页面报名付费，收到Pearson链接再预约。题库数量多，不等于全做完就一定通过；要知道错误出在哪里。",
+    "image": "images/path.png",
+    "imageCaption": "品牌插画 · 工作场景示意",
+    "sourceLabel": "讲师应用与备考建议 · 对照对应官方认证范围"
+  },
+  {
+    "title": "我们是 Claude Certified Services Partner",
+    "kicker": "25 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "partner",
+    "items": [
+      "JR Academy｜Claude 认证服务合作伙伴",
+      "你自己｜满足报名条件，通过本人考试，拿到个人证书"
+    ],
+    "sub": "考证匠由 JR Academy 出品，帮你选证、学习和准备考试",
+    "sourceKey": "product",
+    "note": "这张是JR Academy的正式Claude认证服务伙伴徽章，使用原始文件。我们的身份是组织层面的伙伴，个人通过考试拿的是自己的职业认证。我们提供选证、学习、中文讲解和练习服务，报名辅导按具体套餐确认。伙伴身份不等于能向所有外部学员分配考试资格，也不等于保证通过或得到Frontier Academy名额。",
+    "visual": "anthropic",
+    "ambient": true
+  },
+  {
+    "title": "Anthropic 在培养企业 AI 部署工程师",
+    "kicker": "26 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "timeline",
+    "items": [
+      "机构提名｜准备一个回到公司后要负责的 Claude 项目",
+      "4天线下｜前三天实践；第四天考核，通过获驻场工程师徽章",
+      "12周实践｜回公司主导部署，接受 Anthropic 工程师指导",
+      "最终考核｜通过实操评估，取得企业部署工程师徽章"
+    ],
+    "sub": "Frontier Deployed Engineer：目标到2027年底培养10,000人；CBA首批参与",
+    "sourceKey": "fdeRequirements",
+    "note": "Frontier Academy是另一条人才培养路径，面向被机构提名、有实际工程经验的人。四天线下培训中，前三天做模拟企业项目，第四天参加新场景考核，通过获得Claude Resident Engineer徽章。然后回自己的机构做12周实际部署，最后通过实操评估才能拿Claude Frontier Deployed Engineer徽章。官方目标是到2027年底培养一万人，首批最终徽章预计2027年初颁发。它不是四证自动升级出来的证书。",
+    "visual": "anthropic",
+    "animated": true,
+    "ambient": true
+  },
+  {
+    "title": "企业 AI 部署工程师计划：参加前看这些条件",
+    "items": [
+      "工程经验｜软件工程基础扎实，实际做过大语言模型应用",
+      "推动团队使用 AI｜有帮助同事或团队采用 AI 的经历",
+      "机构提名和项目｜机构愿意提名，并有一个由你负责的 Claude 部署项目",
+      "四张证书是不是前置？｜官方公开条件没有把四证列为统一必需；资格需向官方确认"
+    ],
+    "sub": "Frontier Deployed Engineer Residency · 需要机构提名、经验和真实项目",
+    "note": "公开条件强调工程基础、做过大语言模型应用、帮助团队采用AI的经历，以及机构提名和真实Claude项目。它没有把四张职业认证列为统一必须的前置条件。证书可以帮助你系统学习，但申请资格不能靠我们推断。具体要向Anthropic客户团队或伙伴经理确认，我们不承诺提名和名额。",
+    "sourceKey": "fdeRequirements",
+    "mode": "rows",
+    "kicker": "27 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "visual": "anthropic",
+    "image": "images/creative.png",
+    "imageCaption": "品牌插画 · 工作场景示意"
+  },
+  {
+    "title": "接下来，值得继续学什么？",
+    "kicker": "28 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "compare",
+    "items": [
+      "官方接下来的计划｜Frontier Academy 计划2027年公布更多项目；伙伴计划也提过行业和用例专项",
+      "现在可以继续学什么｜做一个完整项目，练习质量评估、权限安全、公司系统集成和业务沟通"
+    ],
+    "sub": "Anthropic 继续扩展人才培养；我们建议把学习落到实际工作",
+    "sourceKey": "partner",
+    "note": "官方已经公布的方向有两部分：Frontier Academy计划2027年公布更多项目，伙伴计划此前提过行业和用例专项。尚未公布的项目名称、开放时间和资格不猜。现在能做的是把一个应用从原型做完整，练评估、安全、集成和业务沟通。等新项目公布，再看它是否适合你。",
+    "visual": "anthropic",
+    "image": "images/map.png",
+    "imageCaption": "品牌插画 · 工作场景示意"
+  },
+  {
+    "title": "选一张适合你的证书，开始准备",
+    "kicker": "29 / JR ACADEMY · CLAUDE CERTIFICATIONS",
+    "mode": "hero",
+    "items": [
+      "业务工作｜Claude Certified Associate – Foundations",
+      "写应用｜Claude Certified Developer – Foundations",
+      "做系统方案｜Claude Certified Architect – Foundations",
+      "做企业架构｜Claude Certified Architect – Professional"
+    ],
+    "sub": "cert.jracademy.ai/claude/ · 看课程、确认资格、选择需要的服务",
+    "sourceKey": "product",
+    "note": "今晚回去先做一件事：按你想做的工作选一张证书。业务使用、应用开发、系统方案、企业架构分别对应不同认证。打开考证匠Claude页面，先看内容和官方资格，再决定需要哪种学习服务。技术岗位同时准备一个项目，业务岗位准备一个可以复用的工作流或汇报。证书和实际能力一起准备。",
+    "link": "https://cert.jracademy.ai/claude/",
+    "image": "images/path.png",
+    "imageCaption": "品牌插画 · 工作场景示意",
+    "ambient": true,
+    "sourceLabel": "讲师应用与备考建议 · 对照对应官方认证范围"
+  }
+];
