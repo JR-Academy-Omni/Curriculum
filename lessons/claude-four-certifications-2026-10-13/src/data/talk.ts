@@ -1,5 +1,5 @@
 // Source: SOURCE_MAP.md; missing official requirements are omitted, never estimated.
-export interface TalkSlide { purchasedExam?: boolean; title: string; kicker: string; mode: string; items: string[]; codes?: string[]; sub: string; sourceKey: string; sourceLabel?: string; note: string; values?: number[]; options?: string[]; answer?: number; explanation?: string; link?: string; visual?: string; image?: string; image2?: string; imageCaption?: string; animated?: boolean; ambient?: boolean; learningUrl?: string; learningScreenshot?: string; certScreenshot?: string; certUrl?: string; examGuideUrl?: string; examDemoImage?: string; examDemoReviewImage?: string; examDemoUrl?: string; examPortalImage?: string; examPortalUrl?: string; outlineSub?: string; examDomains?: {english:string; chinese:string; weight:number}[] }
+export interface TalkSlide { videoUrl?: string; videoPoster?: string; purchasedExam?: boolean; title: string; kicker: string; mode: string; items: string[]; codes?: string[]; sub: string; sourceKey: string; sourceLabel?: string; note: string; values?: number[]; options?: string[]; answer?: number; explanation?: string; link?: string; visual?: string; image?: string; image2?: string; imageCaption?: string; animated?: boolean; ambient?: boolean; learningUrl?: string; learningScreenshot?: string; certScreenshot?: string; certUrl?: string; examGuideUrl?: string; examDemoImage?: string; examDemoReviewImage?: string; examDemoUrl?: string; examPortalImage?: string; examPortalUrl?: string; outlineSub?: string; examDomains?: {english:string; chinese:string; weight:number}[] }
 export const sources: Record<string,string> = {
   "program": "https://claude.com/resources/articles/four-role-based-claude-certifications",
   "faq": "https://anthropic-partners.skilljar.com/page/faq-certifications",
@@ -566,7 +566,9 @@ export const slides: TalkSlide[] = [
     "note": "配图来自讲师提供的购买后录屏。展示的是匠人网站 mock-exam 路径下的模拟考试，不是 Pearson 正式考试。录屏依次展示英文答题、中文 AI 解析、考后各考试领域成绩与 Review Chapter 入口，以及中文对应课程章节。截图已移除浏览器栏和学员身份。AI 解析可辅助理解，涉及考试规定或产品行为时仍与官方资料核对。正式考试中不可使用 AI Tutor。此页不宣称模拟题是官方真题或承诺通过率。",
     "link": "https://cert.jracademy.ai/claude/",
     "sourceLabel": "讲师提供的考证匠购买后实录 · 非 Pearson 正式考试",
-    "purchasedExam": true
+    "purchasedExam": true,
+    "videoUrl": "https://jr-image.s3.ap-southeast-2.amazonaws.com/video-publishing/claude-course-tour/2026-10-13/v1/匠人-Claude课程与官方学习资源-24秒.mp4",
+    "videoPoster": "https://jr-image.s3.ap-southeast-2.amazonaws.com/video-publishing/claude-course-tour/2026-10-13/v1/cover-final.jpg"
   },
   {
     "title": "从哪开始学？按这个顺序就行",

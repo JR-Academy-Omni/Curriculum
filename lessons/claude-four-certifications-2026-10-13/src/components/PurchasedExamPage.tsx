@@ -9,7 +9,8 @@ const views = [
  {label:'对应中文课程',image:'images/purchased-learn.png',caption:'按考试大纲学习中文章节，补完薄弱项再练。'},
 ];
 export default function PurchasedExamPage({page}:{page:TalkSlide}) {
- const [active,setActive]=useState(0);
+ const [active,setActive]=useState(page.videoUrl?3:0);
+ const video=active===3&&!!page.videoUrl;
  return <Slide bg={e.paper} style={{position:'relative',fontFamily:fonts.body,color:e.ink}}>
   <style>{`.purchase-view:focus-visible{outline:3px solid ${e.accent};outline-offset:4px}@media print{.purchase-tabs{display:none!important}}`}</style>
   <div style={{position:'absolute',left:105,top:78,width:1390,height:725,display:'flex',flexDirection:'column',gap:18}}>
@@ -18,9 +19,9 @@ export default function PurchasedExamPage({page}:{page:TalkSlide}) {
    <p style={{fontSize:24,lineHeight:1.5,color:e.muted,margin:0}}>{page.sub}</p>
    <div style={{display:'grid',gridTemplateColumns:'930px 1fr',gap:32,flex:1,minHeight:0,alignItems:'center'}}>
     <figure style={{margin:0,display:'flex',flexDirection:'column',gap:13}}>
-     <div className="purchase-tabs" role="group" aria-label="查看购买后的备考界面" style={{display:'flex',gap:10}}>{views.map((view,i)=><button className="purchase-view" key={view.label} aria-pressed={active===i} onClick={()=>setActive(i)} style={{fontFamily:fonts.body,fontSize:20,padding:'10px 17px',border:`1px solid ${e.line}`,borderRadius:radii.pill,background:active===i?e.ink:e.surface,color:active===i?e.surface:e.ink,cursor:'pointer'}}>{view.label}</button>)}</div>
-     <a href={assetPath(views[active].image)} target="_blank" rel="noreferrer" aria-label="打开大图" style={{display:'block',border:`1px solid ${e.line}`,borderRadius:radii.card,overflow:'hidden',background:e.surface}}><img src={assetPath(views[active].image)} alt={'考证匠购买后实际录屏：'+views[active].label} style={{width:'100%',height:450,objectFit:'contain',display:'block'}}/></a>
-     <figcaption style={{fontSize:18,color:e.muted,lineHeight:1.4}}>{views[active].caption} 点击图片可放大。</figcaption>
+     <div className="purchase-tabs" role="group" aria-label="查看购买后的备考界面" style={{display:'flex',gap:10}}>{[...views,...(page.videoUrl?[{label:'▶ 课程导览视频',image:'',caption:''}]:[])].map((view,i)=><button className="purchase-view" key={view.label} aria-pressed={active===i} onClick={()=>setActive(i)} style={{fontFamily:fonts.body,fontSize:20,padding:'10px 17px',border:`1px solid ${e.line}`,borderRadius:radii.pill,background:active===i?e.ink:e.surface,color:active===i?e.surface:e.ink,cursor:'pointer'}}>{view.label}</button>)}</div>
+     {video?<video controls playsInline preload="metadata" poster={page.videoPoster} src={page.videoUrl} aria-label="匠人课程与Anthropic官方学习资源24秒视频" style={{width:'100%',height:450,objectFit:'contain',display:'block',background:e.ink,borderRadius:radii.card}}/>:<a href={assetPath(views[active].image)} target="_blank" rel="noreferrer" aria-label="打开大图" style={{display:'block',border:`1px solid ${e.line}`,borderRadius:radii.card,overflow:'hidden',background:e.surface}}><img src={assetPath(views[active].image)} alt={'考证匠购买后实际录屏：'+views[active].label} style={{width:'100%',height:450,objectFit:'contain',display:'block'}}/></a>}
+     <figcaption style={{fontSize:18,color:e.muted,lineHeight:1.4}}>{video?'点击播放 · 24秒实录：匠人课程介绍 → Anthropic官方课程目录与课程示例。':views[active].caption+' 点击图片可放大。'}</figcaption>
     </figure>
     <div>{page.items.map((item,i)=>{const [label,...detail]=item.split('｜');return <div key={item} style={{padding:'15px 0',borderBottom:`1px solid ${e.line}`}}><h2 style={{fontSize:22,color:e.accent,margin:'0 0 9px'}}>0{i+1} · {label}</h2><p style={{fontSize:23,lineHeight:1.5,margin:0}}>{detail.join('｜')}</p></div>})}</div>
    </div>
