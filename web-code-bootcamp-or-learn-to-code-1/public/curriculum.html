@@ -1,104 +1,205 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI 全栈产品班 · 线下小班 — 课程总览</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<style>
-.sec{max-width:1300px;margin:0 auto;padding:8px 24px 28px}
-.sec-h{font-size:24px;font-weight:900;margin:36px 0 4px;letter-spacing:-0.5px}
-.sec-sub{color:#666;font-size:14px;margin-bottom:18px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.card2{border:3px solid #000;background:#fff;box-shadow:5px 5px 0 #000;padding:16px}
-.card2 h4{font-size:16px;font-weight:800;margin-bottom:6px}
-.card2 p{font-size:13px;color:#444;line-height:1.65}
-.chip{display:inline-block;padding:3px 10px;font-size:12px;font-weight:700;font-family:'Space Mono',monospace;border:2px solid #000;margin:3px 4px 0 0}
-.jd tr td{border:2px solid #000;padding:10px 12px;font-size:13px;vertical-align:top}
-.jd{border-collapse:collapse;width:100%;background:#fff;box-shadow:5px 5px 0 #000}
-.jd th{background:var(--dark);color:#fff;padding:10px 12px;text-align:left;font-size:13px;border:2px solid #000}
-.yes{color:#0a7d32;font-weight:800;font-family:'Space Mono',monospace}
-.libgrp{border:3px solid #000;box-shadow:5px 5px 0 #000;background:#fff;margin-bottom:16px}
-.libgrp .box-h{padding:12px 18px}
-.liblist{padding:10px 18px 14px;columns:2;column-gap:24px}
-.liblist .li{break-inside:avoid;font-size:12.5px;color:#333;padding:3px 0;line-height:1.5}
-.liblist .lt{font-size:10px;font-family:'Space Mono',monospace;color:#fff;background:#888;padding:1px 5px;margin-right:5px}
-.offers{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-.offer{border:3px solid #000;background:#fff;box-shadow:4px 4px 0 #000;padding:12px 14px}
-.offer .nm{font-weight:800;font-size:15px}
-.offer .rl{font-size:14px;color:var(--indigo);font-weight:700;margin-top:4px}
-.offer .mt{font-size:11px;font-family:'Space Mono',monospace;color:#888;margin-top:4px}
-.band{background:var(--dark);color:#fff;padding:16px 24px;border:3px solid #000;box-shadow:5px 5px 0 #000;margin-top:14px}
-.band b{color:var(--yellow)}
-@media(max-width:700px){.liblist{columns:1}}
-</style>
-</head><body>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AI全栈项目班：第一个月手写代码建立全栈基础，之后使用AI Coding完成并上线一个完整的AI全栈产品。">
+  <title>AI全栈项目班｜约3个月做出可上线的 AI 产品</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root{--ink:#10162f;--paper:#fff8f1;--red:#ff5757;--yellow:#ffde59;--blue:#38b6ff;--mint:#baf7d0;--purple:#d9c7ff;--muted:#5f6473}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--paper);color:var(--ink);font-family:'DM Sans','Noto Sans SC',sans-serif;line-height:1.65;margin:0}
+    h1,h2,h3,h4{font-family:'Bricolage Grotesque','Noto Sans SC',sans-serif;line-height:1.15}
+    a{color:inherit}
+    .shell{width:min(1180px,calc(100% - 36px));margin:auto}
+    .topbar{background:var(--yellow);border-bottom:3px solid #000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-align:center;padding:9px 16px}
+    .hero{background:var(--ink);color:#fff;border-bottom:4px solid #000;overflow:hidden;position:relative}
+    .hero:after{content:'</>';position:absolute;right:-25px;bottom:-92px;color:rgba(255,255,255,.05);font:900 310px/1 'Space Mono',monospace;transform:rotate(-7deg)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:1}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900}.brand img{width:34px;height:34px;object-fit:contain;background:#fff;border:2px solid #000}
+    .navlinks{display:flex;gap:18px;font-size:13px;font-weight:700}.navlinks a{text-decoration:none}.navlinks a:hover{color:var(--yellow)}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:54px;align-items:center;padding:56px 0 72px;position:relative;z-index:1}
+    .eyebrow{display:inline-block;background:var(--red);color:#fff;border:2px solid #000;box-shadow:4px 4px 0 #000;padding:6px 11px;font:700 12px 'Space Mono',monospace;transform:rotate(-1deg)}
+    h1{font-size:clamp(42px,6.2vw,76px);letter-spacing:-2.7px;margin:24px 0 20px;max-width:850px}
+    .hero-lead{font-size:clamp(17px,2vw,22px);color:#d8dbea;max-width:730px}.hero-lead strong{color:var(--yellow)}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border:3px solid #000;box-shadow:5px 5px 0 #000;text-decoration:none;font-weight:900;transition:.15s}.btn:hover{transform:translate(5px,5px);box-shadow:none}.btn.primary{background:var(--red);color:#fff}.btn.secondary{background:#fff;color:var(--ink)}
+    .terminal{background:#080b18;border:3px solid #000;box-shadow:10px 10px 0 var(--blue);padding:20px;transform:rotate(1.5deg);font:13px/1.9 'Space Mono',monospace}.dots{color:var(--red);letter-spacing:4px}.prompt{color:var(--mint)}.comment{color:#81889f}.cursor{display:inline-block;width:8px;height:15px;background:var(--yellow);vertical-align:middle;animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+    .stats{display:grid;grid-template-columns:repeat(5,1fr);margin-top:-28px;position:relative;z-index:2}.stat{background:#fff;border:3px solid #000;border-right:0;padding:18px;text-align:center}.stat:first-child{box-shadow:-5px 6px 0 #000}.stat:last-child{border-right:3px solid #000;box-shadow:5px 6px 0 #000}.stat b{display:block;font:900 27px 'Space Mono',monospace}.stat span{font-size:12px;color:var(--muted)}
+    section{padding:76px 0}.section-kicker{font:700 12px 'Space Mono',monospace;color:#e13b3b;letter-spacing:1.4px;text-transform:uppercase}.section-title{font-size:clamp(30px,4vw,48px);letter-spacing:-1.6px;margin:8px 0 12px}.section-copy{font-size:16px;color:var(--muted);max-width:760px;margin-bottom:30px}
+    .promise{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.promise-card{background:#fff;border:3px solid #000;box-shadow:7px 7px 0 #000;padding:24px}.promise-card:nth-child(2){background:var(--yellow)}.promise-card:nth-child(3){background:var(--mint)}.icon{font-size:34px;line-height:1;margin-bottom:16px}.promise-card h3{font-size:21px;margin:0 0 9px}.promise-card p{font-size:14px;margin:0;color:#3f4453}
+    .transition{background:#fff;border-block:3px solid #000}.mode-grid{display:grid;grid-template-columns:1fr 72px 1fr;align-items:stretch}.mode{border:3px solid #000;box-shadow:7px 7px 0 #000;padding:28px;background:var(--paper)}.mode.ai{background:var(--ink);color:#fff}.mode h3{font-size:26px;margin:10px 0}.mode ul{padding-left:20px;margin:16px 0 0}.mode li{margin:8px 0}.mode .week{font:700 11px 'Space Mono',monospace;background:var(--yellow);color:#000;padding:5px 9px;display:inline-block;border:2px solid #000}.arrow{display:grid;place-items:center;font-size:38px;font-weight:900}
+    .rule{margin-top:25px;border:3px solid #000;background:var(--blue);box-shadow:6px 6px 0 #000;padding:18px 22px;font-weight:900;text-align:center;font-size:18px}
+    .product-map{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:28px}.map-step{background:#fff;border:3px solid #000;border-right:0;padding:18px 12px;text-align:center;position:relative}.map-step:last-child{border-right:3px solid #000}.map-step .mi{font-size:27px}.map-step b{display:block;font-size:13px;margin-top:8px}.map-step span{font-size:10px;color:var(--muted);font-family:'Space Mono',monospace}
+    .schedule{background:#f0efff;border-block:3px solid #000}.phase-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:40px 0 16px}.phase-head h3{font-size:26px;margin:0}.phase-head p{margin:0;color:var(--muted);font-size:13px}.lesson-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.lesson{background:#fff;border:3px solid #000;box-shadow:5px 5px 0 #000;padding:20px;display:grid;grid-template-columns:58px 1fr;gap:14px}.lesson.no-ai{border-top-color:var(--blue)}.lesson.with-ai{border-top-color:var(--red)}.lesson-num{width:52px;height:52px;display:grid;place-items:center;background:var(--ink);color:#fff;border:2px solid #000;font:900 17px 'Space Mono',monospace}.lesson h4{font-size:18px;margin:1px 0 8px}.lesson p{font-size:13px;color:#515666;margin:5px 0}.lesson p strong{color:var(--ink)}.lesson .tagrow{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.mini{font:700 10px 'Space Mono',monospace;padding:3px 7px;border:1.5px solid #000;background:#fff}.mini.video{background:var(--purple)}.mini.hw{background:var(--yellow)}.mini.output{background:var(--mint)}
+    .how{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.how-card{background:#fff;border:3px solid #000;padding:20px;box-shadow:5px 5px 0 #000}.how-card .n{font:900 12px 'Space Mono',monospace;color:#e13b3b}.how-card h3{font-size:18px;margin:10px 0 7px}.how-card p{font-size:13px;color:var(--muted);margin:0}
+    .library{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.lib{border:3px solid #000;background:#fff;padding:18px}.lib h3{font-size:17px;margin:0 0 8px}.lib p{font-size:12px;color:var(--muted);margin:0}.lib .count{font:900 24px 'Space Mono',monospace;color:#e13b3b}.note{margin-top:18px;padding:15px 18px;background:#fff;border:2px dashed #000;font-size:13px}
+    .outcomes{background:var(--ink);color:#fff}.deliverables{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.deliverable{border:2px solid #fff;padding:18px;background:#171e3b}.deliverable .di{font-size:28px}.deliverable h3{font-size:16px;margin:12px 0 6px}.deliverable p{font-size:12px;color:#bac0d4;margin:0}.final-card{margin-top:24px;background:var(--yellow);color:#000;border:3px solid #000;box-shadow:7px 7px 0 var(--red);padding:24px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px}.final-card h3{font-size:24px;margin:0 0 5px}.final-card p{margin:0;font-size:14px}.final-card .stamp{font:900 16px 'Space Mono',monospace;border:3px solid #000;padding:12px;transform:rotate(-2deg);background:#fff}
+    .faq details{background:#fff;border:3px solid #000;margin:10px 0}.faq summary{cursor:pointer;padding:16px 18px;font-weight:900;list-style:none}.faq summary:after{content:'＋';float:right}.faq details[open] summary:after{content:'－'}.faq details div{padding:0 18px 17px;color:var(--muted);font-size:14px}
+    .outline-entry{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;background:var(--yellow);border:3px solid #000;box-shadow:8px 8px 0 #000;padding:25px;text-decoration:none;transition:.15s}.outline-entry:hover{transform:translate(6px,6px);box-shadow:2px 2px 0 #000}.outline-entry .oi{font-size:42px}.outline-entry h3{font-size:24px;margin:0 0 5px}.outline-entry p{margin:0;color:#4c4531;font-size:14px}.outline-entry .go{font:900 14px 'Space Mono',monospace;background:#fff;border:2px solid #000;padding:10px 13px;white-space:nowrap}
+    .cta{text-align:center;background:var(--red);border-top:4px solid #000;padding:70px 18px}.cta h2{font-size:clamp(34px,5vw,58px);margin:0 auto 12px;color:#fff}.cta p{max-width:650px;margin:0 auto 25px;color:#fff;font-size:17px}.footer{background:#080b18;color:#aab0c5;padding:24px 18px;text-align:center;font-size:12px;border-top:3px solid #000}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.terminal{display:none}.stats{grid-template-columns:repeat(3,1fr)}.stat{border-right:3px solid #000}.promise,.library{grid-template-columns:1fr 1fr}.mode-grid{grid-template-columns:1fr}.arrow{height:70px;transform:rotate(90deg)}.product-map{grid-template-columns:repeat(3,1fr)}.map-step{border-right:3px solid #000}.how{grid-template-columns:1fr 1fr}.deliverables{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:640px){.shell{width:min(100% - 24px,1180px)}.navlinks{display:none}.hero-grid{padding:36px 0 62px}h1{font-size:42px;letter-spacing:-1.5px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.promise,.lesson-grid,.library,.how,.deliverables{grid-template-columns:1fr}.product-map{grid-template-columns:1fr 1fr}.lesson{grid-template-columns:46px 1fr;padding:15px}.lesson-num{width:42px;height:42px}.phase-head{display:block}.phase-head p{margin-top:5px}.final-card,.outline-entry{grid-template-columns:1fr}.outline-entry .go{text-align:center}.section-title{font-size:33px}section{padding:55px 0}}
+  </style>
+</head>
+<body>
+  <div class="topbar">2026 新版课程 · 约 3 个月 · 16 场直播 · 完成并上线一个 AI 全栈产品</div>
+  <header class="hero">
+    <div class="shell">
+      <nav class="nav"><div class="brand"><img src="jr-logo.png" alt="JR Academy"><span>JR Academy</span></div><div class="navlinks"><a href="#method">学习方式</a><a href="#curriculum">课程安排</a><a href="#project">结课项目</a><a href="outline.html">详细大纲</a><a href="#faq">常见问题</a></div></nav>
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">AI ENGINEER · FULL-STACK BOOTCAMP</span>
+          <h1>先看懂代码，<br>再用 AI 把产品做出来。</h1>
+          <p class="hero-lead">第一个月<strong>手写代码、吃透全栈原理</strong>；之后切换 AI Coding，把一个真实项目从网页一路做到 AI 与 RAG，并真正部署上线。</p>
+          <div class="hero-actions"><a class="btn primary" href="#curriculum">查看 16 场直播 ↓</a><a class="btn secondary" href="https://jiangren.com.au/program-course/web-code-bootcamp-or-learn-to-code-1" target="_blank" rel="noopener">咨询最新开班 ↗</a></div>
+        </div>
+        <div class="terminal" aria-label="课程项目开发过程示意">
+          <div class="dots">● ● ●</div><br>
+          <span class="comment">// Week 1–4: understand the machine</span><br>
+          <span class="prompt">$</span> build --with html css javascript<br>
+          ✓ responsive landing page<br>
+          ✓ API request &amp; error handling<br>
+          ✓ Git history you can explain<br><br>
+          <span class="comment">// Week 5–8: direct the machine</span><br>
+          <span class="prompt">$</span> ship fullstack-product --with-ai<br>
+          ✓ full-stack + auth + database<br>
+          ✓ streaming chat + RAG<br>
+          ✓ production deployment <span class="cursor"></span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<div class="header">
-  <h1>AI 全栈产品班 · 线下小班</h1>
-  <div class="sub">AI Coding 带练 · 用 Claude Code 从零做出一个能上线的真实全栈产品</div>
-  <div class="tags">
-    <span class="tag a">11 周</span><span class="tag">线下小班</span>
-    <span class="tag">布里斯班 / 墨尔本 / 悉尼 / 阿德莱德</span>
-    <span class="tag">Claude Code 带练</span><span class="tag">翻转课堂</span>
+  <div class="shell stats" aria-label="课程关键数字">
+    <div class="stat"><b>≈3</b><span>个月完整学习周期</span></div><div class="stat"><b>16</b><span>场项目直播课</span></div><div class="stat"><b>1–2</b><span>场／周弹性节奏</span></div><div class="stat"><b>16</b><span>次课后项目交付</span></div><div class="stat"><b>1</b><span>个上线 AI 产品</span></div>
   </div>
-</div>
-<div class="bar">
-  <div class="s"><div class="n">11</div><div class="l">WEEKS</div></div>
-  <div class="s"><div class="n">11</div><div class="l">线下带练</div></div>
-  <div class="s"><div class="n">155+</div><div class="l">录播自学</div></div>
-  <div class="s"><div class="n">4</div><div class="l">城市线下</div></div>
-  <div class="s"><div class="n">1</div><div class="l">上线产品</div></div>
-</div>
-<div class="sec">
-<div class="sec-h">这门课适合谁</div>
-<div class="sec-sub">不以求职为目的 —— 目标是让你有能力用 AI 独立做出自己想做的产品/项目</div>
-<div class="cards">
-  <div class="card2"><h4>🚀 有 idea 的准创业者</h4><p>心里有个产品或工具的想法，但自己做不出来，想学会用 AI 把 MVP 做出来、上线验证。</p></div>
-  <div class="card2"><h4>🔧 想转做产品的在职者</h4><p>产品 / 运营 / 设计等非开发岗，想能自己动手做原型、内部工具，不再只提需求等排期。</p></div>
-  <div class="card2"><h4>🌱 想做副业 / side project 的人</h4><p>有本职工作，想用业余时间把一个 side project 真正做出来并上线。</p></div>
-  <div class="card2"><h4>💡 想把 AI Coding 用起来的人</h4><p>听说 AI 能帮人做产品，但自己上手总卡在报错、部署，需要老师现场带过一遍。</p></div>
-</div>
-<div style="margin-top:14px;padding:12px 16px;background:#fff8e6;border:2px solid #000;font-size:13px">
-  <strong>不太适合：</strong>纯想拿一份开发岗 offer 走求职路线的人（这是我们另一条求职向产品线）；想系统深挖 LLM 工程（RAG/Agent/微调）的人（建议看 AI Engineer Bootcamp）。
-</div>
-</div><div class="sec">
-<div class="sec-h">为什么选这门课</div>
-<div class="cards">
-  <div class="card2"><h4>🎯 教你用 AI 把产品做出来</h4><p>不是教你手写代码，是教你像 2026 真实开发那样「指挥 AI」——这才是现在做产品的方式。</p></div>
-  <div class="card2"><h4>👀 线下小班，老师盯着你屏幕</h4><p>不是几百人的线上直播里的一个头像。小班意味着卡住当场救，不掉队。</p></div>
-  <div class="card2"><h4>🏙️ 四城家门口就能上</h4><p>布里斯班、墨尔本、悉尼、阿德莱德均可线下面授。</p></div>
-  <div class="card2"><h4>🔄 翻转课堂，不浪费线下时间</h4><p>概念语法课前看录播，线下时间全花在动手做产品上。</p></div>
-  <div class="card2"><h4>📦 结课带走一个上线的产品</h4><p>React + Node + 数据库 + AWS + AI 功能，一个真能打开的产品，也是你做自己产品的起点。</p></div>
-  <div class="card2"><h4>🛠️ 学会「AI 写错了怎么救」</h4><p>看懂 AI 的代码、debug、改需求、加功能、部署——这些 AI 替不了你的能力才是真本事。</p></div>
-</div>
-</div><div class="sec">
-<div class="sec-h">市场岗位要什么，这门课就练什么</div>
-<div class="sec-sub">对照当前主流全栈 / AI 产品开发岗位 JD 的常见要求 —— 每一项都有真实录播 + 线下带练支撑</div>
-<table class="jd"><tr><th style="width:30%">市场 JD 常见要求</th><th style="width:12%">本课</th><th>对应内容（真实录播 + 带练）</th></tr>
-<tr><td>前端：HTML/CSS/响应式、JavaScript/TypeScript、React（Hooks/Redux/Router）</td><td class="yes">✓ 覆盖</td><td>前端基础 + React 前端两大模块，含 ES6/TypeScript、组件化、状态管理、路由、表单</td></tr>
-<tr><td>后端：Node.js/Express、RESTful API 设计、数据库（MongoDB/SQL）</td><td class="yes">✓ 覆盖</td><td>Node/Express 建 RESTful API、MongoDB/Mongoose、CRUD server、用户认证授权（JWT）</td></tr>
-<tr><td>云 & 部署：AWS、CI/CD、Docker、上线运维</td><td class="yes">✓ 覆盖</td><td>AWS S3/Lambda/CloudFront/IAM、GitHub Action + CI/CD、Docker/ECS、环境变量、生产上线</td></tr>
-<tr><td><strong>AI 集成（越来越多 JD 新增）：LLM/OpenAI API、RAG、向量库、Prompt</strong></td><td class="yes">✓ 覆盖</td><td>OpenAI API、Prompt Engineering、Embeddings、向量数据库、从零搭 RAG、Azure AI —— 给产品加真 AI 能力</td></tr>
-<tr><td>工程实践：Git、测试、Agile/Scrum 协作</td><td class="yes">✓ 覆盖</td><td>Git 版本管理、单元测试/a11y、Agile/Scrum 方法论 + 团队项目实践</td></tr>
-<tr><td><strong>AI 辅助开发能力（2026 新刚需）：用 AI 工具高效编程</strong></td><td class="yes">✓ 核心</td><td>全程 Claude Code 带练 —— 这正是这门课区别于传统课程的地方</td></tr>
-</table>
-</div><div class="sec">
-<div class="sec-h">怎么上：翻转课堂 + 线下带练</div>
-<div class="cards">
-  <div class="card2"><h4 style="color:var(--indigo)">① 课前 · 看录播自学</h4><p>每周 2–4 小时，把概念、语法、工具视频看掉（下方就是完整录播库），自定节奏。</p></div>
-  <div class="card2"><h4 style="color:var(--teal)">② 线下 · 小班带练</h4><p>每周 1 次 2.5–3 小时，老师开 Claude Code 带全班一起把产品一块块做出来。</p></div>
-  <div class="card2"><h4 style="color:#a855f7">③ 结课 · 交付上线产品</h4><p>带走一个部署上线的全栈产品 + 用 AI 独立做产品的能力。</p></div>
-</div>
-<div style="margin-top:12px;padding:12px 16px;background:#f0f4ff;border:2px solid #000;font-size:13px"><strong>本期项目：</strong>全班做同一个真实项目（公司项目池选定其一，开班时公布）。项目是载体，能力是收获。</div>
-</div><div class="sec"><div class="sec-h">11 周带练路线</div><div class="box"><div class="box-h" style="background:var(--indigo)"><div style="font-size:18px;font-weight:800">Part 1 · 全栈基础 &amp; AI Coding 上手（第 1–4 周）</div></div><div class="wk"><span class="mono" style="color:#999">W00</span> <span class="pill" style="background:#e0e7ff;color:var(--indigo)">导览</span> &nbsp;这门课怎么上（翻转课堂 · 四城线下 · 每周节奏）</div><div class="wk"><span class="mono" style="color:#999">W01</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W1 线下带练：装 Claude Code + 跑通 AI Coding 工作流</div><div class="wk"><span class="mono" style="color:#999">W02</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W2 线下带练：搭前端 — 看懂 AI 生成的 React 代码</div><div class="wk"><span class="mono" style="color:#999">W03</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W3 线下带练：搭后端 API — 请求、路由、响应</div><div class="wk"><span class="mono" style="color:#999">W04</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W4 线下带练：全栈打通第一个 CRUD</div><div class="wk"><span class="mono" style="color:#999">M01</span> <span class="pill" style="background:#FFDE59;color:#000">🎯 里程碑</span> &nbsp;里程碑 M1：本期项目立项 &amp; 需求拆解</div></div><div class="box"><div class="box-h" style="background:var(--purple)"><div style="font-size:18px;font-weight:800">Part 2 · 做出本期产品（第 5–8 周）</div></div><div class="wk"><span class="mono" style="color:#999">W05</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W5 线下带练：需求拆解 + 数据模型 + 脚手架</div><div class="wk"><span class="mono" style="color:#999">W06</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W6 线下带练：核心功能前后端</div><div class="wk"><span class="mono" style="color:#999">W07</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W7 线下带练：登录 + 集成 + 给产品加 AI 功能（RAG/LLM）</div><div class="wk"><span class="mono" style="color:#999">W08</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W8 线下带练：联调 + 修 bug —— AI 写错了怎么救</div><div class="wk"><span class="mono" style="color:#999">M02</span> <span class="pill" style="background:#FFDE59;color:#000">🎯 里程碑</span> &nbsp;里程碑 M2：本期产品功能完成</div></div><div class="box"><div class="box-h" style="background:#a855f7"><div style="font-size:18px;font-weight:800">Part 3 · 上线 · 迭代 · Demo（第 9–11 周）</div></div><div class="wk"><span class="mono" style="color:#999">W09</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W9 线下带练：部署上线 AWS，真实域名</div><div class="wk"><span class="mono" style="color:#999">M03</span> <span class="pill" style="background:#FFDE59;color:#000">🎯 里程碑</span> &nbsp;里程碑 M3：产品上线</div><div class="wk"><span class="mono" style="color:#999">W10</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W10 线下带练：Code Review + 加功能改需求（独立养产品）</div><div class="wk"><span class="mono" style="color:#999">W11</span> <span class="pill" style="background:#d1fae5;color:var(--teal)">线下带练</span> &nbsp;W11 Demo Day + 上线后怎么办（获客 / 数据 / 商业化）</div></div></div><div class="sec"><div class="sec-h">录播自学库（155 节 · 课前自学用）</div><div class="sec-sub">往期全栈班沉淀的完整技术录播，按技能整理，一节不删，作为翻转课堂的课前自学资源。授课老师包括 Ally Tang、Amos Xia、Chris WANG、Chris Wang、G X、Huansong（Winston） Zeng、Kaiwen Luo、Kitman Yiu 等一线工程师。</div><div class="libgrp"><div class="box-h" style="background:var(--dark)"><span style="font-size:16px;font-weight:800">前端基础</span> <span style="opacity:.7;font-size:12px">· HTML · CSS · JavaScript · 响应式布局 · 28 节</span></div><div class="liblist"><div class="li"><span class="lt">Information</span>课前须知</div><div class="li"><span class="lt">Information</span>课前准备</div><div class="li"><span class="lt">Video</span>CareerMate AI项目介绍</div><div class="li"><span class="lt">Lesson</span>学习平台使用指南</div><div class="li"><span class="lt">Video</span>HTML&amp;CSS的奥秘</div><div class="li"><span class="lt">Assignment</span>HTML&amp;CSS的奥秘: Assignment 01</div><div class="li"><span class="lt">Lesson</span>HTML入门实战：从空白到CareerMate网页框架</div><div class="li"><span class="lt">Quiz</span>HTML基础测试</div><div class="li"><span class="lt">Lab</span>Lab(1)：使用Chrome Debugger和实现Responsive List</div><div class="li"><span class="lt">Information</span>关于如何解决Error Messages，几个步骤</div><div class="li"><span class="lt">Video</span>HTML&amp;CSS (Part 2)</div><div class="li"><span class="lt">Assignment</span>HTML&amp;CSS (Part 2): Assignment 02</div><div class="li"><span class="lt">Lesson</span>CSS基础与产品风格打造：让页面“有感觉”</div><div class="li"><span class="lt">Video</span>CSS &amp; Sass</div><div class="li"><span class="lt">Lesson</span>网页布局与响应式：Flex + Grid 打造专业结构</div><div class="li"><span class="lt">Lab</span>Lab(2):使用Grid和Flexbox实现卡片布局</div><div class="li"><span class="lt">Video</span>JavaScript 入门</div><div class="li"><span class="lt">Assignment</span>JavaScript Assignment 03</div><div class="li"><span class="lt">Lesson</span>JavaScript交互入门：让网页“动起来</div><div class="li"><span class="lt">Lesson</span>Vibe Coding</div><div class="li"><span class="lt">Tutorial</span>Tutorial (html, css, js)</div><div class="li"><span class="lt">Lab</span>Lab(3):创建Responsive定价卡片</div><div class="li"><span class="lt">Lab</span>Lab(5):构建一个JavaScript天气应用</div><div class="li"><span class="lt">Video</span>探索现代JavaScript —— ES6 (ECMAScript 2015)之魅力</div><div class="li"><span class="lt">Video</span>开发环境与工具</div><div class="li"><span class="lt">Lab</span>Build Weather App</div><div class="li"><span class="lt">Lesson</span>用户Dashboard设计与信息展示</div><div class="li"><span class="lt">Video</span>Building RAG from Scratch in JavaScript</div></div></div><div class="libgrp"><div class="box-h" style="background:var(--dark)"><span style="font-size:16px;font-weight:800">React 前端</span> <span style="opacity:.7;font-size:12px">· 组件 · Hooks · Redux · Router · 表单 · 29 节</span></div><div class="liblist"><div class="li"><span class="lt">Information</span>React如何安装</div><div class="li"><span class="lt">Video</span>React项目快速上手</div><div class="li"><span class="lt">Lesson</span>React起步：从零创建你的第一个前端应用&amp;SOLID</div><div class="li"><span class="lt">Video</span>React组件基础</div><div class="li"><span class="lt">Lesson</span>登录界面开发：打造你的第一个可交互前端系统</div><div class="li"><span class="lt">Video</span>React Router</div><div class="li"><span class="lt">Video</span>React表单处理</div><div class="li"><span class="lt">Lesson</span>表单验证与用户体验优化</div><div class="li"><span class="lt">Video</span>React服务端交互</div><div class="li"><span class="lt">Video</span>React Hooks</div><div class="li"><span class="lt">Tutorial</span>Tutorial (React)</div><div class="li"><span class="lt">Video</span>React基础(1) - 代码质量</div><div class="li"><span class="lt">Video</span>React基础(2) - 为什么需要 React</div><div class="li"><span class="lt">Video</span>React基础(3) - 开发环境与工具</div><div class="li"><span class="lt">Video</span>React基础(4) - 组件 &amp; JSX 语法</div><div class="li"><span class="lt">Video</span>React基础(5) - 条件渲染 &amp; 列表渲染</div><div class="li"><span class="lt">Video</span>React基础(6) - 组件的状态</div><div class="li"><span class="lt">Video</span>React基础(7) - React 组件生命周期 &amp; 使用 API 获取数据</div><div class="li"><span class="lt">Video</span>React 进阶(1) - Thinking in React</div><div class="li"><span class="lt">Video</span>React 进阶(2) - 测试和 a11y</div><div class="li"><span class="lt">Lab</span>Lab(7):使用React和Hooks创建分页应用</div><div class="li"><span class="lt">Lab</span>Lab(8):使用React和localStorage构建笔记卡片应用</div><div class="li"><span class="lt">Lab</span>Lab(11):使用React, Hooks和Redux Toolkit构建图书馆应用</div><div class="li"><span class="lt">Lab</span>Lab(12):使用React和Express构建图像上传应用</div><div class="li"><span class="lt">Lesson</span>页面路由和 React Context</div><div class="li"><span class="lt">Tutorial</span>Tutorial (React &amp; Node)</div><div class="li"><span class="lt">Lesson</span>用户 Dashboard 页面开发: React 哲学训练</div><div class="li"><span class="lt">Lesson</span>用户 Dashboard 页面开发: useEffect 获取 API 数据</div><div class="li"><span class="lt">Tutorial</span>Tutorial (React &amp; Node)</div></div></div><div class="libgrp"><div class="box-h" style="background:var(--dark)"><span style="font-size:16px;font-weight:800">后端 &amp; 数据库</span> <span style="opacity:.7;font-size:12px">· Node · Express · RESTful API · MongoDB · 认证 · 24 节</span></div><div class="liblist"><div class="li"><span class="lt">Information</span>Node.js如何安装</div><div class="li"><span class="lt">Video</span>Node.js (1): 引领现代后端的黑马</div><div class="li"><span class="lt">Video</span>Node.js (2) : API和RESTful API</div><div class="li"><span class="lt">Video</span>Node.js (3) : NPM and Express.js</div><div class="li"><span class="lt">Lesson</span>初识后端世界：Express 与 RESTful API 概念</div><div class="li"><span class="lt">Video</span>Express和RESTful API实践</div><div class="li"><span class="lt">Video</span>Node.js (4) :  Build express server with industry standard</div><div class="li"><span class="lt">Video</span>Node.js (5): MongoDB</div><div class="li"><span class="lt">Lesson</span>连接数据库：让CareerMate的数据真正存起来</div><div class="li"><span class="lt">Video</span>Node.js (6) : Mongoose &amp; Authorization and Authentication</div><div class="li"><span class="lt">Lesson</span>注册API开发：从前端输入到数据库存储,登录API开发：实现可验证的用户身份系统</div><div class="li"><span class="lt">Lab</span>Lab(10):使用Node.js和Express构建天气查询后端服务器</div><div class="li"><span class="lt">Video</span>Working with API</div><div class="li"><span class="lt">Lesson</span>用户认证与权限保护：安全地管理用户状态</div><div class="li"><span class="lt">Tutorial</span>Tutorial (Node)</div><div class="li"><span class="lt">Video</span>Node.js (7): Build a CRUD server (1)</div><div class="li"><span class="lt">Video</span>Node.js (8): Build a CRUD server (2)</div><div class="li"><span class="lt">Video</span>Node.js (9): Build a CRUD server (3)</div><div class="li"><span class="lt">Lesson</span>用户注册和登陆，调用后端 API 并保存状态</div><div class="li"><span class="lt">Lesson</span>用户信息编辑与更新API</div><div class="li"><span class="lt">Lesson</span>AWS入门：从本地到云端的后端部署</div><div class="li"><span class="lt">Video</span>Node.js (10) : Testing and Deploy</div><div class="li"><span class="lt">Lesson</span>AI模块导入与OpenAI API初体验 &amp; Prompt Engineering：让AI更懂你</div><div class="li"><span class="lt">Video</span>GraphQL101: 剥离RESTful的银行系统开发实践—Gary Sun</div></div></div><div class="libgrp"><div class="box-h" style="background:var(--dark)"><span style="font-size:16px;font-weight:800">部署 &amp; DevOps</span> <span style="opacity:.7;font-size:12px">· AWS · CI/CD · Docker · 上线 · 13 节</span></div><div class="liblist"><div class="li"><span class="lt">Lesson</span>前端生产部署：S3 + CloudFront 静态托管</div><div class="li"><span class="lt">Video</span>利用AWS部署前端spa项目</div><div class="li"><span class="lt">Video</span>5分钟手动部署Web Application到AWS S3静态网站</div><div class="li"><span class="lt">Video</span>CI/CD基础:使用Jenkins和AWS CodePipeline手把手部署一个Web App</div><div class="li"><span class="lt">Lesson</span>CI/CD, 静态代码检查和单元测试</div><div class="li"><span class="lt">Information</span>Docker  Introduction</div><div class="li"><span class="lt">Video</span>AWS基础</div><div class="li"><span class="lt">Workshop</span>Workshop: AWS IAM的基本用法和高级使用</div><div class="li"><span class="lt">Lesson</span>全栈项目云端整合与测试</div><div class="li"><span class="lt">Workshop</span>AWS Lambda基础知识</div><div class="li"><span class="lt">Lesson</span>前端产品上线，控制环境变量</div><div class="li"><span class="lt">Video</span>Workshop: 持续集成(CI)/持续部署(CD)的概念以及Jenkins的使用</div><div class="li"><span class="lt">Video</span>SpringBoot的Production部署到AWS ECS Fargate，如何使用Microservice with docker</div></div></div><div class="libgrp"><div class="box-h" style="background:var(--dark)"><span style="font-size:16px;font-weight:800">AI 功能接入</span> <span style="opacity:.7;font-size:12px">· OpenAI · RAG · 向量库 · Prompt · Azure AI · 13 节</span></div><div class="liblist"><div class="li"><span class="lt">Information</span>AI 模型对比参考</div><div class="li"><span class="lt">Video</span>The Four Prototyping Patterns: Prompting, Fine-Tuning, RAG, Agents</div><div class="li"><span class="lt">Lesson</span>前端聊天UI设计与Streaming显示</div><div class="li"><span class="lt">Lesson</span>引入记忆与上下文：打造有思考的AI</div><div class="li"><span class="lt">Video</span>Introduction to Embeddings</div><div class="li"><span class="lt">Video</span>Introduction to Retrieval Augmented Generation (RAG)</div><div class="li"><span class="lt">Video</span>Open AI Huggingface讲解 - Guang</div><div class="li"><span class="lt">Tutorial</span>Tutorial（AI）</div><div class="li"><span class="lt">Lesson</span>Vector Database与RAG检索增强</div><div class="li"><span class="lt">Video</span>Tutorial (Azure AI Preparation)</div><div class="li"><span class="lt">Video</span>Azure AI Service和TTS</div><div class="li"><span class="lt">Video</span>Integrate Azure AI Service and Streaming</div><div class="li"><span class="lt">Video</span>Integrate Azure AI and OpenAI</div></div></div><div class="libgrp"><div class="box-h" style="background:var(--dark)"><span style="font-size:16px;font-weight:800">工程进阶</span> <span style="opacity:.7;font-size:12px">· TypeScript · ES6 · 测试 · Next.js · GraphQL · Git · 15 节</span></div><div class="liblist"><div class="li"><span class="lt">Video</span>Git Introduction</div><div class="li"><span class="lt">Assignment</span>Git Introduction Assignment 04</div><div class="li"><span class="lt">Lesson</span>Git 版本管理的第一步：掌握Git并上传你的项目</div><div class="li"><span class="lt">Tutorial</span>Tutorial (Git)</div><div class="li"><span class="lt">Lab</span>Lab(4): Git实践练习</div><div class="li"><span class="lt">Roadmap</span>Github Page: Static Website Deployment</div><div class="li"><span class="lt">Assignment</span>ES6 Assignment</div><div class="li"><span class="lt">Video</span>ES6进阶技巧与实践</div><div class="li"><span class="lt">Assignment</span>ES6 (Part2) &amp; TypeScript Assignment</div><div class="li"><span class="lt">Lab</span>Lab(6):使用Promise和ES6创建进度条</div><div class="li"><span class="lt">Video</span>Technical SEO基础知识</div><div class="li"><span class="lt">Video</span>课后补充知识：什么是SSR，CSR，SSG</div><div class="li"><span class="lt">Video</span>Next.js</div><div class="li"><span class="lt">Video</span>用Kafka实践Event First设计思维—虎头锤</div><div class="li"><span class="lt">Video</span>Elastic Search基础知识分享Workshop</div></div></div><div class="libgrp"><div class="box-h" style="background:var(--dark)"><span style="font-size:16px;font-weight:800">产品上线运维</span> <span style="opacity:.7;font-size:12px">· 生产思维 · 安全 · 性能 · 上线验收 · 4 节</span></div><div class="liblist"><div class="li"><span class="lt">Lesson</span>从项目到产品：生产思维与上线规划</div><div class="li"><span class="lt">Lesson</span>安全与稳定性：保护你的AI服务</div><div class="li"><span class="lt">Lesson</span>性能与体验：优化AI响应速度</div><div class="li"><span class="lt">Lesson</span>项目回顾与上线验收</div></div></div><div class="libgrp"><div class="box-h" style="background:var(--dark)"><span style="font-size:16px;font-weight:800">Agile &amp; 团队协作</span> <span style="opacity:.7;font-size:12px">· Scrum · 敏捷 · 项目管理 · Workshop · 9 节</span></div><div class="liblist"><div class="li"><span class="lt">Video</span>Agile Methodologies</div><div class="li"><span class="lt">Video</span>Agile方法论: 解锁团队的协作潜力</div><div class="li"><span class="lt">Video</span>什么是Agile SDLC, Waterfall, Agile介绍</div><div class="li"><span class="lt">Video</span>Agile Case研究：微软Microsoft Case Study</div><div class="li"><span class="lt">Workshop</span>Workshop: Agile Project Management</div><div class="li"><span class="lt">Information</span>P3职业孵化器介绍</div><div class="li"><span class="lt">Lesson</span>P3职业孵化器 Bootstrap</div><div class="li"><span class="lt">Workshop</span>Student Showcase: Stripe Integration in Practice</div><div class="li"><span class="lt">Workshop</span>Workshop：如何利用mediasoup实现多人视频会议</div></div></div><div class="libgrp"><div class="box-h" style="background:#555"><span style="font-size:16px;font-weight:800">求职加值（选看）</span> <span style="opacity:.7;font-size:12px">· 简历 / 面试 / LinkedIn · 20 节</span></div><div class="liblist"><div class="li"><span class="lt">Video</span>澳洲工作职场介绍</div><div class="li"><span class="lt">Video</span>澳洲企业招聘流程</div><div class="li"><span class="lt">Lesson</span>开营仪式 &amp; 职业路线图：从AI学习者到AI工程师</div><div class="li"><span class="lt">Lesson</span>AI Engineer 简历与面试课</div><div class="li"><span class="lt">Information</span>MongoDB面试真题: Weather App项目介绍</div><div class="li"><span class="lt">Video</span>手把手带你打造高质量IT人的LinkedIn主页</div><div class="li"><span class="lt">Video</span>LinkedIn &amp; CV</div><div class="li"><span class="lt">Video</span>招聘官挑选简历的标准</div><div class="li"><span class="lt">Video</span>如何撰写 IT 专业简历</div><div class="li"><span class="lt">Video</span>简历常见问题</div><div class="li"><span class="lt">Video</span>如何利用 ChatGPT 写简历</div><div class="li"><span class="lt">Video</span>手把手带着运营 LinkedIn</div><div class="li"><span class="lt">Video</span>如何利用 LinkedIn 准备面试</div><div class="li"><span class="lt">Video</span>如何准备澳洲大厂开发类岗位面试</div><div class="li"><span class="lt">Video</span>求职国内秋招大厂前端开发岗，需要做哪些准备</div><div class="li"><span class="lt">Video</span>如何准备国内秋招，才能获得大厂Offer?</div><div class="li"><span class="lt">Video</span>澳洲程序员找工作必备哪些后端知识</div><div class="li"><span class="lt">Video</span>在澳洲，IT学生如何准备System Design面试-----Ben</div><div class="li"><span class="lt">Video</span>Google大佬教你，如何突破年薪20w澳币天花板 -- 韭天</div><div class="li"><span class="lt">Video</span>在澳洲如何找到一份Java Developer的工作 -- 虎头锤</div></div></div></div><div class="sec">
-<div class="sec-h">往期学员成果</div>
-<div class="sec-sub">同一套教学体系带出来的往期全栈班学员去向（22–28 期，已脱敏）。真能做、被市场认可 —— 无论你是想做产品还是想入行。</div>
-<div class="offers"><div class="offer"><div class="nm">J.M.</div><div class="rl">Mid Frontend Developer</div><div class="mt">25期 · Melbourne</div></div><div class="offer"><div class="nm">M.W.</div><div class="rl">Full-stack Developer</div><div class="mt">25期 · Sydney</div></div><div class="offer"><div class="nm">J.L.</div><div class="rl">Associate Consultant Engineer</div><div class="mt">22期 · Melbourne</div></div><div class="offer"><div class="nm">K.W.</div><div class="rl">Junior Backend Developer</div><div class="mt">24期 · Melbourne</div></div><div class="offer"><div class="nm">J.L.</div><div class="rl">Associate Software Engineer</div><div class="mt">全栈项目 · Sydney</div></div><div class="offer"><div class="nm">F.</div><div class="rl">.NET Developer</div><div class="mt">24期 · Brisbane</div></div><div class="offer"><div class="nm">F.H.</div><div class="rl">Software Developer</div><div class="mt">27期 · Adelaide</div></div><div class="offer"><div class="nm">F.</div><div class="rl">Mid Full-stack Developer</div><div class="mt">26期 · Sydney</div></div><div class="offer"><div class="nm">A.</div><div class="rl">Software Engineer</div><div class="mt">26期 · Sydney</div></div><div class="offer"><div class="nm">J.W.</div><div class="rl">Developer</div><div class="mt">24期 · Canberra</div></div></div>
-<div class="band">
-  <div style="font-size:14px">📍 学员分布城市：<b>Sydney · Melbourne · Brisbane · Adelaide · Canberra</b></div>
-  <div style="font-size:14px;margin-top:8px">🎓 毕业院校包括：<b>University of Sydney、Monash、UQ、ANU、Swinburne、Deakin、RMIT</b></div>
-  <div style="font-size:14px;margin-top:8px">🏢 部分学员入职公司：<b>Luxury Escapes、CJGlobal、Sol Energy</b> 等</div>
-  <div style="font-size:11px;opacity:.6;margin-top:10px;font-family:'Space Mono',monospace">* 学员姓名已脱敏（仅保留姓名首字母），公司 / 院校 / 城市仅作汇总展示，不与个人对应。</div>
-</div>
-</div><div class="footer" style="text-align:center;padding:24px;color:#888;font-size:13px;border-top:3px solid #000;background:#fff">
-匠人学院 JR Academy · AI 全栈产品班 · 线下小班（AI Coding 带练）· 布里斯班 / 墨尔本 / 悉尼 / 阿德莱德
-</div></body></html>
+
+  <main>
+    <section>
+      <div class="shell">
+        <div class="section-kicker">WHY THIS BOOTCAMP</div><h2 class="section-title">不是只听懂，是每周把产品往前推。</h2><p class="section-copy">课前完成针对性导学，直播专注现场编码、关键联调和项目验收。每堂课后都有一个可运行、可展示、可检查的成果。</p>
+        <div class="promise">
+          <article class="promise-card"><div class="icon">🧱</div><h3>基础真的懂</h3><p>HTML、CSS、JavaScript、HTTP、Git 先亲手写。以后 AI 写错时，你知道错在哪里。</p></article>
+          <article class="promise-card"><div class="icon">⚡</div><h3>AI Coding 真的会</h3><p>不止复制 Prompt。你会拆需求、给上下文、审代码、测结果、修 Bug，对 AI 产出负责。</p></article>
+          <article class="promise-card"><div class="icon">🚀</div><h3>产品真的上线</h3><p>React + Node.js + MongoDB + OpenAI + RAG + Cloud，最后交付别人能打开的产品链接。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="transition" id="method">
+      <div class="shell">
+        <div class="section-kicker">TWO-STAGE METHOD</div><h2 class="section-title">手写与 AI Coding，各在正确的时间出现。</h2><p class="section-copy">零基础最怕两个极端：一直手写，开发速度跟不上；一开始全交给 AI，出了问题完全看不懂。新版课程把两者分成清楚的两个阶段。</p>
+        <div class="mode-grid">
+          <article class="mode"><span class="week">MONTH 01 · NO FULL GENERATION</span><h3>⌨️ 第一阶段：手写代码</h3><ul><li>手写页面结构、样式与交互</li><li>亲自发出 API 请求并处理错误</li><li>用 Git 保存每次变化</li><li>AI 只可解释、提示、辅助 Debug</li></ul></article>
+          <div class="arrow" aria-hidden="true">→</div>
+          <article class="mode ai"><span class="week">MONTH 02–03 · AI PAIR PROGRAMMING</span><h3>🤖 第二阶段：AI 协作开发</h3><ul><li>把功能拆成 AI 可执行的任务</li><li>用 AI 生成骨架，人工审查与修改</li><li>让 AI 补测试、排错与重构</li><li>每段代码都要能解释、能验收</li></ul></article>
+        </div>
+        <div class="rule">课程原则：第一阶段，你写每一行；第二阶段，你为每一行负责。</div>
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="shell">
+        <div class="section-kicker">ONE PROJECT, FULL JOURNEY</div><h2 class="section-title">一个真实项目，贯穿整套技术栈。</h2><p class="section-copy">项目主题可以根据当期需求调整，但不会做十几个互不相干的小 Demo。每堂课都在同一个代码库上增加真实功能，最终形成完整的产品交付经历。</p>
+        <div class="product-map">
+          <div class="map-step"><div class="mi">🖥️</div><b>Landing Page</b><span>HTML / CSS / JS</span></div><div class="map-step"><div class="mi">⚛️</div><b>应用前端</b><span>React / Router</span></div><div class="map-step"><div class="mi">🔌</div><b>业务后端</b><span>Node / REST API</span></div><div class="map-step"><div class="mi">🔐</div><b>数据与认证</b><span>MongoDB / Auth</span></div><div class="map-step"><div class="mi">🧠</div><b>AI 与 RAG</b><span>LLM / Vector DB</span></div><div class="map-step"><div class="mi">☁️</div><b>生产上线</b><span>Cloud / Security</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="schedule" id="curriculum">
+      <div class="shell">
+        <div class="section-kicker">16 LIVE SESSIONS</div><h2 class="section-title">约 3 个月课程安排</h2><p class="section-copy">根据学习难度与项目节奏，每周安排 1–2 场直播。课前导学帮助建立知识准备，直播课推进项目关键路径；每次课后都要提交一个能运行、能截图、能追溯的项目增量。</p>
+        <div class="phase-head"><div><h3>PART 01 · 手写全栈基础</h3><p>第一个月 · 8 场 × 3 小时</p></div><p>目标：不用 AI 代写，也能解释网页、交互、API 与 Git 是如何工作的。</p></div>
+        <div class="lesson-grid">
+          <article class="lesson no-ai"><div class="lesson-num">01</div><div><h4>HTML 与产品结构</h4><p><strong>直播：</strong>从零搭建本期项目页面骨架、语义化与信息结构。</p><p><strong>课前导学：</strong>HTML&amp;CSS 的奥秘</p><div class="tagrow"><span class="mini output">产出：Landing Page 骨架</span><span class="mini hw">作业：手写 5 个语义区块</span></div></div></article>
+          <article class="lesson no-ai"><div class="lesson-num">02</div><div><h4>CSS 与产品视觉</h4><p><strong>直播：</strong>盒模型、Design Tokens、按钮与卡片组件样式。</p><p><strong>课前导学：</strong>HTML&amp;CSS Part 2 / CSS &amp; Sass</p><div class="tagrow"><span class="mini output">产出：统一视觉系统</span><span class="mini hw">作业：还原产品样式</span></div></div></article>
+          <article class="lesson no-ai"><div class="lesson-num">03</div><div><h4>响应式布局</h4><p><strong>直播：</strong>Flex、Grid、断点与移动端适配。</p><p><strong>课前导学：</strong>Grid 和 Flexbox 卡片布局 Lab</p><div class="tagrow"><span class="mini output">产出：手机可用页面</span><span class="mini hw">作业：通过 3 档屏幕验收</span></div></div></article>
+          <article class="lesson no-ai"><div class="lesson-num">04</div><div><h4>JavaScript 编程基础</h4><p><strong>直播：</strong>变量、函数、数组、对象与控制流，建立程序思维。</p><p><strong>课前导学：</strong>JavaScript 入门 / ES6</p><div class="tagrow"><span class="mini output">产出：职业问题数据模型</span><span class="mini hw">作业：完成数据处理函数</span></div></div></article>
+          <article class="lesson no-ai"><div class="lesson-num">05</div><div><h4>DOM、事件与表单</h4><p><strong>直播：</strong>事件监听、页面状态、输入验证和错误提示。</p><p><strong>课前导学：</strong>JavaScript 交互入门</p><div class="tagrow"><span class="mini output">产出：可交互问答表单</span><span class="mini hw">作业：补齐成功/失败状态</span></div></div></article>
+          <article class="lesson no-ai"><div class="lesson-num">06</div><div><h4>HTTP、API 与异步</h4><p><strong>直播：</strong>请求/响应、Fetch、Promise、Async/Await 与异常处理。</p><p><strong>课前导学：</strong>ES6 进阶 / Working with API</p><div class="tagrow"><span class="mini output">产出：真实 API 数据页面</span><span class="mini hw">作业：加载、空态、错误态</span></div></div></article>
+          <article class="lesson no-ai"><div class="lesson-num">07</div><div><h4>Git 与工程协作</h4><p><strong>直播：</strong>Commit、Branch、Merge、Pull Request 与冲突处理。</p><p><strong>课前导学：</strong>Git Introduction / Git 实践 Lab</p><div class="tagrow"><span class="mini output">产出：可追溯 Git 仓库</span><span class="mini hw">作业：Feature Branch + PR</span></div></div></article>
+          <article class="lesson no-ai"><div class="lesson-num">08</div><div><h4>手写版整合与首次上线</h4><p><strong>直播：</strong>调试、代码整理、CI/CD 与静态网站部署。</p><p><strong>课前导学：</strong>GitHub Page / S3 静态部署</p><div class="tagrow"><span class="mini output">里程碑 M1：线上手写版</span><span class="mini hw">作业：链接 + 代码讲解视频</span></div></div></article>
+        </div>
+
+        <div class="phase-head"><div><h3>PART 02 · AI Coding 全栈交付</h3><p>第二至第三个月 · 8 场 × 2.5 小时</p></div><p>目标：把 AI 当 Pair Programmer，快速交付但不放弃理解、测试与判断。</p></div>
+        <div class="lesson-grid">
+          <article class="lesson with-ai"><div class="lesson-num">09</div><div><h4>React 与 AI Coding 工作流</h4><p><strong>直播：</strong>组件拆分、Props/State，以及如何给 AI 高质量上下文。</p><p><strong>课前导学：</strong>React 快速上手 / 组件基础</p><div class="tagrow"><span class="mini output">产出：React 页面重构</span><span class="mini hw">作业：提交 Prompt 与人工修改</span></div></div></article>
+          <article class="lesson with-ai"><div class="lesson-num">10</div><div><h4>React 应用架构</h4><p><strong>直播：</strong>Router、Hooks、Context、登录注册与表单验证。</p><p><strong>课前导学：</strong>React Router / 表单 / Hooks</p><div class="tagrow"><span class="mini output">产出：完整前端流程</span><span class="mini hw">作业：注册登录 + 路由保护</span></div></div></article>
+          <article class="lesson with-ai"><div class="lesson-num">11</div><div><h4>Node.js 与 REST API</h4><p><strong>直播：</strong>Express、路由、中间件、接口规范与 API 调试。</p><p><strong>课前导学：</strong>Node.js 1–4 / Express 实践</p><div class="tagrow"><span class="mini output">产出：用户与 Profile API</span><span class="mini hw">作业：接口文档 + 错误处理</span></div></div></article>
+          <article class="lesson with-ai"><div class="lesson-num">12</div><div><h4>MongoDB 与用户认证</h4><p><strong>直播：</strong>Mongoose 数据模型、注册登录、鉴权与权限边界。</p><p><strong>课前导学：</strong>Node.js 5–6 / MongoDB</p><div class="tagrow"><span class="mini output">里程碑 M2：可登录全栈应用</span><span class="mini hw">作业：受保护接口测试</span></div></div></article>
+          <article class="lesson with-ai"><div class="lesson-num">13</div><div><h4>全栈 Dashboard 与 CRUD</h4><p><strong>直播：</strong>前后端联调、数据获取、编辑更新与状态处理。</p><p><strong>课前导学：</strong>React 服务端交互 / CRUD Server</p><div class="tagrow"><span class="mini output">产出：用户 Dashboard</span><span class="mini hw">作业：完整 CRUD 闭环</span></div></div></article>
+          <article class="lesson with-ai"><div class="lesson-num">14</div><div><h4>AI 聊天与 Streaming</h4><p><strong>直播：</strong>OpenAI API、Prompt、密钥安全与流式聊天体验。</p><p><strong>课前导学：</strong>AI 模型对比 / Four Prototyping Patterns</p><div class="tagrow"><span class="mini output">产出：AI 职业陪练</span><span class="mini hw">作业：流式对话 + 失败降级</span></div></div></article>
+          <article class="lesson with-ai"><div class="lesson-num">15</div><div><h4>记忆、Embedding 与 RAG</h4><p><strong>直播：</strong>上下文边界、向量检索、知识库回答与引用。</p><p><strong>课前导学：</strong>Embeddings / RAG / RAG from Scratch</p><div class="tagrow"><span class="mini output">里程碑 M3：知识库问答</span><span class="mini hw">作业：RAG 评测样例</span></div></div></article>
+          <article class="lesson with-ai"><div class="lesson-num">16</div><div><h4>生产部署与 Demo Day</h4><p><strong>直播：</strong>云部署、环境变量、安全、性能、验收与产品演示。</p><p><strong>课前导学：</strong>AWS 基础 / Testing and Deploy / CI/CD</p><div class="tagrow"><span class="mini output">最终交付：线上 AI 全栈产品</span><span class="mini hw">作业：README + Demo 视频</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-kicker">GUIDED LEARNING</div><h2 class="section-title">每周导学清单，清楚知道该学什么。</h2><p class="section-copy">每堂直播前都有对应的必看内容与学习目标；扩展资源按需开放，帮助不同基础的学员复习巩固或继续进阶。</p>
+        <div class="library">
+          <article class="lib"><div class="count">必看</div><h3>每周精准预习</h3><p>每堂课前指定 1–2 个旧视频或具体时间段，控制在 60–90 分钟。</p></article>
+          <article class="lib"><div class="count">选看</div><h3>按基础补齐</h3><p>React、Node、部署等扩展录播，给需要复习或希望深入的学生。</p></article>
+          <article class="lib"><div class="count">拓展</div><h3>按方向继续深入</h3><p>职业发展、架构专题和特定技术方向作为拓展内容，不影响必修主线与结课验收。</p></article>
+        </div>
+        <div class="note"><strong>项目支持：</strong>直播课预留集中答疑时间；常见问题会持续沉淀为学习资料；第 8、12、15、16 课设置重点里程碑检查。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-kicker">EVERY CLASS SHIPS</div><h2 class="section-title">16 堂课，16 次可检查的课后交付。</h2>
+        <div class="how">
+          <article class="how-card"><div class="n">01 · CODE</div><h3>提交代码</h3><p>GitHub Commit 或 Pull Request，保留每一步迭代记录。</p></article>
+          <article class="how-card"><div class="n">02 · PROOF</div><h3>提交运行证明</h3><p>功能截图、录屏或线上链接，证明它不是“看懂了”。</p></article>
+          <article class="how-card"><div class="n">03 · THINKING</div><h3>提交解决过程</h3><p>记录遇到的问题、尝试的方法，以及最终如何定位。</p></article>
+          <article class="how-card"><div class="n">04 · AI LOG</div><h3>提交 AI 协作记录</h3><p>第 5 周起附关键 Prompt、AI 初稿和人工修改说明。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="outcomes">
+      <div class="shell">
+        <div class="section-kicker" style="color:var(--yellow)">WHAT YOU LEAVE WITH</div><h2 class="section-title">结课带走的不只是一份代码。</h2><p class="section-copy" style="color:#c9cede">你会拥有一套从需求、开发到上线的完整证据，可以继续迭代自己的产品，也可以作为作品集展示。</p>
+        <div class="deliverables">
+          <article class="deliverable"><div class="di">🌐</div><h3>线上产品</h3><p>一个真实可访问的AI全栈产品</p></article><article class="deliverable"><div class="di">📁</div><h3>GitHub 仓库</h3><p>清晰、连续的开发记录</p></article><article class="deliverable"><div class="di">🧠</div><h3>AI + RAG</h3><p>真实可演示的智能功能</p></article><article class="deliverable"><div class="di">🧪</div><h3>验收与测试</h3><p>关键路径及异常场景</p></article><article class="deliverable"><div class="di">🎬</div><h3>Demo 视频</h3><p>能讲清产品与技术决策</p></article>
+        </div>
+        <div class="final-card"><div><h3>最终目标：从“我学过”变成“这是我做出来并上线的”。</h3><p>页面、API、数据库、AI、RAG、部署，每一层都能展示，也知道它为什么这样工作。</p></div><div class="stamp">SHIP IT ✓</div></div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="shell">
+        <div class="section-kicker">FAQ</div><h2 class="section-title">你可能还想知道</h2>
+        <details><summary>零基础能学吗？</summary><div>可以。前四周专门用手写代码建立网页、JavaScript、API 和 Git 基础。但课程节奏紧凑，需要按时看指定录播并完成每次课后作业。</div></details>
+        <details><summary>为什么不从第一天就用 AI Coding？</summary><div>因为 AI 会生成能运行但不一定正确的代码。先建立基础，后面你才有能力判断、调试和修改，而不是被 AI 牵着走。</div></details>
+        <details><summary>学习过程中卡住怎么办？</summary><div>直播课设有集中答疑，课后可以按规范提交问题；关键里程碑还会安排重点检查，帮助学员及时发现并解决项目问题。</div></details>
+        <details><summary>录播需要全部看完吗？</summary><div>不需要。每周会给出必看、选看和资料库三级清单。必看内容只服务于下一堂直播，避免无目标刷课。</div></details>
+        <details><summary>AI Coding 阶段是不是不用写代码了？</summary><div>不是。AI 可以生成初稿，但学生必须阅读、运行、测试和修改。作业会要求提交关键 Prompt 和人工修改记录。</div></details>
+      </div>
+    </section>
+
+    <section style="padding-top:10px">
+      <div class="shell">
+        <a class="outline-entry" href="outline.html">
+          <div class="oi">📚</div>
+          <div><h3>查看 16 讲详细课程大纲</h3><p>包含每讲教学目标、核心知识、课堂实作、课后作业和验收标准，可直接作为上课安排使用。</p></div>
+          <div class="go">打开详细大纲 →</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <section class="cta">
+    <h2>约 3 个月，把一个 AI 产品真正做上线。</h2>
+    <p>先建立不会被工具替代的基本功，再掌握今天真正高效的 AI 开发方式。</p>
+    <a class="btn secondary" href="https://jiangren.com.au/program-course/web-code-bootcamp-or-learn-to-code-1" target="_blank" rel="noopener">查看最新开班与报名信息 ↗</a>
+  </section>
+  <footer class="footer">JR Academy · AI全栈项目班 · 课程安排以最新开班通知为准</footer>
+</body>
+</html>
