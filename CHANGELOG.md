@@ -25,6 +25,7 @@
 
 ## 2026-10-14
 
+- AI Engineer W3 Context Engineering 课件已部署并线上回读（21页、Logo、字体与子路径资源正常，PRD / 讲师流程 / 学员复习单链接可打开），目录卡片改为「已部署」（`curriculum/lessons/ai-engineer-cohort-07-w3-context-engineering` / `lessons.html`）
 - 重做 AI Engineer W3 Context Engineering 课件为精简版（21页，90分钟）：开场四道上节课复习题，之后按摆资料、挑、排、防、检查、换六件事讲 Inventory、Selection Policy、Assembly、Trust Boundary、Observability、Lifecycle 与五种机制，收成 Blueprint 五步；一页一件事，例子来自「客服 agent 处理退款」；外部资料只引用 Anthropic 文章与文档（`research/sources.md`）；替换此前的 9 块生活例子版（20页）；更新 PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA 与课件卡片；Local，不部署（`curriculum/lessons/ai-engineer-cohort-07-w3-context-engineering` / `lessons.html` / `deploy.yml`）
 
 ## 2026-10-13
