@@ -372,6 +372,12 @@ jobs:
           mkdir -p _site/ai-essentials-bootcamp
           cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/
 
+          # bigtech-mentor-internship (大厂导师实习计划 · 6周项目制 · 纯静态课程页)
+          if [ -d bigtech-mentor-internship/public ]; then
+            mkdir -p _site/bigtech-mentor-internship
+            cp -r bigtech-mentor-internship/public/* _site/bigtech-mentor-internship/
+          fi
+
           # web-code-bootcamp-or-learn-to-code-1 (第 30 期 · Full-Stack + AI)
           # URL slug 匹配 production: /program-course/web-code-bootcamp-or-learn-to-code-1
           # 包含：Vite slide deck（dist）+ curriculum.html + styles.css
