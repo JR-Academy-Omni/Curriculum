@@ -201,9 +201,9 @@ def render_curriculum() -> str:
             <div class="summary">{html.escape(p['summary'])}</div>
             <div class="ct">
               {tier_pill(p['programs'])}
-              {f'<span class="type-pill t-Lesson">{live_n} 直播</span>' if live_n else ''}
-              {f'<span class="type-pill t-InteractiveLab">{lab_n} Lab</span>' if lab_n else ''}
-              {f'<span class="type-pill t-Quest">{quest_n} Quest</span>' if quest_n else ''}
+              {f'<span class="type-pill t-Lesson">{live_n} 直播</span>' if live_n else '<!-- no live session -->'}
+              {f'<span class="type-pill t-InteractiveLab">{lab_n} Lab</span>' if lab_n else '<!-- no lab -->'}
+              {f'<span class="type-pill t-Quest">{quest_n} Quest</span>' if quest_n else '<!-- no quest -->'}
             </div>
           </a>
         </div>''')
@@ -214,7 +214,7 @@ def render_curriculum() -> str:
 <body>
 
 <h1>{html.escape(OUTLINE['name'])}</h1>
-<div class="sub">{html.escape(OUTLINE['cardDescription'])} · 🔥 首发共创班 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 场全直播 · 限 {launch_p['seatCap']} 人</div>
+<div class="sub">{html.escape(OUTLINE['cardDescription'])} · 🔥 首发共创班 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 节直播</div>
 
 {nav('curriculum.html')}
 
@@ -234,7 +234,7 @@ def render_curriculum() -> str:
 
 <h2>📊 课程数字</h2>
 <div class="stats">
-  {stat(launch_p['liveSessions'], '场直播', f"每场 {launch_p['sessionLength']} 分钟")}
+  {stat(launch_p['liveSessions'], '节直播', f"每节 {launch_p['sessionLength']} 分钟")}
   {stat(launch_p['liveHours'], '小时直播', '会卡住的才直播')}
   {stat(launch_p['lessonsCount'], '节课', f"{len(OUTLINE['phases'])} 个 Phase")}
   {stat(launch_lab, 'Lab', '互动练习')}
@@ -340,9 +340,9 @@ def render_curriculum() -> str:
 <h2>🎁 你会带走的 5 件作品</h2>
 <div class="price-cards">
   <div class="price-card" style="background:#fef08a;border-color:#dc2626;box-shadow:6px 6px 0 #dc2626">
-    <div class="tag" style="color:#dc2626">🔥 {html.escape(launch_p['cohortType'])} · 限 {launch_p['seatCap']} 人</div>
+    <div class="tag" style="color:#dc2626">🔥 {html.escape(launch_p['cohortType'])}</div>
     <div style="font-size:13px;margin-top:4px">{html.escape(launch_p['name'])}</div>
-    <div class="mono" style="font-size:12px;color:#666;margin-top:8px">{launch_p['weeks']} 周 · {launch_p['liveSessions']} 场全直播（{launch_p['liveHours']} 小时）· {launch_p['lessonsCount']} 节课</div>
+    <div class="mono" style="font-size:12px;color:#666;margin-top:8px">{launch_p['weeks']} 周 · {launch_p['liveSessions']} 节直播（{launch_p['liveHours']} 小时）· {launch_p['lessonsCount']} 节课</div>
     <div style="font-size:12px;color:#7c2d12;margin-top:4px">{html.escape(launch_p['note'])}</div>
     <ul>{''.join(f'<li>{html.escape(x)}</li>' for x in launch_p['deliverables'])}</ul>
     <div style="font-size:12px;color:#666;margin-top:10px;padding-top:8px;border-top:1px dashed #ca8a04">
@@ -363,7 +363,7 @@ def render_curriculum() -> str:
   </div>
 </div>
 
-<h2>📅 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 场直播排课</h2>
+<h2>📅 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 节直播排课</h2>
 <div class="card">
   <table style="width:100%;border-collapse:collapse;font-size:13px">
     <tr style="background:#10162f;color:#fef08a">
@@ -378,7 +378,7 @@ def render_curriculum() -> str:
       for l in launch_live)}
   </table>
   <div style="font-size:12px;color:#666;margin-top:10px">
-    每周 2 场 · <strong>每场 90 分钟</strong>（20 分钟演示 + 60 分钟现场做 + 10 分钟收口）· 全程直播无录播<br>
+    每周 1 节 · <strong>每节 {launch_p['sessionLength']} 分钟</strong>（20 分钟演示 + 60 分钟现场做 + 10 分钟收口）· 全程直播无录播<br>
     另配 {launch_lab} 个互动 Lab + {launch_quest} 个 Quest + {len(launch_merged)} 节并入直播的配套内容，供自主安排
   </div>
 </div>
@@ -557,7 +557,7 @@ def render_learning_plan() -> str:
 <head>{HEAD_STYLES}<title>{html.escape(OUTLINE['name'])} — 学习计划</title></head>
 <body>
 <h1>📅 学习计划</h1>
-<div class="sub">🔥 首发共创班 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 场全直播 · {launch_p['lessonsCount']} 节课</div>
+<div class="sub">🔥 首发共创班 {launch_p['weeks']} 周 · {launch_p['liveSessions']} 节直播 · {launch_p['lessonsCount']} 节课</div>
 {nav('learning-plan.html')}
 
 <div class="card tight">
@@ -663,7 +663,7 @@ def render_poster() -> str:
 <body>
 <div id="poster">
   <div class="ident"><span class="dot"></span>匠人学院 JR ACADEMY
-    <span class="cohort">🔥 {html.escape(lp['cohortType'])} · 限 {lp['seatCap']} 人</span></div>
+    <span class="cohort">🔥 {html.escape(lp['cohortType'])}</span></div>
 
   <h1>{html.escape(OUTLINE['name'])}</h1>
   <div class="hook">{lp['weeks']} 周，把你最费时间的那件事<br><em>整段砍掉</em>。</div>
@@ -675,8 +675,8 @@ def render_poster() -> str:
 
   <div class="specs">
     <div class="spec"><b>{lp['weeks']}</b><span>周</span></div>
-    <div class="spec"><b>{lp['liveSessions']}</b><span>场全直播</span></div>
-    <div class="spec"><b>{lp['sessionLength']}</b><span>分钟 / 场</span></div>
+    <div class="spec"><b>{lp['liveSessions']}</b><span>节直播</span></div>
+    <div class="spec"><b>{lp['sessionLength']}</b><span>分钟 / 节</span></div>
     <div class="spec"><b>5</b><span>件交付物</span></div>
   </div>
 
@@ -2310,7 +2310,7 @@ P7 一稿多发 5 大平台。
 ═══ 10 分钟 · 价格 + 优惠 ═══
 - 基础班 $960 / 进阶班 $2280
 - 早鸟 / 老学员 / 团报优惠（如有）
-- 限名额机制（每期限 30 / 50 人）
+- 开课日期提醒（仅在日期确认后使用）
 
 ═══ 10 分钟 · 答疑（高频 Q1-Q10）═══
 - 直接读 FAQ 模块 10 个问题
@@ -2334,8 +2334,8 @@ P7 一稿多发 5 大平台。
     <div class="content">⚡ CTA 1 · 早鸟价 + 截止时间
 "开课前 7 天报名享早鸟价：基础班 $960 → $760（省 $200），进阶班 $2280 → $1980（省 $300）。截止 [日期]。"
 
-⚡ CTA 2 · 名额限制
-"每期只收 30 个学员（为了保证 AI Tutor 一对一带练质量）。已报 22 / 30，剩 8 名。"
+⚡ CTA 2 · 开课提醒
+"首发共创班即将开课。确认开课日期后，请直接咨询课程顾问。"
 
 ⚡ CTA 3 · 老学员推荐
 "老学员推荐新学员：双方各得 $100 抵扣券。直接私我 'XXX 推荐'。"
