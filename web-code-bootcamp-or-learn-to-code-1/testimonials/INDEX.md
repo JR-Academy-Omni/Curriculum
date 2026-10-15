@@ -98,6 +98,7 @@
 | Frank（曾竟远） | 全栈24期 | CJGlobal | .Net developer | 待补 | 有导入凭证 | 未确认·不可外用 | [档案](students/2026-import-082.md) |
 | Paul | 全栈28期 | 待补 | 待补 | 待补 | 未提供 | 未确认·不可外用 | [档案](students/2026-import-083.md) |
 | Ruiqing Hu | 全栈27期 | Sol Energy | Software Development | 待补 | 有导入凭证 | 未确认·不可外用 | [档案](students/2026-import-084.md) |
+| Li | 全栈22期 | Westwell | Delivery & Maintenance Engineer | 待补 | 有脱敏 Offer 截图 | 未确认·不可外用 | [档案](students/2026-li.md) |
 
 ## 感言
 
@@ -114,9 +115,9 @@
 
 ## 统计
 
-- 已建档学员：87
-- 有 Offer 字段记录：84
-- 有导入凭证：49
+- 已建档学员：88
+- 有 Offer 字段记录：85
+- 有导入凭证：50
 - 可上销售页 OFFER WALL（consent 已确认）：0
-- 最近更新：2026-08-14
+- 最近更新：2026-10-15
 
