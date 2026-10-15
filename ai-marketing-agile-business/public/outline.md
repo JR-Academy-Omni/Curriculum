@@ -1,6 +1,6 @@
-# 小企业 AI 内容营销实战
+# AI Marketing实战Bootcamp
 
-**English title**: AI Content Marketing for Small Business
+**English title**: AI Marketing实战Bootcamp
 
 > 数据源：`outline.json`。本文件用于快速评审，课程发布与同步以 JSON 为准。
 

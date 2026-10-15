@@ -1,4 +1,4 @@
-# AI Content Marketing for Small Business — Promotion Plan
+# AI Marketing实战Bootcamp — Promotion Plan
 
 > Chinese execution plan: [PROMOTION_PLAN.md](./PROMOTION_PLAN.md). Audience evidence: [PERSONAS.en.md](./PERSONAS.en.md). This is the single English campaign strategy source of truth. Platform copy, approvals, schedules and publication states belong in `jr-omni/new-media/`. A strategy or brief is not an approved, scheduled or published post.
 
@@ -6,8 +6,8 @@
 
 | Field | Current value |
 |---|---|
-| Course | AI Content Marketing for Small Business |
-| Chinese | 小企业 AI 内容营销实战 |
+| Course | AI Marketing实战Bootcamp |
+| Chinese | AI Marketing实战Bootcamp |
 | Lead campaign | **Your one-person AI marketing team** |
 | Core idea | AI handles research, content, design, video and automation; a clear project system handles priorities, owners, delivery and review |
 | Persona evidence | Working assumptions can support content tests; verified interview coverage remains 0% |
@@ -44,7 +44,7 @@ Start with a specific situation, then show a real file or workflow. Remove any a
 
 ### Fixed hierarchy
 
-1. **Course name:** AI Content Marketing for Small Business
+1. **Course name:** AI Marketing实战Bootcamp
 2. **Campaign headline:** Your one-person AI marketing team
 3. **Sales support line:** Content automation × Brand design × AI project management
 4. **One-sentence explanation:** Build the audience brief, Brand Kit, posters, 30-day content system, short videos and company task board that keep marketing work moving.

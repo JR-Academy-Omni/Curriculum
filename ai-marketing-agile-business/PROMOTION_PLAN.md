@@ -1,4 +1,4 @@
-# 小企业 AI 内容营销实战 — 推广计划
+# AI Marketing实战Bootcamp — 推广计划
 
 > 英文执行版见 [PROMOTION_PLAN.en.md](./PROMOTION_PLAN.en.md)。用户画像证据见 [PERSONAS.md](./PERSONAS.md)。本文件是课程推广唯一策略 SoT；平台正文、审批、排程和发布状态仍进入 `jr-omni/new-media/`。当前只完成推广策略与素材任务，不代表任何帖子已经批准、排程或发布。
 
@@ -6,8 +6,8 @@
 
 | 项目 | 当前值 |
 |---|---|
-| 课程 | 小企业 AI 内容营销实战 |
-| English | AI Content Marketing for Small Business |
+| 课程 | AI Marketing实战Bootcamp |
+| English | AI Marketing实战Bootcamp |
 | 核心 Campaign | **一个人的 AI 营销团队** |
 | 核心解释 | AI 负责研究、内容、设计、视频和自动化；清晰的项目系统负责优先级、负责人、交付与复盘 |
 | Persona | 工作假设可用于内容测试；真实访谈覆盖率仍为 0%，不可写成已验证结论 |
@@ -44,7 +44,7 @@
 
 ### 固定层级
 
-1. **课程名**：小企业 AI 内容营销实战
+1. **课程名**：AI Marketing实战Bootcamp
 2. **Campaign 主标题**：一个人的 AI 营销团队
 3. **销售副标题**：内容自动化 × 品牌设计 × AI 项目管理
 4. **一句解释**：从客户画像、Brand Kit、海报和 30 天内容，到短视频与公司任务板，把 AI 变成一套能继续运行的营销系统。

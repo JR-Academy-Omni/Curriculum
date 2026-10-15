@@ -1,4 +1,4 @@
-# 小企业 AI 内容营销实战 — 课程设计
+# AI Marketing实战Bootcamp — 课程设计
 
 ```yaml
 surface_family: course

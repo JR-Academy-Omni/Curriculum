@@ -1,6 +1,6 @@
 # 13 小时讲师 Run Sheet
 
-**Course:** 小企业 AI 内容营销实战 / AI Content Marketing for Small Business
+**Course:** AI Marketing实战Bootcamp / AI Marketing实战Bootcamp
 **Format:** 13 × 60 minutes
 **Teaching rule:** 每小时必须形成一个可打开、可检查、可继续使用的文件。
 

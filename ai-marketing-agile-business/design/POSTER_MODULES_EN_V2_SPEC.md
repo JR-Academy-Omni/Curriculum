@@ -32,7 +32,7 @@ height: 1660
 ## 3. 信息层级
 
 1. JR Academy 官方 Logo 与 8 AI Modules 识别。
-2. AI Content Marketing for Small Business。
+2. AI Marketing实战Bootcamp。
 3. Brand → Content → Video → Operations 的工作流和四条阶段轨道。
 4. M01–M08 确定性文字。
 5. 九个关键媒体渠道。
