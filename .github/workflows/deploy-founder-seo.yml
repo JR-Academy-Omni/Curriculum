@@ -78,16 +78,31 @@ jobs:
           target: '/var/www/static/curriculum'
           strip_components: 1
           overwrite: true
-      - name: Verify public source commit and preview assets
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install public browser verification dependencies
+        run: bun install --frozen-lockfile
+      - id: public-chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+          install-dependencies: true
+      - name: Read public deployment in real Chrome
         env:
           EXPECTED_SHA: ${{ github.sha }}
+          CHROME_PATH: ${{ steps.public-chrome.outputs.chrome-path }}
+          SEO_BASE_URL: https://jracademy.ai/curriculum/lessons/founder-seo-eeat/
+          SEO_QA_OUT: seo-live-qa
         run: |
-          for attempt in {1..6}; do
-            curl --location --fail --silent --show-error --max-time 30 "https://jracademy.ai/curriculum/lessons/founder-seo-eeat/release-${EXPECTED_SHA}.json" -o /tmp/seo-public-release.json || true
-            if node -e "const p=require('/tmp/seo-public-release.json');if(p.commit!==process.env.EXPECTED_SHA)process.exit(1)" 2>/dev/null; then break; fi
-            sleep 3
-          done
-          node -e "const p=require('/tmp/seo-public-release.json');if(p.commit!==process.env.EXPECTED_SHA)throw Error('Public commit mismatch');console.log(p)"
-          curl --location --fail --silent --show-error --retry 3 "https://jracademy.ai/curriculum/lessons/founder-seo-eeat/preview.html?release=${EXPECTED_SHA}" | grep -F 'SEO / GEO 怎么做'
-          curl --location --fail --silent --show-error --retry 3 "https://jracademy.ai/curriculum/lessons/founder-seo-eeat/preview-assets/v2/cases.json?release=${EXPECTED_SHA}" -o /tmp/seo-public-cases.json
-          node -e "if(require('/tmp/seo-public-cases.json').length!==5)throw Error('Five cases required')"
+          curl --location --silent --show-error --max-time 30 --output /tmp/seo-curl-probe.json --write-out 'Public curl diagnostic: status=%{http_code} bytes=%{size_download} redirects=%{num_redirects}\n' "https://jracademy.ai/curriculum/lessons/founder-seo-eeat/release-${EXPECTED_SHA}.json" || true
+          node scripts/verify-seo-release.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: seo-course-public-browser-qa
+          path: seo-live-qa/
+          retention-days: 7
