@@ -1,0 +1,333 @@
+[
+  {
+    "id": "http",
+    "number": "01",
+    "topic": "技术 SEO · HTTP 状态",
+    "title": "标题写 404，\n为什么响应是 200？",
+    "short": "404文档怎么检查",
+    "page": 26,
+    "image": "../../cases/mdn-focus.png",
+    "alt": "MDN解释404状态的实际文档截图",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+    "sourceLabel": "MDN · HTTP 404 文档",
+    "context": "看到页面标题里有“404”，就把它记成网站死链？这节直接打开 MDN 文档，检查一次真实请求。",
+    "facts": [
+      [
+        "页面在讲什么",
+        "404 Not Found"
+      ],
+      [
+        "主文档返回什么",
+        "200 OK"
+      ]
+    ],
+    "narration": "先别根据页面写了什么来判断请求状态。MDN 这篇文章的任务，就是解释 404。文章正常存在，所以本次打开它的主文档返回 200；正文里的“404”是讨论对象。接着再看正文与 canonical，分别记录，不能把“返回 200”继续推导成“Google 已经收录”。",
+    "steps": [
+      [
+        "打开 Network",
+        "打开开发者工具后刷新页面，筛选 Doc，选中当前地址对应的主 Document。不要把某张图片或脚本的状态当成整页状态。"
+      ],
+      [
+        "核对三类信息",
+        "Headers 看 Status Code；Elements 看 H1 和正文；查找 rel=\"canonical\"，记录声明的 URL。"
+      ],
+      [
+        "写出有限的结论",
+        "本次响应 200，正文是状态说明，canonical 指向自己。Google 的索引和选定 canonical 仍需有权限的数据。"
+      ]
+    ],
+    "record": [
+      [
+        "对象",
+        "MDN HTTP 404 说明文档"
+      ],
+      [
+        "已确认",
+        "2026-10-18观察：主文档200；H1为404 Not Found；声明canonical为该文档URL。"
+      ],
+      [
+        "结论",
+        "这次请求正常返回解释404的文档，不按“标题有404”登记为失效链接。"
+      ],
+      [
+        "未确认",
+        "Google实际索引、查询排名、点击或流量。"
+      ],
+      [
+        "下一步",
+        "检查自己网站的实际失效URL；用同样方法区分响应、正文和索引。"
+      ]
+    ],
+    "takeaway": "页面主题 ≠ 请求状态；\n返回 200 ≠ 已被收录。",
+    "exercise": "An article titled “404 Not Found” returns HTTP 200. Should you classify it as a broken URL, and does 200 prove indexing?",
+    "answer": "No. Verify the response and the document’s purpose. This is a live reference article. HTTP 200 does not establish Google indexing.",
+    "bridge": "把同样的检查方法用到自己的页面：先找主Document，再写观察；没有账户数据的部分明确留为未验证。",
+    "material": "technical"
+  },
+  {
+    "id": "mobile",
+    "number": "02",
+    "topic": "技术 SEO · 移动阅读",
+    "title": "页面能打开，\n为什么还是读不了？",
+    "short": "手机阅读问题怎么查",
+    "page": 43,
+    "image": "../../cases/lovable-mobile-focus.png",
+    "alt": "390px视口实际观察：Lovable章节标题重叠且正文向右溢出",
+    "source": "https://jiangren.com.au/wiki/lovable-guide/01-what-is-lovable",
+    "sourceLabel": "JR Academy · Lovable 介绍章节",
+    "context": "同一张真实页面，响应是 200；切到 390px 手机视口，标题附近却叠字，正文也向右溢出。这是另外一类问题。",
+    "facts": [
+      [
+        "响应观察",
+        "200"
+      ],
+      [
+        "阅读观察",
+        "叠字 / 横向溢出"
+      ]
+    ],
+    "narration": "状态正常只能说明这次请求有响应，不能替你证明页面好读。先保存同一URL、语言与视口下的现象，再找具体容器。这里我们能确认看到叠字和正文超出屏幕；还不能确定是哪条CSS造成，也不能把它直接说成排名下降的原因。",
+    "steps": [
+      [
+        "固定复现条件",
+        "全新浏览器会话打开该URL，选择中文，设390px视口；记录语言选择前后和页面位置。"
+      ],
+      [
+        "找到发生问题的元素",
+        "选中重叠标题与溢出正文，检查父容器宽度、定位、换行、line-height及计算后的元素尺寸。"
+      ],
+      [
+        "修复后按原条件复查",
+        "修复由页面负责人另行实施。复查同URL、同语言、同视口，再用真实手机完成阅读与导航任务。"
+      ]
+    ],
+    "record": [
+      [
+        "对象",
+        "Lovable介绍章节，中文，390px浏览器视口"
+      ],
+      [
+        "实际现象",
+        "标题附近文字重叠，正文横向溢出；本次截图保留。"
+      ],
+      [
+        "优先任务",
+        "定位重叠/溢出的DOM元素与容器规则，保留修改前截图。"
+      ],
+      [
+        "完成条件",
+        "原视口和真机均能完整阅读标题与正文，底部导航不挡关键内容。"
+      ],
+      [
+        "当前状态",
+        "已记录问题；尚未定位根因，也未修改生产页面。"
+      ]
+    ],
+    "takeaway": "200 只回答“请求怎么样”；\n阅读问题要单独检查。",
+    "exercise": "A page returns 200 but its title overlaps at 390px. What can you report now, and what must wait?",
+    "answer": "Report the observed overlap, viewport, language and URL. Root cause, a completed fix and any ranking impact remain unverified.",
+    "bridge": "用你的核心页面走同一路径，把“能请求到”和“用户能完成阅读”分成两条验收记录。",
+    "material": "technical"
+  },
+  {
+    "id": "eeat",
+    "number": "03",
+    "topic": "E-E-A-T · 作者证据",
+    "title": "“参与过 Django”，\n这句话怎么核对？",
+    "short": "作者经历怎么核实",
+    "page": 52,
+    "image": "about-claim.png",
+    "alt": "Simon About页面关于参与Django的自述原文截图",
+    "source": "https://simonwillison.net/about/",
+    "sourceLabel": "Simon Willison · About",
+    "secondImage": "django-proof.png",
+    "secondSource": "https://docs.djangoproject.com/en/dev/faq/general/",
+    "secondLabel": "Django 官方 FAQ · 独立项目记录",
+    "context": "不从“作者很权威”开始。先挑一条具体经历：Simon 在 About 页介绍自己与 Django 的关系，再打开项目方资料核对。",
+    "facts": [
+      [
+        "作者自述",
+        "About 页面"
+      ],
+      [
+        "独立核对",
+        "Django 官方 FAQ"
+      ]
+    ],
+    "narration": "作者自己的介绍，先当成待核对的主张。Django 的官方 FAQ 记载了 Simon 与早期开发的关系，这条独立记录能支持相关贡献。两边对应后，我们得到了一个范围明确的证据，而不是给这个人所有话题都盖章。",
+    "steps": [
+      [
+        "把主张写具体",
+        "记录人物、项目、角色与原页面；避免只写“行业专家”这类无法对照的判断。"
+      ],
+      [
+        "查原始项目记录",
+        "从Django官方FAQ查看项目历史；另外可核对基金会核心贡献者名单，确认人物是否对应。"
+      ],
+      [
+        "把依据放在相关位置",
+        "在About对应经历后链接项目记录；文章作者回链About；项目页展示本人角色和实际产物。"
+      ]
+    ],
+    "record": [
+      [
+        "主张",
+        "Simon参与Django的早期创建与开发。"
+      ],
+      [
+        "本人来源",
+        "simonwillison.net/about/"
+      ],
+      [
+        "独立依据",
+        "Django官方FAQ的项目起源记录；基金会核心贡献者记录。"
+      ],
+      [
+        "支持范围",
+        "与Django项目相关的贡献；不外推其他经历或主题的专业性。"
+      ],
+      [
+        "不能据此说",
+        "Google给了E-E-A-T分数，或加上这些链接就一定提升排名。"
+      ]
+    ],
+    "takeaway": "一条具体经历，\n配一条能打开的独立依据。",
+    "exercise": "An author claims a Django contribution. What does the official project history support, and what does it not establish?",
+    "answer": "It can corroborate the relevant project contribution. It does not prove unrelated expertise, a Google E-E-A-T score or a causal ranking improvement.",
+    "bridge": "换成自己的一条经历：写清本人角色，附作品，再找可公开的独立记录。资料不足时收缩表述，不添加背书。",
+    "material": "personal"
+  },
+  {
+    "id": "personal",
+    "number": "04",
+    "topic": "个人网站 · 实施示例",
+    "title": "个人网站，\n先让作品说话。",
+    "short": "个人网站怎么展示能力",
+    "page": 54,
+    "image": "../../cases/simon-llm-focus.png",
+    "alt": "Simon的LLM编程经验文章实际页面截图",
+    "source": "https://simonwillison.net/2025/Mar/11/using-llms-for-code/",
+    "sourceLabel": "Simon · LLM 编程经验文章",
+    "secondImage": "article-methods.png",
+    "secondSource": "https://simonwillison.net/about/",
+    "secondLabel": "方法文章与作者页相互承接",
+    "context": "这篇个人站文章不只写“我会用AI”。它展开方法、实际示例和人需要接手的环节。读者能先判断内容，再了解作者。",
+    "facts": [
+      [
+        "看什么能力",
+        "可读的方法与示例"
+      ],
+      [
+        "怎么了解作者",
+        "作品 / 文章 → About"
+      ]
+    ],
+    "narration": "读者看到一个头衔，还不知道你具体能做什么。我们先打开一篇完整文章，看看它怎样解释方法与限制，再回到作者页核对经历。把这条路径用于自己的站，第一步是准备一项能打开的代表作品，而不是先堆满技能标签。",
+    "steps": [
+      [
+        "选一项真实产物",
+        "例如你完成的一份页面检查：保留URL、日期、观察、判断、限制与下一步，形成完整可读页面。"
+      ],
+      [
+        "在首页直接展示",
+        "把作品入口放在主题说明附近。读者不用注册，就能打开完整检查，而非只看作品封面。"
+      ],
+      [
+        "接回作者与依据",
+        "在作品页说明本人角色，链接About；About中的相关经历再指向真实项目或独立记录。"
+      ]
+    ],
+    "record": [
+      [
+        "示例作品",
+        "一份已填网站检查：直接复用本试看第01节的MDN记录。"
+      ],
+      [
+        "首页展示",
+        "代表作品：MDN文档检查——如何区分页面主题、HTTP响应与索引。"
+      ],
+      [
+        "作品详情",
+        "放完整操作、实际观察、判断依据、未验证项和复查动作。"
+      ],
+      [
+        "作者关联",
+        "如实署名，说明本人的检查与撰写角色；不暗示自己参与MDN项目。"
+      ],
+      [
+        "验收",
+        "请陌生读者打开后，说清查了什么、凭什么判断、谁做的、还有什么未知。"
+      ]
+    ],
+    "takeaway": "首页直接打开完整作品；\n作品说明角色，再链接作者。",
+    "exercise": "You inspected an MDN page but did not build MDN. How should your portfolio describe your role?",
+    "answer": "State that you performed and documented the inspection. Show the full analysis and its limits. Do not imply MDN employment, authorship or endorsement.",
+    "bridge": "这是可实施的个人站展示方案，不是伪造Lightman或学员履历。Simon仅用于学习内容组织方法，不能作为结构导致排名变化的证据。",
+    "material": "personal"
+  },
+  {
+    "id": "rewrite",
+    "number": "05",
+    "topic": "AI 运用 · 内容审核",
+    "title": "“真实案例”没依据，\n这一段怎么改？",
+    "short": "一段内容怎么真正改好",
+    "page": 62,
+    "image": "../../cases/lovable-focus.png",
+    "alt": "Lovable介绍章节实际页面，作为本节内容审核对象",
+    "source": "https://jiangren.com.au/wiki/lovable-guide/01-what-is-lovable",
+    "sourceLabel": "JR Academy · Lovable 介绍章节",
+    "context": "原文把一位未具名产品经理的经历写成“真实案例”，却没有可核对的对象和产物。先处理这个具体问题，再谈让AI润色。",
+    "facts": [
+      [
+        "原文问题",
+        "匿名故事被写成事实"
+      ],
+      [
+        "处理决定",
+        "改为明确的练习场景"
+      ]
+    ],
+    "narration": "遇到“真实案例”，先问：对象是谁、本人做了什么、产物在哪里、资料能否公开？材料不足，就不能靠AI把故事写得更像真的。这里把它改成明确的课堂练习，保留学习用途，同时写出要验证什么。下面给的是完整人工参考改稿，不冒充模型已经运行或官网已经修改。",
+    "steps": [
+      [
+        "把任务和材料交清楚",
+        "给出目标读者、原文、已有依据和不变的生产URL；要求模型列出需核对项，禁止编补用户经历。"
+      ],
+      [
+        "人工决定保留什么",
+        "本例没有对象与产物证据，因此不保留真实成果断言；如果后续有授权与来源，再按证据改回具体案例。"
+      ],
+      [
+        "交付可以使用的改稿",
+        "将段落标成课堂练习，说明具体任务、需要检查的权限与通知，以及不构成已完成成果。"
+      ]
+    ],
+    "record": [
+      [
+        "原文主张",
+        "一位未具名产品经理在一个下午完成反馈系统，被描述为“真实案例”。"
+      ],
+      [
+        "证据缺口",
+        "没有可公开核对的人物、作品、本人角色和实施记录。"
+      ],
+      [
+        "修改决定",
+        "删除真实成果断言，改为明确的教学练习，不添加新人物或效果。"
+      ],
+      [
+        "完整替换稿",
+        "课堂练习：以用户反馈收集为任务，列出提交表单、管理界面和通知流程。制作后，逐项验证数据能否保存、谁有权查看，以及通知是否真正送达。此处是练习要求，不代表已有用户完成，也不承诺一个下午可以做完。"
+      ],
+      [
+        "验收",
+        "读者能分清练习与真实成果；没有新增时间、效率、用户或成功效果断言。"
+      ]
+    ],
+    "takeaway": "没有证据的成果故事，\n不能靠 AI 润色成事实。",
+    "exercise": "An anonymous success story has no verifiable artifact. Produce a replacement without inventing a customer, time saving or result.",
+    "answer": "Label it as a teaching exercise. Specify the feedback-form task and the checks for storage, permissions and actual notification delivery. Do not claim that anyone has already completed it.",
+    "bridge": "同一原则也用于GEO：先让页面上的说法有依据，再观察AI回答引用了什么。不能用一次AI提及替代真实结果核验。",
+    "material": "content"
+  }
+]

@@ -1,0 +1,88 @@
+name: Deploy SEO GEO Course
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: deploy-seo-geo-course
+  cancel-in-progress: false
+jobs:
+  verify-build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install and build only SEO GEO course
+        working-directory: lessons/founder-seo-eeat
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+      - name: Assemble course and catalog
+        run: |
+          mkdir -p _seo_site/lessons/founder-seo-eeat
+          cp -r lessons/founder-seo-eeat/dist/. _seo_site/lessons/founder-seo-eeat/
+          cp lessons/founder-seo-eeat/*.md _seo_site/lessons/founder-seo-eeat/
+          cp lessons.html _seo_site/lessons.html
+          node -e "require('fs').writeFileSync('_seo_site/lessons/founder-seo-eeat/release.json',JSON.stringify({commit:process.env.GITHUB_SHA,run:process.env.GITHUB_SERVER_URL+'/'+process.env.GITHUB_REPOSITORY+'/actions/runs/'+process.env.GITHUB_RUN_ID,course:'founder-seo-eeat',builtAt:new Date().toISOString()},null,2))"
+          node scripts/check-curriculum-domain.mjs _seo_site
+      - name: Install browser QA dependencies
+        run: bun install --frozen-lockfile
+      - id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+          install-dependencies: true
+      - name: Verify built course at its production subpath
+        env:
+          CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          mkdir -p _seo_host
+          ln -s "$GITHUB_WORKSPACE/_seo_site" _seo_host/curriculum
+          python3 -m http.server 8808 --directory _seo_host > /tmp/seo-preview-server.log 2>&1 &
+          for attempt in {1..15}; do curl --fail --silent http://127.0.0.1:8808/curriculum/lessons.html >/dev/null && break; sleep 1; done
+          node scripts/verify-seo-release.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seo-course-publication
+          path: _seo_site/
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seo-course-build-qa
+          path: seo-release-qa/
+          retention-days: 7
+  deploy:
+    needs: verify-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: seo-course-publication
+          path: _seo_site
+      - name: Publish only SEO course and catalog
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: '_seo_site/*'
+          target: '/var/www/static/curriculum'
+          strip_components: 1
+          overwrite: true
+      - name: Verify public source commit and preview assets
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          curl --fail --silent --show-error 'https://jracademy.ai/curriculum/lessons/founder-seo-eeat/release.json' -o /tmp/seo-public-release.json
+          node -e "const p=require('/tmp/seo-public-release.json');if(p.commit!==process.env.EXPECTED_SHA)throw Error('Public commit mismatch');console.log(p)"
+          curl --fail --silent --show-error 'https://jracademy.ai/curriculum/lessons/founder-seo-eeat/preview.html' | grep -F 'SEO / GEO 怎么做'
+          curl --fail --silent --show-error 'https://jracademy.ai/curriculum/lessons/founder-seo-eeat/preview-assets/v2/cases.json' -o /tmp/seo-public-cases.json
+          node -e "if(require('/tmp/seo-public-cases.json').length!==5)throw Error('Five cases required')"
