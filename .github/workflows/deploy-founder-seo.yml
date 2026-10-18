@@ -30,6 +30,7 @@ jobs:
           cp lessons/founder-seo-eeat/*.md _seo_site/lessons/founder-seo-eeat/
           cp lessons.html _seo_site/lessons.html
           node -e "require('fs').writeFileSync('_seo_site/lessons/founder-seo-eeat/release.json',JSON.stringify({commit:process.env.GITHUB_SHA,run:process.env.GITHUB_SERVER_URL+'/'+process.env.GITHUB_REPOSITORY+'/actions/runs/'+process.env.GITHUB_RUN_ID,course:'founder-seo-eeat',builtAt:new Date().toISOString()},null,2))"
+          cp _seo_site/lessons/founder-seo-eeat/release.json "_seo_site/lessons/founder-seo-eeat/release-${GITHUB_SHA}.json"
           node scripts/check-curriculum-domain.mjs _seo_site
       - name: Install browser QA dependencies
         run: bun install --frozen-lockfile
@@ -81,8 +82,12 @@ jobs:
         env:
           EXPECTED_SHA: ${{ github.sha }}
         run: |
-          curl --fail --silent --show-error 'https://jracademy.ai/curriculum/lessons/founder-seo-eeat/release.json' -o /tmp/seo-public-release.json
+          for attempt in {1..6}; do
+            curl --location --fail --silent --show-error --max-time 30 "https://jracademy.ai/curriculum/lessons/founder-seo-eeat/release-${EXPECTED_SHA}.json" -o /tmp/seo-public-release.json || true
+            if node -e "const p=require('/tmp/seo-public-release.json');if(p.commit!==process.env.EXPECTED_SHA)process.exit(1)" 2>/dev/null; then break; fi
+            sleep 3
+          done
           node -e "const p=require('/tmp/seo-public-release.json');if(p.commit!==process.env.EXPECTED_SHA)throw Error('Public commit mismatch');console.log(p)"
-          curl --fail --silent --show-error 'https://jracademy.ai/curriculum/lessons/founder-seo-eeat/preview.html' | grep -F 'SEO / GEO 怎么做'
-          curl --fail --silent --show-error 'https://jracademy.ai/curriculum/lessons/founder-seo-eeat/preview-assets/v2/cases.json' -o /tmp/seo-public-cases.json
+          curl --location --fail --silent --show-error --retry 3 "https://jracademy.ai/curriculum/lessons/founder-seo-eeat/preview.html?release=${EXPECTED_SHA}" | grep -F 'SEO / GEO 怎么做'
+          curl --location --fail --silent --show-error --retry 3 "https://jracademy.ai/curriculum/lessons/founder-seo-eeat/preview-assets/v2/cases.json?release=${EXPECTED_SHA}" -o /tmp/seo-public-cases.json
           node -e "if(require('/tmp/seo-public-cases.json').length!==5)throw Error('Five cases required')"
