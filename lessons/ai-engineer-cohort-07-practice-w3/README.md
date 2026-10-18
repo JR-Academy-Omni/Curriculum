@@ -8,4 +8,4 @@
 
 方向键翻页，F全屏，V摄像头，`?page=N` 定位。
 
-状态：Local Build + Browser QA；未部署，真实 starter 未验收。
+状态：已部署并线上核验（2026-10-18，run 39110412564）；真实 starter 未验收。

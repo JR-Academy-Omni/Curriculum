@@ -44,3 +44,9 @@
 # 16页修订 · 2026-10-18
 
 - 删除原开发实操及之后全部页；类型检查通过。未部署，未提交，未触发 CI。
+
+# 线上发布与核验 · 2026-10-18
+
+- 提交 5c72e004（W3 19 页改版）与 91a4d411（修复 ai-builder 备份文件中的旧域名，原因是部署检查失败）。
+- GitHub Actions：run 39109711974 失败于 “Reject old curriculum URLs in publication output”（ai-builder 两个备份 JSON 含旧域名，与 W3 无关，未部署）；修复后 run 39110412564 成功，完成部署。
+- 线上回读：https://jracademy.ai/curriculum/lessons/ai-engineer-cohort-07-practice-w3/ 第 1–19 页页码 01/19–19/19、标题均为新版，?page=20 停在 19；无脚本错误，无 4xx/5xx；1600×900 逐页截图与本地一致。lessons.html 的 W3 卡片描述与页数为新版。
