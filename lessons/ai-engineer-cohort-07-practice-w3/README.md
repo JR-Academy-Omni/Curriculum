@@ -1,6 +1,6 @@
 # W3 · Rapid CareKind MVP Build with Claude Code
 
-独立 Talk Deck，21 页，120分钟，来源 C7P03。有自己的封面、目录、课堂练习、收尾与工作单。
+独立 Talk Deck，19 页，120分钟，来源 C7P03。有自己的封面、目录、课堂练习、收尾与工作单。
 
 `bun install --frozen-lockfile` / `bun run build`
 

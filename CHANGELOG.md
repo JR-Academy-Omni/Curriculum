@@ -1,3 +1,8 @@
+## 2026-10-18 · AI Engineer 第七期 W3 实践课件改版（19 页）
+
+- ai-engineer-cohort-07-practice-w3 改为 19 页，按 ADLC 五步（需求 → PRD → 开发 → 部署 → 反馈）重排：新增非领域专家补领域知识、按角色的用户画像（标为待验证假设）、产品逻辑顺序、本周范围；三个端的高层架构图、按功能的详细架构图、AI 部分架构图（Agent、RAG、记忆、Harness、模型路由、评估，依据 outline.json C7P04–C7P12）、Super Admin 的作用与功能、架构决策、王奶奶业务链示例；starter 核查、环境与 key、CI/CD 与 GitHub Actions workflow、先让 Claude 出计划。
+- 按 owner 意见删除原开发实操、版本、audit、出错、测试、演示与交付等抽象页，课件到开发准备结束，之后按工作单实操；技术栈改为 React + Vite + 独立 API（不用 Next.js）。学员工作单按 ADLC 五步重写，根目录与 public 副本一致。本地截图检查与单课件类型检查通过；大纲 C7P03 的库清单仍列 Next.js，未改。
+
 ## Local · 2026-10-18 · SEO / GEO通用基础课重整
 
 - founder-seo-eeat按完整授课大纲重整为81页八部分；移除放映路径中的Maple Slot，改用匠人、MDN、Simon与原PPT历史案例。
