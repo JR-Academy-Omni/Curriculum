@@ -1,3 +1,7 @@
+## 2026-10-19
+
+- 新增 AI Engineer W4 RAG Fundamentals 30页理论课课件（90分钟，线上互动只用聊天框）：第2页目录，全课分八个部分，每部分开始前一张过渡页回到目录；开场是架构分层测试与 W3 连线复习，定位用开放问题引出三种取知识方式；按离线、在线、组装作答、兜底、排错讲 ingestion、permission-aware retrieval、grounded answer、programmatic citation、四种回答状态与 no-answer，排错只讲 Retrieval / Generation 两层（recall@k vs faithfulness），两个聊天框检查点，后续地图放 Hybrid / Query rewrite / Rerank / RAGAS；每个 contract 课上只讲一个字段，完整字段、failure taxonomy 与面试检查放讲义（WORKSHEET），不布置作业；例子用 CareKind 虚构探视政策，外部资料只引用 Anthropic；附 PRD / RUNSHEET / SOURCE_MAP / QA，登记课件并补构建与复制步骤；Local，不部署（`curriculum/lessons/ai-engineer-cohort-07-w4-rag-fundamentals` / `lessons.html` / `deploy.yml`）
+
 ## 2026-10-18 · AI Engineer 第七期 W3 实践课件改版（19 页）
 
 - ai-engineer-cohort-07-practice-w3 改为 19 页，按 ADLC 五步（需求 → PRD → 开发 → 部署 → 反馈）重排：新增非领域专家补领域知识、按角色的用户画像（标为待验证假设）、产品逻辑顺序、本周范围；三个端的高层架构图、按功能的详细架构图、AI 部分架构图（Agent、RAG、记忆、Harness、模型路由、评估，依据 outline.json C7P04–C7P12）、Super Admin 的作用与功能、架构决策、王奶奶业务链示例；starter 核查、环境与 key、CI/CD 与 GitHub Actions workflow、先让 Claude 出计划。
