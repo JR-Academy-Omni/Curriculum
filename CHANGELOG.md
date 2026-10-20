@@ -26,7 +26,7 @@
 
 - Add a deployment-output step that injects the existing JR Academy analytics configuration into every assembled curriculum HTML page. The legacy property keeps continuity, while requests on `jracademy.ai` also report to `G-CKXMYNX5QL`.
 - Fail deployment before publication if any assembled HTML file is missing the analytics marker or cannot be injected because it has no closing `head` element.
-- Local source change only; not committed, pushed, or deployed, and no CI was triggered.
+- Source change committed for merge with deployment intentionally skipped; no CI was triggered.
 
 ## 2026-10-13 — AI风险治理与AI审计实战课
 
