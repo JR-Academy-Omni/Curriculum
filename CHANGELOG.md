@@ -16,6 +16,13 @@
 - 保留完整六部分教材、P1/P2/P3全文、成果档案与英文工作簿。26个素材归档、20个用于课堂；桌面/手机横屏逐页与打印、练习状态检查见课件QA。仅本地修改，未部署，未触发CI；未提交或推送。
 
 # Changelog
+
+## Local · 2026-10-20 · Curriculum GA4 coverage
+
+- Add a deployment-output step that injects the existing JR Academy analytics configuration into every assembled curriculum HTML page. The legacy property keeps continuity, while requests on `jracademy.ai` also report to `G-CKXMYNX5QL`.
+- Fail deployment before publication if any assembled HTML file is missing the analytics marker or cannot be injected because it has no closing `head` element.
+- Local source change only; not committed, pushed, or deployed, and no CI was triggered.
+
 ## 2026-10-13 — AI风险治理与AI审计实战课
 
 - 新增 `ai-audit-risk-bootcamp` 4周双语实战课，面向澳洲华人审计、会计、风险、合规从业者与相关专业学生。

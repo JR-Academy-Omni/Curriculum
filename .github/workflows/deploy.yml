@@ -1534,6 +1534,11 @@ jobs:
             fi
           done
 
+      - name: Add GA4 tracking to curriculum HTML
+        run: |
+          node scripts/inject-ga4.mjs _site
+          node scripts/inject-ga4.mjs _site --check
+
       # Clean up stale directories on server before deploy (SCP 只复制不删，改目录名后老数据会残留)
       # 一次性清掉已知的废弃 slug —— 新增 bootcamp 改名 / 删除时都在这里加一行
       - name: Clean stale directories on server
