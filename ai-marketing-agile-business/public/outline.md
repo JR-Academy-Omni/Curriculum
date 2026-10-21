@@ -1,37 +1,44 @@
+<!-- generated-from: outline.json · do not edit by hand -->
+
 # AI Marketing实战Bootcamp
 
-**English title**: AI Marketing实战Bootcamp
+> 🤖 本文件由 `lineage/build_lineage.py` 从同目录 `outline.json` 自动生成 —— **勿手改**。要改大纲改 `outline.json`，再重跑 `python3 lineage/build_lineage.py`。
+> （`outline.json` 是生产管线吃的机器权威；这份 `.md` 是给人读、给谱系当真相文档的统一格式。）
 
-> 数据源：`outline.json`。本文件用于快速评审，课程发布与同步以 JSON 为准。
+以学员自己的真实业务为对象，前三小时完成业务与客户 Brief、Brand Kit、视觉模板、海报和基础周边；随后用 AI 建立 30 天 Social Media 内容系统，制作平台原生图文和三条竖版短视频；最后把营销、销售、客户跟进和日常运营放进可执行的 AI 项目与公司任务管理系统。每个小时都以可检查的文件、视觉资产、视频或任务记录结束，不把聊天记录当成交付结果。
 
-前三小时用 AI 完成业务与客户 Brief、Brand Kit、视觉模板、海报和基础周边，再制作 Social Media 内容与短视频，最后建立 AI 项目与公司任务管理系统。
+**级别** 初级 · **类型** training · **时长** 13 个独立的 60 分钟单元；两天完成 · **总课时** 8 · **步骤** 32 · **直播** 8 · **互动 Lab** 0 · **预计学时** 13
 
-**形式**：13 个独立的 60 分钟成果单元，可按 3 / 5 / 6 / 8 / 13 小时组合，适合两天交付。
+**适合**：亲自负责获客和内容的小企业主、创业者、个人品牌经营者，以及需要独立完成 Social Media 与 Design 的 Marketing 从业者
 
-**适合**：亲自负责获客和内容的小企业主、创业者、个人品牌经营者，以及需要独立完成 Social Media 与 Design 的 Marketing 从业者。
+**目标**：以学员自己的业务为对象，完成品牌与设计基础、30 天社媒计划、可发布图文、三条短视频，以及可以管理营销、销售、客户跟进和日常运营的 AI 项目与公司任务系统。
 
-**课程铁律**：每个模块必须完成一个能打开、能检查、能发布、能打印、能交付或能继续复用的成品。只有聊天记录、概念报告或未经核验的 AI 输出不算完成。
+---
 
 ## Stage 1 — Business, Audience & Brand
 
-- M01 AI 业务、客户与品牌诊断：完成 Business & Audience Brief、Audience Signal Sheet 和 Brand Audit
-- M02 AI Brand Kit 与视觉模板：完成 Design Source of Truth、Brand Kit 和社媒模板
-- M03 AI 海报、印刷品与周边设计：完成 Key Visual、数字海报和一项实体延展
+_前三小时把真实业务、客户理解、品牌规则和第一批设计成品一次做完_
 
-## Stage 2 — Social Media Production System
+- **AI 业务、客户与品牌诊断** — 60 分钟 · 🔴直播
+- **AI Brand Kit 与视觉模板** — 60 分钟 · 🔴直播
+- **AI 海报、印刷品与周边设计** — 60 分钟 · 🔴直播
 
-- M04 AI 30 天 Social Media 内容系统：完成内容支柱、30 天日历、12 条文案和发布状态表
-- M05 AI 多平台原生内容生产：完成平台文案包、Carousel、单图、Story 和统一封面
+## Stage 2 — Social Media Production
+
+_用真实客户问题建立 30 天内容系统，并制作平台原生图文资产_
+
+- **AI 30 天 Social Media 内容系统** — 180 分钟 · 🔴直播
+- **AI 多平台原生内容生产** — 120 分钟 · 🔴直播
 
 ## Stage 3 — Short Video
 
-- M06 AI 可发布短视频制作：完成 3 套脚本与分镜、3 条竖版成片、字幕和封面
+_用三小时完成三条目标不同、可以播放和检查的竖版短视频_
+
+- **AI 可发布短视频制作** — 180 分钟 · 🔴直播
 
 ## Stage 4 — AI Project & Business Management
 
-- M07 AI 项目与公司任务管理：完成 Project Brief、优先级 Backlog、Company Task Board、负责人和完成标准
-- M08 AI 执行、跟进与复盘：完成 Action Tracker、项目周报、Review、下一轮任务和可复用管理 Workflow
+_最后两小时把 AI 变成项目协调与公司任务管理助手_
 
-## 暂停内容
-
-- 完整 Campaign Kit 暂不进入主课，包括 Campaign Brief、Campaign Master、邮件、落地页和完整渠道资产包；未来如有需求可单独开设专题。
+- **AI 项目与公司任务管理** — 60 分钟 · 🔴直播
+- **AI 执行、跟进与复盘** — 60 分钟 · 🔴直播
