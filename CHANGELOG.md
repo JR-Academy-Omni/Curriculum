@@ -1,3 +1,9 @@
+## 2026-10-22 · Enterprise AI Automation Bootcamp
+
+- 新增 5 课、22 步、600 分钟课程源，早鸟 899、正常 1,099；主要术语保留英文。
+- 保存完整大纲、招生稿、虚构案例、页面预览与验收；官网 Custom Page 随独立官网发布，静态站本次不全量部署。
+- MP4、真实定时运行与班次信息待确认；不宣称课程成果全部就绪。
+
 ## 2026-10-19
 
 - AI Engineer W4 RAG Fundamentals 课件已部署并线上回读（30页、讲师署名、Logo、字体与子路径资源正常，PRD / 讲师流程 / 讲义 / 来源表链接可打开），目录卡片改为「已部署」（`curriculum/lessons/ai-engineer-cohort-07-w4-rag-fundamentals` / `lessons.html`）
