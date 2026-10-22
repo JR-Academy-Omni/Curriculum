@@ -4,7 +4,7 @@ Enterprise AI Automation Bootcamp
 
 10 小时 · 5 节实操课 · 每节 120 分钟
 
-早鸟价 899／人｜正常价 1,099／人。币种待确认。
+早鸟价 A$899／人｜正常价 A$1,099／人。价格为澳元。
 
 用同一家企业的资料贯穿 5 节实操课：建立 AI Workspace，完成基础 VI、Design System 与 Website，制作营销 Content Pack 和企业视频，再将每周营销工作整理成可重复执行的 Automation Workflow。
 
@@ -167,7 +167,7 @@ Enterprise AI Automation Bootcamp
 
 ## 未确认事项
 
-- 币种及税费口径
+- 税费口径
 - 日期、地点、授课形式和讲师
 - 早鸟截止条件及报名入口
 - 软件费用、回放和答疑包含范围

@@ -6,7 +6,7 @@
 
 使用 Codex 和同一份企业事实，让老板、Marketing、运营、团队负责人和独立顾问完成具体企业成果，并学会重复执行与审核。受众为课程设计假设，尚无访谈或报名验证。
 
-owner 已确认五课及 10 小时范围、早鸟 899、正常 1,099、主要专业术语保留英文。课程结构详见唯一数据源 `public/outline.json`，本文件不维护第二套逐课时长。
+owner 已确认五课及 10 小时范围、早鸟 A$899、正常 A$1,099、主要专业术语保留英文。课程结构详见唯一数据源 `public/outline.json`，本文件不维护第二套逐课时长。
 
 ## 输入、操作与结果
 
@@ -18,7 +18,7 @@ owner 已确认五课及 10 小时范围、早鸟 899、正常 1,099、主要专
 
 ## 商业与交付
 
-价格存于 `program.tuition=1099`、`program.promoTuition=899`。`_meta.currency=null`，不写 AUD / CNY 或货币符号。未确定日期和讲师，不创建 cohortStatus=RECRUITING，不造 production ID。报名、支付、网站正式上线和第三方平台连接不在本次范围。
+价格存于 `program.tuition=1099`、`program.promoTuition=899`。`_meta.currency="AUD"`，显示 A$899 / A$1,099。未确定日期和讲师，不创建 cohortStatus=RECRUITING，不造 production ID。报名、支付、网站正式上线和第三方平台连接不在本次范围。
 
 课程说明、详细大纲、各课、学习计划由 JSON 确定性生成，包含教学／实操／成果与 Review。固定 5 节；不挂平台 Lab，也不增加额外计费课时。教学中现场实操为 SCENARIO / PROJECT，不冒充现有平台 InteractiveLab。
 
