@@ -34,11 +34,11 @@ def page(filename, title, body):
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>{e(title)}｜{e(D['name'])}</title>
 <meta name="description" content="{e(D['description'])}"><link rel="stylesheet" href="styles.css"></head>
-<body><a class="skip" href="#main">跳到正文</a><div class="local-banner">Local · 课程方案预览 · 未开放报名 · 币种和开课安排待确认</div>
+<body><a class="skip" href="#main">跳到正文</a><div class="local-banner">Local · 课程方案预览 · 未开放报名 · 价格为澳元 · 开课安排待确认</div>
 <header class="header"><div class="brand"><img src="assets/logo-en-white.svg" alt="JR Academy" width="160" height="48"></div>
 <p class="eyebrow">{e(D['name_en'])}</p><h1>{e(D['name'])}</h1><p class="sub">{e(D['timeLength'])}</p>
-<div class="price-row"><strong>早鸟价 {D['program']['promoTuition']:,}／人</strong><span>正常价 {D['program']['tuition']:,}／人</span></div>
-<p class="price-note">价格数字已确认；币种、税费口径和早鸟截止条件待确认。</p><nav class="nav" aria-label="课程导航">{nav_html}</nav></header>
+<div class="price-row"><strong>早鸟价 A${D['program']['promoTuition']:,}／人</strong><span>正常价 A${D['program']['tuition']:,}／人</span></div>
+<p class="price-note">价格为澳元；税费口径和早鸟截止条件待确认。</p><nav class="nav" aria-label="课程导航">{nav_html}</nav></header>
 <main class="c" id="main"><h2 class="page-title">{e(title)}</h2>{body}</main>
 <footer class="footer">JR Academy · {e(D['_meta']['revision'])} · 本地课程源文件，未同步 production、未部署。<br>示例为虚构、预生成；完整视频与真实定时运行验收待补齐。</footer></body></html>'''
     (PUBLIC / filename).write_text(html, encoding='utf-8')
@@ -136,23 +136,34 @@ details{border-color:var(--dark)}details summary{font-size:16px;padding:16px}det
 for filename in ['logo-en-white.svg', 'logo-official-black.svg']:
     shutil.copyfile(ROOT.parent.parent / 'jr-academy-brand/assets/logo' / filename, PUBLIC / 'assets' / filename)
 
-poster = '<div class="poster-wrap"><div id="poster" class="poster"><div class="brand"><img src="assets/logo-official-black.svg" alt="JR Academy"></div><p>Enterprise AI Automation Bootcamp</p><h1>企业 AI<br>自动化实战营</h1><h2>10 小时 · 5 节实操课</h2><p>从企业资料到品牌官网、营销内容、视频与重复任务。</p>'
-poster += ''.join(f'<div class="poster-row">{i:02d} · {e(l["title"])}<small>{e(" / ".join(l["deliverables"]))}</small></div>' for i, l in enumerate(LESSONS, 1))
-poster += '<div class="poster-price"><strong>早鸟价 899／人</strong><span>正常价 1,099／人 · 早鸟优惠 200</span></div><p>币种、开课日期与授课安排待确认。<br>Local 招生文案稿 · 未开放报名。</p></div></div><p><a class="action-btn primary" href="poster.png" download="企业AI自动化实战营-招生海报.png">下载 PNG</a></p>'
-page('poster.html', '招生海报 · 本地文案稿', poster)
+poster = (ROOT / 'poster-template.html').read_text().replace('{{EARLY}}', f"{D['program']['promoTuition']:,}").replace('{{STANDARD}}', f"{D['program']['tuition']:,}")
+(PUBLIC / 'poster.html').write_text(poster, encoding='utf-8')
 
-outline_md = f'# {D["name"]}\n\n{D["name_en"]}\n\n{D["timeLength"]}\n\n早鸟价 899／人｜正常价 1,099／人。币种待确认。\n\n{D["description"]}\n\n'
+outline_md = f'# {D["name"]}\n\n{D["name_en"]}\n\n{D["timeLength"]}\n\n早鸟价 A$899／人｜正常价 A$1,099／人。价格为澳元。\n\n{D["description"]}\n\n'
 for l in LESSONS:
     outline_md += f'## {l["code"]} · {l["title"]}（120 分钟）\n\n{l["description"]}\n\n### 学习目标\n\n' + ''.join(f'- {x}\n' for x in l['objectives'])
     outline_md += '\n### 教学安排\n\n' + ''.join(f'- {s["duration"]} 分钟｜{s["title"]}：{s["description"]}\n' for s in l['steps'])
     outline_md += f'\n### 课堂实操\n\n{l["practice"]}\n\n### 成果整理\n\n{l["assignment"]}\n\n### 验收\n\n' + ''.join(f'- {x}\n' for x in l['acceptance']) + '\n'
 outline_md += '## 未确认事项\n\n' + ''.join(f'- {x}\n' for x in D['_meta']['pending'])
 (ROOT / 'COURSE_OUTLINE.md').write_text(outline_md, encoding='utf-8')
-marketing = f'# 招生介绍｜{D["name"]}\n\n{D["name_en"]}\n\n**10 小时 · 5 节课 · 每节 2 小时**\n\n**早鸟价 899／人｜正常价 1,099／人｜早鸟优惠 200**\n\n币种及早鸟截止条件待确认。\n\n## 企业日常工作，从同一份资料开始\n\n企业需要整理资料、更新官网、制作营销内容、介绍产品，并安排下一周的工作。课程以 Codex 为核心实操工具，让你从企业 Source of Truth 出发，逐步完成具体作品，再将重复工作整理成 Automation Workflow。\n\n## 五节课，五组连贯成果\n\n'
+marketing = f'# 招生介绍｜{D["name"]}\n\n{D["name_en"]}\n\n**10 小时 · 5 节课 · 每节 2 小时**\n\n**早鸟价 A$899／人｜正常价 A$1,099／人｜早鸟优惠 A$200**\n\n价格为澳元；早鸟截止条件待确认。\n\n## 企业日常工作，从同一份资料开始\n\n企业需要整理资料、更新官网、制作营销内容、介绍产品，并安排下一周的工作。课程以 Codex 为核心实操工具，让你从企业 Source of Truth 出发，逐步完成具体作品，再将重复工作整理成 Automation Workflow。\n\n## 五节课，五组连贯成果\n\n'
 marketing += ''.join(f'- **{l["title"]}**：{ "；".join(l["deliverables"])}。\n' for l in LESSONS)
-marketing += '\n## 适合谁\n\n' + D['suitable'] + '\n\n## 怎么上课\n\n每节先展示完整成果，再拆解方法、跟做实操、修改检查。使用脱敏企业资料或统一虚构案例；核心版本在课堂内完成，后续可继续完善。\n\n## 课程范围\n\n' + D['prerequisiteknowledge'] + '\n\n网站以单页原型为范围；视频使用预置模板与已有素材；重复任务保留 Human Review。复杂系统集成、正式上线和深度定制另行评估。不承诺就业、收入、固定节省工时或无人值守运营。\n\n## 报名信息\n\n- 早鸟价：899／人。\n- 正常价：1,099／人。\n- 币种、税费、早鸟期限、日期、讲师、地点、授课形式和报名入口：待确认。\n- 软件订阅、回放、课后答疑及第三方费用的包含范围：待确认。\n\n## 招生 FAQ\n\n'
+marketing += '\n## 适合谁\n\n' + D['suitable'] + '\n\n## 怎么上课\n\n每节先展示完整成果，再拆解方法、跟做实操、修改检查。使用脱敏企业资料或统一虚构案例；核心版本在课堂内完成，后续可继续完善。\n\n## 课程范围\n\n' + D['prerequisiteknowledge'] + '\n\n网站以单页原型为范围；视频使用预置模板与已有素材；重复任务保留 Human Review。复杂系统集成、正式上线和深度定制另行评估。不承诺就业、收入、固定节省工时或无人值守运营。\n\n## 报名信息\n\n- 早鸟价：A$899／人。\n- 正常价：A$1,099／人。\n- 税费、早鸟期限、日期、讲师、地点、授课形式和报名入口：待确认。\n- 软件订阅、回放、课后答疑及第三方费用的包含范围：待确认。\n\n## 招生 FAQ\n\n'
 marketing += ''.join(f'### {f["question"]}\n\n{f["answer"]}\n\n' for f in D['faqs'])
 marketing += '## 当前发布状态\n\n本地招生稿，未开放报名。成果示例为虚构、预生成；完整 MP4、真实定时运行与正式产品内展示入口尚未验收，成果 Demo 未完成。\n'
 (ROOT / 'ENROLLMENT.md').write_text(marketing, encoding='utf-8')
 (PUBLIC / 'pages.json').write_text(json.dumps(D['curriculumPages'], ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 print(f'Rendered {len(LESSONS)} lessons / {sum(l["duration"] for l in LESSONS)} minutes from outline.json')
+
+# The actual website prototype is the course's readable output, not a mock UI.
+website_path = PUBLIC / 'example-website.html'
+website_html = website_path.read_text()
+website_html = website_html.replace('<body>', '<body class="website-mode">')
+website_html = website_html.replace('<main class="c"', '<main class="c website-content"')
+website_css = '''
+.website-mode{background:#fff1e7;color:#10162f}.website-mode .header{display:none}.website-mode .local-banner{background:#10162f;color:white;border:0;font-size:12px;padding:12px}.website-mode .local-banner:after{content:' · 拾序工作室 / 虚构教学案例'}
+.website-content{max-width:1080px;padding:56px 36px;margin:auto}.website-content .page-title{font-size:15px;letter-spacing:2px;margin:0 0 24px;color:#6366f1}.website-content .box{border:1px solid #e1d4ce;border-radius:24px;box-shadow:none;margin-bottom:24px;overflow:hidden;background:white}.website-content .box-h{background:transparent;color:#10162f;padding:28px 32px 8px;border:0;font-size:27px}.website-content .box:first-of-type{background:#10162f;color:#fff1e7}.website-content .box:first-of-type .box-h{color:#fff1e7;font-size:42px;line-height:1.3;padding:38px 36px 12px;max-width:740px}.website-content .section-body{padding:22px 32px 30px}.website-content .box:first-of-type .section-body{padding:16px 36px 32px;max-width:850px}.website-content .box:first-of-type .action-btn{background:#6366f1;color:white;border:0;box-shadow:none;border-radius:12px}.website-content .section-body h3{font-size:19px}.website-content p{font-size:15px;line-height:1.85}.website-mode .footer{background:#10162f;color:white}.website-content .action-btn{border:0;border-radius:12px;box-shadow:none}
+@media(max-width:600px){.website-content{padding:32px 18px}.website-content .box:first-of-type .box-h{font-size:28px;padding:26px 22px 8px}.website-content .box-h{font-size:23px;padding:24px 22px 8px}.website-content .section-body,.website-content .box:first-of-type .section-body{padding:18px 22px 24px}}
+'''
+website_html = website_html.replace('</head>', '<style>' + website_css + '</style></head>')
+website_path.write_text(website_html)

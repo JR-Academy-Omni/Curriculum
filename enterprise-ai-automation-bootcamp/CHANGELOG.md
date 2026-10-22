@@ -1,3 +1,10 @@
+# 2026-10-22 · AUD pricing and course presentation (Local)
+
+- Owner confirmed currency AUD: early bird A$899, standard A$1,099. Synced outline, enrollment copy, bilingual custom page and static previews.
+- Added a 1242 × 1660 course poster with the official logo and an actual website-prototype screenshot.
+- Improved the hero, navigable five-lesson pathway, lesson cards and responsive result preview.
+- Local browser checks only. No commit, push, CI or deployment in this revision.
+
 # Changelog
 
 ## 2026-10-22 · Local v1
