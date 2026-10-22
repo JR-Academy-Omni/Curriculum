@@ -1,3 +1,9 @@
+## 2026-10-22 · Full Image Model course poster
+
+- Replace the course poster with a model-generated composition including all visible Chinese/English course text, pricing and layout. Overlay only the original official JR Academy logo.
+- Preserve A$899 / A$1,099, the existing poster URLs and all course scope. Responsive poster page and downloadable 1242×1660 PNG are released together.
+- Owner explicitly authorised deployment; use the existing remote Actions pipeline.
+
 # 2026-10-22 · AUD pricing and course presentation (Local)
 
 - Owner confirmed currency AUD: early bird A$899, standard A$1,099. Synced outline, enrollment copy, bilingual custom page and static previews.
