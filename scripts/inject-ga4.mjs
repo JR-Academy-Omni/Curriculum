@@ -32,6 +32,7 @@ await walk(root);
 
 const missing = [];
 let injected = 0;
+let injectedWithoutHead = 0;
 
 for (const path of htmlFiles) {
   const html = await readFile(path, 'utf8');
@@ -44,21 +45,23 @@ for (const path of htmlFiles) {
   }
 
   const closingHead = html.search(/<\/head\s*>/i);
-  if (closingHead === -1) {
-    missing.push(path);
-    continue;
+  let updated;
+  if (closingHead !== -1) {
+    updated = `${html.slice(0, closingHead)}${analyticsSnippet}\n  ${html.slice(closingHead)}`;
+  } else {
+    const openingHtml = html.match(/<html\b[^>]*>/i);
+    const insertionPoint = openingHtml ? openingHtml.index + openingHtml[0].length : 0;
+    updated = `${html.slice(0, insertionPoint)}${analyticsSnippet}\n${html.slice(insertionPoint)}`;
+    injectedWithoutHead += 1;
   }
 
-  const updated = `${html.slice(0, closingHead)}${analyticsSnippet}\n  ${html.slice(closingHead)}`;
   await writeFile(path, updated);
   injected += 1;
 }
 
 if (missing.length) {
   console.error(
-    checkOnly
-      ? 'Curriculum HTML files missing GA4:'
-      : 'Curriculum HTML files could not receive GA4 because </head> is missing:',
+    'Curriculum HTML files missing GA4:',
     missing,
   );
   process.exit(1);
@@ -67,5 +70,5 @@ if (missing.length) {
 console.log(
   checkOnly
     ? `Curriculum GA4 check passed: ${htmlFiles.length} HTML files`
-    : `Curriculum GA4 injected into ${injected} of ${htmlFiles.length} HTML files`,
+    : `Curriculum GA4 injected into ${injected} of ${htmlFiles.length} HTML files (${injectedWithoutHead} without </head>)`,
 );

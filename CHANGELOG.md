@@ -28,6 +28,10 @@
 
 # Changelog
 
+## 2026-10-23
+
+- 修复 GA4 发布产物注入对无 `head` 历史 HTML 的兼容：优先写入 `head` 末尾，无 `head` 时写入 `html` 开始标签后，并继续校验所有 Curriculum HTML 都含 GA4 标记（`Curriculum GA4`）。
+
 ## Local · 2026-10-20 · Curriculum GA4 coverage
 
 - Add a deployment-output step that injects the existing JR Academy analytics configuration into every assembled curriculum HTML page. The legacy property keeps continuity, while requests on `jracademy.ai` also report to `G-CKXMYNX5QL`.
