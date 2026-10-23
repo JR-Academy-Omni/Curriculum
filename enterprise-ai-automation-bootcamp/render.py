@@ -8,6 +8,8 @@ ROOT = Path(__file__).resolve().parent
 PUBLIC = ROOT / 'public'
 D = json.loads((PUBLIC / 'outline.json').read_text())
 C = json.loads((PUBLIC / 'case-study.json').read_text())
+from render_downloads import render as render_downloads
+render_downloads(PUBLIC)
 LESSONS = [lesson for phase in D['phases'] for lesson in phase['lessons']]
 
 
@@ -73,29 +75,11 @@ plan += section('最终验收', ul([f'{l["code"]}：' + '；'.join(l['acceptance
 plan += section('日期与授课服务', '<p>5 次课的具体日期、间隔、授课形式与讲师待确认。当前不承诺回放期限、证书、就业、收入或固定节省工时。</p>')
 page('learning-plan.html', '学习计划', plan)
 
-examples = section('示例性质与完成状态', f'<p>{e(C["label"])}</p><p>以下为本课程内容示例，直接展示完整可读输出；没有执行模型、发布或真实业务。公开预览不能替代正式产品与课堂环境中的完整验收。L04 的完整视频成果、L05 的真实定时触发均待补齐。</p>')
-examples += section('L01 · 企业 Source of Truth 与 AI Assistant', '<h3>拾序工作室</h3>' + ''.join(f'<p><strong>{e(k)}</strong>：{e(v)}</p>' for k, v in C['business'].items()) + '<h3>AI Assistant 工作说明</h3>' + ''.join(f'<p><strong>{e(k)}</strong>：{e(v)}</p>' for k, v in C['assistant'].items()), 'result-L01')
-swatches = ''.join(f'<div class="swatch" style="border-left:18px solid {color["value"]}"><strong>{e(color["name"])}</strong><br>{e(color["value"])}</div>' for color in C['brand']['colors'])
-examples += section('L02 · 基础 VI 与 Design System', paras(C['brand']['concept']) + f'<div class="grid3">{swatches}</div>' + ul([C['brand'][k] for k in ['typography', 'spacing', 'components', 'logo']]) + '<p><a class="action-btn primary" href="example-website.html">打开完整企业网站原型</a></p>', 'result-L02')
-content = '<h3>本周选题与依据</h3>' + ''.join(f'<h4>{e(t["title"])}</h4><p>{e(t["source"])} · {e(t["channel"])} · {e(t["goal"])}</p>' for t in C['contentPack']['topics'])
-content += ''.join(f'<article class="draft"><span class="pill">{e(t["channel"])} · {e(t["status"])}</span><h3>{e(t["title"])}</h3>{paras(t["body"])}<p class="source">来源：{e("；".join(t["source"]))}</p></article>' for t in C['contentPack']['drafts'])
-content += '<h3>一周 Content Calendar</h3>' + ul(C['contentPack']['calendar']) + '<h3>Review Checklist</h3>' + ul(C['contentPack']['review'])
-examples += section('L03 · 完整多渠道 Content Pack', content, 'result-L03')
-examples += section('L04 · Script / Storyboard（MP4 待制作）', '<p class="notice">这是分镜资料，不是完整视频成果；L04 成果 Demo 未完成。</p>' + paras(C['video']['goal']) + ''.join(f'<div class="draft"><strong>{e(s["seconds"])} 秒</strong><p>画面：{e(s["visual"])}</p><p>字幕：{e(s["caption"])}</p></div>' for s in C['video']['shots']), 'result-L04')
-workflow = '<h3>任务说明</h3>' + paras(C['workflow']['task']) + '<h3>输入：第 1 周与第 2 周</h3>' + ul([x['id'] + '：' + x['fact'] for x in C['week1'] + C['week2']])
-workflow += '<h3>本周工作包</h3>' + paras(C['workflow']['output']) + '<p><a href="#result-L03">阅读上方完整选题与草稿</a></p><h3>完整工作简报</h3>' + paras(C['workflow']['report'])
-workflow += '<h3>Schedule Contract</h3>' + paras(C['workflow']['schedule']) + paras(C['workflow']['runtime']) + '<h3>异常输入与预期处理</h3>' + ul([x['input'] + ' → ' + x['expected'] for x in C['workflow']['exceptions']]) + '<h3>操作 SOP</h3>' + ul(C['workflow']['sop'])
-examples += section('L05 · 每周营销工作包与 Workflow', workflow, 'result-L05')
-page('examples.html', '完整预生成成果示例', examples)
-
-w = C['website']
-website = section(w['headline'], paras(w['intro']) + '<p><a class="action-btn primary" href="#consult">查看沟通准备事项</a></p>')
-website += section('服务与交付范围', ''.join(f'<h3>{e(s["title"])}</h3><p>{e(s["body"])}</p>' for s in w['services']) + paras(C['business']['exclusions']))
-website += section('完整成果案例 · 虚构', paras(w['example']))
-website += section('合作流程', ul(w['process']))
-website += section('咨询前准备', paras(w['contact']) + '<button class="action-btn primary" type="button" id="consult-button">体验咨询入口</button><p id="consult-feedback" role="status" hidden>这是隔离示例。请准备企业介绍、目标客户和已有素材；未收集或发送任何个人资料。</p>', 'consult')
-website += '<script>document.getElementById("consult-button").addEventListener("click",()=>{document.getElementById("consult-feedback").hidden=false;});</script>'
-page('example-website.html', '拾序工作室 · 完整虚构网站原型', website)
+# Works use dedicated editable HTML shells and deterministic local data.
+# Keep these routes stable when regenerating the curriculum projection.
+for target in ['examples.html', 'example-website.html']:
+    source = ROOT / target.replace('.html', '-template.html')
+    (PUBLIC / target).write_text(source.read_text(), encoding='utf-8')
 
 internal = section('本地创建状态', '<p>课程结构和价格已按 owner 确认落盘，5 课、22 步、600 分钟。未创建 Training / Program，没有 production ID。</p>' + ul(D['_meta']['pending']))
 internal += section('OPC 取材与复用', ul([x['path'] + '：' + x['use'] for x in D['_meta']['sources'] if 'path' in x]))
@@ -154,16 +138,3 @@ marketing += '## 当前发布状态\n\n本地招生稿，未开放报名。成�
 (ROOT / 'ENROLLMENT.md').write_text(marketing, encoding='utf-8')
 (PUBLIC / 'pages.json').write_text(json.dumps(D['curriculumPages'], ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 print(f'Rendered {len(LESSONS)} lessons / {sum(l["duration"] for l in LESSONS)} minutes from outline.json')
-
-# The actual website prototype is the course's readable output, not a mock UI.
-website_path = PUBLIC / 'example-website.html'
-website_html = website_path.read_text()
-website_html = website_html.replace('<body>', '<body class="website-mode">')
-website_html = website_html.replace('<main class="c"', '<main class="c website-content"')
-website_css = '''
-.website-mode{background:#fff1e7;color:#10162f}.website-mode .header{display:none}.website-mode .local-banner{background:#10162f;color:white;border:0;font-size:12px;padding:12px}.website-mode .local-banner:after{content:' · 拾序工作室 / 虚构教学案例'}
-.website-content{max-width:1080px;padding:56px 36px;margin:auto}.website-content .page-title{font-size:15px;letter-spacing:2px;margin:0 0 24px;color:#6366f1}.website-content .box{border:1px solid #e1d4ce;border-radius:24px;box-shadow:none;margin-bottom:24px;overflow:hidden;background:white}.website-content .box-h{background:transparent;color:#10162f;padding:28px 32px 8px;border:0;font-size:27px}.website-content .box:first-of-type{background:#10162f;color:#fff1e7}.website-content .box:first-of-type .box-h{color:#fff1e7;font-size:42px;line-height:1.3;padding:38px 36px 12px;max-width:740px}.website-content .section-body{padding:22px 32px 30px}.website-content .box:first-of-type .section-body{padding:16px 36px 32px;max-width:850px}.website-content .box:first-of-type .action-btn{background:#6366f1;color:white;border:0;box-shadow:none;border-radius:12px}.website-content .section-body h3{font-size:19px}.website-content p{font-size:15px;line-height:1.85}.website-mode .footer{background:#10162f;color:white}.website-content .action-btn{border:0;border-radius:12px;box-shadow:none}
-@media(max-width:600px){.website-content{padding:32px 18px}.website-content .box:first-of-type .box-h{font-size:28px;padding:26px 22px 8px}.website-content .box-h{font-size:23px;padding:24px 22px 8px}.website-content .section-body,.website-content .box:first-of-type .section-body{padding:18px 22px 24px}}
-'''
-website_html = website_html.replace('</head>', '<style>' + website_css + '</style></head>')
-website_path.write_text(website_html)

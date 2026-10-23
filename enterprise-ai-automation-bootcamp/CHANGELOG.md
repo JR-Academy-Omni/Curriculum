@@ -1,3 +1,37 @@
+## 2026-10-23 · Classroom promotional imagery (Local)
+
+- Add three Image Model classroom concepts covering demonstration, hands-on practice and review; visibly distinguish them from real class photographs.
+- Add a responsive classroom section and navigation entry while preserving complete work samples, original partner marks, AUD pricing and course scope.
+- Export three original-logo 1600×900 promotional images plus self-contained editable HTML and source records to Downloads. Add individual and bundle downloads.
+- Local only; no commit, push, CI, deployment or social publishing.
+
+## 2026-10-23 · Course work detail audit (Local)
+
+- Fix standalone portfolio anchors switching to the wrong work, embedded anchor offsets under navigation, direct output-link positioning and narrow expanded brand-guide overflow.
+- Unify weekly rationale, handoff, review and schedule text across the page and downloadable work packs; complete omitted English lesson objectives and FAQs.
+- Review existing works, keyboard navigation, links, prices, lesson timing, disabled enrolment and recovery states. Keep MP4, actual schedule and unconfirmed cohort details explicitly incomplete.
+- Local only; no commit, push, CI or deployment.
+
+## 2026-10-23 · Polish complete course work samples (Local)
+
+- Add two built-in Image Model concept scenes for the fictional coffee brand, with provenance and no generated JR/partner marks.
+- Expand the assistant to four complete task outputs; add clipboard and deterministic Markdown downloads. Build a four-slide marketing set and channel-specific reading layouts.
+- Add a downloadable Mini Brand System and two visually distinct weekly packs; keep fictional/pre-generated disclosures and video/scheduling gaps.
+- Preserve pricing, course scope and live URLs. Local only; no commit, push, CI or deployment.
+
+## 2026-10-23 · Rebuild course works around Shixu Coffee (Local)
+
+- Replace the abstract company-document case with a coherent fictional coffee brand: product artwork, brand website, a local product picker and complete assistant replies.
+- Provide four full channel drafts, five inspectable storyboard shots and two distinct weeks of complete drafts and handoff notes.
+- Enlarge the course outcome view, remove nested document scrolling and sync deterministic public assets with curriculum truth. Keep existing URLs, pricing and five lessons.
+- No model API, real order, message, publication or scheduled task. No MP4 claim. Local changes only; no commit, push, CI or deployment.
+
+## 2026-10-22 · Remove poster footer fine print (Local)
+
+- Remove the complete bottom-right fine-print block from the Image Model poster, including pending dates, concept/tax notes and unverified Demo wording.
+- Remove the corresponding explanatory note below the poster and pending-date wording in the image alternative text.
+- Retain the course copy, AUD prices, official logo, CTA and existing URLs. No CI or deployment triggered.
+
 ## 2026-10-22 · Full Image Model course poster
 
 - Replace the course poster with a model-generated composition including all visible Chinese/English course text, pricing and layout. Overlay only the original official JR Academy logo.
