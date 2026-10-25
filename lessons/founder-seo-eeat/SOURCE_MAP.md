@@ -1,49 +1,68 @@
-# 独立案例素材与授课审校 · 2026-10-18
+# 来源与素材映射 · 2026-10-18
 
-当前62页、六部分、Maple Slot完整案例保持。26个独立PNG对象归档，20个按任务用于课堂（包括切换状态），6个因低清正文或知识点不匹配撤下主讲画面。旧PPT整页不出现在放映/打印或放大链接里。原始页只保存在research/source-slides供溯源。
+当前页面数据：src/data/course-v2.json；每页source对应src/data/course-sources.ts。逐页设计见PRD，原80页完整保留/更新对应见public/materials/course-outline.md。
 
-## 素材清单
+- 原稿对象：research/extracted-assets.json，26个确定性裁切对象；public/figures/。不直接播放旧PPT整页。
+- 当前网页观察：research/public-page-observations-20261018.json（状态、标题、canonical）；research/lovable-browser-20261018.json（语言选择后DOM）；research/lovable-mobile-20261018.png。
+- 当前局部图：research/current-case-crops.json，包含裁切区域、来源及哈希。public/cases/中的网页截图均为真实页面；正文重排与操作教具分别标明。
+- 当前测量缺口：没有GSC/GA4账户结果、没有当前PSI分数、没有实际AI搜索回答记录、没有真机结果。
+- 个人网站案例只说明材料组织方式；不推断Google排名收益。
+- 历史图表不外推当前数字；FID→INP；FAQ富结果状态按官方更新；不沿用固定Title长度或第一条链接权重等绝对规则。
 
-|对象|来源|裁切框 x1/y1/x2/y2|像素尺寸|当前用途|
-|---|---|---|---|---|
-|handbag-customers|research/source-slides/page-26.png|[133, 313, 248, 426]|[115, 113]|课堂局部对象；照片/关系观察|
-|handbag-article|research/source-slides/page-26.png|[531, 310, 792, 621]|[261, 311]|仅归档，不作课堂必读|
-|handbag-care-products|research/source-slides/page-26.png|[533, 463, 787, 620]|[254, 157]|课堂局部对象；照片/关系观察|
-|handbag-search|research/source-slides/page-26.png|[922, 314, 1138, 619]|[216, 305]|仅归档，不作课堂必读|
-|property-search|research/source-slides/page-33.png|[80, 272, 805, 390]|[725, 118]|课堂局部对象；照片/关系观察|
-|laundry-search|research/source-slides/page-33.png|[80, 425, 803, 551]|[723, 126]|课堂局部对象；照片/关系观察|
-|property-result|research/source-slides/page-42.png|[49, 317, 627, 473]|[578, 156]|课堂局部对象；照片/关系观察|
-|review-result|research/source-slides/page-42.png|[684, 317, 1266, 438]|[582, 121]|课堂局部对象；照片/关系观察|
-|living-room|research/source-slides/page-47.png|[245, 178, 576, 340]|[331, 162]|课堂局部对象；照片/关系观察|
-|white-kitchen|research/source-slides/page-47.png|[743, 128, 1109, 401]|[366, 273]|课堂局部对象；照片/关系观察|
-|building-photo|research/source-slides/page-78.png|[131, 159, 639, 443]|[508, 284]|课堂局部对象；照片/关系观察|
-|breadcrumb-path|research/source-slides/page-76.png|[190, 349, 797, 386]|[607, 37]|课堂局部对象；照片/关系观察|
-|wiki-article|research/source-slides/page-28.png|[107, 125, 634, 453]|[527, 328]|仅归档，不作课堂必读|
-|academic-citation|research/source-slides/page-28.png|[858, 532, 1096, 622]|[238, 90]|仅归档，不作课堂必读|
-|course-list|research/source-slides/page-52.png|[90, 143, 550, 580]|[460, 437]|仅归档，不作课堂必读|
-|course-features|research/source-slides/page-52.png|[563, 192, 1232, 625]|[669, 433]|仅归档，不作课堂必读|
-|load-empty|research/source-slides/page-54.png|[294, 259, 417, 511]|[123, 252]|课堂局部对象；照片/关系观察|
-|load-shell|research/source-slides/page-54.png|[441, 259, 564, 511]|[123, 252]|课堂局部对象；照片/关系观察|
-|load-image|research/source-slides/page-54.png|[591, 259, 714, 511]|[123, 252]|课堂局部对象；照片/关系观察|
-|load-content|research/source-slides/page-54.png|[741, 259, 864, 511]|[123, 252]|课堂局部对象；照片/关系观察|
-|cls-before|research/source-slides/page-59.png|[153, 349, 279, 619]|[126, 270]|课堂局部对象；照片/关系观察|
-|cls-after|research/source-slides/page-59.png|[337, 349, 464, 619]|[127, 270]|课堂局部对象；照片/关系观察|
-|lcp-before|research/source-slides/page-57.png|[449, 458, 559, 639]|[110, 181]|课堂局部对象；照片/关系观察|
-|lcp-after|research/source-slides/page-57.png|[904, 458, 1013, 639]|[109, 181]|课堂局部对象；照片/关系观察|
-|indexing-trend|research/source-slides/page-61.png|[393, 198, 883, 355]|[490, 157]|课堂局部对象；照片/关系观察|
-|indexing-details|research/source-slides/page-61.png|[393, 359, 883, 617]|[490, 258]|课堂局部对象；照片/关系观察|
+官方资料已于2026-10-18复核：Google SEO、Helpful Content、AI优化指南、ProfilePage、更新记录、AI控制与表现报告、Spam Policies、web.dev Web Vitals、OpenAI机器人说明。来源链接同时出现在课件页脚和末页。
 
-## 课堂使用方式
+## 补充的外部项目记录
 
-- 第15页：房产与装修搜索结果，观察不同任务，再接第16页优先级。
-- 第17页：人物、护理用品照片独立使用，文章结构与搜索发现关系重排；不要求读低清文章或搜索截图。
-- 第23/26/27页：搜索承诺、位置/语境内链、alt/caption，用当前字体解释对应关系。
-- 第33页：P2编写责任、未发生专家审核、固定版本日期、删除无依据40%承诺；不再用Wikipedia人物正文代替作者责任。
-- 第41页：P2手机阅读布局示意，日期/时区/限制/全文入口可读；不是预约软件截图或产品实测。
-- 第42/43页：手机帧只观察加载顺序、位移和主内容出现；指标阈值用当前文字，旧新闻正文无需阅读。
-- 第44页：历史房源/评价展示，用来说明结构化描述必须对应事实，不是本项目评价或当前展示资格。
-- 第55页：历史趋势与明细观察范围和原因；不要求认小刻度，计数不充当项目成绩。
+Simon个人About中的Django主张与官方FAQ项目起源、基金会核心贡献者名单对应。支持相关贡献；不升级为全领域权威或排名原因。
+- https://docs.djangoproject.com/en/dev/faq/general/
+- https://www.djangoproject.com/foundation/django_core/
 
-## 像素与证据边界
+## 2026-10-25 · Landing Page clarification
 
-全部PNG为确定性像素裁切，没有模型增强、补字或伪造截图。源图片分辨率限制仍存在；靠选择对象、去掉无关段落和可读的当前标签解释知识点，不把放大称作高清恢复。裁切框、原始哈希与对象哈希见research/extracted-assets.json；可用scripts/extract-case-assets.py复现。教学习题与数据标识保持英文及虚构性质。
+- Page 14: Google Ads defines a landing page as the webpage reached after an ad click: https://support.google.com/google-ads/answer/14086?hl=en (checked 2026-10-25).
+- Pages 12/14: page-content, title, image and link optimization reference: https://developers.google.com/search/docs/fundamentals/seo-starter-guide .
+- The coffee-machine tutorial and cleaning-service booking comparison is a teaching example, not a real service, offer, provider test, or conversion result. It illustrates different content goals; it is not a mandatory universal landing-page template. On-page optimization, landing pages, and one-page site structure are distinct concepts.
+
+- Broader analytics meaning: https://support.google.com/analytics/answer/14292358?hl=en defines the landing page as the first page a visitor sees on arrival, including blog posts and product pages. The page-14 comparison is between content/visit goals, not mutually exclusive page types. A tutorial can also be an organic-search landing page.
+
+## 2026-10-25 · Paper analogy on page 16
+
+Original diagram uses a labelled fictional paper structure, with no research outcomes or citations invented. Correspondences are teaching analogies, not claims that metadata equals visible text. Google references: https://developers.google.com/search/docs/fundamentals/seo-starter-guide ; https://developers.google.com/search/docs/appearance/title-link ; https://developers.google.com/search/docs/appearance/snippet .
+
+## 2026-10-25: Breadcrumbs on page 18
+
+Google: https://developers.google.com/search/docs/appearance/structured-data/breadcrumb . USWDS: https://designsystem.digital.gov/components/breadcrumb/ . Teaching hierarchy is not a real URL, browsing history, or ranking claim. Visible navigation and BreadcrumbList markup are distinguished in presenter notes.
+
+## 2026-10-25: Outbound link classification (page 19)
+
+Checked Google documentation: https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links and https://developers.google.com/search/blog/2019/09/evolving-nofollow-new-ways-to-identify . Ordinary editorial links need no special rel; sponsored, ugc and nofollow describe link relationships and are hints, not substitutes for page-level noindex.
+
+## 2026-10-25 · English terminology and HTML examples
+
+All 81 pages reviewed for English term retention. Canonical terms and short teaching definitions: src/data/terminology.json; mappings: src/data/page-terms.json. Three displayed HTML examples are versioned in src/data/link-examples.json and parsed to verify href/rel. Ordinary editorial links need no special rel; sponsored identifies paid placements, ugc identifies user-generated links, and nofollow applies where other values do not fit. These values are hints, not noindex. Google primary references: https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links ; https://developers.google.com/search/blog/2019/09/evolving-nofollow-new-ways-to-identify ; https://web.dev/articles/vitals ; https://developers.google.com/search/docs/fundamentals/ai-optimization-guide . No live marketing or provider execution is represented.
+
+## Page 32 · Structured Data / Shopping, 2026-10-25 local revision
+
+Primary references: [Google gallery](https://developers.google.com/search/docs/appearance/structured-data/search-gallery), [Product](https://developers.google.com/search/docs/appearance/structured-data/product), [Merchant listings](https://developers.google.com/search/docs/appearance/structured-data/merchant-listing), [Schema.org](https://schema.org/docs/gs.html), [JSON-LD 1.1](https://www.w3.org/TR/json-ld11/), [JSON Schema](https://json-schema.org/docs), [Merchant Center](https://support.google.com/merchants/answer/7331077?hl=en).
+
+Teaching fixture: src/data/structured-data-lesson.json. Handout regenerated with scripts/build-structured-data-handout.py. Product, offer, price, stock and example.com addresses are fictional; no screenshot or claim of actual Google results. Distinguishes Google Search eligibility, Shopping/Merchant Center data, and advertising.
+
+## Core Web Vitals definition · 2026-10-25
+
+Pages36/39/40: [Google Search Central — Core Web Vitals](https://developers.google.com/search/docs/appearance/core-web-vitals) defines loading, responsiveness and visual stability; examples illustrate LCP/INP/CLS rather than measured site results.
+
+## Page50 · Experience practical example, 2026-10-25
+
+[Google people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) describes first-hand use and transparent methods. Activity signup scenario and sample paragraph are fictional teaching examples, clearly labeled; no real Lovable execution, customer result or screenshot is claimed.
+
+## Page52 · Authoritativeness expanded, 2026-10-25
+
+Primary sources: [Google E-E-A-T](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [Simon About](https://simonwillison.net/about/), [Django history](https://docs.djangoproject.com/en/dev/faq/general/), [Django Core Developers](https://www.djangoproject.com/foundation/django_core/). Checked official FAQ attribution and Former Django Core Team label (dissolved2020). Example action paths describe suggested contributions; no invitation, acceptance, client relationship or SEO gain is claimed. Data: src/data/authoritativeness-lesson.json. Full handout generated with scripts/build-authority-handout.py.
+
+## Page53 · Trustworthiness expanded, 2026-10-25
+
+Primary references: [Google people-first content / E-E-A-T](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [publication dates](https://developers.google.com/search/docs/appearance/publication-dates), [qualify outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links). Disclosure placement is reader-facing teaching guidance, not a jurisdiction-specific legal compliance claim. Author Lin Yue, test results and free account relationship in the sample are fictional and labeled; no real provider/account use. Data: src/data/trustworthiness-lesson.json; generator: scripts/build-trust-handout.py.
+
+## Page54 · Personal domain choice, 2026-10-25
+
+Independent-domain recommendation is an editorial recommendation for stable personal branding and address control. Google [site names](https://developers.google.com/search/docs/appearance/site-names) supports domain/subdomain identities; [SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) explains domain keywords alone have little ranking effect. No domain purchase, hosting setup or URL migration performed.

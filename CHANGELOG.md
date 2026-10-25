@@ -1,3 +1,51 @@
+## 2026-10-25
+
+- 删除SEO / GEO原第57页，课件调整为80页，同步后续页码、章节跳转和讲师备注（`curriculum/lessons/founder-seo-eeat`）
+
+- 补充SEO / GEO第54页个人网站域名选择，说明独立域名与平台页面、托管和SEO的关系（`curriculum/lessons/founder-seo-eeat`）
+
+- 展开SEO / GEO第53页Trustworthiness，增加可信度、文章写法、合作披露、更正更新4个视图及完整讲义（`curriculum/lessons/founder-seo-eeat`）
+
+- 展开SEO / GEO第52页Authoritativeness，增加4个视图讲解领域认可、Simon/Django记录、积累方法与网站展示，并附完整讲义（`curriculum/lessons/founder-seo-eeat`）
+
+- 重写SEO / GEO第50页Experience，以活动报名页说明亲手操作、测试记录、问题修正与文章写法（`curriculum/lessons/founder-seo-eeat`）
+
+- 补充SEO / GEO中Core Web Vitals定义，以LCP/INP/CLS解释加载、响应和布局稳定，并配具体体验例子（`curriculum/lessons/founder-seo-eeat`）
+
+- 清理SEO / GEO课件中内部制作、审核和执行状态提示，删除机械讲师备注并精简相关页副标题（`curriculum/lessons/founder-seo-eeat`）
+
+- 删除 SEO / GEO 全课页底串场文案、案例页应用提示框及备注中的接下一页提示，保留实际教学内容（`curriculum/lessons/founder-seo-eeat`）
+
+- 扩展 SEO / GEO 第32页为Structured Data概念、10种Google用途及Product/Offer代码示例，补Shopping和Merchant Center区别及完整讲义（`curriculum/lessons/founder-seo-eeat`）
+
+- 重写 SEO / GEO 第30页 Canonical，以同一商品的广告参数地址解释首选URL，默认展示正确关系，补HTML示例及与Redirect区别（`curriculum/lessons/founder-seo-eeat`）
+
+- 替换 SEO / GEO 第23页匠人URL案例为MDN官方文档列出的真实搜索地址，逐项解释组成并说明可选Fragment（`curriculum/lessons/founder-seo-eeat`）
+
+- 改写 SEO / GEO 第20页，用页面地址、功能来源、教程链接与交付检查解释 Content brief 修改单（`curriculum/lessons/founder-seo-eeat`）
+
+- 审核 SEO / GEO 全81页英文术语，更新49页术语表达并补72条统一术语表；第19页新增 sponsored、ugc、nofollow 解释及HTML链接示例，仅本地修改（`curriculum/lessons/founder-seo-eeat`）
+
+- 专业化改写 SEO / GEO 第19页引用与出站链接规范，明确 sponsored、ugc、nofollow 及 noindex 的区别（`curriculum/lessons/founder-seo-eeat`）
+
+- 补充 SEO / GEO 第18页 Breadcrumbs 英文、层级路径及定位和返回上级的作用，区分正文链接（`curriculum/lessons/founder-seo-eeat`）
+
+- 重做 SEO / GEO 第16页，用论文和网页结构图解 Title、H1/H2/H3、图片与链接，区分正文摘要和 meta description（`curriculum/lessons/founder-seo-eeat`）
+
+- 修正 SEO / GEO 第12、14页概念，区分页面内优化、落地页与单页网站，用教程文章和预约落地页对照替代抽象写作步骤（`curriculum/lessons/founder-seo-eeat`）
+
+- 删除 SEO / GEO 课件八个章节的分钟数标注，同步讲师备注（`curriculum/lessons/founder-seo-eeat`）
+
+- 解释 SEO / GEO 第10页 SERP 的全称、搜索结果页与落地页区别，并用具体查询贯穿检查步骤（`curriculum/lessons/founder-seo-eeat`）
+
+- 改写 SEO / GEO 第8页，以咖啡机的了解、选购和除垢解释搜索任务与页面内容，同步讲师备注（`curriculum/lessons/founder-seo-eeat`）
+
+- 清理 SEO / GEO 投屏课件的原稿页码、图片裁取和素材说明字幕，保留来源数据归档（`curriculum/lessons/founder-seo-eeat`）
+
+- 删除 SEO / GEO 课件全部重复页脚与结尾修订日期提示（`curriculum/lessons/founder-seo-eeat`）
+
+- 优化创业营 SEO / GEO 课件第一页封面，新增双搜索入口教学主视觉、讲师与完整成果直达，保留81页及共享引擎；仅本地修改，未部署、未触发 CI（`curriculum/lessons/founder-seo-eeat`）
+
 ## 2026-10-18 · 创业营SEO课件授课审校（Local / 待部署）
 
 - 按62页授课顺序审校图像、文字与案例迁移；先观察SERP意图再排优先级。手袋页改为独立照片与可读结构，P2责任记录和手机阅读布局替换不匹配的历史截图，精简页面摘要，补齐六章产物衔接与62页具体讲解备注。修复第14页链接/图注、第44页边界和第57页页脚样式。
