@@ -1,3 +1,9 @@
+import R49d_PersonalBrand from './components/slides/R49d_PersonalBrand';
+import R49c_PersonRecognition from './components/slides/R49c_PersonRecognition';
+import R49b_PersonEEAT from './components/slides/R49b_PersonEEAT';
+import R16b_PaperAnalogy from './components/slides/R16b_PaperAnalogy';
+import R16c_AuthorityMetrics from './components/slides/R16c_AuthorityMetrics';
+import CodeTopicFrame from './components/CodeTopicFrame';
 import SlideEngine from './components/SlideEngine';
 import {notes} from './data/notes';
 import './styles/course-v2.css';
@@ -57,7 +63,6 @@ import R53_Course from './components/slides/R53_Course';
 import R54_Course from './components/slides/R54_Course';
 import R55_Course from './components/slides/R55_Course';
 import R56_Course from './components/slides/R56_Course';
-import R57_Course from './components/slides/R57_Course';
 import R58_Course from './components/slides/R58_Course';
 import R59_Course from './components/slides/R59_Course';
 import R60_Course from './components/slides/R60_Course';
@@ -97,10 +102,12 @@ export default function App(){return <SlideEngine notes={notes}>
 <R12_Course />
 <R13_Course />
 <R14_Course />
-<R15_Course />
-<R16_Course />
-<R17_Course />
-<R18_Course />
+<CodeTopicFrame page={15}><R15_Course /></CodeTopicFrame>
+<CodeTopicFrame page={16}><R16_Course /></CodeTopicFrame>
+<R16b_PaperAnalogy />
+<R16c_AuthorityMetrics />
+<CodeTopicFrame page={17}><R17_Course /></CodeTopicFrame>
+<CodeTopicFrame page={18}><R18_Course /></CodeTopicFrame>
 <R19_Course />
 <R20_Course />
 <R21_Course />
@@ -112,9 +119,9 @@ export default function App(){return <SlideEngine notes={notes}>
 <R27_Course />
 <R28_Course />
 <R29_Course />
-<R30_Course />
+<CodeTopicFrame page={30}><R30_Course /></CodeTopicFrame>
 <R31_Course />
-<R32_Course />
+<CodeTopicFrame page={32}><R32_Course /></CodeTopicFrame>
 <R33_Course />
 <R34_Course />
 <R35_Course />
@@ -132,6 +139,9 @@ export default function App(){return <SlideEngine notes={notes}>
 <R47_Course />
 <R48_Course />
 <R49_Course />
+<R49b_PersonEEAT />
+<R49c_PersonRecognition />
+<R49d_PersonalBrand />
 <R50_Course />
 <R51_Course />
 <R52_Course />
@@ -139,7 +149,6 @@ export default function App(){return <SlideEngine notes={notes}>
 <R54_Course />
 <R55_Course />
 <R56_Course />
-<R57_Course />
 <R58_Course />
 <R59_Course />
 <R60_Course />

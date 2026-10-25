@@ -1,0 +1,45 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Structured Data · 类型与Shopping教学示例</title><style>body{font:18px/1.65 system-ui,sans-serif;color:#10162f;background:#fff1e7;max-width:1120px;margin:40px auto;padding:0 24px}h1{font-size:36px}h2{margin-top:40px}section,pre{padding:20px;border:1px solid #10162f;border-radius:18px;background:white;margin:16px 0}pre{background:#10162f;color:white;white-space:pre-wrap;overflow-wrap:anywhere;font:15px/1.6 monospace}table{border-collapse:collapse;background:white;width:100%}td,th{border:1px solid #ccc;padding:12px;text-align:left;vertical-align:top}a{color:#a82929}a:focus-visible{outline:3px solid #38b6ff;outline-offset:3px}@media(max-width:650px){table{font-size:14px}td,th{padding:7px}h1{font-size:27px}}</style><a href="../?page=32">← 返回第32页</a><h1>Structured Data：概念、类型与Google Shopping</h1><h2>1 · 四个概念</h2><section><h3>Structured Data · 机器可读的事实</h3><p>把网页中的商品、价格、作者或活动信息写成明确字段。</p></section><section><h3>Schema.org · 类型与字段词汇表</h3><p>规定 Product、Offer、Article 等类型，以及 name、price 等属性。</p></section><section><h3>JSON-LD · 网页中的标记写法</h3><p>用 &lt;script type=&quot;application/ld+json&quot;&gt; 放入 JSON，表达 Schema.org 的事实。</p></section><section><h3>JSON Schema · JSON 数据校验规则</h3><p>检查必填字段与数据类型；不是 Google 商品标记，也不代替 Rich Results Test。</p></section><h2>2 · Google常用类型（精选，不是完整清单）</h2><p>Schema.org类型不都对应Google专门展示功能。按页面用途与官方资格选择；实际展示由Google决定。</p><table><thead><tr><th>Schema.org类型</th><th>页面</th><th>常见字段</th><th>Google用途</th></tr></thead><tbody><tr><td>Product + Offer</td><td>商品页</td><td>商品名、图片、价格、币种、库存</td><td>产品摘要／商家商品展示</td></tr><tr><td>Article / BlogPosting</td><td>文章页</td><td>标题、作者、发布日期、图片</td><td>文章信息及搜索中的相关展示</td></tr><tr><td>BreadcrumbList</td><td>层级导航</td><td>栏目名称、地址、顺序</td><td>页面层级路径信息</td></tr><tr><td>LocalBusiness</td><td>实体商家页</td><td>名称、地址、营业时间</td><td>本地商家信息</td></tr><tr><td>Organization</td><td>机构介绍页</td><td>名称、Logo、联系方式</td><td>机构身份信息</td></tr><tr><td>Recipe</td><td>食谱页</td><td>原料、做法、用时</td><td>食谱富结果</td></tr><tr><td>Event</td><td>活动详情页</td><td>名称、时间、地点、票务</td><td>活动搜索体验</td></tr><tr><td>JobPosting</td><td>职位详情页</td><td>岗位、雇主、地点、薪酬</td><td>职位搜索体验</td></tr><tr><td>VideoObject</td><td>视频观看页</td><td>标题、缩略图、日期、视频地址</td><td>视频相关搜索展示</td></tr><tr><td>ProfilePage + Person</td><td>作者／个人档案页</td><td>人物身份、关联关系、资料</td><td>帮助理解人物与网站的关系</td></tr></tbody></table><h2>3 · 一个Product + Offer示例</h2><p>商品、A$299价格、库存和example.com地址均为教学虚构；不是Google实际搜索结果。</p><section><h3>Demo Coffee Maker A</h3><p>A$299.00 · AUD · In stock（教学库存）</p><p>Product描述商品；Offer描述这件商品的报价条件。网页可见商品信息与下面的JSON-LD一致。未生成评价或星级。</p></section><pre><code>&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: &quot;Demo Coffee Maker A&quot;,
+  &quot;image&quot;: &quot;https://example.com/coffee-a.webp&quot;,
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;url&quot;: &quot;https://example.com/products/coffee-a&quot;,
+    &quot;priceCurrency&quot;: &quot;AUD&quot;,
+    &quot;price&quot;: &quot;299.00&quot;,
+    &quot;availability&quot;: &quot;https://schema.org/InStock&quot;
+  }
+}
+&lt;/script&gt;</code></pre><p>这是核心字段教学示例，不是可直接上线的真实商家资料。实施时替换为真实可访问的商品页和可抓取图片，并按适用要求补充商品标识、运费、退货、变体等信息。不要把示例库存或价格放进真实商品标记。</p><h2>4 · Google中怎样使用</h2><ol><li>商品页显示真实名称、图片、价格、币种与库存，在HTML加入相匹配的Product / Offer JSON-LD。</li><li>Google可用商品信息支持Product snippets或Merchant listings；符合条件不等于保证出现。</li><li>Google Merchant Center是另一路商品数据入口：可提供商品feed、配置免费展示等。Shopping标签页有自己的Merchant Center数据与资格要求；广告还需要单独的广告设置与预算。</li><li>用Rich Results Test检查Google支持的类型与错误；上线后用URL Inspection及相关Search Console报告复查。此教学任务未提交Google测试、未注册Merchant Center、未投放广告。</li></ol><h2>5 · JSON Schema校验，为什么是另一回事</h2><p>下面的JSON Schema检查教学数据是否有name和offers，以及报价字段是否符合类型和格式。它不是Schema.org的商品类型，也不是要放进网页等待Google识别的Product标记。</p><pre><code>{
+  &quot;$schema&quot;: &quot;https://json-schema.org/draft/2020-12/schema&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [
+    &quot;name&quot;,
+    &quot;offers&quot;
+  ],
+  &quot;properties&quot;: {
+    &quot;name&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;minLength&quot;: 1
+    },
+    &quot;offers&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;priceCurrency&quot;,
+        &quot;price&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;priceCurrency&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;pattern&quot;: &quot;^[A-Z]{3}$&quot;
+        },
+        &quot;price&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;pattern&quot;: &quot;^[0-9]+(\\.[0-9]{2})?$&quot;
+        }
+      }
+    }
+  }
+}</code></pre><p>通过JSON Schema只说明数据符合这里定义的规则；不证明满足Google全部字段、真实性或展示资格。</p><h2>官方资料与工具</h2><p><a href="https://developers.google.com/search/docs/appearance/structured-data/search-gallery">gallery</a> · <a href="https://developers.google.com/search/docs/appearance/structured-data/product">product</a> · <a href="https://developers.google.com/search/docs/appearance/structured-data/merchant-listing">merchant</a> · <a href="https://schema.org/docs/gs.html">vocabulary</a> · <a href="https://www.w3.org/TR/json-ld11/">jsonld</a> · <a href="https://json-schema.org/docs">jsonschema</a> · <a href="https://search.google.com/test/rich-results">test</a> · <a href="https://support.google.com/merchants/answer/7331077?hl=en">merchantCenter</a></p></html>

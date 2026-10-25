@@ -1,0 +1,141 @@
+{
+  "definitions": [
+    {
+      "term": "Structured Data",
+      "role": "机器可读的事实",
+      "explanation": "把网页中的商品、价格、作者或活动信息写成明确字段。"
+    },
+    {
+      "term": "Schema.org",
+      "role": "类型与字段词汇表",
+      "explanation": "规定 Product、Offer、Article 等类型，以及 name、price 等属性。"
+    },
+    {
+      "term": "JSON-LD",
+      "role": "网页中的标记写法",
+      "explanation": "用 <script type=\"application/ld+json\"> 放入 JSON，表达 Schema.org 的事实。"
+    },
+    {
+      "term": "JSON Schema",
+      "role": "JSON 数据校验规则",
+      "explanation": "检查必填字段与数据类型；不是 Google 商品标记，也不代替 Rich Results Test。"
+    }
+  ],
+  "types": [
+    [
+      "Product + Offer",
+      "商品页",
+      "商品名、图片、价格、币种、库存",
+      "产品摘要／商家商品展示"
+    ],
+    [
+      "Article / BlogPosting",
+      "文章页",
+      "标题、作者、发布日期、图片",
+      "文章信息及搜索中的相关展示"
+    ],
+    [
+      "BreadcrumbList",
+      "层级导航",
+      "栏目名称、地址、顺序",
+      "页面层级路径信息"
+    ],
+    [
+      "LocalBusiness",
+      "实体商家页",
+      "名称、地址、营业时间",
+      "本地商家信息"
+    ],
+    [
+      "Organization",
+      "机构介绍页",
+      "名称、Logo、联系方式",
+      "机构身份信息"
+    ],
+    [
+      "Recipe",
+      "食谱页",
+      "原料、做法、用时",
+      "食谱富结果"
+    ],
+    [
+      "Event",
+      "活动详情页",
+      "名称、时间、地点、票务",
+      "活动搜索体验"
+    ],
+    [
+      "JobPosting",
+      "职位详情页",
+      "岗位、雇主、地点、薪酬",
+      "职位搜索体验"
+    ],
+    [
+      "VideoObject",
+      "视频观看页",
+      "标题、缩略图、日期、视频地址",
+      "视频相关搜索展示"
+    ],
+    [
+      "ProfilePage + Person",
+      "作者／个人档案页",
+      "人物身份、关联关系、资料",
+      "帮助理解人物与网站的关系"
+    ]
+  ],
+  "product": {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Demo Coffee Maker A",
+    "image": "https://example.com/coffee-a.webp",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://example.com/products/coffee-a",
+      "priceCurrency": "AUD",
+      "price": "299.00",
+      "availability": "https://schema.org/InStock"
+    }
+  },
+  "validationSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+      "name",
+      "offers"
+    ],
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "offers": {
+        "type": "object",
+        "required": [
+          "priceCurrency",
+          "price"
+        ],
+        "properties": {
+          "priceCurrency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "price": {
+            "type": "string",
+            "pattern": "^[0-9]+(\\.[0-9]{2})?$"
+          }
+        }
+      }
+    }
+  },
+  "links": {
+    "gallery": "https://developers.google.com/search/docs/appearance/structured-data/search-gallery",
+    "product": "https://developers.google.com/search/docs/appearance/structured-data/product",
+    "merchant": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+    "vocabulary": "https://schema.org/docs/gs.html",
+    "jsonld": "https://www.w3.org/TR/json-ld11/",
+    "jsonschema": "https://json-schema.org/docs",
+    "test": "https://search.google.com/test/rich-results",
+    "merchantCenter": "https://support.google.com/merchants/answer/7331077?hl=en"
+  },
+  "disclosure": "商品、A$299价格、库存和example.com地址均为教学虚构；不是Google实际搜索结果。"
+}

@@ -902,3 +902,9 @@
 - 仅通过GitHub Actions既有云端runner发布本课和课程目录，不带入其他本地改动。视频等待真人录音。
 
 - 发布回读补充：公开浏览器从课程目录进入试看、五案例/图片和原81页课件已核验；目录标记已部署。云端回读使用不可变版本回执、跟随重定向与有界重试。
+
+
+## 2026-10-25 SEO / GEO classroom release
+
+- Publish 85-slide classroom revision with standalone paper analogy, Moz DA/PA, author E-E-A-T and Personal Brand; expand title/meta/schema, site structure and performance examples.
+- Update course catalog and scoped cloud release assertions.
