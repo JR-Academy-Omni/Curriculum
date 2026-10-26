@@ -1,48 +1,50 @@
 <!-- generated-from: outline.json · do not edit by hand -->
 
-# AI风险治理与AI审计实战课
+# AI Risk Management Bootcamp
 
-> 🤖 本文件由 `lineage/build_lineage.py` 从同目录 `outline.json` 自动生成 —— **勿手改**。要改大纲改 `outline.json`，再重跑 `python3 lineage/build_lineage.py`。
-> （`outline.json` 是生产管线吃的机器权威；这份 `.md` 是给人读、给谱系当真相文档的统一格式。）
+> 本文件由 `outline.json` 生成；机器权威数据以同目录 `outline.json` 为准。
 
-面向澳洲华人审计、会计、风险与合规从业者的4周双语实战课：从AI基础、监管地图到控制测试和银行案例，完成一份可用于面试展示的AI专项审计报告。
+面向审计、风险、合规、金融与技术从业者的周末课程。通过一个贯穿式金融服务 AI 案例，理解 AI 基础、三道防线、AI 风险与缓释措施、全球监管及职业路径。
 
-**级别** 审计/风险基础进阶 · **类型** training · **时长** 4周·双语实战学习路径 · **总课时** 12 · **步骤** 36 · **直播** 4 · **互动 Lab** 0 · **预计学时** 16
+**级别** 零基础至风险管理进阶 · **类型** training · **时长** 3个周末，每次约3–3.5小时 · **总主题** 5 · **周末单元** 3 · **预计学时** 10小时
 
-**适合**：澳洲华人审计、会计、风险、合规、IT审计从业者及相关专业学生
+**适合**：Internal Audit、IT Audit、Risk、Compliance、GRC、Cybersecurity、Finance、Accounting、Assurance，以及正在负责企业 AI 项目的管理人员。
 
-**目标**：让学员能够识别银行AI应用风险，设计审计程序与控制测试，并用中英文清晰讲述完整案例。
+**目标**：建立 AI 风险管理的共同语言，理解三道防线在 AI 场景中的角色和工作范围，识别主要 AI 风险及缓释措施，并了解全球监管版图与相关职业路径。
 
 ---
 
-## Phase 1 · 懂AI，才能审AI
+## Weekend 1 · AI基础与三道防线（3.5小时）
 
-_建立审计人需要的AI共同语言_
+- **AI Basics and Use Cases in Corporation** — 1小时
+  - AI fundamentals
+  - AI system architecture
+  - Enterprise use cases
+  - AI lifecycle
+- **Three Lines of Defence and AI** — 2.5小时
+  - AI风险管理在Line 1、Line 2和Internal Audit中的角色与工作范围
 
-- **AI与生成式AI：审计人的最小必备知识** — 90 分钟 · 🔴直播
-- **AI为什么会出错** — 45 分钟
-- **作业：为一个银行AI场景建档** — 60 分钟
+## Weekend 2 · AI风险与缓释措施（3小时）
 
-## Phase 2 · 监管地图与AI治理
+- **AI Risks and Mitigants** — 3小时
+  - AI risk taxonomy
+  - Mitigants for AI risks
+  - 贯穿式Financial Services AI use case
 
-_把法规和框架转成可测试的控制_
+## Weekend 3 · 全球监管与职业路径（3.5小时）
 
-- **澳洲AI风险与监管地图** — 120 分钟 · 🔴直播
-- **国际框架：ISO/IEC 42001与IIA AI Auditing Framework** — 60 分钟
-- **作业：建立AI风险与控制矩阵** — 90 分钟
+- **Global AI Regulations and Standards** — 2小时
+  - Overview of global AI regulatory landscape
+- **AI Risk Management Career Opportunities** — 1.5小时
+  - AI risk career landscape
+  - Skills and competencies
+  - Career pathways
+  - Certifications and development
 
-## Phase 3 · 从风险到审计测试
+## 课程形式
 
-_把抽象风险变成审计程序、证据与底稿_
-
-- **AI专项审计方法** — 120 分钟 · 🔴直播
-- **控制、偏差、可解释性与人工复核测试** — 75 分钟
-- **用AI辅助审计，同时审计AI输出** — 75 分钟
-
-## Phase 4 · 银行Capstone与职业表达
-
-_完成一份可讲、可查、可迭代的AI审计项目_
-
-- **Capstone：银行AI系统专项审计** — 150 分钟 · 🔴直播
-- **英文审计报告与高管汇报** — 90 分钟
-- **面试故事线与未来学习地图** — 60 分钟
+- 一个Financial Services AI use case贯穿始终
+- 分别讲清三道防线
+- 包含典型工作outputs
+- 提供example answers
+- 整理为学习Case Pack
