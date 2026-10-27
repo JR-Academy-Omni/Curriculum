@@ -10,6 +10,7 @@
 
 ## 2026-10-19
 
+- 新增 AI Engineer W5 RAG Quality, Testing & Controlled Improvement 35页理论课课件（90分钟，线上互动只用聊天框，Local / 未部署）：第2页目录，全课分七个部分，第2–7部分前各一张过渡页；开场按讲师要求分两部分，先放 W1–W12 足迹地图，再做四道重要概念测试；讲四类失败（retrieval / grounding / citation / no-answer 两个方向）、golden case 五个字段与覆盖、读报告（指标对层、faithfulness 满分仍答错、N/A 与样本量、裁判错判）、单变量实验与五个旋钮（metadata filter、按小节切块、hybrid、top-k、rerank），三个聊天框检查点；例子与数字全部来自 reference RAG 真实运行（完整运行的作答与裁判为本地 qwen3:14b / bonsai-2，页面已标注）；附 PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA，登记课件并补构建与复制步骤（`curriculum/lessons/ai-engineer-cohort-07-w5-rag-quality` / `lessons.html` / `deploy.yml`）
 - AI Engineer W4 RAG Fundamentals 课件已部署并线上回读（30页、讲师署名、Logo、字体与子路径资源正常，PRD / 讲师流程 / 讲义 / 来源表链接可打开），目录卡片改为「已部署」（`curriculum/lessons/ai-engineer-cohort-07-w4-rag-fundamentals` / `lessons.html`）
 - 新增 AI Engineer W4 RAG Fundamentals 30页理论课课件（90分钟，线上互动只用聊天框）：第2页目录，全课分八个部分，每部分开始前一张过渡页回到目录；开场是架构分层测试与 W3 连线复习，定位用开放问题引出三种取知识方式；按离线、在线、组装作答、兜底、排错讲 ingestion、permission-aware retrieval、grounded answer、programmatic citation、四种回答状态与 no-answer，排错只讲 Retrieval / Generation 两层（recall@k vs faithfulness），两个聊天框检查点，后续地图放 Hybrid / Query rewrite / Rerank / RAGAS；每个 contract 课上只讲一个字段，完整字段、failure taxonomy 与面试检查放讲义（WORKSHEET），不布置作业；例子用 CareKind 虚构探视政策，外部资料只引用 Anthropic；附 PRD / RUNSHEET / SOURCE_MAP / QA，登记课件并补构建与复制步骤（`curriculum/lessons/ai-engineer-cohort-07-w4-rag-fundamentals` / `lessons.html` / `deploy.yml`）
 
