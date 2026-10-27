@@ -140,6 +140,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/ai-engineer-cohort-07-w5-rag-quality (90-min · 35 slides · RAG Quality)
+      - name: Build AI Engineer W5 RAG Quality
+        working-directory: lessons/ai-engineer-cohort-07-w5-rag-quality
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
       - name: Build lessons/ai-new-jobs-talk
@@ -362,6 +369,9 @@ jobs:
           mkdir -p _site/lessons/ai-engineer-cohort-07-w4-rag-fundamentals
           cp -r lessons/ai-engineer-cohort-07-w4-rag-fundamentals/dist/* _site/lessons/ai-engineer-cohort-07-w4-rag-fundamentals/
           cp lessons/ai-engineer-cohort-07-w4-rag-fundamentals/PRD.md lessons/ai-engineer-cohort-07-w4-rag-fundamentals/RUNSHEET.md lessons/ai-engineer-cohort-07-w4-rag-fundamentals/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w4-rag-fundamentals/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w4-rag-fundamentals/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w5-rag-quality
+          cp -r lessons/ai-engineer-cohort-07-w5-rag-quality/dist/* _site/lessons/ai-engineer-cohort-07-w5-rag-quality/
+          cp lessons/ai-engineer-cohort-07-w5-rag-quality/PRD.md lessons/ai-engineer-cohort-07-w5-rag-quality/RUNSHEET.md lessons/ai-engineer-cohort-07-w5-rag-quality/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w5-rag-quality/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w5-rag-quality/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/
