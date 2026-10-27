@@ -151,6 +151,22 @@
     .stat b { display: block; color: var(--lime); font-size: 25px; line-height: 1.1; }
     .stat span { display: block; margin-top: 7px; font-size: 12px; color: #d9ddea; }
 
+    .trial-wrap { padding: 26px 0 0; }
+    .trial-banner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 20px 24px;
+      border: 3px solid var(--line);
+      background: var(--lime);
+      box-shadow: 6px 6px 0 var(--line);
+    }
+    .trial-badge { padding: 6px 10px; color: var(--white); background: var(--purple); border: 2px solid var(--line); font-size: 11px; font-weight: 700; }
+    .trial-banner h2 { font-size: 21px; line-height: 1.2; }
+    .trial-banner p { color: #343949; font-size: 13px; }
+    .trial-note { max-width: 250px; text-align: right; font-size: 11px; color: #343949; }
+
     section { padding: 78px 0; }
     section.alt { background: var(--white); border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); }
     .section-head { display: grid; grid-template-columns: .7fr 1.3fr; gap: 40px; align-items: end; margin-bottom: 36px; }
@@ -256,6 +272,8 @@
 
     @media (max-width: 900px) {
       .hero-grid, .section-head, .deliverables, .audience-grid, .safety { grid-template-columns: 1fr; }
+      .trial-banner { grid-template-columns: auto 1fr; }
+      .trial-note { grid-column: 2; max-width: none; text-align: left; }
       .brief-card { max-width: 520px; transform: none; }
       .definition { grid-template-columns: repeat(3, 1fr); }
       .definition div:nth-child(3) { border-right: 0; }
@@ -279,6 +297,8 @@
       .facts li { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 10px; }
       .facts strong { max-width: none; overflow-wrap: anywhere; }
       .outcome-strip .shell { grid-template-columns: 1fr 1fr; width: 100%; }
+      .trial-banner { grid-template-columns: 1fr; gap: 10px; }
+      .trial-note { grid-column: 1; }
       .stat:nth-child(3) { border-left: 1px solid rgba(255,255,255,.2); border-top: 1px solid rgba(255,255,255,.2); }
       .stat:nth-child(4) { border-top: 1px solid rgba(255,255,255,.2); }
       section { padding: 58px 0; }
@@ -310,8 +330,8 @@
       <div>
         <span class="eyebrow">零代码 · 零基础 · 现场搭建</span>
         <h1>用 Codex 做出你的第一个 <em>AI Agent</em></h1>
-        <p class="hero-lead">一天跑通 Agent 的完整闭环：定义目标、读取资料、配置规则、调用工具、检查结果，并让它按计划自动执行。</p>
-        <p class="hero-note">不是功能介绍课。你会在现场完成一个能按自己行业继续调整的工作助理。</p>
+        <p class="hero-lead">一天只做一个通用项目：个人 AI 信息整理助理。从接收任务、检索资料到输出报告和待办清单，完整跑通 Agent 工作闭环。</p>
+        <p class="hero-note">不同时教客服、营销、销售和办公 Agent。先把一个项目真正做出来，再替换资料和规则迁移到你的行业。</p>
         <div class="hero-actions">
           <a class="btn" href="#agenda">查看 10:00–16:00 课程安排</a>
           <a class="btn secondary" href="#outcomes">看看能学会什么</a>
@@ -325,7 +345,8 @@
           <li><span>形式</span><strong>老师演示 + 现场跟做</strong></li>
           <li><span>工具</span><strong>Codex</strong></li>
           <li><span>编程要求</span><strong>不需要</strong></li>
-          <li><span>最终成果</span><strong>1 个个人工作 Agent</strong></li>
+          <li><span>最终成果</span><strong>个人 AI 信息整理助理</strong></li>
+          <li><span>没有会员</span><strong>赠 7 天 AI 会员试用</strong></li>
         </ul>
       </aside>
     </div>
@@ -340,6 +361,14 @@
     </div>
   </div>
 
+  <div class="trial-wrap">
+    <div class="shell trial-banner">
+      <span class="trial-badge mono">报名权益</span>
+      <div><h2>没有 Codex 会员，也可以参加</h2><p>报名课程后，为没有会员的学员提供匠人学院 7 天 AI 会员免费试用，用于完成课堂实操和课后复习。</p></div>
+      <div class="trial-note">由匠人学院提供，非 Codex 官方赠送；具体开通方式与可用功能以报名通知为准。</div>
+    </div>
+  </div>
+
   <main>
     <section>
       <div class="shell">
@@ -349,13 +378,13 @@
         </div>
         <div class="definition" aria-label="Agent工作流程">
           <div><b>接收任务</b><span>明确要完成什么</span></div>
-          <div><b>读取资料</b><span>理解已有文件</span></div>
+          <div><b>检索资料</b><span>查找已有文件与知识</span></div>
           <div><b>遵循规则</b><span>按行业要求工作</span></div>
           <div><b>调用工具</b><span>生成文件或图片</span></div>
           <div><b>检查结果</b><span>识别缺失与异常</span></div>
           <div><b>自动执行</b><span>按计划重复运行</span></div>
         </div>
-        <p class="definition-note">课程目标不是“完全无人管理”，而是让 Agent 负责重复工作，让人保留判断、审核和最终决定。</p>
+        <p class="definition-note">全班只搭建这一个“个人 AI 信息整理助理”。课程目标不是完全无人管理，而是让 Agent 整理信息、判断资料是否足够并生成初稿，由人审核后确认使用。</p>
       </div>
     </section>
 
@@ -401,8 +430,8 @@
         </div>
         <div class="deliverables">
           <div class="deliverable-main">
-            <h3>你的第一个个人工作 Agent</h3>
-            <p>它能够读取指定资料，按照你的规则处理任务，输出工作成果，并在异常时要求人工确认。</p>
+            <h3>个人 AI 信息整理助理</h3>
+            <p>它能够接收整理任务，检索指定资料，调用工具补充信息，判断资料是否足够，最后输出报告或任务清单并交给你确认。</p>
             <ul class="deliverable-list">
               <li>01 · 一份个人 Agent 工作规则</li>
               <li>02 · 一个文件处理工作流</li>
@@ -463,8 +492,8 @@
           <article class="agenda-row"><div class="agenda-time">13:15–14:00</div><div class="agenda-topic"><h3>搭建完整 Agent 工作流</h3><p>串联“输入—处理—检查—输出”四个环节。</p></div><div class="agenda-output"><span><b>现场产出：</b>可运行的 Agent V1</span></div></article>
           <article class="agenda-row"><div class="agenda-time">14:00–14:40</div><div class="agenda-topic"><h3>添加工具与出图能力</h3><p>让 Agent 生成工作文件或图片，并根据反馈修改。</p></div><div class="agenda-output"><span><b>现场产出：</b>一份文件 + 一张图片</span></div></article>
           <article class="agenda-row break"><div class="agenda-time">14:40–14:55</div><div class="agenda-topic"><h3>休息</h3><p>保存进度，准备个人场景改造。</p></div><div class="agenda-output"><span>休息 15 分钟</span></div></article>
-          <article class="agenda-row"><div class="agenda-time">14:55–15:25</div><div class="agenda-topic"><h3>设置自动运行</h3><p>创建每日或每周任务，明确运行后由谁检查。</p></div><div class="agenda-output"><span><b>现场产出：</b>一个自动化任务</span></div></article>
-          <article class="agenda-row"><div class="agenda-time">15:25–15:50</div><div class="agenda-topic"><h3>行业改造、测试与纠错</h3><p>替换成自己的岗位场景，测试缺资料和错误资料。</p></div><div class="agenda-output"><span><b>现场产出：</b>行业版 Agent + 测试记录</span></div></article>
+          <article class="agenda-row"><div class="agenda-time">14:55–15:25</div><div class="agenda-topic"><h3>设置自动运行</h3><p>让信息整理助理按每日或每周计划运行，并明确由谁检查。</p></div><div class="agenda-output"><span><b>现场产出：</b>一个自动化任务</span></div></article>
+          <article class="agenda-row"><div class="agenda-time">15:25–15:50</div><div class="agenda-topic"><h3>替换资料、测试与纠错</h3><p>保持同一个 Agent，只替换自己的资料和指令，测试缺资料与错误资料。</p></div><div class="agenda-output"><span><b>现场产出：</b>个人版本 + 测试记录</span></div></article>
           <article class="agenda-row"><div class="agenda-time">15:50–16:00</div><div class="agenda-topic"><h3>成果展示</h3><p>演示 Agent 如何接收任务、执行并请求人工确认。</p></div><div class="agenda-output"><span><b>完成标准：</b>跑通一次完整闭环</span></div></article>
         </div>
       </div>
@@ -473,8 +502,8 @@
     <section>
       <div class="shell">
         <div class="section-head">
-          <div><span class="kicker">One method, many industries</span><h2>同一套方法，换成你的行业</h2></div>
-          <p>全班先使用统一练习资料，确保每个人都能跟上；最后再替换成自己的岗位规则和资料类型。</p>
+          <div><span class="kicker">One project, many uses</span><h2>只换资料和指令，不重搭 Agent</h2></div>
+          <p>全班先把同一个“个人 AI 信息整理助理”做完整。课程最后只演示如何替换资料、规则和输出格式，把它迁移到不同岗位。</p>
         </div>
         <div class="industry-grid">
           <article class="industry"><h3>会计 / 财务</h3><p>费用资料检查、异常标记与周报 Agent</p></article>
@@ -511,6 +540,7 @@
         </div>
         <div class="faq">
           <details open><summary>完全不会编程，可以参加吗？</summary><p>可以。课程不教 Python、API 或代码开发。你需要具备基本的电脑文件操作能力，并愿意跟着老师逐步完成练习。</p></details>
+          <details><summary>没有 Codex 会员怎么办？</summary><p>可以正常报名。没有会员的学员将获得匠人学院提供的 7 天 AI 会员免费试用，用于完成课堂练习和课后复习；这不是 Codex 官方赠送，具体开通方式与可用功能以报名通知为准。</p></details>
           <details><summary>这和普通的 AI 提示词课有什么区别？</summary><p>提示词只是其中一部分。你还会配置长期规则、让 Agent 读取资料、生成文件或图片、检查异常，并设置自动运行。</p></details>
           <details><summary>一定要做会计案例吗？</summary><p>不需要。统一案例用于带大家跑通方法，最后会改造成会计、HR、市场、销售、行政或教育等个人场景。</p></details>
           <details><summary>一天后能做到什么程度？</summary><p>你可以独立搭建和测试一个简单个人工作 Agent；复杂系统集成、多人协作和工程开发不在本次课程范围内。</p></details>
@@ -522,7 +552,7 @@
   <section class="final-cta">
     <div class="shell">
       <h2>从“会问 AI”到“搭出一个会工作的 Agent”</h2>
-      <p>6 小时、不写代码。现场完成设置、配置、工具调用、自动化与测试，带走一个能按自己行业继续修改的个人工作助理。</p>
+      <p>6 小时、不写代码。全班只做一个个人 AI 信息整理助理，现场完成设置、配置、工具调用、自动化与测试，再把它改成自己的岗位版本。</p>
       <a class="btn" href="#agenda">重新查看课程安排</a>
     </div>
   </section>
