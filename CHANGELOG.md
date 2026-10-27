@@ -1,5 +1,6 @@
 ## 2026-10-26
 
+- AI Engineer W5 RAG Quality 课件已部署并线上回读（35页、讲师署名、Logo、四套字体与子路径资源正常，PRD / 讲师流程 / 讲义 / 来源表链接可打开，页面与响应头均为 noindex, nofollow），目录卡片改为「已部署」（`curriculum/lessons/ai-engineer-cohort-07-w5-rag-quality` / `lessons.html`）
 - 移除 Curriculum GA4 注入脚本与发布调用，改为拒绝课件中实际运行的 GA/GTM 脚本；明确课件不采集 GA、长期禁止抓取和索引（本地修改，未部署、未触发 CI）。
 
 ## 2026-10-22 · Enterprise AI Automation Bootcamp

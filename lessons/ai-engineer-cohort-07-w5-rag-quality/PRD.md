@@ -89,4 +89,4 @@ W6 Practice 由学员把今天的约定做成自己的 Evaluation Pipeline；本
 
 ## 发布范围
 
-Local / 未部署。讲师 2026-10-27 说“可以直接做 W5 的课件了”：授权 PRD、课件、配套资料、本地 build 和 QA、登记 `lessons.html` 与 `CHANGELOG.md`。commit、push、部署未授权。
+已部署。讲师 2026-10-27 说“可以直接做 W5 的课件了”，课件完成后又说“直接部署吧”；经 PR #102 合并到 main 并发布，线上回读通过，见 `QA.md`。
