@@ -99,6 +99,7 @@
 | Paul | 全栈28期 | 待补 | 待补 | 待补 | 未提供 | 未确认·不可外用 | [档案](students/2026-import-083.md) |
 | Ruiqing Hu | 全栈27期 | Sol Energy | Software Development | 待补 | 有导入凭证 | 未确认·不可外用 | [档案](students/2026-import-084.md) |
 | Li | 全栈22期 | Westwell | Delivery & Maintenance Engineer | 待补 | 有脱敏 Offer 截图 | 未确认·不可外用 | [档案](students/2026-li.md) |
+| Hao | 全栈27期 | 已脱敏 / 待补 | Graduate 岗位（悉尼数据中心运维方向，正式名称待补） | 待补 | 有脱敏 Offer 邮件截图 | 未确认·不可外用 | [档案](students/2026-hao.md) |
 
 ## 感言
 
@@ -115,9 +116,9 @@
 
 ## 统计
 
-- 已建档学员：88
-- 有 Offer 字段记录：85
-- 有导入凭证：50
+- 已建档学员：89
+- 有 Offer 字段记录：86
+- 有导入凭证：51
 - 可上销售页 OFFER WALL（consent 已确认）：0
-- 最近更新：2026-10-15
+- 最近更新：2026-10-28
 
