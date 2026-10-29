@@ -22,3 +22,10 @@ Local / 已构建验证 / 待 PR 合并部署
 ## 缺口与负责人
 
 - PR 合并后核验线上 Lesson 列表和课件入口。
+# 2026-10-29 · Talk Deck 重构验收
+
+- [x] 30 页不再通过 `OriginalSlide` 渲染整页 PNG。
+- [x] 原稿文字已从 PPTX XML 提取并转为 HTML/React 内容。
+- [x] 封面、六卡高密度页、深色章节页和第 30 页完成浏览器目视检查。
+- [x] Logo 进入 Vite hashed asset，浅色和深色页面均可见。
+- [x] `tsc -b` 与 `vite build` 通过。

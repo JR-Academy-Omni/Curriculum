@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { flushSync } from 'react-dom';
-import { colors, assetPath } from './ui';
+import { colors } from './ui';
 import CameraBubble from './CameraBubble';
+import logoUrl from '../assets/logo-zh-full.svg';
 
 const DESIGN_WIDTH = 1600;
 const DESIGN_HEIGHT = 900;
@@ -168,10 +169,11 @@ export default function SlideEngine({ children, notes = [] }: SlideEngineProps) 
 					<div style={{
 						position: 'absolute', top: 18, right: 22, zIndex: 50,
 						display: 'flex', alignItems: 'center', gap: 8,
-						pointerEvents: 'none', opacity: 0.7,
+						pointerEvents: 'none', opacity: 0.9,
+						background: 'rgba(255,255,255,.86)', borderRadius: 10, padding: '7px 10px',
 					}}>
 						<img
-							src={assetPath('logo-zh-full.svg')}
+								src={logoUrl}
 							alt="JR Academy"
 							style={{ height: 30, width: 'auto', display: 'block' }}
 						/>

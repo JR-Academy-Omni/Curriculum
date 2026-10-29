@@ -918,3 +918,8 @@
 
 - Publish 85-slide classroom revision with standalone paper analogy, Moz DA/PA, author E-E-A-T and Personal Brand; expand title/meta/schema, site structure and performance examples.
 - Update course catalog and scoped cloud release assertions.
+# 2026-10-29 · 创业财税与合规进阶课 Talk Deck 重构
+
+- 将 30 页整页图片渲染改为可编辑的 React 文字、卡片与章节布局。
+- 修复右上角 JR Academy Logo：纳入 Vite hashed asset，并为深色页增加可见底托。
+- 完成封面、高密度内容页、章节页与末页的本地浏览器验收。
