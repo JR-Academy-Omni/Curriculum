@@ -147,6 +147,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/startup-finance-compliance-advanced (150-min · 30 slides · Seven)
+      - name: Build startup finance and compliance advanced lesson
+        working-directory: lessons/startup-finance-compliance-advanced
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
       - name: Build lessons/ai-new-jobs-talk
@@ -529,6 +536,12 @@ jobs:
             cp -r ai-adoption-workshop/public/* _site/ai-adoption-workshop/
           fi
 
+          # ai-agent-workshops-2026: static HTML only (三级十门在职 AI Agent 实战短课介绍页)
+          if [ -d ai-agent-workshops-2026/public ]; then
+            mkdir -p _site/ai-agent-workshops-2026
+            cp -r ai-agent-workshops-2026/public/* _site/ai-agent-workshops-2026/
+          fi
+
           # agile-ai-workshop: static HTML only (3-hour online Workshop · 企业决策层版 · Mini-Bootcamp 第一节 · 引出 Human Agility)
           if [ -d agile-ai-workshop/public ]; then
             mkdir -p _site/agile-ai-workshop
@@ -670,6 +683,12 @@ jobs:
           # Melbourne AI Startup Showcase · September 2026
           mkdir -p _site/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09
           cp -r lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/dist/* _site/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/
+
+          # 创业财税与合规进阶课 · Seven · 150 min · 30 slides
+          if [ -d lessons/startup-finance-compliance-advanced/dist ]; then
+            mkdir -p _site/lessons/startup-finance-compliance-advanced
+            cp -r lessons/startup-finance-compliance-advanced/dist/* _site/lessons/startup-finance-compliance-advanced/
+          fi
 
           # lessons/ai-new-jobs-talk: 60-min 公开讲座 slide deck (React + Vite · 40 张 slide)
           # 跨课复用 lesson · 数据源 jiangren.com.au/ai-new-jobs + /career-impact-map
@@ -891,6 +910,12 @@ jobs:
               cp -r "$slug/public/"* "_site/$slug/"
             fi
           done
+
+          # Codex 零基础 AI Agent 搭建 Workshop（纯静态课程页）
+          if [ -f codex-agent-workshop/curriculum.html ]; then
+            mkdir -p _site/codex-agent-workshop
+            cp codex-agent-workshop/curriculum.html _site/codex-agent-workshop/
+          fi
 
           # Top-level posters aggregate page (internal marketing asset index)
           [ -f posters.html ] && cp posters.html _site/posters.html || true

@@ -1,5 +1,6 @@
-## 2026-10-27
+## 2026-10-29
 
+- 新增 Seven 主讲的《创业财税与合规进阶课》30 页 HTML Talk Deck（150 分钟），将用户提供的 PowerPoint 转换到 Curriculum 的统一 SlideEngine，覆盖公司架构与财税、政府补助、商业模式、商业边界、竞争壁垒与 30 天行动计划；同步 PRD、来源表、QA、Lesson 目录卡片与部署流程。当前通过非 main 分支提交，待 PR 合并部署。
 - 新增《我指挥了 65 个 AI 助手：用 Claude 搭一套信息核验系统》23 页公开课课件（讲师 Bowen Jia，45 分钟，Local / 未部署）：按搭建顺序分七部分（先看成品、先画图再动手、让 AI 自己拿数据、一个人指挥 65 个 AI、AI 会犯错怎么管住它、每天自己跑、宣传片也让 AI 做、带走练习）；数字全部来自讲师项目真实记录，公司名只作查证样例；附 PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA / research，登记课件（`curriculum/lessons/claude-65-agents-verification` / `lessons.html`）。已推到非 main 分支 `lesson/claude-65-agents-verification` 供预览，未合入 main、未部署，deploy.yml 未加构建步骤。
 
 ## 2026-10-26
@@ -918,3 +919,8 @@
 
 - Publish 85-slide classroom revision with standalone paper analogy, Moz DA/PA, author E-E-A-T and Personal Brand; expand title/meta/schema, site structure and performance examples.
 - Update course catalog and scoped cloud release assertions.
+# 2026-10-29 · 创业财税与合规进阶课 Talk Deck 重构
+
+- 将 30 页整页图片渲染改为可编辑的 React 文字、卡片与章节布局。
+- 修复右上角 JR Academy Logo：纳入 Vite hashed asset，并为深色页增加可见底托。
+- 完成封面、高密度内容页、章节页与末页的本地浏览器验收。
