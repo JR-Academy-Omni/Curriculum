@@ -1,12 +1,12 @@
 ---
 name: ai-news-poster
-description: "为每日 AI 头条生成 '1 张合集 + 5 张单图' 海报套装（1242×1660 竖版，Neo-Brutalism 设计，沿用 quest-posters / xhs-poster 色板）。输出到 curriculum/ai-news-posters/{YYYY-MM-DD}/index.html，自动更新 ai-news-posters hub 页。Use when user wants to produce daily AI news posters for Xiaohongshu / 朋友圈 / 公众号封面, or run the scheduled AI 每日头条海报 pipeline."
+description: "为每日 AI 头条生成 '1 张合集 + 5 张单图' 海报套装（1242×1660 竖版，JR Craft 设计（jr-academy-brand/POSTER_DESIGN.md + tokens/jr-craft.css））。输出到 curriculum/ai-news-posters/{YYYY-MM-DD}/index.html，自动更新 ai-news-posters hub 页。Use when user wants to produce daily AI news posters for Xiaohongshu / 朋友圈 / 公众号封面, or run the scheduled AI 每日头条海报 pipeline."
 argument-hint: "[YYYY-MM-DD 可选，默认今天]"
 ---
 
 # /ai-news-poster — AI 每日头条海报生成器
 
-把 jr-wiki `/ai-daily-news` 产出的 Top 5 新闻，转成一套可直接投放的海报素材：1 张合集大图 + 5 张单图。全部 1242×1660 竖版（小红书聚光 / 朋友圈主图标准），Neo-Brutalism 风格对齐整个 curriculum 矩阵。
+把 jr-wiki `/ai-daily-news` 产出的 Top 5 新闻，转成一套可直接投放的海报素材：1 张合集大图 + 5 张单图。全部 1242×1660 竖版（小红书聚光 / 朋友圈主图标准），视觉按 JR Craft。
 
 ## 🚨 硬性要求（2026-04-21 后新生成的都按这个做）
 
@@ -38,7 +38,9 @@ argument-hint: "[YYYY-MM-DD 可选，默认今天]"
 | 输出目录 | `curriculum/ai-news-posters/{YYYY-MM-DD}/index.html` |
 | 汇总 hub | `curriculum/ai-news-posters/index.html`（仿 `posters.html` 的卡片列表） |
 
-## 🎨 设计语言（对齐 quest-posters.html）
+## 🎨 设计语言
+
+> **视觉以 JR Craft 为准**（owner 2026-10-29）：按 `jr-academy-brand/POSTER_DESIGN.md` + `WEB_DESIGN.md`，色值取 `jr-academy-brand/tokens/jr-craft.css`（`--jc-*`）。下方 quest-posters 旧色板（`#ff5757` / `#10162f` 等）是尚未迁移的模板遗留，新稿不要再用黑边、直角硬卡和偏移硬阴影。
 
 ### 色板（CSS 变量）
 ```css
@@ -51,11 +53,10 @@ argument-hint: "[YYYY-MM-DD 可选，默认今天]"
 --bg-cream: #fff1e7;
 ```
 
-### Neo-Brutalism 要点
+### JR Craft 要点（按 POSTER_DESIGN.md）
 - 外层 `.poster` 留纯矩形 + padding（避免 html2canvas 圆角截图 bug）
-- 内层 `.p-inner` 5px 黑边 + 36px 圆角 + offset shadow `6px 6px 0 var(--brand-dark)`
-- 右上角点阵装饰（`radial-gradient` 1.5px dots, 28px spacing, opacity 0.1）
-- h2 em 黄色下划线高亮
+- 内层白卡圆角 24–40 + `--jc-shadow-card`；不用黑边和偏移硬阴影
+- 点阵装饰用 `--jc-dot-grid`；强调用珊瑚波浪线，一张图只一个个性元素
 
 ### 字体
 - `Noto Sans SC` 900/700/500（主）

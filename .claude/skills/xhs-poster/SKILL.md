@@ -1,6 +1,6 @@
 ---
 name: xhs-poster
-description: "为 Bootcamp 课程生成小红书封面 + 配图套装（锁死 1242×1660 / 3:4 竖版，聚光投流标准）。沿用 quest-posters.html 的设计语言（Neo-Brutalism + 品牌四色），HTML/CSS 写设计，puppeteer 离线渲染成 PNG，下载按钮 fetch 静态 PNG（1:1 真 Chrome 渲染）。Use when user wants to create Xiaohongshu cover/carousel images for a course, or prepare 聚光 ad creatives."
+description: "为 Bootcamp 课程生成小红书封面 + 配图套装（锁死 1242×1660 / 3:4 竖版，聚光投流标准）。视觉按 JR Craft（jr-academy-brand/POSTER_DESIGN.md + tokens/jr-craft.css），沿用 quest-posters.html 的版式结构，HTML/CSS 写设计，puppeteer 离线渲染成 PNG，下载按钮 fetch 静态 PNG（1:1 真 Chrome 渲染）。Use when user wants to create Xiaohongshu cover/carousel images for a course, or prepare 聚光 ad creatives."
 argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 ---
 
@@ -75,7 +75,9 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 
 ## 🎨 设计语言（对齐 quest-posters.html）
 
-参考文件：`curriculum/quest-posters.html`。严格沿用该文件的视觉 token，让新课的素材和整个课程矩阵视觉一致。
+> **视觉以 JR Craft 为准**（owner 2026-10-29）：按 `jr-academy-brand/POSTER_DESIGN.md` + `WEB_DESIGN.md`，色值取 `jr-academy-brand/tokens/jr-craft.css`（`--jc-*`）。下方 quest-posters 旧色板（`#ff5757` / `#10162f` 等）是尚未迁移的模板遗留，新稿不要再用黑边、直角硬卡和偏移硬阴影。
+
+参考文件：`curriculum/quest-posters.html`（版式与字号参考）。
 
 ### 色板（CSS 变量，必须用这套）
 ```css
@@ -141,12 +143,10 @@ argument-hint: "[bootcamp目录] [可选：钩子主题，如 '30天入门AI']"
 
 `--brand-yellow` / `--brand-blue` / `--brand-green` / `--brand-dark` 是 JR 品牌的"标识系统色"，跨课程一致（信号灯语义）；`--brand-red` 是"主强调色"槽位，每门课可以替换成自己的主题色。这样既保留 JR 品牌识别（深色文字 / 黄高亮 / 绿成功），又能区分课程。
 
-### Neo-Brutalism 要点（照抄 quest-posters）
-- 边框 `2px solid var(--brand-dark)`（内框 `.p-inner` 上）
-- 卡片圆角 16-36px
-- 偏移阴影 `box-shadow: 6px 6px 0 var(--brand-dark)` / 卡片大: `16px 16px 0 rgba(16,22,47,0.04)`
-- 海报右上角点阵装饰（`radial-gradient` 1.5px dots, 28px spacing, opacity 0.1）
-- 标题 h2 em 加黄色下划线高亮（`::after` 绝对定位在字底部 10px、高 24px、黄色 opacity 0.75）
+### JR Craft 要点（按 POSTER_DESIGN.md）
+- 白卡圆角 24 + `--jc-shadow-card`，或 135° 渐变卡圆角 32–40（白字，阳光黄卡深墨字）；不用黑边和偏移硬阴影
+- 点阵装饰用 `--jc-dot-grid`；强调用珊瑚波浪线，一张图只一个个性元素
+- CTA：浅珊瑚胶囊 `--jc-primary` + 白色粗体字，一张图一个
 
 ### 字体
 ```html

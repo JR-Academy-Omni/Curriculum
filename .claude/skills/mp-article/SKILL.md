@@ -142,7 +142,7 @@ function fitText(ctx, text, fontFamily, maxWidth, startSize, minSize = 30) {
   return size;
 }
 
-/** 背景点阵装饰（Neo-Brutalism 常用） */
+/** 背景点阵装饰（JR Craft --jc-dot-grid） */
 function drawDotPattern(ctx, W, H, step, dotR, alpha) { ... }
 
 /** 圆角矩形（brand chip 等） */

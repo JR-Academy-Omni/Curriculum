@@ -150,9 +150,9 @@ Task 检查方式（按优先级选择）：
 | `styles.css` | 从 ai-engineer-bootcamp 复制 |
 
 **页面设计系统（必须遵守）：**
-- Neo-Brutalism：3px 黑色边框、6px offset box-shadow、hover 移除阴影
-- CSS 变量：--indigo:#6366f1, --teal:#10b981, --red:#ff5757, --orange:#FF914D, --dark:#10162f
-- 字体：Noto Sans SC + DM Sans + Space Mono
+- JR Craft：按 `jr-academy-brand/WEB_DESIGN.md` + `COURSE_DESIGN.md`；白卡圆角 24 + 软阴影，不用 3px 黑边 / 硬阴影
+- CSS 变量：只引用 `jr-academy-brand/tokens/jr-craft.css` 的 `--jc-*` token，不写死 hex
+- 字体：Bricolage Grotesque + DM Sans + Noto Sans SC，标签数字用 JetBrains Mono
 - 纯 HTML + CSS（不用 React/框架），inline styles 或 `<style>` 块
 - 中文内容，英文技术术语保留原文
 - 禁止 AI 味模板内容

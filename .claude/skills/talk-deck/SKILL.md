@@ -1,9 +1,11 @@
 ---
 name: talk-deck
-description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jracademy.ai/curriculum/lessons/{slug}/）。沿用 1600×900 SlideEngine、一文件一页、真实数据与 JR Register B 圆角课程视觉。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic; all presentation requests use this HTML-first workflow."
+description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite + framer-motion 的 SPA deck，部署到 jracademy.ai/curriculum/lessons/{slug}/）。沿用 1600×900 SlideEngine、一文件一页、真实数据与 JR Craft 课件视觉。Use when user wants to build a web slide deck / 网页版讲座 / 在线 PPT for a talk, lecture, or bootcamp topic; all presentation requests use this HTML-first workflow."
 ---
 
 # /talk-deck — 网页版讲座 PPT 生成器
+
+> **视觉规则（owner 2026-10-29）**：匠人课件只用 JR Craft —— 按 `jr-academy-brand/COURSE_DESIGN.md` §3 + `WEB_DESIGN.md`，数值取 `jr-academy-brand/tokens/jr-craft.css`（`--jc-*`）。旧 Register B / Neo-Brutalism（3px 黑边、直角硬卡、`6px 6px 0 #000` 硬阴影）和 `--jr-*` token 已删除。本文仍提到 Register B 的段落与 `theme.ts` 旧色值是 `_template` 尚未迁移的遗留：新内容层不要再用黑边、硬阴影和旧色值，冲突时以 `COURSE_DESIGN.md` 为准。
 
 所有 PPT、讲座、课程课件和演示稿必须先制作 HTML 在线版，统一使用 Talk Deck；禁止生成或交付 `.pptx`，不得推荐或转交 Canva 作为替代。PDF 仅从已验证的同一 HTML 打印生成。
 
@@ -29,7 +31,7 @@ description: "把一个讲座/课程主题做成网页版 PPT（React 19 + Vite 
 
 1. **先写 PRD，再写代码**。`PRD.md` 必须含「整体节奏表（时间/章节/页数）」+「逐页 slide-by-slide spec」，在当前任务确认 PRD；用户已授权明确方案或修订范围时继续执行，不重复索要确认。（项目级 PRD-first 规则）
 2. **数据零编造**。所有薪资/增长率/雇主/案例必须来自 `research/*.md` 或可引用源。缺字段就 **omit / 显示「数据不足」**，绝不用别国数据或估算补位。野生数据点必标 `sourceUrl`。
-3. **设计语言锁死 JR Register B 课程视觉**：暖色网格纸、品牌四色、少量结构边框与无模糊偏移阴影。不要退回满屏方盒子的旧 Neo-Brutalism，也不混入 Anthropic 暖色系或通用 SaaS 卡片风。一个 deck 一套体系。
+3. **设计语言锁死 JR Craft 课件视觉**（`COURSE_DESIGN.md` §3）：品牌字体、`--jc-*` 色彩、圆角白卡与软阴影，不用黑边硬阴影，也不混入 Anthropic 暖色系或通用 SaaS 卡片风。一个 deck 一套体系。
 4. **禁止直角 UI 容器**。主面板、信息卡、流程节点、标签、按钮、引用框统一使用圆角；默认主面板 `22–24px`、卡片 `16–20px`、标签 `7–10px`、胶囊 `999px`。坐标轴、连接线、表格分隔线、代码字符边界等技术表达可以是直线，但承载内容的闭合容器不能是直角矩形。
 5. **一文件一页**。每页一个 `src/components/slides/Xnn_Name.tsx`，禁止把多页塞进一个文件。
 6. **设计画布固定 1600×900**，所有尺寸写绝对 px（由 SlideEngine 整体 scale 适配视口），不要写响应式断点。
@@ -94,7 +96,7 @@ lessons/{slug}/
 ## 演讲者摄像头圆圈（录播露脸 · `CameraBubble.tsx`）
 
 录播引流场景常要右下角露脸（对标 Slidev 的 Camera View）。React deck 自带组件，比 Slidev 更可控：
-- `src/components/CameraBubble.tsx` —— `getUserMedia` → 圆形 `<video>` 浮层，**按 `V` 开关**（监听排除 ⌘/Ctrl/Alt，不抢复制粘贴）、可拖动、镜像、JR Neo-Brutalism 粗黑边 + 偏移硬阴影。
+- `src/components/CameraBubble.tsx` —— `getUserMedia` → 圆形 `<video>` 浮层，**按 `V` 开关**（监听排除 ⌘/Ctrl/Alt，不抢复制粘贴）、可拖动、镜像（模板现为旧粗黑边 + 硬阴影，待迁 JR Craft）。
 - 已在 `SlideEngine` 顶层 `<CameraBubble />` 渲染；它 `position: fixed` 固定在视口，**不跟 1600×900 画布一起 scale**（像 OBS 摄像头），开关/拖动不影响翻页。
 - 摄像头流在关闭 / 组件卸载时会 `stop()`，无权限时红色提示一闪而过。
 
@@ -120,7 +122,7 @@ lessons/{slug}/
 
 ---
 
-## theme.ts — JR Register B 课程设计令牌
+## theme.ts — `_template` 现有令牌（旧 Register B 值，待迁 JR Craft）
 
 ```ts
 export const colors = {

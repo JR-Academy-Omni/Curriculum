@@ -20,9 +20,9 @@
 
 - 技术栈锁死：React 19 + Vite 8 + framer-motion + inline style（无 Tailwind）
 - 引擎：`SlideEngine.tsx` —— 1600×900 固定画布整体 scale，键盘/触摸/滚轮翻页 + `?page=N` URL 同步
-- 录播露脸：`CameraBubble.tsx` —— 按 `C` 开关右下角圆形摄像头浮层（对标 Slidev Camera View，可拖动、镜像、品牌粗黑边）
+- 录播露脸：`CameraBubble.tsx` —— 按 `C` 开关右下角圆形摄像头浮层（对标 Slidev Camera View，可拖动、镜像）
 - 结构：一文件一页 `slides/Xnn_Name.tsx`，`theme.ts` 令牌 + `ui.tsx` 基元 + `data/*.ts` 真实数据
-- 设计：JR Neo-Brutalism（黑 3px 边框 + 偏移硬阴影 + 品牌四色，暖底不纯白）
+- 设计：JR Craft（`jr-academy-brand/COURSE_DESIGN.md` §3 + `tokens/jr-craft.css`）；不用黑 3px 边框和偏移硬阴影
 - 部署：`vite base = /curriculum/lessons/{slug}/`，build → `dist/`
 
 ## 硬性要求
