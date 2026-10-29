@@ -1,0 +1,5 @@
+import { Teaching, Three } from '../Teaching';
+import { Panel, Label, colors } from '../deck';
+export default function P04(){return <Teaching tag="增长原理 04 · OPC 教学模拟" title="一人服务公司，先把第一圈手动跑通" subtitle="模拟：为本地商家做预约流程优化。数字和结果待验证，不是一个已成功的企业案例。"><Panel style={{padding:26}}><div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:18}}>{[
+['找首客','温暖介绍 / 精准接触','方法01–02'],['小范围交付','付费试点，按约定验收','方法03、26'],['留下成果','脱敏案例，客户确认','方法13'],['带来下一单','案例获客 / 相关介绍','方法05、17']
+].map(([t,d,m],i)=><div key={t}><Label bg={colors.yellow} color={colors.dark}>{i+1} · {m}</Label><h2 style={{fontSize:30,margin:'20px 0 12px'}}>{t}</h2><p style={{fontSize:25,lineHeight:1.45,margin:0}}>{d}</p></div>)}</div><div style={{fontSize:30,fontWeight:800,marginTop:30,paddingTop:20,borderTop:'2px solid'}}>下一单 → 同类交付更熟练 → 再产生可信成果 ↺</div></Panel><p style={{fontSize:24,lineHeight:1.5,margin:"24px 0 14px"}}>每个箭头都要证据：谁介绍、谁看案例、谁付费、谁验收。单人交付容量不够时，先收窄范围、标准化，再扩大获客。</p><p style={{fontSize:18}}>起步手工招募与交付依据：<a href="https://www.paulgraham.com/ds.html" target="_blank" rel="noreferrer">Paul Graham · Do Things That Don’t Scale</a>；循环与方法组合为教学设计。</p></Teaching>;}

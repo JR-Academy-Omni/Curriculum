@@ -1,0 +1,2 @@
+import LessonPage from '../LessonPage';
+export default function S02r_ProductSteps(){return <LessonPage {...{"tag": "W3 · 需求 · 产品步骤", "title": "做产品的逻辑顺序", "subtitle": "每一步的产出，都是下一步的输入。", "mode": "rows", "blocks": [["1 · 角色与画像", "谁买、谁用、谁受益、谁审核；每个字段标来源。"], ["2 · 现在的流程", "交班现在怎么做、在哪里漏、谁返工；来自访谈与观察。"], ["3 · 目标流程", "Resident → Shift → Task → Activity → Note → Review → Confirm。"], ["4 · 价值与指标", "记录时间、漏项率、复核负担：先定怎么量，不预设数字。"], ["5 · MVP 范围", "只做一条最有价值的流程，其余留到以后。"], ["6 · 验收标准", "每条可执行、可检查，后面直接变成 E2E 用例。"]], "footer": "第 1–2 步属于 ADLC 的需求，第 3–6 步写进 PRD。"}}/>;}

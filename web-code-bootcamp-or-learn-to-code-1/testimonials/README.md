@@ -86,3 +86,7 @@ testimonials/
 ├── _imports/          # 历史数据原始导出、素材映射和导入报告
 └── _archived/         # 退费 / 学员撤回 / 信息作废（不对外用，保留备查）
 ```
+
+## DevOps Offer 数据
+
+[DevOps 学员 Offer 追踪表](devops-offers.md)：44 条截图转录记录，直接保存表格数据，不保存截图；疑似重复未合并，不并入全栈班成果统计。

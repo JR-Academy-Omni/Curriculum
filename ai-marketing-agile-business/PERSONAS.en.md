@@ -1,4 +1,4 @@
-# AI Content Marketing for Small Business — Audience Personas
+# AI Marketing实战Bootcamp — Audience Personas
 > This is the evidence layer for English-language marketing, funnel and content decisions. At present, the course brief identifies candidate audiences, but no interviews, enquiry records, sales notes or cohort data have been supplied. The candidates below must not be presented as validated buyers.
 
 ## 0. Meta

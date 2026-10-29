@@ -61,6 +61,32 @@ jobs:
           bun install
           bun run build
 
+      - name: Build Founder AI Video Talk Deck
+        working-directory: lessons/ai-solo-founder-ai-video
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      # Melbourne resume and career event · 2 October 2026 · 18 slides
+      - name: Build Melbourne Resume Career October 2026
+        working-directory: lessons/melbourne-resume-career-2026-10-02
+        run: |
+          bun install
+          bun run build
+
+      # Melbourne enterprise AI event · 1 October 2026 · host and guest decks
+      - name: Build melbourne-ai-work-system-2026-10-01
+        working-directory: lessons/melbourne-ai-work-system-2026-10-01
+        run: |
+          bun install
+          bun run build
+
+      - name: Build melbourne-ai-work-system-2026-10-01-li-min
+        working-directory: lessons/melbourne-ai-work-system-2026-10-01-li-min
+        run: |
+          bun install
+          bun run build
+
       # Melbourne AI Startup Showcase · September 2026 · 22 slides
       - name: Build Melbourne AI Showcase September 2026
         working-directory: lessons/melbourne-ai-startup-showcase-networking/editions/2026-09
@@ -80,8 +106,50 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # CareerOS investor pitch deck (English, noindex, not listed in lessons.html)
+      - name: Build CareerOS investor pitch deck
+        working-directory: pitch/careeros
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       - name: Build AI Engineer Practice W3
         working-directory: lessons/ai-engineer-cohort-07-practice-w3
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      # Build lessons/ai-engineer-cohort-07-w2-tokens-cache (90-min · 37 slides · Tokens, Context Windows & Cache Efficiency)
+      - name: Build AI Engineer W2 Tokens & Cache
+        working-directory: lessons/ai-engineer-cohort-07-w2-tokens-cache
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      # Build lessons/ai-engineer-cohort-07-w3-context-engineering (90-min · 21 slides · Context Engineering: Selection, Assembly & Lifecycle)
+      - name: Build AI Engineer W3 Context Engineering
+        working-directory: lessons/ai-engineer-cohort-07-w3-context-engineering
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      # Build lessons/ai-engineer-cohort-07-w4-rag-fundamentals (90-min · 30 slides · RAG Fundamentals)
+      - name: Build AI Engineer W4 RAG Fundamentals
+        working-directory: lessons/ai-engineer-cohort-07-w4-rag-fundamentals
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      # Build lessons/ai-engineer-cohort-07-w5-rag-quality (90-min · 35 slides · RAG Quality)
+      - name: Build AI Engineer W5 RAG Quality
+        working-directory: lessons/ai-engineer-cohort-07-w5-rag-quality
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      # Build lessons/startup-finance-compliance-advanced (150-min · 30 slides · Seven)
+      - name: Build startup finance and compliance advanced lesson
+        working-directory: lessons/startup-finance-compliance-advanced
         run: |
           bun install --frozen-lockfile
           bun run build
@@ -121,6 +189,13 @@ jobs:
         working-directory: lessons/ai-engineer-cohort-07-miniclaw
         run: |
           bun install
+          bun run build
+
+      # Build lessons/ai-solo-founder-w11 (90-min 用户增长的方法 · 65 slides)
+      - name: Build lessons/ai-solo-founder-w11
+        working-directory: lessons/ai-solo-founder-w11
+        run: |
+          bun install --frozen-lockfile
           bun run build
 
       # Build lessons/ai-solo-founder-w1 (AI 一人创业营 · W1 · 45 张创业 / SoT / Founder OS 讲课 deck)
@@ -283,9 +358,27 @@ jobs:
           mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w2
           cp -r lessons/ai-engineer-cohort-07-practice-w2/dist/* _site/lessons/ai-engineer-cohort-07-practice-w2/
           cp lessons/ai-engineer-cohort-07-practice-w2/PRD.md lessons/ai-engineer-cohort-07-practice-w2/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w2/SOURCE_MAP.md lessons/ai-engineer-cohort-07-practice-w2/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-practice-w2/
+          cp lessons/ai-engineer-cohort-07-practice-w2/README.md lessons/ai-engineer-cohort-07-practice-w2/QA.md lessons/ai-engineer-cohort-07-practice-w2/source-map.json _site/lessons/ai-engineer-cohort-07-practice-w2/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w2/research
+          cp lessons/ai-engineer-cohort-07-practice-w2/research/public-sources-2026-10-11.md lessons/ai-engineer-cohort-07-practice-w2/research/public-sources-2026-10-11.json _site/lessons/ai-engineer-cohort-07-practice-w2/research/
           mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w3
           cp -r lessons/ai-engineer-cohort-07-practice-w3/dist/* _site/lessons/ai-engineer-cohort-07-practice-w3/
           cp lessons/ai-engineer-cohort-07-practice-w3/PRD.md lessons/ai-engineer-cohort-07-practice-w3/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w3/SOURCE_MAP.md lessons/ai-engineer-cohort-07-practice-w3/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-practice-w3/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/lab
+          cp -r lessons/ai-engineer-cohort-07-w2-tokens-cache/dist/* _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/
+          cp lessons/ai-engineer-cohort-07-w2-tokens-cache/PRD.md lessons/ai-engineer-cohort-07-w2-tokens-cache/RUNSHEET.md lessons/ai-engineer-cohort-07-w2-tokens-cache/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w2-tokens-cache/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/
+          cp lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/GUIDE.md lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/ttft.py _site/lessons/ai-engineer-cohort-07-w2-tokens-cache/lab/
+          mkdir -p _site/pitch/careeros
+          cp -r pitch/careeros/dist/* _site/pitch/careeros/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w3-context-engineering
+          cp -r lessons/ai-engineer-cohort-07-w3-context-engineering/dist/* _site/lessons/ai-engineer-cohort-07-w3-context-engineering/
+          cp lessons/ai-engineer-cohort-07-w3-context-engineering/PRD.md lessons/ai-engineer-cohort-07-w3-context-engineering/RUNSHEET.md lessons/ai-engineer-cohort-07-w3-context-engineering/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w3-context-engineering/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w3-context-engineering/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w4-rag-fundamentals
+          cp -r lessons/ai-engineer-cohort-07-w4-rag-fundamentals/dist/* _site/lessons/ai-engineer-cohort-07-w4-rag-fundamentals/
+          cp lessons/ai-engineer-cohort-07-w4-rag-fundamentals/PRD.md lessons/ai-engineer-cohort-07-w4-rag-fundamentals/RUNSHEET.md lessons/ai-engineer-cohort-07-w4-rag-fundamentals/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w4-rag-fundamentals/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w4-rag-fundamentals/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w5-rag-quality
+          cp -r lessons/ai-engineer-cohort-07-w5-rag-quality/dist/* _site/lessons/ai-engineer-cohort-07-w5-rag-quality/
+          cp lessons/ai-engineer-cohort-07-w5-rag-quality/PRD.md lessons/ai-engineer-cohort-07-w5-rag-quality/RUNSHEET.md lessons/ai-engineer-cohort-07-w5-rag-quality/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w5-rag-quality/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w5-rag-quality/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/
@@ -305,6 +398,12 @@ jobs:
 
           mkdir -p _site/ai-essentials-bootcamp
           cp -r ai-essentials-bootcamp/public/* _site/ai-essentials-bootcamp/
+
+          # bigtech-mentor-internship (大厂导师实习计划 · 6周项目制 · 纯静态课程页)
+          if [ -d bigtech-mentor-internship/public ]; then
+            mkdir -p _site/bigtech-mentor-internship
+            cp -r bigtech-mentor-internship/public/* _site/bigtech-mentor-internship/
+          fi
 
           # web-code-bootcamp-or-learn-to-code-1 (第 30 期 · Full-Stack + AI)
           # URL slug 匹配 production: /program-course/web-code-bootcamp-or-learn-to-code-1
@@ -355,6 +454,12 @@ jobs:
 
           # openclaw-workshop: static HTML only (4-hour offline workshop, no React build)
           # workbuddy-workshop: static HTML only (4-hour Chinese online live workshop)
+          # ai-audit-risk-bootcamp: static HTML only (4-week bilingual AI risk & audit course)
+          if [ -d ai-audit-risk-bootcamp/public ]; then
+            mkdir -p _site/ai-audit-risk-bootcamp
+            cp -r ai-audit-risk-bootcamp/public/* _site/ai-audit-risk-bootcamp/
+          fi
+
           if [ -d workbuddy-workshop/public ]; then
             mkdir -p _site/workbuddy-workshop
             cp -r workbuddy-workshop/public/* _site/workbuddy-workshop/
@@ -431,6 +536,12 @@ jobs:
             cp -r ai-adoption-workshop/public/* _site/ai-adoption-workshop/
           fi
 
+          # ai-agent-workshops-2026: static HTML only (三级十门在职 AI Agent 实战短课介绍页)
+          if [ -d ai-agent-workshops-2026/public ]; then
+            mkdir -p _site/ai-agent-workshops-2026
+            cp -r ai-agent-workshops-2026/public/* _site/ai-agent-workshops-2026/
+          fi
+
           # agile-ai-workshop: static HTML only (3-hour online Workshop · 企业决策层版 · Mini-Bootcamp 第一节 · 引出 Human Agility)
           if [ -d agile-ai-workshop/public ]; then
             mkdir -p _site/agile-ai-workshop
@@ -477,6 +588,24 @@ jobs:
           if [ -d techscrum-devops/public ]; then
             mkdir -p _site/techscrum-devops
             cp -r techscrum-devops/public/* _site/techscrum-devops/
+          fi
+
+          # AI DevOps / AI 数据工程 实战课（项目班 + 高级班）：static HTML only，$599 含 GST，10 小时直播带做；预售筹备中，页面带 noindex，不挂首页卡片
+          if [ -d devops-ai-starter/public ]; then
+            mkdir -p _site/devops-ai-starter
+            cp -r devops-ai-starter/public/* _site/devops-ai-starter/
+          fi
+          if [ -d devops-ai-advanced/public ]; then
+            mkdir -p _site/devops-ai-advanced
+            cp -r devops-ai-advanced/public/* _site/devops-ai-advanced/
+          fi
+          if [ -d data-engineer-ai-starter/public ]; then
+            mkdir -p _site/data-engineer-ai-starter
+            cp -r data-engineer-ai-starter/public/* _site/data-engineer-ai-starter/
+          fi
+          if [ -d data-engineer-ai-advanced/public ]; then
+            mkdir -p _site/data-engineer-ai-advanced
+            cp -r data-engineer-ai-advanced/public/* _site/data-engineer-ai-advanced/
           fi
 
           # ai-engineer-cn: static HTML only (AI Engineer 训练营 国内版 · 12 周 · 边学边做 Dispatch AI · RAG/Agent/MCP/私有化部署 · 对齐国内大模型应用开发岗 JD)
@@ -539,9 +668,27 @@ jobs:
             cp -r cca-f-claude-code-bootcamp/public/* _site/cca-f-claude-code-bootcamp/
           fi
 
+          # Melbourne enterprise AI event · host and Li Min guest slides
+          # Melbourne resume and career event · 2 October 2026
+          mkdir -p _site/lessons/melbourne-resume-career-2026-10-02
+          cp -r lessons/melbourne-resume-career-2026-10-02/dist/* _site/lessons/melbourne-resume-career-2026-10-02/
+
+          # Melbourne enterprise AI event · 1 October 2026
+          mkdir -p _site/lessons/melbourne-ai-work-system-2026-10-01
+          cp -r lessons/melbourne-ai-work-system-2026-10-01/dist/* _site/lessons/melbourne-ai-work-system-2026-10-01/
+
+          mkdir -p _site/lessons/melbourne-ai-work-system-2026-10-01-li-min
+          cp -r lessons/melbourne-ai-work-system-2026-10-01-li-min/dist/* _site/lessons/melbourne-ai-work-system-2026-10-01-li-min/
+
           # Melbourne AI Startup Showcase · September 2026
           mkdir -p _site/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09
           cp -r lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/dist/* _site/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/
+
+          # 创业财税与合规进阶课 · Seven · 150 min · 30 slides
+          if [ -d lessons/startup-finance-compliance-advanced/dist ]; then
+            mkdir -p _site/lessons/startup-finance-compliance-advanced
+            cp -r lessons/startup-finance-compliance-advanced/dist/* _site/lessons/startup-finance-compliance-advanced/
+          fi
 
           # lessons/ai-new-jobs-talk: 60-min 公开讲座 slide deck (React + Vite · 40 张 slide)
           # 跨课复用 lesson · 数据源 jiangren.com.au/ai-new-jobs + /career-impact-map
@@ -600,6 +747,11 @@ jobs:
             cp lessons/ai-solo-founder-w7/*.html _site/lessons/ai-solo-founder-w7/
             cp lessons/ai-solo-founder-w7/README.md _site/lessons/ai-solo-founder-w7/
           fi
+
+          # 创业营 AI视频 · Talk Deck React课件
+          mkdir -p _site/lessons/ai-solo-founder-ai-video
+          cp -r lessons/ai-solo-founder-ai-video/dist/* _site/lessons/ai-solo-founder-ai-video/
+          cp lessons/ai-solo-founder-ai-video/*.md _site/lessons/ai-solo-founder-ai-video/
 
           # AI 一人创业营 W2 · 你的 AI 员工上岗 Agents at Work
           if [ -d lessons/ai-solo-founder-w2/dist ]; then
@@ -678,6 +830,14 @@ jobs:
             cp -r lessons/ai-solo-founder-w4/dist/* _site/lessons/ai-solo-founder-w4/
           fi
 
+          # OPC W11 user growth methods: deck + teaching documents
+          if [ -d lessons/ai-solo-founder-w11/dist ]; then
+            mkdir -p _site/lessons/ai-solo-founder-w11
+            cp -r lessons/ai-solo-founder-w11/dist/* _site/lessons/ai-solo-founder-w11/
+            cp lessons/ai-solo-founder-w11/{PRD,RUNSHEET,WORKSHEET,SOURCE_MAP,QA,README,LIVE_DEMO}.md _site/lessons/ai-solo-founder-w11/
+            cp -r lessons/ai-solo-founder-w11/research _site/lessons/ai-solo-founder-w11/
+          fi
+
           # lessons/ai-solo-founder-w3: AI 一人创业营 · W3 · 这是不是一门好生意（React + Vite）
           if [ -d lessons/ai-solo-founder-w3/dist ]; then
             mkdir -p _site/lessons/ai-solo-founder-w3
@@ -750,6 +910,12 @@ jobs:
               cp -r "$slug/public/"* "_site/$slug/"
             fi
           done
+
+          # Codex 零基础 AI Agent 搭建 Workshop（纯静态课程页）
+          if [ -f codex-agent-workshop/curriculum.html ]; then
+            mkdir -p _site/codex-agent-workshop
+            cp codex-agent-workshop/curriculum.html _site/codex-agent-workshop/
+          fi
 
           # Top-level posters aggregate page (internal marketing asset index)
           [ -f posters.html ] && cp posters.html _site/posters.html || true
@@ -1263,6 +1429,22 @@ jobs:
               </div>
 
               <div class="section">
+                <div class="section-title">AI风险治理与AI审计实战课 · 4周双语课程</div>
+                <div class="cards">
+                  <a href="./ai-audit-risk-bootcamp/curriculum.html">
+                    <span class="tag" style="background:#18B7A0">CURRICULUM · 4 Weeks</span>
+                    <div class="title">AI风险治理与AI审计实战课</div>
+                    <div class="desc">AI基础 · 澳洲监管地图 · 风险控制测试 · 银行Capstone · 双语审计报告</div>
+                  </a>
+                  <a href="./ai-audit-risk-bootcamp/poster.html">
+                    <span class="tag" style="background:#07131c">POSTER</span>
+                    <div class="title">AI风险与审计课程海报</div>
+                    <div class="desc">1242×1660 竖版海报 · 支持一键下载 PNG</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="section">
                 <div class="section-title">WorkBuddy AI 智能办公全能实战课 · 4 小时中文线上直播</div>
                 <div class="cards">
                   <a href="./workbuddy-workshop/curriculum.html">
@@ -1396,6 +1578,10 @@ jobs:
               echo "Skip $slug — no curriculumPages in outline.json"
             fi
           done
+
+      # Curriculum is teaching material: never inject analytics into published HTML.
+      - name: Reject analytics tracking in curriculum HTML
+        run: node scripts/check-no-analytics.mjs _site
 
       # Clean up stale directories on server before deploy (SCP 只复制不删，改目录名后老数据会残留)
       # 一次性清掉已知的废弃 slug —— 新增 bootcamp 改名 / 删除时都在这里加一行

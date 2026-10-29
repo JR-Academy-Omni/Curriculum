@@ -4,8 +4,8 @@
 
 | 字段 | 当前值 | 系统位置 |
 |---|---|---|
-| 课程名 | 小企业 AI 内容营销实战 | Training |
-| English name | AI Content Marketing for Small Business | Training |
+| 课程名 | AI Marketing实战Bootcamp | Training |
+| English name | AI Marketing实战Bootcamp | Training |
 | 课程长度 | 13 × 60 分钟；建议两天 | Training |
 | 讲师 | 待确认 | Program teachers |
 | 助教 | 待确认 | 运营安排 |

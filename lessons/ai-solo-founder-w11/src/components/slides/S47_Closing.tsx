@@ -1,0 +1,6 @@
+import { ChartFrame, ChartDefs, ChartNode, ChartArrow } from '../GrowthChart';
+import { colors } from '../deck';
+import { assetPath } from '../ui';
+export default function S47_Closing(){return <ChartFrame tag="OPC W11 · 下一步" title="先让第一批用户获值，再让价值推动下一轮" subtitle="本周选一条路径，带回用户原话、实际行为和成本。" footnote={<a href={assetPath('worksheet.html')} target="_blank" rel="noreferrer" style={{fontSize:25,fontWeight:800,color:colors.dark}}>打开增长工作单，把下一次实验写具体 ↗</a>}>
+<svg viewBox="0 0 1400 530" role="img" aria-label="一群种子用户完成一项价值任务，产生可追踪回流，然后依据数据做下一次实验" style={{width:1400,height:530}}><ChartDefs id="close-short"/><ChartNode x={25} y={145} w={320} h={145} title="一群种子用户" detail="明确来源与真实需求" fill={colors.yellow}/><ChartArrow id="close-short" d="M 360 220 L 502 220"/><ChartNode x={520} y={145} w={320} h={145} title="一个价值任务" detail="完成一件有用的事" fill={colors.green}/><ChartArrow id="close-short" d="M 856 220 L 1008 220"/><ChartNode x={1025} y={145} w={320} h={145} title="一次可追踪回流" detail="内容 / 推荐带来新人获值" fill={colors.blue}/><ChartArrow id="close-short" d="M 1190 304 L 1190 425 L 204 425 Q 185 425 185 400 L 185 307"/><text x="700" y="398" textAnchor="middle" fontSize="32" fontWeight="800" fill={colors.dark}>观察 → 调整 → 再跑一轮 ↺</text><text x="700" y="505" textAnchor="middle" fontSize="23" fill={colors.dark}>画出来是方案；用户真的走完，才是证据。</text></svg>
+</ChartFrame>;}

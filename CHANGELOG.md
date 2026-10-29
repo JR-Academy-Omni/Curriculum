@@ -1,3 +1,35 @@
+## 2026-10-29
+
+- 新增 Seven 主讲的《创业财税与合规进阶课》30 页 HTML Talk Deck（150 分钟），将用户提供的 PowerPoint 转换到 Curriculum 的统一 SlideEngine，覆盖公司架构与财税、政府补助、商业模式、商业边界、竞争壁垒与 30 天行动计划；同步 PRD、来源表、QA、Lesson 目录卡片与部署流程。当前通过非 main 分支提交，待 PR 合并部署。
+
+## 2026-10-26
+
+- AI Engineer W5 RAG Quality 课件已部署并线上回读（35页、讲师署名、Logo、四套字体与子路径资源正常，PRD / 讲师流程 / 讲义 / 来源表链接可打开，页面与响应头均为 noindex, nofollow），目录卡片改为「已部署」（`curriculum/lessons/ai-engineer-cohort-07-w5-rag-quality` / `lessons.html`）
+- 移除 Curriculum GA4 注入脚本与发布调用，改为拒绝课件中实际运行的 GA/GTM 脚本；明确课件不采集 GA、长期禁止抓取和索引（本地修改，未部署、未触发 CI）。
+
+## 2026-10-22 · Enterprise AI Automation Bootcamp
+
+- 新增 5 课、22 步、600 分钟课程源，早鸟 899、正常 1,099；主要术语保留英文。
+- 保存完整大纲、招生稿、虚构案例、页面预览与验收；官网 Custom Page 随独立官网发布，静态站本次不全量部署。
+- MP4、真实定时运行与班次信息待确认；不宣称课程成果全部就绪。
+
+## 2026-10-19
+
+- 新增 AI Engineer W5 RAG Quality, Testing & Controlled Improvement 35页理论课课件（90分钟，线上互动只用聊天框，Local / 未部署）：第2页目录，全课分七个部分，第2–7部分前各一张过渡页；开场按讲师要求分两部分，先放 W1–W12 足迹地图，再做四道重要概念测试；讲四类失败（retrieval / grounding / citation / no-answer 两个方向）、golden case 五个字段与覆盖、读报告（指标对层、faithfulness 满分仍答错、N/A 与样本量、裁判错判）、单变量实验与五个旋钮（metadata filter、按小节切块、hybrid、top-k、rerank），三个聊天框检查点；例子与数字全部来自 reference RAG 真实运行（完整运行的作答与裁判为本地 qwen3:14b / bonsai-2，页面已标注）；附 PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA，登记课件并补构建与复制步骤（`curriculum/lessons/ai-engineer-cohort-07-w5-rag-quality` / `lessons.html` / `deploy.yml`）
+- AI Engineer W4 RAG Fundamentals 课件已部署并线上回读（30页、讲师署名、Logo、字体与子路径资源正常，PRD / 讲师流程 / 讲义 / 来源表链接可打开），目录卡片改为「已部署」（`curriculum/lessons/ai-engineer-cohort-07-w4-rag-fundamentals` / `lessons.html`）
+- 新增 AI Engineer W4 RAG Fundamentals 30页理论课课件（90分钟，线上互动只用聊天框）：第2页目录，全课分八个部分，每部分开始前一张过渡页回到目录；开场是架构分层测试与 W3 连线复习，定位用开放问题引出三种取知识方式；按离线、在线、组装作答、兜底、排错讲 ingestion、permission-aware retrieval、grounded answer、programmatic citation、四种回答状态与 no-answer，排错只讲 Retrieval / Generation 两层（recall@k vs faithfulness），两个聊天框检查点，后续地图放 Hybrid / Query rewrite / Rerank / RAGAS；每个 contract 课上只讲一个字段，完整字段、failure taxonomy 与面试检查放讲义（WORKSHEET），不布置作业；例子用 CareKind 虚构探视政策，外部资料只引用 Anthropic；附 PRD / RUNSHEET / SOURCE_MAP / QA，登记课件并补构建与复制步骤（`curriculum/lessons/ai-engineer-cohort-07-w4-rag-fundamentals` / `lessons.html` / `deploy.yml`）
+
+## 2026-10-18 · AI Engineer 第七期 W3 实践课件改版（19 页）
+
+- ai-engineer-cohort-07-practice-w3 改为 19 页，按 ADLC 五步（需求 → PRD → 开发 → 部署 → 反馈）重排：新增非领域专家补领域知识、按角色的用户画像（标为待验证假设）、产品逻辑顺序、本周范围；三个端的高层架构图、按功能的详细架构图、AI 部分架构图（Agent、RAG、记忆、Harness、模型路由、评估，依据 outline.json C7P04–C7P12）、Super Admin 的作用与功能、架构决策、王奶奶业务链示例；starter 核查、环境与 key、CI/CD 与 GitHub Actions workflow、先让 Claude 出计划。
+- 按 owner 意见删除原开发实操、版本、audit、出错、测试、演示与交付等抽象页，课件到开发准备结束，之后按工作单实操；技术栈改为 React + Vite + 独立 API（不用 Next.js）。学员工作单按 ADLC 五步重写，根目录与 public 副本一致。本地截图检查与单课件类型检查通过；大纲 C7P03 的库清单仍列 Next.js，未改。
+
+## Local · 2026-10-18 · SEO / GEO通用基础课重整
+
+- founder-seo-eeat按完整授课大纲重整为81页八部分；移除放映路径中的Maple Slot，改用匠人、MDN、Simon与原PPT历史案例。
+- 内容、操作路线、真实案例、8组英文练习与讲师转场配套；独立裁取历史对象与当前网页局部，新增可直接阅读的完整成果材料。
+- 保留原URL与共享引擎；海报未修改。仅本地预览，未提交、未推送、未部署、未触发CI，未运行全量构建。
+
 ## 2026-10-25
 
 - 删除SEO / GEO原第57页，课件调整为80页，同步后续页码、章节跳转和讲师备注（`curriculum/lessons/founder-seo-eeat`）
@@ -53,25 +85,66 @@
 
 # Changelog
 
+## 2026-10-23
+
+- 修复 GA4 发布产物注入对无 `head` 历史 HTML 的兼容：优先写入 `head` 末尾，无 `head` 时写入 `html` 开始标签后，并继续校验所有 Curriculum HTML 都含 GA4 标记（`Curriculum GA4`）。
+
+## Local · 2026-10-20 · Curriculum GA4 coverage
+
+- Add a deployment-output step that injects the existing JR Academy analytics configuration into every assembled curriculum HTML page. The legacy property keeps continuity, while requests on `jracademy.ai` also report to `G-CKXMYNX5QL`.
+- Fail deployment before publication if any assembled HTML file is missing the analytics marker or cannot be injected because it has no closing `head` element.
+- Source change committed for merge with deployment intentionally skipped; no CI was triggered.
+
+## 2026-10-13 — AI风险治理与AI审计实战课
+
+- 新增 `ai-audit-risk-bootcamp` 4周双语实战课，面向澳洲华人审计、会计、风险、合规从业者与相关专业学生。
+- 补齐4阶段、12节课结构化大纲，覆盖AI基础、澳洲监管地图、AI风险与控制测试、用AI辅助审计、银行Capstone与双语报告。
+- 新增完整课程介绍页与1242×1660可下载PNG海报，并接入 `posters.html`、部署组装流程和课程中心首页。
+
+## 2026-10-11
+
+- 修复 W2 生产课程目录入口：移除127.0.0.1本地预览按钮，明确指向68页线上课件的HTTPS地址（`lessons.html`）。
+
+- 发布 AI Engineer 第七期 W2 68页课件，核验线上页数、来源图解、412个构建文件和CareKind交互，并同步Lesson目录、发布状态与公开来源台账（`lessons/ai-engineer-cohort-07-practice-w2`）。
+
 ## 2026-10-11
 
 - 补充 AI Engineer W2 六页公开图解与案例，重绘微软合作模式、团队实验、Anthropic委派、GitHub交付和Skills结构并逐页标来源/改编；本地68页，保留UI/Design System与CareKind实操（`curriculum/lessons/ai-engineer-cohort-07-practice-w2`）。
 
 - 重组 AI Engineer 第七期 W2 网页课件为62页本地版，融入旧 ADLC、Agent/员工协作与 Skills，新增混合团队总图和 CareKind 可操作合成案例，保留 UI/Design System 并同步课堂地图、工作单与来源（`curriculum/lessons/ai-engineer-cohort-07-practice-w2`）。
 
+- 发布OPC W11用户增长65页双语图解：新生节三轮迭代、拼多多、薅羊毛App实战、增长基础设施、9组36动作Skill与方向箭头动画，同步目录和讲师资料（`lessons/ai-solo-founder-w11`）。
+
+- 新增Dropbox、Canva、Notion和Zapier四个真实增长案例各两页，拆解启动与回流并给出OPC实验、适用前提和指标成本；课件62页，同步一手来源、备注、地图及90分钟练习（`lessons/ai-solo-founder-w11`）。
+
+- 补充 OPC 用户增长课件7页原理与飞轮，加入三种回流、推力与摩擦、价值/留存、OPC首圈、互动模型和诊断；54页、90分钟，同步备注、方法地图、练习和来源（`lessons/ai-solo-founder-w11`）。
+
+- 新增并接入部署 OPC W11「用户增长的方法」47页网页课件，包含36种方法、案例、讲师备注和练习单，同步课程目录与构建产物（`lessons/ai-solo-founder-w11`）。
+
+## 2026-10-14
+
+- AI Engineer W3 Context Engineering 课件已部署并线上回读（21页、Logo、字体与子路径资源正常，PRD / 讲师流程 / 学员复习单链接可打开），目录卡片改为「已部署」（`curriculum/lessons/ai-engineer-cohort-07-w3-context-engineering` / `lessons.html`）
+- 重做 AI Engineer W3 Context Engineering 课件为精简版（21页，90分钟）：开场四道上节课复习题，之后按摆资料、挑、排、防、检查、换六件事讲 Inventory、Selection Policy、Assembly、Trust Boundary、Observability、Lifecycle 与五种机制，收成 Blueprint 五步；一页一件事，例子来自「客服 agent 处理退款」；外部资料只引用 Anthropic 文章与文档（`research/sources.md`）；替换此前的 9 块生活例子版（20页）；更新 PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA 与课件卡片；Local，不部署（`curriculum/lessons/ai-engineer-cohort-07-w3-context-engineering` / `lessons.html` / `deploy.yml`）
+
+## 2026-10-13
+
+- 新增 AI Engineer W3 Context Engineering: Selection, Assembly & Lifecycle 20页理论课课件（90分钟，线上互动），页面面向学生：按 9 块用考试、食品标签、装书包、纸条、书桌等生活例子讲术语，结尾五步 Blueprint 与 CareKind 三个场景；附 PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA，登记课件并补构建与复制步骤；Local，不部署（`curriculum/lessons/ai-engineer-cohort-07-w3-context-engineering` / `lessons.html` / `deploy.yml`）
+
 ## 2026-10-06
 
-- 按用户要求移除新增的课件CI及部署前自动检查，仅保留本地制作、登记和验收工具（`talk-deck` / workflows）
+- AI Engineer W2 Tokens & Cache课件已部署并线上回读（37页、资源与入口正常），目录卡片改为「已部署」；学员实验说明改名为`lab/GUIDE.md`（线上README.md被CloudFront统一返回403）（`curriculum/lessons/ai-engineer-cohort-07-w2-tokens-cache` / `lessons.html` / `deploy.yml`）
 
-- 统一HTML在线课件与Talk Deck规则，禁止PPTX与Canva替代；修复目录结构，补W1–W3工作单、共享模板、字体、备注与打印，并加入登记、版本和浏览器验收工具（`talk-deck` / `lessons` / 本地验收）
+- 将AI Engineer W2 Tokens & Cache课件迁移到Talk Deck模板2.0：引擎与engine-manifest与模板一致、改为Register B圆角课程视觉、本地字体、37条讲师备注与打印视图；补PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA，讲师登记为Jessie；不部署（`curriculum/lessons/ai-engineer-cohort-07-w2-tokens-cache`）
 
-- 补齐Curriculum Codex与主仓库共享Claude的Talk Deck入口，统一指向Curriculum canonical Skill和模板（`talk-deck`）
+- 补齐合并时main新增的5个旧课件运行时哈希基线，不修改课件内容、不运行CI、不部署（`lessons` / `talk-deck`）
 
-- 更新README、CLAUDE和AGENTS的网页PPT制作入口，明确Talk Deck、模板、Lesson列表登记与不部署时的分支push规则（`README.md` / `CLAUDE.md` / `AGENTS.md`）
-
-- 明确Talk Deck遵守用户「提交代码、不部署」范围，只做本地验证和提交，不push或触发生产发布（`.claude/skills/talk-deck`）
+- 统一HTML在线Talk Deck与共享Skill，禁止PPTX和Canva替代；补课件登记、工作单、本地字体、备注打印与验收工具；合入main并跳过Actions，不部署（`talk-deck` / `lessons`）
 
 - 修复AI Engineer实践W1–W3课件目录的课次与已部署状态，统一线上入口文案，并补充Talk Deck列表登记、同步发布与线上回读规则（`lessons.html` / `.claude/skills/talk-deck`）
+
+## 2026-10-05
+
+- 新增 AI Engineer W2 Tokens, Context Windows & Cache Efficiency 37页课件（90分钟），用 Claude Code / Codex 跑真实实验，附大纲、学生实验手册，登记课件与构建配置（`curriculum/lessons/ai-engineer-cohort-07-w2-tokens-cache`）
 
 ## 2026-10-04
 
@@ -81,13 +154,118 @@
 
 - 重做AI Engineer实践第一课为86页完整迁入版，补正式封面/目录/章节页，直接迁入63个旧教学页的图解、案例、模板与Lab，更新逐页来源、讲师流程和课件登记（`curriculum/lessons/ai-engineer-cohort-07-practice-w1`）
 
+- 新增创业营AI视频47页Talk Deck，前置ElevenLabs配音，覆盖HyperFrames/Remotion动态PPT、Seedance/MiniMax、原创剧本、素材剪辑及video-shotcraft等Skills，登记课件与构建配置（`curriculum/lessons/ai-solo-founder-ai-video`）
+
 ## 2026-10-03
 
 - 新增 AI Engineer 第七期实践第一课24页组合课件、120分钟讲师流程与学员工作单，复用 SoT/PRD/Rules 并统一七步 ADLC，登记本地入口与构建部署配置（`curriculum/lessons/ai-engineer-cohort-07-practice-w1`）
 
+## 2026-10-02
+
+- 更新企业 AI 自动化讲座为 31 页发布版，保留真实 Skills、管理 Agent 协调、人员职责及审批边界，同步课件源码、PRD 和 lessons.html（`lessons/ai-marketing-talk`）
+
+## 2026-10-01 · Shirley 嘉宾页增加小红书账号
+
+- 按用户提供的截图，在第 8 页头像下方加入昵称“尽我所汲（学习版）”及小红书号 c1818811，保留原头像、介绍与过往实习 Logo。
+
+
+## 2026-10-01 · 简化活动尾页说明
+
+- 删除第25页用户指定的展示时长、主持人停止展示与自由交流中英文文字，保留群介绍与完整二维码。
+
 ## 2026-10-01
 
+- 优化墨尔本讲座四位嘉宾名片，统一居中圆形头像、主题色细环、姓名身份和演讲入口布局（`lessons/melbourne-ai-work-system-2026-10-01`）
+
+- 更新墨尔本10月1日讲座封面与四位嘉宾介绍页头像为圆形，保留原始照片与演讲入口（`lessons/melbourne-ai-work-system-2026-10-01`）
+
 - 按新版 Talk Deck 重做大师课第一课40页视觉，统一网格纸、圆角与品牌阴影，重排第6页并保留URL及Classroom契约（`lessons/vibe-coding-master`）
+
+## 2026-10-01 · Michael AI营销演讲原版在线入口
+
+- 第19页Michael介绍右下角新增“查看分享ppt”，直接在线打开用户提供的AI-ROI.pdf，原文件内容与版式不变。
+- PDF随活动资源部署至匠人域名，不设置自动下载；另外两位缺少链接的嘉宾继续留空。
+
+## 2026-10-01 · 隐藏嘉宾资料占位提示
+
+- 尚未提供PPT链接的嘉宾页留空，不再显示“演讲资料待补充”；已提供的李敏“查看分享ppt”入口继续显示。
+
+## 2026-09-30 · Lightman介绍旁加入匠人logo
+
+- 第20页Lightman的名字介绍旁添加官方黑色匠人学院logo，复用嘉宾公司logo布局并保持原图比例。
+
+## 2026-09-30 · 产品与服务页移到第4页
+
+- 按用户要求，将10月1日活动原第15页“匠人的产品与服务”移到第4页，紧接匠人学院介绍。
+- 原第4–14页顺延至第5–15页；总页数仍为25页，嘉宾和结束部分页码不变。
+
+## 2026-09-30 · Michael Yang照片统一矩形
+
+- 封面与第22页取消Michael Yang的圆形照片遮罩，统一使用其他嘉宾的18px圆角矩形外框。
+- 通过CSS等比近景裁切避开原图圆形黑边，用户原JPG与25页顺序保持不变。
+
+## 2026-09-30 · 10月1日活动调整页序与AI圈介绍
+
+- 删除原第13页，将用户指定9月稿的实际第7–17页原序插入匠人学院介绍后，第24页放在尾页，主控共25页。
+- 原样复制MetaTree、AI圈介绍、八城总览与详情、尾页社群二维码及相关资源；9月参考目录不改。
+- 保留嘉宾照片、公司logo及“查看分享ppt”按钮；李敏原版在线页返回链接随主控页序更新到第21页。
+
+## 2026-09-30 · 嘉宾介绍补充公司logo
+
+- 在李敏与Michael Yang的姓名介绍旁，分别加入用户提供的ML Tax Solution与ANZ原logo，等比显示。
+- 保留嘉宾原图、主控14页顺序和李敏原版在线PPT入口。
+
+## 2026-09-30 · 嘉宾PPT改为在线查看
+
+- 主控第10页与目录中的李敏PPT入口改为匠人在线链接，取消自动下载。
+- 李敏独立路由通过Microsoft PowerPoint直接展示讲者原始15页PPTX，提供在线翻页、全屏和独立窗口，原文件字节不变；旧React改版仍不加载。
+- 其他三位嘉宾尚未提供链接，保留真实的待补充状态。
+
+## 2026-09-30 · 简历活动封面精简主办方文字
+
+- 按用户要求删除封面 UoM Blockchain Association 文字，保留 UMBA Logo，其他页面保持不变。
+
+## 2026-09-30 · 简历活动封面字体对齐参考稿
+
+- 通过真实 Chrome 字体检查，对齐老板封面的 83px / 900 / -3px 字距 / 1.22 行高 / 深蓝黑标题，改为末行黄色下划线与右侧深色简历诊断重点区。
+- 随课件提供参考页使用的 Bricolage Grotesque、DM Sans、Space Mono 原始字体及 OFL 许可，避免依赖浏览器系统回退；保留 Noto Sans SC 中文字体。
+- 18 页均通过字体加载后的浏览器边界与图片检查，现场诊断、嘉宾资料及活动信息保留。
+
+## 2026-09-30 · 10月1日活动补充主办方与产品介绍
+
+- 在联合主办后依次加入用户指定的匠人学院介绍、产品与服务，以及ANZ、Bupa独立介绍页，主控从10页扩为14页。
+- 三家机构使用相同的左logo、右中英文介绍版式。ANZ/Bupa文案来自澳大利亚官网，附官方介绍入口。
+- 保留原始嘉宾顺序、照片、二维码及李敏原版PPTX下载；更新目录和逐页规格。
+
+## 2026-09-30 · 墨尔本简历与职场答疑活动公开放映
+
+- 新增 10 月 2 日墨尔本大学活动的 18 页 talk-deck / JR Register B 演示稿，包含机构介绍、四位嘉宾、圆桌、现场简历诊断、Q&A 与行动页。
+- 使用用户提供的照片及 JR、UMBA、CoinW Logo；Ethan 页加入 Wobitech，Shirley 页将 Deloitte / EY 明确标为过往实习经历。
+- 按线上参考稿统一暖色网格、黑色粗体、黄色下划线与圆角白色面板，内置中文字体；为现场简历诊断增加突出双栏版式。
+- 将独立活动入口登记到 lessons.html，并加入官网构建与部署流程。
+
+## 2026-09-30 · 10月1日主控对齐老板9月稿视觉
+
+- 使用用户指定的9月39页成品为直接范本：完整talk-deck skill和参考稿DeckFrame，统一淡暖网格、140px内容边距、双圆角主面板及黄色图片说明区。
+- 调整10页主控的封面、联合主办、主题、四位嘉宾、Q&A、入群与感谢页。真实照片、二维码与原始内容保留；李敏仍直接下载用户原版PPTX。
+
+## 2026-09-30 · 李敏演讲恢复原版入口
+
+- 按用户纠正，主控第6页和课件目录直接下载用户提供的原始PPTX；旧李敏网页不再加载改版，转为原版下载入口。
+- 原文件字节、15页内容、版式和备注保持不变；活动主控稿的嘉宾照片保留。
+
+## 2026-09-30 · 企业 AI 分享嘉宾照片替换
+
+- 将10月1日主控稿四位嘉宾页、封面及李敏独立演讲封面换成用户提供的真实原始照片，保持等比展示；Michael Yang使用原圆形照片的CSS视窗去除外围黑边。
+- 保持原照片文件字节、嘉宾文字、演讲入口及暖色网格纸视觉。
+
+## 2026-09-30 · 10 月 1 日企业 AI 实战分享网页版
+
+- 根据用户 Canva 原稿新建独立 10 页活动主控 deck，保留 Michael → Lightman → 李敏 → Michael Yang 的嘉宾顺序，以及联合主办、Q&A、原始活动群二维码和收尾合影。
+- 新增李敏《AI 对会计行业的影响》15 页 JR 网页版；保持原稿案例与专业判断边界，保存原始 PPTX 和讲者备注，主控李敏页右下角可打开完整演讲。
+- 使用当前 talk-deck 视觉：暖色网格纸、marker 下划线、24px 圆角主面板和品牌色偏移阴影；五个运行时文件逐字来自 `_template`。
+- 嘉宾链接集中在数据文件维护；另外三位未提供 PPT 地址，页面保留明确的待补充状态，不绑定无关课程。
+- 将两个新路由注册到 `lessons.html` 与现有服务器部署流程；保持 9 月创业展示交流目录独立。
 
 ## 2026-09-30 · 墨尔本展示交流 talk-deck 视觉重做
 
@@ -775,3 +953,22 @@
 ## 2026-09-14 · Curriculum domain
 
 - 更新课程资料、索引和发布模板的 curriculum 绝对链接为 jracademy.ai，增加上传前域名检查；保留原路径和非 curriculum 服务地址。
+
+## 2026-10-18 · 发布Lightman SEO/GEO课程
+
+- 发布81页Talk Deck、五段真实案例试看、五张内容图与完整工作材料；课程目录优先链接完整试看。
+- 课程时间为10/25周日，布里斯班13:30、悉尼14:30，四小时线上；早鸟179至10/20 23:59，10/21起229。
+- 仅通过GitHub Actions既有云端runner发布本课和课程目录，不带入其他本地改动。视频等待真人录音。
+
+- 发布回读补充：公开浏览器从课程目录进入试看、五案例/图片和原81页课件已核验；目录标记已部署。云端回读使用不可变版本回执、跟随重定向与有界重试。
+
+
+## 2026-10-25 SEO / GEO classroom release
+
+- Publish 85-slide classroom revision with standalone paper analogy, Moz DA/PA, author E-E-A-T and Personal Brand; expand title/meta/schema, site structure and performance examples.
+- Update course catalog and scoped cloud release assertions.
+# 2026-10-29 · 创业财税与合规进阶课 Talk Deck 重构
+
+- 将 30 页整页图片渲染改为可编辑的 React 文字、卡片与章节布局。
+- 修复右上角 JR Academy Logo：纳入 Vite hashed asset，并为深色页增加可见底托。
+- 完成封面、高密度内容页、章节页与末页的本地浏览器验收。

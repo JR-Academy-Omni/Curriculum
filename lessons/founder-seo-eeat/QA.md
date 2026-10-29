@@ -106,3 +106,95 @@ Page54 retains six website sections and adds domain/platform/hosting/SEO guidanc
 ## 2026-10-25 · Remove original page57
 
 Removed source57 from content data, App order, slide wrapper and terminology mapping. CourseSlide lookup uses stable sourceID; chapter links compute current displayed order. 80 slides and notes. Browser: newpage57 shows Workshop05, old E-E-A-T evaluation page absent; page80 shows sources. Chapter map links after removal point to58/64/72. Local TypeScript/Vite build passed. No CI or deployment.
+
+## 2026-10-25 · Citation concrete example
+
+Currentpage68/source69 remains in80-page order. Desktop1440x900 visually inspected correct and incorrect modes; correct mode restored. Both source links point to official MDN404 URL; official content read and checked against paraphrases. Phone390x844 inspected. Local TypeScript/Vite build passed. Changes after commit1af9099a remain local/uncommitted; no push, CI or deployment. Screenshot: Downloads/SEO-GEO-第68页-Citation引用示例-20261025.png.
+
+## 2026-10-25 · SEO/GEO comparison
+
+Reworked existing currentpage66/source67, preserving80 slides and URLs. Five comparison dimensions plus coffee tutorial example. Terminology mapping changed from old llms.txt/schema toSEO/GEO. Desktop1440x900 and phone390x844 visually checked; no table/example overlap. Local TypeScript/Vite build passed. Uncommitted changes after last requested commit; noCI/deployment. Evidence: Downloads/SEO-GEO-第66页-SEO-vs-GEO-20261025.png.
+
+## 2026-10-25 · SEO/SEM comparison
+
+Page6 now compares organic search and paid search across five dimensions plus one practical scenario and broad-SEM terminology note. SEM/PPC full English names retained; shared glossary regenerated with74 entries. Desktop1440x900 and phone390x844 visually checked; table/example/terminology fit. Local TypeScript/Vite build passed. Current revisions uncommitted, noCI/deployment or advertising action. Screenshot: Downloads/SEO-GEO-第6页-SEO-vs-SEM-20261025.png.
+
+## 2026-10-25 · DA/PA comparison
+
+Fifth page52 view works via authority=metrics. Desktop1440x900 and phone390x844 visually inspected; adjusted column widths and wording leave40.5px display gap between table and example. Complete handout now has20 table rows and Moz reference links, mobile width390 equals viewport390. Glossary regenerated with76 entries includingDA/PA. TypeScript/Vite local build passed. Uncommitted; no CI/deployment/provider query. Screenshot: Downloads/SEO-GEO-第52页-Domain-Authority与Page-Authority-20261025.png.
+
+## 2026-10-25 · Search elements visual restoration
+
+Page6 defaultSERP diagram visibly labelsPaidSearch, OrganicSearch, Sponsored andSERP. SEO/SEM comparison preserved as second view via search=compare. Both desktop views visually inspected; fixed outer search-card height and paid paragraph fit. Refresh preserves comparison; browserback restores diagram. Phone390x844 default view checked. TypeScript/Vite build passed. NoCI, deployment or commit. Screenshot: Downloads/SEO-GEO-第6页-Paid-Search与Organic-Search结构图-20261025.png.
+
+## 2026-10-25 · Page16 H1/H2/H3 structure
+
+Added default heading tree and matching escaped HTML; paper comparison remains selectable via structure=paper. Parsed example outline is h1,h2,h3,h3,h2,h3,h3,h2. Both desktop1440x900 views visually inspected without overlap; phone390x844 shows the complete fixed presentation canvas. Selecting paper, refreshing, and returning to structure worked;80 pages retained. Local TypeScript/Vite build passed. Screenshot: /Users/lightman/Downloads/SEO-GEO-第16页-H1-H2-H3页面结构-20261025.png. Current revisions uncommitted; noCI, push or deployment.
+
+## 2026-10-25 · Lightman Website vs 论文
+
+第16页类比视图明确署名Lightman教学模型；用户原图在structure=original实际打开，返回类比按钮可用。1440x900桌面检查两个视图；390x844手机检查完整画布，原图视图新增箭头底部定位避免遮挡图片。Local TypeScript/Vite build passed;80 pages unchanged. Screenshot: /Users/lightman/Downloads/SEO-GEO-Lightman-Website-vs-论文教学模型-20261025.png. No commit, push, CI or deployment.
+
+## 2026-10-25 · Page13 annotated On-page SEO
+
+Replaced abstract case summary with four color/number pairs mapped to article H1, H2/H3, image+alt+caption, and internal-link anchor. Desktop1440x900 and phone390x844 visually inspected; content stays within fixed canvas. Actual link opened page17, browserback restored page13. Eighty pages retained. Existing historical kitchen image used in explicitly labeled teaching article. Local TypeScript/Vite build passed. Screenshot: /Users/lightman/Downloads/SEO-GEO-第13页-On-page-SEO网页标注-20261025.png. Uncommitted; no push, CI or deployment.
+
+## 2026-10-25 · Bad SEO Practices
+
+Page19 preserves rel-link content and adds seo=stuffing / seo=practices views. Desktop1440x900 visually inspected all three views; phone390x844 both new views show full fixed canvas without cropping. Tab switching, refresh retaining practices, return to original links and original-entry button work. Keyword image spacing adjusted. TypeScript/Vite build passed; glossary regenerated with85 entries. Source image is user supplied; other cases explicitly illustrative.80 pages unchanged. Screenshots: /Users/lightman/Downloads/SEO-GEO-第19页-Keyword-Stuffing反例-20261025.png and /Users/lightman/Downloads/SEO-GEO-第19页-Bad-SEO-Practices-分类示例-20261025.png. No commit, push, CI or deployment.
+
+## 2026-10-25 · Site Structure
+
+Page18 site=structure view adds7 nodes/6 hierarchy edges plus Breadcrumbs and URL examples. Desktop1440x900 checked diagram lines, text fit, existing Breadcrumbs view and navigation entry. Shortened aside to separate from source link. Phone390x844 screenshot shows complete fixed canvas. View switching and refresh preserving structure worked. Local TypeScript/Vite build passed, glossary regenerated with88 entries;80 slide count retained. Screenshot: /Users/lightman/Downloads/SEO-GEO-第18页-Site-Structure网站层级-20261025.png. No commit, push, CI or deployment.
+
+## 2026-10-25 · Title Tag
+
+Page15 now opens Title Tag visual explanation by default; title=code preserves prior comparison. Desktop1440x900 checked both modes, original screenshot, code, browser tab and H1. Reduced example image/code height to avoid bottom overlaps. Phone390x844 checked full default canvas. Switching, refresh preserving code mode and return worked. Local TypeScript/Vite build passed; glossary89 entries,80 pages retained. Screenshot: /Users/lightman/Downloads/SEO-GEO-第15页-Title-Tag与搜索标题-20261025.png. No commit, push, CI or deployment.
+
+## 2026-10-25 · Meta Description
+
+Page15 title=description added with HTML, keyword-list vs informative copy, and two possible search snippets. Both snippets explicitly schematic. Desktop1440x900 checked; tightened lower cards to clear footer. Phone390x844 full canvas checked. Title→Meta→code→Meta navigation works; refresh retains Meta mode. TypeScript/Vite build passed;80 pages retained. Screenshot: /Users/lightman/Downloads/SEO-GEO-第15页-Meta-Description与Snippet-20261025.png. No commit, push, CI or deployment.
+
+## 2026-10-25 · Seven-step Code topic rail
+
+Applied content-layer wrapper on existing pages15,16,17,18,30,32 (seven topics, Title/Meta share15). All7 topics reached using sidebar links/next; active topic and URL matched at each step. Page15 inline Title→Meta also updates rail highlight. Last step exposes no next link. Desktop1440x900 visually checked Title, Canonical, Schema, Headings, Images; phone390x844 checked full rail+Title and Meta route refresh. Moved runtime arrows to bottom on framed slides to avoid rail overlap; reduced rail spacing to keep controls visible. Content keeps existing1600x900 layout scaled0.86 within right pane. Local TypeScript/Vite build passed;80 pages retained. Screenshot: /Users/lightman/Downloads/SEO-GEO-Code七步侧栏-Title-Tag-20261025.png. No commit, push, CI or deployment.
+
+## 2026-10-25 · Site Speed filmstrip
+
+Page39 default five-phone schematic shows blank→FCP→assumed image LCP→click→next paint. All times explicitly illustrative;350ms represents one interaction only. Legacy user image view explains FP/FCP/FMP/TTI and outdated5s label. Desktop1440x900 checked both views; moved legacy source link away from panel edge. Phone390x844 full canvas checked for both. Toggle, refresh retaining speed=legacy and return work. TypeScript/Vite build passed; glossary93 terms,80 slides retained. Screenshot: /Users/lightman/Downloads/SEO-GEO-第39页-Site-Speed加载与响应-20261025.png. No real website measurement, commit, push, CI or deployment.
+
+## 2026-10-25 · Page Experience framework
+
+Page40 now has overview, preserved metric cards, and contextualized legacy user diagram. Desktop1440x900 visually checked all3 views; set explicit metric-row line height to prevent overlap with other-checks panel and split two arrow paths. Phone390x844 checked overview and legacy. Tab switching, original metrics return, overview refresh and legacy refresh worked. TypeScript/Vite build passed, glossary96 entries;80 slides retained. Screenshot: /Users/lightman/Downloads/SEO-GEO-第40页-Page-Experience与排名关系-20261025.png. No site measurement, commit, push, CI or deployment.
+
+## 2026-10-25 · Detailed CWV three columns
+
+Replaced page40 metrics view with updated LCP/INP/CLS cards: full English names, thresholds, measured object, HTML examples and diagnostic questions. Added explicit FID input-delay scope and CLS Session Window correction. Original user image retained as legacy download/view link. Desktop1440x900 and phone390x844 visually checked after increasing body text; cards, correction strip and footer fit. Overview→metrics navigation and refresh preserving experience=metrics worked. TypeScript/Vite build passed; glossary remains96 terms,80 slides retained. Screenshot: /Users/lightman/Downloads/SEO-GEO-第40页-LCP-INP-CLS指标详解-20261025.png. No measured performance result, commit, push, CI or deployment.
+
+## 2026-10-25 · LCP deep dive
+
+Page40 experience=lcp adds five eligible element groups and3 phone-frame candidate outlines. Desktop1440x900 and phone390x844 visually checked; full Viewport heading, list, frames and footer fit. Metric-card LCP button opens deep dive, return works, refresh retains view. User original LCP slide copied and linked. TypeScript/Vite build passed; glossary97 terms,80 slides retained. Screenshot: /Users/lightman/Downloads/SEO-GEO-第40页-LCP内容元素与候选变化-20261025.png. No measured performance result, commit, push, CI or deployment.
+
+## 2026-10-25 · FID → INP deep dive
+
+Page40 experience=fid timeline separates180ms input waiting,60ms processing and40ms presentation. Arithmetic280ms and proportional pixel widths verified deterministically; values explicitly illustrative, not measured pageINP. Desktop1440x900 checked labels, ranges and bar text; set explicit line height to avoid text touching borders. Phone390x844 full canvas checked. INP card→FID, FID→LCP, LCP next→FID and refresh retaining view worked. TypeScript/Vite build passed; glossary101 entries and80 slides retained. Screenshot: /Users/lightman/Downloads/SEO-GEO-第40页-FID到INP交互时间线-20261025.png. No commit, push, CI or deployment.
+
+
+## 2026-10-25 · CLS layout shift comparison
+
+Page41 adds shift/reserved/details views: missing-space versus reserved-space phone diagrams and separate score/session-window explanation. Parent agent visually inspected all three desktop views; saved screenshot: /Users/lightman/Downloads/SEO-GEO-第41页-CLS布局位移与预留空间-20261025.png. Mobile inspection and final integrated build remain pending at this metadata handoff. Content reviewed against web.dev CLS; no material accuracy issue found. All scores and phone sequences are illustrative, not performance measurements. No commit, push, CI or deployment.
+
+
+## 2026-10-25 独立页课堂修订
+
+- 将 Lightman Website vs 论文原图作为真正的第17页，将 Moz DA/PA 对照作为真正的第18页；从原权威性页移除 metrics 切换入口。
+- 课件现为82页，App、课程数据、讲师备注及左侧路线链接同步；CLS现为第43页。
+- 本地 TypeScript/Vite build 通过；浏览器已核对第17/18页桌面画面。未提交、未部署、未触发CI。
+
+## 2026-10-25 作者、引用与Personal Brand
+
+- 三个真正独立页已注册在原source49之后：当前显示52–54，全课85页；数据和讲师备注各85条。
+- 本地TypeScript/Vite build通过。1440×900逐页目视核对52、53、54，修正引用流程文字越界和个人IP第五节点换行。
+- 390×844检查第54页：完整画布缩放呈现，竖屏字小且左右导航靠近内容，课堂使用桌面/横屏；未改共享引擎。
+- 用户可从文章署名、About、Projects、外部记录理解具体实施。Simon为真实公开案例；表单开发者明确为教学示例，无排名或引用提升结果宣称。
+- 未提交、未部署、未触发CI。

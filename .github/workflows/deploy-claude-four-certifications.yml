@@ -1,0 +1,40 @@
+name: Deploy Claude Four Certifications
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'lessons/claude-four-certifications-2026-10-13/**'
+      - 'lessons.html'
+      - '.github/workflows/deploy-claude-four-certifications.yml'
+concurrency:
+  group: deploy-claude-four-certifications
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - name: Build verified talk deck
+        working-directory: lessons/claude-four-certifications-2026-10-13
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+      - name: Assemble scoped publication
+        run: |
+          mkdir -p _claude_site/lessons/claude-four-certifications-2026-10-13
+          cp -r lessons/claude-four-certifications-2026-10-13/dist/* _claude_site/lessons/claude-four-certifications-2026-10-13/
+          cp lessons/claude-four-certifications-2026-10-13/*.md _claude_site/lessons/claude-four-certifications-2026-10-13/
+          cp lessons.html _claude_site/lessons.html
+          node scripts/check-curriculum-domain.mjs _claude_site
+      - name: Deploy only deck and catalog
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: '_claude_site/*'
+          target: '/var/www/static/curriculum'
+          strip_components: 1
+          overwrite: true

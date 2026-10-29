@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow">
+  <title>零基础 AI Agent 搭建 Workshop｜用 Codex 做出你的第一个工作助理</title>
+  <meta name="description" content="面向会计、HR、行政、市场、销售等非技术岗位的 4 小时零基础实操课。12:00–16:00，不写代码，用 Codex 做出一个能读取资料、整理信息、输出报告并按计划运行的个人 AI Agent。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #10162f;
+      --paper: #f7f5ef;
+      --white: #ffffff;
+      --lime: #c9ff48;
+      --mint: #bff6df;
+      --purple: #7257ff;
+      --coral: #ff6b57;
+      --muted: #5c6275;
+      --line: #10162f;
+      --soft-line: #d8d8d2;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .mono { font-family: "Space Mono", monospace; }
+    .shell { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      background: var(--ink);
+      color: var(--white);
+      border-bottom: 2px solid var(--line);
+    }
+    .topbar .shell {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-family: "Space Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .04em;
+    }
+    .topbar a { color: var(--lime); text-decoration: none; font-weight: 700; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 76px 0 66px;
+      border-bottom: 3px solid var(--line);
+      background:
+        radial-gradient(circle at 84% 20%, rgba(201,255,72,.5) 0 7%, transparent 7.5%),
+        linear-gradient(135deg, #f7f5ef 0 68%, #dcd5ff 68% 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      right: 7%;
+      bottom: -105px;
+      border: 3px solid var(--line);
+      border-radius: 50%;
+      background: var(--coral);
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, .65fr);
+      gap: 56px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      padding: 7px 12px;
+      color: var(--white);
+      background: var(--purple);
+      border: 2px solid var(--line);
+      box-shadow: 4px 4px 0 var(--line);
+      font-family: "Space Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { font-family: "Bricolage Grotesque", "Noto Sans SC", sans-serif; }
+    h1 {
+      max-width: 820px;
+      font-size: clamp(42px, 6.2vw, 76px);
+      line-height: .99;
+      letter-spacing: -.045em;
+      font-weight: 800;
+    }
+    h1 em { color: var(--purple); font-style: normal; }
+    .hero-lead {
+      max-width: 760px;
+      margin-top: 24px;
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 600;
+      line-height: 1.65;
+    }
+    .hero-note { margin-top: 13px; color: var(--muted); font-size: 14px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 19px;
+      border: 2px solid var(--line);
+      background: var(--lime);
+      box-shadow: 4px 4px 0 var(--line);
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn.secondary { background: var(--white); }
+    .btn:hover { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--line); }
+    .brief-card {
+      padding: 26px;
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 9px 9px 0 var(--line);
+      transform: rotate(1.2deg);
+    }
+    .brief-card .label { color: var(--purple); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+    .brief-card h2 { margin: 8px 0 18px; font-size: 28px; line-height: 1.1; }
+    .facts { list-style: none; }
+    .facts li { display: flex; justify-content: space-between; gap: 18px; padding: 11px 0; border-top: 1px solid var(--soft-line); font-size: 13px; }
+    .facts span { color: var(--muted); }
+    .facts strong { text-align: right; }
+
+    .outcome-strip { background: var(--ink); color: var(--white); border-bottom: 3px solid var(--line); }
+    .outcome-strip .shell { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat { padding: 24px 18px; border-right: 1px solid rgba(255,255,255,.2); text-align: center; }
+    .stat:first-child { border-left: 1px solid rgba(255,255,255,.2); }
+    .stat b { display: block; color: var(--lime); font-size: 25px; line-height: 1.1; }
+    .stat span { display: block; margin-top: 7px; font-size: 12px; color: #d9ddea; }
+
+    .trial-wrap { padding: 26px 0 0; }
+    .trial-banner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 20px 24px;
+      border: 3px solid var(--line);
+      background: var(--lime);
+      box-shadow: 6px 6px 0 var(--line);
+    }
+    .trial-badge { padding: 6px 10px; color: var(--white); background: var(--purple); border: 2px solid var(--line); font-size: 11px; font-weight: 700; }
+    .trial-banner h2 { font-size: 21px; line-height: 1.2; }
+    .trial-banner p { color: #343949; font-size: 13px; }
+    .trial-note { max-width: 250px; text-align: right; font-size: 11px; color: #343949; }
+
+    section { padding: 78px 0; }
+    section.alt { background: var(--white); border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: .7fr 1.3fr; gap: 40px; align-items: end; margin-bottom: 36px; }
+    .kicker { color: var(--purple); font-family: "Space Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .section-head h2 { margin-top: 8px; font-size: clamp(32px, 4vw, 49px); line-height: 1.03; letter-spacing: -.035em; }
+    .section-head p { color: var(--muted); font-size: 16px; }
+
+    .definition {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      align-items: stretch;
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 8px 8px 0 var(--line);
+    }
+    .definition div { position: relative; padding: 26px 12px; border-right: 2px solid var(--line); text-align: center; }
+    .definition div:last-child { border-right: 0; }
+    .definition div:not(:last-child)::after { content: "→"; position: absolute; z-index: 2; right: -13px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; line-height: 22px; border: 2px solid var(--line); border-radius: 50%; background: var(--lime); font-weight: 900; }
+    .definition b { display: block; font-size: 14px; }
+    .definition span { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; }
+    .definition-note { margin-top: 20px; padding-left: 17px; border-left: 5px solid var(--coral); font-weight: 700; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      min-height: 100%;
+      padding: 24px;
+      border: 2px solid var(--line);
+      background: var(--white);
+      box-shadow: 5px 5px 0 var(--line);
+    }
+    .card:nth-child(2n) { background: #f1eeff; }
+    .card:nth-child(3n) { background: #edfff7; }
+    .card .num { color: var(--purple); font-family: "Space Mono", monospace; font-size: 12px; font-weight: 700; }
+    .card h3 { margin: 8px 0 10px; font-size: 22px; line-height: 1.2; }
+    .card p { color: var(--muted); font-size: 14px; }
+
+    .learn-grid { display: grid; grid-template-columns: 1fr 1fr; border: 3px solid var(--line); background: var(--line); gap: 3px; box-shadow: 8px 8px 0 var(--purple); }
+    .learn-item { position: relative; padding: 26px 26px 26px 67px; background: var(--white); }
+    .learn-item::before { content: "✓"; position: absolute; left: 25px; top: 28px; width: 26px; height: 26px; display: grid; place-items: center; background: var(--lime); border: 2px solid var(--line); border-radius: 50%; font-weight: 900; }
+    .learn-item h3 { font-size: 18px; margin-bottom: 5px; }
+    .learn-item p { color: var(--muted); font-size: 13px; }
+
+    .deliverables { display: grid; grid-template-columns: 1.25fr .75fr; gap: 22px; }
+    .deliverable-main { padding: 32px; color: var(--white); background: var(--ink); border: 3px solid var(--line); box-shadow: 8px 8px 0 var(--lime); }
+    .deliverable-main h3 { color: var(--lime); font-size: 30px; }
+    .deliverable-main > p { margin: 8px 0 22px; color: #d9ddea; }
+    .deliverable-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .deliverable-list li { padding: 12px; border: 1px solid rgba(255,255,255,.28); font-size: 13px; }
+    .boundary { padding: 28px; border: 3px solid var(--line); background: var(--mint); }
+    .boundary h3 { font-size: 24px; }
+    .boundary p { margin-top: 10px; font-size: 14px; }
+
+    .audience-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 20px; }
+    .audience-box { padding: 30px; border: 3px solid var(--line); background: var(--white); }
+    .audience-box h3 { font-size: 27px; }
+    .role-tags { display: flex; flex-wrap: wrap; gap: 9px; margin: 20px 0; }
+    .role-tags span { padding: 7px 11px; background: var(--lime); border: 2px solid var(--line); font-size: 12px; font-weight: 700; }
+    .audience-box ul { margin: 14px 0 0 20px; }
+    .audience-box li { margin: 8px 0; font-size: 14px; }
+    .not-fit { background: #fff0ed; }
+    .not-fit .role-tags span { background: var(--white); }
+
+    .agenda { display: grid; gap: 13px; }
+    .agenda-row { display: grid; grid-template-columns: 150px 1fr 280px; border: 2px solid var(--line); background: var(--white); }
+    .agenda-time { padding: 19px; display: flex; align-items: center; background: var(--ink); color: var(--lime); font-family: "Space Mono", monospace; font-size: 12px; font-weight: 700; }
+    .agenda-topic { padding: 17px 20px; border-right: 1px solid var(--soft-line); }
+    .agenda-topic h3 { font-size: 18px; }
+    .agenda-topic p, .agenda-output { color: var(--muted); font-size: 13px; }
+    .agenda-output { padding: 17px 20px; display: flex; align-items: center; }
+    .agenda-output b { color: var(--ink); }
+    .agenda-row.break .agenda-time { background: #ddd8cc; color: var(--ink); }
+    .agenda-row.break { opacity: .8; }
+
+    .industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .industry { padding: 21px; border: 2px solid var(--line); background: var(--white); }
+    .industry h3 { font-size: 18px; }
+    .industry p { margin-top: 5px; color: var(--muted); font-size: 13px; }
+
+    .safety {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 30px;
+      padding: 34px;
+      color: var(--white);
+      background: var(--purple);
+      border: 3px solid var(--line);
+      box-shadow: 8px 8px 0 var(--line);
+    }
+    .safety h2 { font-size: 34px; line-height: 1.05; }
+    .safety ul { display: grid; grid-template-columns: 1fr 1fr; gap: 11px 28px; padding-left: 18px; }
+    .safety li { font-size: 13px; }
+
+    .faq { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    details { padding: 19px 21px; border: 2px solid var(--line); background: var(--white); }
+    summary { cursor: pointer; font-weight: 800; }
+    details p { margin-top: 12px; color: var(--muted); font-size: 14px; }
+
+    .final-cta { padding: 65px 0; color: var(--white); background: var(--ink); text-align: center; }
+    .final-cta h2 { max-width: 800px; margin: 0 auto; font-size: clamp(32px, 5vw, 55px); line-height: 1.05; }
+    .final-cta p { max-width: 680px; margin: 18px auto 0; color: #ccd0df; }
+    .final-cta .btn { margin-top: 25px; }
+    footer { padding: 24px 0; text-align: center; color: var(--muted); font-family: "Space Mono", monospace; font-size: 11px; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .section-head, .deliverables, .audience-grid, .safety { grid-template-columns: 1fr; }
+      .trial-banner { grid-template-columns: auto 1fr; }
+      .trial-note { grid-column: 2; max-width: none; text-align: left; }
+      .brief-card { max-width: 520px; transform: none; }
+      .definition { grid-template-columns: repeat(3, 1fr); }
+      .definition div:nth-child(3) { border-right: 0; }
+      .definition div:nth-child(-n+3) { border-bottom: 2px solid var(--line); }
+      .card-grid, .industry-grid { grid-template-columns: 1fr 1fr; }
+      .agenda-row { grid-template-columns: 125px 1fr; }
+      .agenda-output { grid-column: 2; border-top: 1px solid var(--soft-line); }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(calc(100% - 26px), var(--max)); }
+      .topbar .shell { padding: 9px 0; align-items: flex-start; flex-direction: column; gap: 2px; }
+      .hero { padding: 53px 0 48px; }
+      .hero-grid { display: block; }
+      .hero-grid > * { width: 100%; min-width: 0; max-width: 100%; }
+      h1 { font-size: 43px; word-break: break-word; }
+      h1 em { display: block; }
+      .hero-lead, .hero-note { max-width: 100%; word-break: break-word; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .hero-actions .btn { width: 100%; }
+      .brief-card { width: 100%; margin-top: 52px; padding: 23px 18px; }
+      .facts li { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 10px; }
+      .facts strong { max-width: none; overflow-wrap: anywhere; }
+      .outcome-strip .shell { grid-template-columns: 1fr 1fr; width: 100%; }
+      .trial-banner { grid-template-columns: 1fr; gap: 10px; }
+      .trial-note { grid-column: 1; }
+      .stat:nth-child(3) { border-left: 1px solid rgba(255,255,255,.2); border-top: 1px solid rgba(255,255,255,.2); }
+      .stat:nth-child(4) { border-top: 1px solid rgba(255,255,255,.2); }
+      section { padding: 58px 0; }
+      .section-head { gap: 18px; }
+      .definition { grid-template-columns: 1fr 1fr; }
+      .definition div { border-bottom: 2px solid var(--line); }
+      .definition div:nth-child(2n) { border-right: 0; }
+      .definition div:nth-child(n+5) { border-bottom: 0; }
+      .definition div:nth-child(3) { border-right: 2px solid var(--line); }
+      .card-grid, .learn-grid, .industry-grid, .deliverable-list, .faq { grid-template-columns: 1fr; }
+      .agenda-row { grid-template-columns: 1fr; }
+      .agenda-time, .agenda-topic, .agenda-output { grid-column: 1; }
+      .agenda-time { padding: 10px 16px; }
+      .agenda-topic { border-right: 0; }
+      .safety ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="shell">
+      <span>JR ACADEMY · IN-PERSON / LIVE WORKSHOP</span>
+      <a href="../posters.html">返回课程中心 →</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <span class="eyebrow">零代码 · 零基础 · 现场搭建</span>
+        <h1>用 Codex 做出你的第一个 <em>AI Agent</em></h1>
+        <p class="hero-lead">4 小时只做一个通用项目：个人 AI 信息整理助理。从读取资料、整理重点到输出报告和待办清单，现场跑通一个简单、完整的 Agent 工作闭环。</p>
+        <p class="hero-note">不讲代码，不堆功能，也不同时教客服、营销、销售等多个 Agent。老师一步一步带做，最后只需替换资料和指令，就能迁移到自己的行业。</p>
+        <div class="hero-actions">
+          <a class="btn" href="#agenda">查看 12:00–16:00 课程安排</a>
+          <a class="btn secondary" href="#outcomes">看看能学会什么</a>
+        </div>
+      </div>
+      <aside class="brief-card" aria-label="课程信息">
+        <span class="label mono">WORKSHOP SNAPSHOT</span>
+        <h2>零基础 AI Agent 搭建</h2>
+        <ul class="facts">
+          <li><span>时间</span><strong>12:00–16:00 · 共 4 小时</strong></li>
+          <li><span>形式</span><strong>老师演示 + 现场跟做</strong></li>
+          <li><span>工具</span><strong>Codex</strong></li>
+          <li><span>编程要求</span><strong>不需要</strong></li>
+          <li><span>最终成果</span><strong>个人 AI 信息整理助理</strong></li>
+          <li><span>课程价格</span><strong>A$179 早鸟 / A$199 标准</strong></li>
+          <li><span>没有会员</span><strong>赠 7 天 AI 会员试用</strong></li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <div class="outcome-strip">
+    <div class="shell">
+      <div class="stat"><b>4h</b><span>零基础集中带做</span></div>
+      <div class="stat"><b>0</b><span>编程基础要求</span></div>
+      <div class="stat"><b>1</b><span>完整 Agent 工作流</span></div>
+      <div class="stat"><b>4</b><span>可带走的核心成果</span></div>
+    </div>
+  </div>
+
+  <div class="trial-wrap">
+    <div class="shell trial-banner">
+      <span class="trial-badge mono">报名权益</span>
+      <div><h2>没有 Codex 会员，也可以参加</h2><p>报名课程后，为没有会员的学员提供匠人学院 7 天 AI 会员免费试用，用于完成课堂实操和课后复习。</p></div>
+      <div class="trial-note">由匠人学院提供，非 Codex 官方赠送；具体开通方式与可用功能以报名通知为准。</div>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="kicker">What is an Agent</span><h2>这是一门真正的 Agent 搭建课</h2></div>
+          <p>普通 AI 通常是“问一句、答一句”。这门课带你把 Codex 配置成一个能读取资料、遵循规则、分步骤整理信息并在交付前请求人工确认的简单工作 Agent。</p>
+        </div>
+        <div class="definition" aria-label="Agent工作流程">
+          <div><b>接收任务</b><span>明确要完成什么</span></div>
+          <div><b>检索资料</b><span>查找已有文件与知识</span></div>
+          <div><b>遵循规则</b><span>按行业要求工作</span></div>
+          <div><b>生成成果</b><span>输出报告或图片</span></div>
+          <div><b>检查结果</b><span>识别缺失与异常</span></div>
+          <div><b>定时运行</b><span>完成一个自动任务</span></div>
+        </div>
+        <p class="definition-note">全班只搭建这一个“个人 AI 信息整理助理”。课程目标不是完全无人管理，而是让 Agent 整理信息、判断资料是否足够并生成初稿，由人审核后确认使用。</p>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="kicker">Course focus</span><h2>4 小时课程重点</h2></div>
+          <p>从第一次打开 Codex 开始，不跳步骤。每学一个功能就马上操作，所有内容都服务于同一个最终成果。</p>
+        </div>
+        <div class="card-grid">
+          <article class="card"><span class="num">01 · SETUP</span><h3>Codex 基础设置</h3><p>完成登录、工作目录、文件权限和基本使用设置，知道 Codex 能做什么、不能做什么。</p></article>
+          <article class="card"><span class="num">02 · TASK</span><h3>把工作讲清楚</h3><p>用目标、资料、规则、步骤和输出格式五个要素，让 Agent 得到清楚、可执行的任务。</p></article>
+          <article class="card"><span class="num">03 · CONTEXT</span><h3>读取文件与资料</h3><p>让 Codex 理解本地文档、表格和图片，把散乱资料整理成结构化结果。</p></article>
+          <article class="card"><span class="num">04 · RULES</span><h3>配置长期工作规则</h3><p>通过工作说明文件保存岗位背景、输出要求、安全边界和人工复核条件。</p></article>
+          <article class="card"><span class="num">05 · OUTPUT</span><h3>生成报告与图片</h3><p>让 Agent 输出一份能检查、能修改的工作报告，并完成一次简单出图，不展开复杂设计工具。</p></article>
+          <article class="card"><span class="num">06 · AUTOMATION</span><h3>完成一个定时任务</h3><p>把已经跑通的整理任务设置为每日或每周运行，理解自动化与人工确认的边界。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="outcomes">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="kicker">What you will learn</span><h2>完成后，你会真正学会</h2></div>
+          <p>不是记住几个按钮，而是掌握一套可以迁移到不同岗位、不同任务的 Agent 搭建方法。</p>
+        </div>
+        <div class="learn-grid">
+          <article class="learn-item"><h3>判断什么任务适合 Agent</h3><p>找到高频、重复、有明确规则且可以复核的工作。</p></article>
+          <article class="learn-item"><h3>设计完整工作流程</h3><p>把一个模糊需求拆成输入、处理、检查和输出。</p></article>
+          <article class="learn-item"><h3>给 Agent 配置上下文</h3><p>让它读懂岗位资料，并持续遵循你的工作规则。</p></article>
+          <article class="learn-item"><h3>让 Agent 交付成果</h3><p>生成报告、待办清单和一张简单图片，而不止是聊天回复。</p></article>
+          <article class="learn-item"><h3>测试和修正 Agent</h3><p>用正常、缺失和错误资料验证它是否可靠。</p></article>
+          <article class="learn-item"><h3>安全地设置自动运行</h3><p>知道哪些步骤可以自动化，哪些必须由人确认。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="kicker">What you take away</span><h2>当天可以带走什么</h2></div>
+          <p>所有成果都以可继续编辑、可换行业资料、可回到工作中复用为标准。</p>
+        </div>
+        <div class="deliverables">
+          <div class="deliverable-main">
+            <h3>个人 AI 信息整理助理</h3>
+            <p>它能够接收整理任务，检索指定资料，调用工具补充信息，判断资料是否足够，最后输出报告或任务清单并交给你确认。</p>
+            <ul class="deliverable-list">
+              <li>01 · 一份个人 Agent 工作规则</li>
+              <li>02 · 一个文件处理工作流</li>
+              <li>03 · 一个简单的每日或每周自动任务</li>
+              <li>04 · 一张 AI 生成的工作图片</li>
+            </ul>
+          </div>
+          <aside class="boundary">
+            <h3>还会带走一套搭建模板</h3>
+            <p>包含任务定义、工作规则、流程设计、测试用例和人工复核清单。换掉示例资料，就能继续搭建下一个行业 Agent。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="kicker">Who it is for</span><h2>适合什么人</h2></div>
+          <p>课程按“第一次使用 Codex”设计。只要会使用电脑打开文件、复制粘贴和打字，就能跟着完成，不要求 AI、编程或自动化经验。</p>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-box">
+            <h3>适合零基础的非技术职场人</h3>
+            <div class="role-tags"><span>会计 / 财务</span><span>HR</span><span>行政</span><span>市场</span><span>销售</span><span>教育</span><span>小企业主</span></div>
+            <ul>
+              <li>只会简单使用 ChatGPT，不知道怎么让 AI 连续完成工作</li>
+              <li>经常整理文件、做周报、检查资料或重复生成内容</li>
+              <li>希望学习一套通用方法，再根据自己的行业修改</li>
+              <li>不想学代码，但愿意跟着老师现场操作</li>
+              <li>希望用 4 小时先做出一个结果，再决定是否深入学习</li>
+            </ul>
+          </article>
+          <article class="audience-box not-fit">
+            <h3>暂时不适合</h3>
+            <div class="role-tags"><span>高级开发</span><span>复杂集成</span><span>无人值守系统</span></div>
+            <ul>
+              <li>希望学习 API、Python 或多 Agent 工程开发</li>
+              <li>需要现场接入企业核心系统</li>
+              <li>希望 Agent 自动处理付款、审批等高风险决定</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="agenda" class="alt">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="kicker">12:00–16:00</span><h2>4 小时课程安排</h2></div>
+          <p>前两小时完成设置、资料读取和工作规则；后两小时搭出完整助理，并完成出图、自动化和个人场景改造。</p>
+        </div>
+        <div class="agenda">
+          <article class="agenda-row"><div class="agenda-time">12:00–12:30</div><div class="agenda-topic"><h3>Codex 设置与安全边界</h3><p>完成登录和基础设置，用人话理解聊天工具与 Agent 的区别。</p></div><div class="agenda-output"><span><b>现场产出：</b>可开始工作的 Codex 环境</span></div></article>
+          <article class="agenda-row"><div class="agenda-time">12:30–13:15</div><div class="agenda-topic"><h3>下任务、上传资料、检查结果</h3><p>学会说清目标、提供文件，并判断输出能不能使用。</p></div><div class="agenda-output"><span><b>现场产出：</b>第一份资料整理结果</span></div></article>
+          <article class="agenda-row"><div class="agenda-time">13:15–14:00</div><div class="agenda-topic"><h3>配置工作规则与输出模板</h3><p>设置工作步骤、报告格式、禁止事项和人工复核条件。</p></div><div class="agenda-output"><span><b>现场产出：</b>个人工作规则文件</span></div></article>
+          <article class="agenda-row break"><div class="agenda-time">14:00–14:10</div><div class="agenda-topic"><h3>休息</h3><p>保存进度，准备组合完整工作流。</p></div><div class="agenda-output"><span>休息 10 分钟</span></div></article>
+          <article class="agenda-row"><div class="agenda-time">14:10–15:00</div><div class="agenda-topic"><h3>搭建个人 AI 信息整理助理</h3><p>串联“读取—整理—检查—输出”，生成报告和待办清单。</p></div><div class="agenda-output"><span><b>现场产出：</b>可运行的 Agent V1</span></div></article>
+          <article class="agenda-row"><div class="agenda-time">15:00–15:35</div><div class="agenda-topic"><h3>简单出图与定时自动化</h3><p>完成一张工作图片，并把已验证的整理任务设置为定时运行。</p></div><div class="agenda-output"><span><b>现场产出：</b>一张图片 + 一个自动任务</span></div></article>
+          <article class="agenda-row"><div class="agenda-time">15:35–16:00</div><div class="agenda-topic"><h3>替换行业资料、测试与交付</h3><p>换成自己的资料和指令，测试缺失信息，并演示人工确认。</p></div><div class="agenda-output"><span><b>完成标准：</b>跑通个人版本完整闭环</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="kicker">One project, many uses</span><h2>只换资料和指令，不重搭 Agent</h2></div>
+          <p>全班先把同一个“个人 AI 信息整理助理”做完整。课程最后只演示如何替换资料、规则和输出格式，把它迁移到不同岗位。</p>
+        </div>
+        <div class="industry-grid">
+          <article class="industry"><h3>会计 / 财务</h3><p>费用资料检查、异常标记与周报 Agent</p></article>
+          <article class="industry"><h3>HR</h3><p>候选人资料整理与面试准备 Agent</p></article>
+          <article class="industry"><h3>市场</h3><p>内容资料整理、总结与配图 Agent</p></article>
+          <article class="industry"><h3>销售</h3><p>客户记录整理与跟进建议 Agent</p></article>
+          <article class="industry"><h3>行政</h3><p>会议资料、待办事项与周报 Agent</p></article>
+          <article class="industry"><h3>教育</h3><p>教学材料整理与课堂内容 Agent</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="shell">
+        <div class="safety">
+          <div><span class="kicker" style="color:var(--lime)">Safety by design</span><h2>自动化之前，先学会安全边界</h2></div>
+          <ul>
+            <li>练习使用模拟或脱敏资料</li>
+            <li>不上传密码、证件和敏感客户数据</li>
+            <li>金额、日期和专业结论必须复核</li>
+            <li>缺少资料时，Agent 必须停下来询问</li>
+            <li>付款、审批等高风险动作不自动执行</li>
+            <li>自动任务保留人工确认和结果记录</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="kicker">FAQ</span><h2>零基础常见问题</h2></div>
+          <p>这 4 小时按第一次使用 Codex 的节奏设计。课前完成账号与安装检查，课堂统一使用“个人 AI 信息整理助理”项目，不预设任何行业案例。</p>
+        </div>
+        <div class="faq">
+          <details open><summary>我从来没有用过 Codex，也不会编程，可以参加吗？</summary><p>可以。这门课就是从登录、界面和文件操作开始，不教 Python、API 或代码开发。只要你会打开文件、复制粘贴和打字，就能跟着老师完成。</p></details>
+          <details><summary>没有 Codex 会员怎么办？</summary><p>可以正常报名。没有会员的学员将获得匠人学院提供的 7 天 AI 会员免费试用，用于完成课堂练习和课后复习；这不是 Codex 官方赠送，具体开通方式与可用功能以报名通知为准。</p></details>
+          <details><summary>课堂到底会做什么项目？</summary><p>全班只做一个通用项目：个人 AI 信息整理助理。它会读取练习资料、整理重点、检查信息是否缺失，并输出报告和待办清单。课堂不会同时切换多个行业案例。</p></details>
+          <details><summary>需要提前准备自己的工作资料吗？</summary><p>不需要。课堂会提供统一的模拟资料和模板，避免真实客户或公司信息泄露。最后一个环节会教你如何替换资料和指令；课后再用脱敏资料改成自己的版本。</p></details>
+          <details><summary>这和普通的 AI 提示词课有什么区别？</summary><p>这不是只教几句话怎么问。你还会让 Agent 读取文件、保存工作规则、按固定格式输出、发现资料缺失、生成一张简单图片，并完成一个定时任务。</p></details>
+          <details><summary>4 小时后我能独立做到什么？</summary><p>你能够运行、修改和测试一个简单的个人信息整理 Agent，并把课堂模板迁移到自己的岗位。复杂系统集成、多人协作、多 Agent 和工程开发不在这门零基础课里。</p></details>
+          <details><summary>上课需要带什么？</summary><p>请带可以正常联网的笔记本电脑和充电器，并在课前按通知完成 Codex 安装、登录与账号检查。遇到安装问题要提前反馈，避免占用课堂实操时间。</p></details>
+          <details><summary>课程价格是多少？</summary><p>Early Bird 早鸟价 A$179，标准价 A$199。具体早鸟截止时间以当期报名页面为准。</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="final-cta">
+    <div class="shell">
+      <h2>从“会问 AI”到“搭出一个会工作的 Agent”</h2>
+      <p>4 小时、不写代码、不堆功能。全班只做一个个人 AI 信息整理助理，现场完成设置、资料整理、报告输出、简单出图与一个定时任务，再把它改成自己的岗位版本。</p>
+      <a class="btn" href="#agenda">重新查看课程安排</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="shell">JR Academy · Zero-to-One AI Agent Workshop · Codex</div>
+  </footer>
+</body>
+</html>

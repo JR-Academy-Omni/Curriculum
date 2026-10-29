@@ -1,0 +1,8 @@
+import { ChartFrame, ChartDefs, ChartNode, ChartArrow } from '../GrowthChart';
+import { colors } from '../deck';
+export default function C09_PDDTeam(){return <ChartFrame tag="真实案例 · 拼多多 01" title="拼团：把购买动机变成邀请动机" subtitle="启动点是有吸引力的商品与团购价；新买家收到价值后，才可能发起下一团" footnote={<><a href="https://www.sec.gov/Archives/edgar/data/1737806/000104746919000391/a2237673zf-1a.htm" target="_blank" rel="noreferrer">拼多多 2019 F-1/A · 历史机制</a>；图为教学拆解。也可加入平台现有团，成团不代表都来自新客推荐。</>}>
+<svg viewBox="0 0 1400 530" style={{width:1400,height:530}} role="img" aria-label="商品价值触发发起拼单，邀请同伴，新买家参团支付，成团履约后部分买家再次开团">
+<ChartDefs id="pdd-team"/><ChartArrow id="pdd-team" d="M 355 115 L 535 115"/><ChartArrow id="pdd-team" d="M 835 115 L 1035 115"/><ChartArrow id="pdd-team" d="M 1185 176 Q 1305 285 1125 352"/><ChartArrow id="pdd-team" d="M 975 408 L 645 408"/><ChartArrow id="pdd-team" d="M 345 408 Q 70 330 200 185"/>
+<ChartNode x={55} y={60} w={300} title="看中商品与团价" detail="购买需求 + 可感知优惠" fill={colors.yellow}/><ChartNode x={555} y={60} w={280} title="发起拼单" detail="分享邀请，同伴共同获益" fill={colors.red}/><ChartNode x={1055} y={60} w={290} title="同伴参团支付" detail="分享 → 新买家转化" fill={colors.blue}/><ChartNode x={975} y={352} w={300} title="成团并履约" detail="收到商品，兑现价值" fill={colors.green}/><ChartNode x={345} y={352} w={300} title="部分买家再开团" detail="新人也成为下一轮发起者"/>
+<text x="705" y="259" textAnchor="middle" fontSize="40" fontWeight="900" fill={colors.dark}>优惠驱动邀请，履约支撑回流</text><text x="705" y="300" textAnchor="middle" fontSize="24" fill={colors.dark}>OPC：共同采购 / 小班工作坊，双方都获得实际价值</text><text x="87" y="291" fontSize="22" fill={colors.dark}>下一轮 ↺</text>
+</svg></ChartFrame>;}

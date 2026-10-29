@@ -1,0 +1,315 @@
+<h2>让第一位 AI 员工安全上岗，并交出一次可检查的工作</h2>
+<p>这一节不比谁安装的 Agent 多，也不把“配置了五条 Schedule”当成完成。你的目标是：根据真实任务选一条可行路线，给一个 Agent 写清工作说明书，只授予完成任务所需的最小权限，先让一到两条排程真实运行，再通过人工检查、失败测试、审计和撤权决定它能否安全重复。</p>
+<p>Agent 和普通聊天的区别不是回答更长，而是它可以读取输入、调用工具、在指定时间运行并把结果送到某处。能力增加的同时，误发邮件、读取过多数据、超额消耗、时区错误和无人审查的风险也一起增加。因此，本节的顺序固定为：<strong>任务 → 路线 → 权限 → JD → 手动运行 → 失败测试 → 排程 → 审查 → 决定是否重复</strong>。</p>
+
+<h2>本节学习路径</h2>
+<ol>
+  <li><strong>先定任务：</strong>从 Business SoT 取一个与客户研究相关、低风险、可重复的小任务。</li>
+  <li><strong>再选路线：</strong>比较运行位置、所需工具、数据边界、排程机制和维护能力，不按热度选。</li>
+  <li><strong>限制权限：</strong>默认不给；每增加一项权限，都写明用途、范围、期限、审计和撤销方法。</li>
+  <li><strong>写 Agent JD：</strong>明确使命、输入、允许工具、禁区、交付物、review owner、触发条件、成本上限和停止条件。</li>
+  <li><strong>先手动运行：</strong>用脱敏数据跑一次，检查原始来源、格式、边界和错误。</li>
+  <li><strong>故意让它失败：</strong>测试来源不可用、输入为空、达到成本上限或遇到越权要求时是否会停。</li>
+  <li><strong>只开一到两条 Schedule：</strong>确认本机或云端运行条件、睡眠状态和澳洲时区。</li>
+  <li><strong>留审计并撤权演练：</strong>能回答它何时运行、读了什么、写了什么、花了多少、怎样暂停和撤销。</li>
+</ol>
+
+<h2>一、先从工作选路线，不从产品名选路线</h2>
+<p>Agent 产品的功能、价格、套餐、连接器和运行限制会变化。本页不把某个日期的价格写成长期结论。选择前应打开厂商当前官方文档和账户中的 Billing／Usage 页面；无法从官方来源确认的能力或费用写 <code>unavailable</code>，不要用论坛截图或口头估计补齐。</p>
+<table>
+  <thead><tr><th>先问的问题</th><th>为什么重要</th><th>你的答案</th></tr></thead>
+  <tbody>
+    <tr><td>任务需要本地文件，还是公开网页？</td><td>决定运行环境和文件权限</td><td>______</td></tr>
+    <tr><td>笔记本睡眠或关机后还必须运行吗？</td><td>决定使用云端运行，还是保持本机 daemon／应用在线</td><td>______</td></tr>
+    <tr><td>任务是否包含客户、财务、合同或身份数据？</td><td>决定能否自动化以及脱敏要求</td><td>______</td></tr>
+    <tr><td>输出只是草稿，还是会产生外部动作？</td><td>决定审批门槛；对外发送、付款和承诺默认由人执行</td><td>______</td></tr>
+    <tr><td>谁能排错和维护？</td><td>没人能查看日志、暂停任务的路线不适合无人值守</td><td>______</td></tr>
+    <tr><td>每次和每月成本上限是什么？</td><td>软件免费不代表模型、云主机和连接器免费</td><td>______；未知写 unavailable</td></tr>
+  </tbody>
+</table>
+
+<h3>四条路线只按当前任务做初筛</h3>
+<table>
+  <thead><tr><th>路线</th><th>优先检查的适用条件</th><th>排程前必须核实</th><th>官方入口</th></tr></thead>
+  <tbody>
+    <tr><td>Codex</td><td>任务以代码库、本地项目或可审查的文件工作为主</td><td>任务是在本机还是托管环境运行；本机任务是否要求电脑和应用保持运行；账户当前用量限制</td><td><a href="https://openai.com/academy/codex-automations/" target="_blank" rel="noopener noreferrer">OpenAI Codex Automations</a></td></tr>
+    <tr><td>Claude Code</td><td>需要连续处理真实项目，并能在每次运行后查看完整 session</td><td>选择 Remote routine 还是 Local scheduled task；连接器、仓库、网络和 branch push 权限；当前账户限制</td><td><a href="https://code.claude.com/docs/en/routines" target="_blank" rel="noopener noreferrer">Anthropic Routines</a></td></tr>
+    <tr><td>OpenClaw</td><td>愿意维护本机或服务器 Gateway，希望用 cron 管理可暂停、可手动触发的任务</td><td>Gateway 实际运行在哪里、睡眠后是否存活、当前官方平台支持、日志和 operator 权限</td><td><a href="https://docs.openclaw.ai/cron" target="_blank" rel="noopener noreferrer">OpenClaw Scheduled Tasks</a></td></tr>
+    <tr><td>Hermes</td><td>愿意维护 Gateway，并希望通过自然语言或 cron 创建、暂停、运行和删除任务</td><td>Gateway 是否常驻、模型 provider 是否固定、工具集是否最小化、输出投递位置和执行历史</td><td><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/cron" target="_blank" rel="noopener noreferrer">Hermes Scheduled Tasks</a></td></tr>
+  </tbody>
+</table>
+<p>这张表不是推荐排名。若你的任务只是每周读取三个公开页面并生成一份本地草稿，就不需要先接邮箱、云盘、日历和客户数据库。若你无法确认某条路线的 Windows 支持、连接器范围、云端运行资格或当期费用，就在决策表写 <code>unavailable</code>，先选择课堂能真实运行和检查的安全路径。</p>
+
+<h3>路线决策记录模板</h3>
+<pre><code>任务名称：
+读取的数据：公开网页／本地脱敏文件／其它：____
+必须调用的工具：
+禁止接触的数据：
+是否要求电脑睡眠后运行：是／否
+可接受的交付延迟：
+每次成本上限：unavailable／____
+每月成本上限：unavailable／____
+候选路线：
+官方文档链接与核实日期：
+仍未确认的能力：
+为什么现在选这条：
+如果跑不通的降级方案：改为手动／改为本机开机时段／暂停</code></pre>
+
+<h2>二、最小权限：默认不给，需要时逐项增加</h2>
+<p>“以后可能用到”不是授权理由。每一项权限都必须绑定一个当前任务，并记录五件事：<strong>用途、资源范围、允许动作、到期时间、撤销位置</strong>。如果你无法说明如何查看审计日志和撤销权限，就先不要授权。</p>
+<table>
+  <thead><tr><th>资源</th><th>本节默认权限</th><th>禁止的默认做法</th><th>升级前的证据</th></tr></thead>
+  <tbody>
+    <tr><td>邮箱</td><td>不接；确需使用时只读指定标签，或只生成本地草稿</td><td>读取整个邮箱、自动发送、自动回复客户</td><td>任务无法通过导出样本完成，且已测试撤销和发送审批</td></tr>
+    <tr><td>日历</td><td>先读一个测试日历；写入仅限测试事件</td><td>修改主日历、邀请外部联系人</td><td>确认时区、重复事件和删除行为都可审计</td></tr>
+    <tr><td>云盘</td><td>只给一个专用目录，使用脱敏副本</td><td>授权整个 Drive、客户合同或身份资料目录</td><td>目录白名单和输出路径已验证</td></tr>
+    <tr><td>代码仓库</td><td>只读或写隔离分支</td><td>直接写主干、自动合并、读取无关 secrets</td><td>分支保护、diff review 和回滚流程已跑通</td></tr>
+    <tr><td>浏览器</td><td>独立 profile，不复用个人主账号登录态</td><td>保存银行卡、自动下单、使用私人 cookies</td><td>允许域名、下载目录和历史记录可检查</td></tr>
+    <tr><td>财务与支付</td><td>本节不授权；只能使用脱敏导出样本</td><td>付款、退款、开票、修改银行信息</td><td>后续专门流程、双人审批和 provider 审计已建立</td></tr>
+  </tbody>
+</table>
+
+<h3>权限登记表</h3>
+<pre><code>Agent：
+资源／连接器：
+任务用途：
+允许读取：
+允许写入：
+明确禁止：
+授权开始时间：
+复查／到期时间：
+审计日志位置：
+撤销入口：
+撤销测试日期与结果：
+负责人：</code></pre>
+<p>使用 Claude Code Remote routine 时，官方文档说明连接器可能在创建表单中被包含，且远程运行没有现场 approval prompt。创建前应逐项移除任务不需要的 connector，并限制仓库、网络、环境变量和 branch push。使用 Hermes 或 OpenClaw 的 Gateway 排程时，也要单独限制 cron 任务可调用的工具和 operator 权限，不要让计划任务继承交互会话中的全部能力。</p>
+
+<h2>三、先雇一个人：Agent JD 比 Agent 数量重要</h2>
+<p>本节最多规划三个角色，但第一轮只启用一个。一个能稳定交付、能被审查的研究助理，比三个互相转发虚构结果的“AI 公司”更有价值。最终发布、客户触达、付款、法律、税务、招聘和客户承诺始终由创始人承担。</p>
+<table>
+  <thead><tr><th>JD 字段</th><th>必须写清</th><th>不合格写法</th></tr></thead>
+  <tbody>
+    <tr><td>Mission</td><td>它为 Business SoT 中哪个决策提供什么输入</td><td>帮我创业</td></tr>
+    <tr><td>Inputs</td><td>固定 URL、指定文件、时间范围、数据标签</td><td>上网搜一搜</td></tr>
+    <tr><td>Allowed tools</td><td>完成任务确实需要的最小工具</td><td>能用什么都用</td></tr>
+    <tr><td>Forbidden actions</td><td>禁止发送、购买、发布、承诺和读取的资源</td><td>注意安全</td></tr>
+    <tr><td>Output</td><td>格式、字段、长度、来源、保存位置</td><td>给我一份好报告</td></tr>
+    <tr><td>Review owner</td><td>由谁在何时检查哪些字段</td><td>有问题再看</td></tr>
+    <tr><td>Trigger</td><td>手动、一次性或重复排程，以及时区</td><td>定期跑</td></tr>
+    <tr><td>Cost ceiling</td><td>单次和周期上限；未知写 unavailable 并禁止自动超额</td><td>尽量省</td></tr>
+    <tr><td>Stop condition</td><td>来源失效、越权、费用触顶、输出异常时停止并通知</td><td>自己处理</td></tr>
+  </tbody>
+</table>
+
+<h3>可复制的 Agent JD</h3>
+<pre><code># Agent JD：客户研究证据助理
+
+Mission：基于 BUSINESS-SOT.md，为下一轮真人客户研究维护“当前替代证据表”。
+Inputs：仅限我列出的公开 URL、日期范围和 Business SoT 的非敏感摘要。
+Allowed tools：读取公开网页；写入指定的本地 Markdown 文件。
+Forbidden actions：不登录私人账号；不发邮件；不联系客户；不购买；不模拟访谈；不改 Business SoT。
+Output：最多 800 字，必须包含原始 URL、访问日期、页面明确陈述、Agent 推断、unknown、变化摘要。
+Review owner：创始人本人；每次抽查至少一条原始来源，并检查推断是否越过来源。
+Trigger：先手动；通过测试后每周一次，时区写 Australia/[城市]。
+Cost ceiling：单次 ____；每月 ____；无法确认时 unavailable，并保持手动触发。
+Stop condition：页面要求登录、来源冲突、出现客户个人信息、连续两次失败或达到成本上限时暂停并通知。
+Delivery：保存到 founder-workspace/research/alternatives-YYYY-MM-DD.md，不自动对外发送。</code></pre>
+
+<h2>四、排程不是一句“每天七点”：先弄清谁负责把它叫醒</h2>
+<p>每条 Schedule 都有两个不同问题：<strong>何时应运行</strong>，以及<strong>到点时哪个进程仍然活着</strong>。本机排程依赖电脑、电源、网络、应用、daemon 或会话状态；云端排程依赖账户资格、托管环境、连接器、用量和服务可用性。把两者混在一起，就会出现“表达式没错，但电脑睡着所以没跑”。</p>
+<table>
+  <thead><tr><th>运行形态</th><th>睡眠／关机后的预期</th><th>本节必须验证</th></tr></thead>
+  <tbody>
+    <tr><td>本机应用或当前会话</td><td>通常依赖设备和应用／会话存活；以当前官方说明为准</td><td>合盖或睡眠测试、重启后状态、网络断开后的表现</td></tr>
+    <tr><td>本机 Gateway／daemon</td><td>设备关机不会运行；睡眠是否运行取决于系统和配置</td><td>服务状态、开机自启、日志、重启恢复、重复执行保护</td></tr>
+    <tr><td>托管云端 routine／automation</td><td>不依赖个人笔记本，但依赖托管账户与环境</td><td>仓库和连接器范围、时区、用量上限、失败记录、暂停入口</td></tr>
+    <tr><td>外部云调度器</td><td>由外部服务运行</td><td>凭证存储、费用、重试、审计和供应商退出方案</td></tr>
+  </tbody>
+</table>
+
+<h3>时区与夏令时</h3>
+<p>澳洲多个城市存在不同时区，部分地区有夏令时。不要只写“UTC+10”，也不要假设悉尼、布里斯班和珀斯永远同一时间。优先使用平台支持的 IANA 时区，例如 <code>Australia/Sydney</code>、<code>Australia/Brisbane</code> 或 <code>Australia/Perth</code>；然后在界面或日志中确认下一次运行的完整日期、时间和时区。若平台只接受 UTC，保存换算依据，并在夏令时切换前设置复查提醒。</p>
+
+<h3>Schedule 规格模板</h3>
+<pre><code>名称：
+业务目的：
+运行位置：本机应用／本机 daemon／云端／外部服务
+触发方式：手动／一次性／重复
+自然语言时间：每周 ____ 当地时间 ____
+IANA 时区：Australia/____
+平台显示的下一次运行：YYYY-MM-DD HH:MM TZ
+输入白名单：
+允许工具：
+输出位置：
+review owner 与检查截止时间：
+单次成本上限：unavailable／____
+超时与重试：
+重复执行保护：
+失败通知到：
+暂停入口：
+撤销权限入口：</code></pre>
+
+<h2>五、课堂模拟：从危险自动化缩成安全的第一项任务</h2>
+<p><strong>以下为课堂模拟／合成场景，不代表真实公司、客户、访谈或商业成绩。</strong></p>
+<h3>模拟案例 A：一上来就自动触达客户</h3>
+<p>创始人要求 Agent 每天搜索潜在客户、猜测邮箱、写个性化信息并自动发送五十封。这个任务同时包含身份冒用、关系虚构、隐私、反垃圾邮件、发送错误和声誉风险，且无法在无人审查时安全回滚。本节应拒绝自动发送，把任务缩成：根据创始人亲自确认的五位真实对象，为每人生成一封透明访谈邀请草稿；创始人检查关系描述、对象身份和内容后，自己决定是否发送。</p>
+<p>即使缩小后，这仍不是最适合作为第一条无人值守 Schedule 的任务，因为外部触达需要逐条判断。它应保持手动触发。</p>
+
+<h3>模拟案例 B：客户研究证据助理</h3>
+<p>一位创始人的 Business SoT 假设，小型物业管理机构会为减少维修报修的来回追问而行动。Agent 的第一项任务不是扮演五位物业经理，而是每周检查三到五个公开、预先批准的替代方案页面，记录功能、定位或价格页面是否出现变化，并把原文与推断分开。</p>
+<table>
+  <tbody>
+    <tr><th>输入</th><td>Business SoT 非敏感摘要、固定公开 URL 列表、上次快照</td></tr>
+    <tr><th>输出</th><td>变化／未变化／页面不可访问；每条附原始 URL、访问日期、原文依据、推断和 unknown</td></tr>
+    <tr><th>权限</th><td>公开网页读取 + 指定本地目录写入；不接邮箱、客户库或支付</td></tr>
+    <tr><th>人工检查</th><td>创始人打开至少一个原始链接，确认 Agent 没把营销文案写成客户效果</td></tr>
+    <tr><th>停止条件</th><td>来源要求登录、出现个人信息、页面结构改变导致提取异常、成本触顶或连续两次失败</td></tr>
+    <tr><th>对客户研究的价值</th><td>帮助访谈时询问客户现有替代，不构成客户痛点或购买意愿证据</td></tr>
+  </tbody>
+</table>
+<p>这项任务低风险、可重复、可回查，并直接为真人访谈提供更具体的问题。它仍不能证明需求。Agent 发现竞品新增一个功能，只说明页面发生变化；客户是否使用、为何使用、是否付费，必须向真人核实。</p>
+
+<h2>六、第一条任务的完整验收协议</h2>
+<h3>步骤 1：先手动触发</h3>
+<p>不要创建完 Schedule 就等待明天。用与未来排程相同的 prompt、输入、权限和输出路径点击“Run now”或执行当前官方文档提供的手动运行命令。记录开始时间、结束时间、运行环境和实际费用；费用看不到就写 <code>unavailable</code>。</p>
+
+<h3>步骤 2：逐项检查交付物</h3>
+<ul>
+  <li>是否只读取了白名单输入？</li>
+  <li>是否按 JD 的字段和长度输出？</li>
+  <li>每条事实能否点回原始来源？</li>
+  <li>事实、Agent 推断和 unknown 是否分开？</li>
+  <li>是否越过“不发送、不购买、不承诺、不处理敏感数据”的禁区？</li>
+  <li>输出是否写到预定位置，而不是散落到未知频道？</li>
+</ul>
+
+<h3>步骤 3：至少做一次失败测试</h3>
+<p>成功运行只能证明 happy path。选择一个无破坏性的失败条件：把其中一个测试 URL 换成不存在的页面、提供一个空输入文件、暂时移除测试目录写权限，或设置一个极小的测试长度上限。合格行为是停止、标记失败并通知人；不合格行为是编造内容、静默跳过、改写别处或无限重试。</p>
+<pre><code>失败测试：
+测试条件：
+预期安全行为：
+实际行为：
+是否产生外部副作用：
+日志位置：
+需要修改的 JD／权限／重试规则：
+修复后重跑结果：</code></pre>
+
+<h3>步骤 4：检查审计</h3>
+<p>你应能回答：任务由谁创建；什么时候触发；使用了哪个版本的 JD；读取和写入了哪些资源；运行结果是 completed、failed 还是 unknown；花费是否可见；谁检查并批准重复。只有输出截图而没有运行记录、输入引用和人工 review，不足以支持可重复运行。</p>
+
+<h3>步骤 5：暂停、撤权、再恢复</h3>
+<p>先暂停 Schedule，确认下一次运行不再排队；撤销一个测试连接器或目录权限，确认 Agent 无法继续访问；再按权限登记表恢复最小范围。撤权不是“以后出事再学”的动作，而是上线前必须演练的退出机制。</p>
+
+<h2>七、只启用一到两条真正可验的 Schedule</h2>
+<p>第一条建议使用上述“客户研究证据助理”。第二条只有在第一条已通过手动运行、失败测试和审查后才启用，可选择一份只读取 Founder Workspace 指定文件的周总结。SEO、财务、Git 日报等任务应等到你真正拥有对应数据和审批流程时再开，不为了凑数提前接入。</p>
+<table>
+  <thead><tr><th>候选任务</th><th>现在是否适合</th><th>原因</th></tr></thead>
+  <tbody>
+    <tr><td>公开替代方案变化记录</td><td>适合</td><td>低权限、可回查、直接支持真人访谈准备</td></tr>
+    <tr><td>Founder Workspace 周总结</td><td>条件适合</td><td>只读指定目录，不对外发送；需要已有一周真实记录</td></tr>
+    <tr><td>SEO 周报</td><td>通常稍后</td><td>没有网站和 Search Console 数据时，配置只是空壳</td></tr>
+    <tr><td>财务月报</td><td>稍后</td><td>涉及支付和会计数据，需要专门权限、审计和人工复核</td></tr>
+    <tr><td>Git 日报</td><td>按需</td><td>只有存在真实 repo 和稳定开发节奏时才有输入</td></tr>
+    <tr><td>自动发送客户邀约</td><td>本节禁止</td><td>外部承诺与声誉风险，应由本人审查并发送</td></tr>
+  </tbody>
+</table>
+<p><strong>一条 Schedule 的完成定义：</strong>配置已保存；手动运行成功；至少一个失败场景被测试；自动触发真实发生；交付物被人检查；日志可查；撤权已演练；创始人明确批准是否继续。仅有 cron 表达式、设置页面或“已创建”的截图，仍然只是草稿。</p>
+
+<h2>八、使用 $opc-agent-team 建立最小 Agent Team</h2>
+<p>先确认 Founder Workspace 已有可用的 <code>BUSINESS-SOT.md</code>。如果业务定义仍为空，Skill 应停止，不应该替一个未定义的生意设计 Agent。安装学生 Skill 后输入：</p>
+<pre><code>运行 $opc-agent-team。
+先读取 BUSINESS-SOT.md，只为当前最危险的客户研究假设设计一个低风险 Agent。
+不要请求邮箱、客户数据、财务、合同或身份资料，除非当前任务不可避免且我明确批准。
+先生成 AGENT-TEAM.md 和一份 Agent JD；暂不启用超过一个角色。
+然后用脱敏数据手动运行一次，记录输出、人工纠错、耗时、成本可见性和是否值得重复。
+最后生成 AUTOMATION-LOG.md，并列出五位需要我本人接触的真实对象；不要模拟他们的回答。</code></pre>
+
+<h3>AGENT-TEAM.md 模板</h3>
+<pre><code># Minimal Agent Team
+
+## Role 1
+Mission:
+Business SoT decision supported:
+Inputs:
+Allowed tools:
+Forbidden actions:
+Output and required fields:
+Review owner:
+Trigger and timezone:
+Cost ceiling:
+Stop condition:
+Permission expiry:
+Audit location:
+
+## Roles not activated yet
+- Role 2: reason deferred
+- Role 3: reason deferred</code></pre>
+
+<h3>AUTOMATION-LOG.md 模板</h3>
+<pre><code>| run_at | trigger | environment | input_refs | output_ref | status | human_check | correction | cost | repeat_decision |
+|---|---|---|---|---|---|---|---|---|---|
+| YYYY-MM-DD HH:MM TZ | manual | local/cloud | redacted refs | path/url | completed/failed/unknown | reviewer + time | what changed | unavailable/amount | pause/revise/repeat |</code></pre>
+
+<h2>九、常见故障与排错</h2>
+<table>
+  <thead><tr><th>现象</th><th>先查什么</th><th>安全修复</th></tr></thead>
+  <tbody>
+    <tr><td>到点没有运行</td><td>下一次运行时间、IANA 时区、设备睡眠、应用／daemon 状态、账户用量</td><td>手动触发；改到开机时段或使用已验证的云端环境；不要盲目重复创建</td></tr>
+    <tr><td>同一任务跑了两次</td><td>是否同时存在本机与云端排程、重试是否无幂等保护</td><td>暂停重复任务；加入 run key 和“同周期已完成则退出”</td></tr>
+    <tr><td>输出没有来源</td><td>JD 是否要求 URL、访问日期和事实／推断分离</td><td>判定本次失败；补字段后重跑，未支持内容不进入调研报告</td></tr>
+    <tr><td>页面抓取失败却写出结论</td><td>是否把模型常识当成当前网页内容</td><td>要求 fail closed：写 unavailable 并通知，不允许凭记忆补写</td></tr>
+    <tr><td>输出过长或消耗异常</td><td>输入范围、字数上限、循环和重试次数</td><td>缩小输入、先摘要、设置硬上限；触顶后暂停</td></tr>
+    <tr><td>连接器权限过宽</td><td>资源范围、写权限、默认包含的 connector</td><td>暂停任务，移除无关 connector，换成专用目录或测试账号</td></tr>
+    <tr><td>结果送到没人看的地方</td><td>JD 的 Delivery 是否具体，通知是否成功</td><td>保留唯一交付位置；失败只通知，不多平台复制敏感内容</td></tr>
+    <tr><td>客户资料出现在输出</td><td>输入是否脱敏、日志和缓存是否保存原文</td><td>立即暂停、撤权、隔离输出并按组织流程处理；不要转发截图</td></tr>
+    <tr><td>Agent 尝试发送或发布</td><td>Forbidden actions、工具权限和审批点</td><td>撤销写权限；让 Agent 只生成草稿，由本人执行外部动作</td></tr>
+    <tr><td>供应商功能或套餐变化</td><td>当前官方文档、Billing／Usage 页面、任务运行日志</td><td>写 unavailable，暂停依赖该能力的 Schedule，重新评估路线</td></tr>
+  </tbody>
+</table>
+
+<h2>十、证据状态：自动化存在不等于工作完成</h2>
+<ul>
+  <li><code>drafted</code>：路线决策、Agent JD、权限表或 Schedule 已创建，但尚未发生真实运行。</li>
+  <li><code>executed</code>：至少一项低风险真实任务已用脱敏数据运行，并在 <code>AUTOMATION-LOG.md</code> 留下输入、输出和检查记录。</li>
+  <li><code>verified</code>：学生检查了输出，纠正至少一处错误或明确记录“未发现错误”的检查范围；失败测试、自动触发、审计和撤权可查，并由规定 reviewer 接受安全重复计划。</li>
+</ul>
+<p>设置页面截图、AI 生成的成功截图、私有本地草稿、同学说“很酷”或学生声称“省了很多时间”都不是 verified 证据。可接受的材料包括带日期的运行日志、脱敏输入引用、可检查输出、原始来源、人工纠错记录、暂停／撤权记录和讲师 review。保存证据引用，不保存不必要的客户姓名、联系方式、付款标识、税号、身份文件、合同或健康信息。</p>
+
+<h2>十一、本节完成标准</h2>
+<ol>
+  <li>Business SoT 已存在，第一位 Agent 的任务明确支持其中一个待验证决策。</li>
+  <li>路线选择记录了运行环境、官方核实日期、未知能力、成本上限和降级方案；没有使用过时价格硬断言。</li>
+  <li><code>AGENT-TEAM.md</code> 不超过三个角色，当前只启用一个真正有任务的角色。</li>
+  <li>Agent JD 包含使命、输入、允许工具、禁止动作、输出、review owner、trigger、cost ceiling 和 stop condition。</li>
+  <li>权限登记表写明用途、资源范围、动作、期限、审计和撤销；未授予无关邮箱、客户、财务或身份数据权限。</li>
+  <li>至少一项与客户研究相关的低风险真实任务已手动运行，所有输入都公开或脱敏。</li>
+  <li>本人检查至少一个原始来源，并保留 AI 原错误、修正指令和重跑结果；若未发现错误，记录检查范围。</li>
+  <li>至少一次无破坏性的失败测试通过；Agent 没有编造结果、静默越权或无限重试。</li>
+  <li>启用一到两条真正需要的 Schedule；每条都确认运行位置、IANA 时区、睡眠条件和下一次运行时间。</li>
+  <li>至少一条 Schedule 已发生一次真实自动触发，不只是手动触发或配置截图。</li>
+  <li>审计记录能回答何时运行、读写什么、结果状态、成本可见性和谁批准重复。</li>
+  <li>暂停和撤权演练已完成；恢复后仍保持最小权限。</li>
+  <li><code>AUTOMATION-LOG.md</code> 已更新，并明确决定 <code>pause</code>、<code>revise</code> 或 <code>repeat</code>。</li>
+  <li>列出五位真实可接触对象和本人要执行的访谈邀请动作；Agent 没有模拟访谈、客户承诺或购买意愿。</li>
+</ol>
+
+<h3>离开本页前自检</h3>
+<ul>
+  <li>我能说清楚为什么选这条路线，而不是只说它最流行。</li>
+  <li>我知道合上笔记本后任务是否还会运行，并实际测试过对应环境。</li>
+  <li>我能在两分钟内找到暂停、运行历史和撤销权限入口。</li>
+  <li>我能指出 Agent 的最终责任人，而不是把责任写成“AI 自己判断”。</li>
+  <li>我拥有的是一项被检查过的工作，不是五条尚未运行的配置。</li>
+</ul>
+
+<h2>官方与本地方法来源</h2>
+<ul>
+  <li>本地课程真相源：<code>public/outline.json</code> 的 <code>L05</code> 与本节讲师执行教案。</li>
+  <li>本地路线研究：Agent 路线资料包；其中标为未验证或来源冲突的内容，本页不作为学生硬结论。</li>
+  <li>本地执行规范：Agent Team Skill 与 Founder OS evidence policy。</li>
+  <li><a href="https://openai.com/academy/codex-automations/" target="_blank" rel="noopener noreferrer">OpenAI：Codex Automations</a>——本地运行时检查电脑与应用状态。</li>
+  <li><a href="https://code.claude.com/docs/en/routines" target="_blank" rel="noopener noreferrer">Anthropic：Claude Code Routines</a>——远程与本地运行、trigger、connector、权限、时区和 run history。</li>
+  <li><a href="https://docs.openclaw.ai/cron" target="_blank" rel="noopener noreferrer">OpenClaw：Scheduled Tasks</a>——Gateway cron 生命周期与运行方式。</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/cron" target="_blank" rel="noopener noreferrer">Hermes Agent：Scheduled Tasks</a>——创建、手动触发、暂停、恢复、删除和执行历史。</li>
+</ul>
+<p>产品能力、费用、账户资格和限制会变化。每次开课或更换路线前，以官方文档和账户内实际页面重新核实；查不到的内容保持 <code>unavailable</code>。本节的稳定原则不依赖厂商：最小权限、先手动运行、故意测试失败、人工审查、可暂停、可审计、可撤权。</p>

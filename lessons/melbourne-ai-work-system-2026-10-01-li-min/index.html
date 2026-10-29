@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="在线查看李敏提供的15页原版PowerPoint，可直接翻页和全屏播放，无需下载。" />
+  <title>李敏 · 原版 PPT 在线查看</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; height: 100vh; height: 100dvh; display: flex; flex-direction: column; font-family: system-ui, sans-serif; color: #10162f; background: #fff1e7; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; border-bottom: 2px solid #10162f; }
+    h1 { margin: 0; font-size: 17px; }
+    p { margin: 3px 0 0; color: #625b55; font-size: 12px; }
+    nav { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    a, button { color: inherit; font-size: 13px; font-weight: 700; text-decoration: none; }
+    button { font-family: inherit; border: 2px solid #10162f; border-radius: 12px; padding: 7px 14px; background: #ffde59; cursor: pointer; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #6c5ce7; outline-offset: 3px; }
+    main { flex: 1; min-height: 0; background: #171717; }
+    iframe { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+    main:fullscreen { width: 100%; height: 100%; }
+    @media (max-width: 600px) { header { flex-wrap: wrap; padding: 8px 12px; } h1 { font-size: 15px; } nav { width: 100%; justify-content: space-between; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>李敏 · AI 对会计行业的影响</h1>
+      <p>原版 PPT · 15 页 · 首次打开请稍候加载</p>
+    </div>
+    <nav aria-label="演讲导航">
+      <a href="../melbourne-ai-work-system-2026-10-01/?page=21">返回活动</a>
+      <a id="open-viewer" href="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FJR-Academy-Omni%2FCurriculum%2Fmain%2Flessons%2Fmelbourne-ai-work-system-2026-10-01-li-min%2Fpublic%2Fspeakers%2Fli-min.pptx" target="_blank" rel="noopener noreferrer">独立窗口打开 ↗</a>
+      <button id="fullscreen" type="button">全屏播放</button>
+    </nav>
+  </header>
+  <main id="presentation">
+    <!-- Microsoft renders the unchanged, publicly hosted original PPTX. The archived React redesign is not loaded. -->
+    <iframe title="李敏提供的15页原版PowerPoint" src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FJR-Academy-Omni%2FCurriculum%2Fmain%2Flessons%2Fmelbourne-ai-work-system-2026-10-01-li-min%2Fpublic%2Fspeakers%2Fli-min.pptx" allow="fullscreen" allowfullscreen></iframe>
+  </main>
+  <script type="module">
+    document.getElementById('fullscreen').addEventListener('click', async () => {
+      const presentation = document.getElementById('presentation');
+      if (presentation.requestFullscreen) {
+        try { await presentation.requestFullscreen(); return; } catch { /* Use the online viewer if fullscreen is unavailable. */ }
+      }
+      document.getElementById('open-viewer').click();
+    });
+  </script>
+</body>
+</html>

@@ -1,68 +1,34 @@
 import type { CSSProperties } from 'react';
 import { Slide } from '../ui';
 import { colors, fonts, radii } from '../../styles/theme';
-import course from '../../data/course-v2.json';
 
 const ink = colors.dark;
 const card: CSSProperties = { background: colors.white, border: `2px solid ${ink}`, borderRadius: radii.panel };
-const badge: CSSProperties = { display: 'inline-grid', placeItems: 'center', width: 30, height: 30, borderRadius: radii.label, background: colors.yellow, fontSize: 17, fontWeight: 800, flexShrink: 0 };
-const text: CSSProperties = { fontSize: 20, lineHeight: 1.5, margin: 0 };
-const mappings = [
-  ['文献库中的题名', '<title> 浏览器标签标题', '告诉读者和搜索引擎这一页讲什么。'],
-  ['论文正文的大标题', 'H1 网页主标题', '进入页面后看到的正文标题。'],
-  ['章、节、小节', 'H2 / H3 内容层级', '把长内容分开，让人快速找到对应部分。'],
-  ['插图与说明', '图片、可见图注与 alt', 'alt 是图像的文本替代，不是堆关键词。'],
-  ['参考文献', '可点击的引用链接', '打开来源查依据；站内链接通往相关页面。'],
-];
-
-export default function R16_Course() {
-  const s = course[15];
-  return <Slide bg={colors.warmBg}>
-    <section className="paper-web-slide" style={{ width: 1600, height: 900, position: 'relative', fontFamily: fonts.body, color: ink }}>
-      <style>{`@media(max-width:700px){.deck-runtime:has(.paper-web-slide)>button{top:auto!important;bottom:20px;transform:none!important}}`}</style>
-      <header style={{ position: 'absolute', left: 100, top: 82, width: 1400 }}>
-        <span style={{ color: colors.red, fontSize: 18, fontWeight: 750, letterSpacing: 2 }}>SEO / GEO · PART 02</span>
-        <h1 style={{ fontSize: 54, fontWeight: 850, lineHeight: 1.2, margin: '16px 0 14px' }}>{s.title}</h1>
-        <p style={{ ...text, fontSize: 24 }}>{s.sub}</p>
-      </header>
-      <div style={{ position: 'absolute', left: 100, top: 252, width: 535 }}>
-        <div style={{ fontSize: 21, fontWeight: 750, marginBottom: 13 }}>一篇论文 <span style={{ fontSize: 17, fontWeight: 500 }}>· 结构示例，非真实研究论文</span></div>
-        <article style={{ ...card, padding: '24px 30px', height: 468, boxShadow: `7px 7px 0 ${colors.yellow}` }}>
-          <div style={{ borderBottom: `1px solid ${ink}`, paddingBottom: 18 }}>
-            <span style={{ ...badge, marginRight: 12 }}>1/2</span>
-            <strong style={{ fontSize: 27 }}>家用咖啡机除垢方法</strong>
-          </div>
-          <div style={{ background: colors.warmBg, borderRadius: radii.label, padding: '12px 16px', marginTop: 17 }}>
-            <strong style={{ fontSize: 19 }}>摘要</strong>
-            <p style={{ ...text, fontSize: 19 }}>说明适用条件、操作方法和注意事项。</p>
-          </div>
-          <div style={{ marginTop: 19, display: 'flex', gap: 12 }}>
-            <span style={badge}>3</span><div><strong style={{ fontSize: 24 }}>1　适用条件</strong><p style={{ ...text, marginTop: 7 }}>1.1　机型与材料</p></div>
-          </div>
-          <div style={{ marginTop: 16, display: 'flex', gap: 12, alignItems: 'center' }}>
-            <span style={badge}>4</span><div style={{ background: colors.warmBg, borderRadius: radii.card, padding: '14px 18px', flex: 1 }}><div style={{ display: 'flex', gap: 12, alignItems: 'center', fontSize: 18 }}><span>准备</span><b>→</b><span>操作</span><b>→</b><span>检查</span></div><p style={{ ...text, fontSize: 16, marginTop: 7 }}>图1 · 过程结构示意</p></div>
-          </div>
-          <div style={{ marginTop: 18, display: 'flex', gap: 12, alignItems: 'center' }}><span style={badge}>5</span><span style={{ fontSize: 20 }}>参考文献 → 核对原始依据</span></div>
-        </article>
-      </div>
-      <div aria-hidden="true" style={{ position: 'absolute', left: 658, top: 452, color: colors.red, fontSize: 58 }}>→</div>
-      <div style={{ position: 'absolute', left: 750, top: 252, width: 750 }}>
-        <div style={{ fontSize: 21, fontWeight: 750, marginBottom: 13 }}>一个网页 <span style={{ fontSize: 17, fontWeight: 500 }}>· 把对应关系放进网页结构</span></div>
-        <article style={{ ...card, overflow: 'hidden', height: 468, boxShadow: `7px 7px 0 ${colors.red}` }}>
-          <div style={{ background: ink, color: colors.white, display: 'flex', alignItems: 'center', gap: 12, padding: '13px 23px', fontSize: 18 }}>
-            <span style={{ width: 10, height: 10, borderRadius: 10, background: colors.red }} />浏览器标签：家用咖啡机除垢方法
-          </div>
-          <div style={{ padding: '6px 22px' }}>
-            {mappings.map(([paper, web, explanation], i) => <div key={web} style={{ display: 'flex', gap: 14, padding: '8px 0', borderBottom: i === 4 ? 0 : `1px solid ${colors.warmBg}` }}>
-              <span style={{ ...badge, marginTop: 4 }}>{i + 1}</span>
-              <div><div style={{ display: 'flex', alignItems: 'baseline', gap: 14 }}><strong style={{ fontSize: 22 }}>{web}</strong><span style={{ fontSize: 16, color: ink }}>↔ {paper}</span></div><p style={{ ...text, fontSize: 19, lineHeight: 1.45, marginTop: 4 }}>{explanation}</p></div>
-            </div>)}
-          </div>
-        </article>
-      </div>
-      <aside style={{ position: 'absolute', top: 794, left: 100, width: 1400, borderLeft: `5px solid ${colors.red}`, borderRadius: radii.card, background: colors.white, padding: '15px 20px', fontSize: 21, lineHeight: 1.5 }}>
-        <strong>摘要要分清：</strong>meta description 是对外概括，不会自动显示在正文；Google 也可能从正文生成搜索摘要。
-      </aside>
-    </section>
-  </Slide>;
+const headingCode = `<main>
+  <h1>咖啡机除垢指南</h1>
+  <h2>准备工作</h2>
+  <h3>确认机型</h3>
+  <p>先查看说明书。</p>
+  <h3>准备清洁材料</h3>
+  <h2>除垢步骤</h2>
+  <h3>运行除垢程序</h3>
+  <h3>清水冲洗</h3>
+  <h2>常见问题</h2>
+</main>`;
+export default function R16_Course(){
+ const chapters=[{title:'准备工作',children:['确认机型','准备清洁材料']},{title:'除垢步骤',children:['运行除垢程序','清水冲洗']},{title:'常见问题',children:[]}];
+ return <Slide bg={colors.warmBg}><section className="heading-structure-slide" style={{position:'relative',width:1600,height:900,fontFamily:fonts.body,color:ink}}>
+ <style>{`.heading-structure-slide button:focus-visible,.heading-structure-slide a:focus-visible,.paper-web-slide button:focus-visible{outline:4px solid ${colors.blue};outline-offset:4px}@media(max-width:700px){.deck-runtime:has(.heading-structure-slide)>button{top:auto!important;bottom:20px;transform:none!important}}.deck-print .heading-structure-slide nav,.deck-print-preview .heading-structure-slide nav{display:none}`}</style>
+ <header style={{position:'absolute',left:100,top:82,width:1400}}><span style={{fontSize:18,fontWeight:750,color:colors.red,letterSpacing:2}}>SEO / GEO · PART 02</span><h1 style={{fontSize:52,lineHeight:1.2,margin:'16px 0 14px',fontWeight:850}}>Page Structure：H1、H2、H3 怎么组织</h1><p style={{fontSize:23,lineHeight:1.5,margin:0}}>H1 是文章主题，H2 是章节，H3 是该章节下的小节；标题层级表达内容关系，字号由 CSS 控制。</p></header>
+ <nav style={{position:'absolute',left:100,top:245,display:'flex',gap:16}}><span style={{fontSize:22,fontWeight:750,padding:'11px 24px',background:colors.yellow,border:`2px solid ${ink}`,borderRadius:radii.card}}>01 · 标题层级与 HTML</span><a href="?page=17" style={{fontFamily:fonts.body,fontSize:22,fontWeight:750,padding:'11px 24px',background:colors.white,border:`2px solid ${ink}`,borderRadius:radii.card,color:ink,cursor:'pointer',textDecoration:'none'}}>Website vs 论文 · 下一页 →</a></nav>
+ <main style={{position:'absolute',left:100,top:325,width:1400,display:'grid',gridTemplateColumns:'680px 680px',gap:40}}>
+ <section style={{...card,padding:'23px 28px',boxSizing:'border-box',height:440}} aria-label="H1 H2 H3 标题树">
+  <div style={{fontSize:25,fontWeight:800,padding:'8px 14px',borderRadius:radii.label,background:colors.yellow}}><span style={{marginRight:20}}>H1</span>咖啡机除垢指南</div>
+  <div style={{marginLeft:20,paddingLeft:24,borderLeft:`3px solid ${ink}`,marginTop:12}}>{chapters.map(ch=><div key={ch.title} style={{marginBottom:11}}><div style={{fontSize:23,fontWeight:750}}><span style={{color:'#b52d2d',marginRight:18}}>H2</span>{ch.title}</div>{ch.children.length>0&&<div style={{marginLeft:17,paddingLeft:24,borderLeft:`2px solid ${ink}`,marginTop:7}}>{ch.children.map(child=><div key={child} style={{fontSize:21,lineHeight:1.6}}><span style={{fontWeight:750,color:'#2345a3',marginRight:16}}>H3</span>{child}</div>)}</div>}</div>)}</div>
+ </section>
+ <pre style={{boxSizing:'border-box',height:440,margin:0,padding:'24px 28px',background:ink,color:colors.white,borderRadius:radii.panel,fontSize:20,lineHeight:1.5,fontFamily:fonts.mono,whiteSpace:'pre-wrap'}}><code>{headingCode}</code></pre>
+ </main>
+ <aside style={{position:'absolute',left:100,top:775,width:1400,boxSizing:'border-box',padding:'13px 20px',borderRadius:radii.card,background:colors.white,borderLeft:`5px solid ${colors.red}`,fontSize:21,lineHeight:1.5}}>同级章节用同级标题；H3 属于前面的 H2。正文用 &lt;p&gt;，字号用 CSS。通常一个 H1，进入小节不跳级。</aside>
+ <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements" target="_blank" rel="noreferrer" style={{position:'absolute',right:100,bottom:16,fontSize:17,color:ink,fontWeight:750}}>MDN · HTML Headings ↗</a>
+ </section></Slide>;
 }

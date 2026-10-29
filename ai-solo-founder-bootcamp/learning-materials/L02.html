@@ -1,0 +1,267 @@
+<h2>把模糊想法变成一页可执行、可推翻的 Business SoT</h2>
+<p>这节课的目标不是写一份看起来完整的商业计划书，也不是让 AI 证明你的想法正确。你要建立一份 <strong>Business Source of Truth（Business SoT）v0.1</strong>：同学能准确复述，AI 能在边界内执行，六周后能根据真实证据决定继续、修改或停止的一页业务定义。</p>
+<p>Business SoT 是“当前唯一算数的版本”，不是永久不变的承诺。报价、访谈提纲、竞品研究、落地页和 AI 任务都应读取同一版 SoT；只有新证据改变了客户、Job、替代方案、交付边界或判断标准时，才更新版本。灵感可以先进入待验证清单，不能因为一句话听起来更顺就直接改方向。</p>
+
+<h2>本节学习路径</h2>
+<ol>
+  <li><strong>理解：</strong>区分“写清楚”“执行过”和“被证据支持”，理解 SoT 如何控制任务与版本。</li>
+  <li><strong>拆解：</strong>用三个明确标注为课堂模拟的案例，看七个字段怎样首尾相接。</li>
+  <li><strong>起草：</strong>运行 <code>$opc-business-sot</code>，逐项回答，不允许 AI 补写客户事实。</li>
+  <li><strong>互审：</strong>参加 Founder Exchange，让同伴在不看原文时复述四个关键字段。</li>
+  <li><strong>执行：</strong>把 SoT 载入一个 AI 工作空间，从三个真实任务中选一个完成并人工纠错。</li>
+  <li><strong>留证：</strong>保存版本、反馈、输出、纠错和下一步证据动作，按 <code>drafted → executed → verified</code> 更新状态。</li>
+</ol>
+
+<h2>一、Business SoT 管住哪四件事</h2>
+<table>
+  <thead><tr><th>要管住的事</th><th>SoT 的作用</th><th>没有 SoT 时常见结果</th></tr></thead>
+  <tbody>
+    <tr><td>优先级</td><td>每个任务都必须服务于当前客户、Job、交付或证据假设</td><td>今天做网站，明天换赛道，后天研究一个无人要求的功能</td></tr>
+    <tr><td>统一口径</td><td>人和 AI 都读取同一版业务定义</td><td>报价说一套，访谈问另一套，AI 又猜出第三套</td></tr>
+    <tr><td>人机边界</td><td>提前规定 AI 的输入、输出、人工审批和禁区</td><td>AI 把草稿当结论，把受监管决定当自动化任务</td></tr>
+    <tr><td>变更管理</td><td>记录哪条新证据触发了哪项修改</td><td>每次改方向都只剩一句“我感觉这样更好”</td></tr>
+  </tbody>
+</table>
+<p>固定闭环是：<strong>读取当前 SoT → 选择一个任务 → 执行并人工检查 → 留下证据 → 决定是否更新 SoT</strong>。AI 生成了一篇新文案，不代表业务定义改变；客户明确拒绝某种自动化方式，则可能需要更新人机边界和“不做清单”。</p>
+
+<h2>二、七字段链：每一项都必须能检查</h2>
+<p>七个字段不是七句宣传语，而是一条因果链。前一项模糊，后一项就只能靠 AI 猜。</p>
+<table>
+  <thead><tr><th>#</th><th>字段</th><th>必须回答</th><th>最低合格线</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>可找到的客户</strong></td><td>你先服务哪一类人？在哪里能找到他们？</td><td>能说出一个具体场景，并知道去哪里联系五位真人</td></tr>
+    <tr><td>2</td><td><strong>Customer Job 假设</strong></td><td>当什么情况发生时，客户想取得什么进展，最终为了什么结果？</td><td>使用 <code>When… I want to… so I can…</code>，句子里不出现你的产品</td></tr>
+    <tr><td>3</td><td><strong>当前替代与代价</strong></td><td>客户现在用人、表格、现有工具、外包，还是忍着不做？</td><td>写可观察的时间、金钱、错误、延迟或风险；缺数字写 <code>unavailable</code></td></tr>
+    <tr><td>4</td><td><strong>最小承诺结果与交付物</strong></td><td>第一版先改变什么，交付什么可检查的东西？</td><td>承诺最小变化，不虚构节省比例、准确率或收入效果</td></tr>
+    <tr><td>5</td><td><strong>AI 工作与人的责任</strong></td><td>输入是什么、AI 产出什么、谁审批、哪些决定禁止自动化？</td><td>至少写一个人工审批点和一个禁止自动化的决定</td></tr>
+    <tr><td>6</td><td><strong>六周证伪计划</strong></td><td>什么证据让你继续、修改或停止？</td><td>三个结论都能触发，不能写成无论发生什么都继续</td></tr>
+    <tr><td>7</td><td><strong>明确不做什么</strong></td><td>暂不服务谁、不做哪些功能、不承担哪些责任？</td><td>至少三条，覆盖客户、功能、渠道、责任或合规边界</td></tr>
+  </tbody>
+</table>
+
+<h3>字段 2：先写 Job，不要偷塞解法</h3>
+<p>合格格式：</p>
+<pre><code>When [一个具体情境发生]，
+I want to [完成某种进展]，
+so I can [取得业务或生活结果]。</code></pre>
+<p><strong>不合格：</strong>“当月末到来时，我想用 AI 自动分类附件。”这句话已经把解法塞进 Job。<br><strong>修正：</strong>“当月末资料陆续到达时，我想快速知道缺什么、由谁补齐，从而减少来回追问并按计划完成关账准备。”</p>
+<p>功能、情绪和社会维度都可以记录，但在没有真实客户证据前必须标为假设。例如“减少返工”是功能假设，“不想每月都被催到焦虑”是情绪假设，“希望在客户面前显得有条理”是社会假设。AI 可以帮你整理，不能替客户确认。</p>
+
+<h3>字段 3：不消费也是替代方案</h3>
+<p>客户没有购买软件，不等于没有解决问题。他可能复制上月表格、让初级员工加班、把问题拖到月底、依靠个人记忆，或接受错误发生。把“忍着不做”放进替代方案，才能看见真正竞争对手。没有可靠数字时写“每月耗时 unavailable，下一步通过历史记录或访谈确认”，不能把 unavailable 写成 0，更不能让 AI 猜一个行业平均值。</p>
+
+<h3>字段 6：证伪计划必须允许失败</h3>
+<p>“六周后做出 MVP”不是证据，因为无论客户是否需要，你都能完成。合格计划要写清三条分支：</p>
+<ul>
+  <li><strong>continue：</strong>出现什么外部行为，值得保持客户与 Job 假设；</li>
+  <li><strong>revise：</strong>出现什么矛盾，需要缩小客户、改交付或调整边界；</li>
+  <li><strong>stop：</strong>出现什么结果，说明不应继续投入当前方向。</li>
+</ul>
+<p>本节只设计证据门槛。真人访谈和客户验证结论属于后续验证阶段；同学说“听起来不错”、AI 模拟客户说“愿意购买”，都不能满足门槛。</p>
+
+<h2>三、证据标签：不要让流畅文字升级成事实</h2>
+<p>七字段下面必须保留四个证据区，避免把不同可信度的内容混在一起：</p>
+<table>
+  <thead><tr><th>标签</th><th>含义</th><th>例子</th></tr></thead>
+  <tbody>
+    <tr><td><code>observed</code></td><td>你能指出时间、记录或原始材料的观察</td><td>过去三次月末都出现附件命名不一致；有脱敏工单样本可检查</td></tr>
+    <tr><td><code>founder-knowledge</code></td><td>来自你的专业经验，但尚未被目标客户独立确认</td><td>你在事务所工作时通常需要人工追资料</td></tr>
+    <tr><td><code>assumption</code></td><td>需要外部行动验证的判断</td><td>小型事务所愿意为减少追问购买一项服务</td></tr>
+    <tr><td><code>unknown</code></td><td>当前没有可靠答案</td><td>每月平均返工小时、预算审批人、愿付价格</td></tr>
+  </tbody>
+</table>
+<p>再区分交付状态：</p>
+<ul>
+  <li><code>drafted</code>：学生或 AI 已生成文档，七字段存在，未支持的主张已贴标签。</li>
+  <li><code>executed</code>：同伴与 AI 复述测试已运行；三选一真实任务已完成、检查并纠正至少一处错误。</li>
+  <li><code>verified</code>：有可检查证据，且讲师或指定 reviewer 已接受 SoT 和纠错记录。</li>
+</ul>
+<p><strong>Business SoT 被 verified，只表示文档可用、可测试，不表示商业想法已经通过市场验证。</strong>可接受的证据可以是有日期的访谈笔记、已发送消息记录、公开 URL、服务商回执、脱敏付款记录或讲师 review 记录。客户姓名、联系方式、付款标识、税号、身份证件、合同和健康信息应脱敏；Founder Workspace 保存证据引用，不保存不必要的敏感原件。</p>
+
+<h2>四、课堂模拟案例 A：AI 月末资料准备服务</h2>
+<p><strong>性质声明：以下是课堂模拟／合成场景，所有客户数量、代价、试点和收费均为待验证假设，不是真实公司成绩。</strong></p>
+<table>
+  <tbody>
+    <tr><th>可找到的客户</th><td>澳洲 5–20 人的 bookkeeping 或 accounting firm；创始人能从现有人脉和行业目录列出五位可邀请访谈的负责人。</td></tr>
+    <tr><th>Customer Job 假设</th><td>当月末资料分散到达时，我想迅速知道缺了什么、该由谁补，从而按计划完成关账准备并减少来回追问。</td></tr>
+    <tr><th>当前替代与代价</th><td>员工翻邮件和附件、复制到表格、逐人追问；返工时间和延迟成本均为 <code>unavailable</code>，等待通过历史记录与真人访谈确认。</td></tr>
+    <tr><th>最小结果与交付</th><td>针对一批脱敏历史附件，生成可复核的分类结果、缺失清单和待确认项；不承诺自动完成关账。</td></tr>
+    <tr><th>AI／人边界</th><td>AI 归类、列缺口并起草工作底稿；专业人员核对客户、期间、文件完整性和所有对外交付。禁止 AI 提供税务意见、代签或提交 BAS。</td></tr>
+    <tr><th>六周证伪</th><td>continue：五次真人访谈出现重复问题，且至少两家愿提供脱敏历史样本试跑；revise：痛点存在但主要发生在另一类事务所或另一环节；stop：目标客户没有重复问题，或合规成本高于可交付价值。</td></tr>
+    <tr><th>不做</th><td>不服务个人报税；不处理未脱敏客户原件；不提供税务意见；不自动向客户发送结果。</td></tr>
+  </tbody>
+</table>
+<p><strong>补充假设：</strong>按项目或月度服务收费、事务所负责人是购买决策者、创始人的会计流程经验形成交付优势。这些内容都要放进 <code>assumption</code> 或 <code>founder-knowledge</code>，不能写成已验证事实。</p>
+
+<h2>五、课堂模拟案例 B：物业维修工单助手</h2>
+<p><strong>性质声明：以下是课堂模拟／合成场景，不代表任何真实物业公司、客户或产品结果。</strong></p>
+<table>
+  <tbody>
+    <tr><th>可找到的客户</th><td>管理约 100–500 套住宅的独立 property manager；可从本地机构名单和行业活动找到五位经理。</td></tr>
+    <tr><th>Customer Job 假设</th><td>当报修信息从电话、短信和邮件进入时，我想一次收齐可分派的信息，从而减少追问，同时不漏掉需要人工升级的紧急事项。</td></tr>
+    <tr><th>当前替代与代价</th><td>人工在多个渠道之间复制地址、照片、紧急程度和承包商状态；漏单率、平均追问次数和工单处理时长均为 <code>unavailable</code>。</td></tr>
+    <tr><th>最小结果与交付</th><td>把一条脱敏报修记录整理成结构化工单草稿，列出缺失信息，等待物业经理批准。</td></tr>
+    <tr><th>AI／人边界</th><td>AI 整理和追问缺失项；物业经理判断紧急等级、选择供应商、批准费用。禁止 AI 判断人身安全或自动派单。</td></tr>
+    <tr><th>六周证伪</th><td>continue：观察二十条历史工单并完成五次访谈后，重复发现资料缺失且有人愿意试跑；revise：问题成立但首要价值是租客沟通而非工单整理；stop：现有系统已稳定解决问题，客户不愿改变流程或无法合法提供可用数据。</td></tr>
+    <tr><th>不做</th><td>不自动判断安全事件；不自动批准费用；不替代持牌技工；不处理未经授权的租客敏感信息。</td></tr>
+  </tbody>
+</table>
+<p><strong>反例：</strong>“为所有物业公司做一个 AI 自动派单平台，降低 50% 成本。”客户不可找到、功能先于 Job、50% 没有来源，而且自动派单越过责任边界。修正顺序是先缩小到一个可联系客群，再观察历史工单，最后才决定需要助手、服务还是软件。</p>
+
+<h2>六、课堂模拟案例 C：本地专业服务内容审批</h2>
+<p><strong>性质声明：以下是课堂模拟／合成场景，未发生真人访谈，也没有任何收入或购买承诺。</strong></p>
+<table>
+  <tbody>
+    <tr><th>可找到的客户</th><td>没有专职营销人员、由合伙人最终审稿的澳洲本地专业服务公司，例如小型咨询或工程顾问公司。</td></tr>
+    <tr><th>Customer Job 假设</th><td>当公司需要持续发布专业内容时，我想把项目经验整理成可审批的草稿，从而减少合伙人从零写稿的时间，同时不泄露客户信息。</td></tr>
+    <tr><th>当前替代与代价</th><td>合伙人临时写、员工反复改、外包写手不了解行业，或长期不发布；真实审批次数、机会成本和不发布代价均为 <code>unavailable</code>。</td></tr>
+    <tr><th>最小结果与交付</th><td>从一份脱敏项目摘要生成一个选题、结构化草稿、事实待核清单和发布前审批表。</td></tr>
+    <tr><th>AI／人边界</th><td>AI 整理结构、提取待核事实和起草；负责人确认事实、客户许可、专业表述和最终发布。禁止自动发布和虚构案例。</td></tr>
+    <tr><th>六周证伪</th><td>continue：五次访谈确认审批而非写稿是主要瓶颈，且两家公司愿用脱敏材料试跑；revise：真正瓶颈是选题或分发；stop：客户无法提供合规输入，或合伙人不愿参与最终审批。</td></tr>
+    <tr><th>不做</th><td>不承诺排名或线索数量；不使用未获许可的客户案例；不自动发布；不替负责人作专业结论。</td></tr>
+  </tbody>
+</table>
+<p>这个案例说明：AI 能做很多内容工作，不代表客户会为“写稿”付费。你必须先判断他们真正想买的是更快出初稿、更少审批往返、事实风险控制，还是稳定分发。四种 Job 会导向不同业务。</p>
+
+<h2>七、运行 OPC Business SoT Skill</h2>
+<p>在本页“课程材料”下载 <strong>OPC Business SoT · 学生 Skill 包</strong>，按照压缩包中的学生安装说明安装 <code>opc-founder-os</code> 与 <code>opc-business-sot</code>。在一个独立任务中输入：</p>
+<pre><code>运行 $opc-business-sot，帮我完成 Business SoT v0.1。
+先读取我已有的 BUSINESS-SOT.md 和 founder-state.json，保留我的原文。
+逐项问我七个字段，不要替我编客户、访谈、收入、成本或购买意愿。
+把每条内容标记为 observed、founder-knowledge、assumption 或 unknown；
+没有数据时写 unavailable。最后给出 continue / revise / stop 的六周证伪条件。</code></pre>
+<p>没有现成文件时，先按学生包说明初始化 Founder Workspace。AI 提问时不要为了让文档“完整”而猜答案；真实客户证据缺失时，必须明确写 <code>customer validation: awaiting-evidence</code>。</p>
+
+<h3>让 AI 做三项自检</h3>
+<pre><code>请只基于当前 Business SoT 完成三项检查：
+1. 用三句话复述可找到的客户、Customer Job、当前替代和最小承诺结果；
+2. 列出最可能推翻这门生意的三个 assumption，并说明缺什么外部证据；
+3. 从“不做清单”中任选一条，示范当我要求越界时你应如何拒绝。
+不要模拟客户回答，不要把同伴意见写成市场证据。</code></pre>
+
+<h3>可迁移模板</h3>
+<pre><code>我的背景与可接触人群：[只写非敏感事实]
+我观察到的具体情境：[时间、事件、流程]
+客户当前想取得的进展：[不写产品]
+我见过的当前替代：[手工／工具／外包／不消费]
+可确认的代价：[来源]；缺失项：[unavailable]
+最小承诺结果：[变化]；交付物：[可检查对象]
+AI 输入与输出：[范围]
+人工审批：[责任人和检查点]
+禁止自动化：[决定或数据]
+六周 continue / revise / stop：[外部行为和证据]
+至少三条不做：[客户／功能／渠道／责任／合规]
+请指出我把解法塞进 Job、把推断写成事实或写了不可证伪标准的地方。</code></pre>
+
+<h2>八、Founder Exchange：同伴不是来夸点子的</h2>
+<p>三人一组，每人八分钟，最后统一记录反馈。分享范围由本人决定，不展示客户隐私、雇佣合同或商业机密。</p>
+<ol>
+  <li>本人用 90 秒说明七字段，但不解释自己“为什么一定会成功”。</li>
+  <li>同伴不看原文，复述四项：客户、Job、当前替代、最小承诺结果。</li>
+  <li>本人逐字记录差异：是同伴没听清，还是 SoT 让人只能猜？</li>
+  <li>同伴只问三类问题：你在假设什么？谁能证明或推翻？下周最小动作是什么？</li>
+  <li>本人只改最影响下一步验证的一处，并写下继续联系的一位真人。</li>
+</ol>
+<p>反馈卡使用固定格式：</p>
+<pre><code>我原本准备：[原动作]
+同伴无法复述或质疑的是：[具体字段]
+这条反馈的性质：[表达问题／待验证假设／潜在线索]
+因此下一步改成：[一个动作]
+它不会被当成客户证据，因为：[原因]</code></pre>
+<p>“很有潜力”“我会用”“听起来不错”都不是有效反馈。如果同伴指出“你说的是所有小企业，我不知道该把谁介绍给你”，这是一条能改变动作的反馈：客户字段需要继续缩小。但它仍不是市场需求验证。</p>
+
+<h2>九、第一个真实任务：三选一</h2>
+<p>只选一项。完成很多字不加分；必须能检查原始依据、指出 AI 至少一处错误并重做。</p>
+<h3>A．现有替代证据</h3>
+<p>找三个可核验的当前替代，其中必须包含“忍着不做”。记录原始链接、产品原文或可说明来源的观察，把事实、推断和未知分开。</p>
+<pre><code>基于我的 SoT，研究三个当前替代，其中一个必须是 non-consumption。
+每项输出：原始来源、来源日期、可直接确认的事实、你的推断、仍未知的代价。
+不要根据营销文案推断客户效果；没有价格或指标就写 unavailable。</code></pre>
+
+<h3>B．非诱导访谈提纲</h3>
+<p>围绕最不确定的三个假设写五个问题，只问过去发生过什么，不问“你会不会买”。再写一封透明、不伪装销售的访谈邀请。本任务只产出提纲和邀请，不允许 AI 代替客户作答。</p>
+<pre><code>从 SoT 中选出三个最危险的 assumption，写五个只询问过去行为的问题。
+禁止出现“你觉得这个点子怎么样”“如果有这个产品你会买吗”。
+再为一个我确实能联系的人起草邀请，说明目的、时长和不做推销。
+不要虚构我与对方的关系，也不要自动发送。</code></pre>
+
+<h3>C．一页 Offer 草图</h3>
+<p>把最小承诺结果整理成一页 Offer，但所有未经支持的收益、价格、交付周期和保障都要标记 <code>assumption</code>。这不是正式报价，更不是成交证据。</p>
+<pre><code>根据当前 SoT 起草一页 Offer：对象、情境、最小结果、交付物、人工责任、边界和下一步。
+每个收益数字、价格、周期、保证或客户评价都必须附证据标签。
+没有证据的内容标 assumption 或 unavailable，不准补写 testimonial。</code></pre>
+
+<h3>人工纠错记录</h3>
+<pre><code>AI 原输出：[保留有问题的句子]
+问题类型：[无来源数字／越过边界／把假设写成事实／来源不支持／客户过宽／其他]
+我如何发现：[检查动作]
+修正指令：[我让 AI 怎样重做]
+修正后结果：[新版本或文件位置]
+下一条需要真人或外部行动补的证据：[具体动作]</code></pre>
+
+<h2>十、常见错误与修正</h2>
+<table>
+  <thead><tr><th>错误</th><th>为什么不合格</th><th>修正动作</th></tr></thead>
+  <tbody>
+    <tr><td>客户写“中小企业”</td><td>找不到五个同类真人，Job 和采购责任也不同</td><td>加入规模、角色、行业、触发情境和可到达渠道</td></tr>
+    <tr><td>Job 写“使用 AI 自动化”</td><td>把解法当需求，无法比较其它替代</td><td>删除产品名，重写客户在具体情境下要取得的进展</td></tr>
+    <tr><td>把行业经验当客户事实</td><td>Founder Knowledge 仍可能过时或只适用于前雇主</td><td>保留经验并贴标签，安排真人访谈或历史记录检查</td></tr>
+    <tr><td>代价没有数字就写 0</td><td>0 表示确认不存在，和“不知道”不同</td><td>写 <code>unavailable</code>，说明如何取得数据</td></tr>
+    <tr><td>六周目标是“做完产品”</td><td>交付动作不能推翻需求假设</td><td>改成客户行为、样本试跑、实际使用或拒绝原因</td></tr>
+    <tr><td>AI 模拟五位客户回答</td><td>角色扮演没有外部来源，不能验证需求</td><td>停止模拟，保留访谈提纲并联系真人</td></tr>
+    <tr><td>同伴说好就标 verified</td><td>同伴能检查表达，不能代表目标客户购买</td><td>把同伴结果记为复述测试；verified 仍需 reviewer 和纠错证据</td></tr>
+    <tr><td>接入私人邮箱和客户原件</td><td>现场任务不需要这些权限，增加隐私风险</td><td>使用脱敏样本和独立 workspace，敏感连接器留到明确需求出现后</td></tr>
+    <tr><td>不做清单写“以后再说”</td><td>AI 无法据此拒绝越界任务</td><td>写成明确对象、动作和责任，例如“不自动批准费用”</td></tr>
+    <tr><td>把 SoT 写成十页</td><td>关键信息被背景故事淹没，团队和 AI 难以复述</td><td>主文保持一页；证据、访谈和研究放到链接文件</td></tr>
+  </tbody>
+</table>
+
+<h2>十一、本节完成标准</h2>
+<ol>
+  <li><code>BUSINESS-SOT.md</code> 的七个字段全部存在，并形成从客户到证据的连续链条。</li>
+  <li>客户具体到知道去哪里找到五位真人；Customer Job 没有出现拟议产品。</li>
+  <li>当前替代包含手工、现有工具、外包或不消费；缺失指标使用 <code>unavailable</code>。</li>
+  <li>AI 输入、输出、人工审批与禁止自动化决定写清；不做清单至少三条。</li>
+  <li>六周计划分别写出 <code>continue</code>、<code>revise</code>、<code>stop</code> 的可观察条件。</li>
+  <li>Facts、Founder Knowledge、Assumptions 和 Unknowns 已分区；没有模拟访谈或虚构购买意愿。</li>
+  <li>同伴不看原文能复述客户、Job、替代和最小结果；差异和修改已写入反馈卡。</li>
+  <li>AI 完成三项自检，并正确拒绝一项越过“不做清单”的任务。</li>
+  <li>三选一真实任务已完成；本人保留 AI 原错误、检查方式、修正指令和重做结果。</li>
+  <li><code>founder-state.json</code> 已记录 Job 假设、输出、开放假设和下一条证据动作。</li>
+  <li>所有敏感信息已脱敏，只保存必要证据引用。</li>
+  <li>写下一项为下一阶段 AI 团队准备的动作，以及一项留给客户验证阶段的真人证据动作。</li>
+</ol>
+
+<h3>离开本页前的自检</h3>
+<ul>
+  <li>我能不用产品名说明客户在什么情境下想取得什么进展。</li>
+  <li>我能指出 SoT 里最危险的三个假设，而不是只说优势。</li>
+  <li>我知道什么结果会让我停止，而不是默认六周后继续。</li>
+  <li>我能解释为什么同伴认可、桌面研究和 AI 角色扮演都不是客户验证。</li>
+  <li>我已经把下一步写成一个真人或外部行动，而不是“继续优化想法”。</li>
+</ul>
+
+<h2>十二、应保存到 Founder Workspace 的证据</h2>
+<table>
+  <thead><tr><th>文件或引用</th><th>应包含</th><th>建议状态</th></tr></thead>
+  <tbody>
+    <tr><td><code>BUSINESS-SOT.md</code></td><td>版本号、七字段、四类证据标签、不做清单、六周分支</td><td>初稿为 <code>drafted</code></td></tr>
+    <tr><td><code>founder-state.json</code></td><td>当前 Job 假设、开放假设、输出路径、下一证据动作</td><td>通过脚本或人工校验结构</td></tr>
+    <tr><td>Founder Exchange 反馈卡</td><td>同伴复述差异、一条改变下一步的反馈、修改前后</td><td>运行后支持 <code>executed</code></td></tr>
+    <tr><td>真实任务输出</td><td>原始来源或目标对象、AI 原错误、人工修正、重做结果</td><td>检查后支持 <code>executed</code></td></tr>
+    <tr><td>讲师 review 记录</td><td>reviewer、日期、接受或退回原因、需要补的证据</td><td>接受后可记 <code>verified</code></td></tr>
+  </tbody>
+</table>
+<p><strong>下一阶段准备动作：</strong>把 Business SoT 设为 AI 工作空间的固定上下文，测试任何新 Agent 是否能准确复述客户、Job、边界和三个高风险假设。<br><strong>客户证据动作：</strong>列出五位真实可联系对象，先准备透明邀请和非诱导问题；不要在本节伪造访谈结果，真人行动留到规定的客户验证阶段。</p>
+
+<h2>方法与来源</h2>
+<ul>
+  <li>本地课程真相源：<code>public/outline.json</code> 的 <code>L02</code>、<code>W1_RUNSHEET.md</code>。</li>
+  <li>本地案例与来源纪律：<code>W1_CASE_STUDIES.md</code>；真实案例数字必须保留来源级别、冲突与 unavailable。</li>
+  <li>本地执行规范：<code>skills/opc-business-sot/SKILL.md</code> 与 <code>references/method-adaptation.md</code>。</li>
+  <li>本地证据规范：<code>skills/opc-founder-os/references/evidence-policy.md</code>。</li>
+  <li><a href="https://github.com/wondelai/skills" target="_blank" rel="noopener noreferrer">WondelAI Skills</a>：JTBD、Mom Test 与持久状态方法参考；课程保留自己的证据门槛。</li>
+  <li><a href="https://github.com/getagentseal/founder-playbook" target="_blank" rel="noopener noreferrer">Founder Playbook</a>：访谈与框架路由方法参考。</li>
+  <li><a href="https://github.com/shawnpang/startup-founder-skills" target="_blank" rel="noopener noreferrer">Startup Founder Skills</a>：startup context 与 market research 方法参考。</li>
+</ul>
+<p>这些外部仓库只是方法输入，不是本课程的业务真相源。课程采用自己的七字段链、AI／人责任边界、隐私规则、讲师 review 和 <code>drafted / executed / verified</code> 状态。任何桌面研究、漂亮文档或 AI 角色扮演都不能代替真人客户证据。</p>

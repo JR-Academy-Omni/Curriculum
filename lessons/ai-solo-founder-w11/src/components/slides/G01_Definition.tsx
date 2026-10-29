@@ -1,0 +1,5 @@
+import { ChartFrame, ChartDefs, ChartNode, ChartArrow } from '../GrowthChart';
+import { colors } from '../deck';
+export default function G01_Definition(){return <ChartFrame tag="开场 · Growth Hacker" title="Growth Hacker：用实验推动用户增长" subtitle="用用户洞察、产品实验和数据验证，对增长结果负责的人。" footnote={<><a href="https://www.startup-marketing.com/2010/07/" target="_blank" rel="noreferrer">Sean Ellis · 2010 定义</a>；Growth Hacker 是角色，Growth Hacking 是工作方式。中文与图形为课堂整理。</>}>
+<svg viewBox="0 0 1400 530" role="img" aria-label="用户洞察、产品实验、数据验证形成循环，让更多匹配用户得到价值" style={{width:1400,height:530}}><ChartDefs id="g-definition"/><ChartArrow id="g-definition" d="M 370 116 L 866 116"/><ChartArrow id="g-definition" d="M 1060 176 Q 1250 315 872 392"/><ChartArrow id="g-definition" d="M 565 392 Q 122 339 217 177"/><ChartNode x={90} y={60} w={300} title="用户洞察" detail="为什么来，为什么离开？" fill={colors.yellow}/><ChartNode x={900} y={60} w={320} title="产品实验" detail="改变一个关键动作" fill={colors.blue}/><ChartNode x={560} y={346} w={320} title="数据验证" detail="更多人实际获值了吗？" fill={colors.green}/><text x="700" y="265" textAnchor="middle" fontSize="40" fontWeight="900" fill={colors.dark}>增长是结果，实验是方法</text></svg>
+</ChartFrame>;}

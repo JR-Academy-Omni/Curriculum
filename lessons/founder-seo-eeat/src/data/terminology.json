@@ -57,7 +57,7 @@
   },
   {
     "id": "title",
-    "label": "Title",
+    "label": "Title Tag",
     "english": "HTML title element",
     "zh": "网页标签标题",
     "definition": "<title>通常用于浏览器标签，也是Google生成搜索标题时可能参考的来源。"
@@ -326,7 +326,7 @@
     "label": "LCP",
     "english": "Largest Contentful Paint",
     "zh": "最大内容绘制",
-    "definition": "衡量视口内最大内容元素的绘制时间，反映加载表现；良好阈值不高于2.5秒。"
+    "definition": "从导航开始到视口内最大合格图片、文字块等内容绘制的时间；加载中候选可能更新，良好阈值不高于2.5秒。"
   },
   {
     "id": "inp",
@@ -340,7 +340,7 @@
     "label": "CLS",
     "english": "Cumulative Layout Shift",
     "zh": "累计布局偏移",
-    "definition": "衡量非预期布局位移的视觉不稳定程度；良好阈值不高于0.1。"
+    "definition": "非预期布局位移的分数，取累计分最高的Session Window；相邻位移间隔小于1秒，窗口最长5秒。良好阈值不高于0.1。"
   },
   {
     "id": "dns",
@@ -502,5 +502,208 @@
     "english": "Field data / Real-user data",
     "zh": "真实用户数据",
     "definition": "来自实际访问条件下的用户体验数据；与一次实验室测试用途不同。"
+  },
+  {
+    "id": "sem",
+    "label": "SEM",
+    "english": "Search Engine Marketing",
+    "zh": "搜索引擎营销",
+    "definition": "在广告投放语境中常指付费搜索；广义用法也可包含SEO与付费搜索，需先明确讨论范围。"
+  },
+  {
+    "id": "ppc",
+    "label": "PPC",
+    "english": "Pay-per-click",
+    "zh": "按点击付费",
+    "definition": "一种广告收费方式，按广告获得的点击计费；不是所有广告活动都用同一收费方式。"
+  },
+  {
+    "id": "da",
+    "label": "DA",
+    "english": "Domain Authority",
+    "zh": "域名权威度（Moz指标）",
+    "definition": "Moz对整个域名相对排名潜力的预测指标，主要基于其链接数据与模型；不是Google官方评分，不等于E-E-A-T权威性。"
+  },
+  {
+    "id": "pa",
+    "label": "PA",
+    "english": "Page Authority",
+    "zh": "页面权威度（Moz指标）",
+    "definition": "Moz对单个URL相对排名潜力的预测指标；同一域名的不同页面可以有不同PA，不保证某个关键词的实际排名。"
+  },
+  {
+    "id": "keyword-stuffing",
+    "label": "Keyword Stuffing",
+    "english": "Keyword stuffing",
+    "zh": "关键词堆砌",
+    "definition": "为操纵排名而不自然地重复关键词或数字。"
+  },
+  {
+    "id": "cloaking",
+    "label": "Cloaking",
+    "english": "Cloaking",
+    "zh": "伪装内容",
+    "definition": "为欺骗用户、操纵排名而向用户与搜索引擎展示不同内容。"
+  },
+  {
+    "id": "hidden-text",
+    "label": "Hidden text & links",
+    "english": "Hidden text and link abuse",
+    "zh": "隐藏文字与链接滥用",
+    "definition": "为操纵搜索而隐藏文字或链接；正常折叠与无障碍文本并不因此违规。"
+  },
+  {
+    "id": "doorway",
+    "label": "Doorway pages",
+    "english": "Doorway / Gateway pages",
+    "zh": "门页",
+    "definition": "大量近似页面争取类似查询，把用户导向同一最终目的地而缺少独立价值。"
+  },
+  {
+    "id": "scaled-abuse",
+    "label": "Scaled content abuse",
+    "english": "Scaled content abuse",
+    "zh": "规模化内容滥用",
+    "definition": "主要为操纵搜索而批量生产缺乏价值的内容，不取决于是否由AI生成。"
+  },
+  {
+    "id": "link-spam",
+    "label": "Link farming",
+    "english": "Link farming / Link spam",
+    "zh": "链接农场与链接垃圾",
+    "definition": "主要为操纵排名建立链接网络、批量链接或交易排名链接。"
+  },
+  {
+    "id": "page-swapping",
+    "label": "Swapping pages",
+    "english": "Swapping pages",
+    "zh": "诱导式换页",
+    "definition": "以内容取得曝光后，换成不兑现原内容承诺的页面；正常修订不应一概归类。"
+  },
+  {
+    "id": "sneaky-redirects",
+    "label": "Sneaky redirects",
+    "english": "Sneaky redirects",
+    "zh": "欺骗性跳转",
+    "definition": "把用户导向未预期、不能满足原需求的内容，或欺骗性地区别对待用户与搜索引擎。"
+  },
+  {
+    "id": "cybersquatting",
+    "label": "Cybersquatting",
+    "english": "Cybersquatting / Domain squatting",
+    "zh": "恶意域名抢注",
+    "definition": "恶意注册涉及他人商标的域名；不能把普通域名投资都视为恶意抢注。"
+  },
+  {
+    "id": "site-structure",
+    "label": "Site Structure",
+    "english": "Site structure / Information architecture",
+    "zh": "网站结构",
+    "definition": "网站内页面的组织和链接关系，包含首页、分类、内容页之间的归属与导航。"
+  },
+  {
+    "id": "pretty-url",
+    "label": "Pretty URL",
+    "english": "Pretty URL / Descriptive URL",
+    "zh": "可读网址",
+    "definition": "使用可理解词语表达内容的网址写法；地址目录不能代替真实页面链接。"
+  },
+  {
+    "id": "orphan-page",
+    "label": "Orphan Page",
+    "english": "Orphan page",
+    "zh": "孤立页",
+    "definition": "缺少来自站内其他页面链接的页面，用户和爬虫难以通过站内导航发现。"
+  },
+  {
+    "id": "title-link",
+    "label": "Title Link",
+    "english": "Search result title link",
+    "zh": "搜索结果标题链接",
+    "definition": "搜索结果中可点击的网页标题，由Google参考title、主标题等信息自动生成，可能不同于Title Tag。"
+  },
+  {
+    "id": "fcp",
+    "label": "FCP",
+    "english": "First Contentful Paint",
+    "zh": "首次内容绘制",
+    "definition": "从导航开始到首次出现文字、图像等内容的时间；不等于主要内容全部加载，也不属于当前Core Web Vitals。"
+  },
+  {
+    "id": "fp",
+    "label": "FP",
+    "english": "First Paint",
+    "zh": "首次绘制",
+    "definition": "首次出现视觉绘制结果，可能只有背景；与FCP的首次内容出现有区别。"
+  },
+  {
+    "id": "fmp",
+    "label": "FMP",
+    "english": "First Meaningful Paint",
+    "zh": "首次有意义绘制",
+    "definition": "历史加载指标，曾用于判断主要内容出现；已从Lighthouse移除。"
+  },
+  {
+    "id": "tti",
+    "label": "TTI",
+    "english": "Time to Interactive",
+    "zh": "可交互时间",
+    "definition": "历史加载可交互指标；Lighthouse10已移除，不能将旧图的5秒当现行统一阈值。"
+  },
+  {
+    "id": "page-experience",
+    "label": "Page Experience",
+    "english": "Page experience",
+    "zh": "页面体验",
+    "definition": "用户阅读和操作网页时的整体体验，包括加载、交互、稳定性与其他使用条件；不是Google的单一总排名信号。"
+  },
+  {
+    "id": "fid",
+    "label": "FID",
+    "english": "First Input Delay",
+    "zh": "首次输入延迟（旧指标）",
+    "definition": "历史响应指标，2024年3月12日起被INP替代为Core Web Vital；不再作为当前三项之一。"
+  },
+  {
+    "id": "https",
+    "label": "HTTPS",
+    "english": "Hypertext Transfer Protocol Secure",
+    "zh": "安全超文本传输协议",
+    "definition": "通过TLS保护浏览器与服务器之间的传输；安全连接不等于页面内容真实或网站绝对可信。"
+  },
+  {
+    "id": "viewport",
+    "label": "Viewport",
+    "english": "Viewport",
+    "zh": "视口",
+    "definition": "浏览器当前可见的页面区域；不等同于整张网页的总长度。"
+  },
+  {
+    "id": "main-thread",
+    "label": "Main Thread",
+    "english": "Main thread",
+    "zh": "主线程",
+    "definition": "浏览器处理许多脚本、样式、布局等工作的线程；长任务可能推迟输入事件处理。"
+  },
+  {
+    "id": "input-delay",
+    "label": "Input Delay",
+    "english": "Input delay",
+    "zh": "输入等待",
+    "definition": "用户输入发生后，到相应事件处理开始前的等待。FID只测首次输入的这一段。"
+  },
+  {
+    "id": "processing-duration",
+    "label": "Processing",
+    "english": "Processing duration",
+    "zh": "事件处理时长",
+    "definition": "浏览器运行这次交互相关事件处理程序所花的时间。"
+  },
+  {
+    "id": "presentation-delay",
+    "label": "Presentation",
+    "english": "Presentation delay",
+    "zh": "呈现延迟",
+    "definition": "事件处理完成后，到浏览器可呈现下一帧之间的等待，涉及后续渲染等工作。"
   }
 ]

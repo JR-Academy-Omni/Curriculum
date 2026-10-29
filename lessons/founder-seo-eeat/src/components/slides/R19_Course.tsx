@@ -1,13 +1,16 @@
+import { useState, useEffect } from 'react';
+import BadSEOPractices from '../BadSEOPractices';
 import { Slide, assetPath } from '../ui';
 import { colors, fonts, radii } from '../../styles/theme';
 import examples from '../../data/link-examples.json';
 import course from '../../data/course-v2.json';
 
-export default function R19_Course() {
-  const s = course[18];
+function LinkAttributes({showBad}:{showBad:()=>void}) {
+  const s = course.find(x=>x.id===19)!;
   return <Slide bg={colors.warmBg}>
     <section className="link-attributes-slide" style={{ position: 'relative', width: 1600, height: 900, fontFamily: fonts.body, color: colors.dark }}>
       <style>{`.link-attributes-slide a:focus-visible{outline:4px solid ${colors.blue};outline-offset:4px}@media(max-width:700px){.deck-runtime:has(.link-attributes-slide)>button{top:auto!important;bottom:20px;transform:none!important}}`}</style>
+      <button onClick={showBad} style={{position:'absolute',right:100,top:78,zIndex:3,fontFamily:fonts.body,fontSize:20,padding:'10px 18px',background:colors.yellow,color:colors.dark,border:`2px solid ${colors.dark}`,borderRadius:radii.card,cursor:'pointer'}}>Bad SEO Practices →</button>
       <header style={{ position: 'absolute', left: 100, top: 82, width: 1400 }}>
         <span style={{ color: colors.red, fontSize: 18, fontWeight: 750, letterSpacing: 2 }}>SEO / GEO · PART 02</span>
         <h1 style={{ fontSize: 54, lineHeight: 1.2, margin: '16px 0 14px', fontWeight: 850 }}>{s.title}</h1>
@@ -30,4 +33,12 @@ export default function R19_Course() {
       <a href={assetPath('materials/seo-geo-glossary.html#rel')} target="_blank" rel="noreferrer" style={{ position: 'absolute', right: 100, bottom: 15, color: colors.dark, fontSize: 17, fontWeight: 750 }}>完整 English 术语表与代码说明 ↗</a>
     </section>
   </Slide>;
+}
+
+export default function R19_Course(){
+ const read=():'links'|'stuffing'|'practices'=>{const v=new URLSearchParams(window.location.search).get('seo');return v==='stuffing'||v==='practices'?v:'links';};
+ const [mode,setMode]=useState(read);
+ useEffect(()=>{const sync=()=>setMode(read());window.addEventListener('popstate',sync);return()=>window.removeEventListener('popstate',sync);},[]);
+ const select=(next:'links'|'stuffing'|'practices')=>{setMode(next);const url=new URL(window.location.href);if(next==='links')url.searchParams.delete('seo');else url.searchParams.set('seo',next);window.history.pushState({},'',url);};
+ return mode==='links'?<LinkAttributes showBad={()=>select('stuffing')}/>:<BadSEOPractices mode={mode} onSelect={select}/>;
 }

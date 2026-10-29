@@ -1,0 +1,23 @@
+/* Content-only directional teaching motion. Static arrows never animate away. */
+.growth-arrow-overlay {
+  pointer-events: none;
+  stroke-dasharray: 18 82;
+  stroke-dashoffset: 100;
+  opacity: 0;
+  animation: growth-arrow-forward 1.65s linear 3 both;
+  animation-delay: var(--growth-arrow-delay, 0s);
+}
+@keyframes growth-arrow-forward {
+  0% { stroke-dashoffset: 100; opacity: 0; }
+  8% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+[data-print-page] .growth-arrow-overlay,
+.deck-print-preview .growth-arrow-overlay { display: none !important; }
+@media print {
+  .growth-arrow-overlay { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .growth-arrow-overlay { display: none !important; animation: none !important; }
+}

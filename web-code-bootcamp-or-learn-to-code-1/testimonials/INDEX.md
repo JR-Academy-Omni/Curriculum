@@ -3,6 +3,10 @@
 > slug: `web-code-bootcamp-or-learn-to-code-1` · 维护：Beta
 > 2026-08-14 已迁入历史 Notion Offer 表；未确认 consent 的记录一律不可对外使用。
 
+## DevOps Offer 数据
+
+[DevOps 学员 Offer 追踪表](devops-offers.md) · 44 条转录记录，未去重，仅保存数据。不计入下方全栈班 Offer。
+
 ## Offer
 
 | 学员 | 期数 | 公司 | 岗位 | 拿到时间 | 有无凭证 | 可对外渠道 | 档案 |
@@ -94,6 +98,8 @@
 | Frank（曾竟远） | 全栈24期 | CJGlobal | .Net developer | 待补 | 有导入凭证 | 未确认·不可外用 | [档案](students/2026-import-082.md) |
 | Paul | 全栈28期 | 待补 | 待补 | 待补 | 未提供 | 未确认·不可外用 | [档案](students/2026-import-083.md) |
 | Ruiqing Hu | 全栈27期 | Sol Energy | Software Development | 待补 | 有导入凭证 | 未确认·不可外用 | [档案](students/2026-import-084.md) |
+| Li | 全栈22期 | Westwell | Delivery & Maintenance Engineer | 待补 | 有脱敏 Offer 截图 | 未确认·不可外用 | [档案](students/2026-li.md) |
+| Hao | 全栈27期 | 已脱敏 / 待补 | Graduate 岗位（悉尼数据中心运维方向，正式名称待补） | 待补 | 有脱敏 Offer 邮件截图 | 未确认·不可外用 | [档案](students/2026-hao.md) |
 
 ## 感言
 
@@ -110,9 +116,9 @@
 
 ## 统计
 
-- 已建档学员：87
-- 有 Offer 字段记录：84
-- 有导入凭证：49
+- 已建档学员：89
+- 有 Offer 字段记录：86
+- 有导入凭证：51
 - 可上销售页 OFFER WALL（consent 已确认）：0
-- 最近更新：2026-08-14
+- 最近更新：2026-10-28
 

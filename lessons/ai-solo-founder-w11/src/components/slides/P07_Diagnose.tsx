@@ -1,0 +1,5 @@
+import { Teaching, Three } from '../Teaching';
+import { Panel, Label, colors } from '../deck';
+export default function P07(){return <Teaching tag="增长原理 07 · 飞轮诊断" title="先找掉速的箭头，再选增长方法" subtitle="把渠道、动作、循环和指标接起来。每轮只优先改善一个有证据的卡点。"><Panel style={{padding:24}}><table style={{width:'100%',borderCollapse:'collapse',fontSize:24,lineHeight:1.45}}><thead><tr>{['观察到的卡点','推动这一环的方法','读什么证据'].map(t=><th key={t} style={{textAlign:'left',padding:12,background:colors.yellow}}>{t}</th>)}</tr></thead><tbody>{[
+['找不到匹配客户','精准接触 / 伙伴 / 问题搜索','合格对话与销售工时'],['来了却得不到用处','样例 / 模板 / 人工引导','首次获值率与耗时'],['获值后不再回来','产品改进 / 及时提醒 / 周期报告','同批自然周期留存'],['愿推荐，但新人没获值','相关奖励 / 邀请入口 / 新人引导','每位原用户带来的新获值人数'],['订单增加，利润或交付下降','收窄试点 / 标准交付 / 定价','贡献利润、工时与退单']
+].map(row=><tr key={row[0]}>{row.map(t=><td key={t} style={{padding:12,borderBottom:'1px solid #ddd',verticalAlign:'top'}}>{t}</td>)}</tr>)}</tbody></table></Panel><p style={{fontSize:23,margin:'24px 0 0'}}>练习：画四步循环，写每条箭头的真实事件；圈一个未证实的回流，再从36种方法中选动作。</p></Teaching>;}
