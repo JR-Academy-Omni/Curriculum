@@ -1,3 +1,7 @@
+## 2026-10-29
+
+- 新增 Seven 主讲的《创业财税与合规进阶课》30 页 HTML Talk Deck（150 分钟），将用户提供的 PowerPoint 转换到 Curriculum 的统一 SlideEngine，覆盖公司架构与财税、政府补助、商业模式、商业边界、竞争壁垒与 30 天行动计划；同步 PRD、来源表、QA、Lesson 目录卡片与部署流程。当前通过非 main 分支提交，待 PR 合并部署。
+
 ## 2026-10-26
 
 - AI Engineer W5 RAG Quality 课件已部署并线上回读（35页、讲师署名、Logo、四套字体与子路径资源正常，PRD / 讲师流程 / 讲义 / 来源表链接可打开，页面与响应头均为 noindex, nofollow），目录卡片改为「已部署」（`curriculum/lessons/ai-engineer-cohort-07-w5-rag-quality` / `lessons.html`）
