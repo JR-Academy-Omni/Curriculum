@@ -1,3 +1,7 @@
+## 2026-10-27
+
+- 新增《我指挥了 65 个 AI 助手：用 Claude 搭一套信息核验系统》23 页公开课课件（讲师 Bowen Jia，45 分钟，Local / 未部署）：按搭建顺序分七部分（先看成品、先画图再动手、让 AI 自己拿数据、一个人指挥 65 个 AI、AI 会犯错怎么管住它、每天自己跑、宣传片也让 AI 做、带走练习）；数字全部来自讲师项目真实记录，公司名只作查证样例；附 PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA / research，登记课件（`curriculum/lessons/claude-65-agents-verification` / `lessons.html`）。已推到非 main 分支 `lesson/claude-65-agents-verification` 供预览，未合入 main、未部署，deploy.yml 未加构建步骤。
+
 ## 2026-10-26
 
 - AI Engineer W5 RAG Quality 课件已部署并线上回读（35页、讲师署名、Logo、四套字体与子路径资源正常，PRD / 讲师流程 / 讲义 / 来源表链接可打开，页面与响应头均为 noindex, nofollow），目录卡片改为「已部署」（`curriculum/lessons/ai-engineer-cohort-07-w5-rag-quality` / `lessons.html`）
