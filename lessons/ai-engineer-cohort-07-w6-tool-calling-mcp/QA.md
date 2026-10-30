@@ -27,3 +27,4 @@
 - 正式 starter 的版本锁定、命令和测试由 Practice 那边验收；starter 定版后核对第 26–28、30、34 页的命令。
 - 第 32 页 stdout 的行为只在 FastMCP CLI（MCP SDK 2.3.0）客户端上实测，Claude Code 未测（需要开真实会话、调用模型）。
 - 部署：讲师 2026-10-30 说“可以了 部署吧”。上线后从线上 lessons.html 打开核验，再把卡片标为已部署。
+- 2026-10-30 第一次生产部署（d3900f98）在“Keep Curriculum HTML out of search”步骤中断，没有上传：`ai-engineer-bootcamp/public/cohort-7-review.html` 缺 `<head>`，与本课件无关；已补上 head 修复，本次提交重新触发部署。
