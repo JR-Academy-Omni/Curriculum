@@ -2,7 +2,7 @@
 
 ## 状态
 
-本地验证通过；讲师 2026-10-30 授权部署
+已部署并线上核验（2026-10-30）
 
 ## 检查记录
 
@@ -15,7 +15,7 @@
 - 2026-10-30 讲师要求加两个例子：第 14 页“模型写出来的只是一张条子”（Anthropic tool use 文档的 tool_use 格式，标明是格式示例）；第 17 页“实习生测试”（OpenAI function calling 指南）。两页不用类比，引文都在页脚注明出处。
 - 抓取与追踪：`index.html` 带 `robots` / `googlebot` 的 `noindex, nofollow`；课件不含 GA / GTM。
 - 外网阻断与字体、reduced-motion：未执行。
-- 线上回读：未部署。
+- 线上回读（2026-10-30）：从线上 lessons.html 打开 W6 卡片，课件 41 页正常（第 17 页实习生测试截图核对），PRD / RUNSHEET / SOURCE_MAP / WORKSHEET 均 200；页面带 robots / googlebot noindex，响应头 X-Robots-Tag: noindex, nofollow；`demo/` 未上线（404）。
 
 ## 运行时偏离模板
 
