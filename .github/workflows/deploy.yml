@@ -362,6 +362,12 @@ jobs:
 
       # ai-builder (Vibe Coding 大师课): static HTML only, no React build needed
 
+      - name: Build Codex AI Video Workshop
+        working-directory: lessons/codex-ai-video-workshop
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Assemble all courses into one output
       - name: Assemble output
         run: |
@@ -960,6 +966,9 @@ jobs:
           [ -f AI_ENGINEER_FAMILY.md ] && cp AI_ENGINEER_FAMILY.md _site/AI_ENGINEER_FAMILY.md || true
 
           # Lesson library — cross-bootcamp reusable lesson decks (internal)
+          mkdir -p _site/lessons/codex-ai-video-workshop
+          cp -r lessons/codex-ai-video-workshop/dist/* _site/lessons/codex-ai-video-workshop/
+          cp lessons/codex-ai-video-workshop/*.md _site/lessons/codex-ai-video-workshop/
           [ -f lessons.html ] && cp lessons.html _site/lessons.html || true
 
           # Lessons — Vibe Coding Slidev deck (跨课复用 · 全栈班 L1 / Solo Founder 开篇 / AI Adoption W2)

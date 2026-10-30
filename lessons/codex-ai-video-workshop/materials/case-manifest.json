@@ -1,0 +1,385 @@
+[
+  {
+    "key": "01-invoice",
+    "title": "发票提取与汇总",
+    "goal": "6 份 PDF → 台账、分币种汇总、异常清单",
+    "checks": [
+      "Six source rows, five unique invoice keys.",
+      "Unique stated totals: AUD 2595; USD 330.",
+      "Excluding arithmetic discrepancy: AUD 2035; USD 330.",
+      "Missing dates stay blank; duplicate and 10 AUD difference stay visible."
+    ],
+    "inputs": [
+      "04-cloud.pdf",
+      "05-stage.pdf",
+      "06-lumen-copy.pdf",
+      "02-harbour.pdf",
+      "01-lumen.pdf",
+      "03-north.pdf"
+    ],
+    "outputs": [
+      "invoice-register.xlsx"
+    ],
+    "minutes": 35,
+    "lesson": "先查看完整参考成果；练习时不读参考答案。"
+  },
+  {
+    "key": "02-pdf",
+    "title": "PDF 转换与结构整理",
+    "goal": "3 页简报 → 可编辑文档、流程表、行动清单",
+    "checks": [
+      "Three source pages are preserved.",
+      "Eight run-sheet rows and three action rows.",
+      "Budget spend 3730 AUD; remaining 120 AUD.",
+      "A03 due date stays blank."
+    ],
+    "inputs": [
+      "event-brief.pdf"
+    ],
+    "outputs": [
+      "event-brief.html"
+    ],
+    "minutes": 25,
+    "lesson": "先查看完整参考成果；练习时不读参考答案。"
+  },
+  {
+    "key": "03-excel",
+    "title": "Excel 自动化处理",
+    "goal": "14 行原始订单 → 清洗报表、异常记录、复用脚本",
+    "checks": [
+      "14 raw rows = 9 accepted + 1 duplicate + 4 quarantined.",
+      "Signed total AUD 1700; Paid 1330; Pending 490; Refunded -120.",
+      "Change O001 quantity 2 to 3: total becomes 1820."
+    ],
+    "inputs": [
+      "october-orders.xlsx"
+    ],
+    "outputs": [
+      "october-sales-report.xlsx"
+    ],
+    "minutes": 45,
+    "lesson": "先查看完整参考成果；练习时不读参考答案。"
+  },
+  {
+    "key": "04-email",
+    "title": "邮件整理",
+    "goal": "6 封邮件 → 事项分类、待办清单、3 封回复草稿",
+    "checks": [
+      "Six messages accounted for; E02 title update supersedes E01.",
+      "A01 is overdue; A04 has no deadline.",
+      "Three full replies remain drafts.",
+      "E04 customer-list instruction is not executed."
+    ],
+    "inputs": [
+      "context.md",
+      "E01.eml",
+      "E02.eml",
+      "E03.eml",
+      "E04.eml",
+      "E05.eml",
+      "E06.eml"
+    ],
+    "outputs": [
+      "result.html",
+      "actions.csv"
+    ],
+    "minutes": 25,
+    "lesson": "练习重点：上下文更新、日期判断、缺失信息与内容中的不可信指令。"
+  },
+  {
+    "key": "05-form",
+    "title": "网页填表",
+    "goal": "结构化资料 → 可修改、可预览的完整填写结果",
+    "checks": [
+      "All seven input fields match applicant.json.",
+      "Dietary notes remain blank.",
+      "Preview is visible and reset clears values.",
+      "No external network submission occurs."
+    ],
+    "inputs": [
+      "practice-form.html",
+      "applicant.json"
+    ],
+    "outputs": [
+      "result.html",
+      "filled-form.html"
+    ],
+    "minutes": 20,
+    "lesson": "练习重点：字段映射、浏览器操作、可选字段与提交边界。"
+  },
+  {
+    "key": "06-quote",
+    "title": "报价单制作",
+    "goal": "服务清单 → 完整报价单、可编辑 HTML 与打印 PDF",
+    "checks": [
+      "Subtotal 1340, sample tax 134, total 1474 AUD.",
+      "Deposit 442.20 and balance 1031.80 AUD.",
+      "One revision, travel exclusion and validity date retained.",
+      "HTML and PDF contents agree."
+    ],
+    "inputs": [
+      "rates.csv",
+      "brief.md"
+    ],
+    "outputs": [
+      "result.html",
+      "quote.html",
+      "quote.pdf"
+    ],
+    "minutes": 25,
+    "lesson": "税率仅是题设的计算假设；不构成税务或注册状态判断。"
+  },
+  {
+    "key": "07-payroll",
+    "title": "工资核对",
+    "goal": "模拟工时与工资资料 → 工资核对表、待审批清单、异常记录",
+    "checks": [
+      "Three complete rows; one quarantined row.",
+      "Gross 1940, given withholding 404, net 1536 AUD.",
+      "P04 is missing, not zero.",
+      "No actual account details or banking actions."
+    ],
+    "inputs": [
+      "payroll.csv",
+      "rules.md"
+    ],
+    "outputs": [
+      "result.html",
+      "payroll-review.xlsx",
+      "proposed-payments.csv"
+    ],
+    "minutes": 25,
+    "lesson": "练习重点：缺失值与零的区别、给定公式、审批前的人工核对。"
+  },
+  {
+    "key": "08-audio",
+    "title": "录音成文",
+    "goal": "真实历史音频与独立会议笔记 → 转写、摘要与有依据的行动项",
+    "checks": [
+      "Actual MP3 included and playable.",
+      "Unclear article is marked as uncertain.",
+      "Meeting actions cite M1-M4, never the audio.",
+      "Sam deadline remains blank; payment is not approved."
+    ],
+    "inputs": [
+      "apollo11-small-step.mp3",
+      "source.md",
+      "meeting-notes.txt"
+    ],
+    "outputs": [
+      "result.html",
+      "transcript.txt"
+    ],
+    "minutes": 25,
+    "lesson": "练习重点：听辨不确定性、摘要与原声的区别、行动项来源。"
+  },
+  {
+    "key": "09-market",
+    "title": "市场与竞品调研",
+    "goal": "三家模拟网页 → 有来源的比较表和筛选结论",
+    "checks": [
+      "All three pages included with source filenames.",
+      "Cedar meets the three supplied criteria.",
+      "River capacity 60 fails; Market fee 1400 fails.",
+      "Missing accessibility/audio cost is not invented."
+    ],
+    "inputs": [
+      "research-brief.md",
+      "cedar.html",
+      "river.html",
+      "market.html"
+    ],
+    "outputs": [
+      "result.html",
+      "comparison.csv"
+    ],
+    "minutes": 25,
+    "lesson": "练习重点：浏览器读网页、结构化比较、依据与未知值。"
+  },
+  {
+    "key": "10-sop",
+    "title": "SOP 制作",
+    "goal": "已确认流程笔记 → 完整 SOP、检查表、异常路径",
+    "checks": [
+      "Eight steps retain N1-N8 provenance.",
+      "Missing fields stop quoting.",
+      "Manager rejection returns to draft review.",
+      "SLA and backup owner remain unconfirmed."
+    ],
+    "inputs": [
+      "process-notes.txt"
+    ],
+    "outputs": [
+      "result.html",
+      "checklist.csv"
+    ],
+    "minutes": 25,
+    "lesson": "练习重点：流程模块化、停止条件、状态与确认责任。"
+  },
+  {
+    "key": "11-contract",
+    "title": "合同阅读",
+    "goal": "虚构协议 → 条款对照、日期金额清单、待确认问题",
+    "checks": [
+      "330 + 770 = 1100 AUD.",
+      "Delivery window calculation is distinguished from stated text.",
+      "Balance depends on actual delivery; no fabricated due date.",
+      "No supplied guest promotion permission or signature."
+    ],
+    "inputs": [
+      "agreement.md"
+    ],
+    "outputs": [
+      "result.html"
+    ],
+    "minutes": 25,
+    "lesson": "练习重点：依据定位、条件日期、原文与推导分开。"
+  },
+  {
+    "key": "12-cashflow",
+    "title": "收支追踪",
+    "goal": "模拟流水 → 收支汇总、账户余额、异常清单",
+    "checks": [
+      "9 raw rows, 8 unique; one T03 duplicate.",
+      "External inflow 1400; external outflow 545; net 855 AUD.",
+      "Bank 2655 + Wallet 200 = closing total 2855 AUD.",
+      "T08 stays Unclassified but its movement is counted."
+    ],
+    "inputs": [
+      "transactions.csv",
+      "rules.md"
+    ],
+    "outputs": [
+      "result.html",
+      "cash-review.xlsx"
+    ],
+    "minutes": 25,
+    "lesson": "练习重点：汇总口径、内部转移、现金与利润区别。"
+  },
+  {
+    "key": "13-image",
+    "title": "宣传图制作与修改",
+    "goal": "创意需求 → 第一版成图、修改版与核对记录",
+    "checks": [
+      "Two genuine raster image versions, with prompts retained.",
+      "Date 14 NOV 2026; time 14:00–17:00.",
+      "Fictional label and no-registration statement visible.",
+      "No invented sponsor, QR code, pricing or real attendees."
+    ],
+    "inputs": [
+      "creative-brief.md"
+    ],
+    "outputs": [
+      "result.html",
+      "poster-v1.png",
+      "poster-v2.png"
+    ],
+    "minutes": 30,
+    "lesson": "练习重点：需求描述、保持不变量、定点修改、事实核对。"
+  },
+  {
+    "key": "14-files",
+    "title": "文件批量整理",
+    "goal": "6 个混乱文件 → 分类目录、索引、原名映射",
+    "checks": [
+      "Six input files accounted for and originals unchanged.",
+      "Only the two identical v2 briefs are exact duplicates.",
+      "Two Q014 quotes remain separate by supplier.",
+      "Unknown notes date stays undated."
+    ],
+    "inputs": [
+      "inbox/"
+    ],
+    "outputs": [
+      "result.html",
+      "rename-plan.csv",
+      "organized/"
+    ],
+    "minutes": 20,
+    "lesson": "练习重点：文件读取、同名冲突、内容去重与可回溯操作。"
+  },
+  {
+    "key": "15-clients",
+    "title": "客户资料整理",
+    "goal": "7 行客户资料 → 去重客户表、授权状态与跟进清单",
+    "checks": [
+      "Five customer IDs remain.",
+      "C01 latest Opted out preserved.",
+      "C03 remains distinct from C01 and has no invented phone.",
+      "C04 held; only C02/C05 are eligible for manual review."
+    ],
+    "inputs": [
+      "contacts.csv",
+      "rules.md"
+    ],
+    "outputs": [
+      "result.html",
+      "contacts-review.xlsx",
+      "clean-contacts.csv"
+    ],
+    "minutes": 25,
+    "lesson": "练习重点：身份键、历史记录、授权边界与不完整资料。"
+  },
+  {
+    "key": "16-schedule",
+    "title": "定时工作任务",
+    "goal": "已验证的 Excel 流程 → 可手动试跑、去重的流程与周期配置草案",
+    "checks": [
+      "First run produces a complete report with total 1700 AUD.",
+      "Unchanged rerun creates no second report and no notification.",
+      "State stores a successful SHA-256 only after processing.",
+      "Schedule remains a draft; no recurring task activated."
+    ],
+    "inputs": [
+      "automation-brief.md",
+      "inbox/",
+      "manual-run.py",
+      "process_orders.py"
+    ],
+    "outputs": [
+      "result.html",
+      "manual-run.py",
+      "schedule-draft.json",
+      "run-1/report.html",
+      "run-2.json"
+    ],
+    "minutes": 25,
+    "lesson": "练习重点：先手动跑通、变更检测、重复执行、失败与通知条件。"
+  },
+  {
+    "key": "17-video-plan",
+    "title": "视频号策划",
+    "goal": "活动资料 → 完整短视频脚本与分镜",
+    "checks": [
+      "Five storyboard segments cover the intended 30-second plan.",
+      "Script is complete; actual narration timing remains to be measured.",
+      "No invented real event footage, testimonials or public URL."
+    ],
+    "inputs": [
+      "content-brief.md"
+    ],
+    "outputs": [
+      "result.html"
+    ],
+    "minutes": 25,
+    "lesson": "选修内容策划案例；不属于下午视频制作交付。"
+  },
+  {
+    "key": "18-xhs",
+    "title": "小红书创作",
+    "goal": "活动资料 → 完整图文文案与逐页内容",
+    "checks": [
+      "Complete title, four body paragraphs, five page copy briefs and tags.",
+      "Labelled copy package, not five finished poster images.",
+      "No fabricated attendance, user reviews, registration or analytics."
+    ],
+    "inputs": [
+      "content-brief.md"
+    ],
+    "outputs": [
+      "result.html"
+    ],
+    "minutes": 25,
+    "lesson": "选修内容策划案例；不属于下午视频制作交付。"
+  }
+]
