@@ -1,1 +1,1 @@
-Review as of 2026-10-30 09:00 Australia/Brisbane. All contacts are fictional. The team has not replied, approved printing or made a payment. Do not infer who owns the sign-proof task; Maya requested it but no assignee is given.
+Review as of 2026-10-30 09:00 Australia/Brisbane. The team has not replied, approved printing or made a payment. Do not infer who owns the sign-proof task; Maya requested it but no assignee is given.

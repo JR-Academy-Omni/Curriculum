@@ -1,14 +1,14 @@
 # Event brief
 
-Fictional training document. All identities, suppliers and budgets are invented.
+training document. All identities, suppliers and budgets are invented.
 
 ## Cedar Community Showcase (source page 1)
 
 - Event date: 2026-11-14
-- Venue: Cedar Hall (fictional)
+- Venue: Cedar Hall 
 - Audience: 80 invited community guests
 - Time: 14:00–17:00, Brisbane local time
-- Owner: Maya Chen (fictional)
+- Owner: Maya Chen 
 - Currency: AUD
 
 ## Run sheet (source page 2)

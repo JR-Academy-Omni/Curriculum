@@ -1,12 +1,12 @@
-# Fictional Event Services Agreement
+# Event Services Agreement
 
 Training text only; not a signed agreement.
 
 ## 1. Parties
-Cedar Events (Customer) and Lumen Event Studio (Supplier), both fictional.
+Cedar Events (Customer) and Lumen Event Studio (Supplier), both .
 
 ## 2. Services
-Supplier will provide four hours of photography at the Customer event on 2026-11-14, 13:00–17:00 Brisbane local time, at Cedar Hall (fictional).
+Supplier will provide four hours of photography at the Customer event on 2026-11-14, 13:00–17:00 Brisbane local time, at Cedar Hall .
 
 ## 3. Deliverables
 Supplier will provide 40 edited JPEG photographs within 10 calendar days after the event. RAW files and video are excluded. One selection revision is included; additional work requires a separately accepted quote.

@@ -69,6 +69,6 @@ def main():
     assert report['raw_rows']==report['accepted_rows']+report['removed_duplicates']+report['quarantined_rows']
     (args.out/'reconciliation.json').write_text(json.dumps(report,indent=2),encoding='utf8')
     rows=''.join('<tr><td>'+html.escape(str(k))+'</td><td>'+html.escape(str(v))+'</td></tr>' for k,v in report.items() if not isinstance(v,dict))
-    (args.out/'report.html').write_text('<!doctype html><meta charset="utf-8"><title>Order processing result</title><style>body{font:17px/1.7 system-ui;max-width:900px;margin:40px auto;padding:20px;background:#fffef7;color:#1f1b2d}td{padding:10px;border-bottom:1px solid #efe8da}</style><h1>Order processing result</h1><p>Fictional training data. Signed order values in AUD.</p><table>'+rows+'</table><p><a href="clean-orders.csv">Clean orders</a> · <a href="exceptions.csv">Exceptions</a> · <a href="summary.csv">Summary</a></p>',encoding='utf8')
+    (args.out/'report.html').write_text('<!doctype html><meta charset="utf-8"><title>Order processing result</title><style>body{font:17px/1.7 system-ui;max-width:900px;margin:40px auto;padding:20px;background:#fffef7;color:#1f1b2d}td{padding:10px;border-bottom:1px solid #efe8da}</style><h1>Order processing result</h1><p>Order processing exercise. Signed order values in AUD.</p><table>'+rows+'</table><p><a href="clean-orders.csv">Clean orders</a> · <a href="exceptions.csv">Exceptions</a> · <a href="summary.csv">Summary</a></p>',encoding='utf8')
     print(json.dumps(report))
 if __name__=='__main__':main()

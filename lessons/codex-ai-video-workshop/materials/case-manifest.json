@@ -1,13 +1,15 @@
 [
   {
     "key": "01-invoice",
-    "title": "发票提取与汇总",
-    "goal": "6 份 PDF → 台账、分币种汇总、异常清单",
+    "title": "澳洲发票提取与GST核对",
+    "goal": "6 份发票 → 未税金额、GST、含税金额与字段核对",
     "checks": [
-      "Six source rows, five unique invoice keys.",
-      "Unique stated totals: AUD 2595; USD 330.",
-      "Excluding arithmetic discrepancy: AUD 2035; USD 330.",
-      "Missing dates stay blank; duplicate and 10 AUD difference stay visible."
+      "Six source rows; five unique invoice keys; one duplicate.",
+      "Unique subtotal excluding GST: AUD 2650.00; GST shown: AUD 265.00; total including GST: AUD 2915.00.",
+      "Base-set amount and GST differences are zero.",
+      "All five unique ABNs pass the 11-digit format and modulus-89 checksum. ABR records and GST registration are a separate check; do not treat stated GST as approved credit.",
+      "03-north has no due date or PO; these are not the same as missing mandatory ABN information.",
+      "The separate extension has a stated 560.00 versus 500.00 + 50.00; do not mix it into base totals."
     ],
     "inputs": [
       "04-cloud.pdf",
@@ -219,7 +221,7 @@
   {
     "key": "11-contract",
     "title": "合同阅读",
-    "goal": "虚构协议 → 条款对照、日期金额清单、待确认问题",
+    "goal": "协议 → 条款对照、日期金额清单、待确认问题",
     "checks": [
       "330 + 770 = 1100 AUD.",
       "Delivery window calculation is distinguished from stated text.",
@@ -263,7 +265,7 @@
     "checks": [
       "Two genuine raster image versions, with prompts retained.",
       "Date 14 NOV 2026; time 14:00–17:00.",
-      "Fictional label and no-registration statement visible.",
+      "Title, date, time and location are legible.",
       "No invented sponsor, QR code, pricing or real attendees."
     ],
     "inputs": [

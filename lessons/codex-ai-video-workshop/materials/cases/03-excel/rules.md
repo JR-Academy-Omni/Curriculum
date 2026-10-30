@@ -1,6 +1,6 @@
 # October orders: cleaning rules
 
-Fictional training data. Currency: AUD. Source row 1 is the header.
+training data. Currency: AUD. Source row 1 is the header.
 
 - Slash dates use DD/MM/YYYY; ISO dates are YYYY-MM-DD. Reject impossible dates.
 - Trim whitespace; normalize city and status capitalization. Allowed cities: Brisbane, Sydney, Melbourne. Allowed statuses: Paid, Pending, Refunded.

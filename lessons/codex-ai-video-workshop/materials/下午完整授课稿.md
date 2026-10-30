@@ -70,7 +70,7 @@ For every storyboard shot, specify the initial state, trigger, main-object chang
 
 ### 课前环境检查
 
-本课程为两条路线统一准备兼容的 Node 环境；HyperFrames 当前官方要求 Node.js 22+ 与 FFmpeg。其他依赖按课堂实际安装版本检查。以下是只读检查示例：
+本课程为两条路线统一准备兼容的 Node 环境；HyperFrames 当前官方要求 Node.js 22+ 与 FFmpeg。其他依赖按课堂实际安装版本检查。以下是只读检查案例：
 
 ```bash
 node --version
@@ -260,13 +260,13 @@ Export the approved AspectRatioExplainer composition locally. Confirm its real e
 npx remotion render [actual entry point] AspectRatioExplainer "[absolute path in the system Downloads folder]/Aspect Ratio Explainer - Remotion - v1.mp4"
 ```
 
-标准脚手架可能使用 src/index.ts，但必须读取实际工程确认后再替换占位。示例导出完整片而非 12 秒预览前，先更新 composition 的真实时长和对应内容。
+标准脚手架可能使用 src/index.ts，但必须读取实际工程确认后再替换占位。案例导出完整片而非 12 秒预览前，先更新 composition 的真实时长和对应内容。
 
 ## 六、活动素材怎样进入这两条路线
 
 “把素材丢进去”需要拆成可检查的步骤：实际导入 → 读取可用元数据与内容 → 建素材台账 → 选片 → 人工确认结构 → 裁切与排列 → 声音与字幕 → 预览 → 修改 → 导出。某个工具无法理解视频内容时，使用人工选片记录，不让它从文件名猜镜头。
 
-| 台账字段 | 示例性质 | 作用 |
+| 台账字段 | 案例性质 | 作用 |
 |---|---|---|
 | asset_id / real_path | 必须对应实际文件 | 避免计划镜头冒充存在的素材 |
 | duration / orientation | 从真实文件或工具读取 | 决定可用时间与构图 |

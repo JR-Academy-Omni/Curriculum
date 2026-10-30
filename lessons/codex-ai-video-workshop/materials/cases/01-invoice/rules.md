@@ -1,12 +1,17 @@
-# 发票提取与汇总
+# Australian invoice extraction and GST checks
 
-虚构练习资料；原件不覆盖。
+Preserve source documents. Apply the base task in prompt.txt.
 
-先查看完整参考成果；练习时不读参考答案。
+## Completion checks
 
-## Completion checks (English)
+- Six source rows; five unique invoice keys; one duplicate.
+- Unique subtotal excluding GST: AUD 2650.00; GST shown: AUD 265.00; total including GST: AUD 2915.00.
+- Base-set amount and GST differences are zero.
+- All five unique ABNs pass the 11-digit format and modulus-89 checksum. ABR records and GST registration are a separate check; do not treat stated GST as approved credit.
+- 03-north has no due date or PO; these are not the same as missing mandatory ABN information.
+- The separate extension has a stated 560.00 versus 500.00 + 50.00; do not mix it into base totals.
 
-- Six source rows, five unique invoice keys.
-- Unique stated totals: AUD 2595; USD 330.
-- Excluding arithmetic discrepancy: AUD 2035; USD 330.
-- Missing dates stay blank; duplicate and 10 AUD difference stay visible.
+## Sources
+
+- https://business.gov.au/finance/payments-and-invoicing/how-to-invoice
+- https://smallbusiness.taxsuperandyou.gov.au/goods-and-services-tax/calculating-gst-on-sales
