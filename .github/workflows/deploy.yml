@@ -943,6 +943,12 @@ jobs:
             cp codex-agent-workshop/curriculum.html _site/codex-agent-workshop/
           fi
 
+          # Cyber Security Analyst 项目课（纯静态课程介绍与结构化大纲）
+          if [ -d cyber-security-analyst-project/public ]; then
+            mkdir -p _site/cyber-security-analyst-project
+            cp -r cyber-security-analyst-project/public/* _site/cyber-security-analyst-project/
+          fi
+
           # Top-level posters aggregate page (internal marketing asset index)
           [ -f posters.html ] && cp posters.html _site/posters.html || true
           [ -f quest-posters.html ] && cp quest-posters.html _site/quest-posters.html || true
