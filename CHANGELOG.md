@@ -1,5 +1,7 @@
 ## 2026-10-30
 
+- 清理官网课程预览与下载资料的展示标签，同步页面和下载生成器，保留内容来源、课程范围与 URL；本次仅合并代码，未部署、未触发 CI。（企业 AI 自动化课程）
+
 - AI Engineer W6 Tool Calling, MCP & CLI Integration 课件已部署并线上回读（41页，PRD / 讲师流程 / 讲义 / 来源表链接可打开，页面与响应头均为 noindex，示例代码 demo/ 未上线），目录卡片改为「已部署」(`lessons/ai-engineer-cohort-07-w6-tool-calling-mcp` / `lessons.html`)
 - 修复生产部署在 noindex 步骤中断：第七期大纲审核页 `cohort-7-review.html` 缺少 `<head>`，补上 head 标签，页面内容不变；本地对全部可部署 HTML 跑 `enforce-curriculum-noindex.mjs` 通过（456 个文件）(`ai-engineer-bootcamp`)
 - 修复 Curriculum 发布产物缺失 HTML noindex 与 L13 漏构建/复制，增加新旧域名逐项只读验收；本地验证通过，未部署、未触发 CI (`curriculum` / 域名迁移)

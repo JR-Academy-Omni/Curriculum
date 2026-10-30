@@ -5,7 +5,7 @@ import json
 
 def render(public):
  d=json.loads((public/'case-study.json').read_text());out=public/'downloads';out.mkdir(exist_ok=True)
- banner='虚构品牌 · 预生成教学作品 · 非真实经营记录；不发送、不发布、不下单。\n\n'
+ banner='品牌与营销作品 · 非真实经营记录；不发送、不发布、不下单。\n\n'
  (out/'shixu-assistant-workbook.md').write_text('# 拾序咖啡 · AI Assistant 完整成果\n\n'+banner+''.join(f'## {x["label"]}\n\n任务输入：{x["request"]}\n\n### {x["title"]}\n\n{x["body"]}\n\n依据：'+ '、'.join(x['sources'])+'\n\n审核交接：'+x['handoff']+'\n\n' for x in d['assistantSamples'].values()))
  (out/'shixu-content-pack.md').write_text('# 拾序咖啡 · Content Pack\n\n'+banner+''.join(f'## {label}\n\n{d["week1"][key]}\n\n' for key,label in [('xhs','小红书'),('wechat','公众号'),('linkedin','LinkedIn'),('email','产品邮件')])+'## 四张图文套装文案\n\n'+''.join(f'### {x["kicker"]}\n\n{x["title"]}\n\n{x["body"]}\n\n' for x in d['carousel']))
  for i in [1,2]:
@@ -57,8 +57,8 @@ def render(public):
 
 ## 产品资料
 
-- House Blend：200g，咖啡豆，可可、榛果、焦糖风味，虚构产品价 A$22。
-- Daily Filter：10 包，每包 10g，独立挂耳，虚构产品价 A$18。
+- House Blend：200g，咖啡豆，可可、榛果、焦糖风味，课程设计价格 A$22。
+- Daily Filter：10 包，每包 10g，独立挂耳，课程设计价格 A$18。
 - 以上价格与课程学费无关。无真实库存、门店、配送或订单。
 
 ## Color
@@ -83,7 +83,7 @@ def render(public):
 
 coffee-editorial-v2.png：居家奶咖与两款产品主视觉。
 coffee-office-v2.png：工位挂耳场景。
-两图均为 Image Model 生成的虚构品牌概念图，不是真实商品摄影。不得把它们作为真实库存、真实客户或真实经营的证明。
+两图均为 Image Model 生成的品牌概念设计图，不是真实商品摄影。不得把它们作为真实库存、真实客户或真实经营的证明。
 
 ## Tone
 
