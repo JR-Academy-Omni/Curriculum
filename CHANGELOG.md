@@ -4,6 +4,7 @@
 
 ## 2026-10-29
 
+- 新增 AI Engineer W6 Tool Calling, MCP & CLI Integration 41页理论课课件（90分钟，线上互动只用聊天框，Local / 未部署）：第2页目录，全课分八个部分，第2–8部分前各一张过渡页；开场是足迹地图与三道 W5 复习；按讲师要求先讲目的与定义（这节课要解决什么、八个词、一张总图），全课只用一个类比（前台客服派工单给后台窗口）；讲 tool calling 一来一回、模型输出的只是一张 tool_use 条子（Anthropic 文档格式示例）、业务参数不收任意 SQL、实习生测试（OpenAI function calling 指南）、status / data / error、schema 不代替授权、MCP 三种能力与边界、FastMCP 只读 server 与 fastmcp list / call、command / args / env / cwd / stdio、initialize 生命周期、stdout 只放协议、env 不自动继承、四条真实启动报错、四道闸与 simulated、Pi 三层，三个聊天框检查点；终端输出全部来自本机实测（FastMCP 4.1.4 / MCP SDK 2.3.0），附只读示例 server 与合成数据；附 PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA，登记课件并补构建与复制步骤（`curriculum/lessons/ai-engineer-cohort-07-w6-tool-calling-mcp` / `lessons.html` / `deploy.yml`）
 - 新增 Seven 主讲的《创业财税与合规进阶课》30 页 HTML Talk Deck（150 分钟），将用户提供的 PowerPoint 转换到 Curriculum 的统一 SlideEngine，覆盖公司架构与财税、政府补助、商业模式、商业边界、竞争壁垒与 30 天行动计划；同步 PRD、来源表、QA、Lesson 目录卡片与部署流程。当前通过非 main 分支提交，待 PR 合并部署。
 
 ## 2026-10-26
