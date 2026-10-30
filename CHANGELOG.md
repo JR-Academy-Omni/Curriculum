@@ -1,3 +1,7 @@
+## 2026-10-30
+
+- 修复 Curriculum 发布产物缺失 HTML noindex 与 L13 漏构建/复制，增加新旧域名逐项只读验收；本地验证通过，未部署、未触发 CI (`curriculum` / 域名迁移)
+
 ## 2026-10-29
 
 - 新增 Seven 主讲的《创业财税与合规进阶课》30 页 HTML Talk Deck（150 分钟），将用户提供的 PowerPoint 转换到 Curriculum 的统一 SlideEngine，覆盖公司架构与财税、政府补助、商业模式、商业边界、竞争壁垒与 30 天行动计划；同步 PRD、来源表、QA、Lesson 目录卡片与部署流程。当前通过非 main 分支提交，待 PR 合并部署。
