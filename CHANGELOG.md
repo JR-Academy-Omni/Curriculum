@@ -1,5 +1,6 @@
 ## 2026-10-30
 
+- 修复生产部署在 noindex 步骤中断：第七期大纲审核页 `cohort-7-review.html` 缺少 `<head>`，补上 head 标签，页面内容不变；本地对全部可部署 HTML 跑 `enforce-curriculum-noindex.mjs` 通过（456 个文件）(`ai-engineer-bootcamp`)
 - 修复 Curriculum 发布产物缺失 HTML noindex 与 L13 漏构建/复制，增加新旧域名逐项只读验收；本地验证通过，未部署、未触发 CI (`curriculum` / 域名迁移)
 
 ## 2026-10-29
