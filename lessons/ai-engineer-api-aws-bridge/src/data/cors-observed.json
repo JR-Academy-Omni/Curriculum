@@ -1,0 +1,64 @@
+{
+  "browser": "156.0.8078.74",
+  "origin": "http://127.0.0.1:8046",
+  "capturedAt": "2026-11-01T09:16:21.363Z",
+  "cases": {
+    "missing-origin": {
+      "url": "http://127.0.0.1:8050/missing-origin",
+      "message": "Access to fetch at 'http://127.0.0.1:8050/missing-origin' from origin 'http://127.0.0.1:8046' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "secondary": "TypeError: Failed to fetch",
+      "result": {
+        "ok": false,
+        "name": "TypeError",
+        "message": "Failed to fetch"
+      },
+      "messages": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Access to fetch at 'http://127.0.0.1:8050/missing-origin' from origin 'http://127.0.0.1:8046' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    "preflight": {
+      "url": "http://127.0.0.1:8050/preflight",
+      "message": "Access to fetch at 'http://127.0.0.1:8050/preflight' from origin 'http://127.0.0.1:8046' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "secondary": "TypeError: Failed to fetch",
+      "result": {
+        "ok": false,
+        "name": "TypeError",
+        "message": "Failed to fetch"
+      },
+      "messages": [
+        "Access to fetch at 'http://127.0.0.1:8050/preflight' from origin 'http://127.0.0.1:8046' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    "credentials": {
+      "url": "http://127.0.0.1:8050/credentials",
+      "message": "Access to fetch at 'http://127.0.0.1:8050/credentials' from origin 'http://127.0.0.1:8046' has been blocked by CORS policy: The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'.",
+      "secondary": "TypeError: Failed to fetch",
+      "result": {
+        "ok": false,
+        "name": "TypeError",
+        "message": "Failed to fetch"
+      },
+      "messages": [
+        "Access to fetch at 'http://127.0.0.1:8050/credentials' from origin 'http://127.0.0.1:8046' has been blocked by CORS policy: The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    "ok": {
+      "url": "http://127.0.0.1:8050/ok",
+      "message": "",
+      "secondary": "200 OK",
+      "result": {
+        "ok": true,
+        "status": 200,
+        "body": {
+          "topic": "Cross-Origin Resource Sharing",
+          "message": "Readable response from the CORS lesson."
+        }
+      },
+      "messages": []
+    }
+  }
+}

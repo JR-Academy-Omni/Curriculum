@@ -1,5 +1,18 @@
+## 2026-11-01 · AI Engineer 工程衔接课
+
+- 发布66页、225分钟网页课件，含技术栈、CORS、AWS/Firewall/IaC、Agent Runtime/VM/microVM/AgentCore、System Design/Queue、Docker/CI/CD与排障；配套讲义、实操包与云端目录。
+
+## 2026-10-30
+
+- 清理官网课程预览与下载资料的展示标签，同步页面和下载生成器，保留内容来源、课程范围与 URL；本次仅合并代码，未部署、未触发 CI。（企业 AI 自动化课程）
+
+- AI Engineer W6 Tool Calling, MCP & CLI Integration 课件已部署并线上回读（41页，PRD / 讲师流程 / 讲义 / 来源表链接可打开，页面与响应头均为 noindex，示例代码 demo/ 未上线），目录卡片改为「已部署」(`lessons/ai-engineer-cohort-07-w6-tool-calling-mcp` / `lessons.html`)
+- 修复生产部署在 noindex 步骤中断：第七期大纲审核页 `cohort-7-review.html` 缺少 `<head>`，补上 head 标签，页面内容不变；本地对全部可部署 HTML 跑 `enforce-curriculum-noindex.mjs` 通过（456 个文件）(`ai-engineer-bootcamp`)
+- 修复 Curriculum 发布产物缺失 HTML noindex 与 L13 漏构建/复制，增加新旧域名逐项只读验收；本地验证通过，未部署、未触发 CI (`curriculum` / 域名迁移)
+
 ## 2026-10-29
 
+- 新增 AI Engineer W6 Tool Calling, MCP & CLI Integration 41页理论课课件（90分钟，线上互动只用聊天框，Local / 未部署）：第2页目录，全课分八个部分，第2–8部分前各一张过渡页；开场是足迹地图与三道 W5 复习；按讲师要求先讲目的与定义（这节课要解决什么、八个词、一张总图），全课只用一个类比（前台客服派工单给后台窗口）；讲 tool calling 一来一回、模型输出的只是一张 tool_use 条子（Anthropic 文档格式示例）、业务参数不收任意 SQL、实习生测试（OpenAI function calling 指南）、status / data / error、schema 不代替授权、MCP 三种能力与边界、FastMCP 只读 server 与 fastmcp list / call、command / args / env / cwd / stdio、initialize 生命周期、stdout 只放协议、env 不自动继承、四条真实启动报错、四道闸与 simulated、Pi 三层，三个聊天框检查点；终端输出全部来自本机实测（FastMCP 4.1.4 / MCP SDK 2.3.0），附只读示例 server 与合成数据；附 PRD / RUNSHEET / WORKSHEET / SOURCE_MAP / QA，登记课件并补构建与复制步骤（`curriculum/lessons/ai-engineer-cohort-07-w6-tool-calling-mcp` / `lessons.html` / `deploy.yml`）
 - 新增 Seven 主讲的《创业财税与合规进阶课》30 页 HTML Talk Deck（150 分钟），将用户提供的 PowerPoint 转换到 Curriculum 的统一 SlideEngine，覆盖公司架构与财税、政府补助、商业模式、商业边界、竞争壁垒与 30 天行动计划；同步 PRD、来源表、QA、Lesson 目录卡片与部署流程。当前通过非 main 分支提交，待 PR 合并部署。
 
 ## 2026-10-26
@@ -972,3 +985,13 @@
 - 将 30 页整页图片渲染改为可编辑的 React 文字、卡片与章节布局。
 - 修复右上角 JR Academy Logo：纳入 Vite hashed asset，并为深色页增加可见底托。
 - 完成封面、高密度内容页、章节页与末页的本地浏览器验收。
+
+## 2026-10-30 · Codex 联名课程发布
+
+- 增加混沌澳洲 × 匠人学院联名课程介绍、24 页课件与完整教学案例；接入既有云端 Ubuntu Actions 构建发布，保持 noindex 与无统计。
+
+- 修复订单报告与生成器缺少标准 HTML head 的问题，课内全部 57 份材料通过统一 noindex 校验；首轮云端构建通过，发布被此项检查停止，修复后重新发布。
+
+## 2026-10-30 · Codex 联名课程资料更新
+
+- 更新混沌澳洲联名页：清理展示标签、采用宽时间段，新增三条工作流动画、图像模型素材及六份同页发票预览。澳洲发票统一AUD、Tax Invoice、ABN格式、GST10%及含税/未税核对；同步可下载输入、任务和台账。保留课程目录与既有URL；本次仅合入main并推送，使用既有skip-ci机制，不部署、不触发CI。

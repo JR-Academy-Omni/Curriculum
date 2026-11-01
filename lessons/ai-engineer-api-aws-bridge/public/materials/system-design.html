@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="googlebot" content="noindex,nofollow">
+  <title>AI 应用的 System Design 基础 · JR Academy</title>
+  <link rel="stylesheet" href="craft.css">
+  <style>
+    .flow {display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:24px 0}
+    .flow span {padding:12px 16px;border:1px solid var(--jc-hairline);border-radius:14px;background:var(--jc-wash-sky);font-weight:700}
+    .flow b {color:var(--jc-sky-deep);font-weight:400}
+    .conclusion {padding:18px 22px;border-radius:18px;background:var(--jc-wash-mint);font-weight:700}
+    .table-wrap {overflow-x:auto}
+    .table-wrap table {min-width:580px}
+    li {margin:8px 0}
+    @media print {.flow{break-inside:avoid}.table-wrap{overflow:visible}.table-wrap table{min-width:0}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">JR ACADEMY · AI ENGINEER</div>
+    <h1>AI 应用的 System Design 基础</h1>
+    <p>从“保存一条护理记录”和“生成一份长文档”出发，理解等待、排队、重试、缓存和容量之间的关系。</p>
+    <nav><a href="handbook.html">完整讲义</a><a href="worksheet.html">课堂工作单</a><a href="answers.html">参考解答</a><a href="lab-guide.html">API 实操</a></nav>
+  </header>
+
+  <section id="latency-throughput">
+    <h2>1. Latency 与 Throughput：等多久，能处理多少</h2>
+    <p><strong>Latency</strong> 是一次操作从选定起点到选定终点的耗时。可以测浏览器点击到完整结果，也可以测后端收到请求到返回响应；比较前先统一测量边界。</p>
+    <p><strong>Throughput</strong> 是单位时间内完成的工作量，例如每秒完成多少 API 请求、每分钟完成多少文档任务。接收了多少请求与完成了多少请求，要分别记录。</p>
+    <p><strong>Concurrency</strong> 是同一时刻正在处理的工作数。提高并发可能增加吞吐，也可能耗尽连接、触发模型限流，反而拉长等待。需要同时观察负载、完成量、错误和延迟。</p>
+    <p>看延迟时保留分布。Average 会把快慢请求混在一起；p95 表示这一统计窗口里约 95% 的样本耗时不高于该值。比较 p95 时也要核对请求类型、窗口、样本量与测量口径。</p>
+    <p class="conclusion">一次请求快、系统处理得多、同时执行得多，是三个不同的判断。</p>
+  </section>
+
+  <section id="ai-latency">
+    <h2>2. AI 请求为什么慢：沿调用链拆时间</h2>
+    <div class="flow" aria-label="AI 请求可能经过的环节"><span>网络与入口</span><b>→</b><span>应用校验</span><b>→</b><span>检索／数据读取</span><b>→</b><span>模型调用</span><b>→</b><span>结果整理与返回</span></div>
+    <p>护理记录直接保存，主要涉及校验和数据库；文档生成可能还需读取资料、检索内容、等待模型并保存产物。先给每段打时间点，确认慢在哪里，再决定优化哪一层。</p>
+    <p>排队、连接建立、外部服务限流和重试都可能增加端到端耗时。并行步骤的总时间不能简单全部相加，应看依赖关系和最长的关键路径。</p>
+    <p><strong>Streaming</strong> 能让用户更早看到逐步返回的内容。首个有效片段到达时间与完整任务完成时间应分别衡量；更早开始显示，不自动代表总执行时间缩短。</p>
+  </section>
+
+  <section id="sync-async">
+    <h2>3. Synchronous 与 Asynchronous：结果怎样交付</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>方式</th><th>用户路径</th><th>适合先考虑的场景</th></tr></thead>
+      <tbody>
+        <tr><td>Synchronous</td><td>发出请求，等待本次响应里的结果。</td><td>短查询、保存记录、需要立即确认的校验。</td></tr>
+        <tr><td>Asynchronous job</td><td>先取得任务标识，再查询或接收最终状态与成果。</td><td>长文档生成、批量处理、上传后解析。</td></tr>
+      </tbody>
+    </table></div>
+    <p>异步任务把“提交任务”和“拿到最终成果”分成两个阶段，需要增加状态、失败反馈和成果入口。它改善的是交付方式与工作调度，任务本身仍需要执行时间。</p>
+    <p>设计时应先可靠保存任务或确认入队，再返回相应接收结果。HTTP 202 本身不是已入队的证据。HTTP 202 Accepted 表示服务接收了处理请求，不表示任务已经成功，也不承诺最终一定成功。页面应保留任务入口，等到完成状态后再展示可打开的结果。</p>
+  </section>
+
+  <section id="message-queue">
+    <h2>4. Message Queue：把任务交给后面的 Worker</h2>
+    <div class="flow" aria-label="任务队列架构"><span>Producer／应用 API</span><b>→</b><span>Message Queue</span><b>→</b><span>Worker</span><b>→</b><span>结果存储</span></div>
+    <p><strong>Producer</strong> 创建消息；<strong>Queue</strong> 暂存待处理消息；<strong>Consumer／Worker</strong> 取出任务并处理；数据库或对象存储保存状态和成果。浏览器通常通过应用 API 读取任务与结果。</p>
+    <p>生成长文档时，API 可以提交包含 job ID 与必要输入引用的任务，Worker 再读取材料、生成文档并保存结果。消息里只放任务所需信息；患者资料、文件与凭据的访问边界仍需独立设计。</p>
+    <p>队列能隔离提交端与处理端，缓冲突发任务，允许 Worker 按容量消费。队列积压也会增加等待；只加队列，不增加或改善处理能力，不能消除瓶颈。</p>
+    <p>需要了解所选队列的投递与确认语义。以 Amazon SQS Standard 为例，消息可能重复投递。Worker 应按业务任务标识防止重复写入、重复发送或重复计费；不能把消息送达次数直接当成业务执行次数。</p>
+    <p><strong>观察一条消息：</strong>入队 → 等待 → Worker 领取（In flight）→ 处理并保存结果 → ACK / delete。等待的消息持续留在队列中；已领取但未删除的消息也不能当成已完成。SQS 使用 Visibility timeout 暂时隐藏已领取消息；Worker 崩溃而未删除时，超时后消息重新可见，可再次投递。</p>
+    <p><strong>不用队列会怎样？</strong>直接调用可以正常完成；突发流量超过接收能力、依赖服务不可用或超过等待期限时，请求可能被拒绝或超时。调用方需要恢复策略，超时也不证明服务端没执行。队列提供独立的待办缓冲，但仍需关注容量、保留期、重试、幂等和失败隔离。</p>
+    <p><a href="../?page=48">打开逐条消费动画</a> · <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">SQS Visibility timeout</a> · <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html">At-least-once delivery</a></p>
+    <p class="conclusion">任务入队、开始处理、产物保存和用户拿到成果，需要分别确认。</p>
+  </section>
+
+  <section id="job-status">
+    <h2>5. Job status：让用户知道下一步在哪里</h2>
+    <div class="flow" aria-label="异步任务状态"><span>queued</span><b>→</b><span>running</span><b>→</b><span>succeeded／failed</span></div>
+    <p>任务记录至少关联 job ID、归属用户、当前状态、更新时间、失败信息以及成果引用。状态转换要由实际执行证据驱动：只有最终成果按要求保存并可访问后，才将任务标为成功。</p>
+    <p><strong>Polling</strong> 是浏览器隔一段时间查询状态；<strong>Push</strong> 是服务通过约定通道通知更新。Polling 要控制频率并在终态停止；Push 要考虑断连后的重新查询与恢复。</p>
+    <p>任务列表与详情需校验归属权限。知道一个 job ID，不应自动获得读取他人输入或成果的权限。失败后提供可理解的原因和下一步，不让用户在“处理中”永久等待。</p>
+  </section>
+
+  <section id="retry">
+    <h2>6. Timeout、Retry、Backoff 与 Idempotency</h2>
+    <p><strong>Timeout</strong> 限制调用方等待多久。调用方停止等待时，被调用方可能仍在处理，甚至已经完成写入或产生费用。</p>
+    <p><strong>Retry</strong> 再次发送请求；<strong>Backoff</strong> 让下一次尝试间隔更久；<strong>Jitter</strong> 给等待加入随机分散，避免大量客户端同时重试。需要限制次数和总体时间，并结合具体错误决定是否适合重试。</p>
+    <p><strong>Idempotency</strong> 关注重复提交同一逻辑操作时，能否维持预期业务效果。为一次文档生成保留稳定的业务请求标识，重试时先检查既有任务与状态；不要每次换标识，把同一需求变成多个新任务。</p>
+    <p>参数不合法、明确无权限等错误，应先修正原因。服务过载时无上限重试，会把故障进一步放大。队列重投递也要使用相同业务身份进行协调，并处理 Worker 中途失败的情况。</p>
+    <p>幂等实现要考虑并发、结果保留时间和部分成功。仅在代码开头查一次“有没有处理过”，不能自动解决两个 Worker 同时处理或写入后确认失败的问题。</p>
+  </section>
+
+  <section id="cache">
+    <h2>7. Cache：复用结果，也要保持正确与授权</h2>
+    <div class="flow" aria-label="缓存读取路径"><span>请求与身份</span><b>→</b><span>检查 Cache</span><b>→</b><span>命中：验证可用性</span><b>／</b><span>未命中：读取来源并更新</span></div>
+    <p>Cache 保留可复用的数据或结果，减少重复查询、计算或外部调用。护理记录的已确认新内容不能只依赖旧缓存；读者是否有权限查看这份内容，也不能被缓存命中绕过。</p>
+    <p><strong>TTL</strong> 决定缓存条目保留多久；<strong>Invalidation</strong> 决定数据变化后怎样让旧条目失效。过期策略需要与业务允许的陈旧程度一致。</p>
+    <p>AI 结果的 Cache key 可能需要包含用户或租户边界、输入版本、检索资料版本、模型与提示词版本。相似文本并不一定代表相同权限、上下文或任务，不能随意跨用户复用私密结果。</p>
+    <p>先确认适合缓存什么、多久、谁可访问以及怎样失效，再衡量命中率、延迟与成本变化。</p>
+  </section>
+
+  <section id="capacity">
+    <h2>8. Rate limit、Concurrency 与 Backpressure</h2>
+    <p><strong>Rate limit</strong> 限制一段时间内允许进入的请求量；<strong>Concurrency limit</strong> 限制同时执行的任务数。它们可以保护应用、数据库连接与外部模型配额。</p>
+    <p><strong>Backpressure</strong> 是下游处理不过来时，向上游传递容量压力：减慢接收、限制在途任务、让调用方稍后再试，或明确拒绝超出容量的工作。</p>
+    <p>观察队列时，不只看消息总数，还要看最老任务等待多久、消费速度、失败与重投递情况。持续积压说明到达速度与完成能力不匹配；仅增加 Worker，还要检查数据库、外部 API 和费用是否允许。</p>
+    <p>页面应说明任务当前状态和可采取的动作，避免用户反复点击制造更多重复任务。批量任务可以分组处理，但仍需保证每项工作都有可追踪的结果。</p>
+  </section>
+
+  <section id="observability">
+    <h2>9. Observability：用 Request ID 与 Job ID 连起证据</h2>
+    <p><strong>Request ID</strong> 帮助定位一次 HTTP 调用；<strong>Job ID</strong> 关联一个可能跨多次请求与 Worker 执行的业务任务。任务重试时保留可关联的业务身份，并记录各次尝试。</p>
+    <p>日志记录状态转换、时间、结果类别和必要的关联标识；Metrics 观察一段时间内的延迟、完成量、错误与积压；Trace 把跨组件的处理步骤关联起来。</p>
+    <p>定位文档生成变慢时，可以沿着“提交 Request ID → Job ID → 排队时间 → Worker 尝试 → 外部调用 → 成果写入”检查。不要把 Cookie、API key、完整私密输入或患者正文直接写进日志。</p>
+  </section>
+
+  <section id="scaling">
+    <h2>10. Horizontal scaling 与 Stateless service</h2>
+    <p><strong>Horizontal scaling</strong> 是增加 API 或 Worker 实例，让多个实例分担工作。请求怎样分配、每个实例能承担多少工作、扩容要多久，都需要观察和设计。</p>
+    <p><strong>Stateless service</strong> 不把后续请求必需的业务状态只保存在某一个实例的内存中。会话、Job status 与成果应放在适合共享或恢复的位置；文件和结果不能只存在即将被替换的容器里。</p>
+    <p>增加实例之前，检查真正的瓶颈。数据库连接不足、外部模型 Rate limit 或队列消费设计问题，不会因为多开 API 实例就自动消失；也不能直接把 Worker 数量扩大到超出下游容量。</p>
+  </section>
+
+  <section id="availability">
+    <h2>11. Availability 与 Single point of failure</h2>
+    <p><strong>Availability</strong> 关注需要服务时能否得到可用结果。某个 API、数据库或存储成为唯一且无法替代的依赖，就可能形成 <strong>Single point of failure</strong>。</p>
+    <p>多个 API 实例可以降低单个应用进程故障的影响，但仍需检查入口、共享数据库、队列、秘密配置和外部 AI 服务。多副本、健康检查、故障切换和恢复方案应按实际依赖设计。</p>
+    <p>备份存在不等于恢复已经验证；消息持久保存不等于 Worker 故障后业务一定正确恢复。需要验证在处理中断、重复领取或实例替换后，任务能否保留状态、避免重复副作用并最终打开正确成果。</p>
+  </section>
+
+  <section id="architecture">
+    <h2>12. 把实时 API 与长任务放进同一张架构图</h2>
+    <p><strong>实时路径：</strong>浏览器 → 应用 API → 身份与权限 → 数据库 → 返回保存结果。用户保存护理记录后，重新读取同一记录确认结果。</p>
+    <p><strong>长任务路径：</strong>浏览器 → 创建任务 API → Queue → Worker → 数据与外部 AI 服务 → 结果存储。浏览器用任务 API 查询状态，并在成功后打开完整文档。</p>
+    <p>Cache 可在满足权限与有效性要求的位置减少重复工作；Rate limit 与并发控制保护入口和下游；Request ID、Job ID、日志与指标帮助解释发生了什么。</p>
+    <p class="conclusion">先明确工作怎样完成、失败怎样恢复、结果怎样交付，再选择具体服务与技术栈。</p>
+  </section>
+
+  <section id="exercise">
+    <h2>Architecture exercise</h2>
+    <p>Design two paths for the same application: saving a care note and generating a long document. Identify the latency boundary, producer, queue, worker, job states, result location and access checks. Explain what happens after a timeout or duplicate delivery. State which data may be cached and how it becomes invalid.</p>
+    <p><strong>Completion criteria:</strong> show an immediate record result, a separately tracked long-running job, an authorized result lookup, a bounded retry policy, an idempotency strategy and correlated request/job evidence. Do not assume that accepted means completed.</p>
+  </section>
+
+  <section id="sources">
+    <h2>官方阅读资料</h2>
+    <ul>
+      <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Statistics-definitions.html">CloudWatch statistics definitions</a>：统计窗口与 percentile。</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/202">MDN · 202 Accepted</a>：接收请求与完成处理的区别。</li>
+      <li><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html">SQS · At-least-once delivery</a>：重复投递与处理边界。</li>
+      <li><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">SQS · Visibility timeout</a>：消息领取后的可见性与再次投递。</li>
+      <li><a href="https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/">Amazon Builders’ Library · Timeouts, retries, and backoff with jitter</a>：有边界的恢复策略。</li>
+      <li><a href="https://aws.amazon.com/caching/best-practices/">AWS · Caching best practices</a>：一致性与缓存生命周期。</li>
+      <li><a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/">AWS Well-Architected · Reliability Pillar</a>：横向扩容、故障隔离与恢复设计。</li>
+      <li><a href="https://opentelemetry.io/docs/concepts/signals/traces/">OpenTelemetry · Traces</a>：跨组件的关联证据。</li>
+    </ul>
+  </section>
+<section id="agent-runtime"><h2>Agent 运行环境：Process、Container、VM 与 microVM</h2><p>Agent 是执行中的程序：组织上下文、调用模型、处理工具结果并保存成果。Node.js 或 Python 是代码运行时；Strands、LangGraph 等框架组织 Agent 逻辑；远程 Model API 提供推理。调用模型不等于模型运行在你的容器里。</p><h3>隔离边界怎么理解</h3><p>Process 是运行中的程序。常见 Linux 容器把应用和依赖组织起来，以进程和文件等机制隔离，但共享所在系统的内核。VM（Virtual Machine）有自己的 Guest OS / Kernel，通过虚拟化承载。microVM 仍有独立 Guest Kernel，面向特定工作负载精简设备模型和开销。Firecracker 是一种基于 KVM 的 microVM VMM，它不等同于 AgentCore 服务。容器和 VM 可以组合；Docker Desktop 也可能在 Linux VM 中运行容器。</p><h3>Amazon Bedrock AgentCore Runtime</h3><p>AgentCore 提供一组 Agent 基础能力，Runtime 是承载 Agent 或工具代码的服务。microVM 计算模式为不同 Session 分配隔离的执行环境。应用后端仍需认证、维护用户与 Session 的对应关系，并检查外部工具、文件和业务数据的访问权限。</p><p>当前官方文档也提供 Instances 计算模式：在账户内由 AWS 管理 EC2 运行环境，面向长运行、特定硬件或协作会话。它与 microVM 的隔离单位和持久化语义不同，不能把所有 AgentCore 运行方式都概括为同一种模型。</p><h3>会话与长期数据</h3><p>在 microVM 模式下，同一活动会话可保留执行上下文；环境终止后，不应把原内存或临时文件当成长期数据。任务状态、业务成果、文件和记忆需按用途显式保存，例如业务数据库、对象存储或 AgentCore Memory。持久会话存储需明确配置，Instances 的停止/恢复与持久卷模型也需按相应文档设计。冷启动、超时、幂等、日志、工具权限和网络出口仍要考虑。</p><p><a href="../?page=41">查看运行环境图解</a> · <a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/">Docker 容器与 VM</a> · <a href="https://firecracker-microvm.github.io/">Firecracker</a> · <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-how-it-works.html">AgentCore microVMs</a> · <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-sessions.html">Sessions</a> · <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-instances-how-it-works.html">Instances</a></p></section>
+</main>
+</body>
+</html>

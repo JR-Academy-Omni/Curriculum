@@ -1,0 +1,2 @@
+import CourseSlide from '../CourseSlide';
+export default function S03_Lesson(){return <CourseSlide {...{"index": 3, "title": "先打开成果，再理解怎么做", "subtitle": "10:00 · 进入实际案例", "items": ["发票台账：能追溯来源，能看见金额差异", "PDF 文档：正文、表格和空缺信息都保留", "填写结果：逐项预览，不只显示成功提示"], "links": ["reference-results/01-invoice/invoice-register.xlsx", "reference-results/02-pdf/event-brief.html", "reference-results/05-form/filled-form.html"]}}/>;}

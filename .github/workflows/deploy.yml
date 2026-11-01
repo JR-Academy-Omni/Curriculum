@@ -154,6 +154,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/ai-engineer-cohort-07-w6-tool-calling-mcp (90-min · 41 slides · Tool Calling, MCP & CLI)
+      - name: Build AI Engineer W6 Tool Calling MCP
+        working-directory: lessons/ai-engineer-cohort-07-w6-tool-calling-mcp
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
       - name: Build lessons/ai-new-jobs-talk
@@ -315,7 +322,13 @@ jobs:
           bun install
           bun run build
 
-      # Build lessons/vibe-coding — Slidev deck (跨课复用 Lesson · Lightman 120 min)
+      # Build the L13 deck already linked from lessons.html.
+      - name: Build lessons/vibe-coding-master-l13
+        working-directory: lessons/vibe-coding-master-l13
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+
       # Slidev/Vue 在 bun 下偶有 install 问题，沿用 npm 保守
       # base 已写进 package.json: --base /curriculum/lessons/vibe-coding/
       - name: Setup Node (for Slidev)
@@ -349,6 +362,12 @@ jobs:
 
       # ai-builder (Vibe Coding 大师课): static HTML only, no React build needed
 
+      - name: Build Codex AI Video Workshop
+        working-directory: lessons/codex-ai-video-workshop
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Assemble all courses into one output
       - name: Assemble output
         run: |
@@ -379,6 +398,9 @@ jobs:
           mkdir -p _site/lessons/ai-engineer-cohort-07-w5-rag-quality
           cp -r lessons/ai-engineer-cohort-07-w5-rag-quality/dist/* _site/lessons/ai-engineer-cohort-07-w5-rag-quality/
           cp lessons/ai-engineer-cohort-07-w5-rag-quality/PRD.md lessons/ai-engineer-cohort-07-w5-rag-quality/RUNSHEET.md lessons/ai-engineer-cohort-07-w5-rag-quality/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w5-rag-quality/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w5-rag-quality/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w6-tool-calling-mcp
+          cp -r lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/dist/* _site/lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/
+          cp lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/PRD.md lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/RUNSHEET.md lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/
@@ -860,6 +882,10 @@ jobs:
             cp -r lessons/vibe-coding-master-l12/dist/* _site/lessons/vibe-coding-master-l12/
           fi
 
+          # Keep the catalog's existing L13 URL backed by an actual built deck.
+          mkdir -p _site/lessons/vibe-coding-master-l13
+          cp -r lessons/vibe-coding-master-l13/dist/* _site/lessons/vibe-coding-master-l13/
+
           # lessons/vibe-coding-master-l8: Vibe Coding 大师课 · 第八节课 · Agent Team（React + Vite）
           if [ -d lessons/vibe-coding-master-l8/dist ]; then
             mkdir -p _site/lessons/vibe-coding-master-l8
@@ -917,6 +943,12 @@ jobs:
             cp codex-agent-workshop/curriculum.html _site/codex-agent-workshop/
           fi
 
+          # Cyber Security Analyst 项目课（纯静态课程介绍与结构化大纲）
+          if [ -d cyber-security-analyst-project/public ]; then
+            mkdir -p _site/cyber-security-analyst-project
+            cp -r cyber-security-analyst-project/public/* _site/cyber-security-analyst-project/
+          fi
+
           # Top-level posters aggregate page (internal marketing asset index)
           [ -f posters.html ] && cp posters.html _site/posters.html || true
           [ -f quest-posters.html ] && cp quest-posters.html _site/quest-posters.html || true
@@ -940,6 +972,9 @@ jobs:
           [ -f AI_ENGINEER_FAMILY.md ] && cp AI_ENGINEER_FAMILY.md _site/AI_ENGINEER_FAMILY.md || true
 
           # Lesson library — cross-bootcamp reusable lesson decks (internal)
+          mkdir -p _site/lessons/codex-ai-video-workshop
+          cp -r lessons/codex-ai-video-workshop/dist/* _site/lessons/codex-ai-video-workshop/
+          cp lessons/codex-ai-video-workshop/*.md _site/lessons/codex-ai-video-workshop/
           [ -f lessons.html ] && cp lessons.html _site/lessons.html || true
 
           # Lessons — Vibe Coding Slidev deck (跨课复用 · 全栈班 L1 / Solo Founder 开篇 / AI Adoption W2)
@@ -1578,6 +1613,9 @@ jobs:
               echo "Skip $slug — no curriculumPages in outline.json"
             fi
           done
+
+      - name: Keep Curriculum HTML out of search independently of host headers
+        run: node scripts/enforce-curriculum-noindex.mjs _site
 
       # Curriculum is teaching material: never inject analytics into published HTML.
       - name: Reject analytics tracking in curriculum HTML

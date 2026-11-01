@@ -19,13 +19,13 @@
 	const action = (text, href) =>
 		`<a class="action" href="${href}" target="_blank" rel="noopener">${text} ↗</a>`;
 	const header = () =>
-		`<nav class="topnav"><a class="wordmark" href="example-website.html">SHIXU COFFEE</a><span class="tiny">拾序咖啡 / 虚构教学品牌</span></nav>`;
+		`<nav class="topnav"><a class="wordmark" href="example-website.html">SHIXU COFFEE</a><span class="tiny">拾序咖啡 / 品牌设计作品</span></nav>`;
 	const footer =
-		'<footer class="footer-note">JR Academy · 企业 AI 自动化实战营作品示例。品牌、产品、价格均为虚构设定；图像由 Image Model 生成，为品牌概念图。互动仅作用于当前页面，不收集信息、不下单、不发送、不调用模型。</footer>';
+		'<footer class="footer-note">JR Academy · 企业 AI 自动化实战营作品。品牌、产品和价格按课程练习编写；图像由 Image Model 生成，为品牌概念图。页面不提供购买服务。</footer>';
 	const opening = (n, title, desc) =>
 		`<header class="opening"><span class="micro">${n} / SHIXU COFFEE</span><h1>${title}</h1><p class="muted">${desc}</p></header>`;
 	function website() {
-		return `${header()}<section class="brandhero"><div><span class="micro">A SLOWER START.</span><h1>早晨很赶，<br>咖啡可以<br>慢一点。</h1><p class="lead">不用先变成咖啡专家。选一包适合自己的豆子，给早晨留一杯顺口的奶咖。</p><div class="actions"><a class="action" href="#products">找到你的那一杯 ↓</a><a class="action secondary" href="#brew">三步冲煮指南</a></div><p class="brand-note muted">House Blend · 200g · 可可 / 榛果 / 焦糖</p></div>${image}</section><section class="section" id="products"><header><h2>家里一包，工位一盒。</h2><span class="tiny">两种场景，选择简单一点。</span></header><div class="grid"><article class="card product"><div class="art">${image}</div><div class="info"><span class="price">A$22</span><span class="micro">AT HOME</span><h3>House Blend</h3><p>200g 咖啡豆 · 可可 / 榛果 / 焦糖<br>适合喜欢坚果与可可风味的奶咖爱好者。</p><a class="action secondary" href="#brew">看看怎么冲</a></div></article><article class="card product"><div class="art">${officeImage}</div><div class="info"><span class="price">A$18</span><span class="micro">AT WORK</span><h3>Daily Filter</h3><p>10 包独立挂耳 · 每包 10g<br>办公室不用再多添一台机器，有耐热杯和热水即可开始。</p><a class="action secondary" href="#chooser">帮我选一款</a></div></article></div><p class="tiny">示例价格为虚构品牌设定，与课程学费无关。本站不开放购买。</p></section><section class="section" id="brew"><header><h2>明早，先试这个起点。</h2><span class="tiny">示范配方，按器材与口味调整。</span></header><div class="grid3"><article class="card guide"><div class="number">01</div><h3>18g 咖啡粉</h3><p>从固定粉量开始。使用适合意式萃取的研磨，保持其余条件一致。</p></article><article class="card guide"><div class="number">02</div><h3>约 36g 咖啡液</h3><p>先尝一口，再判断偏酸、偏苦还是太淡。一次只改一个变量。</p></article><article class="card guide"><div class="number">03</div><h3>约 150ml 牛奶</h3><p>加入热牛奶，按喜好调整比例。热液与设备操作注意防烫。</p></article></div></section><section class="section card selector" id="chooser"><span class="micro">FIND YOUR CUP</span><h2>你会在哪里喝这一杯？</h2><div class="actions"><button class="action" data-choice="home" aria-pressed="true">在家，有咖啡机</button><button class="action" data-choice="office" aria-pressed="false">工位，只有杯子</button></div><p class="selector-result" id="choice-result" role="status">给你的选择：House Blend。先从可可与坚果风味的奶咖开始。</p><p class="tiny">本地选豆互动，仅按场景切换建议。</p></section><section class="section grid"><div><span class="micro">OUR LITTLE RITUAL</span><h2>把选择变简单，<br>把早晨留给自己。</h2></div><div><p>拾序是本课程的虚构咖啡品牌。品牌围绕两个日常场景展开：厨房里的第一杯奶咖，与工位上的午后挂耳。</p><p>没有夸张的评分、销量或“人人都适合”。产品规格、适用场景和冲煮起点写清楚，你再决定从哪里开始。</p></div></section><section class="section"><h2>你可能还想知道</h2><details><summary>咖啡里添加了可可和榛果吗？</summary><p>这里的可可、榛果、焦糖是风味描述，不代表添加了这些食材。实际食材与过敏原信息需以正式产品包装为准；本页为虚构原型。</p></details><details><summary>我没有咖啡机，可以选哪款？</summary><p>可浏览 Daily Filter：10 包独立挂耳，每包 10g。准备耐热杯与热水，冲煮时注意防烫，具体方法以实际产品说明为准。</p></details><details><summary>这里可以下单吗？</summary><p>不能。这是课程的隔离教学原型，没有真实商品、订单、支付或联系表单。</p></details></section><section class="section brand-spec"><details><summary>打开这套网站的 Mini Brand System</summary><div class="brandstrip"><div><div class="type">SHIXU COFFEE</div><div class="swatches"><div class="swatch"><i style="background:#243b35"></i>Forest</div><div class="swatch"><i style="background:#f2e5d4"></i>Oat</div><div class="swatch"><i style="background:#a74828"></i>Terracotta</div></div></div><div><p>温暖纸色 + 深林绿 + 陶土色。包装用 serif 字标，网页用清楚的无衬线字体。产品卡同时写明规格、场景和下一步。</p>${download(
+		return `${header()}<section class="brandhero"><div><span class="micro">A SLOWER START.</span><h1>早晨很赶，<br>咖啡可以<br>慢一点。</h1><p class="lead">不用先变成咖啡专家。选一包适合自己的豆子，给早晨留一杯顺口的奶咖。</p><div class="actions"><a class="action" href="#products">找到你的那一杯 ↓</a><a class="action secondary" href="#brew">三步冲煮指南</a></div><p class="brand-note muted">House Blend · 200g · 可可 / 榛果 / 焦糖</p></div>${image}</section><section class="section" id="products"><header><h2>家里一包，工位一盒。</h2><span class="tiny">两种场景，选择简单一点。</span></header><div class="grid"><article class="card product"><div class="art">${image}</div><div class="info"><span class="price">A$22</span><span class="micro">AT HOME</span><h3>House Blend</h3><p>200g 咖啡豆 · 可可 / 榛果 / 焦糖<br>适合喜欢坚果与可可风味的奶咖爱好者。</p><a class="action secondary" href="#brew">看看怎么冲</a></div></article><article class="card product"><div class="art">${officeImage}</div><div class="info"><span class="price">A$18</span><span class="micro">AT WORK</span><h3>Daily Filter</h3><p>10 包独立挂耳 · 每包 10g<br>办公室不用再多添一台机器，有耐热杯和热水即可开始。</p><a class="action secondary" href="#chooser">帮我选一款</a></div></article></div><p class="tiny">案例价格为课程品牌设定，与课程学费无关。本站不开放购买。</p></section><section class="section" id="brew"><header><h2>明早，先试这个起点。</h2><span class="tiny">示范配方，按器材与口味调整。</span></header><div class="grid3"><article class="card guide"><div class="number">01</div><h3>18g 咖啡粉</h3><p>从固定粉量开始。使用适合意式萃取的研磨，保持其余条件一致。</p></article><article class="card guide"><div class="number">02</div><h3>约 36g 咖啡液</h3><p>先尝一口，再判断偏酸、偏苦还是太淡。一次只改一个变量。</p></article><article class="card guide"><div class="number">03</div><h3>约 150ml 牛奶</h3><p>加入热牛奶，按喜好调整比例。热液与设备操作注意防烫。</p></article></div></section><section class="section card selector" id="chooser"><span class="micro">FIND YOUR CUP</span><h2>你会在哪里喝这一杯？</h2><div class="actions"><button class="action" data-choice="home" aria-pressed="true">在家，有咖啡机</button><button class="action" data-choice="office" aria-pressed="false">工位，只有杯子</button></div><p class="selector-result" id="choice-result" role="status">给你的选择：House Blend。先从可可与坚果风味的奶咖开始。</p><p class="tiny">本地选豆互动，仅按场景切换建议。</p></section><section class="section grid"><div><span class="micro">OUR LITTLE RITUAL</span><h2>把选择变简单，<br>把早晨留给自己。</h2></div><div><p>拾序是本课程的课程设定咖啡品牌。品牌围绕两个日常场景展开：厨房里的第一杯奶咖，与工位上的午后挂耳。</p><p>没有夸张的评分、销量或“人人都适合”。产品规格、适用场景和冲煮起点写清楚，你再决定从哪里开始。</p></div></section><section class="section"><h2>你可能还想知道</h2><details><summary>咖啡里添加了可可和榛果吗？</summary><p>这里的可可、榛果、焦糖是风味描述，不代表添加了这些食材。实际食材与过敏原信息需以正式产品包装为准；本页为课程设定原型。</p></details><details><summary>我没有咖啡机，可以选哪款？</summary><p>可浏览 Daily Filter：10 包独立挂耳，每包 10g。准备耐热杯与热水，冲煮时注意防烫，具体方法以实际产品说明为准。</p></details><details><summary>这里可以下单吗？</summary><p>不能。这是课程的隔离教学原型，没有真实商品、订单、支付或联系表单。</p></details></section><section class="section brand-spec"><details><summary>打开这套网站的 Mini Brand System</summary><div class="brandstrip"><div><div class="type">SHIXU COFFEE</div><div class="swatches"><div class="swatch"><i style="background:#243b35"></i>Forest</div><div class="swatch"><i style="background:#f2e5d4"></i>Oat</div><div class="swatch"><i style="background:#a74828"></i>Terracotta</div></div></div><div><p>温暖纸色 + 深林绿 + 陶土色。包装用 serif 字标，网页用清楚的无衬线字体。产品卡同时写明规格、场景和下一步。</p>${download(
 			'下载完整品牌规范',
 			'shixu-brand-guide.md'
 		)}</div></div></details></section>${footer}`;
@@ -45,12 +45,12 @@
 			'切换任务，直接查看客户回复、品牌介绍、FAQ 与异常交接。'
 		)}<section class="workspace-banner"><div><span class="micro">SHIXU / AI WORKSPACE</span><h2>一个品牌，<br>不用从头解释四次。</h2><p>产品、语气和已知事实保持一致。<br>左边是一份 Brief，右边是能直接读完的成果。</p></div>${image}</section><div class="workspace upgraded"><aside class="brief-sidebar"><span class="micro">BRAND BRIEF / V1</span><h3>拾序咖啡</h3><p>给忙碌早晨的一杯顺口咖啡。</p><ul class="brief-list"><li><b>House Blend</b>200g · 可可 / 榛果 / 焦糖<br>居家奶咖 · 教学价 A$22</li><li><b>Daily Filter</b>10 × 10g · 独立挂耳<br>工位咖啡 · 教学价 A$18</li><li><b>品牌语气</b>${esc(
 			d.business.voice
-		)}</li></ul><p class="tiny">虚构产品与价格，不代表实际经营。</p><details><summary>查看完整资料与工作指令</summary><p>${esc(
+		)}</li></ul><p class="tiny">产品与价格按课程练习编写，页面不提供购买服务。</p><details><summary>查看完整资料与工作指令</summary><p>${esc(
 			d.business.audience
 		)}</p><p>只使用 Brief 的产品事实。缺少库存、配送、活动或证言时列出待确认；不补写承诺。</p><p>输出完整草稿、依据、待确认项和审核清单；不发送、不发布、不下单。</p></details>${download(
 			'下载四份完整成果',
 			'shixu-assistant-workbook.md'
-		)}</aside><section class="reply-workbench"><div class="controlbar" aria-label="选择预生成任务">${Object.entries(
+		)}</aside><section class="reply-workbench"><div class="controlbar" aria-label="选择任务">${Object.entries(
 			d.assistantSamples
 		)
 			.map(
@@ -61,7 +61,7 @@
 			)
 			.join('')}</div><div class="request" id="request-text">${esc(
 			sample.request
-		)}</div><article class="finished-reply"><span class="micro">READY TO REVIEW / 预生成</span><h2>${
+		)}</div><article class="finished-reply"><span class="micro">READY TO REVIEW</span><h2>${
 			sample.title
 		}</h2><div class="reply-body" id="reply-text">${esc(
 			sample.body
@@ -76,7 +76,7 @@
 			'02',
 			'同一份品牌，从包装走到官网。',
 			'色彩、标题、产品卡和按钮保持一致。打开网站，可以逛产品、看指南、体验选豆。'
-		)}<section class="card brandstrip"><div><span class="micro">MINI BRAND SYSTEM</span><div class="type">SHIXU COFFEE<br>MAKE ROOM FOR<br>A SLOW MORNING.</div><div class="swatches"><div class="swatch"><i style="background:#243b35"></i>Forest</div><div class="swatch"><i style="background:#f2e5d4"></i>Oat</div><div class="swatch"><i style="background:#a74828"></i>Terracotta</div></div><p class="tiny">虚构咖啡品牌的 VI；课程官网继续使用 JR Academy Design System。</p></div><div><h2>早晨很赶，<br>咖啡可以慢一点。</h2><p>标题用一句日常场景，正文写清规格。深色按钮只留给明确动作，产品卡同时展示包装、适用场景与价格。</p>${action(
+		)}<section class="card brandstrip"><div><span class="micro">MINI BRAND SYSTEM</span><div class="type">SHIXU COFFEE<br>MAKE ROOM FOR<br>A SLOW MORNING.</div><div class="swatches"><div class="swatch"><i style="background:#243b35"></i>Forest</div><div class="swatch"><i style="background:#f2e5d4"></i>Oat</div><div class="swatch"><i style="background:#a74828"></i>Terracotta</div></div><p class="tiny">课程设定咖啡品牌的 VI；课程官网继续使用 JR Academy Design System。</p></div><div><h2>早晨很赶，<br>咖啡可以慢一点。</h2><p>标题用一句日常场景，正文写清规格。深色按钮只留给明确动作，产品卡同时展示包装、适用场景与价格。</p>${action(
 			'打开完整品牌官网',
 			'example-website.html'
 		)}</div></section><section class="section">${website()
@@ -212,7 +212,7 @@
 		return `${opening(
 			'05',
 			'周一打开，就知道这一周发什么。',
-			'切换两周，直接比较业务更新如何变成完整草稿和审核交接。预生成样例，不是真实排程。'
+			'切换两周，直接比较业务更新如何变成完整草稿和审核交接。工作包用于说明任务交接，不代表已经安排发布。'
 		)}<div class="controlbar"><button data-week="1" aria-pressed="${
 			week === 1
 		}">Week 01 · 居家奶咖</button><button data-week="2" aria-pressed="${

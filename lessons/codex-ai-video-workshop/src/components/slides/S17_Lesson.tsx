@@ -1,0 +1,2 @@
+import CourseSlide from '../CourseSlide';
+export default function S17_Lesson(){return <CourseSlide {...{"index": 17, "title": "HyperFrames：场景组成视频", "subtitle": "13:45 · HTML / CSS / 可定位动画", "items": ["npx hyperframes init aspect-ratio-hf", "index.html 入口；compositions 场景；assets 素材", "check → snapshot → preview，使用实际打印的 URL"], "links": ["视频制作流程与Skills实操.html", "video-practice/aspect-ratio/START-HERE.md"]}}/>;}

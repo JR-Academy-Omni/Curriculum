@@ -30,7 +30,7 @@ def section(title, content, ident=''):
 
 
 def page(filename, title, body):
-    nav = [('curriculum.html', '课程介绍'), ('outline.html', '完整大纲'), ('examples.html', '查看成果示例'), ('learning-plan.html', '学习计划'), ('poster.html', '招生海报')]
+    nav = [('curriculum.html', '课程介绍'), ('outline.html', '完整大纲'), ('examples.html', '查看成果'), ('learning-plan.html', '学习计划'), ('poster.html', '招生海报')]
     nav_html = ''.join(f'<a href="{url}" {"aria-current=page" if url == filename else ""}>{label}</a>' for url, label in nav)
     html = f'''<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -42,7 +42,7 @@ def page(filename, title, body):
 <div class="price-row"><strong>早鸟价 A${D['program']['promoTuition']:,}／人</strong><span>正常价 A${D['program']['tuition']:,}／人</span></div>
 <p class="price-note">价格为澳元；税费口径和早鸟截止条件待确认。</p><nav class="nav" aria-label="课程导航">{nav_html}</nav></header>
 <main class="c" id="main"><h2 class="page-title">{e(title)}</h2>{body}</main>
-<footer class="footer">JR Academy · {e(D['_meta']['revision'])} · 本地课程源文件，未同步 production、未部署。<br>示例为虚构、预生成；完整视频与真实定时运行验收待补齐。</footer></body></html>'''
+<footer class="footer">JR Academy · {e(D['name'])}<br>品牌与业务内容按课程练习编写。</footer></body></html>'''
     (PUBLIC / filename).write_text(html, encoding='utf-8')
 
 
@@ -51,14 +51,14 @@ def lesson_html(lesson):
     return f'''<article class="lesson" id="{lesson['code']}"><div class="lesson-head"><span class="pill">{lesson['code']}</span><h3>{e(lesson['title'])}</h3><span class="pill">实操授课 · 120 min</span></div>
 <div class="lesson-intro">{paras(lesson['description'])}{ul(lesson['objectives'])}</div>
 <div class="lesson-body"><div><h4>教学内容</h4>{ul([s['title'] for s in lesson['steps']])}</div><div><h4>课堂实操</h4><p>{e(lesson['practice'])}</p></div><div><h4>成果整理与 Review</h4><p>{e(lesson['assignment'])}</p><p>课堂内教师检查；不承诺额外课后服务。</p></div></div>
-<div class="lesson-intro"><h4>带走的成果</h4>{ul(lesson['deliverables'])}<h4>120 分钟教学安排</h4><ol class="steps">{steps}</ol><h4>验收标准</h4>{ul(lesson['acceptance'])}<p><a class="action-btn" href="examples.html#result-{lesson['code']}">查看对应成果示例</a></p></div></article>'''
+<div class="lesson-intro"><h4>带走的成果</h4>{ul(lesson['deliverables'])}<h4>120 分钟教学安排</h4><ol class="steps">{steps}</ol><h4>验收标准</h4>{ul(lesson['acceptance'])}<p><a class="action-btn" href="examples.html#result-{lesson['code']}">查看对应成果</a></p></div></article>'''
 
 
 def full_outline():
     return ''.join(f'<section class="box"><h2 class="box-h">{e(p["name"])}</h2><p class="phase-summary">{e(p["summary"])}</p>{"".join(lesson_html(l) for l in p["lessons"])}</section>' for p in D['phases'])
 
 
-overview = section('从同一家企业，做出一套连贯成果', paras(D['description']) + '<p><a class="action-btn primary" href="examples.html">直接打开完整成果示例</a> <a class="action-btn" href="#curriculum">查看 5 节完整大纲</a></p><p class="notice">当前可读品牌、网站、内容与工作包的预生成示例。视频只有 Script / Storyboard；MP4 和真实定时运行尚未验收，成果 Demo 未完成。</p>')
+overview = section('从同一家企业，做出一套连贯成果', paras(D['description']) + '<p><a class="action-btn primary" href="examples.html">直接打开完整成果</a> <a class="action-btn" href="#curriculum">查看 5 节完整大纲</a></p><p class="notice">可以阅读完整品牌规范、网站、营销内容和工作包。视频部分提供 Script / Storyboard，未提供可播放成片。</p>')
 overview += section('适合谁', ul(D['suitable'].split('\n')))
 overview += section('课程特点', ul(D['highlights']))
 overview += '<div id="curriculum">' + full_outline() + '</div>'
@@ -132,9 +132,9 @@ outline_md += '## 未确认事项\n\n' + ''.join(f'- {x}\n' for x in D['_meta'][
 (ROOT / 'COURSE_OUTLINE.md').write_text(outline_md, encoding='utf-8')
 marketing = f'# 招生介绍｜{D["name"]}\n\n{D["name_en"]}\n\n**10 小时 · 5 节课 · 每节 2 小时**\n\n**早鸟价 A$899／人｜正常价 A$1,099／人｜早鸟优惠 A$200**\n\n价格为澳元；早鸟截止条件待确认。\n\n## 企业日常工作，从同一份资料开始\n\n企业需要整理资料、更新官网、制作营销内容、介绍产品，并安排下一周的工作。课程以 Codex 为核心实操工具，让你从企业 Source of Truth 出发，逐步完成具体作品，再将重复工作整理成 Automation Workflow。\n\n## 五节课，五组连贯成果\n\n'
 marketing += ''.join(f'- **{l["title"]}**：{ "；".join(l["deliverables"])}。\n' for l in LESSONS)
-marketing += '\n## 适合谁\n\n' + D['suitable'] + '\n\n## 怎么上课\n\n每节先展示完整成果，再拆解方法、跟做实操、修改检查。使用脱敏企业资料或统一虚构案例；核心版本在课堂内完成，后续可继续完善。\n\n## 课程范围\n\n' + D['prerequisiteknowledge'] + '\n\n网站以单页原型为范围；视频使用预置模板与已有素材；重复任务保留 Human Review。复杂系统集成、正式上线和深度定制另行评估。不承诺就业、收入、固定节省工时或无人值守运营。\n\n## 报名信息\n\n- 早鸟价：A$899／人。\n- 正常价：A$1,099／人。\n- 税费、早鸟期限、日期、讲师、地点、授课形式和报名入口：待确认。\n- 软件订阅、回放、课后答疑及第三方费用的包含范围：待确认。\n\n## 招生 FAQ\n\n'
+marketing += '\n## 适合谁\n\n' + D['suitable'] + '\n\n## 怎么上课\n\n每节先展示完整成果，再拆解方法、跟做实操、修改检查。使用脱敏企业资料或统一课程案例；核心版本在课堂内完成，后续可继续完善。\n\n## 课程范围\n\n' + D['prerequisiteknowledge'] + '\n\n网站以单页原型为范围；视频使用预置模板与已有素材；重复任务保留 Human Review。复杂系统集成、正式上线和深度定制另行评估。不承诺就业、收入、固定节省工时或无人值守运营。\n\n## 报名信息\n\n- 早鸟价：A$899／人。\n- 正常价：A$1,099／人。\n- 税费、早鸟期限、日期、讲师、地点、授课形式和报名入口：待确认。\n- 软件订阅、回放、课后答疑及第三方费用的包含范围：待确认。\n\n## 招生 FAQ\n\n'
 marketing += ''.join(f'### {f["question"]}\n\n{f["answer"]}\n\n' for f in D['faqs'])
-marketing += '## 当前发布状态\n\n本地招生稿，未开放报名。成果示例为虚构、预生成；完整 MP4、真实定时运行与正式产品内展示入口尚未验收，成果 Demo 未完成。\n'
+marketing += '## 当前发布状态\n\n本地招生稿，未开放报名。品牌与业务内容按课程练习编写；完整 MP4、真实定时运行与正式产品内展示入口尚未验收，成果 Demo 未完成。\n'
 (ROOT / 'ENROLLMENT.md').write_text(marketing, encoding='utf-8')
 (PUBLIC / 'pages.json').write_text(json.dumps(D['curriculumPages'], ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 print(f'Rendered {len(LESSONS)} lessons / {sum(l["duration"] for l in LESSONS)} minutes from outline.json')
