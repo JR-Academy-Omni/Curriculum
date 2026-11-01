@@ -1,0 +1,622 @@
+[
+  {
+    "title": "从 AI Coding 到应用跑通",
+    "subtitle": "前端、API、后端与 AWS",
+    "layout": "cover",
+    "items": [
+      "读懂系统",
+      "验证接口",
+      "定位故障"
+    ],
+    "diagramId": 1
+  },
+  {
+    "title": "先打开一条完整护理记录",
+    "subtitle": "从最终可读的成果出发，再拆它怎样产生",
+    "layout": "result",
+    "items": [],
+    "diagramId": 2
+  },
+  {
+    "title": "今天沿着同一条链路走",
+    "subtitle": "每个人都要跨出最熟悉的那一层",
+    "layout": "timeline",
+    "items": [
+      "应用与技术栈 · 30 min",
+      "API · 45 min",
+      "数据与配置 · 20 min",
+      "休息 · 10 min",
+      "AWS / IaC / Agent Runtime · 40 min",
+      "System Design · 30 min",
+      "Docker 与 CI/CD · 20 min",
+      "排障 · 25 min",
+      "收尾 · 5 min"
+    ],
+    "diagramId": 3
+  },
+  {
+    "title": "一次保存，经过五个位置",
+    "subtitle": "浏览器和服务器执行的是不同的工作",
+    "layout": "flow",
+    "items": [
+      "浏览器\n收集输入",
+      "HTTP API\n发送约定",
+      "后端\n校验与处理",
+      "数据库\n持久保存",
+      "浏览器\n呈现结果"
+    ],
+    "diagramId": 4
+  },
+  {
+    "title": "前端与后端：按职责找边界",
+    "subtitle": "代码可以同仓库，执行位置和权限仍不同",
+    "layout": "compare",
+    "items": [
+      "前端｜呈现与交互\n在浏览器处理输入与页面状态\n请求 API，展示成功或失败\n不能保存服务端秘密凭据",
+      "后端｜规则与数据\n在服务端校验输入与权限\n访问数据库与外部服务\n不能信任浏览器传来的权限结论"
+    ],
+    "diagramId": 5
+  },
+  {
+    "title": "网页由 HTML、CSS 与 JavaScript 配合完成",
+    "subtitle": "结构、样式、行为在浏览器中组合",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 100
+  },
+  {
+    "title": "React 是用组件组织 UI 的 JavaScript 库",
+    "subtitle": "组件与状态，帮助页面随数据更新",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 101
+  },
+  {
+    "title": "JavaScript 与 Node.js 分别是什么",
+    "subtitle": "同一种语言，可以在不同环境里执行",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 102
+  },
+  {
+    "title": "把技术栈按层摆放，就不容易混淆",
+    "subtitle": "库／框架、运行时、宿主各自承担职责",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 103
+  },
+  {
+    "title": "先加载页面资源，再发业务 API 请求",
+    "subtitle": "浏览器拿到代码后执行，点击保存时再交换数据",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 104
+  },
+  {
+    "title": "前端构建工具与前端运行位置分开看",
+    "subtitle": "Node.js 可以运行开发工具，也可以运行后端服务",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 105
+  },
+  {
+    "title": "Web Server 与 Node.js 服务怎样配合",
+    "subtitle": "入口可以返回静态资源，也可以转发 API",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 106
+  },
+  {
+    "title": "Nginx 和 Node.js 应用是两个独立进程",
+    "subtitle": "Web Server 是 HTTP 服务角色；运行环境与代理入口各有职责",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 107
+  },
+  {
+    "title": "localhost 指向发起请求的那台机器",
+    "subtitle": "先确认谁在访问，再看地址和端口",
+    "layout": "flow",
+    "items": [
+      "你的电脑\n浏览器",
+      "127.0.0.1\n当前机器",
+      "端口 8047\n练习进程",
+      "/api/notes\n资源路径"
+    ],
+    "diagramId": 6
+  },
+  {
+    "title": "API 是可检查的协作约定",
+    "subtitle": "不用读完整代码，也能对照输入和输出",
+    "layout": "contract",
+    "items": [
+      "动作｜创建护理记录",
+      "输入｜residentId、activity、note",
+      "身份｜本练习使用会话 cookie",
+      "结果｜201 + id + 完整记录",
+      "失败｜400 / 401 / 403 / 404"
+    ],
+    "diagramId": 7
+  },
+  {
+    "title": "读懂请求：先看地址与动作",
+    "subtitle": "同一个资源可以承接不同操作",
+    "layout": "request",
+    "items": [
+      "GET /api/notes?limit=10",
+      "GET /api/notes/note-001",
+      "POST /api/notes",
+      "Content-Type: application/json"
+    ],
+    "diagramId": 8
+  },
+  {
+    "title": "Path、Query、Body 放不同的信息",
+    "subtitle": "以API Contract为准，不凭字段名猜位置",
+    "layout": "compare",
+    "items": [
+      "Path / Query\n/api/notes/{id} 指定一条记录\n?limit=10 控制列表数量\n不要把秘密凭据塞进 URL",
+      "Body / Headers\nBody 携带待提交的 JSON\nContent-Type 说明正文格式\nCookie / Authorization 承载约定身份"
+    ],
+    "diagramId": 9
+  },
+  {
+    "title": "JSON 的结构就是接口的一部分",
+    "subtitle": "字段、类型和必填项都要一致",
+    "layout": "code",
+    "items": [
+      "{\n  \"residentId\": \"resident-001\",\n  \"activity\": \"Morning check-in\",\n  \"note\": \"Resident requested a quieter room.\"\n}"
+    ],
+    "diagramId": 10
+  },
+  {
+    "title": "身份确认之后，还要检查权限",
+    "subtitle": "登录、业务角色和 AWS IAM 各管一层",
+    "layout": "columns",
+    "items": [
+      "应用身份｜会话 Cookie\n后端确认当前会话\n无身份时返回 401",
+      "业务权限｜editor / viewer\n后端检查当前操作\n无权限时返回 403",
+      "云资源权限｜AWS IAM\n服务访问 S3 等资源\n与业务用户权限分开"
+    ],
+    "diagramId": 11
+  },
+  {
+    "title": "响应要同时看状态码和正文",
+    "subtitle": "页面上的绿色提示不能替代结果验证",
+    "layout": "response",
+    "items": [
+      "201｜创建成功，读回记录 ID",
+      "400｜输入不符合约定，检查字段",
+      "401 / 403｜检查身份／权限",
+      "404｜路径或资源不存在",
+      "429 / 5xx｜限流或服务端失败"
+    ],
+    "diagramId": 12
+  },
+  {
+    "title": "把失败反馈变成下一步动作",
+    "subtitle": "错误信息需要让用户知道如何继续",
+    "layout": "compare",
+    "items": [
+      "页面反馈\n保留尚未提交的输入\n指出可修改的字段\n保存中禁用重复提交\n失败后允许再次操作",
+      "技术证据\nHTTP 状态与错误 code\n脱敏的响应正文\nX-Request-ID\n同一请求对应的后端日志"
+    ],
+    "diagramId": 13
+  },
+  {
+    "title": "在 Network 里检查一次真实请求",
+    "subtitle": "先观察，再要求 AI 修改",
+    "layout": "lab",
+    "items": [
+      "Open the record workspace.",
+      "Open DevTools → Network.",
+      "Save one note and inspect POST /api/notes.",
+      "Compare the request body, status and response."
+    ],
+    "diagramId": 14
+  },
+  {
+    "title": "脱离页面，再验证同一份 API",
+    "subtitle": "接口验证和页面联调是两个检查点",
+    "layout": "lab",
+    "items": [
+      "Open the API request panel.",
+      "Send GET /api/notes.",
+      "Send a valid POST body.",
+      "Read the returned ID with GET /api/notes/{id}."
+    ],
+    "diagramId": 15
+  },
+  {
+    "title": "CORS · Cross-Origin Resource Sharing",
+    "subtitle": "认出红色Console报错，再结合Network排查",
+    "layout": "flow",
+    "items": [
+      "Origin A\n页面来源",
+      "OPTIONS\n部分请求先预检",
+      "Origin B\n服务端响应头",
+      "浏览器\n决定能否读取"
+    ],
+    "diagramId": 16
+  },
+  {
+    "title": "保存成功后，重新读取一次",
+    "subtitle": "区分页面状态、浏览器存储与数据库",
+    "layout": "flow",
+    "items": [
+      "页面输入\n尚未保存",
+      "POST\n后端验证",
+      "SQLite\n写入记录",
+      "GET + 刷新\n重新读取"
+    ],
+    "diagramId": 17
+  },
+  {
+    "title": "数据库与文件存储各有职责",
+    "subtitle": "业务记录与音频、图片分开管理",
+    "layout": "compare",
+    "items": [
+      "数据库\n记录 ID、正文、状态、关系\n支持查询与约束\n课堂 SQLite；AWS 主线 RDS",
+      "对象存储\n图片、音频和文档对象\n数据库通常保存对象引用\nAWS 对应 S3"
+    ],
+    "diagramId": 18
+  },
+  {
+    "title": "配置决定同一份代码连向哪里",
+    "subtitle": "地址、凭据和环境需要各自核对",
+    "layout": "compare",
+    "items": [
+      "浏览器可见\nAPI base URL\n公开功能开关\n会打进前端包的值都可被查看",
+      "服务端持有\n数据库连接凭据\n模型服务 API key\n由运行环境或秘密管理服务提供"
+    ],
+    "diagramId": 19
+  },
+  {
+    "title": "休息后，把同一张地图搬到 AWS",
+    "subtitle": "保留应用职责，更换运行位置",
+    "layout": "break",
+    "items": [
+      "10 min",
+      "准备：应用图、API 记录、当前卡点"
+    ],
+    "diagramId": 20
+  },
+  {
+    "title": "AWS 先定位账号与区域",
+    "subtitle": "资源找不到，先别急着重建",
+    "layout": "flow",
+    "items": [
+      "Account\n权限与费用边界",
+      "Region\n资源所在区域",
+      "Availability Zone\n区域内隔离位置",
+      "Resource\n服务与标识"
+    ],
+    "diagramId": 21
+  },
+  {
+    "title": "把请求放回 AWS 架构",
+    "subtitle": "只沿一套后端拓扑解释职责",
+    "layout": "aws",
+    "items": [],
+    "diagramId": 22
+  },
+  {
+    "title": "计算服务：选择运行代码的方式",
+    "subtitle": "主线用 ECS / Fargate，其他只建立认识",
+    "layout": "columns",
+    "items": [
+      "EC2｜虚拟机\n自己管理操作系统与进程\n适合需要主机控制的场景",
+      "ECS + Fargate｜容器\nECS 编排，Fargate 提供计算\n主线：用任务运行后端",
+      "Lambda｜函数\n事件触发执行函数\n检查时长、并发与运行限制"
+    ],
+    "diagramId": 23
+  },
+  {
+    "title": "ALB 接收请求，后端处理业务",
+    "subtitle": "入口健康，不代表每条业务请求都成功",
+    "layout": "flow",
+    "items": [
+      "HTTPS :443\nALB listener",
+      "Target group\n健康检查",
+      "Task :8080\nECS / Fargate",
+      "API handler\n业务处理"
+    ],
+    "diagramId": 24
+  },
+  {
+    "title": "网络路径要逐段允许",
+    "subtitle": "公网入口与私网数据不是同一层",
+    "layout": "network",
+    "items": [],
+    "diagramId": 25
+  },
+  {
+    "title": "Firewall 按来源、协议与端口控制流量",
+    "subtitle": "以 Security Group 为例：配置允许规则，未获允许的流量被阻止",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 109
+  },
+  {
+    "title": "域名、证书与 CDN 分别解决什么",
+    "subtitle": "域名解析、证书、内容分发与内容来源各司其职",
+    "layout": "columns",
+    "items": [
+      "Route 53｜DNS\n域名解析",
+      "ACM｜TLS\n提供 HTTPS 证书",
+      "CloudFront｜CDN\n边缘内容分发",
+      "Origin｜内容来源\n计算服务或存储"
+    ],
+    "diagramId": 26
+  },
+  {
+    "title": "RDS 存业务数据，S3 存文件对象",
+    "subtitle": "同一个应用可以同时需要两者",
+    "layout": "compare",
+    "items": [
+      "RDS\n托管关系型数据库\n连接、账号、网络分别配置\n备份与恢复要实际验证",
+      "S3\n按 bucket / key 管理对象\n访问权限独立控制\n不是 RDS 的替代目录"
+    ],
+    "diagramId": 27
+  },
+  {
+    "title": "IAM 控制服务能做什么",
+    "subtitle": "业务用户权限与云资源权限分开设计",
+    "layout": "flow",
+    "items": [
+      "ECS task role\n应用身份",
+      "IAM policy\n允许的 action / resource",
+      "S3 object\n限定对象范围",
+      "结果\n允许或拒绝"
+    ],
+    "diagramId": 28
+  },
+  {
+    "title": "秘密配置与日志不要混在一起",
+    "subtitle": "服务取得凭据，日志留下脱敏证据",
+    "layout": "compare",
+    "items": [
+      "Secrets Manager\n服务在授权范围读取秘密\n注入配置或运行时获取\n更新后的生效方式需核实",
+      "CloudWatch\n日志：一次请求发生了什么\n指标：错误率、延迟等变化\n告警：什么时候需要处理"
+    ],
+    "diagramId": 29
+  },
+  {
+    "title": "费用来自仍在运行和保留的资源",
+    "subtitle": "设置预算，也要明确清理责任",
+    "layout": "columns",
+    "items": [
+      "计算与入口\n容器、虚拟机、数据库\nALB、NAT 等可能持续计费",
+      "存储与传输\n文件、备份、日志保留\n数据传输也可能产生费用",
+      "预算与结束检查\nAWS Budgets 通知可能延迟\n告警不是费用硬上限"
+    ],
+    "diagramId": 30
+  },
+  {
+    "title": "Infrastructure as Code：把云资源配置写成代码",
+    "subtitle": "Terraform 或 CloudFormation：声明期望资源，再预览与执行变更",
+    "layout": "stack",
+    "items": [],
+    "diagramId": 108
+  },
+  {
+    "title": "Agent 运行的是代码，模型通过 API 被调用",
+    "subtitle": "Agent Runtime 承载循环、状态与工具调用；模型服务提供推理能力",
+    "layout": "system",
+    "items": [],
+    "diagramId": 400
+  },
+  {
+    "title": "Container、VM 与 microVM：看隔离边界",
+    "subtitle": "Virtual Machine = VM；microVM 是精简的虚拟机，仍有自己的 Guest Kernel",
+    "layout": "system",
+    "items": [],
+    "diagramId": 401
+  },
+  {
+    "title": "Amazon Bedrock AgentCore Runtime",
+    "subtitle": "托管 Agent 代码运行；microVM 模式按 Session 隔离执行环境",
+    "layout": "system",
+    "items": [],
+    "diagramId": 402
+  },
+  {
+    "title": "Session 的生命周期，不等于长期记忆",
+    "subtitle": "同一活动会话可以复用环境；长期数据要显式保存",
+    "layout": "system",
+    "items": [],
+    "diagramId": 403
+  },
+  {
+    "title": "Latency 与 Throughput 衡量不同的事",
+    "subtitle": "一次操作等多久，与一段时间完成多少请求，分别观察",
+    "layout": "system",
+    "items": [],
+    "diagramId": 200
+  },
+  {
+    "title": "AI 请求的 Latency 要按阶段拆开",
+    "subtitle": "先测量网络、检索、等待和模型生成，再决定优化哪里",
+    "layout": "system",
+    "items": [],
+    "diagramId": 201
+  },
+  {
+    "title": "Sync 与 Async：决定用户要等哪一步",
+    "subtitle": "短操作可以等待结果；长任务可以先接收，再独立执行",
+    "layout": "system",
+    "items": [],
+    "diagramId": 202
+  },
+  {
+    "title": "Message Queue 把接收任务与执行任务分开",
+    "subtitle": "消息逐条入队并持续等待；Worker 处理、保存结果并确认，直到队列清空",
+    "layout": "system",
+    "items": [],
+    "diagramId": 203
+  },
+  {
+    "title": "Job status 让用户知道任务走到了哪里",
+    "subtitle": "Accepted、Running、Succeeded 与 Failed 必须区分",
+    "layout": "system",
+    "items": [],
+    "diagramId": 204
+  },
+  {
+    "title": "Timeout 后重试，需要 Retry 与 Idempotency 配合",
+    "subtitle": "结果未知时，先判断重复执行会不会产生副作用",
+    "layout": "system",
+    "items": [],
+    "diagramId": 205
+  },
+  {
+    "title": "Cache 复用结果，也要管理时效与权限",
+    "subtitle": "命中能减少重复工作；过期、失效和跨用户隔离需要设计",
+    "layout": "system",
+    "items": [],
+    "diagramId": 206
+  },
+  {
+    "title": "Concurrency、Rate limit 与 Backpressure 控制压力",
+    "subtitle": "入口持续快于处理能力，Queue 会积压，等待和失败会增加",
+    "layout": "system",
+    "items": [],
+    "diagramId": 207
+  },
+  {
+    "title": "AI 应用可以同时保留实时与异步两条路径",
+    "subtitle": "用户交互、长任务、任务状态与运行证据协作",
+    "layout": "system",
+    "items": [],
+    "diagramId": 208
+  },
+  {
+    "title": "横向扩容要配合 Stateless 与 Availability 设计",
+    "subtitle": "更多实例提供容量与替换空间，共享依赖仍要有恢复方案",
+    "layout": "system",
+    "items": [],
+    "diagramId": 209
+  },
+  {
+    "title": "提交代码、构建和部署是不同动作",
+    "subtitle": "查清线上实际运行的版本",
+    "layout": "flow",
+    "items": [
+      "Git commit\n源代码版本",
+      "Build\n生成产物",
+      "Release\n替换运行版本",
+      "Read back\n核对实际行为"
+    ],
+    "diagramId": 31
+  },
+  {
+    "title": "镜像是应用包，容器是运行实例",
+    "subtitle": "以 Docker 理解镜像与容器；端口、配置与数据另行管理",
+    "layout": "compare",
+    "items": [
+      "镜像 Image\n应用与依赖的可分发产物\n使用可核对的版本／digest\n秘密凭据不应打包进去",
+      "容器 Container\n镜像启动后的进程环境\n设置端口、配置和权限\n可替换实例不等于持久数据库"
+    ],
+    "diagramId": 32
+  },
+  {
+    "title": "CI 验证改动，CD 组织版本交付",
+    "subtitle": "GitHub Actions 编排任务；Runner 执行检查、构建与发布步骤",
+    "layout": "release",
+    "items": [],
+    "diagramId": 300
+  },
+  {
+    "title": "React、Node.js、Docker 与 IaC 怎样搭配",
+    "subtitle": "前端资源、后端镜像与基础设施，各有自己的交付路径",
+    "layout": "release",
+    "items": [],
+    "diagramId": 301
+  },
+  {
+    "title": "同一个版本晋级，环境配置分别管理",
+    "subtitle": "Artifact digest 保持可追踪；地址、凭据和数据按环境隔离",
+    "layout": "release",
+    "items": [],
+    "diagramId": 302
+  },
+  {
+    "title": "发布之后验证行为，再决定保留或回滚",
+    "subtitle": "部署完成、服务健康与业务可用，需要分别确认",
+    "layout": "release",
+    "items": [],
+    "diagramId": 303
+  },
+  {
+    "title": "AI 服务是后端的一个外部依赖",
+    "subtitle": "接口方法能复用，费用与失败边界要补上",
+    "layout": "flow",
+    "items": [
+      "浏览器\n用户输入",
+      "应用后端\n权限与费用边界",
+      "外部 AI API\n超时／限流",
+      "应用后端\n整理响应"
+    ],
+    "diagramId": 33
+  },
+  {
+    "title": "按证据缩小问题范围",
+    "subtitle": "先找到第一个失败边界",
+    "layout": "diagnose",
+    "items": [
+      "无请求\n查前端触发",
+      "有请求无响应\n查地址与网络",
+      "4xx / 5xx\n读正文与日志",
+      "2xx 无结果\n查业务与重读"
+    ],
+    "diagramId": 34
+  },
+  {
+    "title": "给 AI 的信息越具体，修复越可控",
+    "subtitle": "让 AI 先定位，再做最小修改",
+    "layout": "contract",
+    "items": [
+      "复现｜在哪个环境执行了什么",
+      "证据｜请求、响应、时间、request ID",
+      "边界｜允许改哪些文件与配置",
+      "计划｜先解释根因与修复范围",
+      "验收｜正常流程 + 失败路径 + 重读"
+    ],
+    "diagramId": 35
+  },
+  {
+    "title": "完成一次定位，再验证完整链路",
+    "subtitle": "个人操作 15 分钟，对照验证 5 分钟",
+    "layout": "lab",
+    "items": [
+      "Select one failure case in the workspace.",
+      "Capture the request and response evidence.",
+      "Restore the normal case and save a note.",
+      "Reload and open the saved record."
+    ],
+    "diagramId": 36
+  },
+  {
+    "title": "把证据带回自己的项目",
+    "subtitle": "完成一条链路，比堆更多功能更有用",
+    "layout": "lab",
+    "items": [
+      "Map the components in your own project.",
+      "Identify the actual API and persistence location.",
+      "Record the first failing boundary with evidence.",
+      "State what is verified and what remains unresolved."
+    ],
+    "diagramId": 37
+  },
+  {
+    "title": "课后继续用这套检查顺序",
+    "subtitle": "成果、合约、数据、环境、证据",
+    "layout": "end",
+    "items": [
+      "完整讲义与服务速查",
+      "工作单与参考解答",
+      "HTTP 实操与日志"
+    ],
+    "diagramId": 38
+  }
+]

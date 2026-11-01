@@ -1,3 +1,7 @@
+## 2026-11-01 · AI Engineer 工程衔接课
+
+- 发布66页、225分钟网页课件，含技术栈、CORS、AWS/Firewall/IaC、Agent Runtime/VM/microVM/AgentCore、System Design/Queue、Docker/CI/CD与排障；配套讲义、实操包与云端目录。
+
 ## 2026-10-30
 
 - 清理官网课程预览与下载资料的展示标签，同步页面和下载生成器，保留内容来源、课程范围与 URL；本次仅合并代码，未部署、未触发 CI。（企业 AI 自动化课程）

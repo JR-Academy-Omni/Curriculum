@@ -1,0 +1,108 @@
+name: Deploy AI Engineer API AWS Bridge
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: deploy-api-aws-bridge
+  cancel-in-progress: false
+jobs:
+  verify-build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Verify catalog and runtime manifest
+        run: python3 scripts/check-talk-decks.py --slug ai-engineer-api-aws-bridge
+      - name: Build course
+        working-directory: lessons/ai-engineer-api-aws-bridge
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+      - name: Assemble course and catalog
+        run: |
+          mkdir -p _bridge_site/lessons/ai-engineer-api-aws-bridge
+          cp -r lessons/ai-engineer-api-aws-bridge/dist/. _bridge_site/lessons/ai-engineer-api-aws-bridge/
+          cp lessons/ai-engineer-api-aws-bridge/*.md _bridge_site/lessons/ai-engineer-api-aws-bridge/
+          cp lessons.html _bridge_site/lessons.html
+          node -e "require('fs').writeFileSync('_bridge_site/lessons/ai-engineer-api-aws-bridge/release.json',JSON.stringify({commit:process.env.GITHUB_SHA,run:process.env.GITHUB_SERVER_URL+'/'+process.env.GITHUB_REPOSITORY+'/actions/runs/'+process.env.GITHUB_RUN_ID},null,2))"
+          node scripts/enforce-curriculum-noindex.mjs _bridge_site
+          node scripts/check-no-analytics.mjs _bridge_site
+          node scripts/check-curriculum-domain.mjs _bridge_site
+      - run: bun install --frozen-lockfile
+      - id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+          install-dependencies: true
+      - name: Verify production paths in browser
+        env:
+          CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          mkdir -p _bridge_host
+          ln -s "$GITHUB_WORKSPACE/_bridge_site" _bridge_host/curriculum
+          python3 -m http.server 8808 --directory _bridge_host > /tmp/bridge-preview.log 2>&1 &
+          for attempt in {1..15}; do curl --fail --silent http://127.0.0.1:8808/curriculum/lessons.html >/dev/null && break; sleep 1; done
+          node scripts/verify-api-aws-bridge-release.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bridge-publication
+          path: _bridge_site/
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bridge-build-qa
+          path: bridge-release-qa/
+          retention-days: 7
+  deploy:
+    needs: verify-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: bridge-publication
+          path: _bridge_site
+      - name: Publish course and catalog
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: '_bridge_site/*'
+          target: '/var/www/static/curriculum'
+          strip_components: 1
+          overwrite: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+          install-dependencies: true
+      - name: Verify public release
+        env:
+          PUBLIC_ORIGIN: https://jracademy.ai
+          QA_DIR: bridge-live-qa
+          CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: node scripts/verify-api-aws-bridge-release.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bridge-live-qa
+          path: bridge-live-qa/
+          retention-days: 7
