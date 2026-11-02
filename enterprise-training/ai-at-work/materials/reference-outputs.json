@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Customer reply email",
+    "summary": "Turn meeting decisions into a clear reply without inventing commitments.",
+    "input": "Classroom task | Monday service meeting: a customer wants the new onboarding guide by Friday. Maya will draft it by Tuesday close of business. Leo will check links and forms by Wednesday noon. The department lead has not confirmed a delivery date.",
+    "output": "Subject: Updated onboarding guide\n\nHello,\nWe have noted your request to receive the updated guide by Friday. The team will prepare the draft and check its links and forms before confirming delivery arrangements.\n\nFriday delivery has not yet been confirmed. We will confirm an available delivery date after internal review.\n\nPlease let us know if any onboarding steps should take priority so the team can plan the content.\nThank you.",
+    "prompt": "Write a customer email using only the meeting material. State the request, agreed tasks and unconfirmed delivery date. Do not invent commitments, approvals or progress. Return a subject and body, then check every factual statement against the input.",
+    "check": "The request is preserved without becoming a commitment. Drafting and review are not described as already completed."
+  },
+  {
+    "title": "Meeting action list",
+    "summary": "Keep owners, deadlines and open questions separate.",
+    "input": "Classroom task | Maya owns the guide draft, due Tuesday close of business. Leo owns the links and forms check, due Wednesday noon. The department lead must confirm delivery, but no deadline for that confirmation was agreed.",
+    "output": "1. Draft guide | Maya | Tuesday close of business | To do.\n2. Check links and forms | Leo | Wednesday noon | To do.\n3. Confirm customer delivery date | Department lead | Deadline to confirm | Open.\n\nHuman follow-up:\n• When can the department lead confirm delivery?\n• Does Leo need Maya’s draft before starting? The meeting did not establish this dependency.",
+    "prompt": "Extract tasks, owners, deadlines and open questions. Use only stated facts; mark missing information for confirmation. Separate agreed decisions from customer requests. Do not infer that tasks are complete.",
+    "check": "Both stated deadlines are preserved. No deadline is invented for the lead. An unstated dependency remains a question."
+  },
+  {
+    "title": "One-page workflow brief",
+    "summary": "Make a practical recommendation grounded in the supplied material.",
+    "input": "Classroom source A: the meeting above. Classroom source B: staff currently prepare action lists manually, then obtain lead approval for customer replies. No time or error-rate baseline exists.",
+    "output": "Topic: Improving onboarding-guide communication\n\nRecommendation: Trial a four-step process: meeting notes → action list → human verification → customer reply draft. Keep lead approval.\n\nEvidence: Source A contains two agreed deadlines and an unconfirmed delivery date. Source B describes manual action extraction and lead approval.\n\nProcess: Extract tasks with a reusable prompt; flag missing dates and dependencies; draft the reply after clarification; ask the lead to check facts and commitments before sending.\n\nControls: Use approved tools and material; do not send automatically; compare the draft against the original notes.\n\nTrial: For the next comparable meeting, record preparation and review time plus omissions and errors, then compare against the existing process. The lead still needs to assign trial owners and dates.\n\nLimit: Without baseline data, no savings percentage or return on investment can be claimed.",
+    "prompt": "Using sources A and B, write a one-page brief with a recommendation, evidence, four steps, controls and a trial method. Separate facts from proposals. Do not calculate savings without data. Identify open decisions.",
+    "check": "Facts trace to A or B. The workflow is a proposal, not a completed execution. No performance figures or customer outcomes are invented."
+  }
+]

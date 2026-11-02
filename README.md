@@ -146,3 +146,8 @@ python3 scripts/check-talk-decks.py --engine-inventory
 ```
 
 初始化只生成 Local 草稿与列表登记；还需填写教学资料、实际页数与课程映射，添加构建和配套资料复制步骤，再完成验收。新共享模板提供本地字体、讲师备注、同源 HTML 打印与减少动画设置。旧课件运行时保留独立实现，用版本清单识别差异，迁移时逐个核验。
+
+
+## 企业培训 · 独立教学包
+
+企业内训按企业专场和部门任务组织，不挂到个人 Bootcamp 周课表。入口为 [企业培训](enterprise-training/index.html)。[AI at Work](enterprise-training/ai-at-work/index.html) 提供完整成果、现场工作单、26 页 Talk Deck 与讲师指引；课程事实保存在 `enterprise-training/ai-at-work/course.json`，类型为 `enterprise-training`。发布状态记录在 CHANGELOG 与课件 QA，不把制作状态当成教学页面文案。

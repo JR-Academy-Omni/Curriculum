@@ -368,9 +368,19 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      - name: Build AI at Work Enterprise Workshop
+        working-directory: lessons/ai-at-work-enterprise-workshop
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Assemble all courses into one output
       - name: Assemble output
         run: |
+          mkdir -p _site/lessons/ai-at-work-enterprise-workshop
+          cp -r lessons/ai-at-work-enterprise-workshop/dist/* _site/lessons/ai-at-work-enterprise-workshop/
+          cp lessons/ai-at-work-enterprise-workshop/{PRD,RUNSHEET,WORKSHEET,SOURCE_MAP,QA,README}.md _site/lessons/ai-at-work-enterprise-workshop/
+          cp -r enterprise-training _site/enterprise-training
           mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w1
           cp -r lessons/ai-engineer-cohort-07-practice-w1/dist/* _site/lessons/ai-engineer-cohort-07-practice-w1/
           cp lessons/ai-engineer-cohort-07-practice-w1/PRD.md lessons/ai-engineer-cohort-07-practice-w1/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w1/README.md lessons/ai-engineer-cohort-07-practice-w1/SOURCE_MAP.md lessons/ai-engineer-cohort-07-practice-w1/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-practice-w1/

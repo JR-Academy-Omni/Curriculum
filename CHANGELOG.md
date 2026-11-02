@@ -1,3 +1,8 @@
+## 2026-11-02 · 企业内训 AI at Work（Local，未部署）
+
+- 新增 enterprise-training 独立入口及 AI at Work 教学包，26 页 Talk Deck、完整成果、英文工作单和迁移任务、逐页讲师流程及参考答案。登记 lessons.html；不创建 Bootcamp、招生、支付或模型调用。
+- 本地制作与验证；未提交、未推送、未触发 CI 或部署。发布状态记录在本日志与 QA 文档，不在教学页面显示工程提示。
+
 ## 2026-11-01 · AI Engineer 工程衔接课
 
 - 发布66页、225分钟网页课件，含技术栈、CORS、AWS/Firewall/IaC、Agent Runtime/VM/microVM/AgentCore、System Design/Queue、Docker/CI/CD与排障；配套讲义、实操包与云端目录。
