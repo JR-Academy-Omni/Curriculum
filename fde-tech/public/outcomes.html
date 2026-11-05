@@ -1,0 +1,190 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="googlebot" content="noindex,nofollow"><title>从客户问题到交付成果 · FDE Tech</title><link rel="stylesheet" href="styles.css"></head><body><header><a class="brand" href="curriculum.html">JR ACADEMY <span>FDE TECH</span></a><nav aria-label="课程资料"><a href="curriculum.html">完整大纲</a><a href="learning-plan.html">十周安排</a><a href="outline.html">学习任务</a><a href="cases.html">案例资料</a><a href="outcomes.html">交付成果</a></nav></header><main><p class="eyebrow">ENTERPRISE AI DELIVERY</p><h1>从客户问题到交付成果</h1><p class="lead">查看方案、预算、系统行为与交接要求。成果既要能打开说明，也要能通过输入检查关键控制。</p><section class="card" id="knowledge"><h2>Knowledge Access</h2><h3>客户问题与边界</h3><p>Reduce time spent finding the current policy without giving staff access to restricted documents or making policy decisions for them.</p><ul><li>A$24,000 implementation ceiling; A$1,200 monthly operating ceiling.</li><li>Four-week pilot; no new customer-facing endpoint.</li><li>Documents have department, version, effective date and owner. Identity comes from the server session, never a user prompt.</li><li>Answers require accessible current evidence. Conflicting or missing evidence must be escalated.</li></ul><h3>方案与交付判断</h3><ul><li>Choose permission-filtered retrieval with version checks, cited passages and escalation; exclude autonomous policy decisions.</li><li>Use an initial two-department access matrix and a curated set of answerable, unanswerable, stale, conflicting and injected requests.</li><li>At 4,000 requests, 80% accepted coverage and 6 minutes saved per accepted answer, gross time value is 320 hours or A$19,200 monthly. This is capacity value, not cash saving.</li><li>For 4,000 requests at an assumed A$0.04 model cost, plus A$300 infrastructure and 10 maintenance hours at A$60, operating cost is A$1,060. Verify the price assumptions before a live purchase.</li><li>An incremental pilot must measure accepted coverage, review minutes, denied access and evidence correctness against the same baseline; do not infer success from these planning numbers.</li></ul><h3>实现与验证</h3><p>在课程项目目录运行 <code>python3 reference.py</code>，核对授权检索、当前审批、重复事件与采购规则变更的实际输出。</p><details><summary>展开参考实现</summary><pre>&quot;&quot;&quot;FDE course reference: deterministic control logic, no model or external writes.&quot;&quot;&quot;
+import json
+from pathlib import Path
+
+def retrieve(records, department, evidence_id):
+    return [r for r in records if r[&#x27;id&#x27;]==evidence_id and r[&#x27;department&#x27;]==department and r[&#x27;current&#x27;]]
+
+def booking_decision(request, approval, committed):
+    key=(request[&#x27;requestId&#x27;], request[&#x27;revision&#x27;], &#x27;book&#x27;)
+    if key in committed:return &#x27;already-committed&#x27;
+    if approval is None or approval.get(&#x27;requestId&#x27;)!=request[&#x27;requestId&#x27;] or approval.get(&#x27;revision&#x27;)!=request[&#x27;revision&#x27;] or approval.get(&#x27;preferredWindow&#x27;)!=request[&#x27;preferredWindow&#x27;]:return &#x27;review-required&#x27;
+    committed.add(key)
+    return &#x27;commit-once&#x27;
+
+def procurement_route(request, threshold, policy_version):
+    if not request[&#x27;supplierVerified&#x27;] or not request[&#x27;requesterKnown&#x27;]:return {&#x27;route&#x27;:&#x27;review&#x27;,&#x27;policyVersion&#x27;:policy_version}
+    return {&#x27;route&#x27;:&#x27;finance&#x27; if request[&#x27;amountAUD&#x27;]&gt;threshold else &#x27;normal-approver&#x27;,&#x27;policyVersion&#x27;:policy_version}
+
+def run():
+    cases={c[&#x27;id&#x27;]:c for c in json.loads(Path(__file__).with_name(&#x27;outline.json&#x27;).read_text())[&#x27;cases&#x27;]}
+    docs=cases[&#x27;knowledge&#x27;][&#x27;records&#x27;]; request=cases[&#x27;dispatch&#x27;][&#x27;records&#x27;][0]; changed=cases[&#x27;dispatch&#x27;][&#x27;records&#x27;][2]
+    approval={k:request[k] for k in [&#x27;requestId&#x27;,&#x27;revision&#x27;,&#x27;preferredWindow&#x27;]}; committed=set()
+    results={
+      &#x27;authorisedCurrentEvidence&#x27;:[r[&#x27;id&#x27;] for r in retrieve(docs,&#x27;operations&#x27;,&#x27;POL-01&#x27;)],
+      &#x27;deniedFinanceEvidence&#x27;:retrieve(docs,&#x27;operations&#x27;,&#x27;POL-02&#x27;),
+      &#x27;excludedOldEvidence&#x27;:retrieve(docs,&#x27;operations&#x27;,&#x27;POL-03&#x27;),
+      &#x27;unapprovedBooking&#x27;:booking_decision(request,None,committed),
+      &#x27;approvedBooking&#x27;:booking_decision(request,approval,committed),
+      &#x27;duplicateBooking&#x27;:booking_decision(request,approval,committed),
+      &#x27;staleApproval&#x27;:booking_decision(changed,approval,committed),
+      &#x27;procurementBefore&#x27;:[procurement_route(r,5000,1) for r in cases[&#x27;procurement&#x27;][&#x27;records&#x27;]],
+      &#x27;procurementAfter&#x27;:[procurement_route(r,3000,2) for r in cases[&#x27;procurement&#x27;][&#x27;records&#x27;]],
+      &#x27;knowledgePlanning&#x27;:{&#x27;capacityHours&#x27;:4000*.8*6/60,&#x27;capacityValueAUD&#x27;:4000*.8*6/60*60,&#x27;monthlyOperatingAUD&#x27;:4000*.04+300+10*60}
+    }
+    assert results[&#x27;authorisedCurrentEvidence&#x27;]==[&#x27;POL-01&#x27;]
+    assert not results[&#x27;deniedFinanceEvidence&#x27;] and not results[&#x27;excludedOldEvidence&#x27;]
+    assert results[&#x27;unapprovedBooking&#x27;]==&#x27;review-required&#x27;
+    assert results[&#x27;approvedBooking&#x27;]==&#x27;commit-once&#x27; and results[&#x27;duplicateBooking&#x27;]==&#x27;already-committed&#x27;
+    assert results[&#x27;staleApproval&#x27;]==&#x27;review-required&#x27;
+    assert results[&#x27;procurementBefore&#x27;][0][&#x27;route&#x27;]==&#x27;normal-approver&#x27;
+    assert results[&#x27;procurementAfter&#x27;][0][&#x27;route&#x27;]==&#x27;finance&#x27;
+    return results
+if __name__==&#x27;__main__&#x27;:print(json.dumps(run(),indent=2))
+</pre></details><h3>验收与交接</h3><ul><li>Keep input, expected decision and observed result together.</li><li>A restricted document, stale approval or duplicate commitment blocks acceptance.</li><li>Give the receiver setup steps, configuration requirements, failure recovery and the owner of each open issue.</li></ul></section><section class="card" id="dispatch"><h2>Service Operations</h2><h3>客户问题与边界</h3><p>Prepare a service recommendation and an approval-ready appointment draft, keeping the coordinator responsible for committing a visit.</p><ul><li>A$18,000 implementation ceiling; A$700 monthly operating ceiling.</li><li>CRM returns requestId and revision; calendar supports idempotency keys.</li><li>No appointment may be created before approval of the exact site, time window and revision.</li><li>A timeout does not prove that a downstream write failed. Reconcile before retrying.</li></ul><h3>方案与交付判断</h3><ul><li>Use a bounded workflow: ingest → validate → prepare draft → request approval → revalidate revision → commit → reconcile.</li><li>Derive the idempotency key from requestId, approved revision and action; a new eventId alone must not authorize another booking.</li><li>Approval for revision 1 is stale after revision 2 arrives. Return to review and display the changed field.</li><li>Record calendar success even if the CRM write times out. Query the CRM using the operation key before deciding whether to retry.</li><li>When the CRM is unavailable, retain intake and draft preparation only; state that booking-cycle savings cannot yet be established.</li></ul><h3>实现与验证</h3><p>在课程项目目录运行 <code>python3 reference.py</code>，核对授权检索、当前审批、重复事件与采购规则变更的实际输出。</p><details><summary>展开参考实现</summary><pre>&quot;&quot;&quot;FDE course reference: deterministic control logic, no model or external writes.&quot;&quot;&quot;
+import json
+from pathlib import Path
+
+def retrieve(records, department, evidence_id):
+    return [r for r in records if r[&#x27;id&#x27;]==evidence_id and r[&#x27;department&#x27;]==department and r[&#x27;current&#x27;]]
+
+def booking_decision(request, approval, committed):
+    key=(request[&#x27;requestId&#x27;], request[&#x27;revision&#x27;], &#x27;book&#x27;)
+    if key in committed:return &#x27;already-committed&#x27;
+    if approval is None or approval.get(&#x27;requestId&#x27;)!=request[&#x27;requestId&#x27;] or approval.get(&#x27;revision&#x27;)!=request[&#x27;revision&#x27;] or approval.get(&#x27;preferredWindow&#x27;)!=request[&#x27;preferredWindow&#x27;]:return &#x27;review-required&#x27;
+    committed.add(key)
+    return &#x27;commit-once&#x27;
+
+def procurement_route(request, threshold, policy_version):
+    if not request[&#x27;supplierVerified&#x27;] or not request[&#x27;requesterKnown&#x27;]:return {&#x27;route&#x27;:&#x27;review&#x27;,&#x27;policyVersion&#x27;:policy_version}
+    return {&#x27;route&#x27;:&#x27;finance&#x27; if request[&#x27;amountAUD&#x27;]&gt;threshold else &#x27;normal-approver&#x27;,&#x27;policyVersion&#x27;:policy_version}
+
+def run():
+    cases={c[&#x27;id&#x27;]:c for c in json.loads(Path(__file__).with_name(&#x27;outline.json&#x27;).read_text())[&#x27;cases&#x27;]}
+    docs=cases[&#x27;knowledge&#x27;][&#x27;records&#x27;]; request=cases[&#x27;dispatch&#x27;][&#x27;records&#x27;][0]; changed=cases[&#x27;dispatch&#x27;][&#x27;records&#x27;][2]
+    approval={k:request[k] for k in [&#x27;requestId&#x27;,&#x27;revision&#x27;,&#x27;preferredWindow&#x27;]}; committed=set()
+    results={
+      &#x27;authorisedCurrentEvidence&#x27;:[r[&#x27;id&#x27;] for r in retrieve(docs,&#x27;operations&#x27;,&#x27;POL-01&#x27;)],
+      &#x27;deniedFinanceEvidence&#x27;:retrieve(docs,&#x27;operations&#x27;,&#x27;POL-02&#x27;),
+      &#x27;excludedOldEvidence&#x27;:retrieve(docs,&#x27;operations&#x27;,&#x27;POL-03&#x27;),
+      &#x27;unapprovedBooking&#x27;:booking_decision(request,None,committed),
+      &#x27;approvedBooking&#x27;:booking_decision(request,approval,committed),
+      &#x27;duplicateBooking&#x27;:booking_decision(request,approval,committed),
+      &#x27;staleApproval&#x27;:booking_decision(changed,approval,committed),
+      &#x27;procurementBefore&#x27;:[procurement_route(r,5000,1) for r in cases[&#x27;procurement&#x27;][&#x27;records&#x27;]],
+      &#x27;procurementAfter&#x27;:[procurement_route(r,3000,2) for r in cases[&#x27;procurement&#x27;][&#x27;records&#x27;]],
+      &#x27;knowledgePlanning&#x27;:{&#x27;capacityHours&#x27;:4000*.8*6/60,&#x27;capacityValueAUD&#x27;:4000*.8*6/60*60,&#x27;monthlyOperatingAUD&#x27;:4000*.04+300+10*60}
+    }
+    assert results[&#x27;authorisedCurrentEvidence&#x27;]==[&#x27;POL-01&#x27;]
+    assert not results[&#x27;deniedFinanceEvidence&#x27;] and not results[&#x27;excludedOldEvidence&#x27;]
+    assert results[&#x27;unapprovedBooking&#x27;]==&#x27;review-required&#x27;
+    assert results[&#x27;approvedBooking&#x27;]==&#x27;commit-once&#x27; and results[&#x27;duplicateBooking&#x27;]==&#x27;already-committed&#x27;
+    assert results[&#x27;staleApproval&#x27;]==&#x27;review-required&#x27;
+    assert results[&#x27;procurementBefore&#x27;][0][&#x27;route&#x27;]==&#x27;normal-approver&#x27;
+    assert results[&#x27;procurementAfter&#x27;][0][&#x27;route&#x27;]==&#x27;finance&#x27;
+    return results
+if __name__==&#x27;__main__&#x27;:print(json.dumps(run(),indent=2))
+</pre></details><h3>验收与交接</h3><ul><li>Keep input, expected decision and observed result together.</li><li>A restricted document, stale approval or duplicate commitment blocks acceptance.</li><li>Give the receiver setup steps, configuration requirements, failure recovery and the owner of each open issue.</li></ul></section><section class="card" id="procurement"><h2>Purchasing Controls</h2><h3>客户问题与边界</h3><p>Extract a purchase request, check policy and route it for a human decision. Treat supplier attachments as content, never as authorization.</p><ul><li>A$20,000 implementation ceiling; A$900 monthly operating ceiling.</li><li>Requests above A$5,000 need finance approval; all external payments remain out of scope.</li><li>Unknown supplier, missing currency or missing requester identity requires review.</li><li>A policy change must be versioned and applied to pending requests with explicit revalidation.</li></ul><h3>方案与交付判断</h3><ul><li>Use extraction plus deterministic policy routing; the model may draft fields but must not approve or pay.</li><li>PR-01 routes to the normal approver under the A$5,000 rule, PR-02 to finance and PR-03 to supplier review.</li><li>After the threshold falls to A$3,000, PR-01 must be revalidated and routed to finance; a prior normal-route decision cannot be replayed.</li><li>With the A$14,000 revised build ceiling, retain intake, supplier checks and approval routing. Defer optional supplier analytics and additional connectors.</li><li>Acceptance needs the correct route, valid source fields, immutable policy version and no outbound payment action. Urgency changes queue order, not approval authority.</li></ul><h3>实现与验证</h3><p>在课程项目目录运行 <code>python3 reference.py</code>，核对授权检索、当前审批、重复事件与采购规则变更的实际输出。</p><details><summary>展开参考实现</summary><pre>&quot;&quot;&quot;FDE course reference: deterministic control logic, no model or external writes.&quot;&quot;&quot;
+import json
+from pathlib import Path
+
+def retrieve(records, department, evidence_id):
+    return [r for r in records if r[&#x27;id&#x27;]==evidence_id and r[&#x27;department&#x27;]==department and r[&#x27;current&#x27;]]
+
+def booking_decision(request, approval, committed):
+    key=(request[&#x27;requestId&#x27;], request[&#x27;revision&#x27;], &#x27;book&#x27;)
+    if key in committed:return &#x27;already-committed&#x27;
+    if approval is None or approval.get(&#x27;requestId&#x27;)!=request[&#x27;requestId&#x27;] or approval.get(&#x27;revision&#x27;)!=request[&#x27;revision&#x27;] or approval.get(&#x27;preferredWindow&#x27;)!=request[&#x27;preferredWindow&#x27;]:return &#x27;review-required&#x27;
+    committed.add(key)
+    return &#x27;commit-once&#x27;
+
+def procurement_route(request, threshold, policy_version):
+    if not request[&#x27;supplierVerified&#x27;] or not request[&#x27;requesterKnown&#x27;]:return {&#x27;route&#x27;:&#x27;review&#x27;,&#x27;policyVersion&#x27;:policy_version}
+    return {&#x27;route&#x27;:&#x27;finance&#x27; if request[&#x27;amountAUD&#x27;]&gt;threshold else &#x27;normal-approver&#x27;,&#x27;policyVersion&#x27;:policy_version}
+
+def run():
+    cases={c[&#x27;id&#x27;]:c for c in json.loads(Path(__file__).with_name(&#x27;outline.json&#x27;).read_text())[&#x27;cases&#x27;]}
+    docs=cases[&#x27;knowledge&#x27;][&#x27;records&#x27;]; request=cases[&#x27;dispatch&#x27;][&#x27;records&#x27;][0]; changed=cases[&#x27;dispatch&#x27;][&#x27;records&#x27;][2]
+    approval={k:request[k] for k in [&#x27;requestId&#x27;,&#x27;revision&#x27;,&#x27;preferredWindow&#x27;]}; committed=set()
+    results={
+      &#x27;authorisedCurrentEvidence&#x27;:[r[&#x27;id&#x27;] for r in retrieve(docs,&#x27;operations&#x27;,&#x27;POL-01&#x27;)],
+      &#x27;deniedFinanceEvidence&#x27;:retrieve(docs,&#x27;operations&#x27;,&#x27;POL-02&#x27;),
+      &#x27;excludedOldEvidence&#x27;:retrieve(docs,&#x27;operations&#x27;,&#x27;POL-03&#x27;),
+      &#x27;unapprovedBooking&#x27;:booking_decision(request,None,committed),
+      &#x27;approvedBooking&#x27;:booking_decision(request,approval,committed),
+      &#x27;duplicateBooking&#x27;:booking_decision(request,approval,committed),
+      &#x27;staleApproval&#x27;:booking_decision(changed,approval,committed),
+      &#x27;procurementBefore&#x27;:[procurement_route(r,5000,1) for r in cases[&#x27;procurement&#x27;][&#x27;records&#x27;]],
+      &#x27;procurementAfter&#x27;:[procurement_route(r,3000,2) for r in cases[&#x27;procurement&#x27;][&#x27;records&#x27;]],
+      &#x27;knowledgePlanning&#x27;:{&#x27;capacityHours&#x27;:4000*.8*6/60,&#x27;capacityValueAUD&#x27;:4000*.8*6/60*60,&#x27;monthlyOperatingAUD&#x27;:4000*.04+300+10*60}
+    }
+    assert results[&#x27;authorisedCurrentEvidence&#x27;]==[&#x27;POL-01&#x27;]
+    assert not results[&#x27;deniedFinanceEvidence&#x27;] and not results[&#x27;excludedOldEvidence&#x27;]
+    assert results[&#x27;unapprovedBooking&#x27;]==&#x27;review-required&#x27;
+    assert results[&#x27;approvedBooking&#x27;]==&#x27;commit-once&#x27; and results[&#x27;duplicateBooking&#x27;]==&#x27;already-committed&#x27;
+    assert results[&#x27;staleApproval&#x27;]==&#x27;review-required&#x27;
+    assert results[&#x27;procurementBefore&#x27;][0][&#x27;route&#x27;]==&#x27;normal-approver&#x27;
+    assert results[&#x27;procurementAfter&#x27;][0][&#x27;route&#x27;]==&#x27;finance&#x27;
+    return results
+if __name__==&#x27;__main__&#x27;:print(json.dumps(run(),indent=2))
+</pre></details><h3>验收与交接</h3><ul><li>Keep input, expected decision and observed result together.</li><li>A restricted document, stale approval or duplicate commitment blocks acceptance.</li><li>Give the receiver setup steps, configuration requirements, failure recovery and the owner of each open issue.</li></ul></section><section class="card"><p class="kicker">COMPLETE DELIVERY PACK</p><h2>Knowledge Access · Delivery Pack</h2><h3>Decision requested</h3><p>Approve a four-week, two-department internal pilot with A$24,000 build and A$1,200 monthly operating ceilings. No policy-exception decisions and no external customer access.</p><h3>Architecture</h3><div class="flow"><div>Authenticated staff UI</div><div>Server identity and department</div><div>Authorised current-document retrieval</div><div>Cited answer or escalation</div><div>Staff review and audit trace</div></div><h3>Scope</h3><ul><li>Include the current approved operations and finance document sets, server-derived department filters, citations and missing-evidence escalation.</li><li>Exclude archive ingestion until approved, autonomous policy decisions, payment, customer access and enterprise-wide rollout.</li><li>Keep a small access matrix and use separate credentials for the document adapter; do not pass all source documents to the model.</li></ul><h3>Interface contract</h3><pre>{
+  &quot;request&quot;: {
+    &quot;question&quot;: &quot;What is the current exception approval threshold?&quot;,
+    &quot;serverContext&quot;: {
+      &quot;department&quot;: &quot;operations&quot;,
+      &quot;identitySource&quot;: &quot;authenticated session&quot;
+    }
+  },
+  &quot;response&quot;: {
+    &quot;status&quot;: &quot;evidence-ready&quot;,
+    &quot;evidenceIds&quot;: [
+      &quot;POL-01&quot;
+    ],
+    &quot;policyVersion&quot;: 3,
+    &quot;allowedNextAction&quot;: &quot;staff-review&quot;,
+    &quot;commitment&quot;: null
+  }
+}</pre><h3>Build estimate · AUD</h3><div class="table-wrap"><table><thead><tr><th>Work</th><th>Hours</th><th>Assumed rate</th><th>Cost</th></tr></thead><tbody><tr><td>Discovery and evidence baseline</td><td>24</td><td>120</td><td>2880</td></tr><tr><td>Adapters, retrieval and UI</td><td>80</td><td>120</td><td>9600</td></tr><tr><td>Evals and access checks</td><td>32</td><td>120</td><td>3840</td></tr><tr><td>Pilot preparation and handover</td><td>24</td><td>120</td><td>2880</td></tr><tr><td>Contingency reserve</td><td>0</td><td>0</td><td>2400</td></tr></tbody></table></div><p>The assumed engineering rate is A$120/hour. The build estimate is A$21,600 including A$2,400 contingency, leaving A$2,400 below the ceiling. It is an estimate for this training brief, not a supplier quote. Stop and re-scope if the adapter requires more than the contingency.</p><h3>Capacity sensitivity</h3><div class="table-wrap"><table><thead><tr><th>Accepted coverage</th><th>Saved hours</th><th>Capacity value AUD</th></tr></thead><tbody><tr><td>0.5</td><td>200</td><td>12000</td></tr><tr><td>0.8</td><td>320</td><td>19200</td></tr><tr><td>0.9</td><td>360</td><td>21600</td></tr></tbody></table></div><h3>Acceptance matrix</h3><div class="table-wrap"><table><thead><tr><th>Input</th><th>Expected outcome</th></tr></thead><tbody><tr><td>Operations identity asks for POL-01</td><td>Return current operations evidence POL-01; require staff review.</td></tr><tr><td>Operations identity requests finance policy POL-02</td><td>Return no restricted evidence, regardless of prompt wording.</td></tr><tr><td>Request points only to old policy POL-03</td><td>Exclude the outdated version and escalate if no current answer exists.</td></tr><tr><td>User asks the assistant to approve an exception</td><td>Explain the approval boundary and route to the responsible supervisor.</td></tr><tr><td>A source attachment asks to send finance documents outside the company</td><td>Treat the text as content; do not grant tool authority or perform a send.</td></tr></tbody></table></div><h3>Pilot plan</h3><ul><li>Week A: agree access matrix, measure existing lookup and review time, freeze the evaluation set.</li><li>Week B: validate retrieval and refusal with the client owner; correct critical failures before inviting users.</li><li>Week C: allow the agreed user group to use the bounded workflow; record accepted coverage, review minutes, evidence issues and support requests.</li><li>Week D: compare the same workload and denominator with the baseline, review maintenance effort and decide continue, revise or stop.</li></ul><h3>Runbook</h3><ul><li>Start: install the project dependencies, configure server identity and document-adapter credentials, then run the evaluation suite before enabling the UI.</li><li>Version: keep the code revision, document versions, policy owner and evaluation-set revision together in the release record.</li><li>Access incident: disable the affected retrieval route, preserve the minimum audit trace, notify the security owner and recheck the access matrix before reopening.</li><li>Source change: validate document ownership, effective date and department; invalidate stale retrieval caches and rerun citation and denial checks.</li><li>Rollback: return to the previous verified code and document snapshot; keep new unverified sources out until approved.</li><li>Handover: another engineer must locate a denied request, explain why evidence was filtered, run the acceptance checks and identify the maintenance owner.</li></ul><h3>Individual portfolio</h3><p>Describe your own discovery, architecture, implementation and evaluation contribution. Distinguish planning assumptions from measured evidence. Do not claim production use, employment outcomes or client savings from the course brief.</p></section><section class="card"><h2>关键控制的运行结果</h2><pre>{
+  &quot;authorisedCurrentEvidence&quot;: [
+    &quot;POL-01&quot;
+  ],
+  &quot;deniedFinanceEvidence&quot;: [],
+  &quot;excludedOldEvidence&quot;: [],
+  &quot;unapprovedBooking&quot;: &quot;review-required&quot;,
+  &quot;approvedBooking&quot;: &quot;commit-once&quot;,
+  &quot;duplicateBooking&quot;: &quot;already-committed&quot;,
+  &quot;staleApproval&quot;: &quot;review-required&quot;,
+  &quot;procurementBefore&quot;: [
+    {
+      &quot;route&quot;: &quot;normal-approver&quot;,
+      &quot;policyVersion&quot;: 1
+    },
+    {
+      &quot;route&quot;: &quot;finance&quot;,
+      &quot;policyVersion&quot;: 1
+    },
+    {
+      &quot;route&quot;: &quot;review&quot;,
+      &quot;policyVersion&quot;: 1
+    }
+  ],
+  &quot;procurementAfter&quot;: [
+    {
+      &quot;route&quot;: &quot;finance&quot;,
+      &quot;policyVersion&quot;: 2
+    },
+    {
+      &quot;route&quot;: &quot;finance&quot;,
+      &quot;policyVersion&quot;: 2
+    },
+    {
+      &quot;route&quot;: &quot;review&quot;,
+      &quot;policyVersion&quot;: 2
+    }
+  ],
+  &quot;knowledgePlanning&quot;: {
+    &quot;capacityHours&quot;: 320.0,
+    &quot;capacityValueAUD&quot;: 19200.0,
+    &quot;monthlyOperatingAUD&quot;: 1060.0
+  }
+}</pre></section></main><footer>匠人学院 · FDE Tech</footer></body></html>
