@@ -1,6 +1,6 @@
 # FDE Tech
 
-FDE 企业 AI 交付进阶训练班。10 周，每周 180 分钟工作坊，另有约 3–5 小时课外准备与实践。
+FDE Tech 职业进阶班。10 周，每周 180 分钟工作坊，另有约 3–5 小时课外准备与实践。
 
 - `public/outline.json`: canonical course source, including all weeks, lessons, steps, tasks and case packets.
 - `public/curriculum.html`: all six modules and all twenty lessons.

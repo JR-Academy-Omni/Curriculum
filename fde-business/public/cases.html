@@ -1,0 +1,111 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="googlebot" content="noindex,nofollow"><title>客户案例资料 · FDE Business</title><link rel="stylesheet" href="styles.css"></head><body><header><a class="brand" href="curriculum.html">JR ACADEMY <span>FDE BUSINESS</span></a><nav aria-label="课程资料"><a href="curriculum.html">完整大纲</a><a href="learning-plan.html">八周安排</a><a href="outline.html">学习任务</a><a href="cases.html">案例资料</a><a href="outcomes.html">交付成果</a></nav></header><main><p class="eyebrow">ENTERPRISE AI DELIVERY</p><h1>客户案例资料</h1><p class="lead">三类客户项目，三组交付限制。读完背景与输入，再决定架构、成本和控制方式。</p><section class="card" id="finance"><p class="kicker">CLIENT CASE</p><h2>Finance Operations</h2><p>An operations team receives 300 supplier invoices each month as PDFs, email attachments and spreadsheet rows. Staff copy the fields into a register and send exceptions to finance.</p><h3>Request</h3><p>Create a review-ready invoice register and an exception queue. Preserve the source of every field; leave approval, GST eligibility and payment decisions with finance.</p><h3>Constraints</h3><ul><li>A$8,000 project setup ceiling and A$500 monthly operating ceiling. These are client-brief budgets, separate from course tuition.</li><li>No supplier payments, bank-detail changes or tax-credit claims are automated.</li><li>Amounts are AUD. Only rows explicitly marked standard-taxable and GST-inclusive use a total/11 arithmetic check. Missing tax status is reviewed.</li><li>The same supplier/invoice reference must not create two payable records. A duplicate is reported, not silently merged.</li></ul><h3>Stakeholders</h3><div class="table-wrap"><table><thead><tr><th>Role</th><th>Position</th></tr></thead><tbody><tr><td>Operations coordinator</td><td>Needs a readable register with links back to source records.</td></tr><tr><td>Finance reviewer</td><td>Owns approval, tax treatment and exception resolution.</td></tr><tr><td>IT owner</td><td>Approves tool access and wants a recoverable file workflow.</td></tr></tbody></table></div><h3>Planning baseline</h3><pre>{
+  &quot;monthlyInvoices&quot;: 300,
+  &quot;manualMinutesPerInvoice&quot;: 8,
+  &quot;reviewMinutesPerAcceptedInvoice&quot;: 3,
+  &quot;assumedAcceptedCoverage&quot;: 0.8,
+  &quot;loadedHourlyRateAUD&quot;: 60
+}</pre><h3>Input records</h3><pre>[
+  {
+    &quot;source&quot;: &quot;invoice-a.pdf&quot;,
+    &quot;supplierRef&quot;: &quot;supplier-a&quot;,
+    &quot;invoiceRef&quot;: &quot;INV-101&quot;,
+    &quot;currency&quot;: &quot;AUD&quot;,
+    &quot;total&quot;: &quot;1100.00&quot;,
+    &quot;gst&quot;: &quot;100.00&quot;,
+    &quot;taxStatus&quot;: &quot;standard-taxable-inclusive&quot;
+  },
+  {
+    &quot;source&quot;: &quot;invoice-b.pdf&quot;,
+    &quot;supplierRef&quot;: &quot;supplier-b&quot;,
+    &quot;invoiceRef&quot;: &quot;INV-201&quot;,
+    &quot;currency&quot;: &quot;AUD&quot;,
+    &quot;total&quot;: &quot;550.00&quot;,
+    &quot;gst&quot;: &quot;60.00&quot;,
+    &quot;taxStatus&quot;: &quot;standard-taxable-inclusive&quot;
+  },
+  {
+    &quot;source&quot;: &quot;forwarded-a.pdf&quot;,
+    &quot;supplierRef&quot;: &quot;supplier-a&quot;,
+    &quot;invoiceRef&quot;: &quot;INV-101&quot;,
+    &quot;currency&quot;: &quot;AUD&quot;,
+    &quot;total&quot;: &quot;1100.00&quot;,
+    &quot;gst&quot;: &quot;100.00&quot;,
+    &quot;taxStatus&quot;: &quot;standard-taxable-inclusive&quot;
+  },
+  {
+    &quot;source&quot;: &quot;invoice-c.pdf&quot;,
+    &quot;supplierRef&quot;: &quot;supplier-c&quot;,
+    &quot;invoiceRef&quot;: &quot;INV-301&quot;,
+    &quot;currency&quot;: null,
+    &quot;total&quot;: &quot;200.00&quot;,
+    &quot;gst&quot;: null,
+    &quot;taxStatus&quot;: null
+  }
+]</pre><h3>Change card</h3><p>The finance reviewer is available only twice weekly. Redesign the review queue and turnaround promise without removing approvals.</p><a href="outcomes.html#finance">阅读完整交付判断 →</a></section><section class="card" id="customer"><p class="kicker">CLIENT CASE</p><h2>Customer Follow-up</h2><p>A B2B service team receives enquiries through a website form, email and a shared spreadsheet. The same enquiry may appear twice, and sales staff own any price or appointment commitment.</p><h3>Request</h3><p>Prepare a clean lead list, identify missing information, propose an owner and draft the next response for staff approval.</p><h3>Constraints</h3><ul><li>A$6,000 setup ceiling; one approved shared workspace.</li><li>No message, quote or appointment is sent or confirmed automatically.</li><li>A customer asking for a discount does not approve a new price.</li><li>Use source enquiry IDs to find duplicates; missing IDs require review.</li></ul><h3>Stakeholders</h3><div class="table-wrap"><table><thead><tr><th>Role</th><th>Position</th></tr></thead><tbody><tr><td>Sales lead</td><td>Wants a clear next action and consistent ownership.</td></tr><tr><td>Service coordinator</td><td>Must confirm availability before promising an appointment.</td></tr><tr><td>Customer support owner</td><td>Wants urgent issues separated from routine follow-up.</td></tr></tbody></table></div><h3>Planning baseline</h3><pre>{
+  &quot;weeklyEnquiries&quot;: 200,
+  &quot;manualMinutesPerEnquiry&quot;: 10,
+  &quot;reviewMinutesPerPreparedResponse&quot;: 4,
+  &quot;loadedHourlyRateAUD&quot;: 65
+}</pre><h3>Input records</h3><pre>[
+  {
+    &quot;eventId&quot;: &quot;web-1&quot;,
+    &quot;enquiryId&quot;: &quot;ENQ-17&quot;,
+    &quot;revision&quot;: 1,
+    &quot;topic&quot;: &quot;service inspection&quot;,
+    &quot;preferredWindow&quot;: &quot;Tuesday afternoon&quot;,
+    &quot;consent&quot;: &quot;staff-contact&quot;
+  },
+  {
+    &quot;eventId&quot;: &quot;email-2&quot;,
+    &quot;enquiryId&quot;: &quot;ENQ-17&quot;,
+    &quot;revision&quot;: 1,
+    &quot;topic&quot;: &quot;service inspection&quot;,
+    &quot;preferredWindow&quot;: &quot;Tuesday afternoon&quot;,
+    &quot;consent&quot;: &quot;staff-contact&quot;
+  },
+  {
+    &quot;eventId&quot;: &quot;web-3&quot;,
+    &quot;enquiryId&quot;: &quot;ENQ-17&quot;,
+    &quot;revision&quot;: 2,
+    &quot;topic&quot;: &quot;service inspection&quot;,
+    &quot;preferredWindow&quot;: &quot;Friday afternoon&quot;,
+    &quot;consent&quot;: &quot;staff-contact&quot;
+  },
+  {
+    &quot;eventId&quot;: &quot;web-4&quot;,
+    &quot;enquiryId&quot;: null,
+    &quot;revision&quot;: 1,
+    &quot;topic&quot;: null,
+    &quot;preferredWindow&quot;: null,
+    &quot;consent&quot;: null
+  }
+]</pre><h3>Change card</h3><p>The customer now requests Friday afternoon instead of Tuesday. The original draft approval no longer applies; show what changed and request a new decision.</p><a href="outcomes.html#customer">阅读完整交付判断 →</a></section><section class="card" id="people"><p class="kicker">CLIENT CASE</p><h2>Employee Onboarding</h2><p>HR, IT and a team manager coordinate onboarding in separate spreadsheets. A checklist can be complete in one department while another still needs a decision.</p><h3>Request</h3><p>Create an ownership-based onboarding checklist and a progress brief, with evidence for every completed step.</p><h3>Constraints</h3><ul><li>A$5,000 setup ceiling.</li><li>HR confirms employment details; IT owns access approval and provisioning.</li><li>No account is created or permission granted by the course workflow.</li><li>A checked box without supporting evidence is not accepted as completion.</li></ul><h3>Stakeholders</h3><div class="table-wrap"><table><thead><tr><th>Role</th><th>Position</th></tr></thead><tbody><tr><td>HR owner</td><td>Confirms signed paperwork and authorised start details.</td></tr><tr><td>IT owner</td><td>Reviews role-based access requests and records fulfilment.</td></tr><tr><td>Hiring manager</td><td>Owns the first-week plan and unresolved business decisions.</td></tr></tbody></table></div><h3>Planning baseline</h3><pre>{
+  &quot;monthlyStarters&quot;: 20,
+  &quot;coordinationMinutesPerStarter&quot;: 45,
+  &quot;loadedHourlyRateAUD&quot;: 70
+}</pre><h3>Input records</h3><pre>[
+  {
+    &quot;starterRef&quot;: &quot;START-01&quot;,
+    &quot;roleRevision&quot;: 1,
+    &quot;contractConfirmed&quot;: true,
+    &quot;managerAssigned&quot;: true,
+    &quot;accessApprovedRevision&quot;: 1,
+    &quot;accessFulfilmentEvidence&quot;: null
+  },
+  {
+    &quot;starterRef&quot;: &quot;START-02&quot;,
+    &quot;roleRevision&quot;: 1,
+    &quot;contractConfirmed&quot;: false,
+    &quot;managerAssigned&quot;: true,
+    &quot;accessApprovedRevision&quot;: null,
+    &quot;accessFulfilmentEvidence&quot;: null
+  },
+  {
+    &quot;starterRef&quot;: &quot;START-03&quot;,
+    &quot;roleRevision&quot;: 2,
+    &quot;contractConfirmed&quot;: true,
+    &quot;managerAssigned&quot;: true,
+    &quot;accessApprovedRevision&quot;: 1,
+    &quot;accessFulfilmentEvidence&quot;: &quot;previous-role-ticket&quot;
+  }
+]</pre><h3>Change card</h3><p>The starting role changes after the access request is approved. Revalidate the request and revise the handover rather than reusing the old approval.</p><a href="outcomes.html#people">阅读完整交付判断 →</a></section></main><footer>匠人学院 · FDE Business</footer></body></html>

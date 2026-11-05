@@ -2,7 +2,7 @@
 
 ## Product
 
-Existing formal name: FDE 企业 AI 交付进阶训练班. Existing public sales path: `/fde/training`. Course identifier `fde-tech` is an authoring/catalogue key; it does not migrate the sales URL.
+Existing formal name: FDE Tech 职业进阶班. Existing public sales path: `/fde/training`. Course identifier `fde-tech` is an authoring/catalogue key; it does not migrate the sales URL.
 
 Audience: employed engineers who can independently build, run, debug and explain an AI application. Missing a specific tool can be addressed with self-study; the main programme is not an AI Engineering foundation course.
 

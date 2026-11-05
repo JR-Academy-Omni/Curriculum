@@ -1,0 +1,292 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="googlebot" content="noindex,nofollow"><title>从客户问题到交付成果 · FDE Business</title><link rel="stylesheet" href="styles.css"></head><body><header><a class="brand" href="curriculum.html">JR ACADEMY <span>FDE BUSINESS</span></a><nav aria-label="课程资料"><a href="curriculum.html">完整大纲</a><a href="learning-plan.html">八周安排</a><a href="outline.html">学习任务</a><a href="cases.html">案例资料</a><a href="outcomes.html">交付成果</a></nav></header><main><p class="eyebrow">ENTERPRISE AI DELIVERY</p><h1>从客户问题到交付成果</h1><p class="lead">查看方案、预算、系统行为与交接要求。成果既要能打开说明，也要能通过输入检查关键控制。</p><section class="card" id="finance"><h2>Finance Operations</h2><h3>客户问题与边界</h3><p>Create a review-ready invoice register and an exception queue. Preserve the source of every field; leave approval, GST eligibility and payment decisions with finance.</p><ul><li>A$8,000 project setup ceiling and A$500 monthly operating ceiling. These are client-brief budgets, separate from course tuition.</li><li>No supplier payments, bank-detail changes or tax-credit claims are automated.</li><li>Amounts are AUD. Only rows explicitly marked standard-taxable and GST-inclusive use a total/11 arithmetic check. Missing tax status is reviewed.</li><li>The same supplier/invoice reference must not create two payable records. A duplicate is reported, not silently merged.</li></ul><h3>方案与交付判断</h3><ul><li>Use a controlled intake → extract fields → validate → check duplicates → human review → approved register workflow.</li><li>INV-101 is review-ready with an arithmetic GST component of A$100; this does not establish a tax-credit entitlement.</li><li>INV-201 has a mismatch: the standard-taxable inclusive arithmetic check is A$50, but the supplied field is A$60. Keep the original field and request review.</li><li>The forwarded INV-101 is a duplicate. The invoice-c record lacks currency and tax status and remains in review.</li><li>Planning at 80% accepted coverage and five minutes saved per accepted invoice gives 20 hours of monthly capacity. Measure both extraction and review time before claiming an improvement.</li></ul><h3>结果核对</h3><p>对照输入核对台账、客户草稿与入职清单，检查缺失信息、重复输入和审批变化怎样影响结果。</p><details><summary>展开核对规则</summary><pre>&quot;&quot;&quot;Business workflow reference: field checks and routing, no external actions or model calls.&quot;&quot;&quot;
+from decimal import Decimal, ROUND_HALF_UP, InvalidOperation
+from pathlib import Path
+import json
+
+def invoice_register(records):
+    seen=set();results=[]
+    for row in records:
+        key=(row.get(&#x27;supplierRef&#x27;),row.get(&#x27;invoiceRef&#x27;))
+        issues=[]
+        if not all(key):issues.append(&#x27;missing-identity&#x27;)
+        elif key in seen:issues.append(&#x27;duplicate&#x27;)
+        else:seen.add(key)
+        if row.get(&#x27;currency&#x27;)!=&#x27;AUD&#x27;:issues.append(&#x27;review-currency&#x27;)
+        expected=None
+        if row.get(&#x27;taxStatus&#x27;)!=&#x27;standard-taxable-inclusive&#x27;:issues.append(&#x27;review-tax-status&#x27;)
+        else:
+            try:
+                total=Decimal(row[&#x27;total&#x27;]); gst=Decimal(row[&#x27;gst&#x27;])
+                if not total.is_finite() or not gst.is_finite() or total&lt;0 or gst&lt;0:raise ValueError(&#x27;invalid amount&#x27;)
+                expected=(total/Decimal(11)).quantize(Decimal(&#x27;0.01&#x27;),rounding=ROUND_HALF_UP)
+                if abs(gst-expected)&gt;Decimal(&#x27;0.01&#x27;):issues.append(&#x27;gst-arithmetic-mismatch&#x27;)
+            except (ValueError,TypeError,KeyError,InvalidOperation):issues.append(&#x27;review-amount&#x27;)
+        results.append({&#x27;source&#x27;:row[&#x27;source&#x27;],&#x27;invoiceRef&#x27;:row.get(&#x27;invoiceRef&#x27;),&#x27;originalTotal&#x27;:row.get(&#x27;total&#x27;),&#x27;originalGST&#x27;:row.get(&#x27;gst&#x27;),&#x27;expectedGST&#x27;:str(expected) if expected is not None else None,&#x27;status&#x27;:&#x27;review-ready&#x27; if not issues else &#x27;exception&#x27;,&#x27;issues&#x27;:issues,&#x27;approvalOwner&#x27;:&#x27;finance&#x27;,&#x27;paymentExecuted&#x27;:False})
+    return results
+
+def customer_queue(events):
+    leads={};notes=[]
+    for event in events:
+        key=event.get(&#x27;enquiryId&#x27;)
+        if not key:notes.append({&#x27;eventId&#x27;:event[&#x27;eventId&#x27;],&#x27;status&#x27;:&#x27;missing-information&#x27;});continue
+        current=leads.get(key)
+        if current and event[&#x27;revision&#x27;]&lt;=current[&#x27;revision&#x27;]:
+            notes.append({&#x27;eventId&#x27;:event[&#x27;eventId&#x27;],&#x27;status&#x27;:&#x27;duplicate-or-stale&#x27;});continue
+        leads[key]={&#x27;enquiryId&#x27;:key,&#x27;revision&#x27;:event[&#x27;revision&#x27;],&#x27;preferredWindow&#x27;:event[&#x27;preferredWindow&#x27;],&#x27;draftApproval&#x27;:&#x27;required&#x27;,&#x27;draftText&#x27;:&#x27;Thanks for your request. We have noted &#x27;+event[&#x27;preferredWindow&#x27;]+&#x27; as your preferred window. Our team will check availability before confirming a visit.&#x27;,&#x27;messageSent&#x27;:False}
+        notes.append({&#x27;eventId&#x27;:event[&#x27;eventId&#x27;],&#x27;status&#x27;:&#x27;updated-review-required&#x27; if current else &#x27;draft-review-required&#x27;})
+    return {&#x27;leads&#x27;:list(leads.values()),&#x27;events&#x27;:notes}
+
+def onboarding(row):
+    if not row[&#x27;contractConfirmed&#x27;]:status=&#x27;HR-confirmation-required&#x27;
+    elif not row[&#x27;managerAssigned&#x27;]:status=&#x27;manager-required&#x27;
+    elif row[&#x27;accessApprovedRevision&#x27;]!=row[&#x27;roleRevision&#x27;]:status=&#x27;IT-reapproval-required&#x27;
+    elif not row[&#x27;accessFulfilmentEvidence&#x27;]:status=&#x27;IT-fulfilment-evidence-required&#x27;
+    else:status=&#x27;ready-for-owner-review&#x27;
+    return {&#x27;starterRef&#x27;:row[&#x27;starterRef&#x27;],&#x27;status&#x27;:status,&#x27;accessGranted&#x27;:False}
+
+def run():
+    cases={c[&#x27;id&#x27;]:c for c in json.loads(Path(__file__).with_name(&#x27;outline.json&#x27;).read_text())[&#x27;cases&#x27;]}
+    rows=invoice_register(cases[&#x27;finance&#x27;][&#x27;records&#x27;]);customers=customer_queue(cases[&#x27;customer&#x27;][&#x27;records&#x27;]);people=[onboarding(r) for r in cases[&#x27;people&#x27;][&#x27;records&#x27;]]
+    assert rows[0][&#x27;status&#x27;]==&#x27;review-ready&#x27; and rows[0][&#x27;expectedGST&#x27;]==&#x27;100.00&#x27;
+    assert &#x27;gst-arithmetic-mismatch&#x27; in rows[1][&#x27;issues&#x27;] and rows[1][&#x27;expectedGST&#x27;]==&#x27;50.00&#x27;
+    assert &#x27;duplicate&#x27; in rows[2][&#x27;issues&#x27;]
+    assert &#x27;review-currency&#x27; in rows[3][&#x27;issues&#x27;] and &#x27;review-tax-status&#x27; in rows[3][&#x27;issues&#x27;]
+    assert len(customers[&#x27;leads&#x27;])==1 and customers[&#x27;leads&#x27;][0][&#x27;revision&#x27;]==2 and not customers[&#x27;leads&#x27;][0][&#x27;messageSent&#x27;]
+    assert people[0][&#x27;status&#x27;]==&#x27;IT-fulfilment-evidence-required&#x27; and people[1][&#x27;status&#x27;]==&#x27;HR-confirmation-required&#x27; and people[2][&#x27;status&#x27;]==&#x27;IT-reapproval-required&#x27;
+    return {&#x27;invoiceRegister&#x27;:rows,&#x27;customerFollowUp&#x27;:customers,&#x27;onboarding&#x27;:people,&#x27;planning&#x27;:{&#x27;monthlyCapacityHours&#x27;:300*.8*5/60,&#x27;capacityValueAUD&#x27;:300*.8*5/60*60,&#x27;operatingAssumptionAUD&#x27;:200+2*80}}
+if __name__==&#x27;__main__&#x27;:print(json.dumps(run(),indent=2))
+</pre></details><h3>验收与交接</h3><ul><li>Keep input, expected decision and observed result together.</li><li>An unresolved amount mismatch, stale approval or duplicate commitment blocks acceptance.</li><li>Give the receiver setup steps, configuration requirements, failure recovery and the owner of each open issue.</li></ul></section><section class="card" id="customer"><h2>Customer Follow-up</h2><h3>客户问题与边界</h3><p>Prepare a clean lead list, identify missing information, propose an owner and draft the next response for staff approval.</p><ul><li>A$6,000 setup ceiling; one approved shared workspace.</li><li>No message, quote or appointment is sent or confirmed automatically.</li><li>A customer asking for a discount does not approve a new price.</li><li>Use source enquiry IDs to find duplicates; missing IDs require review.</li></ul><h3>方案与交付判断</h3><ul><li>Keep one lead per source enquiry ID and preserve the incoming revision history.</li><li>Prepare a response draft and owner; retain staff approval before any outbound message.</li><li>The email event for ENQ-17 revision 1 does not create a second lead.</li><li>Revision 2 invalidates approval of the Tuesday draft. Use the new preferred window and request confirmation.</li><li>An incomplete request goes to a missing-information queue, not an invented customer profile or promised booking.</li></ul><h3>结果核对</h3><p>对照输入核对台账、客户草稿与入职清单，检查缺失信息、重复输入和审批变化怎样影响结果。</p><details><summary>展开核对规则</summary><pre>&quot;&quot;&quot;Business workflow reference: field checks and routing, no external actions or model calls.&quot;&quot;&quot;
+from decimal import Decimal, ROUND_HALF_UP, InvalidOperation
+from pathlib import Path
+import json
+
+def invoice_register(records):
+    seen=set();results=[]
+    for row in records:
+        key=(row.get(&#x27;supplierRef&#x27;),row.get(&#x27;invoiceRef&#x27;))
+        issues=[]
+        if not all(key):issues.append(&#x27;missing-identity&#x27;)
+        elif key in seen:issues.append(&#x27;duplicate&#x27;)
+        else:seen.add(key)
+        if row.get(&#x27;currency&#x27;)!=&#x27;AUD&#x27;:issues.append(&#x27;review-currency&#x27;)
+        expected=None
+        if row.get(&#x27;taxStatus&#x27;)!=&#x27;standard-taxable-inclusive&#x27;:issues.append(&#x27;review-tax-status&#x27;)
+        else:
+            try:
+                total=Decimal(row[&#x27;total&#x27;]); gst=Decimal(row[&#x27;gst&#x27;])
+                if not total.is_finite() or not gst.is_finite() or total&lt;0 or gst&lt;0:raise ValueError(&#x27;invalid amount&#x27;)
+                expected=(total/Decimal(11)).quantize(Decimal(&#x27;0.01&#x27;),rounding=ROUND_HALF_UP)
+                if abs(gst-expected)&gt;Decimal(&#x27;0.01&#x27;):issues.append(&#x27;gst-arithmetic-mismatch&#x27;)
+            except (ValueError,TypeError,KeyError,InvalidOperation):issues.append(&#x27;review-amount&#x27;)
+        results.append({&#x27;source&#x27;:row[&#x27;source&#x27;],&#x27;invoiceRef&#x27;:row.get(&#x27;invoiceRef&#x27;),&#x27;originalTotal&#x27;:row.get(&#x27;total&#x27;),&#x27;originalGST&#x27;:row.get(&#x27;gst&#x27;),&#x27;expectedGST&#x27;:str(expected) if expected is not None else None,&#x27;status&#x27;:&#x27;review-ready&#x27; if not issues else &#x27;exception&#x27;,&#x27;issues&#x27;:issues,&#x27;approvalOwner&#x27;:&#x27;finance&#x27;,&#x27;paymentExecuted&#x27;:False})
+    return results
+
+def customer_queue(events):
+    leads={};notes=[]
+    for event in events:
+        key=event.get(&#x27;enquiryId&#x27;)
+        if not key:notes.append({&#x27;eventId&#x27;:event[&#x27;eventId&#x27;],&#x27;status&#x27;:&#x27;missing-information&#x27;});continue
+        current=leads.get(key)
+        if current and event[&#x27;revision&#x27;]&lt;=current[&#x27;revision&#x27;]:
+            notes.append({&#x27;eventId&#x27;:event[&#x27;eventId&#x27;],&#x27;status&#x27;:&#x27;duplicate-or-stale&#x27;});continue
+        leads[key]={&#x27;enquiryId&#x27;:key,&#x27;revision&#x27;:event[&#x27;revision&#x27;],&#x27;preferredWindow&#x27;:event[&#x27;preferredWindow&#x27;],&#x27;draftApproval&#x27;:&#x27;required&#x27;,&#x27;draftText&#x27;:&#x27;Thanks for your request. We have noted &#x27;+event[&#x27;preferredWindow&#x27;]+&#x27; as your preferred window. Our team will check availability before confirming a visit.&#x27;,&#x27;messageSent&#x27;:False}
+        notes.append({&#x27;eventId&#x27;:event[&#x27;eventId&#x27;],&#x27;status&#x27;:&#x27;updated-review-required&#x27; if current else &#x27;draft-review-required&#x27;})
+    return {&#x27;leads&#x27;:list(leads.values()),&#x27;events&#x27;:notes}
+
+def onboarding(row):
+    if not row[&#x27;contractConfirmed&#x27;]:status=&#x27;HR-confirmation-required&#x27;
+    elif not row[&#x27;managerAssigned&#x27;]:status=&#x27;manager-required&#x27;
+    elif row[&#x27;accessApprovedRevision&#x27;]!=row[&#x27;roleRevision&#x27;]:status=&#x27;IT-reapproval-required&#x27;
+    elif not row[&#x27;accessFulfilmentEvidence&#x27;]:status=&#x27;IT-fulfilment-evidence-required&#x27;
+    else:status=&#x27;ready-for-owner-review&#x27;
+    return {&#x27;starterRef&#x27;:row[&#x27;starterRef&#x27;],&#x27;status&#x27;:status,&#x27;accessGranted&#x27;:False}
+
+def run():
+    cases={c[&#x27;id&#x27;]:c for c in json.loads(Path(__file__).with_name(&#x27;outline.json&#x27;).read_text())[&#x27;cases&#x27;]}
+    rows=invoice_register(cases[&#x27;finance&#x27;][&#x27;records&#x27;]);customers=customer_queue(cases[&#x27;customer&#x27;][&#x27;records&#x27;]);people=[onboarding(r) for r in cases[&#x27;people&#x27;][&#x27;records&#x27;]]
+    assert rows[0][&#x27;status&#x27;]==&#x27;review-ready&#x27; and rows[0][&#x27;expectedGST&#x27;]==&#x27;100.00&#x27;
+    assert &#x27;gst-arithmetic-mismatch&#x27; in rows[1][&#x27;issues&#x27;] and rows[1][&#x27;expectedGST&#x27;]==&#x27;50.00&#x27;
+    assert &#x27;duplicate&#x27; in rows[2][&#x27;issues&#x27;]
+    assert &#x27;review-currency&#x27; in rows[3][&#x27;issues&#x27;] and &#x27;review-tax-status&#x27; in rows[3][&#x27;issues&#x27;]
+    assert len(customers[&#x27;leads&#x27;])==1 and customers[&#x27;leads&#x27;][0][&#x27;revision&#x27;]==2 and not customers[&#x27;leads&#x27;][0][&#x27;messageSent&#x27;]
+    assert people[0][&#x27;status&#x27;]==&#x27;IT-fulfilment-evidence-required&#x27; and people[1][&#x27;status&#x27;]==&#x27;HR-confirmation-required&#x27; and people[2][&#x27;status&#x27;]==&#x27;IT-reapproval-required&#x27;
+    return {&#x27;invoiceRegister&#x27;:rows,&#x27;customerFollowUp&#x27;:customers,&#x27;onboarding&#x27;:people,&#x27;planning&#x27;:{&#x27;monthlyCapacityHours&#x27;:300*.8*5/60,&#x27;capacityValueAUD&#x27;:300*.8*5/60*60,&#x27;operatingAssumptionAUD&#x27;:200+2*80}}
+if __name__==&#x27;__main__&#x27;:print(json.dumps(run(),indent=2))
+</pre></details><h3>验收与交接</h3><ul><li>Keep input, expected decision and observed result together.</li><li>An unresolved amount mismatch, stale approval or duplicate commitment blocks acceptance.</li><li>Give the receiver setup steps, configuration requirements, failure recovery and the owner of each open issue.</li></ul></section><section class="card" id="people"><h2>Employee Onboarding</h2><h3>客户问题与边界</h3><p>Create an ownership-based onboarding checklist and a progress brief, with evidence for every completed step.</p><ul><li>A$5,000 setup ceiling.</li><li>HR confirms employment details; IT owns access approval and provisioning.</li><li>No account is created or permission granted by the course workflow.</li><li>A checked box without supporting evidence is not accepted as completion.</li></ul><h3>方案与交付判断</h3><ul><li>Use a checklist with task owner, prerequisite, evidence and escalation date. Keep HR, IT and manager responsibilities distinct.</li><li>START-01 can have an approved access request but is not provisioned without fulfilment evidence.</li><li>START-02 stays with HR while contract confirmation is missing.</li><li>START-03 needs a new IT decision for role revision 2; evidence for the prior role does not establish current access.</li><li>The handover includes unresolved items and their owners. A green dashboard does not substitute for the supporting records.</li></ul><h3>结果核对</h3><p>对照输入核对台账、客户草稿与入职清单，检查缺失信息、重复输入和审批变化怎样影响结果。</p><details><summary>展开核对规则</summary><pre>&quot;&quot;&quot;Business workflow reference: field checks and routing, no external actions or model calls.&quot;&quot;&quot;
+from decimal import Decimal, ROUND_HALF_UP, InvalidOperation
+from pathlib import Path
+import json
+
+def invoice_register(records):
+    seen=set();results=[]
+    for row in records:
+        key=(row.get(&#x27;supplierRef&#x27;),row.get(&#x27;invoiceRef&#x27;))
+        issues=[]
+        if not all(key):issues.append(&#x27;missing-identity&#x27;)
+        elif key in seen:issues.append(&#x27;duplicate&#x27;)
+        else:seen.add(key)
+        if row.get(&#x27;currency&#x27;)!=&#x27;AUD&#x27;:issues.append(&#x27;review-currency&#x27;)
+        expected=None
+        if row.get(&#x27;taxStatus&#x27;)!=&#x27;standard-taxable-inclusive&#x27;:issues.append(&#x27;review-tax-status&#x27;)
+        else:
+            try:
+                total=Decimal(row[&#x27;total&#x27;]); gst=Decimal(row[&#x27;gst&#x27;])
+                if not total.is_finite() or not gst.is_finite() or total&lt;0 or gst&lt;0:raise ValueError(&#x27;invalid amount&#x27;)
+                expected=(total/Decimal(11)).quantize(Decimal(&#x27;0.01&#x27;),rounding=ROUND_HALF_UP)
+                if abs(gst-expected)&gt;Decimal(&#x27;0.01&#x27;):issues.append(&#x27;gst-arithmetic-mismatch&#x27;)
+            except (ValueError,TypeError,KeyError,InvalidOperation):issues.append(&#x27;review-amount&#x27;)
+        results.append({&#x27;source&#x27;:row[&#x27;source&#x27;],&#x27;invoiceRef&#x27;:row.get(&#x27;invoiceRef&#x27;),&#x27;originalTotal&#x27;:row.get(&#x27;total&#x27;),&#x27;originalGST&#x27;:row.get(&#x27;gst&#x27;),&#x27;expectedGST&#x27;:str(expected) if expected is not None else None,&#x27;status&#x27;:&#x27;review-ready&#x27; if not issues else &#x27;exception&#x27;,&#x27;issues&#x27;:issues,&#x27;approvalOwner&#x27;:&#x27;finance&#x27;,&#x27;paymentExecuted&#x27;:False})
+    return results
+
+def customer_queue(events):
+    leads={};notes=[]
+    for event in events:
+        key=event.get(&#x27;enquiryId&#x27;)
+        if not key:notes.append({&#x27;eventId&#x27;:event[&#x27;eventId&#x27;],&#x27;status&#x27;:&#x27;missing-information&#x27;});continue
+        current=leads.get(key)
+        if current and event[&#x27;revision&#x27;]&lt;=current[&#x27;revision&#x27;]:
+            notes.append({&#x27;eventId&#x27;:event[&#x27;eventId&#x27;],&#x27;status&#x27;:&#x27;duplicate-or-stale&#x27;});continue
+        leads[key]={&#x27;enquiryId&#x27;:key,&#x27;revision&#x27;:event[&#x27;revision&#x27;],&#x27;preferredWindow&#x27;:event[&#x27;preferredWindow&#x27;],&#x27;draftApproval&#x27;:&#x27;required&#x27;,&#x27;draftText&#x27;:&#x27;Thanks for your request. We have noted &#x27;+event[&#x27;preferredWindow&#x27;]+&#x27; as your preferred window. Our team will check availability before confirming a visit.&#x27;,&#x27;messageSent&#x27;:False}
+        notes.append({&#x27;eventId&#x27;:event[&#x27;eventId&#x27;],&#x27;status&#x27;:&#x27;updated-review-required&#x27; if current else &#x27;draft-review-required&#x27;})
+    return {&#x27;leads&#x27;:list(leads.values()),&#x27;events&#x27;:notes}
+
+def onboarding(row):
+    if not row[&#x27;contractConfirmed&#x27;]:status=&#x27;HR-confirmation-required&#x27;
+    elif not row[&#x27;managerAssigned&#x27;]:status=&#x27;manager-required&#x27;
+    elif row[&#x27;accessApprovedRevision&#x27;]!=row[&#x27;roleRevision&#x27;]:status=&#x27;IT-reapproval-required&#x27;
+    elif not row[&#x27;accessFulfilmentEvidence&#x27;]:status=&#x27;IT-fulfilment-evidence-required&#x27;
+    else:status=&#x27;ready-for-owner-review&#x27;
+    return {&#x27;starterRef&#x27;:row[&#x27;starterRef&#x27;],&#x27;status&#x27;:status,&#x27;accessGranted&#x27;:False}
+
+def run():
+    cases={c[&#x27;id&#x27;]:c for c in json.loads(Path(__file__).with_name(&#x27;outline.json&#x27;).read_text())[&#x27;cases&#x27;]}
+    rows=invoice_register(cases[&#x27;finance&#x27;][&#x27;records&#x27;]);customers=customer_queue(cases[&#x27;customer&#x27;][&#x27;records&#x27;]);people=[onboarding(r) for r in cases[&#x27;people&#x27;][&#x27;records&#x27;]]
+    assert rows[0][&#x27;status&#x27;]==&#x27;review-ready&#x27; and rows[0][&#x27;expectedGST&#x27;]==&#x27;100.00&#x27;
+    assert &#x27;gst-arithmetic-mismatch&#x27; in rows[1][&#x27;issues&#x27;] and rows[1][&#x27;expectedGST&#x27;]==&#x27;50.00&#x27;
+    assert &#x27;duplicate&#x27; in rows[2][&#x27;issues&#x27;]
+    assert &#x27;review-currency&#x27; in rows[3][&#x27;issues&#x27;] and &#x27;review-tax-status&#x27; in rows[3][&#x27;issues&#x27;]
+    assert len(customers[&#x27;leads&#x27;])==1 and customers[&#x27;leads&#x27;][0][&#x27;revision&#x27;]==2 and not customers[&#x27;leads&#x27;][0][&#x27;messageSent&#x27;]
+    assert people[0][&#x27;status&#x27;]==&#x27;IT-fulfilment-evidence-required&#x27; and people[1][&#x27;status&#x27;]==&#x27;HR-confirmation-required&#x27; and people[2][&#x27;status&#x27;]==&#x27;IT-reapproval-required&#x27;
+    return {&#x27;invoiceRegister&#x27;:rows,&#x27;customerFollowUp&#x27;:customers,&#x27;onboarding&#x27;:people,&#x27;planning&#x27;:{&#x27;monthlyCapacityHours&#x27;:300*.8*5/60,&#x27;capacityValueAUD&#x27;:300*.8*5/60*60,&#x27;operatingAssumptionAUD&#x27;:200+2*80}}
+if __name__==&#x27;__main__&#x27;:print(json.dumps(run(),indent=2))
+</pre></details><h3>验收与交接</h3><ul><li>Keep input, expected decision and observed result together.</li><li>An unresolved amount mismatch, stale approval or duplicate commitment blocks acceptance.</li><li>Give the receiver setup steps, configuration requirements, failure recovery and the owner of each open issue.</li></ul></section><section class="card"><h2>已完成的发票台账与异常队列</h2><div class="table-wrap"><table><thead><tr><th>Source</th><th>Invoice</th><th>Status</th><th>Expected GST</th><th>Issues</th><th>Owner</th></tr></thead><tbody><tr><td>invoice-a.pdf</td><td>INV-101</td><td>review-ready</td><td>100.00</td><td></td><td>finance</td></tr><tr><td>invoice-b.pdf</td><td>INV-201</td><td>exception</td><td>50.00</td><td>gst-arithmetic-mismatch</td><td>finance</td></tr><tr><td>forwarded-a.pdf</td><td>INV-101</td><td>exception</td><td>100.00</td><td>duplicate</td><td>finance</td></tr><tr><td>invoice-c.pdf</td><td>INV-301</td><td>exception</td><td>None</td><td>review-currency, review-tax-status</td><td>finance</td></tr></tbody></table></div><h2>客户跟进草稿</h2><div class="table-wrap"><table><thead><tr><th>Enquiry</th><th>Revision</th><th>Preferred window</th><th>Draft</th><th>Approval</th></tr></thead><tbody><tr><td>ENQ-17</td><td>2</td><td>Friday afternoon</td><td>Thanks for your request. We have noted Friday afternoon as your preferred window. Our team will check availability before confirming a visit.</td><td>required</td></tr></tbody></table></div><h2>入职交接清单</h2><div class="table-wrap"><table><thead><tr><th>Starter</th><th>Next decision</th><th>Access granted</th></tr></thead><tbody><tr><td>START-01</td><td>IT-fulfilment-evidence-required</td><td>False</td></tr><tr><td>START-02</td><td>HR-confirmation-required</td><td>False</td></tr><tr><td>START-03</td><td>IT-reapproval-required</td><td>False</td></tr></tbody></table></div></section><section class="card"><p class="kicker">COMPLETE DELIVERY PACK</p><h2>Finance Operations · Delivery Pack</h2><h3>Decision requested</h3><p>Approve a bounded invoice-register pilot. Preserve finance review and keep payment and tax-credit decisions out of the workflow.</p><h3>Architecture</h3><div class="flow"><div>File and email intake</div><div>Candidate field extraction</div><div>Rules and duplicate checks</div><div>Finance review queue</div><div>Approved register and handover</div></div><h3>Scope</h3><ul><li>Include file intake, candidate fields, arithmetic checks, duplicate reporting, review queue and a usable register.</li><li>Exclude payment, bank changes, tax-credit claims and automatic supplier approval.</li><li>Add an owner, evidence and next action to every exception.</li></ul><h3>Interface contract</h3><pre>{
+  &quot;input&quot;: {
+    &quot;source&quot;: &quot;invoice-a.pdf&quot;,
+    &quot;invoiceRef&quot;: &quot;INV-101&quot;,
+    &quot;totalAUD&quot;: &quot;1100.00&quot;,
+    &quot;gstAUD&quot;: &quot;100.00&quot;,
+    &quot;taxStatus&quot;: &quot;standard-taxable-inclusive&quot;
+  },
+  &quot;output&quot;: {
+    &quot;status&quot;: &quot;review-ready&quot;,
+    &quot;sourcePreserved&quot;: true,
+    &quot;approvalOwner&quot;: &quot;finance&quot;,
+    &quot;paymentExecuted&quot;: false
+  }
+}</pre><h3>Build estimate · AUD</h3><div class="table-wrap"><table><thead><tr><th>Work</th><th>Hours</th><th>Assumed rate</th><th>Cost</th></tr></thead><tbody><tr><td>Workflow investigation</td><td>12</td><td>100</td><td>1200</td></tr><tr><td>Workspace and workflow setup</td><td>24</td><td>100</td><td>2400</td></tr><tr><td>Checks and correction</td><td>12</td><td>100</td><td>1200</td></tr><tr><td>Enablement and handover</td><td>8</td><td>100</td><td>800</td></tr><tr><td>Contingency</td><td>0</td><td>0</td><td>800</td></tr></tbody></table></div><p>The proposed setup budget is A$6,400 against an A$8,000 ceiling, using an assumed A$100/hour service rate. Monthly tools and operations are assumed at A$200 plus two maintenance hours at A$80, or A$360. These planning assumptions must be checked with the client.</p><h3>Capacity sensitivity</h3><div class="table-wrap"><table><thead><tr><th>Accepted coverage</th><th>Saved hours</th><th>Capacity value AUD</th></tr></thead><tbody><tr><td>0.5</td><td>12.5</td><td>750</td></tr><tr><td>0.8</td><td>20</td><td>1200</td></tr><tr><td>1.0</td><td>25</td><td>1500</td></tr></tbody></table></div><h3>Acceptance matrix</h3><div class="table-wrap"><table><thead><tr><th>Input</th><th>Expected outcome</th></tr></thead><tbody><tr><td>INV-101, AUD 1100 including GST 100</td><td>Retain source and route the checked record to finance review.</td></tr><tr><td>INV-201, total 550 and GST field 60</td><td>Flag the arithmetic mismatch; preserve the original value.</td></tr><tr><td>Forwarded supplier-a INV-101</td><td>Flag the duplicate; do not create a second payable record.</td></tr><tr><td>Missing currency or tax status</td><td>Request finance review without inventing fields.</td></tr><tr><td>Customer changes an approved draft or employee role changes</td><td>Revalidate the affected decision; do not send or grant access.</td></tr></tbody></table></div><h3>Pilot plan</h3><ul><li>Agree the invoice scope, owner and current preparation/review time before using the workflow.</li><li>Run the supplied records and resolve critical issues before involving the first staff users.</li><li>Track complete outputs, review minutes, exception backlog and duplicate reports over the agreed pilot period.</li><li>Compare the same workload with the baseline and choose continue, revise or stop; do not convert forecast capacity into claimed cash savings.</li></ul><h3>Runbook</h3><ul><li>Start: place new inputs in the approved intake location and retain their original filenames or source IDs.</li><li>Prepare: generate candidate fields, run the defined checks and open the exception queue.</li><li>Review: finance resolves amount, tax-status and approval questions; record the owner and evidence.</li><li>Duplicate: preserve both source references, link the duplicate to the existing record and stop repeated downstream work.</li><li>Change: version the workflow rule and rerun affected pending records; old approvals do not apply to changed content.</li><li>Handover: another participant must reproduce the register, explain an exception and identify the responsible finance, sales or IT owner.</li></ul><h3>Individual portfolio</h3><p>Show the complete output, workflow map, budget assumptions, checks and your own contribution. Do not claim live client adoption or realised savings from the training case.</p></section><section class="card"><h2>关键控制的运行结果</h2><pre>{
+  &quot;invoiceRegister&quot;: [
+    {
+      &quot;source&quot;: &quot;invoice-a.pdf&quot;,
+      &quot;invoiceRef&quot;: &quot;INV-101&quot;,
+      &quot;originalTotal&quot;: &quot;1100.00&quot;,
+      &quot;originalGST&quot;: &quot;100.00&quot;,
+      &quot;expectedGST&quot;: &quot;100.00&quot;,
+      &quot;status&quot;: &quot;review-ready&quot;,
+      &quot;issues&quot;: [],
+      &quot;approvalOwner&quot;: &quot;finance&quot;,
+      &quot;paymentExecuted&quot;: false
+    },
+    {
+      &quot;source&quot;: &quot;invoice-b.pdf&quot;,
+      &quot;invoiceRef&quot;: &quot;INV-201&quot;,
+      &quot;originalTotal&quot;: &quot;550.00&quot;,
+      &quot;originalGST&quot;: &quot;60.00&quot;,
+      &quot;expectedGST&quot;: &quot;50.00&quot;,
+      &quot;status&quot;: &quot;exception&quot;,
+      &quot;issues&quot;: [
+        &quot;gst-arithmetic-mismatch&quot;
+      ],
+      &quot;approvalOwner&quot;: &quot;finance&quot;,
+      &quot;paymentExecuted&quot;: false
+    },
+    {
+      &quot;source&quot;: &quot;forwarded-a.pdf&quot;,
+      &quot;invoiceRef&quot;: &quot;INV-101&quot;,
+      &quot;originalTotal&quot;: &quot;1100.00&quot;,
+      &quot;originalGST&quot;: &quot;100.00&quot;,
+      &quot;expectedGST&quot;: &quot;100.00&quot;,
+      &quot;status&quot;: &quot;exception&quot;,
+      &quot;issues&quot;: [
+        &quot;duplicate&quot;
+      ],
+      &quot;approvalOwner&quot;: &quot;finance&quot;,
+      &quot;paymentExecuted&quot;: false
+    },
+    {
+      &quot;source&quot;: &quot;invoice-c.pdf&quot;,
+      &quot;invoiceRef&quot;: &quot;INV-301&quot;,
+      &quot;originalTotal&quot;: &quot;200.00&quot;,
+      &quot;originalGST&quot;: null,
+      &quot;expectedGST&quot;: null,
+      &quot;status&quot;: &quot;exception&quot;,
+      &quot;issues&quot;: [
+        &quot;review-currency&quot;,
+        &quot;review-tax-status&quot;
+      ],
+      &quot;approvalOwner&quot;: &quot;finance&quot;,
+      &quot;paymentExecuted&quot;: false
+    }
+  ],
+  &quot;customerFollowUp&quot;: {
+    &quot;leads&quot;: [
+      {
+        &quot;enquiryId&quot;: &quot;ENQ-17&quot;,
+        &quot;revision&quot;: 2,
+        &quot;preferredWindow&quot;: &quot;Friday afternoon&quot;,
+        &quot;draftApproval&quot;: &quot;required&quot;,
+        &quot;draftText&quot;: &quot;Thanks for your request. We have noted Friday afternoon as your preferred window. Our team will check availability before confirming a visit.&quot;,
+        &quot;messageSent&quot;: false
+      }
+    ],
+    &quot;events&quot;: [
+      {
+        &quot;eventId&quot;: &quot;web-1&quot;,
+        &quot;status&quot;: &quot;draft-review-required&quot;
+      },
+      {
+        &quot;eventId&quot;: &quot;email-2&quot;,
+        &quot;status&quot;: &quot;duplicate-or-stale&quot;
+      },
+      {
+        &quot;eventId&quot;: &quot;web-3&quot;,
+        &quot;status&quot;: &quot;updated-review-required&quot;
+      },
+      {
+        &quot;eventId&quot;: &quot;web-4&quot;,
+        &quot;status&quot;: &quot;missing-information&quot;
+      }
+    ]
+  },
+  &quot;onboarding&quot;: [
+    {
+      &quot;starterRef&quot;: &quot;START-01&quot;,
+      &quot;status&quot;: &quot;IT-fulfilment-evidence-required&quot;,
+      &quot;accessGranted&quot;: false
+    },
+    {
+      &quot;starterRef&quot;: &quot;START-02&quot;,
+      &quot;status&quot;: &quot;HR-confirmation-required&quot;,
+      &quot;accessGranted&quot;: false
+    },
+    {
+      &quot;starterRef&quot;: &quot;START-03&quot;,
+      &quot;status&quot;: &quot;IT-reapproval-required&quot;,
+      &quot;accessGranted&quot;: false
+    }
+  ],
+  &quot;planning&quot;: {
+    &quot;monthlyCapacityHours&quot;: 20.0,
+    &quot;capacityValueAUD&quot;: 1200.0,
+    &quot;operatingAssumptionAUD&quot;: 360
+  }
+}</pre></section><section><h2>核对依据</h2><ul><li><a href="https://smallbusiness.taxsuperandyou.gov.au/goods-and-services-tax/calculating-gst-on-purchases" target="_blank" rel="noreferrer">ATO · Calculating GST on purchases</a><p>Arithmetic checks for explicitly standard-taxable GST-inclusive inputs; not eligibility or compliance decisions.</p></li></ul></section></main><footer>匠人学院 · FDE Business</footer></body></html>

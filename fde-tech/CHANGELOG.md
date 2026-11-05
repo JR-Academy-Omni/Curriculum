@@ -20,3 +20,7 @@ Clarified the owner-confirmed format: the course supplies company briefs; engine
 ## 2026-11-05 · Owner-confirmed Tech price update
 
 Regular AUD4800, first-cohort preorder AUD4400 and early bird AUD4600. Updated canonical pricing, Program tuition, bilingual sales copy and regenerated catalogue/course/SDM projections. Other services and production records are unchanged.
+
+## 2026-11-05 · Approved career name
+
+Renamed to FDE Tech 职业进阶班 / FDE Tech Career Advancement. Updated audience and introduction to connect existing AI Engineering skills with FDE client responsibilities. Ten weeks, thirty tasks, pricing and URL remain unchanged.

@@ -1,0 +1,107 @@
+{
+  "invoiceRegister": [
+    {
+      "source": "invoice-a.pdf",
+      "invoiceRef": "INV-101",
+      "originalTotal": "1100.00",
+      "originalGST": "100.00",
+      "expectedGST": "100.00",
+      "status": "review-ready",
+      "issues": [],
+      "approvalOwner": "finance",
+      "paymentExecuted": false
+    },
+    {
+      "source": "invoice-b.pdf",
+      "invoiceRef": "INV-201",
+      "originalTotal": "550.00",
+      "originalGST": "60.00",
+      "expectedGST": "50.00",
+      "status": "exception",
+      "issues": [
+        "gst-arithmetic-mismatch"
+      ],
+      "approvalOwner": "finance",
+      "paymentExecuted": false
+    },
+    {
+      "source": "forwarded-a.pdf",
+      "invoiceRef": "INV-101",
+      "originalTotal": "1100.00",
+      "originalGST": "100.00",
+      "expectedGST": "100.00",
+      "status": "exception",
+      "issues": [
+        "duplicate"
+      ],
+      "approvalOwner": "finance",
+      "paymentExecuted": false
+    },
+    {
+      "source": "invoice-c.pdf",
+      "invoiceRef": "INV-301",
+      "originalTotal": "200.00",
+      "originalGST": null,
+      "expectedGST": null,
+      "status": "exception",
+      "issues": [
+        "review-currency",
+        "review-tax-status"
+      ],
+      "approvalOwner": "finance",
+      "paymentExecuted": false
+    }
+  ],
+  "customerFollowUp": {
+    "leads": [
+      {
+        "enquiryId": "ENQ-17",
+        "revision": 2,
+        "preferredWindow": "Friday afternoon",
+        "draftApproval": "required",
+        "draftText": "Thanks for your request. We have noted Friday afternoon as your preferred window. Our team will check availability before confirming a visit.",
+        "messageSent": false
+      }
+    ],
+    "events": [
+      {
+        "eventId": "web-1",
+        "status": "draft-review-required"
+      },
+      {
+        "eventId": "email-2",
+        "status": "duplicate-or-stale"
+      },
+      {
+        "eventId": "web-3",
+        "status": "updated-review-required"
+      },
+      {
+        "eventId": "web-4",
+        "status": "missing-information"
+      }
+    ]
+  },
+  "onboarding": [
+    {
+      "starterRef": "START-01",
+      "status": "IT-fulfilment-evidence-required",
+      "accessGranted": false
+    },
+    {
+      "starterRef": "START-02",
+      "status": "HR-confirmation-required",
+      "accessGranted": false
+    },
+    {
+      "starterRef": "START-03",
+      "status": "IT-reapproval-required",
+      "accessGranted": false
+    }
+  ],
+  "planning": {
+    "monthlyCapacityHours": 20.0,
+    "capacityValueAUD": 1200.0,
+    "operatingAssumptionAUD": 360
+  }
+}
