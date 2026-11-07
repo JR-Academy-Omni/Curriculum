@@ -1,3 +1,7 @@
+## 2026-11-07 · CareKind Voice AI Tutorial 08/11（Local，未部署）
+
+- 新增 `care-kind-workshop` 22 页英文 React Talk Deck（独立 Vite 项目，自带 SlideEngine），覆盖录音到护士确认转写的功能流程、技术设计、测试策略与 coding agent 基础；附课件需求与 README，登记 lessons.html。未加入 deploy.yml，未触发 CI 或部署。
+
 ## 2026-11-02 · 企业内训 AI at Work（Local，未部署）
 
 - 新增 enterprise-training 独立入口及 AI at Work 教学包，26 页 Talk Deck、完整成果、英文工作单和迁移任务、逐页讲师流程及参考答案。登记 lessons.html；不创建 Bootcamp、招生、支付或模型调用。
