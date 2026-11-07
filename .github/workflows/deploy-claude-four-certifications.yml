@@ -1,6 +1,14 @@
 name: Deploy Claude Four Certifications
 on:
   workflow_dispatch:
+    inputs:
+      catalog_only:
+        description: Publish only the Curriculum lesson catalog
+        type: boolean
+        default: false
+      catalog_sha:
+        description: Expected main commit when publishing only the catalog
+        type: string
   push:
     branches: [main]
     paths:
@@ -15,20 +23,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Verify catalog release revision
+        if: ${{ inputs.catalog_only }}
+        env:
+          EXPECTED_CATALOG_SHA: ${{ inputs.catalog_sha }}
+        run: |
+          test "$GITHUB_REF" = refs/heads/main
+          test "$(git rev-parse HEAD)" = "$EXPECTED_CATALOG_SHA"
       - uses: oven-sh/setup-bun@v2
+        if: ${{ !inputs.catalog_only }}
       - name: Build verified talk deck
+        if: ${{ !inputs.catalog_only }}
         working-directory: lessons/claude-four-certifications-2026-10-13
         run: |
           bun install --frozen-lockfile
           bun run build
-      - name: Assemble scoped publication
+      - name: Assemble certification deck
+        if: ${{ !inputs.catalog_only }}
         run: |
           mkdir -p _claude_site/lessons/claude-four-certifications-2026-10-13
           cp -r lessons/claude-four-certifications-2026-10-13/dist/* _claude_site/lessons/claude-four-certifications-2026-10-13/
           cp lessons/claude-four-certifications-2026-10-13/*.md _claude_site/lessons/claude-four-certifications-2026-10-13/
+      - name: Assemble and validate publication
+        run: |
+          mkdir -p _claude_site
           cp lessons.html _claude_site/lessons.html
+          node scripts/enforce-curriculum-noindex.mjs _claude_site
+          node scripts/check-no-analytics.mjs _claude_site
           node scripts/check-curriculum-domain.mjs _claude_site
-      - name: Deploy only deck and catalog
+      - name: Deploy validated Curriculum files
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SERVER_HOST }}

@@ -1,3 +1,7 @@
+## 2026-11-07 · 课程目录链接修复
+
+- 清理 11 个考证课件的未发布静态入口及同组无效讲稿、PRD 链接，保留正式 CCDV-F Classroom 与 CCAR-F 源码入口；Claude Skills Workshop 改链现有课程源码。
+
 ## 2026-11-07 · CareKind Voice AI Tutorial 08/11（Local，未部署）
 
 - 新增 `care-kind-workshop` 22 页英文 React Talk Deck（独立 Vite 项目，自带 SlideEngine），覆盖录音到护士确认转写的功能流程、技术设计、测试策略与 coding agent 基础；附课件需求与 README，登记 lessons.html。未加入 deploy.yml，未触发 CI 或部署。
