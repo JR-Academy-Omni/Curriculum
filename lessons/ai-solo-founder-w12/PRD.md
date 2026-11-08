@@ -1,16 +1,16 @@
 ---
-title: OPC 创业营 W12 · 让生意自己运转 — 用 Codex 搭会接力的自动化 · 课件与课程包 PRD
+title: OPC 创业营 W15 · 让生意自己运转 — 用 Codex 搭会接力的自动化 · 课件与课程包 PRD
 status: eval
 owner: @lightman
 priority: high
 ---
 
-# OPC 创业营 W12 · 让生意自己运转 · PRD
+# OPC 创业营 W15 · 让生意自己运转 · PRD
 
 ## SoT 与范围
 
 - 本次 SoT = 本文件。2026-11-08 owner 改定方向：去掉开场学员分享；不讲 n8n / Zapier 这类只把 App 串起来、每一步还要人判断的伪自动化；整节课改成用 Codex 搭一条有前后依赖、会接力的深度自动化，分 Agent 原生与代码上云两种实现。原 runsheet（`ai-solo-founder-bootcamp/W8-W15_RUNSHEETS.md` W12 段：Notion ERP / 客服分流 / 经营看板）不再作为本节内容，生产课节描述与知识点待同步（见「待办」）。
-- 生产课节：`[W12] 让生意自己运转 · Autopilot`，2026-11-08 14:30 墨尔本时间，讲师 Lightman Wang，180 min。按日期是第 15 节现场课；下周 11-15 是 W14 Pitch & BP。
+- 生产课节：`[W12] 让生意自己运转 · Autopilot`，2026-11-08 14:30 墨尔本时间，讲师 Lightman Wang，180 min。按日期是第 15 节现场课；下周 11-15 是 W14 Pitch & BP。 课程对外按周次统一称 **W15**（第 15 周，owner 2026-11-08 确认）；线上课节标题仍是 `[W12]`。
 - 交付两件：① 网页 Talk Deck（React SlideEngine，沿用 OPC W11 课件视觉）② 学生课程包 `starter/opc-autopilot/`（现场实验用的仓库模板）。
 - 发布范围：Local / 未部署，未 commit、未 push、未触发 CI。
 

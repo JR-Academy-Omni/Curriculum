@@ -4,7 +4,7 @@
 读过去 7 天发出去的内容的真实数据，判断打分规则哪里不准，**提出**修改建议。只提建议，不改 `config/scoring.md`。
 
 ## 输入
-- `metrics/performance.csv`（发布后由你或 W10 内容工厂回读写入：date, title, platform, views, saves, comments, clicks, signups）
+- `metrics/performance.csv`（发布后由你或「AI 内容工厂」课搭的发布流程回读写入：date, title, platform, views, saves, comments, clicks, signups）
 - 过去 7 天的 `runs/*/topic-radar/topics.json`
 
 ## 产出

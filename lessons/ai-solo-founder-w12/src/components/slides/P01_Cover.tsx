@@ -9,7 +9,7 @@ export default function P01_Cover() {
 		<div aria-hidden style={{ position: 'absolute', left: 0, top: 0, width: 18, height: '100%', background: colors.red }} />
 		<Inner style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', alignItems: 'center', gap: 50, padding: '48px 30px', height: '88%' }}>
 			<div>
-				<Label bg={colors.dark} color={colors.yellow}>OPC 创业营 · W12</Label>
+				<Label bg={colors.dark} color={colors.yellow}>OPC 创业营 · W15</Label>
 				<motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .45 }} style={{ fontFamily: fonts.heading, fontSize: 112, fontWeight: 900, lineHeight: 1.08, letterSpacing: -5, margin: '28px 0 6px', color: colors.dark }}>
 					让生意<br /><span style={{ backgroundImage: `linear-gradient(transparent 72%,${colors.yellow} 72%,${colors.yellow} 96%,transparent 96%)` }}>自己运转</span>
 				</motion.h1>

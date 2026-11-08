@@ -16,7 +16,7 @@ export default function P06b_TopicSoT() {
 			<div style={{ display: 'grid', gap: 16, alignContent: 'start' }}>
 				<Panel bg="#f4f1ec"><Label bg="#8a847c">W1 · 生意的 SoT</Label><div style={{ fontSize: 22, lineHeight: 1.55, marginTop: 12 }}>你服务谁、解决什么问题、卖什么、哪些不能做。<br />在今天的仓库里，它就是 <b>memory/brand.md</b>。</div></Panel>
 				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .4 }} style={{ fontSize: 34, fontWeight: 900, textAlign: 'center' }}>↓ 每天选出一个话题</motion.div>
-				<Panel bg={colors.yellow}><Label>W12 · 话题的 SoT</Label><div style={{ fontSize: 22, lineHeight: 1.55, marginTop: 12, fontWeight: 700 }}>topics/日期-sot.md：这一篇内容唯一的事实和观点来源。后面所有平台的版本，都只从这一份派生。</div></Panel>
+				<Panel bg={colors.yellow}><Label>W15 · 话题的 SoT</Label><div style={{ fontSize: 22, lineHeight: 1.55, marginTop: 12, fontWeight: 700 }}>topics/日期-sot.md：这一篇内容唯一的事实和观点来源。后面所有平台的版本，都只从这一份派生。</div></Panel>
 			</div>
 			<Panel style={{ background: '#0f1428', color: '#f3f0e8' }}>
 				<Label bg={colors.yellow} color={colors.dark}>topics/2026-11-08-sot.md 里写这 6 项</Label>

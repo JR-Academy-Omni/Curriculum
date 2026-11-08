@@ -20,7 +20,7 @@ export default function P06d_Workflow() {
 		<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 18 }}>
 			<Panel><Label>为什么 SoT 先过关</Label><div style={{ fontSize: 20, lineHeight: 1.5, marginTop: 10 }}>SoT 里一个数字错了，五个版本就一起错。先核对一次，比事后改五遍便宜。</div></Panel>
 			<Panel><Label>为什么分开 Eval</Label><div style={{ fontSize: 20, lineHeight: 1.5, marginTop: 10 }}>每个平台规矩不同：小红书看封面和正文长度，视频看前 3 秒和画面不放链接。</div></Panel>
-			<Panel bg={colors.yellow}><Label>发布</Label><div style={{ fontSize: 20, lineHeight: 1.5, marginTop: 10, fontWeight: 700 }}>网页合并就上线；其他平台的稿子在仓库里，手动发，或者接 W10 的内容工厂去排程。</div></Panel>
+			<Panel bg={colors.yellow}><Label>发布</Label><div style={{ fontSize: 20, lineHeight: 1.5, marginTop: 10, fontWeight: 700 }}>网页合并就上线；其他平台的稿子在仓库里，手动发，或者接之前「AI 内容工厂」课搭的发布流程去排程。</div></Panel>
 		</div>
 	</DeckFrame>;
 }
