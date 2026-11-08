@@ -13,6 +13,9 @@ import S03dTriggers from './components/slides/S03d_Triggers';
 import S03eIssuePR from './components/slides/S03e_IssuePR';
 import P05Memory from './components/slides/P05_Memory';
 import P06Research from './components/slides/P06_Research';
+import P06bTopicSoT from './components/slides/P06b_TopicSoT';
+import P06cFanOut from './components/slides/P06c_FanOut';
+import P06dWorkflow from './components/slides/P06d_Workflow';
 import P07Write from './components/slides/P07_Write';
 import P08Eval from './components/slides/P08_Eval';
 import P09Learnings from './components/slides/P09_Learnings';
@@ -57,6 +60,9 @@ export default function App() {
 			{/* 主线 · 四步 */}
 			<P05Memory />
 			<P06Research />
+			<P06bTopicSoT />
+			<P06cFanOut />
+			<P06dWorkflow />
 			<P07Write />
 			<P08Eval />
 			<P09Learnings />

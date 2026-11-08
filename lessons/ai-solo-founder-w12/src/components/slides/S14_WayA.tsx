@@ -1,7 +1,7 @@
 import { DeckFrame, Panel, Label, PromptCard, colors } from '../kit';
 
 export default function S14_WayA() {
-	return <DeckFrame tag="03 · A · Agent 原生定时" title="Codex App 里的 Automation：最快上手" subtitle="把一段你本来会手动说的话，设成每天几点自动说一遍。" accent={colors.blue}>
+	return <DeckFrame tag="03 · 做法 ① · 在你电脑上跑" title="Codex App 里的定时任务：最快上手" subtitle="把一段你本来会手动说的话，设成每天几点自动说一遍。" accent={colors.blue}>
 		<div style={{ display: 'grid', gridTemplateColumns: '1.1fr .9fr', gap: 24, height: '100%' }}>
 			<PromptCard label="AUTOMATION 指令 · 每天 08:00" size={22}>{`今天是今天的日期。
 按 AGENTS.md 的规则，执行 tasks/01-daily-brief/TASK.md。

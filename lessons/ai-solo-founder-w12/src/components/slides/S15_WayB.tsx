@@ -10,7 +10,7 @@ const flow = [
 ] as const;
 
 export default function S15_WayB() {
-	return <DeckFrame tag="03 · B / C · 代码上云" title="代码管时间和规矩，Agent 只管判断" subtitle="这些代码由 Codex 帮你写。你要讲清楚的是：几点跑、跑哪一段、怎样算做成。" accent={colors.red} bg="#fbf8f3">
+	return <DeckFrame tag="03 · 做法 ②③ · 在 GitHub 上跑" title="GitHub 管时间和规矩，Codex 只管判断" subtitle="这些代码由 Codex 帮你写。你要讲清楚的是：几点跑、跑哪一段、怎样算做成。" accent={colors.red} bg="#fbf8f3">
 		<div style={{ display: 'grid', gridTemplateColumns: '1.2fr .8fr', gap: 24 }}>
 			<div style={{ display: 'grid', gap: 12 }}>
 				{flow.map(([t, d, c], i) => <motion.div key={t} initial={{ opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .15 + i * .12 }} style={{ display: 'grid', gridTemplateColumns: '60px 230px 1fr', alignItems: 'center', gap: 14, background: c, border: `2px solid ${colors.dark}`, borderRadius: 18, padding: '14px 18px' }}>
