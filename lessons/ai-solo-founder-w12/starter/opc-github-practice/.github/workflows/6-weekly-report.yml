@@ -1,0 +1,33 @@
+name: 6 · 每周数据周报（AI）
+
+on:
+  schedule:
+    - cron: "30 20 * * 0"   # 墨尔本夏令时每周一 07:30（UTC 周日 20:30）
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - run: printf '按 AGENTS.md 的规则，执行 tasks/6-weekly.md。\n' > .prompt.md
+      - name: Codex 写周报
+        id: codex
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ":workspace"
+          prompt-file: .prompt.md
+      - name: 开成一个 Issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MSG: ${{ steps.codex.outputs.final-message }}
+        run: |
+          printf '%s\n' "$MSG" > /tmp/weekly.md
+          gh issue create --repo ${{ github.repository }} --title "周报 $(TZ=Australia/Melbourne date +%F)" --body-file /tmp/weekly.md

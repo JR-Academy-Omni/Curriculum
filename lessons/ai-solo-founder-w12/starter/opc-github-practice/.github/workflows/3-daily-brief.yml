@@ -1,0 +1,40 @@
+name: 3 · 每日行业简报（AI）
+
+on:
+  schedule:
+    - cron: "0 21 * * *"   # 墨尔本夏令时每天 08:00（UTC 21:00）
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  brief:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: 写提示
+        run: |
+          D=$(TZ=Australia/Melbourne date +%F)
+          printf '今天是 %s。按 AGENTS.md 的规则，执行 tasks/3-daily-brief.md，简报写到 briefs/%s.md。\n' "$D" "$D" > .prompt.md
+      - name: Codex 写简报
+        id: codex
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ":workspace"
+          prompt-file: .prompt.md
+          codex-args: "--search"
+      - name: 存进仓库
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MSG: ${{ steps.codex.outputs.final-message }}
+        run: |
+          echo "$MSG" | head -1
+          git add briefs/
+          git diff --cached --quiet && { echo "没有新简报（看上面的状态行）"; exit 0; }
+          git config user.name "opc-bot"; git config user.email "opc-bot@users.noreply.github.com"
+          git commit -m "每日简报 $(TZ=Australia/Melbourne date +%F)"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}

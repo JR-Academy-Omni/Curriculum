@@ -1,3 +1,7 @@
+## 2026-11-08
+
+- 新增并发布 OPC 创业营 W12「让生意自己运转」37 页 Talk Deck：主线为 GitHub 记忆仓库 → 话题调查 → 生成公众号文章与网页 → Eval 打分与发布后反馈 → PR 批准后自动发布，另含六种自动化形态、三种 Codex 实现、失败方式与重跑；配记忆仓库课程包（每日内容与 GitHub Pages 发布工作流）、本机与 GitHub 两套 6 任务练习包、讲师演示仓库、讲师流程与任务书；接入 deploy.yml 并登记 lessons.html（`lessons/ai-solo-founder-w12`）
+
 ## 2026-11-07 · 课程目录链接修复
 
 - 清理 11 个考证课件的未发布静态入口及同组无效讲稿、PRD 链接，保留正式 CCDV-F Classroom 与 CCAR-F 源码入口；Claude Skills Workshop 改链现有课程源码。

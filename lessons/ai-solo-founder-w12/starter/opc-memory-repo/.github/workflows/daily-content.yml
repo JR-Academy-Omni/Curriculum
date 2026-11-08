@@ -1,0 +1,100 @@
+name: 每日内容（话题调查 → 生成 → Eval → PR）
+
+on:
+  schedule:
+    - cron: "0 22 * * *"   # 墨尔本夏令时每天 09:00（UTC 22:00）；冬令时改成 "0 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: daily-content
+  cancel-in-progress: false
+
+jobs:
+  content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: 今天的日期
+        id: d
+        run: echo "date=$(TZ=Australia/Melbourne date +%F)" >> "$GITHUB_OUTPUT"
+
+      # ---------- 第 1 步 · 话题调查 ----------
+      - run: printf '今天是 %s。按 AGENTS.md，执行 rules/1-research.md。\n' "${{ steps.d.outputs.date }}" > .prompt.md
+      - name: 第 1 步 · 话题调查
+        id: research
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ":workspace"
+          prompt-file: .prompt.md
+          codex-args: "--search"
+      - name: 第 1 步的状态
+        id: s1
+        env:
+          MSG: ${{ steps.research.outputs.final-message }}
+        run: |
+          FIRST=$(printf '%s\n' "$MSG" | head -1); echo "$FIRST"
+          case "$FIRST" in *done*) echo "ok=true" >> "$GITHUB_OUTPUT" ;; *) echo "ok=false" >> "$GITHUB_OUTPUT" ;; esac
+
+      # ---------- 第 2 步 · 生成 ----------
+      - if: steps.s1.outputs.ok == 'true'
+        run: printf '今天是 %s。按 AGENTS.md，执行 rules/2-write.md。\n' "${{ steps.d.outputs.date }}" > .prompt.md
+      - name: 第 2 步 · 生成公众号文章 + 网页
+        if: steps.s1.outputs.ok == 'true'
+        id: write
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ":workspace"
+          prompt-file: .prompt.md
+          codex-args: "--search"
+
+      # ---------- 第 3 步 · Eval ----------
+      - if: steps.s1.outputs.ok == 'true'
+        run: printf '今天是 %s。按 AGENTS.md，执行 rules/3-eval.md。\n' "${{ steps.d.outputs.date }}" > .prompt.md
+      - name: 第 3 步 · Eval 打分
+        if: steps.s1.outputs.ok == 'true'
+        id: eval
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ":workspace"
+          prompt-file: .prompt.md
+          codex-args: "--search"
+
+      # ---------- 第 4 步 · 交给你：通过开 PR，不通过开 Issue ----------
+      - name: 第 4 步 · 交给你
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          D: ${{ steps.d.outputs.date }}
+          R1: ${{ steps.research.outputs.final-message }}
+          R3: ${{ steps.eval.outputs.final-message }}
+        run: |
+          git config user.name "opc-bot"; git config user.email "opc-bot@users.noreply.github.com"
+          REPO="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          git add topics/ drafts/ evals/ site/
+          if git diff --cached --quiet; then
+            printf '今天没有产出。\n\n第 1 步的回答：\n%s\n' "$R1" > /tmp/issue.md
+            gh issue create --repo ${{ github.repository }} --title "每日内容 $D：没有产出" --body-file /tmp/issue.md
+            exit 0
+          fi
+          if [ -f "evals/$D.md" ] && grep -q "结论：通过" "evals/$D.md"; then
+            B="content/$D-${{ github.run_id }}"
+            git checkout -b "$B"; git commit -m "每日内容 $D"; git push "$REPO" "$B"
+            { echo "Eval 通过。看 Files changed：公众号稿在 drafts/wechat/，网页在 site/，评分在 evals/。"; echo; echo "同意就点 Merge（网页会自动上线）；不同意就关掉。"; echo; cat "evals/$D.md"; } > /tmp/pr.md
+            gh pr create --repo ${{ github.repository }} --base ${{ github.ref_name }} --head "$B" --title "每日内容 $D" --body-file /tmp/pr.md
+          else
+            B="needs-human/$D-${{ github.run_id }}"
+            git checkout -b "$B"; git commit -m "每日内容 $D（Eval 未通过）"; git push "$REPO" "$B"
+            { echo "Eval 没通过，稿子放在分支 $B 上，没有合并。"; echo; printf '%s\n\n' "$R3"; [ -f "evals/$D.md" ] && cat "evals/$D.md"; } > /tmp/issue.md
+            gh issue create --repo ${{ github.repository }} --title "每日内容 $D：需要你看一下" --body-file /tmp/issue.md
+          fi

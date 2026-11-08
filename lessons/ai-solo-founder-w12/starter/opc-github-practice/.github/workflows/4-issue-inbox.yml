@@ -1,0 +1,39 @@
+name: 4 · Issue 收件箱（AI）
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  triage:
+    if: github.event.issue.user.type != 'Bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: 把来信存成文件
+        env:
+          TITLE: ${{ github.event.issue.title }}
+          BODY: ${{ github.event.issue.body }}
+        run: |
+          printf '主题：%s\n\n%s\n' "$TITLE" "$BODY" > .issue.md
+          printf '按 AGENTS.md 的规则，执行 tasks/4-inbox.md。来信在 .issue.md。\n' > .prompt.md
+      - name: Codex 分诊并起草
+        id: codex
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ":workspace"
+          prompt-file: .prompt.md
+      - name: 回复贴到 Issue 下面
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MSG: ${{ steps.codex.outputs.final-message }}
+        run: |
+          printf '%s\n\n---\n由收件箱自动化起草，未发送给客户。\n' "$MSG" > /tmp/reply.md
+          gh issue comment ${{ github.event.issue.number }} --repo ${{ github.repository }} --body-file /tmp/reply.md

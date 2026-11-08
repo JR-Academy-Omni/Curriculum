@@ -1,0 +1,97 @@
+name: Autopilot
+
+# GitHub 的 cron 用 UTC。墨尔本夏令时（10 月初到 4 月初）是 UTC+11：
+#   08:00 简报 = 21:00 UTC（前一天）
+#   09:00 选题 = 22:00 UTC（前一天）
+#   10:00 写文 = 23:00 UTC（前一天）
+#   12:00 视频 = 01:00 UTC
+#   12:30 主编 = 01:30 UTC
+#   巡检每 6 小时一次（UTC 的 03:15 / 09:15 / 15:15 / 21:15）
+# 每周一 07:30 反馈 = 周日 20:30 UTC
+# 审批闸和批量处理只手动跑（Actions → Autopilot → Run workflow）
+# 冬令时（UTC+10）每个时间往后推 1 小时。GitHub 高峰期定时任务可能延迟几分钟到更久，所以每段都先查上游回执，不靠时间差赌上一段已经跑完。
+on:
+  schedule:
+    - cron: "0 21 * * *"
+    - cron: "0 22 * * *"
+    - cron: "0 23 * * *"
+    - cron: "0 1 * * *"
+    - cron: "30 1 * * *"
+    - cron: "15 3,9,15,21 * * *"
+    - cron: "30 20 * * 0"
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: 要跑的阶段
+        required: true
+        type: choice
+        options: [brief, topic-radar, article, video, review, watch, publish-gate, batch, feedback]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autopilot
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: 决定今天跑哪一段
+        id: pick
+        run: |
+          case "${{ github.event.schedule }}" in
+            "0 21 * * *") S=brief ;;
+            "0 22 * * *") S=topic-radar ;;
+            "0 23 * * *") S=article ;;
+            "0 1 * * *")  S=video ;;
+            "30 1 * * *") S=review ;;
+            "15 3,9,15,21 * * *") S=watch ;;
+            "30 20 * * 0") S=feedback ;;
+            *) S="${{ inputs.stage }}" ;;
+          esac
+          echo "stage=$S" >> "$GITHUB_OUTPUT"
+          echo "date=$(python3 scripts/pipeline.py today)" >> "$GITHUB_OUTPUT"
+          echo "search=$(python3 -c "import json;print(str([s for s in json.load(open('pipeline.json'))['stages'] if s['id']=='$S'][0]['search']).lower())")" >> "$GITHUB_OUTPUT"
+
+      - name: 查上游回执
+        id: gate
+        run: python3 scripts/pipeline.py gate "${{ steps.pick.outputs.stage }}" "${{ steps.pick.outputs.date }}"
+
+      - name: 生成提示
+        if: steps.gate.outputs.run == 'true'
+        run: python3 scripts/pipeline.py prompt "${{ steps.pick.outputs.stage }}" "${{ steps.pick.outputs.date }}"
+
+      - name: Codex 执行这一段
+        if: steps.gate.outputs.run == 'true'
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ":workspace"
+          prompt-file: .autopilot/prompt.md
+          codex-args: ${{ steps.pick.outputs.search == 'true' && '--search' || '' }}
+
+      - name: 验回执（没交回执 = needs-human）
+        if: always()
+        run: python3 scripts/pipeline.py check "${{ steps.pick.outputs.stage }}" "${{ steps.pick.outputs.date }}" || true
+
+      - name: 出日报
+        if: always()
+        run: python3 scripts/pipeline.py digest "${{ steps.pick.outputs.date }}"
+
+      - name: 把产物存回仓库
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "autopilot"
+          git config user.email "autopilot@users.noreply.github.com"
+          git add runs/ state/ outbox/
+          git diff --cached --quiet && exit 0
+          git commit -m "autopilot: ${{ steps.pick.outputs.stage }} ${{ steps.pick.outputs.date }}"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}

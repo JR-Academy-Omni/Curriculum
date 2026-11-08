@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "今日选题",
+  "type": "object",
+  "required": ["date", "topics"],
+  "properties": {
+    "date": { "type": "string" },
+    "topics": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["rank", "title", "angle", "scores", "total", "sources"],
+        "properties": {
+          "rank": { "type": "integer" },
+          "title": { "type": "string" },
+          "angle": { "type": "string", "description": "从我的用户角度切入的那一句" },
+          "scores": { "type": "object", "required": ["相关", "时效", "可写", "转化"] },
+          "total": { "type": "number" },
+          "sources": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+name: 发布网页（site/ 合并后自动上线）
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: 生成文章目录
+        run: |
+          {
+            echo '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的文章</title>'
+            echo '<style>body{font-family:-apple-system,"PingFang SC",sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.8;color:#222;background:#fff}</style></head><body><h1>我的文章</h1><ul>'
+            for f in $(ls -r site/*.html | grep -v '/index.html$'); do
+              t=$(sed -n 's:.*<title>\(.*\)</title>.*:\1:p' "$f" | head -1); n=$(basename "$f")
+              echo "<li><a href=\"$n\">${t:-$n}</a></li>"
+            done
+            echo '</ul></body></html>'
+          } > site/index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

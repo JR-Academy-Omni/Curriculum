@@ -1,0 +1,14 @@
+{
+  "timezone": "Australia/Melbourne",
+  "stages": [
+    { "id": "brief",        "exercise": 1, "upstream": null,          "outputs": ["brief.md"],                          "search": true },
+    { "id": "topic-radar",  "exercise": 2, "upstream": null,          "outputs": ["topics.json"],                       "search": true },
+    { "id": "article",      "exercise": 2, "upstream": "topic-radar", "outputs": ["article.md"],                        "search": true },
+    { "id": "video",        "exercise": 3, "upstream": "article",     "outputs": ["video-script.md", "storyboard.json"], "search": false },
+    { "id": "review",       "exercise": 3, "upstream": "video",       "outputs": ["review.md"],                         "search": false },
+    { "id": "watch",        "exercise": 4, "upstream": null,          "outputs": ["watch-report.md"],                   "search": true },
+    { "id": "publish-gate", "exercise": 5, "upstream": "review",      "outputs": ["publish-pack.md"],                   "search": false, "needs_approval": true },
+    { "id": "batch",        "exercise": 6, "upstream": null,          "outputs": ["batch-report.md"],                   "search": false },
+    { "id": "feedback",     "exercise": 7, "upstream": null,          "outputs": ["scoring-proposal.md"],               "search": false }
+  ]
+}

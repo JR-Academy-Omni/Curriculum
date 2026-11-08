@@ -1,0 +1,32 @@
+name: 2 · 资料一更新就生成目录（不用 AI）
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**.md"
+      - "!docs/INDEX.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: 生成 docs/INDEX.md
+        run: python3 scripts/build_index.py
+      - name: 有变化才提交
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add docs/INDEX.md
+          git diff --cached --quiet && { echo "目录没变"; exit 0; }
+          git config user.name "opc-bot"; git config user.email "opc-bot@users.noreply.github.com"
+          git commit -m "更新资料目录"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}

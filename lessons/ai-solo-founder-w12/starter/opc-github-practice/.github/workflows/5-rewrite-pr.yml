@@ -1,0 +1,49 @@
+name: 5 · AI 改稿，开 PR 等你批准（AI）
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: old-posts 里的文件名，例如 02.md
+        required: true
+        default: 02.md
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  rewrite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: 写提示
+        env:
+          FILE: ${{ inputs.file }}
+        run: |
+          test -f "old-posts/$FILE" || { echo "找不到 old-posts/$FILE"; exit 1; }
+          printf '按 AGENTS.md 的规则，执行 tasks/5-rewrite-pr.md。要改写的文件是 old-posts/%s。\n' "$FILE" > .prompt.md
+      - name: Codex 改稿
+        id: codex
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ":workspace"
+          prompt-file: .prompt.md
+      - name: 提一个 PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MSG: ${{ steps.codex.outputs.final-message }}
+          FILE: ${{ inputs.file }}
+        run: |
+          git add rewritten/
+          git diff --cached --quiet && { echo "没有改稿：$MSG"; exit 0; }
+          B="rewrite/${FILE%.md}-${{ github.run_id }}"
+          git config user.name "opc-bot"; git config user.email "opc-bot@users.noreply.github.com"
+          git checkout -b "$B"
+          git commit -m "改稿：$FILE"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "$B"
+          printf '%s\n\n看完改动，同意就点 Merge；不同意就关掉这个 PR。\n' "$MSG" > /tmp/pr.md
+          gh pr create --repo ${{ github.repository }} --base ${{ github.ref_name }} --head "$B" --title "改稿：$FILE" --body-file /tmp/pr.md

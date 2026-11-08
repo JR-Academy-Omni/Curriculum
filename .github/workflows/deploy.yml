@@ -205,6 +205,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/ai-solo-founder-w12 (OPC W12 让生意自己运转 · GitHub 记忆仓库内容自动化 · 37 slides)
+      - name: Build lessons/ai-solo-founder-w12
+        working-directory: lessons/ai-solo-founder-w12
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-solo-founder-w1 (AI 一人创业营 · W1 · 45 张创业 / SoT / Founder OS 讲课 deck)
       - name: Build lessons/ai-solo-founder-w1
         working-directory: lessons/ai-solo-founder-w1
@@ -868,6 +875,14 @@ jobs:
             cp -r lessons/ai-solo-founder-w11/dist/* _site/lessons/ai-solo-founder-w11/
             cp lessons/ai-solo-founder-w11/{PRD,RUNSHEET,WORKSHEET,SOURCE_MAP,QA,README,LIVE_DEMO}.md _site/lessons/ai-solo-founder-w11/
             cp -r lessons/ai-solo-founder-w11/research _site/lessons/ai-solo-founder-w11/
+          fi
+
+          # OPC W12 GitHub content automation: deck + teaching documents + course packs
+          if [ -d lessons/ai-solo-founder-w12/dist ]; then
+            mkdir -p _site/lessons/ai-solo-founder-w12
+            cp -r lessons/ai-solo-founder-w12/dist/* _site/lessons/ai-solo-founder-w12/
+            cp lessons/ai-solo-founder-w12/{PRD,RUNSHEET,WORKSHEET,SOURCE_MAP,QA,README}.md _site/lessons/ai-solo-founder-w12/
+            cp -r lessons/ai-solo-founder-w12/starter lessons/ai-solo-founder-w12/demo _site/lessons/ai-solo-founder-w12/
           fi
 
           # lessons/ai-solo-founder-w3: AI 一人创业营 · W3 · 这是不是一门好生意（React + Vite）
