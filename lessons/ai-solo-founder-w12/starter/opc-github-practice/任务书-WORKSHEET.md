@@ -28,9 +28,13 @@
 
 ## C. 练习 30 分钟的证据
 
-- [ ] 选了哪个任务：
-- [ ] `output/<今天>/<任务>/` 里的产出 + `status.json`
-- [ ] 弄坏它之后的回执（skipped 或 needs-human）截图
+截图发群里。证据放在哪，取决于你做的是哪一条：
+
+| 你做的练习 | 正常那次的证据 | 弄坏那次的证据 |
+|---|---|---|
+| **主线：记忆仓库**（课上默认） | `topics/<今天>.md` + `evals/<今天>.md` | 加了违规句后 Eval 的回答：第一行 `状态：needs-human` |
+| 本机 6 个小任务 | `output/<今天>/<任务>/` 里的产出 + `status.json` | 弄坏后的 `status.json`（skipped 或 needs-human） |
+| GitHub 6 个小任务 | 任务 1、6：Issues 里的新 Issue；任务 2：`docs/INDEX.md` 的更新；任务 3：`briefs/<今天>.md`；任务 4：Issue 下的评论；任务 5：PR 页面 | Actions 运行日志里的状态行，或 Issue / 评论里的 needs-human |
 
 ## D. 这周的作业
 
