@@ -161,6 +161,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/ai-engineer-cohort-07-w7-agents-react (90-min · 53 slides · Agents 基础 + ReAct)
+      - name: Build AI Engineer W7 Agents ReAct
+        working-directory: lessons/ai-engineer-cohort-07-w7-agents-react
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
       - name: Build lessons/ai-new-jobs-talk
@@ -418,6 +425,9 @@ jobs:
           mkdir -p _site/lessons/ai-engineer-cohort-07-w6-tool-calling-mcp
           cp -r lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/dist/* _site/lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/
           cp lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/PRD.md lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/RUNSHEET.md lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w6-tool-calling-mcp/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w7-agents-react
+          cp -r lessons/ai-engineer-cohort-07-w7-agents-react/dist/* _site/lessons/ai-engineer-cohort-07-w7-agents-react/
+          cp lessons/ai-engineer-cohort-07-w7-agents-react/PRD.md lessons/ai-engineer-cohort-07-w7-agents-react/RUNSHEET.md lessons/ai-engineer-cohort-07-w7-agents-react/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w7-agents-react/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w7-agents-react/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/

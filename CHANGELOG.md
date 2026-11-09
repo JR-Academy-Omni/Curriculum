@@ -1,5 +1,6 @@
 ## 2026-11-08
 
+- 新增 AI Engineer 第七期 W7「Agents 基础 + The ReAct Framework」53 页 Talk Deck（90 分钟，讲师 Harris）：谁决定下一步、ReAct、Claude Agent SDK、State、停止条件、失败处理、副作用与审批、框架选型；沿用 W6 退款客服例子，附可运行 demo（合成数据，写操作只返回 simulated，67 项测试）与讲师备注（N）；接入 deploy.yml 并登记 lessons.html（Draft / Local，部署后核验再标已部署）（`lessons/ai-engineer-cohort-07-w7-agents-react`）
 - 新增并发布 OPC 创业营 W12「让生意自己运转」37 页 Talk Deck：主线为 GitHub 记忆仓库 → 话题调查 → 生成公众号文章与网页 → Eval 打分与发布后反馈 → PR 批准后自动发布，另含六种自动化形态、三种 Codex 实现、失败方式与重跑；配记忆仓库课程包（每日内容与 GitHub Pages 发布工作流）、本机与 GitHub 两套 6 任务练习包、讲师演示仓库、讲师流程与任务书；接入 deploy.yml 并登记 lessons.html（`lessons/ai-solo-founder-w12`）
 
 ## 2026-11-07 · 课程目录链接修复
