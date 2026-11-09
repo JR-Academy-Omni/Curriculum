@@ -154,6 +154,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/claude-65-agents-verification (45-min · 23 slides · Bowen Jia)
+      - name: Build Claude 65 agents verification lesson
+        working-directory: lessons/claude-65-agents-verification
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-engineer-cohort-07-w6-tool-calling-mcp (90-min · 41 slides · Tool Calling, MCP & CLI)
       - name: Build AI Engineer W6 Tool Calling MCP
         working-directory: lessons/ai-engineer-cohort-07-w6-tool-calling-mcp
@@ -737,6 +744,12 @@ jobs:
           if [ -d lessons/startup-finance-compliance-advanced/dist ]; then
             mkdir -p _site/lessons/startup-finance-compliance-advanced
             cp -r lessons/startup-finance-compliance-advanced/dist/* _site/lessons/startup-finance-compliance-advanced/
+          fi
+
+          # Claude 65 agents verification · Bowen Jia · 45 min · 23 slides
+          if [ -d lessons/claude-65-agents-verification/dist ]; then
+            mkdir -p _site/lessons/claude-65-agents-verification
+            cp -r lessons/claude-65-agents-verification/dist/* _site/lessons/claude-65-agents-verification/
           fi
 
           # lessons/ai-new-jobs-talk: 60-min 公开讲座 slide deck (React + Vite · 40 张 slide)
