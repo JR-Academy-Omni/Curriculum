@@ -11,7 +11,7 @@ import { classroomConfig } from "../classroom.config";
 import { useClassroomBridge } from "./classroomBridge";
 
 const Logo = () => (
-  <img className="brand-logo" src="https://jiangren.com.au/icon/logo-zh.svg" alt="匠人学院" />
+  <img className="brand-logo" src="https://jracademy.ai/icon/logo-zh.svg" alt="匠人学院" />
 );
 
 const DECK_WIDTH = 1600;

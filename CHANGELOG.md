@@ -1,3 +1,9 @@
+## 2026-11-09 · 前端域名链接复核（本地，未部署）
+
+- 目录、课程公开资料与课件中的现行官网链接改为 jracademy.ai，保留 URL 路径、参数及锚点。
+- 保留历史研究、发布快照和课程备份中的原始来源地址；API、邮箱不变。
+- Curriculum 继续独立执行根 robots 禁抓取、响应头及 HTML noindex,nofollow、公开 sitemap 排除和不接入 GA 的规则。
+
 ## 2026-11-08
 
 - 新增 AI Engineer 第七期 W7「Agents 基础 + The ReAct Framework」53 页 Talk Deck（90 分钟，讲师 Harris）：谁决定下一步、ReAct、Claude Agent SDK、State、停止条件、失败处理、副作用与审批、框架选型；沿用 W6 退款客服例子，附可运行 demo（合成数据，写操作只返回 simulated，67 项测试）与讲师备注（N）；接入 deploy.yml 并登记 lessons.html（Draft / Local，部署后核验再标已部署）（`lessons/ai-engineer-cohort-07-w7-agents-react`）

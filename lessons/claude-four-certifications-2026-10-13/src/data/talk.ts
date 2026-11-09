@@ -133,7 +133,7 @@ export const slides: TalkSlide[] = [
     "learningUrl": "https://academy.claude.com/courses/claude-101",
     "learningScreenshot": "images/learn-associate.png",
     "certScreenshot": "images/cert-course-ccao-f.png",
-    "certUrl": "https://jiangren.com.au/certifications/exam/ccao-f/learn/exam-overview",
+    "certUrl": "https://jracademy.ai/certifications/exam/ccao-f/learn/exam-overview",
     "examDomains": [
       {
         "english": "Prompting and Task Execution",
@@ -209,7 +209,7 @@ export const slides: TalkSlide[] = [
     "learningUrl": "https://academy.claude.com/courses/building-with-the-claude-api",
     "learningScreenshot": "images/learn-developer.png",
     "certScreenshot": "images/cert-course-ccdv-f.png",
-    "certUrl": "https://jiangren.com.au/certifications/exam/ccdv-f/learn/exam-overview",
+    "certUrl": "https://jracademy.ai/certifications/exam/ccdv-f/learn/exam-overview",
     "examDomains": [
       {
         "english": "Agents and Workflows",
@@ -273,7 +273,7 @@ export const slides: TalkSlide[] = [
     "learningUrl": "https://academy.claude.com/courses/introduction-to-model-context-protocol",
     "learningScreenshot": "images/learn-architect.png",
     "certScreenshot": "images/cert-course-ccar-f.png",
-    "certUrl": "https://jiangren.com.au/certifications/exam/ccar-f/learn/exam-overview",
+    "certUrl": "https://jracademy.ai/certifications/exam/ccar-f/learn/exam-overview",
     "examDomains": [
       {
         "english": "Agentic Architecture & Orchestration",
@@ -323,7 +323,7 @@ export const slides: TalkSlide[] = [
     "learningUrl": "https://academy.claude.com/courses/deploying-claude-enterprise-with-confidence",
     "learningScreenshot": "images/learn-professional.png",
     "certScreenshot": "images/cert-course-ccar-p.png",
-    "certUrl": "https://jiangren.com.au/certifications/exam/ccar-p/learn/exam-overview",
+    "certUrl": "https://jracademy.ai/certifications/exam/ccar-p/learn/exam-overview",
     "examDomains": [
       {
         "english": "Solution Design & Architecture",

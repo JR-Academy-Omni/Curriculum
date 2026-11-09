@@ -15,7 +15,7 @@ export default function ContentSlide({ spec }: { spec: SlideSpec }) {
 	</DeckFrame>;
 
 	if (spec.layout === 'cta') return <DeckFrame tag={spec.tag} title={spec.title} subtitle={spec.subtitle} bg={bg} accent={spec.accent} titleSize={66}>
-		<div style={{height:'100%',display:'grid',placeItems:'center'}}><a href="https://jiangren.com.au/program-course/ai-engineer-bootcamp" target="_blank" rel="noreferrer" style={{fontFamily:fonts.mono,fontSize:30,fontWeight:800,color:colors.dark,textDecoration:'none',background:colors.yellow,border:`3px solid ${colors.dark}`,borderRadius:18,boxShadow:`10px 10px 0 ${colors.red}`,padding:'34px 46px'}}>{spec.aside}</a></div>
+		<div style={{height:'100%',display:'grid',placeItems:'center'}}><a href="https://jracademy.ai/program-course/ai-engineer-bootcamp" target="_blank" rel="noreferrer" style={{fontFamily:fonts.mono,fontSize:30,fontWeight:800,color:colors.dark,textDecoration:'none',background:colors.yellow,border:`3px solid ${colors.dark}`,borderRadius:18,boxShadow:`10px 10px 0 ${colors.red}`,padding:'34px 46px'}}>{spec.aside}</a></div>
 	</DeckFrame>;
 
 	if (spec.layout === 'code') return <DeckFrame tag={spec.tag} title={spec.title} subtitle={spec.subtitle} bg={bg} accent={spec.accent} titleSize={54}>

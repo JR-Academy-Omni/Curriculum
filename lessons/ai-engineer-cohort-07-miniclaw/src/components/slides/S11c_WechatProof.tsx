@@ -1,6 +1,6 @@
 import { DeckFrame, AnimatedGroup, Label, colors, fonts } from '../deck';
 
-const screenshotUrl = 'https://jiangren.com.au/alumni-offers/ai-engineer-bootcamp/04-ey-vs-macquarie-2offers-chat.jpg';
+const screenshotUrl = 'https://jracademy.ai/alumni-offers/ai-engineer-bootcamp/04-ey-vs-macquarie-2offers-chat.jpg';
 
 export default function S11c_WechatProof(){return <DeckFrame tag="真实微信截图 · 隐私已打码" title="第 4 期学员同时拿到两个 AI 岗位 Offer" subtitle="一份是 EY Senior Consultant – AI Engineer，一份是 Macquarie Software Engineer – AI Enablement。截图已在官网公开使用。" accent={colors.yellow} titleSize={48}>
 	<div style={{height:'100%',display:'grid',gridTemplateColumns:'.92fr 1.08fr',gap:34,minHeight:0}}>

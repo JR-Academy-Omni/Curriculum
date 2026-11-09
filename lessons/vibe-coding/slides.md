@@ -589,7 +589,7 @@ class: text-center
 </div>
 
 <iframe
-  src="https://jiangren.com.au/roadmaps/ai-coding"
+  src="https://jracademy.ai/roadmaps/ai-coding"
   style="width: 100%; height: 740px; border: 1px solid rgba(20,20,19,0.10); border-radius: 12px; background: white; box-shadow: 0 1px 2px rgba(20,20,19,0.04), 0 4px 16px rgba(20,20,19,0.06);"
   loading="lazy"
 ></iframe>
