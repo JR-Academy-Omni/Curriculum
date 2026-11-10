@@ -1,3 +1,7 @@
+## 官网域名规则（Owner 2026-11-10）
+
+现行官网为 `https://jracademy.ai`，Admin 为 `https://admin.jracademy.ai`。新写及修订的官网、课程、文章、分享、canonical 和操作文档链接统一使用新域名，保持既有路径与参数。主业务 API 继续使用 `https://api.jiangren.com.au`；不得机械替换 API、网关、邮件、视频或静态资源服务地址。旧官网仅作为跳转来源、兼容配置或带日期的历史证据，不再作为新增前端链接的默认值。Curriculum 继续禁止抓取与索引，不进入 sitemap，不接 GA/GA4/GTM。本规则不授权修改运行配置、部署或外部平台操作。
+
 # AGENTS.md
 
 ## Owner 硬规则：Curriculum 不接入 GA，禁止爬虫抓取和索引（2026-10-26）

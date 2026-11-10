@@ -89,7 +89,7 @@ ai-engineer-bootcamp/hero/programmer-age-35-en.md  # 英文 hero
 
 ### 中英双语规则
 
-- **同一群学员**（jiangren.com.au 双语站，next-intl 切换）
+- **同一群学员**（jracademy.ai 双语站，next-intl 切换）
 - **共享 taxonomy**（受众 / 痛点 / 格式 不重新设计，每条字段加英文翻译）
 - **英文版不是逐字翻译**，是同一核心 message 的英文表达
 - **格式映射**：xhs(小红书) ↔ Instagram/LinkedIn Post，wechat-cover(朋友圈) ↔ LinkedIn/Instagram Cover，hero ↔ hero

@@ -128,7 +128,7 @@ argument-hint: "[YYYY-MM-DD 可选，默认今天]"
 ### 必须有的元素（每张都必须）
 - **日期 bar**（顶栏 `YYYY-MM-DD`）
 - **番号**（单图显示 `01 / 05`，合集显示 `DIGEST`）
-- **brand bar 底栏**（`📰 JR Academy AI 日报 · jiangren.com.au/blog`）
+- **brand bar 底栏**（`📰 JR Academy AI 日报 · jracademy.ai/blog`）
 
 不要放二维码 / 联系方式 / 绝对化用语（和 xhs-poster 聚光合规一致）。
 

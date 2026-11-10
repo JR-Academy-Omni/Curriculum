@@ -3,7 +3,7 @@
 22 页现场主持演示稿，使用 curriculum talk-deck 模板，1600×900。
 
 ## 使用
-- 线上放映：https://jiangren.com.au/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=1
+- 线上放映：https://jracademy.ai/curriculum/lessons/melbourne-ai-startup-showcase-networking/editions/2026-09/?page=1
 - 历史 PPTX 仅为旧版存档，不再交付或重新生成；当前交付为 HTML 在线课件。
 - 本地 PDF 交付：`output/Melbourne-AI-Showcase-2026-09.pdf`，可离线投屏。
 - 网页：本目录运行 `npm run dev -- --host 127.0.0.1 --port 5197`，打开 http://127.0.0.1:5197/ 。首次使用需 `npm install`。PPTX/PDF 是本地导出，不随网页发布。
