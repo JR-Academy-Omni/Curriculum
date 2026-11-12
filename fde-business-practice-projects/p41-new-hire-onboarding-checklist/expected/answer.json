@@ -1,0 +1,106 @@
+{
+ "today": "2026-11-12",
+ "rules": {
+  "due": "入职日 + offset；开工前的任务落在周六日就提前到周五",
+  "start_date_conflict": "HR 系统和 offer 信不一致时先按较早日期排，并通知 HR 确认",
+  "valid_confirmation": "只有 owner_role 对应角色的人确认才算完成",
+  "due_soon_days": 3
+ },
+ "total_tasks": 28,
+ "done": 5,
+ "status_counts": {
+  "done": 5,
+  "overdue": 2,
+  "due_soon": 5,
+  "upcoming": 12,
+  "invalid_confirmation": 1,
+  "unassigned": 3
+ },
+ "by_hire": {
+  "H01": {
+   "name": "赵敏",
+   "tasks": 9,
+   "done": 4,
+   "overdue": [],
+   "due_soon": [
+    "T03"
+   ],
+   "invalid": [
+    "T05"
+   ],
+   "unassigned": []
+  },
+  "H02": {
+   "name": "Jack Nguyen",
+   "tasks": 10,
+   "done": 1,
+   "overdue": [
+    "T02"
+   ],
+   "due_soon": [
+    "T03",
+    "T04",
+    "T07",
+    "T08"
+   ],
+   "invalid": [],
+   "unassigned": []
+  },
+  "H03": {
+   "name": "孙悦",
+   "tasks": 9,
+   "done": 0,
+   "overdue": [
+    "T01"
+   ],
+   "due_soon": [],
+   "invalid": [],
+   "unassigned": [
+    "T07",
+    "T10",
+    "T11"
+   ]
+  }
+ },
+ "flags": [
+  {
+   "hire": "H01",
+   "type": "确认人角色不对",
+   "detail": "T05 准备笔记本电脑并装好软件：由 王佳（HR）确认，这项要 IT 本人确认，不算完成"
+  },
+  {
+   "hire": "H02",
+   "type": "入职日期不一致",
+   "detail": "HR 系统 2026-11-17，offer 信 2026-11-24；先按较早的 2026-11-17 排截止日，请 HR 王佳和本人确认"
+  },
+  {
+   "hire": "H02",
+   "type": "清单里出现敏感信息",
+   "detail": "T02 备注里有 TFN 和银行账号；清单和 Slack 不能存，提醒本人走 HR 系统重新提交，并删除微信记录"
+  },
+  {
+   "hire": "H03",
+   "type": "缺少主管",
+   "detail": "new-hires 里没有 manager_id，主管的任务没人负责，请 HR 王佳找郑总确认汇报对象"
+  }
+ ],
+ "reminders": {
+  "Tom Lee": [
+   "H01 T05（2026-11-13，invalid_confirmation）",
+   "H02 T04（2026-11-13，due_soon）"
+  ],
+  "李伟": [
+   "H02 T07（2026-11-13，due_soon）",
+   "H02 T08（2026-11-13，due_soon）"
+  ],
+  "王佳": [
+   "H01 T03（2026-11-13，due_soon）",
+   "H02 T02（2026-11-10，overdue）",
+   "H02 T03（2026-11-13，due_soon）",
+   "H03 T01（2026-11-10，overdue）",
+   "H03 T07（2026-11-20，没有主管，请先确认负责人）",
+   "H03 T10（2026-11-24，没有主管，请先确认负责人）",
+   "H03 T11（2026-11-28，没有主管，请先确认负责人）"
+  ]
+ }
+}

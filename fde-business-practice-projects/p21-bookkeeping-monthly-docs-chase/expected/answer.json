@@ -1,0 +1,200 @@
+{
+ "period": "2026-10",
+ "today": "2026-11-12",
+ "internal_due": "2026-11-07",
+ "clients": 12,
+ "files_received": 33,
+ "complete_to_review": [
+  "C01",
+  "C02",
+  "C04",
+  "C05",
+  "C10"
+ ],
+ "reminders_to_send": [
+  {
+   "client_id": "C03",
+   "reminder_no": 1,
+   "missing": [
+    "银行对账单（WBC-7710）"
+   ]
+  },
+  {
+   "client_id": "C06",
+   "reminder_no": 2,
+   "missing": [
+    "POS 销售报表"
+   ]
+  },
+  {
+   "client_id": "C07",
+   "reminder_no": 1,
+   "missing": [
+    "银行对账单（HSBC-0931）"
+   ]
+  },
+  {
+   "client_id": "C08",
+   "reminder_no": 2,
+   "missing": [
+    "工资汇总",
+    "进货 / 费用发票"
+   ]
+  },
+  {
+   "client_id": "C11",
+   "reminder_no": 1,
+   "missing": [
+    "银行对账单（NAB-6654）",
+    "信用卡对账单",
+    "进货 / 费用发票"
+   ]
+  }
+ ],
+ "escalate_to_accountant_call": [
+  "C09"
+ ],
+ "skipped_paused": [
+  "C12"
+ ],
+ "file_holds": [
+  {
+   "received_id": "R005",
+   "type": "期间不对",
+   "action": "不算收到，在提醒里请客户重发",
+   "detail": "C03 WBC-7710 传的是 2026-09，要的是 2026-10"
+  },
+  {
+   "received_id": "R028",
+   "type": "发件人不是客户",
+   "action": "不归档到任何客户，提醒会计核实（可能是钓鱼邮件）",
+   "detail": "accounts@golden-wok-billing.example 不在客户邮箱里，虽然说是老街面馆的对账单"
+  },
+  {
+   "received_id": "R030",
+   "type": "文件打不开",
+   "action": "不算收到，在提醒里请客户发不带密码的版本",
+   "detail": "C07 HSBC-0931 对账单有密码"
+  },
+  {
+   "received_id": "R033",
+   "type": "重复上传",
+   "action": "只算一次，不用找客户",
+   "detail": "C05 进货 / 费用发票 重复"
+  }
+ ],
+ "client_status": [
+  {
+   "client_id": "C01",
+   "business": "老街面馆",
+   "status": "齐全",
+   "missing": [],
+   "next": "进会计复核（Helen）"
+  },
+  {
+   "client_id": "C02",
+   "business": "Bright Smile Cleaning",
+   "status": "齐全",
+   "missing": [],
+   "next": "进会计复核（Mark）"
+  },
+  {
+   "client_id": "C03",
+   "business": "Coastal Tiles",
+   "status": "缺件",
+   "missing": [
+    "银行对账单（WBC-7710）"
+   ],
+   "next": "发第 1 次提醒（起草后经行政确认）"
+  },
+  {
+   "client_id": "C04",
+   "business": "安妮花店",
+   "status": "齐全",
+   "missing": [],
+   "next": "进会计复核（Mark）"
+  },
+  {
+   "client_id": "C05",
+   "business": "Harbour IT Services",
+   "status": "齐全",
+   "missing": [],
+   "next": "进会计复核（Helen）"
+  },
+  {
+   "client_id": "C06",
+   "business": "小林按摩",
+   "status": "缺件",
+   "missing": [
+    "POS 销售报表"
+   ],
+   "next": "发第 2 次提醒（起草后经行政确认）"
+  },
+  {
+   "client_id": "C07",
+   "business": "Golden Grain Trading",
+   "status": "缺件",
+   "missing": [
+    "银行对账单（HSBC-0931）"
+   ],
+   "next": "发第 1 次提醒（起草后经行政确认）"
+  },
+  {
+   "client_id": "C08",
+   "business": "甜心烘焙",
+   "status": "缺件",
+   "missing": [
+    "工资汇总",
+    "进货 / 费用发票"
+   ],
+   "next": "发第 2 次提醒（起草后经行政确认）"
+  },
+  {
+   "client_id": "C09",
+   "business": "Swift Couriers",
+   "status": "缺件",
+   "missing": [
+    "信用卡对账单",
+    "工资汇总"
+   ],
+   "next": "已提醒 2 次，不再发邮件，转会计 Helen 打电话"
+  },
+  {
+   "client_id": "C10",
+   "business": "Parkside Tutoring",
+   "status": "齐全",
+   "missing": [],
+   "next": "进会计复核（Mark）"
+  },
+  {
+   "client_id": "C11",
+   "business": "Red Gum Landscaping",
+   "status": "缺件",
+   "missing": [
+    "银行对账单（NAB-6654）",
+    "信用卡对账单",
+    "进货 / 费用发票"
+   ],
+   "next": "发第 1 次提醒（起草后经行政确认）"
+  },
+  {
+   "client_id": "C12",
+   "business": "东方旅游",
+   "status": "暂停服务，跳过",
+   "missing": [],
+   "next": "不发提醒"
+  }
+ ],
+ "rules": {
+  "required_docs": {
+   "bank_statement": "每个银行账户一份（account_ref 要对上）",
+   "card_statement": "has_credit_card = Y",
+   "pos_sales_report": "has_pos = Y",
+   "payroll_summary": "has_payroll = Y",
+   "purchase_invoices": "所有客户，一个月一包"
+  },
+  "counts_as_received": "发件邮箱是客户登记邮箱、期间是 2026-10、文件打得开；同一类同一账户只算一次",
+  "reminder_stage": "已发 0 次 → 第 1 次提醒；已发 1 次 → 第 2 次提醒；已发 2 次及以上 → 不再发邮件，转会计电话",
+  "paused": "service_status = paused 不发任何提醒"
+ }
+}

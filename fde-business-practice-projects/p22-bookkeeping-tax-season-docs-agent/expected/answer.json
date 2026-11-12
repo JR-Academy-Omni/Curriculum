@@ -1,0 +1,136 @@
+{
+ "financial_year": "FY2025-26",
+ "clients": 8,
+ "documents": 19,
+ "messages": 8,
+ "client_checklist": {
+  "C01": {
+   "name": "Emily Tan",
+   "required": 3,
+   "valid_received": 3,
+   "missing": [],
+   "conflicts": [],
+   "status": "资料齐全，待 Kelly 复核"
+  },
+  "C02": {
+   "name": "David Nguyen",
+   "required": 4,
+   "valid_received": 2,
+   "missing": [
+    "出租物业年度结单（12 Example Street, Cannington）",
+    "出租物业贷款利息结单（12 Example Street, Cannington）"
+   ],
+   "conflicts": [],
+   "status": "缺件"
+  },
+  "C03": {
+   "name": "陈浩",
+   "required": 3,
+   "valid_received": 2,
+   "missing": [
+    "用车日志或公里记录"
+   ],
+   "conflicts": [],
+   "status": "缺件"
+  },
+  "C04": {
+   "name": "王军",
+   "required": 2,
+   "valid_received": 1,
+   "missing": [
+    "收入报表（Perth Metro Logistics）"
+   ],
+   "conflicts": [],
+   "status": "缺件"
+  },
+  "C05": {
+   "name": "Sarah O'Brien",
+   "required": 2,
+   "valid_received": 2,
+   "missing": [],
+   "conflicts": [
+    "收到 Northbridge Bar & Grill 的收入报表，但问卷里没有这个雇主"
+   ],
+   "status": "和问卷对不上，先请会计确认"
+  },
+  "C06": {
+   "name": "刘佳",
+   "required": 3,
+   "valid_received": 2,
+   "missing": [
+    "股票买卖成交单"
+   ],
+   "conflicts": [],
+   "status": "缺件"
+  },
+  "C07": {
+   "name": "Ben Carter",
+   "required": 2,
+   "valid_received": 1,
+   "missing": [
+    "加密货币交易记录"
+   ],
+   "conflicts": [],
+   "status": "缺件"
+  },
+  "C08": {
+   "name": "张丽",
+   "required": 4,
+   "valid_received": 3,
+   "missing": [
+    "收入报表（Lotus Restaurant）"
+   ],
+   "conflicts": [],
+   "status": "缺件"
+  }
+ },
+ "document_holds": [
+  {
+   "doc_id": "D005",
+   "client_id": "C02",
+   "type": "财年不对",
+   "detail": "出租物业年度结单是 FY2024-25，要的是 FY2025-26"
+  },
+  {
+   "doc_id": "D009",
+   "client_id": "C04",
+   "type": "不是本人的资料",
+   "detail": "收入报表上的名字是 Li Mei"
+  },
+  {
+   "doc_id": "D012",
+   "client_id": "C05",
+   "type": "和问卷对不上",
+   "detail": "收到 Northbridge Bar & Grill 的收入报表，但问卷里没有这个雇主"
+  }
+ ],
+ "ready_for_review": [
+  "C01"
+ ],
+ "missing_docs": [
+  "C02",
+  "C03",
+  "C04",
+  "C06",
+  "C07",
+  "C08"
+ ],
+ "conflict_to_accountant": [
+  "C05"
+ ],
+ "handoff_to_kelly": [
+  "T01",
+  "T02",
+  "T05",
+  "T08"
+ ],
+ "weekly_reminder_clients": [
+  "C04",
+  "C08"
+ ],
+ "rules": {
+  "valid_document": "财年是 FY2025-26、名字是客户本人、能对上问卷里的一项",
+  "status": "有和问卷对不上的资料 → 先请会计确认；否则有缺件 → 缺件；否则 → 资料齐全，待复核",
+  "one_message_per_day": "今天已经核对过身份并回复过的客户，缺件清单并进回复，不再另发提醒"
+ }
+}

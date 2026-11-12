@@ -1,0 +1,85 @@
+{
+ "month": "2026-10",
+ "rows_in_file": 73,
+ "rows_counted": 68,
+ "issues": [
+  {
+   "txn_id": "T10513",
+   "type": "重复导出",
+   "reason": "同一 txn_id 出现两次，只算一次"
+  },
+  {
+   "txn_id": "T10569",
+   "type": "非完成交易",
+   "reason": "状态为 refunded，不计入"
+  },
+  {
+   "txn_id": "T10570",
+   "type": "非完成交易",
+   "reason": "状态为 voided，不计入"
+  },
+  {
+   "txn_id": "T10571",
+   "type": "会员号不存在",
+   "reason": "M099 不在会员表里，不进会员月报，请前台核对是谁"
+  },
+  {
+   "txn_id": "T10572",
+   "type": "不在本月",
+   "reason": "日期是 2026-11-01，归到下个月"
+  }
+ ],
+ "store": {
+  "service_spend_total": "6485.00",
+  "member_service_spend": "5955.00",
+  "walk_in_service_spend": "530.00",
+  "by_category": {
+   "面部": "2838.00",
+   "睫毛": "1572.00",
+   "身体": "1140.00",
+   "美甲": "935.00"
+  },
+  "cash_received": {
+   "card": "4380.00",
+   "cash": "781.00",
+   "total": "5161.00"
+  },
+  "prepaid_used_total": "3324.00",
+  "topup_paid_total": "2000.00",
+  "topup_credit_total": "2250.00",
+  "closing_balance_total": "3981.00",
+  "active_members": 13,
+  "members_no_visit": [
+   "M1010",
+   "M1015"
+  ],
+  "new_members": [
+   "M1013"
+  ],
+  "negative_balance": [
+   "M1008"
+  ],
+  "top3_services": [
+   [
+    "补水护理",
+    11
+   ],
+   [
+    "睫毛补睫",
+    9
+   ],
+   [
+    "睫毛嫁接",
+    8
+   ]
+  ]
+ },
+ "rules": {
+  "counted": "status = completed、txn_id 不重复、日期在 2026-10、会员号在会员表里（空 = 散客，进门店合计不进会员月报）",
+  "service_spend": "服务项目的标价合计，不管用什么付",
+  "cash_received": "刷卡 + 现金实收 = 服务刷卡现金 + 充值实付",
+  "top_service": "次数最多的项目；次数一样取单价高的",
+  "closing_balance": "期初余额 + 充值到账（含赠送）− 储值扣款",
+  "topup_bonus": "充 500 送 50、充 1000 送 150（教学假设）"
+ }
+}

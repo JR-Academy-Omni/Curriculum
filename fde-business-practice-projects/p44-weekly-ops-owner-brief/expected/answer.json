@@ -1,0 +1,159 @@
+{
+ "week": "2026-11-02 至 2026-11-08",
+ "report_date": "2026-11-09",
+ "jobs_in_file": 41,
+ "completed_jobs": 38,
+ "cancelled_jobs": 3,
+ "rescheduled_jobs": 0,
+ "revenue_completed_ex_gst": 9139.0,
+ "revenue_by_service": {
+  "退租清洁": {
+   "jobs": 8,
+   "revenue_ex_gst": 3430.0
+  },
+  "办公室保洁": {
+   "jobs": 10,
+   "revenue_ex_gst": 2046.0
+  },
+  "常规保洁": {
+   "jobs": 11,
+   "revenue_ex_gst": 1938.0
+  },
+  "地毯清洗": {
+   "jobs": 9,
+   "revenue_ex_gst": 1725.0
+  }
+ },
+ "labour_hours_actual": 143.9,
+ "labour_cost_est": 5468.2,
+ "expenses_counted": 10,
+ "expenses_total_ex_gst": 1841.2,
+ "expenses_by_category": {
+  "燃油": 511.9,
+  "车辆": 420.0,
+  "清洁耗材": 351.3,
+  "设备": 349.0,
+  "广告": 120.0,
+  "软件订阅": 89.0
+ },
+ "expenses_held": [
+  {
+   "date": "2026-11-06",
+   "category": "清洁耗材",
+   "supplier": "BrightClean Wholesale",
+   "amount_ex_gst": "286.40",
+   "note": "每周耗材（刷卡记录，收据已在 11-02 录过）",
+   "reason": "跟本周另一条同供应商、同金额的耗材重复（备注写明收据已录过）"
+  },
+  {
+   "date": "2026-10-30",
+   "category": "保险",
+   "supplier": "SafeCover",
+   "amount_ex_gst": "610.00",
+   "note": "公众责任险月付",
+   "reason": "日期不在本周，属于上周的支出"
+  }
+ ],
+ "gross_profit_est": 1829.6,
+ "gross_margin_pct": 20.0,
+ "invoiced_this_week_ex_gst": 9003.0,
+ "invoices_this_week_counted": 37,
+ "duplicate_invoices": [
+  {
+   "invoice_no": "INV-5351",
+   "same_job_as": "INV-5336",
+   "job_id": "J1140",
+   "amount_ex_gst": 204.0
+  }
+ ],
+ "voided_invoices": [
+  "INV-5350"
+ ],
+ "completed_jobs_not_invoiced": [
+  {
+   "job_id": "J1124",
+   "customer_id": "C021",
+   "date": "2026-11-05",
+   "price_ex_gst": 136.0
+  }
+ ],
+ "overdue_receivables": [
+  {
+   "invoice_no": "INV-5208",
+   "customer_id": "C007",
+   "due_date": "2026-10-20",
+   "days_overdue": 20,
+   "amount_ex_gst": 416.0
+  },
+  {
+   "invoice_no": "INV-5233",
+   "customer_id": "C015",
+   "due_date": "2026-10-28",
+   "days_overdue": 12,
+   "amount_ex_gst": 390.0
+  },
+  {
+   "invoice_no": "INV-5241",
+   "customer_id": "C003",
+   "due_date": "2026-10-31",
+   "days_overdue": 9,
+   "amount_ex_gst": 208.0
+  },
+  {
+   "invoice_no": "INV-5266",
+   "customer_id": "C019",
+   "due_date": "2026-11-05",
+   "days_overdue": 4,
+   "amount_ex_gst": 165.0
+  }
+ ],
+ "overdue_receivables_ex_gst": 1179.0,
+ "overrun_jobs": [
+  {
+   "job_id": "J1113",
+   "service_type": "退租清洁",
+   "crew": "A",
+   "hours_booked": 6.0,
+   "hours_actual": 8.5,
+   "price_ex_gst": 420.0,
+   "labour_cost_est": 323.0
+  },
+  {
+   "job_id": "J1131",
+   "service_type": "退租清洁",
+   "crew": "D",
+   "hours_booked": 6.0,
+   "hours_actual": 9.0,
+   "price_ex_gst": 420.0,
+   "labour_cost_est": 342.0
+  }
+ ],
+ "feedback_count": 10,
+ "avg_rating": 4.0,
+ "low_ratings": [
+  {
+   "customer_id": "C016",
+   "rating": 2,
+   "text": "约的 9 点，快 11 点才到，也没人提前说"
+  },
+  {
+   "customer_id": "C021",
+   "rating": 1,
+   "text": "清洁的时候把我家书柜上的玻璃花瓶碰碎了，当时没人告诉我，我回家才发现。要求赔偿。"
+  }
+ ],
+ "vs_last_week": {
+  "completed_jobs": 1,
+  "revenue_pct": 8.5,
+  "gross_profit_pct": -10.8,
+  "avg_rating_diff": -0.6,
+  "overdue_receivables_diff": 598.0
+ },
+ "rules": {
+  "revenue": "status = completed 的 price_ex_gst 合计",
+  "labour_cost": "hours_actual × 38.0（教学假设）",
+  "gross_profit": "营业额 − 人工估算 − 本周支出（去重、只算本周日期）",
+  "overrun": "hours_actual ≥ hours_booked × 1.25",
+  "overdue": "AUTHORISED、非重复、due_date 早于 2026-11-09"
+ }
+}

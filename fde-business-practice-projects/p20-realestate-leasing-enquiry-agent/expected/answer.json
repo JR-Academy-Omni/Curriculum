@@ -1,0 +1,146 @@
+{
+ "messages_in_file": 15,
+ "listings": 6,
+ "inspection_slots": 11,
+ "applications_checked": {
+  "APP01": {
+   "listing_id": "L01",
+   "applicant": "Ken Zhou",
+   "missing": [],
+   "complete": true
+  },
+  "APP02": {
+   "listing_id": "L02",
+   "applicant": "Sarah Lim",
+   "missing": [
+    "身份证明还差 30 分",
+    "收入证明（最近 4 周工资单，或存款 / 家人资助证明）",
+    "推荐人还差 1 位"
+   ],
+   "complete": false
+  },
+  "APP03": {
+   "listing_id": "L06",
+   "applicant": "林晓",
+   "missing": [
+    "推荐人还差 1 位",
+    "宠物申请表"
+   ],
+   "complete": false
+  }
+ },
+ "computed_by_rule": {
+  "Q01": {
+   "listing": "L01",
+   "status": "available",
+   "pets": "需申请",
+   "slot_options": [
+    {
+     "slot_id": "S01",
+     "start": "2026-11-12 17:30",
+     "places_left": 1
+    },
+    {
+     "slot_id": "S02",
+     "start": "2026-11-15 10:00",
+     "places_left": 2
+    }
+   ]
+  },
+  "Q02": {
+   "listing": "L02",
+   "requested": "2026-11-14 上午",
+   "saturday_10am_full": true,
+   "slot_options": [
+    {
+     "slot_id": "S05",
+     "start": "2026-11-18 17:30",
+     "places_left": 4
+    },
+    {
+     "slot_id": "S06",
+     "start": "2026-11-21 10:00",
+     "places_left": 5
+    }
+   ]
+  },
+  "Q03": {
+   "listing": "L04",
+   "status": "leased",
+   "similar_rule": "在租、卧室数 ≥ 原房源 − 1、周租在 ±15% 以内",
+   "similar": [
+    {
+     "listing_id": "L02",
+     "address": "8 Sample Place, Harris Park",
+     "beds": 3,
+     "rent_pw": 780
+    }
+   ]
+  },
+  "Q07": {
+   "application": "APP02",
+   "verified_by": "发件邮箱与申请登记邮箱一致",
+   "listing_id": "L02",
+   "applicant": "Sarah Lim",
+   "missing": [
+    "身份证明还差 30 分",
+    "收入证明（最近 4 周工资单，或存款 / 家人资助证明）",
+    "推荐人还差 1 位"
+   ],
+   "complete": false
+  },
+  "Q08": {
+   "application": "APP03",
+   "verified": false,
+   "note": "网站聊天没有可核对的联系方式，不透露申请情况"
+  },
+  "Q09": {
+   "listing": "L01",
+   "slot_options": [
+    {
+     "slot_id": "S01",
+     "start": "2026-11-12 17:30",
+     "places_left": 1
+    },
+    {
+     "slot_id": "S02",
+     "start": "2026-11-15 10:00",
+     "places_left": 2
+    }
+   ]
+  },
+  "Q13": {
+   "listing": "L01",
+   "rent_pw": 650,
+   "bond_4_weeks": 2600,
+   "rent_upfront_2_weeks": 1300,
+   "basis": "教学假设，以租约和 NSW Fair Trading 为准"
+  },
+  "Q14": {
+   "listing": "L05",
+   "status": "application_pending"
+  }
+ },
+ "handoffs": [
+  "Q05",
+  "Q12"
+ ],
+ "replies_drafted": [
+  "Q01",
+  "Q02",
+  "Q03",
+  "Q04",
+  "Q05",
+  "Q06",
+  "Q07",
+  "Q08",
+  "Q09",
+  "Q10",
+  "Q11",
+  "Q12",
+  "Q13",
+  "Q14",
+  "Q15"
+ ],
+ "note": "所有回复和看房预约都要租赁顾问在 Slack 批准后才发出 / 生效。"
+}

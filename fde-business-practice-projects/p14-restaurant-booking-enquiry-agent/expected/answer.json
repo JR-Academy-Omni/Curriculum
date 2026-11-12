@@ -1,0 +1,195 @@
+{
+ "messages_in_file": 14,
+ "existing_bookings": 168,
+ "computed_by_rule": {
+  "B01": {
+   "request": "2026-11-14 19:00 4 位",
+   "result": {
+    "table_id": "T10",
+    "seats": 4
+   }
+  },
+  "B02": {
+   "request": "2026-11-13 18:30 2 位",
+   "result": {
+    "table_id": "T01",
+    "seats": 2
+   }
+  },
+  "B03": {
+   "request": "2026-11-14 19:00 4 位",
+   "result": null,
+   "alternatives": [
+    {
+     "date": "2026-11-14",
+     "start": "17:00",
+     "table_id": "T05",
+     "seats": 4
+    },
+    {
+     "date": "2026-11-14",
+     "start": "19:30",
+     "table_id": "T07",
+     "seats": 4
+    },
+    {
+     "date": "2026-11-14",
+     "start": "20:00",
+     "table_id": "T07",
+     "seats": 4
+    }
+   ]
+  },
+  "B04": {
+   "request": "2026-11-27 19:00 18 位",
+   "result": "超过 12 人，Agent 不查位，转经理"
+  },
+  "B05": {
+   "request": "2026-11-17 12:00 6 位",
+   "result": {
+    "closed": true
+   },
+   "next_open_day_same_time": {
+    "date": "2026-11-18",
+    "result": {
+     "table_id": "T11",
+     "seats": 6
+    }
+   }
+  },
+  "B06": {
+   "request": "2026-11-15 12:00 3 位",
+   "result": {
+    "table_id": "T05",
+    "seats": 4
+   }
+  },
+  "B07": {
+   "lookup": {
+    "verified": false
+   },
+   "note": "周五 18:00 确实有一位陈先生，但电话对不上，不能取消，也不能告诉对方「有这个预约」"
+  },
+  "B08": {
+   "request": "2026-11-21 18:30 10 位",
+   "result": {
+    "table_id": "VIP",
+    "seats": 12
+   }
+  },
+  "B09": {
+   "request": "2026-11-21 19:00 12 位",
+   "result": null,
+   "vip_alternatives_same_day": []
+  },
+  "B11": {
+   "lookup": {
+    "verified": true,
+    "booking_id": "B360",
+    "date": "2026-11-15",
+    "start": "18:00",
+    "party_size": 2,
+    "table_id": "T02"
+   },
+   "request": "2026-11-15 19:00 3 位（原 18:00 2 位，T02）",
+   "result": {
+    "table_id": "T05",
+    "seats": 4
+   }
+  },
+  "B13": {
+   "duplicate_of": "B01",
+   "rule": "同一个电话号码、同一天同一时间同样人数，已有待审批的暂占，不再占第二张桌"
+  },
+  "B14": {
+   "request": "2026-11-12 20:00 2 位",
+   "result": {
+    "table_id": "T02",
+    "seats": 2
+   }
+  }
+ },
+ "pending_holds_after_run": [
+  {
+   "booking_id": "HOLD-B01",
+   "date": "2026-11-14",
+   "start": "19:00",
+   "table_id": "T10",
+   "party_size": 4,
+   "name": "张女士",
+   "phone": "0412 345 000",
+   "status": "pending"
+  },
+  {
+   "booking_id": "HOLD-B02",
+   "date": "2026-11-13",
+   "start": "18:30",
+   "table_id": "T01",
+   "party_size": 2,
+   "name": "Emma Clarke",
+   "phone": "emma.clarke@mail.example",
+   "status": "pending"
+  },
+  {
+   "booking_id": "HOLD-B06",
+   "date": "2026-11-15",
+   "start": "12:00",
+   "table_id": "T05",
+   "party_size": 3,
+   "name": "Kelly Ng",
+   "phone": "kelly.ng@mail.example",
+   "status": "pending"
+  },
+  {
+   "booking_id": "HOLD-B08",
+   "date": "2026-11-21",
+   "start": "18:30",
+   "table_id": "VIP",
+   "party_size": 10,
+   "name": "李小姐",
+   "phone": "li.xm@mail.example",
+   "status": "pending"
+  },
+  {
+   "booking_id": "HOLD-B11",
+   "date": "2026-11-15",
+   "start": "19:00",
+   "table_id": "T05",
+   "party_size": 3,
+   "name": "赵女士",
+   "phone": "0418 662 000",
+   "status": "pending"
+  },
+  {
+   "booking_id": "HOLD-B14",
+   "date": "2026-11-12",
+   "start": "20:00",
+   "table_id": "T02",
+   "party_size": 2,
+   "name": "Jason",
+   "phone": "0447 905 000",
+   "status": "pending"
+  }
+ ],
+ "summary": {
+  "holds_proposed": 6,
+  "handoffs": [
+   "B04",
+   "B06",
+   "B08",
+   "B09",
+   "B12"
+  ],
+  "no_booking_change": [
+   "B03",
+   "B04",
+   "B05",
+   "B07",
+   "B09",
+   "B10",
+   "B12",
+   "B13"
+  ]
+ },
+ "note": "暂占只是给前台审批的建议；任何订位、改约、取消都要人批准后才写进订位表。"
+}

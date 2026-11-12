@@ -1,0 +1,232 @@
+{
+ "emails_in_file": 18,
+ "by_category": {
+  "钓鱼与诈骗": 3,
+  "供应商发票与付款": 3,
+  "售后与退款": 2,
+  "客户资料变更": 2,
+  "物流通知": 1,
+  "订单状态": 1,
+  "招聘": 1,
+  "推销": 1,
+  "客户询价": 1,
+  "订单变更": 1,
+  "内部通知": 1,
+  "自动回复": 1
+ },
+ "by_priority": {
+  "当天": 7,
+  "普通": 7,
+  "紧急": 4
+ },
+ "drafted_replies": 6,
+ "no_reply": [
+  "E01",
+  "E02",
+  "E03",
+  "E06",
+  "E08",
+  "E10",
+  "E11",
+  "E13",
+  "E14",
+  "E15",
+  "E17",
+  "E18"
+ ],
+ "checks": {
+  "E01": {
+   "sender": {
+    "domain": "fastfreight.example",
+    "status": "已知"
+   }
+  },
+  "E02": {
+   "sender": {
+    "domain": "m365-security-alerts.example",
+    "status": "陌生"
+   },
+   "links_outside_known_domains": [
+    "https://login-microsoft365.example/verify"
+   ]
+  },
+  "E03": {
+   "sender": {
+    "domain": "oakline-timber.example",
+    "status": "已知"
+   },
+   "invoice": {
+    "invoice_no": "INV-OT-7781",
+    "duplicate": false
+   }
+  },
+  "E04": {
+   "sender": {
+    "domain": "bayliving.example",
+    "status": "已知"
+   },
+   "order": {
+    "customer": "Bay Living",
+    "status": "在途",
+    "eta_in_table": "2026-11-14",
+    "eta_latest": "2026-11-21",
+    "changed_by": "E01"
+   }
+  },
+  "E05": {
+   "sender": {
+    "domain": "mail.example",
+    "status": "陌生"
+   }
+  },
+  "E06": {
+   "sender": {
+    "domain": "oakline-timbers.example",
+    "status": "疑似仿冒",
+    "looks_like": "oakline-timber.example",
+    "edit_distance": 1
+   }
+  },
+  "E07": {
+   "sender": {
+    "domain": "mail.example",
+    "status": "陌生"
+   },
+   "order": {
+    "customer": "Ivy Chen（个人客户）",
+    "status": "已送达",
+    "eta_in_table": "2026-11-07",
+    "eta_latest": "2026-11-07",
+    "changed_by": ""
+   }
+  },
+  "E08": {
+   "sender": {
+    "domain": "rankboost-seo.example",
+    "status": "陌生"
+   },
+   "links_outside_known_domains": [
+    "https://rankboost-seo.example/offer"
+   ]
+  },
+  "E09": {
+   "sender": {
+    "domain": "nestinteriors.example",
+    "status": "已知"
+   }
+  },
+  "E10": {
+   "sender": {
+    "domain": "oakline-timber.example",
+    "status": "已知"
+   },
+   "invoice": {
+    "invoice_no": "INV-OT-7781",
+    "duplicate": true
+   }
+  },
+  "E11": {
+   "sender": {
+    "domain": "homecraft-fs.example",
+    "status": "已知"
+   }
+  },
+  "E12": {
+   "sender": {
+    "domain": "mail.example",
+    "status": "陌生"
+   },
+   "order": {
+    "customer": "Marcus Lee（个人客户）",
+    "status": "待发货（等柜）",
+    "eta_in_table": "2026-11-14",
+    "eta_latest": "2026-11-21",
+    "changed_by": "E01"
+   }
+  },
+  "E13": {
+   "sender": {
+    "domain": "ato-refunds.example",
+    "status": "陌生"
+   },
+   "links_outside_known_domains": [
+    "https://ato-refunds.example/claim"
+   ]
+  },
+  "E14": {
+   "sender": {
+    "domain": "mumian-furniture.example",
+    "status": "已知"
+   }
+  },
+  "E15": {
+   "sender": {
+    "domain": "bayliving.example",
+    "status": "已知"
+   }
+  },
+  "E16": {
+   "sender": {
+    "domain": "mail.example",
+    "status": "陌生"
+   }
+  },
+  "E17": {
+   "sender": {
+    "domain": "nestinteriors.example",
+    "status": "已知"
+   }
+  },
+  "E18": {
+   "sender": {
+    "domain": "mail.example",
+    "status": "陌生"
+   }
+  }
+ },
+ "lookalike_senders": [
+  "E06"
+ ],
+ "unknown_link_domains": {
+  "E02": [
+   "https://login-microsoft365.example/verify"
+  ],
+  "E08": [
+   "https://rankboost-seo.example/offer"
+  ],
+  "E13": [
+   "https://ato-refunds.example/claim"
+  ]
+ },
+ "duplicate_invoices": [
+  "E10"
+ ],
+ "fraud_or_phishing": [
+  "E02",
+  "E06",
+  "E13"
+ ],
+ "payment_approvals": [
+  {
+   "email_id": "E03",
+   "item": "Oakline INV-OT-7781",
+   "amount": "AUD 8,420.00",
+   "route": "Helen → 周总（超过 5,000）"
+  },
+  {
+   "email_id": "E11",
+   "item": "HomeCraft PI-HC-2611 定金",
+   "amount": "USD 6,600.00",
+   "route": "Helen → 周总（外币定金）"
+  }
+ ],
+ "orders_with_eta_change": [
+  "SO-2291",
+  "SO-2310"
+ ],
+ "rules": {
+  "lookalike": "发件域名不在已知列表、但跟某个已知域名的编辑距离 ≤ 2",
+  "duplicate_invoice": "同供应商同发票号已在 bills-register 或今天更早的邮件里",
+  "eta": "订单的 container 有当天物流通知时，用通知里的可送货日期"
+ }
+}

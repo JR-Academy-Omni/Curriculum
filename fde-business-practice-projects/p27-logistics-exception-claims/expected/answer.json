@@ -1,0 +1,128 @@
+{
+ "events_in_file": 18,
+ "events_processed": 17,
+ "receiver_notices": [
+  "E01",
+  "E03",
+  "E04",
+  "E05",
+  "E07",
+  "E08",
+  "E09",
+  "E14",
+  "E15",
+  "E16",
+  "E17"
+ ],
+ "client_only_notices": [
+  "E13"
+ ],
+ "log_only": [
+  "E02",
+  "E18"
+ ],
+ "holds": [
+  {
+   "event_id": "E06",
+   "waybill": "KD261106",
+   "decision": "暂停，交经理判断",
+   "reason": "签收 2026-10-27，今天已经 15 天，超过 7 天的报损期限"
+  },
+  {
+   "event_id": "E10",
+   "waybill": "KD261103",
+   "decision": "跳过（重复事件）",
+   "reason": "同一运单同一异常今天已经处理过"
+  },
+  {
+   "event_id": "E11",
+   "waybill": "KD261199",
+   "decision": "暂停，交 Kelly 查单号",
+   "reason": "运单号不在发货台账里"
+  },
+  {
+   "event_id": "E12",
+   "waybill": "KD261112",
+   "decision": "补进现有理赔 CL-2611-003",
+   "reason": "这个运单已经有 open 理赔，不新开、不重复通知"
+  }
+ ],
+ "new_claims": [
+  {
+   "claim_id": "CL-2611-004",
+   "waybill": "KD261104",
+   "client": "小森家居",
+   "carrier": "FastLane Freight",
+   "type": "damaged",
+   "declared_value": 89.0,
+   "insured": "N",
+   "amount_claimed": 89.0,
+   "approval_route": "Kelly"
+  },
+  {
+   "claim_id": "CL-2611-005",
+   "waybill": "KD261105",
+   "client": "小森家居",
+   "carrier": "袋鼠快运",
+   "type": "damaged",
+   "declared_value": 640.0,
+   "insured": "Y",
+   "amount_claimed": 640.0,
+   "approval_route": "Kelly → 经理老郑"
+  },
+  {
+   "claim_id": "CL-2611-006",
+   "waybill": "KD261107",
+   "client": "小森家居",
+   "carrier": "FastLane Freight",
+   "type": "lost",
+   "declared_value": 230.0,
+   "insured": "N",
+   "amount_claimed": 100.0,
+   "approval_route": "Kelly"
+  },
+  {
+   "claim_id": "CL-2611-007",
+   "waybill": "KD261108",
+   "client": "优果零食",
+   "carrier": "袋鼠快运",
+   "type": "lost",
+   "declared_value": 1180.0,
+   "insured": "Y",
+   "amount_claimed": 1180.0,
+   "approval_route": "Kelly → 经理老郑"
+  },
+  {
+   "claim_id": "CL-2611-008",
+   "waybill": "KD261115",
+   "client": "优果零食",
+   "carrier": "FastLane Freight",
+   "type": "damaged",
+   "declared_value": 45.0,
+   "insured": "N",
+   "amount_claimed": 45.0,
+   "approval_route": "Kelly"
+  },
+  {
+   "claim_id": "CL-2611-009",
+   "waybill": "KD261116",
+   "client": "优果零食",
+   "carrier": "袋鼠快运",
+   "type": "lost",
+   "declared_value": 65.0,
+   "insured": "N",
+   "amount_claimed": 65.0,
+   "approval_route": "Kelly"
+  }
+ ],
+ "new_claims_total": 2119.0,
+ "claims_need_manager": [
+  "CL-2611-005",
+  "CL-2611-007"
+ ],
+ "rules": {
+  "damage_window_days": 7,
+  "uninsured_cap": 100.0,
+  "manager_limit": 500.0
+ }
+}

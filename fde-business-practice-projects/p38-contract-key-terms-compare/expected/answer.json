@@ -1,0 +1,131 @@
+{
+ "customer": "晨光咖啡（Morning Light Cafe Group）",
+ "contracts": [
+  {
+   "contract": "A",
+   "supplier": "Riverbend Dairy Co Pty Ltd",
+   "start": "2026-12-01",
+   "end": "2028-11-30",
+   "months": 24,
+   "auto_renewal": false,
+   "non_renewal_notice_deadline": null,
+   "price_per_litre_ex_gst": 1.68,
+   "delivery_fee_per_drop": 0.0,
+   "payment_terms": "月结，次月底后 14 天",
+   "liability_cap": "过去 12 个月货款总额（人身伤害等除外）",
+   "termination": "未写（缺失）",
+   "clauses_present": {
+    "Term": true,
+    "Renewal": false,
+    "Products and Price": true,
+    "Ordering and Delivery": true,
+    "Payment": true,
+    "Quality and Returns": true,
+    "Liability": true,
+    "Termination": false,
+    "Governing Law": true
+   },
+   "missing_core_clauses": [
+    "Termination"
+   ],
+   "est_value_per_drop": 116.67,
+   "est_annual_milk": 109200.0,
+   "est_annual_delivery": 0.0,
+   "est_annual_total": 109200.0,
+   "flags": [
+    {
+     "type": "缺少条款",
+     "detail": "合同里没有 Termination 条款：没写什么情况下可以提前解约、要提前多久通知"
+    }
+   ]
+  },
+  {
+   "contract": "B",
+   "supplier": "Sunfield Milk Supply Pty Ltd",
+   "start": "2026-12-01",
+   "end": "2027-11-30",
+   "months": 12,
+   "auto_renewal": true,
+   "non_renewal_notice_deadline": "2027-09-01",
+   "price_per_litre_ex_gst": 1.59,
+   "delivery_fee_per_drop": 12.0,
+   "payment_terms": "开票后 7 天",
+   "liability_cap": "过去 12 个月货款总额",
+   "termination": "违约 14 天未改可解约；首期满后 60 天通知可解约",
+   "clauses_present": {
+    "Term": true,
+    "Renewal": true,
+    "Products and Price": true,
+    "Ordering and Delivery": true,
+    "Payment": true,
+    "Quality and Returns": true,
+    "Liability": true,
+    "Termination": true,
+    "Governing Law": true
+   },
+   "missing_core_clauses": [],
+   "est_value_per_drop": 110.42,
+   "est_annual_milk": 103350.0,
+   "est_annual_delivery": 11232.0,
+   "est_annual_total": 114582.0,
+   "flags": [
+    {
+     "type": "自动续约",
+     "detail": "不通知就自动续 12 个月；想不续，最晚 2027-09-01 前书面通知（合同期满 2027-11-30 前 90 天）"
+    },
+    {
+     "type": "价格可单方调整",
+     "detail": "供应商提前 30 天书面通知就能改价，没有上限"
+    }
+   ]
+  },
+  {
+   "contract": "C",
+   "supplier": "Coastline Fresh Foods Pty Ltd",
+   "start": "2026-12-01",
+   "end": "2028-05-31",
+   "months": 18,
+   "auto_renewal": false,
+   "non_renewal_notice_deadline": null,
+   "price_per_litre_ex_gst": 1.52,
+   "delivery_fee_per_drop": 25.0,
+   "payment_terms": "开票后 30 天",
+   "liability_cap": "AUD 500 与当月货款取低",
+   "termination": "违约 30 天未改可解约；随时 90 天通知可解约",
+   "clauses_present": {
+    "Term": true,
+    "Renewal": false,
+    "Products and Price": true,
+    "Ordering and Delivery": true,
+    "Payment": true,
+    "Quality and Returns": true,
+    "Liability": true,
+    "Termination": true,
+    "Governing Law": true
+   },
+   "missing_core_clauses": [],
+   "est_value_per_drop": 105.56,
+   "est_annual_milk": 98800.0,
+   "est_annual_delivery": 23400.0,
+   "est_annual_total": 122200.0,
+   "flags": [
+    {
+     "type": "责任上限偏低",
+     "detail": "赔偿上限 = AUD 500 和当月货款两者取低；另外签收后的变质（包括供应商冷链故障造成的）不负责"
+    },
+    {
+     "type": "运费门槛",
+     "detail": "按现在的用量每次送货约 105.56 元，不到 150 元免运费线，每次要付 25 元，单价最低但总价不是最低"
+    }
+   ]
+  }
+ ],
+ "assumptions": {
+  "weekly_litres": 1250,
+  "drops_per_week": 18,
+  "weeks": 52,
+  "note": "年度成本是按店里自己估的用量算的粗估，不含 GST；C 合同每次送货约 105.56 元，不到 150 元免运费线，按每次 25 元运费算"
+ },
+ "cheapest_by_estimate": "A",
+ "human_review_required": "这张对比表只做信息整理，不是法律意见。签之前请律师或懂合同的人审一遍，特别是标出来的条款。"
+}

@@ -1,0 +1,240 @@
+{
+ "updates_in_file": 12,
+ "today": "2026-11-12",
+ "working_days": "周一至周五",
+ "rule_inputs_from_updates": {
+  "actual_finish": {
+   "A1": "2026-11-12"
+  },
+  "delay_working_days": {
+   "C1": 3,
+   "B1": 2
+  },
+  "fixed_dates": {
+   "B2": "2026-11-18"
+  },
+  "reported_pct": {
+   "A1": 100,
+   "B1": 60,
+   "A4": 80
+  }
+ },
+ "schedule_impact": [
+  {
+   "task_id": "A1",
+   "site": "J-2611",
+   "task": "厨房电线收尾",
+   "sub_id": "SC-ELEC",
+   "planned": "2026-11-09 → 2026-11-10",
+   "new": "2026-11-09 → 2026-11-12",
+   "finish_shift_working_days": 2
+  },
+  {
+   "task_id": "A2",
+   "site": "J-2611",
+   "task": "厨房石膏板",
+   "sub_id": "SC-PLAS",
+   "planned": "2026-11-11 → 2026-11-13",
+   "new": "2026-11-13 → 2026-11-17",
+   "finish_shift_working_days": 2
+  },
+  {
+   "task_id": "A3",
+   "site": "J-2611",
+   "task": "厨房橱柜安装",
+   "sub_id": "SC-CAB",
+   "planned": "2026-11-16 → 2026-11-18",
+   "new": "2026-11-18 → 2026-11-20",
+   "finish_shift_working_days": 2
+  },
+  {
+   "task_id": "A6",
+   "site": "J-2611",
+   "task": "全屋刷漆",
+   "sub_id": "SC-PAINT",
+   "planned": "2026-11-19 → 2026-11-25",
+   "new": "2026-11-23 → 2026-11-27",
+   "finish_shift_working_days": 2
+  },
+  {
+   "task_id": "B1",
+   "site": "J-2614",
+   "task": "加建房框架",
+   "sub_id": "SC-CARP",
+   "planned": "2026-11-02 → 2026-11-13",
+   "new": "2026-11-02 → 2026-11-17",
+   "finish_shift_working_days": 2
+  },
+  {
+   "task_id": "B2",
+   "site": "J-2614",
+   "task": "框架验收",
+   "sub_id": "BS-01",
+   "planned": "2026-11-16 → 2026-11-16",
+   "new": "2026-11-18 → 2026-11-18",
+   "finish_shift_working_days": 2
+  },
+  {
+   "task_id": "B3",
+   "site": "J-2614",
+   "task": "加建房石膏板",
+   "sub_id": "SC-PLAS",
+   "planned": "2026-11-17 → 2026-11-20",
+   "new": "2026-11-19 → 2026-11-24",
+   "finish_shift_working_days": 2
+  },
+  {
+   "task_id": "C1",
+   "site": "J-2616",
+   "task": "浴室水管粗装",
+   "sub_id": "SC-PLUM",
+   "planned": "2026-11-10 → 2026-11-12",
+   "new": "2026-11-10 → 2026-11-17",
+   "finish_shift_working_days": 3
+  },
+  {
+   "task_id": "C2",
+   "site": "J-2616",
+   "task": "浴室防水",
+   "sub_id": "SC-WP",
+   "planned": "2026-11-13 → 2026-11-16",
+   "new": "2026-11-18 → 2026-11-19",
+   "finish_shift_working_days": 3
+  },
+  {
+   "task_id": "C3",
+   "site": "J-2616",
+   "task": "浴室贴砖",
+   "sub_id": "SC-TILE",
+   "planned": "2026-11-17 → 2026-11-23",
+   "new": "2026-11-20 → 2026-11-26",
+   "finish_shift_working_days": 3
+  }
+ ],
+ "dependency_conflicts_in_old_plan": [
+  {
+   "task_id": "A2",
+   "planned_start": "2026-11-11",
+   "depends_on": "A1",
+   "predecessor_new_finish": "2026-11-12",
+   "issue": "厨房石膏板 原计划 2026-11-11 开工，但 厨房电线收尾 现在要到 2026-11-12 才完成"
+  },
+  {
+   "task_id": "A3",
+   "planned_start": "2026-11-16",
+   "depends_on": "A2",
+   "predecessor_new_finish": "2026-11-17",
+   "issue": "厨房橱柜安装 原计划 2026-11-16 开工，但 厨房石膏板 现在要到 2026-11-17 才完成"
+  },
+  {
+   "task_id": "A6",
+   "planned_start": "2026-11-19",
+   "depends_on": "A3",
+   "predecessor_new_finish": "2026-11-20",
+   "issue": "全屋刷漆 原计划 2026-11-19 开工，但 厨房橱柜安装 现在要到 2026-11-20 才完成"
+  },
+  {
+   "task_id": "B2",
+   "planned_start": "2026-11-16",
+   "depends_on": "B1",
+   "predecessor_new_finish": "2026-11-17",
+   "issue": "框架验收 原计划 2026-11-16 开工，但 加建房框架 现在要到 2026-11-17 才完成"
+  },
+  {
+   "task_id": "B3",
+   "planned_start": "2026-11-17",
+   "depends_on": "B2",
+   "predecessor_new_finish": "2026-11-18",
+   "issue": "加建房石膏板 原计划 2026-11-17 开工，但 框架验收 现在要到 2026-11-18 才完成"
+  },
+  {
+   "task_id": "C2",
+   "planned_start": "2026-11-13",
+   "depends_on": "C1",
+   "predecessor_new_finish": "2026-11-17",
+   "issue": "浴室防水 原计划 2026-11-13 开工，但 浴室水管粗装 现在要到 2026-11-17 才完成"
+  },
+  {
+   "task_id": "C3",
+   "planned_start": "2026-11-17",
+   "depends_on": "C2",
+   "predecessor_new_finish": "2026-11-19",
+   "issue": "浴室贴砖 原计划 2026-11-17 开工，但 浴室防水 现在要到 2026-11-19 才完成"
+  }
+ ],
+ "progress_check": [
+  {
+   "task_id": "A4",
+   "task": "主浴室贴砖",
+   "reported_pct": 80,
+   "should_be_pct_by_today": 60,
+   "gap": 20,
+   "flag": "正常"
+  },
+  {
+   "task_id": "B1",
+   "task": "加建房框架",
+   "reported_pct": 60,
+   "should_be_pct_by_today": 80,
+   "gap": -20,
+   "flag": "落后"
+  },
+  {
+   "task_id": "C1",
+   "task": "浴室水管粗装",
+   "reported_pct": 70,
+   "should_be_pct_by_today": 67,
+   "gap": 3,
+   "flag": "正常"
+  }
+ ],
+ "site_last_finish": {
+  "J-2611": {
+   "planned_last_finish": "2026-11-25",
+   "new_last_finish": "2026-11-27",
+   "shift_working_days": 2
+  },
+  "J-2614": {
+   "planned_last_finish": "2026-11-20",
+   "new_last_finish": "2026-11-24",
+   "shift_working_days": 2
+  },
+  "J-2616": {
+   "planned_last_finish": "2026-11-23",
+   "new_last_finish": "2026-11-26",
+   "shift_working_days": 3
+  }
+ },
+ "duplicates": [
+  {
+   "update_id": "U09",
+   "duplicate_of": "U01"
+  }
+ ],
+ "summary": {
+  "handoff": [
+   "U02",
+   "U03",
+   "U04",
+   "U05",
+   "U07",
+   "U10",
+   "U11"
+  ],
+  "urgent": [
+   "U05"
+  ],
+  "proposals_need_approval": [
+   "U01",
+   "U02",
+   "U06",
+   "U07",
+   "U12"
+  ]
+ },
+ "rules": {
+  "behind_points": 10,
+  "should_be_pct": "到昨天为止的工作日数 ÷ 计划工作日数",
+  "shift": "开工 = max(原计划开工, 前置工序新完工的下一个工作日)；工期按工作日不变；报告了延误的再顺延"
+ }
+}
