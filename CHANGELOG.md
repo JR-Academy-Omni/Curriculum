@@ -3,6 +3,10 @@
 - 修正课程海报与校招页面中不带路径的旧站链接及展示文字。
 - 保持课件禁止抓取、禁止索引、不接入统计；本条发布前状态为待部署。
 
+## 2026-11-13 · CareKind Voice AI 课件部署
+
+- 将 `care-kind-workshop` 接入 Curriculum 自动部署，公开路径为 `/curriculum/lessons/care-kind-workshop/`；课程目录同步增加“打开课件”入口。
+
 ## 2026-11-09 · 前端域名链接复核（本地，未部署）
 
 - 目录、课程公开资料与课件中的现行官网链接改为 jracademy.ai，保留 URL 路径、参数及锚点。

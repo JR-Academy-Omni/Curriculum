@@ -161,6 +161,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build CareKind Voice AI confirmed transcript workshop (22-slide English Talk Deck)
+      - name: Build CareKind Voice AI workshop
+        working-directory: care-kind-workshop
+        run: |
+          npm ci
+          npm run build
+
       # Build lessons/ai-engineer-cohort-07-w6-tool-calling-mcp (90-min · 41 slides · Tool Calling, MCP & CLI)
       - name: Build AI Engineer W6 Tool Calling MCP
         working-directory: lessons/ai-engineer-cohort-07-w6-tool-calling-mcp
@@ -750,6 +757,13 @@ jobs:
           if [ -d lessons/claude-65-agents-verification/dist ]; then
             mkdir -p _site/lessons/claude-65-agents-verification
             cp -r lessons/claude-65-agents-verification/dist/* _site/lessons/claude-65-agents-verification/
+          fi
+
+          # CareKind Voice AI · Confirmed Transcript Pipeline · 22 slides
+          if [ -d care-kind-workshop/dist ]; then
+            mkdir -p _site/lessons/care-kind-workshop
+            cp -r care-kind-workshop/dist/* _site/lessons/care-kind-workshop/
+            cp care-kind-workshop/{README,SLIDES_PROMPT}.md _site/lessons/care-kind-workshop/
           fi
 
           # lessons/ai-new-jobs-talk: 60-min 公开讲座 slide deck (React + Vite · 40 张 slide)
