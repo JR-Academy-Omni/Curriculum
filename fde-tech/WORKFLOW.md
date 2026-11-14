@@ -10,13 +10,13 @@ Canonical course slug: `fde-tech`. Existing sales URL: `/program-course/fde-tech
 4. Preview through `python3 scripts/preview.py`; the course pages have noindex and no analytics. The sales page and `/bootcamp` use the frontend development server.
 5. Review the local source/export with the Skills Data Manager parser and field builder. A missing production Training means a creation plan, not an update and not a zero diff.
 
-## Production boundary
+## Production configuration
 
-Not executed: creating Training, six Modules, Program, Syllabus or twenty Lessons; assigning database IDs; registration/payment; deployment or CI.
+On 2026-11-14, after owner approval, the existing Training was completed and one first-intake Program, one Syllabus, six Modules, 20 Lessons and one PricingOption were created through the authenticated admin API. Full lesson material and all links were read back. The final comparison across the three courses found zero differences in the approved fields. Exact resource identities are retained in `production-bindings.json`.
 
-Before production creation: read and back up current production state, reconcile the local course, show the full diff and obtain explicit sync approval. Confirm teacher IDs, city, dated cohort and pricing applicability through the existing admin workflow. Do not invent those fields. Existing names are Lightman, Joe 韭神, Jason and Roy; they do not establish a per-week teacher allocation.
+Registration is open at the confirmed preorder price with `registrationOnly=true`. Dates, weekly time slots and teacher allocation remain unconfirmed. No real order, payment or student enrolment was created for verification. The website registration entrance is released separately through its GitHub Actions workflow; source/configuration commits do not themselves establish a successful web release.
 
-The source has only local keys until actual IDs are returned. The small approved-course catalogue entry links to `/program-course/fde-tech`, so later Training registration does not rename the sales URL. Existing non-FDE courses keep their `/program-course/{slug}` routes.
+Future syncs must first download current production, preserve its bindings, review differences and obtain approval under the repository rules. The canonical sales URL remains `/program-course/fde-tech`. No existing route is renamed.
 
 ## Scope and evidence
 

@@ -18,11 +18,13 @@ Lesson durations are proposed authoring time allocations (120-minute Workshop, 1
 
 Thirty tasks are a role-selectable collection combined across eight weeks, not thirty complete independent projects everyone is promised to finish. Three authored client briefs cover finance, customer follow-up and employee onboarding; none is a real company client record. Reference records, forecasts and outputs stay within teaching context.
 
-## Production boundary
+## Production configuration
 
-Not executed: Training creation, six Module creations, Program / Syllabus creation, sixteen Lesson creations, payment/enrolment binding, production sync, commit, push, CI or deployment.
+On 2026-11-14, after owner approval, the existing Training was completed and one first-intake Program, one Syllabus, six Modules, 16 Lessons and one PricingOption were created through the authenticated admin API. Full lesson material and all links were read back. The final comparison across the three courses found zero differences in the approved fields. Exact resource identities are retained in `production-bindings.json`.
 
-Before a later approved sync: read current production state, preserve it, reconcile local source, show the complete create/update diff, confirm required teacher/city/cohort fields, and use the existing admin workflow. Afterwards download/read back to verify mappings and content. Keep `/fde/business` for catalogue links after commercial registration; a new Training slug does not rename the public sales route.
+Registration is open at the confirmed preorder price with `registrationOnly=true`. Dates, weekly time slots and teacher allocation remain unconfirmed. No real order, payment or student enrolment was created for verification. The website registration entrance is released separately through its GitHub Actions workflow; source/configuration commits do not themselves establish a successful web release.
+
+Future syncs must first download current production, preserve its bindings, review differences and obtain approval under the repository rules. The canonical sales URL remains `/program-course/fde-business`. No existing route is renamed.
 
 ## Source notes
 
