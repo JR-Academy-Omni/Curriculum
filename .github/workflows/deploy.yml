@@ -3,9 +3,45 @@ name: Deploy Curriculum to Server
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      deck_slug:
+        description: Lesson directory slug to deploy; empty selects changes from the push
+        type: string
+        default: ''
+      full_deploy:
+        description: Build and publish the complete Curriculum site
+        type: boolean
+        default: false
+
+concurrency:
+  group: curriculum-production
+  cancel-in-progress: false
 
 jobs:
+  scope:
+    runs-on: ubuntu-latest
+    outputs:
+      mode: ${{ steps.scope.outputs.mode }}
+      decks: ${{ steps.scope.outputs.decks }}
+      catalog: ${{ steps.scope.outputs.catalog }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Select deployment scope
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.before || '' }}
+          INPUT_DECK: ${{ inputs.deck_slug || '' }}
+          INPUT_FULL: ${{ inputs.full_deploy || false }}
+        run: |
+          set -euo pipefail
+          python3 scripts/curriculum-deploy-scope.py --base "$BASE_SHA" --head "$GITHUB_SHA" --deck "$INPUT_DECK" --full "$INPUT_FULL" >> "$GITHUB_OUTPUT"
+
   build-and-deploy:
+    needs: scope
+    if: needs.scope.outputs.mode == 'full'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -1727,6 +1763,106 @@ jobs:
 
       # Deploy to server via SCP
       - name: Deploy to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "_site/*"
+          target: "/var/www/static/curriculum"
+          strip_components: 1
+          overwrite: true
+
+
+  deploy-lessons:
+    needs: scope
+    if: needs.scope.outputs.mode == 'lessons'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Build and assemble selected lessons only
+        env:
+          DECKS_JSON: ${{ needs.scope.outputs.decks }}
+          COPY_CATALOG: ${{ needs.scope.outputs.catalog }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import shutil
+          import subprocess
+
+          root = Path.cwd().resolve()
+          stage = root / '_site'
+          decks = json.loads(os.environ['DECKS_JSON'])
+          catalog = os.environ['COPY_CATALOG'] == 'true'
+          if not isinstance(decks, list) or len(decks) != len(set(decks)):
+              raise SystemExit('Deployment scope must contain a unique lesson list')
+          if not decks and not catalog:
+              raise SystemExit('No selected lesson or catalog to publish')
+          stage.mkdir()
+          for slug in decks:
+              if not isinstance(slug, str) or not re.fullmatch(r'[a-z][a-z0-9]*(?:-[a-z0-9]+)*', slug):
+                  raise SystemExit('Invalid lesson slug in deployment scope')
+              lesson = root / 'lessons' / slug
+              if not lesson.is_dir() or lesson.is_symlink() or lesson.resolve().parent != root / 'lessons':
+                  raise SystemExit(f'Missing or invalid selected lesson: {slug}')
+              package = lesson / 'package.json'
+              if package.is_file():
+                  manifest = json.loads(package.read_text())
+                  if not manifest.get('scripts', {}).get('build'):
+                      raise SystemExit(f'Selected lesson has no build command: {slug}')
+                  subprocess.run(['bun', 'install', '--frozen-lockfile'], cwd=lesson, check=True)
+                  subprocess.run(['bun', 'run', 'build'], cwd=lesson, check=True)
+                  artifact = lesson / 'dist'
+              elif (lesson / 'public' / 'index.html').is_file():
+                  artifact = lesson / 'public'
+              elif (lesson / 'index.html').is_file():
+                  artifact = lesson
+              else:
+                  raise SystemExit(f'Selected lesson has no publishable entry: {slug}')
+              if not (artifact / 'index.html').is_file():
+                  raise SystemExit(f'Build did not produce index.html: {slug}')
+              target = stage / 'lessons' / slug
+              shutil.copytree(
+                  artifact, target,
+                  ignore=shutil.ignore_patterns('node_modules', '.git', '.env', '.env.*', 'out', 'tmp'),
+              )
+              for document in lesson.glob('*.md'):
+                  if document.is_file() and not document.is_symlink():
+                      shutil.copy2(document, target / document.name)
+              documentation = lesson / 'docs'
+              if documentation.is_dir() and not documentation.is_symlink():
+                  shutil.copytree(documentation, target / 'docs', dirs_exist_ok=True)
+              print(f'Assembled selected lesson: {slug}')
+          if catalog:
+              source = root / 'lessons.html'
+              if not source.is_file():
+                  raise SystemExit('Selected lesson catalog is missing')
+              shutil.copy2(source, stage / 'lessons.html')
+          allowed = {'lessons'} | ({'lessons.html'} if catalog else set())
+          if any(item.name not in allowed for item in stage.iterdir()):
+              raise SystemExit('Unexpected site output outside the selected scope')
+          print(f'Prepared {len(decks)} selected lessons; catalog={catalog}')
+          PY
+
+      - name: Keep selected Curriculum HTML out of search
+        run: node scripts/enforce-curriculum-noindex.mjs _site
+
+      - name: Reject analytics in selected Curriculum HTML
+        run: node scripts/check-no-analytics.mjs _site
+
+      - name: Reject old curriculum URLs in selected output
+        run: node scripts/check-curriculum-domain.mjs _site
+
+      - name: Deploy selected lessons and catalog
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SERVER_HOST }}

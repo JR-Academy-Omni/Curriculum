@@ -9,12 +9,11 @@ on:
       catalog_sha:
         description: Expected main commit when publishing only the catalog
         type: string
+  # The main Curriculum workflow owns catalog-only and unrelated lesson changes.
   push:
     branches: [main]
     paths:
       - 'lessons/claude-four-certifications-2026-10-13/**'
-      - 'lessons.html'
-      - '.github/workflows/deploy-claude-four-certifications.yml'
 concurrency:
   group: deploy-claude-four-certifications
   cancel-in-progress: false
