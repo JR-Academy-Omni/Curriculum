@@ -184,6 +184,12 @@ jobs:
 
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
+      - name: Build lessons/enterprise-ai-workspace-l01
+        working-directory: lessons/enterprise-ai-workspace-l01
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       - name: Build lessons/ai-new-jobs-talk
         working-directory: lessons/ai-new-jobs-talk
         run: |
@@ -769,6 +775,11 @@ jobs:
           # lessons/ai-new-jobs-talk: 60-min 公开讲座 slide deck (React + Vite · 40 张 slide)
           # 跨课复用 lesson · 数据源 jiangren.com.au/ai-new-jobs + /career-impact-map
           # Vite build 已 copy public/ 到 dist/，outline.json 也在 dist 里
+          if [ -d lessons/enterprise-ai-workspace-l01/dist ]; then
+            mkdir -p _site/lessons/enterprise-ai-workspace-l01
+            cp -r lessons/enterprise-ai-workspace-l01/dist/. _site/lessons/enterprise-ai-workspace-l01/
+            cp lessons/enterprise-ai-workspace-l01/{PRD,RUNSHEET,WORKSHEET,SOURCE_MAP,README}.md _site/lessons/enterprise-ai-workspace-l01/
+          fi
           if [ -d lessons/ai-new-jobs-talk/dist ]; then
             mkdir -p _site/lessons/ai-new-jobs-talk
             cp -r lessons/ai-new-jobs-talk/dist/* _site/lessons/ai-new-jobs-talk/
