@@ -42,5 +42,5 @@ export const notes: string[] = [
 	"74′ 过渡\n- 读出问题：“面试官给你一个场景，怎么选、怎么讲？”",
 	"74′ 六步回答\n- 对应今天八个部分。第 2 步“单 Agent 基线”最常被跳过。",
 	"76′ 编码 Agent 团队\n- 先说明：这是讲师自己的开源项目（MIT），课后可以直接拿去用。\n- 逐行读右边一列：同一套概念，换到写代码的场景。\n- 重点讲两件：WHITEBOARD.md 只放当前在做的跨项目契约，做完就删；reviewer 没有写工具，只能给结论。",
-	"78′ 收尾\n- 回到主线：先证明一个 Agent 不够，再拆。\n- 本周实践课做 MCP tools，W9 做单 Agent。Multi-Agent 实践是进阶选修，只有证明需要时才做。\n- 最后一页多了两行课后参考：编码 Agent 框架（第 42 页的例子）和 mcp-simplr。",
+	"78′ 收尾\n- 回到主线：先证明一个 Agent 不够，再拆。\n- 本周实践课做 MCP tools，W9 做单 Agent。Multi-Agent 实践是进阶选修，只有证明需要时才做。\n- 底下白框是课外推荐，不是课程内容：讲师自己的两个项目，mcp-simplr.au（帮你一天内把原型部署到生产环境）和 Harness Engineering Framework。说清楚是自己的项目，一句带过。",
 ];

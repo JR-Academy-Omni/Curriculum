@@ -21,6 +21,6 @@ API 信息核对于 2026-11-18。课件里的数字只来自 demo 的实际运�
 | 30 | 委派契约字段、对齐 W7 交接单的八个字段和卡片格式 | 大纲 W8（delegation contract）；W7 课件第 7 部分“一张交接单，八个字段”“哪一张，接手的人能直接开工？”；demo `prompts.py` 的 SHIFT_LEAD |
 | 34 | R-102 未确认转写被挡掉 | demo `carekind.py` 与 `tests/test_handover.py` 的 `test_unconfirmed_transcript_is_never_returned`、`test_draft_cannot_cite_unconfirmed_observation` |
 | 42、43 | Harness Engineering Framework 的模型分工、reviewer 无写工具、WHITEBOARD.md、跨项目按顺序、四个人工关卡 | https://github.com/MCP-Simplr/Harness-Engineering-Framework （`README.md`、`CLAUDE.md`、`.claude/harness/workflow.md`、`.claude/agents/reviewer.md`，核对于 2026-11-18）；讲师本人的项目 |
-| 43 | mcp-simplr.au | 讲师提供的描述；框架仓库 `.claude/harness/module-catalog.md`（托管模块：auth、payments） |
+| 43 | 课外推荐：mcp-simplr.au、Harness Engineering Framework（讲师自己的项目，不属于课程内容） | 讲师提供的描述（mcp-simplr：帮人一天内把原型部署到生产环境）；框架仓库的 GitHub 简介 |
 | 5、全部 demo | 住户、政策 | 课堂合成数据（`data/residents.json`、`data/policy.md`），不是真实的 Aged Care Quality Standards 或 SIRS 规则 |
 | 43 | W8 实践、W9–W11 | 大纲第 5 节实践线和 W11 A2A 说明 |

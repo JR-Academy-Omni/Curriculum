@@ -425,7 +425,7 @@
 
 「接下来：本周实践课把 CareKind 接成 MCP tools 和 CLI；W9 讲 Agent Memory，实践课做单 Agent 的 Bounded CareKind Agent；W10、W11 讲 Harness、长期记忆，跨组织的 Agent 协作放在 W11 治理。」
 
-「两个课后参考：一个是刚才那个编码 Agent 框架；一个是 mcp-simplr.au，用托管的 auth、payments 模块，一天内把原型部署到生产环境。」
+指底下白框：「最后打个小广告，这不是课程内容，是我自己的两个项目。mcp-simplr.au 可以帮你在一天内把原型部署到生产环境；Harness Engineering Framework 就是刚才那个例子，写代码时可以拿去用。有兴趣课后看。」
 
 「本课不布置作业。代码在课程仓库的 w8 文件夹，课后可以自己跑 single 和 team 对比。」
 

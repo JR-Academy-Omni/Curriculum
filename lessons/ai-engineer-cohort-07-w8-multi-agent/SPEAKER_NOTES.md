@@ -187,4 +187,4 @@
 ## 78′ 收尾
 - 回到主线：先证明一个 Agent 不够，再拆。
 - 本周实践课做 MCP tools，W9 做单 Agent。Multi-Agent 实践是进阶选修，只有证明需要时才做。
-- 最后一页多了两行课后参考：编码 Agent 框架（第 42 页的例子）和 mcp-simplr。
+- 底下白框是课外推荐，不是课程内容：讲师自己的两个项目，mcp-simplr.au（帮你一天内把原型部署到生产环境）和 Harness Engineering Framework。说清楚是自己的项目，一句带过。
