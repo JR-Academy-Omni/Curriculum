@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { colors } from '../ui';
 import { Box, Cols, Flow, Page } from './_parts';
 
-// 第 3 部分五页模式共用的版式：上面一条流程，下面三格（什么时候用、什么时候别用、CareKind）。
+// 模式页的版式（现在只有 fan-out 一页用）：上面一条流程，下面三格（什么时候用、什么时候别用、CareKind）。
 export function PatternPage({ title, flow, use, avoid, example }: {
 	title: string;
 	flow: { t: string; d?: string; bg?: string }[];
