@@ -10,7 +10,7 @@ export default function S40_Stops() {
 		    <Box title="③ 规模：平台限制" size={22}>只有一层委派；子线程有上限；roster 固定，不许临时造 Agent。</Box>
 		    <Box title="④ 正常结束" size={22}>协调者交出交班表，session 进入 idle（end_turn）。</Box>
 		  </Cols>
-		  <Say bg={colors.red}><span style={{ color: colors.white }}>预算要在创建 session 时就设好，之后不能再补。</span></Say>
+		  <Say bg={colors.red}><span style={{ color: colors.white }}>预算只能在创建 session 时加上，之后补不了。到了上限是暂停，不是结束：调高或取消预算就会接着跑。</span></Say>
 		</Page>
 	);
 }

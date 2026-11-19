@@ -76,7 +76,7 @@
 | 401 / 没有 key | 这个窗口没有 key，检查 `w8\demo\.env` |
 | 创建 Agent 报 `multiagent` 不被接受 | 账号还没开通新版 multiagent 类型，只讲第 20 页代码 |
 | 卡住很久 | Ctrl+C；说“这正好是为什么要有墙钟上限和预算” |
-| `budget_reached` | 预算到了，正好讲第 35 页；课后可在 `.env` 调 `BUDGET_CENTS` |
+| `budget_reached` | 预算到了，正好讲第 35 页：session 只是暂停，调高或取消预算就会接着跑（demo 把它当作运行结束）；课后可在 `.env` 调 `BUDGET_CENTS` |
 | 协调者走了意想不到的路径 | 当成教学素材：对照第 30 页的契约，看它派活时少写了什么 |
 | API 完全不通 | 改跑 `pytest`，放 `runtime/runs/` 的备份记录 |
 

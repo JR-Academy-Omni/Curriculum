@@ -11,6 +11,7 @@
 - 同日讲师要求把所有失败模式放进同一部分：协调开销（`S12b_Overhead`）从第 2 部分移到第 7 部分（在错误累积之后）；失败总表（第 33 页，后来改为七种，错误累积和协调开销各加一行并指向细讲页）的最右一列改为“怎么解决”，收进原来汇总页里重复和矛盾的处理规则；汇总页（第 31 页）只留正常汇总，重复、矛盾、缺回报指向第 7 部分。第 7 部分封面改为“失败模式与上线以后”，17 分钟；第 2 部分 8 分钟。页数不变，上面几条里的页码已改成现在的页码。
 - 同日讲师认为协调开销那页和前面重复：删掉 `S12b_Overhead`，七种失败总表（第 33 页）里协调开销一行改为指向第 13 页（合并成大块）、第 30 页（传引用）、第 38 页（单 Agent 基线实测），判断方法写进讲师备注。错误累积（第 34 页）保留，因为“怎么一步步传下去”只有这一页讲。共 43 页，第 7 部分 15 分钟，结尾缓冲约 11 分钟。
 - 讲师更正：收尾页的 mcp-simplr.au 和 Harness Engineering Framework 不属于课程内容，只是讲师推广自己的服务。已从“接下来”表里移出，放到单独的白框“课外 · 讲师自己的项目（不属于课程内容）”，描述改用讲师自己的说法。
+- 核对 Managed Agents 文档后补充：预算只能在创建 session 时加上；到上限 session 是暂停，调高（须高于已花费）或取消预算会自动继续。第 35 页红条、讲师备注、讲稿、RUNSHEET 和 demo `handover.py` 注释已改。
 - `notes.ts` 由 `SPEAKER_NOTES.md` 生成，43 节对 43 页（脚本会断言数量一致）。
 - demo：`uv run pytest` 14 项全部通过（不调 API）。
 - demo 用到的 SDK 绑定都在已安装的 `anthropic` 2.6.0 里确认过：`agents.create(multiagent=...)`、`sessions.create(budget=...)`、`sessions.threads`、`agent.custom_tool_use.session_thread_id`、`session.thread_created.agent_name`、`user.custom_tool_result.is_error`。

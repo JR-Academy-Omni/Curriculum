@@ -154,7 +154,8 @@
 - 读底下那句：R-102 的未确认转写在后台就过滤掉了，模型根本看不到。Demo 2 里对应的测试是 `test_unconfirmed_transcript_is_never_returned` 和 `test_draft_cannot_cite_unconfirmed_observation`。
 
 ## 64′ 谁来叫停
-- 四层都在模型外面。重点读红条：预算只能在创建 session 时设。
+- 四层都在模型外面。重点读红条：预算只能在创建 session 时加上，没设的 session 之后加不上。
+- 到了上限，session 是暂停（idle，`budget_reached`），不是结束：对话和容器都还在。调高上限（要高于已花的钱）或取消预算，就会自动接着跑；发什么消息都不能让它继续。demo 的 `handover.py` 把它当作这次运行结束。
 - 平台限制来自文档：一层委派，每个 session 最多 25 个子线程。
 
 ## 66′ 交给人，并且留下记录
