@@ -1,3 +1,7 @@
+# 2026-11-18 · AI Engineer W8 Multi-Agent
+
+新增第七期 W8「Multi-Agent Architectures · CCAR-F Alignment」43 页 Talk Deck（90 分钟，讲师 Harris）：W7 两页回顾、拆分理由与成本、五种编排模式一张表与 fan-out、message passing 与 blackboard、BDI / Contract Net / Blackboard、按子任务选模型、Claude Agent SDK 与 Managed Agents（coordinator / roster / thread）、context isolation、委派契约（对齐 W7 交接单）与汇总、七种失败模式（含错误累积、协调开销）与停止、交给人、审计与单 Agent 基线对比、系统设计面试，Harness Engineering Framework 作例子；例子为 CareKind 交班（合成数据，AI 只写 Draft）；demo 代码在课程代码仓库 w8/，不随课件部署；接入 deploy.yml 并登记 lessons.html（Draft / Local，部署后核验再标已部署）（`lessons/ai-engineer-cohort-07-w8-multi-agent`）
+
 # 2026-11-16 · 课件定向发布
 
 按push差异或手动指定slug选择课件，只构建与覆盖选定目录；列表单独发布，跨课改动保留全量。修复L01成果阅读页完整head；目录页不再触发四证课件重建。
