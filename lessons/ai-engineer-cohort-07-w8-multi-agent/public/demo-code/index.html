@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>AI Engineer W8 · Multi-Agent 课堂代码</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, "Noto Sans SC", system-ui, sans-serif; color: #10162f; background: #fff1e7; }
+    body { margin: 0; padding: 48px 20px; }
+    main { max-width: 900px; margin: auto; background: white; border: 3px solid #10162f; border-radius: 22px; padding: 34px; box-shadow: 8px 8px 0 #10162f; }
+    h1 { margin-top: 0; font-size: clamp(30px, 5vw, 48px); }
+    p, li { font-size: 18px; line-height: 1.7; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0; }
+    .button { display: inline-block; padding: 12px 18px; border: 2px solid #10162f; border-radius: 10px; color: #10162f; background: #ffde59; font-weight: 750; text-decoration: none; }
+    .button.secondary { background: white; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 5px; }
+    .note { border-left: 6px solid #ff5757; padding: 12px 18px; background: #fff1e7; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>W8 · Multi-Agent 课堂代码</h1>
+    <p>CareKind 交班演示：比较 single-agent 与 multi-agent 架构。数据和政策均为课堂合成内容。</p>
+    <div class="actions">
+      <a class="button" href="./w8-demo-code.zip" download>下载完整代码 ZIP</a>
+      <a class="button secondary" href="./README.md">查看运行说明</a>
+      <a class="button secondary" href="../">返回课件</a>
+    </div>
+    <h2>主要入口</h2>
+    <ul>
+      <li><a href="./handover.py"><code>handover.py</code></a>：运行 single/team 交班演示</li>
+      <li><a href="./setup_agents.py"><code>setup_agents.py</code></a>：创建 Agent 环境与 roster</li>
+      <li><a href="./carekind.py"><code>carekind.py</code></a>：权限、工具、审计和幂等逻辑</li>
+      <li><a href="./prompts.py"><code>prompts.py</code></a>：Agent prompts 与委派契约</li>
+      <li><a href="./eval_compare.py"><code>eval_compare.py</code></a>：single-agent 与 multi-agent 对比</li>
+      <li><a href="./tests/test_handover.py"><code>tests/test_handover.py</code></a>：14 项离线测试</li>
+    </ul>
+    <p class="note">离线测试不需要 API；运行 Managed Agents 演示需要自行配置有对应权限的 Anthropic API Key。请勿上传或分享真实密钥。</p>
+  </main>
+</body>
+</html>

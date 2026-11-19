@@ -23,7 +23,7 @@ bun run build
 
 ## demo
 
-代码在课程代码仓库的 `w8/` 文件夹（本地 `AI-JR-Teaching/w8/demo`），不随课件部署。运行在 Claude Managed Agents（beta）上：
+代码已公开收录在本课 `public/demo-code/`，并随课件部署；线上可直接查看文件或下载完整 ZIP。运行在 Claude Managed Agents（beta）上：
 
 ```text
  handover.py (our process)             Managed Agents session (Anthropic)
