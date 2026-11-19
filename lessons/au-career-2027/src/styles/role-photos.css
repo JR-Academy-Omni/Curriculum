@@ -1,0 +1,157 @@
+.role-photo-backdrop {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		radial-gradient(ellipse at 16% 80%, #44255f 0, transparent 47%),
+		radial-gradient(ellipse at 88% 1%, #252c64 0, transparent 52%),
+		linear-gradient(150deg, #0c1022, #18142e 62%, #13182d);
+}
+
+.role-photo-layout {
+	width: calc(100% - 228px);
+	height: 100%;
+	padding: 90px 0 82px;
+	display: grid;
+	grid-template-columns: 424px minmax(0, 1fr);
+	grid-template-rows: minmax(0, 1fr);
+	align-items: center;
+	gap: 38px;
+}
+
+.role-photo-heading {
+	position: relative;
+	z-index: 2;
+	color: #fff;
+	font-size: 61px;
+	font-weight: 800;
+	letter-spacing: -.045em;
+	line-height: 1.16;
+}
+
+.role-photo-year {
+	display: block;
+	margin-left: -.035em;
+	color: #d8cdff;
+	font-size: 172px;
+	font-weight: 850;
+	letter-spacing: -.092em;
+	line-height: .91;
+	transform-origin: left center;
+	animation: role-year-lock 1.45s cubic-bezier(.23,.8,.25,1) both;
+}
+
+.role-photo-topic {
+	display: block;
+	margin-top: 25px;
+	animation: role-topic-reveal .76s .78s cubic-bezier(.22,1,.36,1) both;
+}
+
+.role-photo-topic > span {
+	display: block;
+}
+
+.role-photo-collection {
+	height: 100%;
+	min-width: 0;
+	min-height: 0;
+	display: grid;
+	grid-template: repeat(2, minmax(0, 1fr)) / repeat(2, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.role-photo-card {
+	--entry-x: -140px;
+	--entry-y: -530px;
+	--entry-angle: -9deg;
+	--entry-delay: .65s;
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	border: 1px solid #faf4ff47;
+	border-radius: 12px;
+	background: #171a30;
+	animation: role-photo-assemble .96s var(--entry-delay) cubic-bezier(.19,1,.22,1) both;
+}
+
+.role-photo-card:nth-child(2) {
+	--entry-x: 570px;
+	--entry-y: -200px;
+	--entry-angle: 8deg;
+	--entry-delay: .79s;
+}
+
+.role-photo-card:nth-child(3) {
+	--entry-x: -155px;
+	--entry-y: 495px;
+	--entry-angle: 8deg;
+	--entry-delay: .91s;
+}
+
+.role-photo-card:nth-child(4) {
+	--entry-x: 570px;
+	--entry-y: 225px;
+	--entry-angle: -8deg;
+	--entry-delay: 1.03s;
+}
+
+.role-photo-window {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+}
+
+.role-photo-window img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 39%;
+}
+
+.role-photo-window::after {
+	content: '';
+	position: absolute;
+	inset: 36% 0 0;
+	background: linear-gradient(transparent, #0b1023ee);
+}
+
+.role-photo-card h2 {
+	position: absolute;
+	inset: auto 18px 17px;
+	color: #fff;
+	font-size: 35px;
+	line-height: 1;
+	letter-spacing: -.046em;
+	font-weight: 750;
+	text-shadow: 0 2px 6px #0a0d21aa;
+}
+
+.deck-runtime:has(.role-photo-collection) img[alt="JR Academy"] {
+	filter: brightness(0) invert(1);
+}
+
+@keyframes role-year-lock {
+	0%, 25% { transform: translate(370px, 57px) scale(1.95); }
+	100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes role-topic-reveal {
+	from { clip-path: inset(0 0 100%); transform: translateY(36px); }
+	to { clip-path: inset(0); transform: translateY(0); }
+}
+
+@keyframes role-photo-assemble {
+	from {
+		transform: translate(var(--entry-x), var(--entry-y)) rotate(var(--entry-angle)) scale(.86);
+		clip-path: inset(92% 0 0);
+	}
+	to {
+		transform: translate(0, 0) rotate(0) scale(1);
+		clip-path: inset(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce), print {
+	.role-photo-year, .role-photo-topic, .role-photo-card { animation: none; }
+}

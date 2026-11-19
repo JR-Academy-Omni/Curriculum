@@ -1,0 +1,56 @@
+.chart-control {
+	font: inherit;
+	font-size: 18px;
+	font-weight: 800;
+	color: #10162f;
+	background: #fff;
+	border: 2px solid #10162f;
+	border-radius: 8px;
+	padding: 7px 13px;
+	cursor: pointer;
+}
+.chart-control[aria-pressed="true"] { background: #ffde59; }
+.chart-control:focus-visible, .chart-bar-button:focus-visible {
+	outline: 4px solid #6366f1;
+	outline-offset: 4px;
+}
+.chart-compare { margin-top: 11px; }
+.chart-bar-button {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	margin-bottom: 35px;
+	border: 0;
+	border-radius: 12px;
+	background: transparent;
+	cursor: pointer;
+	color: #10162f;
+	font: inherit;
+}
+.chart-bar {
+	width: 66%;
+	min-width: 70px;
+	position: relative;
+	border: 2px solid #10162f;
+	border-radius: 12px 12px 0 0;
+	transition: height 240ms ease, background 200ms ease;
+}
+.chart-bar-value {
+	position: absolute;
+	bottom: calc(100% + 8px);
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 21px;
+	font-weight: 900;
+	white-space: nowrap;
+}
+.chart-bar-month { position: absolute; top: calc(100% + 7px); font-size: 20px; font-weight: 850; }
+@media (prefers-reduced-motion: reduce) { .chart-bar { transition: none; } }
+@media (max-width: 600px) {
+	.deck-runtime > button { top: auto !important; bottom: 64px; }
+	.deck-runtime > div:has(> button) { bottom: 8px !important; gap: 3px !important; }
+	.deck-runtime > div:has(> button) > button { max-width: 8px; }
+}
+.deck-print .market-bar { transform: none !important; }
+.deck-print .market-growth { opacity: 1 !important; }

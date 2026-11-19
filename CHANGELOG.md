@@ -1,3 +1,7 @@
+# 2026-11-19 · 2027 澳洲职场分享
+
+新增 33 页 Talk Deck，含 ABS 裁员互动图、内转／同岗跳槽／相邻转岗、四个 AI 职业方向（FDE 分 Business 与 Tech）、分城市与职级的薪酬口径、逐岗位能力和面试证据、澳洲招聘说明和个人工作单，直接复用 AI Engineer 第七期公开课的门槛、路径、公式与自测四张原页。同步 lessons.html（Local）。现场审阅修订补入 10–11 月企业重组公告及 ABS 全国裁员发布日期，招聘广告使用动态柱形和条形图，第 12 页明确 Business 面向中小企业、Tech 面向中大型企业。第 13 页讲中小企业销售线索，第 14 页采用官网三项训练成果，第 16 页结合 Google Cloud Staff FDE 和 OpenAI Sydney FDE 讲大型客户的生产责任。第 17 页按官网原序列出 FDE Tech 十项能力、中英文释义与 10 周训练安排，第 18 页合并 Claude FDE 与 OpenAI PartnerU 截图并加入伙伴标志。第 21 页对照传统 PM 与 AI PM，第 24 页对照 IT Sales、住宅房产销售与美妆销售，第 27 页加入 OpenAI 与 Claude 企业销售实训。第 16 页用 A$180k–400k 作资深岗位年薪目标。按第七期 AI Engineer 页的教学标准重写其余方向，加入具体转岗路径、能力公式、现场自测、雇主 JD 和薪资口径，并补齐讲师备注与练习。相关页新增可点开的雇主标志，补入 Google Cloud 澳洲 Staff FDE 与 AI Sales Specialist 的原始 JD。封面与 FDE Tech 页使用匠人官网同款 OpenAI Select Partner 和 Claude Certified Services Partner 标志。第 5 页使用四张全幅拼接的工作场景图，画面缓慢推近或拉远，四个岗位名称固定。第 12–15 页补齐匠人 FDE Business 毕业生路径、课程作品、两份澳洲毕业生招聘与 ADAPTOVATE 合并报价。
+
 # 2026-11-19 · AI Engineer W8 课堂代码公开
 
 - 将 W8 CareKind Multi-Agent 演示代码作为课件配套资料公开，增加网页文件索引和完整 ZIP 下载；代码仅含合成数据与空白 `.env.example`，不含凭据。
