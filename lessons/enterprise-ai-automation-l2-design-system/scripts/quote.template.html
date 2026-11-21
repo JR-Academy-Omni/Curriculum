@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
+<title>$title</title>
+<style>
+:root{color:#18252c;background:#edf5f3;font:16px/1.55 system-ui,sans-serif;--accent:#126b65}
+*{box-sizing:border-box}
+body{margin:0;padding:clamp(12px,4vw,40px)}
+main{margin:auto;max-width:820px;padding:clamp(18px,5vw,48px);border-top:6px solid var(--accent);background:#fff}
+header,.actions{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}
+h1,p,dl,h2{margin:0}h1{font-size:clamp(26px,5vw,40px)}h2{font-size:17px;margin:0 0 4px}
+small{font-weight:700;color:var(--accent)}dl{text-align:right;font-size:14px}dd{margin:0}
+table{margin:24px 0 12px;width:100%;table-layout:fixed;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:clamp(12px,3vw,16px)}
+th,td{padding:9px 4px;text-align:right;border-bottom:1px solid #bed2cf}
+thead th:first-child,tbody th{text-align:left;width:38%}
+thead,tfoot tr:last-child{background:#edf5f3}tfoot th{text-align:left}tfoot tr:last-child{color:var(--accent);font-weight:800}
+section{margin-top:15px}
+.actions{max-width:820px;margin:0 auto 12px;align-items:center}
+button,select{font:inherit;padding:7px 10px;color:#18252c;background:white;border:1px solid var(--accent);border-radius:5px}
+button{cursor:pointer}
+@page{size:A4;margin:14mm}
+@media print{
+  :root,main{background:white;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body,main{padding:0;max-width:none}
+  header{margin-top:7mm}
+  .actions{display:none}
+  section,table,tr{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="actions">
+  <label>报价版本 <select id="revision">$options</select></label>
+  <button type="button" id="print">打印 / 保存 PDF</button>
+</div>
+$versions
+<script>
+const revision = document.getElementById('revision');
+function showRevision() {
+  for (const quote of document.querySelectorAll('[data-version]')) {
+    quote.hidden = quote.dataset.version !== revision.value;
+  }
+}
+const requestedVersion = new URLSearchParams(location.search).get('version');
+if (Array.from(revision.options).some(option => option.value === requestedVersion)) {
+  revision.value = requestedVersion;
+}
+revision.addEventListener('change', showRevision);
+document.getElementById('print').addEventListener('click', () => window.print());
+showRevision();
+</script>
+</body></html>
