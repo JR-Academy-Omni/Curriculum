@@ -225,6 +225,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/ai-engineer-cohort-07-practice-w6 (120-min · 54 slides · Build the Evaluation Pipeline First)
+      - name: Build AI Engineer Practice W6
+        working-directory: lessons/ai-engineer-cohort-07-practice-w6
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-new-jobs-talk (60-min 公开讲座 · 40 张 slide · AI 催生了哪些新岗位？)
       # 单 slide deck · React+Vite · 跨课复用 lesson 形态 · 数据源 /ai-new-jobs + /career-impact-map
       - name: Build lessons/enterprise-ai-workspace-l01
@@ -494,6 +501,9 @@ jobs:
           mkdir -p _site/lessons/ai-engineer-cohort-07-w8-multi-agent
           cp -r lessons/ai-engineer-cohort-07-w8-multi-agent/dist/* _site/lessons/ai-engineer-cohort-07-w8-multi-agent/
           cp lessons/ai-engineer-cohort-07-w8-multi-agent/PRD.md lessons/ai-engineer-cohort-07-w8-multi-agent/RUNSHEET.md lessons/ai-engineer-cohort-07-w8-multi-agent/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w8-multi-agent/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w8-multi-agent/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w6
+          cp -r lessons/ai-engineer-cohort-07-practice-w6/dist/* _site/lessons/ai-engineer-cohort-07-practice-w6/
+          cp lessons/ai-engineer-cohort-07-practice-w6/PRD.md lessons/ai-engineer-cohort-07-practice-w6/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w6/SOURCE_MAP.md lessons/ai-engineer-cohort-07-practice-w6/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-practice-w6/
           mkdir -p _site/ai-adoption-bootcamp
           cp -r ai-adoption-bootcamp/dist/* _site/ai-adoption-bootcamp/
           cp ai-adoption-bootcamp/public/index.html _site/ai-adoption-bootcamp/
