@@ -1,3 +1,7 @@
+# 2026-11-22 · AI Engineer W6 实践课
+
+- 新增第七期 W6 实践课「Build the Evaluation Pipeline First」（C7P07）Talk Deck（`lessons/ai-engineer-cohort-07-practice-w6`），共 54 页；登记 lessons.html（Draft / Local，未部署）。
+
 # 2026-11-19 · 2027 澳洲职场分享
 
 ## 2026-11-21 · 企业 AI 自动化 L02 Design System 与报价单
