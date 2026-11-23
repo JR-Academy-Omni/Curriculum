@@ -1,0 +1,24 @@
+import type { CSSProperties, ReactNode } from 'react';
+import { motion } from 'framer-motion';
+import { assetPath } from './ui';
+
+export const c = { ink:'#10162f', muted:'#596174', cream:'#fffaf3', white:'#fff', coral:'#fb6a4a', violet:'#7b61e8', blue:'#3e8ee0', green:'#34b37e', amber:'#f5b43c', line:'#eee3d6', peach:'#fff0e5' };
+const shadow='0 18px 50px rgba(42,31,21,.09), 0 3px 10px rgba(42,31,21,.06)';
+
+export function Frame({kicker,title,subtitle,children,style}:{kicker:string;title:string;subtitle?:string;children:ReactNode;style?:CSSProperties}){
+ return <div style={{width:'100%',height:'100%',background:c.cream,color:c.ink,padding:'66px 84px 62px',boxSizing:'border-box',fontFamily:'"Noto Sans SC",sans-serif',...style}}>
+  <motion.div initial={{opacity:0,y:-10}} animate={{opacity:1,y:0}} style={{color:c.coral,fontWeight:800,letterSpacing:2,fontSize:16,textTransform:'uppercase'}}>{kicker}</motion.div>
+  <h1 style={{fontSize:58,lineHeight:1.12,letterSpacing:-1.5,margin:'14px 0 10px',fontWeight:900}}>{title}</h1>
+  {subtitle&&<p style={{fontSize:21,color:c.muted,margin:'0 0 30px',lineHeight:1.55}}>{subtitle}</p>}
+  <motion.div initial="hidden" animate="show" variants={{show:{transition:{staggerChildren:.06}}}} style={{height:subtitle?'610px':'650px'}}>{children}</motion.div>
+ </div>
+}
+export function Surface({children,accent,style}:{children:ReactNode;accent?:string;style?:CSSProperties}){
+ return <motion.div variants={{hidden:{opacity:0,y:14},show:{opacity:1,y:0}}} style={{background:c.white,border:`1px solid ${c.line}`,borderTop:accent?`6px solid ${accent}`:`1px solid ${c.line}`,borderRadius:24,padding:'26px 28px',boxShadow:shadow,boxSizing:'border-box',...style}}>{children}</motion.div>
+}
+export function Grid({children,cols=3,style}:{children:ReactNode;cols?:number;style?:CSSProperties}){return <div style={{display:'grid',gridTemplateColumns:`repeat(${cols},1fr)`,gap:22,...style}}>{children}</div>}
+export function Card({n,title,body,color=c.blue,footer}:{n?:string;title:string;body:string;footer?:string;color?:string}){return <Surface accent={color} style={{minHeight:190}}>{n&&<div style={{fontSize:15,fontWeight:800,color,marginBottom:12}}>{n}</div>}<h2 style={{fontSize:28,margin:'0 0 12px',lineHeight:1.25}}>{title}</h2><p style={{fontSize:19,color:c.muted,lineHeight:1.55,margin:0}}>{body}</p>{footer&&<div style={{marginTop:18,fontSize:15,fontWeight:800,color}}>{footer}</div>}</Surface>}
+export function Flow({items,colors=[c.blue,c.violet,c.coral]}:{items:{title:string;body:string}[];colors?:string[]}){return <Grid cols={items.length}>{items.map((x,i)=><Card key={x.title} n={`0${i+1}`} title={x.title} body={x.body} color={colors[i%colors.length]}/>)}</Grid>}
+export function Rows({items}:{items:{label:string;title:string;body:string;color?:string}[]}){return <div style={{display:'grid',gap:15}}>{items.map((x)=><Surface key={x.label} accent={x.color||c.blue} style={{display:'grid',gridTemplateColumns:'150px 290px 1fr',alignItems:'center',padding:'20px 26px'}}><b style={{fontSize:16,color:x.color||c.blue}}>{x.label}</b><b style={{fontSize:23}}>{x.title}</b><span style={{fontSize:18,color:c.muted,lineHeight:1.45}}>{x.body}</span></Surface>)}</div>}
+export function Callout({children,color=c.violet}:{children:ReactNode;color?:string}){return <div style={{background:color,color:'#fff',borderRadius:20,padding:'18px 24px',fontSize:21,fontWeight:800,lineHeight:1.5,boxShadow:shadow}}>{children}</div>}
+export function Cover(){return <div style={{width:'100%',height:'100%',display:'grid',gridTemplateColumns:'53% 47%',background:c.cream,fontFamily:'"Noto Sans SC",sans-serif',color:c.ink}}><div style={{padding:'90px 70px 70px 92px',display:'flex',flexDirection:'column',justifyContent:'space-between'}}><div><div style={{color:c.coral,fontWeight:900,letterSpacing:2}}>JR ACADEMY · CODEX 入门课</div><h1 style={{fontSize:82,lineHeight:1.06,letterSpacing:-3,margin:'38px 0 30px'}}>Codex<br/><span style={{color:c.violet}}>基础功能</span><br/>与工作流</h1><p style={{fontSize:25,lineHeight:1.6,color:c.muted,maxWidth:650}}>从项目规则到自动化：把 Codex 变成可复用、可协作、可交付的工作台。</p></div><div style={{display:'flex',gap:14}}>{['AGENTS.md','Skills','Plugins','Automations'].map((x,i)=><span key={x} style={{padding:'10px 15px',borderRadius:999,background:[c.peach,'#efeaff','#e9f4ff','#e8f8f1'][i],fontWeight:800,fontSize:15}}>{x}</span>)}</div></div><div style={{position:'relative',overflow:'hidden',borderRadius:'40px 0 0 40px',margin:'34px 0'}}><img src={assetPath('cover-source.png')} alt="Codex 工作界面示意" style={{width:'100%',height:'100%',objectFit:'cover'}}/><div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(16,22,47,.15),transparent 45%)'}}/><div style={{position:'absolute',right:34,top:32,background:'rgba(255,255,255,.94)',padding:'12px 16px',borderRadius:16,fontWeight:900,boxShadow:shadow}}>匠人学院 · JR Academy</div></div></div>}
