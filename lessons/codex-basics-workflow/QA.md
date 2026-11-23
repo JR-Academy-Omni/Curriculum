@@ -2,7 +2,7 @@
 
 ## 状态
 
-Ready to deploy / 本地验证通过
+Published / 本地与线上验证通过
 
 ## 检查记录
 
@@ -13,7 +13,7 @@ Ready to deploy / 本地验证通过
 - 外网阻断与字体：字体随构建打包；课件主体不依赖外网，参考页链接仅在主动点击后打开。
 - 讲师备注 / 打印：17 条备注已配置；打印入口由标准引擎提供。
 - reduced-motion：沿用标准引擎与 Framer Motion 的 reduced-motion 支持。
-- 线上回读：待部署完成后执行。
+- 线上回读：2026-11-23 部署流水线成功；入口、JS、CSS、封面 PNG、Logo SVG 与 `?page=17` 均返回 HTTP 200。
 
 ## 运行时偏离模板
 
