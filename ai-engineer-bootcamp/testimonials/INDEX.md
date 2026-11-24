@@ -9,6 +9,7 @@
 | 学员 | 期数 | 公司 | 岗位 | 拿到时间 | 有无凭证 | 可对外渠道 | 档案 |
 |------|------|------|------|---------|---------|-----------|------|
 | Jack | AI Engineer 05 期 | Nine | AI Engineer | 2026-08-11 | 沟通截图 + 内部统计截图；正式 Offer 待补 | 未确认·不可外用 | [档案](students/2026-jack.md) |
+| Sonia | AI Engineer，期数待补 | SharonAI | Platform Engineer (GPUaaS – AI Neocloud) | 2026-10 | 有脱敏 Offer 截图 | 未确认·不可外用 | [档案](students/2026-sonia.md) |
 
 ## 感言
 
@@ -28,7 +29,7 @@
 
 ## 统计
 
-- 已建档学员：16
-- 有 offer 记录：16
+- 已建档学员：17
+- 有 offer 记录：17
 - 可上销售页 OFFER WALL（consent 已确认）：0
-- 最近更新：2026-08-13
+- 最近更新：2026-11-24
