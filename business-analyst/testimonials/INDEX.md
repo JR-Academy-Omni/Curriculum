@@ -12,11 +12,12 @@
 | Leo Liu | BA，期数待补 | Australian Automotive Dealer Association | Database & Administration Officer | Canberra | 原表引用截图，但压缩包未包含 | 未确认·不可外用 | [档案](students/2026-leo-liu.md) |
 | Zoe | Web 全栈 22 期、编程入门 18 期（归属待确认） | 待补 | Business Analyst | Melbourne | 原表引用截图，但压缩包未包含 | 未确认·不可外用 | [档案](students/2026-zoe.md) |
 | Jay Huang | BA Bootcamp 2 期 | 待补 | Business Analyst | Sydney | 原表引用截图，但压缩包未包含 | 未确认·不可外用 | [档案](students/2026-jay-huang.md) |
+| Hyna | AI PM，期数待补 | 已脱敏 / 待补 | AI Product Manager | Melbourne（正式工作地点待核实） | 有脱敏 Offer 截图 | 未确认·不可外用 | [档案](students/2026-hyna.md) |
 
 ## 统计
 
-- 已建档学员：6
-- 有 Offer 记录：6
-- 已实际收到凭证：0
+- 已建档学员：7
+- 有 Offer 记录：7
+- 已实际收到凭证：1
 - 可对外使用：0
-- 最近更新：2026-10-15
+- 最近更新：2026-11-24
