@@ -73,7 +73,7 @@ e.append(text(138,238,1325,43,'从个人学习与成长，到企业 AI 落地 ·
 products=[
  (138,308,RED,'AirBotix','青少年 AI 创作与编程','AI creation and coding for ages 5–17','孩子主导创作，AI 辅助，教师指导；用故事、游戏、\n网站与代码项目学习。','Children lead, AI assists, teachers guide — learning through\ncreative projects.','logos/airbotix.png'),
  (815,308,BLUE,'MetaTree AI Lab','企业 AI Consulting / FDE','AI consulting and forward-deployed engineering','梳理业务流程，搭建 AI Agent 与定制系统，\n把 AI 接入实际业务。','Workflow discovery, AI agents and custom systems\nintegrated into real operations.','logos/metatree.png'),
- (138,590,GREEN,'求职匠 · JobPin AI','个人 AI 求职顾问','A personal AI career advisor','围绕真实背景与目标岗位，准备简历、差距分析\n和求职材料。','Resume tailoring, gap analysis and application materials\ngrounded in your background.','logos/jobpin.png'),
+ (138,590,GREEN,'职聘 · JobPin AI','个人 AI 求职顾问','A personal AI career advisor','围绕真实背景与目标岗位，准备简历、差距分析\n和求职材料。','Resume tailoring, gap analysis and application materials\ngrounded in your background.','logos/jobpin.png'),
  (815,590,YELLOW,'考证匠 · CertMaster','AI 考证辅导助手','AI certification study assistant','考题分析、题目收藏与学习记录，\n辅助理解和持续练习。','Question explanations, bookmarks and study tracking\nfor ongoing practice.','logos/certmaster.png')]
 for x,y,c,title,sub,en,body,enbody,logo in products:
     panel(e,x,y,647,258)

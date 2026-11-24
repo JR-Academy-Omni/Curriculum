@@ -13,7 +13,7 @@
 
 1. **课程模式落后** — 2 周集训班，必须等开课。学员买完要等 1-2 个月才能开始学，转化率受限。
 2. **内容质量薄弱** — 18 节课大部分是 2025 年 12 月之前的录播，缺少 learningMaterial 自学教程。
-3. **资源未整合** — 平台已有的 70+ 互动 Lab、80+ 公司真题、求职匠 Chrome Extension、JobPin AI 简历编辑器，全部没有绑定到课程里。
+3. **资源未整合** — 平台已有的 70+ 互动 Lab、80+ 公司真题、职聘 Chrome Extension、JobPin AI 简历编辑器，全部没有绑定到课程里。
 4. **AI 编程缺失** — 2026 年澳洲科技公司面试普遍加入 AI 编程题（OpenAI/Claude API、RAG、AI Agent），第6期完全没覆盖。
 
 竞品（NeetCode Pro、AlgoExpert、Educative）都已经从「集训」转向「自学 + 互动 Lab」模式。我们再不升级会被淘汰。
@@ -90,7 +90,7 @@ Production
 | Interview Handbook | `lesson.resources.interviewHandbook` | 15 sections |
 | Cheat Sheets | `lesson.resources.cheatSheets` | 12 |
 | 公司真题（80+ 家） | `lesson.resources.interviewQuestions` | 8 集合 |
-| 求职匠 Chrome Extension | L02 + L29 深度集成 | — |
+| 职聘 Chrome Extension | L02 + L29 深度集成 | — |
 | JobPin AI 简历编辑器 | L03 集成 | — |
 | 全栈开发者 Roadmap | L01 链接 | — |
 
@@ -143,7 +143,7 @@ Production
 | Hero | 抓注意 | 痛点钩子 + 5 个核心数字（40节/70+Lab/80+真题/9模块/$299）+ CTA 按钮 |
 | 痛点 (4 卡) | 共鸣 | 会写≠会讲 / 答题散乱 / 盲目刷题 / AI 编程新趋势 |
 | 强调 Box | 认知锚点 | 「面试 60% 写代码，40% 表达」 |
-| 解决方案 (4 卡) | 价值主张 | 11 节录播 / 7 节直播 / 22 节自学 / 求职匠+JobPin AI |
+| 解决方案 (4 卡) | 价值主张 | 11 节录播 / 7 节直播 / 22 节自学 / 职聘+JobPin AI |
 | 9 Phase 卡片 | 课程结构 | 每个 Phase 一句话价值描述（不展开 lesson 详情） |
 | 为什么选我们 (4 卡) | 信任建立 | Stan Luo / 80+ 公司真题 / 70+ Lab / 1v1 模拟面试 |
 | 适合谁 (6 项) | 定位匹配 | 6 种学员画像 |

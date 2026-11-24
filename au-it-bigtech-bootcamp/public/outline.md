@@ -46,4 +46,4 @@ _从思路到套路_
 - **Lab: Tree of Thoughts 推理** — 30 分钟
 - **Lab: Chain of Thought 推理** — 30 分钟
 - **Lab: AI 代码生成** — 30 分钟
-- **用一下: 求职匠 Chrome Ext** — 20 分钟
+- **用一下: 职聘 Chrome Ext** — 20 分钟

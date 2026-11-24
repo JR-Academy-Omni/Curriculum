@@ -100,7 +100,7 @@
 | L49 | 找到合适的实习和职位资源 | Video | 澳洲 IT 实习怎么找：大学 Career Center、公司官网 Graduate Program、JR Job Referral 平台。实习和全职的区别、实习转正的概率。 | 📎 平台: Job Referral `/study-center?tab=referral` |
 | L50 | 职场文化与沟通技巧 | Video | 澳洲职场邮件怎么写（开头 Hi 不是 Dear）、会议怎么发言（不要等别人点名）、Slack 沟通礼仪、和 manager 的 1-on-1 怎么聊。 | — |
 | L51 | 🆕 用 AI 批量定制求职材料 | Video | 实操：用 Prompt Engineering 技巧，让 AI 根据不同 JD 批量生成定制简历 bullet point 和 Cover Letter。10 分钟搞定以前 2 小时的工作。 | 📎 lab: prompt-lab `prompt-engineering`, `few-shot` |
-| L52 | 🆕 AI 求职工具全景 | Video | 2026 年求职者必备的 AI 工具：求职匠 Chrome Extension（自动匹配 JD + 一键投递）、LinkedIn AI Features、ChatGPT/Claude 辅助、AI Resume Builder。 | 📎 工具: 求职匠 Chrome Extension |
+| L52 | 🆕 AI 求职工具全景 | Video | 2026 年求职者必备的 AI 工具：职聘 Chrome Extension（自动匹配 JD + 一键投递）、LinkedIn AI Features、ChatGPT/Claude 辅助、AI Resume Builder。 | 📎 工具: 职聘 Chrome Extension |
 | L53 | 🆕 远程工作与全球化求职 | Video | 澳洲之外的机会：Remote-first 公司（GitLab/Automattic/Shopify）怎么申请、时区怎么配合、薪资怎么谈、税务怎么处理。 | 📎 wiki: `remote-work` |
 | L54 | Group Tutorial 03：职业网络扩展技巧 | Lesson | 学员分享各自的 networking 成果。导师示范怎么在 LinkedIn 上 cold message 一个 hiring manager 并获得回复。 | — |
 

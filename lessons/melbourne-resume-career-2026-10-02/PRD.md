@@ -16,7 +16,7 @@
 ## 逐页规格
 1. 封面：【墨尔本】简历 × 职场答疑分享会；2026 年 10 月 2 日；墨尔本大学。主办方并列放官方匠人 Logo 与用户提供 UMBA Logo，文字 UoM Blockchain Association。
 2. JR Academy 匠人学院介绍：原图中中英双语全文，左 Logo、右简介；不添加未提供的数据或承诺。
-3. 匠人的产品与服务：参考图的 AirBotix、MetaTree AI Lab、求职匠 · JobPin AI、考证匠 · CertMaster 四项及中英双语全文。
+3. 匠人的产品与服务：参考图的 AirBotix、MetaTree AI Lab、职聘 · JobPin AI、考证匠 · CertMaster 四项及中英双语全文。
 4. 活动流程：完整保留六个时间段和环节。
 5. 今天我们会聊什么：完整保留五个主题。
 6. Lightman：用户提供企业需求与求职准备视角及完整介绍，适中头像、JR Logo。

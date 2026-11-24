@@ -289,7 +289,7 @@ L9     (Lesson):          Group Tutorial 00            [120 min]
 | JobPin AI 工具 | 1 | **6** 节独立 Information lesson |
 | Job Referral 工具 | 1 | **8** 节独立 Information lesson |
 | Vibe Coding Hub | 1 | **5** 节独立 Information lesson |
-| 求职匠 Chrome Ext | 1 | **3** 节独立 Information lesson |
+| 职聘 Chrome Ext | 1 | **3** 节独立 Information lesson |
 | Free Resources | 免费资源 | **9** 节独立 Information lesson（CS50 / GitHub Pack / 简历模板等） |
 
 ### 5.3 自动展开规则

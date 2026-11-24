@@ -75,7 +75,7 @@
 | **Cheat Sheets** | ❌ | 各方向技术面试备考 |
 | **JobPin AI** | 1 节 | L15 简历 AI 优化 |
 | **Job Referral** | 1 节 | L49 找实习职位 |
-| **求职匠 Chrome Ext** | 1 节 | L52 AI 求职工具 |
+| **职聘 Chrome Ext** | 1 节 | L52 AI 求职工具 |
 
 ---
 

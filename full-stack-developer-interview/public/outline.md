@@ -41,7 +41,7 @@ _搞清全栈面试怎么玩、怎么准备、怎么用工具提效_
 - **全栈面试全景概览 — 流程拆解 + 备考路线** — 90 分钟
 - **Lab: Learning Roadmap** — 30 分钟
 - **自学：What Is Vibe Coding** — 20 分钟
-- **求职匠实战 — JD 分析 + 技能差距识别** — 60 分钟
+- **职聘实战 — JD 分析 + 技能差距识别** — 60 分钟
 - **简历打磨 + Behavioral 面试准备** — 75 分钟
 - **Lab: Role Playing** — 30 分钟
 - **Lab: Business Writing** — 30 分钟
