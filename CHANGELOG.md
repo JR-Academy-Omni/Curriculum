@@ -1,4 +1,8 @@
-# 2026-11-19 · System Design 实战课第一期（Local）
+# 2026-11-24 · System Design 实战课第一期上线
+
+三节课件和目录已通过 GitHub Actions 部署。线上从目录逐节打开，在桌面与手机核验每节 13 页、配套资料和成果播放。
+
+# 2026-11-19 · System Design 实战课第一期
 
 新增 Lightman 主讲的三节 120 分钟 Talk Deck，共 39 页。L01 系统设计基础，L02 Video Streaming 与 FFmpeg 双档 HLS 实操，L03 AI Video Generation 与单镜替换、字幕和成片导出。登记课件目录、讲师流程、课堂工作单与成果入口。
 
