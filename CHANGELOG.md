@@ -1,3 +1,7 @@
+# 2026-11-19 · System Design 实战课第一期（Local）
+
+新增 Lightman 主讲的三节 120 分钟 Talk Deck，共 39 页。L01 系统设计基础，L02 Video Streaming 与 FFmpeg 双档 HLS 实操，L03 AI Video Generation 与单镜替换、字幕和成片导出。登记课件目录、讲师流程、课堂工作单与成果入口。
+
 # 2026-11-22 · AI Engineer W6 实践课
 
 - 新增第七期 W6 实践课「Build the Evaluation Pipeline First」（C7P07）Talk Deck（`lessons/ai-engineer-cohort-07-practice-w6`），共 54 页；登记 lessons.html（Draft / Local，未部署）。

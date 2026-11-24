@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
+<title>视频上传与处理 · 完整成果 · JR Academy</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; color: #10162f; background: #fff1e7; font: 18px/1.58 system-ui, sans-serif; }
+main { max-width: 1020px; margin: 0 auto; padding: 32px clamp(16px, 5vw, 48px) 72px; }
+header { border-bottom: 2px solid #10162f; margin-bottom: 28px; padding-bottom: 16px; }
+.brand { width: 148px; max-width: 55vw; }
+h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 25px 0 10px; letter-spacing: -.035em; }
+h2 { font-size: 26px; line-height: 1.2; margin: 0 0 10px; }
+p, ul { margin: 10px 0; }
+a { color: #2735a5; text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 3px solid #10162f; outline-offset: 4px; }
+article, details { background: #fffdf8; border: 2px solid #10162f; box-shadow: 5px 5px 0 #ffde59; padding: 20px; border-radius: 19px; margin-bottom: 22px; }
+summary { cursor: pointer; font-weight: 800; font-size: 22px; }
+pre { background: #10162f; color: #f8f2e9; border-radius: 12px; padding: 14px; overflow-x: auto; font-size: 14px; line-height: 1.45; }
+video { width: 100%; max-width: 720px; background: #10162f; display: block; border-radius: 13px; }
+table { border-collapse: collapse; width: 100%; font-size: .95em; }
+th, td { text-align: left; padding: 9px; border: 1px solid #c5bac5; vertical-align: top; }
+th { background: #10162f; color: #fff; }
+figure { margin: 12px 0; }
+.diagram { display: grid; gap: 9px; }
+.diagram p { background: #fff1e7; border-left: 5px solid #ff5757; padding: 10px; margin: 0; }
+</style>
+</head>
+<body><main>
+<header><img class="brand" src="logo-zh-full.svg" alt="JR Academy"><h1>视频上传与处理 · 完整成果</h1><p>System Design 实战课 · 第一期</p></header>
+<article><h2>job-42 · ready</h2>
+<p>用户上传视频后获得任务编号。后台完成转码，刷新页面后即可播放以下成品。</p>
+<video src="lab/processed.webm" controls playsinline preload="metadata" aria-label="已处理视频"></video></article>
+<article><h2>完整架构</h2>
+<div class="diagram">
+<p><strong>文件上传</strong>　浏览器 → 对象存储。上传成功后提交原件版本。</p>
+<p><strong>控制路径</strong>　浏览器 → Job API → 任务库与 Outbox → Relay → 队列。</p>
+<p><strong>处理路径</strong>　Worker 领取消息 → 读取原件 → 写成品 → 条件更新任务为 ready → 确认消息。</p>
+<p><strong>结果读取</strong>　浏览器查 Job API → 校验所有者 → 获取限时地址 → 对象存储返回成品。</p>
+</div>
+</article>
+<article><h2>从上传到播放的事件</h2>
+<table><thead><tr><th>时间</th><th>事件</th><th>业务状态</th></tr></thead><tbody>
+<tr><td>10:00:00</td><td>upload-12 保存成功</td><td>原文件可读</td></tr>
+<tr><td>10:00:01</td><td>Job API 接受提交并返回 job-42</td><td>queued</td></tr>
+<tr><td>10:00:02</td><td>Worker 获得作业处理权</td><td>processing</td></tr>
+<tr><td>10:01:31</td><td>成品写入成功，任务提交，Worker 确认消息</td><td>ready</td></tr>
+<tr><td>10:01:32</td><td>刷新后读取状态和播放地址</td><td>ready</td></tr>
+</tbody></table></article>
+<details><summary>查看 Worker 退出后的恢复轨迹</summary>
+<ol>
+<li>10:01:31 成品对象写入成功。进程在提交 ready 之前退出，队列没有收到确认。</li>
+<li>10:01:41 租约到期，消息重投。新的 Worker 领取任务，验证原始版本和成品媒体规格。</li>
+<li>10:01:43 通过版本条件更新提交同一成品的引用，再确认消息。刷新后读到同一任务的可播放结果。</li>
+</ol></details>
+<p><a href="worksheet.html">打开课堂工作单</a></p>
+<p><a href="./?page=1">返回课件 / Open slides</a></p>
+</main></body></html>

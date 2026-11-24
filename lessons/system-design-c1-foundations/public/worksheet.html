@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
+<title>L01 · Design an asynchronous video job · JR Academy</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; color: #10162f; background: #fff1e7; font: 18px/1.58 system-ui, sans-serif; }
+main { max-width: 1020px; margin: 0 auto; padding: 32px clamp(16px, 5vw, 48px) 72px; }
+header { border-bottom: 2px solid #10162f; margin-bottom: 28px; padding-bottom: 16px; }
+.brand { width: 148px; max-width: 55vw; }
+h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 25px 0 10px; letter-spacing: -.035em; }
+h2 { font-size: 26px; line-height: 1.2; margin: 0 0 10px; }
+p, ul { margin: 10px 0; }
+a { color: #2735a5; text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 3px solid #10162f; outline-offset: 4px; }
+article, details { background: #fffdf8; border: 2px solid #10162f; box-shadow: 5px 5px 0 #ffde59; padding: 20px; border-radius: 19px; margin-bottom: 22px; }
+summary { cursor: pointer; font-weight: 800; font-size: 22px; }
+pre { background: #10162f; color: #f8f2e9; border-radius: 12px; padding: 14px; overflow-x: auto; font-size: 14px; line-height: 1.45; }
+video { width: 100%; max-width: 720px; background: #10162f; display: block; border-radius: 13px; }
+table { border-collapse: collapse; width: 100%; font-size: .95em; }
+th, td { text-align: left; padding: 9px; border: 1px solid #c5bac5; vertical-align: top; }
+th { background: #10162f; color: #fff; }
+figure { margin: 12px 0; }
+.diagram { display: grid; gap: 9px; }
+.diagram p { background: #fff1e7; border-left: 5px solid #ff5757; padding: 10px; margin: 0; }
+</style>
+</head>
+<body><main>
+<header><img class="brand" src="logo-zh-full.svg" alt="JR Academy"><h1>L01 · Design an asynchronous video job</h1><p>System Design 实战课 · 第一期</p></header>
+<article><p>Open the <a href="result.html">complete job and its timeline</a>. Inspect the completed task and the recovery trace before your group starts.</p></article>
+<article><h2>Brief</h2><p>An authenticated creator uploads a video. Processing averages 90 seconds, and a sustained workload creates 1,200 jobs per hour. The creator can close the browser and return later. A successful job exposes an authorized playback URL. The same request may be retried and a job message may be delivered again.</p></article>
+<article><h2>Draw the design · 15 minutes</h2><ul><li>List the actor, input object, expected output and system boundary. Identify which uploader actions must finish before a job can be created.</li><li>Compare a request that waits for processing with an API that returns a job ID. Draw your chosen sequence, including status and playback reads.</li><li>Name the state owner and provide a state table for queued, processing, ready and failed. Include the key your API uses to deduplicate a request.</li><li>Estimate average in-flight processing. Distinguish demand from a capacity commitment.</li></ul></article>
+<article><h2>Change the constraint · 20 minutes</h2><p>The worker writes a valid output, then exits before it updates the job or acknowledges the message. Show what happens when the same job is delivered again. Indicate how you would verify that the existing output is the right artifact.</p></article>
+<article><h2>Peer review · 5 minutes</h2><ul><li>Check whether a previously submitted job can survive a browser refresh.</li><li>Check whether a worker can acknowledge work before the job is ready.</li><li>Leave one observable test criterion on the drawing.</li></ul></article>
+<details><summary>Reference design</summary><p>At steady state, 1,200 / 3,600 is about 0.33 jobs per second. At 90 seconds per job, the mean processing concurrency is about 30. Use peak arrival rate, tail latency, downstream quotas and queue age to plan headroom.</p>
+<p>The browser obtains an authorized upload URL and sends bytes to object storage. When upload completes, POST /jobs accepts the owned object version and an idempotency key. The database transaction records the job and an outbox message. A relay publishes the message and the API returns 202 with a job ID. A conditional write records the active attempt. A worker reads the original file, writes a deterministic output, marks the job ready, then acknowledges the message. GET /jobs/{id} authorizes the caller and returns the state. A short-lived playback URL appears when the validated output is ready.</p>
+<p>On redelivery, the worker compares the output key, source version, checksum or media metadata with the job. If they match, a conditional job update can finish the previously interrupted operation. Keep invalid partial output separate and retry under policy. A replay with the same user, key and input returns the same job. A reused key with different input is a conflict.</p>
+<p>Validate by submitting one input twice, interrupting after the storage write, then reloading. Observe one stable job ID, one valid output and the ready-to-play UI.</p></details>
+<p><a href="./?page=1">返回课件 / Open slides</a></p>
+</main></body></html>

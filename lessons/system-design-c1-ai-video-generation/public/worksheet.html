@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
+<title>L03 · Re-render an ad after changing one shot · JR Academy</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; color: #10162f; background: #fff1e7; font: 18px/1.58 system-ui, sans-serif; }
+main { max-width: 1020px; margin: 0 auto; padding: 32px clamp(16px, 5vw, 48px) 72px; }
+header { border-bottom: 2px solid #10162f; margin-bottom: 28px; padding-bottom: 16px; }
+.brand { width: 148px; max-width: 55vw; }
+h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 25px 0 10px; letter-spacing: -.035em; }
+h2 { font-size: 26px; line-height: 1.2; margin: 0 0 10px; }
+p, ul { margin: 10px 0; }
+a { color: #2735a5; text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 3px solid #10162f; outline-offset: 4px; }
+article, details { background: #fffdf8; border: 2px solid #10162f; box-shadow: 5px 5px 0 #ffde59; padding: 20px; border-radius: 19px; margin-bottom: 22px; }
+summary { cursor: pointer; font-weight: 800; font-size: 22px; }
+pre { background: #10162f; color: #f8f2e9; border-radius: 12px; padding: 14px; overflow-x: auto; font-size: 14px; line-height: 1.45; }
+video { width: 100%; max-width: 720px; background: #10162f; display: block; border-radius: 13px; }
+table { border-collapse: collapse; width: 100%; font-size: .95em; }
+th, td { text-align: left; padding: 9px; border: 1px solid #c5bac5; vertical-align: top; }
+th { background: #10162f; color: #fff; }
+figure { margin: 12px 0; }
+.diagram { display: grid; gap: 9px; }
+.diagram p { background: #fff1e7; border-left: 5px solid #ff5757; padding: 10px; margin: 0; }
+</style>
+</head>
+<body><main>
+<header><img class="brand" src="logo-zh-full.svg" alt="JR Academy"><h1>L03 · Re-render an ad after changing one shot</h1><p>System Design 实战课 · 第一期</p></header>
+<article><p>Open the <a href="./?page=2">two completed cuts</a>, the <a href="lab/product-reference.png">product reference</a>, and <a href="lab/manifest-v1.json">manifest v1</a> and <a href="lab/manifest-v2.json">manifest v2</a>. Download the <a href="lab/film-lab.zip">FFmpeg exercise pack</a>.</p></article>
+<article><h2>Render lab</h2><p>The brief calls for a three-shot ad for a navy portable speaker. Shot 2 in the first cut incorrectly changes the product body to red. The other two shots already passed review. Open the archive and run the commands inside its folder.</p>
+<pre><code>ffprobe -v error -show_entries stream=width,height,r_frame_rate shots/shot-01-v1.webm
+ffprobe -v error -show_entries stream=width,height,r_frame_rate shots/shot-02-v2.webm
+python3 render_film.py manifest-v1.json --out cut-v1.webm
+python3 render_film.py manifest-v2.json --out cut-v2.webm
+ffprobe -v error -show_streams cut-v2.webm</code></pre>
+<p>Use an unused filename if repeating the exercise. For MP4 delivery, use &quot;python3 render_film.py manifest-v2.json --out cut-v2.mp4&quot;. VP9/WebVTT or H.264/mov_text are selected by output extension.</p>
+<ul><li>Read both manifests. Circle the only shot path changed by the correction.</li><li>Play both outputs and inspect the product colour around seconds 3–6.</li><li>Record the output width, height, frame rate and subtitle stream. Check all three subtitle cues in the browser result.</li></ul></article>
+<article><h2>Group exercise · 30 minutes</h2><ul><li>Draw the one-operation full-film architecture next to the per-shot architecture. Identify the generation task owner, approval record and final render manifest.</li><li>Design a version update that replaces shot 2 without changing the other two IDs. Explain how to see which shot was used in the current cut.</li><li>Add a second failure. FFmpeg fails after all selected shots have passed review. Decide which job is retried and which assets can be reused.</li><li>Calculate cost per accepted cut if full-film attempts cost three units each and one success requires two attempts. For the shot approach, each shot attempt costs one unit and there is one shot retry. Compare with two composition runs at 0.25 units each.</li></ul></article>
+<details><summary>Reference design</summary><p>The generation queue stores per-shot requests and provider operation IDs. Each candidate is written as an immutable media object associated with shot ID and version. A review record selects one version per shot. The renderer reads a locked manifest, writes a new immutable cut and records its inputs. Only a verified new cut moves the current pointer.</p>
+<p>Keep the first and last shot paths identical between v1 and v2. Replace only shot-02-v1 with shot-02-v2. A render-only failure should reuse all approved shot assets. Query an existing provider operation when its result is unknown before starting a replacement attempt.</p>
+<p>The full-film scenario costs 6 units. The shot scenario costs 4 + 0.5 = 4.5 units. These inputs are classroom assumptions. In a real design, include both successful and failed attempts and compare equal quality outputs. Before release, verify order, a 960×540 / 24 fps video track, the caption track and the product appearance in the middle shot.</p></details>
+<p><a href="./?page=1">返回课件 / Open slides</a></p>
+</main></body></html>

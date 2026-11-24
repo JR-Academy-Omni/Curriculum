@@ -289,6 +289,23 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build System Design workshop cohort 1
+      - name: Build lessons/system-design-c1-foundations
+        working-directory: lessons/system-design-c1-foundations
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+      - name: Build lessons/system-design-c1-video-streaming
+        working-directory: lessons/system-design-c1-video-streaming
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+      - name: Build lessons/system-design-c1-ai-video-generation
+        working-directory: lessons/system-design-c1-ai-video-generation
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-solo-founder-w1 (AI 一人创业营 · W1 · 45 张创业 / SoT / Founder OS 讲课 deck)
       - name: Build lessons/ai-solo-founder-w1
         working-directory: lessons/ai-solo-founder-w1
@@ -988,6 +1005,19 @@ jobs:
             cp lessons/ai-solo-founder-w12/{PRD,RUNSHEET,WORKSHEET,SOURCE_MAP,QA,README}.md _site/lessons/ai-solo-founder-w12/
             cp -r lessons/ai-solo-founder-w12/starter lessons/ai-solo-founder-w12/demo _site/lessons/ai-solo-founder-w12/
           fi
+
+          # System Design workshop cohort 1
+          for deck_dist in \
+            lessons/system-design-c1-foundations/dist \
+            lessons/system-design-c1-video-streaming/dist \
+            lessons/system-design-c1-ai-video-generation/dist
+          do
+            lesson_dir="$(dirname "$deck_dist")"
+            target="_site/$lesson_dir"
+            mkdir -p "$target"
+            cp -r "$deck_dist/." "$target/"
+            cp "$lesson_dir"/*.md "$target/"
+          done
 
           # lessons/ai-solo-founder-w3: AI 一人创业营 · W3 · 这是不是一门好生意（React + Vite）
           if [ -d lessons/ai-solo-founder-w3/dist ]; then

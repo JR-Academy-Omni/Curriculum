@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
+<title>L02 · Design streaming for two guests and 10,000 viewers · JR Academy</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; color: #10162f; background: #fff1e7; font: 18px/1.58 system-ui, sans-serif; }
+main { max-width: 1020px; margin: 0 auto; padding: 32px clamp(16px, 5vw, 48px) 72px; }
+header { border-bottom: 2px solid #10162f; margin-bottom: 28px; padding-bottom: 16px; }
+.brand { width: 148px; max-width: 55vw; }
+h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 25px 0 10px; letter-spacing: -.035em; }
+h2 { font-size: 26px; line-height: 1.2; margin: 0 0 10px; }
+p, ul { margin: 10px 0; }
+a { color: #2735a5; text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 3px solid #10162f; outline-offset: 4px; }
+article, details { background: #fffdf8; border: 2px solid #10162f; box-shadow: 5px 5px 0 #ffde59; padding: 20px; border-radius: 19px; margin-bottom: 22px; }
+summary { cursor: pointer; font-weight: 800; font-size: 22px; }
+pre { background: #10162f; color: #f8f2e9; border-radius: 12px; padding: 14px; overflow-x: auto; font-size: 14px; line-height: 1.45; }
+video { width: 100%; max-width: 720px; background: #10162f; display: block; border-radius: 13px; }
+table { border-collapse: collapse; width: 100%; font-size: .95em; }
+th, td { text-align: left; padding: 9px; border: 1px solid #c5bac5; vertical-align: top; }
+th { background: #10162f; color: #fff; }
+figure { margin: 12px 0; }
+.diagram { display: grid; gap: 9px; }
+.diagram p { background: #fff1e7; border-left: 5px solid #ff5757; padding: 10px; margin: 0; }
+</style>
+</head>
+<body><main>
+<header><img class="brand" src="logo-zh-full.svg" alt="JR Academy"><h1>L02 · Design streaming for two guests and 10,000 viewers</h1><p>System Design 实战课 · 第一期</p></header>
+<article><p>Open the <a href="./?page=2">HLS player</a> and the <a href="lab/hls/master.m3u8">master playlist</a>. Download the <a href="lab/streaming-lab.zip">FFmpeg lab</a> to inspect and rebuild the two media playlists.</p></article>
+<article><h2>Playback lab</h2><p>Unpack the lab, open a terminal in the extracted folder and run:</p>
+<pre><code>bash make-hls.sh ./out/hls
+cat ./out/hls/master.m3u8
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height ./out/hls/720p/index.m3u8
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height ./out/hls/360p/index.m3u8</code></pre>
+<ul><li>Record both resolutions and compare the duration of the same numbered segment in each playlist.</li><li>In the lesson player, choose 720p and let video play. Switch to 360p and record the decoded size. The browser network panel can show the media segment requests.</li><li>For Auto, limit download to about 750 kbps and replay from the start with cache disabled. Observe the next segment requests and decoded size. Make a note if buffering delays a switch.</li><li>For a rolling local playlist, run &quot;bash make-hls.sh --live ./out/live&quot;. After several seconds, open &quot;ffplay ./out/live/master.m3u8&quot; in another terminal and observe the media sequence changing.</li></ul></article>
+<article><h2>Group exercise · 30 minutes</h2><p>Two guests need to talk to each other in real time. Up to 10,000 people watch, and only the guests need to speak. Forty percent of viewers select a 3 Mbps rendition. The other sixty percent select 1 Mbps. The host disappears for eight seconds and then reconnects.</p>
+<ul><li>Draw the hosting, real-time guest and viewer paths. Label the point where room output becomes HTTP media segments. Record who owns the session and who owns the published playlist.</li><li>Compare carrying every viewer on the real-time topology with a stage and a cached HLS delivery path.</li><li>Calculate viewer egress. Identify the additional data you need to estimate origin traffic.</li><li>Mark what guests and viewers see during the interruption. Choose a metric and a place to measure it.</li></ul></article>
+<details><summary>Reference design</summary><p>A WebRTC stage handles host and guest sessions. A compositor sends one stage output to the HLS encoder and packager. The packager publishes a master playlist and paired media playlists. The CDN caches segments, and viewers request them through a player. The stage owns real-time session state. The packager owns the current media sequence and the viewer player owns buffer state.</p>
+<p>Viewer egress is 10,000 × (0.4 × 3 + 0.6 × 1) Mb/s = 18 Gb/s before overhead. To estimate origin traffic, define whether segments share cache keys, cache-hit rates and regional behaviour.</p>
+<p>If host input stops, the real-time session can show that the publisher disconnected. Some viewers may continue playing buffered segments. Track the last fresh segment time, rebuffer duration and recovery to the live edge. Validate continuity after the host reconnects.</p></details>
+<p><a href="./?page=1">返回课件 / Open slides</a></p>
+</main></body></html>
