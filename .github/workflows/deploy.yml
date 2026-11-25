@@ -225,6 +225,13 @@ jobs:
           bun install --frozen-lockfile
           bun run build
 
+      # Build lessons/ai-engineer-cohort-07-w9-agent-memory (90-min · 44 slides · Agent Memory & State Management)
+      - name: Build AI Engineer W9 Agent Memory
+        working-directory: lessons/ai-engineer-cohort-07-w9-agent-memory
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
       # Build lessons/ai-engineer-cohort-07-practice-w6 (120-min · 54 slides · Build the Evaluation Pipeline First)
       - name: Build AI Engineer Practice W6
         working-directory: lessons/ai-engineer-cohort-07-practice-w6
@@ -518,6 +525,8 @@ jobs:
           mkdir -p _site/lessons/ai-engineer-cohort-07-w8-multi-agent
           cp -r lessons/ai-engineer-cohort-07-w8-multi-agent/dist/* _site/lessons/ai-engineer-cohort-07-w8-multi-agent/
           cp lessons/ai-engineer-cohort-07-w8-multi-agent/PRD.md lessons/ai-engineer-cohort-07-w8-multi-agent/RUNSHEET.md lessons/ai-engineer-cohort-07-w8-multi-agent/SOURCE_MAP.md lessons/ai-engineer-cohort-07-w8-multi-agent/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-w8-multi-agent/
+          mkdir -p _site/lessons/ai-engineer-cohort-07-w9-agent-memory
+          cp -r lessons/ai-engineer-cohort-07-w9-agent-memory/dist/* _site/lessons/ai-engineer-cohort-07-w9-agent-memory/
           mkdir -p _site/lessons/ai-engineer-cohort-07-practice-w6
           cp -r lessons/ai-engineer-cohort-07-practice-w6/dist/* _site/lessons/ai-engineer-cohort-07-practice-w6/
           cp lessons/ai-engineer-cohort-07-practice-w6/PRD.md lessons/ai-engineer-cohort-07-practice-w6/RUNSHEET.md lessons/ai-engineer-cohort-07-practice-w6/SOURCE_MAP.md lessons/ai-engineer-cohort-07-practice-w6/WORKSHEET.md _site/lessons/ai-engineer-cohort-07-practice-w6/
