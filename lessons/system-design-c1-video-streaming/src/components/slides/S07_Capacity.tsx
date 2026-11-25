@@ -1,7 +1,7 @@
 import { AnimatedGroup, DeckFrame, Label, Panel, colors } from '../kit';
 
 export default function S07_Capacity() {
-	return <DeckFrame tag="P07 · SYSTEM DESIGN" title="估算万人同时观看的带宽" subtitle="先算观众侧出口，再谈源站。">
+	return <DeckFrame tag="P08 · SYSTEM DESIGN" title="估算万人同时观看的带宽" subtitle="先算观众侧出口，再谈源站。">
 		<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
 			<AnimatedGroup delay={0.15}>
 				<Panel>

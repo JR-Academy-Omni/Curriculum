@@ -1,7 +1,7 @@
 import { DeckFrame, Table } from '../kit';
 
 export default function S04_Quality() {
-	return <DeckFrame tag="P04 · SYSTEM DESIGN" title="什么样的镜头可以选入成片" subtitle="同一套标准用于两种方案。">
+	return <DeckFrame tag="P05 · SYSTEM DESIGN" title="什么样的镜头可以选入成片" subtitle="同一套标准用于两种方案。">
 		<Table size={24} head={["维度", "要看的证据", "采取的动作"]} rows={[
 			["产品外观", "与参考图一致的颜色与轮廓", "记录理由并换候选"],
 			["符合分镜", "指定机位、动作、时长", "调整该镜头输入"],

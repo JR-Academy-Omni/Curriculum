@@ -1,7 +1,7 @@
 import { Arrow, DeckFrame, Label, Node, Panel } from '../kit';
 
 export default function S05_Jobs() {
-	return <DeckFrame tag="P05 · SYSTEM DESIGN" title="生成是可跟踪的长任务" subtitle="每次调用有作业编号，审核后的选片有独立状态。">
+	return <DeckFrame tag="P06 · SYSTEM DESIGN" title="生成是可跟踪的长任务" subtitle="每次调用有作业编号，审核后的选片有独立状态。">
 		<div style={{ display: 'grid', gap: 32 }}>
 			<div style={{ display: 'flex', alignItems: 'stretch', gap: 16 }}>
 				<Node title="提交分镜" sub="锁定输入与镜头 ID" style={{ flex: 1, minWidth: 0 }} />

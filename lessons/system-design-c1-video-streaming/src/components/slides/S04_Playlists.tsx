@@ -1,7 +1,7 @@
 import { DeckFrame, Table } from '../kit';
 
 export default function S04_Playlists() {
-	return <DeckFrame tag="P04 · SYSTEM DESIGN" title="播放列表怎样组织清晰度" subtitle="两档画质使用同一视频时间线。">
+	return <DeckFrame tag="P05 · SYSTEM DESIGN" title="播放列表怎样组织清晰度" subtitle="两档画质使用同一视频时间线。">
 		<Table size={24} head={["文件", "读者", "观察字段"]} rows={[
 			["master.m3u8", "播放器首次进入", "BANDWIDTH、RESOLUTION、档位路径"],
 			["720p/index.m3u8", "播放 720p 时", "EXTINF 与分片文件名"],

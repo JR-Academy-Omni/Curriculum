@@ -1,6 +1,6 @@
 # Video Streaming System Design
 
-System Design 实战课第一期 L02。Lightman 主讲，120 分钟，13 页。
+System Design 实战课第一期 L02。Lightman 主讲，120 分钟，15 页。
 
 - [教学设计](PRD.md)
 - [讲师流程](RUNSHEET.md)

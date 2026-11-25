@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <meta name="googlebot" content="noindex,nofollow">
-<title>L01 · Design an asynchronous video job · JR Academy</title>
+<title>L01 · Design an order report export · JR Academy</title>
 <style>
 :root { color-scheme: light; }
 * { box-sizing: border-box; }
@@ -31,15 +31,21 @@ figure { margin: 12px 0; }
 </style>
 </head>
 <body><main>
-<header><img class="brand" src="logo-zh-full.svg" alt="JR Academy"><h1>L01 · Design an asynchronous video job</h1><p>System Design 实战课 · 第一期</p></header>
-<article><p>Open the <a href="result.html">complete job and its timeline</a>. Inspect the completed task and the recovery trace before your group starts.</p></article>
-<article><h2>Brief</h2><p>An authenticated creator uploads a video. Processing averages 90 seconds, and a sustained workload creates 1,200 jobs per hour. The creator can close the browser and return later. A successful job exposes an authorized playback URL. The same request may be retried and a job message may be delivered again.</p></article>
-<article><h2>Draw the design · 15 minutes</h2><ul><li>List the actor, input object, expected output and system boundary. Identify which uploader actions must finish before a job can be created.</li><li>Compare a request that waits for processing with an API that returns a job ID. Draw your chosen sequence, including status and playback reads.</li><li>Name the state owner and provide a state table for queued, processing, ready and failed. Include the key your API uses to deduplicate a request.</li><li>Estimate average in-flight processing. Distinguish demand from a capacity commitment.</li></ul></article>
-<article><h2>Change the constraint · 20 minutes</h2><p>The worker writes a valid output, then exits before it updates the job or acknowledges the message. Show what happens when the same job is delivered again. Indicate how you would verify that the existing output is the right artifact.</p></article>
-<article><h2>Peer review · 5 minutes</h2><ul><li>Check whether a previously submitted job can survive a browser refresh.</li><li>Check whether a worker can acknowledge work before the job is ready.</li><li>Leave one observable test criterion on the drawing.</li></ul></article>
-<details><summary>Reference design</summary><p>At steady state, 1,200 / 3,600 is about 0.33 jobs per second. At 90 seconds per job, the mean processing concurrency is about 30. Use peak arrival rate, tail latency, downstream quotas and queue age to plan headroom.</p>
-<p>The browser obtains an authorized upload URL and sends bytes to object storage. When upload completes, POST /jobs accepts the owned object version and an idempotency key. The database transaction records the job and an outbox message. A relay publishes the message and the API returns 202 with a job ID. A conditional write records the active attempt. A worker reads the original file, writes a deterministic output, marks the job ready, then acknowledges the message. GET /jobs/{id} authorizes the caller and returns the state. A short-lived playback URL appears when the validated output is ready.</p>
-<p>On redelivery, the worker compares the output key, source version, checksum or media metadata with the job. If they match, a conditional job update can finish the previously interrupted operation. Keep invalid partial output separate and retry under policy. A replay with the same user, key and input returns the same job. A reused key with different input is a conflict.</p>
-<p>Validate by submitting one input twice, interrupting after the storage write, then reloading. Observe one stable job ID, one valid output and the ready-to-play UI.</p></details>
+<header><img class="brand" src="logo-zh-full.svg" alt="JR Academy"><h1>L01 · Design an order report export</h1><p>System Design 实战课 · 第一期 · 用 5 步分析一道新题</p></header>
+<article><p>Before you start, look at the <a href="result.html">complete video upload design and its timeline</a>. Use the same five steps and the component table from P13. Work in groups for 15 minutes, then spend 5 minutes reviewing another group's drawing.</p></article>
+<article><h2>Brief</h2><p>Operations staff click <em>Export this month's orders</em> in an admin console. The system builds an Excel file and, a few minutes later, gives the operator a download link. At the weekday peak there are 600 exports per hour. Each export takes about 2 minutes and produces a file of about 20 MB. Operators sometimes click the button twice, and files must stay downloadable for 7 days.</p></article>
+<article><h2>1 · Clarify the requirements · 3 minutes</h2><ul><li>List the functional requirements: who starts an export, what they receive and how they find it again.</li><li>List at least three non-functional requirements, such as response time, availability, who may download a file and how long files are kept.</li></ul></article>
+<article><h2>2 · Estimate · 3 minutes</h2><ul><li>How many exports run at the same time during the peak hour?</li><li>How much new file storage does one peak hour create? What does that suggest about where the files belong?</li></ul></article>
+<article><h2>3 · Draw the high-level design · 5 minutes</h2><ul><li>Draw boxes and arrows from the operator's click to the download link.</li><li>Label the load balancer, web service, database, object storage, message queue and workers. Explain why each one is there.</li></ul></article>
+<article><h2>4 · Deep dive · 2 minutes</h2><ul><li>An operator clicks Export twice within a second. Show how your design creates only one export job and one file.</li></ul></article>
+<article><h2>5 · Failures and bottlenecks · 2 minutes</h2><ul><li>A worker stops halfway through an export. What does the operator see, and how does the job finish?</li><li>The database is slow during month-end. Which part of your design is affected first?</li></ul></article>
+<article><h2>Peer review · 5 minutes</h2><ul><li>Can you follow every arrow from the click to the download?</li><li>Does each component on the drawing solve a problem the group can name?</li><li>Does a second click, or a repeated message, still produce exactly one file?</li></ul></article>
+<details><summary>Reference design</summary>
+<p>Requirements. An operator starts an export and immediately receives a job ID. The page shows queued, processing, ready or failed. A ready job offers a short-lived download link that only that operator's organization can use. Files are deleted after 7 days.</p>
+<p>Estimate. 600 / 3,600 is about 0.17 exports per second. At 120 seconds each, about 20 exports run at the same time. One peak hour creates 600 × 20 MB = 12 GB. Generated files belong in object storage, while the database stores only job records.</p>
+<p>High-level design. The browser calls the web service through a load balancer. The service saves an export job in the database and puts a message on a queue, then returns the job ID. Workers take messages, read the orders, write the Excel file to object storage, mark the job ready and then acknowledge the message. The browser checks the job by ID and receives a signed download URL when it is ready.</p>
+<p>Deep dive. The browser sends a request key with the export request. The database stores one job per user and request key, so a second click returns the existing job. Each job writes to a fixed file path, so a repeated message overwrites or reuses the same file instead of creating another one.</p>
+<p>Failures. If a worker stops, the message is not acknowledged and the queue delivers it again. The next worker checks whether the file already exists and is complete, then finishes the job. A slow database first delays the workers that read orders. Run exports against a read replica, cap the number of workers and let the queue absorb the backlog while the status page keeps showing processing.</p>
+</details>
 <p><a href="./?page=1">返回课件 / Open slides</a></p>
 </main></body></html>

@@ -38,8 +38,8 @@ figure { margin: 12px 0; }
 <article><h2>完整架构</h2>
 <div class="diagram">
 <p><strong>文件上传</strong>　浏览器 → 对象存储。上传成功后提交原件版本。</p>
-<p><strong>控制路径</strong>　浏览器 → Job API → 任务库与 Outbox → Relay → 队列。</p>
-<p><strong>处理路径</strong>　Worker 领取消息 → 读取原件 → 写成品 → 条件更新任务为 ready → 确认消息。</p>
+<p><strong>控制路径</strong>　浏览器 → 负载均衡 → Job API → 数据库保存任务 → 消息队列。</p>
+<p><strong>处理路径</strong>　Worker 领取消息 → 从对象存储读取原件 → 写成品 → 把任务更新为 ready → 确认消息。</p>
 <p><strong>结果读取</strong>　浏览器查 Job API → 校验所有者 → 获取限时地址 → 对象存储返回成品。</p>
 </div>
 </article>
@@ -54,8 +54,8 @@ figure { margin: 12px 0; }
 <details><summary>查看 Worker 退出后的恢复轨迹</summary>
 <ol>
 <li>10:01:31 成品对象写入成功。进程在提交 ready 之前退出，队列没有收到确认。</li>
-<li>10:01:41 租约到期，消息重投。新的 Worker 领取任务，验证原始版本和成品媒体规格。</li>
-<li>10:01:43 通过版本条件更新提交同一成品的引用，再确认消息。刷新后读到同一任务的可播放结果。</li>
+<li>10:01:41 队列一直没收到确认，把消息重新投递。新的 Worker 领取任务，检查成品是否已存在且完好。</li>
+<li>10:01:43 成品完好，不再重新转码。把任务更新为 ready，再确认消息。刷新后读到同一任务的可播放结果。</li>
 </ol></details>
 <p><a href="worksheet.html">打开课堂工作单</a></p>
 <p><a href="./?page=1">返回课件 / Open slides</a></p>

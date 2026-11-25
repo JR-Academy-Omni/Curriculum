@@ -1,7 +1,7 @@
 import { DeckFrame, Panel, Steps } from '../kit';
 
 export default function S12_Review() {
-	return <DeckFrame tag="P12 · SYSTEM DESIGN" title="给选型一个验证方案" subtitle="看可播放、首帧、卡顿和恢复。">
+	return <DeckFrame tag="P14 · SYSTEM DESIGN" title="给选型一个验证方案" subtitle="看可播放、首帧、卡顿和恢复。">
 		<Panel>
 			<Steps size={27} items={[
 				"打开两个档位，确认分辨率和片段都能加载。",

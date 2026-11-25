@@ -1,7 +1,7 @@
 import { AnimatedGroup, DeckFrame, Label, Panel, colors } from '../kit';
 
 export default function S07_Budget() {
-	return <DeckFrame tag="P07 · SYSTEM DESIGN" title="按可用成片计算单位成本" subtitle="把失败尝试与再次合成也算进去。">
+	return <DeckFrame tag="P09 · SYSTEM DESIGN" title="按可用成片计算单位成本" subtitle="把失败尝试与再次合成也算进去。">
 		<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
 			<AnimatedGroup delay={0.15}>
 				<Panel>

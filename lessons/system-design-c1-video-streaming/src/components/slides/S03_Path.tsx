@@ -1,7 +1,7 @@
 import { Arrow, DeckFrame, Label, Node, Panel } from '../kit';
 
 export default function S03_Path() {
-	return <DeckFrame tag="P03 · SYSTEM DESIGN" title="从摄像头到播放器" subtitle="沿图区分采集、编码、打包与内容分发。">
+	return <DeckFrame tag="P04 · SYSTEM DESIGN" title="从摄像头到播放器" subtitle="沿图区分采集、编码、打包与内容分发。">
 		<div style={{ display: 'grid', gap: 32 }}>
 			<div style={{ display: 'flex', alignItems: 'stretch', gap: 16 }}>
 				<Node title="推流" sub="主播 → 接入端" style={{ flex: 1, minWidth: 0 }} />
