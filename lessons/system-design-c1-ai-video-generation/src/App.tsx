@@ -7,6 +7,7 @@ import S03_Architecture from './components/slides/S03_Architecture';
 import S04_Quality from './components/slides/S04_Quality';
 import S05_Jobs from './components/slides/S05_Jobs';
 import S05b_Reliability from './components/slides/S05b_Reliability';
+import S05c_ShotTimeline from './components/slides/S05c_ShotTimeline';
 import S06_VersionTree from './components/slides/S06_VersionTree';
 import S07_Budget from './components/slides/S07_Budget';
 import S08_Command from './components/slides/S08_Command';
@@ -26,6 +27,7 @@ export default function App() {
 			<S04_Quality />
 			<S05_Jobs />
 			<S05b_Reliability />
+			<S05c_ShotTimeline />
 			<S06_VersionTree />
 			<S07_Budget />
 			<S08_Command />

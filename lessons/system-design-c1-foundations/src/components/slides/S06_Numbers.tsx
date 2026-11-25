@@ -1,7 +1,7 @@
 import { AnimatedGroup, DeckFrame, Label, Panel, Table, colors } from '../kit';
 
 export default function S06_Numbers() {
-	return <DeckFrame tag="P06 · 第 2 步" title="估算时要记住的数字" subtitle="只记数量级。具体值随硬件和云厂商变化。">
+	return <DeckFrame tag="P07 · 第 2 步" title="估算时要记住的数字" subtitle="只记数量级。具体值随硬件和云厂商变化。">
 		<div style={{ display: 'grid', gridTemplateColumns: '1.15fr .85fr', gap: 28 }}>
 			<Table size={22} widths="1.3fr 1fr" head={['操作', '大约耗时']} rows={[
 				['读一次内存', '100 纳秒'],

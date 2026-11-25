@@ -3,7 +3,7 @@ import { AnimatedGroup, DeckFrame, Label, Node, Panel, colors } from '../kit';
 const problems = ['2 TB/天的视频很快塞满本地磁盘', '一台机器扛不住高峰上传，也没法升级不停机', '转码吃满 CPU，连查进度的请求都变慢', '机器一挂，所有功能一起挂'];
 
 export default function S07_SingleBox() {
-	return <DeckFrame tag="P07 · 第 3 步" title="先画最简单的版本：一台机器" subtitle="v0 能跑起来。接下来每遇到一个问题，就加一个组件。">
+	return <DeckFrame tag="P08 · 第 3 步" title="先画最简单的版本：一台机器" subtitle="v0 能跑起来。接下来每遇到一个问题，就加一个组件。">
 		<div style={{ display: 'grid', gridTemplateColumns: '.9fr 1.1fr', gap: 30 }}>
 			<AnimatedGroup delay={.12} style={{ display: 'flex' }}><Panel style={{ flex: 1 }}>
 				<Label>v0 · 一台服务器</Label>

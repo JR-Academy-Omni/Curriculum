@@ -1,7 +1,7 @@
 import { DeckFrame, Table } from '../kit';
 
 export default function S13_ComponentMap() {
-	return <DeckFrame tag="P13 · 速查表" title="遇到什么问题，加什么组件" subtitle="拍下这张表。练习和后两节都会用到。">
+	return <DeckFrame tag="P15 · 速查表" title="遇到什么问题，加什么组件" subtitle="拍下这张表。练习和后两节都会用到。">
 		<Table size={22} widths="1.25fr .95fr 1.3fr" head={['遇到的问题', '加的组件', '要付出的代价']} rows={[
 			['大文件塞满磁盘，元数据要查询', '数据库 + 对象存储', '两边的数据可能对不上'],
 			['一台机器扛不住，也不能停机', '负载均衡 + 无状态服务', '状态必须放到共享存储'],

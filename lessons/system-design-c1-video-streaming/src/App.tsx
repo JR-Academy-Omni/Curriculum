@@ -9,6 +9,7 @@ import S05_Audiences from './components/slides/S05_Audiences';
 import S06_Compare from './components/slides/S06_Compare';
 import S07_Capacity from './components/slides/S07_Capacity';
 import S07b_Consistency from './components/slides/S07b_Consistency';
+import S07c_CdnLab from './components/slides/S07c_CdnLab';
 import S08_Command from './components/slides/S08_Command';
 import S09_Observe from './components/slides/S09_Observe';
 import S10_Exercise from './components/slides/S10_Exercise';
@@ -28,6 +29,7 @@ export default function App() {
 			<S06_Compare />
 			<S07_Capacity />
 			<S07b_Consistency />
+			<S07c_CdnLab />
 			<S08_Command />
 			<S09_Observe />
 			<S10_Exercise />

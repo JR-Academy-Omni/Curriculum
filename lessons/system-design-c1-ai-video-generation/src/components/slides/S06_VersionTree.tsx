@@ -14,7 +14,7 @@ const tree = [
 ] as const;
 
 export default function S06_VersionTree() {
-	return <DeckFrame tag="P08 · SYSTEM DESIGN" title="把成片绑定到确切的镜头版本" subtitle="更换中间镜头时，保留已经通过的首镜和尾镜。" accent={colors.dark}>
+	return <DeckFrame tag="P09 · SYSTEM DESIGN" title="把成片绑定到确切的镜头版本" subtitle="更换中间镜头时，保留已经通过的首镜和尾镜。" accent={colors.dark}>
 		<div style={{ display: 'grid', gridTemplateColumns: '1.25fr .75fr', gap: 24 }}>
 			<div style={{ background: '#0f1428', color: '#f3f0e8', borderRadius: 22, padding: '22px 26px' }}>
 				{tree.map(([p, d, top]) => <div key={p} style={{ display: 'grid', gridTemplateColumns: '430px 1fr', gap: 12, padding: '7px 0', borderBottom: '1px solid rgba(255,255,255,.08)' }}>

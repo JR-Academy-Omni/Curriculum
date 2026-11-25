@@ -1,7 +1,7 @@
 import { AnimatedGroup, Arrow, DeckFrame, Label, Node, Panel, colors } from '../kit';
 
 export default function S12_SyncAsync() {
-	return <DeckFrame tag="P12 · 组件 4" title="同步等结果，还是交给队列" subtitle="同一个功能两种画法。选哪种由需求决定，不由喜好决定。">
+	return <DeckFrame tag="P13 · 组件 4" title="同步等结果，还是交给队列" subtitle="同一个功能两种画法。选哪种由需求决定，不由喜好决定。">
 		<div style={{ display: 'grid', gap: 14 }}>
 			<AnimatedGroup delay={.12}><Panel style={{ padding: '16px 22px' }}>
 				<Label>同步：请求一直等到转码完成</Label>

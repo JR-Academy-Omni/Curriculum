@@ -2,7 +2,7 @@ import { DeckFrame, Label, Panel, Steps } from '../kit';
 import { assetPath } from '../ui';
 
 export default function S17_Exercise() {
-	return <DeckFrame tag="P17 · 小组练习" title="新题：订单报表导出" subtitle="运营在后台点「导出本月订单」，系统生成 Excel，几分钟后给下载链接。">
+	return <DeckFrame tag="P20 · 小组练习" title="新题：订单报表导出" subtitle="运营在后台点「导出本月订单」，系统生成 Excel，几分钟后给下载链接。">
 		<Panel>
 			<Label>Use the 5 steps · 20 minutes</Label>
 			<div style={{ marginTop: 18 }}><Steps size={24} items={[

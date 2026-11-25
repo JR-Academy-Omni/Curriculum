@@ -2,7 +2,7 @@ import { AnimatedGroup, DeckFrame, Label, Panel, Steps, colors } from '../kit';
 import { assetPath } from '../ui';
 
 export default function S18_Next() {
-	return <DeckFrame tag="P18 · 收尾" title="这张组件地图，后两节会越填越满" subtitle="方法不变，每个案例加几块新组件。">
+	return <DeckFrame tag="P21 · 收尾" title="这张组件地图，后两节会越填越满" subtitle="方法不变，每个案例加几块新组件。">
 		<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24 }}>
 			<AnimatedGroup delay={.12} style={{ display: 'flex' }}><Panel style={{ flex: 1 }}>
 				<Label>本节 · 视频上传</Label>

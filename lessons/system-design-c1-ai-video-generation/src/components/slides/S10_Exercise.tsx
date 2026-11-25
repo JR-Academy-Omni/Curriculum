@@ -2,7 +2,7 @@ import { DeckFrame, Panel, Steps } from '../kit';
 import { assetPath } from '../ui';
 
 export default function S10_Exercise() {
-	return <DeckFrame tag="P12 · SYSTEM DESIGN" title="小组设计 · 只重做出错的镜头" subtitle="把返工落实到状态、版本和验证。">
+	return <DeckFrame tag="P13 · SYSTEM DESIGN" title="小组设计 · 只重做出错的镜头" subtitle="把返工落实到状态、版本和验证。">
 		<Panel>
 			<Steps size={27} items={[
 				"Draw separate generation and rendering paths and name their state owners.",

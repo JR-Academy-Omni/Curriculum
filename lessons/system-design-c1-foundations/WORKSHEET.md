@@ -1,6 +1,6 @@
 # L01 · Design an order report export
 
-Before you start, look at the [complete video upload design and its timeline](public/result.html). Use the same five steps and the component table from P13. Work in groups for 15 minutes, then spend 5 minutes reviewing another group's drawing.
+Before you start, look at the [complete video upload design and its timeline](public/result.html). Use the same five steps and the component table from P15. Work in groups for 15 minutes, then spend 5 minutes reviewing another group's drawing.
 
 ## Brief
 

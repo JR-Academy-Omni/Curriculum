@@ -1,7 +1,7 @@
 import { AnimatedGroup, DeckFrame, Label, Panel, Takeaway, colors } from '../kit';
 
 export default function S15_Idempotency() {
-	return <DeckFrame tag="P15 · 第 5 步" title="重试会重复，所以操作必须幂等" subtitle="超时以后你不知道对方做没做完，只能再试一次。幂等 = 做一次和做多次，结果一样。">
+	return <DeckFrame tag="P17 · 第 5 步" title="重试会重复，所以操作必须幂等" subtitle="超时以后你不知道对方做没做完，只能再试一次。幂等 = 做一次和做多次，结果一样。">
 		<div style={{ display: 'grid', gap: 24 }}>
 			<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 26 }}>
 				<AnimatedGroup delay={.15} style={{ display: 'flex' }}><Panel style={{ flex: 1 }}>
