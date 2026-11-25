@@ -109,6 +109,7 @@
 | `description` | string | ✅ | 课程简介 |
 | `level` | string | ✅ | `零基础` / `初级` / `中级` / `中级进阶` / `高级` |
 | `type` | string | ✅ | **必须是 `training`**。后端 API 只接受: `training`, `video`, `internship`, `mock`, `career`。⚠️ 不要写 `bootcamp`，会导致同步失败 |
+| `markets` | string[] | | 面向市场（访客国家），可选值 `AU` / `SG` / `MY` / `US` / `CN`，如 `["AU", "SG"]`。决定公开站按访客国家给谁看这门课。**省略 = 本地不管理**：Skills Data Manager 不比较也不同步，Admin 里配的值保持不变（prod 默认 `["AU"]`）。写了就必须非空、不重复、全大写；顺序无关。开放哪些市场是业务决定，没有明确决定不要填 |
 | `targetAudience` | string | | 目标受众 |
 | `totalLessons` | number | ✅ | Lesson 总数（和 phases 里的 lessons 数要一致） |
 | `totalSteps` | number | | Step 总数 |
@@ -362,6 +363,7 @@
 | outline.json | Production 字段 | 说明 |
 |-------------|----------------|------|
 | 顶层 → | Training | slug, name, description, level, type |
+| markets → | Training.markets | 仅在 outline 写了时同步；省略不覆盖 prod |
 | phase → | Module | name, order |
 | phase.test → | Module.quizBank | 待实现 |
 | lesson → | Lesson | name, title, type, duration, description |
@@ -391,6 +393,7 @@
 9. `videos[].slug` 必须存在于 `skills-data/videos/`
 10. `roadmaps[].slug` 必须存在于 `skills-data/roadmaps/`
 11. `interviewQuestions[].bank` 必须存在于 `skills-data/interview-questions/`
+12. `markets` 如果写了，必须是非空数组，只含 `AU` / `SG` / `MY` / `US` / `CN` 且不重复；否则 Skills Data Manager 的 sync / create 在请求 production 前直接拦下
 
 ---
 
