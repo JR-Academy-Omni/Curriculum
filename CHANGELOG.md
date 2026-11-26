@@ -1,5 +1,7 @@
 # 2026-11-26 · 一场讲懂 FDE 公开课（已部署）
 
+更新（2026-11-26 晚）：第 17 页改为保险公司 Realtime Voice 客服 System Design 架构图，含 Agent Harness、Memory & Knowledge 层（Customer／Session Memory、Enterprise Knowledge · RAG、Product Catalog）、3 个异步 Context Agent、Tool Gateway 与业务系统、Guardrails、Human Handoff、Eval 与 Governance 标记，组件名用英文；第 18 页改为 17 个 Agent（通话中 8、Context 3、转人工后 2、挂断后 4）；第 9 页墓碑增至 29 个（补 Middle Manager、Scrum Master 等），Developer without AI Coding 改为 Software Engineer。
+
 新增「一场讲懂 FDE」37 页 Talk Deck（60 分钟线上公开课，讲师 Lightman Wang），按五部分讲：AI 落地与 2026 年裁员（带来源的数据切换图、澳洲 AI 时间线、五职能落地进度、2027 岗位墓碑、AI Coding 门槛、厨房比喻、毕业生就业、Job Ready 146 项 vs UNSW）；FDE 做什么（接走整段工作、直接对接 C-level 与传统顾问对比、保险公司 Realtime Voice 客服六步、背后 7 个 Agent 的 3D 架构）；岗位地图（AI 系统七层 3D 岗位塔、FDE Business／Tech、中澳美市场、澳洲薪酬）；怎么练成（FDE Tech 十项能力、两门课周次与 30 项练习墙）；怎么入行（两个入口、按背景补经历、作品集、为什么是匠人、课程分流与 Amelia 小花二维码）。参照 talk-deck-3d 加入 3D 封面（星空、3D 地球、环绕真实岗位卡片）、工作流自动轮播与流动虚线、立体卡片入场。登记 lessons.html，附 PRD、RUNSHEET（60 分钟版）、WORKSHEET、SOURCE_MAP、QA。
 
 # 2026-11-25 · AI Engineer W9 Agent Memory

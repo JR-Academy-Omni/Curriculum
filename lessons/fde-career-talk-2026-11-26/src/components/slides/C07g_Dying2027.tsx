@@ -7,7 +7,7 @@ import { assetPath } from '../ui';
 import '../cover3d/cover3d.css';
 
 // 取自 jracademy.ai/career-impact-map 的高暴露职业（careers.ts，riskLevel = High）；
-// owner 2026-11-26：Graphic Designer、Video Editor、Actor 是 owner 加的，不在职业影响地图里；用海外通用的英文岗位名；只写代码的 Software Engineer 列为消失（owner 2026-11-26）；墓碑式设计
+// owner 2026-11-26：Graphic Designer、Video Editor、Actor、Middle Manager、Scrum Master 是 owner 加的，不在职业影响地图里；用海外通用的英文岗位名；只写代码的 Software Engineer 列为消失（owner 2026-11-26）；墓碑式设计
 const JOBS: [string, string][] = [
 	['Software Engineer', 'AI Engineer'],
 	['Grad / Junior Developer', 'AI-ready Software Engineer'],
@@ -35,15 +35,17 @@ const JOBS: [string, string][] = [
 	['Customer Service Rep', 'AI Customer Success Manager'],
 	['Call Center Agent', 'AI Support Specialist'],
 	['Executive Assistant', 'Chief of Staff'],
+	['Middle Manager', 'Player-Coach / FDE'],
+	['Scrum Master', 'AI Delivery Lead'],
 	['Receptionist', 'AI Office Manager'],
 ];
-const ROWS = [0, 7, 14, 21];
+const ROWS = [0, 8, 16, 24];
 // 由远到近：后排小而暗，前排大而亮
 const ROW_STYLE = [
-	{ w: 152, h: 112, name: 13, dim: .88 },
-	{ w: 168, h: 124, name: 14, dim: .92 },
-	{ w: 184, h: 134, name: 14.5, dim: .96 },
-	{ w: 200, h: 146, name: 15.5, dim: 1 },
+	{ w: 132, h: 112, name: 12, dim: .88 },
+	{ w: 146, h: 124, name: 13, dim: .92 },
+	{ w: 158, h: 134, name: 13.5, dim: .96 },
+	{ w: 170, h: 146, name: 14.5, dim: 1 },
 ];
 const ENGRAVE = { color: '#ffffff', textShadow: '0 1px 2px rgba(0,0,0,.9)' };
 
@@ -91,15 +93,15 @@ function Body() {
 				</div>
 				<button type="button" className="live-toggle" onClick={() => setDead(false)} aria-pressed={!dead} style={{ ...btn(!dead, colors.yellow, colors.dark), marginLeft: 16 }}>过去</button>
 				<button type="button" className="live-toggle" onClick={() => setDead(true)} aria-pressed={dead} style={btn(dead, '#b3261e', colors.white)}>2026–2027 →</button>
-				<span style={{ marginLeft: 'auto', fontSize: 12, color: dead ? '#8e88a8' : '#514c48', textAlign: 'right', lineHeight: 1.45 }}>来源：匠人学院职业影响地图 jracademy.ai/career-impact-map 高暴露职业<br />Graphic Designer、Video Editor、Actor 为讲者补充</span>
+				<span style={{ marginLeft: 'auto', fontSize: 12, color: dead ? '#8e88a8' : '#514c48', textAlign: 'right', lineHeight: 1.45 }}>来源：匠人学院职业影响地图 jracademy.ai/career-impact-map 高暴露职业<br />Graphic Designer、Video Editor、Actor、Middle Manager、Scrum Master 为讲者补充</span>
 			</div>
 			{dead
 				? <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: 0 }}>
-					{ROWS.map((start, r) => <div key={r} style={{ display: 'flex', justifyContent: 'center', gap: 14 + r * 4, marginTop: r ? -6 : 0 }}>
-						{JOBS.slice(start, start + 7).map(([name, to], k) => <Stone key={name} name={name} to={to} row={r} k={k} idx={start + k} still={still} />)}
+					{ROWS.map((start, r) => <div key={r} style={{ display: 'flex', justifyContent: 'center', gap: 10 + r * 2, marginTop: r ? -6 : 0 }}>
+						{JOBS.slice(start, start + 8).map(([name, to], k) => <Stone key={name} name={name} to={to} row={r} k={k} idx={start + k} still={still} />)}
 					</div>)}
 				</div>
-				: <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gridTemplateRows: 'repeat(4, 1fr)', gap: 10 }}>
+				: <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gridTemplateRows: 'repeat(4, 1fr)', gap: 10 }}>
 					{JOBS.map(([name], i) => <motion.div key={name} initial={ini(still, { opacity: 0, y: 10 })} animate={{ opacity: 1, y: 0 }} transition={{ delay: still ? 0 : i * .02 }}
 						style={{ border: `2px solid ${colors.dark}`, borderRadius: 14, background: colors.white, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '10px 14px', gap: 8, boxShadow: '4px 4px 0 rgba(16,22,47,.1)' }}>
 						<span style={{ fontFamily: fonts.heading, fontSize: 19, fontWeight: 900, lineHeight: 1.2 }}>{name}</span>
