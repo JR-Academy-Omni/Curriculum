@@ -7,6 +7,7 @@ const products = [
 	{ img: 'airbotix', name: 'Airbotix', url: 'airbotix.ai', tag: '青少年 AI 教育', desc: '5–17 岁孩子的 AI 与编程课' },
 	{ img: 'deeprouter', name: 'DeepRouter', url: 'deeprouter.co', tag: 'AI 模型网关', desc: '一个账号、一个 key 调用主流 AI 模型' },
 	{ img: 'deals', name: '澳洲薅羊毛', url: 'deals.jracademy.ai', tag: '网站 · iPhone App', desc: '超市特价、学生福利和免费资源' },
+	{ img: 'codequest', name: 'Code Quest Junior', url: 'airbotix.ai/codequest', tag: '3D 编程游戏', desc: '用积木编程指挥角色闯关冒险' },
 	{ img: 'j3', name: 'J3 Club', url: 'j3.club', tag: 'AI 叙事游戏', desc: '选一个身份进入故事，AI 扮演其他所有人' },
 	{ img: 'zen', name: '赛博木鱼 · 静心寺', url: 'zen.j3.club', tag: '3D 线上禅堂', desc: '敲木鱼、许个愿，或者安静坐一会儿' },
 	{ img: 'airbotixgame', name: 'Creative Code Studio', url: 'airbotix.ai', tag: '少儿游戏创作', desc: '孩子说出想法，和 AI 一起做出小游戏' },
@@ -47,17 +48,21 @@ export default function ProductCarousel() {
 				<span style={{ fontFamily: f.h, fontWeight: 700, fontSize: 30 }}>{current.name}</span>
 				<span style={{ marginLeft: 16, fontSize: 19, color: c('sunshine'), fontWeight: 700 }}>{current.url}</span>
 			</div>
-			<div onMouseLeave={() => setPaused(false)} style={{ position: 'absolute', left: 80, right: 80, top: 658, display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: 10 }}>
+			<div onMouseLeave={() => setPaused(false)} style={{ position: 'absolute', left: 60, right: 60, top: 654, display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: 10 }}>
 				{products.map((p, i) => (
 					<div key={p.img} onMouseEnter={() => { setActive(i); setPaused(true); }} className="rise" style={{ cursor: 'pointer' }}>
-						<div style={{ height: 68, padding: '9px 16px', borderRadius: 14, background: i === active ? c('canvas-pure') : c('night-2'), color: i === active ? c('ink') : c('on-night'), border: `1px solid ${i === active ? c('sunshine') : c('night-line')}`, transition: 'background 0.4s, color 0.4s' }}>
-							<div style={{ fontSize: 17, fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden' }}>{p.name} <span style={{ fontSize: 13, color: i === active ? c('slate') : c('on-night-muted') }}>· {p.tag}</span></div>
-							<div style={{ fontSize: 13.5, marginTop: 3, opacity: 0.78, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.desc}</div>
+						<div style={{ height: 92, padding: '10px 14px', borderRadius: 14, background: i === active ? c('canvas-pure') : c('night-2'), color: i === active ? c('ink') : c('on-night'), border: `1px solid ${i === active ? c('sunshine') : c('night-line')}`, transition: 'background 0.4s, color 0.4s' }}>
+							<div style={{ fontSize: 16.5, fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden' }}>{p.name}</div>
+							<div style={{ fontSize: 12.5, fontWeight: 700, marginTop: 1, color: i === active ? c('slate') : c('sunshine') }}>{p.tag}</div>
+							<div style={{ fontSize: 12.5, lineHeight: 1.45, marginTop: 4, opacity: 0.8, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{p.desc}</div>
 						</div>
 					</div>
 				))}
+				<div className="rise" style={{ height: 92, padding: '10px 14px', borderRadius: 14, border: `1px dashed ${c('night-line')}`, color: c('on-night') }}>
+					<div style={{ fontSize: 16.5, fontWeight: 700 }}>学习与求职产品</div>
+					<div style={{ fontSize: 12.5, lineHeight: 1.7, marginTop: 4, color: c('on-night-muted') }}>CareerOS Harness · 考证匠<br />职聘 Jobpin</div>
+				</div>
 			</div>
-			<p style={{ position: 'absolute', left: 80, right: 80, top: 812, textAlign: 'center', fontSize: 17, color: c('on-night-muted') }}>学习与求职产品：CareerOS Harness · 考证匠 · 职聘 Jobpin</p>
 		</Page>
 	);
 }

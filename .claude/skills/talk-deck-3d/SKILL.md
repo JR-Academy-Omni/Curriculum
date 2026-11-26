@@ -20,7 +20,7 @@ description: "制作 3D 动态版 HTML 演示稿：公司介绍、招生宣讲�
 3. 复制 `assets/core/`：`kit.tsx`、`Globe.tsx`、`CoverScene.tsx` → `src/components/`；`deck.css`、`depth.css` → `src/styles/`。`main.tsx` 依次引入 `jr-craft.css`、`presentation.css`、`deck.css`、`depth.css`。
 4. `index.html` 必须带模板的样式重置（`*{margin:0;padding:0;box-sizing:border-box}`）。
 5. 有地球或地图时跑 `scripts/gen-geo.mjs` 生成 `src/data/land.ts`、`worldmap.ts`。
-6. 从 `assets/pages/` 挑页面改内容。页面里的人名、公司、数字、图片路径都是公司介绍那份的，**逐项替换并重新核实**。各页怎么用见 [references/recipes.md](references/recipes.md)。
+6. 从 `assets/pages/` 挑页面改内容。页面里的人名、公司、数字、图片路径都是公司介绍那份的，**逐项替换并重新核实**。各页怎么用、17 种 3D 表现形式清单见 [references/recipes.md](references/recipes.md)。
 
 ## 流程
 
