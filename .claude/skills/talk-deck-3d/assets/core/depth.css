@@ -1,0 +1,60 @@
+/* 3D 层次：卡片立体入场、悬停倾斜、产品图景深、封面视差。 */
+@keyframes rise3d { from { opacity: 0; transform: perspective(1100px) rotateX(38deg) translateY(60px); } to { opacity: 1; transform: perspective(1100px) rotateX(0) translateY(0); } }
+@keyframes flip3d { from { opacity: 0; transform: perspective(1200px) rotateY(-62deg) translateX(-30px); } to { opacity: 1; transform: perspective(1200px) rotateY(0) translateX(0); } }
+@keyframes floaty { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
+
+.rise, .flip { transform-origin: 50% 80%; animation: rise3d 0.75s var(--jc-ease) backwards; transition: transform var(--jc-dur) var(--jc-ease), box-shadow var(--jc-dur) var(--jc-ease); }
+.flip { animation-name: flip3d; transform-origin: 0 50%; }
+:nth-child(2) > .rise, .rise:nth-child(2), .flip:nth-child(2) { animation-delay: 0.08s; }
+:nth-child(3) > .rise, .rise:nth-child(3), .flip:nth-child(3) { animation-delay: 0.16s; }
+:nth-child(4) > .rise, .rise:nth-child(4), .flip:nth-child(4) { animation-delay: 0.24s; }
+:nth-child(5) > .rise, .rise:nth-child(5), .flip:nth-child(5) { animation-delay: 0.32s; }
+.rise:nth-child(6), .flip:nth-child(6) { animation-delay: 0.4s; }
+.rise:nth-child(7), .flip:nth-child(7) { animation-delay: 0.48s; }
+.rise:nth-child(8), .flip:nth-child(8) { animation-delay: 0.56s; }
+.rise:nth-child(9), .flip:nth-child(9) { animation-delay: 0.64s; }
+.rise:hover, .flip:hover { transform: perspective(1100px) rotateX(5deg) translateY(-8px); box-shadow: var(--jc-shadow-pop) !important; }
+
+/* 产品图、现场照片：带透视和投影的立体面板 */
+.shot { transform: perspective(1500px) rotateY(-11deg) rotateX(4deg); box-shadow: -26px 34px 60px -18px rgba(31, 27, 45, 0.45); animation: floaty 7s ease-in-out infinite; transition: transform var(--jc-dur-slow) var(--jc-ease); }
+.shot:hover { transform: perspective(1500px) rotateY(0) rotateX(0); }
+.shot.left { transform: perspective(1500px) rotateY(11deg) rotateX(4deg); box-shadow: 26px 34px 60px -18px rgba(31, 27, 45, 0.35); }
+
+/* 封面与「我们是谁」：鼠标移动时分层视差。--px/--py 取值 -1 到 1 */
+.scene { perspective: 1600px; }
+.scene > .stage { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY(calc(var(--px, 0) * 7deg)) rotateX(calc(var(--py, 0) * -6deg)); transition: transform 0.25s ease-out; }
+.float { animation: floaty 6s ease-in-out infinite; }
+
+@media print { .rise, .flip, .shot, .float { animation: none !important; } }
+
+/* 「2017」立体字 */
+.year3d { font-family: var(--jc-font-heading); font-weight: 700; font-size: 188px; line-height: 1.05; letter-spacing: -0.03em; color: var(--jc-ink);
+	text-shadow: 1px 1px 0 #ffd43b, 2px 2px 0 #ffd43b, 3px 3px 0 #ffd43b, 4px 4px 0 #ffcf30, 5px 5px 0 #ffcb2b, 6px 6px 0 #ffc626, 7px 7px 0 #ffc221, 8px 8px 0 #ffbd1c, 9px 9px 0 #ffb918, 10px 10px 0 #ffb414, 18px 22px 30px rgba(31, 27, 45, 0.28); }
+
+/* ---- 封面 ---- */
+.aurora { position: absolute; inset: 0; background:
+	radial-gradient(620px 520px at 73% 46%, rgba(93, 174, 255, 0.30), transparent 70%),
+	radial-gradient(520px 420px at 96% 8%, rgba(255, 107, 169, 0.22), transparent 70%),
+	radial-gradient(560px 420px at 4% 100%, rgba(61, 217, 169, 0.16), transparent 70%);
+	animation: aurora 9s ease-in-out infinite alternate; }
+@keyframes aurora { from { opacity: 0.75; transform: scale(1); } to { opacity: 1; transform: scale(1.06); } }
+.floor { position: absolute; left: 0; right: 0; bottom: 0; height: 270px; perspective: 340px; overflow: hidden; mask-image: linear-gradient(transparent, #000 75%); }
+.floor > div { position: absolute; left: -60%; right: -60%; top: -40%; bottom: -20%; transform-origin: 50% 100%; transform: rotateX(64deg);
+	background-image: linear-gradient(rgba(125, 170, 255, 0.42) 1px, transparent 1px), linear-gradient(90deg, rgba(125, 170, 255, 0.42) 1px, transparent 1px);
+	background-size: 72px 72px; animation: floor 2.4s linear infinite; }
+@keyframes floor { from { background-position: 0 0; } to { background-position: 0 72px; } }
+/* 口号铭牌：字标原样放在有厚度的白色立体板上 */
+.slab { display: inline-block; margin-top: 30px; padding: 30px 42px 26px; border-radius: 28px; background: #fffef7; transform-origin: 0 50%;
+	box-shadow: 1px 1px 0 #ffd43b, 2px 2px 0 #ffd43b, 3px 3px 0 #ffd43b, 4px 4px 0 #ffcb2b, 5px 5px 0 #ffcb2b, 6px 6px 0 #ffc221, 7px 7px 0 #ffc221, 8px 8px 0 #ffb918, 9px 9px 0 #ffb918, 10px 10px 0 #ffb414, 0 0 70px rgba(255, 212, 59, 0.35), 30px 40px 60px rgba(0, 0, 0, 0.55); }
+@keyframes cover-in { from { opacity: 0; transform: perspective(900px) rotateY(-34deg) translateX(-60px); } to { opacity: 1; transform: perspective(900px) rotateY(0) translateX(0); } }
+.cover-in { animation: cover-in 0.9s var(--jc-ease) backwards; transform-origin: 0 50%; }
+.shine { background: linear-gradient(105deg, #fff 40%, #ffd43b 50%, #fff 60%) 0 0 / 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 5s linear infinite; }
+@keyframes shine { from { background-position: 100% 0; } to { background-position: -60% 0; } }
+@media print { .cover-in, .aurora, .floor > div { animation: none !important; } .shine { background: none; color: #fff; } }
+
+/* 头像弹出、手机模型 */
+@keyframes pop3d { from { opacity: 0; transform: perspective(700px) translateZ(-260px) rotateY(70deg); } to { opacity: 1; transform: perspective(700px) translateZ(0) rotateY(0); } }
+.pop { animation: pop3d 0.7s var(--jc-ease) backwards; }
+.phone { width: 322px; padding: 10px; border-radius: 52px; background: #17142a; box-shadow: -22px 34px 60px -16px rgba(31, 27, 45, 0.5); }
+.phone img { width: 100%; display: block; border-radius: 42px; }
+@media print { .pop, .phone { animation: none !important; } }

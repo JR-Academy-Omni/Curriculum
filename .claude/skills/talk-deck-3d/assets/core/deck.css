@@ -1,0 +1,33 @@
+/* 公司介绍会直接发链接给外部看：隐藏讲师工具条（N / P 快捷键仍可用），控件改为 JR Craft。 */
+.deck-toolbar { display: none; }
+.deck-runtime > button { border: 1px solid var(--jc-hairline) !important; border-radius: 999px !important; box-shadow: var(--jc-shadow-card) !important; color: var(--jc-ink); width: 44px !important; height: 44px !important; }
+.deck-runtime > div:first-of-type > div { background: var(--jc-coral) !important; }
+.deck-runtime > div button { background: rgba(156, 149, 171, 0.5) !important; }
+.deck-runtime > div button[style*="28px"] { background: var(--jc-coral) !important; }
+.deck-runtime a { color: inherit; text-decoration: none; }
+
+.offer-row { display: flex; width: max-content; animation: offer-scroll var(--dur) linear infinite; }
+.offer-row.reverse { animation-direction: reverse; }
+.offer-row > div { display: flex; gap: 20px; padding-right: 20px; }
+.offer-wall:hover .offer-row { animation-play-state: paused; }
+@keyframes offer-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media print { .offer-row { animation: none !important; } }
+
+/* 深色页隐藏引擎自带的深色 logo，由页面自己放反白版。 */
+[data-slide-canvas]:has([data-night]) > div:first-child { display: none !important; }
+
+/* 手机竖屏：左右滑动翻页，隐藏会压住内容和页码的箭头与圆点。 */
+@media (max-width: 700px) and (orientation: portrait) {
+	.deck-runtime > button, .deck-runtime > div:has(> button) { display: none !important; }
+}
+
+/* 本稿字体（owner 2026-11-26：原标题字体不好看）：中文 Noto Sans SC，英文和数字 DM Sans，标题与正文一套。 */
+:root {
+	--jc-font-heading: "JR Craft Body", "Noto Sans SC Variable", "PingFang SC", sans-serif;
+	--jc-font-body: "JR Craft Body", "Noto Sans SC Variable", "PingFang SC", sans-serif;
+}
+/* 重点词用黄色荧光底，不用红字。 */
+.marker { background: linear-gradient(transparent 60%, var(--jc-sunshine) 60%, var(--jc-sunshine) 92%, transparent 92%); padding: 0 6px; }
+
+/* 雇主墙每排 15 个 Logo，间距比 Offer 卡片小。 */
+.offer-wall.dense .offer-row > div { gap: 8px; padding-right: 8px; }
