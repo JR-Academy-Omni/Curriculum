@@ -1,3 +1,7 @@
+# 2026-11-25 · AI Engineer W9 Agent Memory
+
+新增第七期 W9「Agent Memory & State Management」（L133）44 页 Talk Deck（90 分钟，讲师 Harris）：State 与 Memory 的区别；task state、session state、working memory、session memory，压缩方式对照与事实 vs 摘要；长期 memory 用 CoALA 的 episodic / semantic / procedural（与大纲的 episodic / semantic / preference 不同：preference 归入 semantic 并要 consent，procedural 只能由人写或批准）；write / read policy、scope、TTL 与 retention、更正与级联删除、consent（澳洲 APPs）；冲突、过期、provenance、memory poisoning；Coding Agent Memory 架构、现成实现对照与面试。例子全部用 Claude Code，实践课 L119、C7P10 仍用 CareKind 场景，规则相同；没有 code demo。接入 deploy.yml 并登记 lessons.html（Draft / Local，部署后核验再标已部署）（`lessons/ai-engineer-cohort-07-w9-agent-memory`）
+
 # 2026-11-25 · System Design 实战课互动页（本地，待部署）
 
 L01 新增三个互动页：容量计算器（P06，拖动上传量、文件大小、处理时长实时算并发、存储、带宽并提示组件）、3D 架构视图（P14，CSS 3D，v0 到 v4 逐步加组件，可拖动旋转和重置视角）、请求时间线（P18，同步、异步、Worker 中断三个场景，可拖动或播放，显示用户此刻看到什么），共 21 页。L02 新增 CDN 带宽计算器（P10），L03 新增镜头生成时间线（P08，模型并发上限、第二镜退回、调用次数），各 16 页。互动组件拦截触摸事件，拖动时不会误翻页。lessons.html 同步页数和 L01 成果页链接（?page=19）。
