@@ -1,0 +1,41 @@
+/* 3D 封面效果，取自 talk-deck-3d 的 depth.css（去掉 JR Craft 变量依赖） */
+.c3d-aurora { position: absolute; inset: 0; background:
+	radial-gradient(620px 520px at 73% 46%, rgba(93, 174, 255, 0.30), transparent 70%),
+	radial-gradient(520px 420px at 96% 8%, rgba(255, 107, 169, 0.22), transparent 70%),
+	radial-gradient(560px 420px at 4% 100%, rgba(61, 217, 169, 0.16), transparent 70%);
+	animation: c3d-aurora 9s ease-in-out infinite alternate; }
+@keyframes c3d-aurora { from { opacity: .75; transform: scale(1); } to { opacity: 1; transform: scale(1.06); } }
+.c3d-floor { position: absolute; left: 0; right: 0; bottom: 0; height: 270px; perspective: 340px; overflow: hidden; mask-image: linear-gradient(transparent, #000 75%); -webkit-mask-image: linear-gradient(transparent, #000 75%); }
+.c3d-floor > div { position: absolute; left: -60%; right: -60%; top: -40%; bottom: -20%; transform-origin: 50% 100%; transform: rotateX(64deg);
+	background-image: linear-gradient(rgba(125, 170, 255, .42) 1px, transparent 1px), linear-gradient(90deg, rgba(125, 170, 255, .42) 1px, transparent 1px);
+	background-size: 72px 72px; animation: c3d-floor 2.4s linear infinite; }
+@keyframes c3d-floor { from { background-position: 0 0; } to { background-position: 0 72px; } }
+.c3d-slab { display: inline-block; padding: 18px 40px 14px; border-radius: 28px; background: #fffef7; transform-origin: 0 50%;
+	box-shadow: 1px 1px 0 #ffd43b, 2px 2px 0 #ffd43b, 3px 3px 0 #ffd43b, 4px 4px 0 #ffcb2b, 5px 5px 0 #ffcb2b, 6px 6px 0 #ffc221, 7px 7px 0 #ffc221, 8px 8px 0 #ffb918, 9px 9px 0 #ffb918, 10px 10px 0 #ffb414, 0 0 70px rgba(255, 212, 59, .35), 30px 40px 60px rgba(0, 0, 0, .55); }
+@keyframes c3d-in { from { opacity: 0; transform: perspective(900px) rotateY(-34deg) translateX(-60px); } to { opacity: 1; transform: perspective(900px) rotateY(0) translateX(0); } }
+.c3d-in { animation: c3d-in .9s cubic-bezier(.16, 1, .3, 1) backwards; transform-origin: 0 50%; }
+.c3d-shine { background: linear-gradient(105deg, #fff 40%, #ffd43b 50%, #fff 60%) 0 0 / 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: c3d-shine 5s linear infinite; }
+@keyframes c3d-shine { from { background-position: 100% 0; } to { background-position: -60% 0; } }
+.c3d-scene { perspective: 1600px; }
+.c3d-scene > .c3d-stage { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY(calc(var(--px, 0) * 7deg)) rotateX(calc(var(--py, 0) * -6deg)); transition: transform .25s ease-out; }
+/* 深色页隐藏引擎自带的深色 logo，由页面放反白版 */
+[data-slide-canvas]:has([data-night]) > div:first-child { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .c3d-aurora, .c3d-floor > div, .c3d-in, .c3d-shine { animation: none !important; } .c3d-shine { background: none; color: #fff; } }
+@media print { .c3d-aurora, .c3d-floor > div, .c3d-in, .c3d-shine { animation: none !important; } .c3d-shine { background: none; color: #fff; } }
+
+/* 全稿：W12 Panel（9px 偏移阴影）悬停时微微抬起倾斜 */
+[data-slide-canvas] div[style*="9px 9px 0"] { transition: transform .35s cubic-bezier(.16, 1, .3, 1); }
+[data-slide-canvas] div[style*="9px 9px 0"]:hover { transform: perspective(1100px) rotateX(4deg) translateY(-6px); }
+@media print { div[style*="9px 9px 0"] { transition: none; } }
+
+/* 流程页：当前步骤朝观众抬起，其余微微向后倾（参照 company-intro 工作流页） */
+.flow3d { perspective: 1400px; }
+.flow3d .step3d { transition: transform .5s cubic-bezier(.16, 1, .3, 1), box-shadow .5s cubic-bezier(.16, 1, .3, 1), background .3s, color .3s, opacity .3s; transform: rotateY(-5deg); }
+.flow3d .step3d.on { transform: translateY(-12px) translateZ(46px); }
+@media print { .flow3d .step3d, .flow3d .step3d.on { transform: none !important; transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .flow3d .step3d { transition: none; } }
+/* 横向流动虚线段（进度轨道上「下一段」） */
+.dash-run { background: repeating-linear-gradient(90deg, currentColor 0 9px, transparent 9px 17px); background-size: 34px 100%; animation: dash-run 1.1s linear infinite; }
+@keyframes dash-run { from { background-position: 0 0; } to { background-position: 34px 0; } }
+@media print { .dash-run { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .dash-run { animation: none; } }
